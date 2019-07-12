@@ -28,7 +28,7 @@ import (
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 	versioned "kubeform.dev/kubeform/client/clientset/versioned"
-	aws "kubeform.dev/kubeform/client/informers/externalversions/aws"
+	digitalocean "kubeform.dev/kubeform/client/informers/externalversions/digitalocean"
 	internalinterfaces "kubeform.dev/kubeform/client/informers/externalversions/internalinterfaces"
 )
 
@@ -172,9 +172,9 @@ type SharedInformerFactory interface {
 	ForResource(resource schema.GroupVersionResource) (GenericInformer, error)
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
-	Aws() aws.Interface
+	Digitalocean() digitalocean.Interface
 }
 
-func (f *sharedInformerFactory) Aws() aws.Interface {
-	return aws.New(f, f.namespace, f.tweakListOptions)
+func (f *sharedInformerFactory) Digitalocean() digitalocean.Interface {
+	return digitalocean.New(f, f.namespace, f.tweakListOptions)
 }

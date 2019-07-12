@@ -25,8 +25,8 @@ import (
 	fakediscovery "k8s.io/client-go/discovery/fake"
 	"k8s.io/client-go/testing"
 	clientset "kubeform.dev/kubeform/client/clientset/versioned"
-	awsv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/aws/v1alpha1"
-	fakeawsv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/aws/v1alpha1/fake"
+	digitaloceanv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/digitalocean/v1alpha1"
+	fakedigitaloceanv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/digitalocean/v1alpha1/fake"
 )
 
 // NewSimpleClientset returns a clientset that will respond with the provided objects.
@@ -71,7 +71,7 @@ func (c *Clientset) Discovery() discovery.DiscoveryInterface {
 
 var _ clientset.Interface = &Clientset{}
 
-// AwsV1alpha1 retrieves the AwsV1alpha1Client
-func (c *Clientset) AwsV1alpha1() awsv1alpha1.AwsV1alpha1Interface {
-	return &fakeawsv1alpha1.FakeAwsV1alpha1{Fake: &c.Fake}
+// DigitaloceanV1alpha1 retrieves the DigitaloceanV1alpha1Client
+func (c *Clientset) DigitaloceanV1alpha1() digitaloceanv1alpha1.DigitaloceanV1alpha1Interface {
+	return &fakedigitaloceanv1alpha1.FakeDigitaloceanV1alpha1{Fake: &c.Fake}
 }

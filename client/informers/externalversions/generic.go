@@ -23,7 +23,7 @@ import (
 
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
-	v1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
+	v1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
 )
 
 // GenericInformer is type of SharedIndexInformer which will locate and delegate to other
@@ -52,9 +52,47 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=aws.kubeform.com, Version=v1alpha1
-	case v1alpha1.SchemeGroupVersion.WithResource("postgresversions"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().PostgresVersions().Informer()}, nil
+	// Group=digitalocean.kubeform.com, Version=v1alpha1
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceancdns"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanCdns().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceancertificates"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanCertificates().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceandatabaseclusters"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanDatabaseClusters().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceandomains"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanDomains().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceandroplets"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanDroplets().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceandropletsnapshots"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanDropletSnapshots().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceanfirewalls"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanFirewalls().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceanfloatingips"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanFloatingIps().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceanfloatingipassignments"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanFloatingIpAssignments().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceankubernetesclusters"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanKubernetesClusters().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceankubernetesnodepools"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanKubernetesNodePools().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceanloadbalancers"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanLoadbalancers().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceanprojects"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanProjects().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceanrecords"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanRecords().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceanspacesbuckets"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanSpacesBuckets().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceansshkeys"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanSshKeys().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceantags"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanTags().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceanvolumes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanVolumes().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceanvolumeattachments"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanVolumeAttachments().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("digitaloceanvolumesnapshots"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Digitalocean().V1alpha1().DigitaloceanVolumeSnapshots().Informer()}, nil
 
 	}
 

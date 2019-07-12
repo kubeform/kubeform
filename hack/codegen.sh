@@ -2,12 +2,14 @@
 
 set -x
 
+export PROVIDER=$1
+
 GOPATH=$(go env GOPATH)
 PACKAGE_NAME=kubeform.dev/kubeform
 REPO_ROOT="$GOPATH/src/$PACKAGE_NAME"
 DOCKER_REPO_ROOT="/go/src/$PACKAGE_NAME"
 DOCKER_CODEGEN_PKG="/go/src/k8s.io/code-generator"
-apiGroups=(aws/v1alpha1)
+apiGroups=(${PROVIDER}/v1alpha1)
 
 pushd $REPO_ROOT
 
@@ -21,7 +23,7 @@ docker run --rm -ti -u $(id -u):$(id -g) \
   appscode/gengo:release-1.14 "$DOCKER_CODEGEN_PKG"/generate-groups.sh "deepcopy,client,informer,lister" \
   kubeform.dev/kubeform/client \
   kubeform.dev/kubeform/apis \
-  "aws:v1alpha1" \
+  "$PROVIDER:v1alpha1" \
   --go-header-file "$DOCKER_REPO_ROOT/hack/gengo/boilerplate.go.txt"
 
 # Generate openapi
