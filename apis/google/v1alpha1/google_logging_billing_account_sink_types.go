@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleLoggingBillingAccountSink struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type GoogleLoggingBillingAccountSink struct {
 }
 
 type GoogleLoggingBillingAccountSinkSpec struct {
+	Destination    string `json:"destination"`
 	Filter         string `json:"filter"`
 	WriterIdentity string `json:"writer_identity"`
 	BillingAccount string `json:"billing_account"`
 	Name           string `json:"name"`
-	Destination    string `json:"destination"`
 }
 
 type GoogleLoggingBillingAccountSinkStatus struct {
@@ -30,6 +31,7 @@ type GoogleLoggingBillingAccountSinkStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleLoggingBillingAccountSinkList is a list of GoogleLoggingBillingAccountSinks
 type GoogleLoggingBillingAccountSinkList struct {

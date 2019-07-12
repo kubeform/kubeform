@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAppsyncGraphqlApi struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -37,15 +38,15 @@ type AwsAppsyncGraphqlApiSpecOpenidConnectConfig struct {
 }
 
 type AwsAppsyncGraphqlApiSpec struct {
+	AuthenticationType  string                     `json:"authentication_type"`
 	Name                string                     `json:"name"`
 	UserPoolConfig      []AwsAppsyncGraphqlApiSpec `json:"user_pool_config"`
+	Arn                 string                     `json:"arn"`
 	Uris                map[string]string          `json:"uris"`
-	Tags                map[string]string          `json:"tags"`
-	AuthenticationType  string                     `json:"authentication_type"`
 	Schema              string                     `json:"schema"`
 	LogConfig           []AwsAppsyncGraphqlApiSpec `json:"log_config"`
 	OpenidConnectConfig []AwsAppsyncGraphqlApiSpec `json:"openid_connect_config"`
-	Arn                 string                     `json:"arn"`
+	Tags                map[string]string          `json:"tags"`
 }
 
 type AwsAppsyncGraphqlApiStatus struct {
@@ -53,6 +54,7 @@ type AwsAppsyncGraphqlApiStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAppsyncGraphqlApiList is a list of AwsAppsyncGraphqlApis
 type AwsAppsyncGraphqlApiList struct {

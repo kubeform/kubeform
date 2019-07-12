@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type LinodeNodebalancer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,22 +19,22 @@ type LinodeNodebalancer struct {
 }
 
 type LinodeNodebalancerSpecTransfer struct {
+	In    float64 `json:"in"`
 	Out   float64 `json:"out"`
 	Total float64 `json:"total"`
-	In    float64 `json:"in"`
 }
 
 type LinodeNodebalancerSpec struct {
 	Label              string            `json:"label"`
 	ClientConnThrottle int               `json:"client_conn_throttle"`
-	Hostname           string            `json:"hostname"`
-	Updated            string            `json:"updated"`
-	Region             string            `json:"region"`
-	Ipv4               string            `json:"ipv4"`
 	Ipv6               string            `json:"ipv6"`
+	Updated            string            `json:"updated"`
+	Tags               []string          `json:"tags"`
+	Region             string            `json:"region"`
+	Hostname           string            `json:"hostname"`
+	Ipv4               string            `json:"ipv4"`
 	Created            string            `json:"created"`
 	Transfer           map[string]string `json:"transfer"`
-	Tags               []string          `json:"tags"`
 }
 
 type LinodeNodebalancerStatus struct {
@@ -41,6 +42,7 @@ type LinodeNodebalancerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // LinodeNodebalancerList is a list of LinodeNodebalancers
 type LinodeNodebalancerList struct {

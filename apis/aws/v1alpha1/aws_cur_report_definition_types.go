@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCurReportDefinition struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,14 +20,14 @@ type AwsCurReportDefinition struct {
 
 type AwsCurReportDefinitionSpec struct {
 	TimeUnit                 string   `json:"time_unit"`
-	Format                   string   `json:"format"`
-	AdditionalSchemaElements []string `json:"additional_schema_elements"`
+	Compression              string   `json:"compression"`
+	S3Prefix                 string   `json:"s3_prefix"`
 	S3Region                 string   `json:"s3_region"`
 	AdditionalArtifacts      []string `json:"additional_artifacts"`
 	ReportName               string   `json:"report_name"`
-	Compression              string   `json:"compression"`
+	Format                   string   `json:"format"`
+	AdditionalSchemaElements []string `json:"additional_schema_elements"`
 	S3Bucket                 string   `json:"s3_bucket"`
-	S3Prefix                 string   `json:"s3_prefix"`
 }
 
 type AwsCurReportDefinitionStatus struct {
@@ -34,6 +35,7 @@ type AwsCurReportDefinitionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCurReportDefinitionList is a list of AwsCurReportDefinitions
 type AwsCurReportDefinitionList struct {

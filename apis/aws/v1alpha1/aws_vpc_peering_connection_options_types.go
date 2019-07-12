@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsVpcPeeringConnectionOptions struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsVpcPeeringConnectionOptions struct {
 }
 
 type AwsVpcPeeringConnectionOptionsSpecAccepter struct {
+	AllowRemoteVpcDnsResolution bool `json:"allow_remote_vpc_dns_resolution"`
 	AllowClassicLinkToRemoteVpc bool `json:"allow_classic_link_to_remote_vpc"`
 	AllowVpcToRemoteClassicLink bool `json:"allow_vpc_to_remote_classic_link"`
-	AllowRemoteVpcDnsResolution bool `json:"allow_remote_vpc_dns_resolution"`
 }
 
 type AwsVpcPeeringConnectionOptionsSpecRequester struct {
@@ -40,6 +41,7 @@ type AwsVpcPeeringConnectionOptionsStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsVpcPeeringConnectionOptionsList is a list of AwsVpcPeeringConnectionOptionss
 type AwsVpcPeeringConnectionOptionsList struct {

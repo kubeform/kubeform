@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDxBgpPeer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsDxBgpPeer struct {
 }
 
 type AwsDxBgpPeerSpec struct {
-	AmazonAddress      string `json:"amazon_address"`
+	BgpAuthKey         string `json:"bgp_auth_key"`
 	CustomerAddress    string `json:"customer_address"`
 	BgpStatus          string `json:"bgp_status"`
-	AddressFamily      string `json:"address_family"`
-	BgpAsn             int    `json:"bgp_asn"`
 	VirtualInterfaceId string `json:"virtual_interface_id"`
-	BgpAuthKey         string `json:"bgp_auth_key"`
+	BgpAsn             int    `json:"bgp_asn"`
+	AmazonAddress      string `json:"amazon_address"`
 	BgpPeerId          string `json:"bgp_peer_id"`
 	AwsDevice          string `json:"aws_device"`
+	AddressFamily      string `json:"address_family"`
 }
 
 type AwsDxBgpPeerStatus struct {
@@ -34,6 +35,7 @@ type AwsDxBgpPeerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDxBgpPeerList is a list of AwsDxBgpPeers
 type AwsDxBgpPeerList struct {

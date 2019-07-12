@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermCosmosdbSqlDatabase struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AzurermCosmosdbSqlDatabase struct {
 }
 
 type AzurermCosmosdbSqlDatabaseSpec struct {
+	AccountName       string `json:"account_name"`
 	Name              string `json:"name"`
 	ResourceGroupName string `json:"resource_group_name"`
-	AccountName       string `json:"account_name"`
 }
 
 type AzurermCosmosdbSqlDatabaseStatus struct {
@@ -28,6 +29,7 @@ type AzurermCosmosdbSqlDatabaseStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermCosmosdbSqlDatabaseList is a list of AzurermCosmosdbSqlDatabases
 type AzurermCosmosdbSqlDatabaseList struct {

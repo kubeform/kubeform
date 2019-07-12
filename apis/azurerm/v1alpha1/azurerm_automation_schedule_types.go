@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAutomationSchedule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,19 +24,19 @@ type AzurermAutomationScheduleSpecMonthlyOccurrence struct {
 }
 
 type AzurermAutomationScheduleSpec struct {
+	MonthDays             []int64                         `json:"month_days"`
 	MonthlyOccurrence     []AzurermAutomationScheduleSpec `json:"monthly_occurrence"`
-	Name                  string                          `json:"name"`
-	AutomationAccountName string                          `json:"automation_account_name"`
 	Frequency             string                          `json:"frequency"`
+	StartTime             string                          `json:"start_time"`
+	ExpiryTime            string                          `json:"expiry_time"`
+	AutomationAccountName string                          `json:"automation_account_name"`
+	Interval              int                             `json:"interval"`
 	Description           string                          `json:"description"`
 	Timezone              string                          `json:"timezone"`
 	WeekDays              []string                        `json:"week_days"`
+	Name                  string                          `json:"name"`
 	ResourceGroupName     string                          `json:"resource_group_name"`
 	AccountName           string                          `json:"account_name"`
-	Interval              int                             `json:"interval"`
-	StartTime             string                          `json:"start_time"`
-	ExpiryTime            string                          `json:"expiry_time"`
-	MonthDays             []int64                         `json:"month_days"`
 }
 
 type AzurermAutomationScheduleStatus struct {
@@ -43,6 +44,7 @@ type AzurermAutomationScheduleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAutomationScheduleList is a list of AzurermAutomationSchedules
 type AzurermAutomationScheduleList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLbListenerRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,27 +18,43 @@ type AwsLbListenerRule struct {
 	Status            AwsLbListenerRuleStatus `json:"status,omitempty"`
 }
 
-type AwsLbListenerRuleSpecActionAuthenticateOidc struct {
+type AwsLbListenerRuleSpecCondition struct {
+	Field  string   `json:"field"`
+	Values []string `json:"values"`
+}
+
+type AwsLbListenerRuleSpecActionAuthenticateCognito struct {
 	AuthenticationRequestExtraParams map[string]string `json:"authentication_request_extra_params"`
-	ClientId                         string            `json:"client_id"`
-	ClientSecret                     string            `json:"client_secret"`
 	OnUnauthenticatedRequest         string            `json:"on_unauthenticated_request"`
 	Scope                            string            `json:"scope"`
+	SessionCookieName                string            `json:"session_cookie_name"`
+	SessionTimeout                   int               `json:"session_timeout"`
+	UserPoolArn                      string            `json:"user_pool_arn"`
+	UserPoolClientId                 string            `json:"user_pool_client_id"`
+	UserPoolDomain                   string            `json:"user_pool_domain"`
+}
+
+type AwsLbListenerRuleSpecActionAuthenticateOidc struct {
 	UserInfoEndpoint                 string            `json:"user_info_endpoint"`
 	AuthorizationEndpoint            string            `json:"authorization_endpoint"`
 	Issuer                           string            `json:"issuer"`
-	SessionCookieName                string            `json:"session_cookie_name"`
+	OnUnauthenticatedRequest         string            `json:"on_unauthenticated_request"`
+	Scope                            string            `json:"scope"`
 	SessionTimeout                   int               `json:"session_timeout"`
 	TokenEndpoint                    string            `json:"token_endpoint"`
+	AuthenticationRequestExtraParams map[string]string `json:"authentication_request_extra_params"`
+	ClientId                         string            `json:"client_id"`
+	ClientSecret                     string            `json:"client_secret"`
+	SessionCookieName                string            `json:"session_cookie_name"`
 }
 
 type AwsLbListenerRuleSpecActionRedirect struct {
-	Host       string `json:"host"`
-	Path       string `json:"path"`
 	Port       string `json:"port"`
 	Protocol   string `json:"protocol"`
 	Query      string `json:"query"`
 	StatusCode string `json:"status_code"`
+	Host       string `json:"host"`
+	Path       string `json:"path"`
 }
 
 type AwsLbListenerRuleSpecActionFixedResponse struct {
@@ -46,38 +63,22 @@ type AwsLbListenerRuleSpecActionFixedResponse struct {
 	StatusCode  string `json:"status_code"`
 }
 
-type AwsLbListenerRuleSpecActionAuthenticateCognito struct {
-	UserPoolArn                      string            `json:"user_pool_arn"`
-	UserPoolClientId                 string            `json:"user_pool_client_id"`
-	UserPoolDomain                   string            `json:"user_pool_domain"`
-	AuthenticationRequestExtraParams map[string]string `json:"authentication_request_extra_params"`
-	OnUnauthenticatedRequest         string            `json:"on_unauthenticated_request"`
-	Scope                            string            `json:"scope"`
-	SessionCookieName                string            `json:"session_cookie_name"`
-	SessionTimeout                   int               `json:"session_timeout"`
-}
-
 type AwsLbListenerRuleSpecAction struct {
+	AuthenticateCognito []AwsLbListenerRuleSpecAction `json:"authenticate_cognito"`
 	AuthenticateOidc    []AwsLbListenerRuleSpecAction `json:"authenticate_oidc"`
 	Type                string                        `json:"type"`
 	Order               int                           `json:"order"`
 	TargetGroupArn      string                        `json:"target_group_arn"`
 	Redirect            []AwsLbListenerRuleSpecAction `json:"redirect"`
 	FixedResponse       []AwsLbListenerRuleSpecAction `json:"fixed_response"`
-	AuthenticateCognito []AwsLbListenerRuleSpecAction `json:"authenticate_cognito"`
-}
-
-type AwsLbListenerRuleSpecCondition struct {
-	Field  string   `json:"field"`
-	Values []string `json:"values"`
 }
 
 type AwsLbListenerRuleSpec struct {
+	Condition   []AwsLbListenerRuleSpec `json:"condition"`
+	Arn         string                  `json:"arn"`
 	ListenerArn string                  `json:"listener_arn"`
 	Priority    int                     `json:"priority"`
 	Action      []AwsLbListenerRuleSpec `json:"action"`
-	Condition   []AwsLbListenerRuleSpec `json:"condition"`
-	Arn         string                  `json:"arn"`
 }
 
 type AwsLbListenerRuleStatus struct {
@@ -85,6 +86,7 @@ type AwsLbListenerRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLbListenerRuleList is a list of AwsLbListenerRules
 type AwsLbListenerRuleList struct {

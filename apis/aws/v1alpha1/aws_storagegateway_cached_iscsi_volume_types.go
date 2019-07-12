@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsStoragegatewayCachedIscsiVolume struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AwsStoragegatewayCachedIscsiVolume struct {
 }
 
 type AwsStoragegatewayCachedIscsiVolumeSpec struct {
-	ChapEnabled          bool   `json:"chap_enabled"`
-	GatewayArn           string `json:"gateway_arn"`
-	LunNumber            int    `json:"lun_number"`
-	NetworkInterfaceId   string `json:"network_interface_id"`
-	NetworkInterfacePort int    `json:"network_interface_port"`
 	SourceVolumeArn      string `json:"source_volume_arn"`
+	TargetName           string `json:"target_name"`
+	GatewayArn           string `json:"gateway_arn"`
+	NetworkInterfacePort int    `json:"network_interface_port"`
+	SnapshotId           string `json:"snapshot_id"`
+	NetworkInterfaceId   string `json:"network_interface_id"`
 	TargetArn            string `json:"target_arn"`
-	Arn                  string `json:"arn"`
 	VolumeArn            string `json:"volume_arn"`
 	VolumeId             string `json:"volume_id"`
 	VolumeSizeInBytes    int    `json:"volume_size_in_bytes"`
-	TargetName           string `json:"target_name"`
-	SnapshotId           string `json:"snapshot_id"`
+	Arn                  string `json:"arn"`
+	ChapEnabled          bool   `json:"chap_enabled"`
+	LunNumber            int    `json:"lun_number"`
 }
 
 type AwsStoragegatewayCachedIscsiVolumeStatus struct {
@@ -38,6 +39,7 @@ type AwsStoragegatewayCachedIscsiVolumeStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsStoragegatewayCachedIscsiVolumeList is a list of AwsStoragegatewayCachedIscsiVolumes
 type AwsStoragegatewayCachedIscsiVolumeList struct {

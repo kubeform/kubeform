@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeAutoscaler struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -32,23 +33,23 @@ type GoogleComputeAutoscalerSpecAutoscalingPolicyMetric struct {
 }
 
 type GoogleComputeAutoscalerSpecAutoscalingPolicy struct {
+	CooldownPeriod           int                                            `json:"cooldown_period"`
 	CpuUtilization           []GoogleComputeAutoscalerSpecAutoscalingPolicy `json:"cpu_utilization"`
 	LoadBalancingUtilization []GoogleComputeAutoscalerSpecAutoscalingPolicy `json:"load_balancing_utilization"`
 	Metric                   []GoogleComputeAutoscalerSpecAutoscalingPolicy `json:"metric"`
 	MaxReplicas              int                                            `json:"max_replicas"`
 	MinReplicas              int                                            `json:"min_replicas"`
-	CooldownPeriod           int                                            `json:"cooldown_period"`
 }
 
 type GoogleComputeAutoscalerSpec struct {
+	Zone              string                        `json:"zone"`
+	CreationTimestamp string                        `json:"creation_timestamp"`
+	Project           string                        `json:"project"`
 	SelfLink          string                        `json:"self_link"`
 	AutoscalingPolicy []GoogleComputeAutoscalerSpec `json:"autoscaling_policy"`
 	Name              string                        `json:"name"`
 	Target            string                        `json:"target"`
 	Description       string                        `json:"description"`
-	Zone              string                        `json:"zone"`
-	CreationTimestamp string                        `json:"creation_timestamp"`
-	Project           string                        `json:"project"`
 }
 
 type GoogleComputeAutoscalerStatus struct {
@@ -56,6 +57,7 @@ type GoogleComputeAutoscalerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeAutoscalerList is a list of GoogleComputeAutoscalers
 type GoogleComputeAutoscalerList struct {

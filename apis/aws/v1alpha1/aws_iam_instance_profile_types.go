@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIamInstanceProfile struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AwsIamInstanceProfile struct {
 }
 
 type AwsIamInstanceProfileSpec struct {
+	Roles      []string `json:"roles"`
+	Role       string   `json:"role"`
 	Arn        string   `json:"arn"`
 	CreateDate string   `json:"create_date"`
 	UniqueId   string   `json:"unique_id"`
 	Name       string   `json:"name"`
 	NamePrefix string   `json:"name_prefix"`
 	Path       string   `json:"path"`
-	Roles      []string `json:"roles"`
-	Role       string   `json:"role"`
 }
 
 type AwsIamInstanceProfileStatus struct {
@@ -33,6 +34,7 @@ type AwsIamInstanceProfileStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIamInstanceProfileList is a list of AwsIamInstanceProfiles
 type AwsIamInstanceProfileList struct {

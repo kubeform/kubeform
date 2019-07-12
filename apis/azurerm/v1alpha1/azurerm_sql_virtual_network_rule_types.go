@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermSqlVirtualNetworkRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermSqlVirtualNetworkRule struct {
 }
 
 type AzurermSqlVirtualNetworkRuleSpec struct {
-	ResourceGroupName                string `json:"resource_group_name"`
-	ServerName                       string `json:"server_name"`
 	SubnetId                         string `json:"subnet_id"`
 	IgnoreMissingVnetServiceEndpoint bool   `json:"ignore_missing_vnet_service_endpoint"`
 	Name                             string `json:"name"`
+	ResourceGroupName                string `json:"resource_group_name"`
+	ServerName                       string `json:"server_name"`
 }
 
 type AzurermSqlVirtualNetworkRuleStatus struct {
@@ -30,6 +31,7 @@ type AzurermSqlVirtualNetworkRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermSqlVirtualNetworkRuleList is a list of AzurermSqlVirtualNetworkRules
 type AzurermSqlVirtualNetworkRuleList struct {

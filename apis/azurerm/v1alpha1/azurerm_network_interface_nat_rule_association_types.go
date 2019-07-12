@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermNetworkInterfaceNatRuleAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AzurermNetworkInterfaceNatRuleAssociation struct {
 }
 
 type AzurermNetworkInterfaceNatRuleAssociationSpec struct {
-	IpConfigurationName string `json:"ip_configuration_name"`
 	NatRuleId           string `json:"nat_rule_id"`
 	NetworkInterfaceId  string `json:"network_interface_id"`
+	IpConfigurationName string `json:"ip_configuration_name"`
 }
 
 type AzurermNetworkInterfaceNatRuleAssociationStatus struct {
@@ -28,6 +29,7 @@ type AzurermNetworkInterfaceNatRuleAssociationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermNetworkInterfaceNatRuleAssociationList is a list of AzurermNetworkInterfaceNatRuleAssociations
 type AzurermNetworkInterfaceNatRuleAssociationList struct {

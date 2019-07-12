@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermSearchService struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AzurermSearchService struct {
 }
 
 type AzurermSearchServiceSpec struct {
-	Tags              map[string]string `json:"tags"`
-	Location          string            `json:"location"`
-	Sku               string            `json:"sku"`
+	ReplicaCount      int               `json:"replica_count"`
 	PartitionCount    int               `json:"partition_count"`
+	Location          string            `json:"location"`
+	ResourceGroupName string            `json:"resource_group_name"`
 	PrimaryKey        string            `json:"primary_key"`
 	SecondaryKey      string            `json:"secondary_key"`
+	Tags              map[string]string `json:"tags"`
 	Name              string            `json:"name"`
-	ResourceGroupName string            `json:"resource_group_name"`
-	ReplicaCount      int               `json:"replica_count"`
+	Sku               string            `json:"sku"`
 }
 
 type AzurermSearchServiceStatus struct {
@@ -34,6 +35,7 @@ type AzurermSearchServiceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermSearchServiceList is a list of AzurermSearchServices
 type AzurermSearchServiceList struct {

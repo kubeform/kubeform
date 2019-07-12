@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayApiKey struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,13 +24,13 @@ type AwsApiGatewayApiKeySpecStageKey struct {
 }
 
 type AwsApiGatewayApiKeySpec struct {
+	Description     string                    `json:"description"`
+	Enabled         bool                      `json:"enabled"`
 	StageKey        []AwsApiGatewayApiKeySpec `json:"stage_key"`
 	CreatedDate     string                    `json:"created_date"`
 	LastUpdatedDate string                    `json:"last_updated_date"`
 	Value           string                    `json:"value"`
 	Name            string                    `json:"name"`
-	Description     string                    `json:"description"`
-	Enabled         bool                      `json:"enabled"`
 }
 
 type AwsApiGatewayApiKeyStatus struct {
@@ -37,6 +38,7 @@ type AwsApiGatewayApiKeyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayApiKeyList is a list of AwsApiGatewayApiKeys
 type AwsApiGatewayApiKeyList struct {

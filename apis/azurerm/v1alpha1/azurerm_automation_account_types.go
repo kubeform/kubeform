@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAutomationAccount struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,15 +23,15 @@ type AzurermAutomationAccountSpecSku struct {
 }
 
 type AzurermAutomationAccountSpec struct {
-	DscPrimaryAccessKey   string                         `json:"dsc_primary_access_key"`
-	DscSecondaryAccessKey string                         `json:"dsc_secondary_access_key"`
-	Name                  string                         `json:"name"`
-	Sku                   []AzurermAutomationAccountSpec `json:"sku"`
 	Tags                  map[string]string              `json:"tags"`
 	DscServerEndpoint     string                         `json:"dsc_server_endpoint"`
+	DscSecondaryAccessKey string                         `json:"dsc_secondary_access_key"`
 	Location              string                         `json:"location"`
 	ResourceGroupName     string                         `json:"resource_group_name"`
+	Sku                   []AzurermAutomationAccountSpec `json:"sku"`
+	Name                  string                         `json:"name"`
 	SkuName               string                         `json:"sku_name"`
+	DscPrimaryAccessKey   string                         `json:"dsc_primary_access_key"`
 }
 
 type AzurermAutomationAccountStatus struct {
@@ -38,6 +39,7 @@ type AzurermAutomationAccountStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAutomationAccountList is a list of AzurermAutomationAccounts
 type AzurermAutomationAccountList struct {

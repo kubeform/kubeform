@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsBudgetsBudget struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,40 +19,40 @@ type AwsBudgetsBudget struct {
 }
 
 type AwsBudgetsBudgetSpecCostTypes struct {
-	IncludeSubscription      bool `json:"include_subscription"`
-	IncludeUpfront           bool `json:"include_upfront"`
-	UseAmortized             bool `json:"use_amortized"`
-	UseBlended               bool `json:"use_blended"`
-	IncludeCredit            bool `json:"include_credit"`
 	IncludeRecurring         bool `json:"include_recurring"`
-	IncludeRefund            bool `json:"include_refund"`
+	IncludeSubscription      bool `json:"include_subscription"`
 	IncludeSupport           bool `json:"include_support"`
-	IncludeTax               bool `json:"include_tax"`
+	IncludeUpfront           bool `json:"include_upfront"`
+	IncludeCredit            bool `json:"include_credit"`
 	IncludeDiscount          bool `json:"include_discount"`
 	IncludeOtherSubscription bool `json:"include_other_subscription"`
+	UseBlended               bool `json:"use_blended"`
+	IncludeRefund            bool `json:"include_refund"`
+	IncludeTax               bool `json:"include_tax"`
+	UseAmortized             bool `json:"use_amortized"`
 }
 
 type AwsBudgetsBudgetSpecNotification struct {
-	ComparisonOperator       string   `json:"comparison_operator"`
-	Threshold                float64  `json:"threshold"`
 	ThresholdType            string   `json:"threshold_type"`
 	NotificationType         string   `json:"notification_type"`
 	SubscriberEmailAddresses []string `json:"subscriber_email_addresses"`
 	SubscriberSnsTopicArns   []string `json:"subscriber_sns_topic_arns"`
+	ComparisonOperator       string   `json:"comparison_operator"`
+	Threshold                float64  `json:"threshold"`
 }
 
 type AwsBudgetsBudgetSpec struct {
-	CostFilters     map[string]string      `json:"cost_filters"`
-	AccountId       string                 `json:"account_id"`
-	NamePrefix      string                 `json:"name_prefix"`
-	BudgetType      string                 `json:"budget_type"`
-	LimitUnit       string                 `json:"limit_unit"`
+	TimePeriodEnd   string                 `json:"time_period_end"`
 	CostTypes       []AwsBudgetsBudgetSpec `json:"cost_types"`
 	TimePeriodStart string                 `json:"time_period_start"`
-	Name            string                 `json:"name"`
+	NamePrefix      string                 `json:"name_prefix"`
+	BudgetType      string                 `json:"budget_type"`
 	LimitAmount     string                 `json:"limit_amount"`
-	TimePeriodEnd   string                 `json:"time_period_end"`
+	LimitUnit       string                 `json:"limit_unit"`
 	TimeUnit        string                 `json:"time_unit"`
+	CostFilters     map[string]string      `json:"cost_filters"`
+	AccountId       string                 `json:"account_id"`
+	Name            string                 `json:"name"`
 	Notification    []AwsBudgetsBudgetSpec `json:"notification"`
 }
 
@@ -60,6 +61,7 @@ type AwsBudgetsBudgetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsBudgetsBudgetList is a list of AwsBudgetsBudgets
 type AwsBudgetsBudgetList struct {

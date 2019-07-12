@@ -4,6 +4,7 @@
 // +k8s:conversion-gen=kubeform.dev/kubeform/apis/digitalocean
 // +k8s:openapi-gen=true
 // +k8s:defaulter-gen=TypeMeta
+// +kubebuilder:object:generate=true
 
 // +groupName=digitalocean.kubeform.com
 package v1alpha1

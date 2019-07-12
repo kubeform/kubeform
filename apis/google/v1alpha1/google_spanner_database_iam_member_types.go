@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleSpannerDatabaseIamMember struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type GoogleSpannerDatabaseIamMember struct {
 }
 
 type GoogleSpannerDatabaseIamMemberSpec struct {
+	Etag     string `json:"etag"`
 	Role     string `json:"role"`
 	Member   string `json:"member"`
-	Etag     string `json:"etag"`
 	Instance string `json:"instance"`
 	Database string `json:"database"`
 	Project  string `json:"project"`
@@ -31,6 +32,7 @@ type GoogleSpannerDatabaseIamMemberStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleSpannerDatabaseIamMemberList is a list of GoogleSpannerDatabaseIamMembers
 type GoogleSpannerDatabaseIamMemberList struct {

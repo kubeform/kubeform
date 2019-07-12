@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCloudwatchEventTarget struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AwsCloudwatchEventTarget struct {
 }
 
 type AwsCloudwatchEventTargetSpecInputTransformer struct {
-	InputPaths    map[string]string `json:"input_paths"`
 	InputTemplate string            `json:"input_template"`
+	InputPaths    map[string]string `json:"input_paths"`
 }
 
 type AwsCloudwatchEventTargetSpecRunCommandTargets struct {
-	Key    string   `json:"key"`
 	Values []string `json:"values"`
+	Key    string   `json:"key"`
 }
 
 type AwsCloudwatchEventTargetSpecEcsTargetNetworkConfiguration struct {
@@ -34,12 +35,12 @@ type AwsCloudwatchEventTargetSpecEcsTargetNetworkConfiguration struct {
 }
 
 type AwsCloudwatchEventTargetSpecEcsTarget struct {
-	TaskDefinitionArn    string                                  `json:"task_definition_arn"`
 	Group                string                                  `json:"group"`
 	LaunchType           string                                  `json:"launch_type"`
 	NetworkConfiguration []AwsCloudwatchEventTargetSpecEcsTarget `json:"network_configuration"`
 	PlatformVersion      string                                  `json:"platform_version"`
 	TaskCount            int                                     `json:"task_count"`
+	TaskDefinitionArn    string                                  `json:"task_definition_arn"`
 }
 
 type AwsCloudwatchEventTargetSpecBatchTarget struct {
@@ -58,17 +59,17 @@ type AwsCloudwatchEventTargetSpecSqsTarget struct {
 }
 
 type AwsCloudwatchEventTargetSpec struct {
-	Rule              string                         `json:"rule"`
-	TargetId          string                         `json:"target_id"`
-	Input             string                         `json:"input"`
-	InputPath         string                         `json:"input_path"`
-	RoleArn           string                         `json:"role_arn"`
 	InputTransformer  []AwsCloudwatchEventTargetSpec `json:"input_transformer"`
-	Arn               string                         `json:"arn"`
+	TargetId          string                         `json:"target_id"`
+	InputPath         string                         `json:"input_path"`
 	RunCommandTargets []AwsCloudwatchEventTargetSpec `json:"run_command_targets"`
 	EcsTarget         []AwsCloudwatchEventTargetSpec `json:"ecs_target"`
 	BatchTarget       []AwsCloudwatchEventTargetSpec `json:"batch_target"`
 	KinesisTarget     []AwsCloudwatchEventTargetSpec `json:"kinesis_target"`
+	Rule              string                         `json:"rule"`
+	Arn               string                         `json:"arn"`
+	Input             string                         `json:"input"`
+	RoleArn           string                         `json:"role_arn"`
 	SqsTarget         []AwsCloudwatchEventTargetSpec `json:"sqs_target"`
 }
 
@@ -77,6 +78,7 @@ type AwsCloudwatchEventTargetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCloudwatchEventTargetList is a list of AwsCloudwatchEventTargets
 type AwsCloudwatchEventTargetList struct {

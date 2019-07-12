@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type LinodeDomainRecord struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type LinodeDomainRecord struct {
 }
 
 type LinodeDomainRecordSpec struct {
+	Protocol   string `json:"protocol"`
+	Service    string `json:"service"`
+	Weight     int    `json:"weight"`
+	Target     string `json:"target"`
+	Name       string `json:"name"`
+	RecordType string `json:"record_type"`
 	TtlSec     int    `json:"ttl_sec"`
 	Priority   int    `json:"priority"`
-	Protocol   string `json:"protocol"`
-	Port       int    `json:"port"`
-	Weight     int    `json:"weight"`
-	DomainId   int    `json:"domain_id"`
-	RecordType string `json:"record_type"`
-	Service    string `json:"service"`
 	Tag        string `json:"tag"`
-	Name       string `json:"name"`
-	Target     string `json:"target"`
+	Port       int    `json:"port"`
+	DomainId   int    `json:"domain_id"`
 }
 
 type LinodeDomainRecordStatus struct {
@@ -36,6 +37,7 @@ type LinodeDomainRecordStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // LinodeDomainRecordList is a list of LinodeDomainRecords
 type LinodeDomainRecordList struct {

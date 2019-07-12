@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGlueCatalogDatabase struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsGlueCatalogDatabase struct {
 }
 
 type AwsGlueCatalogDatabaseSpec struct {
+	CatalogId   string            `json:"catalog_id"`
+	Name        string            `json:"name"`
 	Description string            `json:"description"`
 	LocationUri string            `json:"location_uri"`
 	Parameters  map[string]string `json:"parameters"`
-	CatalogId   string            `json:"catalog_id"`
-	Name        string            `json:"name"`
 }
 
 type AwsGlueCatalogDatabaseStatus struct {
@@ -30,6 +31,7 @@ type AwsGlueCatalogDatabaseStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGlueCatalogDatabaseList is a list of AwsGlueCatalogDatabases
 type AwsGlueCatalogDatabaseList struct {

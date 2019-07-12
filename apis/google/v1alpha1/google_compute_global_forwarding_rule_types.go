@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeGlobalForwardingRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,18 +19,18 @@ type GoogleComputeGlobalForwardingRule struct {
 }
 
 type GoogleComputeGlobalForwardingRuleSpec struct {
-	IpVersion        string            `json:"ip_version"`
-	SelfLink         string            `json:"self_link"`
-	Name             string            `json:"name"`
 	Target           string            `json:"target"`
+	Description      string            `json:"description"`
 	IpAddress        string            `json:"ip_address"`
 	IpProtocol       string            `json:"ip_protocol"`
-	LabelFingerprint string            `json:"label_fingerprint"`
 	PortRange        string            `json:"port_range"`
-	Description      string            `json:"description"`
+	IpVersion        string            `json:"ip_version"`
+	Name             string            `json:"name"`
 	Labels           map[string]string `json:"labels"`
+	LabelFingerprint string            `json:"label_fingerprint"`
 	Project          string            `json:"project"`
 	Region           string            `json:"region"`
+	SelfLink         string            `json:"self_link"`
 }
 
 type GoogleComputeGlobalForwardingRuleStatus struct {
@@ -37,6 +38,7 @@ type GoogleComputeGlobalForwardingRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeGlobalForwardingRuleList is a list of GoogleComputeGlobalForwardingRules
 type GoogleComputeGlobalForwardingRuleList struct {

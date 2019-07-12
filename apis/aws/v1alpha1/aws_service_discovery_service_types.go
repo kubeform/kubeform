@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsServiceDiscoveryService struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,9 +24,9 @@ type AwsServiceDiscoveryServiceSpecDnsConfigDnsRecords struct {
 }
 
 type AwsServiceDiscoveryServiceSpecDnsConfig struct {
+	RoutingPolicy string                                    `json:"routing_policy"`
 	NamespaceId   string                                    `json:"namespace_id"`
 	DnsRecords    []AwsServiceDiscoveryServiceSpecDnsConfig `json:"dns_records"`
-	RoutingPolicy string                                    `json:"routing_policy"`
 }
 
 type AwsServiceDiscoveryServiceSpecHealthCheckConfig struct {
@@ -39,12 +40,13 @@ type AwsServiceDiscoveryServiceSpecHealthCheckCustomConfig struct {
 }
 
 type AwsServiceDiscoveryServiceSpec struct {
+	Arn                     string                           `json:"arn"`
 	Name                    string                           `json:"name"`
 	Description             string                           `json:"description"`
+	NamespaceId             string                           `json:"namespace_id"`
 	DnsConfig               []AwsServiceDiscoveryServiceSpec `json:"dns_config"`
 	HealthCheckConfig       []AwsServiceDiscoveryServiceSpec `json:"health_check_config"`
 	HealthCheckCustomConfig []AwsServiceDiscoveryServiceSpec `json:"health_check_custom_config"`
-	Arn                     string                           `json:"arn"`
 }
 
 type AwsServiceDiscoveryServiceStatus struct {
@@ -52,6 +54,7 @@ type AwsServiceDiscoveryServiceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsServiceDiscoveryServiceList is a list of AwsServiceDiscoveryServices
 type AwsServiceDiscoveryServiceList struct {

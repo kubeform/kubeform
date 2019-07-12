@@ -9,19 +9,13 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeUrlMap struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              GoogleComputeUrlMapSpec   `json:"spec,omitempty"`
 	Status            GoogleComputeUrlMapStatus `json:"status,omitempty"`
-}
-
-type GoogleComputeUrlMapSpecTest struct {
-	Host        string `json:"host"`
-	Path        string `json:"path"`
-	Service     string `json:"service"`
-	Description string `json:"description"`
 }
 
 type GoogleComputeUrlMapSpecHostRule struct {
@@ -42,17 +36,24 @@ type GoogleComputeUrlMapSpecPathMatcher struct {
 	PathRule       []GoogleComputeUrlMapSpecPathMatcher `json:"path_rule"`
 }
 
+type GoogleComputeUrlMapSpecTest struct {
+	Description string `json:"description"`
+	Host        string `json:"host"`
+	Path        string `json:"path"`
+	Service     string `json:"service"`
+}
+
 type GoogleComputeUrlMapSpec struct {
-	Test           []GoogleComputeUrlMapSpec `json:"test"`
+	Description    string                    `json:"description"`
+	HostRule       []GoogleComputeUrlMapSpec `json:"host_rule"`
 	Name           string                    `json:"name"`
 	Fingerprint    string                    `json:"fingerprint"`
-	HostRule       []GoogleComputeUrlMapSpec `json:"host_rule"`
 	MapId          string                    `json:"map_id"`
 	PathMatcher    []GoogleComputeUrlMapSpec `json:"path_matcher"`
 	Project        string                    `json:"project"`
-	DefaultService string                    `json:"default_service"`
-	Description    string                    `json:"description"`
 	SelfLink       string                    `json:"self_link"`
+	Test           []GoogleComputeUrlMapSpec `json:"test"`
+	DefaultService string                    `json:"default_service"`
 }
 
 type GoogleComputeUrlMapStatus struct {
@@ -60,6 +61,7 @@ type GoogleComputeUrlMapStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeUrlMapList is a list of GoogleComputeUrlMaps
 type GoogleComputeUrlMapList struct {

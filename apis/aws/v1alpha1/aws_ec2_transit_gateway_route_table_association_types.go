@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEc2TransitGatewayRouteTableAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -29,6 +30,7 @@ type AwsEc2TransitGatewayRouteTableAssociationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEc2TransitGatewayRouteTableAssociationList is a list of AwsEc2TransitGatewayRouteTableAssociations
 type AwsEc2TransitGatewayRouteTableAssociationList struct {

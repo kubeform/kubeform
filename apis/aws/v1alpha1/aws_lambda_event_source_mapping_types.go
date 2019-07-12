@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLambdaEventSourceMapping struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AwsLambdaEventSourceMapping struct {
 }
 
 type AwsLambdaEventSourceMappingSpec struct {
-	LastProcessingResult      string `json:"last_processing_result"`
-	StateTransitionReason     string `json:"state_transition_reason"`
-	EventSourceArn            string `json:"event_source_arn"`
-	BatchSize                 int    `json:"batch_size"`
-	Enabled                   bool   `json:"enabled"`
-	FunctionArn               string `json:"function_arn"`
-	State                     string `json:"state"`
-	Uuid                      string `json:"uuid"`
 	FunctionName              string `json:"function_name"`
 	StartingPosition          string `json:"starting_position"`
+	BatchSize                 int    `json:"batch_size"`
+	LastProcessingResult      string `json:"last_processing_result"`
+	StateTransitionReason     string `json:"state_transition_reason"`
+	State                     string `json:"state"`
+	Uuid                      string `json:"uuid"`
+	EventSourceArn            string `json:"event_source_arn"`
 	StartingPositionTimestamp string `json:"starting_position_timestamp"`
+	Enabled                   bool   `json:"enabled"`
+	FunctionArn               string `json:"function_arn"`
 	LastModified              string `json:"last_modified"`
 }
 
@@ -37,6 +38,7 @@ type AwsLambdaEventSourceMappingStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLambdaEventSourceMappingList is a list of AwsLambdaEventSourceMappings
 type AwsLambdaEventSourceMappingList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsElasticacheReplicationGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,35 +24,35 @@ type AwsElasticacheReplicationGroupSpecClusterMode struct {
 }
 
 type AwsElasticacheReplicationGroupSpec struct {
-	Port                         int                                  `json:"port"`
-	ConfigurationEndpointAddress string                               `json:"configuration_endpoint_address"`
-	Engine                       string                               `json:"engine"`
 	NumberCacheClusters          int                                  `json:"number_cache_clusters"`
-	SnapshotName                 string                               `json:"snapshot_name"`
-	TransitEncryptionEnabled     bool                                 `json:"transit_encryption_enabled"`
-	ApplyImmediately             bool                                 `json:"apply_immediately"`
-	AvailabilityZones            []string                             `json:"availability_zones"`
-	EngineVersion                string                               `json:"engine_version"`
-	ParameterGroupName           string                               `json:"parameter_group_name"`
 	ReplicationGroupId           string                               `json:"replication_group_id"`
-	SnapshotWindow               string                               `json:"snapshot_window"`
-	SubnetGroupName              string                               `json:"subnet_group_name"`
-	AtRestEncryptionEnabled      bool                                 `json:"at_rest_encryption_enabled"`
-	AutoMinorVersionUpgrade      bool                                 `json:"auto_minor_version_upgrade"`
-	NodeType                     string                               `json:"node_type"`
-	NotificationTopicArn         string                               `json:"notification_topic_arn"`
-	PrimaryEndpointAddress       string                               `json:"primary_endpoint_address"`
+	AvailabilityZones            []string                             `json:"availability_zones"`
+	MemberClusters               []string                             `json:"member_clusters"`
 	ReplicationGroupDescription  string                               `json:"replication_group_description"`
-	SnapshotRetentionLimit       int                                  `json:"snapshot_retention_limit"`
+	Tags                         map[string]string                    `json:"tags"`
+	AutoMinorVersionUpgrade      bool                                 `json:"auto_minor_version_upgrade"`
 	AutomaticFailoverEnabled     bool                                 `json:"automatic_failover_enabled"`
 	ClusterMode                  []AwsElasticacheReplicationGroupSpec `json:"cluster_mode"`
-	MaintenanceWindow            string                               `json:"maintenance_window"`
-	SecurityGroupNames           []string                             `json:"security_group_names"`
-	Tags                         map[string]string                    `json:"tags"`
-	SecurityGroupIds             []string                             `json:"security_group_ids"`
-	AuthToken                    string                               `json:"auth_token"`
-	MemberClusters               []string                             `json:"member_clusters"`
 	SnapshotArns                 []string                             `json:"snapshot_arns"`
+	ConfigurationEndpointAddress string                               `json:"configuration_endpoint_address"`
+	EngineVersion                string                               `json:"engine_version"`
+	SecurityGroupNames           []string                             `json:"security_group_names"`
+	SnapshotWindow               string                               `json:"snapshot_window"`
+	ApplyImmediately             bool                                 `json:"apply_immediately"`
+	ParameterGroupName           string                               `json:"parameter_group_name"`
+	PrimaryEndpointAddress       string                               `json:"primary_endpoint_address"`
+	AtRestEncryptionEnabled      bool                                 `json:"at_rest_encryption_enabled"`
+	MaintenanceWindow            string                               `json:"maintenance_window"`
+	Port                         int                                  `json:"port"`
+	SnapshotRetentionLimit       int                                  `json:"snapshot_retention_limit"`
+	SubnetGroupName              string                               `json:"subnet_group_name"`
+	TransitEncryptionEnabled     bool                                 `json:"transit_encryption_enabled"`
+	AuthToken                    string                               `json:"auth_token"`
+	SecurityGroupIds             []string                             `json:"security_group_ids"`
+	Engine                       string                               `json:"engine"`
+	NodeType                     string                               `json:"node_type"`
+	NotificationTopicArn         string                               `json:"notification_topic_arn"`
+	SnapshotName                 string                               `json:"snapshot_name"`
 }
 
 type AwsElasticacheReplicationGroupStatus struct {
@@ -59,6 +60,7 @@ type AwsElasticacheReplicationGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsElasticacheReplicationGroupList is a list of AwsElasticacheReplicationGroups
 type AwsElasticacheReplicationGroupList struct {

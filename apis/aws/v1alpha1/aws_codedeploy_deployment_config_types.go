@@ -9,17 +9,13 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCodedeployDeploymentConfig struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              AwsCodedeployDeploymentConfigSpec   `json:"spec,omitempty"`
 	Status            AwsCodedeployDeploymentConfigStatus `json:"status,omitempty"`
-}
-
-type AwsCodedeployDeploymentConfigSpecMinimumHealthyHosts struct {
-	Type  string `json:"type"`
-	Value int    `json:"value"`
 }
 
 type AwsCodedeployDeploymentConfigSpecTrafficRoutingConfigTimeBasedCanary struct {
@@ -38,12 +34,17 @@ type AwsCodedeployDeploymentConfigSpecTrafficRoutingConfig struct {
 	TimeBasedLinear []AwsCodedeployDeploymentConfigSpecTrafficRoutingConfig `json:"time_based_linear"`
 }
 
+type AwsCodedeployDeploymentConfigSpecMinimumHealthyHosts struct {
+	Type  string `json:"type"`
+	Value int    `json:"value"`
+}
+
 type AwsCodedeployDeploymentConfigSpec struct {
+	TrafficRoutingConfig []AwsCodedeployDeploymentConfigSpec `json:"traffic_routing_config"`
 	DeploymentConfigId   string                              `json:"deployment_config_id"`
 	DeploymentConfigName string                              `json:"deployment_config_name"`
 	ComputePlatform      string                              `json:"compute_platform"`
 	MinimumHealthyHosts  []AwsCodedeployDeploymentConfigSpec `json:"minimum_healthy_hosts"`
-	TrafficRoutingConfig []AwsCodedeployDeploymentConfigSpec `json:"traffic_routing_config"`
 }
 
 type AwsCodedeployDeploymentConfigStatus struct {
@@ -51,6 +52,7 @@ type AwsCodedeployDeploymentConfigStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCodedeployDeploymentConfigList is a list of AwsCodedeployDeploymentConfigs
 type AwsCodedeployDeploymentConfigList struct {

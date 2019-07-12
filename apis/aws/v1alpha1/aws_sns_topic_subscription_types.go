@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSnsTopicSubscription struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,14 +20,14 @@ type AwsSnsTopicSubscription struct {
 
 type AwsSnsTopicSubscriptionSpec struct {
 	Endpoint                     string `json:"endpoint"`
-	TopicArn                     string `json:"topic_arn"`
-	FilterPolicy                 string `json:"filter_policy"`
-	Arn                          string `json:"arn"`
-	Protocol                     string `json:"protocol"`
 	EndpointAutoConfirms         bool   `json:"endpoint_auto_confirms"`
 	ConfirmationTimeoutInMinutes int    `json:"confirmation_timeout_in_minutes"`
+	Arn                          string `json:"arn"`
+	Protocol                     string `json:"protocol"`
+	TopicArn                     string `json:"topic_arn"`
 	DeliveryPolicy               string `json:"delivery_policy"`
 	RawMessageDelivery           bool   `json:"raw_message_delivery"`
+	FilterPolicy                 string `json:"filter_policy"`
 }
 
 type AwsSnsTopicSubscriptionStatus struct {
@@ -34,6 +35,7 @@ type AwsSnsTopicSubscriptionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSnsTopicSubscriptionList is a list of AwsSnsTopicSubscriptions
 type AwsSnsTopicSubscriptionList struct {

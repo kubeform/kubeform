@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafregionalRuleGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,10 +23,10 @@ type AwsWafregionalRuleGroupSpecActivatedRuleAction struct {
 }
 
 type AwsWafregionalRuleGroupSpecActivatedRule struct {
-	RuleId   string                                     `json:"rule_id"`
-	Type     string                                     `json:"type"`
 	Action   []AwsWafregionalRuleGroupSpecActivatedRule `json:"action"`
 	Priority int                                        `json:"priority"`
+	RuleId   string                                     `json:"rule_id"`
+	Type     string                                     `json:"type"`
 }
 
 type AwsWafregionalRuleGroupSpec struct {
@@ -39,6 +40,7 @@ type AwsWafregionalRuleGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafregionalRuleGroupList is a list of AwsWafregionalRuleGroups
 type AwsWafregionalRuleGroupList struct {

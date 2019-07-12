@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLicensemanagerLicenseConfiguration struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AwsLicensemanagerLicenseConfiguration struct {
 }
 
 type AwsLicensemanagerLicenseConfigurationSpec struct {
+	Description           string            `json:"description"`
 	LicenseCount          int               `json:"license_count"`
 	LicenseCountHardLimit bool              `json:"license_count_hard_limit"`
 	LicenseCountingType   string            `json:"license_counting_type"`
 	LicenseRules          []string          `json:"license_rules"`
 	Name                  string            `json:"name"`
 	Tags                  map[string]string `json:"tags"`
-	Description           string            `json:"description"`
 }
 
 type AwsLicensemanagerLicenseConfigurationStatus struct {
@@ -32,6 +33,7 @@ type AwsLicensemanagerLicenseConfigurationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLicensemanagerLicenseConfigurationList is a list of AwsLicensemanagerLicenseConfigurations
 type AwsLicensemanagerLicenseConfigurationList struct {

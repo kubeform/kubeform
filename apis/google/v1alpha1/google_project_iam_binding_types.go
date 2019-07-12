@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleProjectIamBinding struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type GoogleProjectIamBinding struct {
 }
 
 type GoogleProjectIamBindingSpec struct {
+	Members []string `json:"members"`
 	Etag    string   `json:"etag"`
 	Project string   `json:"project"`
 	Role    string   `json:"role"`
-	Members []string `json:"members"`
 }
 
 type GoogleProjectIamBindingStatus struct {
@@ -29,6 +30,7 @@ type GoogleProjectIamBindingStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleProjectIamBindingList is a list of GoogleProjectIamBindings
 type GoogleProjectIamBindingList struct {

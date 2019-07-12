@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEc2ClientVpnEndpoint struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsEc2ClientVpnEndpoint struct {
 }
 
 type AwsEc2ClientVpnEndpointSpecAuthenticationOptions struct {
+	RootCertificateChainArn string `json:"root_certificate_chain_arn"`
 	Type                    string `json:"type"`
 	ActiveDirectoryId       string `json:"active_directory_id"`
-	RootCertificateChainArn string `json:"root_certificate_chain_arn"`
 }
 
 type AwsEc2ClientVpnEndpointSpecConnectionLogOptions struct {
@@ -31,15 +32,15 @@ type AwsEc2ClientVpnEndpointSpecConnectionLogOptions struct {
 
 type AwsEc2ClientVpnEndpointSpec struct {
 	Description           string                        `json:"description"`
+	DnsServers            []string                      `json:"dns_servers"`
 	ServerCertificateArn  string                        `json:"server_certificate_arn"`
-	TransportProtocol     string                        `json:"transport_protocol"`
 	AuthenticationOptions []AwsEc2ClientVpnEndpointSpec `json:"authentication_options"`
-	Status                string                        `json:"status"`
 	Tags                  map[string]string             `json:"tags"`
 	ClientCidrBlock       string                        `json:"client_cidr_block"`
-	DnsServers            []string                      `json:"dns_servers"`
+	TransportProtocol     string                        `json:"transport_protocol"`
 	ConnectionLogOptions  []AwsEc2ClientVpnEndpointSpec `json:"connection_log_options"`
 	DnsName               string                        `json:"dns_name"`
+	Status                string                        `json:"status"`
 }
 
 type AwsEc2ClientVpnEndpointStatus struct {
@@ -47,6 +48,7 @@ type AwsEc2ClientVpnEndpointStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEc2ClientVpnEndpointList is a list of AwsEc2ClientVpnEndpoints
 type AwsEc2ClientVpnEndpointList struct {

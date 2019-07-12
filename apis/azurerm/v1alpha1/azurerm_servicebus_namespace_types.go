@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermServicebusNamespace struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type AzurermServicebusNamespace struct {
 }
 
 type AzurermServicebusNamespaceSpec struct {
-	Tags                             map[string]string `json:"tags"`
-	Name                             string            `json:"name"`
 	Location                         string            `json:"location"`
-	Sku                              string            `json:"sku"`
-	DefaultSecondaryConnectionString string            `json:"default_secondary_connection_string"`
-	DefaultPrimaryKey                string            `json:"default_primary_key"`
-	ResourceGroupName                string            `json:"resource_group_name"`
 	Capacity                         int               `json:"capacity"`
-	DefaultPrimaryConnectionString   string            `json:"default_primary_connection_string"`
+	DefaultSecondaryConnectionString string            `json:"default_secondary_connection_string"`
+	Tags                             map[string]string `json:"tags"`
 	DefaultSecondaryKey              string            `json:"default_secondary_key"`
+	Name                             string            `json:"name"`
+	ResourceGroupName                string            `json:"resource_group_name"`
+	Sku                              string            `json:"sku"`
+	DefaultPrimaryConnectionString   string            `json:"default_primary_connection_string"`
+	DefaultPrimaryKey                string            `json:"default_primary_key"`
 }
 
 type AzurermServicebusNamespaceStatus struct {
@@ -35,6 +36,7 @@ type AzurermServicebusNamespaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermServicebusNamespaceList is a list of AzurermServicebusNamespaces
 type AzurermServicebusNamespaceList struct {

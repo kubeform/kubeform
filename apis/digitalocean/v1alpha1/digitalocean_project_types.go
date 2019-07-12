@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanProject struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -20,10 +21,10 @@ type DigitaloceanProject struct {
 type DigitaloceanProjectSpec struct {
 	Name        string   `json:"name"`
 	Description string   `json:"description"`
-	Environment string   `json:"environment"`
-	OwnerUuid   string   `json:"owner_uuid"`
 	Purpose     string   `json:"purpose"`
+	OwnerUuid   string   `json:"owner_uuid"`
 	OwnerId     int      `json:"owner_id"`
+	Environment string   `json:"environment"`
 	CreatedAt   string   `json:"created_at"`
 	UpdatedAt   string   `json:"updated_at"`
 	Resources   []string `json:"resources"`
@@ -34,6 +35,7 @@ type DigitaloceanProjectStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanProjectList is a list of DigitaloceanProjects
 type DigitaloceanProjectList struct {

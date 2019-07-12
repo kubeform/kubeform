@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDmsReplicationTask struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type AwsDmsReplicationTask struct {
 }
 
 type AwsDmsReplicationTaskSpec struct {
-	SourceEndpointArn       string            `json:"source_endpoint_arn"`
+	TableMappings           string            `json:"table_mappings"`
 	TargetEndpointArn       string            `json:"target_endpoint_arn"`
-	MigrationType           string            `json:"migration_type"`
 	ReplicationInstanceArn  string            `json:"replication_instance_arn"`
+	MigrationType           string            `json:"migration_type"`
 	ReplicationTaskArn      string            `json:"replication_task_arn"`
 	ReplicationTaskId       string            `json:"replication_task_id"`
 	ReplicationTaskSettings string            `json:"replication_task_settings"`
-	CdcStartTime            string            `json:"cdc_start_time"`
-	TableMappings           string            `json:"table_mappings"`
+	SourceEndpointArn       string            `json:"source_endpoint_arn"`
 	Tags                    map[string]string `json:"tags"`
+	CdcStartTime            string            `json:"cdc_start_time"`
 }
 
 type AwsDmsReplicationTaskStatus struct {
@@ -35,6 +36,7 @@ type AwsDmsReplicationTaskStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDmsReplicationTaskList is a list of AwsDmsReplicationTasks
 type AwsDmsReplicationTaskList struct {

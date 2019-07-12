@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleMonitoringNotificationChannel struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type GoogleMonitoringNotificationChannel struct {
 }
 
 type GoogleMonitoringNotificationChannelSpec struct {
+	Type               string            `json:"type"`
 	Enabled            bool              `json:"enabled"`
 	UserLabels         map[string]string `json:"user_labels"`
-	Name               string            `json:"name"`
-	VerificationStatus string            `json:"verification_status"`
-	Type               string            `json:"type"`
+	DisplayName        string            `json:"display_name"`
 	Description        string            `json:"description"`
 	Labels             map[string]string `json:"labels"`
+	Name               string            `json:"name"`
+	VerificationStatus string            `json:"verification_status"`
 	Project            string            `json:"project"`
-	DisplayName        string            `json:"display_name"`
 }
 
 type GoogleMonitoringNotificationChannelStatus struct {
@@ -34,6 +35,7 @@ type GoogleMonitoringNotificationChannelStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleMonitoringNotificationChannelList is a list of GoogleMonitoringNotificationChannels
 type GoogleMonitoringNotificationChannelList struct {

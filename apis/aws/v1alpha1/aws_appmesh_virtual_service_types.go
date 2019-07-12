@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAppmeshVirtualService struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -35,12 +36,13 @@ type AwsAppmeshVirtualServiceSpecSpec struct {
 }
 
 type AwsAppmeshVirtualServiceSpec struct {
+	LastUpdatedDate string                         `json:"last_updated_date"`
+	Tags            map[string]string              `json:"tags"`
+	Name            string                         `json:"name"`
 	MeshName        string                         `json:"mesh_name"`
 	Spec            []AwsAppmeshVirtualServiceSpec `json:"spec"`
 	Arn             string                         `json:"arn"`
 	CreatedDate     string                         `json:"created_date"`
-	LastUpdatedDate string                         `json:"last_updated_date"`
-	Name            string                         `json:"name"`
 }
 
 type AwsAppmeshVirtualServiceStatus struct {
@@ -48,6 +50,7 @@ type AwsAppmeshVirtualServiceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAppmeshVirtualServiceList is a list of AwsAppmeshVirtualServices
 type AwsAppmeshVirtualServiceList struct {

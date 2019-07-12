@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleCloudiotRegistry struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -43,14 +44,14 @@ type GoogleCloudiotRegistrySpecCredentials struct {
 }
 
 type GoogleCloudiotRegistrySpec struct {
+	Name                    string                       `json:"name"`
+	Project                 string                       `json:"project"`
+	Region                  string                       `json:"region"`
 	EventNotificationConfig map[string]string            `json:"event_notification_config"`
 	StateNotificationConfig map[string]string            `json:"state_notification_config"`
 	MqttConfig              map[string]string            `json:"mqtt_config"`
 	HttpConfig              map[string]string            `json:"http_config"`
 	Credentials             []GoogleCloudiotRegistrySpec `json:"credentials"`
-	Name                    string                       `json:"name"`
-	Project                 string                       `json:"project"`
-	Region                  string                       `json:"region"`
 }
 
 type GoogleCloudiotRegistryStatus struct {
@@ -58,6 +59,7 @@ type GoogleCloudiotRegistryStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleCloudiotRegistryList is a list of GoogleCloudiotRegistrys
 type GoogleCloudiotRegistryList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleSpannerDatabaseIamPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type GoogleSpannerDatabaseIamPolicy struct {
 }
 
 type GoogleSpannerDatabaseIamPolicySpec struct {
+	Project    string `json:"project"`
+	Instance   string `json:"instance"`
 	PolicyData string `json:"policy_data"`
 	Etag       string `json:"etag"`
-	Instance   string `json:"instance"`
 	Database   string `json:"database"`
-	Project    string `json:"project"`
 }
 
 type GoogleSpannerDatabaseIamPolicyStatus struct {
@@ -30,6 +31,7 @@ type GoogleSpannerDatabaseIamPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleSpannerDatabaseIamPolicyList is a list of GoogleSpannerDatabaseIamPolicys
 type GoogleSpannerDatabaseIamPolicyList struct {

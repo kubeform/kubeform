@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleStorageBucketAcl struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type GoogleStorageBucketAcl struct {
 }
 
 type GoogleStorageBucketAclSpec struct {
+	Bucket        string   `json:"bucket"`
 	DefaultAcl    string   `json:"default_acl"`
 	PredefinedAcl string   `json:"predefined_acl"`
 	RoleEntity    []string `json:"role_entity"`
-	Bucket        string   `json:"bucket"`
 }
 
 type GoogleStorageBucketAclStatus struct {
@@ -29,6 +30,7 @@ type GoogleStorageBucketAclStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleStorageBucketAclList is a list of GoogleStorageBucketAcls
 type GoogleStorageBucketAclList struct {

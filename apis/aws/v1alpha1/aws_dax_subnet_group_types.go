@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDaxSubnetGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsDaxSubnetGroup struct {
 }
 
 type AwsDaxSubnetGroupSpec struct {
-	SubnetIds   []string `json:"subnet_ids"`
-	VpcId       string   `json:"vpc_id"`
 	Name        string   `json:"name"`
 	Description string   `json:"description"`
+	SubnetIds   []string `json:"subnet_ids"`
+	VpcId       string   `json:"vpc_id"`
 }
 
 type AwsDaxSubnetGroupStatus struct {
@@ -29,6 +30,7 @@ type AwsDaxSubnetGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDaxSubnetGroupList is a list of AwsDaxSubnetGroups
 type AwsDaxSubnetGroupList struct {

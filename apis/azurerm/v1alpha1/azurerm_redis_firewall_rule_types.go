@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermRedisFirewallRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -30,6 +31,7 @@ type AzurermRedisFirewallRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermRedisFirewallRuleList is a list of AzurermRedisFirewallRules
 type AzurermRedisFirewallRuleList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsStoragegatewayNfsFileShare struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,28 +19,28 @@ type AwsStoragegatewayNfsFileShare struct {
 }
 
 type AwsStoragegatewayNfsFileShareSpecNfsFileShareDefaults struct {
+	DirectoryMode string `json:"directory_mode"`
 	FileMode      string `json:"file_mode"`
 	GroupId       int    `json:"group_id"`
 	OwnerId       int    `json:"owner_id"`
-	DirectoryMode string `json:"directory_mode"`
 }
 
 type AwsStoragegatewayNfsFileShareSpec struct {
-	KmsKeyArn            string                              `json:"kms_key_arn"`
-	ObjectAcl            string                              `json:"object_acl"`
-	GuessMimeTypeEnabled bool                                `json:"guess_mime_type_enabled"`
-	NfsFileShareDefaults []AwsStoragegatewayNfsFileShareSpec `json:"nfs_file_share_defaults"`
-	RequesterPays        bool                                `json:"requester_pays"`
-	RoleArn              string                              `json:"role_arn"`
-	KmsEncrypted         bool                                `json:"kms_encrypted"`
 	DefaultStorageClass  string                              `json:"default_storage_class"`
-	LocationArn          string                              `json:"location_arn"`
-	ReadOnly             bool                                `json:"read_only"`
-	Arn                  string                              `json:"arn"`
 	FileshareId          string                              `json:"fileshare_id"`
 	GatewayArn           string                              `json:"gateway_arn"`
-	Squash               string                              `json:"squash"`
+	ReadOnly             bool                                `json:"read_only"`
+	Arn                  string                              `json:"arn"`
 	ClientList           []string                            `json:"client_list"`
+	KmsKeyArn            string                              `json:"kms_key_arn"`
+	RoleArn              string                              `json:"role_arn"`
+	GuessMimeTypeEnabled bool                                `json:"guess_mime_type_enabled"`
+	KmsEncrypted         bool                                `json:"kms_encrypted"`
+	NfsFileShareDefaults []AwsStoragegatewayNfsFileShareSpec `json:"nfs_file_share_defaults"`
+	ObjectAcl            string                              `json:"object_acl"`
+	RequesterPays        bool                                `json:"requester_pays"`
+	LocationArn          string                              `json:"location_arn"`
+	Squash               string                              `json:"squash"`
 }
 
 type AwsStoragegatewayNfsFileShareStatus struct {
@@ -47,6 +48,7 @@ type AwsStoragegatewayNfsFileShareStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsStoragegatewayNfsFileShareList is a list of AwsStoragegatewayNfsFileShares
 type AwsStoragegatewayNfsFileShareList struct {

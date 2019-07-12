@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayClientCertificate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsApiGatewayClientCertificate struct {
 }
 
 type AwsApiGatewayClientCertificateSpec struct {
+	PemEncodedCertificate string `json:"pem_encoded_certificate"`
 	Description           string `json:"description"`
 	CreatedDate           string `json:"created_date"`
 	ExpirationDate        string `json:"expiration_date"`
-	PemEncodedCertificate string `json:"pem_encoded_certificate"`
 }
 
 type AwsApiGatewayClientCertificateStatus struct {
@@ -29,6 +30,7 @@ type AwsApiGatewayClientCertificateStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayClientCertificateList is a list of AwsApiGatewayClientCertificates
 type AwsApiGatewayClientCertificateList struct {

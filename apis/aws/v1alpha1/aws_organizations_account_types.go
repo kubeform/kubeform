@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsOrganizationsAccount struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,16 @@ type AwsOrganizationsAccount struct {
 }
 
 type AwsOrganizationsAccountSpec struct {
-	JoinedMethod           string `json:"joined_method"`
-	JoinedTimestamp        string `json:"joined_timestamp"`
-	Status                 string `json:"status"`
-	Name                   string `json:"name"`
-	Email                  string `json:"email"`
-	IamUserAccessToBilling string `json:"iam_user_access_to_billing"`
-	RoleName               string `json:"role_name"`
-	Arn                    string `json:"arn"`
+	IamUserAccessToBilling string            `json:"iam_user_access_to_billing"`
+	JoinedTimestamp        string            `json:"joined_timestamp"`
+	Status                 string            `json:"status"`
+	ParentId               string            `json:"parent_id"`
+	Name                   string            `json:"name"`
+	Email                  string            `json:"email"`
+	RoleName               string            `json:"role_name"`
+	Tags                   map[string]string `json:"tags"`
+	Arn                    string            `json:"arn"`
+	JoinedMethod           string            `json:"joined_method"`
 }
 
 type AwsOrganizationsAccountStatus struct {
@@ -33,6 +36,7 @@ type AwsOrganizationsAccountStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsOrganizationsAccountList is a list of AwsOrganizationsAccounts
 type AwsOrganizationsAccountList struct {

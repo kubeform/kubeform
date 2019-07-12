@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRedshiftEventSubscription struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,17 @@ type AwsRedshiftEventSubscription struct {
 }
 
 type AwsRedshiftEventSubscriptionSpec struct {
-	Enabled         bool              `json:"enabled"`
+	Arn             string            `json:"arn"`
+	Name            string            `json:"name"`
+	EventCategories []string          `json:"event_categories"`
+	CustomerAwsId   string            `json:"customer_aws_id"`
 	Tags            map[string]string `json:"tags"`
+	Severity        string            `json:"severity"`
 	SnsTopicArn     string            `json:"sns_topic_arn"`
 	Status          string            `json:"status"`
-	EventCategories []string          `json:"event_categories"`
-	Severity        string            `json:"severity"`
-	CustomerAwsId   string            `json:"customer_aws_id"`
-	Name            string            `json:"name"`
 	SourceIds       []string          `json:"source_ids"`
 	SourceType      string            `json:"source_type"`
+	Enabled         bool              `json:"enabled"`
 }
 
 type AwsRedshiftEventSubscriptionStatus struct {
@@ -35,6 +37,7 @@ type AwsRedshiftEventSubscriptionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRedshiftEventSubscriptionList is a list of AwsRedshiftEventSubscriptions
 type AwsRedshiftEventSubscriptionList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsWafRule struct {
 }
 
 type AwsWafRuleSpecPredicates struct {
-	Type    string `json:"type"`
 	Negated bool   `json:"negated"`
 	DataId  string `json:"data_id"`
+	Type    string `json:"type"`
 }
 
 type AwsWafRuleSpec struct {
+	Name       string           `json:"name"`
 	MetricName string           `json:"metric_name"`
 	Predicates []AwsWafRuleSpec `json:"predicates"`
-	Name       string           `json:"name"`
 }
 
 type AwsWafRuleStatus struct {
@@ -34,6 +35,7 @@ type AwsWafRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafRuleList is a list of AwsWafRules
 type AwsWafRuleList struct {

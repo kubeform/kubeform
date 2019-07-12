@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApplicationInsightsWebTest struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,19 +20,19 @@ type AzurermApplicationInsightsWebTest struct {
 
 type AzurermApplicationInsightsWebTestSpec struct {
 	Name                  string            `json:"name"`
-	Description           string            `json:"description"`
+	GeoLocations          []string          `json:"geo_locations"`
 	Tags                  map[string]string `json:"tags"`
-	Location              string            `json:"location"`
 	Frequency             int               `json:"frequency"`
 	Timeout               int               `json:"timeout"`
 	Enabled               bool              `json:"enabled"`
-	ResourceGroupName     string            `json:"resource_group_name"`
-	ApplicationInsightsId string            `json:"application_insights_id"`
-	Kind                  string            `json:"kind"`
-	GeoLocations          []string          `json:"geo_locations"`
 	Configuration         string            `json:"configuration"`
-	RetryEnabled          bool              `json:"retry_enabled"`
 	SyntheticMonitorId    string            `json:"synthetic_monitor_id"`
+	ResourceGroupName     string            `json:"resource_group_name"`
+	Location              string            `json:"location"`
+	Kind                  string            `json:"kind"`
+	ApplicationInsightsId string            `json:"application_insights_id"`
+	RetryEnabled          bool              `json:"retry_enabled"`
+	Description           string            `json:"description"`
 }
 
 type AzurermApplicationInsightsWebTestStatus struct {
@@ -39,6 +40,7 @@ type AzurermApplicationInsightsWebTestStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApplicationInsightsWebTestList is a list of AzurermApplicationInsightsWebTests
 type AzurermApplicationInsightsWebTestList struct {

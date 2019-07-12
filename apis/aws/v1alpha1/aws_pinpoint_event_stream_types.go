@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsPinpointEventStream struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsPinpointEventStream struct {
 }
 
 type AwsPinpointEventStreamSpec struct {
+	ApplicationId        string `json:"application_id"`
 	DestinationStreamArn string `json:"destination_stream_arn"`
 	RoleArn              string `json:"role_arn"`
-	ApplicationId        string `json:"application_id"`
 }
 
 type AwsPinpointEventStreamStatus struct {
@@ -28,6 +29,7 @@ type AwsPinpointEventStreamStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsPinpointEventStreamList is a list of AwsPinpointEventStreams
 type AwsPinpointEventStreamList struct {

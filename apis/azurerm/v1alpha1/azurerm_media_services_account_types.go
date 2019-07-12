@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermMediaServicesAccount struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,10 +24,10 @@ type AzurermMediaServicesAccountSpecStorageAccount struct {
 }
 
 type AzurermMediaServicesAccountSpec struct {
-	ResourceGroupName string                            `json:"resource_group_name"`
-	StorageAccount    []AzurermMediaServicesAccountSpec `json:"storage_account"`
 	Name              string                            `json:"name"`
 	Location          string                            `json:"location"`
+	ResourceGroupName string                            `json:"resource_group_name"`
+	StorageAccount    []AzurermMediaServicesAccountSpec `json:"storage_account"`
 }
 
 type AzurermMediaServicesAccountStatus struct {
@@ -34,6 +35,7 @@ type AzurermMediaServicesAccountStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermMediaServicesAccountList is a list of AzurermMediaServicesAccounts
 type AzurermMediaServicesAccountList struct {

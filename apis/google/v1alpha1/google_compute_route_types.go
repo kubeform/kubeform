@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeRoute struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,20 +19,20 @@ type GoogleComputeRoute struct {
 }
 
 type GoogleComputeRouteSpec struct {
-	DestRange           string   `json:"dest_range"`
-	Description         string   `json:"description"`
-	NextHopGateway      string   `json:"next_hop_gateway"`
-	Name                string   `json:"name"`
-	NextHopInstance     string   `json:"next_hop_instance"`
-	Priority            int      `json:"priority"`
-	NextHopInstanceZone string   `json:"next_hop_instance_zone"`
 	SelfLink            string   `json:"self_link"`
+	Name                string   `json:"name"`
 	Network             string   `json:"network"`
+	NextHopInstance     string   `json:"next_hop_instance"`
 	NextHopVpnTunnel    string   `json:"next_hop_vpn_tunnel"`
-	Tags                []string `json:"tags"`
 	NextHopNetwork      string   `json:"next_hop_network"`
 	Project             string   `json:"project"`
+	Description         string   `json:"description"`
+	DestRange           string   `json:"dest_range"`
+	NextHopGateway      string   `json:"next_hop_gateway"`
 	NextHopIp           string   `json:"next_hop_ip"`
+	Tags                []string `json:"tags"`
+	NextHopInstanceZone string   `json:"next_hop_instance_zone"`
+	Priority            int      `json:"priority"`
 }
 
 type GoogleComputeRouteStatus struct {
@@ -39,6 +40,7 @@ type GoogleComputeRouteStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeRouteList is a list of GoogleComputeRoutes
 type GoogleComputeRouteList struct {

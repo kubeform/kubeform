@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRedshiftSnapshotCopyGrant struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -20,6 +21,7 @@ type AwsRedshiftSnapshotCopyGrant struct {
 type AwsRedshiftSnapshotCopyGrantSpec struct {
 	KmsKeyId              string            `json:"kms_key_id"`
 	Tags                  map[string]string `json:"tags"`
+	Arn                   string            `json:"arn"`
 	SnapshotCopyGrantName string            `json:"snapshot_copy_grant_name"`
 }
 
@@ -28,6 +30,7 @@ type AwsRedshiftSnapshotCopyGrantStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRedshiftSnapshotCopyGrantList is a list of AwsRedshiftSnapshotCopyGrants
 type AwsRedshiftSnapshotCopyGrantList struct {

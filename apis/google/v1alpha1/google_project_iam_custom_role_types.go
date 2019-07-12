@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleProjectIamCustomRole struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type GoogleProjectIamCustomRole struct {
 }
 
 type GoogleProjectIamCustomRoleSpec struct {
-	RoleId      string   `json:"role_id"`
-	Title       string   `json:"title"`
 	Permissions []string `json:"permissions"`
 	Project     string   `json:"project"`
 	Stage       string   `json:"stage"`
 	Description string   `json:"description"`
 	Deleted     bool     `json:"deleted"`
+	RoleId      string   `json:"role_id"`
+	Title       string   `json:"title"`
 }
 
 type GoogleProjectIamCustomRoleStatus struct {
@@ -32,6 +33,7 @@ type GoogleProjectIamCustomRoleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleProjectIamCustomRoleList is a list of GoogleProjectIamCustomRoles
 type GoogleProjectIamCustomRoleList struct {

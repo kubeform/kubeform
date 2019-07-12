@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermStorageBlob struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AzurermStorageBlob struct {
 }
 
 type AzurermStorageBlobSpec struct {
+	SourceUri            string            `json:"source_uri"`
+	Metadata             map[string]string `json:"metadata"`
 	Source               string            `json:"source"`
-	Attempts             int               `json:"attempts"`
-	Type                 string            `json:"type"`
-	ContentType          string            `json:"content_type"`
+	ResourceGroupName    string            `json:"resource_group_name"`
 	StorageAccountName   string            `json:"storage_account_name"`
 	StorageContainerName string            `json:"storage_container_name"`
+	Type                 string            `json:"type"`
 	Size                 int               `json:"size"`
-	SourceUri            string            `json:"source_uri"`
+	ContentType          string            `json:"content_type"`
 	Url                  string            `json:"url"`
-	Parallelism          int               `json:"parallelism"`
 	Name                 string            `json:"name"`
-	ResourceGroupName    string            `json:"resource_group_name"`
-	Metadata             map[string]string `json:"metadata"`
+	Attempts             int               `json:"attempts"`
+	Parallelism          int               `json:"parallelism"`
 }
 
 type AzurermStorageBlobStatus struct {
@@ -38,6 +39,7 @@ type AzurermStorageBlobStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermStorageBlobList is a list of AzurermStorageBlobs
 type AzurermStorageBlobList struct {

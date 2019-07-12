@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermPrivateDnsZone struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AzurermPrivateDnsZone struct {
 }
 
 type AzurermPrivateDnsZoneSpec struct {
+	Tags                                           map[string]string `json:"tags"`
 	Name                                           string            `json:"name"`
 	NumberOfRecordSets                             int               `json:"number_of_record_sets"`
 	MaxNumberOfRecordSets                          int               `json:"max_number_of_record_sets"`
 	MaxNumberOfVirtualNetworkLinks                 int               `json:"max_number_of_virtual_network_links"`
 	MaxNumberOfVirtualNetworkLinksWithRegistration int               `json:"max_number_of_virtual_network_links_with_registration"`
 	ResourceGroupName                              string            `json:"resource_group_name"`
-	Tags                                           map[string]string `json:"tags"`
 }
 
 type AzurermPrivateDnsZoneStatus struct {
@@ -32,6 +33,7 @@ type AzurermPrivateDnsZoneStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermPrivateDnsZoneList is a list of AzurermPrivateDnsZones
 type AzurermPrivateDnsZoneList struct {

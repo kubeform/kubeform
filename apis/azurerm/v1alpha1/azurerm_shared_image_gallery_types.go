@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermSharedImageGallery struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AzurermSharedImageGallery struct {
 }
 
 type AzurermSharedImageGallerySpec struct {
+	Description       string            `json:"description"`
 	Tags              map[string]string `json:"tags"`
 	UniqueName        string            `json:"unique_name"`
 	Name              string            `json:"name"`
 	ResourceGroupName string            `json:"resource_group_name"`
 	Location          string            `json:"location"`
-	Description       string            `json:"description"`
 }
 
 type AzurermSharedImageGalleryStatus struct {
@@ -31,6 +32,7 @@ type AzurermSharedImageGalleryStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermSharedImageGalleryList is a list of AzurermSharedImageGallerys
 type AzurermSharedImageGalleryList struct {

@@ -16213,7 +16213,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpec(
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"api_management_name": {
+					"display_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -16225,7 +16225,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpec(
 							Format: "",
 						},
 					},
-					"response": {
+					"operation_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"api_management_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"request": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -16237,25 +16255,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpec(
 							},
 						},
 					},
-					"display_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"method": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"url_template": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"request": {
+					"response": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -16279,26 +16279,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpec(
 							},
 						},
 					},
-					"operation_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"api_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"method": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"url_template": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"api_management_name", "description", "response", "display_name", "method", "url_template", "request", "template_parameter", "operation_id", "api_name", "resource_group_name"},
+				Required: []string{"display_name", "description", "operation_id", "api_management_name", "resource_group_name", "request", "response", "template_parameter", "api_name", "method", "url_template"},
 			},
 		},
 		Dependencies: []string{
@@ -16312,18 +16312,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"representation": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementApiOperationSpecRequest"),
-									},
-								},
-							},
-						},
-					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -16354,8 +16342,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 							},
 						},
 					},
+					"representation": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementApiOperationSpecRequest"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"representation", "description", "header", "query_parameter"},
+				Required: []string{"description", "header", "query_parameter", "representation"},
 			},
 		},
 		Dependencies: []string{
@@ -16425,12 +16425,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"default_value": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -16468,8 +16462,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 							Format: "",
 						},
 					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"type", "default_value", "values", "name", "required", "description"},
+				Required: []string{"default_value", "values", "name", "required", "description", "type"},
 			},
 		},
 	}
@@ -16481,6 +16481,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"schema_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"type_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -16511,14 +16517,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 							Format: "",
 						},
 					},
-					"schema_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"type_name", "content_type", "form_parameter", "sample", "schema_id"},
+				Required: []string{"schema_id", "type_name", "content_type", "form_parameter", "sample"},
 			},
 		},
 		Dependencies: []string{
@@ -16532,6 +16532,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"default_value": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"values": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -16569,14 +16575,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 							Format: "",
 						},
 					},
-					"default_value": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"values", "name", "required", "description", "type", "default_value"},
+				Required: []string{"default_value", "values", "name", "required", "description", "type"},
 			},
 		},
 	}
@@ -16639,12 +16639,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"required": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -16682,8 +16676,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "required", "description", "type", "default_value", "values"},
+				Required: []string{"required", "description", "type", "default_value", "values", "name"},
 			},
 		},
 	}
@@ -16695,24 +16695,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"sample": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"schema_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"type_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"content_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -16731,8 +16713,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 							},
 						},
 					},
+					"sample": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"schema_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"type_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"sample", "schema_id", "type_name", "content_type", "form_parameter"},
+				Required: []string{"content_type", "form_parameter", "sample", "schema_id", "type_name"},
 			},
 		},
 		Dependencies: []string{
@@ -16741,62 +16741,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecR
 }
 
 func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecResponseRepresentationFormParameter(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"default_value": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"values": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"required": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-				Required: []string{"default_value", "values", "name", "required", "description", "type"},
-			},
-		},
-	}
-}
-
-func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecTemplateParameter(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16847,6 +16791,62 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecT
 					},
 				},
 				Required: []string{"name", "required", "description", "type", "default_value", "values"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiOperationSpecTemplateParameter(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"default_value": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"values": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"required": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"type", "default_value", "values", "name", "required", "description"},
 			},
 		},
 	}
@@ -16967,18 +16967,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiPolicySpec(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"xml_link": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"api_management_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -16997,8 +16985,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiPolicySpec(ref
 							Format: "",
 						},
 					},
+					"xml_link": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"xml_link", "resource_group_name", "api_management_name", "api_name", "xml_content"},
+				Required: []string{"api_management_name", "api_name", "xml_content", "xml_link", "resource_group_name"},
 			},
 		},
 	}
@@ -17187,9 +17187,39 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"api_management_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"subscription_key_parameter_names": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementApiSpec"),
+									},
+								},
+							},
+						},
+					},
 					"is_current": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -17199,37 +17229,31 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiSpec(ref commo
 							Format: "",
 						},
 					},
-					"service_url": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"is_online": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"api_management_name": {
+					"display_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"revision": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"soap_pass_through": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
 					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"path": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -17248,12 +17272,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiSpec(ref commo
 							},
 						},
 					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"import": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -17266,44 +17284,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiSpec(ref commo
 							},
 						},
 					},
-					"subscription_key_parameter_names": {
+					"service_url": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementApiSpec"),
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
-					"soap_pass_through": {
+					"is_online": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"display_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"revision": {
+					"path": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"is_current", "version_set_id", "service_url", "is_online", "name", "api_management_name", "resource_group_name", "path", "protocols", "description", "import", "subscription_key_parameter_names", "soap_pass_through", "version", "display_name", "revision"},
+				Required: []string{"api_management_name", "description", "subscription_key_parameter_names", "is_current", "version", "version_set_id", "name", "display_name", "revision", "soap_pass_through", "resource_group_name", "protocols", "import", "service_url", "is_online", "path"},
 			},
 		},
 		Dependencies: []string{
@@ -17317,18 +17317,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiSpecImport(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"wsdl_selector": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementApiSpecImport"),
-									},
-								},
-							},
-						},
-					},
 					"content_value": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -17341,8 +17329,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiSpecImport(ref
 							Format: "",
 						},
 					},
+					"wsdl_selector": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementApiSpecImport"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"wsdl_selector", "content_value", "content_format"},
+				Required: []string{"content_value", "content_format", "wsdl_selector"},
 			},
 		},
 		Dependencies: []string{
@@ -17381,20 +17381,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiSpecSubscripti
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"query": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"header": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"query": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"query", "header"},
+				Required: []string{"header", "query"},
 			},
 		},
 	}
@@ -17515,6 +17515,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiVersionSetSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"version_header_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -17557,14 +17563,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementApiVersionSetSpec
 							Format: "",
 						},
 					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"version_header_name", "version_query_name", "name", "resource_group_name", "api_management_name", "display_name", "versioning_scheme", "description"},
+				Required: []string{"description", "version_header_name", "version_query_name", "name", "resource_group_name", "api_management_name", "display_name", "versioning_scheme"},
 			},
 		},
 	}
@@ -17685,6 +17685,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementAuthorizationServ
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -17704,19 +17710,45 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementAuthorizationServ
 							},
 						},
 					},
-					"display_name": {
+					"client_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"resource_owner_username": {
+					"support_state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
 					"grant_types": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"bearer_token_sending_methods": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"client_authentication_method": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -17735,19 +17767,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementAuthorizationServ
 							Format: "",
 						},
 					},
-					"support_state": {
+					"token_body_parameter": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementAuthorizationServerSpec"),
+									},
+								},
+							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"api_management_name": {
+					"token_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -17765,29 +17797,28 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementAuthorizationServ
 							Format: "",
 						},
 					},
-					"token_endpoint": {
+					"default_scope": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"client_id": {
+					"resource_owner_username": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"bearer_token_sending_methods": {
+					"api_management_name": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"display_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"client_secret": {
@@ -17802,39 +17833,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementAuthorizationServ
 							Format: "",
 						},
 					},
-					"client_authentication_method": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"default_scope": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"token_body_parameter": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementAuthorizationServerSpec"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"resource_group_name", "authorization_methods", "display_name", "resource_owner_username", "grant_types", "description", "support_state", "name", "api_management_name", "authorization_endpoint", "client_registration_endpoint", "token_endpoint", "client_id", "bearer_token_sending_methods", "client_secret", "resource_owner_password", "client_authentication_method", "default_scope", "token_body_parameter"},
+				Required: []string{"name", "resource_group_name", "authorization_methods", "client_id", "support_state", "grant_types", "bearer_token_sending_methods", "client_authentication_method", "description", "token_body_parameter", "token_endpoint", "authorization_endpoint", "client_registration_endpoint", "default_scope", "resource_owner_username", "api_management_name", "display_name", "client_secret", "resource_owner_password"},
 			},
 		},
 		Dependencies: []string{
@@ -17982,6 +17982,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementCertificateSpec(r
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"expiration": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"subject": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"thumbprint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -18018,20 +18030,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementCertificateSpec(r
 							Format: "",
 						},
 					},
-					"expiration": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"subject": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"thumbprint", "name", "resource_group_name", "api_management_name", "data", "password", "expiration", "subject"},
+				Required: []string{"expiration", "subject", "thumbprint", "name", "resource_group_name", "api_management_name", "data", "password"},
 			},
 		},
 	}
@@ -18152,6 +18152,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementGroupSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"external_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -18182,20 +18194,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementGroupSpec(ref com
 							Format: "",
 						},
 					},
-					"external_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "resource_group_name", "api_management_name", "display_name", "description", "external_id", "type"},
+				Required: []string{"external_id", "type", "name", "resource_group_name", "api_management_name", "display_name", "description"},
 			},
 		},
 	}
@@ -18509,12 +18509,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementLoggerSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -18563,8 +18557,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementLoggerSpec(ref co
 							Format: "",
 						},
 					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"description", "name", "resource_group_name", "api_management_name", "eventhub", "application_insights", "buffered"},
+				Required: []string{"name", "resource_group_name", "api_management_name", "eventhub", "application_insights", "buffered", "description"},
 			},
 		},
 		Dependencies: []string{
@@ -18944,6 +18944,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementProductApiSpec(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"product_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -18962,14 +18968,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementProductApiSpec(re
 							Format: "",
 						},
 					},
-					"product_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"resource_group_name", "api_management_name", "api_name", "product_id"},
+				Required: []string{"product_id", "resource_group_name", "api_management_name", "api_name"},
 			},
 		},
 	}
@@ -19090,6 +19090,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementProductGroupSpec(
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"product_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -19108,14 +19114,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementProductGroupSpec(
 							Format: "",
 						},
 					},
-					"product_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"group_name", "resource_group_name", "api_management_name", "product_id"},
+				Required: []string{"product_id", "group_name", "resource_group_name", "api_management_name"},
 			},
 		},
 	}
@@ -19283,6 +19283,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementProductPolicySpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"api_management_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"product_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -19301,20 +19313,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementProductPolicySpec
 							Format: "",
 						},
 					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"api_management_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"product_id", "xml_content", "xml_link", "resource_group_name", "api_management_name"},
+				Required: []string{"resource_group_name", "api_management_name", "product_id", "xml_content", "xml_link"},
 			},
 		},
 	}
@@ -19345,13 +19345,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementProductSpec(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"api_management_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"display_name": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -19360,30 +19354,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementProductSpec(ref c
 					"subscription_required": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"terms": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"product_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -19399,14 +19369,44 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementProductSpec(ref c
 							Format: "",
 						},
 					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"product_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"display_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"terms": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"subscriptions_limit": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
+					"api_management_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"api_management_name", "display_name", "subscription_required", "description", "terms", "product_id", "resource_group_name", "published", "approval_required", "subscriptions_limit"},
+				Required: []string{"resource_group_name", "subscription_required", "published", "approval_required", "description", "product_id", "display_name", "terms", "subscriptions_limit", "api_management_name"},
 			},
 		},
 	}
@@ -19527,6 +19527,30 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementPropertySpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"api_management_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"display_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"value": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -19552,32 +19576,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementPropertySpec(ref 
 							Format: "",
 						},
 					},
-					"api_management_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"display_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"value": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secret": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"tags", "name", "resource_group_name", "api_management_name", "display_name", "value", "secret"},
+				Required: []string{"api_management_name", "display_name", "value", "secret", "tags", "name", "resource_group_name"},
 			},
 		},
 	}
@@ -19608,7 +19608,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"policy": {
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"identity": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -19620,31 +19626,62 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpec(ref common.R
 							},
 						},
 					},
-					"gateway_url": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"portal_url": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"publisher_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"notification_sender_email": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"additional_location": {
+					"gateway_url": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"scm_url": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"public_ip_addresses": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"publisher_email": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"sku": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementSpec"),
+									},
+								},
+							},
+						},
+					},
+					"certificate": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -19668,6 +19705,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpec(ref common.R
 							},
 						},
 					},
+					"hostname_configuration": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementSpec"),
+									},
+								},
+							},
+						},
+					},
 					"sign_in": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -19680,26 +19729,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpec(ref common.R
 							},
 						},
 					},
+					"management_api_url": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"public_ip_addresses": {
+					"publisher_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"additional_location": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementSpec"),
 									},
 								},
 							},
 						},
 					},
-					"certificate": {
+					"policy": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -19712,54 +19772,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpec(ref common.R
 						},
 					},
 					"sign_up": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementSpec"),
-									},
-								},
-							},
-						},
-					},
-					"gateway_regional_url": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"management_api_url": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"scm_url": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"sku": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementSpec"),
-									},
-								},
-							},
-						},
-					},
-					"hostname_configuration": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -19785,32 +19797,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpec(ref common.R
 							},
 						},
 					},
-					"location": {
+					"gateway_regional_url": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"publisher_email": {
+					"portal_url": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"identity": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApiManagementSpec"),
-									},
-								},
-							},
 						},
 					},
 				},
-				Required: []string{"policy", "gateway_url", "portal_url", "publisher_name", "notification_sender_email", "additional_location", "security", "sign_in", "name", "public_ip_addresses", "certificate", "sign_up", "gateway_regional_url", "management_api_url", "scm_url", "resource_group_name", "sku", "hostname_configuration", "tags", "location", "publisher_email", "identity"},
+				Required: []string{"location", "identity", "notification_sender_email", "gateway_url", "resource_group_name", "scm_url", "public_ip_addresses", "publisher_email", "sku", "certificate", "security", "hostname_configuration", "sign_in", "management_api_url", "name", "publisher_name", "additional_location", "policy", "sign_up", "tags", "gateway_regional_url", "portal_url"},
 			},
 		},
 		Dependencies: []string{
@@ -19956,6 +19956,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpecHostnameConfi
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"key_vault_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"certificate": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -19980,14 +19986,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpecHostnameConfi
 							Format: "",
 						},
 					},
-					"key_vault_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"certificate", "certificate_password", "negotiate_client_certificate", "host_name", "key_vault_id"},
+				Required: []string{"key_vault_id", "certificate", "certificate_password", "negotiate_client_certificate", "host_name"},
 			},
 		},
 	}
@@ -19999,12 +19999,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpecHostnameConfi
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"certificate": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"certificate_password": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -20029,8 +20023,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpecHostnameConfi
 							Format: "",
 						},
 					},
+					"certificate": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"certificate", "certificate_password", "negotiate_client_certificate", "host_name", "key_vault_id"},
+				Required: []string{"certificate_password", "negotiate_client_certificate", "host_name", "key_vault_id", "certificate"},
 			},
 		},
 	}
@@ -20042,6 +20042,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpecHostnameConfi
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"default_ssl_binding": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"host_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -20072,14 +20078,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpecHostnameConfi
 							Format: "",
 						},
 					},
-					"default_ssl_binding": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"host_name", "key_vault_id", "certificate", "certificate_password", "negotiate_client_certificate", "default_ssl_binding"},
+				Required: []string{"default_ssl_binding", "host_name", "key_vault_id", "certificate", "certificate_password", "negotiate_client_certificate"},
 			},
 		},
 	}
@@ -20190,30 +20190,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpecSecurity(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"disable_triple_des_chipers": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"disable_triple_des_ciphers": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"disable_frontend_ssl30": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"disable_frontend_tls10": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"disable_frontend_tls11": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -20238,8 +20214,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpecSecurity(ref 
 							Format: "",
 						},
 					},
+					"disable_triple_des_chipers": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"disable_triple_des_ciphers": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"disable_frontend_ssl30": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"disable_frontend_tls10": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"disable_triple_des_chipers", "disable_triple_des_ciphers", "disable_frontend_ssl30", "disable_frontend_tls10", "disable_frontend_tls11", "disable_backend_ssl30", "disable_backend_tls10", "disable_backend_tls11"},
+				Required: []string{"disable_frontend_tls11", "disable_backend_ssl30", "disable_backend_tls10", "disable_backend_tls11", "disable_triple_des_chipers", "disable_triple_des_ciphers", "disable_frontend_ssl30", "disable_frontend_tls10"},
 			},
 		},
 	}
@@ -20303,12 +20303,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpecSignUpTermsOf
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"text": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"enabled": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -20321,8 +20315,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSpecSignUpTermsOf
 							Format: "",
 						},
 					},
+					"text": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"text", "enabled", "consent_required"},
+				Required: []string{"enabled", "consent_required", "text"},
 			},
 		},
 	}
@@ -20468,24 +20468,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSubscriptionSpec(
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"api_management_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"state": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"secondary_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -20493,12 +20475,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSubscriptionSpec(
 						},
 					},
 					"subscription_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"user_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -20516,14 +20492,38 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementSubscriptionSpec(
 							Format: "",
 						},
 					},
+					"primary_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"user_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"api_management_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"display_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"api_management_name", "state", "primary_key", "secondary_key", "subscription_id", "user_id", "product_id", "resource_group_name", "display_name"},
+				Required: []string{"secondary_key", "subscription_id", "product_id", "resource_group_name", "primary_key", "user_id", "api_management_name", "display_name", "state"},
 			},
 		},
 	}
@@ -20644,13 +20644,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementUserSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"api_management_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
+					"user_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -20662,13 +20656,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementUserSpec(ref comm
 							Format: "",
 						},
 					},
+					"note": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"user_id": {
+					"api_management_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -20692,12 +20698,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementUserSpec(ref comm
 							Format: "",
 						},
 					},
-					"note": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"password": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -20705,7 +20705,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApiManagementUserSpec(ref comm
 						},
 					},
 				},
-				Required: []string{"api_management_name", "resource_group_name", "confirmation", "state", "user_id", "first_name", "email", "last_name", "note", "password"},
+				Required: []string{"user_id", "confirmation", "note", "state", "api_management_name", "resource_group_name", "first_name", "email", "last_name", "password"},
 			},
 		},
 	}
@@ -21009,12 +21009,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceCustomHostnameBindin
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"hostname": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -21027,8 +21021,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceCustomHostnameBindin
 							Format: "",
 						},
 					},
+					"hostname": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"hostname", "resource_group_name", "app_service_name"},
+				Required: []string{"resource_group_name", "app_service_name", "hostname"},
 			},
 		},
 	}
@@ -21196,16 +21196,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServicePlanSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"properties": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServicePlanSpec"),
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"per_site_scaling": {
@@ -21214,10 +21214,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServicePlanSpec(ref common.
 							Format: "",
 						},
 					},
-					"reserved": {
+					"maximum_elastic_worker_count": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"maximum_number_of_workers": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"is_xenon": {
@@ -21250,16 +21256,28 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServicePlanSpec(ref common.
 							},
 						},
 					},
-					"maximum_elastic_worker_count": {
+					"properties": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServicePlanSpec"),
+									},
+								},
+							},
 						},
 					},
-					"maximum_number_of_workers": {
+					"app_service_environment_id": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"reserved": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
 						},
 					},
 					"tags": {
@@ -21276,26 +21294,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServicePlanSpec(ref common.
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"app_service_environment_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"properties", "per_site_scaling", "reserved", "is_xenon", "resource_group_name", "kind", "sku", "maximum_elastic_worker_count", "maximum_number_of_workers", "tags", "name", "location", "app_service_environment_id"},
+				Required: []string{"name", "location", "per_site_scaling", "maximum_elastic_worker_count", "maximum_number_of_workers", "is_xenon", "resource_group_name", "kind", "sku", "properties", "app_service_environment_id", "reserved", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -21340,6 +21340,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServicePlanSpecSku(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -21352,14 +21358,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServicePlanSpecSku(ref comm
 							Format: "",
 						},
 					},
-					"size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"capacity", "tier", "size"},
+				Required: []string{"size", "capacity", "tier"},
 			},
 		},
 	}
@@ -21480,13 +21480,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSlotSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"location": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"app_service_name": {
+					"site_config": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSlotSpec"),
+									},
+								},
+							},
+						},
+					},
+					"app_service_plan_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -21506,31 +21518,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSlotSpec(ref common.
 							},
 						},
 					},
-					"default_site_hostname": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"app_service_plan_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"https_only": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -21548,25 +21536,45 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSlotSpec(ref common.
 							},
 						},
 					},
-					"enabled": {
+					"client_affinity_enabled": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"site_config": {
+					"https_only": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSlotSpec"),
+										Type:   []string{"string"},
+										Format: "",
 									},
 								},
 							},
 						},
 					},
-					"client_affinity_enabled": {
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"app_service_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enabled": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
@@ -21584,20 +21592,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSlotSpec(ref common.
 							},
 						},
 					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"site_credential": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -21610,8 +21604,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSlotSpec(ref common.
 							},
 						},
 					},
+					"default_site_hostname": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"location", "app_service_name", "app_settings", "default_site_hostname", "resource_group_name", "app_service_plan_id", "https_only", "name", "identity", "enabled", "site_config", "client_affinity_enabled", "connection_string", "tags", "site_credential"},
+				Required: []string{"name", "site_config", "app_service_plan_id", "app_settings", "resource_group_name", "identity", "client_affinity_enabled", "https_only", "tags", "location", "app_service_name", "enabled", "connection_string", "site_credential", "default_site_hostname"},
 			},
 		},
 		Dependencies: []string{
@@ -21656,6 +21656,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSlotSpecIdentity(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"principal_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -21668,14 +21674,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSlotSpecIdentity(ref
 							Format: "",
 						},
 					},
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"principal_id", "tenant_id", "type"},
+				Required: []string{"type", "principal_id", "tenant_id"},
 			},
 		},
 	}
@@ -21687,22 +21687,29 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSlotSpecSiteConfig(r
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"dotnet_framework_version": {
+					"cors": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSlotSpecSiteConfig"),
+									},
+								},
+							},
 						},
 					},
-					"scm_type": {
+					"default_documents": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"use_32_bit_worker_process": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"websockets_enabled": {
@@ -21711,37 +21718,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSlotSpecSiteConfig(r
 							Format: "",
 						},
 					},
-					"virtual_network_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"app_command_line": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"java_container": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"managed_pipeline_mode": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"python_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"remote_debugging_version": {
+					"ftps_state": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -21759,59 +21736,28 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSlotSpecSiteConfig(r
 							Format: "",
 						},
 					},
-					"always_on": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"default_documents": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"java_container_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"local_mysql_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"php_version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"min_tls_version": {
+					"scm_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"cors": {
+					"virtual_network_name": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSlotSpecSiteConfig"),
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"always_on": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
 						},
 					},
 					"http2_enabled": {
@@ -21832,7 +21778,55 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSlotSpecSiteConfig(r
 							},
 						},
 					},
+					"java_container": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"java_container_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"remote_debugging_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"app_command_line": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"dotnet_framework_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"java_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"local_mysql_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"python_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"managed_pipeline_mode": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -21844,14 +21838,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSlotSpecSiteConfig(r
 							Format: "",
 						},
 					},
-					"ftps_state": {
+					"use_32_bit_worker_process": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"min_tls_version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"dotnet_framework_version", "scm_type", "use_32_bit_worker_process", "websockets_enabled", "virtual_network_name", "app_command_line", "java_container", "managed_pipeline_mode", "python_version", "remote_debugging_version", "linux_fx_version", "windows_fx_version", "always_on", "default_documents", "java_container_version", "local_mysql_enabled", "php_version", "min_tls_version", "cors", "http2_enabled", "ip_restriction", "java_version", "remote_debugging_enabled", "ftps_state"},
+				Required: []string{"cors", "default_documents", "websockets_enabled", "ftps_state", "linux_fx_version", "windows_fx_version", "php_version", "scm_type", "virtual_network_name", "always_on", "http2_enabled", "ip_restriction", "java_container", "java_container_version", "remote_debugging_version", "app_command_line", "dotnet_framework_version", "java_version", "local_mysql_enabled", "python_version", "managed_pipeline_mode", "remote_debugging_enabled", "use_32_bit_worker_process", "min_tls_version"},
 			},
 		},
 		Dependencies: []string{
@@ -21966,25 +21966,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"possible_outbound_ip_addresses": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"client_affinity_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"connection_string": {
+					"site_credential": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -21996,7 +21978,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpec(ref common.Refe
 							},
 						},
 					},
-					"auth_settings": {
+					"default_site_hostname": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"site_config": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -22020,9 +22014,9 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpec(ref common.Refe
 							},
 						},
 					},
-					"default_site_hostname": {
+					"https_only": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -22032,92 +22026,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"location": {
+					"possible_outbound_ip_addresses": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"app_service_plan_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"site_config": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSpec"),
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"app_settings": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"client_cert_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"site_credential": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSpec"),
-									},
-								},
-							},
-						},
-					},
-					"source_control": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSpec"),
-									},
-								},
-							},
 						},
 					},
 					"identity": {
@@ -22138,14 +22050,102 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"https_only": {
+					"app_service_plan_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enabled": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"auth_settings": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSpec"),
+									},
+								},
+							},
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"source_control": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSpec"),
+									},
+								},
+							},
+						},
+					},
+					"client_affinity_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"client_cert_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"app_settings": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSpec"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"possible_outbound_ip_addresses", "client_affinity_enabled", "enabled", "connection_string", "auth_settings", "logs", "default_site_hostname", "outbound_ip_addresses", "location", "app_service_plan_id", "site_config", "name", "app_settings", "tags", "client_cert_enabled", "site_credential", "source_control", "identity", "resource_group_name", "https_only"},
+				Required: []string{"site_credential", "default_site_hostname", "location", "site_config", "logs", "https_only", "outbound_ip_addresses", "possible_outbound_ip_addresses", "identity", "resource_group_name", "app_service_plan_id", "enabled", "name", "auth_settings", "tags", "source_control", "client_affinity_enabled", "client_cert_enabled", "app_settings", "connection_string"},
 			},
 		},
 		Dependencies: []string{
@@ -22159,6 +22159,42 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecAuthSettings(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"token_store_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"unauthenticated_client_action": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"runtime_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"active_directory": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSpecAuthSettings"),
+									},
+								},
+							},
+						},
+					},
 					"facebook": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -22169,6 +22205,63 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecAuthSettings(ref
 									},
 								},
 							},
+						},
+					},
+					"default_provider": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"google": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSpecAuthSettings"),
+									},
+								},
+							},
+						},
+					},
+					"additional_login_params": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"allowed_external_redirect_urls": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"issuer": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"token_refresh_extension_hours": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"number"},
+							Format: "double",
 						},
 					},
 					"microsoft": {
@@ -22195,101 +22288,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecAuthSettings(ref
 							},
 						},
 					},
-					"token_store_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"active_directory": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSpecAuthSettings"),
-									},
-								},
-							},
-						},
-					},
-					"runtime_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"token_refresh_extension_hours": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"number"},
-							Format: "double",
-						},
-					},
-					"unauthenticated_client_action": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"additional_login_params": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"issuer": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"default_provider": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"google": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAppServiceSpecAuthSettings"),
-									},
-								},
-							},
-						},
-					},
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"allowed_external_redirect_urls": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"facebook", "microsoft", "twitter", "token_store_enabled", "active_directory", "runtime_version", "token_refresh_extension_hours", "unauthenticated_client_action", "additional_login_params", "issuer", "default_provider", "google", "enabled", "allowed_external_redirect_urls"},
+				Required: []string{"token_store_enabled", "unauthenticated_client_action", "enabled", "runtime_version", "active_directory", "facebook", "default_provider", "google", "additional_login_params", "allowed_external_redirect_urls", "issuer", "token_refresh_extension_hours", "microsoft", "twitter"},
 			},
 		},
 		Dependencies: []string{
@@ -22303,12 +22303,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecAuthSettingsActi
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"client_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"client_secret": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -22328,8 +22322,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecAuthSettingsActi
 							},
 						},
 					},
+					"client_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"client_id", "client_secret", "allowed_audiences"},
+				Required: []string{"client_secret", "allowed_audiences", "client_id"},
 			},
 		},
 	}
@@ -22379,18 +22379,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecAuthSettingsGoog
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"client_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"client_secret": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"oauth_scopes": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -22404,8 +22392,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecAuthSettingsGoog
 							},
 						},
 					},
+					"client_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"client_secret": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"client_id", "client_secret", "oauth_scopes"},
+				Required: []string{"oauth_scopes", "client_id", "client_secret"},
 			},
 		},
 	}
@@ -22417,18 +22417,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecAuthSettingsMicr
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"client_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"client_secret": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"oauth_scopes": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -22442,8 +22430,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecAuthSettingsMicr
 							},
 						},
 					},
+					"client_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"client_secret": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"client_id", "client_secret", "oauth_scopes"},
+				Required: []string{"oauth_scopes", "client_id", "client_secret"},
 			},
 		},
 	}
@@ -22596,12 +22596,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecLogsApplicationL
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"retention_in_days": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"level": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -22614,8 +22608,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecLogsApplicationL
 							Format: "",
 						},
 					},
+					"retention_in_days": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"retention_in_days", "level", "sas_url"},
+				Required: []string{"level", "sas_url", "retention_in_days"},
 			},
 		},
 	}
@@ -22627,21 +22627,15 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecSiteConfig(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"java_container_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"managed_pipeline_mode": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"scm_type": {
+					"remote_debugging_enabled": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -22651,13 +22645,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecSiteConfig(ref c
 							Format: "",
 						},
 					},
-					"websockets_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"windows_fx_version": {
+					"min_tls_version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -22675,69 +22663,9 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecSiteConfig(ref c
 							},
 						},
 					},
-					"min_tls_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"always_on": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"http2_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"php_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"python_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"remote_debugging_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ftps_state": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"linux_fx_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"virtual_network_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"remote_debugging_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"app_command_line": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -22755,6 +22683,54 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecSiteConfig(ref c
 						},
 					},
 					"dotnet_framework_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"remote_debugging_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"scm_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ftps_state": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"app_command_line": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"java_container": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"local_mysql_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"php_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"virtual_network_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -22778,20 +22754,44 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAppServiceSpecSiteConfig(ref c
 							Format: "",
 						},
 					},
-					"java_container": {
+					"java_container_version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"local_mysql_enabled": {
+					"linux_fx_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"windows_fx_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"http2_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"python_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"websockets_enabled": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"java_container_version", "managed_pipeline_mode", "scm_type", "use_32_bit_worker_process", "websockets_enabled", "windows_fx_version", "cors", "min_tls_version", "always_on", "http2_enabled", "php_version", "python_version", "remote_debugging_version", "ftps_state", "linux_fx_version", "virtual_network_name", "remote_debugging_enabled", "app_command_line", "default_documents", "dotnet_framework_version", "ip_restriction", "java_version", "java_container", "local_mysql_enabled"},
+				Required: []string{"managed_pipeline_mode", "remote_debugging_enabled", "use_32_bit_worker_process", "min_tls_version", "cors", "always_on", "default_documents", "dotnet_framework_version", "remote_debugging_version", "scm_type", "ftps_state", "app_command_line", "java_container", "local_mysql_enabled", "php_version", "virtual_network_name", "ip_restriction", "java_version", "java_container_version", "linux_fx_version", "windows_fx_version", "http2_enabled", "python_version", "websockets_enabled"},
 			},
 		},
 		Dependencies: []string{
@@ -23021,7 +23021,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"sku": {
+					"backend_http_settings": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -23033,7 +23033,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpec(ref com
 							},
 						},
 					},
-					"backend_address_pool": {
+					"frontend_port": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -23057,7 +23057,56 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpec(ref com
 							},
 						},
 					},
-					"frontend_port": {
+					"autoscale_configuration": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpec"),
+									},
+								},
+							},
+						},
+					},
+					"url_path_map": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpec"),
+									},
+								},
+							},
+						},
+					},
+					"zones": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"request_routing_rule": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpec"),
+									},
+								},
+							},
+						},
+					},
+					"redirect_configuration": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -23087,7 +23136,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpec(ref com
 							Format: "",
 						},
 					},
-					"probe": {
+					"rewrite_rule_set": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -23111,112 +23160,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpec(ref com
 							},
 						},
 					},
-					"zones": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"backend_http_settings": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpec"),
-									},
-								},
-							},
-						},
-					},
-					"frontend_ip_configuration": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpec"),
-									},
-								},
-							},
-						},
-					},
-					"rewrite_rule_set": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpec"),
-									},
-								},
-							},
-						},
-					},
-					"waf_configuration": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpec"),
-									},
-								},
-							},
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"redirect_configuration": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpec"),
-									},
-								},
-							},
-						},
-					},
-					"autoscale_configuration": {
+					"backend_address_pool": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -23253,7 +23203,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpec(ref com
 							},
 						},
 					},
-					"url_path_map": {
+					"waf_configuration": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -23277,6 +23227,30 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpec(ref com
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"frontend_ip_configuration": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpec"),
+									},
+								},
+							},
+						},
+					},
 					"gateway_ip_configuration": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -23289,7 +23263,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpec(ref com
 							},
 						},
 					},
-					"request_routing_rule": {
+					"sku": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -23301,8 +23275,34 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpec(ref com
 							},
 						},
 					},
+					"probe": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpec"),
+									},
+								},
+							},
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"sku", "backend_address_pool", "http_listener", "frontend_port", "ssl_policy", "enable_http2", "probe", "ssl_certificate", "zones", "resource_group_name", "backend_http_settings", "frontend_ip_configuration", "rewrite_rule_set", "waf_configuration", "tags", "name", "location", "redirect_configuration", "autoscale_configuration", "authentication_certificate", "disabled_ssl_protocols", "url_path_map", "custom_error_configuration", "gateway_ip_configuration", "request_routing_rule"},
+				Required: []string{"backend_http_settings", "frontend_port", "http_listener", "autoscale_configuration", "url_path_map", "zones", "request_routing_rule", "redirect_configuration", "ssl_policy", "enable_http2", "rewrite_rule_set", "ssl_certificate", "resource_group_name", "backend_address_pool", "authentication_certificate", "disabled_ssl_protocols", "waf_configuration", "custom_error_configuration", "name", "location", "frontend_ip_configuration", "gateway_ip_configuration", "sku", "probe", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -23316,6 +23316,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecAuthenti
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -23328,14 +23334,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecAuthenti
 							Format: "",
 						},
 					},
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "data", "id"},
+				Required: []string{"id", "name", "data"},
 			},
 		},
 	}
@@ -23347,20 +23347,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecAutoscal
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"max_capacity": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"min_capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
+					"max_capacity": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"max_capacity", "min_capacity"},
+				Required: []string{"min_capacity", "max_capacity"},
 			},
 		},
 	}
@@ -23372,18 +23372,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecBackendA
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"fqdns": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -23436,8 +23424,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecBackendA
 							},
 						},
 					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"id", "name", "fqdns", "ip_addresses", "fqdn_list", "ip_address_list"},
+				Required: []string{"fqdns", "ip_addresses", "fqdn_list", "ip_address_list", "id", "name"},
 			},
 		},
 	}
@@ -23449,19 +23449,31 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecBackendH
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"host_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"path": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"pick_host_name_from_backend_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"request_timeout": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
@@ -23485,19 +23497,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecBackendH
 							Format: "",
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"probe_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"cookie_based_affinity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -23515,9 +23515,15 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecBackendH
 							Format: "",
 						},
 					},
-					"pick_host_name_from_backend_address": {
+					"host_name": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"cookie_based_affinity": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -23539,14 +23545,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecBackendH
 							Format: "",
 						},
 					},
-					"port": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"host_name", "path", "request_timeout", "authentication_certificate", "id", "name", "probe_id", "cookie_based_affinity", "protocol", "affinity_cookie_name", "pick_host_name_from_backend_address", "connection_draining", "probe_name", "port"},
+				Required: []string{"path", "pick_host_name_from_backend_address", "request_timeout", "name", "port", "authentication_certificate", "id", "probe_id", "protocol", "affinity_cookie_name", "host_name", "cookie_based_affinity", "connection_draining", "probe_name"},
 			},
 		},
 		Dependencies: []string{
@@ -23560,20 +23560,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecBackendH
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"id", "name"},
+				Required: []string{"name", "id"},
 			},
 		},
 	}
@@ -23585,20 +23585,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecBackendH
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"drain_timeout_sec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"enabled", "drain_timeout_sec"},
+				Required: []string{"drain_timeout_sec", "enabled"},
 			},
 		},
 	}
@@ -23610,12 +23610,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecCustomEr
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"status_code": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -23628,8 +23622,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecCustomEr
 							Format: "",
 						},
 					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"id", "status_code", "custom_error_page_url"},
+				Required: []string{"status_code", "custom_error_page_url", "id"},
 			},
 		},
 	}
@@ -23641,18 +23641,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecFrontend
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"subnet_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"private_ip_address": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -23677,8 +23665,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecFrontend
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"subnet_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "subnet_id", "private_ip_address", "public_ip_address_id", "private_ip_address_allocation", "id"},
+				Required: []string{"private_ip_address", "public_ip_address_id", "private_ip_address_allocation", "id", "name", "subnet_id"},
 			},
 		},
 	}
@@ -23752,64 +23752,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecHttpList
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"ssl_certificate_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"frontend_ip_configuration_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"require_sni": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"frontend_port_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"host_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ssl_certificate_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"frontend_ip_configuration_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"custom_error_configuration": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpecHttpListener"),
-									},
-								},
-							},
 						},
 					},
 					"name": {
@@ -23830,8 +23776,62 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecHttpList
 							Format: "",
 						},
 					},
+					"host_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"frontend_port_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ssl_certificate_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"custom_error_configuration": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpecHttpListener"),
+									},
+								},
+							},
+						},
+					},
+					"frontend_ip_configuration_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ssl_certificate_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"require_sni": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"frontend_ip_configuration_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"ssl_certificate_id", "frontend_ip_configuration_name", "require_sni", "frontend_port_id", "host_name", "ssl_certificate_name", "frontend_ip_configuration_id", "id", "custom_error_configuration", "name", "frontend_port_name", "protocol"},
+				Required: []string{"id", "name", "frontend_port_name", "protocol", "host_name", "frontend_port_id", "ssl_certificate_id", "custom_error_configuration", "frontend_ip_configuration_name", "ssl_certificate_name", "require_sni", "frontend_ip_configuration_id"},
 			},
 		},
 		Dependencies: []string{
@@ -23876,7 +23876,55 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecProbe(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"host": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"interval": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"unhealthy_threshold": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"pick_host_name_from_backend_http_settings": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"protocol": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"path": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"timeout": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
@@ -23900,56 +23948,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecProbe(re
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"path": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"host": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"pick_host_name_from_backend_http_settings": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"protocol": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"timeout": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"unhealthy_threshold": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"interval", "minimum_servers", "match", "name", "path", "host", "pick_host_name_from_backend_http_settings", "id", "protocol", "timeout", "unhealthy_threshold"},
+				Required: []string{"name", "host", "interval", "unhealthy_threshold", "pick_host_name_from_backend_http_settings", "id", "protocol", "path", "timeout", "minimum_servers", "match"},
 			},
 		},
 		Dependencies: []string{
@@ -24056,13 +24056,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecRequestR
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"rewrite_rule_set_name": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"backend_address_pool_id": {
+					"rule_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -24074,25 +24074,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecRequestR
 							Format: "",
 						},
 					},
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"rewrite_rule_set_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"redirect_configuration_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"backend_address_pool_name": {
+					"http_listener_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -24110,13 +24092,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecRequestR
 							Format: "",
 						},
 					},
-					"name": {
+					"redirect_configuration_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"rewrite_rule_set_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"backend_address_pool_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 					"http_listener_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"backend_address_pool_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -24134,20 +24140,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecRequestR
 							Format: "",
 						},
 					},
-					"http_listener_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"rule_type": {
+					"rewrite_rule_set_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"rewrite_rule_set_name", "backend_address_pool_id", "backend_http_settings_id", "id", "rewrite_rule_set_id", "redirect_configuration_name", "backend_address_pool_name", "url_path_map_id", "redirect_configuration_id", "name", "http_listener_name", "backend_http_settings_name", "url_path_map_name", "http_listener_id", "rule_type"},
+				Required: []string{"name", "rule_type", "backend_http_settings_id", "http_listener_id", "url_path_map_id", "redirect_configuration_id", "redirect_configuration_name", "rewrite_rule_set_name", "backend_address_pool_id", "id", "http_listener_name", "backend_address_pool_name", "backend_http_settings_name", "url_path_map_name", "rewrite_rule_set_id"},
 			},
 		},
 	}
@@ -24198,24 +24198,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecRewriteR
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"response_header_configuration": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpecRewriteRuleSetRewriteRule"),
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"rule_sequence": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -24246,8 +24228,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecRewriteR
 							},
 						},
 					},
+					"response_header_configuration": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpecRewriteRuleSetRewriteRule"),
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"response_header_configuration", "name", "rule_sequence", "condition", "request_header_configuration"},
+				Required: []string{"rule_sequence", "condition", "request_header_configuration", "response_header_configuration", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -24379,6 +24379,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecSslCerti
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"public_cert_data": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -24403,14 +24409,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecSslCerti
 							Format: "",
 						},
 					},
-					"public_cert_data": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "data", "password", "id", "public_cert_data"},
+				Required: []string{"public_cert_data", "name", "data", "password", "id"},
 			},
 		},
 	}
@@ -24422,6 +24422,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecSslPolic
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"disabled_protocols": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"policy_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"policy_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -24447,27 +24466,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecSslPolic
 							Format: "",
 						},
 					},
-					"disabled_protocols": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"policy_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"policy_name", "cipher_suites", "min_protocol_version", "disabled_protocols", "policy_type"},
+				Required: []string{"disabled_protocols", "policy_type", "policy_name", "cipher_suites", "min_protocol_version"},
 			},
 		},
 	}
@@ -24479,16 +24479,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecUrlPathM
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"path_rule": {
+					"default_redirect_configuration_name": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpecUrlPathMap"),
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"default_backend_address_pool_id": {
@@ -24515,12 +24509,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecUrlPathM
 							Format: "",
 						},
 					},
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -24539,20 +24527,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecUrlPathM
 							Format: "",
 						},
 					},
-					"default_redirect_configuration_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"default_rewrite_rule_set_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"path_rule": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpecUrlPathMap"),
+									},
+								},
+							},
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"path_rule", "default_backend_address_pool_id", "default_backend_http_settings_id", "default_redirect_configuration_id", "default_rewrite_rule_set_id", "id", "name", "default_backend_address_pool_name", "default_backend_http_settings_name", "default_redirect_configuration_name", "default_rewrite_rule_set_name"},
+				Required: []string{"default_redirect_configuration_name", "default_backend_address_pool_id", "default_backend_http_settings_id", "default_redirect_configuration_id", "default_rewrite_rule_set_id", "name", "default_backend_address_pool_name", "default_backend_http_settings_name", "default_rewrite_rule_set_name", "path_rule", "id"},
 			},
 		},
 		Dependencies: []string{
@@ -24566,38 +24566,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecUrlPathM
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"paths": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"backend_http_settings_name": {
+					"backend_address_pool_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 					"backend_address_pool_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"rewrite_rule_set_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -24621,7 +24596,38 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecUrlPathM
 							Format: "",
 						},
 					},
-					"backend_address_pool_name": {
+					"paths": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"rewrite_rule_set_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"rewrite_rule_set_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"backend_http_settings_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -24633,14 +24639,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecUrlPathM
 							Format: "",
 						},
 					},
-					"rewrite_rule_set_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"id", "paths", "backend_http_settings_name", "backend_address_pool_id", "rewrite_rule_set_id", "backend_http_settings_id", "redirect_configuration_id", "name", "backend_address_pool_name", "redirect_configuration_name", "rewrite_rule_set_name"},
+				Required: []string{"backend_address_pool_name", "backend_address_pool_id", "backend_http_settings_id", "redirect_configuration_id", "name", "paths", "rewrite_rule_set_name", "rewrite_rule_set_id", "id", "backend_http_settings_name", "redirect_configuration_name"},
 			},
 		},
 	}
@@ -24652,13 +24652,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecWafConfi
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"rule_set_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"file_upload_limit_mb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
+					"request_body_check": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"disabled_rule_group": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpecWafConfiguration"),
+									},
+								},
+							},
+						},
+					},
+					"exclusion": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -24676,36 +24700,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecWafConfi
 							Format: "",
 						},
 					},
-					"rule_set_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"request_body_check": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"max_request_body_size_kb": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"exclusion": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermApplicationGatewaySpecWafConfiguration"),
-									},
-								},
-							},
-						},
-					},
 					"firewall_mode": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -24718,8 +24712,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationGatewaySpecWafConfi
 							Format: "",
 						},
 					},
+					"max_request_body_size_kb": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"file_upload_limit_mb", "disabled_rule_group", "enabled", "rule_set_type", "request_body_check", "max_request_body_size_kb", "exclusion", "firewall_mode", "rule_set_version"},
+				Required: []string{"rule_set_type", "file_upload_limit_mb", "request_body_check", "disabled_rule_group", "exclusion", "enabled", "firewall_mode", "rule_set_version", "max_request_body_size_kb"},
 			},
 		},
 		Dependencies: []string{
@@ -24948,12 +24948,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationInsightsApiKeySpec(
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"application_insights_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"read_permissions": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -24992,8 +24986,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationInsightsApiKeySpec(
 							Format: "",
 						},
 					},
+					"application_insights_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"application_insights_id", "read_permissions", "write_permissions", "api_key", "name"},
+				Required: []string{"read_permissions", "write_permissions", "api_key", "name", "application_insights_id"},
 			},
 		},
 	}
@@ -25071,6 +25071,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationInsightsSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"app_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"instrumentation_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -25115,14 +25121,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationInsightsSpec(ref co
 							},
 						},
 					},
-					"app_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"instrumentation_key", "name", "resource_group_name", "location", "application_type", "tags", "app_id"},
+				Required: []string{"app_id", "instrumentation_key", "name", "resource_group_name", "location", "application_type", "tags"},
 			},
 		},
 	}
@@ -25249,10 +25249,17 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationInsightsWebTestSpec
 							Format: "",
 						},
 					},
-					"description": {
+					"geo_locations": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"tags": {
@@ -25267,12 +25274,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationInsightsWebTestSpec
 									},
 								},
 							},
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
 						},
 					},
 					"frequency": {
@@ -25293,13 +25294,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationInsightsWebTestSpec
 							Format: "",
 						},
 					},
+					"configuration": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"synthetic_monitor_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"application_insights_id": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -25311,20 +25324,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationInsightsWebTestSpec
 							Format: "",
 						},
 					},
-					"geo_locations": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"configuration": {
+					"application_insights_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -25336,14 +25336,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationInsightsWebTestSpec
 							Format: "",
 						},
 					},
-					"synthetic_monitor_id": {
+					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"name", "description", "tags", "location", "frequency", "timeout", "enabled", "resource_group_name", "application_insights_id", "kind", "geo_locations", "configuration", "retry_enabled", "synthetic_monitor_id"},
+				Required: []string{"name", "geo_locations", "tags", "frequency", "timeout", "enabled", "configuration", "synthetic_monitor_id", "resource_group_name", "location", "kind", "application_insights_id", "retry_enabled", "description"},
 			},
 		},
 	}
@@ -25464,12 +25464,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationSecurityGroupSpec(r
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -25496,8 +25490,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermApplicationSecurityGroupSpec(r
 							Format: "",
 						},
 					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"resource_group_name", "tags", "name", "location"},
+				Required: []string{"tags", "name", "location", "resource_group_name"},
 			},
 		},
 	}
@@ -25618,36 +25618,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationAccountSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"dsc_primary_access_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"dsc_secondary_access_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"sku": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAutomationAccountSpec"),
-									},
-								},
-							},
-						},
-					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -25668,6 +25638,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationAccountSpec(ref comm
 							Format: "",
 						},
 					},
+					"dsc_secondary_access_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -25680,14 +25656,38 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationAccountSpec(ref comm
 							Format: "",
 						},
 					},
+					"sku": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAutomationAccountSpec"),
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"sku_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"dsc_primary_access_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"dsc_primary_access_key", "dsc_secondary_access_key", "name", "sku", "tags", "dsc_server_endpoint", "location", "resource_group_name", "sku_name"},
+				Required: []string{"tags", "dsc_server_endpoint", "dsc_secondary_access_key", "location", "resource_group_name", "sku", "name", "sku_name", "dsc_primary_access_key"},
 			},
 		},
 		Dependencies: []string{
@@ -25829,6 +25829,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationCredentialSpec(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -25859,14 +25865,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationCredentialSpec(ref c
 							Format: "",
 						},
 					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"description", "name", "resource_group_name", "account_name", "username", "password"},
+				Required: []string{"password", "description", "name", "resource_group_name", "account_name", "username"},
 			},
 		},
 	}
@@ -25987,18 +25987,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationDscConfigurationSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"log_verbose": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -26035,8 +26023,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationDscConfigurationSpec
 							Format: "",
 						},
 					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"resource_group_name", "location", "log_verbose", "description", "state", "name", "automation_account_name", "content_embedded"},
+				Required: []string{"log_verbose", "description", "state", "name", "automation_account_name", "content_embedded", "resource_group_name", "location"},
 			},
 		},
 	}
@@ -26157,18 +26157,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationDscNodeconfiguration
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"content_embedded": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"configuration_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -26187,8 +26175,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationDscNodeconfiguration
 							Format: "",
 						},
 					},
+					"content_embedded": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"configuration_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"content_embedded", "configuration_name", "name", "automation_account_name", "resource_group_name"},
+				Required: []string{"name", "automation_account_name", "resource_group_name", "content_embedded", "configuration_name"},
 			},
 		},
 	}
@@ -26309,18 +26309,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationModuleSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"module_link": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAutomationModuleSpec"),
-									},
-								},
-							},
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -26339,8 +26327,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationModuleSpec(ref commo
 							Format: "",
 						},
 					},
+					"module_link": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAutomationModuleSpec"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"module_link", "name", "automation_account_name", "resource_group_name"},
+				Required: []string{"name", "automation_account_name", "resource_group_name", "module_link"},
 			},
 		},
 		Dependencies: []string{
@@ -26521,6 +26521,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationRunbookSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"runbook_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"log_progress": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -26530,6 +26542,30 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationRunbookSpec(ref comm
 					"content": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"account_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"log_verbose": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -26559,50 +26595,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationRunbookSpec(ref comm
 							},
 						},
 					},
-					"account_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"log_progress": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"runbook_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"log_verbose": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"description", "content", "publish_content_link", "tags", "account_name", "location", "resource_group_name", "log_progress", "name", "runbook_type", "log_verbose"},
+				Required: []string{"runbook_type", "log_progress", "description", "content", "location", "account_name", "resource_group_name", "log_verbose", "publish_content_link", "tags", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -26789,6 +26789,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationScheduleSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"month_days": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"integer"},
+										Format: "int64",
+									},
+								},
+							},
+						},
+					},
 					"monthly_occurrence": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -26801,7 +26814,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationScheduleSpec(ref com
 							},
 						},
 					},
-					"name": {
+					"frequency": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"start_time": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"expiry_time": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -26813,10 +26838,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationScheduleSpec(ref com
 							Format: "",
 						},
 					},
-					"frequency": {
+					"interval": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"description": {
@@ -26844,6 +26869,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationScheduleSpec(ref com
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -26856,39 +26887,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationScheduleSpec(ref com
 							Format: "",
 						},
 					},
-					"interval": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"start_time": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"expiry_time": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"month_days": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"integer"},
-										Format: "int64",
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"monthly_occurrence", "name", "automation_account_name", "frequency", "description", "timezone", "week_days", "resource_group_name", "account_name", "interval", "start_time", "expiry_time", "month_days"},
+				Required: []string{"month_days", "monthly_occurrence", "frequency", "start_time", "expiry_time", "automation_account_name", "interval", "description", "timezone", "week_days", "name", "resource_group_name", "account_name"},
 			},
 		},
 		Dependencies: []string{
@@ -27194,24 +27194,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationVariableDatetimeSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"automation_account_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"encrypted": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -27230,8 +27212,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationVariableDatetimeSpec
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"automation_account_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "automation_account_name", "description", "encrypted", "value", "resource_group_name"},
+				Required: []string{"encrypted", "value", "resource_group_name", "name", "automation_account_name", "description"},
 			},
 		},
 	}
@@ -27352,6 +27352,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationVariableIntSpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"value": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -27382,14 +27388,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutomationVariableIntSpec(ref 
 							Format: "",
 						},
 					},
-					"value": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"resource_group_name", "name", "automation_account_name", "description", "encrypted", "value"},
+				Required: []string{"value", "resource_group_name", "name", "automation_account_name", "description", "encrypted"},
 			},
 		},
 	}
@@ -27668,38 +27668,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutoscaleSettingSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"notification": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAutoscaleSettingSpec"),
-									},
-								},
-							},
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -27736,8 +27704,40 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutoscaleSettingSpec(ref commo
 							},
 						},
 					},
+					"notification": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAutoscaleSettingSpec"),
+									},
+								},
+							},
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"notification", "tags", "name", "resource_group_name", "location", "target_resource_id", "enabled", "profile"},
+				Required: []string{"resource_group_name", "location", "target_resource_id", "enabled", "profile", "notification", "tags", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -27861,6 +27861,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutoscaleSettingSpecProfile(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"capacity": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAutoscaleSettingSpecProfile"),
+									},
+								},
+							},
+						},
+					},
 					"rule": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -27903,20 +27915,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutoscaleSettingSpecProfile(re
 							Format: "",
 						},
 					},
-					"capacity": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAutoscaleSettingSpecProfile"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"rule", "fixed_date", "recurrence", "name", "capacity"},
+				Required: []string{"capacity", "rule", "fixed_date", "recurrence", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -28050,18 +28050,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutoscaleSettingSpecProfileRul
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"scale_action": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAutoscaleSettingSpecProfileRule"),
-									},
-								},
-							},
-						},
-					},
 					"metric_trigger": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -28074,8 +28062,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutoscaleSettingSpecProfileRul
 							},
 						},
 					},
+					"scale_action": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermAutoscaleSettingSpecProfileRule"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"scale_action", "metric_trigger"},
+				Required: []string{"metric_trigger", "scale_action"},
 			},
 		},
 		Dependencies: []string{
@@ -28089,12 +28089,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutoscaleSettingSpecProfileRul
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"operator": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"threshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"number"},
@@ -28137,8 +28131,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAutoscaleSettingSpecProfileRul
 							Format: "",
 						},
 					},
+					"operator": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"operator", "threshold", "metric_name", "metric_resource_id", "time_grain", "statistic", "time_window", "time_aggregation"},
+				Required: []string{"threshold", "metric_name", "metric_resource_id", "time_grain", "statistic", "time_window", "time_aggregation", "operator"},
 			},
 		},
 	}
@@ -28296,6 +28296,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAvailabilitySetSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -28334,20 +28346,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAvailabilitySetSpec(ref common
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"location", "platform_update_domain_count", "platform_fault_domain_count", "managed", "tags", "name", "resource_group_name"},
+				Required: []string{"name", "resource_group_name", "location", "platform_update_domain_count", "platform_fault_domain_count", "managed", "tags"},
 			},
 		},
 	}
@@ -28468,6 +28468,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAzureadApplicationSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"available_to_other_tenants": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"oauth2_allow_implicit_flow": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"application_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -28506,26 +28524,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAzureadApplicationSpec(ref com
 							},
 						},
 					},
-					"available_to_other_tenants": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"oauth2_allow_implicit_flow": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"application_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "homepage", "identifier_uris", "reply_urls", "available_to_other_tenants", "oauth2_allow_implicit_flow", "application_id"},
+				Required: []string{"available_to_other_tenants", "oauth2_allow_implicit_flow", "application_id", "name", "homepage", "identifier_uris", "reply_urls"},
 			},
 		},
 	}
@@ -28736,6 +28736,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAzureadServicePrincipalPasswor
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"end_date": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"service_principal_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -28760,14 +28766,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAzureadServicePrincipalPasswor
 							Format: "",
 						},
 					},
-					"end_date": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"service_principal_id", "key_id", "value", "start_date", "end_date"},
+				Required: []string{"end_date", "service_principal_id", "key_id", "value", "start_date"},
 			},
 		},
 	}
@@ -28798,20 +28798,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermAzureadServicePrincipalSpec(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"display_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"application_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"display_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"display_name", "application_id"},
+				Required: []string{"application_id", "display_name"},
 			},
 		},
 	}
@@ -28932,22 +28932,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchAccountSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"account_endpoint": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"tags": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"storage_account_id": {
@@ -28974,28 +28976,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchAccountSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"name": {
+					"account_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"tags": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
-				Required: []string{"account_endpoint", "resource_group_name", "location", "storage_account_id", "pool_allocation_mode", "primary_access_key", "secondary_access_key", "name", "tags"},
+				Required: []string{"name", "tags", "storage_account_id", "pool_allocation_mode", "primary_access_key", "secondary_access_key", "account_endpoint", "resource_group_name", "location"},
 			},
 		},
 	}
@@ -29116,37 +29116,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchCertificateSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"thumbprint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"thumbprint_algorithm": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"public_data": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"account_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -29170,8 +29140,38 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchCertificateSpec(ref commo
 							Format: "",
 						},
 					},
+					"password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"thumbprint_algorithm": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"account_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"thumbprint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "password", "thumbprint", "thumbprint_algorithm", "public_data", "account_name", "resource_group_name", "certificate", "format"},
+				Required: []string{"public_data", "resource_group_name", "certificate", "format", "password", "thumbprint_algorithm", "name", "account_name", "thumbprint"},
 			},
 		},
 	}
@@ -29292,10 +29292,22 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchPoolSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"max_tasks_per_node": {
+					"stop_pending_resize_operation": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"auto_scale": {
@@ -29316,61 +29328,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchPoolSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"start_task": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermBatchPoolSpec"),
-									},
-								},
-							},
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"storage_image_reference": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermBatchPoolSpec"),
-									},
-								},
-							},
-						},
-					},
-					"stop_pending_resize_operation": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"certificate": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermBatchPoolSpec"),
-									},
-								},
-							},
-						},
-					},
 					"account_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"vm_size": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -29388,13 +29346,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchPoolSpec(ref common.Refer
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"fixed_scale": {
+					"storage_image_reference": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -29412,8 +29364,56 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchPoolSpec(ref common.Refer
 							Format: "",
 						},
 					},
+					"max_tasks_per_node": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"start_task": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermBatchPoolSpec"),
+									},
+								},
+							},
+						},
+					},
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"fixed_scale": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermBatchPoolSpec"),
+									},
+								},
+							},
+						},
+					},
+					"certificate": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermBatchPoolSpec"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"max_tasks_per_node", "auto_scale", "node_agent_sku_id", "start_task", "resource_group_name", "storage_image_reference", "stop_pending_resize_operation", "certificate", "account_name", "vm_size", "container_configuration", "name", "fixed_scale", "display_name"},
+				Required: []string{"stop_pending_resize_operation", "name", "resource_group_name", "auto_scale", "node_agent_sku_id", "account_name", "container_configuration", "storage_image_reference", "display_name", "max_tasks_per_node", "start_task", "vm_size", "fixed_scale", "certificate"},
 			},
 		},
 		Dependencies: []string{
@@ -29515,12 +29515,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchPoolSpecFixedScale(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"target_dedicated_nodes": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"target_low_priority_nodes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -29533,8 +29527,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchPoolSpecFixedScale(ref co
 							Format: "",
 						},
 					},
+					"target_dedicated_nodes": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"target_dedicated_nodes", "target_low_priority_nodes", "resize_timeout"},
+				Required: []string{"target_low_priority_nodes", "resize_timeout", "target_dedicated_nodes"},
 			},
 		},
 	}
@@ -29546,32 +29546,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchPoolSpecStartTask(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"environment": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"user_identity": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermBatchPoolSpecStartTask"),
-									},
-								},
-							},
-						},
-					},
 					"resource_file": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -29602,8 +29576,34 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchPoolSpecStartTask(ref com
 							Format: "",
 						},
 					},
+					"environment": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"user_identity": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermBatchPoolSpecStartTask"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"environment", "user_identity", "resource_file", "command_line", "max_task_retry_count", "wait_for_success"},
+				Required: []string{"resource_file", "command_line", "max_task_retry_count", "wait_for_success", "environment", "user_identity"},
 			},
 		},
 		Dependencies: []string{
@@ -29617,24 +29617,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchPoolSpecStartTaskResource
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"storage_container_url": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"auto_storage_container_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"blob_prefix": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"file_mode": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -29653,8 +29635,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermBatchPoolSpecStartTaskResource
 							Format: "",
 						},
 					},
+					"storage_container_url": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"auto_storage_container_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"blob_prefix": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"storage_container_url", "auto_storage_container_name", "blob_prefix", "file_mode", "file_path", "http_url"},
+				Required: []string{"file_mode", "file_path", "http_url", "storage_container_url", "auto_storage_container_name", "blob_prefix"},
 			},
 		},
 	}
@@ -29876,21 +29876,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCdnEndpointSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"origin_host_header": {
+					"querystring_caching_behaviour": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -29908,19 +29894,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCdnEndpointSpec(ref common.Ref
 							},
 						},
 					},
-					"optimization_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"is_https_allowed": {
+					"is_http_allowed": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
@@ -29963,21 +29937,41 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCdnEndpointSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"location": {
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"profile_name": {
+					"origin_host_header": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"is_http_allowed": {
+					"probe_path": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"optimization_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -29993,20 +29987,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCdnEndpointSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"querystring_caching_behaviour": {
+					"profile_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"probe_path": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"is_https_allowed": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"tags", "origin_host_header", "geo_filter", "optimization_type", "resource_group_name", "is_https_allowed", "origin", "origin_path", "content_types_to_compress", "is_compression_enabled", "location", "profile_name", "is_http_allowed", "host_name", "name", "querystring_caching_behaviour", "probe_path"},
+				Required: []string{"querystring_caching_behaviour", "geo_filter", "is_http_allowed", "origin", "origin_path", "content_types_to_compress", "is_compression_enabled", "tags", "resource_group_name", "origin_host_header", "probe_path", "optimization_type", "host_name", "name", "profile_name", "location", "is_https_allowed"},
 			},
 		},
 		Dependencies: []string{
@@ -30020,18 +30020,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCdnEndpointSpecGeoFilter(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"relative_path": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"action": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"country_codes": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -30045,8 +30033,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCdnEndpointSpecGeoFilter(ref c
 							},
 						},
 					},
+					"relative_path": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"action": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"relative_path", "action", "country_codes"},
+				Required: []string{"country_codes", "relative_path", "action"},
 			},
 		},
 	}
@@ -30058,6 +30058,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCdnEndpointSpecOrigin(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"https_port": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -30076,14 +30082,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCdnEndpointSpecOrigin(ref comm
 							Format: "int32",
 						},
 					},
-					"https_port": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"name", "host_name", "http_port", "https_port"},
+				Required: []string{"https_port", "name", "host_name", "http_port"},
 			},
 		},
 	}
@@ -30204,20 +30204,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCdnProfileSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -30242,8 +30228,22 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCdnProfileSpec(ref common.Refe
 							Format: "",
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"tags", "name", "location", "resource_group_name", "sku"},
+				Required: []string{"name", "location", "resource_group_name", "sku", "tags"},
 			},
 		},
 	}
@@ -30364,33 +30364,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCognitiveAccountSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"name": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"kind": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -30414,26 +30400,40 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCognitiveAccountSpec(ref commo
 							Format: "",
 						},
 					},
-					"primary_access_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"secondary_access_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"location": {
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"primary_access_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"kind", "tags", "name", "resource_group_name", "sku", "endpoint", "primary_access_key", "secondary_access_key", "location"},
+				Required: []string{"location", "resource_group_name", "kind", "sku", "endpoint", "secondary_access_key", "name", "tags", "primary_access_key"},
 			},
 		},
 		Dependencies: []string{
@@ -30581,16 +30581,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermConnectionMonitorSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"network_watcher_name": {
+					"auto_start": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"location": {
+					"interval_in_seconds": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"source": {
@@ -30603,24 +30603,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermConnectionMonitorSpec(ref comm
 									},
 								},
 							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"auto_start": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"interval_in_seconds": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
 						},
 					},
 					"destination": {
@@ -30655,8 +30637,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermConnectionMonitorSpec(ref comm
 							Format: "",
 						},
 					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"network_watcher_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"network_watcher_name", "location", "source", "name", "auto_start", "interval_in_seconds", "destination", "tags", "resource_group_name"},
+				Required: []string{"auto_start", "interval_in_seconds", "source", "destination", "tags", "resource_group_name", "location", "name", "network_watcher_name"},
 			},
 		},
 		Dependencies: []string{
@@ -30835,7 +30835,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"diagnostics": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerGroupSpec"),
+									},
+								},
+							},
+						},
+					},
+					"fqdn": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -30853,84 +30883,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpec(ref common.
 							Format: "",
 						},
 					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"container": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerGroupSpec"),
-									},
-								},
-							},
-						},
-					},
-					"diagnostics": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerGroupSpec"),
-									},
-								},
-							},
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"restart_policy": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"dns_name_label": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"fqdn": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"os_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"image_registry_credential": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerGroupSpec"),
-									},
-								},
-							},
 						},
 					},
 					"identity": {
@@ -30945,14 +30901,58 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpec(ref common.
 							},
 						},
 					},
-					"ip_address": {
+					"dns_name_label": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"container": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerGroupSpec"),
+									},
+								},
+							},
+						},
+					},
+					"image_registry_credential": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerGroupSpec"),
+									},
+								},
+							},
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"restart_policy": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"name", "resource_group_name", "ip_address_type", "tags", "container", "diagnostics", "location", "restart_policy", "dns_name_label", "fqdn", "os_type", "image_registry_credential", "identity", "ip_address"},
+				Required: []string{"ip_address", "name", "diagnostics", "fqdn", "location", "resource_group_name", "ip_address_type", "os_type", "identity", "dns_name_label", "container", "image_registry_credential", "tags", "restart_policy"},
 			},
 		},
 		Dependencies: []string{
@@ -30972,37 +30972,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainer(re
 							Format: "",
 						},
 					},
-					"memory": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"number"},
-							Format: "double",
-						},
-					},
-					"gpu": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerGroupSpecContainer"),
-									},
-								},
-							},
-						},
-					},
-					"port": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"command": {
+					"image": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"environment_variables": {
+					"cpu": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"number"},
+							Format: "double",
+						},
+					},
+					"secure_environment_variables": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
 							AdditionalProperties: &spec.SchemaOrBool{
@@ -31026,6 +31008,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainer(re
 									},
 								},
 							},
+						},
+					},
+					"readiness_probe": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerGroupSpecContainer"),
+									},
+								},
+							},
+						},
+					},
+					"port": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"protocol": {
@@ -31059,16 +31059,22 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainer(re
 							},
 						},
 					},
-					"image": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"cpu": {
+					"memory": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"number"},
 							Format: "double",
+						},
+					},
+					"gpu": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerGroupSpecContainer"),
+									},
+								},
+							},
 						},
 					},
 					"ports": {
@@ -31083,7 +31089,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainer(re
 							},
 						},
 					},
-					"secure_environment_variables": {
+					"environment_variables": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
 							AdditionalProperties: &spec.SchemaOrBool{
@@ -31097,20 +31103,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainer(re
 							},
 						},
 					},
-					"readiness_probe": {
+					"command": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerGroupSpecContainer"),
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
-				Required: []string{"name", "memory", "gpu", "port", "command", "environment_variables", "volume", "protocol", "commands", "liveness_probe", "image", "cpu", "ports", "secure_environment_variables", "readiness_probe"},
+				Required: []string{"name", "image", "cpu", "secure_environment_variables", "volume", "readiness_probe", "port", "protocol", "commands", "liveness_probe", "memory", "gpu", "ports", "environment_variables", "command"},
 			},
 		},
 		Dependencies: []string{
@@ -31149,6 +31149,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainerLiv
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"timeout_seconds": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"exec": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"http_get": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -31185,27 +31204,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainerLiv
 							Format: "int32",
 						},
 					},
-					"timeout_seconds": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"exec": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"http_get", "initial_delay_seconds", "period_seconds", "failure_threshold", "success_threshold", "timeout_seconds", "exec"},
+				Required: []string{"timeout_seconds", "exec", "http_get", "initial_delay_seconds", "period_seconds", "failure_threshold", "success_threshold"},
 			},
 		},
 		Dependencies: []string{
@@ -31219,12 +31219,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainerLiv
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"path": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -31237,8 +31231,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainerLiv
 							Format: "",
 						},
 					},
+					"path": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"path", "port", "scheme"},
+				Required: []string{"port", "scheme", "path"},
 			},
 		},
 	}
@@ -31250,20 +31250,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainerPor
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"protocol": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
+					"protocol": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"protocol", "port"},
+				Required: []string{"port", "protocol"},
 			},
 		},
 	}
@@ -31275,6 +31275,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainerRea
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"failure_threshold": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"success_threshold": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"timeout_seconds": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"exec": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -31312,26 +31330,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainerRea
 							Format: "int32",
 						},
 					},
-					"failure_threshold": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"success_threshold": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"timeout_seconds": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"exec", "http_get", "initial_delay_seconds", "period_seconds", "failure_threshold", "success_threshold", "timeout_seconds"},
+				Required: []string{"failure_threshold", "success_threshold", "timeout_seconds", "exec", "http_get", "initial_delay_seconds", "period_seconds"},
 			},
 		},
 		Dependencies: []string{
@@ -31376,24 +31376,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainerVol
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"mount_path": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"read_only": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"share_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -31412,8 +31394,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerGroupSpecContainerVol
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"mount_path": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"read_only": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "mount_path", "read_only", "share_name", "storage_account_name", "storage_account_key"},
+				Required: []string{"share_name", "storage_account_name", "storage_account_key", "name", "mount_path", "read_only"},
 			},
 		},
 	}
@@ -31675,46 +31675,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerRegistrySpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"admin_password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"admin_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"storage_account_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"storage_account": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerRegistrySpec"),
-									},
-								},
-							},
 						},
 					},
 					"login_server": {
@@ -31755,6 +31719,42 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerRegistrySpec(ref comm
 							Format: "",
 						},
 					},
+					"admin_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"storage_account": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerRegistrySpec"),
+									},
+								},
+							},
+						},
+					},
+					"admin_password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"georeplication_locations": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -31769,7 +31769,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerRegistrySpec(ref comm
 						},
 					},
 				},
-				Required: []string{"admin_password", "name", "resource_group_name", "admin_enabled", "storage_account_id", "storage_account", "login_server", "admin_username", "tags", "location", "sku", "georeplication_locations"},
+				Required: []string{"storage_account_id", "login_server", "admin_username", "tags", "location", "sku", "admin_enabled", "storage_account", "admin_password", "name", "resource_group_name", "georeplication_locations"},
 			},
 		},
 		Dependencies: []string{
@@ -31783,20 +31783,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerRegistrySpecStorageAc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"access_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"access_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"access_key", "name"},
+				Required: []string{"name", "access_key"},
 			},
 		},
 	}
@@ -31941,7 +31941,31 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerServiceSpec(ref commo
 							},
 						},
 					},
-					"service_principal": {
+					"diagnostics_profile": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerServiceSpec"),
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"master_profile": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -31967,19 +31991,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerServiceSpec(ref commo
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -31991,19 +32003,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerServiceSpec(ref commo
 							Format: "",
 						},
 					},
-					"master_profile": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermContainerServiceSpec"),
-									},
-								},
-							},
-						},
-					},
-					"diagnostics_profile": {
+					"service_principal": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -32016,7 +32016,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerServiceSpec(ref commo
 						},
 					},
 				},
-				Required: []string{"linux_profile", "agent_pool_profile", "service_principal", "tags", "name", "location", "resource_group_name", "orchestration_platform", "master_profile", "diagnostics_profile"},
+				Required: []string{"linux_profile", "agent_pool_profile", "diagnostics_profile", "name", "resource_group_name", "master_profile", "tags", "location", "orchestration_platform", "service_principal"},
 			},
 		},
 		Dependencies: []string{
@@ -32030,18 +32030,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerServiceSpecAgentPoolP
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"vm_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -32060,8 +32048,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerServiceSpecAgentPoolP
 							Format: "",
 						},
 					},
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"vm_size", "name", "count", "dns_prefix", "fqdn"},
+				Required: []string{"count", "dns_prefix", "fqdn", "vm_size", "name"},
 			},
 		},
 	}
@@ -32098,12 +32098,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerServiceSpecLinuxProfi
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"admin_username": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"ssh_key": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -32116,8 +32110,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermContainerServiceSpecLinuxProfi
 							},
 						},
 					},
+					"admin_username": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"admin_username", "ssh_key"},
+				Required: []string{"ssh_key", "admin_username"},
 			},
 		},
 		Dependencies: []string{
@@ -32321,13 +32321,39 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbAccountSpec(ref common
 							Format: "",
 						},
 					},
-					"kind": {
+					"enable_automatic_failover": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"is_virtual_network_filter_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"primary_master_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"geo_location": {
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"consistency_policy": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -32337,30 +32363,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbAccountSpec(ref common
 									},
 								},
 							},
-						},
-					},
-					"endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_master_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
 						},
 					},
 					"failover_policy": {
@@ -32373,55 +32375,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbAccountSpec(ref common
 									},
 								},
 							},
-						},
-					},
-					"primary_master_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_readonly_master_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"connection_strings": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"enable_automatic_failover": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"capabilities": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermCosmosdbAccountSpec"),
-									},
-								},
-							},
-						},
-					},
-					"is_virtual_network_filter_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
 						},
 					},
 					"virtual_network_rule": {
@@ -32448,18 +32401,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbAccountSpec(ref common
 							Format: "",
 						},
 					},
-					"tags": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"offer_type": {
@@ -32468,13 +32413,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbAccountSpec(ref common
 							Format: "",
 						},
 					},
-					"ip_range_filter": {
+					"kind": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"consistency_policy": {
+					"capabilities": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -32486,6 +32431,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbAccountSpec(ref common
 							},
 						},
 					},
+					"endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"read_endpoints": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -32494,6 +32445,49 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbAccountSpec(ref common
 									SchemaProps: spec.SchemaProps{
 										Type:   []string{"string"},
 										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"secondary_master_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"connection_strings": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ip_range_filter": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"geo_location": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermCosmosdbAccountSpec"),
 									},
 								},
 							},
@@ -32512,8 +32506,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbAccountSpec(ref common
 							},
 						},
 					},
+					"primary_readonly_master_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"location", "kind", "geo_location", "endpoint", "secondary_master_key", "name", "resource_group_name", "failover_policy", "primary_master_key", "primary_readonly_master_key", "connection_strings", "enable_automatic_failover", "capabilities", "is_virtual_network_filter_enabled", "virtual_network_rule", "enable_multiple_write_locations", "secondary_readonly_master_key", "tags", "offer_type", "ip_range_filter", "consistency_policy", "read_endpoints", "write_endpoints"},
+				Required: []string{"location", "enable_automatic_failover", "is_virtual_network_filter_enabled", "primary_master_key", "tags", "consistency_policy", "failover_policy", "virtual_network_rule", "enable_multiple_write_locations", "secondary_readonly_master_key", "resource_group_name", "offer_type", "kind", "capabilities", "endpoint", "read_endpoints", "secondary_master_key", "connection_strings", "name", "ip_range_filter", "geo_location", "write_endpoints", "primary_readonly_master_key"},
 			},
 		},
 		Dependencies: []string{
@@ -32546,12 +32546,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbAccountSpecConsistency
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"consistency_level": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"max_interval_in_seconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -32564,8 +32558,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbAccountSpecConsistency
 							Format: "int32",
 						},
 					},
+					"consistency_level": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"consistency_level", "max_interval_in_seconds", "max_staleness_prefix"},
+				Required: []string{"max_interval_in_seconds", "max_staleness_prefix", "consistency_level"},
 			},
 		},
 	}
@@ -32913,6 +32913,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbMongoCollectionSpec(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"default_ttl_seconds": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"indexes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermCosmosdbMongoCollectionSpec"),
+									},
+								},
+							},
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -32943,26 +32961,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbMongoCollectionSpec(re
 							Format: "",
 						},
 					},
-					"default_ttl_seconds": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"indexes": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermCosmosdbMongoCollectionSpec"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"name", "resource_group_name", "account_name", "database_name", "shard_key", "default_ttl_seconds", "indexes"},
+				Required: []string{"default_ttl_seconds", "indexes", "name", "resource_group_name", "account_name", "database_name", "shard_key"},
 			},
 		},
 		Dependencies: []string{
@@ -33250,6 +33250,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbSqlDatabaseSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"account_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -33262,14 +33268,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermCosmosdbSqlDatabaseSpec(ref co
 							Format: "",
 						},
 					},
-					"account_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "resource_group_name", "account_name"},
+				Required: []string{"account_name", "name", "resource_group_name"},
 			},
 		},
 	}
@@ -33573,6 +33573,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryDatasetMysqlSpec(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"table_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"parameters": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -33587,10 +33599,29 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryDatasetMysqlSpec(re
 							},
 						},
 					},
-					"annotations": {
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"schema_column": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermDataFactoryDatasetMysqlSpec"),
+									},
+								},
+							},
+						},
+					},
+					"additional_properties": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Type:   []string{"string"},
@@ -33618,17 +33649,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryDatasetMysqlSpec(re
 							Format: "",
 						},
 					},
-					"folder": {
+					"annotations": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"additional_properties": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Type:   []string{"string"},
@@ -33638,38 +33662,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryDatasetMysqlSpec(re
 							},
 						},
 					},
-					"schema_column": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermDataFactoryDatasetMysqlSpec"),
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"table_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"description": {
+					"folder": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"parameters", "annotations", "data_factory_name", "resource_group_name", "linked_service_name", "folder", "additional_properties", "schema_column", "name", "table_name", "description"},
+				Required: []string{"name", "table_name", "parameters", "description", "schema_column", "additional_properties", "data_factory_name", "resource_group_name", "linked_service_name", "annotations", "folder"},
 			},
 		},
 		Dependencies: []string{
@@ -33823,12 +33823,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryDatasetPostgresqlSp
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"folder": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -33853,7 +33847,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryDatasetPostgresqlSp
 							Format: "",
 						},
 					},
-					"data_factory_name": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -33885,12 +33879,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryDatasetPostgresqlSp
 							},
 						},
 					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"annotations": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -33902,6 +33890,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryDatasetPostgresqlSp
 									},
 								},
 							},
+						},
+					},
+					"data_factory_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"additional_properties": {
@@ -33919,7 +33919,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryDatasetPostgresqlSp
 						},
 					},
 				},
-				Required: []string{"description", "folder", "schema_column", "name", "data_factory_name", "linked_service_name", "table_name", "parameters", "resource_group_name", "annotations", "additional_properties"},
+				Required: []string{"folder", "schema_column", "name", "resource_group_name", "linked_service_name", "table_name", "parameters", "annotations", "data_factory_name", "description", "additional_properties"},
 			},
 		},
 		Dependencies: []string{
@@ -34106,19 +34106,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryDatasetSqlServerTab
 							},
 						},
 					},
-					"folder": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"data_factory_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"table_name": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -34162,14 +34156,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryDatasetSqlServerTab
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"table_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"folder": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"parameters", "description", "annotations", "folder", "data_factory_name", "table_name", "linked_service_name", "additional_properties", "schema_column", "name", "resource_group_name"},
+				Required: []string{"parameters", "description", "annotations", "data_factory_name", "resource_group_name", "linked_service_name", "additional_properties", "schema_column", "name", "table_name", "folder"},
 			},
 		},
 		Dependencies: []string{
@@ -34323,32 +34323,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServiceDataLa
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tenant": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"integration_runtime_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"parameters": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"data_factory_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -34367,7 +34341,38 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServiceDataLa
 							Format: "",
 						},
 					},
-					"service_principal_id": {
+					"service_principal_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tenant": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"integration_runtime_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"annotations": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -34387,28 +34392,17 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServiceDataLa
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"service_principal_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"annotations": {
+					"parameters": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Type:   []string{"string"},
@@ -34418,8 +34412,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServiceDataLa
 							},
 						},
 					},
+					"service_principal_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"tenant", "integration_runtime_name", "parameters", "data_factory_name", "resource_group_name", "url", "service_principal_id", "additional_properties", "name", "service_principal_key", "description", "annotations"},
+				Required: []string{"data_factory_name", "resource_group_name", "url", "service_principal_key", "tenant", "integration_runtime_name", "annotations", "name", "additional_properties", "description", "parameters", "service_principal_id"},
 			},
 		},
 	}
@@ -34540,18 +34540,22 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServiceMysqlS
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"parameters": {
+					"connection_string": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"integration_runtime_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"annotations": {
@@ -34585,22 +34589,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServiceMysqlS
 							Format: "",
 						},
 					},
-					"description": {
+					"parameters": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"integration_runtime_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"additional_properties": {
@@ -34618,7 +34618,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServiceMysqlS
 						},
 					},
 				},
-				Required: []string{"parameters", "annotations", "name", "data_factory_name", "resource_group_name", "description", "connection_string", "integration_runtime_name", "additional_properties"},
+				Required: []string{"connection_string", "description", "integration_runtime_name", "annotations", "name", "data_factory_name", "resource_group_name", "parameters", "additional_properties"},
 			},
 		},
 	}
@@ -34739,16 +34739,35 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServicePostgr
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"connection_string": {
+					"data_factory_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
+						},
+					},
+					"integration_runtime_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"annotations": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"additional_properties": {
@@ -34765,25 +34784,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServicePostgr
 							},
 						},
 					},
-					"name": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"data_factory_name": {
+					"connection_string": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"integration_runtime_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -34803,21 +34816,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServicePostgr
 							},
 						},
 					},
-					"annotations": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"resource_group_name", "connection_string", "additional_properties", "name", "data_factory_name", "description", "integration_runtime_name", "parameters", "annotations"},
+				Required: []string{"name", "data_factory_name", "integration_runtime_name", "annotations", "additional_properties", "resource_group_name", "connection_string", "description", "parameters"},
 			},
 		},
 	}
@@ -34944,32 +34944,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServiceSqlSer
 							Format: "",
 						},
 					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"integration_runtime_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"annotations": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"data_factory_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -34981,7 +34962,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServiceSqlSer
 							Format: "",
 						},
 					},
-					"description": {
+					"integration_runtime_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -35001,6 +34982,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServiceSqlSer
 							},
 						},
 					},
+					"annotations": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"additional_properties": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -35016,7 +35016,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryLinkedServiceSqlSer
 						},
 					},
 				},
-				Required: []string{"name", "resource_group_name", "integration_runtime_name", "annotations", "data_factory_name", "connection_string", "description", "parameters", "additional_properties"},
+				Required: []string{"name", "data_factory_name", "resource_group_name", "connection_string", "integration_runtime_name", "parameters", "annotations", "description", "additional_properties"},
 			},
 		},
 	}
@@ -35184,38 +35184,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryPipelineSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"data_factory_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"parameters": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"variables": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -35249,8 +35217,40 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactoryPipelineSpec(ref co
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"data_factory_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"parameters": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"name", "data_factory_name", "resource_group_name", "parameters", "variables", "description", "annotations"},
+				Required: []string{"variables", "description", "annotations", "name", "data_factory_name", "resource_group_name", "parameters"},
 			},
 		},
 	}
@@ -35364,18 +35364,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactorySpecGithubConfigura
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"root_folder": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"account_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"branch_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -35394,8 +35382,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactorySpecGithubConfigura
 							Format: "",
 						},
 					},
+					"root_folder": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"account_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"root_folder", "account_name", "branch_name", "git_url", "repository_name"},
+				Required: []string{"branch_name", "git_url", "repository_name", "root_folder", "account_name"},
 			},
 		},
 	}
@@ -35438,24 +35438,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactorySpecVstsConfigurati
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"repository_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"root_folder": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tenant_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"account_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -35474,8 +35456,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataFactorySpecVstsConfigurati
 							Format: "",
 						},
 					},
+					"repository_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"root_folder": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tenant_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"repository_name", "root_folder", "tenant_id", "account_name", "branch_name", "project_name"},
+				Required: []string{"account_name", "branch_name", "project_name", "repository_name", "root_folder", "tenant_id"},
 			},
 		},
 	}
@@ -35762,12 +35762,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataLakeAnalyticsFirewallRuleS
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"end_ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -35792,8 +35786,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataLakeAnalyticsFirewallRuleS
 							Format: "",
 						},
 					},
+					"end_ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"end_ip_address", "name", "account_name", "resource_group_name", "start_ip_address"},
+				Required: []string{"name", "account_name", "resource_group_name", "start_ip_address", "end_ip_address"},
 			},
 		},
 	}
@@ -36206,36 +36206,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataLakeStoreSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tier": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"encryption_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"firewall_state": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -36262,7 +36232,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataLakeStoreSpec(ref common.R
 							},
 						},
 					},
-					"name": {
+					"encryption_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tier": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -36274,8 +36262,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDataLakeStoreSpec(ref common.R
 							Format: "",
 						},
 					},
+					"endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"tier", "endpoint", "location", "resource_group_name", "encryption_type", "firewall_state", "firewall_allow_azure_ips", "tags", "name", "encryption_state"},
+				Required: []string{"firewall_state", "firewall_allow_azure_ips", "tags", "encryption_type", "location", "resource_group_name", "tier", "encryption_state", "endpoint", "name"},
 			},
 		},
 	}
@@ -36396,18 +36396,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDatabricksWorkspaceSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -36446,8 +36434,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDatabricksWorkspaceSpec(ref co
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "location", "resource_group_name", "sku", "tags", "managed_resource_group_name", "managed_resource_group_id"},
+				Required: []string{"resource_group_name", "sku", "tags", "managed_resource_group_name", "managed_resource_group_id", "name", "location"},
 			},
 		},
 	}
@@ -36735,7 +36735,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestLabSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"storage_type": {
+					"artifacts_storage_account_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -36747,7 +36747,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestLabSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"default_premium_storage_account_id": {
+					"key_vault_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -36759,7 +36759,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestLabSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"unique_identifier": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -36771,7 +36771,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestLabSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"location": {
+					"storage_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -36791,26 +36791,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestLabSpec(ref common.Refe
 							},
 						},
 					},
-					"artifacts_storage_account_id": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"key_vault_id": {
+					"default_premium_storage_account_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"name": {
+					"unique_identifier": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"storage_type", "default_storage_account_id", "default_premium_storage_account_id", "premium_data_disk_storage_account_id", "unique_identifier", "resource_group_name", "location", "tags", "artifacts_storage_account_id", "key_vault_id", "name"},
+				Required: []string{"artifacts_storage_account_id", "default_storage_account_id", "key_vault_id", "premium_data_disk_storage_account_id", "name", "resource_group_name", "storage_type", "tags", "location", "default_premium_storage_account_id", "unique_identifier"},
 			},
 		},
 	}
@@ -36937,73 +36937,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestLinuxVirtualMachineSpec
 							Format: "",
 						},
 					},
-					"storage_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"lab_virtual_network_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"fqdn": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"unique_identifier": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"lab_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"allow_claim": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"disallow_public_ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"gallery_image_reference": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermDevTestLinuxVirtualMachineSpec"),
-									},
-								},
-							},
-						},
-					},
-					"notes": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -37027,7 +36961,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestLinuxVirtualMachineSpec
 							},
 						},
 					},
-					"size": {
+					"fqdn": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -37039,15 +36979,75 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestLinuxVirtualMachineSpec
 							Format: "",
 						},
 					},
-					"lab_subnet_name": {
+					"disallow_public_ip_address": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
 					"password": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"storage_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"gallery_image_reference": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermDevTestLinuxVirtualMachineSpec"),
+									},
+								},
+							},
+						},
+					},
+					"notes": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"unique_identifier": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"lab_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"lab_subnet_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"allow_claim": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -37066,7 +37066,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestLinuxVirtualMachineSpec
 						},
 					},
 				},
-				Required: []string{"resource_group_name", "storage_type", "lab_virtual_network_id", "fqdn", "unique_identifier", "lab_name", "allow_claim", "disallow_public_ip_address", "gallery_image_reference", "notes", "name", "location", "ssh_key", "inbound_nat_rule", "size", "username", "lab_subnet_name", "password", "tags"},
+				Required: []string{"resource_group_name", "lab_virtual_network_id", "ssh_key", "inbound_nat_rule", "fqdn", "name", "username", "disallow_public_ip_address", "password", "location", "size", "storage_type", "gallery_image_reference", "notes", "unique_identifier", "lab_name", "lab_subnet_name", "allow_claim", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -37080,18 +37080,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestLinuxVirtualMachineSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"offer": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"publisher": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"sku": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -37104,8 +37092,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestLinuxVirtualMachineSpec
 							Format: "",
 						},
 					},
+					"offer": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"publisher": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"offer", "publisher", "sku", "version"},
+				Required: []string{"sku", "version", "offer", "publisher"},
 			},
 		},
 	}
@@ -37257,7 +37257,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestPolicySpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"fact_data": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"policy_set_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -37275,19 +37287,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestPolicySpec(ref common.R
 							Format: "",
 						},
 					},
-					"threshold": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"evaluator_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -37299,7 +37299,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestPolicySpec(ref common.R
 							Format: "",
 						},
 					},
-					"policy_set_name": {
+					"threshold": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -37320,7 +37320,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestPolicySpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"fact_data", "lab_name", "resource_group_name", "threshold", "evaluator_type", "description", "name", "policy_set_name", "tags"},
+				Required: []string{"description", "fact_data", "policy_set_name", "lab_name", "resource_group_name", "evaluator_type", "name", "threshold", "tags"},
 			},
 		},
 	}
@@ -37512,12 +37512,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestVirtualNetworkSpecSubne
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"use_in_virtual_machine_creation": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -37530,8 +37524,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestVirtualNetworkSpecSubne
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "use_in_virtual_machine_creation", "use_public_ip_address"},
+				Required: []string{"use_in_virtual_machine_creation", "use_public_ip_address", "name"},
 			},
 		},
 	}
@@ -37652,19 +37652,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestWindowsVirtualMachineSp
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"fqdn": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"lab_subnet_name": {
+					"storage_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -37673,6 +37667,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestWindowsVirtualMachineSp
 					"allow_claim": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"notes": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"unique_identifier": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -37688,37 +37694,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestWindowsVirtualMachineSp
 							},
 						},
 					},
-					"inbound_nat_rule": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermDevTestWindowsVirtualMachineSpec"),
-									},
-								},
-							},
-						},
-					},
-					"notes": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"username": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
+					"fqdn": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -37730,13 +37706,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestWindowsVirtualMachineSp
 							Format: "",
 						},
 					},
-					"size": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"storage_type": {
+					"username": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"lab_subnet_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -37748,16 +37730,40 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestWindowsVirtualMachineSp
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"lab_virtual_network_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"lab_virtual_network_id": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
+						},
+					},
+					"size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"inbound_nat_rule": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermDevTestWindowsVirtualMachineSpec"),
+									},
+								},
+							},
 						},
 					},
 					"tags": {
@@ -37774,14 +37780,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestWindowsVirtualMachineSp
 							},
 						},
 					},
-					"unique_identifier": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"fqdn", "location", "lab_subnet_name", "allow_claim", "gallery_image_reference", "inbound_nat_rule", "notes", "username", "password", "name", "lab_name", "size", "storage_type", "disallow_public_ip_address", "resource_group_name", "lab_virtual_network_id", "tags", "unique_identifier"},
+				Required: []string{"location", "storage_type", "allow_claim", "notes", "unique_identifier", "gallery_image_reference", "fqdn", "lab_name", "resource_group_name", "username", "lab_subnet_name", "disallow_public_ip_address", "lab_virtual_network_id", "name", "size", "password", "inbound_nat_rule", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -37832,12 +37832,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestWindowsVirtualMachineSp
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"protocol": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"backend_port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -37850,8 +37844,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevTestWindowsVirtualMachineSp
 							Format: "int32",
 						},
 					},
+					"protocol": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"protocol", "backend_port", "frontend_port"},
+				Required: []string{"backend_port", "frontend_port", "protocol"},
 			},
 		},
 	}
@@ -37972,12 +37972,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevspaceControllerSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -38014,6 +38008,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevspaceControllerSpec(ref com
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -38028,12 +38034,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevspaceControllerSpec(ref com
 							},
 						},
 					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"data_plane_fqdn": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -38041,7 +38041,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDevspaceControllerSpec(ref com
 						},
 					},
 				},
-				Required: []string{"name", "location", "sku", "host_suffix", "target_container_host_resource_id", "target_container_host_credentials_base64", "tags", "resource_group_name", "data_plane_fqdn"},
+				Required: []string{"location", "sku", "host_suffix", "target_container_host_resource_id", "target_container_host_credentials_base64", "name", "resource_group_name", "tags", "data_plane_fqdn"},
 			},
 		},
 		Dependencies: []string{
@@ -38189,6 +38189,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsARecordSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"zone_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -38228,20 +38240,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsARecordSpec(ref common.Refe
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"zone_name", "records", "ttl", "tags", "name", "resource_group_name"},
+				Required: []string{"name", "resource_group_name", "zone_name", "records", "ttl", "tags"},
 			},
 		},
 	}
@@ -38362,6 +38362,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsAaaaRecordSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"zone_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"records": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -38395,26 +38413,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsAaaaRecordSpec(ref common.R
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"zone_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"records", "ttl", "tags", "name", "resource_group_name", "zone_name"},
+				Required: []string{"name", "resource_group_name", "zone_name", "records", "ttl", "tags"},
 			},
 		},
 	}
@@ -38535,6 +38535,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsCaaRecordSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -38579,14 +38585,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsCaaRecordSpec(ref common.Re
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"resource_group_name", "zone_name", "record", "ttl", "tags", "name"},
+				Required: []string{"name", "resource_group_name", "zone_name", "record", "ttl", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -38740,6 +38740,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsCnameRecordSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -38784,14 +38790,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsCnameRecordSpec(ref common.
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"resource_group_name", "zone_name", "records", "record", "ttl", "tags", "name"},
+				Required: []string{"name", "resource_group_name", "zone_name", "records", "record", "ttl", "tags"},
 			},
 		},
 	}
@@ -38912,6 +38912,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsMxRecordSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"zone_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -38950,20 +38962,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsMxRecordSpec(ref common.Ref
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"zone_name", "record", "ttl", "tags", "name", "resource_group_name"},
+				Required: []string{"name", "resource_group_name", "zone_name", "record", "ttl", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -39111,6 +39111,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsNsRecordSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -39168,14 +39174,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsNsRecordSpec(ref common.Ref
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"resource_group_name", "zone_name", "records", "record", "ttl", "tags", "name"},
+				Required: []string{"name", "resource_group_name", "zone_name", "records", "record", "ttl", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -39490,6 +39490,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsSrvRecordSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"ttl": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -39534,14 +39540,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsSrvRecordSpec(ref common.Re
 							},
 						},
 					},
-					"ttl": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"tags", "name", "resource_group_name", "zone_name", "record", "ttl"},
+				Required: []string{"ttl", "tags", "name", "resource_group_name", "zone_name", "record"},
 			},
 		},
 		Dependencies: []string{
@@ -39701,18 +39701,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsTxtRecordSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"record": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermDnsTxtRecordSpec"),
-									},
-								},
-							},
-						},
-					},
 					"ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -39751,8 +39739,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsTxtRecordSpec(ref common.Re
 							Format: "",
 						},
 					},
+					"record": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermDnsTxtRecordSpec"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"record", "ttl", "tags", "name", "resource_group_name", "zone_name"},
+				Required: []string{"ttl", "tags", "name", "resource_group_name", "zone_name", "record"},
 			},
 		},
 		Dependencies: []string{
@@ -39894,6 +39894,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsZoneSpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"number_of_record_sets": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"name_servers": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -39907,10 +39925,17 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsZoneSpec(ref common.Referen
 							},
 						},
 					},
-					"zone_type": {
+					"registration_virtual_network_ids": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"resolution_virtual_network_ids": {
@@ -39924,6 +39949,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsZoneSpec(ref common.Referen
 									},
 								},
 							},
+						},
+					},
+					"max_number_of_record_sets": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"zone_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"tags": {
@@ -39940,45 +39977,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermDnsZoneSpec(ref common.Referen
 							},
 						},
 					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"max_number_of_record_sets": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"registration_virtual_network_ids": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"number_of_record_sets": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"name_servers", "zone_type", "resolution_virtual_network_ids", "tags", "resource_group_name", "max_number_of_record_sets", "registration_virtual_network_ids", "name", "number_of_record_sets"},
+				Required: []string{"name", "resource_group_name", "number_of_record_sets", "name_servers", "registration_virtual_network_ids", "resolution_virtual_network_ids", "max_number_of_record_sets", "zone_type", "tags"},
 			},
 		},
 	}
@@ -40099,6 +40099,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridDomainSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"input_mapping_default_values": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermEventgridDomainSpec"),
+									},
+								},
+							},
+						},
+					},
+					"endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -40149,26 +40167,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridDomainSpec(ref common
 							},
 						},
 					},
-					"input_mapping_default_values": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermEventgridDomainSpec"),
-									},
-								},
-							},
-						},
-					},
-					"endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "location", "resource_group_name", "tags", "input_schema", "input_mapping_fields", "input_mapping_default_values", "endpoint"},
+				Required: []string{"input_mapping_default_values", "endpoint", "name", "location", "resource_group_name", "tags", "input_schema", "input_mapping_fields"},
 			},
 		},
 		Dependencies: []string{
@@ -40213,12 +40213,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridDomainSpecInputMappin
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"data_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -40249,8 +40243,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridDomainSpecInputMappin
 							Format: "",
 						},
 					},
+					"data_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"data_version", "id", "topic", "event_time", "event_type", "subject"},
+				Required: []string{"id", "topic", "event_time", "event_type", "subject", "data_version"},
 			},
 		},
 	}
@@ -40371,18 +40371,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridEventSubscriptionSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"hybrid_connection_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermEventgridEventSubscriptionSpec"),
-									},
-								},
-							},
-						},
-					},
 					"included_event_types": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -40396,7 +40384,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridEventSubscriptionSpec
 							},
 						},
 					},
-					"subject_filter": {
+					"storage_blob_dead_letter_destination": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -40414,12 +40402,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridEventSubscriptionSpec
 							Format: "",
 						},
 					},
-					"scope": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"event_delivery_schema": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -40432,7 +40414,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridEventSubscriptionSpec
 							Format: "",
 						},
 					},
-					"storage_queue_endpoint": {
+					"eventhub_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -40444,7 +40426,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridEventSubscriptionSpec
 							},
 						},
 					},
-					"storage_blob_dead_letter_destination": {
+					"hybrid_connection_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermEventgridEventSubscriptionSpec"),
+									},
+								},
+							},
+						},
+					},
+					"webhook_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -40469,7 +40463,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridEventSubscriptionSpec
 							},
 						},
 					},
-					"eventhub_endpoint": {
+					"scope": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"storage_queue_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -40481,7 +40481,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridEventSubscriptionSpec
 							},
 						},
 					},
-					"webhook_endpoint": {
+					"subject_filter": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -40506,7 +40506,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridEventSubscriptionSpec
 						},
 					},
 				},
-				Required: []string{"hybrid_connection_endpoint", "included_event_types", "subject_filter", "name", "scope", "event_delivery_schema", "topic_name", "storage_queue_endpoint", "storage_blob_dead_letter_destination", "labels", "eventhub_endpoint", "webhook_endpoint", "retry_policy"},
+				Required: []string{"included_event_types", "storage_blob_dead_letter_destination", "name", "event_delivery_schema", "topic_name", "eventhub_endpoint", "hybrid_connection_endpoint", "webhook_endpoint", "labels", "scope", "storage_queue_endpoint", "subject_filter", "retry_policy"},
 			},
 		},
 		Dependencies: []string{
@@ -40558,20 +40558,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridEventSubscriptionSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"event_time_to_live": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"max_delivery_attempts": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
+					"event_time_to_live": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"event_time_to_live", "max_delivery_attempts"},
+				Required: []string{"max_delivery_attempts", "event_time_to_live"},
 			},
 		},
 	}
@@ -40792,6 +40792,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridTopicSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_access_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_access_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -40824,26 +40842,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventgridTopicSpec(ref common.
 							},
 						},
 					},
-					"endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_access_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_access_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "location", "resource_group_name", "tags", "endpoint", "primary_access_key", "secondary_access_key"},
+				Required: []string{"endpoint", "primary_access_key", "secondary_access_key", "name", "location", "resource_group_name", "tags"},
 			},
 		},
 	}
@@ -41007,6 +41007,48 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubAuthorizationRuleSpec(
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"eventhub_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"namespace_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"listen": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -41019,55 +41061,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubAuthorizationRuleSpec(
 							Format: "",
 						},
 					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"manage": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"secondary_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"namespace_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"eventhub_name": {
+					"primary_connection_string": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -41080,7 +41080,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubAuthorizationRuleSpec(
 						},
 					},
 				},
-				Required: []string{"listen", "send", "location", "primary_key", "primary_connection_string", "secondary_connection_string", "manage", "secondary_key", "name", "namespace_name", "eventhub_name", "resource_group_name"},
+				Required: []string{"eventhub_name", "name", "secondary_key", "secondary_connection_string", "primary_key", "namespace_name", "location", "listen", "send", "manage", "primary_connection_string", "resource_group_name"},
 			},
 		},
 	}
@@ -41449,21 +41449,15 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubNamespaceAuthorization
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
+					"namespace_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"send": {
+					"manage": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"primary_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -41479,19 +41473,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubNamespaceAuthorization
 							Format: "",
 						},
 					},
-					"namespace_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_connection_string": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -41503,20 +41503,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubNamespaceAuthorization
 							Format: "",
 						},
 					},
-					"manage": {
+					"send": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"primary_connection_string": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"name", "send", "primary_key", "secondary_key", "secondary_connection_string", "namespace_name", "resource_group_name", "location", "listen", "manage", "primary_connection_string"},
+				Required: []string{"namespace_name", "manage", "secondary_key", "secondary_connection_string", "location", "name", "primary_key", "primary_connection_string", "listen", "send", "resource_group_name"},
 			},
 		},
 	}
@@ -41594,6 +41594,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubNamespaceSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"default_primary_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"default_secondary_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -41603,6 +41615,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubNamespaceSpec(ref comm
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"default_secondary_connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"auto_inflate_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -41638,12 +41662,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubNamespaceSpec(ref comm
 							},
 						},
 					},
-					"default_secondary_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -41662,26 +41680,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubNamespaceSpec(ref comm
 							Format: "int32",
 						},
 					},
-					"auto_inflate_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"default_secondary_connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"default_primary_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"location", "resource_group_name", "kafka_enabled", "maximum_throughput_units", "default_primary_connection_string", "tags", "default_secondary_key", "name", "sku", "capacity", "auto_inflate_enabled", "default_secondary_connection_string", "default_primary_key"},
+				Required: []string{"default_primary_key", "default_secondary_key", "location", "resource_group_name", "default_secondary_connection_string", "auto_inflate_enabled", "kafka_enabled", "maximum_throughput_units", "default_primary_connection_string", "tags", "name", "sku", "capacity"},
 			},
 		},
 	}
@@ -41712,19 +41712,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"partition_ids": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -41773,8 +41760,21 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubSpec(ref common.Refere
 							},
 						},
 					},
+					"partition_ids": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"partition_ids", "name", "namespace_name", "resource_group_name", "location", "partition_count", "message_retention", "capture_description"},
+				Required: []string{"name", "namespace_name", "resource_group_name", "location", "partition_count", "message_retention", "capture_description", "partition_ids"},
 			},
 		},
 		Dependencies: []string{
@@ -41788,24 +41788,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubSpecCaptureDescription
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"skip_empty_archives": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"encoding": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"interval_in_seconds": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"size_limit_in_bytes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -41830,8 +41812,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermEventhubSpecCaptureDescription
 							Format: "",
 						},
 					},
+					"skip_empty_archives": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"encoding": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"interval_in_seconds": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"skip_empty_archives", "encoding", "interval_in_seconds", "size_limit_in_bytes", "destination", "enabled"},
+				Required: []string{"size_limit_in_bytes", "destination", "enabled", "skip_empty_archives", "encoding", "interval_in_seconds"},
 			},
 		},
 		Dependencies: []string{
@@ -42233,7 +42233,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermExpressRouteCircuitPeeringSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"express_route_circuit_name": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -42251,22 +42251,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermExpressRouteCircuitPeeringSpec
 							Format: "",
 						},
 					},
-					"vlan_id": {
+					"azure_asn": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
-						},
-					},
-					"peer_asn": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"primary_azure_port": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
 						},
 					},
 					"secondary_azure_port": {
@@ -42281,10 +42269,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermExpressRouteCircuitPeeringSpec
 							Format: "",
 						},
 					},
-					"shared_key": {
+					"express_route_circuit_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
+						},
+					},
+					"peer_asn": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"microsoft_peering_config": {
@@ -42299,20 +42293,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermExpressRouteCircuitPeeringSpec
 							},
 						},
 					},
-					"azure_asn": {
+					"primary_azure_port": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"vlan_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
-					"resource_group_name": {
+					"shared_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"express_route_circuit_name", "primary_peer_address_prefix", "secondary_peer_address_prefix", "vlan_id", "peer_asn", "primary_azure_port", "secondary_azure_port", "peering_type", "shared_key", "microsoft_peering_config", "azure_asn", "resource_group_name"},
+				Required: []string{"resource_group_name", "primary_peer_address_prefix", "secondary_peer_address_prefix", "azure_asn", "secondary_azure_port", "peering_type", "express_route_circuit_name", "peer_asn", "microsoft_peering_config", "primary_azure_port", "vlan_id", "shared_key"},
 			},
 		},
 		Dependencies: []string{
@@ -42371,9 +42371,57 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermExpressRouteCircuitSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"service_provider_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"peering_location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"bandwidth_in_mbps": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"sku": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermExpressRouteCircuitSpec"),
+									},
+								},
+							},
+						},
+					},
 					"service_provider_provisioning_state": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"allow_classic_operations": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -42403,56 +42451,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermExpressRouteCircuitSpec(ref co
 							Format: "",
 						},
 					},
-					"service_provider_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"peering_location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"sku": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermExpressRouteCircuitSpec"),
-									},
-								},
-							},
-						},
-					},
-					"allow_classic_operations": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"bandwidth_in_mbps": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"service_provider_provisioning_state", "service_key", "tags", "resource_group_name", "service_provider_name", "peering_location", "sku", "allow_classic_operations", "name", "location", "bandwidth_in_mbps"},
+				Required: []string{"location", "service_provider_name", "peering_location", "bandwidth_in_mbps", "sku", "service_provider_provisioning_state", "name", "allow_classic_operations", "service_key", "tags", "resource_group_name"},
 			},
 		},
 		Dependencies: []string{
@@ -42643,18 +42643,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFirewallApplicationRuleCollect
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"priority": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"action": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -42685,8 +42673,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFirewallApplicationRuleCollect
 							Format: "",
 						},
 					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"priority": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"resource_group_name", "priority", "action", "rule", "name", "azure_firewall_name"},
+				Required: []string{"action", "rule", "name", "azure_firewall_name", "resource_group_name", "priority"},
 			},
 		},
 		Dependencies: []string{
@@ -42700,6 +42700,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFirewallApplicationRuleCollect
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"source_addresses": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -42750,21 +42763,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFirewallApplicationRuleCollect
 							Format: "",
 						},
 					},
-					"source_addresses": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"description", "fqdn_tags", "target_fqdns", "protocol", "name", "source_addresses"},
+				Required: []string{"source_addresses", "description", "fqdn_tags", "target_fqdns", "protocol", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -42959,12 +42959,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFirewallNatRuleCollectionSpec(
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"priority": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"action": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -43001,8 +42995,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFirewallNatRuleCollectionSpec(
 							Format: "",
 						},
 					},
+					"priority": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"priority", "action", "rule", "name", "azure_firewall_name", "resource_group_name"},
+				Required: []string{"action", "rule", "name", "azure_firewall_name", "resource_group_name", "priority"},
 			},
 		},
 		Dependencies: []string{
@@ -43016,18 +43016,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFirewallNatRuleCollectionSpecR
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"translated_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"translated_port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -43092,8 +43080,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFirewallNatRuleCollectionSpecR
 							Format: "",
 						},
 					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"translated_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"description", "translated_address", "translated_port", "source_addresses", "destination_addresses", "destination_ports", "protocols", "name"},
+				Required: []string{"translated_port", "source_addresses", "destination_addresses", "destination_ports", "protocols", "name", "description", "translated_address"},
 			},
 		},
 	}
@@ -43367,20 +43367,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFirewallSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -43411,8 +43397,22 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFirewallSpec(ref common.Refere
 							},
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"tags", "name", "location", "resource_group_name", "ip_configuration"},
+				Required: []string{"name", "location", "resource_group_name", "ip_configuration", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -43578,48 +43578,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFunctionAppSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"outbound_ip_addresses": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"storage_connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"enable_builtin_logging": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermFunctionAppSpec"),
-									},
-								},
-							},
-						},
-					},
 					"identity": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -43646,33 +43604,39 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFunctionAppSpec(ref common.Ref
 							},
 						},
 					},
-					"possible_outbound_ip_addresses": {
+					"outbound_ip_addresses": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"https_only": {
+					"storage_connection_string": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
+							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"site_credential": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermFunctionAppSpec"),
-									},
-								},
-							},
 						},
 					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -43690,42 +43654,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFunctionAppSpec(ref common.Ref
 							},
 						},
 					},
-					"client_affinity_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"app_service_plan_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"default_hostname": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"site_config": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -43738,8 +43666,80 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFunctionAppSpec(ref common.Ref
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"default_hostname": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"possible_outbound_ip_addresses": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"client_affinity_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"site_credential": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermFunctionAppSpec"),
+									},
+								},
+							},
+						},
+					},
+					"app_service_plan_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enable_builtin_logging": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermFunctionAppSpec"),
+									},
+								},
+							},
+						},
+					},
+					"https_only": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"outbound_ip_addresses", "name", "kind", "storage_connection_string", "enable_builtin_logging", "connection_string", "identity", "tags", "possible_outbound_ip_addresses", "https_only", "site_credential", "resource_group_name", "app_settings", "client_affinity_enabled", "location", "app_service_plan_id", "enabled", "version", "default_hostname", "site_config"},
+				Required: []string{"identity", "tags", "outbound_ip_addresses", "storage_connection_string", "resource_group_name", "location", "kind", "enabled", "app_settings", "site_config", "name", "default_hostname", "possible_outbound_ip_addresses", "client_affinity_enabled", "site_credential", "app_service_plan_id", "enable_builtin_logging", "connection_string", "https_only", "version"},
 			},
 		},
 		Dependencies: []string{
@@ -43753,12 +43753,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFunctionAppSpecConnectionStrin
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -43771,8 +43765,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFunctionAppSpecConnectionStrin
 							Format: "",
 						},
 					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"type", "name", "value"},
+				Required: []string{"name", "value", "type"},
 			},
 		},
 	}
@@ -43784,12 +43784,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFunctionAppSpecIdentity(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"principal_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -43802,8 +43796,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFunctionAppSpecIdentity(ref co
 							Format: "",
 						},
 					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"type", "principal_id", "tenant_id"},
+				Required: []string{"principal_id", "tenant_id", "type"},
 			},
 		},
 	}
@@ -43815,6 +43815,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFunctionAppSpecSiteConfig(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"linux_fx_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"always_on": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -43833,14 +43839,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermFunctionAppSpecSiteConfig(ref 
 							Format: "",
 						},
 					},
-					"linux_fx_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"always_on", "use_32_bit_worker_process", "websockets_enabled", "linux_fx_version"},
+				Required: []string{"linux_fx_version", "always_on", "use_32_bit_worker_process", "websockets_enabled"},
 			},
 		},
 	}
@@ -43986,12 +43986,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHadoopClusterSpec(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"https_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -44004,52 +43998,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHadoopClusterSpec(ref
 							Format: "",
 						},
 					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"cluster_version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"roles": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightHadoopClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"ssh_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tier": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"component_version": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightHadoopClusterSpec"),
-									},
-								},
-							},
 						},
 					},
 					"gateway": {
@@ -44064,7 +44016,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHadoopClusterSpec(ref
 							},
 						},
 					},
-					"storage_account": {
+					"roles": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -44090,8 +44042,56 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHadoopClusterSpec(ref
 							},
 						},
 					},
+					"https_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tier": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"component_version": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightHadoopClusterSpec"),
+									},
+								},
+							},
+						},
+					},
+					"storage_account": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightHadoopClusterSpec"),
+									},
+								},
+							},
+						},
+					},
+					"ssh_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"https_endpoint", "name", "resource_group_name", "location", "cluster_version", "roles", "ssh_endpoint", "tier", "component_version", "gateway", "storage_account", "tags"},
+				Required: []string{"name", "resource_group_name", "cluster_version", "gateway", "roles", "tags", "https_endpoint", "location", "tier", "component_version", "storage_account", "ssh_endpoint"},
 			},
 		},
 		Dependencies: []string{
@@ -44155,18 +44155,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHadoopClusterSpecRole
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"head_node": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightHadoopClusterSpecRoles"),
-									},
-								},
-							},
-						},
-					},
 					"worker_node": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -44191,8 +44179,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHadoopClusterSpecRole
 							},
 						},
 					},
+					"head_node": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightHadoopClusterSpecRoles"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"head_node", "worker_node", "zookeeper_node"},
+				Required: []string{"worker_node", "zookeeper_node", "head_node"},
 			},
 		},
 		Dependencies: []string{
@@ -44262,6 +44262,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHadoopClusterSpecRole
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"username": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ssh_keys": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"subnet_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"virtual_network_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -44286,39 +44317,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHadoopClusterSpecRole
 							Format: "",
 						},
 					},
-					"username": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ssh_keys": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"subnet_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"virtual_network_id", "min_instance_count", "target_instance_count", "vm_size", "username", "password", "ssh_keys", "subnet_id"},
+				Required: []string{"username", "password", "ssh_keys", "subnet_id", "virtual_network_id", "min_instance_count", "target_instance_count", "vm_size"},
 			},
 		},
 	}
@@ -44330,6 +44330,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHadoopClusterSpecRole
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"username": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -44367,14 +44373,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHadoopClusterSpecRole
 							Format: "",
 						},
 					},
-					"vm_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"username", "password", "ssh_keys", "subnet_id", "virtual_network_id", "vm_size"},
+				Required: []string{"vm_size", "username", "password", "ssh_keys", "subnet_id", "virtual_network_id"},
 			},
 		},
 	}
@@ -44386,6 +44386,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHadoopClusterSpecStor
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"storage_account_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"storage_container_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -44398,14 +44404,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHadoopClusterSpecStor
 							Format: "",
 						},
 					},
-					"storage_account_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"storage_container_id", "is_default", "storage_account_key"},
+				Required: []string{"storage_account_key", "storage_container_id", "is_default"},
 			},
 		},
 	}
@@ -44526,7 +44526,43 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHbaseClusterSpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"roles": {
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"cluster_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tier": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"component_version": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightHbaseClusterSpec"),
+									},
+								},
+							},
+						},
+					},
+					"gateway": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -44558,19 +44594,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHbaseClusterSpec(ref 
 							Format: "",
 						},
 					},
-					"location": {
+					"ssh_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"cluster_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"component_version": {
+					"roles": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -44582,16 +44612,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHbaseClusterSpec(ref 
 							},
 						},
 					},
-					"gateway": {
+					"https_endpoint": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightHbaseClusterSpec"),
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"storage_account": {
@@ -44606,32 +44630,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHbaseClusterSpec(ref 
 							},
 						},
 					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tier": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"https_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ssh_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"roles", "tags", "name", "location", "cluster_version", "component_version", "gateway", "storage_account", "resource_group_name", "tier", "https_endpoint", "ssh_endpoint"},
+				Required: []string{"resource_group_name", "location", "cluster_version", "tier", "component_version", "gateway", "tags", "name", "ssh_endpoint", "roles", "https_endpoint", "storage_account"},
 			},
 		},
 		Dependencies: []string{
@@ -44870,6 +44870,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHbaseClusterSpecRoles
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"username": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -44907,14 +44913,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightHbaseClusterSpecRoles
 							Format: "",
 						},
 					},
-					"vm_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"username", "password", "ssh_keys", "subnet_id", "virtual_network_id", "vm_size"},
+				Required: []string{"vm_size", "username", "password", "ssh_keys", "subnet_id", "virtual_network_id"},
 			},
 		},
 	}
@@ -45066,6 +45066,44 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightInteractiveQueryClust
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"ssh_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tier": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"cluster_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"component_version": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -45090,6 +45128,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightInteractiveQueryClust
 							},
 						},
 					},
+					"storage_account": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightInteractiveQueryClusterSpec"),
+									},
+								},
+							},
+						},
+					},
 					"roles": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -45102,7 +45152,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightInteractiveQueryClust
 							},
 						},
 					},
-					"ssh_endpoint": {
+					"https_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -45120,58 +45170,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightInteractiveQueryClust
 							Format: "",
 						},
 					},
-					"cluster_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"https_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tier": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"storage_account": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightInteractiveQueryClusterSpec"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"component_version", "gateway", "roles", "ssh_endpoint", "name", "resource_group_name", "cluster_version", "tags", "https_endpoint", "location", "tier", "storage_account"},
+				Required: []string{"tags", "ssh_endpoint", "location", "tier", "cluster_version", "component_version", "gateway", "storage_account", "roles", "https_endpoint", "name", "resource_group_name"},
 			},
 		},
 		Dependencies: []string{
@@ -45286,31 +45286,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightInteractiveQueryClust
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"ssh_keys": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"subnet_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"virtual_network_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"vm_size": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -45329,19 +45304,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightInteractiveQueryClust
 							Format: "",
 						},
 					},
-				},
-				Required: []string{"ssh_keys", "subnet_id", "virtual_network_id", "vm_size", "username", "password"},
-			},
-		},
-	}
-}
-
-func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightInteractiveQueryClusterSpecRolesWorkerNode(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
 					"ssh_keys": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -45367,6 +45329,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightInteractiveQueryClust
 							Format: "",
 						},
 					},
+				},
+				Required: []string{"vm_size", "username", "password", "ssh_keys", "subnet_id", "virtual_network_id"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightInteractiveQueryClusterSpecRolesWorkerNode(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
 					"min_instance_count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -45397,8 +45372,33 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightInteractiveQueryClust
 							Format: "",
 						},
 					},
+					"ssh_keys": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"subnet_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"virtual_network_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"ssh_keys", "subnet_id", "virtual_network_id", "min_instance_count", "target_instance_count", "vm_size", "username", "password"},
+				Required: []string{"min_instance_count", "target_instance_count", "vm_size", "username", "password", "ssh_keys", "subnet_id", "virtual_network_id"},
 			},
 		},
 	}
@@ -45466,6 +45466,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightInteractiveQueryClust
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"storage_account_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"storage_container_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -45478,14 +45484,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightInteractiveQueryClust
 							Format: "",
 						},
 					},
-					"storage_account_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"storage_container_id", "is_default", "storage_account_key"},
+				Required: []string{"storage_account_key", "storage_container_id", "is_default"},
 			},
 		},
 	}
@@ -45606,57 +45606,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightKafkaClusterSpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tier": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"gateway": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightKafkaClusterSpec"),
-									},
-								},
-							},
-						},
-					},
 					"ssh_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"https_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -45668,13 +45618,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightKafkaClusterSpec(ref 
 							Format: "",
 						},
 					},
-					"cluster_version": {
+					"tier": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 					"component_version": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightKafkaClusterSpec"),
+									},
+								},
+							},
+						},
+					},
+					"gateway": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -45710,8 +45672,46 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightKafkaClusterSpec(ref 
 							},
 						},
 					},
+					"https_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"cluster_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"resource_group_name", "tier", "gateway", "ssh_endpoint", "tags", "https_endpoint", "name", "location", "cluster_version", "component_version", "storage_account", "roles"},
+				Required: []string{"ssh_endpoint", "location", "tier", "component_version", "gateway", "storage_account", "roles", "https_endpoint", "name", "resource_group_name", "cluster_version", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -45744,12 +45744,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightKafkaClusterSpecGatew
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"username": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -45762,8 +45756,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightKafkaClusterSpecGatew
 							Format: "",
 						},
 					},
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"enabled", "username", "password"},
+				Required: []string{"username", "password", "enabled"},
 			},
 		},
 	}
@@ -45775,18 +45775,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightKafkaClusterSpecRoles
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"head_node": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightKafkaClusterSpecRoles"),
-									},
-								},
-							},
-						},
-					},
 					"worker_node": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -45811,8 +45799,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightKafkaClusterSpecRoles
 							},
 						},
 					},
+					"head_node": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightKafkaClusterSpecRoles"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"head_node", "worker_node", "zookeeper_node"},
+				Required: []string{"worker_node", "zookeeper_node", "head_node"},
 			},
 		},
 		Dependencies: []string{
@@ -45882,18 +45882,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightKafkaClusterSpecRoles
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"subnet_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"virtual_network_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -45924,56 +45912,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightKafkaClusterSpecRoles
 							Format: "",
 						},
 					},
-					"ssh_keys": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"number_of_disks_per_node": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-				},
-				Required: []string{"password", "subnet_id", "virtual_network_id", "min_instance_count", "target_instance_count", "vm_size", "username", "ssh_keys", "number_of_disks_per_node"},
-			},
-		},
-	}
-}
-
-func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightKafkaClusterSpecRolesZookeeperNode(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"virtual_network_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"vm_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"username": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"password": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -45999,8 +45937,70 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightKafkaClusterSpecRoles
 							Format: "",
 						},
 					},
+					"number_of_disks_per_node": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"virtual_network_id", "vm_size", "username", "password", "ssh_keys", "subnet_id"},
+				Required: []string{"virtual_network_id", "min_instance_count", "target_instance_count", "vm_size", "username", "password", "ssh_keys", "subnet_id", "number_of_disks_per_node"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightKafkaClusterSpecRolesZookeeperNode(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"ssh_keys": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"subnet_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"virtual_network_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"username": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"ssh_keys", "subnet_id", "virtual_network_id", "vm_size", "username", "password"},
 			},
 		},
 	}
@@ -46152,74 +46152,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightMlServicesClusterSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"https_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tier": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"gateway": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightMlServicesClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"rstudio": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"cluster_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"storage_account": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -46244,20 +46176,88 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightMlServicesClusterSpec
 							},
 						},
 					},
-					"edge_ssh_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"ssh_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"cluster_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tier": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"rstudio": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"edge_ssh_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"https_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"gateway": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightMlServicesClusterSpec"),
+									},
+								},
+							},
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"https_endpoint", "resource_group_name", "location", "tier", "gateway", "rstudio", "tags", "name", "cluster_version", "storage_account", "roles", "edge_ssh_endpoint", "ssh_endpoint"},
+				Required: []string{"storage_account", "roles", "ssh_endpoint", "location", "cluster_version", "tier", "rstudio", "edge_ssh_endpoint", "https_endpoint", "name", "resource_group_name", "gateway", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -46271,12 +46271,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightMlServicesClusterSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"username": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -46289,8 +46283,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightMlServicesClusterSpec
 							Format: "",
 						},
 					},
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"enabled", "username", "password"},
+				Required: []string{"username", "password", "enabled"},
 			},
 		},
 	}
@@ -46302,18 +46302,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightMlServicesClusterSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"head_node": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightMlServicesClusterSpecRoles"),
-									},
-								},
-							},
-						},
-					},
 					"worker_node": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -46350,8 +46338,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightMlServicesClusterSpec
 							},
 						},
 					},
+					"head_node": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightMlServicesClusterSpecRoles"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"head_node", "worker_node", "zookeeper_node", "edge_node"},
+				Required: []string{"worker_node", "zookeeper_node", "edge_node", "head_node"},
 			},
 		},
 		Dependencies: []string{
@@ -46365,6 +46365,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightMlServicesClusterSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"ssh_keys": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -46402,14 +46408,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightMlServicesClusterSpec
 							Format: "",
 						},
 					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"ssh_keys", "subnet_id", "virtual_network_id", "vm_size", "username", "password"},
+				Required: []string{"password", "ssh_keys", "subnet_id", "virtual_network_id", "vm_size", "username"},
 			},
 		},
 	}
@@ -46477,12 +46477,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightMlServicesClusterSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"vm_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"username": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -46532,8 +46526,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightMlServicesClusterSpec
 							Format: "int32",
 						},
 					},
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"vm_size", "username", "password", "ssh_keys", "subnet_id", "virtual_network_id", "min_instance_count", "target_instance_count"},
+				Required: []string{"username", "password", "ssh_keys", "subnet_id", "virtual_network_id", "min_instance_count", "target_instance_count", "vm_size"},
 			},
 		},
 	}
@@ -46545,6 +46545,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightMlServicesClusterSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"username": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"password": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -46576,20 +46588,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightMlServicesClusterSpec
 							Format: "",
 						},
 					},
-					"vm_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"username": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"password", "ssh_keys", "subnet_id", "virtual_network_id", "vm_size", "username"},
+				Required: []string{"vm_size", "username", "password", "ssh_keys", "subnet_id", "virtual_network_id"},
 			},
 		},
 	}
@@ -46741,36 +46741,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightRserverClusterSpec(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"ssh_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
 						},
 					},
 					"name": {
@@ -46785,31 +46759,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightRserverClusterSpec(re
 							Format: "",
 						},
 					},
-					"tier": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"gateway": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightRserverClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"rstudio": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"storage_account": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -46833,6 +46783,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightRserverClusterSpec(re
 							},
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"edge_ssh_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -46845,8 +46809,44 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightRserverClusterSpec(re
 							Format: "",
 						},
 					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tier": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"rstudio": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"storage_account": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightRserverClusterSpec"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"resource_group_name", "location", "ssh_endpoint", "tags", "name", "cluster_version", "tier", "gateway", "rstudio", "storage_account", "roles", "edge_ssh_endpoint", "https_endpoint"},
+				Required: []string{"ssh_endpoint", "name", "cluster_version", "gateway", "roles", "tags", "edge_ssh_endpoint", "https_endpoint", "resource_group_name", "location", "tier", "rstudio", "storage_account"},
 			},
 		},
 		Dependencies: []string{
@@ -46891,18 +46891,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightRserverClusterSpecRol
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"edge_node": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightRserverClusterSpecRoles"),
-									},
-								},
-							},
-						},
-					},
 					"head_node": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -46939,8 +46927,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightRserverClusterSpecRol
 							},
 						},
 					},
+					"edge_node": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightRserverClusterSpecRoles"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"edge_node", "head_node", "worker_node", "zookeeper_node"},
+				Required: []string{"head_node", "worker_node", "zookeeper_node", "edge_node"},
 			},
 		},
 		Dependencies: []string{
@@ -46954,18 +46954,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightRserverClusterSpecRol
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"vm_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"username": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"password": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -46997,8 +46985,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightRserverClusterSpecRol
 							Format: "",
 						},
 					},
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"username": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"vm_size", "username", "password", "ssh_keys", "subnet_id", "virtual_network_id"},
+				Required: []string{"password", "ssh_keys", "subnet_id", "virtual_network_id", "vm_size", "username"},
 			},
 		},
 	}
@@ -47066,6 +47066,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightRserverClusterSpecRol
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"ssh_keys": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -47115,14 +47121,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightRserverClusterSpecRol
 							Format: "",
 						},
 					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"ssh_keys", "subnet_id", "virtual_network_id", "min_instance_count", "target_instance_count", "vm_size", "username", "password"},
+				Required: []string{"password", "ssh_keys", "subnet_id", "virtual_network_id", "min_instance_count", "target_instance_count", "vm_size", "username"},
 			},
 		},
 	}
@@ -47134,25 +47134,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightRserverClusterSpecRol
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"ssh_keys": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"subnet_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"virtual_network_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -47177,8 +47158,27 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightRserverClusterSpecRol
 							Format: "",
 						},
 					},
+					"ssh_keys": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"subnet_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"ssh_keys", "subnet_id", "virtual_network_id", "vm_size", "username", "password"},
+				Required: []string{"virtual_network_id", "vm_size", "username", "password", "ssh_keys", "subnet_id"},
 			},
 		},
 	}
@@ -47330,13 +47330,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightSparkClusterSpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"ssh_endpoint": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"name": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -47346,18 +47346,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightSparkClusterSpec(ref 
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"storage_account": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightSparkClusterSpec"),
-									},
-								},
-							},
 						},
 					},
 					"tags": {
@@ -47380,31 +47368,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightSparkClusterSpec(ref 
 							Format: "",
 						},
 					},
-					"roles": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightSparkClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tier": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -47434,8 +47398,44 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightSparkClusterSpec(ref 
 							},
 						},
 					},
+					"storage_account": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightSparkClusterSpec"),
+									},
+								},
+							},
+						},
+					},
+					"roles": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightSparkClusterSpec"),
+									},
+								},
+							},
+						},
+					},
+					"ssh_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tier": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"ssh_endpoint", "name", "cluster_version", "storage_account", "tags", "https_endpoint", "roles", "resource_group_name", "location", "tier", "component_version", "gateway"},
+				Required: []string{"resource_group_name", "location", "cluster_version", "tags", "https_endpoint", "name", "component_version", "gateway", "storage_account", "roles", "ssh_endpoint", "tier"},
 			},
 		},
 		Dependencies: []string{
@@ -47468,6 +47468,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightSparkClusterSpecGatew
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"username": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -47480,14 +47486,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightSparkClusterSpecGatew
 							Format: "",
 						},
 					},
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"username", "password", "enabled"},
+				Required: []string{"enabled", "username", "password"},
 			},
 		},
 	}
@@ -47550,19 +47550,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightSparkClusterSpecRoles
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"ssh_keys": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"subnet_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -47593,8 +47580,21 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightSparkClusterSpecRoles
 							Format: "",
 						},
 					},
+					"ssh_keys": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"ssh_keys", "subnet_id", "virtual_network_id", "vm_size", "username", "password"},
+				Required: []string{"subnet_id", "virtual_network_id", "vm_size", "username", "password", "ssh_keys"},
 			},
 		},
 	}
@@ -47606,6 +47606,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightSparkClusterSpecRoles
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"username": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -47655,14 +47661,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightSparkClusterSpecRoles
 							Format: "int32",
 						},
 					},
-					"vm_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"username", "password", "ssh_keys", "subnet_id", "virtual_network_id", "min_instance_count", "target_instance_count", "vm_size"},
+				Required: []string{"vm_size", "username", "password", "ssh_keys", "subnet_id", "virtual_network_id", "min_instance_count", "target_instance_count"},
 			},
 		},
 	}
@@ -47674,6 +47674,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightSparkClusterSpecRoles
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"username": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -47711,14 +47717,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightSparkClusterSpecRoles
 							Format: "",
 						},
 					},
-					"vm_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"username", "password", "ssh_keys", "subnet_id", "virtual_network_id", "vm_size"},
+				Required: []string{"vm_size", "username", "password", "ssh_keys", "subnet_id", "virtual_network_id"},
 			},
 		},
 	}
@@ -47870,54 +47870,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"https_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ssh_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"gateway": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightStormClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"storage_account": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightStormClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -47948,6 +47900,30 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpec(ref 
 							},
 						},
 					},
+					"gateway": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightStormClusterSpec"),
+									},
+								},
+							},
+						},
+					},
+					"storage_account": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightStormClusterSpec"),
+									},
+								},
+							},
+						},
+					},
 					"roles": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -47958,6 +47934,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpec(ref 
 									},
 								},
 							},
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"https_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"tags": {
@@ -47974,8 +47962,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpec(ref 
 							},
 						},
 					},
+					"ssh_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"https_endpoint", "ssh_endpoint", "gateway", "storage_account", "name", "resource_group_name", "location", "cluster_version", "tier", "component_version", "roles", "tags"},
+				Required: []string{"location", "cluster_version", "tier", "component_version", "gateway", "storage_account", "roles", "resource_group_name", "https_endpoint", "tags", "ssh_endpoint", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -48008,12 +48008,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecGatew
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"username": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"password": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -48026,8 +48020,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecGatew
 							Format: "",
 						},
 					},
+					"username": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"username", "password", "enabled"},
+				Required: []string{"password", "enabled", "username"},
 			},
 		},
 	}
@@ -48039,6 +48039,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecRoles
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"zookeeper_node": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightStormClusterSpecRoles"),
+									},
+								},
+							},
+						},
+					},
 					"head_node": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -48063,20 +48075,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecRoles
 							},
 						},
 					},
-					"zookeeper_node": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermHdinsightStormClusterSpecRoles"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"head_node", "worker_node", "zookeeper_node"},
+				Required: []string{"zookeeper_node", "head_node", "worker_node"},
 			},
 		},
 		Dependencies: []string{
@@ -48085,130 +48085,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecRoles
 }
 
 func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecRolesHeadNode(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"username": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ssh_keys": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"subnet_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"virtual_network_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"vm_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-				Required: []string{"username", "password", "ssh_keys", "subnet_id", "virtual_network_id", "vm_size"},
-			},
-		},
-	}
-}
-
-func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecRolesWorkerNode(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"virtual_network_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"min_instance_count": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"target_instance_count": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"vm_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"username": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ssh_keys": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"subnet_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-				Required: []string{"virtual_network_id", "min_instance_count", "target_instance_count", "vm_size", "username", "password", "ssh_keys", "subnet_id"},
-			},
-		},
-	}
-}
-
-func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecRolesZookeeperNode(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -48264,12 +48140,142 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecRoles
 	}
 }
 
+func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecRolesWorkerNode(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"ssh_keys": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"subnet_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"virtual_network_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"min_instance_count": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"target_instance_count": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"username": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"ssh_keys", "subnet_id", "virtual_network_id", "min_instance_count", "target_instance_count", "vm_size", "username", "password"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecRolesZookeeperNode(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"username": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ssh_keys": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"subnet_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"virtual_network_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"vm_size", "username", "password", "ssh_keys", "subnet_id", "virtual_network_id"},
+			},
+		},
+	}
+}
+
 func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecStorageAccount(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"is_default": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"storage_account_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -48282,14 +48288,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermHdinsightStormClusterSpecStora
 							Format: "",
 						},
 					},
-					"is_default": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"storage_account_key", "storage_container_id", "is_default"},
+				Required: []string{"is_default", "storage_account_key", "storage_container_id"},
 			},
 		},
 	}
@@ -48410,6 +48410,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermImageSpec(ref common.Reference
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -48466,20 +48478,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermImageSpec(ref common.Reference
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"resource_group_name", "zone_resilient", "source_virtual_machine_id", "os_disk", "data_disk", "tags", "name", "location"},
+				Required: []string{"name", "location", "resource_group_name", "zone_resilient", "source_virtual_machine_id", "os_disk", "data_disk", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -48488,6 +48488,49 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermImageSpec(ref common.Reference
 }
 
 func schema_kubeform_apis_azurerm_v1alpha1_AzurermImageSpecDataDisk(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"lun": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"managed_disk_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"blob_uri": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"caching": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"size_gb": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+				},
+				Required: []string{"lun", "managed_disk_id", "blob_uri", "caching", "size_gb"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_azurerm_v1alpha1_AzurermImageSpecOsDisk(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -48511,31 +48554,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermImageSpecDataDisk(ref common.R
 							Format: "int32",
 						},
 					},
-					"lun": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"managed_disk_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-				Required: []string{"blob_uri", "caching", "size_gb", "lun", "managed_disk_id"},
-			},
-		},
-	}
-}
-
-func schema_kubeform_apis_azurerm_v1alpha1_AzurermImageSpecOsDisk(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
 					"os_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -48554,26 +48572,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermImageSpecOsDisk(ref common.Ref
 							Format: "",
 						},
 					},
-					"blob_uri": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"caching": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"size_gb": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"os_type", "os_state", "managed_disk_id", "blob_uri", "caching", "size_gb"},
+				Required: []string{"blob_uri", "caching", "size_gb", "os_type", "os_state", "managed_disk_id"},
 			},
 		},
 	}
@@ -48737,6 +48737,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIotDpsCertificateSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"certificate_content": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -48755,14 +48761,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIotDpsCertificateSpec(ref comm
 							Format: "",
 						},
 					},
-					"certificate_content": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "resource_group_name", "iot_dps_name", "certificate_content"},
+				Required: []string{"certificate_content", "name", "resource_group_name", "iot_dps_name"},
 			},
 		},
 	}
@@ -48840,12 +48840,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIotDpsSpec(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -48884,8 +48878,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIotDpsSpec(ref common.Referenc
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "resource_group_name", "location", "sku", "tags"},
+				Required: []string{"resource_group_name", "location", "sku", "tags", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -48899,12 +48899,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIotDpsSpecSku(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"tier": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -48917,8 +48911,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIotDpsSpecSku(ref common.Refer
 							Format: "int32",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "tier", "capacity"},
+				Required: []string{"tier", "capacity", "name"},
 			},
 		},
 	}
@@ -49082,6 +49082,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubConsumerGroupSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -49100,14 +49106,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubConsumerGroupSpec(ref co
 							Format: "",
 						},
 					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "iothub_name", "eventhub_endpoint_name", "resource_group_name"},
+				Required: []string{"resource_group_name", "name", "iothub_name", "eventhub_endpoint_name"},
 			},
 		},
 	}
@@ -49275,13 +49275,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSharedAccessPolicySpec(r
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
+					"secondary_connection_string": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -49290,12 +49290,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSharedAccessPolicySpec(r
 					"iothub_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"registry_read": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -49312,6 +49306,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSharedAccessPolicySpec(r
 						},
 					},
 					"device_connect": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"registry_read": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
@@ -49335,14 +49341,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSharedAccessPolicySpec(r
 							Format: "",
 						},
 					},
-					"secondary_connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "resource_group_name", "iothub_name", "registry_read", "registry_write", "service_connect", "device_connect", "primary_key", "primary_connection_string", "secondary_key", "secondary_connection_string"},
+				Required: []string{"secondary_connection_string", "name", "iothub_name", "registry_write", "service_connect", "device_connect", "resource_group_name", "registry_read", "primary_key", "primary_connection_string", "secondary_key"},
 			},
 		},
 	}
@@ -49373,25 +49373,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpec(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"shared_access_policy": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermIothubSpec"),
-									},
-								},
-							},
-						},
-					},
-					"event_hub_events_path": {
+					"event_hub_events_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"endpoint": {
+					"route": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -49415,13 +49403,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpec(ref common.Referenc
 							},
 						},
 					},
-					"event_hub_events_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -49433,10 +49415,28 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpec(ref common.Referenc
 							Format: "",
 						},
 					},
-					"hostname": {
+					"event_hub_operations_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
+						},
+					},
+					"event_hub_events_path": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermIothubSpec"),
+									},
+								},
+							},
 						},
 					},
 					"name": {
@@ -49446,42 +49446,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpec(ref common.Referenc
 						},
 					},
 					"sku": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermIothubSpec"),
-									},
-								},
-							},
-						},
-					},
-					"event_hub_operations_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"event_hub_operations_path": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"route": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermIothubSpec"),
-									},
-								},
-							},
-						},
-					},
-					"fallback_route": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -49507,14 +49471,50 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpec(ref common.Referenc
 							},
 						},
 					},
-					"resource_group_name": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"hostname": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"event_hub_operations_path": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"shared_access_policy": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermIothubSpec"),
+									},
+								},
+							},
+						},
+					},
+					"fallback_route": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermIothubSpec"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"shared_access_policy", "event_hub_events_path", "endpoint", "ip_filter_rule", "event_hub_events_endpoint", "location", "type", "hostname", "name", "sku", "event_hub_operations_endpoint", "event_hub_operations_path", "route", "fallback_route", "tags", "resource_group_name"},
+				Required: []string{"event_hub_events_endpoint", "route", "ip_filter_rule", "resource_group_name", "type", "event_hub_operations_endpoint", "event_hub_events_path", "endpoint", "name", "sku", "tags", "location", "hostname", "event_hub_operations_path", "shared_access_policy", "fallback_route"},
 			},
 		},
 		Dependencies: []string{
@@ -49528,30 +49528,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpecEndpoint(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"batch_frequency_in_seconds": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"max_chunk_size_in_bytes": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"container_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -49576,8 +49552,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpecEndpoint(ref common.
 							Format: "",
 						},
 					},
+					"connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"batch_frequency_in_seconds": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"max_chunk_size_in_bytes": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"connection_string", "name", "batch_frequency_in_seconds", "max_chunk_size_in_bytes", "container_name", "encoding", "file_name_format", "type"},
+				Required: []string{"container_name", "encoding", "file_name_format", "type", "connection_string", "name", "batch_frequency_in_seconds", "max_chunk_size_in_bytes"},
 			},
 		},
 	}
@@ -49664,6 +49664,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpecRoute(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"source": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"condition": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -49695,14 +49701,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpecRoute(ref common.Ref
 							Format: "",
 						},
 					},
-					"source": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"condition", "endpoint_names", "enabled", "name", "source"},
+				Required: []string{"source", "condition", "endpoint_names", "enabled", "name"},
 			},
 		},
 	}
@@ -49714,12 +49714,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpecSharedAccessPolicy(r
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"key_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"primary_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -49738,8 +49732,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpecSharedAccessPolicy(r
 							Format: "",
 						},
 					},
+					"key_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"key_name", "primary_key", "secondary_key", "permissions"},
+				Required: []string{"primary_key", "secondary_key", "permissions", "key_name"},
 			},
 		},
 	}
@@ -49751,12 +49751,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpecSku(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"tier": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -49769,8 +49763,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermIothubSpecSku(ref common.Refer
 							Format: "int32",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "tier", "capacity"},
+				Required: []string{"tier", "capacity", "name"},
 			},
 		},
 	}
@@ -49940,19 +49940,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultAccessPolicySpec(ref c
 							Format: "",
 						},
 					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tenant_id": {
+					"application_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 					"certificate_permissions": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"secret_permissions": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -49984,7 +49991,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultAccessPolicySpec(ref c
 							Format: "",
 						},
 					},
-					"application_id": {
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tenant_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"object_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -50003,27 +50022,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultAccessPolicySpec(ref c
 							},
 						},
 					},
-					"secret_permissions": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"object_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"vault_name", "resource_group_name", "tenant_id", "certificate_permissions", "storage_permissions", "key_vault_id", "application_id", "key_permissions", "secret_permissions", "object_id"},
+				Required: []string{"vault_name", "application_id", "certificate_permissions", "secret_permissions", "storage_permissions", "key_vault_id", "resource_group_name", "tenant_id", "object_id", "key_permissions"},
 			},
 		},
 	}
@@ -50144,7 +50144,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultCertificateSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"certificate_data": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"thumbprint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"key_vault_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -50156,13 +50174,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultCertificateSpec(ref co
 							Format: "",
 						},
 					},
-					"secret_id": {
+					"certificate": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKeyVaultCertificateSpec"),
+									},
+								},
+							},
+						},
+					},
+					"version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"certificate_data": {
+					"certificate_policy": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKeyVaultCertificateSpec"),
+									},
+								},
+							},
+						},
+					},
+					"secret_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -50182,50 +50224,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultCertificateSpec(ref co
 							},
 						},
 					},
-					"key_vault_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"certificate": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKeyVaultCertificateSpec"),
-									},
-								},
-							},
-						},
-					},
-					"certificate_policy": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKeyVaultCertificateSpec"),
-									},
-								},
-							},
-						},
-					},
-					"version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"thumbprint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "vault_uri", "secret_id", "certificate_data", "tags", "key_vault_id", "certificate", "certificate_policy", "version", "thumbprint"},
+				Required: []string{"certificate_data", "thumbprint", "name", "key_vault_id", "vault_uri", "certificate", "version", "certificate_policy", "secret_id", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -50239,20 +50239,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultCertificateSpecCertifi
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"contents": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"password", "contents"},
+				Required: []string{"contents", "password"},
 			},
 		},
 	}
@@ -50453,20 +50453,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultCertificateSpecCertifi
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"lifetime_percentage": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"days_before_expiry": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
+					"lifetime_percentage": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"lifetime_percentage", "days_before_expiry"},
+				Required: []string{"days_before_expiry", "lifetime_percentage"},
 			},
 		},
 	}
@@ -50497,6 +50497,30 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultCertificateSpecCertifi
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"subject": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"subject_alternative_names": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKeyVaultCertificateSpecCertificatePolicyX509CertificateProperties"),
+									},
+								},
+							},
+						},
+					},
+					"validity_in_months": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"extended_key_usage": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -50523,32 +50547,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultCertificateSpecCertifi
 							},
 						},
 					},
-					"subject": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"subject_alternative_names": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKeyVaultCertificateSpecCertificatePolicyX509CertificateProperties"),
-									},
-								},
-							},
-						},
-					},
-					"validity_in_months": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"extended_key_usage", "key_usage", "subject", "subject_alternative_names", "validity_in_months"},
+				Required: []string{"subject", "subject_alternative_names", "validity_in_months", "extended_key_usage", "key_usage"},
 			},
 		},
 		Dependencies: []string{
@@ -50723,13 +50723,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultKeySpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"x": {
+					"key_opts": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"n": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"y": {
+					"x": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -50767,20 +50780,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultKeySpec(ref common.Ref
 							Format: "int32",
 						},
 					},
-					"key_opts": {
+					"curve": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
-					"curve": {
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"e": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"y": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -50798,26 +50816,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultKeySpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"n": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"e": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"x", "y", "tags", "name", "key_type", "key_size", "key_opts", "curve", "key_vault_id", "vault_uri", "version", "n", "e"},
+				Required: []string{"key_opts", "n", "x", "tags", "name", "key_type", "key_size", "curve", "version", "e", "y", "key_vault_id", "vault_uri"},
 			},
 		},
 	}
@@ -50985,6 +50985,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultSecretSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -51029,14 +51035,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultSecretSpec(ref common.
 							Format: "",
 						},
 					},
-					"version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"tags", "name", "key_vault_id", "vault_uri", "value", "content_type", "version"},
+				Required: []string{"version", "tags", "name", "key_vault_id", "vault_uri", "value", "content_type"},
 			},
 		},
 	}
@@ -51067,22 +51067,22 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"sku_name": {
+					"sku": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"vault_uri": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKeyVaultSpec"),
+									},
+								},
+							},
 						},
 					},
 					"tenant_id": {
@@ -51106,6 +51106,30 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultSpec(ref common.Refere
 					"enabled_for_deployment": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"enabled_for_template_deployment": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"sku_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"vault_uri": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -51141,38 +51165,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultSpec(ref common.Refere
 							},
 						},
 					},
-					"name": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"sku": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKeyVaultSpec"),
-									},
-								},
-							},
-						},
-					},
-					"enabled_for_template_deployment": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"resource_group_name", "sku_name", "vault_uri", "tenant_id", "access_policy", "enabled_for_deployment", "enabled_for_disk_encryption", "network_acls", "tags", "name", "location", "sku", "enabled_for_template_deployment"},
+				Required: []string{"location", "sku", "tenant_id", "access_policy", "enabled_for_deployment", "enabled_for_template_deployment", "name", "sku_name", "vault_uri", "enabled_for_disk_encryption", "network_acls", "tags", "resource_group_name"},
 			},
 		},
 		Dependencies: []string{
@@ -51186,38 +51186,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultSpecAccessPolicy(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"application_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"certificate_permissions": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"key_permissions": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"secret_permissions": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -51256,8 +51224,40 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultSpecAccessPolicy(ref c
 							Format: "",
 						},
 					},
+					"application_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"certificate_permissions": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"key_permissions": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"application_id", "certificate_permissions", "key_permissions", "secret_permissions", "storage_permissions", "tenant_id", "object_id"},
+				Required: []string{"secret_permissions", "storage_permissions", "tenant_id", "object_id", "application_id", "certificate_permissions", "key_permissions"},
 			},
 		},
 	}
@@ -51269,18 +51269,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultSpecNetworkAcls(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"default_action": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"bypass": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"ip_rules": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -51307,8 +51295,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKeyVaultSpecNetworkAcls(ref co
 							},
 						},
 					},
+					"default_action": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"bypass": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"default_action", "bypass", "ip_rules", "virtual_network_subnet_ids"},
+				Required: []string{"ip_rules", "virtual_network_subnet_ids", "default_action", "bypass"},
 			},
 		},
 	}
@@ -51448,33 +51448,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"dns_prefix": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"kubernetes_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"addon_profile": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKubernetesClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"kube_admin_config": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -51492,20 +51484,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpec(ref comm
 							Format: "",
 						},
 					},
-					"api_server_authorized_ip_ranges": {
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"service_principal": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKubernetesClusterSpec"),
 									},
 								},
 							},
 						},
 					},
-					"resource_group_name": {
+					"role_based_access_control": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKubernetesClusterSpec"),
+									},
+								},
+							},
+						},
+					},
+					"kube_config_raw": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -51517,28 +51526,40 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpec(ref comm
 							Format: "",
 						},
 					},
-					"kube_admin_config_raw": {
+					"network_profile": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKubernetesClusterSpec"),
+									},
+								},
+							},
 						},
 					},
-					"kube_config_raw": {
+					"kube_admin_config": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKubernetesClusterSpec"),
+									},
+								},
+							},
 						},
 					},
-					"name": {
+					"kube_config": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"kubernetes_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKubernetesClusterSpec"),
+									},
+								},
+							},
 						},
 					},
 					"agent_pool_profile": {
@@ -51565,68 +51586,47 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpec(ref comm
 							},
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"fqdn": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"dns_prefix": {
+					"kube_admin_config_raw": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"network_profile": {
+					"api_server_authorized_ip_ranges": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKubernetesClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"role_based_access_control": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKubernetesClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"kube_config": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKubernetesClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"service_principal": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKubernetesClusterSpec"),
+										Type:   []string{"string"},
+										Format: "",
 									},
 								},
 							},
 						},
 					},
 				},
-				Required: []string{"addon_profile", "tags", "kube_admin_config", "node_resource_group", "api_server_authorized_ip_ranges", "resource_group_name", "location", "kube_admin_config_raw", "kube_config_raw", "name", "kubernetes_version", "agent_pool_profile", "linux_profile", "fqdn", "dns_prefix", "network_profile", "role_based_access_control", "kube_config", "service_principal"},
+				Required: []string{"name", "dns_prefix", "kubernetes_version", "addon_profile", "node_resource_group", "resource_group_name", "service_principal", "role_based_access_control", "kube_config_raw", "location", "network_profile", "kube_admin_config", "kube_config", "agent_pool_profile", "linux_profile", "tags", "fqdn", "kube_admin_config_raw", "api_server_authorized_ip_ranges"},
 			},
 		},
 		Dependencies: []string{
@@ -51640,6 +51640,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpecAddonProf
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"aci_connector_linux": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKubernetesClusterSpecAddonProfile"),
+									},
+								},
+							},
+						},
+					},
 					"http_application_routing": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -51664,20 +51676,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpecAddonProf
 							},
 						},
 					},
-					"aci_connector_linux": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermKubernetesClusterSpecAddonProfile"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"http_application_routing", "oms_agent", "aci_connector_linux"},
+				Required: []string{"aci_connector_linux", "http_application_routing", "oms_agent"},
 			},
 		},
 		Dependencies: []string{
@@ -51691,20 +51691,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpecAddonProf
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"subnet_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"enabled": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
+					"subnet_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"subnet_name", "enabled"},
+				Required: []string{"enabled", "subnet_name"},
 			},
 		},
 	}
@@ -51772,13 +51772,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpecAgentPool
 							Format: "",
 						},
 					},
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"vnet_subnet_id": {
+					"os_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -51788,6 +51782,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpecAgentPool
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
+						},
+					},
+					"os_disk_size_gb": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"vnet_subnet_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"count": {
@@ -51814,20 +51826,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpecAgentPool
 							Format: "",
 						},
 					},
-					"os_disk_size_gb": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"os_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "type", "vnet_subnet_id", "max_pods", "count", "dns_prefix", "fqdn", "vm_size", "os_disk_size_gb", "os_type"},
+				Required: []string{"name", "os_type", "max_pods", "os_disk_size_gb", "vnet_subnet_id", "type", "count", "dns_prefix", "fqdn", "vm_size"},
 			},
 		},
 	}
@@ -51989,24 +51989,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpecNetworkPr
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"network_plugin": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"network_policy": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"dns_service_ip": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"docker_bridge_cidr": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -52025,8 +52007,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpecNetworkPr
 							Format: "",
 						},
 					},
+					"network_plugin": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"network_policy": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"dns_service_ip": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"network_plugin", "network_policy", "dns_service_ip", "docker_bridge_cidr", "pod_cidr", "service_cidr"},
+				Required: []string{"docker_bridge_cidr", "pod_cidr", "service_cidr", "network_plugin", "network_policy", "dns_service_ip"},
 			},
 		},
 	}
@@ -52108,20 +52108,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermKubernetesClusterSpecServicePr
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"client_secret": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"client_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"client_secret": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"client_secret", "client_id"},
+				Required: []string{"client_id", "client_secret"},
 			},
 		},
 	}
@@ -52285,6 +52285,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbBackendAddressPoolSpec(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"load_balancing_rules": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -52322,21 +52335,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbBackendAddressPoolSpec(ref c
 							},
 						},
 					},
-					"load_balancing_rules": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"name", "location", "resource_group_name", "loadbalancer_id", "backend_ip_configurations", "load_balancing_rules"},
+				Required: []string{"load_balancing_rules", "name", "location", "resource_group_name", "loadbalancer_id", "backend_ip_configurations"},
 			},
 		},
 	}
@@ -52504,19 +52504,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbNatPoolSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"location": {
+					"protocol": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"frontend_port_start": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"frontend_ip_configuration_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"frontend_ip_configuration_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -52528,22 +52534,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbNatPoolSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"loadbalancer_id": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"protocol": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"frontend_port_start": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
 						},
 					},
 					"frontend_port_end": {
@@ -52558,14 +52552,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbNatPoolSpec(ref common.Refer
 							Format: "int32",
 						},
 					},
-					"frontend_ip_configuration_id": {
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"loadbalancer_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"location", "resource_group_name", "frontend_ip_configuration_name", "name", "loadbalancer_id", "protocol", "frontend_port_start", "frontend_port_end", "backend_port", "frontend_ip_configuration_id"},
+				Required: []string{"protocol", "frontend_port_start", "frontend_ip_configuration_name", "frontend_ip_configuration_id", "name", "location", "frontend_port_end", "backend_port", "resource_group_name", "loadbalancer_id"},
 			},
 		},
 	}
@@ -52686,10 +52686,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbNatRuleSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"frontend_ip_configuration_name": {
+					"enable_floating_ip": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
 							Format: "",
+						},
+					},
+					"backend_port": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"frontend_ip_configuration_id": {
@@ -52698,7 +52704,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbNatRuleSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"backend_ip_configuration_id": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -52722,19 +52728,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbNatRuleSpec(ref common.Refer
 							Format: "int32",
 						},
 					},
-					"enable_floating_ip": {
+					"frontend_ip_configuration_name": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"backend_port": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"name": {
+					"backend_ip_configuration_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -52753,7 +52753,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbNatRuleSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"frontend_ip_configuration_name", "frontend_ip_configuration_id", "backend_ip_configuration_id", "location", "protocol", "frontend_port", "enable_floating_ip", "backend_port", "name", "resource_group_name", "loadbalancer_id"},
+				Required: []string{"enable_floating_ip", "backend_port", "frontend_ip_configuration_id", "name", "location", "protocol", "frontend_port", "frontend_ip_configuration_name", "backend_ip_configuration_id", "resource_group_name", "loadbalancer_id"},
 			},
 		},
 	}
@@ -52874,42 +52874,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbOutboundRuleSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"idle_timeout_in_minutes": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"frontend_ip_configuration": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermLbOutboundRuleSpec"),
-									},
-								},
-							},
-						},
-					},
-					"backend_address_pool_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"enable_tcp_reset": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"allocated_outbound_ports": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -52928,14 +52892,50 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbOutboundRuleSpec(ref common.
 							Format: "",
 						},
 					},
+					"frontend_ip_configuration": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermLbOutboundRuleSpec"),
+									},
+								},
+							},
+						},
+					},
 					"protocol": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"allocated_outbound_ports": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"idle_timeout_in_minutes": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"backend_address_pool_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enable_tcp_reset": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"idle_timeout_in_minutes", "frontend_ip_configuration", "backend_address_pool_id", "enable_tcp_reset", "allocated_outbound_ports", "name", "resource_group_name", "loadbalancer_id", "protocol"},
+				Required: []string{"name", "resource_group_name", "loadbalancer_id", "frontend_ip_configuration", "protocol", "allocated_outbound_ports", "idle_timeout_in_minutes", "backend_address_pool_id", "enable_tcp_reset"},
 			},
 		},
 		Dependencies: []string{
@@ -53083,19 +53083,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbProbeSpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"protocol": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"request_path": {
+					"interval_in_seconds": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
-					"name": {
+					"number_of_probes": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -53113,16 +53131,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbProbeSpec(ref common.Referen
 							Format: "int32",
 						},
 					},
-					"interval_in_seconds": {
+					"request_path": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"number_of_probes": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"load_balancer_rules": {
@@ -53138,20 +53150,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbProbeSpec(ref common.Referen
 							},
 						},
 					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"protocol", "request_path", "name", "loadbalancer_id", "port", "interval_in_seconds", "number_of_probes", "load_balancer_rules", "location", "resource_group_name"},
+				Required: []string{"name", "location", "protocol", "interval_in_seconds", "number_of_probes", "resource_group_name", "loadbalancer_id", "port", "request_path", "load_balancer_rules"},
 			},
 		},
 	}
@@ -53272,21 +53272,21 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbRuleSpec(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"load_distribution": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"loadbalancer_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"protocol": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"enable_floating_ip": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -53296,13 +53296,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbRuleSpec(ref common.Referenc
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"frontend_ip_configuration_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"frontend_ip_configuration_id": {
+					"backend_address_pool_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -53314,22 +53314,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbRuleSpec(ref common.Referenc
 							Format: "int32",
 						},
 					},
-					"backend_address_pool_id": {
+					"enable_floating_ip": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"probe_id": {
+					"idle_timeout_in_minutes": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"load_distribution": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"name": {
@@ -53338,7 +53332,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbRuleSpec(ref common.Referenc
 							Format: "",
 						},
 					},
-					"location": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -53356,14 +53350,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbRuleSpec(ref common.Referenc
 							Format: "int32",
 						},
 					},
-					"idle_timeout_in_minutes": {
+					"protocol": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"probe_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
-				Required: []string{"loadbalancer_id", "protocol", "enable_floating_ip", "disable_outbound_snat", "resource_group_name", "frontend_ip_configuration_id", "backend_port", "backend_address_pool_id", "probe_id", "load_distribution", "name", "location", "frontend_ip_configuration_name", "frontend_port", "idle_timeout_in_minutes"},
+				Required: []string{"load_distribution", "location", "loadbalancer_id", "disable_outbound_snat", "frontend_ip_configuration_id", "backend_address_pool_id", "backend_port", "enable_floating_ip", "idle_timeout_in_minutes", "name", "resource_group_name", "frontend_ip_configuration_name", "frontend_port", "protocol", "probe_id"},
 			},
 		},
 	}
@@ -53394,18 +53394,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbSpec(ref common.ReferenceCal
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"frontend_ip_configuration": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermLbSpec"),
-									},
-								},
-							},
-						},
-					},
 					"private_ip_address": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -53463,8 +53451,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbSpec(ref common.ReferenceCal
 							Format: "",
 						},
 					},
+					"frontend_ip_configuration": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermLbSpec"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"frontend_ip_configuration", "private_ip_address", "private_ip_addresses", "tags", "name", "location", "resource_group_name", "sku"},
+				Required: []string{"private_ip_address", "private_ip_addresses", "tags", "name", "location", "resource_group_name", "sku", "frontend_ip_configuration"},
 			},
 		},
 		Dependencies: []string{
@@ -53479,18 +53479,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbSpecFrontendIpConfiguration(
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
 					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"private_ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"public_ip_address_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -53528,19 +53516,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbSpecFrontendIpConfiguration(
 							},
 						},
 					},
-					"outbound_rules": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"zones": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -53560,14 +53535,39 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLbSpecFrontendIpConfiguration(
 							Format: "",
 						},
 					},
+					"private_ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"public_ip_address_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"public_ip_prefix_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"outbound_rules": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"name", "private_ip_address", "public_ip_address_id", "private_ip_address_allocation", "load_balancer_rules", "inbound_nat_rules", "outbound_rules", "zones", "subnet_id", "public_ip_prefix_id"},
+				Required: []string{"name", "private_ip_address_allocation", "load_balancer_rules", "inbound_nat_rules", "zones", "subnet_id", "private_ip_address", "public_ip_address_id", "public_ip_prefix_id", "outbound_rules"},
 			},
 		},
 	}
@@ -53688,18 +53688,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLocalNetworkGatewaySpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -53751,8 +53739,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLocalNetworkGatewaySpec(ref co
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "location", "resource_group_name", "gateway_address", "address_space", "bgp_settings", "tags"},
+				Required: []string{"resource_group_name", "gateway_address", "address_space", "bgp_settings", "tags", "name", "location"},
 			},
 		},
 		Dependencies: []string{
@@ -53766,6 +53766,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLocalNetworkGatewaySpecBgpSett
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"asn": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"bgp_peering_address": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -53778,14 +53784,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLocalNetworkGatewaySpecBgpSett
 							Format: "int32",
 						},
 					},
-					"asn": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"bgp_peering_address", "peer_weight", "asn"},
+				Required: []string{"asn", "bgp_peering_address", "peer_weight"},
 			},
 		},
 	}
@@ -53906,12 +53906,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogAnalyticsLinkedServiceSpec(
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"linked_service_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -53962,8 +53956,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogAnalyticsLinkedServiceSpec(
 							Format: "",
 						},
 					},
+					"linked_service_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"linked_service_name", "resource_id", "linked_service_properties", "name", "tags", "resource_group_name", "workspace_name"},
+				Required: []string{"resource_id", "linked_service_properties", "name", "tags", "resource_group_name", "workspace_name", "linked_service_name"},
 			},
 		},
 		Dependencies: []string{
@@ -54105,6 +54105,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogAnalyticsSolutionSpec(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"workspace_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"workspace_resource_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -54135,20 +54147,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogAnalyticsSolutionSpec(ref c
 							Format: "",
 						},
 					},
-					"workspace_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"workspace_resource_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"location", "resource_group_name", "plan", "solution_name", "workspace_name", "workspace_resource_id"},
+				Required: []string{"workspace_name", "workspace_resource_id", "location", "resource_group_name", "plan", "solution_name"},
 			},
 		},
 		Dependencies: []string{
@@ -54162,18 +54162,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogAnalyticsSolutionSpecPlan(r
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"publisher": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"promotion_code": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -54186,8 +54174,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogAnalyticsSolutionSpecPlan(r
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"publisher": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "publisher", "promotion_code", "product"},
+				Required: []string{"promotion_code", "product", "name", "publisher"},
 			},
 		},
 	}
@@ -54351,6 +54351,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogAnalyticsWorkspaceLinkedSer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"workspace_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"linked_service_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -54395,20 +54407,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogAnalyticsWorkspaceLinkedSer
 							},
 						},
 					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"workspace_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"linked_service_name", "resource_id", "linked_service_properties", "name", "tags", "resource_group_name", "workspace_name"},
+				Required: []string{"resource_group_name", "workspace_name", "linked_service_name", "resource_id", "linked_service_properties", "name", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -54507,7 +54507,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogAnalyticsWorkspaceSpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"sku": {
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -54520,30 +54532,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogAnalyticsWorkspaceSpec(ref 
 						},
 					},
 					"workspace_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"portal_url": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_shared_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -54569,14 +54557,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogAnalyticsWorkspaceSpec(ref 
 							},
 						},
 					},
-					"name": {
+					"sku": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"portal_url": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_shared_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"sku", "retention_in_days", "workspace_id", "portal_url", "primary_shared_key", "resource_group_name", "location", "secondary_shared_key", "tags", "name"},
+				Required: []string{"name", "location", "resource_group_name", "retention_in_days", "workspace_id", "secondary_shared_key", "tags", "sku", "portal_url", "primary_shared_key"},
 			},
 		},
 	}
@@ -54697,12 +54697,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogicAppActionCustomSpec(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"body": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -54715,8 +54709,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogicAppActionCustomSpec(ref c
 							Format: "",
 						},
 					},
+					"body": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"body", "name", "logic_app_id"},
+				Required: []string{"name", "logic_app_id", "body"},
 			},
 		},
 	}
@@ -54837,26 +54837,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogicAppActionHttpSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"body": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"headers": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -54881,8 +54861,28 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogicAppActionHttpSpec(ref com
 							Format: "",
 						},
 					},
+					"body": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"headers": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"body", "headers", "name", "logic_app_id", "method", "uri"},
+				Required: []string{"name", "logic_app_id", "method", "uri", "body", "headers"},
 			},
 		},
 	}
@@ -55143,6 +55143,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogicAppTriggerHttpRequestSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"relative_path": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -55167,14 +55173,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogicAppTriggerHttpRequestSpec
 							Format: "",
 						},
 					},
-					"relative_path": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "logic_app_id", "schema", "method", "relative_path"},
+				Required: []string{"relative_path", "name", "logic_app_id", "schema", "method"},
 			},
 		},
 	}
@@ -55441,6 +55441,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogicAppWorkflowSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"access_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -55485,28 +55505,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermLogicAppWorkflowSpec(ref commo
 							Format: "",
 						},
 					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"access_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "location", "resource_group_name", "parameters", "workflow_schema", "workflow_version", "tags", "access_endpoint"},
+				Required: []string{"tags", "access_endpoint", "name", "location", "resource_group_name", "parameters", "workflow_schema", "workflow_version"},
 			},
 		},
 	}
@@ -55627,45 +55627,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermManagedDiskSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"storage_account_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"source_resource_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"image_reference_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"create_option": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"source_uri": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -55681,18 +55643,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermManagedDiskSpec(ref common.Ref
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
 						},
 					},
 					"resource_group_name": {
@@ -55714,6 +55664,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermManagedDiskSpec(ref common.Ref
 							},
 						},
 					},
+					"storage_account_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"create_option": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"source_resource_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"encryption_settings": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -55726,8 +55694,40 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermManagedDiskSpec(ref common.Ref
 							},
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"source_uri": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"storage_account_type", "source_resource_id", "image_reference_id", "tags", "create_option", "source_uri", "os_type", "disk_size_gb", "name", "location", "resource_group_name", "zones", "encryption_settings"},
+				Required: []string{"image_reference_id", "os_type", "disk_size_gb", "resource_group_name", "zones", "storage_account_type", "create_option", "source_resource_id", "encryption_settings", "tags", "name", "location", "source_uri"},
 			},
 		},
 		Dependencies: []string{
@@ -55741,12 +55741,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermManagedDiskSpecEncryptionSetti
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"disk_encryption_key": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -55771,8 +55765,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermManagedDiskSpecEncryptionSetti
 							},
 						},
 					},
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"enabled", "disk_encryption_key", "key_encryption_key"},
+				Required: []string{"disk_encryption_key", "key_encryption_key", "enabled"},
 			},
 		},
 		Dependencies: []string{
@@ -55811,20 +55811,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermManagedDiskSpecEncryptionSetti
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"key_url": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"source_vault_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"key_url": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"key_url", "source_vault_id"},
+				Required: []string{"source_vault_id", "key_url"},
 			},
 		},
 	}
@@ -56396,6 +56396,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMariadbFirewallRuleSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"start_ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"end_ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -56414,20 +56426,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMariadbFirewallRuleSpec(ref co
 							Format: "",
 						},
 					},
-					"start_ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"end_ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "resource_group_name", "server_name", "start_ip_address", "end_ip_address"},
+				Required: []string{"start_ip_address", "end_ip_address", "name", "resource_group_name", "server_name"},
 			},
 		},
 	}
@@ -56548,6 +56548,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMariadbServerSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"administrator_login_password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"storage_profile": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -56560,27 +56566,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMariadbServerSpec(ref common.R
 							},
 						},
 					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"administrator_login": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -56598,13 +56584,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMariadbServerSpec(ref common.R
 							},
 						},
 					},
-					"administrator_login_password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"version": {
+					"administrator_login": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -56622,20 +56602,40 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMariadbServerSpec(ref common.R
 							Format: "",
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"location": {
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"storage_profile", "tags", "resource_group_name", "administrator_login", "sku", "administrator_login_password", "version", "ssl_enforcement", "fqdn", "name", "location"},
+				Required: []string{"administrator_login_password", "storage_profile", "location", "sku", "administrator_login", "ssl_enforcement", "fqdn", "tags", "name", "resource_group_name", "version"},
 			},
 		},
 		Dependencies: []string{
@@ -56826,6 +56826,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMediaServicesAccountSpec(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -56844,20 +56856,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMediaServicesAccountSpec(ref c
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"resource_group_name", "storage_account", "name", "location"},
+				Required: []string{"name", "location", "resource_group_name", "storage_account"},
 			},
 		},
 		Dependencies: []string{
@@ -57005,55 +57005,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMetricAlertruleSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"metric_name": {
+					"webhook_action": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"period": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermMetricAlertruleSpec"),
+									},
+								},
+							},
 						},
 					},
 					"operator": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"threshold": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"number"},
-							Format: "double",
-						},
-					},
-					"aggregation": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -57071,6 +57035,54 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMetricAlertruleSpec(ref common
 							},
 						},
 					},
+					"metric_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"aggregation": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"threshold": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"number"},
+							Format: "double",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"period": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -57085,32 +57097,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMetricAlertruleSpec(ref common
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"webhook_action": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermMetricAlertruleSpec"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"metric_name", "name", "resource_group_name", "description", "period", "resource_id", "operator", "threshold", "aggregation", "email_action", "tags", "location", "enabled", "webhook_action"},
+				Required: []string{"webhook_action", "operator", "email_action", "metric_name", "aggregation", "description", "resource_id", "threshold", "resource_group_name", "enabled", "period", "tags", "name", "location"},
 			},
 		},
 		Dependencies: []string{
@@ -57298,18 +57298,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorActionGroupSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"webhook_receiver": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermMonitorActionGroupSpec"),
-									},
-								},
-							},
-						},
-					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -57372,8 +57360,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorActionGroupSpec(ref com
 							},
 						},
 					},
+					"webhook_receiver": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermMonitorActionGroupSpec"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"webhook_receiver", "tags", "name", "resource_group_name", "short_name", "enabled", "email_receiver", "sms_receiver"},
+				Required: []string{"tags", "name", "resource_group_name", "short_name", "enabled", "email_receiver", "sms_receiver", "webhook_receiver"},
 			},
 		},
 		Dependencies: []string{
@@ -57412,6 +57412,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorActionGroupSpecSmsRecei
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"country_code": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"phone_number": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -57424,14 +57430,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorActionGroupSpecSmsRecei
 							Format: "",
 						},
 					},
-					"country_code": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"phone_number", "name", "country_code"},
+				Required: []string{"country_code", "phone_number", "name"},
 			},
 		},
 	}
@@ -57443,20 +57443,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorActionGroupSpecWebhookR
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"service_uri": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"service_uri": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"service_uri", "name"},
+				Required: []string{"name", "service_uri"},
 			},
 		},
 	}
@@ -57577,6 +57577,43 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorActivityLogAlertSpec(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"scopes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"criteria": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermMonitorActivityLogAlertSpec"),
+									},
+								},
+							},
+						},
+					},
+					"action": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermMonitorActivityLogAlertSpec"),
+									},
+								},
+							},
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -57615,45 +57652,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorActivityLogAlertSpec(re
 							Format: "",
 						},
 					},
-					"scopes": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"criteria": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermMonitorActivityLogAlertSpec"),
-									},
-								},
-							},
-						},
-					},
-					"action": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermMonitorActivityLogAlertSpec"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"description", "enabled", "tags", "name", "resource_group_name", "scopes", "criteria", "action"},
+				Required: []string{"scopes", "criteria", "action", "description", "enabled", "tags", "name", "resource_group_name"},
 			},
 		},
 		Dependencies: []string{
@@ -57667,12 +57667,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorActivityLogAlertSpecAct
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"action_group_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"webhook_properties": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -57687,8 +57681,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorActivityLogAlertSpecAct
 							},
 						},
 					},
+					"action_group_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"action_group_id", "webhook_properties"},
+				Required: []string{"webhook_properties", "action_group_id"},
 			},
 		},
 	}
@@ -57700,7 +57700,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorActivityLogAlertSpecCri
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"status": {
+					"resource_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -57712,25 +57712,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorActivityLogAlertSpecCri
 							Format: "",
 						},
 					},
-					"category": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"operation_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_provider": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"resource_type": {
+					"resource_group": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -57748,20 +57736,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorActivityLogAlertSpecCri
 							Format: "",
 						},
 					},
-					"resource_group": {
+					"resource_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"resource_id": {
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"category": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"operation_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"status", "sub_status", "category", "operation_name", "resource_provider", "resource_type", "caller", "level", "resource_group", "resource_id"},
+				Required: []string{"resource_id", "sub_status", "resource_provider", "resource_group", "caller", "level", "resource_type", "status", "category", "operation_name"},
 			},
 		},
 	}
@@ -57882,6 +57882,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorAutoscaleSettingSpec(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"profile": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermMonitorAutoscaleSettingSpec"),
+									},
+								},
+							},
+						},
+					},
 					"notification": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -57932,26 +57950,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorAutoscaleSettingSpec(re
 							Format: "",
 						},
 					},
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"profile": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermMonitorAutoscaleSettingSpec"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"notification", "tags", "name", "resource_group_name", "location", "target_resource_id", "enabled", "profile"},
+				Required: []string{"enabled", "profile", "notification", "tags", "name", "resource_group_name", "location", "target_resource_id"},
 			},
 		},
 		Dependencies: []string{
@@ -58175,6 +58175,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorAutoscaleSettingSpecPro
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"timezone": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"start": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -58187,14 +58193,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorAutoscaleSettingSpecPro
 							Format: "",
 						},
 					},
-					"timezone": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"start", "end", "timezone"},
+				Required: []string{"timezone", "start", "end"},
 			},
 		},
 	}
@@ -58364,12 +58364,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorAutoscaleSettingSpecPro
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"value": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"cooldown": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -58388,8 +58382,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorAutoscaleSettingSpecPro
 							Format: "",
 						},
 					},
+					"value": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"value", "cooldown", "direction", "type"},
+				Required: []string{"cooldown", "direction", "type", "value"},
 			},
 		},
 	}
@@ -58510,36 +58510,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorDiagnosticSettingSpec(r
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"target_resource_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"eventhub_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"eventhub_authorization_rule_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"log_analytics_workspace_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"storage_account_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"log": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -58570,8 +58540,38 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorDiagnosticSettingSpec(r
 							Format: "",
 						},
 					},
+					"target_resource_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"eventhub_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"eventhub_authorization_rule_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"log_analytics_workspace_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"storage_account_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"target_resource_id", "eventhub_name", "eventhub_authorization_rule_id", "log_analytics_workspace_id", "storage_account_id", "log", "metric", "name"},
+				Required: []string{"log", "metric", "name", "target_resource_id", "eventhub_name", "eventhub_authorization_rule_id", "log_analytics_workspace_id", "storage_account_id"},
 			},
 		},
 		Dependencies: []string{
@@ -58585,6 +58585,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorDiagnosticSettingSpecLo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"retention_policy": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -58603,14 +58609,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorDiagnosticSettingSpecLo
 							Format: "",
 						},
 					},
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"retention_policy", "category", "enabled"},
+				Required: []string{"enabled", "retention_policy", "category"},
 			},
 		},
 		Dependencies: []string{
@@ -58822,24 +58822,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorLogProfileSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"storage_account_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"servicebus_rule_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"locations": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -58878,8 +58860,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorLogProfileSpec(ref comm
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"storage_account_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"servicebus_rule_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "storage_account_id", "servicebus_rule_id", "locations", "categories", "retention_policy"},
+				Required: []string{"locations", "categories", "retention_policy", "name", "storage_account_id", "servicebus_rule_id"},
 			},
 		},
 		Dependencies: []string{
@@ -59027,73 +59027,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorMetricAlertSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"window_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"scopes": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"frequency": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"severity": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
 						},
 					},
 					"criteria": {
@@ -59126,8 +59063,71 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorMetricAlertSpec(ref com
 							Format: "",
 						},
 					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"severity": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"scopes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"frequency": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"window_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"enabled", "window_size", "tags", "name", "resource_group_name", "scopes", "description", "frequency", "severity", "criteria", "action", "auto_mitigate"},
+				Required: []string{"resource_group_name", "criteria", "action", "auto_mitigate", "description", "severity", "name", "scopes", "enabled", "frequency", "window_size", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -59378,19 +59378,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorMetricAlertruleSpec(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"metric_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"threshold": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"number"},
+							Format: "double",
+						},
+					},
+					"period": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"operator": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -59402,13 +59420,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorMetricAlertruleSpec(ref
 							Format: "",
 						},
 					},
-					"metric_name": {
+					"aggregation": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"email_action": {
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"webhook_action": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -59434,43 +59458,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorMetricAlertruleSpec(ref
 							},
 						},
 					},
-					"resource_group_name": {
+					"resource_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"period": {
+					"operator": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"threshold": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"number"},
-							Format: "double",
-						},
-					},
-					"aggregation": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"webhook_action": {
+					"email_action": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -59483,7 +59483,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorMetricAlertruleSpec(ref
 						},
 					},
 				},
-				Required: []string{"name", "resource_id", "operator", "location", "metric_name", "email_action", "tags", "resource_group_name", "enabled", "period", "description", "threshold", "aggregation", "webhook_action"},
+				Required: []string{"description", "enabled", "metric_name", "threshold", "period", "name", "location", "aggregation", "resource_group_name", "webhook_action", "tags", "resource_id", "operator", "email_action"},
 			},
 		},
 		Dependencies: []string{
@@ -59497,6 +59497,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorMetricAlertruleSpecEmai
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"send_to_service_owners": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"custom_emails": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -59510,14 +59516,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMonitorMetricAlertruleSpecEmai
 							},
 						},
 					},
-					"send_to_service_owners": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"custom_emails", "send_to_service_owners"},
+				Required: []string{"send_to_service_owners", "custom_emails"},
 			},
 		},
 	}
@@ -59671,74 +59671,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMssqlElasticpoolSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"server_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"elastic_pool_properties": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermMssqlElasticpoolSpec"),
-									},
-								},
-							},
-						},
-					},
-					"max_size_bytes": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"max_size_gb": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"number"},
-							Format: "double",
-						},
-					},
-					"zone_redundant": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"sku": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -59763,8 +59695,76 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMssqlElasticpoolSpec(ref commo
 							},
 						},
 					},
+					"elastic_pool_properties": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermMssqlElasticpoolSpec"),
+									},
+								},
+							},
+						},
+					},
+					"max_size_gb": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"number"},
+							Format: "double",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"server_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"max_size_bytes": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"zone_redundant": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"tags", "resource_group_name", "server_name", "elastic_pool_properties", "max_size_bytes", "max_size_gb", "zone_redundant", "name", "location", "sku", "per_database_settings"},
+				Required: []string{"sku", "per_database_settings", "elastic_pool_properties", "max_size_gb", "name", "server_name", "max_size_bytes", "zone_redundant", "tags", "location", "resource_group_name"},
 			},
 		},
 		Dependencies: []string{
@@ -59821,20 +59821,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMssqlElasticpoolSpecPerDatabas
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"min_capacity": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"number"},
-							Format: "double",
-						},
-					},
 					"max_capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"number"},
 							Format: "double",
 						},
 					},
+					"min_capacity": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"number"},
+							Format: "double",
+						},
+					},
 				},
-				Required: []string{"min_capacity", "max_capacity"},
+				Required: []string{"max_capacity", "min_capacity"},
 			},
 		},
 	}
@@ -59846,12 +59846,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMssqlElasticpoolSpecSku(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -59870,8 +59864,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMssqlElasticpoolSpecSku(ref co
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "capacity", "tier", "family"},
+				Required: []string{"capacity", "tier", "family", "name"},
 			},
 		},
 	}
@@ -60138,18 +60138,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMysqlDatabaseSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"server_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -60168,8 +60156,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMysqlDatabaseSpec(ref common.R
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "resource_group_name", "server_name", "charset", "collation"},
+				Required: []string{"server_name", "charset", "collation", "name", "resource_group_name"},
 			},
 		},
 	}
@@ -60290,18 +60290,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMysqlFirewallRuleSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"server_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"start_ip_address": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -60320,8 +60308,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMysqlFirewallRuleSpec(ref comm
 							Format: "",
 						},
 					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"server_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"resource_group_name", "server_name", "start_ip_address", "end_ip_address", "name"},
+				Required: []string{"start_ip_address", "end_ip_address", "name", "resource_group_name", "server_name"},
 			},
 		},
 	}
@@ -60442,7 +60442,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMysqlServerSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"location": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -60454,7 +60454,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMysqlServerSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"version": {
+					"administrator_login_password": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -60472,27 +60472,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMysqlServerSpec(ref common.Ref
 							},
 						},
 					},
-					"ssl_enforcement": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"name": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -60516,7 +60496,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMysqlServerSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"administrator_login_password": {
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ssl_enforcement": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -60528,8 +60514,22 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMysqlServerSpec(ref common.Ref
 							Format: "",
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"location", "resource_group_name", "version", "storage_profile", "ssl_enforcement", "tags", "name", "sku", "administrator_login", "administrator_login_password", "fqdn"},
+				Required: []string{"name", "resource_group_name", "administrator_login_password", "storage_profile", "location", "sku", "administrator_login", "version", "ssl_enforcement", "fqdn", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -60720,12 +60720,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMysqlVirtualNetworkRuleSpec(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -60744,8 +60738,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermMysqlVirtualNetworkRuleSpec(re
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "resource_group_name", "server_name", "subnet_id"},
+				Required: []string{"resource_group_name", "server_name", "subnet_id", "name"},
 			},
 		},
 	}
@@ -60872,9 +60872,21 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkConnectionMonitorSpec(r
 							Format: "",
 						},
 					},
-					"auto_start": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"network_watcher_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -60896,36 +60908,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkConnectionMonitorSpec(r
 							},
 						},
 					},
-					"destination": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermNetworkConnectionMonitorSpec"),
-									},
-								},
-							},
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"network_watcher_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -60940,8 +60922,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkConnectionMonitorSpec(r
 							},
 						},
 					},
+					"auto_start": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"destination": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermNetworkConnectionMonitorSpec"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"name", "auto_start", "interval_in_seconds", "source", "destination", "resource_group_name", "network_watcher_name", "location", "tags"},
+				Required: []string{"name", "resource_group_name", "network_watcher_name", "location", "interval_in_seconds", "source", "tags", "auto_start", "destination"},
 			},
 		},
 		Dependencies: []string{
@@ -60955,6 +60955,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkConnectionMonitorSpecDe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"virtual_machine_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"address": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -60967,14 +60973,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkConnectionMonitorSpecDe
 							Format: "int32",
 						},
 					},
-					"virtual_machine_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"address", "port", "virtual_machine_id"},
+				Required: []string{"virtual_machine_id", "address", "port"},
 			},
 		},
 	}
@@ -61330,6 +61330,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkInterfaceApplicationGat
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"backend_address_pool_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"network_interface_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -61342,14 +61348,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkInterfaceApplicationGat
 							Format: "",
 						},
 					},
-					"backend_address_pool_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"network_interface_id", "ip_configuration_name", "backend_address_pool_id"},
+				Required: []string{"backend_address_pool_id", "network_interface_id", "ip_configuration_name"},
 			},
 		},
 	}
@@ -61610,6 +61610,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkInterfaceBackendAddress
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"network_interface_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"ip_configuration_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -61622,14 +61628,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkInterfaceBackendAddress
 							Format: "",
 						},
 					},
-					"network_interface_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"ip_configuration_name", "backend_address_pool_id", "network_interface_id"},
+				Required: []string{"network_interface_id", "ip_configuration_name", "backend_address_pool_id"},
 			},
 		},
 	}
@@ -61797,12 +61797,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkInterfaceNatRuleAssocia
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"ip_configuration_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"nat_rule_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -61815,8 +61809,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkInterfaceNatRuleAssocia
 							Format: "",
 						},
 					},
+					"ip_configuration_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"ip_configuration_name", "nat_rule_id", "network_interface_id"},
+				Required: []string{"nat_rule_id", "network_interface_id", "ip_configuration_name"},
 			},
 		},
 	}
@@ -61847,23 +61847,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkInterfaceSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"network_security_group_id": {
+					"virtual_machine_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"private_ip_addresses": {
+					"enable_ip_forwarding": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
+							Type:   []string{"boolean"},
+							Format: "",
 						},
 					},
 					"tags": {
@@ -61880,69 +61873,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkInterfaceSpec(ref commo
 							},
 						},
 					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"applied_dns_servers": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"enable_accelerated_networking": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"private_ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"mac_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"virtual_machine_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"dns_servers": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"internal_fqdn": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -61951,6 +61888,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkInterfaceSpec(ref commo
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enable_accelerated_networking": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -61972,14 +61915,71 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkInterfaceSpec(ref commo
 							Format: "",
 						},
 					},
-					"enable_ip_forwarding": {
+					"applied_dns_servers": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"network_security_group_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"mac_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"private_ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"private_ip_addresses": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"dns_servers": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"internal_fqdn": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"network_security_group_id", "private_ip_addresses", "tags", "location", "applied_dns_servers", "enable_accelerated_networking", "private_ip_address", "name", "mac_address", "virtual_machine_id", "dns_servers", "internal_fqdn", "resource_group_name", "ip_configuration", "internal_dns_name_label", "enable_ip_forwarding"},
+				Required: []string{"virtual_machine_id", "enable_ip_forwarding", "tags", "name", "location", "resource_group_name", "enable_accelerated_networking", "ip_configuration", "internal_dns_name_label", "applied_dns_servers", "network_security_group_id", "mac_address", "private_ip_address", "private_ip_addresses", "dns_servers", "internal_fqdn"},
 			},
 		},
 		Dependencies: []string{
@@ -61999,60 +61999,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkInterfaceSpecIpConfigur
 							Format: "",
 						},
 					},
-					"private_ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"private_ip_address_allocation": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"load_balancer_inbound_nat_rules_ids": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"primary": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"public_ip_address_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"application_gateway_backend_address_pools_ids": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
 						},
 					},
 					"load_balancer_backend_address_pools_ids": {
@@ -62081,14 +62031,64 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkInterfaceSpecIpConfigur
 							},
 						},
 					},
+					"primary": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"private_ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"private_ip_address_version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"public_ip_address_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"application_gateway_backend_address_pools_ids": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"load_balancer_inbound_nat_rules_ids": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"subnet_id", "private_ip_address", "private_ip_address_allocation", "load_balancer_inbound_nat_rules_ids", "primary", "name", "public_ip_address_id", "application_gateway_backend_address_pools_ids", "load_balancer_backend_address_pools_ids", "application_security_group_ids", "private_ip_address_version"},
+				Required: []string{"subnet_id", "private_ip_address_allocation", "load_balancer_backend_address_pools_ids", "application_security_group_ids", "primary", "name", "private_ip_address", "private_ip_address_version", "public_ip_address_id", "application_gateway_backend_address_pools_ids", "load_balancer_inbound_nat_rules_ids"},
 			},
 		},
 	}
@@ -62209,13 +62209,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkPacketCaptureSpec(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"filter": {
+					"storage_location": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -62227,19 +62221,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkPacketCaptureSpec(ref c
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"network_watcher_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"target_resource_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -62263,7 +62245,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkPacketCaptureSpec(ref c
 							Format: "int32",
 						},
 					},
-					"storage_location": {
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"target_resource_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"filter": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -62276,7 +62276,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkPacketCaptureSpec(ref c
 						},
 					},
 				},
-				Required: []string{"resource_group_name", "filter", "name", "network_watcher_name", "target_resource_id", "maximum_bytes_per_packet", "maximum_bytes_per_session", "maximum_capture_duration", "storage_location"},
+				Required: []string{"storage_location", "network_watcher_name", "maximum_bytes_per_packet", "maximum_bytes_per_session", "maximum_capture_duration", "name", "resource_group_name", "target_resource_id", "filter"},
 			},
 		},
 		Dependencies: []string{
@@ -62290,18 +62290,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkPacketCaptureSpecFilter
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"protocol": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"remote_ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"remote_port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -62320,8 +62308,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkPacketCaptureSpecFilter
 							Format: "",
 						},
 					},
+					"protocol": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"remote_ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"protocol", "remote_ip_address", "remote_port", "local_ip_address", "local_port"},
+				Required: []string{"remote_port", "local_ip_address", "local_port", "protocol", "remote_ip_address"},
 			},
 		},
 	}
@@ -62473,31 +62473,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkProfileSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"container_network_interface": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermNetworkProfileSpec"),
-									},
-								},
-							},
-						},
-					},
-					"container_network_interface_ids": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -62530,8 +62505,33 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkProfileSpec(ref common.
 							Format: "",
 						},
 					},
+					"container_network_interface": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermNetworkProfileSpec"),
+									},
+								},
+							},
+						},
+					},
+					"container_network_interface_ids": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"container_network_interface", "container_network_interface_ids", "tags", "name", "location", "resource_group_name"},
+				Required: []string{"tags", "name", "location", "resource_group_name", "container_network_interface", "container_network_interface_ids"},
 			},
 		},
 		Dependencies: []string{
@@ -62712,24 +62712,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkSecurityGroupSpec(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"security_rule": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -62756,8 +62738,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkSecurityGroupSpec(ref c
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "location", "resource_group_name", "security_rule", "tags"},
+				Required: []string{"security_rule", "tags", "name", "location", "resource_group_name"},
 			},
 		},
 		Dependencies: []string{
@@ -62771,94 +62771,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkSecurityGroupSpecSecuri
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"priority": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"source_port_range": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"destination_port_range": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"destination_port_ranges": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"source_address_prefix": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"destination_address_prefix": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"destination_address_prefixes": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"destination_application_security_group_ids": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"protocol": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"source_port_ranges": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"source_application_security_group_ids": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -62878,10 +62790,23 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkSecurityGroupSpecSecuri
 							Format: "",
 						},
 					},
-					"description": {
+					"source_port_range": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
+						},
+					},
+					"destination_port_ranges": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"source_address_prefixes": {
@@ -62897,10 +62822,22 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkSecurityGroupSpecSecuri
 							},
 						},
 					},
-					"access": {
+					"protocol": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
+						},
+					},
+					"destination_port_range": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"priority": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"direction": {
@@ -62909,8 +62846,71 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkSecurityGroupSpecSecuri
 							Format: "",
 						},
 					},
+					"access": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"source_port_ranges": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"destination_address_prefix": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"destination_application_security_group_ids": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"source_address_prefix": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"destination_address_prefixes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"priority", "source_port_range", "destination_port_range", "destination_port_ranges", "source_address_prefix", "destination_address_prefix", "destination_address_prefixes", "destination_application_security_group_ids", "protocol", "source_port_ranges", "source_application_security_group_ids", "name", "description", "source_address_prefixes", "access", "direction"},
+				Required: []string{"source_application_security_group_ids", "name", "source_port_range", "destination_port_ranges", "source_address_prefixes", "protocol", "destination_port_range", "priority", "direction", "access", "description", "source_port_ranges", "destination_address_prefix", "destination_application_security_group_ids", "source_address_prefix", "destination_address_prefixes"},
 			},
 		},
 	}
@@ -63031,22 +63031,48 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkSecurityRuleSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
+					"network_security_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"source_port_range": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"description": {
+					"destination_port_ranges": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"source_address_prefix": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
+						},
+					},
+					"destination_address_prefixes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"destination_application_security_group_ids": {
@@ -63063,6 +63089,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkSecurityRuleSpec(ref co
 						},
 					},
 					"direction": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"protocol": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -63093,10 +63131,35 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkSecurityRuleSpec(ref co
 							Format: "",
 						},
 					},
-					"source_address_prefix": {
+					"priority": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"source_port_ranges": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"source_application_security_group_ids": {
@@ -63118,71 +63181,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNetworkSecurityRuleSpec(ref co
 							Format: "",
 						},
 					},
-					"priority": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"protocol": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"source_port_ranges": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"destination_port_ranges": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"network_security_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"source_port_range": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"destination_address_prefixes": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"name", "resource_group_name", "description", "destination_application_security_group_ids", "direction", "destination_port_range", "source_address_prefixes", "destination_address_prefix", "source_address_prefix", "source_application_security_group_ids", "access", "priority", "protocol", "source_port_ranges", "destination_port_ranges", "network_security_group_name", "source_port_range", "destination_address_prefixes"},
+				Required: []string{"network_security_group_name", "source_port_range", "destination_port_ranges", "source_address_prefix", "destination_address_prefixes", "destination_application_security_group_ids", "direction", "description", "protocol", "destination_port_range", "source_address_prefixes", "destination_address_prefix", "priority", "resource_group_name", "name", "source_port_ranges", "source_application_security_group_ids", "access"},
 			},
 		},
 	}
@@ -63500,36 +63500,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNotificationHubAuthorizationRu
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"send": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"notification_hub_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"namespace_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"manage": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -63548,14 +63518,44 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNotificationHubAuthorizationRu
 							Format: "",
 						},
 					},
+					"notification_hub_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"namespace_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"send": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"secondary_access_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "resource_group_name", "send", "notification_hub_name", "namespace_name", "manage", "listen", "primary_access_key", "secondary_access_key"},
+				Required: []string{"manage", "listen", "primary_access_key", "notification_hub_name", "namespace_name", "resource_group_name", "send", "secondary_access_key", "name"},
 			},
 		},
 	}
@@ -63723,6 +63723,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNotificationHubNamespaceSpec(r
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"sku": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -63759,26 +63777,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNotificationHubNamespaceSpec(r
 							Format: "",
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"sku", "sku_name", "enabled", "namespace_type", "servicebus_endpoint", "name", "resource_group_name", "location"},
+				Required: []string{"name", "resource_group_name", "location", "sku", "sku_name", "enabled", "namespace_type", "servicebus_endpoint"},
 			},
 		},
 		Dependencies: []string{
@@ -63830,6 +63830,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNotificationHubSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"namespace_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -63860,26 +63878,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNotificationHubSpec(ref common
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"namespace_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"location", "apns_credential", "gcm_credential", "name", "namespace_name", "resource_group_name"},
+				Required: []string{"name", "namespace_name", "resource_group_name", "location", "apns_credential", "gcm_credential"},
 			},
 		},
 		Dependencies: []string{
@@ -63893,6 +63893,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNotificationHubSpecApnsCredent
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"token": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"application_mode": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -63917,14 +63923,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermNotificationHubSpecApnsCredent
 							Format: "",
 						},
 					},
-					"token": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"application_mode", "bundle_id", "key_id", "team_id", "token"},
+				Required: []string{"token", "application_mode", "bundle_id", "key_id", "team_id"},
 			},
 		},
 	}
@@ -64070,13 +64070,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPacketCaptureSpec(ref common.R
 							Format: "",
 						},
 					},
-					"target_resource_id": {
+					"maximum_bytes_per_packet": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
-					"maximum_bytes_per_session": {
+					"maximum_capture_duration": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
@@ -64100,13 +64100,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPacketCaptureSpec(ref common.R
 							Format: "",
 						},
 					},
-					"maximum_bytes_per_packet": {
+					"network_watcher_name": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
-					"maximum_capture_duration": {
+					"target_resource_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"maximum_bytes_per_session": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
@@ -64124,14 +64130,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPacketCaptureSpec(ref common.R
 							},
 						},
 					},
-					"network_watcher_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"resource_group_name", "target_resource_id", "maximum_bytes_per_session", "filter", "name", "maximum_bytes_per_packet", "maximum_capture_duration", "storage_location", "network_watcher_name"},
+				Required: []string{"resource_group_name", "maximum_bytes_per_packet", "maximum_capture_duration", "filter", "name", "network_watcher_name", "target_resource_id", "maximum_bytes_per_session", "storage_location"},
 			},
 		},
 		Dependencies: []string{
@@ -64145,6 +64145,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPacketCaptureSpecFilter(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"remote_ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"remote_port": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"local_ip_address": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -64163,20 +64175,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPacketCaptureSpecFilter(ref co
 							Format: "",
 						},
 					},
-					"remote_ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"remote_port": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"local_ip_address", "local_port", "protocol", "remote_ip_address", "remote_port"},
+				Required: []string{"remote_ip_address", "remote_port", "local_ip_address", "local_port", "protocol"},
 			},
 		},
 	}
@@ -64328,6 +64328,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPolicyAssignmentSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"policy_definition_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"not_scopes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"scope": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -64358,45 +64389,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPolicyAssignmentSpec(ref commo
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"policy_definition_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"parameters": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"not_scopes": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"scope", "description", "display_name", "identity", "name", "policy_definition_id", "location", "parameters", "not_scopes"},
+				Required: []string{"policy_definition_id", "location", "not_scopes", "name", "scope", "description", "display_name", "identity", "parameters"},
 			},
 		},
 		Dependencies: []string{
@@ -64410,12 +64410,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPolicyAssignmentSpecIdentity(r
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"principal_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -64428,8 +64422,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPolicyAssignmentSpecIdentity(r
 							Format: "",
 						},
 					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"type", "principal_id", "tenant_id"},
+				Required: []string{"principal_id", "tenant_id", "type"},
 			},
 		},
 	}
@@ -64550,7 +64550,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPolicyDefinitionSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"mode": {
+					"display_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -64562,25 +64562,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPolicyDefinitionSpec(ref commo
 							Format: "",
 						},
 					},
-					"parameters": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"display_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"parameters": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -64592,20 +64580,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPolicyDefinitionSpec(ref commo
 							Format: "",
 						},
 					},
-					"policy_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"management_group_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"policy_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"mode": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"mode", "policy_rule", "parameters", "display_name", "description", "metadata", "name", "policy_type", "management_group_id"},
+				Required: []string{"display_name", "policy_rule", "metadata", "parameters", "name", "management_group_id", "description", "policy_type", "mode"},
 			},
 		},
 	}
@@ -65042,18 +65042,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPostgresqlDatabaseSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"charset": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"collation": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -65072,8 +65060,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPostgresqlDatabaseSpec(ref com
 							Format: "",
 						},
 					},
+					"charset": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"collation": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"charset", "collation", "name", "resource_group_name", "server_name"},
+				Required: []string{"name", "resource_group_name", "server_name", "charset", "collation"},
 			},
 		},
 	}
@@ -65194,6 +65194,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPostgresqlFirewallRuleSpec(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"start_ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"end_ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -65212,20 +65224,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPostgresqlFirewallRuleSpec(ref
 							Format: "",
 						},
 					},
-					"start_ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"end_ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "resource_group_name", "server_name", "start_ip_address", "end_ip_address"},
+				Required: []string{"start_ip_address", "end_ip_address", "name", "resource_group_name", "server_name"},
 			},
 		},
 	}
@@ -65346,7 +65346,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPostgresqlServerSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"sku": {
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"administrator_login": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"storage_profile": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -65356,18 +65368,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPostgresqlServerSpec(ref commo
 									},
 								},
 							},
-						},
-					},
-					"administrator_login_password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"fqdn": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
 						},
 					},
 					"tags": {
@@ -65396,25 +65396,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPostgresqlServerSpec(ref commo
 							Format: "",
 						},
 					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"administrator_login": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"storage_profile": {
+					"ssl_enforcement": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"fqdn": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"sku": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -65426,14 +65426,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPostgresqlServerSpec(ref commo
 							},
 						},
 					},
-					"ssl_enforcement": {
+					"administrator_login_password": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"sku", "administrator_login_password", "fqdn", "tags", "name", "location", "resource_group_name", "administrator_login", "version", "storage_profile", "ssl_enforcement"},
+				Required: []string{"resource_group_name", "administrator_login", "storage_profile", "tags", "name", "location", "version", "ssl_enforcement", "fqdn", "sku", "administrator_login_password"},
 			},
 		},
 		Dependencies: []string{
@@ -65447,18 +65447,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPostgresqlServerSpecSku(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"capacity": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"tier": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -65471,8 +65459,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPostgresqlServerSpecSku(ref co
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"capacity": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"name", "capacity", "tier", "family"},
+				Required: []string{"tier", "family", "name", "capacity"},
 			},
 		},
 	}
@@ -65776,6 +65776,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPrivateDnsZoneSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -65812,22 +65826,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPrivateDnsZoneSpec(ref common.
 							Format: "",
 						},
 					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"name", "number_of_record_sets", "max_number_of_record_sets", "max_number_of_virtual_network_links", "max_number_of_virtual_network_links_with_registration", "resource_group_name", "tags"},
+				Required: []string{"tags", "name", "number_of_record_sets", "max_number_of_record_sets", "max_number_of_virtual_network_links", "max_number_of_virtual_network_links_with_registration", "resource_group_name"},
 			},
 		},
 	}
@@ -66038,30 +66038,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPublicIpPrefixSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"sku": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"prefix_length": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"ip_prefix": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -66101,8 +66077,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPublicIpPrefixSpec(ref common.
 							Format: "",
 						},
 					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"sku": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"prefix_length": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"location", "resource_group_name", "sku", "prefix_length", "ip_prefix", "zones", "tags", "name"},
+				Required: []string{"ip_prefix", "zones", "tags", "name", "location", "resource_group_name", "sku", "prefix_length"},
 			},
 		},
 	}
@@ -66139,19 +66139,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPublicIpSpec(ref common.Refere
 							Format: "int32",
 						},
 					},
-					"public_ip_address_allocation": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"sku": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"domain_name_label": {
+					"reverse_fqdn": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -66163,33 +66151,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPublicIpSpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"sku": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"allocation_method": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
 						},
 					},
 					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"fqdn": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"public_ip_address_allocation": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ip_version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"domain_name_label": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -66220,26 +66212,34 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermPublicIpSpec(ref common.Refere
 							},
 						},
 					},
-					"ip_version": {
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"fqdn": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"reverse_fqdn": {
+					"allocation_method": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"idle_timeout_in_minutes", "public_ip_address_allocation", "sku", "domain_name_label", "name", "resource_group_name", "allocation_method", "tags", "location", "ip_address", "public_ip_prefix_id", "zones", "ip_version", "fqdn", "reverse_fqdn"},
+				Required: []string{"idle_timeout_in_minutes", "reverse_fqdn", "name", "sku", "location", "fqdn", "public_ip_address_allocation", "ip_version", "domain_name_label", "ip_address", "public_ip_prefix_id", "zones", "tags", "resource_group_name", "allocation_method"},
 			},
 		},
 	}
@@ -66360,20 +66360,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesProtectedVmSpe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -66398,8 +66384,22 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesProtectedVmSpe
 							Format: "",
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"tags", "resource_group_name", "recovery_vault_name", "source_vm_id", "backup_policy_id"},
+				Required: []string{"resource_group_name", "recovery_vault_name", "source_vm_id", "backup_policy_id", "tags"},
 			},
 		},
 	}
@@ -66526,60 +66526,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesProtectionPoli
 							Format: "",
 						},
 					},
-					"retention_daily": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermRecoveryServicesProtectionPolicyVmSpec"),
-									},
-								},
-							},
-						},
-					},
-					"retention_weekly": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermRecoveryServicesProtectionPolicyVmSpec"),
-									},
-								},
-							},
-						},
-					},
-					"retention_monthly": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermRecoveryServicesProtectionPolicyVmSpec"),
-									},
-								},
-							},
-						},
-					},
-					"retention_yearly": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermRecoveryServicesProtectionPolicyVmSpec"),
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"recovery_vault_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -66593,6 +66539,30 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesProtectionPoli
 						},
 					},
 					"backup": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermRecoveryServicesProtectionPolicyVmSpec"),
+									},
+								},
+							},
+						},
+					},
+					"retention_daily": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermRecoveryServicesProtectionPolicyVmSpec"),
+									},
+								},
+							},
+						},
+					},
+					"retention_monthly": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -66618,8 +66588,38 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesProtectionPoli
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"retention_weekly": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermRecoveryServicesProtectionPolicyVmSpec"),
+									},
+								},
+							},
+						},
+					},
+					"retention_yearly": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermRecoveryServicesProtectionPolicyVmSpec"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"resource_group_name", "retention_daily", "retention_weekly", "retention_monthly", "retention_yearly", "name", "recovery_vault_name", "timezone", "backup", "tags"},
+				Required: []string{"resource_group_name", "recovery_vault_name", "timezone", "backup", "retention_daily", "retention_monthly", "tags", "name", "retention_weekly", "retention_yearly"},
 			},
 		},
 		Dependencies: []string{
@@ -66633,12 +66633,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesProtectionPoli
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"frequency": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"time": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -66658,8 +66652,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesProtectionPoli
 							},
 						},
 					},
+					"frequency": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"frequency", "time", "weekdays"},
+				Required: []string{"time", "weekdays", "frequency"},
 			},
 		},
 	}
@@ -66690,6 +66690,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesProtectionPoli
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"count": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"weeks": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -66716,14 +66722,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesProtectionPoli
 							},
 						},
 					},
-					"count": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"weeks", "weekdays", "count"},
+				Required: []string{"count", "weeks", "weekdays"},
 			},
 		},
 	}
@@ -66767,6 +66767,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesProtectionPoli
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"count": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"months": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"weeks": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -66793,27 +66812,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesProtectionPoli
 							},
 						},
 					},
-					"count": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"months": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"weeks", "weekdays", "count", "months"},
+				Required: []string{"count", "months", "weeks", "weekdays"},
 			},
 		},
 	}
@@ -66934,24 +66934,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesVaultSpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -66972,8 +66954,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRecoveryServicesVaultSpec(ref 
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "location", "resource_group_name", "tags", "sku"},
+				Required: []string{"tags", "sku", "name", "location", "resource_group_name"},
 			},
 		},
 	}
@@ -67094,32 +67094,55 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRedisCacheSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"zones": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"capacity": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
-					"private_static_ip_address": {
+					"family": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"shard_count": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"hostname": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ssl_port": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_access_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -67129,42 +67152,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRedisCacheSpec(ref common.Refe
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"subnet_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"redis_configuration": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermRedisCacheSpec"),
-									},
-								},
-							},
-						},
-					},
-					"hostname": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"minimum_tls_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"port": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
 						},
 					},
 					"tags": {
@@ -67181,40 +67168,28 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRedisCacheSpec(ref common.Refe
 							},
 						},
 					},
-					"ssl_port": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"location": {
+					"minimum_tls_version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"private_static_ip_address": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"family": {
+					"redis_configuration": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"sku_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"shard_count": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermRedisCacheSpec"),
+									},
+								},
+							},
 						},
 					},
 					"enable_non_ssl_port": {
@@ -67235,14 +67210,39 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRedisCacheSpec(ref common.Refe
 							},
 						},
 					},
-					"primary_access_key": {
+					"port": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"zones": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"sku_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"subnet_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"name", "zones", "capacity", "private_static_ip_address", "secondary_access_key", "subnet_id", "redis_configuration", "hostname", "minimum_tls_version", "port", "tags", "ssl_port", "location", "resource_group_name", "family", "sku_name", "shard_count", "enable_non_ssl_port", "patch_schedule", "primary_access_key"},
+				Required: []string{"capacity", "family", "shard_count", "hostname", "ssl_port", "name", "location", "resource_group_name", "primary_access_key", "secondary_access_key", "tags", "minimum_tls_version", "private_static_ip_address", "redis_configuration", "enable_non_ssl_port", "patch_schedule", "port", "zones", "sku_name", "subnet_id"},
 			},
 		},
 		Dependencies: []string{
@@ -67256,20 +67256,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRedisCacheSpecPatchSchedule(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"day_of_week": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"start_hour_utc": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
+					"day_of_week": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"day_of_week", "start_hour_utc"},
+				Required: []string{"start_hour_utc", "day_of_week"},
 			},
 		},
 	}
@@ -67281,13 +67281,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRedisCacheSpecRedisConfigurati
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"rdb_storage_connection_string": {
+					"maxclients": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
-					"notify_keyspace_events": {
+					"maxmemory_policy": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -67299,31 +67299,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRedisCacheSpecRedisConfigurati
 							Format: "",
 						},
 					},
-					"maxclients": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"maxmemory_delta": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"aof_backup_enabled": {
+					"rdb_backup_enabled": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"maxmemory_policy": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"rdb_backup_frequency": {
+					"rdb_backup_max_snapshot_count": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
@@ -67335,15 +67317,27 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRedisCacheSpecRedisConfigurati
 							Format: "",
 						},
 					},
-					"maxfragmentationmemory_reserved": {
+					"maxmemory_delta": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
-					"rdb_backup_enabled": {
+					"maxmemory_reserved": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"rdb_backup_frequency": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"rdb_storage_connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -67353,20 +67347,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRedisCacheSpecRedisConfigurati
 							Format: "",
 						},
 					},
-					"maxmemory_reserved": {
+					"maxfragmentationmemory_reserved": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
-					"rdb_backup_max_snapshot_count": {
+					"notify_keyspace_events": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"aof_backup_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
 						},
 					},
 				},
-				Required: []string{"rdb_storage_connection_string", "notify_keyspace_events", "aof_storage_connection_string_1", "maxclients", "maxmemory_delta", "aof_backup_enabled", "maxmemory_policy", "rdb_backup_frequency", "aof_storage_connection_string_0", "maxfragmentationmemory_reserved", "rdb_backup_enabled", "enable_authentication", "maxmemory_reserved", "rdb_backup_max_snapshot_count"},
+				Required: []string{"maxclients", "maxmemory_policy", "aof_storage_connection_string_1", "rdb_backup_enabled", "rdb_backup_max_snapshot_count", "aof_storage_connection_string_0", "maxmemory_delta", "maxmemory_reserved", "rdb_backup_frequency", "rdb_storage_connection_string", "enable_authentication", "maxfragmentationmemory_reserved", "notify_keyspace_events", "aof_backup_enabled"},
 			},
 		},
 	}
@@ -67639,7 +67639,43 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRelayNamespaceSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"sku_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -67657,25 +67693,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRelayNamespaceSpec(ref common.
 							},
 						},
 					},
-					"primary_connection_string": {
+					"metric_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 					"secondary_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -67695,32 +67719,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRelayNamespaceSpec(ref common.
 							},
 						},
 					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"sku_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"metric_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "sku", "primary_connection_string", "secondary_key", "secondary_connection_string", "primary_key", "tags", "location", "resource_group_name", "sku_name", "metric_id"},
+				Required: []string{"location", "sku_name", "primary_connection_string", "secondary_connection_string", "primary_key", "name", "resource_group_name", "sku", "metric_id", "secondary_key", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -68162,12 +68162,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRoleDefinitionSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"role_definition_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -68211,8 +68205,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRoleDefinitionSpec(ref common.
 							},
 						},
 					},
+					"role_definition_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"role_definition_id", "name", "scope", "description", "permissions", "assignable_scopes"},
+				Required: []string{"name", "scope", "description", "permissions", "assignable_scopes", "role_definition_id"},
 			},
 		},
 		Dependencies: []string{
@@ -68226,32 +68226,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRoleDefinitionSpecPermissions(
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"not_actions": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"data_actions": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"not_data_actions": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -68278,8 +68252,34 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRoleDefinitionSpecPermissions(
 							},
 						},
 					},
+					"not_actions": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"data_actions": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"not_actions", "data_actions", "not_data_actions", "actions"},
+				Required: []string{"not_data_actions", "actions", "not_actions", "data_actions"},
 			},
 		},
 	}
@@ -68400,12 +68400,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRouteSpec(ref common.Reference
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"address_prefix": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"next_hop_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -68436,8 +68430,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRouteSpec(ref common.Reference
 							Format: "",
 						},
 					},
+					"address_prefix": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"address_prefix", "next_hop_type", "next_hop_in_ip_address", "name", "resource_group_name", "route_table_name"},
+				Required: []string{"next_hop_type", "next_hop_in_ip_address", "name", "resource_group_name", "route_table_name", "address_prefix"},
 			},
 		},
 	}
@@ -68558,12 +68558,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRouteTableSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"disable_bgp_route_propagation": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"subnets": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -68621,8 +68615,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermRouteTableSpec(ref common.Refe
 							},
 						},
 					},
+					"disable_bgp_route_propagation": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"disable_bgp_route_propagation", "subnets", "tags", "name", "location", "resource_group_name", "route"},
+				Required: []string{"subnets", "tags", "name", "location", "resource_group_name", "route", "disable_bgp_route_propagation"},
 			},
 		},
 		Dependencies: []string{
@@ -68825,26 +68825,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobCollectionSpec(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"sku": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -68881,8 +68861,28 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobCollectionSpec(ref
 							Format: "",
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"sku": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"tags", "sku", "state", "quota", "name", "location", "resource_group_name"},
+				Required: []string{"state", "quota", "name", "location", "resource_group_name", "tags", "sku"},
 			},
 		},
 		Dependencies: []string{
@@ -68896,12 +68896,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobCollectionSpecQuot
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"max_job_count": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"max_recurrence_frequency": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -68920,8 +68914,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobCollectionSpecQuot
 							Format: "int32",
 						},
 					},
+					"max_job_count": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"max_job_count", "max_recurrence_frequency", "max_retry_interval", "max_recurrence_interval"},
+				Required: []string{"max_recurrence_frequency", "max_retry_interval", "max_recurrence_interval", "max_job_count"},
 			},
 		},
 	}
@@ -68999,7 +68999,49 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"retry": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSchedulerJobSpec"),
+									},
+								},
+							},
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"error_action_web": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSchedulerJobSpec"),
+									},
+								},
+							},
+						},
+					},
+					"error_action_storage_queue": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSchedulerJobSpec"),
+									},
+								},
+							},
+						},
+					},
+					"action_storage_queue": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -69035,19 +69077,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"action_storage_queue": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSchedulerJobSpec"),
-									},
-								},
-							},
-						},
-					},
-					"resource_group_name": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -69071,38 +69101,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpec(ref common.Re
 							},
 						},
 					},
-					"error_action_storage_queue": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSchedulerJobSpec"),
-									},
-								},
-							},
-						},
-					},
-					"retry": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSchedulerJobSpec"),
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"error_action_web", "recurrence", "start_time", "state", "action_storage_queue", "resource_group_name", "job_collection_name", "action_web", "error_action_storage_queue", "retry", "name"},
+				Required: []string{"retry", "resource_group_name", "error_action_web", "error_action_storage_queue", "action_storage_queue", "recurrence", "start_time", "state", "name", "job_collection_name", "action_web"},
 			},
 		},
 		Dependencies: []string{
@@ -69116,18 +69116,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecActionStorageQ
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"sas_token": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"message": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"storage_account_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -69140,8 +69128,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecActionStorageQ
 							Format: "",
 						},
 					},
+					"sas_token": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"message": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"sas_token", "message", "storage_account_name", "storage_queue_name"},
+				Required: []string{"storage_account_name", "storage_queue_name", "sas_token", "message"},
 			},
 		},
 	}
@@ -69153,12 +69153,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecActionWeb(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"method": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"body": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -69221,8 +69215,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecActionWeb(ref 
 							Format: "",
 						},
 					},
+					"method": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"method", "body", "headers", "authentication_basic", "authentication_certificate", "authentication_active_directory", "url"},
+				Required: []string{"body", "headers", "authentication_basic", "authentication_certificate", "authentication_active_directory", "url", "method"},
 			},
 		},
 		Dependencies: []string{
@@ -69273,20 +69273,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecActionWebAuthe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"username": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"password": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"username": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"username", "password"},
+				Required: []string{"password", "username"},
 			},
 		},
 	}
@@ -69378,6 +69378,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecErrorActionWeb
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"authentication_active_directory": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSchedulerJobSpecErrorActionWeb"),
+									},
+								},
+							},
+						},
+					},
 					"url": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -69434,20 +69446,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecErrorActionWeb
 							},
 						},
 					},
-					"authentication_active_directory": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSchedulerJobSpecErrorActionWeb"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"url", "method", "body", "headers", "authentication_basic", "authentication_certificate", "authentication_active_directory"},
+				Required: []string{"authentication_active_directory", "url", "method", "body", "headers", "authentication_basic", "authentication_certificate"},
 			},
 		},
 		Dependencies: []string{
@@ -69461,6 +69461,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecErrorActionWeb
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"tenant_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"client_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -69479,14 +69485,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecErrorActionWeb
 							Format: "",
 						},
 					},
-					"tenant_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"client_id", "secret", "audience", "tenant_id"},
+				Required: []string{"tenant_id", "client_id", "secret", "audience"},
 			},
 		},
 	}
@@ -69566,12 +69566,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecRecurrence(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"frequency": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"interval": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -69582,19 +69576,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecRecurrence(ref
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
-						},
-					},
-					"hours": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"integer"},
-										Format: "int64",
-									},
-								},
-							},
 						},
 					},
 					"week_days": {
@@ -69610,16 +69591,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecRecurrence(ref
 							},
 						},
 					},
-					"monthly_occurrences": {
+					"frequency": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSchedulerJobSpecRecurrence"),
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"end_time": {
@@ -69629,6 +69604,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecRecurrence(ref
 						},
 					},
 					"minutes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"integer"},
+										Format: "int64",
+									},
+								},
+							},
+						},
+					},
+					"hours": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -69654,8 +69642,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSchedulerJobSpecRecurrence(ref
 							},
 						},
 					},
+					"monthly_occurrences": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSchedulerJobSpecRecurrence"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"frequency", "interval", "count", "hours", "week_days", "monthly_occurrences", "end_time", "minutes", "month_days"},
+				Required: []string{"interval", "count", "week_days", "frequency", "end_time", "minutes", "hours", "month_days", "monthly_occurrences"},
 			},
 		},
 		Dependencies: []string{
@@ -69828,18 +69828,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSearchServiceSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tags": {
+					"replica_count": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"partition_count": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"location": {
@@ -69848,16 +69846,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSearchServiceSpec(ref common.R
 							Format: "",
 						},
 					},
-					"sku": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"partition_count": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
 						},
 					},
 					"primary_key": {
@@ -69872,26 +69864,34 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSearchServiceSpec(ref common.R
 							Format: "",
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"sku": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"replica_count": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"tags", "location", "sku", "partition_count", "primary_key", "secondary_key", "name", "resource_group_name", "replica_count"},
+				Required: []string{"replica_count", "partition_count", "location", "resource_group_name", "primary_key", "secondary_key", "tags", "name", "sku"},
 			},
 		},
 	}
@@ -70420,13 +70420,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServiceFabricClusterSpec(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"cluster_code_version": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"reverse_proxy_certificate": {
+					"upgrade_mode": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"management_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"azure_active_directory": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -70438,7 +70450,74 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServiceFabricClusterSpec(ref c
 							},
 						},
 					},
-					"node_type": {
+					"client_certificate_thumbprint": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermServiceFabricClusterSpec"),
+									},
+								},
+							},
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"vm_image": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"add_on_features": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"certificate": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermServiceFabricClusterSpec"),
+									},
+								},
+							},
+						},
+					},
+					"certificate_common_names": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermServiceFabricClusterSpec"),
+									},
+								},
+							},
+						},
+					},
+					"reverse_proxy_certificate": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -70464,19 +70543,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServiceFabricClusterSpec(ref c
 							},
 						},
 					},
-					"location": {
+					"cluster_code_version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"upgrade_mode": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"certificate": {
+					"node_type": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -70488,26 +70561,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServiceFabricClusterSpec(ref c
 							},
 						},
 					},
-					"resource_group_name": {
+					"reliability_level": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"add_on_features": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"azure_active_directory": {
+					"diagnostics_config": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -70537,68 +70597,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServiceFabricClusterSpec(ref c
 							Format: "",
 						},
 					},
-					"vm_image": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"reliability_level": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"management_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"certificate_common_names": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermServiceFabricClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"client_certificate_thumbprint": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermServiceFabricClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"diagnostics_config": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermServiceFabricClusterSpec"),
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"cluster_code_version", "reverse_proxy_certificate", "node_type", "tags", "location", "upgrade_mode", "certificate", "resource_group_name", "add_on_features", "azure_active_directory", "fabric_settings", "cluster_endpoint", "vm_image", "reliability_level", "management_endpoint", "certificate_common_names", "client_certificate_thumbprint", "diagnostics_config", "name"},
+				Required: []string{"name", "upgrade_mode", "management_endpoint", "azure_active_directory", "client_certificate_thumbprint", "resource_group_name", "location", "vm_image", "add_on_features", "certificate", "certificate_common_names", "reverse_proxy_certificate", "tags", "cluster_code_version", "node_type", "reliability_level", "diagnostics_config", "fabric_settings", "cluster_endpoint"},
 			},
 		},
 		Dependencies: []string{
@@ -70757,12 +70757,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServiceFabricClusterSpecDiagno
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"storage_account_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"protected_account_key_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -70787,8 +70781,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServiceFabricClusterSpecDiagno
 							Format: "",
 						},
 					},
+					"storage_account_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"storage_account_name", "protected_account_key_name", "blob_endpoint", "queue_endpoint", "table_endpoint"},
+				Required: []string{"protected_account_key_name", "blob_endpoint", "queue_endpoint", "table_endpoint", "storage_account_name"},
 			},
 		},
 	}
@@ -70839,12 +70839,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServiceFabricClusterSpecNodeTy
 							Format: "",
 						},
 					},
-					"client_endpoint_port": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"http_endpoint_port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -70861,6 +70855,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServiceFabricClusterSpecNodeTy
 									},
 								},
 							},
+						},
+					},
+					"reverse_proxy_endpoint_port": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"durability_level": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"ephemeral_ports": {
@@ -70915,20 +70921,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServiceFabricClusterSpecNodeTy
 							Format: "",
 						},
 					},
-					"reverse_proxy_endpoint_port": {
+					"client_endpoint_port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
-					"durability_level": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"name", "client_endpoint_port", "http_endpoint_port", "application_ports", "ephemeral_ports", "placement_properties", "capacities", "instance_count", "is_primary", "reverse_proxy_endpoint_port", "durability_level"},
+				Required: []string{"name", "http_endpoint_port", "application_ports", "reverse_proxy_endpoint_port", "durability_level", "ephemeral_ports", "placement_properties", "capacities", "instance_count", "is_primary", "client_endpoint_port"},
 			},
 		},
 		Dependencies: []string{
@@ -70992,6 +70992,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServiceFabricClusterSpecRevers
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"x509_store_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"thumbprint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -71004,14 +71010,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServiceFabricClusterSpecRevers
 							Format: "",
 						},
 					},
-					"x509_store_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"thumbprint", "thumbprint_secondary", "x509_store_name"},
+				Required: []string{"x509_store_name", "thumbprint", "thumbprint_secondary"},
 			},
 		},
 	}
@@ -71175,21 +71175,9 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusNamespaceAuthorizati
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"listen": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"namespace_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"manage": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -71199,21 +71187,21 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusNamespaceAuthorizati
 							Format: "",
 						},
 					},
-					"primary_connection_string": {
+					"send": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"manage": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
 					"secondary_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"send": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -71229,14 +71217,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusNamespaceAuthorizati
 							Format: "",
 						},
 					},
+					"listen": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"primary_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"primary_connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"listen", "namespace_name", "manage", "secondary_connection_string", "primary_connection_string", "secondary_key", "send", "name", "resource_group_name", "primary_key"},
+				Required: []string{"namespace_name", "secondary_connection_string", "send", "manage", "secondary_key", "name", "resource_group_name", "listen", "primary_key", "primary_connection_string"},
 			},
 		},
 	}
@@ -71314,6 +71314,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusNamespaceSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"capacity": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"default_secondary_connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -71328,31 +71346,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusNamespaceSpec(ref co
 							},
 						},
 					},
+					"default_secondary_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"sku": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"default_secondary_connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"default_primary_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -71364,10 +71364,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusNamespaceSpec(ref co
 							Format: "",
 						},
 					},
-					"capacity": {
+					"sku": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"default_primary_connection_string": {
@@ -71376,14 +71376,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusNamespaceSpec(ref co
 							Format: "",
 						},
 					},
-					"default_secondary_key": {
+					"default_primary_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"tags", "name", "location", "sku", "default_secondary_connection_string", "default_primary_key", "resource_group_name", "capacity", "default_primary_connection_string", "default_secondary_key"},
+				Required: []string{"location", "capacity", "default_secondary_connection_string", "tags", "default_secondary_key", "name", "resource_group_name", "sku", "default_primary_connection_string", "default_primary_key"},
 			},
 		},
 	}
@@ -71547,30 +71547,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusQueueAuthorizationRu
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"namespace_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"queue_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"send": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"primary_connection_string": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -71589,13 +71565,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusQueueAuthorizationRu
 							Format: "",
 						},
 					},
-					"name": {
+					"send": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"namespace_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"primary_key": {
+					"queue_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -71613,8 +71595,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusQueueAuthorizationRu
 							Format: "",
 						},
 					},
+					"primary_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"namespace_name", "queue_name", "resource_group_name", "send", "primary_connection_string", "secondary_connection_string", "listen", "name", "primary_key", "secondary_key", "manage"},
+				Required: []string{"primary_connection_string", "secondary_connection_string", "listen", "send", "namespace_name", "queue_name", "secondary_key", "manage", "primary_key", "resource_group_name", "name"},
 			},
 		},
 	}
@@ -71692,25 +71692,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusQueueSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"auto_delete_on_idle": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"requires_duplicate_detection": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"support_ordering": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"max_delivery_count": {
+					"max_size_in_megabytes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
@@ -71722,7 +71704,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusQueueSpec(ref common
 							Format: "",
 						},
 					},
-					"location": {
+					"auto_delete_on_idle": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enable_express": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"max_delivery_count": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"namespace_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -71734,9 +71734,9 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusQueueSpec(ref common
 							Format: "",
 						},
 					},
-					"default_message_ttl": {
+					"dead_lettering_on_message_expiration": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -71752,31 +71752,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusQueueSpec(ref common
 							Format: "",
 						},
 					},
-					"dead_lettering_on_message_expiration": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"enable_express": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"max_size_in_megabytes": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"enable_batched_operations": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"namespace_name": {
+					"enable_partitioning": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"requires_duplicate_detection": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"support_ordering": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"default_message_ttl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -71788,14 +71794,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusQueueSpec(ref common
 							Format: "",
 						},
 					},
-					"enable_partitioning": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"auto_delete_on_idle", "requires_duplicate_detection", "support_ordering", "max_delivery_count", "name", "location", "resource_group_name", "default_message_ttl", "lock_duration", "requires_session", "dead_lettering_on_message_expiration", "enable_express", "max_size_in_megabytes", "enable_batched_operations", "namespace_name", "duplicate_detection_history_time_window", "enable_partitioning"},
+				Required: []string{"max_size_in_megabytes", "name", "auto_delete_on_idle", "enable_express", "max_delivery_count", "namespace_name", "resource_group_name", "dead_lettering_on_message_expiration", "lock_duration", "requires_session", "enable_batched_operations", "enable_partitioning", "requires_duplicate_detection", "support_ordering", "location", "default_message_ttl", "duplicate_detection_history_time_window"},
 			},
 		},
 	}
@@ -72012,19 +72012,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusSubscriptionRuleSpec
 							Format: "",
 						},
 					},
-					"namespace_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"filter_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"action": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"sql_filter": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -72048,6 +72042,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusSubscriptionRuleSpec
 							Format: "",
 						},
 					},
+					"namespace_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"topic_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -72060,14 +72060,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusSubscriptionRuleSpec
 							Format: "",
 						},
 					},
-					"sql_filter": {
+					"filter_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"resource_group_name", "namespace_name", "filter_type", "action", "correlation_filter", "name", "topic_name", "subscription_name", "sql_filter"},
+				Required: []string{"resource_group_name", "action", "sql_filter", "correlation_filter", "name", "namespace_name", "topic_name", "subscription_name", "filter_type"},
 			},
 		},
 		Dependencies: []string{
@@ -72081,12 +72081,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusSubscriptionRuleSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"correlation_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"message_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -72129,8 +72123,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusSubscriptionRuleSpec
 							Format: "",
 						},
 					},
+					"correlation_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"correlation_id", "message_id", "to", "reply_to", "label", "session_id", "reply_to_session_id", "content_type"},
+				Required: []string{"message_id", "to", "reply_to", "label", "session_id", "reply_to_session_id", "content_type", "correlation_id"},
 			},
 		},
 	}
@@ -72161,7 +72161,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusSubscriptionSpec(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"topic_name": {
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"namespace_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -72173,7 +72179,49 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusSubscriptionSpec(ref
 							Format: "",
 						},
 					},
+					"dead_lettering_on_message_expiration": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"lock_duration": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"topic_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enable_batched_operations": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"max_delivery_count": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"requires_session": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"forward_to": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -72191,54 +72239,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusSubscriptionSpec(ref
 							Format: "",
 						},
 					},
-					"max_delivery_count": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"namespace_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"lock_duration": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"enable_batched_operations": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"forward_to": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"dead_lettering_on_message_expiration": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"requires_session": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"dead_lettering_on_filter_evaluation_exceptions": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -72246,7 +72246,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusSubscriptionSpec(ref
 						},
 					},
 				},
-				Required: []string{"topic_name", "location", "resource_group_name", "auto_delete_on_idle", "default_message_ttl", "max_delivery_count", "name", "namespace_name", "lock_duration", "enable_batched_operations", "forward_to", "dead_lettering_on_message_expiration", "requires_session", "dead_lettering_on_filter_evaluation_exceptions"},
+				Required: []string{"name", "namespace_name", "location", "dead_lettering_on_message_expiration", "resource_group_name", "lock_duration", "topic_name", "enable_batched_operations", "max_delivery_count", "requires_session", "forward_to", "auto_delete_on_idle", "default_message_ttl", "dead_lettering_on_filter_evaluation_exceptions"},
 			},
 		},
 	}
@@ -72410,13 +72410,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusTopicAuthorizationRu
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"primary_key": {
+					"listen": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"secondary_key": {
+					"send": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"manage": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -72434,31 +72446,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusTopicAuthorizationRu
 							Format: "",
 						},
 					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"send": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"manage": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"primary_connection_string": {
+					"secondary_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -72470,14 +72458,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusTopicAuthorizationRu
 							Format: "",
 						},
 					},
-					"listen": {
+					"primary_connection_string": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"primary_key", "secondary_key", "namespace_name", "topic_name", "resource_group_name", "name", "send", "manage", "primary_connection_string", "secondary_connection_string", "listen"},
+				Required: []string{"listen", "send", "manage", "name", "namespace_name", "topic_name", "secondary_key", "secondary_connection_string", "primary_connection_string", "resource_group_name", "primary_key"},
 			},
 		},
 	}
@@ -72555,55 +72555,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusTopicSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"default_message_ttl": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"duplicate_detection_history_time_window": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"enable_partitioning": {
+					"enable_batched_operations": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"requires_duplicate_detection": {
+					"support_ordering": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"enable_filtering_messages_before_publishing": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"auto_delete_on_idle": {
+					"status": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -72615,13 +72585,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusTopicSpec(ref common
 							Format: "",
 						},
 					},
-					"max_size_in_megabytes": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"support_ordering": {
+					"enable_filtering_messages_before_publishing": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
@@ -72639,14 +72603,50 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermServicebusTopicSpec(ref common
 							Format: "",
 						},
 					},
-					"enable_batched_operations": {
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"max_size_in_megabytes": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"requires_duplicate_detection": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
+					"auto_delete_on_idle": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"default_message_ttl": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enable_partitioning": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"status", "default_message_ttl", "duplicate_detection_history_time_window", "enable_partitioning", "requires_duplicate_detection", "enable_filtering_messages_before_publishing", "location", "resource_group_name", "auto_delete_on_idle", "enable_express", "max_size_in_megabytes", "support_ordering", "name", "namespace_name", "enable_batched_operations"},
+				Required: []string{"duplicate_detection_history_time_window", "enable_batched_operations", "support_ordering", "status", "enable_express", "enable_filtering_messages_before_publishing", "name", "namespace_name", "location", "max_size_in_megabytes", "requires_duplicate_detection", "auto_delete_on_idle", "default_message_ttl", "enable_partitioning", "resource_group_name"},
 			},
 		},
 	}
@@ -72810,6 +72810,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSharedImageGallerySpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -72848,14 +72854,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSharedImageGallerySpec(ref com
 							Format: "",
 						},
 					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"tags", "unique_name", "name", "resource_group_name", "location", "description"},
+				Required: []string{"description", "tags", "unique_name", "name", "resource_group_name", "location"},
 			},
 		},
 	}
@@ -72933,7 +72933,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSharedImageSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"os_type": {
+					"gallery_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -72951,13 +72957,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSharedImageSpec(ref common.Ref
 							},
 						},
 					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"privacy_statement_uri": {
+					"release_note_uri": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -72983,19 +72983,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSharedImageSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"gallery_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"os_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -73007,14 +73007,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSharedImageSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"release_note_uri": {
+					"privacy_statement_uri": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"os_type", "identifier", "description", "privacy_statement_uri", "tags", "name", "gallery_name", "location", "resource_group_name", "eula", "release_note_uri"},
+				Required: []string{"gallery_name", "resource_group_name", "identifier", "release_note_uri", "tags", "name", "location", "os_type", "description", "eula", "privacy_statement_uri"},
 			},
 		},
 		Dependencies: []string{
@@ -73174,13 +73174,49 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSharedImageVersionSpec(ref com
 							Format: "",
 						},
 					},
+					"gallery_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"image_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"target_region": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSharedImageVersionSpec"),
+									},
+								},
+							},
+						},
+					},
+					"exclude_from_latest": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"managed_image_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -73200,44 +73236,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSharedImageVersionSpec(ref com
 							},
 						},
 					},
-					"exclude_from_latest": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"gallery_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"managed_image_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"target_region": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSharedImageVersionSpec"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"name", "image_name", "resource_group_name", "tags", "exclude_from_latest", "gallery_name", "location", "managed_image_id", "target_region"},
+				Required: []string{"name", "gallery_name", "image_name", "target_region", "exclude_from_latest", "location", "resource_group_name", "managed_image_id", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -73385,25 +73385,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSignalrServiceSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"secondary_access_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"ip_address": {
+					"sku": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSignalrServiceSpec"),
+									},
+								},
+							},
+						},
+					},
+					"hostname": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -73415,7 +73415,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSignalrServiceSpec(ref common.
 							Format: "int32",
 						},
 					},
+					"secondary_access_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"server_port": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"primary_access_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_connection_string": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -73441,44 +73471,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSignalrServiceSpec(ref common.
 							},
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"sku": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSignalrServiceSpec"),
-									},
-								},
-							},
-						},
-					},
-					"hostname": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"server_port": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"primary_connection_string": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"secondary_access_key", "location", "resource_group_name", "ip_address", "public_port", "primary_access_key", "secondary_connection_string", "tags", "name", "sku", "hostname", "server_port", "primary_connection_string"},
+				Required: []string{"resource_group_name", "sku", "hostname", "public_port", "secondary_access_key", "name", "ip_address", "server_port", "primary_access_key", "primary_connection_string", "secondary_connection_string", "tags", "location"},
 			},
 		},
 		Dependencies: []string{
@@ -73626,34 +73626,22 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSnapshotSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
+					"source_resource_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"location": {
+					"encryption_settings": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"create_option": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"storage_account_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSnapshotSpec"),
+									},
+								},
+							},
 						},
 					},
 					"tags": {
@@ -73670,13 +73658,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSnapshotSpec(ref common.Refere
 							},
 						},
 					},
-					"source_uri": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"source_resource_id": {
+					"create_option": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"source_uri": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -73688,20 +73682,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSnapshotSpec(ref common.Refere
 							Format: "int32",
 						},
 					},
-					"encryption_settings": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermSnapshotSpec"),
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"storage_account_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
-				Required: []string{"name", "location", "resource_group_name", "create_option", "storage_account_id", "tags", "source_uri", "source_resource_id", "disk_size_gb", "encryption_settings"},
+				Required: []string{"source_resource_id", "encryption_settings", "tags", "name", "create_option", "source_uri", "disk_size_gb", "location", "resource_group_name", "storage_account_id"},
 			},
 		},
 		Dependencies: []string{
@@ -73919,12 +73919,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlActiveDirectoryAdministrato
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tenant_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"server_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -73949,8 +73943,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlActiveDirectoryAdministrato
 							Format: "",
 						},
 					},
+					"tenant_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"tenant_id", "server_name", "resource_group_name", "login", "object_id"},
+				Required: []string{"server_name", "resource_group_name", "login", "object_id", "tenant_id"},
 			},
 		},
 	}
@@ -74071,55 +74071,37 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlDatabaseSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"create_mode": {
+					"creation_date": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"max_size_bytes": {
+					"server_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"restore_point_in_time": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"encryption": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 					"requested_service_objective_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"default_secondary_location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"read_scale": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"edition": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"requested_service_objective_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"elastic_pool_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"creation_date": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -74139,13 +74121,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlDatabaseSpec(ref common.Ref
 							},
 						},
 					},
-					"name": {
+					"edition": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"resource_group_name": {
+					"max_size_bytes": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"requested_service_objective_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"source_database_deletion_date": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -74163,19 +74157,43 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlDatabaseSpec(ref common.Ref
 							},
 						},
 					},
-					"encryption": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"server_name": {
+					"create_mode": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"source_database_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"elastic_pool_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"default_secondary_location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"read_scale": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -74193,32 +74211,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlDatabaseSpec(ref common.Ref
 							},
 						},
 					},
-					"source_database_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"restore_point_in_time": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"collation": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"source_database_deletion_date": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"create_mode", "max_size_bytes", "requested_service_objective_name", "default_secondary_location", "read_scale", "edition", "requested_service_objective_id", "elastic_pool_name", "creation_date", "tags", "name", "resource_group_name", "threat_detection_policy", "encryption", "location", "server_name", "import", "source_database_id", "restore_point_in_time", "collation", "source_database_deletion_date"},
+				Required: []string{"creation_date", "server_name", "restore_point_in_time", "encryption", "resource_group_name", "requested_service_objective_name", "tags", "edition", "max_size_bytes", "requested_service_objective_id", "source_database_deletion_date", "threat_detection_policy", "location", "create_mode", "source_database_id", "elastic_pool_name", "default_secondary_location", "read_scale", "name", "import", "collation"},
 			},
 		},
 		Dependencies: []string{
@@ -74287,18 +74287,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlDatabaseSpecThreatDetection
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"storage_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"use_server_default": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"disabled_alerts": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -74349,8 +74337,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlDatabaseSpecThreatDetection
 							Format: "",
 						},
 					},
+					"storage_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"use_server_default": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"storage_endpoint", "use_server_default", "disabled_alerts", "email_account_admins", "email_addresses", "retention_days", "state", "storage_account_access_key"},
+				Required: []string{"disabled_alerts", "email_account_admins", "email_addresses", "retention_days", "state", "storage_account_access_key", "storage_endpoint", "use_server_default"},
 			},
 		},
 	}
@@ -74471,31 +74471,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlElasticpoolSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"dtu": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"db_dtu_max": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"creation_date": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -74519,10 +74495,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlElasticpoolSpec(ref common.
 							Format: "int32",
 						},
 					},
-					"pool_size": {
+					"creation_date": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"tags": {
@@ -74539,14 +74515,38 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlElasticpoolSpec(ref common.
 							},
 						},
 					},
-					"location": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"dtu": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"db_dtu_max": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"pool_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"resource_group_name", "dtu", "db_dtu_max", "creation_date", "name", "server_name", "edition", "db_dtu_min", "pool_size", "tags", "location"},
+				Required: []string{"location", "server_name", "edition", "db_dtu_min", "creation_date", "tags", "name", "resource_group_name", "dtu", "db_dtu_max", "pool_size"},
 			},
 		},
 	}
@@ -74819,6 +74819,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlServerSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"administrator_login": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"administrator_login_password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"fully_qualified_domain_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -74863,20 +74875,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlServerSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"administrator_login": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"administrator_login_password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"fully_qualified_domain_name", "tags", "name", "location", "resource_group_name", "version", "administrator_login", "administrator_login_password"},
+				Required: []string{"administrator_login", "administrator_login_password", "fully_qualified_domain_name", "tags", "name", "location", "resource_group_name", "version"},
 			},
 		},
 	}
@@ -74997,18 +74997,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlVirtualNetworkRuleSpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"server_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"subnet_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -75027,8 +75015,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSqlVirtualNetworkRuleSpec(ref 
 							Format: "",
 						},
 					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"server_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"resource_group_name", "server_name", "subnet_id", "ignore_missing_vnet_service_endpoint", "name"},
+				Required: []string{"subnet_id", "ignore_missing_vnet_service_endpoint", "name", "resource_group_name", "server_name"},
 			},
 		},
 	}
@@ -75149,37 +75149,69 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStorageAccountSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
+					"tags": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_file_host": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"account_kind": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"account_replication_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_table_host": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_web_host": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_dfs_host": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_file_host": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_web_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"access_tier": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -75197,219 +75229,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStorageAccountSpec(ref common.
 							Format: "",
 						},
 					},
+					"secondary_location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"primary_blob_endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"primary_web_host": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"access_tier": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_table_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_dfs_host": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_file_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_blob_connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"enable_https_traffic_only": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"primary_blob_host": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"account_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"network_rules": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermStorageAccountSpec"),
-									},
-								},
-							},
-						},
-					},
-					"primary_location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_blob_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_blob_host": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_queue_host": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"primary_table_host": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_web_host": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_dfs_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_access_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"custom_domain": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermStorageAccountSpec"),
-									},
-								},
-							},
-						},
-					},
-					"enable_file_encryption": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"is_hns_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"primary_queue_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_queue_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_table_host": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_web_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_dfs_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_dfs_host": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_file_host": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -75427,37 +75259,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStorageAccountSpec(ref common.
 							},
 						},
 					},
-					"secondary_table_endpoint": {
+					"account_kind": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"secondary_web_endpoint": {
+					"enable_https_traffic_only": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
-					"primary_file_endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"secondary_access_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"primary_blob_connection_string": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"account_tier": {
+					"primary_queue_host": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -75469,8 +75283,194 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStorageAccountSpec(ref common.
 							Format: "",
 						},
 					},
+					"secondary_dfs_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_file_host": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_blob_host": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_web_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_web_host": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_file_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_blob_connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enable_file_encryption": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"secondary_blob_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_blob_host": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_dfs_host": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_access_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_access_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"account_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"is_hns_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"secondary_queue_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_table_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_file_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"network_rules": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermStorageAccountSpec"),
+									},
+								},
+							},
+						},
+					},
+					"secondary_table_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"secondary_blob_connection_string": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"account_tier": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"custom_domain": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermStorageAccountSpec"),
+									},
+								},
+							},
+						},
+					},
+					"primary_queue_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"primary_dfs_endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "location", "secondary_location", "secondary_file_host", "account_kind", "account_replication_type", "account_encryption_source", "enable_blob_encryption", "primary_blob_endpoint", "primary_web_host", "access_tier", "primary_table_endpoint", "primary_dfs_host", "secondary_file_endpoint", "primary_connection_string", "secondary_blob_connection_string", "resource_group_name", "enable_https_traffic_only", "primary_blob_host", "account_type", "network_rules", "primary_location", "secondary_blob_endpoint", "secondary_blob_host", "primary_queue_host", "primary_table_host", "secondary_web_host", "primary_dfs_endpoint", "primary_access_key", "secondary_connection_string", "tags", "custom_domain", "enable_file_encryption", "is_hns_enabled", "primary_queue_endpoint", "secondary_queue_endpoint", "secondary_table_host", "primary_web_endpoint", "secondary_dfs_endpoint", "secondary_dfs_host", "primary_file_host", "identity", "secondary_table_endpoint", "secondary_web_endpoint", "primary_file_endpoint", "secondary_access_key", "primary_blob_connection_string", "account_tier", "secondary_queue_host"},
+				Required: []string{"tags", "account_replication_type", "primary_location", "secondary_table_host", "primary_web_host", "primary_dfs_host", "primary_file_host", "secondary_web_endpoint", "primary_connection_string", "access_tier", "account_encryption_source", "enable_blob_encryption", "secondary_location", "primary_blob_endpoint", "primary_table_host", "identity", "account_kind", "enable_https_traffic_only", "primary_queue_host", "secondary_queue_host", "secondary_dfs_endpoint", "secondary_file_host", "location", "primary_blob_host", "primary_web_endpoint", "secondary_web_host", "secondary_file_endpoint", "primary_blob_connection_string", "enable_file_encryption", "secondary_blob_endpoint", "secondary_blob_host", "secondary_dfs_host", "primary_access_key", "secondary_access_key", "name", "account_type", "is_hns_enabled", "secondary_queue_endpoint", "primary_table_endpoint", "primary_file_endpoint", "secondary_connection_string", "network_rules", "secondary_table_endpoint", "secondary_blob_connection_string", "resource_group_name", "account_tier", "custom_domain", "primary_queue_endpoint", "primary_dfs_endpoint"},
 			},
 		},
 		Dependencies: []string{
@@ -75707,73 +75707,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStorageBlobSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"source": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"attempts": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"content_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"storage_account_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"storage_container_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"source_uri": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"url": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"parallelism": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -75793,8 +75727,74 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStorageBlobSpec(ref common.Ref
 							},
 						},
 					},
+					"source": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"storage_account_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"storage_container_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"content_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"url": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"attempts": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"parallelism": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"source", "attempts", "type", "content_type", "storage_account_name", "storage_container_name", "size", "source_uri", "url", "parallelism", "name", "resource_group_name", "metadata"},
+				Required: []string{"source_uri", "metadata", "source", "resource_group_name", "storage_account_name", "storage_container_name", "type", "size", "content_type", "url", "name", "attempts", "parallelism"},
 			},
 		},
 	}
@@ -75915,6 +75915,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStorageContainerSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"storage_account_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"container_access_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"properties": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -75941,20 +75953,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStorageContainerSpec(ref commo
 							Format: "",
 						},
 					},
-					"storage_account_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"container_access_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"properties", "name", "resource_group_name", "storage_account_name", "container_access_type"},
+				Required: []string{"storage_account_name", "container_access_type", "properties", "name", "resource_group_name"},
 			},
 		},
 	}
@@ -76215,6 +76215,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStorageShareSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"storage_account_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"quota": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"url": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -76233,20 +76245,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStorageShareSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"storage_account_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"quota": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"url", "name", "resource_group_name", "storage_account_name", "quota"},
+				Required: []string{"storage_account_name", "quota", "url", "name", "resource_group_name"},
 			},
 		},
 	}
@@ -76367,12 +76367,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStorageTableSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -76385,8 +76379,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStorageTableSpec(ref common.Re
 							Format: "",
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "resource_group_name", "storage_account_name"},
+				Required: []string{"resource_group_name", "storage_account_name", "name"},
 			},
 		},
 	}
@@ -76507,6 +76507,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsFunctionJavascr
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"stream_analytics_job_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -76549,14 +76555,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsFunctionJavascr
 							Format: "",
 						},
 					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"stream_analytics_job_name", "resource_group_name", "input", "output", "script", "name"},
+				Required: []string{"name", "stream_analytics_job_name", "resource_group_name", "input", "output", "script"},
 			},
 		},
 		Dependencies: []string{
@@ -76717,13 +76717,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsJobSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"data_locale": {
+					"compatibility_level": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"events_out_of_order_max_delay_in_seconds": {
+					"events_late_arrival_max_delay_in_seconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
@@ -76735,30 +76735,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsJobSpec(ref com
 							Format: "",
 						},
 					},
-					"output_error_policy": {
+					"streaming_units": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"transformation_query": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
 						},
 					},
 					"name": {
@@ -76779,22 +76765,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsJobSpec(ref com
 							Format: "",
 						},
 					},
-					"compatibility_level": {
+					"tags": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"events_late_arrival_max_delay_in_seconds": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"streaming_units": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"job_id": {
@@ -76803,8 +76785,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsJobSpec(ref com
 							Format: "",
 						},
 					},
+					"data_locale": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"events_out_of_order_max_delay_in_seconds": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"output_error_policy": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"data_locale", "events_out_of_order_max_delay_in_seconds", "events_out_of_order_policy", "output_error_policy", "transformation_query", "tags", "name", "resource_group_name", "location", "compatibility_level", "events_late_arrival_max_delay_in_seconds", "streaming_units", "job_id"},
+				Required: []string{"compatibility_level", "events_late_arrival_max_delay_in_seconds", "events_out_of_order_policy", "streaming_units", "transformation_query", "name", "resource_group_name", "location", "tags", "job_id", "data_locale", "events_out_of_order_max_delay_in_seconds", "output_error_policy"},
 			},
 		},
 	}
@@ -76925,19 +76925,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsOutputBlobSpec(
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"date_format": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"time_format": {
+					"storage_account_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -76967,13 +76955,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsOutputBlobSpec(
 							},
 						},
 					},
-					"name": {
+					"stream_analytics_job_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"stream_analytics_job_name": {
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"date_format": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -76985,14 +76979,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsOutputBlobSpec(
 							Format: "",
 						},
 					},
-					"storage_account_key": {
+					"time_format": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"resource_group_name", "date_format", "time_format", "storage_account_name", "storage_container_name", "serialization", "name", "stream_analytics_job_name", "path_pattern", "storage_account_key"},
+				Required: []string{"storage_account_key", "storage_account_name", "storage_container_name", "serialization", "stream_analytics_job_name", "resource_group_name", "date_format", "path_pattern", "time_format", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -77006,18 +77006,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsOutputBlobSpecS
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"field_delimiter": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"encoding": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -77030,8 +77018,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsOutputBlobSpecS
 							Format: "",
 						},
 					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"field_delimiter": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"type", "field_delimiter", "encoding", "format"},
+				Required: []string{"encoding", "format", "type", "field_delimiter"},
 			},
 		},
 	}
@@ -77367,30 +77367,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsOutputMssqlSpec
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"table": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"user": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"stream_analytics_job_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -77415,8 +77391,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsOutputMssqlSpec
 							Format: "",
 						},
 					},
+					"table": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"user": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"password": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"table", "user", "password", "name", "stream_analytics_job_name", "resource_group_name", "server", "database"},
+				Required: []string{"stream_analytics_job_name", "resource_group_name", "server", "database", "table", "user", "password", "name"},
 			},
 		},
 	}
@@ -77537,30 +77537,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsOutputServicebu
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"serialization": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermStreamAnalyticsOutputServicebusQueueSpec"),
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"stream_analytics_job_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -77591,8 +77567,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsOutputServicebu
 							Format: "",
 						},
 					},
+					"serialization": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermStreamAnalyticsOutputServicebusQueueSpec"),
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"stream_analytics_job_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"serialization", "name", "stream_analytics_job_name", "resource_group_name", "queue_name", "servicebus_namespace", "shared_access_policy_key", "shared_access_policy_name"},
+				Required: []string{"resource_group_name", "queue_name", "servicebus_namespace", "shared_access_policy_key", "shared_access_policy_name", "serialization", "name", "stream_analytics_job_name"},
 			},
 		},
 		Dependencies: []string{
@@ -77764,7 +77764,31 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsStreamInputBlob
 							Format: "",
 						},
 					},
+					"storage_account_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"stream_analytics_job_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"storage_container_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"time_format": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -77788,30 +77812,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsStreamInputBlob
 							Format: "",
 						},
 					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"storage_account_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"time_format": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"stream_analytics_job_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"path_pattern": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -77819,7 +77819,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsStreamInputBlob
 						},
 					},
 				},
-				Required: []string{"date_format", "storage_account_key", "storage_container_name", "serialization", "name", "resource_group_name", "storage_account_name", "time_format", "stream_analytics_job_name", "path_pattern"},
+				Required: []string{"date_format", "storage_account_key", "storage_account_name", "stream_analytics_job_name", "resource_group_name", "storage_container_name", "time_format", "serialization", "name", "path_pattern"},
 			},
 		},
 		Dependencies: []string{
@@ -77833,12 +77833,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsStreamInputBlob
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"encoding": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -77851,8 +77845,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsStreamInputBlob
 							Format: "",
 						},
 					},
+					"encoding": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"encoding", "type", "field_delimiter"},
+				Required: []string{"type", "field_delimiter", "encoding"},
 			},
 		},
 	}
@@ -77973,19 +77973,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsStreamInputEven
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"stream_analytics_job_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"eventhub_name": {
+					"servicebus_namespace": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -78015,13 +78003,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsStreamInputEven
 							Format: "",
 						},
 					},
+					"stream_analytics_job_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"eventhub_consumer_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"servicebus_namespace": {
+					"eventhub_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -78034,7 +78034,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsStreamInputEven
 						},
 					},
 				},
-				Required: []string{"stream_analytics_job_name", "resource_group_name", "eventhub_name", "shared_access_policy_key", "serialization", "name", "eventhub_consumer_group_name", "servicebus_namespace", "shared_access_policy_name"},
+				Required: []string{"servicebus_namespace", "shared_access_policy_key", "serialization", "name", "stream_analytics_job_name", "resource_group_name", "eventhub_consumer_group_name", "eventhub_name", "shared_access_policy_name"},
 			},
 		},
 		Dependencies: []string{
@@ -78188,25 +78188,13 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsStreamInputIoth
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"shared_access_policy_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"eventhub_consumer_group_name": {
+					"stream_analytics_job_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -78230,13 +78218,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsStreamInputIoth
 							},
 						},
 					},
-					"name": {
+					"shared_access_policy_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"stream_analytics_job_name": {
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"endpoint": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -78248,8 +78242,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermStreamAnalyticsStreamInputIoth
 							Format: "",
 						},
 					},
+					"eventhub_consumer_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"resource_group_name", "endpoint", "shared_access_policy_name", "eventhub_consumer_group_name", "shared_access_policy_key", "serialization", "name", "stream_analytics_job_name", "iothub_namespace"},
+				Required: []string{"name", "stream_analytics_job_name", "shared_access_policy_key", "serialization", "shared_access_policy_name", "resource_group_name", "endpoint", "iothub_namespace", "eventhub_consumer_group_name"},
 			},
 		},
 		Dependencies: []string{
@@ -78627,20 +78627,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSubnetRouteTableAssociationSpe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"subnet_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"route_table_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"subnet_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"subnet_id", "route_table_id"},
+				Required: []string{"route_table_id", "subnet_id"},
 			},
 		},
 	}
@@ -78671,44 +78671,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSubnetSpec(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"virtual_network_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ip_configurations": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"service_endpoints": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -78727,10 +78689,17 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSubnetSpec(ref common.Referenc
 							Format: "",
 						},
 					},
-					"route_table_id": {
+					"ip_configurations": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"delegation": {
@@ -78745,8 +78714,39 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermSubnetSpec(ref common.Referenc
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"route_table_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"service_endpoints": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"virtual_network_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "virtual_network_name", "ip_configurations", "service_endpoints", "resource_group_name", "address_prefix", "network_security_group_id", "route_table_id", "delegation"},
+				Required: []string{"resource_group_name", "address_prefix", "network_security_group_id", "ip_configurations", "delegation", "name", "route_table_id", "service_endpoints", "virtual_network_name"},
 			},
 		},
 		Dependencies: []string{
@@ -78934,12 +78934,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermTemplateDeploymentSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -78992,8 +78986,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermTemplateDeploymentSpec(ref com
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "resource_group_name", "template_body", "parameters", "parameters_body", "deployment_mode", "outputs"},
+				Required: []string{"resource_group_name", "template_body", "parameters", "parameters_body", "deployment_mode", "outputs", "name"},
 			},
 		},
 	}
@@ -79114,28 +79114,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermTrafficManagerEndpointSpec(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
+					"endpoint_status": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"target_resource_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"weight": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
 						},
 					},
 					"min_child_endpoints": {
@@ -79157,7 +79139,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermTrafficManagerEndpointSpec(ref
 							},
 						},
 					},
-					"profile_name": {
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -79167,18 +79161,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermTrafficManagerEndpointSpec(ref
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"endpoint_status": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"priority": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
 						},
 					},
 					"endpoint_location": {
@@ -79193,14 +79175,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermTrafficManagerEndpointSpec(ref
 							Format: "",
 						},
 					},
-					"name": {
+					"profile_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"target_resource_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"weight": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"priority": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"resource_group_name", "type", "target_resource_id", "weight", "min_child_endpoints", "geo_mappings", "profile_name", "target", "endpoint_status", "priority", "endpoint_location", "endpoint_monitor_status", "name"},
+				Required: []string{"endpoint_status", "min_child_endpoints", "geo_mappings", "name", "resource_group_name", "type", "target", "endpoint_location", "endpoint_monitor_status", "profile_name", "target_resource_id", "weight", "priority"},
 			},
 		},
 	}
@@ -79321,26 +79321,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermTrafficManagerProfileSpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -79389,8 +79369,28 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermTrafficManagerProfileSpec(ref 
 							},
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"tags", "name", "resource_group_name", "profile_status", "traffic_routing_method", "dns_config", "fqdn", "monitor_config"},
+				Required: []string{"resource_group_name", "profile_status", "traffic_routing_method", "dns_config", "fqdn", "monitor_config", "tags", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -79404,20 +79404,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermTrafficManagerProfileSpecDnsCo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"ttl": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"relative_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"ttl": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"ttl", "relative_name"},
+				Required: []string{"relative_name", "ttl"},
 			},
 		},
 	}
@@ -79429,6 +79429,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermTrafficManagerProfileSpecMonit
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"protocol": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -79441,14 +79447,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermTrafficManagerProfileSpecMonit
 							Format: "",
 						},
 					},
-					"protocol": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"port", "path", "protocol"},
+				Required: []string{"protocol", "port", "path"},
 			},
 		},
 	}
@@ -79569,6 +79569,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermUserAssignedIdentitySpec(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"principal_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -79599,22 +79613,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermUserAssignedIdentitySpec(ref c
 							Format: "",
 						},
 					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"principal_id", "client_id", "name", "resource_group_name", "location", "tags"},
+				Required: []string{"tags", "principal_id", "client_id", "name", "resource_group_name", "location"},
 			},
 		},
 	}
@@ -79936,37 +79936,19 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineExtensionSpec(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"publisher": {
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"virtual_machine_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"type_handler_version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"protected_settings": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -79979,6 +79961,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineExtensionSpec(re
 						},
 					},
 					"settings": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"protected_settings": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -79998,20 +79986,32 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineExtensionSpec(re
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"virtual_machine_name": {
+					"publisher": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"type_handler_version": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
 				},
-				Required: []string{"publisher", "type", "type_handler_version", "protected_settings", "name", "resource_group_name", "auto_upgrade_minor_version", "settings", "tags", "location", "virtual_machine_name"},
+				Required: []string{"resource_group_name", "virtual_machine_name", "type", "auto_upgrade_minor_version", "settings", "protected_settings", "tags", "name", "location", "publisher", "type_handler_version"},
 			},
 		},
 	}
@@ -80179,16 +80179,40 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpec(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"location": {
+					"license_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"license_type": {
+					"automatic_os_upgrade": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"health_probe_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
+						},
+					},
+					"single_placement_group": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"os_profile": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
+									},
+								},
+							},
 						},
 					},
 					"plan": {
@@ -80198,6 +80222,56 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpec(ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"identity": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
+									},
+								},
+							},
+						},
+					},
+					"sku": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
+									},
+								},
+							},
+						},
+					},
+					"upgrade_policy_mode": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
 									},
 								},
 							},
@@ -80216,45 +80290,9 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpec(ref
 							},
 						},
 					},
-					"health_probe_id": {
+					"eviction_policy": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"os_profile": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
-									},
-								},
-							},
-						},
-					},
-					"boot_diagnostics": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"automatic_os_upgrade": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -80268,42 +80306,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpec(ref
 									},
 								},
 							},
-						},
-					},
-					"overprovision": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"storage_profile_os_disk": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
-									},
-								},
-							},
-						},
-					},
-					"extension": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
-									},
-								},
-							},
-						},
-					},
-					"single_placement_group": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
 						},
 					},
 					"os_profile_windows_config": {
@@ -80330,37 +80332,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpec(ref
 							},
 						},
 					},
-					"eviction_policy": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"os_profile_secrets": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
-									},
-								},
-							},
-						},
-					},
-					"identity": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
-									},
-								},
-							},
-						},
-					},
-					"upgrade_policy_mode": {
+					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -80384,48 +80356,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpec(ref
 							},
 						},
 					},
-					"storage_profile_image_reference": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
-									},
-								},
-							},
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"resource_group_name": {
+					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"sku": {
+					"overprovision": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
-									},
-								},
-							},
+							Type:   []string{"boolean"},
+							Format: "",
 						},
 					},
 					"storage_profile_data_disk": {
@@ -80440,8 +80380,68 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpec(ref
 							},
 						},
 					},
+					"storage_profile_image_reference": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
+									},
+								},
+							},
+						},
+					},
+					"boot_diagnostics": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
+									},
+								},
+							},
+						},
+					},
+					"storage_profile_os_disk": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
+									},
+								},
+							},
+						},
+					},
+					"os_profile_secrets": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
+									},
+								},
+							},
+						},
+					},
+					"extension": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpec"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"location", "license_type", "plan", "zones", "health_probe_id", "os_profile", "boot_diagnostics", "name", "automatic_os_upgrade", "rolling_upgrade_policy", "overprovision", "storage_profile_os_disk", "extension", "single_placement_group", "os_profile_windows_config", "os_profile_linux_config", "eviction_policy", "os_profile_secrets", "identity", "upgrade_policy_mode", "priority", "network_profile", "storage_profile_image_reference", "tags", "resource_group_name", "sku", "storage_profile_data_disk"},
+				Required: []string{"license_type", "automatic_os_upgrade", "health_probe_id", "single_placement_group", "os_profile", "plan", "name", "identity", "sku", "upgrade_policy_mode", "tags", "zones", "eviction_policy", "rolling_upgrade_policy", "os_profile_windows_config", "os_profile_linux_config", "resource_group_name", "priority", "network_profile", "location", "overprovision", "storage_profile_data_disk", "storage_profile_image_reference", "boot_diagnostics", "storage_profile_os_disk", "os_profile_secrets", "extension"},
 			},
 		},
 		Dependencies: []string{
@@ -80480,6 +80480,25 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecExte
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"provision_after_extensions": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"settings": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"protected_settings": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -80516,27 +80535,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecExte
 							Format: "",
 						},
 					},
-					"provision_after_extensions": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"settings": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"protected_settings", "name", "publisher", "type", "type_handler_version", "auto_upgrade_minor_version", "provision_after_extensions", "settings"},
+				Required: []string{"provision_after_extensions", "settings", "protected_settings", "name", "publisher", "type", "type_handler_version", "auto_upgrade_minor_version"},
 			},
 		},
 	}
@@ -80586,6 +80586,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecNetw
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"ip_configuration": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpecNetworkProfile"),
+									},
+								},
+							},
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -80628,20 +80640,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecNetw
 							},
 						},
 					},
-					"ip_configuration": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineScaleSetSpecNetworkProfile"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"name", "primary", "accelerated_networking", "ip_forwarding", "network_security_group_id", "dns_settings", "ip_configuration"},
+				Required: []string{"ip_configuration", "name", "primary", "accelerated_networking", "ip_forwarding", "network_security_group_id", "dns_settings"},
 			},
 		},
 		Dependencies: []string{
@@ -80681,45 +80681,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecNetw
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"application_security_group_ids": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"load_balancer_backend_address_pool_ids": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"load_balancer_inbound_nat_rules_ids": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
 					"primary": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -80763,8 +80724,47 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecNetw
 							},
 						},
 					},
+					"application_security_group_ids": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"load_balancer_backend_address_pool_ids": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"load_balancer_inbound_nat_rules_ids": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"application_security_group_ids", "load_balancer_backend_address_pool_ids", "load_balancer_inbound_nat_rules_ids", "primary", "public_ip_address_configuration", "name", "subnet_id", "application_gateway_backend_address_pool_ids"},
+				Required: []string{"primary", "public_ip_address_configuration", "name", "subnet_id", "application_gateway_backend_address_pool_ids", "application_security_group_ids", "load_balancer_backend_address_pool_ids", "load_balancer_inbound_nat_rules_ids"},
 			},
 		},
 		Dependencies: []string{
@@ -80846,6 +80846,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecOsPr
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"disable_password_authentication": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"ssh_keys": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -80858,14 +80864,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecOsPr
 							},
 						},
 					},
-					"disable_password_authentication": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"ssh_keys", "disable_password_authentication"},
+				Required: []string{"disable_password_authentication", "ssh_keys"},
 			},
 		},
 		Dependencies: []string{
@@ -80904,6 +80904,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecOsPr
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"source_vault_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"vault_certificates": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -80916,14 +80922,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecOsPr
 							},
 						},
 					},
-					"source_vault_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"vault_certificates", "source_vault_id"},
+				Required: []string{"source_vault_id", "vault_certificates"},
 			},
 		},
 		Dependencies: []string{
@@ -81174,6 +81174,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecStor
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"disk_size_gb": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"managed_disk_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"lun": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -81192,20 +81204,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecStor
 							Format: "",
 						},
 					},
-					"disk_size_gb": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"managed_disk_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"lun", "create_option", "caching", "disk_size_gb", "managed_disk_type"},
+				Required: []string{"disk_size_gb", "managed_disk_type", "lun", "create_option", "caching"},
 			},
 		},
 	}
@@ -81217,6 +81217,18 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecStor
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"sku": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -81235,20 +81247,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecStor
 							Format: "",
 						},
 					},
-					"sku": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"id", "publisher", "offer", "sku", "version"},
+				Required: []string{"sku", "version", "id", "publisher", "offer"},
 			},
 		},
 	}
@@ -81260,6 +81260,30 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecStor
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"caching": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"os_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"create_option": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"image": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -81285,32 +81309,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineScaleSetSpecStor
 							Format: "",
 						},
 					},
-					"caching": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"os_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"create_option": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"image", "vhd_containers", "managed_disk_type", "caching", "os_type", "create_option", "name"},
+				Required: []string{"caching", "os_type", "create_option", "name", "image", "vhd_containers", "managed_disk_type"},
 			},
 		},
 	}
@@ -81341,39 +81341,9 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"location": {
+					"license_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"availability_set_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"storage_os_disk": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineSpec"),
-									},
-								},
-							},
-						},
-					},
-					"delete_os_disk_on_termination": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -81383,35 +81353,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpec(ref common.
 							Format: "",
 						},
 					},
-					"primary_network_interface_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"os_profile_secrets": {
+					"network_interface_ids": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineSpec"),
-									},
-								},
-							},
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Type:   []string{"string"},
@@ -81421,16 +81366,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpec(ref common.
 							},
 						},
 					},
-					"identity": {
+					"primary_network_interface_id": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineSpec"),
-									},
-								},
-							},
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"plan": {
@@ -81457,59 +81402,9 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpec(ref common.
 							},
 						},
 					},
-					"boot_diagnostics": {
+					"delete_os_disk_on_termination": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineSpec"),
-									},
-								},
-							},
-						},
-					},
-					"os_profile_windows_config": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineSpec"),
-									},
-								},
-							},
-						},
-					},
-					"network_interface_ids": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"zones": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"vm_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -81537,6 +81432,54 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpec(ref common.
 							},
 						},
 					},
+					"os_profile_windows_config": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineSpec"),
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"vm_size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"identity": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineSpec"),
+									},
+								},
+							},
+						},
+					},
+					"boot_diagnostics": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineSpec"),
+									},
+								},
+							},
+						},
+					},
 					"os_profile_linux_config": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -81549,14 +81492,71 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpec(ref common.
 							},
 						},
 					},
-					"license_type": {
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"zones": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"availability_set_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"os_profile_secrets": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineSpec"),
+									},
+								},
+							},
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"storage_os_disk": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualMachineSpec"),
+									},
+								},
+							},
+						},
+					},
 				},
-				Required: []string{"location", "resource_group_name", "availability_set_id", "storage_os_disk", "delete_os_disk_on_termination", "delete_data_disks_on_termination", "primary_network_interface_id", "name", "os_profile_secrets", "tags", "identity", "plan", "storage_image_reference", "boot_diagnostics", "os_profile_windows_config", "network_interface_ids", "zones", "vm_size", "storage_data_disk", "os_profile", "os_profile_linux_config", "license_type"},
+				Required: []string{"license_type", "delete_data_disks_on_termination", "network_interface_ids", "primary_network_interface_id", "location", "plan", "storage_image_reference", "delete_os_disk_on_termination", "storage_data_disk", "os_profile", "os_profile_windows_config", "name", "vm_size", "identity", "boot_diagnostics", "os_profile_linux_config", "tags", "zones", "availability_set_id", "os_profile_secrets", "resource_group_name", "storage_os_disk"},
 			},
 		},
 		Dependencies: []string{
@@ -81633,18 +81633,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecOsProfile(re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"computer_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"admin_username": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"admin_password": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -81657,8 +81645,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecOsProfile(re
 							Format: "",
 						},
 					},
+					"computer_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"admin_username": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"computer_name", "admin_username", "admin_password", "custom_data"},
+				Required: []string{"admin_password", "custom_data", "computer_name", "admin_username"},
 			},
 		},
 	}
@@ -81670,6 +81670,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecOsProfileLin
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"disable_password_authentication": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"ssh_keys": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -81682,14 +81688,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecOsProfileLin
 							},
 						},
 					},
-					"disable_password_authentication": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"ssh_keys", "disable_password_authentication"},
+				Required: []string{"disable_password_authentication", "ssh_keys"},
 			},
 		},
 		Dependencies: []string{
@@ -81786,18 +81786,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecOsProfileWin
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"enable_automatic_upgrades": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"timezone": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"winrm": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -81828,8 +81816,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecOsProfileWin
 							Format: "",
 						},
 					},
+					"enable_automatic_upgrades": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"timezone": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"enable_automatic_upgrades", "timezone", "winrm", "additional_unattend_config", "provision_vm_agent"},
+				Required: []string{"winrm", "additional_unattend_config", "provision_vm_agent", "enable_automatic_upgrades", "timezone"},
 			},
 		},
 		Dependencies: []string{
@@ -81936,27 +81936,9 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecStorageDataD
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"create_option": {
+					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"caching": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"lun": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"write_accelerator_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -81972,15 +81954,15 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecStorageDataD
 							Format: "",
 						},
 					},
-					"disk_size_gb": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"name": {
+					"caching": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"write_accelerator_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -81990,8 +81972,26 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecStorageDataD
 							Format: "",
 						},
 					},
+					"create_option": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"disk_size_gb": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"lun": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"create_option", "caching", "lun", "write_accelerator_enabled", "vhd_uri", "managed_disk_type", "disk_size_gb", "name", "managed_disk_id"},
+				Required: []string{"name", "vhd_uri", "managed_disk_type", "caching", "write_accelerator_enabled", "managed_disk_id", "create_option", "disk_size_gb", "lun"},
 			},
 		},
 	}
@@ -82003,18 +82003,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecStorageImage
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"publisher": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"offer": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -82033,8 +82021,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecStorageImage
 							Format: "",
 						},
 					},
+					"id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"publisher": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"id", "publisher", "offer", "sku", "version"},
+				Required: []string{"offer", "sku", "version", "id", "publisher"},
 			},
 		},
 	}
@@ -82046,6 +82046,12 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecStorageOsDis
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"os_type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -82058,7 +82064,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecStorageOsDis
 							Format: "",
 						},
 					},
-					"managed_disk_type": {
+					"image_uri": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -82070,16 +82076,10 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecStorageOsDis
 							Format: "",
 						},
 					},
-					"write_accelerator_enabled": {
+					"disk_size_gb": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"os_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"managed_disk_id": {
@@ -82088,7 +82088,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecStorageOsDis
 							Format: "",
 						},
 					},
-					"image_uri": {
+					"managed_disk_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -82100,14 +82100,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualMachineSpecStorageOsDis
 							Format: "",
 						},
 					},
-					"disk_size_gb": {
+					"write_accelerator_enabled": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type:   []string{"boolean"},
+							Format: "",
 						},
 					},
 				},
-				Required: []string{"name", "vhd_uri", "managed_disk_type", "caching", "write_accelerator_enabled", "os_type", "managed_disk_id", "image_uri", "create_option", "disk_size_gb"},
+				Required: []string{"os_type", "name", "vhd_uri", "image_uri", "caching", "disk_size_gb", "managed_disk_id", "managed_disk_type", "create_option", "write_accelerator_enabled"},
 			},
 		},
 	}
@@ -82314,19 +82314,97 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkGatewayConnectio
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"resource_group_name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
+					"use_policy_based_traffic_selectors": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"shared_key": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"express_route_gateway_bypass": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"resource_group_name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"virtual_network_gateway_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"express_route_circuit_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"peer_virtual_network_gateway_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"routing_weight": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"local_network_gateway_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enable_bgp": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"ipsec_policy": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualNetworkGatewayConnectionSpec"),
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"authorization_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -82346,86 +82424,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkGatewayConnectio
 							},
 						},
 					},
-					"local_network_gateway_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"routing_weight": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"shared_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"authorization_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"express_route_circuit_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"virtual_network_gateway_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"enable_bgp": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"express_route_gateway_bypass": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"ipsec_policy": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualNetworkGatewayConnectionSpec"),
-									},
-								},
-							},
-						},
-					},
-					"use_policy_based_traffic_selectors": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"resource_group_name", "location", "peer_virtual_network_gateway_id", "tags", "local_network_gateway_id", "routing_weight", "shared_key", "name", "type", "authorization_key", "express_route_circuit_id", "virtual_network_gateway_id", "enable_bgp", "express_route_gateway_bypass", "ipsec_policy", "use_policy_based_traffic_selectors"},
+				Required: []string{"location", "use_policy_based_traffic_selectors", "shared_key", "express_route_gateway_bypass", "resource_group_name", "virtual_network_gateway_id", "express_route_circuit_id", "peer_virtual_network_gateway_id", "routing_weight", "type", "local_network_gateway_id", "enable_bgp", "ipsec_policy", "name", "authorization_key", "tags"},
 			},
 		},
 		Dependencies: []string{
@@ -82439,6 +82439,24 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkGatewayConnectio
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"pfs_group": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"sa_datasize": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"sa_lifetime": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 					"dh_group": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -82469,26 +82487,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkGatewayConnectio
 							Format: "",
 						},
 					},
-					"pfs_group": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"sa_datasize": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"sa_lifetime": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 				},
-				Required: []string{"dh_group", "ike_encryption", "ike_integrity", "ipsec_encryption", "ipsec_integrity", "pfs_group", "sa_datasize", "sa_lifetime"},
+				Required: []string{"pfs_group", "sa_datasize", "sa_lifetime", "dh_group", "ike_encryption", "ike_integrity", "ipsec_encryption", "ipsec_integrity"},
 			},
 		},
 	}
@@ -82572,7 +82572,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkGatewaySpec(ref 
 							Format: "",
 						},
 					},
-					"type": {
+					"vpn_type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -82590,36 +82590,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkGatewaySpec(ref 
 							Format: "",
 						},
 					},
-					"bgp_settings": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualNetworkGatewaySpec"),
-									},
-								},
-							},
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"vpn_type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"enable_bgp": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
 					"ip_configuration": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -82632,7 +82602,57 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkGatewaySpec(ref 
 							},
 						},
 					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"location": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"enable_bgp": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"vpn_client_configuration": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzurermVirtualNetworkGatewaySpec"),
+									},
+								},
+							},
+						},
+					},
+					"bgp_settings": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -82650,28 +82670,8 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkGatewaySpec(ref 
 							Format: "",
 						},
 					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"location": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"resource_group_name", "type", "active_active", "sku", "bgp_settings", "name", "vpn_type", "enable_bgp", "ip_configuration", "vpn_client_configuration", "default_local_network_gateway_id", "tags", "location"},
+				Required: []string{"resource_group_name", "vpn_type", "active_active", "sku", "ip_configuration", "tags", "name", "location", "type", "enable_bgp", "vpn_client_configuration", "bgp_settings", "default_local_network_gateway_id"},
 			},
 		},
 		Dependencies: []string{
@@ -83036,18 +83036,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkPeeringSpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"use_remote_gateways": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -83084,8 +83072,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkPeeringSpec(ref 
 							Format: "",
 						},
 					},
+					"use_remote_gateways": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"use_remote_gateways", "name", "resource_group_name", "virtual_network_name", "remote_virtual_network_id", "allow_virtual_network_access", "allow_forwarded_traffic", "allow_gateway_transit"},
+				Required: []string{"resource_group_name", "virtual_network_name", "remote_virtual_network_id", "allow_virtual_network_access", "allow_forwarded_traffic", "allow_gateway_transit", "use_remote_gateways", "name"},
 			},
 		},
 	}
@@ -83116,12 +83116,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"resource_group_name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -83198,8 +83192,14 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkSpec(ref common.
 							},
 						},
 					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"name", "resource_group_name", "location", "address_space", "ddos_protection_plan", "dns_servers", "subnet", "tags"},
+				Required: []string{"resource_group_name", "location", "address_space", "ddos_protection_plan", "dns_servers", "subnet", "tags", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -83238,18 +83238,6 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkSpecSubnet(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"address_prefix": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"security_group": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -83262,8 +83250,20 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzurermVirtualNetworkSpecSubnet(ref c
 							Format: "",
 						},
 					},
+					"address_prefix": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"security_group": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"address_prefix", "security_group", "id", "name"},
+				Required: []string{"id", "name", "address_prefix", "security_group"},
 			},
 		},
 	}

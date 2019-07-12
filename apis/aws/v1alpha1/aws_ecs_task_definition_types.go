@@ -9,17 +9,13 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEcsTaskDefinition struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              AwsEcsTaskDefinitionSpec   `json:"spec,omitempty"`
 	Status            AwsEcsTaskDefinitionStatus `json:"status,omitempty"`
-}
-
-type AwsEcsTaskDefinitionSpecPlacementConstraints struct {
-	Expression string `json:"expression"`
-	Type       string `json:"type"`
 }
 
 type AwsEcsTaskDefinitionSpecVolumeDockerVolumeConfiguration struct {
@@ -36,22 +32,34 @@ type AwsEcsTaskDefinitionSpecVolume struct {
 	DockerVolumeConfiguration []AwsEcsTaskDefinitionSpecVolume `json:"docker_volume_configuration"`
 }
 
+type AwsEcsTaskDefinitionSpecPlacementConstraints struct {
+	Type       string `json:"type"`
+	Expression string `json:"expression"`
+}
+
+type AwsEcsTaskDefinitionSpecProxyConfiguration struct {
+	ContainerName string            `json:"container_name"`
+	Properties    map[string]string `json:"properties"`
+	Type          string            `json:"type"`
+}
+
 type AwsEcsTaskDefinitionSpec struct {
-	Revision                int                        `json:"revision"`
-	TaskRoleArn             string                     `json:"task_role_arn"`
+	Arn                     string                     `json:"arn"`
+	Family                  string                     `json:"family"`
 	Memory                  string                     `json:"memory"`
+	Volume                  []AwsEcsTaskDefinitionSpec `json:"volume"`
+	Revision                int                        `json:"revision"`
+	ExecutionRoleArn        string                     `json:"execution_role_arn"`
 	PlacementConstraints    []AwsEcsTaskDefinitionSpec `json:"placement_constraints"`
-	RequiresCompatibilities []string                   `json:"requires_compatibilities"`
 	IpcMode                 string                     `json:"ipc_mode"`
 	Tags                    map[string]string          `json:"tags"`
-	Arn                     string                     `json:"arn"`
 	Cpu                     string                     `json:"cpu"`
-	ContainerDefinitions    string                     `json:"container_definitions"`
-	NetworkMode             string                     `json:"network_mode"`
-	Volume                  []AwsEcsTaskDefinitionSpec `json:"volume"`
+	RequiresCompatibilities []string                   `json:"requires_compatibilities"`
 	PidMode                 string                     `json:"pid_mode"`
-	Family                  string                     `json:"family"`
-	ExecutionRoleArn        string                     `json:"execution_role_arn"`
+	ContainerDefinitions    string                     `json:"container_definitions"`
+	TaskRoleArn             string                     `json:"task_role_arn"`
+	NetworkMode             string                     `json:"network_mode"`
+	ProxyConfiguration      []AwsEcsTaskDefinitionSpec `json:"proxy_configuration"`
 }
 
 type AwsEcsTaskDefinitionStatus struct {
@@ -59,6 +67,7 @@ type AwsEcsTaskDefinitionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEcsTaskDefinitionList is a list of AwsEcsTaskDefinitions
 type AwsEcsTaskDefinitionList struct {

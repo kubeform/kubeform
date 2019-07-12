@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeSubnetworkIamPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -20,9 +21,9 @@ type GoogleComputeSubnetworkIamPolicy struct {
 type GoogleComputeSubnetworkIamPolicySpec struct {
 	PolicyData string `json:"policy_data"`
 	Etag       string `json:"etag"`
-	Region     string `json:"region"`
 	Subnetwork string `json:"subnetwork"`
 	Project    string `json:"project"`
+	Region     string `json:"region"`
 }
 
 type GoogleComputeSubnetworkIamPolicyStatus struct {
@@ -30,6 +31,7 @@ type GoogleComputeSubnetworkIamPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeSubnetworkIamPolicyList is a list of GoogleComputeSubnetworkIamPolicys
 type GoogleComputeSubnetworkIamPolicyList struct {

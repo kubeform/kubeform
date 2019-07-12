@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsBatchJobDefinition struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -26,7 +27,6 @@ type AwsBatchJobDefinitionSpecTimeout struct {
 }
 
 type AwsBatchJobDefinitionSpec struct {
-	Parameters          map[string]string           `json:"parameters"`
 	RetryStrategy       []AwsBatchJobDefinitionSpec `json:"retry_strategy"`
 	Timeout             []AwsBatchJobDefinitionSpec `json:"timeout"`
 	Type                string                      `json:"type"`
@@ -34,6 +34,7 @@ type AwsBatchJobDefinitionSpec struct {
 	Arn                 string                      `json:"arn"`
 	Name                string                      `json:"name"`
 	ContainerProperties string                      `json:"container_properties"`
+	Parameters          map[string]string           `json:"parameters"`
 }
 
 type AwsBatchJobDefinitionStatus struct {
@@ -41,6 +42,7 @@ type AwsBatchJobDefinitionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsBatchJobDefinitionList is a list of AwsBatchJobDefinitions
 type AwsBatchJobDefinitionList struct {

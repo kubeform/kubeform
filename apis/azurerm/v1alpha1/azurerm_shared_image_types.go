@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermSharedImage struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,17 +25,17 @@ type AzurermSharedImageSpecIdentifier struct {
 }
 
 type AzurermSharedImageSpec struct {
-	OsType              string                   `json:"os_type"`
+	GalleryName         string                   `json:"gallery_name"`
+	ResourceGroupName   string                   `json:"resource_group_name"`
 	Identifier          []AzurermSharedImageSpec `json:"identifier"`
-	Description         string                   `json:"description"`
-	PrivacyStatementUri string                   `json:"privacy_statement_uri"`
+	ReleaseNoteUri      string                   `json:"release_note_uri"`
 	Tags                map[string]string        `json:"tags"`
 	Name                string                   `json:"name"`
-	GalleryName         string                   `json:"gallery_name"`
 	Location            string                   `json:"location"`
-	ResourceGroupName   string                   `json:"resource_group_name"`
+	OsType              string                   `json:"os_type"`
+	Description         string                   `json:"description"`
 	Eula                string                   `json:"eula"`
-	ReleaseNoteUri      string                   `json:"release_note_uri"`
+	PrivacyStatementUri string                   `json:"privacy_statement_uri"`
 }
 
 type AzurermSharedImageStatus struct {
@@ -42,6 +43,7 @@ type AzurermSharedImageStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermSharedImageList is a list of AzurermSharedImages
 type AzurermSharedImageList struct {

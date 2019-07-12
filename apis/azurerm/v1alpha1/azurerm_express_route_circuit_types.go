@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermExpressRouteCircuit struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,17 +24,17 @@ type AzurermExpressRouteCircuitSpecSku struct {
 }
 
 type AzurermExpressRouteCircuitSpec struct {
+	Location                         string                           `json:"location"`
+	ServiceProviderName              string                           `json:"service_provider_name"`
+	PeeringLocation                  string                           `json:"peering_location"`
+	BandwidthInMbps                  int                              `json:"bandwidth_in_mbps"`
+	Sku                              []AzurermExpressRouteCircuitSpec `json:"sku"`
 	ServiceProviderProvisioningState string                           `json:"service_provider_provisioning_state"`
+	Name                             string                           `json:"name"`
+	AllowClassicOperations           bool                             `json:"allow_classic_operations"`
 	ServiceKey                       string                           `json:"service_key"`
 	Tags                             map[string]string                `json:"tags"`
 	ResourceGroupName                string                           `json:"resource_group_name"`
-	ServiceProviderName              string                           `json:"service_provider_name"`
-	PeeringLocation                  string                           `json:"peering_location"`
-	Sku                              []AzurermExpressRouteCircuitSpec `json:"sku"`
-	AllowClassicOperations           bool                             `json:"allow_classic_operations"`
-	Name                             string                           `json:"name"`
-	Location                         string                           `json:"location"`
-	BandwidthInMbps                  int                              `json:"bandwidth_in_mbps"`
 }
 
 type AzurermExpressRouteCircuitStatus struct {
@@ -41,6 +42,7 @@ type AzurermExpressRouteCircuitStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermExpressRouteCircuitList is a list of AzurermExpressRouteCircuits
 type AzurermExpressRouteCircuitList struct {

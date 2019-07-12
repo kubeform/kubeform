@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAppServiceCustomHostnameBinding struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AzurermAppServiceCustomHostnameBinding struct {
 }
 
 type AzurermAppServiceCustomHostnameBindingSpec struct {
-	Hostname          string `json:"hostname"`
 	ResourceGroupName string `json:"resource_group_name"`
 	AppServiceName    string `json:"app_service_name"`
+	Hostname          string `json:"hostname"`
 }
 
 type AzurermAppServiceCustomHostnameBindingStatus struct {
@@ -28,6 +29,7 @@ type AzurermAppServiceCustomHostnameBindingStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAppServiceCustomHostnameBindingList is a list of AzurermAppServiceCustomHostnameBindings
 type AzurermAppServiceCustomHostnameBindingList struct {

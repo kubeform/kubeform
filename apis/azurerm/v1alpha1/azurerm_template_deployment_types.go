@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermTemplateDeployment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AzurermTemplateDeployment struct {
 }
 
 type AzurermTemplateDeploymentSpec struct {
-	Name              string            `json:"name"`
 	ResourceGroupName string            `json:"resource_group_name"`
 	TemplateBody      string            `json:"template_body"`
 	Parameters        map[string]string `json:"parameters"`
 	ParametersBody    string            `json:"parameters_body"`
 	DeploymentMode    string            `json:"deployment_mode"`
 	Outputs           map[string]string `json:"outputs"`
+	Name              string            `json:"name"`
 }
 
 type AzurermTemplateDeploymentStatus struct {
@@ -32,6 +33,7 @@ type AzurermTemplateDeploymentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermTemplateDeploymentList is a list of AzurermTemplateDeployments
 type AzurermTemplateDeploymentList struct {

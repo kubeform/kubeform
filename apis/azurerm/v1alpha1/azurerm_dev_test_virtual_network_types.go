@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDevTestVirtualNetwork struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AzurermDevTestVirtualNetwork struct {
 }
 
 type AzurermDevTestVirtualNetworkSpecSubnet struct {
-	Name                        string `json:"name"`
 	UseInVirtualMachineCreation string `json:"use_in_virtual_machine_creation"`
 	UsePublicIpAddress          string `json:"use_public_ip_address"`
+	Name                        string `json:"name"`
 }
 
 type AzurermDevTestVirtualNetworkSpec struct {
@@ -38,6 +39,7 @@ type AzurermDevTestVirtualNetworkStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDevTestVirtualNetworkList is a list of AzurermDevTestVirtualNetworks
 type AzurermDevTestVirtualNetworkList struct {

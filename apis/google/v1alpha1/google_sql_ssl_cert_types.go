@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleSqlSslCert struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type GoogleSqlSslCert struct {
 }
 
 type GoogleSqlSslCertSpec struct {
-	CreateTime       string `json:"create_time"`
-	PrivateKey       string `json:"private_key"`
-	ServerCaCert     string `json:"server_ca_cert"`
 	CommonName       string `json:"common_name"`
 	Cert             string `json:"cert"`
+	CertSerialNumber string `json:"cert_serial_number"`
+	PrivateKey       string `json:"private_key"`
+	ServerCaCert     string `json:"server_ca_cert"`
+	Instance         string `json:"instance"`
+	CreateTime       string `json:"create_time"`
 	ExpirationTime   string `json:"expiration_time"`
 	Sha1Fingerprint  string `json:"sha1_fingerprint"`
-	Instance         string `json:"instance"`
-	CertSerialNumber string `json:"cert_serial_number"`
 }
 
 type GoogleSqlSslCertStatus struct {
@@ -34,6 +35,7 @@ type GoogleSqlSslCertStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleSqlSslCertList is a list of GoogleSqlSslCerts
 type GoogleSqlSslCertList struct {

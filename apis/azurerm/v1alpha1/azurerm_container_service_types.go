@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermContainerService struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,21 +23,21 @@ type AzurermContainerServiceSpecLinuxProfileSshKey struct {
 }
 
 type AzurermContainerServiceSpecLinuxProfile struct {
-	AdminUsername string                                    `json:"admin_username"`
 	SshKey        []AzurermContainerServiceSpecLinuxProfile `json:"ssh_key"`
+	AdminUsername string                                    `json:"admin_username"`
 }
 
 type AzurermContainerServiceSpecAgentPoolProfile struct {
-	VmSize    string `json:"vm_size"`
-	Name      string `json:"name"`
 	Count     int    `json:"count"`
 	DnsPrefix string `json:"dns_prefix"`
 	Fqdn      string `json:"fqdn"`
+	VmSize    string `json:"vm_size"`
+	Name      string `json:"name"`
 }
 
-type AzurermContainerServiceSpecServicePrincipal struct {
-	ClientId     string `json:"client_id"`
-	ClientSecret string `json:"client_secret"`
+type AzurermContainerServiceSpecDiagnosticsProfile struct {
+	Enabled    bool   `json:"enabled"`
+	StorageUri string `json:"storage_uri"`
 }
 
 type AzurermContainerServiceSpecMasterProfile struct {
@@ -45,22 +46,22 @@ type AzurermContainerServiceSpecMasterProfile struct {
 	Count     int    `json:"count"`
 }
 
-type AzurermContainerServiceSpecDiagnosticsProfile struct {
-	Enabled    bool   `json:"enabled"`
-	StorageUri string `json:"storage_uri"`
+type AzurermContainerServiceSpecServicePrincipal struct {
+	ClientId     string `json:"client_id"`
+	ClientSecret string `json:"client_secret"`
 }
 
 type AzurermContainerServiceSpec struct {
 	LinuxProfile          []AzurermContainerServiceSpec `json:"linux_profile"`
 	AgentPoolProfile      []AzurermContainerServiceSpec `json:"agent_pool_profile"`
-	ServicePrincipal      []AzurermContainerServiceSpec `json:"service_principal"`
-	Tags                  map[string]string             `json:"tags"`
-	Name                  string                        `json:"name"`
-	Location              string                        `json:"location"`
-	ResourceGroupName     string                        `json:"resource_group_name"`
-	OrchestrationPlatform string                        `json:"orchestration_platform"`
-	MasterProfile         []AzurermContainerServiceSpec `json:"master_profile"`
 	DiagnosticsProfile    []AzurermContainerServiceSpec `json:"diagnostics_profile"`
+	Name                  string                        `json:"name"`
+	ResourceGroupName     string                        `json:"resource_group_name"`
+	MasterProfile         []AzurermContainerServiceSpec `json:"master_profile"`
+	Tags                  map[string]string             `json:"tags"`
+	Location              string                        `json:"location"`
+	OrchestrationPlatform string                        `json:"orchestration_platform"`
+	ServicePrincipal      []AzurermContainerServiceSpec `json:"service_principal"`
 }
 
 type AzurermContainerServiceStatus struct {
@@ -68,6 +69,7 @@ type AzurermContainerServiceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermContainerServiceList is a list of AzurermContainerServices
 type AzurermContainerServiceList struct {

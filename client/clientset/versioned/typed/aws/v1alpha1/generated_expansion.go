@@ -112,6 +112,8 @@ type AwsAppsyncApiKeyExpansion interface{}
 
 type AwsAppsyncDatasourceExpansion interface{}
 
+type AwsAppsyncFunctionExpansion interface{}
+
 type AwsAppsyncGraphqlApiExpansion interface{}
 
 type AwsAppsyncResolverExpansion interface{}
@@ -119,6 +121,8 @@ type AwsAppsyncResolverExpansion interface{}
 type AwsAthenaDatabaseExpansion interface{}
 
 type AwsAthenaNamedQueryExpansion interface{}
+
+type AwsAthenaWorkgroupExpansion interface{}
 
 type AwsAutoscalingAttachmentExpansion interface{}
 
@@ -232,11 +236,15 @@ type AwsConfigConfigurationAggregatorExpansion interface{}
 
 type AwsConfigConfigurationRecorderExpansion interface{}
 
+type AwsConfigConfigurationRecorderStatusExpansion interface{}
+
 type AwsConfigDeliveryChannelExpansion interface{}
 
 type AwsCurReportDefinitionExpansion interface{}
 
 type AwsCustomerGatewayExpansion interface{}
+
+type AwsDatapipelinePipelineExpansion interface{}
 
 type AwsDatasyncAgentExpansion interface{}
 
@@ -289,6 +297,8 @@ type AwsDevicefarmProjectExpansion interface{}
 type AwsDirectoryServiceConditionalForwarderExpansion interface{}
 
 type AwsDirectoryServiceDirectoryExpansion interface{}
+
+type AwsDirectoryServiceLogSubscriptionExpansion interface{}
 
 type AwsDlmLifecyclePolicyExpansion interface{}
 
@@ -344,6 +354,10 @@ type AwsDynamodbTableExpansion interface{}
 
 type AwsDynamodbTableItemExpansion interface{}
 
+type AwsEbsDefaultKmsKeyExpansion interface{}
+
+type AwsEbsEncryptionByDefaultExpansion interface{}
+
 type AwsEbsSnapshotExpansion interface{}
 
 type AwsEbsSnapshotCopyExpansion interface{}
@@ -369,6 +383,8 @@ type AwsEc2TransitGatewayRouteTableAssociationExpansion interface{}
 type AwsEc2TransitGatewayRouteTablePropagationExpansion interface{}
 
 type AwsEc2TransitGatewayVpcAttachmentExpansion interface{}
+
+type AwsEc2TransitGatewayVpcAttachmentAccepterExpansion interface{}
 
 type AwsEcrLifecyclePolicyExpansion interface{}
 
@@ -445,6 +461,8 @@ type AwsGlacierVaultExpansion interface{}
 type AwsGlacierVaultLockExpansion interface{}
 
 type AwsGlobalacceleratorAcceleratorExpansion interface{}
+
+type AwsGlobalacceleratorEndpointGroupExpansion interface{}
 
 type AwsGlobalacceleratorListenerExpansion interface{}
 
@@ -629,6 +647,10 @@ type AwsMediaStoreContainerPolicyExpansion interface{}
 type AwsMqBrokerExpansion interface{}
 
 type AwsMqConfigurationExpansion interface{}
+
+type AwsMskClusterExpansion interface{}
+
+type AwsMskConfigurationExpansion interface{}
 
 type AwsNatGatewayExpansion interface{}
 
@@ -840,9 +862,13 @@ type AwsSesDomainIdentityVerificationExpansion interface{}
 
 type AwsSesDomainMailFromExpansion interface{}
 
+type AwsSesEmailIdentityExpansion interface{}
+
 type AwsSesEventDestinationExpansion interface{}
 
 type AwsSesIdentityNotificationTopicExpansion interface{}
+
+type AwsSesIdentityPolicyExpansion interface{}
 
 type AwsSesReceiptFilterExpansion interface{}
 
@@ -855,6 +881,8 @@ type AwsSesTemplateExpansion interface{}
 type AwsSfnActivityExpansion interface{}
 
 type AwsSfnStateMachineExpansion interface{}
+
+type AwsShieldProtectionExpansion interface{}
 
 type AwsSimpledbDomainExpansion interface{}
 

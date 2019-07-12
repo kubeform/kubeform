@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeTargetHttpProxy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type GoogleComputeTargetHttpProxy struct {
 }
 
 type GoogleComputeTargetHttpProxySpec struct {
-	UrlMap            string `json:"url_map"`
-	Description       string `json:"description"`
 	CreationTimestamp string `json:"creation_timestamp"`
 	ProxyId           int    `json:"proxy_id"`
 	Project           string `json:"project"`
 	SelfLink          string `json:"self_link"`
 	Name              string `json:"name"`
+	UrlMap            string `json:"url_map"`
+	Description       string `json:"description"`
 }
 
 type GoogleComputeTargetHttpProxyStatus struct {
@@ -32,6 +33,7 @@ type GoogleComputeTargetHttpProxyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeTargetHttpProxyList is a list of GoogleComputeTargetHttpProxys
 type GoogleComputeTargetHttpProxyList struct {

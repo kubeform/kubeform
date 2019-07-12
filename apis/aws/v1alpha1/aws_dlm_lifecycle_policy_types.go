@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDlmLifecyclePolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsDlmLifecyclePolicy struct {
 }
 
 type AwsDlmLifecyclePolicySpecPolicyDetailsScheduleCreateRule struct {
-	IntervalUnit string   `json:"interval_unit"`
 	Times        []string `json:"times"`
 	Interval     int      `json:"interval"`
+	IntervalUnit string   `json:"interval_unit"`
 }
 
 type AwsDlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule struct {
@@ -28,24 +29,24 @@ type AwsDlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule struct {
 }
 
 type AwsDlmLifecyclePolicySpecPolicyDetailsSchedule struct {
+	CopyTags   bool                                             `json:"copy_tags"`
 	CreateRule []AwsDlmLifecyclePolicySpecPolicyDetailsSchedule `json:"create_rule"`
 	Name       string                                           `json:"name"`
 	RetainRule []AwsDlmLifecyclePolicySpecPolicyDetailsSchedule `json:"retain_rule"`
 	TagsToAdd  map[string]string                                `json:"tags_to_add"`
-	CopyTags   bool                                             `json:"copy_tags"`
 }
 
 type AwsDlmLifecyclePolicySpecPolicyDetails struct {
-	Schedule      []AwsDlmLifecyclePolicySpecPolicyDetails `json:"schedule"`
 	TargetTags    map[string]string                        `json:"target_tags"`
 	ResourceTypes []string                                 `json:"resource_types"`
+	Schedule      []AwsDlmLifecyclePolicySpecPolicyDetails `json:"schedule"`
 }
 
 type AwsDlmLifecyclePolicySpec struct {
-	Description      string                      `json:"description"`
 	ExecutionRoleArn string                      `json:"execution_role_arn"`
 	PolicyDetails    []AwsDlmLifecyclePolicySpec `json:"policy_details"`
 	State            string                      `json:"state"`
+	Description      string                      `json:"description"`
 }
 
 type AwsDlmLifecyclePolicyStatus struct {
@@ -53,6 +54,7 @@ type AwsDlmLifecyclePolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDlmLifecyclePolicyList is a list of AwsDlmLifecyclePolicys
 type AwsDlmLifecyclePolicyList struct {

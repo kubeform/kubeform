@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeTargetSslProxy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type GoogleComputeTargetSslProxy struct {
 }
 
 type GoogleComputeTargetSslProxySpec struct {
-	BackendService    string   `json:"backend_service"`
-	SslCertificates   []string `json:"ssl_certificates"`
-	Project           string   `json:"project"`
-	SelfLink          string   `json:"self_link"`
-	ProxyId           int      `json:"proxy_id"`
 	Name              string   `json:"name"`
+	SslCertificates   []string `json:"ssl_certificates"`
 	Description       string   `json:"description"`
-	ProxyHeader       string   `json:"proxy_header"`
 	SslPolicy         string   `json:"ssl_policy"`
 	CreationTimestamp string   `json:"creation_timestamp"`
+	ProxyId           int      `json:"proxy_id"`
+	BackendService    string   `json:"backend_service"`
+	Project           string   `json:"project"`
+	SelfLink          string   `json:"self_link"`
+	ProxyHeader       string   `json:"proxy_header"`
 }
 
 type GoogleComputeTargetSslProxyStatus struct {
@@ -35,6 +36,7 @@ type GoogleComputeTargetSslProxyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeTargetSslProxyList is a list of GoogleComputeTargetSslProxys
 type GoogleComputeTargetSslProxyList struct {

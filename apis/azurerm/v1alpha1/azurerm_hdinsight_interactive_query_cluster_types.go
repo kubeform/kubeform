@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermHdinsightInteractiveQueryCluster struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -27,24 +28,30 @@ type AzurermHdinsightInteractiveQueryClusterSpecGateway struct {
 	Password string `json:"password"`
 }
 
+type AzurermHdinsightInteractiveQueryClusterSpecStorageAccount struct {
+	StorageAccountKey  string `json:"storage_account_key"`
+	StorageContainerId string `json:"storage_container_id"`
+	IsDefault          bool   `json:"is_default"`
+}
+
 type AzurermHdinsightInteractiveQueryClusterSpecRolesHeadNode struct {
-	SshKeys          []string `json:"ssh_keys"`
-	SubnetId         string   `json:"subnet_id"`
-	VirtualNetworkId string   `json:"virtual_network_id"`
 	VmSize           string   `json:"vm_size"`
 	Username         string   `json:"username"`
 	Password         string   `json:"password"`
+	SshKeys          []string `json:"ssh_keys"`
+	SubnetId         string   `json:"subnet_id"`
+	VirtualNetworkId string   `json:"virtual_network_id"`
 }
 
 type AzurermHdinsightInteractiveQueryClusterSpecRolesWorkerNode struct {
-	SshKeys             []string `json:"ssh_keys"`
-	SubnetId            string   `json:"subnet_id"`
-	VirtualNetworkId    string   `json:"virtual_network_id"`
 	MinInstanceCount    int      `json:"min_instance_count"`
 	TargetInstanceCount int      `json:"target_instance_count"`
 	VmSize              string   `json:"vm_size"`
 	Username            string   `json:"username"`
 	Password            string   `json:"password"`
+	SshKeys             []string `json:"ssh_keys"`
+	SubnetId            string   `json:"subnet_id"`
+	VirtualNetworkId    string   `json:"virtual_network_id"`
 }
 
 type AzurermHdinsightInteractiveQueryClusterSpecRolesZookeeperNode struct {
@@ -62,25 +69,19 @@ type AzurermHdinsightInteractiveQueryClusterSpecRoles struct {
 	ZookeeperNode []AzurermHdinsightInteractiveQueryClusterSpecRoles `json:"zookeeper_node"`
 }
 
-type AzurermHdinsightInteractiveQueryClusterSpecStorageAccount struct {
-	StorageContainerId string `json:"storage_container_id"`
-	IsDefault          bool   `json:"is_default"`
-	StorageAccountKey  string `json:"storage_account_key"`
-}
-
 type AzurermHdinsightInteractiveQueryClusterSpec struct {
-	ComponentVersion  []AzurermHdinsightInteractiveQueryClusterSpec `json:"component_version"`
-	Gateway           []AzurermHdinsightInteractiveQueryClusterSpec `json:"gateway"`
-	Roles             []AzurermHdinsightInteractiveQueryClusterSpec `json:"roles"`
-	SshEndpoint       string                                        `json:"ssh_endpoint"`
-	Name              string                                        `json:"name"`
-	ResourceGroupName string                                        `json:"resource_group_name"`
-	ClusterVersion    string                                        `json:"cluster_version"`
 	Tags              map[string]string                             `json:"tags"`
-	HttpsEndpoint     string                                        `json:"https_endpoint"`
+	SshEndpoint       string                                        `json:"ssh_endpoint"`
 	Location          string                                        `json:"location"`
 	Tier              string                                        `json:"tier"`
+	ClusterVersion    string                                        `json:"cluster_version"`
+	ComponentVersion  []AzurermHdinsightInteractiveQueryClusterSpec `json:"component_version"`
+	Gateway           []AzurermHdinsightInteractiveQueryClusterSpec `json:"gateway"`
 	StorageAccount    []AzurermHdinsightInteractiveQueryClusterSpec `json:"storage_account"`
+	Roles             []AzurermHdinsightInteractiveQueryClusterSpec `json:"roles"`
+	HttpsEndpoint     string                                        `json:"https_endpoint"`
+	Name              string                                        `json:"name"`
+	ResourceGroupName string                                        `json:"resource_group_name"`
 }
 
 type AzurermHdinsightInteractiveQueryClusterStatus struct {
@@ -88,6 +89,7 @@ type AzurermHdinsightInteractiveQueryClusterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermHdinsightInteractiveQueryClusterList is a list of AzurermHdinsightInteractiveQueryClusters
 type AzurermHdinsightInteractiveQueryClusterList struct {

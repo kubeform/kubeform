@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermNetworkInterface struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,35 +20,35 @@ type AzurermNetworkInterface struct {
 
 type AzurermNetworkInterfaceSpecIpConfiguration struct {
 	SubnetId                                 string   `json:"subnet_id"`
-	PrivateIpAddress                         string   `json:"private_ip_address"`
 	PrivateIpAddressAllocation               string   `json:"private_ip_address_allocation"`
-	LoadBalancerInboundNatRulesIds           []string `json:"load_balancer_inbound_nat_rules_ids"`
-	Primary                                  bool     `json:"primary"`
-	Name                                     string   `json:"name"`
-	PublicIpAddressId                        string   `json:"public_ip_address_id"`
-	ApplicationGatewayBackendAddressPoolsIds []string `json:"application_gateway_backend_address_pools_ids"`
 	LoadBalancerBackendAddressPoolsIds       []string `json:"load_balancer_backend_address_pools_ids"`
 	ApplicationSecurityGroupIds              []string `json:"application_security_group_ids"`
+	Primary                                  bool     `json:"primary"`
+	Name                                     string   `json:"name"`
+	PrivateIpAddress                         string   `json:"private_ip_address"`
 	PrivateIpAddressVersion                  string   `json:"private_ip_address_version"`
+	PublicIpAddressId                        string   `json:"public_ip_address_id"`
+	ApplicationGatewayBackendAddressPoolsIds []string `json:"application_gateway_backend_address_pools_ids"`
+	LoadBalancerInboundNatRulesIds           []string `json:"load_balancer_inbound_nat_rules_ids"`
 }
 
 type AzurermNetworkInterfaceSpec struct {
-	NetworkSecurityGroupId      string                        `json:"network_security_group_id"`
-	PrivateIpAddresses          []string                      `json:"private_ip_addresses"`
-	Tags                        map[string]string             `json:"tags"`
-	Location                    string                        `json:"location"`
-	AppliedDnsServers           []string                      `json:"applied_dns_servers"`
-	EnableAcceleratedNetworking bool                          `json:"enable_accelerated_networking"`
-	PrivateIpAddress            string                        `json:"private_ip_address"`
-	Name                        string                        `json:"name"`
-	MacAddress                  string                        `json:"mac_address"`
 	VirtualMachineId            string                        `json:"virtual_machine_id"`
-	DnsServers                  []string                      `json:"dns_servers"`
-	InternalFqdn                string                        `json:"internal_fqdn"`
+	EnableIpForwarding          bool                          `json:"enable_ip_forwarding"`
+	Tags                        map[string]string             `json:"tags"`
+	Name                        string                        `json:"name"`
+	Location                    string                        `json:"location"`
 	ResourceGroupName           string                        `json:"resource_group_name"`
+	EnableAcceleratedNetworking bool                          `json:"enable_accelerated_networking"`
 	IpConfiguration             []AzurermNetworkInterfaceSpec `json:"ip_configuration"`
 	InternalDnsNameLabel        string                        `json:"internal_dns_name_label"`
-	EnableIpForwarding          bool                          `json:"enable_ip_forwarding"`
+	AppliedDnsServers           []string                      `json:"applied_dns_servers"`
+	NetworkSecurityGroupId      string                        `json:"network_security_group_id"`
+	MacAddress                  string                        `json:"mac_address"`
+	PrivateIpAddress            string                        `json:"private_ip_address"`
+	PrivateIpAddresses          []string                      `json:"private_ip_addresses"`
+	DnsServers                  []string                      `json:"dns_servers"`
+	InternalFqdn                string                        `json:"internal_fqdn"`
 }
 
 type AzurermNetworkInterfaceStatus struct {
@@ -55,6 +56,7 @@ type AzurermNetworkInterfaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermNetworkInterfaceList is a list of AzurermNetworkInterfaces
 type AzurermNetworkInterfaceList struct {

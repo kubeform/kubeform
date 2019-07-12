@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayUsagePlan struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsApiGatewayUsagePlan struct {
 }
 
 type AwsApiGatewayUsagePlanSpecApiStages struct {
-	ApiId string `json:"api_id"`
 	Stage string `json:"stage"`
+	ApiId string `json:"api_id"`
 }
 
 type AwsApiGatewayUsagePlanSpecQuotaSettings struct {
@@ -29,17 +30,17 @@ type AwsApiGatewayUsagePlanSpecQuotaSettings struct {
 }
 
 type AwsApiGatewayUsagePlanSpecThrottleSettings struct {
-	RateLimit  float64 `json:"rate_limit"`
 	BurstLimit int     `json:"burst_limit"`
+	RateLimit  float64 `json:"rate_limit"`
 }
 
 type AwsApiGatewayUsagePlanSpec struct {
-	ProductCode      string                       `json:"product_code"`
 	Name             string                       `json:"name"`
 	Description      string                       `json:"description"`
 	ApiStages        []AwsApiGatewayUsagePlanSpec `json:"api_stages"`
 	QuotaSettings    []AwsApiGatewayUsagePlanSpec `json:"quota_settings"`
 	ThrottleSettings []AwsApiGatewayUsagePlanSpec `json:"throttle_settings"`
+	ProductCode      string                       `json:"product_code"`
 }
 
 type AwsApiGatewayUsagePlanStatus struct {
@@ -47,6 +48,7 @@ type AwsApiGatewayUsagePlanStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayUsagePlanList is a list of AwsApiGatewayUsagePlans
 type AwsApiGatewayUsagePlanList struct {

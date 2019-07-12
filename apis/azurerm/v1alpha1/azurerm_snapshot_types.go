@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermSnapshot struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -34,16 +35,16 @@ type AzurermSnapshotSpecEncryptionSettings struct {
 }
 
 type AzurermSnapshotSpec struct {
+	SourceResourceId   string                `json:"source_resource_id"`
+	EncryptionSettings []AzurermSnapshotSpec `json:"encryption_settings"`
+	Tags               map[string]string     `json:"tags"`
 	Name               string                `json:"name"`
+	CreateOption       string                `json:"create_option"`
+	SourceUri          string                `json:"source_uri"`
+	DiskSizeGb         int                   `json:"disk_size_gb"`
 	Location           string                `json:"location"`
 	ResourceGroupName  string                `json:"resource_group_name"`
-	CreateOption       string                `json:"create_option"`
 	StorageAccountId   string                `json:"storage_account_id"`
-	Tags               map[string]string     `json:"tags"`
-	SourceUri          string                `json:"source_uri"`
-	SourceResourceId   string                `json:"source_resource_id"`
-	DiskSizeGb         int                   `json:"disk_size_gb"`
-	EncryptionSettings []AzurermSnapshotSpec `json:"encryption_settings"`
 }
 
 type AzurermSnapshotStatus struct {
@@ -51,6 +52,7 @@ type AzurermSnapshotStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermSnapshotList is a list of AzurermSnapshots
 type AzurermSnapshotList struct {

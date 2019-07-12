@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermServicebusQueue struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,23 +19,23 @@ type AzurermServicebusQueue struct {
 }
 
 type AzurermServicebusQueueSpec struct {
-	AutoDeleteOnIdle                    string `json:"auto_delete_on_idle"`
-	RequiresDuplicateDetection          bool   `json:"requires_duplicate_detection"`
-	SupportOrdering                     bool   `json:"support_ordering"`
-	MaxDeliveryCount                    int    `json:"max_delivery_count"`
+	MaxSizeInMegabytes                  int    `json:"max_size_in_megabytes"`
 	Name                                string `json:"name"`
-	Location                            string `json:"location"`
+	AutoDeleteOnIdle                    string `json:"auto_delete_on_idle"`
+	EnableExpress                       bool   `json:"enable_express"`
+	MaxDeliveryCount                    int    `json:"max_delivery_count"`
+	NamespaceName                       string `json:"namespace_name"`
 	ResourceGroupName                   string `json:"resource_group_name"`
-	DefaultMessageTtl                   string `json:"default_message_ttl"`
+	DeadLetteringOnMessageExpiration    bool   `json:"dead_lettering_on_message_expiration"`
 	LockDuration                        string `json:"lock_duration"`
 	RequiresSession                     bool   `json:"requires_session"`
-	DeadLetteringOnMessageExpiration    bool   `json:"dead_lettering_on_message_expiration"`
-	EnableExpress                       bool   `json:"enable_express"`
-	MaxSizeInMegabytes                  int    `json:"max_size_in_megabytes"`
 	EnableBatchedOperations             bool   `json:"enable_batched_operations"`
-	NamespaceName                       string `json:"namespace_name"`
-	DuplicateDetectionHistoryTimeWindow string `json:"duplicate_detection_history_time_window"`
 	EnablePartitioning                  bool   `json:"enable_partitioning"`
+	RequiresDuplicateDetection          bool   `json:"requires_duplicate_detection"`
+	SupportOrdering                     bool   `json:"support_ordering"`
+	Location                            string `json:"location"`
+	DefaultMessageTtl                   string `json:"default_message_ttl"`
+	DuplicateDetectionHistoryTimeWindow string `json:"duplicate_detection_history_time_window"`
 }
 
 type AzurermServicebusQueueStatus struct {
@@ -42,6 +43,7 @@ type AzurermServicebusQueueStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermServicebusQueueList is a list of AzurermServicebusQueues
 type AzurermServicebusQueueList struct {

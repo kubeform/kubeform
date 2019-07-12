@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermStreamAnalyticsStreamInputEventhub struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,14 +25,14 @@ type AzurermStreamAnalyticsStreamInputEventhubSpecSerialization struct {
 }
 
 type AzurermStreamAnalyticsStreamInputEventhubSpec struct {
-	StreamAnalyticsJobName    string                                          `json:"stream_analytics_job_name"`
-	ResourceGroupName         string                                          `json:"resource_group_name"`
-	EventhubName              string                                          `json:"eventhub_name"`
+	ServicebusNamespace       string                                          `json:"servicebus_namespace"`
 	SharedAccessPolicyKey     string                                          `json:"shared_access_policy_key"`
 	Serialization             []AzurermStreamAnalyticsStreamInputEventhubSpec `json:"serialization"`
 	Name                      string                                          `json:"name"`
+	StreamAnalyticsJobName    string                                          `json:"stream_analytics_job_name"`
+	ResourceGroupName         string                                          `json:"resource_group_name"`
 	EventhubConsumerGroupName string                                          `json:"eventhub_consumer_group_name"`
-	ServicebusNamespace       string                                          `json:"servicebus_namespace"`
+	EventhubName              string                                          `json:"eventhub_name"`
 	SharedAccessPolicyName    string                                          `json:"shared_access_policy_name"`
 }
 
@@ -40,6 +41,7 @@ type AzurermStreamAnalyticsStreamInputEventhubStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermStreamAnalyticsStreamInputEventhubList is a list of AzurermStreamAnalyticsStreamInputEventhubs
 type AzurermStreamAnalyticsStreamInputEventhubList struct {

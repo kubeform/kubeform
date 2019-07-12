@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermPacketCapture struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermPacketCapture struct {
 }
 
 type AzurermPacketCaptureSpecFilter struct {
+	RemoteIpAddress string `json:"remote_ip_address"`
+	RemotePort      string `json:"remote_port"`
 	LocalIpAddress  string `json:"local_ip_address"`
 	LocalPort       string `json:"local_port"`
 	Protocol        string `json:"protocol"`
-	RemoteIpAddress string `json:"remote_ip_address"`
-	RemotePort      string `json:"remote_port"`
 }
 
 type AzurermPacketCaptureSpecStorageLocation struct {
@@ -33,14 +34,14 @@ type AzurermPacketCaptureSpecStorageLocation struct {
 
 type AzurermPacketCaptureSpec struct {
 	ResourceGroupName      string                     `json:"resource_group_name"`
-	TargetResourceId       string                     `json:"target_resource_id"`
-	MaximumBytesPerSession int                        `json:"maximum_bytes_per_session"`
-	Filter                 []AzurermPacketCaptureSpec `json:"filter"`
-	Name                   string                     `json:"name"`
 	MaximumBytesPerPacket  int                        `json:"maximum_bytes_per_packet"`
 	MaximumCaptureDuration int                        `json:"maximum_capture_duration"`
-	StorageLocation        []AzurermPacketCaptureSpec `json:"storage_location"`
+	Filter                 []AzurermPacketCaptureSpec `json:"filter"`
+	Name                   string                     `json:"name"`
 	NetworkWatcherName     string                     `json:"network_watcher_name"`
+	TargetResourceId       string                     `json:"target_resource_id"`
+	MaximumBytesPerSession int                        `json:"maximum_bytes_per_session"`
+	StorageLocation        []AzurermPacketCaptureSpec `json:"storage_location"`
 }
 
 type AzurermPacketCaptureStatus struct {
@@ -48,6 +49,7 @@ type AzurermPacketCaptureStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermPacketCaptureList is a list of AzurermPacketCaptures
 type AzurermPacketCaptureList struct {

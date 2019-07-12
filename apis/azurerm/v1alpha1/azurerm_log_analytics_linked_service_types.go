@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermLogAnalyticsLinkedService struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,13 +23,13 @@ type AzurermLogAnalyticsLinkedServiceSpecLinkedServiceProperties struct {
 }
 
 type AzurermLogAnalyticsLinkedServiceSpec struct {
-	LinkedServiceName       string                                 `json:"linked_service_name"`
 	ResourceId              string                                 `json:"resource_id"`
 	LinkedServiceProperties []AzurermLogAnalyticsLinkedServiceSpec `json:"linked_service_properties"`
 	Name                    string                                 `json:"name"`
 	Tags                    map[string]string                      `json:"tags"`
 	ResourceGroupName       string                                 `json:"resource_group_name"`
 	WorkspaceName           string                                 `json:"workspace_name"`
+	LinkedServiceName       string                                 `json:"linked_service_name"`
 }
 
 type AzurermLogAnalyticsLinkedServiceStatus struct {
@@ -36,6 +37,7 @@ type AzurermLogAnalyticsLinkedServiceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermLogAnalyticsLinkedServiceList is a list of AzurermLogAnalyticsLinkedServices
 type AzurermLogAnalyticsLinkedServiceList struct {

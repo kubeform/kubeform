@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermMonitorActivityLogAlert struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,32 +19,32 @@ type AzurermMonitorActivityLogAlert struct {
 }
 
 type AzurermMonitorActivityLogAlertSpecCriteria struct {
-	Status           string `json:"status"`
+	ResourceId       string `json:"resource_id"`
 	SubStatus        string `json:"sub_status"`
-	Category         string `json:"category"`
-	OperationName    string `json:"operation_name"`
 	ResourceProvider string `json:"resource_provider"`
-	ResourceType     string `json:"resource_type"`
+	ResourceGroup    string `json:"resource_group"`
 	Caller           string `json:"caller"`
 	Level            string `json:"level"`
-	ResourceGroup    string `json:"resource_group"`
-	ResourceId       string `json:"resource_id"`
+	ResourceType     string `json:"resource_type"`
+	Status           string `json:"status"`
+	Category         string `json:"category"`
+	OperationName    string `json:"operation_name"`
 }
 
 type AzurermMonitorActivityLogAlertSpecAction struct {
-	ActionGroupId     string            `json:"action_group_id"`
 	WebhookProperties map[string]string `json:"webhook_properties"`
+	ActionGroupId     string            `json:"action_group_id"`
 }
 
 type AzurermMonitorActivityLogAlertSpec struct {
+	Scopes            []string                             `json:"scopes"`
+	Criteria          []AzurermMonitorActivityLogAlertSpec `json:"criteria"`
+	Action            []AzurermMonitorActivityLogAlertSpec `json:"action"`
 	Description       string                               `json:"description"`
 	Enabled           bool                                 `json:"enabled"`
 	Tags              map[string]string                    `json:"tags"`
 	Name              string                               `json:"name"`
 	ResourceGroupName string                               `json:"resource_group_name"`
-	Scopes            []string                             `json:"scopes"`
-	Criteria          []AzurermMonitorActivityLogAlertSpec `json:"criteria"`
-	Action            []AzurermMonitorActivityLogAlertSpec `json:"action"`
 }
 
 type AzurermMonitorActivityLogAlertStatus struct {
@@ -51,6 +52,7 @@ type AzurermMonitorActivityLogAlertStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermMonitorActivityLogAlertList is a list of AzurermMonitorActivityLogAlerts
 type AzurermMonitorActivityLogAlertList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleSpannerInstanceIamBinding struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type GoogleSpannerInstanceIamBinding struct {
 }
 
 type GoogleSpannerInstanceIamBindingSpec struct {
-	Project  string   `json:"project"`
-	Instance string   `json:"instance"`
 	Members  []string `json:"members"`
 	Etag     string   `json:"etag"`
 	Role     string   `json:"role"`
+	Project  string   `json:"project"`
+	Instance string   `json:"instance"`
 }
 
 type GoogleSpannerInstanceIamBindingStatus struct {
@@ -30,6 +31,7 @@ type GoogleSpannerInstanceIamBindingStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleSpannerInstanceIamBindingList is a list of GoogleSpannerInstanceIamBindings
 type GoogleSpannerInstanceIamBindingList struct {

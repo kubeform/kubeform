@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLambdaLayerVersion struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,20 +19,20 @@ type AwsLambdaLayerVersion struct {
 }
 
 type AwsLambdaLayerVersionSpec struct {
-	S3ObjectVersion    string   `json:"s3_object_version"`
-	SourceCodeSize     int      `json:"source_code_size"`
-	Version            string   `json:"version"`
-	LayerName          string   `json:"layer_name"`
-	S3Bucket           string   `json:"s3_bucket"`
-	CompatibleRuntimes []string `json:"compatible_runtimes"`
-	Arn                string   `json:"arn"`
+	LicenseInfo        string   `json:"license_info"`
 	LayerArn           string   `json:"layer_arn"`
 	CreatedDate        string   `json:"created_date"`
 	SourceCodeHash     string   `json:"source_code_hash"`
-	S3Key              string   `json:"s3_key"`
-	Description        string   `json:"description"`
-	LicenseInfo        string   `json:"license_info"`
 	Filename           string   `json:"filename"`
+	S3Key              string   `json:"s3_key"`
+	CompatibleRuntimes []string `json:"compatible_runtimes"`
+	Description        string   `json:"description"`
+	LayerName          string   `json:"layer_name"`
+	S3ObjectVersion    string   `json:"s3_object_version"`
+	Arn                string   `json:"arn"`
+	SourceCodeSize     int      `json:"source_code_size"`
+	S3Bucket           string   `json:"s3_bucket"`
+	Version            string   `json:"version"`
 }
 
 type AwsLambdaLayerVersionStatus struct {
@@ -39,6 +40,7 @@ type AwsLambdaLayerVersionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLambdaLayerVersionList is a list of AwsLambdaLayerVersions
 type AwsLambdaLayerVersionList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRdsClusterInstance struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,34 +19,34 @@ type AwsRdsClusterInstance struct {
 }
 
 type AwsRdsClusterInstanceSpec struct {
-	DbSubnetGroupName           string            `json:"db_subnet_group_name"`
-	PromotionTier               int               `json:"promotion_tier"`
-	PerformanceInsightsEnabled  bool              `json:"performance_insights_enabled"`
-	CopyTagsToSnapshot          bool              `json:"copy_tags_to_snapshot"`
-	AvailabilityZone            string            `json:"availability_zone"`
-	PerformanceInsightsKmsKeyId string            `json:"performance_insights_kms_key_id"`
-	Tags                        map[string]string `json:"tags"`
-	Arn                         string            `json:"arn"`
-	Identifier                  string            `json:"identifier"`
 	Endpoint                    string            `json:"endpoint"`
-	AutoMinorVersionUpgrade     bool              `json:"auto_minor_version_upgrade"`
-	MonitoringInterval          int               `json:"monitoring_interval"`
-	IdentifierPrefix            string            `json:"identifier_prefix"`
-	InstanceClass               string            `json:"instance_class"`
-	ApplyImmediately            bool              `json:"apply_immediately"`
-	PreferredMaintenanceWindow  string            `json:"preferred_maintenance_window"`
-	ClusterIdentifier           string            `json:"cluster_identifier"`
-	Port                        int               `json:"port"`
-	PubliclyAccessible          bool              `json:"publicly_accessible"`
+	Engine                      string            `json:"engine"`
+	DbParameterGroupName        string            `json:"db_parameter_group_name"`
+	StorageEncrypted            bool              `json:"storage_encrypted"`
 	DbiResourceId               string            `json:"dbi_resource_id"`
 	MonitoringRoleArn           string            `json:"monitoring_role_arn"`
-	DbParameterGroupName        string            `json:"db_parameter_group_name"`
+	Identifier                  string            `json:"identifier"`
+	AutoMinorVersionUpgrade     bool              `json:"auto_minor_version_upgrade"`
+	PerformanceInsightsKmsKeyId string            `json:"performance_insights_kms_key_id"`
+	CopyTagsToSnapshot          bool              `json:"copy_tags_to_snapshot"`
+	IdentifierPrefix            string            `json:"identifier_prefix"`
+	DbSubnetGroupName           string            `json:"db_subnet_group_name"`
+	Port                        int               `json:"port"`
 	PreferredBackupWindow       string            `json:"preferred_backup_window"`
+	MonitoringInterval          int               `json:"monitoring_interval"`
+	PubliclyAccessible          bool              `json:"publicly_accessible"`
+	InstanceClass               string            `json:"instance_class"`
+	AvailabilityZone            string            `json:"availability_zone"`
+	PreferredMaintenanceWindow  string            `json:"preferred_maintenance_window"`
+	Tags                        map[string]string `json:"tags"`
 	Writer                      bool              `json:"writer"`
-	Engine                      string            `json:"engine"`
-	EngineVersion               string            `json:"engine_version"`
+	ApplyImmediately            bool              `json:"apply_immediately"`
+	PromotionTier               int               `json:"promotion_tier"`
+	ClusterIdentifier           string            `json:"cluster_identifier"`
 	KmsKeyId                    string            `json:"kms_key_id"`
-	StorageEncrypted            bool              `json:"storage_encrypted"`
+	Arn                         string            `json:"arn"`
+	EngineVersion               string            `json:"engine_version"`
+	PerformanceInsightsEnabled  bool              `json:"performance_insights_enabled"`
 }
 
 type AwsRdsClusterInstanceStatus struct {
@@ -53,6 +54,7 @@ type AwsRdsClusterInstanceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRdsClusterInstanceList is a list of AwsRdsClusterInstances
 type AwsRdsClusterInstanceList struct {

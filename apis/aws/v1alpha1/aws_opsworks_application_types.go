@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsOpsworksApplication struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,19 +18,19 @@ type AwsOpsworksApplication struct {
 	Status            AwsOpsworksApplicationStatus `json:"status,omitempty"`
 }
 
-type AwsOpsworksApplicationSpecAppSource struct {
-	Type     string `json:"type"`
-	Url      string `json:"url"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Revision string `json:"revision"`
-	SshKey   string `json:"ssh_key"`
-}
-
 type AwsOpsworksApplicationSpecSslConfiguration struct {
 	Certificate string `json:"certificate"`
 	PrivateKey  string `json:"private_key"`
 	Chain       string `json:"chain"`
+}
+
+type AwsOpsworksApplicationSpecAppSource struct {
+	Revision string `json:"revision"`
+	SshKey   string `json:"ssh_key"`
+	Type     string `json:"type"`
+	Url      string `json:"url"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
 type AwsOpsworksApplicationSpecEnvironment struct {
@@ -39,23 +40,23 @@ type AwsOpsworksApplicationSpecEnvironment struct {
 }
 
 type AwsOpsworksApplicationSpec struct {
-	AppSource              []AwsOpsworksApplicationSpec `json:"app_source"`
 	Type                   string                       `json:"type"`
+	EnableSsl              bool                         `json:"enable_ssl"`
+	SslConfiguration       []AwsOpsworksApplicationSpec `json:"ssl_configuration"`
 	DocumentRoot           string                       `json:"document_root"`
 	DataSourceType         string                       `json:"data_source_type"`
-	Domains                []string                     `json:"domains"`
-	Name                   string                       `json:"name"`
-	Description            string                       `json:"description"`
-	SslConfiguration       []AwsOpsworksApplicationSpec `json:"ssl_configuration"`
 	DataSourceArn          string                       `json:"data_source_arn"`
-	Environment            []AwsOpsworksApplicationSpec `json:"environment"`
 	ShortName              string                       `json:"short_name"`
 	StackId                string                       `json:"stack_id"`
-	RailsEnv               string                       `json:"rails_env"`
 	AutoBundleOnDeploy     string                       `json:"auto_bundle_on_deploy"`
-	AwsFlowRubySettings    string                       `json:"aws_flow_ruby_settings"`
 	DataSourceDatabaseName string                       `json:"data_source_database_name"`
-	EnableSsl              bool                         `json:"enable_ssl"`
+	Description            string                       `json:"description"`
+	Domains                []string                     `json:"domains"`
+	Name                   string                       `json:"name"`
+	RailsEnv               string                       `json:"rails_env"`
+	AwsFlowRubySettings    string                       `json:"aws_flow_ruby_settings"`
+	AppSource              []AwsOpsworksApplicationSpec `json:"app_source"`
+	Environment            []AwsOpsworksApplicationSpec `json:"environment"`
 }
 
 type AwsOpsworksApplicationStatus struct {
@@ -63,6 +64,7 @@ type AwsOpsworksApplicationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsOpsworksApplicationList is a list of AwsOpsworksApplications
 type AwsOpsworksApplicationList struct {

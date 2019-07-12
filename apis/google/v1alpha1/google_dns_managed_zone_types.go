@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleDnsManagedZone struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleDnsManagedZone struct {
 }
 
 type GoogleDnsManagedZoneSpec struct {
-	Project     string            `json:"project"`
-	Labels      map[string]string `json:"labels"`
 	DnsName     string            `json:"dns_name"`
 	Name        string            `json:"name"`
 	Description string            `json:"description"`
 	NameServers []string          `json:"name_servers"`
+	Project     string            `json:"project"`
+	Labels      map[string]string `json:"labels"`
 }
 
 type GoogleDnsManagedZoneStatus struct {
@@ -31,6 +32,7 @@ type GoogleDnsManagedZoneStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleDnsManagedZoneList is a list of GoogleDnsManagedZones
 type GoogleDnsManagedZoneList struct {

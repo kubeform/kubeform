@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAppsyncDatasource struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,18 +18,14 @@ type AwsAppsyncDatasource struct {
 	Status            AwsAppsyncDatasourceStatus `json:"status,omitempty"`
 }
 
-type AwsAppsyncDatasourceSpecElasticsearchConfig struct {
-	Region   string `json:"region"`
-	Endpoint string `json:"endpoint"`
-}
-
 type AwsAppsyncDatasourceSpecDynamodbConfig struct {
-	TableName            string `json:"table_name"`
 	UseCallerCredentials bool   `json:"use_caller_credentials"`
 	Region               string `json:"region"`
+	TableName            string `json:"table_name"`
 }
 
-type AwsAppsyncDatasourceSpecHttpConfig struct {
+type AwsAppsyncDatasourceSpecElasticsearchConfig struct {
+	Region   string `json:"region"`
 	Endpoint string `json:"endpoint"`
 }
 
@@ -36,16 +33,20 @@ type AwsAppsyncDatasourceSpecLambdaConfig struct {
 	FunctionArn string `json:"function_arn"`
 }
 
+type AwsAppsyncDatasourceSpecHttpConfig struct {
+	Endpoint string `json:"endpoint"`
+}
+
 type AwsAppsyncDatasourceSpec struct {
-	Name                string                     `json:"name"`
-	Type                string                     `json:"type"`
-	ElasticsearchConfig []AwsAppsyncDatasourceSpec `json:"elasticsearch_config"`
 	ServiceRoleArn      string                     `json:"service_role_arn"`
 	ApiId               string                     `json:"api_id"`
+	Type                string                     `json:"type"`
 	Description         string                     `json:"description"`
 	DynamodbConfig      []AwsAppsyncDatasourceSpec `json:"dynamodb_config"`
-	HttpConfig          []AwsAppsyncDatasourceSpec `json:"http_config"`
+	ElasticsearchConfig []AwsAppsyncDatasourceSpec `json:"elasticsearch_config"`
 	LambdaConfig        []AwsAppsyncDatasourceSpec `json:"lambda_config"`
+	Name                string                     `json:"name"`
+	HttpConfig          []AwsAppsyncDatasourceSpec `json:"http_config"`
 	Arn                 string                     `json:"arn"`
 }
 
@@ -54,6 +55,7 @@ type AwsAppsyncDatasourceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAppsyncDatasourceList is a list of AwsAppsyncDatasources
 type AwsAppsyncDatasourceList struct {

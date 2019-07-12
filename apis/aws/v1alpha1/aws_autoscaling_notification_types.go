@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAutoscalingNotification struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -28,6 +29,7 @@ type AwsAutoscalingNotificationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAutoscalingNotificationList is a list of AwsAutoscalingNotifications
 type AwsAutoscalingNotificationList struct {

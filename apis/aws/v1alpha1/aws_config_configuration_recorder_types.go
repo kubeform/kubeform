@@ -9,12 +9,13 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsConfigConfigurationRecorder struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              AwsConfigConfigurationRecorderSpec   `json:"spec,omitempty"`
-	Status            AwsConfigConfigurationRecorderStatus `json:"status,omitempty"`
+	Spec              AwsConfigConfigurationRecorderSpec    `json:"spec,omitempty"`
+	Status            AwsConfigConfigurationRecorderStatus2 `json:"status,omitempty"`
 }
 
 type AwsConfigConfigurationRecorderSpecRecordingGroup struct {
@@ -29,11 +30,12 @@ type AwsConfigConfigurationRecorderSpec struct {
 	RecordingGroup []AwsConfigConfigurationRecorderSpec `json:"recording_group"`
 }
 
-type AwsConfigConfigurationRecorderStatus struct {
+type AwsConfigConfigurationRecorderStatus2 struct {
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsConfigConfigurationRecorderList is a list of AwsConfigConfigurationRecorders
 type AwsConfigConfigurationRecorderList struct {

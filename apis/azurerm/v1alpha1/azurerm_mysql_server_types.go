@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermMysqlServer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -31,17 +32,17 @@ type AzurermMysqlServerSpecSku struct {
 }
 
 type AzurermMysqlServerSpec struct {
-	Location                   string                   `json:"location"`
-	ResourceGroupName          string                   `json:"resource_group_name"`
-	Version                    string                   `json:"version"`
-	StorageProfile             []AzurermMysqlServerSpec `json:"storage_profile"`
-	SslEnforcement             string                   `json:"ssl_enforcement"`
-	Tags                       map[string]string        `json:"tags"`
 	Name                       string                   `json:"name"`
+	ResourceGroupName          string                   `json:"resource_group_name"`
+	AdministratorLoginPassword string                   `json:"administrator_login_password"`
+	StorageProfile             []AzurermMysqlServerSpec `json:"storage_profile"`
+	Location                   string                   `json:"location"`
 	Sku                        []AzurermMysqlServerSpec `json:"sku"`
 	AdministratorLogin         string                   `json:"administrator_login"`
-	AdministratorLoginPassword string                   `json:"administrator_login_password"`
+	Version                    string                   `json:"version"`
+	SslEnforcement             string                   `json:"ssl_enforcement"`
 	Fqdn                       string                   `json:"fqdn"`
+	Tags                       map[string]string        `json:"tags"`
 }
 
 type AzurermMysqlServerStatus struct {
@@ -49,6 +50,7 @@ type AzurermMysqlServerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermMysqlServerList is a list of AzurermMysqlServers
 type AzurermMysqlServerList struct {

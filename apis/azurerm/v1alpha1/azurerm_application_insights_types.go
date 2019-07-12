@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApplicationInsights struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AzurermApplicationInsights struct {
 }
 
 type AzurermApplicationInsightsSpec struct {
+	AppId              string            `json:"app_id"`
 	InstrumentationKey string            `json:"instrumentation_key"`
 	Name               string            `json:"name"`
 	ResourceGroupName  string            `json:"resource_group_name"`
 	Location           string            `json:"location"`
 	ApplicationType    string            `json:"application_type"`
 	Tags               map[string]string `json:"tags"`
-	AppId              string            `json:"app_id"`
 }
 
 type AzurermApplicationInsightsStatus struct {
@@ -32,6 +33,7 @@ type AzurermApplicationInsightsStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApplicationInsightsList is a list of AzurermApplicationInsightss
 type AzurermApplicationInsightsList struct {

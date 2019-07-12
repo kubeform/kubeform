@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementProductApi struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AzurermApiManagementProductApi struct {
 }
 
 type AzurermApiManagementProductApiSpec struct {
+	ProductId         string `json:"product_id"`
 	ResourceGroupName string `json:"resource_group_name"`
 	ApiManagementName string `json:"api_management_name"`
 	ApiName           string `json:"api_name"`
-	ProductId         string `json:"product_id"`
 }
 
 type AzurermApiManagementProductApiStatus struct {
@@ -29,6 +30,7 @@ type AzurermApiManagementProductApiStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementProductApiList is a list of AzurermApiManagementProductApis
 type AzurermApiManagementProductApiList struct {

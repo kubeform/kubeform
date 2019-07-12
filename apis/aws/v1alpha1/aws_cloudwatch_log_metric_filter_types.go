@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCloudwatchLogMetricFilter struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsCloudwatchLogMetricFilter struct {
 }
 
 type AwsCloudwatchLogMetricFilterSpecMetricTransformation struct {
+	Name         string `json:"name"`
 	Namespace    string `json:"namespace"`
 	Value        string `json:"value"`
 	DefaultValue string `json:"default_value"`
-	Name         string `json:"name"`
 }
 
 type AwsCloudwatchLogMetricFilterSpec struct {
@@ -36,6 +37,7 @@ type AwsCloudwatchLogMetricFilterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCloudwatchLogMetricFilterList is a list of AwsCloudwatchLogMetricFilters
 type AwsCloudwatchLogMetricFilterList struct {

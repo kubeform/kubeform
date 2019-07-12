@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermNetworkPacketCapture struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,30 +18,30 @@ type AzurermNetworkPacketCapture struct {
 	Status            AzurermNetworkPacketCaptureStatus `json:"status,omitempty"`
 }
 
-type AzurermNetworkPacketCaptureSpecFilter struct {
-	Protocol        string `json:"protocol"`
-	RemoteIpAddress string `json:"remote_ip_address"`
-	RemotePort      string `json:"remote_port"`
-	LocalIpAddress  string `json:"local_ip_address"`
-	LocalPort       string `json:"local_port"`
-}
-
 type AzurermNetworkPacketCaptureSpecStorageLocation struct {
 	FilePath         string `json:"file_path"`
 	StorageAccountId string `json:"storage_account_id"`
 	StoragePath      string `json:"storage_path"`
 }
 
+type AzurermNetworkPacketCaptureSpecFilter struct {
+	RemotePort      string `json:"remote_port"`
+	LocalIpAddress  string `json:"local_ip_address"`
+	LocalPort       string `json:"local_port"`
+	Protocol        string `json:"protocol"`
+	RemoteIpAddress string `json:"remote_ip_address"`
+}
+
 type AzurermNetworkPacketCaptureSpec struct {
-	ResourceGroupName      string                            `json:"resource_group_name"`
-	Filter                 []AzurermNetworkPacketCaptureSpec `json:"filter"`
-	Name                   string                            `json:"name"`
+	StorageLocation        []AzurermNetworkPacketCaptureSpec `json:"storage_location"`
 	NetworkWatcherName     string                            `json:"network_watcher_name"`
-	TargetResourceId       string                            `json:"target_resource_id"`
 	MaximumBytesPerPacket  int                               `json:"maximum_bytes_per_packet"`
 	MaximumBytesPerSession int                               `json:"maximum_bytes_per_session"`
 	MaximumCaptureDuration int                               `json:"maximum_capture_duration"`
-	StorageLocation        []AzurermNetworkPacketCaptureSpec `json:"storage_location"`
+	Name                   string                            `json:"name"`
+	ResourceGroupName      string                            `json:"resource_group_name"`
+	TargetResourceId       string                            `json:"target_resource_id"`
+	Filter                 []AzurermNetworkPacketCaptureSpec `json:"filter"`
 }
 
 type AzurermNetworkPacketCaptureStatus struct {
@@ -48,6 +49,7 @@ type AzurermNetworkPacketCaptureStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermNetworkPacketCaptureList is a list of AzurermNetworkPacketCaptures
 type AzurermNetworkPacketCaptureList struct {

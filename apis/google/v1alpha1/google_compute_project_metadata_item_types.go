@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeProjectMetadataItem struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type GoogleComputeProjectMetadataItem struct {
 }
 
 type GoogleComputeProjectMetadataItemSpec struct {
-	Project string `json:"project"`
 	Key     string `json:"key"`
 	Value   string `json:"value"`
+	Project string `json:"project"`
 }
 
 type GoogleComputeProjectMetadataItemStatus struct {
@@ -28,6 +29,7 @@ type GoogleComputeProjectMetadataItemStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeProjectMetadataItemList is a list of GoogleComputeProjectMetadataItems
 type GoogleComputeProjectMetadataItemList struct {

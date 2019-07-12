@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEc2ClientVpnNetworkAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsEc2ClientVpnNetworkAssociation struct {
 }
 
 type AwsEc2ClientVpnNetworkAssociationSpec struct {
-	ClientVpnEndpointId string   `json:"client_vpn_endpoint_id"`
-	SubnetId            string   `json:"subnet_id"`
 	SecurityGroups      []string `json:"security_groups"`
 	Status              string   `json:"status"`
 	VpcId               string   `json:"vpc_id"`
+	ClientVpnEndpointId string   `json:"client_vpn_endpoint_id"`
+	SubnetId            string   `json:"subnet_id"`
 }
 
 type AwsEc2ClientVpnNetworkAssociationStatus struct {
@@ -30,6 +31,7 @@ type AwsEc2ClientVpnNetworkAssociationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEc2ClientVpnNetworkAssociationList is a list of AwsEc2ClientVpnNetworkAssociations
 type AwsEc2ClientVpnNetworkAssociationList struct {

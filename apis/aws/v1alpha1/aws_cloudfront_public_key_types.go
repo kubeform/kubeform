@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCloudfrontPublicKey struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsCloudfrontPublicKey struct {
 }
 
 type AwsCloudfrontPublicKeySpec struct {
-	CallerReference string `json:"caller_reference"`
-	Comment         string `json:"comment"`
-	EncodedKey      string `json:"encoded_key"`
 	Etag            string `json:"etag"`
 	Name            string `json:"name"`
 	NamePrefix      string `json:"name_prefix"`
+	CallerReference string `json:"caller_reference"`
+	Comment         string `json:"comment"`
+	EncodedKey      string `json:"encoded_key"`
 }
 
 type AwsCloudfrontPublicKeyStatus struct {
@@ -31,6 +32,7 @@ type AwsCloudfrontPublicKeyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCloudfrontPublicKeyList is a list of AwsCloudfrontPublicKeys
 type AwsCloudfrontPublicKeyList struct {

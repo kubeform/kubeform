@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIotRoleAlias struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,10 @@ type AwsIotRoleAlias struct {
 }
 
 type AwsIotRoleAliasSpec struct {
+	CredentialDuration int    `json:"credential_duration"`
+	Arn                string `json:"arn"`
 	Alias              string `json:"alias"`
 	RoleArn            string `json:"role_arn"`
-	CredentialDuration int    `json:"credential_duration"`
 }
 
 type AwsIotRoleAliasStatus struct {
@@ -28,6 +30,7 @@ type AwsIotRoleAliasStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIotRoleAliasList is a list of AwsIotRoleAliass
 type AwsIotRoleAliasList struct {

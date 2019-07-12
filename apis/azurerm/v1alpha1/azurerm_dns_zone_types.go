@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDnsZone struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AzurermDnsZone struct {
 }
 
 type AzurermDnsZoneSpec struct {
-	NameServers                   []string          `json:"name_servers"`
-	ZoneType                      string            `json:"zone_type"`
-	ResolutionVirtualNetworkIds   []string          `json:"resolution_virtual_network_ids"`
-	Tags                          map[string]string `json:"tags"`
-	ResourceGroupName             string            `json:"resource_group_name"`
-	MaxNumberOfRecordSets         int               `json:"max_number_of_record_sets"`
-	RegistrationVirtualNetworkIds []string          `json:"registration_virtual_network_ids"`
 	Name                          string            `json:"name"`
+	ResourceGroupName             string            `json:"resource_group_name"`
 	NumberOfRecordSets            int               `json:"number_of_record_sets"`
+	NameServers                   []string          `json:"name_servers"`
+	RegistrationVirtualNetworkIds []string          `json:"registration_virtual_network_ids"`
+	ResolutionVirtualNetworkIds   []string          `json:"resolution_virtual_network_ids"`
+	MaxNumberOfRecordSets         int               `json:"max_number_of_record_sets"`
+	ZoneType                      string            `json:"zone_type"`
+	Tags                          map[string]string `json:"tags"`
 }
 
 type AzurermDnsZoneStatus struct {
@@ -34,6 +35,7 @@ type AzurermDnsZoneStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDnsZoneList is a list of AzurermDnsZones
 type AzurermDnsZoneList struct {

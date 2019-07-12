@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsServiceDiscoveryHttpNamespace struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsServiceDiscoveryHttpNamespace struct {
 }
 
 type AwsServiceDiscoveryHttpNamespaceSpec struct {
+	Arn         string `json:"arn"`
 	Name        string `json:"name"`
 	Description string `json:"description"`
-	Arn         string `json:"arn"`
 }
 
 type AwsServiceDiscoveryHttpNamespaceStatus struct {
@@ -28,6 +29,7 @@ type AwsServiceDiscoveryHttpNamespaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsServiceDiscoveryHttpNamespaceList is a list of AwsServiceDiscoveryHttpNamespaces
 type AwsServiceDiscoveryHttpNamespaceList struct {

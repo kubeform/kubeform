@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermLogAnalyticsSolution struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AzurermLogAnalyticsSolution struct {
 }
 
 type AzurermLogAnalyticsSolutionSpecPlan struct {
-	Name          string `json:"name"`
-	Publisher     string `json:"publisher"`
 	PromotionCode string `json:"promotion_code"`
 	Product       string `json:"product"`
+	Name          string `json:"name"`
+	Publisher     string `json:"publisher"`
 }
 
 type AzurermLogAnalyticsSolutionSpec struct {
+	WorkspaceName       string                            `json:"workspace_name"`
+	WorkspaceResourceId string                            `json:"workspace_resource_id"`
 	Location            string                            `json:"location"`
 	ResourceGroupName   string                            `json:"resource_group_name"`
 	Plan                []AzurermLogAnalyticsSolutionSpec `json:"plan"`
 	SolutionName        string                            `json:"solution_name"`
-	WorkspaceName       string                            `json:"workspace_name"`
-	WorkspaceResourceId string                            `json:"workspace_resource_id"`
 }
 
 type AzurermLogAnalyticsSolutionStatus struct {
@@ -38,6 +39,7 @@ type AzurermLogAnalyticsSolutionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermLogAnalyticsSolutionList is a list of AzurermLogAnalyticsSolutions
 type AzurermLogAnalyticsSolutionList struct {

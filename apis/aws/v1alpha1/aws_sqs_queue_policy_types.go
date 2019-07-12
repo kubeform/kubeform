@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSqsQueuePolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -27,6 +28,7 @@ type AwsSqsQueuePolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSqsQueuePolicyList is a list of AwsSqsQueuePolicys
 type AwsSqsQueuePolicyList struct {

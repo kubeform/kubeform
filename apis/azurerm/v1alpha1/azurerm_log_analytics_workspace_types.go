@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermLogAnalyticsWorkspace struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type AzurermLogAnalyticsWorkspace struct {
 }
 
 type AzurermLogAnalyticsWorkspaceSpec struct {
-	Sku                string            `json:"sku"`
+	Name               string            `json:"name"`
+	Location           string            `json:"location"`
+	ResourceGroupName  string            `json:"resource_group_name"`
 	RetentionInDays    int               `json:"retention_in_days"`
 	WorkspaceId        string            `json:"workspace_id"`
-	PortalUrl          string            `json:"portal_url"`
-	PrimarySharedKey   string            `json:"primary_shared_key"`
-	ResourceGroupName  string            `json:"resource_group_name"`
-	Location           string            `json:"location"`
 	SecondarySharedKey string            `json:"secondary_shared_key"`
 	Tags               map[string]string `json:"tags"`
-	Name               string            `json:"name"`
+	Sku                string            `json:"sku"`
+	PortalUrl          string            `json:"portal_url"`
+	PrimarySharedKey   string            `json:"primary_shared_key"`
 }
 
 type AzurermLogAnalyticsWorkspaceStatus struct {
@@ -35,6 +36,7 @@ type AzurermLogAnalyticsWorkspaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermLogAnalyticsWorkspaceList is a list of AzurermLogAnalyticsWorkspaces
 type AzurermLogAnalyticsWorkspaceList struct {

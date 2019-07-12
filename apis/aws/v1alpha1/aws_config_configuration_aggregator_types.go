@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsConfigConfigurationAggregator struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsConfigConfigurationAggregator struct {
 }
 
 type AwsConfigConfigurationAggregatorSpecAccountAggregationSource struct {
-	AccountIds []string `json:"account_ids"`
 	AllRegions bool     `json:"all_regions"`
 	Regions    []string `json:"regions"`
+	AccountIds []string `json:"account_ids"`
 }
 
 type AwsConfigConfigurationAggregatorSpecOrganizationAggregationSource struct {
@@ -30,10 +31,10 @@ type AwsConfigConfigurationAggregatorSpecOrganizationAggregationSource struct {
 }
 
 type AwsConfigConfigurationAggregatorSpec struct {
-	Arn                           string                                 `json:"arn"`
-	Name                          string                                 `json:"name"`
 	AccountAggregationSource      []AwsConfigConfigurationAggregatorSpec `json:"account_aggregation_source"`
 	OrganizationAggregationSource []AwsConfigConfigurationAggregatorSpec `json:"organization_aggregation_source"`
+	Arn                           string                                 `json:"arn"`
+	Name                          string                                 `json:"name"`
 }
 
 type AwsConfigConfigurationAggregatorStatus struct {
@@ -41,6 +42,7 @@ type AwsConfigConfigurationAggregatorStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsConfigConfigurationAggregatorList is a list of AwsConfigConfigurationAggregators
 type AwsConfigConfigurationAggregatorList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSecurityGroupRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -20,15 +21,15 @@ type AwsSecurityGroupRule struct {
 type AwsSecurityGroupRuleSpec struct {
 	Type                  string   `json:"type"`
 	ToPort                int      `json:"to_port"`
-	Protocol              string   `json:"protocol"`
-	Ipv6CidrBlocks        []string `json:"ipv6_cidr_blocks"`
-	PrefixListIds         []string `json:"prefix_list_ids"`
-	SecurityGroupId       string   `json:"security_group_id"`
-	FromPort              int      `json:"from_port"`
 	CidrBlocks            []string `json:"cidr_blocks"`
 	SourceSecurityGroupId string   `json:"source_security_group_id"`
 	Self                  bool     `json:"self"`
 	Description           string   `json:"description"`
+	FromPort              int      `json:"from_port"`
+	Protocol              string   `json:"protocol"`
+	Ipv6CidrBlocks        []string `json:"ipv6_cidr_blocks"`
+	PrefixListIds         []string `json:"prefix_list_ids"`
+	SecurityGroupId       string   `json:"security_group_id"`
 }
 
 type AwsSecurityGroupRuleStatus struct {
@@ -36,6 +37,7 @@ type AwsSecurityGroupRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSecurityGroupRuleList is a list of AwsSecurityGroupRules
 type AwsSecurityGroupRuleList struct {

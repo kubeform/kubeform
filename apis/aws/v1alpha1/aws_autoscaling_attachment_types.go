@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAutoscalingAttachment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsAutoscalingAttachment struct {
 }
 
 type AwsAutoscalingAttachmentSpec struct {
-	AlbTargetGroupArn    string `json:"alb_target_group_arn"`
 	AutoscalingGroupName string `json:"autoscaling_group_name"`
 	Elb                  string `json:"elb"`
+	AlbTargetGroupArn    string `json:"alb_target_group_arn"`
 }
 
 type AwsAutoscalingAttachmentStatus struct {
@@ -28,6 +29,7 @@ type AwsAutoscalingAttachmentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAutoscalingAttachmentList is a list of AwsAutoscalingAttachments
 type AwsAutoscalingAttachmentList struct {

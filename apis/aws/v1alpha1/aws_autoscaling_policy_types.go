@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAutoscalingPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,14 +18,20 @@ type AwsAutoscalingPolicy struct {
 	Status            AwsAutoscalingPolicyStatus `json:"status,omitempty"`
 }
 
+type AwsAutoscalingPolicySpecStepAdjustment struct {
+	ScalingAdjustment        int    `json:"scaling_adjustment"`
+	MetricIntervalLowerBound string `json:"metric_interval_lower_bound"`
+	MetricIntervalUpperBound string `json:"metric_interval_upper_bound"`
+}
+
 type AwsAutoscalingPolicySpecTargetTrackingConfigurationPredefinedMetricSpecification struct {
 	PredefinedMetricType string `json:"predefined_metric_type"`
 	ResourceLabel        string `json:"resource_label"`
 }
 
 type AwsAutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension struct {
-	Name  string `json:"name"`
 	Value string `json:"value"`
+	Name  string `json:"name"`
 }
 
 type AwsAutoscalingPolicySpecTargetTrackingConfigurationCustomizedMetricSpecification struct {
@@ -42,26 +49,20 @@ type AwsAutoscalingPolicySpecTargetTrackingConfiguration struct {
 	DisableScaleIn                bool                                                  `json:"disable_scale_in"`
 }
 
-type AwsAutoscalingPolicySpecStepAdjustment struct {
-	MetricIntervalLowerBound string `json:"metric_interval_lower_bound"`
-	MetricIntervalUpperBound string `json:"metric_interval_upper_bound"`
-	ScalingAdjustment        int    `json:"scaling_adjustment"`
-}
-
 type AwsAutoscalingPolicySpec struct {
-	Arn                         string                     `json:"arn"`
-	EstimatedInstanceWarmup     int                        `json:"estimated_instance_warmup"`
-	TargetTrackingConfiguration []AwsAutoscalingPolicySpec `json:"target_tracking_configuration"`
-	MinAdjustmentMagnitude      int                        `json:"min_adjustment_magnitude"`
-	MinAdjustmentStep           int                        `json:"min_adjustment_step"`
-	Name                        string                     `json:"name"`
 	AdjustmentType              string                     `json:"adjustment_type"`
+	EstimatedInstanceWarmup     int                        `json:"estimated_instance_warmup"`
+	MetricAggregationType       string                     `json:"metric_aggregation_type"`
+	StepAdjustment              []AwsAutoscalingPolicySpec `json:"step_adjustment"`
+	TargetTrackingConfiguration []AwsAutoscalingPolicySpec `json:"target_tracking_configuration"`
+	Arn                         string                     `json:"arn"`
 	AutoscalingGroupName        string                     `json:"autoscaling_group_name"`
 	PolicyType                  string                     `json:"policy_type"`
 	Cooldown                    int                        `json:"cooldown"`
-	MetricAggregationType       string                     `json:"metric_aggregation_type"`
+	MinAdjustmentMagnitude      int                        `json:"min_adjustment_magnitude"`
+	MinAdjustmentStep           int                        `json:"min_adjustment_step"`
 	ScalingAdjustment           int                        `json:"scaling_adjustment"`
-	StepAdjustment              []AwsAutoscalingPolicySpec `json:"step_adjustment"`
+	Name                        string                     `json:"name"`
 }
 
 type AwsAutoscalingPolicyStatus struct {
@@ -69,6 +70,7 @@ type AwsAutoscalingPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAutoscalingPolicyList is a list of AwsAutoscalingPolicys
 type AwsAutoscalingPolicyList struct {

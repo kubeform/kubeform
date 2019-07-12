@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCloudwatchEventRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AwsCloudwatchEventRule struct {
 }
 
 type AwsCloudwatchEventRuleSpec struct {
-	RoleArn            string            `json:"role_arn"`
-	Arn                string            `json:"arn"`
 	Name               string            `json:"name"`
 	NamePrefix         string            `json:"name_prefix"`
 	ScheduleExpression string            `json:"schedule_expression"`
-	EventPattern       string            `json:"event_pattern"`
 	Description        string            `json:"description"`
+	RoleArn            string            `json:"role_arn"`
+	EventPattern       string            `json:"event_pattern"`
 	IsEnabled          bool              `json:"is_enabled"`
+	Arn                string            `json:"arn"`
 	Tags               map[string]string `json:"tags"`
 }
 
@@ -34,6 +35,7 @@ type AwsCloudwatchEventRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCloudwatchEventRuleList is a list of AwsCloudwatchEventRules
 type AwsCloudwatchEventRuleList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermStreamAnalyticsOutputServicebusQueue struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -25,14 +26,14 @@ type AzurermStreamAnalyticsOutputServicebusQueueSpecSerialization struct {
 }
 
 type AzurermStreamAnalyticsOutputServicebusQueueSpec struct {
-	Serialization          []AzurermStreamAnalyticsOutputServicebusQueueSpec `json:"serialization"`
-	Name                   string                                            `json:"name"`
-	StreamAnalyticsJobName string                                            `json:"stream_analytics_job_name"`
 	ResourceGroupName      string                                            `json:"resource_group_name"`
 	QueueName              string                                            `json:"queue_name"`
 	ServicebusNamespace    string                                            `json:"servicebus_namespace"`
 	SharedAccessPolicyKey  string                                            `json:"shared_access_policy_key"`
 	SharedAccessPolicyName string                                            `json:"shared_access_policy_name"`
+	Serialization          []AzurermStreamAnalyticsOutputServicebusQueueSpec `json:"serialization"`
+	Name                   string                                            `json:"name"`
+	StreamAnalyticsJobName string                                            `json:"stream_analytics_job_name"`
 }
 
 type AzurermStreamAnalyticsOutputServicebusQueueStatus struct {
@@ -40,6 +41,7 @@ type AzurermStreamAnalyticsOutputServicebusQueueStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermStreamAnalyticsOutputServicebusQueueList is a list of AzurermStreamAnalyticsOutputServicebusQueues
 type AzurermStreamAnalyticsOutputServicebusQueueList struct {

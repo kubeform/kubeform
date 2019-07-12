@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEc2TransitGateway struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,18 +19,18 @@ type AwsEc2TransitGateway struct {
 }
 
 type AwsEc2TransitGatewaySpec struct {
-	AutoAcceptSharedAttachments    string            `json:"auto_accept_shared_attachments"`
-	DefaultRouteTableAssociation   string            `json:"default_route_table_association"`
-	DnsSupport                     string            `json:"dns_support"`
+	AmazonSideAsn                  int               `json:"amazon_side_asn"`
+	DefaultRouteTablePropagation   string            `json:"default_route_table_propagation"`
 	OwnerId                        string            `json:"owner_id"`
 	Tags                           map[string]string `json:"tags"`
 	VpnEcmpSupport                 string            `json:"vpn_ecmp_support"`
-	AmazonSideAsn                  int               `json:"amazon_side_asn"`
-	AssociationDefaultRouteTableId string            `json:"association_default_route_table_id"`
-	Description                    string            `json:"description"`
 	PropagationDefaultRouteTableId string            `json:"propagation_default_route_table_id"`
 	Arn                            string            `json:"arn"`
-	DefaultRouteTablePropagation   string            `json:"default_route_table_propagation"`
+	AssociationDefaultRouteTableId string            `json:"association_default_route_table_id"`
+	AutoAcceptSharedAttachments    string            `json:"auto_accept_shared_attachments"`
+	DefaultRouteTableAssociation   string            `json:"default_route_table_association"`
+	Description                    string            `json:"description"`
+	DnsSupport                     string            `json:"dns_support"`
 }
 
 type AwsEc2TransitGatewayStatus struct {
@@ -37,6 +38,7 @@ type AwsEc2TransitGatewayStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEc2TransitGatewayList is a list of AwsEc2TransitGateways
 type AwsEc2TransitGatewayList struct {

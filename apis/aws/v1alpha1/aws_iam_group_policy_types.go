@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIamGroupPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -29,6 +30,7 @@ type AwsIamGroupPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIamGroupPolicyList is a list of AwsIamGroupPolicys
 type AwsIamGroupPolicyList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSecurityhubAccount struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,6 +25,7 @@ type AwsSecurityhubAccountStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSecurityhubAccountList is a list of AwsSecurityhubAccounts
 type AwsSecurityhubAccountList struct {

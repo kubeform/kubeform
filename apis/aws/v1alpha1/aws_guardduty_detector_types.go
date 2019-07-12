@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGuarddutyDetector struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -28,6 +29,7 @@ type AwsGuarddutyDetectorStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGuarddutyDetectorList is a list of AwsGuarddutyDetectors
 type AwsGuarddutyDetectorList struct {

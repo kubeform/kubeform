@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleStorageDefaultObjectAccessControl struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,15 +24,15 @@ type GoogleStorageDefaultObjectAccessControlSpecProjectTeam struct {
 }
 
 type GoogleStorageDefaultObjectAccessControlSpec struct {
-	Generation  int                                           `json:"generation"`
 	ProjectTeam []GoogleStorageDefaultObjectAccessControlSpec `json:"project_team"`
 	Bucket      string                                        `json:"bucket"`
 	Entity      string                                        `json:"entity"`
 	Role        string                                        `json:"role"`
+	Domain      string                                        `json:"domain"`
+	EntityId    string                                        `json:"entity_id"`
 	Object      string                                        `json:"object"`
 	Email       string                                        `json:"email"`
-	EntityId    string                                        `json:"entity_id"`
-	Domain      string                                        `json:"domain"`
+	Generation  int                                           `json:"generation"`
 }
 
 type GoogleStorageDefaultObjectAccessControlStatus struct {
@@ -39,6 +40,7 @@ type GoogleStorageDefaultObjectAccessControlStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleStorageDefaultObjectAccessControlList is a list of GoogleStorageDefaultObjectAccessControls
 type GoogleStorageDefaultObjectAccessControlList struct {

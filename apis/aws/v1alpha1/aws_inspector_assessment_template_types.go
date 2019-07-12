@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsInspectorAssessmentTemplate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsInspectorAssessmentTemplate struct {
 }
 
 type AwsInspectorAssessmentTemplateSpec struct {
+	Name             string   `json:"name"`
 	TargetArn        string   `json:"target_arn"`
 	Arn              string   `json:"arn"`
 	Duration         int      `json:"duration"`
 	RulesPackageArns []string `json:"rules_package_arns"`
-	Name             string   `json:"name"`
 }
 
 type AwsInspectorAssessmentTemplateStatus struct {
@@ -30,6 +31,7 @@ type AwsInspectorAssessmentTemplateStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsInspectorAssessmentTemplateList is a list of AwsInspectorAssessmentTemplates
 type AwsInspectorAssessmentTemplateList struct {

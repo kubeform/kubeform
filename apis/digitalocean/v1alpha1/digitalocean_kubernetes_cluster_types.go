@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanKubernetesCluster struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,44 +19,44 @@ type DigitaloceanKubernetesCluster struct {
 }
 
 type DigitaloceanKubernetesClusterSpecNodePoolNodes struct {
-	CreatedAt string `json:"created_at"`
-	UpdatedAt string `json:"updated_at"`
 	Id        string `json:"id"`
 	Name      string `json:"name"`
 	Status    string `json:"status"`
+	CreatedAt string `json:"created_at"`
+	UpdatedAt string `json:"updated_at"`
 }
 
 type DigitaloceanKubernetesClusterSpecNodePool struct {
-	Nodes     []DigitaloceanKubernetesClusterSpecNodePool `json:"nodes"`
-	Id        string                                      `json:"id"`
 	Name      string                                      `json:"name"`
 	Size      string                                      `json:"size"`
 	NodeCount int                                         `json:"node_count"`
 	Tags      []string                                    `json:"tags"`
+	Nodes     []DigitaloceanKubernetesClusterSpecNodePool `json:"nodes"`
+	Id        string                                      `json:"id"`
 }
 
 type DigitaloceanKubernetesClusterSpecKubeConfig struct {
+	ClientKey            string `json:"client_key"`
 	ClientCertificate    string `json:"client_certificate"`
 	RawConfig            string `json:"raw_config"`
 	Host                 string `json:"host"`
 	ClusterCaCertificate string `json:"cluster_ca_certificate"`
-	ClientKey            string `json:"client_key"`
 }
 
 type DigitaloceanKubernetesClusterSpec struct {
 	Region        string                              `json:"region"`
+	Version       string                              `json:"version"`
 	ClusterSubnet string                              `json:"cluster_subnet"`
-	ServiceSubnet string                              `json:"service_subnet"`
-	Endpoint      string                              `json:"endpoint"`
-	NodePool      []DigitaloceanKubernetesClusterSpec `json:"node_pool"`
+	Ipv4Address   string                              `json:"ipv4_address"`
+	Tags          []string                            `json:"tags"`
 	Status        string                              `json:"status"`
 	UpdatedAt     string                              `json:"updated_at"`
 	Name          string                              `json:"name"`
-	Ipv4Address   string                              `json:"ipv4_address"`
-	Tags          []string                            `json:"tags"`
+	ServiceSubnet string                              `json:"service_subnet"`
+	Endpoint      string                              `json:"endpoint"`
+	NodePool      []DigitaloceanKubernetesClusterSpec `json:"node_pool"`
 	CreatedAt     string                              `json:"created_at"`
 	KubeConfig    []DigitaloceanKubernetesClusterSpec `json:"kube_config"`
-	Version       string                              `json:"version"`
 }
 
 type DigitaloceanKubernetesClusterStatus struct {
@@ -63,6 +64,7 @@ type DigitaloceanKubernetesClusterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanKubernetesClusterList is a list of DigitaloceanKubernetesClusters
 type DigitaloceanKubernetesClusterList struct {

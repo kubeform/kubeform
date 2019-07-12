@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayStage struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,20 +24,20 @@ type AwsApiGatewayStageSpecAccessLogSettings struct {
 }
 
 type AwsApiGatewayStageSpec struct {
+	DeploymentId         string                   `json:"deployment_id"`
+	ExecutionArn         string                   `json:"execution_arn"`
 	ClientCertificateId  string                   `json:"client_certificate_id"`
 	StageName            string                   `json:"stage_name"`
-	CacheClusterSize     string                   `json:"cache_cluster_size"`
-	DeploymentId         string                   `json:"deployment_id"`
-	Description          string                   `json:"description"`
 	Variables            map[string]string        `json:"variables"`
-	CacheClusterEnabled  bool                     `json:"cache_cluster_enabled"`
-	InvokeUrl            string                   `json:"invoke_url"`
-	RestApiId            string                   `json:"rest_api_id"`
-	XrayTracingEnabled   bool                     `json:"xray_tracing_enabled"`
 	AccessLogSettings    []AwsApiGatewayStageSpec `json:"access_log_settings"`
-	DocumentationVersion string                   `json:"documentation_version"`
-	ExecutionArn         string                   `json:"execution_arn"`
+	CacheClusterSize     string                   `json:"cache_cluster_size"`
+	RestApiId            string                   `json:"rest_api_id"`
 	Tags                 map[string]string        `json:"tags"`
+	XrayTracingEnabled   bool                     `json:"xray_tracing_enabled"`
+	CacheClusterEnabled  bool                     `json:"cache_cluster_enabled"`
+	Description          string                   `json:"description"`
+	DocumentationVersion string                   `json:"documentation_version"`
+	InvokeUrl            string                   `json:"invoke_url"`
 }
 
 type AwsApiGatewayStageStatus struct {
@@ -44,6 +45,7 @@ type AwsApiGatewayStageStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayStageList is a list of AwsApiGatewayStages
 type AwsApiGatewayStageList struct {

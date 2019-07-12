@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeRouterInterface struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleComputeRouterInterface struct {
 }
 
 type GoogleComputeRouterInterfaceSpec struct {
+	Name      string `json:"name"`
 	Router    string `json:"router"`
 	VpnTunnel string `json:"vpn_tunnel"`
 	IpRange   string `json:"ip_range"`
 	Project   string `json:"project"`
 	Region    string `json:"region"`
-	Name      string `json:"name"`
 }
 
 type GoogleComputeRouterInterfaceStatus struct {
@@ -31,6 +32,7 @@ type GoogleComputeRouterInterfaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeRouterInterfaceList is a list of GoogleComputeRouterInterfaces
 type GoogleComputeRouterInterfaceList struct {

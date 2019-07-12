@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermFirewallNetworkRuleCollection struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -40,6 +41,7 @@ type AzurermFirewallNetworkRuleCollectionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermFirewallNetworkRuleCollectionList is a list of AzurermFirewallNetworkRuleCollections
 type AzurermFirewallNetworkRuleCollectionList struct {

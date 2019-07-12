@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type LinodeImage struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,18 +19,18 @@ type LinodeImage struct {
 }
 
 type LinodeImageSpec struct {
+	IsPublic    bool   `json:"is_public"`
+	Type        string `json:"type"`
+	Vendor      string `json:"vendor"`
+	Created     string `json:"created"`
+	DiskId      int    `json:"disk_id"`
 	LinodeId    int    `json:"linode_id"`
 	Description string `json:"description"`
-	Expiry      string `json:"expiry"`
-	Vendor      string `json:"vendor"`
-	Size        int    `json:"size"`
-	Type        string `json:"type"`
-	Label       string `json:"label"`
-	DiskId      int    `json:"disk_id"`
-	Created     string `json:"created"`
 	CreatedBy   string `json:"created_by"`
 	Deprecated  bool   `json:"deprecated"`
-	IsPublic    bool   `json:"is_public"`
+	Size        int    `json:"size"`
+	Expiry      string `json:"expiry"`
+	Label       string `json:"label"`
 }
 
 type LinodeImageStatus struct {
@@ -37,6 +38,7 @@ type LinodeImageStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // LinodeImageList is a list of LinodeImages
 type LinodeImageList struct {

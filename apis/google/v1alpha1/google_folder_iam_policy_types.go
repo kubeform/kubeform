@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleFolderIamPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type GoogleFolderIamPolicy struct {
 }
 
 type GoogleFolderIamPolicySpec struct {
+	Folder     string `json:"folder"`
 	PolicyData string `json:"policy_data"`
 	Etag       string `json:"etag"`
-	Folder     string `json:"folder"`
 }
 
 type GoogleFolderIamPolicyStatus struct {
@@ -28,6 +29,7 @@ type GoogleFolderIamPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleFolderIamPolicyList is a list of GoogleFolderIamPolicys
 type GoogleFolderIamPolicyList struct {

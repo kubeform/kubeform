@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermStreamAnalyticsStreamInputBlob struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,21 +19,21 @@ type AzurermStreamAnalyticsStreamInputBlob struct {
 }
 
 type AzurermStreamAnalyticsStreamInputBlobSpecSerialization struct {
-	Encoding       string `json:"encoding"`
 	Type           string `json:"type"`
 	FieldDelimiter string `json:"field_delimiter"`
+	Encoding       string `json:"encoding"`
 }
 
 type AzurermStreamAnalyticsStreamInputBlobSpec struct {
 	DateFormat             string                                      `json:"date_format"`
 	StorageAccountKey      string                                      `json:"storage_account_key"`
+	StorageAccountName     string                                      `json:"storage_account_name"`
+	StreamAnalyticsJobName string                                      `json:"stream_analytics_job_name"`
+	ResourceGroupName      string                                      `json:"resource_group_name"`
 	StorageContainerName   string                                      `json:"storage_container_name"`
+	TimeFormat             string                                      `json:"time_format"`
 	Serialization          []AzurermStreamAnalyticsStreamInputBlobSpec `json:"serialization"`
 	Name                   string                                      `json:"name"`
-	ResourceGroupName      string                                      `json:"resource_group_name"`
-	StorageAccountName     string                                      `json:"storage_account_name"`
-	TimeFormat             string                                      `json:"time_format"`
-	StreamAnalyticsJobName string                                      `json:"stream_analytics_job_name"`
 	PathPattern            string                                      `json:"path_pattern"`
 }
 
@@ -41,6 +42,7 @@ type AzurermStreamAnalyticsStreamInputBlobStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermStreamAnalyticsStreamInputBlobList is a list of AzurermStreamAnalyticsStreamInputBlobs
 type AzurermStreamAnalyticsStreamInputBlobList struct {

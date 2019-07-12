@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDevTestWindowsVirtualMachine struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -25,30 +26,30 @@ type AzurermDevTestWindowsVirtualMachineSpecGalleryImageReference struct {
 }
 
 type AzurermDevTestWindowsVirtualMachineSpecInboundNatRule struct {
-	Protocol     string `json:"protocol"`
 	BackendPort  int    `json:"backend_port"`
 	FrontendPort int    `json:"frontend_port"`
+	Protocol     string `json:"protocol"`
 }
 
 type AzurermDevTestWindowsVirtualMachineSpec struct {
-	Fqdn                    string                                    `json:"fqdn"`
 	Location                string                                    `json:"location"`
-	LabSubnetName           string                                    `json:"lab_subnet_name"`
-	AllowClaim              bool                                      `json:"allow_claim"`
-	GalleryImageReference   []AzurermDevTestWindowsVirtualMachineSpec `json:"gallery_image_reference"`
-	InboundNatRule          []AzurermDevTestWindowsVirtualMachineSpec `json:"inbound_nat_rule"`
-	Notes                   string                                    `json:"notes"`
-	Username                string                                    `json:"username"`
-	Password                string                                    `json:"password"`
-	Name                    string                                    `json:"name"`
-	LabName                 string                                    `json:"lab_name"`
-	Size                    string                                    `json:"size"`
 	StorageType             string                                    `json:"storage_type"`
-	DisallowPublicIpAddress bool                                      `json:"disallow_public_ip_address"`
-	ResourceGroupName       string                                    `json:"resource_group_name"`
-	LabVirtualNetworkId     string                                    `json:"lab_virtual_network_id"`
-	Tags                    map[string]string                         `json:"tags"`
+	AllowClaim              bool                                      `json:"allow_claim"`
+	Notes                   string                                    `json:"notes"`
 	UniqueIdentifier        string                                    `json:"unique_identifier"`
+	GalleryImageReference   []AzurermDevTestWindowsVirtualMachineSpec `json:"gallery_image_reference"`
+	Fqdn                    string                                    `json:"fqdn"`
+	LabName                 string                                    `json:"lab_name"`
+	ResourceGroupName       string                                    `json:"resource_group_name"`
+	Username                string                                    `json:"username"`
+	LabSubnetName           string                                    `json:"lab_subnet_name"`
+	DisallowPublicIpAddress bool                                      `json:"disallow_public_ip_address"`
+	LabVirtualNetworkId     string                                    `json:"lab_virtual_network_id"`
+	Name                    string                                    `json:"name"`
+	Size                    string                                    `json:"size"`
+	Password                string                                    `json:"password"`
+	InboundNatRule          []AzurermDevTestWindowsVirtualMachineSpec `json:"inbound_nat_rule"`
+	Tags                    map[string]string                         `json:"tags"`
 }
 
 type AzurermDevTestWindowsVirtualMachineStatus struct {
@@ -56,6 +57,7 @@ type AzurermDevTestWindowsVirtualMachineStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDevTestWindowsVirtualMachineList is a list of AzurermDevTestWindowsVirtualMachines
 type AzurermDevTestWindowsVirtualMachineList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type LinodeToken struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -30,6 +31,7 @@ type LinodeTokenStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // LinodeTokenList is a list of LinodeTokens
 type LinodeTokenList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermVirtualNetwork struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,14 +24,13 @@ type AzurermVirtualNetworkSpecDdosProtectionPlan struct {
 }
 
 type AzurermVirtualNetworkSpecSubnet struct {
-	AddressPrefix string `json:"address_prefix"`
-	SecurityGroup string `json:"security_group"`
 	Id            string `json:"id"`
 	Name          string `json:"name"`
+	AddressPrefix string `json:"address_prefix"`
+	SecurityGroup string `json:"security_group"`
 }
 
 type AzurermVirtualNetworkSpec struct {
-	Name               string                      `json:"name"`
 	ResourceGroupName  string                      `json:"resource_group_name"`
 	Location           string                      `json:"location"`
 	AddressSpace       []string                    `json:"address_space"`
@@ -38,6 +38,7 @@ type AzurermVirtualNetworkSpec struct {
 	DnsServers         []string                    `json:"dns_servers"`
 	Subnet             []AzurermVirtualNetworkSpec `json:"subnet"`
 	Tags               map[string]string           `json:"tags"`
+	Name               string                      `json:"name"`
 }
 
 type AzurermVirtualNetworkStatus struct {
@@ -45,6 +46,7 @@ type AzurermVirtualNetworkStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermVirtualNetworkList is a list of AzurermVirtualNetworks
 type AzurermVirtualNetworkList struct {

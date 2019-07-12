@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSubnet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -20,14 +21,14 @@ type AwsSubnet struct {
 type AwsSubnetSpec struct {
 	VpcId                       string            `json:"vpc_id"`
 	CidrBlock                   string            `json:"cidr_block"`
+	Ipv6CidrBlock               string            `json:"ipv6_cidr_block"`
+	AvailabilityZone            string            `json:"availability_zone"`
 	MapPublicIpOnLaunch         bool              `json:"map_public_ip_on_launch"`
 	AssignIpv6AddressOnCreation bool              `json:"assign_ipv6_address_on_creation"`
 	Arn                         string            `json:"arn"`
-	Tags                        map[string]string `json:"tags"`
-	Ipv6CidrBlock               string            `json:"ipv6_cidr_block"`
-	AvailabilityZone            string            `json:"availability_zone"`
 	AvailabilityZoneId          string            `json:"availability_zone_id"`
 	Ipv6CidrBlockAssociationId  string            `json:"ipv6_cidr_block_association_id"`
+	Tags                        map[string]string `json:"tags"`
 	OwnerId                     string            `json:"owner_id"`
 }
 
@@ -36,6 +37,7 @@ type AwsSubnetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSubnetList is a list of AwsSubnets
 type AwsSubnetList struct {

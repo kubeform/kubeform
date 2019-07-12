@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRoute53ZoneAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -28,6 +29,7 @@ type AwsRoute53ZoneAssociationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRoute53ZoneAssociationList is a list of AwsRoute53ZoneAssociations
 type AwsRoute53ZoneAssociationList struct {

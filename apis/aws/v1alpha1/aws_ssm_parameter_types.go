@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSsmParameter struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,17 @@ type AwsSsmParameter struct {
 }
 
 type AwsSsmParameterSpec struct {
-	Description    string            `json:"description"`
-	Tier           string            `json:"tier"`
-	Value          string            `json:"value"`
 	Arn            string            `json:"arn"`
-	KeyId          string            `json:"key_id"`
-	Tags           map[string]string `json:"tags"`
-	Name           string            `json:"name"`
-	Type           string            `json:"type"`
 	Overwrite      bool              `json:"overwrite"`
 	AllowedPattern string            `json:"allowed_pattern"`
+	Name           string            `json:"name"`
+	Description    string            `json:"description"`
+	Type           string            `json:"type"`
+	Version        int               `json:"version"`
+	Tags           map[string]string `json:"tags"`
+	Tier           string            `json:"tier"`
+	Value          string            `json:"value"`
+	KeyId          string            `json:"key_id"`
 }
 
 type AwsSsmParameterStatus struct {
@@ -35,6 +37,7 @@ type AwsSsmParameterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSsmParameterList is a list of AwsSsmParameters
 type AwsSsmParameterList struct {

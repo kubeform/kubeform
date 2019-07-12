@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDxHostedPrivateVirtualInterfaceAccepter struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsDxHostedPrivateVirtualInterfaceAccepter struct {
 }
 
 type AwsDxHostedPrivateVirtualInterfaceAccepterSpec struct {
+	Tags               map[string]string `json:"tags"`
 	Arn                string            `json:"arn"`
 	VirtualInterfaceId string            `json:"virtual_interface_id"`
 	VpnGatewayId       string            `json:"vpn_gateway_id"`
 	DxGatewayId        string            `json:"dx_gateway_id"`
-	Tags               map[string]string `json:"tags"`
 }
 
 type AwsDxHostedPrivateVirtualInterfaceAccepterStatus struct {
@@ -30,6 +31,7 @@ type AwsDxHostedPrivateVirtualInterfaceAccepterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDxHostedPrivateVirtualInterfaceAccepterList is a list of AwsDxHostedPrivateVirtualInterfaceAccepters
 type AwsDxHostedPrivateVirtualInterfaceAccepterList struct {

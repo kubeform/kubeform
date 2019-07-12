@@ -9,18 +9,13 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAppServiceSlot struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              AzurermAppServiceSlotSpec   `json:"spec,omitempty"`
 	Status            AzurermAppServiceSlotStatus `json:"status,omitempty"`
-}
-
-type AzurermAppServiceSlotSpecIdentity struct {
-	PrincipalId string `json:"principal_id"`
-	TenantId    string `json:"tenant_id"`
-	Type        string `json:"type"`
 }
 
 type AzurermAppServiceSlotSpecSiteConfigCors struct {
@@ -34,30 +29,36 @@ type AzurermAppServiceSlotSpecSiteConfigIpRestriction struct {
 }
 
 type AzurermAppServiceSlotSpecSiteConfig struct {
-	DotnetFrameworkVersion string                                `json:"dotnet_framework_version"`
-	ScmType                string                                `json:"scm_type"`
-	Use32BitWorkerProcess  bool                                  `json:"use_32_bit_worker_process"`
+	Cors                   []AzurermAppServiceSlotSpecSiteConfig `json:"cors"`
+	DefaultDocuments       []string                              `json:"default_documents"`
 	WebsocketsEnabled      bool                                  `json:"websockets_enabled"`
-	VirtualNetworkName     string                                `json:"virtual_network_name"`
-	AppCommandLine         string                                `json:"app_command_line"`
-	JavaContainer          string                                `json:"java_container"`
-	ManagedPipelineMode    string                                `json:"managed_pipeline_mode"`
-	PythonVersion          string                                `json:"python_version"`
-	RemoteDebuggingVersion string                                `json:"remote_debugging_version"`
+	FtpsState              string                                `json:"ftps_state"`
 	LinuxFxVersion         string                                `json:"linux_fx_version"`
 	WindowsFxVersion       string                                `json:"windows_fx_version"`
-	AlwaysOn               bool                                  `json:"always_on"`
-	DefaultDocuments       []string                              `json:"default_documents"`
-	JavaContainerVersion   string                                `json:"java_container_version"`
-	LocalMysqlEnabled      bool                                  `json:"local_mysql_enabled"`
 	PhpVersion             string                                `json:"php_version"`
-	MinTlsVersion          string                                `json:"min_tls_version"`
-	Cors                   []AzurermAppServiceSlotSpecSiteConfig `json:"cors"`
+	ScmType                string                                `json:"scm_type"`
+	VirtualNetworkName     string                                `json:"virtual_network_name"`
+	AlwaysOn               bool                                  `json:"always_on"`
 	Http2Enabled           bool                                  `json:"http2_enabled"`
 	IpRestriction          []AzurermAppServiceSlotSpecSiteConfig `json:"ip_restriction"`
+	JavaContainer          string                                `json:"java_container"`
+	JavaContainerVersion   string                                `json:"java_container_version"`
+	RemoteDebuggingVersion string                                `json:"remote_debugging_version"`
+	AppCommandLine         string                                `json:"app_command_line"`
+	DotnetFrameworkVersion string                                `json:"dotnet_framework_version"`
 	JavaVersion            string                                `json:"java_version"`
+	LocalMysqlEnabled      bool                                  `json:"local_mysql_enabled"`
+	PythonVersion          string                                `json:"python_version"`
+	ManagedPipelineMode    string                                `json:"managed_pipeline_mode"`
 	RemoteDebuggingEnabled bool                                  `json:"remote_debugging_enabled"`
-	FtpsState              string                                `json:"ftps_state"`
+	Use32BitWorkerProcess  bool                                  `json:"use_32_bit_worker_process"`
+	MinTlsVersion          string                                `json:"min_tls_version"`
+}
+
+type AzurermAppServiceSlotSpecIdentity struct {
+	Type        string `json:"type"`
+	PrincipalId string `json:"principal_id"`
+	TenantId    string `json:"tenant_id"`
 }
 
 type AzurermAppServiceSlotSpecConnectionString struct {
@@ -72,21 +73,21 @@ type AzurermAppServiceSlotSpecSiteCredential struct {
 }
 
 type AzurermAppServiceSlotSpec struct {
+	Name                  string                      `json:"name"`
+	SiteConfig            []AzurermAppServiceSlotSpec `json:"site_config"`
+	AppServicePlanId      string                      `json:"app_service_plan_id"`
+	AppSettings           map[string]string           `json:"app_settings"`
+	ResourceGroupName     string                      `json:"resource_group_name"`
+	Identity              []AzurermAppServiceSlotSpec `json:"identity"`
+	ClientAffinityEnabled bool                        `json:"client_affinity_enabled"`
+	HttpsOnly             bool                        `json:"https_only"`
+	Tags                  map[string]string           `json:"tags"`
 	Location              string                      `json:"location"`
 	AppServiceName        string                      `json:"app_service_name"`
-	AppSettings           map[string]string           `json:"app_settings"`
-	DefaultSiteHostname   string                      `json:"default_site_hostname"`
-	ResourceGroupName     string                      `json:"resource_group_name"`
-	AppServicePlanId      string                      `json:"app_service_plan_id"`
-	HttpsOnly             bool                        `json:"https_only"`
-	Name                  string                      `json:"name"`
-	Identity              []AzurermAppServiceSlotSpec `json:"identity"`
 	Enabled               bool                        `json:"enabled"`
-	SiteConfig            []AzurermAppServiceSlotSpec `json:"site_config"`
-	ClientAffinityEnabled bool                        `json:"client_affinity_enabled"`
 	ConnectionString      []AzurermAppServiceSlotSpec `json:"connection_string"`
-	Tags                  map[string]string           `json:"tags"`
 	SiteCredential        []AzurermAppServiceSlotSpec `json:"site_credential"`
+	DefaultSiteHostname   string                      `json:"default_site_hostname"`
 }
 
 type AzurermAppServiceSlotStatus struct {
@@ -94,6 +95,7 @@ type AzurermAppServiceSlotStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAppServiceSlotList is a list of AzurermAppServiceSlots
 type AzurermAppServiceSlotList struct {

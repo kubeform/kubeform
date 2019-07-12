@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDataLakeStoreFile struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -28,6 +29,7 @@ type AzurermDataLakeStoreFileStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDataLakeStoreFileList is a list of AzurermDataLakeStoreFiles
 type AzurermDataLakeStoreFileList struct {

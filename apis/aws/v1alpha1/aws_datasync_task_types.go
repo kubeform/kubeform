@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDatasyncTask struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,25 +19,25 @@ type AwsDatasyncTask struct {
 }
 
 type AwsDatasyncTaskSpecOptions struct {
-	PosixPermissions     string `json:"posix_permissions"`
-	PreserveDeletedFiles string `json:"preserve_deleted_files"`
-	PreserveDevices      string `json:"preserve_devices"`
-	Uid                  string `json:"uid"`
-	BytesPerSecond       int    `json:"bytes_per_second"`
+	Atime                string `json:"atime"`
 	Gid                  string `json:"gid"`
 	Mtime                string `json:"mtime"`
-	Atime                string `json:"atime"`
+	PreserveDevices      string `json:"preserve_devices"`
 	VerifyMode           string `json:"verify_mode"`
+	BytesPerSecond       int    `json:"bytes_per_second"`
+	PosixPermissions     string `json:"posix_permissions"`
+	PreserveDeletedFiles string `json:"preserve_deleted_files"`
+	Uid                  string `json:"uid"`
 }
 
 type AwsDatasyncTaskSpec struct {
+	Options                []AwsDatasyncTaskSpec `json:"options"`
+	SourceLocationArn      string                `json:"source_location_arn"`
+	Tags                   map[string]string     `json:"tags"`
 	Arn                    string                `json:"arn"`
 	CloudwatchLogGroupArn  string                `json:"cloudwatch_log_group_arn"`
 	DestinationLocationArn string                `json:"destination_location_arn"`
 	Name                   string                `json:"name"`
-	Options                []AwsDatasyncTaskSpec `json:"options"`
-	SourceLocationArn      string                `json:"source_location_arn"`
-	Tags                   map[string]string     `json:"tags"`
 }
 
 type AwsDatasyncTaskStatus struct {
@@ -44,6 +45,7 @@ type AwsDatasyncTaskStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDatasyncTaskList is a list of AwsDatasyncTasks
 type AwsDatasyncTaskList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIamUserLoginProfile struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsIamUserLoginProfile struct {
 }
 
 type AwsIamUserLoginProfileSpec struct {
+	PasswordLength        int    `json:"password_length"`
 	KeyFingerprint        string `json:"key_fingerprint"`
 	EncryptedPassword     string `json:"encrypted_password"`
 	User                  string `json:"user"`
 	PgpKey                string `json:"pgp_key"`
 	PasswordResetRequired bool   `json:"password_reset_required"`
-	PasswordLength        int    `json:"password_length"`
 }
 
 type AwsIamUserLoginProfileStatus struct {
@@ -31,6 +32,7 @@ type AwsIamUserLoginProfileStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIamUserLoginProfileList is a list of AwsIamUserLoginProfiles
 type AwsIamUserLoginProfileList struct {

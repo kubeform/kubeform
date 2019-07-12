@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRoute53QueryLog struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsRoute53QueryLog struct {
 }
 
 type AwsRoute53QueryLogSpec struct {
-	CloudwatchLogGroupArn string `json:"cloudwatch_log_group_arn"`
 	ZoneId                string `json:"zone_id"`
+	CloudwatchLogGroupArn string `json:"cloudwatch_log_group_arn"`
 }
 
 type AwsRoute53QueryLogStatus struct {
@@ -27,6 +28,7 @@ type AwsRoute53QueryLogStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRoute53QueryLogList is a list of AwsRoute53QueryLogs
 type AwsRoute53QueryLogList struct {

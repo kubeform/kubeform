@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeRegionAutoscaler struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -32,12 +33,12 @@ type GoogleComputeRegionAutoscalerSpecAutoscalingPolicyMetric struct {
 }
 
 type GoogleComputeRegionAutoscalerSpecAutoscalingPolicy struct {
-	MaxReplicas              int                                                  `json:"max_replicas"`
-	MinReplicas              int                                                  `json:"min_replicas"`
-	CooldownPeriod           int                                                  `json:"cooldown_period"`
 	CpuUtilization           []GoogleComputeRegionAutoscalerSpecAutoscalingPolicy `json:"cpu_utilization"`
 	LoadBalancingUtilization []GoogleComputeRegionAutoscalerSpecAutoscalingPolicy `json:"load_balancing_utilization"`
 	Metric                   []GoogleComputeRegionAutoscalerSpecAutoscalingPolicy `json:"metric"`
+	MaxReplicas              int                                                  `json:"max_replicas"`
+	MinReplicas              int                                                  `json:"min_replicas"`
+	CooldownPeriod           int                                                  `json:"cooldown_period"`
 }
 
 type GoogleComputeRegionAutoscalerSpec struct {
@@ -56,6 +57,7 @@ type GoogleComputeRegionAutoscalerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeRegionAutoscalerList is a list of GoogleComputeRegionAutoscalers
 type GoogleComputeRegionAutoscalerList struct {

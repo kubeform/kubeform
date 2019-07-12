@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermPublicIp struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,20 +20,20 @@ type AzurermPublicIp struct {
 
 type AzurermPublicIpSpec struct {
 	IdleTimeoutInMinutes      int               `json:"idle_timeout_in_minutes"`
-	PublicIpAddressAllocation string            `json:"public_ip_address_allocation"`
-	Sku                       string            `json:"sku"`
-	DomainNameLabel           string            `json:"domain_name_label"`
+	ReverseFqdn               string            `json:"reverse_fqdn"`
 	Name                      string            `json:"name"`
-	ResourceGroupName         string            `json:"resource_group_name"`
-	AllocationMethod          string            `json:"allocation_method"`
-	Tags                      map[string]string `json:"tags"`
+	Sku                       string            `json:"sku"`
 	Location                  string            `json:"location"`
+	Fqdn                      string            `json:"fqdn"`
+	PublicIpAddressAllocation string            `json:"public_ip_address_allocation"`
+	IpVersion                 string            `json:"ip_version"`
+	DomainNameLabel           string            `json:"domain_name_label"`
 	IpAddress                 string            `json:"ip_address"`
 	PublicIpPrefixId          string            `json:"public_ip_prefix_id"`
 	Zones                     []string          `json:"zones"`
-	IpVersion                 string            `json:"ip_version"`
-	Fqdn                      string            `json:"fqdn"`
-	ReverseFqdn               string            `json:"reverse_fqdn"`
+	Tags                      map[string]string `json:"tags"`
+	ResourceGroupName         string            `json:"resource_group_name"`
+	AllocationMethod          string            `json:"allocation_method"`
 }
 
 type AzurermPublicIpStatus struct {
@@ -40,6 +41,7 @@ type AzurermPublicIpStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermPublicIpList is a list of AzurermPublicIps
 type AzurermPublicIpList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAutomationVariableInt struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AzurermAutomationVariableInt struct {
 }
 
 type AzurermAutomationVariableIntSpec struct {
+	Value                 int    `json:"value"`
 	ResourceGroupName     string `json:"resource_group_name"`
 	Name                  string `json:"name"`
 	AutomationAccountName string `json:"automation_account_name"`
 	Description           string `json:"description"`
 	Encrypted             bool   `json:"encrypted"`
-	Value                 int    `json:"value"`
 }
 
 type AzurermAutomationVariableIntStatus struct {
@@ -31,6 +32,7 @@ type AzurermAutomationVariableIntStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAutomationVariableIntList is a list of AzurermAutomationVariableInts
 type AzurermAutomationVariableIntList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type LinodeNodebalancerConfig struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,24 +24,24 @@ type LinodeNodebalancerConfigSpecNodeStatus struct {
 }
 
 type LinodeNodebalancerConfigSpec struct {
-	Algorithm      string            `json:"algorithm"`
+	CheckPath      string            `json:"check_path"`
+	SslFingerprint string            `json:"ssl_fingerprint"`
+	NodebalancerId int               `json:"nodebalancer_id"`
 	Check          string            `json:"check"`
 	CheckBody      string            `json:"check_body"`
-	CipherSuite    string            `json:"cipher_suite"`
-	SslFingerprint string            `json:"ssl_fingerprint"`
-	SslCert        string            `json:"ssl_cert"`
+	SslCommonname  string            `json:"ssl_commonname"`
 	SslKey         string            `json:"ssl_key"`
-	Port           int               `json:"port"`
+	Protocol       string            `json:"protocol"`
 	CheckInterval  int               `json:"check_interval"`
 	CheckTimeout   int               `json:"check_timeout"`
-	Stickiness     string            `json:"stickiness"`
-	CheckPath      string            `json:"check_path"`
-	Protocol       string            `json:"protocol"`
 	CheckAttempts  int               `json:"check_attempts"`
+	Algorithm      string            `json:"algorithm"`
 	CheckPassive   bool              `json:"check_passive"`
-	SslCommonname  string            `json:"ssl_commonname"`
+	Port           int               `json:"port"`
+	Stickiness     string            `json:"stickiness"`
+	CipherSuite    string            `json:"cipher_suite"`
+	SslCert        string            `json:"ssl_cert"`
 	NodeStatus     map[string]string `json:"node_status"`
-	NodebalancerId int               `json:"nodebalancer_id"`
 }
 
 type LinodeNodebalancerConfigStatus struct {
@@ -48,6 +49,7 @@ type LinodeNodebalancerConfigStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // LinodeNodebalancerConfigList is a list of LinodeNodebalancerConfigs
 type LinodeNodebalancerConfigList struct {

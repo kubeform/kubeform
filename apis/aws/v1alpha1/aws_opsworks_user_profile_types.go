@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsOpsworksUserProfile struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsOpsworksUserProfile struct {
 }
 
 type AwsOpsworksUserProfileSpec struct {
-	UserArn             string `json:"user_arn"`
 	AllowSelfManagement bool   `json:"allow_self_management"`
 	SshUsername         string `json:"ssh_username"`
 	SshPublicKey        string `json:"ssh_public_key"`
+	UserArn             string `json:"user_arn"`
 }
 
 type AwsOpsworksUserProfileStatus struct {
@@ -29,6 +30,7 @@ type AwsOpsworksUserProfileStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsOpsworksUserProfileList is a list of AwsOpsworksUserProfiles
 type AwsOpsworksUserProfileList struct {

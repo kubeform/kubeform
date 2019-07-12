@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCodebuildWebhook struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,12 +18,23 @@ type AwsCodebuildWebhook struct {
 	Status            AwsCodebuildWebhookStatus `json:"status,omitempty"`
 }
 
+type AwsCodebuildWebhookSpecFilterGroupFilter struct {
+	Type                  string `json:"type"`
+	ExcludeMatchedPattern bool   `json:"exclude_matched_pattern"`
+	Pattern               string `json:"pattern"`
+}
+
+type AwsCodebuildWebhookSpecFilterGroup struct {
+	Filter []AwsCodebuildWebhookSpecFilterGroup `json:"filter"`
+}
+
 type AwsCodebuildWebhookSpec struct {
-	ProjectName  string `json:"project_name"`
-	BranchFilter string `json:"branch_filter"`
-	PayloadUrl   string `json:"payload_url"`
-	Secret       string `json:"secret"`
-	Url          string `json:"url"`
+	ProjectName  string                    `json:"project_name"`
+	BranchFilter string                    `json:"branch_filter"`
+	FilterGroup  []AwsCodebuildWebhookSpec `json:"filter_group"`
+	PayloadUrl   string                    `json:"payload_url"`
+	Secret       string                    `json:"secret"`
+	Url          string                    `json:"url"`
 }
 
 type AwsCodebuildWebhookStatus struct {
@@ -30,6 +42,7 @@ type AwsCodebuildWebhookStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCodebuildWebhookList is a list of AwsCodebuildWebhooks
 type AwsCodebuildWebhookList struct {

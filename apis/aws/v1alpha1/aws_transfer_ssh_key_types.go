@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsTransferSshKey struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -28,6 +29,7 @@ type AwsTransferSshKeyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsTransferSshKeyList is a list of AwsTransferSshKeys
 type AwsTransferSshKeyList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSsmDocument struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -30,24 +31,24 @@ type AwsSsmDocumentSpecPermissions struct {
 }
 
 type AwsSsmDocumentSpec struct {
-	SchemaVersion  string               `json:"schema_version"`
-	Hash           string               `json:"hash"`
-	LatestVersion  string               `json:"latest_version"`
-	Parameter      []AwsSsmDocumentSpec `json:"parameter"`
-	Permissions    map[string]string    `json:"permissions"`
-	Arn            string               `json:"arn"`
-	DefaultVersion string               `json:"default_version"`
-	HashType       string               `json:"hash_type"`
-	Tags           map[string]string    `json:"tags"`
-	Name           string               `json:"name"`
 	Content        string               `json:"content"`
-	PlatformTypes  []string             `json:"platform_types"`
-	DocumentFormat string               `json:"document_format"`
-	DocumentType   string               `json:"document_type"`
-	CreatedDate    string               `json:"created_date"`
-	Description    string               `json:"description"`
-	Owner          string               `json:"owner"`
 	Status         string               `json:"status"`
+	Tags           map[string]string    `json:"tags"`
+	Parameter      []AwsSsmDocumentSpec `json:"parameter"`
+	Arn            string               `json:"arn"`
+	Name           string               `json:"name"`
+	Description    string               `json:"description"`
+	Hash           string               `json:"hash"`
+	HashType       string               `json:"hash_type"`
+	LatestVersion  string               `json:"latest_version"`
+	Owner          string               `json:"owner"`
+	DocumentType   string               `json:"document_type"`
+	SchemaVersion  string               `json:"schema_version"`
+	DefaultVersion string               `json:"default_version"`
+	PlatformTypes  []string             `json:"platform_types"`
+	Permissions    map[string]string    `json:"permissions"`
+	DocumentFormat string               `json:"document_format"`
+	CreatedDate    string               `json:"created_date"`
 }
 
 type AwsSsmDocumentStatus struct {
@@ -55,6 +56,7 @@ type AwsSsmDocumentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSsmDocumentList is a list of AwsSsmDocuments
 type AwsSsmDocumentList struct {

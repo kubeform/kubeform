@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleOrganizationIamMember struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type GoogleOrganizationIamMember struct {
 }
 
 type GoogleOrganizationIamMemberSpec struct {
-	Role   string `json:"role"`
-	Member string `json:"member"`
 	Etag   string `json:"etag"`
 	OrgId  string `json:"org_id"`
+	Role   string `json:"role"`
+	Member string `json:"member"`
 }
 
 type GoogleOrganizationIamMemberStatus struct {
@@ -29,6 +30,7 @@ type GoogleOrganizationIamMemberStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleOrganizationIamMemberList is a list of GoogleOrganizationIamMembers
 type GoogleOrganizationIamMemberList struct {

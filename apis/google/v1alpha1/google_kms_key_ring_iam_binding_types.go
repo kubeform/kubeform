@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleKmsKeyRingIamBinding struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type GoogleKmsKeyRingIamBinding struct {
 }
 
 type GoogleKmsKeyRingIamBindingSpec struct {
-	Role      string   `json:"role"`
-	Members   []string `json:"members"`
 	Etag      string   `json:"etag"`
 	KeyRingId string   `json:"key_ring_id"`
+	Role      string   `json:"role"`
+	Members   []string `json:"members"`
 }
 
 type GoogleKmsKeyRingIamBindingStatus struct {
@@ -29,6 +30,7 @@ type GoogleKmsKeyRingIamBindingStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleKmsKeyRingIamBindingList is a list of GoogleKmsKeyRingIamBindings
 type GoogleKmsKeyRingIamBindingList struct {

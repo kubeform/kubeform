@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLbCookieStickinessPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsLbCookieStickinessPolicy struct {
 }
 
 type AwsLbCookieStickinessPolicySpec struct {
-	Name                   string `json:"name"`
-	LoadBalancer           string `json:"load_balancer"`
 	LbPort                 int    `json:"lb_port"`
 	CookieExpirationPeriod int    `json:"cookie_expiration_period"`
+	Name                   string `json:"name"`
+	LoadBalancer           string `json:"load_balancer"`
 }
 
 type AwsLbCookieStickinessPolicyStatus struct {
@@ -29,6 +30,7 @@ type AwsLbCookieStickinessPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLbCookieStickinessPolicyList is a list of AwsLbCookieStickinessPolicys
 type AwsLbCookieStickinessPolicyList struct {

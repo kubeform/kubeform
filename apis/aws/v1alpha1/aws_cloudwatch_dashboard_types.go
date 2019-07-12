@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCloudwatchDashboard struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsCloudwatchDashboard struct {
 }
 
 type AwsCloudwatchDashboardSpec struct {
-	DashboardName string `json:"dashboard_name"`
 	DashboardArn  string `json:"dashboard_arn"`
 	DashboardBody string `json:"dashboard_body"`
+	DashboardName string `json:"dashboard_name"`
 }
 
 type AwsCloudwatchDashboardStatus struct {
@@ -28,6 +29,7 @@ type AwsCloudwatchDashboardStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCloudwatchDashboardList is a list of AwsCloudwatchDashboards
 type AwsCloudwatchDashboardList struct {

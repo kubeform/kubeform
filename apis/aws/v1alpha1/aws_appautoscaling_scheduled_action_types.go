@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAppautoscalingScheduledAction struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,15 +24,15 @@ type AwsAppautoscalingScheduledActionSpecScalableTargetAction struct {
 }
 
 type AwsAppautoscalingScheduledActionSpec struct {
-	EndTime              string                                 `json:"end_time"`
+	StartTime            string                                 `json:"start_time"`
+	Name                 string                                 `json:"name"`
 	ServiceNamespace     string                                 `json:"service_namespace"`
 	ResourceId           string                                 `json:"resource_id"`
-	ScalableTargetAction []AwsAppautoscalingScheduledActionSpec `json:"scalable_target_action"`
-	StartTime            string                                 `json:"start_time"`
-	Arn                  string                                 `json:"arn"`
-	Name                 string                                 `json:"name"`
 	ScalableDimension    string                                 `json:"scalable_dimension"`
+	ScalableTargetAction []AwsAppautoscalingScheduledActionSpec `json:"scalable_target_action"`
 	Schedule             string                                 `json:"schedule"`
+	EndTime              string                                 `json:"end_time"`
+	Arn                  string                                 `json:"arn"`
 }
 
 type AwsAppautoscalingScheduledActionStatus struct {
@@ -39,6 +40,7 @@ type AwsAppautoscalingScheduledActionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAppautoscalingScheduledActionList is a list of AwsAppautoscalingScheduledActions
 type AwsAppautoscalingScheduledActionList struct {

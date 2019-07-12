@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermTrafficManagerProfile struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,25 +19,25 @@ type AzurermTrafficManagerProfile struct {
 }
 
 type AzurermTrafficManagerProfileSpecDnsConfig struct {
-	Ttl          int    `json:"ttl"`
 	RelativeName string `json:"relative_name"`
+	Ttl          int    `json:"ttl"`
 }
 
 type AzurermTrafficManagerProfileSpecMonitorConfig struct {
+	Protocol string `json:"protocol"`
 	Port     int    `json:"port"`
 	Path     string `json:"path"`
-	Protocol string `json:"protocol"`
 }
 
 type AzurermTrafficManagerProfileSpec struct {
-	Tags                 map[string]string                  `json:"tags"`
-	Name                 string                             `json:"name"`
 	ResourceGroupName    string                             `json:"resource_group_name"`
 	ProfileStatus        string                             `json:"profile_status"`
 	TrafficRoutingMethod string                             `json:"traffic_routing_method"`
 	DnsConfig            []AzurermTrafficManagerProfileSpec `json:"dns_config"`
 	Fqdn                 string                             `json:"fqdn"`
 	MonitorConfig        []AzurermTrafficManagerProfileSpec `json:"monitor_config"`
+	Tags                 map[string]string                  `json:"tags"`
+	Name                 string                             `json:"name"`
 }
 
 type AzurermTrafficManagerProfileStatus struct {
@@ -44,6 +45,7 @@ type AzurermTrafficManagerProfileStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermTrafficManagerProfileList is a list of AzurermTrafficManagerProfiles
 type AzurermTrafficManagerProfileList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayMethod struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AwsApiGatewayMethod struct {
 }
 
 type AwsApiGatewayMethodSpec struct {
-	Authorization           string            `json:"authorization"`
-	AuthorizerId            string            `json:"authorizer_id"`
-	AuthorizationScopes     []string          `json:"authorization_scopes"`
-	ApiKeyRequired          bool              `json:"api_key_required"`
-	RequestModels           map[string]string `json:"request_models"`
-	ResourceId              string            `json:"resource_id"`
-	HttpMethod              string            `json:"http_method"`
-	RequestParametersInJson string            `json:"request_parameters_in_json"`
 	RequestValidatorId      string            `json:"request_validator_id"`
 	RestApiId               string            `json:"rest_api_id"`
+	ApiKeyRequired          bool              `json:"api_key_required"`
+	RequestModels           map[string]string `json:"request_models"`
+	RequestParametersInJson string            `json:"request_parameters_in_json"`
+	AuthorizationScopes     []string          `json:"authorization_scopes"`
 	RequestParameters       map[string]bool   `json:"request_parameters"`
+	ResourceId              string            `json:"resource_id"`
+	HttpMethod              string            `json:"http_method"`
+	Authorization           string            `json:"authorization"`
+	AuthorizerId            string            `json:"authorizer_id"`
 }
 
 type AwsApiGatewayMethodStatus struct {
@@ -36,6 +37,7 @@ type AwsApiGatewayMethodStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayMethodList is a list of AwsApiGatewayMethods
 type AwsApiGatewayMethodList struct {

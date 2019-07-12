@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsPinpointBaiduChannel struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -29,6 +30,7 @@ type AwsPinpointBaiduChannelStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsPinpointBaiduChannelList is a list of AwsPinpointBaiduChannels
 type AwsPinpointBaiduChannelList struct {

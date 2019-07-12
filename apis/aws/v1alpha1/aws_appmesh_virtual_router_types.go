@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAppmeshVirtualRouter struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -32,12 +33,13 @@ type AwsAppmeshVirtualRouterSpecSpec struct {
 }
 
 type AwsAppmeshVirtualRouterSpec struct {
-	LastUpdatedDate string                        `json:"last_updated_date"`
 	Name            string                        `json:"name"`
 	MeshName        string                        `json:"mesh_name"`
 	Spec            []AwsAppmeshVirtualRouterSpec `json:"spec"`
 	Arn             string                        `json:"arn"`
 	CreatedDate     string                        `json:"created_date"`
+	LastUpdatedDate string                        `json:"last_updated_date"`
+	Tags            map[string]string             `json:"tags"`
 }
 
 type AwsAppmeshVirtualRouterStatus struct {
@@ -45,6 +47,7 @@ type AwsAppmeshVirtualRouterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAppmeshVirtualRouterList is a list of AwsAppmeshVirtualRouters
 type AwsAppmeshVirtualRouterList struct {

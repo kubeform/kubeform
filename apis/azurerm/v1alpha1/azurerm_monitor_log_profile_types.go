@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermMonitorLogProfile struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,12 +24,12 @@ type AzurermMonitorLogProfileSpecRetentionPolicy struct {
 }
 
 type AzurermMonitorLogProfileSpec struct {
-	Name             string                         `json:"name"`
-	StorageAccountId string                         `json:"storage_account_id"`
-	ServicebusRuleId string                         `json:"servicebus_rule_id"`
 	Locations        []string                       `json:"locations"`
 	Categories       []string                       `json:"categories"`
 	RetentionPolicy  []AzurermMonitorLogProfileSpec `json:"retention_policy"`
+	Name             string                         `json:"name"`
+	StorageAccountId string                         `json:"storage_account_id"`
+	ServicebusRuleId string                         `json:"servicebus_rule_id"`
 }
 
 type AzurermMonitorLogProfileStatus struct {
@@ -36,6 +37,7 @@ type AzurermMonitorLogProfileStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermMonitorLogProfileList is a list of AzurermMonitorLogProfiles
 type AzurermMonitorLogProfileList struct {

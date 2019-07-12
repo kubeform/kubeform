@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermNetworkProfile struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -28,12 +29,12 @@ type AzurermNetworkProfileSpecContainerNetworkInterface struct {
 }
 
 type AzurermNetworkProfileSpec struct {
-	ContainerNetworkInterface    []AzurermNetworkProfileSpec `json:"container_network_interface"`
-	ContainerNetworkInterfaceIds []string                    `json:"container_network_interface_ids"`
 	Tags                         map[string]string           `json:"tags"`
 	Name                         string                      `json:"name"`
 	Location                     string                      `json:"location"`
 	ResourceGroupName            string                      `json:"resource_group_name"`
+	ContainerNetworkInterface    []AzurermNetworkProfileSpec `json:"container_network_interface"`
+	ContainerNetworkInterfaceIds []string                    `json:"container_network_interface_ids"`
 }
 
 type AzurermNetworkProfileStatus struct {
@@ -41,6 +42,7 @@ type AzurermNetworkProfileStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermNetworkProfileList is a list of AzurermNetworkProfiles
 type AzurermNetworkProfileList struct {

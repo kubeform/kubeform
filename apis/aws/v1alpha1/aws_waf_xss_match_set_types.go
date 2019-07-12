@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafXssMatchSet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -37,6 +38,7 @@ type AwsWafXssMatchSetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafXssMatchSetList is a list of AwsWafXssMatchSets
 type AwsWafXssMatchSetList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDevTestPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AzurermDevTestPolicy struct {
 }
 
 type AzurermDevTestPolicySpec struct {
+	Description       string            `json:"description"`
 	FactData          string            `json:"fact_data"`
+	PolicySetName     string            `json:"policy_set_name"`
 	LabName           string            `json:"lab_name"`
 	ResourceGroupName string            `json:"resource_group_name"`
-	Threshold         string            `json:"threshold"`
 	EvaluatorType     string            `json:"evaluator_type"`
-	Description       string            `json:"description"`
 	Name              string            `json:"name"`
-	PolicySetName     string            `json:"policy_set_name"`
+	Threshold         string            `json:"threshold"`
 	Tags              map[string]string `json:"tags"`
 }
 
@@ -34,6 +35,7 @@ type AzurermDevTestPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDevTestPolicyList is a list of AzurermDevTestPolicys
 type AzurermDevTestPolicyList struct {

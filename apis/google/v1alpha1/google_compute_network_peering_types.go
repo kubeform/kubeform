@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeNetworkPeering struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleComputeNetworkPeering struct {
 }
 
 type GoogleComputeNetworkPeeringSpec struct {
-	Network          string `json:"network"`
-	PeerNetwork      string `json:"peer_network"`
 	AutoCreateRoutes bool   `json:"auto_create_routes"`
 	State            string `json:"state"`
 	StateDetails     string `json:"state_details"`
 	Name             string `json:"name"`
+	Network          string `json:"network"`
+	PeerNetwork      string `json:"peer_network"`
 }
 
 type GoogleComputeNetworkPeeringStatus struct {
@@ -31,6 +32,7 @@ type GoogleComputeNetworkPeeringStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeNetworkPeeringList is a list of GoogleComputeNetworkPeerings
 type GoogleComputeNetworkPeeringList struct {

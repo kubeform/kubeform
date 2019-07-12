@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEfsFileSystem struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsEfsFileSystem struct {
 }
 
 type AwsEfsFileSystemSpec struct {
-	CreationToken                string            `json:"creation_token"`
-	ReferenceName                string            `json:"reference_name"`
-	DnsName                      string            `json:"dns_name"`
+	Arn                          string            `json:"arn"`
+	Encrypted                    bool              `json:"encrypted"`
 	ProvisionedThroughputInMibps float64           `json:"provisioned_throughput_in_mibps"`
 	ThroughputMode               string            `json:"throughput_mode"`
-	Arn                          string            `json:"arn"`
+	CreationToken                string            `json:"creation_token"`
+	ReferenceName                string            `json:"reference_name"`
 	PerformanceMode              string            `json:"performance_mode"`
-	Encrypted                    bool              `json:"encrypted"`
 	KmsKeyId                     string            `json:"kms_key_id"`
+	DnsName                      string            `json:"dns_name"`
 	Tags                         map[string]string `json:"tags"`
 }
 
@@ -35,6 +36,7 @@ type AwsEfsFileSystemStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEfsFileSystemList is a list of AwsEfsFileSystems
 type AwsEfsFileSystemList struct {

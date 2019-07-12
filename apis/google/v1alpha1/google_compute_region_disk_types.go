@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeRegionDisk struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -28,24 +29,24 @@ type GoogleComputeRegionDiskSpecSourceSnapshotEncryptionKey struct {
 }
 
 type GoogleComputeRegionDiskSpec struct {
-	DiskEncryptionKey           []GoogleComputeRegionDiskSpec `json:"disk_encryption_key"`
-	Size                        int                           `json:"size"`
-	Snapshot                    string                        `json:"snapshot"`
-	LabelFingerprint            string                        `json:"label_fingerprint"`
+	Type                        string                        `json:"type"`
+	LastDetachTimestamp         string                        `json:"last_detach_timestamp"`
 	Users                       []string                      `json:"users"`
-	Description                 string                        `json:"description"`
+	DiskEncryptionKey           []GoogleComputeRegionDiskSpec `json:"disk_encryption_key"`
 	Labels                      map[string]string             `json:"labels"`
+	LabelFingerprint            string                        `json:"label_fingerprint"`
+	ReplicaZones                []string                      `json:"replica_zones"`
+	Description                 string                        `json:"description"`
+	Region                      string                        `json:"region"`
+	Snapshot                    string                        `json:"snapshot"`
 	SourceSnapshotEncryptionKey []GoogleComputeRegionDiskSpec `json:"source_snapshot_encryption_key"`
 	CreationTimestamp           string                        `json:"creation_timestamp"`
 	LastAttachTimestamp         string                        `json:"last_attach_timestamp"`
-	Type                        string                        `json:"type"`
-	Project                     string                        `json:"project"`
-	SelfLink                    string                        `json:"self_link"`
-	Name                        string                        `json:"name"`
-	ReplicaZones                []string                      `json:"replica_zones"`
-	Region                      string                        `json:"region"`
-	LastDetachTimestamp         string                        `json:"last_detach_timestamp"`
 	SourceSnapshotId            string                        `json:"source_snapshot_id"`
+	Name                        string                        `json:"name"`
+	SelfLink                    string                        `json:"self_link"`
+	Project                     string                        `json:"project"`
+	Size                        int                           `json:"size"`
 }
 
 type GoogleComputeRegionDiskStatus struct {
@@ -53,6 +54,7 @@ type GoogleComputeRegionDiskStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeRegionDiskList is a list of GoogleComputeRegionDisks
 type GoogleComputeRegionDiskList struct {

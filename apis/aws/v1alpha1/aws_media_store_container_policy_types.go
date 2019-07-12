@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsMediaStoreContainerPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsMediaStoreContainerPolicy struct {
 }
 
 type AwsMediaStoreContainerPolicySpec struct {
-	ContainerName string `json:"container_name"`
 	Policy        string `json:"policy"`
+	ContainerName string `json:"container_name"`
 }
 
 type AwsMediaStoreContainerPolicyStatus struct {
@@ -27,6 +28,7 @@ type AwsMediaStoreContainerPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsMediaStoreContainerPolicyList is a list of AwsMediaStoreContainerPolicys
 type AwsMediaStoreContainerPolicyList struct {

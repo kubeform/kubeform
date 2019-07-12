@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafSizeConstraintSet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsWafSizeConstraintSet struct {
 }
 
 type AwsWafSizeConstraintSetSpecSizeConstraintsFieldToMatch struct {
-	Data string `json:"data"`
 	Type string `json:"type"`
+	Data string `json:"data"`
 }
 
 type AwsWafSizeConstraintSetSpecSizeConstraints struct {
@@ -39,6 +40,7 @@ type AwsWafSizeConstraintSetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafSizeConstraintSetList is a list of AwsWafSizeConstraintSets
 type AwsWafSizeConstraintSetList struct {

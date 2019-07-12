@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermPostgresqlServer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,31 +18,31 @@ type AzurermPostgresqlServer struct {
 	Status            AzurermPostgresqlServerStatus `json:"status,omitempty"`
 }
 
-type AzurermPostgresqlServerSpecSku struct {
-	Name     string `json:"name"`
-	Capacity int    `json:"capacity"`
-	Tier     string `json:"tier"`
-	Family   string `json:"family"`
-}
-
 type AzurermPostgresqlServerSpecStorageProfile struct {
 	StorageMb           int    `json:"storage_mb"`
 	BackupRetentionDays int    `json:"backup_retention_days"`
 	GeoRedundantBackup  string `json:"geo_redundant_backup"`
 }
 
+type AzurermPostgresqlServerSpecSku struct {
+	Tier     string `json:"tier"`
+	Family   string `json:"family"`
+	Name     string `json:"name"`
+	Capacity int    `json:"capacity"`
+}
+
 type AzurermPostgresqlServerSpec struct {
-	Sku                        []AzurermPostgresqlServerSpec `json:"sku"`
-	AdministratorLoginPassword string                        `json:"administrator_login_password"`
-	Fqdn                       string                        `json:"fqdn"`
+	ResourceGroupName          string                        `json:"resource_group_name"`
+	AdministratorLogin         string                        `json:"administrator_login"`
+	StorageProfile             []AzurermPostgresqlServerSpec `json:"storage_profile"`
 	Tags                       map[string]string             `json:"tags"`
 	Name                       string                        `json:"name"`
 	Location                   string                        `json:"location"`
-	ResourceGroupName          string                        `json:"resource_group_name"`
-	AdministratorLogin         string                        `json:"administrator_login"`
 	Version                    string                        `json:"version"`
-	StorageProfile             []AzurermPostgresqlServerSpec `json:"storage_profile"`
 	SslEnforcement             string                        `json:"ssl_enforcement"`
+	Fqdn                       string                        `json:"fqdn"`
+	Sku                        []AzurermPostgresqlServerSpec `json:"sku"`
+	AdministratorLoginPassword string                        `json:"administrator_login_password"`
 }
 
 type AzurermPostgresqlServerStatus struct {
@@ -49,6 +50,7 @@ type AzurermPostgresqlServerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermPostgresqlServerList is a list of AzurermPostgresqlServers
 type AzurermPostgresqlServerList struct {

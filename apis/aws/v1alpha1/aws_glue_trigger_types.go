@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGlueTrigger struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsGlueTrigger struct {
 }
 
 type AwsGlueTriggerSpecActions struct {
-	Timeout   int               `json:"timeout"`
 	Arguments map[string]string `json:"arguments"`
 	JobName   string            `json:"job_name"`
+	Timeout   int               `json:"timeout"`
 }
 
 type AwsGlueTriggerSpecPredicateConditions struct {
@@ -49,6 +50,7 @@ type AwsGlueTriggerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGlueTriggerList is a list of AwsGlueTriggers
 type AwsGlueTriggerList struct {

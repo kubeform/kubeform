@@ -38,29 +38,17 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 
-		&LinodeDomainRecord{},
-		&LinodeDomainRecordList{},
-
-		&LinodeNodebalancer{},
-		&LinodeNodebalancerList{},
+		&LinodeInstance{},
+		&LinodeInstanceList{},
 
 		&LinodeSshkey{},
 		&LinodeSshkeyList{},
 
-		&LinodeImage{},
-		&LinodeImageList{},
+		&LinodeToken{},
+		&LinodeTokenList{},
 
-		&LinodeInstance{},
-		&LinodeInstanceList{},
-
-		&LinodeDomain{},
-		&LinodeDomainList{},
-
-		&LinodeNodebalancerConfig{},
-		&LinodeNodebalancerConfigList{},
-
-		&LinodeNodebalancerNode{},
-		&LinodeNodebalancerNodeList{},
+		&LinodeVolume{},
+		&LinodeVolumeList{},
 
 		&LinodeRdns{},
 		&LinodeRdnsList{},
@@ -68,11 +56,23 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&LinodeStackscript{},
 		&LinodeStackscriptList{},
 
-		&LinodeToken{},
-		&LinodeTokenList{},
+		&LinodeImage{},
+		&LinodeImageList{},
 
-		&LinodeVolume{},
-		&LinodeVolumeList{},
+		&LinodeDomain{},
+		&LinodeDomainList{},
+
+		&LinodeDomainRecord{},
+		&LinodeDomainRecordList{},
+
+		&LinodeNodebalancer{},
+		&LinodeNodebalancerList{},
+
+		&LinodeNodebalancerConfig{},
+		&LinodeNodebalancerConfigList{},
+
+		&LinodeNodebalancerNode{},
+		&LinodeNodebalancerNodeList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

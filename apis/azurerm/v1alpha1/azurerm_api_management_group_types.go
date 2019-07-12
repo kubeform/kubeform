@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AzurermApiManagementGroup struct {
 }
 
 type AzurermApiManagementGroupSpec struct {
+	ExternalId        string `json:"external_id"`
+	Type              string `json:"type"`
 	Name              string `json:"name"`
 	ResourceGroupName string `json:"resource_group_name"`
 	ApiManagementName string `json:"api_management_name"`
 	DisplayName       string `json:"display_name"`
 	Description       string `json:"description"`
-	ExternalId        string `json:"external_id"`
-	Type              string `json:"type"`
 }
 
 type AzurermApiManagementGroupStatus struct {
@@ -32,6 +33,7 @@ type AzurermApiManagementGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementGroupList is a list of AzurermApiManagementGroups
 type AzurermApiManagementGroupList struct {

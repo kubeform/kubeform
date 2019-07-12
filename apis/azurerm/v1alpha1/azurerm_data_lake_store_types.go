@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDataLakeStore struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type AzurermDataLakeStore struct {
 }
 
 type AzurermDataLakeStoreSpec struct {
-	Tier                  string            `json:"tier"`
-	Endpoint              string            `json:"endpoint"`
-	Location              string            `json:"location"`
-	ResourceGroupName     string            `json:"resource_group_name"`
-	EncryptionType        string            `json:"encryption_type"`
 	FirewallState         string            `json:"firewall_state"`
 	FirewallAllowAzureIps string            `json:"firewall_allow_azure_ips"`
 	Tags                  map[string]string `json:"tags"`
-	Name                  string            `json:"name"`
+	EncryptionType        string            `json:"encryption_type"`
+	Location              string            `json:"location"`
+	ResourceGroupName     string            `json:"resource_group_name"`
+	Tier                  string            `json:"tier"`
 	EncryptionState       string            `json:"encryption_state"`
+	Endpoint              string            `json:"endpoint"`
+	Name                  string            `json:"name"`
 }
 
 type AzurermDataLakeStoreStatus struct {
@@ -35,6 +36,7 @@ type AzurermDataLakeStoreStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDataLakeStoreList is a list of AzurermDataLakeStores
 type AzurermDataLakeStoreList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanRecord struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type DigitaloceanRecord struct {
 }
 
 type DigitaloceanRecordSpec struct {
-	Type     string `json:"type"`
-	Name     string `json:"name"`
-	Weight   int    `json:"weight"`
-	Ttl      int    `json:"ttl"`
-	Tag      string `json:"tag"`
 	Domain   string `json:"domain"`
-	Port     int    `json:"port"`
 	Priority int    `json:"priority"`
+	Weight   int    `json:"weight"`
 	Value    string `json:"value"`
 	Fqdn     string `json:"fqdn"`
 	Flags    int    `json:"flags"`
+	Tag      string `json:"tag"`
+	Type     string `json:"type"`
+	Name     string `json:"name"`
+	Port     int    `json:"port"`
+	Ttl      int    `json:"ttl"`
 }
 
 type DigitaloceanRecordStatus struct {
@@ -36,6 +37,7 @@ type DigitaloceanRecordStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanRecordList is a list of DigitaloceanRecords
 type DigitaloceanRecordList struct {

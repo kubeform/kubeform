@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafRegexMatchSet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsWafRegexMatchSet struct {
 }
 
 type AwsWafRegexMatchSetSpecRegexMatchTupleFieldToMatch struct {
-	Data string `json:"data"`
 	Type string `json:"type"`
+	Data string `json:"data"`
 }
 
 type AwsWafRegexMatchSetSpecRegexMatchTuple struct {
@@ -38,6 +39,7 @@ type AwsWafRegexMatchSetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafRegexMatchSetList is a list of AwsWafRegexMatchSets
 type AwsWafRegexMatchSetList struct {

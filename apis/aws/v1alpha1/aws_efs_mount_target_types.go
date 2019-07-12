@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEfsMountTarget struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AwsEfsMountTarget struct {
 }
 
 type AwsEfsMountTargetSpec struct {
-	DnsName            string   `json:"dns_name"`
-	FileSystemArn      string   `json:"file_system_arn"`
 	FileSystemId       string   `json:"file_system_id"`
 	IpAddress          string   `json:"ip_address"`
 	SecurityGroups     []string `json:"security_groups"`
 	SubnetId           string   `json:"subnet_id"`
 	NetworkInterfaceId string   `json:"network_interface_id"`
+	DnsName            string   `json:"dns_name"`
+	FileSystemArn      string   `json:"file_system_arn"`
 }
 
 type AwsEfsMountTargetStatus struct {
@@ -32,6 +33,7 @@ type AwsEfsMountTargetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEfsMountTargetList is a list of AwsEfsMountTargets
 type AwsEfsMountTargetList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsVpcPeeringConnectionAccepter struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -31,15 +32,15 @@ type AwsVpcPeeringConnectionAccepterSpecAccepter struct {
 
 type AwsVpcPeeringConnectionAccepterSpec struct {
 	Requester              []AwsVpcPeeringConnectionAccepterSpec `json:"requester"`
-	AutoAccept             bool                                  `json:"auto_accept"`
-	AcceptStatus           string                                `json:"accept_status"`
-	PeerVpcId              string                                `json:"peer_vpc_id"`
-	PeerRegion             string                                `json:"peer_region"`
-	Accepter               []AwsVpcPeeringConnectionAccepterSpec `json:"accepter"`
 	Tags                   map[string]string                     `json:"tags"`
 	VpcPeeringConnectionId string                                `json:"vpc_peering_connection_id"`
 	VpcId                  string                                `json:"vpc_id"`
+	PeerVpcId              string                                `json:"peer_vpc_id"`
 	PeerOwnerId            string                                `json:"peer_owner_id"`
+	PeerRegion             string                                `json:"peer_region"`
+	AutoAccept             bool                                  `json:"auto_accept"`
+	AcceptStatus           string                                `json:"accept_status"`
+	Accepter               []AwsVpcPeeringConnectionAccepterSpec `json:"accepter"`
 }
 
 type AwsVpcPeeringConnectionAccepterStatus struct {
@@ -47,6 +48,7 @@ type AwsVpcPeeringConnectionAccepterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsVpcPeeringConnectionAccepterList is a list of AwsVpcPeeringConnectionAccepters
 type AwsVpcPeeringConnectionAccepterList struct {

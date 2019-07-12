@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermContainerRegistry struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,22 +19,22 @@ type AzurermContainerRegistry struct {
 }
 
 type AzurermContainerRegistrySpecStorageAccount struct {
-	AccessKey string `json:"access_key"`
 	Name      string `json:"name"`
+	AccessKey string `json:"access_key"`
 }
 
 type AzurermContainerRegistrySpec struct {
-	AdminPassword           string                         `json:"admin_password"`
-	Name                    string                         `json:"name"`
-	ResourceGroupName       string                         `json:"resource_group_name"`
-	AdminEnabled            bool                           `json:"admin_enabled"`
 	StorageAccountId        string                         `json:"storage_account_id"`
-	StorageAccount          []AzurermContainerRegistrySpec `json:"storage_account"`
 	LoginServer             string                         `json:"login_server"`
 	AdminUsername           string                         `json:"admin_username"`
 	Tags                    map[string]string              `json:"tags"`
 	Location                string                         `json:"location"`
 	Sku                     string                         `json:"sku"`
+	AdminEnabled            bool                           `json:"admin_enabled"`
+	StorageAccount          []AzurermContainerRegistrySpec `json:"storage_account"`
+	AdminPassword           string                         `json:"admin_password"`
+	Name                    string                         `json:"name"`
+	ResourceGroupName       string                         `json:"resource_group_name"`
 	GeoreplicationLocations []string                       `json:"georeplication_locations"`
 }
 
@@ -42,6 +43,7 @@ type AzurermContainerRegistryStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermContainerRegistryList is a list of AzurermContainerRegistrys
 type AzurermContainerRegistryList struct {

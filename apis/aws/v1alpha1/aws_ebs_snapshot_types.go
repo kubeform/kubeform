@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEbsSnapshot struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsEbsSnapshot struct {
 }
 
 type AwsEbsSnapshotSpec struct {
-	Encrypted           bool              `json:"encrypted"`
-	KmsKeyId            string            `json:"kms_key_id"`
 	VolumeId            string            `json:"volume_id"`
-	OwnerId             string            `json:"owner_id"`
-	OwnerAlias          string            `json:"owner_alias"`
-	VolumeSize          int               `json:"volume_size"`
+	Description         string            `json:"description"`
+	KmsKeyId            string            `json:"kms_key_id"`
 	DataEncryptionKeyId string            `json:"data_encryption_key_id"`
 	Tags                map[string]string `json:"tags"`
-	Description         string            `json:"description"`
+	OwnerId             string            `json:"owner_id"`
+	OwnerAlias          string            `json:"owner_alias"`
+	Encrypted           bool              `json:"encrypted"`
+	VolumeSize          int               `json:"volume_size"`
 }
 
 type AwsEbsSnapshotStatus struct {
@@ -34,6 +35,7 @@ type AwsEbsSnapshotStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEbsSnapshotList is a list of AwsEbsSnapshots
 type AwsEbsSnapshotList struct {

@@ -9,18 +9,13 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermVirtualNetworkGateway struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              AzurermVirtualNetworkGatewaySpec   `json:"spec,omitempty"`
 	Status            AzurermVirtualNetworkGatewayStatus `json:"status,omitempty"`
-}
-
-type AzurermVirtualNetworkGatewaySpecBgpSettings struct {
-	Asn            int    `json:"asn"`
-	PeeringAddress string `json:"peering_address"`
-	PeerWeight     int    `json:"peer_weight"`
 }
 
 type AzurermVirtualNetworkGatewaySpecIpConfiguration struct {
@@ -49,20 +44,26 @@ type AzurermVirtualNetworkGatewaySpecVpnClientConfiguration struct {
 	RadiusServerSecret  string                                                   `json:"radius_server_secret"`
 }
 
+type AzurermVirtualNetworkGatewaySpecBgpSettings struct {
+	Asn            int    `json:"asn"`
+	PeeringAddress string `json:"peering_address"`
+	PeerWeight     int    `json:"peer_weight"`
+}
+
 type AzurermVirtualNetworkGatewaySpec struct {
 	ResourceGroupName            string                             `json:"resource_group_name"`
-	Type                         string                             `json:"type"`
+	VpnType                      string                             `json:"vpn_type"`
 	ActiveActive                 bool                               `json:"active_active"`
 	Sku                          string                             `json:"sku"`
-	BgpSettings                  []AzurermVirtualNetworkGatewaySpec `json:"bgp_settings"`
-	Name                         string                             `json:"name"`
-	VpnType                      string                             `json:"vpn_type"`
-	EnableBgp                    bool                               `json:"enable_bgp"`
 	IpConfiguration              []AzurermVirtualNetworkGatewaySpec `json:"ip_configuration"`
-	VpnClientConfiguration       []AzurermVirtualNetworkGatewaySpec `json:"vpn_client_configuration"`
-	DefaultLocalNetworkGatewayId string                             `json:"default_local_network_gateway_id"`
 	Tags                         map[string]string                  `json:"tags"`
+	Name                         string                             `json:"name"`
 	Location                     string                             `json:"location"`
+	Type                         string                             `json:"type"`
+	EnableBgp                    bool                               `json:"enable_bgp"`
+	VpnClientConfiguration       []AzurermVirtualNetworkGatewaySpec `json:"vpn_client_configuration"`
+	BgpSettings                  []AzurermVirtualNetworkGatewaySpec `json:"bgp_settings"`
+	DefaultLocalNetworkGatewayId string                             `json:"default_local_network_gateway_id"`
 }
 
 type AzurermVirtualNetworkGatewayStatus struct {
@@ -70,6 +71,7 @@ type AzurermVirtualNetworkGatewayStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermVirtualNetworkGatewayList is a list of AzurermVirtualNetworkGateways
 type AzurermVirtualNetworkGatewayList struct {

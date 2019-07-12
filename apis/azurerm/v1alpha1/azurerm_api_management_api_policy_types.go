@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementApiPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermApiManagementApiPolicy struct {
 }
 
 type AzurermApiManagementApiPolicySpec struct {
-	XmlLink           string `json:"xml_link"`
-	ResourceGroupName string `json:"resource_group_name"`
 	ApiManagementName string `json:"api_management_name"`
 	ApiName           string `json:"api_name"`
 	XmlContent        string `json:"xml_content"`
+	XmlLink           string `json:"xml_link"`
+	ResourceGroupName string `json:"resource_group_name"`
 }
 
 type AzurermApiManagementApiPolicyStatus struct {
@@ -30,6 +31,7 @@ type AzurermApiManagementApiPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementApiPolicyList is a list of AzurermApiManagementApiPolicys
 type AzurermApiManagementApiPolicyList struct {

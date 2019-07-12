@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSesReceiptFilter struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsSesReceiptFilter struct {
 }
 
 type AwsSesReceiptFilterSpec struct {
-	Name   string `json:"name"`
 	Cidr   string `json:"cidr"`
 	Policy string `json:"policy"`
+	Name   string `json:"name"`
 }
 
 type AwsSesReceiptFilterStatus struct {
@@ -28,6 +29,7 @@ type AwsSesReceiptFilterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSesReceiptFilterList is a list of AwsSesReceiptFilters
 type AwsSesReceiptFilterList struct {

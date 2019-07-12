@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIotPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsIotPolicy struct {
 }
 
 type AwsIotPolicySpec struct {
+	Name             string `json:"name"`
 	Policy           string `json:"policy"`
 	Arn              string `json:"arn"`
 	DefaultVersionId string `json:"default_version_id"`
-	Name             string `json:"name"`
 }
 
 type AwsIotPolicyStatus struct {
@@ -29,6 +30,7 @@ type AwsIotPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIotPolicyList is a list of AwsIotPolicys
 type AwsIotPolicyList struct {

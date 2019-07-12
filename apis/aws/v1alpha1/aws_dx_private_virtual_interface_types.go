@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDxPrivateVirtualInterface struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,21 +19,21 @@ type AwsDxPrivateVirtualInterface struct {
 }
 
 type AwsDxPrivateVirtualInterfaceSpec struct {
-	AddressFamily     string            `json:"address_family"`
-	AwsDevice         string            `json:"aws_device"`
-	CustomerAddress   string            `json:"customer_address"`
-	AmazonAddress     string            `json:"amazon_address"`
-	JumboFrameCapable bool              `json:"jumbo_frame_capable"`
-	Name              string            `json:"name"`
-	Vlan              int               `json:"vlan"`
-	BgpAsn            int               `json:"bgp_asn"`
-	Mtu               int               `json:"mtu"`
-	Arn               string            `json:"arn"`
-	VpnGatewayId      string            `json:"vpn_gateway_id"`
-	BgpAuthKey        string            `json:"bgp_auth_key"`
-	Tags              map[string]string `json:"tags"`
 	ConnectionId      string            `json:"connection_id"`
+	VpnGatewayId      string            `json:"vpn_gateway_id"`
+	Vlan              int               `json:"vlan"`
+	AmazonAddress     string            `json:"amazon_address"`
+	BgpAsn            int               `json:"bgp_asn"`
+	AddressFamily     string            `json:"address_family"`
+	Mtu               int               `json:"mtu"`
+	JumboFrameCapable bool              `json:"jumbo_frame_capable"`
+	Tags              map[string]string `json:"tags"`
+	AwsDevice         string            `json:"aws_device"`
+	Arn               string            `json:"arn"`
+	Name              string            `json:"name"`
 	DxGatewayId       string            `json:"dx_gateway_id"`
+	BgpAuthKey        string            `json:"bgp_auth_key"`
+	CustomerAddress   string            `json:"customer_address"`
 }
 
 type AwsDxPrivateVirtualInterfaceStatus struct {
@@ -40,6 +41,7 @@ type AwsDxPrivateVirtualInterfaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDxPrivateVirtualInterfaceList is a list of AwsDxPrivateVirtualInterfaces
 type AwsDxPrivateVirtualInterfaceList struct {

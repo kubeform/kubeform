@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsOpsworksGangliaLayer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,38 +19,38 @@ type AwsOpsworksGangliaLayer struct {
 }
 
 type AwsOpsworksGangliaLayerSpecEbsVolume struct {
-	NumberOfDisks int    `json:"number_of_disks"`
 	RaidLevel     string `json:"raid_level"`
 	Size          int    `json:"size"`
 	Type          string `json:"type"`
 	Iops          int    `json:"iops"`
 	MountPoint    string `json:"mount_point"`
+	NumberOfDisks int    `json:"number_of_disks"`
 }
 
 type AwsOpsworksGangliaLayerSpec struct {
-	ElasticLoadBalancer      string                        `json:"elastic_load_balancer"`
+	Url                      string                        `json:"url"`
+	AutoAssignElasticIps     bool                          `json:"auto_assign_elastic_ips"`
 	CustomDeployRecipes      []string                      `json:"custom_deploy_recipes"`
+	CustomUndeployRecipes    []string                      `json:"custom_undeploy_recipes"`
 	CustomShutdownRecipes    []string                      `json:"custom_shutdown_recipes"`
-	CustomSecurityGroupIds   []string                      `json:"custom_security_group_ids"`
-	AutoHealing              bool                          `json:"auto_healing"`
-	InstallUpdatesOnBoot     bool                          `json:"install_updates_on_boot"`
-	InstanceShutdownTimeout  int                           `json:"instance_shutdown_timeout"`
-	AutoAssignPublicIps      bool                          `json:"auto_assign_public_ips"`
 	UseEbsOptimizedInstances bool                          `json:"use_ebs_optimized_instances"`
+	EbsVolume                []AwsOpsworksGangliaLayerSpec `json:"ebs_volume"`
 	Name                     string                        `json:"name"`
 	Username                 string                        `json:"username"`
-	Password                 string                        `json:"password"`
-	StackId                  string                        `json:"stack_id"`
-	CustomSetupRecipes       []string                      `json:"custom_setup_recipes"`
-	CustomJson               string                        `json:"custom_json"`
-	DrainElbOnShutdown       bool                          `json:"drain_elb_on_shutdown"`
-	SystemPackages           []string                      `json:"system_packages"`
-	Url                      string                        `json:"url"`
 	CustomInstanceProfileArn string                        `json:"custom_instance_profile_arn"`
+	ElasticLoadBalancer      string                        `json:"elastic_load_balancer"`
 	CustomConfigureRecipes   []string                      `json:"custom_configure_recipes"`
-	CustomUndeployRecipes    []string                      `json:"custom_undeploy_recipes"`
-	EbsVolume                []AwsOpsworksGangliaLayerSpec `json:"ebs_volume"`
-	AutoAssignElasticIps     bool                          `json:"auto_assign_elastic_ips"`
+	SystemPackages           []string                      `json:"system_packages"`
+	InstanceShutdownTimeout  int                           `json:"instance_shutdown_timeout"`
+	DrainElbOnShutdown       bool                          `json:"drain_elb_on_shutdown"`
+	AutoAssignPublicIps      bool                          `json:"auto_assign_public_ips"`
+	CustomSetupRecipes       []string                      `json:"custom_setup_recipes"`
+	CustomSecurityGroupIds   []string                      `json:"custom_security_group_ids"`
+	InstallUpdatesOnBoot     bool                          `json:"install_updates_on_boot"`
+	CustomJson               string                        `json:"custom_json"`
+	AutoHealing              bool                          `json:"auto_healing"`
+	StackId                  string                        `json:"stack_id"`
+	Password                 string                        `json:"password"`
 }
 
 type AwsOpsworksGangliaLayerStatus struct {
@@ -57,6 +58,7 @@ type AwsOpsworksGangliaLayerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsOpsworksGangliaLayerList is a list of AwsOpsworksGangliaLayers
 type AwsOpsworksGangliaLayerList struct {

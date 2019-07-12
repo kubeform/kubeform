@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRedshiftSubnetGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -21,6 +22,7 @@ type AwsRedshiftSubnetGroupSpec struct {
 	Description string            `json:"description"`
 	SubnetIds   []string          `json:"subnet_ids"`
 	Tags        map[string]string `json:"tags"`
+	Arn         string            `json:"arn"`
 	Name        string            `json:"name"`
 }
 
@@ -29,6 +31,7 @@ type AwsRedshiftSubnetGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRedshiftSubnetGroupList is a list of AwsRedshiftSubnetGroups
 type AwsRedshiftSubnetGroupList struct {

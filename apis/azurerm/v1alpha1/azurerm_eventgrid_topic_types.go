@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermEventgridTopic struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AzurermEventgridTopic struct {
 }
 
 type AzurermEventgridTopicSpec struct {
+	Endpoint           string            `json:"endpoint"`
+	PrimaryAccessKey   string            `json:"primary_access_key"`
+	SecondaryAccessKey string            `json:"secondary_access_key"`
 	Name               string            `json:"name"`
 	Location           string            `json:"location"`
 	ResourceGroupName  string            `json:"resource_group_name"`
 	Tags               map[string]string `json:"tags"`
-	Endpoint           string            `json:"endpoint"`
-	PrimaryAccessKey   string            `json:"primary_access_key"`
-	SecondaryAccessKey string            `json:"secondary_access_key"`
 }
 
 type AzurermEventgridTopicStatus struct {
@@ -32,6 +33,7 @@ type AzurermEventgridTopicStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermEventgridTopicList is a list of AzurermEventgridTopics
 type AzurermEventgridTopicList struct {

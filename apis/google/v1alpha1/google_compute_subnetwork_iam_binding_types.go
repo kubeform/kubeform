@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeSubnetworkIamBinding struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleComputeSubnetworkIamBinding struct {
 }
 
 type GoogleComputeSubnetworkIamBindingSpec struct {
-	Role       string   `json:"role"`
+	Members    []string `json:"members"`
+	Etag       string   `json:"etag"`
 	Subnetwork string   `json:"subnetwork"`
 	Project    string   `json:"project"`
 	Region     string   `json:"region"`
-	Members    []string `json:"members"`
-	Etag       string   `json:"etag"`
+	Role       string   `json:"role"`
 }
 
 type GoogleComputeSubnetworkIamBindingStatus struct {
@@ -31,6 +32,7 @@ type GoogleComputeSubnetworkIamBindingStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeSubnetworkIamBindingList is a list of GoogleComputeSubnetworkIamBindings
 type GoogleComputeSubnetworkIamBindingList struct {

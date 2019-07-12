@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAvailabilitySet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AzurermAvailabilitySet struct {
 }
 
 type AzurermAvailabilitySetSpec struct {
+	Name                      string            `json:"name"`
+	ResourceGroupName         string            `json:"resource_group_name"`
 	Location                  string            `json:"location"`
 	PlatformUpdateDomainCount int               `json:"platform_update_domain_count"`
 	PlatformFaultDomainCount  int               `json:"platform_fault_domain_count"`
 	Managed                   bool              `json:"managed"`
 	Tags                      map[string]string `json:"tags"`
-	Name                      string            `json:"name"`
-	ResourceGroupName         string            `json:"resource_group_name"`
 }
 
 type AzurermAvailabilitySetStatus struct {
@@ -32,6 +33,7 @@ type AzurermAvailabilitySetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAvailabilitySetList is a list of AzurermAvailabilitySets
 type AzurermAvailabilitySetList struct {

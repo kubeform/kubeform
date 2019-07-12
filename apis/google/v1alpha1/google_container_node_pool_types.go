@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleContainerNodePool struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,15 +18,14 @@ type GoogleContainerNodePool struct {
 	Status            GoogleContainerNodePoolStatus `json:"status,omitempty"`
 }
 
+type GoogleContainerNodePoolSpecAutoscaling struct {
+	MinNodeCount int `json:"min_node_count"`
+	MaxNodeCount int `json:"max_node_count"`
+}
+
 type GoogleContainerNodePoolSpecManagement struct {
 	AutoRepair  bool `json:"auto_repair"`
 	AutoUpgrade bool `json:"auto_upgrade"`
-}
-
-type GoogleContainerNodePoolSpecNodeConfigTaint struct {
-	Key    string `json:"key"`
-	Value  string `json:"value"`
-	Effect string `json:"effect"`
 }
 
 type GoogleContainerNodePoolSpecNodeConfigWorkloadMetadataConfig struct {
@@ -33,48 +33,49 @@ type GoogleContainerNodePoolSpecNodeConfigWorkloadMetadataConfig struct {
 }
 
 type GoogleContainerNodePoolSpecNodeConfigGuestAccelerator struct {
-	Count int    `json:"count"`
 	Type  string `json:"type"`
+	Count int    `json:"count"`
+}
+
+type GoogleContainerNodePoolSpecNodeConfigTaint struct {
+	Value  string `json:"value"`
+	Effect string `json:"effect"`
+	Key    string `json:"key"`
 }
 
 type GoogleContainerNodePoolSpecNodeConfig struct {
+	DiskType               string                                  `json:"disk_type"`
+	Metadata               map[string]string                       `json:"metadata"`
 	MinCpuPlatform         string                                  `json:"min_cpu_platform"`
+	Tags                   []string                                `json:"tags"`
+	Labels                 map[string]string                       `json:"labels"`
 	OauthScopes            []string                                `json:"oauth_scopes"`
-	Taint                  []GoogleContainerNodePoolSpecNodeConfig `json:"taint"`
+	ServiceAccount         string                                  `json:"service_account"`
 	WorkloadMetadataConfig []GoogleContainerNodePoolSpecNodeConfig `json:"workload_metadata_config"`
+	DiskSizeGb             int                                     `json:"disk_size_gb"`
 	GuestAccelerator       []GoogleContainerNodePoolSpecNodeConfig `json:"guest_accelerator"`
 	ImageType              string                                  `json:"image_type"`
-	Preemptible            bool                                    `json:"preemptible"`
-	Tags                   []string                                `json:"tags"`
-	DiskSizeGb             int                                     `json:"disk_size_gb"`
-	ServiceAccount         string                                  `json:"service_account"`
-	Metadata               map[string]string                       `json:"metadata"`
-	DiskType               string                                  `json:"disk_type"`
-	Labels                 map[string]string                       `json:"labels"`
-	LocalSsdCount          int                                     `json:"local_ssd_count"`
 	MachineType            string                                  `json:"machine_type"`
-}
-
-type GoogleContainerNodePoolSpecAutoscaling struct {
-	MaxNodeCount int `json:"max_node_count"`
-	MinNodeCount int `json:"min_node_count"`
+	LocalSsdCount          int                                     `json:"local_ssd_count"`
+	Preemptible            bool                                    `json:"preemptible"`
+	Taint                  []GoogleContainerNodePoolSpecNodeConfig `json:"taint"`
 }
 
 type GoogleContainerNodePoolSpec struct {
-	InitialNodeCount  int                           `json:"initial_node_count"`
-	Management        []GoogleContainerNodePoolSpec `json:"management"`
-	Cluster           string                        `json:"cluster"`
 	Region            string                        `json:"region"`
 	Zone              string                        `json:"zone"`
+	InitialNodeCount  int                           `json:"initial_node_count"`
+	InstanceGroupUrls []string                      `json:"instance_group_urls"`
+	Cluster           string                        `json:"cluster"`
+	Name              string                        `json:"name"`
+	Autoscaling       []GoogleContainerNodePoolSpec `json:"autoscaling"`
 	NamePrefix        string                        `json:"name_prefix"`
+	MaxPodsPerNode    int                           `json:"max_pods_per_node"`
+	Management        []GoogleContainerNodePoolSpec `json:"management"`
+	Project           string                        `json:"project"`
 	NodeConfig        []GoogleContainerNodePoolSpec `json:"node_config"`
 	NodeCount         int                           `json:"node_count"`
-	Autoscaling       []GoogleContainerNodePoolSpec `json:"autoscaling"`
 	Version           string                        `json:"version"`
-	Project           string                        `json:"project"`
-	MaxPodsPerNode    int                           `json:"max_pods_per_node"`
-	Name              string                        `json:"name"`
-	InstanceGroupUrls []string                      `json:"instance_group_urls"`
 }
 
 type GoogleContainerNodePoolStatus struct {
@@ -82,6 +83,7 @@ type GoogleContainerNodePoolStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleContainerNodePoolList is a list of GoogleContainerNodePools
 type GoogleContainerNodePoolList struct {

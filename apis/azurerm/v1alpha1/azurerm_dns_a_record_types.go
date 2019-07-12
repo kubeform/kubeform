@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDnsARecord struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AzurermDnsARecord struct {
 }
 
 type AzurermDnsARecordSpec struct {
+	Name              string            `json:"name"`
+	ResourceGroupName string            `json:"resource_group_name"`
 	ZoneName          string            `json:"zone_name"`
 	Records           []string          `json:"records"`
 	Ttl               int               `json:"ttl"`
 	Tags              map[string]string `json:"tags"`
-	Name              string            `json:"name"`
-	ResourceGroupName string            `json:"resource_group_name"`
 }
 
 type AzurermDnsARecordStatus struct {
@@ -31,6 +32,7 @@ type AzurermDnsARecordStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDnsARecordList is a list of AzurermDnsARecords
 type AzurermDnsARecordList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleKmsKeyRing struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type GoogleKmsKeyRing struct {
 }
 
 type GoogleKmsKeyRingSpec struct {
+	SelfLink string `json:"self_link"`
 	Name     string `json:"name"`
 	Location string `json:"location"`
 	Project  string `json:"project"`
-	SelfLink string `json:"self_link"`
 }
 
 type GoogleKmsKeyRingStatus struct {
@@ -29,6 +30,7 @@ type GoogleKmsKeyRingStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleKmsKeyRingList is a list of GoogleKmsKeyRings
 type GoogleKmsKeyRingList struct {

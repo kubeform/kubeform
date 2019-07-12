@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanTag struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -26,6 +27,7 @@ type DigitaloceanTagStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanTagList is a list of DigitaloceanTags
 type DigitaloceanTagList struct {

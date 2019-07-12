@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsVpcEndpointSubnetAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsVpcEndpointSubnetAssociation struct {
 }
 
 type AwsVpcEndpointSubnetAssociationSpec struct {
-	SubnetId      string `json:"subnet_id"`
 	VpcEndpointId string `json:"vpc_endpoint_id"`
+	SubnetId      string `json:"subnet_id"`
 }
 
 type AwsVpcEndpointSubnetAssociationStatus struct {
@@ -27,6 +28,7 @@ type AwsVpcEndpointSubnetAssociationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsVpcEndpointSubnetAssociationList is a list of AwsVpcEndpointSubnetAssociations
 type AwsVpcEndpointSubnetAssociationList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsOpsworksPermission struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsOpsworksPermission struct {
 }
 
 type AwsOpsworksPermissionSpec struct {
+	StackId   string `json:"stack_id"`
 	AllowSsh  bool   `json:"allow_ssh"`
 	AllowSudo bool   `json:"allow_sudo"`
 	UserArn   string `json:"user_arn"`
 	Level     string `json:"level"`
-	StackId   string `json:"stack_id"`
 }
 
 type AwsOpsworksPermissionStatus struct {
@@ -30,6 +31,7 @@ type AwsOpsworksPermissionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsOpsworksPermissionList is a list of AwsOpsworksPermissions
 type AwsOpsworksPermissionList struct {

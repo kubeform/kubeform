@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsMqBroker struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,20 +18,9 @@ type AwsMqBroker struct {
 	Status            AwsMqBrokerStatus `json:"status,omitempty"`
 }
 
-type AwsMqBrokerSpecLogs struct {
-	General bool `json:"general"`
-	Audit   bool `json:"audit"`
-}
-
 type AwsMqBrokerSpecConfiguration struct {
-	Revision int    `json:"revision"`
 	Id       string `json:"id"`
-}
-
-type AwsMqBrokerSpecInstances struct {
-	ConsoleUrl string   `json:"console_url"`
-	IpAddress  string   `json:"ip_address"`
-	Endpoints  []string `json:"endpoints"`
+	Revision int    `json:"revision"`
 }
 
 type AwsMqBrokerSpecMaintenanceWindowStartTime struct {
@@ -46,24 +36,35 @@ type AwsMqBrokerSpecUser struct {
 	Username      string   `json:"username"`
 }
 
+type AwsMqBrokerSpecInstances struct {
+	ConsoleUrl string   `json:"console_url"`
+	IpAddress  string   `json:"ip_address"`
+	Endpoints  []string `json:"endpoints"`
+}
+
+type AwsMqBrokerSpecLogs struct {
+	General bool `json:"general"`
+	Audit   bool `json:"audit"`
+}
+
 type AwsMqBrokerSpec struct {
-	DeploymentMode             string            `json:"deployment_mode"`
-	HostInstanceType           string            `json:"host_instance_type"`
-	Logs                       []AwsMqBrokerSpec `json:"logs"`
-	SecurityGroups             []string          `json:"security_groups"`
-	SubnetIds                  []string          `json:"subnet_ids"`
+	EngineVersion              string            `json:"engine_version"`
+	BrokerName                 string            `json:"broker_name"`
+	AutoMinorVersionUpgrade    bool              `json:"auto_minor_version_upgrade"`
 	Configuration              []AwsMqBrokerSpec `json:"configuration"`
 	EngineType                 string            `json:"engine_type"`
-	PubliclyAccessible         bool              `json:"publicly_accessible"`
-	ApplyImmediately           bool              `json:"apply_immediately"`
-	Tags                       map[string]string `json:"tags"`
-	Instances                  []AwsMqBrokerSpec `json:"instances"`
-	AutoMinorVersionUpgrade    bool              `json:"auto_minor_version_upgrade"`
-	BrokerName                 string            `json:"broker_name"`
-	EngineVersion              string            `json:"engine_version"`
+	HostInstanceType           string            `json:"host_instance_type"`
 	MaintenanceWindowStartTime []AwsMqBrokerSpec `json:"maintenance_window_start_time"`
-	User                       []AwsMqBrokerSpec `json:"user"`
 	Arn                        string            `json:"arn"`
+	ApplyImmediately           bool              `json:"apply_immediately"`
+	SubnetIds                  []string          `json:"subnet_ids"`
+	User                       []AwsMqBrokerSpec `json:"user"`
+	Instances                  []AwsMqBrokerSpec `json:"instances"`
+	SecurityGroups             []string          `json:"security_groups"`
+	Logs                       []AwsMqBrokerSpec `json:"logs"`
+	PubliclyAccessible         bool              `json:"publicly_accessible"`
+	Tags                       map[string]string `json:"tags"`
+	DeploymentMode             string            `json:"deployment_mode"`
 }
 
 type AwsMqBrokerStatus struct {
@@ -71,6 +72,7 @@ type AwsMqBrokerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsMqBrokerList is a list of AwsMqBrokers
 type AwsMqBrokerList struct {

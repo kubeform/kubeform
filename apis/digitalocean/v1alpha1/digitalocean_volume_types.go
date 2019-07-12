@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanVolume struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type DigitaloceanVolume struct {
 }
 
 type DigitaloceanVolumeSpec struct {
+	FilesystemLabel        string  `json:"filesystem_label"`
 	Region                 string  `json:"region"`
 	Name                   string  `json:"name"`
-	Size                   int     `json:"size"`
-	InitialFilesystemType  string  `json:"initial_filesystem_type"`
-	InitialFilesystemLabel string  `json:"initial_filesystem_label"`
-	DropletIds             []int64 `json:"droplet_ids"`
-	FilesystemType         string  `json:"filesystem_type"`
 	Urn                    string  `json:"urn"`
 	Description            string  `json:"description"`
+	InitialFilesystemType  string  `json:"initial_filesystem_type"`
+	InitialFilesystemLabel string  `json:"initial_filesystem_label"`
+	FilesystemType         string  `json:"filesystem_type"`
+	Size                   int     `json:"size"`
 	SnapshotId             string  `json:"snapshot_id"`
-	FilesystemLabel        string  `json:"filesystem_label"`
+	DropletIds             []int64 `json:"droplet_ids"`
 }
 
 type DigitaloceanVolumeStatus struct {
@@ -36,6 +37,7 @@ type DigitaloceanVolumeStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanVolumeList is a list of DigitaloceanVolumes
 type DigitaloceanVolumeList struct {

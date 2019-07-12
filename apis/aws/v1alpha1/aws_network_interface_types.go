@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsNetworkInterface struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,16 +25,16 @@ type AwsNetworkInterfaceSpecAttachment struct {
 }
 
 type AwsNetworkInterfaceSpec struct {
-	SecurityGroups  []string                  `json:"security_groups"`
-	SourceDestCheck bool                      `json:"source_dest_check"`
+	PrivateDnsName  string                    `json:"private_dns_name"`
+	PrivateIps      []string                  `json:"private_ips"`
 	Description     string                    `json:"description"`
 	Attachment      []AwsNetworkInterfaceSpec `json:"attachment"`
 	SubnetId        string                    `json:"subnet_id"`
-	PrivateDnsName  string                    `json:"private_dns_name"`
-	PrivateIps      []string                  `json:"private_ips"`
-	PrivateIpsCount int                       `json:"private_ips_count"`
-	Tags            map[string]string         `json:"tags"`
 	PrivateIp       string                    `json:"private_ip"`
+	PrivateIpsCount int                       `json:"private_ips_count"`
+	SecurityGroups  []string                  `json:"security_groups"`
+	SourceDestCheck bool                      `json:"source_dest_check"`
+	Tags            map[string]string         `json:"tags"`
 }
 
 type AwsNetworkInterfaceStatus struct {
@@ -41,6 +42,7 @@ type AwsNetworkInterfaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsNetworkInterfaceList is a list of AwsNetworkInterfaces
 type AwsNetworkInterfaceList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleStorageBucketIamMember struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type GoogleStorageBucketIamMember struct {
 }
 
 type GoogleStorageBucketIamMemberSpec struct {
-	Etag   string `json:"etag"`
 	Role   string `json:"role"`
 	Member string `json:"member"`
+	Etag   string `json:"etag"`
 	Bucket string `json:"bucket"`
 }
 
@@ -29,6 +30,7 @@ type GoogleStorageBucketIamMemberStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleStorageBucketIamMemberList is a list of GoogleStorageBucketIamMembers
 type GoogleStorageBucketIamMemberList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermSharedImageVersion struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,14 +25,14 @@ type AzurermSharedImageVersionSpecTargetRegion struct {
 
 type AzurermSharedImageVersionSpec struct {
 	Name              string                          `json:"name"`
-	ImageName         string                          `json:"image_name"`
-	ResourceGroupName string                          `json:"resource_group_name"`
-	Tags              map[string]string               `json:"tags"`
-	ExcludeFromLatest bool                            `json:"exclude_from_latest"`
 	GalleryName       string                          `json:"gallery_name"`
-	Location          string                          `json:"location"`
-	ManagedImageId    string                          `json:"managed_image_id"`
+	ImageName         string                          `json:"image_name"`
 	TargetRegion      []AzurermSharedImageVersionSpec `json:"target_region"`
+	ExcludeFromLatest bool                            `json:"exclude_from_latest"`
+	Location          string                          `json:"location"`
+	ResourceGroupName string                          `json:"resource_group_name"`
+	ManagedImageId    string                          `json:"managed_image_id"`
+	Tags              map[string]string               `json:"tags"`
 }
 
 type AzurermSharedImageVersionStatus struct {
@@ -39,6 +40,7 @@ type AzurermSharedImageVersionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermSharedImageVersionList is a list of AzurermSharedImageVersions
 type AzurermSharedImageVersionList struct {

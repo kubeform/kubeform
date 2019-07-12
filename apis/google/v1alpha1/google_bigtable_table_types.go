@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleBigtableTable struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type GoogleBigtableTable struct {
 }
 
 type GoogleBigtableTableSpec struct {
-	Project      string   `json:"project"`
 	Name         string   `json:"name"`
 	InstanceName string   `json:"instance_name"`
 	SplitKeys    []string `json:"split_keys"`
+	Project      string   `json:"project"`
 }
 
 type GoogleBigtableTableStatus struct {
@@ -29,6 +30,7 @@ type GoogleBigtableTableStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleBigtableTableList is a list of GoogleBigtableTables
 type GoogleBigtableTableList struct {

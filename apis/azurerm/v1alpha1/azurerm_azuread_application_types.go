@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAzureadApplication struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AzurermAzureadApplication struct {
 }
 
 type AzurermAzureadApplicationSpec struct {
+	AvailableToOtherTenants bool     `json:"available_to_other_tenants"`
+	Oauth2AllowImplicitFlow bool     `json:"oauth2_allow_implicit_flow"`
+	ApplicationId           string   `json:"application_id"`
 	Name                    string   `json:"name"`
 	Homepage                string   `json:"homepage"`
 	IdentifierUris          []string `json:"identifier_uris"`
 	ReplyUrls               []string `json:"reply_urls"`
-	AvailableToOtherTenants bool     `json:"available_to_other_tenants"`
-	Oauth2AllowImplicitFlow bool     `json:"oauth2_allow_implicit_flow"`
-	ApplicationId           string   `json:"application_id"`
 }
 
 type AzurermAzureadApplicationStatus struct {
@@ -32,6 +33,7 @@ type AzurermAzureadApplicationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAzureadApplicationList is a list of AzurermAzureadApplications
 type AzurermAzureadApplicationList struct {

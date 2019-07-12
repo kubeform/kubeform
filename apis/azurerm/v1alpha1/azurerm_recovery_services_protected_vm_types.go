@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermRecoveryServicesProtectedVm struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermRecoveryServicesProtectedVm struct {
 }
 
 type AzurermRecoveryServicesProtectedVmSpec struct {
-	Tags              map[string]string `json:"tags"`
 	ResourceGroupName string            `json:"resource_group_name"`
 	RecoveryVaultName string            `json:"recovery_vault_name"`
 	SourceVmId        string            `json:"source_vm_id"`
 	BackupPolicyId    string            `json:"backup_policy_id"`
+	Tags              map[string]string `json:"tags"`
 }
 
 type AzurermRecoveryServicesProtectedVmStatus struct {
@@ -30,6 +31,7 @@ type AzurermRecoveryServicesProtectedVmStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermRecoveryServicesProtectedVmList is a list of AzurermRecoveryServicesProtectedVms
 type AzurermRecoveryServicesProtectedVmList struct {

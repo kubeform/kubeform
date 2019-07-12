@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDatasyncLocationEfs struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AwsDatasyncLocationEfs struct {
 }
 
 type AwsDatasyncLocationEfsSpecEc2Config struct {
-	SubnetArn         string   `json:"subnet_arn"`
 	SecurityGroupArns []string `json:"security_group_arns"`
+	SubnetArn         string   `json:"subnet_arn"`
 }
 
 type AwsDatasyncLocationEfsSpec struct {
+	Ec2Config        []AwsDatasyncLocationEfsSpec `json:"ec2_config"`
+	EfsFileSystemArn string                       `json:"efs_file_system_arn"`
 	Subdirectory     string                       `json:"subdirectory"`
 	Tags             map[string]string            `json:"tags"`
 	Uri              string                       `json:"uri"`
 	Arn              string                       `json:"arn"`
-	Ec2Config        []AwsDatasyncLocationEfsSpec `json:"ec2_config"`
-	EfsFileSystemArn string                       `json:"efs_file_system_arn"`
 }
 
 type AwsDatasyncLocationEfsStatus struct {
@@ -36,6 +37,7 @@ type AwsDatasyncLocationEfsStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDatasyncLocationEfsList is a list of AwsDatasyncLocationEfss
 type AwsDatasyncLocationEfsList struct {

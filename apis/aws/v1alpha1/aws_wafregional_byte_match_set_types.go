@@ -9,24 +9,13 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafregionalByteMatchSet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              AwsWafregionalByteMatchSetSpec   `json:"spec,omitempty"`
 	Status            AwsWafregionalByteMatchSetStatus `json:"status,omitempty"`
-}
-
-type AwsWafregionalByteMatchSetSpecByteMatchTuplesFieldToMatch struct {
-	Data string `json:"data"`
-	Type string `json:"type"`
-}
-
-type AwsWafregionalByteMatchSetSpecByteMatchTuples struct {
-	FieldToMatch         []AwsWafregionalByteMatchSetSpecByteMatchTuples `json:"field_to_match"`
-	PositionalConstraint string                                          `json:"positional_constraint"`
-	TargetString         string                                          `json:"target_string"`
-	TextTransformation   string                                          `json:"text_transformation"`
 }
 
 type AwsWafregionalByteMatchSetSpecByteMatchTupleFieldToMatch struct {
@@ -41,10 +30,22 @@ type AwsWafregionalByteMatchSetSpecByteMatchTuple struct {
 	TextTransformation   string                                         `json:"text_transformation"`
 }
 
+type AwsWafregionalByteMatchSetSpecByteMatchTuplesFieldToMatch struct {
+	Data string `json:"data"`
+	Type string `json:"type"`
+}
+
+type AwsWafregionalByteMatchSetSpecByteMatchTuples struct {
+	FieldToMatch         []AwsWafregionalByteMatchSetSpecByteMatchTuples `json:"field_to_match"`
+	PositionalConstraint string                                          `json:"positional_constraint"`
+	TargetString         string                                          `json:"target_string"`
+	TextTransformation   string                                          `json:"text_transformation"`
+}
+
 type AwsWafregionalByteMatchSetSpec struct {
-	ByteMatchTuples []AwsWafregionalByteMatchSetSpec `json:"byte_match_tuples"`
 	Name            string                           `json:"name"`
 	ByteMatchTuple  []AwsWafregionalByteMatchSetSpec `json:"byte_match_tuple"`
+	ByteMatchTuples []AwsWafregionalByteMatchSetSpec `json:"byte_match_tuples"`
 }
 
 type AwsWafregionalByteMatchSetStatus struct {
@@ -52,6 +53,7 @@ type AwsWafregionalByteMatchSetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafregionalByteMatchSetList is a list of AwsWafregionalByteMatchSets
 type AwsWafregionalByteMatchSetList struct {

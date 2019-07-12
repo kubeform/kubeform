@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayDomainName struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,20 +23,20 @@ type AwsApiGatewayDomainNameSpecEndpointConfiguration struct {
 }
 
 type AwsApiGatewayDomainNameSpec struct {
-	CloudfrontZoneId        string                        `json:"cloudfront_zone_id"`
 	EndpointConfiguration   []AwsApiGatewayDomainNameSpec `json:"endpoint_configuration"`
-	CertificateChain        string                        `json:"certificate_chain"`
-	CertificatePrivateKey   string                        `json:"certificate_private_key"`
-	CertificateArn          string                        `json:"certificate_arn"`
-	RegionalZoneId          string                        `json:"regional_zone_id"`
-	CertificateBody         string                        `json:"certificate_body"`
 	CertificateName         string                        `json:"certificate_name"`
-	RegionalCertificateArn  string                        `json:"regional_certificate_arn"`
+	CertificatePrivateKey   string                        `json:"certificate_private_key"`
+	CloudfrontZoneId        string                        `json:"cloudfront_zone_id"`
+	RegionalCertificateName string                        `json:"regional_certificate_name"`
+	RegionalDomainName      string                        `json:"regional_domain_name"`
 	CloudfrontDomainName    string                        `json:"cloudfront_domain_name"`
 	CertificateUploadDate   string                        `json:"certificate_upload_date"`
-	RegionalCertificateName string                        `json:"regional_certificate_name"`
+	CertificateBody         string                        `json:"certificate_body"`
+	CertificateChain        string                        `json:"certificate_chain"`
 	DomainName              string                        `json:"domain_name"`
-	RegionalDomainName      string                        `json:"regional_domain_name"`
+	CertificateArn          string                        `json:"certificate_arn"`
+	RegionalCertificateArn  string                        `json:"regional_certificate_arn"`
+	RegionalZoneId          string                        `json:"regional_zone_id"`
 }
 
 type AwsApiGatewayDomainNameStatus struct {
@@ -43,6 +44,7 @@ type AwsApiGatewayDomainNameStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayDomainNameList is a list of AwsApiGatewayDomainNames
 type AwsApiGatewayDomainNameList struct {

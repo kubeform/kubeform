@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type LinodeVolume struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -32,6 +33,7 @@ type LinodeVolumeStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // LinodeVolumeList is a list of LinodeVolumes
 type LinodeVolumeList struct {

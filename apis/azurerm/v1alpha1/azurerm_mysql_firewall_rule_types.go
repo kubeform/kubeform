@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermMysqlFirewallRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermMysqlFirewallRule struct {
 }
 
 type AzurermMysqlFirewallRuleSpec struct {
-	ResourceGroupName string `json:"resource_group_name"`
-	ServerName        string `json:"server_name"`
 	StartIpAddress    string `json:"start_ip_address"`
 	EndIpAddress      string `json:"end_ip_address"`
 	Name              string `json:"name"`
+	ResourceGroupName string `json:"resource_group_name"`
+	ServerName        string `json:"server_name"`
 }
 
 type AzurermMysqlFirewallRuleStatus struct {
@@ -30,6 +31,7 @@ type AzurermMysqlFirewallRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermMysqlFirewallRuleList is a list of AzurermMysqlFirewallRules
 type AzurermMysqlFirewallRuleList struct {

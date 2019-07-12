@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDmsReplicationSubnetGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsDmsReplicationSubnetGroup struct {
 }
 
 type AwsDmsReplicationSubnetGroupSpec struct {
-	VpcId                             string            `json:"vpc_id"`
 	ReplicationSubnetGroupArn         string            `json:"replication_subnet_group_arn"`
 	ReplicationSubnetGroupDescription string            `json:"replication_subnet_group_description"`
 	ReplicationSubnetGroupId          string            `json:"replication_subnet_group_id"`
 	SubnetIds                         []string          `json:"subnet_ids"`
 	Tags                              map[string]string `json:"tags"`
+	VpcId                             string            `json:"vpc_id"`
 }
 
 type AwsDmsReplicationSubnetGroupStatus struct {
@@ -31,6 +32,7 @@ type AwsDmsReplicationSubnetGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDmsReplicationSubnetGroupList is a list of AwsDmsReplicationSubnetGroups
 type AwsDmsReplicationSubnetGroupList struct {

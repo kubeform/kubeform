@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsStoragegatewaySmbFileShare struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,21 +19,21 @@ type AwsStoragegatewaySmbFileShare struct {
 }
 
 type AwsStoragegatewaySmbFileShareSpec struct {
-	Arn                  string   `json:"arn"`
-	DefaultStorageClass  string   `json:"default_storage_class"`
 	KmsEncrypted         bool     `json:"kms_encrypted"`
-	ReadOnly             bool     `json:"read_only"`
-	RequesterPays        bool     `json:"requester_pays"`
-	FileshareId          string   `json:"fileshare_id"`
-	GuessMimeTypeEnabled bool     `json:"guess_mime_type_enabled"`
-	InvalidUserList      []string `json:"invalid_user_list"`
-	LocationArn          string   `json:"location_arn"`
 	ObjectAcl            string   `json:"object_acl"`
-	KmsKeyArn            string   `json:"kms_key_arn"`
 	RoleArn              string   `json:"role_arn"`
+	DefaultStorageClass  string   `json:"default_storage_class"`
+	InvalidUserList      []string `json:"invalid_user_list"`
 	Authentication       string   `json:"authentication"`
 	GatewayArn           string   `json:"gateway_arn"`
+	GuessMimeTypeEnabled bool     `json:"guess_mime_type_enabled"`
+	ReadOnly             bool     `json:"read_only"`
+	RequesterPays        bool     `json:"requester_pays"`
 	ValidUserList        []string `json:"valid_user_list"`
+	Arn                  string   `json:"arn"`
+	FileshareId          string   `json:"fileshare_id"`
+	KmsKeyArn            string   `json:"kms_key_arn"`
+	LocationArn          string   `json:"location_arn"`
 }
 
 type AwsStoragegatewaySmbFileShareStatus struct {
@@ -40,6 +41,7 @@ type AwsStoragegatewaySmbFileShareStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsStoragegatewaySmbFileShareList is a list of AwsStoragegatewaySmbFileShares
 type AwsStoragegatewaySmbFileShareList struct {

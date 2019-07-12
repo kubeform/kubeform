@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRdsClusterParameterGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AwsRdsClusterParameterGroup struct {
 }
 
 type AwsRdsClusterParameterGroupSpecParameter struct {
-	ApplyMethod string `json:"apply_method"`
 	Name        string `json:"name"`
 	Value       string `json:"value"`
+	ApplyMethod string `json:"apply_method"`
 }
 
 type AwsRdsClusterParameterGroupSpec struct {
+	Arn         string                            `json:"arn"`
+	Name        string                            `json:"name"`
+	NamePrefix  string                            `json:"name_prefix"`
 	Family      string                            `json:"family"`
 	Description string                            `json:"description"`
 	Parameter   []AwsRdsClusterParameterGroupSpec `json:"parameter"`
 	Tags        map[string]string                 `json:"tags"`
-	Arn         string                            `json:"arn"`
-	Name        string                            `json:"name"`
-	NamePrefix  string                            `json:"name_prefix"`
 }
 
 type AwsRdsClusterParameterGroupStatus struct {
@@ -38,6 +39,7 @@ type AwsRdsClusterParameterGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRdsClusterParameterGroupList is a list of AwsRdsClusterParameterGroups
 type AwsRdsClusterParameterGroupList struct {

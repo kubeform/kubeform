@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCloudwatchMetricAlarm struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,45 +19,45 @@ type AwsCloudwatchMetricAlarm struct {
 }
 
 type AwsCloudwatchMetricAlarmSpecMetricQueryMetric struct {
-	Unit       string            `json:"unit"`
 	Dimensions map[string]string `json:"dimensions"`
 	MetricName string            `json:"metric_name"`
 	Namespace  string            `json:"namespace"`
 	Period     int               `json:"period"`
 	Stat       string            `json:"stat"`
+	Unit       string            `json:"unit"`
 }
 
 type AwsCloudwatchMetricAlarmSpecMetricQuery struct {
-	Metric     []AwsCloudwatchMetricAlarmSpecMetricQuery `json:"metric"`
 	Label      string                                    `json:"label"`
 	ReturnData bool                                      `json:"return_data"`
 	Id         string                                    `json:"id"`
 	Expression string                                    `json:"expression"`
+	Metric     []AwsCloudwatchMetricAlarmSpecMetricQuery `json:"metric"`
 }
 
 type AwsCloudwatchMetricAlarmSpec struct {
-	Statistic                         string                         `json:"statistic"`
-	Unit                              string                         `json:"unit"`
-	Tags                              map[string]string              `json:"tags"`
-	Threshold                         float64                        `json:"threshold"`
+	AlarmName                         string                         `json:"alarm_name"`
+	Namespace                         string                         `json:"namespace"`
 	AlarmDescription                  string                         `json:"alarm_description"`
-	Arn                               string                         `json:"arn"`
-	ComparisonOperator                string                         `json:"comparison_operator"`
-	MetricName                        string                         `json:"metric_name"`
+	DatapointsToAlarm                 int                            `json:"datapoints_to_alarm"`
+	TreatMissingData                  string                         `json:"treat_missing_data"`
+	EvaluationPeriods                 int                            `json:"evaluation_periods"`
 	AlarmActions                      []string                       `json:"alarm_actions"`
-	Dimensions                        map[string]string              `json:"dimensions"`
 	InsufficientDataActions           []string                       `json:"insufficient_data_actions"`
+	OkActions                         []string                       `json:"ok_actions"`
+	Tags                              map[string]string              `json:"tags"`
+	ComparisonOperator                string                         `json:"comparison_operator"`
+	MetricQuery                       []AwsCloudwatchMetricAlarmSpec `json:"metric_query"`
+	Period                            int                            `json:"period"`
+	Threshold                         float64                        `json:"threshold"`
+	Unit                              string                         `json:"unit"`
+	Arn                               string                         `json:"arn"`
+	MetricName                        string                         `json:"metric_name"`
+	Statistic                         string                         `json:"statistic"`
+	ActionsEnabled                    bool                           `json:"actions_enabled"`
+	Dimensions                        map[string]string              `json:"dimensions"`
 	ExtendedStatistic                 string                         `json:"extended_statistic"`
 	EvaluateLowSampleCountPercentiles string                         `json:"evaluate_low_sample_count_percentiles"`
-	EvaluationPeriods                 int                            `json:"evaluation_periods"`
-	Namespace                         string                         `json:"namespace"`
-	Period                            int                            `json:"period"`
-	DatapointsToAlarm                 int                            `json:"datapoints_to_alarm"`
-	OkActions                         []string                       `json:"ok_actions"`
-	TreatMissingData                  string                         `json:"treat_missing_data"`
-	AlarmName                         string                         `json:"alarm_name"`
-	MetricQuery                       []AwsCloudwatchMetricAlarmSpec `json:"metric_query"`
-	ActionsEnabled                    bool                           `json:"actions_enabled"`
 }
 
 type AwsCloudwatchMetricAlarmStatus struct {
@@ -64,6 +65,7 @@ type AwsCloudwatchMetricAlarmStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCloudwatchMetricAlarmList is a list of AwsCloudwatchMetricAlarms
 type AwsCloudwatchMetricAlarmList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeAddress struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type GoogleComputeAddress struct {
 }
 
 type GoogleComputeAddressSpec struct {
-	LabelFingerprint  string            `json:"label_fingerprint"`
-	Project           string            `json:"project"`
 	Name              string            `json:"name"`
+	Address           string            `json:"address"`
 	AddressType       string            `json:"address_type"`
-	Labels            map[string]string `json:"labels"`
+	Description       string            `json:"description"`
+	NetworkTier       string            `json:"network_tier"`
 	Region            string            `json:"region"`
 	Subnetwork        string            `json:"subnetwork"`
 	CreationTimestamp string            `json:"creation_timestamp"`
-	Address           string            `json:"address"`
-	Description       string            `json:"description"`
-	NetworkTier       string            `json:"network_tier"`
-	Users             []string          `json:"users"`
+	LabelFingerprint  string            `json:"label_fingerprint"`
+	Project           string            `json:"project"`
 	SelfLink          string            `json:"self_link"`
+	Labels            map[string]string `json:"labels"`
+	Users             []string          `json:"users"`
 }
 
 type GoogleComputeAddressStatus struct {
@@ -38,6 +39,7 @@ type GoogleComputeAddressStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeAddressList is a list of GoogleComputeAddresss
 type GoogleComputeAddressList struct {

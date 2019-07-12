@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSsmResourceDataSync struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -26,8 +27,8 @@ type AwsSsmResourceDataSyncSpecS3Destination struct {
 }
 
 type AwsSsmResourceDataSyncSpec struct {
-	Name          string                       `json:"name"`
 	S3Destination []AwsSsmResourceDataSyncSpec `json:"s3_destination"`
+	Name          string                       `json:"name"`
 }
 
 type AwsSsmResourceDataSyncStatus struct {
@@ -35,6 +36,7 @@ type AwsSsmResourceDataSyncStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSsmResourceDataSyncList is a list of AwsSsmResourceDataSyncs
 type AwsSsmResourceDataSyncList struct {

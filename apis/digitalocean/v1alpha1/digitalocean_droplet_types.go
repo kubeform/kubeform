@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanDroplet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,31 +19,31 @@ type DigitaloceanDroplet struct {
 }
 
 type DigitaloceanDropletSpec struct {
-	Ipv6Address        string   `json:"ipv6_address"`
-	VolumeIds          []string `json:"volume_ids"`
-	Image              string   `json:"image"`
+	Status             string   `json:"status"`
+	PrivateNetworking  bool     `json:"private_networking"`
+	Ipv4AddressPrivate string   `json:"ipv4_address_private"`
+	Tags               []string `json:"tags"`
+	Name               string   `json:"name"`
 	Size               string   `json:"size"`
 	Disk               int      `json:"disk"`
-	Vcpus              int      `json:"vcpus"`
-	Memory             int      `json:"memory"`
-	Region             string   `json:"region"`
 	PriceHourly        float64  `json:"price_hourly"`
-	Status             string   `json:"status"`
-	Tags               []string `json:"tags"`
-	Ipv6               bool     `json:"ipv6"`
-	Ipv6AddressPrivate string   `json:"ipv6_address_private"`
-	Ipv4Address        string   `json:"ipv4_address"`
-	Name               string   `json:"name"`
+	Monitoring         bool     `json:"monitoring"`
+	Region             string   `json:"region"`
+	Urn                string   `json:"urn"`
+	Vcpus              int      `json:"vcpus"`
+	SshKeys            []string `json:"ssh_keys"`
+	Ipv6Address        string   `json:"ipv6_address"`
+	UserData           string   `json:"user_data"`
+	VolumeIds          []string `json:"volume_ids"`
+	Image              string   `json:"image"`
 	PriceMonthly       float64  `json:"price_monthly"`
 	ResizeDisk         bool     `json:"resize_disk"`
+	Ipv6               bool     `json:"ipv6"`
+	Ipv4Address        string   `json:"ipv4_address"`
+	Memory             int      `json:"memory"`
 	Locked             bool     `json:"locked"`
 	Backups            bool     `json:"backups"`
-	Ipv4AddressPrivate string   `json:"ipv4_address_private"`
-	SshKeys            []string `json:"ssh_keys"`
-	UserData           string   `json:"user_data"`
-	Urn                string   `json:"urn"`
-	PrivateNetworking  bool     `json:"private_networking"`
-	Monitoring         bool     `json:"monitoring"`
+	Ipv6AddressPrivate string   `json:"ipv6_address_private"`
 }
 
 type DigitaloceanDropletStatus struct {
@@ -50,6 +51,7 @@ type DigitaloceanDropletStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanDropletList is a list of DigitaloceanDroplets
 type DigitaloceanDropletList struct {

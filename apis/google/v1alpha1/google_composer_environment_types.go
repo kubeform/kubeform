@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComposerEnvironment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -29,10 +30,10 @@ type GoogleComposerEnvironmentSpecConfigNodeConfig struct {
 }
 
 type GoogleComposerEnvironmentSpecConfigSoftwareConfig struct {
-	EnvVariables           map[string]string `json:"env_variables"`
-	ImageVersion           string            `json:"image_version"`
 	AirflowConfigOverrides map[string]string `json:"airflow_config_overrides"`
 	PypiPackages           map[string]string `json:"pypi_packages"`
+	EnvVariables           map[string]string `json:"env_variables"`
+	ImageVersion           string            `json:"image_version"`
 }
 
 type GoogleComposerEnvironmentSpecConfig struct {
@@ -45,11 +46,11 @@ type GoogleComposerEnvironmentSpecConfig struct {
 }
 
 type GoogleComposerEnvironmentSpec struct {
+	Project string                          `json:"project"`
+	Config  []GoogleComposerEnvironmentSpec `json:"config"`
 	Labels  map[string]string               `json:"labels"`
 	Name    string                          `json:"name"`
 	Region  string                          `json:"region"`
-	Project string                          `json:"project"`
-	Config  []GoogleComposerEnvironmentSpec `json:"config"`
 }
 
 type GoogleComposerEnvironmentStatus struct {
@@ -57,6 +58,7 @@ type GoogleComposerEnvironmentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComposerEnvironmentList is a list of GoogleComposerEnvironments
 type GoogleComposerEnvironmentList struct {

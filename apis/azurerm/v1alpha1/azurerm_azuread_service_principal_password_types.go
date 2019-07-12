@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAzureadServicePrincipalPassword struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermAzureadServicePrincipalPassword struct {
 }
 
 type AzurermAzureadServicePrincipalPasswordSpec struct {
+	EndDate            string `json:"end_date"`
 	ServicePrincipalId string `json:"service_principal_id"`
 	KeyId              string `json:"key_id"`
 	Value              string `json:"value"`
 	StartDate          string `json:"start_date"`
-	EndDate            string `json:"end_date"`
 }
 
 type AzurermAzureadServicePrincipalPasswordStatus struct {
@@ -30,6 +31,7 @@ type AzurermAzureadServicePrincipalPasswordStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAzureadServicePrincipalPasswordList is a list of AzurermAzureadServicePrincipalPasswords
 type AzurermAzureadServicePrincipalPasswordList struct {

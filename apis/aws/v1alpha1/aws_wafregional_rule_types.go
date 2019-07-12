@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafregionalRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,9 +25,9 @@ type AwsWafregionalRuleSpecPredicate struct {
 }
 
 type AwsWafregionalRuleSpec struct {
-	Name       string                   `json:"name"`
 	MetricName string                   `json:"metric_name"`
 	Predicate  []AwsWafregionalRuleSpec `json:"predicate"`
+	Name       string                   `json:"name"`
 }
 
 type AwsWafregionalRuleStatus struct {
@@ -34,6 +35,7 @@ type AwsWafregionalRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafregionalRuleList is a list of AwsWafregionalRules
 type AwsWafregionalRuleList struct {

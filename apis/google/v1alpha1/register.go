@@ -38,323 +38,59 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 
-		&GoogleFolder{},
-		&GoogleFolderList{},
-
-		&GoogleSqlUser{},
-		&GoogleSqlUserList{},
-
-		&GoogleLoggingProjectSink{},
-		&GoogleLoggingProjectSinkList{},
-
-		&GoogleComputeRouterInterface{},
-		&GoogleComputeRouterInterfaceList{},
-
-		&GoogleComputeInstance{},
-		&GoogleComputeInstanceList{},
-
-		&GoogleComputeDisk{},
-		&GoogleComputeDiskList{},
-
-		&GoogleComputeTargetHttpsProxy{},
-		&GoogleComputeTargetHttpsProxyList{},
-
-		&GoogleLoggingBillingAccountSink{},
-		&GoogleLoggingBillingAccountSinkList{},
-
-		&GoogleDataprocCluster{},
-		&GoogleDataprocClusterList{},
-
-		&GoogleComputeTargetTcpProxy{},
-		&GoogleComputeTargetTcpProxyList{},
-
-		&GoogleComputeRegionAutoscaler{},
-		&GoogleComputeRegionAutoscalerList{},
-
-		&GoogleComputeBackendService{},
-		&GoogleComputeBackendServiceList{},
-
-		&GoogleMonitoringNotificationChannel{},
-		&GoogleMonitoringNotificationChannelList{},
-
-		&GoogleOrganizationIamMember{},
-		&GoogleOrganizationIamMemberList{},
-
-		&GoogleStorageBucketIamMember{},
-		&GoogleStorageBucketIamMemberList{},
-
-		&GoogleOrganizationIamPolicy{},
-		&GoogleOrganizationIamPolicyList{},
-
-		&GoogleKmsCryptoKeyIamMember{},
-		&GoogleKmsCryptoKeyIamMemberList{},
-
-		&GoogleSpannerInstanceIamBinding{},
-		&GoogleSpannerInstanceIamBindingList{},
-
 		&GoogleComputeSubnetworkIamPolicy{},
 		&GoogleComputeSubnetworkIamPolicyList{},
-
-		&GoogleKmsCryptoKey{},
-		&GoogleKmsCryptoKeyList{},
-
-		&GoogleComputeSubnetworkIamMember{},
-		&GoogleComputeSubnetworkIamMemberList{},
-
-		&GoogleContainerNodePool{},
-		&GoogleContainerNodePoolList{},
-
-		&GoogleSourcerepoRepository{},
-		&GoogleSourcerepoRepositoryList{},
-
-		&GoogleResourceManagerLien{},
-		&GoogleResourceManagerLienList{},
-
-		&GoogleSpannerDatabaseIamBinding{},
-		&GoogleSpannerDatabaseIamBindingList{},
-
-		&GoogleComputeAttachedDisk{},
-		&GoogleComputeAttachedDiskList{},
-
-		&GoogleStorageBucketIamPolicy{},
-		&GoogleStorageBucketIamPolicyList{},
-
-		&GoogleBillingAccountIamBinding{},
-		&GoogleBillingAccountIamBindingList{},
-
-		&GooglePubsubSubscription{},
-		&GooglePubsubSubscriptionList{},
-
-		&GoogleStorageBucketIamBinding{},
-		&GoogleStorageBucketIamBindingList{},
-
-		&GoogleRuntimeconfigVariable{},
-		&GoogleRuntimeconfigVariableList{},
-
-		&GoogleCloudbuildTrigger{},
-		&GoogleCloudbuildTriggerList{},
-
-		&GoogleComputeAddress{},
-		&GoogleComputeAddressList{},
-
-		&GoogleRedisInstance{},
-		&GoogleRedisInstanceList{},
-
-		&GoogleMonitoringUptimeCheckConfig{},
-		&GoogleMonitoringUptimeCheckConfigList{},
-
-		&GoogleOrganizationPolicy{},
-		&GoogleOrganizationPolicyList{},
-
-		&GoogleCloudfunctionsFunction{},
-		&GoogleCloudfunctionsFunctionList{},
-
-		&GoogleServiceAccountIamPolicy{},
-		&GoogleServiceAccountIamPolicyList{},
-
-		&GoogleComputeHealthCheck{},
-		&GoogleComputeHealthCheckList{},
-
-		&GoogleComputeTargetSslProxy{},
-		&GoogleComputeTargetSslProxyList{},
-
-		&GoogleComputeSharedVpcServiceProject{},
-		&GoogleComputeSharedVpcServiceProjectList{},
-
-		&GoogleProjectOrganizationPolicy{},
-		&GoogleProjectOrganizationPolicyList{},
-
-		&GoogleComputeProjectMetadataItem{},
-		&GoogleComputeProjectMetadataItemList{},
-
-		&GoogleBinaryAuthorizationPolicy{},
-		&GoogleBinaryAuthorizationPolicyList{},
-
-		&GoogleComputeTargetHttpProxy{},
-		&GoogleComputeTargetHttpProxyList{},
 
 		&GoogleStorageBucket{},
 		&GoogleStorageBucketList{},
 
-		&GoogleProjectUsageExportBucket{},
-		&GoogleProjectUsageExportBucketList{},
+		&GoogleDataflowJob{},
+		&GoogleDataflowJobList{},
 
-		&GoogleSqlDatabase{},
-		&GoogleSqlDatabaseList{},
-
-		&GoogleComputeRouter{},
-		&GoogleComputeRouterList{},
-
-		&GoogleComputeSecurityPolicy{},
-		&GoogleComputeSecurityPolicyList{},
-
-		&GoogleComputeGlobalForwardingRule{},
-		&GoogleComputeGlobalForwardingRuleList{},
-
-		&GoogleBigqueryDataset{},
-		&GoogleBigqueryDatasetList{},
-
-		&GoogleComputeInstanceFromTemplate{},
-		&GoogleComputeInstanceFromTemplateList{},
-
-		&GoogleFolderIamMember{},
-		&GoogleFolderIamMemberList{},
-
-		&GoogleComputeAutoscaler{},
-		&GoogleComputeAutoscalerList{},
-
-		&GoogleFilestoreInstance{},
-		&GoogleFilestoreInstanceList{},
-
-		&GoogleServiceAccountKey{},
-		&GoogleServiceAccountKeyList{},
-
-		&GoogleComputeForwardingRule{},
-		&GoogleComputeForwardingRuleList{},
-
-		&GoogleFolderIamBinding{},
-		&GoogleFolderIamBindingList{},
-
-		&GoogleLoggingFolderExclusion{},
-		&GoogleLoggingFolderExclusionList{},
-
-		&GoogleComputeNetwork{},
-		&GoogleComputeNetworkList{},
-
-		&GoogleBillingAccountIamPolicy{},
-		&GoogleBillingAccountIamPolicyList{},
-
-		&GoogleProjectIamCustomRole{},
-		&GoogleProjectIamCustomRoleList{},
-
-		&GoogleSqlDatabaseInstance{},
-		&GoogleSqlDatabaseInstanceList{},
-
-		&GoogleKmsKeyRingIamPolicy{},
-		&GoogleKmsKeyRingIamPolicyList{},
-
-		&GoogleComputeGlobalAddress{},
-		&GoogleComputeGlobalAddressList{},
+		&GoogleOrganizationPolicy{},
+		&GoogleOrganizationPolicyList{},
 
 		&GoogleDnsManagedZone{},
 		&GoogleDnsManagedZoneList{},
 
-		&GoogleComputeRouterNat{},
-		&GoogleComputeRouterNatList{},
+		&GoogleComputeNetwork{},
+		&GoogleComputeNetworkList{},
 
-		&GoogleComputeRoute{},
-		&GoogleComputeRouteList{},
+		&GoogleSpannerDatabase{},
+		&GoogleSpannerDatabaseList{},
 
-		&GoogleComputeSubnetwork{},
-		&GoogleComputeSubnetworkList{},
-
-		&GoogleComputeHttpHealthCheck{},
-		&GoogleComputeHttpHealthCheckList{},
-
-		&GoogleComputeInstanceGroupManager{},
-		&GoogleComputeInstanceGroupManagerList{},
-
-		&GoogleFolderIamPolicy{},
-		&GoogleFolderIamPolicyList{},
-
-		&GoogleDnsRecordSet{},
-		&GoogleDnsRecordSetList{},
-
-		&GoogleOrganizationIamBinding{},
-		&GoogleOrganizationIamBindingList{},
-
-		&GoogleStorageObjectAccessControl{},
-		&GoogleStorageObjectAccessControlList{},
-
-		&GoogleKmsCryptoKeyIamBinding{},
-		&GoogleKmsCryptoKeyIamBindingList{},
-
-		&GoogleAppEngineApplication{},
-		&GoogleAppEngineApplicationList{},
-
-		&GoogleServiceAccount{},
-		&GoogleServiceAccountList{},
-
-		&GoogleBigtableTable{},
-		&GoogleBigtableTableList{},
-
-		&GoogleComputeRegionDisk{},
-		&GoogleComputeRegionDiskList{},
-
-		&GoogleComputeRegionInstanceGroupManager{},
-		&GoogleComputeRegionInstanceGroupManagerList{},
-
-		&GoogleSpannerDatabaseIamMember{},
-		&GoogleSpannerDatabaseIamMemberList{},
-
-		&GoogleMonitoringGroup{},
-		&GoogleMonitoringGroupList{},
+		&GoogleLoggingOrganizationSink{},
+		&GoogleLoggingOrganizationSinkList{},
 
 		&GoogleCloudiotRegistry{},
 		&GoogleCloudiotRegistryList{},
 
-		&GoogleProjectIamBinding{},
-		&GoogleProjectIamBindingList{},
+		&GoogleComputeHealthCheck{},
+		&GoogleComputeHealthCheckList{},
 
-		&GoogleStorageDefaultObjectAcl{},
-		&GoogleStorageDefaultObjectAclList{},
+		&GoogleCloudbuildTrigger{},
+		&GoogleCloudbuildTriggerList{},
 
-		&GoogleComputeInterconnectAttachment{},
-		&GoogleComputeInterconnectAttachmentList{},
+		&GoogleComputeImage{},
+		&GoogleComputeImageList{},
 
-		&GoogleComputeVpnTunnel{},
-		&GoogleComputeVpnTunnelList{},
-
-		&GoogleContainerAnalysisNote{},
-		&GoogleContainerAnalysisNoteList{},
-
-		&GooglePubsubTopicIamPolicy{},
-		&GooglePubsubTopicIamPolicyList{},
-
-		&GoogleBigtableInstance{},
-		&GoogleBigtableInstanceList{},
-
-		&GoogleLoggingProjectExclusion{},
-		&GoogleLoggingProjectExclusionList{},
-
-		&GoogleBinaryAuthorizationAttestor{},
-		&GoogleBinaryAuthorizationAttestorList{},
-
-		&GoogleLoggingBillingAccountExclusion{},
-		&GoogleLoggingBillingAccountExclusionList{},
-
-		&GoogleStorageObjectAcl{},
-		&GoogleStorageObjectAclList{},
-
-		&GoogleComputeSubnetworkIamBinding{},
-		&GoogleComputeSubnetworkIamBindingList{},
-
-		&GooglePubsubTopic{},
-		&GooglePubsubTopicList{},
+		&GoogleEndpointsService{},
+		&GoogleEndpointsServiceList{},
 
 		&GoogleContainerCluster{},
 		&GoogleContainerClusterList{},
 
-		&GoogleComposerEnvironment{},
-		&GoogleComposerEnvironmentList{},
+		&GoogleServiceAccountKey{},
+		&GoogleServiceAccountKeyList{},
 
-		&GoogleServiceAccountIamBinding{},
-		&GoogleServiceAccountIamBindingList{},
+		&GoogleMonitoringAlertPolicy{},
+		&GoogleMonitoringAlertPolicyList{},
 
-		&GoogleComputeSnapshot{},
-		&GoogleComputeSnapshotList{},
+		&GoogleBigtableTable{},
+		&GoogleBigtableTableList{},
 
-		&GoogleStorageDefaultObjectAccessControl{},
-		&GoogleStorageDefaultObjectAccessControlList{},
-
-		&GoogleProjectIamPolicy{},
-		&GoogleProjectIamPolicyList{},
-
-		&GoogleSpannerInstanceIamPolicy{},
-		&GoogleSpannerInstanceIamPolicyList{},
-
-		&GoogleProjectServices{},
-		&GoogleProjectServicesList{},
+		&GoogleBillingAccountIamMember{},
+		&GoogleBillingAccountIamMemberList{},
 
 		&GoogleSpannerInstanceIamMember{},
 		&GoogleSpannerInstanceIamMemberList{},
@@ -362,143 +98,407 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&GoogleSpannerDatabaseIamPolicy{},
 		&GoogleSpannerDatabaseIamPolicyList{},
 
-		&GoogleProjectIamMember{},
-		&GoogleProjectIamMemberList{},
+		&GoogleComputeSubnetworkIamMember{},
+		&GoogleComputeSubnetworkIamMemberList{},
 
-		&GoogleMonitoringAlertPolicy{},
-		&GoogleMonitoringAlertPolicyList{},
-
-		&GoogleStorageNotification{},
-		&GoogleStorageNotificationList{},
-
-		&GoogleComputeInstanceTemplate{},
-		&GoogleComputeInstanceTemplateList{},
-
-		&GoogleComputeNetworkPeering{},
-		&GoogleComputeNetworkPeeringList{},
-
-		&GoogleDataprocJob{},
-		&GoogleDataprocJobList{},
-
-		&GoogleKmsKeyRingIamBinding{},
-		&GoogleKmsKeyRingIamBindingList{},
+		&GoogleComputeTargetHttpProxy{},
+		&GoogleComputeTargetHttpProxyList{},
 
 		&GoogleLoggingFolderSink{},
 		&GoogleLoggingFolderSinkList{},
 
-		&GooglePubsubSubscriptionIamMember{},
-		&GooglePubsubSubscriptionIamMemberList{},
+		&GoogleProjectIamCustomRole{},
+		&GoogleProjectIamCustomRoleList{},
 
-		&GoogleSqlSslCert{},
-		&GoogleSqlSslCertList{},
+		&GoogleBigqueryDataset{},
+		&GoogleBigqueryDatasetList{},
 
-		&GoogleBillingAccountIamMember{},
-		&GoogleBillingAccountIamMemberList{},
+		&GoogleStorageBucketIamPolicy{},
+		&GoogleStorageBucketIamPolicyList{},
 
-		&GoogleProject{},
-		&GoogleProjectList{},
+		&GoogleSqlDatabaseInstance{},
+		&GoogleSqlDatabaseInstanceList{},
+
+		&GoogleDnsRecordSet{},
+		&GoogleDnsRecordSetList{},
 
 		&GoogleComputeVpnGateway{},
 		&GoogleComputeVpnGatewayList{},
 
-		&GoogleOrganizationIamCustomRole{},
-		&GoogleOrganizationIamCustomRoleList{},
+		&GoogleComputeVpnTunnel{},
+		&GoogleComputeVpnTunnelList{},
 
-		&GoogleComputeImage{},
-		&GoogleComputeImageList{},
+		&GoogleComputeHttpHealthCheck{},
+		&GoogleComputeHttpHealthCheckList{},
 
-		&GoogleComputeRouterPeer{},
-		&GoogleComputeRouterPeerList{},
+		&GoogleServiceAccountIamPolicy{},
+		&GoogleServiceAccountIamPolicyList{},
 
-		&GoogleComputeHttpsHealthCheck{},
-		&GoogleComputeHttpsHealthCheckList{},
+		&GooglePubsubTopicIamPolicy{},
+		&GooglePubsubTopicIamPolicyList{},
 
-		&GoogleComputeTargetPool{},
-		&GoogleComputeTargetPoolList{},
+		&GoogleLoggingBillingAccountExclusion{},
+		&GoogleLoggingBillingAccountExclusionList{},
 
-		&GooglePubsubTopicIamMember{},
-		&GooglePubsubTopicIamMemberList{},
+		&GoogleComputeTargetTcpProxy{},
+		&GoogleComputeTargetTcpProxyList{},
 
-		&GoogleFolderOrganizationPolicy{},
-		&GoogleFolderOrganizationPolicyList{},
+		&GoogleSpannerInstanceIamPolicy{},
+		&GoogleSpannerInstanceIamPolicyList{},
 
-		&GooglePubsubSubscriptionIamBinding{},
-		&GooglePubsubSubscriptionIamBindingList{},
+		&GoogleComputeProjectMetadataItem{},
+		&GoogleComputeProjectMetadataItemList{},
 
-		&GoogleKmsKeyRing{},
-		&GoogleKmsKeyRingList{},
+		&GoogleFolder{},
+		&GoogleFolderList{},
 
-		&GoogleComputeSslCertificate{},
-		&GoogleComputeSslCertificateList{},
+		&GoogleFolderIamBinding{},
+		&GoogleFolderIamBindingList{},
 
 		&GoogleStorageBucketAcl{},
 		&GoogleStorageBucketAclList{},
 
-		&GoogleComputeRegionBackendService{},
-		&GoogleComputeRegionBackendServiceList{},
+		&GoogleComputeRegionAutoscaler{},
+		&GoogleComputeRegionAutoscalerList{},
 
-		&GoogleStorageBucketObject{},
-		&GoogleStorageBucketObjectList{},
+		&GoogleKmsCryptoKeyIamBinding{},
+		&GoogleKmsCryptoKeyIamBindingList{},
 
-		&GoogleEndpointsService{},
-		&GoogleEndpointsServiceList{},
+		&GoogleLoggingProjectExclusion{},
+		&GoogleLoggingProjectExclusionList{},
 
-		&GooglePubsubSubscriptionIamPolicy{},
-		&GooglePubsubSubscriptionIamPolicyList{},
+		&GoogleServiceAccount{},
+		&GoogleServiceAccountList{},
 
-		&GoogleComputeSharedVpcHostProject{},
-		&GoogleComputeSharedVpcHostProjectList{},
+		&GoogleComputeAddress{},
+		&GoogleComputeAddressList{},
 
-		&GoogleBigqueryTable{},
-		&GoogleBigqueryTableList{},
+		&GoogleStorageObjectAccessControl{},
+		&GoogleStorageObjectAccessControlList{},
 
-		&GoogleRuntimeconfigConfig{},
-		&GoogleRuntimeconfigConfigList{},
+		&GoogleComputeSecurityPolicy{},
+		&GoogleComputeSecurityPolicyList{},
 
-		&GoogleComputeInstanceGroup{},
-		&GoogleComputeInstanceGroupList{},
-
-		&GoogleComputeFirewall{},
-		&GoogleComputeFirewallList{},
-
-		&GoogleSpannerInstance{},
-		&GoogleSpannerInstanceList{},
-
-		&GoogleServiceAccountIamMember{},
-		&GoogleServiceAccountIamMemberList{},
-
-		&GoogleComputeBackendBucket{},
-		&GoogleComputeBackendBucketList{},
-
-		&GoogleLoggingOrganizationSink{},
-		&GoogleLoggingOrganizationSinkList{},
-
-		&GoogleLoggingOrganizationExclusion{},
-		&GoogleLoggingOrganizationExclusionList{},
-
-		&GoogleDataflowJob{},
-		&GoogleDataflowJobList{},
-
-		&GoogleComputeSslPolicy{},
-		&GoogleComputeSslPolicyList{},
-
-		&GoogleProjectService{},
-		&GoogleProjectServiceList{},
-
-		&GoogleKmsKeyRingIamMember{},
-		&GoogleKmsKeyRingIamMemberList{},
-
-		&GoogleSpannerDatabase{},
-		&GoogleSpannerDatabaseList{},
-
-		&GooglePubsubTopicIamBinding{},
-		&GooglePubsubTopicIamBindingList{},
+		&GooglePubsubSubscriptionIamMember{},
+		&GooglePubsubSubscriptionIamMemberList{},
 
 		&GoogleComputeUrlMap{},
 		&GoogleComputeUrlMapList{},
 
+		&GoogleContainerNodePool{},
+		&GoogleContainerNodePoolList{},
+
+		&GoogleCloudfunctionsFunction{},
+		&GoogleCloudfunctionsFunctionList{},
+
+		&GoogleBinaryAuthorizationPolicy{},
+		&GoogleBinaryAuthorizationPolicyList{},
+
+		&GoogleDataprocJob{},
+		&GoogleDataprocJobList{},
+
+		&GoogleProjectIamBinding{},
+		&GoogleProjectIamBindingList{},
+
+		&GoogleComputeRegionBackendService{},
+		&GoogleComputeRegionBackendServiceList{},
+
+		&GoogleOrganizationIamMember{},
+		&GoogleOrganizationIamMemberList{},
+
+		&GoogleComputeGlobalAddress{},
+		&GoogleComputeGlobalAddressList{},
+
+		&GoogleComputeSubnetwork{},
+		&GoogleComputeSubnetworkList{},
+
+		&GoogleComputeRoute{},
+		&GoogleComputeRouteList{},
+
+		&GoogleFilestoreInstance{},
+		&GoogleFilestoreInstanceList{},
+
+		&GoogleLoggingProjectSink{},
+		&GoogleLoggingProjectSinkList{},
+
+		&GoogleProjectUsageExportBucket{},
+		&GoogleProjectUsageExportBucketList{},
+
+		&GoogleComputeInstanceTemplate{},
+		&GoogleComputeInstanceTemplateList{},
+
+		&GoogleProjectIamPolicy{},
+		&GoogleProjectIamPolicyList{},
+
+		&GoogleComputeSslCertificate{},
+		&GoogleComputeSslCertificateList{},
+
+		&GoogleBillingAccountIamBinding{},
+		&GoogleBillingAccountIamBindingList{},
+
+		&GoogleSpannerInstanceIamBinding{},
+		&GoogleSpannerInstanceIamBindingList{},
+
+		&GoogleComputeRegionInstanceGroupManager{},
+		&GoogleComputeRegionInstanceGroupManagerList{},
+
+		&GoogleComputeDisk{},
+		&GoogleComputeDiskList{},
+
+		&GoogleComputeFirewall{},
+		&GoogleComputeFirewallList{},
+
+		&GoogleComputeNetworkPeering{},
+		&GoogleComputeNetworkPeeringList{},
+
+		&GoogleOrganizationIamBinding{},
+		&GoogleOrganizationIamBindingList{},
+
+		&GoogleBillingAccountIamPolicy{},
+		&GoogleBillingAccountIamPolicyList{},
+
+		&GoogleComputeTargetSslProxy{},
+		&GoogleComputeTargetSslProxyList{},
+
+		&GoogleSpannerInstance{},
+		&GoogleSpannerInstanceList{},
+
+		&GoogleOrganizationIamPolicy{},
+		&GoogleOrganizationIamPolicyList{},
+
+		&GoogleComputeSubnetworkIamBinding{},
+		&GoogleComputeSubnetworkIamBindingList{},
+
+		&GoogleSqlDatabase{},
+		&GoogleSqlDatabaseList{},
+
+		&GoogleComputeSnapshot{},
+		&GoogleComputeSnapshotList{},
+
+		&GoogleMonitoringNotificationChannel{},
+		&GoogleMonitoringNotificationChannelList{},
+
+		&GoogleDataprocCluster{},
+		&GoogleDataprocClusterList{},
+
+		&GoogleLoggingFolderExclusion{},
+		&GoogleLoggingFolderExclusionList{},
+
+		&GoogleStorageBucketIamMember{},
+		&GoogleStorageBucketIamMemberList{},
+
+		&GoogleRedisInstance{},
+		&GoogleRedisInstanceList{},
+
+		&GoogleFolderIamMember{},
+		&GoogleFolderIamMemberList{},
+
+		&GoogleAppEngineApplication{},
+		&GoogleAppEngineApplicationList{},
+
+		&GoogleLoggingOrganizationExclusion{},
+		&GoogleLoggingOrganizationExclusionList{},
+
+		&GoogleComputeBackendService{},
+		&GoogleComputeBackendServiceList{},
+
+		&GooglePubsubSubscriptionIamBinding{},
+		&GooglePubsubSubscriptionIamBindingList{},
+
+		&GoogleOrganizationIamCustomRole{},
+		&GoogleOrganizationIamCustomRoleList{},
+
+		&GoogleComputeInstance{},
+		&GoogleComputeInstanceList{},
+
+		&GoogleSpannerDatabaseIamMember{},
+		&GoogleSpannerDatabaseIamMemberList{},
+
+		&GoogleComputeRegionDisk{},
+		&GoogleComputeRegionDiskList{},
+
+		&GoogleKmsKeyRingIamPolicy{},
+		&GoogleKmsKeyRingIamPolicyList{},
+
+		&GoogleComputeRouterPeer{},
+		&GoogleComputeRouterPeerList{},
+
+		&GoogleFolderOrganizationPolicy{},
+		&GoogleFolderOrganizationPolicyList{},
+
+		&GoogleComposerEnvironment{},
+		&GoogleComposerEnvironmentList{},
+
+		&GoogleStorageObjectAcl{},
+		&GoogleStorageObjectAclList{},
+
+		&GoogleSqlSslCert{},
+		&GoogleSqlSslCertList{},
+
+		&GoogleComputeInstanceGroupManager{},
+		&GoogleComputeInstanceGroupManagerList{},
+
+		&GoogleBigtableInstance{},
+		&GoogleBigtableInstanceList{},
+
+		&GoogleStorageNotification{},
+		&GoogleStorageNotificationList{},
+
+		&GoogleKmsKeyRingIamBinding{},
+		&GoogleKmsKeyRingIamBindingList{},
+
+		&GoogleRuntimeconfigVariable{},
+		&GoogleRuntimeconfigVariableList{},
+
+		&GoogleComputeTargetHttpsProxy{},
+		&GoogleComputeTargetHttpsProxyList{},
+
+		&GoogleKmsCryptoKey{},
+		&GoogleKmsCryptoKeyList{},
+
+		&GoogleFolderIamPolicy{},
+		&GoogleFolderIamPolicyList{},
+
+		&GoogleComputeRouter{},
+		&GoogleComputeRouterList{},
+
+		&GoogleComputeSharedVpcServiceProject{},
+		&GoogleComputeSharedVpcServiceProjectList{},
+
+		&GoogleSourcerepoRepository{},
+		&GoogleSourcerepoRepositoryList{},
+
+		&GoogleContainerAnalysisNote{},
+		&GoogleContainerAnalysisNoteList{},
+
+		&GoogleProjectIamMember{},
+		&GoogleProjectIamMemberList{},
+
+		&GoogleComputeSharedVpcHostProject{},
+		&GoogleComputeSharedVpcHostProjectList{},
+
+		&GoogleProjectServices{},
+		&GoogleProjectServicesList{},
+
+		&GooglePubsubTopic{},
+		&GooglePubsubTopicList{},
+
+		&GoogleProjectService{},
+		&GoogleProjectServiceList{},
+
+		&GoogleComputeAttachedDisk{},
+		&GoogleComputeAttachedDiskList{},
+
+		&GoogleComputeRouterNat{},
+		&GoogleComputeRouterNatList{},
+
+		&GoogleSqlUser{},
+		&GoogleSqlUserList{},
+
+		&GoogleProject{},
+		&GoogleProjectList{},
+
+		&GoogleBigqueryTable{},
+		&GoogleBigqueryTableList{},
+
+		&GooglePubsubSubscription{},
+		&GooglePubsubSubscriptionList{},
+
+		&GoogleMonitoringUptimeCheckConfig{},
+		&GoogleMonitoringUptimeCheckConfigList{},
+
+		&GoogleStorageDefaultObjectAcl{},
+		&GoogleStorageDefaultObjectAclList{},
+
+		&GoogleComputeInstanceGroup{},
+		&GoogleComputeInstanceGroupList{},
+
+		&GoogleSpannerDatabaseIamBinding{},
+		&GoogleSpannerDatabaseIamBindingList{},
+
+		&GoogleLoggingBillingAccountSink{},
+		&GoogleLoggingBillingAccountSinkList{},
+
+		&GoogleComputeInstanceFromTemplate{},
+		&GoogleComputeInstanceFromTemplateList{},
+
+		&GoogleMonitoringGroup{},
+		&GoogleMonitoringGroupList{},
+
+		&GoogleComputeAutoscaler{},
+		&GoogleComputeAutoscalerList{},
+
+		&GoogleComputeInterconnectAttachment{},
+		&GoogleComputeInterconnectAttachmentList{},
+
+		&GoogleComputeTargetPool{},
+		&GoogleComputeTargetPoolList{},
+
+		&GoogleBinaryAuthorizationAttestor{},
+		&GoogleBinaryAuthorizationAttestorList{},
+
+		&GoogleKmsKeyRing{},
+		&GoogleKmsKeyRingList{},
+
+		&GoogleResourceManagerLien{},
+		&GoogleResourceManagerLienList{},
+
+		&GoogleStorageDefaultObjectAccessControl{},
+		&GoogleStorageDefaultObjectAccessControlList{},
+
 		&GoogleComputeProjectMetadata{},
 		&GoogleComputeProjectMetadataList{},
+
+		&GoogleServiceAccountIamBinding{},
+		&GoogleServiceAccountIamBindingList{},
+
+		&GooglePubsubSubscriptionIamPolicy{},
+		&GooglePubsubSubscriptionIamPolicyList{},
+
+		&GoogleComputeHttpsHealthCheck{},
+		&GoogleComputeHttpsHealthCheckList{},
+
+		&GoogleComputeSslPolicy{},
+		&GoogleComputeSslPolicyList{},
+
+		&GooglePubsubTopicIamMember{},
+		&GooglePubsubTopicIamMemberList{},
+
+		&GoogleStorageBucketObject{},
+		&GoogleStorageBucketObjectList{},
+
+		&GoogleStorageBucketIamBinding{},
+		&GoogleStorageBucketIamBindingList{},
+
+		&GoogleComputeForwardingRule{},
+		&GoogleComputeForwardingRuleList{},
+
+		&GoogleComputeRouterInterface{},
+		&GoogleComputeRouterInterfaceList{},
+
+		&GoogleProjectOrganizationPolicy{},
+		&GoogleProjectOrganizationPolicyList{},
+
+		&GoogleKmsKeyRingIamMember{},
+		&GoogleKmsKeyRingIamMemberList{},
+
+		&GooglePubsubTopicIamBinding{},
+		&GooglePubsubTopicIamBindingList{},
+
+		&GoogleRuntimeconfigConfig{},
+		&GoogleRuntimeconfigConfigList{},
+
+		&GoogleKmsCryptoKeyIamMember{},
+		&GoogleKmsCryptoKeyIamMemberList{},
+
+		&GoogleServiceAccountIamMember{},
+		&GoogleServiceAccountIamMemberList{},
+
+		&GoogleComputeGlobalForwardingRule{},
+		&GoogleComputeGlobalForwardingRuleList{},
+
+		&GoogleComputeBackendBucket{},
+		&GoogleComputeBackendBucketList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

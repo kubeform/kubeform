@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermFirewall struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -26,11 +27,11 @@ type AzurermFirewallSpecIpConfiguration struct {
 }
 
 type AzurermFirewallSpec struct {
-	Tags              map[string]string     `json:"tags"`
 	Name              string                `json:"name"`
 	Location          string                `json:"location"`
 	ResourceGroupName string                `json:"resource_group_name"`
 	IpConfiguration   []AzurermFirewallSpec `json:"ip_configuration"`
+	Tags              map[string]string     `json:"tags"`
 }
 
 type AzurermFirewallStatus struct {
@@ -38,6 +39,7 @@ type AzurermFirewallStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermFirewallList is a list of AzurermFirewalls
 type AzurermFirewallList struct {

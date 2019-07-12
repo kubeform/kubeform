@@ -151,6 +151,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsAppsyncApiKeys().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsappsyncdatasources"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsAppsyncDatasources().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awsappsyncfunctions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsAppsyncFunctions().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsappsyncgraphqlapis"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsAppsyncGraphqlApis().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsappsyncresolvers"):
@@ -159,6 +161,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsAthenaDatabases().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsathenanamedqueries"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsAthenaNamedQueries().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awsathenaworkgroups"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsAthenaWorkgroups().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsautoscalingattachments"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsAutoscalingAttachments().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsautoscalinggroups"):
@@ -271,12 +275,16 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsConfigConfigurationAggregators().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsconfigconfigurationrecorders"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsConfigConfigurationRecorders().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awsconfigconfigurationrecorderstatuses"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsConfigConfigurationRecorderStatuses().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsconfigdeliverychannels"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsConfigDeliveryChannels().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awscurreportdefinitions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsCurReportDefinitions().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awscustomergateways"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsCustomerGateways().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awsdatapipelinepipelines"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsDatapipelinePipelines().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsdatasyncagents"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsDatasyncAgents().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsdatasynclocationefses"):
@@ -329,6 +337,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsDirectoryServiceConditionalForwarders().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsdirectoryservicedirectories"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsDirectoryServiceDirectories().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awsdirectoryservicelogsubscriptions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsDirectoryServiceLogSubscriptions().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsdlmlifecyclepolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsDlmLifecyclePolicies().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsdmscertificates"):
@@ -383,6 +393,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsDynamodbTables().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsdynamodbtableitems"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsDynamodbTableItems().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awsebsdefaultkmskeys"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsEbsDefaultKmsKeys().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awsebsencryptionbydefaults"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsEbsEncryptionByDefaults().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsebssnapshots"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsEbsSnapshots().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsebssnapshotcopies"):
@@ -409,6 +423,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsEc2TransitGatewayRouteTablePropagations().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsec2transitgatewayvpcattachments"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsEc2TransitGatewayVpcAttachments().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awsec2transitgatewayvpcattachmentaccepters"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsEc2TransitGatewayVpcAttachmentAccepters().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsecrlifecyclepolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsEcrLifecyclePolicies().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsecrrepositories"):
@@ -485,6 +501,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsGlacierVaultLocks().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsglobalacceleratoraccelerators"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsGlobalacceleratorAccelerators().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awsglobalacceleratorendpointgroups"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsGlobalacceleratorEndpointGroups().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsglobalacceleratorlisteners"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsGlobalacceleratorListeners().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsgluecatalogdatabases"):
@@ -669,6 +687,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsMqBrokers().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsmqconfigurations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsMqConfigurations().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awsmskclusters"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsMskClusters().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awsmskconfigurations"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsMskConfigurations().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsnatgateways"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsNatGateways().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsneptuneclusters"):
@@ -879,10 +901,14 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsSesDomainIdentityVerifications().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awssesdomainmailfroms"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsSesDomainMailFroms().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awssesemailidentities"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsSesEmailIdentities().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awsseseventdestinations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsSesEventDestinations().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awssesidentitynotificationtopics"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsSesIdentityNotificationTopics().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awssesidentitypolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsSesIdentityPolicies().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awssesreceiptfilters"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsSesReceiptFilters().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awssesreceiptrules"):
@@ -895,6 +921,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsSfnActivities().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awssfnstatemachines"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsSfnStateMachines().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("awsshieldprotections"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsShieldProtections().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awssimpledbdomains"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Aws().V1alpha1().AwsSimpledbDomains().Informer()}, nil
 	case v1alpha1.SchemeGroupVersion.WithResource("awssnapshotcreatevolumepermissions"):

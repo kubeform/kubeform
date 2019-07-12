@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayDeployment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -33,6 +34,7 @@ type AwsApiGatewayDeploymentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayDeploymentList is a list of AwsApiGatewayDeployments
 type AwsApiGatewayDeploymentList struct {

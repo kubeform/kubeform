@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSagemakerModel struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -25,18 +26,19 @@ type AwsSagemakerModelSpecPrimaryContainer struct {
 }
 
 type AwsSagemakerModelSpecVpcConfig struct {
-	Subnets          []string `json:"subnets"`
 	SecurityGroupIds []string `json:"security_group_ids"`
+	Subnets          []string `json:"subnets"`
 }
 
 type AwsSagemakerModelSpecContainer struct {
-	Environment       map[string]string `json:"environment"`
 	ContainerHostname string            `json:"container_hostname"`
 	Image             string            `json:"image"`
 	ModelDataUrl      string            `json:"model_data_url"`
+	Environment       map[string]string `json:"environment"`
 }
 
 type AwsSagemakerModelSpec struct {
+	Name                   string                  `json:"name"`
 	PrimaryContainer       []AwsSagemakerModelSpec `json:"primary_container"`
 	VpcConfig              []AwsSagemakerModelSpec `json:"vpc_config"`
 	ExecutionRoleArn       string                  `json:"execution_role_arn"`
@@ -44,7 +46,6 @@ type AwsSagemakerModelSpec struct {
 	Container              []AwsSagemakerModelSpec `json:"container"`
 	Tags                   map[string]string       `json:"tags"`
 	Arn                    string                  `json:"arn"`
-	Name                   string                  `json:"name"`
 }
 
 type AwsSagemakerModelStatus struct {
@@ -52,6 +53,7 @@ type AwsSagemakerModelStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSagemakerModelList is a list of AwsSagemakerModels
 type AwsSagemakerModelList struct {

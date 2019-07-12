@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermMysqlVirtualNetworkRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AzurermMysqlVirtualNetworkRule struct {
 }
 
 type AzurermMysqlVirtualNetworkRuleSpec struct {
-	Name              string `json:"name"`
 	ResourceGroupName string `json:"resource_group_name"`
 	ServerName        string `json:"server_name"`
 	SubnetId          string `json:"subnet_id"`
+	Name              string `json:"name"`
 }
 
 type AzurermMysqlVirtualNetworkRuleStatus struct {
@@ -29,6 +30,7 @@ type AzurermMysqlVirtualNetworkRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermMysqlVirtualNetworkRuleList is a list of AzurermMysqlVirtualNetworkRules
 type AzurermMysqlVirtualNetworkRuleList struct {

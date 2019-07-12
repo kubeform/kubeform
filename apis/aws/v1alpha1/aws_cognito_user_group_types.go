@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCognitoUserGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsCognitoUserGroup struct {
 }
 
 type AwsCognitoUserGroupSpec struct {
-	Description string `json:"description"`
-	Name        string `json:"name"`
 	Precedence  int    `json:"precedence"`
 	RoleArn     string `json:"role_arn"`
 	UserPoolId  string `json:"user_pool_id"`
+	Description string `json:"description"`
+	Name        string `json:"name"`
 }
 
 type AwsCognitoUserGroupStatus struct {
@@ -30,6 +31,7 @@ type AwsCognitoUserGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCognitoUserGroupList is a list of AwsCognitoUserGroups
 type AwsCognitoUserGroupList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleLoggingFolderSink struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleLoggingFolderSink struct {
 }
 
 type GoogleLoggingFolderSinkSpec struct {
+	Name            string `json:"name"`
+	Destination     string `json:"destination"`
 	Filter          string `json:"filter"`
 	WriterIdentity  string `json:"writer_identity"`
 	Folder          string `json:"folder"`
 	IncludeChildren bool   `json:"include_children"`
-	Name            string `json:"name"`
-	Destination     string `json:"destination"`
 }
 
 type GoogleLoggingFolderSinkStatus struct {
@@ -31,6 +32,7 @@ type GoogleLoggingFolderSinkStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleLoggingFolderSinkList is a list of GoogleLoggingFolderSinks
 type GoogleLoggingFolderSinkList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementApiOperationPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -31,6 +32,7 @@ type AzurermApiManagementApiOperationPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementApiOperationPolicyList is a list of AzurermApiManagementApiOperationPolicys
 type AzurermApiManagementApiOperationPolicyList struct {

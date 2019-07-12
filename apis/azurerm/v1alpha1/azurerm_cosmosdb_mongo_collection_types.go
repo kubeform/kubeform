@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermCosmosdbMongoCollection struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,13 +24,13 @@ type AzurermCosmosdbMongoCollectionSpecIndexes struct {
 }
 
 type AzurermCosmosdbMongoCollectionSpec struct {
+	DefaultTtlSeconds int                                  `json:"default_ttl_seconds"`
+	Indexes           []AzurermCosmosdbMongoCollectionSpec `json:"indexes"`
 	Name              string                               `json:"name"`
 	ResourceGroupName string                               `json:"resource_group_name"`
 	AccountName       string                               `json:"account_name"`
 	DatabaseName      string                               `json:"database_name"`
 	ShardKey          string                               `json:"shard_key"`
-	DefaultTtlSeconds int                                  `json:"default_ttl_seconds"`
-	Indexes           []AzurermCosmosdbMongoCollectionSpec `json:"indexes"`
 }
 
 type AzurermCosmosdbMongoCollectionStatus struct {
@@ -37,6 +38,7 @@ type AzurermCosmosdbMongoCollectionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermCosmosdbMongoCollectionList is a list of AzurermCosmosdbMongoCollections
 type AzurermCosmosdbMongoCollectionList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSagemakerNotebookInstance struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsSagemakerNotebookInstance struct {
 }
 
 type AwsSagemakerNotebookInstanceSpec struct {
+	Name                string            `json:"name"`
+	KmsKeyId            string            `json:"kms_key_id"`
 	Arn                 string            `json:"arn"`
 	RoleArn             string            `json:"role_arn"`
 	InstanceType        string            `json:"instance_type"`
-	SecurityGroups      []string          `json:"security_groups"`
-	Tags                map[string]string `json:"tags"`
-	Name                string            `json:"name"`
 	SubnetId            string            `json:"subnet_id"`
-	KmsKeyId            string            `json:"kms_key_id"`
+	SecurityGroups      []string          `json:"security_groups"`
 	LifecycleConfigName string            `json:"lifecycle_config_name"`
+	Tags                map[string]string `json:"tags"`
 }
 
 type AwsSagemakerNotebookInstanceStatus struct {
@@ -34,6 +35,7 @@ type AwsSagemakerNotebookInstanceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSagemakerNotebookInstanceList is a list of AwsSagemakerNotebookInstances
 type AwsSagemakerNotebookInstanceList struct {

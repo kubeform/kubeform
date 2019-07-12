@@ -74,10 +74,12 @@ type AwsV1alpha1Interface interface {
 	AwsAppmeshVirtualServicesGetter
 	AwsAppsyncApiKeysGetter
 	AwsAppsyncDatasourcesGetter
+	AwsAppsyncFunctionsGetter
 	AwsAppsyncGraphqlApisGetter
 	AwsAppsyncResolversGetter
 	AwsAthenaDatabasesGetter
 	AwsAthenaNamedQueriesGetter
+	AwsAthenaWorkgroupsGetter
 	AwsAutoscalingAttachmentsGetter
 	AwsAutoscalingGroupsGetter
 	AwsAutoscalingLifecycleHooksGetter
@@ -134,9 +136,11 @@ type AwsV1alpha1Interface interface {
 	AwsConfigConfigRulesGetter
 	AwsConfigConfigurationAggregatorsGetter
 	AwsConfigConfigurationRecordersGetter
+	AwsConfigConfigurationRecorderStatusesGetter
 	AwsConfigDeliveryChannelsGetter
 	AwsCurReportDefinitionsGetter
 	AwsCustomerGatewaysGetter
+	AwsDatapipelinePipelinesGetter
 	AwsDatasyncAgentsGetter
 	AwsDatasyncLocationEfsesGetter
 	AwsDatasyncLocationNfsesGetter
@@ -163,6 +167,7 @@ type AwsV1alpha1Interface interface {
 	AwsDevicefarmProjectsGetter
 	AwsDirectoryServiceConditionalForwardersGetter
 	AwsDirectoryServiceDirectoriesGetter
+	AwsDirectoryServiceLogSubscriptionsGetter
 	AwsDlmLifecyclePoliciesGetter
 	AwsDmsCertificatesGetter
 	AwsDmsEndpointsGetter
@@ -190,6 +195,8 @@ type AwsV1alpha1Interface interface {
 	AwsDynamodbGlobalTablesGetter
 	AwsDynamodbTablesGetter
 	AwsDynamodbTableItemsGetter
+	AwsEbsDefaultKmsKeysGetter
+	AwsEbsEncryptionByDefaultsGetter
 	AwsEbsSnapshotsGetter
 	AwsEbsSnapshotCopiesGetter
 	AwsEbsVolumesGetter
@@ -203,6 +210,7 @@ type AwsV1alpha1Interface interface {
 	AwsEc2TransitGatewayRouteTableAssociationsGetter
 	AwsEc2TransitGatewayRouteTablePropagationsGetter
 	AwsEc2TransitGatewayVpcAttachmentsGetter
+	AwsEc2TransitGatewayVpcAttachmentAcceptersGetter
 	AwsEcrLifecyclePoliciesGetter
 	AwsEcrRepositoriesGetter
 	AwsEcrRepositoryPoliciesGetter
@@ -241,6 +249,7 @@ type AwsV1alpha1Interface interface {
 	AwsGlacierVaultsGetter
 	AwsGlacierVaultLocksGetter
 	AwsGlobalacceleratorAcceleratorsGetter
+	AwsGlobalacceleratorEndpointGroupsGetter
 	AwsGlobalacceleratorListenersGetter
 	AwsGlueCatalogDatabasesGetter
 	AwsGlueCatalogTablesGetter
@@ -333,6 +342,8 @@ type AwsV1alpha1Interface interface {
 	AwsMediaStoreContainerPoliciesGetter
 	AwsMqBrokersGetter
 	AwsMqConfigurationsGetter
+	AwsMskClustersGetter
+	AwsMskConfigurationsGetter
 	AwsNatGatewaysGetter
 	AwsNeptuneClustersGetter
 	AwsNeptuneClusterInstancesGetter
@@ -438,14 +449,17 @@ type AwsV1alpha1Interface interface {
 	AwsSesDomainIdentitiesGetter
 	AwsSesDomainIdentityVerificationsGetter
 	AwsSesDomainMailFromsGetter
+	AwsSesEmailIdentitiesGetter
 	AwsSesEventDestinationsGetter
 	AwsSesIdentityNotificationTopicsGetter
+	AwsSesIdentityPoliciesGetter
 	AwsSesReceiptFiltersGetter
 	AwsSesReceiptRulesGetter
 	AwsSesReceiptRuleSetsGetter
 	AwsSesTemplatesGetter
 	AwsSfnActivitiesGetter
 	AwsSfnStateMachinesGetter
+	AwsShieldProtectionsGetter
 	AwsSimpledbDomainsGetter
 	AwsSnapshotCreateVolumePermissionsGetter
 	AwsSnsPlatformApplicationsGetter
@@ -722,6 +736,10 @@ func (c *AwsV1alpha1Client) AwsAppsyncDatasources() AwsAppsyncDatasourceInterfac
 	return newAwsAppsyncDatasources(c)
 }
 
+func (c *AwsV1alpha1Client) AwsAppsyncFunctions() AwsAppsyncFunctionInterface {
+	return newAwsAppsyncFunctions(c)
+}
+
 func (c *AwsV1alpha1Client) AwsAppsyncGraphqlApis() AwsAppsyncGraphqlApiInterface {
 	return newAwsAppsyncGraphqlApis(c)
 }
@@ -736,6 +754,10 @@ func (c *AwsV1alpha1Client) AwsAthenaDatabases() AwsAthenaDatabaseInterface {
 
 func (c *AwsV1alpha1Client) AwsAthenaNamedQueries() AwsAthenaNamedQueryInterface {
 	return newAwsAthenaNamedQueries(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAthenaWorkgroups() AwsAthenaWorkgroupInterface {
+	return newAwsAthenaWorkgroups(c)
 }
 
 func (c *AwsV1alpha1Client) AwsAutoscalingAttachments() AwsAutoscalingAttachmentInterface {
@@ -962,6 +984,10 @@ func (c *AwsV1alpha1Client) AwsConfigConfigurationRecorders() AwsConfigConfigura
 	return newAwsConfigConfigurationRecorders(c)
 }
 
+func (c *AwsV1alpha1Client) AwsConfigConfigurationRecorderStatuses() AwsConfigConfigurationRecorderStatusInterface {
+	return newAwsConfigConfigurationRecorderStatuses(c)
+}
+
 func (c *AwsV1alpha1Client) AwsConfigDeliveryChannels() AwsConfigDeliveryChannelInterface {
 	return newAwsConfigDeliveryChannels(c)
 }
@@ -972,6 +998,10 @@ func (c *AwsV1alpha1Client) AwsCurReportDefinitions() AwsCurReportDefinitionInte
 
 func (c *AwsV1alpha1Client) AwsCustomerGateways() AwsCustomerGatewayInterface {
 	return newAwsCustomerGateways(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDatapipelinePipelines() AwsDatapipelinePipelineInterface {
+	return newAwsDatapipelinePipelines(c)
 }
 
 func (c *AwsV1alpha1Client) AwsDatasyncAgents() AwsDatasyncAgentInterface {
@@ -1076,6 +1106,10 @@ func (c *AwsV1alpha1Client) AwsDirectoryServiceConditionalForwarders() AwsDirect
 
 func (c *AwsV1alpha1Client) AwsDirectoryServiceDirectories() AwsDirectoryServiceDirectoryInterface {
 	return newAwsDirectoryServiceDirectories(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDirectoryServiceLogSubscriptions() AwsDirectoryServiceLogSubscriptionInterface {
+	return newAwsDirectoryServiceLogSubscriptions(c)
 }
 
 func (c *AwsV1alpha1Client) AwsDlmLifecyclePolicies() AwsDlmLifecyclePolicyInterface {
@@ -1186,6 +1220,14 @@ func (c *AwsV1alpha1Client) AwsDynamodbTableItems() AwsDynamodbTableItemInterfac
 	return newAwsDynamodbTableItems(c)
 }
 
+func (c *AwsV1alpha1Client) AwsEbsDefaultKmsKeys() AwsEbsDefaultKmsKeyInterface {
+	return newAwsEbsDefaultKmsKeys(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEbsEncryptionByDefaults() AwsEbsEncryptionByDefaultInterface {
+	return newAwsEbsEncryptionByDefaults(c)
+}
+
 func (c *AwsV1alpha1Client) AwsEbsSnapshots() AwsEbsSnapshotInterface {
 	return newAwsEbsSnapshots(c)
 }
@@ -1236,6 +1278,10 @@ func (c *AwsV1alpha1Client) AwsEc2TransitGatewayRouteTablePropagations() AwsEc2T
 
 func (c *AwsV1alpha1Client) AwsEc2TransitGatewayVpcAttachments() AwsEc2TransitGatewayVpcAttachmentInterface {
 	return newAwsEc2TransitGatewayVpcAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEc2TransitGatewayVpcAttachmentAccepters() AwsEc2TransitGatewayVpcAttachmentAccepterInterface {
+	return newAwsEc2TransitGatewayVpcAttachmentAccepters(c)
 }
 
 func (c *AwsV1alpha1Client) AwsEcrLifecyclePolicies() AwsEcrLifecyclePolicyInterface {
@@ -1388,6 +1434,10 @@ func (c *AwsV1alpha1Client) AwsGlacierVaultLocks() AwsGlacierVaultLockInterface 
 
 func (c *AwsV1alpha1Client) AwsGlobalacceleratorAccelerators() AwsGlobalacceleratorAcceleratorInterface {
 	return newAwsGlobalacceleratorAccelerators(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlobalacceleratorEndpointGroups() AwsGlobalacceleratorEndpointGroupInterface {
+	return newAwsGlobalacceleratorEndpointGroups(c)
 }
 
 func (c *AwsV1alpha1Client) AwsGlobalacceleratorListeners() AwsGlobalacceleratorListenerInterface {
@@ -1756,6 +1806,14 @@ func (c *AwsV1alpha1Client) AwsMqBrokers() AwsMqBrokerInterface {
 
 func (c *AwsV1alpha1Client) AwsMqConfigurations() AwsMqConfigurationInterface {
 	return newAwsMqConfigurations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsMskClusters() AwsMskClusterInterface {
+	return newAwsMskClusters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsMskConfigurations() AwsMskConfigurationInterface {
+	return newAwsMskConfigurations(c)
 }
 
 func (c *AwsV1alpha1Client) AwsNatGateways() AwsNatGatewayInterface {
@@ -2178,12 +2236,20 @@ func (c *AwsV1alpha1Client) AwsSesDomainMailFroms() AwsSesDomainMailFromInterfac
 	return newAwsSesDomainMailFroms(c)
 }
 
+func (c *AwsV1alpha1Client) AwsSesEmailIdentities() AwsSesEmailIdentityInterface {
+	return newAwsSesEmailIdentities(c)
+}
+
 func (c *AwsV1alpha1Client) AwsSesEventDestinations() AwsSesEventDestinationInterface {
 	return newAwsSesEventDestinations(c)
 }
 
 func (c *AwsV1alpha1Client) AwsSesIdentityNotificationTopics() AwsSesIdentityNotificationTopicInterface {
 	return newAwsSesIdentityNotificationTopics(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesIdentityPolicies() AwsSesIdentityPolicyInterface {
+	return newAwsSesIdentityPolicies(c)
 }
 
 func (c *AwsV1alpha1Client) AwsSesReceiptFilters() AwsSesReceiptFilterInterface {
@@ -2208,6 +2274,10 @@ func (c *AwsV1alpha1Client) AwsSfnActivities() AwsSfnActivityInterface {
 
 func (c *AwsV1alpha1Client) AwsSfnStateMachines() AwsSfnStateMachineInterface {
 	return newAwsSfnStateMachines(c)
+}
+
+func (c *AwsV1alpha1Client) AwsShieldProtections() AwsShieldProtectionInterface {
+	return newAwsShieldProtections(c)
 }
 
 func (c *AwsV1alpha1Client) AwsSimpledbDomains() AwsSimpledbDomainInterface {

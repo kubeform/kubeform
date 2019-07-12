@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermStreamAnalyticsFunctionJavascriptUdf struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -26,12 +27,12 @@ type AzurermStreamAnalyticsFunctionJavascriptUdfSpecOutput struct {
 }
 
 type AzurermStreamAnalyticsFunctionJavascriptUdfSpec struct {
+	Name                   string                                            `json:"name"`
 	StreamAnalyticsJobName string                                            `json:"stream_analytics_job_name"`
 	ResourceGroupName      string                                            `json:"resource_group_name"`
 	Input                  []AzurermStreamAnalyticsFunctionJavascriptUdfSpec `json:"input"`
 	Output                 []AzurermStreamAnalyticsFunctionJavascriptUdfSpec `json:"output"`
 	Script                 string                                            `json:"script"`
-	Name                   string                                            `json:"name"`
 }
 
 type AzurermStreamAnalyticsFunctionJavascriptUdfStatus struct {
@@ -39,6 +40,7 @@ type AzurermStreamAnalyticsFunctionJavascriptUdfStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermStreamAnalyticsFunctionJavascriptUdfList is a list of AzurermStreamAnalyticsFunctionJavascriptUdfs
 type AzurermStreamAnalyticsFunctionJavascriptUdfList struct {

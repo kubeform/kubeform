@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCodecommitRepository struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,14 @@ type AwsCodecommitRepository struct {
 }
 
 type AwsCodecommitRepositorySpec struct {
-	RepositoryName string `json:"repository_name"`
-	Description    string `json:"description"`
-	Arn            string `json:"arn"`
-	RepositoryId   string `json:"repository_id"`
-	CloneUrlHttp   string `json:"clone_url_http"`
-	CloneUrlSsh    string `json:"clone_url_ssh"`
-	DefaultBranch  string `json:"default_branch"`
+	CloneUrlSsh    string            `json:"clone_url_ssh"`
+	DefaultBranch  string            `json:"default_branch"`
+	Tags           map[string]string `json:"tags"`
+	RepositoryName string            `json:"repository_name"`
+	Description    string            `json:"description"`
+	Arn            string            `json:"arn"`
+	RepositoryId   string            `json:"repository_id"`
+	CloneUrlHttp   string            `json:"clone_url_http"`
 }
 
 type AwsCodecommitRepositoryStatus struct {
@@ -32,6 +34,7 @@ type AwsCodecommitRepositoryStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCodecommitRepositoryList is a list of AwsCodecommitRepositorys
 type AwsCodecommitRepositoryList struct {

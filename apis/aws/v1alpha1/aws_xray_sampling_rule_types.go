@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsXraySamplingRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AwsXraySamplingRule struct {
 }
 
 type AwsXraySamplingRuleSpec struct {
-	RuleName      string            `json:"rule_name"`
-	ServiceName   string            `json:"service_name"`
-	Host          string            `json:"host"`
-	UrlPath       string            `json:"url_path"`
 	Attributes    map[string]string `json:"attributes"`
+	FixedRate     float64           `json:"fixed_rate"`
+	ServiceName   string            `json:"service_name"`
+	ServiceType   string            `json:"service_type"`
+	Version       int               `json:"version"`
+	Host          string            `json:"host"`
+	HttpMethod    string            `json:"http_method"`
+	UrlPath       string            `json:"url_path"`
 	Arn           string            `json:"arn"`
+	RuleName      string            `json:"rule_name"`
 	ResourceArn   string            `json:"resource_arn"`
 	Priority      int               `json:"priority"`
-	FixedRate     float64           `json:"fixed_rate"`
 	ReservoirSize int               `json:"reservoir_size"`
-	ServiceType   string            `json:"service_type"`
-	HttpMethod    string            `json:"http_method"`
-	Version       int               `json:"version"`
 }
 
 type AwsXraySamplingRuleStatus struct {
@@ -38,6 +39,7 @@ type AwsXraySamplingRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsXraySamplingRuleList is a list of AwsXraySamplingRules
 type AwsXraySamplingRuleList struct {

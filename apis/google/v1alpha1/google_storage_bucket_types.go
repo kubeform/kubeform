@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleStorageBucket struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,9 +18,27 @@ type GoogleStorageBucket struct {
 	Status            GoogleStorageBucketStatus `json:"status,omitempty"`
 }
 
+type GoogleStorageBucketSpecLifecycleRuleAction struct {
+	Type         string `json:"type"`
+	StorageClass string `json:"storage_class"`
+}
+
+type GoogleStorageBucketSpecLifecycleRuleCondition struct {
+	CreatedBefore       string   `json:"created_before"`
+	IsLive              bool     `json:"is_live"`
+	MatchesStorageClass []string `json:"matches_storage_class"`
+	NumNewerVersions    int      `json:"num_newer_versions"`
+	Age                 int      `json:"age"`
+}
+
+type GoogleStorageBucketSpecLifecycleRule struct {
+	Action    []GoogleStorageBucketSpecLifecycleRule `json:"action"`
+	Condition []GoogleStorageBucketSpecLifecycleRule `json:"condition"`
+}
+
 type GoogleStorageBucketSpecWebsite struct {
-	MainPageSuffix string `json:"main_page_suffix"`
 	NotFoundPage   string `json:"not_found_page"`
+	MainPageSuffix string `json:"main_page_suffix"`
 }
 
 type GoogleStorageBucketSpecEncryption struct {
@@ -31,51 +50,33 @@ type GoogleStorageBucketSpecLogging struct {
 	LogObjectPrefix string `json:"log_object_prefix"`
 }
 
-type GoogleStorageBucketSpecLifecycleRuleAction struct {
-	Type         string `json:"type"`
-	StorageClass string `json:"storage_class"`
-}
-
-type GoogleStorageBucketSpecLifecycleRuleCondition struct {
-	NumNewerVersions    int      `json:"num_newer_versions"`
-	Age                 int      `json:"age"`
-	CreatedBefore       string   `json:"created_before"`
-	IsLive              bool     `json:"is_live"`
-	MatchesStorageClass []string `json:"matches_storage_class"`
-}
-
-type GoogleStorageBucketSpecLifecycleRule struct {
-	Action    []GoogleStorageBucketSpecLifecycleRule `json:"action"`
-	Condition []GoogleStorageBucketSpecLifecycleRule `json:"condition"`
-}
-
 type GoogleStorageBucketSpecVersioning struct {
 	Enabled bool `json:"enabled"`
 }
 
 type GoogleStorageBucketSpecCors struct {
-	Origin         []string `json:"origin"`
 	Method         []string `json:"method"`
 	ResponseHeader []string `json:"response_header"`
 	MaxAgeSeconds  int      `json:"max_age_seconds"`
+	Origin         []string `json:"origin"`
 }
 
 type GoogleStorageBucketSpec struct {
-	Labels        map[string]string         `json:"labels"`
-	Website       []GoogleStorageBucketSpec `json:"website"`
-	Encryption    []GoogleStorageBucketSpec `json:"encryption"`
-	Logging       []GoogleStorageBucketSpec `json:"logging"`
-	Project       string                    `json:"project"`
-	LifecycleRule []GoogleStorageBucketSpec `json:"lifecycle_rule"`
 	Name          string                    `json:"name"`
 	Location      string                    `json:"location"`
+	Project       string                    `json:"project"`
+	LifecycleRule []GoogleStorageBucketSpec `json:"lifecycle_rule"`
+	Website       []GoogleStorageBucketSpec `json:"website"`
+	Encryption    []GoogleStorageBucketSpec `json:"encryption"`
+	ForceDestroy  bool                      `json:"force_destroy"`
+	Labels        map[string]string         `json:"labels"`
 	PredefinedAcl string                    `json:"predefined_acl"`
-	SelfLink      string                    `json:"self_link"`
 	Url           string                    `json:"url"`
 	StorageClass  string                    `json:"storage_class"`
+	Logging       []GoogleStorageBucketSpec `json:"logging"`
+	SelfLink      string                    `json:"self_link"`
 	Versioning    []GoogleStorageBucketSpec `json:"versioning"`
 	Cors          []GoogleStorageBucketSpec `json:"cors"`
-	ForceDestroy  bool                      `json:"force_destroy"`
 }
 
 type GoogleStorageBucketStatus struct {
@@ -83,6 +84,7 @@ type GoogleStorageBucketStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleStorageBucketList is a list of GoogleStorageBuckets
 type GoogleStorageBucketList struct {

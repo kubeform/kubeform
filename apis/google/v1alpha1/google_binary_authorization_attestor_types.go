@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleBinaryAuthorizationAttestor struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,9 +25,9 @@ type GoogleBinaryAuthorizationAttestorSpecAttestationAuthorityNotePublicKeys str
 }
 
 type GoogleBinaryAuthorizationAttestorSpecAttestationAuthorityNote struct {
+	NoteReference                 string                                                          `json:"note_reference"`
 	PublicKeys                    []GoogleBinaryAuthorizationAttestorSpecAttestationAuthorityNote `json:"public_keys"`
 	DelegationServiceAccountEmail string                                                          `json:"delegation_service_account_email"`
-	NoteReference                 string                                                          `json:"note_reference"`
 }
 
 type GoogleBinaryAuthorizationAttestorSpec struct {
@@ -41,6 +42,7 @@ type GoogleBinaryAuthorizationAttestorStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleBinaryAuthorizationAttestorList is a list of GoogleBinaryAuthorizationAttestors
 type GoogleBinaryAuthorizationAttestorList struct {

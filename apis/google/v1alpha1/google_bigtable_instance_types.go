@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleBigtableInstance struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -25,13 +26,13 @@ type GoogleBigtableInstanceSpecCluster struct {
 }
 
 type GoogleBigtableInstanceSpec struct {
-	Name         string                       `json:"name"`
+	Cluster      []GoogleBigtableInstanceSpec `json:"cluster"`
 	Zone         string                       `json:"zone"`
 	NumNodes     int                          `json:"num_nodes"`
 	InstanceType string                       `json:"instance_type"`
 	Project      string                       `json:"project"`
+	Name         string                       `json:"name"`
 	ClusterId    string                       `json:"cluster_id"`
-	Cluster      []GoogleBigtableInstanceSpec `json:"cluster"`
 	DisplayName  string                       `json:"display_name"`
 	StorageType  string                       `json:"storage_type"`
 }
@@ -41,6 +42,7 @@ type GoogleBigtableInstanceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleBigtableInstanceList is a list of GoogleBigtableInstances
 type GoogleBigtableInstanceList struct {

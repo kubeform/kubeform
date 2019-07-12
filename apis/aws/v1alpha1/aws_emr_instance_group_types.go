@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEmrInstanceGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -25,14 +26,16 @@ type AwsEmrInstanceGroupSpecEbsConfig struct {
 }
 
 type AwsEmrInstanceGroupSpec struct {
+	BidPrice             string                    `json:"bid_price"`
+	EbsConfig            []AwsEmrInstanceGroupSpec `json:"ebs_config"`
+	InstanceCount        int                       `json:"instance_count"`
+	InstanceType         string                    `json:"instance_type"`
 	RunningInstanceCount int                       `json:"running_instance_count"`
 	Status               string                    `json:"status"`
-	Name                 string                    `json:"name"`
-	EbsOptimized         bool                      `json:"ebs_optimized"`
-	EbsConfig            []AwsEmrInstanceGroupSpec `json:"ebs_config"`
+	AutoscalingPolicy    string                    `json:"autoscaling_policy"`
 	ClusterId            string                    `json:"cluster_id"`
-	InstanceType         string                    `json:"instance_type"`
-	InstanceCount        int                       `json:"instance_count"`
+	EbsOptimized         bool                      `json:"ebs_optimized"`
+	Name                 string                    `json:"name"`
 }
 
 type AwsEmrInstanceGroupStatus struct {
@@ -40,6 +43,7 @@ type AwsEmrInstanceGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEmrInstanceGroupList is a list of AwsEmrInstanceGroups
 type AwsEmrInstanceGroupList struct {

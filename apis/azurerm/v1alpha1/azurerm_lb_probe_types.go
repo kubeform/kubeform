@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermLbProbe struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type AzurermLbProbe struct {
 }
 
 type AzurermLbProbeSpec struct {
-	Protocol          string   `json:"protocol"`
-	RequestPath       string   `json:"request_path"`
 	Name              string   `json:"name"`
-	LoadbalancerId    string   `json:"loadbalancer_id"`
-	Port              int      `json:"port"`
+	Location          string   `json:"location"`
+	Protocol          string   `json:"protocol"`
 	IntervalInSeconds int      `json:"interval_in_seconds"`
 	NumberOfProbes    int      `json:"number_of_probes"`
-	LoadBalancerRules []string `json:"load_balancer_rules"`
-	Location          string   `json:"location"`
 	ResourceGroupName string   `json:"resource_group_name"`
+	LoadbalancerId    string   `json:"loadbalancer_id"`
+	Port              int      `json:"port"`
+	RequestPath       string   `json:"request_path"`
+	LoadBalancerRules []string `json:"load_balancer_rules"`
 }
 
 type AzurermLbProbeStatus struct {
@@ -35,6 +36,7 @@ type AzurermLbProbeStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermLbProbeList is a list of AzurermLbProbes
 type AzurermLbProbeList struct {

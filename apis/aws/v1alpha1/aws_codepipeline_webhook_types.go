@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCodepipelineWebhook struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,24 +18,25 @@ type AwsCodepipelineWebhook struct {
 	Status            AwsCodepipelineWebhookStatus `json:"status,omitempty"`
 }
 
-type AwsCodepipelineWebhookSpecFilter struct {
-	JsonPath    string `json:"json_path"`
-	MatchEquals string `json:"match_equals"`
-}
-
 type AwsCodepipelineWebhookSpecAuthenticationConfiguration struct {
 	SecretToken    string `json:"secret_token"`
 	AllowedIpRange string `json:"allowed_ip_range"`
 }
 
+type AwsCodepipelineWebhookSpecFilter struct {
+	JsonPath    string `json:"json_path"`
+	MatchEquals string `json:"match_equals"`
+}
+
 type AwsCodepipelineWebhookSpec struct {
+	AuthenticationConfiguration []AwsCodepipelineWebhookSpec `json:"authentication_configuration"`
 	Filter                      []AwsCodepipelineWebhookSpec `json:"filter"`
 	Name                        string                       `json:"name"`
 	Url                         string                       `json:"url"`
 	TargetAction                string                       `json:"target_action"`
 	TargetPipeline              string                       `json:"target_pipeline"`
+	Tags                        map[string]string            `json:"tags"`
 	Authentication              string                       `json:"authentication"`
-	AuthenticationConfiguration []AwsCodepipelineWebhookSpec `json:"authentication_configuration"`
 }
 
 type AwsCodepipelineWebhookStatus struct {
@@ -42,6 +44,7 @@ type AwsCodepipelineWebhookStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCodepipelineWebhookList is a list of AwsCodepipelineWebhooks
 type AwsCodepipelineWebhookList struct {

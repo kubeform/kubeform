@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGlueClassifier struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,9 +24,9 @@ type AwsGlueClassifierSpecXmlClassifier struct {
 }
 
 type AwsGlueClassifierSpecGrokClassifier struct {
+	GrokPattern    string `json:"grok_pattern"`
 	Classification string `json:"classification"`
 	CustomPatterns string `json:"custom_patterns"`
-	GrokPattern    string `json:"grok_pattern"`
 }
 
 type AwsGlueClassifierSpecJsonClassifier struct {
@@ -33,10 +34,10 @@ type AwsGlueClassifierSpecJsonClassifier struct {
 }
 
 type AwsGlueClassifierSpec struct {
-	Name           string                  `json:"name"`
 	XmlClassifier  []AwsGlueClassifierSpec `json:"xml_classifier"`
 	GrokClassifier []AwsGlueClassifierSpec `json:"grok_classifier"`
 	JsonClassifier []AwsGlueClassifierSpec `json:"json_classifier"`
+	Name           string                  `json:"name"`
 }
 
 type AwsGlueClassifierStatus struct {
@@ -44,6 +45,7 @@ type AwsGlueClassifierStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGlueClassifierList is a list of AwsGlueClassifiers
 type AwsGlueClassifierList struct {

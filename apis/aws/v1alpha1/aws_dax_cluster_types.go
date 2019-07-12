@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDaxCluster struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsDaxCluster struct {
 }
 
 type AwsDaxClusterSpecNodes struct {
-	Port             int    `json:"port"`
 	AvailabilityZone string `json:"availability_zone"`
 	Id               string `json:"id"`
 	Address          string `json:"address"`
+	Port             int    `json:"port"`
 }
 
 type AwsDaxClusterSpecServerSideEncryption struct {
@@ -29,24 +30,24 @@ type AwsDaxClusterSpecServerSideEncryption struct {
 }
 
 type AwsDaxClusterSpec struct {
-	Arn                   string              `json:"arn"`
-	NotificationTopicArn  string              `json:"notification_topic_arn"`
+	Port                  int                 `json:"port"`
+	Nodes                 []AwsDaxClusterSpec `json:"nodes"`
+	IamRoleArn            string              `json:"iam_role_arn"`
 	SubnetGroupName       string              `json:"subnet_group_name"`
 	ConfigurationEndpoint string              `json:"configuration_endpoint"`
-	Nodes                 []AwsDaxClusterSpec `json:"nodes"`
-	ClusterName           string              `json:"cluster_name"`
-	NodeType              string              `json:"node_type"`
-	AvailabilityZones     []string            `json:"availability_zones"`
-	Port                  int                 `json:"port"`
-	ClusterAddress        string              `json:"cluster_address"`
 	ReplicationFactor     int                 `json:"replication_factor"`
+	AvailabilityZones     []string            `json:"availability_zones"`
+	Description           string              `json:"description"`
 	SecurityGroupIds      []string            `json:"security_group_ids"`
 	ServerSideEncryption  []AwsDaxClusterSpec `json:"server_side_encryption"`
-	Tags                  map[string]string   `json:"tags"`
-	IamRoleArn            string              `json:"iam_role_arn"`
-	Description           string              `json:"description"`
-	ParameterGroupName    string              `json:"parameter_group_name"`
 	MaintenanceWindow     string              `json:"maintenance_window"`
+	Tags                  map[string]string   `json:"tags"`
+	ClusterAddress        string              `json:"cluster_address"`
+	Arn                   string              `json:"arn"`
+	ClusterName           string              `json:"cluster_name"`
+	NodeType              string              `json:"node_type"`
+	NotificationTopicArn  string              `json:"notification_topic_arn"`
+	ParameterGroupName    string              `json:"parameter_group_name"`
 }
 
 type AwsDaxClusterStatus struct {
@@ -54,6 +55,7 @@ type AwsDaxClusterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDaxClusterList is a list of AwsDaxClusters
 type AwsDaxClusterList struct {

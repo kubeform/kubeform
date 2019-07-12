@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGlueCrawler struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,9 +18,8 @@ type AwsGlueCrawler struct {
 	Status            AwsGlueCrawlerStatus `json:"status,omitempty"`
 }
 
-type AwsGlueCrawlerSpecSchemaChangePolicy struct {
-	DeleteBehavior string `json:"delete_behavior"`
-	UpdateBehavior string `json:"update_behavior"`
+type AwsGlueCrawlerSpecDynamodbTarget struct {
+	Path string `json:"path"`
 }
 
 type AwsGlueCrawlerSpecS3Target struct {
@@ -33,25 +33,26 @@ type AwsGlueCrawlerSpecJdbcTarget struct {
 	Exclusions     []string `json:"exclusions"`
 }
 
-type AwsGlueCrawlerSpecDynamodbTarget struct {
-	Path string `json:"path"`
+type AwsGlueCrawlerSpecSchemaChangePolicy struct {
+	DeleteBehavior string `json:"delete_behavior"`
+	UpdateBehavior string `json:"update_behavior"`
 }
 
 type AwsGlueCrawlerSpec struct {
 	Role                  string               `json:"role"`
-	SchemaChangePolicy    []AwsGlueCrawlerSpec `json:"schema_change_policy"`
-	Arn                   string               `json:"arn"`
+	Description           string               `json:"description"`
+	TablePrefix           string               `json:"table_prefix"`
+	DynamodbTarget        []AwsGlueCrawlerSpec `json:"dynamodb_target"`
+	SecurityConfiguration string               `json:"security_configuration"`
+	Classifiers           []string             `json:"classifiers"`
 	S3Target              []AwsGlueCrawlerSpec `json:"s3_target"`
 	JdbcTarget            []AwsGlueCrawlerSpec `json:"jdbc_target"`
-	SecurityConfiguration string               `json:"security_configuration"`
-	Configuration         string               `json:"configuration"`
-	DatabaseName          string               `json:"database_name"`
-	Description           string               `json:"description"`
-	Schedule              string               `json:"schedule"`
-	Classifiers           []string             `json:"classifiers"`
-	DynamodbTarget        []AwsGlueCrawlerSpec `json:"dynamodb_target"`
 	Name                  string               `json:"name"`
-	TablePrefix           string               `json:"table_prefix"`
+	Arn                   string               `json:"arn"`
+	DatabaseName          string               `json:"database_name"`
+	Schedule              string               `json:"schedule"`
+	SchemaChangePolicy    []AwsGlueCrawlerSpec `json:"schema_change_policy"`
+	Configuration         string               `json:"configuration"`
 }
 
 type AwsGlueCrawlerStatus struct {
@@ -59,6 +60,7 @@ type AwsGlueCrawlerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGlueCrawlerList is a list of AwsGlueCrawlers
 type AwsGlueCrawlerList struct {

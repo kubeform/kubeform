@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermLogicAppTriggerHttpRequest struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermLogicAppTriggerHttpRequest struct {
 }
 
 type AzurermLogicAppTriggerHttpRequestSpec struct {
+	RelativePath string `json:"relative_path"`
 	Name         string `json:"name"`
 	LogicAppId   string `json:"logic_app_id"`
 	Schema       string `json:"schema"`
 	Method       string `json:"method"`
-	RelativePath string `json:"relative_path"`
 }
 
 type AzurermLogicAppTriggerHttpRequestStatus struct {
@@ -30,6 +31,7 @@ type AzurermLogicAppTriggerHttpRequestStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermLogicAppTriggerHttpRequestList is a list of AzurermLogicAppTriggerHttpRequests
 type AzurermLogicAppTriggerHttpRequestList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDbParameterGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,13 +25,13 @@ type AwsDbParameterGroupSpecParameter struct {
 }
 
 type AwsDbParameterGroupSpec struct {
-	Description string                    `json:"description"`
 	Parameter   []AwsDbParameterGroupSpec `json:"parameter"`
 	Tags        map[string]string         `json:"tags"`
 	Arn         string                    `json:"arn"`
 	Name        string                    `json:"name"`
 	NamePrefix  string                    `json:"name_prefix"`
 	Family      string                    `json:"family"`
+	Description string                    `json:"description"`
 }
 
 type AwsDbParameterGroupStatus struct {
@@ -38,6 +39,7 @@ type AwsDbParameterGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDbParameterGroupList is a list of AwsDbParameterGroups
 type AwsDbParameterGroupList struct {

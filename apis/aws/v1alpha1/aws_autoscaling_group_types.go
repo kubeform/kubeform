@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAutoscalingGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,29 +18,25 @@ type AwsAutoscalingGroup struct {
 	Status            AwsAutoscalingGroupStatus `json:"status,omitempty"`
 }
 
-type AwsAutoscalingGroupSpecInitialLifecycleHook struct {
-	HeartbeatTimeout      int    `json:"heartbeat_timeout"`
-	LifecycleTransition   string `json:"lifecycle_transition"`
-	NotificationMetadata  string `json:"notification_metadata"`
-	NotificationTargetArn string `json:"notification_target_arn"`
-	RoleArn               string `json:"role_arn"`
-	Name                  string `json:"name"`
-	DefaultResult         string `json:"default_result"`
+type AwsAutoscalingGroupSpecTag struct {
+	Key               string `json:"key"`
+	Value             string `json:"value"`
+	PropagateAtLaunch bool   `json:"propagate_at_launch"`
 }
 
 type AwsAutoscalingGroupSpecMixedInstancesPolicyInstancesDistribution struct {
-	SpotMaxPrice                        string `json:"spot_max_price"`
 	OnDemandAllocationStrategy          string `json:"on_demand_allocation_strategy"`
 	OnDemandBaseCapacity                int    `json:"on_demand_base_capacity"`
 	OnDemandPercentageAboveBaseCapacity int    `json:"on_demand_percentage_above_base_capacity"`
 	SpotAllocationStrategy              string `json:"spot_allocation_strategy"`
 	SpotInstancePools                   int    `json:"spot_instance_pools"`
+	SpotMaxPrice                        string `json:"spot_max_price"`
 }
 
 type AwsAutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification struct {
-	LaunchTemplateId   string `json:"launch_template_id"`
 	LaunchTemplateName string `json:"launch_template_name"`
 	Version            string `json:"version"`
+	LaunchTemplateId   string `json:"launch_template_id"`
 }
 
 type AwsAutoscalingGroupSpecMixedInstancesPolicyLaunchTemplateOverride struct {
@@ -56,48 +53,52 @@ type AwsAutoscalingGroupSpecMixedInstancesPolicy struct {
 	LaunchTemplate        []AwsAutoscalingGroupSpecMixedInstancesPolicy `json:"launch_template"`
 }
 
-type AwsAutoscalingGroupSpecTag struct {
-	Key               string `json:"key"`
-	Value             string `json:"value"`
-	PropagateAtLaunch bool   `json:"propagate_at_launch"`
-}
-
 type AwsAutoscalingGroupSpecLaunchTemplate struct {
+	Id      string `json:"id"`
 	Name    string `json:"name"`
 	Version string `json:"version"`
-	Id      string `json:"id"`
+}
+
+type AwsAutoscalingGroupSpecInitialLifecycleHook struct {
+	RoleArn               string `json:"role_arn"`
+	Name                  string `json:"name"`
+	DefaultResult         string `json:"default_result"`
+	HeartbeatTimeout      int    `json:"heartbeat_timeout"`
+	LifecycleTransition   string `json:"lifecycle_transition"`
+	NotificationMetadata  string `json:"notification_metadata"`
+	NotificationTargetArn string `json:"notification_target_arn"`
 }
 
 type AwsAutoscalingGroupSpec struct {
-	MetricsGranularity     string                    `json:"metrics_granularity"`
-	ServiceLinkedRoleArn   string                    `json:"service_linked_role_arn"`
-	AvailabilityZones      []string                  `json:"availability_zones"`
-	LaunchConfiguration    string                    `json:"launch_configuration"`
-	WaitForElbCapacity     int                       `json:"wait_for_elb_capacity"`
-	TargetGroupArns        []string                  `json:"target_group_arns"`
-	Name                   string                    `json:"name"`
-	ForceDelete            bool                      `json:"force_delete"`
-	LoadBalancers          []string                  `json:"load_balancers"`
 	SuspendedProcesses     []string                  `json:"suspended_processes"`
-	DefaultCooldown        int                       `json:"default_cooldown"`
-	MaxSize                int                       `json:"max_size"`
-	InitialLifecycleHook   []AwsAutoscalingGroupSpec `json:"initial_lifecycle_hook"`
-	DesiredCapacity        int                       `json:"desired_capacity"`
-	MixedInstancesPolicy   []AwsAutoscalingGroupSpec `json:"mixed_instances_policy"`
+	TargetGroupArns        []string                  `json:"target_group_arns"`
+	ServiceLinkedRoleArn   string                    `json:"service_linked_role_arn"`
 	MinElbCapacity         int                       `json:"min_elb_capacity"`
+	MinSize                int                       `json:"min_size"`
 	HealthCheckType        string                    `json:"health_check_type"`
-	VpcZoneIdentifier      []string                  `json:"vpc_zone_identifier"`
-	WaitForCapacityTimeout string                    `json:"wait_for_capacity_timeout"`
-	ProtectFromScaleIn     bool                      `json:"protect_from_scale_in"`
-	Tag                    []AwsAutoscalingGroupSpec `json:"tag"`
-	NamePrefix             string                    `json:"name_prefix"`
+	DesiredCapacity        int                       `json:"desired_capacity"`
 	TerminationPolicies    []string                  `json:"termination_policies"`
-	Arn                    string                    `json:"arn"`
-	LaunchTemplate         []AwsAutoscalingGroupSpec `json:"launch_template"`
+	Tag                    []AwsAutoscalingGroupSpec `json:"tag"`
 	HealthCheckGracePeriod int                       `json:"health_check_grace_period"`
 	PlacementGroup         string                    `json:"placement_group"`
+	WaitForCapacityTimeout string                    `json:"wait_for_capacity_timeout"`
+	WaitForElbCapacity     int                       `json:"wait_for_elb_capacity"`
+	ProtectFromScaleIn     bool                      `json:"protect_from_scale_in"`
+	NamePrefix             string                    `json:"name_prefix"`
+	MixedInstancesPolicy   []AwsAutoscalingGroupSpec `json:"mixed_instances_policy"`
+	DefaultCooldown        int                       `json:"default_cooldown"`
+	LaunchConfiguration    string                    `json:"launch_configuration"`
+	LaunchTemplate         []AwsAutoscalingGroupSpec `json:"launch_template"`
+	InitialLifecycleHook   []AwsAutoscalingGroupSpec `json:"initial_lifecycle_hook"`
+	Arn                    string                    `json:"arn"`
+	ForceDelete            bool                      `json:"force_delete"`
+	LoadBalancers          []string                  `json:"load_balancers"`
+	VpcZoneIdentifier      []string                  `json:"vpc_zone_identifier"`
+	MaxSize                int                       `json:"max_size"`
+	AvailabilityZones      []string                  `json:"availability_zones"`
 	EnabledMetrics         []string                  `json:"enabled_metrics"`
-	MinSize                int                       `json:"min_size"`
+	Name                   string                    `json:"name"`
+	MetricsGranularity     string                    `json:"metrics_granularity"`
 }
 
 type AwsAutoscalingGroupStatus struct {
@@ -105,6 +106,7 @@ type AwsAutoscalingGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAutoscalingGroupList is a list of AwsAutoscalingGroups
 type AwsAutoscalingGroupList struct {

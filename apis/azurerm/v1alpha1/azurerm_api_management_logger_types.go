@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementLogger struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -27,13 +28,13 @@ type AzurermApiManagementLoggerSpecApplicationInsights struct {
 }
 
 type AzurermApiManagementLoggerSpec struct {
-	Description         string                           `json:"description"`
 	Name                string                           `json:"name"`
 	ResourceGroupName   string                           `json:"resource_group_name"`
 	ApiManagementName   string                           `json:"api_management_name"`
 	Eventhub            []AzurermApiManagementLoggerSpec `json:"eventhub"`
 	ApplicationInsights []AzurermApiManagementLoggerSpec `json:"application_insights"`
 	Buffered            bool                             `json:"buffered"`
+	Description         string                           `json:"description"`
 }
 
 type AzurermApiManagementLoggerStatus struct {
@@ -41,6 +42,7 @@ type AzurermApiManagementLoggerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementLoggerList is a list of AzurermApiManagementLoggers
 type AzurermApiManagementLoggerList struct {

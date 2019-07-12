@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLightsailKeyPair struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsLightsailKeyPair struct {
 }
 
 type AwsLightsailKeyPairSpec struct {
-	EncryptedFingerprint string `json:"encrypted_fingerprint"`
-	Name                 string `json:"name"`
-	Arn                  string `json:"arn"`
-	Fingerprint          string `json:"fingerprint"`
-	PublicKey            string `json:"public_key"`
-	PrivateKey           string `json:"private_key"`
 	EncryptedPrivateKey  string `json:"encrypted_private_key"`
+	Name                 string `json:"name"`
 	NamePrefix           string `json:"name_prefix"`
+	Fingerprint          string `json:"fingerprint"`
+	PrivateKey           string `json:"private_key"`
 	PgpKey               string `json:"pgp_key"`
+	Arn                  string `json:"arn"`
+	PublicKey            string `json:"public_key"`
+	EncryptedFingerprint string `json:"encrypted_fingerprint"`
 }
 
 type AwsLightsailKeyPairStatus struct {
@@ -34,6 +35,7 @@ type AwsLightsailKeyPairStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLightsailKeyPairList is a list of AwsLightsailKeyPairs
 type AwsLightsailKeyPairList struct {

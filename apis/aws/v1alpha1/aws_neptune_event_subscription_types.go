@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsNeptuneEventSubscription struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,15 +20,15 @@ type AwsNeptuneEventSubscription struct {
 
 type AwsNeptuneEventSubscriptionSpec struct {
 	SnsTopicArn     string            `json:"sns_topic_arn"`
-	SourceIds       []string          `json:"source_ids"`
-	Tags            map[string]string `json:"tags"`
 	EventCategories []string          `json:"event_categories"`
 	SourceType      string            `json:"source_type"`
-	Enabled         bool              `json:"enabled"`
 	CustomerAwsId   string            `json:"customer_aws_id"`
-	Arn             string            `json:"arn"`
 	Name            string            `json:"name"`
 	NamePrefix      string            `json:"name_prefix"`
+	SourceIds       []string          `json:"source_ids"`
+	Enabled         bool              `json:"enabled"`
+	Tags            map[string]string `json:"tags"`
+	Arn             string            `json:"arn"`
 }
 
 type AwsNeptuneEventSubscriptionStatus struct {
@@ -35,6 +36,7 @@ type AwsNeptuneEventSubscriptionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsNeptuneEventSubscriptionList is a list of AwsNeptuneEventSubscriptions
 type AwsNeptuneEventSubscriptionList struct {

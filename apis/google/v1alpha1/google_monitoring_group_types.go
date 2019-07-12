@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleMonitoringGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleMonitoringGroup struct {
 }
 
 type GoogleMonitoringGroupSpec struct {
-	DisplayName string `json:"display_name"`
-	Filter      string `json:"filter"`
 	IsCluster   bool   `json:"is_cluster"`
 	ParentName  string `json:"parent_name"`
 	Name        string `json:"name"`
 	Project     string `json:"project"`
+	DisplayName string `json:"display_name"`
+	Filter      string `json:"filter"`
 }
 
 type GoogleMonitoringGroupStatus struct {
@@ -31,6 +32,7 @@ type GoogleMonitoringGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleMonitoringGroupList is a list of GoogleMonitoringGroups
 type GoogleMonitoringGroupList struct {

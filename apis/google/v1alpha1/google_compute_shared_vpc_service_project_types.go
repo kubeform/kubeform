@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeSharedVpcServiceProject struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type GoogleComputeSharedVpcServiceProject struct {
 }
 
 type GoogleComputeSharedVpcServiceProjectSpec struct {
-	ServiceProject string `json:"service_project"`
 	HostProject    string `json:"host_project"`
+	ServiceProject string `json:"service_project"`
 }
 
 type GoogleComputeSharedVpcServiceProjectStatus struct {
@@ -27,6 +28,7 @@ type GoogleComputeSharedVpcServiceProjectStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeSharedVpcServiceProjectList is a list of GoogleComputeSharedVpcServiceProjects
 type GoogleComputeSharedVpcServiceProjectList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsTransferServer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,16 +23,16 @@ type AwsTransferServerSpecEndpointDetails struct {
 }
 
 type AwsTransferServerSpec struct {
+	Url                  string                  `json:"url"`
 	LoggingRole          string                  `json:"logging_role"`
 	ForceDestroy         bool                    `json:"force_destroy"`
-	Tags                 map[string]string       `json:"tags"`
 	Arn                  string                  `json:"arn"`
 	Endpoint             string                  `json:"endpoint"`
 	EndpointType         string                  `json:"endpoint_type"`
-	Url                  string                  `json:"url"`
 	EndpointDetails      []AwsTransferServerSpec `json:"endpoint_details"`
 	InvocationRole       string                  `json:"invocation_role"`
 	IdentityProviderType string                  `json:"identity_provider_type"`
+	Tags                 map[string]string       `json:"tags"`
 }
 
 type AwsTransferServerStatus struct {
@@ -39,6 +40,7 @@ type AwsTransferServerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsTransferServerList is a list of AwsTransferServers
 type AwsTransferServerList struct {

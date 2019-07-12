@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleStorageBucketObject struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,20 +19,20 @@ type GoogleStorageBucketObject struct {
 }
 
 type GoogleStorageBucketObjectSpec struct {
-	Crc32c             string `json:"crc32c"`
 	Source             string `json:"source"`
-	DetectMd5hash      string `json:"detect_md5hash"`
 	Bucket             string `json:"bucket"`
-	CacheControl       string `json:"cache_control"`
-	Content            string `json:"content"`
-	PredefinedAcl      string `json:"predefined_acl"`
 	Name               string `json:"name"`
-	ContentLanguage    string `json:"content_language"`
 	ContentType        string `json:"content_type"`
-	StorageClass       string `json:"storage_class"`
+	Crc32c             string `json:"crc32c"`
 	ContentDisposition string `json:"content_disposition"`
-	ContentEncoding    string `json:"content_encoding"`
+	PredefinedAcl      string `json:"predefined_acl"`
+	DetectMd5hash      string `json:"detect_md5hash"`
+	Content            string `json:"content"`
 	Md5hash            string `json:"md5hash"`
+	StorageClass       string `json:"storage_class"`
+	CacheControl       string `json:"cache_control"`
+	ContentEncoding    string `json:"content_encoding"`
+	ContentLanguage    string `json:"content_language"`
 }
 
 type GoogleStorageBucketObjectStatus struct {
@@ -39,6 +40,7 @@ type GoogleStorageBucketObjectStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleStorageBucketObjectList is a list of GoogleStorageBucketObjects
 type GoogleStorageBucketObjectList struct {

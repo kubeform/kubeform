@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermRouteTable struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -25,13 +26,13 @@ type AzurermRouteTableSpecRoute struct {
 }
 
 type AzurermRouteTableSpec struct {
-	DisableBgpRoutePropagation bool                    `json:"disable_bgp_route_propagation"`
 	Subnets                    []string                `json:"subnets"`
 	Tags                       map[string]string       `json:"tags"`
 	Name                       string                  `json:"name"`
 	Location                   string                  `json:"location"`
 	ResourceGroupName          string                  `json:"resource_group_name"`
 	Route                      []AzurermRouteTableSpec `json:"route"`
+	DisableBgpRoutePropagation bool                    `json:"disable_bgp_route_propagation"`
 }
 
 type AzurermRouteTableStatus struct {
@@ -39,6 +40,7 @@ type AzurermRouteTableStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermRouteTableList is a list of AzurermRouteTables
 type AzurermRouteTableList struct {

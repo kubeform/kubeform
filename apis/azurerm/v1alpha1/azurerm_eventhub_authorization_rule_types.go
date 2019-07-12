@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermEventhubAuthorizationRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AzurermEventhubAuthorizationRule struct {
 }
 
 type AzurermEventhubAuthorizationRuleSpec struct {
+	EventhubName              string `json:"eventhub_name"`
+	Name                      string `json:"name"`
+	SecondaryKey              string `json:"secondary_key"`
+	SecondaryConnectionString string `json:"secondary_connection_string"`
+	PrimaryKey                string `json:"primary_key"`
+	NamespaceName             string `json:"namespace_name"`
+	Location                  string `json:"location"`
 	Listen                    bool   `json:"listen"`
 	Send                      bool   `json:"send"`
-	Location                  string `json:"location"`
-	PrimaryKey                string `json:"primary_key"`
-	PrimaryConnectionString   string `json:"primary_connection_string"`
-	SecondaryConnectionString string `json:"secondary_connection_string"`
 	Manage                    bool   `json:"manage"`
-	SecondaryKey              string `json:"secondary_key"`
-	Name                      string `json:"name"`
-	NamespaceName             string `json:"namespace_name"`
-	EventhubName              string `json:"eventhub_name"`
+	PrimaryConnectionString   string `json:"primary_connection_string"`
 	ResourceGroupName         string `json:"resource_group_name"`
 }
 
@@ -37,6 +38,7 @@ type AzurermEventhubAuthorizationRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermEventhubAuthorizationRuleList is a list of AzurermEventhubAuthorizationRules
 type AzurermEventhubAuthorizationRuleList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GooglePubsubSubscriptionIamMember struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type GooglePubsubSubscriptionIamMember struct {
 }
 
 type GooglePubsubSubscriptionIamMemberSpec struct {
-	Project      string `json:"project"`
 	Role         string `json:"role"`
 	Member       string `json:"member"`
 	Etag         string `json:"etag"`
 	Subscription string `json:"subscription"`
+	Project      string `json:"project"`
 }
 
 type GooglePubsubSubscriptionIamMemberStatus struct {
@@ -30,6 +31,7 @@ type GooglePubsubSubscriptionIamMemberStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GooglePubsubSubscriptionIamMemberList is a list of GooglePubsubSubscriptionIamMembers
 type GooglePubsubSubscriptionIamMemberList struct {

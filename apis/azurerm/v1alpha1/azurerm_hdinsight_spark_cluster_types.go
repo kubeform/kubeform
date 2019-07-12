@@ -9,12 +9,23 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermHdinsightSparkCluster struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              AzurermHdinsightSparkClusterSpec   `json:"spec,omitempty"`
 	Status            AzurermHdinsightSparkClusterStatus `json:"status,omitempty"`
+}
+
+type AzurermHdinsightSparkClusterSpecComponentVersion struct {
+	Spark string `json:"spark"`
+}
+
+type AzurermHdinsightSparkClusterSpecGateway struct {
+	Enabled  bool   `json:"enabled"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
 type AzurermHdinsightSparkClusterSpecStorageAccount struct {
@@ -24,15 +35,16 @@ type AzurermHdinsightSparkClusterSpecStorageAccount struct {
 }
 
 type AzurermHdinsightSparkClusterSpecRolesHeadNode struct {
-	SshKeys          []string `json:"ssh_keys"`
 	SubnetId         string   `json:"subnet_id"`
 	VirtualNetworkId string   `json:"virtual_network_id"`
 	VmSize           string   `json:"vm_size"`
 	Username         string   `json:"username"`
 	Password         string   `json:"password"`
+	SshKeys          []string `json:"ssh_keys"`
 }
 
 type AzurermHdinsightSparkClusterSpecRolesWorkerNode struct {
+	VmSize              string   `json:"vm_size"`
 	Username            string   `json:"username"`
 	Password            string   `json:"password"`
 	SshKeys             []string `json:"ssh_keys"`
@@ -40,16 +52,15 @@ type AzurermHdinsightSparkClusterSpecRolesWorkerNode struct {
 	VirtualNetworkId    string   `json:"virtual_network_id"`
 	MinInstanceCount    int      `json:"min_instance_count"`
 	TargetInstanceCount int      `json:"target_instance_count"`
-	VmSize              string   `json:"vm_size"`
 }
 
 type AzurermHdinsightSparkClusterSpecRolesZookeeperNode struct {
+	VmSize           string   `json:"vm_size"`
 	Username         string   `json:"username"`
 	Password         string   `json:"password"`
 	SshKeys          []string `json:"ssh_keys"`
 	SubnetId         string   `json:"subnet_id"`
 	VirtualNetworkId string   `json:"virtual_network_id"`
-	VmSize           string   `json:"vm_size"`
 }
 
 type AzurermHdinsightSparkClusterSpecRoles struct {
@@ -58,29 +69,19 @@ type AzurermHdinsightSparkClusterSpecRoles struct {
 	ZookeeperNode []AzurermHdinsightSparkClusterSpecRoles `json:"zookeeper_node"`
 }
 
-type AzurermHdinsightSparkClusterSpecComponentVersion struct {
-	Spark string `json:"spark"`
-}
-
-type AzurermHdinsightSparkClusterSpecGateway struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Enabled  bool   `json:"enabled"`
-}
-
 type AzurermHdinsightSparkClusterSpec struct {
-	SshEndpoint       string                             `json:"ssh_endpoint"`
-	Name              string                             `json:"name"`
-	ClusterVersion    string                             `json:"cluster_version"`
-	StorageAccount    []AzurermHdinsightSparkClusterSpec `json:"storage_account"`
-	Tags              map[string]string                  `json:"tags"`
-	HttpsEndpoint     string                             `json:"https_endpoint"`
-	Roles             []AzurermHdinsightSparkClusterSpec `json:"roles"`
 	ResourceGroupName string                             `json:"resource_group_name"`
 	Location          string                             `json:"location"`
-	Tier              string                             `json:"tier"`
+	ClusterVersion    string                             `json:"cluster_version"`
+	Tags              map[string]string                  `json:"tags"`
+	HttpsEndpoint     string                             `json:"https_endpoint"`
+	Name              string                             `json:"name"`
 	ComponentVersion  []AzurermHdinsightSparkClusterSpec `json:"component_version"`
 	Gateway           []AzurermHdinsightSparkClusterSpec `json:"gateway"`
+	StorageAccount    []AzurermHdinsightSparkClusterSpec `json:"storage_account"`
+	Roles             []AzurermHdinsightSparkClusterSpec `json:"roles"`
+	SshEndpoint       string                             `json:"ssh_endpoint"`
+	Tier              string                             `json:"tier"`
 }
 
 type AzurermHdinsightSparkClusterStatus struct {
@@ -88,6 +89,7 @@ type AzurermHdinsightSparkClusterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermHdinsightSparkClusterList is a list of AzurermHdinsightSparkClusters
 type AzurermHdinsightSparkClusterList struct {

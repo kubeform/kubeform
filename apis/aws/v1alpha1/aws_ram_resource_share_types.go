@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRamResourceShare struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsRamResourceShare struct {
 }
 
 type AwsRamResourceShareSpec struct {
-	Arn                     string            `json:"arn"`
 	Name                    string            `json:"name"`
 	AllowExternalPrincipals bool              `json:"allow_external_principals"`
 	Tags                    map[string]string `json:"tags"`
+	Arn                     string            `json:"arn"`
 }
 
 type AwsRamResourceShareStatus struct {
@@ -29,6 +30,7 @@ type AwsRamResourceShareStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRamResourceShareList is a list of AwsRamResourceShares
 type AwsRamResourceShareList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleDataflowJob struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type GoogleDataflowJob struct {
 }
 
 type GoogleDataflowJobSpec struct {
-	State           string            `json:"state"`
 	TemplateGcsPath string            `json:"template_gcs_path"`
+	Zone            string            `json:"zone"`
+	Region          string            `json:"region"`
+	Project         string            `json:"project"`
+	Name            string            `json:"name"`
 	TempGcsLocation string            `json:"temp_gcs_location"`
 	MaxWorkers      int               `json:"max_workers"`
 	Parameters      map[string]string `json:"parameters"`
-	Project         string            `json:"project"`
-	Name            string            `json:"name"`
-	Zone            string            `json:"zone"`
-	Region          string            `json:"region"`
 	OnDelete        string            `json:"on_delete"`
+	State           string            `json:"state"`
 }
 
 type GoogleDataflowJobStatus struct {
@@ -35,6 +36,7 @@ type GoogleDataflowJobStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleDataflowJobList is a list of GoogleDataflowJobs
 type GoogleDataflowJobList struct {

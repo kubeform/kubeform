@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsOpsworksRdsDbInstance struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsOpsworksRdsDbInstance struct {
 }
 
 type AwsOpsworksRdsDbInstanceSpec struct {
-	StackId          string `json:"stack_id"`
 	RdsDbInstanceArn string `json:"rds_db_instance_arn"`
 	DbPassword       string `json:"db_password"`
 	DbUser           string `json:"db_user"`
+	StackId          string `json:"stack_id"`
 }
 
 type AwsOpsworksRdsDbInstanceStatus struct {
@@ -29,6 +30,7 @@ type AwsOpsworksRdsDbInstanceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsOpsworksRdsDbInstanceList is a list of AwsOpsworksRdsDbInstances
 type AwsOpsworksRdsDbInstanceList struct {

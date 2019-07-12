@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIamServiceLinkedRole struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,7 +19,6 @@ type AwsIamServiceLinkedRole struct {
 }
 
 type AwsIamServiceLinkedRoleSpec struct {
-	Description    string `json:"description"`
 	AwsServiceName string `json:"aws_service_name"`
 	Name           string `json:"name"`
 	Path           string `json:"path"`
@@ -26,6 +26,7 @@ type AwsIamServiceLinkedRoleSpec struct {
 	CreateDate     string `json:"create_date"`
 	UniqueId       string `json:"unique_id"`
 	CustomSuffix   string `json:"custom_suffix"`
+	Description    string `json:"description"`
 }
 
 type AwsIamServiceLinkedRoleStatus struct {
@@ -33,6 +34,7 @@ type AwsIamServiceLinkedRoleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIamServiceLinkedRoleList is a list of AwsIamServiceLinkedRoles
 type AwsIamServiceLinkedRoleList struct {

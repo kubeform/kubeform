@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleAppEngineApplication struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,22 +23,22 @@ type GoogleAppEngineApplicationSpecFeatureSettings struct {
 }
 
 type GoogleAppEngineApplicationSpecUrlDispatchRule struct {
+	Service string `json:"service"`
 	Domain  string `json:"domain"`
 	Path    string `json:"path"`
-	Service string `json:"service"`
 }
 
 type GoogleAppEngineApplicationSpec struct {
+	AuthDomain      string                           `json:"auth_domain"`
+	DefaultHostname string                           `json:"default_hostname"`
 	GcrDomain       string                           `json:"gcr_domain"`
+	CodeBucket      string                           `json:"code_bucket"`
+	DefaultBucket   string                           `json:"default_bucket"`
+	Project         string                           `json:"project"`
 	LocationId      string                           `json:"location_id"`
+	ServingStatus   string                           `json:"serving_status"`
 	FeatureSettings []GoogleAppEngineApplicationSpec `json:"feature_settings"`
 	Name            string                           `json:"name"`
-	DefaultBucket   string                           `json:"default_bucket"`
-	CodeBucket      string                           `json:"code_bucket"`
-	DefaultHostname string                           `json:"default_hostname"`
-	Project         string                           `json:"project"`
-	AuthDomain      string                           `json:"auth_domain"`
-	ServingStatus   string                           `json:"serving_status"`
 	UrlDispatchRule []GoogleAppEngineApplicationSpec `json:"url_dispatch_rule"`
 }
 
@@ -46,6 +47,7 @@ type GoogleAppEngineApplicationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleAppEngineApplicationList is a list of GoogleAppEngineApplications
 type GoogleAppEngineApplicationList struct {

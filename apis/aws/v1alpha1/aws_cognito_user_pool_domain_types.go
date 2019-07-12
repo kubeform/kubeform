@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCognitoUserPoolDomain struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AwsCognitoUserPoolDomain struct {
 }
 
 type AwsCognitoUserPoolDomainSpec struct {
+	Version                   string `json:"version"`
 	Domain                    string `json:"domain"`
 	CertificateArn            string `json:"certificate_arn"`
 	UserPoolId                string `json:"user_pool_id"`
 	AwsAccountId              string `json:"aws_account_id"`
 	CloudfrontDistributionArn string `json:"cloudfront_distribution_arn"`
 	S3Bucket                  string `json:"s3_bucket"`
-	Version                   string `json:"version"`
 }
 
 type AwsCognitoUserPoolDomainStatus struct {
@@ -32,6 +33,7 @@ type AwsCognitoUserPoolDomainStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCognitoUserPoolDomainList is a list of AwsCognitoUserPoolDomains
 type AwsCognitoUserPoolDomainList struct {

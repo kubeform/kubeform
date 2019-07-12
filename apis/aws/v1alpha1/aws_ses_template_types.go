@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSesTemplate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsSesTemplate struct {
 }
 
 type AwsSesTemplateSpec struct {
-	Name    string `json:"name"`
-	Html    string `json:"html"`
 	Subject string `json:"subject"`
 	Text    string `json:"text"`
+	Name    string `json:"name"`
+	Html    string `json:"html"`
 }
 
 type AwsSesTemplateStatus struct {
@@ -29,6 +30,7 @@ type AwsSesTemplateStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSesTemplateList is a list of AwsSesTemplates
 type AwsSesTemplateList struct {

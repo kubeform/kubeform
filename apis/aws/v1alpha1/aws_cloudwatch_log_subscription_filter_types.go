@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCloudwatchLogSubscriptionFilter struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsCloudwatchLogSubscriptionFilter struct {
 }
 
 type AwsCloudwatchLogSubscriptionFilterSpec struct {
-	Name           string `json:"name"`
-	DestinationArn string `json:"destination_arn"`
-	FilterPattern  string `json:"filter_pattern"`
 	LogGroupName   string `json:"log_group_name"`
 	RoleArn        string `json:"role_arn"`
 	Distribution   string `json:"distribution"`
+	Name           string `json:"name"`
+	DestinationArn string `json:"destination_arn"`
+	FilterPattern  string `json:"filter_pattern"`
 }
 
 type AwsCloudwatchLogSubscriptionFilterStatus struct {
@@ -31,6 +32,7 @@ type AwsCloudwatchLogSubscriptionFilterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCloudwatchLogSubscriptionFilterList is a list of AwsCloudwatchLogSubscriptionFilters
 type AwsCloudwatchLogSubscriptionFilterList struct {

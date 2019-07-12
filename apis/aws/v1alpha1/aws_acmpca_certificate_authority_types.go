@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAcmpcaCertificateAuthority struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -30,18 +31,18 @@ type AwsAcmpcaCertificateAuthoritySpecRevocationConfiguration struct {
 
 type AwsAcmpcaCertificateAuthoritySpecCertificateAuthorityConfigurationSubject struct {
 	Country                    string `json:"country"`
-	GenerationQualifier        string `json:"generation_qualifier"`
-	GivenName                  string `json:"given_name"`
-	OrganizationalUnit         string `json:"organizational_unit"`
-	Pseudonym                  string `json:"pseudonym"`
-	Surname                    string `json:"surname"`
-	Title                      string `json:"title"`
-	CommonName                 string `json:"common_name"`
 	DistinguishedNameQualifier string `json:"distinguished_name_qualifier"`
+	OrganizationalUnit         string `json:"organizational_unit"`
+	Surname                    string `json:"surname"`
+	CommonName                 string `json:"common_name"`
+	GivenName                  string `json:"given_name"`
 	Initials                   string `json:"initials"`
 	Locality                   string `json:"locality"`
 	Organization               string `json:"organization"`
+	Pseudonym                  string `json:"pseudonym"`
 	State                      string `json:"state"`
+	Title                      string `json:"title"`
+	GenerationQualifier        string `json:"generation_qualifier"`
 }
 
 type AwsAcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration struct {
@@ -51,20 +52,20 @@ type AwsAcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration struct {
 }
 
 type AwsAcmpcaCertificateAuthoritySpec struct {
+	Arn                               string                              `json:"arn"`
 	Certificate                       string                              `json:"certificate"`
+	NotBefore                         string                              `json:"not_before"`
+	RevocationConfiguration           []AwsAcmpcaCertificateAuthoritySpec `json:"revocation_configuration"`
+	Serial                            string                              `json:"serial"`
+	Tags                              map[string]string                   `json:"tags"`
+	PermanentDeletionTimeInDays       int                                 `json:"permanent_deletion_time_in_days"`
+	Type                              string                              `json:"type"`
+	Enabled                           bool                                `json:"enabled"`
+	Status                            string                              `json:"status"`
+	CertificateAuthorityConfiguration []AwsAcmpcaCertificateAuthoritySpec `json:"certificate_authority_configuration"`
 	CertificateChain                  string                              `json:"certificate_chain"`
 	CertificateSigningRequest         string                              `json:"certificate_signing_request"`
-	Status                            string                              `json:"status"`
-	Arn                               string                              `json:"arn"`
-	Enabled                           bool                                `json:"enabled"`
 	NotAfter                          string                              `json:"not_after"`
-	RevocationConfiguration           []AwsAcmpcaCertificateAuthoritySpec `json:"revocation_configuration"`
-	Tags                              map[string]string                   `json:"tags"`
-	Type                              string                              `json:"type"`
-	CertificateAuthorityConfiguration []AwsAcmpcaCertificateAuthoritySpec `json:"certificate_authority_configuration"`
-	NotBefore                         string                              `json:"not_before"`
-	Serial                            string                              `json:"serial"`
-	PermanentDeletionTimeInDays       int                                 `json:"permanent_deletion_time_in_days"`
 }
 
 type AwsAcmpcaCertificateAuthorityStatus struct {
@@ -72,6 +73,7 @@ type AwsAcmpcaCertificateAuthorityStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAcmpcaCertificateAuthorityList is a list of AwsAcmpcaCertificateAuthoritys
 type AwsAcmpcaCertificateAuthorityList struct {

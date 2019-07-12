@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleRuntimeconfigVariable struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleRuntimeconfigVariable struct {
 }
 
 type GoogleRuntimeconfigVariableSpec struct {
-	Text       string `json:"text"`
 	UpdateTime string `json:"update_time"`
 	Name       string `json:"name"`
 	Parent     string `json:"parent"`
 	Project    string `json:"project"`
 	Value      string `json:"value"`
+	Text       string `json:"text"`
 }
 
 type GoogleRuntimeconfigVariableStatus struct {
@@ -31,6 +32,7 @@ type GoogleRuntimeconfigVariableStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleRuntimeconfigVariableList is a list of GoogleRuntimeconfigVariables
 type GoogleRuntimeconfigVariableList struct {

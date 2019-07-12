@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsBackupVault struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsBackupVault struct {
 }
 
 type AwsBackupVaultSpec struct {
+	Arn            string            `json:"arn"`
 	RecoveryPoints int               `json:"recovery_points"`
 	Name           string            `json:"name"`
 	Tags           map[string]string `json:"tags"`
 	KmsKeyArn      string            `json:"kms_key_arn"`
-	Arn            string            `json:"arn"`
 }
 
 type AwsBackupVaultStatus struct {
@@ -30,6 +31,7 @@ type AwsBackupVaultStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsBackupVaultList is a list of AwsBackupVaults
 type AwsBackupVaultList struct {

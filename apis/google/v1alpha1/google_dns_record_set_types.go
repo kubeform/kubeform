@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleDnsRecordSet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleDnsRecordSet struct {
 }
 
 type GoogleDnsRecordSetSpec struct {
-	ManagedZone string   `json:"managed_zone"`
 	Name        string   `json:"name"`
 	Rrdatas     []string `json:"rrdatas"`
 	Ttl         int      `json:"ttl"`
 	Type        string   `json:"type"`
 	Project     string   `json:"project"`
+	ManagedZone string   `json:"managed_zone"`
 }
 
 type GoogleDnsRecordSetStatus struct {
@@ -31,6 +32,7 @@ type GoogleDnsRecordSetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleDnsRecordSetList is a list of GoogleDnsRecordSets
 type GoogleDnsRecordSetList struct {

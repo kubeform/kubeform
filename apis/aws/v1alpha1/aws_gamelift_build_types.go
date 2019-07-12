@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGameliftBuild struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -35,6 +36,7 @@ type AwsGameliftBuildStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGameliftBuildList is a list of AwsGameliftBuilds
 type AwsGameliftBuildList struct {

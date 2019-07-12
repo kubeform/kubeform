@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeSubnetwork struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,19 +24,19 @@ type GoogleComputeSubnetworkSpecSecondaryIpRange struct {
 }
 
 type GoogleComputeSubnetworkSpec struct {
-	Name                  string                        `json:"name"`
+	EnableFlowLogs        bool                          `json:"enable_flow_logs"`
+	PrivateIpGoogleAccess bool                          `json:"private_ip_google_access"`
+	SecondaryIpRange      []GoogleComputeSubnetworkSpec `json:"secondary_ip_range"`
+	CreationTimestamp     string                        `json:"creation_timestamp"`
+	IpCidrRange           string                        `json:"ip_cidr_range"`
 	Network               string                        `json:"network"`
 	Description           string                        `json:"description"`
-	CreationTimestamp     string                        `json:"creation_timestamp"`
-	Project               string                        `json:"project"`
-	SelfLink              string                        `json:"self_link"`
-	IpCidrRange           string                        `json:"ip_cidr_range"`
-	PrivateIpGoogleAccess bool                          `json:"private_ip_google_access"`
 	Region                string                        `json:"region"`
-	SecondaryIpRange      []GoogleComputeSubnetworkSpec `json:"secondary_ip_range"`
 	Fingerprint           string                        `json:"fingerprint"`
 	GatewayAddress        string                        `json:"gateway_address"`
-	EnableFlowLogs        bool                          `json:"enable_flow_logs"`
+	Project               string                        `json:"project"`
+	SelfLink              string                        `json:"self_link"`
+	Name                  string                        `json:"name"`
 }
 
 type GoogleComputeSubnetworkStatus struct {
@@ -43,6 +44,7 @@ type GoogleComputeSubnetworkStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeSubnetworkList is a list of GoogleComputeSubnetworks
 type GoogleComputeSubnetworkList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCodecommitTrigger struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -26,9 +27,9 @@ type AwsCodecommitTriggerSpecTrigger struct {
 }
 
 type AwsCodecommitTriggerSpec struct {
-	ConfigurationId string                     `json:"configuration_id"`
 	Trigger         []AwsCodecommitTriggerSpec `json:"trigger"`
 	RepositoryName  string                     `json:"repository_name"`
+	ConfigurationId string                     `json:"configuration_id"`
 }
 
 type AwsCodecommitTriggerStatus struct {
@@ -36,6 +37,7 @@ type AwsCodecommitTriggerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCodecommitTriggerList is a list of AwsCodecommitTriggers
 type AwsCodecommitTriggerList struct {

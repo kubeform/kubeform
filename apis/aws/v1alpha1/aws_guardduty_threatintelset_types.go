@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGuarddutyThreatintelset struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -30,6 +31,7 @@ type AwsGuarddutyThreatintelsetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGuarddutyThreatintelsetList is a list of AwsGuarddutyThreatintelsets
 type AwsGuarddutyThreatintelsetList struct {

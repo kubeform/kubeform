@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIamAccountPasswordPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type AwsIamAccountPasswordPolicy struct {
 }
 
 type AwsIamAccountPasswordPolicySpec struct {
-	MaxPasswordAge             int  `json:"max_password_age"`
+	MinimumPasswordLength      int  `json:"minimum_password_length"`
 	PasswordReusePrevention    int  `json:"password_reuse_prevention"`
 	RequireLowercaseCharacters bool `json:"require_lowercase_characters"`
+	MaxPasswordAge             int  `json:"max_password_age"`
 	RequireNumbers             bool `json:"require_numbers"`
-	HardExpiry                 bool `json:"hard_expiry"`
-	ExpirePasswords            bool `json:"expire_passwords"`
-	MinimumPasswordLength      int  `json:"minimum_password_length"`
 	RequireSymbols             bool `json:"require_symbols"`
 	RequireUppercaseCharacters bool `json:"require_uppercase_characters"`
 	AllowUsersToChangePassword bool `json:"allow_users_to_change_password"`
+	ExpirePasswords            bool `json:"expire_passwords"`
+	HardExpiry                 bool `json:"hard_expiry"`
 }
 
 type AwsIamAccountPasswordPolicyStatus struct {
@@ -35,6 +36,7 @@ type AwsIamAccountPasswordPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIamAccountPasswordPolicyList is a list of AwsIamAccountPasswordPolicys
 type AwsIamAccountPasswordPolicyList struct {

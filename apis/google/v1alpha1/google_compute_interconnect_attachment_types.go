@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeInterconnectAttachment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,18 +23,18 @@ type GoogleComputeInterconnectAttachmentSpecPrivateInterconnectInfo struct {
 }
 
 type GoogleComputeInterconnectAttachmentSpec struct {
-	GoogleReferenceId       string                                    `json:"google_reference_id"`
-	Project                 string                                    `json:"project"`
-	Interconnect            string                                    `json:"interconnect"`
 	Region                  string                                    `json:"region"`
 	CloudRouterIpAddress    string                                    `json:"cloud_router_ip_address"`
-	CreationTimestamp       string                                    `json:"creation_timestamp"`
-	CustomerRouterIpAddress string                                    `json:"customer_router_ip_address"`
-	PrivateInterconnectInfo []GoogleComputeInterconnectAttachmentSpec `json:"private_interconnect_info"`
-	SelfLink                string                                    `json:"self_link"`
 	Name                    string                                    `json:"name"`
 	Router                  string                                    `json:"router"`
 	Description             string                                    `json:"description"`
+	CreationTimestamp       string                                    `json:"creation_timestamp"`
+	CustomerRouterIpAddress string                                    `json:"customer_router_ip_address"`
+	GoogleReferenceId       string                                    `json:"google_reference_id"`
+	PrivateInterconnectInfo []GoogleComputeInterconnectAttachmentSpec `json:"private_interconnect_info"`
+	Project                 string                                    `json:"project"`
+	Interconnect            string                                    `json:"interconnect"`
+	SelfLink                string                                    `json:"self_link"`
 }
 
 type GoogleComputeInterconnectAttachmentStatus struct {
@@ -41,6 +42,7 @@ type GoogleComputeInterconnectAttachmentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeInterconnectAttachmentList is a list of GoogleComputeInterconnectAttachments
 type GoogleComputeInterconnectAttachmentList struct {

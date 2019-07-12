@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRedshiftSecurityGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,9 +25,9 @@ type AwsRedshiftSecurityGroupSpecIngress struct {
 }
 
 type AwsRedshiftSecurityGroupSpec struct {
+	Ingress     []AwsRedshiftSecurityGroupSpec `json:"ingress"`
 	Name        string                         `json:"name"`
 	Description string                         `json:"description"`
-	Ingress     []AwsRedshiftSecurityGroupSpec `json:"ingress"`
 }
 
 type AwsRedshiftSecurityGroupStatus struct {
@@ -34,6 +35,7 @@ type AwsRedshiftSecurityGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRedshiftSecurityGroupList is a list of AwsRedshiftSecurityGroups
 type AwsRedshiftSecurityGroupList struct {

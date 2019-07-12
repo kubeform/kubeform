@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeSnapshot struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -27,26 +28,26 @@ type GoogleComputeSnapshotSpecSnapshotEncryptionKey struct {
 }
 
 type GoogleComputeSnapshotSpec struct {
-	Name                          string                      `json:"name"`
-	Zone                          string                      `json:"zone"`
-	Licenses                      []string                    `json:"licenses"`
 	SnapshotId                    int                         `json:"snapshot_id"`
 	SnapshotEncryptionKeySha256   string                      `json:"snapshot_encryption_key_sha256"`
-	SourceDiskEncryptionKeyRaw    string                      `json:"source_disk_encryption_key_raw"`
-	Description                   string                      `json:"description"`
-	CreationTimestamp             string                      `json:"creation_timestamp"`
+	Name                          string                      `json:"name"`
+	SourceDiskEncryptionKey       []GoogleComputeSnapshotSpec `json:"source_disk_encryption_key"`
+	Zone                          string                      `json:"zone"`
 	DiskSizeGb                    int                         `json:"disk_size_gb"`
 	LabelFingerprint              string                      `json:"label_fingerprint"`
-	SourceDiskEncryptionKey       []GoogleComputeSnapshotSpec `json:"source_disk_encryption_key"`
-	SourceDiskLink                string                      `json:"source_disk_link"`
+	Licenses                      []string                    `json:"licenses"`
 	SnapshotEncryptionKeyRaw      string                      `json:"snapshot_encryption_key_raw"`
-	SourceDiskEncryptionKeySha256 string                      `json:"source_disk_encryption_key_sha256"`
 	SelfLink                      string                      `json:"self_link"`
-	SourceDisk                    string                      `json:"source_disk"`
+	Project                       string                      `json:"project"`
 	Labels                        map[string]string           `json:"labels"`
 	SnapshotEncryptionKey         []GoogleComputeSnapshotSpec `json:"snapshot_encryption_key"`
+	CreationTimestamp             string                      `json:"creation_timestamp"`
+	SourceDiskEncryptionKeyRaw    string                      `json:"source_disk_encryption_key_raw"`
+	SourceDiskEncryptionKeySha256 string                      `json:"source_disk_encryption_key_sha256"`
+	SourceDisk                    string                      `json:"source_disk"`
+	Description                   string                      `json:"description"`
 	StorageBytes                  int                         `json:"storage_bytes"`
-	Project                       string                      `json:"project"`
+	SourceDiskLink                string                      `json:"source_disk_link"`
 }
 
 type GoogleComputeSnapshotStatus struct {
@@ -54,6 +55,7 @@ type GoogleComputeSnapshotStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeSnapshotList is a list of GoogleComputeSnapshots
 type GoogleComputeSnapshotList struct {

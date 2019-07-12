@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLightsailStaticIpAttachment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsLightsailStaticIpAttachment struct {
 }
 
 type AwsLightsailStaticIpAttachmentSpec struct {
-	StaticIpName string `json:"static_ip_name"`
 	InstanceName string `json:"instance_name"`
+	StaticIpName string `json:"static_ip_name"`
 }
 
 type AwsLightsailStaticIpAttachmentStatus struct {
@@ -27,6 +28,7 @@ type AwsLightsailStaticIpAttachmentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLightsailStaticIpAttachmentList is a list of AwsLightsailStaticIpAttachments
 type AwsLightsailStaticIpAttachmentList struct {

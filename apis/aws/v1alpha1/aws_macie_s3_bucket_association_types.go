@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsMacieS3BucketAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -34,6 +35,7 @@ type AwsMacieS3BucketAssociationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsMacieS3BucketAssociationList is a list of AwsMacieS3BucketAssociations
 type AwsMacieS3BucketAssociationList struct {

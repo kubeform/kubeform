@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementAuthorizationServer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,25 +24,25 @@ type AzurermApiManagementAuthorizationServerSpecTokenBodyParameter struct {
 }
 
 type AzurermApiManagementAuthorizationServerSpec struct {
+	Name                       string                                        `json:"name"`
 	ResourceGroupName          string                                        `json:"resource_group_name"`
 	AuthorizationMethods       []string                                      `json:"authorization_methods"`
-	DisplayName                string                                        `json:"display_name"`
-	ResourceOwnerUsername      string                                        `json:"resource_owner_username"`
-	GrantTypes                 []string                                      `json:"grant_types"`
-	Description                string                                        `json:"description"`
+	ClientId                   string                                        `json:"client_id"`
 	SupportState               bool                                          `json:"support_state"`
-	Name                       string                                        `json:"name"`
-	ApiManagementName          string                                        `json:"api_management_name"`
+	GrantTypes                 []string                                      `json:"grant_types"`
+	BearerTokenSendingMethods  []string                                      `json:"bearer_token_sending_methods"`
+	ClientAuthenticationMethod []string                                      `json:"client_authentication_method"`
+	Description                string                                        `json:"description"`
+	TokenBodyParameter         []AzurermApiManagementAuthorizationServerSpec `json:"token_body_parameter"`
+	TokenEndpoint              string                                        `json:"token_endpoint"`
 	AuthorizationEndpoint      string                                        `json:"authorization_endpoint"`
 	ClientRegistrationEndpoint string                                        `json:"client_registration_endpoint"`
-	TokenEndpoint              string                                        `json:"token_endpoint"`
-	ClientId                   string                                        `json:"client_id"`
-	BearerTokenSendingMethods  []string                                      `json:"bearer_token_sending_methods"`
+	DefaultScope               string                                        `json:"default_scope"`
+	ResourceOwnerUsername      string                                        `json:"resource_owner_username"`
+	ApiManagementName          string                                        `json:"api_management_name"`
+	DisplayName                string                                        `json:"display_name"`
 	ClientSecret               string                                        `json:"client_secret"`
 	ResourceOwnerPassword      string                                        `json:"resource_owner_password"`
-	ClientAuthenticationMethod []string                                      `json:"client_authentication_method"`
-	DefaultScope               string                                        `json:"default_scope"`
-	TokenBodyParameter         []AzurermApiManagementAuthorizationServerSpec `json:"token_body_parameter"`
 }
 
 type AzurermApiManagementAuthorizationServerStatus struct {
@@ -49,6 +50,7 @@ type AzurermApiManagementAuthorizationServerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementAuthorizationServerList is a list of AzurermApiManagementAuthorizationServers
 type AzurermApiManagementAuthorizationServerList struct {

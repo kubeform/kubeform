@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermBatchAccount struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AzurermBatchAccount struct {
 }
 
 type AzurermBatchAccountSpec struct {
-	AccountEndpoint    string            `json:"account_endpoint"`
-	ResourceGroupName  string            `json:"resource_group_name"`
-	Location           string            `json:"location"`
+	Name               string            `json:"name"`
+	Tags               map[string]string `json:"tags"`
 	StorageAccountId   string            `json:"storage_account_id"`
 	PoolAllocationMode string            `json:"pool_allocation_mode"`
 	PrimaryAccessKey   string            `json:"primary_access_key"`
 	SecondaryAccessKey string            `json:"secondary_access_key"`
-	Name               string            `json:"name"`
-	Tags               map[string]string `json:"tags"`
+	AccountEndpoint    string            `json:"account_endpoint"`
+	ResourceGroupName  string            `json:"resource_group_name"`
+	Location           string            `json:"location"`
 }
 
 type AzurermBatchAccountStatus struct {
@@ -34,6 +35,7 @@ type AzurermBatchAccountStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermBatchAccountList is a list of AzurermBatchAccounts
 type AzurermBatchAccountList struct {

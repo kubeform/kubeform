@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleSourcerepoRepository struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type GoogleSourcerepoRepository struct {
 }
 
 type GoogleSourcerepoRepositorySpec struct {
+	Project string `json:"project"`
 	Size    int    `json:"size"`
 	Url     string `json:"url"`
 	Name    string `json:"name"`
-	Project string `json:"project"`
 }
 
 type GoogleSourcerepoRepositoryStatus struct {
@@ -29,6 +30,7 @@ type GoogleSourcerepoRepositoryStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleSourcerepoRepositoryList is a list of GoogleSourcerepoRepositorys
 type GoogleSourcerepoRepositoryList struct {

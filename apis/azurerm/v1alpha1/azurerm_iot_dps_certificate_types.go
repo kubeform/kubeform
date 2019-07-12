@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermIotDpsCertificate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AzurermIotDpsCertificate struct {
 }
 
 type AzurermIotDpsCertificateSpec struct {
+	CertificateContent string `json:"certificate_content"`
 	Name               string `json:"name"`
 	ResourceGroupName  string `json:"resource_group_name"`
 	IotDpsName         string `json:"iot_dps_name"`
-	CertificateContent string `json:"certificate_content"`
 }
 
 type AzurermIotDpsCertificateStatus struct {
@@ -29,6 +30,7 @@ type AzurermIotDpsCertificateStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermIotDpsCertificateList is a list of AzurermIotDpsCertificates
 type AzurermIotDpsCertificateList struct {

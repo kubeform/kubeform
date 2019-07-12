@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsKinesisStream struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,15 @@ type AwsKinesisStream struct {
 }
 
 type AwsKinesisStreamSpec struct {
-	ShardLevelMetrics []string          `json:"shard_level_metrics"`
-	EncryptionType    string            `json:"encryption_type"`
-	KmsKeyId          string            `json:"kms_key_id"`
-	Arn               string            `json:"arn"`
-	Tags              map[string]string `json:"tags"`
-	Name              string            `json:"name"`
-	ShardCount        int               `json:"shard_count"`
-	RetentionPeriod   int               `json:"retention_period"`
+	ShardCount              int               `json:"shard_count"`
+	ShardLevelMetrics       []string          `json:"shard_level_metrics"`
+	EncryptionType          string            `json:"encryption_type"`
+	KmsKeyId                string            `json:"kms_key_id"`
+	Name                    string            `json:"name"`
+	RetentionPeriod         int               `json:"retention_period"`
+	EnforceConsumerDeletion bool              `json:"enforce_consumer_deletion"`
+	Arn                     string            `json:"arn"`
+	Tags                    map[string]string `json:"tags"`
 }
 
 type AwsKinesisStreamStatus struct {
@@ -33,6 +35,7 @@ type AwsKinesisStreamStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsKinesisStreamList is a list of AwsKinesisStreams
 type AwsKinesisStreamList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsElb struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,19 +18,19 @@ type AwsElb struct {
 	Status            AwsElbStatus `json:"status,omitempty"`
 }
 
-type AwsElbSpecHealthCheck struct {
-	UnhealthyThreshold int    `json:"unhealthy_threshold"`
-	Target             string `json:"target"`
-	Interval           int    `json:"interval"`
-	Timeout            int    `json:"timeout"`
-	HealthyThreshold   int    `json:"healthy_threshold"`
-}
-
 type AwsElbSpecAccessLogs struct {
 	Interval     int    `json:"interval"`
 	Bucket       string `json:"bucket"`
 	BucketPrefix string `json:"bucket_prefix"`
 	Enabled      bool   `json:"enabled"`
+}
+
+type AwsElbSpecHealthCheck struct {
+	Timeout            int    `json:"timeout"`
+	HealthyThreshold   int    `json:"healthy_threshold"`
+	UnhealthyThreshold int    `json:"unhealthy_threshold"`
+	Target             string `json:"target"`
+	Interval           int    `json:"interval"`
 }
 
 type AwsElbSpecListener struct {
@@ -41,25 +42,25 @@ type AwsElbSpecListener struct {
 }
 
 type AwsElbSpec struct {
-	ConnectionDrainingTimeout int               `json:"connection_draining_timeout"`
-	DnsName                   string            `json:"dns_name"`
-	Name                      string            `json:"name"`
-	Arn                       string            `json:"arn"`
-	Subnets                   []string          `json:"subnets"`
-	ConnectionDraining        bool              `json:"connection_draining"`
-	Tags                      map[string]string `json:"tags"`
-	Internal                  bool              `json:"internal"`
-	CrossZoneLoadBalancing    bool              `json:"cross_zone_load_balancing"`
-	IdleTimeout               int               `json:"idle_timeout"`
-	HealthCheck               []AwsElbSpec      `json:"health_check"`
 	NamePrefix                string            `json:"name_prefix"`
-	SecurityGroups            []string          `json:"security_groups"`
+	Internal                  bool              `json:"internal"`
+	Instances                 []string          `json:"instances"`
 	SourceSecurityGroup       string            `json:"source_security_group"`
-	SourceSecurityGroupId     string            `json:"source_security_group_id"`
+	AccessLogs                []AwsElbSpec      `json:"access_logs"`
+	HealthCheck               []AwsElbSpec      `json:"health_check"`
+	Tags                      map[string]string `json:"tags"`
+	Name                      string            `json:"name"`
+	CrossZoneLoadBalancing    bool              `json:"cross_zone_load_balancing"`
+	SecurityGroups            []string          `json:"security_groups"`
 	ZoneId                    string            `json:"zone_id"`
 	AvailabilityZones         []string          `json:"availability_zones"`
-	Instances                 []string          `json:"instances"`
-	AccessLogs                []AwsElbSpec      `json:"access_logs"`
+	DnsName                   string            `json:"dns_name"`
+	Arn                       string            `json:"arn"`
+	SourceSecurityGroupId     string            `json:"source_security_group_id"`
+	Subnets                   []string          `json:"subnets"`
+	IdleTimeout               int               `json:"idle_timeout"`
+	ConnectionDraining        bool              `json:"connection_draining"`
+	ConnectionDrainingTimeout int               `json:"connection_draining_timeout"`
 	Listener                  []AwsElbSpec      `json:"listener"`
 }
 
@@ -68,6 +69,7 @@ type AwsElbStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsElbList is a list of AwsElbs
 type AwsElbList struct {

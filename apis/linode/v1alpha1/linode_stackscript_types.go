@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type LinodeStackscript struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,28 +19,28 @@ type LinodeStackscript struct {
 }
 
 type LinodeStackscriptSpecUserDefinedFields struct {
+	ManyOf  string `json:"many_of"`
 	Default string `json:"default"`
 	Label   string `json:"label"`
 	Name    string `json:"name"`
 	Example string `json:"example"`
 	OneOf   string `json:"one_of"`
-	ManyOf  string `json:"many_of"`
 }
 
 type LinodeStackscriptSpec struct {
+	Description       string                  `json:"description"`
 	DeploymentsTotal  int                     `json:"deployments_total"`
-	Updated           string                  `json:"updated"`
-	IsPublic          bool                    `json:"is_public"`
-	Images            []string                `json:"images"`
-	DeploymentsActive int                     `json:"deployments_active"`
-	UserGravatarId    string                  `json:"user_gravatar_id"`
 	Username          string                  `json:"username"`
 	Created           string                  `json:"created"`
 	UserDefinedFields []LinodeStackscriptSpec `json:"user_defined_fields"`
+	UserGravatarId    string                  `json:"user_gravatar_id"`
+	Updated           string                  `json:"updated"`
 	Label             string                  `json:"label"`
 	Script            string                  `json:"script"`
-	Description       string                  `json:"description"`
 	RevNote           string                  `json:"rev_note"`
+	IsPublic          bool                    `json:"is_public"`
+	Images            []string                `json:"images"`
+	DeploymentsActive int                     `json:"deployments_active"`
 }
 
 type LinodeStackscriptStatus struct {
@@ -47,6 +48,7 @@ type LinodeStackscriptStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // LinodeStackscriptList is a list of LinodeStackscripts
 type LinodeStackscriptList struct {

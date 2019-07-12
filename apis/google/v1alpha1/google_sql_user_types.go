@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleSqlUser struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type GoogleSqlUser struct {
 }
 
 type GoogleSqlUserSpec struct {
+	Project  string `json:"project"`
 	Host     string `json:"host"`
 	Instance string `json:"instance"`
 	Name     string `json:"name"`
 	Password string `json:"password"`
-	Project  string `json:"project"`
 }
 
 type GoogleSqlUserStatus struct {
@@ -30,6 +31,7 @@ type GoogleSqlUserStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleSqlUserList is a list of GoogleSqlUsers
 type GoogleSqlUserList struct {

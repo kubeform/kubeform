@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanCertificate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,13 +20,13 @@ type DigitaloceanCertificate struct {
 
 type DigitaloceanCertificateSpec struct {
 	Name             string   `json:"name"`
-	CertificateChain string   `json:"certificate_chain"`
-	Domains          []string `json:"domains"`
+	LeafCertificate  string   `json:"leaf_certificate"`
 	Type             string   `json:"type"`
 	State            string   `json:"state"`
-	NotAfter         string   `json:"not_after"`
 	PrivateKey       string   `json:"private_key"`
-	LeafCertificate  string   `json:"leaf_certificate"`
+	CertificateChain string   `json:"certificate_chain"`
+	Domains          []string `json:"domains"`
+	NotAfter         string   `json:"not_after"`
 	Sha1Fingerprint  string   `json:"sha1_fingerprint"`
 }
 
@@ -34,6 +35,7 @@ type DigitaloceanCertificateStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanCertificateList is a list of DigitaloceanCertificates
 type DigitaloceanCertificateList struct {

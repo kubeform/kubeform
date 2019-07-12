@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementApiVersionSet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,6 +19,7 @@ type AzurermApiManagementApiVersionSet struct {
 }
 
 type AzurermApiManagementApiVersionSetSpec struct {
+	Description       string `json:"description"`
 	VersionHeaderName string `json:"version_header_name"`
 	VersionQueryName  string `json:"version_query_name"`
 	Name              string `json:"name"`
@@ -25,7 +27,6 @@ type AzurermApiManagementApiVersionSetSpec struct {
 	ApiManagementName string `json:"api_management_name"`
 	DisplayName       string `json:"display_name"`
 	VersioningScheme  string `json:"versioning_scheme"`
-	Description       string `json:"description"`
 }
 
 type AzurermApiManagementApiVersionSetStatus struct {
@@ -33,6 +34,7 @@ type AzurermApiManagementApiVersionSetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementApiVersionSetList is a list of AzurermApiManagementApiVersionSets
 type AzurermApiManagementApiVersionSetList struct {

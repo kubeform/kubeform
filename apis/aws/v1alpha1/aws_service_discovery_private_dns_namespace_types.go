@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsServiceDiscoveryPrivateDnsNamespace struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsServiceDiscoveryPrivateDnsNamespace struct {
 }
 
 type AwsServiceDiscoveryPrivateDnsNamespaceSpec struct {
+	Name        string `json:"name"`
 	Description string `json:"description"`
 	Vpc         string `json:"vpc"`
 	Arn         string `json:"arn"`
 	HostedZone  string `json:"hosted_zone"`
-	Name        string `json:"name"`
 }
 
 type AwsServiceDiscoveryPrivateDnsNamespaceStatus struct {
@@ -30,6 +31,7 @@ type AwsServiceDiscoveryPrivateDnsNamespaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsServiceDiscoveryPrivateDnsNamespaceList is a list of AwsServiceDiscoveryPrivateDnsNamespaces
 type AwsServiceDiscoveryPrivateDnsNamespaceList struct {

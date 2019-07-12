@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeSslPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type GoogleComputeSslPolicy struct {
 }
 
 type GoogleComputeSslPolicySpec struct {
-	MinTlsVersion     string   `json:"min_tls_version"`
-	Fingerprint       string   `json:"fingerprint"`
-	SelfLink          string   `json:"self_link"`
-	Name              string   `json:"name"`
-	CustomFeatures    []string `json:"custom_features"`
-	CreationTimestamp string   `json:"creation_timestamp"`
-	EnabledFeatures   []string `json:"enabled_features"`
-	Project           string   `json:"project"`
-	Description       string   `json:"description"`
 	Profile           string   `json:"profile"`
+	EnabledFeatures   []string `json:"enabled_features"`
+	Name              string   `json:"name"`
+	MinTlsVersion     string   `json:"min_tls_version"`
+	CreationTimestamp string   `json:"creation_timestamp"`
+	Fingerprint       string   `json:"fingerprint"`
+	Project           string   `json:"project"`
+	SelfLink          string   `json:"self_link"`
+	CustomFeatures    []string `json:"custom_features"`
+	Description       string   `json:"description"`
 }
 
 type GoogleComputeSslPolicyStatus struct {
@@ -35,6 +36,7 @@ type GoogleComputeSslPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeSslPolicyList is a list of GoogleComputeSslPolicys
 type GoogleComputeSslPolicyList struct {

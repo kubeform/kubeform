@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSsmMaintenanceWindowTask struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -28,23 +29,23 @@ type AwsSsmMaintenanceWindowTaskSpecTargets struct {
 }
 
 type AwsSsmMaintenanceWindowTaskSpecLoggingInfo struct {
+	S3BucketName   string `json:"s3_bucket_name"`
 	S3Region       string `json:"s3_region"`
 	S3BucketPrefix string `json:"s3_bucket_prefix"`
-	S3BucketName   string `json:"s3_bucket_name"`
 }
 
 type AwsSsmMaintenanceWindowTaskSpec struct {
+	Priority       int                               `json:"priority"`
+	TaskParameters []AwsSsmMaintenanceWindowTaskSpec `json:"task_parameters"`
 	WindowId       string                            `json:"window_id"`
 	MaxConcurrency string                            `json:"max_concurrency"`
 	ServiceRoleArn string                            `json:"service_role_arn"`
+	Name           string                            `json:"name"`
 	Description    string                            `json:"description"`
-	TaskParameters []AwsSsmMaintenanceWindowTaskSpec `json:"task_parameters"`
 	MaxErrors      string                            `json:"max_errors"`
 	TaskType       string                            `json:"task_type"`
 	TaskArn        string                            `json:"task_arn"`
 	Targets        []AwsSsmMaintenanceWindowTaskSpec `json:"targets"`
-	Name           string                            `json:"name"`
-	Priority       int                               `json:"priority"`
 	LoggingInfo    []AwsSsmMaintenanceWindowTaskSpec `json:"logging_info"`
 }
 
@@ -53,6 +54,7 @@ type AwsSsmMaintenanceWindowTaskStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSsmMaintenanceWindowTaskList is a list of AwsSsmMaintenanceWindowTasks
 type AwsSsmMaintenanceWindowTaskList struct {

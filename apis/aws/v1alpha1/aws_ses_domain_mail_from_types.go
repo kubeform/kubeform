@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSesDomainMailFrom struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsSesDomainMailFrom struct {
 }
 
 type AwsSesDomainMailFromSpec struct {
-	Domain              string `json:"domain"`
 	MailFromDomain      string `json:"mail_from_domain"`
 	BehaviorOnMxFailure string `json:"behavior_on_mx_failure"`
+	Domain              string `json:"domain"`
 }
 
 type AwsSesDomainMailFromStatus struct {
@@ -28,6 +29,7 @@ type AwsSesDomainMailFromStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSesDomainMailFromList is a list of AwsSesDomainMailFroms
 type AwsSesDomainMailFromList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeImage struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,23 +19,23 @@ type GoogleComputeImage struct {
 }
 
 type GoogleComputeImageSpecRawDisk struct {
+	ContainerType string `json:"container_type"`
 	Source        string `json:"source"`
 	Sha1          string `json:"sha1"`
-	ContainerType string `json:"container_type"`
 }
 
 type GoogleComputeImageSpec struct {
-	Family           string                   `json:"family"`
-	SourceDisk       string                   `json:"source_disk"`
-	RawDisk          []GoogleComputeImageSpec `json:"raw_disk"`
-	SelfLink         string                   `json:"self_link"`
+	CreateTimeout    int                      `json:"create_timeout"`
 	Labels           map[string]string        `json:"labels"`
 	Licenses         []string                 `json:"licenses"`
 	LabelFingerprint string                   `json:"label_fingerprint"`
-	Description      string                   `json:"description"`
-	Project          string                   `json:"project"`
-	CreateTimeout    int                      `json:"create_timeout"`
 	Name             string                   `json:"name"`
+	Family           string                   `json:"family"`
+	Project          string                   `json:"project"`
+	SelfLink         string                   `json:"self_link"`
+	Description      string                   `json:"description"`
+	SourceDisk       string                   `json:"source_disk"`
+	RawDisk          []GoogleComputeImageSpec `json:"raw_disk"`
 }
 
 type GoogleComputeImageStatus struct {
@@ -42,6 +43,7 @@ type GoogleComputeImageStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeImageList is a list of GoogleComputeImages
 type GoogleComputeImageList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermFunctionApp struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,16 +18,17 @@ type AzurermFunctionApp struct {
 	Status            AzurermFunctionAppStatus `json:"status,omitempty"`
 }
 
-type AzurermFunctionAppSpecConnectionString struct {
-	Type  string `json:"type"`
-	Name  string `json:"name"`
-	Value string `json:"value"`
-}
-
 type AzurermFunctionAppSpecIdentity struct {
-	Type        string `json:"type"`
 	PrincipalId string `json:"principal_id"`
 	TenantId    string `json:"tenant_id"`
+	Type        string `json:"type"`
+}
+
+type AzurermFunctionAppSpecSiteConfig struct {
+	LinuxFxVersion        string `json:"linux_fx_version"`
+	AlwaysOn              bool   `json:"always_on"`
+	Use32BitWorkerProcess bool   `json:"use_32_bit_worker_process"`
+	WebsocketsEnabled     bool   `json:"websockets_enabled"`
 }
 
 type AzurermFunctionAppSpecSiteCredential struct {
@@ -34,34 +36,33 @@ type AzurermFunctionAppSpecSiteCredential struct {
 	Password string `json:"password"`
 }
 
-type AzurermFunctionAppSpecSiteConfig struct {
-	AlwaysOn              bool   `json:"always_on"`
-	Use32BitWorkerProcess bool   `json:"use_32_bit_worker_process"`
-	WebsocketsEnabled     bool   `json:"websockets_enabled"`
-	LinuxFxVersion        string `json:"linux_fx_version"`
+type AzurermFunctionAppSpecConnectionString struct {
+	Name  string `json:"name"`
+	Value string `json:"value"`
+	Type  string `json:"type"`
 }
 
 type AzurermFunctionAppSpec struct {
-	OutboundIpAddresses         string                   `json:"outbound_ip_addresses"`
-	Name                        string                   `json:"name"`
-	Kind                        string                   `json:"kind"`
-	StorageConnectionString     string                   `json:"storage_connection_string"`
-	EnableBuiltinLogging        bool                     `json:"enable_builtin_logging"`
-	ConnectionString            []AzurermFunctionAppSpec `json:"connection_string"`
 	Identity                    []AzurermFunctionAppSpec `json:"identity"`
 	Tags                        map[string]string        `json:"tags"`
-	PossibleOutboundIpAddresses string                   `json:"possible_outbound_ip_addresses"`
-	HttpsOnly                   bool                     `json:"https_only"`
-	SiteCredential              []AzurermFunctionAppSpec `json:"site_credential"`
+	OutboundIpAddresses         string                   `json:"outbound_ip_addresses"`
+	StorageConnectionString     string                   `json:"storage_connection_string"`
 	ResourceGroupName           string                   `json:"resource_group_name"`
-	AppSettings                 map[string]string        `json:"app_settings"`
-	ClientAffinityEnabled       bool                     `json:"client_affinity_enabled"`
 	Location                    string                   `json:"location"`
-	AppServicePlanId            string                   `json:"app_service_plan_id"`
+	Kind                        string                   `json:"kind"`
 	Enabled                     bool                     `json:"enabled"`
-	Version                     string                   `json:"version"`
-	DefaultHostname             string                   `json:"default_hostname"`
+	AppSettings                 map[string]string        `json:"app_settings"`
 	SiteConfig                  []AzurermFunctionAppSpec `json:"site_config"`
+	Name                        string                   `json:"name"`
+	DefaultHostname             string                   `json:"default_hostname"`
+	PossibleOutboundIpAddresses string                   `json:"possible_outbound_ip_addresses"`
+	ClientAffinityEnabled       bool                     `json:"client_affinity_enabled"`
+	SiteCredential              []AzurermFunctionAppSpec `json:"site_credential"`
+	AppServicePlanId            string                   `json:"app_service_plan_id"`
+	EnableBuiltinLogging        bool                     `json:"enable_builtin_logging"`
+	ConnectionString            []AzurermFunctionAppSpec `json:"connection_string"`
+	HttpsOnly                   bool                     `json:"https_only"`
+	Version                     string                   `json:"version"`
 }
 
 type AzurermFunctionAppStatus struct {
@@ -69,6 +70,7 @@ type AzurermFunctionAppStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermFunctionAppList is a list of AzurermFunctionApps
 type AzurermFunctionAppList struct {

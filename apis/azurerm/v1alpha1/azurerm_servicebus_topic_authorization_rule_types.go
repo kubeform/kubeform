@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermServicebusTopicAuthorizationRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AzurermServicebusTopicAuthorizationRule struct {
 }
 
 type AzurermServicebusTopicAuthorizationRuleSpec struct {
-	PrimaryKey                string `json:"primary_key"`
-	SecondaryKey              string `json:"secondary_key"`
-	NamespaceName             string `json:"namespace_name"`
-	TopicName                 string `json:"topic_name"`
-	ResourceGroupName         string `json:"resource_group_name"`
-	Name                      string `json:"name"`
+	Listen                    bool   `json:"listen"`
 	Send                      bool   `json:"send"`
 	Manage                    bool   `json:"manage"`
-	PrimaryConnectionString   string `json:"primary_connection_string"`
+	Name                      string `json:"name"`
+	NamespaceName             string `json:"namespace_name"`
+	TopicName                 string `json:"topic_name"`
+	SecondaryKey              string `json:"secondary_key"`
 	SecondaryConnectionString string `json:"secondary_connection_string"`
-	Listen                    bool   `json:"listen"`
+	PrimaryConnectionString   string `json:"primary_connection_string"`
+	ResourceGroupName         string `json:"resource_group_name"`
+	PrimaryKey                string `json:"primary_key"`
 }
 
 type AzurermServicebusTopicAuthorizationRuleStatus struct {
@@ -36,6 +37,7 @@ type AzurermServicebusTopicAuthorizationRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermServicebusTopicAuthorizationRuleList is a list of AzurermServicebusTopicAuthorizationRules
 type AzurermServicebusTopicAuthorizationRuleList struct {

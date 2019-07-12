@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCloudformationStack struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,20 +19,20 @@ type AwsCloudformationStack struct {
 }
 
 type AwsCloudformationStackSpec struct {
-	Parameters       map[string]string `json:"parameters"`
-	Tags             map[string]string `json:"tags"`
-	IamRoleArn       string            `json:"iam_role_arn"`
-	Name             string            `json:"name"`
-	DisableRollback  bool              `json:"disable_rollback"`
-	NotificationArns []string          `json:"notification_arns"`
-	PolicyBody       string            `json:"policy_body"`
-	PolicyUrl        string            `json:"policy_url"`
 	TemplateUrl      string            `json:"template_url"`
-	Capabilities     []string          `json:"capabilities"`
+	DisableRollback  bool              `json:"disable_rollback"`
+	Tags             map[string]string `json:"tags"`
+	TemplateBody     string            `json:"template_body"`
+	NotificationArns []string          `json:"notification_arns"`
+	OnFailure        string            `json:"on_failure"`
+	Parameters       map[string]string `json:"parameters"`
 	Outputs          map[string]string `json:"outputs"`
 	TimeoutInMinutes int               `json:"timeout_in_minutes"`
-	TemplateBody     string            `json:"template_body"`
-	OnFailure        string            `json:"on_failure"`
+	Name             string            `json:"name"`
+	PolicyBody       string            `json:"policy_body"`
+	IamRoleArn       string            `json:"iam_role_arn"`
+	Capabilities     []string          `json:"capabilities"`
+	PolicyUrl        string            `json:"policy_url"`
 }
 
 type AwsCloudformationStackStatus struct {
@@ -39,6 +40,7 @@ type AwsCloudformationStackStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCloudformationStackList is a list of AwsCloudformationStacks
 type AwsCloudformationStackList struct {

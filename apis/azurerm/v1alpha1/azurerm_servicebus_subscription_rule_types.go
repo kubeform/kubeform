@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermServicebusSubscriptionRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,7 +19,6 @@ type AzurermServicebusSubscriptionRule struct {
 }
 
 type AzurermServicebusSubscriptionRuleSpecCorrelationFilter struct {
-	CorrelationId    string `json:"correlation_id"`
 	MessageId        string `json:"message_id"`
 	To               string `json:"to"`
 	ReplyTo          string `json:"reply_to"`
@@ -26,18 +26,19 @@ type AzurermServicebusSubscriptionRuleSpecCorrelationFilter struct {
 	SessionId        string `json:"session_id"`
 	ReplyToSessionId string `json:"reply_to_session_id"`
 	ContentType      string `json:"content_type"`
+	CorrelationId    string `json:"correlation_id"`
 }
 
 type AzurermServicebusSubscriptionRuleSpec struct {
 	ResourceGroupName string                                  `json:"resource_group_name"`
-	NamespaceName     string                                  `json:"namespace_name"`
-	FilterType        string                                  `json:"filter_type"`
 	Action            string                                  `json:"action"`
+	SqlFilter         string                                  `json:"sql_filter"`
 	CorrelationFilter []AzurermServicebusSubscriptionRuleSpec `json:"correlation_filter"`
 	Name              string                                  `json:"name"`
+	NamespaceName     string                                  `json:"namespace_name"`
 	TopicName         string                                  `json:"topic_name"`
 	SubscriptionName  string                                  `json:"subscription_name"`
-	SqlFilter         string                                  `json:"sql_filter"`
+	FilterType        string                                  `json:"filter_type"`
 }
 
 type AzurermServicebusSubscriptionRuleStatus struct {
@@ -45,6 +46,7 @@ type AzurermServicebusSubscriptionRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermServicebusSubscriptionRuleList is a list of AzurermServicebusSubscriptionRules
 type AzurermServicebusSubscriptionRuleList struct {

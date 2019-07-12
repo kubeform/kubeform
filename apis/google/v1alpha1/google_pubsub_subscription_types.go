@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GooglePubsubSubscription struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,12 +24,12 @@ type GooglePubsubSubscriptionSpecPushConfig struct {
 }
 
 type GooglePubsubSubscriptionSpec struct {
-	AckDeadlineSeconds int                            `json:"ack_deadline_seconds"`
-	Project            string                         `json:"project"`
 	Path               string                         `json:"path"`
 	PushConfig         []GooglePubsubSubscriptionSpec `json:"push_config"`
 	Name               string                         `json:"name"`
 	Topic              string                         `json:"topic"`
+	AckDeadlineSeconds int                            `json:"ack_deadline_seconds"`
+	Project            string                         `json:"project"`
 }
 
 type GooglePubsubSubscriptionStatus struct {
@@ -36,6 +37,7 @@ type GooglePubsubSubscriptionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GooglePubsubSubscriptionList is a list of GooglePubsubSubscriptions
 type GooglePubsubSubscriptionList struct {

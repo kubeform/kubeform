@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleEndpointsService struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type GoogleEndpointsService struct {
 }
 
 type GoogleEndpointsServiceSpecApisMethods struct {
-	Name         string `json:"name"`
 	Syntax       string `json:"syntax"`
 	RequestType  string `json:"request_type"`
 	ResponseType string `json:"response_type"`
+	Name         string `json:"name"`
 }
 
 type GoogleEndpointsServiceSpecApis struct {
@@ -32,21 +33,21 @@ type GoogleEndpointsServiceSpecApis struct {
 }
 
 type GoogleEndpointsServiceSpecEndpoints struct {
-	Name    string `json:"name"`
 	Address string `json:"address"`
+	Name    string `json:"name"`
 }
 
 type GoogleEndpointsServiceSpec struct {
-	OpenapiConfig      string                       `json:"openapi_config"`
-	ConfigId           string                       `json:"config_id"`
-	Apis               []GoogleEndpointsServiceSpec `json:"apis"`
-	Endpoints          []GoogleEndpointsServiceSpec `json:"endpoints"`
-	DnsAddress         string                       `json:"dns_address"`
 	ServiceName        string                       `json:"service_name"`
 	GrpcConfig         string                       `json:"grpc_config"`
-	ProtocOutput       string                       `json:"protoc_output"`
 	ProtocOutputBase64 string                       `json:"protoc_output_base64"`
 	Project            string                       `json:"project"`
+	Apis               []GoogleEndpointsServiceSpec `json:"apis"`
+	Endpoints          []GoogleEndpointsServiceSpec `json:"endpoints"`
+	OpenapiConfig      string                       `json:"openapi_config"`
+	ProtocOutput       string                       `json:"protoc_output"`
+	ConfigId           string                       `json:"config_id"`
+	DnsAddress         string                       `json:"dns_address"`
 }
 
 type GoogleEndpointsServiceStatus struct {
@@ -54,6 +55,7 @@ type GoogleEndpointsServiceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleEndpointsServiceList is a list of GoogleEndpointsServices
 type GoogleEndpointsServiceList struct {

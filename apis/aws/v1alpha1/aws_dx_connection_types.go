@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDxConnection struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AwsDxConnection struct {
 }
 
 type AwsDxConnectionSpec struct {
-	AwsDevice            string            `json:"aws_device"`
-	Arn                  string            `json:"arn"`
-	Name                 string            `json:"name"`
 	Bandwidth            string            `json:"bandwidth"`
 	Location             string            `json:"location"`
 	JumboFrameCapable    bool              `json:"jumbo_frame_capable"`
 	Tags                 map[string]string `json:"tags"`
 	HasLogicalRedundancy string            `json:"has_logical_redundancy"`
+	AwsDevice            string            `json:"aws_device"`
+	Arn                  string            `json:"arn"`
+	Name                 string            `json:"name"`
 }
 
 type AwsDxConnectionStatus struct {
@@ -33,6 +34,7 @@ type AwsDxConnectionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDxConnectionList is a list of AwsDxConnections
 type AwsDxConnectionList struct {

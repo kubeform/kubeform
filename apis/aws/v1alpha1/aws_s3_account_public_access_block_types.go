@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsS3AccountPublicAccessBlock struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsS3AccountPublicAccessBlock struct {
 }
 
 type AwsS3AccountPublicAccessBlockSpec struct {
+	IgnorePublicAcls      bool   `json:"ignore_public_acls"`
+	RestrictPublicBuckets bool   `json:"restrict_public_buckets"`
 	AccountId             string `json:"account_id"`
 	BlockPublicAcls       bool   `json:"block_public_acls"`
 	BlockPublicPolicy     bool   `json:"block_public_policy"`
-	IgnorePublicAcls      bool   `json:"ignore_public_acls"`
-	RestrictPublicBuckets bool   `json:"restrict_public_buckets"`
 }
 
 type AwsS3AccountPublicAccessBlockStatus struct {
@@ -30,6 +31,7 @@ type AwsS3AccountPublicAccessBlockStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsS3AccountPublicAccessBlockList is a list of AwsS3AccountPublicAccessBlocks
 type AwsS3AccountPublicAccessBlockList struct {

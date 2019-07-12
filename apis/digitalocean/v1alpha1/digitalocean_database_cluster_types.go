@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanDatabaseCluster struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,19 +24,19 @@ type DigitaloceanDatabaseClusterSpecMaintenanceWindow struct {
 }
 
 type DigitaloceanDatabaseClusterSpec struct {
-	Version           string                            `json:"version"`
 	NodeCount         int                               `json:"node_count"`
-	MaintenanceWindow []DigitaloceanDatabaseClusterSpec `json:"maintenance_window"`
-	Port              int                               `json:"port"`
 	Database          string                            `json:"database"`
-	Name              string                            `json:"name"`
-	Engine            string                            `json:"engine"`
-	Size              string                            `json:"size"`
-	Region            string                            `json:"region"`
-	Host              string                            `json:"host"`
-	Uri               string                            `json:"uri"`
 	User              string                            `json:"user"`
 	Password          string                            `json:"password"`
+	Engine            string                            `json:"engine"`
+	Version           string                            `json:"version"`
+	Size              string                            `json:"size"`
+	Host              string                            `json:"host"`
+	Port              int                               `json:"port"`
+	Uri               string                            `json:"uri"`
+	Name              string                            `json:"name"`
+	Region            string                            `json:"region"`
+	MaintenanceWindow []DigitaloceanDatabaseClusterSpec `json:"maintenance_window"`
 }
 
 type DigitaloceanDatabaseClusterStatus struct {
@@ -43,6 +44,7 @@ type DigitaloceanDatabaseClusterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanDatabaseClusterList is a list of DigitaloceanDatabaseClusters
 type DigitaloceanDatabaseClusterList struct {

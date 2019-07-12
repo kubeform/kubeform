@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermLbOutboundRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,15 +24,15 @@ type AzurermLbOutboundRuleSpecFrontendIpConfiguration struct {
 }
 
 type AzurermLbOutboundRuleSpec struct {
-	IdleTimeoutInMinutes    int                         `json:"idle_timeout_in_minutes"`
-	FrontendIpConfiguration []AzurermLbOutboundRuleSpec `json:"frontend_ip_configuration"`
-	BackendAddressPoolId    string                      `json:"backend_address_pool_id"`
-	EnableTcpReset          bool                        `json:"enable_tcp_reset"`
-	AllocatedOutboundPorts  int                         `json:"allocated_outbound_ports"`
 	Name                    string                      `json:"name"`
 	ResourceGroupName       string                      `json:"resource_group_name"`
 	LoadbalancerId          string                      `json:"loadbalancer_id"`
+	FrontendIpConfiguration []AzurermLbOutboundRuleSpec `json:"frontend_ip_configuration"`
 	Protocol                string                      `json:"protocol"`
+	AllocatedOutboundPorts  int                         `json:"allocated_outbound_ports"`
+	IdleTimeoutInMinutes    int                         `json:"idle_timeout_in_minutes"`
+	BackendAddressPoolId    string                      `json:"backend_address_pool_id"`
+	EnableTcpReset          bool                        `json:"enable_tcp_reset"`
 }
 
 type AzurermLbOutboundRuleStatus struct {
@@ -39,6 +40,7 @@ type AzurermLbOutboundRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermLbOutboundRuleList is a list of AzurermLbOutboundRules
 type AzurermLbOutboundRuleList struct {

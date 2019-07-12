@@ -9,12 +9,18 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGlueSecurityConfiguration struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              AwsGlueSecurityConfigurationSpec   `json:"spec,omitempty"`
 	Status            AwsGlueSecurityConfigurationStatus `json:"status,omitempty"`
+}
+
+type AwsGlueSecurityConfigurationSpecEncryptionConfigurationCloudwatchEncryption struct {
+	CloudwatchEncryptionMode string `json:"cloudwatch_encryption_mode"`
+	KmsKeyArn                string `json:"kms_key_arn"`
 }
 
 type AwsGlueSecurityConfigurationSpecEncryptionConfigurationJobBookmarksEncryption struct {
@@ -27,15 +33,10 @@ type AwsGlueSecurityConfigurationSpecEncryptionConfigurationS3Encryption struct 
 	S3EncryptionMode string `json:"s3_encryption_mode"`
 }
 
-type AwsGlueSecurityConfigurationSpecEncryptionConfigurationCloudwatchEncryption struct {
-	CloudwatchEncryptionMode string `json:"cloudwatch_encryption_mode"`
-	KmsKeyArn                string `json:"kms_key_arn"`
-}
-
 type AwsGlueSecurityConfigurationSpecEncryptionConfiguration struct {
+	CloudwatchEncryption   []AwsGlueSecurityConfigurationSpecEncryptionConfiguration `json:"cloudwatch_encryption"`
 	JobBookmarksEncryption []AwsGlueSecurityConfigurationSpecEncryptionConfiguration `json:"job_bookmarks_encryption"`
 	S3Encryption           []AwsGlueSecurityConfigurationSpecEncryptionConfiguration `json:"s3_encryption"`
-	CloudwatchEncryption   []AwsGlueSecurityConfigurationSpecEncryptionConfiguration `json:"cloudwatch_encryption"`
 }
 
 type AwsGlueSecurityConfigurationSpec struct {
@@ -48,6 +49,7 @@ type AwsGlueSecurityConfigurationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGlueSecurityConfigurationList is a list of AwsGlueSecurityConfigurations
 type AwsGlueSecurityConfigurationList struct {

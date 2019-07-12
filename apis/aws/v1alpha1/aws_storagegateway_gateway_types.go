@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsStoragegatewayGateway struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,17 +25,17 @@ type AwsStoragegatewayGatewaySpecSmbActiveDirectorySettings struct {
 }
 
 type AwsStoragegatewayGatewaySpec struct {
-	GatewayTimezone            string                         `json:"gateway_timezone"`
-	SmbActiveDirectorySettings []AwsStoragegatewayGatewaySpec `json:"smb_active_directory_settings"`
-	Arn                        string                         `json:"arn"`
-	GatewayId                  string                         `json:"gateway_id"`
 	GatewayIpAddress           string                         `json:"gateway_ip_address"`
-	GatewayName                string                         `json:"gateway_name"`
+	GatewayTimezone            string                         `json:"gateway_timezone"`
 	GatewayType                string                         `json:"gateway_type"`
+	GatewayName                string                         `json:"gateway_name"`
 	MediumChangerType          string                         `json:"medium_changer_type"`
+	SmbActiveDirectorySettings []AwsStoragegatewayGatewaySpec `json:"smb_active_directory_settings"`
 	SmbGuestPassword           string                         `json:"smb_guest_password"`
 	TapeDriveType              string                         `json:"tape_drive_type"`
+	Arn                        string                         `json:"arn"`
 	ActivationKey              string                         `json:"activation_key"`
+	GatewayId                  string                         `json:"gateway_id"`
 }
 
 type AwsStoragegatewayGatewayStatus struct {
@@ -42,6 +43,7 @@ type AwsStoragegatewayGatewayStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsStoragegatewayGatewayList is a list of AwsStoragegatewayGateways
 type AwsStoragegatewayGatewayList struct {

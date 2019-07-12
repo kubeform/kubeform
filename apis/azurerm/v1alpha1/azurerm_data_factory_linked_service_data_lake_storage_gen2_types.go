@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDataFactoryLinkedServiceDataLakeStorageGen2 struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,18 +19,18 @@ type AzurermDataFactoryLinkedServiceDataLakeStorageGen2 struct {
 }
 
 type AzurermDataFactoryLinkedServiceDataLakeStorageGen2Spec struct {
-	Tenant                 string            `json:"tenant"`
-	IntegrationRuntimeName string            `json:"integration_runtime_name"`
-	Parameters             map[string]string `json:"parameters"`
 	DataFactoryName        string            `json:"data_factory_name"`
 	ResourceGroupName      string            `json:"resource_group_name"`
 	Url                    string            `json:"url"`
-	ServicePrincipalId     string            `json:"service_principal_id"`
-	AdditionalProperties   map[string]string `json:"additional_properties"`
-	Name                   string            `json:"name"`
 	ServicePrincipalKey    string            `json:"service_principal_key"`
-	Description            string            `json:"description"`
+	Tenant                 string            `json:"tenant"`
+	IntegrationRuntimeName string            `json:"integration_runtime_name"`
 	Annotations            []string          `json:"annotations"`
+	Name                   string            `json:"name"`
+	AdditionalProperties   map[string]string `json:"additional_properties"`
+	Description            string            `json:"description"`
+	Parameters             map[string]string `json:"parameters"`
+	ServicePrincipalId     string            `json:"service_principal_id"`
 }
 
 type AzurermDataFactoryLinkedServiceDataLakeStorageGen2Status struct {
@@ -37,6 +38,7 @@ type AzurermDataFactoryLinkedServiceDataLakeStorageGen2Status struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDataFactoryLinkedServiceDataLakeStorageGen2List is a list of AzurermDataFactoryLinkedServiceDataLakeStorageGen2s
 type AzurermDataFactoryLinkedServiceDataLakeStorageGen2List struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermMonitorMetricAlert struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -38,18 +39,18 @@ type AzurermMonitorMetricAlertSpecAction struct {
 }
 
 type AzurermMonitorMetricAlertSpec struct {
-	Enabled           bool                            `json:"enabled"`
-	WindowSize        string                          `json:"window_size"`
-	Tags              map[string]string               `json:"tags"`
-	Name              string                          `json:"name"`
 	ResourceGroupName string                          `json:"resource_group_name"`
-	Scopes            []string                        `json:"scopes"`
-	Description       string                          `json:"description"`
-	Frequency         string                          `json:"frequency"`
-	Severity          int                             `json:"severity"`
 	Criteria          []AzurermMonitorMetricAlertSpec `json:"criteria"`
 	Action            []AzurermMonitorMetricAlertSpec `json:"action"`
 	AutoMitigate      bool                            `json:"auto_mitigate"`
+	Description       string                          `json:"description"`
+	Severity          int                             `json:"severity"`
+	Name              string                          `json:"name"`
+	Scopes            []string                        `json:"scopes"`
+	Enabled           bool                            `json:"enabled"`
+	Frequency         string                          `json:"frequency"`
+	WindowSize        string                          `json:"window_size"`
+	Tags              map[string]string               `json:"tags"`
 }
 
 type AzurermMonitorMetricAlertStatus struct {
@@ -57,6 +58,7 @@ type AzurermMonitorMetricAlertStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermMonitorMetricAlertList is a list of AzurermMonitorMetricAlerts
 type AzurermMonitorMetricAlertList struct {

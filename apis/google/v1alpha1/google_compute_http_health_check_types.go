@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeHttpHealthCheck struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,16 +20,16 @@ type GoogleComputeHttpHealthCheck struct {
 
 type GoogleComputeHttpHealthCheckSpec struct {
 	Name               string `json:"name"`
-	Port               int    `json:"port"`
+	RequestPath        string `json:"request_path"`
 	TimeoutSec         int    `json:"timeout_sec"`
+	UnhealthyThreshold int    `json:"unhealthy_threshold"`
 	CreationTimestamp  string `json:"creation_timestamp"`
-	Project            string `json:"project"`
 	CheckIntervalSec   int    `json:"check_interval_sec"`
 	Description        string `json:"description"`
 	HealthyThreshold   int    `json:"healthy_threshold"`
 	Host               string `json:"host"`
-	RequestPath        string `json:"request_path"`
-	UnhealthyThreshold int    `json:"unhealthy_threshold"`
+	Port               int    `json:"port"`
+	Project            string `json:"project"`
 	SelfLink           string `json:"self_link"`
 }
 
@@ -37,6 +38,7 @@ type GoogleComputeHttpHealthCheckStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeHttpHealthCheckList is a list of GoogleComputeHttpHealthChecks
 type GoogleComputeHttpHealthCheckList struct {

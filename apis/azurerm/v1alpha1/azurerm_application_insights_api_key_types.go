@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApplicationInsightsApiKey struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermApplicationInsightsApiKey struct {
 }
 
 type AzurermApplicationInsightsApiKeySpec struct {
-	ApplicationInsightsId string   `json:"application_insights_id"`
 	ReadPermissions       []string `json:"read_permissions"`
 	WritePermissions      []string `json:"write_permissions"`
 	ApiKey                string   `json:"api_key"`
 	Name                  string   `json:"name"`
+	ApplicationInsightsId string   `json:"application_insights_id"`
 }
 
 type AzurermApplicationInsightsApiKeyStatus struct {
@@ -30,6 +31,7 @@ type AzurermApplicationInsightsApiKeyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApplicationInsightsApiKeyList is a list of AzurermApplicationInsightsApiKeys
 type AzurermApplicationInsightsApiKeyList struct {

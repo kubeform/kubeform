@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIamOpenidConnectProvider struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsIamOpenidConnectProvider struct {
 }
 
 type AwsIamOpenidConnectProviderSpec struct {
-	Arn            string   `json:"arn"`
 	Url            string   `json:"url"`
 	ClientIdList   []string `json:"client_id_list"`
 	ThumbprintList []string `json:"thumbprint_list"`
+	Arn            string   `json:"arn"`
 }
 
 type AwsIamOpenidConnectProviderStatus struct {
@@ -29,6 +30,7 @@ type AwsIamOpenidConnectProviderStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIamOpenidConnectProviderList is a list of AwsIamOpenidConnectProviders
 type AwsIamOpenidConnectProviderList struct {

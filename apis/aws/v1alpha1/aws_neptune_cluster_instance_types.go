@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsNeptuneClusterInstance struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,30 +19,30 @@ type AwsNeptuneClusterInstance struct {
 }
 
 type AwsNeptuneClusterInstanceSpec struct {
-	AvailabilityZone           string            `json:"availability_zone"`
-	ClusterIdentifier          string            `json:"cluster_identifier"`
-	DbiResourceId              string            `json:"dbi_resource_id"`
-	Endpoint                   string            `json:"endpoint"`
-	Engine                     string            `json:"engine"`
 	NeptuneParameterGroupName  string            `json:"neptune_parameter_group_name"`
+	NeptuneSubnetGroupName     string            `json:"neptune_subnet_group_name"`
 	Port                       int               `json:"port"`
-	Address                    string            `json:"address"`
-	Tags                       map[string]string `json:"tags"`
 	PreferredMaintenanceWindow string            `json:"preferred_maintenance_window"`
-	IdentifierPrefix           string            `json:"identifier_prefix"`
-	KmsKeyArn                  string            `json:"kms_key_arn"`
-	StorageEncrypted           bool              `json:"storage_encrypted"`
-	Arn                        string            `json:"arn"`
-	AutoMinorVersionUpgrade    bool              `json:"auto_minor_version_upgrade"`
+	Tags                       map[string]string `json:"tags"`
+	AvailabilityZone           string            `json:"availability_zone"`
 	EngineVersion              string            `json:"engine_version"`
-	InstanceClass              string            `json:"instance_class"`
+	AutoMinorVersionUpgrade    bool              `json:"auto_minor_version_upgrade"`
+	Identifier                 string            `json:"identifier"`
+	Address                    string            `json:"address"`
+	ApplyImmediately           bool              `json:"apply_immediately"`
+	Endpoint                   string            `json:"endpoint"`
+	KmsKeyArn                  string            `json:"kms_key_arn"`
 	PreferredBackupWindow      string            `json:"preferred_backup_window"`
 	PromotionTier              int               `json:"promotion_tier"`
-	Writer                     bool              `json:"writer"`
-	ApplyImmediately           bool              `json:"apply_immediately"`
-	NeptuneSubnetGroupName     string            `json:"neptune_subnet_group_name"`
 	PubliclyAccessible         bool              `json:"publicly_accessible"`
-	Identifier                 string            `json:"identifier"`
+	StorageEncrypted           bool              `json:"storage_encrypted"`
+	Arn                        string            `json:"arn"`
+	ClusterIdentifier          string            `json:"cluster_identifier"`
+	Writer                     bool              `json:"writer"`
+	IdentifierPrefix           string            `json:"identifier_prefix"`
+	InstanceClass              string            `json:"instance_class"`
+	DbiResourceId              string            `json:"dbi_resource_id"`
+	Engine                     string            `json:"engine"`
 }
 
 type AwsNeptuneClusterInstanceStatus struct {
@@ -49,6 +50,7 @@ type AwsNeptuneClusterInstanceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsNeptuneClusterInstanceList is a list of AwsNeptuneClusterInstances
 type AwsNeptuneClusterInstanceList struct {

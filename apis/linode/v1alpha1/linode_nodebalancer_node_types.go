@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type LinodeNodebalancerNode struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type LinodeNodebalancerNode struct {
 }
 
 type LinodeNodebalancerNodeSpec struct {
-	Status         string `json:"status"`
 	NodebalancerId int    `json:"nodebalancer_id"`
 	ConfigId       int    `json:"config_id"`
 	Label          string `json:"label"`
 	Weight         int    `json:"weight"`
 	Mode           string `json:"mode"`
 	Address        string `json:"address"`
+	Status         string `json:"status"`
 }
 
 type LinodeNodebalancerNodeStatus struct {
@@ -32,6 +33,7 @@ type LinodeNodebalancerNodeStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // LinodeNodebalancerNodeList is a list of LinodeNodebalancerNodes
 type LinodeNodebalancerNodeList struct {

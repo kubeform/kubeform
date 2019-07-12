@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsKmsGrant struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,15 +24,15 @@ type AwsKmsGrantSpecConstraints struct {
 }
 
 type AwsKmsGrantSpec struct {
-	KeyId               string            `json:"key_id"`
-	Constraints         []AwsKmsGrantSpec `json:"constraints"`
 	GrantId             string            `json:"grant_id"`
-	GrantToken          string            `json:"grant_token"`
-	RetireOnDelete      bool              `json:"retire_on_delete"`
-	Name                string            `json:"name"`
+	KeyId               string            `json:"key_id"`
 	GranteePrincipal    string            `json:"grantee_principal"`
-	Operations          []string          `json:"operations"`
 	RetiringPrincipal   string            `json:"retiring_principal"`
+	RetireOnDelete      bool              `json:"retire_on_delete"`
+	GrantToken          string            `json:"grant_token"`
+	Name                string            `json:"name"`
+	Operations          []string          `json:"operations"`
+	Constraints         []AwsKmsGrantSpec `json:"constraints"`
 	GrantCreationTokens []string          `json:"grant_creation_tokens"`
 }
 
@@ -40,6 +41,7 @@ type AwsKmsGrantStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsKmsGrantList is a list of AwsKmsGrants
 type AwsKmsGrantList struct {

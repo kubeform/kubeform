@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSesDomainIdentity struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsSesDomainIdentity struct {
 }
 
 type AwsSesDomainIdentitySpec struct {
+	VerificationToken string `json:"verification_token"`
 	Arn               string `json:"arn"`
 	Domain            string `json:"domain"`
-	VerificationToken string `json:"verification_token"`
 }
 
 type AwsSesDomainIdentityStatus struct {
@@ -28,6 +29,7 @@ type AwsSesDomainIdentityStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSesDomainIdentityList is a list of AwsSesDomainIdentitys
 type AwsSesDomainIdentityList struct {

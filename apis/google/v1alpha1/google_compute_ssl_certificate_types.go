@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeSslCertificate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type GoogleComputeSslCertificate struct {
 }
 
 type GoogleComputeSslCertificateSpec struct {
-	Description       string `json:"description"`
-	CertificateId     int    `json:"certificate_id"`
-	CreationTimestamp string `json:"creation_timestamp"`
-	SelfLink          string `json:"self_link"`
-	Certificate       string `json:"certificate"`
 	PrivateKey        string `json:"private_key"`
 	Name              string `json:"name"`
+	CertificateId     int    `json:"certificate_id"`
 	NamePrefix        string `json:"name_prefix"`
 	Project           string `json:"project"`
+	Certificate       string `json:"certificate"`
+	Description       string `json:"description"`
+	CreationTimestamp string `json:"creation_timestamp"`
+	SelfLink          string `json:"self_link"`
 }
 
 type GoogleComputeSslCertificateStatus struct {
@@ -34,6 +35,7 @@ type GoogleComputeSslCertificateStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeSslCertificateList is a list of GoogleComputeSslCertificates
 type GoogleComputeSslCertificateList struct {

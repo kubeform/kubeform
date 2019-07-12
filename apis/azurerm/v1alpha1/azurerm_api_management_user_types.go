@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementUser struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AzurermApiManagementUser struct {
 }
 
 type AzurermApiManagementUserSpec struct {
+	UserId            string `json:"user_id"`
+	Confirmation      string `json:"confirmation"`
+	Note              string `json:"note"`
+	State             string `json:"state"`
 	ApiManagementName string `json:"api_management_name"`
 	ResourceGroupName string `json:"resource_group_name"`
-	Confirmation      string `json:"confirmation"`
-	State             string `json:"state"`
-	UserId            string `json:"user_id"`
 	FirstName         string `json:"first_name"`
 	Email             string `json:"email"`
 	LastName          string `json:"last_name"`
-	Note              string `json:"note"`
 	Password          string `json:"password"`
 }
 
@@ -35,6 +36,7 @@ type AzurermApiManagementUserStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementUserList is a list of AzurermApiManagementUsers
 type AzurermApiManagementUserList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsServicecatalogPortfolio struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsServicecatalogPortfolio struct {
 }
 
 type AwsServicecatalogPortfolioSpec struct {
-	Description  string            `json:"description"`
 	ProviderName string            `json:"provider_name"`
 	Tags         map[string]string `json:"tags"`
 	Arn          string            `json:"arn"`
 	CreatedTime  string            `json:"created_time"`
 	Name         string            `json:"name"`
+	Description  string            `json:"description"`
 }
 
 type AwsServicecatalogPortfolioStatus struct {
@@ -31,6 +32,7 @@ type AwsServicecatalogPortfolioStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsServicecatalogPortfolioList is a list of AwsServicecatalogPortfolios
 type AwsServicecatalogPortfolioList struct {

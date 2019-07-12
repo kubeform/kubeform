@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSesIdentityNotificationTopic struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,10 @@ type AwsSesIdentityNotificationTopic struct {
 }
 
 type AwsSesIdentityNotificationTopicSpec struct {
-	Identity         string `json:"identity"`
-	TopicArn         string `json:"topic_arn"`
-	NotificationType string `json:"notification_type"`
+	Identity               string `json:"identity"`
+	IncludeOriginalHeaders bool   `json:"include_original_headers"`
+	TopicArn               string `json:"topic_arn"`
+	NotificationType       string `json:"notification_type"`
 }
 
 type AwsSesIdentityNotificationTopicStatus struct {
@@ -28,6 +30,7 @@ type AwsSesIdentityNotificationTopicStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSesIdentityNotificationTopicList is a list of AwsSesIdentityNotificationTopics
 type AwsSesIdentityNotificationTopicList struct {

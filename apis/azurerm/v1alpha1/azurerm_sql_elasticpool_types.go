@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermSqlElasticpool struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AzurermSqlElasticpool struct {
 }
 
 type AzurermSqlElasticpoolSpec struct {
-	ResourceGroupName string            `json:"resource_group_name"`
-	Dtu               int               `json:"dtu"`
-	DbDtuMax          int               `json:"db_dtu_max"`
-	CreationDate      string            `json:"creation_date"`
-	Name              string            `json:"name"`
+	Location          string            `json:"location"`
 	ServerName        string            `json:"server_name"`
 	Edition           string            `json:"edition"`
 	DbDtuMin          int               `json:"db_dtu_min"`
-	PoolSize          int               `json:"pool_size"`
+	CreationDate      string            `json:"creation_date"`
 	Tags              map[string]string `json:"tags"`
-	Location          string            `json:"location"`
+	Name              string            `json:"name"`
+	ResourceGroupName string            `json:"resource_group_name"`
+	Dtu               int               `json:"dtu"`
+	DbDtuMax          int               `json:"db_dtu_max"`
+	PoolSize          int               `json:"pool_size"`
 }
 
 type AzurermSqlElasticpoolStatus struct {
@@ -36,6 +37,7 @@ type AzurermSqlElasticpoolStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermSqlElasticpoolList is a list of AzurermSqlElasticpools
 type AzurermSqlElasticpoolList struct {

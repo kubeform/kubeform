@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRoute53Record struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,14 +18,8 @@ type AwsRoute53Record struct {
 	Status            AwsRoute53RecordStatus `json:"status,omitempty"`
 }
 
-type AwsRoute53RecordSpecAlias struct {
-	ZoneId               string `json:"zone_id"`
-	Name                 string `json:"name"`
-	EvaluateTargetHealth bool   `json:"evaluate_target_health"`
-}
-
-type AwsRoute53RecordSpecLatencyRoutingPolicy struct {
-	Region string `json:"region"`
+type AwsRoute53RecordSpecFailoverRoutingPolicy struct {
+	Type string `json:"type"`
 }
 
 type AwsRoute53RecordSpecGeolocationRoutingPolicy struct {
@@ -37,26 +32,32 @@ type AwsRoute53RecordSpecWeightedRoutingPolicy struct {
 	Weight int `json:"weight"`
 }
 
-type AwsRoute53RecordSpecFailoverRoutingPolicy struct {
-	Type string `json:"type"`
+type AwsRoute53RecordSpecAlias struct {
+	ZoneId               string `json:"zone_id"`
+	Name                 string `json:"name"`
+	EvaluateTargetHealth bool   `json:"evaluate_target_health"`
+}
+
+type AwsRoute53RecordSpecLatencyRoutingPolicy struct {
+	Region string `json:"region"`
 }
 
 type AwsRoute53RecordSpec struct {
-	Alias                         []AwsRoute53RecordSpec `json:"alias"`
-	LatencyRoutingPolicy          []AwsRoute53RecordSpec `json:"latency_routing_policy"`
-	GeolocationRoutingPolicy      []AwsRoute53RecordSpec `json:"geolocation_routing_policy"`
-	Records                       []string               `json:"records"`
+	Fqdn                          string                 `json:"fqdn"`
 	SetIdentifier                 string                 `json:"set_identifier"`
-	WeightedRoutingPolicy         []AwsRoute53RecordSpec `json:"weighted_routing_policy"`
 	Name                          string                 `json:"name"`
-	MultivalueAnswerRoutingPolicy bool                   `json:"multivalue_answer_routing_policy"`
-	HealthCheckId                 string                 `json:"health_check_id"`
 	ZoneId                        string                 `json:"zone_id"`
+	FailoverRoutingPolicy         []AwsRoute53RecordSpec `json:"failover_routing_policy"`
+	GeolocationRoutingPolicy      []AwsRoute53RecordSpec `json:"geolocation_routing_policy"`
+	WeightedRoutingPolicy         []AwsRoute53RecordSpec `json:"weighted_routing_policy"`
+	Records                       []string               `json:"records"`
+	AllowOverwrite                bool                   `json:"allow_overwrite"`
 	Type                          string                 `json:"type"`
 	Ttl                           int                    `json:"ttl"`
-	FailoverRoutingPolicy         []AwsRoute53RecordSpec `json:"failover_routing_policy"`
-	AllowOverwrite                bool                   `json:"allow_overwrite"`
-	Fqdn                          string                 `json:"fqdn"`
+	Alias                         []AwsRoute53RecordSpec `json:"alias"`
+	LatencyRoutingPolicy          []AwsRoute53RecordSpec `json:"latency_routing_policy"`
+	MultivalueAnswerRoutingPolicy bool                   `json:"multivalue_answer_routing_policy"`
+	HealthCheckId                 string                 `json:"health_check_id"`
 }
 
 type AwsRoute53RecordStatus struct {
@@ -64,6 +65,7 @@ type AwsRoute53RecordStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRoute53RecordList is a list of AwsRoute53Records
 type AwsRoute53RecordList struct {

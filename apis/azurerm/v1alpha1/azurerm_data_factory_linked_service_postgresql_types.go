@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDataFactoryLinkedServicePostgresql struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AzurermDataFactoryLinkedServicePostgresql struct {
 }
 
 type AzurermDataFactoryLinkedServicePostgresqlSpec struct {
-	ResourceGroupName      string            `json:"resource_group_name"`
-	ConnectionString       string            `json:"connection_string"`
-	AdditionalProperties   map[string]string `json:"additional_properties"`
 	Name                   string            `json:"name"`
 	DataFactoryName        string            `json:"data_factory_name"`
-	Description            string            `json:"description"`
 	IntegrationRuntimeName string            `json:"integration_runtime_name"`
-	Parameters             map[string]string `json:"parameters"`
 	Annotations            []string          `json:"annotations"`
+	AdditionalProperties   map[string]string `json:"additional_properties"`
+	ResourceGroupName      string            `json:"resource_group_name"`
+	ConnectionString       string            `json:"connection_string"`
+	Description            string            `json:"description"`
+	Parameters             map[string]string `json:"parameters"`
 }
 
 type AzurermDataFactoryLinkedServicePostgresqlStatus struct {
@@ -34,6 +35,7 @@ type AzurermDataFactoryLinkedServicePostgresqlStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDataFactoryLinkedServicePostgresqlList is a list of AzurermDataFactoryLinkedServicePostgresqls
 type AzurermDataFactoryLinkedServicePostgresqlList struct {

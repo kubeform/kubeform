@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSnsTopicPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsSnsTopicPolicy struct {
 }
 
 type AwsSnsTopicPolicySpec struct {
-	Arn    string `json:"arn"`
 	Policy string `json:"policy"`
+	Arn    string `json:"arn"`
 }
 
 type AwsSnsTopicPolicyStatus struct {
@@ -27,6 +28,7 @@ type AwsSnsTopicPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSnsTopicPolicyList is a list of AwsSnsTopicPolicys
 type AwsSnsTopicPolicyList struct {

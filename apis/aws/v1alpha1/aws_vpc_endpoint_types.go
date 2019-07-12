@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsVpcEndpoint struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,20 +24,23 @@ type AwsVpcEndpointSpecDnsEntry struct {
 }
 
 type AwsVpcEndpointSpec struct {
-	PrivateDnsEnabled   bool                 `json:"private_dns_enabled"`
-	VpcId               string               `json:"vpc_id"`
 	VpcEndpointType     string               `json:"vpc_endpoint_type"`
-	DnsEntry            []AwsVpcEndpointSpec `json:"dns_entry"`
-	SecurityGroupIds    []string             `json:"security_group_ids"`
-	CidrBlocks          []string             `json:"cidr_blocks"`
+	RequesterManaged    bool                 `json:"requester_managed"`
+	State               string               `json:"state"`
+	Policy              string               `json:"policy"`
 	RouteTableIds       []string             `json:"route_table_ids"`
 	SubnetIds           []string             `json:"subnet_ids"`
-	State               string               `json:"state"`
 	NetworkInterfaceIds []string             `json:"network_interface_ids"`
+	OwnerId             string               `json:"owner_id"`
 	ServiceName         string               `json:"service_name"`
-	Policy              string               `json:"policy"`
+	VpcId               string               `json:"vpc_id"`
+	DnsEntry            []AwsVpcEndpointSpec `json:"dns_entry"`
+	PrivateDnsEnabled   bool                 `json:"private_dns_enabled"`
 	PrefixListId        string               `json:"prefix_list_id"`
+	SecurityGroupIds    []string             `json:"security_group_ids"`
+	Tags                map[string]string    `json:"tags"`
 	AutoAccept          bool                 `json:"auto_accept"`
+	CidrBlocks          []string             `json:"cidr_blocks"`
 }
 
 type AwsVpcEndpointStatus struct {
@@ -44,6 +48,7 @@ type AwsVpcEndpointStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsVpcEndpointList is a list of AwsVpcEndpoints
 type AwsVpcEndpointList struct {

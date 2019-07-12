@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsKmsExternalKey struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AwsKmsExternalKey struct {
 }
 
 type AwsKmsExternalKeySpec struct {
-	Arn                  string            `json:"arn"`
-	Enabled              bool              `json:"enabled"`
-	KeyMaterialBase64    string            `json:"key_material_base64"`
-	KeyUsage             string            `json:"key_usage"`
-	Policy               string            `json:"policy"`
-	ValidTo              string            `json:"valid_to"`
 	DeletionWindowInDays int               `json:"deletion_window_in_days"`
 	Description          string            `json:"description"`
-	ExpirationModel      string            `json:"expiration_model"`
 	KeyState             string            `json:"key_state"`
+	KeyUsage             string            `json:"key_usage"`
+	Arn                  string            `json:"arn"`
+	ExpirationModel      string            `json:"expiration_model"`
+	KeyMaterialBase64    string            `json:"key_material_base64"`
+	Policy               string            `json:"policy"`
 	Tags                 map[string]string `json:"tags"`
+	ValidTo              string            `json:"valid_to"`
+	Enabled              bool              `json:"enabled"`
 }
 
 type AwsKmsExternalKeyStatus struct {
@@ -36,6 +37,7 @@ type AwsKmsExternalKeyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsKmsExternalKeyList is a list of AwsKmsExternalKeys
 type AwsKmsExternalKeyList struct {

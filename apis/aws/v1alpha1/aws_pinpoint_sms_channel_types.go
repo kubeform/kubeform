@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsPinpointSmsChannel struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsPinpointSmsChannel struct {
 }
 
 type AwsPinpointSmsChannelSpec struct {
-	TransactionalMessagesPerSecond int    `json:"transactional_messages_per_second"`
 	ApplicationId                  string `json:"application_id"`
 	Enabled                        bool   `json:"enabled"`
 	SenderId                       string `json:"sender_id"`
 	ShortCode                      string `json:"short_code"`
 	PromotionalMessagesPerSecond   int    `json:"promotional_messages_per_second"`
+	TransactionalMessagesPerSecond int    `json:"transactional_messages_per_second"`
 }
 
 type AwsPinpointSmsChannelStatus struct {
@@ -31,6 +32,7 @@ type AwsPinpointSmsChannelStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsPinpointSmsChannelList is a list of AwsPinpointSmsChannels
 type AwsPinpointSmsChannelList struct {

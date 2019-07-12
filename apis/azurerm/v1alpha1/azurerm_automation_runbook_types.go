@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAutomationRunbook struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -29,17 +30,17 @@ type AzurermAutomationRunbookSpecPublishContentLink struct {
 }
 
 type AzurermAutomationRunbookSpec struct {
+	RunbookType        string                         `json:"runbook_type"`
+	LogProgress        bool                           `json:"log_progress"`
 	Description        string                         `json:"description"`
 	Content            string                         `json:"content"`
+	Location           string                         `json:"location"`
+	AccountName        string                         `json:"account_name"`
+	ResourceGroupName  string                         `json:"resource_group_name"`
+	LogVerbose         bool                           `json:"log_verbose"`
 	PublishContentLink []AzurermAutomationRunbookSpec `json:"publish_content_link"`
 	Tags               map[string]string              `json:"tags"`
-	AccountName        string                         `json:"account_name"`
-	Location           string                         `json:"location"`
-	ResourceGroupName  string                         `json:"resource_group_name"`
-	LogProgress        bool                           `json:"log_progress"`
 	Name               string                         `json:"name"`
-	RunbookType        string                         `json:"runbook_type"`
-	LogVerbose         bool                           `json:"log_verbose"`
 }
 
 type AzurermAutomationRunbookStatus struct {
@@ -47,6 +48,7 @@ type AzurermAutomationRunbookStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAutomationRunbookList is a list of AzurermAutomationRunbooks
 type AzurermAutomationRunbookList struct {

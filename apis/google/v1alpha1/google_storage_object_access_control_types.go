@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleStorageObjectAccessControl struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,14 +25,14 @@ type GoogleStorageObjectAccessControlSpecProjectTeam struct {
 
 type GoogleStorageObjectAccessControlSpec struct {
 	Entity      string                                 `json:"entity"`
-	Role        string                                 `json:"role"`
-	Domain      string                                 `json:"domain"`
-	Bucket      string                                 `json:"bucket"`
 	Object      string                                 `json:"object"`
+	Domain      string                                 `json:"domain"`
 	Email       string                                 `json:"email"`
 	EntityId    string                                 `json:"entity_id"`
 	Generation  int                                    `json:"generation"`
+	Bucket      string                                 `json:"bucket"`
 	ProjectTeam []GoogleStorageObjectAccessControlSpec `json:"project_team"`
+	Role        string                                 `json:"role"`
 }
 
 type GoogleStorageObjectAccessControlStatus struct {
@@ -39,6 +40,7 @@ type GoogleStorageObjectAccessControlStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleStorageObjectAccessControlList is a list of GoogleStorageObjectAccessControls
 type GoogleStorageObjectAccessControlList struct {

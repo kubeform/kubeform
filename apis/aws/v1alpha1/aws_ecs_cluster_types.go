@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEcsCluster struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsEcsCluster struct {
 }
 
 type AwsEcsClusterSpec struct {
+	Name string            `json:"name"`
 	Tags map[string]string `json:"tags"`
 	Arn  string            `json:"arn"`
-	Name string            `json:"name"`
 }
 
 type AwsEcsClusterStatus struct {
@@ -28,6 +29,7 @@ type AwsEcsClusterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEcsClusterList is a list of AwsEcsClusters
 type AwsEcsClusterList struct {

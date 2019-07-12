@@ -9,105 +9,13 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleContainerCluster struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              GoogleContainerClusterSpec   `json:"spec,omitempty"`
 	Status            GoogleContainerClusterStatus `json:"status,omitempty"`
-}
-
-type GoogleContainerClusterSpecMasterAuthClientCertificateConfig struct {
-	IssueClientCertificate bool `json:"issue_client_certificate"`
-}
-
-type GoogleContainerClusterSpecMasterAuth struct {
-	ClusterCaCertificate    string                                 `json:"cluster_ca_certificate"`
-	Password                string                                 `json:"password"`
-	Username                string                                 `json:"username"`
-	ClientCertificateConfig []GoogleContainerClusterSpecMasterAuth `json:"client_certificate_config"`
-	ClientCertificate       string                                 `json:"client_certificate"`
-	ClientKey               string                                 `json:"client_key"`
-}
-
-type GoogleContainerClusterSpecClusterAutoscalingResourceLimits struct {
-	ResourceType string `json:"resource_type"`
-	Minimum      int    `json:"minimum"`
-	Maximum      int    `json:"maximum"`
-}
-
-type GoogleContainerClusterSpecClusterAutoscaling struct {
-	Enabled        bool                                           `json:"enabled"`
-	ResourceLimits []GoogleContainerClusterSpecClusterAutoscaling `json:"resource_limits"`
-}
-
-type GoogleContainerClusterSpecMaintenancePolicyDailyMaintenanceWindow struct {
-	StartTime string `json:"start_time"`
-	Duration  string `json:"duration"`
-}
-
-type GoogleContainerClusterSpecMaintenancePolicy struct {
-	DailyMaintenanceWindow []GoogleContainerClusterSpecMaintenancePolicy `json:"daily_maintenance_window"`
-}
-
-type GoogleContainerClusterSpecNodeConfigWorkloadMetadataConfig struct {
-	NodeMetadata string `json:"node_metadata"`
-}
-
-type GoogleContainerClusterSpecNodeConfigGuestAccelerator struct {
-	Count int    `json:"count"`
-	Type  string `json:"type"`
-}
-
-type GoogleContainerClusterSpecNodeConfigTaint struct {
-	Key    string `json:"key"`
-	Value  string `json:"value"`
-	Effect string `json:"effect"`
-}
-
-type GoogleContainerClusterSpecNodeConfig struct {
-	WorkloadMetadataConfig []GoogleContainerClusterSpecNodeConfig `json:"workload_metadata_config"`
-	GuestAccelerator       []GoogleContainerClusterSpecNodeConfig `json:"guest_accelerator"`
-	ImageType              string                                 `json:"image_type"`
-	Preemptible            bool                                   `json:"preemptible"`
-	Tags                   []string                               `json:"tags"`
-	DiskSizeGb             int                                    `json:"disk_size_gb"`
-	ServiceAccount         string                                 `json:"service_account"`
-	Metadata               map[string]string                      `json:"metadata"`
-	DiskType               string                                 `json:"disk_type"`
-	Labels                 map[string]string                      `json:"labels"`
-	LocalSsdCount          int                                    `json:"local_ssd_count"`
-	MachineType            string                                 `json:"machine_type"`
-	MinCpuPlatform         string                                 `json:"min_cpu_platform"`
-	OauthScopes            []string                               `json:"oauth_scopes"`
-	Taint                  []GoogleContainerClusterSpecNodeConfig `json:"taint"`
-}
-
-type GoogleContainerClusterSpecPodSecurityPolicyConfig struct {
-	Enabled bool `json:"enabled"`
-}
-
-type GoogleContainerClusterSpecMasterAuthorizedNetworksConfigCidrBlocks struct {
-	CidrBlock   string `json:"cidr_block"`
-	DisplayName string `json:"display_name"`
-}
-
-type GoogleContainerClusterSpecMasterAuthorizedNetworksConfig struct {
-	CidrBlocks []GoogleContainerClusterSpecMasterAuthorizedNetworksConfig `json:"cidr_blocks"`
-}
-
-type GoogleContainerClusterSpecNetworkPolicy struct {
-	Enabled  bool   `json:"enabled"`
-	Provider string `json:"provider"`
-}
-
-type GoogleContainerClusterSpecIpAllocationPolicy struct {
-	CreateSubnetwork           bool   `json:"create_subnetwork"`
-	SubnetworkName             string `json:"subnetwork_name"`
-	ClusterIpv4CidrBlock       string `json:"cluster_ipv4_cidr_block"`
-	ServicesIpv4CidrBlock      string `json:"services_ipv4_cidr_block"`
-	ClusterSecondaryRangeName  string `json:"cluster_secondary_range_name"`
-	ServicesSecondaryRangeName string `json:"services_secondary_range_name"`
 }
 
 type GoogleContainerClusterSpecAddonsConfigNetworkPolicyConfig struct {
@@ -133,42 +41,53 @@ type GoogleContainerClusterSpecAddonsConfig struct {
 	KubernetesDashboard      []GoogleContainerClusterSpecAddonsConfig `json:"kubernetes_dashboard"`
 }
 
-type GoogleContainerClusterSpecNodePoolNodeConfigTaint struct {
-	Key    string `json:"key"`
-	Value  string `json:"value"`
-	Effect string `json:"effect"`
+type GoogleContainerClusterSpecClusterAutoscalingResourceLimits struct {
+	ResourceType string `json:"resource_type"`
+	Minimum      int    `json:"minimum"`
+	Maximum      int    `json:"maximum"`
 }
 
-type GoogleContainerClusterSpecNodePoolNodeConfigGuestAccelerator struct {
-	Count int    `json:"count"`
-	Type  string `json:"type"`
+type GoogleContainerClusterSpecClusterAutoscaling struct {
+	Enabled        bool                                           `json:"enabled"`
+	ResourceLimits []GoogleContainerClusterSpecClusterAutoscaling `json:"resource_limits"`
+}
+
+type GoogleContainerClusterSpecNodePoolManagement struct {
+	AutoRepair  bool `json:"auto_repair"`
+	AutoUpgrade bool `json:"auto_upgrade"`
 }
 
 type GoogleContainerClusterSpecNodePoolNodeConfigWorkloadMetadataConfig struct {
 	NodeMetadata string `json:"node_metadata"`
 }
 
-type GoogleContainerClusterSpecNodePoolNodeConfig struct {
-	MinCpuPlatform         string                                         `json:"min_cpu_platform"`
-	OauthScopes            []string                                       `json:"oauth_scopes"`
-	Taint                  []GoogleContainerClusterSpecNodePoolNodeConfig `json:"taint"`
-	GuestAccelerator       []GoogleContainerClusterSpecNodePoolNodeConfig `json:"guest_accelerator"`
-	ImageType              string                                         `json:"image_type"`
-	Preemptible            bool                                           `json:"preemptible"`
-	Tags                   []string                                       `json:"tags"`
-	WorkloadMetadataConfig []GoogleContainerClusterSpecNodePoolNodeConfig `json:"workload_metadata_config"`
-	DiskSizeGb             int                                            `json:"disk_size_gb"`
-	ServiceAccount         string                                         `json:"service_account"`
-	DiskType               string                                         `json:"disk_type"`
-	Labels                 map[string]string                              `json:"labels"`
-	LocalSsdCount          int                                            `json:"local_ssd_count"`
-	MachineType            string                                         `json:"machine_type"`
-	Metadata               map[string]string                              `json:"metadata"`
+type GoogleContainerClusterSpecNodePoolNodeConfigGuestAccelerator struct {
+	Type  string `json:"type"`
+	Count int    `json:"count"`
 }
 
-type GoogleContainerClusterSpecNodePoolManagement struct {
-	AutoRepair  bool `json:"auto_repair"`
-	AutoUpgrade bool `json:"auto_upgrade"`
+type GoogleContainerClusterSpecNodePoolNodeConfigTaint struct {
+	Key    string `json:"key"`
+	Value  string `json:"value"`
+	Effect string `json:"effect"`
+}
+
+type GoogleContainerClusterSpecNodePoolNodeConfig struct {
+	WorkloadMetadataConfig []GoogleContainerClusterSpecNodePoolNodeConfig `json:"workload_metadata_config"`
+	Labels                 map[string]string                              `json:"labels"`
+	OauthScopes            []string                                       `json:"oauth_scopes"`
+	ServiceAccount         string                                         `json:"service_account"`
+	MachineType            string                                         `json:"machine_type"`
+	DiskSizeGb             int                                            `json:"disk_size_gb"`
+	GuestAccelerator       []GoogleContainerClusterSpecNodePoolNodeConfig `json:"guest_accelerator"`
+	ImageType              string                                         `json:"image_type"`
+	LocalSsdCount          int                                            `json:"local_ssd_count"`
+	Preemptible            bool                                           `json:"preemptible"`
+	Taint                  []GoogleContainerClusterSpecNodePoolNodeConfig `json:"taint"`
+	Tags                   []string                                       `json:"tags"`
+	DiskType               string                                         `json:"disk_type"`
+	Metadata               map[string]string                              `json:"metadata"`
+	MinCpuPlatform         string                                         `json:"min_cpu_platform"`
 }
 
 type GoogleContainerClusterSpecNodePoolAutoscaling struct {
@@ -177,16 +96,71 @@ type GoogleContainerClusterSpecNodePoolAutoscaling struct {
 }
 
 type GoogleContainerClusterSpecNodePool struct {
-	InitialNodeCount  int                                  `json:"initial_node_count"`
-	Name              string                               `json:"name"`
+	Management        []GoogleContainerClusterSpecNodePool `json:"management"`
 	NamePrefix        string                               `json:"name_prefix"`
 	NodeConfig        []GoogleContainerClusterSpecNodePool `json:"node_config"`
 	NodeCount         int                                  `json:"node_count"`
-	MaxPodsPerNode    int                                  `json:"max_pods_per_node"`
-	InstanceGroupUrls []string                             `json:"instance_group_urls"`
-	Management        []GoogleContainerClusterSpecNodePool `json:"management"`
 	Version           string                               `json:"version"`
 	Autoscaling       []GoogleContainerClusterSpecNodePool `json:"autoscaling"`
+	MaxPodsPerNode    int                                  `json:"max_pods_per_node"`
+	InitialNodeCount  int                                  `json:"initial_node_count"`
+	InstanceGroupUrls []string                             `json:"instance_group_urls"`
+	Name              string                               `json:"name"`
+}
+
+type GoogleContainerClusterSpecPodSecurityPolicyConfig struct {
+	Enabled bool `json:"enabled"`
+}
+
+type GoogleContainerClusterSpecIpAllocationPolicy struct {
+	CreateSubnetwork           bool   `json:"create_subnetwork"`
+	SubnetworkName             string `json:"subnetwork_name"`
+	ClusterIpv4CidrBlock       string `json:"cluster_ipv4_cidr_block"`
+	ServicesIpv4CidrBlock      string `json:"services_ipv4_cidr_block"`
+	ClusterSecondaryRangeName  string `json:"cluster_secondary_range_name"`
+	ServicesSecondaryRangeName string `json:"services_secondary_range_name"`
+}
+
+type GoogleContainerClusterSpecMaintenancePolicyDailyMaintenanceWindow struct {
+	StartTime string `json:"start_time"`
+	Duration  string `json:"duration"`
+}
+
+type GoogleContainerClusterSpecMaintenancePolicy struct {
+	DailyMaintenanceWindow []GoogleContainerClusterSpecMaintenancePolicy `json:"daily_maintenance_window"`
+}
+
+type GoogleContainerClusterSpecNodeConfigTaint struct {
+	Key    string `json:"key"`
+	Value  string `json:"value"`
+	Effect string `json:"effect"`
+}
+
+type GoogleContainerClusterSpecNodeConfigWorkloadMetadataConfig struct {
+	NodeMetadata string `json:"node_metadata"`
+}
+
+type GoogleContainerClusterSpecNodeConfigGuestAccelerator struct {
+	Count int    `json:"count"`
+	Type  string `json:"type"`
+}
+
+type GoogleContainerClusterSpecNodeConfig struct {
+	Taint                  []GoogleContainerClusterSpecNodeConfig `json:"taint"`
+	LocalSsdCount          int                                    `json:"local_ssd_count"`
+	Preemptible            bool                                   `json:"preemptible"`
+	MinCpuPlatform         string                                 `json:"min_cpu_platform"`
+	Tags                   []string                               `json:"tags"`
+	DiskType               string                                 `json:"disk_type"`
+	Metadata               map[string]string                      `json:"metadata"`
+	ServiceAccount         string                                 `json:"service_account"`
+	WorkloadMetadataConfig []GoogleContainerClusterSpecNodeConfig `json:"workload_metadata_config"`
+	Labels                 map[string]string                      `json:"labels"`
+	OauthScopes            []string                               `json:"oauth_scopes"`
+	ImageType              string                                 `json:"image_type"`
+	MachineType            string                                 `json:"machine_type"`
+	DiskSizeGb             int                                    `json:"disk_size_gb"`
+	GuestAccelerator       []GoogleContainerClusterSpecNodeConfig `json:"guest_accelerator"`
 }
 
 type GoogleContainerClusterSpecPrivateClusterConfig struct {
@@ -197,43 +171,70 @@ type GoogleContainerClusterSpecPrivateClusterConfig struct {
 	EnablePrivateNodes    bool   `json:"enable_private_nodes"`
 }
 
+type GoogleContainerClusterSpecMasterAuthorizedNetworksConfigCidrBlocks struct {
+	CidrBlock   string `json:"cidr_block"`
+	DisplayName string `json:"display_name"`
+}
+
+type GoogleContainerClusterSpecMasterAuthorizedNetworksConfig struct {
+	CidrBlocks []GoogleContainerClusterSpecMasterAuthorizedNetworksConfig `json:"cidr_blocks"`
+}
+
+type GoogleContainerClusterSpecNetworkPolicy struct {
+	Provider string `json:"provider"`
+	Enabled  bool   `json:"enabled"`
+}
+
+type GoogleContainerClusterSpecMasterAuthClientCertificateConfig struct {
+	IssueClientCertificate bool `json:"issue_client_certificate"`
+}
+
+type GoogleContainerClusterSpecMasterAuth struct {
+	Password                string                                 `json:"password"`
+	Username                string                                 `json:"username"`
+	ClientCertificateConfig []GoogleContainerClusterSpecMasterAuth `json:"client_certificate_config"`
+	ClientCertificate       string                                 `json:"client_certificate"`
+	ClientKey               string                                 `json:"client_key"`
+	ClusterCaCertificate    string                                 `json:"cluster_ca_certificate"`
+}
+
 type GoogleContainerClusterSpec struct {
-	EnableLegacyAbac               bool                         `json:"enable_legacy_abac"`
-	InitialNodeCount               int                          `json:"initial_node_count"`
-	MasterAuth                     []GoogleContainerClusterSpec `json:"master_auth"`
 	MinMasterVersion               string                       `json:"min_master_version"`
-	Endpoint                       string                       `json:"endpoint"`
 	Name                           string                       `json:"name"`
-	Region                         string                       `json:"region"`
-	ClusterAutoscaling             []GoogleContainerClusterSpec `json:"cluster_autoscaling"`
-	EnableKubernetesAlpha          bool                         `json:"enable_kubernetes_alpha"`
-	EnableTpu                      bool                         `json:"enable_tpu"`
-	MaintenancePolicy              []GoogleContainerClusterSpec `json:"maintenance_policy"`
-	MasterVersion                  string                       `json:"master_version"`
-	PrivateCluster                 bool                         `json:"private_cluster"`
-	NodeConfig                     []GoogleContainerClusterSpec `json:"node_config"`
-	PodSecurityPolicyConfig        []GoogleContainerClusterSpec `json:"pod_security_policy_config"`
-	AdditionalZones                []string                     `json:"additional_zones"`
-	MasterAuthorizedNetworksConfig []GoogleContainerClusterSpec `json:"master_authorized_networks_config"`
 	Description                    string                       `json:"description"`
-	EnableBinaryAuthorization      bool                         `json:"enable_binary_authorization"`
-	LoggingService                 string                       `json:"logging_service"`
-	NetworkPolicy                  []GoogleContainerClusterSpec `json:"network_policy"`
-	InstanceGroupUrls              []string                     `json:"instance_group_urls"`
-	IpAllocationPolicy             []GoogleContainerClusterSpec `json:"ip_allocation_policy"`
-	AddonsConfig                   []GoogleContainerClusterSpec `json:"addons_config"`
-	Network                        string                       `json:"network"`
-	NodePool                       []GoogleContainerClusterSpec `json:"node_pool"`
+	InitialNodeCount               int                          `json:"initial_node_count"`
+	Region                         string                       `json:"region"`
+	Project                        string                       `json:"project"`
+	MasterVersion                  string                       `json:"master_version"`
 	MasterIpv4CidrBlock            string                       `json:"master_ipv4_cidr_block"`
 	ResourceLabels                 map[string]string            `json:"resource_labels"`
-	RemoveDefaultNodePool          bool                         `json:"remove_default_node_pool"`
-	PrivateClusterConfig           []GoogleContainerClusterSpec `json:"private_cluster_config"`
-	Zone                           string                       `json:"zone"`
+	AddonsConfig                   []GoogleContainerClusterSpec `json:"addons_config"`
+	ClusterAutoscaling             []GoogleContainerClusterSpec `json:"cluster_autoscaling"`
+	NodePool                       []GoogleContainerClusterSpec `json:"node_pool"`
+	PodSecurityPolicyConfig        []GoogleContainerClusterSpec `json:"pod_security_policy_config"`
+	Endpoint                       string                       `json:"endpoint"`
+	IpAllocationPolicy             []GoogleContainerClusterSpec `json:"ip_allocation_policy"`
+	PrivateCluster                 bool                         `json:"private_cluster"`
 	ClusterIpv4Cidr                string                       `json:"cluster_ipv4_cidr"`
+	EnableKubernetesAlpha          bool                         `json:"enable_kubernetes_alpha"`
+	MaintenancePolicy              []GoogleContainerClusterSpec `json:"maintenance_policy"`
+	NodeConfig                     []GoogleContainerClusterSpec `json:"node_config"`
+	InstanceGroupUrls              []string                     `json:"instance_group_urls"`
+	EnableBinaryAuthorization      bool                         `json:"enable_binary_authorization"`
+	LoggingService                 string                       `json:"logging_service"`
 	MonitoringService              string                       `json:"monitoring_service"`
-	NodeVersion                    string                       `json:"node_version"`
-	Project                        string                       `json:"project"`
+	PrivateClusterConfig           []GoogleContainerClusterSpec `json:"private_cluster_config"`
+	MasterAuthorizedNetworksConfig []GoogleContainerClusterSpec `json:"master_authorized_networks_config"`
+	Network                        string                       `json:"network"`
+	NetworkPolicy                  []GoogleContainerClusterSpec `json:"network_policy"`
+	Zone                           string                       `json:"zone"`
+	MasterAuth                     []GoogleContainerClusterSpec `json:"master_auth"`
 	Subnetwork                     string                       `json:"subnetwork"`
+	NodeVersion                    string                       `json:"node_version"`
+	RemoveDefaultNodePool          bool                         `json:"remove_default_node_pool"`
+	AdditionalZones                []string                     `json:"additional_zones"`
+	EnableTpu                      bool                         `json:"enable_tpu"`
+	EnableLegacyAbac               bool                         `json:"enable_legacy_abac"`
 }
 
 type GoogleContainerClusterStatus struct {
@@ -241,6 +242,7 @@ type GoogleContainerClusterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleContainerClusterList is a list of GoogleContainerClusters
 type GoogleContainerClusterList struct {

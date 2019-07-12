@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSsmMaintenanceWindowTarget struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,10 +24,12 @@ type AwsSsmMaintenanceWindowTargetSpecTargets struct {
 }
 
 type AwsSsmMaintenanceWindowTargetSpec struct {
+	WindowId         string                              `json:"window_id"`
 	ResourceType     string                              `json:"resource_type"`
 	Targets          []AwsSsmMaintenanceWindowTargetSpec `json:"targets"`
+	Name             string                              `json:"name"`
+	Description      string                              `json:"description"`
 	OwnerInformation string                              `json:"owner_information"`
-	WindowId         string                              `json:"window_id"`
 }
 
 type AwsSsmMaintenanceWindowTargetStatus struct {
@@ -34,6 +37,7 @@ type AwsSsmMaintenanceWindowTargetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSsmMaintenanceWindowTargetList is a list of AwsSsmMaintenanceWindowTargets
 type AwsSsmMaintenanceWindowTargetList struct {

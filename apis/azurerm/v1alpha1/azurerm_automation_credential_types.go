@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAutomationCredential struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AzurermAutomationCredential struct {
 }
 
 type AzurermAutomationCredentialSpec struct {
+	Password          string `json:"password"`
 	Description       string `json:"description"`
 	Name              string `json:"name"`
 	ResourceGroupName string `json:"resource_group_name"`
 	AccountName       string `json:"account_name"`
 	Username          string `json:"username"`
-	Password          string `json:"password"`
 }
 
 type AzurermAutomationCredentialStatus struct {
@@ -31,6 +32,7 @@ type AzurermAutomationCredentialStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAutomationCredentialList is a list of AzurermAutomationCredentials
 type AzurermAutomationCredentialList struct {

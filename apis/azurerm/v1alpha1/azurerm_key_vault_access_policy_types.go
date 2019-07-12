@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermKeyVaultAccessPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,15 +20,15 @@ type AzurermKeyVaultAccessPolicy struct {
 
 type AzurermKeyVaultAccessPolicySpec struct {
 	VaultName              string   `json:"vault_name"`
-	ResourceGroupName      string   `json:"resource_group_name"`
-	TenantId               string   `json:"tenant_id"`
+	ApplicationId          string   `json:"application_id"`
 	CertificatePermissions []string `json:"certificate_permissions"`
+	SecretPermissions      []string `json:"secret_permissions"`
 	StoragePermissions     []string `json:"storage_permissions"`
 	KeyVaultId             string   `json:"key_vault_id"`
-	ApplicationId          string   `json:"application_id"`
-	KeyPermissions         []string `json:"key_permissions"`
-	SecretPermissions      []string `json:"secret_permissions"`
+	ResourceGroupName      string   `json:"resource_group_name"`
+	TenantId               string   `json:"tenant_id"`
 	ObjectId               string   `json:"object_id"`
+	KeyPermissions         []string `json:"key_permissions"`
 }
 
 type AzurermKeyVaultAccessPolicyStatus struct {
@@ -35,6 +36,7 @@ type AzurermKeyVaultAccessPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermKeyVaultAccessPolicyList is a list of AzurermKeyVaultAccessPolicys
 type AzurermKeyVaultAccessPolicyList struct {

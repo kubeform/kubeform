@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementOpenidConnectProvider struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -33,6 +34,7 @@ type AzurermApiManagementOpenidConnectProviderStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementOpenidConnectProviderList is a list of AzurermApiManagementOpenidConnectProviders
 type AzurermApiManagementOpenidConnectProviderList struct {

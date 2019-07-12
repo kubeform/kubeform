@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRdsGlobalCluster struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,6 +19,7 @@ type AwsRdsGlobalCluster struct {
 }
 
 type AwsRdsGlobalClusterSpec struct {
+	DeletionProtection      bool   `json:"deletion_protection"`
 	Engine                  string `json:"engine"`
 	EngineVersion           string `json:"engine_version"`
 	GlobalClusterIdentifier string `json:"global_cluster_identifier"`
@@ -25,7 +27,6 @@ type AwsRdsGlobalClusterSpec struct {
 	StorageEncrypted        bool   `json:"storage_encrypted"`
 	Arn                     string `json:"arn"`
 	DatabaseName            string `json:"database_name"`
-	DeletionProtection      bool   `json:"deletion_protection"`
 }
 
 type AwsRdsGlobalClusterStatus struct {
@@ -33,6 +34,7 @@ type AwsRdsGlobalClusterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRdsGlobalClusterList is a list of AwsRdsGlobalClusters
 type AwsRdsGlobalClusterList struct {

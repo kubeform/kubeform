@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayUsagePlanKey struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsApiGatewayUsagePlanKey struct {
 }
 
 type AwsApiGatewayUsagePlanKeySpec struct {
-	KeyId       string `json:"key_id"`
-	KeyType     string `json:"key_type"`
 	UsagePlanId string `json:"usage_plan_id"`
 	Name        string `json:"name"`
 	Value       string `json:"value"`
+	KeyId       string `json:"key_id"`
+	KeyType     string `json:"key_type"`
 }
 
 type AwsApiGatewayUsagePlanKeyStatus struct {
@@ -30,6 +31,7 @@ type AwsApiGatewayUsagePlanKeyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayUsagePlanKeyList is a list of AwsApiGatewayUsagePlanKeys
 type AwsApiGatewayUsagePlanKeyList struct {

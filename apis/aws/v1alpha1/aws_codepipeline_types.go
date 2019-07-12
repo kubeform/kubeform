@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCodepipeline struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -29,21 +30,21 @@ type AwsCodepipelineSpecArtifactStore struct {
 }
 
 type AwsCodepipelineSpecStageAction struct {
-	Configuration   map[string]string `json:"configuration"`
-	Category        string            `json:"category"`
-	Owner           string            `json:"owner"`
-	Provider        string            `json:"provider"`
-	Version         string            `json:"version"`
 	OutputArtifacts []string          `json:"output_artifacts"`
 	Name            string            `json:"name"`
-	RoleArn         string            `json:"role_arn"`
+	Category        string            `json:"category"`
+	Version         string            `json:"version"`
+	Provider        string            `json:"provider"`
 	InputArtifacts  []string          `json:"input_artifacts"`
+	RoleArn         string            `json:"role_arn"`
 	RunOrder        int               `json:"run_order"`
+	Configuration   map[string]string `json:"configuration"`
+	Owner           string            `json:"owner"`
 }
 
 type AwsCodepipelineSpecStage struct {
-	Action []AwsCodepipelineSpecStage `json:"action"`
 	Name   string                     `json:"name"`
+	Action []AwsCodepipelineSpecStage `json:"action"`
 }
 
 type AwsCodepipelineSpec struct {
@@ -52,6 +53,7 @@ type AwsCodepipelineSpec struct {
 	RoleArn       string                `json:"role_arn"`
 	ArtifactStore []AwsCodepipelineSpec `json:"artifact_store"`
 	Stage         []AwsCodepipelineSpec `json:"stage"`
+	Tags          map[string]string     `json:"tags"`
 }
 
 type AwsCodepipelineStatus struct {
@@ -59,6 +61,7 @@ type AwsCodepipelineStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCodepipelineList is a list of AwsCodepipelines
 type AwsCodepipelineList struct {

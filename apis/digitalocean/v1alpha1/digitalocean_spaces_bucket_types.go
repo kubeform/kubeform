@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanSpacesBucket struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type DigitaloceanSpacesBucket struct {
 }
 
 type DigitaloceanSpacesBucketSpec struct {
-	Name             string `json:"name"`
-	Urn              string `json:"urn"`
-	Region           string `json:"region"`
 	Acl              string `json:"acl"`
 	BucketDomainName string `json:"bucket_domain_name"`
 	ForceDestroy     bool   `json:"force_destroy"`
+	Name             string `json:"name"`
+	Urn              string `json:"urn"`
+	Region           string `json:"region"`
 }
 
 type DigitaloceanSpacesBucketStatus struct {
@@ -31,6 +32,7 @@ type DigitaloceanSpacesBucketStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanSpacesBucketList is a list of DigitaloceanSpacesBuckets
 type DigitaloceanSpacesBucketList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsKmsCiphertext struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsKmsCiphertext struct {
 }
 
 type AwsKmsCiphertextSpec struct {
-	Plaintext      string            `json:"plaintext"`
 	KeyId          string            `json:"key_id"`
 	Context        map[string]string `json:"context"`
 	CiphertextBlob string            `json:"ciphertext_blob"`
+	Plaintext      string            `json:"plaintext"`
 }
 
 type AwsKmsCiphertextStatus struct {
@@ -29,6 +30,7 @@ type AwsKmsCiphertextStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsKmsCiphertextList is a list of AwsKmsCiphertexts
 type AwsKmsCiphertextList struct {

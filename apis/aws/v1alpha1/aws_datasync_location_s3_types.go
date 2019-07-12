@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDatasyncLocationS3 struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,12 +23,12 @@ type AwsDatasyncLocationS3SpecS3Config struct {
 }
 
 type AwsDatasyncLocationS3Spec struct {
+	S3BucketArn  string                      `json:"s3_bucket_arn"`
 	S3Config     []AwsDatasyncLocationS3Spec `json:"s3_config"`
 	Subdirectory string                      `json:"subdirectory"`
 	Tags         map[string]string           `json:"tags"`
 	Uri          string                      `json:"uri"`
 	Arn          string                      `json:"arn"`
-	S3BucketArn  string                      `json:"s3_bucket_arn"`
 }
 
 type AwsDatasyncLocationS3Status struct {
@@ -35,6 +36,7 @@ type AwsDatasyncLocationS3Status struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDatasyncLocationS3List is a list of AwsDatasyncLocationS3s
 type AwsDatasyncLocationS3List struct {

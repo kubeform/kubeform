@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCognitoIdentityProvider struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsCognitoIdentityProvider struct {
 }
 
 type AwsCognitoIdentityProviderSpec struct {
+	ProviderDetails  map[string]string `json:"provider_details"`
 	ProviderName     string            `json:"provider_name"`
 	ProviderType     string            `json:"provider_type"`
 	UserPoolId       string            `json:"user_pool_id"`
 	AttributeMapping map[string]string `json:"attribute_mapping"`
 	IdpIdentifiers   []string          `json:"idp_identifiers"`
-	ProviderDetails  map[string]string `json:"provider_details"`
 }
 
 type AwsCognitoIdentityProviderStatus struct {
@@ -31,6 +32,7 @@ type AwsCognitoIdentityProviderStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCognitoIdentityProviderList is a list of AwsCognitoIdentityProviders
 type AwsCognitoIdentityProviderList struct {

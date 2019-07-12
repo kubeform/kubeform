@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermNotificationHub struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermNotificationHub struct {
 }
 
 type AzurermNotificationHubSpecApnsCredential struct {
+	Token           string `json:"token"`
 	ApplicationMode string `json:"application_mode"`
 	BundleId        string `json:"bundle_id"`
 	KeyId           string `json:"key_id"`
 	TeamId          string `json:"team_id"`
-	Token           string `json:"token"`
 }
 
 type AzurermNotificationHubSpecGcmCredential struct {
@@ -30,12 +31,12 @@ type AzurermNotificationHubSpecGcmCredential struct {
 }
 
 type AzurermNotificationHubSpec struct {
-	Location          string                       `json:"location"`
-	ApnsCredential    []AzurermNotificationHubSpec `json:"apns_credential"`
-	GcmCredential     []AzurermNotificationHubSpec `json:"gcm_credential"`
 	Name              string                       `json:"name"`
 	NamespaceName     string                       `json:"namespace_name"`
 	ResourceGroupName string                       `json:"resource_group_name"`
+	Location          string                       `json:"location"`
+	ApnsCredential    []AzurermNotificationHubSpec `json:"apns_credential"`
+	GcmCredential     []AzurermNotificationHubSpec `json:"gcm_credential"`
 }
 
 type AzurermNotificationHubStatus struct {
@@ -43,6 +44,7 @@ type AzurermNotificationHubStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermNotificationHubList is a list of AzurermNotificationHubs
 type AzurermNotificationHubList struct {

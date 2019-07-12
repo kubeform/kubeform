@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermImage struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,31 +19,31 @@ type AzurermImage struct {
 }
 
 type AzurermImageSpecOsDisk struct {
+	BlobUri       string `json:"blob_uri"`
+	Caching       string `json:"caching"`
+	SizeGb        int    `json:"size_gb"`
 	OsType        string `json:"os_type"`
 	OsState       string `json:"os_state"`
 	ManagedDiskId string `json:"managed_disk_id"`
-	BlobUri       string `json:"blob_uri"`
-	Caching       string `json:"caching"`
-	SizeGb        int    `json:"size_gb"`
 }
 
 type AzurermImageSpecDataDisk struct {
+	Lun           int    `json:"lun"`
+	ManagedDiskId string `json:"managed_disk_id"`
 	BlobUri       string `json:"blob_uri"`
 	Caching       string `json:"caching"`
 	SizeGb        int    `json:"size_gb"`
-	Lun           int    `json:"lun"`
-	ManagedDiskId string `json:"managed_disk_id"`
 }
 
 type AzurermImageSpec struct {
+	Name                   string             `json:"name"`
+	Location               string             `json:"location"`
 	ResourceGroupName      string             `json:"resource_group_name"`
 	ZoneResilient          bool               `json:"zone_resilient"`
 	SourceVirtualMachineId string             `json:"source_virtual_machine_id"`
 	OsDisk                 []AzurermImageSpec `json:"os_disk"`
 	DataDisk               []AzurermImageSpec `json:"data_disk"`
 	Tags                   map[string]string  `json:"tags"`
-	Name                   string             `json:"name"`
-	Location               string             `json:"location"`
 }
 
 type AzurermImageStatus struct {
@@ -50,6 +51,7 @@ type AzurermImageStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermImageList is a list of AzurermImages
 type AzurermImageList struct {

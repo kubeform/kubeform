@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDataFactoryLinkedServiceMysql struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AzurermDataFactoryLinkedServiceMysql struct {
 }
 
 type AzurermDataFactoryLinkedServiceMysqlSpec struct {
-	Parameters             map[string]string `json:"parameters"`
+	ConnectionString       string            `json:"connection_string"`
+	Description            string            `json:"description"`
+	IntegrationRuntimeName string            `json:"integration_runtime_name"`
 	Annotations            []string          `json:"annotations"`
 	Name                   string            `json:"name"`
 	DataFactoryName        string            `json:"data_factory_name"`
 	ResourceGroupName      string            `json:"resource_group_name"`
-	Description            string            `json:"description"`
-	ConnectionString       string            `json:"connection_string"`
-	IntegrationRuntimeName string            `json:"integration_runtime_name"`
+	Parameters             map[string]string `json:"parameters"`
 	AdditionalProperties   map[string]string `json:"additional_properties"`
 }
 
@@ -34,6 +35,7 @@ type AzurermDataFactoryLinkedServiceMysqlStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDataFactoryLinkedServiceMysqlList is a list of AzurermDataFactoryLinkedServiceMysqls
 type AzurermDataFactoryLinkedServiceMysqlList struct {

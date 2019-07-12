@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermLbRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,21 +19,21 @@ type AzurermLbRule struct {
 }
 
 type AzurermLbRuleSpec struct {
-	LoadbalancerId              string `json:"loadbalancer_id"`
-	Protocol                    string `json:"protocol"`
-	EnableFloatingIp            bool   `json:"enable_floating_ip"`
-	DisableOutboundSnat         bool   `json:"disable_outbound_snat"`
-	ResourceGroupName           string `json:"resource_group_name"`
-	FrontendIpConfigurationId   string `json:"frontend_ip_configuration_id"`
-	BackendPort                 int    `json:"backend_port"`
-	BackendAddressPoolId        string `json:"backend_address_pool_id"`
-	ProbeId                     string `json:"probe_id"`
 	LoadDistribution            string `json:"load_distribution"`
-	Name                        string `json:"name"`
 	Location                    string `json:"location"`
+	LoadbalancerId              string `json:"loadbalancer_id"`
+	DisableOutboundSnat         bool   `json:"disable_outbound_snat"`
+	FrontendIpConfigurationId   string `json:"frontend_ip_configuration_id"`
+	BackendAddressPoolId        string `json:"backend_address_pool_id"`
+	BackendPort                 int    `json:"backend_port"`
+	EnableFloatingIp            bool   `json:"enable_floating_ip"`
+	IdleTimeoutInMinutes        int    `json:"idle_timeout_in_minutes"`
+	Name                        string `json:"name"`
+	ResourceGroupName           string `json:"resource_group_name"`
 	FrontendIpConfigurationName string `json:"frontend_ip_configuration_name"`
 	FrontendPort                int    `json:"frontend_port"`
-	IdleTimeoutInMinutes        int    `json:"idle_timeout_in_minutes"`
+	Protocol                    string `json:"protocol"`
+	ProbeId                     string `json:"probe_id"`
 }
 
 type AzurermLbRuleStatus struct {
@@ -40,6 +41,7 @@ type AzurermLbRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermLbRuleList is a list of AzurermLbRules
 type AzurermLbRuleList struct {

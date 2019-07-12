@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAutomationVariableDatetime struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AzurermAutomationVariableDatetime struct {
 }
 
 type AzurermAutomationVariableDatetimeSpec struct {
-	Name                  string `json:"name"`
-	AutomationAccountName string `json:"automation_account_name"`
-	Description           string `json:"description"`
 	Encrypted             bool   `json:"encrypted"`
 	Value                 string `json:"value"`
 	ResourceGroupName     string `json:"resource_group_name"`
+	Name                  string `json:"name"`
+	AutomationAccountName string `json:"automation_account_name"`
+	Description           string `json:"description"`
 }
 
 type AzurermAutomationVariableDatetimeStatus struct {
@@ -31,6 +32,7 @@ type AzurermAutomationVariableDatetimeStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAutomationVariableDatetimeList is a list of AzurermAutomationVariableDatetimes
 type AzurermAutomationVariableDatetimeList struct {

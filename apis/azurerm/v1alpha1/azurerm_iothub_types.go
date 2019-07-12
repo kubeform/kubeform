@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermIothub struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,22 +18,12 @@ type AzurermIothub struct {
 	Status            AzurermIothubStatus `json:"status,omitempty"`
 }
 
-type AzurermIothubSpecSharedAccessPolicy struct {
-	KeyName      string `json:"key_name"`
-	PrimaryKey   string `json:"primary_key"`
-	SecondaryKey string `json:"secondary_key"`
-	Permissions  string `json:"permissions"`
-}
-
-type AzurermIothubSpecEndpoint struct {
-	ConnectionString        string `json:"connection_string"`
-	Name                    string `json:"name"`
-	BatchFrequencyInSeconds int    `json:"batch_frequency_in_seconds"`
-	MaxChunkSizeInBytes     int    `json:"max_chunk_size_in_bytes"`
-	ContainerName           string `json:"container_name"`
-	Encoding                string `json:"encoding"`
-	FileNameFormat          string `json:"file_name_format"`
-	Type                    string `json:"type"`
+type AzurermIothubSpecRoute struct {
+	Source        string   `json:"source"`
+	Condition     string   `json:"condition"`
+	EndpointNames []string `json:"endpoint_names"`
+	Enabled       bool     `json:"enabled"`
+	Name          string   `json:"name"`
 }
 
 type AzurermIothubSpecIpFilterRule struct {
@@ -41,18 +32,28 @@ type AzurermIothubSpecIpFilterRule struct {
 	Action string `json:"action"`
 }
 
-type AzurermIothubSpecSku struct {
-	Name     string `json:"name"`
-	Tier     string `json:"tier"`
-	Capacity int    `json:"capacity"`
+type AzurermIothubSpecEndpoint struct {
+	ContainerName           string `json:"container_name"`
+	Encoding                string `json:"encoding"`
+	FileNameFormat          string `json:"file_name_format"`
+	Type                    string `json:"type"`
+	ConnectionString        string `json:"connection_string"`
+	Name                    string `json:"name"`
+	BatchFrequencyInSeconds int    `json:"batch_frequency_in_seconds"`
+	MaxChunkSizeInBytes     int    `json:"max_chunk_size_in_bytes"`
 }
 
-type AzurermIothubSpecRoute struct {
-	Condition     string   `json:"condition"`
-	EndpointNames []string `json:"endpoint_names"`
-	Enabled       bool     `json:"enabled"`
-	Name          string   `json:"name"`
-	Source        string   `json:"source"`
+type AzurermIothubSpecSku struct {
+	Tier     string `json:"tier"`
+	Capacity int    `json:"capacity"`
+	Name     string `json:"name"`
+}
+
+type AzurermIothubSpecSharedAccessPolicy struct {
+	PrimaryKey   string `json:"primary_key"`
+	SecondaryKey string `json:"secondary_key"`
+	Permissions  string `json:"permissions"`
+	KeyName      string `json:"key_name"`
 }
 
 type AzurermIothubSpecFallbackRoute struct {
@@ -63,22 +64,22 @@ type AzurermIothubSpecFallbackRoute struct {
 }
 
 type AzurermIothubSpec struct {
-	SharedAccessPolicy         []AzurermIothubSpec `json:"shared_access_policy"`
+	EventHubEventsEndpoint     string              `json:"event_hub_events_endpoint"`
+	Route                      []AzurermIothubSpec `json:"route"`
+	IpFilterRule               []AzurermIothubSpec `json:"ip_filter_rule"`
+	ResourceGroupName          string              `json:"resource_group_name"`
+	Type                       string              `json:"type"`
+	EventHubOperationsEndpoint string              `json:"event_hub_operations_endpoint"`
 	EventHubEventsPath         string              `json:"event_hub_events_path"`
 	Endpoint                   []AzurermIothubSpec `json:"endpoint"`
-	IpFilterRule               []AzurermIothubSpec `json:"ip_filter_rule"`
-	EventHubEventsEndpoint     string              `json:"event_hub_events_endpoint"`
-	Location                   string              `json:"location"`
-	Type                       string              `json:"type"`
-	Hostname                   string              `json:"hostname"`
 	Name                       string              `json:"name"`
 	Sku                        []AzurermIothubSpec `json:"sku"`
-	EventHubOperationsEndpoint string              `json:"event_hub_operations_endpoint"`
-	EventHubOperationsPath     string              `json:"event_hub_operations_path"`
-	Route                      []AzurermIothubSpec `json:"route"`
-	FallbackRoute              []AzurermIothubSpec `json:"fallback_route"`
 	Tags                       map[string]string   `json:"tags"`
-	ResourceGroupName          string              `json:"resource_group_name"`
+	Location                   string              `json:"location"`
+	Hostname                   string              `json:"hostname"`
+	EventHubOperationsPath     string              `json:"event_hub_operations_path"`
+	SharedAccessPolicy         []AzurermIothubSpec `json:"shared_access_policy"`
+	FallbackRoute              []AzurermIothubSpec `json:"fallback_route"`
 }
 
 type AzurermIothubStatus struct {
@@ -86,6 +87,7 @@ type AzurermIothubStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermIothubList is a list of AzurermIothubs
 type AzurermIothubList struct {

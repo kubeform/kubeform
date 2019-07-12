@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleCloudfunctionsFunction struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -28,24 +29,24 @@ type GoogleCloudfunctionsFunctionSpecEventTrigger struct {
 }
 
 type GoogleCloudfunctionsFunctionSpec struct {
-	SourceArchiveObject  string                             `json:"source_archive_object"`
 	Description          string                             `json:"description"`
 	Timeout              int                                `json:"timeout"`
-	TriggerTopic         string                             `json:"trigger_topic"`
+	EnvironmentVariables map[string]string                  `json:"environment_variables"`
+	TriggerHttp          bool                               `json:"trigger_http"`
 	Project              string                             `json:"project"`
+	Labels               map[string]string                  `json:"labels"`
+	TriggerTopic         string                             `json:"trigger_topic"`
+	RetryOnFailure       bool                               `json:"retry_on_failure"`
+	SourceArchiveObject  string                             `json:"source_archive_object"`
+	EntryPoint           string                             `json:"entry_point"`
+	TriggerBucket        string                             `json:"trigger_bucket"`
 	EventTrigger         []GoogleCloudfunctionsFunctionSpec `json:"event_trigger"`
-	HttpsTriggerUrl      string                             `json:"https_trigger_url"`
+	Region               string                             `json:"region"`
 	Name                 string                             `json:"name"`
 	SourceArchiveBucket  string                             `json:"source_archive_bucket"`
 	AvailableMemoryMb    int                                `json:"available_memory_mb"`
 	Runtime              string                             `json:"runtime"`
-	TriggerBucket        string                             `json:"trigger_bucket"`
-	TriggerHttp          bool                               `json:"trigger_http"`
-	EntryPoint           string                             `json:"entry_point"`
-	EnvironmentVariables map[string]string                  `json:"environment_variables"`
-	RetryOnFailure       bool                               `json:"retry_on_failure"`
-	Labels               map[string]string                  `json:"labels"`
-	Region               string                             `json:"region"`
+	HttpsTriggerUrl      string                             `json:"https_trigger_url"`
 }
 
 type GoogleCloudfunctionsFunctionStatus struct {
@@ -53,6 +54,7 @@ type GoogleCloudfunctionsFunctionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleCloudfunctionsFunctionList is a list of GoogleCloudfunctionsFunctions
 type GoogleCloudfunctionsFunctionList struct {

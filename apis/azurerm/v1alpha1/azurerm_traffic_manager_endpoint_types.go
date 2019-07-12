@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermTrafficManagerEndpoint struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AzurermTrafficManagerEndpoint struct {
 }
 
 type AzurermTrafficManagerEndpointSpec struct {
-	ResourceGroupName     string   `json:"resource_group_name"`
-	Type                  string   `json:"type"`
-	TargetResourceId      string   `json:"target_resource_id"`
-	Weight                int      `json:"weight"`
+	EndpointStatus        string   `json:"endpoint_status"`
 	MinChildEndpoints     int      `json:"min_child_endpoints"`
 	GeoMappings           []string `json:"geo_mappings"`
-	ProfileName           string   `json:"profile_name"`
+	Name                  string   `json:"name"`
+	ResourceGroupName     string   `json:"resource_group_name"`
+	Type                  string   `json:"type"`
 	Target                string   `json:"target"`
-	EndpointStatus        string   `json:"endpoint_status"`
-	Priority              int      `json:"priority"`
 	EndpointLocation      string   `json:"endpoint_location"`
 	EndpointMonitorStatus string   `json:"endpoint_monitor_status"`
-	Name                  string   `json:"name"`
+	ProfileName           string   `json:"profile_name"`
+	TargetResourceId      string   `json:"target_resource_id"`
+	Weight                int      `json:"weight"`
+	Priority              int      `json:"priority"`
 }
 
 type AzurermTrafficManagerEndpointStatus struct {
@@ -38,6 +39,7 @@ type AzurermTrafficManagerEndpointStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermTrafficManagerEndpointList is a list of AzurermTrafficManagerEndpoints
 type AzurermTrafficManagerEndpointList struct {

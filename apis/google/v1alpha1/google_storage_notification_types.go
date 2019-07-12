@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleStorageNotification struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type GoogleStorageNotification struct {
 }
 
 type GoogleStorageNotificationSpec struct {
-	Bucket           string            `json:"bucket"`
-	PayloadFormat    string            `json:"payload_format"`
 	Topic            string            `json:"topic"`
 	CustomAttributes map[string]string `json:"custom_attributes"`
 	EventTypes       []string          `json:"event_types"`
 	ObjectNamePrefix string            `json:"object_name_prefix"`
 	SelfLink         string            `json:"self_link"`
+	Bucket           string            `json:"bucket"`
+	PayloadFormat    string            `json:"payload_format"`
 }
 
 type GoogleStorageNotificationStatus struct {
@@ -32,6 +33,7 @@ type GoogleStorageNotificationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleStorageNotificationList is a list of GoogleStorageNotifications
 type GoogleStorageNotificationList struct {

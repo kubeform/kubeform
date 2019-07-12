@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermExpressRouteCircuitPeering struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,18 +23,18 @@ type AzurermExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig struct {
 }
 
 type AzurermExpressRouteCircuitPeeringSpec struct {
-	ExpressRouteCircuitName    string                                  `json:"express_route_circuit_name"`
+	ResourceGroupName          string                                  `json:"resource_group_name"`
 	PrimaryPeerAddressPrefix   string                                  `json:"primary_peer_address_prefix"`
 	SecondaryPeerAddressPrefix string                                  `json:"secondary_peer_address_prefix"`
-	VlanId                     int                                     `json:"vlan_id"`
-	PeerAsn                    int                                     `json:"peer_asn"`
-	PrimaryAzurePort           string                                  `json:"primary_azure_port"`
+	AzureAsn                   int                                     `json:"azure_asn"`
 	SecondaryAzurePort         string                                  `json:"secondary_azure_port"`
 	PeeringType                string                                  `json:"peering_type"`
-	SharedKey                  string                                  `json:"shared_key"`
+	ExpressRouteCircuitName    string                                  `json:"express_route_circuit_name"`
+	PeerAsn                    int                                     `json:"peer_asn"`
 	MicrosoftPeeringConfig     []AzurermExpressRouteCircuitPeeringSpec `json:"microsoft_peering_config"`
-	AzureAsn                   int                                     `json:"azure_asn"`
-	ResourceGroupName          string                                  `json:"resource_group_name"`
+	PrimaryAzurePort           string                                  `json:"primary_azure_port"`
+	VlanId                     int                                     `json:"vlan_id"`
+	SharedKey                  string                                  `json:"shared_key"`
 }
 
 type AzurermExpressRouteCircuitPeeringStatus struct {
@@ -41,6 +42,7 @@ type AzurermExpressRouteCircuitPeeringStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermExpressRouteCircuitPeeringList is a list of AzurermExpressRouteCircuitPeerings
 type AzurermExpressRouteCircuitPeeringList struct {

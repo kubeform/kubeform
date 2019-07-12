@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApplicationSecurityGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AzurermApplicationSecurityGroup struct {
 }
 
 type AzurermApplicationSecurityGroupSpec struct {
-	ResourceGroupName string            `json:"resource_group_name"`
 	Tags              map[string]string `json:"tags"`
 	Name              string            `json:"name"`
 	Location          string            `json:"location"`
+	ResourceGroupName string            `json:"resource_group_name"`
 }
 
 type AzurermApplicationSecurityGroupStatus struct {
@@ -29,6 +30,7 @@ type AzurermApplicationSecurityGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApplicationSecurityGroupList is a list of AzurermApplicationSecurityGroups
 type AzurermApplicationSecurityGroupList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDatabricksWorkspace struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AzurermDatabricksWorkspace struct {
 }
 
 type AzurermDatabricksWorkspaceSpec struct {
-	Name                     string            `json:"name"`
-	Location                 string            `json:"location"`
 	ResourceGroupName        string            `json:"resource_group_name"`
 	Sku                      string            `json:"sku"`
 	Tags                     map[string]string `json:"tags"`
 	ManagedResourceGroupName string            `json:"managed_resource_group_name"`
 	ManagedResourceGroupId   string            `json:"managed_resource_group_id"`
+	Name                     string            `json:"name"`
+	Location                 string            `json:"location"`
 }
 
 type AzurermDatabricksWorkspaceStatus struct {
@@ -32,6 +33,7 @@ type AzurermDatabricksWorkspaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDatabricksWorkspaceList is a list of AzurermDatabricksWorkspaces
 type AzurermDatabricksWorkspaceList struct {

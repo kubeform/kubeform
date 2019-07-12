@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermServicebusNamespaceAuthorizationRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type AzurermServicebusNamespaceAuthorizationRule struct {
 }
 
 type AzurermServicebusNamespaceAuthorizationRuleSpec struct {
-	Listen                    bool   `json:"listen"`
 	NamespaceName             string `json:"namespace_name"`
-	Manage                    bool   `json:"manage"`
 	SecondaryConnectionString string `json:"secondary_connection_string"`
-	PrimaryConnectionString   string `json:"primary_connection_string"`
-	SecondaryKey              string `json:"secondary_key"`
 	Send                      bool   `json:"send"`
+	Manage                    bool   `json:"manage"`
+	SecondaryKey              string `json:"secondary_key"`
 	Name                      string `json:"name"`
 	ResourceGroupName         string `json:"resource_group_name"`
+	Listen                    bool   `json:"listen"`
 	PrimaryKey                string `json:"primary_key"`
+	PrimaryConnectionString   string `json:"primary_connection_string"`
 }
 
 type AzurermServicebusNamespaceAuthorizationRuleStatus struct {
@@ -35,6 +36,7 @@ type AzurermServicebusNamespaceAuthorizationRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermServicebusNamespaceAuthorizationRuleList is a list of AzurermServicebusNamespaceAuthorizationRules
 type AzurermServicebusNamespaceAuthorizationRuleList struct {

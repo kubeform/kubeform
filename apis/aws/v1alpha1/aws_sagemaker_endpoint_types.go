@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSagemakerEndpoint struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsSagemakerEndpoint struct {
 }
 
 type AwsSagemakerEndpointSpec struct {
-	Tags               map[string]string `json:"tags"`
-	Arn                string            `json:"arn"`
 	Name               string            `json:"name"`
 	EndpointConfigName string            `json:"endpoint_config_name"`
+	Tags               map[string]string `json:"tags"`
+	Arn                string            `json:"arn"`
 }
 
 type AwsSagemakerEndpointStatus struct {
@@ -29,6 +30,7 @@ type AwsSagemakerEndpointStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSagemakerEndpointList is a list of AwsSagemakerEndpoints
 type AwsSagemakerEndpointList struct {

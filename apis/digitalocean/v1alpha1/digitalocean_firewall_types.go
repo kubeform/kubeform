@@ -9,18 +9,13 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanFirewall struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              DigitaloceanFirewallSpec   `json:"spec,omitempty"`
 	Status            DigitaloceanFirewallStatus `json:"status,omitempty"`
-}
-
-type DigitaloceanFirewallSpecPendingChanges struct {
-	Status    string `json:"status"`
-	DropletId int    `json:"droplet_id"`
-	Removing  bool   `json:"removing"`
 }
 
 type DigitaloceanFirewallSpecInboundRule struct {
@@ -33,23 +28,29 @@ type DigitaloceanFirewallSpecInboundRule struct {
 }
 
 type DigitaloceanFirewallSpecOutboundRule struct {
-	DestinationDropletIds       []int64  `json:"destination_droplet_ids"`
-	DestinationLoadBalancerUids []string `json:"destination_load_balancer_uids"`
-	DestinationTags             []string `json:"destination_tags"`
 	Protocol                    string   `json:"protocol"`
 	PortRange                   string   `json:"port_range"`
 	DestinationAddresses        []string `json:"destination_addresses"`
+	DestinationDropletIds       []int64  `json:"destination_droplet_ids"`
+	DestinationLoadBalancerUids []string `json:"destination_load_balancer_uids"`
+	DestinationTags             []string `json:"destination_tags"`
+}
+
+type DigitaloceanFirewallSpecPendingChanges struct {
+	DropletId int    `json:"droplet_id"`
+	Removing  bool   `json:"removing"`
+	Status    string `json:"status"`
 }
 
 type DigitaloceanFirewallSpec struct {
+	DropletIds     []int64                    `json:"droplet_ids"`
+	InboundRule    []DigitaloceanFirewallSpec `json:"inbound_rule"`
+	OutboundRule   []DigitaloceanFirewallSpec `json:"outbound_rule"`
 	Status         string                     `json:"status"`
 	CreatedAt      string                     `json:"created_at"`
 	PendingChanges []DigitaloceanFirewallSpec `json:"pending_changes"`
 	Tags           []string                   `json:"tags"`
 	Name           string                     `json:"name"`
-	DropletIds     []int64                    `json:"droplet_ids"`
-	InboundRule    []DigitaloceanFirewallSpec `json:"inbound_rule"`
-	OutboundRule   []DigitaloceanFirewallSpec `json:"outbound_rule"`
 }
 
 type DigitaloceanFirewallStatus struct {
@@ -57,6 +58,7 @@ type DigitaloceanFirewallStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanFirewallList is a list of DigitaloceanFirewalls
 type DigitaloceanFirewallList struct {

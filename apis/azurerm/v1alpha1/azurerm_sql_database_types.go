@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermSqlDatabase struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AzurermSqlDatabase struct {
 }
 
 type AzurermSqlDatabaseSpecThreatDetectionPolicy struct {
-	StorageEndpoint         string   `json:"storage_endpoint"`
-	UseServerDefault        string   `json:"use_server_default"`
 	DisabledAlerts          []string `json:"disabled_alerts"`
 	EmailAccountAdmins      string   `json:"email_account_admins"`
 	EmailAddresses          []string `json:"email_addresses"`
 	RetentionDays           int      `json:"retention_days"`
 	State                   string   `json:"state"`
 	StorageAccountAccessKey string   `json:"storage_account_access_key"`
+	StorageEndpoint         string   `json:"storage_endpoint"`
+	UseServerDefault        string   `json:"use_server_default"`
 }
 
 type AzurermSqlDatabaseSpecImport struct {
@@ -39,27 +40,27 @@ type AzurermSqlDatabaseSpecImport struct {
 }
 
 type AzurermSqlDatabaseSpec struct {
-	CreateMode                    string                   `json:"create_mode"`
-	MaxSizeBytes                  string                   `json:"max_size_bytes"`
+	CreationDate                  string                   `json:"creation_date"`
+	ServerName                    string                   `json:"server_name"`
+	RestorePointInTime            string                   `json:"restore_point_in_time"`
+	Encryption                    string                   `json:"encryption"`
+	ResourceGroupName             string                   `json:"resource_group_name"`
 	RequestedServiceObjectiveName string                   `json:"requested_service_objective_name"`
+	Tags                          map[string]string        `json:"tags"`
+	Edition                       string                   `json:"edition"`
+	MaxSizeBytes                  string                   `json:"max_size_bytes"`
+	RequestedServiceObjectiveId   string                   `json:"requested_service_objective_id"`
+	SourceDatabaseDeletionDate    string                   `json:"source_database_deletion_date"`
+	ThreatDetectionPolicy         []AzurermSqlDatabaseSpec `json:"threat_detection_policy"`
+	Location                      string                   `json:"location"`
+	CreateMode                    string                   `json:"create_mode"`
+	SourceDatabaseId              string                   `json:"source_database_id"`
+	ElasticPoolName               string                   `json:"elastic_pool_name"`
 	DefaultSecondaryLocation      string                   `json:"default_secondary_location"`
 	ReadScale                     bool                     `json:"read_scale"`
-	Edition                       string                   `json:"edition"`
-	RequestedServiceObjectiveId   string                   `json:"requested_service_objective_id"`
-	ElasticPoolName               string                   `json:"elastic_pool_name"`
-	CreationDate                  string                   `json:"creation_date"`
-	Tags                          map[string]string        `json:"tags"`
 	Name                          string                   `json:"name"`
-	ResourceGroupName             string                   `json:"resource_group_name"`
-	ThreatDetectionPolicy         []AzurermSqlDatabaseSpec `json:"threat_detection_policy"`
-	Encryption                    string                   `json:"encryption"`
-	Location                      string                   `json:"location"`
-	ServerName                    string                   `json:"server_name"`
 	Import                        []AzurermSqlDatabaseSpec `json:"import"`
-	SourceDatabaseId              string                   `json:"source_database_id"`
-	RestorePointInTime            string                   `json:"restore_point_in_time"`
 	Collation                     string                   `json:"collation"`
-	SourceDatabaseDeletionDate    string                   `json:"source_database_deletion_date"`
 }
 
 type AzurermSqlDatabaseStatus struct {
@@ -67,6 +68,7 @@ type AzurermSqlDatabaseStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermSqlDatabaseList is a list of AzurermSqlDatabases
 type AzurermSqlDatabaseList struct {

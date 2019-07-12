@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsElasticBeanstalkConfigurationTemplate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -25,12 +26,12 @@ type AwsElasticBeanstalkConfigurationTemplateSpecSetting struct {
 }
 
 type AwsElasticBeanstalkConfigurationTemplateSpec struct {
-	Name              string                                         `json:"name"`
 	Application       string                                         `json:"application"`
 	Description       string                                         `json:"description"`
 	EnvironmentId     string                                         `json:"environment_id"`
 	Setting           []AwsElasticBeanstalkConfigurationTemplateSpec `json:"setting"`
 	SolutionStackName string                                         `json:"solution_stack_name"`
+	Name              string                                         `json:"name"`
 }
 
 type AwsElasticBeanstalkConfigurationTemplateStatus struct {
@@ -38,6 +39,7 @@ type AwsElasticBeanstalkConfigurationTemplateStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsElasticBeanstalkConfigurationTemplateList is a list of AwsElasticBeanstalkConfigurationTemplates
 type AwsElasticBeanstalkConfigurationTemplateList struct {

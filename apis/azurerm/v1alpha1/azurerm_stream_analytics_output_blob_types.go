@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermStreamAnalyticsOutputBlob struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,23 +19,23 @@ type AzurermStreamAnalyticsOutputBlob struct {
 }
 
 type AzurermStreamAnalyticsOutputBlobSpecSerialization struct {
-	Type           string `json:"type"`
-	FieldDelimiter string `json:"field_delimiter"`
 	Encoding       string `json:"encoding"`
 	Format         string `json:"format"`
+	Type           string `json:"type"`
+	FieldDelimiter string `json:"field_delimiter"`
 }
 
 type AzurermStreamAnalyticsOutputBlobSpec struct {
-	ResourceGroupName      string                                 `json:"resource_group_name"`
-	DateFormat             string                                 `json:"date_format"`
-	TimeFormat             string                                 `json:"time_format"`
+	StorageAccountKey      string                                 `json:"storage_account_key"`
 	StorageAccountName     string                                 `json:"storage_account_name"`
 	StorageContainerName   string                                 `json:"storage_container_name"`
 	Serialization          []AzurermStreamAnalyticsOutputBlobSpec `json:"serialization"`
-	Name                   string                                 `json:"name"`
 	StreamAnalyticsJobName string                                 `json:"stream_analytics_job_name"`
+	ResourceGroupName      string                                 `json:"resource_group_name"`
+	DateFormat             string                                 `json:"date_format"`
 	PathPattern            string                                 `json:"path_pattern"`
-	StorageAccountKey      string                                 `json:"storage_account_key"`
+	TimeFormat             string                                 `json:"time_format"`
+	Name                   string                                 `json:"name"`
 }
 
 type AzurermStreamAnalyticsOutputBlobStatus struct {
@@ -42,6 +43,7 @@ type AzurermStreamAnalyticsOutputBlobStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermStreamAnalyticsOutputBlobList is a list of AzurermStreamAnalyticsOutputBlobs
 type AzurermStreamAnalyticsOutputBlobList struct {

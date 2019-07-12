@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCognitoResourceServer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,11 +24,11 @@ type AwsCognitoResourceServerSpecScope struct {
 }
 
 type AwsCognitoResourceServerSpec struct {
+	Identifier       string                         `json:"identifier"`
 	Name             string                         `json:"name"`
 	Scope            []AwsCognitoResourceServerSpec `json:"scope"`
 	UserPoolId       string                         `json:"user_pool_id"`
 	ScopeIdentifiers []string                       `json:"scope_identifiers"`
-	Identifier       string                         `json:"identifier"`
 }
 
 type AwsCognitoResourceServerStatus struct {
@@ -35,6 +36,7 @@ type AwsCognitoResourceServerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCognitoResourceServerList is a list of AwsCognitoResourceServers
 type AwsCognitoResourceServerList struct {

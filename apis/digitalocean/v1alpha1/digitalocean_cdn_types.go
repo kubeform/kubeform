@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanCdn struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type DigitaloceanCdn struct {
 }
 
 type DigitaloceanCdnSpec struct {
-	CustomDomain  string `json:"custom_domain"`
-	Endpoint      string `json:"endpoint"`
-	CreatedAt     string `json:"created_at"`
 	Origin        string `json:"origin"`
 	Ttl           int    `json:"ttl"`
 	CertificateId string `json:"certificate_id"`
+	CustomDomain  string `json:"custom_domain"`
+	Endpoint      string `json:"endpoint"`
+	CreatedAt     string `json:"created_at"`
 }
 
 type DigitaloceanCdnStatus struct {
@@ -31,6 +32,7 @@ type DigitaloceanCdnStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanCdnList is a list of DigitaloceanCdns
 type DigitaloceanCdnList struct {

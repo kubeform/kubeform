@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayModel struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsApiGatewayModel struct {
 }
 
 type AwsApiGatewayModelSpec struct {
-	Schema      string `json:"schema"`
-	ContentType string `json:"content_type"`
 	RestApiId   string `json:"rest_api_id"`
 	Name        string `json:"name"`
 	Description string `json:"description"`
+	Schema      string `json:"schema"`
+	ContentType string `json:"content_type"`
 }
 
 type AwsApiGatewayModelStatus struct {
@@ -30,6 +31,7 @@ type AwsApiGatewayModelStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayModelList is a list of AwsApiGatewayModels
 type AwsApiGatewayModelList struct {

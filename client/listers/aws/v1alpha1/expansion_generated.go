@@ -206,6 +206,10 @@ type AwsAppsyncApiKeyListerExpansion interface{}
 // AwsAppsyncDatasourceLister.
 type AwsAppsyncDatasourceListerExpansion interface{}
 
+// AwsAppsyncFunctionListerExpansion allows custom methods to be added to
+// AwsAppsyncFunctionLister.
+type AwsAppsyncFunctionListerExpansion interface{}
+
 // AwsAppsyncGraphqlApiListerExpansion allows custom methods to be added to
 // AwsAppsyncGraphqlApiLister.
 type AwsAppsyncGraphqlApiListerExpansion interface{}
@@ -221,6 +225,10 @@ type AwsAthenaDatabaseListerExpansion interface{}
 // AwsAthenaNamedQueryListerExpansion allows custom methods to be added to
 // AwsAthenaNamedQueryLister.
 type AwsAthenaNamedQueryListerExpansion interface{}
+
+// AwsAthenaWorkgroupListerExpansion allows custom methods to be added to
+// AwsAthenaWorkgroupLister.
+type AwsAthenaWorkgroupListerExpansion interface{}
 
 // AwsAutoscalingAttachmentListerExpansion allows custom methods to be added to
 // AwsAutoscalingAttachmentLister.
@@ -446,6 +454,10 @@ type AwsConfigConfigurationAggregatorListerExpansion interface{}
 // AwsConfigConfigurationRecorderLister.
 type AwsConfigConfigurationRecorderListerExpansion interface{}
 
+// AwsConfigConfigurationRecorderStatusListerExpansion allows custom methods to be added to
+// AwsConfigConfigurationRecorderStatusLister.
+type AwsConfigConfigurationRecorderStatusListerExpansion interface{}
+
 // AwsConfigDeliveryChannelListerExpansion allows custom methods to be added to
 // AwsConfigDeliveryChannelLister.
 type AwsConfigDeliveryChannelListerExpansion interface{}
@@ -457,6 +469,10 @@ type AwsCurReportDefinitionListerExpansion interface{}
 // AwsCustomerGatewayListerExpansion allows custom methods to be added to
 // AwsCustomerGatewayLister.
 type AwsCustomerGatewayListerExpansion interface{}
+
+// AwsDatapipelinePipelineListerExpansion allows custom methods to be added to
+// AwsDatapipelinePipelineLister.
+type AwsDatapipelinePipelineListerExpansion interface{}
 
 // AwsDatasyncAgentListerExpansion allows custom methods to be added to
 // AwsDatasyncAgentLister.
@@ -561,6 +577,10 @@ type AwsDirectoryServiceConditionalForwarderListerExpansion interface{}
 // AwsDirectoryServiceDirectoryListerExpansion allows custom methods to be added to
 // AwsDirectoryServiceDirectoryLister.
 type AwsDirectoryServiceDirectoryListerExpansion interface{}
+
+// AwsDirectoryServiceLogSubscriptionListerExpansion allows custom methods to be added to
+// AwsDirectoryServiceLogSubscriptionLister.
+type AwsDirectoryServiceLogSubscriptionListerExpansion interface{}
 
 // AwsDlmLifecyclePolicyListerExpansion allows custom methods to be added to
 // AwsDlmLifecyclePolicyLister.
@@ -670,6 +690,14 @@ type AwsDynamodbTableListerExpansion interface{}
 // AwsDynamodbTableItemLister.
 type AwsDynamodbTableItemListerExpansion interface{}
 
+// AwsEbsDefaultKmsKeyListerExpansion allows custom methods to be added to
+// AwsEbsDefaultKmsKeyLister.
+type AwsEbsDefaultKmsKeyListerExpansion interface{}
+
+// AwsEbsEncryptionByDefaultListerExpansion allows custom methods to be added to
+// AwsEbsEncryptionByDefaultLister.
+type AwsEbsEncryptionByDefaultListerExpansion interface{}
+
 // AwsEbsSnapshotListerExpansion allows custom methods to be added to
 // AwsEbsSnapshotLister.
 type AwsEbsSnapshotListerExpansion interface{}
@@ -721,6 +749,10 @@ type AwsEc2TransitGatewayRouteTablePropagationListerExpansion interface{}
 // AwsEc2TransitGatewayVpcAttachmentListerExpansion allows custom methods to be added to
 // AwsEc2TransitGatewayVpcAttachmentLister.
 type AwsEc2TransitGatewayVpcAttachmentListerExpansion interface{}
+
+// AwsEc2TransitGatewayVpcAttachmentAccepterListerExpansion allows custom methods to be added to
+// AwsEc2TransitGatewayVpcAttachmentAccepterLister.
+type AwsEc2TransitGatewayVpcAttachmentAccepterListerExpansion interface{}
 
 // AwsEcrLifecyclePolicyListerExpansion allows custom methods to be added to
 // AwsEcrLifecyclePolicyLister.
@@ -873,6 +905,10 @@ type AwsGlacierVaultLockListerExpansion interface{}
 // AwsGlobalacceleratorAcceleratorListerExpansion allows custom methods to be added to
 // AwsGlobalacceleratorAcceleratorLister.
 type AwsGlobalacceleratorAcceleratorListerExpansion interface{}
+
+// AwsGlobalacceleratorEndpointGroupListerExpansion allows custom methods to be added to
+// AwsGlobalacceleratorEndpointGroupLister.
+type AwsGlobalacceleratorEndpointGroupListerExpansion interface{}
 
 // AwsGlobalacceleratorListenerListerExpansion allows custom methods to be added to
 // AwsGlobalacceleratorListenerLister.
@@ -1241,6 +1277,14 @@ type AwsMqBrokerListerExpansion interface{}
 // AwsMqConfigurationListerExpansion allows custom methods to be added to
 // AwsMqConfigurationLister.
 type AwsMqConfigurationListerExpansion interface{}
+
+// AwsMskClusterListerExpansion allows custom methods to be added to
+// AwsMskClusterLister.
+type AwsMskClusterListerExpansion interface{}
+
+// AwsMskConfigurationListerExpansion allows custom methods to be added to
+// AwsMskConfigurationLister.
+type AwsMskConfigurationListerExpansion interface{}
 
 // AwsNatGatewayListerExpansion allows custom methods to be added to
 // AwsNatGatewayLister.
@@ -1662,6 +1706,10 @@ type AwsSesDomainIdentityVerificationListerExpansion interface{}
 // AwsSesDomainMailFromLister.
 type AwsSesDomainMailFromListerExpansion interface{}
 
+// AwsSesEmailIdentityListerExpansion allows custom methods to be added to
+// AwsSesEmailIdentityLister.
+type AwsSesEmailIdentityListerExpansion interface{}
+
 // AwsSesEventDestinationListerExpansion allows custom methods to be added to
 // AwsSesEventDestinationLister.
 type AwsSesEventDestinationListerExpansion interface{}
@@ -1669,6 +1717,10 @@ type AwsSesEventDestinationListerExpansion interface{}
 // AwsSesIdentityNotificationTopicListerExpansion allows custom methods to be added to
 // AwsSesIdentityNotificationTopicLister.
 type AwsSesIdentityNotificationTopicListerExpansion interface{}
+
+// AwsSesIdentityPolicyListerExpansion allows custom methods to be added to
+// AwsSesIdentityPolicyLister.
+type AwsSesIdentityPolicyListerExpansion interface{}
 
 // AwsSesReceiptFilterListerExpansion allows custom methods to be added to
 // AwsSesReceiptFilterLister.
@@ -1693,6 +1745,10 @@ type AwsSfnActivityListerExpansion interface{}
 // AwsSfnStateMachineListerExpansion allows custom methods to be added to
 // AwsSfnStateMachineLister.
 type AwsSfnStateMachineListerExpansion interface{}
+
+// AwsShieldProtectionListerExpansion allows custom methods to be added to
+// AwsShieldProtectionLister.
+type AwsShieldProtectionListerExpansion interface{}
 
 // AwsSimpledbDomainListerExpansion allows custom methods to be added to
 // AwsSimpledbDomainLister.

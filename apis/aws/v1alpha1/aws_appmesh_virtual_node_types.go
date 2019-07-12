@@ -9,21 +9,13 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAppmeshVirtualNode struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              AwsAppmeshVirtualNodeSpec   `json:"spec,omitempty"`
 	Status            AwsAppmeshVirtualNodeStatus `json:"status,omitempty"`
-}
-
-type AwsAppmeshVirtualNodeSpecSpecServiceDiscoveryDns struct {
-	ServiceName string `json:"service_name"`
-	Hostname    string `json:"hostname"`
-}
-
-type AwsAppmeshVirtualNodeSpecSpecServiceDiscovery struct {
-	Dns []AwsAppmeshVirtualNodeSpecSpecServiceDiscovery `json:"dns"`
 }
 
 type AwsAppmeshVirtualNodeSpecSpecBackendVirtualService struct {
@@ -35,13 +27,13 @@ type AwsAppmeshVirtualNodeSpecSpecBackend struct {
 }
 
 type AwsAppmeshVirtualNodeSpecSpecListenerHealthCheck struct {
-	Port               int    `json:"port"`
-	Protocol           string `json:"protocol"`
-	TimeoutMillis      int    `json:"timeout_millis"`
 	UnhealthyThreshold int    `json:"unhealthy_threshold"`
 	HealthyThreshold   int    `json:"healthy_threshold"`
 	IntervalMillis     int    `json:"interval_millis"`
 	Path               string `json:"path"`
+	Port               int    `json:"port"`
+	Protocol           string `json:"protocol"`
+	TimeoutMillis      int    `json:"timeout_millis"`
 }
 
 type AwsAppmeshVirtualNodeSpecSpecListenerPortMapping struct {
@@ -66,21 +58,38 @@ type AwsAppmeshVirtualNodeSpecSpecLogging struct {
 	AccessLog []AwsAppmeshVirtualNodeSpecSpecLogging `json:"access_log"`
 }
 
+type AwsAppmeshVirtualNodeSpecSpecServiceDiscoveryAwsCloudMap struct {
+	NamespaceName string            `json:"namespace_name"`
+	ServiceName   string            `json:"service_name"`
+	Attributes    map[string]string `json:"attributes"`
+}
+
+type AwsAppmeshVirtualNodeSpecSpecServiceDiscoveryDns struct {
+	ServiceName string `json:"service_name"`
+	Hostname    string `json:"hostname"`
+}
+
+type AwsAppmeshVirtualNodeSpecSpecServiceDiscovery struct {
+	AwsCloudMap []AwsAppmeshVirtualNodeSpecSpecServiceDiscovery `json:"aws_cloud_map"`
+	Dns         []AwsAppmeshVirtualNodeSpecSpecServiceDiscovery `json:"dns"`
+}
+
 type AwsAppmeshVirtualNodeSpecSpec struct {
-	ServiceDiscovery []AwsAppmeshVirtualNodeSpecSpec `json:"service_discovery"`
 	Backends         []string                        `json:"backends"`
 	Backend          []AwsAppmeshVirtualNodeSpecSpec `json:"backend"`
 	Listener         []AwsAppmeshVirtualNodeSpecSpec `json:"listener"`
 	Logging          []AwsAppmeshVirtualNodeSpecSpec `json:"logging"`
+	ServiceDiscovery []AwsAppmeshVirtualNodeSpecSpec `json:"service_discovery"`
 }
 
 type AwsAppmeshVirtualNodeSpec struct {
+	CreatedDate     string                      `json:"created_date"`
+	LastUpdatedDate string                      `json:"last_updated_date"`
+	Tags            map[string]string           `json:"tags"`
 	Name            string                      `json:"name"`
 	MeshName        string                      `json:"mesh_name"`
 	Spec            []AwsAppmeshVirtualNodeSpec `json:"spec"`
 	Arn             string                      `json:"arn"`
-	CreatedDate     string                      `json:"created_date"`
-	LastUpdatedDate string                      `json:"last_updated_date"`
 }
 
 type AwsAppmeshVirtualNodeStatus struct {
@@ -88,6 +97,7 @@ type AwsAppmeshVirtualNodeStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAppmeshVirtualNodeList is a list of AwsAppmeshVirtualNodes
 type AwsAppmeshVirtualNodeList struct {

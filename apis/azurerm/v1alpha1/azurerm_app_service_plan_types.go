@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAppServicePlan struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,32 +18,32 @@ type AzurermAppServicePlan struct {
 	Status            AzurermAppServicePlanStatus `json:"status,omitempty"`
 }
 
+type AzurermAppServicePlanSpecSku struct {
+	Size     string `json:"size"`
+	Capacity int    `json:"capacity"`
+	Tier     string `json:"tier"`
+}
+
 type AzurermAppServicePlanSpecProperties struct {
 	AppServiceEnvironmentId string `json:"app_service_environment_id"`
 	Reserved                bool   `json:"reserved"`
 	PerSiteScaling          bool   `json:"per_site_scaling"`
 }
 
-type AzurermAppServicePlanSpecSku struct {
-	Capacity int    `json:"capacity"`
-	Tier     string `json:"tier"`
-	Size     string `json:"size"`
-}
-
 type AzurermAppServicePlanSpec struct {
-	Properties                []AzurermAppServicePlanSpec `json:"properties"`
+	Name                      string                      `json:"name"`
+	Location                  string                      `json:"location"`
 	PerSiteScaling            bool                        `json:"per_site_scaling"`
-	Reserved                  bool                        `json:"reserved"`
+	MaximumElasticWorkerCount int                         `json:"maximum_elastic_worker_count"`
+	MaximumNumberOfWorkers    int                         `json:"maximum_number_of_workers"`
 	IsXenon                   bool                        `json:"is_xenon"`
 	ResourceGroupName         string                      `json:"resource_group_name"`
 	Kind                      string                      `json:"kind"`
 	Sku                       []AzurermAppServicePlanSpec `json:"sku"`
-	MaximumElasticWorkerCount int                         `json:"maximum_elastic_worker_count"`
-	MaximumNumberOfWorkers    int                         `json:"maximum_number_of_workers"`
-	Tags                      map[string]string           `json:"tags"`
-	Name                      string                      `json:"name"`
-	Location                  string                      `json:"location"`
+	Properties                []AzurermAppServicePlanSpec `json:"properties"`
 	AppServiceEnvironmentId   string                      `json:"app_service_environment_id"`
+	Reserved                  bool                        `json:"reserved"`
+	Tags                      map[string]string           `json:"tags"`
 }
 
 type AzurermAppServicePlanStatus struct {
@@ -50,6 +51,7 @@ type AzurermAppServicePlanStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAppServicePlanList is a list of AzurermAppServicePlans
 type AzurermAppServicePlanList struct {

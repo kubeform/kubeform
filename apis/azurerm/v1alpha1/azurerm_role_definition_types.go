@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermRoleDefinition struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AzurermRoleDefinition struct {
 }
 
 type AzurermRoleDefinitionSpecPermissions struct {
-	NotActions     []string `json:"not_actions"`
-	DataActions    []string `json:"data_actions"`
 	NotDataActions []string `json:"not_data_actions"`
 	Actions        []string `json:"actions"`
+	NotActions     []string `json:"not_actions"`
+	DataActions    []string `json:"data_actions"`
 }
 
 type AzurermRoleDefinitionSpec struct {
-	RoleDefinitionId string                      `json:"role_definition_id"`
 	Name             string                      `json:"name"`
 	Scope            string                      `json:"scope"`
 	Description      string                      `json:"description"`
 	Permissions      []AzurermRoleDefinitionSpec `json:"permissions"`
 	AssignableScopes []string                    `json:"assignable_scopes"`
+	RoleDefinitionId string                      `json:"role_definition_id"`
 }
 
 type AzurermRoleDefinitionStatus struct {
@@ -38,6 +39,7 @@ type AzurermRoleDefinitionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermRoleDefinitionList is a list of AzurermRoleDefinitions
 type AzurermRoleDefinitionList struct {

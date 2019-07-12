@@ -216,6 +216,10 @@ func (c *FakeAwsV1alpha1) AwsAppsyncDatasources() v1alpha1.AwsAppsyncDatasourceI
 	return &FakeAwsAppsyncDatasources{c}
 }
 
+func (c *FakeAwsV1alpha1) AwsAppsyncFunctions() v1alpha1.AwsAppsyncFunctionInterface {
+	return &FakeAwsAppsyncFunctions{c}
+}
+
 func (c *FakeAwsV1alpha1) AwsAppsyncGraphqlApis() v1alpha1.AwsAppsyncGraphqlApiInterface {
 	return &FakeAwsAppsyncGraphqlApis{c}
 }
@@ -230,6 +234,10 @@ func (c *FakeAwsV1alpha1) AwsAthenaDatabases() v1alpha1.AwsAthenaDatabaseInterfa
 
 func (c *FakeAwsV1alpha1) AwsAthenaNamedQueries() v1alpha1.AwsAthenaNamedQueryInterface {
 	return &FakeAwsAthenaNamedQueries{c}
+}
+
+func (c *FakeAwsV1alpha1) AwsAthenaWorkgroups() v1alpha1.AwsAthenaWorkgroupInterface {
+	return &FakeAwsAthenaWorkgroups{c}
 }
 
 func (c *FakeAwsV1alpha1) AwsAutoscalingAttachments() v1alpha1.AwsAutoscalingAttachmentInterface {
@@ -456,6 +464,10 @@ func (c *FakeAwsV1alpha1) AwsConfigConfigurationRecorders() v1alpha1.AwsConfigCo
 	return &FakeAwsConfigConfigurationRecorders{c}
 }
 
+func (c *FakeAwsV1alpha1) AwsConfigConfigurationRecorderStatuses() v1alpha1.AwsConfigConfigurationRecorderStatusInterface {
+	return &FakeAwsConfigConfigurationRecorderStatuses{c}
+}
+
 func (c *FakeAwsV1alpha1) AwsConfigDeliveryChannels() v1alpha1.AwsConfigDeliveryChannelInterface {
 	return &FakeAwsConfigDeliveryChannels{c}
 }
@@ -466,6 +478,10 @@ func (c *FakeAwsV1alpha1) AwsCurReportDefinitions() v1alpha1.AwsCurReportDefinit
 
 func (c *FakeAwsV1alpha1) AwsCustomerGateways() v1alpha1.AwsCustomerGatewayInterface {
 	return &FakeAwsCustomerGateways{c}
+}
+
+func (c *FakeAwsV1alpha1) AwsDatapipelinePipelines() v1alpha1.AwsDatapipelinePipelineInterface {
+	return &FakeAwsDatapipelinePipelines{c}
 }
 
 func (c *FakeAwsV1alpha1) AwsDatasyncAgents() v1alpha1.AwsDatasyncAgentInterface {
@@ -570,6 +586,10 @@ func (c *FakeAwsV1alpha1) AwsDirectoryServiceConditionalForwarders() v1alpha1.Aw
 
 func (c *FakeAwsV1alpha1) AwsDirectoryServiceDirectories() v1alpha1.AwsDirectoryServiceDirectoryInterface {
 	return &FakeAwsDirectoryServiceDirectories{c}
+}
+
+func (c *FakeAwsV1alpha1) AwsDirectoryServiceLogSubscriptions() v1alpha1.AwsDirectoryServiceLogSubscriptionInterface {
+	return &FakeAwsDirectoryServiceLogSubscriptions{c}
 }
 
 func (c *FakeAwsV1alpha1) AwsDlmLifecyclePolicies() v1alpha1.AwsDlmLifecyclePolicyInterface {
@@ -680,6 +700,14 @@ func (c *FakeAwsV1alpha1) AwsDynamodbTableItems() v1alpha1.AwsDynamodbTableItemI
 	return &FakeAwsDynamodbTableItems{c}
 }
 
+func (c *FakeAwsV1alpha1) AwsEbsDefaultKmsKeys() v1alpha1.AwsEbsDefaultKmsKeyInterface {
+	return &FakeAwsEbsDefaultKmsKeys{c}
+}
+
+func (c *FakeAwsV1alpha1) AwsEbsEncryptionByDefaults() v1alpha1.AwsEbsEncryptionByDefaultInterface {
+	return &FakeAwsEbsEncryptionByDefaults{c}
+}
+
 func (c *FakeAwsV1alpha1) AwsEbsSnapshots() v1alpha1.AwsEbsSnapshotInterface {
 	return &FakeAwsEbsSnapshots{c}
 }
@@ -730,6 +758,10 @@ func (c *FakeAwsV1alpha1) AwsEc2TransitGatewayRouteTablePropagations() v1alpha1.
 
 func (c *FakeAwsV1alpha1) AwsEc2TransitGatewayVpcAttachments() v1alpha1.AwsEc2TransitGatewayVpcAttachmentInterface {
 	return &FakeAwsEc2TransitGatewayVpcAttachments{c}
+}
+
+func (c *FakeAwsV1alpha1) AwsEc2TransitGatewayVpcAttachmentAccepters() v1alpha1.AwsEc2TransitGatewayVpcAttachmentAccepterInterface {
+	return &FakeAwsEc2TransitGatewayVpcAttachmentAccepters{c}
 }
 
 func (c *FakeAwsV1alpha1) AwsEcrLifecyclePolicies() v1alpha1.AwsEcrLifecyclePolicyInterface {
@@ -882,6 +914,10 @@ func (c *FakeAwsV1alpha1) AwsGlacierVaultLocks() v1alpha1.AwsGlacierVaultLockInt
 
 func (c *FakeAwsV1alpha1) AwsGlobalacceleratorAccelerators() v1alpha1.AwsGlobalacceleratorAcceleratorInterface {
 	return &FakeAwsGlobalacceleratorAccelerators{c}
+}
+
+func (c *FakeAwsV1alpha1) AwsGlobalacceleratorEndpointGroups() v1alpha1.AwsGlobalacceleratorEndpointGroupInterface {
+	return &FakeAwsGlobalacceleratorEndpointGroups{c}
 }
 
 func (c *FakeAwsV1alpha1) AwsGlobalacceleratorListeners() v1alpha1.AwsGlobalacceleratorListenerInterface {
@@ -1250,6 +1286,14 @@ func (c *FakeAwsV1alpha1) AwsMqBrokers() v1alpha1.AwsMqBrokerInterface {
 
 func (c *FakeAwsV1alpha1) AwsMqConfigurations() v1alpha1.AwsMqConfigurationInterface {
 	return &FakeAwsMqConfigurations{c}
+}
+
+func (c *FakeAwsV1alpha1) AwsMskClusters() v1alpha1.AwsMskClusterInterface {
+	return &FakeAwsMskClusters{c}
+}
+
+func (c *FakeAwsV1alpha1) AwsMskConfigurations() v1alpha1.AwsMskConfigurationInterface {
+	return &FakeAwsMskConfigurations{c}
 }
 
 func (c *FakeAwsV1alpha1) AwsNatGateways() v1alpha1.AwsNatGatewayInterface {
@@ -1672,12 +1716,20 @@ func (c *FakeAwsV1alpha1) AwsSesDomainMailFroms() v1alpha1.AwsSesDomainMailFromI
 	return &FakeAwsSesDomainMailFroms{c}
 }
 
+func (c *FakeAwsV1alpha1) AwsSesEmailIdentities() v1alpha1.AwsSesEmailIdentityInterface {
+	return &FakeAwsSesEmailIdentities{c}
+}
+
 func (c *FakeAwsV1alpha1) AwsSesEventDestinations() v1alpha1.AwsSesEventDestinationInterface {
 	return &FakeAwsSesEventDestinations{c}
 }
 
 func (c *FakeAwsV1alpha1) AwsSesIdentityNotificationTopics() v1alpha1.AwsSesIdentityNotificationTopicInterface {
 	return &FakeAwsSesIdentityNotificationTopics{c}
+}
+
+func (c *FakeAwsV1alpha1) AwsSesIdentityPolicies() v1alpha1.AwsSesIdentityPolicyInterface {
+	return &FakeAwsSesIdentityPolicies{c}
 }
 
 func (c *FakeAwsV1alpha1) AwsSesReceiptFilters() v1alpha1.AwsSesReceiptFilterInterface {
@@ -1702,6 +1754,10 @@ func (c *FakeAwsV1alpha1) AwsSfnActivities() v1alpha1.AwsSfnActivityInterface {
 
 func (c *FakeAwsV1alpha1) AwsSfnStateMachines() v1alpha1.AwsSfnStateMachineInterface {
 	return &FakeAwsSfnStateMachines{c}
+}
+
+func (c *FakeAwsV1alpha1) AwsShieldProtections() v1alpha1.AwsShieldProtectionInterface {
+	return &FakeAwsShieldProtections{c}
 }
 
 func (c *FakeAwsV1alpha1) AwsSimpledbDomains() v1alpha1.AwsSimpledbDomainInterface {

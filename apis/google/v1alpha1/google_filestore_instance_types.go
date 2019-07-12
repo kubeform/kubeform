@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleFilestoreInstance struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,29 +18,29 @@ type GoogleFilestoreInstance struct {
 	Status            GoogleFilestoreInstanceStatus `json:"status,omitempty"`
 }
 
-type GoogleFilestoreInstanceSpecNetworks struct {
-	Modes           []string `json:"modes"`
-	Network         string   `json:"network"`
-	ReservedIpRange string   `json:"reserved_ip_range"`
-	IpAddresses     []string `json:"ip_addresses"`
-}
-
 type GoogleFilestoreInstanceSpecFileShares struct {
 	CapacityGb int    `json:"capacity_gb"`
 	Name       string `json:"name"`
 }
 
+type GoogleFilestoreInstanceSpecNetworks struct {
+	ReservedIpRange string   `json:"reserved_ip_range"`
+	IpAddresses     []string `json:"ip_addresses"`
+	Modes           []string `json:"modes"`
+	Network         string   `json:"network"`
+}
+
 type GoogleFilestoreInstanceSpec struct {
-	Tier        string                        `json:"tier"`
+	FileShares  []GoogleFilestoreInstanceSpec `json:"file_shares"`
+	Name        string                        `json:"name"`
 	Networks    []GoogleFilestoreInstanceSpec `json:"networks"`
-	Zone        string                        `json:"zone"`
 	Description string                        `json:"description"`
+	Project     string                        `json:"project"`
+	Tier        string                        `json:"tier"`
+	Zone        string                        `json:"zone"`
 	Labels      map[string]string             `json:"labels"`
 	CreateTime  string                        `json:"create_time"`
 	Etag        string                        `json:"etag"`
-	FileShares  []GoogleFilestoreInstanceSpec `json:"file_shares"`
-	Name        string                        `json:"name"`
-	Project     string                        `json:"project"`
 }
 
 type GoogleFilestoreInstanceStatus struct {
@@ -47,6 +48,7 @@ type GoogleFilestoreInstanceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleFilestoreInstanceList is a list of GoogleFilestoreInstances
 type GoogleFilestoreInstanceList struct {

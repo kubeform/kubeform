@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermNetworkSecurityRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,24 +19,24 @@ type AzurermNetworkSecurityRule struct {
 }
 
 type AzurermNetworkSecurityRuleSpec struct {
-	Name                                   string   `json:"name"`
-	ResourceGroupName                      string   `json:"resource_group_name"`
-	Description                            string   `json:"description"`
+	NetworkSecurityGroupName               string   `json:"network_security_group_name"`
+	SourcePortRange                        string   `json:"source_port_range"`
+	DestinationPortRanges                  []string `json:"destination_port_ranges"`
+	SourceAddressPrefix                    string   `json:"source_address_prefix"`
+	DestinationAddressPrefixes             []string `json:"destination_address_prefixes"`
 	DestinationApplicationSecurityGroupIds []string `json:"destination_application_security_group_ids"`
 	Direction                              string   `json:"direction"`
+	Description                            string   `json:"description"`
+	Protocol                               string   `json:"protocol"`
 	DestinationPortRange                   string   `json:"destination_port_range"`
 	SourceAddressPrefixes                  []string `json:"source_address_prefixes"`
 	DestinationAddressPrefix               string   `json:"destination_address_prefix"`
-	SourceAddressPrefix                    string   `json:"source_address_prefix"`
+	Priority                               int      `json:"priority"`
+	ResourceGroupName                      string   `json:"resource_group_name"`
+	Name                                   string   `json:"name"`
+	SourcePortRanges                       []string `json:"source_port_ranges"`
 	SourceApplicationSecurityGroupIds      []string `json:"source_application_security_group_ids"`
 	Access                                 string   `json:"access"`
-	Priority                               int      `json:"priority"`
-	Protocol                               string   `json:"protocol"`
-	SourcePortRanges                       []string `json:"source_port_ranges"`
-	DestinationPortRanges                  []string `json:"destination_port_ranges"`
-	NetworkSecurityGroupName               string   `json:"network_security_group_name"`
-	SourcePortRange                        string   `json:"source_port_range"`
-	DestinationAddressPrefixes             []string `json:"destination_address_prefixes"`
 }
 
 type AzurermNetworkSecurityRuleStatus struct {
@@ -43,6 +44,7 @@ type AzurermNetworkSecurityRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermNetworkSecurityRuleList is a list of AzurermNetworkSecurityRules
 type AzurermNetworkSecurityRuleList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAutomationDscNodeconfiguration struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermAutomationDscNodeconfiguration struct {
 }
 
 type AzurermAutomationDscNodeconfigurationSpec struct {
-	ContentEmbedded       string `json:"content_embedded"`
-	ConfigurationName     string `json:"configuration_name"`
 	Name                  string `json:"name"`
 	AutomationAccountName string `json:"automation_account_name"`
 	ResourceGroupName     string `json:"resource_group_name"`
+	ContentEmbedded       string `json:"content_embedded"`
+	ConfigurationName     string `json:"configuration_name"`
 }
 
 type AzurermAutomationDscNodeconfigurationStatus struct {
@@ -30,6 +31,7 @@ type AzurermAutomationDscNodeconfigurationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAutomationDscNodeconfigurationList is a list of AzurermAutomationDscNodeconfigurations
 type AzurermAutomationDscNodeconfigurationList struct {

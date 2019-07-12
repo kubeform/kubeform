@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafRateBasedRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AwsWafRateBasedRule struct {
 }
 
 type AwsWafRateBasedRuleSpecPredicates struct {
+	Negated bool   `json:"negated"`
 	DataId  string `json:"data_id"`
 	Type    string `json:"type"`
-	Negated bool   `json:"negated"`
 }
 
 type AwsWafRateBasedRuleSpec struct {
+	Name       string                    `json:"name"`
+	MetricName string                    `json:"metric_name"`
 	Predicates []AwsWafRateBasedRuleSpec `json:"predicates"`
 	RateKey    string                    `json:"rate_key"`
 	RateLimit  int                       `json:"rate_limit"`
-	Name       string                    `json:"name"`
-	MetricName string                    `json:"metric_name"`
 }
 
 type AwsWafRateBasedRuleStatus struct {
@@ -36,6 +37,7 @@ type AwsWafRateBasedRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafRateBasedRuleList is a list of AwsWafRateBasedRules
 type AwsWafRateBasedRuleList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIamUser struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AwsIamUser struct {
 }
 
 type AwsIamUserSpec struct {
-	Path                string            `json:"path"`
 	PermissionsBoundary string            `json:"permissions_boundary"`
 	ForceDestroy        bool              `json:"force_destroy"`
 	Tags                map[string]string `json:"tags"`
 	Arn                 string            `json:"arn"`
 	UniqueId            string            `json:"unique_id"`
 	Name                string            `json:"name"`
+	Path                string            `json:"path"`
 }
 
 type AwsIamUserStatus struct {
@@ -32,6 +33,7 @@ type AwsIamUserStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIamUserList is a list of AwsIamUsers
 type AwsIamUserList struct {

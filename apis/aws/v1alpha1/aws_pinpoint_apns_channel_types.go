@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsPinpointApnsChannel struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsPinpointApnsChannel struct {
 }
 
 type AwsPinpointApnsChannelSpec struct {
-	Enabled                     bool   `json:"enabled"`
-	TokenKey                    string `json:"token_key"`
+	DefaultAuthenticationMethod string `json:"default_authentication_method"`
+	TokenKeyId                  string `json:"token_key_id"`
 	ApplicationId               string `json:"application_id"`
 	BundleId                    string `json:"bundle_id"`
 	PrivateKey                  string `json:"private_key"`
 	TeamId                      string `json:"team_id"`
-	TokenKeyId                  string `json:"token_key_id"`
+	TokenKey                    string `json:"token_key"`
 	Certificate                 string `json:"certificate"`
-	DefaultAuthenticationMethod string `json:"default_authentication_method"`
+	Enabled                     bool   `json:"enabled"`
 }
 
 type AwsPinpointApnsChannelStatus struct {
@@ -34,6 +35,7 @@ type AwsPinpointApnsChannelStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsPinpointApnsChannelList is a list of AwsPinpointApnsChannels
 type AwsPinpointApnsChannelList struct {

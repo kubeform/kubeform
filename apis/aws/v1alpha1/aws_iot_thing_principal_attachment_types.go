@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIotThingPrincipalAttachment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsIotThingPrincipalAttachment struct {
 }
 
 type AwsIotThingPrincipalAttachmentSpec struct {
-	Principal string `json:"principal"`
 	Thing     string `json:"thing"`
+	Principal string `json:"principal"`
 }
 
 type AwsIotThingPrincipalAttachmentStatus struct {
@@ -27,6 +28,7 @@ type AwsIotThingPrincipalAttachmentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIotThingPrincipalAttachmentList is a list of AwsIotThingPrincipalAttachments
 type AwsIotThingPrincipalAttachmentList struct {

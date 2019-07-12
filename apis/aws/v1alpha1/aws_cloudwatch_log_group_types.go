@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCloudwatchLogGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsCloudwatchLogGroup struct {
 }
 
 type AwsCloudwatchLogGroupSpec struct {
-	NamePrefix      string            `json:"name_prefix"`
 	RetentionInDays int               `json:"retention_in_days"`
 	KmsKeyId        string            `json:"kms_key_id"`
 	Arn             string            `json:"arn"`
 	Tags            map[string]string `json:"tags"`
 	Name            string            `json:"name"`
+	NamePrefix      string            `json:"name_prefix"`
 }
 
 type AwsCloudwatchLogGroupStatus struct {
@@ -31,6 +32,7 @@ type AwsCloudwatchLogGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCloudwatchLogGroupList is a list of AwsCloudwatchLogGroups
 type AwsCloudwatchLogGroupList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDbEventSubscription struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsDbEventSubscription struct {
 }
 
 type AwsDbEventSubscriptionSpec struct {
-	Name            string            `json:"name"`
-	SnsTopic        string            `json:"sns_topic"`
+	NamePrefix      string            `json:"name_prefix"`
+	EventCategories []string          `json:"event_categories"`
 	SourceIds       []string          `json:"source_ids"`
 	SourceType      string            `json:"source_type"`
 	Enabled         bool              `json:"enabled"`
 	CustomerAwsId   string            `json:"customer_aws_id"`
 	Arn             string            `json:"arn"`
-	NamePrefix      string            `json:"name_prefix"`
-	EventCategories []string          `json:"event_categories"`
+	Name            string            `json:"name"`
+	SnsTopic        string            `json:"sns_topic"`
 	Tags            map[string]string `json:"tags"`
 }
 
@@ -35,6 +36,7 @@ type AwsDbEventSubscriptionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDbEventSubscriptionList is a list of AwsDbEventSubscriptions
 type AwsDbEventSubscriptionList struct {

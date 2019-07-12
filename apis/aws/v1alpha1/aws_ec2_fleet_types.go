@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEc2Fleet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,19 +18,23 @@ type AwsEc2Fleet struct {
 	Status            AwsEc2FleetStatus `json:"status,omitempty"`
 }
 
+type AwsEc2FleetSpecOnDemandOptions struct {
+	AllocationStrategy string `json:"allocation_strategy"`
+}
+
 type AwsEc2FleetSpecLaunchTemplateConfigLaunchTemplateSpecification struct {
-	LaunchTemplateId   string `json:"launch_template_id"`
 	LaunchTemplateName string `json:"launch_template_name"`
 	Version            string `json:"version"`
+	LaunchTemplateId   string `json:"launch_template_id"`
 }
 
 type AwsEc2FleetSpecLaunchTemplateConfigOverride struct {
+	InstanceType     string  `json:"instance_type"`
 	MaxPrice         string  `json:"max_price"`
 	Priority         float64 `json:"priority"`
 	SubnetId         string  `json:"subnet_id"`
 	WeightedCapacity float64 `json:"weighted_capacity"`
 	AvailabilityZone string  `json:"availability_zone"`
-	InstanceType     string  `json:"instance_type"`
 }
 
 type AwsEc2FleetSpecLaunchTemplateConfig struct {
@@ -37,14 +42,10 @@ type AwsEc2FleetSpecLaunchTemplateConfig struct {
 	Override                    []AwsEc2FleetSpecLaunchTemplateConfig `json:"override"`
 }
 
-type AwsEc2FleetSpecOnDemandOptions struct {
-	AllocationStrategy string `json:"allocation_strategy"`
-}
-
 type AwsEc2FleetSpecSpotOptions struct {
+	AllocationStrategy           string `json:"allocation_strategy"`
 	InstanceInterruptionBehavior string `json:"instance_interruption_behavior"`
 	InstancePoolsToUseCount      int    `json:"instance_pools_to_use_count"`
-	AllocationStrategy           string `json:"allocation_strategy"`
 }
 
 type AwsEc2FleetSpecTargetCapacitySpecification struct {
@@ -55,15 +56,15 @@ type AwsEc2FleetSpecTargetCapacitySpecification struct {
 }
 
 type AwsEc2FleetSpec struct {
+	ExcessCapacityTerminationPolicy  string            `json:"excess_capacity_termination_policy"`
+	OnDemandOptions                  []AwsEc2FleetSpec `json:"on_demand_options"`
+	Tags                             map[string]string `json:"tags"`
+	Type                             string            `json:"type"`
 	TerminateInstancesWithExpiration bool              `json:"terminate_instances_with_expiration"`
 	LaunchTemplateConfig             []AwsEc2FleetSpec `json:"launch_template_config"`
-	OnDemandOptions                  []AwsEc2FleetSpec `json:"on_demand_options"`
+	ReplaceUnhealthyInstances        bool              `json:"replace_unhealthy_instances"`
 	SpotOptions                      []AwsEc2FleetSpec `json:"spot_options"`
 	TargetCapacitySpecification      []AwsEc2FleetSpec `json:"target_capacity_specification"`
-	Type                             string            `json:"type"`
-	ExcessCapacityTerminationPolicy  string            `json:"excess_capacity_termination_policy"`
-	ReplaceUnhealthyInstances        bool              `json:"replace_unhealthy_instances"`
-	Tags                             map[string]string `json:"tags"`
 	TerminateInstances               bool              `json:"terminate_instances"`
 }
 
@@ -72,6 +73,7 @@ type AwsEc2FleetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEc2FleetList is a list of AwsEc2Fleets
 type AwsEc2FleetList struct {

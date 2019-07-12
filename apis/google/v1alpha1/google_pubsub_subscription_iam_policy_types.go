@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GooglePubsubSubscriptionIamPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,9 +20,9 @@ type GooglePubsubSubscriptionIamPolicy struct {
 
 type GooglePubsubSubscriptionIamPolicySpec struct {
 	PolicyData   string `json:"policy_data"`
+	Etag         string `json:"etag"`
 	Subscription string `json:"subscription"`
 	Project      string `json:"project"`
-	Etag         string `json:"etag"`
 }
 
 type GooglePubsubSubscriptionIamPolicyStatus struct {
@@ -29,6 +30,7 @@ type GooglePubsubSubscriptionIamPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GooglePubsubSubscriptionIamPolicyList is a list of GooglePubsubSubscriptionIamPolicys
 type GooglePubsubSubscriptionIamPolicyList struct {

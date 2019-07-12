@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayBasePathMapping struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsApiGatewayBasePathMapping struct {
 }
 
 type AwsApiGatewayBasePathMappingSpec struct {
-	ApiId      string `json:"api_id"`
-	BasePath   string `json:"base_path"`
 	StageName  string `json:"stage_name"`
 	DomainName string `json:"domain_name"`
+	ApiId      string `json:"api_id"`
+	BasePath   string `json:"base_path"`
 }
 
 type AwsApiGatewayBasePathMappingStatus struct {
@@ -29,6 +30,7 @@ type AwsApiGatewayBasePathMappingStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayBasePathMappingList is a list of AwsApiGatewayBasePathMappings
 type AwsApiGatewayBasePathMappingList struct {

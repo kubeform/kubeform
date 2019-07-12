@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEc2TransitGatewayVpcAttachment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AwsEc2TransitGatewayVpcAttachment struct {
 }
 
 type AwsEc2TransitGatewayVpcAttachmentSpec struct {
-	Tags                                       map[string]string `json:"tags"`
-	TransitGatewayDefaultRouteTableAssociation bool              `json:"transit_gateway_default_route_table_association"`
-	TransitGatewayDefaultRouteTablePropagation bool              `json:"transit_gateway_default_route_table_propagation"`
-	TransitGatewayId                           string            `json:"transit_gateway_id"`
 	VpcOwnerId                                 string            `json:"vpc_owner_id"`
 	DnsSupport                                 string            `json:"dns_support"`
 	Ipv6Support                                string            `json:"ipv6_support"`
 	SubnetIds                                  []string          `json:"subnet_ids"`
+	TransitGatewayDefaultRouteTablePropagation bool              `json:"transit_gateway_default_route_table_propagation"`
+	Tags                                       map[string]string `json:"tags"`
+	TransitGatewayDefaultRouteTableAssociation bool              `json:"transit_gateway_default_route_table_association"`
+	TransitGatewayId                           string            `json:"transit_gateway_id"`
 	VpcId                                      string            `json:"vpc_id"`
 }
 
@@ -34,6 +35,7 @@ type AwsEc2TransitGatewayVpcAttachmentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEc2TransitGatewayVpcAttachmentList is a list of AwsEc2TransitGatewayVpcAttachments
 type AwsEc2TransitGatewayVpcAttachmentList struct {

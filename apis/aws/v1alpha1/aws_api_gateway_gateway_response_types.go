@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayGatewayResponse struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsApiGatewayGatewayResponse struct {
 }
 
 type AwsApiGatewayGatewayResponseSpec struct {
-	RestApiId          string            `json:"rest_api_id"`
-	ResponseType       string            `json:"response_type"`
 	StatusCode         string            `json:"status_code"`
 	ResponseTemplates  map[string]string `json:"response_templates"`
 	ResponseParameters map[string]string `json:"response_parameters"`
+	RestApiId          string            `json:"rest_api_id"`
+	ResponseType       string            `json:"response_type"`
 }
 
 type AwsApiGatewayGatewayResponseStatus struct {
@@ -30,6 +31,7 @@ type AwsApiGatewayGatewayResponseStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayGatewayResponseList is a list of AwsApiGatewayGatewayResponses
 type AwsApiGatewayGatewayResponseList struct {

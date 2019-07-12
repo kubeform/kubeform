@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeVpnGateway struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type GoogleComputeVpnGateway struct {
 }
 
 type GoogleComputeVpnGatewaySpec struct {
+	CreationTimestamp string `json:"creation_timestamp"`
 	Project           string `json:"project"`
 	SelfLink          string `json:"self_link"`
 	Name              string `json:"name"`
 	Network           string `json:"network"`
 	Description       string `json:"description"`
 	Region            string `json:"region"`
-	CreationTimestamp string `json:"creation_timestamp"`
 }
 
 type GoogleComputeVpnGatewayStatus struct {
@@ -32,6 +33,7 @@ type GoogleComputeVpnGatewayStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeVpnGatewayList is a list of GoogleComputeVpnGateways
 type GoogleComputeVpnGatewayList struct {

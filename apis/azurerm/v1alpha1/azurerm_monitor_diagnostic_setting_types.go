@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermMonitorDiagnosticSetting struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,9 +24,9 @@ type AzurermMonitorDiagnosticSettingSpecLogRetentionPolicy struct {
 }
 
 type AzurermMonitorDiagnosticSettingSpecLog struct {
+	Enabled         bool                                     `json:"enabled"`
 	RetentionPolicy []AzurermMonitorDiagnosticSettingSpecLog `json:"retention_policy"`
 	Category        string                                   `json:"category"`
-	Enabled         bool                                     `json:"enabled"`
 }
 
 type AzurermMonitorDiagnosticSettingSpecMetricRetentionPolicy struct {
@@ -40,14 +41,14 @@ type AzurermMonitorDiagnosticSettingSpecMetric struct {
 }
 
 type AzurermMonitorDiagnosticSettingSpec struct {
+	Log                         []AzurermMonitorDiagnosticSettingSpec `json:"log"`
+	Metric                      []AzurermMonitorDiagnosticSettingSpec `json:"metric"`
+	Name                        string                                `json:"name"`
 	TargetResourceId            string                                `json:"target_resource_id"`
 	EventhubName                string                                `json:"eventhub_name"`
 	EventhubAuthorizationRuleId string                                `json:"eventhub_authorization_rule_id"`
 	LogAnalyticsWorkspaceId     string                                `json:"log_analytics_workspace_id"`
 	StorageAccountId            string                                `json:"storage_account_id"`
-	Log                         []AzurermMonitorDiagnosticSettingSpec `json:"log"`
-	Metric                      []AzurermMonitorDiagnosticSettingSpec `json:"metric"`
-	Name                        string                                `json:"name"`
 }
 
 type AzurermMonitorDiagnosticSettingStatus struct {
@@ -55,6 +56,7 @@ type AzurermMonitorDiagnosticSettingStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermMonitorDiagnosticSettingList is a list of AzurermMonitorDiagnosticSettings
 type AzurermMonitorDiagnosticSettingList struct {

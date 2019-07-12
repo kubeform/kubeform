@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermVirtualMachineExtension struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AzurermVirtualMachineExtension struct {
 }
 
 type AzurermVirtualMachineExtensionSpec struct {
-	Publisher               string            `json:"publisher"`
-	Type                    string            `json:"type"`
-	TypeHandlerVersion      string            `json:"type_handler_version"`
-	ProtectedSettings       string            `json:"protected_settings"`
-	Name                    string            `json:"name"`
 	ResourceGroupName       string            `json:"resource_group_name"`
+	VirtualMachineName      string            `json:"virtual_machine_name"`
+	Type                    string            `json:"type"`
 	AutoUpgradeMinorVersion bool              `json:"auto_upgrade_minor_version"`
 	Settings                string            `json:"settings"`
+	ProtectedSettings       string            `json:"protected_settings"`
 	Tags                    map[string]string `json:"tags"`
+	Name                    string            `json:"name"`
 	Location                string            `json:"location"`
-	VirtualMachineName      string            `json:"virtual_machine_name"`
+	Publisher               string            `json:"publisher"`
+	TypeHandlerVersion      string            `json:"type_handler_version"`
 }
 
 type AzurermVirtualMachineExtensionStatus struct {
@@ -36,6 +37,7 @@ type AzurermVirtualMachineExtensionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermVirtualMachineExtensionList is a list of AzurermVirtualMachineExtensions
 type AzurermVirtualMachineExtensionList struct {

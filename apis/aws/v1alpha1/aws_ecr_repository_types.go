@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEcrRepository struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsEcrRepository struct {
 }
 
 type AwsEcrRepositorySpec struct {
+	Name          string            `json:"name"`
+	Tags          map[string]string `json:"tags"`
 	Arn           string            `json:"arn"`
 	RegistryId    string            `json:"registry_id"`
 	RepositoryUrl string            `json:"repository_url"`
-	Name          string            `json:"name"`
-	Tags          map[string]string `json:"tags"`
 }
 
 type AwsEcrRepositoryStatus struct {
@@ -30,6 +31,7 @@ type AwsEcrRepositoryStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEcrRepositoryList is a list of AwsEcrRepositorys
 type AwsEcrRepositoryList struct {

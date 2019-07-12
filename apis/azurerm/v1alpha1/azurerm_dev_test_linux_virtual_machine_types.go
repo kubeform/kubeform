@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDevTestLinuxVirtualMachine struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,38 +18,38 @@ type AzurermDevTestLinuxVirtualMachine struct {
 	Status            AzurermDevTestLinuxVirtualMachineStatus `json:"status,omitempty"`
 }
 
-type AzurermDevTestLinuxVirtualMachineSpecGalleryImageReference struct {
-	Offer     string `json:"offer"`
-	Publisher string `json:"publisher"`
-	Sku       string `json:"sku"`
-	Version   string `json:"version"`
-}
-
 type AzurermDevTestLinuxVirtualMachineSpecInboundNatRule struct {
 	Protocol     string `json:"protocol"`
 	BackendPort  int    `json:"backend_port"`
 	FrontendPort int    `json:"frontend_port"`
 }
 
+type AzurermDevTestLinuxVirtualMachineSpecGalleryImageReference struct {
+	Sku       string `json:"sku"`
+	Version   string `json:"version"`
+	Offer     string `json:"offer"`
+	Publisher string `json:"publisher"`
+}
+
 type AzurermDevTestLinuxVirtualMachineSpec struct {
 	ResourceGroupName       string                                  `json:"resource_group_name"`
-	StorageType             string                                  `json:"storage_type"`
 	LabVirtualNetworkId     string                                  `json:"lab_virtual_network_id"`
-	Fqdn                    string                                  `json:"fqdn"`
-	UniqueIdentifier        string                                  `json:"unique_identifier"`
-	LabName                 string                                  `json:"lab_name"`
-	AllowClaim              bool                                    `json:"allow_claim"`
-	DisallowPublicIpAddress bool                                    `json:"disallow_public_ip_address"`
-	GalleryImageReference   []AzurermDevTestLinuxVirtualMachineSpec `json:"gallery_image_reference"`
-	Notes                   string                                  `json:"notes"`
-	Name                    string                                  `json:"name"`
-	Location                string                                  `json:"location"`
 	SshKey                  string                                  `json:"ssh_key"`
 	InboundNatRule          []AzurermDevTestLinuxVirtualMachineSpec `json:"inbound_nat_rule"`
-	Size                    string                                  `json:"size"`
+	Fqdn                    string                                  `json:"fqdn"`
+	Name                    string                                  `json:"name"`
 	Username                string                                  `json:"username"`
-	LabSubnetName           string                                  `json:"lab_subnet_name"`
+	DisallowPublicIpAddress bool                                    `json:"disallow_public_ip_address"`
 	Password                string                                  `json:"password"`
+	Location                string                                  `json:"location"`
+	Size                    string                                  `json:"size"`
+	StorageType             string                                  `json:"storage_type"`
+	GalleryImageReference   []AzurermDevTestLinuxVirtualMachineSpec `json:"gallery_image_reference"`
+	Notes                   string                                  `json:"notes"`
+	UniqueIdentifier        string                                  `json:"unique_identifier"`
+	LabName                 string                                  `json:"lab_name"`
+	LabSubnetName           string                                  `json:"lab_subnet_name"`
+	AllowClaim              bool                                    `json:"allow_claim"`
 	Tags                    map[string]string                       `json:"tags"`
 }
 
@@ -57,6 +58,7 @@ type AzurermDevTestLinuxVirtualMachineStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDevTestLinuxVirtualMachineList is a list of AzurermDevTestLinuxVirtualMachines
 type AzurermDevTestLinuxVirtualMachineList struct {

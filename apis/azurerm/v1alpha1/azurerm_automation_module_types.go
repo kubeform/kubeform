@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAutomationModule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -28,10 +29,10 @@ type AzurermAutomationModuleSpecModuleLink struct {
 }
 
 type AzurermAutomationModuleSpec struct {
-	ModuleLink            []AzurermAutomationModuleSpec `json:"module_link"`
 	Name                  string                        `json:"name"`
 	AutomationAccountName string                        `json:"automation_account_name"`
 	ResourceGroupName     string                        `json:"resource_group_name"`
+	ModuleLink            []AzurermAutomationModuleSpec `json:"module_link"`
 }
 
 type AzurermAutomationModuleStatus struct {
@@ -39,6 +40,7 @@ type AzurermAutomationModuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAutomationModuleList is a list of AzurermAutomationModules
 type AzurermAutomationModuleList struct {

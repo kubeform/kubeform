@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleSpannerInstance struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type GoogleSpannerInstance struct {
 }
 
 type GoogleSpannerInstanceSpec struct {
-	Config      string            `json:"config"`
-	Name        string            `json:"name"`
-	DisplayName string            `json:"display_name"`
 	NumNodes    int               `json:"num_nodes"`
 	Labels      map[string]string `json:"labels"`
 	Project     string            `json:"project"`
 	State       string            `json:"state"`
+	Config      string            `json:"config"`
+	Name        string            `json:"name"`
+	DisplayName string            `json:"display_name"`
 }
 
 type GoogleSpannerInstanceStatus struct {
@@ -32,6 +33,7 @@ type GoogleSpannerInstanceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleSpannerInstanceList is a list of GoogleSpannerInstances
 type GoogleSpannerInstanceList struct {

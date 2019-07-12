@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsVpcEndpointConnectionNotification struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsVpcEndpointConnectionNotification struct {
 }
 
 type AwsVpcEndpointConnectionNotificationSpec struct {
-	VpcEndpointServiceId      string   `json:"vpc_endpoint_service_id"`
-	VpcEndpointId             string   `json:"vpc_endpoint_id"`
 	ConnectionNotificationArn string   `json:"connection_notification_arn"`
 	ConnectionEvents          []string `json:"connection_events"`
 	State                     string   `json:"state"`
 	NotificationType          string   `json:"notification_type"`
+	VpcEndpointServiceId      string   `json:"vpc_endpoint_service_id"`
+	VpcEndpointId             string   `json:"vpc_endpoint_id"`
 }
 
 type AwsVpcEndpointConnectionNotificationStatus struct {
@@ -31,6 +32,7 @@ type AwsVpcEndpointConnectionNotificationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsVpcEndpointConnectionNotificationList is a list of AwsVpcEndpointConnectionNotifications
 type AwsVpcEndpointConnectionNotificationList struct {

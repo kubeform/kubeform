@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementSubscription struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AzurermApiManagementSubscription struct {
 }
 
 type AzurermApiManagementSubscriptionSpec struct {
-	ApiManagementName string `json:"api_management_name"`
-	State             string `json:"state"`
-	PrimaryKey        string `json:"primary_key"`
 	SecondaryKey      string `json:"secondary_key"`
 	SubscriptionId    string `json:"subscription_id"`
-	UserId            string `json:"user_id"`
 	ProductId         string `json:"product_id"`
 	ResourceGroupName string `json:"resource_group_name"`
+	PrimaryKey        string `json:"primary_key"`
+	UserId            string `json:"user_id"`
+	ApiManagementName string `json:"api_management_name"`
 	DisplayName       string `json:"display_name"`
+	State             string `json:"state"`
 }
 
 type AzurermApiManagementSubscriptionStatus struct {
@@ -34,6 +35,7 @@ type AzurermApiManagementSubscriptionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementSubscriptionList is a list of AzurermApiManagementSubscriptions
 type AzurermApiManagementSubscriptionList struct {

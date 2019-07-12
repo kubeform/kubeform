@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafSqlInjectionMatchSet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsWafSqlInjectionMatchSet struct {
 }
 
 type AwsWafSqlInjectionMatchSetSpecSqlInjectionMatchTuplesFieldToMatch struct {
-	Data string `json:"data"`
 	Type string `json:"type"`
+	Data string `json:"data"`
 }
 
 type AwsWafSqlInjectionMatchSetSpecSqlInjectionMatchTuples struct {
@@ -37,6 +38,7 @@ type AwsWafSqlInjectionMatchSetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafSqlInjectionMatchSetList is a list of AwsWafSqlInjectionMatchSets
 type AwsWafSqlInjectionMatchSetList struct {

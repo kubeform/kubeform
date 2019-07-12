@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermRelayNamespace struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,17 +23,17 @@ type AzurermRelayNamespaceSpecSku struct {
 }
 
 type AzurermRelayNamespaceSpec struct {
-	Name                      string                      `json:"name"`
-	Sku                       []AzurermRelayNamespaceSpec `json:"sku"`
+	Location                  string                      `json:"location"`
+	SkuName                   string                      `json:"sku_name"`
 	PrimaryConnectionString   string                      `json:"primary_connection_string"`
-	SecondaryKey              string                      `json:"secondary_key"`
 	SecondaryConnectionString string                      `json:"secondary_connection_string"`
 	PrimaryKey                string                      `json:"primary_key"`
-	Tags                      map[string]string           `json:"tags"`
-	Location                  string                      `json:"location"`
+	Name                      string                      `json:"name"`
 	ResourceGroupName         string                      `json:"resource_group_name"`
-	SkuName                   string                      `json:"sku_name"`
+	Sku                       []AzurermRelayNamespaceSpec `json:"sku"`
 	MetricId                  string                      `json:"metric_id"`
+	SecondaryKey              string                      `json:"secondary_key"`
+	Tags                      map[string]string           `json:"tags"`
 }
 
 type AzurermRelayNamespaceStatus struct {
@@ -40,6 +41,7 @@ type AzurermRelayNamespaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermRelayNamespaceList is a list of AzurermRelayNamespaces
 type AzurermRelayNamespaceList struct {

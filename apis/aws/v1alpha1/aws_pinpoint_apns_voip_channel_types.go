@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsPinpointApnsVoipChannel struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsPinpointApnsVoipChannel struct {
 }
 
 type AwsPinpointApnsVoipChannelSpec struct {
-	TeamId                      string `json:"team_id"`
 	TokenKey                    string `json:"token_key"`
-	TokenKeyId                  string `json:"token_key_id"`
 	ApplicationId               string `json:"application_id"`
-	PrivateKey                  string `json:"private_key"`
+	Certificate                 string `json:"certificate"`
 	DefaultAuthenticationMethod string `json:"default_authentication_method"`
 	Enabled                     bool   `json:"enabled"`
+	PrivateKey                  string `json:"private_key"`
+	TeamId                      string `json:"team_id"`
 	BundleId                    string `json:"bundle_id"`
-	Certificate                 string `json:"certificate"`
+	TokenKeyId                  string `json:"token_key_id"`
 }
 
 type AwsPinpointApnsVoipChannelStatus struct {
@@ -34,6 +35,7 @@ type AwsPinpointApnsVoipChannelStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsPinpointApnsVoipChannelList is a list of AwsPinpointApnsVoipChannels
 type AwsPinpointApnsVoipChannelList struct {

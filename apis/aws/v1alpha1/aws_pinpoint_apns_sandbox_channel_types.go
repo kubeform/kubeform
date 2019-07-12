@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsPinpointApnsSandboxChannel struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsPinpointApnsSandboxChannel struct {
 }
 
 type AwsPinpointApnsSandboxChannelSpec struct {
-	Certificate                 string `json:"certificate"`
-	TokenKey                    string `json:"token_key"`
-	ApplicationId               string `json:"application_id"`
-	BundleId                    string `json:"bundle_id"`
 	DefaultAuthenticationMethod string `json:"default_authentication_method"`
 	Enabled                     bool   `json:"enabled"`
 	PrivateKey                  string `json:"private_key"`
-	TeamId                      string `json:"team_id"`
 	TokenKeyId                  string `json:"token_key_id"`
+	ApplicationId               string `json:"application_id"`
+	BundleId                    string `json:"bundle_id"`
+	TokenKey                    string `json:"token_key"`
+	Certificate                 string `json:"certificate"`
+	TeamId                      string `json:"team_id"`
 }
 
 type AwsPinpointApnsSandboxChannelStatus struct {
@@ -34,6 +35,7 @@ type AwsPinpointApnsSandboxChannelStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsPinpointApnsSandboxChannelList is a list of AwsPinpointApnsSandboxChannels
 type AwsPinpointApnsSandboxChannelList struct {

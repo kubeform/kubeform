@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAthenaDatabase struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -34,6 +35,7 @@ type AwsAthenaDatabaseStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAthenaDatabaseList is a list of AwsAthenaDatabases
 type AwsAthenaDatabaseList struct {

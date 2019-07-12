@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSwfDomain struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsSwfDomain struct {
 }
 
 type AwsSwfDomainSpec struct {
+	Name                                   string `json:"name"`
 	NamePrefix                             string `json:"name_prefix"`
 	Description                            string `json:"description"`
 	WorkflowExecutionRetentionPeriodInDays string `json:"workflow_execution_retention_period_in_days"`
-	Name                                   string `json:"name"`
 }
 
 type AwsSwfDomainStatus struct {
@@ -29,6 +30,7 @@ type AwsSwfDomainStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSwfDomainList is a list of AwsSwfDomains
 type AwsSwfDomainList struct {

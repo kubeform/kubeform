@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDmsCertificate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsDmsCertificate struct {
 }
 
 type AwsDmsCertificateSpec struct {
+	CertificateArn    string `json:"certificate_arn"`
 	CertificateId     string `json:"certificate_id"`
 	CertificatePem    string `json:"certificate_pem"`
 	CertificateWallet string `json:"certificate_wallet"`
-	CertificateArn    string `json:"certificate_arn"`
 }
 
 type AwsDmsCertificateStatus struct {
@@ -29,6 +30,7 @@ type AwsDmsCertificateStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDmsCertificateList is a list of AwsDmsCertificates
 type AwsDmsCertificateList struct {

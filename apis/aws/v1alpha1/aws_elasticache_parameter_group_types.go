@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsElasticacheParameterGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,10 +24,10 @@ type AwsElasticacheParameterGroupSpecParameter struct {
 }
 
 type AwsElasticacheParameterGroupSpec struct {
-	Parameter   []AwsElasticacheParameterGroupSpec `json:"parameter"`
 	Name        string                             `json:"name"`
 	Family      string                             `json:"family"`
 	Description string                             `json:"description"`
+	Parameter   []AwsElasticacheParameterGroupSpec `json:"parameter"`
 }
 
 type AwsElasticacheParameterGroupStatus struct {
@@ -34,6 +35,7 @@ type AwsElasticacheParameterGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsElasticacheParameterGroupList is a list of AwsElasticacheParameterGroups
 type AwsElasticacheParameterGroupList struct {

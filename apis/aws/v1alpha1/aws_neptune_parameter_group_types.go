@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsNeptuneParameterGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -37,6 +38,7 @@ type AwsNeptuneParameterGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsNeptuneParameterGroupList is a list of AwsNeptuneParameterGroups
 type AwsNeptuneParameterGroupList struct {

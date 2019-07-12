@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLaunchConfiguration struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AwsLaunchConfiguration struct {
 }
 
 type AwsLaunchConfigurationSpecEbsBlockDevice struct {
-	VolumeSize          int    `json:"volume_size"`
-	VolumeType          string `json:"volume_type"`
 	Encrypted           bool   `json:"encrypted"`
 	DeleteOnTermination bool   `json:"delete_on_termination"`
 	DeviceName          string `json:"device_name"`
 	NoDevice            bool   `json:"no_device"`
 	Iops                int    `json:"iops"`
 	SnapshotId          string `json:"snapshot_id"`
+	VolumeSize          int    `json:"volume_size"`
+	VolumeType          string `json:"volume_type"`
 }
 
 type AwsLaunchConfigurationSpecEphemeralBlockDevice struct {
@@ -41,25 +42,25 @@ type AwsLaunchConfigurationSpecRootBlockDevice struct {
 }
 
 type AwsLaunchConfigurationSpec struct {
-	UserData                     string                       `json:"user_data"`
-	SecurityGroups               []string                     `json:"security_groups"`
-	VpcClassicLinkSecurityGroups []string                     `json:"vpc_classic_link_security_groups"`
-	EbsOptimized                 bool                         `json:"ebs_optimized"`
-	EnableMonitoring             bool                         `json:"enable_monitoring"`
-	EbsBlockDevice               []AwsLaunchConfigurationSpec `json:"ebs_block_device"`
-	Name                         string                       `json:"name"`
-	InstanceType                 string                       `json:"instance_type"`
-	AssociatePublicIpAddress     bool                         `json:"associate_public_ip_address"`
+	KeyName                      string                       `json:"key_name"`
 	SpotPrice                    string                       `json:"spot_price"`
-	PlacementTenancy             string                       `json:"placement_tenancy"`
-	NamePrefix                   string                       `json:"name_prefix"`
-	UserDataBase64               string                       `json:"user_data_base64"`
-	VpcClassicLinkId             string                       `json:"vpc_classic_link_id"`
+	EbsBlockDevice               []AwsLaunchConfigurationSpec `json:"ebs_block_device"`
+	ImageId                      string                       `json:"image_id"`
+	InstanceType                 string                       `json:"instance_type"`
+	UserData                     string                       `json:"user_data"`
+	VpcClassicLinkSecurityGroups []string                     `json:"vpc_classic_link_security_groups"`
 	EphemeralBlockDevice         []AwsLaunchConfigurationSpec `json:"ephemeral_block_device"`
 	RootBlockDevice              []AwsLaunchConfigurationSpec `json:"root_block_device"`
-	ImageId                      string                       `json:"image_id"`
 	IamInstanceProfile           string                       `json:"iam_instance_profile"`
-	KeyName                      string                       `json:"key_name"`
+	EbsOptimized                 bool                         `json:"ebs_optimized"`
+	PlacementTenancy             string                       `json:"placement_tenancy"`
+	EnableMonitoring             bool                         `json:"enable_monitoring"`
+	Name                         string                       `json:"name"`
+	NamePrefix                   string                       `json:"name_prefix"`
+	UserDataBase64               string                       `json:"user_data_base64"`
+	SecurityGroups               []string                     `json:"security_groups"`
+	VpcClassicLinkId             string                       `json:"vpc_classic_link_id"`
+	AssociatePublicIpAddress     bool                         `json:"associate_public_ip_address"`
 }
 
 type AwsLaunchConfigurationStatus struct {
@@ -67,6 +68,7 @@ type AwsLaunchConfigurationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLaunchConfigurationList is a list of AwsLaunchConfigurations
 type AwsLaunchConfigurationList struct {

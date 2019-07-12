@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeAttachedDisk struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleComputeAttachedDisk struct {
 }
 
 type GoogleComputeAttachedDiskSpec struct {
-	Project    string `json:"project"`
-	Zone       string `json:"zone"`
-	DeviceName string `json:"device_name"`
 	Mode       string `json:"mode"`
 	Disk       string `json:"disk"`
 	Instance   string `json:"instance"`
+	Project    string `json:"project"`
+	Zone       string `json:"zone"`
+	DeviceName string `json:"device_name"`
 }
 
 type GoogleComputeAttachedDiskStatus struct {
@@ -31,6 +32,7 @@ type GoogleComputeAttachedDiskStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeAttachedDiskList is a list of GoogleComputeAttachedDisks
 type GoogleComputeAttachedDiskList struct {

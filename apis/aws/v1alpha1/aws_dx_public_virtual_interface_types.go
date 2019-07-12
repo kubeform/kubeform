@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDxPublicVirtualInterface struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,18 +19,18 @@ type AwsDxPublicVirtualInterface struct {
 }
 
 type AwsDxPublicVirtualInterfaceSpec struct {
+	Vlan                int               `json:"vlan"`
+	BgpAuthKey          string            `json:"bgp_auth_key"`
 	AddressFamily       string            `json:"address_family"`
+	AmazonAddress       string            `json:"amazon_address"`
 	RouteFilterPrefixes []string          `json:"route_filter_prefixes"`
 	Tags                map[string]string `json:"tags"`
 	Arn                 string            `json:"arn"`
 	Name                string            `json:"name"`
-	Vlan                int               `json:"vlan"`
 	BgpAsn              int               `json:"bgp_asn"`
-	BgpAuthKey          string            `json:"bgp_auth_key"`
-	ConnectionId        string            `json:"connection_id"`
 	CustomerAddress     string            `json:"customer_address"`
-	AmazonAddress       string            `json:"amazon_address"`
 	AwsDevice           string            `json:"aws_device"`
+	ConnectionId        string            `json:"connection_id"`
 }
 
 type AwsDxPublicVirtualInterfaceStatus struct {
@@ -37,6 +38,7 @@ type AwsDxPublicVirtualInterfaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDxPublicVirtualInterfaceList is a list of AwsDxPublicVirtualInterfaces
 type AwsDxPublicVirtualInterfaceList struct {

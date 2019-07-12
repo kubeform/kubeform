@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermBatchCertificate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AzurermBatchCertificate struct {
 }
 
 type AzurermBatchCertificateSpec struct {
-	Name                string `json:"name"`
-	Password            string `json:"password"`
-	Thumbprint          string `json:"thumbprint"`
-	ThumbprintAlgorithm string `json:"thumbprint_algorithm"`
 	PublicData          string `json:"public_data"`
-	AccountName         string `json:"account_name"`
 	ResourceGroupName   string `json:"resource_group_name"`
 	Certificate         string `json:"certificate"`
 	Format              string `json:"format"`
+	Password            string `json:"password"`
+	ThumbprintAlgorithm string `json:"thumbprint_algorithm"`
+	Name                string `json:"name"`
+	AccountName         string `json:"account_name"`
+	Thumbprint          string `json:"thumbprint"`
 }
 
 type AzurermBatchCertificateStatus struct {
@@ -34,6 +35,7 @@ type AzurermBatchCertificateStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermBatchCertificateList is a list of AzurermBatchCertificates
 type AzurermBatchCertificateList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSecretsmanagerSecret struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,17 +23,17 @@ type AwsSecretsmanagerSecretSpecRotationRules struct {
 }
 
 type AwsSecretsmanagerSecretSpec struct {
-	Name                 string                        `json:"name"`
-	NamePrefix           string                        `json:"name_prefix"`
-	Arn                  string                        `json:"arn"`
 	Description          string                        `json:"description"`
 	KmsKeyId             string                        `json:"kms_key_id"`
-	RotationLambdaArn    string                        `json:"rotation_lambda_arn"`
+	NamePrefix           string                        `json:"name_prefix"`
 	RotationRules        []AwsSecretsmanagerSecretSpec `json:"rotation_rules"`
 	Tags                 map[string]string             `json:"tags"`
+	Arn                  string                        `json:"arn"`
+	Name                 string                        `json:"name"`
 	Policy               string                        `json:"policy"`
 	RecoveryWindowInDays int                           `json:"recovery_window_in_days"`
 	RotationEnabled      bool                          `json:"rotation_enabled"`
+	RotationLambdaArn    string                        `json:"rotation_lambda_arn"`
 }
 
 type AwsSecretsmanagerSecretStatus struct {
@@ -40,6 +41,7 @@ type AwsSecretsmanagerSecretStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSecretsmanagerSecretList is a list of AwsSecretsmanagerSecrets
 type AwsSecretsmanagerSecretList struct {

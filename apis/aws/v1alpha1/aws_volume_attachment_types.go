@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsVolumeAttachment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsVolumeAttachment struct {
 }
 
 type AwsVolumeAttachmentSpec struct {
+	DeviceName  string `json:"device_name"`
+	InstanceId  string `json:"instance_id"`
 	VolumeId    string `json:"volume_id"`
 	ForceDetach bool   `json:"force_detach"`
 	SkipDestroy bool   `json:"skip_destroy"`
-	DeviceName  string `json:"device_name"`
-	InstanceId  string `json:"instance_id"`
 }
 
 type AwsVolumeAttachmentStatus struct {
@@ -30,6 +31,7 @@ type AwsVolumeAttachmentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsVolumeAttachmentList is a list of AwsVolumeAttachments
 type AwsVolumeAttachmentList struct {

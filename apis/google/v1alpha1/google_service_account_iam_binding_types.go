@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleServiceAccountIamBinding struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type GoogleServiceAccountIamBinding struct {
 }
 
 type GoogleServiceAccountIamBindingSpec struct {
-	ServiceAccountId string   `json:"service_account_id"`
 	Role             string   `json:"role"`
 	Members          []string `json:"members"`
 	Etag             string   `json:"etag"`
+	ServiceAccountId string   `json:"service_account_id"`
 }
 
 type GoogleServiceAccountIamBindingStatus struct {
@@ -29,6 +30,7 @@ type GoogleServiceAccountIamBindingStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleServiceAccountIamBindingList is a list of GoogleServiceAccountIamBindings
 type GoogleServiceAccountIamBindingList struct {

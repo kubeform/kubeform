@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type LinodeRdns struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type LinodeRdns struct {
 }
 
 type LinodeRdnsSpec struct {
-	Rdns    string `json:"rdns"`
 	Address string `json:"address"`
+	Rdns    string `json:"rdns"`
 }
 
 type LinodeRdnsStatus struct {
@@ -27,6 +28,7 @@ type LinodeRdnsStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // LinodeRdnsList is a list of LinodeRdnss
 type LinodeRdnsList struct {

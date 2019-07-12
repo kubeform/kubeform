@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRoute53ResolverEndpoint struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AwsRoute53ResolverEndpoint struct {
 }
 
 type AwsRoute53ResolverEndpointSpecIpAddress struct {
-	SubnetId string `json:"subnet_id"`
 	Ip       string `json:"ip"`
 	IpId     string `json:"ip_id"`
+	SubnetId string `json:"subnet_id"`
 }
 
 type AwsRoute53ResolverEndpointSpec struct {
-	Arn              string                           `json:"arn"`
-	HostVpcId        string                           `json:"host_vpc_id"`
 	Direction        string                           `json:"direction"`
 	IpAddress        []AwsRoute53ResolverEndpointSpec `json:"ip_address"`
 	SecurityGroupIds []string                         `json:"security_group_ids"`
 	Name             string                           `json:"name"`
 	Tags             map[string]string                `json:"tags"`
+	Arn              string                           `json:"arn"`
+	HostVpcId        string                           `json:"host_vpc_id"`
 }
 
 type AwsRoute53ResolverEndpointStatus struct {
@@ -38,6 +39,7 @@ type AwsRoute53ResolverEndpointStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRoute53ResolverEndpointList is a list of AwsRoute53ResolverEndpoints
 type AwsRoute53ResolverEndpointList struct {

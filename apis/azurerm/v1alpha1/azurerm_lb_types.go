@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermLb struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,19 +20,18 @@ type AzurermLb struct {
 
 type AzurermLbSpecFrontendIpConfiguration struct {
 	Name                       string   `json:"name"`
-	PrivateIpAddress           string   `json:"private_ip_address"`
-	PublicIpAddressId          string   `json:"public_ip_address_id"`
 	PrivateIpAddressAllocation string   `json:"private_ip_address_allocation"`
 	LoadBalancerRules          []string `json:"load_balancer_rules"`
 	InboundNatRules            []string `json:"inbound_nat_rules"`
-	OutboundRules              []string `json:"outbound_rules"`
 	Zones                      []string `json:"zones"`
 	SubnetId                   string   `json:"subnet_id"`
+	PrivateIpAddress           string   `json:"private_ip_address"`
+	PublicIpAddressId          string   `json:"public_ip_address_id"`
 	PublicIpPrefixId           string   `json:"public_ip_prefix_id"`
+	OutboundRules              []string `json:"outbound_rules"`
 }
 
 type AzurermLbSpec struct {
-	FrontendIpConfiguration []AzurermLbSpec   `json:"frontend_ip_configuration"`
 	PrivateIpAddress        string            `json:"private_ip_address"`
 	PrivateIpAddresses      []string          `json:"private_ip_addresses"`
 	Tags                    map[string]string `json:"tags"`
@@ -39,6 +39,7 @@ type AzurermLbSpec struct {
 	Location                string            `json:"location"`
 	ResourceGroupName       string            `json:"resource_group_name"`
 	Sku                     string            `json:"sku"`
+	FrontendIpConfiguration []AzurermLbSpec   `json:"frontend_ip_configuration"`
 }
 
 type AzurermLbStatus struct {
@@ -46,6 +47,7 @@ type AzurermLbStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermLbList is a list of AzurermLbs
 type AzurermLbList struct {

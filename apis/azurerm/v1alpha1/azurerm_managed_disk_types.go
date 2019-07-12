@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermManagedDisk struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,30 +24,30 @@ type AzurermManagedDiskSpecEncryptionSettingsDiskEncryptionKey struct {
 }
 
 type AzurermManagedDiskSpecEncryptionSettingsKeyEncryptionKey struct {
-	KeyUrl        string `json:"key_url"`
 	SourceVaultId string `json:"source_vault_id"`
+	KeyUrl        string `json:"key_url"`
 }
 
 type AzurermManagedDiskSpecEncryptionSettings struct {
-	Enabled           bool                                       `json:"enabled"`
 	DiskEncryptionKey []AzurermManagedDiskSpecEncryptionSettings `json:"disk_encryption_key"`
 	KeyEncryptionKey  []AzurermManagedDiskSpecEncryptionSettings `json:"key_encryption_key"`
+	Enabled           bool                                       `json:"enabled"`
 }
 
 type AzurermManagedDiskSpec struct {
-	StorageAccountType string                   `json:"storage_account_type"`
-	SourceResourceId   string                   `json:"source_resource_id"`
 	ImageReferenceId   string                   `json:"image_reference_id"`
-	Tags               map[string]string        `json:"tags"`
-	CreateOption       string                   `json:"create_option"`
-	SourceUri          string                   `json:"source_uri"`
 	OsType             string                   `json:"os_type"`
 	DiskSizeGb         int                      `json:"disk_size_gb"`
-	Name               string                   `json:"name"`
-	Location           string                   `json:"location"`
 	ResourceGroupName  string                   `json:"resource_group_name"`
 	Zones              []string                 `json:"zones"`
+	StorageAccountType string                   `json:"storage_account_type"`
+	CreateOption       string                   `json:"create_option"`
+	SourceResourceId   string                   `json:"source_resource_id"`
 	EncryptionSettings []AzurermManagedDiskSpec `json:"encryption_settings"`
+	Tags               map[string]string        `json:"tags"`
+	Name               string                   `json:"name"`
+	Location           string                   `json:"location"`
+	SourceUri          string                   `json:"source_uri"`
 }
 
 type AzurermManagedDiskStatus struct {
@@ -54,6 +55,7 @@ type AzurermManagedDiskStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermManagedDiskList is a list of AzurermManagedDisks
 type AzurermManagedDiskList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDaxParameterGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -33,6 +34,7 @@ type AwsDaxParameterGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDaxParameterGroupList is a list of AwsDaxParameterGroups
 type AwsDaxParameterGroupList struct {

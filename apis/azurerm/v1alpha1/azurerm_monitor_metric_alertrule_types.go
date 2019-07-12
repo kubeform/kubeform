@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermMonitorMetricAlertrule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,31 +18,31 @@ type AzurermMonitorMetricAlertrule struct {
 	Status            AzurermMonitorMetricAlertruleStatus `json:"status,omitempty"`
 }
 
-type AzurermMonitorMetricAlertruleSpecEmailAction struct {
-	CustomEmails        []string `json:"custom_emails"`
-	SendToServiceOwners bool     `json:"send_to_service_owners"`
-}
-
 type AzurermMonitorMetricAlertruleSpecWebhookAction struct {
 	ServiceUri string            `json:"service_uri"`
 	Properties map[string]string `json:"properties"`
 }
 
+type AzurermMonitorMetricAlertruleSpecEmailAction struct {
+	SendToServiceOwners bool     `json:"send_to_service_owners"`
+	CustomEmails        []string `json:"custom_emails"`
+}
+
 type AzurermMonitorMetricAlertruleSpec struct {
+	Description       string                              `json:"description"`
+	Enabled           bool                                `json:"enabled"`
+	MetricName        string                              `json:"metric_name"`
+	Threshold         float64                             `json:"threshold"`
+	Period            string                              `json:"period"`
 	Name              string                              `json:"name"`
+	Location          string                              `json:"location"`
+	Aggregation       string                              `json:"aggregation"`
+	ResourceGroupName string                              `json:"resource_group_name"`
+	WebhookAction     []AzurermMonitorMetricAlertruleSpec `json:"webhook_action"`
+	Tags              map[string]string                   `json:"tags"`
 	ResourceId        string                              `json:"resource_id"`
 	Operator          string                              `json:"operator"`
-	Location          string                              `json:"location"`
-	MetricName        string                              `json:"metric_name"`
 	EmailAction       []AzurermMonitorMetricAlertruleSpec `json:"email_action"`
-	Tags              map[string]string                   `json:"tags"`
-	ResourceGroupName string                              `json:"resource_group_name"`
-	Enabled           bool                                `json:"enabled"`
-	Period            string                              `json:"period"`
-	Description       string                              `json:"description"`
-	Threshold         float64                             `json:"threshold"`
-	Aggregation       string                              `json:"aggregation"`
-	WebhookAction     []AzurermMonitorMetricAlertruleSpec `json:"webhook_action"`
 }
 
 type AzurermMonitorMetricAlertruleStatus struct {
@@ -49,6 +50,7 @@ type AzurermMonitorMetricAlertruleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermMonitorMetricAlertruleList is a list of AzurermMonitorMetricAlertrules
 type AzurermMonitorMetricAlertruleList struct {

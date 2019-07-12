@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleBigqueryTable struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,37 +18,37 @@ type GoogleBigqueryTable struct {
 	Status            GoogleBigqueryTableStatus `json:"status,omitempty"`
 }
 
-type GoogleBigqueryTableSpecTimePartitioning struct {
-	Type         string `json:"type"`
-	Field        string `json:"field"`
-	ExpirationMs int    `json:"expiration_ms"`
-}
-
 type GoogleBigqueryTableSpecView struct {
 	Query        string `json:"query"`
 	UseLegacySql bool   `json:"use_legacy_sql"`
 }
 
+type GoogleBigqueryTableSpecTimePartitioning struct {
+	ExpirationMs int    `json:"expiration_ms"`
+	Type         string `json:"type"`
+	Field        string `json:"field"`
+}
+
 type GoogleBigqueryTableSpec struct {
-	Location         string                    `json:"location"`
-	NumRows          int                       `json:"num_rows"`
-	DatasetId        string                    `json:"dataset_id"`
-	Project          string                    `json:"project"`
-	Description      string                    `json:"description"`
-	TableId          string                    `json:"table_id"`
-	TimePartitioning []GoogleBigqueryTableSpec `json:"time_partitioning"`
-	Etag             string                    `json:"etag"`
 	Labels           map[string]string         `json:"labels"`
-	Schema           string                    `json:"schema"`
+	ExpirationTime   int                       `json:"expiration_time"`
+	Description      string                    `json:"description"`
+	View             []GoogleBigqueryTableSpec `json:"view"`
 	CreationTime     int                       `json:"creation_time"`
 	LastModifiedTime int                       `json:"last_modified_time"`
+	TableId          string                    `json:"table_id"`
+	Project          string                    `json:"project"`
+	FriendlyName     string                    `json:"friendly_name"`
+	Type             string                    `json:"type"`
+	DatasetId        string                    `json:"dataset_id"`
+	TimePartitioning []GoogleBigqueryTableSpec `json:"time_partitioning"`
+	Etag             string                    `json:"etag"`
+	Location         string                    `json:"location"`
 	NumBytes         int                       `json:"num_bytes"`
 	NumLongTermBytes int                       `json:"num_long_term_bytes"`
+	NumRows          int                       `json:"num_rows"`
 	SelfLink         string                    `json:"self_link"`
-	ExpirationTime   int                       `json:"expiration_time"`
-	FriendlyName     string                    `json:"friendly_name"`
-	View             []GoogleBigqueryTableSpec `json:"view"`
-	Type             string                    `json:"type"`
+	Schema           string                    `json:"schema"`
 }
 
 type GoogleBigqueryTableStatus struct {
@@ -55,6 +56,7 @@ type GoogleBigqueryTableStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleBigqueryTableList is a list of GoogleBigqueryTables
 type GoogleBigqueryTableList struct {

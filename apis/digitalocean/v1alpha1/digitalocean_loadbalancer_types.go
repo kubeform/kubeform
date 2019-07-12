@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanLoadbalancer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,23 +18,23 @@ type DigitaloceanLoadbalancer struct {
 	Status            DigitaloceanLoadbalancerStatus `json:"status,omitempty"`
 }
 
-type DigitaloceanLoadbalancerSpecHealthcheck struct {
-	Port                   int    `json:"port"`
-	Path                   string `json:"path"`
-	CheckIntervalSeconds   int    `json:"check_interval_seconds"`
-	ResponseTimeoutSeconds int    `json:"response_timeout_seconds"`
-	UnhealthyThreshold     int    `json:"unhealthy_threshold"`
-	HealthyThreshold       int    `json:"healthy_threshold"`
-	Protocol               string `json:"protocol"`
-}
-
 type DigitaloceanLoadbalancerSpecForwardingRule struct {
-	EntryProtocol  string `json:"entry_protocol"`
 	EntryPort      int    `json:"entry_port"`
 	TargetProtocol string `json:"target_protocol"`
 	TargetPort     int    `json:"target_port"`
 	CertificateId  string `json:"certificate_id"`
 	TlsPassthrough bool   `json:"tls_passthrough"`
+	EntryProtocol  string `json:"entry_protocol"`
+}
+
+type DigitaloceanLoadbalancerSpecHealthcheck struct {
+	ResponseTimeoutSeconds int    `json:"response_timeout_seconds"`
+	UnhealthyThreshold     int    `json:"unhealthy_threshold"`
+	HealthyThreshold       int    `json:"healthy_threshold"`
+	Protocol               string `json:"protocol"`
+	Port                   int    `json:"port"`
+	Path                   string `json:"path"`
+	CheckIntervalSeconds   int    `json:"check_interval_seconds"`
 }
 
 type DigitaloceanLoadbalancerSpecStickySessions struct {
@@ -43,18 +44,18 @@ type DigitaloceanLoadbalancerSpecStickySessions struct {
 }
 
 type DigitaloceanLoadbalancerSpec struct {
-	DropletIds          []int64                        `json:"droplet_ids"`
-	RedirectHttpToHttps bool                           `json:"redirect_http_to_https"`
-	EnableProxyProtocol bool                           `json:"enable_proxy_protocol"`
-	Status              string                         `json:"status"`
-	Algorithm           string                         `json:"algorithm"`
-	Healthcheck         []DigitaloceanLoadbalancerSpec `json:"healthcheck"`
 	Urn                 string                         `json:"urn"`
 	ForwardingRule      []DigitaloceanLoadbalancerSpec `json:"forwarding_rule"`
-	StickySessions      []DigitaloceanLoadbalancerSpec `json:"sticky_sessions"`
-	DropletTag          string                         `json:"droplet_tag"`
-	Ip                  string                         `json:"ip"`
+	RedirectHttpToHttps bool                           `json:"redirect_http_to_https"`
+	Status              string                         `json:"status"`
 	Region              string                         `json:"region"`
+	Algorithm           string                         `json:"algorithm"`
+	Healthcheck         []DigitaloceanLoadbalancerSpec `json:"healthcheck"`
+	StickySessions      []DigitaloceanLoadbalancerSpec `json:"sticky_sessions"`
+	DropletIds          []int64                        `json:"droplet_ids"`
+	DropletTag          string                         `json:"droplet_tag"`
+	EnableProxyProtocol bool                           `json:"enable_proxy_protocol"`
+	Ip                  string                         `json:"ip"`
 	Name                string                         `json:"name"`
 }
 
@@ -63,6 +64,7 @@ type DigitaloceanLoadbalancerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanLoadbalancerList is a list of DigitaloceanLoadbalancers
 type DigitaloceanLoadbalancerList struct {

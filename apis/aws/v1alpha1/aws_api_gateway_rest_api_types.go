@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayRestApi struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,17 +23,17 @@ type AwsApiGatewayRestApiSpecEndpointConfiguration struct {
 }
 
 type AwsApiGatewayRestApiSpec struct {
+	BinaryMediaTypes       []string                   `json:"binary_media_types"`
+	MinimumCompressionSize int                        `json:"minimum_compression_size"`
+	EndpointConfiguration  []AwsApiGatewayRestApiSpec `json:"endpoint_configuration"`
+	Name                   string                     `json:"name"`
 	Description            string                     `json:"description"`
 	ApiKeySource           string                     `json:"api_key_source"`
-	BinaryMediaTypes       []string                   `json:"binary_media_types"`
-	CreatedDate            string                     `json:"created_date"`
-	EndpointConfiguration  []AwsApiGatewayRestApiSpec `json:"endpoint_configuration"`
-	ExecutionArn           string                     `json:"execution_arn"`
-	Name                   string                     `json:"name"`
 	Policy                 string                     `json:"policy"`
 	Body                   string                     `json:"body"`
-	MinimumCompressionSize int                        `json:"minimum_compression_size"`
 	RootResourceId         string                     `json:"root_resource_id"`
+	CreatedDate            string                     `json:"created_date"`
+	ExecutionArn           string                     `json:"execution_arn"`
 }
 
 type AwsApiGatewayRestApiStatus struct {
@@ -40,6 +41,7 @@ type AwsApiGatewayRestApiStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayRestApiList is a list of AwsApiGatewayRestApis
 type AwsApiGatewayRestApiList struct {

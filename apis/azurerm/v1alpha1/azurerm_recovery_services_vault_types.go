@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermRecoveryServicesVault struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermRecoveryServicesVault struct {
 }
 
 type AzurermRecoveryServicesVaultSpec struct {
+	Tags              map[string]string `json:"tags"`
+	Sku               string            `json:"sku"`
 	Name              string            `json:"name"`
 	Location          string            `json:"location"`
 	ResourceGroupName string            `json:"resource_group_name"`
-	Tags              map[string]string `json:"tags"`
-	Sku               string            `json:"sku"`
 }
 
 type AzurermRecoveryServicesVaultStatus struct {
@@ -30,6 +31,7 @@ type AzurermRecoveryServicesVaultStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermRecoveryServicesVaultList is a list of AzurermRecoveryServicesVaults
 type AzurermRecoveryServicesVaultList struct {

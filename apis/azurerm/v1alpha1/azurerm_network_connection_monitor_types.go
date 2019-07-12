@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermNetworkConnectionMonitor struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,21 +24,21 @@ type AzurermNetworkConnectionMonitorSpecSource struct {
 }
 
 type AzurermNetworkConnectionMonitorSpecDestination struct {
+	VirtualMachineId string `json:"virtual_machine_id"`
 	Address          string `json:"address"`
 	Port             int    `json:"port"`
-	VirtualMachineId string `json:"virtual_machine_id"`
 }
 
 type AzurermNetworkConnectionMonitorSpec struct {
 	Name               string                                `json:"name"`
-	AutoStart          bool                                  `json:"auto_start"`
-	IntervalInSeconds  int                                   `json:"interval_in_seconds"`
-	Source             []AzurermNetworkConnectionMonitorSpec `json:"source"`
-	Destination        []AzurermNetworkConnectionMonitorSpec `json:"destination"`
 	ResourceGroupName  string                                `json:"resource_group_name"`
 	NetworkWatcherName string                                `json:"network_watcher_name"`
 	Location           string                                `json:"location"`
+	IntervalInSeconds  int                                   `json:"interval_in_seconds"`
+	Source             []AzurermNetworkConnectionMonitorSpec `json:"source"`
 	Tags               map[string]string                     `json:"tags"`
+	AutoStart          bool                                  `json:"auto_start"`
+	Destination        []AzurermNetworkConnectionMonitorSpec `json:"destination"`
 }
 
 type AzurermNetworkConnectionMonitorStatus struct {
@@ -45,6 +46,7 @@ type AzurermNetworkConnectionMonitorStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermNetworkConnectionMonitorList is a list of AzurermNetworkConnectionMonitors
 type AzurermNetworkConnectionMonitorList struct {

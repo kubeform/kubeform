@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermNotificationHubAuthorizationRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AzurermNotificationHubAuthorizationRule struct {
 }
 
 type AzurermNotificationHubAuthorizationRuleSpec struct {
-	Name                string `json:"name"`
-	ResourceGroupName   string `json:"resource_group_name"`
-	Send                bool   `json:"send"`
-	NotificationHubName string `json:"notification_hub_name"`
-	NamespaceName       string `json:"namespace_name"`
 	Manage              bool   `json:"manage"`
 	Listen              bool   `json:"listen"`
 	PrimaryAccessKey    string `json:"primary_access_key"`
+	NotificationHubName string `json:"notification_hub_name"`
+	NamespaceName       string `json:"namespace_name"`
+	ResourceGroupName   string `json:"resource_group_name"`
+	Send                bool   `json:"send"`
 	SecondaryAccessKey  string `json:"secondary_access_key"`
+	Name                string `json:"name"`
 }
 
 type AzurermNotificationHubAuthorizationRuleStatus struct {
@@ -34,6 +35,7 @@ type AzurermNotificationHubAuthorizationRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermNotificationHubAuthorizationRuleList is a list of AzurermNotificationHubAuthorizationRules
 type AzurermNotificationHubAuthorizationRuleList struct {

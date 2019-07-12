@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDxConnectionAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsDxConnectionAssociation struct {
 }
 
 type AwsDxConnectionAssociationSpec struct {
-	LagId        string `json:"lag_id"`
 	ConnectionId string `json:"connection_id"`
+	LagId        string `json:"lag_id"`
 }
 
 type AwsDxConnectionAssociationStatus struct {
@@ -27,6 +28,7 @@ type AwsDxConnectionAssociationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDxConnectionAssociationList is a list of AwsDxConnectionAssociations
 type AwsDxConnectionAssociationList struct {

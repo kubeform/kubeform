@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSesDomainDkim struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsSesDomainDkim struct {
 }
 
 type AwsSesDomainDkimSpec struct {
-	DkimTokens []string `json:"dkim_tokens"`
 	Domain     string   `json:"domain"`
+	DkimTokens []string `json:"dkim_tokens"`
 }
 
 type AwsSesDomainDkimStatus struct {
@@ -27,6 +28,7 @@ type AwsSesDomainDkimStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSesDomainDkimList is a list of AwsSesDomainDkims
 type AwsSesDomainDkimList struct {

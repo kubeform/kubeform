@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIotTopicRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,62 +18,10 @@ type AwsIotTopicRule struct {
 	Status            AwsIotTopicRuleStatus `json:"status,omitempty"`
 }
 
-type AwsIotTopicRuleSpecSns struct {
-	MessageFormat string `json:"message_format"`
-	TargetArn     string `json:"target_arn"`
-	RoleArn       string `json:"role_arn"`
-}
-
-type AwsIotTopicRuleSpecDynamodb struct {
-	HashKeyField  string `json:"hash_key_field"`
-	HashKeyType   string `json:"hash_key_type"`
-	RangeKeyValue string `json:"range_key_value"`
-	RangeKeyType  string `json:"range_key_type"`
-	TableName     string `json:"table_name"`
-	HashKeyValue  string `json:"hash_key_value"`
-	PayloadField  string `json:"payload_field"`
-	RangeKeyField string `json:"range_key_field"`
-	RoleArn       string `json:"role_arn"`
-}
-
-type AwsIotTopicRuleSpecKinesis struct {
-	PartitionKey string `json:"partition_key"`
-	RoleArn      string `json:"role_arn"`
-	StreamName   string `json:"stream_name"`
-}
-
 type AwsIotTopicRuleSpecS3 struct {
 	BucketName string `json:"bucket_name"`
 	Key        string `json:"key"`
 	RoleArn    string `json:"role_arn"`
-}
-
-type AwsIotTopicRuleSpecFirehose struct {
-	DeliveryStreamName string `json:"delivery_stream_name"`
-	RoleArn            string `json:"role_arn"`
-	Separator          string `json:"separator"`
-}
-
-type AwsIotTopicRuleSpecLambda struct {
-	FunctionArn string `json:"function_arn"`
-}
-
-type AwsIotTopicRuleSpecRepublish struct {
-	RoleArn string `json:"role_arn"`
-	Topic   string `json:"topic"`
-}
-
-type AwsIotTopicRuleSpecSqs struct {
-	RoleArn   string `json:"role_arn"`
-	UseBase64 bool   `json:"use_base64"`
-	QueueUrl  string `json:"queue_url"`
-}
-
-type AwsIotTopicRuleSpecCloudwatchAlarm struct {
-	AlarmName   string `json:"alarm_name"`
-	RoleArn     string `json:"role_arn"`
-	StateReason string `json:"state_reason"`
-	StateValue  string `json:"state_value"`
 }
 
 type AwsIotTopicRuleSpecCloudwatchMetric struct {
@@ -84,6 +33,23 @@ type AwsIotTopicRuleSpecCloudwatchMetric struct {
 	RoleArn         string `json:"role_arn"`
 }
 
+type AwsIotTopicRuleSpecDynamodb struct {
+	RangeKeyValue string `json:"range_key_value"`
+	RoleArn       string `json:"role_arn"`
+	HashKeyField  string `json:"hash_key_field"`
+	RangeKeyField string `json:"range_key_field"`
+	PayloadField  string `json:"payload_field"`
+	RangeKeyType  string `json:"range_key_type"`
+	TableName     string `json:"table_name"`
+	HashKeyValue  string `json:"hash_key_value"`
+	HashKeyType   string `json:"hash_key_type"`
+}
+
+type AwsIotTopicRuleSpecRepublish struct {
+	Topic   string `json:"topic"`
+	RoleArn string `json:"role_arn"`
+}
+
 type AwsIotTopicRuleSpecElasticsearch struct {
 	Endpoint string `json:"endpoint"`
 	Id       string `json:"id"`
@@ -92,24 +58,59 @@ type AwsIotTopicRuleSpecElasticsearch struct {
 	Type     string `json:"type"`
 }
 
+type AwsIotTopicRuleSpecCloudwatchAlarm struct {
+	AlarmName   string `json:"alarm_name"`
+	RoleArn     string `json:"role_arn"`
+	StateReason string `json:"state_reason"`
+	StateValue  string `json:"state_value"`
+}
+
+type AwsIotTopicRuleSpecFirehose struct {
+	DeliveryStreamName string `json:"delivery_stream_name"`
+	RoleArn            string `json:"role_arn"`
+	Separator          string `json:"separator"`
+}
+
+type AwsIotTopicRuleSpecKinesis struct {
+	RoleArn      string `json:"role_arn"`
+	StreamName   string `json:"stream_name"`
+	PartitionKey string `json:"partition_key"`
+}
+
+type AwsIotTopicRuleSpecLambda struct {
+	FunctionArn string `json:"function_arn"`
+}
+
+type AwsIotTopicRuleSpecSns struct {
+	TargetArn     string `json:"target_arn"`
+	RoleArn       string `json:"role_arn"`
+	MessageFormat string `json:"message_format"`
+}
+
+type AwsIotTopicRuleSpecSqs struct {
+	QueueUrl  string `json:"queue_url"`
+	RoleArn   string `json:"role_arn"`
+	UseBase64 bool   `json:"use_base64"`
+}
+
 type AwsIotTopicRuleSpec struct {
-	Sns              []AwsIotTopicRuleSpec `json:"sns"`
-	Name             string                `json:"name"`
-	Dynamodb         []AwsIotTopicRuleSpec `json:"dynamodb"`
-	Kinesis          []AwsIotTopicRuleSpec `json:"kinesis"`
-	S3               []AwsIotTopicRuleSpec `json:"s3"`
-	Description      string                `json:"description"`
-	Enabled          bool                  `json:"enabled"`
-	Firehose         []AwsIotTopicRuleSpec `json:"firehose"`
-	Lambda           []AwsIotTopicRuleSpec `json:"lambda"`
-	Republish        []AwsIotTopicRuleSpec `json:"republish"`
-	Sqs              []AwsIotTopicRuleSpec `json:"sqs"`
-	Arn              string                `json:"arn"`
 	Sql              string                `json:"sql"`
-	SqlVersion       string                `json:"sql_version"`
-	CloudwatchAlarm  []AwsIotTopicRuleSpec `json:"cloudwatch_alarm"`
+	S3               []AwsIotTopicRuleSpec `json:"s3"`
+	Name             string                `json:"name"`
 	CloudwatchMetric []AwsIotTopicRuleSpec `json:"cloudwatch_metric"`
+	Dynamodb         []AwsIotTopicRuleSpec `json:"dynamodb"`
+	Republish        []AwsIotTopicRuleSpec `json:"republish"`
+	Description      string                `json:"description"`
+	SqlVersion       string                `json:"sql_version"`
 	Elasticsearch    []AwsIotTopicRuleSpec `json:"elasticsearch"`
+	Arn              string                `json:"arn"`
+	Enabled          bool                  `json:"enabled"`
+	CloudwatchAlarm  []AwsIotTopicRuleSpec `json:"cloudwatch_alarm"`
+	Firehose         []AwsIotTopicRuleSpec `json:"firehose"`
+	Kinesis          []AwsIotTopicRuleSpec `json:"kinesis"`
+	Lambda           []AwsIotTopicRuleSpec `json:"lambda"`
+	Sns              []AwsIotTopicRuleSpec `json:"sns"`
+	Sqs              []AwsIotTopicRuleSpec `json:"sqs"`
 }
 
 type AwsIotTopicRuleStatus struct {
@@ -117,6 +118,7 @@ type AwsIotTopicRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIotTopicRuleList is a list of AwsIotTopicRules
 type AwsIotTopicRuleList struct {

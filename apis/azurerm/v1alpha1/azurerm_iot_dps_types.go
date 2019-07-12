@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermIotDps struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AzurermIotDps struct {
 }
 
 type AzurermIotDpsSpecSku struct {
-	Name     string `json:"name"`
 	Tier     string `json:"tier"`
 	Capacity int    `json:"capacity"`
+	Name     string `json:"name"`
 }
 
 type AzurermIotDpsSpec struct {
-	Name              string              `json:"name"`
 	ResourceGroupName string              `json:"resource_group_name"`
 	Location          string              `json:"location"`
 	Sku               []AzurermIotDpsSpec `json:"sku"`
 	Tags              map[string]string   `json:"tags"`
+	Name              string              `json:"name"`
 }
 
 type AzurermIotDpsStatus struct {
@@ -36,6 +37,7 @@ type AzurermIotDpsStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermIotDpsList is a list of AzurermIotDpss
 type AzurermIotDpsList struct {

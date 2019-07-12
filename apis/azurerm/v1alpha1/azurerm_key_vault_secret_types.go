@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermKeyVaultSecret struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AzurermKeyVaultSecret struct {
 }
 
 type AzurermKeyVaultSecretSpec struct {
+	Version     string            `json:"version"`
 	Tags        map[string]string `json:"tags"`
 	Name        string            `json:"name"`
 	KeyVaultId  string            `json:"key_vault_id"`
 	VaultUri    string            `json:"vault_uri"`
 	Value       string            `json:"value"`
 	ContentType string            `json:"content_type"`
-	Version     string            `json:"version"`
 }
 
 type AzurermKeyVaultSecretStatus struct {
@@ -32,6 +33,7 @@ type AzurermKeyVaultSecretStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermKeyVaultSecretList is a list of AzurermKeyVaultSecrets
 type AzurermKeyVaultSecretList struct {

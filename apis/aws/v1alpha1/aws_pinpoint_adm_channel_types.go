@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsPinpointAdmChannel struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsPinpointAdmChannel struct {
 }
 
 type AwsPinpointAdmChannelSpec struct {
-	ClientSecret  string `json:"client_secret"`
 	Enabled       bool   `json:"enabled"`
 	ApplicationId string `json:"application_id"`
 	ClientId      string `json:"client_id"`
+	ClientSecret  string `json:"client_secret"`
 }
 
 type AwsPinpointAdmChannelStatus struct {
@@ -29,6 +30,7 @@ type AwsPinpointAdmChannelStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsPinpointAdmChannelList is a list of AwsPinpointAdmChannels
 type AwsPinpointAdmChannelList struct {

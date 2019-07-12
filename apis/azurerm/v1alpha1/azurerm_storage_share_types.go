@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermStorageShare struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermStorageShare struct {
 }
 
 type AzurermStorageShareSpec struct {
+	StorageAccountName string `json:"storage_account_name"`
+	Quota              int    `json:"quota"`
 	Url                string `json:"url"`
 	Name               string `json:"name"`
 	ResourceGroupName  string `json:"resource_group_name"`
-	StorageAccountName string `json:"storage_account_name"`
-	Quota              int    `json:"quota"`
 }
 
 type AzurermStorageShareStatus struct {
@@ -30,6 +31,7 @@ type AzurermStorageShareStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermStorageShareList is a list of AzurermStorageShares
 type AzurermStorageShareList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDbSecurityGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,18 +19,18 @@ type AwsDbSecurityGroup struct {
 }
 
 type AwsDbSecurityGroupSpecIngress struct {
+	SecurityGroupOwnerId string `json:"security_group_owner_id"`
 	Cidr                 string `json:"cidr"`
 	SecurityGroupName    string `json:"security_group_name"`
 	SecurityGroupId      string `json:"security_group_id"`
-	SecurityGroupOwnerId string `json:"security_group_owner_id"`
 }
 
 type AwsDbSecurityGroupSpec struct {
+	Ingress     []AwsDbSecurityGroupSpec `json:"ingress"`
+	Tags        map[string]string        `json:"tags"`
 	Arn         string                   `json:"arn"`
 	Name        string                   `json:"name"`
 	Description string                   `json:"description"`
-	Ingress     []AwsDbSecurityGroupSpec `json:"ingress"`
-	Tags        map[string]string        `json:"tags"`
 }
 
 type AwsDbSecurityGroupStatus struct {
@@ -37,6 +38,7 @@ type AwsDbSecurityGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDbSecurityGroupList is a list of AwsDbSecurityGroups
 type AwsDbSecurityGroupList struct {

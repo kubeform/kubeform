@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleOrganizationIamBinding struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type GoogleOrganizationIamBinding struct {
 }
 
 type GoogleOrganizationIamBindingSpec struct {
-	Etag    string   `json:"etag"`
 	Role    string   `json:"role"`
 	Members []string `json:"members"`
+	Etag    string   `json:"etag"`
 	OrgId   string   `json:"org_id"`
 }
 
@@ -29,6 +30,7 @@ type GoogleOrganizationIamBindingStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleOrganizationIamBindingList is a list of GoogleOrganizationIamBindings
 type GoogleOrganizationIamBindingList struct {

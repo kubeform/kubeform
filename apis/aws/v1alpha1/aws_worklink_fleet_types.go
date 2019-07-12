@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWorklinkFleet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -29,17 +30,17 @@ type AwsWorklinkFleetSpecIdentityProvider struct {
 }
 
 type AwsWorklinkFleetSpec struct {
-	Name                       string                 `json:"name"`
-	DisplayName                string                 `json:"display_name"`
-	DeviceCaCertificate        string                 `json:"device_ca_certificate"`
-	LastUpdatedTime            string                 `json:"last_updated_time"`
-	OptimizeForEndUserLocation bool                   `json:"optimize_for_end_user_location"`
 	Arn                        string                 `json:"arn"`
-	AuditStreamArn             string                 `json:"audit_stream_arn"`
 	Network                    []AwsWorklinkFleetSpec `json:"network"`
 	IdentityProvider           []AwsWorklinkFleetSpec `json:"identity_provider"`
 	CompanyCode                string                 `json:"company_code"`
+	OptimizeForEndUserLocation bool                   `json:"optimize_for_end_user_location"`
+	Name                       string                 `json:"name"`
+	DisplayName                string                 `json:"display_name"`
+	AuditStreamArn             string                 `json:"audit_stream_arn"`
+	DeviceCaCertificate        string                 `json:"device_ca_certificate"`
 	CreatedTime                string                 `json:"created_time"`
+	LastUpdatedTime            string                 `json:"last_updated_time"`
 }
 
 type AwsWorklinkFleetStatus struct {
@@ -47,6 +48,7 @@ type AwsWorklinkFleetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWorklinkFleetList is a list of AwsWorklinkFleets
 type AwsWorklinkFleetList struct {

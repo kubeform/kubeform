@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermSqlServer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AzurermSqlServer struct {
 }
 
 type AzurermSqlServerSpec struct {
+	AdministratorLogin         string            `json:"administrator_login"`
+	AdministratorLoginPassword string            `json:"administrator_login_password"`
 	FullyQualifiedDomainName   string            `json:"fully_qualified_domain_name"`
 	Tags                       map[string]string `json:"tags"`
 	Name                       string            `json:"name"`
 	Location                   string            `json:"location"`
 	ResourceGroupName          string            `json:"resource_group_name"`
 	Version                    string            `json:"version"`
-	AdministratorLogin         string            `json:"administrator_login"`
-	AdministratorLoginPassword string            `json:"administrator_login_password"`
 }
 
 type AzurermSqlServerStatus struct {
@@ -33,6 +34,7 @@ type AzurermSqlServerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermSqlServerList is a list of AzurermSqlServers
 type AzurermSqlServerList struct {

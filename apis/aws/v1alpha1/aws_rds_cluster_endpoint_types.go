@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRdsClusterEndpoint struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AwsRdsClusterEndpoint struct {
 }
 
 type AwsRdsClusterEndpointSpec struct {
+	ExcludedMembers           []string `json:"excluded_members"`
+	StaticMembers             []string `json:"static_members"`
 	Endpoint                  string   `json:"endpoint"`
 	Arn                       string   `json:"arn"`
 	ClusterEndpointIdentifier string   `json:"cluster_endpoint_identifier"`
 	ClusterIdentifier         string   `json:"cluster_identifier"`
 	CustomEndpointType        string   `json:"custom_endpoint_type"`
-	ExcludedMembers           []string `json:"excluded_members"`
-	StaticMembers             []string `json:"static_members"`
 }
 
 type AwsRdsClusterEndpointStatus struct {
@@ -32,6 +33,7 @@ type AwsRdsClusterEndpointStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRdsClusterEndpointList is a list of AwsRdsClusterEndpoints
 type AwsRdsClusterEndpointList struct {

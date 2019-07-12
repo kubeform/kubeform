@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleResourceManagerLien struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleResourceManagerLien struct {
 }
 
 type GoogleResourceManagerLienSpec struct {
-	CreateTime   string   `json:"create_time"`
-	Name         string   `json:"name"`
 	Origin       string   `json:"origin"`
 	Parent       string   `json:"parent"`
 	Reason       string   `json:"reason"`
 	Restrictions []string `json:"restrictions"`
+	CreateTime   string   `json:"create_time"`
+	Name         string   `json:"name"`
 }
 
 type GoogleResourceManagerLienStatus struct {
@@ -31,6 +32,7 @@ type GoogleResourceManagerLienStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleResourceManagerLienList is a list of GoogleResourceManagerLiens
 type GoogleResourceManagerLienList struct {

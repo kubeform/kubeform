@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociation stru
 }
 
 type AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationSpec struct {
+	BackendAddressPoolId string `json:"backend_address_pool_id"`
 	NetworkInterfaceId   string `json:"network_interface_id"`
 	IpConfigurationName  string `json:"ip_configuration_name"`
-	BackendAddressPoolId string `json:"backend_address_pool_id"`
 }
 
 type AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationStatus struct {
@@ -28,6 +29,7 @@ type AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationStatu
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationList is a list of AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations
 type AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationList struct {

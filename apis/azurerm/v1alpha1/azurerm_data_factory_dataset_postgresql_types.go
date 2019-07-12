@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDataFactoryDatasetPostgresql struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,16 +25,16 @@ type AzurermDataFactoryDatasetPostgresqlSpecSchemaColumn struct {
 }
 
 type AzurermDataFactoryDatasetPostgresqlSpec struct {
-	Description          string                                    `json:"description"`
 	Folder               string                                    `json:"folder"`
 	SchemaColumn         []AzurermDataFactoryDatasetPostgresqlSpec `json:"schema_column"`
 	Name                 string                                    `json:"name"`
-	DataFactoryName      string                                    `json:"data_factory_name"`
+	ResourceGroupName    string                                    `json:"resource_group_name"`
 	LinkedServiceName    string                                    `json:"linked_service_name"`
 	TableName            string                                    `json:"table_name"`
 	Parameters           map[string]string                         `json:"parameters"`
-	ResourceGroupName    string                                    `json:"resource_group_name"`
 	Annotations          []string                                  `json:"annotations"`
+	DataFactoryName      string                                    `json:"data_factory_name"`
+	Description          string                                    `json:"description"`
 	AdditionalProperties map[string]string                         `json:"additional_properties"`
 }
 
@@ -42,6 +43,7 @@ type AzurermDataFactoryDatasetPostgresqlStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDataFactoryDatasetPostgresqlList is a list of AzurermDataFactoryDatasetPostgresqls
 type AzurermDataFactoryDatasetPostgresqlList struct {

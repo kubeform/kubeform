@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsNetworkAclRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,16 +20,16 @@ type AwsNetworkAclRule struct {
 
 type AwsNetworkAclRuleSpec struct {
 	Protocol      string `json:"protocol"`
+	CidrBlock     string `json:"cidr_block"`
 	ToPort        int    `json:"to_port"`
 	IcmpType      string `json:"icmp_type"`
 	NetworkAclId  string `json:"network_acl_id"`
+	RuleNumber    int    `json:"rule_number"`
 	Egress        bool   `json:"egress"`
+	IcmpCode      string `json:"icmp_code"`
 	RuleAction    string `json:"rule_action"`
-	CidrBlock     string `json:"cidr_block"`
 	Ipv6CidrBlock string `json:"ipv6_cidr_block"`
 	FromPort      int    `json:"from_port"`
-	IcmpCode      string `json:"icmp_code"`
-	RuleNumber    int    `json:"rule_number"`
 }
 
 type AwsNetworkAclRuleStatus struct {
@@ -36,6 +37,7 @@ type AwsNetworkAclRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsNetworkAclRuleList is a list of AwsNetworkAclRules
 type AwsNetworkAclRuleList struct {

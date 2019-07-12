@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermFirewallApplicationRuleCollection struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,21 +24,21 @@ type AzurermFirewallApplicationRuleCollectionSpecRuleProtocol struct {
 }
 
 type AzurermFirewallApplicationRuleCollectionSpecRule struct {
+	SourceAddresses []string                                           `json:"source_addresses"`
 	Description     string                                             `json:"description"`
 	FqdnTags        []string                                           `json:"fqdn_tags"`
 	TargetFqdns     []string                                           `json:"target_fqdns"`
 	Protocol        []AzurermFirewallApplicationRuleCollectionSpecRule `json:"protocol"`
 	Name            string                                             `json:"name"`
-	SourceAddresses []string                                           `json:"source_addresses"`
 }
 
 type AzurermFirewallApplicationRuleCollectionSpec struct {
-	ResourceGroupName string                                         `json:"resource_group_name"`
-	Priority          int                                            `json:"priority"`
 	Action            string                                         `json:"action"`
 	Rule              []AzurermFirewallApplicationRuleCollectionSpec `json:"rule"`
 	Name              string                                         `json:"name"`
 	AzureFirewallName string                                         `json:"azure_firewall_name"`
+	ResourceGroupName string                                         `json:"resource_group_name"`
+	Priority          int                                            `json:"priority"`
 }
 
 type AzurermFirewallApplicationRuleCollectionStatus struct {
@@ -45,6 +46,7 @@ type AzurermFirewallApplicationRuleCollectionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermFirewallApplicationRuleCollectionList is a list of AzurermFirewallApplicationRuleCollections
 type AzurermFirewallApplicationRuleCollectionList struct {

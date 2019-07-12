@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDirectoryServiceDirectory struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsDirectoryServiceDirectory struct {
 }
 
 type AwsDirectoryServiceDirectorySpecConnectSettings struct {
+	CustomerUsername string   `json:"customer_username"`
 	CustomerDnsIps   []string `json:"customer_dns_ips"`
 	SubnetIds        []string `json:"subnet_ids"`
 	VpcId            string   `json:"vpc_id"`
-	CustomerUsername string   `json:"customer_username"`
 }
 
 type AwsDirectoryServiceDirectorySpecVpcSettings struct {
@@ -30,21 +31,21 @@ type AwsDirectoryServiceDirectorySpecVpcSettings struct {
 }
 
 type AwsDirectoryServiceDirectorySpec struct {
+	Tags            map[string]string                  `json:"tags"`
+	DnsIpAddresses  []string                           `json:"dns_ip_addresses"`
+	SecurityGroupId string                             `json:"security_group_id"`
+	Type            string                             `json:"type"`
+	Alias           string                             `json:"alias"`
+	Description     string                             `json:"description"`
+	AccessUrl       string                             `json:"access_url"`
+	ShortName       string                             `json:"short_name"`
+	EnableSso       bool                               `json:"enable_sso"`
 	ConnectSettings []AwsDirectoryServiceDirectorySpec `json:"connect_settings"`
 	Password        string                             `json:"password"`
-	Alias           string                             `json:"alias"`
-	DnsIpAddresses  []string                           `json:"dns_ip_addresses"`
-	Type            string                             `json:"type"`
-	Edition         string                             `json:"edition"`
 	VpcSettings     []AwsDirectoryServiceDirectorySpec `json:"vpc_settings"`
-	AccessUrl       string                             `json:"access_url"`
-	EnableSso       bool                               `json:"enable_sso"`
-	Size            string                             `json:"size"`
-	Tags            map[string]string                  `json:"tags"`
-	ShortName       string                             `json:"short_name"`
-	SecurityGroupId string                             `json:"security_group_id"`
+	Edition         string                             `json:"edition"`
 	Name            string                             `json:"name"`
-	Description     string                             `json:"description"`
+	Size            string                             `json:"size"`
 }
 
 type AwsDirectoryServiceDirectoryStatus struct {
@@ -52,6 +53,7 @@ type AwsDirectoryServiceDirectoryStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDirectoryServiceDirectoryList is a list of AwsDirectoryServiceDirectorys
 type AwsDirectoryServiceDirectoryList struct {

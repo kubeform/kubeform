@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSsmMaintenanceWindow struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type AwsSsmMaintenanceWindow struct {
 }
 
 type AwsSsmMaintenanceWindowSpec struct {
-	Name                     string            `json:"name"`
-	Schedule                 string            `json:"schedule"`
-	Cutoff                   int               `json:"cutoff"`
-	Enabled                  bool              `json:"enabled"`
 	StartDate                string            `json:"start_date"`
 	Tags                     map[string]string `json:"tags"`
 	Duration                 int               `json:"duration"`
 	AllowUnassociatedTargets bool              `json:"allow_unassociated_targets"`
 	EndDate                  string            `json:"end_date"`
+	Enabled                  bool              `json:"enabled"`
 	ScheduleTimezone         string            `json:"schedule_timezone"`
+	Name                     string            `json:"name"`
+	Schedule                 string            `json:"schedule"`
+	Cutoff                   int               `json:"cutoff"`
 }
 
 type AwsSsmMaintenanceWindowStatus struct {
@@ -35,6 +36,7 @@ type AwsSsmMaintenanceWindowStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSsmMaintenanceWindowList is a list of AwsSsmMaintenanceWindows
 type AwsSsmMaintenanceWindowList struct {

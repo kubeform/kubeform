@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermStreamAnalyticsStreamInputIothub struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,15 +25,15 @@ type AzurermStreamAnalyticsStreamInputIothubSpecSerialization struct {
 }
 
 type AzurermStreamAnalyticsStreamInputIothubSpec struct {
-	ResourceGroupName         string                                        `json:"resource_group_name"`
-	Endpoint                  string                                        `json:"endpoint"`
-	SharedAccessPolicyName    string                                        `json:"shared_access_policy_name"`
-	EventhubConsumerGroupName string                                        `json:"eventhub_consumer_group_name"`
-	SharedAccessPolicyKey     string                                        `json:"shared_access_policy_key"`
-	Serialization             []AzurermStreamAnalyticsStreamInputIothubSpec `json:"serialization"`
 	Name                      string                                        `json:"name"`
 	StreamAnalyticsJobName    string                                        `json:"stream_analytics_job_name"`
+	SharedAccessPolicyKey     string                                        `json:"shared_access_policy_key"`
+	Serialization             []AzurermStreamAnalyticsStreamInputIothubSpec `json:"serialization"`
+	SharedAccessPolicyName    string                                        `json:"shared_access_policy_name"`
+	ResourceGroupName         string                                        `json:"resource_group_name"`
+	Endpoint                  string                                        `json:"endpoint"`
 	IothubNamespace           string                                        `json:"iothub_namespace"`
+	EventhubConsumerGroupName string                                        `json:"eventhub_consumer_group_name"`
 }
 
 type AzurermStreamAnalyticsStreamInputIothubStatus struct {
@@ -40,6 +41,7 @@ type AzurermStreamAnalyticsStreamInputIothubStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermStreamAnalyticsStreamInputIothubList is a list of AzurermStreamAnalyticsStreamInputIothubs
 type AzurermStreamAnalyticsStreamInputIothubList struct {

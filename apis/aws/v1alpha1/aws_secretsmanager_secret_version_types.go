@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSecretsmanagerSecretVersion struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsSecretsmanagerSecretVersion struct {
 }
 
 type AwsSecretsmanagerSecretVersionSpec struct {
+	VersionId     string   `json:"version_id"`
+	VersionStages []string `json:"version_stages"`
 	Arn           string   `json:"arn"`
 	SecretId      string   `json:"secret_id"`
 	SecretString  string   `json:"secret_string"`
 	SecretBinary  string   `json:"secret_binary"`
-	VersionId     string   `json:"version_id"`
-	VersionStages []string `json:"version_stages"`
 }
 
 type AwsSecretsmanagerSecretVersionStatus struct {
@@ -31,6 +32,7 @@ type AwsSecretsmanagerSecretVersionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSecretsmanagerSecretVersionList is a list of AwsSecretsmanagerSecretVersions
 type AwsSecretsmanagerSecretVersionList struct {

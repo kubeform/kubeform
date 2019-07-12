@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafByteMatchSet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,10 +24,10 @@ type AwsWafByteMatchSetSpecByteMatchTuplesFieldToMatch struct {
 }
 
 type AwsWafByteMatchSetSpecByteMatchTuples struct {
+	FieldToMatch         []AwsWafByteMatchSetSpecByteMatchTuples `json:"field_to_match"`
 	PositionalConstraint string                                  `json:"positional_constraint"`
 	TargetString         string                                  `json:"target_string"`
 	TextTransformation   string                                  `json:"text_transformation"`
-	FieldToMatch         []AwsWafByteMatchSetSpecByteMatchTuples `json:"field_to_match"`
 }
 
 type AwsWafByteMatchSetSpec struct {
@@ -39,6 +40,7 @@ type AwsWafByteMatchSetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafByteMatchSetList is a list of AwsWafByteMatchSets
 type AwsWafByteMatchSetList struct {

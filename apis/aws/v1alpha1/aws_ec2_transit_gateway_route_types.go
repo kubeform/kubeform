@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEc2TransitGatewayRoute struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,6 +20,7 @@ type AwsEc2TransitGatewayRoute struct {
 
 type AwsEc2TransitGatewayRouteSpec struct {
 	DestinationCidrBlock       string `json:"destination_cidr_block"`
+	Blackhole                  bool   `json:"blackhole"`
 	TransitGatewayAttachmentId string `json:"transit_gateway_attachment_id"`
 	TransitGatewayRouteTableId string `json:"transit_gateway_route_table_id"`
 }
@@ -28,6 +30,7 @@ type AwsEc2TransitGatewayRouteStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEc2TransitGatewayRouteList is a list of AwsEc2TransitGatewayRoutes
 type AwsEc2TransitGatewayRouteList struct {

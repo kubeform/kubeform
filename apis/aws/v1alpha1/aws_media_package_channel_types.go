@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsMediaPackageChannel struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsMediaPackageChannel struct {
 }
 
 type AwsMediaPackageChannelSpecHlsIngestIngestEndpoints struct {
-	Url      string `json:"url"`
 	Username string `json:"username"`
 	Password string `json:"password"`
+	Url      string `json:"url"`
 }
 
 type AwsMediaPackageChannelSpecHlsIngest struct {
@@ -28,11 +29,11 @@ type AwsMediaPackageChannelSpecHlsIngest struct {
 }
 
 type AwsMediaPackageChannelSpec struct {
+	HlsIngest   []AwsMediaPackageChannelSpec `json:"hls_ingest"`
+	Tags        map[string]string            `json:"tags"`
 	Arn         string                       `json:"arn"`
 	ChannelId   string                       `json:"channel_id"`
 	Description string                       `json:"description"`
-	HlsIngest   []AwsMediaPackageChannelSpec `json:"hls_ingest"`
-	Tags        map[string]string            `json:"tags"`
 }
 
 type AwsMediaPackageChannelStatus struct {
@@ -40,6 +41,7 @@ type AwsMediaPackageChannelStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsMediaPackageChannelList is a list of AwsMediaPackageChannels
 type AwsMediaPackageChannelList struct {

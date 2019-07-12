@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDocdbClusterSnapshot struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AwsDocdbClusterSnapshot struct {
 }
 
 type AwsDocdbClusterSnapshotSpec struct {
-	SourceDbClusterSnapshotArn  string   `json:"source_db_cluster_snapshot_arn"`
-	SnapshotType                string   `json:"snapshot_type"`
-	DbClusterSnapshotIdentifier string   `json:"db_cluster_snapshot_identifier"`
+	DbClusterIdentifier         string   `json:"db_cluster_identifier"`
 	DbClusterSnapshotArn        string   `json:"db_cluster_snapshot_arn"`
 	StorageEncrypted            bool     `json:"storage_encrypted"`
 	Engine                      string   `json:"engine"`
-	EngineVersion               string   `json:"engine_version"`
-	Port                        int      `json:"port"`
-	Status                      string   `json:"status"`
-	DbClusterIdentifier         string   `json:"db_cluster_identifier"`
-	AvailabilityZones           []string `json:"availability_zones"`
 	KmsKeyId                    string   `json:"kms_key_id"`
 	VpcId                       string   `json:"vpc_id"`
+	Status                      string   `json:"status"`
+	DbClusterSnapshotIdentifier string   `json:"db_cluster_snapshot_identifier"`
+	AvailabilityZones           []string `json:"availability_zones"`
+	EngineVersion               string   `json:"engine_version"`
+	Port                        int      `json:"port"`
+	SourceDbClusterSnapshotArn  string   `json:"source_db_cluster_snapshot_arn"`
+	SnapshotType                string   `json:"snapshot_type"`
 }
 
 type AwsDocdbClusterSnapshotStatus struct {
@@ -38,6 +39,7 @@ type AwsDocdbClusterSnapshotStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDocdbClusterSnapshotList is a list of AwsDocdbClusterSnapshots
 type AwsDocdbClusterSnapshotList struct {

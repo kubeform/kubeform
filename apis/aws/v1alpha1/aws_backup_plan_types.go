@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsBackupPlan struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,21 +24,21 @@ type AwsBackupPlanSpecRuleLifecycle struct {
 }
 
 type AwsBackupPlanSpecRule struct {
-	RuleName          string                  `json:"rule_name"`
-	TargetVaultName   string                  `json:"target_vault_name"`
 	Schedule          string                  `json:"schedule"`
 	StartWindow       int                     `json:"start_window"`
 	CompletionWindow  int                     `json:"completion_window"`
 	Lifecycle         []AwsBackupPlanSpecRule `json:"lifecycle"`
 	RecoveryPointTags map[string]string       `json:"recovery_point_tags"`
+	RuleName          string                  `json:"rule_name"`
+	TargetVaultName   string                  `json:"target_vault_name"`
 }
 
 type AwsBackupPlanSpec struct {
+	Version string              `json:"version"`
+	Tags    map[string]string   `json:"tags"`
 	Name    string              `json:"name"`
 	Rule    []AwsBackupPlanSpec `json:"rule"`
 	Arn     string              `json:"arn"`
-	Version string              `json:"version"`
-	Tags    map[string]string   `json:"tags"`
 }
 
 type AwsBackupPlanStatus struct {
@@ -45,6 +46,7 @@ type AwsBackupPlanStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsBackupPlanList is a list of AwsBackupPlans
 type AwsBackupPlanList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermPolicyDefinition struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AzurermPolicyDefinition struct {
 }
 
 type AzurermPolicyDefinitionSpec struct {
-	Mode              string `json:"mode"`
-	PolicyRule        string `json:"policy_rule"`
-	Parameters        string `json:"parameters"`
 	DisplayName       string `json:"display_name"`
-	Description       string `json:"description"`
+	PolicyRule        string `json:"policy_rule"`
 	Metadata          string `json:"metadata"`
+	Parameters        string `json:"parameters"`
 	Name              string `json:"name"`
-	PolicyType        string `json:"policy_type"`
 	ManagementGroupId string `json:"management_group_id"`
+	Description       string `json:"description"`
+	PolicyType        string `json:"policy_type"`
+	Mode              string `json:"mode"`
 }
 
 type AzurermPolicyDefinitionStatus struct {
@@ -34,6 +35,7 @@ type AzurermPolicyDefinitionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermPolicyDefinitionList is a list of AzurermPolicyDefinitions
 type AzurermPolicyDefinitionList struct {

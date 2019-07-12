@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLbTargetGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,40 +18,40 @@ type AwsLbTargetGroup struct {
 	Status            AwsLbTargetGroupStatus `json:"status,omitempty"`
 }
 
-type AwsLbTargetGroupSpecHealthCheck struct {
-	Interval           int    `json:"interval"`
-	Port               string `json:"port"`
-	Protocol           string `json:"protocol"`
-	Timeout            int    `json:"timeout"`
-	HealthyThreshold   int    `json:"healthy_threshold"`
-	Matcher            string `json:"matcher"`
-	Enabled            bool   `json:"enabled"`
-	Path               string `json:"path"`
-	UnhealthyThreshold int    `json:"unhealthy_threshold"`
-}
-
 type AwsLbTargetGroupSpecStickiness struct {
+	Enabled        bool   `json:"enabled"`
 	Type           string `json:"type"`
 	CookieDuration int    `json:"cookie_duration"`
-	Enabled        bool   `json:"enabled"`
+}
+
+type AwsLbTargetGroupSpecHealthCheck struct {
+	UnhealthyThreshold int    `json:"unhealthy_threshold"`
+	Enabled            bool   `json:"enabled"`
+	Interval           int    `json:"interval"`
+	Port               string `json:"port"`
+	Timeout            int    `json:"timeout"`
+	Path               string `json:"path"`
+	Protocol           string `json:"protocol"`
+	HealthyThreshold   int    `json:"healthy_threshold"`
+	Matcher            string `json:"matcher"`
 }
 
 type AwsLbTargetGroupSpec struct {
-	Port                           int                    `json:"port"`
 	LambdaMultiValueHeadersEnabled bool                   `json:"lambda_multi_value_headers_enabled"`
 	TargetType                     string                 `json:"target_type"`
-	ArnSuffix                      string                 `json:"arn_suffix"`
-	Name                           string                 `json:"name"`
-	SlowStart                      int                    `json:"slow_start"`
-	HealthCheck                    []AwsLbTargetGroupSpec `json:"health_check"`
-	Tags                           map[string]string      `json:"tags"`
 	Arn                            string                 `json:"arn"`
 	Protocol                       string                 `json:"protocol"`
+	Name                           string                 `json:"name"`
 	ProxyProtocolV2                bool                   `json:"proxy_protocol_v2"`
+	SlowStart                      int                    `json:"slow_start"`
 	Stickiness                     []AwsLbTargetGroupSpec `json:"stickiness"`
-	NamePrefix                     string                 `json:"name_prefix"`
-	VpcId                          string                 `json:"vpc_id"`
+	ArnSuffix                      string                 `json:"arn_suffix"`
 	DeregistrationDelay            int                    `json:"deregistration_delay"`
+	VpcId                          string                 `json:"vpc_id"`
+	HealthCheck                    []AwsLbTargetGroupSpec `json:"health_check"`
+	Tags                           map[string]string      `json:"tags"`
+	NamePrefix                     string                 `json:"name_prefix"`
+	Port                           int                    `json:"port"`
 }
 
 type AwsLbTargetGroupStatus struct {
@@ -58,6 +59,7 @@ type AwsLbTargetGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLbTargetGroupList is a list of AwsLbTargetGroups
 type AwsLbTargetGroupList struct {

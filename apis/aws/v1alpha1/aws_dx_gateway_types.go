@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDxGateway struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsDxGateway struct {
 }
 
 type AwsDxGatewaySpec struct {
-	OwnerAccountId string `json:"owner_account_id"`
 	Name           string `json:"name"`
 	AmazonSideAsn  string `json:"amazon_side_asn"`
+	OwnerAccountId string `json:"owner_account_id"`
 }
 
 type AwsDxGatewayStatus struct {
@@ -28,6 +29,7 @@ type AwsDxGatewayStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDxGatewayList is a list of AwsDxGateways
 type AwsDxGatewayList struct {

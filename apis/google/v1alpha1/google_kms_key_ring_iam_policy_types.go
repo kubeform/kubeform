@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleKmsKeyRingIamPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type GoogleKmsKeyRingIamPolicy struct {
 }
 
 type GoogleKmsKeyRingIamPolicySpec struct {
+	PolicyData string `json:"policy_data"`
 	Etag       string `json:"etag"`
 	KeyRingId  string `json:"key_ring_id"`
-	PolicyData string `json:"policy_data"`
 }
 
 type GoogleKmsKeyRingIamPolicyStatus struct {
@@ -28,6 +29,7 @@ type GoogleKmsKeyRingIamPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleKmsKeyRingIamPolicyList is a list of GoogleKmsKeyRingIamPolicys
 type GoogleKmsKeyRingIamPolicyList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeNetwork struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,7 +19,6 @@ type GoogleComputeNetwork struct {
 }
 
 type GoogleComputeNetworkSpec struct {
-	AutoCreateSubnetworks bool   `json:"auto_create_subnetworks"`
 	Description           string `json:"description"`
 	RoutingMode           string `json:"routing_mode"`
 	GatewayIpv4           string `json:"gateway_ipv4"`
@@ -26,6 +26,7 @@ type GoogleComputeNetworkSpec struct {
 	Project               string `json:"project"`
 	SelfLink              string `json:"self_link"`
 	Name                  string `json:"name"`
+	AutoCreateSubnetworks bool   `json:"auto_create_subnetworks"`
 }
 
 type GoogleComputeNetworkStatus struct {
@@ -33,6 +34,7 @@ type GoogleComputeNetworkStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeNetworkList is a list of GoogleComputeNetworks
 type GoogleComputeNetworkList struct {

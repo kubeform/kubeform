@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDatasyncLocationNfs struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,12 +23,12 @@ type AwsDatasyncLocationNfsSpecOnPremConfig struct {
 }
 
 type AwsDatasyncLocationNfsSpec struct {
-	ServerHostname string                       `json:"server_hostname"`
-	Subdirectory   string                       `json:"subdirectory"`
 	Tags           map[string]string            `json:"tags"`
 	Uri            string                       `json:"uri"`
 	Arn            string                       `json:"arn"`
 	OnPremConfig   []AwsDatasyncLocationNfsSpec `json:"on_prem_config"`
+	ServerHostname string                       `json:"server_hostname"`
+	Subdirectory   string                       `json:"subdirectory"`
 }
 
 type AwsDatasyncLocationNfsStatus struct {
@@ -35,6 +36,7 @@ type AwsDatasyncLocationNfsStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDatasyncLocationNfsList is a list of AwsDatasyncLocationNfss
 type AwsDatasyncLocationNfsList struct {

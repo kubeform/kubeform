@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermStorageTable struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AzurermStorageTable struct {
 }
 
 type AzurermStorageTableSpec struct {
-	Name               string `json:"name"`
 	ResourceGroupName  string `json:"resource_group_name"`
 	StorageAccountName string `json:"storage_account_name"`
+	Name               string `json:"name"`
 }
 
 type AzurermStorageTableStatus struct {
@@ -28,6 +29,7 @@ type AzurermStorageTableStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermStorageTableList is a list of AzurermStorageTables
 type AzurermStorageTableList struct {

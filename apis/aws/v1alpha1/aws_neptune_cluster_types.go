@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsNeptuneCluster struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,34 +19,34 @@ type AwsNeptuneCluster struct {
 }
 
 type AwsNeptuneClusterSpec struct {
-	IamRoles                         []string          `json:"iam_roles"`
-	KmsKeyArn                        string            `json:"kms_key_arn"`
-	PreferredMaintenanceWindow       string            `json:"preferred_maintenance_window"`
-	BackupRetentionPeriod            int               `json:"backup_retention_period"`
-	ClusterResourceId                string            `json:"cluster_resource_id"`
-	ApplyImmediately                 bool              `json:"apply_immediately"`
-	AvailabilityZones                []string          `json:"availability_zones"`
-	VpcSecurityGroupIds              []string          `json:"vpc_security_group_ids"`
-	Arn                              string            `json:"arn"`
-	Port                             int               `json:"port"`
-	NeptuneClusterParameterGroupName string            `json:"neptune_cluster_parameter_group_name"`
-	SkipFinalSnapshot                bool              `json:"skip_final_snapshot"`
-	SnapshotIdentifier               string            `json:"snapshot_identifier"`
-	FinalSnapshotIdentifier          string            `json:"final_snapshot_identifier"`
-	NeptuneSubnetGroupName           string            `json:"neptune_subnet_group_name"`
-	HostedZoneId                     string            `json:"hosted_zone_id"`
-	StorageEncrypted                 bool              `json:"storage_encrypted"`
-	Tags                             map[string]string `json:"tags"`
-	ClusterIdentifier                string            `json:"cluster_identifier"`
-	EngineVersion                    string            `json:"engine_version"`
-	PreferredBackupWindow            string            `json:"preferred_backup_window"`
 	Endpoint                         string            `json:"endpoint"`
-	Engine                           string            `json:"engine"`
+	EngineVersion                    string            `json:"engine_version"`
+	ClusterMembers                   []string          `json:"cluster_members"`
+	FinalSnapshotIdentifier          string            `json:"final_snapshot_identifier"`
 	IamDatabaseAuthenticationEnabled bool              `json:"iam_database_authentication_enabled"`
 	ReaderEndpoint                   string            `json:"reader_endpoint"`
-	ReplicationSourceIdentifier      string            `json:"replication_source_identifier"`
+	KmsKeyArn                        string            `json:"kms_key_arn"`
+	NeptuneClusterParameterGroupName string            `json:"neptune_cluster_parameter_group_name"`
+	Port                             int               `json:"port"`
+	PreferredMaintenanceWindow       string            `json:"preferred_maintenance_window"`
 	ClusterIdentifierPrefix          string            `json:"cluster_identifier_prefix"`
-	ClusterMembers                   []string          `json:"cluster_members"`
+	ClusterResourceId                string            `json:"cluster_resource_id"`
+	HostedZoneId                     string            `json:"hosted_zone_id"`
+	IamRoles                         []string          `json:"iam_roles"`
+	SnapshotIdentifier               string            `json:"snapshot_identifier"`
+	VpcSecurityGroupIds              []string          `json:"vpc_security_group_ids"`
+	Tags                             map[string]string `json:"tags"`
+	Arn                              string            `json:"arn"`
+	Engine                           string            `json:"engine"`
+	PreferredBackupWindow            string            `json:"preferred_backup_window"`
+	StorageEncrypted                 bool              `json:"storage_encrypted"`
+	NeptuneSubnetGroupName           string            `json:"neptune_subnet_group_name"`
+	ReplicationSourceIdentifier      string            `json:"replication_source_identifier"`
+	SkipFinalSnapshot                bool              `json:"skip_final_snapshot"`
+	ApplyImmediately                 bool              `json:"apply_immediately"`
+	AvailabilityZones                []string          `json:"availability_zones"`
+	BackupRetentionPeriod            int               `json:"backup_retention_period"`
+	ClusterIdentifier                string            `json:"cluster_identifier"`
 }
 
 type AwsNeptuneClusterStatus struct {
@@ -53,6 +54,7 @@ type AwsNeptuneClusterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsNeptuneClusterList is a list of AwsNeptuneClusters
 type AwsNeptuneClusterList struct {

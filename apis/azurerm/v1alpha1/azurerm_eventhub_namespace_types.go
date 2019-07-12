@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermEventhubNamespace struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AzurermEventhubNamespace struct {
 }
 
 type AzurermEventhubNamespaceSpec struct {
+	DefaultPrimaryKey                string            `json:"default_primary_key"`
+	DefaultSecondaryKey              string            `json:"default_secondary_key"`
 	Location                         string            `json:"location"`
 	ResourceGroupName                string            `json:"resource_group_name"`
+	DefaultSecondaryConnectionString string            `json:"default_secondary_connection_string"`
+	AutoInflateEnabled               bool              `json:"auto_inflate_enabled"`
 	KafkaEnabled                     bool              `json:"kafka_enabled"`
 	MaximumThroughputUnits           int               `json:"maximum_throughput_units"`
 	DefaultPrimaryConnectionString   string            `json:"default_primary_connection_string"`
 	Tags                             map[string]string `json:"tags"`
-	DefaultSecondaryKey              string            `json:"default_secondary_key"`
 	Name                             string            `json:"name"`
 	Sku                              string            `json:"sku"`
 	Capacity                         int               `json:"capacity"`
-	AutoInflateEnabled               bool              `json:"auto_inflate_enabled"`
-	DefaultSecondaryConnectionString string            `json:"default_secondary_connection_string"`
-	DefaultPrimaryKey                string            `json:"default_primary_key"`
 }
 
 type AzurermEventhubNamespaceStatus struct {
@@ -38,6 +39,7 @@ type AzurermEventhubNamespaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermEventhubNamespaceList is a list of AzurermEventhubNamespaces
 type AzurermEventhubNamespaceList struct {

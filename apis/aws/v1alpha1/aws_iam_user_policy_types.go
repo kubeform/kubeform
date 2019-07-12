@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIamUserPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsIamUserPolicy struct {
 }
 
 type AwsIamUserPolicySpec struct {
+	User       string `json:"user"`
 	Policy     string `json:"policy"`
 	Name       string `json:"name"`
 	NamePrefix string `json:"name_prefix"`
-	User       string `json:"user"`
 }
 
 type AwsIamUserPolicyStatus struct {
@@ -29,6 +30,7 @@ type AwsIamUserPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIamUserPolicyList is a list of AwsIamUserPolicys
 type AwsIamUserPolicyList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsElbAttachment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsElbAttachment struct {
 }
 
 type AwsElbAttachmentSpec struct {
-	Elb      string `json:"elb"`
 	Instance string `json:"instance"`
+	Elb      string `json:"elb"`
 }
 
 type AwsElbAttachmentStatus struct {
@@ -27,6 +28,7 @@ type AwsElbAttachmentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsElbAttachmentList is a list of AwsElbAttachments
 type AwsElbAttachmentList struct {

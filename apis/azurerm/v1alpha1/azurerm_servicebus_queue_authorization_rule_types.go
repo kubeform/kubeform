@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermServicebusQueueAuthorizationRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AzurermServicebusQueueAuthorizationRule struct {
 }
 
 type AzurermServicebusQueueAuthorizationRuleSpec struct {
-	NamespaceName             string `json:"namespace_name"`
-	QueueName                 string `json:"queue_name"`
-	ResourceGroupName         string `json:"resource_group_name"`
-	Send                      bool   `json:"send"`
 	PrimaryConnectionString   string `json:"primary_connection_string"`
 	SecondaryConnectionString string `json:"secondary_connection_string"`
 	Listen                    bool   `json:"listen"`
-	Name                      string `json:"name"`
-	PrimaryKey                string `json:"primary_key"`
+	Send                      bool   `json:"send"`
+	NamespaceName             string `json:"namespace_name"`
+	QueueName                 string `json:"queue_name"`
 	SecondaryKey              string `json:"secondary_key"`
 	Manage                    bool   `json:"manage"`
+	PrimaryKey                string `json:"primary_key"`
+	ResourceGroupName         string `json:"resource_group_name"`
+	Name                      string `json:"name"`
 }
 
 type AzurermServicebusQueueAuthorizationRuleStatus struct {
@@ -36,6 +37,7 @@ type AzurermServicebusQueueAuthorizationRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermServicebusQueueAuthorizationRuleList is a list of AzurermServicebusQueueAuthorizationRules
 type AzurermServicebusQueueAuthorizationRuleList struct {

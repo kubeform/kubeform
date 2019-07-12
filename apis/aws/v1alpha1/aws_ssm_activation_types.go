@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSsmActivation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsSsmActivation struct {
 }
 
 type AwsSsmActivationSpec struct {
-	Name              string            `json:"name"`
 	ExpirationDate    string            `json:"expiration_date"`
-	IamRole           string            `json:"iam_role"`
-	Tags              map[string]string `json:"tags"`
+	RegistrationLimit int               `json:"registration_limit"`
+	Name              string            `json:"name"`
 	Description       string            `json:"description"`
 	Expired           string            `json:"expired"`
-	RegistrationLimit int               `json:"registration_limit"`
+	IamRole           string            `json:"iam_role"`
 	RegistrationCount int               `json:"registration_count"`
 	ActivationCode    string            `json:"activation_code"`
+	Tags              map[string]string `json:"tags"`
 }
 
 type AwsSsmActivationStatus struct {
@@ -34,6 +35,7 @@ type AwsSsmActivationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSsmActivationList is a list of AwsSsmActivations
 type AwsSsmActivationList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermMariadbServer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -31,17 +32,17 @@ type AzurermMariadbServerSpecSku struct {
 }
 
 type AzurermMariadbServerSpec struct {
-	StorageProfile             []AzurermMariadbServerSpec `json:"storage_profile"`
-	Tags                       map[string]string          `json:"tags"`
-	ResourceGroupName          string                     `json:"resource_group_name"`
-	AdministratorLogin         string                     `json:"administrator_login"`
-	Sku                        []AzurermMariadbServerSpec `json:"sku"`
 	AdministratorLoginPassword string                     `json:"administrator_login_password"`
-	Version                    string                     `json:"version"`
+	StorageProfile             []AzurermMariadbServerSpec `json:"storage_profile"`
+	Location                   string                     `json:"location"`
+	Sku                        []AzurermMariadbServerSpec `json:"sku"`
+	AdministratorLogin         string                     `json:"administrator_login"`
 	SslEnforcement             string                     `json:"ssl_enforcement"`
 	Fqdn                       string                     `json:"fqdn"`
+	Tags                       map[string]string          `json:"tags"`
 	Name                       string                     `json:"name"`
-	Location                   string                     `json:"location"`
+	ResourceGroupName          string                     `json:"resource_group_name"`
+	Version                    string                     `json:"version"`
 }
 
 type AzurermMariadbServerStatus struct {
@@ -49,6 +50,7 @@ type AzurermMariadbServerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermMariadbServerList is a list of AzurermMariadbServers
 type AzurermMariadbServerList struct {

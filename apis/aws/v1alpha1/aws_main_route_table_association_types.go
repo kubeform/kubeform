@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsMainRouteTableAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsMainRouteTableAssociation struct {
 }
 
 type AwsMainRouteTableAssociationSpec struct {
-	VpcId                string `json:"vpc_id"`
 	RouteTableId         string `json:"route_table_id"`
 	OriginalRouteTableId string `json:"original_route_table_id"`
+	VpcId                string `json:"vpc_id"`
 }
 
 type AwsMainRouteTableAssociationStatus struct {
@@ -28,6 +29,7 @@ type AwsMainRouteTableAssociationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsMainRouteTableAssociationList is a list of AwsMainRouteTableAssociations
 type AwsMainRouteTableAssociationList struct {

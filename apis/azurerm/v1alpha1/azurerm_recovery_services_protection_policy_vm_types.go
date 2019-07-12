@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermRecoveryServicesProtectionPolicyVm struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,8 +18,20 @@ type AzurermRecoveryServicesProtectionPolicyVm struct {
 	Status            AzurermRecoveryServicesProtectionPolicyVmStatus `json:"status,omitempty"`
 }
 
+type AzurermRecoveryServicesProtectionPolicyVmSpecBackup struct {
+	Time      string   `json:"time"`
+	Weekdays  []string `json:"weekdays"`
+	Frequency string   `json:"frequency"`
+}
+
 type AzurermRecoveryServicesProtectionPolicyVmSpecRetentionDaily struct {
 	Count int `json:"count"`
+}
+
+type AzurermRecoveryServicesProtectionPolicyVmSpecRetentionMonthly struct {
+	Count    int      `json:"count"`
+	Weeks    []string `json:"weeks"`
+	Weekdays []string `json:"weekdays"`
 }
 
 type AzurermRecoveryServicesProtectionPolicyVmSpecRetentionWeekly struct {
@@ -26,36 +39,24 @@ type AzurermRecoveryServicesProtectionPolicyVmSpecRetentionWeekly struct {
 	Weekdays []string `json:"weekdays"`
 }
 
-type AzurermRecoveryServicesProtectionPolicyVmSpecRetentionMonthly struct {
-	Weeks    []string `json:"weeks"`
-	Weekdays []string `json:"weekdays"`
-	Count    int      `json:"count"`
-}
-
 type AzurermRecoveryServicesProtectionPolicyVmSpecRetentionYearly struct {
-	Weeks    []string `json:"weeks"`
-	Weekdays []string `json:"weekdays"`
 	Count    int      `json:"count"`
 	Months   []string `json:"months"`
-}
-
-type AzurermRecoveryServicesProtectionPolicyVmSpecBackup struct {
-	Frequency string   `json:"frequency"`
-	Time      string   `json:"time"`
-	Weekdays  []string `json:"weekdays"`
+	Weeks    []string `json:"weeks"`
+	Weekdays []string `json:"weekdays"`
 }
 
 type AzurermRecoveryServicesProtectionPolicyVmSpec struct {
 	ResourceGroupName string                                          `json:"resource_group_name"`
-	RetentionDaily    []AzurermRecoveryServicesProtectionPolicyVmSpec `json:"retention_daily"`
-	RetentionWeekly   []AzurermRecoveryServicesProtectionPolicyVmSpec `json:"retention_weekly"`
-	RetentionMonthly  []AzurermRecoveryServicesProtectionPolicyVmSpec `json:"retention_monthly"`
-	RetentionYearly   []AzurermRecoveryServicesProtectionPolicyVmSpec `json:"retention_yearly"`
-	Name              string                                          `json:"name"`
 	RecoveryVaultName string                                          `json:"recovery_vault_name"`
 	Timezone          string                                          `json:"timezone"`
 	Backup            []AzurermRecoveryServicesProtectionPolicyVmSpec `json:"backup"`
+	RetentionDaily    []AzurermRecoveryServicesProtectionPolicyVmSpec `json:"retention_daily"`
+	RetentionMonthly  []AzurermRecoveryServicesProtectionPolicyVmSpec `json:"retention_monthly"`
 	Tags              map[string]string                               `json:"tags"`
+	Name              string                                          `json:"name"`
+	RetentionWeekly   []AzurermRecoveryServicesProtectionPolicyVmSpec `json:"retention_weekly"`
+	RetentionYearly   []AzurermRecoveryServicesProtectionPolicyVmSpec `json:"retention_yearly"`
 }
 
 type AzurermRecoveryServicesProtectionPolicyVmStatus struct {
@@ -63,6 +64,7 @@ type AzurermRecoveryServicesProtectionPolicyVmStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermRecoveryServicesProtectionPolicyVmList is a list of AzurermRecoveryServicesProtectionPolicyVms
 type AzurermRecoveryServicesProtectionPolicyVmList struct {

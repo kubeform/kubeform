@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGlueJob struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsGlueJob struct {
 }
 
 type AwsGlueJobSpecCommand struct {
-	Name           string `json:"name"`
 	ScriptLocation string `json:"script_location"`
+	Name           string `json:"name"`
 }
 
 type AwsGlueJobSpecExecutionProperty struct {
@@ -27,18 +28,18 @@ type AwsGlueJobSpecExecutionProperty struct {
 }
 
 type AwsGlueJobSpec struct {
-	MaxCapacity           float64           `json:"max_capacity"`
-	MaxRetries            int               `json:"max_retries"`
 	AllocatedCapacity     int               `json:"allocated_capacity"`
 	Command               []AwsGlueJobSpec  `json:"command"`
 	Connections           []string          `json:"connections"`
-	DefaultArguments      map[string]string `json:"default_arguments"`
 	Description           string            `json:"description"`
 	ExecutionProperty     []AwsGlueJobSpec  `json:"execution_property"`
-	RoleArn               string            `json:"role_arn"`
-	Name                  string            `json:"name"`
+	MaxCapacity           float64           `json:"max_capacity"`
 	Timeout               int               `json:"timeout"`
 	SecurityConfiguration string            `json:"security_configuration"`
+	DefaultArguments      map[string]string `json:"default_arguments"`
+	MaxRetries            int               `json:"max_retries"`
+	Name                  string            `json:"name"`
+	RoleArn               string            `json:"role_arn"`
 }
 
 type AwsGlueJobStatus struct {
@@ -46,6 +47,7 @@ type AwsGlueJobStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGlueJobList is a list of AwsGlueJobs
 type AwsGlueJobList struct {

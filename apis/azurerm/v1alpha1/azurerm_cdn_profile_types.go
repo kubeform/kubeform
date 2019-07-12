@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermCdnProfile struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermCdnProfile struct {
 }
 
 type AzurermCdnProfileSpec struct {
-	Tags              map[string]string `json:"tags"`
 	Name              string            `json:"name"`
 	Location          string            `json:"location"`
 	ResourceGroupName string            `json:"resource_group_name"`
 	Sku               string            `json:"sku"`
+	Tags              map[string]string `json:"tags"`
 }
 
 type AzurermCdnProfileStatus struct {
@@ -30,6 +31,7 @@ type AzurermCdnProfileStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermCdnProfileList is a list of AzurermCdnProfiles
 type AzurermCdnProfileList struct {

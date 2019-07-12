@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDataLakeAnalyticsFirewallRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermDataLakeAnalyticsFirewallRule struct {
 }
 
 type AzurermDataLakeAnalyticsFirewallRuleSpec struct {
-	EndIpAddress      string `json:"end_ip_address"`
 	Name              string `json:"name"`
 	AccountName       string `json:"account_name"`
 	ResourceGroupName string `json:"resource_group_name"`
 	StartIpAddress    string `json:"start_ip_address"`
+	EndIpAddress      string `json:"end_ip_address"`
 }
 
 type AzurermDataLakeAnalyticsFirewallRuleStatus struct {
@@ -30,6 +31,7 @@ type AzurermDataLakeAnalyticsFirewallRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDataLakeAnalyticsFirewallRuleList is a list of AzurermDataLakeAnalyticsFirewallRules
 type AzurermDataLakeAnalyticsFirewallRuleList struct {

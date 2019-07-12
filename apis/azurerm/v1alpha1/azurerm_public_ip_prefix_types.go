@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermPublicIpPrefix struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AzurermPublicIpPrefix struct {
 }
 
 type AzurermPublicIpPrefixSpec struct {
-	Location          string            `json:"location"`
-	ResourceGroupName string            `json:"resource_group_name"`
-	Sku               string            `json:"sku"`
-	PrefixLength      int               `json:"prefix_length"`
 	IpPrefix          string            `json:"ip_prefix"`
 	Zones             []string          `json:"zones"`
 	Tags              map[string]string `json:"tags"`
 	Name              string            `json:"name"`
+	Location          string            `json:"location"`
+	ResourceGroupName string            `json:"resource_group_name"`
+	Sku               string            `json:"sku"`
+	PrefixLength      int               `json:"prefix_length"`
 }
 
 type AzurermPublicIpPrefixStatus struct {
@@ -33,6 +34,7 @@ type AzurermPublicIpPrefixStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermPublicIpPrefixList is a list of AzurermPublicIpPrefixs
 type AzurermPublicIpPrefixList struct {

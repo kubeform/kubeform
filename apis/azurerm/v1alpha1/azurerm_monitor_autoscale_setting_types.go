@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermMonitorAutoscaleSetting struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,26 +18,10 @@ type AzurermMonitorAutoscaleSetting struct {
 	Status            AzurermMonitorAutoscaleSettingStatus `json:"status,omitempty"`
 }
 
-type AzurermMonitorAutoscaleSettingSpecNotificationEmail struct {
-	SendToSubscriptionAdministrator   bool     `json:"send_to_subscription_administrator"`
-	SendToSubscriptionCoAdministrator bool     `json:"send_to_subscription_co_administrator"`
-	CustomEmails                      []string `json:"custom_emails"`
-}
-
-type AzurermMonitorAutoscaleSettingSpecNotificationWebhook struct {
-	ServiceUri string            `json:"service_uri"`
-	Properties map[string]string `json:"properties"`
-}
-
-type AzurermMonitorAutoscaleSettingSpecNotification struct {
-	Email   []AzurermMonitorAutoscaleSettingSpecNotification `json:"email"`
-	Webhook []AzurermMonitorAutoscaleSettingSpecNotification `json:"webhook"`
-}
-
 type AzurermMonitorAutoscaleSettingSpecProfileFixedDate struct {
+	Timezone string `json:"timezone"`
 	Start    string `json:"start"`
 	End      string `json:"end"`
-	Timezone string `json:"timezone"`
 }
 
 type AzurermMonitorAutoscaleSettingSpecProfileRecurrence struct {
@@ -64,10 +49,10 @@ type AzurermMonitorAutoscaleSettingSpecProfileRuleMetricTrigger struct {
 }
 
 type AzurermMonitorAutoscaleSettingSpecProfileRuleScaleAction struct {
-	Value     int    `json:"value"`
 	Cooldown  string `json:"cooldown"`
 	Direction string `json:"direction"`
 	Type      string `json:"type"`
+	Value     int    `json:"value"`
 }
 
 type AzurermMonitorAutoscaleSettingSpecProfileRule struct {
@@ -83,15 +68,31 @@ type AzurermMonitorAutoscaleSettingSpecProfile struct {
 	Rule       []AzurermMonitorAutoscaleSettingSpecProfile `json:"rule"`
 }
 
+type AzurermMonitorAutoscaleSettingSpecNotificationEmail struct {
+	SendToSubscriptionAdministrator   bool     `json:"send_to_subscription_administrator"`
+	SendToSubscriptionCoAdministrator bool     `json:"send_to_subscription_co_administrator"`
+	CustomEmails                      []string `json:"custom_emails"`
+}
+
+type AzurermMonitorAutoscaleSettingSpecNotificationWebhook struct {
+	ServiceUri string            `json:"service_uri"`
+	Properties map[string]string `json:"properties"`
+}
+
+type AzurermMonitorAutoscaleSettingSpecNotification struct {
+	Email   []AzurermMonitorAutoscaleSettingSpecNotification `json:"email"`
+	Webhook []AzurermMonitorAutoscaleSettingSpecNotification `json:"webhook"`
+}
+
 type AzurermMonitorAutoscaleSettingSpec struct {
+	Enabled           bool                                 `json:"enabled"`
+	Profile           []AzurermMonitorAutoscaleSettingSpec `json:"profile"`
 	Notification      []AzurermMonitorAutoscaleSettingSpec `json:"notification"`
 	Tags              map[string]string                    `json:"tags"`
 	Name              string                               `json:"name"`
 	ResourceGroupName string                               `json:"resource_group_name"`
 	Location          string                               `json:"location"`
 	TargetResourceId  string                               `json:"target_resource_id"`
-	Enabled           bool                                 `json:"enabled"`
-	Profile           []AzurermMonitorAutoscaleSettingSpec `json:"profile"`
 }
 
 type AzurermMonitorAutoscaleSettingStatus struct {
@@ -99,6 +100,7 @@ type AzurermMonitorAutoscaleSettingStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermMonitorAutoscaleSettingList is a list of AzurermMonitorAutoscaleSettings
 type AzurermMonitorAutoscaleSettingList struct {

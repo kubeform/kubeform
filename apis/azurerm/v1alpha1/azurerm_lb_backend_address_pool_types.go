@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermLbBackendAddressPool struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AzurermLbBackendAddressPool struct {
 }
 
 type AzurermLbBackendAddressPoolSpec struct {
+	LoadBalancingRules      []string `json:"load_balancing_rules"`
 	Name                    string   `json:"name"`
 	Location                string   `json:"location"`
 	ResourceGroupName       string   `json:"resource_group_name"`
 	LoadbalancerId          string   `json:"loadbalancer_id"`
 	BackendIpConfigurations []string `json:"backend_ip_configurations"`
-	LoadBalancingRules      []string `json:"load_balancing_rules"`
 }
 
 type AzurermLbBackendAddressPoolStatus struct {
@@ -31,6 +32,7 @@ type AzurermLbBackendAddressPoolStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermLbBackendAddressPoolList is a list of AzurermLbBackendAddressPools
 type AzurermLbBackendAddressPoolList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSsmPatchBaseline struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsSsmPatchBaseline struct {
 }
 
 type AwsSsmPatchBaselineSpecApprovalRulePatchFilter struct {
-	Key    string   `json:"key"`
 	Values []string `json:"values"`
+	Key    string   `json:"key"`
 }
 
 type AwsSsmPatchBaselineSpecApprovalRule struct {
@@ -36,11 +37,11 @@ type AwsSsmPatchBaselineSpecGlobalFilter struct {
 
 type AwsSsmPatchBaselineSpec struct {
 	ApprovalRule                   []AwsSsmPatchBaselineSpec `json:"approval_rule"`
+	RejectedPatches                []string                  `json:"rejected_patches"`
 	Name                           string                    `json:"name"`
 	Description                    string                    `json:"description"`
 	GlobalFilter                   []AwsSsmPatchBaselineSpec `json:"global_filter"`
 	ApprovedPatches                []string                  `json:"approved_patches"`
-	RejectedPatches                []string                  `json:"rejected_patches"`
 	OperatingSystem                string                    `json:"operating_system"`
 	ApprovedPatchesComplianceLevel string                    `json:"approved_patches_compliance_level"`
 	Tags                           map[string]string         `json:"tags"`
@@ -51,6 +52,7 @@ type AwsSsmPatchBaselineStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSsmPatchBaselineList is a list of AwsSsmPatchBaselines
 type AwsSsmPatchBaselineList struct {

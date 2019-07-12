@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLb struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsLb struct {
 }
 
 type AwsLbSpecAccessLogs struct {
-	Bucket  string `json:"bucket"`
 	Prefix  string `json:"prefix"`
 	Enabled bool   `json:"enabled"`
+	Bucket  string `json:"bucket"`
 }
 
 type AwsLbSpecSubnetMapping struct {
@@ -29,25 +30,25 @@ type AwsLbSpecSubnetMapping struct {
 }
 
 type AwsLbSpec struct {
-	SecurityGroups               []string          `json:"security_groups"`
 	AccessLogs                   []AwsLbSpec       `json:"access_logs"`
-	IpAddressType                string            `json:"ip_address_type"`
-	DnsName                      string            `json:"dns_name"`
-	Tags                         map[string]string `json:"tags"`
-	ArnSuffix                    string            `json:"arn_suffix"`
-	NamePrefix                   string            `json:"name_prefix"`
-	Internal                     bool              `json:"internal"`
-	Arn                          string            `json:"arn"`
-	Name                         string            `json:"name"`
-	LoadBalancerType             string            `json:"load_balancer_type"`
-	EnableHttp2                  bool              `json:"enable_http2"`
 	EnableDeletionProtection     bool              `json:"enable_deletion_protection"`
-	IdleTimeout                  int               `json:"idle_timeout"`
-	EnableCrossZoneLoadBalancing bool              `json:"enable_cross_zone_load_balancing"`
 	VpcId                        string            `json:"vpc_id"`
 	ZoneId                       string            `json:"zone_id"`
-	Subnets                      []string          `json:"subnets"`
+	Tags                         map[string]string `json:"tags"`
+	NamePrefix                   string            `json:"name_prefix"`
+	LoadBalancerType             string            `json:"load_balancer_type"`
 	SubnetMapping                []AwsLbSpec       `json:"subnet_mapping"`
+	EnableHttp2                  bool              `json:"enable_http2"`
+	IpAddressType                string            `json:"ip_address_type"`
+	DnsName                      string            `json:"dns_name"`
+	ArnSuffix                    string            `json:"arn_suffix"`
+	Internal                     bool              `json:"internal"`
+	Arn                          string            `json:"arn"`
+	EnableCrossZoneLoadBalancing bool              `json:"enable_cross_zone_load_balancing"`
+	Subnets                      []string          `json:"subnets"`
+	IdleTimeout                  int               `json:"idle_timeout"`
+	Name                         string            `json:"name"`
+	SecurityGroups               []string          `json:"security_groups"`
 }
 
 type AwsLbStatus struct {
@@ -55,6 +56,7 @@ type AwsLbStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLbList is a list of AwsLbs
 type AwsLbList struct {

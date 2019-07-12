@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCloud9EnvironmentEc2 struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,6 +19,7 @@ type AwsCloud9EnvironmentEc2 struct {
 }
 
 type AwsCloud9EnvironmentEc2Spec struct {
+	InstanceType             string `json:"instance_type"`
 	AutomaticStopTimeMinutes int    `json:"automatic_stop_time_minutes"`
 	Description              string `json:"description"`
 	OwnerArn                 string `json:"owner_arn"`
@@ -25,7 +27,6 @@ type AwsCloud9EnvironmentEc2Spec struct {
 	Arn                      string `json:"arn"`
 	Type                     string `json:"type"`
 	Name                     string `json:"name"`
-	InstanceType             string `json:"instance_type"`
 }
 
 type AwsCloud9EnvironmentEc2Status struct {
@@ -33,6 +34,7 @@ type AwsCloud9EnvironmentEc2Status struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCloud9EnvironmentEc2List is a list of AwsCloud9EnvironmentEc2s
 type AwsCloud9EnvironmentEc2List struct {

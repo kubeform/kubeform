@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsKeyPair struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsKeyPair struct {
 }
 
 type AwsKeyPairSpec struct {
-	KeyName       string `json:"key_name"`
 	KeyNamePrefix string `json:"key_name_prefix"`
 	PublicKey     string `json:"public_key"`
 	Fingerprint   string `json:"fingerprint"`
+	KeyName       string `json:"key_name"`
 }
 
 type AwsKeyPairStatus struct {
@@ -29,6 +30,7 @@ type AwsKeyPairStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsKeyPairList is a list of AwsKeyPairs
 type AwsKeyPairList struct {

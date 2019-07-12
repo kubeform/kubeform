@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEip struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AwsEip struct {
 }
 
 type AwsEipSpec struct {
-	Instance               string            `json:"instance"`
-	AllocationId           string            `json:"allocation_id"`
-	PublicIp               string            `json:"public_ip"`
+	AssociationId          string            `json:"association_id"`
 	PublicDns              string            `json:"public_dns"`
-	PrivateDns             string            `json:"private_dns"`
+	PrivateIp              string            `json:"private_ip"`
 	AssociateWithPrivateIp string            `json:"associate_with_private_ip"`
+	Tags                   map[string]string `json:"tags"`
+	Instance               string            `json:"instance"`
+	NetworkInterface       string            `json:"network_interface"`
+	Domain                 string            `json:"domain"`
+	PublicIp               string            `json:"public_ip"`
+	PrivateDns             string            `json:"private_dns"`
 	PublicIpv4Pool         string            `json:"public_ipv4_pool"`
 	Vpc                    bool              `json:"vpc"`
-	NetworkInterface       string            `json:"network_interface"`
-	AssociationId          string            `json:"association_id"`
-	Domain                 string            `json:"domain"`
-	PrivateIp              string            `json:"private_ip"`
-	Tags                   map[string]string `json:"tags"`
+	AllocationId           string            `json:"allocation_id"`
 }
 
 type AwsEipStatus struct {
@@ -38,6 +39,7 @@ type AwsEipStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEipList is a list of AwsEips
 type AwsEipList struct {

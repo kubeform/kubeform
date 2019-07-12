@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleFolderOrganizationPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -43,12 +44,12 @@ type GoogleFolderOrganizationPolicySpecListPolicy struct {
 
 type GoogleFolderOrganizationPolicySpec struct {
 	Etag          string                               `json:"etag"`
+	Folder        string                               `json:"folder"`
 	UpdateTime    string                               `json:"update_time"`
 	RestorePolicy []GoogleFolderOrganizationPolicySpec `json:"restore_policy"`
 	Constraint    string                               `json:"constraint"`
 	BooleanPolicy []GoogleFolderOrganizationPolicySpec `json:"boolean_policy"`
 	ListPolicy    []GoogleFolderOrganizationPolicySpec `json:"list_policy"`
-	Folder        string                               `json:"folder"`
 	Version       int                                  `json:"version"`
 }
 
@@ -57,6 +58,7 @@ type GoogleFolderOrganizationPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleFolderOrganizationPolicyList is a list of GoogleFolderOrganizationPolicys
 type GoogleFolderOrganizationPolicyList struct {

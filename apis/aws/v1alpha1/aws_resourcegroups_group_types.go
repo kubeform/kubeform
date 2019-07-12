@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsResourcegroupsGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsResourcegroupsGroup struct {
 }
 
 type AwsResourcegroupsGroupSpecResourceQuery struct {
-	Query string `json:"query"`
 	Type  string `json:"type"`
+	Query string `json:"query"`
 }
 
 type AwsResourcegroupsGroupSpec struct {
-	ResourceQuery []AwsResourcegroupsGroupSpec `json:"resource_query"`
-	Arn           string                       `json:"arn"`
 	Name          string                       `json:"name"`
 	Description   string                       `json:"description"`
+	ResourceQuery []AwsResourcegroupsGroupSpec `json:"resource_query"`
+	Arn           string                       `json:"arn"`
 }
 
 type AwsResourcegroupsGroupStatus struct {
@@ -34,6 +35,7 @@ type AwsResourcegroupsGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsResourcegroupsGroupList is a list of AwsResourcegroupsGroups
 type AwsResourcegroupsGroupList struct {

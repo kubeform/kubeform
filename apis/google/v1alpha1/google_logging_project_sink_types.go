@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleLoggingProjectSink struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleLoggingProjectSink struct {
 }
 
 type GoogleLoggingProjectSinkSpec struct {
-	Name                 string `json:"name"`
 	Destination          string `json:"destination"`
 	Filter               string `json:"filter"`
 	WriterIdentity       string `json:"writer_identity"`
 	Project              string `json:"project"`
 	UniqueWriterIdentity bool   `json:"unique_writer_identity"`
+	Name                 string `json:"name"`
 }
 
 type GoogleLoggingProjectSinkStatus struct {
@@ -31,6 +32,7 @@ type GoogleLoggingProjectSinkStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleLoggingProjectSinkList is a list of GoogleLoggingProjectSinks
 type GoogleLoggingProjectSinkList struct {

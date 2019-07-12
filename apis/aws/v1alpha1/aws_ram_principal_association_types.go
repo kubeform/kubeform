@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRamPrincipalAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsRamPrincipalAssociation struct {
 }
 
 type AwsRamPrincipalAssociationSpec struct {
-	Principal        string `json:"principal"`
 	ResourceShareArn string `json:"resource_share_arn"`
+	Principal        string `json:"principal"`
 }
 
 type AwsRamPrincipalAssociationStatus struct {
@@ -27,6 +28,7 @@ type AwsRamPrincipalAssociationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRamPrincipalAssociationList is a list of AwsRamPrincipalAssociations
 type AwsRamPrincipalAssociationList struct {

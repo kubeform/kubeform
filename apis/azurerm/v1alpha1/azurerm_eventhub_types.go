@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermEventhub struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -25,16 +26,15 @@ type AzurermEventhubSpecCaptureDescriptionDestination struct {
 }
 
 type AzurermEventhubSpecCaptureDescription struct {
-	SkipEmptyArchives bool                                    `json:"skip_empty_archives"`
-	Encoding          string                                  `json:"encoding"`
-	IntervalInSeconds int                                     `json:"interval_in_seconds"`
 	SizeLimitInBytes  int                                     `json:"size_limit_in_bytes"`
 	Destination       []AzurermEventhubSpecCaptureDescription `json:"destination"`
 	Enabled           bool                                    `json:"enabled"`
+	SkipEmptyArchives bool                                    `json:"skip_empty_archives"`
+	Encoding          string                                  `json:"encoding"`
+	IntervalInSeconds int                                     `json:"interval_in_seconds"`
 }
 
 type AzurermEventhubSpec struct {
-	PartitionIds       []string              `json:"partition_ids"`
 	Name               string                `json:"name"`
 	NamespaceName      string                `json:"namespace_name"`
 	ResourceGroupName  string                `json:"resource_group_name"`
@@ -42,6 +42,7 @@ type AzurermEventhubSpec struct {
 	PartitionCount     int                   `json:"partition_count"`
 	MessageRetention   int                   `json:"message_retention"`
 	CaptureDescription []AzurermEventhubSpec `json:"capture_description"`
+	PartitionIds       []string              `json:"partition_ids"`
 }
 
 type AzurermEventhubStatus struct {
@@ -49,6 +50,7 @@ type AzurermEventhubStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermEventhubList is a list of AzurermEventhubs
 type AzurermEventhubList struct {

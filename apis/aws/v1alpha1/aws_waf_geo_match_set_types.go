@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafGeoMatchSet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,8 +24,8 @@ type AwsWafGeoMatchSetSpecGeoMatchConstraint struct {
 }
 
 type AwsWafGeoMatchSetSpec struct {
-	Name               string                  `json:"name"`
 	GeoMatchConstraint []AwsWafGeoMatchSetSpec `json:"geo_match_constraint"`
+	Name               string                  `json:"name"`
 }
 
 type AwsWafGeoMatchSetStatus struct {
@@ -32,6 +33,7 @@ type AwsWafGeoMatchSetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafGeoMatchSetList is a list of AwsWafGeoMatchSets
 type AwsWafGeoMatchSetList struct {

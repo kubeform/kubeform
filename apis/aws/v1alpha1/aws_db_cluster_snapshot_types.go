@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDbClusterSnapshot struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,21 +19,21 @@ type AwsDbClusterSnapshot struct {
 }
 
 type AwsDbClusterSnapshotSpec struct {
-	DbClusterIdentifier         string   `json:"db_cluster_identifier"`
-	StorageEncrypted            bool     `json:"storage_encrypted"`
-	AvailabilityZones           []string `json:"availability_zones"`
-	SnapshotType                string   `json:"snapshot_type"`
-	Status                      string   `json:"status"`
-	DbClusterSnapshotIdentifier string   `json:"db_cluster_snapshot_identifier"`
-	DbClusterSnapshotArn        string   `json:"db_cluster_snapshot_arn"`
-	Engine                      string   `json:"engine"`
-	EngineVersion               string   `json:"engine_version"`
-	VpcId                       string   `json:"vpc_id"`
 	AllocatedStorage            int      `json:"allocated_storage"`
+	AvailabilityZones           []string `json:"availability_zones"`
+	DbClusterSnapshotArn        string   `json:"db_cluster_snapshot_arn"`
 	KmsKeyId                    string   `json:"kms_key_id"`
-	LicenseModel                string   `json:"license_model"`
+	SnapshotType                string   `json:"snapshot_type"`
+	DbClusterSnapshotIdentifier string   `json:"db_cluster_snapshot_identifier"`
+	DbClusterIdentifier         string   `json:"db_cluster_identifier"`
+	Engine                      string   `json:"engine"`
 	Port                        int      `json:"port"`
+	StorageEncrypted            bool     `json:"storage_encrypted"`
+	EngineVersion               string   `json:"engine_version"`
+	LicenseModel                string   `json:"license_model"`
 	SourceDbClusterSnapshotArn  string   `json:"source_db_cluster_snapshot_arn"`
+	Status                      string   `json:"status"`
+	VpcId                       string   `json:"vpc_id"`
 }
 
 type AwsDbClusterSnapshotStatus struct {
@@ -40,6 +41,7 @@ type AwsDbClusterSnapshotStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDbClusterSnapshotList is a list of AwsDbClusterSnapshots
 type AwsDbClusterSnapshotList struct {

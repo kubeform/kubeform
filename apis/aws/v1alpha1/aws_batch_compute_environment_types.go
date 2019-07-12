@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsBatchComputeEnvironment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,33 +25,33 @@ type AwsBatchComputeEnvironmentSpecComputeResourcesLaunchTemplate struct {
 }
 
 type AwsBatchComputeEnvironmentSpecComputeResources struct {
-	SpotIamFleetRole string                                           `json:"spot_iam_fleet_role"`
 	Ec2KeyPair       string                                           `json:"ec2_key_pair"`
-	MinVcpus         int                                              `json:"min_vcpus"`
-	Type             string                                           `json:"type"`
-	InstanceType     []string                                         `json:"instance_type"`
-	LaunchTemplate   []AwsBatchComputeEnvironmentSpecComputeResources `json:"launch_template"`
-	Tags             map[string]string                                `json:"tags"`
-	BidPercentage    int                                              `json:"bid_percentage"`
-	ImageId          string                                           `json:"image_id"`
-	MaxVcpus         int                                              `json:"max_vcpus"`
-	SecurityGroupIds []string                                         `json:"security_group_ids"`
 	Subnets          []string                                         `json:"subnets"`
-	DesiredVcpus     int                                              `json:"desired_vcpus"`
+	Type             string                                           `json:"type"`
+	ImageId          string                                           `json:"image_id"`
+	LaunchTemplate   []AwsBatchComputeEnvironmentSpecComputeResources `json:"launch_template"`
+	MinVcpus         int                                              `json:"min_vcpus"`
+	SecurityGroupIds []string                                         `json:"security_group_ids"`
+	BidPercentage    int                                              `json:"bid_percentage"`
 	InstanceRole     string                                           `json:"instance_role"`
+	MaxVcpus         int                                              `json:"max_vcpus"`
+	SpotIamFleetRole string                                           `json:"spot_iam_fleet_role"`
+	DesiredVcpus     int                                              `json:"desired_vcpus"`
+	InstanceType     []string                                         `json:"instance_type"`
+	Tags             map[string]string                                `json:"tags"`
 }
 
 type AwsBatchComputeEnvironmentSpec struct {
-	EccClusterArn          string                           `json:"ecc_cluster_arn"`
-	EcsClusterArn          string                           `json:"ecs_cluster_arn"`
 	ComputeResources       []AwsBatchComputeEnvironmentSpec `json:"compute_resources"`
 	ServiceRole            string                           `json:"service_role"`
 	State                  string                           `json:"state"`
-	Arn                    string                           `json:"arn"`
-	ComputeEnvironmentName string                           `json:"compute_environment_name"`
 	Type                   string                           `json:"type"`
-	Status                 string                           `json:"status"`
+	EccClusterArn          string                           `json:"ecc_cluster_arn"`
 	StatusReason           string                           `json:"status_reason"`
+	ComputeEnvironmentName string                           `json:"compute_environment_name"`
+	Arn                    string                           `json:"arn"`
+	EcsClusterArn          string                           `json:"ecs_cluster_arn"`
+	Status                 string                           `json:"status"`
 }
 
 type AwsBatchComputeEnvironmentStatus struct {
@@ -58,6 +59,7 @@ type AwsBatchComputeEnvironmentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsBatchComputeEnvironmentList is a list of AwsBatchComputeEnvironments
 type AwsBatchComputeEnvironmentList struct {

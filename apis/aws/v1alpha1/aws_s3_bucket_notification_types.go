@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsS3BucketNotification struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,34 +19,34 @@ type AwsS3BucketNotification struct {
 }
 
 type AwsS3BucketNotificationSpecTopic struct {
-	Id           string   `json:"id"`
 	FilterPrefix string   `json:"filter_prefix"`
 	FilterSuffix string   `json:"filter_suffix"`
 	TopicArn     string   `json:"topic_arn"`
 	Events       []string `json:"events"`
+	Id           string   `json:"id"`
 }
 
 type AwsS3BucketNotificationSpecQueue struct {
-	QueueArn     string   `json:"queue_arn"`
-	Events       []string `json:"events"`
 	Id           string   `json:"id"`
 	FilterPrefix string   `json:"filter_prefix"`
 	FilterSuffix string   `json:"filter_suffix"`
+	QueueArn     string   `json:"queue_arn"`
+	Events       []string `json:"events"`
 }
 
 type AwsS3BucketNotificationSpecLambdaFunction struct {
+	FilterPrefix      string   `json:"filter_prefix"`
+	FilterSuffix      string   `json:"filter_suffix"`
 	LambdaFunctionArn string   `json:"lambda_function_arn"`
 	Events            []string `json:"events"`
 	Id                string   `json:"id"`
-	FilterPrefix      string   `json:"filter_prefix"`
-	FilterSuffix      string   `json:"filter_suffix"`
 }
 
 type AwsS3BucketNotificationSpec struct {
-	Bucket         string                        `json:"bucket"`
 	Topic          []AwsS3BucketNotificationSpec `json:"topic"`
 	Queue          []AwsS3BucketNotificationSpec `json:"queue"`
 	LambdaFunction []AwsS3BucketNotificationSpec `json:"lambda_function"`
+	Bucket         string                        `json:"bucket"`
 }
 
 type AwsS3BucketNotificationStatus struct {
@@ -53,6 +54,7 @@ type AwsS3BucketNotificationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsS3BucketNotificationList is a list of AwsS3BucketNotifications
 type AwsS3BucketNotificationList struct {

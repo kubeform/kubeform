@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleProject struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -22,37 +23,37 @@ type GoogleProjectSpecAppEngineFeatureSettings struct {
 }
 
 type GoogleProjectSpecAppEngineUrlDispatchRule struct {
-	Service string `json:"service"`
 	Domain  string `json:"domain"`
 	Path    string `json:"path"`
+	Service string `json:"service"`
 }
 
 type GoogleProjectSpecAppEngine struct {
+	GcrDomain       string                       `json:"gcr_domain"`
+	LocationId      string                       `json:"location_id"`
 	FeatureSettings []GoogleProjectSpecAppEngine `json:"feature_settings"`
 	Name            string                       `json:"name"`
-	UrlDispatchRule []GoogleProjectSpecAppEngine `json:"url_dispatch_rule"`
 	CodeBucket      string                       `json:"code_bucket"`
 	DefaultHostname string                       `json:"default_hostname"`
 	DefaultBucket   string                       `json:"default_bucket"`
-	LocationId      string                       `json:"location_id"`
-	ServingStatus   string                       `json:"serving_status"`
-	GcrDomain       string                       `json:"gcr_domain"`
 	AuthDomain      string                       `json:"auth_domain"`
+	ServingStatus   string                       `json:"serving_status"`
+	UrlDispatchRule []GoogleProjectSpecAppEngine `json:"url_dispatch_rule"`
 }
 
 type GoogleProjectSpec struct {
-	AutoCreateNetwork bool                `json:"auto_create_network"`
-	OrgId             string              `json:"org_id"`
-	FolderId          string              `json:"folder_id"`
-	PolicyEtag        string              `json:"policy_etag"`
-	Number            string              `json:"number"`
-	ProjectId         string              `json:"project_id"`
-	SkipDelete        bool                `json:"skip_delete"`
-	Name              string              `json:"name"`
-	PolicyData        string              `json:"policy_data"`
-	BillingAccount    string              `json:"billing_account"`
 	Labels            map[string]string   `json:"labels"`
 	AppEngine         []GoogleProjectSpec `json:"app_engine"`
+	OrgId             string              `json:"org_id"`
+	PolicyEtag        string              `json:"policy_etag"`
+	AutoCreateNetwork bool                `json:"auto_create_network"`
+	Name              string              `json:"name"`
+	FolderId          string              `json:"folder_id"`
+	PolicyData        string              `json:"policy_data"`
+	Number            string              `json:"number"`
+	BillingAccount    string              `json:"billing_account"`
+	ProjectId         string              `json:"project_id"`
+	SkipDelete        bool                `json:"skip_delete"`
 }
 
 type GoogleProjectStatus struct {
@@ -60,6 +61,7 @@ type GoogleProjectStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleProjectList is a list of GoogleProjects
 type GoogleProjectList struct {

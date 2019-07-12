@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleContainerAnalysisNote struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -26,9 +27,9 @@ type GoogleContainerAnalysisNoteSpecAttestationAuthority struct {
 }
 
 type GoogleContainerAnalysisNoteSpec struct {
+	AttestationAuthority []GoogleContainerAnalysisNoteSpec `json:"attestation_authority"`
 	Name                 string                            `json:"name"`
 	Project              string                            `json:"project"`
-	AttestationAuthority []GoogleContainerAnalysisNoteSpec `json:"attestation_authority"`
 }
 
 type GoogleContainerAnalysisNoteStatus struct {
@@ -36,6 +37,7 @@ type GoogleContainerAnalysisNoteStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleContainerAnalysisNoteList is a list of GoogleContainerAnalysisNotes
 type GoogleContainerAnalysisNoteList struct {

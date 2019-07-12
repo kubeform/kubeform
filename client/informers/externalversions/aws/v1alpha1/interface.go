@@ -118,6 +118,8 @@ type Interface interface {
 	AwsAppsyncApiKeys() AwsAppsyncApiKeyInformer
 	// AwsAppsyncDatasources returns a AwsAppsyncDatasourceInformer.
 	AwsAppsyncDatasources() AwsAppsyncDatasourceInformer
+	// AwsAppsyncFunctions returns a AwsAppsyncFunctionInformer.
+	AwsAppsyncFunctions() AwsAppsyncFunctionInformer
 	// AwsAppsyncGraphqlApis returns a AwsAppsyncGraphqlApiInformer.
 	AwsAppsyncGraphqlApis() AwsAppsyncGraphqlApiInformer
 	// AwsAppsyncResolvers returns a AwsAppsyncResolverInformer.
@@ -126,6 +128,8 @@ type Interface interface {
 	AwsAthenaDatabases() AwsAthenaDatabaseInformer
 	// AwsAthenaNamedQueries returns a AwsAthenaNamedQueryInformer.
 	AwsAthenaNamedQueries() AwsAthenaNamedQueryInformer
+	// AwsAthenaWorkgroups returns a AwsAthenaWorkgroupInformer.
+	AwsAthenaWorkgroups() AwsAthenaWorkgroupInformer
 	// AwsAutoscalingAttachments returns a AwsAutoscalingAttachmentInformer.
 	AwsAutoscalingAttachments() AwsAutoscalingAttachmentInformer
 	// AwsAutoscalingGroups returns a AwsAutoscalingGroupInformer.
@@ -238,12 +242,16 @@ type Interface interface {
 	AwsConfigConfigurationAggregators() AwsConfigConfigurationAggregatorInformer
 	// AwsConfigConfigurationRecorders returns a AwsConfigConfigurationRecorderInformer.
 	AwsConfigConfigurationRecorders() AwsConfigConfigurationRecorderInformer
+	// AwsConfigConfigurationRecorderStatuses returns a AwsConfigConfigurationRecorderStatusInformer.
+	AwsConfigConfigurationRecorderStatuses() AwsConfigConfigurationRecorderStatusInformer
 	// AwsConfigDeliveryChannels returns a AwsConfigDeliveryChannelInformer.
 	AwsConfigDeliveryChannels() AwsConfigDeliveryChannelInformer
 	// AwsCurReportDefinitions returns a AwsCurReportDefinitionInformer.
 	AwsCurReportDefinitions() AwsCurReportDefinitionInformer
 	// AwsCustomerGateways returns a AwsCustomerGatewayInformer.
 	AwsCustomerGateways() AwsCustomerGatewayInformer
+	// AwsDatapipelinePipelines returns a AwsDatapipelinePipelineInformer.
+	AwsDatapipelinePipelines() AwsDatapipelinePipelineInformer
 	// AwsDatasyncAgents returns a AwsDatasyncAgentInformer.
 	AwsDatasyncAgents() AwsDatasyncAgentInformer
 	// AwsDatasyncLocationEfses returns a AwsDatasyncLocationEfsInformer.
@@ -296,6 +304,8 @@ type Interface interface {
 	AwsDirectoryServiceConditionalForwarders() AwsDirectoryServiceConditionalForwarderInformer
 	// AwsDirectoryServiceDirectories returns a AwsDirectoryServiceDirectoryInformer.
 	AwsDirectoryServiceDirectories() AwsDirectoryServiceDirectoryInformer
+	// AwsDirectoryServiceLogSubscriptions returns a AwsDirectoryServiceLogSubscriptionInformer.
+	AwsDirectoryServiceLogSubscriptions() AwsDirectoryServiceLogSubscriptionInformer
 	// AwsDlmLifecyclePolicies returns a AwsDlmLifecyclePolicyInformer.
 	AwsDlmLifecyclePolicies() AwsDlmLifecyclePolicyInformer
 	// AwsDmsCertificates returns a AwsDmsCertificateInformer.
@@ -350,6 +360,10 @@ type Interface interface {
 	AwsDynamodbTables() AwsDynamodbTableInformer
 	// AwsDynamodbTableItems returns a AwsDynamodbTableItemInformer.
 	AwsDynamodbTableItems() AwsDynamodbTableItemInformer
+	// AwsEbsDefaultKmsKeys returns a AwsEbsDefaultKmsKeyInformer.
+	AwsEbsDefaultKmsKeys() AwsEbsDefaultKmsKeyInformer
+	// AwsEbsEncryptionByDefaults returns a AwsEbsEncryptionByDefaultInformer.
+	AwsEbsEncryptionByDefaults() AwsEbsEncryptionByDefaultInformer
 	// AwsEbsSnapshots returns a AwsEbsSnapshotInformer.
 	AwsEbsSnapshots() AwsEbsSnapshotInformer
 	// AwsEbsSnapshotCopies returns a AwsEbsSnapshotCopyInformer.
@@ -376,6 +390,8 @@ type Interface interface {
 	AwsEc2TransitGatewayRouteTablePropagations() AwsEc2TransitGatewayRouteTablePropagationInformer
 	// AwsEc2TransitGatewayVpcAttachments returns a AwsEc2TransitGatewayVpcAttachmentInformer.
 	AwsEc2TransitGatewayVpcAttachments() AwsEc2TransitGatewayVpcAttachmentInformer
+	// AwsEc2TransitGatewayVpcAttachmentAccepters returns a AwsEc2TransitGatewayVpcAttachmentAccepterInformer.
+	AwsEc2TransitGatewayVpcAttachmentAccepters() AwsEc2TransitGatewayVpcAttachmentAccepterInformer
 	// AwsEcrLifecyclePolicies returns a AwsEcrLifecyclePolicyInformer.
 	AwsEcrLifecyclePolicies() AwsEcrLifecyclePolicyInformer
 	// AwsEcrRepositories returns a AwsEcrRepositoryInformer.
@@ -452,6 +468,8 @@ type Interface interface {
 	AwsGlacierVaultLocks() AwsGlacierVaultLockInformer
 	// AwsGlobalacceleratorAccelerators returns a AwsGlobalacceleratorAcceleratorInformer.
 	AwsGlobalacceleratorAccelerators() AwsGlobalacceleratorAcceleratorInformer
+	// AwsGlobalacceleratorEndpointGroups returns a AwsGlobalacceleratorEndpointGroupInformer.
+	AwsGlobalacceleratorEndpointGroups() AwsGlobalacceleratorEndpointGroupInformer
 	// AwsGlobalacceleratorListeners returns a AwsGlobalacceleratorListenerInformer.
 	AwsGlobalacceleratorListeners() AwsGlobalacceleratorListenerInformer
 	// AwsGlueCatalogDatabases returns a AwsGlueCatalogDatabaseInformer.
@@ -636,6 +654,10 @@ type Interface interface {
 	AwsMqBrokers() AwsMqBrokerInformer
 	// AwsMqConfigurations returns a AwsMqConfigurationInformer.
 	AwsMqConfigurations() AwsMqConfigurationInformer
+	// AwsMskClusters returns a AwsMskClusterInformer.
+	AwsMskClusters() AwsMskClusterInformer
+	// AwsMskConfigurations returns a AwsMskConfigurationInformer.
+	AwsMskConfigurations() AwsMskConfigurationInformer
 	// AwsNatGateways returns a AwsNatGatewayInformer.
 	AwsNatGateways() AwsNatGatewayInformer
 	// AwsNeptuneClusters returns a AwsNeptuneClusterInformer.
@@ -846,10 +868,14 @@ type Interface interface {
 	AwsSesDomainIdentityVerifications() AwsSesDomainIdentityVerificationInformer
 	// AwsSesDomainMailFroms returns a AwsSesDomainMailFromInformer.
 	AwsSesDomainMailFroms() AwsSesDomainMailFromInformer
+	// AwsSesEmailIdentities returns a AwsSesEmailIdentityInformer.
+	AwsSesEmailIdentities() AwsSesEmailIdentityInformer
 	// AwsSesEventDestinations returns a AwsSesEventDestinationInformer.
 	AwsSesEventDestinations() AwsSesEventDestinationInformer
 	// AwsSesIdentityNotificationTopics returns a AwsSesIdentityNotificationTopicInformer.
 	AwsSesIdentityNotificationTopics() AwsSesIdentityNotificationTopicInformer
+	// AwsSesIdentityPolicies returns a AwsSesIdentityPolicyInformer.
+	AwsSesIdentityPolicies() AwsSesIdentityPolicyInformer
 	// AwsSesReceiptFilters returns a AwsSesReceiptFilterInformer.
 	AwsSesReceiptFilters() AwsSesReceiptFilterInformer
 	// AwsSesReceiptRules returns a AwsSesReceiptRuleInformer.
@@ -862,6 +888,8 @@ type Interface interface {
 	AwsSfnActivities() AwsSfnActivityInformer
 	// AwsSfnStateMachines returns a AwsSfnStateMachineInformer.
 	AwsSfnStateMachines() AwsSfnStateMachineInformer
+	// AwsShieldProtections returns a AwsShieldProtectionInformer.
+	AwsShieldProtections() AwsShieldProtectionInformer
 	// AwsSimpledbDomains returns a AwsSimpledbDomainInformer.
 	AwsSimpledbDomains() AwsSimpledbDomainInformer
 	// AwsSnapshotCreateVolumePermissions returns a AwsSnapshotCreateVolumePermissionInformer.
@@ -1272,6 +1300,11 @@ func (v *version) AwsAppsyncDatasources() AwsAppsyncDatasourceInformer {
 	return &awsAppsyncDatasourceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
+// AwsAppsyncFunctions returns a AwsAppsyncFunctionInformer.
+func (v *version) AwsAppsyncFunctions() AwsAppsyncFunctionInformer {
+	return &awsAppsyncFunctionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
 // AwsAppsyncGraphqlApis returns a AwsAppsyncGraphqlApiInformer.
 func (v *version) AwsAppsyncGraphqlApis() AwsAppsyncGraphqlApiInformer {
 	return &awsAppsyncGraphqlApiInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
@@ -1290,6 +1323,11 @@ func (v *version) AwsAthenaDatabases() AwsAthenaDatabaseInformer {
 // AwsAthenaNamedQueries returns a AwsAthenaNamedQueryInformer.
 func (v *version) AwsAthenaNamedQueries() AwsAthenaNamedQueryInformer {
 	return &awsAthenaNamedQueryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsAthenaWorkgroups returns a AwsAthenaWorkgroupInformer.
+func (v *version) AwsAthenaWorkgroups() AwsAthenaWorkgroupInformer {
+	return &awsAthenaWorkgroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // AwsAutoscalingAttachments returns a AwsAutoscalingAttachmentInformer.
@@ -1572,6 +1610,11 @@ func (v *version) AwsConfigConfigurationRecorders() AwsConfigConfigurationRecord
 	return &awsConfigConfigurationRecorderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
+// AwsConfigConfigurationRecorderStatuses returns a AwsConfigConfigurationRecorderStatusInformer.
+func (v *version) AwsConfigConfigurationRecorderStatuses() AwsConfigConfigurationRecorderStatusInformer {
+	return &awsConfigConfigurationRecorderStatusInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
 // AwsConfigDeliveryChannels returns a AwsConfigDeliveryChannelInformer.
 func (v *version) AwsConfigDeliveryChannels() AwsConfigDeliveryChannelInformer {
 	return &awsConfigDeliveryChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
@@ -1585,6 +1628,11 @@ func (v *version) AwsCurReportDefinitions() AwsCurReportDefinitionInformer {
 // AwsCustomerGateways returns a AwsCustomerGatewayInformer.
 func (v *version) AwsCustomerGateways() AwsCustomerGatewayInformer {
 	return &awsCustomerGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsDatapipelinePipelines returns a AwsDatapipelinePipelineInformer.
+func (v *version) AwsDatapipelinePipelines() AwsDatapipelinePipelineInformer {
+	return &awsDatapipelinePipelineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // AwsDatasyncAgents returns a AwsDatasyncAgentInformer.
@@ -1715,6 +1763,11 @@ func (v *version) AwsDirectoryServiceConditionalForwarders() AwsDirectoryService
 // AwsDirectoryServiceDirectories returns a AwsDirectoryServiceDirectoryInformer.
 func (v *version) AwsDirectoryServiceDirectories() AwsDirectoryServiceDirectoryInformer {
 	return &awsDirectoryServiceDirectoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsDirectoryServiceLogSubscriptions returns a AwsDirectoryServiceLogSubscriptionInformer.
+func (v *version) AwsDirectoryServiceLogSubscriptions() AwsDirectoryServiceLogSubscriptionInformer {
+	return &awsDirectoryServiceLogSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // AwsDlmLifecyclePolicies returns a AwsDlmLifecyclePolicyInformer.
@@ -1852,6 +1905,16 @@ func (v *version) AwsDynamodbTableItems() AwsDynamodbTableItemInformer {
 	return &awsDynamodbTableItemInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
+// AwsEbsDefaultKmsKeys returns a AwsEbsDefaultKmsKeyInformer.
+func (v *version) AwsEbsDefaultKmsKeys() AwsEbsDefaultKmsKeyInformer {
+	return &awsEbsDefaultKmsKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsEbsEncryptionByDefaults returns a AwsEbsEncryptionByDefaultInformer.
+func (v *version) AwsEbsEncryptionByDefaults() AwsEbsEncryptionByDefaultInformer {
+	return &awsEbsEncryptionByDefaultInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
 // AwsEbsSnapshots returns a AwsEbsSnapshotInformer.
 func (v *version) AwsEbsSnapshots() AwsEbsSnapshotInformer {
 	return &awsEbsSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
@@ -1915,6 +1978,11 @@ func (v *version) AwsEc2TransitGatewayRouteTablePropagations() AwsEc2TransitGate
 // AwsEc2TransitGatewayVpcAttachments returns a AwsEc2TransitGatewayVpcAttachmentInformer.
 func (v *version) AwsEc2TransitGatewayVpcAttachments() AwsEc2TransitGatewayVpcAttachmentInformer {
 	return &awsEc2TransitGatewayVpcAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsEc2TransitGatewayVpcAttachmentAccepters returns a AwsEc2TransitGatewayVpcAttachmentAccepterInformer.
+func (v *version) AwsEc2TransitGatewayVpcAttachmentAccepters() AwsEc2TransitGatewayVpcAttachmentAccepterInformer {
+	return &awsEc2TransitGatewayVpcAttachmentAccepterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // AwsEcrLifecyclePolicies returns a AwsEcrLifecyclePolicyInformer.
@@ -2105,6 +2173,11 @@ func (v *version) AwsGlacierVaultLocks() AwsGlacierVaultLockInformer {
 // AwsGlobalacceleratorAccelerators returns a AwsGlobalacceleratorAcceleratorInformer.
 func (v *version) AwsGlobalacceleratorAccelerators() AwsGlobalacceleratorAcceleratorInformer {
 	return &awsGlobalacceleratorAcceleratorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsGlobalacceleratorEndpointGroups returns a AwsGlobalacceleratorEndpointGroupInformer.
+func (v *version) AwsGlobalacceleratorEndpointGroups() AwsGlobalacceleratorEndpointGroupInformer {
+	return &awsGlobalacceleratorEndpointGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // AwsGlobalacceleratorListeners returns a AwsGlobalacceleratorListenerInformer.
@@ -2565,6 +2638,16 @@ func (v *version) AwsMqBrokers() AwsMqBrokerInformer {
 // AwsMqConfigurations returns a AwsMqConfigurationInformer.
 func (v *version) AwsMqConfigurations() AwsMqConfigurationInformer {
 	return &awsMqConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsMskClusters returns a AwsMskClusterInformer.
+func (v *version) AwsMskClusters() AwsMskClusterInformer {
+	return &awsMskClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsMskConfigurations returns a AwsMskConfigurationInformer.
+func (v *version) AwsMskConfigurations() AwsMskConfigurationInformer {
+	return &awsMskConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // AwsNatGateways returns a AwsNatGatewayInformer.
@@ -3092,6 +3175,11 @@ func (v *version) AwsSesDomainMailFroms() AwsSesDomainMailFromInformer {
 	return &awsSesDomainMailFromInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
+// AwsSesEmailIdentities returns a AwsSesEmailIdentityInformer.
+func (v *version) AwsSesEmailIdentities() AwsSesEmailIdentityInformer {
+	return &awsSesEmailIdentityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
 // AwsSesEventDestinations returns a AwsSesEventDestinationInformer.
 func (v *version) AwsSesEventDestinations() AwsSesEventDestinationInformer {
 	return &awsSesEventDestinationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
@@ -3100,6 +3188,11 @@ func (v *version) AwsSesEventDestinations() AwsSesEventDestinationInformer {
 // AwsSesIdentityNotificationTopics returns a AwsSesIdentityNotificationTopicInformer.
 func (v *version) AwsSesIdentityNotificationTopics() AwsSesIdentityNotificationTopicInformer {
 	return &awsSesIdentityNotificationTopicInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsSesIdentityPolicies returns a AwsSesIdentityPolicyInformer.
+func (v *version) AwsSesIdentityPolicies() AwsSesIdentityPolicyInformer {
+	return &awsSesIdentityPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // AwsSesReceiptFilters returns a AwsSesReceiptFilterInformer.
@@ -3130,6 +3223,11 @@ func (v *version) AwsSfnActivities() AwsSfnActivityInformer {
 // AwsSfnStateMachines returns a AwsSfnStateMachineInformer.
 func (v *version) AwsSfnStateMachines() AwsSfnStateMachineInformer {
 	return &awsSfnStateMachineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsShieldProtections returns a AwsShieldProtectionInformer.
+func (v *version) AwsShieldProtections() AwsShieldProtectionInformer {
+	return &awsShieldProtectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // AwsSimpledbDomains returns a AwsSimpledbDomainInformer.

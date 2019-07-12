@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLbSslNegotiationPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsLbSslNegotiationPolicy struct {
 }
 
 type AwsLbSslNegotiationPolicySpecAttribute struct {
-	Name  string `json:"name"`
 	Value string `json:"value"`
+	Name  string `json:"name"`
 }
 
 type AwsLbSslNegotiationPolicySpec struct {
@@ -34,6 +35,7 @@ type AwsLbSslNegotiationPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLbSslNegotiationPolicyList is a list of AwsLbSslNegotiationPolicys
 type AwsLbSslNegotiationPolicyList struct {

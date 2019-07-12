@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDevspaceController struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,14 +24,14 @@ type AzurermDevspaceControllerSpecSku struct {
 }
 
 type AzurermDevspaceControllerSpec struct {
-	Name                                 string                          `json:"name"`
 	Location                             string                          `json:"location"`
 	Sku                                  []AzurermDevspaceControllerSpec `json:"sku"`
 	HostSuffix                           string                          `json:"host_suffix"`
 	TargetContainerHostResourceId        string                          `json:"target_container_host_resource_id"`
 	TargetContainerHostCredentialsBase64 string                          `json:"target_container_host_credentials_base64"`
-	Tags                                 map[string]string               `json:"tags"`
+	Name                                 string                          `json:"name"`
 	ResourceGroupName                    string                          `json:"resource_group_name"`
+	Tags                                 map[string]string               `json:"tags"`
 	DataPlaneFqdn                        string                          `json:"data_plane_fqdn"`
 }
 
@@ -39,6 +40,7 @@ type AzurermDevspaceControllerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDevspaceControllerList is a list of AzurermDevspaceControllers
 type AzurermDevspaceControllerList struct {

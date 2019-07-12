@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementProductPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermApiManagementProductPolicy struct {
 }
 
 type AzurermApiManagementProductPolicySpec struct {
+	ResourceGroupName string `json:"resource_group_name"`
+	ApiManagementName string `json:"api_management_name"`
 	ProductId         string `json:"product_id"`
 	XmlContent        string `json:"xml_content"`
 	XmlLink           string `json:"xml_link"`
-	ResourceGroupName string `json:"resource_group_name"`
-	ApiManagementName string `json:"api_management_name"`
 }
 
 type AzurermApiManagementProductPolicyStatus struct {
@@ -30,6 +31,7 @@ type AzurermApiManagementProductPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementProductPolicyList is a list of AzurermApiManagementProductPolicys
 type AzurermApiManagementProductPolicyList struct {

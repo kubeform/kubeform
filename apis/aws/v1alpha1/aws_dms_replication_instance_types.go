@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDmsReplicationInstance struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,23 +19,23 @@ type AwsDmsReplicationInstance struct {
 }
 
 type AwsDmsReplicationInstanceSpec struct {
-	EngineVersion                 string            `json:"engine_version"`
-	KmsKeyArn                     string            `json:"kms_key_arn"`
-	PubliclyAccessible            bool              `json:"publicly_accessible"`
-	AutoMinorVersionUpgrade       bool              `json:"auto_minor_version_upgrade"`
+	ReplicationInstancePrivateIps []string          `json:"replication_instance_private_ips"`
+	AvailabilityZone              string            `json:"availability_zone"`
+	ReplicationSubnetGroupId      string            `json:"replication_subnet_group_id"`
+	VpcSecurityGroupIds           []string          `json:"vpc_security_group_ids"`
 	ReplicationInstanceId         string            `json:"replication_instance_id"`
 	ReplicationInstancePublicIps  []string          `json:"replication_instance_public_ips"`
-	VpcSecurityGroupIds           []string          `json:"vpc_security_group_ids"`
-	AllocatedStorage              int               `json:"allocated_storage"`
-	MultiAz                       bool              `json:"multi_az"`
+	ApplyImmediately              bool              `json:"apply_immediately"`
+	AutoMinorVersionUpgrade       bool              `json:"auto_minor_version_upgrade"`
+	EngineVersion                 string            `json:"engine_version"`
 	PreferredMaintenanceWindow    string            `json:"preferred_maintenance_window"`
+	PubliclyAccessible            bool              `json:"publicly_accessible"`
 	ReplicationInstanceClass      string            `json:"replication_instance_class"`
 	Tags                          map[string]string `json:"tags"`
-	ApplyImmediately              bool              `json:"apply_immediately"`
-	AvailabilityZone              string            `json:"availability_zone"`
+	AllocatedStorage              int               `json:"allocated_storage"`
+	KmsKeyArn                     string            `json:"kms_key_arn"`
+	MultiAz                       bool              `json:"multi_az"`
 	ReplicationInstanceArn        string            `json:"replication_instance_arn"`
-	ReplicationInstancePrivateIps []string          `json:"replication_instance_private_ips"`
-	ReplicationSubnetGroupId      string            `json:"replication_subnet_group_id"`
 }
 
 type AwsDmsReplicationInstanceStatus struct {
@@ -42,6 +43,7 @@ type AwsDmsReplicationInstanceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDmsReplicationInstanceList is a list of AwsDmsReplicationInstances
 type AwsDmsReplicationInstanceList struct {

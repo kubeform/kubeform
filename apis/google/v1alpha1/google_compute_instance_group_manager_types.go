@@ -9,22 +9,13 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeInstanceGroupManager struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              GoogleComputeInstanceGroupManagerSpec   `json:"spec,omitempty"`
 	Status            GoogleComputeInstanceGroupManagerStatus `json:"status,omitempty"`
-}
-
-type GoogleComputeInstanceGroupManagerSpecRollingUpdatePolicy struct {
-	MaxSurgeFixed         int    `json:"max_surge_fixed"`
-	MaxSurgePercent       int    `json:"max_surge_percent"`
-	MaxUnavailableFixed   int    `json:"max_unavailable_fixed"`
-	MaxUnavailablePercent int    `json:"max_unavailable_percent"`
-	MinReadySec           int    `json:"min_ready_sec"`
-	MinimalAction         string `json:"minimal_action"`
-	Type                  string `json:"type"`
 }
 
 type GoogleComputeInstanceGroupManagerSpecAutoHealingPolicies struct {
@@ -48,24 +39,34 @@ type GoogleComputeInstanceGroupManagerSpecNamedPort struct {
 	Port int    `json:"port"`
 }
 
+type GoogleComputeInstanceGroupManagerSpecRollingUpdatePolicy struct {
+	MinReadySec           int    `json:"min_ready_sec"`
+	MinimalAction         string `json:"minimal_action"`
+	Type                  string `json:"type"`
+	MaxSurgeFixed         int    `json:"max_surge_fixed"`
+	MaxSurgePercent       int    `json:"max_surge_percent"`
+	MaxUnavailableFixed   int    `json:"max_unavailable_fixed"`
+	MaxUnavailablePercent int    `json:"max_unavailable_percent"`
+}
+
 type GoogleComputeInstanceGroupManagerSpec struct {
 	BaseInstanceName    string                                  `json:"base_instance_name"`
-	UpdateStrategy      string                                  `json:"update_strategy"`
-	TargetSize          int                                     `json:"target_size"`
-	RollingUpdatePolicy []GoogleComputeInstanceGroupManagerSpec `json:"rolling_update_policy"`
-	WaitForInstances    bool                                    `json:"wait_for_instances"`
 	SelfLink            string                                  `json:"self_link"`
+	UpdateStrategy      string                                  `json:"update_strategy"`
 	AutoHealingPolicies []GoogleComputeInstanceGroupManagerSpec `json:"auto_healing_policies"`
-	InstanceTemplate    string                                  `json:"instance_template"`
-	Zone                string                                  `json:"zone"`
-	Description         string                                  `json:"description"`
-	Fingerprint         string                                  `json:"fingerprint"`
-	InstanceGroup       string                                  `json:"instance_group"`
 	Version             []GoogleComputeInstanceGroupManagerSpec `json:"version"`
 	Name                string                                  `json:"name"`
-	NamedPort           []GoogleComputeInstanceGroupManagerSpec `json:"named_port"`
-	Project             string                                  `json:"project"`
+	Fingerprint         string                                  `json:"fingerprint"`
 	TargetPools         []string                                `json:"target_pools"`
+	WaitForInstances    bool                                    `json:"wait_for_instances"`
+	InstanceTemplate    string                                  `json:"instance_template"`
+	InstanceGroup       string                                  `json:"instance_group"`
+	Project             string                                  `json:"project"`
+	Zone                string                                  `json:"zone"`
+	Description         string                                  `json:"description"`
+	NamedPort           []GoogleComputeInstanceGroupManagerSpec `json:"named_port"`
+	TargetSize          int                                     `json:"target_size"`
+	RollingUpdatePolicy []GoogleComputeInstanceGroupManagerSpec `json:"rolling_update_policy"`
 }
 
 type GoogleComputeInstanceGroupManagerStatus struct {
@@ -73,6 +74,7 @@ type GoogleComputeInstanceGroupManagerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeInstanceGroupManagerList is a list of GoogleComputeInstanceGroupManagers
 type GoogleComputeInstanceGroupManagerList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsPinpointApnsVoipSandboxChannel struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsPinpointApnsVoipSandboxChannel struct {
 }
 
 type AwsPinpointApnsVoipSandboxChannelSpec struct {
-	PrivateKey                  string `json:"private_key"`
-	TokenKey                    string `json:"token_key"`
 	TokenKeyId                  string `json:"token_key_id"`
 	ApplicationId               string `json:"application_id"`
+	Certificate                 string `json:"certificate"`
 	DefaultAuthenticationMethod string `json:"default_authentication_method"`
 	Enabled                     bool   `json:"enabled"`
-	TeamId                      string `json:"team_id"`
 	BundleId                    string `json:"bundle_id"`
-	Certificate                 string `json:"certificate"`
+	PrivateKey                  string `json:"private_key"`
+	TeamId                      string `json:"team_id"`
+	TokenKey                    string `json:"token_key"`
 }
 
 type AwsPinpointApnsVoipSandboxChannelStatus struct {
@@ -34,6 +35,7 @@ type AwsPinpointApnsVoipSandboxChannelStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsPinpointApnsVoipSandboxChannelList is a list of AwsPinpointApnsVoipSandboxChannels
 type AwsPinpointApnsVoipSandboxChannelList struct {

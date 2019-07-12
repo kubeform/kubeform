@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDataFactory struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,20 +25,20 @@ type AzurermDataFactorySpecIdentity struct {
 }
 
 type AzurermDataFactorySpecGithubConfiguration struct {
-	RootFolder     string `json:"root_folder"`
-	AccountName    string `json:"account_name"`
 	BranchName     string `json:"branch_name"`
 	GitUrl         string `json:"git_url"`
 	RepositoryName string `json:"repository_name"`
+	RootFolder     string `json:"root_folder"`
+	AccountName    string `json:"account_name"`
 }
 
 type AzurermDataFactorySpecVstsConfiguration struct {
-	RepositoryName string `json:"repository_name"`
-	RootFolder     string `json:"root_folder"`
-	TenantId       string `json:"tenant_id"`
 	AccountName    string `json:"account_name"`
 	BranchName     string `json:"branch_name"`
 	ProjectName    string `json:"project_name"`
+	RepositoryName string `json:"repository_name"`
+	RootFolder     string `json:"root_folder"`
+	TenantId       string `json:"tenant_id"`
 }
 
 type AzurermDataFactorySpec struct {
@@ -55,6 +56,7 @@ type AzurermDataFactoryStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDataFactoryList is a list of AzurermDataFactorys
 type AzurermDataFactoryList struct {

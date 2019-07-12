@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeTargetPool struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type GoogleComputeTargetPool struct {
 }
 
 type GoogleComputeTargetPoolSpec struct {
-	Name            string   `json:"name"`
-	Description     string   `json:"description"`
 	FailoverRatio   float64  `json:"failover_ratio"`
+	SelfLink        string   `json:"self_link"`
+	BackupPool      string   `json:"backup_pool"`
+	Description     string   `json:"description"`
+	HealthChecks    []string `json:"health_checks"`
 	Instances       []string `json:"instances"`
 	Project         string   `json:"project"`
-	BackupPool      string   `json:"backup_pool"`
-	HealthChecks    []string `json:"health_checks"`
 	Region          string   `json:"region"`
-	SelfLink        string   `json:"self_link"`
 	SessionAffinity string   `json:"session_affinity"`
+	Name            string   `json:"name"`
 }
 
 type GoogleComputeTargetPoolStatus struct {
@@ -35,6 +36,7 @@ type GoogleComputeTargetPoolStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeTargetPoolList is a list of GoogleComputeTargetPools
 type GoogleComputeTargetPoolList struct {

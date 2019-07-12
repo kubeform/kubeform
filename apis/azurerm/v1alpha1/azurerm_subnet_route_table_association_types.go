@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermSubnetRouteTableAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AzurermSubnetRouteTableAssociation struct {
 }
 
 type AzurermSubnetRouteTableAssociationSpec struct {
-	SubnetId     string `json:"subnet_id"`
 	RouteTableId string `json:"route_table_id"`
+	SubnetId     string `json:"subnet_id"`
 }
 
 type AzurermSubnetRouteTableAssociationStatus struct {
@@ -27,6 +28,7 @@ type AzurermSubnetRouteTableAssociationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermSubnetRouteTableAssociationList is a list of AzurermSubnetRouteTableAssociations
 type AzurermSubnetRouteTableAssociationList struct {

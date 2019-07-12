@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleBigqueryDataset struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,33 +19,33 @@ type GoogleBigqueryDataset struct {
 }
 
 type GoogleBigqueryDatasetSpecAccessView struct {
-	TableId   string `json:"table_id"`
 	ProjectId string `json:"project_id"`
 	DatasetId string `json:"dataset_id"`
+	TableId   string `json:"table_id"`
 }
 
 type GoogleBigqueryDatasetSpecAccess struct {
-	Domain       string                            `json:"domain"`
-	GroupByEmail string                            `json:"group_by_email"`
-	SpecialGroup string                            `json:"special_group"`
 	UserByEmail  string                            `json:"user_by_email"`
 	View         []GoogleBigqueryDatasetSpecAccess `json:"view"`
 	Role         string                            `json:"role"`
+	Domain       string                            `json:"domain"`
+	GroupByEmail string                            `json:"group_by_email"`
+	SpecialGroup string                            `json:"special_group"`
 }
 
 type GoogleBigqueryDatasetSpec struct {
+	Project                  string                      `json:"project"`
+	FriendlyName             string                      `json:"friendly_name"`
+	Description              string                      `json:"description"`
+	DefaultTableExpirationMs int                         `json:"default_table_expiration_ms"`
+	Access                   []GoogleBigqueryDatasetSpec `json:"access"`
 	SelfLink                 string                      `json:"self_link"`
 	Etag                     string                      `json:"etag"`
-	LastModifiedTime         int                         `json:"last_modified_time"`
-	Project                  string                      `json:"project"`
-	DefaultTableExpirationMs int                         `json:"default_table_expiration_ms"`
-	Description              string                      `json:"description"`
-	Location                 string                      `json:"location"`
-	Labels                   map[string]string           `json:"labels"`
-	Access                   []GoogleBigqueryDatasetSpec `json:"access"`
-	CreationTime             int                         `json:"creation_time"`
 	DatasetId                string                      `json:"dataset_id"`
-	FriendlyName             string                      `json:"friendly_name"`
+	LastModifiedTime         int                         `json:"last_modified_time"`
+	Labels                   map[string]string           `json:"labels"`
+	CreationTime             int                         `json:"creation_time"`
+	Location                 string                      `json:"location"`
 }
 
 type GoogleBigqueryDatasetStatus struct {
@@ -52,6 +53,7 @@ type GoogleBigqueryDatasetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleBigqueryDatasetList is a list of GoogleBigqueryDatasets
 type GoogleBigqueryDatasetList struct {

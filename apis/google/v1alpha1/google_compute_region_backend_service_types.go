@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeRegionBackendService struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,18 +24,18 @@ type GoogleComputeRegionBackendServiceSpecBackend struct {
 }
 
 type GoogleComputeRegionBackendServiceSpec struct {
+	Backend                      []GoogleComputeRegionBackendServiceSpec `json:"backend"`
+	Project                      string                                  `json:"project"`
+	Protocol                     string                                  `json:"protocol"`
+	Fingerprint                  string                                  `json:"fingerprint"`
+	SessionAffinity              string                                  `json:"session_affinity"`
 	Region                       string                                  `json:"region"`
 	SelfLink                     string                                  `json:"self_link"`
-	HealthChecks                 []string                                `json:"health_checks"`
-	Fingerprint                  string                                  `json:"fingerprint"`
-	Protocol                     string                                  `json:"protocol"`
-	Project                      string                                  `json:"project"`
-	SessionAffinity              string                                  `json:"session_affinity"`
 	TimeoutSec                   int                                     `json:"timeout_sec"`
-	ConnectionDrainingTimeoutSec int                                     `json:"connection_draining_timeout_sec"`
 	Name                         string                                  `json:"name"`
-	Backend                      []GoogleComputeRegionBackendServiceSpec `json:"backend"`
+	HealthChecks                 []string                                `json:"health_checks"`
 	Description                  string                                  `json:"description"`
+	ConnectionDrainingTimeoutSec int                                     `json:"connection_draining_timeout_sec"`
 }
 
 type GoogleComputeRegionBackendServiceStatus struct {
@@ -42,6 +43,7 @@ type GoogleComputeRegionBackendServiceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeRegionBackendServiceList is a list of GoogleComputeRegionBackendServices
 type GoogleComputeRegionBackendServiceList struct {

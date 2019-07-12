@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleLoggingProjectExclusion struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type GoogleLoggingProjectExclusion struct {
 }
 
 type GoogleLoggingProjectExclusionSpec struct {
-	Project     string `json:"project"`
+	Disabled    bool   `json:"disabled"`
 	Filter      string `json:"filter"`
 	Name        string `json:"name"`
 	Description string `json:"description"`
-	Disabled    bool   `json:"disabled"`
+	Project     string `json:"project"`
 }
 
 type GoogleLoggingProjectExclusionStatus struct {
@@ -30,6 +31,7 @@ type GoogleLoggingProjectExclusionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleLoggingProjectExclusionList is a list of GoogleLoggingProjectExclusions
 type GoogleLoggingProjectExclusionList struct {

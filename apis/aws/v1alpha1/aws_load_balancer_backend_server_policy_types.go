@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLoadBalancerBackendServerPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsLoadBalancerBackendServerPolicy struct {
 }
 
 type AwsLoadBalancerBackendServerPolicySpec struct {
-	LoadBalancerName string   `json:"load_balancer_name"`
 	PolicyNames      []string `json:"policy_names"`
 	InstancePort     int      `json:"instance_port"`
+	LoadBalancerName string   `json:"load_balancer_name"`
 }
 
 type AwsLoadBalancerBackendServerPolicyStatus struct {
@@ -28,6 +29,7 @@ type AwsLoadBalancerBackendServerPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLoadBalancerBackendServerPolicyList is a list of AwsLoadBalancerBackendServerPolicys
 type AwsLoadBalancerBackendServerPolicyList struct {

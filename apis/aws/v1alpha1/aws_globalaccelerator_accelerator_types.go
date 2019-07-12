@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGlobalacceleratorAccelerator struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AwsGlobalacceleratorAccelerator struct {
 }
 
 type AwsGlobalacceleratorAcceleratorSpecIpSets struct {
-	IpAddresses []string `json:"ip_addresses"`
 	IpFamily    string   `json:"ip_family"`
+	IpAddresses []string `json:"ip_addresses"`
 }
 
 type AwsGlobalacceleratorAcceleratorSpecAttributes struct {
+	FlowLogsEnabled  bool   `json:"flow_logs_enabled"`
 	FlowLogsS3Bucket string `json:"flow_logs_s3_bucket"`
 	FlowLogsS3Prefix string `json:"flow_logs_s3_prefix"`
-	FlowLogsEnabled  bool   `json:"flow_logs_enabled"`
 }
 
 type AwsGlobalacceleratorAcceleratorSpec struct {
@@ -41,6 +42,7 @@ type AwsGlobalacceleratorAcceleratorStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGlobalacceleratorAcceleratorList is a list of AwsGlobalacceleratorAccelerators
 type AwsGlobalacceleratorAcceleratorList struct {

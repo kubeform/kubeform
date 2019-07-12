@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsElastictranscoderPipeline struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,9 +18,15 @@ type AwsElastictranscoderPipeline struct {
 	Status            AwsElastictranscoderPipelineStatus `json:"status,omitempty"`
 }
 
+type AwsElastictranscoderPipelineSpecThumbnailConfigPermissions struct {
+	GranteeType string   `json:"grantee_type"`
+	Access      []string `json:"access"`
+	Grantee     string   `json:"grantee"`
+}
+
 type AwsElastictranscoderPipelineSpecContentConfig struct {
-	StorageClass string `json:"storage_class"`
 	Bucket       string `json:"bucket"`
+	StorageClass string `json:"storage_class"`
 }
 
 type AwsElastictranscoderPipelineSpecContentConfigPermissions struct {
@@ -35,27 +42,21 @@ type AwsElastictranscoderPipelineSpecNotifications struct {
 	Warning     string `json:"warning"`
 }
 
-type AwsElastictranscoderPipelineSpecThumbnailConfigPermissions struct {
-	Access      []string `json:"access"`
-	Grantee     string   `json:"grantee"`
-	GranteeType string   `json:"grantee_type"`
-}
-
 type AwsElastictranscoderPipelineSpecThumbnailConfig struct {
 	Bucket       string `json:"bucket"`
 	StorageClass string `json:"storage_class"`
 }
 
 type AwsElastictranscoderPipelineSpec struct {
-	Arn                        string                             `json:"arn"`
-	ContentConfig              []AwsElastictranscoderPipelineSpec `json:"content_config"`
-	ContentConfigPermissions   []AwsElastictranscoderPipelineSpec `json:"content_config_permissions"`
-	InputBucket                string                             `json:"input_bucket"`
-	Notifications              []AwsElastictranscoderPipelineSpec `json:"notifications"`
 	ThumbnailConfigPermissions []AwsElastictranscoderPipelineSpec `json:"thumbnail_config_permissions"`
 	AwsKmsKeyArn               string                             `json:"aws_kms_key_arn"`
+	ContentConfig              []AwsElastictranscoderPipelineSpec `json:"content_config"`
+	InputBucket                string                             `json:"input_bucket"`
 	Name                       string                             `json:"name"`
 	OutputBucket               string                             `json:"output_bucket"`
+	Arn                        string                             `json:"arn"`
+	ContentConfigPermissions   []AwsElastictranscoderPipelineSpec `json:"content_config_permissions"`
+	Notifications              []AwsElastictranscoderPipelineSpec `json:"notifications"`
 	Role                       string                             `json:"role"`
 	ThumbnailConfig            []AwsElastictranscoderPipelineSpec `json:"thumbnail_config"`
 }
@@ -65,6 +66,7 @@ type AwsElastictranscoderPipelineStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsElastictranscoderPipelineList is a list of AwsElastictranscoderPipelines
 type AwsElastictranscoderPipelineList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGlueConnection struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,13 +25,13 @@ type AwsGlueConnectionSpecPhysicalConnectionRequirements struct {
 }
 
 type AwsGlueConnectionSpec struct {
-	PhysicalConnectionRequirements []AwsGlueConnectionSpec `json:"physical_connection_requirements"`
-	CatalogId                      string                  `json:"catalog_id"`
-	ConnectionProperties           map[string]string       `json:"connection_properties"`
 	ConnectionType                 string                  `json:"connection_type"`
 	Description                    string                  `json:"description"`
 	MatchCriteria                  []string                `json:"match_criteria"`
 	Name                           string                  `json:"name"`
+	PhysicalConnectionRequirements []AwsGlueConnectionSpec `json:"physical_connection_requirements"`
+	CatalogId                      string                  `json:"catalog_id"`
+	ConnectionProperties           map[string]string       `json:"connection_properties"`
 }
 
 type AwsGlueConnectionStatus struct {
@@ -38,6 +39,7 @@ type AwsGlueConnectionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGlueConnectionList is a list of AwsGlueConnections
 type AwsGlueConnectionList struct {

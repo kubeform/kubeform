@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermStorageContainer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermStorageContainer struct {
 }
 
 type AzurermStorageContainerSpec struct {
+	StorageAccountName  string            `json:"storage_account_name"`
+	ContainerAccessType string            `json:"container_access_type"`
 	Properties          map[string]string `json:"properties"`
 	Name                string            `json:"name"`
 	ResourceGroupName   string            `json:"resource_group_name"`
-	StorageAccountName  string            `json:"storage_account_name"`
-	ContainerAccessType string            `json:"container_access_type"`
 }
 
 type AzurermStorageContainerStatus struct {
@@ -30,6 +31,7 @@ type AzurermStorageContainerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermStorageContainerList is a list of AzurermStorageContainers
 type AzurermStorageContainerList struct {

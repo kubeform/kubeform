@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type LinodeDomain struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type LinodeDomain struct {
 }
 
 type LinodeDomainSpec struct {
+	SoaEmail    string   `json:"soa_email"`
+	Type        string   `json:"type"`
+	Group       string   `json:"group"`
 	RetrySec    int      `json:"retry_sec"`
 	ExpireSec   int      `json:"expire_sec"`
-	Domain      string   `json:"domain"`
-	Group       string   `json:"group"`
-	Status      string   `json:"status"`
-	MasterIps   []string `json:"master_ips"`
 	AxfrIps     []string `json:"axfr_ips"`
 	TtlSec      int      `json:"ttl_sec"`
 	RefreshSec  int      `json:"refresh_sec"`
-	Type        string   `json:"type"`
-	Description string   `json:"description"`
-	SoaEmail    string   `json:"soa_email"`
 	Tags        []string `json:"tags"`
+	Domain      string   `json:"domain"`
+	Status      string   `json:"status"`
+	Description string   `json:"description"`
+	MasterIps   []string `json:"master_ips"`
 }
 
 type LinodeDomainStatus struct {
@@ -38,6 +39,7 @@ type LinodeDomainStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // LinodeDomainList is a list of LinodeDomains
 type LinodeDomainList struct {

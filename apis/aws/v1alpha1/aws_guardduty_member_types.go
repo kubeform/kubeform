@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGuarddutyMember struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,13 +19,13 @@ type AwsGuarddutyMember struct {
 }
 
 type AwsGuarddutyMemberSpec struct {
-	DisableEmailNotification bool   `json:"disable_email_notification"`
-	InvitationMessage        string `json:"invitation_message"`
 	AccountId                string `json:"account_id"`
 	DetectorId               string `json:"detector_id"`
 	Email                    string `json:"email"`
 	RelationshipStatus       string `json:"relationship_status"`
 	Invite                   bool   `json:"invite"`
+	DisableEmailNotification bool   `json:"disable_email_notification"`
+	InvitationMessage        string `json:"invitation_message"`
 }
 
 type AwsGuarddutyMemberStatus struct {
@@ -32,6 +33,7 @@ type AwsGuarddutyMemberStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGuarddutyMemberList is a list of AwsGuarddutyMembers
 type AwsGuarddutyMemberList struct {

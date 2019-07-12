@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDxLag struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsDxLag struct {
 }
 
 type AwsDxLagSpec struct {
-	Name                 string            `json:"name"`
-	Location             string            `json:"location"`
-	Tags                 map[string]string `json:"tags"`
-	Arn                  string            `json:"arn"`
-	ConnectionsBandwidth string            `json:"connections_bandwidth"`
 	NumberOfConnections  int               `json:"number_of_connections"`
 	ForceDestroy         bool              `json:"force_destroy"`
 	JumboFrameCapable    bool              `json:"jumbo_frame_capable"`
+	ConnectionsBandwidth string            `json:"connections_bandwidth"`
+	Name                 string            `json:"name"`
+	Location             string            `json:"location"`
+	Tags                 map[string]string `json:"tags"`
 	HasLogicalRedundancy string            `json:"has_logical_redundancy"`
+	Arn                  string            `json:"arn"`
 }
 
 type AwsDxLagStatus struct {
@@ -34,6 +35,7 @@ type AwsDxLagStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDxLagList is a list of AwsDxLags
 type AwsDxLagList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAutoscalingSchedule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsAutoscalingSchedule struct {
 }
 
 type AwsAutoscalingScheduleSpec struct {
-	MinSize              int    `json:"min_size"`
-	DesiredCapacity      int    `json:"desired_capacity"`
 	StartTime            string `json:"start_time"`
+	MinSize              int    `json:"min_size"`
+	MaxSize              int    `json:"max_size"`
+	Arn                  string `json:"arn"`
 	ScheduledActionName  string `json:"scheduled_action_name"`
 	AutoscalingGroupName string `json:"autoscaling_group_name"`
 	EndTime              string `json:"end_time"`
 	Recurrence           string `json:"recurrence"`
-	MaxSize              int    `json:"max_size"`
-	Arn                  string `json:"arn"`
+	DesiredCapacity      int    `json:"desired_capacity"`
 }
 
 type AwsAutoscalingScheduleStatus struct {
@@ -34,6 +35,7 @@ type AwsAutoscalingScheduleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAutoscalingScheduleList is a list of AwsAutoscalingSchedules
 type AwsAutoscalingScheduleList struct {

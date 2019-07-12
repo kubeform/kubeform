@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsOrganizationsOrganizationalUnit struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -25,10 +26,10 @@ type AwsOrganizationsOrganizationalUnitSpecAccounts struct {
 }
 
 type AwsOrganizationsOrganizationalUnitSpec struct {
-	Name     string                                   `json:"name"`
-	ParentId string                                   `json:"parent_id"`
 	Accounts []AwsOrganizationsOrganizationalUnitSpec `json:"accounts"`
 	Arn      string                                   `json:"arn"`
+	Name     string                                   `json:"name"`
+	ParentId string                                   `json:"parent_id"`
 }
 
 type AwsOrganizationsOrganizationalUnitStatus struct {
@@ -36,6 +37,7 @@ type AwsOrganizationsOrganizationalUnitStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsOrganizationsOrganizationalUnitList is a list of AwsOrganizationsOrganizationalUnits
 type AwsOrganizationsOrganizationalUnitList struct {

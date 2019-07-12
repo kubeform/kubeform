@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsConfigConfigRule struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -25,9 +26,9 @@ type AwsConfigConfigRuleSpecScope struct {
 }
 
 type AwsConfigConfigRuleSpecSourceSourceDetail struct {
+	MessageType               string `json:"message_type"`
 	EventSource               string `json:"event_source"`
 	MaximumExecutionFrequency string `json:"maximum_execution_frequency"`
-	MessageType               string `json:"message_type"`
 }
 
 type AwsConfigConfigRuleSpecSource struct {
@@ -37,14 +38,14 @@ type AwsConfigConfigRuleSpecSource struct {
 }
 
 type AwsConfigConfigRuleSpec struct {
+	Name                      string                    `json:"name"`
+	RuleId                    string                    `json:"rule_id"`
 	Arn                       string                    `json:"arn"`
 	Description               string                    `json:"description"`
 	InputParameters           string                    `json:"input_parameters"`
 	MaximumExecutionFrequency string                    `json:"maximum_execution_frequency"`
 	Scope                     []AwsConfigConfigRuleSpec `json:"scope"`
 	Source                    []AwsConfigConfigRuleSpec `json:"source"`
-	Name                      string                    `json:"name"`
-	RuleId                    string                    `json:"rule_id"`
 }
 
 type AwsConfigConfigRuleStatus struct {
@@ -52,6 +53,7 @@ type AwsConfigConfigRuleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsConfigConfigRuleList is a list of AwsConfigConfigRules
 type AwsConfigConfigRuleList struct {

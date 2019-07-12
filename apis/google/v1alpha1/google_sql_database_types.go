@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleSqlDatabase struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleSqlDatabase struct {
 }
 
 type GoogleSqlDatabaseSpec struct {
+	SelfLink  string `json:"self_link"`
+	Charset   string `json:"charset"`
 	Collation string `json:"collation"`
 	Name      string `json:"name"`
 	Instance  string `json:"instance"`
 	Project   string `json:"project"`
-	SelfLink  string `json:"self_link"`
-	Charset   string `json:"charset"`
 }
 
 type GoogleSqlDatabaseStatus struct {
@@ -31,6 +32,7 @@ type GoogleSqlDatabaseStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleSqlDatabaseList is a list of GoogleSqlDatabases
 type GoogleSqlDatabaseList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsNeptuneSubnetGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsNeptuneSubnetGroup struct {
 }
 
 type AwsNeptuneSubnetGroupSpec struct {
+	Arn         string            `json:"arn"`
 	Name        string            `json:"name"`
 	NamePrefix  string            `json:"name_prefix"`
 	Description string            `json:"description"`
 	SubnetIds   []string          `json:"subnet_ids"`
 	Tags        map[string]string `json:"tags"`
-	Arn         string            `json:"arn"`
 }
 
 type AwsNeptuneSubnetGroupStatus struct {
@@ -31,6 +32,7 @@ type AwsNeptuneSubnetGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsNeptuneSubnetGroupList is a list of AwsNeptuneSubnetGroups
 type AwsNeptuneSubnetGroupList struct {

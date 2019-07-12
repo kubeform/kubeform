@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAlb struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -29,25 +30,25 @@ type AwsAlbSpecAccessLogs struct {
 }
 
 type AwsAlbSpec struct {
-	SecurityGroups               []string          `json:"security_groups"`
-	SubnetMapping                []AwsAlbSpec      `json:"subnet_mapping"`
-	AccessLogs                   []AwsAlbSpec      `json:"access_logs"`
-	IdleTimeout                  int               `json:"idle_timeout"`
-	EnableCrossZoneLoadBalancing bool              `json:"enable_cross_zone_load_balancing"`
+	LoadBalancerType             string            `json:"load_balancer_type"`
 	IpAddressType                string            `json:"ip_address_type"`
-	DnsName                      string            `json:"dns_name"`
-	NamePrefix                   string            `json:"name_prefix"`
+	VpcId                        string            `json:"vpc_id"`
 	EnableDeletionProtection     bool              `json:"enable_deletion_protection"`
+	ZoneId                       string            `json:"zone_id"`
+	Subnets                      []string          `json:"subnets"`
+	SubnetMapping                []AwsAlbSpec      `json:"subnet_mapping"`
+	EnableCrossZoneLoadBalancing bool              `json:"enable_cross_zone_load_balancing"`
+	EnableHttp2                  bool              `json:"enable_http2"`
 	Arn                          string            `json:"arn"`
+	ArnSuffix                    string            `json:"arn_suffix"`
 	Name                         string            `json:"name"`
 	Internal                     bool              `json:"internal"`
-	Subnets                      []string          `json:"subnets"`
-	EnableHttp2                  bool              `json:"enable_http2"`
+	DnsName                      string            `json:"dns_name"`
 	Tags                         map[string]string `json:"tags"`
-	ArnSuffix                    string            `json:"arn_suffix"`
-	VpcId                        string            `json:"vpc_id"`
-	ZoneId                       string            `json:"zone_id"`
-	LoadBalancerType             string            `json:"load_balancer_type"`
+	NamePrefix                   string            `json:"name_prefix"`
+	SecurityGroups               []string          `json:"security_groups"`
+	AccessLogs                   []AwsAlbSpec      `json:"access_logs"`
+	IdleTimeout                  int               `json:"idle_timeout"`
 }
 
 type AwsAlbStatus struct {
@@ -55,6 +56,7 @@ type AwsAlbStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAlbList is a list of AwsAlbs
 type AwsAlbList struct {

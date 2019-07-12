@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSagemakerEndpointConfiguration struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,20 +19,20 @@ type AwsSagemakerEndpointConfiguration struct {
 }
 
 type AwsSagemakerEndpointConfigurationSpecProductionVariants struct {
+	AcceleratorType      string  `json:"accelerator_type"`
 	VariantName          string  `json:"variant_name"`
 	ModelName            string  `json:"model_name"`
 	InitialInstanceCount int     `json:"initial_instance_count"`
 	InstanceType         string  `json:"instance_type"`
 	InitialVariantWeight float64 `json:"initial_variant_weight"`
-	AcceleratorType      string  `json:"accelerator_type"`
 }
 
 type AwsSagemakerEndpointConfigurationSpec struct {
-	ProductionVariants []AwsSagemakerEndpointConfigurationSpec `json:"production_variants"`
-	KmsKeyArn          string                                  `json:"kms_key_arn"`
 	Tags               map[string]string                       `json:"tags"`
 	Arn                string                                  `json:"arn"`
 	Name               string                                  `json:"name"`
+	ProductionVariants []AwsSagemakerEndpointConfigurationSpec `json:"production_variants"`
+	KmsKeyArn          string                                  `json:"kms_key_arn"`
 }
 
 type AwsSagemakerEndpointConfigurationStatus struct {
@@ -39,6 +40,7 @@ type AwsSagemakerEndpointConfigurationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSagemakerEndpointConfigurationList is a list of AwsSagemakerEndpointConfigurations
 type AwsSagemakerEndpointConfigurationList struct {

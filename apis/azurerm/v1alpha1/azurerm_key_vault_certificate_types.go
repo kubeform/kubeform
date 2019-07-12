@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermKeyVaultCertificate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AzurermKeyVaultCertificate struct {
 }
 
 type AzurermKeyVaultCertificateSpecCertificate struct {
-	Password string `json:"password"`
 	Contents string `json:"contents"`
+	Password string `json:"password"`
 }
 
 type AzurermKeyVaultCertificateSpecCertificatePolicyKeyProperties struct {
@@ -34,8 +35,8 @@ type AzurermKeyVaultCertificateSpecCertificatePolicyLifetimeActionAction struct 
 }
 
 type AzurermKeyVaultCertificateSpecCertificatePolicyLifetimeActionTrigger struct {
-	LifetimePercentage int `json:"lifetime_percentage"`
 	DaysBeforeExpiry   int `json:"days_before_expiry"`
+	LifetimePercentage int `json:"lifetime_percentage"`
 }
 
 type AzurermKeyVaultCertificateSpecCertificatePolicyLifetimeAction struct {
@@ -54,11 +55,11 @@ type AzurermKeyVaultCertificateSpecCertificatePolicyX509CertificatePropertiesSub
 }
 
 type AzurermKeyVaultCertificateSpecCertificatePolicyX509CertificateProperties struct {
-	ExtendedKeyUsage        []string                                                                   `json:"extended_key_usage"`
-	KeyUsage                []string                                                                   `json:"key_usage"`
 	Subject                 string                                                                     `json:"subject"`
 	SubjectAlternativeNames []AzurermKeyVaultCertificateSpecCertificatePolicyX509CertificateProperties `json:"subject_alternative_names"`
 	ValidityInMonths        int                                                                        `json:"validity_in_months"`
+	ExtendedKeyUsage        []string                                                                   `json:"extended_key_usage"`
+	KeyUsage                []string                                                                   `json:"key_usage"`
 }
 
 type AzurermKeyVaultCertificateSpecCertificatePolicyIssuerParameters struct {
@@ -74,16 +75,16 @@ type AzurermKeyVaultCertificateSpecCertificatePolicy struct {
 }
 
 type AzurermKeyVaultCertificateSpec struct {
-	Name              string                           `json:"name"`
-	VaultUri          string                           `json:"vault_uri"`
-	SecretId          string                           `json:"secret_id"`
 	CertificateData   string                           `json:"certificate_data"`
-	Tags              map[string]string                `json:"tags"`
-	KeyVaultId        string                           `json:"key_vault_id"`
-	Certificate       []AzurermKeyVaultCertificateSpec `json:"certificate"`
-	CertificatePolicy []AzurermKeyVaultCertificateSpec `json:"certificate_policy"`
-	Version           string                           `json:"version"`
 	Thumbprint        string                           `json:"thumbprint"`
+	Name              string                           `json:"name"`
+	KeyVaultId        string                           `json:"key_vault_id"`
+	VaultUri          string                           `json:"vault_uri"`
+	Certificate       []AzurermKeyVaultCertificateSpec `json:"certificate"`
+	Version           string                           `json:"version"`
+	CertificatePolicy []AzurermKeyVaultCertificateSpec `json:"certificate_policy"`
+	SecretId          string                           `json:"secret_id"`
+	Tags              map[string]string                `json:"tags"`
 }
 
 type AzurermKeyVaultCertificateStatus struct {
@@ -91,6 +92,7 @@ type AzurermKeyVaultCertificateStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermKeyVaultCertificateList is a list of AzurermKeyVaultCertificates
 type AzurermKeyVaultCertificateList struct {

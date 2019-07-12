@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanSshKey struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type DigitaloceanSshKey struct {
 }
 
 type DigitaloceanSshKeySpec struct {
+	PublicKey   string `json:"public_key"`
 	Fingerprint string `json:"fingerprint"`
 	Name        string `json:"name"`
-	PublicKey   string `json:"public_key"`
 }
 
 type DigitaloceanSshKeyStatus struct {
@@ -28,6 +29,7 @@ type DigitaloceanSshKeyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanSshKeyList is a list of DigitaloceanSshKeys
 type DigitaloceanSshKeyList struct {

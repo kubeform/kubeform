@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGlacierVault struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,12 +24,12 @@ type AwsGlacierVaultSpecNotification struct {
 }
 
 type AwsGlacierVaultSpec struct {
-	Notification []AwsGlacierVaultSpec `json:"notification"`
 	Tags         map[string]string     `json:"tags"`
 	Name         string                `json:"name"`
 	Location     string                `json:"location"`
 	Arn          string                `json:"arn"`
 	AccessPolicy string                `json:"access_policy"`
+	Notification []AwsGlacierVaultSpec `json:"notification"`
 }
 
 type AwsGlacierVaultStatus struct {
@@ -36,6 +37,7 @@ type AwsGlacierVaultStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGlacierVaultList is a list of AwsGlacierVaults
 type AwsGlacierVaultList struct {

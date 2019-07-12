@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementCertificate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AzurermApiManagementCertificate struct {
 }
 
 type AzurermApiManagementCertificateSpec struct {
+	Expiration        string `json:"expiration"`
+	Subject           string `json:"subject"`
 	Thumbprint        string `json:"thumbprint"`
 	Name              string `json:"name"`
 	ResourceGroupName string `json:"resource_group_name"`
 	ApiManagementName string `json:"api_management_name"`
 	Data              string `json:"data"`
 	Password          string `json:"password"`
-	Expiration        string `json:"expiration"`
-	Subject           string `json:"subject"`
 }
 
 type AzurermApiManagementCertificateStatus struct {
@@ -33,6 +34,7 @@ type AzurermApiManagementCertificateStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementCertificateList is a list of AzurermApiManagementCertificates
 type AzurermApiManagementCertificateList struct {

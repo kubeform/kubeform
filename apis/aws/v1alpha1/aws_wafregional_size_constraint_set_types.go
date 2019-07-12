@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafregionalSizeConstraintSet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsWafregionalSizeConstraintSet struct {
 }
 
 type AwsWafregionalSizeConstraintSetSpecSizeConstraintsFieldToMatch struct {
-	Type string `json:"type"`
 	Data string `json:"data"`
+	Type string `json:"type"`
 }
 
 type AwsWafregionalSizeConstraintSetSpecSizeConstraints struct {
+	TextTransformation string                                               `json:"text_transformation"`
 	FieldToMatch       []AwsWafregionalSizeConstraintSetSpecSizeConstraints `json:"field_to_match"`
 	ComparisonOperator string                                               `json:"comparison_operator"`
 	Size               int                                                  `json:"size"`
-	TextTransformation string                                               `json:"text_transformation"`
 }
 
 type AwsWafregionalSizeConstraintSetSpec struct {
@@ -39,6 +40,7 @@ type AwsWafregionalSizeConstraintSetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafregionalSizeConstraintSetList is a list of AwsWafregionalSizeConstraintSets
 type AwsWafregionalSizeConstraintSetList struct {

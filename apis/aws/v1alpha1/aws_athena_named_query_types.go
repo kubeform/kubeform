@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAthenaNamedQuery struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsAthenaNamedQuery struct {
 }
 
 type AwsAthenaNamedQuerySpec struct {
-	Name        string `json:"name"`
-	Query       string `json:"query"`
 	Database    string `json:"database"`
 	Description string `json:"description"`
+	Name        string `json:"name"`
+	Query       string `json:"query"`
 }
 
 type AwsAthenaNamedQueryStatus struct {
@@ -29,6 +30,7 @@ type AwsAthenaNamedQueryStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAthenaNamedQueryList is a list of AwsAthenaNamedQuerys
 type AwsAthenaNamedQueryList struct {

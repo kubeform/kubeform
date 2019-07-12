@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEc2TransitGatewayRouteTablePropagation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsEc2TransitGatewayRouteTablePropagation struct {
 }
 
 type AwsEc2TransitGatewayRouteTablePropagationSpec struct {
-	TransitGatewayAttachmentId string `json:"transit_gateway_attachment_id"`
-	TransitGatewayRouteTableId string `json:"transit_gateway_route_table_id"`
 	ResourceId                 string `json:"resource_id"`
 	ResourceType               string `json:"resource_type"`
+	TransitGatewayAttachmentId string `json:"transit_gateway_attachment_id"`
+	TransitGatewayRouteTableId string `json:"transit_gateway_route_table_id"`
 }
 
 type AwsEc2TransitGatewayRouteTablePropagationStatus struct {
@@ -29,6 +30,7 @@ type AwsEc2TransitGatewayRouteTablePropagationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEc2TransitGatewayRouteTablePropagationList is a list of AwsEc2TransitGatewayRouteTablePropagations
 type AwsEc2TransitGatewayRouteTablePropagationList struct {

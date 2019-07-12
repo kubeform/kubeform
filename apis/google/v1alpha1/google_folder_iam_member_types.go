@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleFolderIamMember struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,9 +20,9 @@ type GoogleFolderIamMember struct {
 
 type GoogleFolderIamMemberSpec struct {
 	Role   string `json:"role"`
-	Folder string `json:"folder"`
 	Member string `json:"member"`
 	Etag   string `json:"etag"`
+	Folder string `json:"folder"`
 }
 
 type GoogleFolderIamMemberStatus struct {
@@ -29,6 +30,7 @@ type GoogleFolderIamMemberStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleFolderIamMemberList is a list of GoogleFolderIamMembers
 type GoogleFolderIamMemberList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermPolicySetDefinition struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -33,6 +34,7 @@ type AzurermPolicySetDefinitionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermPolicySetDefinitionList is a list of AzurermPolicySetDefinitions
 type AzurermPolicySetDefinitionList struct {

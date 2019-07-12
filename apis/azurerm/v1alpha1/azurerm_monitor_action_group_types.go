@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermMonitorActionGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,24 +18,23 @@ type AzurermMonitorActionGroup struct {
 	Status            AzurermMonitorActionGroupStatus `json:"status,omitempty"`
 }
 
-type AzurermMonitorActionGroupSpecWebhookReceiver struct {
-	ServiceUri string `json:"service_uri"`
-	Name       string `json:"name"`
-}
-
 type AzurermMonitorActionGroupSpecEmailReceiver struct {
 	Name         string `json:"name"`
 	EmailAddress string `json:"email_address"`
 }
 
 type AzurermMonitorActionGroupSpecSmsReceiver struct {
+	CountryCode string `json:"country_code"`
 	PhoneNumber string `json:"phone_number"`
 	Name        string `json:"name"`
-	CountryCode string `json:"country_code"`
+}
+
+type AzurermMonitorActionGroupSpecWebhookReceiver struct {
+	Name       string `json:"name"`
+	ServiceUri string `json:"service_uri"`
 }
 
 type AzurermMonitorActionGroupSpec struct {
-	WebhookReceiver   []AzurermMonitorActionGroupSpec `json:"webhook_receiver"`
 	Tags              map[string]string               `json:"tags"`
 	Name              string                          `json:"name"`
 	ResourceGroupName string                          `json:"resource_group_name"`
@@ -42,6 +42,7 @@ type AzurermMonitorActionGroupSpec struct {
 	Enabled           bool                            `json:"enabled"`
 	EmailReceiver     []AzurermMonitorActionGroupSpec `json:"email_receiver"`
 	SmsReceiver       []AzurermMonitorActionGroupSpec `json:"sms_receiver"`
+	WebhookReceiver   []AzurermMonitorActionGroupSpec `json:"webhook_receiver"`
 }
 
 type AzurermMonitorActionGroupStatus struct {
@@ -49,6 +50,7 @@ type AzurermMonitorActionGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermMonitorActionGroupList is a list of AzurermMonitorActionGroups
 type AzurermMonitorActionGroupList struct {

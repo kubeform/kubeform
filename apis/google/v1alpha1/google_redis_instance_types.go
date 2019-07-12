@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleRedisInstance struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,23 +19,23 @@ type GoogleRedisInstance struct {
 }
 
 type GoogleRedisInstanceSpec struct {
-	AlternativeLocationId string            `json:"alternative_location_id"`
-	Labels                map[string]string `json:"labels"`
-	ReservedIpRange       string            `json:"reserved_ip_range"`
-	Host                  string            `json:"host"`
-	DisplayName           string            `json:"display_name"`
-	LocationId            string            `json:"location_id"`
-	Region                string            `json:"region"`
-	CurrentLocationId     string            `json:"current_location_id"`
-	Port                  int               `json:"port"`
+	RedisVersion          string            `json:"redis_version"`
 	Project               string            `json:"project"`
 	MemorySizeGb          int               `json:"memory_size_gb"`
 	Name                  string            `json:"name"`
+	Region                string            `json:"region"`
+	AlternativeLocationId string            `json:"alternative_location_id"`
 	AuthorizedNetwork     string            `json:"authorized_network"`
+	DisplayName           string            `json:"display_name"`
 	RedisConfigs          map[string]string `json:"redis_configs"`
-	RedisVersion          string            `json:"redis_version"`
+	ReservedIpRange       string            `json:"reserved_ip_range"`
 	Tier                  string            `json:"tier"`
+	Labels                map[string]string `json:"labels"`
+	LocationId            string            `json:"location_id"`
 	CreateTime            string            `json:"create_time"`
+	CurrentLocationId     string            `json:"current_location_id"`
+	Host                  string            `json:"host"`
+	Port                  int               `json:"port"`
 }
 
 type GoogleRedisInstanceStatus struct {
@@ -42,6 +43,7 @@ type GoogleRedisInstanceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleRedisInstanceList is a list of GoogleRedisInstances
 type GoogleRedisInstanceList struct {

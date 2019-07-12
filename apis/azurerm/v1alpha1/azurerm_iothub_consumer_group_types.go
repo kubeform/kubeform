@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermIothubConsumerGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AzurermIothubConsumerGroup struct {
 }
 
 type AzurermIothubConsumerGroupSpec struct {
+	ResourceGroupName    string `json:"resource_group_name"`
 	Name                 string `json:"name"`
 	IothubName           string `json:"iothub_name"`
 	EventhubEndpointName string `json:"eventhub_endpoint_name"`
-	ResourceGroupName    string `json:"resource_group_name"`
 }
 
 type AzurermIothubConsumerGroupStatus struct {
@@ -29,6 +30,7 @@ type AzurermIothubConsumerGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermIothubConsumerGroupList is a list of AzurermIothubConsumerGroups
 type AzurermIothubConsumerGroupList struct {

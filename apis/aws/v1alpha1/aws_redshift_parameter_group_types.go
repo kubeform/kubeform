@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRedshiftParameterGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,10 +24,12 @@ type AwsRedshiftParameterGroupSpecParameter struct {
 }
 
 type AwsRedshiftParameterGroupSpec struct {
-	Name        string                          `json:"name"`
 	Family      string                          `json:"family"`
 	Description string                          `json:"description"`
 	Parameter   []AwsRedshiftParameterGroupSpec `json:"parameter"`
+	Tags        map[string]string               `json:"tags"`
+	Arn         string                          `json:"arn"`
+	Name        string                          `json:"name"`
 }
 
 type AwsRedshiftParameterGroupStatus struct {
@@ -34,6 +37,7 @@ type AwsRedshiftParameterGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRedshiftParameterGroupList is a list of AwsRedshiftParameterGroups
 type AwsRedshiftParameterGroupList struct {

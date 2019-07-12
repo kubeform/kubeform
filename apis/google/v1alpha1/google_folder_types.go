@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleFolder struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type GoogleFolder struct {
 }
 
 type GoogleFolderSpec struct {
+	Parent         string `json:"parent"`
 	DisplayName    string `json:"display_name"`
 	Name           string `json:"name"`
 	LifecycleState string `json:"lifecycle_state"`
 	CreateTime     string `json:"create_time"`
-	Parent         string `json:"parent"`
 }
 
 type GoogleFolderStatus struct {
@@ -30,6 +31,7 @@ type GoogleFolderStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleFolderList is a list of GoogleFolders
 type GoogleFolderList struct {

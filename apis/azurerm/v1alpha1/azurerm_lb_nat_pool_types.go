@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermLbNatPool struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,16 @@ type AzurermLbNatPool struct {
 }
 
 type AzurermLbNatPoolSpec struct {
-	Location                    string `json:"location"`
-	ResourceGroupName           string `json:"resource_group_name"`
-	FrontendIpConfigurationName string `json:"frontend_ip_configuration_name"`
-	Name                        string `json:"name"`
-	LoadbalancerId              string `json:"loadbalancer_id"`
 	Protocol                    string `json:"protocol"`
 	FrontendPortStart           int    `json:"frontend_port_start"`
+	FrontendIpConfigurationName string `json:"frontend_ip_configuration_name"`
+	FrontendIpConfigurationId   string `json:"frontend_ip_configuration_id"`
+	Name                        string `json:"name"`
+	Location                    string `json:"location"`
 	FrontendPortEnd             int    `json:"frontend_port_end"`
 	BackendPort                 int    `json:"backend_port"`
-	FrontendIpConfigurationId   string `json:"frontend_ip_configuration_id"`
+	ResourceGroupName           string `json:"resource_group_name"`
+	LoadbalancerId              string `json:"loadbalancer_id"`
 }
 
 type AzurermLbNatPoolStatus struct {
@@ -35,6 +36,7 @@ type AzurermLbNatPoolStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermLbNatPoolList is a list of AzurermLbNatPools
 type AzurermLbNatPoolList struct {

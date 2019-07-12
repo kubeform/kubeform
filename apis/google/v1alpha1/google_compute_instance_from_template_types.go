@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeInstanceFromTemplate struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,54 +18,54 @@ type GoogleComputeInstanceFromTemplate struct {
 	Status            GoogleComputeInstanceFromTemplateStatus `json:"status,omitempty"`
 }
 
-type GoogleComputeInstanceFromTemplateSpecScheduling struct {
-	Preemptible       bool   `json:"preemptible"`
-	OnHostMaintenance string `json:"on_host_maintenance"`
-	AutomaticRestart  bool   `json:"automatic_restart"`
-}
-
-type GoogleComputeInstanceFromTemplateSpecAttachedDisk struct {
-	Mode                    string `json:"mode"`
-	DiskEncryptionKeyRaw    string `json:"disk_encryption_key_raw"`
-	DiskEncryptionKeySha256 string `json:"disk_encryption_key_sha256"`
-	Source                  string `json:"source"`
-	DeviceName              string `json:"device_name"`
+type GoogleComputeInstanceFromTemplateSpecServiceAccount struct {
+	Email  string   `json:"email"`
+	Scopes []string `json:"scopes"`
 }
 
 type GoogleComputeInstanceFromTemplateSpecGuestAccelerator struct {
-	Count int    `json:"count"`
 	Type  string `json:"type"`
+	Count int    `json:"count"`
+}
+
+type GoogleComputeInstanceFromTemplateSpecBootDiskInitializeParams struct {
+	Type  string `json:"type"`
+	Image string `json:"image"`
+	Size  int    `json:"size"`
+}
+
+type GoogleComputeInstanceFromTemplateSpecBootDisk struct {
+	DiskEncryptionKeyRaw    string                                          `json:"disk_encryption_key_raw"`
+	DiskEncryptionKeySha256 string                                          `json:"disk_encryption_key_sha256"`
+	InitializeParams        []GoogleComputeInstanceFromTemplateSpecBootDisk `json:"initialize_params"`
+	Source                  string                                          `json:"source"`
+	AutoDelete              bool                                            `json:"auto_delete"`
+	DeviceName              string                                          `json:"device_name"`
+}
+
+type GoogleComputeInstanceFromTemplateSpecAttachedDisk struct {
+	Source                  string `json:"source"`
+	DeviceName              string `json:"device_name"`
+	Mode                    string `json:"mode"`
+	DiskEncryptionKeyRaw    string `json:"disk_encryption_key_raw"`
+	DiskEncryptionKeySha256 string `json:"disk_encryption_key_sha256"`
+}
+
+type GoogleComputeInstanceFromTemplateSpecScheduling struct {
+	OnHostMaintenance string `json:"on_host_maintenance"`
+	AutomaticRestart  bool   `json:"automatic_restart"`
+	Preemptible       bool   `json:"preemptible"`
 }
 
 type GoogleComputeInstanceFromTemplateSpecScratchDisk struct {
 	Interface string `json:"interface"`
 }
 
-type GoogleComputeInstanceFromTemplateSpecServiceAccount struct {
-	Email  string   `json:"email"`
-	Scopes []string `json:"scopes"`
-}
-
-type GoogleComputeInstanceFromTemplateSpecBootDiskInitializeParams struct {
-	Size  int    `json:"size"`
-	Type  string `json:"type"`
-	Image string `json:"image"`
-}
-
-type GoogleComputeInstanceFromTemplateSpecBootDisk struct {
-	Source                  string                                          `json:"source"`
-	AutoDelete              bool                                            `json:"auto_delete"`
-	DeviceName              string                                          `json:"device_name"`
-	DiskEncryptionKeyRaw    string                                          `json:"disk_encryption_key_raw"`
-	DiskEncryptionKeySha256 string                                          `json:"disk_encryption_key_sha256"`
-	InitializeParams        []GoogleComputeInstanceFromTemplateSpecBootDisk `json:"initialize_params"`
-}
-
 type GoogleComputeInstanceFromTemplateSpecNetworkInterfaceAccessConfig struct {
+	NatIp               string `json:"nat_ip"`
 	NetworkTier         string `json:"network_tier"`
 	AssignedNatIp       string `json:"assigned_nat_ip"`
 	PublicPtrDomainName string `json:"public_ptr_domain_name"`
-	NatIp               string `json:"nat_ip"`
 }
 
 type GoogleComputeInstanceFromTemplateSpecNetworkInterfaceAliasIpRange struct {
@@ -73,44 +74,44 @@ type GoogleComputeInstanceFromTemplateSpecNetworkInterfaceAliasIpRange struct {
 }
 
 type GoogleComputeInstanceFromTemplateSpecNetworkInterface struct {
-	NetworkIp         string                                                  `json:"network_ip"`
-	AccessConfig      []GoogleComputeInstanceFromTemplateSpecNetworkInterface `json:"access_config"`
-	AliasIpRange      []GoogleComputeInstanceFromTemplateSpecNetworkInterface `json:"alias_ip_range"`
 	Network           string                                                  `json:"network"`
 	Subnetwork        string                                                  `json:"subnetwork"`
 	SubnetworkProject string                                                  `json:"subnetwork_project"`
 	Name              string                                                  `json:"name"`
 	Address           string                                                  `json:"address"`
+	NetworkIp         string                                                  `json:"network_ip"`
+	AccessConfig      []GoogleComputeInstanceFromTemplateSpecNetworkInterface `json:"access_config"`
+	AliasIpRange      []GoogleComputeInstanceFromTemplateSpecNetworkInterface `json:"alias_ip_range"`
 }
 
 type GoogleComputeInstanceFromTemplateSpec struct {
-	Scheduling             []GoogleComputeInstanceFromTemplateSpec `json:"scheduling"`
-	Zone                   string                                  `json:"zone"`
+	CpuPlatform            string                                  `json:"cpu_platform"`
+	MetadataFingerprint    string                                  `json:"metadata_fingerprint"`
+	Tags                   []string                                `json:"tags"`
+	SelfLink               string                                  `json:"self_link"`
+	Project                string                                  `json:"project"`
+	ServiceAccount         []GoogleComputeInstanceFromTemplateSpec `json:"service_account"`
+	CanIpForward           bool                                    `json:"can_ip_forward"`
+	DeletionProtection     bool                                    `json:"deletion_protection"`
+	Labels                 map[string]string                       `json:"labels"`
+	MinCpuPlatform         string                                  `json:"min_cpu_platform"`
+	AllowStoppingForUpdate bool                                    `json:"allow_stopping_for_update"`
 	LabelFingerprint       string                                  `json:"label_fingerprint"`
-	TagsFingerprint        string                                  `json:"tags_fingerprint"`
-	AttachedDisk           []GoogleComputeInstanceFromTemplateSpec `json:"attached_disk"`
-	Description            string                                  `json:"description"`
+	MachineType            string                                  `json:"machine_type"`
 	GuestAccelerator       []GoogleComputeInstanceFromTemplateSpec `json:"guest_accelerator"`
 	MetadataStartupScript  string                                  `json:"metadata_startup_script"`
-	ScratchDisk            []GoogleComputeInstanceFromTemplateSpec `json:"scratch_disk"`
-	ServiceAccount         []GoogleComputeInstanceFromTemplateSpec `json:"service_account"`
-	AllowStoppingForUpdate bool                                    `json:"allow_stopping_for_update"`
-	Labels                 map[string]string                       `json:"labels"`
-	Project                string                                  `json:"project"`
-	BootDisk               []GoogleComputeInstanceFromTemplateSpec `json:"boot_disk"`
-	MachineType            string                                  `json:"machine_type"`
-	DeletionProtection     bool                                    `json:"deletion_protection"`
-	Metadata               map[string]string                       `json:"metadata"`
-	Tags                   []string                                `json:"tags"`
-	MetadataFingerprint    string                                  `json:"metadata_fingerprint"`
+	Zone                   string                                  `json:"zone"`
 	SourceInstanceTemplate string                                  `json:"source_instance_template"`
-	InstanceId             string                                  `json:"instance_id"`
+	BootDisk               []GoogleComputeInstanceFromTemplateSpec `json:"boot_disk"`
+	AttachedDisk           []GoogleComputeInstanceFromTemplateSpec `json:"attached_disk"`
+	Metadata               map[string]string                       `json:"metadata"`
+	Scheduling             []GoogleComputeInstanceFromTemplateSpec `json:"scheduling"`
+	ScratchDisk            []GoogleComputeInstanceFromTemplateSpec `json:"scratch_disk"`
 	Name                   string                                  `json:"name"`
 	NetworkInterface       []GoogleComputeInstanceFromTemplateSpec `json:"network_interface"`
-	CpuPlatform            string                                  `json:"cpu_platform"`
-	SelfLink               string                                  `json:"self_link"`
-	CanIpForward           bool                                    `json:"can_ip_forward"`
-	MinCpuPlatform         string                                  `json:"min_cpu_platform"`
+	Description            string                                  `json:"description"`
+	InstanceId             string                                  `json:"instance_id"`
+	TagsFingerprint        string                                  `json:"tags_fingerprint"`
 }
 
 type GoogleComputeInstanceFromTemplateStatus struct {
@@ -118,6 +119,7 @@ type GoogleComputeInstanceFromTemplateStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeInstanceFromTemplateList is a list of GoogleComputeInstanceFromTemplates
 type GoogleComputeInstanceFromTemplateList struct {

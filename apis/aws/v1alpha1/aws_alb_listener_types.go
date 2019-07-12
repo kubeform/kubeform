@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAlbListener struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,23 +18,13 @@ type AwsAlbListener struct {
 	Status            AwsAlbListenerStatus `json:"status,omitempty"`
 }
 
-type AwsAlbListenerSpecDefaultActionRedirect struct {
-	Host       string `json:"host"`
-	Path       string `json:"path"`
-	Port       string `json:"port"`
-	Protocol   string `json:"protocol"`
-	Query      string `json:"query"`
-	StatusCode string `json:"status_code"`
-}
-
 type AwsAlbListenerSpecDefaultActionFixedResponse struct {
+	StatusCode  string `json:"status_code"`
 	ContentType string `json:"content_type"`
 	MessageBody string `json:"message_body"`
-	StatusCode  string `json:"status_code"`
 }
 
 type AwsAlbListenerSpecDefaultActionAuthenticateCognito struct {
-	SessionCookieName                string            `json:"session_cookie_name"`
 	SessionTimeout                   int               `json:"session_timeout"`
 	UserPoolArn                      string            `json:"user_pool_arn"`
 	UserPoolClientId                 string            `json:"user_pool_client_id"`
@@ -41,30 +32,40 @@ type AwsAlbListenerSpecDefaultActionAuthenticateCognito struct {
 	AuthenticationRequestExtraParams map[string]string `json:"authentication_request_extra_params"`
 	OnUnauthenticatedRequest         string            `json:"on_unauthenticated_request"`
 	Scope                            string            `json:"scope"`
+	SessionCookieName                string            `json:"session_cookie_name"`
 }
 
 type AwsAlbListenerSpecDefaultActionAuthenticateOidc struct {
 	AuthenticationRequestExtraParams map[string]string `json:"authentication_request_extra_params"`
+	OnUnauthenticatedRequest         string            `json:"on_unauthenticated_request"`
+	TokenEndpoint                    string            `json:"token_endpoint"`
 	AuthorizationEndpoint            string            `json:"authorization_endpoint"`
 	ClientId                         string            `json:"client_id"`
 	ClientSecret                     string            `json:"client_secret"`
-	OnUnauthenticatedRequest         string            `json:"on_unauthenticated_request"`
-	SessionCookieName                string            `json:"session_cookie_name"`
-	TokenEndpoint                    string            `json:"token_endpoint"`
 	Issuer                           string            `json:"issuer"`
 	Scope                            string            `json:"scope"`
+	SessionCookieName                string            `json:"session_cookie_name"`
 	SessionTimeout                   int               `json:"session_timeout"`
 	UserInfoEndpoint                 string            `json:"user_info_endpoint"`
 }
 
+type AwsAlbListenerSpecDefaultActionRedirect struct {
+	Path       string `json:"path"`
+	Port       string `json:"port"`
+	Protocol   string `json:"protocol"`
+	Query      string `json:"query"`
+	StatusCode string `json:"status_code"`
+	Host       string `json:"host"`
+}
+
 type AwsAlbListenerSpecDefaultAction struct {
-	Redirect            []AwsAlbListenerSpecDefaultAction `json:"redirect"`
 	FixedResponse       []AwsAlbListenerSpecDefaultAction `json:"fixed_response"`
 	AuthenticateCognito []AwsAlbListenerSpecDefaultAction `json:"authenticate_cognito"`
 	AuthenticateOidc    []AwsAlbListenerSpecDefaultAction `json:"authenticate_oidc"`
 	Type                string                            `json:"type"`
 	Order               int                               `json:"order"`
 	TargetGroupArn      string                            `json:"target_group_arn"`
+	Redirect            []AwsAlbListenerSpecDefaultAction `json:"redirect"`
 }
 
 type AwsAlbListenerSpec struct {
@@ -82,6 +83,7 @@ type AwsAlbListenerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAlbListenerList is a list of AwsAlbListeners
 type AwsAlbListenerList struct {

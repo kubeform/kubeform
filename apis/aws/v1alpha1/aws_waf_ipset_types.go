@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafIpset struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AwsWafIpset struct {
 }
 
 type AwsWafIpsetSpecIpSetDescriptors struct {
-	Type  string `json:"type"`
 	Value string `json:"value"`
+	Type  string `json:"type"`
 }
 
 type AwsWafIpsetSpec struct {
@@ -33,6 +34,7 @@ type AwsWafIpsetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafIpsetList is a list of AwsWafIpsets
 type AwsWafIpsetList struct {

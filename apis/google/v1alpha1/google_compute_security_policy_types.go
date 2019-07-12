@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeSecurityPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -27,11 +28,11 @@ type GoogleComputeSecurityPolicySpecRuleMatch struct {
 }
 
 type GoogleComputeSecurityPolicySpecRule struct {
-	Action      string                                `json:"action"`
 	Priority    int                                   `json:"priority"`
 	Match       []GoogleComputeSecurityPolicySpecRule `json:"match"`
 	Description string                                `json:"description"`
 	Preview     bool                                  `json:"preview"`
+	Action      string                                `json:"action"`
 }
 
 type GoogleComputeSecurityPolicySpec struct {
@@ -48,6 +49,7 @@ type GoogleComputeSecurityPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeSecurityPolicyList is a list of GoogleComputeSecurityPolicys
 type GoogleComputeSecurityPolicyList struct {

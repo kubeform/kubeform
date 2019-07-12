@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDbSnapshot struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,26 +19,26 @@ type AwsDbSnapshot struct {
 }
 
 type AwsDbSnapshotSpec struct {
-	DbInstanceIdentifier       string            `json:"db_instance_identifier"`
-	AllocatedStorage           int               `json:"allocated_storage"`
-	Iops                       int               `json:"iops"`
-	KmsKeyId                   string            `json:"kms_key_id"`
-	Port                       int               `json:"port"`
-	Status                     string            `json:"status"`
+	StorageType                string            `json:"storage_type"`
 	AvailabilityZone           string            `json:"availability_zone"`
-	Encrypted                  bool              `json:"encrypted"`
-	EngineVersion              string            `json:"engine_version"`
-	VpcId                      string            `json:"vpc_id"`
-	DbSnapshotIdentifier       string            `json:"db_snapshot_identifier"`
 	OptionGroupName            string            `json:"option_group_name"`
+	Port                       int               `json:"port"`
 	SourceDbSnapshotIdentifier string            `json:"source_db_snapshot_identifier"`
 	SourceRegion               string            `json:"source_region"`
 	SnapshotType               string            `json:"snapshot_type"`
-	StorageType                string            `json:"storage_type"`
-	Tags                       map[string]string `json:"tags"`
+	AllocatedStorage           int               `json:"allocated_storage"`
 	DbSnapshotArn              string            `json:"db_snapshot_arn"`
+	EngineVersion              string            `json:"engine_version"`
+	KmsKeyId                   string            `json:"kms_key_id"`
+	DbInstanceIdentifier       string            `json:"db_instance_identifier"`
+	Encrypted                  bool              `json:"encrypted"`
+	Iops                       int               `json:"iops"`
+	Status                     string            `json:"status"`
+	VpcId                      string            `json:"vpc_id"`
+	DbSnapshotIdentifier       string            `json:"db_snapshot_identifier"`
 	Engine                     string            `json:"engine"`
 	LicenseModel               string            `json:"license_model"`
+	Tags                       map[string]string `json:"tags"`
 }
 
 type AwsDbSnapshotStatus struct {
@@ -45,6 +46,7 @@ type AwsDbSnapshotStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDbSnapshotList is a list of AwsDbSnapshots
 type AwsDbSnapshotList struct {

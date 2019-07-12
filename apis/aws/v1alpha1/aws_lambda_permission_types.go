@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLambdaPermission struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsLambdaPermission struct {
 }
 
 type AwsLambdaPermissionSpec struct {
-	EventSourceToken  string `json:"event_source_token"`
 	Qualifier         string `json:"qualifier"`
 	SourceAccount     string `json:"source_account"`
-	StatementId       string `json:"statement_id"`
-	Action            string `json:"action"`
+	StatementIdPrefix string `json:"statement_id_prefix"`
+	EventSourceToken  string `json:"event_source_token"`
 	FunctionName      string `json:"function_name"`
 	Principal         string `json:"principal"`
 	SourceArn         string `json:"source_arn"`
-	StatementIdPrefix string `json:"statement_id_prefix"`
+	StatementId       string `json:"statement_id"`
+	Action            string `json:"action"`
 }
 
 type AwsLambdaPermissionStatus struct {
@@ -34,6 +35,7 @@ type AwsLambdaPermissionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLambdaPermissionList is a list of AwsLambdaPermissions
 type AwsLambdaPermissionList struct {

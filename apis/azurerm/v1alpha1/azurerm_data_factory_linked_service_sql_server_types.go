@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDataFactoryLinkedServiceSqlServer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,13 +20,13 @@ type AzurermDataFactoryLinkedServiceSqlServer struct {
 
 type AzurermDataFactoryLinkedServiceSqlServerSpec struct {
 	Name                   string            `json:"name"`
-	ResourceGroupName      string            `json:"resource_group_name"`
-	IntegrationRuntimeName string            `json:"integration_runtime_name"`
-	Annotations            []string          `json:"annotations"`
 	DataFactoryName        string            `json:"data_factory_name"`
+	ResourceGroupName      string            `json:"resource_group_name"`
 	ConnectionString       string            `json:"connection_string"`
-	Description            string            `json:"description"`
+	IntegrationRuntimeName string            `json:"integration_runtime_name"`
 	Parameters             map[string]string `json:"parameters"`
+	Annotations            []string          `json:"annotations"`
+	Description            string            `json:"description"`
 	AdditionalProperties   map[string]string `json:"additional_properties"`
 }
 
@@ -34,6 +35,7 @@ type AzurermDataFactoryLinkedServiceSqlServerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDataFactoryLinkedServiceSqlServerList is a list of AzurermDataFactoryLinkedServiceSqlServers
 type AzurermDataFactoryLinkedServiceSqlServerList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsPinpointEmailChannel struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsPinpointEmailChannel struct {
 }
 
 type AwsPinpointEmailChannelSpec struct {
-	Identity          string `json:"identity"`
-	RoleArn           string `json:"role_arn"`
-	MessagesPerSecond int    `json:"messages_per_second"`
 	ApplicationId     string `json:"application_id"`
 	Enabled           bool   `json:"enabled"`
 	FromAddress       string `json:"from_address"`
+	Identity          string `json:"identity"`
+	RoleArn           string `json:"role_arn"`
+	MessagesPerSecond int    `json:"messages_per_second"`
 }
 
 type AwsPinpointEmailChannelStatus struct {
@@ -31,6 +32,7 @@ type AwsPinpointEmailChannelStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsPinpointEmailChannelList is a list of AwsPinpointEmailChannels
 type AwsPinpointEmailChannelList struct {

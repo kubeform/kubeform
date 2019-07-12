@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsNetworkInterfaceAttachment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AwsNetworkInterfaceAttachment struct {
 }
 
 type AwsNetworkInterfaceAttachmentSpec struct {
+	InstanceId         string `json:"instance_id"`
+	NetworkInterfaceId string `json:"network_interface_id"`
 	AttachmentId       string `json:"attachment_id"`
 	Status             string `json:"status"`
 	DeviceIndex        int    `json:"device_index"`
-	InstanceId         string `json:"instance_id"`
-	NetworkInterfaceId string `json:"network_interface_id"`
 }
 
 type AwsNetworkInterfaceAttachmentStatus struct {
@@ -30,6 +31,7 @@ type AwsNetworkInterfaceAttachmentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsNetworkInterfaceAttachmentList is a list of AwsNetworkInterfaceAttachments
 type AwsNetworkInterfaceAttachmentList struct {

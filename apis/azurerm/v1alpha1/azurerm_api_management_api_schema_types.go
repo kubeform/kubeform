@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermApiManagementApiSchema struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -31,6 +32,7 @@ type AzurermApiManagementApiSchemaStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermApiManagementApiSchemaList is a list of AzurermApiManagementApiSchemas
 type AzurermApiManagementApiSchemaList struct {

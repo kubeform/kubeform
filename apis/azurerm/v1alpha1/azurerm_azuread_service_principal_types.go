@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermAzureadServicePrincipal struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,8 +19,8 @@ type AzurermAzureadServicePrincipal struct {
 }
 
 type AzurermAzureadServicePrincipalSpec struct {
-	DisplayName   string `json:"display_name"`
 	ApplicationId string `json:"application_id"`
+	DisplayName   string `json:"display_name"`
 }
 
 type AzurermAzureadServicePrincipalStatus struct {
@@ -27,6 +28,7 @@ type AzurermAzureadServicePrincipalStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermAzureadServicePrincipalList is a list of AzurermAzureadServicePrincipals
 type AzurermAzureadServicePrincipalList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsRoute53Zone struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,16 +24,16 @@ type AwsRoute53ZoneSpecVpc struct {
 }
 
 type AwsRoute53ZoneSpec struct {
-	NameServers     []string             `json:"name_servers"`
-	Tags            map[string]string    `json:"tags"`
 	Name            string               `json:"name"`
+	Vpc             []AwsRoute53ZoneSpec `json:"vpc"`
+	ZoneId          string               `json:"zone_id"`
+	NameServers     []string             `json:"name_servers"`
+	ForceDestroy    bool                 `json:"force_destroy"`
 	Comment         string               `json:"comment"`
 	VpcId           string               `json:"vpc_id"`
 	VpcRegion       string               `json:"vpc_region"`
-	Vpc             []AwsRoute53ZoneSpec `json:"vpc"`
-	ZoneId          string               `json:"zone_id"`
 	DelegationSetId string               `json:"delegation_set_id"`
-	ForceDestroy    bool                 `json:"force_destroy"`
+	Tags            map[string]string    `json:"tags"`
 }
 
 type AwsRoute53ZoneStatus struct {
@@ -40,6 +41,7 @@ type AwsRoute53ZoneStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsRoute53ZoneList is a list of AwsRoute53Zones
 type AwsRoute53ZoneList struct {

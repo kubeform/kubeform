@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeRouterPeer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type GoogleComputeRouterPeer struct {
 }
 
 type GoogleComputeRouterPeerSpec struct {
+	Region                  string `json:"region"`
 	Name                    string `json:"name"`
-	Interface               string `json:"interface"`
 	PeerIpAddress           string `json:"peer_ip_address"`
-	Project                 string `json:"project"`
-	Router                  string `json:"router"`
-	PeerAsn                 int    `json:"peer_asn"`
 	AdvertisedRoutePriority int    `json:"advertised_route_priority"`
 	IpAddress               string `json:"ip_address"`
-	Region                  string `json:"region"`
+	Project                 string `json:"project"`
+	Router                  string `json:"router"`
+	Interface               string `json:"interface"`
+	PeerAsn                 int    `json:"peer_asn"`
 }
 
 type GoogleComputeRouterPeerStatus struct {
@@ -34,6 +35,7 @@ type GoogleComputeRouterPeerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeRouterPeerList is a list of GoogleComputeRouterPeers
 type GoogleComputeRouterPeerList struct {

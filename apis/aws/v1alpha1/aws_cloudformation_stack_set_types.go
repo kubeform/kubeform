@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCloudformationStackSet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AwsCloudformationStackSet struct {
 }
 
 type AwsCloudformationStackSetSpec struct {
-	Capabilities          []string          `json:"capabilities"`
-	Parameters            map[string]string `json:"parameters"`
-	Tags                  map[string]string `json:"tags"`
-	TemplateUrl           string            `json:"template_url"`
-	AdministrationRoleArn string            `json:"administration_role_arn"`
-	Arn                   string            `json:"arn"`
 	Description           string            `json:"description"`
 	ExecutionRoleName     string            `json:"execution_role_name"`
 	Name                  string            `json:"name"`
-	StackSetId            string            `json:"stack_set_id"`
 	TemplateBody          string            `json:"template_body"`
+	TemplateUrl           string            `json:"template_url"`
+	AdministrationRoleArn string            `json:"administration_role_arn"`
+	Capabilities          []string          `json:"capabilities"`
+	Parameters            map[string]string `json:"parameters"`
+	StackSetId            string            `json:"stack_set_id"`
+	Tags                  map[string]string `json:"tags"`
+	Arn                   string            `json:"arn"`
 }
 
 type AwsCloudformationStackSetStatus struct {
@@ -36,6 +37,7 @@ type AwsCloudformationStackSetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCloudformationStackSetList is a list of AwsCloudformationStackSets
 type AwsCloudformationStackSetList struct {

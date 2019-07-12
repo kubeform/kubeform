@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEmrSecurityConfiguration struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsEmrSecurityConfiguration struct {
 }
 
 type AwsEmrSecurityConfigurationSpec struct {
-	Name          string `json:"name"`
 	NamePrefix    string `json:"name_prefix"`
 	Configuration string `json:"configuration"`
 	CreationDate  string `json:"creation_date"`
+	Name          string `json:"name"`
 }
 
 type AwsEmrSecurityConfigurationStatus struct {
@@ -29,6 +30,7 @@ type AwsEmrSecurityConfigurationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEmrSecurityConfigurationList is a list of AwsEmrSecurityConfigurations
 type AwsEmrSecurityConfigurationList struct {

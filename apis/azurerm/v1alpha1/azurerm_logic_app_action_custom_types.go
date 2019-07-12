@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermLogicAppActionCustom struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AzurermLogicAppActionCustom struct {
 }
 
 type AzurermLogicAppActionCustomSpec struct {
-	Body       string `json:"body"`
 	Name       string `json:"name"`
 	LogicAppId string `json:"logic_app_id"`
+	Body       string `json:"body"`
 }
 
 type AzurermLogicAppActionCustomStatus struct {
@@ -28,6 +29,7 @@ type AzurermLogicAppActionCustomStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermLogicAppActionCustomList is a list of AzurermLogicAppActionCustoms
 type AzurermLogicAppActionCustomList struct {

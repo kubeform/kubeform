@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDxHostedPublicVirtualInterface struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,18 +19,18 @@ type AwsDxHostedPublicVirtualInterface struct {
 }
 
 type AwsDxHostedPublicVirtualInterfaceSpec struct {
-	BgpAsn              int      `json:"bgp_asn"`
-	BgpAuthKey          string   `json:"bgp_auth_key"`
-	CustomerAddress     string   `json:"customer_address"`
-	AmazonAddress       string   `json:"amazon_address"`
-	OwnerAccountId      string   `json:"owner_account_id"`
-	RouteFilterPrefixes []string `json:"route_filter_prefixes"`
 	AwsDevice           string   `json:"aws_device"`
 	Arn                 string   `json:"arn"`
-	ConnectionId        string   `json:"connection_id"`
 	Name                string   `json:"name"`
-	Vlan                int      `json:"vlan"`
+	OwnerAccountId      string   `json:"owner_account_id"`
+	BgpAuthKey          string   `json:"bgp_auth_key"`
 	AddressFamily       string   `json:"address_family"`
+	CustomerAddress     string   `json:"customer_address"`
+	AmazonAddress       string   `json:"amazon_address"`
+	RouteFilterPrefixes []string `json:"route_filter_prefixes"`
+	ConnectionId        string   `json:"connection_id"`
+	Vlan                int      `json:"vlan"`
+	BgpAsn              int      `json:"bgp_asn"`
 }
 
 type AwsDxHostedPublicVirtualInterfaceStatus struct {
@@ -37,6 +38,7 @@ type AwsDxHostedPublicVirtualInterfaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDxHostedPublicVirtualInterfaceList is a list of AwsDxHostedPublicVirtualInterfaces
 type AwsDxHostedPublicVirtualInterfaceList struct {

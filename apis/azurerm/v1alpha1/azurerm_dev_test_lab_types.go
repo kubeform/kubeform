@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermDevTestLab struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AzurermDevTestLab struct {
 }
 
 type AzurermDevTestLabSpec struct {
-	StorageType                     string            `json:"storage_type"`
-	DefaultStorageAccountId         string            `json:"default_storage_account_id"`
-	DefaultPremiumStorageAccountId  string            `json:"default_premium_storage_account_id"`
-	PremiumDataDiskStorageAccountId string            `json:"premium_data_disk_storage_account_id"`
-	UniqueIdentifier                string            `json:"unique_identifier"`
-	ResourceGroupName               string            `json:"resource_group_name"`
-	Location                        string            `json:"location"`
-	Tags                            map[string]string `json:"tags"`
 	ArtifactsStorageAccountId       string            `json:"artifacts_storage_account_id"`
+	DefaultStorageAccountId         string            `json:"default_storage_account_id"`
 	KeyVaultId                      string            `json:"key_vault_id"`
+	PremiumDataDiskStorageAccountId string            `json:"premium_data_disk_storage_account_id"`
 	Name                            string            `json:"name"`
+	ResourceGroupName               string            `json:"resource_group_name"`
+	StorageType                     string            `json:"storage_type"`
+	Tags                            map[string]string `json:"tags"`
+	Location                        string            `json:"location"`
+	DefaultPremiumStorageAccountId  string            `json:"default_premium_storage_account_id"`
+	UniqueIdentifier                string            `json:"unique_identifier"`
 }
 
 type AzurermDevTestLabStatus struct {
@@ -36,6 +37,7 @@ type AzurermDevTestLabStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermDevTestLabList is a list of AzurermDevTestLabs
 type AzurermDevTestLabList struct {

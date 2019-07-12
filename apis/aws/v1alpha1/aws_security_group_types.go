@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSecurityGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,40 +19,40 @@ type AwsSecurityGroup struct {
 }
 
 type AwsSecurityGroupSpecIngress struct {
-	Protocol       string   `json:"protocol"`
 	CidrBlocks     []string `json:"cidr_blocks"`
-	Ipv6CidrBlocks []string `json:"ipv6_cidr_blocks"`
-	SecurityGroups []string `json:"security_groups"`
 	Self           bool     `json:"self"`
-	FromPort       int      `json:"from_port"`
-	PrefixListIds  []string `json:"prefix_list_ids"`
 	Description    string   `json:"description"`
+	SecurityGroups []string `json:"security_groups"`
+	FromPort       int      `json:"from_port"`
 	ToPort         int      `json:"to_port"`
+	Protocol       string   `json:"protocol"`
+	Ipv6CidrBlocks []string `json:"ipv6_cidr_blocks"`
+	PrefixListIds  []string `json:"prefix_list_ids"`
 }
 
 type AwsSecurityGroupSpecEgress struct {
-	FromPort       int      `json:"from_port"`
-	Protocol       string   `json:"protocol"`
 	Self           bool     `json:"self"`
 	Description    string   `json:"description"`
+	FromPort       int      `json:"from_port"`
+	Protocol       string   `json:"protocol"`
+	CidrBlocks     []string `json:"cidr_blocks"`
 	SecurityGroups []string `json:"security_groups"`
 	ToPort         int      `json:"to_port"`
-	CidrBlocks     []string `json:"cidr_blocks"`
 	Ipv6CidrBlocks []string `json:"ipv6_cidr_blocks"`
 	PrefixListIds  []string `json:"prefix_list_ids"`
 }
 
 type AwsSecurityGroupSpec struct {
 	NamePrefix          string                 `json:"name_prefix"`
+	Description         string                 `json:"description"`
 	Ingress             []AwsSecurityGroupSpec `json:"ingress"`
-	Egress              []AwsSecurityGroupSpec `json:"egress"`
-	Tags                map[string]string      `json:"tags"`
+	Arn                 string                 `json:"arn"`
 	RevokeRulesOnDelete bool                   `json:"revoke_rules_on_delete"`
 	Name                string                 `json:"name"`
-	Description         string                 `json:"description"`
 	VpcId               string                 `json:"vpc_id"`
-	Arn                 string                 `json:"arn"`
+	Egress              []AwsSecurityGroupSpec `json:"egress"`
 	OwnerId             string                 `json:"owner_id"`
+	Tags                map[string]string      `json:"tags"`
 }
 
 type AwsSecurityGroupStatus struct {
@@ -59,6 +60,7 @@ type AwsSecurityGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSecurityGroupList is a list of AwsSecurityGroups
 type AwsSecurityGroupList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafregionalIpset struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,9 +24,9 @@ type AwsWafregionalIpsetSpecIpSetDescriptor struct {
 }
 
 type AwsWafregionalIpsetSpec struct {
-	Name            string                    `json:"name"`
 	Arn             string                    `json:"arn"`
 	IpSetDescriptor []AwsWafregionalIpsetSpec `json:"ip_set_descriptor"`
+	Name            string                    `json:"name"`
 }
 
 type AwsWafregionalIpsetStatus struct {
@@ -33,6 +34,7 @@ type AwsWafregionalIpsetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafregionalIpsetList is a list of AwsWafregionalIpsets
 type AwsWafregionalIpsetList struct {

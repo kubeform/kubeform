@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsApiGatewayMethodResponse struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -32,6 +33,7 @@ type AwsApiGatewayMethodResponseStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsApiGatewayMethodResponseList is a list of AwsApiGatewayMethodResponses
 type AwsApiGatewayMethodResponseList struct {

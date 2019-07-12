@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleCloudbuildTrigger struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -27,8 +28,8 @@ type GoogleCloudbuildTriggerSpecTriggerTemplate struct {
 }
 
 type GoogleCloudbuildTriggerSpecBuildStep struct {
-	Args string `json:"args"`
 	Name string `json:"name"`
+	Args string `json:"args"`
 }
 
 type GoogleCloudbuildTriggerSpecBuild struct {
@@ -38,12 +39,12 @@ type GoogleCloudbuildTriggerSpecBuild struct {
 }
 
 type GoogleCloudbuildTriggerSpec struct {
-	Substitutions   map[string]string             `json:"substitutions"`
 	TriggerTemplate []GoogleCloudbuildTriggerSpec `json:"trigger_template"`
 	Project         string                        `json:"project"`
 	Filename        string                        `json:"filename"`
 	Build           []GoogleCloudbuildTriggerSpec `json:"build"`
 	Description     string                        `json:"description"`
+	Substitutions   map[string]string             `json:"substitutions"`
 }
 
 type GoogleCloudbuildTriggerStatus struct {
@@ -51,6 +52,7 @@ type GoogleCloudbuildTriggerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleCloudbuildTriggerList is a list of GoogleCloudbuildTriggers
 type GoogleCloudbuildTriggerList struct {

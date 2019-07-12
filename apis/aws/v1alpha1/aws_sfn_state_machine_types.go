@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSfnStateMachine struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsSfnStateMachine struct {
 }
 
 type AwsSfnStateMachineSpec struct {
+	Tags         map[string]string `json:"tags"`
+	Definition   string            `json:"definition"`
 	Name         string            `json:"name"`
 	RoleArn      string            `json:"role_arn"`
 	CreationDate string            `json:"creation_date"`
 	Status       string            `json:"status"`
-	Tags         map[string]string `json:"tags"`
-	Definition   string            `json:"definition"`
 }
 
 type AwsSfnStateMachineStatus struct {
@@ -31,6 +32,7 @@ type AwsSfnStateMachineStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSfnStateMachineList is a list of AwsSfnStateMachines
 type AwsSfnStateMachineList struct {

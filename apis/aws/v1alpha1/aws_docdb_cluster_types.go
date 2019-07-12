@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDocdbCluster struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,34 +19,34 @@ type AwsDocdbCluster struct {
 }
 
 type AwsDocdbClusterSpec struct {
-	PreferredMaintenanceWindow   string            `json:"preferred_maintenance_window"`
-	KmsKeyId                     string            `json:"kms_key_id"`
-	ClusterResourceId            string            `json:"cluster_resource_id"`
-	ClusterIdentifier            string            `json:"cluster_identifier"`
-	ClusterMembers               []string          `json:"cluster_members"`
 	HostedZoneId                 string            `json:"hosted_zone_id"`
-	FinalSnapshotIdentifier      string            `json:"final_snapshot_identifier"`
-	DbSubnetGroupName            string            `json:"db_subnet_group_name"`
-	Engine                       string            `json:"engine"`
-	SnapshotIdentifier           string            `json:"snapshot_identifier"`
-	Tags                         map[string]string `json:"tags"`
-	EngineVersion                string            `json:"engine_version"`
-	MasterPassword               string            `json:"master_password"`
-	EnabledCloudwatchLogsExports []string          `json:"enabled_cloudwatch_logs_exports"`
-	Endpoint                     string            `json:"endpoint"`
-	StorageEncrypted             bool              `json:"storage_encrypted"`
-	PreferredBackupWindow        string            `json:"preferred_backup_window"`
-	ReaderEndpoint               string            `json:"reader_endpoint"`
-	SkipFinalSnapshot            bool              `json:"skip_final_snapshot"`
 	Port                         int               `json:"port"`
-	VpcSecurityGroupIds          []string          `json:"vpc_security_group_ids"`
-	Arn                          string            `json:"arn"`
-	ClusterIdentifierPrefix      string            `json:"cluster_identifier_prefix"`
-	MasterUsername               string            `json:"master_username"`
-	ApplyImmediately             bool              `json:"apply_immediately"`
+	PreferredBackupWindow        string            `json:"preferred_backup_window"`
 	AvailabilityZones            []string          `json:"availability_zones"`
 	DbClusterParameterGroupName  string            `json:"db_cluster_parameter_group_name"`
+	SkipFinalSnapshot            bool              `json:"skip_final_snapshot"`
+	ApplyImmediately             bool              `json:"apply_immediately"`
+	KmsKeyId                     string            `json:"kms_key_id"`
+	Tags                         map[string]string `json:"tags"`
+	ClusterIdentifier            string            `json:"cluster_identifier"`
+	ClusterMembers               []string          `json:"cluster_members"`
+	DbSubnetGroupName            string            `json:"db_subnet_group_name"`
+	Endpoint                     string            `json:"endpoint"`
+	Engine                       string            `json:"engine"`
+	MasterUsername               string            `json:"master_username"`
+	EnabledCloudwatchLogsExports []string          `json:"enabled_cloudwatch_logs_exports"`
+	FinalSnapshotIdentifier      string            `json:"final_snapshot_identifier"`
+	PreferredMaintenanceWindow   string            `json:"preferred_maintenance_window"`
 	BackupRetentionPeriod        int               `json:"backup_retention_period"`
+	ClusterResourceId            string            `json:"cluster_resource_id"`
+	ClusterIdentifierPrefix      string            `json:"cluster_identifier_prefix"`
+	SnapshotIdentifier           string            `json:"snapshot_identifier"`
+	EngineVersion                string            `json:"engine_version"`
+	StorageEncrypted             bool              `json:"storage_encrypted"`
+	MasterPassword               string            `json:"master_password"`
+	VpcSecurityGroupIds          []string          `json:"vpc_security_group_ids"`
+	Arn                          string            `json:"arn"`
+	ReaderEndpoint               string            `json:"reader_endpoint"`
 }
 
 type AwsDocdbClusterStatus struct {
@@ -53,6 +54,7 @@ type AwsDocdbClusterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDocdbClusterList is a list of AwsDocdbClusters
 type AwsDocdbClusterList struct {

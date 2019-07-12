@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCognitoIdentityPoolRolesAttachment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -25,10 +26,10 @@ type AwsCognitoIdentityPoolRolesAttachmentSpecRoleMappingMappingRule struct {
 }
 
 type AwsCognitoIdentityPoolRolesAttachmentSpecRoleMapping struct {
+	IdentityProvider        string                                                 `json:"identity_provider"`
 	AmbiguousRoleResolution string                                                 `json:"ambiguous_role_resolution"`
 	MappingRule             []AwsCognitoIdentityPoolRolesAttachmentSpecRoleMapping `json:"mapping_rule"`
 	Type                    string                                                 `json:"type"`
-	IdentityProvider        string                                                 `json:"identity_provider"`
 }
 
 type AwsCognitoIdentityPoolRolesAttachmentSpecRoles struct {
@@ -47,6 +48,7 @@ type AwsCognitoIdentityPoolRolesAttachmentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCognitoIdentityPoolRolesAttachmentList is a list of AwsCognitoIdentityPoolRolesAttachments
 type AwsCognitoIdentityPoolRolesAttachmentList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermNetworkInterfaceApplicationSecurityGroupAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -28,6 +29,7 @@ type AzurermNetworkInterfaceApplicationSecurityGroupAssociationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermNetworkInterfaceApplicationSecurityGroupAssociationList is a list of AzurermNetworkInterfaceApplicationSecurityGroupAssociations
 type AzurermNetworkInterfaceApplicationSecurityGroupAssociationList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEcsService struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,22 +18,19 @@ type AwsEcsService struct {
 	Status            AwsEcsServiceStatus `json:"status,omitempty"`
 }
 
-type AwsEcsServiceSpecNetworkConfiguration struct {
-	SecurityGroups []string `json:"security_groups"`
-	Subnets        []string `json:"subnets"`
-	AssignPublicIp bool     `json:"assign_public_ip"`
-}
-
-type AwsEcsServiceSpecLoadBalancer struct {
-	ElbName        string `json:"elb_name"`
-	TargetGroupArn string `json:"target_group_arn"`
-	ContainerName  string `json:"container_name"`
-	ContainerPort  int    `json:"container_port"`
+type AwsEcsServiceSpecDeploymentController struct {
+	Type string `json:"type"`
 }
 
 type AwsEcsServiceSpecOrderedPlacementStrategy struct {
 	Type  string `json:"type"`
 	Field string `json:"field"`
+}
+
+type AwsEcsServiceSpecNetworkConfiguration struct {
+	AssignPublicIp bool     `json:"assign_public_ip"`
+	SecurityGroups []string `json:"security_groups"`
+	Subnets        []string `json:"subnets"`
 }
 
 type AwsEcsServiceSpecServiceRegistries struct {
@@ -42,42 +40,45 @@ type AwsEcsServiceSpecServiceRegistries struct {
 	RegistryArn   string `json:"registry_arn"`
 }
 
-type AwsEcsServiceSpecPlacementConstraints struct {
-	Type       string `json:"type"`
-	Expression string `json:"expression"`
-}
-
-type AwsEcsServiceSpecDeploymentController struct {
-	Type string `json:"type"`
-}
-
 type AwsEcsServiceSpecPlacementStrategy struct {
 	Type  string `json:"type"`
 	Field string `json:"field"`
 }
 
+type AwsEcsServiceSpecPlacementConstraints struct {
+	Type       string `json:"type"`
+	Expression string `json:"expression"`
+}
+
+type AwsEcsServiceSpecLoadBalancer struct {
+	ContainerPort  int    `json:"container_port"`
+	ElbName        string `json:"elb_name"`
+	TargetGroupArn string `json:"target_group_arn"`
+	ContainerName  string `json:"container_name"`
+}
+
 type AwsEcsServiceSpec struct {
-	Tags                            map[string]string   `json:"tags"`
 	SchedulingStrategy              string              `json:"scheduling_strategy"`
-	NetworkConfiguration            []AwsEcsServiceSpec `json:"network_configuration"`
 	IamRole                         string              `json:"iam_role"`
-	LoadBalancer                    []AwsEcsServiceSpec `json:"load_balancer"`
-	OrderedPlacementStrategy        []AwsEcsServiceSpec `json:"ordered_placement_strategy"`
-	PropagateTags                   string              `json:"propagate_tags"`
-	ServiceRegistries               []AwsEcsServiceSpec `json:"service_registries"`
-	HealthCheckGracePeriodSeconds   int                 `json:"health_check_grace_period_seconds"`
-	LaunchType                      string              `json:"launch_type"`
-	PlatformVersion                 string              `json:"platform_version"`
-	DeploymentMinimumHealthyPercent int                 `json:"deployment_minimum_healthy_percent"`
-	PlacementConstraints            []AwsEcsServiceSpec `json:"placement_constraints"`
-	Name                            string              `json:"name"`
-	Cluster                         string              `json:"cluster"`
-	EnableEcsManagedTags            bool                `json:"enable_ecs_managed_tags"`
-	DeploymentController            []AwsEcsServiceSpec `json:"deployment_controller"`
 	DeploymentMaximumPercent        int                 `json:"deployment_maximum_percent"`
-	PlacementStrategy               []AwsEcsServiceSpec `json:"placement_strategy"`
-	TaskDefinition                  string              `json:"task_definition"`
+	PropagateTags                   string              `json:"propagate_tags"`
+	Tags                            map[string]string   `json:"tags"`
+	Name                            string              `json:"name"`
+	LaunchType                      string              `json:"launch_type"`
 	DesiredCount                    int                 `json:"desired_count"`
+	PlatformVersion                 string              `json:"platform_version"`
+	DeploymentController            []AwsEcsServiceSpec `json:"deployment_controller"`
+	OrderedPlacementStrategy        []AwsEcsServiceSpec `json:"ordered_placement_strategy"`
+	Cluster                         string              `json:"cluster"`
+	TaskDefinition                  string              `json:"task_definition"`
+	NetworkConfiguration            []AwsEcsServiceSpec `json:"network_configuration"`
+	ServiceRegistries               []AwsEcsServiceSpec `json:"service_registries"`
+	EnableEcsManagedTags            bool                `json:"enable_ecs_managed_tags"`
+	DeploymentMinimumHealthyPercent int                 `json:"deployment_minimum_healthy_percent"`
+	PlacementStrategy               []AwsEcsServiceSpec `json:"placement_strategy"`
+	PlacementConstraints            []AwsEcsServiceSpec `json:"placement_constraints"`
+	HealthCheckGracePeriodSeconds   int                 `json:"health_check_grace_period_seconds"`
+	LoadBalancer                    []AwsEcsServiceSpec `json:"load_balancer"`
 }
 
 type AwsEcsServiceStatus struct {
@@ -85,6 +86,7 @@ type AwsEcsServiceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEcsServiceList is a list of AwsEcsServices
 type AwsEcsServiceList struct {

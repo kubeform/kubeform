@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsCloudformationStackSetInstance struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type AwsCloudformationStackSetInstance struct {
 }
 
 type AwsCloudformationStackSetInstanceSpec struct {
-	StackSetName       string            `json:"stack_set_name"`
 	AccountId          string            `json:"account_id"`
 	ParameterOverrides map[string]string `json:"parameter_overrides"`
 	RetainStack        bool              `json:"retain_stack"`
 	Region             string            `json:"region"`
 	StackId            string            `json:"stack_id"`
+	StackSetName       string            `json:"stack_set_name"`
 }
 
 type AwsCloudformationStackSetInstanceStatus struct {
@@ -31,6 +32,7 @@ type AwsCloudformationStackSetInstanceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsCloudformationStackSetInstanceList is a list of AwsCloudformationStackSetInstances
 type AwsCloudformationStackSetInstanceList struct {

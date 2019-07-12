@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermStreamAnalyticsOutputMssql struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AzurermStreamAnalyticsOutputMssql struct {
 }
 
 type AzurermStreamAnalyticsOutputMssqlSpec struct {
-	Table                  string `json:"table"`
-	User                   string `json:"user"`
-	Password               string `json:"password"`
-	Name                   string `json:"name"`
 	StreamAnalyticsJobName string `json:"stream_analytics_job_name"`
 	ResourceGroupName      string `json:"resource_group_name"`
 	Server                 string `json:"server"`
 	Database               string `json:"database"`
+	Table                  string `json:"table"`
+	User                   string `json:"user"`
+	Password               string `json:"password"`
+	Name                   string `json:"name"`
 }
 
 type AzurermStreamAnalyticsOutputMssqlStatus struct {
@@ -33,6 +34,7 @@ type AzurermStreamAnalyticsOutputMssqlStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermStreamAnalyticsOutputMssqlList is a list of AzurermStreamAnalyticsOutputMssqls
 type AzurermStreamAnalyticsOutputMssqlList struct {

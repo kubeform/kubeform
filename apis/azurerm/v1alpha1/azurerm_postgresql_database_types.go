@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermPostgresqlDatabase struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,11 +19,11 @@ type AzurermPostgresqlDatabase struct {
 }
 
 type AzurermPostgresqlDatabaseSpec struct {
-	Charset           string `json:"charset"`
-	Collation         string `json:"collation"`
 	Name              string `json:"name"`
 	ResourceGroupName string `json:"resource_group_name"`
 	ServerName        string `json:"server_name"`
+	Charset           string `json:"charset"`
+	Collation         string `json:"collation"`
 }
 
 type AzurermPostgresqlDatabaseStatus struct {
@@ -30,6 +31,7 @@ type AzurermPostgresqlDatabaseStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermPostgresqlDatabaseList is a list of AzurermPostgresqlDatabases
 type AzurermPostgresqlDatabaseList struct {

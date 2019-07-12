@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsEbsVolume struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,15 +19,15 @@ type AwsEbsVolume struct {
 }
 
 type AwsEbsVolumeSpec struct {
-	AvailabilityZone string            `json:"availability_zone"`
-	Iops             int               `json:"iops"`
-	KmsKeyId         string            `json:"kms_key_id"`
-	SnapshotId       string            `json:"snapshot_id"`
 	Type             string            `json:"type"`
-	Arn              string            `json:"arn"`
-	Size             int               `json:"size"`
 	Tags             map[string]string `json:"tags"`
+	Arn              string            `json:"arn"`
+	AvailabilityZone string            `json:"availability_zone"`
 	Encrypted        bool              `json:"encrypted"`
+	KmsKeyId         string            `json:"kms_key_id"`
+	Iops             int               `json:"iops"`
+	Size             int               `json:"size"`
+	SnapshotId       string            `json:"snapshot_id"`
 }
 
 type AwsEbsVolumeStatus struct {
@@ -34,6 +35,7 @@ type AwsEbsVolumeStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsEbsVolumeList is a list of AwsEbsVolumes
 type AwsEbsVolumeList struct {

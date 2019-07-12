@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type DigitaloceanVolumeSnapshot struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type DigitaloceanVolumeSnapshot struct {
 }
 
 type DigitaloceanVolumeSnapshotSpec struct {
-	MinDiskSize int      `json:"min_disk_size"`
 	Name        string   `json:"name"`
 	VolumeId    string   `json:"volume_id"`
 	Regions     []string `json:"regions"`
 	Size        float64  `json:"size"`
 	CreatedAt   string   `json:"created_at"`
+	MinDiskSize int      `json:"min_disk_size"`
 }
 
 type DigitaloceanVolumeSnapshotStatus struct {
@@ -31,6 +32,7 @@ type DigitaloceanVolumeSnapshotStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // DigitaloceanVolumeSnapshotList is a list of DigitaloceanVolumeSnapshots
 type DigitaloceanVolumeSnapshotList struct {

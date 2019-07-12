@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermCognitiveAccount struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,15 +24,15 @@ type AzurermCognitiveAccountSpecSku struct {
 }
 
 type AzurermCognitiveAccountSpec struct {
-	Kind               string                        `json:"kind"`
-	Tags               map[string]string             `json:"tags"`
-	Name               string                        `json:"name"`
+	Location           string                        `json:"location"`
 	ResourceGroupName  string                        `json:"resource_group_name"`
+	Kind               string                        `json:"kind"`
 	Sku                []AzurermCognitiveAccountSpec `json:"sku"`
 	Endpoint           string                        `json:"endpoint"`
-	PrimaryAccessKey   string                        `json:"primary_access_key"`
 	SecondaryAccessKey string                        `json:"secondary_access_key"`
-	Location           string                        `json:"location"`
+	Name               string                        `json:"name"`
+	Tags               map[string]string             `json:"tags"`
+	PrimaryAccessKey   string                        `json:"primary_access_key"`
 }
 
 type AzurermCognitiveAccountStatus struct {
@@ -39,6 +40,7 @@ type AzurermCognitiveAccountStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermCognitiveAccountList is a list of AzurermCognitiveAccounts
 type AzurermCognitiveAccountList struct {

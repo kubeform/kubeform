@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDocdbClusterParameterGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AwsDocdbClusterParameterGroup struct {
 }
 
 type AwsDocdbClusterParameterGroupSpecParameter struct {
-	ApplyMethod string `json:"apply_method"`
 	Name        string `json:"name"`
 	Value       string `json:"value"`
+	ApplyMethod string `json:"apply_method"`
 }
 
 type AwsDocdbClusterParameterGroupSpec struct {
-	Parameter   []AwsDocdbClusterParameterGroupSpec `json:"parameter"`
 	Tags        map[string]string                   `json:"tags"`
 	Arn         string                              `json:"arn"`
 	Name        string                              `json:"name"`
 	NamePrefix  string                              `json:"name_prefix"`
 	Family      string                              `json:"family"`
 	Description string                              `json:"description"`
+	Parameter   []AwsDocdbClusterParameterGroupSpec `json:"parameter"`
 }
 
 type AwsDocdbClusterParameterGroupStatus struct {
@@ -38,6 +39,7 @@ type AwsDocdbClusterParameterGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDocdbClusterParameterGroupList is a list of AwsDocdbClusterParameterGroups
 type AwsDocdbClusterParameterGroupList struct {

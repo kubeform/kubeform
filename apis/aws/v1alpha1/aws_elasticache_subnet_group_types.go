@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsElasticacheSubnetGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsElasticacheSubnetGroup struct {
 }
 
 type AwsElasticacheSubnetGroupSpec struct {
+	SubnetIds   []string `json:"subnet_ids"`
 	Description string   `json:"description"`
 	Name        string   `json:"name"`
-	SubnetIds   []string `json:"subnet_ids"`
 }
 
 type AwsElasticacheSubnetGroupStatus struct {
@@ -28,6 +29,7 @@ type AwsElasticacheSubnetGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsElasticacheSubnetGroupList is a list of AwsElasticacheSubnetGroups
 type AwsElasticacheSubnetGroupList struct {

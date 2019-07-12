@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLightsailStaticIp struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsLightsailStaticIp struct {
 }
 
 type AwsLightsailStaticIpSpec struct {
-	IpAddress   string `json:"ip_address"`
-	Arn         string `json:"arn"`
 	SupportCode string `json:"support_code"`
 	Name        string `json:"name"`
+	IpAddress   string `json:"ip_address"`
+	Arn         string `json:"arn"`
 }
 
 type AwsLightsailStaticIpStatus struct {
@@ -29,6 +30,7 @@ type AwsLightsailStaticIpStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLightsailStaticIpList is a list of AwsLightsailStaticIps
 type AwsLightsailStaticIpList struct {

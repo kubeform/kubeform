@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleLoggingOrganizationSink struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,12 +19,12 @@ type GoogleLoggingOrganizationSink struct {
 }
 
 type GoogleLoggingOrganizationSinkSpec struct {
-	Name            string `json:"name"`
 	Destination     string `json:"destination"`
 	Filter          string `json:"filter"`
 	WriterIdentity  string `json:"writer_identity"`
 	OrgId           string `json:"org_id"`
 	IncludeChildren bool   `json:"include_children"`
+	Name            string `json:"name"`
 }
 
 type GoogleLoggingOrganizationSinkStatus struct {
@@ -31,6 +32,7 @@ type GoogleLoggingOrganizationSinkStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleLoggingOrganizationSinkList is a list of GoogleLoggingOrganizationSinks
 type GoogleLoggingOrganizationSinkList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermConnectionMonitor struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -29,15 +30,15 @@ type AzurermConnectionMonitorSpecDestination struct {
 }
 
 type AzurermConnectionMonitorSpec struct {
-	NetworkWatcherName string                         `json:"network_watcher_name"`
-	Location           string                         `json:"location"`
-	Source             []AzurermConnectionMonitorSpec `json:"source"`
-	Name               string                         `json:"name"`
 	AutoStart          bool                           `json:"auto_start"`
 	IntervalInSeconds  int                            `json:"interval_in_seconds"`
+	Source             []AzurermConnectionMonitorSpec `json:"source"`
 	Destination        []AzurermConnectionMonitorSpec `json:"destination"`
 	Tags               map[string]string              `json:"tags"`
 	ResourceGroupName  string                         `json:"resource_group_name"`
+	Location           string                         `json:"location"`
+	Name               string                         `json:"name"`
+	NetworkWatcherName string                         `json:"network_watcher_name"`
 }
 
 type AzurermConnectionMonitorStatus struct {
@@ -45,6 +46,7 @@ type AzurermConnectionMonitorStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermConnectionMonitorList is a list of AzurermConnectionMonitors
 type AzurermConnectionMonitorList struct {

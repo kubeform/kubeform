@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsIamRole struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,18 +19,18 @@ type AwsIamRole struct {
 }
 
 type AwsIamRoleSpec struct {
-	UniqueId            string            `json:"unique_id"`
-	Path                string            `json:"path"`
-	PermissionsBoundary string            `json:"permissions_boundary"`
-	Tags                map[string]string `json:"tags"`
-	ForceDetachPolicies bool              `json:"force_detach_policies"`
-	CreateDate          string            `json:"create_date"`
-	MaxSessionDuration  int               `json:"max_session_duration"`
 	Arn                 string            `json:"arn"`
-	Name                string            `json:"name"`
-	NamePrefix          string            `json:"name_prefix"`
 	Description         string            `json:"description"`
 	AssumeRolePolicy    string            `json:"assume_role_policy"`
+	CreateDate          string            `json:"create_date"`
+	MaxSessionDuration  int               `json:"max_session_duration"`
+	UniqueId            string            `json:"unique_id"`
+	Name                string            `json:"name"`
+	NamePrefix          string            `json:"name_prefix"`
+	Path                string            `json:"path"`
+	PermissionsBoundary string            `json:"permissions_boundary"`
+	ForceDetachPolicies bool              `json:"force_detach_policies"`
+	Tags                map[string]string `json:"tags"`
 }
 
 type AwsIamRoleStatus struct {
@@ -37,6 +38,7 @@ type AwsIamRoleStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsIamRoleList is a list of AwsIamRoles
 type AwsIamRoleList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GooglePubsubTopicIamMember struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -19,10 +20,10 @@ type GooglePubsubTopicIamMember struct {
 
 type GooglePubsubTopicIamMemberSpec struct {
 	Member  string `json:"member"`
-	Etag    string `json:"etag"`
-	Role    string `json:"role"`
 	Topic   string `json:"topic"`
 	Project string `json:"project"`
+	Etag    string `json:"etag"`
+	Role    string `json:"role"`
 }
 
 type GooglePubsubTopicIamMemberStatus struct {
@@ -30,6 +31,7 @@ type GooglePubsubTopicIamMemberStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GooglePubsubTopicIamMemberList is a list of GooglePubsubTopicIamMembers
 type GooglePubsubTopicIamMemberList struct {

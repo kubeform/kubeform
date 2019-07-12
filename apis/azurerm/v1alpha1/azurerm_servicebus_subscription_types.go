@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermServicebusSubscription struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,19 +19,19 @@ type AzurermServicebusSubscription struct {
 }
 
 type AzurermServicebusSubscriptionSpec struct {
-	TopicName                                 string `json:"topic_name"`
-	Location                                  string `json:"location"`
-	ResourceGroupName                         string `json:"resource_group_name"`
-	AutoDeleteOnIdle                          string `json:"auto_delete_on_idle"`
-	DefaultMessageTtl                         string `json:"default_message_ttl"`
-	MaxDeliveryCount                          int    `json:"max_delivery_count"`
 	Name                                      string `json:"name"`
 	NamespaceName                             string `json:"namespace_name"`
-	LockDuration                              string `json:"lock_duration"`
-	EnableBatchedOperations                   bool   `json:"enable_batched_operations"`
-	ForwardTo                                 string `json:"forward_to"`
+	Location                                  string `json:"location"`
 	DeadLetteringOnMessageExpiration          bool   `json:"dead_lettering_on_message_expiration"`
+	ResourceGroupName                         string `json:"resource_group_name"`
+	LockDuration                              string `json:"lock_duration"`
+	TopicName                                 string `json:"topic_name"`
+	EnableBatchedOperations                   bool   `json:"enable_batched_operations"`
+	MaxDeliveryCount                          int    `json:"max_delivery_count"`
 	RequiresSession                           bool   `json:"requires_session"`
+	ForwardTo                                 string `json:"forward_to"`
+	AutoDeleteOnIdle                          string `json:"auto_delete_on_idle"`
+	DefaultMessageTtl                         string `json:"default_message_ttl"`
 	DeadLetteringOnFilterEvaluationExceptions bool   `json:"dead_lettering_on_filter_evaluation_exceptions"`
 }
 
@@ -39,6 +40,7 @@ type AzurermServicebusSubscriptionStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermServicebusSubscriptionList is a list of AzurermServicebusSubscriptions
 type AzurermServicebusSubscriptionList struct {

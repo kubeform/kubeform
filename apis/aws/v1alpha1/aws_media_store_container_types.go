@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsMediaStoreContainer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,9 +19,9 @@ type AwsMediaStoreContainer struct {
 }
 
 type AwsMediaStoreContainerSpec struct {
+	Endpoint string `json:"endpoint"`
 	Name     string `json:"name"`
 	Arn      string `json:"arn"`
-	Endpoint string `json:"endpoint"`
 }
 
 type AwsMediaStoreContainerStatus struct {
@@ -28,6 +29,7 @@ type AwsMediaStoreContainerStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsMediaStoreContainerList is a list of AwsMediaStoreContainers
 type AwsMediaStoreContainerList struct {

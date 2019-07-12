@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsServiceDiscoveryPublicDnsNamespace struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -29,6 +30,7 @@ type AwsServiceDiscoveryPublicDnsNamespaceStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsServiceDiscoveryPublicDnsNamespaceList is a list of AwsServiceDiscoveryPublicDnsNamespaces
 type AwsServiceDiscoveryPublicDnsNamespaceList struct {

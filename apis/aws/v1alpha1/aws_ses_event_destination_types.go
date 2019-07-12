@@ -9,16 +9,13 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsSesEventDestination struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              AwsSesEventDestinationSpec   `json:"spec,omitempty"`
 	Status            AwsSesEventDestinationStatus `json:"status,omitempty"`
-}
-
-type AwsSesEventDestinationSpecSnsDestination struct {
-	TopicArn string `json:"topic_arn"`
 }
 
 type AwsSesEventDestinationSpecCloudwatchDestination struct {
@@ -32,14 +29,18 @@ type AwsSesEventDestinationSpecKinesisDestination struct {
 	RoleArn   string `json:"role_arn"`
 }
 
+type AwsSesEventDestinationSpecSnsDestination struct {
+	TopicArn string `json:"topic_arn"`
+}
+
 type AwsSesEventDestinationSpec struct {
-	SnsDestination        []AwsSesEventDestinationSpec `json:"sns_destination"`
 	Name                  string                       `json:"name"`
 	ConfigurationSetName  string                       `json:"configuration_set_name"`
 	Enabled               bool                         `json:"enabled"`
 	MatchingTypes         []string                     `json:"matching_types"`
 	CloudwatchDestination []AwsSesEventDestinationSpec `json:"cloudwatch_destination"`
 	KinesisDestination    []AwsSesEventDestinationSpec `json:"kinesis_destination"`
+	SnsDestination        []AwsSesEventDestinationSpec `json:"sns_destination"`
 }
 
 type AwsSesEventDestinationStatus struct {
@@ -47,6 +48,7 @@ type AwsSesEventDestinationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsSesEventDestinationList is a list of AwsSesEventDestinations
 type AwsSesEventDestinationList struct {

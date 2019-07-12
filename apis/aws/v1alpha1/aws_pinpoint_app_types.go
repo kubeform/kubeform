@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsPinpointApp struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,10 +25,10 @@ type AwsPinpointAppSpecCampaignHook struct {
 }
 
 type AwsPinpointAppSpecLimits struct {
+	Daily             int `json:"daily"`
 	MaximumDuration   int `json:"maximum_duration"`
 	MessagesPerSecond int `json:"messages_per_second"`
 	Total             int `json:"total"`
-	Daily             int `json:"daily"`
 }
 
 type AwsPinpointAppSpecQuietTime struct {
@@ -49,6 +50,7 @@ type AwsPinpointAppStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsPinpointAppList is a list of AwsPinpointApps
 type AwsPinpointAppList struct {

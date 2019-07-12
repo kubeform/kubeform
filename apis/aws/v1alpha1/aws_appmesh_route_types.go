@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAppmeshRoute struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -54,6 +55,7 @@ type AwsAppmeshRouteSpecSpec struct {
 }
 
 type AwsAppmeshRouteSpec struct {
+	Tags              map[string]string     `json:"tags"`
 	Name              string                `json:"name"`
 	MeshName          string                `json:"mesh_name"`
 	VirtualRouterName string                `json:"virtual_router_name"`
@@ -68,6 +70,7 @@ type AwsAppmeshRouteStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAppmeshRouteList is a list of AwsAppmeshRoutes
 type AwsAppmeshRouteList struct {

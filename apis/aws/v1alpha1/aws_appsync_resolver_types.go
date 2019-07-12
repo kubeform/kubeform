@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsAppsyncResolver struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,14 +18,20 @@ type AwsAppsyncResolver struct {
 	Status            AwsAppsyncResolverStatus `json:"status,omitempty"`
 }
 
+type AwsAppsyncResolverSpecPipelineConfig struct {
+	Functions []string `json:"functions"`
+}
+
 type AwsAppsyncResolverSpec struct {
-	Arn              string `json:"arn"`
-	ApiId            string `json:"api_id"`
-	Type             string `json:"type"`
-	Field            string `json:"field"`
-	DataSource       string `json:"data_source"`
-	RequestTemplate  string `json:"request_template"`
-	ResponseTemplate string `json:"response_template"`
+	Type             string                   `json:"type"`
+	DataSource       string                   `json:"data_source"`
+	ResponseTemplate string                   `json:"response_template"`
+	ApiId            string                   `json:"api_id"`
+	Field            string                   `json:"field"`
+	RequestTemplate  string                   `json:"request_template"`
+	Kind             string                   `json:"kind"`
+	PipelineConfig   []AwsAppsyncResolverSpec `json:"pipeline_config"`
+	Arn              string                   `json:"arn"`
 }
 
 type AwsAppsyncResolverStatus struct {
@@ -32,6 +39,7 @@ type AwsAppsyncResolverStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsAppsyncResolverList is a list of AwsAppsyncResolvers
 type AwsAppsyncResolverList struct {

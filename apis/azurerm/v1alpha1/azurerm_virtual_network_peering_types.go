@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermVirtualNetworkPeering struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,14 +19,14 @@ type AzurermVirtualNetworkPeering struct {
 }
 
 type AzurermVirtualNetworkPeeringSpec struct {
-	UseRemoteGateways         bool   `json:"use_remote_gateways"`
-	Name                      string `json:"name"`
 	ResourceGroupName         string `json:"resource_group_name"`
 	VirtualNetworkName        string `json:"virtual_network_name"`
 	RemoteVirtualNetworkId    string `json:"remote_virtual_network_id"`
 	AllowVirtualNetworkAccess bool   `json:"allow_virtual_network_access"`
 	AllowForwardedTraffic     bool   `json:"allow_forwarded_traffic"`
 	AllowGatewayTransit       bool   `json:"allow_gateway_transit"`
+	UseRemoteGateways         bool   `json:"use_remote_gateways"`
+	Name                      string `json:"name"`
 }
 
 type AzurermVirtualNetworkPeeringStatus struct {
@@ -33,6 +34,7 @@ type AzurermVirtualNetworkPeeringStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermVirtualNetworkPeeringList is a list of AzurermVirtualNetworkPeerings
 type AzurermVirtualNetworkPeeringList struct {

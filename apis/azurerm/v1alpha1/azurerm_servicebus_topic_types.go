@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermServicebusTopic struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,21 +19,21 @@ type AzurermServicebusTopic struct {
 }
 
 type AzurermServicebusTopicSpec struct {
-	Status                                  string `json:"status"`
-	DefaultMessageTtl                       string `json:"default_message_ttl"`
 	DuplicateDetectionHistoryTimeWindow     string `json:"duplicate_detection_history_time_window"`
-	EnablePartitioning                      bool   `json:"enable_partitioning"`
-	RequiresDuplicateDetection              bool   `json:"requires_duplicate_detection"`
-	EnableFilteringMessagesBeforePublishing bool   `json:"enable_filtering_messages_before_publishing"`
-	Location                                string `json:"location"`
-	ResourceGroupName                       string `json:"resource_group_name"`
-	AutoDeleteOnIdle                        string `json:"auto_delete_on_idle"`
-	EnableExpress                           bool   `json:"enable_express"`
-	MaxSizeInMegabytes                      int    `json:"max_size_in_megabytes"`
+	EnableBatchedOperations                 bool   `json:"enable_batched_operations"`
 	SupportOrdering                         bool   `json:"support_ordering"`
+	Status                                  string `json:"status"`
+	EnableExpress                           bool   `json:"enable_express"`
+	EnableFilteringMessagesBeforePublishing bool   `json:"enable_filtering_messages_before_publishing"`
 	Name                                    string `json:"name"`
 	NamespaceName                           string `json:"namespace_name"`
-	EnableBatchedOperations                 bool   `json:"enable_batched_operations"`
+	Location                                string `json:"location"`
+	MaxSizeInMegabytes                      int    `json:"max_size_in_megabytes"`
+	RequiresDuplicateDetection              bool   `json:"requires_duplicate_detection"`
+	AutoDeleteOnIdle                        string `json:"auto_delete_on_idle"`
+	DefaultMessageTtl                       string `json:"default_message_ttl"`
+	EnablePartitioning                      bool   `json:"enable_partitioning"`
+	ResourceGroupName                       string `json:"resource_group_name"`
 }
 
 type AzurermServicebusTopicStatus struct {
@@ -40,6 +41,7 @@ type AzurermServicebusTopicStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermServicebusTopicList is a list of AzurermServicebusTopics
 type AzurermServicebusTopicList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsLbTargetGroupAttachment struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,10 @@ type AwsLbTargetGroupAttachment struct {
 }
 
 type AwsLbTargetGroupAttachmentSpec struct {
-	TargetGroupArn   string `json:"target_group_arn"`
-	TargetId         string `json:"target_id"`
 	Port             int    `json:"port"`
 	AvailabilityZone string `json:"availability_zone"`
+	TargetGroupArn   string `json:"target_group_arn"`
+	TargetId         string `json:"target_id"`
 }
 
 type AwsLbTargetGroupAttachmentStatus struct {
@@ -29,6 +30,7 @@ type AwsLbTargetGroupAttachmentStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsLbTargetGroupAttachmentList is a list of AwsLbTargetGroupAttachments
 type AwsLbTargetGroupAttachmentList struct {

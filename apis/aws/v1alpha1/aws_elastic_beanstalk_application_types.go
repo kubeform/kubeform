@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsElasticBeanstalkApplication struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,16 +19,18 @@ type AwsElasticBeanstalkApplication struct {
 }
 
 type AwsElasticBeanstalkApplicationSpecAppversionLifecycle struct {
-	ServiceRole        string `json:"service_role"`
 	MaxAgeInDays       int    `json:"max_age_in_days"`
 	MaxCount           int    `json:"max_count"`
 	DeleteSourceFromS3 bool   `json:"delete_source_from_s3"`
+	ServiceRole        string `json:"service_role"`
 }
 
 type AwsElasticBeanstalkApplicationSpec struct {
+	Arn                 string                               `json:"arn"`
 	Name                string                               `json:"name"`
 	Description         string                               `json:"description"`
 	AppversionLifecycle []AwsElasticBeanstalkApplicationSpec `json:"appversion_lifecycle"`
+	Tags                map[string]string                    `json:"tags"`
 }
 
 type AwsElasticBeanstalkApplicationStatus struct {
@@ -35,6 +38,7 @@ type AwsElasticBeanstalkApplicationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsElasticBeanstalkApplicationList is a list of AwsElasticBeanstalkApplications
 type AwsElasticBeanstalkApplicationList struct {

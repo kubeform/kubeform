@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleProjectOrganizationPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -36,20 +37,20 @@ type GoogleProjectOrganizationPolicySpecListPolicyDeny struct {
 }
 
 type GoogleProjectOrganizationPolicySpecListPolicy struct {
+	SuggestedValue string                                          `json:"suggested_value"`
 	Allow          []GoogleProjectOrganizationPolicySpecListPolicy `json:"allow"`
 	Deny           []GoogleProjectOrganizationPolicySpecListPolicy `json:"deny"`
-	SuggestedValue string                                          `json:"suggested_value"`
 }
 
 type GoogleProjectOrganizationPolicySpec struct {
-	Version       int                                   `json:"version"`
-	Etag          string                                `json:"etag"`
 	UpdateTime    string                                `json:"update_time"`
 	RestorePolicy []GoogleProjectOrganizationPolicySpec `json:"restore_policy"`
-	Project       string                                `json:"project"`
 	Constraint    string                                `json:"constraint"`
 	BooleanPolicy []GoogleProjectOrganizationPolicySpec `json:"boolean_policy"`
 	ListPolicy    []GoogleProjectOrganizationPolicySpec `json:"list_policy"`
+	Version       int                                   `json:"version"`
+	Etag          string                                `json:"etag"`
+	Project       string                                `json:"project"`
 }
 
 type GoogleProjectOrganizationPolicyStatus struct {
@@ -57,6 +58,7 @@ type GoogleProjectOrganizationPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleProjectOrganizationPolicyList is a list of GoogleProjectOrganizationPolicys
 type GoogleProjectOrganizationPolicyList struct {

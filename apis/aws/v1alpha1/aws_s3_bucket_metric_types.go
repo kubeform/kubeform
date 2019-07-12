@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsS3BucketMetric struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -33,6 +34,7 @@ type AwsS3BucketMetricStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsS3BucketMetricList is a list of AwsS3BucketMetrics
 type AwsS3BucketMetricList struct {

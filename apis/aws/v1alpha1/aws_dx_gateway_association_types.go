@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsDxGatewayAssociation struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,10 +19,15 @@ type AwsDxGatewayAssociation struct {
 }
 
 type AwsDxGatewayAssociationSpec struct {
-	VpnGatewayId           string   `json:"vpn_gateway_id"`
-	DxGatewayAssociationId string   `json:"dx_gateway_association_id"`
-	AllowedPrefixes        []string `json:"allowed_prefixes"`
-	DxGatewayId            string   `json:"dx_gateway_id"`
+	AllowedPrefixes                 []string `json:"allowed_prefixes"`
+	AssociatedGatewayId             string   `json:"associated_gateway_id"`
+	AssociatedGatewayOwnerAccountId string   `json:"associated_gateway_owner_account_id"`
+	ProposalId                      string   `json:"proposal_id"`
+	VpnGatewayId                    string   `json:"vpn_gateway_id"`
+	AssociatedGatewayType           string   `json:"associated_gateway_type"`
+	DxGatewayAssociationId          string   `json:"dx_gateway_association_id"`
+	DxGatewayId                     string   `json:"dx_gateway_id"`
+	DxGatewayOwnerAccountId         string   `json:"dx_gateway_owner_account_id"`
 }
 
 type AwsDxGatewayAssociationStatus struct {
@@ -29,6 +35,7 @@ type AwsDxGatewayAssociationStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsDxGatewayAssociationList is a list of AwsDxGatewayAssociations
 type AwsDxGatewayAssociationList struct {

@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsGameliftAlias struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -24,10 +25,10 @@ type AwsGameliftAliasSpecRoutingStrategy struct {
 }
 
 type AwsGameliftAliasSpec struct {
-	Arn             string                 `json:"arn"`
-	Name            string                 `json:"name"`
 	Description     string                 `json:"description"`
 	RoutingStrategy []AwsGameliftAliasSpec `json:"routing_strategy"`
+	Arn             string                 `json:"arn"`
+	Name            string                 `json:"name"`
 }
 
 type AwsGameliftAliasStatus struct {
@@ -35,6 +36,7 @@ type AwsGameliftAliasStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsGameliftAliasList is a list of AwsGameliftAliass
 type AwsGameliftAliasList struct {

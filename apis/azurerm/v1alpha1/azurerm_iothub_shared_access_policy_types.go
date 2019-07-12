@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermIothubSharedAccessPolicy struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,17 +19,17 @@ type AzurermIothubSharedAccessPolicy struct {
 }
 
 type AzurermIothubSharedAccessPolicySpec struct {
+	SecondaryConnectionString string `json:"secondary_connection_string"`
 	Name                      string `json:"name"`
-	ResourceGroupName         string `json:"resource_group_name"`
 	IothubName                string `json:"iothub_name"`
-	RegistryRead              bool   `json:"registry_read"`
 	RegistryWrite             bool   `json:"registry_write"`
 	ServiceConnect            bool   `json:"service_connect"`
 	DeviceConnect             bool   `json:"device_connect"`
+	ResourceGroupName         string `json:"resource_group_name"`
+	RegistryRead              bool   `json:"registry_read"`
 	PrimaryKey                string `json:"primary_key"`
 	PrimaryConnectionString   string `json:"primary_connection_string"`
 	SecondaryKey              string `json:"secondary_key"`
-	SecondaryConnectionString string `json:"secondary_connection_string"`
 }
 
 type AzurermIothubSharedAccessPolicyStatus struct {
@@ -36,6 +37,7 @@ type AzurermIothubSharedAccessPolicyStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermIothubSharedAccessPolicyList is a list of AzurermIothubSharedAccessPolicys
 type AzurermIothubSharedAccessPolicyList struct {

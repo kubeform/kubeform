@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AwsWafregionalSqlInjectionMatchSet struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -23,13 +24,13 @@ type AwsWafregionalSqlInjectionMatchSetSpecSqlInjectionMatchTupleFieldToMatch st
 }
 
 type AwsWafregionalSqlInjectionMatchSetSpecSqlInjectionMatchTuple struct {
-	TextTransformation string                                                         `json:"text_transformation"`
 	FieldToMatch       []AwsWafregionalSqlInjectionMatchSetSpecSqlInjectionMatchTuple `json:"field_to_match"`
+	TextTransformation string                                                         `json:"text_transformation"`
 }
 
 type AwsWafregionalSqlInjectionMatchSetSpec struct {
-	SqlInjectionMatchTuple []AwsWafregionalSqlInjectionMatchSetSpec `json:"sql_injection_match_tuple"`
 	Name                   string                                   `json:"name"`
+	SqlInjectionMatchTuple []AwsWafregionalSqlInjectionMatchSetSpec `json:"sql_injection_match_tuple"`
 }
 
 type AwsWafregionalSqlInjectionMatchSetStatus struct {
@@ -37,6 +38,7 @@ type AwsWafregionalSqlInjectionMatchSetStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AwsWafregionalSqlInjectionMatchSetList is a list of AwsWafregionalSqlInjectionMatchSets
 type AwsWafregionalSqlInjectionMatchSetList struct {

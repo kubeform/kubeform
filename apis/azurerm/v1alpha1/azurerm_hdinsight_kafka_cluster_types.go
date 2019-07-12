@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type AzurermHdinsightKafkaCluster struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -17,20 +18,41 @@ type AzurermHdinsightKafkaCluster struct {
 	Status            AzurermHdinsightKafkaClusterStatus `json:"status,omitempty"`
 }
 
-type AzurermHdinsightKafkaClusterSpecGateway struct {
-	Enabled  bool   `json:"enabled"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
 type AzurermHdinsightKafkaClusterSpecComponentVersion struct {
 	Kafka string `json:"kafka"`
+}
+
+type AzurermHdinsightKafkaClusterSpecGateway struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Enabled  bool   `json:"enabled"`
 }
 
 type AzurermHdinsightKafkaClusterSpecStorageAccount struct {
 	StorageAccountKey  string `json:"storage_account_key"`
 	StorageContainerId string `json:"storage_container_id"`
 	IsDefault          bool   `json:"is_default"`
+}
+
+type AzurermHdinsightKafkaClusterSpecRolesWorkerNode struct {
+	VirtualNetworkId     string   `json:"virtual_network_id"`
+	MinInstanceCount     int      `json:"min_instance_count"`
+	TargetInstanceCount  int      `json:"target_instance_count"`
+	VmSize               string   `json:"vm_size"`
+	Username             string   `json:"username"`
+	Password             string   `json:"password"`
+	SshKeys              []string `json:"ssh_keys"`
+	SubnetId             string   `json:"subnet_id"`
+	NumberOfDisksPerNode int      `json:"number_of_disks_per_node"`
+}
+
+type AzurermHdinsightKafkaClusterSpecRolesZookeeperNode struct {
+	SshKeys          []string `json:"ssh_keys"`
+	SubnetId         string   `json:"subnet_id"`
+	VirtualNetworkId string   `json:"virtual_network_id"`
+	VmSize           string   `json:"vm_size"`
+	Username         string   `json:"username"`
+	Password         string   `json:"password"`
 }
 
 type AzurermHdinsightKafkaClusterSpecRolesHeadNode struct {
@@ -42,46 +64,25 @@ type AzurermHdinsightKafkaClusterSpecRolesHeadNode struct {
 	VirtualNetworkId string   `json:"virtual_network_id"`
 }
 
-type AzurermHdinsightKafkaClusterSpecRolesWorkerNode struct {
-	Password             string   `json:"password"`
-	SubnetId             string   `json:"subnet_id"`
-	VirtualNetworkId     string   `json:"virtual_network_id"`
-	MinInstanceCount     int      `json:"min_instance_count"`
-	TargetInstanceCount  int      `json:"target_instance_count"`
-	VmSize               string   `json:"vm_size"`
-	Username             string   `json:"username"`
-	SshKeys              []string `json:"ssh_keys"`
-	NumberOfDisksPerNode int      `json:"number_of_disks_per_node"`
-}
-
-type AzurermHdinsightKafkaClusterSpecRolesZookeeperNode struct {
-	VirtualNetworkId string   `json:"virtual_network_id"`
-	VmSize           string   `json:"vm_size"`
-	Username         string   `json:"username"`
-	Password         string   `json:"password"`
-	SshKeys          []string `json:"ssh_keys"`
-	SubnetId         string   `json:"subnet_id"`
-}
-
 type AzurermHdinsightKafkaClusterSpecRoles struct {
-	HeadNode      []AzurermHdinsightKafkaClusterSpecRoles `json:"head_node"`
 	WorkerNode    []AzurermHdinsightKafkaClusterSpecRoles `json:"worker_node"`
 	ZookeeperNode []AzurermHdinsightKafkaClusterSpecRoles `json:"zookeeper_node"`
+	HeadNode      []AzurermHdinsightKafkaClusterSpecRoles `json:"head_node"`
 }
 
 type AzurermHdinsightKafkaClusterSpec struct {
-	ResourceGroupName string                             `json:"resource_group_name"`
-	Tier              string                             `json:"tier"`
-	Gateway           []AzurermHdinsightKafkaClusterSpec `json:"gateway"`
 	SshEndpoint       string                             `json:"ssh_endpoint"`
-	Tags              map[string]string                  `json:"tags"`
-	HttpsEndpoint     string                             `json:"https_endpoint"`
-	Name              string                             `json:"name"`
 	Location          string                             `json:"location"`
-	ClusterVersion    string                             `json:"cluster_version"`
+	Tier              string                             `json:"tier"`
 	ComponentVersion  []AzurermHdinsightKafkaClusterSpec `json:"component_version"`
+	Gateway           []AzurermHdinsightKafkaClusterSpec `json:"gateway"`
 	StorageAccount    []AzurermHdinsightKafkaClusterSpec `json:"storage_account"`
 	Roles             []AzurermHdinsightKafkaClusterSpec `json:"roles"`
+	HttpsEndpoint     string                             `json:"https_endpoint"`
+	Name              string                             `json:"name"`
+	ResourceGroupName string                             `json:"resource_group_name"`
+	ClusterVersion    string                             `json:"cluster_version"`
+	Tags              map[string]string                  `json:"tags"`
 }
 
 type AzurermHdinsightKafkaClusterStatus struct {
@@ -89,6 +90,7 @@ type AzurermHdinsightKafkaClusterStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // AzurermHdinsightKafkaClusterList is a list of AzurermHdinsightKafkaClusters
 type AzurermHdinsightKafkaClusterList struct {

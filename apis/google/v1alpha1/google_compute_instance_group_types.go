@@ -9,6 +9,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 type GoogleComputeInstanceGroup struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
@@ -18,20 +19,20 @@ type GoogleComputeInstanceGroup struct {
 }
 
 type GoogleComputeInstanceGroupSpecNamedPort struct {
-	Name string `json:"name"`
 	Port int    `json:"port"`
+	Name string `json:"name"`
 }
 
 type GoogleComputeInstanceGroupSpec struct {
-	SelfLink    string                           `json:"self_link"`
-	Size        int                              `json:"size"`
-	Instances   []string                         `json:"instances"`
-	NamedPort   []GoogleComputeInstanceGroupSpec `json:"named_port"`
-	Description string                           `json:"description"`
-	Network     string                           `json:"network"`
-	Project     string                           `json:"project"`
 	Name        string                           `json:"name"`
 	Zone        string                           `json:"zone"`
+	Description string                           `json:"description"`
+	NamedPort   []GoogleComputeInstanceGroupSpec `json:"named_port"`
+	Network     string                           `json:"network"`
+	SelfLink    string                           `json:"self_link"`
+	Instances   []string                         `json:"instances"`
+	Project     string                           `json:"project"`
+	Size        int                              `json:"size"`
 }
 
 type GoogleComputeInstanceGroupStatus struct {
@@ -39,6 +40,7 @@ type GoogleComputeInstanceGroupStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
 
 // GoogleComputeInstanceGroupList is a list of GoogleComputeInstanceGroups
 type GoogleComputeInstanceGroupList struct {
