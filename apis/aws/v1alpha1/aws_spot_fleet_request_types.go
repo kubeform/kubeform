@@ -83,10 +83,8 @@ type AwsSpotFleetRequestSpec struct {
 	SpotRequestState                 string                    `json:"spot_request_state"`
 }
 
-
-
 type AwsSpotFleetRequestStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

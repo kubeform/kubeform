@@ -25,10 +25,8 @@ type AzurermStorageContainerSpec struct {
 	ContainerAccessType string            `json:"container_access_type"`
 }
 
-
-
 type AzurermStorageContainerStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

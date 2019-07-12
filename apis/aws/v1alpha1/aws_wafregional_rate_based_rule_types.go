@@ -31,10 +31,8 @@ type AwsWafregionalRateBasedRuleSpec struct {
 	RateKey    string                            `json:"rate_key"`
 }
 
-
-
 type AwsWafregionalRateBasedRuleStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

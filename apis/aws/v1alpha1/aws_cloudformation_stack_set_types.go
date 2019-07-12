@@ -31,10 +31,8 @@ type AwsCloudformationStackSetSpec struct {
 	TemplateBody          string            `json:"template_body"`
 }
 
-
-
 type AwsCloudformationStackSetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

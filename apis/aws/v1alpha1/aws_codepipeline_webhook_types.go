@@ -37,10 +37,8 @@ type AwsCodepipelineWebhookSpec struct {
 	AuthenticationConfiguration []AwsCodepipelineWebhookSpec `json:"authentication_configuration"`
 }
 
-
-
 type AwsCodepipelineWebhookStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

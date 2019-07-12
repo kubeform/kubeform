@@ -37,10 +37,8 @@ type AzurermContainerRegistrySpec struct {
 	GeoreplicationLocations []string                       `json:"georeplication_locations"`
 }
 
-
-
 type AzurermContainerRegistryStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

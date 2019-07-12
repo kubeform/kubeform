@@ -28,10 +28,8 @@ type AwsCloud9EnvironmentEc2Spec struct {
 	InstanceType             string `json:"instance_type"`
 }
 
-
-
 type AwsCloud9EnvironmentEc2Status struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

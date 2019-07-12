@@ -25,10 +25,8 @@ type AzurermDataLakeStoreFirewallRuleSpec struct {
 	EndIpAddress      string `json:"end_ip_address"`
 }
 
-
-
 type AzurermDataLakeStoreFirewallRuleStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

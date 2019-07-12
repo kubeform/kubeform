@@ -53,10 +53,8 @@ type AwsOpsworksStackSpec struct {
 	HostnameTheme               string                 `json:"hostname_theme"`
 }
 
-
-
 type AwsOpsworksStackStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

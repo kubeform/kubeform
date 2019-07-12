@@ -25,8 +25,16 @@ import (
 	fakediscovery "k8s.io/client-go/discovery/fake"
 	"k8s.io/client-go/testing"
 	clientset "kubeform.dev/kubeform/client/clientset/versioned"
+	awsv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/aws/v1alpha1"
+	fakeawsv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/aws/v1alpha1/fake"
+	azurermv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/azurerm/v1alpha1"
+	fakeazurermv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/azurerm/v1alpha1/fake"
 	digitaloceanv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/digitalocean/v1alpha1"
 	fakedigitaloceanv1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/digitalocean/v1alpha1/fake"
+	googlev1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/google/v1alpha1"
+	fakegooglev1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/google/v1alpha1/fake"
+	linodev1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/linode/v1alpha1"
+	fakelinodev1alpha1 "kubeform.dev/kubeform/client/clientset/versioned/typed/linode/v1alpha1/fake"
 )
 
 // NewSimpleClientset returns a clientset that will respond with the provided objects.
@@ -71,7 +79,27 @@ func (c *Clientset) Discovery() discovery.DiscoveryInterface {
 
 var _ clientset.Interface = &Clientset{}
 
+// AwsV1alpha1 retrieves the AwsV1alpha1Client
+func (c *Clientset) AwsV1alpha1() awsv1alpha1.AwsV1alpha1Interface {
+	return &fakeawsv1alpha1.FakeAwsV1alpha1{Fake: &c.Fake}
+}
+
+// AzurermV1alpha1 retrieves the AzurermV1alpha1Client
+func (c *Clientset) AzurermV1alpha1() azurermv1alpha1.AzurermV1alpha1Interface {
+	return &fakeazurermv1alpha1.FakeAzurermV1alpha1{Fake: &c.Fake}
+}
+
 // DigitaloceanV1alpha1 retrieves the DigitaloceanV1alpha1Client
 func (c *Clientset) DigitaloceanV1alpha1() digitaloceanv1alpha1.DigitaloceanV1alpha1Interface {
 	return &fakedigitaloceanv1alpha1.FakeDigitaloceanV1alpha1{Fake: &c.Fake}
+}
+
+// GoogleV1alpha1 retrieves the GoogleV1alpha1Client
+func (c *Clientset) GoogleV1alpha1() googlev1alpha1.GoogleV1alpha1Interface {
+	return &fakegooglev1alpha1.FakeGoogleV1alpha1{Fake: &c.Fake}
+}
+
+// LinodeV1alpha1 retrieves the LinodeV1alpha1Client
+func (c *Clientset) LinodeV1alpha1() linodev1alpha1.LinodeV1alpha1Interface {
+	return &fakelinodev1alpha1.FakeLinodeV1alpha1{Fake: &c.Fake}
 }

@@ -30,10 +30,8 @@ type AzurermDataLakeStoreSpec struct {
 	EncryptionState       string            `json:"encryption_state"`
 }
 
-
-
 type AzurermDataLakeStoreStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -29,10 +29,8 @@ type AwsSnsTopicSubscriptionSpec struct {
 	RawMessageDelivery           bool   `json:"raw_message_delivery"`
 }
 
-
-
 type AwsSnsTopicSubscriptionStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

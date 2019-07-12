@@ -34,10 +34,8 @@ type AwsWafRuleGroupSpec struct {
 	ActivatedRule []AwsWafRuleGroupSpec `json:"activated_rule"`
 }
 
-
-
 type AwsWafRuleGroupStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

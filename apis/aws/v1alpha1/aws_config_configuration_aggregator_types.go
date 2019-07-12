@@ -36,10 +36,8 @@ type AwsConfigConfigurationAggregatorSpec struct {
 	OrganizationAggregationSource []AwsConfigConfigurationAggregatorSpec `json:"organization_aggregation_source"`
 }
 
-
-
 type AwsConfigConfigurationAggregatorStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

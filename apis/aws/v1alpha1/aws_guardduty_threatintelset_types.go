@@ -25,10 +25,8 @@ type AwsGuarddutyThreatintelsetSpec struct {
 	Activate   bool   `json:"activate"`
 }
 
-
-
 type AwsGuarddutyThreatintelsetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

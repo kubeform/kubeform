@@ -27,10 +27,8 @@ type AzurermApplicationInsightsSpec struct {
 	AppId              string            `json:"app_id"`
 }
 
-
-
 type AzurermApplicationInsightsStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

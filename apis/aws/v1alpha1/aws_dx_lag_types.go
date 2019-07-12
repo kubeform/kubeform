@@ -29,10 +29,8 @@ type AwsDxLagSpec struct {
 	HasLogicalRedundancy string            `json:"has_logical_redundancy"`
 }
 
-
-
 type AwsDxLagStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

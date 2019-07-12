@@ -86,10 +86,8 @@ type AwsElasticsearchDomainSpec struct {
 	ClusterConfig        []AwsElasticsearchDomainSpec `json:"cluster_config"`
 }
 
-
-
 type AwsElasticsearchDomainStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

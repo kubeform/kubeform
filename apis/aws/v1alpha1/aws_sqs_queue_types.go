@@ -35,10 +35,8 @@ type AwsSqsQueueSpec struct {
 	VisibilityTimeoutSeconds     int               `json:"visibility_timeout_seconds"`
 }
 
-
-
 type AwsSqsQueueStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

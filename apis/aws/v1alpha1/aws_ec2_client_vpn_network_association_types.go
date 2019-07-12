@@ -25,10 +25,8 @@ type AwsEc2ClientVpnNetworkAssociationSpec struct {
 	VpcId               string   `json:"vpc_id"`
 }
 
-
-
 type AwsEc2ClientVpnNetworkAssociationStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

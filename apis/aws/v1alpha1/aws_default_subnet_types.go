@@ -31,10 +31,8 @@ type AwsDefaultSubnetSpec struct {
 	OwnerId                     string            `json:"owner_id"`
 }
 
-
-
 type AwsDefaultSubnetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

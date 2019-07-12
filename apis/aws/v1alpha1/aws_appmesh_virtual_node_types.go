@@ -83,10 +83,8 @@ type AwsAppmeshVirtualNodeSpec struct {
 	LastUpdatedDate string                      `json:"last_updated_date"`
 }
 
-
-
 type AwsAppmeshVirtualNodeStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

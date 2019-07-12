@@ -22,10 +22,8 @@ type GoogleStorageDefaultObjectAclSpec struct {
 	RoleEntity []string `json:"role_entity"`
 }
 
-
-
 type GoogleStorageDefaultObjectAclStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

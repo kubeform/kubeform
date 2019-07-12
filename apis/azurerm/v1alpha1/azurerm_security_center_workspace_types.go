@@ -22,10 +22,8 @@ type AzurermSecurityCenterWorkspaceSpec struct {
 	WorkspaceId string `json:"workspace_id"`
 }
 
-
-
 type AzurermSecurityCenterWorkspaceStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

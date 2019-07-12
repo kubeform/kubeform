@@ -126,10 +126,8 @@ type AzurermContainerGroupSpec struct {
 	IpAddress               string                      `json:"ip_address"`
 }
 
-
-
 type AzurermContainerGroupStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -23,10 +23,8 @@ type AwsLoadBalancerListenerPolicySpec struct {
 	PolicyNames      []string `json:"policy_names"`
 }
 
-
-
 type AwsLoadBalancerListenerPolicyStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

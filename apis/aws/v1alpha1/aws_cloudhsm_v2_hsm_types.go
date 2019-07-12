@@ -27,10 +27,8 @@ type AwsCloudhsmV2HsmSpec struct {
 	SubnetId         string `json:"subnet_id"`
 }
 
-
-
 type AwsCloudhsmV2HsmStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

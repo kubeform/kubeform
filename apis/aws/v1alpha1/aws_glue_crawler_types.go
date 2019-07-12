@@ -54,10 +54,8 @@ type AwsGlueCrawlerSpec struct {
 	TablePrefix           string               `json:"table_prefix"`
 }
 
-
-
 type AwsGlueCrawlerStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -113,10 +113,8 @@ type GoogleComputeInstanceFromTemplateSpec struct {
 	MinCpuPlatform         string                                  `json:"min_cpu_platform"`
 }
 
-
-
 type GoogleComputeInstanceFromTemplateStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

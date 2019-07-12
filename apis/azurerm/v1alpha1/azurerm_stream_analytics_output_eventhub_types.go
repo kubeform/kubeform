@@ -35,10 +35,8 @@ type AzurermStreamAnalyticsOutputEventhubSpec struct {
 	EventhubName           string                                     `json:"eventhub_name"`
 }
 
-
-
 type AzurermStreamAnalyticsOutputEventhubStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

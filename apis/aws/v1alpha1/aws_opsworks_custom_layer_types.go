@@ -50,10 +50,8 @@ type AwsOpsworksCustomLayerSpec struct {
 	InstanceShutdownTimeout  int                          `json:"instance_shutdown_timeout"`
 }
 
-
-
 type AwsOpsworksCustomLayerStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

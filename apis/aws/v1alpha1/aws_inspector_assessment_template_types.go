@@ -25,10 +25,8 @@ type AwsInspectorAssessmentTemplateSpec struct {
 	Name             string   `json:"name"`
 }
 
-
-
 type AwsInspectorAssessmentTemplateStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

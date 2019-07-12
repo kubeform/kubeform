@@ -29,10 +29,8 @@ type AwsCurReportDefinitionSpec struct {
 	S3Prefix                 string   `json:"s3_prefix"`
 }
 
-
-
 type AwsCurReportDefinitionStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

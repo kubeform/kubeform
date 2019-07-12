@@ -35,10 +35,8 @@ type AwsApiGatewayRestApiSpec struct {
 	RootResourceId         string                     `json:"root_resource_id"`
 }
 
-
-
 type AwsApiGatewayRestApiStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -31,10 +31,8 @@ type AwsApiGatewayMethodSpec struct {
 	RequestParameters       map[string]bool   `json:"request_parameters"`
 }
 
-
-
 type AwsApiGatewayMethodStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

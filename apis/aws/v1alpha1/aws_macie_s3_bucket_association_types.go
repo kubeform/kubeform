@@ -29,10 +29,8 @@ type AwsMacieS3BucketAssociationSpec struct {
 	MemberAccountId    string                            `json:"member_account_id"`
 }
 
-
-
 type AwsMacieS3BucketAssociationStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

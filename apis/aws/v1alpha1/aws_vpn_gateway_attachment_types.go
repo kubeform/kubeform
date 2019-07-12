@@ -22,10 +22,8 @@ type AwsVpnGatewayAttachmentSpec struct {
 	VpnGatewayId string `json:"vpn_gateway_id"`
 }
 
-
-
 type AwsVpnGatewayAttachmentStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -31,10 +31,8 @@ type AwsGlacierVaultSpec struct {
 	AccessPolicy string                `json:"access_policy"`
 }
 
-
-
 type AwsGlacierVaultStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

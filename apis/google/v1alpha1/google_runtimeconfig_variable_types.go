@@ -26,10 +26,8 @@ type GoogleRuntimeconfigVariableSpec struct {
 	Value      string `json:"value"`
 }
 
-
-
 type GoogleRuntimeconfigVariableStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

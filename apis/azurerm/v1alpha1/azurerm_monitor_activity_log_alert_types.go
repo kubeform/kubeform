@@ -46,10 +46,8 @@ type AzurermMonitorActivityLogAlertSpec struct {
 	Action            []AzurermMonitorActivityLogAlertSpec `json:"action"`
 }
 
-
-
 type AzurermMonitorActivityLogAlertStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

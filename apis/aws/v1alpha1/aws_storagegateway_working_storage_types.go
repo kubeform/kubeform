@@ -22,10 +22,8 @@ type AwsStoragegatewayWorkingStorageSpec struct {
 	GatewayArn string `json:"gateway_arn"`
 }
 
-
-
 type AwsStoragegatewayWorkingStorageStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

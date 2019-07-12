@@ -24,10 +24,8 @@ type AwsOpsworksUserProfileSpec struct {
 	SshPublicKey        string `json:"ssh_public_key"`
 }
 
-
-
 type AwsOpsworksUserProfileStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

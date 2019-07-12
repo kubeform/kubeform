@@ -27,10 +27,8 @@ type AzurermEventgridTopicSpec struct {
 	SecondaryAccessKey string            `json:"secondary_access_key"`
 }
 
-
-
 type AzurermEventgridTopicStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -67,10 +67,8 @@ type AwsEc2FleetSpec struct {
 	TerminateInstances               bool              `json:"terminate_instances"`
 }
 
-
-
 type AwsEc2FleetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

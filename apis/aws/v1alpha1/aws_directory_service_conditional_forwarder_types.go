@@ -23,10 +23,8 @@ type AwsDirectoryServiceConditionalForwarderSpec struct {
 	RemoteDomainName string   `json:"remote_domain_name"`
 }
 
-
-
 type AwsDirectoryServiceConditionalForwarderStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

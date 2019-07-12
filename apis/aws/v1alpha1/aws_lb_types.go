@@ -50,10 +50,8 @@ type AwsLbSpec struct {
 	SubnetMapping                []AwsLbSpec       `json:"subnet_mapping"`
 }
 
-
-
 type AwsLbStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

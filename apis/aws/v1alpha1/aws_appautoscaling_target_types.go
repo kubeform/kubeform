@@ -26,10 +26,8 @@ type AwsAppautoscalingTargetSpec struct {
 	RoleArn           string `json:"role_arn"`
 }
 
-
-
 type AwsAppautoscalingTargetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

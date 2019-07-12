@@ -22,10 +22,8 @@ type AwsIamRolePolicyAttachmentSpec struct {
 	PolicyArn string `json:"policy_arn"`
 }
 
-
-
 type AwsIamRolePolicyAttachmentStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

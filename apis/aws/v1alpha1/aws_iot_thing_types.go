@@ -26,10 +26,8 @@ type AwsIotThingSpec struct {
 	DefaultClientId string            `json:"default_client_id"`
 }
 
-
-
 type AwsIotThingStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

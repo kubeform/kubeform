@@ -30,10 +30,8 @@ type AwsSsmResourceDataSyncSpec struct {
 	S3Destination []AwsSsmResourceDataSyncSpec `json:"s3_destination"`
 }
 
-
-
 type AwsSsmResourceDataSyncStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

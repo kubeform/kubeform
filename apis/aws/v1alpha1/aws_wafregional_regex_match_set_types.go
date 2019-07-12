@@ -33,10 +33,8 @@ type AwsWafregionalRegexMatchSetSpec struct {
 	RegexMatchTuple []AwsWafregionalRegexMatchSetSpec `json:"regex_match_tuple"`
 }
 
-
-
 type AwsWafregionalRegexMatchSetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

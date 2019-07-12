@@ -27,10 +27,8 @@ type AwsWafregionalGeoMatchSetSpec struct {
 	GeoMatchConstraint []AwsWafregionalGeoMatchSetSpec `json:"geo_match_constraint"`
 }
 
-
-
 type AwsWafregionalGeoMatchSetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -34,10 +34,8 @@ type AwsWafregionalSizeConstraintSetSpec struct {
 	SizeConstraints []AwsWafregionalSizeConstraintSetSpec `json:"size_constraints"`
 }
 
-
-
 type AwsWafregionalSizeConstraintSetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

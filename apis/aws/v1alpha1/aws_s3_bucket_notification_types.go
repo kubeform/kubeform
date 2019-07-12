@@ -48,10 +48,8 @@ type AwsS3BucketNotificationSpec struct {
 	LambdaFunction []AwsS3BucketNotificationSpec `json:"lambda_function"`
 }
 
-
-
 type AwsS3BucketNotificationStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

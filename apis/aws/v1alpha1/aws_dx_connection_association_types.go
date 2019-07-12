@@ -22,10 +22,8 @@ type AwsDxConnectionAssociationSpec struct {
 	ConnectionId string `json:"connection_id"`
 }
 
-
-
 type AwsDxConnectionAssociationStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

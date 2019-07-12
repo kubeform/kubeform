@@ -23,10 +23,8 @@ type AzurermStorageTableSpec struct {
 	StorageAccountName string `json:"storage_account_name"`
 }
 
-
-
 type AzurermStorageTableStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

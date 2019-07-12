@@ -22,10 +22,8 @@ type AwsStoragegatewayUploadBufferSpec struct {
 	GatewayArn string `json:"gateway_arn"`
 }
 
-
-
 type AwsStoragegatewayUploadBufferStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -49,10 +49,8 @@ type AwsDaxClusterSpec struct {
 	MaintenanceWindow     string              `json:"maintenance_window"`
 }
 
-
-
 type AwsDaxClusterStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

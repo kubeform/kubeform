@@ -22,10 +22,8 @@ type AwsS3BucketPolicySpec struct {
 	Policy string `json:"policy"`
 }
 
-
-
 type AwsS3BucketPolicyStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

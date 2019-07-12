@@ -26,10 +26,8 @@ type AwsElasticBeanstalkApplicationVersionSpec struct {
 	ForceDelete bool   `json:"force_delete"`
 }
 
-
-
 type AwsElasticBeanstalkApplicationVersionStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

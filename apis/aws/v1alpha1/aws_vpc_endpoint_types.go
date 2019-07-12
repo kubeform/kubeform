@@ -39,10 +39,8 @@ type AwsVpcEndpointSpec struct {
 	AutoAccept          bool                 `json:"auto_accept"`
 }
 
-
-
 type AwsVpcEndpointStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

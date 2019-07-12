@@ -48,10 +48,8 @@ type GoogleComputeRegionDiskSpec struct {
 	SourceSnapshotId            string                        `json:"source_snapshot_id"`
 }
 
-
-
 type GoogleComputeRegionDiskStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

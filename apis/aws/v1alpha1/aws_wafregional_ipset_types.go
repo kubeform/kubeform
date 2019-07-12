@@ -28,10 +28,8 @@ type AwsWafregionalIpsetSpec struct {
 	IpSetDescriptor []AwsWafregionalIpsetSpec `json:"ip_set_descriptor"`
 }
 
-
-
 type AwsWafregionalIpsetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

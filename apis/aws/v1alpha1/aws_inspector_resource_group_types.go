@@ -22,10 +22,8 @@ type AwsInspectorResourceGroupSpec struct {
 	Arn  string            `json:"arn"`
 }
 
-
-
 type AwsInspectorResourceGroupStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

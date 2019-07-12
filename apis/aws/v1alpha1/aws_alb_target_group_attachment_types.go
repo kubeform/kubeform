@@ -24,10 +24,8 @@ type AwsAlbTargetGroupAttachmentSpec struct {
 	AvailabilityZone string `json:"availability_zone"`
 }
 
-
-
 type AwsAlbTargetGroupAttachmentStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -29,10 +29,8 @@ type AwsApiGatewayIntegrationResponseSpec struct {
 	StatusCode               string            `json:"status_code"`
 }
 
-
-
 type AwsApiGatewayIntegrationResponseStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

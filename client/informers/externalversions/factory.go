@@ -28,8 +28,12 @@ import (
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 	versioned "kubeform.dev/kubeform/client/clientset/versioned"
+	aws "kubeform.dev/kubeform/client/informers/externalversions/aws"
+	azurerm "kubeform.dev/kubeform/client/informers/externalversions/azurerm"
 	digitalocean "kubeform.dev/kubeform/client/informers/externalversions/digitalocean"
+	google "kubeform.dev/kubeform/client/informers/externalversions/google"
 	internalinterfaces "kubeform.dev/kubeform/client/informers/externalversions/internalinterfaces"
+	linode "kubeform.dev/kubeform/client/informers/externalversions/linode"
 )
 
 // SharedInformerOption defines the functional option type for SharedInformerFactory.
@@ -172,9 +176,29 @@ type SharedInformerFactory interface {
 	ForResource(resource schema.GroupVersionResource) (GenericInformer, error)
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
+	Aws() aws.Interface
+	Azurerm() azurerm.Interface
 	Digitalocean() digitalocean.Interface
+	Google() google.Interface
+	Linode() linode.Interface
+}
+
+func (f *sharedInformerFactory) Aws() aws.Interface {
+	return aws.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Azurerm() azurerm.Interface {
+	return azurerm.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Digitalocean() digitalocean.Interface {
 	return digitalocean.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Google() google.Interface {
+	return google.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Linode() linode.Interface {
+	return linode.New(f, f.namespace, f.tweakListOptions)
 }

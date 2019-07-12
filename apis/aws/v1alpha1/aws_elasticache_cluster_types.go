@@ -53,10 +53,8 @@ type AwsElasticacheClusterSpec struct {
 	EngineVersion              string                      `json:"engine_version"`
 }
 
-
-
 type AwsElasticacheClusterStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

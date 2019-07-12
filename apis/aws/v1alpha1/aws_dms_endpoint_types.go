@@ -56,10 +56,8 @@ type AwsDmsEndpointSpec struct {
 	MongodbSettings           []AwsDmsEndpointSpec `json:"mongodb_settings"`
 }
 
-
-
 type AwsDmsEndpointStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

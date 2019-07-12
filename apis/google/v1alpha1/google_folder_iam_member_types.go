@@ -24,10 +24,8 @@ type GoogleFolderIamMemberSpec struct {
 	Etag   string `json:"etag"`
 }
 
-
-
 type GoogleFolderIamMemberStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

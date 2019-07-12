@@ -37,10 +37,8 @@ type AzurermStreamAnalyticsOutputBlobSpec struct {
 	StorageAccountKey      string                                 `json:"storage_account_key"`
 }
 
-
-
 type AzurermStreamAnalyticsOutputBlobStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

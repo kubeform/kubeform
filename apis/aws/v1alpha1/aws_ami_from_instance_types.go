@@ -52,10 +52,8 @@ type AwsAmiFromInstanceSpec struct {
 	VirtualizationType    string                   `json:"virtualization_type"`
 }
 
-
-
 type AwsAmiFromInstanceStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

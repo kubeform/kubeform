@@ -47,10 +47,8 @@ type AzurermVirtualNetworkGatewayConnectionSpec struct {
 	UsePolicyBasedTrafficSelectors bool                                         `json:"use_policy_based_traffic_selectors"`
 }
 
-
-
 type AzurermVirtualNetworkGatewayConnectionStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

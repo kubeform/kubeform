@@ -26,10 +26,8 @@ type AwsSecretsmanagerSecretVersionSpec struct {
 	VersionStages []string `json:"version_stages"`
 }
 
-
-
 type AwsSecretsmanagerSecretVersionStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

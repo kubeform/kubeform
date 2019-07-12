@@ -24,10 +24,8 @@ type AwsEc2TransitGatewayRouteTableAssociationSpec struct {
 	TransitGatewayRouteTableId string `json:"transit_gateway_route_table_id"`
 }
 
-
-
 type AwsEc2TransitGatewayRouteTableAssociationStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

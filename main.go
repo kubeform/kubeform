@@ -3,13 +3,14 @@ package main
 import (
 	"fmt"
 
-	"github.com/terraform-providers/terraform-provider-azurerm/azurerm"
-
-	"github.com/hashicorp/terraform/terraform"
-
-	"kubeform.dev/kubeform/util"
-
 	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform/terraform"
+	"github.com/terraform-providers/terraform-provider-aws/aws"
+	"github.com/terraform-providers/terraform-provider-azurerm/azurerm"
+	"github.com/terraform-providers/terraform-provider-digitalocean/digitalocean"
+	"github.com/terraform-providers/terraform-provider-google/google"
+	"github.com/terraform-providers/terraform-provider-linode/linode"
+	"kubeform.dev/kubeform/util"
 )
 
 func main() {
@@ -18,11 +19,11 @@ func main() {
 	version := "v1alpha1"
 
 	providersMap = map[string]terraform.ResourceProvider{
-		//"linode":       linode.Provider(),
-		//"digitalocean": digitalocean.Provider(),
-		//"aws":          aws.Provider(),
-		//"google":       google.Provider(),
-		"azurerm": azurerm.Provider(),
+		"linode":       linode.Provider(),
+		"digitalocean": digitalocean.Provider(),
+		"aws":          aws.Provider(),
+		"google":       google.Provider(),
+		"azurerm":      azurerm.Provider(),
 	}
 
 	for key, provider := range providersMap {

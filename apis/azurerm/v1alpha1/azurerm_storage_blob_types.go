@@ -33,10 +33,8 @@ type AzurermStorageBlobSpec struct {
 	Metadata             map[string]string `json:"metadata"`
 }
 
-
-
 type AzurermStorageBlobStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

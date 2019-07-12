@@ -24,14 +24,22 @@ import (
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
+	awsv1alpha1 "kubeform.dev/kubeform/apis/aws/v1alpha1"
+	azurermv1alpha1 "kubeform.dev/kubeform/apis/azurerm/v1alpha1"
 	digitaloceanv1alpha1 "kubeform.dev/kubeform/apis/digitalocean/v1alpha1"
+	googlev1alpha1 "kubeform.dev/kubeform/apis/google/v1alpha1"
+	linodev1alpha1 "kubeform.dev/kubeform/apis/linode/v1alpha1"
 )
 
 var scheme = runtime.NewScheme()
 var codecs = serializer.NewCodecFactory(scheme)
 var parameterCodec = runtime.NewParameterCodec(scheme)
 var localSchemeBuilder = runtime.SchemeBuilder{
+	awsv1alpha1.AddToScheme,
+	azurermv1alpha1.AddToScheme,
 	digitaloceanv1alpha1.AddToScheme,
+	googlev1alpha1.AddToScheme,
+	linodev1alpha1.AddToScheme,
 }
 
 // AddToScheme adds all types of this clientset into the given scheme. This allows composition

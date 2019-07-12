@@ -32,10 +32,8 @@ type AwsEc2TransitGatewaySpec struct {
 	DefaultRouteTablePropagation   string            `json:"default_route_table_propagation"`
 }
 
-
-
 type AwsEc2TransitGatewayStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

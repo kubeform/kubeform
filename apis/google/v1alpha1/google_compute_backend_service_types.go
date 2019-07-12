@@ -67,10 +67,8 @@ type GoogleComputeBackendServiceSpec struct {
 	SelfLink                     string                            `json:"self_link"`
 }
 
-
-
 type GoogleComputeBackendServiceStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

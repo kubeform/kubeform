@@ -159,10 +159,8 @@ type AzurermAppServiceSpec struct {
 	HttpsOnly                   bool                    `json:"https_only"`
 }
 
-
-
 type AzurermAppServiceStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

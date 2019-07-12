@@ -47,10 +47,8 @@ type AwsServiceDiscoveryServiceSpec struct {
 	Arn                     string                           `json:"arn"`
 }
 
-
-
 type AwsServiceDiscoveryServiceStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

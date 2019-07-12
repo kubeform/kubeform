@@ -2,32 +2,31 @@
 
 set -x
 
-export PROVIDER=$1
-
 GOPATH=$(go env GOPATH)
 PACKAGE_NAME=kubeform.dev/kubeform
 REPO_ROOT="$GOPATH/src/$PACKAGE_NAME"
 DOCKER_REPO_ROOT="/go/src/$PACKAGE_NAME"
 DOCKER_CODEGEN_PKG="/go/src/k8s.io/code-generator"
-apiGroups=(${PROVIDER}/v1alpha1)
 
 pushd $REPO_ROOT
 
-rm -rf "$REPO_ROOT"/apis/kubedb/v1alpha1/*.generated.go
-rm -rf "$REPO_ROOT"/apis/catalog/v1alpha1/*.generated.go
+for provider in $(find $REPO_ROOT/apis -maxdepth 1 -mindepth 1 -type d -printf '%f '); do
+    rm -rf "$REPO_ROOT"/apis/${provider}/v1alpha1/*.generated.go
+done
 mkdir -p "$REPO_ROOT"/api/api-rules
 
+apiGroups=$(find $REPO_ROOT/apis -maxdepth 1 -mindepth 1 -type d -printf '%f:v1alpha1 ')
 docker run --rm -ti -u $(id -u):$(id -g) \
   -v "$REPO_ROOT":"$DOCKER_REPO_ROOT" \
   -w "$DOCKER_REPO_ROOT" \
   appscode/gengo:release-1.14 "$DOCKER_CODEGEN_PKG"/generate-groups.sh "deepcopy,client,informer,lister" \
   kubeform.dev/kubeform/client \
   kubeform.dev/kubeform/apis \
-  "$PROVIDER:v1alpha1" \
+  "${apiGroups}" \
   --go-header-file "$DOCKER_REPO_ROOT/hack/gengo/boilerplate.go.txt"
 
 # Generate openapi
-for gv in "${apiGroups[@]}"; do
+for gv in $(find $REPO_ROOT/apis -maxdepth 1 -mindepth 1 -type d -printf '%f/v1alpha1 '); do
   docker run --rm -ti -u $(id -u):$(id -g) \
     -v "$REPO_ROOT":"$DOCKER_REPO_ROOT" \
     -w "$DOCKER_REPO_ROOT" \

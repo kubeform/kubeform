@@ -29,10 +29,8 @@ type AwsApiGatewayAuthorizerSpec struct {
 	IdentityValidationExpression string   `json:"identity_validation_expression"`
 }
 
-
-
 type AwsApiGatewayAuthorizerStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -53,10 +53,8 @@ type AwsBatchComputeEnvironmentSpec struct {
 	StatusReason           string                           `json:"status_reason"`
 }
 
-
-
 type AwsBatchComputeEnvironmentStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

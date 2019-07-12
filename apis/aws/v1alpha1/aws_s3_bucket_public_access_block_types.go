@@ -25,10 +25,8 @@ type AwsS3BucketPublicAccessBlockSpec struct {
 	RestrictPublicBuckets bool   `json:"restrict_public_buckets"`
 }
 
-
-
 type AwsS3BucketPublicAccessBlockStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -26,10 +26,8 @@ type AzurermDataLakeAnalyticsAccountSpec struct {
 	Tier                    string            `json:"tier"`
 }
 
-
-
 type AzurermDataLakeAnalyticsAccountStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

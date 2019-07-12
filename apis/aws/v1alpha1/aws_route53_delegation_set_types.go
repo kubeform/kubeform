@@ -22,10 +22,8 @@ type AwsRoute53DelegationSetSpec struct {
 	NameServers   []string `json:"name_servers"`
 }
 
-
-
 type AwsRoute53DelegationSetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

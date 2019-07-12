@@ -54,10 +54,8 @@ type AwsOpsworksJavaAppLayerSpec struct {
 	CustomConfigureRecipes   []string                      `json:"custom_configure_recipes"`
 }
 
-
-
 type AwsOpsworksJavaAppLayerStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

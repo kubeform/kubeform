@@ -22,10 +22,8 @@ type AwsRamPrincipalAssociationSpec struct {
 	ResourceShareArn string `json:"resource_share_arn"`
 }
 
-
-
 type AwsRamPrincipalAssociationStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

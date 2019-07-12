@@ -24,10 +24,8 @@ type AwsGlacierVaultLockSpec struct {
 	VaultName           string `json:"vault_name"`
 }
 
-
-
 type AwsGlacierVaultLockStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

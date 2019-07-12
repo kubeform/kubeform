@@ -22,10 +22,8 @@ type AwsLicensemanagerAssociationSpec struct {
 	LicenseConfigurationArn string `json:"license_configuration_arn"`
 }
 
-
-
 type AwsLicensemanagerAssociationStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

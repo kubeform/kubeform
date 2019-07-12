@@ -31,10 +31,8 @@ type AwsEc2CapacityReservationSpec struct {
 	InstanceType          string            `json:"instance_type"`
 }
 
-
-
 type AwsEc2CapacityReservationStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

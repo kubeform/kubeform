@@ -30,10 +30,8 @@ type AwsIamAccountPasswordPolicySpec struct {
 	AllowUsersToChangePassword bool `json:"allow_users_to_change_password"`
 }
 
-
-
 type AwsIamAccountPasswordPolicyStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

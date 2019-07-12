@@ -58,10 +58,8 @@ type AwsVpnConnectionSpec struct {
 	Tunnel2VgwInsideAddress      string                 `json:"tunnel2_vgw_inside_address"`
 }
 
-
-
 type AwsVpnConnectionStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

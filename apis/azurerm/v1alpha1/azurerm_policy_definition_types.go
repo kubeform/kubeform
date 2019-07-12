@@ -29,10 +29,8 @@ type AzurermPolicyDefinitionSpec struct {
 	ManagementGroupId string `json:"management_group_id"`
 }
 
-
-
 type AzurermPolicyDefinitionStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -37,10 +37,8 @@ type AwsDmsReplicationInstanceSpec struct {
 	ReplicationSubnetGroupId      string            `json:"replication_subnet_group_id"`
 }
 
-
-
 type AwsDmsReplicationInstanceStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

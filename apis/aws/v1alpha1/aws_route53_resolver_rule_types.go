@@ -34,10 +34,8 @@ type AwsRoute53ResolverRuleSpec struct {
 	TargetIp           []AwsRoute53ResolverRuleSpec `json:"target_ip"`
 }
 
-
-
 type AwsRoute53ResolverRuleStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

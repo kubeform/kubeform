@@ -43,10 +43,8 @@ type LinodeNodebalancerConfigSpec struct {
 	NodebalancerId int               `json:"nodebalancer_id"`
 }
 
-
-
 type LinodeNodebalancerConfigStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -24,10 +24,8 @@ type GoogleBigtableTableSpec struct {
 	SplitKeys    []string `json:"split_keys"`
 }
 
-
-
 type GoogleBigtableTableStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

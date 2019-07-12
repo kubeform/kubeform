@@ -26,10 +26,8 @@ type GoogleLoggingProjectSinkSpec struct {
 	UniqueWriterIdentity bool   `json:"unique_writer_identity"`
 }
 
-
-
 type GoogleLoggingProjectSinkStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -29,10 +29,8 @@ type GoogleSqlSslCertSpec struct {
 	CertSerialNumber string `json:"cert_serial_number"`
 }
 
-
-
 type GoogleSqlSslCertStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -29,10 +29,8 @@ type AwsConfigDeliveryChannelSpec struct {
 	SnapshotDeliveryProperties []AwsConfigDeliveryChannelSpec `json:"snapshot_delivery_properties"`
 }
 
-
-
 type AwsConfigDeliveryChannelStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

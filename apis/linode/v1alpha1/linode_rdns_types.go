@@ -22,10 +22,8 @@ type LinodeRdnsSpec struct {
 	Address string `json:"address"`
 }
 
-
-
 type LinodeRdnsStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

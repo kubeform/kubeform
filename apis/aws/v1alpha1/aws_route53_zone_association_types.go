@@ -23,10 +23,8 @@ type AwsRoute53ZoneAssociationSpec struct {
 	VpcRegion string `json:"vpc_region"`
 }
 
-
-
 type AwsRoute53ZoneAssociationStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

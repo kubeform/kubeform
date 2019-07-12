@@ -22,10 +22,8 @@ type DigitaloceanVolumeAttachmentSpec struct {
 	VolumeId  string `json:"volume_id"`
 }
 
-
-
 type DigitaloceanVolumeAttachmentStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

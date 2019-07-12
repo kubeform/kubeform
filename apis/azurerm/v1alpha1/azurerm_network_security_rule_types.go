@@ -38,10 +38,8 @@ type AzurermNetworkSecurityRuleSpec struct {
 	DestinationAddressPrefixes             []string `json:"destination_address_prefixes"`
 }
 
-
-
 type AzurermNetworkSecurityRuleStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

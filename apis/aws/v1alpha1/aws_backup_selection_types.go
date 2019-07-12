@@ -31,10 +31,8 @@ type AwsBackupSelectionSpec struct {
 	PlanId       string                   `json:"plan_id"`
 }
 
-
-
 type AwsBackupSelectionStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

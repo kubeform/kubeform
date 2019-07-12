@@ -34,10 +34,8 @@ type AwsWafByteMatchSetSpec struct {
 	ByteMatchTuples []AwsWafByteMatchSetSpec `json:"byte_match_tuples"`
 }
 
-
-
 type AwsWafByteMatchSetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -27,10 +27,8 @@ type AwsEfsMountTargetSpec struct {
 	NetworkInterfaceId string   `json:"network_interface_id"`
 }
 
-
-
 type AwsEfsMountTargetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

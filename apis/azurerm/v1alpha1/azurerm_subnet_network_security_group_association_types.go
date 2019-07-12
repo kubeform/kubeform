@@ -22,10 +22,8 @@ type AzurermSubnetNetworkSecurityGroupAssociationSpec struct {
 	NetworkSecurityGroupId string `json:"network_security_group_id"`
 }
 
-
-
 type AzurermSubnetNetworkSecurityGroupAssociationStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

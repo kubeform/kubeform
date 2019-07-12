@@ -24,10 +24,8 @@ type AzurermApiManagementProductApiSpec struct {
 	ProductId         string `json:"product_id"`
 }
 
-
-
 type AzurermApiManagementProductApiStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

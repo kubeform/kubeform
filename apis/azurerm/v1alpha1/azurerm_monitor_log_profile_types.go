@@ -31,10 +31,8 @@ type AzurermMonitorLogProfileSpec struct {
 	RetentionPolicy  []AzurermMonitorLogProfileSpec `json:"retention_policy"`
 }
 
-
-
 type AzurermMonitorLogProfileStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

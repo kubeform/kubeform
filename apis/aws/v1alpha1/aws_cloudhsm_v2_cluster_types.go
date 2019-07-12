@@ -37,10 +37,8 @@ type AwsCloudhsmV2ClusterSpec struct {
 	SourceBackupIdentifier string                     `json:"source_backup_identifier"`
 }
 
-
-
 type AwsCloudhsmV2ClusterStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -86,10 +86,8 @@ type AwsOpsworksInstanceSpec struct {
 	InstanceProfileArn       string                    `json:"instance_profile_arn"`
 }
 
-
-
 type AwsOpsworksInstanceStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -42,10 +42,8 @@ type AwsDocdbClusterInstanceSpec struct {
 	PubliclyAccessible         bool              `json:"publicly_accessible"`
 }
 
-
-
 type AwsDocdbClusterInstanceStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

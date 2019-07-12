@@ -38,10 +38,8 @@ type AwsApiGatewayDomainNameSpec struct {
 	RegionalDomainName      string                        `json:"regional_domain_name"`
 }
 
-
-
 type AwsApiGatewayDomainNameStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

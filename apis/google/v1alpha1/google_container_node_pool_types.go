@@ -77,10 +77,8 @@ type GoogleContainerNodePoolSpec struct {
 	InstanceGroupUrls []string                      `json:"instance_group_urls"`
 }
 
-
-
 type GoogleContainerNodePoolStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -24,10 +24,8 @@ type AwsDmsCertificateSpec struct {
 	CertificateArn    string `json:"certificate_arn"`
 }
 
-
-
 type AwsDmsCertificateStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

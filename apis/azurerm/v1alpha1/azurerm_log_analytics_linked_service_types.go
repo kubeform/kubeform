@@ -31,10 +31,8 @@ type AzurermLogAnalyticsLinkedServiceSpec struct {
 	WorkspaceName           string                                 `json:"workspace_name"`
 }
 
-
-
 type AzurermLogAnalyticsLinkedServiceStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

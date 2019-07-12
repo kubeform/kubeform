@@ -24,10 +24,8 @@ type GoogleServiceAccountIamMemberSpec struct {
 	ServiceAccountId string `json:"service_account_id"`
 }
 
-
-
 type GoogleServiceAccountIamMemberStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

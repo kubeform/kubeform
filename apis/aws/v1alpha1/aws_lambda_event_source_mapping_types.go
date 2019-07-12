@@ -32,10 +32,8 @@ type AwsLambdaEventSourceMappingSpec struct {
 	LastModified              string `json:"last_modified"`
 }
 
-
-
 type AwsLambdaEventSourceMappingStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

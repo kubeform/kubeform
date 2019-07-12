@@ -23,10 +23,8 @@ type GoogleProjectServicesSpec struct {
 	DisableOnDestroy bool     `json:"disable_on_destroy"`
 }
 
-
-
 type GoogleProjectServicesStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

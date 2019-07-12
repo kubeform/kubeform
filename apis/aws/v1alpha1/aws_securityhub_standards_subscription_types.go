@@ -21,10 +21,8 @@ type AwsSecurityhubStandardsSubscriptionSpec struct {
 	StandardsArn string `json:"standards_arn"`
 }
 
-
-
 type AwsSecurityhubStandardsSubscriptionStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

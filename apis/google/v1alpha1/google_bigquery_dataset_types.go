@@ -47,10 +47,8 @@ type GoogleBigqueryDatasetSpec struct {
 	FriendlyName             string                      `json:"friendly_name"`
 }
 
-
-
 type GoogleBigqueryDatasetStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

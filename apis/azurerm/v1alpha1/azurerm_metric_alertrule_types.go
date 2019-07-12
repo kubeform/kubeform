@@ -44,10 +44,8 @@ type AzurermMetricAlertruleSpec struct {
 	WebhookAction     []AzurermMetricAlertruleSpec `json:"webhook_action"`
 }
 
-
-
 type AzurermMetricAlertruleStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

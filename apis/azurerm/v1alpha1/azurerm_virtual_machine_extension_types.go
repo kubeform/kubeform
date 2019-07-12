@@ -31,10 +31,8 @@ type AzurermVirtualMachineExtensionSpec struct {
 	VirtualMachineName      string            `json:"virtual_machine_name"`
 }
 
-
-
 type AzurermVirtualMachineExtensionStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

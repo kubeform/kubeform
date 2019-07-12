@@ -25,10 +25,8 @@ type GooglePubsubSubscriptionIamBindingSpec struct {
 	Members      []string `json:"members"`
 }
 
-
-
 type GooglePubsubSubscriptionIamBindingStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

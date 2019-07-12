@@ -60,10 +60,8 @@ type AwsWafWebAclSpec struct {
 	DefaultAction        []AwsWafWebAclSpec `json:"default_action"`
 }
 
-
-
 type AwsWafWebAclStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

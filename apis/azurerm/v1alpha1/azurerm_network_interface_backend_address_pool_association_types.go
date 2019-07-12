@@ -23,10 +23,8 @@ type AzurermNetworkInterfaceBackendAddressPoolAssociationSpec struct {
 	NetworkInterfaceId   string `json:"network_interface_id"`
 }
 
-
-
 type AzurermNetworkInterfaceBackendAddressPoolAssociationStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -35,10 +35,8 @@ type AwsDbClusterSnapshotSpec struct {
 	SourceDbClusterSnapshotArn  string   `json:"source_db_cluster_snapshot_arn"`
 }
 
-
-
 type AwsDbClusterSnapshotStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

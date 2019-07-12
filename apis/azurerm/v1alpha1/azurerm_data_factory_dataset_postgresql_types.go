@@ -37,10 +37,8 @@ type AzurermDataFactoryDatasetPostgresqlSpec struct {
 	AdditionalProperties map[string]string                         `json:"additional_properties"`
 }
 
-
-
 type AzurermDataFactoryDatasetPostgresqlStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

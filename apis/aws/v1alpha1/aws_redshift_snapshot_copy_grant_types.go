@@ -23,10 +23,8 @@ type AwsRedshiftSnapshotCopyGrantSpec struct {
 	SnapshotCopyGrantName string            `json:"snapshot_copy_grant_name"`
 }
 
-
-
 type AwsRedshiftSnapshotCopyGrantStatus struct {
-    Output *runtime.RawExtension `json:"output,omitempty"`
+	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
