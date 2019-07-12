@@ -18,4 +18,1002 @@ limitations under the License.
 
 package v1alpha1
 
-type PostgresVersionExpansion interface{}
+type AwsAcmCertificateExpansion interface{}
+
+type AwsAcmCertificateValidationExpansion interface{}
+
+type AwsAcmpcaCertificateAuthorityExpansion interface{}
+
+type AwsAlbExpansion interface{}
+
+type AwsAlbListenerExpansion interface{}
+
+type AwsAlbListenerCertificateExpansion interface{}
+
+type AwsAlbListenerRuleExpansion interface{}
+
+type AwsAlbTargetGroupExpansion interface{}
+
+type AwsAlbTargetGroupAttachmentExpansion interface{}
+
+type AwsAmiExpansion interface{}
+
+type AwsAmiCopyExpansion interface{}
+
+type AwsAmiFromInstanceExpansion interface{}
+
+type AwsAmiLaunchPermissionExpansion interface{}
+
+type AwsApiGatewayAccountExpansion interface{}
+
+type AwsApiGatewayApiKeyExpansion interface{}
+
+type AwsApiGatewayAuthorizerExpansion interface{}
+
+type AwsApiGatewayBasePathMappingExpansion interface{}
+
+type AwsApiGatewayClientCertificateExpansion interface{}
+
+type AwsApiGatewayDeploymentExpansion interface{}
+
+type AwsApiGatewayDocumentationPartExpansion interface{}
+
+type AwsApiGatewayDocumentationVersionExpansion interface{}
+
+type AwsApiGatewayDomainNameExpansion interface{}
+
+type AwsApiGatewayGatewayResponseExpansion interface{}
+
+type AwsApiGatewayIntegrationExpansion interface{}
+
+type AwsApiGatewayIntegrationResponseExpansion interface{}
+
+type AwsApiGatewayMethodExpansion interface{}
+
+type AwsApiGatewayMethodResponseExpansion interface{}
+
+type AwsApiGatewayMethodSettingsExpansion interface{}
+
+type AwsApiGatewayModelExpansion interface{}
+
+type AwsApiGatewayRequestValidatorExpansion interface{}
+
+type AwsApiGatewayResourceExpansion interface{}
+
+type AwsApiGatewayRestApiExpansion interface{}
+
+type AwsApiGatewayStageExpansion interface{}
+
+type AwsApiGatewayUsagePlanExpansion interface{}
+
+type AwsApiGatewayUsagePlanKeyExpansion interface{}
+
+type AwsApiGatewayVpcLinkExpansion interface{}
+
+type AwsAppCookieStickinessPolicyExpansion interface{}
+
+type AwsAppautoscalingPolicyExpansion interface{}
+
+type AwsAppautoscalingScheduledActionExpansion interface{}
+
+type AwsAppautoscalingTargetExpansion interface{}
+
+type AwsAppmeshMeshExpansion interface{}
+
+type AwsAppmeshRouteExpansion interface{}
+
+type AwsAppmeshVirtualNodeExpansion interface{}
+
+type AwsAppmeshVirtualRouterExpansion interface{}
+
+type AwsAppmeshVirtualServiceExpansion interface{}
+
+type AwsAppsyncApiKeyExpansion interface{}
+
+type AwsAppsyncDatasourceExpansion interface{}
+
+type AwsAppsyncGraphqlApiExpansion interface{}
+
+type AwsAppsyncResolverExpansion interface{}
+
+type AwsAthenaDatabaseExpansion interface{}
+
+type AwsAthenaNamedQueryExpansion interface{}
+
+type AwsAutoscalingAttachmentExpansion interface{}
+
+type AwsAutoscalingGroupExpansion interface{}
+
+type AwsAutoscalingLifecycleHookExpansion interface{}
+
+type AwsAutoscalingNotificationExpansion interface{}
+
+type AwsAutoscalingPolicyExpansion interface{}
+
+type AwsAutoscalingScheduleExpansion interface{}
+
+type AwsBackupPlanExpansion interface{}
+
+type AwsBackupSelectionExpansion interface{}
+
+type AwsBackupVaultExpansion interface{}
+
+type AwsBatchComputeEnvironmentExpansion interface{}
+
+type AwsBatchJobDefinitionExpansion interface{}
+
+type AwsBatchJobQueueExpansion interface{}
+
+type AwsBudgetsBudgetExpansion interface{}
+
+type AwsCloud9EnvironmentEc2Expansion interface{}
+
+type AwsCloudformationStackExpansion interface{}
+
+type AwsCloudformationStackSetExpansion interface{}
+
+type AwsCloudformationStackSetInstanceExpansion interface{}
+
+type AwsCloudfrontDistributionExpansion interface{}
+
+type AwsCloudfrontOriginAccessIdentityExpansion interface{}
+
+type AwsCloudfrontPublicKeyExpansion interface{}
+
+type AwsCloudhsmV2ClusterExpansion interface{}
+
+type AwsCloudhsmV2HsmExpansion interface{}
+
+type AwsCloudtrailExpansion interface{}
+
+type AwsCloudwatchDashboardExpansion interface{}
+
+type AwsCloudwatchEventPermissionExpansion interface{}
+
+type AwsCloudwatchEventRuleExpansion interface{}
+
+type AwsCloudwatchEventTargetExpansion interface{}
+
+type AwsCloudwatchLogDestinationExpansion interface{}
+
+type AwsCloudwatchLogDestinationPolicyExpansion interface{}
+
+type AwsCloudwatchLogGroupExpansion interface{}
+
+type AwsCloudwatchLogMetricFilterExpansion interface{}
+
+type AwsCloudwatchLogResourcePolicyExpansion interface{}
+
+type AwsCloudwatchLogStreamExpansion interface{}
+
+type AwsCloudwatchLogSubscriptionFilterExpansion interface{}
+
+type AwsCloudwatchMetricAlarmExpansion interface{}
+
+type AwsCodebuildProjectExpansion interface{}
+
+type AwsCodebuildWebhookExpansion interface{}
+
+type AwsCodecommitRepositoryExpansion interface{}
+
+type AwsCodecommitTriggerExpansion interface{}
+
+type AwsCodedeployAppExpansion interface{}
+
+type AwsCodedeployDeploymentConfigExpansion interface{}
+
+type AwsCodedeployDeploymentGroupExpansion interface{}
+
+type AwsCodepipelineExpansion interface{}
+
+type AwsCodepipelineWebhookExpansion interface{}
+
+type AwsCognitoIdentityPoolExpansion interface{}
+
+type AwsCognitoIdentityPoolRolesAttachmentExpansion interface{}
+
+type AwsCognitoIdentityProviderExpansion interface{}
+
+type AwsCognitoResourceServerExpansion interface{}
+
+type AwsCognitoUserGroupExpansion interface{}
+
+type AwsCognitoUserPoolExpansion interface{}
+
+type AwsCognitoUserPoolClientExpansion interface{}
+
+type AwsCognitoUserPoolDomainExpansion interface{}
+
+type AwsConfigAggregateAuthorizationExpansion interface{}
+
+type AwsConfigConfigRuleExpansion interface{}
+
+type AwsConfigConfigurationAggregatorExpansion interface{}
+
+type AwsConfigConfigurationRecorderExpansion interface{}
+
+type AwsConfigDeliveryChannelExpansion interface{}
+
+type AwsCurReportDefinitionExpansion interface{}
+
+type AwsCustomerGatewayExpansion interface{}
+
+type AwsDatasyncAgentExpansion interface{}
+
+type AwsDatasyncLocationEfsExpansion interface{}
+
+type AwsDatasyncLocationNfsExpansion interface{}
+
+type AwsDatasyncLocationS3Expansion interface{}
+
+type AwsDatasyncTaskExpansion interface{}
+
+type AwsDaxClusterExpansion interface{}
+
+type AwsDaxParameterGroupExpansion interface{}
+
+type AwsDaxSubnetGroupExpansion interface{}
+
+type AwsDbClusterSnapshotExpansion interface{}
+
+type AwsDbEventSubscriptionExpansion interface{}
+
+type AwsDbInstanceExpansion interface{}
+
+type AwsDbInstanceRoleAssociationExpansion interface{}
+
+type AwsDbOptionGroupExpansion interface{}
+
+type AwsDbParameterGroupExpansion interface{}
+
+type AwsDbSecurityGroupExpansion interface{}
+
+type AwsDbSnapshotExpansion interface{}
+
+type AwsDbSubnetGroupExpansion interface{}
+
+type AwsDefaultNetworkAclExpansion interface{}
+
+type AwsDefaultRouteTableExpansion interface{}
+
+type AwsDefaultSecurityGroupExpansion interface{}
+
+type AwsDefaultSubnetExpansion interface{}
+
+type AwsDefaultVpcExpansion interface{}
+
+type AwsDefaultVpcDhcpOptionsExpansion interface{}
+
+type AwsDevicefarmProjectExpansion interface{}
+
+type AwsDirectoryServiceConditionalForwarderExpansion interface{}
+
+type AwsDirectoryServiceDirectoryExpansion interface{}
+
+type AwsDlmLifecyclePolicyExpansion interface{}
+
+type AwsDmsCertificateExpansion interface{}
+
+type AwsDmsEndpointExpansion interface{}
+
+type AwsDmsReplicationInstanceExpansion interface{}
+
+type AwsDmsReplicationSubnetGroupExpansion interface{}
+
+type AwsDmsReplicationTaskExpansion interface{}
+
+type AwsDocdbClusterExpansion interface{}
+
+type AwsDocdbClusterInstanceExpansion interface{}
+
+type AwsDocdbClusterParameterGroupExpansion interface{}
+
+type AwsDocdbClusterSnapshotExpansion interface{}
+
+type AwsDocdbSubnetGroupExpansion interface{}
+
+type AwsDxBgpPeerExpansion interface{}
+
+type AwsDxConnectionExpansion interface{}
+
+type AwsDxConnectionAssociationExpansion interface{}
+
+type AwsDxGatewayExpansion interface{}
+
+type AwsDxGatewayAssociationExpansion interface{}
+
+type AwsDxGatewayAssociationProposalExpansion interface{}
+
+type AwsDxHostedPrivateVirtualInterfaceExpansion interface{}
+
+type AwsDxHostedPrivateVirtualInterfaceAccepterExpansion interface{}
+
+type AwsDxHostedPublicVirtualInterfaceExpansion interface{}
+
+type AwsDxHostedPublicVirtualInterfaceAccepterExpansion interface{}
+
+type AwsDxLagExpansion interface{}
+
+type AwsDxPrivateVirtualInterfaceExpansion interface{}
+
+type AwsDxPublicVirtualInterfaceExpansion interface{}
+
+type AwsDynamodbGlobalTableExpansion interface{}
+
+type AwsDynamodbTableExpansion interface{}
+
+type AwsDynamodbTableItemExpansion interface{}
+
+type AwsEbsSnapshotExpansion interface{}
+
+type AwsEbsSnapshotCopyExpansion interface{}
+
+type AwsEbsVolumeExpansion interface{}
+
+type AwsEc2CapacityReservationExpansion interface{}
+
+type AwsEc2ClientVpnEndpointExpansion interface{}
+
+type AwsEc2ClientVpnNetworkAssociationExpansion interface{}
+
+type AwsEc2FleetExpansion interface{}
+
+type AwsEc2TransitGatewayExpansion interface{}
+
+type AwsEc2TransitGatewayRouteExpansion interface{}
+
+type AwsEc2TransitGatewayRouteTableExpansion interface{}
+
+type AwsEc2TransitGatewayRouteTableAssociationExpansion interface{}
+
+type AwsEc2TransitGatewayRouteTablePropagationExpansion interface{}
+
+type AwsEc2TransitGatewayVpcAttachmentExpansion interface{}
+
+type AwsEcrLifecyclePolicyExpansion interface{}
+
+type AwsEcrRepositoryExpansion interface{}
+
+type AwsEcrRepositoryPolicyExpansion interface{}
+
+type AwsEcsClusterExpansion interface{}
+
+type AwsEcsServiceExpansion interface{}
+
+type AwsEcsTaskDefinitionExpansion interface{}
+
+type AwsEfsFileSystemExpansion interface{}
+
+type AwsEfsMountTargetExpansion interface{}
+
+type AwsEgressOnlyInternetGatewayExpansion interface{}
+
+type AwsEipExpansion interface{}
+
+type AwsEipAssociationExpansion interface{}
+
+type AwsEksClusterExpansion interface{}
+
+type AwsElasticBeanstalkApplicationExpansion interface{}
+
+type AwsElasticBeanstalkApplicationVersionExpansion interface{}
+
+type AwsElasticBeanstalkConfigurationTemplateExpansion interface{}
+
+type AwsElasticBeanstalkEnvironmentExpansion interface{}
+
+type AwsElasticacheClusterExpansion interface{}
+
+type AwsElasticacheParameterGroupExpansion interface{}
+
+type AwsElasticacheReplicationGroupExpansion interface{}
+
+type AwsElasticacheSecurityGroupExpansion interface{}
+
+type AwsElasticacheSubnetGroupExpansion interface{}
+
+type AwsElasticsearchDomainExpansion interface{}
+
+type AwsElasticsearchDomainPolicyExpansion interface{}
+
+type AwsElastictranscoderPipelineExpansion interface{}
+
+type AwsElastictranscoderPresetExpansion interface{}
+
+type AwsElbExpansion interface{}
+
+type AwsElbAttachmentExpansion interface{}
+
+type AwsEmrClusterExpansion interface{}
+
+type AwsEmrInstanceGroupExpansion interface{}
+
+type AwsEmrSecurityConfigurationExpansion interface{}
+
+type AwsFlowLogExpansion interface{}
+
+type AwsGameliftAliasExpansion interface{}
+
+type AwsGameliftBuildExpansion interface{}
+
+type AwsGameliftFleetExpansion interface{}
+
+type AwsGameliftGameSessionQueueExpansion interface{}
+
+type AwsGlacierVaultExpansion interface{}
+
+type AwsGlacierVaultLockExpansion interface{}
+
+type AwsGlobalacceleratorAcceleratorExpansion interface{}
+
+type AwsGlobalacceleratorListenerExpansion interface{}
+
+type AwsGlueCatalogDatabaseExpansion interface{}
+
+type AwsGlueCatalogTableExpansion interface{}
+
+type AwsGlueClassifierExpansion interface{}
+
+type AwsGlueConnectionExpansion interface{}
+
+type AwsGlueCrawlerExpansion interface{}
+
+type AwsGlueJobExpansion interface{}
+
+type AwsGlueSecurityConfigurationExpansion interface{}
+
+type AwsGlueTriggerExpansion interface{}
+
+type AwsGuarddutyDetectorExpansion interface{}
+
+type AwsGuarddutyInviteAccepterExpansion interface{}
+
+type AwsGuarddutyIpsetExpansion interface{}
+
+type AwsGuarddutyMemberExpansion interface{}
+
+type AwsGuarddutyThreatintelsetExpansion interface{}
+
+type AwsIamAccessKeyExpansion interface{}
+
+type AwsIamAccountAliasExpansion interface{}
+
+type AwsIamAccountPasswordPolicyExpansion interface{}
+
+type AwsIamGroupExpansion interface{}
+
+type AwsIamGroupMembershipExpansion interface{}
+
+type AwsIamGroupPolicyExpansion interface{}
+
+type AwsIamGroupPolicyAttachmentExpansion interface{}
+
+type AwsIamInstanceProfileExpansion interface{}
+
+type AwsIamOpenidConnectProviderExpansion interface{}
+
+type AwsIamPolicyExpansion interface{}
+
+type AwsIamPolicyAttachmentExpansion interface{}
+
+type AwsIamRoleExpansion interface{}
+
+type AwsIamRolePolicyExpansion interface{}
+
+type AwsIamRolePolicyAttachmentExpansion interface{}
+
+type AwsIamSamlProviderExpansion interface{}
+
+type AwsIamServerCertificateExpansion interface{}
+
+type AwsIamServiceLinkedRoleExpansion interface{}
+
+type AwsIamUserExpansion interface{}
+
+type AwsIamUserGroupMembershipExpansion interface{}
+
+type AwsIamUserLoginProfileExpansion interface{}
+
+type AwsIamUserPolicyExpansion interface{}
+
+type AwsIamUserPolicyAttachmentExpansion interface{}
+
+type AwsIamUserSshKeyExpansion interface{}
+
+type AwsInspectorAssessmentTargetExpansion interface{}
+
+type AwsInspectorAssessmentTemplateExpansion interface{}
+
+type AwsInspectorResourceGroupExpansion interface{}
+
+type AwsInstanceExpansion interface{}
+
+type AwsInternetGatewayExpansion interface{}
+
+type AwsIotCertificateExpansion interface{}
+
+type AwsIotPolicyExpansion interface{}
+
+type AwsIotPolicyAttachmentExpansion interface{}
+
+type AwsIotRoleAliasExpansion interface{}
+
+type AwsIotThingExpansion interface{}
+
+type AwsIotThingPrincipalAttachmentExpansion interface{}
+
+type AwsIotThingTypeExpansion interface{}
+
+type AwsIotTopicRuleExpansion interface{}
+
+type AwsKeyPairExpansion interface{}
+
+type AwsKinesisAnalyticsApplicationExpansion interface{}
+
+type AwsKinesisFirehoseDeliveryStreamExpansion interface{}
+
+type AwsKinesisStreamExpansion interface{}
+
+type AwsKmsAliasExpansion interface{}
+
+type AwsKmsCiphertextExpansion interface{}
+
+type AwsKmsExternalKeyExpansion interface{}
+
+type AwsKmsGrantExpansion interface{}
+
+type AwsKmsKeyExpansion interface{}
+
+type AwsLambdaAliasExpansion interface{}
+
+type AwsLambdaEventSourceMappingExpansion interface{}
+
+type AwsLambdaFunctionExpansion interface{}
+
+type AwsLambdaLayerVersionExpansion interface{}
+
+type AwsLambdaPermissionExpansion interface{}
+
+type AwsLaunchConfigurationExpansion interface{}
+
+type AwsLaunchTemplateExpansion interface{}
+
+type AwsLbExpansion interface{}
+
+type AwsLbCookieStickinessPolicyExpansion interface{}
+
+type AwsLbListenerExpansion interface{}
+
+type AwsLbListenerCertificateExpansion interface{}
+
+type AwsLbListenerRuleExpansion interface{}
+
+type AwsLbSslNegotiationPolicyExpansion interface{}
+
+type AwsLbTargetGroupExpansion interface{}
+
+type AwsLbTargetGroupAttachmentExpansion interface{}
+
+type AwsLicensemanagerAssociationExpansion interface{}
+
+type AwsLicensemanagerLicenseConfigurationExpansion interface{}
+
+type AwsLightsailDomainExpansion interface{}
+
+type AwsLightsailInstanceExpansion interface{}
+
+type AwsLightsailKeyPairExpansion interface{}
+
+type AwsLightsailStaticIpExpansion interface{}
+
+type AwsLightsailStaticIpAttachmentExpansion interface{}
+
+type AwsLoadBalancerBackendServerPolicyExpansion interface{}
+
+type AwsLoadBalancerListenerPolicyExpansion interface{}
+
+type AwsLoadBalancerPolicyExpansion interface{}
+
+type AwsMacieMemberAccountAssociationExpansion interface{}
+
+type AwsMacieS3BucketAssociationExpansion interface{}
+
+type AwsMainRouteTableAssociationExpansion interface{}
+
+type AwsMediaPackageChannelExpansion interface{}
+
+type AwsMediaStoreContainerExpansion interface{}
+
+type AwsMediaStoreContainerPolicyExpansion interface{}
+
+type AwsMqBrokerExpansion interface{}
+
+type AwsMqConfigurationExpansion interface{}
+
+type AwsNatGatewayExpansion interface{}
+
+type AwsNeptuneClusterExpansion interface{}
+
+type AwsNeptuneClusterInstanceExpansion interface{}
+
+type AwsNeptuneClusterParameterGroupExpansion interface{}
+
+type AwsNeptuneClusterSnapshotExpansion interface{}
+
+type AwsNeptuneEventSubscriptionExpansion interface{}
+
+type AwsNeptuneParameterGroupExpansion interface{}
+
+type AwsNeptuneSubnetGroupExpansion interface{}
+
+type AwsNetworkAclExpansion interface{}
+
+type AwsNetworkAclRuleExpansion interface{}
+
+type AwsNetworkInterfaceExpansion interface{}
+
+type AwsNetworkInterfaceAttachmentExpansion interface{}
+
+type AwsNetworkInterfaceSgAttachmentExpansion interface{}
+
+type AwsOpsworksApplicationExpansion interface{}
+
+type AwsOpsworksCustomLayerExpansion interface{}
+
+type AwsOpsworksGangliaLayerExpansion interface{}
+
+type AwsOpsworksHaproxyLayerExpansion interface{}
+
+type AwsOpsworksInstanceExpansion interface{}
+
+type AwsOpsworksJavaAppLayerExpansion interface{}
+
+type AwsOpsworksMemcachedLayerExpansion interface{}
+
+type AwsOpsworksMysqlLayerExpansion interface{}
+
+type AwsOpsworksNodejsAppLayerExpansion interface{}
+
+type AwsOpsworksPermissionExpansion interface{}
+
+type AwsOpsworksPhpAppLayerExpansion interface{}
+
+type AwsOpsworksRailsAppLayerExpansion interface{}
+
+type AwsOpsworksRdsDbInstanceExpansion interface{}
+
+type AwsOpsworksStackExpansion interface{}
+
+type AwsOpsworksStaticWebLayerExpansion interface{}
+
+type AwsOpsworksUserProfileExpansion interface{}
+
+type AwsOrganizationsAccountExpansion interface{}
+
+type AwsOrganizationsOrganizationExpansion interface{}
+
+type AwsOrganizationsOrganizationalUnitExpansion interface{}
+
+type AwsOrganizationsPolicyExpansion interface{}
+
+type AwsOrganizationsPolicyAttachmentExpansion interface{}
+
+type AwsPinpointAdmChannelExpansion interface{}
+
+type AwsPinpointApnsChannelExpansion interface{}
+
+type AwsPinpointApnsSandboxChannelExpansion interface{}
+
+type AwsPinpointApnsVoipChannelExpansion interface{}
+
+type AwsPinpointApnsVoipSandboxChannelExpansion interface{}
+
+type AwsPinpointAppExpansion interface{}
+
+type AwsPinpointBaiduChannelExpansion interface{}
+
+type AwsPinpointEmailChannelExpansion interface{}
+
+type AwsPinpointEventStreamExpansion interface{}
+
+type AwsPinpointGcmChannelExpansion interface{}
+
+type AwsPinpointSmsChannelExpansion interface{}
+
+type AwsPlacementGroupExpansion interface{}
+
+type AwsProxyProtocolPolicyExpansion interface{}
+
+type AwsRamPrincipalAssociationExpansion interface{}
+
+type AwsRamResourceAssociationExpansion interface{}
+
+type AwsRamResourceShareExpansion interface{}
+
+type AwsRdsClusterExpansion interface{}
+
+type AwsRdsClusterEndpointExpansion interface{}
+
+type AwsRdsClusterInstanceExpansion interface{}
+
+type AwsRdsClusterParameterGroupExpansion interface{}
+
+type AwsRdsGlobalClusterExpansion interface{}
+
+type AwsRedshiftClusterExpansion interface{}
+
+type AwsRedshiftEventSubscriptionExpansion interface{}
+
+type AwsRedshiftParameterGroupExpansion interface{}
+
+type AwsRedshiftSecurityGroupExpansion interface{}
+
+type AwsRedshiftSnapshotCopyGrantExpansion interface{}
+
+type AwsRedshiftSubnetGroupExpansion interface{}
+
+type AwsResourcegroupsGroupExpansion interface{}
+
+type AwsRouteExpansion interface{}
+
+type AwsRoute53DelegationSetExpansion interface{}
+
+type AwsRoute53HealthCheckExpansion interface{}
+
+type AwsRoute53QueryLogExpansion interface{}
+
+type AwsRoute53RecordExpansion interface{}
+
+type AwsRoute53ResolverEndpointExpansion interface{}
+
+type AwsRoute53ResolverRuleExpansion interface{}
+
+type AwsRoute53ResolverRuleAssociationExpansion interface{}
+
+type AwsRoute53ZoneExpansion interface{}
+
+type AwsRoute53ZoneAssociationExpansion interface{}
+
+type AwsRouteTableExpansion interface{}
+
+type AwsRouteTableAssociationExpansion interface{}
+
+type AwsS3AccountPublicAccessBlockExpansion interface{}
+
+type AwsS3BucketExpansion interface{}
+
+type AwsS3BucketInventoryExpansion interface{}
+
+type AwsS3BucketMetricExpansion interface{}
+
+type AwsS3BucketNotificationExpansion interface{}
+
+type AwsS3BucketObjectExpansion interface{}
+
+type AwsS3BucketPolicyExpansion interface{}
+
+type AwsS3BucketPublicAccessBlockExpansion interface{}
+
+type AwsSagemakerEndpointExpansion interface{}
+
+type AwsSagemakerEndpointConfigurationExpansion interface{}
+
+type AwsSagemakerModelExpansion interface{}
+
+type AwsSagemakerNotebookInstanceExpansion interface{}
+
+type AwsSagemakerNotebookInstanceLifecycleConfigurationExpansion interface{}
+
+type AwsSecretsmanagerSecretExpansion interface{}
+
+type AwsSecretsmanagerSecretVersionExpansion interface{}
+
+type AwsSecurityGroupExpansion interface{}
+
+type AwsSecurityGroupRuleExpansion interface{}
+
+type AwsSecurityhubAccountExpansion interface{}
+
+type AwsSecurityhubProductSubscriptionExpansion interface{}
+
+type AwsSecurityhubStandardsSubscriptionExpansion interface{}
+
+type AwsServiceDiscoveryHttpNamespaceExpansion interface{}
+
+type AwsServiceDiscoveryPrivateDnsNamespaceExpansion interface{}
+
+type AwsServiceDiscoveryPublicDnsNamespaceExpansion interface{}
+
+type AwsServiceDiscoveryServiceExpansion interface{}
+
+type AwsServicecatalogPortfolioExpansion interface{}
+
+type AwsSesActiveReceiptRuleSetExpansion interface{}
+
+type AwsSesConfigurationSetExpansion interface{}
+
+type AwsSesDomainDkimExpansion interface{}
+
+type AwsSesDomainIdentityExpansion interface{}
+
+type AwsSesDomainIdentityVerificationExpansion interface{}
+
+type AwsSesDomainMailFromExpansion interface{}
+
+type AwsSesEventDestinationExpansion interface{}
+
+type AwsSesIdentityNotificationTopicExpansion interface{}
+
+type AwsSesReceiptFilterExpansion interface{}
+
+type AwsSesReceiptRuleExpansion interface{}
+
+type AwsSesReceiptRuleSetExpansion interface{}
+
+type AwsSesTemplateExpansion interface{}
+
+type AwsSfnActivityExpansion interface{}
+
+type AwsSfnStateMachineExpansion interface{}
+
+type AwsSimpledbDomainExpansion interface{}
+
+type AwsSnapshotCreateVolumePermissionExpansion interface{}
+
+type AwsSnsPlatformApplicationExpansion interface{}
+
+type AwsSnsSmsPreferencesExpansion interface{}
+
+type AwsSnsTopicExpansion interface{}
+
+type AwsSnsTopicPolicyExpansion interface{}
+
+type AwsSnsTopicSubscriptionExpansion interface{}
+
+type AwsSpotDatafeedSubscriptionExpansion interface{}
+
+type AwsSpotFleetRequestExpansion interface{}
+
+type AwsSpotInstanceRequestExpansion interface{}
+
+type AwsSqsQueueExpansion interface{}
+
+type AwsSqsQueuePolicyExpansion interface{}
+
+type AwsSsmActivationExpansion interface{}
+
+type AwsSsmAssociationExpansion interface{}
+
+type AwsSsmDocumentExpansion interface{}
+
+type AwsSsmMaintenanceWindowExpansion interface{}
+
+type AwsSsmMaintenanceWindowTargetExpansion interface{}
+
+type AwsSsmMaintenanceWindowTaskExpansion interface{}
+
+type AwsSsmParameterExpansion interface{}
+
+type AwsSsmPatchBaselineExpansion interface{}
+
+type AwsSsmPatchGroupExpansion interface{}
+
+type AwsSsmResourceDataSyncExpansion interface{}
+
+type AwsStoragegatewayCacheExpansion interface{}
+
+type AwsStoragegatewayCachedIscsiVolumeExpansion interface{}
+
+type AwsStoragegatewayGatewayExpansion interface{}
+
+type AwsStoragegatewayNfsFileShareExpansion interface{}
+
+type AwsStoragegatewaySmbFileShareExpansion interface{}
+
+type AwsStoragegatewayUploadBufferExpansion interface{}
+
+type AwsStoragegatewayWorkingStorageExpansion interface{}
+
+type AwsSubnetExpansion interface{}
+
+type AwsSwfDomainExpansion interface{}
+
+type AwsTransferServerExpansion interface{}
+
+type AwsTransferSshKeyExpansion interface{}
+
+type AwsTransferUserExpansion interface{}
+
+type AwsVolumeAttachmentExpansion interface{}
+
+type AwsVpcExpansion interface{}
+
+type AwsVpcDhcpOptionsExpansion interface{}
+
+type AwsVpcDhcpOptionsAssociationExpansion interface{}
+
+type AwsVpcEndpointExpansion interface{}
+
+type AwsVpcEndpointConnectionNotificationExpansion interface{}
+
+type AwsVpcEndpointRouteTableAssociationExpansion interface{}
+
+type AwsVpcEndpointServiceExpansion interface{}
+
+type AwsVpcEndpointServiceAllowedPrincipalExpansion interface{}
+
+type AwsVpcEndpointSubnetAssociationExpansion interface{}
+
+type AwsVpcIpv4CidrBlockAssociationExpansion interface{}
+
+type AwsVpcPeeringConnectionExpansion interface{}
+
+type AwsVpcPeeringConnectionAccepterExpansion interface{}
+
+type AwsVpcPeeringConnectionOptionsExpansion interface{}
+
+type AwsVpnConnectionExpansion interface{}
+
+type AwsVpnConnectionRouteExpansion interface{}
+
+type AwsVpnGatewayExpansion interface{}
+
+type AwsVpnGatewayAttachmentExpansion interface{}
+
+type AwsVpnGatewayRoutePropagationExpansion interface{}
+
+type AwsWafByteMatchSetExpansion interface{}
+
+type AwsWafGeoMatchSetExpansion interface{}
+
+type AwsWafIpsetExpansion interface{}
+
+type AwsWafRateBasedRuleExpansion interface{}
+
+type AwsWafRegexMatchSetExpansion interface{}
+
+type AwsWafRegexPatternSetExpansion interface{}
+
+type AwsWafRuleExpansion interface{}
+
+type AwsWafRuleGroupExpansion interface{}
+
+type AwsWafSizeConstraintSetExpansion interface{}
+
+type AwsWafSqlInjectionMatchSetExpansion interface{}
+
+type AwsWafWebAclExpansion interface{}
+
+type AwsWafXssMatchSetExpansion interface{}
+
+type AwsWafregionalByteMatchSetExpansion interface{}
+
+type AwsWafregionalGeoMatchSetExpansion interface{}
+
+type AwsWafregionalIpsetExpansion interface{}
+
+type AwsWafregionalRateBasedRuleExpansion interface{}
+
+type AwsWafregionalRegexMatchSetExpansion interface{}
+
+type AwsWafregionalRegexPatternSetExpansion interface{}
+
+type AwsWafregionalRuleExpansion interface{}
+
+type AwsWafregionalRuleGroupExpansion interface{}
+
+type AwsWafregionalSizeConstraintSetExpansion interface{}
+
+type AwsWafregionalSqlInjectionMatchSetExpansion interface{}
+
+type AwsWafregionalWebAclExpansion interface{}
+
+type AwsWafregionalWebAclAssociationExpansion interface{}
+
+type AwsWafregionalXssMatchSetExpansion interface{}
+
+type AwsWorklinkFleetExpansion interface{}
+
+type AwsWorklinkWebsiteCertificateAuthorityAssociationExpansion interface{}
+
+type AwsXraySamplingRuleExpansion interface{}

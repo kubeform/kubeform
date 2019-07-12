@@ -18,17 +18,17 @@ type DigitaloceanVolume struct {
 }
 
 type DigitaloceanVolumeSpec struct {
-	InitialFilesystemLabel string  `json:"initial_filesystem_label"`
-	FilesystemLabel        string  `json:"filesystem_label"`
-	Name                   string  `json:"name"`
-	Urn                    string  `json:"urn"`
-	Size                   int     `json:"size"`
-	Description            string  `json:"description"`
-	FilesystemType         string  `json:"filesystem_type"`
 	Region                 string  `json:"region"`
-	SnapshotId             string  `json:"snapshot_id"`
+	Name                   string  `json:"name"`
+	Size                   int     `json:"size"`
 	InitialFilesystemType  string  `json:"initial_filesystem_type"`
+	InitialFilesystemLabel string  `json:"initial_filesystem_label"`
 	DropletIds             []int64 `json:"droplet_ids"`
+	FilesystemType         string  `json:"filesystem_type"`
+	Urn                    string  `json:"urn"`
+	Description            string  `json:"description"`
+	SnapshotId             string  `json:"snapshot_id"`
+	FilesystemLabel        string  `json:"filesystem_label"`
 }
 
 

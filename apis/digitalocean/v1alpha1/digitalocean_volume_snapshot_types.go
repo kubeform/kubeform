@@ -18,12 +18,12 @@ type DigitaloceanVolumeSnapshot struct {
 }
 
 type DigitaloceanVolumeSnapshotSpec struct {
-	Regions     []string `json:"regions"`
-	Size        float64  `json:"size"`
-	CreatedAt   string   `json:"created_at"`
 	MinDiskSize int      `json:"min_disk_size"`
 	Name        string   `json:"name"`
 	VolumeId    string   `json:"volume_id"`
+	Regions     []string `json:"regions"`
+	Size        float64  `json:"size"`
+	CreatedAt   string   `json:"created_at"`
 }
 
 

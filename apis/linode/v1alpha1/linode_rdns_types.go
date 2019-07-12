@@ -18,8 +18,8 @@ type LinodeRdns struct {
 }
 
 type LinodeRdnsSpec struct {
-	Address string `json:"address"`
 	Rdns    string `json:"rdns"`
+	Address string `json:"address"`
 }
 
 

@@ -17,25 +17,25 @@ type DigitaloceanDatabaseCluster struct {
 	Status            DigitaloceanDatabaseClusterStatus `json:"status,omitempty"`
 }
 
-type MaintenanceWindowSpec struct {
+type DigitaloceanDatabaseClusterSpecMaintenanceWindow struct {
 	Day  string `json:"day"`
 	Hour string `json:"hour"`
 }
 
 type DigitaloceanDatabaseClusterSpec struct {
-	User              string                  `json:"user"`
-	Password          string                  `json:"password"`
-	Version           string                  `json:"version"`
-	Region            string                  `json:"region"`
-	NodeCount         int                     `json:"node_count"`
-	MaintenanceWindow []MaintenanceWindowSpec `json:"maintenance_window"`
-	Host              string                  `json:"host"`
-	Database          string                  `json:"database"`
-	Name              string                  `json:"name"`
-	Engine            string                  `json:"engine"`
-	Size              string                  `json:"size"`
-	Port              int                     `json:"port"`
-	Uri               string                  `json:"uri"`
+	Version           string                            `json:"version"`
+	NodeCount         int                               `json:"node_count"`
+	MaintenanceWindow []DigitaloceanDatabaseClusterSpec `json:"maintenance_window"`
+	Port              int                               `json:"port"`
+	Database          string                            `json:"database"`
+	Name              string                            `json:"name"`
+	Engine            string                            `json:"engine"`
+	Size              string                            `json:"size"`
+	Region            string                            `json:"region"`
+	Host              string                            `json:"host"`
+	Uri               string                            `json:"uri"`
+	User              string                            `json:"user"`
+	Password          string                            `json:"password"`
 }
 
 

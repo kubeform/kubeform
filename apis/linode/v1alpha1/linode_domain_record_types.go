@@ -18,17 +18,17 @@ type LinodeDomainRecord struct {
 }
 
 type LinodeDomainRecordSpec struct {
-	DomainId   int    `json:"domain_id"`
 	TtlSec     int    `json:"ttl_sec"`
 	Priority   int    `json:"priority"`
-	Weight     int    `json:"weight"`
-	Port       int    `json:"port"`
-	Name       string `json:"name"`
-	RecordType string `json:"record_type"`
-	Target     string `json:"target"`
 	Protocol   string `json:"protocol"`
+	Port       int    `json:"port"`
+	Weight     int    `json:"weight"`
+	DomainId   int    `json:"domain_id"`
+	RecordType string `json:"record_type"`
 	Service    string `json:"service"`
 	Tag        string `json:"tag"`
+	Name       string `json:"name"`
+	Target     string `json:"target"`
 }
 
 

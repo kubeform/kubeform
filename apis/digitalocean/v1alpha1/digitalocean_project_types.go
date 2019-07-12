@@ -18,15 +18,15 @@ type DigitaloceanProject struct {
 }
 
 type DigitaloceanProjectSpec struct {
-	CreatedAt   string   `json:"created_at"`
-	Resources   []string `json:"resources"`
-	Description string   `json:"description"`
-	Purpose     string   `json:"purpose"`
-	Environment string   `json:"environment"`
-	OwnerId     int      `json:"owner_id"`
 	Name        string   `json:"name"`
+	Description string   `json:"description"`
+	Environment string   `json:"environment"`
 	OwnerUuid   string   `json:"owner_uuid"`
+	Purpose     string   `json:"purpose"`
+	OwnerId     int      `json:"owner_id"`
+	CreatedAt   string   `json:"created_at"`
 	UpdatedAt   string   `json:"updated_at"`
+	Resources   []string `json:"resources"`
 }
 
 

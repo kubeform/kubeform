@@ -27,7 +27,506 @@ import (
 
 type AwsV1alpha1Interface interface {
 	RESTClient() rest.Interface
-	PostgresVersionsGetter
+	AwsAcmCertificatesGetter
+	AwsAcmCertificateValidationsGetter
+	AwsAcmpcaCertificateAuthoritiesGetter
+	AwsAlbsGetter
+	AwsAlbListenersGetter
+	AwsAlbListenerCertificatesGetter
+	AwsAlbListenerRulesGetter
+	AwsAlbTargetGroupsGetter
+	AwsAlbTargetGroupAttachmentsGetter
+	AwsAmisGetter
+	AwsAmiCopiesGetter
+	AwsAmiFromInstancesGetter
+	AwsAmiLaunchPermissionsGetter
+	AwsApiGatewayAccountsGetter
+	AwsApiGatewayApiKeysGetter
+	AwsApiGatewayAuthorizersGetter
+	AwsApiGatewayBasePathMappingsGetter
+	AwsApiGatewayClientCertificatesGetter
+	AwsApiGatewayDeploymentsGetter
+	AwsApiGatewayDocumentationPartsGetter
+	AwsApiGatewayDocumentationVersionsGetter
+	AwsApiGatewayDomainNamesGetter
+	AwsApiGatewayGatewayResponsesGetter
+	AwsApiGatewayIntegrationsGetter
+	AwsApiGatewayIntegrationResponsesGetter
+	AwsApiGatewayMethodsGetter
+	AwsApiGatewayMethodResponsesGetter
+	AwsApiGatewayMethodSettingsesGetter
+	AwsApiGatewayModelsGetter
+	AwsApiGatewayRequestValidatorsGetter
+	AwsApiGatewayResourcesGetter
+	AwsApiGatewayRestApisGetter
+	AwsApiGatewayStagesGetter
+	AwsApiGatewayUsagePlansGetter
+	AwsApiGatewayUsagePlanKeysGetter
+	AwsApiGatewayVpcLinksGetter
+	AwsAppCookieStickinessPoliciesGetter
+	AwsAppautoscalingPoliciesGetter
+	AwsAppautoscalingScheduledActionsGetter
+	AwsAppautoscalingTargetsGetter
+	AwsAppmeshMeshesGetter
+	AwsAppmeshRoutesGetter
+	AwsAppmeshVirtualNodesGetter
+	AwsAppmeshVirtualRoutersGetter
+	AwsAppmeshVirtualServicesGetter
+	AwsAppsyncApiKeysGetter
+	AwsAppsyncDatasourcesGetter
+	AwsAppsyncGraphqlApisGetter
+	AwsAppsyncResolversGetter
+	AwsAthenaDatabasesGetter
+	AwsAthenaNamedQueriesGetter
+	AwsAutoscalingAttachmentsGetter
+	AwsAutoscalingGroupsGetter
+	AwsAutoscalingLifecycleHooksGetter
+	AwsAutoscalingNotificationsGetter
+	AwsAutoscalingPoliciesGetter
+	AwsAutoscalingSchedulesGetter
+	AwsBackupPlansGetter
+	AwsBackupSelectionsGetter
+	AwsBackupVaultsGetter
+	AwsBatchComputeEnvironmentsGetter
+	AwsBatchJobDefinitionsGetter
+	AwsBatchJobQueuesGetter
+	AwsBudgetsBudgetsGetter
+	AwsCloud9EnvironmentEc2sGetter
+	AwsCloudformationStacksGetter
+	AwsCloudformationStackSetsGetter
+	AwsCloudformationStackSetInstancesGetter
+	AwsCloudfrontDistributionsGetter
+	AwsCloudfrontOriginAccessIdentitiesGetter
+	AwsCloudfrontPublicKeysGetter
+	AwsCloudhsmV2ClustersGetter
+	AwsCloudhsmV2HsmsGetter
+	AwsCloudtrailsGetter
+	AwsCloudwatchDashboardsGetter
+	AwsCloudwatchEventPermissionsGetter
+	AwsCloudwatchEventRulesGetter
+	AwsCloudwatchEventTargetsGetter
+	AwsCloudwatchLogDestinationsGetter
+	AwsCloudwatchLogDestinationPoliciesGetter
+	AwsCloudwatchLogGroupsGetter
+	AwsCloudwatchLogMetricFiltersGetter
+	AwsCloudwatchLogResourcePoliciesGetter
+	AwsCloudwatchLogStreamsGetter
+	AwsCloudwatchLogSubscriptionFiltersGetter
+	AwsCloudwatchMetricAlarmsGetter
+	AwsCodebuildProjectsGetter
+	AwsCodebuildWebhooksGetter
+	AwsCodecommitRepositoriesGetter
+	AwsCodecommitTriggersGetter
+	AwsCodedeployAppsGetter
+	AwsCodedeployDeploymentConfigsGetter
+	AwsCodedeployDeploymentGroupsGetter
+	AwsCodepipelinesGetter
+	AwsCodepipelineWebhooksGetter
+	AwsCognitoIdentityPoolsGetter
+	AwsCognitoIdentityPoolRolesAttachmentsGetter
+	AwsCognitoIdentityProvidersGetter
+	AwsCognitoResourceServersGetter
+	AwsCognitoUserGroupsGetter
+	AwsCognitoUserPoolsGetter
+	AwsCognitoUserPoolClientsGetter
+	AwsCognitoUserPoolDomainsGetter
+	AwsConfigAggregateAuthorizationsGetter
+	AwsConfigConfigRulesGetter
+	AwsConfigConfigurationAggregatorsGetter
+	AwsConfigConfigurationRecordersGetter
+	AwsConfigDeliveryChannelsGetter
+	AwsCurReportDefinitionsGetter
+	AwsCustomerGatewaysGetter
+	AwsDatasyncAgentsGetter
+	AwsDatasyncLocationEfsesGetter
+	AwsDatasyncLocationNfsesGetter
+	AwsDatasyncLocationS3sGetter
+	AwsDatasyncTasksGetter
+	AwsDaxClustersGetter
+	AwsDaxParameterGroupsGetter
+	AwsDaxSubnetGroupsGetter
+	AwsDbClusterSnapshotsGetter
+	AwsDbEventSubscriptionsGetter
+	AwsDbInstancesGetter
+	AwsDbInstanceRoleAssociationsGetter
+	AwsDbOptionGroupsGetter
+	AwsDbParameterGroupsGetter
+	AwsDbSecurityGroupsGetter
+	AwsDbSnapshotsGetter
+	AwsDbSubnetGroupsGetter
+	AwsDefaultNetworkAclsGetter
+	AwsDefaultRouteTablesGetter
+	AwsDefaultSecurityGroupsGetter
+	AwsDefaultSubnetsGetter
+	AwsDefaultVpcsGetter
+	AwsDefaultVpcDhcpOptionsesGetter
+	AwsDevicefarmProjectsGetter
+	AwsDirectoryServiceConditionalForwardersGetter
+	AwsDirectoryServiceDirectoriesGetter
+	AwsDlmLifecyclePoliciesGetter
+	AwsDmsCertificatesGetter
+	AwsDmsEndpointsGetter
+	AwsDmsReplicationInstancesGetter
+	AwsDmsReplicationSubnetGroupsGetter
+	AwsDmsReplicationTasksGetter
+	AwsDocdbClustersGetter
+	AwsDocdbClusterInstancesGetter
+	AwsDocdbClusterParameterGroupsGetter
+	AwsDocdbClusterSnapshotsGetter
+	AwsDocdbSubnetGroupsGetter
+	AwsDxBgpPeersGetter
+	AwsDxConnectionsGetter
+	AwsDxConnectionAssociationsGetter
+	AwsDxGatewaysGetter
+	AwsDxGatewayAssociationsGetter
+	AwsDxGatewayAssociationProposalsGetter
+	AwsDxHostedPrivateVirtualInterfacesGetter
+	AwsDxHostedPrivateVirtualInterfaceAcceptersGetter
+	AwsDxHostedPublicVirtualInterfacesGetter
+	AwsDxHostedPublicVirtualInterfaceAcceptersGetter
+	AwsDxLagsGetter
+	AwsDxPrivateVirtualInterfacesGetter
+	AwsDxPublicVirtualInterfacesGetter
+	AwsDynamodbGlobalTablesGetter
+	AwsDynamodbTablesGetter
+	AwsDynamodbTableItemsGetter
+	AwsEbsSnapshotsGetter
+	AwsEbsSnapshotCopiesGetter
+	AwsEbsVolumesGetter
+	AwsEc2CapacityReservationsGetter
+	AwsEc2ClientVpnEndpointsGetter
+	AwsEc2ClientVpnNetworkAssociationsGetter
+	AwsEc2FleetsGetter
+	AwsEc2TransitGatewaysGetter
+	AwsEc2TransitGatewayRoutesGetter
+	AwsEc2TransitGatewayRouteTablesGetter
+	AwsEc2TransitGatewayRouteTableAssociationsGetter
+	AwsEc2TransitGatewayRouteTablePropagationsGetter
+	AwsEc2TransitGatewayVpcAttachmentsGetter
+	AwsEcrLifecyclePoliciesGetter
+	AwsEcrRepositoriesGetter
+	AwsEcrRepositoryPoliciesGetter
+	AwsEcsClustersGetter
+	AwsEcsServicesGetter
+	AwsEcsTaskDefinitionsGetter
+	AwsEfsFileSystemsGetter
+	AwsEfsMountTargetsGetter
+	AwsEgressOnlyInternetGatewaysGetter
+	AwsEipsGetter
+	AwsEipAssociationsGetter
+	AwsEksClustersGetter
+	AwsElasticBeanstalkApplicationsGetter
+	AwsElasticBeanstalkApplicationVersionsGetter
+	AwsElasticBeanstalkConfigurationTemplatesGetter
+	AwsElasticBeanstalkEnvironmentsGetter
+	AwsElasticacheClustersGetter
+	AwsElasticacheParameterGroupsGetter
+	AwsElasticacheReplicationGroupsGetter
+	AwsElasticacheSecurityGroupsGetter
+	AwsElasticacheSubnetGroupsGetter
+	AwsElasticsearchDomainsGetter
+	AwsElasticsearchDomainPoliciesGetter
+	AwsElastictranscoderPipelinesGetter
+	AwsElastictranscoderPresetsGetter
+	AwsElbsGetter
+	AwsElbAttachmentsGetter
+	AwsEmrClustersGetter
+	AwsEmrInstanceGroupsGetter
+	AwsEmrSecurityConfigurationsGetter
+	AwsFlowLogsGetter
+	AwsGameliftAliasesGetter
+	AwsGameliftBuildsGetter
+	AwsGameliftFleetsGetter
+	AwsGameliftGameSessionQueuesGetter
+	AwsGlacierVaultsGetter
+	AwsGlacierVaultLocksGetter
+	AwsGlobalacceleratorAcceleratorsGetter
+	AwsGlobalacceleratorListenersGetter
+	AwsGlueCatalogDatabasesGetter
+	AwsGlueCatalogTablesGetter
+	AwsGlueClassifiersGetter
+	AwsGlueConnectionsGetter
+	AwsGlueCrawlersGetter
+	AwsGlueJobsGetter
+	AwsGlueSecurityConfigurationsGetter
+	AwsGlueTriggersGetter
+	AwsGuarddutyDetectorsGetter
+	AwsGuarddutyInviteAcceptersGetter
+	AwsGuarddutyIpsetsGetter
+	AwsGuarddutyMembersGetter
+	AwsGuarddutyThreatintelsetsGetter
+	AwsIamAccessKeysGetter
+	AwsIamAccountAliasesGetter
+	AwsIamAccountPasswordPoliciesGetter
+	AwsIamGroupsGetter
+	AwsIamGroupMembershipsGetter
+	AwsIamGroupPoliciesGetter
+	AwsIamGroupPolicyAttachmentsGetter
+	AwsIamInstanceProfilesGetter
+	AwsIamOpenidConnectProvidersGetter
+	AwsIamPoliciesGetter
+	AwsIamPolicyAttachmentsGetter
+	AwsIamRolesGetter
+	AwsIamRolePoliciesGetter
+	AwsIamRolePolicyAttachmentsGetter
+	AwsIamSamlProvidersGetter
+	AwsIamServerCertificatesGetter
+	AwsIamServiceLinkedRolesGetter
+	AwsIamUsersGetter
+	AwsIamUserGroupMembershipsGetter
+	AwsIamUserLoginProfilesGetter
+	AwsIamUserPoliciesGetter
+	AwsIamUserPolicyAttachmentsGetter
+	AwsIamUserSshKeysGetter
+	AwsInspectorAssessmentTargetsGetter
+	AwsInspectorAssessmentTemplatesGetter
+	AwsInspectorResourceGroupsGetter
+	AwsInstancesGetter
+	AwsInternetGatewaysGetter
+	AwsIotCertificatesGetter
+	AwsIotPoliciesGetter
+	AwsIotPolicyAttachmentsGetter
+	AwsIotRoleAliasesGetter
+	AwsIotThingsGetter
+	AwsIotThingPrincipalAttachmentsGetter
+	AwsIotThingTypesGetter
+	AwsIotTopicRulesGetter
+	AwsKeyPairsGetter
+	AwsKinesisAnalyticsApplicationsGetter
+	AwsKinesisFirehoseDeliveryStreamsGetter
+	AwsKinesisStreamsGetter
+	AwsKmsAliasesGetter
+	AwsKmsCiphertextsGetter
+	AwsKmsExternalKeysGetter
+	AwsKmsGrantsGetter
+	AwsKmsKeysGetter
+	AwsLambdaAliasesGetter
+	AwsLambdaEventSourceMappingsGetter
+	AwsLambdaFunctionsGetter
+	AwsLambdaLayerVersionsGetter
+	AwsLambdaPermissionsGetter
+	AwsLaunchConfigurationsGetter
+	AwsLaunchTemplatesGetter
+	AwsLbsGetter
+	AwsLbCookieStickinessPoliciesGetter
+	AwsLbListenersGetter
+	AwsLbListenerCertificatesGetter
+	AwsLbListenerRulesGetter
+	AwsLbSslNegotiationPoliciesGetter
+	AwsLbTargetGroupsGetter
+	AwsLbTargetGroupAttachmentsGetter
+	AwsLicensemanagerAssociationsGetter
+	AwsLicensemanagerLicenseConfigurationsGetter
+	AwsLightsailDomainsGetter
+	AwsLightsailInstancesGetter
+	AwsLightsailKeyPairsGetter
+	AwsLightsailStaticIpsGetter
+	AwsLightsailStaticIpAttachmentsGetter
+	AwsLoadBalancerBackendServerPoliciesGetter
+	AwsLoadBalancerListenerPoliciesGetter
+	AwsLoadBalancerPoliciesGetter
+	AwsMacieMemberAccountAssociationsGetter
+	AwsMacieS3BucketAssociationsGetter
+	AwsMainRouteTableAssociationsGetter
+	AwsMediaPackageChannelsGetter
+	AwsMediaStoreContainersGetter
+	AwsMediaStoreContainerPoliciesGetter
+	AwsMqBrokersGetter
+	AwsMqConfigurationsGetter
+	AwsNatGatewaysGetter
+	AwsNeptuneClustersGetter
+	AwsNeptuneClusterInstancesGetter
+	AwsNeptuneClusterParameterGroupsGetter
+	AwsNeptuneClusterSnapshotsGetter
+	AwsNeptuneEventSubscriptionsGetter
+	AwsNeptuneParameterGroupsGetter
+	AwsNeptuneSubnetGroupsGetter
+	AwsNetworkAclsGetter
+	AwsNetworkAclRulesGetter
+	AwsNetworkInterfacesGetter
+	AwsNetworkInterfaceAttachmentsGetter
+	AwsNetworkInterfaceSgAttachmentsGetter
+	AwsOpsworksApplicationsGetter
+	AwsOpsworksCustomLayersGetter
+	AwsOpsworksGangliaLayersGetter
+	AwsOpsworksHaproxyLayersGetter
+	AwsOpsworksInstancesGetter
+	AwsOpsworksJavaAppLayersGetter
+	AwsOpsworksMemcachedLayersGetter
+	AwsOpsworksMysqlLayersGetter
+	AwsOpsworksNodejsAppLayersGetter
+	AwsOpsworksPermissionsGetter
+	AwsOpsworksPhpAppLayersGetter
+	AwsOpsworksRailsAppLayersGetter
+	AwsOpsworksRdsDbInstancesGetter
+	AwsOpsworksStacksGetter
+	AwsOpsworksStaticWebLayersGetter
+	AwsOpsworksUserProfilesGetter
+	AwsOrganizationsAccountsGetter
+	AwsOrganizationsOrganizationsGetter
+	AwsOrganizationsOrganizationalUnitsGetter
+	AwsOrganizationsPoliciesGetter
+	AwsOrganizationsPolicyAttachmentsGetter
+	AwsPinpointAdmChannelsGetter
+	AwsPinpointApnsChannelsGetter
+	AwsPinpointApnsSandboxChannelsGetter
+	AwsPinpointApnsVoipChannelsGetter
+	AwsPinpointApnsVoipSandboxChannelsGetter
+	AwsPinpointAppsGetter
+	AwsPinpointBaiduChannelsGetter
+	AwsPinpointEmailChannelsGetter
+	AwsPinpointEventStreamsGetter
+	AwsPinpointGcmChannelsGetter
+	AwsPinpointSmsChannelsGetter
+	AwsPlacementGroupsGetter
+	AwsProxyProtocolPoliciesGetter
+	AwsRamPrincipalAssociationsGetter
+	AwsRamResourceAssociationsGetter
+	AwsRamResourceSharesGetter
+	AwsRdsClustersGetter
+	AwsRdsClusterEndpointsGetter
+	AwsRdsClusterInstancesGetter
+	AwsRdsClusterParameterGroupsGetter
+	AwsRdsGlobalClustersGetter
+	AwsRedshiftClustersGetter
+	AwsRedshiftEventSubscriptionsGetter
+	AwsRedshiftParameterGroupsGetter
+	AwsRedshiftSecurityGroupsGetter
+	AwsRedshiftSnapshotCopyGrantsGetter
+	AwsRedshiftSubnetGroupsGetter
+	AwsResourcegroupsGroupsGetter
+	AwsRoutesGetter
+	AwsRoute53DelegationSetsGetter
+	AwsRoute53HealthChecksGetter
+	AwsRoute53QueryLogsGetter
+	AwsRoute53RecordsGetter
+	AwsRoute53ResolverEndpointsGetter
+	AwsRoute53ResolverRulesGetter
+	AwsRoute53ResolverRuleAssociationsGetter
+	AwsRoute53ZonesGetter
+	AwsRoute53ZoneAssociationsGetter
+	AwsRouteTablesGetter
+	AwsRouteTableAssociationsGetter
+	AwsS3AccountPublicAccessBlocksGetter
+	AwsS3BucketsGetter
+	AwsS3BucketInventoriesGetter
+	AwsS3BucketMetricsGetter
+	AwsS3BucketNotificationsGetter
+	AwsS3BucketObjectsGetter
+	AwsS3BucketPoliciesGetter
+	AwsS3BucketPublicAccessBlocksGetter
+	AwsSagemakerEndpointsGetter
+	AwsSagemakerEndpointConfigurationsGetter
+	AwsSagemakerModelsGetter
+	AwsSagemakerNotebookInstancesGetter
+	AwsSagemakerNotebookInstanceLifecycleConfigurationsGetter
+	AwsSecretsmanagerSecretsGetter
+	AwsSecretsmanagerSecretVersionsGetter
+	AwsSecurityGroupsGetter
+	AwsSecurityGroupRulesGetter
+	AwsSecurityhubAccountsGetter
+	AwsSecurityhubProductSubscriptionsGetter
+	AwsSecurityhubStandardsSubscriptionsGetter
+	AwsServiceDiscoveryHttpNamespacesGetter
+	AwsServiceDiscoveryPrivateDnsNamespacesGetter
+	AwsServiceDiscoveryPublicDnsNamespacesGetter
+	AwsServiceDiscoveryServicesGetter
+	AwsServicecatalogPortfoliosGetter
+	AwsSesActiveReceiptRuleSetsGetter
+	AwsSesConfigurationSetsGetter
+	AwsSesDomainDkimsGetter
+	AwsSesDomainIdentitiesGetter
+	AwsSesDomainIdentityVerificationsGetter
+	AwsSesDomainMailFromsGetter
+	AwsSesEventDestinationsGetter
+	AwsSesIdentityNotificationTopicsGetter
+	AwsSesReceiptFiltersGetter
+	AwsSesReceiptRulesGetter
+	AwsSesReceiptRuleSetsGetter
+	AwsSesTemplatesGetter
+	AwsSfnActivitiesGetter
+	AwsSfnStateMachinesGetter
+	AwsSimpledbDomainsGetter
+	AwsSnapshotCreateVolumePermissionsGetter
+	AwsSnsPlatformApplicationsGetter
+	AwsSnsSmsPreferencesesGetter
+	AwsSnsTopicsGetter
+	AwsSnsTopicPoliciesGetter
+	AwsSnsTopicSubscriptionsGetter
+	AwsSpotDatafeedSubscriptionsGetter
+	AwsSpotFleetRequestsGetter
+	AwsSpotInstanceRequestsGetter
+	AwsSqsQueuesGetter
+	AwsSqsQueuePoliciesGetter
+	AwsSsmActivationsGetter
+	AwsSsmAssociationsGetter
+	AwsSsmDocumentsGetter
+	AwsSsmMaintenanceWindowsGetter
+	AwsSsmMaintenanceWindowTargetsGetter
+	AwsSsmMaintenanceWindowTasksGetter
+	AwsSsmParametersGetter
+	AwsSsmPatchBaselinesGetter
+	AwsSsmPatchGroupsGetter
+	AwsSsmResourceDataSyncsGetter
+	AwsStoragegatewayCachesGetter
+	AwsStoragegatewayCachedIscsiVolumesGetter
+	AwsStoragegatewayGatewaysGetter
+	AwsStoragegatewayNfsFileSharesGetter
+	AwsStoragegatewaySmbFileSharesGetter
+	AwsStoragegatewayUploadBuffersGetter
+	AwsStoragegatewayWorkingStoragesGetter
+	AwsSubnetsGetter
+	AwsSwfDomainsGetter
+	AwsTransferServersGetter
+	AwsTransferSshKeysGetter
+	AwsTransferUsersGetter
+	AwsVolumeAttachmentsGetter
+	AwsVpcsGetter
+	AwsVpcDhcpOptionsesGetter
+	AwsVpcDhcpOptionsAssociationsGetter
+	AwsVpcEndpointsGetter
+	AwsVpcEndpointConnectionNotificationsGetter
+	AwsVpcEndpointRouteTableAssociationsGetter
+	AwsVpcEndpointServicesGetter
+	AwsVpcEndpointServiceAllowedPrincipalsGetter
+	AwsVpcEndpointSubnetAssociationsGetter
+	AwsVpcIpv4CidrBlockAssociationsGetter
+	AwsVpcPeeringConnectionsGetter
+	AwsVpcPeeringConnectionAcceptersGetter
+	AwsVpcPeeringConnectionOptionsesGetter
+	AwsVpnConnectionsGetter
+	AwsVpnConnectionRoutesGetter
+	AwsVpnGatewaysGetter
+	AwsVpnGatewayAttachmentsGetter
+	AwsVpnGatewayRoutePropagationsGetter
+	AwsWafByteMatchSetsGetter
+	AwsWafGeoMatchSetsGetter
+	AwsWafIpsetsGetter
+	AwsWafRateBasedRulesGetter
+	AwsWafRegexMatchSetsGetter
+	AwsWafRegexPatternSetsGetter
+	AwsWafRulesGetter
+	AwsWafRuleGroupsGetter
+	AwsWafSizeConstraintSetsGetter
+	AwsWafSqlInjectionMatchSetsGetter
+	AwsWafWebAclsGetter
+	AwsWafXssMatchSetsGetter
+	AwsWafregionalByteMatchSetsGetter
+	AwsWafregionalGeoMatchSetsGetter
+	AwsWafregionalIpsetsGetter
+	AwsWafregionalRateBasedRulesGetter
+	AwsWafregionalRegexMatchSetsGetter
+	AwsWafregionalRegexPatternSetsGetter
+	AwsWafregionalRulesGetter
+	AwsWafregionalRuleGroupsGetter
+	AwsWafregionalSizeConstraintSetsGetter
+	AwsWafregionalSqlInjectionMatchSetsGetter
+	AwsWafregionalWebAclsGetter
+	AwsWafregionalWebAclAssociationsGetter
+	AwsWafregionalXssMatchSetsGetter
+	AwsWorklinkFleetsGetter
+	AwsWorklinkWebsiteCertificateAuthorityAssociationsGetter
+	AwsXraySamplingRulesGetter
 }
 
 // AwsV1alpha1Client is used to interact with features provided by the aws.kubeform.com group.
@@ -35,8 +534,2004 @@ type AwsV1alpha1Client struct {
 	restClient rest.Interface
 }
 
-func (c *AwsV1alpha1Client) PostgresVersions() PostgresVersionInterface {
-	return newPostgresVersions(c)
+func (c *AwsV1alpha1Client) AwsAcmCertificates() AwsAcmCertificateInterface {
+	return newAwsAcmCertificates(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAcmCertificateValidations() AwsAcmCertificateValidationInterface {
+	return newAwsAcmCertificateValidations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAcmpcaCertificateAuthorities() AwsAcmpcaCertificateAuthorityInterface {
+	return newAwsAcmpcaCertificateAuthorities(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAlbs() AwsAlbInterface {
+	return newAwsAlbs(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAlbListeners() AwsAlbListenerInterface {
+	return newAwsAlbListeners(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAlbListenerCertificates() AwsAlbListenerCertificateInterface {
+	return newAwsAlbListenerCertificates(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAlbListenerRules() AwsAlbListenerRuleInterface {
+	return newAwsAlbListenerRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAlbTargetGroups() AwsAlbTargetGroupInterface {
+	return newAwsAlbTargetGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAlbTargetGroupAttachments() AwsAlbTargetGroupAttachmentInterface {
+	return newAwsAlbTargetGroupAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAmis() AwsAmiInterface {
+	return newAwsAmis(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAmiCopies() AwsAmiCopyInterface {
+	return newAwsAmiCopies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAmiFromInstances() AwsAmiFromInstanceInterface {
+	return newAwsAmiFromInstances(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAmiLaunchPermissions() AwsAmiLaunchPermissionInterface {
+	return newAwsAmiLaunchPermissions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayAccounts() AwsApiGatewayAccountInterface {
+	return newAwsApiGatewayAccounts(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayApiKeys() AwsApiGatewayApiKeyInterface {
+	return newAwsApiGatewayApiKeys(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayAuthorizers() AwsApiGatewayAuthorizerInterface {
+	return newAwsApiGatewayAuthorizers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayBasePathMappings() AwsApiGatewayBasePathMappingInterface {
+	return newAwsApiGatewayBasePathMappings(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayClientCertificates() AwsApiGatewayClientCertificateInterface {
+	return newAwsApiGatewayClientCertificates(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayDeployments() AwsApiGatewayDeploymentInterface {
+	return newAwsApiGatewayDeployments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayDocumentationParts() AwsApiGatewayDocumentationPartInterface {
+	return newAwsApiGatewayDocumentationParts(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayDocumentationVersions() AwsApiGatewayDocumentationVersionInterface {
+	return newAwsApiGatewayDocumentationVersions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayDomainNames() AwsApiGatewayDomainNameInterface {
+	return newAwsApiGatewayDomainNames(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayGatewayResponses() AwsApiGatewayGatewayResponseInterface {
+	return newAwsApiGatewayGatewayResponses(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayIntegrations() AwsApiGatewayIntegrationInterface {
+	return newAwsApiGatewayIntegrations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayIntegrationResponses() AwsApiGatewayIntegrationResponseInterface {
+	return newAwsApiGatewayIntegrationResponses(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayMethods() AwsApiGatewayMethodInterface {
+	return newAwsApiGatewayMethods(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayMethodResponses() AwsApiGatewayMethodResponseInterface {
+	return newAwsApiGatewayMethodResponses(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayMethodSettingses() AwsApiGatewayMethodSettingsInterface {
+	return newAwsApiGatewayMethodSettingses(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayModels() AwsApiGatewayModelInterface {
+	return newAwsApiGatewayModels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayRequestValidators() AwsApiGatewayRequestValidatorInterface {
+	return newAwsApiGatewayRequestValidators(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayResources() AwsApiGatewayResourceInterface {
+	return newAwsApiGatewayResources(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayRestApis() AwsApiGatewayRestApiInterface {
+	return newAwsApiGatewayRestApis(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayStages() AwsApiGatewayStageInterface {
+	return newAwsApiGatewayStages(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayUsagePlans() AwsApiGatewayUsagePlanInterface {
+	return newAwsApiGatewayUsagePlans(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayUsagePlanKeys() AwsApiGatewayUsagePlanKeyInterface {
+	return newAwsApiGatewayUsagePlanKeys(c)
+}
+
+func (c *AwsV1alpha1Client) AwsApiGatewayVpcLinks() AwsApiGatewayVpcLinkInterface {
+	return newAwsApiGatewayVpcLinks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppCookieStickinessPolicies() AwsAppCookieStickinessPolicyInterface {
+	return newAwsAppCookieStickinessPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppautoscalingPolicies() AwsAppautoscalingPolicyInterface {
+	return newAwsAppautoscalingPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppautoscalingScheduledActions() AwsAppautoscalingScheduledActionInterface {
+	return newAwsAppautoscalingScheduledActions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppautoscalingTargets() AwsAppautoscalingTargetInterface {
+	return newAwsAppautoscalingTargets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppmeshMeshes() AwsAppmeshMeshInterface {
+	return newAwsAppmeshMeshes(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppmeshRoutes() AwsAppmeshRouteInterface {
+	return newAwsAppmeshRoutes(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppmeshVirtualNodes() AwsAppmeshVirtualNodeInterface {
+	return newAwsAppmeshVirtualNodes(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppmeshVirtualRouters() AwsAppmeshVirtualRouterInterface {
+	return newAwsAppmeshVirtualRouters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppmeshVirtualServices() AwsAppmeshVirtualServiceInterface {
+	return newAwsAppmeshVirtualServices(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppsyncApiKeys() AwsAppsyncApiKeyInterface {
+	return newAwsAppsyncApiKeys(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppsyncDatasources() AwsAppsyncDatasourceInterface {
+	return newAwsAppsyncDatasources(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppsyncGraphqlApis() AwsAppsyncGraphqlApiInterface {
+	return newAwsAppsyncGraphqlApis(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAppsyncResolvers() AwsAppsyncResolverInterface {
+	return newAwsAppsyncResolvers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAthenaDatabases() AwsAthenaDatabaseInterface {
+	return newAwsAthenaDatabases(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAthenaNamedQueries() AwsAthenaNamedQueryInterface {
+	return newAwsAthenaNamedQueries(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAutoscalingAttachments() AwsAutoscalingAttachmentInterface {
+	return newAwsAutoscalingAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAutoscalingGroups() AwsAutoscalingGroupInterface {
+	return newAwsAutoscalingGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAutoscalingLifecycleHooks() AwsAutoscalingLifecycleHookInterface {
+	return newAwsAutoscalingLifecycleHooks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAutoscalingNotifications() AwsAutoscalingNotificationInterface {
+	return newAwsAutoscalingNotifications(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAutoscalingPolicies() AwsAutoscalingPolicyInterface {
+	return newAwsAutoscalingPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsAutoscalingSchedules() AwsAutoscalingScheduleInterface {
+	return newAwsAutoscalingSchedules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsBackupPlans() AwsBackupPlanInterface {
+	return newAwsBackupPlans(c)
+}
+
+func (c *AwsV1alpha1Client) AwsBackupSelections() AwsBackupSelectionInterface {
+	return newAwsBackupSelections(c)
+}
+
+func (c *AwsV1alpha1Client) AwsBackupVaults() AwsBackupVaultInterface {
+	return newAwsBackupVaults(c)
+}
+
+func (c *AwsV1alpha1Client) AwsBatchComputeEnvironments() AwsBatchComputeEnvironmentInterface {
+	return newAwsBatchComputeEnvironments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsBatchJobDefinitions() AwsBatchJobDefinitionInterface {
+	return newAwsBatchJobDefinitions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsBatchJobQueues() AwsBatchJobQueueInterface {
+	return newAwsBatchJobQueues(c)
+}
+
+func (c *AwsV1alpha1Client) AwsBudgetsBudgets() AwsBudgetsBudgetInterface {
+	return newAwsBudgetsBudgets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloud9EnvironmentEc2s() AwsCloud9EnvironmentEc2Interface {
+	return newAwsCloud9EnvironmentEc2s(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudformationStacks() AwsCloudformationStackInterface {
+	return newAwsCloudformationStacks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudformationStackSets() AwsCloudformationStackSetInterface {
+	return newAwsCloudformationStackSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudformationStackSetInstances() AwsCloudformationStackSetInstanceInterface {
+	return newAwsCloudformationStackSetInstances(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudfrontDistributions() AwsCloudfrontDistributionInterface {
+	return newAwsCloudfrontDistributions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudfrontOriginAccessIdentities() AwsCloudfrontOriginAccessIdentityInterface {
+	return newAwsCloudfrontOriginAccessIdentities(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudfrontPublicKeys() AwsCloudfrontPublicKeyInterface {
+	return newAwsCloudfrontPublicKeys(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudhsmV2Clusters() AwsCloudhsmV2ClusterInterface {
+	return newAwsCloudhsmV2Clusters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudhsmV2Hsms() AwsCloudhsmV2HsmInterface {
+	return newAwsCloudhsmV2Hsms(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudtrails() AwsCloudtrailInterface {
+	return newAwsCloudtrails(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudwatchDashboards() AwsCloudwatchDashboardInterface {
+	return newAwsCloudwatchDashboards(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudwatchEventPermissions() AwsCloudwatchEventPermissionInterface {
+	return newAwsCloudwatchEventPermissions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudwatchEventRules() AwsCloudwatchEventRuleInterface {
+	return newAwsCloudwatchEventRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudwatchEventTargets() AwsCloudwatchEventTargetInterface {
+	return newAwsCloudwatchEventTargets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudwatchLogDestinations() AwsCloudwatchLogDestinationInterface {
+	return newAwsCloudwatchLogDestinations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudwatchLogDestinationPolicies() AwsCloudwatchLogDestinationPolicyInterface {
+	return newAwsCloudwatchLogDestinationPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudwatchLogGroups() AwsCloudwatchLogGroupInterface {
+	return newAwsCloudwatchLogGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudwatchLogMetricFilters() AwsCloudwatchLogMetricFilterInterface {
+	return newAwsCloudwatchLogMetricFilters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudwatchLogResourcePolicies() AwsCloudwatchLogResourcePolicyInterface {
+	return newAwsCloudwatchLogResourcePolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudwatchLogStreams() AwsCloudwatchLogStreamInterface {
+	return newAwsCloudwatchLogStreams(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudwatchLogSubscriptionFilters() AwsCloudwatchLogSubscriptionFilterInterface {
+	return newAwsCloudwatchLogSubscriptionFilters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCloudwatchMetricAlarms() AwsCloudwatchMetricAlarmInterface {
+	return newAwsCloudwatchMetricAlarms(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCodebuildProjects() AwsCodebuildProjectInterface {
+	return newAwsCodebuildProjects(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCodebuildWebhooks() AwsCodebuildWebhookInterface {
+	return newAwsCodebuildWebhooks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCodecommitRepositories() AwsCodecommitRepositoryInterface {
+	return newAwsCodecommitRepositories(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCodecommitTriggers() AwsCodecommitTriggerInterface {
+	return newAwsCodecommitTriggers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCodedeployApps() AwsCodedeployAppInterface {
+	return newAwsCodedeployApps(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCodedeployDeploymentConfigs() AwsCodedeployDeploymentConfigInterface {
+	return newAwsCodedeployDeploymentConfigs(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCodedeployDeploymentGroups() AwsCodedeployDeploymentGroupInterface {
+	return newAwsCodedeployDeploymentGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCodepipelines() AwsCodepipelineInterface {
+	return newAwsCodepipelines(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCodepipelineWebhooks() AwsCodepipelineWebhookInterface {
+	return newAwsCodepipelineWebhooks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCognitoIdentityPools() AwsCognitoIdentityPoolInterface {
+	return newAwsCognitoIdentityPools(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCognitoIdentityPoolRolesAttachments() AwsCognitoIdentityPoolRolesAttachmentInterface {
+	return newAwsCognitoIdentityPoolRolesAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCognitoIdentityProviders() AwsCognitoIdentityProviderInterface {
+	return newAwsCognitoIdentityProviders(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCognitoResourceServers() AwsCognitoResourceServerInterface {
+	return newAwsCognitoResourceServers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCognitoUserGroups() AwsCognitoUserGroupInterface {
+	return newAwsCognitoUserGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCognitoUserPools() AwsCognitoUserPoolInterface {
+	return newAwsCognitoUserPools(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCognitoUserPoolClients() AwsCognitoUserPoolClientInterface {
+	return newAwsCognitoUserPoolClients(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCognitoUserPoolDomains() AwsCognitoUserPoolDomainInterface {
+	return newAwsCognitoUserPoolDomains(c)
+}
+
+func (c *AwsV1alpha1Client) AwsConfigAggregateAuthorizations() AwsConfigAggregateAuthorizationInterface {
+	return newAwsConfigAggregateAuthorizations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsConfigConfigRules() AwsConfigConfigRuleInterface {
+	return newAwsConfigConfigRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsConfigConfigurationAggregators() AwsConfigConfigurationAggregatorInterface {
+	return newAwsConfigConfigurationAggregators(c)
+}
+
+func (c *AwsV1alpha1Client) AwsConfigConfigurationRecorders() AwsConfigConfigurationRecorderInterface {
+	return newAwsConfigConfigurationRecorders(c)
+}
+
+func (c *AwsV1alpha1Client) AwsConfigDeliveryChannels() AwsConfigDeliveryChannelInterface {
+	return newAwsConfigDeliveryChannels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCurReportDefinitions() AwsCurReportDefinitionInterface {
+	return newAwsCurReportDefinitions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsCustomerGateways() AwsCustomerGatewayInterface {
+	return newAwsCustomerGateways(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDatasyncAgents() AwsDatasyncAgentInterface {
+	return newAwsDatasyncAgents(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDatasyncLocationEfses() AwsDatasyncLocationEfsInterface {
+	return newAwsDatasyncLocationEfses(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDatasyncLocationNfses() AwsDatasyncLocationNfsInterface {
+	return newAwsDatasyncLocationNfses(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDatasyncLocationS3s() AwsDatasyncLocationS3Interface {
+	return newAwsDatasyncLocationS3s(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDatasyncTasks() AwsDatasyncTaskInterface {
+	return newAwsDatasyncTasks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDaxClusters() AwsDaxClusterInterface {
+	return newAwsDaxClusters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDaxParameterGroups() AwsDaxParameterGroupInterface {
+	return newAwsDaxParameterGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDaxSubnetGroups() AwsDaxSubnetGroupInterface {
+	return newAwsDaxSubnetGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDbClusterSnapshots() AwsDbClusterSnapshotInterface {
+	return newAwsDbClusterSnapshots(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDbEventSubscriptions() AwsDbEventSubscriptionInterface {
+	return newAwsDbEventSubscriptions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDbInstances() AwsDbInstanceInterface {
+	return newAwsDbInstances(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDbInstanceRoleAssociations() AwsDbInstanceRoleAssociationInterface {
+	return newAwsDbInstanceRoleAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDbOptionGroups() AwsDbOptionGroupInterface {
+	return newAwsDbOptionGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDbParameterGroups() AwsDbParameterGroupInterface {
+	return newAwsDbParameterGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDbSecurityGroups() AwsDbSecurityGroupInterface {
+	return newAwsDbSecurityGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDbSnapshots() AwsDbSnapshotInterface {
+	return newAwsDbSnapshots(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDbSubnetGroups() AwsDbSubnetGroupInterface {
+	return newAwsDbSubnetGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDefaultNetworkAcls() AwsDefaultNetworkAclInterface {
+	return newAwsDefaultNetworkAcls(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDefaultRouteTables() AwsDefaultRouteTableInterface {
+	return newAwsDefaultRouteTables(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDefaultSecurityGroups() AwsDefaultSecurityGroupInterface {
+	return newAwsDefaultSecurityGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDefaultSubnets() AwsDefaultSubnetInterface {
+	return newAwsDefaultSubnets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDefaultVpcs() AwsDefaultVpcInterface {
+	return newAwsDefaultVpcs(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDefaultVpcDhcpOptionses() AwsDefaultVpcDhcpOptionsInterface {
+	return newAwsDefaultVpcDhcpOptionses(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDevicefarmProjects() AwsDevicefarmProjectInterface {
+	return newAwsDevicefarmProjects(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDirectoryServiceConditionalForwarders() AwsDirectoryServiceConditionalForwarderInterface {
+	return newAwsDirectoryServiceConditionalForwarders(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDirectoryServiceDirectories() AwsDirectoryServiceDirectoryInterface {
+	return newAwsDirectoryServiceDirectories(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDlmLifecyclePolicies() AwsDlmLifecyclePolicyInterface {
+	return newAwsDlmLifecyclePolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDmsCertificates() AwsDmsCertificateInterface {
+	return newAwsDmsCertificates(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDmsEndpoints() AwsDmsEndpointInterface {
+	return newAwsDmsEndpoints(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDmsReplicationInstances() AwsDmsReplicationInstanceInterface {
+	return newAwsDmsReplicationInstances(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDmsReplicationSubnetGroups() AwsDmsReplicationSubnetGroupInterface {
+	return newAwsDmsReplicationSubnetGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDmsReplicationTasks() AwsDmsReplicationTaskInterface {
+	return newAwsDmsReplicationTasks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDocdbClusters() AwsDocdbClusterInterface {
+	return newAwsDocdbClusters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDocdbClusterInstances() AwsDocdbClusterInstanceInterface {
+	return newAwsDocdbClusterInstances(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDocdbClusterParameterGroups() AwsDocdbClusterParameterGroupInterface {
+	return newAwsDocdbClusterParameterGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDocdbClusterSnapshots() AwsDocdbClusterSnapshotInterface {
+	return newAwsDocdbClusterSnapshots(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDocdbSubnetGroups() AwsDocdbSubnetGroupInterface {
+	return newAwsDocdbSubnetGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxBgpPeers() AwsDxBgpPeerInterface {
+	return newAwsDxBgpPeers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxConnections() AwsDxConnectionInterface {
+	return newAwsDxConnections(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxConnectionAssociations() AwsDxConnectionAssociationInterface {
+	return newAwsDxConnectionAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxGateways() AwsDxGatewayInterface {
+	return newAwsDxGateways(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxGatewayAssociations() AwsDxGatewayAssociationInterface {
+	return newAwsDxGatewayAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxGatewayAssociationProposals() AwsDxGatewayAssociationProposalInterface {
+	return newAwsDxGatewayAssociationProposals(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxHostedPrivateVirtualInterfaces() AwsDxHostedPrivateVirtualInterfaceInterface {
+	return newAwsDxHostedPrivateVirtualInterfaces(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxHostedPrivateVirtualInterfaceAccepters() AwsDxHostedPrivateVirtualInterfaceAccepterInterface {
+	return newAwsDxHostedPrivateVirtualInterfaceAccepters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxHostedPublicVirtualInterfaces() AwsDxHostedPublicVirtualInterfaceInterface {
+	return newAwsDxHostedPublicVirtualInterfaces(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxHostedPublicVirtualInterfaceAccepters() AwsDxHostedPublicVirtualInterfaceAccepterInterface {
+	return newAwsDxHostedPublicVirtualInterfaceAccepters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxLags() AwsDxLagInterface {
+	return newAwsDxLags(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxPrivateVirtualInterfaces() AwsDxPrivateVirtualInterfaceInterface {
+	return newAwsDxPrivateVirtualInterfaces(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDxPublicVirtualInterfaces() AwsDxPublicVirtualInterfaceInterface {
+	return newAwsDxPublicVirtualInterfaces(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDynamodbGlobalTables() AwsDynamodbGlobalTableInterface {
+	return newAwsDynamodbGlobalTables(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDynamodbTables() AwsDynamodbTableInterface {
+	return newAwsDynamodbTables(c)
+}
+
+func (c *AwsV1alpha1Client) AwsDynamodbTableItems() AwsDynamodbTableItemInterface {
+	return newAwsDynamodbTableItems(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEbsSnapshots() AwsEbsSnapshotInterface {
+	return newAwsEbsSnapshots(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEbsSnapshotCopies() AwsEbsSnapshotCopyInterface {
+	return newAwsEbsSnapshotCopies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEbsVolumes() AwsEbsVolumeInterface {
+	return newAwsEbsVolumes(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEc2CapacityReservations() AwsEc2CapacityReservationInterface {
+	return newAwsEc2CapacityReservations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEc2ClientVpnEndpoints() AwsEc2ClientVpnEndpointInterface {
+	return newAwsEc2ClientVpnEndpoints(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEc2ClientVpnNetworkAssociations() AwsEc2ClientVpnNetworkAssociationInterface {
+	return newAwsEc2ClientVpnNetworkAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEc2Fleets() AwsEc2FleetInterface {
+	return newAwsEc2Fleets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEc2TransitGateways() AwsEc2TransitGatewayInterface {
+	return newAwsEc2TransitGateways(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEc2TransitGatewayRoutes() AwsEc2TransitGatewayRouteInterface {
+	return newAwsEc2TransitGatewayRoutes(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEc2TransitGatewayRouteTables() AwsEc2TransitGatewayRouteTableInterface {
+	return newAwsEc2TransitGatewayRouteTables(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEc2TransitGatewayRouteTableAssociations() AwsEc2TransitGatewayRouteTableAssociationInterface {
+	return newAwsEc2TransitGatewayRouteTableAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEc2TransitGatewayRouteTablePropagations() AwsEc2TransitGatewayRouteTablePropagationInterface {
+	return newAwsEc2TransitGatewayRouteTablePropagations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEc2TransitGatewayVpcAttachments() AwsEc2TransitGatewayVpcAttachmentInterface {
+	return newAwsEc2TransitGatewayVpcAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEcrLifecyclePolicies() AwsEcrLifecyclePolicyInterface {
+	return newAwsEcrLifecyclePolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEcrRepositories() AwsEcrRepositoryInterface {
+	return newAwsEcrRepositories(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEcrRepositoryPolicies() AwsEcrRepositoryPolicyInterface {
+	return newAwsEcrRepositoryPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEcsClusters() AwsEcsClusterInterface {
+	return newAwsEcsClusters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEcsServices() AwsEcsServiceInterface {
+	return newAwsEcsServices(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEcsTaskDefinitions() AwsEcsTaskDefinitionInterface {
+	return newAwsEcsTaskDefinitions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEfsFileSystems() AwsEfsFileSystemInterface {
+	return newAwsEfsFileSystems(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEfsMountTargets() AwsEfsMountTargetInterface {
+	return newAwsEfsMountTargets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEgressOnlyInternetGateways() AwsEgressOnlyInternetGatewayInterface {
+	return newAwsEgressOnlyInternetGateways(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEips() AwsEipInterface {
+	return newAwsEips(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEipAssociations() AwsEipAssociationInterface {
+	return newAwsEipAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEksClusters() AwsEksClusterInterface {
+	return newAwsEksClusters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElasticBeanstalkApplications() AwsElasticBeanstalkApplicationInterface {
+	return newAwsElasticBeanstalkApplications(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElasticBeanstalkApplicationVersions() AwsElasticBeanstalkApplicationVersionInterface {
+	return newAwsElasticBeanstalkApplicationVersions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElasticBeanstalkConfigurationTemplates() AwsElasticBeanstalkConfigurationTemplateInterface {
+	return newAwsElasticBeanstalkConfigurationTemplates(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElasticBeanstalkEnvironments() AwsElasticBeanstalkEnvironmentInterface {
+	return newAwsElasticBeanstalkEnvironments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElasticacheClusters() AwsElasticacheClusterInterface {
+	return newAwsElasticacheClusters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElasticacheParameterGroups() AwsElasticacheParameterGroupInterface {
+	return newAwsElasticacheParameterGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElasticacheReplicationGroups() AwsElasticacheReplicationGroupInterface {
+	return newAwsElasticacheReplicationGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElasticacheSecurityGroups() AwsElasticacheSecurityGroupInterface {
+	return newAwsElasticacheSecurityGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElasticacheSubnetGroups() AwsElasticacheSubnetGroupInterface {
+	return newAwsElasticacheSubnetGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElasticsearchDomains() AwsElasticsearchDomainInterface {
+	return newAwsElasticsearchDomains(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElasticsearchDomainPolicies() AwsElasticsearchDomainPolicyInterface {
+	return newAwsElasticsearchDomainPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElastictranscoderPipelines() AwsElastictranscoderPipelineInterface {
+	return newAwsElastictranscoderPipelines(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElastictranscoderPresets() AwsElastictranscoderPresetInterface {
+	return newAwsElastictranscoderPresets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElbs() AwsElbInterface {
+	return newAwsElbs(c)
+}
+
+func (c *AwsV1alpha1Client) AwsElbAttachments() AwsElbAttachmentInterface {
+	return newAwsElbAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEmrClusters() AwsEmrClusterInterface {
+	return newAwsEmrClusters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEmrInstanceGroups() AwsEmrInstanceGroupInterface {
+	return newAwsEmrInstanceGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsEmrSecurityConfigurations() AwsEmrSecurityConfigurationInterface {
+	return newAwsEmrSecurityConfigurations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsFlowLogs() AwsFlowLogInterface {
+	return newAwsFlowLogs(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGameliftAliases() AwsGameliftAliasInterface {
+	return newAwsGameliftAliases(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGameliftBuilds() AwsGameliftBuildInterface {
+	return newAwsGameliftBuilds(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGameliftFleets() AwsGameliftFleetInterface {
+	return newAwsGameliftFleets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGameliftGameSessionQueues() AwsGameliftGameSessionQueueInterface {
+	return newAwsGameliftGameSessionQueues(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlacierVaults() AwsGlacierVaultInterface {
+	return newAwsGlacierVaults(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlacierVaultLocks() AwsGlacierVaultLockInterface {
+	return newAwsGlacierVaultLocks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlobalacceleratorAccelerators() AwsGlobalacceleratorAcceleratorInterface {
+	return newAwsGlobalacceleratorAccelerators(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlobalacceleratorListeners() AwsGlobalacceleratorListenerInterface {
+	return newAwsGlobalacceleratorListeners(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlueCatalogDatabases() AwsGlueCatalogDatabaseInterface {
+	return newAwsGlueCatalogDatabases(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlueCatalogTables() AwsGlueCatalogTableInterface {
+	return newAwsGlueCatalogTables(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlueClassifiers() AwsGlueClassifierInterface {
+	return newAwsGlueClassifiers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlueConnections() AwsGlueConnectionInterface {
+	return newAwsGlueConnections(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlueCrawlers() AwsGlueCrawlerInterface {
+	return newAwsGlueCrawlers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlueJobs() AwsGlueJobInterface {
+	return newAwsGlueJobs(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlueSecurityConfigurations() AwsGlueSecurityConfigurationInterface {
+	return newAwsGlueSecurityConfigurations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGlueTriggers() AwsGlueTriggerInterface {
+	return newAwsGlueTriggers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGuarddutyDetectors() AwsGuarddutyDetectorInterface {
+	return newAwsGuarddutyDetectors(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGuarddutyInviteAccepters() AwsGuarddutyInviteAccepterInterface {
+	return newAwsGuarddutyInviteAccepters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGuarddutyIpsets() AwsGuarddutyIpsetInterface {
+	return newAwsGuarddutyIpsets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGuarddutyMembers() AwsGuarddutyMemberInterface {
+	return newAwsGuarddutyMembers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsGuarddutyThreatintelsets() AwsGuarddutyThreatintelsetInterface {
+	return newAwsGuarddutyThreatintelsets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamAccessKeys() AwsIamAccessKeyInterface {
+	return newAwsIamAccessKeys(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamAccountAliases() AwsIamAccountAliasInterface {
+	return newAwsIamAccountAliases(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamAccountPasswordPolicies() AwsIamAccountPasswordPolicyInterface {
+	return newAwsIamAccountPasswordPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamGroups() AwsIamGroupInterface {
+	return newAwsIamGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamGroupMemberships() AwsIamGroupMembershipInterface {
+	return newAwsIamGroupMemberships(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamGroupPolicies() AwsIamGroupPolicyInterface {
+	return newAwsIamGroupPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamGroupPolicyAttachments() AwsIamGroupPolicyAttachmentInterface {
+	return newAwsIamGroupPolicyAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamInstanceProfiles() AwsIamInstanceProfileInterface {
+	return newAwsIamInstanceProfiles(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamOpenidConnectProviders() AwsIamOpenidConnectProviderInterface {
+	return newAwsIamOpenidConnectProviders(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamPolicies() AwsIamPolicyInterface {
+	return newAwsIamPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamPolicyAttachments() AwsIamPolicyAttachmentInterface {
+	return newAwsIamPolicyAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamRoles() AwsIamRoleInterface {
+	return newAwsIamRoles(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamRolePolicies() AwsIamRolePolicyInterface {
+	return newAwsIamRolePolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamRolePolicyAttachments() AwsIamRolePolicyAttachmentInterface {
+	return newAwsIamRolePolicyAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamSamlProviders() AwsIamSamlProviderInterface {
+	return newAwsIamSamlProviders(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamServerCertificates() AwsIamServerCertificateInterface {
+	return newAwsIamServerCertificates(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamServiceLinkedRoles() AwsIamServiceLinkedRoleInterface {
+	return newAwsIamServiceLinkedRoles(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamUsers() AwsIamUserInterface {
+	return newAwsIamUsers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamUserGroupMemberships() AwsIamUserGroupMembershipInterface {
+	return newAwsIamUserGroupMemberships(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamUserLoginProfiles() AwsIamUserLoginProfileInterface {
+	return newAwsIamUserLoginProfiles(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamUserPolicies() AwsIamUserPolicyInterface {
+	return newAwsIamUserPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamUserPolicyAttachments() AwsIamUserPolicyAttachmentInterface {
+	return newAwsIamUserPolicyAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIamUserSshKeys() AwsIamUserSshKeyInterface {
+	return newAwsIamUserSshKeys(c)
+}
+
+func (c *AwsV1alpha1Client) AwsInspectorAssessmentTargets() AwsInspectorAssessmentTargetInterface {
+	return newAwsInspectorAssessmentTargets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsInspectorAssessmentTemplates() AwsInspectorAssessmentTemplateInterface {
+	return newAwsInspectorAssessmentTemplates(c)
+}
+
+func (c *AwsV1alpha1Client) AwsInspectorResourceGroups() AwsInspectorResourceGroupInterface {
+	return newAwsInspectorResourceGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsInstances() AwsInstanceInterface {
+	return newAwsInstances(c)
+}
+
+func (c *AwsV1alpha1Client) AwsInternetGateways() AwsInternetGatewayInterface {
+	return newAwsInternetGateways(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIotCertificates() AwsIotCertificateInterface {
+	return newAwsIotCertificates(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIotPolicies() AwsIotPolicyInterface {
+	return newAwsIotPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIotPolicyAttachments() AwsIotPolicyAttachmentInterface {
+	return newAwsIotPolicyAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIotRoleAliases() AwsIotRoleAliasInterface {
+	return newAwsIotRoleAliases(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIotThings() AwsIotThingInterface {
+	return newAwsIotThings(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIotThingPrincipalAttachments() AwsIotThingPrincipalAttachmentInterface {
+	return newAwsIotThingPrincipalAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIotThingTypes() AwsIotThingTypeInterface {
+	return newAwsIotThingTypes(c)
+}
+
+func (c *AwsV1alpha1Client) AwsIotTopicRules() AwsIotTopicRuleInterface {
+	return newAwsIotTopicRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsKeyPairs() AwsKeyPairInterface {
+	return newAwsKeyPairs(c)
+}
+
+func (c *AwsV1alpha1Client) AwsKinesisAnalyticsApplications() AwsKinesisAnalyticsApplicationInterface {
+	return newAwsKinesisAnalyticsApplications(c)
+}
+
+func (c *AwsV1alpha1Client) AwsKinesisFirehoseDeliveryStreams() AwsKinesisFirehoseDeliveryStreamInterface {
+	return newAwsKinesisFirehoseDeliveryStreams(c)
+}
+
+func (c *AwsV1alpha1Client) AwsKinesisStreams() AwsKinesisStreamInterface {
+	return newAwsKinesisStreams(c)
+}
+
+func (c *AwsV1alpha1Client) AwsKmsAliases() AwsKmsAliasInterface {
+	return newAwsKmsAliases(c)
+}
+
+func (c *AwsV1alpha1Client) AwsKmsCiphertexts() AwsKmsCiphertextInterface {
+	return newAwsKmsCiphertexts(c)
+}
+
+func (c *AwsV1alpha1Client) AwsKmsExternalKeys() AwsKmsExternalKeyInterface {
+	return newAwsKmsExternalKeys(c)
+}
+
+func (c *AwsV1alpha1Client) AwsKmsGrants() AwsKmsGrantInterface {
+	return newAwsKmsGrants(c)
+}
+
+func (c *AwsV1alpha1Client) AwsKmsKeys() AwsKmsKeyInterface {
+	return newAwsKmsKeys(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLambdaAliases() AwsLambdaAliasInterface {
+	return newAwsLambdaAliases(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLambdaEventSourceMappings() AwsLambdaEventSourceMappingInterface {
+	return newAwsLambdaEventSourceMappings(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLambdaFunctions() AwsLambdaFunctionInterface {
+	return newAwsLambdaFunctions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLambdaLayerVersions() AwsLambdaLayerVersionInterface {
+	return newAwsLambdaLayerVersions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLambdaPermissions() AwsLambdaPermissionInterface {
+	return newAwsLambdaPermissions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLaunchConfigurations() AwsLaunchConfigurationInterface {
+	return newAwsLaunchConfigurations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLaunchTemplates() AwsLaunchTemplateInterface {
+	return newAwsLaunchTemplates(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLbs() AwsLbInterface {
+	return newAwsLbs(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLbCookieStickinessPolicies() AwsLbCookieStickinessPolicyInterface {
+	return newAwsLbCookieStickinessPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLbListeners() AwsLbListenerInterface {
+	return newAwsLbListeners(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLbListenerCertificates() AwsLbListenerCertificateInterface {
+	return newAwsLbListenerCertificates(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLbListenerRules() AwsLbListenerRuleInterface {
+	return newAwsLbListenerRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLbSslNegotiationPolicies() AwsLbSslNegotiationPolicyInterface {
+	return newAwsLbSslNegotiationPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLbTargetGroups() AwsLbTargetGroupInterface {
+	return newAwsLbTargetGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLbTargetGroupAttachments() AwsLbTargetGroupAttachmentInterface {
+	return newAwsLbTargetGroupAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLicensemanagerAssociations() AwsLicensemanagerAssociationInterface {
+	return newAwsLicensemanagerAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLicensemanagerLicenseConfigurations() AwsLicensemanagerLicenseConfigurationInterface {
+	return newAwsLicensemanagerLicenseConfigurations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLightsailDomains() AwsLightsailDomainInterface {
+	return newAwsLightsailDomains(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLightsailInstances() AwsLightsailInstanceInterface {
+	return newAwsLightsailInstances(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLightsailKeyPairs() AwsLightsailKeyPairInterface {
+	return newAwsLightsailKeyPairs(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLightsailStaticIps() AwsLightsailStaticIpInterface {
+	return newAwsLightsailStaticIps(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLightsailStaticIpAttachments() AwsLightsailStaticIpAttachmentInterface {
+	return newAwsLightsailStaticIpAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLoadBalancerBackendServerPolicies() AwsLoadBalancerBackendServerPolicyInterface {
+	return newAwsLoadBalancerBackendServerPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLoadBalancerListenerPolicies() AwsLoadBalancerListenerPolicyInterface {
+	return newAwsLoadBalancerListenerPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsLoadBalancerPolicies() AwsLoadBalancerPolicyInterface {
+	return newAwsLoadBalancerPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsMacieMemberAccountAssociations() AwsMacieMemberAccountAssociationInterface {
+	return newAwsMacieMemberAccountAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsMacieS3BucketAssociations() AwsMacieS3BucketAssociationInterface {
+	return newAwsMacieS3BucketAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsMainRouteTableAssociations() AwsMainRouteTableAssociationInterface {
+	return newAwsMainRouteTableAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsMediaPackageChannels() AwsMediaPackageChannelInterface {
+	return newAwsMediaPackageChannels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsMediaStoreContainers() AwsMediaStoreContainerInterface {
+	return newAwsMediaStoreContainers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsMediaStoreContainerPolicies() AwsMediaStoreContainerPolicyInterface {
+	return newAwsMediaStoreContainerPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsMqBrokers() AwsMqBrokerInterface {
+	return newAwsMqBrokers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsMqConfigurations() AwsMqConfigurationInterface {
+	return newAwsMqConfigurations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNatGateways() AwsNatGatewayInterface {
+	return newAwsNatGateways(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNeptuneClusters() AwsNeptuneClusterInterface {
+	return newAwsNeptuneClusters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNeptuneClusterInstances() AwsNeptuneClusterInstanceInterface {
+	return newAwsNeptuneClusterInstances(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNeptuneClusterParameterGroups() AwsNeptuneClusterParameterGroupInterface {
+	return newAwsNeptuneClusterParameterGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNeptuneClusterSnapshots() AwsNeptuneClusterSnapshotInterface {
+	return newAwsNeptuneClusterSnapshots(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNeptuneEventSubscriptions() AwsNeptuneEventSubscriptionInterface {
+	return newAwsNeptuneEventSubscriptions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNeptuneParameterGroups() AwsNeptuneParameterGroupInterface {
+	return newAwsNeptuneParameterGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNeptuneSubnetGroups() AwsNeptuneSubnetGroupInterface {
+	return newAwsNeptuneSubnetGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNetworkAcls() AwsNetworkAclInterface {
+	return newAwsNetworkAcls(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNetworkAclRules() AwsNetworkAclRuleInterface {
+	return newAwsNetworkAclRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNetworkInterfaces() AwsNetworkInterfaceInterface {
+	return newAwsNetworkInterfaces(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNetworkInterfaceAttachments() AwsNetworkInterfaceAttachmentInterface {
+	return newAwsNetworkInterfaceAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsNetworkInterfaceSgAttachments() AwsNetworkInterfaceSgAttachmentInterface {
+	return newAwsNetworkInterfaceSgAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksApplications() AwsOpsworksApplicationInterface {
+	return newAwsOpsworksApplications(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksCustomLayers() AwsOpsworksCustomLayerInterface {
+	return newAwsOpsworksCustomLayers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksGangliaLayers() AwsOpsworksGangliaLayerInterface {
+	return newAwsOpsworksGangliaLayers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksHaproxyLayers() AwsOpsworksHaproxyLayerInterface {
+	return newAwsOpsworksHaproxyLayers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksInstances() AwsOpsworksInstanceInterface {
+	return newAwsOpsworksInstances(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksJavaAppLayers() AwsOpsworksJavaAppLayerInterface {
+	return newAwsOpsworksJavaAppLayers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksMemcachedLayers() AwsOpsworksMemcachedLayerInterface {
+	return newAwsOpsworksMemcachedLayers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksMysqlLayers() AwsOpsworksMysqlLayerInterface {
+	return newAwsOpsworksMysqlLayers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksNodejsAppLayers() AwsOpsworksNodejsAppLayerInterface {
+	return newAwsOpsworksNodejsAppLayers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksPermissions() AwsOpsworksPermissionInterface {
+	return newAwsOpsworksPermissions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksPhpAppLayers() AwsOpsworksPhpAppLayerInterface {
+	return newAwsOpsworksPhpAppLayers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksRailsAppLayers() AwsOpsworksRailsAppLayerInterface {
+	return newAwsOpsworksRailsAppLayers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksRdsDbInstances() AwsOpsworksRdsDbInstanceInterface {
+	return newAwsOpsworksRdsDbInstances(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksStacks() AwsOpsworksStackInterface {
+	return newAwsOpsworksStacks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksStaticWebLayers() AwsOpsworksStaticWebLayerInterface {
+	return newAwsOpsworksStaticWebLayers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOpsworksUserProfiles() AwsOpsworksUserProfileInterface {
+	return newAwsOpsworksUserProfiles(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOrganizationsAccounts() AwsOrganizationsAccountInterface {
+	return newAwsOrganizationsAccounts(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOrganizationsOrganizations() AwsOrganizationsOrganizationInterface {
+	return newAwsOrganizationsOrganizations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOrganizationsOrganizationalUnits() AwsOrganizationsOrganizationalUnitInterface {
+	return newAwsOrganizationsOrganizationalUnits(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOrganizationsPolicies() AwsOrganizationsPolicyInterface {
+	return newAwsOrganizationsPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsOrganizationsPolicyAttachments() AwsOrganizationsPolicyAttachmentInterface {
+	return newAwsOrganizationsPolicyAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsPinpointAdmChannels() AwsPinpointAdmChannelInterface {
+	return newAwsPinpointAdmChannels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsPinpointApnsChannels() AwsPinpointApnsChannelInterface {
+	return newAwsPinpointApnsChannels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsPinpointApnsSandboxChannels() AwsPinpointApnsSandboxChannelInterface {
+	return newAwsPinpointApnsSandboxChannels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsPinpointApnsVoipChannels() AwsPinpointApnsVoipChannelInterface {
+	return newAwsPinpointApnsVoipChannels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsPinpointApnsVoipSandboxChannels() AwsPinpointApnsVoipSandboxChannelInterface {
+	return newAwsPinpointApnsVoipSandboxChannels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsPinpointApps() AwsPinpointAppInterface {
+	return newAwsPinpointApps(c)
+}
+
+func (c *AwsV1alpha1Client) AwsPinpointBaiduChannels() AwsPinpointBaiduChannelInterface {
+	return newAwsPinpointBaiduChannels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsPinpointEmailChannels() AwsPinpointEmailChannelInterface {
+	return newAwsPinpointEmailChannels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsPinpointEventStreams() AwsPinpointEventStreamInterface {
+	return newAwsPinpointEventStreams(c)
+}
+
+func (c *AwsV1alpha1Client) AwsPinpointGcmChannels() AwsPinpointGcmChannelInterface {
+	return newAwsPinpointGcmChannels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsPinpointSmsChannels() AwsPinpointSmsChannelInterface {
+	return newAwsPinpointSmsChannels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsPlacementGroups() AwsPlacementGroupInterface {
+	return newAwsPlacementGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsProxyProtocolPolicies() AwsProxyProtocolPolicyInterface {
+	return newAwsProxyProtocolPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRamPrincipalAssociations() AwsRamPrincipalAssociationInterface {
+	return newAwsRamPrincipalAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRamResourceAssociations() AwsRamResourceAssociationInterface {
+	return newAwsRamResourceAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRamResourceShares() AwsRamResourceShareInterface {
+	return newAwsRamResourceShares(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRdsClusters() AwsRdsClusterInterface {
+	return newAwsRdsClusters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRdsClusterEndpoints() AwsRdsClusterEndpointInterface {
+	return newAwsRdsClusterEndpoints(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRdsClusterInstances() AwsRdsClusterInstanceInterface {
+	return newAwsRdsClusterInstances(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRdsClusterParameterGroups() AwsRdsClusterParameterGroupInterface {
+	return newAwsRdsClusterParameterGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRdsGlobalClusters() AwsRdsGlobalClusterInterface {
+	return newAwsRdsGlobalClusters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRedshiftClusters() AwsRedshiftClusterInterface {
+	return newAwsRedshiftClusters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRedshiftEventSubscriptions() AwsRedshiftEventSubscriptionInterface {
+	return newAwsRedshiftEventSubscriptions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRedshiftParameterGroups() AwsRedshiftParameterGroupInterface {
+	return newAwsRedshiftParameterGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRedshiftSecurityGroups() AwsRedshiftSecurityGroupInterface {
+	return newAwsRedshiftSecurityGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRedshiftSnapshotCopyGrants() AwsRedshiftSnapshotCopyGrantInterface {
+	return newAwsRedshiftSnapshotCopyGrants(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRedshiftSubnetGroups() AwsRedshiftSubnetGroupInterface {
+	return newAwsRedshiftSubnetGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsResourcegroupsGroups() AwsResourcegroupsGroupInterface {
+	return newAwsResourcegroupsGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRoutes() AwsRouteInterface {
+	return newAwsRoutes(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRoute53DelegationSets() AwsRoute53DelegationSetInterface {
+	return newAwsRoute53DelegationSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRoute53HealthChecks() AwsRoute53HealthCheckInterface {
+	return newAwsRoute53HealthChecks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRoute53QueryLogs() AwsRoute53QueryLogInterface {
+	return newAwsRoute53QueryLogs(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRoute53Records() AwsRoute53RecordInterface {
+	return newAwsRoute53Records(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRoute53ResolverEndpoints() AwsRoute53ResolverEndpointInterface {
+	return newAwsRoute53ResolverEndpoints(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRoute53ResolverRules() AwsRoute53ResolverRuleInterface {
+	return newAwsRoute53ResolverRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRoute53ResolverRuleAssociations() AwsRoute53ResolverRuleAssociationInterface {
+	return newAwsRoute53ResolverRuleAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRoute53Zones() AwsRoute53ZoneInterface {
+	return newAwsRoute53Zones(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRoute53ZoneAssociations() AwsRoute53ZoneAssociationInterface {
+	return newAwsRoute53ZoneAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRouteTables() AwsRouteTableInterface {
+	return newAwsRouteTables(c)
+}
+
+func (c *AwsV1alpha1Client) AwsRouteTableAssociations() AwsRouteTableAssociationInterface {
+	return newAwsRouteTableAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsS3AccountPublicAccessBlocks() AwsS3AccountPublicAccessBlockInterface {
+	return newAwsS3AccountPublicAccessBlocks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsS3Buckets() AwsS3BucketInterface {
+	return newAwsS3Buckets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsS3BucketInventories() AwsS3BucketInventoryInterface {
+	return newAwsS3BucketInventories(c)
+}
+
+func (c *AwsV1alpha1Client) AwsS3BucketMetrics() AwsS3BucketMetricInterface {
+	return newAwsS3BucketMetrics(c)
+}
+
+func (c *AwsV1alpha1Client) AwsS3BucketNotifications() AwsS3BucketNotificationInterface {
+	return newAwsS3BucketNotifications(c)
+}
+
+func (c *AwsV1alpha1Client) AwsS3BucketObjects() AwsS3BucketObjectInterface {
+	return newAwsS3BucketObjects(c)
+}
+
+func (c *AwsV1alpha1Client) AwsS3BucketPolicies() AwsS3BucketPolicyInterface {
+	return newAwsS3BucketPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsS3BucketPublicAccessBlocks() AwsS3BucketPublicAccessBlockInterface {
+	return newAwsS3BucketPublicAccessBlocks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSagemakerEndpoints() AwsSagemakerEndpointInterface {
+	return newAwsSagemakerEndpoints(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSagemakerEndpointConfigurations() AwsSagemakerEndpointConfigurationInterface {
+	return newAwsSagemakerEndpointConfigurations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSagemakerModels() AwsSagemakerModelInterface {
+	return newAwsSagemakerModels(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSagemakerNotebookInstances() AwsSagemakerNotebookInstanceInterface {
+	return newAwsSagemakerNotebookInstances(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSagemakerNotebookInstanceLifecycleConfigurations() AwsSagemakerNotebookInstanceLifecycleConfigurationInterface {
+	return newAwsSagemakerNotebookInstanceLifecycleConfigurations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSecretsmanagerSecrets() AwsSecretsmanagerSecretInterface {
+	return newAwsSecretsmanagerSecrets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSecretsmanagerSecretVersions() AwsSecretsmanagerSecretVersionInterface {
+	return newAwsSecretsmanagerSecretVersions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSecurityGroups() AwsSecurityGroupInterface {
+	return newAwsSecurityGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSecurityGroupRules() AwsSecurityGroupRuleInterface {
+	return newAwsSecurityGroupRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSecurityhubAccounts() AwsSecurityhubAccountInterface {
+	return newAwsSecurityhubAccounts(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSecurityhubProductSubscriptions() AwsSecurityhubProductSubscriptionInterface {
+	return newAwsSecurityhubProductSubscriptions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSecurityhubStandardsSubscriptions() AwsSecurityhubStandardsSubscriptionInterface {
+	return newAwsSecurityhubStandardsSubscriptions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsServiceDiscoveryHttpNamespaces() AwsServiceDiscoveryHttpNamespaceInterface {
+	return newAwsServiceDiscoveryHttpNamespaces(c)
+}
+
+func (c *AwsV1alpha1Client) AwsServiceDiscoveryPrivateDnsNamespaces() AwsServiceDiscoveryPrivateDnsNamespaceInterface {
+	return newAwsServiceDiscoveryPrivateDnsNamespaces(c)
+}
+
+func (c *AwsV1alpha1Client) AwsServiceDiscoveryPublicDnsNamespaces() AwsServiceDiscoveryPublicDnsNamespaceInterface {
+	return newAwsServiceDiscoveryPublicDnsNamespaces(c)
+}
+
+func (c *AwsV1alpha1Client) AwsServiceDiscoveryServices() AwsServiceDiscoveryServiceInterface {
+	return newAwsServiceDiscoveryServices(c)
+}
+
+func (c *AwsV1alpha1Client) AwsServicecatalogPortfolios() AwsServicecatalogPortfolioInterface {
+	return newAwsServicecatalogPortfolios(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesActiveReceiptRuleSets() AwsSesActiveReceiptRuleSetInterface {
+	return newAwsSesActiveReceiptRuleSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesConfigurationSets() AwsSesConfigurationSetInterface {
+	return newAwsSesConfigurationSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesDomainDkims() AwsSesDomainDkimInterface {
+	return newAwsSesDomainDkims(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesDomainIdentities() AwsSesDomainIdentityInterface {
+	return newAwsSesDomainIdentities(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesDomainIdentityVerifications() AwsSesDomainIdentityVerificationInterface {
+	return newAwsSesDomainIdentityVerifications(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesDomainMailFroms() AwsSesDomainMailFromInterface {
+	return newAwsSesDomainMailFroms(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesEventDestinations() AwsSesEventDestinationInterface {
+	return newAwsSesEventDestinations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesIdentityNotificationTopics() AwsSesIdentityNotificationTopicInterface {
+	return newAwsSesIdentityNotificationTopics(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesReceiptFilters() AwsSesReceiptFilterInterface {
+	return newAwsSesReceiptFilters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesReceiptRules() AwsSesReceiptRuleInterface {
+	return newAwsSesReceiptRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesReceiptRuleSets() AwsSesReceiptRuleSetInterface {
+	return newAwsSesReceiptRuleSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSesTemplates() AwsSesTemplateInterface {
+	return newAwsSesTemplates(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSfnActivities() AwsSfnActivityInterface {
+	return newAwsSfnActivities(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSfnStateMachines() AwsSfnStateMachineInterface {
+	return newAwsSfnStateMachines(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSimpledbDomains() AwsSimpledbDomainInterface {
+	return newAwsSimpledbDomains(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSnapshotCreateVolumePermissions() AwsSnapshotCreateVolumePermissionInterface {
+	return newAwsSnapshotCreateVolumePermissions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSnsPlatformApplications() AwsSnsPlatformApplicationInterface {
+	return newAwsSnsPlatformApplications(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSnsSmsPreferenceses() AwsSnsSmsPreferencesInterface {
+	return newAwsSnsSmsPreferenceses(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSnsTopics() AwsSnsTopicInterface {
+	return newAwsSnsTopics(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSnsTopicPolicies() AwsSnsTopicPolicyInterface {
+	return newAwsSnsTopicPolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSnsTopicSubscriptions() AwsSnsTopicSubscriptionInterface {
+	return newAwsSnsTopicSubscriptions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSpotDatafeedSubscriptions() AwsSpotDatafeedSubscriptionInterface {
+	return newAwsSpotDatafeedSubscriptions(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSpotFleetRequests() AwsSpotFleetRequestInterface {
+	return newAwsSpotFleetRequests(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSpotInstanceRequests() AwsSpotInstanceRequestInterface {
+	return newAwsSpotInstanceRequests(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSqsQueues() AwsSqsQueueInterface {
+	return newAwsSqsQueues(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSqsQueuePolicies() AwsSqsQueuePolicyInterface {
+	return newAwsSqsQueuePolicies(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSsmActivations() AwsSsmActivationInterface {
+	return newAwsSsmActivations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSsmAssociations() AwsSsmAssociationInterface {
+	return newAwsSsmAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSsmDocuments() AwsSsmDocumentInterface {
+	return newAwsSsmDocuments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSsmMaintenanceWindows() AwsSsmMaintenanceWindowInterface {
+	return newAwsSsmMaintenanceWindows(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSsmMaintenanceWindowTargets() AwsSsmMaintenanceWindowTargetInterface {
+	return newAwsSsmMaintenanceWindowTargets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSsmMaintenanceWindowTasks() AwsSsmMaintenanceWindowTaskInterface {
+	return newAwsSsmMaintenanceWindowTasks(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSsmParameters() AwsSsmParameterInterface {
+	return newAwsSsmParameters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSsmPatchBaselines() AwsSsmPatchBaselineInterface {
+	return newAwsSsmPatchBaselines(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSsmPatchGroups() AwsSsmPatchGroupInterface {
+	return newAwsSsmPatchGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSsmResourceDataSyncs() AwsSsmResourceDataSyncInterface {
+	return newAwsSsmResourceDataSyncs(c)
+}
+
+func (c *AwsV1alpha1Client) AwsStoragegatewayCaches() AwsStoragegatewayCacheInterface {
+	return newAwsStoragegatewayCaches(c)
+}
+
+func (c *AwsV1alpha1Client) AwsStoragegatewayCachedIscsiVolumes() AwsStoragegatewayCachedIscsiVolumeInterface {
+	return newAwsStoragegatewayCachedIscsiVolumes(c)
+}
+
+func (c *AwsV1alpha1Client) AwsStoragegatewayGateways() AwsStoragegatewayGatewayInterface {
+	return newAwsStoragegatewayGateways(c)
+}
+
+func (c *AwsV1alpha1Client) AwsStoragegatewayNfsFileShares() AwsStoragegatewayNfsFileShareInterface {
+	return newAwsStoragegatewayNfsFileShares(c)
+}
+
+func (c *AwsV1alpha1Client) AwsStoragegatewaySmbFileShares() AwsStoragegatewaySmbFileShareInterface {
+	return newAwsStoragegatewaySmbFileShares(c)
+}
+
+func (c *AwsV1alpha1Client) AwsStoragegatewayUploadBuffers() AwsStoragegatewayUploadBufferInterface {
+	return newAwsStoragegatewayUploadBuffers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsStoragegatewayWorkingStorages() AwsStoragegatewayWorkingStorageInterface {
+	return newAwsStoragegatewayWorkingStorages(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSubnets() AwsSubnetInterface {
+	return newAwsSubnets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsSwfDomains() AwsSwfDomainInterface {
+	return newAwsSwfDomains(c)
+}
+
+func (c *AwsV1alpha1Client) AwsTransferServers() AwsTransferServerInterface {
+	return newAwsTransferServers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsTransferSshKeys() AwsTransferSshKeyInterface {
+	return newAwsTransferSshKeys(c)
+}
+
+func (c *AwsV1alpha1Client) AwsTransferUsers() AwsTransferUserInterface {
+	return newAwsTransferUsers(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVolumeAttachments() AwsVolumeAttachmentInterface {
+	return newAwsVolumeAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcs() AwsVpcInterface {
+	return newAwsVpcs(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcDhcpOptionses() AwsVpcDhcpOptionsInterface {
+	return newAwsVpcDhcpOptionses(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcDhcpOptionsAssociations() AwsVpcDhcpOptionsAssociationInterface {
+	return newAwsVpcDhcpOptionsAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcEndpoints() AwsVpcEndpointInterface {
+	return newAwsVpcEndpoints(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcEndpointConnectionNotifications() AwsVpcEndpointConnectionNotificationInterface {
+	return newAwsVpcEndpointConnectionNotifications(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcEndpointRouteTableAssociations() AwsVpcEndpointRouteTableAssociationInterface {
+	return newAwsVpcEndpointRouteTableAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcEndpointServices() AwsVpcEndpointServiceInterface {
+	return newAwsVpcEndpointServices(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcEndpointServiceAllowedPrincipals() AwsVpcEndpointServiceAllowedPrincipalInterface {
+	return newAwsVpcEndpointServiceAllowedPrincipals(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcEndpointSubnetAssociations() AwsVpcEndpointSubnetAssociationInterface {
+	return newAwsVpcEndpointSubnetAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcIpv4CidrBlockAssociations() AwsVpcIpv4CidrBlockAssociationInterface {
+	return newAwsVpcIpv4CidrBlockAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcPeeringConnections() AwsVpcPeeringConnectionInterface {
+	return newAwsVpcPeeringConnections(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcPeeringConnectionAccepters() AwsVpcPeeringConnectionAccepterInterface {
+	return newAwsVpcPeeringConnectionAccepters(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpcPeeringConnectionOptionses() AwsVpcPeeringConnectionOptionsInterface {
+	return newAwsVpcPeeringConnectionOptionses(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpnConnections() AwsVpnConnectionInterface {
+	return newAwsVpnConnections(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpnConnectionRoutes() AwsVpnConnectionRouteInterface {
+	return newAwsVpnConnectionRoutes(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpnGateways() AwsVpnGatewayInterface {
+	return newAwsVpnGateways(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpnGatewayAttachments() AwsVpnGatewayAttachmentInterface {
+	return newAwsVpnGatewayAttachments(c)
+}
+
+func (c *AwsV1alpha1Client) AwsVpnGatewayRoutePropagations() AwsVpnGatewayRoutePropagationInterface {
+	return newAwsVpnGatewayRoutePropagations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafByteMatchSets() AwsWafByteMatchSetInterface {
+	return newAwsWafByteMatchSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafGeoMatchSets() AwsWafGeoMatchSetInterface {
+	return newAwsWafGeoMatchSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafIpsets() AwsWafIpsetInterface {
+	return newAwsWafIpsets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafRateBasedRules() AwsWafRateBasedRuleInterface {
+	return newAwsWafRateBasedRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafRegexMatchSets() AwsWafRegexMatchSetInterface {
+	return newAwsWafRegexMatchSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafRegexPatternSets() AwsWafRegexPatternSetInterface {
+	return newAwsWafRegexPatternSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafRules() AwsWafRuleInterface {
+	return newAwsWafRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafRuleGroups() AwsWafRuleGroupInterface {
+	return newAwsWafRuleGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafSizeConstraintSets() AwsWafSizeConstraintSetInterface {
+	return newAwsWafSizeConstraintSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafSqlInjectionMatchSets() AwsWafSqlInjectionMatchSetInterface {
+	return newAwsWafSqlInjectionMatchSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafWebAcls() AwsWafWebAclInterface {
+	return newAwsWafWebAcls(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafXssMatchSets() AwsWafXssMatchSetInterface {
+	return newAwsWafXssMatchSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalByteMatchSets() AwsWafregionalByteMatchSetInterface {
+	return newAwsWafregionalByteMatchSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalGeoMatchSets() AwsWafregionalGeoMatchSetInterface {
+	return newAwsWafregionalGeoMatchSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalIpsets() AwsWafregionalIpsetInterface {
+	return newAwsWafregionalIpsets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalRateBasedRules() AwsWafregionalRateBasedRuleInterface {
+	return newAwsWafregionalRateBasedRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalRegexMatchSets() AwsWafregionalRegexMatchSetInterface {
+	return newAwsWafregionalRegexMatchSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalRegexPatternSets() AwsWafregionalRegexPatternSetInterface {
+	return newAwsWafregionalRegexPatternSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalRules() AwsWafregionalRuleInterface {
+	return newAwsWafregionalRules(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalRuleGroups() AwsWafregionalRuleGroupInterface {
+	return newAwsWafregionalRuleGroups(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalSizeConstraintSets() AwsWafregionalSizeConstraintSetInterface {
+	return newAwsWafregionalSizeConstraintSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalSqlInjectionMatchSets() AwsWafregionalSqlInjectionMatchSetInterface {
+	return newAwsWafregionalSqlInjectionMatchSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalWebAcls() AwsWafregionalWebAclInterface {
+	return newAwsWafregionalWebAcls(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalWebAclAssociations() AwsWafregionalWebAclAssociationInterface {
+	return newAwsWafregionalWebAclAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWafregionalXssMatchSets() AwsWafregionalXssMatchSetInterface {
+	return newAwsWafregionalXssMatchSets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWorklinkFleets() AwsWorklinkFleetInterface {
+	return newAwsWorklinkFleets(c)
+}
+
+func (c *AwsV1alpha1Client) AwsWorklinkWebsiteCertificateAuthorityAssociations() AwsWorklinkWebsiteCertificateAuthorityAssociationInterface {
+	return newAwsWorklinkWebsiteCertificateAuthorityAssociations(c)
+}
+
+func (c *AwsV1alpha1Client) AwsXraySamplingRules() AwsXraySamplingRuleInterface {
+	return newAwsXraySamplingRules(c)
 }
 
 // NewForConfig creates a new AwsV1alpha1Client for the given config.

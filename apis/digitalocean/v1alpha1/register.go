@@ -38,38 +38,11 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
     
-        &DigitaloceanDropletSnapshot{},
-        &DigitaloceanDropletSnapshotList{},
-    
-        &DigitaloceanLoadbalancer{},
-        &DigitaloceanLoadbalancerList{},
-    
-        &DigitaloceanProject{},
-        &DigitaloceanProjectList{},
-    
         &DigitaloceanDatabaseCluster{},
         &DigitaloceanDatabaseClusterList{},
     
-        &DigitaloceanDroplet{},
-        &DigitaloceanDropletList{},
-    
-        &DigitaloceanKubernetesCluster{},
-        &DigitaloceanKubernetesClusterList{},
-    
-        &DigitaloceanRecord{},
-        &DigitaloceanRecordList{},
-    
-        &DigitaloceanSpacesBucket{},
-        &DigitaloceanSpacesBucketList{},
-    
         &DigitaloceanTag{},
         &DigitaloceanTagList{},
-    
-        &DigitaloceanVolumeSnapshot{},
-        &DigitaloceanVolumeSnapshotList{},
-    
-        &DigitaloceanCertificate{},
-        &DigitaloceanCertificateList{},
     
         &DigitaloceanCdn{},
         &DigitaloceanCdnList{},
@@ -77,14 +50,11 @@ func addKnownTypes(scheme *runtime.Scheme) error {
         &DigitaloceanFloatingIp{},
         &DigitaloceanFloatingIpList{},
     
-        &DigitaloceanKubernetesNodePool{},
-        &DigitaloceanKubernetesNodePoolList{},
+        &DigitaloceanRecord{},
+        &DigitaloceanRecordList{},
     
-        &DigitaloceanSshKey{},
-        &DigitaloceanSshKeyList{},
-    
-        &DigitaloceanVolume{},
-        &DigitaloceanVolumeList{},
+        &DigitaloceanSpacesBucket{},
+        &DigitaloceanSpacesBucketList{},
     
         &DigitaloceanVolumeAttachment{},
         &DigitaloceanVolumeAttachmentList{},
@@ -95,8 +65,38 @@ func addKnownTypes(scheme *runtime.Scheme) error {
         &DigitaloceanFirewall{},
         &DigitaloceanFirewallList{},
     
+        &DigitaloceanKubernetesCluster{},
+        &DigitaloceanKubernetesClusterList{},
+    
+        &DigitaloceanKubernetesNodePool{},
+        &DigitaloceanKubernetesNodePoolList{},
+    
+        &DigitaloceanLoadbalancer{},
+        &DigitaloceanLoadbalancerList{},
+    
+        &DigitaloceanCertificate{},
+        &DigitaloceanCertificateList{},
+    
+        &DigitaloceanDroplet{},
+        &DigitaloceanDropletList{},
+    
+        &DigitaloceanDropletSnapshot{},
+        &DigitaloceanDropletSnapshotList{},
+    
         &DigitaloceanFloatingIpAssignment{},
         &DigitaloceanFloatingIpAssignmentList{},
+    
+        &DigitaloceanProject{},
+        &DigitaloceanProjectList{},
+    
+        &DigitaloceanSshKey{},
+        &DigitaloceanSshKeyList{},
+    
+        &DigitaloceanVolume{},
+        &DigitaloceanVolumeList{},
+    
+        &DigitaloceanVolumeSnapshot{},
+        &DigitaloceanVolumeSnapshotList{},
     
 	)
 

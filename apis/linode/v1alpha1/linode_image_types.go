@@ -18,18 +18,18 @@ type LinodeImage struct {
 }
 
 type LinodeImageSpec struct {
-	Deprecated  bool   `json:"deprecated"`
-	Size        int    `json:"size"`
-	Vendor      string `json:"vendor"`
+	LinodeId    int    `json:"linode_id"`
 	Description string `json:"description"`
-	Created     string `json:"created"`
-	CreatedBy   string `json:"created_by"`
-	IsPublic    bool   `json:"is_public"`
+	Expiry      string `json:"expiry"`
+	Vendor      string `json:"vendor"`
+	Size        int    `json:"size"`
 	Type        string `json:"type"`
 	Label       string `json:"label"`
 	DiskId      int    `json:"disk_id"`
-	LinodeId    int    `json:"linode_id"`
-	Expiry      string `json:"expiry"`
+	Created     string `json:"created"`
+	CreatedBy   string `json:"created_by"`
+	Deprecated  bool   `json:"deprecated"`
+	IsPublic    bool   `json:"is_public"`
 }
 
 

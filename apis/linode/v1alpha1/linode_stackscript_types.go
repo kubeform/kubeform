@@ -17,29 +17,29 @@ type LinodeStackscript struct {
 	Status            LinodeStackscriptStatus `json:"status,omitempty"`
 }
 
-type UserDefinedFieldsSpec struct {
+type LinodeStackscriptSpecUserDefinedFields struct {
+	Default string `json:"default"`
 	Label   string `json:"label"`
 	Name    string `json:"name"`
 	Example string `json:"example"`
 	OneOf   string `json:"one_of"`
 	ManyOf  string `json:"many_of"`
-	Default string `json:"default"`
 }
 
 type LinodeStackscriptSpec struct {
+	DeploymentsTotal  int                     `json:"deployments_total"`
+	Updated           string                  `json:"updated"`
 	IsPublic          bool                    `json:"is_public"`
 	Images            []string                `json:"images"`
 	DeploymentsActive int                     `json:"deployments_active"`
 	UserGravatarId    string                  `json:"user_gravatar_id"`
-	DeploymentsTotal  int                     `json:"deployments_total"`
 	Username          string                  `json:"username"`
 	Created           string                  `json:"created"`
-	Description       string                  `json:"description"`
-	Updated           string                  `json:"updated"`
-	Script            string                  `json:"script"`
-	RevNote           string                  `json:"rev_note"`
-	UserDefinedFields []UserDefinedFieldsSpec `json:"user_defined_fields"`
+	UserDefinedFields []LinodeStackscriptSpec `json:"user_defined_fields"`
 	Label             string                  `json:"label"`
+	Script            string                  `json:"script"`
+	Description       string                  `json:"description"`
+	RevNote           string                  `json:"rev_note"`
 }
 
 

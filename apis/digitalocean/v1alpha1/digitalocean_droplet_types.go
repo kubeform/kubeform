@@ -18,30 +18,30 @@ type DigitaloceanDroplet struct {
 }
 
 type DigitaloceanDropletSpec struct {
+	Ipv6Address        string   `json:"ipv6_address"`
+	VolumeIds          []string `json:"volume_ids"`
+	Image              string   `json:"image"`
+	Size               string   `json:"size"`
 	Disk               int      `json:"disk"`
 	Vcpus              int      `json:"vcpus"`
-	ResizeDisk         bool     `json:"resize_disk"`
-	Status             string   `json:"status"`
-	Ipv6               bool     `json:"ipv6"`
-	SshKeys            []string `json:"ssh_keys"`
-	Image              string   `json:"image"`
-	Region             string   `json:"region"`
-	Urn                string   `json:"urn"`
-	PriceHourly        float64  `json:"price_hourly"`
-	PriceMonthly       float64  `json:"price_monthly"`
-	Backups            bool     `json:"backups"`
-	PrivateNetworking  bool     `json:"private_networking"`
-	UserData           string   `json:"user_data"`
-	Locked             bool     `json:"locked"`
-	Ipv6AddressPrivate string   `json:"ipv6_address_private"`
-	Ipv4AddressPrivate string   `json:"ipv4_address_private"`
-	Tags               []string `json:"tags"`
-	Name               string   `json:"name"`
-	Size               string   `json:"size"`
 	Memory             int      `json:"memory"`
-	Ipv6Address        string   `json:"ipv6_address"`
+	Region             string   `json:"region"`
+	PriceHourly        float64  `json:"price_hourly"`
+	Status             string   `json:"status"`
+	Tags               []string `json:"tags"`
+	Ipv6               bool     `json:"ipv6"`
+	Ipv6AddressPrivate string   `json:"ipv6_address_private"`
 	Ipv4Address        string   `json:"ipv4_address"`
-	VolumeIds          []string `json:"volume_ids"`
+	Name               string   `json:"name"`
+	PriceMonthly       float64  `json:"price_monthly"`
+	ResizeDisk         bool     `json:"resize_disk"`
+	Locked             bool     `json:"locked"`
+	Backups            bool     `json:"backups"`
+	Ipv4AddressPrivate string   `json:"ipv4_address_private"`
+	SshKeys            []string `json:"ssh_keys"`
+	UserData           string   `json:"user_data"`
+	Urn                string   `json:"urn"`
+	PrivateNetworking  bool     `json:"private_networking"`
 	Monitoring         bool     `json:"monitoring"`
 }
 

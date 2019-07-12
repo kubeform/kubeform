@@ -18,11 +18,11 @@ type LinodeToken struct {
 }
 
 type LinodeTokenSpec struct {
+	Label   string `json:"label"`
+	Scopes  string `json:"scopes"`
 	Expiry  string `json:"expiry"`
 	Created string `json:"created"`
 	Token   string `json:"token"`
-	Label   string `json:"label"`
-	Scopes  string `json:"scopes"`
 }
 
 

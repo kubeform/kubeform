@@ -17,152 +17,152 @@ type LinodeInstance struct {
 	Status            LinodeInstanceStatus `json:"status,omitempty"`
 }
 
-type DiskSpec struct {
-	Label           string            `json:"label"`
-	Size            int               `json:"size"`
-	Id              int               `json:"id"`
-	ReadOnly        bool              `json:"read_only"`
-	AuthorizedKeys  []string          `json:"authorized_keys"`
-	AuthorizedUsers []string          `json:"authorized_users"`
-	RootPass        string            `json:"root_pass"`
-	Filesystem      string            `json:"filesystem"`
-	Image           string            `json:"image"`
-	StackscriptId   int               `json:"stackscript_id"`
-	StackscriptData map[string]string `json:"stackscript_data"`
-}
-
-type AlertsSpec struct {
-	NetworkOut    int `json:"network_out"`
+type LinodeInstanceSpecAlerts struct {
 	TransferQuota int `json:"transfer_quota"`
 	Io            int `json:"io"`
 	Cpu           int `json:"cpu"`
 	NetworkIn     int `json:"network_in"`
+	NetworkOut    int `json:"network_out"`
 }
 
-type ScheduleSpec struct {
-	Day    string `json:"day"`
+type LinodeInstanceSpecBackupsSchedule struct {
 	Window string `json:"window"`
+	Day    string `json:"day"`
 }
 
-type BackupsSpec struct {
-	Enabled  bool           `json:"enabled"`
-	Schedule []ScheduleSpec `json:"schedule"`
+type LinodeInstanceSpecBackups struct {
+	Enabled  bool                        `json:"enabled"`
+	Schedule []LinodeInstanceSpecBackups `json:"schedule"`
 }
 
-type HelpersSpec struct {
-	UpdatedbDisabled  bool `json:"updatedb_disabled"`
+type LinodeInstanceSpecDisk struct {
+	Label           string            `json:"label"`
+	Filesystem      string            `json:"filesystem"`
+	AuthorizedUsers []string          `json:"authorized_users"`
+	StackscriptData map[string]string `json:"stackscript_data"`
+	StackscriptId   int               `json:"stackscript_id"`
+	RootPass        string            `json:"root_pass"`
+	Size            int               `json:"size"`
+	Id              int               `json:"id"`
+	ReadOnly        bool              `json:"read_only"`
+	Image           string            `json:"image"`
+	AuthorizedKeys  []string          `json:"authorized_keys"`
+}
+
+type LinodeInstanceSpecSpecs struct {
+	Vcpus    int `json:"vcpus"`
+	Transfer int `json:"transfer"`
+	Disk     int `json:"disk"`
+	Memory   int `json:"memory"`
+}
+
+type LinodeInstanceSpecConfigHelpers struct {
 	Distro            bool `json:"distro"`
 	ModulesDep        bool `json:"modules_dep"`
 	Network           bool `json:"network"`
 	DevtmpfsAutomount bool `json:"devtmpfs_automount"`
+	UpdatedbDisabled  bool `json:"updatedb_disabled"`
 }
 
-type SdeSpec struct {
+type LinodeInstanceSpecConfigDevicesSda struct {
 	DiskLabel string `json:"disk_label"`
 	DiskId    int    `json:"disk_id"`
 	VolumeId  int    `json:"volume_id"`
 }
 
-type SdfSpec struct {
-	VolumeId  int    `json:"volume_id"`
-	DiskLabel string `json:"disk_label"`
-	DiskId    int    `json:"disk_id"`
-}
-
-type SdgSpec struct {
+type LinodeInstanceSpecConfigDevicesSdb struct {
 	DiskLabel string `json:"disk_label"`
 	DiskId    int    `json:"disk_id"`
 	VolumeId  int    `json:"volume_id"`
 }
 
-type SdhSpec struct {
+type LinodeInstanceSpecConfigDevicesSdc struct {
 	DiskLabel string `json:"disk_label"`
 	DiskId    int    `json:"disk_id"`
 	VolumeId  int    `json:"volume_id"`
 }
 
-type SdaSpec struct {
+type LinodeInstanceSpecConfigDevicesSdd struct {
+	VolumeId  int    `json:"volume_id"`
 	DiskLabel string `json:"disk_label"`
 	DiskId    int    `json:"disk_id"`
-	VolumeId  int    `json:"volume_id"`
 }
 
-type SdbSpec struct {
-	DiskLabel string `json:"disk_label"`
-	DiskId    int    `json:"disk_id"`
-	VolumeId  int    `json:"volume_id"`
-}
-
-type SdcSpec struct {
-	DiskLabel string `json:"disk_label"`
-	DiskId    int    `json:"disk_id"`
-	VolumeId  int    `json:"volume_id"`
-}
-
-type SddSpec struct {
+type LinodeInstanceSpecConfigDevicesSde struct {
 	DiskId    int    `json:"disk_id"`
 	VolumeId  int    `json:"volume_id"`
 	DiskLabel string `json:"disk_label"`
 }
 
-type DevicesSpec struct {
-	Sde []SdeSpec `json:"sde"`
-	Sdf []SdfSpec `json:"sdf"`
-	Sdg []SdgSpec `json:"sdg"`
-	Sdh []SdhSpec `json:"sdh"`
-	Sda []SdaSpec `json:"sda"`
-	Sdb []SdbSpec `json:"sdb"`
-	Sdc []SdcSpec `json:"sdc"`
-	Sdd []SddSpec `json:"sdd"`
+type LinodeInstanceSpecConfigDevicesSdf struct {
+	DiskLabel string `json:"disk_label"`
+	DiskId    int    `json:"disk_id"`
+	VolumeId  int    `json:"volume_id"`
 }
 
-type ConfigSpec struct {
-	Helpers     []HelpersSpec `json:"helpers"`
-	Devices     []DevicesSpec `json:"devices"`
-	RunLevel    string        `json:"run_level"`
-	Label       string        `json:"label"`
-	Kernel      string        `json:"kernel"`
-	VirtMode    string        `json:"virt_mode"`
-	RootDevice  string        `json:"root_device"`
-	Comments    string        `json:"comments"`
-	MemoryLimit int           `json:"memory_limit"`
+type LinodeInstanceSpecConfigDevicesSdg struct {
+	DiskLabel string `json:"disk_label"`
+	DiskId    int    `json:"disk_id"`
+	VolumeId  int    `json:"volume_id"`
 }
 
-type SpecsSpec struct {
-	Disk     int `json:"disk"`
-	Memory   int `json:"memory"`
-	Vcpus    int `json:"vcpus"`
-	Transfer int `json:"transfer"`
+type LinodeInstanceSpecConfigDevicesSdh struct {
+	DiskLabel string `json:"disk_label"`
+	DiskId    int    `json:"disk_id"`
+	VolumeId  int    `json:"volume_id"`
+}
+
+type LinodeInstanceSpecConfigDevices struct {
+	Sda []LinodeInstanceSpecConfigDevices `json:"sda"`
+	Sdb []LinodeInstanceSpecConfigDevices `json:"sdb"`
+	Sdc []LinodeInstanceSpecConfigDevices `json:"sdc"`
+	Sdd []LinodeInstanceSpecConfigDevices `json:"sdd"`
+	Sde []LinodeInstanceSpecConfigDevices `json:"sde"`
+	Sdf []LinodeInstanceSpecConfigDevices `json:"sdf"`
+	Sdg []LinodeInstanceSpecConfigDevices `json:"sdg"`
+	Sdh []LinodeInstanceSpecConfigDevices `json:"sdh"`
+}
+
+type LinodeInstanceSpecConfig struct {
+	Helpers     []LinodeInstanceSpecConfig `json:"helpers"`
+	Devices     []LinodeInstanceSpecConfig `json:"devices"`
+	Kernel      string                     `json:"kernel"`
+	RunLevel    string                     `json:"run_level"`
+	VirtMode    string                     `json:"virt_mode"`
+	RootDevice  string                     `json:"root_device"`
+	MemoryLimit int                        `json:"memory_limit"`
+	Label       string                     `json:"label"`
+	Comments    string                     `json:"comments"`
 }
 
 type LinodeInstanceSpec struct {
-	Type             string            `json:"type"`
-	PrivateIp        bool              `json:"private_ip"`
-	Region           string            `json:"region"`
-	IpAddress        string            `json:"ip_address"`
-	AuthorizedUsers  []string          `json:"authorized_users"`
-	Disk             []DiskSpec        `json:"disk"`
-	Ipv4             []string          `json:"ipv4"`
-	PrivateIpAddress string            `json:"private_ip_address"`
-	RootPass         string            `json:"root_pass"`
-	Group            string            `json:"group"`
-	Status           string            `json:"status"`
-	Alerts           []AlertsSpec      `json:"alerts"`
-	StackscriptData  map[string]string `json:"stackscript_data"`
-	Label            string            `json:"label"`
-	Backups          []BackupsSpec     `json:"backups"`
-	Ipv6             string            `json:"ipv6"`
-	AuthorizedKeys   []string          `json:"authorized_keys"`
-	SwapSize         int               `json:"swap_size"`
-	WatchdogEnabled  bool              `json:"watchdog_enabled"`
-	Tags             []string          `json:"tags"`
-	Config           []ConfigSpec      `json:"config"`
-	Image            string            `json:"image"`
-	BackupId         int               `json:"backup_id"`
-	StackscriptId    int               `json:"stackscript_id"`
-	BootConfigLabel  string            `json:"boot_config_label"`
-	BackupsEnabled   bool              `json:"backups_enabled"`
-	Specs            []SpecsSpec       `json:"specs"`
+	BackupsEnabled   bool                 `json:"backups_enabled"`
+	Alerts           []LinodeInstanceSpec `json:"alerts"`
+	Tags             []string             `json:"tags"`
+	IpAddress        string               `json:"ip_address"`
+	AuthorizedKeys   []string             `json:"authorized_keys"`
+	SwapSize         int                  `json:"swap_size"`
+	Backups          []LinodeInstanceSpec `json:"backups"`
+	Disk             []LinodeInstanceSpec `json:"disk"`
+	BackupId         int                  `json:"backup_id"`
+	StackscriptId    int                  `json:"stackscript_id"`
+	Region           string               `json:"region"`
+	Specs            []LinodeInstanceSpec `json:"specs"`
+	StackscriptData  map[string]string    `json:"stackscript_data"`
+	AuthorizedUsers  []string             `json:"authorized_users"`
+	BootConfigLabel  string               `json:"boot_config_label"`
+	PrivateIp        bool                 `json:"private_ip"`
+	RootPass         string               `json:"root_pass"`
+	Image            string               `json:"image"`
+	Type             string               `json:"type"`
+	Status           string               `json:"status"`
+	Ipv4             []string             `json:"ipv4"`
+	Label            string               `json:"label"`
+	Group            string               `json:"group"`
+	PrivateIpAddress string               `json:"private_ip_address"`
+	WatchdogEnabled  bool                 `json:"watchdog_enabled"`
+	Ipv6             string               `json:"ipv6"`
+	Config           []LinodeInstanceSpec `json:"config"`
 }
 
 

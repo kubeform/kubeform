@@ -18,12 +18,12 @@ type DigitaloceanCdn struct {
 }
 
 type DigitaloceanCdnSpec struct {
-	CertificateId string `json:"certificate_id"`
 	CustomDomain  string `json:"custom_domain"`
 	Endpoint      string `json:"endpoint"`
 	CreatedAt     string `json:"created_at"`
 	Origin        string `json:"origin"`
 	Ttl           int    `json:"ttl"`
+	CertificateId string `json:"certificate_id"`
 }
 
 

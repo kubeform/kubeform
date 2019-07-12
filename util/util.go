@@ -94,7 +94,7 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName string, out
 				}
 			case *schema.Resource:
 				statements = append(statements, Id(id).Map(String()).String().Tag(map[string]string{"json": key}))
-				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, id+"Spec", out)
+				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, out)
 			default:
 				statements = append(statements, Id(id).Map(String()).String().Tag(map[string]string{"json": key}))
 			}
@@ -112,8 +112,8 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName string, out
 					statements = append(statements, Id(id).Index().String().Tag(map[string]string{"json": key}))
 				}
 			case *schema.Resource:
-				statements = append(statements, Id(id).Index().Id(id+"Spec").Tag(map[string]string{"json": key}))
-				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, id+"Spec", out)
+				statements = append(statements, Id(id).Index().Id(structName).Tag(map[string]string{"json": key}))
+				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, out)
 			default:
 				statements = append(statements, Id(id).Index().String().Tag(map[string]string{"json": key}))
 			}

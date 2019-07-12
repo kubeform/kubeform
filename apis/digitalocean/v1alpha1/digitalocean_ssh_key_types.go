@@ -18,9 +18,9 @@ type DigitaloceanSshKey struct {
 }
 
 type DigitaloceanSshKeySpec struct {
+	Fingerprint string `json:"fingerprint"`
 	Name        string `json:"name"`
 	PublicKey   string `json:"public_key"`
-	Fingerprint string `json:"fingerprint"`
 }
 
 

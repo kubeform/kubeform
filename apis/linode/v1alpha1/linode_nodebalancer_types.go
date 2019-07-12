@@ -17,23 +17,23 @@ type LinodeNodebalancer struct {
 	Status            LinodeNodebalancerStatus `json:"status,omitempty"`
 }
 
-type TransferSpec struct {
+type LinodeNodebalancerSpecTransfer struct {
+	Out   float64 `json:"out"`
 	Total float64 `json:"total"`
 	In    float64 `json:"in"`
-	Out   float64 `json:"out"`
 }
 
 type LinodeNodebalancerSpec struct {
+	Label              string            `json:"label"`
+	ClientConnThrottle int               `json:"client_conn_throttle"`
 	Hostname           string            `json:"hostname"`
+	Updated            string            `json:"updated"`
+	Region             string            `json:"region"`
+	Ipv4               string            `json:"ipv4"`
 	Ipv6               string            `json:"ipv6"`
 	Created            string            `json:"created"`
-	Updated            string            `json:"updated"`
-	Tags               []string          `json:"tags"`
-	Label              string            `json:"label"`
-	Region             string            `json:"region"`
-	ClientConnThrottle int               `json:"client_conn_throttle"`
-	Ipv4               string            `json:"ipv4"`
 	Transfer           map[string]string `json:"transfer"`
+	Tags               []string          `json:"tags"`
 }
 
 

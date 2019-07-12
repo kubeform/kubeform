@@ -17,21 +17,21 @@ type DigitaloceanKubernetesNodePool struct {
 	Status            DigitaloceanKubernetesNodePoolStatus `json:"status,omitempty"`
 }
 
-type NodesSpec struct {
+type DigitaloceanKubernetesNodePoolSpecNodes struct {
+	Name      string `json:"name"`
 	Status    string `json:"status"`
 	CreatedAt string `json:"created_at"`
 	UpdatedAt string `json:"updated_at"`
 	Id        string `json:"id"`
-	Name      string `json:"name"`
 }
 
 type DigitaloceanKubernetesNodePoolSpec struct {
-	ClusterId string      `json:"cluster_id"`
-	Name      string      `json:"name"`
-	Size      string      `json:"size"`
-	NodeCount int         `json:"node_count"`
-	Tags      []string    `json:"tags"`
-	Nodes     []NodesSpec `json:"nodes"`
+	ClusterId string                               `json:"cluster_id"`
+	Name      string                               `json:"name"`
+	Size      string                               `json:"size"`
+	NodeCount int                                  `json:"node_count"`
+	Tags      []string                             `json:"tags"`
+	Nodes     []DigitaloceanKubernetesNodePoolSpec `json:"nodes"`
 }
 
 

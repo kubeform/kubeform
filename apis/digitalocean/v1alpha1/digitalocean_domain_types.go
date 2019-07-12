@@ -18,9 +18,9 @@ type DigitaloceanDomain struct {
 }
 
 type DigitaloceanDomainSpec struct {
-	Urn       string `json:"urn"`
 	Name      string `json:"name"`
 	IpAddress string `json:"ip_address"`
+	Urn       string `json:"urn"`
 }
 
 

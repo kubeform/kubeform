@@ -18,17 +18,17 @@ type LinodeDomain struct {
 }
 
 type LinodeDomainSpec struct {
-	Type        string   `json:"type"`
-	AxfrIps     []string `json:"axfr_ips"`
 	RetrySec    int      `json:"retry_sec"`
-	TtlSec      int      `json:"ttl_sec"`
 	ExpireSec   int      `json:"expire_sec"`
-	RefreshSec  int      `json:"refresh_sec"`
 	Domain      string   `json:"domain"`
 	Group       string   `json:"group"`
 	Status      string   `json:"status"`
-	Description string   `json:"description"`
 	MasterIps   []string `json:"master_ips"`
+	AxfrIps     []string `json:"axfr_ips"`
+	TtlSec      int      `json:"ttl_sec"`
+	RefreshSec  int      `json:"refresh_sec"`
+	Type        string   `json:"type"`
+	Description string   `json:"description"`
 	SoaEmail    string   `json:"soa_email"`
 	Tags        []string `json:"tags"`
 }

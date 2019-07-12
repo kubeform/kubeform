@@ -18,13 +18,13 @@ type LinodeVolume struct {
 }
 
 type LinodeVolumeSpec struct {
-	FilesystemPath string   `json:"filesystem_path"`
 	Tags           []string `json:"tags"`
 	Label          string   `json:"label"`
 	Status         string   `json:"status"`
 	Region         string   `json:"region"`
 	Size           int      `json:"size"`
 	LinodeId       int      `json:"linode_id"`
+	FilesystemPath string   `json:"filesystem_path"`
 }
 
 

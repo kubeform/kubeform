@@ -38,17 +38,14 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
     
+        &LinodeDomainRecord{},
+        &LinodeDomainRecordList{},
+    
         &LinodeNodebalancer{},
         &LinodeNodebalancerList{},
     
-        &LinodeNodebalancerNode{},
-        &LinodeNodebalancerNodeList{},
-    
-        &LinodeToken{},
-        &LinodeTokenList{},
-    
-        &LinodeStackscript{},
-        &LinodeStackscriptList{},
+        &LinodeSshkey{},
+        &LinodeSshkeyList{},
     
         &LinodeImage{},
         &LinodeImageList{},
@@ -59,17 +56,20 @@ func addKnownTypes(scheme *runtime.Scheme) error {
         &LinodeDomain{},
         &LinodeDomainList{},
     
-        &LinodeDomainRecord{},
-        &LinodeDomainRecordList{},
-    
         &LinodeNodebalancerConfig{},
         &LinodeNodebalancerConfigList{},
+    
+        &LinodeNodebalancerNode{},
+        &LinodeNodebalancerNodeList{},
     
         &LinodeRdns{},
         &LinodeRdnsList{},
     
-        &LinodeSshkey{},
-        &LinodeSshkeyList{},
+        &LinodeStackscript{},
+        &LinodeStackscriptList{},
+    
+        &LinodeToken{},
+        &LinodeTokenList{},
     
         &LinodeVolume{},
         &LinodeVolumeList{},

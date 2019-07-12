@@ -18,13 +18,13 @@ type LinodeNodebalancerNode struct {
 }
 
 type LinodeNodebalancerNodeSpec struct {
+	Status         string `json:"status"`
 	NodebalancerId int    `json:"nodebalancer_id"`
 	ConfigId       int    `json:"config_id"`
 	Label          string `json:"label"`
 	Weight         int    `json:"weight"`
 	Mode           string `json:"mode"`
 	Address        string `json:"address"`
-	Status         string `json:"status"`
 }
 
 

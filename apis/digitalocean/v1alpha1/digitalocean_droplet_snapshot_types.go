@@ -18,12 +18,12 @@ type DigitaloceanDropletSnapshot struct {
 }
 
 type DigitaloceanDropletSnapshotSpec struct {
-	Name        string   `json:"name"`
-	DropletId   string   `json:"droplet_id"`
 	Regions     []string `json:"regions"`
 	Size        float64  `json:"size"`
 	CreatedAt   string   `json:"created_at"`
 	MinDiskSize int      `json:"min_disk_size"`
+	Name        string   `json:"name"`
+	DropletId   string   `json:"droplet_id"`
 }
 
 

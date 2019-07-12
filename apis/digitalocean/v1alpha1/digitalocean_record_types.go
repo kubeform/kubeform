@@ -18,17 +18,17 @@ type DigitaloceanRecord struct {
 }
 
 type DigitaloceanRecordSpec struct {
-	Fqdn     string `json:"fqdn"`
-	Tag      string `json:"tag"`
-	Port     int    `json:"port"`
-	Priority int    `json:"priority"`
+	Type     string `json:"type"`
+	Name     string `json:"name"`
 	Weight   int    `json:"weight"`
 	Ttl      int    `json:"ttl"`
-	Value    string `json:"value"`
-	Flags    int    `json:"flags"`
-	Type     string `json:"type"`
+	Tag      string `json:"tag"`
 	Domain   string `json:"domain"`
-	Name     string `json:"name"`
+	Port     int    `json:"port"`
+	Priority int    `json:"priority"`
+	Value    string `json:"value"`
+	Fqdn     string `json:"fqdn"`
+	Flags    int    `json:"flags"`
 }
 
 

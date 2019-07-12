@@ -3,10 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/terraform-providers/terraform-provider-digitalocean/digitalocean"
+	"github.com/terraform-providers/terraform-provider-azurerm/azurerm"
 
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/terraform-providers/terraform-provider-linode/linode"
 
 	"kubeform.dev/kubeform/util"
 
@@ -19,8 +18,11 @@ func main() {
 	version := "v1alpha1"
 
 	providersMap = map[string]terraform.ResourceProvider{
-		"linode":       linode.Provider(),
-		"digitalocean": digitalocean.Provider(),
+		//"linode":       linode.Provider(),
+		//"digitalocean": digitalocean.Provider(),
+		//"aws":          aws.Provider(),
+		//"google":       google.Provider(),
+		"azurerm": azurerm.Provider(),
 	}
 
 	for key, provider := range providersMap {

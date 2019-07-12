@@ -19,13 +19,13 @@ type DigitaloceanCertificate struct {
 
 type DigitaloceanCertificateSpec struct {
 	Name             string   `json:"name"`
-	LeafCertificate  string   `json:"leaf_certificate"`
+	CertificateChain string   `json:"certificate_chain"`
 	Domains          []string `json:"domains"`
 	Type             string   `json:"type"`
-	PrivateKey       string   `json:"private_key"`
-	CertificateChain string   `json:"certificate_chain"`
 	State            string   `json:"state"`
 	NotAfter         string   `json:"not_after"`
+	PrivateKey       string   `json:"private_key"`
+	LeafCertificate  string   `json:"leaf_certificate"`
 	Sha1Fingerprint  string   `json:"sha1_fingerprint"`
 }
 

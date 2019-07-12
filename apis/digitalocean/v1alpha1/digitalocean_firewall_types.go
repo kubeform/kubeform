@@ -17,7 +17,13 @@ type DigitaloceanFirewall struct {
 	Status            DigitaloceanFirewallStatus `json:"status,omitempty"`
 }
 
-type InboundRuleSpec struct {
+type DigitaloceanFirewallSpecPendingChanges struct {
+	Status    string `json:"status"`
+	DropletId int    `json:"droplet_id"`
+	Removing  bool   `json:"removing"`
+}
+
+type DigitaloceanFirewallSpecInboundRule struct {
 	Protocol               string   `json:"protocol"`
 	PortRange              string   `json:"port_range"`
 	SourceAddresses        []string `json:"source_addresses"`
@@ -26,30 +32,24 @@ type InboundRuleSpec struct {
 	SourceTags             []string `json:"source_tags"`
 }
 
-type OutboundRuleSpec struct {
-	PortRange                   string   `json:"port_range"`
-	DestinationAddresses        []string `json:"destination_addresses"`
+type DigitaloceanFirewallSpecOutboundRule struct {
 	DestinationDropletIds       []int64  `json:"destination_droplet_ids"`
 	DestinationLoadBalancerUids []string `json:"destination_load_balancer_uids"`
 	DestinationTags             []string `json:"destination_tags"`
 	Protocol                    string   `json:"protocol"`
-}
-
-type PendingChangesSpec struct {
-	DropletId int    `json:"droplet_id"`
-	Removing  bool   `json:"removing"`
-	Status    string `json:"status"`
+	PortRange                   string   `json:"port_range"`
+	DestinationAddresses        []string `json:"destination_addresses"`
 }
 
 type DigitaloceanFirewallSpec struct {
-	Tags           []string             `json:"tags"`
-	Name           string               `json:"name"`
-	DropletIds     []int64              `json:"droplet_ids"`
-	InboundRule    []InboundRuleSpec    `json:"inbound_rule"`
-	OutboundRule   []OutboundRuleSpec   `json:"outbound_rule"`
-	Status         string               `json:"status"`
-	CreatedAt      string               `json:"created_at"`
-	PendingChanges []PendingChangesSpec `json:"pending_changes"`
+	Status         string                     `json:"status"`
+	CreatedAt      string                     `json:"created_at"`
+	PendingChanges []DigitaloceanFirewallSpec `json:"pending_changes"`
+	Tags           []string                   `json:"tags"`
+	Name           string                     `json:"name"`
+	DropletIds     []int64                    `json:"droplet_ids"`
+	InboundRule    []DigitaloceanFirewallSpec `json:"inbound_rule"`
+	OutboundRule   []DigitaloceanFirewallSpec `json:"outbound_rule"`
 }
 
 

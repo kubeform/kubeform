@@ -11,15 +11,23 @@ require (
 	github.com/go-openapi/spec v0.19.0
 	github.com/go-openapi/swag v0.19.0 // indirect
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+	github.com/hashicorp/go-cleanhttp v0.5.1 // indirect
+	github.com/hashicorp/go-hclog v0.7.0 // indirect
+	github.com/hashicorp/go-version v1.2.0 // indirect
+	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/terraform v0.12.3
+	github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d // indirect
 	github.com/imdario/mergo v0.3.7 // indirect
 	github.com/mailru/easyjson v0.0.0-20190403194419-1ea4449da983 // indirect
 	github.com/mattn/go-colorable v0.1.2 // indirect
+	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/prometheus/client_golang v0.9.3 // indirect
 	github.com/prometheus/common v0.4.1 // indirect
 	github.com/sirupsen/logrus v1.4.2 // indirect
-	github.com/terraform-providers/terraform-provider-digitalocean v1.5.0
-	github.com/terraform-providers/terraform-provider-linode v1.7.0
+	github.com/terraform-providers/terraform-provider-azurerm v1.31.0
+	github.com/ulikunitz/xz v0.5.6 // indirect
+	github.com/vmihailenco/msgpack v4.0.2+incompatible // indirect
+	go.opencensus.io v0.19.0 // indirect
 	golang.org/x/crypto v0.0.0-20190513172903-22d7a77e9e5f // indirect
 	golang.org/x/net v0.0.0-20190522155817-f3200d17e092 // indirect
 	golang.org/x/sys v0.0.0-20190523142557-0e01d883c5c5 // indirect
