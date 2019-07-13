@@ -25,6 +25,8 @@ spec:
             submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
           type: string
         metadata:
+          description: ObjectMeta is metadata that all persisted resources must have,
+            which includes all objects users must create.
           properties:
             annotations:
               additionalProperties:
@@ -124,6 +126,8 @@ spec:
                     struct will be set to nil and the object is considered as initialized
                     and visible to all clients.
                   items:
+                    description: Initializer is information about an initializer that
+                      has not yet completed.
                     properties:
                       name:
                         description: name of the process that is responsible for initializing
@@ -160,6 +164,9 @@ spec:
                             with the StatusReason failure. Not all StatusReasons may
                             provide detailed causes.
                           items:
+                            description: StatusCause provides more information about
+                              an api.Status failure, including cases when multiple
+                              errors are encountered.
                             properties:
                               field:
                                 description: "The field of the resource that has caused
@@ -281,6 +288,8 @@ spec:
                 object. \n This field is alpha and can be changed or removed without
                 notice."
               items:
+                description: ManagedFieldsEntry is a workflow-id, a FieldSet and the
+                  group version of the resource that the fieldset applies to.
                 properties:
                   apiVersion:
                     description: APIVersion defines the version of this resource that
@@ -331,6 +340,10 @@ spec:
                 will point to this controller, with the controller field set to true.
                 There cannot be more than one managing controller.
               items:
+                description: OwnerReference contains enough information to let you
+                  identify an owning object. An owning object must be in the same
+                  namespace as the dependent, or be cluster-scoped, so there is no
+                  namespace field.
                 properties:
                   apiVersion:
                     description: API version of the referent.
@@ -433,29 +446,34 @@ spec:
             version:
               type: string
           required:
-          - identity
-          - tags
-          - outbound_ip_addresses
-          - storage_connection_string
-          - resource_group_name
-          - location
-          - kind
-          - enabled
-          - app_settings
-          - site_config
-          - name
-          - default_hostname
-          - possible_outbound_ip_addresses
-          - client_affinity_enabled
-          - site_credential
           - app_service_plan_id
-          - enable_builtin_logging
+          - app_settings
+          - client_affinity_enabled
           - connection_string
+          - default_hostname
+          - enable_builtin_logging
+          - enabled
           - https_only
+          - identity
+          - kind
+          - location
+          - name
+          - outbound_ip_addresses
+          - possible_outbound_ip_addresses
+          - resource_group_name
+          - site_config
+          - site_credential
+          - storage_connection_string
+          - tags
           - version
           type: object
         status:
           properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
             output:
               type: object
           type: object

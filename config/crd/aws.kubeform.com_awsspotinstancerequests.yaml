@@ -25,6 +25,8 @@ spec:
             submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
           type: string
         metadata:
+          description: ObjectMeta is metadata that all persisted resources must have,
+            which includes all objects users must create.
           properties:
             annotations:
               additionalProperties:
@@ -124,6 +126,8 @@ spec:
                     struct will be set to nil and the object is considered as initialized
                     and visible to all clients.
                   items:
+                    description: Initializer is information about an initializer that
+                      has not yet completed.
                     properties:
                       name:
                         description: name of the process that is responsible for initializing
@@ -160,6 +164,9 @@ spec:
                             with the StatusReason failure. Not all StatusReasons may
                             provide detailed causes.
                           items:
+                            description: StatusCause provides more information about
+                              an api.Status failure, including cases when multiple
+                              errors are encountered.
                             properties:
                               field:
                                 description: "The field of the resource that has caused
@@ -281,6 +288,8 @@ spec:
                 object. \n This field is alpha and can be changed or removed without
                 notice."
               items:
+                description: ManagedFieldsEntry is a workflow-id, a FieldSet and the
+                  group version of the resource that the fieldset applies to.
                 properties:
                   apiVersion:
                     description: APIVersion defines the version of this resource that
@@ -331,6 +340,10 @@ spec:
                 will point to this controller, with the controller field set to true.
                 There cannot be more than one managing controller.
               items:
+                description: OwnerReference contains enough information to let you
+                  identify an owning object. An owning object must be in the same
+                  namespace as the dependent, or be cluster-scoped, so there is no
+                  namespace field.
                 properties:
                   apiVersion:
                     description: API version of the referent.
@@ -502,60 +515,65 @@ spec:
             wait_for_fulfillment:
               type: boolean
           required:
-          - network_interface_id
-          - private_dns
-          - spot_price
-          - launch_group
-          - spot_request_state
-          - instance_type
-          - source_dest_check
-          - instance_initiated_shutdown_behavior
-          - credit_specification
-          - ebs_optimized
-          - ipv6_addresses
-          - cpu_core_count
-          - volume_tags
-          - private_ip
-          - security_groups
-          - vpc_security_group_ids
-          - public_ip
-          - ephemeral_block_device
-          - root_block_device
-          - spot_bid_status
-          - get_password_data
-          - monitoring
-          - tags
-          - spot_type
-          - ebs_block_device
+          - ami
           - arn
           - associate_public_ip_address
-          - network_interface
-          - cpu_threads_per_core
-          - placement_group
-          - public_dns
-          - ipv6_address_count
-          - spot_instance_id
-          - user_data_base64
-          - tenancy
-          - wait_for_fulfillment
-          - valid_from
-          - subnet_id
-          - user_data
-          - primary_network_interface_id
-          - instance_state
-          - ami
           - availability_zone
-          - key_name
-          - password_data
-          - instance_interruption_behaviour
-          - valid_until
-          - disable_api_termination
-          - iam_instance_profile
-          - host_id
           - block_duration_minutes
+          - cpu_core_count
+          - cpu_threads_per_core
+          - credit_specification
+          - disable_api_termination
+          - ebs_block_device
+          - ebs_optimized
+          - ephemeral_block_device
+          - get_password_data
+          - host_id
+          - iam_instance_profile
+          - instance_initiated_shutdown_behavior
+          - instance_interruption_behaviour
+          - instance_state
+          - instance_type
+          - ipv6_address_count
+          - ipv6_addresses
+          - key_name
+          - launch_group
+          - monitoring
+          - network_interface
+          - network_interface_id
+          - password_data
+          - placement_group
+          - primary_network_interface_id
+          - private_dns
+          - private_ip
+          - public_dns
+          - public_ip
+          - root_block_device
+          - security_groups
+          - source_dest_check
+          - spot_bid_status
+          - spot_instance_id
+          - spot_price
+          - spot_request_state
+          - spot_type
+          - subnet_id
+          - tags
+          - tenancy
+          - user_data
+          - user_data_base64
+          - valid_from
+          - valid_until
+          - volume_tags
+          - vpc_security_group_ids
+          - wait_for_fulfillment
           type: object
         status:
           properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
             output:
               type: object
           type: object

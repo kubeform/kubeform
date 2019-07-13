@@ -25,6 +25,8 @@ spec:
             submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
           type: string
         metadata:
+          description: ObjectMeta is metadata that all persisted resources must have,
+            which includes all objects users must create.
           properties:
             annotations:
               additionalProperties:
@@ -124,6 +126,8 @@ spec:
                     struct will be set to nil and the object is considered as initialized
                     and visible to all clients.
                   items:
+                    description: Initializer is information about an initializer that
+                      has not yet completed.
                     properties:
                       name:
                         description: name of the process that is responsible for initializing
@@ -160,6 +164,9 @@ spec:
                             with the StatusReason failure. Not all StatusReasons may
                             provide detailed causes.
                           items:
+                            description: StatusCause provides more information about
+                              an api.Status failure, including cases when multiple
+                              errors are encountered.
                             properties:
                               field:
                                 description: "The field of the resource that has caused
@@ -281,6 +288,8 @@ spec:
                 object. \n This field is alpha and can be changed or removed without
                 notice."
               items:
+                description: ManagedFieldsEntry is a workflow-id, a FieldSet and the
+                  group version of the resource that the fieldset applies to.
                 properties:
                   apiVersion:
                     description: APIVersion defines the version of this resource that
@@ -331,6 +340,10 @@ spec:
                 will point to this controller, with the controller field set to true.
                 There cannot be more than one managing controller.
               items:
+                description: OwnerReference contains enough information to let you
+                  identify an owning object. An owning object must be in the same
+                  namespace as the dependent, or be cluster-scoped, so there is no
+                  namespace field.
                 properties:
                   apiVersion:
                     description: API version of the referent.
@@ -441,32 +454,37 @@ spec:
             website_endpoint:
               type: string
           required:
-          - bucket_domain_name
-          - arn
+          - acceleration_status
           - acl
-          - hosted_zone_id
-          - region
-          - website_domain
-          - versioning
+          - arn
           - bucket
+          - bucket_domain_name
+          - bucket_prefix
+          - bucket_regional_domain_name
+          - cors_rule
+          - force_destroy
+          - hosted_zone_id
+          - lifecycle_rule
+          - logging
           - object_lock_configuration
+          - policy
+          - region
           - replication_configuration
-          - website_endpoint
           - request_payer
           - server_side_encryption_configuration
-          - website
-          - bucket_regional_domain_name
-          - policy
-          - cors_rule
-          - lifecycle_rule
-          - bucket_prefix
-          - force_destroy
-          - acceleration_status
           - tags
-          - logging
+          - versioning
+          - website
+          - website_domain
+          - website_endpoint
           type: object
         status:
           properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
             output:
               type: object
           type: object

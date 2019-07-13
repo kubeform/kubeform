@@ -25,6 +25,8 @@ spec:
             submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
           type: string
         metadata:
+          description: ObjectMeta is metadata that all persisted resources must have,
+            which includes all objects users must create.
           properties:
             annotations:
               additionalProperties:
@@ -124,6 +126,8 @@ spec:
                     struct will be set to nil and the object is considered as initialized
                     and visible to all clients.
                   items:
+                    description: Initializer is information about an initializer that
+                      has not yet completed.
                     properties:
                       name:
                         description: name of the process that is responsible for initializing
@@ -160,6 +164,9 @@ spec:
                             with the StatusReason failure. Not all StatusReasons may
                             provide detailed causes.
                           items:
+                            description: StatusCause provides more information about
+                              an api.Status failure, including cases when multiple
+                              errors are encountered.
                             properties:
                               field:
                                 description: "The field of the resource that has caused
@@ -281,6 +288,8 @@ spec:
                 object. \n This field is alpha and can be changed or removed without
                 notice."
               items:
+                description: ManagedFieldsEntry is a workflow-id, a FieldSet and the
+                  group version of the resource that the fieldset applies to.
                 properties:
                   apiVersion:
                     description: APIVersion defines the version of this resource that
@@ -331,6 +340,10 @@ spec:
                 will point to this controller, with the controller field set to true.
                 There cannot be more than one managing controller.
               items:
+                description: OwnerReference contains enough information to let you
+                  identify an owning object. An owning object must be in the same
+                  namespace as the dependent, or be cluster-scoped, so there is no
+                  namespace field.
                 properties:
                   apiVersion:
                     description: API version of the referent.
@@ -510,66 +523,71 @@ spec:
                 type: string
               type: array
           required:
-          - storage_type
-          - iops
-          - max_allocated_storage
-          - domain_iam_role_name
-          - performance_insights_retention_period
-          - final_snapshot_identifier
-          - monitoring_role_arn
-          - publicly_accessible
           - address
-          - replicas
+          - allocated_storage
+          - allow_major_version_upgrade
+          - apply_immediately
           - arn
-          - username
-          - s3_import
+          - auto_minor_version_upgrade
+          - availability_zone
+          - backup_retention_period
+          - backup_window
+          - ca_cert_identifier
+          - character_set_name
+          - copy_tags_to_snapshot
+          - db_subnet_group_name
+          - deletion_protection
+          - domain
+          - domain_iam_role_name
+          - enabled_cloudwatch_logs_exports
           - endpoint
-          - password
           - engine
           - engine_version
-          - storage_encrypted
-          - identifier
-          - maintenance_window
-          - timezone
-          - enabled_cloudwatch_logs_exports
-          - name
-          - character_set_name
-          - security_group_names
-          - performance_insights_enabled
-          - iam_database_authentication_enabled
-          - resource_id
-          - performance_insights_kms_key_id
-          - allocated_storage
-          - availability_zone
-          - port
-          - allow_major_version_upgrade
-          - identifier_prefix
-          - skip_final_snapshot
-          - apply_immediately
-          - kms_key_id
-          - domain
-          - instance_class
-          - vpc_security_group_ids
+          - final_snapshot_identifier
           - hosted_zone_id
-          - status
-          - backup_retention_period
-          - multi_az
-          - snapshot_identifier
-          - db_subnet_group_name
-          - parameter_group_name
-          - monitoring_interval
-          - tags
-          - deletion_protection
-          - backup_window
+          - iam_database_authentication_enabled
+          - identifier
+          - identifier_prefix
+          - instance_class
+          - iops
+          - kms_key_id
           - license_model
-          - copy_tags_to_snapshot
-          - auto_minor_version_upgrade
+          - maintenance_window
+          - max_allocated_storage
+          - monitoring_interval
+          - monitoring_role_arn
+          - multi_az
+          - name
           - option_group_name
-          - ca_cert_identifier
+          - parameter_group_name
+          - password
+          - performance_insights_enabled
+          - performance_insights_kms_key_id
+          - performance_insights_retention_period
+          - port
+          - publicly_accessible
+          - replicas
           - replicate_source_db
+          - resource_id
+          - s3_import
+          - security_group_names
+          - skip_final_snapshot
+          - snapshot_identifier
+          - status
+          - storage_encrypted
+          - storage_type
+          - tags
+          - timezone
+          - username
+          - vpc_security_group_ids
           type: object
         status:
           properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
             output:
               type: object
           type: object

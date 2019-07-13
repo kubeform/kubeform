@@ -25,6 +25,8 @@ spec:
             submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
           type: string
         metadata:
+          description: ObjectMeta is metadata that all persisted resources must have,
+            which includes all objects users must create.
           properties:
             annotations:
               additionalProperties:
@@ -124,6 +126,8 @@ spec:
                     struct will be set to nil and the object is considered as initialized
                     and visible to all clients.
                   items:
+                    description: Initializer is information about an initializer that
+                      has not yet completed.
                     properties:
                       name:
                         description: name of the process that is responsible for initializing
@@ -160,6 +164,9 @@ spec:
                             with the StatusReason failure. Not all StatusReasons may
                             provide detailed causes.
                           items:
+                            description: StatusCause provides more information about
+                              an api.Status failure, including cases when multiple
+                              errors are encountered.
                             properties:
                               field:
                                 description: "The field of the resource that has caused
@@ -281,6 +288,8 @@ spec:
                 object. \n This field is alpha and can be changed or removed without
                 notice."
               items:
+                description: ManagedFieldsEntry is a workflow-id, a FieldSet and the
+                  group version of the resource that the fieldset applies to.
                 properties:
                   apiVersion:
                     description: APIVersion defines the version of this resource that
@@ -331,6 +340,10 @@ spec:
                 will point to this controller, with the controller field set to true.
                 There cannot be more than one managing controller.
               items:
+                description: OwnerReference contains enough information to let you
+                  identify an owning object. An owning object must be in the same
+                  namespace as the dependent, or be cluster-scoped, so there is no
+                  namespace field.
                 properties:
                   apiVersion:
                     description: API version of the referent.
@@ -454,38 +467,43 @@ spec:
             visible_to_all_users:
               type: boolean
           required:
-          - core_instance_type
-          - core_instance_count
+          - additional_info
           - applications
-          - ebs_root_volume_size
+          - autoscaling_role
+          - bootstrap_action
+          - cluster_state
+          - configurations
+          - configurations_json
+          - core_instance_count
+          - core_instance_group
+          - core_instance_type
           - custom_ami_id
+          - ebs_root_volume_size
+          - ec2_attributes
+          - instance_group
+          - keep_job_flow_alive_when_no_steps
+          - kerberos_attributes
+          - log_uri
+          - master_instance_group
+          - master_instance_type
           - master_public_dns
           - name
           - release_label
-          - master_instance_type
-          - cluster_state
-          - keep_job_flow_alive_when_no_steps
-          - security_configuration
-          - additional_info
-          - instance_group
-          - configurations_json
           - scale_down_behavior
-          - master_instance_group
-          - tags
-          - visible_to_all_users
-          - kerberos_attributes
-          - core_instance_group
-          - bootstrap_action
-          - autoscaling_role
-          - log_uri
-          - termination_protection
-          - ec2_attributes
-          - step
-          - configurations
+          - security_configuration
           - service_role
+          - step
+          - tags
+          - termination_protection
+          - visible_to_all_users
           type: object
         status:
           properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
             output:
               type: object
           type: object

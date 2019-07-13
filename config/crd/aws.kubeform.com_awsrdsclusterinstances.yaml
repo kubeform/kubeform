@@ -25,6 +25,8 @@ spec:
             submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
           type: string
         metadata:
+          description: ObjectMeta is metadata that all persisted resources must have,
+            which includes all objects users must create.
           properties:
             annotations:
               additionalProperties:
@@ -124,6 +126,8 @@ spec:
                     struct will be set to nil and the object is considered as initialized
                     and visible to all clients.
                   items:
+                    description: Initializer is information about an initializer that
+                      has not yet completed.
                     properties:
                       name:
                         description: name of the process that is responsible for initializing
@@ -160,6 +164,9 @@ spec:
                             with the StatusReason failure. Not all StatusReasons may
                             provide detailed causes.
                           items:
+                            description: StatusCause provides more information about
+                              an api.Status failure, including cases when multiple
+                              errors are encountered.
                             properties:
                               field:
                                 description: "The field of the resource that has caused
@@ -281,6 +288,8 @@ spec:
                 object. \n This field is alpha and can be changed or removed without
                 notice."
               items:
+                description: ManagedFieldsEntry is a workflow-id, a FieldSet and the
+                  group version of the resource that the fieldset applies to.
                 properties:
                   apiVersion:
                     description: APIVersion defines the version of this resource that
@@ -331,6 +340,10 @@ spec:
                 will point to this controller, with the controller field set to true.
                 There cannot be more than one managing controller.
               items:
+                description: OwnerReference contains enough information to let you
+                  identify an owning object. An owning object must be in the same
+                  namespace as the dependent, or be cluster-scoped, so there is no
+                  namespace field.
                 properties:
                   apiVersion:
                     description: API version of the referent.
@@ -443,37 +456,42 @@ spec:
             writer:
               type: boolean
           required:
+          - apply_immediately
+          - arn
+          - auto_minor_version_upgrade
+          - availability_zone
+          - cluster_identifier
+          - copy_tags_to_snapshot
+          - db_parameter_group_name
+          - db_subnet_group_name
+          - dbi_resource_id
           - endpoint
           - engine
-          - db_parameter_group_name
-          - storage_encrypted
-          - dbi_resource_id
-          - monitoring_role_arn
+          - engine_version
           - identifier
-          - auto_minor_version_upgrade
-          - performance_insights_kms_key_id
-          - copy_tags_to_snapshot
           - identifier_prefix
-          - db_subnet_group_name
+          - instance_class
+          - kms_key_id
+          - monitoring_interval
+          - monitoring_role_arn
+          - performance_insights_enabled
+          - performance_insights_kms_key_id
           - port
           - preferred_backup_window
-          - monitoring_interval
-          - publicly_accessible
-          - instance_class
-          - availability_zone
           - preferred_maintenance_window
+          - promotion_tier
+          - publicly_accessible
+          - storage_encrypted
           - tags
           - writer
-          - apply_immediately
-          - promotion_tier
-          - cluster_identifier
-          - kms_key_id
-          - arn
-          - engine_version
-          - performance_insights_enabled
           type: object
         status:
           properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
             output:
               type: object
           type: object

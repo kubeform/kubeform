@@ -25,6 +25,8 @@ spec:
             submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds'
           type: string
         metadata:
+          description: ObjectMeta is metadata that all persisted resources must have,
+            which includes all objects users must create.
           properties:
             annotations:
               additionalProperties:
@@ -124,6 +126,8 @@ spec:
                     struct will be set to nil and the object is considered as initialized
                     and visible to all clients.
                   items:
+                    description: Initializer is information about an initializer that
+                      has not yet completed.
                     properties:
                       name:
                         description: name of the process that is responsible for initializing
@@ -160,6 +164,9 @@ spec:
                             with the StatusReason failure. Not all StatusReasons may
                             provide detailed causes.
                           items:
+                            description: StatusCause provides more information about
+                              an api.Status failure, including cases when multiple
+                              errors are encountered.
                             properties:
                               field:
                                 description: "The field of the resource that has caused
@@ -281,6 +288,8 @@ spec:
                 object. \n This field is alpha and can be changed or removed without
                 notice."
               items:
+                description: ManagedFieldsEntry is a workflow-id, a FieldSet and the
+                  group version of the resource that the fieldset applies to.
                 properties:
                   apiVersion:
                     description: APIVersion defines the version of this resource that
@@ -331,6 +340,10 @@ spec:
                 will point to this controller, with the controller field set to true.
                 There cannot be more than one managing controller.
               items:
+                description: OwnerReference contains enough information to let you
+                  identify an owning object. An owning object must be in the same
+                  namespace as the dependent, or be cluster-scoped, so there is no
+                  namespace field.
                 properties:
                   apiVersion:
                     description: API version of the referent.
@@ -488,58 +501,63 @@ spec:
                 type: string
               type: object
           required:
-          - tags
-          - account_replication_type
-          - primary_location
-          - secondary_table_host
-          - primary_web_host
-          - primary_dfs_host
-          - primary_file_host
-          - secondary_web_endpoint
-          - primary_connection_string
           - access_tier
           - account_encryption_source
-          - enable_blob_encryption
-          - secondary_location
-          - primary_blob_endpoint
-          - primary_table_host
-          - identity
           - account_kind
-          - enable_https_traffic_only
-          - primary_queue_host
-          - secondary_queue_host
-          - secondary_dfs_endpoint
-          - secondary_file_host
-          - location
-          - primary_blob_host
-          - primary_web_endpoint
-          - secondary_web_host
-          - secondary_file_endpoint
-          - primary_blob_connection_string
+          - account_replication_type
+          - account_tier
+          - account_type
+          - custom_domain
+          - enable_blob_encryption
           - enable_file_encryption
+          - enable_https_traffic_only
+          - identity
+          - is_hns_enabled
+          - location
+          - name
+          - network_rules
+          - primary_access_key
+          - primary_blob_connection_string
+          - primary_blob_endpoint
+          - primary_blob_host
+          - primary_connection_string
+          - primary_dfs_endpoint
+          - primary_dfs_host
+          - primary_file_endpoint
+          - primary_file_host
+          - primary_location
+          - primary_queue_endpoint
+          - primary_queue_host
+          - primary_table_endpoint
+          - primary_table_host
+          - primary_web_endpoint
+          - primary_web_host
+          - resource_group_name
+          - secondary_access_key
+          - secondary_blob_connection_string
           - secondary_blob_endpoint
           - secondary_blob_host
-          - secondary_dfs_host
-          - primary_access_key
-          - secondary_access_key
-          - name
-          - account_type
-          - is_hns_enabled
-          - secondary_queue_endpoint
-          - primary_table_endpoint
-          - primary_file_endpoint
           - secondary_connection_string
-          - network_rules
+          - secondary_dfs_endpoint
+          - secondary_dfs_host
+          - secondary_file_endpoint
+          - secondary_file_host
+          - secondary_location
+          - secondary_queue_endpoint
+          - secondary_queue_host
           - secondary_table_endpoint
-          - secondary_blob_connection_string
-          - resource_group_name
-          - account_tier
-          - custom_domain
-          - primary_queue_endpoint
-          - primary_dfs_endpoint
+          - secondary_table_host
+          - secondary_web_endpoint
+          - secondary_web_host
+          - tags
           type: object
         status:
           properties:
+            observedGeneration:
+              description: Resource generation, which is updated on mutation by the
+                API Server.
+              format: int64
+              type: integer
             output:
               type: object
           type: object
