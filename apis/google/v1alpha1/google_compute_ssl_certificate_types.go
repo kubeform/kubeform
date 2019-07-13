@@ -19,18 +19,24 @@ type GoogleComputeSslCertificate struct {
 }
 
 type GoogleComputeSslCertificateSpec struct {
-	PrivateKey        string `json:"private_key"`
-	Name              string `json:"name"`
-	CertificateId     int    `json:"certificate_id"`
-	NamePrefix        string `json:"name_prefix"`
-	Project           string `json:"project"`
-	Certificate       string `json:"certificate"`
-	Description       string `json:"description"`
-	CreationTimestamp string `json:"creation_timestamp"`
 	SelfLink          string `json:"self_link"`
+	Certificate       string `json:"certificate"`
+	PrivateKey        string `json:"private_key"`
+	CertificateId     int    `json:"certificate_id"`
+	CreationTimestamp string `json:"creation_timestamp"`
+	NamePrefix        string `json:"name_prefix"`
+	Description       string `json:"description"`
+	Name              string `json:"name"`
+	Project           string `json:"project"`
 }
 
+
+
 type GoogleComputeSslCertificateStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

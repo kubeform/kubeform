@@ -27,7 +27,13 @@ type GoogleDnsManagedZoneSpec struct {
 	Labels      map[string]string `json:"labels"`
 }
 
+
+
 type GoogleDnsManagedZoneStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

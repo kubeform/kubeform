@@ -19,17 +19,23 @@ type AzurermApiManagementOpenidConnectProvider struct {
 }
 
 type AzurermApiManagementOpenidConnectProviderSpec struct {
+	MetadataEndpoint  string `json:"metadata_endpoint"`
+	Description       string `json:"description"`
 	Name              string `json:"name"`
 	ResourceGroupName string `json:"resource_group_name"`
 	ApiManagementName string `json:"api_management_name"`
 	ClientId          string `json:"client_id"`
 	ClientSecret      string `json:"client_secret"`
 	DisplayName       string `json:"display_name"`
-	MetadataEndpoint  string `json:"metadata_endpoint"`
-	Description       string `json:"description"`
 }
 
+
+
 type AzurermApiManagementOpenidConnectProviderStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

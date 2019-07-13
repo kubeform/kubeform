@@ -19,9 +19,9 @@ type AzurermDevTestVirtualNetwork struct {
 }
 
 type AzurermDevTestVirtualNetworkSpecSubnet struct {
+	Name                        string `json:"name"`
 	UseInVirtualMachineCreation string `json:"use_in_virtual_machine_creation"`
 	UsePublicIpAddress          string `json:"use_public_ip_address"`
-	Name                        string `json:"name"`
 }
 
 type AzurermDevTestVirtualNetworkSpec struct {
@@ -34,7 +34,13 @@ type AzurermDevTestVirtualNetworkSpec struct {
 	Subnet            []AzurermDevTestVirtualNetworkSpec `json:"subnet"`
 }
 
+
+
 type AzurermDevTestVirtualNetworkStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

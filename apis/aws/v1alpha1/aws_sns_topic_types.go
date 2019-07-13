@@ -19,29 +19,35 @@ type AwsSnsTopic struct {
 }
 
 type AwsSnsTopicSpec struct {
-	SqsSuccessFeedbackRoleArn            string            `json:"sqs_success_feedback_role_arn"`
-	Arn                                  string            `json:"arn"`
-	DeliveryPolicy                       string            `json:"delivery_policy"`
-	HttpSuccessFeedbackSampleRate        int               `json:"http_success_feedback_sample_rate"`
-	LambdaSuccessFeedbackRoleArn         string            `json:"lambda_success_feedback_role_arn"`
+	Policy                               string            `json:"policy"`
+	ApplicationFailureFeedbackRoleArn    string            `json:"application_failure_feedback_role_arn"`
+	HttpSuccessFeedbackRoleArn           string            `json:"http_success_feedback_role_arn"`
 	HttpFailureFeedbackRoleArn           string            `json:"http_failure_feedback_role_arn"`
+	LambdaSuccessFeedbackRoleArn         string            `json:"lambda_success_feedback_role_arn"`
+	SqsSuccessFeedbackSampleRate         int               `json:"sqs_success_feedback_sample_rate"`
+	Name                                 string            `json:"name"`
+	DeliveryPolicy                       string            `json:"delivery_policy"`
+	ApplicationSuccessFeedbackRoleArn    string            `json:"application_success_feedback_role_arn"`
 	LambdaSuccessFeedbackSampleRate      int               `json:"lambda_success_feedback_sample_rate"`
 	LambdaFailureFeedbackRoleArn         string            `json:"lambda_failure_feedback_role_arn"`
-	SqsSuccessFeedbackSampleRate         int               `json:"sqs_success_feedback_sample_rate"`
-	SqsFailureFeedbackRoleArn            string            `json:"sqs_failure_feedback_role_arn"`
-	NamePrefix                           string            `json:"name_prefix"`
 	ApplicationSuccessFeedbackSampleRate int               `json:"application_success_feedback_sample_rate"`
-	ApplicationFailureFeedbackRoleArn    string            `json:"application_failure_feedback_role_arn"`
-	Tags                                 map[string]string `json:"tags"`
-	Name                                 string            `json:"name"`
-	DisplayName                          string            `json:"display_name"`
-	Policy                               string            `json:"policy"`
-	ApplicationSuccessFeedbackRoleArn    string            `json:"application_success_feedback_role_arn"`
-	HttpSuccessFeedbackRoleArn           string            `json:"http_success_feedback_role_arn"`
+	HttpSuccessFeedbackSampleRate        int               `json:"http_success_feedback_sample_rate"`
 	KmsMasterKeyId                       string            `json:"kms_master_key_id"`
+	Arn                                  string            `json:"arn"`
+	NamePrefix                           string            `json:"name_prefix"`
+	DisplayName                          string            `json:"display_name"`
+	SqsSuccessFeedbackRoleArn            string            `json:"sqs_success_feedback_role_arn"`
+	SqsFailureFeedbackRoleArn            string            `json:"sqs_failure_feedback_role_arn"`
+	Tags                                 map[string]string `json:"tags"`
 }
 
+
+
 type AwsSnsTopicStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

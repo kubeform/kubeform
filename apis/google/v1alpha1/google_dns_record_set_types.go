@@ -19,15 +19,21 @@ type GoogleDnsRecordSet struct {
 }
 
 type GoogleDnsRecordSetSpec struct {
-	Name        string   `json:"name"`
-	Rrdatas     []string `json:"rrdatas"`
 	Ttl         int      `json:"ttl"`
 	Type        string   `json:"type"`
 	Project     string   `json:"project"`
 	ManagedZone string   `json:"managed_zone"`
+	Name        string   `json:"name"`
+	Rrdatas     []string `json:"rrdatas"`
 }
 
+
+
 type GoogleDnsRecordSetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

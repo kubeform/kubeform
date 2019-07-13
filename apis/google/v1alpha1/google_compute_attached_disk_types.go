@@ -19,15 +19,21 @@ type GoogleComputeAttachedDisk struct {
 }
 
 type GoogleComputeAttachedDiskSpec struct {
-	Mode       string `json:"mode"`
 	Disk       string `json:"disk"`
 	Instance   string `json:"instance"`
 	Project    string `json:"project"`
 	Zone       string `json:"zone"`
 	DeviceName string `json:"device_name"`
+	Mode       string `json:"mode"`
 }
 
+
+
 type GoogleComputeAttachedDiskStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

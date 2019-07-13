@@ -19,13 +19,19 @@ type GooglePubsubTopicIamPolicy struct {
 }
 
 type GooglePubsubTopicIamPolicySpec struct {
-	Project    string `json:"project"`
 	PolicyData string `json:"policy_data"`
 	Etag       string `json:"etag"`
+	Project    string `json:"project"`
 	Topic      string `json:"topic"`
 }
 
+
+
 type GooglePubsubTopicIamPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

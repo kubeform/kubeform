@@ -25,16 +25,22 @@ type AwsGlueConnectionSpecPhysicalConnectionRequirements struct {
 }
 
 type AwsGlueConnectionSpec struct {
+	CatalogId                      string                  `json:"catalog_id"`
+	ConnectionProperties           map[string]string       `json:"connection_properties"`
 	ConnectionType                 string                  `json:"connection_type"`
 	Description                    string                  `json:"description"`
 	MatchCriteria                  []string                `json:"match_criteria"`
 	Name                           string                  `json:"name"`
 	PhysicalConnectionRequirements []AwsGlueConnectionSpec `json:"physical_connection_requirements"`
-	CatalogId                      string                  `json:"catalog_id"`
-	ConnectionProperties           map[string]string       `json:"connection_properties"`
 }
 
+
+
 type AwsGlueConnectionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

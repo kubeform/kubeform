@@ -19,19 +19,25 @@ type AzurermLbProbe struct {
 }
 
 type AzurermLbProbeSpec struct {
-	Name              string   `json:"name"`
-	Location          string   `json:"location"`
-	Protocol          string   `json:"protocol"`
 	IntervalInSeconds int      `json:"interval_in_seconds"`
-	NumberOfProbes    int      `json:"number_of_probes"`
+	Location          string   `json:"location"`
 	ResourceGroupName string   `json:"resource_group_name"`
-	LoadbalancerId    string   `json:"loadbalancer_id"`
 	Port              int      `json:"port"`
 	RequestPath       string   `json:"request_path"`
+	NumberOfProbes    int      `json:"number_of_probes"`
 	LoadBalancerRules []string `json:"load_balancer_rules"`
+	Name              string   `json:"name"`
+	LoadbalancerId    string   `json:"loadbalancer_id"`
+	Protocol          string   `json:"protocol"`
 }
 
+
+
 type AzurermLbProbeStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

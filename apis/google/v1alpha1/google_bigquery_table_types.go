@@ -30,28 +30,34 @@ type GoogleBigqueryTableSpecTimePartitioning struct {
 }
 
 type GoogleBigqueryTableSpec struct {
-	Labels           map[string]string         `json:"labels"`
-	ExpirationTime   int                       `json:"expiration_time"`
-	Description      string                    `json:"description"`
-	View             []GoogleBigqueryTableSpec `json:"view"`
 	CreationTime     int                       `json:"creation_time"`
-	LastModifiedTime int                       `json:"last_modified_time"`
 	TableId          string                    `json:"table_id"`
+	DatasetId        string                    `json:"dataset_id"`
+	View             []GoogleBigqueryTableSpec `json:"view"`
+	TimePartitioning []GoogleBigqueryTableSpec `json:"time_partitioning"`
+	NumBytes         int                       `json:"num_bytes"`
+	Type             string                    `json:"type"`
 	Project          string                    `json:"project"`
 	FriendlyName     string                    `json:"friendly_name"`
-	Type             string                    `json:"type"`
-	DatasetId        string                    `json:"dataset_id"`
-	TimePartitioning []GoogleBigqueryTableSpec `json:"time_partitioning"`
-	Etag             string                    `json:"etag"`
+	LastModifiedTime int                       `json:"last_modified_time"`
 	Location         string                    `json:"location"`
-	NumBytes         int                       `json:"num_bytes"`
+	ExpirationTime   int                       `json:"expiration_time"`
 	NumLongTermBytes int                       `json:"num_long_term_bytes"`
 	NumRows          int                       `json:"num_rows"`
 	SelfLink         string                    `json:"self_link"`
+	Description      string                    `json:"description"`
+	Labels           map[string]string         `json:"labels"`
 	Schema           string                    `json:"schema"`
+	Etag             string                    `json:"etag"`
 }
 
+
+
 type GoogleBigqueryTableStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

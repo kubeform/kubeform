@@ -19,12 +19,18 @@ type AwsElasticacheSubnetGroup struct {
 }
 
 type AwsElasticacheSubnetGroupSpec struct {
-	SubnetIds   []string `json:"subnet_ids"`
 	Description string   `json:"description"`
 	Name        string   `json:"name"`
+	SubnetIds   []string `json:"subnet_ids"`
 }
 
+
+
 type AwsElasticacheSubnetGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

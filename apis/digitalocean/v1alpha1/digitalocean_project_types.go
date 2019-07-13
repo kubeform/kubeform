@@ -21,16 +21,22 @@ type DigitaloceanProject struct {
 type DigitaloceanProjectSpec struct {
 	Name        string   `json:"name"`
 	Description string   `json:"description"`
+	Environment string   `json:"environment"`
+	UpdatedAt   string   `json:"updated_at"`
+	Resources   []string `json:"resources"`
 	Purpose     string   `json:"purpose"`
 	OwnerUuid   string   `json:"owner_uuid"`
 	OwnerId     int      `json:"owner_id"`
-	Environment string   `json:"environment"`
 	CreatedAt   string   `json:"created_at"`
-	UpdatedAt   string   `json:"updated_at"`
-	Resources   []string `json:"resources"`
 }
 
+
+
 type DigitaloceanProjectStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

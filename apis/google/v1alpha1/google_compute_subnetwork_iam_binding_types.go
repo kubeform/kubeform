@@ -19,15 +19,21 @@ type GoogleComputeSubnetworkIamBinding struct {
 }
 
 type GoogleComputeSubnetworkIamBindingSpec struct {
-	Members    []string `json:"members"`
-	Etag       string   `json:"etag"`
-	Subnetwork string   `json:"subnetwork"`
 	Project    string   `json:"project"`
 	Region     string   `json:"region"`
+	Etag       string   `json:"etag"`
 	Role       string   `json:"role"`
+	Members    []string `json:"members"`
+	Subnetwork string   `json:"subnetwork"`
 }
 
+
+
 type GoogleComputeSubnetworkIamBindingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

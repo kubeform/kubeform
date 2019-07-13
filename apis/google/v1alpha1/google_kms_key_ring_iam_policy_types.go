@@ -24,7 +24,13 @@ type GoogleKmsKeyRingIamPolicySpec struct {
 	KeyRingId  string `json:"key_ring_id"`
 }
 
+
+
 type GoogleKmsKeyRingIamPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

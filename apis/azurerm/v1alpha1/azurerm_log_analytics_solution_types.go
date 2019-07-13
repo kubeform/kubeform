@@ -19,22 +19,28 @@ type AzurermLogAnalyticsSolution struct {
 }
 
 type AzurermLogAnalyticsSolutionSpecPlan struct {
-	PromotionCode string `json:"promotion_code"`
-	Product       string `json:"product"`
 	Name          string `json:"name"`
 	Publisher     string `json:"publisher"`
+	PromotionCode string `json:"promotion_code"`
+	Product       string `json:"product"`
 }
 
 type AzurermLogAnalyticsSolutionSpec struct {
-	WorkspaceName       string                            `json:"workspace_name"`
-	WorkspaceResourceId string                            `json:"workspace_resource_id"`
-	Location            string                            `json:"location"`
 	ResourceGroupName   string                            `json:"resource_group_name"`
 	Plan                []AzurermLogAnalyticsSolutionSpec `json:"plan"`
 	SolutionName        string                            `json:"solution_name"`
+	WorkspaceName       string                            `json:"workspace_name"`
+	WorkspaceResourceId string                            `json:"workspace_resource_id"`
+	Location            string                            `json:"location"`
 }
 
+
+
 type AzurermLogAnalyticsSolutionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

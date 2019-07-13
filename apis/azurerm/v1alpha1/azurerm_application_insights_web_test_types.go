@@ -19,23 +19,29 @@ type AzurermApplicationInsightsWebTest struct {
 }
 
 type AzurermApplicationInsightsWebTestSpec struct {
-	Name                  string            `json:"name"`
-	GeoLocations          []string          `json:"geo_locations"`
+	Configuration         string            `json:"configuration"`
 	Tags                  map[string]string `json:"tags"`
-	Frequency             int               `json:"frequency"`
 	Timeout               int               `json:"timeout"`
 	Enabled               bool              `json:"enabled"`
-	Configuration         string            `json:"configuration"`
-	SyntheticMonitorId    string            `json:"synthetic_monitor_id"`
-	ResourceGroupName     string            `json:"resource_group_name"`
-	Location              string            `json:"location"`
-	Kind                  string            `json:"kind"`
-	ApplicationInsightsId string            `json:"application_insights_id"`
-	RetryEnabled          bool              `json:"retry_enabled"`
+	GeoLocations          []string          `json:"geo_locations"`
 	Description           string            `json:"description"`
+	ResourceGroupName     string            `json:"resource_group_name"`
+	ApplicationInsightsId string            `json:"application_insights_id"`
+	Kind                  string            `json:"kind"`
+	RetryEnabled          bool              `json:"retry_enabled"`
+	SyntheticMonitorId    string            `json:"synthetic_monitor_id"`
+	Name                  string            `json:"name"`
+	Location              string            `json:"location"`
+	Frequency             int               `json:"frequency"`
 }
 
+
+
 type AzurermApplicationInsightsWebTestStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -18,28 +18,6 @@ type AzurermContainerService struct {
 	Status            AzurermContainerServiceStatus `json:"status,omitempty"`
 }
 
-type AzurermContainerServiceSpecLinuxProfileSshKey struct {
-	KeyData string `json:"key_data"`
-}
-
-type AzurermContainerServiceSpecLinuxProfile struct {
-	SshKey        []AzurermContainerServiceSpecLinuxProfile `json:"ssh_key"`
-	AdminUsername string                                    `json:"admin_username"`
-}
-
-type AzurermContainerServiceSpecAgentPoolProfile struct {
-	Count     int    `json:"count"`
-	DnsPrefix string `json:"dns_prefix"`
-	Fqdn      string `json:"fqdn"`
-	VmSize    string `json:"vm_size"`
-	Name      string `json:"name"`
-}
-
-type AzurermContainerServiceSpecDiagnosticsProfile struct {
-	Enabled    bool   `json:"enabled"`
-	StorageUri string `json:"storage_uri"`
-}
-
 type AzurermContainerServiceSpecMasterProfile struct {
 	DnsPrefix string `json:"dns_prefix"`
 	Fqdn      string `json:"fqdn"`
@@ -51,20 +29,48 @@ type AzurermContainerServiceSpecServicePrincipal struct {
 	ClientSecret string `json:"client_secret"`
 }
 
-type AzurermContainerServiceSpec struct {
-	LinuxProfile          []AzurermContainerServiceSpec `json:"linux_profile"`
-	AgentPoolProfile      []AzurermContainerServiceSpec `json:"agent_pool_profile"`
-	DiagnosticsProfile    []AzurermContainerServiceSpec `json:"diagnostics_profile"`
-	Name                  string                        `json:"name"`
-	ResourceGroupName     string                        `json:"resource_group_name"`
-	MasterProfile         []AzurermContainerServiceSpec `json:"master_profile"`
-	Tags                  map[string]string             `json:"tags"`
-	Location              string                        `json:"location"`
-	OrchestrationPlatform string                        `json:"orchestration_platform"`
-	ServicePrincipal      []AzurermContainerServiceSpec `json:"service_principal"`
+type AzurermContainerServiceSpecDiagnosticsProfile struct {
+	Enabled    bool   `json:"enabled"`
+	StorageUri string `json:"storage_uri"`
 }
 
+type AzurermContainerServiceSpecLinuxProfileSshKey struct {
+	KeyData string `json:"key_data"`
+}
+
+type AzurermContainerServiceSpecLinuxProfile struct {
+	SshKey        []AzurermContainerServiceSpecLinuxProfile `json:"ssh_key"`
+	AdminUsername string                                    `json:"admin_username"`
+}
+
+type AzurermContainerServiceSpecAgentPoolProfile struct {
+	Name      string `json:"name"`
+	Count     int    `json:"count"`
+	DnsPrefix string `json:"dns_prefix"`
+	Fqdn      string `json:"fqdn"`
+	VmSize    string `json:"vm_size"`
+}
+
+type AzurermContainerServiceSpec struct {
+	MasterProfile         []AzurermContainerServiceSpec `json:"master_profile"`
+	ServicePrincipal      []AzurermContainerServiceSpec `json:"service_principal"`
+	DiagnosticsProfile    []AzurermContainerServiceSpec `json:"diagnostics_profile"`
+	Tags                  map[string]string             `json:"tags"`
+	Name                  string                        `json:"name"`
+	ResourceGroupName     string                        `json:"resource_group_name"`
+	OrchestrationPlatform string                        `json:"orchestration_platform"`
+	LinuxProfile          []AzurermContainerServiceSpec `json:"linux_profile"`
+	AgentPoolProfile      []AzurermContainerServiceSpec `json:"agent_pool_profile"`
+	Location              string                        `json:"location"`
+}
+
+
+
 type AzurermContainerServiceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

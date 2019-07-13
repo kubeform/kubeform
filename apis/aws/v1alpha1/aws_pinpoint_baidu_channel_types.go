@@ -19,13 +19,19 @@ type AwsPinpointBaiduChannel struct {
 }
 
 type AwsPinpointBaiduChannelSpec struct {
-	ApplicationId string `json:"application_id"`
 	Enabled       bool   `json:"enabled"`
 	ApiKey        string `json:"api_key"`
 	SecretKey     string `json:"secret_key"`
+	ApplicationId string `json:"application_id"`
 }
 
+
+
 type AwsPinpointBaiduChannelStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

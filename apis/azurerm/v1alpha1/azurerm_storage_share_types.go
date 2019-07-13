@@ -19,14 +19,20 @@ type AzurermStorageShare struct {
 }
 
 type AzurermStorageShareSpec struct {
+	Name               string `json:"name"`
+	ResourceGroupName  string `json:"resource_group_name"`
 	StorageAccountName string `json:"storage_account_name"`
 	Quota              int    `json:"quota"`
 	Url                string `json:"url"`
-	Name               string `json:"name"`
-	ResourceGroupName  string `json:"resource_group_name"`
 }
 
+
+
 type AzurermStorageShareStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

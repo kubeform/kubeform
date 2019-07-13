@@ -19,26 +19,32 @@ type AzurermContainerRegistry struct {
 }
 
 type AzurermContainerRegistrySpecStorageAccount struct {
-	Name      string `json:"name"`
 	AccessKey string `json:"access_key"`
+	Name      string `json:"name"`
 }
 
 type AzurermContainerRegistrySpec struct {
-	StorageAccountId        string                         `json:"storage_account_id"`
-	LoginServer             string                         `json:"login_server"`
-	AdminUsername           string                         `json:"admin_username"`
+	AdminPassword           string                         `json:"admin_password"`
 	Tags                    map[string]string              `json:"tags"`
-	Location                string                         `json:"location"`
+	ResourceGroupName       string                         `json:"resource_group_name"`
 	Sku                     string                         `json:"sku"`
 	AdminEnabled            bool                           `json:"admin_enabled"`
-	StorageAccount          []AzurermContainerRegistrySpec `json:"storage_account"`
-	AdminPassword           string                         `json:"admin_password"`
+	LoginServer             string                         `json:"login_server"`
+	AdminUsername           string                         `json:"admin_username"`
 	Name                    string                         `json:"name"`
-	ResourceGroupName       string                         `json:"resource_group_name"`
+	Location                string                         `json:"location"`
 	GeoreplicationLocations []string                       `json:"georeplication_locations"`
+	StorageAccountId        string                         `json:"storage_account_id"`
+	StorageAccount          []AzurermContainerRegistrySpec `json:"storage_account"`
 }
 
+
+
 type AzurermContainerRegistryStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -25,20 +25,26 @@ type AzurermDataFactoryDatasetPostgresqlSpecSchemaColumn struct {
 }
 
 type AzurermDataFactoryDatasetPostgresqlSpec struct {
-	Folder               string                                    `json:"folder"`
-	SchemaColumn         []AzurermDataFactoryDatasetPostgresqlSpec `json:"schema_column"`
-	Name                 string                                    `json:"name"`
 	ResourceGroupName    string                                    `json:"resource_group_name"`
 	LinkedServiceName    string                                    `json:"linked_service_name"`
 	TableName            string                                    `json:"table_name"`
 	Parameters           map[string]string                         `json:"parameters"`
-	Annotations          []string                                  `json:"annotations"`
+	SchemaColumn         []AzurermDataFactoryDatasetPostgresqlSpec `json:"schema_column"`
+	Name                 string                                    `json:"name"`
 	DataFactoryName      string                                    `json:"data_factory_name"`
 	Description          string                                    `json:"description"`
+	Annotations          []string                                  `json:"annotations"`
+	Folder               string                                    `json:"folder"`
 	AdditionalProperties map[string]string                         `json:"additional_properties"`
 }
 
+
+
 type AzurermDataFactoryDatasetPostgresqlStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

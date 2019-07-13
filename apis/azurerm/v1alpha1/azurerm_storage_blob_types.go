@@ -19,22 +19,28 @@ type AzurermStorageBlob struct {
 }
 
 type AzurermStorageBlobSpec struct {
+	Name                 string            `json:"name"`
 	SourceUri            string            `json:"source_uri"`
-	Metadata             map[string]string `json:"metadata"`
+	Parallelism          int               `json:"parallelism"`
+	Attempts             int               `json:"attempts"`
+	Size                 int               `json:"size"`
+	ContentType          string            `json:"content_type"`
 	Source               string            `json:"source"`
+	Url                  string            `json:"url"`
 	ResourceGroupName    string            `json:"resource_group_name"`
 	StorageAccountName   string            `json:"storage_account_name"`
 	StorageContainerName string            `json:"storage_container_name"`
 	Type                 string            `json:"type"`
-	Size                 int               `json:"size"`
-	ContentType          string            `json:"content_type"`
-	Url                  string            `json:"url"`
-	Name                 string            `json:"name"`
-	Attempts             int               `json:"attempts"`
-	Parallelism          int               `json:"parallelism"`
+	Metadata             map[string]string `json:"metadata"`
 }
 
+
+
 type AzurermStorageBlobStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

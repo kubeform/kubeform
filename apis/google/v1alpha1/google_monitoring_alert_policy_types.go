@@ -23,35 +23,35 @@ type GoogleMonitoringAlertPolicySpecCreationRecord struct {
 	MutatedBy  string `json:"mutated_by"`
 }
 
+type GoogleMonitoringAlertPolicySpecConditionsConditionAbsentAggregations struct {
+	PerSeriesAligner   string   `json:"per_series_aligner"`
+	AlignmentPeriod    string   `json:"alignment_period"`
+	CrossSeriesReducer string   `json:"cross_series_reducer"`
+	GroupByFields      []string `json:"group_by_fields"`
+}
+
 type GoogleMonitoringAlertPolicySpecConditionsConditionAbsentTrigger struct {
 	Count   int     `json:"count"`
 	Percent float64 `json:"percent"`
 }
 
-type GoogleMonitoringAlertPolicySpecConditionsConditionAbsentAggregations struct {
-	AlignmentPeriod    string   `json:"alignment_period"`
-	CrossSeriesReducer string   `json:"cross_series_reducer"`
-	GroupByFields      []string `json:"group_by_fields"`
-	PerSeriesAligner   string   `json:"per_series_aligner"`
-}
-
 type GoogleMonitoringAlertPolicySpecConditionsConditionAbsent struct {
-	Filter       string                                                     `json:"filter"`
-	Trigger      []GoogleMonitoringAlertPolicySpecConditionsConditionAbsent `json:"trigger"`
 	Duration     string                                                     `json:"duration"`
 	Aggregations []GoogleMonitoringAlertPolicySpecConditionsConditionAbsent `json:"aggregations"`
+	Filter       string                                                     `json:"filter"`
+	Trigger      []GoogleMonitoringAlertPolicySpecConditionsConditionAbsent `json:"trigger"`
 }
 
 type GoogleMonitoringAlertPolicySpecConditionsConditionThresholdTrigger struct {
-	Percent float64 `json:"percent"`
 	Count   int     `json:"count"`
+	Percent float64 `json:"percent"`
 }
 
 type GoogleMonitoringAlertPolicySpecConditionsConditionThresholdAggregations struct {
-	PerSeriesAligner   string   `json:"per_series_aligner"`
 	AlignmentPeriod    string   `json:"alignment_period"`
 	CrossSeriesReducer string   `json:"cross_series_reducer"`
 	GroupByFields      []string `json:"group_by_fields"`
+	PerSeriesAligner   string   `json:"per_series_aligner"`
 }
 
 type GoogleMonitoringAlertPolicySpecConditionsConditionThresholdDenominatorAggregations struct {
@@ -80,18 +80,24 @@ type GoogleMonitoringAlertPolicySpecConditions struct {
 }
 
 type GoogleMonitoringAlertPolicySpec struct {
+	Combiner             string                            `json:"combiner"`
+	Enabled              bool                              `json:"enabled"`
+	Labels               []string                          `json:"labels"`
+	NotificationChannels []string                          `json:"notification_channels"`
 	CreationRecord       []GoogleMonitoringAlertPolicySpec `json:"creation_record"`
 	Name                 string                            `json:"name"`
 	Project              string                            `json:"project"`
-	Combiner             string                            `json:"combiner"`
 	Conditions           []GoogleMonitoringAlertPolicySpec `json:"conditions"`
 	DisplayName          string                            `json:"display_name"`
-	Enabled              bool                              `json:"enabled"`
-	NotificationChannels []string                          `json:"notification_channels"`
-	Labels               []string                          `json:"labels"`
 }
 
+
+
 type GoogleMonitoringAlertPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

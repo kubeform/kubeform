@@ -19,16 +19,22 @@ type AzurermDatabricksWorkspace struct {
 }
 
 type AzurermDatabricksWorkspaceSpec struct {
+	Name                     string            `json:"name"`
+	Location                 string            `json:"location"`
 	ResourceGroupName        string            `json:"resource_group_name"`
 	Sku                      string            `json:"sku"`
 	Tags                     map[string]string `json:"tags"`
 	ManagedResourceGroupName string            `json:"managed_resource_group_name"`
 	ManagedResourceGroupId   string            `json:"managed_resource_group_id"`
-	Name                     string            `json:"name"`
-	Location                 string            `json:"location"`
 }
 
+
+
 type AzurermDatabricksWorkspaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

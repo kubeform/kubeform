@@ -20,21 +20,27 @@ type AzurermKeyVaultKey struct {
 
 type AzurermKeyVaultKeySpec struct {
 	KeyOpts    []string          `json:"key_opts"`
-	N          string            `json:"n"`
-	X          string            `json:"x"`
-	Tags       map[string]string `json:"tags"`
-	Name       string            `json:"name"`
-	KeyType    string            `json:"key_type"`
-	KeySize    int               `json:"key_size"`
 	Curve      string            `json:"curve"`
 	Version    string            `json:"version"`
 	E          string            `json:"e"`
+	X          string            `json:"x"`
+	Name       string            `json:"name"`
+	KeyType    string            `json:"key_type"`
+	KeySize    int               `json:"key_size"`
 	Y          string            `json:"y"`
+	Tags       map[string]string `json:"tags"`
 	KeyVaultId string            `json:"key_vault_id"`
 	VaultUri   string            `json:"vault_uri"`
+	N          string            `json:"n"`
 }
 
+
+
 type AzurermKeyVaultKeyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,19 +19,25 @@ type AwsEc2TransitGatewayVpcAttachmentAccepter struct {
 }
 
 type AwsEc2TransitGatewayVpcAttachmentAccepterSpec struct {
-	DnsSupport                                 string            `json:"dns_support"`
-	SubnetIds                                  []string          `json:"subnet_ids"`
-	TransitGatewayDefaultRouteTableAssociation bool              `json:"transit_gateway_default_route_table_association"`
-	TransitGatewayDefaultRouteTablePropagation bool              `json:"transit_gateway_default_route_table_propagation"`
-	TransitGatewayId                           string            `json:"transit_gateway_id"`
-	Ipv6Support                                string            `json:"ipv6_support"`
-	Tags                                       map[string]string `json:"tags"`
-	TransitGatewayAttachmentId                 string            `json:"transit_gateway_attachment_id"`
 	VpcId                                      string            `json:"vpc_id"`
 	VpcOwnerId                                 string            `json:"vpc_owner_id"`
+	Tags                                       map[string]string `json:"tags"`
+	TransitGatewayDefaultRouteTablePropagation bool              `json:"transit_gateway_default_route_table_propagation"`
+	SubnetIds                                  []string          `json:"subnet_ids"`
+	TransitGatewayAttachmentId                 string            `json:"transit_gateway_attachment_id"`
+	TransitGatewayDefaultRouteTableAssociation bool              `json:"transit_gateway_default_route_table_association"`
+	TransitGatewayId                           string            `json:"transit_gateway_id"`
+	DnsSupport                                 string            `json:"dns_support"`
+	Ipv6Support                                string            `json:"ipv6_support"`
 }
 
+
+
 type AwsEc2TransitGatewayVpcAttachmentAccepterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

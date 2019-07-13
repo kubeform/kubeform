@@ -29,15 +29,21 @@ type AwsCodebuildWebhookSpecFilterGroup struct {
 }
 
 type AwsCodebuildWebhookSpec struct {
+	Secret       string                    `json:"secret"`
+	Url          string                    `json:"url"`
 	ProjectName  string                    `json:"project_name"`
 	BranchFilter string                    `json:"branch_filter"`
 	FilterGroup  []AwsCodebuildWebhookSpec `json:"filter_group"`
 	PayloadUrl   string                    `json:"payload_url"`
-	Secret       string                    `json:"secret"`
-	Url          string                    `json:"url"`
 }
 
+
+
 type AwsCodebuildWebhookStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

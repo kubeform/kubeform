@@ -19,8 +19,8 @@ type AzurermAutomationModule struct {
 }
 
 type AzurermAutomationModuleSpecModuleLinkHash struct {
-	Algorithm string `json:"algorithm"`
 	Value     string `json:"value"`
+	Algorithm string `json:"algorithm"`
 }
 
 type AzurermAutomationModuleSpecModuleLink struct {
@@ -35,7 +35,13 @@ type AzurermAutomationModuleSpec struct {
 	ModuleLink            []AzurermAutomationModuleSpec `json:"module_link"`
 }
 
+
+
 type AzurermAutomationModuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

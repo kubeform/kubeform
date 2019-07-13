@@ -23,23 +23,29 @@ type AwsApiGatewayDomainNameSpecEndpointConfiguration struct {
 }
 
 type AwsApiGatewayDomainNameSpec struct {
-	EndpointConfiguration   []AwsApiGatewayDomainNameSpec `json:"endpoint_configuration"`
-	CertificateName         string                        `json:"certificate_name"`
-	CertificatePrivateKey   string                        `json:"certificate_private_key"`
-	CloudfrontZoneId        string                        `json:"cloudfront_zone_id"`
-	RegionalCertificateName string                        `json:"regional_certificate_name"`
-	RegionalDomainName      string                        `json:"regional_domain_name"`
-	CloudfrontDomainName    string                        `json:"cloudfront_domain_name"`
-	CertificateUploadDate   string                        `json:"certificate_upload_date"`
-	CertificateBody         string                        `json:"certificate_body"`
 	CertificateChain        string                        `json:"certificate_chain"`
-	DomainName              string                        `json:"domain_name"`
+	CertificatePrivateKey   string                        `json:"certificate_private_key"`
+	CloudfrontDomainName    string                        `json:"cloudfront_domain_name"`
 	CertificateArn          string                        `json:"certificate_arn"`
-	RegionalCertificateArn  string                        `json:"regional_certificate_arn"`
+	CertificateUploadDate   string                        `json:"certificate_upload_date"`
+	CloudfrontZoneId        string                        `json:"cloudfront_zone_id"`
+	CertificateBody         string                        `json:"certificate_body"`
+	CertificateName         string                        `json:"certificate_name"`
+	EndpointConfiguration   []AwsApiGatewayDomainNameSpec `json:"endpoint_configuration"`
+	RegionalCertificateName string                        `json:"regional_certificate_name"`
 	RegionalZoneId          string                        `json:"regional_zone_id"`
+	DomainName              string                        `json:"domain_name"`
+	RegionalCertificateArn  string                        `json:"regional_certificate_arn"`
+	RegionalDomainName      string                        `json:"regional_domain_name"`
 }
 
+
+
 type AwsApiGatewayDomainNameStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

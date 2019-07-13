@@ -19,16 +19,22 @@ type AwsTransferUser struct {
 }
 
 type AwsTransferUserSpec struct {
-	ServerId      string            `json:"server_id"`
-	Tags          map[string]string `json:"tags"`
-	UserName      string            `json:"user_name"`
 	Arn           string            `json:"arn"`
 	HomeDirectory string            `json:"home_directory"`
 	Policy        string            `json:"policy"`
 	Role          string            `json:"role"`
+	ServerId      string            `json:"server_id"`
+	Tags          map[string]string `json:"tags"`
+	UserName      string            `json:"user_name"`
 }
 
+
+
 type AwsTransferUserStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

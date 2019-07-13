@@ -19,18 +19,24 @@ type AwsApiGatewayIntegrationResponse struct {
 }
 
 type AwsApiGatewayIntegrationResponseSpec struct {
+	SelectionPattern         string            `json:"selection_pattern"`
+	ResponseTemplates        map[string]string `json:"response_templates"`
 	ResponseParameters       map[string]string `json:"response_parameters"`
 	ResponseParametersInJson string            `json:"response_parameters_in_json"`
-	HttpMethod               string            `json:"http_method"`
-	ResponseTemplates        map[string]string `json:"response_templates"`
-	StatusCode               string            `json:"status_code"`
-	SelectionPattern         string            `json:"selection_pattern"`
 	ContentHandling          string            `json:"content_handling"`
+	HttpMethod               string            `json:"http_method"`
+	StatusCode               string            `json:"status_code"`
 	RestApiId                string            `json:"rest_api_id"`
 	ResourceId               string            `json:"resource_id"`
 }
 
+
+
 type AwsApiGatewayIntegrationResponseStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

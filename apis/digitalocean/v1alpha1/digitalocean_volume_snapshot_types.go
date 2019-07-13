@@ -19,15 +19,21 @@ type DigitaloceanVolumeSnapshot struct {
 }
 
 type DigitaloceanVolumeSnapshotSpec struct {
-	Name        string   `json:"name"`
 	VolumeId    string   `json:"volume_id"`
 	Regions     []string `json:"regions"`
 	Size        float64  `json:"size"`
 	CreatedAt   string   `json:"created_at"`
 	MinDiskSize int      `json:"min_disk_size"`
+	Name        string   `json:"name"`
 }
 
+
+
 type DigitaloceanVolumeSnapshotStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,26 +19,32 @@ type AwsApiGatewayIntegration struct {
 }
 
 type AwsApiGatewayIntegrationSpec struct {
-	ConnectionType          string            `json:"connection_type"`
-	Credentials             string            `json:"credentials"`
-	ContentHandling         string            `json:"content_handling"`
-	TimeoutMilliseconds     int               `json:"timeout_milliseconds"`
-	RestApiId               string            `json:"rest_api_id"`
 	HttpMethod              string            `json:"http_method"`
-	RequestParametersInJson string            `json:"request_parameters_in_json"`
-	PassthroughBehavior     string            `json:"passthrough_behavior"`
-	CacheNamespace          string            `json:"cache_namespace"`
+	Credentials             string            `json:"credentials"`
+	CacheKeyParameters      []string          `json:"cache_key_parameters"`
+	RestApiId               string            `json:"rest_api_id"`
 	Type                    string            `json:"type"`
 	IntegrationHttpMethod   string            `json:"integration_http_method"`
+	RequestParametersInJson string            `json:"request_parameters_in_json"`
+	TimeoutMilliseconds     int               `json:"timeout_milliseconds"`
+	ResourceId              string            `json:"resource_id"`
+	ConnectionType          string            `json:"connection_type"`
 	RequestTemplates        map[string]string `json:"request_templates"`
-	RequestParameters       map[string]string `json:"request_parameters"`
+	ContentHandling         string            `json:"content_handling"`
 	ConnectionId            string            `json:"connection_id"`
 	Uri                     string            `json:"uri"`
-	ResourceId              string            `json:"resource_id"`
-	CacheKeyParameters      []string          `json:"cache_key_parameters"`
+	RequestParameters       map[string]string `json:"request_parameters"`
+	PassthroughBehavior     string            `json:"passthrough_behavior"`
+	CacheNamespace          string            `json:"cache_namespace"`
 }
 
+
+
 type AwsApiGatewayIntegrationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

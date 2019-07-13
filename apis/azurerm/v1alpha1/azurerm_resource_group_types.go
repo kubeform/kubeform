@@ -24,7 +24,13 @@ type AzurermResourceGroupSpec struct {
 	Tags     map[string]string `json:"tags"`
 }
 
+
+
 type AzurermResourceGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

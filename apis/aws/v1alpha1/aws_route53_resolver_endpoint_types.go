@@ -19,22 +19,28 @@ type AwsRoute53ResolverEndpoint struct {
 }
 
 type AwsRoute53ResolverEndpointSpecIpAddress struct {
+	SubnetId string `json:"subnet_id"`
 	Ip       string `json:"ip"`
 	IpId     string `json:"ip_id"`
-	SubnetId string `json:"subnet_id"`
 }
 
 type AwsRoute53ResolverEndpointSpec struct {
+	Arn              string                           `json:"arn"`
+	HostVpcId        string                           `json:"host_vpc_id"`
 	Direction        string                           `json:"direction"`
 	IpAddress        []AwsRoute53ResolverEndpointSpec `json:"ip_address"`
 	SecurityGroupIds []string                         `json:"security_group_ids"`
 	Name             string                           `json:"name"`
 	Tags             map[string]string                `json:"tags"`
-	Arn              string                           `json:"arn"`
-	HostVpcId        string                           `json:"host_vpc_id"`
 }
 
+
+
 type AwsRoute53ResolverEndpointStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

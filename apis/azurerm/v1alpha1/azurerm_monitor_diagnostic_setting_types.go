@@ -19,14 +19,14 @@ type AzurermMonitorDiagnosticSetting struct {
 }
 
 type AzurermMonitorDiagnosticSettingSpecLogRetentionPolicy struct {
-	Days    int  `json:"days"`
 	Enabled bool `json:"enabled"`
+	Days    int  `json:"days"`
 }
 
 type AzurermMonitorDiagnosticSettingSpecLog struct {
+	Category        string                                   `json:"category"`
 	Enabled         bool                                     `json:"enabled"`
 	RetentionPolicy []AzurermMonitorDiagnosticSettingSpecLog `json:"retention_policy"`
-	Category        string                                   `json:"category"`
 }
 
 type AzurermMonitorDiagnosticSettingSpecMetricRetentionPolicy struct {
@@ -41,17 +41,23 @@ type AzurermMonitorDiagnosticSettingSpecMetric struct {
 }
 
 type AzurermMonitorDiagnosticSettingSpec struct {
+	LogAnalyticsWorkspaceId     string                                `json:"log_analytics_workspace_id"`
+	StorageAccountId            string                                `json:"storage_account_id"`
 	Log                         []AzurermMonitorDiagnosticSettingSpec `json:"log"`
 	Metric                      []AzurermMonitorDiagnosticSettingSpec `json:"metric"`
 	Name                        string                                `json:"name"`
 	TargetResourceId            string                                `json:"target_resource_id"`
 	EventhubName                string                                `json:"eventhub_name"`
 	EventhubAuthorizationRuleId string                                `json:"eventhub_authorization_rule_id"`
-	LogAnalyticsWorkspaceId     string                                `json:"log_analytics_workspace_id"`
-	StorageAccountId            string                                `json:"storage_account_id"`
 }
 
+
+
 type AzurermMonitorDiagnosticSettingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

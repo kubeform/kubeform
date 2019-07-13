@@ -19,12 +19,18 @@ type AwsPinpointGcmChannel struct {
 }
 
 type AwsPinpointGcmChannelSpec struct {
+	Enabled       bool   `json:"enabled"`
 	ApplicationId string `json:"application_id"`
 	ApiKey        string `json:"api_key"`
-	Enabled       bool   `json:"enabled"`
 }
 
+
+
 type AwsPinpointGcmChannelStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

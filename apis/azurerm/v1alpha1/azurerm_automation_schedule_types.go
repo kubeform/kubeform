@@ -24,22 +24,28 @@ type AzurermAutomationScheduleSpecMonthlyOccurrence struct {
 }
 
 type AzurermAutomationScheduleSpec struct {
-	MonthDays             []int64                         `json:"month_days"`
-	MonthlyOccurrence     []AzurermAutomationScheduleSpec `json:"monthly_occurrence"`
-	Frequency             string                          `json:"frequency"`
-	StartTime             string                          `json:"start_time"`
-	ExpiryTime            string                          `json:"expiry_time"`
 	AutomationAccountName string                          `json:"automation_account_name"`
 	Interval              int                             `json:"interval"`
 	Description           string                          `json:"description"`
 	Timezone              string                          `json:"timezone"`
 	WeekDays              []string                        `json:"week_days"`
+	MonthDays             []int64                         `json:"month_days"`
 	Name                  string                          `json:"name"`
 	ResourceGroupName     string                          `json:"resource_group_name"`
 	AccountName           string                          `json:"account_name"`
+	Frequency             string                          `json:"frequency"`
+	StartTime             string                          `json:"start_time"`
+	ExpiryTime            string                          `json:"expiry_time"`
+	MonthlyOccurrence     []AzurermAutomationScheduleSpec `json:"monthly_occurrence"`
 }
 
+
+
 type AzurermAutomationScheduleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

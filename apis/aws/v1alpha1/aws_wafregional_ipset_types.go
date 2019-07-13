@@ -19,17 +19,23 @@ type AwsWafregionalIpset struct {
 }
 
 type AwsWafregionalIpsetSpecIpSetDescriptor struct {
-	Type  string `json:"type"`
 	Value string `json:"value"`
+	Type  string `json:"type"`
 }
 
 type AwsWafregionalIpsetSpec struct {
+	Name            string                    `json:"name"`
 	Arn             string                    `json:"arn"`
 	IpSetDescriptor []AwsWafregionalIpsetSpec `json:"ip_set_descriptor"`
-	Name            string                    `json:"name"`
 }
 
+
+
 type AwsWafregionalIpsetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

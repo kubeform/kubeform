@@ -19,23 +19,29 @@ type AwsGlobalacceleratorEndpointGroup struct {
 }
 
 type AwsGlobalacceleratorEndpointGroupSpecEndpointConfiguration struct {
-	EndpointId string `json:"endpoint_id"`
 	Weight     int    `json:"weight"`
+	EndpointId string `json:"endpoint_id"`
 }
 
 type AwsGlobalacceleratorEndpointGroupSpec struct {
-	HealthCheckProtocol        string                                  `json:"health_check_protocol"`
-	ThresholdCount             int                                     `json:"threshold_count"`
-	EndpointConfiguration      []AwsGlobalacceleratorEndpointGroupSpec `json:"endpoint_configuration"`
-	EndpointGroupRegion        string                                  `json:"endpoint_group_region"`
-	HealthCheckPort            int                                     `json:"health_check_port"`
-	HealthCheckPath            string                                  `json:"health_check_path"`
-	TrafficDialPercentage      float64                                 `json:"traffic_dial_percentage"`
-	ListenerArn                string                                  `json:"listener_arn"`
 	HealthCheckIntervalSeconds int                                     `json:"health_check_interval_seconds"`
+	HealthCheckPort            int                                     `json:"health_check_port"`
+	HealthCheckProtocol        string                                  `json:"health_check_protocol"`
+	EndpointConfiguration      []AwsGlobalacceleratorEndpointGroupSpec `json:"endpoint_configuration"`
+	ListenerArn                string                                  `json:"listener_arn"`
+	EndpointGroupRegion        string                                  `json:"endpoint_group_region"`
+	HealthCheckPath            string                                  `json:"health_check_path"`
+	ThresholdCount             int                                     `json:"threshold_count"`
+	TrafficDialPercentage      float64                                 `json:"traffic_dial_percentage"`
 }
 
+
+
 type AwsGlobalacceleratorEndpointGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

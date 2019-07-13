@@ -30,11 +30,17 @@ type AwsWafregionalRegexMatchSetSpecRegexMatchTuple struct {
 }
 
 type AwsWafregionalRegexMatchSetSpec struct {
-	RegexMatchTuple []AwsWafregionalRegexMatchSetSpec `json:"regex_match_tuple"`
 	Name            string                            `json:"name"`
+	RegexMatchTuple []AwsWafregionalRegexMatchSetSpec `json:"regex_match_tuple"`
 }
 
+
+
 type AwsWafregionalRegexMatchSetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

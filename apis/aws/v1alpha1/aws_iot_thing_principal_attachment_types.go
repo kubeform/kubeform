@@ -19,11 +19,17 @@ type AwsIotThingPrincipalAttachment struct {
 }
 
 type AwsIotThingPrincipalAttachmentSpec struct {
-	Thing     string `json:"thing"`
 	Principal string `json:"principal"`
+	Thing     string `json:"thing"`
 }
 
+
+
 type AwsIotThingPrincipalAttachmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,13 +19,19 @@ type AwsIotRoleAlias struct {
 }
 
 type AwsIotRoleAliasSpec struct {
-	CredentialDuration int    `json:"credential_duration"`
 	Arn                string `json:"arn"`
 	Alias              string `json:"alias"`
 	RoleArn            string `json:"role_arn"`
+	CredentialDuration int    `json:"credential_duration"`
 }
 
+
+
 type AwsIotRoleAliasStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

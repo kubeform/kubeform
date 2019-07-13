@@ -19,12 +19,18 @@ type AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociation stru
 }
 
 type AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationSpec struct {
-	BackendAddressPoolId string `json:"backend_address_pool_id"`
 	NetworkInterfaceId   string `json:"network_interface_id"`
 	IpConfigurationName  string `json:"ip_configuration_name"`
+	BackendAddressPoolId string `json:"backend_address_pool_id"`
 }
 
+
+
 type AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

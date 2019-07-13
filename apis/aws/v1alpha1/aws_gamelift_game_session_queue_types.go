@@ -24,14 +24,20 @@ type AwsGameliftGameSessionQueueSpecPlayerLatencyPolicy struct {
 }
 
 type AwsGameliftGameSessionQueueSpec struct {
+	TimeoutInSeconds    int                               `json:"timeout_in_seconds"`
+	Arn                 string                            `json:"arn"`
 	Destinations        []string                          `json:"destinations"`
 	Name                string                            `json:"name"`
 	PlayerLatencyPolicy []AwsGameliftGameSessionQueueSpec `json:"player_latency_policy"`
-	TimeoutInSeconds    int                               `json:"timeout_in_seconds"`
-	Arn                 string                            `json:"arn"`
 }
 
+
+
 type AwsGameliftGameSessionQueueStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

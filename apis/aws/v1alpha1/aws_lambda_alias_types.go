@@ -23,16 +23,22 @@ type AwsLambdaAliasSpecRoutingConfig struct {
 }
 
 type AwsLambdaAliasSpec struct {
+	FunctionVersion string               `json:"function_version"`
+	Name            string               `json:"name"`
+	Arn             string               `json:"arn"`
 	InvokeArn       string               `json:"invoke_arn"`
 	RoutingConfig   []AwsLambdaAliasSpec `json:"routing_config"`
 	Description     string               `json:"description"`
 	FunctionName    string               `json:"function_name"`
-	FunctionVersion string               `json:"function_version"`
-	Name            string               `json:"name"`
-	Arn             string               `json:"arn"`
 }
 
+
+
 type AwsLambdaAliasStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

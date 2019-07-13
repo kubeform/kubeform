@@ -18,15 +18,19 @@ type AwsServiceDiscoveryService struct {
 	Status            AwsServiceDiscoveryServiceStatus `json:"status,omitempty"`
 }
 
+type AwsServiceDiscoveryServiceSpecHealthCheckCustomConfig struct {
+	FailureThreshold int `json:"failure_threshold"`
+}
+
 type AwsServiceDiscoveryServiceSpecDnsConfigDnsRecords struct {
 	Ttl  int    `json:"ttl"`
 	Type string `json:"type"`
 }
 
 type AwsServiceDiscoveryServiceSpecDnsConfig struct {
-	RoutingPolicy string                                    `json:"routing_policy"`
 	NamespaceId   string                                    `json:"namespace_id"`
 	DnsRecords    []AwsServiceDiscoveryServiceSpecDnsConfig `json:"dns_records"`
+	RoutingPolicy string                                    `json:"routing_policy"`
 }
 
 type AwsServiceDiscoveryServiceSpecHealthCheckConfig struct {
@@ -35,21 +39,23 @@ type AwsServiceDiscoveryServiceSpecHealthCheckConfig struct {
 	Type             string `json:"type"`
 }
 
-type AwsServiceDiscoveryServiceSpecHealthCheckCustomConfig struct {
-	FailureThreshold int `json:"failure_threshold"`
-}
-
 type AwsServiceDiscoveryServiceSpec struct {
+	HealthCheckCustomConfig []AwsServiceDiscoveryServiceSpec `json:"health_check_custom_config"`
 	Arn                     string                           `json:"arn"`
 	Name                    string                           `json:"name"`
 	Description             string                           `json:"description"`
 	NamespaceId             string                           `json:"namespace_id"`
 	DnsConfig               []AwsServiceDiscoveryServiceSpec `json:"dns_config"`
 	HealthCheckConfig       []AwsServiceDiscoveryServiceSpec `json:"health_check_config"`
-	HealthCheckCustomConfig []AwsServiceDiscoveryServiceSpec `json:"health_check_custom_config"`
 }
 
+
+
 type AwsServiceDiscoveryServiceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

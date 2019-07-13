@@ -23,21 +23,27 @@ type GoogleComputeInterconnectAttachmentSpecPrivateInterconnectInfo struct {
 }
 
 type GoogleComputeInterconnectAttachmentSpec struct {
-	Region                  string                                    `json:"region"`
-	CloudRouterIpAddress    string                                    `json:"cloud_router_ip_address"`
-	Name                    string                                    `json:"name"`
-	Router                  string                                    `json:"router"`
-	Description             string                                    `json:"description"`
-	CreationTimestamp       string                                    `json:"creation_timestamp"`
 	CustomerRouterIpAddress string                                    `json:"customer_router_ip_address"`
 	GoogleReferenceId       string                                    `json:"google_reference_id"`
-	PrivateInterconnectInfo []GoogleComputeInterconnectAttachmentSpec `json:"private_interconnect_info"`
-	Project                 string                                    `json:"project"`
 	Interconnect            string                                    `json:"interconnect"`
+	Name                    string                                    `json:"name"`
+	Region                  string                                    `json:"region"`
+	CreationTimestamp       string                                    `json:"creation_timestamp"`
+	Project                 string                                    `json:"project"`
 	SelfLink                string                                    `json:"self_link"`
+	Router                  string                                    `json:"router"`
+	Description             string                                    `json:"description"`
+	CloudRouterIpAddress    string                                    `json:"cloud_router_ip_address"`
+	PrivateInterconnectInfo []GoogleComputeInterconnectAttachmentSpec `json:"private_interconnect_info"`
 }
 
+
+
 type GoogleComputeInterconnectAttachmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,20 +19,26 @@ type AzurermEventhubNamespaceAuthorizationRule struct {
 }
 
 type AzurermEventhubNamespaceAuthorizationRuleSpec struct {
-	NamespaceName             string `json:"namespace_name"`
-	Manage                    bool   `json:"manage"`
-	SecondaryKey              string `json:"secondary_key"`
-	SecondaryConnectionString string `json:"secondary_connection_string"`
-	Location                  string `json:"location"`
-	Name                      string `json:"name"`
-	PrimaryKey                string `json:"primary_key"`
-	PrimaryConnectionString   string `json:"primary_connection_string"`
-	Listen                    bool   `json:"listen"`
 	Send                      bool   `json:"send"`
 	ResourceGroupName         string `json:"resource_group_name"`
+	Manage                    bool   `json:"manage"`
+	PrimaryConnectionString   string `json:"primary_connection_string"`
+	SecondaryKey              string `json:"secondary_key"`
+	Listen                    bool   `json:"listen"`
+	Name                      string `json:"name"`
+	NamespaceName             string `json:"namespace_name"`
+	Location                  string `json:"location"`
+	PrimaryKey                string `json:"primary_key"`
+	SecondaryConnectionString string `json:"secondary_connection_string"`
 }
 
+
+
 type AzurermEventhubNamespaceAuthorizationRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

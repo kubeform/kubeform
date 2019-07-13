@@ -19,9 +19,9 @@ type AwsRedshiftSecurityGroup struct {
 }
 
 type AwsRedshiftSecurityGroupSpecIngress struct {
-	Cidr                 string `json:"cidr"`
 	SecurityGroupName    string `json:"security_group_name"`
 	SecurityGroupOwnerId string `json:"security_group_owner_id"`
+	Cidr                 string `json:"cidr"`
 }
 
 type AwsRedshiftSecurityGroupSpec struct {
@@ -30,7 +30,13 @@ type AwsRedshiftSecurityGroupSpec struct {
 	Description string                         `json:"description"`
 }
 
+
+
 type AwsRedshiftSecurityGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

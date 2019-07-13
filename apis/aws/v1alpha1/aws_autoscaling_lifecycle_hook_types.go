@@ -19,6 +19,7 @@ type AwsAutoscalingLifecycleHook struct {
 }
 
 type AwsAutoscalingLifecycleHookSpec struct {
+	DefaultResult         string `json:"default_result"`
 	HeartbeatTimeout      int    `json:"heartbeat_timeout"`
 	LifecycleTransition   string `json:"lifecycle_transition"`
 	NotificationMetadata  string `json:"notification_metadata"`
@@ -26,10 +27,15 @@ type AwsAutoscalingLifecycleHookSpec struct {
 	RoleArn               string `json:"role_arn"`
 	Name                  string `json:"name"`
 	AutoscalingGroupName  string `json:"autoscaling_group_name"`
-	DefaultResult         string `json:"default_result"`
 }
 
+
+
 type AwsAutoscalingLifecycleHookStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

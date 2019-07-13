@@ -19,9 +19,9 @@ type AwsSesEventDestination struct {
 }
 
 type AwsSesEventDestinationSpecCloudwatchDestination struct {
+	DefaultValue  string `json:"default_value"`
 	DimensionName string `json:"dimension_name"`
 	ValueSource   string `json:"value_source"`
-	DefaultValue  string `json:"default_value"`
 }
 
 type AwsSesEventDestinationSpecKinesisDestination struct {
@@ -34,16 +34,22 @@ type AwsSesEventDestinationSpecSnsDestination struct {
 }
 
 type AwsSesEventDestinationSpec struct {
+	CloudwatchDestination []AwsSesEventDestinationSpec `json:"cloudwatch_destination"`
+	KinesisDestination    []AwsSesEventDestinationSpec `json:"kinesis_destination"`
+	SnsDestination        []AwsSesEventDestinationSpec `json:"sns_destination"`
 	Name                  string                       `json:"name"`
 	ConfigurationSetName  string                       `json:"configuration_set_name"`
 	Enabled               bool                         `json:"enabled"`
 	MatchingTypes         []string                     `json:"matching_types"`
-	CloudwatchDestination []AwsSesEventDestinationSpec `json:"cloudwatch_destination"`
-	KinesisDestination    []AwsSesEventDestinationSpec `json:"kinesis_destination"`
-	SnsDestination        []AwsSesEventDestinationSpec `json:"sns_destination"`
 }
 
+
+
 type AwsSesEventDestinationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

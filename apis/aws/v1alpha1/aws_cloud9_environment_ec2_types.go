@@ -19,7 +19,6 @@ type AwsCloud9EnvironmentEc2 struct {
 }
 
 type AwsCloud9EnvironmentEc2Spec struct {
-	InstanceType             string `json:"instance_type"`
 	AutomaticStopTimeMinutes int    `json:"automatic_stop_time_minutes"`
 	Description              string `json:"description"`
 	OwnerArn                 string `json:"owner_arn"`
@@ -27,9 +26,16 @@ type AwsCloud9EnvironmentEc2Spec struct {
 	Arn                      string `json:"arn"`
 	Type                     string `json:"type"`
 	Name                     string `json:"name"`
+	InstanceType             string `json:"instance_type"`
 }
 
+
+
 type AwsCloud9EnvironmentEc2Status struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

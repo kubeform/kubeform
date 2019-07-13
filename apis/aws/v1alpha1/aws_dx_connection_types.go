@@ -19,17 +19,23 @@ type AwsDxConnection struct {
 }
 
 type AwsDxConnectionSpec struct {
+	Arn                  string            `json:"arn"`
+	Name                 string            `json:"name"`
 	Bandwidth            string            `json:"bandwidth"`
 	Location             string            `json:"location"`
 	JumboFrameCapable    bool              `json:"jumbo_frame_capable"`
 	Tags                 map[string]string `json:"tags"`
 	HasLogicalRedundancy string            `json:"has_logical_redundancy"`
 	AwsDevice            string            `json:"aws_device"`
-	Arn                  string            `json:"arn"`
-	Name                 string            `json:"name"`
 }
 
+
+
 type AwsDxConnectionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

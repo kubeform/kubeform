@@ -25,7 +25,13 @@ type AwsEc2TransitGatewayRouteTablePropagationSpec struct {
 	TransitGatewayRouteTableId string `json:"transit_gateway_route_table_id"`
 }
 
+
+
 type AwsEc2TransitGatewayRouteTablePropagationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

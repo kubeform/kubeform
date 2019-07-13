@@ -19,18 +19,24 @@ type AwsWafregionalRule struct {
 }
 
 type AwsWafregionalRuleSpecPredicate struct {
-	Negated bool   `json:"negated"`
 	DataId  string `json:"data_id"`
 	Type    string `json:"type"`
+	Negated bool   `json:"negated"`
 }
 
 type AwsWafregionalRuleSpec struct {
+	Name       string                   `json:"name"`
 	MetricName string                   `json:"metric_name"`
 	Predicate  []AwsWafregionalRuleSpec `json:"predicate"`
-	Name       string                   `json:"name"`
 }
 
+
+
 type AwsWafregionalRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

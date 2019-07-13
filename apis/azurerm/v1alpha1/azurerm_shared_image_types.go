@@ -25,10 +25,7 @@ type AzurermSharedImageSpecIdentifier struct {
 }
 
 type AzurermSharedImageSpec struct {
-	GalleryName         string                   `json:"gallery_name"`
-	ResourceGroupName   string                   `json:"resource_group_name"`
 	Identifier          []AzurermSharedImageSpec `json:"identifier"`
-	ReleaseNoteUri      string                   `json:"release_note_uri"`
 	Tags                map[string]string        `json:"tags"`
 	Name                string                   `json:"name"`
 	Location            string                   `json:"location"`
@@ -36,9 +33,18 @@ type AzurermSharedImageSpec struct {
 	Description         string                   `json:"description"`
 	Eula                string                   `json:"eula"`
 	PrivacyStatementUri string                   `json:"privacy_statement_uri"`
+	ReleaseNoteUri      string                   `json:"release_note_uri"`
+	GalleryName         string                   `json:"gallery_name"`
+	ResourceGroupName   string                   `json:"resource_group_name"`
 }
 
+
+
 type AzurermSharedImageStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

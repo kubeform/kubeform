@@ -19,11 +19,17 @@ type LinodeRdns struct {
 }
 
 type LinodeRdnsSpec struct {
-	Address string `json:"address"`
 	Rdns    string `json:"rdns"`
+	Address string `json:"address"`
 }
 
+
+
 type LinodeRdnsStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

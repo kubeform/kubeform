@@ -19,15 +19,21 @@ type AzurermApiManagementApiSchema struct {
 }
 
 type AzurermApiManagementApiSchemaSpec struct {
-	SchemaId          string `json:"schema_id"`
-	ApiName           string `json:"api_name"`
 	ResourceGroupName string `json:"resource_group_name"`
 	ApiManagementName string `json:"api_management_name"`
 	ContentType       string `json:"content_type"`
 	Value             string `json:"value"`
+	SchemaId          string `json:"schema_id"`
+	ApiName           string `json:"api_name"`
 }
 
+
+
 type AzurermApiManagementApiSchemaStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

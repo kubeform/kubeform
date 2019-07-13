@@ -24,12 +24,18 @@ type AwsS3BucketMetricSpecFilter struct {
 }
 
 type AwsS3BucketMetricSpec struct {
+	Name   string                  `json:"name"`
 	Bucket string                  `json:"bucket"`
 	Filter []AwsS3BucketMetricSpec `json:"filter"`
-	Name   string                  `json:"name"`
 }
 
+
+
 type AwsS3BucketMetricStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

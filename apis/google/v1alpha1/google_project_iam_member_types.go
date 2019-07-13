@@ -19,13 +19,19 @@ type GoogleProjectIamMember struct {
 }
 
 type GoogleProjectIamMemberSpec struct {
+	Project string `json:"project"`
 	Role    string `json:"role"`
 	Member  string `json:"member"`
 	Etag    string `json:"etag"`
-	Project string `json:"project"`
 }
 
+
+
 type GoogleProjectIamMemberStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

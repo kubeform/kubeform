@@ -19,18 +19,24 @@ type AwsEc2TransitGatewayVpcAttachment struct {
 }
 
 type AwsEc2TransitGatewayVpcAttachmentSpec struct {
-	VpcOwnerId                                 string            `json:"vpc_owner_id"`
-	DnsSupport                                 string            `json:"dns_support"`
-	Ipv6Support                                string            `json:"ipv6_support"`
-	SubnetIds                                  []string          `json:"subnet_ids"`
-	TransitGatewayDefaultRouteTablePropagation bool              `json:"transit_gateway_default_route_table_propagation"`
 	Tags                                       map[string]string `json:"tags"`
 	TransitGatewayDefaultRouteTableAssociation bool              `json:"transit_gateway_default_route_table_association"`
-	TransitGatewayId                           string            `json:"transit_gateway_id"`
+	TransitGatewayDefaultRouteTablePropagation bool              `json:"transit_gateway_default_route_table_propagation"`
 	VpcId                                      string            `json:"vpc_id"`
+	DnsSupport                                 string            `json:"dns_support"`
+	SubnetIds                                  []string          `json:"subnet_ids"`
+	TransitGatewayId                           string            `json:"transit_gateway_id"`
+	VpcOwnerId                                 string            `json:"vpc_owner_id"`
+	Ipv6Support                                string            `json:"ipv6_support"`
 }
 
+
+
 type AwsEc2TransitGatewayVpcAttachmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

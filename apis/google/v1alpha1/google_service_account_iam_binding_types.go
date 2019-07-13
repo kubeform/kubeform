@@ -19,13 +19,19 @@ type GoogleServiceAccountIamBinding struct {
 }
 
 type GoogleServiceAccountIamBindingSpec struct {
-	Role             string   `json:"role"`
 	Members          []string `json:"members"`
 	Etag             string   `json:"etag"`
+	Role             string   `json:"role"`
 	ServiceAccountId string   `json:"service_account_id"`
 }
 
+
+
 type GoogleServiceAccountIamBindingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,20 +19,26 @@ type AwsApiGatewayMethod struct {
 }
 
 type AwsApiGatewayMethodSpec struct {
-	RequestValidatorId      string            `json:"request_validator_id"`
 	RestApiId               string            `json:"rest_api_id"`
-	ApiKeyRequired          bool              `json:"api_key_required"`
-	RequestModels           map[string]string `json:"request_models"`
-	RequestParametersInJson string            `json:"request_parameters_in_json"`
-	AuthorizationScopes     []string          `json:"authorization_scopes"`
-	RequestParameters       map[string]bool   `json:"request_parameters"`
 	ResourceId              string            `json:"resource_id"`
 	HttpMethod              string            `json:"http_method"`
 	Authorization           string            `json:"authorization"`
 	AuthorizerId            string            `json:"authorizer_id"`
+	RequestModels           map[string]string `json:"request_models"`
+	RequestParameters       map[string]bool   `json:"request_parameters"`
+	AuthorizationScopes     []string          `json:"authorization_scopes"`
+	ApiKeyRequired          bool              `json:"api_key_required"`
+	RequestParametersInJson string            `json:"request_parameters_in_json"`
+	RequestValidatorId      string            `json:"request_validator_id"`
 }
 
+
+
 type AwsApiGatewayMethodStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

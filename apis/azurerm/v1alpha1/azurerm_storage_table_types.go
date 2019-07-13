@@ -19,12 +19,18 @@ type AzurermStorageTable struct {
 }
 
 type AzurermStorageTableSpec struct {
+	Name               string `json:"name"`
 	ResourceGroupName  string `json:"resource_group_name"`
 	StorageAccountName string `json:"storage_account_name"`
-	Name               string `json:"name"`
 }
 
+
+
 type AzurermStorageTableStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

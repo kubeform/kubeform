@@ -19,12 +19,18 @@ type GoogleStorageBucketIamPolicy struct {
 }
 
 type GoogleStorageBucketIamPolicySpec struct {
-	Bucket     string `json:"bucket"`
 	PolicyData string `json:"policy_data"`
 	Etag       string `json:"etag"`
+	Bucket     string `json:"bucket"`
 }
 
+
+
 type GoogleStorageBucketIamPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

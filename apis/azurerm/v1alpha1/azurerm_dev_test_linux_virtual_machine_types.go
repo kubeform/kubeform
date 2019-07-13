@@ -19,41 +19,47 @@ type AzurermDevTestLinuxVirtualMachine struct {
 }
 
 type AzurermDevTestLinuxVirtualMachineSpecInboundNatRule struct {
+	FrontendPort int    `json:"frontend_port"`
 	Protocol     string `json:"protocol"`
 	BackendPort  int    `json:"backend_port"`
-	FrontendPort int    `json:"frontend_port"`
 }
 
 type AzurermDevTestLinuxVirtualMachineSpecGalleryImageReference struct {
+	Publisher string `json:"publisher"`
 	Sku       string `json:"sku"`
 	Version   string `json:"version"`
 	Offer     string `json:"offer"`
-	Publisher string `json:"publisher"`
 }
 
 type AzurermDevTestLinuxVirtualMachineSpec struct {
-	ResourceGroupName       string                                  `json:"resource_group_name"`
-	LabVirtualNetworkId     string                                  `json:"lab_virtual_network_id"`
+	Name                    string                                  `json:"name"`
+	StorageType             string                                  `json:"storage_type"`
 	SshKey                  string                                  `json:"ssh_key"`
 	InboundNatRule          []AzurermDevTestLinuxVirtualMachineSpec `json:"inbound_nat_rule"`
-	Fqdn                    string                                  `json:"fqdn"`
-	Name                    string                                  `json:"name"`
-	Username                string                                  `json:"username"`
-	DisallowPublicIpAddress bool                                    `json:"disallow_public_ip_address"`
-	Password                string                                  `json:"password"`
-	Location                string                                  `json:"location"`
-	Size                    string                                  `json:"size"`
-	StorageType             string                                  `json:"storage_type"`
-	GalleryImageReference   []AzurermDevTestLinuxVirtualMachineSpec `json:"gallery_image_reference"`
-	Notes                   string                                  `json:"notes"`
 	UniqueIdentifier        string                                  `json:"unique_identifier"`
 	LabName                 string                                  `json:"lab_name"`
+	Location                string                                  `json:"location"`
 	LabSubnetName           string                                  `json:"lab_subnet_name"`
+	LabVirtualNetworkId     string                                  `json:"lab_virtual_network_id"`
 	AllowClaim              bool                                    `json:"allow_claim"`
+	Username                string                                  `json:"username"`
 	Tags                    map[string]string                       `json:"tags"`
+	ResourceGroupName       string                                  `json:"resource_group_name"`
+	Size                    string                                  `json:"size"`
+	DisallowPublicIpAddress bool                                    `json:"disallow_public_ip_address"`
+	Password                string                                  `json:"password"`
+	GalleryImageReference   []AzurermDevTestLinuxVirtualMachineSpec `json:"gallery_image_reference"`
+	Notes                   string                                  `json:"notes"`
+	Fqdn                    string                                  `json:"fqdn"`
 }
 
+
+
 type AzurermDevTestLinuxVirtualMachineStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

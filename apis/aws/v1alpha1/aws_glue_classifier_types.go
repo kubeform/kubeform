@@ -18,11 +18,6 @@ type AwsGlueClassifier struct {
 	Status            AwsGlueClassifierStatus `json:"status,omitempty"`
 }
 
-type AwsGlueClassifierSpecXmlClassifier struct {
-	Classification string `json:"classification"`
-	RowTag         string `json:"row_tag"`
-}
-
 type AwsGlueClassifierSpecGrokClassifier struct {
 	GrokPattern    string `json:"grok_pattern"`
 	Classification string `json:"classification"`
@@ -33,14 +28,25 @@ type AwsGlueClassifierSpecJsonClassifier struct {
 	JsonPath string `json:"json_path"`
 }
 
+type AwsGlueClassifierSpecXmlClassifier struct {
+	Classification string `json:"classification"`
+	RowTag         string `json:"row_tag"`
+}
+
 type AwsGlueClassifierSpec struct {
-	XmlClassifier  []AwsGlueClassifierSpec `json:"xml_classifier"`
 	GrokClassifier []AwsGlueClassifierSpec `json:"grok_classifier"`
 	JsonClassifier []AwsGlueClassifierSpec `json:"json_classifier"`
 	Name           string                  `json:"name"`
+	XmlClassifier  []AwsGlueClassifierSpec `json:"xml_classifier"`
 }
 
+
+
 type AwsGlueClassifierStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

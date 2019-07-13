@@ -19,16 +19,22 @@ type AwsDefaultVpcDhcpOptions struct {
 }
 
 type AwsDefaultVpcDhcpOptionsSpec struct {
-	NetbiosNodeType    string            `json:"netbios_node_type"`
-	NetbiosNameServers []string          `json:"netbios_name_servers"`
 	Tags               map[string]string `json:"tags"`
 	OwnerId            string            `json:"owner_id"`
 	DomainName         string            `json:"domain_name"`
 	DomainNameServers  string            `json:"domain_name_servers"`
 	NtpServers         string            `json:"ntp_servers"`
+	NetbiosNodeType    string            `json:"netbios_node_type"`
+	NetbiosNameServers []string          `json:"netbios_name_servers"`
 }
 
+
+
 type AwsDefaultVpcDhcpOptionsStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

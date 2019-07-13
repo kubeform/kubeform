@@ -23,11 +23,15 @@ type AzurermKeyVaultCertificateSpecCertificate struct {
 	Password string `json:"password"`
 }
 
+type AzurermKeyVaultCertificateSpecCertificatePolicyIssuerParameters struct {
+	Name string `json:"name"`
+}
+
 type AzurermKeyVaultCertificateSpecCertificatePolicyKeyProperties struct {
-	Exportable bool   `json:"exportable"`
 	KeySize    int    `json:"key_size"`
 	KeyType    string `json:"key_type"`
 	ReuseKey   bool   `json:"reuse_key"`
+	Exportable bool   `json:"exportable"`
 }
 
 type AzurermKeyVaultCertificateSpecCertificatePolicyLifetimeActionAction struct {
@@ -55,39 +59,41 @@ type AzurermKeyVaultCertificateSpecCertificatePolicyX509CertificatePropertiesSub
 }
 
 type AzurermKeyVaultCertificateSpecCertificatePolicyX509CertificateProperties struct {
-	Subject                 string                                                                     `json:"subject"`
 	SubjectAlternativeNames []AzurermKeyVaultCertificateSpecCertificatePolicyX509CertificateProperties `json:"subject_alternative_names"`
 	ValidityInMonths        int                                                                        `json:"validity_in_months"`
 	ExtendedKeyUsage        []string                                                                   `json:"extended_key_usage"`
 	KeyUsage                []string                                                                   `json:"key_usage"`
-}
-
-type AzurermKeyVaultCertificateSpecCertificatePolicyIssuerParameters struct {
-	Name string `json:"name"`
+	Subject                 string                                                                     `json:"subject"`
 }
 
 type AzurermKeyVaultCertificateSpecCertificatePolicy struct {
+	IssuerParameters          []AzurermKeyVaultCertificateSpecCertificatePolicy `json:"issuer_parameters"`
 	KeyProperties             []AzurermKeyVaultCertificateSpecCertificatePolicy `json:"key_properties"`
 	LifetimeAction            []AzurermKeyVaultCertificateSpecCertificatePolicy `json:"lifetime_action"`
 	SecretProperties          []AzurermKeyVaultCertificateSpecCertificatePolicy `json:"secret_properties"`
 	X509CertificateProperties []AzurermKeyVaultCertificateSpecCertificatePolicy `json:"x509_certificate_properties"`
-	IssuerParameters          []AzurermKeyVaultCertificateSpecCertificatePolicy `json:"issuer_parameters"`
 }
 
 type AzurermKeyVaultCertificateSpec struct {
-	CertificateData   string                           `json:"certificate_data"`
-	Thumbprint        string                           `json:"thumbprint"`
 	Name              string                           `json:"name"`
 	KeyVaultId        string                           `json:"key_vault_id"`
 	VaultUri          string                           `json:"vault_uri"`
 	Certificate       []AzurermKeyVaultCertificateSpec `json:"certificate"`
-	Version           string                           `json:"version"`
 	CertificatePolicy []AzurermKeyVaultCertificateSpec `json:"certificate_policy"`
+	CertificateData   string                           `json:"certificate_data"`
+	Thumbprint        string                           `json:"thumbprint"`
+	Version           string                           `json:"version"`
 	SecretId          string                           `json:"secret_id"`
 	Tags              map[string]string                `json:"tags"`
 }
 
+
+
 type AzurermKeyVaultCertificateStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,15 +19,21 @@ type AwsAppautoscalingTarget struct {
 }
 
 type AwsAppautoscalingTargetSpec struct {
-	ScalableDimension string `json:"scalable_dimension"`
-	ServiceNamespace  string `json:"service_namespace"`
-	MaxCapacity       int    `json:"max_capacity"`
 	MinCapacity       int    `json:"min_capacity"`
 	ResourceId        string `json:"resource_id"`
 	RoleArn           string `json:"role_arn"`
+	ScalableDimension string `json:"scalable_dimension"`
+	ServiceNamespace  string `json:"service_namespace"`
+	MaxCapacity       int    `json:"max_capacity"`
 }
 
+
+
 type AwsAppautoscalingTargetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

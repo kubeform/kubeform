@@ -19,12 +19,18 @@ type AwsMainRouteTableAssociation struct {
 }
 
 type AwsMainRouteTableAssociationSpec struct {
+	VpcId                string `json:"vpc_id"`
 	RouteTableId         string `json:"route_table_id"`
 	OriginalRouteTableId string `json:"original_route_table_id"`
-	VpcId                string `json:"vpc_id"`
 }
 
+
+
 type AwsMainRouteTableAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,15 +19,21 @@ type GoogleLoggingProjectSink struct {
 }
 
 type GoogleLoggingProjectSinkSpec struct {
+	UniqueWriterIdentity bool   `json:"unique_writer_identity"`
+	Name                 string `json:"name"`
 	Destination          string `json:"destination"`
 	Filter               string `json:"filter"`
 	WriterIdentity       string `json:"writer_identity"`
 	Project              string `json:"project"`
-	UniqueWriterIdentity bool   `json:"unique_writer_identity"`
-	Name                 string `json:"name"`
 }
 
+
+
 type GoogleLoggingProjectSinkStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

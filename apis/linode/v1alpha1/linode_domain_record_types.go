@@ -19,20 +19,26 @@ type LinodeDomainRecord struct {
 }
 
 type LinodeDomainRecordSpec struct {
-	Protocol   string `json:"protocol"`
-	Service    string `json:"service"`
-	Weight     int    `json:"weight"`
-	Target     string `json:"target"`
+	DomainId   int    `json:"domain_id"`
 	Name       string `json:"name"`
+	Target     string `json:"target"`
+	Protocol   string `json:"protocol"`
+	Tag        string `json:"tag"`
+	Weight     int    `json:"weight"`
 	RecordType string `json:"record_type"`
 	TtlSec     int    `json:"ttl_sec"`
 	Priority   int    `json:"priority"`
-	Tag        string `json:"tag"`
+	Service    string `json:"service"`
 	Port       int    `json:"port"`
-	DomainId   int    `json:"domain_id"`
 }
 
+
+
 type LinodeDomainRecordStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

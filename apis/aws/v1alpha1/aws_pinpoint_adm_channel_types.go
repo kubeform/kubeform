@@ -19,13 +19,19 @@ type AwsPinpointAdmChannel struct {
 }
 
 type AwsPinpointAdmChannelSpec struct {
-	Enabled       bool   `json:"enabled"`
-	ApplicationId string `json:"application_id"`
 	ClientId      string `json:"client_id"`
 	ClientSecret  string `json:"client_secret"`
+	Enabled       bool   `json:"enabled"`
+	ApplicationId string `json:"application_id"`
 }
 
+
+
 type AwsPinpointAdmChannelStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -23,7 +23,13 @@ type AwsLicensemanagerAssociationSpec struct {
 	LicenseConfigurationArn string `json:"license_configuration_arn"`
 }
 
+
+
 type AwsLicensemanagerAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

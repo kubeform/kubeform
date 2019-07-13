@@ -19,16 +19,22 @@ type AzurermDataFactoryPipeline struct {
 }
 
 type AzurermDataFactoryPipelineSpec struct {
+	ResourceGroupName string            `json:"resource_group_name"`
+	Parameters        map[string]string `json:"parameters"`
 	Variables         map[string]string `json:"variables"`
 	Description       string            `json:"description"`
 	Annotations       []string          `json:"annotations"`
 	Name              string            `json:"name"`
 	DataFactoryName   string            `json:"data_factory_name"`
-	ResourceGroupName string            `json:"resource_group_name"`
-	Parameters        map[string]string `json:"parameters"`
 }
 
+
+
 type AzurermDataFactoryPipelineStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

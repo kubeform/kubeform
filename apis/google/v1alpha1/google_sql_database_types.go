@@ -19,15 +19,21 @@ type GoogleSqlDatabase struct {
 }
 
 type GoogleSqlDatabaseSpec struct {
-	SelfLink  string `json:"self_link"`
-	Charset   string `json:"charset"`
-	Collation string `json:"collation"`
 	Name      string `json:"name"`
 	Instance  string `json:"instance"`
 	Project   string `json:"project"`
+	SelfLink  string `json:"self_link"`
+	Charset   string `json:"charset"`
+	Collation string `json:"collation"`
 }
 
+
+
 type GoogleSqlDatabaseStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

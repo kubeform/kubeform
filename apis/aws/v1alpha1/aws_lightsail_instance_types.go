@@ -19,25 +19,31 @@ type AwsLightsailInstance struct {
 }
 
 type AwsLightsailInstanceSpec struct {
-	BundleId         string            `json:"bundle_id"`
-	RamSize          int               `json:"ram_size"`
-	IsStaticIp       bool              `json:"is_static_ip"`
-	Tags             map[string]string `json:"tags"`
-	Name             string            `json:"name"`
 	BlueprintId      string            `json:"blueprint_id"`
-	PrivateIpAddress string            `json:"private_ip_address"`
+	IsStaticIp       bool              `json:"is_static_ip"`
+	PublicIpAddress  string            `json:"public_ip_address"`
+	Tags             map[string]string `json:"tags"`
 	KeyPairName      string            `json:"key_pair_name"`
-	UserData         string            `json:"user_data"`
-	Arn              string            `json:"arn"`
-	Ipv6Address      string            `json:"ipv6_address"`
+	PrivateIpAddress string            `json:"private_ip_address"`
 	Username         string            `json:"username"`
-	AvailabilityZone string            `json:"availability_zone"`
+	Name             string            `json:"name"`
+	BundleId         string            `json:"bundle_id"`
+	UserData         string            `json:"user_data"`
 	CreatedAt        string            `json:"created_at"`
 	CpuCount         int               `json:"cpu_count"`
-	PublicIpAddress  string            `json:"public_ip_address"`
+	AvailabilityZone string            `json:"availability_zone"`
+	Arn              string            `json:"arn"`
+	RamSize          int               `json:"ram_size"`
+	Ipv6Address      string            `json:"ipv6_address"`
 }
 
+
+
 type AwsLightsailInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

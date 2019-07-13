@@ -19,14 +19,20 @@ type AwsKmsAlias struct {
 }
 
 type AwsKmsAliasSpec struct {
+	Arn          string `json:"arn"`
 	Name         string `json:"name"`
 	NamePrefix   string `json:"name_prefix"`
 	TargetKeyId  string `json:"target_key_id"`
 	TargetKeyArn string `json:"target_key_arn"`
-	Arn          string `json:"arn"`
 }
 
+
+
 type AwsKmsAliasStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

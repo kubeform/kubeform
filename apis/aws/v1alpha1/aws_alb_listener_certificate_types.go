@@ -19,11 +19,17 @@ type AwsAlbListenerCertificate struct {
 }
 
 type AwsAlbListenerCertificateSpec struct {
-	CertificateArn string `json:"certificate_arn"`
 	ListenerArn    string `json:"listener_arn"`
+	CertificateArn string `json:"certificate_arn"`
 }
 
+
+
 type AwsAlbListenerCertificateStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

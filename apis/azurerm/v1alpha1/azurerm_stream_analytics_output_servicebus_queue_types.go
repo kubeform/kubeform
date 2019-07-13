@@ -26,17 +26,23 @@ type AzurermStreamAnalyticsOutputServicebusQueueSpecSerialization struct {
 }
 
 type AzurermStreamAnalyticsOutputServicebusQueueSpec struct {
+	Serialization          []AzurermStreamAnalyticsOutputServicebusQueueSpec `json:"serialization"`
+	Name                   string                                            `json:"name"`
+	StreamAnalyticsJobName string                                            `json:"stream_analytics_job_name"`
 	ResourceGroupName      string                                            `json:"resource_group_name"`
 	QueueName              string                                            `json:"queue_name"`
 	ServicebusNamespace    string                                            `json:"servicebus_namespace"`
 	SharedAccessPolicyKey  string                                            `json:"shared_access_policy_key"`
 	SharedAccessPolicyName string                                            `json:"shared_access_policy_name"`
-	Serialization          []AzurermStreamAnalyticsOutputServicebusQueueSpec `json:"serialization"`
-	Name                   string                                            `json:"name"`
-	StreamAnalyticsJobName string                                            `json:"stream_analytics_job_name"`
 }
 
+
+
 type AzurermStreamAnalyticsOutputServicebusQueueStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

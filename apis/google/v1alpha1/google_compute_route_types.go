@@ -19,23 +19,29 @@ type GoogleComputeRoute struct {
 }
 
 type GoogleComputeRouteSpec struct {
-	SelfLink            string   `json:"self_link"`
-	Name                string   `json:"name"`
-	Network             string   `json:"network"`
-	NextHopInstance     string   `json:"next_hop_instance"`
-	NextHopVpnTunnel    string   `json:"next_hop_vpn_tunnel"`
-	NextHopNetwork      string   `json:"next_hop_network"`
-	Project             string   `json:"project"`
-	Description         string   `json:"description"`
 	DestRange           string   `json:"dest_range"`
-	NextHopGateway      string   `json:"next_hop_gateway"`
-	NextHopIp           string   `json:"next_hop_ip"`
 	Tags                []string `json:"tags"`
 	NextHopInstanceZone string   `json:"next_hop_instance_zone"`
+	NextHopInstance     string   `json:"next_hop_instance"`
+	Network             string   `json:"network"`
+	NextHopIp           string   `json:"next_hop_ip"`
+	NextHopVpnTunnel    string   `json:"next_hop_vpn_tunnel"`
+	SelfLink            string   `json:"self_link"`
+	Name                string   `json:"name"`
+	Description         string   `json:"description"`
+	NextHopGateway      string   `json:"next_hop_gateway"`
 	Priority            int      `json:"priority"`
+	NextHopNetwork      string   `json:"next_hop_network"`
+	Project             string   `json:"project"`
 }
 
+
+
 type GoogleComputeRouteStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

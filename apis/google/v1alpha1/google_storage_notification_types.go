@@ -19,16 +19,22 @@ type GoogleStorageNotification struct {
 }
 
 type GoogleStorageNotificationSpec struct {
+	SelfLink         string            `json:"self_link"`
+	Bucket           string            `json:"bucket"`
+	PayloadFormat    string            `json:"payload_format"`
 	Topic            string            `json:"topic"`
 	CustomAttributes map[string]string `json:"custom_attributes"`
 	EventTypes       []string          `json:"event_types"`
 	ObjectNamePrefix string            `json:"object_name_prefix"`
-	SelfLink         string            `json:"self_link"`
-	Bucket           string            `json:"bucket"`
-	PayloadFormat    string            `json:"payload_format"`
 }
 
+
+
 type GoogleStorageNotificationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

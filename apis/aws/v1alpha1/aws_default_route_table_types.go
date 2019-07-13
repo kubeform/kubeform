@@ -19,27 +19,33 @@ type AwsDefaultRouteTable struct {
 }
 
 type AwsDefaultRouteTableSpecRoute struct {
-	NetworkInterfaceId     string `json:"network_interface_id"`
-	CidrBlock              string `json:"cidr_block"`
-	GatewayId              string `json:"gateway_id"`
-	TransitGatewayId       string `json:"transit_gateway_id"`
+	InstanceId             string `json:"instance_id"`
 	NatGatewayId           string `json:"nat_gateway_id"`
 	VpcPeeringConnectionId string `json:"vpc_peering_connection_id"`
-	Ipv6CidrBlock          string `json:"ipv6_cidr_block"`
+	NetworkInterfaceId     string `json:"network_interface_id"`
+	CidrBlock              string `json:"cidr_block"`
 	EgressOnlyGatewayId    string `json:"egress_only_gateway_id"`
-	InstanceId             string `json:"instance_id"`
+	TransitGatewayId       string `json:"transit_gateway_id"`
+	Ipv6CidrBlock          string `json:"ipv6_cidr_block"`
+	GatewayId              string `json:"gateway_id"`
 }
 
 type AwsDefaultRouteTableSpec struct {
-	OwnerId             string                     `json:"owner_id"`
 	DefaultRouteTableId string                     `json:"default_route_table_id"`
 	VpcId               string                     `json:"vpc_id"`
 	PropagatingVgws     []string                   `json:"propagating_vgws"`
 	Route               []AwsDefaultRouteTableSpec `json:"route"`
 	Tags                map[string]string          `json:"tags"`
+	OwnerId             string                     `json:"owner_id"`
 }
 
+
+
 type AwsDefaultRouteTableStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

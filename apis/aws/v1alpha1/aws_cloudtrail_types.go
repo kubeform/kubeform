@@ -30,25 +30,31 @@ type AwsCloudtrailSpecEventSelector struct {
 }
 
 type AwsCloudtrailSpec struct {
+	KmsKeyId                   string              `json:"kms_key_id"`
 	EventSelector              []AwsCloudtrailSpec `json:"event_selector"`
-	Tags                       map[string]string   `json:"tags"`
-	EnableLogging              bool                `json:"enable_logging"`
-	S3KeyPrefix                string              `json:"s3_key_prefix"`
-	CloudWatchLogsRoleArn      string              `json:"cloud_watch_logs_role_arn"`
-	CloudWatchLogsGroupArn     string              `json:"cloud_watch_logs_group_arn"`
-	SnsTopicName               string              `json:"sns_topic_name"`
+	HomeRegion                 string              `json:"home_region"`
+	Name                       string              `json:"name"`
 	IncludeGlobalServiceEvents bool                `json:"include_global_service_events"`
-	EnableLogFileValidation    bool                `json:"enable_log_file_validation"`
+	CloudWatchLogsGroupArn     string              `json:"cloud_watch_logs_group_arn"`
 	IsMultiRegionTrail         bool                `json:"is_multi_region_trail"`
 	IsOrganizationTrail        bool                `json:"is_organization_trail"`
-	KmsKeyId                   string              `json:"kms_key_id"`
-	Name                       string              `json:"name"`
+	SnsTopicName               string              `json:"sns_topic_name"`
 	S3BucketName               string              `json:"s3_bucket_name"`
-	HomeRegion                 string              `json:"home_region"`
+	S3KeyPrefix                string              `json:"s3_key_prefix"`
+	CloudWatchLogsRoleArn      string              `json:"cloud_watch_logs_role_arn"`
+	EnableLogFileValidation    bool                `json:"enable_log_file_validation"`
 	Arn                        string              `json:"arn"`
+	Tags                       map[string]string   `json:"tags"`
+	EnableLogging              bool                `json:"enable_logging"`
 }
 
+
+
 type AwsCloudtrailStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

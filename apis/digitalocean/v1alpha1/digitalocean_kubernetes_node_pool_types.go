@@ -27,15 +27,21 @@ type DigitaloceanKubernetesNodePoolSpecNodes struct {
 }
 
 type DigitaloceanKubernetesNodePoolSpec struct {
-	Name      string                               `json:"name"`
-	Size      string                               `json:"size"`
-	NodeCount int                                  `json:"node_count"`
 	Tags      []string                             `json:"tags"`
 	Nodes     []DigitaloceanKubernetesNodePoolSpec `json:"nodes"`
 	ClusterId string                               `json:"cluster_id"`
+	Name      string                               `json:"name"`
+	Size      string                               `json:"size"`
+	NodeCount int                                  `json:"node_count"`
 }
 
+
+
 type DigitaloceanKubernetesNodePoolStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

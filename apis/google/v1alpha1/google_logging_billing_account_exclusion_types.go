@@ -19,14 +19,20 @@ type GoogleLoggingBillingAccountExclusion struct {
 }
 
 type GoogleLoggingBillingAccountExclusionSpec struct {
-	Filter         string `json:"filter"`
 	Name           string `json:"name"`
+	BillingAccount string `json:"billing_account"`
 	Description    string `json:"description"`
 	Disabled       bool   `json:"disabled"`
-	BillingAccount string `json:"billing_account"`
+	Filter         string `json:"filter"`
 }
 
+
+
 type GoogleLoggingBillingAccountExclusionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

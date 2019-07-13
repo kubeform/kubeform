@@ -18,9 +18,18 @@ type AzurermKubernetesCluster struct {
 	Status            AzurermKubernetesClusterStatus `json:"status,omitempty"`
 }
 
-type AzurermKubernetesClusterSpecAddonProfileAciConnectorLinux struct {
-	Enabled    bool   `json:"enabled"`
-	SubnetName string `json:"subnet_name"`
+type AzurermKubernetesClusterSpecNetworkProfile struct {
+	NetworkPlugin    string `json:"network_plugin"`
+	NetworkPolicy    string `json:"network_policy"`
+	DnsServiceIp     string `json:"dns_service_ip"`
+	DockerBridgeCidr string `json:"docker_bridge_cidr"`
+	PodCidr          string `json:"pod_cidr"`
+	ServiceCidr      string `json:"service_cidr"`
+}
+
+type AzurermKubernetesClusterSpecServicePrincipal struct {
+	ClientId     string `json:"client_id"`
+	ClientSecret string `json:"client_secret"`
 }
 
 type AzurermKubernetesClusterSpecAddonProfileHttpApplicationRouting struct {
@@ -29,26 +38,35 @@ type AzurermKubernetesClusterSpecAddonProfileHttpApplicationRouting struct {
 }
 
 type AzurermKubernetesClusterSpecAddonProfileOmsAgent struct {
-	Enabled                 bool   `json:"enabled"`
 	LogAnalyticsWorkspaceId string `json:"log_analytics_workspace_id"`
+	Enabled                 bool   `json:"enabled"`
+}
+
+type AzurermKubernetesClusterSpecAddonProfileAciConnectorLinux struct {
+	Enabled    bool   `json:"enabled"`
+	SubnetName string `json:"subnet_name"`
 }
 
 type AzurermKubernetesClusterSpecAddonProfile struct {
-	AciConnectorLinux      []AzurermKubernetesClusterSpecAddonProfile `json:"aci_connector_linux"`
 	HttpApplicationRouting []AzurermKubernetesClusterSpecAddonProfile `json:"http_application_routing"`
 	OmsAgent               []AzurermKubernetesClusterSpecAddonProfile `json:"oms_agent"`
+	AciConnectorLinux      []AzurermKubernetesClusterSpecAddonProfile `json:"aci_connector_linux"`
 }
 
-type AzurermKubernetesClusterSpecServicePrincipal struct {
-	ClientId     string `json:"client_id"`
-	ClientSecret string `json:"client_secret"`
+type AzurermKubernetesClusterSpecKubeConfig struct {
+	ClientKey            string `json:"client_key"`
+	ClusterCaCertificate string `json:"cluster_ca_certificate"`
+	Host                 string `json:"host"`
+	Username             string `json:"username"`
+	Password             string `json:"password"`
+	ClientCertificate    string `json:"client_certificate"`
 }
 
 type AzurermKubernetesClusterSpecRoleBasedAccessControlAzureActiveDirectory struct {
-	ClientAppId     string `json:"client_app_id"`
 	ServerAppId     string `json:"server_app_id"`
 	ServerAppSecret string `json:"server_app_secret"`
 	TenantId        string `json:"tenant_id"`
+	ClientAppId     string `json:"client_app_id"`
 }
 
 type AzurermKubernetesClusterSpecRoleBasedAccessControl struct {
@@ -56,43 +74,16 @@ type AzurermKubernetesClusterSpecRoleBasedAccessControl struct {
 	AzureActiveDirectory []AzurermKubernetesClusterSpecRoleBasedAccessControl `json:"azure_active_directory"`
 }
 
-type AzurermKubernetesClusterSpecNetworkProfile struct {
-	DockerBridgeCidr string `json:"docker_bridge_cidr"`
-	PodCidr          string `json:"pod_cidr"`
-	ServiceCidr      string `json:"service_cidr"`
-	NetworkPlugin    string `json:"network_plugin"`
-	NetworkPolicy    string `json:"network_policy"`
-	DnsServiceIp     string `json:"dns_service_ip"`
-}
-
-type AzurermKubernetesClusterSpecKubeAdminConfig struct {
-	Password             string `json:"password"`
-	ClientCertificate    string `json:"client_certificate"`
-	ClientKey            string `json:"client_key"`
-	ClusterCaCertificate string `json:"cluster_ca_certificate"`
-	Host                 string `json:"host"`
-	Username             string `json:"username"`
-}
-
-type AzurermKubernetesClusterSpecKubeConfig struct {
-	Password             string `json:"password"`
-	ClientCertificate    string `json:"client_certificate"`
-	ClientKey            string `json:"client_key"`
-	ClusterCaCertificate string `json:"cluster_ca_certificate"`
-	Host                 string `json:"host"`
-	Username             string `json:"username"`
-}
-
 type AzurermKubernetesClusterSpecAgentPoolProfile struct {
-	Name         string `json:"name"`
+	Fqdn         string `json:"fqdn"`
+	VnetSubnetId string `json:"vnet_subnet_id"`
+	OsDiskSizeGb int    `json:"os_disk_size_gb"`
 	OsType       string `json:"os_type"`
 	MaxPods      int    `json:"max_pods"`
-	OsDiskSizeGb int    `json:"os_disk_size_gb"`
-	VnetSubnetId string `json:"vnet_subnet_id"`
+	Name         string `json:"name"`
 	Type         string `json:"type"`
 	Count        int    `json:"count"`
 	DnsPrefix    string `json:"dns_prefix"`
-	Fqdn         string `json:"fqdn"`
 	VmSize       string `json:"vm_size"`
 }
 
@@ -105,29 +96,44 @@ type AzurermKubernetesClusterSpecLinuxProfile struct {
 	SshKey        []AzurermKubernetesClusterSpecLinuxProfile `json:"ssh_key"`
 }
 
-type AzurermKubernetesClusterSpec struct {
-	Name                        string                         `json:"name"`
-	DnsPrefix                   string                         `json:"dns_prefix"`
-	KubernetesVersion           string                         `json:"kubernetes_version"`
-	AddonProfile                []AzurermKubernetesClusterSpec `json:"addon_profile"`
-	NodeResourceGroup           string                         `json:"node_resource_group"`
-	ResourceGroupName           string                         `json:"resource_group_name"`
-	ServicePrincipal            []AzurermKubernetesClusterSpec `json:"service_principal"`
-	RoleBasedAccessControl      []AzurermKubernetesClusterSpec `json:"role_based_access_control"`
-	KubeConfigRaw               string                         `json:"kube_config_raw"`
-	Location                    string                         `json:"location"`
-	NetworkProfile              []AzurermKubernetesClusterSpec `json:"network_profile"`
-	KubeAdminConfig             []AzurermKubernetesClusterSpec `json:"kube_admin_config"`
-	KubeConfig                  []AzurermKubernetesClusterSpec `json:"kube_config"`
-	AgentPoolProfile            []AzurermKubernetesClusterSpec `json:"agent_pool_profile"`
-	LinuxProfile                []AzurermKubernetesClusterSpec `json:"linux_profile"`
-	Tags                        map[string]string              `json:"tags"`
-	Fqdn                        string                         `json:"fqdn"`
-	KubeAdminConfigRaw          string                         `json:"kube_admin_config_raw"`
-	ApiServerAuthorizedIpRanges []string                       `json:"api_server_authorized_ip_ranges"`
+type AzurermKubernetesClusterSpecKubeAdminConfig struct {
+	Host                 string `json:"host"`
+	Username             string `json:"username"`
+	Password             string `json:"password"`
+	ClientCertificate    string `json:"client_certificate"`
+	ClientKey            string `json:"client_key"`
+	ClusterCaCertificate string `json:"cluster_ca_certificate"`
 }
 
+type AzurermKubernetesClusterSpec struct {
+	Location                    string                         `json:"location"`
+	NetworkProfile              []AzurermKubernetesClusterSpec `json:"network_profile"`
+	Name                        string                         `json:"name"`
+	DnsPrefix                   string                         `json:"dns_prefix"`
+	ServicePrincipal            []AzurermKubernetesClusterSpec `json:"service_principal"`
+	AddonProfile                []AzurermKubernetesClusterSpec `json:"addon_profile"`
+	KubeAdminConfigRaw          string                         `json:"kube_admin_config_raw"`
+	KubeConfig                  []AzurermKubernetesClusterSpec `json:"kube_config"`
+	KubeConfigRaw               string                         `json:"kube_config_raw"`
+	ApiServerAuthorizedIpRanges []string                       `json:"api_server_authorized_ip_ranges"`
+	ResourceGroupName           string                         `json:"resource_group_name"`
+	RoleBasedAccessControl      []AzurermKubernetesClusterSpec `json:"role_based_access_control"`
+	Tags                        map[string]string              `json:"tags"`
+	Fqdn                        string                         `json:"fqdn"`
+	NodeResourceGroup           string                         `json:"node_resource_group"`
+	AgentPoolProfile            []AzurermKubernetesClusterSpec `json:"agent_pool_profile"`
+	LinuxProfile                []AzurermKubernetesClusterSpec `json:"linux_profile"`
+	KubeAdminConfig             []AzurermKubernetesClusterSpec `json:"kube_admin_config"`
+	KubernetesVersion           string                         `json:"kubernetes_version"`
+}
+
+
+
 type AzurermKubernetesClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -25,14 +25,20 @@ type AwsWafRateBasedRuleSpecPredicates struct {
 }
 
 type AwsWafRateBasedRuleSpec struct {
-	Name       string                    `json:"name"`
 	MetricName string                    `json:"metric_name"`
 	Predicates []AwsWafRateBasedRuleSpec `json:"predicates"`
 	RateKey    string                    `json:"rate_key"`
 	RateLimit  int                       `json:"rate_limit"`
+	Name       string                    `json:"name"`
 }
 
+
+
 type AwsWafRateBasedRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

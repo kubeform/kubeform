@@ -20,20 +20,26 @@ type AwsEc2TransitGateway struct {
 
 type AwsEc2TransitGatewaySpec struct {
 	AmazonSideAsn                  int               `json:"amazon_side_asn"`
-	DefaultRouteTablePropagation   string            `json:"default_route_table_propagation"`
-	OwnerId                        string            `json:"owner_id"`
-	Tags                           map[string]string `json:"tags"`
-	VpnEcmpSupport                 string            `json:"vpn_ecmp_support"`
-	PropagationDefaultRouteTableId string            `json:"propagation_default_route_table_id"`
 	Arn                            string            `json:"arn"`
+	DnsSupport                     string            `json:"dns_support"`
+	OwnerId                        string            `json:"owner_id"`
+	VpnEcmpSupport                 string            `json:"vpn_ecmp_support"`
+	Tags                           map[string]string `json:"tags"`
 	AssociationDefaultRouteTableId string            `json:"association_default_route_table_id"`
 	AutoAcceptSharedAttachments    string            `json:"auto_accept_shared_attachments"`
 	DefaultRouteTableAssociation   string            `json:"default_route_table_association"`
+	DefaultRouteTablePropagation   string            `json:"default_route_table_propagation"`
 	Description                    string            `json:"description"`
-	DnsSupport                     string            `json:"dns_support"`
+	PropagationDefaultRouteTableId string            `json:"propagation_default_route_table_id"`
 }
 
+
+
 type AwsEc2TransitGatewayStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -18,14 +18,12 @@ type AwsAppsyncDatasource struct {
 	Status            AwsAppsyncDatasourceStatus `json:"status,omitempty"`
 }
 
-type AwsAppsyncDatasourceSpecDynamodbConfig struct {
-	UseCallerCredentials bool   `json:"use_caller_credentials"`
-	Region               string `json:"region"`
-	TableName            string `json:"table_name"`
-}
-
 type AwsAppsyncDatasourceSpecElasticsearchConfig struct {
 	Region   string `json:"region"`
+	Endpoint string `json:"endpoint"`
+}
+
+type AwsAppsyncDatasourceSpecHttpConfig struct {
 	Endpoint string `json:"endpoint"`
 }
 
@@ -33,24 +31,32 @@ type AwsAppsyncDatasourceSpecLambdaConfig struct {
 	FunctionArn string `json:"function_arn"`
 }
 
-type AwsAppsyncDatasourceSpecHttpConfig struct {
-	Endpoint string `json:"endpoint"`
+type AwsAppsyncDatasourceSpecDynamodbConfig struct {
+	Region               string `json:"region"`
+	TableName            string `json:"table_name"`
+	UseCallerCredentials bool   `json:"use_caller_credentials"`
 }
 
 type AwsAppsyncDatasourceSpec struct {
-	ServiceRoleArn      string                     `json:"service_role_arn"`
-	ApiId               string                     `json:"api_id"`
 	Type                string                     `json:"type"`
+	ElasticsearchConfig []AwsAppsyncDatasourceSpec `json:"elasticsearch_config"`
+	HttpConfig          []AwsAppsyncDatasourceSpec `json:"http_config"`
+	ServiceRoleArn      string                     `json:"service_role_arn"`
+	LambdaConfig        []AwsAppsyncDatasourceSpec `json:"lambda_config"`
+	Arn                 string                     `json:"arn"`
+	ApiId               string                     `json:"api_id"`
+	Name                string                     `json:"name"`
 	Description         string                     `json:"description"`
 	DynamodbConfig      []AwsAppsyncDatasourceSpec `json:"dynamodb_config"`
-	ElasticsearchConfig []AwsAppsyncDatasourceSpec `json:"elasticsearch_config"`
-	LambdaConfig        []AwsAppsyncDatasourceSpec `json:"lambda_config"`
-	Name                string                     `json:"name"`
-	HttpConfig          []AwsAppsyncDatasourceSpec `json:"http_config"`
-	Arn                 string                     `json:"arn"`
 }
 
+
+
 type AwsAppsyncDatasourceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

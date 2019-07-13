@@ -19,13 +19,19 @@ type AwsLbCookieStickinessPolicy struct {
 }
 
 type AwsLbCookieStickinessPolicySpec struct {
-	LbPort                 int    `json:"lb_port"`
-	CookieExpirationPeriod int    `json:"cookie_expiration_period"`
 	Name                   string `json:"name"`
 	LoadBalancer           string `json:"load_balancer"`
+	LbPort                 int    `json:"lb_port"`
+	CookieExpirationPeriod int    `json:"cookie_expiration_period"`
 }
 
+
+
 type AwsLbCookieStickinessPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

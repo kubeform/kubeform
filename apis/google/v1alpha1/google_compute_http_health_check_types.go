@@ -20,20 +20,26 @@ type GoogleComputeHttpHealthCheck struct {
 
 type GoogleComputeHttpHealthCheckSpec struct {
 	Name               string `json:"name"`
-	RequestPath        string `json:"request_path"`
-	TimeoutSec         int    `json:"timeout_sec"`
-	UnhealthyThreshold int    `json:"unhealthy_threshold"`
-	CreationTimestamp  string `json:"creation_timestamp"`
-	CheckIntervalSec   int    `json:"check_interval_sec"`
-	Description        string `json:"description"`
 	HealthyThreshold   int    `json:"healthy_threshold"`
 	Host               string `json:"host"`
 	Port               int    `json:"port"`
+	RequestPath        string `json:"request_path"`
+	CheckIntervalSec   int    `json:"check_interval_sec"`
+	Description        string `json:"description"`
+	TimeoutSec         int    `json:"timeout_sec"`
+	UnhealthyThreshold int    `json:"unhealthy_threshold"`
+	CreationTimestamp  string `json:"creation_timestamp"`
 	Project            string `json:"project"`
 	SelfLink           string `json:"self_link"`
 }
 
+
+
 type GoogleComputeHttpHealthCheckStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

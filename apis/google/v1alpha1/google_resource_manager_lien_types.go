@@ -19,15 +19,21 @@ type GoogleResourceManagerLien struct {
 }
 
 type GoogleResourceManagerLienSpec struct {
-	Origin       string   `json:"origin"`
 	Parent       string   `json:"parent"`
 	Reason       string   `json:"reason"`
 	Restrictions []string `json:"restrictions"`
 	CreateTime   string   `json:"create_time"`
 	Name         string   `json:"name"`
+	Origin       string   `json:"origin"`
 }
 
+
+
 type GoogleResourceManagerLienStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

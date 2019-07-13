@@ -18,13 +18,21 @@ type GoogleMonitoringUptimeCheckConfig struct {
 	Status            GoogleMonitoringUptimeCheckConfigStatus `json:"status,omitempty"`
 }
 
+type GoogleMonitoringUptimeCheckConfigSpecContentMatchers struct {
+	Content string `json:"content"`
+}
+
+type GoogleMonitoringUptimeCheckConfigSpecInternalCheckers struct {
+	DisplayName   string `json:"display_name"`
+	GcpZone       string `json:"gcp_zone"`
+	Name          string `json:"name"`
+	Network       string `json:"network"`
+	PeerProjectId string `json:"peer_project_id"`
+}
+
 type GoogleMonitoringUptimeCheckConfigSpecResourceGroup struct {
 	GroupId      string `json:"group_id"`
 	ResourceType string `json:"resource_type"`
-}
-
-type GoogleMonitoringUptimeCheckConfigSpecTcpCheck struct {
-	Port int `json:"port"`
 }
 
 type GoogleMonitoringUptimeCheckConfigSpecHttpCheckAuthInfo struct {
@@ -33,20 +41,12 @@ type GoogleMonitoringUptimeCheckConfigSpecHttpCheckAuthInfo struct {
 }
 
 type GoogleMonitoringUptimeCheckConfigSpecHttpCheck struct {
-	AuthInfo    []GoogleMonitoringUptimeCheckConfigSpecHttpCheck `json:"auth_info"`
-	Headers     map[string]string                                `json:"headers"`
 	MaskHeaders bool                                             `json:"mask_headers"`
 	Path        string                                           `json:"path"`
 	Port        int                                              `json:"port"`
 	UseSsl      bool                                             `json:"use_ssl"`
-}
-
-type GoogleMonitoringUptimeCheckConfigSpecInternalCheckers struct {
-	Network       string `json:"network"`
-	PeerProjectId string `json:"peer_project_id"`
-	DisplayName   string `json:"display_name"`
-	GcpZone       string `json:"gcp_zone"`
-	Name          string `json:"name"`
+	AuthInfo    []GoogleMonitoringUptimeCheckConfigSpecHttpCheck `json:"auth_info"`
+	Headers     map[string]string                                `json:"headers"`
 }
 
 type GoogleMonitoringUptimeCheckConfigSpecMonitoredResource struct {
@@ -54,27 +54,33 @@ type GoogleMonitoringUptimeCheckConfigSpecMonitoredResource struct {
 	Type   string            `json:"type"`
 }
 
-type GoogleMonitoringUptimeCheckConfigSpecContentMatchers struct {
-	Content string `json:"content"`
+type GoogleMonitoringUptimeCheckConfigSpecTcpCheck struct {
+	Port int `json:"port"`
 }
 
 type GoogleMonitoringUptimeCheckConfigSpec struct {
+	Timeout           string                                  `json:"timeout"`
+	ContentMatchers   []GoogleMonitoringUptimeCheckConfigSpec `json:"content_matchers"`
+	InternalCheckers  []GoogleMonitoringUptimeCheckConfigSpec `json:"internal_checkers"`
 	ResourceGroup     []GoogleMonitoringUptimeCheckConfigSpec `json:"resource_group"`
 	SelectedRegions   []string                                `json:"selected_regions"`
-	TcpCheck          []GoogleMonitoringUptimeCheckConfigSpec `json:"tcp_check"`
+	Name              string                                  `json:"name"`
+	Project           string                                  `json:"project"`
+	DisplayName       string                                  `json:"display_name"`
 	HttpCheck         []GoogleMonitoringUptimeCheckConfigSpec `json:"http_check"`
-	InternalCheckers  []GoogleMonitoringUptimeCheckConfigSpec `json:"internal_checkers"`
 	IsInternal        bool                                    `json:"is_internal"`
 	MonitoredResource []GoogleMonitoringUptimeCheckConfigSpec `json:"monitored_resource"`
 	Period            string                                  `json:"period"`
-	Name              string                                  `json:"name"`
-	DisplayName       string                                  `json:"display_name"`
-	Timeout           string                                  `json:"timeout"`
-	ContentMatchers   []GoogleMonitoringUptimeCheckConfigSpec `json:"content_matchers"`
-	Project           string                                  `json:"project"`
+	TcpCheck          []GoogleMonitoringUptimeCheckConfigSpec `json:"tcp_check"`
 }
 
+
+
 type GoogleMonitoringUptimeCheckConfigStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

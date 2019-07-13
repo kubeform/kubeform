@@ -19,26 +19,32 @@ type GoogleComputeImage struct {
 }
 
 type GoogleComputeImageSpecRawDisk struct {
-	ContainerType string `json:"container_type"`
 	Source        string `json:"source"`
 	Sha1          string `json:"sha1"`
+	ContainerType string `json:"container_type"`
 }
 
 type GoogleComputeImageSpec struct {
-	CreateTimeout    int                      `json:"create_timeout"`
-	Labels           map[string]string        `json:"labels"`
-	Licenses         []string                 `json:"licenses"`
-	LabelFingerprint string                   `json:"label_fingerprint"`
-	Name             string                   `json:"name"`
-	Family           string                   `json:"family"`
-	Project          string                   `json:"project"`
-	SelfLink         string                   `json:"self_link"`
 	Description      string                   `json:"description"`
+	Project          string                   `json:"project"`
 	SourceDisk       string                   `json:"source_disk"`
 	RawDisk          []GoogleComputeImageSpec `json:"raw_disk"`
+	Labels           map[string]string        `json:"labels"`
+	Name             string                   `json:"name"`
+	Family           string                   `json:"family"`
+	SelfLink         string                   `json:"self_link"`
+	CreateTimeout    int                      `json:"create_timeout"`
+	Licenses         []string                 `json:"licenses"`
+	LabelFingerprint string                   `json:"label_fingerprint"`
 }
 
+
+
 type GoogleComputeImageStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

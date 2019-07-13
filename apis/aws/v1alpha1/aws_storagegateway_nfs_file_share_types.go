@@ -27,23 +27,29 @@ type AwsStoragegatewayNfsFileShareSpecNfsFileShareDefaults struct {
 
 type AwsStoragegatewayNfsFileShareSpec struct {
 	DefaultStorageClass  string                              `json:"default_storage_class"`
-	FileshareId          string                              `json:"fileshare_id"`
-	GatewayArn           string                              `json:"gateway_arn"`
-	ReadOnly             bool                                `json:"read_only"`
+	Squash               string                              `json:"squash"`
 	Arn                  string                              `json:"arn"`
 	ClientList           []string                            `json:"client_list"`
-	KmsKeyArn            string                              `json:"kms_key_arn"`
-	RoleArn              string                              `json:"role_arn"`
-	GuessMimeTypeEnabled bool                                `json:"guess_mime_type_enabled"`
-	KmsEncrypted         bool                                `json:"kms_encrypted"`
 	NfsFileShareDefaults []AwsStoragegatewayNfsFileShareSpec `json:"nfs_file_share_defaults"`
-	ObjectAcl            string                              `json:"object_acl"`
-	RequesterPays        bool                                `json:"requester_pays"`
+	ReadOnly             bool                                `json:"read_only"`
+	GuessMimeTypeEnabled bool                                `json:"guess_mime_type_enabled"`
 	LocationArn          string                              `json:"location_arn"`
-	Squash               string                              `json:"squash"`
+	KmsEncrypted         bool                                `json:"kms_encrypted"`
+	KmsKeyArn            string                              `json:"kms_key_arn"`
+	ObjectAcl            string                              `json:"object_acl"`
+	RoleArn              string                              `json:"role_arn"`
+	FileshareId          string                              `json:"fileshare_id"`
+	GatewayArn           string                              `json:"gateway_arn"`
+	RequesterPays        bool                                `json:"requester_pays"`
 }
 
+
+
 type AwsStoragegatewayNfsFileShareStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -27,15 +27,21 @@ type AzurermStreamAnalyticsFunctionJavascriptUdfSpecOutput struct {
 }
 
 type AzurermStreamAnalyticsFunctionJavascriptUdfSpec struct {
-	Name                   string                                            `json:"name"`
 	StreamAnalyticsJobName string                                            `json:"stream_analytics_job_name"`
 	ResourceGroupName      string                                            `json:"resource_group_name"`
 	Input                  []AzurermStreamAnalyticsFunctionJavascriptUdfSpec `json:"input"`
 	Output                 []AzurermStreamAnalyticsFunctionJavascriptUdfSpec `json:"output"`
 	Script                 string                                            `json:"script"`
+	Name                   string                                            `json:"name"`
 }
 
+
+
 type AzurermStreamAnalyticsFunctionJavascriptUdfStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

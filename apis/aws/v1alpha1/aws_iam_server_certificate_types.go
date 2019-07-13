@@ -19,16 +19,22 @@ type AwsIamServerCertificate struct {
 }
 
 type AwsIamServerCertificateSpec struct {
+	Name             string `json:"name"`
+	NamePrefix       string `json:"name_prefix"`
 	Arn              string `json:"arn"`
 	CertificateBody  string `json:"certificate_body"`
 	CertificateChain string `json:"certificate_chain"`
 	Path             string `json:"path"`
 	PrivateKey       string `json:"private_key"`
-	Name             string `json:"name"`
-	NamePrefix       string `json:"name_prefix"`
 }
 
+
+
 type AwsIamServerCertificateStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

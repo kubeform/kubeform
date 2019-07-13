@@ -24,8 +24,8 @@ type AwsCodepipelineWebhookSpecAuthenticationConfiguration struct {
 }
 
 type AwsCodepipelineWebhookSpecFilter struct {
-	JsonPath    string `json:"json_path"`
 	MatchEquals string `json:"match_equals"`
+	JsonPath    string `json:"json_path"`
 }
 
 type AwsCodepipelineWebhookSpec struct {
@@ -39,7 +39,13 @@ type AwsCodepipelineWebhookSpec struct {
 	Authentication              string                       `json:"authentication"`
 }
 
+
+
 type AwsCodepipelineWebhookStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

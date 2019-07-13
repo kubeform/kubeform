@@ -19,21 +19,27 @@ type AwsSnsPlatformApplication struct {
 }
 
 type AwsSnsPlatformApplicationSpec struct {
-	EventEndpointUpdatedTopicArn string `json:"event_endpoint_updated_topic_arn"`
-	Platform                     string `json:"platform"`
-	Arn                          string `json:"arn"`
+	FailureFeedbackRoleArn       string `json:"failure_feedback_role_arn"`
+	PlatformCredential           string `json:"platform_credential"`
 	EventDeliveryFailureTopicArn string `json:"event_delivery_failure_topic_arn"`
 	EventEndpointCreatedTopicArn string `json:"event_endpoint_created_topic_arn"`
 	EventEndpointDeletedTopicArn string `json:"event_endpoint_deleted_topic_arn"`
+	EventEndpointUpdatedTopicArn string `json:"event_endpoint_updated_topic_arn"`
 	SuccessFeedbackSampleRate    string `json:"success_feedback_sample_rate"`
 	Name                         string `json:"name"`
-	PlatformCredential           string `json:"platform_credential"`
-	FailureFeedbackRoleArn       string `json:"failure_feedback_role_arn"`
+	Platform                     string `json:"platform"`
+	Arn                          string `json:"arn"`
 	PlatformPrincipal            string `json:"platform_principal"`
 	SuccessFeedbackRoleArn       string `json:"success_feedback_role_arn"`
 }
 
+
+
 type AwsSnsPlatformApplicationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

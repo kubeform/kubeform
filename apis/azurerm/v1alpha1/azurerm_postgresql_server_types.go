@@ -18,34 +18,40 @@ type AzurermPostgresqlServer struct {
 	Status            AzurermPostgresqlServerStatus `json:"status,omitempty"`
 }
 
+type AzurermPostgresqlServerSpecSku struct {
+	Family   string `json:"family"`
+	Name     string `json:"name"`
+	Capacity int    `json:"capacity"`
+	Tier     string `json:"tier"`
+}
+
 type AzurermPostgresqlServerSpecStorageProfile struct {
 	StorageMb           int    `json:"storage_mb"`
 	BackupRetentionDays int    `json:"backup_retention_days"`
 	GeoRedundantBackup  string `json:"geo_redundant_backup"`
 }
 
-type AzurermPostgresqlServerSpecSku struct {
-	Tier     string `json:"tier"`
-	Family   string `json:"family"`
-	Name     string `json:"name"`
-	Capacity int    `json:"capacity"`
-}
-
 type AzurermPostgresqlServerSpec struct {
-	ResourceGroupName          string                        `json:"resource_group_name"`
-	AdministratorLogin         string                        `json:"administrator_login"`
-	StorageProfile             []AzurermPostgresqlServerSpec `json:"storage_profile"`
-	Tags                       map[string]string             `json:"tags"`
-	Name                       string                        `json:"name"`
-	Location                   string                        `json:"location"`
-	Version                    string                        `json:"version"`
-	SslEnforcement             string                        `json:"ssl_enforcement"`
-	Fqdn                       string                        `json:"fqdn"`
 	Sku                        []AzurermPostgresqlServerSpec `json:"sku"`
 	AdministratorLoginPassword string                        `json:"administrator_login_password"`
+	Fqdn                       string                        `json:"fqdn"`
+	Tags                       map[string]string             `json:"tags"`
+	Location                   string                        `json:"location"`
+	ResourceGroupName          string                        `json:"resource_group_name"`
+	Version                    string                        `json:"version"`
+	StorageProfile             []AzurermPostgresqlServerSpec `json:"storage_profile"`
+	SslEnforcement             string                        `json:"ssl_enforcement"`
+	Name                       string                        `json:"name"`
+	AdministratorLogin         string                        `json:"administrator_login"`
 }
 
+
+
 type AzurermPostgresqlServerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

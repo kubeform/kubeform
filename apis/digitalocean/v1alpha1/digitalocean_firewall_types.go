@@ -18,6 +18,12 @@ type DigitaloceanFirewall struct {
 	Status            DigitaloceanFirewallStatus `json:"status,omitempty"`
 }
 
+type DigitaloceanFirewallSpecPendingChanges struct {
+	DropletId int    `json:"droplet_id"`
+	Removing  bool   `json:"removing"`
+	Status    string `json:"status"`
+}
+
 type DigitaloceanFirewallSpecInboundRule struct {
 	Protocol               string   `json:"protocol"`
 	PortRange              string   `json:"port_range"`
@@ -28,32 +34,32 @@ type DigitaloceanFirewallSpecInboundRule struct {
 }
 
 type DigitaloceanFirewallSpecOutboundRule struct {
-	Protocol                    string   `json:"protocol"`
 	PortRange                   string   `json:"port_range"`
 	DestinationAddresses        []string `json:"destination_addresses"`
 	DestinationDropletIds       []int64  `json:"destination_droplet_ids"`
 	DestinationLoadBalancerUids []string `json:"destination_load_balancer_uids"`
 	DestinationTags             []string `json:"destination_tags"`
-}
-
-type DigitaloceanFirewallSpecPendingChanges struct {
-	DropletId int    `json:"droplet_id"`
-	Removing  bool   `json:"removing"`
-	Status    string `json:"status"`
+	Protocol                    string   `json:"protocol"`
 }
 
 type DigitaloceanFirewallSpec struct {
+	PendingChanges []DigitaloceanFirewallSpec `json:"pending_changes"`
+	Tags           []string                   `json:"tags"`
+	Name           string                     `json:"name"`
 	DropletIds     []int64                    `json:"droplet_ids"`
 	InboundRule    []DigitaloceanFirewallSpec `json:"inbound_rule"`
 	OutboundRule   []DigitaloceanFirewallSpec `json:"outbound_rule"`
 	Status         string                     `json:"status"`
 	CreatedAt      string                     `json:"created_at"`
-	PendingChanges []DigitaloceanFirewallSpec `json:"pending_changes"`
-	Tags           []string                   `json:"tags"`
-	Name           string                     `json:"name"`
 }
 
+
+
 type DigitaloceanFirewallStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

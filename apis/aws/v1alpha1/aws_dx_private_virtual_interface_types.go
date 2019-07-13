@@ -19,24 +19,30 @@ type AwsDxPrivateVirtualInterface struct {
 }
 
 type AwsDxPrivateVirtualInterfaceSpec struct {
-	ConnectionId      string            `json:"connection_id"`
-	VpnGatewayId      string            `json:"vpn_gateway_id"`
-	Vlan              int               `json:"vlan"`
-	AmazonAddress     string            `json:"amazon_address"`
-	BgpAsn            int               `json:"bgp_asn"`
-	AddressFamily     string            `json:"address_family"`
+	DxGatewayId       string            `json:"dx_gateway_id"`
 	Mtu               int               `json:"mtu"`
+	VpnGatewayId      string            `json:"vpn_gateway_id"`
 	JumboFrameCapable bool              `json:"jumbo_frame_capable"`
+	BgpAuthKey        string            `json:"bgp_auth_key"`
+	AddressFamily     string            `json:"address_family"`
 	Tags              map[string]string `json:"tags"`
 	AwsDevice         string            `json:"aws_device"`
-	Arn               string            `json:"arn"`
+	ConnectionId      string            `json:"connection_id"`
 	Name              string            `json:"name"`
-	DxGatewayId       string            `json:"dx_gateway_id"`
-	BgpAuthKey        string            `json:"bgp_auth_key"`
+	Vlan              int               `json:"vlan"`
+	BgpAsn            int               `json:"bgp_asn"`
 	CustomerAddress   string            `json:"customer_address"`
+	AmazonAddress     string            `json:"amazon_address"`
+	Arn               string            `json:"arn"`
 }
 
+
+
 type AwsDxPrivateVirtualInterfaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,12 +19,18 @@ type AwsCloudwatchDashboard struct {
 }
 
 type AwsCloudwatchDashboardSpec struct {
+	DashboardName string `json:"dashboard_name"`
 	DashboardArn  string `json:"dashboard_arn"`
 	DashboardBody string `json:"dashboard_body"`
-	DashboardName string `json:"dashboard_name"`
 }
 
+
+
 type AwsCloudwatchDashboardStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

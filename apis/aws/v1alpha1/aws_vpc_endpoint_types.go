@@ -19,31 +19,37 @@ type AwsVpcEndpoint struct {
 }
 
 type AwsVpcEndpointSpecDnsEntry struct {
-	DnsName      string `json:"dns_name"`
 	HostedZoneId string `json:"hosted_zone_id"`
+	DnsName      string `json:"dns_name"`
 }
 
 type AwsVpcEndpointSpec struct {
-	VpcEndpointType     string               `json:"vpc_endpoint_type"`
-	RequesterManaged    bool                 `json:"requester_managed"`
-	State               string               `json:"state"`
-	Policy              string               `json:"policy"`
-	RouteTableIds       []string             `json:"route_table_ids"`
-	SubnetIds           []string             `json:"subnet_ids"`
-	NetworkInterfaceIds []string             `json:"network_interface_ids"`
-	OwnerId             string               `json:"owner_id"`
-	ServiceName         string               `json:"service_name"`
-	VpcId               string               `json:"vpc_id"`
 	DnsEntry            []AwsVpcEndpointSpec `json:"dns_entry"`
-	PrivateDnsEnabled   bool                 `json:"private_dns_enabled"`
+	NetworkInterfaceIds []string             `json:"network_interface_ids"`
 	PrefixListId        string               `json:"prefix_list_id"`
-	SecurityGroupIds    []string             `json:"security_group_ids"`
-	Tags                map[string]string    `json:"tags"`
+	PrivateDnsEnabled   bool                 `json:"private_dns_enabled"`
+	VpcEndpointType     string               `json:"vpc_endpoint_type"`
 	AutoAccept          bool                 `json:"auto_accept"`
 	CidrBlocks          []string             `json:"cidr_blocks"`
+	VpcId               string               `json:"vpc_id"`
+	State               string               `json:"state"`
+	Tags                map[string]string    `json:"tags"`
+	SecurityGroupIds    []string             `json:"security_group_ids"`
+	ServiceName         string               `json:"service_name"`
+	SubnetIds           []string             `json:"subnet_ids"`
+	OwnerId             string               `json:"owner_id"`
+	RequesterManaged    bool                 `json:"requester_managed"`
+	Policy              string               `json:"policy"`
+	RouteTableIds       []string             `json:"route_table_ids"`
 }
 
+
+
 type AwsVpcEndpointStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

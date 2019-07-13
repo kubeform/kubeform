@@ -19,21 +19,27 @@ type AwsLambdaEventSourceMapping struct {
 }
 
 type AwsLambdaEventSourceMappingSpec struct {
-	FunctionName              string `json:"function_name"`
-	StartingPosition          string `json:"starting_position"`
+	StartingPositionTimestamp string `json:"starting_position_timestamp"`
 	BatchSize                 int    `json:"batch_size"`
-	LastProcessingResult      string `json:"last_processing_result"`
+	LastModified              string `json:"last_modified"`
 	StateTransitionReason     string `json:"state_transition_reason"`
 	State                     string `json:"state"`
 	Uuid                      string `json:"uuid"`
 	EventSourceArn            string `json:"event_source_arn"`
-	StartingPositionTimestamp string `json:"starting_position_timestamp"`
+	FunctionName              string `json:"function_name"`
+	StartingPosition          string `json:"starting_position"`
 	Enabled                   bool   `json:"enabled"`
 	FunctionArn               string `json:"function_arn"`
-	LastModified              string `json:"last_modified"`
+	LastProcessingResult      string `json:"last_processing_result"`
 }
 
+
+
 type AwsLambdaEventSourceMappingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

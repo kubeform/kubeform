@@ -19,37 +19,43 @@ type AwsRdsClusterInstance struct {
 }
 
 type AwsRdsClusterInstanceSpec struct {
+	DbSubnetGroupName           string            `json:"db_subnet_group_name"`
+	ApplyImmediately            bool              `json:"apply_immediately"`
+	AvailabilityZone            string            `json:"availability_zone"`
+	CopyTagsToSnapshot          bool              `json:"copy_tags_to_snapshot"`
+	Port                        int               `json:"port"`
+	MonitoringRoleArn           string            `json:"monitoring_role_arn"`
+	PerformanceInsightsKmsKeyId string            `json:"performance_insights_kms_key_id"`
+	DbiResourceId               string            `json:"dbi_resource_id"`
+	Arn                         string            `json:"arn"`
+	IdentifierPrefix            string            `json:"identifier_prefix"`
+	Writer                      bool              `json:"writer"`
+	KmsKeyId                    string            `json:"kms_key_id"`
+	InstanceClass               string            `json:"instance_class"`
+	EngineVersion               string            `json:"engine_version"`
+	AutoMinorVersionUpgrade     bool              `json:"auto_minor_version_upgrade"`
+	MonitoringInterval          int               `json:"monitoring_interval"`
+	Identifier                  string            `json:"identifier"`
+	PerformanceInsightsEnabled  bool              `json:"performance_insights_enabled"`
 	Endpoint                    string            `json:"endpoint"`
 	Engine                      string            `json:"engine"`
+	PreferredBackupWindow       string            `json:"preferred_backup_window"`
+	PromotionTier               int               `json:"promotion_tier"`
+	Tags                        map[string]string `json:"tags"`
+	PreferredMaintenanceWindow  string            `json:"preferred_maintenance_window"`
+	ClusterIdentifier           string            `json:"cluster_identifier"`
+	PubliclyAccessible          bool              `json:"publicly_accessible"`
 	DbParameterGroupName        string            `json:"db_parameter_group_name"`
 	StorageEncrypted            bool              `json:"storage_encrypted"`
-	DbiResourceId               string            `json:"dbi_resource_id"`
-	MonitoringRoleArn           string            `json:"monitoring_role_arn"`
-	Identifier                  string            `json:"identifier"`
-	AutoMinorVersionUpgrade     bool              `json:"auto_minor_version_upgrade"`
-	PerformanceInsightsKmsKeyId string            `json:"performance_insights_kms_key_id"`
-	CopyTagsToSnapshot          bool              `json:"copy_tags_to_snapshot"`
-	IdentifierPrefix            string            `json:"identifier_prefix"`
-	DbSubnetGroupName           string            `json:"db_subnet_group_name"`
-	Port                        int               `json:"port"`
-	PreferredBackupWindow       string            `json:"preferred_backup_window"`
-	MonitoringInterval          int               `json:"monitoring_interval"`
-	PubliclyAccessible          bool              `json:"publicly_accessible"`
-	InstanceClass               string            `json:"instance_class"`
-	AvailabilityZone            string            `json:"availability_zone"`
-	PreferredMaintenanceWindow  string            `json:"preferred_maintenance_window"`
-	Tags                        map[string]string `json:"tags"`
-	Writer                      bool              `json:"writer"`
-	ApplyImmediately            bool              `json:"apply_immediately"`
-	PromotionTier               int               `json:"promotion_tier"`
-	ClusterIdentifier           string            `json:"cluster_identifier"`
-	KmsKeyId                    string            `json:"kms_key_id"`
-	Arn                         string            `json:"arn"`
-	EngineVersion               string            `json:"engine_version"`
-	PerformanceInsightsEnabled  bool              `json:"performance_insights_enabled"`
 }
 
+
+
 type AwsRdsClusterInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

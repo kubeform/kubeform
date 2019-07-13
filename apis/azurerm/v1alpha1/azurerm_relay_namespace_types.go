@@ -23,20 +23,26 @@ type AzurermRelayNamespaceSpecSku struct {
 }
 
 type AzurermRelayNamespaceSpec struct {
-	Location                  string                      `json:"location"`
+	Name                      string                      `json:"name"`
 	SkuName                   string                      `json:"sku_name"`
 	PrimaryConnectionString   string                      `json:"primary_connection_string"`
-	SecondaryConnectionString string                      `json:"secondary_connection_string"`
-	PrimaryKey                string                      `json:"primary_key"`
-	Name                      string                      `json:"name"`
+	Tags                      map[string]string           `json:"tags"`
+	Location                  string                      `json:"location"`
 	ResourceGroupName         string                      `json:"resource_group_name"`
 	Sku                       []AzurermRelayNamespaceSpec `json:"sku"`
 	MetricId                  string                      `json:"metric_id"`
+	SecondaryConnectionString string                      `json:"secondary_connection_string"`
+	PrimaryKey                string                      `json:"primary_key"`
 	SecondaryKey              string                      `json:"secondary_key"`
-	Tags                      map[string]string           `json:"tags"`
 }
 
+
+
 type AzurermRelayNamespaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

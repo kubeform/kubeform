@@ -32,7 +32,13 @@ type AwsCloudwatchLogMetricFilterSpec struct {
 	MetricTransformation []AwsCloudwatchLogMetricFilterSpec `json:"metric_transformation"`
 }
 
+
+
 type AwsCloudwatchLogMetricFilterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

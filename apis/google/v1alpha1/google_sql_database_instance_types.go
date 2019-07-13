@@ -18,35 +18,21 @@ type GoogleSqlDatabaseInstance struct {
 	Status            GoogleSqlDatabaseInstanceStatus `json:"status,omitempty"`
 }
 
-type GoogleSqlDatabaseInstanceSpecReplicaConfiguration struct {
-	Username                string `json:"username"`
-	ClientKey               string `json:"client_key"`
-	FailoverTarget          bool   `json:"failover_target"`
-	Password                string `json:"password"`
-	SslCipher               string `json:"ssl_cipher"`
-	MasterHeartbeatPeriod   int    `json:"master_heartbeat_period"`
-	VerifyServerCertificate bool   `json:"verify_server_certificate"`
-	CaCertificate           string `json:"ca_certificate"`
-	ClientCertificate       string `json:"client_certificate"`
-	ConnectRetryInterval    int    `json:"connect_retry_interval"`
-	DumpFilePath            string `json:"dump_file_path"`
-}
-
-type GoogleSqlDatabaseInstanceSpecSettingsLocationPreference struct {
-	FollowGaeApplication string `json:"follow_gae_application"`
-	Zone                 string `json:"zone"`
-}
-
 type GoogleSqlDatabaseInstanceSpecSettingsBackupConfiguration struct {
+	Enabled          bool   `json:"enabled"`
 	StartTime        string `json:"start_time"`
 	BinaryLogEnabled bool   `json:"binary_log_enabled"`
-	Enabled          bool   `json:"enabled"`
+}
+
+type GoogleSqlDatabaseInstanceSpecSettingsDatabaseFlags struct {
+	Value string `json:"value"`
+	Name  string `json:"name"`
 }
 
 type GoogleSqlDatabaseInstanceSpecSettingsIpConfigurationAuthorizedNetworks struct {
+	Value          string `json:"value"`
 	ExpirationTime string `json:"expiration_time"`
 	Name           string `json:"name"`
-	Value          string `json:"value"`
 }
 
 type GoogleSqlDatabaseInstanceSpecSettingsIpConfiguration struct {
@@ -56,35 +42,35 @@ type GoogleSqlDatabaseInstanceSpecSettingsIpConfiguration struct {
 	PrivateNetwork     string                                                 `json:"private_network"`
 }
 
-type GoogleSqlDatabaseInstanceSpecSettingsMaintenanceWindow struct {
-	Hour        int    `json:"hour"`
-	UpdateTrack string `json:"update_track"`
-	Day         int    `json:"day"`
+type GoogleSqlDatabaseInstanceSpecSettingsLocationPreference struct {
+	FollowGaeApplication string `json:"follow_gae_application"`
+	Zone                 string `json:"zone"`
 }
 
-type GoogleSqlDatabaseInstanceSpecSettingsDatabaseFlags struct {
-	Value string `json:"value"`
-	Name  string `json:"name"`
+type GoogleSqlDatabaseInstanceSpecSettingsMaintenanceWindow struct {
+	UpdateTrack string `json:"update_track"`
+	Day         int    `json:"day"`
+	Hour        int    `json:"hour"`
 }
 
 type GoogleSqlDatabaseInstanceSpecSettings struct {
-	Version                   int                                     `json:"version"`
-	AuthorizedGaeApplications []string                                `json:"authorized_gae_applications"`
-	LocationPreference        []GoogleSqlDatabaseInstanceSpecSettings `json:"location_preference"`
-	Tier                      string                                  `json:"tier"`
-	DiskType                  string                                  `json:"disk_type"`
-	BackupConfiguration       []GoogleSqlDatabaseInstanceSpecSettings `json:"backup_configuration"`
+	ActivationPolicy          string                                  `json:"activation_policy"`
 	CrashSafeReplication      bool                                    `json:"crash_safe_replication"`
 	DiskAutoresize            bool                                    `json:"disk_autoresize"`
 	DiskSize                  int                                     `json:"disk_size"`
-	IpConfiguration           []GoogleSqlDatabaseInstanceSpecSettings `json:"ip_configuration"`
-	MaintenanceWindow         []GoogleSqlDatabaseInstanceSpecSettings `json:"maintenance_window"`
-	ActivationPolicy          string                                  `json:"activation_policy"`
-	AvailabilityType          string                                  `json:"availability_type"`
-	ReplicationType           string                                  `json:"replication_type"`
-	UserLabels                map[string]string                       `json:"user_labels"`
-	DatabaseFlags             []GoogleSqlDatabaseInstanceSpecSettings `json:"database_flags"`
+	DiskType                  string                                  `json:"disk_type"`
 	PricingPlan               string                                  `json:"pricing_plan"`
+	ReplicationType           string                                  `json:"replication_type"`
+	Tier                      string                                  `json:"tier"`
+	UserLabels                map[string]string                       `json:"user_labels"`
+	AuthorizedGaeApplications []string                                `json:"authorized_gae_applications"`
+	BackupConfiguration       []GoogleSqlDatabaseInstanceSpecSettings `json:"backup_configuration"`
+	Version                   int                                     `json:"version"`
+	DatabaseFlags             []GoogleSqlDatabaseInstanceSpecSettings `json:"database_flags"`
+	IpConfiguration           []GoogleSqlDatabaseInstanceSpecSettings `json:"ip_configuration"`
+	LocationPreference        []GoogleSqlDatabaseInstanceSpecSettings `json:"location_preference"`
+	MaintenanceWindow         []GoogleSqlDatabaseInstanceSpecSettings `json:"maintenance_window"`
+	AvailabilityType          string                                  `json:"availability_type"`
 }
 
 type GoogleSqlDatabaseInstanceSpecIpAddress struct {
@@ -93,30 +79,50 @@ type GoogleSqlDatabaseInstanceSpecIpAddress struct {
 }
 
 type GoogleSqlDatabaseInstanceSpecServerCaCert struct {
-	Sha1Fingerprint string `json:"sha1_fingerprint"`
-	Cert            string `json:"cert"`
 	CommonName      string `json:"common_name"`
 	CreateTime      string `json:"create_time"`
 	ExpirationTime  string `json:"expiration_time"`
+	Sha1Fingerprint string `json:"sha1_fingerprint"`
+	Cert            string `json:"cert"`
+}
+
+type GoogleSqlDatabaseInstanceSpecReplicaConfiguration struct {
+	ClientKey               string `json:"client_key"`
+	ConnectRetryInterval    int    `json:"connect_retry_interval"`
+	DumpFilePath            string `json:"dump_file_path"`
+	FailoverTarget          bool   `json:"failover_target"`
+	Password                string `json:"password"`
+	SslCipher               string `json:"ssl_cipher"`
+	VerifyServerCertificate bool   `json:"verify_server_certificate"`
+	CaCertificate           string `json:"ca_certificate"`
+	MasterHeartbeatPeriod   int    `json:"master_heartbeat_period"`
+	Username                string `json:"username"`
+	ClientCertificate       string `json:"client_certificate"`
 }
 
 type GoogleSqlDatabaseInstanceSpec struct {
+	Settings                   []GoogleSqlDatabaseInstanceSpec `json:"settings"`
+	IpAddress                  []GoogleSqlDatabaseInstanceSpec `json:"ip_address"`
+	MasterInstanceName         string                          `json:"master_instance_name"`
+	Project                    string                          `json:"project"`
+	ServerCaCert               []GoogleSqlDatabaseInstanceSpec `json:"server_ca_cert"`
+	SelfLink                   string                          `json:"self_link"`
+	Region                     string                          `json:"region"`
+	DatabaseVersion            string                          `json:"database_version"`
+	FirstIpAddress             string                          `json:"first_ip_address"`
 	Name                       string                          `json:"name"`
 	ReplicaConfiguration       []GoogleSqlDatabaseInstanceSpec `json:"replica_configuration"`
 	ServiceAccountEmailAddress string                          `json:"service_account_email_address"`
-	SelfLink                   string                          `json:"self_link"`
-	MasterInstanceName         string                          `json:"master_instance_name"`
-	Project                    string                          `json:"project"`
-	Region                     string                          `json:"region"`
-	Settings                   []GoogleSqlDatabaseInstanceSpec `json:"settings"`
 	ConnectionName             string                          `json:"connection_name"`
-	DatabaseVersion            string                          `json:"database_version"`
-	IpAddress                  []GoogleSqlDatabaseInstanceSpec `json:"ip_address"`
-	FirstIpAddress             string                          `json:"first_ip_address"`
-	ServerCaCert               []GoogleSqlDatabaseInstanceSpec `json:"server_ca_cert"`
 }
 
+
+
 type GoogleSqlDatabaseInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -18,17 +18,11 @@ type AzurermStorageAccount struct {
 	Status            AzurermStorageAccountStatus `json:"status,omitempty"`
 }
 
-type AzurermStorageAccountSpecIdentity struct {
-	Type        string `json:"type"`
-	PrincipalId string `json:"principal_id"`
-	TenantId    string `json:"tenant_id"`
-}
-
 type AzurermStorageAccountSpecNetworkRules struct {
-	Bypass                  []string `json:"bypass"`
 	IpRules                 []string `json:"ip_rules"`
 	VirtualNetworkSubnetIds []string `json:"virtual_network_subnet_ids"`
 	DefaultAction           string   `json:"default_action"`
+	Bypass                  []string `json:"bypass"`
 }
 
 type AzurermStorageAccountSpecCustomDomain struct {
@@ -36,59 +30,71 @@ type AzurermStorageAccountSpecCustomDomain struct {
 	UseSubdomain bool   `json:"use_subdomain"`
 }
 
-type AzurermStorageAccountSpec struct {
-	Tags                          map[string]string           `json:"tags"`
-	AccountReplicationType        string                      `json:"account_replication_type"`
-	PrimaryLocation               string                      `json:"primary_location"`
-	SecondaryTableHost            string                      `json:"secondary_table_host"`
-	PrimaryWebHost                string                      `json:"primary_web_host"`
-	PrimaryDfsHost                string                      `json:"primary_dfs_host"`
-	PrimaryFileHost               string                      `json:"primary_file_host"`
-	SecondaryWebEndpoint          string                      `json:"secondary_web_endpoint"`
-	PrimaryConnectionString       string                      `json:"primary_connection_string"`
-	AccessTier                    string                      `json:"access_tier"`
-	AccountEncryptionSource       string                      `json:"account_encryption_source"`
-	EnableBlobEncryption          bool                        `json:"enable_blob_encryption"`
-	SecondaryLocation             string                      `json:"secondary_location"`
-	PrimaryBlobEndpoint           string                      `json:"primary_blob_endpoint"`
-	PrimaryTableHost              string                      `json:"primary_table_host"`
-	Identity                      []AzurermStorageAccountSpec `json:"identity"`
-	AccountKind                   string                      `json:"account_kind"`
-	EnableHttpsTrafficOnly        bool                        `json:"enable_https_traffic_only"`
-	PrimaryQueueHost              string                      `json:"primary_queue_host"`
-	SecondaryQueueHost            string                      `json:"secondary_queue_host"`
-	SecondaryDfsEndpoint          string                      `json:"secondary_dfs_endpoint"`
-	SecondaryFileHost             string                      `json:"secondary_file_host"`
-	Location                      string                      `json:"location"`
-	PrimaryBlobHost               string                      `json:"primary_blob_host"`
-	PrimaryWebEndpoint            string                      `json:"primary_web_endpoint"`
-	SecondaryWebHost              string                      `json:"secondary_web_host"`
-	SecondaryFileEndpoint         string                      `json:"secondary_file_endpoint"`
-	PrimaryBlobConnectionString   string                      `json:"primary_blob_connection_string"`
-	EnableFileEncryption          bool                        `json:"enable_file_encryption"`
-	SecondaryBlobEndpoint         string                      `json:"secondary_blob_endpoint"`
-	SecondaryBlobHost             string                      `json:"secondary_blob_host"`
-	SecondaryDfsHost              string                      `json:"secondary_dfs_host"`
-	PrimaryAccessKey              string                      `json:"primary_access_key"`
-	SecondaryAccessKey            string                      `json:"secondary_access_key"`
-	Name                          string                      `json:"name"`
-	AccountType                   string                      `json:"account_type"`
-	IsHnsEnabled                  bool                        `json:"is_hns_enabled"`
-	SecondaryQueueEndpoint        string                      `json:"secondary_queue_endpoint"`
-	PrimaryTableEndpoint          string                      `json:"primary_table_endpoint"`
-	PrimaryFileEndpoint           string                      `json:"primary_file_endpoint"`
-	SecondaryConnectionString     string                      `json:"secondary_connection_string"`
-	NetworkRules                  []AzurermStorageAccountSpec `json:"network_rules"`
-	SecondaryTableEndpoint        string                      `json:"secondary_table_endpoint"`
-	SecondaryBlobConnectionString string                      `json:"secondary_blob_connection_string"`
-	ResourceGroupName             string                      `json:"resource_group_name"`
-	AccountTier                   string                      `json:"account_tier"`
-	CustomDomain                  []AzurermStorageAccountSpec `json:"custom_domain"`
-	PrimaryQueueEndpoint          string                      `json:"primary_queue_endpoint"`
-	PrimaryDfsEndpoint            string                      `json:"primary_dfs_endpoint"`
+type AzurermStorageAccountSpecIdentity struct {
+	Type        string `json:"type"`
+	PrincipalId string `json:"principal_id"`
+	TenantId    string `json:"tenant_id"`
 }
 
+type AzurermStorageAccountSpec struct {
+	SecondaryDfsEndpoint          string                      `json:"secondary_dfs_endpoint"`
+	SecondaryDfsHost              string                      `json:"secondary_dfs_host"`
+	PrimaryFileEndpoint           string                      `json:"primary_file_endpoint"`
+	SecondaryFileHost             string                      `json:"secondary_file_host"`
+	PrimaryBlobHost               string                      `json:"primary_blob_host"`
+	SecondaryBlobEndpoint         string                      `json:"secondary_blob_endpoint"`
+	SecondaryQueueEndpoint        string                      `json:"secondary_queue_endpoint"`
+	NetworkRules                  []AzurermStorageAccountSpec `json:"network_rules"`
+	SecondaryQueueHost            string                      `json:"secondary_queue_host"`
+	PrimaryWebEndpoint            string                      `json:"primary_web_endpoint"`
+	PrimaryDfsEndpoint            string                      `json:"primary_dfs_endpoint"`
+	PrimaryBlobConnectionString   string                      `json:"primary_blob_connection_string"`
+	Location                      string                      `json:"location"`
+	CustomDomain                  []AzurermStorageAccountSpec `json:"custom_domain"`
+	EnableHttpsTrafficOnly        bool                        `json:"enable_https_traffic_only"`
+	Identity                      []AzurermStorageAccountSpec `json:"identity"`
+	PrimaryQueueEndpoint          string                      `json:"primary_queue_endpoint"`
+	PrimaryTableEndpoint          string                      `json:"primary_table_endpoint"`
+	PrimaryConnectionString       string                      `json:"primary_connection_string"`
+	SecondaryBlobConnectionString string                      `json:"secondary_blob_connection_string"`
+	ResourceGroupName             string                      `json:"resource_group_name"`
+	AccountType                   string                      `json:"account_type"`
+	EnableBlobEncryption          bool                        `json:"enable_blob_encryption"`
+	PrimaryDfsHost                string                      `json:"primary_dfs_host"`
+	PrimaryFileHost               string                      `json:"primary_file_host"`
+	SecondaryFileEndpoint         string                      `json:"secondary_file_endpoint"`
+	PrimaryWebHost                string                      `json:"primary_web_host"`
+	SecondaryWebHost              string                      `json:"secondary_web_host"`
+	PrimaryAccessKey              string                      `json:"primary_access_key"`
+	Name                          string                      `json:"name"`
+	AccountKind                   string                      `json:"account_kind"`
+	AccountEncryptionSource       string                      `json:"account_encryption_source"`
+	PrimaryTableHost              string                      `json:"primary_table_host"`
+	SecondaryWebEndpoint          string                      `json:"secondary_web_endpoint"`
+	Tags                          map[string]string           `json:"tags"`
+	AccessTier                    string                      `json:"access_tier"`
+	IsHnsEnabled                  bool                        `json:"is_hns_enabled"`
+	PrimaryBlobEndpoint           string                      `json:"primary_blob_endpoint"`
+	SecondaryTableEndpoint        string                      `json:"secondary_table_endpoint"`
+	SecondaryTableHost            string                      `json:"secondary_table_host"`
+	SecondaryAccessKey            string                      `json:"secondary_access_key"`
+	SecondaryConnectionString     string                      `json:"secondary_connection_string"`
+	AccountReplicationType        string                      `json:"account_replication_type"`
+	EnableFileEncryption          bool                        `json:"enable_file_encryption"`
+	PrimaryQueueHost              string                      `json:"primary_queue_host"`
+	SecondaryBlobHost             string                      `json:"secondary_blob_host"`
+	AccountTier                   string                      `json:"account_tier"`
+	PrimaryLocation               string                      `json:"primary_location"`
+	SecondaryLocation             string                      `json:"secondary_location"`
+}
+
+
+
 type AzurermStorageAccountStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

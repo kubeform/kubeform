@@ -25,19 +25,25 @@ type AwsNetworkInterfaceSpecAttachment struct {
 }
 
 type AwsNetworkInterfaceSpec struct {
-	PrivateDnsName  string                    `json:"private_dns_name"`
-	PrivateIps      []string                  `json:"private_ips"`
-	Description     string                    `json:"description"`
-	Attachment      []AwsNetworkInterfaceSpec `json:"attachment"`
 	SubnetId        string                    `json:"subnet_id"`
-	PrivateIp       string                    `json:"private_ip"`
 	PrivateIpsCount int                       `json:"private_ips_count"`
 	SecurityGroups  []string                  `json:"security_groups"`
-	SourceDestCheck bool                      `json:"source_dest_check"`
+	Description     string                    `json:"description"`
 	Tags            map[string]string         `json:"tags"`
+	PrivateIp       string                    `json:"private_ip"`
+	PrivateDnsName  string                    `json:"private_dns_name"`
+	PrivateIps      []string                  `json:"private_ips"`
+	SourceDestCheck bool                      `json:"source_dest_check"`
+	Attachment      []AwsNetworkInterfaceSpec `json:"attachment"`
 }
 
+
+
 type AwsNetworkInterfaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

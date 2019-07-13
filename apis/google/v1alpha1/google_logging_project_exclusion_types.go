@@ -19,14 +19,20 @@ type GoogleLoggingProjectExclusion struct {
 }
 
 type GoogleLoggingProjectExclusionSpec struct {
-	Disabled    bool   `json:"disabled"`
-	Filter      string `json:"filter"`
 	Name        string `json:"name"`
 	Description string `json:"description"`
+	Disabled    bool   `json:"disabled"`
 	Project     string `json:"project"`
+	Filter      string `json:"filter"`
 }
 
+
+
 type GoogleLoggingProjectExclusionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

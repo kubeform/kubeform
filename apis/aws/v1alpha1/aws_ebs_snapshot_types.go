@@ -19,18 +19,24 @@ type AwsEbsSnapshot struct {
 }
 
 type AwsEbsSnapshotSpec struct {
-	VolumeId            string            `json:"volume_id"`
-	Description         string            `json:"description"`
-	KmsKeyId            string            `json:"kms_key_id"`
 	DataEncryptionKeyId string            `json:"data_encryption_key_id"`
 	Tags                map[string]string `json:"tags"`
-	OwnerId             string            `json:"owner_id"`
-	OwnerAlias          string            `json:"owner_alias"`
+	Description         string            `json:"description"`
 	Encrypted           bool              `json:"encrypted"`
 	VolumeSize          int               `json:"volume_size"`
+	KmsKeyId            string            `json:"kms_key_id"`
+	VolumeId            string            `json:"volume_id"`
+	OwnerId             string            `json:"owner_id"`
+	OwnerAlias          string            `json:"owner_alias"`
 }
 
+
+
 type AwsEbsSnapshotStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

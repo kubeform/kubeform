@@ -19,24 +19,30 @@ type AwsSqsQueue struct {
 }
 
 type AwsSqsQueueSpec struct {
-	Policy                       string            `json:"policy"`
-	RedrivePolicy                string            `json:"redrive_policy"`
-	KmsMasterKeyId               string            `json:"kms_master_key_id"`
-	Tags                         map[string]string `json:"tags"`
-	DelaySeconds                 int               `json:"delay_seconds"`
 	ReceiveWaitTimeSeconds       int               `json:"receive_wait_time_seconds"`
-	ContentBasedDeduplication    bool              `json:"content_based_deduplication"`
-	KmsDataKeyReusePeriodSeconds int               `json:"kms_data_key_reuse_period_seconds"`
-	MaxMessageSize               int               `json:"max_message_size"`
-	FifoQueue                    bool              `json:"fifo_queue"`
-	Name                         string            `json:"name"`
-	NamePrefix                   string            `json:"name_prefix"`
-	MessageRetentionSeconds      int               `json:"message_retention_seconds"`
-	VisibilityTimeoutSeconds     int               `json:"visibility_timeout_seconds"`
 	Arn                          string            `json:"arn"`
+	KmsMasterKeyId               string            `json:"kms_master_key_id"`
+	MessageRetentionSeconds      int               `json:"message_retention_seconds"`
+	ContentBasedDeduplication    bool              `json:"content_based_deduplication"`
+	VisibilityTimeoutSeconds     int               `json:"visibility_timeout_seconds"`
+	RedrivePolicy                string            `json:"redrive_policy"`
+	Tags                         map[string]string `json:"tags"`
+	NamePrefix                   string            `json:"name_prefix"`
+	DelaySeconds                 int               `json:"delay_seconds"`
+	Policy                       string            `json:"policy"`
+	FifoQueue                    bool              `json:"fifo_queue"`
+	KmsDataKeyReusePeriodSeconds int               `json:"kms_data_key_reuse_period_seconds"`
+	Name                         string            `json:"name"`
+	MaxMessageSize               int               `json:"max_message_size"`
 }
 
+
+
 type AwsSqsQueueStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

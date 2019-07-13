@@ -19,13 +19,19 @@ type GoogleSourcerepoRepository struct {
 }
 
 type GoogleSourcerepoRepositorySpec struct {
+	Name    string `json:"name"`
 	Project string `json:"project"`
 	Size    int    `json:"size"`
 	Url     string `json:"url"`
-	Name    string `json:"name"`
 }
 
+
+
 type GoogleSourcerepoRepositoryStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

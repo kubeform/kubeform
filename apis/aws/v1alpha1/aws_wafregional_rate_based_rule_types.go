@@ -19,20 +19,26 @@ type AwsWafregionalRateBasedRule struct {
 }
 
 type AwsWafregionalRateBasedRuleSpecPredicate struct {
-	Type    string `json:"type"`
 	Negated bool   `json:"negated"`
 	DataId  string `json:"data_id"`
+	Type    string `json:"type"`
 }
 
 type AwsWafregionalRateBasedRuleSpec struct {
-	RateKey    string                            `json:"rate_key"`
-	RateLimit  int                               `json:"rate_limit"`
 	Name       string                            `json:"name"`
 	MetricName string                            `json:"metric_name"`
 	Predicate  []AwsWafregionalRateBasedRuleSpec `json:"predicate"`
+	RateKey    string                            `json:"rate_key"`
+	RateLimit  int                               `json:"rate_limit"`
 }
 
+
+
 type AwsWafregionalRateBasedRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

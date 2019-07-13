@@ -19,22 +19,28 @@ type AwsEip struct {
 }
 
 type AwsEipSpec struct {
+	AllocationId           string            `json:"allocation_id"`
 	AssociationId          string            `json:"association_id"`
-	PublicDns              string            `json:"public_dns"`
-	PrivateIp              string            `json:"private_ip"`
-	AssociateWithPrivateIp string            `json:"associate_with_private_ip"`
-	Tags                   map[string]string `json:"tags"`
-	Instance               string            `json:"instance"`
-	NetworkInterface       string            `json:"network_interface"`
 	Domain                 string            `json:"domain"`
 	PublicIp               string            `json:"public_ip"`
-	PrivateDns             string            `json:"private_dns"`
-	PublicIpv4Pool         string            `json:"public_ipv4_pool"`
+	PublicDns              string            `json:"public_dns"`
+	Tags                   map[string]string `json:"tags"`
 	Vpc                    bool              `json:"vpc"`
-	AllocationId           string            `json:"allocation_id"`
+	NetworkInterface       string            `json:"network_interface"`
+	PrivateIp              string            `json:"private_ip"`
+	PrivateDns             string            `json:"private_dns"`
+	AssociateWithPrivateIp string            `json:"associate_with_private_ip"`
+	PublicIpv4Pool         string            `json:"public_ipv4_pool"`
+	Instance               string            `json:"instance"`
 }
 
+
+
 type AwsEipStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

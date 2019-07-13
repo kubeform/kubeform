@@ -19,23 +19,29 @@ type GoogleComputeInstanceGroup struct {
 }
 
 type GoogleComputeInstanceGroupSpecNamedPort struct {
-	Port int    `json:"port"`
 	Name string `json:"name"`
+	Port int    `json:"port"`
 }
 
 type GoogleComputeInstanceGroupSpec struct {
-	Name        string                           `json:"name"`
 	Zone        string                           `json:"zone"`
 	Description string                           `json:"description"`
-	NamedPort   []GoogleComputeInstanceGroupSpec `json:"named_port"`
-	Network     string                           `json:"network"`
-	SelfLink    string                           `json:"self_link"`
 	Instances   []string                         `json:"instances"`
+	NamedPort   []GoogleComputeInstanceGroupSpec `json:"named_port"`
 	Project     string                           `json:"project"`
+	Name        string                           `json:"name"`
+	SelfLink    string                           `json:"self_link"`
 	Size        int                              `json:"size"`
+	Network     string                           `json:"network"`
 }
 
+
+
 type GoogleComputeInstanceGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

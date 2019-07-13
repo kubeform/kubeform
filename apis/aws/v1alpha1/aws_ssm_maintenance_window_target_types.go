@@ -24,15 +24,21 @@ type AwsSsmMaintenanceWindowTargetSpecTargets struct {
 }
 
 type AwsSsmMaintenanceWindowTargetSpec struct {
+	OwnerInformation string                              `json:"owner_information"`
 	WindowId         string                              `json:"window_id"`
 	ResourceType     string                              `json:"resource_type"`
 	Targets          []AwsSsmMaintenanceWindowTargetSpec `json:"targets"`
 	Name             string                              `json:"name"`
 	Description      string                              `json:"description"`
-	OwnerInformation string                              `json:"owner_information"`
 }
 
+
+
 type AwsSsmMaintenanceWindowTargetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

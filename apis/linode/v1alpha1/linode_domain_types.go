@@ -19,22 +19,28 @@ type LinodeDomain struct {
 }
 
 type LinodeDomainSpec struct {
-	SoaEmail    string   `json:"soa_email"`
-	Type        string   `json:"type"`
-	Group       string   `json:"group"`
-	RetrySec    int      `json:"retry_sec"`
-	ExpireSec   int      `json:"expire_sec"`
-	AxfrIps     []string `json:"axfr_ips"`
-	TtlSec      int      `json:"ttl_sec"`
-	RefreshSec  int      `json:"refresh_sec"`
 	Tags        []string `json:"tags"`
-	Domain      string   `json:"domain"`
+	Type        string   `json:"type"`
 	Status      string   `json:"status"`
+	AxfrIps     []string `json:"axfr_ips"`
+	ExpireSec   int      `json:"expire_sec"`
+	RefreshSec  int      `json:"refresh_sec"`
+	SoaEmail    string   `json:"soa_email"`
+	Domain      string   `json:"domain"`
+	Group       string   `json:"group"`
 	Description string   `json:"description"`
 	MasterIps   []string `json:"master_ips"`
+	TtlSec      int      `json:"ttl_sec"`
+	RetrySec    int      `json:"retry_sec"`
 }
 
+
+
 type LinodeDomainStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

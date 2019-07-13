@@ -30,28 +30,34 @@ type AwsAlbSpecAccessLogs struct {
 }
 
 type AwsAlbSpec struct {
-	LoadBalancerType             string            `json:"load_balancer_type"`
+	ArnSuffix                    string            `json:"arn_suffix"`
+	EnableDeletionProtection     bool              `json:"enable_deletion_protection"`
+	Arn                          string            `json:"arn"`
+	Internal                     bool              `json:"internal"`
+	SubnetMapping                []AwsAlbSpec      `json:"subnet_mapping"`
+	AccessLogs                   []AwsAlbSpec      `json:"access_logs"`
+	EnableCrossZoneLoadBalancing bool              `json:"enable_cross_zone_load_balancing"`
 	IpAddressType                string            `json:"ip_address_type"`
 	VpcId                        string            `json:"vpc_id"`
-	EnableDeletionProtection     bool              `json:"enable_deletion_protection"`
-	ZoneId                       string            `json:"zone_id"`
-	Subnets                      []string          `json:"subnets"`
-	SubnetMapping                []AwsAlbSpec      `json:"subnet_mapping"`
-	EnableCrossZoneLoadBalancing bool              `json:"enable_cross_zone_load_balancing"`
-	EnableHttp2                  bool              `json:"enable_http2"`
-	Arn                          string            `json:"arn"`
-	ArnSuffix                    string            `json:"arn_suffix"`
-	Name                         string            `json:"name"`
-	Internal                     bool              `json:"internal"`
 	DnsName                      string            `json:"dns_name"`
-	Tags                         map[string]string `json:"tags"`
+	LoadBalancerType             string            `json:"load_balancer_type"`
+	Subnets                      []string          `json:"subnets"`
+	IdleTimeout                  int               `json:"idle_timeout"`
+	Name                         string            `json:"name"`
 	NamePrefix                   string            `json:"name_prefix"`
 	SecurityGroups               []string          `json:"security_groups"`
-	AccessLogs                   []AwsAlbSpec      `json:"access_logs"`
-	IdleTimeout                  int               `json:"idle_timeout"`
+	EnableHttp2                  bool              `json:"enable_http2"`
+	ZoneId                       string            `json:"zone_id"`
+	Tags                         map[string]string `json:"tags"`
 }
 
+
+
 type AwsAlbStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

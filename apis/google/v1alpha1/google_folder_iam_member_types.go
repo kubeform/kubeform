@@ -19,13 +19,19 @@ type GoogleFolderIamMember struct {
 }
 
 type GoogleFolderIamMemberSpec struct {
-	Role   string `json:"role"`
-	Member string `json:"member"`
 	Etag   string `json:"etag"`
 	Folder string `json:"folder"`
+	Role   string `json:"role"`
+	Member string `json:"member"`
 }
 
+
+
 type GoogleFolderIamMemberStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,19 +19,25 @@ type AzurermServicebusNamespaceAuthorizationRule struct {
 }
 
 type AzurermServicebusNamespaceAuthorizationRuleSpec struct {
-	NamespaceName             string `json:"namespace_name"`
-	SecondaryConnectionString string `json:"secondary_connection_string"`
-	Send                      bool   `json:"send"`
-	Manage                    bool   `json:"manage"`
-	SecondaryKey              string `json:"secondary_key"`
 	Name                      string `json:"name"`
-	ResourceGroupName         string `json:"resource_group_name"`
 	Listen                    bool   `json:"listen"`
+	Send                      bool   `json:"send"`
+	SecondaryKey              string `json:"secondary_key"`
+	NamespaceName             string `json:"namespace_name"`
+	ResourceGroupName         string `json:"resource_group_name"`
+	Manage                    bool   `json:"manage"`
 	PrimaryKey                string `json:"primary_key"`
 	PrimaryConnectionString   string `json:"primary_connection_string"`
+	SecondaryConnectionString string `json:"secondary_connection_string"`
 }
 
+
+
 type AzurermServicebusNamespaceAuthorizationRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

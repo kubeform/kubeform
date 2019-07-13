@@ -19,18 +19,24 @@ type AwsCurReportDefinition struct {
 }
 
 type AwsCurReportDefinitionSpec struct {
-	TimeUnit                 string   `json:"time_unit"`
-	Compression              string   `json:"compression"`
-	S3Prefix                 string   `json:"s3_prefix"`
-	S3Region                 string   `json:"s3_region"`
-	AdditionalArtifacts      []string `json:"additional_artifacts"`
-	ReportName               string   `json:"report_name"`
 	Format                   string   `json:"format"`
+	Compression              string   `json:"compression"`
 	AdditionalSchemaElements []string `json:"additional_schema_elements"`
+	AdditionalArtifacts      []string `json:"additional_artifacts"`
+	S3Region                 string   `json:"s3_region"`
+	ReportName               string   `json:"report_name"`
+	TimeUnit                 string   `json:"time_unit"`
 	S3Bucket                 string   `json:"s3_bucket"`
+	S3Prefix                 string   `json:"s3_prefix"`
 }
 
+
+
 type AwsCurReportDefinitionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

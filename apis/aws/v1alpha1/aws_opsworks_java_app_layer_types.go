@@ -19,43 +19,49 @@ type AwsOpsworksJavaAppLayer struct {
 }
 
 type AwsOpsworksJavaAppLayerSpecEbsVolume struct {
+	Iops          int    `json:"iops"`
 	MountPoint    string `json:"mount_point"`
 	NumberOfDisks int    `json:"number_of_disks"`
 	RaidLevel     string `json:"raid_level"`
 	Size          int    `json:"size"`
 	Type          string `json:"type"`
-	Iops          int    `json:"iops"`
 }
 
 type AwsOpsworksJavaAppLayerSpec struct {
-	AutoHealing              bool                          `json:"auto_healing"`
-	InstallUpdatesOnBoot     bool                          `json:"install_updates_on_boot"`
-	DrainElbOnShutdown       bool                          `json:"drain_elb_on_shutdown"`
-	StackId                  string                        `json:"stack_id"`
-	JvmOptions               string                        `json:"jvm_options"`
-	AppServer                string                        `json:"app_server"`
-	CustomShutdownRecipes    []string                      `json:"custom_shutdown_recipes"`
-	InstanceShutdownTimeout  int                           `json:"instance_shutdown_timeout"`
-	SystemPackages           []string                      `json:"system_packages"`
-	CustomUndeployRecipes    []string                      `json:"custom_undeploy_recipes"`
-	ElasticLoadBalancer      string                        `json:"elastic_load_balancer"`
 	CustomConfigureRecipes   []string                      `json:"custom_configure_recipes"`
 	CustomDeployRecipes      []string                      `json:"custom_deploy_recipes"`
-	CustomSecurityGroupIds   []string                      `json:"custom_security_group_ids"`
-	EbsVolume                []AwsOpsworksJavaAppLayerSpec `json:"ebs_volume"`
-	AppServerVersion         string                        `json:"app_server_version"`
-	JvmType                  string                        `json:"jvm_type"`
-	CustomInstanceProfileArn string                        `json:"custom_instance_profile_arn"`
-	AutoAssignPublicIps      bool                          `json:"auto_assign_public_ips"`
-	CustomSetupRecipes       []string                      `json:"custom_setup_recipes"`
+	CustomShutdownRecipes    []string                      `json:"custom_shutdown_recipes"`
 	CustomJson               string                        `json:"custom_json"`
+	DrainElbOnShutdown       bool                          `json:"drain_elb_on_shutdown"`
+	SystemPackages           []string                      `json:"system_packages"`
+	CustomSetupRecipes       []string                      `json:"custom_setup_recipes"`
+	CustomInstanceProfileArn string                        `json:"custom_instance_profile_arn"`
+	ElasticLoadBalancer      string                        `json:"elastic_load_balancer"`
+	CustomSecurityGroupIds   []string                      `json:"custom_security_group_ids"`
+	AutoHealing              bool                          `json:"auto_healing"`
+	InstallUpdatesOnBoot     bool                          `json:"install_updates_on_boot"`
+	EbsVolume                []AwsOpsworksJavaAppLayerSpec `json:"ebs_volume"`
+	JvmType                  string                        `json:"jvm_type"`
+	AutoAssignElasticIps     bool                          `json:"auto_assign_elastic_ips"`
+	AppServer                string                        `json:"app_server"`
+	JvmVersion               string                        `json:"jvm_version"`
 	UseEbsOptimizedInstances bool                          `json:"use_ebs_optimized_instances"`
 	Name                     string                        `json:"name"`
-	JvmVersion               string                        `json:"jvm_version"`
-	AutoAssignElasticIps     bool                          `json:"auto_assign_elastic_ips"`
+	JvmOptions               string                        `json:"jvm_options"`
+	InstanceShutdownTimeout  int                           `json:"instance_shutdown_timeout"`
+	CustomUndeployRecipes    []string                      `json:"custom_undeploy_recipes"`
+	StackId                  string                        `json:"stack_id"`
+	AppServerVersion         string                        `json:"app_server_version"`
+	AutoAssignPublicIps      bool                          `json:"auto_assign_public_ips"`
 }
 
+
+
 type AwsOpsworksJavaAppLayerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,17 +19,23 @@ type GoogleComputeNetwork struct {
 }
 
 type GoogleComputeNetworkSpec struct {
-	Description           string `json:"description"`
-	RoutingMode           string `json:"routing_mode"`
-	GatewayIpv4           string `json:"gateway_ipv4"`
 	Ipv4Range             string `json:"ipv4_range"`
 	Project               string `json:"project"`
 	SelfLink              string `json:"self_link"`
 	Name                  string `json:"name"`
 	AutoCreateSubnetworks bool   `json:"auto_create_subnetworks"`
+	Description           string `json:"description"`
+	RoutingMode           string `json:"routing_mode"`
+	GatewayIpv4           string `json:"gateway_ipv4"`
 }
 
+
+
 type GoogleComputeNetworkStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

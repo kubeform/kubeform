@@ -19,20 +19,26 @@ type AwsNetworkAclRule struct {
 }
 
 type AwsNetworkAclRuleSpec struct {
+	ToPort        int    `json:"to_port"`
+	IcmpCode      string `json:"icmp_code"`
 	Protocol      string `json:"protocol"`
 	CidrBlock     string `json:"cidr_block"`
-	ToPort        int    `json:"to_port"`
+	Ipv6CidrBlock string `json:"ipv6_cidr_block"`
+	FromPort      int    `json:"from_port"`
 	IcmpType      string `json:"icmp_type"`
 	NetworkAclId  string `json:"network_acl_id"`
 	RuleNumber    int    `json:"rule_number"`
 	Egress        bool   `json:"egress"`
-	IcmpCode      string `json:"icmp_code"`
 	RuleAction    string `json:"rule_action"`
-	Ipv6CidrBlock string `json:"ipv6_cidr_block"`
-	FromPort      int    `json:"from_port"`
 }
 
+
+
 type AwsNetworkAclRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

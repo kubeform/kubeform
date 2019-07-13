@@ -31,18 +31,24 @@ type AwsVpcPeeringConnectionSpecRequester struct {
 }
 
 type AwsVpcPeeringConnectionSpec struct {
-	PeerVpcId    string                        `json:"peer_vpc_id"`
-	VpcId        string                        `json:"vpc_id"`
-	PeerRegion   string                        `json:"peer_region"`
 	Accepter     []AwsVpcPeeringConnectionSpec `json:"accepter"`
-	Tags         map[string]string             `json:"tags"`
 	PeerOwnerId  string                        `json:"peer_owner_id"`
 	AutoAccept   bool                          `json:"auto_accept"`
 	AcceptStatus string                        `json:"accept_status"`
+	PeerRegion   string                        `json:"peer_region"`
 	Requester    []AwsVpcPeeringConnectionSpec `json:"requester"`
+	Tags         map[string]string             `json:"tags"`
+	PeerVpcId    string                        `json:"peer_vpc_id"`
+	VpcId        string                        `json:"vpc_id"`
 }
 
+
+
 type AwsVpcPeeringConnectionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -20,17 +20,23 @@ type AwsKinesisStream struct {
 
 type AwsKinesisStreamSpec struct {
 	ShardCount              int               `json:"shard_count"`
-	ShardLevelMetrics       []string          `json:"shard_level_metrics"`
-	EncryptionType          string            `json:"encryption_type"`
-	KmsKeyId                string            `json:"kms_key_id"`
-	Name                    string            `json:"name"`
 	RetentionPeriod         int               `json:"retention_period"`
-	EnforceConsumerDeletion bool              `json:"enforce_consumer_deletion"`
+	ShardLevelMetrics       []string          `json:"shard_level_metrics"`
+	KmsKeyId                string            `json:"kms_key_id"`
 	Arn                     string            `json:"arn"`
 	Tags                    map[string]string `json:"tags"`
+	Name                    string            `json:"name"`
+	EnforceConsumerDeletion bool              `json:"enforce_consumer_deletion"`
+	EncryptionType          string            `json:"encryption_type"`
 }
 
+
+
 type AwsKinesisStreamStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

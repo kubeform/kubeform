@@ -19,13 +19,19 @@ type GoogleBigtableTable struct {
 }
 
 type GoogleBigtableTableSpec struct {
+	Project      string   `json:"project"`
 	Name         string   `json:"name"`
 	InstanceName string   `json:"instance_name"`
 	SplitKeys    []string `json:"split_keys"`
-	Project      string   `json:"project"`
 }
 
+
+
 type GoogleBigtableTableStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

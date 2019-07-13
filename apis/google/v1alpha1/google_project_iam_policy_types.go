@@ -19,15 +19,21 @@ type GoogleProjectIamPolicy struct {
 }
 
 type GoogleProjectIamPolicySpec struct {
-	DisableProject bool   `json:"disable_project"`
-	Project        string `json:"project"`
-	PolicyData     string `json:"policy_data"`
 	Authoritative  bool   `json:"authoritative"`
 	Etag           string `json:"etag"`
 	RestorePolicy  string `json:"restore_policy"`
+	DisableProject bool   `json:"disable_project"`
+	Project        string `json:"project"`
+	PolicyData     string `json:"policy_data"`
 }
 
+
+
 type GoogleProjectIamPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

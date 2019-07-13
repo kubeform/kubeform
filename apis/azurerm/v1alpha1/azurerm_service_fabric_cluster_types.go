@@ -18,21 +18,64 @@ type AzurermServiceFabricCluster struct {
 	Status            AzurermServiceFabricClusterStatus `json:"status,omitempty"`
 }
 
-type AzurermServiceFabricClusterSpecAzureActiveDirectory struct {
-	TenantId             string `json:"tenant_id"`
-	ClusterApplicationId string `json:"cluster_application_id"`
-	ClientApplicationId  string `json:"client_application_id"`
-}
-
-type AzurermServiceFabricClusterSpecClientCertificateThumbprint struct {
-	Thumbprint string `json:"thumbprint"`
-	IsAdmin    bool   `json:"is_admin"`
+type AzurermServiceFabricClusterSpecDiagnosticsConfig struct {
+	StorageAccountName      string `json:"storage_account_name"`
+	ProtectedAccountKeyName string `json:"protected_account_key_name"`
+	BlobEndpoint            string `json:"blob_endpoint"`
+	QueueEndpoint           string `json:"queue_endpoint"`
+	TableEndpoint           string `json:"table_endpoint"`
 }
 
 type AzurermServiceFabricClusterSpecCertificate struct {
 	Thumbprint          string `json:"thumbprint"`
 	ThumbprintSecondary string `json:"thumbprint_secondary"`
 	X509StoreName       string `json:"x509_store_name"`
+}
+
+type AzurermServiceFabricClusterSpecReverseProxyCertificate struct {
+	Thumbprint          string `json:"thumbprint"`
+	ThumbprintSecondary string `json:"thumbprint_secondary"`
+	X509StoreName       string `json:"x509_store_name"`
+}
+
+type AzurermServiceFabricClusterSpecClientCertificateThumbprint struct {
+	IsAdmin    bool   `json:"is_admin"`
+	Thumbprint string `json:"thumbprint"`
+}
+
+type AzurermServiceFabricClusterSpecFabricSettings struct {
+	Name       string            `json:"name"`
+	Parameters map[string]string `json:"parameters"`
+}
+
+type AzurermServiceFabricClusterSpecNodeTypeEphemeralPorts struct {
+	StartPort int `json:"start_port"`
+	EndPort   int `json:"end_port"`
+}
+
+type AzurermServiceFabricClusterSpecNodeTypeApplicationPorts struct {
+	StartPort int `json:"start_port"`
+	EndPort   int `json:"end_port"`
+}
+
+type AzurermServiceFabricClusterSpecNodeType struct {
+	ReverseProxyEndpointPort int                                       `json:"reverse_proxy_endpoint_port"`
+	DurabilityLevel          string                                    `json:"durability_level"`
+	EphemeralPorts           []AzurermServiceFabricClusterSpecNodeType `json:"ephemeral_ports"`
+	PlacementProperties      map[string]string                         `json:"placement_properties"`
+	Capacities               map[string]string                         `json:"capacities"`
+	InstanceCount            int                                       `json:"instance_count"`
+	IsPrimary                bool                                      `json:"is_primary"`
+	ClientEndpointPort       int                                       `json:"client_endpoint_port"`
+	HttpEndpointPort         int                                       `json:"http_endpoint_port"`
+	ApplicationPorts         []AzurermServiceFabricClusterSpecNodeType `json:"application_ports"`
+	Name                     string                                    `json:"name"`
+}
+
+type AzurermServiceFabricClusterSpecAzureActiveDirectory struct {
+	ClusterApplicationId string `json:"cluster_application_id"`
+	ClientApplicationId  string `json:"client_application_id"`
+	TenantId             string `json:"tenant_id"`
 }
 
 type AzurermServiceFabricClusterSpecCertificateCommonNamesCommonNames struct {
@@ -45,72 +88,35 @@ type AzurermServiceFabricClusterSpecCertificateCommonNames struct {
 	X509StoreName string                                                  `json:"x509_store_name"`
 }
 
-type AzurermServiceFabricClusterSpecReverseProxyCertificate struct {
-	X509StoreName       string `json:"x509_store_name"`
-	Thumbprint          string `json:"thumbprint"`
-	ThumbprintSecondary string `json:"thumbprint_secondary"`
-}
-
-type AzurermServiceFabricClusterSpecNodeTypeApplicationPorts struct {
-	StartPort int `json:"start_port"`
-	EndPort   int `json:"end_port"`
-}
-
-type AzurermServiceFabricClusterSpecNodeTypeEphemeralPorts struct {
-	StartPort int `json:"start_port"`
-	EndPort   int `json:"end_port"`
-}
-
-type AzurermServiceFabricClusterSpecNodeType struct {
-	Name                     string                                    `json:"name"`
-	HttpEndpointPort         int                                       `json:"http_endpoint_port"`
-	ApplicationPorts         []AzurermServiceFabricClusterSpecNodeType `json:"application_ports"`
-	ReverseProxyEndpointPort int                                       `json:"reverse_proxy_endpoint_port"`
-	DurabilityLevel          string                                    `json:"durability_level"`
-	EphemeralPorts           []AzurermServiceFabricClusterSpecNodeType `json:"ephemeral_ports"`
-	PlacementProperties      map[string]string                         `json:"placement_properties"`
-	Capacities               map[string]string                         `json:"capacities"`
-	InstanceCount            int                                       `json:"instance_count"`
-	IsPrimary                bool                                      `json:"is_primary"`
-	ClientEndpointPort       int                                       `json:"client_endpoint_port"`
-}
-
-type AzurermServiceFabricClusterSpecDiagnosticsConfig struct {
-	ProtectedAccountKeyName string `json:"protected_account_key_name"`
-	BlobEndpoint            string `json:"blob_endpoint"`
-	QueueEndpoint           string `json:"queue_endpoint"`
-	TableEndpoint           string `json:"table_endpoint"`
-	StorageAccountName      string `json:"storage_account_name"`
-}
-
-type AzurermServiceFabricClusterSpecFabricSettings struct {
-	Name       string            `json:"name"`
-	Parameters map[string]string `json:"parameters"`
-}
-
 type AzurermServiceFabricClusterSpec struct {
-	Name                        string                            `json:"name"`
-	UpgradeMode                 string                            `json:"upgrade_mode"`
-	ManagementEndpoint          string                            `json:"management_endpoint"`
-	AzureActiveDirectory        []AzurermServiceFabricClusterSpec `json:"azure_active_directory"`
-	ClientCertificateThumbprint []AzurermServiceFabricClusterSpec `json:"client_certificate_thumbprint"`
-	ResourceGroupName           string                            `json:"resource_group_name"`
+	DiagnosticsConfig           []AzurermServiceFabricClusterSpec `json:"diagnostics_config"`
 	Location                    string                            `json:"location"`
-	VmImage                     string                            `json:"vm_image"`
+	ClusterCodeVersion          string                            `json:"cluster_code_version"`
 	AddOnFeatures               []string                          `json:"add_on_features"`
 	Certificate                 []AzurermServiceFabricClusterSpec `json:"certificate"`
-	CertificateCommonNames      []AzurermServiceFabricClusterSpec `json:"certificate_common_names"`
 	ReverseProxyCertificate     []AzurermServiceFabricClusterSpec `json:"reverse_proxy_certificate"`
-	Tags                        map[string]string                 `json:"tags"`
-	ClusterCodeVersion          string                            `json:"cluster_code_version"`
-	NodeType                    []AzurermServiceFabricClusterSpec `json:"node_type"`
 	ReliabilityLevel            string                            `json:"reliability_level"`
-	DiagnosticsConfig           []AzurermServiceFabricClusterSpec `json:"diagnostics_config"`
+	ClientCertificateThumbprint []AzurermServiceFabricClusterSpec `json:"client_certificate_thumbprint"`
 	FabricSettings              []AzurermServiceFabricClusterSpec `json:"fabric_settings"`
+	NodeType                    []AzurermServiceFabricClusterSpec `json:"node_type"`
+	ResourceGroupName           string                            `json:"resource_group_name"`
+	UpgradeMode                 string                            `json:"upgrade_mode"`
+	ManagementEndpoint          string                            `json:"management_endpoint"`
+	VmImage                     string                            `json:"vm_image"`
+	AzureActiveDirectory        []AzurermServiceFabricClusterSpec `json:"azure_active_directory"`
+	Name                        string                            `json:"name"`
+	CertificateCommonNames      []AzurermServiceFabricClusterSpec `json:"certificate_common_names"`
+	Tags                        map[string]string                 `json:"tags"`
 	ClusterEndpoint             string                            `json:"cluster_endpoint"`
 }
 
+
+
 type AzurermServiceFabricClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

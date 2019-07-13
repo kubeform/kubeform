@@ -19,21 +19,21 @@ type AzurermMonitorActivityLogAlert struct {
 }
 
 type AzurermMonitorActivityLogAlertSpecCriteria struct {
-	ResourceId       string `json:"resource_id"`
-	SubStatus        string `json:"sub_status"`
-	ResourceProvider string `json:"resource_provider"`
-	ResourceGroup    string `json:"resource_group"`
-	Caller           string `json:"caller"`
-	Level            string `json:"level"`
-	ResourceType     string `json:"resource_type"`
-	Status           string `json:"status"`
-	Category         string `json:"category"`
 	OperationName    string `json:"operation_name"`
+	Level            string `json:"level"`
+	ResourceProvider string `json:"resource_provider"`
+	Status           string `json:"status"`
+	SubStatus        string `json:"sub_status"`
+	Category         string `json:"category"`
+	Caller           string `json:"caller"`
+	ResourceType     string `json:"resource_type"`
+	ResourceGroup    string `json:"resource_group"`
+	ResourceId       string `json:"resource_id"`
 }
 
 type AzurermMonitorActivityLogAlertSpecAction struct {
-	WebhookProperties map[string]string `json:"webhook_properties"`
 	ActionGroupId     string            `json:"action_group_id"`
+	WebhookProperties map[string]string `json:"webhook_properties"`
 }
 
 type AzurermMonitorActivityLogAlertSpec struct {
@@ -47,7 +47,13 @@ type AzurermMonitorActivityLogAlertSpec struct {
 	ResourceGroupName string                               `json:"resource_group_name"`
 }
 
+
+
 type AzurermMonitorActivityLogAlertStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

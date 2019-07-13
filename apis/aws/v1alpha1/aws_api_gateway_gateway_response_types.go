@@ -19,14 +19,20 @@ type AwsApiGatewayGatewayResponse struct {
 }
 
 type AwsApiGatewayGatewayResponseSpec struct {
+	ResponseType       string            `json:"response_type"`
 	StatusCode         string            `json:"status_code"`
 	ResponseTemplates  map[string]string `json:"response_templates"`
 	ResponseParameters map[string]string `json:"response_parameters"`
 	RestApiId          string            `json:"rest_api_id"`
-	ResponseType       string            `json:"response_type"`
 }
 
+
+
 type AwsApiGatewayGatewayResponseStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,21 +19,27 @@ type GoogleComputeGlobalForwardingRule struct {
 }
 
 type GoogleComputeGlobalForwardingRuleSpec struct {
+	Name             string            `json:"name"`
 	Target           string            `json:"target"`
+	Labels           map[string]string `json:"labels"`
+	PortRange        string            `json:"port_range"`
+	Region           string            `json:"region"`
+	SelfLink         string            `json:"self_link"`
 	Description      string            `json:"description"`
 	IpAddress        string            `json:"ip_address"`
 	IpProtocol       string            `json:"ip_protocol"`
-	PortRange        string            `json:"port_range"`
-	IpVersion        string            `json:"ip_version"`
-	Name             string            `json:"name"`
-	Labels           map[string]string `json:"labels"`
 	LabelFingerprint string            `json:"label_fingerprint"`
+	IpVersion        string            `json:"ip_version"`
 	Project          string            `json:"project"`
-	Region           string            `json:"region"`
-	SelfLink         string            `json:"self_link"`
 }
 
+
+
 type GoogleComputeGlobalForwardingRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

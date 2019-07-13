@@ -20,19 +20,25 @@ type AwsSubnet struct {
 
 type AwsSubnetSpec struct {
 	VpcId                       string            `json:"vpc_id"`
-	CidrBlock                   string            `json:"cidr_block"`
-	Ipv6CidrBlock               string            `json:"ipv6_cidr_block"`
-	AvailabilityZone            string            `json:"availability_zone"`
 	MapPublicIpOnLaunch         bool              `json:"map_public_ip_on_launch"`
 	AssignIpv6AddressOnCreation bool              `json:"assign_ipv6_address_on_creation"`
 	Arn                         string            `json:"arn"`
-	AvailabilityZoneId          string            `json:"availability_zone_id"`
-	Ipv6CidrBlockAssociationId  string            `json:"ipv6_cidr_block_association_id"`
 	Tags                        map[string]string `json:"tags"`
 	OwnerId                     string            `json:"owner_id"`
+	CidrBlock                   string            `json:"cidr_block"`
+	Ipv6CidrBlock               string            `json:"ipv6_cidr_block"`
+	AvailabilityZone            string            `json:"availability_zone"`
+	AvailabilityZoneId          string            `json:"availability_zone_id"`
+	Ipv6CidrBlockAssociationId  string            `json:"ipv6_cidr_block_association_id"`
 }
 
+
+
 type AwsSubnetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

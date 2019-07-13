@@ -19,14 +19,20 @@ type AwsDxHostedPrivateVirtualInterfaceAccepter struct {
 }
 
 type AwsDxHostedPrivateVirtualInterfaceAccepterSpec struct {
-	Tags               map[string]string `json:"tags"`
 	Arn                string            `json:"arn"`
 	VirtualInterfaceId string            `json:"virtual_interface_id"`
 	VpnGatewayId       string            `json:"vpn_gateway_id"`
 	DxGatewayId        string            `json:"dx_gateway_id"`
+	Tags               map[string]string `json:"tags"`
 }
 
+
+
 type AwsDxHostedPrivateVirtualInterfaceAccepterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -23,6 +23,7 @@ type AzurermNotificationHubNamespaceSpecSku struct {
 }
 
 type AzurermNotificationHubNamespaceSpec struct {
+	ServicebusEndpoint string                                `json:"servicebus_endpoint"`
 	Name               string                                `json:"name"`
 	ResourceGroupName  string                                `json:"resource_group_name"`
 	Location           string                                `json:"location"`
@@ -30,10 +31,15 @@ type AzurermNotificationHubNamespaceSpec struct {
 	SkuName            string                                `json:"sku_name"`
 	Enabled            bool                                  `json:"enabled"`
 	NamespaceType      string                                `json:"namespace_type"`
-	ServicebusEndpoint string                                `json:"servicebus_endpoint"`
 }
 
+
+
 type AzurermNotificationHubNamespaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

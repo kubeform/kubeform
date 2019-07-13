@@ -19,15 +19,21 @@ type AwsIamUserLoginProfile struct {
 }
 
 type AwsIamUserLoginProfileSpec struct {
-	PasswordLength        int    `json:"password_length"`
-	KeyFingerprint        string `json:"key_fingerprint"`
-	EncryptedPassword     string `json:"encrypted_password"`
 	User                  string `json:"user"`
 	PgpKey                string `json:"pgp_key"`
 	PasswordResetRequired bool   `json:"password_reset_required"`
+	PasswordLength        int    `json:"password_length"`
+	KeyFingerprint        string `json:"key_fingerprint"`
+	EncryptedPassword     string `json:"encrypted_password"`
 }
 
+
+
 type AwsIamUserLoginProfileStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -23,21 +23,27 @@ type AzurermExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig struct {
 }
 
 type AzurermExpressRouteCircuitPeeringSpec struct {
-	ResourceGroupName          string                                  `json:"resource_group_name"`
 	PrimaryPeerAddressPrefix   string                                  `json:"primary_peer_address_prefix"`
-	SecondaryPeerAddressPrefix string                                  `json:"secondary_peer_address_prefix"`
-	AzureAsn                   int                                     `json:"azure_asn"`
-	SecondaryAzurePort         string                                  `json:"secondary_azure_port"`
-	PeeringType                string                                  `json:"peering_type"`
-	ExpressRouteCircuitName    string                                  `json:"express_route_circuit_name"`
-	PeerAsn                    int                                     `json:"peer_asn"`
-	MicrosoftPeeringConfig     []AzurermExpressRouteCircuitPeeringSpec `json:"microsoft_peering_config"`
-	PrimaryAzurePort           string                                  `json:"primary_azure_port"`
 	VlanId                     int                                     `json:"vlan_id"`
 	SharedKey                  string                                  `json:"shared_key"`
+	PeerAsn                    int                                     `json:"peer_asn"`
+	PeeringType                string                                  `json:"peering_type"`
+	ResourceGroupName          string                                  `json:"resource_group_name"`
+	MicrosoftPeeringConfig     []AzurermExpressRouteCircuitPeeringSpec `json:"microsoft_peering_config"`
+	AzureAsn                   int                                     `json:"azure_asn"`
+	PrimaryAzurePort           string                                  `json:"primary_azure_port"`
+	SecondaryAzurePort         string                                  `json:"secondary_azure_port"`
+	ExpressRouteCircuitName    string                                  `json:"express_route_circuit_name"`
+	SecondaryPeerAddressPrefix string                                  `json:"secondary_peer_address_prefix"`
 }
 
+
+
 type AzurermExpressRouteCircuitPeeringStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

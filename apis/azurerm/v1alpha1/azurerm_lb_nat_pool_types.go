@@ -19,19 +19,25 @@ type AzurermLbNatPool struct {
 }
 
 type AzurermLbNatPoolSpec struct {
-	Protocol                    string `json:"protocol"`
-	FrontendPortStart           int    `json:"frontend_port_start"`
-	FrontendIpConfigurationName string `json:"frontend_ip_configuration_name"`
-	FrontendIpConfigurationId   string `json:"frontend_ip_configuration_id"`
-	Name                        string `json:"name"`
-	Location                    string `json:"location"`
 	FrontendPortEnd             int    `json:"frontend_port_end"`
 	BackendPort                 int    `json:"backend_port"`
+	FrontendIpConfigurationName string `json:"frontend_ip_configuration_name"`
+	Name                        string `json:"name"`
 	ResourceGroupName           string `json:"resource_group_name"`
 	LoadbalancerId              string `json:"loadbalancer_id"`
+	FrontendIpConfigurationId   string `json:"frontend_ip_configuration_id"`
+	Location                    string `json:"location"`
+	Protocol                    string `json:"protocol"`
+	FrontendPortStart           int    `json:"frontend_port_start"`
 }
 
+
+
 type AzurermLbNatPoolStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

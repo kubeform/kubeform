@@ -19,26 +19,32 @@ type GoogleRedisInstance struct {
 }
 
 type GoogleRedisInstanceSpec struct {
-	RedisVersion          string            `json:"redis_version"`
-	Project               string            `json:"project"`
-	MemorySizeGb          int               `json:"memory_size_gb"`
-	Name                  string            `json:"name"`
-	Region                string            `json:"region"`
-	AlternativeLocationId string            `json:"alternative_location_id"`
-	AuthorizedNetwork     string            `json:"authorized_network"`
-	DisplayName           string            `json:"display_name"`
-	RedisConfigs          map[string]string `json:"redis_configs"`
-	ReservedIpRange       string            `json:"reserved_ip_range"`
-	Tier                  string            `json:"tier"`
-	Labels                map[string]string `json:"labels"`
-	LocationId            string            `json:"location_id"`
-	CreateTime            string            `json:"create_time"`
-	CurrentLocationId     string            `json:"current_location_id"`
 	Host                  string            `json:"host"`
 	Port                  int               `json:"port"`
+	AuthorizedNetwork     string            `json:"authorized_network"`
+	Labels                map[string]string `json:"labels"`
+	Tier                  string            `json:"tier"`
+	CurrentLocationId     string            `json:"current_location_id"`
+	AlternativeLocationId string            `json:"alternative_location_id"`
+	LocationId            string            `json:"location_id"`
+	RedisConfigs          map[string]string `json:"redis_configs"`
+	CreateTime            string            `json:"create_time"`
+	DisplayName           string            `json:"display_name"`
+	Region                string            `json:"region"`
+	ReservedIpRange       string            `json:"reserved_ip_range"`
+	MemorySizeGb          int               `json:"memory_size_gb"`
+	Name                  string            `json:"name"`
+	RedisVersion          string            `json:"redis_version"`
+	Project               string            `json:"project"`
 }
 
+
+
 type GoogleRedisInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

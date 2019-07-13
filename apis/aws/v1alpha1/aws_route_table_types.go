@@ -19,13 +19,13 @@ type AwsRouteTable struct {
 }
 
 type AwsRouteTableSpecRoute struct {
-	EgressOnlyGatewayId    string `json:"egress_only_gateway_id"`
+	CidrBlock              string `json:"cidr_block"`
 	GatewayId              string `json:"gateway_id"`
-	InstanceId             string `json:"instance_id"`
 	TransitGatewayId       string `json:"transit_gateway_id"`
 	NetworkInterfaceId     string `json:"network_interface_id"`
-	CidrBlock              string `json:"cidr_block"`
 	Ipv6CidrBlock          string `json:"ipv6_cidr_block"`
+	EgressOnlyGatewayId    string `json:"egress_only_gateway_id"`
+	InstanceId             string `json:"instance_id"`
 	NatGatewayId           string `json:"nat_gateway_id"`
 	VpcPeeringConnectionId string `json:"vpc_peering_connection_id"`
 }
@@ -38,7 +38,13 @@ type AwsRouteTableSpec struct {
 	OwnerId         string              `json:"owner_id"`
 }
 
+
+
 type AwsRouteTableStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

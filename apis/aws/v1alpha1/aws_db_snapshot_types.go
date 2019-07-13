@@ -19,29 +19,35 @@ type AwsDbSnapshot struct {
 }
 
 type AwsDbSnapshotSpec struct {
-	StorageType                string            `json:"storage_type"`
 	AvailabilityZone           string            `json:"availability_zone"`
+	StorageType                string            `json:"storage_type"`
+	Status                     string            `json:"status"`
+	Tags                       map[string]string `json:"tags"`
+	Engine                     string            `json:"engine"`
+	KmsKeyId                   string            `json:"kms_key_id"`
 	OptionGroupName            string            `json:"option_group_name"`
 	Port                       int               `json:"port"`
-	SourceDbSnapshotIdentifier string            `json:"source_db_snapshot_identifier"`
-	SourceRegion               string            `json:"source_region"`
 	SnapshotType               string            `json:"snapshot_type"`
-	AllocatedStorage           int               `json:"allocated_storage"`
-	DbSnapshotArn              string            `json:"db_snapshot_arn"`
-	EngineVersion              string            `json:"engine_version"`
-	KmsKeyId                   string            `json:"kms_key_id"`
-	DbInstanceIdentifier       string            `json:"db_instance_identifier"`
-	Encrypted                  bool              `json:"encrypted"`
-	Iops                       int               `json:"iops"`
-	Status                     string            `json:"status"`
-	VpcId                      string            `json:"vpc_id"`
 	DbSnapshotIdentifier       string            `json:"db_snapshot_identifier"`
-	Engine                     string            `json:"engine"`
+	AllocatedStorage           int               `json:"allocated_storage"`
+	SourceRegion               string            `json:"source_region"`
+	VpcId                      string            `json:"vpc_id"`
 	LicenseModel               string            `json:"license_model"`
-	Tags                       map[string]string `json:"tags"`
+	SourceDbSnapshotIdentifier string            `json:"source_db_snapshot_identifier"`
+	DbInstanceIdentifier       string            `json:"db_instance_identifier"`
+	DbSnapshotArn              string            `json:"db_snapshot_arn"`
+	Encrypted                  bool              `json:"encrypted"`
+	EngineVersion              string            `json:"engine_version"`
+	Iops                       int               `json:"iops"`
 }
 
+
+
 type AwsDbSnapshotStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,11 +19,17 @@ type AwsRoute53QueryLog struct {
 }
 
 type AwsRoute53QueryLogSpec struct {
-	ZoneId                string `json:"zone_id"`
 	CloudwatchLogGroupArn string `json:"cloudwatch_log_group_arn"`
+	ZoneId                string `json:"zone_id"`
 }
 
+
+
 type AwsRoute53QueryLogStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

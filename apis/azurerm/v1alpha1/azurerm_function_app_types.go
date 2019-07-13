@@ -18,17 +18,23 @@ type AzurermFunctionApp struct {
 	Status            AzurermFunctionAppStatus `json:"status,omitempty"`
 }
 
+type AzurermFunctionAppSpecConnectionString struct {
+	Name  string `json:"name"`
+	Value string `json:"value"`
+	Type  string `json:"type"`
+}
+
 type AzurermFunctionAppSpecIdentity struct {
+	Type        string `json:"type"`
 	PrincipalId string `json:"principal_id"`
 	TenantId    string `json:"tenant_id"`
-	Type        string `json:"type"`
 }
 
 type AzurermFunctionAppSpecSiteConfig struct {
-	LinuxFxVersion        string `json:"linux_fx_version"`
 	AlwaysOn              bool   `json:"always_on"`
 	Use32BitWorkerProcess bool   `json:"use_32_bit_worker_process"`
 	WebsocketsEnabled     bool   `json:"websockets_enabled"`
+	LinuxFxVersion        string `json:"linux_fx_version"`
 }
 
 type AzurermFunctionAppSpecSiteCredential struct {
@@ -36,36 +42,36 @@ type AzurermFunctionAppSpecSiteCredential struct {
 	Password string `json:"password"`
 }
 
-type AzurermFunctionAppSpecConnectionString struct {
-	Name  string `json:"name"`
-	Value string `json:"value"`
-	Type  string `json:"type"`
-}
-
 type AzurermFunctionAppSpec struct {
-	Identity                    []AzurermFunctionAppSpec `json:"identity"`
+	Version                     string                   `json:"version"`
+	AppSettings                 map[string]string        `json:"app_settings"`
+	ConnectionString            []AzurermFunctionAppSpec `json:"connection_string"`
+	Kind                        string                   `json:"kind"`
+	AppServicePlanId            string                   `json:"app_service_plan_id"`
 	Tags                        map[string]string        `json:"tags"`
 	OutboundIpAddresses         string                   `json:"outbound_ip_addresses"`
-	StorageConnectionString     string                   `json:"storage_connection_string"`
-	ResourceGroupName           string                   `json:"resource_group_name"`
-	Location                    string                   `json:"location"`
-	Kind                        string                   `json:"kind"`
-	Enabled                     bool                     `json:"enabled"`
-	AppSettings                 map[string]string        `json:"app_settings"`
-	SiteConfig                  []AzurermFunctionAppSpec `json:"site_config"`
-	Name                        string                   `json:"name"`
-	DefaultHostname             string                   `json:"default_hostname"`
 	PossibleOutboundIpAddresses string                   `json:"possible_outbound_ip_addresses"`
-	ClientAffinityEnabled       bool                     `json:"client_affinity_enabled"`
-	SiteCredential              []AzurermFunctionAppSpec `json:"site_credential"`
-	AppServicePlanId            string                   `json:"app_service_plan_id"`
+	Name                        string                   `json:"name"`
+	Identity                    []AzurermFunctionAppSpec `json:"identity"`
+	StorageConnectionString     string                   `json:"storage_connection_string"`
 	EnableBuiltinLogging        bool                     `json:"enable_builtin_logging"`
-	ConnectionString            []AzurermFunctionAppSpec `json:"connection_string"`
+	Location                    string                   `json:"location"`
+	Enabled                     bool                     `json:"enabled"`
+	ClientAffinityEnabled       bool                     `json:"client_affinity_enabled"`
 	HttpsOnly                   bool                     `json:"https_only"`
-	Version                     string                   `json:"version"`
+	SiteConfig                  []AzurermFunctionAppSpec `json:"site_config"`
+	SiteCredential              []AzurermFunctionAppSpec `json:"site_credential"`
+	ResourceGroupName           string                   `json:"resource_group_name"`
+	DefaultHostname             string                   `json:"default_hostname"`
 }
 
+
+
 type AzurermFunctionAppStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

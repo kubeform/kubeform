@@ -19,20 +19,26 @@ type AzurermSqlElasticpool struct {
 }
 
 type AzurermSqlElasticpoolSpec struct {
-	Location          string            `json:"location"`
-	ServerName        string            `json:"server_name"`
-	Edition           string            `json:"edition"`
-	DbDtuMin          int               `json:"db_dtu_min"`
-	CreationDate      string            `json:"creation_date"`
-	Tags              map[string]string `json:"tags"`
 	Name              string            `json:"name"`
+	Location          string            `json:"location"`
 	ResourceGroupName string            `json:"resource_group_name"`
 	Dtu               int               `json:"dtu"`
+	DbDtuMin          int               `json:"db_dtu_min"`
 	DbDtuMax          int               `json:"db_dtu_max"`
+	ServerName        string            `json:"server_name"`
+	Edition           string            `json:"edition"`
 	PoolSize          int               `json:"pool_size"`
+	CreationDate      string            `json:"creation_date"`
+	Tags              map[string]string `json:"tags"`
 }
 
+
+
 type AzurermSqlElasticpoolStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,15 +19,21 @@ type GoogleComputeRouterInterface struct {
 }
 
 type GoogleComputeRouterInterfaceSpec struct {
+	Region    string `json:"region"`
 	Name      string `json:"name"`
 	Router    string `json:"router"`
 	VpnTunnel string `json:"vpn_tunnel"`
 	IpRange   string `json:"ip_range"`
 	Project   string `json:"project"`
-	Region    string `json:"region"`
 }
 
+
+
 type GoogleComputeRouterInterfaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,20 +19,26 @@ type DigitaloceanVolume struct {
 }
 
 type DigitaloceanVolumeSpec struct {
-	FilesystemLabel        string  `json:"filesystem_label"`
-	Region                 string  `json:"region"`
 	Name                   string  `json:"name"`
 	Urn                    string  `json:"urn"`
 	Description            string  `json:"description"`
-	InitialFilesystemType  string  `json:"initial_filesystem_type"`
-	InitialFilesystemLabel string  `json:"initial_filesystem_label"`
 	FilesystemType         string  `json:"filesystem_type"`
+	FilesystemLabel        string  `json:"filesystem_label"`
+	Region                 string  `json:"region"`
 	Size                   int     `json:"size"`
 	SnapshotId             string  `json:"snapshot_id"`
+	InitialFilesystemType  string  `json:"initial_filesystem_type"`
+	InitialFilesystemLabel string  `json:"initial_filesystem_label"`
 	DropletIds             []int64 `json:"droplet_ids"`
 }
 
+
+
 type DigitaloceanVolumeStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

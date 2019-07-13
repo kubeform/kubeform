@@ -19,13 +19,19 @@ type AzurermManagementLock struct {
 }
 
 type AzurermManagementLockSpec struct {
-	Name      string `json:"name"`
-	Scope     string `json:"scope"`
 	LockLevel string `json:"lock_level"`
 	Notes     string `json:"notes"`
+	Name      string `json:"name"`
+	Scope     string `json:"scope"`
 }
 
+
+
 type AzurermManagementLockStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

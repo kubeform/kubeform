@@ -19,18 +19,24 @@ type AwsCloudwatchEventRule struct {
 }
 
 type AwsCloudwatchEventRuleSpec struct {
-	Name               string            `json:"name"`
-	NamePrefix         string            `json:"name_prefix"`
-	ScheduleExpression string            `json:"schedule_expression"`
-	Description        string            `json:"description"`
 	RoleArn            string            `json:"role_arn"`
-	EventPattern       string            `json:"event_pattern"`
 	IsEnabled          bool              `json:"is_enabled"`
+	NamePrefix         string            `json:"name_prefix"`
+	Description        string            `json:"description"`
+	EventPattern       string            `json:"event_pattern"`
 	Arn                string            `json:"arn"`
 	Tags               map[string]string `json:"tags"`
+	Name               string            `json:"name"`
+	ScheduleExpression string            `json:"schedule_expression"`
 }
 
+
+
 type AwsCloudwatchEventRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

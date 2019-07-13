@@ -18,17 +18,6 @@ type AwsMqBroker struct {
 	Status            AwsMqBrokerStatus `json:"status,omitempty"`
 }
 
-type AwsMqBrokerSpecConfiguration struct {
-	Id       string `json:"id"`
-	Revision int    `json:"revision"`
-}
-
-type AwsMqBrokerSpecMaintenanceWindowStartTime struct {
-	DayOfWeek string `json:"day_of_week"`
-	TimeOfDay string `json:"time_of_day"`
-	TimeZone  string `json:"time_zone"`
-}
-
 type AwsMqBrokerSpecUser struct {
 	ConsoleAccess bool     `json:"console_access"`
 	Groups        []string `json:"groups"`
@@ -36,38 +25,55 @@ type AwsMqBrokerSpecUser struct {
 	Username      string   `json:"username"`
 }
 
-type AwsMqBrokerSpecInstances struct {
-	ConsoleUrl string   `json:"console_url"`
-	IpAddress  string   `json:"ip_address"`
-	Endpoints  []string `json:"endpoints"`
-}
-
 type AwsMqBrokerSpecLogs struct {
 	General bool `json:"general"`
 	Audit   bool `json:"audit"`
 }
 
-type AwsMqBrokerSpec struct {
-	EngineVersion              string            `json:"engine_version"`
-	BrokerName                 string            `json:"broker_name"`
-	AutoMinorVersionUpgrade    bool              `json:"auto_minor_version_upgrade"`
-	Configuration              []AwsMqBrokerSpec `json:"configuration"`
-	EngineType                 string            `json:"engine_type"`
-	HostInstanceType           string            `json:"host_instance_type"`
-	MaintenanceWindowStartTime []AwsMqBrokerSpec `json:"maintenance_window_start_time"`
-	Arn                        string            `json:"arn"`
-	ApplyImmediately           bool              `json:"apply_immediately"`
-	SubnetIds                  []string          `json:"subnet_ids"`
-	User                       []AwsMqBrokerSpec `json:"user"`
-	Instances                  []AwsMqBrokerSpec `json:"instances"`
-	SecurityGroups             []string          `json:"security_groups"`
-	Logs                       []AwsMqBrokerSpec `json:"logs"`
-	PubliclyAccessible         bool              `json:"publicly_accessible"`
-	Tags                       map[string]string `json:"tags"`
-	DeploymentMode             string            `json:"deployment_mode"`
+type AwsMqBrokerSpecMaintenanceWindowStartTime struct {
+	TimeOfDay string `json:"time_of_day"`
+	TimeZone  string `json:"time_zone"`
+	DayOfWeek string `json:"day_of_week"`
 }
 
+type AwsMqBrokerSpecInstances struct {
+	Endpoints  []string `json:"endpoints"`
+	ConsoleUrl string   `json:"console_url"`
+	IpAddress  string   `json:"ip_address"`
+}
+
+type AwsMqBrokerSpecConfiguration struct {
+	Id       string `json:"id"`
+	Revision int    `json:"revision"`
+}
+
+type AwsMqBrokerSpec struct {
+	HostInstanceType           string            `json:"host_instance_type"`
+	Tags                       map[string]string `json:"tags"`
+	PubliclyAccessible         bool              `json:"publicly_accessible"`
+	SubnetIds                  []string          `json:"subnet_ids"`
+	User                       []AwsMqBrokerSpec `json:"user"`
+	Arn                        string            `json:"arn"`
+	ApplyImmediately           bool              `json:"apply_immediately"`
+	DeploymentMode             string            `json:"deployment_mode"`
+	EngineType                 string            `json:"engine_type"`
+	Logs                       []AwsMqBrokerSpec `json:"logs"`
+	MaintenanceWindowStartTime []AwsMqBrokerSpec `json:"maintenance_window_start_time"`
+	SecurityGroups             []string          `json:"security_groups"`
+	Instances                  []AwsMqBrokerSpec `json:"instances"`
+	AutoMinorVersionUpgrade    bool              `json:"auto_minor_version_upgrade"`
+	BrokerName                 string            `json:"broker_name"`
+	Configuration              []AwsMqBrokerSpec `json:"configuration"`
+	EngineVersion              string            `json:"engine_version"`
+}
+
+
+
 type AwsMqBrokerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

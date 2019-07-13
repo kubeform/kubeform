@@ -19,17 +19,23 @@ type AzurermPolicySetDefinition struct {
 }
 
 type AzurermPolicySetDefinitionSpec struct {
-	Name              string `json:"name"`
-	PolicyType        string `json:"policy_type"`
-	ManagementGroupId string `json:"management_group_id"`
-	DisplayName       string `json:"display_name"`
 	Description       string `json:"description"`
 	Metadata          string `json:"metadata"`
 	Parameters        string `json:"parameters"`
 	PolicyDefinitions string `json:"policy_definitions"`
+	Name              string `json:"name"`
+	PolicyType        string `json:"policy_type"`
+	ManagementGroupId string `json:"management_group_id"`
+	DisplayName       string `json:"display_name"`
 }
 
+
+
 type AzurermPolicySetDefinitionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

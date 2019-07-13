@@ -19,18 +19,24 @@ type AzurermApiManagementSubscription struct {
 }
 
 type AzurermApiManagementSubscriptionSpec struct {
+	ApiManagementName string `json:"api_management_name"`
+	DisplayName       string `json:"display_name"`
+	PrimaryKey        string `json:"primary_key"`
 	SecondaryKey      string `json:"secondary_key"`
 	SubscriptionId    string `json:"subscription_id"`
 	ProductId         string `json:"product_id"`
 	ResourceGroupName string `json:"resource_group_name"`
-	PrimaryKey        string `json:"primary_key"`
-	UserId            string `json:"user_id"`
-	ApiManagementName string `json:"api_management_name"`
-	DisplayName       string `json:"display_name"`
 	State             string `json:"state"`
+	UserId            string `json:"user_id"`
 }
 
+
+
 type AzurermApiManagementSubscriptionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

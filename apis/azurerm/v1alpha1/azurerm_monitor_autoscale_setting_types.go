@@ -18,6 +18,35 @@ type AzurermMonitorAutoscaleSetting struct {
 	Status            AzurermMonitorAutoscaleSettingStatus `json:"status,omitempty"`
 }
 
+type AzurermMonitorAutoscaleSettingSpecProfileCapacity struct {
+	Minimum int `json:"minimum"`
+	Maximum int `json:"maximum"`
+	Default int `json:"default"`
+}
+
+type AzurermMonitorAutoscaleSettingSpecProfileRuleMetricTrigger struct {
+	Operator         string  `json:"operator"`
+	Threshold        float64 `json:"threshold"`
+	MetricName       string  `json:"metric_name"`
+	MetricResourceId string  `json:"metric_resource_id"`
+	TimeGrain        string  `json:"time_grain"`
+	Statistic        string  `json:"statistic"`
+	TimeWindow       string  `json:"time_window"`
+	TimeAggregation  string  `json:"time_aggregation"`
+}
+
+type AzurermMonitorAutoscaleSettingSpecProfileRuleScaleAction struct {
+	Direction string `json:"direction"`
+	Type      string `json:"type"`
+	Value     int    `json:"value"`
+	Cooldown  string `json:"cooldown"`
+}
+
+type AzurermMonitorAutoscaleSettingSpecProfileRule struct {
+	MetricTrigger []AzurermMonitorAutoscaleSettingSpecProfileRule `json:"metric_trigger"`
+	ScaleAction   []AzurermMonitorAutoscaleSettingSpecProfileRule `json:"scale_action"`
+}
+
 type AzurermMonitorAutoscaleSettingSpecProfileFixedDate struct {
 	Timezone string `json:"timezone"`
 	Start    string `json:"start"`
@@ -31,41 +60,12 @@ type AzurermMonitorAutoscaleSettingSpecProfileRecurrence struct {
 	Minutes  []int64  `json:"minutes"`
 }
 
-type AzurermMonitorAutoscaleSettingSpecProfileCapacity struct {
-	Minimum int `json:"minimum"`
-	Maximum int `json:"maximum"`
-	Default int `json:"default"`
-}
-
-type AzurermMonitorAutoscaleSettingSpecProfileRuleMetricTrigger struct {
-	Statistic        string  `json:"statistic"`
-	TimeWindow       string  `json:"time_window"`
-	TimeAggregation  string  `json:"time_aggregation"`
-	Operator         string  `json:"operator"`
-	Threshold        float64 `json:"threshold"`
-	MetricName       string  `json:"metric_name"`
-	MetricResourceId string  `json:"metric_resource_id"`
-	TimeGrain        string  `json:"time_grain"`
-}
-
-type AzurermMonitorAutoscaleSettingSpecProfileRuleScaleAction struct {
-	Cooldown  string `json:"cooldown"`
-	Direction string `json:"direction"`
-	Type      string `json:"type"`
-	Value     int    `json:"value"`
-}
-
-type AzurermMonitorAutoscaleSettingSpecProfileRule struct {
-	MetricTrigger []AzurermMonitorAutoscaleSettingSpecProfileRule `json:"metric_trigger"`
-	ScaleAction   []AzurermMonitorAutoscaleSettingSpecProfileRule `json:"scale_action"`
-}
-
 type AzurermMonitorAutoscaleSettingSpecProfile struct {
-	FixedDate  []AzurermMonitorAutoscaleSettingSpecProfile `json:"fixed_date"`
-	Recurrence []AzurermMonitorAutoscaleSettingSpecProfile `json:"recurrence"`
 	Name       string                                      `json:"name"`
 	Capacity   []AzurermMonitorAutoscaleSettingSpecProfile `json:"capacity"`
 	Rule       []AzurermMonitorAutoscaleSettingSpecProfile `json:"rule"`
+	FixedDate  []AzurermMonitorAutoscaleSettingSpecProfile `json:"fixed_date"`
+	Recurrence []AzurermMonitorAutoscaleSettingSpecProfile `json:"recurrence"`
 }
 
 type AzurermMonitorAutoscaleSettingSpecNotificationEmail struct {
@@ -85,17 +85,23 @@ type AzurermMonitorAutoscaleSettingSpecNotification struct {
 }
 
 type AzurermMonitorAutoscaleSettingSpec struct {
+	ResourceGroupName string                               `json:"resource_group_name"`
+	Location          string                               `json:"location"`
+	TargetResourceId  string                               `json:"target_resource_id"`
 	Enabled           bool                                 `json:"enabled"`
 	Profile           []AzurermMonitorAutoscaleSettingSpec `json:"profile"`
 	Notification      []AzurermMonitorAutoscaleSettingSpec `json:"notification"`
 	Tags              map[string]string                    `json:"tags"`
 	Name              string                               `json:"name"`
-	ResourceGroupName string                               `json:"resource_group_name"`
-	Location          string                               `json:"location"`
-	TargetResourceId  string                               `json:"target_resource_id"`
 }
 
+
+
 type AzurermMonitorAutoscaleSettingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,8 +19,8 @@ type AwsWafSqlInjectionMatchSet struct {
 }
 
 type AwsWafSqlInjectionMatchSetSpecSqlInjectionMatchTuplesFieldToMatch struct {
-	Type string `json:"type"`
 	Data string `json:"data"`
+	Type string `json:"type"`
 }
 
 type AwsWafSqlInjectionMatchSetSpecSqlInjectionMatchTuples struct {
@@ -29,11 +29,17 @@ type AwsWafSqlInjectionMatchSetSpecSqlInjectionMatchTuples struct {
 }
 
 type AwsWafSqlInjectionMatchSetSpec struct {
-	Name                    string                           `json:"name"`
 	SqlInjectionMatchTuples []AwsWafSqlInjectionMatchSetSpec `json:"sql_injection_match_tuples"`
+	Name                    string                           `json:"name"`
 }
 
+
+
 type AwsWafSqlInjectionMatchSetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

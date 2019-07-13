@@ -36,37 +36,43 @@ type AzurermVirtualNetworkGatewaySpecVpnClientConfigurationRevokedCertificate st
 }
 
 type AzurermVirtualNetworkGatewaySpecVpnClientConfiguration struct {
-	VpnClientProtocols  []string                                                 `json:"vpn_client_protocols"`
 	AddressSpace        []string                                                 `json:"address_space"`
 	RootCertificate     []AzurermVirtualNetworkGatewaySpecVpnClientConfiguration `json:"root_certificate"`
 	RevokedCertificate  []AzurermVirtualNetworkGatewaySpecVpnClientConfiguration `json:"revoked_certificate"`
 	RadiusServerAddress string                                                   `json:"radius_server_address"`
 	RadiusServerSecret  string                                                   `json:"radius_server_secret"`
+	VpnClientProtocols  []string                                                 `json:"vpn_client_protocols"`
 }
 
 type AzurermVirtualNetworkGatewaySpecBgpSettings struct {
-	Asn            int    `json:"asn"`
 	PeeringAddress string `json:"peering_address"`
 	PeerWeight     int    `json:"peer_weight"`
+	Asn            int    `json:"asn"`
 }
 
 type AzurermVirtualNetworkGatewaySpec struct {
-	ResourceGroupName            string                             `json:"resource_group_name"`
-	VpnType                      string                             `json:"vpn_type"`
-	ActiveActive                 bool                               `json:"active_active"`
-	Sku                          string                             `json:"sku"`
-	IpConfiguration              []AzurermVirtualNetworkGatewaySpec `json:"ip_configuration"`
+	DefaultLocalNetworkGatewayId string                             `json:"default_local_network_gateway_id"`
 	Tags                         map[string]string                  `json:"tags"`
 	Name                         string                             `json:"name"`
-	Location                     string                             `json:"location"`
 	Type                         string                             `json:"type"`
-	EnableBgp                    bool                               `json:"enable_bgp"`
+	VpnType                      string                             `json:"vpn_type"`
+	IpConfiguration              []AzurermVirtualNetworkGatewaySpec `json:"ip_configuration"`
 	VpnClientConfiguration       []AzurermVirtualNetworkGatewaySpec `json:"vpn_client_configuration"`
 	BgpSettings                  []AzurermVirtualNetworkGatewaySpec `json:"bgp_settings"`
-	DefaultLocalNetworkGatewayId string                             `json:"default_local_network_gateway_id"`
+	ResourceGroupName            string                             `json:"resource_group_name"`
+	Location                     string                             `json:"location"`
+	EnableBgp                    bool                               `json:"enable_bgp"`
+	ActiveActive                 bool                               `json:"active_active"`
+	Sku                          string                             `json:"sku"`
 }
 
+
+
 type AzurermVirtualNetworkGatewayStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

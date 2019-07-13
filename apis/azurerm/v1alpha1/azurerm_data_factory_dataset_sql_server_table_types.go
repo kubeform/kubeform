@@ -19,26 +19,32 @@ type AzurermDataFactoryDatasetSqlServerTable struct {
 }
 
 type AzurermDataFactoryDatasetSqlServerTableSpecSchemaColumn struct {
+	Description string `json:"description"`
 	Name        string `json:"name"`
 	Type        string `json:"type"`
-	Description string `json:"description"`
 }
 
 type AzurermDataFactoryDatasetSqlServerTableSpec struct {
 	Parameters           map[string]string                             `json:"parameters"`
-	Description          string                                        `json:"description"`
-	Annotations          []string                                      `json:"annotations"`
-	DataFactoryName      string                                        `json:"data_factory_name"`
-	ResourceGroupName    string                                        `json:"resource_group_name"`
-	LinkedServiceName    string                                        `json:"linked_service_name"`
-	AdditionalProperties map[string]string                             `json:"additional_properties"`
 	SchemaColumn         []AzurermDataFactoryDatasetSqlServerTableSpec `json:"schema_column"`
 	Name                 string                                        `json:"name"`
+	DataFactoryName      string                                        `json:"data_factory_name"`
+	LinkedServiceName    string                                        `json:"linked_service_name"`
 	TableName            string                                        `json:"table_name"`
+	AdditionalProperties map[string]string                             `json:"additional_properties"`
+	ResourceGroupName    string                                        `json:"resource_group_name"`
+	Description          string                                        `json:"description"`
+	Annotations          []string                                      `json:"annotations"`
 	Folder               string                                        `json:"folder"`
 }
 
+
+
 type AzurermDataFactoryDatasetSqlServerTableStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,12 +19,18 @@ type GoogleFolderIamPolicy struct {
 }
 
 type GoogleFolderIamPolicySpec struct {
-	Folder     string `json:"folder"`
 	PolicyData string `json:"policy_data"`
 	Etag       string `json:"etag"`
+	Folder     string `json:"folder"`
 }
 
+
+
 type GoogleFolderIamPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

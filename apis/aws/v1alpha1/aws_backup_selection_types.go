@@ -25,14 +25,20 @@ type AwsBackupSelectionSpecSelectionTag struct {
 }
 
 type AwsBackupSelectionSpec struct {
-	PlanId       string                   `json:"plan_id"`
-	IamRoleArn   string                   `json:"iam_role_arn"`
 	SelectionTag []AwsBackupSelectionSpec `json:"selection_tag"`
 	Resources    []string                 `json:"resources"`
 	Name         string                   `json:"name"`
+	PlanId       string                   `json:"plan_id"`
+	IamRoleArn   string                   `json:"iam_role_arn"`
 }
 
+
+
 type AwsBackupSelectionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

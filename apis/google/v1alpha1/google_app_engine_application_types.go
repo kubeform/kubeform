@@ -18,31 +18,37 @@ type GoogleAppEngineApplication struct {
 	Status            GoogleAppEngineApplicationStatus `json:"status,omitempty"`
 }
 
+type GoogleAppEngineApplicationSpecUrlDispatchRule struct {
+	Domain  string `json:"domain"`
+	Path    string `json:"path"`
+	Service string `json:"service"`
+}
+
 type GoogleAppEngineApplicationSpecFeatureSettings struct {
 	SplitHealthChecks bool `json:"split_health_checks"`
 }
 
-type GoogleAppEngineApplicationSpecUrlDispatchRule struct {
-	Service string `json:"service"`
-	Domain  string `json:"domain"`
-	Path    string `json:"path"`
-}
-
 type GoogleAppEngineApplicationSpec struct {
-	AuthDomain      string                           `json:"auth_domain"`
-	DefaultHostname string                           `json:"default_hostname"`
-	GcrDomain       string                           `json:"gcr_domain"`
-	CodeBucket      string                           `json:"code_bucket"`
-	DefaultBucket   string                           `json:"default_bucket"`
 	Project         string                           `json:"project"`
-	LocationId      string                           `json:"location_id"`
 	ServingStatus   string                           `json:"serving_status"`
-	FeatureSettings []GoogleAppEngineApplicationSpec `json:"feature_settings"`
 	Name            string                           `json:"name"`
 	UrlDispatchRule []GoogleAppEngineApplicationSpec `json:"url_dispatch_rule"`
+	CodeBucket      string                           `json:"code_bucket"`
+	AuthDomain      string                           `json:"auth_domain"`
+	LocationId      string                           `json:"location_id"`
+	FeatureSettings []GoogleAppEngineApplicationSpec `json:"feature_settings"`
+	DefaultHostname string                           `json:"default_hostname"`
+	DefaultBucket   string                           `json:"default_bucket"`
+	GcrDomain       string                           `json:"gcr_domain"`
 }
 
+
+
 type GoogleAppEngineApplicationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

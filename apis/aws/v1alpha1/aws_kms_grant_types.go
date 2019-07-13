@@ -19,24 +19,30 @@ type AwsKmsGrant struct {
 }
 
 type AwsKmsGrantSpecConstraints struct {
-	EncryptionContextEquals map[string]string `json:"encryption_context_equals"`
 	EncryptionContextSubset map[string]string `json:"encryption_context_subset"`
+	EncryptionContextEquals map[string]string `json:"encryption_context_equals"`
 }
 
 type AwsKmsGrantSpec struct {
 	GrantId             string            `json:"grant_id"`
 	KeyId               string            `json:"key_id"`
-	GranteePrincipal    string            `json:"grantee_principal"`
 	RetiringPrincipal   string            `json:"retiring_principal"`
-	RetireOnDelete      bool              `json:"retire_on_delete"`
-	GrantToken          string            `json:"grant_token"`
-	Name                string            `json:"name"`
 	Operations          []string          `json:"operations"`
 	Constraints         []AwsKmsGrantSpec `json:"constraints"`
 	GrantCreationTokens []string          `json:"grant_creation_tokens"`
+	RetireOnDelete      bool              `json:"retire_on_delete"`
+	GrantToken          string            `json:"grant_token"`
+	Name                string            `json:"name"`
+	GranteePrincipal    string            `json:"grantee_principal"`
 }
 
+
+
 type AwsKmsGrantStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

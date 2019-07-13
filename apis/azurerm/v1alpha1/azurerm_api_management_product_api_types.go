@@ -19,13 +19,19 @@ type AzurermApiManagementProductApi struct {
 }
 
 type AzurermApiManagementProductApiSpec struct {
+	ApiName           string `json:"api_name"`
 	ProductId         string `json:"product_id"`
 	ResourceGroupName string `json:"resource_group_name"`
 	ApiManagementName string `json:"api_management_name"`
-	ApiName           string `json:"api_name"`
 }
 
+
+
 type AzurermApiManagementProductApiStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,18 +19,24 @@ type AzurermDnsZone struct {
 }
 
 type AzurermDnsZoneSpec struct {
-	Name                          string            `json:"name"`
 	ResourceGroupName             string            `json:"resource_group_name"`
 	NumberOfRecordSets            int               `json:"number_of_record_sets"`
+	MaxNumberOfRecordSets         int               `json:"max_number_of_record_sets"`
+	Tags                          map[string]string `json:"tags"`
+	Name                          string            `json:"name"`
 	NameServers                   []string          `json:"name_servers"`
+	ZoneType                      string            `json:"zone_type"`
 	RegistrationVirtualNetworkIds []string          `json:"registration_virtual_network_ids"`
 	ResolutionVirtualNetworkIds   []string          `json:"resolution_virtual_network_ids"`
-	MaxNumberOfRecordSets         int               `json:"max_number_of_record_sets"`
-	ZoneType                      string            `json:"zone_type"`
-	Tags                          map[string]string `json:"tags"`
 }
 
+
+
 type AzurermDnsZoneStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

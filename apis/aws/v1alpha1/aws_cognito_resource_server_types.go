@@ -19,19 +19,25 @@ type AwsCognitoResourceServer struct {
 }
 
 type AwsCognitoResourceServerSpecScope struct {
-	ScopeDescription string `json:"scope_description"`
 	ScopeName        string `json:"scope_name"`
+	ScopeDescription string `json:"scope_description"`
 }
 
 type AwsCognitoResourceServerSpec struct {
+	UserPoolId       string                         `json:"user_pool_id"`
+	ScopeIdentifiers []string                       `json:"scope_identifiers"`
 	Identifier       string                         `json:"identifier"`
 	Name             string                         `json:"name"`
 	Scope            []AwsCognitoResourceServerSpec `json:"scope"`
-	UserPoolId       string                         `json:"user_pool_id"`
-	ScopeIdentifiers []string                       `json:"scope_identifiers"`
 }
 
+
+
 type AwsCognitoResourceServerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

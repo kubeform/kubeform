@@ -30,20 +30,26 @@ type AzurermAutomationRunbookSpecPublishContentLink struct {
 }
 
 type AzurermAutomationRunbookSpec struct {
-	RunbookType        string                         `json:"runbook_type"`
 	LogProgress        bool                           `json:"log_progress"`
-	Description        string                         `json:"description"`
-	Content            string                         `json:"content"`
-	Location           string                         `json:"location"`
-	AccountName        string                         `json:"account_name"`
-	ResourceGroupName  string                         `json:"resource_group_name"`
 	LogVerbose         bool                           `json:"log_verbose"`
+	Description        string                         `json:"description"`
+	ResourceGroupName  string                         `json:"resource_group_name"`
+	RunbookType        string                         `json:"runbook_type"`
+	Location           string                         `json:"location"`
+	Content            string                         `json:"content"`
 	PublishContentLink []AzurermAutomationRunbookSpec `json:"publish_content_link"`
 	Tags               map[string]string              `json:"tags"`
 	Name               string                         `json:"name"`
+	AccountName        string                         `json:"account_name"`
 }
 
+
+
 type AzurermAutomationRunbookStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,13 +19,19 @@ type AwsEc2TransitGatewayRouteTable struct {
 }
 
 type AwsEc2TransitGatewayRouteTableSpec struct {
-	TransitGatewayId             string            `json:"transit_gateway_id"`
-	DefaultAssociationRouteTable bool              `json:"default_association_route_table"`
 	DefaultPropagationRouteTable bool              `json:"default_propagation_route_table"`
 	Tags                         map[string]string `json:"tags"`
+	TransitGatewayId             string            `json:"transit_gateway_id"`
+	DefaultAssociationRouteTable bool              `json:"default_association_route_table"`
 }
 
+
+
 type AwsEc2TransitGatewayRouteTableStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

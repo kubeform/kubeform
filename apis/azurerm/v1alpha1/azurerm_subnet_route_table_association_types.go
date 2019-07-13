@@ -19,11 +19,17 @@ type AzurermSubnetRouteTableAssociation struct {
 }
 
 type AzurermSubnetRouteTableAssociationSpec struct {
-	RouteTableId string `json:"route_table_id"`
 	SubnetId     string `json:"subnet_id"`
+	RouteTableId string `json:"route_table_id"`
 }
 
+
+
 type AzurermSubnetRouteTableAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

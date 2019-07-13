@@ -19,11 +19,17 @@ type AwsLightsailStaticIpAttachment struct {
 }
 
 type AwsLightsailStaticIpAttachmentSpec struct {
-	InstanceName string `json:"instance_name"`
 	StaticIpName string `json:"static_ip_name"`
+	InstanceName string `json:"instance_name"`
 }
 
+
+
 type AwsLightsailStaticIpAttachmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

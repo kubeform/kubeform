@@ -19,18 +19,24 @@ type GoogleComputeRouterPeer struct {
 }
 
 type GoogleComputeRouterPeerSpec struct {
-	Region                  string `json:"region"`
 	Name                    string `json:"name"`
-	PeerIpAddress           string `json:"peer_ip_address"`
-	AdvertisedRoutePriority int    `json:"advertised_route_priority"`
-	IpAddress               string `json:"ip_address"`
-	Project                 string `json:"project"`
 	Router                  string `json:"router"`
 	Interface               string `json:"interface"`
+	PeerIpAddress           string `json:"peer_ip_address"`
 	PeerAsn                 int    `json:"peer_asn"`
+	AdvertisedRoutePriority int    `json:"advertised_route_priority"`
+	Project                 string `json:"project"`
+	IpAddress               string `json:"ip_address"`
+	Region                  string `json:"region"`
 }
 
+
+
 type GoogleComputeRouterPeerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

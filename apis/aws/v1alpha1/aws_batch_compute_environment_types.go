@@ -25,36 +25,42 @@ type AwsBatchComputeEnvironmentSpecComputeResourcesLaunchTemplate struct {
 }
 
 type AwsBatchComputeEnvironmentSpecComputeResources struct {
-	Ec2KeyPair       string                                           `json:"ec2_key_pair"`
-	Subnets          []string                                         `json:"subnets"`
-	Type             string                                           `json:"type"`
-	ImageId          string                                           `json:"image_id"`
+	Tags             map[string]string                                `json:"tags"`
 	LaunchTemplate   []AwsBatchComputeEnvironmentSpecComputeResources `json:"launch_template"`
 	MinVcpus         int                                              `json:"min_vcpus"`
-	SecurityGroupIds []string                                         `json:"security_group_ids"`
-	BidPercentage    int                                              `json:"bid_percentage"`
-	InstanceRole     string                                           `json:"instance_role"`
-	MaxVcpus         int                                              `json:"max_vcpus"`
+	Type             string                                           `json:"type"`
 	SpotIamFleetRole string                                           `json:"spot_iam_fleet_role"`
+	BidPercentage    int                                              `json:"bid_percentage"`
 	DesiredVcpus     int                                              `json:"desired_vcpus"`
+	Ec2KeyPair       string                                           `json:"ec2_key_pair"`
+	InstanceRole     string                                           `json:"instance_role"`
 	InstanceType     []string                                         `json:"instance_type"`
-	Tags             map[string]string                                `json:"tags"`
+	MaxVcpus         int                                              `json:"max_vcpus"`
+	SecurityGroupIds []string                                         `json:"security_group_ids"`
+	Subnets          []string                                         `json:"subnets"`
+	ImageId          string                                           `json:"image_id"`
 }
 
 type AwsBatchComputeEnvironmentSpec struct {
+	State                  string                           `json:"state"`
+	StatusReason           string                           `json:"status_reason"`
 	ComputeResources       []AwsBatchComputeEnvironmentSpec `json:"compute_resources"`
 	ServiceRole            string                           `json:"service_role"`
-	State                  string                           `json:"state"`
-	Type                   string                           `json:"type"`
-	EccClusterArn          string                           `json:"ecc_cluster_arn"`
-	StatusReason           string                           `json:"status_reason"`
-	ComputeEnvironmentName string                           `json:"compute_environment_name"`
 	Arn                    string                           `json:"arn"`
+	EccClusterArn          string                           `json:"ecc_cluster_arn"`
 	EcsClusterArn          string                           `json:"ecs_cluster_arn"`
 	Status                 string                           `json:"status"`
+	ComputeEnvironmentName string                           `json:"compute_environment_name"`
+	Type                   string                           `json:"type"`
 }
 
+
+
 type AwsBatchComputeEnvironmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

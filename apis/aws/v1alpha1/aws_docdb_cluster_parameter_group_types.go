@@ -25,16 +25,22 @@ type AwsDocdbClusterParameterGroupSpecParameter struct {
 }
 
 type AwsDocdbClusterParameterGroupSpec struct {
-	Tags        map[string]string                   `json:"tags"`
-	Arn         string                              `json:"arn"`
 	Name        string                              `json:"name"`
 	NamePrefix  string                              `json:"name_prefix"`
 	Family      string                              `json:"family"`
 	Description string                              `json:"description"`
 	Parameter   []AwsDocdbClusterParameterGroupSpec `json:"parameter"`
+	Tags        map[string]string                   `json:"tags"`
+	Arn         string                              `json:"arn"`
 }
 
+
+
 type AwsDocdbClusterParameterGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

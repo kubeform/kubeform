@@ -19,15 +19,21 @@ type AwsCloudwatchLogGroup struct {
 }
 
 type AwsCloudwatchLogGroupSpec struct {
+	NamePrefix      string            `json:"name_prefix"`
 	RetentionInDays int               `json:"retention_in_days"`
 	KmsKeyId        string            `json:"kms_key_id"`
 	Arn             string            `json:"arn"`
 	Tags            map[string]string `json:"tags"`
 	Name            string            `json:"name"`
-	NamePrefix      string            `json:"name_prefix"`
 }
 
+
+
 type AwsCloudwatchLogGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,13 +19,19 @@ type GoogleProjectIamBinding struct {
 }
 
 type GoogleProjectIamBindingSpec struct {
+	Role    string   `json:"role"`
 	Members []string `json:"members"`
 	Etag    string   `json:"etag"`
 	Project string   `json:"project"`
-	Role    string   `json:"role"`
 }
 
+
+
 type GoogleProjectIamBindingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

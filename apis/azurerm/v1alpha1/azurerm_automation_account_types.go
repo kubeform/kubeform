@@ -23,18 +23,24 @@ type AzurermAutomationAccountSpecSku struct {
 }
 
 type AzurermAutomationAccountSpec struct {
-	Tags                  map[string]string              `json:"tags"`
-	DscServerEndpoint     string                         `json:"dsc_server_endpoint"`
 	DscSecondaryAccessKey string                         `json:"dsc_secondary_access_key"`
+	Name                  string                         `json:"name"`
 	Location              string                         `json:"location"`
 	ResourceGroupName     string                         `json:"resource_group_name"`
 	Sku                   []AzurermAutomationAccountSpec `json:"sku"`
-	Name                  string                         `json:"name"`
 	SkuName               string                         `json:"sku_name"`
+	DscServerEndpoint     string                         `json:"dsc_server_endpoint"`
+	Tags                  map[string]string              `json:"tags"`
 	DscPrimaryAccessKey   string                         `json:"dsc_primary_access_key"`
 }
 
+
+
 type AzurermAutomationAccountStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

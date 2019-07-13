@@ -18,30 +18,6 @@ type AwsEc2Fleet struct {
 	Status            AwsEc2FleetStatus `json:"status,omitempty"`
 }
 
-type AwsEc2FleetSpecOnDemandOptions struct {
-	AllocationStrategy string `json:"allocation_strategy"`
-}
-
-type AwsEc2FleetSpecLaunchTemplateConfigLaunchTemplateSpecification struct {
-	LaunchTemplateName string `json:"launch_template_name"`
-	Version            string `json:"version"`
-	LaunchTemplateId   string `json:"launch_template_id"`
-}
-
-type AwsEc2FleetSpecLaunchTemplateConfigOverride struct {
-	InstanceType     string  `json:"instance_type"`
-	MaxPrice         string  `json:"max_price"`
-	Priority         float64 `json:"priority"`
-	SubnetId         string  `json:"subnet_id"`
-	WeightedCapacity float64 `json:"weighted_capacity"`
-	AvailabilityZone string  `json:"availability_zone"`
-}
-
-type AwsEc2FleetSpecLaunchTemplateConfig struct {
-	LaunchTemplateSpecification []AwsEc2FleetSpecLaunchTemplateConfig `json:"launch_template_specification"`
-	Override                    []AwsEc2FleetSpecLaunchTemplateConfig `json:"override"`
-}
-
 type AwsEc2FleetSpecSpotOptions struct {
 	AllocationStrategy           string `json:"allocation_strategy"`
 	InstanceInterruptionBehavior string `json:"instance_interruption_behavior"`
@@ -49,26 +25,56 @@ type AwsEc2FleetSpecSpotOptions struct {
 }
 
 type AwsEc2FleetSpecTargetCapacitySpecification struct {
-	DefaultTargetCapacityType string `json:"default_target_capacity_type"`
-	OnDemandTargetCapacity    int    `json:"on_demand_target_capacity"`
 	SpotTargetCapacity        int    `json:"spot_target_capacity"`
 	TotalTargetCapacity       int    `json:"total_target_capacity"`
+	DefaultTargetCapacityType string `json:"default_target_capacity_type"`
+	OnDemandTargetCapacity    int    `json:"on_demand_target_capacity"`
+}
+
+type AwsEc2FleetSpecLaunchTemplateConfigLaunchTemplateSpecification struct {
+	Version            string `json:"version"`
+	LaunchTemplateId   string `json:"launch_template_id"`
+	LaunchTemplateName string `json:"launch_template_name"`
+}
+
+type AwsEc2FleetSpecLaunchTemplateConfigOverride struct {
+	MaxPrice         string  `json:"max_price"`
+	Priority         float64 `json:"priority"`
+	SubnetId         string  `json:"subnet_id"`
+	WeightedCapacity float64 `json:"weighted_capacity"`
+	AvailabilityZone string  `json:"availability_zone"`
+	InstanceType     string  `json:"instance_type"`
+}
+
+type AwsEc2FleetSpecLaunchTemplateConfig struct {
+	LaunchTemplateSpecification []AwsEc2FleetSpecLaunchTemplateConfig `json:"launch_template_specification"`
+	Override                    []AwsEc2FleetSpecLaunchTemplateConfig `json:"override"`
+}
+
+type AwsEc2FleetSpecOnDemandOptions struct {
+	AllocationStrategy string `json:"allocation_strategy"`
 }
 
 type AwsEc2FleetSpec struct {
-	ExcessCapacityTerminationPolicy  string            `json:"excess_capacity_termination_policy"`
-	OnDemandOptions                  []AwsEc2FleetSpec `json:"on_demand_options"`
-	Tags                             map[string]string `json:"tags"`
-	Type                             string            `json:"type"`
-	TerminateInstancesWithExpiration bool              `json:"terminate_instances_with_expiration"`
-	LaunchTemplateConfig             []AwsEc2FleetSpec `json:"launch_template_config"`
-	ReplaceUnhealthyInstances        bool              `json:"replace_unhealthy_instances"`
 	SpotOptions                      []AwsEc2FleetSpec `json:"spot_options"`
+	Tags                             map[string]string `json:"tags"`
 	TargetCapacitySpecification      []AwsEc2FleetSpec `json:"target_capacity_specification"`
+	TerminateInstancesWithExpiration bool              `json:"terminate_instances_with_expiration"`
+	ExcessCapacityTerminationPolicy  string            `json:"excess_capacity_termination_policy"`
+	ReplaceUnhealthyInstances        bool              `json:"replace_unhealthy_instances"`
 	TerminateInstances               bool              `json:"terminate_instances"`
+	Type                             string            `json:"type"`
+	LaunchTemplateConfig             []AwsEc2FleetSpec `json:"launch_template_config"`
+	OnDemandOptions                  []AwsEc2FleetSpec `json:"on_demand_options"`
 }
 
+
+
 type AwsEc2FleetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

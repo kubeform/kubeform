@@ -19,19 +19,25 @@ type AzurermApiManagementProduct struct {
 }
 
 type AzurermApiManagementProductSpec struct {
+	SubscriptionsLimit   int    `json:"subscriptions_limit"`
 	ResourceGroupName    string `json:"resource_group_name"`
-	SubscriptionRequired bool   `json:"subscription_required"`
 	Published            bool   `json:"published"`
 	ApprovalRequired     bool   `json:"approval_required"`
 	Description          string `json:"description"`
-	ProductId            string `json:"product_id"`
-	DisplayName          string `json:"display_name"`
 	Terms                string `json:"terms"`
-	SubscriptionsLimit   int    `json:"subscriptions_limit"`
+	ProductId            string `json:"product_id"`
 	ApiManagementName    string `json:"api_management_name"`
+	DisplayName          string `json:"display_name"`
+	SubscriptionRequired bool   `json:"subscription_required"`
 }
 
+
+
 type AzurermApiManagementProductStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

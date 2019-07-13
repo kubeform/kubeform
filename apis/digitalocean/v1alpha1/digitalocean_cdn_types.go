@@ -19,15 +19,21 @@ type DigitaloceanCdn struct {
 }
 
 type DigitaloceanCdnSpec struct {
-	Origin        string `json:"origin"`
-	Ttl           int    `json:"ttl"`
 	CertificateId string `json:"certificate_id"`
 	CustomDomain  string `json:"custom_domain"`
 	Endpoint      string `json:"endpoint"`
 	CreatedAt     string `json:"created_at"`
+	Origin        string `json:"origin"`
+	Ttl           int    `json:"ttl"`
 }
 
+
+
 type DigitaloceanCdnStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

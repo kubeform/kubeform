@@ -18,31 +18,37 @@ type AwsGlueJob struct {
 	Status            AwsGlueJobStatus `json:"status,omitempty"`
 }
 
-type AwsGlueJobSpecCommand struct {
-	ScriptLocation string `json:"script_location"`
-	Name           string `json:"name"`
-}
-
 type AwsGlueJobSpecExecutionProperty struct {
 	MaxConcurrentRuns int `json:"max_concurrent_runs"`
 }
 
-type AwsGlueJobSpec struct {
-	AllocatedCapacity     int               `json:"allocated_capacity"`
-	Command               []AwsGlueJobSpec  `json:"command"`
-	Connections           []string          `json:"connections"`
-	Description           string            `json:"description"`
-	ExecutionProperty     []AwsGlueJobSpec  `json:"execution_property"`
-	MaxCapacity           float64           `json:"max_capacity"`
-	Timeout               int               `json:"timeout"`
-	SecurityConfiguration string            `json:"security_configuration"`
-	DefaultArguments      map[string]string `json:"default_arguments"`
-	MaxRetries            int               `json:"max_retries"`
-	Name                  string            `json:"name"`
-	RoleArn               string            `json:"role_arn"`
+type AwsGlueJobSpecCommand struct {
+	Name           string `json:"name"`
+	ScriptLocation string `json:"script_location"`
 }
 
+type AwsGlueJobSpec struct {
+	ExecutionProperty     []AwsGlueJobSpec  `json:"execution_property"`
+	MaxCapacity           float64           `json:"max_capacity"`
+	RoleArn               string            `json:"role_arn"`
+	SecurityConfiguration string            `json:"security_configuration"`
+	AllocatedCapacity     int               `json:"allocated_capacity"`
+	Command               []AwsGlueJobSpec  `json:"command"`
+	Description           string            `json:"description"`
+	Name                  string            `json:"name"`
+	Timeout               int               `json:"timeout"`
+	Connections           []string          `json:"connections"`
+	DefaultArguments      map[string]string `json:"default_arguments"`
+	MaxRetries            int               `json:"max_retries"`
+}
+
+
+
 type AwsGlueJobStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

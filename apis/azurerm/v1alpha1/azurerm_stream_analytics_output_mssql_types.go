@@ -19,7 +19,6 @@ type AzurermStreamAnalyticsOutputMssql struct {
 }
 
 type AzurermStreamAnalyticsOutputMssqlSpec struct {
-	StreamAnalyticsJobName string `json:"stream_analytics_job_name"`
 	ResourceGroupName      string `json:"resource_group_name"`
 	Server                 string `json:"server"`
 	Database               string `json:"database"`
@@ -27,9 +26,16 @@ type AzurermStreamAnalyticsOutputMssqlSpec struct {
 	User                   string `json:"user"`
 	Password               string `json:"password"`
 	Name                   string `json:"name"`
+	StreamAnalyticsJobName string `json:"stream_analytics_job_name"`
 }
 
+
+
 type AzurermStreamAnalyticsOutputMssqlStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

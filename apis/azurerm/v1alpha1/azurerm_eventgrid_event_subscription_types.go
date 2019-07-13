@@ -18,26 +18,8 @@ type AzurermEventgridEventSubscription struct {
 	Status            AzurermEventgridEventSubscriptionStatus `json:"status,omitempty"`
 }
 
-type AzurermEventgridEventSubscriptionSpecStorageBlobDeadLetterDestination struct {
-	StorageAccountId         string `json:"storage_account_id"`
-	StorageBlobContainerName string `json:"storage_blob_container_name"`
-}
-
-type AzurermEventgridEventSubscriptionSpecEventhubEndpoint struct {
-	EventhubId string `json:"eventhub_id"`
-}
-
-type AzurermEventgridEventSubscriptionSpecHybridConnectionEndpoint struct {
-	HybridConnectionId string `json:"hybrid_connection_id"`
-}
-
 type AzurermEventgridEventSubscriptionSpecWebhookEndpoint struct {
 	Url string `json:"url"`
-}
-
-type AzurermEventgridEventSubscriptionSpecStorageQueueEndpoint struct {
-	StorageAccountId string `json:"storage_account_id"`
-	QueueName        string `json:"queue_name"`
 }
 
 type AzurermEventgridEventSubscriptionSpecSubjectFilter struct {
@@ -51,23 +33,47 @@ type AzurermEventgridEventSubscriptionSpecRetryPolicy struct {
 	EventTimeToLive     int `json:"event_time_to_live"`
 }
 
+type AzurermEventgridEventSubscriptionSpecStorageQueueEndpoint struct {
+	StorageAccountId string `json:"storage_account_id"`
+	QueueName        string `json:"queue_name"`
+}
+
+type AzurermEventgridEventSubscriptionSpecStorageBlobDeadLetterDestination struct {
+	StorageBlobContainerName string `json:"storage_blob_container_name"`
+	StorageAccountId         string `json:"storage_account_id"`
+}
+
+type AzurermEventgridEventSubscriptionSpecEventhubEndpoint struct {
+	EventhubId string `json:"eventhub_id"`
+}
+
+type AzurermEventgridEventSubscriptionSpecHybridConnectionEndpoint struct {
+	HybridConnectionId string `json:"hybrid_connection_id"`
+}
+
 type AzurermEventgridEventSubscriptionSpec struct {
-	IncludedEventTypes               []string                                `json:"included_event_types"`
-	StorageBlobDeadLetterDestination []AzurermEventgridEventSubscriptionSpec `json:"storage_blob_dead_letter_destination"`
+	WebhookEndpoint                  []AzurermEventgridEventSubscriptionSpec `json:"webhook_endpoint"`
+	SubjectFilter                    []AzurermEventgridEventSubscriptionSpec `json:"subject_filter"`
+	RetryPolicy                      []AzurermEventgridEventSubscriptionSpec `json:"retry_policy"`
 	Name                             string                                  `json:"name"`
 	EventDeliverySchema              string                                  `json:"event_delivery_schema"`
 	TopicName                        string                                  `json:"topic_name"`
-	EventhubEndpoint                 []AzurermEventgridEventSubscriptionSpec `json:"eventhub_endpoint"`
-	HybridConnectionEndpoint         []AzurermEventgridEventSubscriptionSpec `json:"hybrid_connection_endpoint"`
-	WebhookEndpoint                  []AzurermEventgridEventSubscriptionSpec `json:"webhook_endpoint"`
+	StorageQueueEndpoint             []AzurermEventgridEventSubscriptionSpec `json:"storage_queue_endpoint"`
+	StorageBlobDeadLetterDestination []AzurermEventgridEventSubscriptionSpec `json:"storage_blob_dead_letter_destination"`
 	Labels                           []string                                `json:"labels"`
 	Scope                            string                                  `json:"scope"`
-	StorageQueueEndpoint             []AzurermEventgridEventSubscriptionSpec `json:"storage_queue_endpoint"`
-	SubjectFilter                    []AzurermEventgridEventSubscriptionSpec `json:"subject_filter"`
-	RetryPolicy                      []AzurermEventgridEventSubscriptionSpec `json:"retry_policy"`
+	EventhubEndpoint                 []AzurermEventgridEventSubscriptionSpec `json:"eventhub_endpoint"`
+	HybridConnectionEndpoint         []AzurermEventgridEventSubscriptionSpec `json:"hybrid_connection_endpoint"`
+	IncludedEventTypes               []string                                `json:"included_event_types"`
 }
 
+
+
 type AzurermEventgridEventSubscriptionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

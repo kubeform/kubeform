@@ -19,20 +19,26 @@ type AwsRedshiftEventSubscription struct {
 }
 
 type AwsRedshiftEventSubscriptionSpec struct {
-	Arn             string            `json:"arn"`
-	Name            string            `json:"name"`
-	EventCategories []string          `json:"event_categories"`
+	Status          string            `json:"status"`
 	CustomerAwsId   string            `json:"customer_aws_id"`
 	Tags            map[string]string `json:"tags"`
-	Severity        string            `json:"severity"`
+	Arn             string            `json:"arn"`
+	Name            string            `json:"name"`
 	SnsTopicArn     string            `json:"sns_topic_arn"`
-	Status          string            `json:"status"`
+	EventCategories []string          `json:"event_categories"`
 	SourceIds       []string          `json:"source_ids"`
 	SourceType      string            `json:"source_type"`
 	Enabled         bool              `json:"enabled"`
+	Severity        string            `json:"severity"`
 }
 
+
+
 type AwsRedshiftEventSubscriptionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

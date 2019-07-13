@@ -23,7 +23,13 @@ type AwsSecurityhubProductSubscriptionSpec struct {
 	Arn        string `json:"arn"`
 }
 
+
+
 type AwsSecurityhubProductSubscriptionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

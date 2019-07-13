@@ -19,13 +19,19 @@ type AwsServiceDiscoveryPublicDnsNamespace struct {
 }
 
 type AwsServiceDiscoveryPublicDnsNamespaceSpec struct {
-	Name        string `json:"name"`
-	Description string `json:"description"`
 	Arn         string `json:"arn"`
 	HostedZone  string `json:"hosted_zone"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
 }
 
+
+
 type AwsServiceDiscoveryPublicDnsNamespaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

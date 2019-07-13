@@ -18,19 +18,20 @@ type AwsCodebuildProject struct {
 	Status            AwsCodebuildProjectStatus `json:"status,omitempty"`
 }
 
-type AwsCodebuildProjectSpecSourceAuth struct {
-	Resource string `json:"resource"`
-	Type     string `json:"type"`
+type AwsCodebuildProjectSpecVpcConfig struct {
+	VpcId            string   `json:"vpc_id"`
+	Subnets          []string `json:"subnets"`
+	SecurityGroupIds []string `json:"security_group_ids"`
 }
 
-type AwsCodebuildProjectSpecSource struct {
-	Type              string                          `json:"type"`
-	GitCloneDepth     int                             `json:"git_clone_depth"`
-	InsecureSsl       bool                            `json:"insecure_ssl"`
-	ReportBuildStatus bool                            `json:"report_build_status"`
-	Auth              []AwsCodebuildProjectSpecSource `json:"auth"`
-	Buildspec         string                          `json:"buildspec"`
-	Location          string                          `json:"location"`
+type AwsCodebuildProjectSpecArtifacts struct {
+	Path               string `json:"path"`
+	Type               string `json:"type"`
+	Name               string `json:"name"`
+	EncryptionDisabled bool   `json:"encryption_disabled"`
+	Location           string `json:"location"`
+	NamespaceType      string `json:"namespace_type"`
+	Packaging          string `json:"packaging"`
 }
 
 type AwsCodebuildProjectSpecEnvironmentRegistryCredential struct {
@@ -39,9 +40,9 @@ type AwsCodebuildProjectSpecEnvironmentRegistryCredential struct {
 }
 
 type AwsCodebuildProjectSpecEnvironmentEnvironmentVariable struct {
-	Value string `json:"value"`
 	Type  string `json:"type"`
 	Name  string `json:"name"`
+	Value string `json:"value"`
 }
 
 type AwsCodebuildProjectSpecEnvironment struct {
@@ -53,27 +54,6 @@ type AwsCodebuildProjectSpecEnvironment struct {
 	RegistryCredential       []AwsCodebuildProjectSpecEnvironment `json:"registry_credential"`
 	ComputeType              string                               `json:"compute_type"`
 	EnvironmentVariable      []AwsCodebuildProjectSpecEnvironment `json:"environment_variable"`
-}
-
-type AwsCodebuildProjectSpecSecondaryArtifacts struct {
-	Name               string `json:"name"`
-	EncryptionDisabled bool   `json:"encryption_disabled"`
-	Location           string `json:"location"`
-	NamespaceType      string `json:"namespace_type"`
-	Packaging          string `json:"packaging"`
-	Path               string `json:"path"`
-	ArtifactIdentifier string `json:"artifact_identifier"`
-	Type               string `json:"type"`
-}
-
-type AwsCodebuildProjectSpecArtifacts struct {
-	Packaging          string `json:"packaging"`
-	Path               string `json:"path"`
-	Type               string `json:"type"`
-	Name               string `json:"name"`
-	EncryptionDisabled bool   `json:"encryption_disabled"`
-	Location           string `json:"location"`
-	NamespaceType      string `json:"namespace_type"`
 }
 
 type AwsCodebuildProjectSpecLogsConfigCloudwatchLogs struct {
@@ -93,16 +73,21 @@ type AwsCodebuildProjectSpecLogsConfig struct {
 	S3Logs         []AwsCodebuildProjectSpecLogsConfig `json:"s3_logs"`
 }
 
-type AwsCodebuildProjectSpecVpcConfig struct {
-	VpcId            string   `json:"vpc_id"`
-	Subnets          []string `json:"subnets"`
-	SecurityGroupIds []string `json:"security_group_ids"`
+type AwsCodebuildProjectSpecSecondaryArtifacts struct {
+	Type               string `json:"type"`
+	Name               string `json:"name"`
+	EncryptionDisabled bool   `json:"encryption_disabled"`
+	Location           string `json:"location"`
+	NamespaceType      string `json:"namespace_type"`
+	Packaging          string `json:"packaging"`
+	Path               string `json:"path"`
+	ArtifactIdentifier string `json:"artifact_identifier"`
 }
 
 type AwsCodebuildProjectSpecCache struct {
-	Modes    []string `json:"modes"`
 	Type     string   `json:"type"`
 	Location string   `json:"location"`
+	Modes    []string `json:"modes"`
 }
 
 type AwsCodebuildProjectSpecSecondarySourcesAuth struct {
@@ -111,37 +96,58 @@ type AwsCodebuildProjectSpecSecondarySourcesAuth struct {
 }
 
 type AwsCodebuildProjectSpecSecondarySources struct {
+	SourceIdentifier  string                                    `json:"source_identifier"`
+	Auth              []AwsCodebuildProjectSpecSecondarySources `json:"auth"`
 	Buildspec         string                                    `json:"buildspec"`
 	Location          string                                    `json:"location"`
 	Type              string                                    `json:"type"`
 	GitCloneDepth     int                                       `json:"git_clone_depth"`
 	InsecureSsl       bool                                      `json:"insecure_ssl"`
 	ReportBuildStatus bool                                      `json:"report_build_status"`
-	SourceIdentifier  string                                    `json:"source_identifier"`
-	Auth              []AwsCodebuildProjectSpecSecondarySources `json:"auth"`
+}
+
+type AwsCodebuildProjectSpecSourceAuth struct {
+	Resource string `json:"resource"`
+	Type     string `json:"type"`
+}
+
+type AwsCodebuildProjectSpecSource struct {
+	GitCloneDepth     int                             `json:"git_clone_depth"`
+	InsecureSsl       bool                            `json:"insecure_ssl"`
+	ReportBuildStatus bool                            `json:"report_build_status"`
+	Auth              []AwsCodebuildProjectSpecSource `json:"auth"`
+	Buildspec         string                          `json:"buildspec"`
+	Location          string                          `json:"location"`
+	Type              string                          `json:"type"`
 }
 
 type AwsCodebuildProjectSpec struct {
-	Source             []AwsCodebuildProjectSpec `json:"source"`
-	BadgeEnabled       bool                      `json:"badge_enabled"`
-	Arn                string                    `json:"arn"`
-	EncryptionKey      string                    `json:"encryption_key"`
-	Environment        []AwsCodebuildProjectSpec `json:"environment"`
-	Name               string                    `json:"name"`
-	SecondaryArtifacts []AwsCodebuildProjectSpec `json:"secondary_artifacts"`
-	ServiceRole        string                    `json:"service_role"`
-	BadgeUrl           string                    `json:"badge_url"`
+	VpcConfig          []AwsCodebuildProjectSpec `json:"vpc_config"`
 	Artifacts          []AwsCodebuildProjectSpec `json:"artifacts"`
 	Description        string                    `json:"description"`
-	Tags               map[string]string         `json:"tags"`
+	Environment        []AwsCodebuildProjectSpec `json:"environment"`
 	LogsConfig         []AwsCodebuildProjectSpec `json:"logs_config"`
-	VpcConfig          []AwsCodebuildProjectSpec `json:"vpc_config"`
+	Name               string                    `json:"name"`
+	SecondaryArtifacts []AwsCodebuildProjectSpec `json:"secondary_artifacts"`
 	Cache              []AwsCodebuildProjectSpec `json:"cache"`
+	Tags               map[string]string         `json:"tags"`
+	Arn                string                    `json:"arn"`
+	EncryptionKey      string                    `json:"encryption_key"`
 	SecondarySources   []AwsCodebuildProjectSpec `json:"secondary_sources"`
+	Source             []AwsCodebuildProjectSpec `json:"source"`
+	ServiceRole        string                    `json:"service_role"`
 	BuildTimeout       int                       `json:"build_timeout"`
+	BadgeEnabled       bool                      `json:"badge_enabled"`
+	BadgeUrl           string                    `json:"badge_url"`
 }
 
+
+
 type AwsCodebuildProjectStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

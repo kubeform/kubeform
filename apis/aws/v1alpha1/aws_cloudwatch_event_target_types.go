@@ -18,14 +18,29 @@ type AwsCloudwatchEventTarget struct {
 	Status            AwsCloudwatchEventTargetStatus `json:"status,omitempty"`
 }
 
+type AwsCloudwatchEventTargetSpecBatchTarget struct {
+	JobDefinition string `json:"job_definition"`
+	JobName       string `json:"job_name"`
+	ArraySize     int    `json:"array_size"`
+	JobAttempts   int    `json:"job_attempts"`
+}
+
+type AwsCloudwatchEventTargetSpecKinesisTarget struct {
+	PartitionKeyPath string `json:"partition_key_path"`
+}
+
+type AwsCloudwatchEventTargetSpecSqsTarget struct {
+	MessageGroupId string `json:"message_group_id"`
+}
+
 type AwsCloudwatchEventTargetSpecInputTransformer struct {
-	InputTemplate string            `json:"input_template"`
 	InputPaths    map[string]string `json:"input_paths"`
+	InputTemplate string            `json:"input_template"`
 }
 
 type AwsCloudwatchEventTargetSpecRunCommandTargets struct {
-	Values []string `json:"values"`
 	Key    string   `json:"key"`
+	Values []string `json:"values"`
 }
 
 type AwsCloudwatchEventTargetSpecEcsTargetNetworkConfiguration struct {
@@ -43,37 +58,28 @@ type AwsCloudwatchEventTargetSpecEcsTarget struct {
 	TaskDefinitionArn    string                                  `json:"task_definition_arn"`
 }
 
-type AwsCloudwatchEventTargetSpecBatchTarget struct {
-	JobDefinition string `json:"job_definition"`
-	JobName       string `json:"job_name"`
-	ArraySize     int    `json:"array_size"`
-	JobAttempts   int    `json:"job_attempts"`
-}
-
-type AwsCloudwatchEventTargetSpecKinesisTarget struct {
-	PartitionKeyPath string `json:"partition_key_path"`
-}
-
-type AwsCloudwatchEventTargetSpecSqsTarget struct {
-	MessageGroupId string `json:"message_group_id"`
-}
-
 type AwsCloudwatchEventTargetSpec struct {
-	InputTransformer  []AwsCloudwatchEventTargetSpec `json:"input_transformer"`
+	BatchTarget       []AwsCloudwatchEventTargetSpec `json:"batch_target"`
+	Rule              string                         `json:"rule"`
 	TargetId          string                         `json:"target_id"`
+	Input             string                         `json:"input"`
 	InputPath         string                         `json:"input_path"`
+	KinesisTarget     []AwsCloudwatchEventTargetSpec `json:"kinesis_target"`
+	SqsTarget         []AwsCloudwatchEventTargetSpec `json:"sqs_target"`
+	InputTransformer  []AwsCloudwatchEventTargetSpec `json:"input_transformer"`
+	Arn               string                         `json:"arn"`
+	RoleArn           string                         `json:"role_arn"`
 	RunCommandTargets []AwsCloudwatchEventTargetSpec `json:"run_command_targets"`
 	EcsTarget         []AwsCloudwatchEventTargetSpec `json:"ecs_target"`
-	BatchTarget       []AwsCloudwatchEventTargetSpec `json:"batch_target"`
-	KinesisTarget     []AwsCloudwatchEventTargetSpec `json:"kinesis_target"`
-	Rule              string                         `json:"rule"`
-	Arn               string                         `json:"arn"`
-	Input             string                         `json:"input"`
-	RoleArn           string                         `json:"role_arn"`
-	SqsTarget         []AwsCloudwatchEventTargetSpec `json:"sqs_target"`
 }
 
+
+
 type AwsCloudwatchEventTargetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -18,16 +18,11 @@ type AwsSesReceiptRule struct {
 	Status            AwsSesReceiptRuleStatus `json:"status,omitempty"`
 }
 
-type AwsSesReceiptRuleSpecStopAction struct {
-	Scope    string `json:"scope"`
-	TopicArn string `json:"topic_arn"`
-	Position int    `json:"position"`
-}
-
-type AwsSesReceiptRuleSpecAddHeaderAction struct {
-	HeaderValue string `json:"header_value"`
-	Position    int    `json:"position"`
-	HeaderName  string `json:"header_name"`
+type AwsSesReceiptRuleSpecLambdaAction struct {
+	InvocationType string `json:"invocation_type"`
+	TopicArn       string `json:"topic_arn"`
+	Position       int    `json:"position"`
+	FunctionArn    string `json:"function_arn"`
 }
 
 type AwsSesReceiptRuleSpecS3Action struct {
@@ -38,25 +33,30 @@ type AwsSesReceiptRuleSpecS3Action struct {
 	Position        int    `json:"position"`
 }
 
+type AwsSesReceiptRuleSpecSnsAction struct {
+	Position int    `json:"position"`
+	TopicArn string `json:"topic_arn"`
+}
+
+type AwsSesReceiptRuleSpecAddHeaderAction struct {
+	HeaderName  string `json:"header_name"`
+	HeaderValue string `json:"header_value"`
+	Position    int    `json:"position"`
+}
+
 type AwsSesReceiptRuleSpecBounceAction struct {
+	Position      int    `json:"position"`
 	Message       string `json:"message"`
 	Sender        string `json:"sender"`
 	SmtpReplyCode string `json:"smtp_reply_code"`
 	StatusCode    string `json:"status_code"`
 	TopicArn      string `json:"topic_arn"`
-	Position      int    `json:"position"`
 }
 
-type AwsSesReceiptRuleSpecLambdaAction struct {
-	InvocationType string `json:"invocation_type"`
-	TopicArn       string `json:"topic_arn"`
-	Position       int    `json:"position"`
-	FunctionArn    string `json:"function_arn"`
-}
-
-type AwsSesReceiptRuleSpecSnsAction struct {
-	Position int    `json:"position"`
+type AwsSesReceiptRuleSpecStopAction struct {
+	Scope    string `json:"scope"`
 	TopicArn string `json:"topic_arn"`
+	Position int    `json:"position"`
 }
 
 type AwsSesReceiptRuleSpecWorkmailAction struct {
@@ -66,23 +66,29 @@ type AwsSesReceiptRuleSpecWorkmailAction struct {
 }
 
 type AwsSesReceiptRuleSpec struct {
+	LambdaAction    []AwsSesReceiptRuleSpec `json:"lambda_action"`
+	S3Action        []AwsSesReceiptRuleSpec `json:"s3_action"`
+	SnsAction       []AwsSesReceiptRuleSpec `json:"sns_action"`
+	RuleSetName     string                  `json:"rule_set_name"`
+	Enabled         bool                    `json:"enabled"`
+	Recipients      []string                `json:"recipients"`
+	TlsPolicy       string                  `json:"tls_policy"`
 	Name            string                  `json:"name"`
+	AddHeaderAction []AwsSesReceiptRuleSpec `json:"add_header_action"`
+	BounceAction    []AwsSesReceiptRuleSpec `json:"bounce_action"`
+	After           string                  `json:"after"`
 	ScanEnabled     bool                    `json:"scan_enabled"`
 	StopAction      []AwsSesReceiptRuleSpec `json:"stop_action"`
-	Recipients      []string                `json:"recipients"`
-	AddHeaderAction []AwsSesReceiptRuleSpec `json:"add_header_action"`
-	S3Action        []AwsSesReceiptRuleSpec `json:"s3_action"`
-	RuleSetName     string                  `json:"rule_set_name"`
-	After           string                  `json:"after"`
-	Enabled         bool                    `json:"enabled"`
-	BounceAction    []AwsSesReceiptRuleSpec `json:"bounce_action"`
-	TlsPolicy       string                  `json:"tls_policy"`
-	LambdaAction    []AwsSesReceiptRuleSpec `json:"lambda_action"`
-	SnsAction       []AwsSesReceiptRuleSpec `json:"sns_action"`
 	WorkmailAction  []AwsSesReceiptRuleSpec `json:"workmail_action"`
 }
 
+
+
 type AwsSesReceiptRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

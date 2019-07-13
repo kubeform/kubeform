@@ -19,18 +19,24 @@ type AzurermDevTestPolicy struct {
 }
 
 type AzurermDevTestPolicySpec struct {
-	Description       string            `json:"description"`
+	ResourceGroupName string            `json:"resource_group_name"`
 	FactData          string            `json:"fact_data"`
+	Tags              map[string]string `json:"tags"`
+	EvaluatorType     string            `json:"evaluator_type"`
+	Description       string            `json:"description"`
+	Name              string            `json:"name"`
 	PolicySetName     string            `json:"policy_set_name"`
 	LabName           string            `json:"lab_name"`
-	ResourceGroupName string            `json:"resource_group_name"`
-	EvaluatorType     string            `json:"evaluator_type"`
-	Name              string            `json:"name"`
 	Threshold         string            `json:"threshold"`
-	Tags              map[string]string `json:"tags"`
 }
 
+
+
 type AzurermDevTestPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -18,42 +18,48 @@ type AwsDefaultSecurityGroup struct {
 	Status            AwsDefaultSecurityGroupStatus `json:"status,omitempty"`
 }
 
-type AwsDefaultSecurityGroupSpecIngress struct {
-	ToPort         int      `json:"to_port"`
+type AwsDefaultSecurityGroupSpecEgress struct {
+	Self           bool     `json:"self"`
+	Description    string   `json:"description"`
 	Protocol       string   `json:"protocol"`
-	FromPort       int      `json:"from_port"`
+	ToPort         int      `json:"to_port"`
 	CidrBlocks     []string `json:"cidr_blocks"`
 	Ipv6CidrBlocks []string `json:"ipv6_cidr_blocks"`
 	PrefixListIds  []string `json:"prefix_list_ids"`
 	SecurityGroups []string `json:"security_groups"`
-	Self           bool     `json:"self"`
-	Description    string   `json:"description"`
+	FromPort       int      `json:"from_port"`
 }
 
-type AwsDefaultSecurityGroupSpecEgress struct {
-	Protocol       string   `json:"protocol"`
-	CidrBlocks     []string `json:"cidr_blocks"`
-	Ipv6CidrBlocks []string `json:"ipv6_cidr_blocks"`
+type AwsDefaultSecurityGroupSpecIngress struct {
+	PrefixListIds  []string `json:"prefix_list_ids"`
 	SecurityGroups []string `json:"security_groups"`
+	Self           bool     `json:"self"`
+	Ipv6CidrBlocks []string `json:"ipv6_cidr_blocks"`
+	Description    string   `json:"description"`
 	FromPort       int      `json:"from_port"`
 	ToPort         int      `json:"to_port"`
-	PrefixListIds  []string `json:"prefix_list_ids"`
-	Self           bool     `json:"self"`
-	Description    string   `json:"description"`
+	Protocol       string   `json:"protocol"`
+	CidrBlocks     []string `json:"cidr_blocks"`
 }
 
 type AwsDefaultSecurityGroupSpec struct {
-	Name                string                        `json:"name"`
 	VpcId               string                        `json:"vpc_id"`
+	Egress              []AwsDefaultSecurityGroupSpec `json:"egress"`
 	Arn                 string                        `json:"arn"`
-	OwnerId             string                        `json:"owner_id"`
 	Tags                map[string]string             `json:"tags"`
 	RevokeRulesOnDelete bool                          `json:"revoke_rules_on_delete"`
+	Name                string                        `json:"name"`
+	OwnerId             string                        `json:"owner_id"`
 	Ingress             []AwsDefaultSecurityGroupSpec `json:"ingress"`
-	Egress              []AwsDefaultSecurityGroupSpec `json:"egress"`
 }
 
+
+
 type AwsDefaultSecurityGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,12 +19,18 @@ type AzurermStorageQueue struct {
 }
 
 type AzurermStorageQueueSpec struct {
-	StorageAccountName string `json:"storage_account_name"`
 	Name               string `json:"name"`
 	ResourceGroupName  string `json:"resource_group_name"`
+	StorageAccountName string `json:"storage_account_name"`
 }
 
+
+
 type AzurermStorageQueueStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

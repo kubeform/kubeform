@@ -19,14 +19,20 @@ type GoogleSqlUser struct {
 }
 
 type GoogleSqlUserSpec struct {
+	Password string `json:"password"`
 	Project  string `json:"project"`
 	Host     string `json:"host"`
 	Instance string `json:"instance"`
 	Name     string `json:"name"`
-	Password string `json:"password"`
 }
 
+
+
 type GoogleSqlUserStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

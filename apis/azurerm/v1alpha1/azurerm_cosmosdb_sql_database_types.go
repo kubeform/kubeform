@@ -19,12 +19,18 @@ type AzurermCosmosdbSqlDatabase struct {
 }
 
 type AzurermCosmosdbSqlDatabaseSpec struct {
-	AccountName       string `json:"account_name"`
 	Name              string `json:"name"`
 	ResourceGroupName string `json:"resource_group_name"`
+	AccountName       string `json:"account_name"`
 }
 
+
+
 type AzurermCosmosdbSqlDatabaseStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -24,15 +24,21 @@ type GooglePubsubSubscriptionSpecPushConfig struct {
 }
 
 type GooglePubsubSubscriptionSpec struct {
-	Path               string                         `json:"path"`
-	PushConfig         []GooglePubsubSubscriptionSpec `json:"push_config"`
-	Name               string                         `json:"name"`
 	Topic              string                         `json:"topic"`
 	AckDeadlineSeconds int                            `json:"ack_deadline_seconds"`
 	Project            string                         `json:"project"`
+	Path               string                         `json:"path"`
+	PushConfig         []GooglePubsubSubscriptionSpec `json:"push_config"`
+	Name               string                         `json:"name"`
 }
 
+
+
 type GooglePubsubSubscriptionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

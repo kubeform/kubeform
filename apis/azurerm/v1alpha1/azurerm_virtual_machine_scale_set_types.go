@@ -18,11 +18,23 @@ type AzurermVirtualMachineScaleSet struct {
 	Status            AzurermVirtualMachineScaleSetStatus `json:"status,omitempty"`
 }
 
-type AzurermVirtualMachineScaleSetSpecOsProfile struct {
-	ComputerNamePrefix string `json:"computer_name_prefix"`
-	AdminUsername      string `json:"admin_username"`
-	AdminPassword      string `json:"admin_password"`
-	CustomData         string `json:"custom_data"`
+type AzurermVirtualMachineScaleSetSpecOsProfileWindowsConfigWinrm struct {
+	Protocol       string `json:"protocol"`
+	CertificateUrl string `json:"certificate_url"`
+}
+
+type AzurermVirtualMachineScaleSetSpecOsProfileWindowsConfigAdditionalUnattendConfig struct {
+	Pass        string `json:"pass"`
+	Component   string `json:"component"`
+	SettingName string `json:"setting_name"`
+	Content     string `json:"content"`
+}
+
+type AzurermVirtualMachineScaleSetSpecOsProfileWindowsConfig struct {
+	EnableAutomaticUpgrades  bool                                                      `json:"enable_automatic_upgrades"`
+	Winrm                    []AzurermVirtualMachineScaleSetSpecOsProfileWindowsConfig `json:"winrm"`
+	AdditionalUnattendConfig []AzurermVirtualMachineScaleSetSpecOsProfileWindowsConfig `json:"additional_unattend_config"`
+	ProvisionVmAgent         bool                                                      `json:"provision_vm_agent"`
 }
 
 type AzurermVirtualMachineScaleSetSpecPlan struct {
@@ -31,10 +43,57 @@ type AzurermVirtualMachineScaleSetSpecPlan struct {
 	Product   string `json:"product"`
 }
 
+type AzurermVirtualMachineScaleSetSpecNetworkProfileDnsSettings struct {
+	DnsServers []string `json:"dns_servers"`
+}
+
+type AzurermVirtualMachineScaleSetSpecNetworkProfileIpConfigurationPublicIpAddressConfiguration struct {
+	Name            string `json:"name"`
+	IdleTimeout     int    `json:"idle_timeout"`
+	DomainNameLabel string `json:"domain_name_label"`
+}
+
+type AzurermVirtualMachineScaleSetSpecNetworkProfileIpConfiguration struct {
+	LoadBalancerBackendAddressPoolIds       []string                                                         `json:"load_balancer_backend_address_pool_ids"`
+	LoadBalancerInboundNatRulesIds          []string                                                         `json:"load_balancer_inbound_nat_rules_ids"`
+	Primary                                 bool                                                             `json:"primary"`
+	PublicIpAddressConfiguration            []AzurermVirtualMachineScaleSetSpecNetworkProfileIpConfiguration `json:"public_ip_address_configuration"`
+	Name                                    string                                                           `json:"name"`
+	SubnetId                                string                                                           `json:"subnet_id"`
+	ApplicationGatewayBackendAddressPoolIds []string                                                         `json:"application_gateway_backend_address_pool_ids"`
+	ApplicationSecurityGroupIds             []string                                                         `json:"application_security_group_ids"`
+}
+
+type AzurermVirtualMachineScaleSetSpecNetworkProfile struct {
+	NetworkSecurityGroupId string                                            `json:"network_security_group_id"`
+	DnsSettings            []AzurermVirtualMachineScaleSetSpecNetworkProfile `json:"dns_settings"`
+	IpConfiguration        []AzurermVirtualMachineScaleSetSpecNetworkProfile `json:"ip_configuration"`
+	Name                   string                                            `json:"name"`
+	Primary                bool                                              `json:"primary"`
+	AcceleratedNetworking  bool                                              `json:"accelerated_networking"`
+	IpForwarding           bool                                              `json:"ip_forwarding"`
+}
+
+type AzurermVirtualMachineScaleSetSpecBootDiagnostics struct {
+	Enabled    bool   `json:"enabled"`
+	StorageUri string `json:"storage_uri"`
+}
+
+type AzurermVirtualMachineScaleSetSpecExtension struct {
+	ProtectedSettings        string   `json:"protected_settings"`
+	Name                     string   `json:"name"`
+	Publisher                string   `json:"publisher"`
+	Type                     string   `json:"type"`
+	TypeHandlerVersion       string   `json:"type_handler_version"`
+	AutoUpgradeMinorVersion  bool     `json:"auto_upgrade_minor_version"`
+	ProvisionAfterExtensions []string `json:"provision_after_extensions"`
+	Settings                 string   `json:"settings"`
+}
+
 type AzurermVirtualMachineScaleSetSpecIdentity struct {
-	Type        string   `json:"type"`
 	IdentityIds []string `json:"identity_ids"`
 	PrincipalId string   `json:"principal_id"`
+	Type        string   `json:"type"`
 }
 
 type AzurermVirtualMachineScaleSetSpecSku struct {
@@ -50,25 +109,6 @@ type AzurermVirtualMachineScaleSetSpecRollingUpgradePolicy struct {
 	PauseTimeBetweenBatches             string `json:"pause_time_between_batches"`
 }
 
-type AzurermVirtualMachineScaleSetSpecOsProfileWindowsConfigWinrm struct {
-	Protocol       string `json:"protocol"`
-	CertificateUrl string `json:"certificate_url"`
-}
-
-type AzurermVirtualMachineScaleSetSpecOsProfileWindowsConfigAdditionalUnattendConfig struct {
-	Pass        string `json:"pass"`
-	Component   string `json:"component"`
-	SettingName string `json:"setting_name"`
-	Content     string `json:"content"`
-}
-
-type AzurermVirtualMachineScaleSetSpecOsProfileWindowsConfig struct {
-	ProvisionVmAgent         bool                                                      `json:"provision_vm_agent"`
-	EnableAutomaticUpgrades  bool                                                      `json:"enable_automatic_upgrades"`
-	Winrm                    []AzurermVirtualMachineScaleSetSpecOsProfileWindowsConfig `json:"winrm"`
-	AdditionalUnattendConfig []AzurermVirtualMachineScaleSetSpecOsProfileWindowsConfig `json:"additional_unattend_config"`
-}
-
 type AzurermVirtualMachineScaleSetSpecOsProfileLinuxConfigSshKeys struct {
 	Path    string `json:"path"`
 	KeyData string `json:"key_data"`
@@ -79,66 +119,37 @@ type AzurermVirtualMachineScaleSetSpecOsProfileLinuxConfig struct {
 	SshKeys                       []AzurermVirtualMachineScaleSetSpecOsProfileLinuxConfig `json:"ssh_keys"`
 }
 
-type AzurermVirtualMachineScaleSetSpecNetworkProfileIpConfigurationPublicIpAddressConfiguration struct {
-	Name            string `json:"name"`
-	IdleTimeout     int    `json:"idle_timeout"`
-	DomainNameLabel string `json:"domain_name_label"`
-}
-
-type AzurermVirtualMachineScaleSetSpecNetworkProfileIpConfiguration struct {
-	Primary                                 bool                                                             `json:"primary"`
-	PublicIpAddressConfiguration            []AzurermVirtualMachineScaleSetSpecNetworkProfileIpConfiguration `json:"public_ip_address_configuration"`
-	Name                                    string                                                           `json:"name"`
-	SubnetId                                string                                                           `json:"subnet_id"`
-	ApplicationGatewayBackendAddressPoolIds []string                                                         `json:"application_gateway_backend_address_pool_ids"`
-	ApplicationSecurityGroupIds             []string                                                         `json:"application_security_group_ids"`
-	LoadBalancerBackendAddressPoolIds       []string                                                         `json:"load_balancer_backend_address_pool_ids"`
-	LoadBalancerInboundNatRulesIds          []string                                                         `json:"load_balancer_inbound_nat_rules_ids"`
-}
-
-type AzurermVirtualMachineScaleSetSpecNetworkProfileDnsSettings struct {
-	DnsServers []string `json:"dns_servers"`
-}
-
-type AzurermVirtualMachineScaleSetSpecNetworkProfile struct {
-	IpConfiguration        []AzurermVirtualMachineScaleSetSpecNetworkProfile `json:"ip_configuration"`
-	Name                   string                                            `json:"name"`
-	Primary                bool                                              `json:"primary"`
-	AcceleratedNetworking  bool                                              `json:"accelerated_networking"`
-	IpForwarding           bool                                              `json:"ip_forwarding"`
-	NetworkSecurityGroupId string                                            `json:"network_security_group_id"`
-	DnsSettings            []AzurermVirtualMachineScaleSetSpecNetworkProfile `json:"dns_settings"`
-}
-
-type AzurermVirtualMachineScaleSetSpecStorageProfileDataDisk struct {
-	DiskSizeGb      int    `json:"disk_size_gb"`
-	ManagedDiskType string `json:"managed_disk_type"`
-	Lun             int    `json:"lun"`
-	CreateOption    string `json:"create_option"`
-	Caching         string `json:"caching"`
-}
-
-type AzurermVirtualMachineScaleSetSpecStorageProfileImageReference struct {
-	Sku       string `json:"sku"`
-	Version   string `json:"version"`
-	Id        string `json:"id"`
-	Publisher string `json:"publisher"`
-	Offer     string `json:"offer"`
-}
-
-type AzurermVirtualMachineScaleSetSpecBootDiagnostics struct {
-	Enabled    bool   `json:"enabled"`
-	StorageUri string `json:"storage_uri"`
-}
-
 type AzurermVirtualMachineScaleSetSpecStorageProfileOsDisk struct {
-	Caching         string   `json:"caching"`
-	OsType          string   `json:"os_type"`
-	CreateOption    string   `json:"create_option"`
 	Name            string   `json:"name"`
 	Image           string   `json:"image"`
 	VhdContainers   []string `json:"vhd_containers"`
 	ManagedDiskType string   `json:"managed_disk_type"`
+	Caching         string   `json:"caching"`
+	OsType          string   `json:"os_type"`
+	CreateOption    string   `json:"create_option"`
+}
+
+type AzurermVirtualMachineScaleSetSpecStorageProfileImageReference struct {
+	Publisher string `json:"publisher"`
+	Offer     string `json:"offer"`
+	Sku       string `json:"sku"`
+	Version   string `json:"version"`
+	Id        string `json:"id"`
+}
+
+type AzurermVirtualMachineScaleSetSpecStorageProfileDataDisk struct {
+	Lun             int    `json:"lun"`
+	CreateOption    string `json:"create_option"`
+	Caching         string `json:"caching"`
+	DiskSizeGb      int    `json:"disk_size_gb"`
+	ManagedDiskType string `json:"managed_disk_type"`
+}
+
+type AzurermVirtualMachineScaleSetSpecOsProfile struct {
+	AdminPassword      string `json:"admin_password"`
+	CustomData         string `json:"custom_data"`
+	ComputerNamePrefix string `json:"computer_name_prefix"`
+	AdminUsername      string `json:"admin_username"`
 }
 
 type AzurermVirtualMachineScaleSetSpecOsProfileSecretsVaultCertificates struct {
@@ -151,48 +162,43 @@ type AzurermVirtualMachineScaleSetSpecOsProfileSecrets struct {
 	VaultCertificates []AzurermVirtualMachineScaleSetSpecOsProfileSecrets `json:"vault_certificates"`
 }
 
-type AzurermVirtualMachineScaleSetSpecExtension struct {
-	ProvisionAfterExtensions []string `json:"provision_after_extensions"`
-	Settings                 string   `json:"settings"`
-	ProtectedSettings        string   `json:"protected_settings"`
-	Name                     string   `json:"name"`
-	Publisher                string   `json:"publisher"`
-	Type                     string   `json:"type"`
-	TypeHandlerVersion       string   `json:"type_handler_version"`
-	AutoUpgradeMinorVersion  bool     `json:"auto_upgrade_minor_version"`
+type AzurermVirtualMachineScaleSetSpec struct {
+	Tags                         map[string]string                   `json:"tags"`
+	UpgradePolicyMode            string                              `json:"upgrade_policy_mode"`
+	AutomaticOsUpgrade           bool                                `json:"automatic_os_upgrade"`
+	Overprovision                bool                                `json:"overprovision"`
+	Priority                     string                              `json:"priority"`
+	EvictionPolicy               string                              `json:"eviction_policy"`
+	OsProfileWindowsConfig       []AzurermVirtualMachineScaleSetSpec `json:"os_profile_windows_config"`
+	Plan                         []AzurermVirtualMachineScaleSetSpec `json:"plan"`
+	LicenseType                  string                              `json:"license_type"`
+	Location                     string                              `json:"location"`
+	SinglePlacementGroup         bool                                `json:"single_placement_group"`
+	NetworkProfile               []AzurermVirtualMachineScaleSetSpec `json:"network_profile"`
+	BootDiagnostics              []AzurermVirtualMachineScaleSetSpec `json:"boot_diagnostics"`
+	Extension                    []AzurermVirtualMachineScaleSetSpec `json:"extension"`
+	ResourceGroupName            string                              `json:"resource_group_name"`
+	Zones                        []string                            `json:"zones"`
+	Identity                     []AzurermVirtualMachineScaleSetSpec `json:"identity"`
+	HealthProbeId                string                              `json:"health_probe_id"`
+	Name                         string                              `json:"name"`
+	Sku                          []AzurermVirtualMachineScaleSetSpec `json:"sku"`
+	RollingUpgradePolicy         []AzurermVirtualMachineScaleSetSpec `json:"rolling_upgrade_policy"`
+	OsProfileLinuxConfig         []AzurermVirtualMachineScaleSetSpec `json:"os_profile_linux_config"`
+	StorageProfileOsDisk         []AzurermVirtualMachineScaleSetSpec `json:"storage_profile_os_disk"`
+	StorageProfileImageReference []AzurermVirtualMachineScaleSetSpec `json:"storage_profile_image_reference"`
+	StorageProfileDataDisk       []AzurermVirtualMachineScaleSetSpec `json:"storage_profile_data_disk"`
+	OsProfile                    []AzurermVirtualMachineScaleSetSpec `json:"os_profile"`
+	OsProfileSecrets             []AzurermVirtualMachineScaleSetSpec `json:"os_profile_secrets"`
 }
 
-type AzurermVirtualMachineScaleSetSpec struct {
-	LicenseType                  string                              `json:"license_type"`
-	AutomaticOsUpgrade           bool                                `json:"automatic_os_upgrade"`
-	HealthProbeId                string                              `json:"health_probe_id"`
-	SinglePlacementGroup         bool                                `json:"single_placement_group"`
-	OsProfile                    []AzurermVirtualMachineScaleSetSpec `json:"os_profile"`
-	Plan                         []AzurermVirtualMachineScaleSetSpec `json:"plan"`
-	Name                         string                              `json:"name"`
-	Identity                     []AzurermVirtualMachineScaleSetSpec `json:"identity"`
-	Sku                          []AzurermVirtualMachineScaleSetSpec `json:"sku"`
-	UpgradePolicyMode            string                              `json:"upgrade_policy_mode"`
-	Tags                         map[string]string                   `json:"tags"`
-	Zones                        []string                            `json:"zones"`
-	EvictionPolicy               string                              `json:"eviction_policy"`
-	RollingUpgradePolicy         []AzurermVirtualMachineScaleSetSpec `json:"rolling_upgrade_policy"`
-	OsProfileWindowsConfig       []AzurermVirtualMachineScaleSetSpec `json:"os_profile_windows_config"`
-	OsProfileLinuxConfig         []AzurermVirtualMachineScaleSetSpec `json:"os_profile_linux_config"`
-	ResourceGroupName            string                              `json:"resource_group_name"`
-	Priority                     string                              `json:"priority"`
-	NetworkProfile               []AzurermVirtualMachineScaleSetSpec `json:"network_profile"`
-	Location                     string                              `json:"location"`
-	Overprovision                bool                                `json:"overprovision"`
-	StorageProfileDataDisk       []AzurermVirtualMachineScaleSetSpec `json:"storage_profile_data_disk"`
-	StorageProfileImageReference []AzurermVirtualMachineScaleSetSpec `json:"storage_profile_image_reference"`
-	BootDiagnostics              []AzurermVirtualMachineScaleSetSpec `json:"boot_diagnostics"`
-	StorageProfileOsDisk         []AzurermVirtualMachineScaleSetSpec `json:"storage_profile_os_disk"`
-	OsProfileSecrets             []AzurermVirtualMachineScaleSetSpec `json:"os_profile_secrets"`
-	Extension                    []AzurermVirtualMachineScaleSetSpec `json:"extension"`
-}
+
 
 type AzurermVirtualMachineScaleSetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -18,44 +18,50 @@ type AwsAmiCopy struct {
 	Status            AwsAmiCopyStatus `json:"status,omitempty"`
 }
 
+type AwsAmiCopySpecEphemeralBlockDevice struct {
+	DeviceName  string `json:"device_name"`
+	VirtualName string `json:"virtual_name"`
+}
+
 type AwsAmiCopySpecEbsBlockDevice struct {
-	Iops                int    `json:"iops"`
-	SnapshotId          string `json:"snapshot_id"`
 	VolumeSize          int    `json:"volume_size"`
 	VolumeType          string `json:"volume_type"`
 	DeleteOnTermination bool   `json:"delete_on_termination"`
 	DeviceName          string `json:"device_name"`
 	Encrypted           bool   `json:"encrypted"`
-}
-
-type AwsAmiCopySpecEphemeralBlockDevice struct {
-	VirtualName string `json:"virtual_name"`
-	DeviceName  string `json:"device_name"`
+	Iops                int    `json:"iops"`
+	SnapshotId          string `json:"snapshot_id"`
 }
 
 type AwsAmiCopySpec struct {
-	Description          string            `json:"description"`
-	KernelId             string            `json:"kernel_id"`
-	KmsKeyId             string            `json:"kms_key_id"`
-	Tags                 map[string]string `json:"tags"`
-	EbsBlockDevice       []AwsAmiCopySpec  `json:"ebs_block_device"`
-	EnaSupport           bool              `json:"ena_support"`
-	ManageEbsSnapshots   bool              `json:"manage_ebs_snapshots"`
-	Name                 string            `json:"name"`
-	RootDeviceName       string            `json:"root_device_name"`
-	SourceAmiRegion      string            `json:"source_ami_region"`
-	VirtualizationType   string            `json:"virtualization_type"`
 	EphemeralBlockDevice []AwsAmiCopySpec  `json:"ephemeral_block_device"`
 	ImageLocation        string            `json:"image_location"`
+	KernelId             string            `json:"kernel_id"`
+	KmsKeyId             string            `json:"kms_key_id"`
+	SriovNetSupport      string            `json:"sriov_net_support"`
+	VirtualizationType   string            `json:"virtualization_type"`
+	Description          string            `json:"description"`
+	EbsBlockDevice       []AwsAmiCopySpec  `json:"ebs_block_device"`
+	EnaSupport           bool              `json:"ena_support"`
+	Architecture         string            `json:"architecture"`
+	Name                 string            `json:"name"`
+	RamdiskId            string            `json:"ramdisk_id"`
 	RootSnapshotId       string            `json:"root_snapshot_id"`
 	SourceAmiId          string            `json:"source_ami_id"`
-	SriovNetSupport      string            `json:"sriov_net_support"`
-	Architecture         string            `json:"architecture"`
+	SourceAmiRegion      string            `json:"source_ami_region"`
+	ManageEbsSnapshots   bool              `json:"manage_ebs_snapshots"`
+	RootDeviceName       string            `json:"root_device_name"`
+	Tags                 map[string]string `json:"tags"`
 	Encrypted            bool              `json:"encrypted"`
-	RamdiskId            string            `json:"ramdisk_id"`
 }
 
+
+
 type AwsAmiCopyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

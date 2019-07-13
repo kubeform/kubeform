@@ -19,13 +19,19 @@ type GoogleStorageBucketAcl struct {
 }
 
 type GoogleStorageBucketAclSpec struct {
+	RoleEntity    []string `json:"role_entity"`
 	Bucket        string   `json:"bucket"`
 	DefaultAcl    string   `json:"default_acl"`
 	PredefinedAcl string   `json:"predefined_acl"`
-	RoleEntity    []string `json:"role_entity"`
 }
 
+
+
 type GoogleStorageBucketAclStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,18 +19,24 @@ type AzurermDataFactoryLinkedServicePostgresql struct {
 }
 
 type AzurermDataFactoryLinkedServicePostgresqlSpec struct {
-	Name                   string            `json:"name"`
-	DataFactoryName        string            `json:"data_factory_name"`
-	IntegrationRuntimeName string            `json:"integration_runtime_name"`
-	Annotations            []string          `json:"annotations"`
-	AdditionalProperties   map[string]string `json:"additional_properties"`
-	ResourceGroupName      string            `json:"resource_group_name"`
-	ConnectionString       string            `json:"connection_string"`
 	Description            string            `json:"description"`
 	Parameters             map[string]string `json:"parameters"`
+	Annotations            []string          `json:"annotations"`
+	AdditionalProperties   map[string]string `json:"additional_properties"`
+	Name                   string            `json:"name"`
+	ResourceGroupName      string            `json:"resource_group_name"`
+	IntegrationRuntimeName string            `json:"integration_runtime_name"`
+	DataFactoryName        string            `json:"data_factory_name"`
+	ConnectionString       string            `json:"connection_string"`
 }
 
+
+
 type AzurermDataFactoryLinkedServicePostgresqlStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

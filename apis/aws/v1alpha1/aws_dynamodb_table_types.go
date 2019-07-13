@@ -18,17 +18,6 @@ type AwsDynamodbTable struct {
 	Status            AwsDynamodbTableStatus `json:"status,omitempty"`
 }
 
-type AwsDynamodbTableSpecServerSideEncryption struct {
-	Enabled bool `json:"enabled"`
-}
-
-type AwsDynamodbTableSpecLocalSecondaryIndex struct {
-	RangeKey         string   `json:"range_key"`
-	ProjectionType   string   `json:"projection_type"`
-	NonKeyAttributes []string `json:"non_key_attributes"`
-	Name             string   `json:"name"`
-}
-
 type AwsDynamodbTableSpecAttribute struct {
 	Name string `json:"name"`
 	Type string `json:"type"`
@@ -40,41 +29,58 @@ type AwsDynamodbTableSpecTtl struct {
 }
 
 type AwsDynamodbTableSpecGlobalSecondaryIndex struct {
+	NonKeyAttributes []string `json:"non_key_attributes"`
 	Name             string   `json:"name"`
 	WriteCapacity    int      `json:"write_capacity"`
 	ReadCapacity     int      `json:"read_capacity"`
 	HashKey          string   `json:"hash_key"`
 	RangeKey         string   `json:"range_key"`
 	ProjectionType   string   `json:"projection_type"`
-	NonKeyAttributes []string `json:"non_key_attributes"`
 }
 
 type AwsDynamodbTableSpecPointInTimeRecovery struct {
 	Enabled bool `json:"enabled"`
 }
 
-type AwsDynamodbTableSpec struct {
-	ServerSideEncryption []AwsDynamodbTableSpec `json:"server_side_encryption"`
-	HashKey              string                 `json:"hash_key"`
-	RangeKey             string                 `json:"range_key"`
-	WriteCapacity        int                    `json:"write_capacity"`
-	LocalSecondaryIndex  []AwsDynamodbTableSpec `json:"local_secondary_index"`
-	StreamLabel          string                 `json:"stream_label"`
-	Attribute            []AwsDynamodbTableSpec `json:"attribute"`
-	Ttl                  []AwsDynamodbTableSpec `json:"ttl"`
-	StreamViewType       string                 `json:"stream_view_type"`
-	StreamArn            string                 `json:"stream_arn"`
-	Tags                 map[string]string      `json:"tags"`
-	Arn                  string                 `json:"arn"`
-	BillingMode          string                 `json:"billing_mode"`
-	ReadCapacity         int                    `json:"read_capacity"`
-	GlobalSecondaryIndex []AwsDynamodbTableSpec `json:"global_secondary_index"`
-	Name                 string                 `json:"name"`
-	StreamEnabled        bool                   `json:"stream_enabled"`
-	PointInTimeRecovery  []AwsDynamodbTableSpec `json:"point_in_time_recovery"`
+type AwsDynamodbTableSpecLocalSecondaryIndex struct {
+	Name             string   `json:"name"`
+	RangeKey         string   `json:"range_key"`
+	ProjectionType   string   `json:"projection_type"`
+	NonKeyAttributes []string `json:"non_key_attributes"`
 }
 
+type AwsDynamodbTableSpecServerSideEncryption struct {
+	Enabled bool `json:"enabled"`
+}
+
+type AwsDynamodbTableSpec struct {
+	Attribute            []AwsDynamodbTableSpec `json:"attribute"`
+	Ttl                  []AwsDynamodbTableSpec `json:"ttl"`
+	GlobalSecondaryIndex []AwsDynamodbTableSpec `json:"global_secondary_index"`
+	StreamViewType       string                 `json:"stream_view_type"`
+	PointInTimeRecovery  []AwsDynamodbTableSpec `json:"point_in_time_recovery"`
+	StreamArn            string                 `json:"stream_arn"`
+	StreamLabel          string                 `json:"stream_label"`
+	Name                 string                 `json:"name"`
+	HashKey              string                 `json:"hash_key"`
+	RangeKey             string                 `json:"range_key"`
+	BillingMode          string                 `json:"billing_mode"`
+	WriteCapacity        int                    `json:"write_capacity"`
+	StreamEnabled        bool                   `json:"stream_enabled"`
+	Tags                 map[string]string      `json:"tags"`
+	Arn                  string                 `json:"arn"`
+	ReadCapacity         int                    `json:"read_capacity"`
+	LocalSecondaryIndex  []AwsDynamodbTableSpec `json:"local_secondary_index"`
+	ServerSideEncryption []AwsDynamodbTableSpec `json:"server_side_encryption"`
+}
+
+
+
 type AwsDynamodbTableStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

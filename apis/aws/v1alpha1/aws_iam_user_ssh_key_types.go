@@ -19,15 +19,21 @@ type AwsIamUserSshKey struct {
 }
 
 type AwsIamUserSshKeySpec struct {
-	Username       string `json:"username"`
 	PublicKey      string `json:"public_key"`
 	Encoding       string `json:"encoding"`
 	Status         string `json:"status"`
 	SshPublicKeyId string `json:"ssh_public_key_id"`
 	Fingerprint    string `json:"fingerprint"`
+	Username       string `json:"username"`
 }
 
+
+
 type AwsIamUserSshKeyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

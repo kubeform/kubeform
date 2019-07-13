@@ -19,13 +19,13 @@ type AwsAmiFromInstance struct {
 }
 
 type AwsAmiFromInstanceSpecEbsBlockDevice struct {
+	SnapshotId          string `json:"snapshot_id"`
 	VolumeSize          int    `json:"volume_size"`
 	VolumeType          string `json:"volume_type"`
 	DeleteOnTermination bool   `json:"delete_on_termination"`
 	DeviceName          string `json:"device_name"`
 	Encrypted           bool   `json:"encrypted"`
 	Iops                int    `json:"iops"`
-	SnapshotId          string `json:"snapshot_id"`
 }
 
 type AwsAmiFromInstanceSpecEphemeralBlockDevice struct {
@@ -34,26 +34,32 @@ type AwsAmiFromInstanceSpecEphemeralBlockDevice struct {
 }
 
 type AwsAmiFromInstanceSpec struct {
-	Name                  string                   `json:"name"`
-	SourceInstanceId      string                   `json:"source_instance_id"`
-	SnapshotWithoutReboot bool                     `json:"snapshot_without_reboot"`
-	Tags                  map[string]string        `json:"tags"`
 	Architecture          string                   `json:"architecture"`
-	EnaSupport            bool                     `json:"ena_support"`
-	ImageLocation         string                   `json:"image_location"`
-	RamdiskId             string                   `json:"ramdisk_id"`
-	RootDeviceName        string                   `json:"root_device_name"`
-	ManageEbsSnapshots    bool                     `json:"manage_ebs_snapshots"`
-	RootSnapshotId        string                   `json:"root_snapshot_id"`
-	SriovNetSupport       string                   `json:"sriov_net_support"`
-	Description           string                   `json:"description"`
 	EbsBlockDevice        []AwsAmiFromInstanceSpec `json:"ebs_block_device"`
-	EphemeralBlockDevice  []AwsAmiFromInstanceSpec `json:"ephemeral_block_device"`
+	EnaSupport            bool                     `json:"ena_support"`
+	SourceInstanceId      string                   `json:"source_instance_id"`
+	Tags                  map[string]string        `json:"tags"`
+	Description           string                   `json:"description"`
 	KernelId              string                   `json:"kernel_id"`
+	ManageEbsSnapshots    bool                     `json:"manage_ebs_snapshots"`
+	SnapshotWithoutReboot bool                     `json:"snapshot_without_reboot"`
+	SriovNetSupport       string                   `json:"sriov_net_support"`
+	EphemeralBlockDevice  []AwsAmiFromInstanceSpec `json:"ephemeral_block_device"`
+	ImageLocation         string                   `json:"image_location"`
+	Name                  string                   `json:"name"`
+	RamdiskId             string                   `json:"ramdisk_id"`
+	RootSnapshotId        string                   `json:"root_snapshot_id"`
+	RootDeviceName        string                   `json:"root_device_name"`
 	VirtualizationType    string                   `json:"virtualization_type"`
 }
 
+
+
 type AwsAmiFromInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

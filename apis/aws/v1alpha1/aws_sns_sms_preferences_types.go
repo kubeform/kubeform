@@ -27,7 +27,13 @@ type AwsSnsSmsPreferencesSpec struct {
 	UsageReportS3Bucket               string `json:"usage_report_s3_bucket"`
 }
 
+
+
 type AwsSnsSmsPreferencesStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

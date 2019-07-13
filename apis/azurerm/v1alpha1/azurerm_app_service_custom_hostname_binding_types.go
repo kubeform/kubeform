@@ -19,12 +19,18 @@ type AzurermAppServiceCustomHostnameBinding struct {
 }
 
 type AzurermAppServiceCustomHostnameBindingSpec struct {
+	Hostname          string `json:"hostname"`
 	ResourceGroupName string `json:"resource_group_name"`
 	AppServiceName    string `json:"app_service_name"`
-	Hostname          string `json:"hostname"`
 }
 
+
+
 type AzurermAppServiceCustomHostnameBindingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,17 +19,23 @@ type AwsElasticBeanstalkApplicationVersion struct {
 }
 
 type AwsElasticBeanstalkApplicationVersionSpec struct {
-	Arn         string            `json:"arn"`
-	Description string            `json:"description"`
-	Bucket      string            `json:"bucket"`
 	Key         string            `json:"key"`
 	Name        string            `json:"name"`
 	ForceDelete bool              `json:"force_delete"`
 	Tags        map[string]string `json:"tags"`
 	Application string            `json:"application"`
+	Arn         string            `json:"arn"`
+	Description string            `json:"description"`
+	Bucket      string            `json:"bucket"`
 }
 
+
+
 type AwsElasticBeanstalkApplicationVersionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

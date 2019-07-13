@@ -19,18 +19,24 @@ type AzurermNotificationHubAuthorizationRule struct {
 }
 
 type AzurermNotificationHubAuthorizationRuleSpec struct {
+	Name                string `json:"name"`
+	ResourceGroupName   string `json:"resource_group_name"`
+	Send                bool   `json:"send"`
+	NotificationHubName string `json:"notification_hub_name"`
+	NamespaceName       string `json:"namespace_name"`
 	Manage              bool   `json:"manage"`
 	Listen              bool   `json:"listen"`
 	PrimaryAccessKey    string `json:"primary_access_key"`
-	NotificationHubName string `json:"notification_hub_name"`
-	NamespaceName       string `json:"namespace_name"`
-	ResourceGroupName   string `json:"resource_group_name"`
-	Send                bool   `json:"send"`
 	SecondaryAccessKey  string `json:"secondary_access_key"`
-	Name                string `json:"name"`
 }
 
+
+
 type AzurermNotificationHubAuthorizationRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,22 +19,28 @@ type AwsDbParameterGroup struct {
 }
 
 type AwsDbParameterGroupSpecParameter struct {
-	Name        string `json:"name"`
 	Value       string `json:"value"`
 	ApplyMethod string `json:"apply_method"`
+	Name        string `json:"name"`
 }
 
 type AwsDbParameterGroupSpec struct {
+	NamePrefix  string                    `json:"name_prefix"`
+	Family      string                    `json:"family"`
+	Description string                    `json:"description"`
 	Parameter   []AwsDbParameterGroupSpec `json:"parameter"`
 	Tags        map[string]string         `json:"tags"`
 	Arn         string                    `json:"arn"`
 	Name        string                    `json:"name"`
-	NamePrefix  string                    `json:"name_prefix"`
-	Family      string                    `json:"family"`
-	Description string                    `json:"description"`
 }
 
+
+
 type AwsDbParameterGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

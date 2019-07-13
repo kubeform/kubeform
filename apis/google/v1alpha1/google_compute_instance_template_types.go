@@ -18,25 +18,9 @@ type GoogleComputeInstanceTemplate struct {
 	Status            GoogleComputeInstanceTemplateStatus `json:"status,omitempty"`
 }
 
-type GoogleComputeInstanceTemplateSpecNetworkInterfaceAccessConfig struct {
-	AssignedNatIp string `json:"assigned_nat_ip"`
-	NatIp         string `json:"nat_ip"`
-	NetworkTier   string `json:"network_tier"`
-}
-
-type GoogleComputeInstanceTemplateSpecNetworkInterfaceAliasIpRange struct {
-	SubnetworkRangeName string `json:"subnetwork_range_name"`
-	IpCidrRange         string `json:"ip_cidr_range"`
-}
-
-type GoogleComputeInstanceTemplateSpecNetworkInterface struct {
-	Network           string                                              `json:"network"`
-	Address           string                                              `json:"address"`
-	NetworkIp         string                                              `json:"network_ip"`
-	Subnetwork        string                                              `json:"subnetwork"`
-	SubnetworkProject string                                              `json:"subnetwork_project"`
-	AccessConfig      []GoogleComputeInstanceTemplateSpecNetworkInterface `json:"access_config"`
-	AliasIpRange      []GoogleComputeInstanceTemplateSpecNetworkInterface `json:"alias_ip_range"`
+type GoogleComputeInstanceTemplateSpecServiceAccount struct {
+	Email  string   `json:"email"`
+	Scopes []string `json:"scopes"`
 }
 
 type GoogleComputeInstanceTemplateSpecScheduling struct {
@@ -45,9 +29,9 @@ type GoogleComputeInstanceTemplateSpecScheduling struct {
 	OnHostMaintenance string `json:"on_host_maintenance"`
 }
 
-type GoogleComputeInstanceTemplateSpecServiceAccount struct {
-	Email  string   `json:"email"`
-	Scopes []string `json:"scopes"`
+type GoogleComputeInstanceTemplateSpecGuestAccelerator struct {
+	Type  string `json:"type"`
+	Count int    `json:"count"`
 }
 
 type GoogleComputeInstanceTemplateSpecDiskDiskEncryptionKey struct {
@@ -55,52 +39,74 @@ type GoogleComputeInstanceTemplateSpecDiskDiskEncryptionKey struct {
 }
 
 type GoogleComputeInstanceTemplateSpecDisk struct {
-	Source            string                                  `json:"source"`
-	Boot              bool                                    `json:"boot"`
-	DiskSizeGb        int                                     `json:"disk_size_gb"`
-	DiskType          string                                  `json:"disk_type"`
-	SourceImage       string                                  `json:"source_image"`
-	Mode              string                                  `json:"mode"`
-	DiskEncryptionKey []GoogleComputeInstanceTemplateSpecDisk `json:"disk_encryption_key"`
 	AutoDelete        bool                                    `json:"auto_delete"`
 	DeviceName        string                                  `json:"device_name"`
-	DiskName          string                                  `json:"disk_name"`
-	Interface         string                                  `json:"interface"`
+	DiskSizeGb        int                                     `json:"disk_size_gb"`
+	Mode              string                                  `json:"mode"`
+	Source            string                                  `json:"source"`
 	Type              string                                  `json:"type"`
+	DiskEncryptionKey []GoogleComputeInstanceTemplateSpecDisk `json:"disk_encryption_key"`
+	Boot              bool                                    `json:"boot"`
+	DiskName          string                                  `json:"disk_name"`
+	DiskType          string                                  `json:"disk_type"`
+	SourceImage       string                                  `json:"source_image"`
+	Interface         string                                  `json:"interface"`
 }
 
-type GoogleComputeInstanceTemplateSpecGuestAccelerator struct {
-	Count int    `json:"count"`
-	Type  string `json:"type"`
+type GoogleComputeInstanceTemplateSpecNetworkInterfaceAccessConfig struct {
+	NetworkTier   string `json:"network_tier"`
+	AssignedNatIp string `json:"assigned_nat_ip"`
+	NatIp         string `json:"nat_ip"`
+}
+
+type GoogleComputeInstanceTemplateSpecNetworkInterfaceAliasIpRange struct {
+	IpCidrRange         string `json:"ip_cidr_range"`
+	SubnetworkRangeName string `json:"subnetwork_range_name"`
+}
+
+type GoogleComputeInstanceTemplateSpecNetworkInterface struct {
+	SubnetworkProject string                                              `json:"subnetwork_project"`
+	AccessConfig      []GoogleComputeInstanceTemplateSpecNetworkInterface `json:"access_config"`
+	AliasIpRange      []GoogleComputeInstanceTemplateSpecNetworkInterface `json:"alias_ip_range"`
+	Network           string                                              `json:"network"`
+	Address           string                                              `json:"address"`
+	NetworkIp         string                                              `json:"network_ip"`
+	Subnetwork        string                                              `json:"subnetwork"`
 }
 
 type GoogleComputeInstanceTemplateSpec struct {
+	Name                  string                              `json:"name"`
+	MachineType           string                              `json:"machine_type"`
+	Description           string                              `json:"description"`
+	ServiceAccount        []GoogleComputeInstanceTemplateSpec `json:"service_account"`
+	Tags                  []string                            `json:"tags"`
+	NamePrefix            string                              `json:"name_prefix"`
+	MetadataFingerprint   string                              `json:"metadata_fingerprint"`
+	Scheduling            []GoogleComputeInstanceTemplateSpec `json:"scheduling"`
+	GuestAccelerator      []GoogleComputeInstanceTemplateSpec `json:"guest_accelerator"`
+	TagsFingerprint       string                              `json:"tags_fingerprint"`
+	Labels                map[string]string                   `json:"labels"`
+	MinCpuPlatform        string                              `json:"min_cpu_platform"`
+	Disk                  []GoogleComputeInstanceTemplateSpec `json:"disk"`
+	AutomaticRestart      bool                                `json:"automatic_restart"`
+	CanIpForward          bool                                `json:"can_ip_forward"`
+	Metadata              map[string]string                   `json:"metadata"`
+	MetadataStartupScript string                              `json:"metadata_startup_script"`
 	NetworkInterface      []GoogleComputeInstanceTemplateSpec `json:"network_interface"`
 	Project               string                              `json:"project"`
-	Region                string                              `json:"region"`
-	Metadata              map[string]string                   `json:"metadata"`
-	MetadataFingerprint   string                              `json:"metadata_fingerprint"`
-	MetadataStartupScript string                              `json:"metadata_startup_script"`
-	OnHostMaintenance     string                              `json:"on_host_maintenance"`
-	Scheduling            []GoogleComputeInstanceTemplateSpec `json:"scheduling"`
-	MinCpuPlatform        string                              `json:"min_cpu_platform"`
-	Tags                  []string                            `json:"tags"`
-	Name                  string                              `json:"name"`
-	NamePrefix            string                              `json:"name_prefix"`
-	AutomaticRestart      bool                                `json:"automatic_restart"`
-	ServiceAccount        []GoogleComputeInstanceTemplateSpec `json:"service_account"`
-	TagsFingerprint       string                              `json:"tags_fingerprint"`
-	Disk                  []GoogleComputeInstanceTemplateSpec `json:"disk"`
-	MachineType           string                              `json:"machine_type"`
 	InstanceDescription   string                              `json:"instance_description"`
+	OnHostMaintenance     string                              `json:"on_host_maintenance"`
+	Region                string                              `json:"region"`
 	SelfLink              string                              `json:"self_link"`
-	GuestAccelerator      []GoogleComputeInstanceTemplateSpec `json:"guest_accelerator"`
-	Labels                map[string]string                   `json:"labels"`
-	CanIpForward          bool                                `json:"can_ip_forward"`
-	Description           string                              `json:"description"`
 }
 
+
+
 type GoogleComputeInstanceTemplateStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

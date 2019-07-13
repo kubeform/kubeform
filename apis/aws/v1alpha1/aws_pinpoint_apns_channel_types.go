@@ -20,17 +20,23 @@ type AwsPinpointApnsChannel struct {
 
 type AwsPinpointApnsChannelSpec struct {
 	DefaultAuthenticationMethod string `json:"default_authentication_method"`
+	Enabled                     bool   `json:"enabled"`
+	TokenKey                    string `json:"token_key"`
 	TokenKeyId                  string `json:"token_key_id"`
 	ApplicationId               string `json:"application_id"`
 	BundleId                    string `json:"bundle_id"`
+	Certificate                 string `json:"certificate"`
 	PrivateKey                  string `json:"private_key"`
 	TeamId                      string `json:"team_id"`
-	TokenKey                    string `json:"token_key"`
-	Certificate                 string `json:"certificate"`
-	Enabled                     bool   `json:"enabled"`
 }
 
+
+
 type AwsPinpointApnsChannelStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

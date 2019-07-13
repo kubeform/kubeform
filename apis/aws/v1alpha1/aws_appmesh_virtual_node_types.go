@@ -27,13 +27,13 @@ type AwsAppmeshVirtualNodeSpecSpecBackend struct {
 }
 
 type AwsAppmeshVirtualNodeSpecSpecListenerHealthCheck struct {
+	Port               int    `json:"port"`
+	Protocol           string `json:"protocol"`
+	TimeoutMillis      int    `json:"timeout_millis"`
 	UnhealthyThreshold int    `json:"unhealthy_threshold"`
 	HealthyThreshold   int    `json:"healthy_threshold"`
 	IntervalMillis     int    `json:"interval_millis"`
 	Path               string `json:"path"`
-	Port               int    `json:"port"`
-	Protocol           string `json:"protocol"`
-	TimeoutMillis      int    `json:"timeout_millis"`
 }
 
 type AwsAppmeshVirtualNodeSpecSpecListenerPortMapping struct {
@@ -59,9 +59,9 @@ type AwsAppmeshVirtualNodeSpecSpecLogging struct {
 }
 
 type AwsAppmeshVirtualNodeSpecSpecServiceDiscoveryAwsCloudMap struct {
+	Attributes    map[string]string `json:"attributes"`
 	NamespaceName string            `json:"namespace_name"`
 	ServiceName   string            `json:"service_name"`
-	Attributes    map[string]string `json:"attributes"`
 }
 
 type AwsAppmeshVirtualNodeSpecSpecServiceDiscoveryDns struct {
@@ -83,16 +83,22 @@ type AwsAppmeshVirtualNodeSpecSpec struct {
 }
 
 type AwsAppmeshVirtualNodeSpec struct {
-	CreatedDate     string                      `json:"created_date"`
 	LastUpdatedDate string                      `json:"last_updated_date"`
 	Tags            map[string]string           `json:"tags"`
 	Name            string                      `json:"name"`
 	MeshName        string                      `json:"mesh_name"`
 	Spec            []AwsAppmeshVirtualNodeSpec `json:"spec"`
 	Arn             string                      `json:"arn"`
+	CreatedDate     string                      `json:"created_date"`
 }
 
+
+
 type AwsAppmeshVirtualNodeStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

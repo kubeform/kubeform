@@ -19,36 +19,42 @@ type GoogleBigqueryDataset struct {
 }
 
 type GoogleBigqueryDatasetSpecAccessView struct {
+	TableId   string `json:"table_id"`
 	ProjectId string `json:"project_id"`
 	DatasetId string `json:"dataset_id"`
-	TableId   string `json:"table_id"`
 }
 
 type GoogleBigqueryDatasetSpecAccess struct {
-	UserByEmail  string                            `json:"user_by_email"`
-	View         []GoogleBigqueryDatasetSpecAccess `json:"view"`
 	Role         string                            `json:"role"`
 	Domain       string                            `json:"domain"`
 	GroupByEmail string                            `json:"group_by_email"`
 	SpecialGroup string                            `json:"special_group"`
+	UserByEmail  string                            `json:"user_by_email"`
+	View         []GoogleBigqueryDatasetSpecAccess `json:"view"`
 }
 
 type GoogleBigqueryDatasetSpec struct {
-	Project                  string                      `json:"project"`
-	FriendlyName             string                      `json:"friendly_name"`
-	Description              string                      `json:"description"`
-	DefaultTableExpirationMs int                         `json:"default_table_expiration_ms"`
 	Access                   []GoogleBigqueryDatasetSpec `json:"access"`
 	SelfLink                 string                      `json:"self_link"`
-	Etag                     string                      `json:"etag"`
 	DatasetId                string                      `json:"dataset_id"`
-	LastModifiedTime         int                         `json:"last_modified_time"`
-	Labels                   map[string]string           `json:"labels"`
-	CreationTime             int                         `json:"creation_time"`
+	Project                  string                      `json:"project"`
+	FriendlyName             string                      `json:"friendly_name"`
 	Location                 string                      `json:"location"`
+	DefaultTableExpirationMs int                         `json:"default_table_expiration_ms"`
+	Labels                   map[string]string           `json:"labels"`
+	Etag                     string                      `json:"etag"`
+	CreationTime             int                         `json:"creation_time"`
+	LastModifiedTime         int                         `json:"last_modified_time"`
+	Description              string                      `json:"description"`
 }
 
+
+
 type GoogleBigqueryDatasetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

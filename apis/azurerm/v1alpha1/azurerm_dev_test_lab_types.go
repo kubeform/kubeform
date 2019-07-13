@@ -19,20 +19,26 @@ type AzurermDevTestLab struct {
 }
 
 type AzurermDevTestLabSpec struct {
+	Tags                            map[string]string `json:"tags"`
 	ArtifactsStorageAccountId       string            `json:"artifacts_storage_account_id"`
-	DefaultStorageAccountId         string            `json:"default_storage_account_id"`
 	KeyVaultId                      string            `json:"key_vault_id"`
 	PremiumDataDiskStorageAccountId string            `json:"premium_data_disk_storage_account_id"`
 	Name                            string            `json:"name"`
 	ResourceGroupName               string            `json:"resource_group_name"`
-	StorageType                     string            `json:"storage_type"`
-	Tags                            map[string]string `json:"tags"`
-	Location                        string            `json:"location"`
+	DefaultStorageAccountId         string            `json:"default_storage_account_id"`
 	DefaultPremiumStorageAccountId  string            `json:"default_premium_storage_account_id"`
 	UniqueIdentifier                string            `json:"unique_identifier"`
+	Location                        string            `json:"location"`
+	StorageType                     string            `json:"storage_type"`
 }
 
+
+
 type AzurermDevTestLabStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

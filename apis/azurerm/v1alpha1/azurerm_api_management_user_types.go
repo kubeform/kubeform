@@ -20,18 +20,24 @@ type AzurermApiManagementUser struct {
 
 type AzurermApiManagementUserSpec struct {
 	UserId            string `json:"user_id"`
+	Email             string `json:"email"`
+	LastName          string `json:"last_name"`
 	Confirmation      string `json:"confirmation"`
-	Note              string `json:"note"`
-	State             string `json:"state"`
+	Password          string `json:"password"`
 	ApiManagementName string `json:"api_management_name"`
 	ResourceGroupName string `json:"resource_group_name"`
 	FirstName         string `json:"first_name"`
-	Email             string `json:"email"`
-	LastName          string `json:"last_name"`
-	Password          string `json:"password"`
+	Note              string `json:"note"`
+	State             string `json:"state"`
 }
 
+
+
 type AzurermApiManagementUserStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -14597,28 +14597,10 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeDomainRecordSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"protocol": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"service": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"weight": {
+					"domain_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
-						},
-					},
-					"target": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
 						},
 					},
 					"name": {
@@ -14639,16 +14621,16 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeDomainRecordSpec(ref common.Refe
 							Format: "int32",
 						},
 					},
+					"target": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"priority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
-						},
-					},
-					"tag": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
 						},
 					},
 					"port": {
@@ -14657,14 +14639,32 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeDomainRecordSpec(ref common.Refe
 							Format: "int32",
 						},
 					},
-					"domain_id": {
+					"protocol": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"service": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tag": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"weight": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
 				},
-				Required: []string{"protocol", "service", "weight", "target", "name", "record_type", "ttl_sec", "priority", "tag", "port", "domain_id"},
+				Required: []string{"domain_id", "name", "record_type", "ttl_sec", "target", "priority", "port", "protocol", "service", "tag", "weight"},
 			},
 		},
 	}
@@ -14676,6 +14676,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeDomainRecordStatus(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
@@ -14695,37 +14702,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeDomainSpec(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"soa_email": {
+					"status": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"group": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"retry_sec": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"expire_sec": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"axfr_ips": {
+					"master_ips": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -14738,16 +14721,16 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeDomainSpec(ref common.ReferenceC
 							},
 						},
 					},
-					"ttl_sec": {
+					"retry_sec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
-					"refresh_sec": {
+					"soa_email": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 					"tags": {
@@ -14769,19 +14752,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeDomainSpec(ref common.ReferenceC
 							Format: "",
 						},
 					},
-					"status": {
+					"type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"master_ips": {
+					"axfr_ips": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
 							Items: &spec.SchemaOrArray{
@@ -14794,8 +14771,38 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeDomainSpec(ref common.ReferenceC
 							},
 						},
 					},
+					"ttl_sec": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"expire_sec": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"refresh_sec": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"group": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"soa_email", "type", "group", "retry_sec", "expire_sec", "axfr_ips", "ttl_sec", "refresh_sec", "tags", "domain", "status", "description", "master_ips"},
+				Required: []string{"status", "master_ips", "retry_sec", "soa_email", "tags", "domain", "type", "axfr_ips", "ttl_sec", "expire_sec", "refresh_sec", "group", "description"},
 			},
 		},
 	}
@@ -14807,6 +14814,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeDomainStatus(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
@@ -14916,6 +14930,12 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeImageSpec(ref common.ReferenceCa
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"deprecated": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 					"is_public": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -14928,25 +14948,25 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeImageSpec(ref common.ReferenceCa
 							Format: "",
 						},
 					},
+					"expiry": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"vendor": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"created": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"disk_id": {
+					"linode_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
-					"linode_id": {
+					"disk_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
@@ -14958,15 +14978,15 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeImageSpec(ref common.ReferenceCa
 							Format: "",
 						},
 					},
-					"created_by": {
+					"created": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"deprecated": {
+					"created_by": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -14976,12 +14996,6 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeImageSpec(ref common.ReferenceCa
 							Format: "int32",
 						},
 					},
-					"expiry": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -14989,7 +15003,7 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeImageSpec(ref common.ReferenceCa
 						},
 					},
 				},
-				Required: []string{"is_public", "type", "vendor", "created", "disk_id", "linode_id", "description", "created_by", "deprecated", "size", "expiry", "label"},
+				Required: []string{"deprecated", "is_public", "type", "expiry", "vendor", "linode_id", "disk_id", "description", "created", "created_by", "size", "label"},
 			},
 		},
 	}
@@ -15001,6 +15015,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeImageStatus(ref common.Reference
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
@@ -15110,192 +15131,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpec(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"stackscript_data": {
+					"backup_id": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"type": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ipv4": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"specs": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpec"),
-									},
-								},
-							},
-						},
-					},
-					"backups": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpec"),
-									},
-								},
-							},
-						},
-					},
-					"stackscript_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"boot_config_label": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"authorized_keys": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"watchdog_enabled": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"disk": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpec"),
-									},
-								},
-							},
-						},
-					},
-					"private_ip": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"swap_size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"region": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"private_ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"image": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"root_pass": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"config": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpec"),
-									},
-								},
-							},
-						},
-					},
-					"label": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"group": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ip_address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ipv6": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -15314,15 +15156,40 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpec(ref common.Referenc
 							},
 						},
 					},
-					"backup_id": {
+					"swap_size": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
 						},
 					},
-					"backups_enabled": {
+					"stackscript_id": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"authorized_keys": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"group": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"private_ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -15338,8 +15205,162 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpec(ref common.Referenc
 							},
 						},
 					},
+					"config": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpec"),
+									},
+								},
+							},
+						},
+					},
+					"disk": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpec"),
+									},
+								},
+							},
+						},
+					},
+					"ip_address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"backups": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpec"),
+									},
+								},
+							},
+						},
+					},
+					"region": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"root_pass": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"backups_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"label": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"stackscript_data": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"boot_config_label": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"watchdog_enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"specs": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpec"),
+									},
+								},
+							},
+						},
+					},
+					"image": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ipv6": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ipv4": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"private_ip": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"stackscript_data", "type", "ipv4", "specs", "backups", "stackscript_id", "boot_config_label", "authorized_keys", "watchdog_enabled", "disk", "private_ip", "swap_size", "tags", "region", "private_ip_address", "image", "root_pass", "config", "label", "group", "ip_address", "status", "ipv6", "authorized_users", "backup_id", "backups_enabled", "alerts"},
+				Required: []string{"backup_id", "type", "authorized_users", "swap_size", "stackscript_id", "authorized_keys", "group", "private_ip_address", "alerts", "config", "disk", "ip_address", "backups", "region", "root_pass", "backups_enabled", "label", "stackscript_data", "tags", "boot_config_label", "watchdog_enabled", "specs", "image", "status", "ipv6", "ipv4", "private_ip"},
 			},
 		},
 		Dependencies: []string{
@@ -15353,18 +15374,6 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecAlerts(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"io": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"cpu": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"network_in": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -15383,8 +15392,20 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecAlerts(ref common.Re
 							Format: "int32",
 						},
 					},
+					"io": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"cpu": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"io", "cpu", "network_in", "network_out", "transfer_quota"},
+				Required: []string{"network_in", "network_out", "transfer_quota", "io", "cpu"},
 			},
 		},
 	}
@@ -15454,34 +15475,16 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfig(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"devices": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpecConfig"),
-									},
-								},
-							},
-						},
-					},
-					"kernel": {
+					"comments": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"virt_mode": {
+					"memory_limit": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"root_device": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type:   []string{"integer"},
+							Format: "int32",
 						},
 					},
 					"label": {
@@ -15508,20 +15511,38 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfig(ref common.Re
 							Format: "",
 						},
 					},
-					"comments": {
+					"virt_mode": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"memory_limit": {
+					"root_device": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"devices": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpecConfig"),
+									},
+								},
+							},
+						},
+					},
+					"kernel": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
-				Required: []string{"devices", "kernel", "virt_mode", "root_device", "label", "helpers", "run_level", "comments", "memory_limit"},
+				Required: []string{"comments", "memory_limit", "label", "helpers", "run_level", "virt_mode", "root_device", "devices", "kernel"},
 			},
 		},
 		Dependencies: []string{
@@ -15535,6 +15556,42 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevices(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"sdg": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpecConfigDevices"),
+									},
+								},
+							},
+						},
+					},
+					"sdh": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpecConfigDevices"),
+									},
+								},
+							},
+						},
+					},
+					"sda": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpecConfigDevices"),
+									},
+								},
+							},
+						},
+					},
 					"sdb": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -15595,44 +15652,8 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevices(ref co
 							},
 						},
 					},
-					"sdg": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpecConfigDevices"),
-									},
-								},
-							},
-						},
-					},
-					"sdh": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpecConfigDevices"),
-									},
-								},
-							},
-						},
-					},
-					"sda": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.LinodeInstanceSpecConfigDevices"),
-									},
-								},
-							},
-						},
-					},
 				},
-				Required: []string{"sdb", "sdc", "sdd", "sde", "sdf", "sdg", "sdh", "sda"},
+				Required: []string{"sdg", "sdh", "sda", "sdb", "sdc", "sdd", "sde", "sdf"},
 			},
 		},
 		Dependencies: []string{
@@ -15646,12 +15667,6 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSda(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"volume_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"disk_label": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -15664,8 +15679,14 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSda(ref
 							Format: "int32",
 						},
 					},
+					"volume_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"volume_id", "disk_label", "disk_id"},
+				Required: []string{"disk_label", "disk_id", "volume_id"},
 			},
 		},
 	}
@@ -15677,12 +15698,6 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSdb(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"disk_label": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"disk_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -15695,8 +15710,14 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSdb(ref
 							Format: "int32",
 						},
 					},
+					"disk_label": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"disk_label", "disk_id", "volume_id"},
+				Required: []string{"disk_id", "volume_id", "disk_label"},
 			},
 		},
 	}
@@ -15708,12 +15729,6 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSdc(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"disk_label": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"disk_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -15726,8 +15741,14 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSdc(ref
 							Format: "int32",
 						},
 					},
+					"disk_label": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"disk_label", "disk_id", "volume_id"},
+				Required: []string{"disk_id", "volume_id", "disk_label"},
 			},
 		},
 	}
@@ -15739,6 +15760,37 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSdd(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"disk_label": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"disk_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"volume_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+				},
+				Required: []string{"disk_label", "disk_id", "volume_id"},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSde(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
 					"disk_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -15764,7 +15816,7 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSdd(ref
 	}
 }
 
-func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSde(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSdf(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -15795,43 +15847,18 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSde(ref
 	}
 }
 
-func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSdf(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"disk_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"volume_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"disk_label": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-				Required: []string{"disk_id", "volume_id", "disk_label"},
-			},
-		},
-	}
-}
-
 func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSdg(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"disk_label": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"disk_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -15844,14 +15871,8 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecConfigDevicesSdg(ref
 							Format: "int32",
 						},
 					},
-					"disk_label": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"disk_id", "volume_id", "disk_label"},
+				Required: []string{"disk_label", "disk_id", "volume_id"},
 			},
 		},
 	}
@@ -15937,22 +15958,17 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecDisk(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"size": {
+					"authorized_users": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"filesystem": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"image": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"stackscript_data": {
@@ -15975,9 +15991,15 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecDisk(ref common.Refe
 							Format: "",
 						},
 					},
-					"read_only": {
+					"size": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"image": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
 							Format: "",
 						},
 					},
@@ -15994,25 +16016,6 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecDisk(ref common.Refe
 							},
 						},
 					},
-					"authorized_users": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
-						},
-					},
-					"stackscript_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"root_pass": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -16025,8 +16028,26 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecDisk(ref common.Refe
 							Format: "int32",
 						},
 					},
+					"filesystem": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"read_only": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"stackscript_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"size", "filesystem", "image", "stackscript_data", "label", "read_only", "authorized_keys", "authorized_users", "stackscript_id", "root_pass", "id"},
+				Required: []string{"authorized_users", "stackscript_data", "label", "size", "image", "authorized_keys", "root_pass", "id", "filesystem", "read_only", "stackscript_id"},
 			},
 		},
 	}
@@ -16038,12 +16059,6 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecSpecs(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"disk": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"memory": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -16062,8 +16077,14 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceSpecSpecs(ref common.Ref
 							Format: "int32",
 						},
 					},
+					"disk": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
 				},
-				Required: []string{"disk", "memory", "vcpus", "transfer"},
+				Required: []string{"memory", "vcpus", "transfer", "disk"},
 			},
 		},
 	}
@@ -16075,6 +16096,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeInstanceStatus(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
@@ -16227,90 +16255,6 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeNodebalancerConfigSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"check_path": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ssl_fingerprint": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"nodebalancer_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"check": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"check_body": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ssl_commonname": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"ssl_key": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"protocol": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"check_interval": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"check_timeout": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"check_attempts": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"algorithm": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"check_passive": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-					"port": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
 					"stickiness": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -16323,7 +16267,37 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeNodebalancerConfigSpec(ref commo
 							Format: "",
 						},
 					},
-					"ssl_cert": {
+					"check_interval": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"check": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"algorithm": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"check_body": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"check_passive": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"ssl_key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -16343,8 +16317,62 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeNodebalancerConfigSpec(ref commo
 							},
 						},
 					},
+					"ssl_commonname": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ssl_fingerprint": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"nodebalancer_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"protocol": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"port": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"check_timeout": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"check_attempts": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"check_path": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ssl_cert": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"check_path", "ssl_fingerprint", "nodebalancer_id", "check", "check_body", "ssl_commonname", "ssl_key", "protocol", "check_interval", "check_timeout", "check_attempts", "algorithm", "check_passive", "port", "stickiness", "cipher_suite", "ssl_cert", "node_status"},
+				Required: []string{"stickiness", "cipher_suite", "check_interval", "check", "algorithm", "check_body", "check_passive", "ssl_key", "node_status", "ssl_commonname", "ssl_fingerprint", "nodebalancer_id", "protocol", "port", "check_timeout", "check_attempts", "check_path", "ssl_cert"},
 			},
 		},
 	}
@@ -16381,6 +16409,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeNodebalancerConfigStatus(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
@@ -16537,6 +16572,18 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeNodebalancerNodeSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"address": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"nodebalancer_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -16567,20 +16614,8 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeNodebalancerNodeSpec(ref common.
 							Format: "",
 						},
 					},
-					"address": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"nodebalancer_id", "config_id", "label", "weight", "mode", "address", "status"},
+				Required: []string{"address", "status", "nodebalancer_id", "config_id", "label", "weight", "mode"},
 			},
 		},
 	}
@@ -16592,6 +16627,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeNodebalancerNodeStatus(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
@@ -16629,16 +16671,11 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeNodebalancerSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"updated": {
+					"transfer": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Type:   []string{"string"},
@@ -16672,11 +16709,16 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeNodebalancerSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"transfer": {
+					"updated": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tags": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Type:   []string{"string"},
@@ -16687,7 +16729,7 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeNodebalancerSpec(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"label", "client_conn_throttle", "ipv6", "updated", "tags", "region", "hostname", "ipv4", "created", "transfer"},
+				Required: []string{"label", "client_conn_throttle", "ipv6", "transfer", "region", "hostname", "ipv4", "created", "updated", "tags"},
 			},
 		},
 	}
@@ -16730,6 +16772,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeNodebalancerStatus(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
@@ -16864,6 +16913,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeRdnsStatus(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
@@ -17004,6 +17060,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeSshkeyStatus(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
@@ -17113,7 +17176,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeStackscriptSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"description": {
+					"is_public": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"user_gravatar_id": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -17131,7 +17200,7 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeStackscriptSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"created": {
+					"updated": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
@@ -17149,24 +17218,6 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeStackscriptSpec(ref common.Refer
 							},
 						},
 					},
-					"user_gravatar_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"updated": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"label": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"script": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -17176,12 +17227,6 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeStackscriptSpec(ref common.Refer
 					"rev_note": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"is_public": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"boolean"},
 							Format: "",
 						},
 					},
@@ -17204,8 +17249,26 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeStackscriptSpec(ref common.Refer
 							Format: "int32",
 						},
 					},
+					"created": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"label": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"description", "deployments_total", "username", "created", "user_defined_fields", "user_gravatar_id", "updated", "label", "script", "rev_note", "is_public", "images", "deployments_active"},
+				Required: []string{"is_public", "user_gravatar_id", "deployments_total", "username", "updated", "user_defined_fields", "script", "rev_note", "images", "deployments_active", "created", "label", "description"},
 			},
 		},
 		Dependencies: []string{
@@ -17219,12 +17282,6 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeStackscriptSpecUserDefinedFields
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"many_of": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"default": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -17255,8 +17312,14 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeStackscriptSpecUserDefinedFields
 							Format: "",
 						},
 					},
+					"many_of": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"many_of", "default", "label", "name", "example", "one_of"},
+				Required: []string{"default", "label", "name", "example", "one_of", "many_of"},
 			},
 		},
 	}
@@ -17268,6 +17331,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeStackscriptStatus(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
@@ -17377,12 +17447,6 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeTokenSpec(ref common.ReferenceCa
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"label": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 					"scopes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -17407,8 +17471,14 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeTokenSpec(ref common.ReferenceCa
 							Format: "",
 						},
 					},
+					"label": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
-				Required: []string{"label", "scopes", "expiry", "created", "token"},
+				Required: []string{"scopes", "expiry", "created", "token", "label"},
 			},
 		},
 	}
@@ -17420,6 +17490,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeTokenStatus(ref common.Reference
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
@@ -17529,6 +17606,30 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeVolumeSpec(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"region": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"size": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"linode_id": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"filesystem_path": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"tags": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -17554,32 +17655,8 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeVolumeSpec(ref common.ReferenceC
 							Format: "",
 						},
 					},
-					"region": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"size": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"linode_id": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"integer"},
-							Format: "int32",
-						},
-					},
-					"filesystem_path": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
 				},
-				Required: []string{"tags", "label", "status", "region", "size", "linode_id", "filesystem_path"},
+				Required: []string{"region", "size", "linode_id", "filesystem_path", "tags", "label", "status"},
 			},
 		},
 	}
@@ -17591,6 +17668,13 @@ func schema_kubeform_apis_linode_v1alpha1_LinodeVolumeStatus(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),

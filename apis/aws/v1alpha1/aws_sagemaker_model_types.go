@@ -19,15 +19,15 @@ type AwsSagemakerModel struct {
 }
 
 type AwsSagemakerModelSpecPrimaryContainer struct {
-	ContainerHostname string            `json:"container_hostname"`
 	Image             string            `json:"image"`
 	ModelDataUrl      string            `json:"model_data_url"`
 	Environment       map[string]string `json:"environment"`
+	ContainerHostname string            `json:"container_hostname"`
 }
 
 type AwsSagemakerModelSpecVpcConfig struct {
-	SecurityGroupIds []string `json:"security_group_ids"`
 	Subnets          []string `json:"subnets"`
+	SecurityGroupIds []string `json:"security_group_ids"`
 }
 
 type AwsSagemakerModelSpecContainer struct {
@@ -38,7 +38,6 @@ type AwsSagemakerModelSpecContainer struct {
 }
 
 type AwsSagemakerModelSpec struct {
-	Name                   string                  `json:"name"`
 	PrimaryContainer       []AwsSagemakerModelSpec `json:"primary_container"`
 	VpcConfig              []AwsSagemakerModelSpec `json:"vpc_config"`
 	ExecutionRoleArn       string                  `json:"execution_role_arn"`
@@ -46,9 +45,16 @@ type AwsSagemakerModelSpec struct {
 	Container              []AwsSagemakerModelSpec `json:"container"`
 	Tags                   map[string]string       `json:"tags"`
 	Arn                    string                  `json:"arn"`
+	Name                   string                  `json:"name"`
 }
 
+
+
 type AwsSagemakerModelStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

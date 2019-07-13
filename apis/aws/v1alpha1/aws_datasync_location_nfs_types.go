@@ -23,15 +23,21 @@ type AwsDatasyncLocationNfsSpecOnPremConfig struct {
 }
 
 type AwsDatasyncLocationNfsSpec struct {
-	Tags           map[string]string            `json:"tags"`
-	Uri            string                       `json:"uri"`
-	Arn            string                       `json:"arn"`
 	OnPremConfig   []AwsDatasyncLocationNfsSpec `json:"on_prem_config"`
 	ServerHostname string                       `json:"server_hostname"`
 	Subdirectory   string                       `json:"subdirectory"`
+	Tags           map[string]string            `json:"tags"`
+	Uri            string                       `json:"uri"`
+	Arn            string                       `json:"arn"`
 }
 
+
+
 type AwsDatasyncLocationNfsStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

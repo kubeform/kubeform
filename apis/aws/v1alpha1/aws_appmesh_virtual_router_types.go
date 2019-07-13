@@ -19,8 +19,8 @@ type AwsAppmeshVirtualRouter struct {
 }
 
 type AwsAppmeshVirtualRouterSpecSpecListenerPortMapping struct {
-	Port     int    `json:"port"`
 	Protocol string `json:"protocol"`
+	Port     int    `json:"port"`
 }
 
 type AwsAppmeshVirtualRouterSpecSpecListener struct {
@@ -33,16 +33,22 @@ type AwsAppmeshVirtualRouterSpecSpec struct {
 }
 
 type AwsAppmeshVirtualRouterSpec struct {
-	Name            string                        `json:"name"`
-	MeshName        string                        `json:"mesh_name"`
 	Spec            []AwsAppmeshVirtualRouterSpec `json:"spec"`
 	Arn             string                        `json:"arn"`
 	CreatedDate     string                        `json:"created_date"`
 	LastUpdatedDate string                        `json:"last_updated_date"`
 	Tags            map[string]string             `json:"tags"`
+	Name            string                        `json:"name"`
+	MeshName        string                        `json:"mesh_name"`
 }
 
+
+
 type AwsAppmeshVirtualRouterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -27,12 +27,18 @@ type AwsCodecommitTriggerSpecTrigger struct {
 }
 
 type AwsCodecommitTriggerSpec struct {
-	Trigger         []AwsCodecommitTriggerSpec `json:"trigger"`
 	RepositoryName  string                     `json:"repository_name"`
 	ConfigurationId string                     `json:"configuration_id"`
+	Trigger         []AwsCodecommitTriggerSpec `json:"trigger"`
 }
 
+
+
 type AwsCodecommitTriggerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

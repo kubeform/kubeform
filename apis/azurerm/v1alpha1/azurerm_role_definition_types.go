@@ -19,22 +19,28 @@ type AzurermRoleDefinition struct {
 }
 
 type AzurermRoleDefinitionSpecPermissions struct {
-	NotDataActions []string `json:"not_data_actions"`
-	Actions        []string `json:"actions"`
 	NotActions     []string `json:"not_actions"`
 	DataActions    []string `json:"data_actions"`
+	NotDataActions []string `json:"not_data_actions"`
+	Actions        []string `json:"actions"`
 }
 
 type AzurermRoleDefinitionSpec struct {
+	AssignableScopes []string                    `json:"assignable_scopes"`
+	RoleDefinitionId string                      `json:"role_definition_id"`
 	Name             string                      `json:"name"`
 	Scope            string                      `json:"scope"`
 	Description      string                      `json:"description"`
 	Permissions      []AzurermRoleDefinitionSpec `json:"permissions"`
-	AssignableScopes []string                    `json:"assignable_scopes"`
-	RoleDefinitionId string                      `json:"role_definition_id"`
 }
 
+
+
 type AzurermRoleDefinitionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

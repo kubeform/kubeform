@@ -19,12 +19,18 @@ type AzurermNetworkInterfaceNatRuleAssociation struct {
 }
 
 type AzurermNetworkInterfaceNatRuleAssociationSpec struct {
+	IpConfigurationName string `json:"ip_configuration_name"`
 	NatRuleId           string `json:"nat_rule_id"`
 	NetworkInterfaceId  string `json:"network_interface_id"`
-	IpConfigurationName string `json:"ip_configuration_name"`
 }
 
+
+
 type AzurermNetworkInterfaceNatRuleAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

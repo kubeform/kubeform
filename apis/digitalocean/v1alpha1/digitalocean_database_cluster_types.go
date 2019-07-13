@@ -24,22 +24,28 @@ type DigitaloceanDatabaseClusterSpecMaintenanceWindow struct {
 }
 
 type DigitaloceanDatabaseClusterSpec struct {
-	NodeCount         int                               `json:"node_count"`
+	Port              int                               `json:"port"`
 	Database          string                            `json:"database"`
-	User              string                            `json:"user"`
 	Password          string                            `json:"password"`
+	Name              string                            `json:"name"`
+	Size              string                            `json:"size"`
+	Region            string                            `json:"region"`
+	Host              string                            `json:"host"`
+	Uri               string                            `json:"uri"`
+	User              string                            `json:"user"`
 	Engine            string                            `json:"engine"`
 	Version           string                            `json:"version"`
-	Size              string                            `json:"size"`
-	Host              string                            `json:"host"`
-	Port              int                               `json:"port"`
-	Uri               string                            `json:"uri"`
-	Name              string                            `json:"name"`
-	Region            string                            `json:"region"`
+	NodeCount         int                               `json:"node_count"`
 	MaintenanceWindow []DigitaloceanDatabaseClusterSpec `json:"maintenance_window"`
 }
 
+
+
 type DigitaloceanDatabaseClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

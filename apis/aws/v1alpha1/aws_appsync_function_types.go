@@ -19,18 +19,24 @@ type AwsAppsyncFunction struct {
 }
 
 type AwsAppsyncFunctionSpec struct {
+	ApiId                   string `json:"api_id"`
+	DataSource              string `json:"data_source"`
+	RequestMappingTemplate  string `json:"request_mapping_template"`
 	Description             string `json:"description"`
 	FunctionVersion         string `json:"function_version"`
+	Name                    string `json:"name"`
+	ResponseMappingTemplate string `json:"response_mapping_template"`
 	Arn                     string `json:"arn"`
 	FunctionId              string `json:"function_id"`
-	DataSource              string `json:"data_source"`
-	Name                    string `json:"name"`
-	RequestMappingTemplate  string `json:"request_mapping_template"`
-	ResponseMappingTemplate string `json:"response_mapping_template"`
-	ApiId                   string `json:"api_id"`
 }
 
+
+
 type AwsAppsyncFunctionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

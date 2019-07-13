@@ -32,8 +32,8 @@ type AwsWafregionalWebAclSpecLoggingConfigurationRedactedFields struct {
 }
 
 type AwsWafregionalWebAclSpecLoggingConfiguration struct {
-	RedactedFields []AwsWafregionalWebAclSpecLoggingConfiguration `json:"redacted_fields"`
 	LogDestination string                                         `json:"log_destination"`
+	RedactedFields []AwsWafregionalWebAclSpecLoggingConfiguration `json:"redacted_fields"`
 }
 
 type AwsWafregionalWebAclSpecRuleAction struct {
@@ -45,11 +45,11 @@ type AwsWafregionalWebAclSpecRuleOverrideAction struct {
 }
 
 type AwsWafregionalWebAclSpecRule struct {
-	RuleId         string                         `json:"rule_id"`
 	Action         []AwsWafregionalWebAclSpecRule `json:"action"`
 	OverrideAction []AwsWafregionalWebAclSpecRule `json:"override_action"`
 	Priority       int                            `json:"priority"`
 	Type           string                         `json:"type"`
+	RuleId         string                         `json:"rule_id"`
 }
 
 type AwsWafregionalWebAclSpec struct {
@@ -61,7 +61,13 @@ type AwsWafregionalWebAclSpec struct {
 	Rule                 []AwsWafregionalWebAclSpec `json:"rule"`
 }
 
+
+
 type AwsWafregionalWebAclStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

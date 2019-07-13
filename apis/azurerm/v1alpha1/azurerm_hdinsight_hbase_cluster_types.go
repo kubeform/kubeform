@@ -23,44 +23,9 @@ type AzurermHdinsightHbaseClusterSpecComponentVersion struct {
 }
 
 type AzurermHdinsightHbaseClusterSpecGateway struct {
-	Enabled  bool   `json:"enabled"`
 	Username string `json:"username"`
 	Password string `json:"password"`
-}
-
-type AzurermHdinsightHbaseClusterSpecRolesHeadNode struct {
-	VmSize           string   `json:"vm_size"`
-	Username         string   `json:"username"`
-	Password         string   `json:"password"`
-	SshKeys          []string `json:"ssh_keys"`
-	SubnetId         string   `json:"subnet_id"`
-	VirtualNetworkId string   `json:"virtual_network_id"`
-}
-
-type AzurermHdinsightHbaseClusterSpecRolesWorkerNode struct {
-	TargetInstanceCount int      `json:"target_instance_count"`
-	VmSize              string   `json:"vm_size"`
-	Username            string   `json:"username"`
-	Password            string   `json:"password"`
-	SshKeys             []string `json:"ssh_keys"`
-	SubnetId            string   `json:"subnet_id"`
-	VirtualNetworkId    string   `json:"virtual_network_id"`
-	MinInstanceCount    int      `json:"min_instance_count"`
-}
-
-type AzurermHdinsightHbaseClusterSpecRolesZookeeperNode struct {
-	VmSize           string   `json:"vm_size"`
-	Username         string   `json:"username"`
-	Password         string   `json:"password"`
-	SshKeys          []string `json:"ssh_keys"`
-	SubnetId         string   `json:"subnet_id"`
-	VirtualNetworkId string   `json:"virtual_network_id"`
-}
-
-type AzurermHdinsightHbaseClusterSpecRoles struct {
-	HeadNode      []AzurermHdinsightHbaseClusterSpecRoles `json:"head_node"`
-	WorkerNode    []AzurermHdinsightHbaseClusterSpecRoles `json:"worker_node"`
-	ZookeeperNode []AzurermHdinsightHbaseClusterSpecRoles `json:"zookeeper_node"`
+	Enabled  bool   `json:"enabled"`
 }
 
 type AzurermHdinsightHbaseClusterSpecStorageAccount struct {
@@ -69,22 +34,63 @@ type AzurermHdinsightHbaseClusterSpecStorageAccount struct {
 	IsDefault          bool   `json:"is_default"`
 }
 
-type AzurermHdinsightHbaseClusterSpec struct {
-	ResourceGroupName string                             `json:"resource_group_name"`
-	Location          string                             `json:"location"`
-	ClusterVersion    string                             `json:"cluster_version"`
-	Tier              string                             `json:"tier"`
-	ComponentVersion  []AzurermHdinsightHbaseClusterSpec `json:"component_version"`
-	Gateway           []AzurermHdinsightHbaseClusterSpec `json:"gateway"`
-	Tags              map[string]string                  `json:"tags"`
-	Name              string                             `json:"name"`
-	SshEndpoint       string                             `json:"ssh_endpoint"`
-	Roles             []AzurermHdinsightHbaseClusterSpec `json:"roles"`
-	HttpsEndpoint     string                             `json:"https_endpoint"`
-	StorageAccount    []AzurermHdinsightHbaseClusterSpec `json:"storage_account"`
+type AzurermHdinsightHbaseClusterSpecRolesHeadNode struct {
+	SubnetId         string   `json:"subnet_id"`
+	VirtualNetworkId string   `json:"virtual_network_id"`
+	VmSize           string   `json:"vm_size"`
+	Username         string   `json:"username"`
+	Password         string   `json:"password"`
+	SshKeys          []string `json:"ssh_keys"`
 }
 
+type AzurermHdinsightHbaseClusterSpecRolesWorkerNode struct {
+	Username            string   `json:"username"`
+	Password            string   `json:"password"`
+	SshKeys             []string `json:"ssh_keys"`
+	SubnetId            string   `json:"subnet_id"`
+	VirtualNetworkId    string   `json:"virtual_network_id"`
+	MinInstanceCount    int      `json:"min_instance_count"`
+	TargetInstanceCount int      `json:"target_instance_count"`
+	VmSize              string   `json:"vm_size"`
+}
+
+type AzurermHdinsightHbaseClusterSpecRolesZookeeperNode struct {
+	SubnetId         string   `json:"subnet_id"`
+	VirtualNetworkId string   `json:"virtual_network_id"`
+	VmSize           string   `json:"vm_size"`
+	Username         string   `json:"username"`
+	Password         string   `json:"password"`
+	SshKeys          []string `json:"ssh_keys"`
+}
+
+type AzurermHdinsightHbaseClusterSpecRoles struct {
+	HeadNode      []AzurermHdinsightHbaseClusterSpecRoles `json:"head_node"`
+	WorkerNode    []AzurermHdinsightHbaseClusterSpecRoles `json:"worker_node"`
+	ZookeeperNode []AzurermHdinsightHbaseClusterSpecRoles `json:"zookeeper_node"`
+}
+
+type AzurermHdinsightHbaseClusterSpec struct {
+	ResourceGroupName string                             `json:"resource_group_name"`
+	ClusterVersion    string                             `json:"cluster_version"`
+	ComponentVersion  []AzurermHdinsightHbaseClusterSpec `json:"component_version"`
+	HttpsEndpoint     string                             `json:"https_endpoint"`
+	SshEndpoint       string                             `json:"ssh_endpoint"`
+	Name              string                             `json:"name"`
+	Location          string                             `json:"location"`
+	Tier              string                             `json:"tier"`
+	Gateway           []AzurermHdinsightHbaseClusterSpec `json:"gateway"`
+	StorageAccount    []AzurermHdinsightHbaseClusterSpec `json:"storage_account"`
+	Roles             []AzurermHdinsightHbaseClusterSpec `json:"roles"`
+	Tags              map[string]string                  `json:"tags"`
+}
+
+
+
 type AzurermHdinsightHbaseClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

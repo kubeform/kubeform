@@ -18,21 +18,24 @@ type AzurermHdinsightMlServicesCluster struct {
 	Status            AzurermHdinsightMlServicesClusterStatus `json:"status,omitempty"`
 }
 
-type AzurermHdinsightMlServicesClusterSpecStorageAccount struct {
-	StorageAccountKey  string `json:"storage_account_key"`
-	StorageContainerId string `json:"storage_container_id"`
-	IsDefault          bool   `json:"is_default"`
+type AzurermHdinsightMlServicesClusterSpecRolesHeadNode struct {
+	SshKeys          []string `json:"ssh_keys"`
+	SubnetId         string   `json:"subnet_id"`
+	VirtualNetworkId string   `json:"virtual_network_id"`
+	VmSize           string   `json:"vm_size"`
+	Username         string   `json:"username"`
+	Password         string   `json:"password"`
 }
 
 type AzurermHdinsightMlServicesClusterSpecRolesWorkerNode struct {
+	MinInstanceCount    int      `json:"min_instance_count"`
+	TargetInstanceCount int      `json:"target_instance_count"`
+	VmSize              string   `json:"vm_size"`
 	Username            string   `json:"username"`
 	Password            string   `json:"password"`
 	SshKeys             []string `json:"ssh_keys"`
 	SubnetId            string   `json:"subnet_id"`
 	VirtualNetworkId    string   `json:"virtual_network_id"`
-	MinInstanceCount    int      `json:"min_instance_count"`
-	TargetInstanceCount int      `json:"target_instance_count"`
-	VmSize              string   `json:"vm_size"`
 }
 
 type AzurermHdinsightMlServicesClusterSpecRolesZookeeperNode struct {
@@ -45,15 +48,6 @@ type AzurermHdinsightMlServicesClusterSpecRolesZookeeperNode struct {
 }
 
 type AzurermHdinsightMlServicesClusterSpecRolesEdgeNode struct {
-	Password         string   `json:"password"`
-	SshKeys          []string `json:"ssh_keys"`
-	SubnetId         string   `json:"subnet_id"`
-	VirtualNetworkId string   `json:"virtual_network_id"`
-	VmSize           string   `json:"vm_size"`
-	Username         string   `json:"username"`
-}
-
-type AzurermHdinsightMlServicesClusterSpecRolesHeadNode struct {
 	VmSize           string   `json:"vm_size"`
 	Username         string   `json:"username"`
 	Password         string   `json:"password"`
@@ -63,35 +57,47 @@ type AzurermHdinsightMlServicesClusterSpecRolesHeadNode struct {
 }
 
 type AzurermHdinsightMlServicesClusterSpecRoles struct {
+	HeadNode      []AzurermHdinsightMlServicesClusterSpecRoles `json:"head_node"`
 	WorkerNode    []AzurermHdinsightMlServicesClusterSpecRoles `json:"worker_node"`
 	ZookeeperNode []AzurermHdinsightMlServicesClusterSpecRoles `json:"zookeeper_node"`
 	EdgeNode      []AzurermHdinsightMlServicesClusterSpecRoles `json:"edge_node"`
-	HeadNode      []AzurermHdinsightMlServicesClusterSpecRoles `json:"head_node"`
+}
+
+type AzurermHdinsightMlServicesClusterSpecStorageAccount struct {
+	IsDefault          bool   `json:"is_default"`
+	StorageAccountKey  string `json:"storage_account_key"`
+	StorageContainerId string `json:"storage_container_id"`
 }
 
 type AzurermHdinsightMlServicesClusterSpecGateway struct {
+	Enabled  bool   `json:"enabled"`
 	Username string `json:"username"`
 	Password string `json:"password"`
-	Enabled  bool   `json:"enabled"`
 }
 
 type AzurermHdinsightMlServicesClusterSpec struct {
-	StorageAccount    []AzurermHdinsightMlServicesClusterSpec `json:"storage_account"`
-	Roles             []AzurermHdinsightMlServicesClusterSpec `json:"roles"`
-	SshEndpoint       string                                  `json:"ssh_endpoint"`
-	Location          string                                  `json:"location"`
-	ClusterVersion    string                                  `json:"cluster_version"`
-	Tier              string                                  `json:"tier"`
-	Rstudio           bool                                    `json:"rstudio"`
-	EdgeSshEndpoint   string                                  `json:"edge_ssh_endpoint"`
 	HttpsEndpoint     string                                  `json:"https_endpoint"`
 	Name              string                                  `json:"name"`
-	ResourceGroupName string                                  `json:"resource_group_name"`
-	Gateway           []AzurermHdinsightMlServicesClusterSpec `json:"gateway"`
+	Location          string                                  `json:"location"`
+	Rstudio           bool                                    `json:"rstudio"`
+	Roles             []AzurermHdinsightMlServicesClusterSpec `json:"roles"`
+	StorageAccount    []AzurermHdinsightMlServicesClusterSpec `json:"storage_account"`
 	Tags              map[string]string                       `json:"tags"`
+	EdgeSshEndpoint   string                                  `json:"edge_ssh_endpoint"`
+	SshEndpoint       string                                  `json:"ssh_endpoint"`
+	ResourceGroupName string                                  `json:"resource_group_name"`
+	ClusterVersion    string                                  `json:"cluster_version"`
+	Tier              string                                  `json:"tier"`
+	Gateway           []AzurermHdinsightMlServicesClusterSpec `json:"gateway"`
 }
 
+
+
 type AzurermHdinsightMlServicesClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

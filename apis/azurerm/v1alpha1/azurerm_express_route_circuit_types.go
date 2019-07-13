@@ -24,20 +24,26 @@ type AzurermExpressRouteCircuitSpecSku struct {
 }
 
 type AzurermExpressRouteCircuitSpec struct {
-	Location                         string                           `json:"location"`
+	Tags                             map[string]string                `json:"tags"`
+	Name                             string                           `json:"name"`
 	ServiceProviderName              string                           `json:"service_provider_name"`
+	Sku                              []AzurermExpressRouteCircuitSpec `json:"sku"`
+	ServiceKey                       string                           `json:"service_key"`
+	AllowClassicOperations           bool                             `json:"allow_classic_operations"`
+	ServiceProviderProvisioningState string                           `json:"service_provider_provisioning_state"`
+	ResourceGroupName                string                           `json:"resource_group_name"`
+	Location                         string                           `json:"location"`
 	PeeringLocation                  string                           `json:"peering_location"`
 	BandwidthInMbps                  int                              `json:"bandwidth_in_mbps"`
-	Sku                              []AzurermExpressRouteCircuitSpec `json:"sku"`
-	ServiceProviderProvisioningState string                           `json:"service_provider_provisioning_state"`
-	Name                             string                           `json:"name"`
-	AllowClassicOperations           bool                             `json:"allow_classic_operations"`
-	ServiceKey                       string                           `json:"service_key"`
-	Tags                             map[string]string                `json:"tags"`
-	ResourceGroupName                string                           `json:"resource_group_name"`
 }
 
+
+
 type AzurermExpressRouteCircuitStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

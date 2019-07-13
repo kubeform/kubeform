@@ -25,18 +25,24 @@ type AzurermStreamAnalyticsStreamInputIothubSpecSerialization struct {
 }
 
 type AzurermStreamAnalyticsStreamInputIothubSpec struct {
-	Name                      string                                        `json:"name"`
-	StreamAnalyticsJobName    string                                        `json:"stream_analytics_job_name"`
-	SharedAccessPolicyKey     string                                        `json:"shared_access_policy_key"`
+	IothubNamespace           string                                        `json:"iothub_namespace"`
 	Serialization             []AzurermStreamAnalyticsStreamInputIothubSpec `json:"serialization"`
-	SharedAccessPolicyName    string                                        `json:"shared_access_policy_name"`
+	StreamAnalyticsJobName    string                                        `json:"stream_analytics_job_name"`
 	ResourceGroupName         string                                        `json:"resource_group_name"`
 	Endpoint                  string                                        `json:"endpoint"`
-	IothubNamespace           string                                        `json:"iothub_namespace"`
 	EventhubConsumerGroupName string                                        `json:"eventhub_consumer_group_name"`
+	SharedAccessPolicyKey     string                                        `json:"shared_access_policy_key"`
+	SharedAccessPolicyName    string                                        `json:"shared_access_policy_name"`
+	Name                      string                                        `json:"name"`
 }
 
+
+
 type AzurermStreamAnalyticsStreamInputIothubStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

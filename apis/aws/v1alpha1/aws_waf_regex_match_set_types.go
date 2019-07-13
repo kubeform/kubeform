@@ -19,8 +19,8 @@ type AwsWafRegexMatchSet struct {
 }
 
 type AwsWafRegexMatchSetSpecRegexMatchTupleFieldToMatch struct {
-	Type string `json:"type"`
 	Data string `json:"data"`
+	Type string `json:"type"`
 }
 
 type AwsWafRegexMatchSetSpecRegexMatchTuple struct {
@@ -30,11 +30,17 @@ type AwsWafRegexMatchSetSpecRegexMatchTuple struct {
 }
 
 type AwsWafRegexMatchSetSpec struct {
-	Name            string                    `json:"name"`
 	RegexMatchTuple []AwsWafRegexMatchSetSpec `json:"regex_match_tuple"`
+	Name            string                    `json:"name"`
 }
 
+
+
 type AwsWafRegexMatchSetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

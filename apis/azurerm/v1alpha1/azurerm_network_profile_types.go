@@ -24,8 +24,8 @@ type AzurermNetworkProfileSpecContainerNetworkInterfaceIpConfiguration struct {
 }
 
 type AzurermNetworkProfileSpecContainerNetworkInterface struct {
-	Name            string                                               `json:"name"`
 	IpConfiguration []AzurermNetworkProfileSpecContainerNetworkInterface `json:"ip_configuration"`
+	Name            string                                               `json:"name"`
 }
 
 type AzurermNetworkProfileSpec struct {
@@ -37,7 +37,13 @@ type AzurermNetworkProfileSpec struct {
 	ContainerNetworkInterfaceIds []string                    `json:"container_network_interface_ids"`
 }
 
+
+
 type AzurermNetworkProfileStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

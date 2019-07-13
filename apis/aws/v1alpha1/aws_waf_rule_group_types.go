@@ -23,19 +23,25 @@ type AwsWafRuleGroupSpecActivatedRuleAction struct {
 }
 
 type AwsWafRuleGroupSpecActivatedRule struct {
-	Priority int                                `json:"priority"`
 	RuleId   string                             `json:"rule_id"`
 	Type     string                             `json:"type"`
 	Action   []AwsWafRuleGroupSpecActivatedRule `json:"action"`
+	Priority int                                `json:"priority"`
 }
 
 type AwsWafRuleGroupSpec struct {
+	ActivatedRule []AwsWafRuleGroupSpec `json:"activated_rule"`
 	Name          string                `json:"name"`
 	MetricName    string                `json:"metric_name"`
-	ActivatedRule []AwsWafRuleGroupSpec `json:"activated_rule"`
 }
 
+
+
 type AwsWafRuleGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

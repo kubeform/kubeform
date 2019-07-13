@@ -19,15 +19,21 @@ type AwsEipAssociation struct {
 }
 
 type AwsEipAssociationSpec struct {
-	AllowReassociation bool   `json:"allow_reassociation"`
-	InstanceId         string `json:"instance_id"`
 	NetworkInterfaceId string `json:"network_interface_id"`
 	PrivateIpAddress   string `json:"private_ip_address"`
 	PublicIp           string `json:"public_ip"`
 	AllocationId       string `json:"allocation_id"`
+	AllowReassociation bool   `json:"allow_reassociation"`
+	InstanceId         string `json:"instance_id"`
 }
 
+
+
 type AwsEipAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

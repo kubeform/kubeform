@@ -18,11 +18,15 @@ type GoogleBinaryAuthorizationPolicy struct {
 	Status            GoogleBinaryAuthorizationPolicyStatus `json:"status,omitempty"`
 }
 
+type GoogleBinaryAuthorizationPolicySpecAdmissionWhitelistPatterns struct {
+	NamePattern string `json:"name_pattern"`
+}
+
 type GoogleBinaryAuthorizationPolicySpecClusterAdmissionRules struct {
-	Cluster               string   `json:"cluster"`
-	EnforcementMode       string   `json:"enforcement_mode"`
 	EvaluationMode        string   `json:"evaluation_mode"`
 	RequireAttestationsBy []string `json:"require_attestations_by"`
+	Cluster               string   `json:"cluster"`
+	EnforcementMode       string   `json:"enforcement_mode"`
 }
 
 type GoogleBinaryAuthorizationPolicySpecDefaultAdmissionRule struct {
@@ -31,19 +35,21 @@ type GoogleBinaryAuthorizationPolicySpecDefaultAdmissionRule struct {
 	RequireAttestationsBy []string `json:"require_attestations_by"`
 }
 
-type GoogleBinaryAuthorizationPolicySpecAdmissionWhitelistPatterns struct {
-	NamePattern string `json:"name_pattern"`
-}
-
 type GoogleBinaryAuthorizationPolicySpec struct {
+	AdmissionWhitelistPatterns []GoogleBinaryAuthorizationPolicySpec `json:"admission_whitelist_patterns"`
 	ClusterAdmissionRules      []GoogleBinaryAuthorizationPolicySpec `json:"cluster_admission_rules"`
 	Description                string                                `json:"description"`
 	Project                    string                                `json:"project"`
 	DefaultAdmissionRule       []GoogleBinaryAuthorizationPolicySpec `json:"default_admission_rule"`
-	AdmissionWhitelistPatterns []GoogleBinaryAuthorizationPolicySpec `json:"admission_whitelist_patterns"`
 }
 
+
+
 type GoogleBinaryAuthorizationPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,20 +19,26 @@ type AwsRedshiftParameterGroup struct {
 }
 
 type AwsRedshiftParameterGroupSpecParameter struct {
-	Name  string `json:"name"`
 	Value string `json:"value"`
+	Name  string `json:"name"`
 }
 
 type AwsRedshiftParameterGroupSpec struct {
+	Arn         string                          `json:"arn"`
+	Name        string                          `json:"name"`
 	Family      string                          `json:"family"`
 	Description string                          `json:"description"`
 	Parameter   []AwsRedshiftParameterGroupSpec `json:"parameter"`
 	Tags        map[string]string               `json:"tags"`
-	Arn         string                          `json:"arn"`
-	Name        string                          `json:"name"`
 }
 
+
+
 type AwsRedshiftParameterGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

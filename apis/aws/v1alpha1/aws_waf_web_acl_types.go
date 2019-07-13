@@ -18,6 +18,10 @@ type AwsWafWebAcl struct {
 	Status            AwsWafWebAclStatus `json:"status,omitempty"`
 }
 
+type AwsWafWebAclSpecDefaultAction struct {
+	Type string `json:"type"`
+}
+
 type AwsWafWebAclSpecLoggingConfigurationRedactedFieldsFieldToMatch struct {
 	Data string `json:"data"`
 	Type string `json:"type"`
@@ -48,20 +52,22 @@ type AwsWafWebAclSpecRules struct {
 	RuleId         string                  `json:"rule_id"`
 }
 
-type AwsWafWebAclSpecDefaultAction struct {
-	Type string `json:"type"`
-}
-
 type AwsWafWebAclSpec struct {
+	DefaultAction        []AwsWafWebAclSpec `json:"default_action"`
 	MetricName           string             `json:"metric_name"`
 	LoggingConfiguration []AwsWafWebAclSpec `json:"logging_configuration"`
 	Rules                []AwsWafWebAclSpec `json:"rules"`
 	Arn                  string             `json:"arn"`
 	Name                 string             `json:"name"`
-	DefaultAction        []AwsWafWebAclSpec `json:"default_action"`
 }
 
+
+
 type AwsWafWebAclStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

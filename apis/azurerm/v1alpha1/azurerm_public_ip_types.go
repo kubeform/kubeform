@@ -19,24 +19,30 @@ type AzurermPublicIp struct {
 }
 
 type AzurermPublicIpSpec struct {
-	IdleTimeoutInMinutes      int               `json:"idle_timeout_in_minutes"`
-	ReverseFqdn               string            `json:"reverse_fqdn"`
-	Name                      string            `json:"name"`
-	Sku                       string            `json:"sku"`
-	Location                  string            `json:"location"`
-	Fqdn                      string            `json:"fqdn"`
-	PublicIpAddressAllocation string            `json:"public_ip_address_allocation"`
 	IpVersion                 string            `json:"ip_version"`
-	DomainNameLabel           string            `json:"domain_name_label"`
-	IpAddress                 string            `json:"ip_address"`
-	PublicIpPrefixId          string            `json:"public_ip_prefix_id"`
+	Sku                       string            `json:"sku"`
 	Zones                     []string          `json:"zones"`
 	Tags                      map[string]string `json:"tags"`
-	ResourceGroupName         string            `json:"resource_group_name"`
+	Name                      string            `json:"name"`
 	AllocationMethod          string            `json:"allocation_method"`
+	PublicIpAddressAllocation string            `json:"public_ip_address_allocation"`
+	Location                  string            `json:"location"`
+	PublicIpPrefixId          string            `json:"public_ip_prefix_id"`
+	IpAddress                 string            `json:"ip_address"`
+	IdleTimeoutInMinutes      int               `json:"idle_timeout_in_minutes"`
+	DomainNameLabel           string            `json:"domain_name_label"`
+	Fqdn                      string            `json:"fqdn"`
+	ResourceGroupName         string            `json:"resource_group_name"`
+	ReverseFqdn               string            `json:"reverse_fqdn"`
 }
 
+
+
 type AzurermPublicIpStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

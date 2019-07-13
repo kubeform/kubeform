@@ -19,23 +19,29 @@ type AwsLambdaLayerVersion struct {
 }
 
 type AwsLambdaLayerVersionSpec struct {
+	LayerName          string   `json:"layer_name"`
+	S3Bucket           string   `json:"s3_bucket"`
 	LicenseInfo        string   `json:"license_info"`
 	LayerArn           string   `json:"layer_arn"`
-	CreatedDate        string   `json:"created_date"`
-	SourceCodeHash     string   `json:"source_code_hash"`
-	Filename           string   `json:"filename"`
-	S3Key              string   `json:"s3_key"`
+	SourceCodeSize     int      `json:"source_code_size"`
+	S3ObjectVersion    string   `json:"s3_object_version"`
 	CompatibleRuntimes []string `json:"compatible_runtimes"`
 	Description        string   `json:"description"`
-	LayerName          string   `json:"layer_name"`
-	S3ObjectVersion    string   `json:"s3_object_version"`
-	Arn                string   `json:"arn"`
-	SourceCodeSize     int      `json:"source_code_size"`
-	S3Bucket           string   `json:"s3_bucket"`
+	CreatedDate        string   `json:"created_date"`
+	S3Key              string   `json:"s3_key"`
+	SourceCodeHash     string   `json:"source_code_hash"`
 	Version            string   `json:"version"`
+	Filename           string   `json:"filename"`
+	Arn                string   `json:"arn"`
 }
 
+
+
 type AwsLambdaLayerVersionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

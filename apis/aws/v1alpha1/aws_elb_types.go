@@ -18,53 +18,59 @@ type AwsElb struct {
 	Status            AwsElbStatus `json:"status,omitempty"`
 }
 
-type AwsElbSpecAccessLogs struct {
-	Interval     int    `json:"interval"`
-	Bucket       string `json:"bucket"`
-	BucketPrefix string `json:"bucket_prefix"`
-	Enabled      bool   `json:"enabled"`
-}
-
-type AwsElbSpecHealthCheck struct {
-	Timeout            int    `json:"timeout"`
-	HealthyThreshold   int    `json:"healthy_threshold"`
-	UnhealthyThreshold int    `json:"unhealthy_threshold"`
-	Target             string `json:"target"`
-	Interval           int    `json:"interval"`
-}
-
 type AwsElbSpecListener struct {
-	InstancePort     int    `json:"instance_port"`
 	InstanceProtocol string `json:"instance_protocol"`
 	LbPort           int    `json:"lb_port"`
 	LbProtocol       string `json:"lb_protocol"`
 	SslCertificateId string `json:"ssl_certificate_id"`
+	InstancePort     int    `json:"instance_port"`
+}
+
+type AwsElbSpecAccessLogs struct {
+	Enabled      bool   `json:"enabled"`
+	Interval     int    `json:"interval"`
+	Bucket       string `json:"bucket"`
+	BucketPrefix string `json:"bucket_prefix"`
+}
+
+type AwsElbSpecHealthCheck struct {
+	HealthyThreshold   int    `json:"healthy_threshold"`
+	UnhealthyThreshold int    `json:"unhealthy_threshold"`
+	Target             string `json:"target"`
+	Interval           int    `json:"interval"`
+	Timeout            int    `json:"timeout"`
 }
 
 type AwsElbSpec struct {
-	NamePrefix                string            `json:"name_prefix"`
-	Internal                  bool              `json:"internal"`
-	Instances                 []string          `json:"instances"`
-	SourceSecurityGroup       string            `json:"source_security_group"`
-	AccessLogs                []AwsElbSpec      `json:"access_logs"`
-	HealthCheck               []AwsElbSpec      `json:"health_check"`
-	Tags                      map[string]string `json:"tags"`
 	Name                      string            `json:"name"`
 	CrossZoneLoadBalancing    bool              `json:"cross_zone_load_balancing"`
-	SecurityGroups            []string          `json:"security_groups"`
-	ZoneId                    string            `json:"zone_id"`
-	AvailabilityZones         []string          `json:"availability_zones"`
-	DnsName                   string            `json:"dns_name"`
-	Arn                       string            `json:"arn"`
+	Listener                  []AwsElbSpec      `json:"listener"`
+	Tags                      map[string]string `json:"tags"`
 	SourceSecurityGroupId     string            `json:"source_security_group_id"`
 	Subnets                   []string          `json:"subnets"`
+	AccessLogs                []AwsElbSpec      `json:"access_logs"`
+	HealthCheck               []AwsElbSpec      `json:"health_check"`
+	NamePrefix                string            `json:"name_prefix"`
+	Arn                       string            `json:"arn"`
+	Internal                  bool              `json:"internal"`
+	Instances                 []string          `json:"instances"`
+	SecurityGroups            []string          `json:"security_groups"`
 	IdleTimeout               int               `json:"idle_timeout"`
-	ConnectionDraining        bool              `json:"connection_draining"`
 	ConnectionDrainingTimeout int               `json:"connection_draining_timeout"`
-	Listener                  []AwsElbSpec      `json:"listener"`
+	AvailabilityZones         []string          `json:"availability_zones"`
+	SourceSecurityGroup       string            `json:"source_security_group"`
+	ConnectionDraining        bool              `json:"connection_draining"`
+	DnsName                   string            `json:"dns_name"`
+	ZoneId                    string            `json:"zone_id"`
 }
 
+
+
 type AwsElbStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

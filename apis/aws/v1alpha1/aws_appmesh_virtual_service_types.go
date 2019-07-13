@@ -36,16 +36,22 @@ type AwsAppmeshVirtualServiceSpecSpec struct {
 }
 
 type AwsAppmeshVirtualServiceSpec struct {
-	LastUpdatedDate string                         `json:"last_updated_date"`
-	Tags            map[string]string              `json:"tags"`
-	Name            string                         `json:"name"`
 	MeshName        string                         `json:"mesh_name"`
 	Spec            []AwsAppmeshVirtualServiceSpec `json:"spec"`
 	Arn             string                         `json:"arn"`
 	CreatedDate     string                         `json:"created_date"`
+	LastUpdatedDate string                         `json:"last_updated_date"`
+	Tags            map[string]string              `json:"tags"`
+	Name            string                         `json:"name"`
 }
 
+
+
 type AwsAppmeshVirtualServiceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,19 +19,25 @@ type AwsIamAccountPasswordPolicy struct {
 }
 
 type AwsIamAccountPasswordPolicySpec struct {
-	MinimumPasswordLength      int  `json:"minimum_password_length"`
-	PasswordReusePrevention    int  `json:"password_reuse_prevention"`
-	RequireLowercaseCharacters bool `json:"require_lowercase_characters"`
 	MaxPasswordAge             int  `json:"max_password_age"`
+	MinimumPasswordLength      int  `json:"minimum_password_length"`
+	AllowUsersToChangePassword bool `json:"allow_users_to_change_password"`
+	HardExpiry                 bool `json:"hard_expiry"`
+	RequireLowercaseCharacters bool `json:"require_lowercase_characters"`
 	RequireNumbers             bool `json:"require_numbers"`
 	RequireSymbols             bool `json:"require_symbols"`
 	RequireUppercaseCharacters bool `json:"require_uppercase_characters"`
-	AllowUsersToChangePassword bool `json:"allow_users_to_change_password"`
 	ExpirePasswords            bool `json:"expire_passwords"`
-	HardExpiry                 bool `json:"hard_expiry"`
+	PasswordReusePrevention    int  `json:"password_reuse_prevention"`
 }
 
+
+
 type AwsIamAccountPasswordPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

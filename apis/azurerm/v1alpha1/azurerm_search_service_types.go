@@ -19,18 +19,24 @@ type AzurermSearchService struct {
 }
 
 type AzurermSearchServiceSpec struct {
-	ReplicaCount      int               `json:"replica_count"`
-	PartitionCount    int               `json:"partition_count"`
-	Location          string            `json:"location"`
 	ResourceGroupName string            `json:"resource_group_name"`
-	PrimaryKey        string            `json:"primary_key"`
+	ReplicaCount      int               `json:"replica_count"`
 	SecondaryKey      string            `json:"secondary_key"`
-	Tags              map[string]string `json:"tags"`
 	Name              string            `json:"name"`
+	Location          string            `json:"location"`
 	Sku               string            `json:"sku"`
+	PartitionCount    int               `json:"partition_count"`
+	PrimaryKey        string            `json:"primary_key"`
+	Tags              map[string]string `json:"tags"`
 }
 
+
+
 type AzurermSearchServiceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

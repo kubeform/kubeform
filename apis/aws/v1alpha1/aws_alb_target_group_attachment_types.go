@@ -19,13 +19,19 @@ type AwsAlbTargetGroupAttachment struct {
 }
 
 type AwsAlbTargetGroupAttachmentSpec struct {
-	TargetGroupArn   string `json:"target_group_arn"`
-	TargetId         string `json:"target_id"`
 	Port             int    `json:"port"`
 	AvailabilityZone string `json:"availability_zone"`
+	TargetGroupArn   string `json:"target_group_arn"`
+	TargetId         string `json:"target_id"`
 }
 
+
+
 type AwsAlbTargetGroupAttachmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

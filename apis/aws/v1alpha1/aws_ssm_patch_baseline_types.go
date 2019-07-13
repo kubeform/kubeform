@@ -18,9 +18,14 @@ type AwsSsmPatchBaseline struct {
 	Status            AwsSsmPatchBaselineStatus `json:"status,omitempty"`
 }
 
-type AwsSsmPatchBaselineSpecApprovalRulePatchFilter struct {
-	Values []string `json:"values"`
+type AwsSsmPatchBaselineSpecGlobalFilter struct {
 	Key    string   `json:"key"`
+	Values []string `json:"values"`
+}
+
+type AwsSsmPatchBaselineSpecApprovalRulePatchFilter struct {
+	Key    string   `json:"key"`
+	Values []string `json:"values"`
 }
 
 type AwsSsmPatchBaselineSpecApprovalRule struct {
@@ -30,24 +35,25 @@ type AwsSsmPatchBaselineSpecApprovalRule struct {
 	PatchFilter       []AwsSsmPatchBaselineSpecApprovalRule `json:"patch_filter"`
 }
 
-type AwsSsmPatchBaselineSpecGlobalFilter struct {
-	Key    string   `json:"key"`
-	Values []string `json:"values"`
-}
-
 type AwsSsmPatchBaselineSpec struct {
-	ApprovalRule                   []AwsSsmPatchBaselineSpec `json:"approval_rule"`
+	GlobalFilter                   []AwsSsmPatchBaselineSpec `json:"global_filter"`
 	RejectedPatches                []string                  `json:"rejected_patches"`
+	Tags                           map[string]string         `json:"tags"`
 	Name                           string                    `json:"name"`
 	Description                    string                    `json:"description"`
-	GlobalFilter                   []AwsSsmPatchBaselineSpec `json:"global_filter"`
+	ApprovalRule                   []AwsSsmPatchBaselineSpec `json:"approval_rule"`
 	ApprovedPatches                []string                  `json:"approved_patches"`
 	OperatingSystem                string                    `json:"operating_system"`
 	ApprovedPatchesComplianceLevel string                    `json:"approved_patches_compliance_level"`
-	Tags                           map[string]string         `json:"tags"`
 }
 
+
+
 type AwsSsmPatchBaselineStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

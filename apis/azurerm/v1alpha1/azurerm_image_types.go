@@ -18,6 +18,14 @@ type AzurermImage struct {
 	Status            AzurermImageStatus `json:"status,omitempty"`
 }
 
+type AzurermImageSpecDataDisk struct {
+	Lun           int    `json:"lun"`
+	ManagedDiskId string `json:"managed_disk_id"`
+	BlobUri       string `json:"blob_uri"`
+	Caching       string `json:"caching"`
+	SizeGb        int    `json:"size_gb"`
+}
+
 type AzurermImageSpecOsDisk struct {
 	BlobUri       string `json:"blob_uri"`
 	Caching       string `json:"caching"`
@@ -27,26 +35,24 @@ type AzurermImageSpecOsDisk struct {
 	ManagedDiskId string `json:"managed_disk_id"`
 }
 
-type AzurermImageSpecDataDisk struct {
-	Lun           int    `json:"lun"`
-	ManagedDiskId string `json:"managed_disk_id"`
-	BlobUri       string `json:"blob_uri"`
-	Caching       string `json:"caching"`
-	SizeGb        int    `json:"size_gb"`
-}
-
 type AzurermImageSpec struct {
+	DataDisk               []AzurermImageSpec `json:"data_disk"`
+	Tags                   map[string]string  `json:"tags"`
 	Name                   string             `json:"name"`
 	Location               string             `json:"location"`
 	ResourceGroupName      string             `json:"resource_group_name"`
 	ZoneResilient          bool               `json:"zone_resilient"`
 	SourceVirtualMachineId string             `json:"source_virtual_machine_id"`
 	OsDisk                 []AzurermImageSpec `json:"os_disk"`
-	DataDisk               []AzurermImageSpec `json:"data_disk"`
-	Tags                   map[string]string  `json:"tags"`
 }
 
+
+
 type AzurermImageStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

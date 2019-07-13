@@ -19,17 +19,23 @@ type AzurermAutomationDscConfiguration struct {
 }
 
 type AzurermAutomationDscConfigurationSpec struct {
+	ContentEmbedded       string `json:"content_embedded"`
+	ResourceGroupName     string `json:"resource_group_name"`
+	Location              string `json:"location"`
 	LogVerbose            bool   `json:"log_verbose"`
 	Description           string `json:"description"`
 	State                 string `json:"state"`
 	Name                  string `json:"name"`
 	AutomationAccountName string `json:"automation_account_name"`
-	ContentEmbedded       string `json:"content_embedded"`
-	ResourceGroupName     string `json:"resource_group_name"`
-	Location              string `json:"location"`
 }
 
+
+
 type AzurermAutomationDscConfigurationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,17 +19,23 @@ type AwsApiGatewayDeployment struct {
 }
 
 type AwsApiGatewayDeploymentSpec struct {
-	RestApiId        string            `json:"rest_api_id"`
-	StageName        string            `json:"stage_name"`
 	Description      string            `json:"description"`
 	StageDescription string            `json:"stage_description"`
 	Variables        map[string]string `json:"variables"`
 	CreatedDate      string            `json:"created_date"`
 	InvokeUrl        string            `json:"invoke_url"`
 	ExecutionArn     string            `json:"execution_arn"`
+	RestApiId        string            `json:"rest_api_id"`
+	StageName        string            `json:"stage_name"`
 }
 
+
+
 type AwsApiGatewayDeploymentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

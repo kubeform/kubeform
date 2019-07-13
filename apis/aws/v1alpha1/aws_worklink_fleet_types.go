@@ -18,32 +18,38 @@ type AwsWorklinkFleet struct {
 	Status            AwsWorklinkFleetStatus `json:"status,omitempty"`
 }
 
+type AwsWorklinkFleetSpecIdentityProvider struct {
+	Type         string `json:"type"`
+	SamlMetadata string `json:"saml_metadata"`
+}
+
 type AwsWorklinkFleetSpecNetwork struct {
 	VpcId            string   `json:"vpc_id"`
 	SecurityGroupIds []string `json:"security_group_ids"`
 	SubnetIds        []string `json:"subnet_ids"`
 }
 
-type AwsWorklinkFleetSpecIdentityProvider struct {
-	Type         string `json:"type"`
-	SamlMetadata string `json:"saml_metadata"`
-}
-
 type AwsWorklinkFleetSpec struct {
-	Arn                        string                 `json:"arn"`
-	Network                    []AwsWorklinkFleetSpec `json:"network"`
+	AuditStreamArn             string                 `json:"audit_stream_arn"`
 	IdentityProvider           []AwsWorklinkFleetSpec `json:"identity_provider"`
 	CompanyCode                string                 `json:"company_code"`
-	OptimizeForEndUserLocation bool                   `json:"optimize_for_end_user_location"`
 	Name                       string                 `json:"name"`
 	DisplayName                string                 `json:"display_name"`
-	AuditStreamArn             string                 `json:"audit_stream_arn"`
 	DeviceCaCertificate        string                 `json:"device_ca_certificate"`
 	CreatedTime                string                 `json:"created_time"`
 	LastUpdatedTime            string                 `json:"last_updated_time"`
+	OptimizeForEndUserLocation bool                   `json:"optimize_for_end_user_location"`
+	Arn                        string                 `json:"arn"`
+	Network                    []AwsWorklinkFleetSpec `json:"network"`
 }
 
+
+
 type AwsWorklinkFleetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

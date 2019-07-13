@@ -19,22 +19,28 @@ type AzurermEventhubNamespace struct {
 }
 
 type AzurermEventhubNamespaceSpec struct {
-	DefaultPrimaryKey                string            `json:"default_primary_key"`
-	DefaultSecondaryKey              string            `json:"default_secondary_key"`
-	Location                         string            `json:"location"`
 	ResourceGroupName                string            `json:"resource_group_name"`
-	DefaultSecondaryConnectionString string            `json:"default_secondary_connection_string"`
+	Sku                              string            `json:"sku"`
 	AutoInflateEnabled               bool              `json:"auto_inflate_enabled"`
-	KafkaEnabled                     bool              `json:"kafka_enabled"`
 	MaximumThroughputUnits           int               `json:"maximum_throughput_units"`
-	DefaultPrimaryConnectionString   string            `json:"default_primary_connection_string"`
+	DefaultSecondaryConnectionString string            `json:"default_secondary_connection_string"`
+	DefaultSecondaryKey              string            `json:"default_secondary_key"`
 	Tags                             map[string]string `json:"tags"`
 	Name                             string            `json:"name"`
-	Sku                              string            `json:"sku"`
+	Location                         string            `json:"location"`
 	Capacity                         int               `json:"capacity"`
+	KafkaEnabled                     bool              `json:"kafka_enabled"`
+	DefaultPrimaryConnectionString   string            `json:"default_primary_connection_string"`
+	DefaultPrimaryKey                string            `json:"default_primary_key"`
 }
 
+
+
 type AzurermEventhubNamespaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

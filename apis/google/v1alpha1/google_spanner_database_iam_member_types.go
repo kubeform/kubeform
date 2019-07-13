@@ -19,15 +19,21 @@ type GoogleSpannerDatabaseIamMember struct {
 }
 
 type GoogleSpannerDatabaseIamMemberSpec struct {
-	Etag     string `json:"etag"`
-	Role     string `json:"role"`
 	Member   string `json:"member"`
+	Etag     string `json:"etag"`
+	Project  string `json:"project"`
 	Instance string `json:"instance"`
 	Database string `json:"database"`
-	Project  string `json:"project"`
+	Role     string `json:"role"`
 }
 
+
+
 type GoogleSpannerDatabaseIamMemberStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

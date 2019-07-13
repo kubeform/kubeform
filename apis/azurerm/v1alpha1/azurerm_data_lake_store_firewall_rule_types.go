@@ -19,14 +19,20 @@ type AzurermDataLakeStoreFirewallRule struct {
 }
 
 type AzurermDataLakeStoreFirewallRuleSpec struct {
-	Name              string `json:"name"`
-	AccountName       string `json:"account_name"`
 	ResourceGroupName string `json:"resource_group_name"`
 	StartIpAddress    string `json:"start_ip_address"`
 	EndIpAddress      string `json:"end_ip_address"`
+	Name              string `json:"name"`
+	AccountName       string `json:"account_name"`
 }
 
+
+
 type AzurermDataLakeStoreFirewallRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,26 +19,32 @@ type AwsCloudhsmV2Cluster struct {
 }
 
 type AwsCloudhsmV2ClusterSpecClusterCertificates struct {
+	ManufacturerHardwareCertificate string `json:"manufacturer_hardware_certificate"`
 	ClusterCertificate              string `json:"cluster_certificate"`
 	ClusterCsr                      string `json:"cluster_csr"`
 	AwsHardwareCertificate          string `json:"aws_hardware_certificate"`
 	HsmCertificate                  string `json:"hsm_certificate"`
-	ManufacturerHardwareCertificate string `json:"manufacturer_hardware_certificate"`
 }
 
 type AwsCloudhsmV2ClusterSpec struct {
-	SourceBackupIdentifier string                     `json:"source_backup_identifier"`
-	SubnetIds              []string                   `json:"subnet_ids"`
-	ClusterId              string                     `json:"cluster_id"`
-	ClusterCertificates    []AwsCloudhsmV2ClusterSpec `json:"cluster_certificates"`
 	SecurityGroupId        string                     `json:"security_group_id"`
 	ClusterState           string                     `json:"cluster_state"`
-	Tags                   map[string]string          `json:"tags"`
-	HsmType                string                     `json:"hsm_type"`
+	SubnetIds              []string                   `json:"subnet_ids"`
 	VpcId                  string                     `json:"vpc_id"`
+	ClusterId              string                     `json:"cluster_id"`
+	ClusterCertificates    []AwsCloudhsmV2ClusterSpec `json:"cluster_certificates"`
+	Tags                   map[string]string          `json:"tags"`
+	SourceBackupIdentifier string                     `json:"source_backup_identifier"`
+	HsmType                string                     `json:"hsm_type"`
 }
 
+
+
 type AwsCloudhsmV2ClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

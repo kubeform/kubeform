@@ -18,16 +18,16 @@ type AzurermMssqlElasticpool struct {
 	Status            AzurermMssqlElasticpoolStatus `json:"status,omitempty"`
 }
 
+type AzurermMssqlElasticpoolSpecPerDatabaseSettings struct {
+	MinCapacity float64 `json:"min_capacity"`
+	MaxCapacity float64 `json:"max_capacity"`
+}
+
 type AzurermMssqlElasticpoolSpecSku struct {
+	Name     string `json:"name"`
 	Capacity int    `json:"capacity"`
 	Tier     string `json:"tier"`
 	Family   string `json:"family"`
-	Name     string `json:"name"`
-}
-
-type AzurermMssqlElasticpoolSpecPerDatabaseSettings struct {
-	MaxCapacity float64 `json:"max_capacity"`
-	MinCapacity float64 `json:"min_capacity"`
 }
 
 type AzurermMssqlElasticpoolSpecElasticPoolProperties struct {
@@ -39,20 +39,26 @@ type AzurermMssqlElasticpoolSpecElasticPoolProperties struct {
 }
 
 type AzurermMssqlElasticpoolSpec struct {
-	Sku                   []AzurermMssqlElasticpoolSpec `json:"sku"`
-	PerDatabaseSettings   []AzurermMssqlElasticpoolSpec `json:"per_database_settings"`
-	ElasticPoolProperties []AzurermMssqlElasticpoolSpec `json:"elastic_pool_properties"`
-	MaxSizeGb             float64                       `json:"max_size_gb"`
-	Name                  string                        `json:"name"`
-	ServerName            string                        `json:"server_name"`
-	MaxSizeBytes          int                           `json:"max_size_bytes"`
-	ZoneRedundant         bool                          `json:"zone_redundant"`
 	Tags                  map[string]string             `json:"tags"`
-	Location              string                        `json:"location"`
 	ResourceGroupName     string                        `json:"resource_group_name"`
+	ServerName            string                        `json:"server_name"`
+	PerDatabaseSettings   []AzurermMssqlElasticpoolSpec `json:"per_database_settings"`
+	MaxSizeGb             float64                       `json:"max_size_gb"`
+	ZoneRedundant         bool                          `json:"zone_redundant"`
+	Name                  string                        `json:"name"`
+	Location              string                        `json:"location"`
+	Sku                   []AzurermMssqlElasticpoolSpec `json:"sku"`
+	ElasticPoolProperties []AzurermMssqlElasticpoolSpec `json:"elastic_pool_properties"`
+	MaxSizeBytes          int                           `json:"max_size_bytes"`
 }
 
+
+
 type AzurermMssqlElasticpoolStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

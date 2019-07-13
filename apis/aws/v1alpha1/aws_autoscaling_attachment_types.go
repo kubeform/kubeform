@@ -24,7 +24,13 @@ type AwsAutoscalingAttachmentSpec struct {
 	AlbTargetGroupArn    string `json:"alb_target_group_arn"`
 }
 
+
+
 type AwsAutoscalingAttachmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

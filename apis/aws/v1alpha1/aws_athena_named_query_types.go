@@ -19,13 +19,19 @@ type AwsAthenaNamedQuery struct {
 }
 
 type AwsAthenaNamedQuerySpec struct {
-	Database    string `json:"database"`
-	Description string `json:"description"`
 	Name        string `json:"name"`
 	Query       string `json:"query"`
+	Database    string `json:"database"`
+	Description string `json:"description"`
 }
 
+
+
 type AwsAthenaNamedQueryStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

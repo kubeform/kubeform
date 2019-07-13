@@ -24,21 +24,27 @@ type GoogleComputeRegionBackendServiceSpecBackend struct {
 }
 
 type GoogleComputeRegionBackendServiceSpec struct {
-	Backend                      []GoogleComputeRegionBackendServiceSpec `json:"backend"`
-	Project                      string                                  `json:"project"`
-	Protocol                     string                                  `json:"protocol"`
-	Fingerprint                  string                                  `json:"fingerprint"`
-	SessionAffinity              string                                  `json:"session_affinity"`
-	Region                       string                                  `json:"region"`
-	SelfLink                     string                                  `json:"self_link"`
-	TimeoutSec                   int                                     `json:"timeout_sec"`
 	Name                         string                                  `json:"name"`
 	HealthChecks                 []string                                `json:"health_checks"`
+	Fingerprint                  string                                  `json:"fingerprint"`
+	Protocol                     string                                  `json:"protocol"`
+	Region                       string                                  `json:"region"`
+	SelfLink                     string                                  `json:"self_link"`
+	Backend                      []GoogleComputeRegionBackendServiceSpec `json:"backend"`
 	Description                  string                                  `json:"description"`
+	Project                      string                                  `json:"project"`
+	SessionAffinity              string                                  `json:"session_affinity"`
+	TimeoutSec                   int                                     `json:"timeout_sec"`
 	ConnectionDrainingTimeoutSec int                                     `json:"connection_draining_timeout_sec"`
 }
 
+
+
 type GoogleComputeRegionBackendServiceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

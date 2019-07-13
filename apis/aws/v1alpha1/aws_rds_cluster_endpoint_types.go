@@ -19,16 +19,22 @@ type AwsRdsClusterEndpoint struct {
 }
 
 type AwsRdsClusterEndpointSpec struct {
-	ExcludedMembers           []string `json:"excluded_members"`
-	StaticMembers             []string `json:"static_members"`
 	Endpoint                  string   `json:"endpoint"`
 	Arn                       string   `json:"arn"`
 	ClusterEndpointIdentifier string   `json:"cluster_endpoint_identifier"`
 	ClusterIdentifier         string   `json:"cluster_identifier"`
 	CustomEndpointType        string   `json:"custom_endpoint_type"`
+	ExcludedMembers           []string `json:"excluded_members"`
+	StaticMembers             []string `json:"static_members"`
 }
 
+
+
 type AwsRdsClusterEndpointStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

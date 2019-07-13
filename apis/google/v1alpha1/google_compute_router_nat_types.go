@@ -19,28 +19,34 @@ type GoogleComputeRouterNat struct {
 }
 
 type GoogleComputeRouterNatSpecSubnetwork struct {
+	SecondaryIpRangeNames []string `json:"secondary_ip_range_names"`
 	Name                  string   `json:"name"`
 	SourceIpRangesToNat   []string `json:"source_ip_ranges_to_nat"`
-	SecondaryIpRangeNames []string `json:"secondary_ip_range_names"`
 }
 
 type GoogleComputeRouterNatSpec struct {
+	UdpIdleTimeoutSec             int                          `json:"udp_idle_timeout_sec"`
+	IcmpIdleTimeoutSec            int                          `json:"icmp_idle_timeout_sec"`
 	Project                       string                       `json:"project"`
 	Region                        string                       `json:"region"`
+	NatIpAllocateOption           string                       `json:"nat_ip_allocate_option"`
+	Subnetwork                    []GoogleComputeRouterNatSpec `json:"subnetwork"`
+	MinPortsPerVm                 int                          `json:"min_ports_per_vm"`
+	SourceSubnetworkIpRangesToNat string                       `json:"source_subnetwork_ip_ranges_to_nat"`
+	TcpEstablishedIdleTimeoutSec  int                          `json:"tcp_established_idle_timeout_sec"`
+	TcpTransitoryIdleTimeoutSec   int                          `json:"tcp_transitory_idle_timeout_sec"`
 	Name                          string                       `json:"name"`
 	Router                        string                       `json:"router"`
 	NatIps                        []string                     `json:"nat_ips"`
-	SourceSubnetworkIpRangesToNat string                       `json:"source_subnetwork_ip_ranges_to_nat"`
-	Subnetwork                    []GoogleComputeRouterNatSpec `json:"subnetwork"`
-	TcpTransitoryIdleTimeoutSec   int                          `json:"tcp_transitory_idle_timeout_sec"`
-	NatIpAllocateOption           string                       `json:"nat_ip_allocate_option"`
-	MinPortsPerVm                 int                          `json:"min_ports_per_vm"`
-	UdpIdleTimeoutSec             int                          `json:"udp_idle_timeout_sec"`
-	IcmpIdleTimeoutSec            int                          `json:"icmp_idle_timeout_sec"`
-	TcpEstablishedIdleTimeoutSec  int                          `json:"tcp_established_idle_timeout_sec"`
 }
 
+
+
 type GoogleComputeRouterNatStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

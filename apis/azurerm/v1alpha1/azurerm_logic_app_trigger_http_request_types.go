@@ -19,14 +19,20 @@ type AzurermLogicAppTriggerHttpRequest struct {
 }
 
 type AzurermLogicAppTriggerHttpRequestSpec struct {
-	RelativePath string `json:"relative_path"`
 	Name         string `json:"name"`
 	LogicAppId   string `json:"logic_app_id"`
 	Schema       string `json:"schema"`
 	Method       string `json:"method"`
+	RelativePath string `json:"relative_path"`
 }
 
+
+
 type AzurermLogicAppTriggerHttpRequestStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

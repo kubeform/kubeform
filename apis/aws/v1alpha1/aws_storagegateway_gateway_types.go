@@ -25,20 +25,26 @@ type AwsStoragegatewayGatewaySpecSmbActiveDirectorySettings struct {
 }
 
 type AwsStoragegatewayGatewaySpec struct {
-	GatewayIpAddress           string                         `json:"gateway_ip_address"`
-	GatewayTimezone            string                         `json:"gateway_timezone"`
-	GatewayType                string                         `json:"gateway_type"`
-	GatewayName                string                         `json:"gateway_name"`
-	MediumChangerType          string                         `json:"medium_changer_type"`
-	SmbActiveDirectorySettings []AwsStoragegatewayGatewaySpec `json:"smb_active_directory_settings"`
-	SmbGuestPassword           string                         `json:"smb_guest_password"`
-	TapeDriveType              string                         `json:"tape_drive_type"`
 	Arn                        string                         `json:"arn"`
 	ActivationKey              string                         `json:"activation_key"`
 	GatewayId                  string                         `json:"gateway_id"`
+	GatewayIpAddress           string                         `json:"gateway_ip_address"`
+	GatewayTimezone            string                         `json:"gateway_timezone"`
+	GatewayType                string                         `json:"gateway_type"`
+	MediumChangerType          string                         `json:"medium_changer_type"`
+	SmbActiveDirectorySettings []AwsStoragegatewayGatewaySpec `json:"smb_active_directory_settings"`
+	GatewayName                string                         `json:"gateway_name"`
+	SmbGuestPassword           string                         `json:"smb_guest_password"`
+	TapeDriveType              string                         `json:"tape_drive_type"`
 }
 
+
+
 type AwsStoragegatewayGatewayStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,16 +19,22 @@ type GoogleComputeBackendBucket struct {
 }
 
 type GoogleComputeBackendBucketSpec struct {
+	BucketName        string `json:"bucket_name"`
+	Name              string `json:"name"`
 	Description       string `json:"description"`
 	EnableCdn         bool   `json:"enable_cdn"`
 	CreationTimestamp string `json:"creation_timestamp"`
 	Project           string `json:"project"`
 	SelfLink          string `json:"self_link"`
-	BucketName        string `json:"bucket_name"`
-	Name              string `json:"name"`
 }
 
+
+
 type GoogleComputeBackendBucketStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

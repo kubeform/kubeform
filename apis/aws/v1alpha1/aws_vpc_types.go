@@ -19,26 +19,32 @@ type AwsVpc struct {
 }
 
 type AwsVpcSpec struct {
-	InstanceTenancy              string            `json:"instance_tenancy"`
-	EnableClassiclinkDnsSupport  bool              `json:"enable_classiclink_dns_support"`
-	Arn                          string            `json:"arn"`
-	Tags                         map[string]string `json:"tags"`
-	OwnerId                      string            `json:"owner_id"`
-	CidrBlock                    string            `json:"cidr_block"`
-	MainRouteTableId             string            `json:"main_route_table_id"`
-	DhcpOptionsId                string            `json:"dhcp_options_id"`
-	Ipv6CidrBlock                string            `json:"ipv6_cidr_block"`
 	EnableClassiclink            bool              `json:"enable_classiclink"`
-	DefaultSecurityGroupId       string            `json:"default_security_group_id"`
+	DhcpOptionsId                string            `json:"dhcp_options_id"`
 	DefaultRouteTableId          string            `json:"default_route_table_id"`
-	DefaultNetworkAclId          string            `json:"default_network_acl_id"`
 	Ipv6AssociationId            string            `json:"ipv6_association_id"`
+	Ipv6CidrBlock                string            `json:"ipv6_cidr_block"`
+	Tags                         map[string]string `json:"tags"`
+	CidrBlock                    string            `json:"cidr_block"`
+	InstanceTenancy              string            `json:"instance_tenancy"`
 	EnableDnsHostnames           bool              `json:"enable_dns_hostnames"`
+	DefaultSecurityGroupId       string            `json:"default_security_group_id"`
+	EnableClassiclinkDnsSupport  bool              `json:"enable_classiclink_dns_support"`
+	MainRouteTableId             string            `json:"main_route_table_id"`
+	Arn                          string            `json:"arn"`
 	EnableDnsSupport             bool              `json:"enable_dns_support"`
 	AssignGeneratedIpv6CidrBlock bool              `json:"assign_generated_ipv6_cidr_block"`
+	DefaultNetworkAclId          string            `json:"default_network_acl_id"`
+	OwnerId                      string            `json:"owner_id"`
 }
 
+
+
 type AwsVpcStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

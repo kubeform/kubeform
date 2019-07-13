@@ -19,20 +19,26 @@ type AzurermVirtualMachineExtension struct {
 }
 
 type AzurermVirtualMachineExtensionSpec struct {
-	ResourceGroupName       string            `json:"resource_group_name"`
-	VirtualMachineName      string            `json:"virtual_machine_name"`
-	Type                    string            `json:"type"`
+	Publisher               string            `json:"publisher"`
 	AutoUpgradeMinorVersion bool              `json:"auto_upgrade_minor_version"`
 	Settings                string            `json:"settings"`
 	ProtectedSettings       string            `json:"protected_settings"`
+	Location                string            `json:"location"`
+	ResourceGroupName       string            `json:"resource_group_name"`
+	Type                    string            `json:"type"`
+	TypeHandlerVersion      string            `json:"type_handler_version"`
 	Tags                    map[string]string `json:"tags"`
 	Name                    string            `json:"name"`
-	Location                string            `json:"location"`
-	Publisher               string            `json:"publisher"`
-	TypeHandlerVersion      string            `json:"type_handler_version"`
+	VirtualMachineName      string            `json:"virtual_machine_name"`
 }
 
+
+
 type AzurermVirtualMachineExtensionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

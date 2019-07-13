@@ -19,15 +19,21 @@ type AwsIotThing struct {
 }
 
 type AwsIotThingSpec struct {
-	Attributes      map[string]string `json:"attributes"`
 	ThingTypeName   string            `json:"thing_type_name"`
 	DefaultClientId string            `json:"default_client_id"`
 	Version         int               `json:"version"`
 	Arn             string            `json:"arn"`
 	Name            string            `json:"name"`
+	Attributes      map[string]string `json:"attributes"`
 }
 
+
+
 type AwsIotThingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

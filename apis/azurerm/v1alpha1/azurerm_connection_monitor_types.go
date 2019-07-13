@@ -18,30 +18,36 @@ type AzurermConnectionMonitor struct {
 	Status            AzurermConnectionMonitorStatus `json:"status,omitempty"`
 }
 
-type AzurermConnectionMonitorSpecSource struct {
-	VirtualMachineId string `json:"virtual_machine_id"`
-	Port             int    `json:"port"`
-}
-
 type AzurermConnectionMonitorSpecDestination struct {
 	VirtualMachineId string `json:"virtual_machine_id"`
 	Address          string `json:"address"`
 	Port             int    `json:"port"`
 }
 
+type AzurermConnectionMonitorSpecSource struct {
+	VirtualMachineId string `json:"virtual_machine_id"`
+	Port             int    `json:"port"`
+}
+
 type AzurermConnectionMonitorSpec struct {
-	AutoStart          bool                           `json:"auto_start"`
-	IntervalInSeconds  int                            `json:"interval_in_seconds"`
-	Source             []AzurermConnectionMonitorSpec `json:"source"`
-	Destination        []AzurermConnectionMonitorSpec `json:"destination"`
 	Tags               map[string]string              `json:"tags"`
 	ResourceGroupName  string                         `json:"resource_group_name"`
 	Location           string                         `json:"location"`
+	AutoStart          bool                           `json:"auto_start"`
+	IntervalInSeconds  int                            `json:"interval_in_seconds"`
+	Destination        []AzurermConnectionMonitorSpec `json:"destination"`
 	Name               string                         `json:"name"`
 	NetworkWatcherName string                         `json:"network_watcher_name"`
+	Source             []AzurermConnectionMonitorSpec `json:"source"`
 }
 
+
+
 type AzurermConnectionMonitorStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

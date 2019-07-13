@@ -19,18 +19,24 @@ type AwsSnsTopicSubscription struct {
 }
 
 type AwsSnsTopicSubscriptionSpec struct {
-	Endpoint                     string `json:"endpoint"`
-	EndpointAutoConfirms         bool   `json:"endpoint_auto_confirms"`
-	ConfirmationTimeoutInMinutes int    `json:"confirmation_timeout_in_minutes"`
-	Arn                          string `json:"arn"`
-	Protocol                     string `json:"protocol"`
-	TopicArn                     string `json:"topic_arn"`
 	DeliveryPolicy               string `json:"delivery_policy"`
-	RawMessageDelivery           bool   `json:"raw_message_delivery"`
+	Arn                          string `json:"arn"`
 	FilterPolicy                 string `json:"filter_policy"`
+	Protocol                     string `json:"protocol"`
+	EndpointAutoConfirms         bool   `json:"endpoint_auto_confirms"`
+	TopicArn                     string `json:"topic_arn"`
+	RawMessageDelivery           bool   `json:"raw_message_delivery"`
+	Endpoint                     string `json:"endpoint"`
+	ConfirmationTimeoutInMinutes int    `json:"confirmation_timeout_in_minutes"`
 }
 
+
+
 type AwsSnsTopicSubscriptionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -40,54 +40,60 @@ type AwsOpsworksInstanceSpecEphemeralBlockDevice struct {
 }
 
 type AwsOpsworksInstanceSpec struct {
-	ElasticIp                string                    `json:"elastic_ip"`
-	PublicDns                string                    `json:"public_dns"`
-	ReportedOsFamily         string                    `json:"reported_os_family"`
-	Architecture             string                    `json:"architecture"`
-	DeleteEip                bool                      `json:"delete_eip"`
-	InstallUpdatesOnBoot     bool                      `json:"install_updates_on_boot"`
-	InstanceProfileArn       string                    `json:"instance_profile_arn"`
 	LayerIds                 []string                  `json:"layer_ids"`
-	PrivateIp                string                    `json:"private_ip"`
-	RegisteredBy             string                    `json:"registered_by"`
-	StackId                  string                    `json:"stack_id"`
-	Ec2InstanceId            string                    `json:"ec2_instance_id"`
-	InfrastructureClass      string                    `json:"infrastructure_class"`
-	CreatedAt                string                    `json:"created_at"`
-	ReportedAgentVersion     string                    `json:"reported_agent_version"`
-	PrivateDns               string                    `json:"private_dns"`
-	DeleteEbs                bool                      `json:"delete_ebs"`
-	EbsOptimized             bool                      `json:"ebs_optimized"`
-	ReportedOsVersion        string                    `json:"reported_os_version"`
-	SshHostRsaKeyFingerprint string                    `json:"ssh_host_rsa_key_fingerprint"`
-	VirtualizationType       string                    `json:"virtualization_type"`
-	AmiId                    string                    `json:"ami_id"`
-	AvailabilityZone         string                    `json:"availability_zone"`
-	Os                       string                    `json:"os"`
-	PublicIp                 string                    `json:"public_ip"`
-	Status                   string                    `json:"status"`
-	AutoScalingType          string                    `json:"auto_scaling_type"`
-	LastServiceErrorId       string                    `json:"last_service_error_id"`
-	InstanceType             string                    `json:"instance_type"`
 	Platform                 string                    `json:"platform"`
-	ReportedOsName           string                    `json:"reported_os_name"`
-	RootDeviceVolumeId       string                    `json:"root_device_volume_id"`
-	SecurityGroupIds         []string                  `json:"security_group_ids"`
-	SshHostDsaKeyFingerprint string                    `json:"ssh_host_dsa_key_fingerprint"`
-	EcsClusterArn            string                    `json:"ecs_cluster_arn"`
-	Hostname                 string                    `json:"hostname"`
+	AutoScalingType          string                    `json:"auto_scaling_type"`
+	EbsOptimized             bool                      `json:"ebs_optimized"`
+	Os                       string                    `json:"os"`
+	VirtualizationType       string                    `json:"virtualization_type"`
 	RootBlockDevice          []AwsOpsworksInstanceSpec `json:"root_block_device"`
+	AgentVersion             string                    `json:"agent_version"`
+	AmiId                    string                    `json:"ami_id"`
+	EcsClusterArn            string                    `json:"ecs_cluster_arn"`
+	InfrastructureClass      string                    `json:"infrastructure_class"`
+	RootDeviceType           string                    `json:"root_device_type"`
+	SshKeyName               string                    `json:"ssh_key_name"`
 	SubnetId                 string                    `json:"subnet_id"`
 	Tenancy                  string                    `json:"tenancy"`
-	SshKeyName               string                    `json:"ssh_key_name"`
-	State                    string                    `json:"state"`
+	Architecture             string                    `json:"architecture"`
+	Ec2InstanceId            string                    `json:"ec2_instance_id"`
 	EbsBlockDevice           []AwsOpsworksInstanceSpec `json:"ebs_block_device"`
+	InstanceType             string                    `json:"instance_type"`
+	ReportedAgentVersion     string                    `json:"reported_agent_version"`
+	ReportedOsFamily         string                    `json:"reported_os_family"`
+	ReportedOsVersion        string                    `json:"reported_os_version"`
+	RootDeviceVolumeId       string                    `json:"root_device_volume_id"`
+	Hostname                 string                    `json:"hostname"`
+	InstallUpdatesOnBoot     bool                      `json:"install_updates_on_boot"`
+	StackId                  string                    `json:"stack_id"`
+	PublicIp                 string                    `json:"public_ip"`
+	RegisteredBy             string                    `json:"registered_by"`
+	DeleteEip                bool                      `json:"delete_eip"`
+	ElasticIp                string                    `json:"elastic_ip"`
+	Status                   string                    `json:"status"`
+	AvailabilityZone         string                    `json:"availability_zone"`
+	CreatedAt                string                    `json:"created_at"`
+	PublicDns                string                    `json:"public_dns"`
+	ReportedOsName           string                    `json:"reported_os_name"`
+	SshHostDsaKeyFingerprint string                    `json:"ssh_host_dsa_key_fingerprint"`
+	SshHostRsaKeyFingerprint string                    `json:"ssh_host_rsa_key_fingerprint"`
+	State                    string                    `json:"state"`
 	EphemeralBlockDevice     []AwsOpsworksInstanceSpec `json:"ephemeral_block_device"`
-	AgentVersion             string                    `json:"agent_version"`
-	RootDeviceType           string                    `json:"root_device_type"`
+	InstanceProfileArn       string                    `json:"instance_profile_arn"`
+	LastServiceErrorId       string                    `json:"last_service_error_id"`
+	PrivateIp                string                    `json:"private_ip"`
+	SecurityGroupIds         []string                  `json:"security_group_ids"`
+	DeleteEbs                bool                      `json:"delete_ebs"`
+	PrivateDns               string                    `json:"private_dns"`
 }
 
+
+
 type AwsOpsworksInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

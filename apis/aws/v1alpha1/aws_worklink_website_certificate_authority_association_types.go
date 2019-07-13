@@ -19,13 +19,19 @@ type AwsWorklinkWebsiteCertificateAuthorityAssociation struct {
 }
 
 type AwsWorklinkWebsiteCertificateAuthorityAssociationSpec struct {
+	WebsiteCaId string `json:"website_ca_id"`
 	FleetArn    string `json:"fleet_arn"`
 	Certificate string `json:"certificate"`
 	DisplayName string `json:"display_name"`
-	WebsiteCaId string `json:"website_ca_id"`
 }
 
+
+
 type AwsWorklinkWebsiteCertificateAuthorityAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

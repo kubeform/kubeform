@@ -36,10 +36,10 @@ type AwsWafregionalByteMatchSetSpecByteMatchTuplesFieldToMatch struct {
 }
 
 type AwsWafregionalByteMatchSetSpecByteMatchTuples struct {
-	FieldToMatch         []AwsWafregionalByteMatchSetSpecByteMatchTuples `json:"field_to_match"`
-	PositionalConstraint string                                          `json:"positional_constraint"`
 	TargetString         string                                          `json:"target_string"`
 	TextTransformation   string                                          `json:"text_transformation"`
+	FieldToMatch         []AwsWafregionalByteMatchSetSpecByteMatchTuples `json:"field_to_match"`
+	PositionalConstraint string                                          `json:"positional_constraint"`
 }
 
 type AwsWafregionalByteMatchSetSpec struct {
@@ -48,7 +48,13 @@ type AwsWafregionalByteMatchSetSpec struct {
 	ByteMatchTuples []AwsWafregionalByteMatchSetSpec `json:"byte_match_tuples"`
 }
 
+
+
 type AwsWafregionalByteMatchSetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

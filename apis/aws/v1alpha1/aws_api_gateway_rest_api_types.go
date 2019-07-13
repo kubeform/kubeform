@@ -25,18 +25,24 @@ type AwsApiGatewayRestApiSpecEndpointConfiguration struct {
 type AwsApiGatewayRestApiSpec struct {
 	BinaryMediaTypes       []string                   `json:"binary_media_types"`
 	MinimumCompressionSize int                        `json:"minimum_compression_size"`
-	EndpointConfiguration  []AwsApiGatewayRestApiSpec `json:"endpoint_configuration"`
+	RootResourceId         string                     `json:"root_resource_id"`
+	ExecutionArn           string                     `json:"execution_arn"`
 	Name                   string                     `json:"name"`
 	Description            string                     `json:"description"`
 	ApiKeySource           string                     `json:"api_key_source"`
+	EndpointConfiguration  []AwsApiGatewayRestApiSpec `json:"endpoint_configuration"`
 	Policy                 string                     `json:"policy"`
 	Body                   string                     `json:"body"`
-	RootResourceId         string                     `json:"root_resource_id"`
 	CreatedDate            string                     `json:"created_date"`
-	ExecutionArn           string                     `json:"execution_arn"`
 }
 
+
+
 type AwsApiGatewayRestApiStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -25,21 +25,27 @@ type GoogleComputeSubnetworkSpecSecondaryIpRange struct {
 
 type GoogleComputeSubnetworkSpec struct {
 	EnableFlowLogs        bool                          `json:"enable_flow_logs"`
-	PrivateIpGoogleAccess bool                          `json:"private_ip_google_access"`
-	SecondaryIpRange      []GoogleComputeSubnetworkSpec `json:"secondary_ip_range"`
+	Region                string                        `json:"region"`
 	CreationTimestamp     string                        `json:"creation_timestamp"`
-	IpCidrRange           string                        `json:"ip_cidr_range"`
+	Project               string                        `json:"project"`
+	Name                  string                        `json:"name"`
 	Network               string                        `json:"network"`
 	Description           string                        `json:"description"`
-	Region                string                        `json:"region"`
 	Fingerprint           string                        `json:"fingerprint"`
 	GatewayAddress        string                        `json:"gateway_address"`
-	Project               string                        `json:"project"`
 	SelfLink              string                        `json:"self_link"`
-	Name                  string                        `json:"name"`
+	IpCidrRange           string                        `json:"ip_cidr_range"`
+	PrivateIpGoogleAccess bool                          `json:"private_ip_google_access"`
+	SecondaryIpRange      []GoogleComputeSubnetworkSpec `json:"secondary_ip_range"`
 }
 
+
+
 type GoogleComputeSubnetworkStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

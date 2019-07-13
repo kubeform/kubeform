@@ -18,10 +18,6 @@ type GoogleFolderOrganizationPolicy struct {
 	Status            GoogleFolderOrganizationPolicyStatus `json:"status,omitempty"`
 }
 
-type GoogleFolderOrganizationPolicySpecRestorePolicy struct {
-	Default bool `json:"default"`
-}
-
 type GoogleFolderOrganizationPolicySpecBooleanPolicy struct {
 	Enforced bool `json:"enforced"`
 }
@@ -42,18 +38,28 @@ type GoogleFolderOrganizationPolicySpecListPolicy struct {
 	SuggestedValue string                                         `json:"suggested_value"`
 }
 
+type GoogleFolderOrganizationPolicySpecRestorePolicy struct {
+	Default bool `json:"default"`
+}
+
 type GoogleFolderOrganizationPolicySpec struct {
-	Etag          string                               `json:"etag"`
+	BooleanPolicy []GoogleFolderOrganizationPolicySpec `json:"boolean_policy"`
 	Folder        string                               `json:"folder"`
+	ListPolicy    []GoogleFolderOrganizationPolicySpec `json:"list_policy"`
+	Version       int                                  `json:"version"`
+	Etag          string                               `json:"etag"`
 	UpdateTime    string                               `json:"update_time"`
 	RestorePolicy []GoogleFolderOrganizationPolicySpec `json:"restore_policy"`
 	Constraint    string                               `json:"constraint"`
-	BooleanPolicy []GoogleFolderOrganizationPolicySpec `json:"boolean_policy"`
-	ListPolicy    []GoogleFolderOrganizationPolicySpec `json:"list_policy"`
-	Version       int                                  `json:"version"`
 }
 
+
+
 type GoogleFolderOrganizationPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

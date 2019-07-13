@@ -19,22 +19,28 @@ type AzurermLocalNetworkGateway struct {
 }
 
 type AzurermLocalNetworkGatewaySpecBgpSettings struct {
+	PeerWeight        int    `json:"peer_weight"`
 	Asn               int    `json:"asn"`
 	BgpPeeringAddress string `json:"bgp_peering_address"`
-	PeerWeight        int    `json:"peer_weight"`
 }
 
 type AzurermLocalNetworkGatewaySpec struct {
-	ResourceGroupName string                           `json:"resource_group_name"`
-	GatewayAddress    string                           `json:"gateway_address"`
-	AddressSpace      []string                         `json:"address_space"`
 	BgpSettings       []AzurermLocalNetworkGatewaySpec `json:"bgp_settings"`
 	Tags              map[string]string                `json:"tags"`
 	Name              string                           `json:"name"`
 	Location          string                           `json:"location"`
+	ResourceGroupName string                           `json:"resource_group_name"`
+	GatewayAddress    string                           `json:"gateway_address"`
+	AddressSpace      []string                         `json:"address_space"`
 }
 
+
+
 type AzurermLocalNetworkGatewayStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

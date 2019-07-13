@@ -19,13 +19,19 @@ type AwsApiGatewayRequestValidator struct {
 }
 
 type AwsApiGatewayRequestValidatorSpec struct {
-	RestApiId                 string `json:"rest_api_id"`
 	Name                      string `json:"name"`
 	ValidateRequestBody       bool   `json:"validate_request_body"`
 	ValidateRequestParameters bool   `json:"validate_request_parameters"`
+	RestApiId                 string `json:"rest_api_id"`
 }
 
+
+
 type AwsApiGatewayRequestValidatorStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

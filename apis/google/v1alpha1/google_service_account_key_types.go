@@ -19,21 +19,27 @@ type GoogleServiceAccountKey struct {
 }
 
 type GoogleServiceAccountKeySpec struct {
-	ServiceAccountId      string `json:"service_account_id"`
-	PgpKey                string `json:"pgp_key"`
-	PrivateKey            string `json:"private_key"`
-	PrivateKeyFingerprint string `json:"private_key_fingerprint"`
+	ValidBefore           string `json:"valid_before"`
+	PrivateKeyEncrypted   string `json:"private_key_encrypted"`
 	KeyAlgorithm          string `json:"key_algorithm"`
-	PrivateKeyType        string `json:"private_key_type"`
 	PublicKeyType         string `json:"public_key_type"`
+	PrivateKey            string `json:"private_key"`
 	Name                  string `json:"name"`
 	PublicKey             string `json:"public_key"`
 	ValidAfter            string `json:"valid_after"`
-	ValidBefore           string `json:"valid_before"`
-	PrivateKeyEncrypted   string `json:"private_key_encrypted"`
+	PrivateKeyFingerprint string `json:"private_key_fingerprint"`
+	ServiceAccountId      string `json:"service_account_id"`
+	PgpKey                string `json:"pgp_key"`
+	PrivateKeyType        string `json:"private_key_type"`
 }
 
+
+
 type GoogleServiceAccountKeyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

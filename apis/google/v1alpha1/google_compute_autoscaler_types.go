@@ -33,26 +33,32 @@ type GoogleComputeAutoscalerSpecAutoscalingPolicyMetric struct {
 }
 
 type GoogleComputeAutoscalerSpecAutoscalingPolicy struct {
+	MaxReplicas              int                                            `json:"max_replicas"`
+	MinReplicas              int                                            `json:"min_replicas"`
 	CooldownPeriod           int                                            `json:"cooldown_period"`
 	CpuUtilization           []GoogleComputeAutoscalerSpecAutoscalingPolicy `json:"cpu_utilization"`
 	LoadBalancingUtilization []GoogleComputeAutoscalerSpecAutoscalingPolicy `json:"load_balancing_utilization"`
 	Metric                   []GoogleComputeAutoscalerSpecAutoscalingPolicy `json:"metric"`
-	MaxReplicas              int                                            `json:"max_replicas"`
-	MinReplicas              int                                            `json:"min_replicas"`
 }
 
 type GoogleComputeAutoscalerSpec struct {
-	Zone              string                        `json:"zone"`
-	CreationTimestamp string                        `json:"creation_timestamp"`
-	Project           string                        `json:"project"`
 	SelfLink          string                        `json:"self_link"`
 	AutoscalingPolicy []GoogleComputeAutoscalerSpec `json:"autoscaling_policy"`
 	Name              string                        `json:"name"`
 	Target            string                        `json:"target"`
 	Description       string                        `json:"description"`
+	Zone              string                        `json:"zone"`
+	CreationTimestamp string                        `json:"creation_timestamp"`
+	Project           string                        `json:"project"`
 }
 
+
+
 type GoogleComputeAutoscalerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

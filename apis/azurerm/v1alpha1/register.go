@@ -37,795 +37,796 @@ func Resource(resource string) schema.GroupResource {
 // Adds the list of known types to api.Scheme.
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
-
-		&AzurermLbOutboundRule{},
-		&AzurermLbOutboundRuleList{},
-
-		&AzurermApiManagementProductGroup{},
-		&AzurermApiManagementProductGroupList{},
-
-		&AzurermAppServiceSlot{},
-		&AzurermAppServiceSlotList{},
-
-		&AzurermAutomationVariableInt{},
-		&AzurermAutomationVariableIntList{},
-
-		&AzurermCdnEndpoint{},
-		&AzurermCdnEndpointList{},
-
-		&AzurermDataFactory{},
-		&AzurermDataFactoryList{},
-
-		&AzurermApplicationInsightsWebTest{},
-		&AzurermApplicationInsightsWebTestList{},
-
-		&AzurermDnsZone{},
-		&AzurermDnsZoneList{},
-
-		&AzurermServicebusTopic{},
-		&AzurermServicebusTopicList{},
-
-		&AzurermSqlDatabase{},
-		&AzurermSqlDatabaseList{},
-
-		&AzurermSubnetRouteTableAssociation{},
-		&AzurermSubnetRouteTableAssociationList{},
-
-		&AzurermApiManagementApiVersionSet{},
-		&AzurermApiManagementApiVersionSetList{},
-
-		&AzurermContainerRegistry{},
-		&AzurermContainerRegistryList{},
-
-		&AzurermCosmosdbMongoDatabase{},
-		&AzurermCosmosdbMongoDatabaseList{},
-
-		&AzurermStorageTable{},
-		&AzurermStorageTableList{},
-
-		&AzurermEventhubAuthorizationRule{},
-		&AzurermEventhubAuthorizationRuleList{},
-
-		&AzurermManagementGroup{},
-		&AzurermManagementGroupList{},
-
-		&AzurermSecurityCenterSubscriptionPricing{},
-		&AzurermSecurityCenterSubscriptionPricingList{},
-
-		&AzurermNetworkSecurityGroup{},
-		&AzurermNetworkSecurityGroupList{},
-
-		&AzurermPolicySetDefinition{},
-		&AzurermPolicySetDefinitionList{},
-
-		&AzurermSchedulerJob{},
-		&AzurermSchedulerJobList{},
-
-		&AzurermLogAnalyticsSolution{},
-		&AzurermLogAnalyticsSolutionList{},
-
-		&AzurermSqlServer{},
-		&AzurermSqlServerList{},
-
-		&AzurermVirtualMachineScaleSet{},
-		&AzurermVirtualMachineScaleSetList{},
-
-		&AzurermStreamAnalyticsStreamInputEventhub{},
-		&AzurermStreamAnalyticsStreamInputEventhubList{},
-
-		&AzurermCognitiveAccount{},
-		&AzurermCognitiveAccountList{},
-
-		&AzurermDatabricksWorkspace{},
-		&AzurermDatabricksWorkspaceList{},
-
-		&AzurermDdosProtectionPlan{},
-		&AzurermDdosProtectionPlanList{},
-
-		&AzurermDnsCnameRecord{},
-		&AzurermDnsCnameRecordList{},
-
-		&AzurermRedisFirewallRule{},
-		&AzurermRedisFirewallRuleList{},
-
-		&AzurermCosmosdbCassandraKeyspace{},
-		&AzurermCosmosdbCassandraKeyspaceList{},
-
-		&AzurermLogAnalyticsWorkspace{},
-		&AzurermLogAnalyticsWorkspaceList{},
-
-		&AzurermMysqlDatabase{},
-		&AzurermMysqlDatabaseList{},
-
-		&AzurermVirtualNetworkGateway{},
-		&AzurermVirtualNetworkGatewayList{},
-
-		&AzurermMonitorAutoscaleSetting{},
-		&AzurermMonitorAutoscaleSettingList{},
-
-		&AzurermSecurityCenterWorkspace{},
-		&AzurermSecurityCenterWorkspaceList{},
-
-		&AzurermUserAssignedIdentity{},
-		&AzurermUserAssignedIdentityList{},
-
-		&AzurermAutomationDscNodeconfiguration{},
-		&AzurermAutomationDscNodeconfigurationList{},
-
-		&AzurermDevTestWindowsVirtualMachine{},
-		&AzurermDevTestWindowsVirtualMachineList{},
-
-		&AzurermEventgridDomain{},
-		&AzurermEventgridDomainList{},
-
-		&AzurermKeyVaultAccessPolicy{},
-		&AzurermKeyVaultAccessPolicyList{},
-
-		&AzurermKeyVaultKey{},
-		&AzurermKeyVaultKeyList{},
-
-		&AzurermAppServiceActiveSlot{},
-		&AzurermAppServiceActiveSlotList{},
-
-		&AzurermApplicationGateway{},
-		&AzurermApplicationGatewayList{},
-
-		&AzurermFirewallApplicationRuleCollection{},
-		&AzurermFirewallApplicationRuleCollectionList{},
-
-		&AzurermMysqlVirtualNetworkRule{},
-		&AzurermMysqlVirtualNetworkRuleList{},
-
-		&AzurermRecoveryServicesProtectionPolicyVm{},
-		&AzurermRecoveryServicesProtectionPolicyVmList{},
-
-		&AzurermTrafficManagerProfile{},
-		&AzurermTrafficManagerProfileList{},
-
-		&AzurermApiManagementCertificate{},
-		&AzurermApiManagementCertificateList{},
-
-		&AzurermCdnProfile{},
-		&AzurermCdnProfileList{},
-
-		&AzurermDevTestPolicy{},
-		&AzurermDevTestPolicyList{},
-
-		&AzurermFunctionApp{},
-		&AzurermFunctionAppList{},
-
-		&AzurermKeyVaultSecret{},
-		&AzurermKeyVaultSecretList{},
-
-		&AzurermVirtualMachineExtension{},
-		&AzurermVirtualMachineExtensionList{},
-
-		&AzurermBatchAccount{},
-		&AzurermBatchAccountList{},
-
-		&AzurermHdinsightRserverCluster{},
-		&AzurermHdinsightRserverClusterList{},
-
-		&AzurermMonitorActivityLogAlert{},
-		&AzurermMonitorActivityLogAlertList{},
-
-		&AzurermNetworkInterfaceBackendAddressPoolAssociation{},
-		&AzurermNetworkInterfaceBackendAddressPoolAssociationList{},
-
-		&AzurermPublicIpPrefix{},
-		&AzurermPublicIpPrefixList{},
-
-		&AzurermApiManagementLogger{},
-		&AzurermApiManagementLoggerList{},
-
-		&AzurermApiManagementProduct{},
-		&AzurermApiManagementProductList{},
-
-		&AzurermAppServicePlan{},
-		&AzurermAppServicePlanList{},
-
-		&AzurermLogicAppActionCustom{},
-		&AzurermLogicAppActionCustomList{},
-
-		&AzurermServicebusTopicAuthorizationRule{},
-		&AzurermServicebusTopicAuthorizationRuleList{},
-
-		&AzurermApiManagementApiOperationPolicy{},
-		&AzurermApiManagementApiOperationPolicyList{},
-
-		&AzurermDataLakeStoreFile{},
-		&AzurermDataLakeStoreFileList{},
-
-		&AzurermNetworkInterfaceApplicationSecurityGroupAssociation{},
-		&AzurermNetworkInterfaceApplicationSecurityGroupAssociationList{},
-
-		&AzurermPolicyDefinition{},
-		&AzurermPolicyDefinitionList{},
-
-		&AzurermDataFactoryLinkedServiceSqlServer{},
-		&AzurermDataFactoryLinkedServiceSqlServerList{},
-
-		&AzurermDnsTxtRecord{},
-		&AzurermDnsTxtRecordList{},
-
-		&AzurermNetworkConnectionMonitor{},
-		&AzurermNetworkConnectionMonitorList{},
-
-		&AzurermDevspaceController{},
-		&AzurermDevspaceControllerList{},
-
-		&AzurermNotificationHub{},
-		&AzurermNotificationHubList{},
-
-		&AzurermPostgresqlDatabase{},
-		&AzurermPostgresqlDatabaseList{},
-
-		&AzurermSecurityCenterContact{},
-		&AzurermSecurityCenterContactList{},
-
-		&AzurermSqlActiveDirectoryAdministrator{},
-		&AzurermSqlActiveDirectoryAdministratorList{},
-
-		&AzurermCosmosdbSqlDatabase{},
-		&AzurermCosmosdbSqlDatabaseList{},
-
-		&AzurermDnsCaaRecord{},
-		&AzurermDnsCaaRecordList{},
-
-		&AzurermMonitorActionGroup{},
-		&AzurermMonitorActionGroupList{},
-
-		&AzurermRecoveryServicesVault{},
-		&AzurermRecoveryServicesVaultList{},
-
-		&AzurermStreamAnalyticsJob{},
-		&AzurermStreamAnalyticsJobList{},
-
-		&AzurermVirtualMachineDataDiskAttachment{},
-		&AzurermVirtualMachineDataDiskAttachmentList{},
-
-		&AzurermAutoscaleSetting{},
-		&AzurermAutoscaleSettingList{},
-
-		&AzurermDataFactoryLinkedServiceDataLakeStorageGen2{},
-		&AzurermDataFactoryLinkedServiceDataLakeStorageGen2List{},
-
-		&AzurermHdinsightHbaseCluster{},
-		&AzurermHdinsightHbaseClusterList{},
-
-		&AzurermLbRule{},
-		&AzurermLbRuleList{},
-
-		&AzurermNotificationHubNamespace{},
-		&AzurermNotificationHubNamespaceList{},
-
-		&AzurermApiManagementProductApi{},
-		&AzurermApiManagementProductApiList{},
-
-		&AzurermBatchCertificate{},
-		&AzurermBatchCertificateList{},
-
-		&AzurermPacketCapture{},
-		&AzurermPacketCaptureList{},
-
-		&AzurermServicebusSubscriptionRule{},
-		&AzurermServicebusSubscriptionRuleList{},
-
-		&AzurermDataLakeAnalyticsFirewallRule{},
-		&AzurermDataLakeAnalyticsFirewallRuleList{},
-
-		&AzurermStreamAnalyticsOutputEventhub{},
-		&AzurermStreamAnalyticsOutputEventhubList{},
-
-		&AzurermHdinsightInteractiveQueryCluster{},
-		&AzurermHdinsightInteractiveQueryClusterList{},
-
-		&AzurermHdinsightMlServicesCluster{},
-		&AzurermHdinsightMlServicesClusterList{},
-
-		&AzurermLogAnalyticsWorkspaceLinkedService{},
-		&AzurermLogAnalyticsWorkspaceLinkedServiceList{},
-
-		&AzurermRecoveryServicesProtectedVm{},
-		&AzurermRecoveryServicesProtectedVmList{},
-
-		&AzurermStreamAnalyticsOutputMssql{},
-		&AzurermStreamAnalyticsOutputMssqlList{},
-
-		&AzurermApiManagementAuthorizationServer{},
-		&AzurermApiManagementAuthorizationServerList{},
-
-		&AzurermLogicAppTriggerCustom{},
-		&AzurermLogicAppTriggerCustomList{},
-
-		&AzurermVirtualMachine{},
-		&AzurermVirtualMachineList{},
-
-		&AzurermIothubConsumerGroup{},
-		&AzurermIothubConsumerGroupList{},
-
-		&AzurermLbNatPool{},
-		&AzurermLbNatPoolList{},
-
-		&AzurermPostgresqlVirtualNetworkRule{},
-		&AzurermPostgresqlVirtualNetworkRuleList{},
-
-		&AzurermRelayNamespace{},
-		&AzurermRelayNamespaceList{},
-
-		&AzurermServicebusNamespaceAuthorizationRule{},
-		&AzurermServicebusNamespaceAuthorizationRuleList{},
-
-		&AzurermAutomationSchedule{},
-		&AzurermAutomationScheduleList{},
-
-		&AzurermAzureadServicePrincipal{},
-		&AzurermAzureadServicePrincipalList{},
-
-		&AzurermDnsMxRecord{},
-		&AzurermDnsMxRecordList{},
-
-		&AzurermEventhubNamespace{},
-		&AzurermEventhubNamespaceList{},
-
-		&AzurermNetworkPacketCapture{},
-		&AzurermNetworkPacketCaptureList{},
-
-		&AzurermBatchPool{},
-		&AzurermBatchPoolList{},
-
-		&AzurermDataFactoryLinkedServiceMysql{},
-		&AzurermDataFactoryLinkedServiceMysqlList{},
-
-		&AzurermDnsPtrRecord{},
-		&AzurermDnsPtrRecordList{},
-
-		&AzurermLogicAppTriggerRecurrence{},
-		&AzurermLogicAppTriggerRecurrenceList{},
-
-		&AzurermMysqlServer{},
-		&AzurermMysqlServerList{},
-
-		&AzurermRedisCache{},
-		&AzurermRedisCacheList{},
-
-		&AzurermStorageQueue{},
-		&AzurermStorageQueueList{},
-
-		&AzurermContainerService{},
-		&AzurermContainerServiceList{},
-
-		&AzurermDevTestLab{},
-		&AzurermDevTestLabList{},
-
-		&AzurermDnsSrvRecord{},
-		&AzurermDnsSrvRecordList{},
-
-		&AzurermFirewall{},
-		&AzurermFirewallList{},
-
-		&AzurermIothubSharedAccessPolicy{},
-		&AzurermIothubSharedAccessPolicyList{},
-
-		&AzurermNetworkProfile{},
-		&AzurermNetworkProfileList{},
-
-		&AzurermDnsARecord{},
-		&AzurermDnsARecordList{},
-
-		&AzurermStorageShare{},
-		&AzurermStorageShareList{},
-
-		&AzurermStreamAnalyticsFunctionJavascriptUdf{},
-		&AzurermStreamAnalyticsFunctionJavascriptUdfList{},
-
-		&AzurermTrafficManagerEndpoint{},
-		&AzurermTrafficManagerEndpointList{},
-
-		&AzurermLogicAppWorkflow{},
-		&AzurermLogicAppWorkflowList{},
-
-		&AzurermMariadbServer{},
-		&AzurermMariadbServerList{},
-
-		&AzurermNotificationHubAuthorizationRule{},
-		&AzurermNotificationHubAuthorizationRuleList{},
-
-		&AzurermLb{},
-		&AzurermLbList{},
-
-		&AzurermLogAnalyticsLinkedService{},
-		&AzurermLogAnalyticsLinkedServiceList{},
-
-		&AzurermStreamAnalyticsStreamInputIothub{},
-		&AzurermStreamAnalyticsStreamInputIothubList{},
-
-		&AzurermLogicAppTriggerHttpRequest{},
-		&AzurermLogicAppTriggerHttpRequestList{},
-
-		&AzurermSubnet{},
-		&AzurermSubnetList{},
-
-		&AzurermApplicationInsightsApiKey{},
-		&AzurermApplicationInsightsApiKeyList{},
-
-		&AzurermAzureadApplication{},
-		&AzurermAzureadApplicationList{},
-
-		&AzurermApiManagementGroup{},
-		&AzurermApiManagementGroupList{},
-
-		&AzurermRoleDefinition{},
-		&AzurermRoleDefinitionList{},
-
-		&AzurermRoute{},
-		&AzurermRouteList{},
-
-		&AzurermSchedulerJobCollection{},
-		&AzurermSchedulerJobCollectionList{},
-
-		&AzurermNetworkDdosProtectionPlan{},
-		&AzurermNetworkDdosProtectionPlanList{},
-
-		&AzurermSqlFirewallRule{},
-		&AzurermSqlFirewallRuleList{},
-
-		&AzurermHdinsightHadoopCluster{},
-		&AzurermHdinsightHadoopClusterList{},
-
-		&AzurermMariadbDatabase{},
-		&AzurermMariadbDatabaseList{},
-
-		&AzurermServicebusNamespace{},
-		&AzurermServicebusNamespaceList{},
-
-		&AzurermApplicationSecurityGroup{},
-		&AzurermApplicationSecurityGroupList{},
-
-		&AzurermAutomationAccount{},
-		&AzurermAutomationAccountList{},
-
-		&AzurermAzureadServicePrincipalPassword{},
-		&AzurermAzureadServicePrincipalPasswordList{},
-
-		&AzurermCosmosdbAccount{},
-		&AzurermCosmosdbAccountList{},
-
-		&AzurermDataFactoryDatasetMysql{},
-		&AzurermDataFactoryDatasetMysqlList{},
-
-		&AzurermConnectionMonitor{},
-		&AzurermConnectionMonitorList{},
-
-		&AzurermMediaServicesAccount{},
-		&AzurermMediaServicesAccountList{},
-
-		&AzurermSignalrService{},
-		&AzurermSignalrServiceList{},
-
-		&AzurermNetworkInterface{},
-		&AzurermNetworkInterfaceList{},
-
-		&AzurermNetworkSecurityRule{},
-		&AzurermNetworkSecurityRuleList{},
-
-		&AzurermApiManagementSubscription{},
-		&AzurermApiManagementSubscriptionList{},
-
-		&AzurermFirewallNatRuleCollection{},
-		&AzurermFirewallNatRuleCollectionList{},
-
-		&AzurermIotDpsCertificate{},
-		&AzurermIotDpsCertificateList{},
-
-		&AzurermMariadbFirewallRule{},
-		&AzurermMariadbFirewallRuleList{},
-
-		&AzurermMysqlFirewallRule{},
-		&AzurermMysqlFirewallRuleList{},
-
-		&AzurermDnsNsRecord{},
-		&AzurermDnsNsRecordList{},
-
-		&AzurermKeyVault{},
-		&AzurermKeyVaultList{},
-
-		&AzurermLbProbe{},
-		&AzurermLbProbeList{},
-
-		&AzurermPostgresqlFirewallRule{},
-		&AzurermPostgresqlFirewallRuleList{},
-
-		&AzurermEventgridTopic{},
-		&AzurermEventgridTopicList{},
-
-		&AzurermManagedDisk{},
-		&AzurermManagedDiskList{},
-
-		&AzurermManagementLock{},
-		&AzurermManagementLockList{},
-
-		&AzurermMysqlConfiguration{},
-		&AzurermMysqlConfigurationList{},
-
-		&AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociation{},
-		&AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationList{},
-
-		&AzurermMonitorMetricAlertrule{},
-		&AzurermMonitorMetricAlertruleList{},
-
-		&AzurermCosmosdbMongoCollection{},
-		&AzurermCosmosdbMongoCollectionList{},
-
-		&AzurermMssqlElasticpool{},
-		&AzurermMssqlElasticpoolList{},
-
-		&AzurermServicebusQueueAuthorizationRule{},
-		&AzurermServicebusQueueAuthorizationRuleList{},
-
-		&AzurermApiManagementGroupUser{},
-		&AzurermApiManagementGroupUserList{},
-
-		&AzurermAppService{},
-		&AzurermAppServiceList{},
-
-		&AzurermAutomationVariableString{},
-		&AzurermAutomationVariableStringList{},
-
-		&AzurermIotDps{},
-		&AzurermIotDpsList{},
-
-		&AzurermIothub{},
-		&AzurermIothubList{},
-
-		&AzurermSqlVirtualNetworkRule{},
-		&AzurermSqlVirtualNetworkRuleList{},
-
-		&AzurermVirtualNetwork{},
-		&AzurermVirtualNetworkList{},
-
-		&AzurermHdinsightKafkaCluster{},
-		&AzurermHdinsightKafkaClusterList{},
-
-		&AzurermNetworkWatcher{},
-		&AzurermNetworkWatcherList{},
-
-		&AzurermSubnetNetworkSecurityGroupAssociation{},
-		&AzurermSubnetNetworkSecurityGroupAssociationList{},
-
-		&AzurermDnsAaaaRecord{},
-		&AzurermDnsAaaaRecordList{},
-
-		&AzurermSharedImageGallery{},
-		&AzurermSharedImageGalleryList{},
-
-		&AzurermSqlElasticpool{},
-		&AzurermSqlElasticpoolList{},
-
-		&AzurermDevTestVirtualNetwork{},
-		&AzurermDevTestVirtualNetworkList{},
-
-		&AzurermImage{},
-		&AzurermImageList{},
-
-		&AzurermServicebusSubscription{},
-		&AzurermServicebusSubscriptionList{},
-
-		&AzurermStorageBlob{},
-		&AzurermStorageBlobList{},
-
-		&AzurermApiManagement{},
-		&AzurermApiManagementList{},
-
-		&AzurermApiManagementApiOperation{},
-		&AzurermApiManagementApiOperationList{},
-
-		&AzurermDataFactoryLinkedServicePostgresql{},
-		&AzurermDataFactoryLinkedServicePostgresqlList{},
-
-		&AzurermExpressRouteCircuitPeering{},
-		&AzurermExpressRouteCircuitPeeringList{},
-
-		&AzurermHdinsightSparkCluster{},
-		&AzurermHdinsightSparkClusterList{},
-
-		&AzurermAppServiceCustomHostnameBinding{},
-		&AzurermAppServiceCustomHostnameBindingList{},
-
-		&AzurermLbNatRule{},
-		&AzurermLbNatRuleList{},
-
-		&AzurermApiManagementProductPolicy{},
-		&AzurermApiManagementProductPolicyList{},
-
-		&AzurermMonitorDiagnosticSetting{},
-		&AzurermMonitorDiagnosticSettingList{},
-
-		&AzurermServiceFabricCluster{},
-		&AzurermServiceFabricClusterList{},
-
-		&AzurermServicebusQueue{},
-		&AzurermServicebusQueueList{},
-
-		&AzurermSharedImageVersion{},
-		&AzurermSharedImageVersionList{},
-
-		&AzurermAutomationRunbook{},
-		&AzurermAutomationRunbookList{},
-
-		&AzurermDataLakeAnalyticsAccount{},
-		&AzurermDataLakeAnalyticsAccountList{},
-
-		&AzurermEventgridEventSubscription{},
-		&AzurermEventgridEventSubscriptionList{},
-
-		&AzurermExpressRouteCircuitAuthorization{},
-		&AzurermExpressRouteCircuitAuthorizationList{},
-
-		&AzurermLogicAppActionHttp{},
-		&AzurermLogicAppActionHttpList{},
-
-		&AzurermSnapshot{},
-		&AzurermSnapshotList{},
-
-		&AzurermAutomationVariableDatetime{},
-		&AzurermAutomationVariableDatetimeList{},
-
-		&AzurermCosmosdbTable{},
-		&AzurermCosmosdbTableList{},
-
-		&AzurermEventhub{},
-		&AzurermEventhubList{},
-
-		&AzurermKubernetesCluster{},
-		&AzurermKubernetesClusterList{},
-
-		&AzurermVirtualNetworkPeering{},
-		&AzurermVirtualNetworkPeeringList{},
-
-		&AzurermNetworkInterfaceNatRuleAssociation{},
-		&AzurermNetworkInterfaceNatRuleAssociationList{},
-
-		&AzurermPolicyAssignment{},
-		&AzurermPolicyAssignmentList{},
-
-		&AzurermPublicIp{},
-		&AzurermPublicIpList{},
-
-		&AzurermRoleAssignment{},
-		&AzurermRoleAssignmentList{},
-
-		&AzurermStreamAnalyticsOutputServicebusQueue{},
-		&AzurermStreamAnalyticsOutputServicebusQueueList{},
-
-		&AzurermPostgresqlServer{},
-		&AzurermPostgresqlServerList{},
-
-		&AzurermDataFactoryDatasetPostgresql{},
-		&AzurermDataFactoryDatasetPostgresqlList{},
-
-		&AzurermDataLakeStoreFirewallRule{},
-		&AzurermDataLakeStoreFirewallRuleList{},
-
-		&AzurermFirewallNetworkRuleCollection{},
-		&AzurermFirewallNetworkRuleCollectionList{},
-
-		&AzurermHdinsightStormCluster{},
-		&AzurermHdinsightStormClusterList{},
-
-		&AzurermLbBackendAddressPool{},
-		&AzurermLbBackendAddressPoolList{},
-
-		&AzurermApiManagementApi{},
-		&AzurermApiManagementApiList{},
-
-		&AzurermApiManagementProperty{},
-		&AzurermApiManagementPropertyList{},
-
-		&AzurermAutomationCredential{},
-		&AzurermAutomationCredentialList{},
-
-		&AzurermMonitorLogProfile{},
-		&AzurermMonitorLogProfileList{},
-
-		&AzurermPostgresqlConfiguration{},
-		&AzurermPostgresqlConfigurationList{},
-
-		&AzurermApiManagementApiSchema{},
-		&AzurermApiManagementApiSchemaList{},
-
-		&AzurermApiManagementUser{},
-		&AzurermApiManagementUserList{},
-
-		&AzurermDevTestLinuxVirtualMachine{},
-		&AzurermDevTestLinuxVirtualMachineList{},
-
-		&AzurermKeyVaultCertificate{},
-		&AzurermKeyVaultCertificateList{},
-
-		&AzurermMetricAlertrule{},
-		&AzurermMetricAlertruleList{},
-
-		&AzurermDataFactoryPipeline{},
-		&AzurermDataFactoryPipelineList{},
-
-		&AzurermEventhubNamespaceAuthorizationRule{},
-		&AzurermEventhubNamespaceAuthorizationRuleList{},
-
-		&AzurermMonitorMetricAlert{},
-		&AzurermMonitorMetricAlertList{},
-
-		&AzurermStreamAnalyticsOutputBlob{},
-		&AzurermStreamAnalyticsOutputBlobList{},
-
-		&AzurermStreamAnalyticsStreamInputBlob{},
-		&AzurermStreamAnalyticsStreamInputBlobList{},
-
-		&AzurermStorageContainer{},
-		&AzurermStorageContainerList{},
-
-		&AzurermVirtualNetworkGatewayConnection{},
-		&AzurermVirtualNetworkGatewayConnectionList{},
-
-		&AzurermApplicationInsights{},
-		&AzurermApplicationInsightsList{},
-
-		&AzurermAvailabilitySet{},
-		&AzurermAvailabilitySetList{},
-
-		&AzurermDataLakeStore{},
-		&AzurermDataLakeStoreList{},
-
-		&AzurermLocalNetworkGateway{},
-		&AzurermLocalNetworkGatewayList{},
-
-		&AzurermPrivateDnsZone{},
-		&AzurermPrivateDnsZoneList{},
-
-		&AzurermResourceGroup{},
-		&AzurermResourceGroupList{},
-
-		&AzurermRouteTable{},
-		&AzurermRouteTableList{},
-
-		&AzurermSearchService{},
-		&AzurermSearchServiceList{},
-
-		&AzurermApiManagementOpenidConnectProvider{},
-		&AzurermApiManagementOpenidConnectProviderList{},
-
-		&AzurermAutomationModule{},
-		&AzurermAutomationModuleList{},
-
-		&AzurermAutomationVariableBool{},
-		&AzurermAutomationVariableBoolList{},
-
-		&AzurermDataFactoryDatasetSqlServerTable{},
-		&AzurermDataFactoryDatasetSqlServerTableList{},
-
-		&AzurermExpressRouteCircuit{},
-		&AzurermExpressRouteCircuitList{},
-
-		&AzurermStorageAccount{},
-		&AzurermStorageAccountList{},
-
-		&AzurermTemplateDeployment{},
-		&AzurermTemplateDeploymentList{},
-
-		&AzurermApiManagementApiPolicy{},
-		&AzurermApiManagementApiPolicyList{},
-
-		&AzurermAutomationDscConfiguration{},
-		&AzurermAutomationDscConfigurationList{},
-
-		&AzurermContainerGroup{},
-		&AzurermContainerGroupList{},
-
-		&AzurermEventhubConsumerGroup{},
-		&AzurermEventhubConsumerGroupList{},
-
-		&AzurermSharedImage{},
-		&AzurermSharedImageList{},
+    
+        &AzurermApiManagementGroup{},
+        &AzurermApiManagementGroupList{},
+    
+        &AzurermAppService{},
+        &AzurermAppServiceList{},
+    
+        &AzurermEventgridEventSubscription{},
+        &AzurermEventgridEventSubscriptionList{},
+    
+        &AzurermKubernetesCluster{},
+        &AzurermKubernetesClusterList{},
+    
+        &AzurermNetworkProfile{},
+        &AzurermNetworkProfileList{},
+    
+        &AzurermPostgresqlDatabase{},
+        &AzurermPostgresqlDatabaseList{},
+    
+        &AzurermRecoveryServicesProtectionPolicyVm{},
+        &AzurermRecoveryServicesProtectionPolicyVmList{},
+    
+        &AzurermDevTestPolicy{},
+        &AzurermDevTestPolicyList{},
+    
+        &AzurermIotDpsCertificate{},
+        &AzurermIotDpsCertificateList{},
+    
+        &AzurermVirtualNetworkGateway{},
+        &AzurermVirtualNetworkGatewayList{},
+    
+        &AzurermConnectionMonitor{},
+        &AzurermConnectionMonitorList{},
+    
+        &AzurermMysqlVirtualNetworkRule{},
+        &AzurermMysqlVirtualNetworkRuleList{},
+    
+        &AzurermSecurityCenterSubscriptionPricing{},
+        &AzurermSecurityCenterSubscriptionPricingList{},
+    
+        &AzurermApiManagementApiPolicy{},
+        &AzurermApiManagementApiPolicyList{},
+    
+        &AzurermApplicationInsightsWebTest{},
+        &AzurermApplicationInsightsWebTestList{},
+    
+        &AzurermAutoscaleSetting{},
+        &AzurermAutoscaleSettingList{},
+    
+        &AzurermDnsPtrRecord{},
+        &AzurermDnsPtrRecordList{},
+    
+        &AzurermVirtualMachineExtension{},
+        &AzurermVirtualMachineExtensionList{},
+    
+        &AzurermHdinsightMlServicesCluster{},
+        &AzurermHdinsightMlServicesClusterList{},
+    
+        &AzurermStreamAnalyticsOutputBlob{},
+        &AzurermStreamAnalyticsOutputBlobList{},
+    
+        &AzurermApiManagementLogger{},
+        &AzurermApiManagementLoggerList{},
+    
+        &AzurermAvailabilitySet{},
+        &AzurermAvailabilitySetList{},
+    
+        &AzurermManagedDisk{},
+        &AzurermManagedDiskList{},
+    
+        &AzurermManagementLock{},
+        &AzurermManagementLockList{},
+    
+        &AzurermNetworkConnectionMonitor{},
+        &AzurermNetworkConnectionMonitorList{},
+    
+        &AzurermAutomationModule{},
+        &AzurermAutomationModuleList{},
+    
+        &AzurermDataFactoryLinkedServicePostgresql{},
+        &AzurermDataFactoryLinkedServicePostgresqlList{},
+    
+        &AzurermAutomationAccount{},
+        &AzurermAutomationAccountList{},
+    
+        &AzurermAzureadServicePrincipalPassword{},
+        &AzurermAzureadServicePrincipalPasswordList{},
+    
+        &AzurermCosmosdbSqlDatabase{},
+        &AzurermCosmosdbSqlDatabaseList{},
+    
+        &AzurermKeyVaultSecret{},
+        &AzurermKeyVaultSecretList{},
+    
+        &AzurermSqlServer{},
+        &AzurermSqlServerList{},
+    
+        &AzurermStorageAccount{},
+        &AzurermStorageAccountList{},
+    
+        &AzurermAutomationVariableString{},
+        &AzurermAutomationVariableStringList{},
+    
+        &AzurermEventgridDomain{},
+        &AzurermEventgridDomainList{},
+    
+        &AzurermVirtualMachineScaleSet{},
+        &AzurermVirtualMachineScaleSetList{},
+    
+        &AzurermDnsZone{},
+        &AzurermDnsZoneList{},
+    
+        &AzurermPostgresqlConfiguration{},
+        &AzurermPostgresqlConfigurationList{},
+    
+        &AzurermPublicIpPrefix{},
+        &AzurermPublicIpPrefixList{},
+    
+        &AzurermRelayNamespace{},
+        &AzurermRelayNamespaceList{},
+    
+        &AzurermApiManagementGroupUser{},
+        &AzurermApiManagementGroupUserList{},
+    
+        &AzurermServiceFabricCluster{},
+        &AzurermServiceFabricClusterList{},
+    
+        &AzurermServicebusSubscriptionRule{},
+        &AzurermServicebusSubscriptionRuleList{},
+    
+        &AzurermContainerRegistry{},
+        &AzurermContainerRegistryList{},
+    
+        &AzurermAutomationVariableInt{},
+        &AzurermAutomationVariableIntList{},
+    
+        &AzurermImage{},
+        &AzurermImageList{},
+    
+        &AzurermIothubSharedAccessPolicy{},
+        &AzurermIothubSharedAccessPolicyList{},
+    
+        &AzurermNetworkInterface{},
+        &AzurermNetworkInterfaceList{},
+    
+        &AzurermPublicIp{},
+        &AzurermPublicIpList{},
+    
+        &AzurermSecurityCenterWorkspace{},
+        &AzurermSecurityCenterWorkspaceList{},
+    
+        &AzurermAzureadApplication{},
+        &AzurermAzureadApplicationList{},
+    
+        &AzurermDevTestLab{},
+        &AzurermDevTestLabList{},
+    
+        &AzurermVirtualNetworkGatewayConnection{},
+        &AzurermVirtualNetworkGatewayConnectionList{},
+    
+        &AzurermDataFactoryDatasetSqlServerTable{},
+        &AzurermDataFactoryDatasetSqlServerTableList{},
+    
+        &AzurermDnsTxtRecord{},
+        &AzurermDnsTxtRecordList{},
+    
+        &AzurermMonitorActionGroup{},
+        &AzurermMonitorActionGroupList{},
+    
+        &AzurermPostgresqlServer{},
+        &AzurermPostgresqlServerList{},
+    
+        &AzurermServicebusTopic{},
+        &AzurermServicebusTopicList{},
+    
+        &AzurermSqlDatabase{},
+        &AzurermSqlDatabaseList{},
+    
+        &AzurermTemplateDeployment{},
+        &AzurermTemplateDeploymentList{},
+    
+        &AzurermKeyVaultAccessPolicy{},
+        &AzurermKeyVaultAccessPolicyList{},
+    
+        &AzurermMonitorAutoscaleSetting{},
+        &AzurermMonitorAutoscaleSettingList{},
+    
+        &AzurermPacketCapture{},
+        &AzurermPacketCaptureList{},
+    
+        &AzurermApiManagementOpenidConnectProvider{},
+        &AzurermApiManagementOpenidConnectProviderList{},
+    
+        &AzurermDataFactoryDatasetMysql{},
+        &AzurermDataFactoryDatasetMysqlList{},
+    
+        &AzurermSecurityCenterContact{},
+        &AzurermSecurityCenterContactList{},
+    
+        &AzurermSqlFirewallRule{},
+        &AzurermSqlFirewallRuleList{},
+    
+        &AzurermMariadbDatabase{},
+        &AzurermMariadbDatabaseList{},
+    
+        &AzurermRedisCache{},
+        &AzurermRedisCacheList{},
+    
+        &AzurermBatchAccount{},
+        &AzurermBatchAccountList{},
+    
+        &AzurermVirtualMachineDataDiskAttachment{},
+        &AzurermVirtualMachineDataDiskAttachmentList{},
+    
+        &AzurermMysqlFirewallRule{},
+        &AzurermMysqlFirewallRuleList{},
+    
+        &AzurermRoute{},
+        &AzurermRouteList{},
+    
+        &AzurermSnapshot{},
+        &AzurermSnapshotList{},
+    
+        &AzurermEventgridTopic{},
+        &AzurermEventgridTopicList{},
+    
+        &AzurermMonitorMetricAlertrule{},
+        &AzurermMonitorMetricAlertruleList{},
+    
+        &AzurermNetworkSecurityGroup{},
+        &AzurermNetworkSecurityGroupList{},
+    
+        &AzurermServicebusNamespace{},
+        &AzurermServicebusNamespaceList{},
+    
+        &AzurermApiManagementProductGroup{},
+        &AzurermApiManagementProductGroupList{},
+    
+        &AzurermDevTestVirtualNetwork{},
+        &AzurermDevTestVirtualNetworkList{},
+    
+        &AzurermDnsAaaaRecord{},
+        &AzurermDnsAaaaRecordList{},
+    
+        &AzurermLogAnalyticsLinkedService{},
+        &AzurermLogAnalyticsLinkedServiceList{},
+    
+        &AzurermSqlActiveDirectoryAdministrator{},
+        &AzurermSqlActiveDirectoryAdministratorList{},
+    
+        &AzurermStreamAnalyticsStreamInputEventhub{},
+        &AzurermStreamAnalyticsStreamInputEventhubList{},
+    
+        &AzurermApiManagementProductPolicy{},
+        &AzurermApiManagementProductPolicyList{},
+    
+        &AzurermAppServiceActiveSlot{},
+        &AzurermAppServiceActiveSlotList{},
+    
+        &AzurermCosmosdbCassandraKeyspace{},
+        &AzurermCosmosdbCassandraKeyspaceList{},
+    
+        &AzurermDataLakeStoreFile{},
+        &AzurermDataLakeStoreFileList{},
+    
+        &AzurermIotDps{},
+        &AzurermIotDpsList{},
+    
+        &AzurermLogicAppActionHttp{},
+        &AzurermLogicAppActionHttpList{},
+    
+        &AzurermMonitorDiagnosticSetting{},
+        &AzurermMonitorDiagnosticSettingList{},
+    
+        &AzurermCosmosdbAccount{},
+        &AzurermCosmosdbAccountList{},
+    
+        &AzurermDataFactoryLinkedServiceSqlServer{},
+        &AzurermDataFactoryLinkedServiceSqlServerList{},
+    
+        &AzurermHdinsightInteractiveQueryCluster{},
+        &AzurermHdinsightInteractiveQueryClusterList{},
+    
+        &AzurermLogicAppTriggerRecurrence{},
+        &AzurermLogicAppTriggerRecurrenceList{},
+    
+        &AzurermCdnEndpoint{},
+        &AzurermCdnEndpointList{},
+    
+        &AzurermContainerService{},
+        &AzurermContainerServiceList{},
+    
+        &AzurermDdosProtectionPlan{},
+        &AzurermDdosProtectionPlanList{},
+    
+        &AzurermLogAnalyticsWorkspace{},
+        &AzurermLogAnalyticsWorkspaceList{},
+    
+        &AzurermMysqlDatabase{},
+        &AzurermMysqlDatabaseList{},
+    
+        &AzurermSubnetNetworkSecurityGroupAssociation{},
+        &AzurermSubnetNetworkSecurityGroupAssociationList{},
+    
+        &AzurermExpressRouteCircuit{},
+        &AzurermExpressRouteCircuitList{},
+    
+        &AzurermHdinsightStormCluster{},
+        &AzurermHdinsightStormClusterList{},
+    
+        &AzurermKeyVaultCertificate{},
+        &AzurermKeyVaultCertificateList{},
+    
+        &AzurermMetricAlertrule{},
+        &AzurermMetricAlertruleList{},
+    
+        &AzurermStreamAnalyticsOutputServicebusQueue{},
+        &AzurermStreamAnalyticsOutputServicebusQueueList{},
+    
+        &AzurermApiManagementApi{},
+        &AzurermApiManagementApiList{},
+    
+        &AzurermApiManagementUser{},
+        &AzurermApiManagementUserList{},
+    
+        &AzurermCosmosdbTable{},
+        &AzurermCosmosdbTableList{},
+    
+        &AzurermServicebusSubscription{},
+        &AzurermServicebusSubscriptionList{},
+    
+        &AzurermDataLakeAnalyticsAccount{},
+        &AzurermDataLakeAnalyticsAccountList{},
+    
+        &AzurermLbNatRule{},
+        &AzurermLbNatRuleList{},
+    
+        &AzurermMonitorLogProfile{},
+        &AzurermMonitorLogProfileList{},
+    
+        &AzurermPolicyAssignment{},
+        &AzurermPolicyAssignmentList{},
+    
+        &AzurermSqlVirtualNetworkRule{},
+        &AzurermSqlVirtualNetworkRuleList{},
+    
+        &AzurermMonitorActivityLogAlert{},
+        &AzurermMonitorActivityLogAlertList{},
+    
+        &AzurermServicebusQueueAuthorizationRule{},
+        &AzurermServicebusQueueAuthorizationRuleList{},
+    
+        &AzurermHdinsightHadoopCluster{},
+        &AzurermHdinsightHadoopClusterList{},
+    
+        &AzurermLbOutboundRule{},
+        &AzurermLbOutboundRuleList{},
+    
+        &AzurermMariadbFirewallRule{},
+        &AzurermMariadbFirewallRuleList{},
+    
+        &AzurermLogicAppWorkflow{},
+        &AzurermLogicAppWorkflowList{},
+    
+        &AzurermSchedulerJobCollection{},
+        &AzurermSchedulerJobCollectionList{},
+    
+        &AzurermStreamAnalyticsFunctionJavascriptUdf{},
+        &AzurermStreamAnalyticsFunctionJavascriptUdfList{},
+    
+        &AzurermDevTestLinuxVirtualMachine{},
+        &AzurermDevTestLinuxVirtualMachineList{},
+    
+        &AzurermHdinsightHbaseCluster{},
+        &AzurermHdinsightHbaseClusterList{},
+    
+        &AzurermStorageContainer{},
+        &AzurermStorageContainerList{},
+    
+        &AzurermTrafficManagerProfile{},
+        &AzurermTrafficManagerProfileList{},
+    
+        &AzurermApiManagementProduct{},
+        &AzurermApiManagementProductList{},
+    
+        &AzurermApiManagementProductApi{},
+        &AzurermApiManagementProductApiList{},
+    
+        &AzurermEventhubConsumerGroup{},
+        &AzurermEventhubConsumerGroupList{},
+    
+        &AzurermManagementGroup{},
+        &AzurermManagementGroupList{},
+    
+        &AzurermNetworkWatcher{},
+        &AzurermNetworkWatcherList{},
+    
+        &AzurermRoleAssignment{},
+        &AzurermRoleAssignmentList{},
+    
+        &AzurermSqlElasticpool{},
+        &AzurermSqlElasticpoolList{},
+    
+        &AzurermDnsCnameRecord{},
+        &AzurermDnsCnameRecordList{},
+    
+        &AzurermServicebusNamespaceAuthorizationRule{},
+        &AzurermServicebusNamespaceAuthorizationRuleList{},
+    
+        &AzurermAutomationSchedule{},
+        &AzurermAutomationScheduleList{},
+    
+        &AzurermCosmosdbMongoCollection{},
+        &AzurermCosmosdbMongoCollectionList{},
+    
+        &AzurermMysqlServer{},
+        &AzurermMysqlServerList{},
+    
+        &AzurermStreamAnalyticsStreamInputIothub{},
+        &AzurermStreamAnalyticsStreamInputIothubList{},
+    
+        &AzurermUserAssignedIdentity{},
+        &AzurermUserAssignedIdentityList{},
+    
+        &AzurermVirtualNetwork{},
+        &AzurermVirtualNetworkList{},
+    
+        &AzurermDataFactoryDatasetPostgresql{},
+        &AzurermDataFactoryDatasetPostgresqlList{},
+    
+        &AzurermFirewallApplicationRuleCollection{},
+        &AzurermFirewallApplicationRuleCollectionList{},
+    
+        &AzurermFirewallNetworkRuleCollection{},
+        &AzurermFirewallNetworkRuleCollectionList{},
+    
+        &AzurermPostgresqlVirtualNetworkRule{},
+        &AzurermPostgresqlVirtualNetworkRuleList{},
+    
+        &AzurermDevTestWindowsVirtualMachine{},
+        &AzurermDevTestWindowsVirtualMachineList{},
+    
+        &AzurermEventhubAuthorizationRule{},
+        &AzurermEventhubAuthorizationRuleList{},
+    
+        &AzurermSharedImageGallery{},
+        &AzurermSharedImageGalleryList{},
+    
+        &AzurermStorageShare{},
+        &AzurermStorageShareList{},
+    
+        &AzurermAutomationRunbook{},
+        &AzurermAutomationRunbookList{},
+    
+        &AzurermDnsCaaRecord{},
+        &AzurermDnsCaaRecordList{},
+    
+        &AzurermMonitorMetricAlert{},
+        &AzurermMonitorMetricAlertList{},
+    
+        &AzurermStreamAnalyticsJob{},
+        &AzurermStreamAnalyticsJobList{},
+    
+        &AzurermCdnProfile{},
+        &AzurermCdnProfileList{},
+    
+        &AzurermApiManagementAuthorizationServer{},
+        &AzurermApiManagementAuthorizationServerList{},
+    
+        &AzurermApiManagementCertificate{},
+        &AzurermApiManagementCertificateList{},
+    
+        &AzurermApiManagementProperty{},
+        &AzurermApiManagementPropertyList{},
+    
+        &AzurermAutomationVariableBool{},
+        &AzurermAutomationVariableBoolList{},
+    
+        &AzurermFunctionApp{},
+        &AzurermFunctionAppList{},
+    
+        &AzurermNetworkInterfaceApplicationSecurityGroupAssociation{},
+        &AzurermNetworkInterfaceApplicationSecurityGroupAssociationList{},
+    
+        &AzurermAzureadServicePrincipal{},
+        &AzurermAzureadServicePrincipalList{},
+    
+        &AzurermDnsMxRecord{},
+        &AzurermDnsMxRecordList{},
+    
+        &AzurermLbNatPool{},
+        &AzurermLbNatPoolList{},
+    
+        &AzurermSharedImage{},
+        &AzurermSharedImageList{},
+    
+        &AzurermVirtualMachine{},
+        &AzurermVirtualMachineList{},
+    
+        &AzurermAutomationDscConfiguration{},
+        &AzurermAutomationDscConfigurationList{},
+    
+        &AzurermBatchPool{},
+        &AzurermBatchPoolList{},
+    
+        &AzurermDataFactory{},
+        &AzurermDataFactoryList{},
+    
+        &AzurermDataLakeStore{},
+        &AzurermDataLakeStoreList{},
+    
+        &AzurermIothub{},
+        &AzurermIothubList{},
+    
+        &AzurermLbProbe{},
+        &AzurermLbProbeList{},
+    
+        &AzurermNetworkSecurityRule{},
+        &AzurermNetworkSecurityRuleList{},
+    
+        &AzurermAppServiceSlot{},
+        &AzurermAppServiceSlotList{},
+    
+        &AzurermMariadbServer{},
+        &AzurermMariadbServerList{},
+    
+        &AzurermNotificationHubAuthorizationRule{},
+        &AzurermNotificationHubAuthorizationRuleList{},
+    
+        &AzurermRouteTable{},
+        &AzurermRouteTableList{},
+    
+        &AzurermStorageQueue{},
+        &AzurermStorageQueueList{},
+    
+        &AzurermHdinsightSparkCluster{},
+        &AzurermHdinsightSparkClusterList{},
+    
+        &AzurermDnsARecord{},
+        &AzurermDnsARecordList{},
+    
+        &AzurermEventhubNamespace{},
+        &AzurermEventhubNamespaceList{},
+    
+        &AzurermRedisFirewallRule{},
+        &AzurermRedisFirewallRuleList{},
+    
+        &AzurermSearchService{},
+        &AzurermSearchServiceList{},
+    
+        &AzurermApplicationInsights{},
+        &AzurermApplicationInsightsList{},
+    
+        &AzurermDataFactoryLinkedServiceDataLakeStorageGen2{},
+        &AzurermDataFactoryLinkedServiceDataLakeStorageGen2List{},
+    
+        &AzurermLocalNetworkGateway{},
+        &AzurermLocalNetworkGatewayList{},
+    
+        &AzurermLogicAppTriggerHttpRequest{},
+        &AzurermLogicAppTriggerHttpRequestList{},
+    
+        &AzurermRecoveryServicesVault{},
+        &AzurermRecoveryServicesVaultList{},
+    
+        &AzurermExpressRouteCircuitAuthorization{},
+        &AzurermExpressRouteCircuitAuthorizationList{},
+    
+        &AzurermHdinsightKafkaCluster{},
+        &AzurermHdinsightKafkaClusterList{},
+    
+        &AzurermKeyVaultKey{},
+        &AzurermKeyVaultKeyList{},
+    
+        &AzurermNetworkInterfaceNatRuleAssociation{},
+        &AzurermNetworkInterfaceNatRuleAssociationList{},
+    
+        &AzurermPolicyDefinition{},
+        &AzurermPolicyDefinitionList{},
+    
+        &AzurermStorageBlob{},
+        &AzurermStorageBlobList{},
+    
+        &AzurermCognitiveAccount{},
+        &AzurermCognitiveAccountList{},
+    
+        &AzurermMediaServicesAccount{},
+        &AzurermMediaServicesAccountList{},
+    
+        &AzurermStreamAnalyticsOutputMssql{},
+        &AzurermStreamAnalyticsOutputMssqlList{},
+    
+        &AzurermVirtualNetworkPeering{},
+        &AzurermVirtualNetworkPeeringList{},
+    
+        &AzurermAppServicePlan{},
+        &AzurermAppServicePlanList{},
+    
+        &AzurermDnsSrvRecord{},
+        &AzurermDnsSrvRecordList{},
+    
+        &AzurermFirewall{},
+        &AzurermFirewallList{},
+    
+        &AzurermIothubConsumerGroup{},
+        &AzurermIothubConsumerGroupList{},
+    
+        &AzurermNotificationHubNamespace{},
+        &AzurermNotificationHubNamespaceList{},
+    
+        &AzurermNotificationHub{},
+        &AzurermNotificationHubList{},
+    
+        &AzurermDataLakeStoreFirewallRule{},
+        &AzurermDataLakeStoreFirewallRuleList{},
+    
+        &AzurermLogicAppActionCustom{},
+        &AzurermLogicAppActionCustomList{},
+    
+        &AzurermSharedImageVersion{},
+        &AzurermSharedImageVersionList{},
+    
+        &AzurermSignalrService{},
+        &AzurermSignalrServiceList{},
+    
+        &AzurermApiManagementApiSchema{},
+        &AzurermApiManagementApiSchemaList{},
+    
+        &AzurermDnsNsRecord{},
+        &AzurermDnsNsRecordList{},
+    
+        &AzurermExpressRouteCircuitPeering{},
+        &AzurermExpressRouteCircuitPeeringList{},
+    
+        &AzurermLb{},
+        &AzurermLbList{},
+    
+        &AzurermNetworkDdosProtectionPlan{},
+        &AzurermNetworkDdosProtectionPlanList{},
+    
+        &AzurermStreamAnalyticsOutputEventhub{},
+        &AzurermStreamAnalyticsOutputEventhubList{},
+    
+        &AzurermApiManagementApiOperation{},
+        &AzurermApiManagementApiOperationList{},
+    
+        &AzurermApiManagementApiVersionSet{},
+        &AzurermApiManagementApiVersionSetList{},
+    
+        &AzurermBatchCertificate{},
+        &AzurermBatchCertificateList{},
+    
+        &AzurermEventhubNamespaceAuthorizationRule{},
+        &AzurermEventhubNamespaceAuthorizationRuleList{},
+    
+        &AzurermLbRule{},
+        &AzurermLbRuleList{},
+    
+        &AzurermPostgresqlFirewallRule{},
+        &AzurermPostgresqlFirewallRuleList{},
+    
+        &AzurermPrivateDnsZone{},
+        &AzurermPrivateDnsZoneList{},
+    
+        &AzurermSubnetRouteTableAssociation{},
+        &AzurermSubnetRouteTableAssociationList{},
+    
+        &AzurermTrafficManagerEndpoint{},
+        &AzurermTrafficManagerEndpointList{},
+    
+        &AzurermApplicationGateway{},
+        &AzurermApplicationGatewayList{},
+    
+        &AzurermApplicationInsightsApiKey{},
+        &AzurermApplicationInsightsApiKeyList{},
+    
+        &AzurermContainerGroup{},
+        &AzurermContainerGroupList{},
+    
+        &AzurermDataFactoryLinkedServiceMysql{},
+        &AzurermDataFactoryLinkedServiceMysqlList{},
+    
+        &AzurermDataFactoryPipeline{},
+        &AzurermDataFactoryPipelineList{},
+    
+        &AzurermApplicationSecurityGroup{},
+        &AzurermApplicationSecurityGroupList{},
+    
+        &AzurermLogAnalyticsSolution{},
+        &AzurermLogAnalyticsSolutionList{},
+    
+        &AzurermLogicAppTriggerCustom{},
+        &AzurermLogicAppTriggerCustomList{},
+    
+        &AzurermAutomationCredential{},
+        &AzurermAutomationCredentialList{},
+    
+        &AzurermPolicySetDefinition{},
+        &AzurermPolicySetDefinitionList{},
+    
+        &AzurermResourceGroup{},
+        &AzurermResourceGroupList{},
+    
+        &AzurermServicebusQueue{},
+        &AzurermServicebusQueueList{},
+    
+        &AzurermNetworkPacketCapture{},
+        &AzurermNetworkPacketCaptureList{},
+    
+        &AzurermAutomationDscNodeconfiguration{},
+        &AzurermAutomationDscNodeconfigurationList{},
+    
+        &AzurermDevspaceController{},
+        &AzurermDevspaceControllerList{},
+    
+        &AzurermKeyVault{},
+        &AzurermKeyVaultList{},
+    
+        &AzurermLbBackendAddressPool{},
+        &AzurermLbBackendAddressPoolList{},
+    
+        &AzurermSubnet{},
+        &AzurermSubnetList{},
+    
+        &AzurermStorageTable{},
+        &AzurermStorageTableList{},
+    
+        &AzurermApiManagementApiOperationPolicy{},
+        &AzurermApiManagementApiOperationPolicyList{},
+    
+        &AzurermDatabricksWorkspace{},
+        &AzurermDatabricksWorkspaceList{},
+    
+        &AzurermEventhub{},
+        &AzurermEventhubList{},
+    
+        &AzurermHdinsightRserverCluster{},
+        &AzurermHdinsightRserverClusterList{},
+    
+        &AzurermMssqlElasticpool{},
+        &AzurermMssqlElasticpoolList{},
+    
+        &AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociation{},
+        &AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationList{},
+    
+        &AzurermSchedulerJob{},
+        &AzurermSchedulerJobList{},
+    
+        &AzurermAppServiceCustomHostnameBinding{},
+        &AzurermAppServiceCustomHostnameBindingList{},
+    
+        &AzurermAutomationVariableDatetime{},
+        &AzurermAutomationVariableDatetimeList{},
+    
+        &AzurermDataLakeAnalyticsFirewallRule{},
+        &AzurermDataLakeAnalyticsFirewallRuleList{},
+    
+        &AzurermFirewallNatRuleCollection{},
+        &AzurermFirewallNatRuleCollectionList{},
+    
+        &AzurermLogAnalyticsWorkspaceLinkedService{},
+        &AzurermLogAnalyticsWorkspaceLinkedServiceList{},
+    
+        &AzurermApiManagement{},
+        &AzurermApiManagementList{},
+    
+        &AzurermCosmosdbMongoDatabase{},
+        &AzurermCosmosdbMongoDatabaseList{},
+    
+        &AzurermRecoveryServicesProtectedVm{},
+        &AzurermRecoveryServicesProtectedVmList{},
+    
+        &AzurermRoleDefinition{},
+        &AzurermRoleDefinitionList{},
+    
+        &AzurermApiManagementSubscription{},
+        &AzurermApiManagementSubscriptionList{},
+    
+        &AzurermMysqlConfiguration{},
+        &AzurermMysqlConfigurationList{},
+    
+        &AzurermNetworkInterfaceBackendAddressPoolAssociation{},
+        &AzurermNetworkInterfaceBackendAddressPoolAssociationList{},
+    
+        &AzurermServicebusTopicAuthorizationRule{},
+        &AzurermServicebusTopicAuthorizationRuleList{},
+    
+        &AzurermStreamAnalyticsStreamInputBlob{},
+        &AzurermStreamAnalyticsStreamInputBlobList{},
+    
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

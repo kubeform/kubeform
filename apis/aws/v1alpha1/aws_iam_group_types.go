@@ -19,13 +19,19 @@ type AwsIamGroup struct {
 }
 
 type AwsIamGroupSpec struct {
-	Name     string `json:"name"`
-	Path     string `json:"path"`
 	Arn      string `json:"arn"`
 	UniqueId string `json:"unique_id"`
+	Name     string `json:"name"`
+	Path     string `json:"path"`
 }
 
+
+
 type AwsIamGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

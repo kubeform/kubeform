@@ -19,18 +19,24 @@ type AwsKmsKey struct {
 }
 
 type AwsKmsKeySpec struct {
-	KeyId                string            `json:"key_id"`
-	Policy               string            `json:"policy"`
-	IsEnabled            bool              `json:"is_enabled"`
-	EnableKeyRotation    bool              `json:"enable_key_rotation"`
-	Arn                  string            `json:"arn"`
 	Description          string            `json:"description"`
 	KeyUsage             string            `json:"key_usage"`
 	DeletionWindowInDays int               `json:"deletion_window_in_days"`
 	Tags                 map[string]string `json:"tags"`
+	Arn                  string            `json:"arn"`
+	KeyId                string            `json:"key_id"`
+	Policy               string            `json:"policy"`
+	IsEnabled            bool              `json:"is_enabled"`
+	EnableKeyRotation    bool              `json:"enable_key_rotation"`
 }
 
+
+
 type AwsKmsKeyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

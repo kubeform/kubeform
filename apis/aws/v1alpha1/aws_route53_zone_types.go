@@ -24,19 +24,25 @@ type AwsRoute53ZoneSpecVpc struct {
 }
 
 type AwsRoute53ZoneSpec struct {
-	Name            string               `json:"name"`
-	Vpc             []AwsRoute53ZoneSpec `json:"vpc"`
-	ZoneId          string               `json:"zone_id"`
-	NameServers     []string             `json:"name_servers"`
-	ForceDestroy    bool                 `json:"force_destroy"`
-	Comment         string               `json:"comment"`
 	VpcId           string               `json:"vpc_id"`
-	VpcRegion       string               `json:"vpc_region"`
+	ZoneId          string               `json:"zone_id"`
 	DelegationSetId string               `json:"delegation_set_id"`
+	NameServers     []string             `json:"name_servers"`
 	Tags            map[string]string    `json:"tags"`
+	ForceDestroy    bool                 `json:"force_destroy"`
+	Vpc             []AwsRoute53ZoneSpec `json:"vpc"`
+	Comment         string               `json:"comment"`
+	VpcRegion       string               `json:"vpc_region"`
+	Name            string               `json:"name"`
 }
 
+
+
 type AwsRoute53ZoneStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

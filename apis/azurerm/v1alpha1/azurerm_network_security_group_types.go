@@ -19,22 +19,22 @@ type AzurermNetworkSecurityGroup struct {
 }
 
 type AzurermNetworkSecurityGroupSpecSecurityRule struct {
+	Description                            string   `json:"description"`
+	Protocol                               string   `json:"protocol"`
+	DestinationPortRanges                  []string `json:"destination_port_ranges"`
+	DestinationApplicationSecurityGroupIds []string `json:"destination_application_security_group_ids"`
 	SourceApplicationSecurityGroupIds      []string `json:"source_application_security_group_ids"`
 	Name                                   string   `json:"name"`
-	SourcePortRange                        string   `json:"source_port_range"`
-	DestinationPortRanges                  []string `json:"destination_port_ranges"`
-	SourceAddressPrefixes                  []string `json:"source_address_prefixes"`
-	Protocol                               string   `json:"protocol"`
 	DestinationPortRange                   string   `json:"destination_port_range"`
-	Priority                               int      `json:"priority"`
-	Direction                              string   `json:"direction"`
-	Access                                 string   `json:"access"`
-	Description                            string   `json:"description"`
-	SourcePortRanges                       []string `json:"source_port_ranges"`
-	DestinationAddressPrefix               string   `json:"destination_address_prefix"`
-	DestinationApplicationSecurityGroupIds []string `json:"destination_application_security_group_ids"`
 	SourceAddressPrefix                    string   `json:"source_address_prefix"`
 	DestinationAddressPrefixes             []string `json:"destination_address_prefixes"`
+	SourcePortRanges                       []string `json:"source_port_ranges"`
+	Access                                 string   `json:"access"`
+	Priority                               int      `json:"priority"`
+	DestinationAddressPrefix               string   `json:"destination_address_prefix"`
+	SourceAddressPrefixes                  []string `json:"source_address_prefixes"`
+	Direction                              string   `json:"direction"`
+	SourcePortRange                        string   `json:"source_port_range"`
 }
 
 type AzurermNetworkSecurityGroupSpec struct {
@@ -45,7 +45,13 @@ type AzurermNetworkSecurityGroupSpec struct {
 	ResourceGroupName string                            `json:"resource_group_name"`
 }
 
+
+
 type AzurermNetworkSecurityGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

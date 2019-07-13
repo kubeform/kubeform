@@ -19,10 +19,10 @@ type AwsElasticBeanstalkApplication struct {
 }
 
 type AwsElasticBeanstalkApplicationSpecAppversionLifecycle struct {
+	ServiceRole        string `json:"service_role"`
 	MaxAgeInDays       int    `json:"max_age_in_days"`
 	MaxCount           int    `json:"max_count"`
 	DeleteSourceFromS3 bool   `json:"delete_source_from_s3"`
-	ServiceRole        string `json:"service_role"`
 }
 
 type AwsElasticBeanstalkApplicationSpec struct {
@@ -33,7 +33,13 @@ type AwsElasticBeanstalkApplicationSpec struct {
 	Tags                map[string]string                    `json:"tags"`
 }
 
+
+
 type AwsElasticBeanstalkApplicationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

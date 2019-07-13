@@ -25,13 +25,19 @@ type AwsGameliftBuildSpecStorageLocation struct {
 }
 
 type AwsGameliftBuildSpec struct {
-	Name            string                 `json:"name"`
 	OperatingSystem string                 `json:"operating_system"`
 	StorageLocation []AwsGameliftBuildSpec `json:"storage_location"`
 	Version         string                 `json:"version"`
+	Name            string                 `json:"name"`
 }
 
+
+
 type AwsGameliftBuildStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

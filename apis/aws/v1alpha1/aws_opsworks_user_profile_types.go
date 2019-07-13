@@ -19,13 +19,19 @@ type AwsOpsworksUserProfile struct {
 }
 
 type AwsOpsworksUserProfileSpec struct {
+	UserArn             string `json:"user_arn"`
 	AllowSelfManagement bool   `json:"allow_self_management"`
 	SshUsername         string `json:"ssh_username"`
 	SshPublicKey        string `json:"ssh_public_key"`
-	UserArn             string `json:"user_arn"`
 }
 
+
+
 type AwsOpsworksUserProfileStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

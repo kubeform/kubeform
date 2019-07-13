@@ -20,27 +20,33 @@ type AwsDatasyncTask struct {
 
 type AwsDatasyncTaskSpecOptions struct {
 	Atime                string `json:"atime"`
+	PosixPermissions     string `json:"posix_permissions"`
+	PreserveDeletedFiles string `json:"preserve_deleted_files"`
+	BytesPerSecond       int    `json:"bytes_per_second"`
 	Gid                  string `json:"gid"`
 	Mtime                string `json:"mtime"`
 	PreserveDevices      string `json:"preserve_devices"`
-	VerifyMode           string `json:"verify_mode"`
-	BytesPerSecond       int    `json:"bytes_per_second"`
-	PosixPermissions     string `json:"posix_permissions"`
-	PreserveDeletedFiles string `json:"preserve_deleted_files"`
 	Uid                  string `json:"uid"`
+	VerifyMode           string `json:"verify_mode"`
 }
 
 type AwsDatasyncTaskSpec struct {
-	Options                []AwsDatasyncTaskSpec `json:"options"`
-	SourceLocationArn      string                `json:"source_location_arn"`
 	Tags                   map[string]string     `json:"tags"`
 	Arn                    string                `json:"arn"`
 	CloudwatchLogGroupArn  string                `json:"cloudwatch_log_group_arn"`
 	DestinationLocationArn string                `json:"destination_location_arn"`
 	Name                   string                `json:"name"`
+	Options                []AwsDatasyncTaskSpec `json:"options"`
+	SourceLocationArn      string                `json:"source_location_arn"`
 }
 
+
+
 type AwsDatasyncTaskStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -28,29 +28,35 @@ type AwsOpsworksPhpAppLayerSpecEbsVolume struct {
 }
 
 type AwsOpsworksPhpAppLayerSpec struct {
-	CustomInstanceProfileArn string                       `json:"custom_instance_profile_arn"`
-	CustomSetupRecipes       []string                     `json:"custom_setup_recipes"`
-	CustomUndeployRecipes    []string                     `json:"custom_undeploy_recipes"`
-	UseEbsOptimizedInstances bool                         `json:"use_ebs_optimized_instances"`
-	Name                     string                       `json:"name"`
-	CustomJson               string                       `json:"custom_json"`
-	InstallUpdatesOnBoot     bool                         `json:"install_updates_on_boot"`
-	SystemPackages           []string                     `json:"system_packages"`
-	StackId                  string                       `json:"stack_id"`
-	AutoAssignElasticIps     bool                         `json:"auto_assign_elastic_ips"`
-	InstanceShutdownTimeout  int                          `json:"instance_shutdown_timeout"`
-	EbsVolume                []AwsOpsworksPhpAppLayerSpec `json:"ebs_volume"`
 	AutoAssignPublicIps      bool                         `json:"auto_assign_public_ips"`
-	ElasticLoadBalancer      string                       `json:"elastic_load_balancer"`
+	CustomInstanceProfileArn string                       `json:"custom_instance_profile_arn"`
 	CustomConfigureRecipes   []string                     `json:"custom_configure_recipes"`
 	CustomDeployRecipes      []string                     `json:"custom_deploy_recipes"`
 	CustomShutdownRecipes    []string                     `json:"custom_shutdown_recipes"`
+	EbsVolume                []AwsOpsworksPhpAppLayerSpec `json:"ebs_volume"`
+	AutoAssignElasticIps     bool                         `json:"auto_assign_elastic_ips"`
+	CustomJson               string                       `json:"custom_json"`
+	InstallUpdatesOnBoot     bool                         `json:"install_updates_on_boot"`
+	InstanceShutdownTimeout  int                          `json:"instance_shutdown_timeout"`
+	DrainElbOnShutdown       bool                         `json:"drain_elb_on_shutdown"`
+	UseEbsOptimizedInstances bool                         `json:"use_ebs_optimized_instances"`
+	StackId                  string                       `json:"stack_id"`
+	Name                     string                       `json:"name"`
+	ElasticLoadBalancer      string                       `json:"elastic_load_balancer"`
+	CustomSetupRecipes       []string                     `json:"custom_setup_recipes"`
+	CustomUndeployRecipes    []string                     `json:"custom_undeploy_recipes"`
 	CustomSecurityGroupIds   []string                     `json:"custom_security_group_ids"`
 	AutoHealing              bool                         `json:"auto_healing"`
-	DrainElbOnShutdown       bool                         `json:"drain_elb_on_shutdown"`
+	SystemPackages           []string                     `json:"system_packages"`
 }
 
+
+
 type AwsOpsworksPhpAppLayerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

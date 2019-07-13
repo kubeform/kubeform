@@ -19,17 +19,23 @@ type AwsFlowLog struct {
 }
 
 type AwsFlowLogSpec struct {
+	VpcId              string `json:"vpc_id"`
+	SubnetId           string `json:"subnet_id"`
 	EniId              string `json:"eni_id"`
 	TrafficType        string `json:"traffic_type"`
 	IamRoleArn         string `json:"iam_role_arn"`
 	LogDestination     string `json:"log_destination"`
 	LogDestinationType string `json:"log_destination_type"`
 	LogGroupName       string `json:"log_group_name"`
-	VpcId              string `json:"vpc_id"`
-	SubnetId           string `json:"subnet_id"`
 }
 
+
+
 type AwsFlowLogStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

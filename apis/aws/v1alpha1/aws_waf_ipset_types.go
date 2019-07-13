@@ -19,8 +19,8 @@ type AwsWafIpset struct {
 }
 
 type AwsWafIpsetSpecIpSetDescriptors struct {
-	Value string `json:"value"`
 	Type  string `json:"type"`
+	Value string `json:"value"`
 }
 
 type AwsWafIpsetSpec struct {
@@ -29,7 +29,13 @@ type AwsWafIpsetSpec struct {
 	IpSetDescriptors []AwsWafIpsetSpec `json:"ip_set_descriptors"`
 }
 
+
+
 type AwsWafIpsetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

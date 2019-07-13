@@ -26,16 +26,22 @@ type AzurermRouteTableSpecRoute struct {
 }
 
 type AzurermRouteTableSpec struct {
-	Subnets                    []string                `json:"subnets"`
-	Tags                       map[string]string       `json:"tags"`
-	Name                       string                  `json:"name"`
 	Location                   string                  `json:"location"`
 	ResourceGroupName          string                  `json:"resource_group_name"`
 	Route                      []AzurermRouteTableSpec `json:"route"`
 	DisableBgpRoutePropagation bool                    `json:"disable_bgp_route_propagation"`
+	Subnets                    []string                `json:"subnets"`
+	Tags                       map[string]string       `json:"tags"`
+	Name                       string                  `json:"name"`
 }
 
+
+
 type AzurermRouteTableStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

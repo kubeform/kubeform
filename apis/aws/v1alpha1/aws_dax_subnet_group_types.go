@@ -19,13 +19,19 @@ type AwsDaxSubnetGroup struct {
 }
 
 type AwsDaxSubnetGroupSpec struct {
+	VpcId       string   `json:"vpc_id"`
 	Name        string   `json:"name"`
 	Description string   `json:"description"`
 	SubnetIds   []string `json:"subnet_ids"`
-	VpcId       string   `json:"vpc_id"`
 }
 
+
+
 type AwsDaxSubnetGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

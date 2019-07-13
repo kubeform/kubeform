@@ -19,17 +19,23 @@ type AzurermSqlServer struct {
 }
 
 type AzurermSqlServerSpec struct {
-	AdministratorLogin         string            `json:"administrator_login"`
-	AdministratorLoginPassword string            `json:"administrator_login_password"`
 	FullyQualifiedDomainName   string            `json:"fully_qualified_domain_name"`
 	Tags                       map[string]string `json:"tags"`
 	Name                       string            `json:"name"`
 	Location                   string            `json:"location"`
 	ResourceGroupName          string            `json:"resource_group_name"`
 	Version                    string            `json:"version"`
+	AdministratorLogin         string            `json:"administrator_login"`
+	AdministratorLoginPassword string            `json:"administrator_login_password"`
 }
 
+
+
 type AzurermSqlServerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

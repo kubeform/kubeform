@@ -19,23 +19,29 @@ type AwsSagemakerEndpointConfiguration struct {
 }
 
 type AwsSagemakerEndpointConfigurationSpecProductionVariants struct {
+	InitialVariantWeight float64 `json:"initial_variant_weight"`
 	AcceleratorType      string  `json:"accelerator_type"`
 	VariantName          string  `json:"variant_name"`
 	ModelName            string  `json:"model_name"`
 	InitialInstanceCount int     `json:"initial_instance_count"`
 	InstanceType         string  `json:"instance_type"`
-	InitialVariantWeight float64 `json:"initial_variant_weight"`
 }
 
 type AwsSagemakerEndpointConfigurationSpec struct {
-	Tags               map[string]string                       `json:"tags"`
 	Arn                string                                  `json:"arn"`
 	Name               string                                  `json:"name"`
 	ProductionVariants []AwsSagemakerEndpointConfigurationSpec `json:"production_variants"`
 	KmsKeyArn          string                                  `json:"kms_key_arn"`
+	Tags               map[string]string                       `json:"tags"`
 }
 
+
+
 type AwsSagemakerEndpointConfigurationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

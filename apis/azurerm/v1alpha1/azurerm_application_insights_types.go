@@ -19,16 +19,22 @@ type AzurermApplicationInsights struct {
 }
 
 type AzurermApplicationInsightsSpec struct {
-	AppId              string            `json:"app_id"`
-	InstrumentationKey string            `json:"instrumentation_key"`
-	Name               string            `json:"name"`
 	ResourceGroupName  string            `json:"resource_group_name"`
 	Location           string            `json:"location"`
 	ApplicationType    string            `json:"application_type"`
 	Tags               map[string]string `json:"tags"`
+	AppId              string            `json:"app_id"`
+	InstrumentationKey string            `json:"instrumentation_key"`
+	Name               string            `json:"name"`
 }
 
+
+
 type AzurermApplicationInsightsStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

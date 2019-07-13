@@ -19,22 +19,28 @@ type AwsStoragegatewayCachedIscsiVolume struct {
 }
 
 type AwsStoragegatewayCachedIscsiVolumeSpec struct {
-	SourceVolumeArn      string `json:"source_volume_arn"`
-	TargetName           string `json:"target_name"`
-	GatewayArn           string `json:"gateway_arn"`
-	NetworkInterfacePort int    `json:"network_interface_port"`
 	SnapshotId           string `json:"snapshot_id"`
-	NetworkInterfaceId   string `json:"network_interface_id"`
 	TargetArn            string `json:"target_arn"`
+	TargetName           string `json:"target_name"`
 	VolumeArn            string `json:"volume_arn"`
-	VolumeId             string `json:"volume_id"`
 	VolumeSizeInBytes    int    `json:"volume_size_in_bytes"`
 	Arn                  string `json:"arn"`
 	ChapEnabled          bool   `json:"chap_enabled"`
+	NetworkInterfaceId   string `json:"network_interface_id"`
+	SourceVolumeArn      string `json:"source_volume_arn"`
+	VolumeId             string `json:"volume_id"`
+	GatewayArn           string `json:"gateway_arn"`
 	LunNumber            int    `json:"lun_number"`
+	NetworkInterfacePort int    `json:"network_interface_port"`
 }
 
+
+
 type AwsStoragegatewayCachedIscsiVolumeStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

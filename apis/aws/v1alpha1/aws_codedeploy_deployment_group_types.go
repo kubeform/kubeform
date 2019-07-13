@@ -18,15 +18,10 @@ type AwsCodedeployDeploymentGroup struct {
 	Status            AwsCodedeployDeploymentGroupStatus `json:"status,omitempty"`
 }
 
-type AwsCodedeployDeploymentGroupSpecAlarmConfiguration struct {
-	Alarms                 []string `json:"alarms"`
-	Enabled                bool     `json:"enabled"`
-	IgnorePollAlarmFailure bool     `json:"ignore_poll_alarm_failure"`
-}
-
-type AwsCodedeployDeploymentGroupSpecAutoRollbackConfiguration struct {
-	Events  []string `json:"events"`
-	Enabled bool     `json:"enabled"`
+type AwsCodedeployDeploymentGroupSpecEc2TagFilter struct {
+	Type  string `json:"type"`
+	Value string `json:"value"`
+	Key   string `json:"key"`
 }
 
 type AwsCodedeployDeploymentGroupSpecOnPremisesInstanceTagFilter struct {
@@ -35,20 +30,20 @@ type AwsCodedeployDeploymentGroupSpecOnPremisesInstanceTagFilter struct {
 	Value string `json:"value"`
 }
 
+type AwsCodedeployDeploymentGroupSpecDeploymentStyle struct {
+	DeploymentOption string `json:"deployment_option"`
+	DeploymentType   string `json:"deployment_type"`
+}
+
 type AwsCodedeployDeploymentGroupSpecTriggerConfiguration struct {
 	TriggerEvents    []string `json:"trigger_events"`
 	TriggerName      string   `json:"trigger_name"`
 	TriggerTargetArn string   `json:"trigger_target_arn"`
 }
 
-type AwsCodedeployDeploymentGroupSpecEcsService struct {
-	ClusterName string `json:"cluster_name"`
-	ServiceName string `json:"service_name"`
-}
-
-type AwsCodedeployDeploymentGroupSpecDeploymentStyle struct {
-	DeploymentOption string `json:"deployment_option"`
-	DeploymentType   string `json:"deployment_type"`
+type AwsCodedeployDeploymentGroupSpecBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess struct {
+	TerminationWaitTimeInMinutes int    `json:"termination_wait_time_in_minutes"`
+	Action                       string `json:"action"`
 }
 
 type AwsCodedeployDeploymentGroupSpecBlueGreenDeploymentConfigDeploymentReadyOption struct {
@@ -60,23 +55,31 @@ type AwsCodedeployDeploymentGroupSpecBlueGreenDeploymentConfigGreenFleetProvisio
 	Action string `json:"action"`
 }
 
-type AwsCodedeployDeploymentGroupSpecBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess struct {
-	Action                       string `json:"action"`
-	TerminationWaitTimeInMinutes int    `json:"termination_wait_time_in_minutes"`
-}
-
 type AwsCodedeployDeploymentGroupSpecBlueGreenDeploymentConfig struct {
+	TerminateBlueInstancesOnDeploymentSuccess []AwsCodedeployDeploymentGroupSpecBlueGreenDeploymentConfig `json:"terminate_blue_instances_on_deployment_success"`
 	DeploymentReadyOption                     []AwsCodedeployDeploymentGroupSpecBlueGreenDeploymentConfig `json:"deployment_ready_option"`
 	GreenFleetProvisioningOption              []AwsCodedeployDeploymentGroupSpecBlueGreenDeploymentConfig `json:"green_fleet_provisioning_option"`
-	TerminateBlueInstancesOnDeploymentSuccess []AwsCodedeployDeploymentGroupSpecBlueGreenDeploymentConfig `json:"terminate_blue_instances_on_deployment_success"`
 }
 
-type AwsCodedeployDeploymentGroupSpecLoadBalancerInfoElbInfo struct {
-	Name string `json:"name"`
+type AwsCodedeployDeploymentGroupSpecAlarmConfiguration struct {
+	Alarms                 []string `json:"alarms"`
+	Enabled                bool     `json:"enabled"`
+	IgnorePollAlarmFailure bool     `json:"ignore_poll_alarm_failure"`
 }
 
-type AwsCodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupInfo struct {
-	Name string `json:"name"`
+type AwsCodedeployDeploymentGroupSpecEcsService struct {
+	ClusterName string `json:"cluster_name"`
+	ServiceName string `json:"service_name"`
+}
+
+type AwsCodedeployDeploymentGroupSpecEc2TagSetEc2TagFilter struct {
+	Key   string `json:"key"`
+	Type  string `json:"type"`
+	Value string `json:"value"`
+}
+
+type AwsCodedeployDeploymentGroupSpecEc2TagSet struct {
+	Ec2TagFilter []AwsCodedeployDeploymentGroupSpecEc2TagSet `json:"ec2_tag_filter"`
 }
 
 type AwsCodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute struct {
@@ -97,47 +100,50 @@ type AwsCodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo struct 
 	TargetGroup      []AwsCodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupPairInfo `json:"target_group"`
 }
 
+type AwsCodedeployDeploymentGroupSpecLoadBalancerInfoElbInfo struct {
+	Name string `json:"name"`
+}
+
+type AwsCodedeployDeploymentGroupSpecLoadBalancerInfoTargetGroupInfo struct {
+	Name string `json:"name"`
+}
+
 type AwsCodedeployDeploymentGroupSpecLoadBalancerInfo struct {
+	TargetGroupPairInfo []AwsCodedeployDeploymentGroupSpecLoadBalancerInfo `json:"target_group_pair_info"`
 	ElbInfo             []AwsCodedeployDeploymentGroupSpecLoadBalancerInfo `json:"elb_info"`
 	TargetGroupInfo     []AwsCodedeployDeploymentGroupSpecLoadBalancerInfo `json:"target_group_info"`
-	TargetGroupPairInfo []AwsCodedeployDeploymentGroupSpecLoadBalancerInfo `json:"target_group_pair_info"`
 }
 
-type AwsCodedeployDeploymentGroupSpecEc2TagSetEc2TagFilter struct {
-	Key   string `json:"key"`
-	Type  string `json:"type"`
-	Value string `json:"value"`
-}
-
-type AwsCodedeployDeploymentGroupSpecEc2TagSet struct {
-	Ec2TagFilter []AwsCodedeployDeploymentGroupSpecEc2TagSet `json:"ec2_tag_filter"`
-}
-
-type AwsCodedeployDeploymentGroupSpecEc2TagFilter struct {
-	Key   string `json:"key"`
-	Type  string `json:"type"`
-	Value string `json:"value"`
+type AwsCodedeployDeploymentGroupSpecAutoRollbackConfiguration struct {
+	Enabled bool     `json:"enabled"`
+	Events  []string `json:"events"`
 }
 
 type AwsCodedeployDeploymentGroupSpec struct {
+	Ec2TagFilter                []AwsCodedeployDeploymentGroupSpec `json:"ec2_tag_filter"`
+	OnPremisesInstanceTagFilter []AwsCodedeployDeploymentGroupSpec `json:"on_premises_instance_tag_filter"`
+	AppName                     string                             `json:"app_name"`
+	DeploymentStyle             []AwsCodedeployDeploymentGroupSpec `json:"deployment_style"`
 	ServiceRoleArn              string                             `json:"service_role_arn"`
+	TriggerConfiguration        []AwsCodedeployDeploymentGroupSpec `json:"trigger_configuration"`
+	DeploymentGroupName         string                             `json:"deployment_group_name"`
+	BlueGreenDeploymentConfig   []AwsCodedeployDeploymentGroupSpec `json:"blue_green_deployment_config"`
+	DeploymentConfigName        string                             `json:"deployment_config_name"`
 	AlarmConfiguration          []AwsCodedeployDeploymentGroupSpec `json:"alarm_configuration"`
+	EcsService                  []AwsCodedeployDeploymentGroupSpec `json:"ecs_service"`
+	Ec2TagSet                   []AwsCodedeployDeploymentGroupSpec `json:"ec2_tag_set"`
+	LoadBalancerInfo            []AwsCodedeployDeploymentGroupSpec `json:"load_balancer_info"`
 	AutoRollbackConfiguration   []AwsCodedeployDeploymentGroupSpec `json:"auto_rollback_configuration"`
 	AutoscalingGroups           []string                           `json:"autoscaling_groups"`
-	OnPremisesInstanceTagFilter []AwsCodedeployDeploymentGroupSpec `json:"on_premises_instance_tag_filter"`
-	DeploymentConfigName        string                             `json:"deployment_config_name"`
-	TriggerConfiguration        []AwsCodedeployDeploymentGroupSpec `json:"trigger_configuration"`
-	AppName                     string                             `json:"app_name"`
-	EcsService                  []AwsCodedeployDeploymentGroupSpec `json:"ecs_service"`
-	DeploymentGroupName         string                             `json:"deployment_group_name"`
-	DeploymentStyle             []AwsCodedeployDeploymentGroupSpec `json:"deployment_style"`
-	BlueGreenDeploymentConfig   []AwsCodedeployDeploymentGroupSpec `json:"blue_green_deployment_config"`
-	LoadBalancerInfo            []AwsCodedeployDeploymentGroupSpec `json:"load_balancer_info"`
-	Ec2TagSet                   []AwsCodedeployDeploymentGroupSpec `json:"ec2_tag_set"`
-	Ec2TagFilter                []AwsCodedeployDeploymentGroupSpec `json:"ec2_tag_filter"`
 }
 
+
+
 type AwsCodedeployDeploymentGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

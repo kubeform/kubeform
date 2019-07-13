@@ -19,22 +19,28 @@ type GoogleComputeGlobalAddress struct {
 }
 
 type GoogleComputeGlobalAddressSpec struct {
-	Address           string            `json:"address"`
-	Project           string            `json:"project"`
-	SelfLink          string            `json:"self_link"`
-	Name              string            `json:"name"`
+	Description       string            `json:"description"`
 	IpVersion         string            `json:"ip_version"`
 	Network           string            `json:"network"`
 	PrefixLength      int               `json:"prefix_length"`
 	Purpose           string            `json:"purpose"`
-	CreationTimestamp string            `json:"creation_timestamp"`
+	Address           string            `json:"address"`
 	LabelFingerprint  string            `json:"label_fingerprint"`
-	AddressType       string            `json:"address_type"`
-	Description       string            `json:"description"`
+	Name              string            `json:"name"`
+	Project           string            `json:"project"`
 	Labels            map[string]string `json:"labels"`
+	CreationTimestamp string            `json:"creation_timestamp"`
+	SelfLink          string            `json:"self_link"`
+	AddressType       string            `json:"address_type"`
 }
 
+
+
 type GoogleComputeGlobalAddressStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

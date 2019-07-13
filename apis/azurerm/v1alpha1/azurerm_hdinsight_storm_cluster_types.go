@@ -18,20 +18,21 @@ type AzurermHdinsightStormCluster struct {
 	Status            AzurermHdinsightStormClusterStatus `json:"status,omitempty"`
 }
 
-type AzurermHdinsightStormClusterSpecComponentVersion struct {
-	Storm string `json:"storm"`
-}
-
 type AzurermHdinsightStormClusterSpecGateway struct {
 	Password string `json:"password"`
 	Enabled  bool   `json:"enabled"`
 	Username string `json:"username"`
 }
 
-type AzurermHdinsightStormClusterSpecStorageAccount struct {
-	IsDefault          bool   `json:"is_default"`
-	StorageAccountKey  string `json:"storage_account_key"`
-	StorageContainerId string `json:"storage_container_id"`
+type AzurermHdinsightStormClusterSpecRolesWorkerNode struct {
+	MinInstanceCount    int      `json:"min_instance_count"`
+	TargetInstanceCount int      `json:"target_instance_count"`
+	VmSize              string   `json:"vm_size"`
+	Username            string   `json:"username"`
+	Password            string   `json:"password"`
+	SshKeys             []string `json:"ssh_keys"`
+	SubnetId            string   `json:"subnet_id"`
+	VirtualNetworkId    string   `json:"virtual_network_id"`
 }
 
 type AzurermHdinsightStormClusterSpecRolesZookeeperNode struct {
@@ -44,47 +45,52 @@ type AzurermHdinsightStormClusterSpecRolesZookeeperNode struct {
 }
 
 type AzurermHdinsightStormClusterSpecRolesHeadNode struct {
+	SubnetId         string   `json:"subnet_id"`
 	VirtualNetworkId string   `json:"virtual_network_id"`
 	VmSize           string   `json:"vm_size"`
 	Username         string   `json:"username"`
 	Password         string   `json:"password"`
 	SshKeys          []string `json:"ssh_keys"`
-	SubnetId         string   `json:"subnet_id"`
-}
-
-type AzurermHdinsightStormClusterSpecRolesWorkerNode struct {
-	SshKeys             []string `json:"ssh_keys"`
-	SubnetId            string   `json:"subnet_id"`
-	VirtualNetworkId    string   `json:"virtual_network_id"`
-	MinInstanceCount    int      `json:"min_instance_count"`
-	TargetInstanceCount int      `json:"target_instance_count"`
-	VmSize              string   `json:"vm_size"`
-	Username            string   `json:"username"`
-	Password            string   `json:"password"`
 }
 
 type AzurermHdinsightStormClusterSpecRoles struct {
+	WorkerNode    []AzurermHdinsightStormClusterSpecRoles `json:"worker_node"`
 	ZookeeperNode []AzurermHdinsightStormClusterSpecRoles `json:"zookeeper_node"`
 	HeadNode      []AzurermHdinsightStormClusterSpecRoles `json:"head_node"`
-	WorkerNode    []AzurermHdinsightStormClusterSpecRoles `json:"worker_node"`
+}
+
+type AzurermHdinsightStormClusterSpecComponentVersion struct {
+	Storm string `json:"storm"`
+}
+
+type AzurermHdinsightStormClusterSpecStorageAccount struct {
+	StorageAccountKey  string `json:"storage_account_key"`
+	StorageContainerId string `json:"storage_container_id"`
+	IsDefault          bool   `json:"is_default"`
 }
 
 type AzurermHdinsightStormClusterSpec struct {
-	Location          string                             `json:"location"`
-	ClusterVersion    string                             `json:"cluster_version"`
-	Tier              string                             `json:"tier"`
-	ComponentVersion  []AzurermHdinsightStormClusterSpec `json:"component_version"`
-	Gateway           []AzurermHdinsightStormClusterSpec `json:"gateway"`
-	StorageAccount    []AzurermHdinsightStormClusterSpec `json:"storage_account"`
-	Roles             []AzurermHdinsightStormClusterSpec `json:"roles"`
 	ResourceGroupName string                             `json:"resource_group_name"`
-	HttpsEndpoint     string                             `json:"https_endpoint"`
+	Location          string                             `json:"location"`
+	Tier              string                             `json:"tier"`
+	Gateway           []AzurermHdinsightStormClusterSpec `json:"gateway"`
+	Roles             []AzurermHdinsightStormClusterSpec `json:"roles"`
 	Tags              map[string]string                  `json:"tags"`
+	HttpsEndpoint     string                             `json:"https_endpoint"`
 	SshEndpoint       string                             `json:"ssh_endpoint"`
 	Name              string                             `json:"name"`
+	ClusterVersion    string                             `json:"cluster_version"`
+	ComponentVersion  []AzurermHdinsightStormClusterSpec `json:"component_version"`
+	StorageAccount    []AzurermHdinsightStormClusterSpec `json:"storage_account"`
 }
 
+
+
 type AzurermHdinsightStormClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

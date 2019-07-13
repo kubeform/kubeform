@@ -19,16 +19,22 @@ type AzurermKeyVaultSecret struct {
 }
 
 type AzurermKeyVaultSecretSpec struct {
+	VaultUri    string            `json:"vault_uri"`
+	Value       string            `json:"value"`
+	ContentType string            `json:"content_type"`
 	Version     string            `json:"version"`
 	Tags        map[string]string `json:"tags"`
 	Name        string            `json:"name"`
 	KeyVaultId  string            `json:"key_vault_id"`
-	VaultUri    string            `json:"vault_uri"`
-	Value       string            `json:"value"`
-	ContentType string            `json:"content_type"`
 }
 
+
+
 type AzurermKeyVaultSecretStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

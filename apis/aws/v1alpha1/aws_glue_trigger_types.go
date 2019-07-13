@@ -18,12 +18,6 @@ type AwsGlueTrigger struct {
 	Status            AwsGlueTriggerStatus `json:"status,omitempty"`
 }
 
-type AwsGlueTriggerSpecActions struct {
-	Arguments map[string]string `json:"arguments"`
-	JobName   string            `json:"job_name"`
-	Timeout   int               `json:"timeout"`
-}
-
 type AwsGlueTriggerSpecPredicateConditions struct {
 	JobName         string `json:"job_name"`
 	LogicalOperator string `json:"logical_operator"`
@@ -35,17 +29,29 @@ type AwsGlueTriggerSpecPredicate struct {
 	Logical    string                        `json:"logical"`
 }
 
+type AwsGlueTriggerSpecActions struct {
+	Arguments map[string]string `json:"arguments"`
+	JobName   string            `json:"job_name"`
+	Timeout   int               `json:"timeout"`
+}
+
 type AwsGlueTriggerSpec struct {
+	Predicate   []AwsGlueTriggerSpec `json:"predicate"`
+	Schedule    string               `json:"schedule"`
+	Type        string               `json:"type"`
 	Actions     []AwsGlueTriggerSpec `json:"actions"`
 	Description string               `json:"description"`
 	Enabled     bool                 `json:"enabled"`
 	Name        string               `json:"name"`
-	Predicate   []AwsGlueTriggerSpec `json:"predicate"`
-	Schedule    string               `json:"schedule"`
-	Type        string               `json:"type"`
 }
 
+
+
 type AwsGlueTriggerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

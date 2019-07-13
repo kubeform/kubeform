@@ -21,13 +21,19 @@ type GoogleSpannerDatabaseIamBinding struct {
 type GoogleSpannerDatabaseIamBindingSpec struct {
 	Members  []string `json:"members"`
 	Etag     string   `json:"etag"`
+	Instance string   `json:"instance"`
 	Database string   `json:"database"`
 	Project  string   `json:"project"`
-	Instance string   `json:"instance"`
 	Role     string   `json:"role"`
 }
 
+
+
 type GoogleSpannerDatabaseIamBindingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

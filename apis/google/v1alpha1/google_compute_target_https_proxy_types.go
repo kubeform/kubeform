@@ -19,19 +19,25 @@ type GoogleComputeTargetHttpsProxy struct {
 }
 
 type GoogleComputeTargetHttpsProxySpec struct {
-	QuicOverride      string   `json:"quic_override"`
+	UrlMap            string   `json:"url_map"`
+	Description       string   `json:"description"`
 	CreationTimestamp string   `json:"creation_timestamp"`
 	ProxyId           int      `json:"proxy_id"`
 	Project           string   `json:"project"`
 	SelfLink          string   `json:"self_link"`
 	Name              string   `json:"name"`
 	SslCertificates   []string `json:"ssl_certificates"`
+	QuicOverride      string   `json:"quic_override"`
 	SslPolicy         string   `json:"ssl_policy"`
-	UrlMap            string   `json:"url_map"`
-	Description       string   `json:"description"`
 }
 
+
+
 type GoogleComputeTargetHttpsProxyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

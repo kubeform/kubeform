@@ -25,16 +25,22 @@ type AwsRdsClusterParameterGroupSpecParameter struct {
 }
 
 type AwsRdsClusterParameterGroupSpec struct {
-	Arn         string                            `json:"arn"`
-	Name        string                            `json:"name"`
-	NamePrefix  string                            `json:"name_prefix"`
 	Family      string                            `json:"family"`
 	Description string                            `json:"description"`
 	Parameter   []AwsRdsClusterParameterGroupSpec `json:"parameter"`
 	Tags        map[string]string                 `json:"tags"`
+	Arn         string                            `json:"arn"`
+	Name        string                            `json:"name"`
+	NamePrefix  string                            `json:"name_prefix"`
 }
 
+
+
 type AwsRdsClusterParameterGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,15 +19,21 @@ type AzurermEventhubConsumerGroup struct {
 }
 
 type AzurermEventhubConsumerGroupSpec struct {
-	Location          string `json:"location"`
-	UserMetadata      string `json:"user_metadata"`
 	Name              string `json:"name"`
 	NamespaceName     string `json:"namespace_name"`
 	EventhubName      string `json:"eventhub_name"`
 	ResourceGroupName string `json:"resource_group_name"`
+	Location          string `json:"location"`
+	UserMetadata      string `json:"user_metadata"`
 }
 
+
+
 type AzurermEventhubConsumerGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -21,18 +21,24 @@ type AwsKmsExternalKey struct {
 type AwsKmsExternalKeySpec struct {
 	DeletionWindowInDays int               `json:"deletion_window_in_days"`
 	Description          string            `json:"description"`
-	KeyState             string            `json:"key_state"`
-	KeyUsage             string            `json:"key_usage"`
-	Arn                  string            `json:"arn"`
 	ExpirationModel      string            `json:"expiration_model"`
 	KeyMaterialBase64    string            `json:"key_material_base64"`
+	KeyState             string            `json:"key_state"`
+	Arn                  string            `json:"arn"`
+	Enabled              bool              `json:"enabled"`
+	KeyUsage             string            `json:"key_usage"`
 	Policy               string            `json:"policy"`
 	Tags                 map[string]string `json:"tags"`
 	ValidTo              string            `json:"valid_to"`
-	Enabled              bool              `json:"enabled"`
 }
 
+
+
 type AwsKmsExternalKeyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

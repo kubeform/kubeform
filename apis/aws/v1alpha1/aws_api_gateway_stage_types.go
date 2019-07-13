@@ -19,28 +19,34 @@ type AwsApiGatewayStage struct {
 }
 
 type AwsApiGatewayStageSpecAccessLogSettings struct {
-	DestinationArn string `json:"destination_arn"`
 	Format         string `json:"format"`
+	DestinationArn string `json:"destination_arn"`
 }
 
 type AwsApiGatewayStageSpec struct {
-	DeploymentId         string                   `json:"deployment_id"`
-	ExecutionArn         string                   `json:"execution_arn"`
 	ClientCertificateId  string                   `json:"client_certificate_id"`
-	StageName            string                   `json:"stage_name"`
+	Description          string                   `json:"description"`
 	Variables            map[string]string        `json:"variables"`
 	AccessLogSettings    []AwsApiGatewayStageSpec `json:"access_log_settings"`
-	CacheClusterSize     string                   `json:"cache_cluster_size"`
-	RestApiId            string                   `json:"rest_api_id"`
-	Tags                 map[string]string        `json:"tags"`
-	XrayTracingEnabled   bool                     `json:"xray_tracing_enabled"`
-	CacheClusterEnabled  bool                     `json:"cache_cluster_enabled"`
-	Description          string                   `json:"description"`
 	DocumentationVersion string                   `json:"documentation_version"`
 	InvokeUrl            string                   `json:"invoke_url"`
+	CacheClusterSize     string                   `json:"cache_cluster_size"`
+	ExecutionArn         string                   `json:"execution_arn"`
+	RestApiId            string                   `json:"rest_api_id"`
+	Tags                 map[string]string        `json:"tags"`
+	DeploymentId         string                   `json:"deployment_id"`
+	StageName            string                   `json:"stage_name"`
+	XrayTracingEnabled   bool                     `json:"xray_tracing_enabled"`
+	CacheClusterEnabled  bool                     `json:"cache_cluster_enabled"`
 }
 
+
+
 type AwsApiGatewayStageStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

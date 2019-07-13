@@ -35,8 +35,8 @@ type AwsCodedeployDeploymentConfigSpecTrafficRoutingConfig struct {
 }
 
 type AwsCodedeployDeploymentConfigSpecMinimumHealthyHosts struct {
-	Type  string `json:"type"`
 	Value int    `json:"value"`
+	Type  string `json:"type"`
 }
 
 type AwsCodedeployDeploymentConfigSpec struct {
@@ -47,7 +47,13 @@ type AwsCodedeployDeploymentConfigSpec struct {
 	MinimumHealthyHosts  []AwsCodedeployDeploymentConfigSpec `json:"minimum_healthy_hosts"`
 }
 
+
+
 type AwsCodedeployDeploymentConfigStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

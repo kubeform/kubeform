@@ -19,15 +19,21 @@ type AwsNeptuneSubnetGroup struct {
 }
 
 type AwsNeptuneSubnetGroupSpec struct {
-	Arn         string            `json:"arn"`
-	Name        string            `json:"name"`
-	NamePrefix  string            `json:"name_prefix"`
 	Description string            `json:"description"`
 	SubnetIds   []string          `json:"subnet_ids"`
 	Tags        map[string]string `json:"tags"`
+	Arn         string            `json:"arn"`
+	Name        string            `json:"name"`
+	NamePrefix  string            `json:"name_prefix"`
 }
 
+
+
 type AwsNeptuneSubnetGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

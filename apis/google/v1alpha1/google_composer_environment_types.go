@@ -19,14 +19,14 @@ type GoogleComposerEnvironment struct {
 }
 
 type GoogleComposerEnvironmentSpecConfigNodeConfig struct {
-	Network        string   `json:"network"`
-	Subnetwork     string   `json:"subnetwork"`
-	DiskSizeGb     int      `json:"disk_size_gb"`
-	OauthScopes    []string `json:"oauth_scopes"`
 	ServiceAccount string   `json:"service_account"`
 	Tags           []string `json:"tags"`
 	Zone           string   `json:"zone"`
 	MachineType    string   `json:"machine_type"`
+	Network        string   `json:"network"`
+	Subnetwork     string   `json:"subnetwork"`
+	DiskSizeGb     int      `json:"disk_size_gb"`
+	OauthScopes    []string `json:"oauth_scopes"`
 }
 
 type GoogleComposerEnvironmentSpecConfigSoftwareConfig struct {
@@ -46,14 +46,20 @@ type GoogleComposerEnvironmentSpecConfig struct {
 }
 
 type GoogleComposerEnvironmentSpec struct {
+	Name    string                          `json:"name"`
+	Region  string                          `json:"region"`
 	Project string                          `json:"project"`
 	Config  []GoogleComposerEnvironmentSpec `json:"config"`
 	Labels  map[string]string               `json:"labels"`
-	Name    string                          `json:"name"`
-	Region  string                          `json:"region"`
 }
 
+
+
 type GoogleComposerEnvironmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

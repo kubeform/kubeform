@@ -18,10 +18,8 @@ type AzurermCosmosdbAccount struct {
 	Status            AzurermCosmosdbAccountStatus `json:"status,omitempty"`
 }
 
-type AzurermCosmosdbAccountSpecConsistencyPolicy struct {
-	MaxIntervalInSeconds int    `json:"max_interval_in_seconds"`
-	MaxStalenessPrefix   int    `json:"max_staleness_prefix"`
-	ConsistencyLevel     string `json:"consistency_level"`
+type AzurermCosmosdbAccountSpecVirtualNetworkRule struct {
+	Id string `json:"id"`
 }
 
 type AzurermCosmosdbAccountSpecFailoverPolicy struct {
@@ -30,12 +28,10 @@ type AzurermCosmosdbAccountSpecFailoverPolicy struct {
 	Priority int    `json:"priority"`
 }
 
-type AzurermCosmosdbAccountSpecVirtualNetworkRule struct {
-	Id string `json:"id"`
-}
-
-type AzurermCosmosdbAccountSpecCapabilities struct {
-	Name string `json:"name"`
+type AzurermCosmosdbAccountSpecConsistencyPolicy struct {
+	MaxIntervalInSeconds int    `json:"max_interval_in_seconds"`
+	MaxStalenessPrefix   int    `json:"max_staleness_prefix"`
+	ConsistencyLevel     string `json:"consistency_level"`
 }
 
 type AzurermCosmosdbAccountSpecGeoLocation struct {
@@ -45,33 +41,43 @@ type AzurermCosmosdbAccountSpecGeoLocation struct {
 	FailoverPriority int    `json:"failover_priority"`
 }
 
-type AzurermCosmosdbAccountSpec struct {
-	Location                      string                       `json:"location"`
-	EnableAutomaticFailover       bool                         `json:"enable_automatic_failover"`
-	IsVirtualNetworkFilterEnabled bool                         `json:"is_virtual_network_filter_enabled"`
-	PrimaryMasterKey              string                       `json:"primary_master_key"`
-	Tags                          map[string]string            `json:"tags"`
-	ConsistencyPolicy             []AzurermCosmosdbAccountSpec `json:"consistency_policy"`
-	FailoverPolicy                []AzurermCosmosdbAccountSpec `json:"failover_policy"`
-	VirtualNetworkRule            []AzurermCosmosdbAccountSpec `json:"virtual_network_rule"`
-	EnableMultipleWriteLocations  bool                         `json:"enable_multiple_write_locations"`
-	SecondaryReadonlyMasterKey    string                       `json:"secondary_readonly_master_key"`
-	ResourceGroupName             string                       `json:"resource_group_name"`
-	OfferType                     string                       `json:"offer_type"`
-	Kind                          string                       `json:"kind"`
-	Capabilities                  []AzurermCosmosdbAccountSpec `json:"capabilities"`
-	Endpoint                      string                       `json:"endpoint"`
-	ReadEndpoints                 []string                     `json:"read_endpoints"`
-	SecondaryMasterKey            string                       `json:"secondary_master_key"`
-	ConnectionStrings             []string                     `json:"connection_strings"`
-	Name                          string                       `json:"name"`
-	IpRangeFilter                 string                       `json:"ip_range_filter"`
-	GeoLocation                   []AzurermCosmosdbAccountSpec `json:"geo_location"`
-	WriteEndpoints                []string                     `json:"write_endpoints"`
-	PrimaryReadonlyMasterKey      string                       `json:"primary_readonly_master_key"`
+type AzurermCosmosdbAccountSpecCapabilities struct {
+	Name string `json:"name"`
 }
 
+type AzurermCosmosdbAccountSpec struct {
+	VirtualNetworkRule            []AzurermCosmosdbAccountSpec `json:"virtual_network_rule"`
+	SecondaryMasterKey            string                       `json:"secondary_master_key"`
+	SecondaryReadonlyMasterKey    string                       `json:"secondary_readonly_master_key"`
+	IpRangeFilter                 string                       `json:"ip_range_filter"`
+	FailoverPolicy                []AzurermCosmosdbAccountSpec `json:"failover_policy"`
+	Kind                          string                       `json:"kind"`
+	WriteEndpoints                []string                     `json:"write_endpoints"`
+	PrimaryMasterKey              string                       `json:"primary_master_key"`
+	Name                          string                       `json:"name"`
+	Location                      string                       `json:"location"`
+	EnableAutomaticFailover       bool                         `json:"enable_automatic_failover"`
+	ConsistencyPolicy             []AzurermCosmosdbAccountSpec `json:"consistency_policy"`
+	GeoLocation                   []AzurermCosmosdbAccountSpec `json:"geo_location"`
+	EnableMultipleWriteLocations  bool                         `json:"enable_multiple_write_locations"`
+	ResourceGroupName             string                       `json:"resource_group_name"`
+	Tags                          map[string]string            `json:"tags"`
+	IsVirtualNetworkFilterEnabled bool                         `json:"is_virtual_network_filter_enabled"`
+	Endpoint                      string                       `json:"endpoint"`
+	ReadEndpoints                 []string                     `json:"read_endpoints"`
+	PrimaryReadonlyMasterKey      string                       `json:"primary_readonly_master_key"`
+	ConnectionStrings             []string                     `json:"connection_strings"`
+	OfferType                     string                       `json:"offer_type"`
+	Capabilities                  []AzurermCosmosdbAccountSpec `json:"capabilities"`
+}
+
+
+
 type AzurermCosmosdbAccountStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

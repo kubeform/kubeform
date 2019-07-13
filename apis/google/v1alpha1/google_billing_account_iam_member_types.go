@@ -19,13 +19,19 @@ type GoogleBillingAccountIamMember struct {
 }
 
 type GoogleBillingAccountIamMemberSpec struct {
+	Etag             string `json:"etag"`
 	Role             string `json:"role"`
 	Member           string `json:"member"`
-	Etag             string `json:"etag"`
 	BillingAccountId string `json:"billing_account_id"`
 }
 
+
+
 type GoogleBillingAccountIamMemberStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

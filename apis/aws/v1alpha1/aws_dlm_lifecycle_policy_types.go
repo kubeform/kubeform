@@ -18,38 +18,44 @@ type AwsDlmLifecyclePolicy struct {
 	Status            AwsDlmLifecyclePolicyStatus `json:"status,omitempty"`
 }
 
-type AwsDlmLifecyclePolicySpecPolicyDetailsScheduleCreateRule struct {
-	Times        []string `json:"times"`
-	Interval     int      `json:"interval"`
-	IntervalUnit string   `json:"interval_unit"`
-}
-
 type AwsDlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule struct {
 	Count int `json:"count"`
 }
 
+type AwsDlmLifecyclePolicySpecPolicyDetailsScheduleCreateRule struct {
+	Interval     int      `json:"interval"`
+	IntervalUnit string   `json:"interval_unit"`
+	Times        []string `json:"times"`
+}
+
 type AwsDlmLifecyclePolicySpecPolicyDetailsSchedule struct {
-	CopyTags   bool                                             `json:"copy_tags"`
-	CreateRule []AwsDlmLifecyclePolicySpecPolicyDetailsSchedule `json:"create_rule"`
 	Name       string                                           `json:"name"`
 	RetainRule []AwsDlmLifecyclePolicySpecPolicyDetailsSchedule `json:"retain_rule"`
 	TagsToAdd  map[string]string                                `json:"tags_to_add"`
+	CopyTags   bool                                             `json:"copy_tags"`
+	CreateRule []AwsDlmLifecyclePolicySpecPolicyDetailsSchedule `json:"create_rule"`
 }
 
 type AwsDlmLifecyclePolicySpecPolicyDetails struct {
-	TargetTags    map[string]string                        `json:"target_tags"`
 	ResourceTypes []string                                 `json:"resource_types"`
 	Schedule      []AwsDlmLifecyclePolicySpecPolicyDetails `json:"schedule"`
+	TargetTags    map[string]string                        `json:"target_tags"`
 }
 
 type AwsDlmLifecyclePolicySpec struct {
+	Description      string                      `json:"description"`
 	ExecutionRoleArn string                      `json:"execution_role_arn"`
 	PolicyDetails    []AwsDlmLifecyclePolicySpec `json:"policy_details"`
 	State            string                      `json:"state"`
-	Description      string                      `json:"description"`
 }
 
+
+
 type AwsDlmLifecyclePolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

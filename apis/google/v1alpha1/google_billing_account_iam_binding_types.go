@@ -19,13 +19,19 @@ type GoogleBillingAccountIamBinding struct {
 }
 
 type GoogleBillingAccountIamBindingSpec struct {
+	BillingAccountId string   `json:"billing_account_id"`
 	Role             string   `json:"role"`
 	Members          []string `json:"members"`
-	BillingAccountId string   `json:"billing_account_id"`
 	Etag             string   `json:"etag"`
 }
 
+
+
 type GoogleBillingAccountIamBindingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

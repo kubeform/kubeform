@@ -19,15 +19,21 @@ type AwsPinpointEmailChannel struct {
 }
 
 type AwsPinpointEmailChannelSpec struct {
-	ApplicationId     string `json:"application_id"`
 	Enabled           bool   `json:"enabled"`
 	FromAddress       string `json:"from_address"`
 	Identity          string `json:"identity"`
 	RoleArn           string `json:"role_arn"`
 	MessagesPerSecond int    `json:"messages_per_second"`
+	ApplicationId     string `json:"application_id"`
 }
 
+
+
 type AwsPinpointEmailChannelStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

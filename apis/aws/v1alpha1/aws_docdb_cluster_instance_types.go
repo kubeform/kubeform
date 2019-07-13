@@ -19,31 +19,37 @@ type AwsDocdbClusterInstance struct {
 }
 
 type AwsDocdbClusterInstanceSpec struct {
-	PreferredBackupWindow      string            `json:"preferred_backup_window"`
-	PubliclyAccessible         bool              `json:"publicly_accessible"`
-	StorageEncrypted           bool              `json:"storage_encrypted"`
 	Arn                        string            `json:"arn"`
-	Endpoint                   string            `json:"endpoint"`
-	EngineVersion              string            `json:"engine_version"`
-	KmsKeyId                   string            `json:"kms_key_id"`
-	Identifier                 string            `json:"identifier"`
-	IdentifierPrefix           string            `json:"identifier_prefix"`
-	InstanceClass              string            `json:"instance_class"`
-	Port                       int               `json:"port"`
-	ApplyImmediately           bool              `json:"apply_immediately"`
 	DbiResourceId              string            `json:"dbi_resource_id"`
-	ClusterIdentifier          string            `json:"cluster_identifier"`
-	DbSubnetGroupName          string            `json:"db_subnet_group_name"`
-	Engine                     string            `json:"engine"`
-	PreferredMaintenanceWindow string            `json:"preferred_maintenance_window"`
-	PromotionTier              int               `json:"promotion_tier"`
+	Endpoint                   string            `json:"endpoint"`
+	InstanceClass              string            `json:"instance_class"`
+	PubliclyAccessible         bool              `json:"publicly_accessible"`
+	IdentifierPrefix           string            `json:"identifier_prefix"`
 	Tags                       map[string]string `json:"tags"`
-	AutoMinorVersionUpgrade    bool              `json:"auto_minor_version_upgrade"`
-	AvailabilityZone           string            `json:"availability_zone"`
 	Writer                     bool              `json:"writer"`
+	AutoMinorVersionUpgrade    bool              `json:"auto_minor_version_upgrade"`
+	ClusterIdentifier          string            `json:"cluster_identifier"`
+	Engine                     string            `json:"engine"`
+	EngineVersion              string            `json:"engine_version"`
+	Identifier                 string            `json:"identifier"`
+	Port                       int               `json:"port"`
+	PreferredBackupWindow      string            `json:"preferred_backup_window"`
+	PreferredMaintenanceWindow string            `json:"preferred_maintenance_window"`
+	StorageEncrypted           bool              `json:"storage_encrypted"`
+	ApplyImmediately           bool              `json:"apply_immediately"`
+	AvailabilityZone           string            `json:"availability_zone"`
+	DbSubnetGroupName          string            `json:"db_subnet_group_name"`
+	KmsKeyId                   string            `json:"kms_key_id"`
+	PromotionTier              int               `json:"promotion_tier"`
 }
 
+
+
 type AwsDocdbClusterInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

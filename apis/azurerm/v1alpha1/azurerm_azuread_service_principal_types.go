@@ -23,7 +23,13 @@ type AzurermAzureadServicePrincipalSpec struct {
 	DisplayName   string `json:"display_name"`
 }
 
+
+
 type AzurermAzureadServicePrincipalStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

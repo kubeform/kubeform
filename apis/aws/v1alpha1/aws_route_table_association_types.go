@@ -23,7 +23,13 @@ type AwsRouteTableAssociationSpec struct {
 	RouteTableId string `json:"route_table_id"`
 }
 
+
+
 type AwsRouteTableAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

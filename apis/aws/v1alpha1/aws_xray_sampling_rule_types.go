@@ -19,22 +19,28 @@ type AwsXraySamplingRule struct {
 }
 
 type AwsXraySamplingRuleSpec struct {
-	Attributes    map[string]string `json:"attributes"`
-	FixedRate     float64           `json:"fixed_rate"`
-	ServiceName   string            `json:"service_name"`
-	ServiceType   string            `json:"service_type"`
-	Version       int               `json:"version"`
 	Host          string            `json:"host"`
 	HttpMethod    string            `json:"http_method"`
 	UrlPath       string            `json:"url_path"`
-	Arn           string            `json:"arn"`
+	Version       int               `json:"version"`
+	Attributes    map[string]string `json:"attributes"`
 	RuleName      string            `json:"rule_name"`
+	ReservoirSize int               `json:"reservoir_size"`
+	ServiceType   string            `json:"service_type"`
+	ServiceName   string            `json:"service_name"`
+	Arn           string            `json:"arn"`
 	ResourceArn   string            `json:"resource_arn"`
 	Priority      int               `json:"priority"`
-	ReservoirSize int               `json:"reservoir_size"`
+	FixedRate     float64           `json:"fixed_rate"`
 }
 
+
+
 type AwsXraySamplingRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

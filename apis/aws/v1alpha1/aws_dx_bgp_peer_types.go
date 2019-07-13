@@ -22,15 +22,21 @@ type AwsDxBgpPeerSpec struct {
 	BgpAuthKey         string `json:"bgp_auth_key"`
 	CustomerAddress    string `json:"customer_address"`
 	BgpStatus          string `json:"bgp_status"`
-	VirtualInterfaceId string `json:"virtual_interface_id"`
-	BgpAsn             int    `json:"bgp_asn"`
-	AmazonAddress      string `json:"amazon_address"`
-	BgpPeerId          string `json:"bgp_peer_id"`
 	AwsDevice          string `json:"aws_device"`
 	AddressFamily      string `json:"address_family"`
+	VirtualInterfaceId string `json:"virtual_interface_id"`
+	AmazonAddress      string `json:"amazon_address"`
+	BgpPeerId          string `json:"bgp_peer_id"`
+	BgpAsn             int    `json:"bgp_asn"`
 }
 
+
+
 type AwsDxBgpPeerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

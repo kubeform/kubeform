@@ -19,14 +19,20 @@ type GoogleLoggingBillingAccountSink struct {
 }
 
 type GoogleLoggingBillingAccountSinkSpec struct {
-	Destination    string `json:"destination"`
-	Filter         string `json:"filter"`
 	WriterIdentity string `json:"writer_identity"`
 	BillingAccount string `json:"billing_account"`
 	Name           string `json:"name"`
+	Destination    string `json:"destination"`
+	Filter         string `json:"filter"`
 }
 
+
+
 type GoogleLoggingBillingAccountSinkStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

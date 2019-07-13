@@ -25,19 +25,25 @@ type AzurermStreamAnalyticsStreamInputBlobSpecSerialization struct {
 }
 
 type AzurermStreamAnalyticsStreamInputBlobSpec struct {
-	DateFormat             string                                      `json:"date_format"`
-	StorageAccountKey      string                                      `json:"storage_account_key"`
-	StorageAccountName     string                                      `json:"storage_account_name"`
 	StreamAnalyticsJobName string                                      `json:"stream_analytics_job_name"`
 	ResourceGroupName      string                                      `json:"resource_group_name"`
-	StorageContainerName   string                                      `json:"storage_container_name"`
+	DateFormat             string                                      `json:"date_format"`
 	TimeFormat             string                                      `json:"time_format"`
 	Serialization          []AzurermStreamAnalyticsStreamInputBlobSpec `json:"serialization"`
 	Name                   string                                      `json:"name"`
 	PathPattern            string                                      `json:"path_pattern"`
+	StorageAccountKey      string                                      `json:"storage_account_key"`
+	StorageAccountName     string                                      `json:"storage_account_name"`
+	StorageContainerName   string                                      `json:"storage_container_name"`
 }
 
+
+
 type AzurermStreamAnalyticsStreamInputBlobStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

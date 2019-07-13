@@ -19,26 +19,32 @@ type AwsEmrInstanceGroup struct {
 }
 
 type AwsEmrInstanceGroupSpecEbsConfig struct {
-	Iops               int    `json:"iops"`
-	Size               int    `json:"size"`
 	Type               string `json:"type"`
 	VolumesPerInstance int    `json:"volumes_per_instance"`
+	Iops               int    `json:"iops"`
+	Size               int    `json:"size"`
 }
 
 type AwsEmrInstanceGroupSpec struct {
+	Status               string                    `json:"status"`
+	AutoscalingPolicy    string                    `json:"autoscaling_policy"`
 	BidPrice             string                    `json:"bid_price"`
 	EbsConfig            []AwsEmrInstanceGroupSpec `json:"ebs_config"`
 	InstanceCount        int                       `json:"instance_count"`
 	InstanceType         string                    `json:"instance_type"`
 	RunningInstanceCount int                       `json:"running_instance_count"`
-	Status               string                    `json:"status"`
-	AutoscalingPolicy    string                    `json:"autoscaling_policy"`
 	ClusterId            string                    `json:"cluster_id"`
 	EbsOptimized         bool                      `json:"ebs_optimized"`
 	Name                 string                    `json:"name"`
 }
 
+
+
 type AwsEmrInstanceGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

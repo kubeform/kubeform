@@ -24,9 +24,9 @@ type AwsApiGatewayUsagePlanSpecApiStages struct {
 }
 
 type AwsApiGatewayUsagePlanSpecQuotaSettings struct {
+	Period string `json:"period"`
 	Limit  int    `json:"limit"`
 	Offset int    `json:"offset"`
-	Period string `json:"period"`
 }
 
 type AwsApiGatewayUsagePlanSpecThrottleSettings struct {
@@ -35,15 +35,21 @@ type AwsApiGatewayUsagePlanSpecThrottleSettings struct {
 }
 
 type AwsApiGatewayUsagePlanSpec struct {
-	Name             string                       `json:"name"`
 	Description      string                       `json:"description"`
 	ApiStages        []AwsApiGatewayUsagePlanSpec `json:"api_stages"`
 	QuotaSettings    []AwsApiGatewayUsagePlanSpec `json:"quota_settings"`
 	ThrottleSettings []AwsApiGatewayUsagePlanSpec `json:"throttle_settings"`
 	ProductCode      string                       `json:"product_code"`
+	Name             string                       `json:"name"`
 }
 
+
+
 type AwsApiGatewayUsagePlanStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,9 +19,9 @@ type AwsCognitoIdentityPool struct {
 }
 
 type AwsCognitoIdentityPoolSpecCognitoIdentityProviders struct {
-	ServerSideTokenCheck bool   `json:"server_side_token_check"`
 	ClientId             string `json:"client_id"`
 	ProviderName         string `json:"provider_name"`
+	ServerSideTokenCheck bool   `json:"server_side_token_check"`
 }
 
 type AwsCognitoIdentityPoolSpec struct {
@@ -35,7 +35,13 @@ type AwsCognitoIdentityPoolSpec struct {
 	OpenidConnectProviderArns      []string                     `json:"openid_connect_provider_arns"`
 }
 
+
+
 type AwsCognitoIdentityPoolStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

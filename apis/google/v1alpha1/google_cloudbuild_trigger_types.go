@@ -18,18 +18,9 @@ type GoogleCloudbuildTrigger struct {
 	Status            GoogleCloudbuildTriggerStatus `json:"status,omitempty"`
 }
 
-type GoogleCloudbuildTriggerSpecTriggerTemplate struct {
-	CommitSha  string `json:"commit_sha"`
-	Dir        string `json:"dir"`
-	Project    string `json:"project"`
-	RepoName   string `json:"repo_name"`
-	TagName    string `json:"tag_name"`
-	BranchName string `json:"branch_name"`
-}
-
 type GoogleCloudbuildTriggerSpecBuildStep struct {
-	Name string `json:"name"`
 	Args string `json:"args"`
+	Name string `json:"name"`
 }
 
 type GoogleCloudbuildTriggerSpecBuild struct {
@@ -38,16 +29,31 @@ type GoogleCloudbuildTriggerSpecBuild struct {
 	Tags   []string                           `json:"tags"`
 }
 
+type GoogleCloudbuildTriggerSpecTriggerTemplate struct {
+	Project    string `json:"project"`
+	RepoName   string `json:"repo_name"`
+	TagName    string `json:"tag_name"`
+	BranchName string `json:"branch_name"`
+	CommitSha  string `json:"commit_sha"`
+	Dir        string `json:"dir"`
+}
+
 type GoogleCloudbuildTriggerSpec struct {
-	TriggerTemplate []GoogleCloudbuildTriggerSpec `json:"trigger_template"`
-	Project         string                        `json:"project"`
 	Filename        string                        `json:"filename"`
 	Build           []GoogleCloudbuildTriggerSpec `json:"build"`
 	Description     string                        `json:"description"`
 	Substitutions   map[string]string             `json:"substitutions"`
+	TriggerTemplate []GoogleCloudbuildTriggerSpec `json:"trigger_template"`
+	Project         string                        `json:"project"`
 }
 
+
+
 type GoogleCloudbuildTriggerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

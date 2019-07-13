@@ -23,7 +23,13 @@ type AwsWafregionalRegexPatternSetSpec struct {
 	RegexPatternStrings []string `json:"regex_pattern_strings"`
 }
 
+
+
 type AwsWafregionalRegexPatternSetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,16 +19,22 @@ type AwsApiGatewayMethodResponse struct {
 }
 
 type AwsApiGatewayMethodResponseSpec struct {
-	RestApiId                string            `json:"rest_api_id"`
-	ResourceId               string            `json:"resource_id"`
-	HttpMethod               string            `json:"http_method"`
 	StatusCode               string            `json:"status_code"`
 	ResponseModels           map[string]string `json:"response_models"`
 	ResponseParameters       map[string]bool   `json:"response_parameters"`
 	ResponseParametersInJson string            `json:"response_parameters_in_json"`
+	RestApiId                string            `json:"rest_api_id"`
+	ResourceId               string            `json:"resource_id"`
+	HttpMethod               string            `json:"http_method"`
 }
 
+
+
 type AwsApiGatewayMethodResponseStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

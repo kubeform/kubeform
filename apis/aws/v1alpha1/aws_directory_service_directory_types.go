@@ -31,24 +31,30 @@ type AwsDirectoryServiceDirectorySpecVpcSettings struct {
 }
 
 type AwsDirectoryServiceDirectorySpec struct {
-	Tags            map[string]string                  `json:"tags"`
-	DnsIpAddresses  []string                           `json:"dns_ip_addresses"`
-	SecurityGroupId string                             `json:"security_group_id"`
-	Type            string                             `json:"type"`
-	Alias           string                             `json:"alias"`
-	Description     string                             `json:"description"`
-	AccessUrl       string                             `json:"access_url"`
-	ShortName       string                             `json:"short_name"`
-	EnableSso       bool                               `json:"enable_sso"`
-	ConnectSettings []AwsDirectoryServiceDirectorySpec `json:"connect_settings"`
-	Password        string                             `json:"password"`
-	VpcSettings     []AwsDirectoryServiceDirectorySpec `json:"vpc_settings"`
-	Edition         string                             `json:"edition"`
-	Name            string                             `json:"name"`
 	Size            string                             `json:"size"`
+	AccessUrl       string                             `json:"access_url"`
+	Description     string                             `json:"description"`
+	EnableSso       bool                               `json:"enable_sso"`
+	Name            string                             `json:"name"`
+	Password        string                             `json:"password"`
+	Alias           string                             `json:"alias"`
+	Type            string                             `json:"type"`
+	Edition         string                             `json:"edition"`
+	ShortName       string                             `json:"short_name"`
+	ConnectSettings []AwsDirectoryServiceDirectorySpec `json:"connect_settings"`
+	SecurityGroupId string                             `json:"security_group_id"`
+	Tags            map[string]string                  `json:"tags"`
+	VpcSettings     []AwsDirectoryServiceDirectorySpec `json:"vpc_settings"`
+	DnsIpAddresses  []string                           `json:"dns_ip_addresses"`
 }
 
+
+
 type AwsDirectoryServiceDirectoryStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -28,13 +28,13 @@ type DigitaloceanLoadbalancerSpecForwardingRule struct {
 }
 
 type DigitaloceanLoadbalancerSpecHealthcheck struct {
-	ResponseTimeoutSeconds int    `json:"response_timeout_seconds"`
-	UnhealthyThreshold     int    `json:"unhealthy_threshold"`
 	HealthyThreshold       int    `json:"healthy_threshold"`
 	Protocol               string `json:"protocol"`
 	Port                   int    `json:"port"`
 	Path                   string `json:"path"`
 	CheckIntervalSeconds   int    `json:"check_interval_seconds"`
+	ResponseTimeoutSeconds int    `json:"response_timeout_seconds"`
+	UnhealthyThreshold     int    `json:"unhealthy_threshold"`
 }
 
 type DigitaloceanLoadbalancerSpecStickySessions struct {
@@ -45,21 +45,27 @@ type DigitaloceanLoadbalancerSpecStickySessions struct {
 
 type DigitaloceanLoadbalancerSpec struct {
 	Urn                 string                         `json:"urn"`
-	ForwardingRule      []DigitaloceanLoadbalancerSpec `json:"forwarding_rule"`
-	RedirectHttpToHttps bool                           `json:"redirect_http_to_https"`
-	Status              string                         `json:"status"`
-	Region              string                         `json:"region"`
+	Ip                  string                         `json:"ip"`
 	Algorithm           string                         `json:"algorithm"`
+	ForwardingRule      []DigitaloceanLoadbalancerSpec `json:"forwarding_rule"`
 	Healthcheck         []DigitaloceanLoadbalancerSpec `json:"healthcheck"`
 	StickySessions      []DigitaloceanLoadbalancerSpec `json:"sticky_sessions"`
 	DropletIds          []int64                        `json:"droplet_ids"`
 	DropletTag          string                         `json:"droplet_tag"`
-	EnableProxyProtocol bool                           `json:"enable_proxy_protocol"`
-	Ip                  string                         `json:"ip"`
+	Region              string                         `json:"region"`
 	Name                string                         `json:"name"`
+	Status              string                         `json:"status"`
+	RedirectHttpToHttps bool                           `json:"redirect_http_to_https"`
+	EnableProxyProtocol bool                           `json:"enable_proxy_protocol"`
 }
 
+
+
 type DigitaloceanLoadbalancerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -29,27 +29,33 @@ type GoogleComputeRegionDiskSpecSourceSnapshotEncryptionKey struct {
 }
 
 type GoogleComputeRegionDiskSpec struct {
-	Type                        string                        `json:"type"`
-	LastDetachTimestamp         string                        `json:"last_detach_timestamp"`
-	Users                       []string                      `json:"users"`
-	DiskEncryptionKey           []GoogleComputeRegionDiskSpec `json:"disk_encryption_key"`
-	Labels                      map[string]string             `json:"labels"`
-	LabelFingerprint            string                        `json:"label_fingerprint"`
-	ReplicaZones                []string                      `json:"replica_zones"`
 	Description                 string                        `json:"description"`
-	Region                      string                        `json:"region"`
+	DiskEncryptionKey           []GoogleComputeRegionDiskSpec `json:"disk_encryption_key"`
 	Snapshot                    string                        `json:"snapshot"`
-	SourceSnapshotEncryptionKey []GoogleComputeRegionDiskSpec `json:"source_snapshot_encryption_key"`
+	Type                        string                        `json:"type"`
 	CreationTimestamp           string                        `json:"creation_timestamp"`
-	LastAttachTimestamp         string                        `json:"last_attach_timestamp"`
-	SourceSnapshotId            string                        `json:"source_snapshot_id"`
+	LabelFingerprint            string                        `json:"label_fingerprint"`
 	Name                        string                        `json:"name"`
-	SelfLink                    string                        `json:"self_link"`
+	ReplicaZones                []string                      `json:"replica_zones"`
+	SourceSnapshotEncryptionKey []GoogleComputeRegionDiskSpec `json:"source_snapshot_encryption_key"`
+	LastAttachTimestamp         string                        `json:"last_attach_timestamp"`
+	LastDetachTimestamp         string                        `json:"last_detach_timestamp"`
 	Project                     string                        `json:"project"`
+	SelfLink                    string                        `json:"self_link"`
+	Labels                      map[string]string             `json:"labels"`
+	SourceSnapshotId            string                        `json:"source_snapshot_id"`
+	Users                       []string                      `json:"users"`
+	Region                      string                        `json:"region"`
 	Size                        int                           `json:"size"`
 }
 
+
+
 type GoogleComputeRegionDiskStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

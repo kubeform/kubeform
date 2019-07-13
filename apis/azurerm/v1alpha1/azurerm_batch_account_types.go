@@ -19,18 +19,24 @@ type AzurermBatchAccount struct {
 }
 
 type AzurermBatchAccountSpec struct {
-	Name               string            `json:"name"`
+	ResourceGroupName  string            `json:"resource_group_name"`
+	SecondaryAccessKey string            `json:"secondary_access_key"`
 	Tags               map[string]string `json:"tags"`
+	Name               string            `json:"name"`
+	Location           string            `json:"location"`
 	StorageAccountId   string            `json:"storage_account_id"`
 	PoolAllocationMode string            `json:"pool_allocation_mode"`
 	PrimaryAccessKey   string            `json:"primary_access_key"`
-	SecondaryAccessKey string            `json:"secondary_access_key"`
 	AccountEndpoint    string            `json:"account_endpoint"`
-	ResourceGroupName  string            `json:"resource_group_name"`
-	Location           string            `json:"location"`
 }
 
+
+
 type AzurermBatchAccountStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

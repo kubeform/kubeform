@@ -19,18 +19,24 @@ type AwsSagemakerNotebookInstance struct {
 }
 
 type AwsSagemakerNotebookInstanceSpec struct {
-	Name                string            `json:"name"`
-	KmsKeyId            string            `json:"kms_key_id"`
-	Arn                 string            `json:"arn"`
 	RoleArn             string            `json:"role_arn"`
 	InstanceType        string            `json:"instance_type"`
-	SubnetId            string            `json:"subnet_id"`
 	SecurityGroups      []string          `json:"security_groups"`
 	LifecycleConfigName string            `json:"lifecycle_config_name"`
 	Tags                map[string]string `json:"tags"`
+	Arn                 string            `json:"arn"`
+	Name                string            `json:"name"`
+	SubnetId            string            `json:"subnet_id"`
+	KmsKeyId            string            `json:"kms_key_id"`
 }
 
+
+
 type AwsSagemakerNotebookInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

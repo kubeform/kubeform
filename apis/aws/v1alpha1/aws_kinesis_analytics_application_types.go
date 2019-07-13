@@ -18,6 +18,50 @@ type AwsKinesisAnalyticsApplication struct {
 	Status            AwsKinesisAnalyticsApplicationStatus `json:"status,omitempty"`
 }
 
+type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesS3 struct {
+	BucketArn string `json:"bucket_arn"`
+	FileKey   string `json:"file_key"`
+	RoleArn   string `json:"role_arn"`
+}
+
+type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordColumns struct {
+	SqlType string `json:"sql_type"`
+	Mapping string `json:"mapping"`
+	Name    string `json:"name"`
+}
+
+type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormatMappingParametersCsv struct {
+	RecordColumnDelimiter string `json:"record_column_delimiter"`
+	RecordRowDelimiter    string `json:"record_row_delimiter"`
+}
+
+type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormatMappingParametersJson struct {
+	RecordRowPath string `json:"record_row_path"`
+}
+
+type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormatMappingParameters struct {
+	Csv  []AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormatMappingParameters `json:"csv"`
+	Json []AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormatMappingParameters `json:"json"`
+}
+
+type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormat struct {
+	RecordFormatType  string                                                                     `json:"record_format_type"`
+	MappingParameters []AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormat `json:"mapping_parameters"`
+}
+
+type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchema struct {
+	RecordColumns  []AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchema `json:"record_columns"`
+	RecordEncoding string                                                         `json:"record_encoding"`
+	RecordFormat   []AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchema `json:"record_format"`
+}
+
+type AwsKinesisAnalyticsApplicationSpecReferenceDataSources struct {
+	TableName string                                                   `json:"table_name"`
+	Id        string                                                   `json:"id"`
+	S3        []AwsKinesisAnalyticsApplicationSpecReferenceDataSources `json:"s3"`
+	Schema    []AwsKinesisAnalyticsApplicationSpecReferenceDataSources `json:"schema"`
+}
+
 type AwsKinesisAnalyticsApplicationSpecCloudwatchLoggingOptions struct {
 	Id           string `json:"id"`
 	LogStreamArn string `json:"log_stream_arn"`
@@ -25,15 +69,6 @@ type AwsKinesisAnalyticsApplicationSpecCloudwatchLoggingOptions struct {
 }
 
 type AwsKinesisAnalyticsApplicationSpecInputsKinesisFirehose struct {
-	ResourceArn string `json:"resource_arn"`
-	RoleArn     string `json:"role_arn"`
-}
-
-type AwsKinesisAnalyticsApplicationSpecInputsParallelism struct {
-	Count int `json:"count"`
-}
-
-type AwsKinesisAnalyticsApplicationSpecInputsKinesisStream struct {
 	ResourceArn string `json:"resource_arn"`
 	RoleArn     string `json:"role_arn"`
 }
@@ -78,6 +113,15 @@ type AwsKinesisAnalyticsApplicationSpecInputsSchema struct {
 	RecordFormat   []AwsKinesisAnalyticsApplicationSpecInputsSchema `json:"record_format"`
 }
 
+type AwsKinesisAnalyticsApplicationSpecInputsKinesisStream struct {
+	ResourceArn string `json:"resource_arn"`
+	RoleArn     string `json:"role_arn"`
+}
+
+type AwsKinesisAnalyticsApplicationSpecInputsParallelism struct {
+	Count int `json:"count"`
+}
+
 type AwsKinesisAnalyticsApplicationSpecInputsStartingPositionConfiguration struct {
 	StartingPosition string `json:"starting_position"`
 }
@@ -85,22 +129,13 @@ type AwsKinesisAnalyticsApplicationSpecInputsStartingPositionConfiguration struc
 type AwsKinesisAnalyticsApplicationSpecInputs struct {
 	Id                            string                                     `json:"id"`
 	KinesisFirehose               []AwsKinesisAnalyticsApplicationSpecInputs `json:"kinesis_firehose"`
-	Parallelism                   []AwsKinesisAnalyticsApplicationSpecInputs `json:"parallelism"`
+	ProcessingConfiguration       []AwsKinesisAnalyticsApplicationSpecInputs `json:"processing_configuration"`
+	Schema                        []AwsKinesisAnalyticsApplicationSpecInputs `json:"schema"`
 	StreamNames                   []string                                   `json:"stream_names"`
 	KinesisStream                 []AwsKinesisAnalyticsApplicationSpecInputs `json:"kinesis_stream"`
 	NamePrefix                    string                                     `json:"name_prefix"`
-	ProcessingConfiguration       []AwsKinesisAnalyticsApplicationSpecInputs `json:"processing_configuration"`
-	Schema                        []AwsKinesisAnalyticsApplicationSpecInputs `json:"schema"`
+	Parallelism                   []AwsKinesisAnalyticsApplicationSpecInputs `json:"parallelism"`
 	StartingPositionConfiguration []AwsKinesisAnalyticsApplicationSpecInputs `json:"starting_position_configuration"`
-}
-
-type AwsKinesisAnalyticsApplicationSpecOutputsLambda struct {
-	ResourceArn string `json:"resource_arn"`
-	RoleArn     string `json:"role_arn"`
-}
-
-type AwsKinesisAnalyticsApplicationSpecOutputsSchema struct {
-	RecordFormatType string `json:"record_format_type"`
 }
 
 type AwsKinesisAnalyticsApplicationSpecOutputsKinesisFirehose struct {
@@ -113,76 +148,47 @@ type AwsKinesisAnalyticsApplicationSpecOutputsKinesisStream struct {
 	RoleArn     string `json:"role_arn"`
 }
 
+type AwsKinesisAnalyticsApplicationSpecOutputsLambda struct {
+	ResourceArn string `json:"resource_arn"`
+	RoleArn     string `json:"role_arn"`
+}
+
+type AwsKinesisAnalyticsApplicationSpecOutputsSchema struct {
+	RecordFormatType string `json:"record_format_type"`
+}
+
 type AwsKinesisAnalyticsApplicationSpecOutputs struct {
-	Lambda          []AwsKinesisAnalyticsApplicationSpecOutputs `json:"lambda"`
-	Name            string                                      `json:"name"`
-	Schema          []AwsKinesisAnalyticsApplicationSpecOutputs `json:"schema"`
 	Id              string                                      `json:"id"`
 	KinesisFirehose []AwsKinesisAnalyticsApplicationSpecOutputs `json:"kinesis_firehose"`
 	KinesisStream   []AwsKinesisAnalyticsApplicationSpecOutputs `json:"kinesis_stream"`
-}
-
-type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormatMappingParametersJson struct {
-	RecordRowPath string `json:"record_row_path"`
-}
-
-type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormatMappingParametersCsv struct {
-	RecordColumnDelimiter string `json:"record_column_delimiter"`
-	RecordRowDelimiter    string `json:"record_row_delimiter"`
-}
-
-type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormatMappingParameters struct {
-	Json []AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormatMappingParameters `json:"json"`
-	Csv  []AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormatMappingParameters `json:"csv"`
-}
-
-type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormat struct {
-	MappingParameters []AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormat `json:"mapping_parameters"`
-	RecordFormatType  string                                                                     `json:"record_format_type"`
-}
-
-type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordColumns struct {
-	SqlType string `json:"sql_type"`
-	Mapping string `json:"mapping"`
-	Name    string `json:"name"`
-}
-
-type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchema struct {
-	RecordFormat   []AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchema `json:"record_format"`
-	RecordColumns  []AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesSchema `json:"record_columns"`
-	RecordEncoding string                                                         `json:"record_encoding"`
-}
-
-type AwsKinesisAnalyticsApplicationSpecReferenceDataSourcesS3 struct {
-	FileKey   string `json:"file_key"`
-	RoleArn   string `json:"role_arn"`
-	BucketArn string `json:"bucket_arn"`
-}
-
-type AwsKinesisAnalyticsApplicationSpecReferenceDataSources struct {
-	Schema    []AwsKinesisAnalyticsApplicationSpecReferenceDataSources `json:"schema"`
-	TableName string                                                   `json:"table_name"`
-	Id        string                                                   `json:"id"`
-	S3        []AwsKinesisAnalyticsApplicationSpecReferenceDataSources `json:"s3"`
+	Lambda          []AwsKinesisAnalyticsApplicationSpecOutputs `json:"lambda"`
+	Name            string                                      `json:"name"`
+	Schema          []AwsKinesisAnalyticsApplicationSpecOutputs `json:"schema"`
 }
 
 type AwsKinesisAnalyticsApplicationSpec struct {
-	CloudwatchLoggingOptions []AwsKinesisAnalyticsApplicationSpec `json:"cloudwatch_logging_options"`
-	CreateTimestamp          string                               `json:"create_timestamp"`
-	LastUpdateTimestamp      string                               `json:"last_update_timestamp"`
-	Code                     string                               `json:"code"`
-	Description              string                               `json:"description"`
-	Status                   string                               `json:"status"`
-	Version                  int                                  `json:"version"`
-	Inputs                   []AwsKinesisAnalyticsApplicationSpec `json:"inputs"`
-	Outputs                  []AwsKinesisAnalyticsApplicationSpec `json:"outputs"`
+	Tags                     map[string]string                    `json:"tags"`
 	Name                     string                               `json:"name"`
 	Arn                      string                               `json:"arn"`
 	ReferenceDataSources     []AwsKinesisAnalyticsApplicationSpec `json:"reference_data_sources"`
-	Tags                     map[string]string                    `json:"tags"`
+	LastUpdateTimestamp      string                               `json:"last_update_timestamp"`
+	Status                   string                               `json:"status"`
+	Version                  int                                  `json:"version"`
+	CloudwatchLoggingOptions []AwsKinesisAnalyticsApplicationSpec `json:"cloudwatch_logging_options"`
+	Inputs                   []AwsKinesisAnalyticsApplicationSpec `json:"inputs"`
+	Code                     string                               `json:"code"`
+	CreateTimestamp          string                               `json:"create_timestamp"`
+	Description              string                               `json:"description"`
+	Outputs                  []AwsKinesisAnalyticsApplicationSpec `json:"outputs"`
 }
 
+
+
 type AwsKinesisAnalyticsApplicationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

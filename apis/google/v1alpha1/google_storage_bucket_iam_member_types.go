@@ -19,13 +19,19 @@ type GoogleStorageBucketIamMember struct {
 }
 
 type GoogleStorageBucketIamMemberSpec struct {
+	Etag   string `json:"etag"`
 	Role   string `json:"role"`
 	Member string `json:"member"`
-	Etag   string `json:"etag"`
 	Bucket string `json:"bucket"`
 }
 
+
+
 type GoogleStorageBucketIamMemberStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

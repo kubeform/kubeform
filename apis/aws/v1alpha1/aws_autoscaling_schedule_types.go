@@ -19,18 +19,24 @@ type AwsAutoscalingSchedule struct {
 }
 
 type AwsAutoscalingScheduleSpec struct {
-	StartTime            string `json:"start_time"`
-	MinSize              int    `json:"min_size"`
-	MaxSize              int    `json:"max_size"`
 	Arn                  string `json:"arn"`
 	ScheduledActionName  string `json:"scheduled_action_name"`
 	AutoscalingGroupName string `json:"autoscaling_group_name"`
+	StartTime            string `json:"start_time"`
+	MinSize              int    `json:"min_size"`
+	DesiredCapacity      int    `json:"desired_capacity"`
 	EndTime              string `json:"end_time"`
 	Recurrence           string `json:"recurrence"`
-	DesiredCapacity      int    `json:"desired_capacity"`
+	MaxSize              int    `json:"max_size"`
 }
 
+
+
 type AwsAutoscalingScheduleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

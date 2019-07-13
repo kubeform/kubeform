@@ -18,39 +18,45 @@ type GoogleComputeSnapshot struct {
 	Status            GoogleComputeSnapshotStatus `json:"status,omitempty"`
 }
 
-type GoogleComputeSnapshotSpecSourceDiskEncryptionKey struct {
-	RawKey string `json:"raw_key"`
-}
-
 type GoogleComputeSnapshotSpecSnapshotEncryptionKey struct {
 	RawKey string `json:"raw_key"`
 	Sha256 string `json:"sha256"`
 }
 
+type GoogleComputeSnapshotSpecSourceDiskEncryptionKey struct {
+	RawKey string `json:"raw_key"`
+}
+
 type GoogleComputeSnapshotSpec struct {
-	SnapshotId                    int                         `json:"snapshot_id"`
+	StorageBytes                  int                         `json:"storage_bytes"`
+	SourceDiskLink                string                      `json:"source_disk_link"`
 	SnapshotEncryptionKeySha256   string                      `json:"snapshot_encryption_key_sha256"`
-	Name                          string                      `json:"name"`
+	SourceDiskEncryptionKeyRaw    string                      `json:"source_disk_encryption_key_raw"`
+	SnapshotEncryptionKey         []GoogleComputeSnapshotSpec `json:"snapshot_encryption_key"`
+	CreationTimestamp             string                      `json:"creation_timestamp"`
+	SnapshotId                    int                         `json:"snapshot_id"`
+	SourceDisk                    string                      `json:"source_disk"`
 	SourceDiskEncryptionKey       []GoogleComputeSnapshotSpec `json:"source_disk_encryption_key"`
 	Zone                          string                      `json:"zone"`
-	DiskSizeGb                    int                         `json:"disk_size_gb"`
+	SourceDiskEncryptionKeySha256 string                      `json:"source_disk_encryption_key_sha256"`
+	Project                       string                      `json:"project"`
+	SelfLink                      string                      `json:"self_link"`
+	Description                   string                      `json:"description"`
+	Labels                        map[string]string           `json:"labels"`
 	LabelFingerprint              string                      `json:"label_fingerprint"`
 	Licenses                      []string                    `json:"licenses"`
 	SnapshotEncryptionKeyRaw      string                      `json:"snapshot_encryption_key_raw"`
-	SelfLink                      string                      `json:"self_link"`
-	Project                       string                      `json:"project"`
-	Labels                        map[string]string           `json:"labels"`
-	SnapshotEncryptionKey         []GoogleComputeSnapshotSpec `json:"snapshot_encryption_key"`
-	CreationTimestamp             string                      `json:"creation_timestamp"`
-	SourceDiskEncryptionKeyRaw    string                      `json:"source_disk_encryption_key_raw"`
-	SourceDiskEncryptionKeySha256 string                      `json:"source_disk_encryption_key_sha256"`
-	SourceDisk                    string                      `json:"source_disk"`
-	Description                   string                      `json:"description"`
-	StorageBytes                  int                         `json:"storage_bytes"`
-	SourceDiskLink                string                      `json:"source_disk_link"`
+	Name                          string                      `json:"name"`
+	DiskSizeGb                    int                         `json:"disk_size_gb"`
 }
 
+
+
 type GoogleComputeSnapshotStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

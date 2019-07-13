@@ -19,21 +19,27 @@ type AwsDxPublicVirtualInterface struct {
 }
 
 type AwsDxPublicVirtualInterfaceSpec struct {
+	Arn                 string            `json:"arn"`
+	ConnectionId        string            `json:"connection_id"`
 	Vlan                int               `json:"vlan"`
+	BgpAsn              int               `json:"bgp_asn"`
+	CustomerAddress     string            `json:"customer_address"`
+	Tags                map[string]string `json:"tags"`
+	Name                string            `json:"name"`
 	BgpAuthKey          string            `json:"bgp_auth_key"`
 	AddressFamily       string            `json:"address_family"`
 	AmazonAddress       string            `json:"amazon_address"`
 	RouteFilterPrefixes []string          `json:"route_filter_prefixes"`
-	Tags                map[string]string `json:"tags"`
-	Arn                 string            `json:"arn"`
-	Name                string            `json:"name"`
-	BgpAsn              int               `json:"bgp_asn"`
-	CustomerAddress     string            `json:"customer_address"`
 	AwsDevice           string            `json:"aws_device"`
-	ConnectionId        string            `json:"connection_id"`
 }
 
+
+
 type AwsDxPublicVirtualInterfaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

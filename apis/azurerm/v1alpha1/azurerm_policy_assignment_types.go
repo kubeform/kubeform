@@ -19,24 +19,30 @@ type AzurermPolicyAssignment struct {
 }
 
 type AzurermPolicyAssignmentSpecIdentity struct {
-	PrincipalId string `json:"principal_id"`
 	TenantId    string `json:"tenant_id"`
 	Type        string `json:"type"`
+	PrincipalId string `json:"principal_id"`
 }
 
 type AzurermPolicyAssignmentSpec struct {
+	Scope              string                        `json:"scope"`
 	PolicyDefinitionId string                        `json:"policy_definition_id"`
+	Description        string                        `json:"description"`
 	Location           string                        `json:"location"`
 	NotScopes          []string                      `json:"not_scopes"`
 	Name               string                        `json:"name"`
-	Scope              string                        `json:"scope"`
-	Description        string                        `json:"description"`
 	DisplayName        string                        `json:"display_name"`
 	Identity           []AzurermPolicyAssignmentSpec `json:"identity"`
 	Parameters         string                        `json:"parameters"`
 }
 
+
+
 type AzurermPolicyAssignmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

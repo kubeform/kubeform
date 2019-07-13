@@ -25,13 +25,19 @@ type AwsCloudwatchEventPermissionSpecCondition struct {
 }
 
 type AwsCloudwatchEventPermissionSpec struct {
+	Principal   string                             `json:"principal"`
 	StatementId string                             `json:"statement_id"`
 	Action      string                             `json:"action"`
 	Condition   []AwsCloudwatchEventPermissionSpec `json:"condition"`
-	Principal   string                             `json:"principal"`
 }
 
+
+
 type AwsCloudwatchEventPermissionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

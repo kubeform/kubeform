@@ -19,16 +19,22 @@ type AwsCloudhsmV2Hsm struct {
 }
 
 type AwsCloudhsmV2HsmSpec struct {
-	HsmEniId         string `json:"hsm_eni_id"`
-	ClusterId        string `json:"cluster_id"`
-	SubnetId         string `json:"subnet_id"`
 	AvailabilityZone string `json:"availability_zone"`
 	IpAddress        string `json:"ip_address"`
 	HsmId            string `json:"hsm_id"`
 	HsmState         string `json:"hsm_state"`
+	HsmEniId         string `json:"hsm_eni_id"`
+	ClusterId        string `json:"cluster_id"`
+	SubnetId         string `json:"subnet_id"`
 }
 
+
+
 type AwsCloudhsmV2HsmStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

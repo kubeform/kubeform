@@ -19,37 +19,43 @@ type AwsNeptuneCluster struct {
 }
 
 type AwsNeptuneClusterSpec struct {
-	Endpoint                         string            `json:"endpoint"`
-	EngineVersion                    string            `json:"engine_version"`
-	ClusterMembers                   []string          `json:"cluster_members"`
-	FinalSnapshotIdentifier          string            `json:"final_snapshot_identifier"`
-	IamDatabaseAuthenticationEnabled bool              `json:"iam_database_authentication_enabled"`
-	ReaderEndpoint                   string            `json:"reader_endpoint"`
-	KmsKeyArn                        string            `json:"kms_key_arn"`
-	NeptuneClusterParameterGroupName string            `json:"neptune_cluster_parameter_group_name"`
-	Port                             int               `json:"port"`
-	PreferredMaintenanceWindow       string            `json:"preferred_maintenance_window"`
+	AvailabilityZones                []string          `json:"availability_zones"`
+	ClusterIdentifier                string            `json:"cluster_identifier"`
 	ClusterIdentifierPrefix          string            `json:"cluster_identifier_prefix"`
-	ClusterResourceId                string            `json:"cluster_resource_id"`
-	HostedZoneId                     string            `json:"hosted_zone_id"`
-	IamRoles                         []string          `json:"iam_roles"`
+	ReaderEndpoint                   string            `json:"reader_endpoint"`
+	StorageEncrypted                 bool              `json:"storage_encrypted"`
+	SkipFinalSnapshot                bool              `json:"skip_final_snapshot"`
 	SnapshotIdentifier               string            `json:"snapshot_identifier"`
+	ReplicationSourceIdentifier      string            `json:"replication_source_identifier"`
+	BackupRetentionPeriod            int               `json:"backup_retention_period"`
+	HostedZoneId                     string            `json:"hosted_zone_id"`
+	PreferredMaintenanceWindow       string            `json:"preferred_maintenance_window"`
 	VpcSecurityGroupIds              []string          `json:"vpc_security_group_ids"`
-	Tags                             map[string]string `json:"tags"`
-	Arn                              string            `json:"arn"`
+	ClusterResourceId                string            `json:"cluster_resource_id"`
+	IamRoles                         []string          `json:"iam_roles"`
+	Endpoint                         string            `json:"endpoint"`
 	Engine                           string            `json:"engine"`
 	PreferredBackupWindow            string            `json:"preferred_backup_window"`
-	StorageEncrypted                 bool              `json:"storage_encrypted"`
-	NeptuneSubnetGroupName           string            `json:"neptune_subnet_group_name"`
-	ReplicationSourceIdentifier      string            `json:"replication_source_identifier"`
-	SkipFinalSnapshot                bool              `json:"skip_final_snapshot"`
+	Tags                             map[string]string `json:"tags"`
+	EngineVersion                    string            `json:"engine_version"`
+	KmsKeyArn                        string            `json:"kms_key_arn"`
 	ApplyImmediately                 bool              `json:"apply_immediately"`
-	AvailabilityZones                []string          `json:"availability_zones"`
-	BackupRetentionPeriod            int               `json:"backup_retention_period"`
-	ClusterIdentifier                string            `json:"cluster_identifier"`
+	Arn                              string            `json:"arn"`
+	IamDatabaseAuthenticationEnabled bool              `json:"iam_database_authentication_enabled"`
+	NeptuneSubnetGroupName           string            `json:"neptune_subnet_group_name"`
+	NeptuneClusterParameterGroupName string            `json:"neptune_cluster_parameter_group_name"`
+	Port                             int               `json:"port"`
+	ClusterMembers                   []string          `json:"cluster_members"`
+	FinalSnapshotIdentifier          string            `json:"final_snapshot_identifier"`
 }
 
+
+
 type AwsNeptuneClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

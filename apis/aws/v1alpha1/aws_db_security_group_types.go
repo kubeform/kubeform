@@ -19,21 +19,27 @@ type AwsDbSecurityGroup struct {
 }
 
 type AwsDbSecurityGroupSpecIngress struct {
-	SecurityGroupOwnerId string `json:"security_group_owner_id"`
 	Cidr                 string `json:"cidr"`
 	SecurityGroupName    string `json:"security_group_name"`
 	SecurityGroupId      string `json:"security_group_id"`
+	SecurityGroupOwnerId string `json:"security_group_owner_id"`
 }
 
 type AwsDbSecurityGroupSpec struct {
-	Ingress     []AwsDbSecurityGroupSpec `json:"ingress"`
-	Tags        map[string]string        `json:"tags"`
 	Arn         string                   `json:"arn"`
 	Name        string                   `json:"name"`
 	Description string                   `json:"description"`
+	Ingress     []AwsDbSecurityGroupSpec `json:"ingress"`
+	Tags        map[string]string        `json:"tags"`
 }
 
+
+
 type AwsDbSecurityGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

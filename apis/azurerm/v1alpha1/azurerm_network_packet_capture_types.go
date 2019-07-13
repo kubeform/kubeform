@@ -18,33 +18,39 @@ type AzurermNetworkPacketCapture struct {
 	Status            AzurermNetworkPacketCaptureStatus `json:"status,omitempty"`
 }
 
+type AzurermNetworkPacketCaptureSpecFilter struct {
+	LocalIpAddress  string `json:"local_ip_address"`
+	LocalPort       string `json:"local_port"`
+	Protocol        string `json:"protocol"`
+	RemoteIpAddress string `json:"remote_ip_address"`
+	RemotePort      string `json:"remote_port"`
+}
+
 type AzurermNetworkPacketCaptureSpecStorageLocation struct {
 	FilePath         string `json:"file_path"`
 	StorageAccountId string `json:"storage_account_id"`
 	StoragePath      string `json:"storage_path"`
 }
 
-type AzurermNetworkPacketCaptureSpecFilter struct {
-	RemotePort      string `json:"remote_port"`
-	LocalIpAddress  string `json:"local_ip_address"`
-	LocalPort       string `json:"local_port"`
-	Protocol        string `json:"protocol"`
-	RemoteIpAddress string `json:"remote_ip_address"`
-}
-
 type AzurermNetworkPacketCaptureSpec struct {
-	StorageLocation        []AzurermNetworkPacketCaptureSpec `json:"storage_location"`
+	Filter                 []AzurermNetworkPacketCaptureSpec `json:"filter"`
+	Name                   string                            `json:"name"`
 	NetworkWatcherName     string                            `json:"network_watcher_name"`
 	MaximumBytesPerPacket  int                               `json:"maximum_bytes_per_packet"`
-	MaximumBytesPerSession int                               `json:"maximum_bytes_per_session"`
 	MaximumCaptureDuration int                               `json:"maximum_capture_duration"`
-	Name                   string                            `json:"name"`
+	StorageLocation        []AzurermNetworkPacketCaptureSpec `json:"storage_location"`
 	ResourceGroupName      string                            `json:"resource_group_name"`
 	TargetResourceId       string                            `json:"target_resource_id"`
-	Filter                 []AzurermNetworkPacketCaptureSpec `json:"filter"`
+	MaximumBytesPerSession int                               `json:"maximum_bytes_per_session"`
 }
 
+
+
 type AzurermNetworkPacketCaptureStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

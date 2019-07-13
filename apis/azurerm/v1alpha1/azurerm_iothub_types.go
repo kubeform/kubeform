@@ -18,12 +18,11 @@ type AzurermIothub struct {
 	Status            AzurermIothubStatus `json:"status,omitempty"`
 }
 
-type AzurermIothubSpecRoute struct {
-	Source        string   `json:"source"`
-	Condition     string   `json:"condition"`
+type AzurermIothubSpecFallbackRoute struct {
 	EndpointNames []string `json:"endpoint_names"`
 	Enabled       bool     `json:"enabled"`
-	Name          string   `json:"name"`
+	Source        string   `json:"source"`
+	Condition     string   `json:"condition"`
 }
 
 type AzurermIothubSpecIpFilterRule struct {
@@ -44,45 +43,52 @@ type AzurermIothubSpecEndpoint struct {
 }
 
 type AzurermIothubSpecSku struct {
+	Name     string `json:"name"`
 	Tier     string `json:"tier"`
 	Capacity int    `json:"capacity"`
-	Name     string `json:"name"`
 }
 
 type AzurermIothubSpecSharedAccessPolicy struct {
+	KeyName      string `json:"key_name"`
 	PrimaryKey   string `json:"primary_key"`
 	SecondaryKey string `json:"secondary_key"`
 	Permissions  string `json:"permissions"`
-	KeyName      string `json:"key_name"`
 }
 
-type AzurermIothubSpecFallbackRoute struct {
+type AzurermIothubSpecRoute struct {
+	Enabled       bool     `json:"enabled"`
+	Name          string   `json:"name"`
 	Source        string   `json:"source"`
 	Condition     string   `json:"condition"`
 	EndpointNames []string `json:"endpoint_names"`
-	Enabled       bool     `json:"enabled"`
 }
 
 type AzurermIothubSpec struct {
-	EventHubEventsEndpoint     string              `json:"event_hub_events_endpoint"`
-	Route                      []AzurermIothubSpec `json:"route"`
-	IpFilterRule               []AzurermIothubSpec `json:"ip_filter_rule"`
-	ResourceGroupName          string              `json:"resource_group_name"`
-	Type                       string              `json:"type"`
-	EventHubOperationsEndpoint string              `json:"event_hub_operations_endpoint"`
-	EventHubEventsPath         string              `json:"event_hub_events_path"`
-	Endpoint                   []AzurermIothubSpec `json:"endpoint"`
 	Name                       string              `json:"name"`
-	Sku                        []AzurermIothubSpec `json:"sku"`
-	Tags                       map[string]string   `json:"tags"`
 	Location                   string              `json:"location"`
-	Hostname                   string              `json:"hostname"`
+	ResourceGroupName          string              `json:"resource_group_name"`
 	EventHubOperationsPath     string              `json:"event_hub_operations_path"`
-	SharedAccessPolicy         []AzurermIothubSpec `json:"shared_access_policy"`
 	FallbackRoute              []AzurermIothubSpec `json:"fallback_route"`
+	IpFilterRule               []AzurermIothubSpec `json:"ip_filter_rule"`
+	EventHubEventsEndpoint     string              `json:"event_hub_events_endpoint"`
+	EventHubOperationsEndpoint string              `json:"event_hub_operations_endpoint"`
+	Endpoint                   []AzurermIothubSpec `json:"endpoint"`
+	Tags                       map[string]string   `json:"tags"`
+	Sku                        []AzurermIothubSpec `json:"sku"`
+	Type                       string              `json:"type"`
+	Hostname                   string              `json:"hostname"`
+	EventHubEventsPath         string              `json:"event_hub_events_path"`
+	SharedAccessPolicy         []AzurermIothubSpec `json:"shared_access_policy"`
+	Route                      []AzurermIothubSpec `json:"route"`
 }
 
+
+
 type AzurermIothubStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

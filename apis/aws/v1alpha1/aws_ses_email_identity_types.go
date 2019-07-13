@@ -19,11 +19,17 @@ type AwsSesEmailIdentity struct {
 }
 
 type AwsSesEmailIdentitySpec struct {
-	Email string `json:"email"`
 	Arn   string `json:"arn"`
+	Email string `json:"email"`
 }
 
+
+
 type AwsSesEmailIdentityStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,18 +19,24 @@ type AwsSsmActivation struct {
 }
 
 type AwsSsmActivationSpec struct {
-	ExpirationDate    string            `json:"expiration_date"`
-	RegistrationLimit int               `json:"registration_limit"`
-	Name              string            `json:"name"`
-	Description       string            `json:"description"`
 	Expired           string            `json:"expired"`
-	IamRole           string            `json:"iam_role"`
+	RegistrationLimit int               `json:"registration_limit"`
 	RegistrationCount int               `json:"registration_count"`
+	Description       string            `json:"description"`
+	ExpirationDate    string            `json:"expiration_date"`
+	IamRole           string            `json:"iam_role"`
 	ActivationCode    string            `json:"activation_code"`
 	Tags              map[string]string `json:"tags"`
+	Name              string            `json:"name"`
 }
 
+
+
 type AwsSsmActivationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

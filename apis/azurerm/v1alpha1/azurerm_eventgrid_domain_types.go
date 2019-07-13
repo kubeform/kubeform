@@ -18,33 +18,39 @@ type AzurermEventgridDomain struct {
 	Status            AzurermEventgridDomainStatus `json:"status,omitempty"`
 }
 
+type AzurermEventgridDomainSpecInputMappingFields struct {
+	DataVersion string `json:"data_version"`
+	Id          string `json:"id"`
+	Topic       string `json:"topic"`
+	EventTime   string `json:"event_time"`
+	EventType   string `json:"event_type"`
+	Subject     string `json:"subject"`
+}
+
 type AzurermEventgridDomainSpecInputMappingDefaultValues struct {
 	EventType   string `json:"event_type"`
 	Subject     string `json:"subject"`
 	DataVersion string `json:"data_version"`
 }
 
-type AzurermEventgridDomainSpecInputMappingFields struct {
-	Id          string `json:"id"`
-	Topic       string `json:"topic"`
-	EventTime   string `json:"event_time"`
-	EventType   string `json:"event_type"`
-	Subject     string `json:"subject"`
-	DataVersion string `json:"data_version"`
-}
-
 type AzurermEventgridDomainSpec struct {
+	Tags                      map[string]string            `json:"tags"`
+	InputSchema               string                       `json:"input_schema"`
+	InputMappingFields        []AzurermEventgridDomainSpec `json:"input_mapping_fields"`
 	InputMappingDefaultValues []AzurermEventgridDomainSpec `json:"input_mapping_default_values"`
 	Endpoint                  string                       `json:"endpoint"`
 	Name                      string                       `json:"name"`
 	Location                  string                       `json:"location"`
 	ResourceGroupName         string                       `json:"resource_group_name"`
-	Tags                      map[string]string            `json:"tags"`
-	InputSchema               string                       `json:"input_schema"`
-	InputMappingFields        []AzurermEventgridDomainSpec `json:"input_mapping_fields"`
 }
 
+
+
 type AzurermEventgridDomainStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

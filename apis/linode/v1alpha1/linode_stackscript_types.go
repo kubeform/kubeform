@@ -19,31 +19,37 @@ type LinodeStackscript struct {
 }
 
 type LinodeStackscriptSpecUserDefinedFields struct {
+	Example string `json:"example"`
+	OneOf   string `json:"one_of"`
 	ManyOf  string `json:"many_of"`
 	Default string `json:"default"`
 	Label   string `json:"label"`
 	Name    string `json:"name"`
-	Example string `json:"example"`
-	OneOf   string `json:"one_of"`
 }
 
 type LinodeStackscriptSpec struct {
-	Description       string                  `json:"description"`
-	DeploymentsTotal  int                     `json:"deployments_total"`
-	Username          string                  `json:"username"`
-	Created           string                  `json:"created"`
-	UserDefinedFields []LinodeStackscriptSpec `json:"user_defined_fields"`
-	UserGravatarId    string                  `json:"user_gravatar_id"`
 	Updated           string                  `json:"updated"`
-	Label             string                  `json:"label"`
+	UserDefinedFields []LinodeStackscriptSpec `json:"user_defined_fields"`
 	Script            string                  `json:"script"`
 	RevNote           string                  `json:"rev_note"`
-	IsPublic          bool                    `json:"is_public"`
+	Username          string                  `json:"username"`
 	Images            []string                `json:"images"`
 	DeploymentsActive int                     `json:"deployments_active"`
+	UserGravatarId    string                  `json:"user_gravatar_id"`
+	DeploymentsTotal  int                     `json:"deployments_total"`
+	Created           string                  `json:"created"`
+	Label             string                  `json:"label"`
+	Description       string                  `json:"description"`
+	IsPublic          bool                    `json:"is_public"`
 }
 
+
+
 type LinodeStackscriptStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

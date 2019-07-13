@@ -23,10 +23,10 @@ type AwsWafregionalRuleGroupSpecActivatedRuleAction struct {
 }
 
 type AwsWafregionalRuleGroupSpecActivatedRule struct {
-	Action   []AwsWafregionalRuleGroupSpecActivatedRule `json:"action"`
-	Priority int                                        `json:"priority"`
 	RuleId   string                                     `json:"rule_id"`
 	Type     string                                     `json:"type"`
+	Action   []AwsWafregionalRuleGroupSpecActivatedRule `json:"action"`
+	Priority int                                        `json:"priority"`
 }
 
 type AwsWafregionalRuleGroupSpec struct {
@@ -35,7 +35,13 @@ type AwsWafregionalRuleGroupSpec struct {
 	ActivatedRule []AwsWafregionalRuleGroupSpec `json:"activated_rule"`
 }
 
+
+
 type AwsWafregionalRuleGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

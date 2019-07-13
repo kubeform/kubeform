@@ -24,18 +24,24 @@ type AzurermLbOutboundRuleSpecFrontendIpConfiguration struct {
 }
 
 type AzurermLbOutboundRuleSpec struct {
-	Name                    string                      `json:"name"`
 	ResourceGroupName       string                      `json:"resource_group_name"`
+	EnableTcpReset          bool                        `json:"enable_tcp_reset"`
+	Name                    string                      `json:"name"`
 	LoadbalancerId          string                      `json:"loadbalancer_id"`
 	FrontendIpConfiguration []AzurermLbOutboundRuleSpec `json:"frontend_ip_configuration"`
+	BackendAddressPoolId    string                      `json:"backend_address_pool_id"`
 	Protocol                string                      `json:"protocol"`
 	AllocatedOutboundPorts  int                         `json:"allocated_outbound_ports"`
 	IdleTimeoutInMinutes    int                         `json:"idle_timeout_in_minutes"`
-	BackendAddressPoolId    string                      `json:"backend_address_pool_id"`
-	EnableTcpReset          bool                        `json:"enable_tcp_reset"`
 }
 
+
+
 type AzurermLbOutboundRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

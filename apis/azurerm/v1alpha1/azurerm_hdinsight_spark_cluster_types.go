@@ -22,45 +22,45 @@ type AzurermHdinsightSparkClusterSpecComponentVersion struct {
 	Spark string `json:"spark"`
 }
 
+type AzurermHdinsightSparkClusterSpecStorageAccount struct {
+	StorageAccountKey  string `json:"storage_account_key"`
+	StorageContainerId string `json:"storage_container_id"`
+	IsDefault          bool   `json:"is_default"`
+}
+
 type AzurermHdinsightSparkClusterSpecGateway struct {
 	Enabled  bool   `json:"enabled"`
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
 
-type AzurermHdinsightSparkClusterSpecStorageAccount struct {
-	StorageContainerId string `json:"storage_container_id"`
-	IsDefault          bool   `json:"is_default"`
-	StorageAccountKey  string `json:"storage_account_key"`
-}
-
 type AzurermHdinsightSparkClusterSpecRolesHeadNode struct {
-	SubnetId         string   `json:"subnet_id"`
-	VirtualNetworkId string   `json:"virtual_network_id"`
-	VmSize           string   `json:"vm_size"`
 	Username         string   `json:"username"`
 	Password         string   `json:"password"`
 	SshKeys          []string `json:"ssh_keys"`
+	SubnetId         string   `json:"subnet_id"`
+	VirtualNetworkId string   `json:"virtual_network_id"`
+	VmSize           string   `json:"vm_size"`
 }
 
 type AzurermHdinsightSparkClusterSpecRolesWorkerNode struct {
+	VirtualNetworkId    string   `json:"virtual_network_id"`
+	MinInstanceCount    int      `json:"min_instance_count"`
+	TargetInstanceCount int      `json:"target_instance_count"`
 	VmSize              string   `json:"vm_size"`
 	Username            string   `json:"username"`
 	Password            string   `json:"password"`
 	SshKeys             []string `json:"ssh_keys"`
 	SubnetId            string   `json:"subnet_id"`
-	VirtualNetworkId    string   `json:"virtual_network_id"`
-	MinInstanceCount    int      `json:"min_instance_count"`
-	TargetInstanceCount int      `json:"target_instance_count"`
 }
 
 type AzurermHdinsightSparkClusterSpecRolesZookeeperNode struct {
-	VmSize           string   `json:"vm_size"`
-	Username         string   `json:"username"`
-	Password         string   `json:"password"`
 	SshKeys          []string `json:"ssh_keys"`
 	SubnetId         string   `json:"subnet_id"`
 	VirtualNetworkId string   `json:"virtual_network_id"`
+	VmSize           string   `json:"vm_size"`
+	Username         string   `json:"username"`
+	Password         string   `json:"password"`
 }
 
 type AzurermHdinsightSparkClusterSpecRoles struct {
@@ -70,21 +70,27 @@ type AzurermHdinsightSparkClusterSpecRoles struct {
 }
 
 type AzurermHdinsightSparkClusterSpec struct {
-	ResourceGroupName string                             `json:"resource_group_name"`
-	Location          string                             `json:"location"`
+	Name              string                             `json:"name"`
 	ClusterVersion    string                             `json:"cluster_version"`
+	ComponentVersion  []AzurermHdinsightSparkClusterSpec `json:"component_version"`
+	StorageAccount    []AzurermHdinsightSparkClusterSpec `json:"storage_account"`
 	Tags              map[string]string                  `json:"tags"`
 	HttpsEndpoint     string                             `json:"https_endpoint"`
-	Name              string                             `json:"name"`
-	ComponentVersion  []AzurermHdinsightSparkClusterSpec `json:"component_version"`
-	Gateway           []AzurermHdinsightSparkClusterSpec `json:"gateway"`
-	StorageAccount    []AzurermHdinsightSparkClusterSpec `json:"storage_account"`
-	Roles             []AzurermHdinsightSparkClusterSpec `json:"roles"`
 	SshEndpoint       string                             `json:"ssh_endpoint"`
+	ResourceGroupName string                             `json:"resource_group_name"`
+	Location          string                             `json:"location"`
 	Tier              string                             `json:"tier"`
+	Gateway           []AzurermHdinsightSparkClusterSpec `json:"gateway"`
+	Roles             []AzurermHdinsightSparkClusterSpec `json:"roles"`
 }
 
+
+
 type AzurermHdinsightSparkClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

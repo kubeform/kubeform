@@ -19,15 +19,21 @@ type AwsSecretsmanagerSecretVersion struct {
 }
 
 type AwsSecretsmanagerSecretVersionSpec struct {
+	SecretBinary  string   `json:"secret_binary"`
 	VersionId     string   `json:"version_id"`
 	VersionStages []string `json:"version_stages"`
 	Arn           string   `json:"arn"`
 	SecretId      string   `json:"secret_id"`
 	SecretString  string   `json:"secret_string"`
-	SecretBinary  string   `json:"secret_binary"`
 }
 
+
+
 type AwsSecretsmanagerSecretVersionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

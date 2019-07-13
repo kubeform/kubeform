@@ -18,6 +18,14 @@ type DigitaloceanKubernetesCluster struct {
 	Status            DigitaloceanKubernetesClusterStatus `json:"status,omitempty"`
 }
 
+type DigitaloceanKubernetesClusterSpecKubeConfig struct {
+	Host                 string `json:"host"`
+	ClusterCaCertificate string `json:"cluster_ca_certificate"`
+	ClientKey            string `json:"client_key"`
+	ClientCertificate    string `json:"client_certificate"`
+	RawConfig            string `json:"raw_config"`
+}
+
 type DigitaloceanKubernetesClusterSpecNodePoolNodes struct {
 	Id        string `json:"id"`
 	Name      string `json:"name"`
@@ -35,31 +43,29 @@ type DigitaloceanKubernetesClusterSpecNodePool struct {
 	Id        string                                      `json:"id"`
 }
 
-type DigitaloceanKubernetesClusterSpecKubeConfig struct {
-	ClientKey            string `json:"client_key"`
-	ClientCertificate    string `json:"client_certificate"`
-	RawConfig            string `json:"raw_config"`
-	Host                 string `json:"host"`
-	ClusterCaCertificate string `json:"cluster_ca_certificate"`
-}
-
 type DigitaloceanKubernetesClusterSpec struct {
+	UpdatedAt     string                              `json:"updated_at"`
+	KubeConfig    []DigitaloceanKubernetesClusterSpec `json:"kube_config"`
 	Region        string                              `json:"region"`
 	Version       string                              `json:"version"`
-	ClusterSubnet string                              `json:"cluster_subnet"`
-	Ipv4Address   string                              `json:"ipv4_address"`
-	Tags          []string                            `json:"tags"`
-	Status        string                              `json:"status"`
-	UpdatedAt     string                              `json:"updated_at"`
-	Name          string                              `json:"name"`
-	ServiceSubnet string                              `json:"service_subnet"`
 	Endpoint      string                              `json:"endpoint"`
 	NodePool      []DigitaloceanKubernetesClusterSpec `json:"node_pool"`
+	Status        string                              `json:"status"`
 	CreatedAt     string                              `json:"created_at"`
-	KubeConfig    []DigitaloceanKubernetesClusterSpec `json:"kube_config"`
+	Name          string                              `json:"name"`
+	ClusterSubnet string                              `json:"cluster_subnet"`
+	ServiceSubnet string                              `json:"service_subnet"`
+	Ipv4Address   string                              `json:"ipv4_address"`
+	Tags          []string                            `json:"tags"`
 }
 
+
+
 type DigitaloceanKubernetesClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

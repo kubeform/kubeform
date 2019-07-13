@@ -19,33 +19,39 @@ type AwsNeptuneClusterInstance struct {
 }
 
 type AwsNeptuneClusterInstanceSpec struct {
-	NeptuneParameterGroupName  string            `json:"neptune_parameter_group_name"`
-	NeptuneSubnetGroupName     string            `json:"neptune_subnet_group_name"`
-	Port                       int               `json:"port"`
-	PreferredMaintenanceWindow string            `json:"preferred_maintenance_window"`
-	Tags                       map[string]string `json:"tags"`
-	AvailabilityZone           string            `json:"availability_zone"`
+	DbiResourceId              string            `json:"dbi_resource_id"`
+	Endpoint                   string            `json:"endpoint"`
 	EngineVersion              string            `json:"engine_version"`
-	AutoMinorVersionUpgrade    bool              `json:"auto_minor_version_upgrade"`
-	Identifier                 string            `json:"identifier"`
+	KmsKeyArn                  string            `json:"kms_key_arn"`
 	Address                    string            `json:"address"`
 	ApplyImmediately           bool              `json:"apply_immediately"`
-	Endpoint                   string            `json:"endpoint"`
-	KmsKeyArn                  string            `json:"kms_key_arn"`
-	PreferredBackupWindow      string            `json:"preferred_backup_window"`
-	PromotionTier              int               `json:"promotion_tier"`
-	PubliclyAccessible         bool              `json:"publicly_accessible"`
-	StorageEncrypted           bool              `json:"storage_encrypted"`
 	Arn                        string            `json:"arn"`
+	AvailabilityZone           string            `json:"availability_zone"`
+	Identifier                 string            `json:"identifier"`
+	Port                       int               `json:"port"`
+	PreferredMaintenanceWindow string            `json:"preferred_maintenance_window"`
+	NeptuneSubnetGroupName     string            `json:"neptune_subnet_group_name"`
+	PromotionTier              int               `json:"promotion_tier"`
 	ClusterIdentifier          string            `json:"cluster_identifier"`
-	Writer                     bool              `json:"writer"`
-	IdentifierPrefix           string            `json:"identifier_prefix"`
-	InstanceClass              string            `json:"instance_class"`
-	DbiResourceId              string            `json:"dbi_resource_id"`
 	Engine                     string            `json:"engine"`
+	InstanceClass              string            `json:"instance_class"`
+	NeptuneParameterGroupName  string            `json:"neptune_parameter_group_name"`
+	StorageEncrypted           bool              `json:"storage_encrypted"`
+	Tags                       map[string]string `json:"tags"`
+	Writer                     bool              `json:"writer"`
+	AutoMinorVersionUpgrade    bool              `json:"auto_minor_version_upgrade"`
+	IdentifierPrefix           string            `json:"identifier_prefix"`
+	PreferredBackupWindow      string            `json:"preferred_backup_window"`
+	PubliclyAccessible         bool              `json:"publicly_accessible"`
 }
 
+
+
 type AwsNeptuneClusterInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

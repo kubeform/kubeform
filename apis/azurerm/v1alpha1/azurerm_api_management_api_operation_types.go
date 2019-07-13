@@ -19,38 +19,38 @@ type AzurermApiManagementApiOperation struct {
 }
 
 type AzurermApiManagementApiOperationSpecRequestHeader struct {
-	Name         string   `json:"name"`
-	Required     bool     `json:"required"`
-	Description  string   `json:"description"`
 	Type         string   `json:"type"`
 	DefaultValue string   `json:"default_value"`
 	Values       []string `json:"values"`
+	Name         string   `json:"name"`
+	Required     bool     `json:"required"`
+	Description  string   `json:"description"`
 }
 
 type AzurermApiManagementApiOperationSpecRequestQueryParameter struct {
-	DefaultValue string   `json:"default_value"`
-	Values       []string `json:"values"`
 	Name         string   `json:"name"`
 	Required     bool     `json:"required"`
 	Description  string   `json:"description"`
 	Type         string   `json:"type"`
+	DefaultValue string   `json:"default_value"`
+	Values       []string `json:"values"`
 }
 
 type AzurermApiManagementApiOperationSpecRequestRepresentationFormParameter struct {
+	Description  string   `json:"description"`
+	Type         string   `json:"type"`
 	DefaultValue string   `json:"default_value"`
 	Values       []string `json:"values"`
 	Name         string   `json:"name"`
 	Required     bool     `json:"required"`
-	Description  string   `json:"description"`
-	Type         string   `json:"type"`
 }
 
 type AzurermApiManagementApiOperationSpecRequestRepresentation struct {
-	SchemaId      string                                                      `json:"schema_id"`
-	TypeName      string                                                      `json:"type_name"`
 	ContentType   string                                                      `json:"content_type"`
 	FormParameter []AzurermApiManagementApiOperationSpecRequestRepresentation `json:"form_parameter"`
 	Sample        string                                                      `json:"sample"`
+	SchemaId      string                                                      `json:"schema_id"`
+	TypeName      string                                                      `json:"type_name"`
 }
 
 type AzurermApiManagementApiOperationSpecRequest struct {
@@ -61,12 +61,12 @@ type AzurermApiManagementApiOperationSpecRequest struct {
 }
 
 type AzurermApiManagementApiOperationSpecResponseHeader struct {
+	Name         string   `json:"name"`
 	Required     bool     `json:"required"`
 	Description  string   `json:"description"`
 	Type         string   `json:"type"`
 	DefaultValue string   `json:"default_value"`
 	Values       []string `json:"values"`
-	Name         string   `json:"name"`
 }
 
 type AzurermApiManagementApiOperationSpecResponseRepresentationFormParameter struct {
@@ -79,11 +79,11 @@ type AzurermApiManagementApiOperationSpecResponseRepresentationFormParameter str
 }
 
 type AzurermApiManagementApiOperationSpecResponseRepresentation struct {
-	ContentType   string                                                       `json:"content_type"`
 	FormParameter []AzurermApiManagementApiOperationSpecResponseRepresentation `json:"form_parameter"`
 	Sample        string                                                       `json:"sample"`
 	SchemaId      string                                                       `json:"schema_id"`
 	TypeName      string                                                       `json:"type_name"`
+	ContentType   string                                                       `json:"content_type"`
 }
 
 type AzurermApiManagementApiOperationSpecResponse struct {
@@ -94,29 +94,35 @@ type AzurermApiManagementApiOperationSpecResponse struct {
 }
 
 type AzurermApiManagementApiOperationSpecTemplateParameter struct {
+	Required     bool     `json:"required"`
+	Description  string   `json:"description"`
 	Type         string   `json:"type"`
 	DefaultValue string   `json:"default_value"`
 	Values       []string `json:"values"`
 	Name         string   `json:"name"`
-	Required     bool     `json:"required"`
-	Description  string   `json:"description"`
 }
 
 type AzurermApiManagementApiOperationSpec struct {
-	DisplayName       string                                 `json:"display_name"`
-	Description       string                                 `json:"description"`
-	OperationId       string                                 `json:"operation_id"`
-	ApiManagementName string                                 `json:"api_management_name"`
 	ResourceGroupName string                                 `json:"resource_group_name"`
+	UrlTemplate       string                                 `json:"url_template"`
+	OperationId       string                                 `json:"operation_id"`
+	ApiName           string                                 `json:"api_name"`
+	ApiManagementName string                                 `json:"api_management_name"`
 	Request           []AzurermApiManagementApiOperationSpec `json:"request"`
 	Response          []AzurermApiManagementApiOperationSpec `json:"response"`
 	TemplateParameter []AzurermApiManagementApiOperationSpec `json:"template_parameter"`
-	ApiName           string                                 `json:"api_name"`
+	DisplayName       string                                 `json:"display_name"`
 	Method            string                                 `json:"method"`
-	UrlTemplate       string                                 `json:"url_template"`
+	Description       string                                 `json:"description"`
 }
 
+
+
 type AzurermApiManagementApiOperationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

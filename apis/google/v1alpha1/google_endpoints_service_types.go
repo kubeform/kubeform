@@ -19,10 +19,10 @@ type GoogleEndpointsService struct {
 }
 
 type GoogleEndpointsServiceSpecApisMethods struct {
-	Syntax       string `json:"syntax"`
 	RequestType  string `json:"request_type"`
 	ResponseType string `json:"response_type"`
 	Name         string `json:"name"`
+	Syntax       string `json:"syntax"`
 }
 
 type GoogleEndpointsServiceSpecApis struct {
@@ -33,24 +33,30 @@ type GoogleEndpointsServiceSpecApis struct {
 }
 
 type GoogleEndpointsServiceSpecEndpoints struct {
-	Address string `json:"address"`
 	Name    string `json:"name"`
+	Address string `json:"address"`
 }
 
 type GoogleEndpointsServiceSpec struct {
-	ServiceName        string                       `json:"service_name"`
-	GrpcConfig         string                       `json:"grpc_config"`
-	ProtocOutputBase64 string                       `json:"protoc_output_base64"`
-	Project            string                       `json:"project"`
 	Apis               []GoogleEndpointsServiceSpec `json:"apis"`
 	Endpoints          []GoogleEndpointsServiceSpec `json:"endpoints"`
+	ServiceName        string                       `json:"service_name"`
 	OpenapiConfig      string                       `json:"openapi_config"`
-	ProtocOutput       string                       `json:"protoc_output"`
+	ProtocOutputBase64 string                       `json:"protoc_output_base64"`
+	Project            string                       `json:"project"`
 	ConfigId           string                       `json:"config_id"`
+	GrpcConfig         string                       `json:"grpc_config"`
+	ProtocOutput       string                       `json:"protoc_output"`
 	DnsAddress         string                       `json:"dns_address"`
 }
 
+
+
 type GoogleEndpointsServiceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

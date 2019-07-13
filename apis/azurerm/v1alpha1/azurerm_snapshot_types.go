@@ -35,19 +35,25 @@ type AzurermSnapshotSpecEncryptionSettings struct {
 }
 
 type AzurermSnapshotSpec struct {
+	CreateOption       string                `json:"create_option"`
 	SourceResourceId   string                `json:"source_resource_id"`
 	EncryptionSettings []AzurermSnapshotSpec `json:"encryption_settings"`
 	Tags               map[string]string     `json:"tags"`
 	Name               string                `json:"name"`
-	CreateOption       string                `json:"create_option"`
-	SourceUri          string                `json:"source_uri"`
-	DiskSizeGb         int                   `json:"disk_size_gb"`
 	Location           string                `json:"location"`
 	ResourceGroupName  string                `json:"resource_group_name"`
+	SourceUri          string                `json:"source_uri"`
 	StorageAccountId   string                `json:"storage_account_id"`
+	DiskSizeGb         int                   `json:"disk_size_gb"`
 }
 
+
+
 type AzurermSnapshotStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

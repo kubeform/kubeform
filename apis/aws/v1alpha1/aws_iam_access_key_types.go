@@ -19,16 +19,22 @@ type AwsIamAccessKey struct {
 }
 
 type AwsIamAccessKeySpec struct {
+	PgpKey          string `json:"pgp_key"`
+	KeyFingerprint  string `json:"key_fingerprint"`
 	EncryptedSecret string `json:"encrypted_secret"`
 	User            string `json:"user"`
 	Status          string `json:"status"`
 	Secret          string `json:"secret"`
 	SesSmtpPassword string `json:"ses_smtp_password"`
-	PgpKey          string `json:"pgp_key"`
-	KeyFingerprint  string `json:"key_fingerprint"`
 }
 
+
+
 type AwsIamAccessKeyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

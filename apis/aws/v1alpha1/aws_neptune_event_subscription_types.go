@@ -19,19 +19,25 @@ type AwsNeptuneEventSubscription struct {
 }
 
 type AwsNeptuneEventSubscriptionSpec struct {
-	SnsTopicArn     string            `json:"sns_topic_arn"`
-	EventCategories []string          `json:"event_categories"`
-	SourceType      string            `json:"source_type"`
-	CustomerAwsId   string            `json:"customer_aws_id"`
-	Name            string            `json:"name"`
 	NamePrefix      string            `json:"name_prefix"`
 	SourceIds       []string          `json:"source_ids"`
+	SourceType      string            `json:"source_type"`
+	CustomerAwsId   string            `json:"customer_aws_id"`
+	Arn             string            `json:"arn"`
+	Name            string            `json:"name"`
 	Enabled         bool              `json:"enabled"`
 	Tags            map[string]string `json:"tags"`
-	Arn             string            `json:"arn"`
+	SnsTopicArn     string            `json:"sns_topic_arn"`
+	EventCategories []string          `json:"event_categories"`
 }
 
+
+
 type AwsNeptuneEventSubscriptionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

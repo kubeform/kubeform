@@ -19,13 +19,19 @@ type AwsKmsCiphertext struct {
 }
 
 type AwsKmsCiphertextSpec struct {
-	KeyId          string            `json:"key_id"`
 	Context        map[string]string `json:"context"`
 	CiphertextBlob string            `json:"ciphertext_blob"`
 	Plaintext      string            `json:"plaintext"`
+	KeyId          string            `json:"key_id"`
 }
 
+
+
 type AwsKmsCiphertextStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

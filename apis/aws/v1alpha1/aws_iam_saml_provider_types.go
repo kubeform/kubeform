@@ -25,7 +25,13 @@ type AwsIamSamlProviderSpec struct {
 	SamlMetadataDocument string `json:"saml_metadata_document"`
 }
 
+
+
 type AwsIamSamlProviderStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

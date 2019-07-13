@@ -19,17 +19,23 @@ type GoogleComputeTargetTcpProxy struct {
 }
 
 type GoogleComputeTargetTcpProxySpec struct {
-	Project           string `json:"project"`
-	SelfLink          string `json:"self_link"`
 	BackendService    string `json:"backend_service"`
 	Name              string `json:"name"`
 	Description       string `json:"description"`
 	ProxyHeader       string `json:"proxy_header"`
 	CreationTimestamp string `json:"creation_timestamp"`
 	ProxyId           int    `json:"proxy_id"`
+	Project           string `json:"project"`
+	SelfLink          string `json:"self_link"`
 }
 
+
+
 type GoogleComputeTargetTcpProxyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

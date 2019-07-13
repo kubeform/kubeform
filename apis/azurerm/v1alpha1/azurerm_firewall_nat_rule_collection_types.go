@@ -19,6 +19,7 @@ type AzurermFirewallNatRuleCollection struct {
 }
 
 type AzurermFirewallNatRuleCollectionSpecRule struct {
+	TranslatedAddress    string   `json:"translated_address"`
 	TranslatedPort       string   `json:"translated_port"`
 	SourceAddresses      []string `json:"source_addresses"`
 	DestinationAddresses []string `json:"destination_addresses"`
@@ -26,19 +27,24 @@ type AzurermFirewallNatRuleCollectionSpecRule struct {
 	Protocols            []string `json:"protocols"`
 	Name                 string   `json:"name"`
 	Description          string   `json:"description"`
-	TranslatedAddress    string   `json:"translated_address"`
 }
 
 type AzurermFirewallNatRuleCollectionSpec struct {
-	Action            string                                 `json:"action"`
-	Rule              []AzurermFirewallNatRuleCollectionSpec `json:"rule"`
 	Name              string                                 `json:"name"`
 	AzureFirewallName string                                 `json:"azure_firewall_name"`
 	ResourceGroupName string                                 `json:"resource_group_name"`
 	Priority          int                                    `json:"priority"`
+	Action            string                                 `json:"action"`
+	Rule              []AzurermFirewallNatRuleCollectionSpec `json:"rule"`
 }
 
+
+
 type AzurermFirewallNatRuleCollectionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

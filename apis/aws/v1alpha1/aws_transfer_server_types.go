@@ -23,19 +23,25 @@ type AwsTransferServerSpecEndpointDetails struct {
 }
 
 type AwsTransferServerSpec struct {
-	Url                  string                  `json:"url"`
-	LoggingRole          string                  `json:"logging_role"`
+	EndpointType         string                  `json:"endpoint_type"`
+	IdentityProviderType string                  `json:"identity_provider_type"`
 	ForceDestroy         bool                    `json:"force_destroy"`
+	Tags                 map[string]string       `json:"tags"`
 	Arn                  string                  `json:"arn"`
 	Endpoint             string                  `json:"endpoint"`
-	EndpointType         string                  `json:"endpoint_type"`
 	EndpointDetails      []AwsTransferServerSpec `json:"endpoint_details"`
 	InvocationRole       string                  `json:"invocation_role"`
-	IdentityProviderType string                  `json:"identity_provider_type"`
-	Tags                 map[string]string       `json:"tags"`
+	Url                  string                  `json:"url"`
+	LoggingRole          string                  `json:"logging_role"`
 }
 
+
+
 type AwsTransferServerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

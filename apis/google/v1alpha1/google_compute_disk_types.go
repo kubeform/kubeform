@@ -34,31 +34,37 @@ type GoogleComputeDiskSpecSourceSnapshotEncryptionKey struct {
 }
 
 type GoogleComputeDiskSpec struct {
-	Description                 string                  `json:"description"`
-	Zone                        string                  `json:"zone"`
-	SourceImageId               string                  `json:"source_image_id"`
-	Users                       []string                `json:"users"`
 	DiskEncryptionKey           []GoogleComputeDiskSpec `json:"disk_encryption_key"`
-	Image                       string                  `json:"image"`
-	Snapshot                    string                  `json:"snapshot"`
-	LabelFingerprint            string                  `json:"label_fingerprint"`
-	LastDetachTimestamp         string                  `json:"last_detach_timestamp"`
-	Size                        int                     `json:"size"`
 	SourceImageEncryptionKey    []GoogleComputeDiskSpec `json:"source_image_encryption_key"`
-	CreationTimestamp           string                  `json:"creation_timestamp"`
 	LastAttachTimestamp         string                  `json:"last_attach_timestamp"`
+	LastDetachTimestamp         string                  `json:"last_detach_timestamp"`
+	SourceSnapshotId            string                  `json:"source_snapshot_id"`
 	SelfLink                    string                  `json:"self_link"`
+	Description                 string                  `json:"description"`
+	Labels                      map[string]string       `json:"labels"`
+	Size                        int                     `json:"size"`
+	Snapshot                    string                  `json:"snapshot"`
+	Type                        string                  `json:"type"`
+	SourceSnapshotEncryptionKey []GoogleComputeDiskSpec `json:"source_snapshot_encryption_key"`
+	LabelFingerprint            string                  `json:"label_fingerprint"`
 	DiskEncryptionKeyRaw        string                  `json:"disk_encryption_key_raw"`
-	DiskEncryptionKeySha256     string                  `json:"disk_encryption_key_sha256"`
 	Project                     string                  `json:"project"`
 	Name                        string                  `json:"name"`
-	Labels                      map[string]string       `json:"labels"`
-	SourceSnapshotEncryptionKey []GoogleComputeDiskSpec `json:"source_snapshot_encryption_key"`
-	Type                        string                  `json:"type"`
-	SourceSnapshotId            string                  `json:"source_snapshot_id"`
+	Image                       string                  `json:"image"`
+	Zone                        string                  `json:"zone"`
+	CreationTimestamp           string                  `json:"creation_timestamp"`
+	SourceImageId               string                  `json:"source_image_id"`
+	Users                       []string                `json:"users"`
+	DiskEncryptionKeySha256     string                  `json:"disk_encryption_key_sha256"`
 }
 
+
+
 type GoogleComputeDiskStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

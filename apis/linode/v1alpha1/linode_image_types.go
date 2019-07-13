@@ -19,21 +19,27 @@ type LinodeImage struct {
 }
 
 type LinodeImageSpec struct {
-	IsPublic    bool   `json:"is_public"`
-	Type        string `json:"type"`
-	Vendor      string `json:"vendor"`
-	Created     string `json:"created"`
 	DiskId      int    `json:"disk_id"`
-	LinodeId    int    `json:"linode_id"`
 	Description string `json:"description"`
 	CreatedBy   string `json:"created_by"`
 	Deprecated  bool   `json:"deprecated"`
-	Size        int    `json:"size"`
+	IsPublic    bool   `json:"is_public"`
+	Type        string `json:"type"`
 	Expiry      string `json:"expiry"`
 	Label       string `json:"label"`
+	Vendor      string `json:"vendor"`
+	Created     string `json:"created"`
+	Size        int    `json:"size"`
+	LinodeId    int    `json:"linode_id"`
 }
 
+
+
 type LinodeImageStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

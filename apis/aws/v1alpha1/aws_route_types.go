@@ -19,23 +19,29 @@ type AwsRoute struct {
 }
 
 type AwsRouteSpec struct {
-	EgressOnlyGatewayId      string `json:"egress_only_gateway_id"`
+	DestinationIpv6CidrBlock string `json:"destination_ipv6_cidr_block"`
+	NatGatewayId             string `json:"nat_gateway_id"`
+	InstanceId               string `json:"instance_id"`
+	Origin                   string `json:"origin"`
+	State                    string `json:"state"`
+	DestinationCidrBlock     string `json:"destination_cidr_block"`
+	NetworkInterfaceId       string `json:"network_interface_id"`
 	RouteTableId             string `json:"route_table_id"`
+	EgressOnlyGatewayId      string `json:"egress_only_gateway_id"`
+	GatewayId                string `json:"gateway_id"`
+	InstanceOwnerId          string `json:"instance_owner_id"`
 	TransitGatewayId         string `json:"transit_gateway_id"`
 	VpcPeeringConnectionId   string `json:"vpc_peering_connection_id"`
-	NatGatewayId             string `json:"nat_gateway_id"`
-	InstanceOwnerId          string `json:"instance_owner_id"`
-	DestinationCidrBlock     string `json:"destination_cidr_block"`
-	GatewayId                string `json:"gateway_id"`
-	InstanceId               string `json:"instance_id"`
-	NetworkInterfaceId       string `json:"network_interface_id"`
-	State                    string `json:"state"`
-	DestinationIpv6CidrBlock string `json:"destination_ipv6_cidr_block"`
 	DestinationPrefixListId  string `json:"destination_prefix_list_id"`
-	Origin                   string `json:"origin"`
 }
 
+
+
 type AwsRouteStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

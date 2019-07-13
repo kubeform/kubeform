@@ -19,23 +19,29 @@ type GoogleStorageBucketObject struct {
 }
 
 type GoogleStorageBucketObjectSpec struct {
-	Source             string `json:"source"`
-	Bucket             string `json:"bucket"`
-	Name               string `json:"name"`
 	ContentType        string `json:"content_type"`
-	Crc32c             string `json:"crc32c"`
-	ContentDisposition string `json:"content_disposition"`
 	PredefinedAcl      string `json:"predefined_acl"`
-	DetectMd5hash      string `json:"detect_md5hash"`
-	Content            string `json:"content"`
+	Source             string `json:"source"`
+	CacheControl       string `json:"cache_control"`
+	Name               string `json:"name"`
+	ContentDisposition string `json:"content_disposition"`
 	Md5hash            string `json:"md5hash"`
 	StorageClass       string `json:"storage_class"`
-	CacheControl       string `json:"cache_control"`
-	ContentEncoding    string `json:"content_encoding"`
+	Bucket             string `json:"bucket"`
 	ContentLanguage    string `json:"content_language"`
+	Content            string `json:"content"`
+	ContentEncoding    string `json:"content_encoding"`
+	DetectMd5hash      string `json:"detect_md5hash"`
+	Crc32c             string `json:"crc32c"`
 }
 
+
+
 type GoogleStorageBucketObjectStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

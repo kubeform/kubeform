@@ -19,7 +19,6 @@ type AwsCodecommitRepository struct {
 }
 
 type AwsCodecommitRepositorySpec struct {
-	CloneUrlSsh    string            `json:"clone_url_ssh"`
 	DefaultBranch  string            `json:"default_branch"`
 	Tags           map[string]string `json:"tags"`
 	RepositoryName string            `json:"repository_name"`
@@ -27,9 +26,16 @@ type AwsCodecommitRepositorySpec struct {
 	Arn            string            `json:"arn"`
 	RepositoryId   string            `json:"repository_id"`
 	CloneUrlHttp   string            `json:"clone_url_http"`
+	CloneUrlSsh    string            `json:"clone_url_ssh"`
 }
 
+
+
 type AwsCodecommitRepositoryStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

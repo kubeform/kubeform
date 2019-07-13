@@ -19,15 +19,21 @@ type AzurermLbBackendAddressPool struct {
 }
 
 type AzurermLbBackendAddressPoolSpec struct {
-	LoadBalancingRules      []string `json:"load_balancing_rules"`
-	Name                    string   `json:"name"`
 	Location                string   `json:"location"`
 	ResourceGroupName       string   `json:"resource_group_name"`
 	LoadbalancerId          string   `json:"loadbalancer_id"`
 	BackendIpConfigurations []string `json:"backend_ip_configurations"`
+	LoadBalancingRules      []string `json:"load_balancing_rules"`
+	Name                    string   `json:"name"`
 }
 
+
+
 type AzurermLbBackendAddressPoolStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

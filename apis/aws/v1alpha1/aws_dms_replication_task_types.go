@@ -19,19 +19,25 @@ type AwsDmsReplicationTask struct {
 }
 
 type AwsDmsReplicationTaskSpec struct {
+	ReplicationTaskSettings string            `json:"replication_task_settings"`
 	TableMappings           string            `json:"table_mappings"`
 	TargetEndpointArn       string            `json:"target_endpoint_arn"`
-	ReplicationInstanceArn  string            `json:"replication_instance_arn"`
+	CdcStartTime            string            `json:"cdc_start_time"`
 	MigrationType           string            `json:"migration_type"`
+	ReplicationInstanceArn  string            `json:"replication_instance_arn"`
 	ReplicationTaskArn      string            `json:"replication_task_arn"`
 	ReplicationTaskId       string            `json:"replication_task_id"`
-	ReplicationTaskSettings string            `json:"replication_task_settings"`
 	SourceEndpointArn       string            `json:"source_endpoint_arn"`
 	Tags                    map[string]string `json:"tags"`
-	CdcStartTime            string            `json:"cdc_start_time"`
 }
 
+
+
 type AwsDmsReplicationTaskStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,26 +19,32 @@ type GoogleComputeVpnTunnel struct {
 }
 
 type GoogleComputeVpnTunnelSpec struct {
+	SharedSecretHash      string            `json:"shared_secret_hash"`
+	PeerIp                string            `json:"peer_ip"`
 	DetailedStatus        string            `json:"detailed_status"`
 	LabelFingerprint      string            `json:"label_fingerprint"`
-	Project               string            `json:"project"`
-	PeerIp                string            `json:"peer_ip"`
-	RemoteTrafficSelector []string          `json:"remote_traffic_selector"`
-	Region                string            `json:"region"`
-	CreationTimestamp     string            `json:"creation_timestamp"`
-	Labels                map[string]string `json:"labels"`
-	LocalTrafficSelector  []string          `json:"local_traffic_selector"`
-	SharedSecret          string            `json:"shared_secret"`
 	Router                string            `json:"router"`
 	Description           string            `json:"description"`
 	IkeVersion            int               `json:"ike_version"`
-	SharedSecretHash      string            `json:"shared_secret_hash"`
+	LocalTrafficSelector  []string          `json:"local_traffic_selector"`
+	Labels                map[string]string `json:"labels"`
+	RemoteTrafficSelector []string          `json:"remote_traffic_selector"`
+	CreationTimestamp     string            `json:"creation_timestamp"`
 	SelfLink              string            `json:"self_link"`
 	Name                  string            `json:"name"`
+	SharedSecret          string            `json:"shared_secret"`
 	TargetVpnGateway      string            `json:"target_vpn_gateway"`
+	Region                string            `json:"region"`
+	Project               string            `json:"project"`
 }
 
+
+
 type GoogleComputeVpnTunnelStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

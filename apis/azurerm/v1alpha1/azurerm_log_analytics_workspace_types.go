@@ -19,19 +19,25 @@ type AzurermLogAnalyticsWorkspace struct {
 }
 
 type AzurermLogAnalyticsWorkspaceSpec struct {
+	SecondarySharedKey string            `json:"secondary_shared_key"`
+	Tags               map[string]string `json:"tags"`
 	Name               string            `json:"name"`
 	Location           string            `json:"location"`
 	ResourceGroupName  string            `json:"resource_group_name"`
 	RetentionInDays    int               `json:"retention_in_days"`
-	WorkspaceId        string            `json:"workspace_id"`
-	SecondarySharedKey string            `json:"secondary_shared_key"`
-	Tags               map[string]string `json:"tags"`
 	Sku                string            `json:"sku"`
+	WorkspaceId        string            `json:"workspace_id"`
 	PortalUrl          string            `json:"portal_url"`
 	PrimarySharedKey   string            `json:"primary_shared_key"`
 }
 
+
+
 type AzurermLogAnalyticsWorkspaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

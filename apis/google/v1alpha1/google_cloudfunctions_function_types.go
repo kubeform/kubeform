@@ -29,27 +29,33 @@ type GoogleCloudfunctionsFunctionSpecEventTrigger struct {
 }
 
 type GoogleCloudfunctionsFunctionSpec struct {
-	Description          string                             `json:"description"`
-	Timeout              int                                `json:"timeout"`
-	EnvironmentVariables map[string]string                  `json:"environment_variables"`
+	TriggerBucket        string                             `json:"trigger_bucket"`
 	TriggerHttp          bool                               `json:"trigger_http"`
 	Project              string                             `json:"project"`
-	Labels               map[string]string                  `json:"labels"`
-	TriggerTopic         string                             `json:"trigger_topic"`
-	RetryOnFailure       bool                               `json:"retry_on_failure"`
-	SourceArchiveObject  string                             `json:"source_archive_object"`
-	EntryPoint           string                             `json:"entry_point"`
-	TriggerBucket        string                             `json:"trigger_bucket"`
-	EventTrigger         []GoogleCloudfunctionsFunctionSpec `json:"event_trigger"`
-	Region               string                             `json:"region"`
-	Name                 string                             `json:"name"`
-	SourceArchiveBucket  string                             `json:"source_archive_bucket"`
 	AvailableMemoryMb    int                                `json:"available_memory_mb"`
+	Timeout              int                                `json:"timeout"`
+	Labels               map[string]string                  `json:"labels"`
 	Runtime              string                             `json:"runtime"`
+	Name                 string                             `json:"name"`
+	Description          string                             `json:"description"`
 	HttpsTriggerUrl      string                             `json:"https_trigger_url"`
+	EntryPoint           string                             `json:"entry_point"`
+	TriggerTopic         string                             `json:"trigger_topic"`
+	Region               string                             `json:"region"`
+	RetryOnFailure       bool                               `json:"retry_on_failure"`
+	SourceArchiveBucket  string                             `json:"source_archive_bucket"`
+	SourceArchiveObject  string                             `json:"source_archive_object"`
+	EnvironmentVariables map[string]string                  `json:"environment_variables"`
+	EventTrigger         []GoogleCloudfunctionsFunctionSpec `json:"event_trigger"`
 }
 
+
+
 type GoogleCloudfunctionsFunctionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

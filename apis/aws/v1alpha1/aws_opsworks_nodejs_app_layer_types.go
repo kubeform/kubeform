@@ -28,30 +28,36 @@ type AwsOpsworksNodejsAppLayerSpecEbsVolume struct {
 }
 
 type AwsOpsworksNodejsAppLayerSpec struct {
-	InstallUpdatesOnBoot     bool                            `json:"install_updates_on_boot"`
-	DrainElbOnShutdown       bool                            `json:"drain_elb_on_shutdown"`
-	NodejsVersion            string                          `json:"nodejs_version"`
+	CustomDeployRecipes      []string                        `json:"custom_deploy_recipes"`
+	CustomUndeployRecipes    []string                        `json:"custom_undeploy_recipes"`
+	InstanceShutdownTimeout  int                             `json:"instance_shutdown_timeout"`
+	Name                     string                          `json:"name"`
+	UseEbsOptimizedInstances bool                            `json:"use_ebs_optimized_instances"`
+	EbsVolume                []AwsOpsworksNodejsAppLayerSpec `json:"ebs_volume"`
 	AutoAssignElasticIps     bool                            `json:"auto_assign_elastic_ips"`
+	AutoAssignPublicIps      bool                            `json:"auto_assign_public_ips"`
+	ElasticLoadBalancer      string                          `json:"elastic_load_balancer"`
+	CustomShutdownRecipes    []string                        `json:"custom_shutdown_recipes"`
+	CustomSecurityGroupIds   []string                        `json:"custom_security_group_ids"`
+	StackId                  string                          `json:"stack_id"`
+	CustomJson               string                          `json:"custom_json"`
+	DrainElbOnShutdown       bool                            `json:"drain_elb_on_shutdown"`
+	SystemPackages           []string                        `json:"system_packages"`
 	CustomInstanceProfileArn string                          `json:"custom_instance_profile_arn"`
 	CustomSetupRecipes       []string                        `json:"custom_setup_recipes"`
 	CustomConfigureRecipes   []string                        `json:"custom_configure_recipes"`
-	CustomJson               string                          `json:"custom_json"`
-	ElasticLoadBalancer      string                          `json:"elastic_load_balancer"`
-	CustomUndeployRecipes    []string                        `json:"custom_undeploy_recipes"`
-	InstanceShutdownTimeout  int                             `json:"instance_shutdown_timeout"`
-	UseEbsOptimizedInstances bool                            `json:"use_ebs_optimized_instances"`
-	EbsVolume                []AwsOpsworksNodejsAppLayerSpec `json:"ebs_volume"`
-	AutoAssignPublicIps      bool                            `json:"auto_assign_public_ips"`
-	SystemPackages           []string                        `json:"system_packages"`
-	Name                     string                          `json:"name"`
-	CustomDeployRecipes      []string                        `json:"custom_deploy_recipes"`
-	CustomShutdownRecipes    []string                        `json:"custom_shutdown_recipes"`
-	CustomSecurityGroupIds   []string                        `json:"custom_security_group_ids"`
 	AutoHealing              bool                            `json:"auto_healing"`
-	StackId                  string                          `json:"stack_id"`
+	InstallUpdatesOnBoot     bool                            `json:"install_updates_on_boot"`
+	NodejsVersion            string                          `json:"nodejs_version"`
 }
 
+
+
 type AwsOpsworksNodejsAppLayerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

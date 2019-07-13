@@ -18,9 +18,8 @@ type GoogleOrganizationPolicy struct {
 	Status            GoogleOrganizationPolicyStatus `json:"status,omitempty"`
 }
 
-type GoogleOrganizationPolicySpecListPolicyAllow struct {
-	Values []string `json:"values"`
-	All    bool     `json:"all"`
+type GoogleOrganizationPolicySpecBooleanPolicy struct {
+	Enforced bool `json:"enforced"`
 }
 
 type GoogleOrganizationPolicySpecListPolicyDeny struct {
@@ -28,32 +27,39 @@ type GoogleOrganizationPolicySpecListPolicyDeny struct {
 	Values []string `json:"values"`
 }
 
+type GoogleOrganizationPolicySpecListPolicyAllow struct {
+	All    bool     `json:"all"`
+	Values []string `json:"values"`
+}
+
 type GoogleOrganizationPolicySpecListPolicy struct {
-	Allow          []GoogleOrganizationPolicySpecListPolicy `json:"allow"`
 	Deny           []GoogleOrganizationPolicySpecListPolicy `json:"deny"`
 	SuggestedValue string                                   `json:"suggested_value"`
+	Allow          []GoogleOrganizationPolicySpecListPolicy `json:"allow"`
 }
 
 type GoogleOrganizationPolicySpecRestorePolicy struct {
 	Default bool `json:"default"`
 }
 
-type GoogleOrganizationPolicySpecBooleanPolicy struct {
-	Enforced bool `json:"enforced"`
-}
-
 type GoogleOrganizationPolicySpec struct {
+	Constraint    string                         `json:"constraint"`
+	BooleanPolicy []GoogleOrganizationPolicySpec `json:"boolean_policy"`
+	OrgId         string                         `json:"org_id"`
 	ListPolicy    []GoogleOrganizationPolicySpec `json:"list_policy"`
 	Version       int                            `json:"version"`
 	Etag          string                         `json:"etag"`
 	UpdateTime    string                         `json:"update_time"`
 	RestorePolicy []GoogleOrganizationPolicySpec `json:"restore_policy"`
-	OrgId         string                         `json:"org_id"`
-	Constraint    string                         `json:"constraint"`
-	BooleanPolicy []GoogleOrganizationPolicySpec `json:"boolean_policy"`
 }
 
+
+
 type GoogleOrganizationPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

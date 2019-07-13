@@ -19,18 +19,11 @@ type GoogleComputeHealthCheck struct {
 }
 
 type GoogleComputeHealthCheckSpecHttpsHealthCheck struct {
+	ProxyHeader string `json:"proxy_header"`
+	RequestPath string `json:"request_path"`
 	Response    string `json:"response"`
 	Host        string `json:"host"`
 	Port        int    `json:"port"`
-	ProxyHeader string `json:"proxy_header"`
-	RequestPath string `json:"request_path"`
-}
-
-type GoogleComputeHealthCheckSpecTcpHealthCheck struct {
-	Port        int    `json:"port"`
-	ProxyHeader string `json:"proxy_header"`
-	Request     string `json:"request"`
-	Response    string `json:"response"`
 }
 
 type GoogleComputeHealthCheckSpecHttpHealthCheck struct {
@@ -42,30 +35,43 @@ type GoogleComputeHealthCheckSpecHttpHealthCheck struct {
 }
 
 type GoogleComputeHealthCheckSpecSslHealthCheck struct {
+	ProxyHeader string `json:"proxy_header"`
+	Request     string `json:"request"`
 	Response    string `json:"response"`
+	Port        int    `json:"port"`
+}
+
+type GoogleComputeHealthCheckSpecTcpHealthCheck struct {
 	Port        int    `json:"port"`
 	ProxyHeader string `json:"proxy_header"`
 	Request     string `json:"request"`
+	Response    string `json:"response"`
 }
 
 type GoogleComputeHealthCheckSpec struct {
-	Description        string                         `json:"description"`
-	CreationTimestamp  string                         `json:"creation_timestamp"`
-	Type               string                         `json:"type"`
-	HttpsHealthCheck   []GoogleComputeHealthCheckSpec `json:"https_health_check"`
-	TcpHealthCheck     []GoogleComputeHealthCheckSpec `json:"tcp_health_check"`
-	SelfLink           string                         `json:"self_link"`
-	Name               string                         `json:"name"`
-	HttpHealthCheck    []GoogleComputeHealthCheckSpec `json:"http_health_check"`
-	SslHealthCheck     []GoogleComputeHealthCheckSpec `json:"ssl_health_check"`
-	TimeoutSec         int                            `json:"timeout_sec"`
 	UnhealthyThreshold int                            `json:"unhealthy_threshold"`
 	Project            string                         `json:"project"`
+	Name               string                         `json:"name"`
+	HttpsHealthCheck   []GoogleComputeHealthCheckSpec `json:"https_health_check"`
+	Type               string                         `json:"type"`
+	TimeoutSec         int                            `json:"timeout_sec"`
+	CreationTimestamp  string                         `json:"creation_timestamp"`
+	SelfLink           string                         `json:"self_link"`
 	CheckIntervalSec   int                            `json:"check_interval_sec"`
+	Description        string                         `json:"description"`
 	HealthyThreshold   int                            `json:"healthy_threshold"`
+	HttpHealthCheck    []GoogleComputeHealthCheckSpec `json:"http_health_check"`
+	SslHealthCheck     []GoogleComputeHealthCheckSpec `json:"ssl_health_check"`
+	TcpHealthCheck     []GoogleComputeHealthCheckSpec `json:"tcp_health_check"`
 }
 
+
+
 type GoogleComputeHealthCheckStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

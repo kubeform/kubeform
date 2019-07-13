@@ -25,26 +25,32 @@ type LinodeNodebalancerConfigSpecNodeStatus struct {
 
 type LinodeNodebalancerConfigSpec struct {
 	CheckPath      string            `json:"check_path"`
-	SslFingerprint string            `json:"ssl_fingerprint"`
-	NodebalancerId int               `json:"nodebalancer_id"`
-	Check          string            `json:"check"`
-	CheckBody      string            `json:"check_body"`
-	SslCommonname  string            `json:"ssl_commonname"`
-	SslKey         string            `json:"ssl_key"`
-	Protocol       string            `json:"protocol"`
-	CheckInterval  int               `json:"check_interval"`
-	CheckTimeout   int               `json:"check_timeout"`
-	CheckAttempts  int               `json:"check_attempts"`
-	Algorithm      string            `json:"algorithm"`
-	CheckPassive   bool              `json:"check_passive"`
-	Port           int               `json:"port"`
-	Stickiness     string            `json:"stickiness"`
-	CipherSuite    string            `json:"cipher_suite"`
 	SslCert        string            `json:"ssl_cert"`
+	CheckBody      string            `json:"check_body"`
+	CheckPassive   bool              `json:"check_passive"`
+	CipherSuite    string            `json:"cipher_suite"`
+	SslFingerprint string            `json:"ssl_fingerprint"`
+	Port           int               `json:"port"`
+	CheckTimeout   int               `json:"check_timeout"`
+	Check          string            `json:"check"`
+	Stickiness     string            `json:"stickiness"`
+	SslCommonname  string            `json:"ssl_commonname"`
+	NodebalancerId int               `json:"nodebalancer_id"`
+	CheckInterval  int               `json:"check_interval"`
+	CheckAttempts  int               `json:"check_attempts"`
 	NodeStatus     map[string]string `json:"node_status"`
+	Protocol       string            `json:"protocol"`
+	Algorithm      string            `json:"algorithm"`
+	SslKey         string            `json:"ssl_key"`
 }
 
+
+
 type LinodeNodebalancerConfigStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

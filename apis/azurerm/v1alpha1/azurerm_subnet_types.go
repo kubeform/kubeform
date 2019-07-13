@@ -29,18 +29,24 @@ type AzurermSubnetSpecDelegation struct {
 }
 
 type AzurermSubnetSpec struct {
-	ResourceGroupName      string              `json:"resource_group_name"`
+	VirtualNetworkName     string              `json:"virtual_network_name"`
 	AddressPrefix          string              `json:"address_prefix"`
-	NetworkSecurityGroupId string              `json:"network_security_group_id"`
+	RouteTableId           string              `json:"route_table_id"`
 	IpConfigurations       []string            `json:"ip_configurations"`
+	ServiceEndpoints       []string            `json:"service_endpoints"`
 	Delegation             []AzurermSubnetSpec `json:"delegation"`
 	Name                   string              `json:"name"`
-	RouteTableId           string              `json:"route_table_id"`
-	ServiceEndpoints       []string            `json:"service_endpoints"`
-	VirtualNetworkName     string              `json:"virtual_network_name"`
+	ResourceGroupName      string              `json:"resource_group_name"`
+	NetworkSecurityGroupId string              `json:"network_security_group_id"`
 }
 
+
+
 type AzurermSubnetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

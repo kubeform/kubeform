@@ -19,14 +19,20 @@ type AwsEc2ClientVpnNetworkAssociation struct {
 }
 
 type AwsEc2ClientVpnNetworkAssociationSpec struct {
-	SecurityGroups      []string `json:"security_groups"`
 	Status              string   `json:"status"`
 	VpcId               string   `json:"vpc_id"`
 	ClientVpnEndpointId string   `json:"client_vpn_endpoint_id"`
 	SubnetId            string   `json:"subnet_id"`
+	SecurityGroups      []string `json:"security_groups"`
 }
 
+
+
 type AwsEc2ClientVpnNetworkAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,20 +19,26 @@ type AwsSsmParameter struct {
 }
 
 type AwsSsmParameterSpec struct {
-	Arn            string            `json:"arn"`
 	Overwrite      bool              `json:"overwrite"`
 	AllowedPattern string            `json:"allowed_pattern"`
-	Name           string            `json:"name"`
-	Description    string            `json:"description"`
 	Type           string            `json:"type"`
+	Value          string            `json:"value"`
+	Tier           string            `json:"tier"`
+	Arn            string            `json:"arn"`
+	KeyId          string            `json:"key_id"`
 	Version        int               `json:"version"`
 	Tags           map[string]string `json:"tags"`
-	Tier           string            `json:"tier"`
-	Value          string            `json:"value"`
-	KeyId          string            `json:"key_id"`
+	Name           string            `json:"name"`
+	Description    string            `json:"description"`
 }
 
+
+
 type AwsSsmParameterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

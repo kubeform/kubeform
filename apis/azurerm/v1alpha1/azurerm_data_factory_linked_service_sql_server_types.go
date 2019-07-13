@@ -21,16 +21,22 @@ type AzurermDataFactoryLinkedServiceSqlServer struct {
 type AzurermDataFactoryLinkedServiceSqlServerSpec struct {
 	Name                   string            `json:"name"`
 	DataFactoryName        string            `json:"data_factory_name"`
-	ResourceGroupName      string            `json:"resource_group_name"`
 	ConnectionString       string            `json:"connection_string"`
 	IntegrationRuntimeName string            `json:"integration_runtime_name"`
-	Parameters             map[string]string `json:"parameters"`
 	Annotations            []string          `json:"annotations"`
+	ResourceGroupName      string            `json:"resource_group_name"`
 	Description            string            `json:"description"`
+	Parameters             map[string]string `json:"parameters"`
 	AdditionalProperties   map[string]string `json:"additional_properties"`
 }
 
+
+
 type AzurermDataFactoryLinkedServiceSqlServerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

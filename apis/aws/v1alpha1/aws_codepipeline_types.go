@@ -30,16 +30,16 @@ type AwsCodepipelineSpecArtifactStore struct {
 }
 
 type AwsCodepipelineSpecStageAction struct {
-	OutputArtifacts []string          `json:"output_artifacts"`
-	Name            string            `json:"name"`
 	Category        string            `json:"category"`
-	Version         string            `json:"version"`
-	Provider        string            `json:"provider"`
-	InputArtifacts  []string          `json:"input_artifacts"`
-	RoleArn         string            `json:"role_arn"`
-	RunOrder        int               `json:"run_order"`
-	Configuration   map[string]string `json:"configuration"`
 	Owner           string            `json:"owner"`
+	OutputArtifacts []string          `json:"output_artifacts"`
+	RunOrder        int               `json:"run_order"`
+	RoleArn         string            `json:"role_arn"`
+	Configuration   map[string]string `json:"configuration"`
+	Provider        string            `json:"provider"`
+	Version         string            `json:"version"`
+	InputArtifacts  []string          `json:"input_artifacts"`
+	Name            string            `json:"name"`
 }
 
 type AwsCodepipelineSpecStage struct {
@@ -48,15 +48,21 @@ type AwsCodepipelineSpecStage struct {
 }
 
 type AwsCodepipelineSpec struct {
-	Arn           string                `json:"arn"`
 	Name          string                `json:"name"`
 	RoleArn       string                `json:"role_arn"`
 	ArtifactStore []AwsCodepipelineSpec `json:"artifact_store"`
 	Stage         []AwsCodepipelineSpec `json:"stage"`
 	Tags          map[string]string     `json:"tags"`
+	Arn           string                `json:"arn"`
 }
 
+
+
 type AwsCodepipelineStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

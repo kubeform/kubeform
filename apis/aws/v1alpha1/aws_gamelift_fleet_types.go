@@ -18,15 +18,10 @@ type AwsGameliftFleet struct {
 	Status            AwsGameliftFleetStatus `json:"status,omitempty"`
 }
 
-type AwsGameliftFleetSpecResourceCreationLimitPolicy struct {
-	NewGameSessionsPerCreator int `json:"new_game_sessions_per_creator"`
-	PolicyPeriodInMinutes     int `json:"policy_period_in_minutes"`
-}
-
 type AwsGameliftFleetSpecRuntimeConfigurationServerProcess struct {
+	ConcurrentExecutions int    `json:"concurrent_executions"`
 	LaunchPath           string `json:"launch_path"`
 	Parameters           string `json:"parameters"`
-	ConcurrentExecutions int    `json:"concurrent_executions"`
 }
 
 type AwsGameliftFleetSpecRuntimeConfiguration struct {
@@ -42,22 +37,33 @@ type AwsGameliftFleetSpecEc2InboundPermission struct {
 	ToPort   int    `json:"to_port"`
 }
 
+type AwsGameliftFleetSpecResourceCreationLimitPolicy struct {
+	NewGameSessionsPerCreator int `json:"new_game_sessions_per_creator"`
+	PolicyPeriodInMinutes     int `json:"policy_period_in_minutes"`
+}
+
 type AwsGameliftFleetSpec struct {
-	BuildId                        string                 `json:"build_id"`
-	Ec2InstanceType                string                 `json:"ec2_instance_type"`
-	Description                    string                 `json:"description"`
-	LogPaths                       []string               `json:"log_paths"`
-	ResourceCreationLimitPolicy    []AwsGameliftFleetSpec `json:"resource_creation_limit_policy"`
 	RuntimeConfiguration           []AwsGameliftFleetSpec `json:"runtime_configuration"`
 	Arn                            string                 `json:"arn"`
+	BuildId                        string                 `json:"build_id"`
+	Ec2InstanceType                string                 `json:"ec2_instance_type"`
 	Name                           string                 `json:"name"`
 	Ec2InboundPermission           []AwsGameliftFleetSpec `json:"ec2_inbound_permission"`
+	ResourceCreationLimitPolicy    []AwsGameliftFleetSpec `json:"resource_creation_limit_policy"`
+	Description                    string                 `json:"description"`
+	LogPaths                       []string               `json:"log_paths"`
 	MetricGroups                   []string               `json:"metric_groups"`
 	NewGameSessionProtectionPolicy string                 `json:"new_game_session_protection_policy"`
 	OperatingSystem                string                 `json:"operating_system"`
 }
 
+
+
 type AwsGameliftFleetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

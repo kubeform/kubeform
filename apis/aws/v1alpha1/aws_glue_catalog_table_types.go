@@ -18,18 +18,6 @@ type AwsGlueCatalogTable struct {
 	Status            AwsGlueCatalogTableStatus `json:"status,omitempty"`
 }
 
-type AwsGlueCatalogTableSpecPartitionKeys struct {
-	Comment string `json:"comment"`
-	Name    string `json:"name"`
-	Type    string `json:"type"`
-}
-
-type AwsGlueCatalogTableSpecStorageDescriptorColumns struct {
-	Comment string `json:"comment"`
-	Name    string `json:"name"`
-	Type    string `json:"type"`
-}
-
 type AwsGlueCatalogTableSpecStorageDescriptorSerDeInfo struct {
 	Name                 string            `json:"name"`
 	Parameters           map[string]string `json:"parameters"`
@@ -47,37 +35,55 @@ type AwsGlueCatalogTableSpecStorageDescriptorSortColumns struct {
 	SortOrder int    `json:"sort_order"`
 }
 
+type AwsGlueCatalogTableSpecStorageDescriptorColumns struct {
+	Comment string `json:"comment"`
+	Name    string `json:"name"`
+	Type    string `json:"type"`
+}
+
 type AwsGlueCatalogTableSpecStorageDescriptor struct {
-	BucketColumns          []string                                   `json:"bucket_columns"`
-	Columns                []AwsGlueCatalogTableSpecStorageDescriptor `json:"columns"`
-	InputFormat            string                                     `json:"input_format"`
 	OutputFormat           string                                     `json:"output_format"`
 	Parameters             map[string]string                          `json:"parameters"`
-	Compressed             bool                                       `json:"compressed"`
-	Location               string                                     `json:"location"`
-	NumberOfBuckets        int                                        `json:"number_of_buckets"`
 	SerDeInfo              []AwsGlueCatalogTableSpecStorageDescriptor `json:"ser_de_info"`
 	SkewedInfo             []AwsGlueCatalogTableSpecStorageDescriptor `json:"skewed_info"`
 	SortColumns            []AwsGlueCatalogTableSpecStorageDescriptor `json:"sort_columns"`
+	Location               string                                     `json:"location"`
+	NumberOfBuckets        int                                        `json:"number_of_buckets"`
+	Compressed             bool                                       `json:"compressed"`
+	InputFormat            string                                     `json:"input_format"`
 	StoredAsSubDirectories bool                                       `json:"stored_as_sub_directories"`
+	BucketColumns          []string                                   `json:"bucket_columns"`
+	Columns                []AwsGlueCatalogTableSpecStorageDescriptor `json:"columns"`
+}
+
+type AwsGlueCatalogTableSpecPartitionKeys struct {
+	Comment string `json:"comment"`
+	Name    string `json:"name"`
+	Type    string `json:"type"`
 }
 
 type AwsGlueCatalogTableSpec struct {
-	Owner             string                    `json:"owner"`
-	PartitionKeys     []AwsGlueCatalogTableSpec `json:"partition_keys"`
-	Retention         int                       `json:"retention"`
 	StorageDescriptor []AwsGlueCatalogTableSpec `json:"storage_descriptor"`
+	TableType         string                    `json:"table_type"`
 	ViewOriginalText  string                    `json:"view_original_text"`
+	DatabaseName      string                    `json:"database_name"`
+	Name              string                    `json:"name"`
+	Parameters        map[string]string         `json:"parameters"`
+	Retention         int                       `json:"retention"`
+	ViewExpandedText  string                    `json:"view_expanded_text"`
 	CatalogId         string                    `json:"catalog_id"`
 	Description       string                    `json:"description"`
-	Name              string                    `json:"name"`
-	ViewExpandedText  string                    `json:"view_expanded_text"`
-	DatabaseName      string                    `json:"database_name"`
-	Parameters        map[string]string         `json:"parameters"`
-	TableType         string                    `json:"table_type"`
+	Owner             string                    `json:"owner"`
+	PartitionKeys     []AwsGlueCatalogTableSpec `json:"partition_keys"`
 }
 
+
+
 type AwsGlueCatalogTableStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

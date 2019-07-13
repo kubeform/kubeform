@@ -19,16 +19,22 @@ type AwsDxGatewayAssociationProposal struct {
 }
 
 type AwsDxGatewayAssociationProposalSpec struct {
-	DxGatewayId                     string   `json:"dx_gateway_id"`
-	DxGatewayOwnerAccountId         string   `json:"dx_gateway_owner_account_id"`
-	VpnGatewayId                    string   `json:"vpn_gateway_id"`
 	AllowedPrefixes                 []string `json:"allowed_prefixes"`
 	AssociatedGatewayId             string   `json:"associated_gateway_id"`
 	AssociatedGatewayOwnerAccountId string   `json:"associated_gateway_owner_account_id"`
 	AssociatedGatewayType           string   `json:"associated_gateway_type"`
+	DxGatewayId                     string   `json:"dx_gateway_id"`
+	DxGatewayOwnerAccountId         string   `json:"dx_gateway_owner_account_id"`
+	VpnGatewayId                    string   `json:"vpn_gateway_id"`
 }
 
+
+
 type AwsDxGatewayAssociationProposalStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

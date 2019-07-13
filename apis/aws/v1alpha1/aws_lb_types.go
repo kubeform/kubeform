@@ -18,40 +18,46 @@ type AwsLb struct {
 	Status            AwsLbStatus `json:"status,omitempty"`
 }
 
-type AwsLbSpecAccessLogs struct {
-	Prefix  string `json:"prefix"`
-	Enabled bool   `json:"enabled"`
-	Bucket  string `json:"bucket"`
-}
-
 type AwsLbSpecSubnetMapping struct {
 	SubnetId     string `json:"subnet_id"`
 	AllocationId string `json:"allocation_id"`
 }
 
-type AwsLbSpec struct {
-	AccessLogs                   []AwsLbSpec       `json:"access_logs"`
-	EnableDeletionProtection     bool              `json:"enable_deletion_protection"`
-	VpcId                        string            `json:"vpc_id"`
-	ZoneId                       string            `json:"zone_id"`
-	Tags                         map[string]string `json:"tags"`
-	NamePrefix                   string            `json:"name_prefix"`
-	LoadBalancerType             string            `json:"load_balancer_type"`
-	SubnetMapping                []AwsLbSpec       `json:"subnet_mapping"`
-	EnableHttp2                  bool              `json:"enable_http2"`
-	IpAddressType                string            `json:"ip_address_type"`
-	DnsName                      string            `json:"dns_name"`
-	ArnSuffix                    string            `json:"arn_suffix"`
-	Internal                     bool              `json:"internal"`
-	Arn                          string            `json:"arn"`
-	EnableCrossZoneLoadBalancing bool              `json:"enable_cross_zone_load_balancing"`
-	Subnets                      []string          `json:"subnets"`
-	IdleTimeout                  int               `json:"idle_timeout"`
-	Name                         string            `json:"name"`
-	SecurityGroups               []string          `json:"security_groups"`
+type AwsLbSpecAccessLogs struct {
+	Bucket  string `json:"bucket"`
+	Prefix  string `json:"prefix"`
+	Enabled bool   `json:"enabled"`
 }
 
+type AwsLbSpec struct {
+	EnableCrossZoneLoadBalancing bool              `json:"enable_cross_zone_load_balancing"`
+	SubnetMapping                []AwsLbSpec       `json:"subnet_mapping"`
+	AccessLogs                   []AwsLbSpec       `json:"access_logs"`
+	EnableDeletionProtection     bool              `json:"enable_deletion_protection"`
+	IdleTimeout                  int               `json:"idle_timeout"`
+	IpAddressType                string            `json:"ip_address_type"`
+	Arn                          string            `json:"arn"`
+	Internal                     bool              `json:"internal"`
+	Subnets                      []string          `json:"subnets"`
+	Tags                         map[string]string `json:"tags"`
+	ArnSuffix                    string            `json:"arn_suffix"`
+	Name                         string            `json:"name"`
+	SecurityGroups               []string          `json:"security_groups"`
+	VpcId                        string            `json:"vpc_id"`
+	ZoneId                       string            `json:"zone_id"`
+	DnsName                      string            `json:"dns_name"`
+	NamePrefix                   string            `json:"name_prefix"`
+	LoadBalancerType             string            `json:"load_balancer_type"`
+	EnableHttp2                  bool              `json:"enable_http2"`
+}
+
+
+
 type AwsLbStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

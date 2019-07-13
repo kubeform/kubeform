@@ -19,15 +19,21 @@ type GoogleMonitoringGroup struct {
 }
 
 type GoogleMonitoringGroupSpec struct {
-	IsCluster   bool   `json:"is_cluster"`
-	ParentName  string `json:"parent_name"`
 	Name        string `json:"name"`
 	Project     string `json:"project"`
 	DisplayName string `json:"display_name"`
 	Filter      string `json:"filter"`
+	IsCluster   bool   `json:"is_cluster"`
+	ParentName  string `json:"parent_name"`
 }
 
+
+
 type GoogleMonitoringGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

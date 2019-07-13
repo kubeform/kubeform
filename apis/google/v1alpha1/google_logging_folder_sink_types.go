@@ -19,15 +19,21 @@ type GoogleLoggingFolderSink struct {
 }
 
 type GoogleLoggingFolderSinkSpec struct {
-	Name            string `json:"name"`
-	Destination     string `json:"destination"`
-	Filter          string `json:"filter"`
 	WriterIdentity  string `json:"writer_identity"`
 	Folder          string `json:"folder"`
 	IncludeChildren bool   `json:"include_children"`
+	Name            string `json:"name"`
+	Destination     string `json:"destination"`
+	Filter          string `json:"filter"`
 }
 
+
+
 type GoogleLoggingFolderSinkStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

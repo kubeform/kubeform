@@ -25,18 +25,24 @@ type AwsVpcPeeringConnectionOptionsSpecAccepter struct {
 }
 
 type AwsVpcPeeringConnectionOptionsSpecRequester struct {
+	AllowVpcToRemoteClassicLink bool `json:"allow_vpc_to_remote_classic_link"`
 	AllowRemoteVpcDnsResolution bool `json:"allow_remote_vpc_dns_resolution"`
 	AllowClassicLinkToRemoteVpc bool `json:"allow_classic_link_to_remote_vpc"`
-	AllowVpcToRemoteClassicLink bool `json:"allow_vpc_to_remote_classic_link"`
 }
 
 type AwsVpcPeeringConnectionOptionsSpec struct {
-	VpcPeeringConnectionId string                               `json:"vpc_peering_connection_id"`
 	Accepter               []AwsVpcPeeringConnectionOptionsSpec `json:"accepter"`
 	Requester              []AwsVpcPeeringConnectionOptionsSpec `json:"requester"`
+	VpcPeeringConnectionId string                               `json:"vpc_peering_connection_id"`
 }
 
+
+
 type AwsVpcPeeringConnectionOptionsStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -28,39 +28,45 @@ type AwsCloudwatchMetricAlarmSpecMetricQueryMetric struct {
 }
 
 type AwsCloudwatchMetricAlarmSpecMetricQuery struct {
+	Metric     []AwsCloudwatchMetricAlarmSpecMetricQuery `json:"metric"`
 	Label      string                                    `json:"label"`
 	ReturnData bool                                      `json:"return_data"`
 	Id         string                                    `json:"id"`
 	Expression string                                    `json:"expression"`
-	Metric     []AwsCloudwatchMetricAlarmSpecMetricQuery `json:"metric"`
 }
 
 type AwsCloudwatchMetricAlarmSpec struct {
-	AlarmName                         string                         `json:"alarm_name"`
-	Namespace                         string                         `json:"namespace"`
-	AlarmDescription                  string                         `json:"alarm_description"`
-	DatapointsToAlarm                 int                            `json:"datapoints_to_alarm"`
-	TreatMissingData                  string                         `json:"treat_missing_data"`
+	Arn                               string                         `json:"arn"`
 	EvaluationPeriods                 int                            `json:"evaluation_periods"`
-	AlarmActions                      []string                       `json:"alarm_actions"`
+	Dimensions                        map[string]string              `json:"dimensions"`
 	InsufficientDataActions           []string                       `json:"insufficient_data_actions"`
-	OkActions                         []string                       `json:"ok_actions"`
-	Tags                              map[string]string              `json:"tags"`
-	ComparisonOperator                string                         `json:"comparison_operator"`
+	TreatMissingData                  string                         `json:"treat_missing_data"`
+	ActionsEnabled                    bool                           `json:"actions_enabled"`
+	AlarmDescription                  string                         `json:"alarm_description"`
+	Unit                              string                         `json:"unit"`
+	MetricName                        string                         `json:"metric_name"`
 	MetricQuery                       []AwsCloudwatchMetricAlarmSpec `json:"metric_query"`
 	Period                            int                            `json:"period"`
-	Threshold                         float64                        `json:"threshold"`
-	Unit                              string                         `json:"unit"`
-	Arn                               string                         `json:"arn"`
-	MetricName                        string                         `json:"metric_name"`
 	Statistic                         string                         `json:"statistic"`
-	ActionsEnabled                    bool                           `json:"actions_enabled"`
-	Dimensions                        map[string]string              `json:"dimensions"`
+	Threshold                         float64                        `json:"threshold"`
+	Tags                              map[string]string              `json:"tags"`
+	OkActions                         []string                       `json:"ok_actions"`
 	ExtendedStatistic                 string                         `json:"extended_statistic"`
 	EvaluateLowSampleCountPercentiles string                         `json:"evaluate_low_sample_count_percentiles"`
+	AlarmName                         string                         `json:"alarm_name"`
+	ComparisonOperator                string                         `json:"comparison_operator"`
+	Namespace                         string                         `json:"namespace"`
+	AlarmActions                      []string                       `json:"alarm_actions"`
+	DatapointsToAlarm                 int                            `json:"datapoints_to_alarm"`
 }
 
+
+
 type AwsCloudwatchMetricAlarmStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

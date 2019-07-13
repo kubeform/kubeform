@@ -19,15 +19,21 @@ type AwsCloudfrontPublicKey struct {
 }
 
 type AwsCloudfrontPublicKeySpec struct {
-	Etag            string `json:"etag"`
-	Name            string `json:"name"`
-	NamePrefix      string `json:"name_prefix"`
 	CallerReference string `json:"caller_reference"`
 	Comment         string `json:"comment"`
 	EncodedKey      string `json:"encoded_key"`
+	Etag            string `json:"etag"`
+	Name            string `json:"name"`
+	NamePrefix      string `json:"name_prefix"`
 }
 
+
+
 type AwsCloudfrontPublicKeyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

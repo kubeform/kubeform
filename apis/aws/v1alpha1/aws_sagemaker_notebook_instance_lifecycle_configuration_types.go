@@ -19,13 +19,19 @@ type AwsSagemakerNotebookInstanceLifecycleConfiguration struct {
 }
 
 type AwsSagemakerNotebookInstanceLifecycleConfigurationSpec struct {
-	Arn      string `json:"arn"`
-	Name     string `json:"name"`
 	OnCreate string `json:"on_create"`
 	OnStart  string `json:"on_start"`
+	Arn      string `json:"arn"`
+	Name     string `json:"name"`
 }
 
+
+
 type AwsSagemakerNotebookInstanceLifecycleConfigurationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

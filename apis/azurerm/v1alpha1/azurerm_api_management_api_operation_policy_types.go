@@ -19,15 +19,21 @@ type AzurermApiManagementApiOperationPolicy struct {
 }
 
 type AzurermApiManagementApiOperationPolicySpec struct {
-	XmlLink           string `json:"xml_link"`
-	ResourceGroupName string `json:"resource_group_name"`
-	ApiManagementName string `json:"api_management_name"`
 	ApiName           string `json:"api_name"`
 	OperationId       string `json:"operation_id"`
 	XmlContent        string `json:"xml_content"`
+	XmlLink           string `json:"xml_link"`
+	ResourceGroupName string `json:"resource_group_name"`
+	ApiManagementName string `json:"api_management_name"`
 }
 
+
+
 type AzurermApiManagementApiOperationPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

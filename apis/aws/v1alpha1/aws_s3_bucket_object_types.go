@@ -19,27 +19,33 @@ type AwsS3BucketObject struct {
 }
 
 type AwsS3BucketObjectSpec struct {
-	Bucket               string            `json:"bucket"`
-	Acl                  string            `json:"acl"`
-	ContentBase64        string            `json:"content_base64"`
-	StorageClass         string            `json:"storage_class"`
-	ServerSideEncryption string            `json:"server_side_encryption"`
-	Key                  string            `json:"key"`
-	ContentType          string            `json:"content_type"`
 	Source               string            `json:"source"`
-	ContentEncoding      string            `json:"content_encoding"`
-	ContentLanguage      string            `json:"content_language"`
-	Etag                 string            `json:"etag"`
 	VersionId            string            `json:"version_id"`
 	Tags                 map[string]string `json:"tags"`
+	WebsiteRedirect      string            `json:"website_redirect"`
+	Acl                  string            `json:"acl"`
+	ContentLanguage      string            `json:"content_language"`
+	Content              string            `json:"content"`
+	ServerSideEncryption string            `json:"server_side_encryption"`
+	Etag                 string            `json:"etag"`
+	ContentType          string            `json:"content_type"`
+	ContentBase64        string            `json:"content_base64"`
 	CacheControl         string            `json:"cache_control"`
 	ContentDisposition   string            `json:"content_disposition"`
-	Content              string            `json:"content"`
+	ContentEncoding      string            `json:"content_encoding"`
+	StorageClass         string            `json:"storage_class"`
 	KmsKeyId             string            `json:"kms_key_id"`
-	WebsiteRedirect      string            `json:"website_redirect"`
+	Bucket               string            `json:"bucket"`
+	Key                  string            `json:"key"`
 }
 
+
+
 type AwsS3BucketObjectStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

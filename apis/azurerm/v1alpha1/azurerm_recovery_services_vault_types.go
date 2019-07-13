@@ -19,14 +19,20 @@ type AzurermRecoveryServicesVault struct {
 }
 
 type AzurermRecoveryServicesVaultSpec struct {
-	Tags              map[string]string `json:"tags"`
-	Sku               string            `json:"sku"`
 	Name              string            `json:"name"`
 	Location          string            `json:"location"`
 	ResourceGroupName string            `json:"resource_group_name"`
+	Tags              map[string]string `json:"tags"`
+	Sku               string            `json:"sku"`
 }
 
+
+
 type AzurermRecoveryServicesVaultStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

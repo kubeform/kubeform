@@ -25,20 +25,26 @@ type AzurermDataFactoryDatasetMysqlSpecSchemaColumn struct {
 }
 
 type AzurermDataFactoryDatasetMysqlSpec struct {
+	Annotations          []string                             `json:"annotations"`
+	SchemaColumn         []AzurermDataFactoryDatasetMysqlSpec `json:"schema_column"`
 	Name                 string                               `json:"name"`
-	TableName            string                               `json:"table_name"`
+	ResourceGroupName    string                               `json:"resource_group_name"`
 	Parameters           map[string]string                    `json:"parameters"`
 	Description          string                               `json:"description"`
-	SchemaColumn         []AzurermDataFactoryDatasetMysqlSpec `json:"schema_column"`
 	AdditionalProperties map[string]string                    `json:"additional_properties"`
 	DataFactoryName      string                               `json:"data_factory_name"`
-	ResourceGroupName    string                               `json:"resource_group_name"`
 	LinkedServiceName    string                               `json:"linked_service_name"`
-	Annotations          []string                             `json:"annotations"`
+	TableName            string                               `json:"table_name"`
 	Folder               string                               `json:"folder"`
 }
 
+
+
 type AzurermDataFactoryDatasetMysqlStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

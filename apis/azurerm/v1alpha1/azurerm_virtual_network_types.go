@@ -18,11 +18,6 @@ type AzurermVirtualNetwork struct {
 	Status            AzurermVirtualNetworkStatus `json:"status,omitempty"`
 }
 
-type AzurermVirtualNetworkSpecDdosProtectionPlan struct {
-	Id     string `json:"id"`
-	Enable bool   `json:"enable"`
-}
-
 type AzurermVirtualNetworkSpecSubnet struct {
 	Id            string `json:"id"`
 	Name          string `json:"name"`
@@ -30,18 +25,29 @@ type AzurermVirtualNetworkSpecSubnet struct {
 	SecurityGroup string `json:"security_group"`
 }
 
+type AzurermVirtualNetworkSpecDdosProtectionPlan struct {
+	Id     string `json:"id"`
+	Enable bool   `json:"enable"`
+}
+
 type AzurermVirtualNetworkSpec struct {
-	ResourceGroupName  string                      `json:"resource_group_name"`
-	Location           string                      `json:"location"`
-	AddressSpace       []string                    `json:"address_space"`
-	DdosProtectionPlan []AzurermVirtualNetworkSpec `json:"ddos_protection_plan"`
 	DnsServers         []string                    `json:"dns_servers"`
 	Subnet             []AzurermVirtualNetworkSpec `json:"subnet"`
 	Tags               map[string]string           `json:"tags"`
 	Name               string                      `json:"name"`
+	ResourceGroupName  string                      `json:"resource_group_name"`
+	Location           string                      `json:"location"`
+	AddressSpace       []string                    `json:"address_space"`
+	DdosProtectionPlan []AzurermVirtualNetworkSpec `json:"ddos_protection_plan"`
 }
 
+
+
 type AzurermVirtualNetworkStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

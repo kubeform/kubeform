@@ -18,32 +18,38 @@ type AwsVpcPeeringConnectionAccepter struct {
 	Status            AwsVpcPeeringConnectionAccepterStatus `json:"status,omitempty"`
 }
 
-type AwsVpcPeeringConnectionAccepterSpecRequester struct {
-	AllowRemoteVpcDnsResolution bool `json:"allow_remote_vpc_dns_resolution"`
-	AllowClassicLinkToRemoteVpc bool `json:"allow_classic_link_to_remote_vpc"`
-	AllowVpcToRemoteClassicLink bool `json:"allow_vpc_to_remote_classic_link"`
-}
-
 type AwsVpcPeeringConnectionAccepterSpecAccepter struct {
 	AllowRemoteVpcDnsResolution bool `json:"allow_remote_vpc_dns_resolution"`
 	AllowClassicLinkToRemoteVpc bool `json:"allow_classic_link_to_remote_vpc"`
 	AllowVpcToRemoteClassicLink bool `json:"allow_vpc_to_remote_classic_link"`
 }
 
+type AwsVpcPeeringConnectionAccepterSpecRequester struct {
+	AllowRemoteVpcDnsResolution bool `json:"allow_remote_vpc_dns_resolution"`
+	AllowClassicLinkToRemoteVpc bool `json:"allow_classic_link_to_remote_vpc"`
+	AllowVpcToRemoteClassicLink bool `json:"allow_vpc_to_remote_classic_link"`
+}
+
 type AwsVpcPeeringConnectionAccepterSpec struct {
-	Requester              []AwsVpcPeeringConnectionAccepterSpec `json:"requester"`
-	Tags                   map[string]string                     `json:"tags"`
-	VpcPeeringConnectionId string                                `json:"vpc_peering_connection_id"`
-	VpcId                  string                                `json:"vpc_id"`
 	PeerVpcId              string                                `json:"peer_vpc_id"`
 	PeerOwnerId            string                                `json:"peer_owner_id"`
 	PeerRegion             string                                `json:"peer_region"`
+	Tags                   map[string]string                     `json:"tags"`
 	AutoAccept             bool                                  `json:"auto_accept"`
 	AcceptStatus           string                                `json:"accept_status"`
+	VpcId                  string                                `json:"vpc_id"`
+	VpcPeeringConnectionId string                                `json:"vpc_peering_connection_id"`
 	Accepter               []AwsVpcPeeringConnectionAccepterSpec `json:"accepter"`
+	Requester              []AwsVpcPeeringConnectionAccepterSpec `json:"requester"`
 }
 
+
+
 type AwsVpcPeeringConnectionAccepterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

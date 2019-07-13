@@ -19,19 +19,25 @@ type GoogleComputeSslPolicy struct {
 }
 
 type GoogleComputeSslPolicySpec struct {
+	MinTlsVersion     string   `json:"min_tls_version"`
 	Profile           string   `json:"profile"`
 	EnabledFeatures   []string `json:"enabled_features"`
-	Name              string   `json:"name"`
-	MinTlsVersion     string   `json:"min_tls_version"`
-	CreationTimestamp string   `json:"creation_timestamp"`
-	Fingerprint       string   `json:"fingerprint"`
 	Project           string   `json:"project"`
 	SelfLink          string   `json:"self_link"`
+	Name              string   `json:"name"`
 	CustomFeatures    []string `json:"custom_features"`
 	Description       string   `json:"description"`
+	CreationTimestamp string   `json:"creation_timestamp"`
+	Fingerprint       string   `json:"fingerprint"`
 }
 
+
+
 type GoogleComputeSslPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

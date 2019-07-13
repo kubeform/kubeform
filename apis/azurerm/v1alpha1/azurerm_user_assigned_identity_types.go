@@ -19,15 +19,21 @@ type AzurermUserAssignedIdentity struct {
 }
 
 type AzurermUserAssignedIdentitySpec struct {
-	Tags              map[string]string `json:"tags"`
 	PrincipalId       string            `json:"principal_id"`
 	ClientId          string            `json:"client_id"`
 	Name              string            `json:"name"`
 	ResourceGroupName string            `json:"resource_group_name"`
 	Location          string            `json:"location"`
+	Tags              map[string]string `json:"tags"`
 }
 
+
+
 type AzurermUserAssignedIdentityStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

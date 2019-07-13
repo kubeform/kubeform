@@ -18,15 +18,22 @@ type AwsLaunchConfiguration struct {
 	Status            AwsLaunchConfigurationStatus `json:"status,omitempty"`
 }
 
-type AwsLaunchConfigurationSpecEbsBlockDevice struct {
-	Encrypted           bool   `json:"encrypted"`
+type AwsLaunchConfigurationSpecRootBlockDevice struct {
+	VolumeType          string `json:"volume_type"`
 	DeleteOnTermination bool   `json:"delete_on_termination"`
-	DeviceName          string `json:"device_name"`
-	NoDevice            bool   `json:"no_device"`
+	Iops                int    `json:"iops"`
+	VolumeSize          int    `json:"volume_size"`
+}
+
+type AwsLaunchConfigurationSpecEbsBlockDevice struct {
 	Iops                int    `json:"iops"`
 	SnapshotId          string `json:"snapshot_id"`
 	VolumeSize          int    `json:"volume_size"`
 	VolumeType          string `json:"volume_type"`
+	Encrypted           bool   `json:"encrypted"`
+	DeleteOnTermination bool   `json:"delete_on_termination"`
+	DeviceName          string `json:"device_name"`
+	NoDevice            bool   `json:"no_device"`
 }
 
 type AwsLaunchConfigurationSpecEphemeralBlockDevice struct {
@@ -34,36 +41,35 @@ type AwsLaunchConfigurationSpecEphemeralBlockDevice struct {
 	VirtualName string `json:"virtual_name"`
 }
 
-type AwsLaunchConfigurationSpecRootBlockDevice struct {
-	DeleteOnTermination bool   `json:"delete_on_termination"`
-	Iops                int    `json:"iops"`
-	VolumeSize          int    `json:"volume_size"`
-	VolumeType          string `json:"volume_type"`
-}
-
 type AwsLaunchConfigurationSpec struct {
-	KeyName                      string                       `json:"key_name"`
-	SpotPrice                    string                       `json:"spot_price"`
-	EbsBlockDevice               []AwsLaunchConfigurationSpec `json:"ebs_block_device"`
-	ImageId                      string                       `json:"image_id"`
-	InstanceType                 string                       `json:"instance_type"`
-	UserData                     string                       `json:"user_data"`
-	VpcClassicLinkSecurityGroups []string                     `json:"vpc_classic_link_security_groups"`
-	EphemeralBlockDevice         []AwsLaunchConfigurationSpec `json:"ephemeral_block_device"`
-	RootBlockDevice              []AwsLaunchConfigurationSpec `json:"root_block_device"`
-	IamInstanceProfile           string                       `json:"iam_instance_profile"`
-	EbsOptimized                 bool                         `json:"ebs_optimized"`
-	PlacementTenancy             string                       `json:"placement_tenancy"`
-	EnableMonitoring             bool                         `json:"enable_monitoring"`
-	Name                         string                       `json:"name"`
-	NamePrefix                   string                       `json:"name_prefix"`
 	UserDataBase64               string                       `json:"user_data_base64"`
 	SecurityGroups               []string                     `json:"security_groups"`
-	VpcClassicLinkId             string                       `json:"vpc_classic_link_id"`
 	AssociatePublicIpAddress     bool                         `json:"associate_public_ip_address"`
+	RootBlockDevice              []AwsLaunchConfigurationSpec `json:"root_block_device"`
+	InstanceType                 string                       `json:"instance_type"`
+	VpcClassicLinkSecurityGroups []string                     `json:"vpc_classic_link_security_groups"`
+	SpotPrice                    string                       `json:"spot_price"`
+	KeyName                      string                       `json:"key_name"`
+	EbsBlockDevice               []AwsLaunchConfigurationSpec `json:"ebs_block_device"`
+	VpcClassicLinkId             string                       `json:"vpc_classic_link_id"`
+	EbsOptimized                 bool                         `json:"ebs_optimized"`
+	PlacementTenancy             string                       `json:"placement_tenancy"`
+	Name                         string                       `json:"name"`
+	NamePrefix                   string                       `json:"name_prefix"`
+	ImageId                      string                       `json:"image_id"`
+	IamInstanceProfile           string                       `json:"iam_instance_profile"`
+	UserData                     string                       `json:"user_data"`
+	EnableMonitoring             bool                         `json:"enable_monitoring"`
+	EphemeralBlockDevice         []AwsLaunchConfigurationSpec `json:"ephemeral_block_device"`
 }
 
+
+
 type AwsLaunchConfigurationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

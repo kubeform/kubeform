@@ -24,7 +24,13 @@ type AzurermDataLakeStoreFileSpec struct {
 	LocalFilePath  string `json:"local_file_path"`
 }
 
+
+
 type AzurermDataLakeStoreFileStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

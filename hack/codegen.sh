@@ -13,7 +13,8 @@ pushd $REPO_ROOT
 for provider in $(find $REPO_ROOT/apis -maxdepth 1 -mindepth 1 -type d -printf '%f '); do
     rm -rf "$REPO_ROOT"/apis/${provider}/v1alpha1/*.generated.go
 done
-mkdir -p "$REPO_ROOT"/api/api-rules
+mkdir -p "$REPO_ROOT"/config/api-rules
+mkdir -p "$REPO_ROOT"/config/crd
 
 apiGroups=$(find $REPO_ROOT/apis -maxdepth 1 -mindepth 1 -type d -printf '%f:v1alpha1 ')
 docker run --rm -ti -u $(id -u):$(id -g) \
@@ -35,10 +36,14 @@ for gv in $(find $REPO_ROOT/apis -maxdepth 1 -mindepth 1 -type d -printf '%f/v1a
     --go-header-file "hack/gengo/boilerplate.go.txt" \
     --input-dirs "$PACKAGE_NAME/apis/${gv},k8s.io/apimachinery/pkg/apis/meta/v1,k8s.io/apimachinery/pkg/api/resource,k8s.io/apimachinery/pkg/runtime,k8s.io/apimachinery/pkg/util/intstr,k8s.io/apimachinery/pkg/version,k8s.io/api/core/v1,k8s.io/api/apps/v1,k8s.io/api/rbac/v1" \
     --output-package "$PACKAGE_NAME/apis/${gv}" \
-    --report-filename api/api-rules/violation_exceptions.list
+    --report-filename config/api-rules/violation_exceptions.list
 done
 
-# Generate crds.yaml and swagger.json
-go run ./hack/gencrd/main.go
+# Generate crds.yamls
+docker run --rm -ti -u $(id -u):$(id -g) \
+  -v /tmp:/.cache \
+  -v "$REPO_ROOT":"$DOCKER_REPO_ROOT" \
+  -w "$DOCKER_REPO_ROOT" \
+  appscode/gengo:release-1.14 controller-gen crd:trivialVersions=true paths="./apis/..." output:crd:artifacts:config=config/crd
 
 popd

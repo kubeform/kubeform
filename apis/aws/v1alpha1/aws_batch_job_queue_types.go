@@ -19,14 +19,20 @@ type AwsBatchJobQueue struct {
 }
 
 type AwsBatchJobQueueSpec struct {
+	Arn                 string   `json:"arn"`
 	ComputeEnvironments []string `json:"compute_environments"`
 	Name                string   `json:"name"`
 	Priority            int      `json:"priority"`
 	State               string   `json:"state"`
-	Arn                 string   `json:"arn"`
 }
 
+
+
 type AwsBatchJobQueueStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

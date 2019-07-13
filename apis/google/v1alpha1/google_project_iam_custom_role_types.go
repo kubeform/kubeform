@@ -19,16 +19,22 @@ type GoogleProjectIamCustomRole struct {
 }
 
 type GoogleProjectIamCustomRoleSpec struct {
-	Permissions []string `json:"permissions"`
-	Project     string   `json:"project"`
-	Stage       string   `json:"stage"`
 	Description string   `json:"description"`
 	Deleted     bool     `json:"deleted"`
 	RoleId      string   `json:"role_id"`
 	Title       string   `json:"title"`
+	Permissions []string `json:"permissions"`
+	Project     string   `json:"project"`
+	Stage       string   `json:"stage"`
 }
 
+
+
 type GoogleProjectIamCustomRoleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

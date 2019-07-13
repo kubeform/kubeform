@@ -19,9 +19,9 @@ type AwsMediaPackageChannel struct {
 }
 
 type AwsMediaPackageChannelSpecHlsIngestIngestEndpoints struct {
-	Username string `json:"username"`
 	Password string `json:"password"`
 	Url      string `json:"url"`
+	Username string `json:"username"`
 }
 
 type AwsMediaPackageChannelSpecHlsIngest struct {
@@ -29,14 +29,20 @@ type AwsMediaPackageChannelSpecHlsIngest struct {
 }
 
 type AwsMediaPackageChannelSpec struct {
-	HlsIngest   []AwsMediaPackageChannelSpec `json:"hls_ingest"`
-	Tags        map[string]string            `json:"tags"`
 	Arn         string                       `json:"arn"`
 	ChannelId   string                       `json:"channel_id"`
 	Description string                       `json:"description"`
+	HlsIngest   []AwsMediaPackageChannelSpec `json:"hls_ingest"`
+	Tags        map[string]string            `json:"tags"`
 }
 
+
+
 type AwsMediaPackageChannelStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

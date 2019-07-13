@@ -19,11 +19,17 @@ type AwsMediaStoreContainerPolicy struct {
 }
 
 type AwsMediaStoreContainerPolicySpec struct {
-	Policy        string `json:"policy"`
 	ContainerName string `json:"container_name"`
+	Policy        string `json:"policy"`
 }
 
+
+
 type AwsMediaStoreContainerPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

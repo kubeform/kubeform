@@ -19,14 +19,20 @@ type AwsBackupVault struct {
 }
 
 type AwsBackupVaultSpec struct {
-	Arn            string            `json:"arn"`
-	RecoveryPoints int               `json:"recovery_points"`
 	Name           string            `json:"name"`
 	Tags           map[string]string `json:"tags"`
 	KmsKeyArn      string            `json:"kms_key_arn"`
+	Arn            string            `json:"arn"`
+	RecoveryPoints int               `json:"recovery_points"`
 }
 
+
+
 type AwsBackupVaultStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

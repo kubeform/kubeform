@@ -19,13 +19,19 @@ type AwsSesIdentityNotificationTopic struct {
 }
 
 type AwsSesIdentityNotificationTopicSpec struct {
-	Identity               string `json:"identity"`
-	IncludeOriginalHeaders bool   `json:"include_original_headers"`
 	TopicArn               string `json:"topic_arn"`
 	NotificationType       string `json:"notification_type"`
+	Identity               string `json:"identity"`
+	IncludeOriginalHeaders bool   `json:"include_original_headers"`
 }
 
+
+
 type AwsSesIdentityNotificationTopicStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

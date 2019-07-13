@@ -19,14 +19,20 @@ type GoogleSpannerDatabase struct {
 }
 
 type GoogleSpannerDatabaseSpec struct {
-	Instance string   `json:"instance"`
-	Name     string   `json:"name"`
 	Project  string   `json:"project"`
 	Ddl      []string `json:"ddl"`
 	State    string   `json:"state"`
+	Instance string   `json:"instance"`
+	Name     string   `json:"name"`
 }
 
+
+
 type GoogleSpannerDatabaseStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

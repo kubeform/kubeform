@@ -19,9 +19,9 @@ type AwsEc2ClientVpnEndpoint struct {
 }
 
 type AwsEc2ClientVpnEndpointSpecAuthenticationOptions struct {
-	RootCertificateChainArn string `json:"root_certificate_chain_arn"`
 	Type                    string `json:"type"`
 	ActiveDirectoryId       string `json:"active_directory_id"`
+	RootCertificateChainArn string `json:"root_certificate_chain_arn"`
 }
 
 type AwsEc2ClientVpnEndpointSpecConnectionLogOptions struct {
@@ -31,19 +31,25 @@ type AwsEc2ClientVpnEndpointSpecConnectionLogOptions struct {
 }
 
 type AwsEc2ClientVpnEndpointSpec struct {
-	Description           string                        `json:"description"`
+	Status                string                        `json:"status"`
 	DnsServers            []string                      `json:"dns_servers"`
-	ServerCertificateArn  string                        `json:"server_certificate_arn"`
-	AuthenticationOptions []AwsEc2ClientVpnEndpointSpec `json:"authentication_options"`
-	Tags                  map[string]string             `json:"tags"`
-	ClientCidrBlock       string                        `json:"client_cidr_block"`
 	TransportProtocol     string                        `json:"transport_protocol"`
+	AuthenticationOptions []AwsEc2ClientVpnEndpointSpec `json:"authentication_options"`
 	ConnectionLogOptions  []AwsEc2ClientVpnEndpointSpec `json:"connection_log_options"`
 	DnsName               string                        `json:"dns_name"`
-	Status                string                        `json:"status"`
+	Tags                  map[string]string             `json:"tags"`
+	Description           string                        `json:"description"`
+	ClientCidrBlock       string                        `json:"client_cidr_block"`
+	ServerCertificateArn  string                        `json:"server_certificate_arn"`
 }
 
+
+
 type AwsEc2ClientVpnEndpointStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

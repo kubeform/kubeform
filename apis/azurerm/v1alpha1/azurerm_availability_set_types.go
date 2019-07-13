@@ -19,16 +19,22 @@ type AzurermAvailabilitySet struct {
 }
 
 type AzurermAvailabilitySetSpec struct {
-	Name                      string            `json:"name"`
 	ResourceGroupName         string            `json:"resource_group_name"`
 	Location                  string            `json:"location"`
 	PlatformUpdateDomainCount int               `json:"platform_update_domain_count"`
 	PlatformFaultDomainCount  int               `json:"platform_fault_domain_count"`
 	Managed                   bool              `json:"managed"`
 	Tags                      map[string]string `json:"tags"`
+	Name                      string            `json:"name"`
 }
 
+
+
 type AzurermAvailabilitySetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

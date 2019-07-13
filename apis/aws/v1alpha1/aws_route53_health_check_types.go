@@ -19,28 +19,34 @@ type AwsRoute53HealthCheck struct {
 }
 
 type AwsRoute53HealthCheckSpec struct {
-	Port                         int               `json:"port"`
-	InvertHealthcheck            bool              `json:"invert_healthcheck"`
-	MeasureLatency               bool              `json:"measure_latency"`
-	CloudwatchAlarmName          string            `json:"cloudwatch_alarm_name"`
-	CloudwatchAlarmRegion        string            `json:"cloudwatch_alarm_region"`
-	RequestInterval              int               `json:"request_interval"`
-	ChildHealthchecks            []string          `json:"child_healthchecks"`
-	ChildHealthThreshold         int               `json:"child_health_threshold"`
-	InsufficientDataHealthStatus string            `json:"insufficient_data_health_status"`
+	Fqdn                         string            `json:"fqdn"`
 	Type                         string            `json:"type"`
 	IpAddress                    string            `json:"ip_address"`
-	Fqdn                         string            `json:"fqdn"`
-	SearchString                 string            `json:"search_string"`
+	Tags                         map[string]string `json:"tags"`
+	Port                         int               `json:"port"`
+	ResourcePath                 string            `json:"resource_path"`
+	ChildHealthThreshold         int               `json:"child_health_threshold"`
 	ReferenceName                string            `json:"reference_name"`
 	EnableSni                    bool              `json:"enable_sni"`
 	FailureThreshold             int               `json:"failure_threshold"`
-	ResourcePath                 string            `json:"resource_path"`
+	RequestInterval              int               `json:"request_interval"`
+	InvertHealthcheck            bool              `json:"invert_healthcheck"`
+	SearchString                 string            `json:"search_string"`
+	MeasureLatency               bool              `json:"measure_latency"`
+	ChildHealthchecks            []string          `json:"child_healthchecks"`
+	CloudwatchAlarmName          string            `json:"cloudwatch_alarm_name"`
+	CloudwatchAlarmRegion        string            `json:"cloudwatch_alarm_region"`
+	InsufficientDataHealthStatus string            `json:"insufficient_data_health_status"`
 	Regions                      []string          `json:"regions"`
-	Tags                         map[string]string `json:"tags"`
 }
 
+
+
 type AwsRoute53HealthCheckStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

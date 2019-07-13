@@ -29,10 +29,10 @@ type AwsAthenaWorkgroupSpecConfigurationResultConfiguration struct {
 }
 
 type AwsAthenaWorkgroupSpecConfiguration struct {
-	ResultConfiguration             []AwsAthenaWorkgroupSpecConfiguration `json:"result_configuration"`
 	BytesScannedCutoffPerQuery      int                                   `json:"bytes_scanned_cutoff_per_query"`
 	EnforceWorkgroupConfiguration   bool                                  `json:"enforce_workgroup_configuration"`
 	PublishCloudwatchMetricsEnabled bool                                  `json:"publish_cloudwatch_metrics_enabled"`
+	ResultConfiguration             []AwsAthenaWorkgroupSpecConfiguration `json:"result_configuration"`
 }
 
 type AwsAthenaWorkgroupSpec struct {
@@ -44,7 +44,13 @@ type AwsAthenaWorkgroupSpec struct {
 	Tags          map[string]string        `json:"tags"`
 }
 
+
+
 type AwsAthenaWorkgroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

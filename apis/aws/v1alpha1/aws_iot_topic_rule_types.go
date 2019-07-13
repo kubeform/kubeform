@@ -19,35 +19,43 @@ type AwsIotTopicRule struct {
 }
 
 type AwsIotTopicRuleSpecS3 struct {
+	RoleArn    string `json:"role_arn"`
 	BucketName string `json:"bucket_name"`
 	Key        string `json:"key"`
-	RoleArn    string `json:"role_arn"`
+}
+
+type AwsIotTopicRuleSpecFirehose struct {
+	DeliveryStreamName string `json:"delivery_stream_name"`
+	RoleArn            string `json:"role_arn"`
+	Separator          string `json:"separator"`
+}
+
+type AwsIotTopicRuleSpecKinesis struct {
+	PartitionKey string `json:"partition_key"`
+	RoleArn      string `json:"role_arn"`
+	StreamName   string `json:"stream_name"`
+}
+
+type AwsIotTopicRuleSpecSns struct {
+	MessageFormat string `json:"message_format"`
+	TargetArn     string `json:"target_arn"`
+	RoleArn       string `json:"role_arn"`
+}
+
+type AwsIotTopicRuleSpecCloudwatchAlarm struct {
+	AlarmName   string `json:"alarm_name"`
+	RoleArn     string `json:"role_arn"`
+	StateReason string `json:"state_reason"`
+	StateValue  string `json:"state_value"`
 }
 
 type AwsIotTopicRuleSpecCloudwatchMetric struct {
+	MetricValue     string `json:"metric_value"`
+	RoleArn         string `json:"role_arn"`
 	MetricName      string `json:"metric_name"`
 	MetricNamespace string `json:"metric_namespace"`
 	MetricTimestamp string `json:"metric_timestamp"`
 	MetricUnit      string `json:"metric_unit"`
-	MetricValue     string `json:"metric_value"`
-	RoleArn         string `json:"role_arn"`
-}
-
-type AwsIotTopicRuleSpecDynamodb struct {
-	RangeKeyValue string `json:"range_key_value"`
-	RoleArn       string `json:"role_arn"`
-	HashKeyField  string `json:"hash_key_field"`
-	RangeKeyField string `json:"range_key_field"`
-	PayloadField  string `json:"payload_field"`
-	RangeKeyType  string `json:"range_key_type"`
-	TableName     string `json:"table_name"`
-	HashKeyValue  string `json:"hash_key_value"`
-	HashKeyType   string `json:"hash_key_type"`
-}
-
-type AwsIotTopicRuleSpecRepublish struct {
-	Topic   string `json:"topic"`
-	RoleArn string `json:"role_arn"`
 }
 
 type AwsIotTopicRuleSpecElasticsearch struct {
@@ -58,62 +66,60 @@ type AwsIotTopicRuleSpecElasticsearch struct {
 	Type     string `json:"type"`
 }
 
-type AwsIotTopicRuleSpecCloudwatchAlarm struct {
-	AlarmName   string `json:"alarm_name"`
-	RoleArn     string `json:"role_arn"`
-	StateReason string `json:"state_reason"`
-	StateValue  string `json:"state_value"`
-}
-
-type AwsIotTopicRuleSpecFirehose struct {
-	DeliveryStreamName string `json:"delivery_stream_name"`
-	RoleArn            string `json:"role_arn"`
-	Separator          string `json:"separator"`
-}
-
-type AwsIotTopicRuleSpecKinesis struct {
-	RoleArn      string `json:"role_arn"`
-	StreamName   string `json:"stream_name"`
-	PartitionKey string `json:"partition_key"`
-}
-
-type AwsIotTopicRuleSpecLambda struct {
-	FunctionArn string `json:"function_arn"`
-}
-
-type AwsIotTopicRuleSpecSns struct {
-	TargetArn     string `json:"target_arn"`
-	RoleArn       string `json:"role_arn"`
-	MessageFormat string `json:"message_format"`
-}
-
 type AwsIotTopicRuleSpecSqs struct {
 	QueueUrl  string `json:"queue_url"`
 	RoleArn   string `json:"role_arn"`
 	UseBase64 bool   `json:"use_base64"`
 }
 
-type AwsIotTopicRuleSpec struct {
-	Sql              string                `json:"sql"`
-	S3               []AwsIotTopicRuleSpec `json:"s3"`
-	Name             string                `json:"name"`
-	CloudwatchMetric []AwsIotTopicRuleSpec `json:"cloudwatch_metric"`
-	Dynamodb         []AwsIotTopicRuleSpec `json:"dynamodb"`
-	Republish        []AwsIotTopicRuleSpec `json:"republish"`
-	Description      string                `json:"description"`
-	SqlVersion       string                `json:"sql_version"`
-	Elasticsearch    []AwsIotTopicRuleSpec `json:"elasticsearch"`
-	Arn              string                `json:"arn"`
-	Enabled          bool                  `json:"enabled"`
-	CloudwatchAlarm  []AwsIotTopicRuleSpec `json:"cloudwatch_alarm"`
-	Firehose         []AwsIotTopicRuleSpec `json:"firehose"`
-	Kinesis          []AwsIotTopicRuleSpec `json:"kinesis"`
-	Lambda           []AwsIotTopicRuleSpec `json:"lambda"`
-	Sns              []AwsIotTopicRuleSpec `json:"sns"`
-	Sqs              []AwsIotTopicRuleSpec `json:"sqs"`
+type AwsIotTopicRuleSpecDynamodb struct {
+	HashKeyType   string `json:"hash_key_type"`
+	RangeKeyField string `json:"range_key_field"`
+	HashKeyValue  string `json:"hash_key_value"`
+	PayloadField  string `json:"payload_field"`
+	RangeKeyValue string `json:"range_key_value"`
+	RangeKeyType  string `json:"range_key_type"`
+	RoleArn       string `json:"role_arn"`
+	TableName     string `json:"table_name"`
+	HashKeyField  string `json:"hash_key_field"`
 }
 
+type AwsIotTopicRuleSpecLambda struct {
+	FunctionArn string `json:"function_arn"`
+}
+
+type AwsIotTopicRuleSpecRepublish struct {
+	RoleArn string `json:"role_arn"`
+	Topic   string `json:"topic"`
+}
+
+type AwsIotTopicRuleSpec struct {
+	S3               []AwsIotTopicRuleSpec `json:"s3"`
+	Sql              string                `json:"sql"`
+	Firehose         []AwsIotTopicRuleSpec `json:"firehose"`
+	Kinesis          []AwsIotTopicRuleSpec `json:"kinesis"`
+	Sns              []AwsIotTopicRuleSpec `json:"sns"`
+	CloudwatchAlarm  []AwsIotTopicRuleSpec `json:"cloudwatch_alarm"`
+	CloudwatchMetric []AwsIotTopicRuleSpec `json:"cloudwatch_metric"`
+	Elasticsearch    []AwsIotTopicRuleSpec `json:"elasticsearch"`
+	SqlVersion       string                `json:"sql_version"`
+	Sqs              []AwsIotTopicRuleSpec `json:"sqs"`
+	Name             string                `json:"name"`
+	Description      string                `json:"description"`
+	Enabled          bool                  `json:"enabled"`
+	Arn              string                `json:"arn"`
+	Dynamodb         []AwsIotTopicRuleSpec `json:"dynamodb"`
+	Lambda           []AwsIotTopicRuleSpec `json:"lambda"`
+	Republish        []AwsIotTopicRuleSpec `json:"republish"`
+}
+
+
+
 type AwsIotTopicRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

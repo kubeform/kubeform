@@ -19,20 +19,26 @@ type AzurermLbNatRule struct {
 }
 
 type AzurermLbNatRuleSpec struct {
-	EnableFloatingIp            bool   `json:"enable_floating_ip"`
-	BackendPort                 int    `json:"backend_port"`
-	FrontendIpConfigurationId   string `json:"frontend_ip_configuration_id"`
+	BackendIpConfigurationId    string `json:"backend_ip_configuration_id"`
 	Name                        string `json:"name"`
 	Location                    string `json:"location"`
-	Protocol                    string `json:"protocol"`
-	FrontendPort                int    `json:"frontend_port"`
-	FrontendIpConfigurationName string `json:"frontend_ip_configuration_name"`
-	BackendIpConfigurationId    string `json:"backend_ip_configuration_id"`
 	ResourceGroupName           string `json:"resource_group_name"`
+	EnableFloatingIp            bool   `json:"enable_floating_ip"`
+	FrontendPort                int    `json:"frontend_port"`
+	BackendPort                 int    `json:"backend_port"`
+	FrontendIpConfigurationName string `json:"frontend_ip_configuration_name"`
 	LoadbalancerId              string `json:"loadbalancer_id"`
+	Protocol                    string `json:"protocol"`
+	FrontendIpConfigurationId   string `json:"frontend_ip_configuration_id"`
 }
 
+
+
 type AzurermLbNatRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,10 +19,10 @@ type AzurermDevTestWindowsVirtualMachine struct {
 }
 
 type AzurermDevTestWindowsVirtualMachineSpecGalleryImageReference struct {
-	Offer     string `json:"offer"`
-	Publisher string `json:"publisher"`
 	Sku       string `json:"sku"`
 	Version   string `json:"version"`
+	Offer     string `json:"offer"`
+	Publisher string `json:"publisher"`
 }
 
 type AzurermDevTestWindowsVirtualMachineSpecInboundNatRule struct {
@@ -32,27 +32,33 @@ type AzurermDevTestWindowsVirtualMachineSpecInboundNatRule struct {
 }
 
 type AzurermDevTestWindowsVirtualMachineSpec struct {
-	Location                string                                    `json:"location"`
-	StorageType             string                                    `json:"storage_type"`
+	Fqdn                    string                                    `json:"fqdn"`
+	Name                    string                                    `json:"name"`
+	LabName                 string                                    `json:"lab_name"`
+	LabVirtualNetworkId     string                                    `json:"lab_virtual_network_id"`
+	GalleryImageReference   []AzurermDevTestWindowsVirtualMachineSpec `json:"gallery_image_reference"`
+	InboundNatRule          []AzurermDevTestWindowsVirtualMachineSpec `json:"inbound_nat_rule"`
+	Username                string                                    `json:"username"`
+	DisallowPublicIpAddress bool                                      `json:"disallow_public_ip_address"`
+	UniqueIdentifier        string                                    `json:"unique_identifier"`
+	LabSubnetName           string                                    `json:"lab_subnet_name"`
 	AllowClaim              bool                                      `json:"allow_claim"`
 	Notes                   string                                    `json:"notes"`
-	UniqueIdentifier        string                                    `json:"unique_identifier"`
-	GalleryImageReference   []AzurermDevTestWindowsVirtualMachineSpec `json:"gallery_image_reference"`
-	Fqdn                    string                                    `json:"fqdn"`
-	LabName                 string                                    `json:"lab_name"`
 	ResourceGroupName       string                                    `json:"resource_group_name"`
-	Username                string                                    `json:"username"`
-	LabSubnetName           string                                    `json:"lab_subnet_name"`
-	DisallowPublicIpAddress bool                                      `json:"disallow_public_ip_address"`
-	LabVirtualNetworkId     string                                    `json:"lab_virtual_network_id"`
-	Name                    string                                    `json:"name"`
+	Location                string                                    `json:"location"`
 	Size                    string                                    `json:"size"`
 	Password                string                                    `json:"password"`
-	InboundNatRule          []AzurermDevTestWindowsVirtualMachineSpec `json:"inbound_nat_rule"`
+	StorageType             string                                    `json:"storage_type"`
 	Tags                    map[string]string                         `json:"tags"`
 }
 
+
+
 type AzurermDevTestWindowsVirtualMachineStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

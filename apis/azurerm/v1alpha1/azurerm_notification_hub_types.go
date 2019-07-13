@@ -31,15 +31,21 @@ type AzurermNotificationHubSpecGcmCredential struct {
 }
 
 type AzurermNotificationHubSpec struct {
-	Name              string                       `json:"name"`
-	NamespaceName     string                       `json:"namespace_name"`
-	ResourceGroupName string                       `json:"resource_group_name"`
 	Location          string                       `json:"location"`
 	ApnsCredential    []AzurermNotificationHubSpec `json:"apns_credential"`
 	GcmCredential     []AzurermNotificationHubSpec `json:"gcm_credential"`
+	Name              string                       `json:"name"`
+	NamespaceName     string                       `json:"namespace_name"`
+	ResourceGroupName string                       `json:"resource_group_name"`
 }
 
+
+
 type AzurermNotificationHubStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

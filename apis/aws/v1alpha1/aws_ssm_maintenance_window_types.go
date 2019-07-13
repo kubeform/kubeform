@@ -20,18 +20,24 @@ type AwsSsmMaintenanceWindow struct {
 
 type AwsSsmMaintenanceWindowSpec struct {
 	StartDate                string            `json:"start_date"`
-	Tags                     map[string]string `json:"tags"`
-	Duration                 int               `json:"duration"`
+	Cutoff                   int               `json:"cutoff"`
 	AllowUnassociatedTargets bool              `json:"allow_unassociated_targets"`
-	EndDate                  string            `json:"end_date"`
+	Duration                 int               `json:"duration"`
 	Enabled                  bool              `json:"enabled"`
+	EndDate                  string            `json:"end_date"`
 	ScheduleTimezone         string            `json:"schedule_timezone"`
+	Tags                     map[string]string `json:"tags"`
 	Name                     string            `json:"name"`
 	Schedule                 string            `json:"schedule"`
-	Cutoff                   int               `json:"cutoff"`
 }
 
+
+
 type AwsSsmMaintenanceWindowStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

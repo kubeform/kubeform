@@ -30,6 +30,7 @@ type AzurermTrafficManagerProfileSpecMonitorConfig struct {
 }
 
 type AzurermTrafficManagerProfileSpec struct {
+	Name                 string                             `json:"name"`
 	ResourceGroupName    string                             `json:"resource_group_name"`
 	ProfileStatus        string                             `json:"profile_status"`
 	TrafficRoutingMethod string                             `json:"traffic_routing_method"`
@@ -37,10 +38,15 @@ type AzurermTrafficManagerProfileSpec struct {
 	Fqdn                 string                             `json:"fqdn"`
 	MonitorConfig        []AzurermTrafficManagerProfileSpec `json:"monitor_config"`
 	Tags                 map[string]string                  `json:"tags"`
-	Name                 string                             `json:"name"`
 }
 
+
+
 type AzurermTrafficManagerProfileStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

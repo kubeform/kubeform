@@ -18,52 +18,17 @@ type GoogleDataprocJob struct {
 	Status            GoogleDataprocJobStatus `json:"status,omitempty"`
 }
 
-type GoogleDataprocJobSpecStatus struct {
-	State          string `json:"state"`
-	Details        string `json:"details"`
-	StateStartTime string `json:"state_start_time"`
-	Substate       string `json:"substate"`
-}
-
-type GoogleDataprocJobSpecScheduling struct {
-	MaxFailuresPerHour int `json:"max_failures_per_hour"`
-}
-
-type GoogleDataprocJobSpecHadoopConfigLoggingConfig struct {
-	DriverLogLevels map[string]string `json:"driver_log_levels"`
-}
-
-type GoogleDataprocJobSpecHadoopConfig struct {
-	JarFileUris    []string                            `json:"jar_file_uris"`
-	FileUris       []string                            `json:"file_uris"`
-	ArchiveUris    []string                            `json:"archive_uris"`
-	Properties     map[string]string                   `json:"properties"`
-	LoggingConfig  []GoogleDataprocJobSpecHadoopConfig `json:"logging_config"`
-	MainClass      string                              `json:"main_class"`
-	MainJarFileUri string                              `json:"main_jar_file_uri"`
-	Args           []string                            `json:"args"`
-}
-
 type GoogleDataprocJobSpecHiveConfig struct {
-	QueryList         []string          `json:"query_list"`
-	QueryFileUri      string            `json:"query_file_uri"`
 	ContinueOnFailure bool              `json:"continue_on_failure"`
 	ScriptVariables   map[string]string `json:"script_variables"`
 	Properties        map[string]string `json:"properties"`
 	JarFileUris       []string          `json:"jar_file_uris"`
+	QueryList         []string          `json:"query_list"`
+	QueryFileUri      string            `json:"query_file_uri"`
 }
 
-type GoogleDataprocJobSpecSparksqlConfigLoggingConfig struct {
-	DriverLogLevels map[string]string `json:"driver_log_levels"`
-}
-
-type GoogleDataprocJobSpecSparksqlConfig struct {
-	QueryList       []string                              `json:"query_list"`
-	QueryFileUri    string                                `json:"query_file_uri"`
-	ScriptVariables map[string]string                     `json:"script_variables"`
-	Properties      map[string]string                     `json:"properties"`
-	JarFileUris     []string                              `json:"jar_file_uris"`
-	LoggingConfig   []GoogleDataprocJobSpecSparksqlConfig `json:"logging_config"`
+type GoogleDataprocJobSpecScheduling struct {
+	MaxFailuresPerHour int `json:"max_failures_per_hour"`
 }
 
 type GoogleDataprocJobSpecPysparkConfigLoggingConfig struct {
@@ -71,6 +36,7 @@ type GoogleDataprocJobSpecPysparkConfigLoggingConfig struct {
 }
 
 type GoogleDataprocJobSpecPysparkConfig struct {
+	ArchiveUris       []string                             `json:"archive_uris"`
 	Properties        map[string]string                    `json:"properties"`
 	LoggingConfig     []GoogleDataprocJobSpecPysparkConfig `json:"logging_config"`
 	MainPythonFileUri string                               `json:"main_python_file_uri"`
@@ -78,16 +44,6 @@ type GoogleDataprocJobSpecPysparkConfig struct {
 	PythonFileUris    []string                             `json:"python_file_uris"`
 	JarFileUris       []string                             `json:"jar_file_uris"`
 	FileUris          []string                             `json:"file_uris"`
-	ArchiveUris       []string                             `json:"archive_uris"`
-}
-
-type GoogleDataprocJobSpecReference struct {
-	JobId string `json:"job_id"`
-}
-
-type GoogleDataprocJobSpecPlacement struct {
-	ClusterName string `json:"cluster_name"`
-	ClusterUuid string `json:"cluster_uuid"`
 }
 
 type GoogleDataprocJobSpecSparkConfigLoggingConfig struct {
@@ -95,14 +51,38 @@ type GoogleDataprocJobSpecSparkConfigLoggingConfig struct {
 }
 
 type GoogleDataprocJobSpecSparkConfig struct {
+	LoggingConfig  []GoogleDataprocJobSpecSparkConfig `json:"logging_config"`
+	MainClass      string                             `json:"main_class"`
+	MainJarFileUri string                             `json:"main_jar_file_uri"`
 	Args           []string                           `json:"args"`
 	JarFileUris    []string                           `json:"jar_file_uris"`
 	FileUris       []string                           `json:"file_uris"`
 	ArchiveUris    []string                           `json:"archive_uris"`
 	Properties     map[string]string                  `json:"properties"`
-	LoggingConfig  []GoogleDataprocJobSpecSparkConfig `json:"logging_config"`
-	MainClass      string                             `json:"main_class"`
-	MainJarFileUri string                             `json:"main_jar_file_uri"`
+}
+
+type GoogleDataprocJobSpecSparksqlConfigLoggingConfig struct {
+	DriverLogLevels map[string]string `json:"driver_log_levels"`
+}
+
+type GoogleDataprocJobSpecSparksqlConfig struct {
+	QueryFileUri    string                                `json:"query_file_uri"`
+	ScriptVariables map[string]string                     `json:"script_variables"`
+	Properties      map[string]string                     `json:"properties"`
+	JarFileUris     []string                              `json:"jar_file_uris"`
+	LoggingConfig   []GoogleDataprocJobSpecSparksqlConfig `json:"logging_config"`
+	QueryList       []string                              `json:"query_list"`
+}
+
+type GoogleDataprocJobSpecReference struct {
+	JobId string `json:"job_id"`
+}
+
+type GoogleDataprocJobSpecStatus struct {
+	State          string `json:"state"`
+	Details        string `json:"details"`
+	StateStartTime string `json:"state_start_time"`
+	Substate       string `json:"substate"`
 }
 
 type GoogleDataprocJobSpecPigConfigLoggingConfig struct {
@@ -119,26 +99,52 @@ type GoogleDataprocJobSpecPigConfig struct {
 	LoggingConfig     []GoogleDataprocJobSpecPigConfig `json:"logging_config"`
 }
 
-type GoogleDataprocJobSpec struct {
-	Status                  []GoogleDataprocJobSpec `json:"status"`
-	Scheduling              []GoogleDataprocJobSpec `json:"scheduling"`
-	HadoopConfig            []GoogleDataprocJobSpec `json:"hadoop_config"`
-	HiveConfig              []GoogleDataprocJobSpec `json:"hive_config"`
-	Region                  string                  `json:"region"`
-	SparksqlConfig          []GoogleDataprocJobSpec `json:"sparksql_config"`
-	PysparkConfig           []GoogleDataprocJobSpec `json:"pyspark_config"`
-	DriverOutputResourceUri string                  `json:"driver_output_resource_uri"`
-	Labels                  map[string]string       `json:"labels"`
-	ForceDelete             bool                    `json:"force_delete"`
-	Reference               []GoogleDataprocJobSpec `json:"reference"`
-	Placement               []GoogleDataprocJobSpec `json:"placement"`
-	DriverControlsFilesUri  string                  `json:"driver_controls_files_uri"`
-	SparkConfig             []GoogleDataprocJobSpec `json:"spark_config"`
-	PigConfig               []GoogleDataprocJobSpec `json:"pig_config"`
-	Project                 string                  `json:"project"`
+type GoogleDataprocJobSpecHadoopConfigLoggingConfig struct {
+	DriverLogLevels map[string]string `json:"driver_log_levels"`
 }
 
+type GoogleDataprocJobSpecHadoopConfig struct {
+	Args           []string                            `json:"args"`
+	JarFileUris    []string                            `json:"jar_file_uris"`
+	FileUris       []string                            `json:"file_uris"`
+	ArchiveUris    []string                            `json:"archive_uris"`
+	Properties     map[string]string                   `json:"properties"`
+	LoggingConfig  []GoogleDataprocJobSpecHadoopConfig `json:"logging_config"`
+	MainClass      string                              `json:"main_class"`
+	MainJarFileUri string                              `json:"main_jar_file_uri"`
+}
+
+type GoogleDataprocJobSpecPlacement struct {
+	ClusterName string `json:"cluster_name"`
+	ClusterUuid string `json:"cluster_uuid"`
+}
+
+type GoogleDataprocJobSpec struct {
+	DriverControlsFilesUri  string                  `json:"driver_controls_files_uri"`
+	HiveConfig              []GoogleDataprocJobSpec `json:"hive_config"`
+	Project                 string                  `json:"project"`
+	Region                  string                  `json:"region"`
+	DriverOutputResourceUri string                  `json:"driver_output_resource_uri"`
+	Scheduling              []GoogleDataprocJobSpec `json:"scheduling"`
+	PysparkConfig           []GoogleDataprocJobSpec `json:"pyspark_config"`
+	SparkConfig             []GoogleDataprocJobSpec `json:"spark_config"`
+	SparksqlConfig          []GoogleDataprocJobSpec `json:"sparksql_config"`
+	Reference               []GoogleDataprocJobSpec `json:"reference"`
+	Status                  []GoogleDataprocJobSpec `json:"status"`
+	PigConfig               []GoogleDataprocJobSpec `json:"pig_config"`
+	Labels                  map[string]string       `json:"labels"`
+	HadoopConfig            []GoogleDataprocJobSpec `json:"hadoop_config"`
+	ForceDelete             bool                    `json:"force_delete"`
+	Placement               []GoogleDataprocJobSpec `json:"placement"`
+}
+
+
+
 type GoogleDataprocJobStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

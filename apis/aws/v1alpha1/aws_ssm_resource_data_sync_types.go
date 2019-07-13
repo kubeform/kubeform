@@ -19,19 +19,25 @@ type AwsSsmResourceDataSync struct {
 }
 
 type AwsSsmResourceDataSyncSpecS3Destination struct {
+	SyncFormat string `json:"sync_format"`
 	KmsKeyArn  string `json:"kms_key_arn"`
 	BucketName string `json:"bucket_name"`
 	Prefix     string `json:"prefix"`
 	Region     string `json:"region"`
-	SyncFormat string `json:"sync_format"`
 }
 
 type AwsSsmResourceDataSyncSpec struct {
-	S3Destination []AwsSsmResourceDataSyncSpec `json:"s3_destination"`
 	Name          string                       `json:"name"`
+	S3Destination []AwsSsmResourceDataSyncSpec `json:"s3_destination"`
 }
 
+
+
 type AwsSsmResourceDataSyncStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -27,17 +27,23 @@ type LinodeNodebalancerSpecTransfer struct {
 type LinodeNodebalancerSpec struct {
 	Label              string            `json:"label"`
 	ClientConnThrottle int               `json:"client_conn_throttle"`
-	Ipv6               string            `json:"ipv6"`
-	Updated            string            `json:"updated"`
+	Transfer           map[string]string `json:"transfer"`
 	Tags               []string          `json:"tags"`
 	Region             string            `json:"region"`
 	Hostname           string            `json:"hostname"`
 	Ipv4               string            `json:"ipv4"`
+	Ipv6               string            `json:"ipv6"`
 	Created            string            `json:"created"`
-	Transfer           map[string]string `json:"transfer"`
+	Updated            string            `json:"updated"`
 }
 
+
+
 type LinodeNodebalancerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

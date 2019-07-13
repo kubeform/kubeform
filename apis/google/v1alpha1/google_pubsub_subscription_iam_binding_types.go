@@ -19,14 +19,20 @@ type GooglePubsubSubscriptionIamBinding struct {
 }
 
 type GooglePubsubSubscriptionIamBindingSpec struct {
-	Subscription string   `json:"subscription"`
-	Project      string   `json:"project"`
-	Etag         string   `json:"etag"`
 	Role         string   `json:"role"`
 	Members      []string `json:"members"`
+	Etag         string   `json:"etag"`
+	Subscription string   `json:"subscription"`
+	Project      string   `json:"project"`
 }
 
+
+
 type GooglePubsubSubscriptionIamBindingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

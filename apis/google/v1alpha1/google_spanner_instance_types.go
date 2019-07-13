@@ -19,16 +19,22 @@ type GoogleSpannerInstance struct {
 }
 
 type GoogleSpannerInstanceSpec struct {
+	Config      string            `json:"config"`
+	Name        string            `json:"name"`
+	DisplayName string            `json:"display_name"`
 	NumNodes    int               `json:"num_nodes"`
 	Labels      map[string]string `json:"labels"`
 	Project     string            `json:"project"`
 	State       string            `json:"state"`
-	Config      string            `json:"config"`
-	Name        string            `json:"name"`
-	DisplayName string            `json:"display_name"`
 }
 
+
+
 type GoogleSpannerInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

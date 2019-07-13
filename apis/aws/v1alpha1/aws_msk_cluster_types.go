@@ -26,6 +26,14 @@ type AwsMskClusterSpecClientAuthentication struct {
 	Tls []AwsMskClusterSpecClientAuthentication `json:"tls"`
 }
 
+type AwsMskClusterSpecBrokerNodeGroupInfo struct {
+	EbsVolumeSize  int      `json:"ebs_volume_size"`
+	AzDistribution string   `json:"az_distribution"`
+	ClientSubnets  []string `json:"client_subnets"`
+	InstanceType   string   `json:"instance_type"`
+	SecurityGroups []string `json:"security_groups"`
+}
+
 type AwsMskClusterSpecConfigurationInfo struct {
 	Arn      string `json:"arn"`
 	Revision int    `json:"revision"`
@@ -37,36 +45,34 @@ type AwsMskClusterSpecEncryptionInfoEncryptionInTransit struct {
 }
 
 type AwsMskClusterSpecEncryptionInfo struct {
-	EncryptionAtRestKmsKeyArn string                            `json:"encryption_at_rest_kms_key_arn"`
 	EncryptionInTransit       []AwsMskClusterSpecEncryptionInfo `json:"encryption_in_transit"`
-}
-
-type AwsMskClusterSpecBrokerNodeGroupInfo struct {
-	EbsVolumeSize  int      `json:"ebs_volume_size"`
-	AzDistribution string   `json:"az_distribution"`
-	ClientSubnets  []string `json:"client_subnets"`
-	InstanceType   string   `json:"instance_type"`
-	SecurityGroups []string `json:"security_groups"`
+	EncryptionAtRestKmsKeyArn string                            `json:"encryption_at_rest_kms_key_arn"`
 }
 
 type AwsMskClusterSpec struct {
-	CurrentVersion         string              `json:"current_version"`
-	Tags                   map[string]string   `json:"tags"`
 	ClientAuthentication   []AwsMskClusterSpec `json:"client_authentication"`
 	ClusterName            string              `json:"cluster_name"`
-	ConfigurationInfo      []AwsMskClusterSpec `json:"configuration_info"`
-	KafkaVersion           string              `json:"kafka_version"`
+	CurrentVersion         string              `json:"current_version"`
+	EnhancedMonitoring     string              `json:"enhanced_monitoring"`
 	ZookeeperConnectString string              `json:"zookeeper_connect_string"`
-	Arn                    string              `json:"arn"`
-	EncryptionInfo         []AwsMskClusterSpec `json:"encryption_info"`
-	NumberOfBrokerNodes    int                 `json:"number_of_broker_nodes"`
-	BootstrapBrokers       string              `json:"bootstrap_brokers"`
 	BootstrapBrokersTls    string              `json:"bootstrap_brokers_tls"`
 	BrokerNodeGroupInfo    []AwsMskClusterSpec `json:"broker_node_group_info"`
-	EnhancedMonitoring     string              `json:"enhanced_monitoring"`
+	Arn                    string              `json:"arn"`
+	ConfigurationInfo      []AwsMskClusterSpec `json:"configuration_info"`
+	EncryptionInfo         []AwsMskClusterSpec `json:"encryption_info"`
+	KafkaVersion           string              `json:"kafka_version"`
+	NumberOfBrokerNodes    int                 `json:"number_of_broker_nodes"`
+	Tags                   map[string]string   `json:"tags"`
+	BootstrapBrokers       string              `json:"bootstrap_brokers"`
 }
 
+
+
 type AwsMskClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

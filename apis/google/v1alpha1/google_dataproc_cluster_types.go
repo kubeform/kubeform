@@ -18,17 +18,6 @@ type GoogleDataprocCluster struct {
 	Status            GoogleDataprocClusterStatus `json:"status,omitempty"`
 }
 
-type GoogleDataprocClusterSpecClusterConfigGceClusterConfig struct {
-	Tags                 []string          `json:"tags"`
-	ServiceAccount       string            `json:"service_account"`
-	ServiceAccountScopes []string          `json:"service_account_scopes"`
-	InternalIpOnly       bool              `json:"internal_ip_only"`
-	Metadata             map[string]string `json:"metadata"`
-	Zone                 string            `json:"zone"`
-	Network              string            `json:"network"`
-	Subnetwork           string            `json:"subnetwork"`
-}
-
 type GoogleDataprocClusterSpecClusterConfigWorkerConfigDiskConfig struct {
 	NumLocalSsds   int    `json:"num_local_ssds"`
 	BootDiskSizeGb int    `json:"boot_disk_size_gb"`
@@ -39,24 +28,6 @@ type GoogleDataprocClusterSpecClusterConfigWorkerConfig struct {
 	NumInstances  int                                                  `json:"num_instances"`
 	MachineType   string                                               `json:"machine_type"`
 	DiskConfig    []GoogleDataprocClusterSpecClusterConfigWorkerConfig `json:"disk_config"`
-	InstanceNames []string                                             `json:"instance_names"`
-}
-
-type GoogleDataprocClusterSpecClusterConfigInitializationAction struct {
-	TimeoutSec int    `json:"timeout_sec"`
-	Script     string `json:"script"`
-}
-
-type GoogleDataprocClusterSpecClusterConfigMasterConfigDiskConfig struct {
-	NumLocalSsds   int    `json:"num_local_ssds"`
-	BootDiskSizeGb int    `json:"boot_disk_size_gb"`
-	BootDiskType   string `json:"boot_disk_type"`
-}
-
-type GoogleDataprocClusterSpecClusterConfigMasterConfig struct {
-	NumInstances  int                                                  `json:"num_instances"`
-	MachineType   string                                               `json:"machine_type"`
-	DiskConfig    []GoogleDataprocClusterSpecClusterConfigMasterConfig `json:"disk_config"`
 	InstanceNames []string                                             `json:"instance_names"`
 }
 
@@ -76,27 +47,62 @@ type GoogleDataprocClusterSpecClusterConfigSoftwareConfig struct {
 	Properties         map[string]string `json:"properties"`
 }
 
+type GoogleDataprocClusterSpecClusterConfigInitializationAction struct {
+	Script     string `json:"script"`
+	TimeoutSec int    `json:"timeout_sec"`
+}
+
+type GoogleDataprocClusterSpecClusterConfigGceClusterConfig struct {
+	Metadata             map[string]string `json:"metadata"`
+	Zone                 string            `json:"zone"`
+	Network              string            `json:"network"`
+	Subnetwork           string            `json:"subnetwork"`
+	Tags                 []string          `json:"tags"`
+	ServiceAccount       string            `json:"service_account"`
+	ServiceAccountScopes []string          `json:"service_account_scopes"`
+	InternalIpOnly       bool              `json:"internal_ip_only"`
+}
+
+type GoogleDataprocClusterSpecClusterConfigMasterConfigDiskConfig struct {
+	NumLocalSsds   int    `json:"num_local_ssds"`
+	BootDiskSizeGb int    `json:"boot_disk_size_gb"`
+	BootDiskType   string `json:"boot_disk_type"`
+}
+
+type GoogleDataprocClusterSpecClusterConfigMasterConfig struct {
+	NumInstances  int                                                  `json:"num_instances"`
+	MachineType   string                                               `json:"machine_type"`
+	DiskConfig    []GoogleDataprocClusterSpecClusterConfigMasterConfig `json:"disk_config"`
+	InstanceNames []string                                             `json:"instance_names"`
+}
+
 type GoogleDataprocClusterSpecClusterConfig struct {
-	StagingBucket           string                                   `json:"staging_bucket"`
-	Bucket                  string                                   `json:"bucket"`
-	GceClusterConfig        []GoogleDataprocClusterSpecClusterConfig `json:"gce_cluster_config"`
-	WorkerConfig            []GoogleDataprocClusterSpecClusterConfig `json:"worker_config"`
-	InitializationAction    []GoogleDataprocClusterSpecClusterConfig `json:"initialization_action"`
 	DeleteAutogenBucket     bool                                     `json:"delete_autogen_bucket"`
-	MasterConfig            []GoogleDataprocClusterSpecClusterConfig `json:"master_config"`
+	StagingBucket           string                                   `json:"staging_bucket"`
+	WorkerConfig            []GoogleDataprocClusterSpecClusterConfig `json:"worker_config"`
 	PreemptibleWorkerConfig []GoogleDataprocClusterSpecClusterConfig `json:"preemptible_worker_config"`
 	SoftwareConfig          []GoogleDataprocClusterSpecClusterConfig `json:"software_config"`
+	InitializationAction    []GoogleDataprocClusterSpecClusterConfig `json:"initialization_action"`
+	Bucket                  string                                   `json:"bucket"`
+	GceClusterConfig        []GoogleDataprocClusterSpecClusterConfig `json:"gce_cluster_config"`
+	MasterConfig            []GoogleDataprocClusterSpecClusterConfig `json:"master_config"`
 }
 
 type GoogleDataprocClusterSpec struct {
+	Name          string                      `json:"name"`
 	Project       string                      `json:"project"`
 	Region        string                      `json:"region"`
 	Labels        map[string]string           `json:"labels"`
 	ClusterConfig []GoogleDataprocClusterSpec `json:"cluster_config"`
-	Name          string                      `json:"name"`
 }
 
+
+
 type GoogleDataprocClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

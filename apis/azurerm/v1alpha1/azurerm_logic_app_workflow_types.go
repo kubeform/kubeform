@@ -19,17 +19,23 @@ type AzurermLogicAppWorkflow struct {
 }
 
 type AzurermLogicAppWorkflowSpec struct {
-	Tags              map[string]string `json:"tags"`
-	AccessEndpoint    string            `json:"access_endpoint"`
-	Name              string            `json:"name"`
-	Location          string            `json:"location"`
 	ResourceGroupName string            `json:"resource_group_name"`
 	Parameters        map[string]string `json:"parameters"`
 	WorkflowSchema    string            `json:"workflow_schema"`
 	WorkflowVersion   string            `json:"workflow_version"`
+	Tags              map[string]string `json:"tags"`
+	AccessEndpoint    string            `json:"access_endpoint"`
+	Name              string            `json:"name"`
+	Location          string            `json:"location"`
 }
 
+
+
 type AzurermLogicAppWorkflowStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

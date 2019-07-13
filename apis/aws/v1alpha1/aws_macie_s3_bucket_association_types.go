@@ -24,13 +24,19 @@ type AwsMacieS3BucketAssociationSpecClassificationType struct {
 }
 
 type AwsMacieS3BucketAssociationSpec struct {
+	MemberAccountId    string                            `json:"member_account_id"`
 	ClassificationType []AwsMacieS3BucketAssociationSpec `json:"classification_type"`
 	BucketName         string                            `json:"bucket_name"`
 	Prefix             string                            `json:"prefix"`
-	MemberAccountId    string                            `json:"member_account_id"`
 }
 
+
+
 type AwsMacieS3BucketAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -18,38 +18,44 @@ type GoogleComputeFirewall struct {
 	Status            GoogleComputeFirewallStatus `json:"status,omitempty"`
 }
 
-type GoogleComputeFirewallSpecAllow struct {
-	Protocol string   `json:"protocol"`
-	Ports    []string `json:"ports"`
-}
-
 type GoogleComputeFirewallSpecDeny struct {
 	Protocol string   `json:"protocol"`
 	Ports    []string `json:"ports"`
 }
 
-type GoogleComputeFirewallSpec struct {
-	Name                  string                      `json:"name"`
-	Disabled              bool                        `json:"disabled"`
-	SourceServiceAccounts []string                    `json:"source_service_accounts"`
-	EnableLogging         bool                        `json:"enable_logging"`
-	Priority              int                         `json:"priority"`
-	CreationTimestamp     string                      `json:"creation_timestamp"`
-	SelfLink              string                      `json:"self_link"`
-	Network               string                      `json:"network"`
-	Allow                 []GoogleComputeFirewallSpec `json:"allow"`
-	Deny                  []GoogleComputeFirewallSpec `json:"deny"`
-	Description           string                      `json:"description"`
-	SourceTags            []string                    `json:"source_tags"`
-	Project               string                      `json:"project"`
-	TargetTags            []string                    `json:"target_tags"`
-	DestinationRanges     []string                    `json:"destination_ranges"`
-	Direction             string                      `json:"direction"`
-	SourceRanges          []string                    `json:"source_ranges"`
-	TargetServiceAccounts []string                    `json:"target_service_accounts"`
+type GoogleComputeFirewallSpecAllow struct {
+	Protocol string   `json:"protocol"`
+	Ports    []string `json:"ports"`
 }
 
+type GoogleComputeFirewallSpec struct {
+	Description           string                      `json:"description"`
+	Disabled              bool                        `json:"disabled"`
+	EnableLogging         bool                        `json:"enable_logging"`
+	Deny                  []GoogleComputeFirewallSpec `json:"deny"`
+	Priority              int                         `json:"priority"`
+	SourceTags            []string                    `json:"source_tags"`
+	SelfLink              string                      `json:"self_link"`
+	Name                  string                      `json:"name"`
+	Network               string                      `json:"network"`
+	DestinationRanges     []string                    `json:"destination_ranges"`
+	Direction             string                      `json:"direction"`
+	SourceServiceAccounts []string                    `json:"source_service_accounts"`
+	TargetTags            []string                    `json:"target_tags"`
+	Project               string                      `json:"project"`
+	Allow                 []GoogleComputeFirewallSpec `json:"allow"`
+	SourceRanges          []string                    `json:"source_ranges"`
+	TargetServiceAccounts []string                    `json:"target_service_accounts"`
+	CreationTimestamp     string                      `json:"creation_timestamp"`
+}
+
+
+
 type GoogleComputeFirewallStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

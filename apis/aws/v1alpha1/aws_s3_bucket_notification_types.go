@@ -19,37 +19,43 @@ type AwsS3BucketNotification struct {
 }
 
 type AwsS3BucketNotificationSpecTopic struct {
+	Events       []string `json:"events"`
+	Id           string   `json:"id"`
 	FilterPrefix string   `json:"filter_prefix"`
 	FilterSuffix string   `json:"filter_suffix"`
 	TopicArn     string   `json:"topic_arn"`
-	Events       []string `json:"events"`
-	Id           string   `json:"id"`
 }
 
 type AwsS3BucketNotificationSpecQueue struct {
-	Id           string   `json:"id"`
 	FilterPrefix string   `json:"filter_prefix"`
 	FilterSuffix string   `json:"filter_suffix"`
 	QueueArn     string   `json:"queue_arn"`
 	Events       []string `json:"events"`
+	Id           string   `json:"id"`
 }
 
 type AwsS3BucketNotificationSpecLambdaFunction struct {
+	Id                string   `json:"id"`
 	FilterPrefix      string   `json:"filter_prefix"`
 	FilterSuffix      string   `json:"filter_suffix"`
 	LambdaFunctionArn string   `json:"lambda_function_arn"`
 	Events            []string `json:"events"`
-	Id                string   `json:"id"`
 }
 
 type AwsS3BucketNotificationSpec struct {
+	Bucket         string                        `json:"bucket"`
 	Topic          []AwsS3BucketNotificationSpec `json:"topic"`
 	Queue          []AwsS3BucketNotificationSpec `json:"queue"`
 	LambdaFunction []AwsS3BucketNotificationSpec `json:"lambda_function"`
-	Bucket         string                        `json:"bucket"`
 }
 
+
+
 type AwsS3BucketNotificationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

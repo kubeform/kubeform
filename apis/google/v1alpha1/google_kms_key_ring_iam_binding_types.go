@@ -19,13 +19,19 @@ type GoogleKmsKeyRingIamBinding struct {
 }
 
 type GoogleKmsKeyRingIamBindingSpec struct {
+	Members   []string `json:"members"`
 	Etag      string   `json:"etag"`
 	KeyRingId string   `json:"key_ring_id"`
 	Role      string   `json:"role"`
-	Members   []string `json:"members"`
 }
 
+
+
 type GoogleKmsKeyRingIamBindingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

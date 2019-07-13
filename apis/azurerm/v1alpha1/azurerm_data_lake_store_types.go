@@ -19,19 +19,25 @@ type AzurermDataLakeStore struct {
 }
 
 type AzurermDataLakeStoreSpec struct {
-	FirewallState         string            `json:"firewall_state"`
-	FirewallAllowAzureIps string            `json:"firewall_allow_azure_ips"`
-	Tags                  map[string]string `json:"tags"`
 	EncryptionType        string            `json:"encryption_type"`
-	Location              string            `json:"location"`
-	ResourceGroupName     string            `json:"resource_group_name"`
+	Name                  string            `json:"name"`
 	Tier                  string            `json:"tier"`
 	EncryptionState       string            `json:"encryption_state"`
+	FirewallState         string            `json:"firewall_state"`
+	FirewallAllowAzureIps string            `json:"firewall_allow_azure_ips"`
 	Endpoint              string            `json:"endpoint"`
-	Name                  string            `json:"name"`
+	Tags                  map[string]string `json:"tags"`
+	Location              string            `json:"location"`
+	ResourceGroupName     string            `json:"resource_group_name"`
 }
 
+
+
 type AzurermDataLakeStoreStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,14 +19,20 @@ type AwsCognitoUserGroup struct {
 }
 
 type AwsCognitoUserGroupSpec struct {
+	Description string `json:"description"`
+	Name        string `json:"name"`
 	Precedence  int    `json:"precedence"`
 	RoleArn     string `json:"role_arn"`
 	UserPoolId  string `json:"user_pool_id"`
-	Description string `json:"description"`
-	Name        string `json:"name"`
 }
 
+
+
 type AwsCognitoUserGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

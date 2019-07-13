@@ -19,10 +19,10 @@ type AwsDaxCluster struct {
 }
 
 type AwsDaxClusterSpecNodes struct {
+	Port             int    `json:"port"`
 	AvailabilityZone string `json:"availability_zone"`
 	Id               string `json:"id"`
 	Address          string `json:"address"`
-	Port             int    `json:"port"`
 }
 
 type AwsDaxClusterSpecServerSideEncryption struct {
@@ -30,27 +30,33 @@ type AwsDaxClusterSpecServerSideEncryption struct {
 }
 
 type AwsDaxClusterSpec struct {
-	Port                  int                 `json:"port"`
 	Nodes                 []AwsDaxClusterSpec `json:"nodes"`
+	ClusterName           string              `json:"cluster_name"`
 	IamRoleArn            string              `json:"iam_role_arn"`
+	ReplicationFactor     int                 `json:"replication_factor"`
+	NotificationTopicArn  string              `json:"notification_topic_arn"`
+	MaintenanceWindow     string              `json:"maintenance_window"`
 	SubnetGroupName       string              `json:"subnet_group_name"`
 	ConfigurationEndpoint string              `json:"configuration_endpoint"`
-	ReplicationFactor     int                 `json:"replication_factor"`
 	AvailabilityZones     []string            `json:"availability_zones"`
-	Description           string              `json:"description"`
+	ParameterGroupName    string              `json:"parameter_group_name"`
 	SecurityGroupIds      []string            `json:"security_group_ids"`
-	ServerSideEncryption  []AwsDaxClusterSpec `json:"server_side_encryption"`
-	MaintenanceWindow     string              `json:"maintenance_window"`
-	Tags                  map[string]string   `json:"tags"`
 	ClusterAddress        string              `json:"cluster_address"`
 	Arn                   string              `json:"arn"`
-	ClusterName           string              `json:"cluster_name"`
+	Description           string              `json:"description"`
+	Tags                  map[string]string   `json:"tags"`
+	Port                  int                 `json:"port"`
 	NodeType              string              `json:"node_type"`
-	NotificationTopicArn  string              `json:"notification_topic_arn"`
-	ParameterGroupName    string              `json:"parameter_group_name"`
+	ServerSideEncryption  []AwsDaxClusterSpec `json:"server_side_encryption"`
 }
 
+
+
 type AwsDaxClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

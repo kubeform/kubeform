@@ -19,20 +19,26 @@ type AwsOrganizationsOrganizationalUnit struct {
 }
 
 type AwsOrganizationsOrganizationalUnitSpecAccounts struct {
-	Arn   string `json:"arn"`
-	Email string `json:"email"`
 	Id    string `json:"id"`
 	Name  string `json:"name"`
+	Arn   string `json:"arn"`
+	Email string `json:"email"`
 }
 
 type AwsOrganizationsOrganizationalUnitSpec struct {
-	Accounts []AwsOrganizationsOrganizationalUnitSpec `json:"accounts"`
-	Arn      string                                   `json:"arn"`
 	Name     string                                   `json:"name"`
 	ParentId string                                   `json:"parent_id"`
+	Accounts []AwsOrganizationsOrganizationalUnitSpec `json:"accounts"`
+	Arn      string                                   `json:"arn"`
 }
 
+
+
 type AwsOrganizationsOrganizationalUnitStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

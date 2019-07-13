@@ -19,23 +19,29 @@ type AzurermSchedulerJobCollection struct {
 }
 
 type AzurermSchedulerJobCollectionSpecQuota struct {
+	MaxJobCount            int    `json:"max_job_count"`
 	MaxRecurrenceFrequency string `json:"max_recurrence_frequency"`
 	MaxRetryInterval       int    `json:"max_retry_interval"`
 	MaxRecurrenceInterval  int    `json:"max_recurrence_interval"`
-	MaxJobCount            int    `json:"max_job_count"`
 }
 
 type AzurermSchedulerJobCollectionSpec struct {
+	Tags              map[string]string                   `json:"tags"`
+	Sku               string                              `json:"sku"`
 	State             string                              `json:"state"`
 	Quota             []AzurermSchedulerJobCollectionSpec `json:"quota"`
 	Name              string                              `json:"name"`
 	Location          string                              `json:"location"`
 	ResourceGroupName string                              `json:"resource_group_name"`
-	Tags              map[string]string                   `json:"tags"`
-	Sku               string                              `json:"sku"`
 }
 
+
+
 type AzurermSchedulerJobCollectionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

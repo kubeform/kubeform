@@ -19,20 +19,26 @@ type AzurermServicebusTopicAuthorizationRule struct {
 }
 
 type AzurermServicebusTopicAuthorizationRuleSpec struct {
+	TopicName                 string `json:"topic_name"`
 	Listen                    bool   `json:"listen"`
 	Send                      bool   `json:"send"`
 	Manage                    bool   `json:"manage"`
+	PrimaryKey                string `json:"primary_key"`
 	Name                      string `json:"name"`
 	NamespaceName             string `json:"namespace_name"`
-	TopicName                 string `json:"topic_name"`
+	ResourceGroupName         string `json:"resource_group_name"`
+	PrimaryConnectionString   string `json:"primary_connection_string"`
 	SecondaryKey              string `json:"secondary_key"`
 	SecondaryConnectionString string `json:"secondary_connection_string"`
-	PrimaryConnectionString   string `json:"primary_connection_string"`
-	ResourceGroupName         string `json:"resource_group_name"`
-	PrimaryKey                string `json:"primary_key"`
 }
 
+
+
 type AzurermServicebusTopicAuthorizationRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,14 +19,20 @@ type AzurermExpressRouteCircuitAuthorization struct {
 }
 
 type AzurermExpressRouteCircuitAuthorizationSpec struct {
-	Name                    string `json:"name"`
 	ResourceGroupName       string `json:"resource_group_name"`
 	ExpressRouteCircuitName string `json:"express_route_circuit_name"`
 	AuthorizationKey        string `json:"authorization_key"`
 	AuthorizationUseStatus  string `json:"authorization_use_status"`
+	Name                    string `json:"name"`
 }
 
+
+
 type AzurermExpressRouteCircuitAuthorizationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

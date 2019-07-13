@@ -19,19 +19,25 @@ type GoogleDataflowJob struct {
 }
 
 type GoogleDataflowJobSpec struct {
-	TemplateGcsPath string            `json:"template_gcs_path"`
 	Zone            string            `json:"zone"`
 	Region          string            `json:"region"`
-	Project         string            `json:"project"`
-	Name            string            `json:"name"`
-	TempGcsLocation string            `json:"temp_gcs_location"`
 	MaxWorkers      int               `json:"max_workers"`
-	Parameters      map[string]string `json:"parameters"`
 	OnDelete        string            `json:"on_delete"`
 	State           string            `json:"state"`
+	Name            string            `json:"name"`
+	TempGcsLocation string            `json:"temp_gcs_location"`
+	Parameters      map[string]string `json:"parameters"`
+	Project         string            `json:"project"`
+	TemplateGcsPath string            `json:"template_gcs_path"`
 }
 
+
+
 type GoogleDataflowJobStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -18,32 +18,38 @@ type GoogleFilestoreInstance struct {
 	Status            GoogleFilestoreInstanceStatus `json:"status,omitempty"`
 }
 
-type GoogleFilestoreInstanceSpecFileShares struct {
-	CapacityGb int    `json:"capacity_gb"`
-	Name       string `json:"name"`
-}
-
 type GoogleFilestoreInstanceSpecNetworks struct {
-	ReservedIpRange string   `json:"reserved_ip_range"`
-	IpAddresses     []string `json:"ip_addresses"`
 	Modes           []string `json:"modes"`
 	Network         string   `json:"network"`
+	ReservedIpRange string   `json:"reserved_ip_range"`
+	IpAddresses     []string `json:"ip_addresses"`
+}
+
+type GoogleFilestoreInstanceSpecFileShares struct {
+	Name       string `json:"name"`
+	CapacityGb int    `json:"capacity_gb"`
 }
 
 type GoogleFilestoreInstanceSpec struct {
-	FileShares  []GoogleFilestoreInstanceSpec `json:"file_shares"`
-	Name        string                        `json:"name"`
 	Networks    []GoogleFilestoreInstanceSpec `json:"networks"`
-	Description string                        `json:"description"`
-	Project     string                        `json:"project"`
 	Tier        string                        `json:"tier"`
-	Zone        string                        `json:"zone"`
 	Labels      map[string]string             `json:"labels"`
 	CreateTime  string                        `json:"create_time"`
+	Project     string                        `json:"project"`
+	Name        string                        `json:"name"`
+	Zone        string                        `json:"zone"`
+	Description string                        `json:"description"`
 	Etag        string                        `json:"etag"`
+	FileShares  []GoogleFilestoreInstanceSpec `json:"file_shares"`
 }
 
+
+
 type GoogleFilestoreInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

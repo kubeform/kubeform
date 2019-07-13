@@ -18,19 +18,15 @@ type AwsGlueCrawler struct {
 	Status            AwsGlueCrawlerStatus `json:"status,omitempty"`
 }
 
-type AwsGlueCrawlerSpecDynamodbTarget struct {
-	Path string `json:"path"`
-}
-
 type AwsGlueCrawlerSpecS3Target struct {
 	Path       string   `json:"path"`
 	Exclusions []string `json:"exclusions"`
 }
 
 type AwsGlueCrawlerSpecJdbcTarget struct {
+	Exclusions     []string `json:"exclusions"`
 	ConnectionName string   `json:"connection_name"`
 	Path           string   `json:"path"`
-	Exclusions     []string `json:"exclusions"`
 }
 
 type AwsGlueCrawlerSpecSchemaChangePolicy struct {
@@ -38,24 +34,34 @@ type AwsGlueCrawlerSpecSchemaChangePolicy struct {
 	UpdateBehavior string `json:"update_behavior"`
 }
 
-type AwsGlueCrawlerSpec struct {
-	Role                  string               `json:"role"`
-	Description           string               `json:"description"`
-	TablePrefix           string               `json:"table_prefix"`
-	DynamodbTarget        []AwsGlueCrawlerSpec `json:"dynamodb_target"`
-	SecurityConfiguration string               `json:"security_configuration"`
-	Classifiers           []string             `json:"classifiers"`
-	S3Target              []AwsGlueCrawlerSpec `json:"s3_target"`
-	JdbcTarget            []AwsGlueCrawlerSpec `json:"jdbc_target"`
-	Name                  string               `json:"name"`
-	Arn                   string               `json:"arn"`
-	DatabaseName          string               `json:"database_name"`
-	Schedule              string               `json:"schedule"`
-	SchemaChangePolicy    []AwsGlueCrawlerSpec `json:"schema_change_policy"`
-	Configuration         string               `json:"configuration"`
+type AwsGlueCrawlerSpecDynamodbTarget struct {
+	Path string `json:"path"`
 }
 
+type AwsGlueCrawlerSpec struct {
+	Classifiers           []string             `json:"classifiers"`
+	TablePrefix           string               `json:"table_prefix"`
+	S3Target              []AwsGlueCrawlerSpec `json:"s3_target"`
+	Name                  string               `json:"name"`
+	Description           string               `json:"description"`
+	DatabaseName          string               `json:"database_name"`
+	SecurityConfiguration string               `json:"security_configuration"`
+	Role                  string               `json:"role"`
+	JdbcTarget            []AwsGlueCrawlerSpec `json:"jdbc_target"`
+	SchemaChangePolicy    []AwsGlueCrawlerSpec `json:"schema_change_policy"`
+	DynamodbTarget        []AwsGlueCrawlerSpec `json:"dynamodb_target"`
+	Configuration         string               `json:"configuration"`
+	Arn                   string               `json:"arn"`
+	Schedule              string               `json:"schedule"`
+}
+
+
+
 type AwsGlueCrawlerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

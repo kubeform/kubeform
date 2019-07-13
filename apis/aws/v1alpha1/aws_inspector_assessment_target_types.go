@@ -24,7 +24,13 @@ type AwsInspectorAssessmentTargetSpec struct {
 	ResourceGroupArn string `json:"resource_group_arn"`
 }
 
+
+
 type AwsInspectorAssessmentTargetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

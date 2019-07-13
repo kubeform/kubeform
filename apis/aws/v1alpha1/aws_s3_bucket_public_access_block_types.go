@@ -19,14 +19,20 @@ type AwsS3BucketPublicAccessBlock struct {
 }
 
 type AwsS3BucketPublicAccessBlockSpec struct {
+	Bucket                string `json:"bucket"`
+	BlockPublicAcls       bool   `json:"block_public_acls"`
 	BlockPublicPolicy     bool   `json:"block_public_policy"`
 	IgnorePublicAcls      bool   `json:"ignore_public_acls"`
 	RestrictPublicBuckets bool   `json:"restrict_public_buckets"`
-	Bucket                string `json:"bucket"`
-	BlockPublicAcls       bool   `json:"block_public_acls"`
 }
 
+
+
 type AwsS3BucketPublicAccessBlockStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

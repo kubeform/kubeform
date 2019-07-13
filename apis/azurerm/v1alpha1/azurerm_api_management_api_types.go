@@ -36,24 +36,30 @@ type AzurermApiManagementApiSpecImport struct {
 
 type AzurermApiManagementApiSpec struct {
 	ApiManagementName             string                        `json:"api_management_name"`
-	Description                   string                        `json:"description"`
 	SubscriptionKeyParameterNames []AzurermApiManagementApiSpec `json:"subscription_key_parameter_names"`
 	IsCurrent                     bool                          `json:"is_current"`
-	Version                       string                        `json:"version"`
 	VersionSetId                  string                        `json:"version_set_id"`
-	Name                          string                        `json:"name"`
 	DisplayName                   string                        `json:"display_name"`
-	Revision                      string                        `json:"revision"`
-	SoapPassThrough               bool                          `json:"soap_pass_through"`
-	ResourceGroupName             string                        `json:"resource_group_name"`
-	Protocols                     []string                      `json:"protocols"`
+	Description                   string                        `json:"description"`
 	Import                        []AzurermApiManagementApiSpec `json:"import"`
 	ServiceUrl                    string                        `json:"service_url"`
 	IsOnline                      bool                          `json:"is_online"`
+	Version                       string                        `json:"version"`
+	Name                          string                        `json:"name"`
 	Path                          string                        `json:"path"`
+	Protocols                     []string                      `json:"protocols"`
+	Revision                      string                        `json:"revision"`
+	ResourceGroupName             string                        `json:"resource_group_name"`
+	SoapPassThrough               bool                          `json:"soap_pass_through"`
 }
 
+
+
 type AzurermApiManagementApiStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

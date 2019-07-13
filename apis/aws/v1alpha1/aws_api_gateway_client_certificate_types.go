@@ -19,13 +19,19 @@ type AwsApiGatewayClientCertificate struct {
 }
 
 type AwsApiGatewayClientCertificateSpec struct {
-	PemEncodedCertificate string `json:"pem_encoded_certificate"`
 	Description           string `json:"description"`
 	CreatedDate           string `json:"created_date"`
 	ExpirationDate        string `json:"expiration_date"`
+	PemEncodedCertificate string `json:"pem_encoded_certificate"`
 }
 
+
+
 type AwsApiGatewayClientCertificateStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

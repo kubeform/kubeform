@@ -19,18 +19,24 @@ type AwsDxLag struct {
 }
 
 type AwsDxLagSpec struct {
-	NumberOfConnections  int               `json:"number_of_connections"`
+	Name                 string            `json:"name"`
+	ConnectionsBandwidth string            `json:"connections_bandwidth"`
+	Location             string            `json:"location"`
 	ForceDestroy         bool              `json:"force_destroy"`
 	JumboFrameCapable    bool              `json:"jumbo_frame_capable"`
-	ConnectionsBandwidth string            `json:"connections_bandwidth"`
-	Name                 string            `json:"name"`
-	Location             string            `json:"location"`
 	Tags                 map[string]string `json:"tags"`
-	HasLogicalRedundancy string            `json:"has_logical_redundancy"`
 	Arn                  string            `json:"arn"`
+	NumberOfConnections  int               `json:"number_of_connections"`
+	HasLogicalRedundancy string            `json:"has_logical_redundancy"`
 }
 
+
+
 type AwsDxLagStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

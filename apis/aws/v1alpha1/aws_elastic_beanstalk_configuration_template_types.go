@@ -19,22 +19,28 @@ type AwsElasticBeanstalkConfigurationTemplate struct {
 }
 
 type AwsElasticBeanstalkConfigurationTemplateSpecSetting struct {
+	Namespace string `json:"namespace"`
 	Name      string `json:"name"`
 	Value     string `json:"value"`
 	Resource  string `json:"resource"`
-	Namespace string `json:"namespace"`
 }
 
 type AwsElasticBeanstalkConfigurationTemplateSpec struct {
+	Name              string                                         `json:"name"`
 	Application       string                                         `json:"application"`
 	Description       string                                         `json:"description"`
 	EnvironmentId     string                                         `json:"environment_id"`
 	Setting           []AwsElasticBeanstalkConfigurationTemplateSpec `json:"setting"`
 	SolutionStackName string                                         `json:"solution_stack_name"`
-	Name              string                                         `json:"name"`
 }
 
+
+
 type AwsElasticBeanstalkConfigurationTemplateStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

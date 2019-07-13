@@ -18,8 +18,36 @@ type AwsElastictranscoderPreset struct {
 	Status            AwsElastictranscoderPresetStatus `json:"status,omitempty"`
 }
 
+type AwsElastictranscoderPresetSpecVideo struct {
+	KeyframesMaxDist   string `json:"keyframes_max_dist"`
+	MaxFrameRate       string `json:"max_frame_rate"`
+	MaxHeight          string `json:"max_height"`
+	AspectRatio        string `json:"aspect_ratio"`
+	BitRate            string `json:"bit_rate"`
+	Codec              string `json:"codec"`
+	DisplayAspectRatio string `json:"display_aspect_ratio"`
+	FrameRate          string `json:"frame_rate"`
+	MaxWidth           string `json:"max_width"`
+	PaddingPolicy      string `json:"padding_policy"`
+	FixedGop           string `json:"fixed_gop"`
+	Resolution         string `json:"resolution"`
+	SizingPolicy       string `json:"sizing_policy"`
+}
+
+type AwsElastictranscoderPresetSpecVideoWatermarks struct {
+	Target           string `json:"target"`
+	VerticalAlign    string `json:"vertical_align"`
+	HorizontalOffset string `json:"horizontal_offset"`
+	MaxHeight        string `json:"max_height"`
+	SizingPolicy     string `json:"sizing_policy"`
+	Opacity          string `json:"opacity"`
+	VerticalOffset   string `json:"vertical_offset"`
+	HorizontalAlign  string `json:"horizontal_align"`
+	Id               string `json:"id"`
+	MaxWidth         string `json:"max_width"`
+}
+
 type AwsElastictranscoderPresetSpecThumbnails struct {
-	Format        string `json:"format"`
 	Interval      string `json:"interval"`
 	MaxHeight     string `json:"max_height"`
 	MaxWidth      string `json:"max_width"`
@@ -27,67 +55,45 @@ type AwsElastictranscoderPresetSpecThumbnails struct {
 	Resolution    string `json:"resolution"`
 	SizingPolicy  string `json:"sizing_policy"`
 	AspectRatio   string `json:"aspect_ratio"`
-}
-
-type AwsElastictranscoderPresetSpecVideoWatermarks struct {
-	VerticalOffset   string `json:"vertical_offset"`
-	SizingPolicy     string `json:"sizing_policy"`
-	Target           string `json:"target"`
-	HorizontalAlign  string `json:"horizontal_align"`
-	HorizontalOffset string `json:"horizontal_offset"`
-	Id               string `json:"id"`
-	MaxHeight        string `json:"max_height"`
-	MaxWidth         string `json:"max_width"`
-	Opacity          string `json:"opacity"`
-	VerticalAlign    string `json:"vertical_align"`
+	Format        string `json:"format"`
 }
 
 type AwsElastictranscoderPresetSpecAudio struct {
-	SampleRate       string `json:"sample_rate"`
 	AudioPackingMode string `json:"audio_packing_mode"`
 	BitRate          string `json:"bit_rate"`
 	Channels         string `json:"channels"`
 	Codec            string `json:"codec"`
+	SampleRate       string `json:"sample_rate"`
 }
 
 type AwsElastictranscoderPresetSpecAudioCodecOptions struct {
-	BitOrder string `json:"bit_order"`
 	Profile  string `json:"profile"`
 	Signed   string `json:"signed"`
 	BitDepth string `json:"bit_depth"`
-}
-
-type AwsElastictranscoderPresetSpecVideo struct {
-	MaxHeight          string `json:"max_height"`
-	MaxWidth           string `json:"max_width"`
-	BitRate            string `json:"bit_rate"`
-	Codec              string `json:"codec"`
-	FixedGop           string `json:"fixed_gop"`
-	FrameRate          string `json:"frame_rate"`
-	PaddingPolicy      string `json:"padding_policy"`
-	Resolution         string `json:"resolution"`
-	SizingPolicy       string `json:"sizing_policy"`
-	AspectRatio        string `json:"aspect_ratio"`
-	DisplayAspectRatio string `json:"display_aspect_ratio"`
-	KeyframesMaxDist   string `json:"keyframes_max_dist"`
-	MaxFrameRate       string `json:"max_frame_rate"`
+	BitOrder string `json:"bit_order"`
 }
 
 type AwsElastictranscoderPresetSpec struct {
-	Arn               string                           `json:"arn"`
-	Name              string                           `json:"name"`
-	Thumbnails        []AwsElastictranscoderPresetSpec `json:"thumbnails"`
+	Video             []AwsElastictranscoderPresetSpec `json:"video"`
 	VideoWatermarks   []AwsElastictranscoderPresetSpec `json:"video_watermarks"`
 	VideoCodecOptions map[string]string                `json:"video_codec_options"`
+	Container         string                           `json:"container"`
+	Thumbnails        []AwsElastictranscoderPresetSpec `json:"thumbnails"`
+	Type              string                           `json:"type"`
+	Description       string                           `json:"description"`
+	Name              string                           `json:"name"`
+	Arn               string                           `json:"arn"`
 	Audio             []AwsElastictranscoderPresetSpec `json:"audio"`
 	AudioCodecOptions []AwsElastictranscoderPresetSpec `json:"audio_codec_options"`
-	Container         string                           `json:"container"`
-	Description       string                           `json:"description"`
-	Type              string                           `json:"type"`
-	Video             []AwsElastictranscoderPresetSpec `json:"video"`
 }
 
+
+
 type AwsElastictranscoderPresetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

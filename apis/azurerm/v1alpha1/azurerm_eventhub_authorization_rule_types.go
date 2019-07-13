@@ -19,21 +19,27 @@ type AzurermEventhubAuthorizationRule struct {
 }
 
 type AzurermEventhubAuthorizationRuleSpec struct {
-	EventhubName              string `json:"eventhub_name"`
-	Name                      string `json:"name"`
-	SecondaryKey              string `json:"secondary_key"`
-	SecondaryConnectionString string `json:"secondary_connection_string"`
-	PrimaryKey                string `json:"primary_key"`
-	NamespaceName             string `json:"namespace_name"`
-	Location                  string `json:"location"`
 	Listen                    bool   `json:"listen"`
 	Send                      bool   `json:"send"`
+	ResourceGroupName         string `json:"resource_group_name"`
+	PrimaryKey                string `json:"primary_key"`
+	SecondaryConnectionString string `json:"secondary_connection_string"`
+	NamespaceName             string `json:"namespace_name"`
 	Manage                    bool   `json:"manage"`
 	PrimaryConnectionString   string `json:"primary_connection_string"`
-	ResourceGroupName         string `json:"resource_group_name"`
+	SecondaryKey              string `json:"secondary_key"`
+	EventhubName              string `json:"eventhub_name"`
+	Location                  string `json:"location"`
+	Name                      string `json:"name"`
 }
 
+
+
 type AzurermEventhubAuthorizationRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

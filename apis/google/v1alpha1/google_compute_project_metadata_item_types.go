@@ -19,12 +19,18 @@ type GoogleComputeProjectMetadataItem struct {
 }
 
 type GoogleComputeProjectMetadataItemSpec struct {
-	Key     string `json:"key"`
 	Value   string `json:"value"`
 	Project string `json:"project"`
+	Key     string `json:"key"`
 }
 
+
+
 type GoogleComputeProjectMetadataItemStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

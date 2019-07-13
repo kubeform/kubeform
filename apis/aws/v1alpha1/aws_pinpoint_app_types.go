@@ -19,33 +19,39 @@ type AwsPinpointApp struct {
 }
 
 type AwsPinpointAppSpecCampaignHook struct {
-	LambdaFunctionName string `json:"lambda_function_name"`
 	Mode               string `json:"mode"`
 	WebUrl             string `json:"web_url"`
+	LambdaFunctionName string `json:"lambda_function_name"`
 }
 
 type AwsPinpointAppSpecLimits struct {
+	Total             int `json:"total"`
 	Daily             int `json:"daily"`
 	MaximumDuration   int `json:"maximum_duration"`
 	MessagesPerSecond int `json:"messages_per_second"`
-	Total             int `json:"total"`
 }
 
 type AwsPinpointAppSpecQuietTime struct {
-	End   string `json:"end"`
 	Start string `json:"start"`
+	End   string `json:"end"`
 }
 
 type AwsPinpointAppSpec struct {
-	Name          string               `json:"name"`
-	NamePrefix    string               `json:"name_prefix"`
-	ApplicationId string               `json:"application_id"`
 	CampaignHook  []AwsPinpointAppSpec `json:"campaign_hook"`
 	Limits        []AwsPinpointAppSpec `json:"limits"`
 	QuietTime     []AwsPinpointAppSpec `json:"quiet_time"`
+	Name          string               `json:"name"`
+	NamePrefix    string               `json:"name_prefix"`
+	ApplicationId string               `json:"application_id"`
 }
 
+
+
 type AwsPinpointAppStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

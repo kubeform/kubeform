@@ -19,17 +19,17 @@ type AwsCognitoIdentityPoolRolesAttachment struct {
 }
 
 type AwsCognitoIdentityPoolRolesAttachmentSpecRoleMappingMappingRule struct {
-	Claim     string `json:"claim"`
 	MatchType string `json:"match_type"`
 	RoleArn   string `json:"role_arn"`
 	Value     string `json:"value"`
+	Claim     string `json:"claim"`
 }
 
 type AwsCognitoIdentityPoolRolesAttachmentSpecRoleMapping struct {
-	IdentityProvider        string                                                 `json:"identity_provider"`
 	AmbiguousRoleResolution string                                                 `json:"ambiguous_role_resolution"`
 	MappingRule             []AwsCognitoIdentityPoolRolesAttachmentSpecRoleMapping `json:"mapping_rule"`
 	Type                    string                                                 `json:"type"`
+	IdentityProvider        string                                                 `json:"identity_provider"`
 }
 
 type AwsCognitoIdentityPoolRolesAttachmentSpecRoles struct {
@@ -43,7 +43,13 @@ type AwsCognitoIdentityPoolRolesAttachmentSpec struct {
 	Roles          map[string]string                           `json:"roles"`
 }
 
+
+
 type AwsCognitoIdentityPoolRolesAttachmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

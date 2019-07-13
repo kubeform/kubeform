@@ -23,7 +23,13 @@ type AwsNetworkInterfaceSgAttachmentSpec struct {
 	NetworkInterfaceId string `json:"network_interface_id"`
 }
 
+
+
 type AwsNetworkInterfaceSgAttachmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

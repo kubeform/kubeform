@@ -19,19 +19,25 @@ type GoogleComputeTargetPool struct {
 }
 
 type GoogleComputeTargetPoolSpec struct {
-	FailoverRatio   float64  `json:"failover_ratio"`
-	SelfLink        string   `json:"self_link"`
-	BackupPool      string   `json:"backup_pool"`
+	Name            string   `json:"name"`
 	Description     string   `json:"description"`
+	FailoverRatio   float64  `json:"failover_ratio"`
 	HealthChecks    []string `json:"health_checks"`
 	Instances       []string `json:"instances"`
-	Project         string   `json:"project"`
 	Region          string   `json:"region"`
 	SessionAffinity string   `json:"session_affinity"`
-	Name            string   `json:"name"`
+	BackupPool      string   `json:"backup_pool"`
+	Project         string   `json:"project"`
+	SelfLink        string   `json:"self_link"`
 }
 
+
+
 type GoogleComputeTargetPoolStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,13 +19,19 @@ type GoogleOrganizationIamBinding struct {
 }
 
 type GoogleOrganizationIamBindingSpec struct {
+	Etag    string   `json:"etag"`
 	Role    string   `json:"role"`
 	Members []string `json:"members"`
-	Etag    string   `json:"etag"`
 	OrgId   string   `json:"org_id"`
 }
 
+
+
 type GoogleOrganizationIamBindingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

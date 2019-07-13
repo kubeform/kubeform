@@ -19,29 +19,35 @@ type AzurermServicebusSubscriptionRule struct {
 }
 
 type AzurermServicebusSubscriptionRuleSpecCorrelationFilter struct {
-	MessageId        string `json:"message_id"`
-	To               string `json:"to"`
-	ReplyTo          string `json:"reply_to"`
 	Label            string `json:"label"`
 	SessionId        string `json:"session_id"`
 	ReplyToSessionId string `json:"reply_to_session_id"`
 	ContentType      string `json:"content_type"`
 	CorrelationId    string `json:"correlation_id"`
+	MessageId        string `json:"message_id"`
+	To               string `json:"to"`
+	ReplyTo          string `json:"reply_to"`
 }
 
 type AzurermServicebusSubscriptionRuleSpec struct {
-	ResourceGroupName string                                  `json:"resource_group_name"`
-	Action            string                                  `json:"action"`
-	SqlFilter         string                                  `json:"sql_filter"`
-	CorrelationFilter []AzurermServicebusSubscriptionRuleSpec `json:"correlation_filter"`
 	Name              string                                  `json:"name"`
+	SubscriptionName  string                                  `json:"subscription_name"`
+	CorrelationFilter []AzurermServicebusSubscriptionRuleSpec `json:"correlation_filter"`
+	ResourceGroupName string                                  `json:"resource_group_name"`
 	NamespaceName     string                                  `json:"namespace_name"`
 	TopicName         string                                  `json:"topic_name"`
-	SubscriptionName  string                                  `json:"subscription_name"`
 	FilterType        string                                  `json:"filter_type"`
+	Action            string                                  `json:"action"`
+	SqlFilter         string                                  `json:"sql_filter"`
 }
 
+
+
 type AzurermServicebusSubscriptionRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

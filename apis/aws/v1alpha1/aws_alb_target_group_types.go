@@ -19,15 +19,15 @@ type AwsAlbTargetGroup struct {
 }
 
 type AwsAlbTargetGroupSpecHealthCheck struct {
-	HealthyThreshold   int    `json:"healthy_threshold"`
-	Matcher            string `json:"matcher"`
-	UnhealthyThreshold int    `json:"unhealthy_threshold"`
-	Enabled            bool   `json:"enabled"`
-	Interval           int    `json:"interval"`
 	Path               string `json:"path"`
 	Port               string `json:"port"`
 	Protocol           string `json:"protocol"`
+	HealthyThreshold   int    `json:"healthy_threshold"`
+	UnhealthyThreshold int    `json:"unhealthy_threshold"`
+	Enabled            bool   `json:"enabled"`
+	Interval           int    `json:"interval"`
 	Timeout            int    `json:"timeout"`
+	Matcher            string `json:"matcher"`
 }
 
 type AwsAlbTargetGroupSpecStickiness struct {
@@ -37,24 +37,30 @@ type AwsAlbTargetGroupSpecStickiness struct {
 }
 
 type AwsAlbTargetGroupSpec struct {
-	Port                           int                     `json:"port"`
 	Protocol                       string                  `json:"protocol"`
-	VpcId                          string                  `json:"vpc_id"`
-	ProxyProtocolV2                bool                    `json:"proxy_protocol_v2"`
-	HealthCheck                    []AwsAlbTargetGroupSpec `json:"health_check"`
-	Arn                            string                  `json:"arn"`
-	NamePrefix                     string                  `json:"name_prefix"`
-	SlowStart                      int                     `json:"slow_start"`
-	LambdaMultiValueHeadersEnabled bool                    `json:"lambda_multi_value_headers_enabled"`
-	Stickiness                     []AwsAlbTargetGroupSpec `json:"stickiness"`
-	ArnSuffix                      string                  `json:"arn_suffix"`
 	DeregistrationDelay            int                     `json:"deregistration_delay"`
-	TargetType                     string                  `json:"target_type"`
+	ProxyProtocolV2                bool                    `json:"proxy_protocol_v2"`
+	LambdaMultiValueHeadersEnabled bool                    `json:"lambda_multi_value_headers_enabled"`
+	HealthCheck                    []AwsAlbTargetGroupSpec `json:"health_check"`
+	ArnSuffix                      string                  `json:"arn_suffix"`
 	Name                           string                  `json:"name"`
+	NamePrefix                     string                  `json:"name_prefix"`
+	Port                           int                     `json:"port"`
+	VpcId                          string                  `json:"vpc_id"`
+	Arn                            string                  `json:"arn"`
+	TargetType                     string                  `json:"target_type"`
+	SlowStart                      int                     `json:"slow_start"`
+	Stickiness                     []AwsAlbTargetGroupSpec `json:"stickiness"`
 	Tags                           map[string]string       `json:"tags"`
 }
 
+
+
 type AwsAlbTargetGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

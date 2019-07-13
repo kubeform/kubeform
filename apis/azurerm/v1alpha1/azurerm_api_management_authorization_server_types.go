@@ -24,28 +24,34 @@ type AzurermApiManagementAuthorizationServerSpecTokenBodyParameter struct {
 }
 
 type AzurermApiManagementAuthorizationServerSpec struct {
-	Name                       string                                        `json:"name"`
+	DisplayName                string                                        `json:"display_name"`
+	ClientSecret               string                                        `json:"client_secret"`
+	ResourceOwnerUsername      string                                        `json:"resource_owner_username"`
+	ResourceOwnerPassword      string                                        `json:"resource_owner_password"`
+	ApiManagementName          string                                        `json:"api_management_name"`
 	ResourceGroupName          string                                        `json:"resource_group_name"`
 	AuthorizationMethods       []string                                      `json:"authorization_methods"`
 	ClientId                   string                                        `json:"client_id"`
+	ClientRegistrationEndpoint string                                        `json:"client_registration_endpoint"`
+	Description                string                                        `json:"description"`
 	SupportState               bool                                          `json:"support_state"`
+	TokenBodyParameter         []AzurermApiManagementAuthorizationServerSpec `json:"token_body_parameter"`
+	AuthorizationEndpoint      string                                        `json:"authorization_endpoint"`
+	ClientAuthenticationMethod []string                                      `json:"client_authentication_method"`
+	DefaultScope               string                                        `json:"default_scope"`
+	TokenEndpoint              string                                        `json:"token_endpoint"`
+	Name                       string                                        `json:"name"`
 	GrantTypes                 []string                                      `json:"grant_types"`
 	BearerTokenSendingMethods  []string                                      `json:"bearer_token_sending_methods"`
-	ClientAuthenticationMethod []string                                      `json:"client_authentication_method"`
-	Description                string                                        `json:"description"`
-	TokenBodyParameter         []AzurermApiManagementAuthorizationServerSpec `json:"token_body_parameter"`
-	TokenEndpoint              string                                        `json:"token_endpoint"`
-	AuthorizationEndpoint      string                                        `json:"authorization_endpoint"`
-	ClientRegistrationEndpoint string                                        `json:"client_registration_endpoint"`
-	DefaultScope               string                                        `json:"default_scope"`
-	ResourceOwnerUsername      string                                        `json:"resource_owner_username"`
-	ApiManagementName          string                                        `json:"api_management_name"`
-	DisplayName                string                                        `json:"display_name"`
-	ClientSecret               string                                        `json:"client_secret"`
-	ResourceOwnerPassword      string                                        `json:"resource_owner_password"`
 }
 
+
+
 type AzurermApiManagementAuthorizationServerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

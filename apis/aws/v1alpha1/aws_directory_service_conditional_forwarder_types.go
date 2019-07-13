@@ -19,12 +19,18 @@ type AwsDirectoryServiceConditionalForwarder struct {
 }
 
 type AwsDirectoryServiceConditionalForwarderSpec struct {
+	RemoteDomainName string   `json:"remote_domain_name"`
 	DirectoryId      string   `json:"directory_id"`
 	DnsIps           []string `json:"dns_ips"`
-	RemoteDomainName string   `json:"remote_domain_name"`
 }
 
+
+
 type AwsDirectoryServiceConditionalForwarderStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,21 +19,27 @@ type AzurermCosmosdbMongoCollection struct {
 }
 
 type AzurermCosmosdbMongoCollectionSpecIndexes struct {
-	Key    string `json:"key"`
 	Unique bool   `json:"unique"`
+	Key    string `json:"key"`
 }
 
 type AzurermCosmosdbMongoCollectionSpec struct {
-	DefaultTtlSeconds int                                  `json:"default_ttl_seconds"`
-	Indexes           []AzurermCosmosdbMongoCollectionSpec `json:"indexes"`
 	Name              string                               `json:"name"`
 	ResourceGroupName string                               `json:"resource_group_name"`
 	AccountName       string                               `json:"account_name"`
 	DatabaseName      string                               `json:"database_name"`
 	ShardKey          string                               `json:"shard_key"`
+	DefaultTtlSeconds int                                  `json:"default_ttl_seconds"`
+	Indexes           []AzurermCosmosdbMongoCollectionSpec `json:"indexes"`
 }
 
+
+
 type AzurermCosmosdbMongoCollectionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

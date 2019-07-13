@@ -18,14 +18,14 @@ type AwsOrganizationsOrganization struct {
 	Status            AwsOrganizationsOrganizationStatus `json:"status,omitempty"`
 }
 
-type AwsOrganizationsOrganizationSpecAccounts struct {
-	Name  string `json:"name"`
+type AwsOrganizationsOrganizationSpecNonMasterAccounts struct {
 	Arn   string `json:"arn"`
 	Email string `json:"email"`
 	Id    string `json:"id"`
+	Name  string `json:"name"`
 }
 
-type AwsOrganizationsOrganizationSpecNonMasterAccounts struct {
+type AwsOrganizationsOrganizationSpecAccounts struct {
 	Arn   string `json:"arn"`
 	Email string `json:"email"`
 	Id    string `json:"id"`
@@ -45,19 +45,25 @@ type AwsOrganizationsOrganizationSpecRoots struct {
 }
 
 type AwsOrganizationsOrganizationSpec struct {
-	Accounts                   []AwsOrganizationsOrganizationSpec `json:"accounts"`
+	Arn                        string                             `json:"arn"`
+	MasterAccountEmail         string                             `json:"master_account_email"`
+	AwsServiceAccessPrincipals []string                           `json:"aws_service_access_principals"`
 	NonMasterAccounts          []AwsOrganizationsOrganizationSpec `json:"non_master_accounts"`
+	MasterAccountArn           string                             `json:"master_account_arn"`
+	MasterAccountId            string                             `json:"master_account_id"`
+	Accounts                   []AwsOrganizationsOrganizationSpec `json:"accounts"`
 	Roots                      []AwsOrganizationsOrganizationSpec `json:"roots"`
 	EnabledPolicyTypes         []string                           `json:"enabled_policy_types"`
 	FeatureSet                 string                             `json:"feature_set"`
-	MasterAccountArn           string                             `json:"master_account_arn"`
-	AwsServiceAccessPrincipals []string                           `json:"aws_service_access_principals"`
-	MasterAccountId            string                             `json:"master_account_id"`
-	Arn                        string                             `json:"arn"`
-	MasterAccountEmail         string                             `json:"master_account_email"`
 }
 
+
+
 type AwsOrganizationsOrganizationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

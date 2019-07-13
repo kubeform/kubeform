@@ -24,18 +24,24 @@ type AzurermSharedImageVersionSpecTargetRegion struct {
 }
 
 type AzurermSharedImageVersionSpec struct {
-	Name              string                          `json:"name"`
+	TargetRegion      []AzurermSharedImageVersionSpec `json:"target_region"`
+	Location          string                          `json:"location"`
 	GalleryName       string                          `json:"gallery_name"`
 	ImageName         string                          `json:"image_name"`
-	TargetRegion      []AzurermSharedImageVersionSpec `json:"target_region"`
-	ExcludeFromLatest bool                            `json:"exclude_from_latest"`
-	Location          string                          `json:"location"`
 	ResourceGroupName string                          `json:"resource_group_name"`
 	ManagedImageId    string                          `json:"managed_image_id"`
+	ExcludeFromLatest bool                            `json:"exclude_from_latest"`
 	Tags              map[string]string               `json:"tags"`
+	Name              string                          `json:"name"`
 }
 
+
+
 type AzurermSharedImageVersionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

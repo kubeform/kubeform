@@ -24,22 +24,28 @@ type AzurermSignalrServiceSpecSku struct {
 }
 
 type AzurermSignalrServiceSpec struct {
-	ResourceGroupName         string                      `json:"resource_group_name"`
-	Sku                       []AzurermSignalrServiceSpec `json:"sku"`
-	Hostname                  string                      `json:"hostname"`
-	PublicPort                int                         `json:"public_port"`
-	SecondaryAccessKey        string                      `json:"secondary_access_key"`
-	Name                      string                      `json:"name"`
-	IpAddress                 string                      `json:"ip_address"`
 	ServerPort                int                         `json:"server_port"`
 	PrimaryAccessKey          string                      `json:"primary_access_key"`
 	PrimaryConnectionString   string                      `json:"primary_connection_string"`
+	SecondaryAccessKey        string                      `json:"secondary_access_key"`
 	SecondaryConnectionString string                      `json:"secondary_connection_string"`
+	Name                      string                      `json:"name"`
+	ResourceGroupName         string                      `json:"resource_group_name"`
+	Sku                       []AzurermSignalrServiceSpec `json:"sku"`
+	Hostname                  string                      `json:"hostname"`
+	IpAddress                 string                      `json:"ip_address"`
+	PublicPort                int                         `json:"public_port"`
 	Tags                      map[string]string           `json:"tags"`
 	Location                  string                      `json:"location"`
 }
 
+
+
 type AzurermSignalrServiceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

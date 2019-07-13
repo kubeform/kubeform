@@ -19,20 +19,26 @@ type AwsVpcEndpointService struct {
 }
 
 type AwsVpcEndpointServiceSpec struct {
-	AllowedPrincipals       []string          `json:"allowed_principals"`
-	ServiceType             string            `json:"service_type"`
-	State                   string            `json:"state"`
-	AcceptanceRequired      bool              `json:"acceptance_required"`
-	AvailabilityZones       []string          `json:"availability_zones"`
-	BaseEndpointDnsNames    []string          `json:"base_endpoint_dns_names"`
-	ManagesVpcEndpoints     bool              `json:"manages_vpc_endpoints"`
 	NetworkLoadBalancerArns []string          `json:"network_load_balancer_arns"`
 	PrivateDnsName          string            `json:"private_dns_name"`
 	ServiceName             string            `json:"service_name"`
+	State                   string            `json:"state"`
+	AcceptanceRequired      bool              `json:"acceptance_required"`
+	AllowedPrincipals       []string          `json:"allowed_principals"`
+	BaseEndpointDnsNames    []string          `json:"base_endpoint_dns_names"`
 	Tags                    map[string]string `json:"tags"`
+	AvailabilityZones       []string          `json:"availability_zones"`
+	ManagesVpcEndpoints     bool              `json:"manages_vpc_endpoints"`
+	ServiceType             string            `json:"service_type"`
 }
 
+
+
 type AwsVpcEndpointServiceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

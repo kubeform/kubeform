@@ -19,24 +19,30 @@ type AzurermLbRule struct {
 }
 
 type AzurermLbRuleSpec struct {
-	LoadDistribution            string `json:"load_distribution"`
-	Location                    string `json:"location"`
 	LoadbalancerId              string `json:"loadbalancer_id"`
-	DisableOutboundSnat         bool   `json:"disable_outbound_snat"`
-	FrontendIpConfigurationId   string `json:"frontend_ip_configuration_id"`
 	BackendAddressPoolId        string `json:"backend_address_pool_id"`
-	BackendPort                 int    `json:"backend_port"`
-	EnableFloatingIp            bool   `json:"enable_floating_ip"`
+	LoadDistribution            string `json:"load_distribution"`
 	IdleTimeoutInMinutes        int    `json:"idle_timeout_in_minutes"`
 	Name                        string `json:"name"`
 	ResourceGroupName           string `json:"resource_group_name"`
 	FrontendIpConfigurationName string `json:"frontend_ip_configuration_name"`
-	FrontendPort                int    `json:"frontend_port"`
 	Protocol                    string `json:"protocol"`
+	BackendPort                 int    `json:"backend_port"`
+	FrontendIpConfigurationId   string `json:"frontend_ip_configuration_id"`
 	ProbeId                     string `json:"probe_id"`
+	EnableFloatingIp            bool   `json:"enable_floating_ip"`
+	Location                    string `json:"location"`
+	FrontendPort                int    `json:"frontend_port"`
+	DisableOutboundSnat         bool   `json:"disable_outbound_snat"`
 }
 
+
+
 type AzurermLbRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

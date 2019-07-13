@@ -18,15 +18,17 @@ type AwsElastictranscoderPipeline struct {
 	Status            AwsElastictranscoderPipelineStatus `json:"status,omitempty"`
 }
 
-type AwsElastictranscoderPipelineSpecThumbnailConfigPermissions struct {
-	GranteeType string   `json:"grantee_type"`
-	Access      []string `json:"access"`
-	Grantee     string   `json:"grantee"`
+type AwsElastictranscoderPipelineSpecNotifications struct {
+	Completed   string `json:"completed"`
+	Error       string `json:"error"`
+	Progressing string `json:"progressing"`
+	Warning     string `json:"warning"`
 }
 
-type AwsElastictranscoderPipelineSpecContentConfig struct {
-	Bucket       string `json:"bucket"`
-	StorageClass string `json:"storage_class"`
+type AwsElastictranscoderPipelineSpecThumbnailConfigPermissions struct {
+	Access      []string `json:"access"`
+	Grantee     string   `json:"grantee"`
+	GranteeType string   `json:"grantee_type"`
 }
 
 type AwsElastictranscoderPipelineSpecContentConfigPermissions struct {
@@ -35,33 +37,37 @@ type AwsElastictranscoderPipelineSpecContentConfigPermissions struct {
 	GranteeType string   `json:"grantee_type"`
 }
 
-type AwsElastictranscoderPipelineSpecNotifications struct {
-	Completed   string `json:"completed"`
-	Error       string `json:"error"`
-	Progressing string `json:"progressing"`
-	Warning     string `json:"warning"`
-}
-
 type AwsElastictranscoderPipelineSpecThumbnailConfig struct {
 	Bucket       string `json:"bucket"`
 	StorageClass string `json:"storage_class"`
 }
 
-type AwsElastictranscoderPipelineSpec struct {
-	ThumbnailConfigPermissions []AwsElastictranscoderPipelineSpec `json:"thumbnail_config_permissions"`
-	AwsKmsKeyArn               string                             `json:"aws_kms_key_arn"`
-	ContentConfig              []AwsElastictranscoderPipelineSpec `json:"content_config"`
-	InputBucket                string                             `json:"input_bucket"`
-	Name                       string                             `json:"name"`
-	OutputBucket               string                             `json:"output_bucket"`
-	Arn                        string                             `json:"arn"`
-	ContentConfigPermissions   []AwsElastictranscoderPipelineSpec `json:"content_config_permissions"`
-	Notifications              []AwsElastictranscoderPipelineSpec `json:"notifications"`
-	Role                       string                             `json:"role"`
-	ThumbnailConfig            []AwsElastictranscoderPipelineSpec `json:"thumbnail_config"`
+type AwsElastictranscoderPipelineSpecContentConfig struct {
+	Bucket       string `json:"bucket"`
+	StorageClass string `json:"storage_class"`
 }
 
+type AwsElastictranscoderPipelineSpec struct {
+	Notifications              []AwsElastictranscoderPipelineSpec `json:"notifications"`
+	Role                       string                             `json:"role"`
+	ThumbnailConfigPermissions []AwsElastictranscoderPipelineSpec `json:"thumbnail_config_permissions"`
+	Arn                        string                             `json:"arn"`
+	ContentConfigPermissions   []AwsElastictranscoderPipelineSpec `json:"content_config_permissions"`
+	InputBucket                string                             `json:"input_bucket"`
+	OutputBucket               string                             `json:"output_bucket"`
+	ThumbnailConfig            []AwsElastictranscoderPipelineSpec `json:"thumbnail_config"`
+	AwsKmsKeyArn               string                             `json:"aws_kms_key_arn"`
+	ContentConfig              []AwsElastictranscoderPipelineSpec `json:"content_config"`
+	Name                       string                             `json:"name"`
+}
+
+
+
 type AwsElastictranscoderPipelineStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

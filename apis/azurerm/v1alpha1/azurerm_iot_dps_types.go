@@ -19,20 +19,26 @@ type AzurermIotDps struct {
 }
 
 type AzurermIotDpsSpecSku struct {
+	Name     string `json:"name"`
 	Tier     string `json:"tier"`
 	Capacity int    `json:"capacity"`
-	Name     string `json:"name"`
 }
 
 type AzurermIotDpsSpec struct {
+	Name              string              `json:"name"`
 	ResourceGroupName string              `json:"resource_group_name"`
 	Location          string              `json:"location"`
 	Sku               []AzurermIotDpsSpec `json:"sku"`
 	Tags              map[string]string   `json:"tags"`
-	Name              string              `json:"name"`
 }
 
+
+
 type AzurermIotDpsStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

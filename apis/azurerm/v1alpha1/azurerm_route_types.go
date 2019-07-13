@@ -19,15 +19,21 @@ type AzurermRoute struct {
 }
 
 type AzurermRouteSpec struct {
+	AddressPrefix      string `json:"address_prefix"`
 	NextHopType        string `json:"next_hop_type"`
 	NextHopInIpAddress string `json:"next_hop_in_ip_address"`
 	Name               string `json:"name"`
 	ResourceGroupName  string `json:"resource_group_name"`
 	RouteTableName     string `json:"route_table_name"`
-	AddressPrefix      string `json:"address_prefix"`
 }
 
+
+
 type AzurermRouteStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

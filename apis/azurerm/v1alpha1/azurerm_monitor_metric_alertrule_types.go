@@ -30,22 +30,28 @@ type AzurermMonitorMetricAlertruleSpecEmailAction struct {
 
 type AzurermMonitorMetricAlertruleSpec struct {
 	Description       string                              `json:"description"`
-	Enabled           bool                                `json:"enabled"`
-	MetricName        string                              `json:"metric_name"`
-	Threshold         float64                             `json:"threshold"`
 	Period            string                              `json:"period"`
+	MetricName        string                              `json:"metric_name"`
+	Operator          string                              `json:"operator"`
+	Threshold         float64                             `json:"threshold"`
+	Aggregation       string                              `json:"aggregation"`
+	WebhookAction     []AzurermMonitorMetricAlertruleSpec `json:"webhook_action"`
+	ResourceGroupName string                              `json:"resource_group_name"`
+	Enabled           bool                                `json:"enabled"`
+	EmailAction       []AzurermMonitorMetricAlertruleSpec `json:"email_action"`
+	Tags              map[string]string                   `json:"tags"`
 	Name              string                              `json:"name"`
 	Location          string                              `json:"location"`
-	Aggregation       string                              `json:"aggregation"`
-	ResourceGroupName string                              `json:"resource_group_name"`
-	WebhookAction     []AzurermMonitorMetricAlertruleSpec `json:"webhook_action"`
-	Tags              map[string]string                   `json:"tags"`
 	ResourceId        string                              `json:"resource_id"`
-	Operator          string                              `json:"operator"`
-	EmailAction       []AzurermMonitorMetricAlertruleSpec `json:"email_action"`
 }
 
+
+
 type AzurermMonitorMetricAlertruleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

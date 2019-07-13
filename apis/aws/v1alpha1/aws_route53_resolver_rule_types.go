@@ -24,18 +24,24 @@ type AwsRoute53ResolverRuleSpecTargetIp struct {
 }
 
 type AwsRoute53ResolverRuleSpec struct {
-	ShareStatus        string                       `json:"share_status"`
-	DomainName         string                       `json:"domain_name"`
-	RuleType           string                       `json:"rule_type"`
 	Name               string                       `json:"name"`
 	ResolverEndpointId string                       `json:"resolver_endpoint_id"`
-	Tags               map[string]string            `json:"tags"`
-	OwnerId            string                       `json:"owner_id"`
 	TargetIp           []AwsRoute53ResolverRuleSpec `json:"target_ip"`
 	Arn                string                       `json:"arn"`
+	DomainName         string                       `json:"domain_name"`
+	RuleType           string                       `json:"rule_type"`
+	Tags               map[string]string            `json:"tags"`
+	OwnerId            string                       `json:"owner_id"`
+	ShareStatus        string                       `json:"share_status"`
 }
 
+
+
 type AwsRoute53ResolverRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,34 +19,40 @@ type DigitaloceanDroplet struct {
 }
 
 type DigitaloceanDropletSpec struct {
-	Status             string   `json:"status"`
-	PrivateNetworking  bool     `json:"private_networking"`
-	Ipv4AddressPrivate string   `json:"ipv4_address_private"`
-	Tags               []string `json:"tags"`
+	PriceMonthly       float64  `json:"price_monthly"`
+	Ipv6AddressPrivate string   `json:"ipv6_address_private"`
+	Monitoring         bool     `json:"monitoring"`
+	Ipv4Address        string   `json:"ipv4_address"`
 	Name               string   `json:"name"`
+	Region             string   `json:"region"`
 	Size               string   `json:"size"`
 	Disk               int      `json:"disk"`
 	PriceHourly        float64  `json:"price_hourly"`
-	Monitoring         bool     `json:"monitoring"`
-	Region             string   `json:"region"`
+	Backups            bool     `json:"backups"`
+	PrivateNetworking  bool     `json:"private_networking"`
+	Image              string   `json:"image"`
+	Status             string   `json:"status"`
+	Locked             bool     `json:"locked"`
+	Ipv6               bool     `json:"ipv6"`
+	SshKeys            []string `json:"ssh_keys"`
+	VolumeIds          []string `json:"volume_ids"`
 	Urn                string   `json:"urn"`
 	Vcpus              int      `json:"vcpus"`
-	SshKeys            []string `json:"ssh_keys"`
-	Ipv6Address        string   `json:"ipv6_address"`
-	UserData           string   `json:"user_data"`
-	VolumeIds          []string `json:"volume_ids"`
-	Image              string   `json:"image"`
-	PriceMonthly       float64  `json:"price_monthly"`
-	ResizeDisk         bool     `json:"resize_disk"`
-	Ipv6               bool     `json:"ipv6"`
-	Ipv4Address        string   `json:"ipv4_address"`
 	Memory             int      `json:"memory"`
-	Locked             bool     `json:"locked"`
-	Backups            bool     `json:"backups"`
-	Ipv6AddressPrivate string   `json:"ipv6_address_private"`
+	ResizeDisk         bool     `json:"resize_disk"`
+	Ipv6Address        string   `json:"ipv6_address"`
+	Ipv4AddressPrivate string   `json:"ipv4_address_private"`
+	UserData           string   `json:"user_data"`
+	Tags               []string `json:"tags"`
 }
 
+
+
 type DigitaloceanDropletStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -23,18 +23,24 @@ type AwsAppsyncResolverSpecPipelineConfig struct {
 }
 
 type AwsAppsyncResolverSpec struct {
-	Type             string                   `json:"type"`
-	DataSource       string                   `json:"data_source"`
-	ResponseTemplate string                   `json:"response_template"`
-	ApiId            string                   `json:"api_id"`
 	Field            string                   `json:"field"`
+	DataSource       string                   `json:"data_source"`
 	RequestTemplate  string                   `json:"request_template"`
-	Kind             string                   `json:"kind"`
 	PipelineConfig   []AwsAppsyncResolverSpec `json:"pipeline_config"`
+	ApiId            string                   `json:"api_id"`
+	ResponseTemplate string                   `json:"response_template"`
+	Kind             string                   `json:"kind"`
 	Arn              string                   `json:"arn"`
+	Type             string                   `json:"type"`
 }
 
+
+
 type AwsAppsyncResolverStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

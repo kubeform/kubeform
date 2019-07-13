@@ -19,21 +19,27 @@ type AzurermDataFactoryLinkedServiceDataLakeStorageGen2 struct {
 }
 
 type AzurermDataFactoryLinkedServiceDataLakeStorageGen2Spec struct {
+	Parameters             map[string]string `json:"parameters"`
 	DataFactoryName        string            `json:"data_factory_name"`
-	ResourceGroupName      string            `json:"resource_group_name"`
 	Url                    string            `json:"url"`
-	ServicePrincipalKey    string            `json:"service_principal_key"`
 	Tenant                 string            `json:"tenant"`
+	Description            string            `json:"description"`
 	IntegrationRuntimeName string            `json:"integration_runtime_name"`
 	Annotations            []string          `json:"annotations"`
-	Name                   string            `json:"name"`
 	AdditionalProperties   map[string]string `json:"additional_properties"`
-	Description            string            `json:"description"`
-	Parameters             map[string]string `json:"parameters"`
+	Name                   string            `json:"name"`
+	ResourceGroupName      string            `json:"resource_group_name"`
 	ServicePrincipalId     string            `json:"service_principal_id"`
+	ServicePrincipalKey    string            `json:"service_principal_key"`
 }
 
+
+
 type AzurermDataFactoryLinkedServiceDataLakeStorageGen2Status struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

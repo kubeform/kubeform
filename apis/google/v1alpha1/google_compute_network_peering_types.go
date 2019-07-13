@@ -19,15 +19,21 @@ type GoogleComputeNetworkPeering struct {
 }
 
 type GoogleComputeNetworkPeeringSpec struct {
-	AutoCreateRoutes bool   `json:"auto_create_routes"`
 	State            string `json:"state"`
 	StateDetails     string `json:"state_details"`
 	Name             string `json:"name"`
 	Network          string `json:"network"`
 	PeerNetwork      string `json:"peer_network"`
+	AutoCreateRoutes bool   `json:"auto_create_routes"`
 }
 
+
+
 type GoogleComputeNetworkPeeringStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

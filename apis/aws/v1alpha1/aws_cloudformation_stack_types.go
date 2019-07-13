@@ -19,23 +19,29 @@ type AwsCloudformationStack struct {
 }
 
 type AwsCloudformationStackSpec struct {
-	TemplateUrl      string            `json:"template_url"`
-	DisableRollback  bool              `json:"disable_rollback"`
+	Capabilities     []string          `json:"capabilities"`
+	Outputs          map[string]string `json:"outputs"`
+	PolicyUrl        string            `json:"policy_url"`
 	Tags             map[string]string `json:"tags"`
 	TemplateBody     string            `json:"template_body"`
-	NotificationArns []string          `json:"notification_arns"`
-	OnFailure        string            `json:"on_failure"`
-	Parameters       map[string]string `json:"parameters"`
-	Outputs          map[string]string `json:"outputs"`
+	TemplateUrl      string            `json:"template_url"`
+	DisableRollback  bool              `json:"disable_rollback"`
+	PolicyBody       string            `json:"policy_body"`
 	TimeoutInMinutes int               `json:"timeout_in_minutes"`
 	Name             string            `json:"name"`
-	PolicyBody       string            `json:"policy_body"`
+	OnFailure        string            `json:"on_failure"`
 	IamRoleArn       string            `json:"iam_role_arn"`
-	Capabilities     []string          `json:"capabilities"`
-	PolicyUrl        string            `json:"policy_url"`
+	NotificationArns []string          `json:"notification_arns"`
+	Parameters       map[string]string `json:"parameters"`
 }
 
+
+
 type AwsCloudformationStackStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

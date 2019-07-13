@@ -37,26 +37,32 @@ type GoogleComputeUrlMapSpecPathMatcher struct {
 }
 
 type GoogleComputeUrlMapSpecTest struct {
-	Description string `json:"description"`
 	Host        string `json:"host"`
 	Path        string `json:"path"`
 	Service     string `json:"service"`
+	Description string `json:"description"`
 }
 
 type GoogleComputeUrlMapSpec struct {
-	Description    string                    `json:"description"`
-	HostRule       []GoogleComputeUrlMapSpec `json:"host_rule"`
-	Name           string                    `json:"name"`
+	DefaultService string                    `json:"default_service"`
 	Fingerprint    string                    `json:"fingerprint"`
-	MapId          string                    `json:"map_id"`
+	HostRule       []GoogleComputeUrlMapSpec `json:"host_rule"`
 	PathMatcher    []GoogleComputeUrlMapSpec `json:"path_matcher"`
-	Project        string                    `json:"project"`
 	SelfLink       string                    `json:"self_link"`
 	Test           []GoogleComputeUrlMapSpec `json:"test"`
-	DefaultService string                    `json:"default_service"`
+	Name           string                    `json:"name"`
+	Description    string                    `json:"description"`
+	MapId          string                    `json:"map_id"`
+	Project        string                    `json:"project"`
 }
 
+
+
 type GoogleComputeUrlMapStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

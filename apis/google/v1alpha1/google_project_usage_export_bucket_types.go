@@ -19,12 +19,18 @@ type GoogleProjectUsageExportBucket struct {
 }
 
 type GoogleProjectUsageExportBucketSpec struct {
+	Project    string `json:"project"`
 	BucketName string `json:"bucket_name"`
 	Prefix     string `json:"prefix"`
-	Project    string `json:"project"`
 }
 
+
+
 type GoogleProjectUsageExportBucketStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

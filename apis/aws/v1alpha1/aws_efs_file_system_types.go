@@ -19,19 +19,25 @@ type AwsEfsFileSystem struct {
 }
 
 type AwsEfsFileSystemSpec struct {
-	Arn                          string            `json:"arn"`
-	Encrypted                    bool              `json:"encrypted"`
-	ProvisionedThroughputInMibps float64           `json:"provisioned_throughput_in_mibps"`
-	ThroughputMode               string            `json:"throughput_mode"`
 	CreationToken                string            `json:"creation_token"`
 	ReferenceName                string            `json:"reference_name"`
-	PerformanceMode              string            `json:"performance_mode"`
 	KmsKeyId                     string            `json:"kms_key_id"`
 	DnsName                      string            `json:"dns_name"`
+	ProvisionedThroughputInMibps float64           `json:"provisioned_throughput_in_mibps"`
+	ThroughputMode               string            `json:"throughput_mode"`
+	Arn                          string            `json:"arn"`
+	PerformanceMode              string            `json:"performance_mode"`
+	Encrypted                    bool              `json:"encrypted"`
 	Tags                         map[string]string `json:"tags"`
 }
 
+
+
 type AwsEfsFileSystemStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

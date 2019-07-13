@@ -19,18 +19,24 @@ type GoogleMonitoringNotificationChannel struct {
 }
 
 type GoogleMonitoringNotificationChannelSpec struct {
-	Type               string            `json:"type"`
-	Enabled            bool              `json:"enabled"`
-	UserLabels         map[string]string `json:"user_labels"`
 	DisplayName        string            `json:"display_name"`
-	Description        string            `json:"description"`
 	Labels             map[string]string `json:"labels"`
 	Name               string            `json:"name"`
-	VerificationStatus string            `json:"verification_status"`
 	Project            string            `json:"project"`
+	Type               string            `json:"type"`
+	Description        string            `json:"description"`
+	Enabled            bool              `json:"enabled"`
+	UserLabels         map[string]string `json:"user_labels"`
+	VerificationStatus string            `json:"verification_status"`
 }
 
+
+
 type GoogleMonitoringNotificationChannelStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

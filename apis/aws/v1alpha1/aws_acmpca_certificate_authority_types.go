@@ -18,6 +18,28 @@ type AwsAcmpcaCertificateAuthority struct {
 	Status            AwsAcmpcaCertificateAuthorityStatus `json:"status,omitempty"`
 }
 
+type AwsAcmpcaCertificateAuthoritySpecCertificateAuthorityConfigurationSubject struct {
+	DistinguishedNameQualifier string `json:"distinguished_name_qualifier"`
+	GenerationQualifier        string `json:"generation_qualifier"`
+	Locality                   string `json:"locality"`
+	State                      string `json:"state"`
+	Surname                    string `json:"surname"`
+	CommonName                 string `json:"common_name"`
+	GivenName                  string `json:"given_name"`
+	Initials                   string `json:"initials"`
+	Organization               string `json:"organization"`
+	OrganizationalUnit         string `json:"organizational_unit"`
+	Pseudonym                  string `json:"pseudonym"`
+	Title                      string `json:"title"`
+	Country                    string `json:"country"`
+}
+
+type AwsAcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration struct {
+	Subject          []AwsAcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration `json:"subject"`
+	KeyAlgorithm     string                                                               `json:"key_algorithm"`
+	SigningAlgorithm string                                                               `json:"signing_algorithm"`
+}
+
 type AwsAcmpcaCertificateAuthoritySpecRevocationConfigurationCrlConfiguration struct {
 	CustomCname      string `json:"custom_cname"`
 	Enabled          bool   `json:"enabled"`
@@ -29,46 +51,30 @@ type AwsAcmpcaCertificateAuthoritySpecRevocationConfiguration struct {
 	CrlConfiguration []AwsAcmpcaCertificateAuthoritySpecRevocationConfiguration `json:"crl_configuration"`
 }
 
-type AwsAcmpcaCertificateAuthoritySpecCertificateAuthorityConfigurationSubject struct {
-	Country                    string `json:"country"`
-	DistinguishedNameQualifier string `json:"distinguished_name_qualifier"`
-	OrganizationalUnit         string `json:"organizational_unit"`
-	Surname                    string `json:"surname"`
-	CommonName                 string `json:"common_name"`
-	GivenName                  string `json:"given_name"`
-	Initials                   string `json:"initials"`
-	Locality                   string `json:"locality"`
-	Organization               string `json:"organization"`
-	Pseudonym                  string `json:"pseudonym"`
-	State                      string `json:"state"`
-	Title                      string `json:"title"`
-	GenerationQualifier        string `json:"generation_qualifier"`
-}
-
-type AwsAcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration struct {
-	Subject          []AwsAcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration `json:"subject"`
-	KeyAlgorithm     string                                                               `json:"key_algorithm"`
-	SigningAlgorithm string                                                               `json:"signing_algorithm"`
-}
-
 type AwsAcmpcaCertificateAuthoritySpec struct {
+	CertificateAuthorityConfiguration []AwsAcmpcaCertificateAuthoritySpec `json:"certificate_authority_configuration"`
+	Enabled                           bool                                `json:"enabled"`
+	NotAfter                          string                              `json:"not_after"`
+	Serial                            string                              `json:"serial"`
+	CertificateChain                  string                              `json:"certificate_chain"`
+	Status                            string                              `json:"status"`
+	PermanentDeletionTimeInDays       int                                 `json:"permanent_deletion_time_in_days"`
+	Tags                              map[string]string                   `json:"tags"`
 	Arn                               string                              `json:"arn"`
 	Certificate                       string                              `json:"certificate"`
+	CertificateSigningRequest         string                              `json:"certificate_signing_request"`
 	NotBefore                         string                              `json:"not_before"`
 	RevocationConfiguration           []AwsAcmpcaCertificateAuthoritySpec `json:"revocation_configuration"`
-	Serial                            string                              `json:"serial"`
-	Tags                              map[string]string                   `json:"tags"`
-	PermanentDeletionTimeInDays       int                                 `json:"permanent_deletion_time_in_days"`
 	Type                              string                              `json:"type"`
-	Enabled                           bool                                `json:"enabled"`
-	Status                            string                              `json:"status"`
-	CertificateAuthorityConfiguration []AwsAcmpcaCertificateAuthoritySpec `json:"certificate_authority_configuration"`
-	CertificateChain                  string                              `json:"certificate_chain"`
-	CertificateSigningRequest         string                              `json:"certificate_signing_request"`
-	NotAfter                          string                              `json:"not_after"`
 }
 
+
+
 type AwsAcmpcaCertificateAuthorityStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

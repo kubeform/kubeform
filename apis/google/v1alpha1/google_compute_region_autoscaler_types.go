@@ -42,17 +42,23 @@ type GoogleComputeRegionAutoscalerSpecAutoscalingPolicy struct {
 }
 
 type GoogleComputeRegionAutoscalerSpec struct {
-	SelfLink          string                              `json:"self_link"`
-	AutoscalingPolicy []GoogleComputeRegionAutoscalerSpec `json:"autoscaling_policy"`
-	Name              string                              `json:"name"`
-	Target            string                              `json:"target"`
 	Description       string                              `json:"description"`
 	Region            string                              `json:"region"`
 	CreationTimestamp string                              `json:"creation_timestamp"`
 	Project           string                              `json:"project"`
+	SelfLink          string                              `json:"self_link"`
+	AutoscalingPolicy []GoogleComputeRegionAutoscalerSpec `json:"autoscaling_policy"`
+	Name              string                              `json:"name"`
+	Target            string                              `json:"target"`
 }
 
+
+
 type GoogleComputeRegionAutoscalerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,15 +19,21 @@ type AwsNatGateway struct {
 }
 
 type AwsNatGatewaySpec struct {
+	PublicIp           string            `json:"public_ip"`
+	Tags               map[string]string `json:"tags"`
 	AllocationId       string            `json:"allocation_id"`
 	SubnetId           string            `json:"subnet_id"`
 	NetworkInterfaceId string            `json:"network_interface_id"`
 	PrivateIp          string            `json:"private_ip"`
-	PublicIp           string            `json:"public_ip"`
-	Tags               map[string]string `json:"tags"`
 }
 
+
+
 type AwsNatGatewayStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

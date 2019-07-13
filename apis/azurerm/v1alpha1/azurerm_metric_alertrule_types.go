@@ -18,34 +18,40 @@ type AzurermMetricAlertrule struct {
 	Status            AzurermMetricAlertruleStatus `json:"status,omitempty"`
 }
 
-type AzurermMetricAlertruleSpecWebhookAction struct {
-	ServiceUri string            `json:"service_uri"`
-	Properties map[string]string `json:"properties"`
-}
-
 type AzurermMetricAlertruleSpecEmailAction struct {
 	SendToServiceOwners bool     `json:"send_to_service_owners"`
 	CustomEmails        []string `json:"custom_emails"`
 }
 
-type AzurermMetricAlertruleSpec struct {
-	WebhookAction     []AzurermMetricAlertruleSpec `json:"webhook_action"`
-	Operator          string                       `json:"operator"`
-	EmailAction       []AzurermMetricAlertruleSpec `json:"email_action"`
-	MetricName        string                       `json:"metric_name"`
-	Aggregation       string                       `json:"aggregation"`
-	Description       string                       `json:"description"`
-	ResourceId        string                       `json:"resource_id"`
-	Threshold         float64                      `json:"threshold"`
-	ResourceGroupName string                       `json:"resource_group_name"`
-	Enabled           bool                         `json:"enabled"`
-	Period            string                       `json:"period"`
-	Tags              map[string]string            `json:"tags"`
-	Name              string                       `json:"name"`
-	Location          string                       `json:"location"`
+type AzurermMetricAlertruleSpecWebhookAction struct {
+	ServiceUri string            `json:"service_uri"`
+	Properties map[string]string `json:"properties"`
 }
 
+type AzurermMetricAlertruleSpec struct {
+	Description       string                       `json:"description"`
+	ResourceId        string                       `json:"resource_id"`
+	MetricName        string                       `json:"metric_name"`
+	Location          string                       `json:"location"`
+	Period            string                       `json:"period"`
+	Aggregation       string                       `json:"aggregation"`
+	EmailAction       []AzurermMetricAlertruleSpec `json:"email_action"`
+	WebhookAction     []AzurermMetricAlertruleSpec `json:"webhook_action"`
+	Enabled           bool                         `json:"enabled"`
+	Tags              map[string]string            `json:"tags"`
+	Name              string                       `json:"name"`
+	ResourceGroupName string                       `json:"resource_group_name"`
+	Operator          string                       `json:"operator"`
+	Threshold         float64                      `json:"threshold"`
+}
+
+
+
 type AzurermMetricAlertruleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

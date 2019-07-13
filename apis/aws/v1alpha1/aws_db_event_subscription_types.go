@@ -19,19 +19,25 @@ type AwsDbEventSubscription struct {
 }
 
 type AwsDbEventSubscriptionSpec struct {
+	Tags            map[string]string `json:"tags"`
+	Name            string            `json:"name"`
 	NamePrefix      string            `json:"name_prefix"`
-	EventCategories []string          `json:"event_categories"`
+	SnsTopic        string            `json:"sns_topic"`
 	SourceIds       []string          `json:"source_ids"`
 	SourceType      string            `json:"source_type"`
 	Enabled         bool              `json:"enabled"`
-	CustomerAwsId   string            `json:"customer_aws_id"`
 	Arn             string            `json:"arn"`
-	Name            string            `json:"name"`
-	SnsTopic        string            `json:"sns_topic"`
-	Tags            map[string]string `json:"tags"`
+	EventCategories []string          `json:"event_categories"`
+	CustomerAwsId   string            `json:"customer_aws_id"`
 }
 
+
+
 type AwsDbEventSubscriptionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

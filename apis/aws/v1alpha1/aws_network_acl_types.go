@@ -18,41 +18,47 @@ type AwsNetworkAcl struct {
 	Status            AwsNetworkAclStatus `json:"status,omitempty"`
 }
 
-type AwsNetworkAclSpecEgress struct {
-	Ipv6CidrBlock string `json:"ipv6_cidr_block"`
+type AwsNetworkAclSpecIngress struct {
 	IcmpCode      int    `json:"icmp_code"`
 	FromPort      int    `json:"from_port"`
-	ToPort        int    `json:"to_port"`
 	RuleNo        int    `json:"rule_no"`
 	Action        string `json:"action"`
-	CidrBlock     string `json:"cidr_block"`
 	Protocol      string `json:"protocol"`
+	Ipv6CidrBlock string `json:"ipv6_cidr_block"`
 	IcmpType      int    `json:"icmp_type"`
+	ToPort        int    `json:"to_port"`
+	CidrBlock     string `json:"cidr_block"`
 }
 
-type AwsNetworkAclSpecIngress struct {
+type AwsNetworkAclSpecEgress struct {
+	Protocol      string `json:"protocol"`
+	IcmpType      int    `json:"icmp_type"`
+	IcmpCode      int    `json:"icmp_code"`
 	FromPort      int    `json:"from_port"`
 	ToPort        int    `json:"to_port"`
+	CidrBlock     string `json:"cidr_block"`
 	Ipv6CidrBlock string `json:"ipv6_cidr_block"`
-	IcmpType      int    `json:"icmp_type"`
 	RuleNo        int    `json:"rule_no"`
 	Action        string `json:"action"`
-	Protocol      string `json:"protocol"`
-	CidrBlock     string `json:"cidr_block"`
-	IcmpCode      int    `json:"icmp_code"`
 }
 
 type AwsNetworkAclSpec struct {
-	Egress    []AwsNetworkAclSpec `json:"egress"`
-	Tags      map[string]string   `json:"tags"`
 	OwnerId   string              `json:"owner_id"`
 	VpcId     string              `json:"vpc_id"`
 	SubnetId  string              `json:"subnet_id"`
 	SubnetIds []string            `json:"subnet_ids"`
 	Ingress   []AwsNetworkAclSpec `json:"ingress"`
+	Egress    []AwsNetworkAclSpec `json:"egress"`
+	Tags      map[string]string   `json:"tags"`
 }
 
+
+
 type AwsNetworkAclStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

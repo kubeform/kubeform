@@ -19,24 +19,30 @@ type AwsStoragegatewaySmbFileShare struct {
 }
 
 type AwsStoragegatewaySmbFileShareSpec struct {
-	KmsEncrypted         bool     `json:"kms_encrypted"`
-	ObjectAcl            string   `json:"object_acl"`
-	RoleArn              string   `json:"role_arn"`
-	DefaultStorageClass  string   `json:"default_storage_class"`
+	GatewayArn           string   `json:"gateway_arn"`
 	InvalidUserList      []string `json:"invalid_user_list"`
 	Authentication       string   `json:"authentication"`
-	GatewayArn           string   `json:"gateway_arn"`
 	GuessMimeTypeEnabled bool     `json:"guess_mime_type_enabled"`
-	ReadOnly             bool     `json:"read_only"`
+	KmsKeyArn            string   `json:"kms_key_arn"`
 	RequesterPays        bool     `json:"requester_pays"`
 	ValidUserList        []string `json:"valid_user_list"`
 	Arn                  string   `json:"arn"`
+	DefaultStorageClass  string   `json:"default_storage_class"`
 	FileshareId          string   `json:"fileshare_id"`
-	KmsKeyArn            string   `json:"kms_key_arn"`
+	ObjectAcl            string   `json:"object_acl"`
+	KmsEncrypted         bool     `json:"kms_encrypted"`
 	LocationArn          string   `json:"location_arn"`
+	ReadOnly             bool     `json:"read_only"`
+	RoleArn              string   `json:"role_arn"`
 }
 
+
+
 type AwsStoragegatewaySmbFileShareStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,15 +19,21 @@ type DigitaloceanDropletSnapshot struct {
 }
 
 type DigitaloceanDropletSnapshotSpec struct {
-	Size        float64  `json:"size"`
-	CreatedAt   string   `json:"created_at"`
 	MinDiskSize int      `json:"min_disk_size"`
 	Name        string   `json:"name"`
 	DropletId   string   `json:"droplet_id"`
 	Regions     []string `json:"regions"`
+	Size        float64  `json:"size"`
+	CreatedAt   string   `json:"created_at"`
 }
 
+
+
 type DigitaloceanDropletSnapshotStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

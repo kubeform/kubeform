@@ -23,20 +23,26 @@ type AwsSecretsmanagerSecretSpecRotationRules struct {
 }
 
 type AwsSecretsmanagerSecretSpec struct {
-	Description          string                        `json:"description"`
-	KmsKeyId             string                        `json:"kms_key_id"`
-	NamePrefix           string                        `json:"name_prefix"`
+	Name                 string                        `json:"name"`
+	RecoveryWindowInDays int                           `json:"recovery_window_in_days"`
+	RotationLambdaArn    string                        `json:"rotation_lambda_arn"`
 	RotationRules        []AwsSecretsmanagerSecretSpec `json:"rotation_rules"`
 	Tags                 map[string]string             `json:"tags"`
 	Arn                  string                        `json:"arn"`
-	Name                 string                        `json:"name"`
+	KmsKeyId             string                        `json:"kms_key_id"`
+	NamePrefix           string                        `json:"name_prefix"`
 	Policy               string                        `json:"policy"`
-	RecoveryWindowInDays int                           `json:"recovery_window_in_days"`
 	RotationEnabled      bool                          `json:"rotation_enabled"`
-	RotationLambdaArn    string                        `json:"rotation_lambda_arn"`
+	Description          string                        `json:"description"`
 }
 
+
+
 type AwsSecretsmanagerSecretStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

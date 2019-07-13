@@ -19,12 +19,18 @@ type AwsSesDomainIdentity struct {
 }
 
 type AwsSesDomainIdentitySpec struct {
-	VerificationToken string `json:"verification_token"`
 	Arn               string `json:"arn"`
 	Domain            string `json:"domain"`
+	VerificationToken string `json:"verification_token"`
 }
 
+
+
 type AwsSesDomainIdentityStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

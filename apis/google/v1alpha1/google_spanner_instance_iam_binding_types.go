@@ -19,14 +19,20 @@ type GoogleSpannerInstanceIamBinding struct {
 }
 
 type GoogleSpannerInstanceIamBindingSpec struct {
+	Project  string   `json:"project"`
+	Role     string   `json:"role"`
 	Members  []string `json:"members"`
 	Etag     string   `json:"etag"`
-	Role     string   `json:"role"`
-	Project  string   `json:"project"`
 	Instance string   `json:"instance"`
 }
 
+
+
 type GoogleSpannerInstanceIamBindingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

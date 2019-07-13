@@ -19,13 +19,19 @@ type AzurermMysqlVirtualNetworkRule struct {
 }
 
 type AzurermMysqlVirtualNetworkRuleSpec struct {
+	Name              string `json:"name"`
 	ResourceGroupName string `json:"resource_group_name"`
 	ServerName        string `json:"server_name"`
 	SubnetId          string `json:"subnet_id"`
-	Name              string `json:"name"`
 }
 
+
+
 type AzurermMysqlVirtualNetworkRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

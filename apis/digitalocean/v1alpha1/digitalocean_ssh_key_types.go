@@ -19,12 +19,18 @@ type DigitaloceanSshKey struct {
 }
 
 type DigitaloceanSshKeySpec struct {
+	Name        string `json:"name"`
 	PublicKey   string `json:"public_key"`
 	Fingerprint string `json:"fingerprint"`
-	Name        string `json:"name"`
 }
 
+
+
 type DigitaloceanSshKeyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,18 +19,24 @@ type AwsApiGatewayAuthorizer struct {
 }
 
 type AwsApiGatewayAuthorizerSpec struct {
-	AuthorizerResultTtlInSeconds int      `json:"authorizer_result_ttl_in_seconds"`
-	ProviderArns                 []string `json:"provider_arns"`
-	RestApiId                    string   `json:"rest_api_id"`
+	AuthorizerUri                string   `json:"authorizer_uri"`
+	Name                         string   `json:"name"`
 	Type                         string   `json:"type"`
 	AuthorizerCredentials        string   `json:"authorizer_credentials"`
-	IdentityValidationExpression string   `json:"identity_validation_expression"`
-	AuthorizerUri                string   `json:"authorizer_uri"`
+	ProviderArns                 []string `json:"provider_arns"`
 	IdentitySource               string   `json:"identity_source"`
-	Name                         string   `json:"name"`
+	RestApiId                    string   `json:"rest_api_id"`
+	AuthorizerResultTtlInSeconds int      `json:"authorizer_result_ttl_in_seconds"`
+	IdentityValidationExpression string   `json:"identity_validation_expression"`
 }
 
+
+
 type AwsApiGatewayAuthorizerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

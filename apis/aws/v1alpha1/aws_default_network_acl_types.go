@@ -19,40 +19,46 @@ type AwsDefaultNetworkAcl struct {
 }
 
 type AwsDefaultNetworkAclSpecIngress struct {
-	FromPort      int    `json:"from_port"`
-	RuleNo        int    `json:"rule_no"`
 	Protocol      string `json:"protocol"`
-	CidrBlock     string `json:"cidr_block"`
 	Ipv6CidrBlock string `json:"ipv6_cidr_block"`
-	IcmpType      int    `json:"icmp_type"`
 	IcmpCode      int    `json:"icmp_code"`
+	FromPort      int    `json:"from_port"`
 	ToPort        int    `json:"to_port"`
+	RuleNo        int    `json:"rule_no"`
 	Action        string `json:"action"`
+	CidrBlock     string `json:"cidr_block"`
+	IcmpType      int    `json:"icmp_type"`
 }
 
 type AwsDefaultNetworkAclSpecEgress struct {
 	FromPort      int    `json:"from_port"`
 	Action        string `json:"action"`
-	Protocol      string `json:"protocol"`
+	IcmpType      int    `json:"icmp_type"`
 	CidrBlock     string `json:"cidr_block"`
 	Ipv6CidrBlock string `json:"ipv6_cidr_block"`
-	IcmpType      int    `json:"icmp_type"`
 	IcmpCode      int    `json:"icmp_code"`
 	ToPort        int    `json:"to_port"`
 	RuleNo        int    `json:"rule_no"`
+	Protocol      string `json:"protocol"`
 }
 
 type AwsDefaultNetworkAclSpec struct {
+	Tags                map[string]string          `json:"tags"`
+	OwnerId             string                     `json:"owner_id"`
 	VpcId               string                     `json:"vpc_id"`
 	DefaultNetworkAclId string                     `json:"default_network_acl_id"`
 	SubnetIds           []string                   `json:"subnet_ids"`
 	Ingress             []AwsDefaultNetworkAclSpec `json:"ingress"`
 	Egress              []AwsDefaultNetworkAclSpec `json:"egress"`
-	Tags                map[string]string          `json:"tags"`
-	OwnerId             string                     `json:"owner_id"`
 }
 
+
+
 type AwsDefaultNetworkAclStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

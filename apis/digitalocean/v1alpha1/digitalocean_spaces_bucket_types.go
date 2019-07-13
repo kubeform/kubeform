@@ -19,15 +19,21 @@ type DigitaloceanSpacesBucket struct {
 }
 
 type DigitaloceanSpacesBucketSpec struct {
-	Acl              string `json:"acl"`
-	BucketDomainName string `json:"bucket_domain_name"`
-	ForceDestroy     bool   `json:"force_destroy"`
 	Name             string `json:"name"`
 	Urn              string `json:"urn"`
 	Region           string `json:"region"`
+	Acl              string `json:"acl"`
+	BucketDomainName string `json:"bucket_domain_name"`
+	ForceDestroy     bool   `json:"force_destroy"`
 }
 
+
+
 type DigitaloceanSpacesBucketStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -18,34 +18,40 @@ type AzurermMysqlServer struct {
 	Status            AzurermMysqlServerStatus `json:"status,omitempty"`
 }
 
-type AzurermMysqlServerSpecStorageProfile struct {
-	StorageMb           int    `json:"storage_mb"`
-	BackupRetentionDays int    `json:"backup_retention_days"`
-	GeoRedundantBackup  string `json:"geo_redundant_backup"`
-}
-
 type AzurermMysqlServerSpecSku struct {
+	Family   string `json:"family"`
 	Name     string `json:"name"`
 	Capacity int    `json:"capacity"`
 	Tier     string `json:"tier"`
-	Family   string `json:"family"`
+}
+
+type AzurermMysqlServerSpecStorageProfile struct {
+	BackupRetentionDays int    `json:"backup_retention_days"`
+	GeoRedundantBackup  string `json:"geo_redundant_backup"`
+	StorageMb           int    `json:"storage_mb"`
 }
 
 type AzurermMysqlServerSpec struct {
-	Name                       string                   `json:"name"`
-	ResourceGroupName          string                   `json:"resource_group_name"`
-	AdministratorLoginPassword string                   `json:"administrator_login_password"`
-	StorageProfile             []AzurermMysqlServerSpec `json:"storage_profile"`
-	Location                   string                   `json:"location"`
-	Sku                        []AzurermMysqlServerSpec `json:"sku"`
 	AdministratorLogin         string                   `json:"administrator_login"`
 	Version                    string                   `json:"version"`
+	Name                       string                   `json:"name"`
+	Location                   string                   `json:"location"`
+	ResourceGroupName          string                   `json:"resource_group_name"`
+	Sku                        []AzurermMysqlServerSpec `json:"sku"`
+	Tags                       map[string]string        `json:"tags"`
+	AdministratorLoginPassword string                   `json:"administrator_login_password"`
+	StorageProfile             []AzurermMysqlServerSpec `json:"storage_profile"`
 	SslEnforcement             string                   `json:"ssl_enforcement"`
 	Fqdn                       string                   `json:"fqdn"`
-	Tags                       map[string]string        `json:"tags"`
 }
 
+
+
 type AzurermMysqlServerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -29,34 +29,40 @@ type GoogleProjectSpecAppEngineUrlDispatchRule struct {
 }
 
 type GoogleProjectSpecAppEngine struct {
-	GcrDomain       string                       `json:"gcr_domain"`
-	LocationId      string                       `json:"location_id"`
+	DefaultHostname string                       `json:"default_hostname"`
+	AuthDomain      string                       `json:"auth_domain"`
+	ServingStatus   string                       `json:"serving_status"`
 	FeatureSettings []GoogleProjectSpecAppEngine `json:"feature_settings"`
 	Name            string                       `json:"name"`
 	CodeBucket      string                       `json:"code_bucket"`
-	DefaultHostname string                       `json:"default_hostname"`
-	DefaultBucket   string                       `json:"default_bucket"`
-	AuthDomain      string                       `json:"auth_domain"`
-	ServingStatus   string                       `json:"serving_status"`
+	LocationId      string                       `json:"location_id"`
 	UrlDispatchRule []GoogleProjectSpecAppEngine `json:"url_dispatch_rule"`
+	DefaultBucket   string                       `json:"default_bucket"`
+	GcrDomain       string                       `json:"gcr_domain"`
 }
 
 type GoogleProjectSpec struct {
-	Labels            map[string]string   `json:"labels"`
-	AppEngine         []GoogleProjectSpec `json:"app_engine"`
-	OrgId             string              `json:"org_id"`
-	PolicyEtag        string              `json:"policy_etag"`
-	AutoCreateNetwork bool                `json:"auto_create_network"`
+	ProjectId         string              `json:"project_id"`
+	SkipDelete        bool                `json:"skip_delete"`
 	Name              string              `json:"name"`
+	OrgId             string              `json:"org_id"`
 	FolderId          string              `json:"folder_id"`
+	PolicyEtag        string              `json:"policy_etag"`
+	Labels            map[string]string   `json:"labels"`
+	AutoCreateNetwork bool                `json:"auto_create_network"`
 	PolicyData        string              `json:"policy_data"`
 	Number            string              `json:"number"`
 	BillingAccount    string              `json:"billing_account"`
-	ProjectId         string              `json:"project_id"`
-	SkipDelete        bool                `json:"skip_delete"`
+	AppEngine         []GoogleProjectSpec `json:"app_engine"`
 }
 
+
+
 type GoogleProjectStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

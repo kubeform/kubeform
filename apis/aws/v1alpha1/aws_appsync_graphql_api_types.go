@@ -18,13 +18,6 @@ type AwsAppsyncGraphqlApi struct {
 	Status            AwsAppsyncGraphqlApiStatus `json:"status,omitempty"`
 }
 
-type AwsAppsyncGraphqlApiSpecUserPoolConfig struct {
-	AppIdClientRegex string `json:"app_id_client_regex"`
-	AwsRegion        string `json:"aws_region"`
-	DefaultAction    string `json:"default_action"`
-	UserPoolId       string `json:"user_pool_id"`
-}
-
 type AwsAppsyncGraphqlApiSpecLogConfig struct {
 	CloudwatchLogsRoleArn string `json:"cloudwatch_logs_role_arn"`
 	FieldLogLevel         string `json:"field_log_level"`
@@ -37,19 +30,32 @@ type AwsAppsyncGraphqlApiSpecOpenidConnectConfig struct {
 	Issuer   string `json:"issuer"`
 }
 
-type AwsAppsyncGraphqlApiSpec struct {
-	AuthenticationType  string                     `json:"authentication_type"`
-	Name                string                     `json:"name"`
-	UserPoolConfig      []AwsAppsyncGraphqlApiSpec `json:"user_pool_config"`
-	Arn                 string                     `json:"arn"`
-	Uris                map[string]string          `json:"uris"`
-	Schema              string                     `json:"schema"`
-	LogConfig           []AwsAppsyncGraphqlApiSpec `json:"log_config"`
-	OpenidConnectConfig []AwsAppsyncGraphqlApiSpec `json:"openid_connect_config"`
-	Tags                map[string]string          `json:"tags"`
+type AwsAppsyncGraphqlApiSpecUserPoolConfig struct {
+	UserPoolId       string `json:"user_pool_id"`
+	AppIdClientRegex string `json:"app_id_client_regex"`
+	AwsRegion        string `json:"aws_region"`
+	DefaultAction    string `json:"default_action"`
 }
 
+type AwsAppsyncGraphqlApiSpec struct {
+	Schema              string                     `json:"schema"`
+	Name                string                     `json:"name"`
+	LogConfig           []AwsAppsyncGraphqlApiSpec `json:"log_config"`
+	OpenidConnectConfig []AwsAppsyncGraphqlApiSpec `json:"openid_connect_config"`
+	UserPoolConfig      []AwsAppsyncGraphqlApiSpec `json:"user_pool_config"`
+	Tags                map[string]string          `json:"tags"`
+	AuthenticationType  string                     `json:"authentication_type"`
+	Uris                map[string]string          `json:"uris"`
+	Arn                 string                     `json:"arn"`
+}
+
+
+
 type AwsAppsyncGraphqlApiStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

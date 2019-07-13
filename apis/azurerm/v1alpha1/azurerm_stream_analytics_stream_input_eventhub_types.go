@@ -25,18 +25,24 @@ type AzurermStreamAnalyticsStreamInputEventhubSpecSerialization struct {
 }
 
 type AzurermStreamAnalyticsStreamInputEventhubSpec struct {
-	ServicebusNamespace       string                                          `json:"servicebus_namespace"`
-	SharedAccessPolicyKey     string                                          `json:"shared_access_policy_key"`
-	Serialization             []AzurermStreamAnalyticsStreamInputEventhubSpec `json:"serialization"`
-	Name                      string                                          `json:"name"`
 	StreamAnalyticsJobName    string                                          `json:"stream_analytics_job_name"`
 	ResourceGroupName         string                                          `json:"resource_group_name"`
+	ServicebusNamespace       string                                          `json:"servicebus_namespace"`
+	Serialization             []AzurermStreamAnalyticsStreamInputEventhubSpec `json:"serialization"`
+	Name                      string                                          `json:"name"`
 	EventhubConsumerGroupName string                                          `json:"eventhub_consumer_group_name"`
 	EventhubName              string                                          `json:"eventhub_name"`
+	SharedAccessPolicyKey     string                                          `json:"shared_access_policy_key"`
 	SharedAccessPolicyName    string                                          `json:"shared_access_policy_name"`
 }
 
+
+
 type AzurermStreamAnalyticsStreamInputEventhubStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

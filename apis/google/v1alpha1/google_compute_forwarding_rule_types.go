@@ -19,30 +19,36 @@ type GoogleComputeForwardingRule struct {
 }
 
 type GoogleComputeForwardingRuleSpec struct {
-	Description         string            `json:"description"`
-	Network             string            `json:"network"`
-	PortRange           string            `json:"port_range"`
-	LabelFingerprint    string            `json:"label_fingerprint"`
-	IpAddress           string            `json:"ip_address"`
 	IpProtocol          string            `json:"ip_protocol"`
-	Ports               []string          `json:"ports"`
-	Region              string            `json:"region"`
-	ServiceLabel        string            `json:"service_label"`
-	BackendService      string            `json:"backend_service"`
-	LoadBalancingScheme string            `json:"load_balancing_scheme"`
-	Subnetwork          string            `json:"subnetwork"`
 	Target              string            `json:"target"`
-	ServiceName         string            `json:"service_name"`
-	SelfLink            string            `json:"self_link"`
-	Name                string            `json:"name"`
-	Labels              map[string]string `json:"labels"`
-	CreationTimestamp   string            `json:"creation_timestamp"`
 	Project             string            `json:"project"`
+	LabelFingerprint    string            `json:"label_fingerprint"`
+	Description         string            `json:"description"`
+	Labels              map[string]string `json:"labels"`
+	LoadBalancingScheme string            `json:"load_balancing_scheme"`
+	Network             string            `json:"network"`
+	Region              string            `json:"region"`
+	SelfLink            string            `json:"self_link"`
+	BackendService      string            `json:"backend_service"`
 	IpVersion           string            `json:"ip_version"`
 	NetworkTier         string            `json:"network_tier"`
+	PortRange           string            `json:"port_range"`
+	ServiceLabel        string            `json:"service_label"`
+	ServiceName         string            `json:"service_name"`
+	Name                string            `json:"name"`
+	IpAddress           string            `json:"ip_address"`
+	Ports               []string          `json:"ports"`
+	Subnetwork          string            `json:"subnetwork"`
+	CreationTimestamp   string            `json:"creation_timestamp"`
 }
 
+
+
 type GoogleComputeForwardingRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

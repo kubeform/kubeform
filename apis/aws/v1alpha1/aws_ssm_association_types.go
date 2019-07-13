@@ -29,21 +29,27 @@ type AwsSsmAssociationSpecOutputLocation struct {
 }
 
 type AwsSsmAssociationSpec struct {
-	Targets            []AwsSsmAssociationSpec `json:"targets"`
-	ComplianceSeverity string                  `json:"compliance_severity"`
 	AssociationName    string                  `json:"association_name"`
 	DocumentVersion    string                  `json:"document_version"`
 	MaxConcurrency     string                  `json:"max_concurrency"`
-	MaxErrors          string                  `json:"max_errors"`
 	Name               string                  `json:"name"`
-	Parameters         map[string]string       `json:"parameters"`
+	ScheduleExpression string                  `json:"schedule_expression"`
+	Targets            []AwsSsmAssociationSpec `json:"targets"`
 	AssociationId      string                  `json:"association_id"`
 	InstanceId         string                  `json:"instance_id"`
-	ScheduleExpression string                  `json:"schedule_expression"`
+	MaxErrors          string                  `json:"max_errors"`
+	Parameters         map[string]string       `json:"parameters"`
 	OutputLocation     []AwsSsmAssociationSpec `json:"output_location"`
+	ComplianceSeverity string                  `json:"compliance_severity"`
 }
 
+
+
 type AwsSsmAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

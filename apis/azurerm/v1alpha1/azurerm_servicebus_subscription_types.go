@@ -19,23 +19,29 @@ type AzurermServicebusSubscription struct {
 }
 
 type AzurermServicebusSubscriptionSpec struct {
-	Name                                      string `json:"name"`
 	NamespaceName                             string `json:"namespace_name"`
 	Location                                  string `json:"location"`
-	DeadLetteringOnMessageExpiration          bool   `json:"dead_lettering_on_message_expiration"`
-	ResourceGroupName                         string `json:"resource_group_name"`
-	LockDuration                              string `json:"lock_duration"`
-	TopicName                                 string `json:"topic_name"`
-	EnableBatchedOperations                   bool   `json:"enable_batched_operations"`
-	MaxDeliveryCount                          int    `json:"max_delivery_count"`
 	RequiresSession                           bool   `json:"requires_session"`
-	ForwardTo                                 string `json:"forward_to"`
+	ResourceGroupName                         string `json:"resource_group_name"`
+	TopicName                                 string `json:"topic_name"`
 	AutoDeleteOnIdle                          string `json:"auto_delete_on_idle"`
 	DefaultMessageTtl                         string `json:"default_message_ttl"`
+	DeadLetteringOnMessageExpiration          bool   `json:"dead_lettering_on_message_expiration"`
+	EnableBatchedOperations                   bool   `json:"enable_batched_operations"`
 	DeadLetteringOnFilterEvaluationExceptions bool   `json:"dead_lettering_on_filter_evaluation_exceptions"`
+	Name                                      string `json:"name"`
+	LockDuration                              string `json:"lock_duration"`
+	MaxDeliveryCount                          int    `json:"max_delivery_count"`
+	ForwardTo                                 string `json:"forward_to"`
 }
 
+
+
 type AzurermServicebusSubscriptionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

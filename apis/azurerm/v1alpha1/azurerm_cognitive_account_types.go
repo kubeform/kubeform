@@ -24,18 +24,24 @@ type AzurermCognitiveAccountSpecSku struct {
 }
 
 type AzurermCognitiveAccountSpec struct {
-	Location           string                        `json:"location"`
+	PrimaryAccessKey   string                        `json:"primary_access_key"`
 	ResourceGroupName  string                        `json:"resource_group_name"`
+	Endpoint           string                        `json:"endpoint"`
 	Kind               string                        `json:"kind"`
 	Sku                []AzurermCognitiveAccountSpec `json:"sku"`
-	Endpoint           string                        `json:"endpoint"`
+	Tags               map[string]string             `json:"tags"`
 	SecondaryAccessKey string                        `json:"secondary_access_key"`
 	Name               string                        `json:"name"`
-	Tags               map[string]string             `json:"tags"`
-	PrimaryAccessKey   string                        `json:"primary_access_key"`
+	Location           string                        `json:"location"`
 }
 
+
+
 type AzurermCognitiveAccountStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

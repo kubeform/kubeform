@@ -19,14 +19,20 @@ type AzurermApiManagementProductPolicy struct {
 }
 
 type AzurermApiManagementProductPolicySpec struct {
+	XmlLink           string `json:"xml_link"`
 	ResourceGroupName string `json:"resource_group_name"`
 	ApiManagementName string `json:"api_management_name"`
 	ProductId         string `json:"product_id"`
 	XmlContent        string `json:"xml_content"`
-	XmlLink           string `json:"xml_link"`
 }
 
+
+
 type AzurermApiManagementProductPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

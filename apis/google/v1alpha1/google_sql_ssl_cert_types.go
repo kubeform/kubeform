@@ -19,18 +19,24 @@ type GoogleSqlSslCert struct {
 }
 
 type GoogleSqlSslCertSpec struct {
-	CommonName       string `json:"common_name"`
-	Cert             string `json:"cert"`
-	CertSerialNumber string `json:"cert_serial_number"`
-	PrivateKey       string `json:"private_key"`
 	ServerCaCert     string `json:"server_ca_cert"`
 	Instance         string `json:"instance"`
-	CreateTime       string `json:"create_time"`
+	CertSerialNumber string `json:"cert_serial_number"`
 	ExpirationTime   string `json:"expiration_time"`
+	PrivateKey       string `json:"private_key"`
 	Sha1Fingerprint  string `json:"sha1_fingerprint"`
+	CommonName       string `json:"common_name"`
+	Cert             string `json:"cert"`
+	CreateTime       string `json:"create_time"`
 }
 
+
+
 type GoogleSqlSslCertStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

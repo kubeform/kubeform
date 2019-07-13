@@ -24,15 +24,21 @@ type AwsGlacierVaultSpecNotification struct {
 }
 
 type AwsGlacierVaultSpec struct {
+	AccessPolicy string                `json:"access_policy"`
+	Notification []AwsGlacierVaultSpec `json:"notification"`
 	Tags         map[string]string     `json:"tags"`
 	Name         string                `json:"name"`
 	Location     string                `json:"location"`
 	Arn          string                `json:"arn"`
-	AccessPolicy string                `json:"access_policy"`
-	Notification []AwsGlacierVaultSpec `json:"notification"`
 }
 
+
+
 type AwsGlacierVaultStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

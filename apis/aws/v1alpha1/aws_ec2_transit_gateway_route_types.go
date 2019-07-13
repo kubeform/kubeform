@@ -19,13 +19,19 @@ type AwsEc2TransitGatewayRoute struct {
 }
 
 type AwsEc2TransitGatewayRouteSpec struct {
+	TransitGatewayRouteTableId string `json:"transit_gateway_route_table_id"`
 	DestinationCidrBlock       string `json:"destination_cidr_block"`
 	Blackhole                  bool   `json:"blackhole"`
 	TransitGatewayAttachmentId string `json:"transit_gateway_attachment_id"`
-	TransitGatewayRouteTableId string `json:"transit_gateway_route_table_id"`
 }
 
+
+
 type AwsEc2TransitGatewayRouteStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

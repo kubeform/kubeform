@@ -19,19 +19,25 @@ type GoogleComputeTargetSslProxy struct {
 }
 
 type GoogleComputeTargetSslProxySpec struct {
-	Name              string   `json:"name"`
-	SslCertificates   []string `json:"ssl_certificates"`
 	Description       string   `json:"description"`
 	SslPolicy         string   `json:"ssl_policy"`
 	CreationTimestamp string   `json:"creation_timestamp"`
+	Name              string   `json:"name"`
+	SslCertificates   []string `json:"ssl_certificates"`
+	ProxyHeader       string   `json:"proxy_header"`
 	ProxyId           int      `json:"proxy_id"`
-	BackendService    string   `json:"backend_service"`
 	Project           string   `json:"project"`
 	SelfLink          string   `json:"self_link"`
-	ProxyHeader       string   `json:"proxy_header"`
+	BackendService    string   `json:"backend_service"`
 }
 
+
+
 type GoogleComputeTargetSslProxyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

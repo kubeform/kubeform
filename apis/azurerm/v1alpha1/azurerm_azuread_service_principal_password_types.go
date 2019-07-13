@@ -19,14 +19,20 @@ type AzurermAzureadServicePrincipalPassword struct {
 }
 
 type AzurermAzureadServicePrincipalPasswordSpec struct {
-	EndDate            string `json:"end_date"`
-	ServicePrincipalId string `json:"service_principal_id"`
 	KeyId              string `json:"key_id"`
 	Value              string `json:"value"`
 	StartDate          string `json:"start_date"`
+	EndDate            string `json:"end_date"`
+	ServicePrincipalId string `json:"service_principal_id"`
 }
 
+
+
 type AzurermAzureadServicePrincipalPasswordStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

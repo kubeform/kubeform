@@ -19,14 +19,20 @@ type GoogleLoggingFolderExclusion struct {
 }
 
 type GoogleLoggingFolderExclusionSpec struct {
+	Name        string `json:"name"`
+	Folder      string `json:"folder"`
 	Description string `json:"description"`
 	Disabled    bool   `json:"disabled"`
-	Folder      string `json:"folder"`
 	Filter      string `json:"filter"`
-	Name        string `json:"name"`
 }
 
+
+
 type GoogleLoggingFolderExclusionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

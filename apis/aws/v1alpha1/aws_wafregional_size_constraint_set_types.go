@@ -19,15 +19,15 @@ type AwsWafregionalSizeConstraintSet struct {
 }
 
 type AwsWafregionalSizeConstraintSetSpecSizeConstraintsFieldToMatch struct {
-	Data string `json:"data"`
 	Type string `json:"type"`
+	Data string `json:"data"`
 }
 
 type AwsWafregionalSizeConstraintSetSpecSizeConstraints struct {
-	TextTransformation string                                               `json:"text_transformation"`
 	FieldToMatch       []AwsWafregionalSizeConstraintSetSpecSizeConstraints `json:"field_to_match"`
 	ComparisonOperator string                                               `json:"comparison_operator"`
 	Size               int                                                  `json:"size"`
+	TextTransformation string                                               `json:"text_transformation"`
 }
 
 type AwsWafregionalSizeConstraintSetSpec struct {
@@ -35,7 +35,13 @@ type AwsWafregionalSizeConstraintSetSpec struct {
 	SizeConstraints []AwsWafregionalSizeConstraintSetSpec `json:"size_constraints"`
 }
 
+
+
 type AwsWafregionalSizeConstraintSetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

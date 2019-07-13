@@ -19,18 +19,24 @@ type AwsLoadBalancerPolicy struct {
 }
 
 type AwsLoadBalancerPolicySpecPolicyAttribute struct {
-	Name  string `json:"name"`
 	Value string `json:"value"`
+	Name  string `json:"name"`
 }
 
 type AwsLoadBalancerPolicySpec struct {
-	LoadBalancerName string                      `json:"load_balancer_name"`
 	PolicyName       string                      `json:"policy_name"`
 	PolicyTypeName   string                      `json:"policy_type_name"`
 	PolicyAttribute  []AwsLoadBalancerPolicySpec `json:"policy_attribute"`
+	LoadBalancerName string                      `json:"load_balancer_name"`
 }
 
+
+
 type AwsLoadBalancerPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,24 +19,30 @@ type AwsNeptuneClusterSnapshot struct {
 }
 
 type AwsNeptuneClusterSnapshotSpec struct {
-	Engine                      string   `json:"engine"`
-	EngineVersion               string   `json:"engine_version"`
-	DbClusterSnapshotArn        string   `json:"db_cluster_snapshot_arn"`
 	AvailabilityZones           []string `json:"availability_zones"`
-	VpcId                       string   `json:"vpc_id"`
-	DbClusterSnapshotIdentifier string   `json:"db_cluster_snapshot_identifier"`
-	AllocatedStorage            int      `json:"allocated_storage"`
-	KmsKeyId                    string   `json:"kms_key_id"`
-	StorageEncrypted            bool     `json:"storage_encrypted"`
-	DbClusterIdentifier         string   `json:"db_cluster_identifier"`
+	DbClusterSnapshotArn        string   `json:"db_cluster_snapshot_arn"`
+	Engine                      string   `json:"engine"`
+	LicenseModel                string   `json:"license_model"`
 	Port                        int      `json:"port"`
+	StorageEncrypted            bool     `json:"storage_encrypted"`
+	VpcId                       string   `json:"vpc_id"`
+	AllocatedStorage            int      `json:"allocated_storage"`
+	DbClusterIdentifier         string   `json:"db_cluster_identifier"`
+	DbClusterSnapshotIdentifier string   `json:"db_cluster_snapshot_identifier"`
 	SourceDbClusterSnapshotArn  string   `json:"source_db_cluster_snapshot_arn"`
+	KmsKeyId                    string   `json:"kms_key_id"`
 	SnapshotType                string   `json:"snapshot_type"`
 	Status                      string   `json:"status"`
-	LicenseModel                string   `json:"license_model"`
+	EngineVersion               string   `json:"engine_version"`
 }
 
+
+
 type AwsNeptuneClusterSnapshotStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

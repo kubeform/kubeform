@@ -19,22 +19,28 @@ type AzurermTrafficManagerEndpoint struct {
 }
 
 type AzurermTrafficManagerEndpointSpec struct {
-	EndpointStatus        string   `json:"endpoint_status"`
+	ProfileName           string   `json:"profile_name"`
+	Weight                int      `json:"weight"`
+	EndpointLocation      string   `json:"endpoint_location"`
 	MinChildEndpoints     int      `json:"min_child_endpoints"`
-	GeoMappings           []string `json:"geo_mappings"`
 	Name                  string   `json:"name"`
 	ResourceGroupName     string   `json:"resource_group_name"`
 	Type                  string   `json:"type"`
 	Target                string   `json:"target"`
-	EndpointLocation      string   `json:"endpoint_location"`
-	EndpointMonitorStatus string   `json:"endpoint_monitor_status"`
-	ProfileName           string   `json:"profile_name"`
 	TargetResourceId      string   `json:"target_resource_id"`
-	Weight                int      `json:"weight"`
+	EndpointStatus        string   `json:"endpoint_status"`
 	Priority              int      `json:"priority"`
+	GeoMappings           []string `json:"geo_mappings"`
+	EndpointMonitorStatus string   `json:"endpoint_monitor_status"`
 }
 
+
+
 type AzurermTrafficManagerEndpointStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

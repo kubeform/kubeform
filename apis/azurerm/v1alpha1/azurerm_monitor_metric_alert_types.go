@@ -18,6 +18,11 @@ type AzurermMonitorMetricAlert struct {
 	Status            AzurermMonitorMetricAlertStatus `json:"status,omitempty"`
 }
 
+type AzurermMonitorMetricAlertSpecAction struct {
+	ActionGroupId     string            `json:"action_group_id"`
+	WebhookProperties map[string]string `json:"webhook_properties"`
+}
+
 type AzurermMonitorMetricAlertSpecCriteriaDimension struct {
 	Name     string   `json:"name"`
 	Operator string   `json:"operator"`
@@ -33,27 +38,28 @@ type AzurermMonitorMetricAlertSpecCriteria struct {
 	Operator        string                                  `json:"operator"`
 }
 
-type AzurermMonitorMetricAlertSpecAction struct {
-	ActionGroupId     string            `json:"action_group_id"`
-	WebhookProperties map[string]string `json:"webhook_properties"`
-}
-
 type AzurermMonitorMetricAlertSpec struct {
-	ResourceGroupName string                          `json:"resource_group_name"`
-	Criteria          []AzurermMonitorMetricAlertSpec `json:"criteria"`
-	Action            []AzurermMonitorMetricAlertSpec `json:"action"`
-	AutoMitigate      bool                            `json:"auto_mitigate"`
-	Description       string                          `json:"description"`
 	Severity          int                             `json:"severity"`
 	Name              string                          `json:"name"`
 	Scopes            []string                        `json:"scopes"`
+	Action            []AzurermMonitorMetricAlertSpec `json:"action"`
+	AutoMitigate      bool                            `json:"auto_mitigate"`
+	Description       string                          `json:"description"`
+	Tags              map[string]string               `json:"tags"`
+	ResourceGroupName string                          `json:"resource_group_name"`
+	Criteria          []AzurermMonitorMetricAlertSpec `json:"criteria"`
 	Enabled           bool                            `json:"enabled"`
 	Frequency         string                          `json:"frequency"`
 	WindowSize        string                          `json:"window_size"`
-	Tags              map[string]string               `json:"tags"`
 }
 
+
+
 type AzurermMonitorMetricAlertStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

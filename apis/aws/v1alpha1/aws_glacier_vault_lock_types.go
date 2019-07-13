@@ -19,13 +19,19 @@ type AwsGlacierVaultLock struct {
 }
 
 type AwsGlacierVaultLockSpec struct {
-	CompleteLock        bool   `json:"complete_lock"`
-	IgnoreDeletionError bool   `json:"ignore_deletion_error"`
 	Policy              string `json:"policy"`
 	VaultName           string `json:"vault_name"`
+	CompleteLock        bool   `json:"complete_lock"`
+	IgnoreDeletionError bool   `json:"ignore_deletion_error"`
 }
 
+
+
 type AwsGlacierVaultLockStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

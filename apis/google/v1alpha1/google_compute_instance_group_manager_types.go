@@ -18,9 +18,9 @@ type GoogleComputeInstanceGroupManager struct {
 	Status            GoogleComputeInstanceGroupManagerStatus `json:"status,omitempty"`
 }
 
-type GoogleComputeInstanceGroupManagerSpecAutoHealingPolicies struct {
-	HealthCheck     string `json:"health_check"`
-	InitialDelaySec int    `json:"initial_delay_sec"`
+type GoogleComputeInstanceGroupManagerSpecNamedPort struct {
+	Name string `json:"name"`
+	Port int    `json:"port"`
 }
 
 type GoogleComputeInstanceGroupManagerSpecVersionTargetSize struct {
@@ -34,42 +34,48 @@ type GoogleComputeInstanceGroupManagerSpecVersion struct {
 	TargetSize       []GoogleComputeInstanceGroupManagerSpecVersion `json:"target_size"`
 }
 
-type GoogleComputeInstanceGroupManagerSpecNamedPort struct {
-	Name string `json:"name"`
-	Port int    `json:"port"`
-}
-
 type GoogleComputeInstanceGroupManagerSpecRollingUpdatePolicy struct {
+	MaxSurgePercent       int    `json:"max_surge_percent"`
+	MaxUnavailableFixed   int    `json:"max_unavailable_fixed"`
+	MaxUnavailablePercent int    `json:"max_unavailable_percent"`
 	MinReadySec           int    `json:"min_ready_sec"`
 	MinimalAction         string `json:"minimal_action"`
 	Type                  string `json:"type"`
 	MaxSurgeFixed         int    `json:"max_surge_fixed"`
-	MaxSurgePercent       int    `json:"max_surge_percent"`
-	MaxUnavailableFixed   int    `json:"max_unavailable_fixed"`
-	MaxUnavailablePercent int    `json:"max_unavailable_percent"`
+}
+
+type GoogleComputeInstanceGroupManagerSpecAutoHealingPolicies struct {
+	HealthCheck     string `json:"health_check"`
+	InitialDelaySec int    `json:"initial_delay_sec"`
 }
 
 type GoogleComputeInstanceGroupManagerSpec struct {
 	BaseInstanceName    string                                  `json:"base_instance_name"`
-	SelfLink            string                                  `json:"self_link"`
-	UpdateStrategy      string                                  `json:"update_strategy"`
-	AutoHealingPolicies []GoogleComputeInstanceGroupManagerSpec `json:"auto_healing_policies"`
-	Version             []GoogleComputeInstanceGroupManagerSpec `json:"version"`
-	Name                string                                  `json:"name"`
 	Fingerprint         string                                  `json:"fingerprint"`
+	NamedPort           []GoogleComputeInstanceGroupManagerSpec `json:"named_port"`
+	TargetSize          int                                     `json:"target_size"`
+	UpdateStrategy      string                                  `json:"update_strategy"`
 	TargetPools         []string                                `json:"target_pools"`
 	WaitForInstances    bool                                    `json:"wait_for_instances"`
 	InstanceTemplate    string                                  `json:"instance_template"`
+	Version             []GoogleComputeInstanceGroupManagerSpec `json:"version"`
 	InstanceGroup       string                                  `json:"instance_group"`
-	Project             string                                  `json:"project"`
+	SelfLink            string                                  `json:"self_link"`
 	Zone                string                                  `json:"zone"`
-	Description         string                                  `json:"description"`
-	NamedPort           []GoogleComputeInstanceGroupManagerSpec `json:"named_port"`
-	TargetSize          int                                     `json:"target_size"`
 	RollingUpdatePolicy []GoogleComputeInstanceGroupManagerSpec `json:"rolling_update_policy"`
+	Name                string                                  `json:"name"`
+	Description         string                                  `json:"description"`
+	Project             string                                  `json:"project"`
+	AutoHealingPolicies []GoogleComputeInstanceGroupManagerSpec `json:"auto_healing_policies"`
 }
 
+
+
 type GoogleComputeInstanceGroupManagerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

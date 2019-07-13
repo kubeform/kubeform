@@ -19,14 +19,20 @@ type AwsApiGatewayModel struct {
 }
 
 type AwsApiGatewayModelSpec struct {
-	RestApiId   string `json:"rest_api_id"`
-	Name        string `json:"name"`
 	Description string `json:"description"`
 	Schema      string `json:"schema"`
 	ContentType string `json:"content_type"`
+	RestApiId   string `json:"rest_api_id"`
+	Name        string `json:"name"`
 }
 
+
+
 type AwsApiGatewayModelStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

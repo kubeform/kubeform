@@ -18,6 +18,13 @@ type AwsRdsCluster struct {
 	Status            AwsRdsClusterStatus `json:"status,omitempty"`
 }
 
+type AwsRdsClusterSpecScalingConfiguration struct {
+	AutoPause             bool `json:"auto_pause"`
+	MaxCapacity           int  `json:"max_capacity"`
+	MinCapacity           int  `json:"min_capacity"`
+	SecondsUntilAutoPause int  `json:"seconds_until_auto_pause"`
+}
+
 type AwsRdsClusterSpecS3Import struct {
 	SourceEngine        string `json:"source_engine"`
 	SourceEngineVersion string `json:"source_engine_version"`
@@ -26,57 +33,56 @@ type AwsRdsClusterSpecS3Import struct {
 	IngestionRole       string `json:"ingestion_role"`
 }
 
-type AwsRdsClusterSpecScalingConfiguration struct {
-	MaxCapacity           int  `json:"max_capacity"`
-	MinCapacity           int  `json:"min_capacity"`
-	SecondsUntilAutoPause int  `json:"seconds_until_auto_pause"`
-	AutoPause             bool `json:"auto_pause"`
-}
-
 type AwsRdsClusterSpec struct {
-	AvailabilityZones                []string            `json:"availability_zones"`
-	HostedZoneId                     string              `json:"hosted_zone_id"`
-	FinalSnapshotIdentifier          string              `json:"final_snapshot_identifier"`
-	Port                             int                 `json:"port"`
-	VpcSecurityGroupIds              []string            `json:"vpc_security_group_ids"`
-	IamDatabaseAuthenticationEnabled bool                `json:"iam_database_authentication_enabled"`
-	ClusterIdentifier                string              `json:"cluster_identifier"`
-	MasterPassword                   string              `json:"master_password"`
-	Arn                              string              `json:"arn"`
-	Endpoint                         string              `json:"endpoint"`
-	MasterUsername                   string              `json:"master_username"`
-	SnapshotIdentifier               string              `json:"snapshot_identifier"`
-	PreferredMaintenanceWindow       string              `json:"preferred_maintenance_window"`
-	DeletionProtection               bool                `json:"deletion_protection"`
-	S3Import                         []AwsRdsClusterSpec `json:"s3_import"`
+	ScalingConfiguration             []AwsRdsClusterSpec `json:"scaling_configuration"`
 	BackupRetentionPeriod            int                 `json:"backup_retention_period"`
-	ApplyImmediately                 bool                `json:"apply_immediately"`
-	ReplicationSourceIdentifier      string              `json:"replication_source_identifier"`
 	BacktrackWindow                  int                 `json:"backtrack_window"`
-	CopyTagsToSnapshot               bool                `json:"copy_tags_to_snapshot"`
+	ClusterIdentifier                string              `json:"cluster_identifier"`
+	ClusterIdentifierPrefix          string              `json:"cluster_identifier_prefix"`
+	ClusterMembers                   []string            `json:"cluster_members"`
 	DatabaseName                     string              `json:"database_name"`
 	DbSubnetGroupName                string              `json:"db_subnet_group_name"`
-	ReaderEndpoint                   string              `json:"reader_endpoint"`
-	EngineMode                       string              `json:"engine_mode"`
-	IamRoles                         []string            `json:"iam_roles"`
-	Tags                             map[string]string   `json:"tags"`
-	ClusterIdentifierPrefix          string              `json:"cluster_identifier_prefix"`
-	DbClusterParameterGroupName      string              `json:"db_cluster_parameter_group_name"`
-	Engine                           string              `json:"engine"`
-	SkipFinalSnapshot                bool                `json:"skip_final_snapshot"`
-	ClusterResourceId                string              `json:"cluster_resource_id"`
-	EnabledCloudwatchLogsExports     []string            `json:"enabled_cloudwatch_logs_exports"`
-	ClusterMembers                   []string            `json:"cluster_members"`
-	GlobalClusterIdentifier          string              `json:"global_cluster_identifier"`
-	EngineVersion                    string              `json:"engine_version"`
+	ReplicationSourceIdentifier      string              `json:"replication_source_identifier"`
 	StorageEncrypted                 bool                `json:"storage_encrypted"`
-	PreferredBackupWindow            string              `json:"preferred_backup_window"`
-	SourceRegion                     string              `json:"source_region"`
-	ScalingConfiguration             []AwsRdsClusterSpec `json:"scaling_configuration"`
+	FinalSnapshotIdentifier          string              `json:"final_snapshot_identifier"`
+	MasterUsername                   string              `json:"master_username"`
+	Tags                             map[string]string   `json:"tags"`
+	Engine                           string              `json:"engine"`
+	ApplyImmediately                 bool                `json:"apply_immediately"`
+	VpcSecurityGroupIds              []string            `json:"vpc_security_group_ids"`
+	EnabledCloudwatchLogsExports     []string            `json:"enabled_cloudwatch_logs_exports"`
+	AvailabilityZones                []string            `json:"availability_zones"`
+	GlobalClusterIdentifier          string              `json:"global_cluster_identifier"`
+	PreferredMaintenanceWindow       string              `json:"preferred_maintenance_window"`
 	KmsKeyId                         string              `json:"kms_key_id"`
+	IamDatabaseAuthenticationEnabled bool                `json:"iam_database_authentication_enabled"`
+	ClusterResourceId                string              `json:"cluster_resource_id"`
+	S3Import                         []AwsRdsClusterSpec `json:"s3_import"`
+	SkipFinalSnapshot                bool                `json:"skip_final_snapshot"`
+	MasterPassword                   string              `json:"master_password"`
+	SourceRegion                     string              `json:"source_region"`
+	CopyTagsToSnapshot               bool                `json:"copy_tags_to_snapshot"`
+	DeletionProtection               bool                `json:"deletion_protection"`
+	ReaderEndpoint                   string              `json:"reader_endpoint"`
+	HostedZoneId                     string              `json:"hosted_zone_id"`
+	EngineMode                       string              `json:"engine_mode"`
+	EngineVersion                    string              `json:"engine_version"`
+	Arn                              string              `json:"arn"`
+	Endpoint                         string              `json:"endpoint"`
+	DbClusterParameterGroupName      string              `json:"db_cluster_parameter_group_name"`
+	SnapshotIdentifier               string              `json:"snapshot_identifier"`
+	Port                             int                 `json:"port"`
+	PreferredBackupWindow            string              `json:"preferred_backup_window"`
+	IamRoles                         []string            `json:"iam_roles"`
 }
 
+
+
 type AwsRdsClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

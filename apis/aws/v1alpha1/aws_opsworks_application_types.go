@@ -18,19 +18,13 @@ type AwsOpsworksApplication struct {
 	Status            AwsOpsworksApplicationStatus `json:"status,omitempty"`
 }
 
-type AwsOpsworksApplicationSpecSslConfiguration struct {
-	Certificate string `json:"certificate"`
-	PrivateKey  string `json:"private_key"`
-	Chain       string `json:"chain"`
-}
-
 type AwsOpsworksApplicationSpecAppSource struct {
-	Revision string `json:"revision"`
-	SshKey   string `json:"ssh_key"`
 	Type     string `json:"type"`
 	Url      string `json:"url"`
 	Username string `json:"username"`
 	Password string `json:"password"`
+	Revision string `json:"revision"`
+	SshKey   string `json:"ssh_key"`
 }
 
 type AwsOpsworksApplicationSpecEnvironment struct {
@@ -39,27 +33,39 @@ type AwsOpsworksApplicationSpecEnvironment struct {
 	Secure bool   `json:"secure"`
 }
 
-type AwsOpsworksApplicationSpec struct {
-	Type                   string                       `json:"type"`
-	EnableSsl              bool                         `json:"enable_ssl"`
-	SslConfiguration       []AwsOpsworksApplicationSpec `json:"ssl_configuration"`
-	DocumentRoot           string                       `json:"document_root"`
-	DataSourceType         string                       `json:"data_source_type"`
-	DataSourceArn          string                       `json:"data_source_arn"`
-	ShortName              string                       `json:"short_name"`
-	StackId                string                       `json:"stack_id"`
-	AutoBundleOnDeploy     string                       `json:"auto_bundle_on_deploy"`
-	DataSourceDatabaseName string                       `json:"data_source_database_name"`
-	Description            string                       `json:"description"`
-	Domains                []string                     `json:"domains"`
-	Name                   string                       `json:"name"`
-	RailsEnv               string                       `json:"rails_env"`
-	AwsFlowRubySettings    string                       `json:"aws_flow_ruby_settings"`
-	AppSource              []AwsOpsworksApplicationSpec `json:"app_source"`
-	Environment            []AwsOpsworksApplicationSpec `json:"environment"`
+type AwsOpsworksApplicationSpecSslConfiguration struct {
+	Chain       string `json:"chain"`
+	Certificate string `json:"certificate"`
+	PrivateKey  string `json:"private_key"`
 }
 
+type AwsOpsworksApplicationSpec struct {
+	Description            string                       `json:"description"`
+	EnableSsl              bool                         `json:"enable_ssl"`
+	AppSource              []AwsOpsworksApplicationSpec `json:"app_source"`
+	StackId                string                       `json:"stack_id"`
+	RailsEnv               string                       `json:"rails_env"`
+	AwsFlowRubySettings    string                       `json:"aws_flow_ruby_settings"`
+	DataSourceType         string                       `json:"data_source_type"`
+	DataSourceDatabaseName string                       `json:"data_source_database_name"`
+	Domains                []string                     `json:"domains"`
+	Environment            []AwsOpsworksApplicationSpec `json:"environment"`
+	Type                   string                       `json:"type"`
+	SslConfiguration       []AwsOpsworksApplicationSpec `json:"ssl_configuration"`
+	ShortName              string                       `json:"short_name"`
+	DocumentRoot           string                       `json:"document_root"`
+	AutoBundleOnDeploy     string                       `json:"auto_bundle_on_deploy"`
+	DataSourceArn          string                       `json:"data_source_arn"`
+	Name                   string                       `json:"name"`
+}
+
+
+
 type AwsOpsworksApplicationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

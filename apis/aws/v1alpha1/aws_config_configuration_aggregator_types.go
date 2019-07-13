@@ -31,13 +31,19 @@ type AwsConfigConfigurationAggregatorSpecOrganizationAggregationSource struct {
 }
 
 type AwsConfigConfigurationAggregatorSpec struct {
-	AccountAggregationSource      []AwsConfigConfigurationAggregatorSpec `json:"account_aggregation_source"`
-	OrganizationAggregationSource []AwsConfigConfigurationAggregatorSpec `json:"organization_aggregation_source"`
 	Arn                           string                                 `json:"arn"`
 	Name                          string                                 `json:"name"`
+	AccountAggregationSource      []AwsConfigConfigurationAggregatorSpec `json:"account_aggregation_source"`
+	OrganizationAggregationSource []AwsConfigConfigurationAggregatorSpec `json:"organization_aggregation_source"`
 }
 
+
+
 type AwsConfigConfigurationAggregatorStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

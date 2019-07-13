@@ -19,11 +19,17 @@ type AwsWafregionalWebAclAssociation struct {
 }
 
 type AwsWafregionalWebAclAssociationSpec struct {
-	WebAclId    string `json:"web_acl_id"`
 	ResourceArn string `json:"resource_arn"`
+	WebAclId    string `json:"web_acl_id"`
 }
 
+
+
 type AwsWafregionalWebAclAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

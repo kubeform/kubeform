@@ -18,57 +18,63 @@ type GoogleComputeBackendService struct {
 	Status            GoogleComputeBackendServiceStatus `json:"status,omitempty"`
 }
 
-type GoogleComputeBackendServiceSpecIap struct {
-	Oauth2ClientId     string `json:"oauth2_client_id"`
-	Oauth2ClientSecret string `json:"oauth2_client_secret"`
-}
-
-type GoogleComputeBackendServiceSpecBackend struct {
-	MaxRatePerInstance        float64 `json:"max_rate_per_instance"`
-	MaxUtilization            float64 `json:"max_utilization"`
-	CapacityScaler            float64 `json:"capacity_scaler"`
-	BalancingMode             string  `json:"balancing_mode"`
-	Description               string  `json:"description"`
-	MaxRate                   int     `json:"max_rate"`
-	MaxConnections            int     `json:"max_connections"`
-	MaxConnectionsPerInstance int     `json:"max_connections_per_instance"`
-	Group                     string  `json:"group"`
-}
-
 type GoogleComputeBackendServiceSpecCdnPolicyCacheKeyPolicy struct {
+	IncludeHost          bool     `json:"include_host"`
+	IncludeProtocol      bool     `json:"include_protocol"`
 	IncludeQueryString   bool     `json:"include_query_string"`
 	QueryStringBlacklist []string `json:"query_string_blacklist"`
 	QueryStringWhitelist []string `json:"query_string_whitelist"`
-	IncludeHost          bool     `json:"include_host"`
-	IncludeProtocol      bool     `json:"include_protocol"`
 }
 
 type GoogleComputeBackendServiceSpecCdnPolicy struct {
 	CacheKeyPolicy []GoogleComputeBackendServiceSpecCdnPolicy `json:"cache_key_policy"`
 }
 
-type GoogleComputeBackendServiceSpec struct {
-	ConnectionDrainingTimeoutSec int                               `json:"connection_draining_timeout_sec"`
-	CustomRequestHeaders         []string                          `json:"custom_request_headers"`
-	Description                  string                            `json:"description"`
-	Fingerprint                  string                            `json:"fingerprint"`
-	SecurityPolicy               string                            `json:"security_policy"`
-	SelfLink                     string                            `json:"self_link"`
-	SessionAffinity              string                            `json:"session_affinity"`
-	Iap                          []GoogleComputeBackendServiceSpec `json:"iap"`
-	Backend                      []GoogleComputeBackendServiceSpec `json:"backend"`
-	EnableCdn                    bool                              `json:"enable_cdn"`
-	PortName                     string                            `json:"port_name"`
-	Project                      string                            `json:"project"`
-	Name                         string                            `json:"name"`
-	Region                       string                            `json:"region"`
-	TimeoutSec                   int                               `json:"timeout_sec"`
-	HealthChecks                 []string                          `json:"health_checks"`
-	CdnPolicy                    []GoogleComputeBackendServiceSpec `json:"cdn_policy"`
-	Protocol                     string                            `json:"protocol"`
+type GoogleComputeBackendServiceSpecIap struct {
+	Oauth2ClientId     string `json:"oauth2_client_id"`
+	Oauth2ClientSecret string `json:"oauth2_client_secret"`
 }
 
+type GoogleComputeBackendServiceSpecBackend struct {
+	MaxUtilization            float64 `json:"max_utilization"`
+	Group                     string  `json:"group"`
+	CapacityScaler            float64 `json:"capacity_scaler"`
+	Description               string  `json:"description"`
+	MaxRate                   int     `json:"max_rate"`
+	MaxConnections            int     `json:"max_connections"`
+	BalancingMode             string  `json:"balancing_mode"`
+	MaxRatePerInstance        float64 `json:"max_rate_per_instance"`
+	MaxConnectionsPerInstance int     `json:"max_connections_per_instance"`
+}
+
+type GoogleComputeBackendServiceSpec struct {
+	HealthChecks                 []string                          `json:"health_checks"`
+	CdnPolicy                    []GoogleComputeBackendServiceSpec `json:"cdn_policy"`
+	SelfLink                     string                            `json:"self_link"`
+	TimeoutSec                   int                               `json:"timeout_sec"`
+	Project                      string                            `json:"project"`
+	Name                         string                            `json:"name"`
+	Iap                          []GoogleComputeBackendServiceSpec `json:"iap"`
+	Backend                      []GoogleComputeBackendServiceSpec `json:"backend"`
+	PortName                     string                            `json:"port_name"`
+	CustomRequestHeaders         []string                          `json:"custom_request_headers"`
+	Description                  string                            `json:"description"`
+	EnableCdn                    bool                              `json:"enable_cdn"`
+	SessionAffinity              string                            `json:"session_affinity"`
+	ConnectionDrainingTimeoutSec int                               `json:"connection_draining_timeout_sec"`
+	Fingerprint                  string                            `json:"fingerprint"`
+	Protocol                     string                            `json:"protocol"`
+	Region                       string                            `json:"region"`
+	SecurityPolicy               string                            `json:"security_policy"`
+}
+
+
+
 type GoogleComputeBackendServiceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

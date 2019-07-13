@@ -19,24 +19,30 @@ type AwsCognitoUserPoolClient struct {
 }
 
 type AwsCognitoUserPoolClientSpec struct {
-	ExplicitAuthFlows               []string `json:"explicit_auth_flows"`
-	ReadAttributes                  []string `json:"read_attributes"`
-	WriteAttributes                 []string `json:"write_attributes"`
 	RefreshTokenValidity            int      `json:"refresh_token_validity"`
-	AllowedOauthScopes              []string `json:"allowed_oauth_scopes"`
 	CallbackUrls                    []string `json:"callback_urls"`
-	ClientSecret                    string   `json:"client_secret"`
-	GenerateSecret                  bool     `json:"generate_secret"`
-	DefaultRedirectUri              string   `json:"default_redirect_uri"`
-	AllowedOauthFlows               []string `json:"allowed_oauth_flows"`
-	AllowedOauthFlowsUserPoolClient bool     `json:"allowed_oauth_flows_user_pool_client"`
-	UserPoolId                      string   `json:"user_pool_id"`
 	SupportedIdentityProviders      []string `json:"supported_identity_providers"`
-	Name                            string   `json:"name"`
+	GenerateSecret                  bool     `json:"generate_secret"`
+	ReadAttributes                  []string `json:"read_attributes"`
+	AllowedOauthFlowsUserPoolClient bool     `json:"allowed_oauth_flows_user_pool_client"`
+	AllowedOauthScopes              []string `json:"allowed_oauth_scopes"`
+	UserPoolId                      string   `json:"user_pool_id"`
+	WriteAttributes                 []string `json:"write_attributes"`
+	AllowedOauthFlows               []string `json:"allowed_oauth_flows"`
+	DefaultRedirectUri              string   `json:"default_redirect_uri"`
 	LogoutUrls                      []string `json:"logout_urls"`
+	Name                            string   `json:"name"`
+	ClientSecret                    string   `json:"client_secret"`
+	ExplicitAuthFlows               []string `json:"explicit_auth_flows"`
 }
 
+
+
 type AwsCognitoUserPoolClientStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

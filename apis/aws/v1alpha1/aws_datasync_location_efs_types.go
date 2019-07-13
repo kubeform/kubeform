@@ -24,15 +24,21 @@ type AwsDatasyncLocationEfsSpecEc2Config struct {
 }
 
 type AwsDatasyncLocationEfsSpec struct {
-	Ec2Config        []AwsDatasyncLocationEfsSpec `json:"ec2_config"`
 	EfsFileSystemArn string                       `json:"efs_file_system_arn"`
 	Subdirectory     string                       `json:"subdirectory"`
 	Tags             map[string]string            `json:"tags"`
 	Uri              string                       `json:"uri"`
 	Arn              string                       `json:"arn"`
+	Ec2Config        []AwsDatasyncLocationEfsSpec `json:"ec2_config"`
 }
 
+
+
 type AwsDatasyncLocationEfsStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

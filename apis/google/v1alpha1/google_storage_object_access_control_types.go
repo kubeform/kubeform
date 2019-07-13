@@ -24,18 +24,24 @@ type GoogleStorageObjectAccessControlSpecProjectTeam struct {
 }
 
 type GoogleStorageObjectAccessControlSpec struct {
-	Entity      string                                 `json:"entity"`
-	Object      string                                 `json:"object"`
-	Domain      string                                 `json:"domain"`
-	Email       string                                 `json:"email"`
-	EntityId    string                                 `json:"entity_id"`
-	Generation  int                                    `json:"generation"`
 	Bucket      string                                 `json:"bucket"`
-	ProjectTeam []GoogleStorageObjectAccessControlSpec `json:"project_team"`
+	Entity      string                                 `json:"entity"`
 	Role        string                                 `json:"role"`
+	Domain      string                                 `json:"domain"`
+	EntityId    string                                 `json:"entity_id"`
+	Object      string                                 `json:"object"`
+	Email       string                                 `json:"email"`
+	Generation  int                                    `json:"generation"`
+	ProjectTeam []GoogleStorageObjectAccessControlSpec `json:"project_team"`
 }
 
+
+
 type GoogleStorageObjectAccessControlStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

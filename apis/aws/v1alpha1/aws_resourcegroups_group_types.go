@@ -19,8 +19,8 @@ type AwsResourcegroupsGroup struct {
 }
 
 type AwsResourcegroupsGroupSpecResourceQuery struct {
-	Type  string `json:"type"`
 	Query string `json:"query"`
+	Type  string `json:"type"`
 }
 
 type AwsResourcegroupsGroupSpec struct {
@@ -30,7 +30,13 @@ type AwsResourcegroupsGroupSpec struct {
 	Arn           string                       `json:"arn"`
 }
 
+
+
 type AwsResourcegroupsGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

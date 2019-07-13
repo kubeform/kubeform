@@ -19,26 +19,32 @@ type AwsAcmCertificate struct {
 }
 
 type AwsAcmCertificateSpecDomainValidationOptions struct {
+	ResourceRecordValue string `json:"resource_record_value"`
 	DomainName          string `json:"domain_name"`
 	ResourceRecordName  string `json:"resource_record_name"`
 	ResourceRecordType  string `json:"resource_record_type"`
-	ResourceRecordValue string `json:"resource_record_value"`
 }
 
 type AwsAcmCertificateSpec struct {
-	CertificateBody         string                  `json:"certificate_body"`
+	CertificateChain        string                  `json:"certificate_chain"`
 	PrivateKey              string                  `json:"private_key"`
 	SubjectAlternativeNames []string                `json:"subject_alternative_names"`
 	ValidationMethod        string                  `json:"validation_method"`
+	Arn                     string                  `json:"arn"`
+	CertificateBody         string                  `json:"certificate_body"`
+	DomainName              string                  `json:"domain_name"`
+	DomainValidationOptions []AwsAcmCertificateSpec `json:"domain_validation_options"`
 	ValidationEmails        []string                `json:"validation_emails"`
 	Tags                    map[string]string       `json:"tags"`
-	CertificateChain        string                  `json:"certificate_chain"`
-	DomainName              string                  `json:"domain_name"`
-	Arn                     string                  `json:"arn"`
-	DomainValidationOptions []AwsAcmCertificateSpec `json:"domain_validation_options"`
 }
 
+
+
 type AwsAcmCertificateStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

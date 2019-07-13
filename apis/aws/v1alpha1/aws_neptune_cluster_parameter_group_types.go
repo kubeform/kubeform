@@ -25,16 +25,22 @@ type AwsNeptuneClusterParameterGroupSpecParameter struct {
 }
 
 type AwsNeptuneClusterParameterGroupSpec struct {
-	Description string                                `json:"description"`
-	Parameter   []AwsNeptuneClusterParameterGroupSpec `json:"parameter"`
-	Tags        map[string]string                     `json:"tags"`
 	Arn         string                                `json:"arn"`
 	Name        string                                `json:"name"`
 	NamePrefix  string                                `json:"name_prefix"`
 	Family      string                                `json:"family"`
+	Description string                                `json:"description"`
+	Parameter   []AwsNeptuneClusterParameterGroupSpec `json:"parameter"`
+	Tags        map[string]string                     `json:"tags"`
 }
 
+
+
 type AwsNeptuneClusterParameterGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

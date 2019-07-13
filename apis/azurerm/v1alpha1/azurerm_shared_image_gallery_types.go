@@ -19,15 +19,21 @@ type AzurermSharedImageGallery struct {
 }
 
 type AzurermSharedImageGallerySpec struct {
-	Description       string            `json:"description"`
-	Tags              map[string]string `json:"tags"`
-	UniqueName        string            `json:"unique_name"`
 	Name              string            `json:"name"`
 	ResourceGroupName string            `json:"resource_group_name"`
 	Location          string            `json:"location"`
+	Description       string            `json:"description"`
+	Tags              map[string]string `json:"tags"`
+	UniqueName        string            `json:"unique_name"`
 }
 
+
+
 type AzurermSharedImageGalleryStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

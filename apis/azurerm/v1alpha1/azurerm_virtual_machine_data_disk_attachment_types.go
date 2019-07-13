@@ -19,15 +19,21 @@ type AzurermVirtualMachineDataDiskAttachment struct {
 }
 
 type AzurermVirtualMachineDataDiskAttachmentSpec struct {
-	CreateOption            string `json:"create_option"`
-	WriteAcceleratorEnabled bool   `json:"write_accelerator_enabled"`
 	ManagedDiskId           string `json:"managed_disk_id"`
 	VirtualMachineId        string `json:"virtual_machine_id"`
 	Lun                     int    `json:"lun"`
 	Caching                 string `json:"caching"`
+	CreateOption            string `json:"create_option"`
+	WriteAcceleratorEnabled bool   `json:"write_accelerator_enabled"`
 }
 
+
+
 type AzurermVirtualMachineDataDiskAttachmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

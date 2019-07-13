@@ -19,24 +19,30 @@ type AzurermServicebusTopic struct {
 }
 
 type AzurermServicebusTopicSpec struct {
-	DuplicateDetectionHistoryTimeWindow     string `json:"duplicate_detection_history_time_window"`
-	EnableBatchedOperations                 bool   `json:"enable_batched_operations"`
-	SupportOrdering                         bool   `json:"support_ordering"`
-	Status                                  string `json:"status"`
-	EnableExpress                           bool   `json:"enable_express"`
-	EnableFilteringMessagesBeforePublishing bool   `json:"enable_filtering_messages_before_publishing"`
-	Name                                    string `json:"name"`
-	NamespaceName                           string `json:"namespace_name"`
 	Location                                string `json:"location"`
+	ResourceGroupName                       string `json:"resource_group_name"`
+	EnablePartitioning                      bool   `json:"enable_partitioning"`
 	MaxSizeInMegabytes                      int    `json:"max_size_in_megabytes"`
 	RequiresDuplicateDetection              bool   `json:"requires_duplicate_detection"`
+	SupportOrdering                         bool   `json:"support_ordering"`
+	EnableFilteringMessagesBeforePublishing bool   `json:"enable_filtering_messages_before_publishing"`
 	AutoDeleteOnIdle                        string `json:"auto_delete_on_idle"`
+	DuplicateDetectionHistoryTimeWindow     string `json:"duplicate_detection_history_time_window"`
+	EnableExpress                           bool   `json:"enable_express"`
+	Name                                    string `json:"name"`
+	EnableBatchedOperations                 bool   `json:"enable_batched_operations"`
+	NamespaceName                           string `json:"namespace_name"`
+	Status                                  string `json:"status"`
 	DefaultMessageTtl                       string `json:"default_message_ttl"`
-	EnablePartitioning                      bool   `json:"enable_partitioning"`
-	ResourceGroupName                       string `json:"resource_group_name"`
 }
 
+
+
 type AzurermServicebusTopicStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

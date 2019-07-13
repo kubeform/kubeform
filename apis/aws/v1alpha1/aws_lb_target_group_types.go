@@ -25,36 +25,42 @@ type AwsLbTargetGroupSpecStickiness struct {
 }
 
 type AwsLbTargetGroupSpecHealthCheck struct {
-	UnhealthyThreshold int    `json:"unhealthy_threshold"`
-	Enabled            bool   `json:"enabled"`
+	HealthyThreshold   int    `json:"healthy_threshold"`
+	Matcher            string `json:"matcher"`
 	Interval           int    `json:"interval"`
 	Port               string `json:"port"`
 	Timeout            int    `json:"timeout"`
+	UnhealthyThreshold int    `json:"unhealthy_threshold"`
+	Enabled            bool   `json:"enabled"`
 	Path               string `json:"path"`
 	Protocol           string `json:"protocol"`
-	HealthyThreshold   int    `json:"healthy_threshold"`
-	Matcher            string `json:"matcher"`
 }
 
 type AwsLbTargetGroupSpec struct {
-	LambdaMultiValueHeadersEnabled bool                   `json:"lambda_multi_value_headers_enabled"`
-	TargetType                     string                 `json:"target_type"`
-	Arn                            string                 `json:"arn"`
-	Protocol                       string                 `json:"protocol"`
-	Name                           string                 `json:"name"`
-	ProxyProtocolV2                bool                   `json:"proxy_protocol_v2"`
-	SlowStart                      int                    `json:"slow_start"`
-	Stickiness                     []AwsLbTargetGroupSpec `json:"stickiness"`
 	ArnSuffix                      string                 `json:"arn_suffix"`
-	DeregistrationDelay            int                    `json:"deregistration_delay"`
+	Port                           int                    `json:"port"`
+	NamePrefix                     string                 `json:"name_prefix"`
+	Protocol                       string                 `json:"protocol"`
 	VpcId                          string                 `json:"vpc_id"`
+	Stickiness                     []AwsLbTargetGroupSpec `json:"stickiness"`
+	Name                           string                 `json:"name"`
+	TargetType                     string                 `json:"target_type"`
 	HealthCheck                    []AwsLbTargetGroupSpec `json:"health_check"`
 	Tags                           map[string]string      `json:"tags"`
-	NamePrefix                     string                 `json:"name_prefix"`
-	Port                           int                    `json:"port"`
+	LambdaMultiValueHeadersEnabled bool                   `json:"lambda_multi_value_headers_enabled"`
+	Arn                            string                 `json:"arn"`
+	DeregistrationDelay            int                    `json:"deregistration_delay"`
+	SlowStart                      int                    `json:"slow_start"`
+	ProxyProtocolV2                bool                   `json:"proxy_protocol_v2"`
 }
 
+
+
 type AwsLbTargetGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

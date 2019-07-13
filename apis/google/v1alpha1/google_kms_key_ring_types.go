@@ -19,13 +19,19 @@ type GoogleKmsKeyRing struct {
 }
 
 type GoogleKmsKeyRingSpec struct {
-	SelfLink string `json:"self_link"`
 	Name     string `json:"name"`
 	Location string `json:"location"`
 	Project  string `json:"project"`
+	SelfLink string `json:"self_link"`
 }
 
+
+
 type GoogleKmsKeyRingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

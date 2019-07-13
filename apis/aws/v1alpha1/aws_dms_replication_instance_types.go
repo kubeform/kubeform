@@ -19,26 +19,32 @@ type AwsDmsReplicationInstance struct {
 }
 
 type AwsDmsReplicationInstanceSpec struct {
-	ReplicationInstancePrivateIps []string          `json:"replication_instance_private_ips"`
-	AvailabilityZone              string            `json:"availability_zone"`
-	ReplicationSubnetGroupId      string            `json:"replication_subnet_group_id"`
-	VpcSecurityGroupIds           []string          `json:"vpc_security_group_ids"`
-	ReplicationInstanceId         string            `json:"replication_instance_id"`
-	ReplicationInstancePublicIps  []string          `json:"replication_instance_public_ips"`
-	ApplyImmediately              bool              `json:"apply_immediately"`
-	AutoMinorVersionUpgrade       bool              `json:"auto_minor_version_upgrade"`
-	EngineVersion                 string            `json:"engine_version"`
+	MultiAz                       bool              `json:"multi_az"`
 	PreferredMaintenanceWindow    string            `json:"preferred_maintenance_window"`
 	PubliclyAccessible            bool              `json:"publicly_accessible"`
 	ReplicationInstanceClass      string            `json:"replication_instance_class"`
-	Tags                          map[string]string `json:"tags"`
-	AllocatedStorage              int               `json:"allocated_storage"`
+	VpcSecurityGroupIds           []string          `json:"vpc_security_group_ids"`
+	ApplyImmediately              bool              `json:"apply_immediately"`
+	AutoMinorVersionUpgrade       bool              `json:"auto_minor_version_upgrade"`
+	EngineVersion                 string            `json:"engine_version"`
 	KmsKeyArn                     string            `json:"kms_key_arn"`
-	MultiAz                       bool              `json:"multi_az"`
+	ReplicationInstancePrivateIps []string          `json:"replication_instance_private_ips"`
+	ReplicationInstancePublicIps  []string          `json:"replication_instance_public_ips"`
+	AvailabilityZone              string            `json:"availability_zone"`
+	AllocatedStorage              int               `json:"allocated_storage"`
 	ReplicationInstanceArn        string            `json:"replication_instance_arn"`
+	ReplicationInstanceId         string            `json:"replication_instance_id"`
+	ReplicationSubnetGroupId      string            `json:"replication_subnet_group_id"`
+	Tags                          map[string]string `json:"tags"`
 }
 
+
+
 type AwsDmsReplicationInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

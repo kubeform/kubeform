@@ -24,7 +24,13 @@ type AzurermNetworkInterfaceApplicationSecurityGroupAssociationSpec struct {
 	ApplicationSecurityGroupId string `json:"application_security_group_id"`
 }
 
+
+
 type AzurermNetworkInterfaceApplicationSecurityGroupAssociationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

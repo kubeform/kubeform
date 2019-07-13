@@ -19,10 +19,10 @@ type AwsSsmDocument struct {
 }
 
 type AwsSsmDocumentSpecParameter struct {
-	Name         string `json:"name"`
 	DefaultValue string `json:"default_value"`
 	Description  string `json:"description"`
 	Type         string `json:"type"`
+	Name         string `json:"name"`
 }
 
 type AwsSsmDocumentSpecPermissions struct {
@@ -31,27 +31,33 @@ type AwsSsmDocumentSpecPermissions struct {
 }
 
 type AwsSsmDocumentSpec struct {
-	Content        string               `json:"content"`
-	Status         string               `json:"status"`
-	Tags           map[string]string    `json:"tags"`
-	Parameter      []AwsSsmDocumentSpec `json:"parameter"`
 	Arn            string               `json:"arn"`
-	Name           string               `json:"name"`
-	Description    string               `json:"description"`
-	Hash           string               `json:"hash"`
+	SchemaVersion  string               `json:"schema_version"`
 	HashType       string               `json:"hash_type"`
-	LatestVersion  string               `json:"latest_version"`
 	Owner          string               `json:"owner"`
 	DocumentType   string               `json:"document_type"`
-	SchemaVersion  string               `json:"schema_version"`
-	DefaultVersion string               `json:"default_version"`
-	PlatformTypes  []string             `json:"platform_types"`
-	Permissions    map[string]string    `json:"permissions"`
-	DocumentFormat string               `json:"document_format"`
 	CreatedDate    string               `json:"created_date"`
+	PlatformTypes  []string             `json:"platform_types"`
+	Parameter      []AwsSsmDocumentSpec `json:"parameter"`
+	Permissions    map[string]string    `json:"permissions"`
+	Name           string               `json:"name"`
+	DocumentFormat string               `json:"document_format"`
+	Status         string               `json:"status"`
+	Content        string               `json:"content"`
+	DefaultVersion string               `json:"default_version"`
+	Description    string               `json:"description"`
+	Hash           string               `json:"hash"`
+	LatestVersion  string               `json:"latest_version"`
+	Tags           map[string]string    `json:"tags"`
 }
 
+
+
 type AwsSsmDocumentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

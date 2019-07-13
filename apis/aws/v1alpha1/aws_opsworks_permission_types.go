@@ -19,14 +19,20 @@ type AwsOpsworksPermission struct {
 }
 
 type AwsOpsworksPermissionSpec struct {
-	StackId   string `json:"stack_id"`
 	AllowSsh  bool   `json:"allow_ssh"`
 	AllowSudo bool   `json:"allow_sudo"`
 	UserArn   string `json:"user_arn"`
 	Level     string `json:"level"`
+	StackId   string `json:"stack_id"`
 }
 
+
+
 type AwsOpsworksPermissionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

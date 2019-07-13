@@ -19,13 +19,19 @@ type AwsRedshiftSnapshotCopyGrant struct {
 }
 
 type AwsRedshiftSnapshotCopyGrantSpec struct {
-	KmsKeyId              string            `json:"kms_key_id"`
-	Tags                  map[string]string `json:"tags"`
 	Arn                   string            `json:"arn"`
 	SnapshotCopyGrantName string            `json:"snapshot_copy_grant_name"`
+	KmsKeyId              string            `json:"kms_key_id"`
+	Tags                  map[string]string `json:"tags"`
 }
 
+
+
 type AwsRedshiftSnapshotCopyGrantStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

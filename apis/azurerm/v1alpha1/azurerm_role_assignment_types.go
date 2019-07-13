@@ -19,14 +19,20 @@ type AzurermRoleAssignment struct {
 }
 
 type AzurermRoleAssignmentSpec struct {
+	PrincipalId        string `json:"principal_id"`
 	Name               string `json:"name"`
 	Scope              string `json:"scope"`
 	RoleDefinitionId   string `json:"role_definition_id"`
 	RoleDefinitionName string `json:"role_definition_name"`
-	PrincipalId        string `json:"principal_id"`
 }
 
+
+
 type AzurermRoleAssignmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

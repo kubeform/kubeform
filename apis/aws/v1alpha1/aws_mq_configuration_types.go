@@ -19,17 +19,23 @@ type AwsMqConfiguration struct {
 }
 
 type AwsMqConfigurationSpec struct {
+	Name           string            `json:"name"`
+	LatestRevision int               `json:"latest_revision"`
+	Tags           map[string]string `json:"tags"`
 	Arn            string            `json:"arn"`
 	Data           string            `json:"data"`
 	Description    string            `json:"description"`
 	EngineType     string            `json:"engine_type"`
 	EngineVersion  string            `json:"engine_version"`
-	Name           string            `json:"name"`
-	LatestRevision int               `json:"latest_revision"`
-	Tags           map[string]string `json:"tags"`
 }
 
+
+
 type AwsMqConfigurationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

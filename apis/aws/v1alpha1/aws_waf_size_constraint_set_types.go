@@ -19,8 +19,8 @@ type AwsWafSizeConstraintSet struct {
 }
 
 type AwsWafSizeConstraintSetSpecSizeConstraintsFieldToMatch struct {
-	Type string `json:"type"`
 	Data string `json:"data"`
+	Type string `json:"type"`
 }
 
 type AwsWafSizeConstraintSetSpecSizeConstraints struct {
@@ -35,7 +35,13 @@ type AwsWafSizeConstraintSetSpec struct {
 	SizeConstraints []AwsWafSizeConstraintSetSpec `json:"size_constraints"`
 }
 
+
+
 type AwsWafSizeConstraintSetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -18,12 +18,6 @@ type AzurermMariadbServer struct {
 	Status            AzurermMariadbServerStatus `json:"status,omitempty"`
 }
 
-type AzurermMariadbServerSpecStorageProfile struct {
-	StorageMb           int    `json:"storage_mb"`
-	BackupRetentionDays int    `json:"backup_retention_days"`
-	GeoRedundantBackup  string `json:"geo_redundant_backup"`
-}
-
 type AzurermMariadbServerSpecSku struct {
 	Name     string `json:"name"`
 	Capacity int    `json:"capacity"`
@@ -31,21 +25,33 @@ type AzurermMariadbServerSpecSku struct {
 	Family   string `json:"family"`
 }
 
+type AzurermMariadbServerSpecStorageProfile struct {
+	StorageMb           int    `json:"storage_mb"`
+	BackupRetentionDays int    `json:"backup_retention_days"`
+	GeoRedundantBackup  string `json:"geo_redundant_backup"`
+}
+
 type AzurermMariadbServerSpec struct {
-	AdministratorLoginPassword string                     `json:"administrator_login_password"`
-	StorageProfile             []AzurermMariadbServerSpec `json:"storage_profile"`
 	Location                   string                     `json:"location"`
-	Sku                        []AzurermMariadbServerSpec `json:"sku"`
 	AdministratorLogin         string                     `json:"administrator_login"`
-	SslEnforcement             string                     `json:"ssl_enforcement"`
+	Version                    string                     `json:"version"`
 	Fqdn                       string                     `json:"fqdn"`
 	Tags                       map[string]string          `json:"tags"`
 	Name                       string                     `json:"name"`
 	ResourceGroupName          string                     `json:"resource_group_name"`
-	Version                    string                     `json:"version"`
+	Sku                        []AzurermMariadbServerSpec `json:"sku"`
+	AdministratorLoginPassword string                     `json:"administrator_login_password"`
+	StorageProfile             []AzurermMariadbServerSpec `json:"storage_profile"`
+	SslEnforcement             string                     `json:"ssl_enforcement"`
 }
 
+
+
 type AzurermMariadbServerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,13 +19,19 @@ type GoogleServiceAccountIamMember struct {
 }
 
 type GoogleServiceAccountIamMemberSpec struct {
-	ServiceAccountId string `json:"service_account_id"`
 	Role             string `json:"role"`
 	Member           string `json:"member"`
 	Etag             string `json:"etag"`
+	ServiceAccountId string `json:"service_account_id"`
 }
 
+
+
 type GoogleServiceAccountIamMemberStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

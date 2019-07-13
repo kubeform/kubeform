@@ -23,7 +23,13 @@ type AwsVpnConnectionRouteSpec struct {
 	VpnConnectionId      string `json:"vpn_connection_id"`
 }
 
+
+
 type AwsVpnConnectionRouteStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

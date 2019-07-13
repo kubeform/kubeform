@@ -19,13 +19,19 @@ type AwsSesTemplate struct {
 }
 
 type AwsSesTemplateSpec struct {
-	Subject string `json:"subject"`
 	Text    string `json:"text"`
 	Name    string `json:"name"`
 	Html    string `json:"html"`
+	Subject string `json:"subject"`
 }
 
+
+
 type AwsSesTemplateStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

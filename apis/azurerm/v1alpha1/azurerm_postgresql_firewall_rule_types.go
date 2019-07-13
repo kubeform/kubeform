@@ -19,14 +19,20 @@ type AzurermPostgresqlFirewallRule struct {
 }
 
 type AzurermPostgresqlFirewallRuleSpec struct {
+	ResourceGroupName string `json:"resource_group_name"`
+	ServerName        string `json:"server_name"`
 	StartIpAddress    string `json:"start_ip_address"`
 	EndIpAddress      string `json:"end_ip_address"`
 	Name              string `json:"name"`
-	ResourceGroupName string `json:"resource_group_name"`
-	ServerName        string `json:"server_name"`
 }
 
+
+
 type AzurermPostgresqlFirewallRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

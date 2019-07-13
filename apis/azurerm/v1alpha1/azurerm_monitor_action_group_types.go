@@ -24,9 +24,9 @@ type AzurermMonitorActionGroupSpecEmailReceiver struct {
 }
 
 type AzurermMonitorActionGroupSpecSmsReceiver struct {
+	Name        string `json:"name"`
 	CountryCode string `json:"country_code"`
 	PhoneNumber string `json:"phone_number"`
-	Name        string `json:"name"`
 }
 
 type AzurermMonitorActionGroupSpecWebhookReceiver struct {
@@ -45,7 +45,13 @@ type AzurermMonitorActionGroupSpec struct {
 	WebhookReceiver   []AzurermMonitorActionGroupSpec `json:"webhook_receiver"`
 }
 
+
+
 type AzurermMonitorActionGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

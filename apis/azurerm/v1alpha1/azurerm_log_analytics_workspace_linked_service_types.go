@@ -23,16 +23,22 @@ type AzurermLogAnalyticsWorkspaceLinkedServiceSpecLinkedServiceProperties struct
 }
 
 type AzurermLogAnalyticsWorkspaceLinkedServiceSpec struct {
-	ResourceGroupName       string                                          `json:"resource_group_name"`
-	WorkspaceName           string                                          `json:"workspace_name"`
 	LinkedServiceName       string                                          `json:"linked_service_name"`
 	ResourceId              string                                          `json:"resource_id"`
 	LinkedServiceProperties []AzurermLogAnalyticsWorkspaceLinkedServiceSpec `json:"linked_service_properties"`
 	Name                    string                                          `json:"name"`
 	Tags                    map[string]string                               `json:"tags"`
+	ResourceGroupName       string                                          `json:"resource_group_name"`
+	WorkspaceName           string                                          `json:"workspace_name"`
 }
 
+
+
 type AzurermLogAnalyticsWorkspaceLinkedServiceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

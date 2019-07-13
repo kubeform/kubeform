@@ -19,8 +19,8 @@ type AwsGlobalacceleratorAccelerator struct {
 }
 
 type AwsGlobalacceleratorAcceleratorSpecIpSets struct {
-	IpFamily    string   `json:"ip_family"`
 	IpAddresses []string `json:"ip_addresses"`
+	IpFamily    string   `json:"ip_family"`
 }
 
 type AwsGlobalacceleratorAcceleratorSpecAttributes struct {
@@ -30,14 +30,20 @@ type AwsGlobalacceleratorAcceleratorSpecAttributes struct {
 }
 
 type AwsGlobalacceleratorAcceleratorSpec struct {
-	Name          string                                `json:"name"`
 	IpAddressType string                                `json:"ip_address_type"`
 	Enabled       bool                                  `json:"enabled"`
 	IpSets        []AwsGlobalacceleratorAcceleratorSpec `json:"ip_sets"`
 	Attributes    []AwsGlobalacceleratorAcceleratorSpec `json:"attributes"`
+	Name          string                                `json:"name"`
 }
 
+
+
 type AwsGlobalacceleratorAcceleratorStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

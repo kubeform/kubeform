@@ -19,39 +19,45 @@ type AzurermNetworkInterface struct {
 }
 
 type AzurermNetworkInterfaceSpecIpConfiguration struct {
-	SubnetId                                 string   `json:"subnet_id"`
-	PrivateIpAddressAllocation               string   `json:"private_ip_address_allocation"`
-	LoadBalancerBackendAddressPoolsIds       []string `json:"load_balancer_backend_address_pools_ids"`
-	ApplicationSecurityGroupIds              []string `json:"application_security_group_ids"`
-	Primary                                  bool     `json:"primary"`
+	LoadBalancerInboundNatRulesIds           []string `json:"load_balancer_inbound_nat_rules_ids"`
 	Name                                     string   `json:"name"`
+	SubnetId                                 string   `json:"subnet_id"`
 	PrivateIpAddress                         string   `json:"private_ip_address"`
 	PrivateIpAddressVersion                  string   `json:"private_ip_address_version"`
 	PublicIpAddressId                        string   `json:"public_ip_address_id"`
 	ApplicationGatewayBackendAddressPoolsIds []string `json:"application_gateway_backend_address_pools_ids"`
-	LoadBalancerInboundNatRulesIds           []string `json:"load_balancer_inbound_nat_rules_ids"`
+	LoadBalancerBackendAddressPoolsIds       []string `json:"load_balancer_backend_address_pools_ids"`
+	Primary                                  bool     `json:"primary"`
+	PrivateIpAddressAllocation               string   `json:"private_ip_address_allocation"`
+	ApplicationSecurityGroupIds              []string `json:"application_security_group_ids"`
 }
 
 type AzurermNetworkInterfaceSpec struct {
-	VirtualMachineId            string                        `json:"virtual_machine_id"`
-	EnableIpForwarding          bool                          `json:"enable_ip_forwarding"`
-	Tags                        map[string]string             `json:"tags"`
-	Name                        string                        `json:"name"`
-	Location                    string                        `json:"location"`
-	ResourceGroupName           string                        `json:"resource_group_name"`
 	EnableAcceleratedNetworking bool                          `json:"enable_accelerated_networking"`
-	IpConfiguration             []AzurermNetworkInterfaceSpec `json:"ip_configuration"`
-	InternalDnsNameLabel        string                        `json:"internal_dns_name_label"`
-	AppliedDnsServers           []string                      `json:"applied_dns_servers"`
+	PrivateIpAddresses          []string                      `json:"private_ip_addresses"`
+	Tags                        map[string]string             `json:"tags"`
+	Location                    string                        `json:"location"`
 	NetworkSecurityGroupId      string                        `json:"network_security_group_id"`
 	MacAddress                  string                        `json:"mac_address"`
 	PrivateIpAddress            string                        `json:"private_ip_address"`
-	PrivateIpAddresses          []string                      `json:"private_ip_addresses"`
-	DnsServers                  []string                      `json:"dns_servers"`
+	Name                        string                        `json:"name"`
+	IpConfiguration             []AzurermNetworkInterfaceSpec `json:"ip_configuration"`
+	AppliedDnsServers           []string                      `json:"applied_dns_servers"`
+	ResourceGroupName           string                        `json:"resource_group_name"`
 	InternalFqdn                string                        `json:"internal_fqdn"`
+	EnableIpForwarding          bool                          `json:"enable_ip_forwarding"`
+	VirtualMachineId            string                        `json:"virtual_machine_id"`
+	DnsServers                  []string                      `json:"dns_servers"`
+	InternalDnsNameLabel        string                        `json:"internal_dns_name_label"`
 }
 
+
+
 type AzurermNetworkInterfaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

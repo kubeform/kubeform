@@ -19,13 +19,19 @@ type AwsIamUserPolicy struct {
 }
 
 type AwsIamUserPolicySpec struct {
-	User       string `json:"user"`
-	Policy     string `json:"policy"`
 	Name       string `json:"name"`
 	NamePrefix string `json:"name_prefix"`
+	User       string `json:"user"`
+	Policy     string `json:"policy"`
 }
 
+
+
 type AwsIamUserPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

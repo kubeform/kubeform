@@ -18,6 +18,13 @@ type AwsElasticBeanstalkEnvironment struct {
 	Status            AwsElasticBeanstalkEnvironmentStatus `json:"status,omitempty"`
 }
 
+type AwsElasticBeanstalkEnvironmentSpecAllSettings struct {
+	Value     string `json:"value"`
+	Resource  string `json:"resource"`
+	Namespace string `json:"namespace"`
+	Name      string `json:"name"`
+}
+
 type AwsElasticBeanstalkEnvironmentSpecSetting struct {
 	Namespace string `json:"namespace"`
 	Name      string `json:"name"`
@@ -25,39 +32,38 @@ type AwsElasticBeanstalkEnvironmentSpecSetting struct {
 	Resource  string `json:"resource"`
 }
 
-type AwsElasticBeanstalkEnvironmentSpecAllSettings struct {
-	Namespace string `json:"namespace"`
-	Name      string `json:"name"`
-	Value     string `json:"value"`
-	Resource  string `json:"resource"`
-}
-
 type AwsElasticBeanstalkEnvironmentSpec struct {
-	Instances            []string                             `json:"instances"`
-	Application          string                               `json:"application"`
-	Cname                string                               `json:"cname"`
-	Tier                 string                               `json:"tier"`
-	Setting              []AwsElasticBeanstalkEnvironmentSpec `json:"setting"`
 	PollInterval         string                               `json:"poll_interval"`
-	Tags                 map[string]string                    `json:"tags"`
-	CnamePrefix          string                               `json:"cname_prefix"`
-	PlatformArn          string                               `json:"platform_arn"`
-	TemplateName         string                               `json:"template_name"`
-	AutoscalingGroups    []string                             `json:"autoscaling_groups"`
-	Queues               []string                             `json:"queues"`
-	LoadBalancers        []string                             `json:"load_balancers"`
-	Triggers             []string                             `json:"triggers"`
+	Instances            []string                             `json:"instances"`
 	Arn                  string                               `json:"arn"`
 	Name                 string                               `json:"name"`
+	Application          string                               `json:"application"`
 	VersionLabel         string                               `json:"version_label"`
-	SolutionStackName    string                               `json:"solution_stack_name"`
-	LaunchConfigurations []string                             `json:"launch_configurations"`
+	CnamePrefix          string                               `json:"cname_prefix"`
+	PlatformArn          string                               `json:"platform_arn"`
+	Triggers             []string                             `json:"triggers"`
+	LoadBalancers        []string                             `json:"load_balancers"`
 	Description          string                               `json:"description"`
+	Cname                string                               `json:"cname"`
 	AllSettings          []AwsElasticBeanstalkEnvironmentSpec `json:"all_settings"`
+	TemplateName         string                               `json:"template_name"`
 	WaitForReadyTimeout  string                               `json:"wait_for_ready_timeout"`
+	LaunchConfigurations []string                             `json:"launch_configurations"`
+	SolutionStackName    string                               `json:"solution_stack_name"`
+	Tags                 map[string]string                    `json:"tags"`
+	Tier                 string                               `json:"tier"`
+	Setting              []AwsElasticBeanstalkEnvironmentSpec `json:"setting"`
+	AutoscalingGroups    []string                             `json:"autoscaling_groups"`
+	Queues               []string                             `json:"queues"`
 }
 
+
+
 type AwsElasticBeanstalkEnvironmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

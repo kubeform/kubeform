@@ -19,14 +19,20 @@ type GoogleSpannerDatabaseIamPolicy struct {
 }
 
 type GoogleSpannerDatabaseIamPolicySpec struct {
-	Project    string `json:"project"`
-	Instance   string `json:"instance"`
 	PolicyData string `json:"policy_data"`
 	Etag       string `json:"etag"`
 	Database   string `json:"database"`
+	Project    string `json:"project"`
+	Instance   string `json:"instance"`
 }
 
+
+
 type GoogleSpannerDatabaseIamPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

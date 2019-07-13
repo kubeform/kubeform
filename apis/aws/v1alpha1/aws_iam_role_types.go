@@ -19,21 +19,27 @@ type AwsIamRole struct {
 }
 
 type AwsIamRoleSpec struct {
-	Arn                 string            `json:"arn"`
-	Description         string            `json:"description"`
-	AssumeRolePolicy    string            `json:"assume_role_policy"`
-	CreateDate          string            `json:"create_date"`
-	MaxSessionDuration  int               `json:"max_session_duration"`
 	UniqueId            string            `json:"unique_id"`
 	Name                string            `json:"name"`
+	AssumeRolePolicy    string            `json:"assume_role_policy"`
+	MaxSessionDuration  int               `json:"max_session_duration"`
+	Arn                 string            `json:"arn"`
 	NamePrefix          string            `json:"name_prefix"`
 	Path                string            `json:"path"`
 	PermissionsBoundary string            `json:"permissions_boundary"`
+	Description         string            `json:"description"`
 	ForceDetachPolicies bool              `json:"force_detach_policies"`
+	CreateDate          string            `json:"create_date"`
 	Tags                map[string]string `json:"tags"`
 }
 
+
+
 type AwsIamRoleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

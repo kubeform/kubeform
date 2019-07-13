@@ -19,14 +19,20 @@ type GoogleFolder struct {
 }
 
 type GoogleFolderSpec struct {
-	Parent         string `json:"parent"`
-	DisplayName    string `json:"display_name"`
 	Name           string `json:"name"`
 	LifecycleState string `json:"lifecycle_state"`
 	CreateTime     string `json:"create_time"`
+	Parent         string `json:"parent"`
+	DisplayName    string `json:"display_name"`
 }
 
+
+
 type GoogleFolderStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

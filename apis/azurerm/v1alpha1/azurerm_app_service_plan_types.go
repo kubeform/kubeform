@@ -19,9 +19,9 @@ type AzurermAppServicePlan struct {
 }
 
 type AzurermAppServicePlanSpecSku struct {
+	Tier     string `json:"tier"`
 	Size     string `json:"size"`
 	Capacity int    `json:"capacity"`
-	Tier     string `json:"tier"`
 }
 
 type AzurermAppServicePlanSpecProperties struct {
@@ -31,22 +31,28 @@ type AzurermAppServicePlanSpecProperties struct {
 }
 
 type AzurermAppServicePlanSpec struct {
-	Name                      string                      `json:"name"`
 	Location                  string                      `json:"location"`
-	PerSiteScaling            bool                        `json:"per_site_scaling"`
-	MaximumElasticWorkerCount int                         `json:"maximum_elastic_worker_count"`
-	MaximumNumberOfWorkers    int                         `json:"maximum_number_of_workers"`
-	IsXenon                   bool                        `json:"is_xenon"`
-	ResourceGroupName         string                      `json:"resource_group_name"`
 	Kind                      string                      `json:"kind"`
-	Sku                       []AzurermAppServicePlanSpec `json:"sku"`
-	Properties                []AzurermAppServicePlanSpec `json:"properties"`
 	AppServiceEnvironmentId   string                      `json:"app_service_environment_id"`
 	Reserved                  bool                        `json:"reserved"`
+	MaximumElasticWorkerCount int                         `json:"maximum_elastic_worker_count"`
 	Tags                      map[string]string           `json:"tags"`
+	Name                      string                      `json:"name"`
+	ResourceGroupName         string                      `json:"resource_group_name"`
+	Sku                       []AzurermAppServicePlanSpec `json:"sku"`
+	Properties                []AzurermAppServicePlanSpec `json:"properties"`
+	PerSiteScaling            bool                        `json:"per_site_scaling"`
+	MaximumNumberOfWorkers    int                         `json:"maximum_number_of_workers"`
+	IsXenon                   bool                        `json:"is_xenon"`
 }
 
+
+
 type AzurermAppServicePlanStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

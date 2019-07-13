@@ -21,28 +21,34 @@ type AzurermLb struct {
 type AzurermLbSpecFrontendIpConfiguration struct {
 	Name                       string   `json:"name"`
 	PrivateIpAddressAllocation string   `json:"private_ip_address_allocation"`
-	LoadBalancerRules          []string `json:"load_balancer_rules"`
 	InboundNatRules            []string `json:"inbound_nat_rules"`
 	Zones                      []string `json:"zones"`
 	SubnetId                   string   `json:"subnet_id"`
 	PrivateIpAddress           string   `json:"private_ip_address"`
 	PublicIpAddressId          string   `json:"public_ip_address_id"`
 	PublicIpPrefixId           string   `json:"public_ip_prefix_id"`
+	LoadBalancerRules          []string `json:"load_balancer_rules"`
 	OutboundRules              []string `json:"outbound_rules"`
 }
 
 type AzurermLbSpec struct {
-	PrivateIpAddress        string            `json:"private_ip_address"`
-	PrivateIpAddresses      []string          `json:"private_ip_addresses"`
 	Tags                    map[string]string `json:"tags"`
 	Name                    string            `json:"name"`
 	Location                string            `json:"location"`
 	ResourceGroupName       string            `json:"resource_group_name"`
 	Sku                     string            `json:"sku"`
 	FrontendIpConfiguration []AzurermLbSpec   `json:"frontend_ip_configuration"`
+	PrivateIpAddress        string            `json:"private_ip_address"`
+	PrivateIpAddresses      []string          `json:"private_ip_addresses"`
 }
 
+
+
 type AzurermLbStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,17 +19,23 @@ type AzurermApiManagementCertificate struct {
 }
 
 type AzurermApiManagementCertificateSpec struct {
+	ApiManagementName string `json:"api_management_name"`
+	Data              string `json:"data"`
+	Password          string `json:"password"`
 	Expiration        string `json:"expiration"`
 	Subject           string `json:"subject"`
 	Thumbprint        string `json:"thumbprint"`
 	Name              string `json:"name"`
 	ResourceGroupName string `json:"resource_group_name"`
-	ApiManagementName string `json:"api_management_name"`
-	Data              string `json:"data"`
-	Password          string `json:"password"`
 }
 
+
+
 type AzurermApiManagementCertificateStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

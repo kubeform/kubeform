@@ -18,9 +18,10 @@ type AwsSsmMaintenanceWindowTask struct {
 	Status            AwsSsmMaintenanceWindowTaskStatus `json:"status,omitempty"`
 }
 
-type AwsSsmMaintenanceWindowTaskSpecTaskParameters struct {
-	Name   string   `json:"name"`
-	Values []string `json:"values"`
+type AwsSsmMaintenanceWindowTaskSpecLoggingInfo struct {
+	S3Region       string `json:"s3_region"`
+	S3BucketPrefix string `json:"s3_bucket_prefix"`
+	S3BucketName   string `json:"s3_bucket_name"`
 }
 
 type AwsSsmMaintenanceWindowTaskSpecTargets struct {
@@ -28,28 +29,33 @@ type AwsSsmMaintenanceWindowTaskSpecTargets struct {
 	Values []string `json:"values"`
 }
 
-type AwsSsmMaintenanceWindowTaskSpecLoggingInfo struct {
-	S3BucketName   string `json:"s3_bucket_name"`
-	S3Region       string `json:"s3_region"`
-	S3BucketPrefix string `json:"s3_bucket_prefix"`
+type AwsSsmMaintenanceWindowTaskSpecTaskParameters struct {
+	Name   string   `json:"name"`
+	Values []string `json:"values"`
 }
 
 type AwsSsmMaintenanceWindowTaskSpec struct {
+	MaxErrors      string                            `json:"max_errors"`
+	TaskType       string                            `json:"task_type"`
+	LoggingInfo    []AwsSsmMaintenanceWindowTaskSpec `json:"logging_info"`
+	MaxConcurrency string                            `json:"max_concurrency"`
+	TaskArn        string                            `json:"task_arn"`
+	ServiceRoleArn string                            `json:"service_role_arn"`
+	Targets        []AwsSsmMaintenanceWindowTaskSpec `json:"targets"`
+	Name           string                            `json:"name"`
+	Description    string                            `json:"description"`
 	Priority       int                               `json:"priority"`
 	TaskParameters []AwsSsmMaintenanceWindowTaskSpec `json:"task_parameters"`
 	WindowId       string                            `json:"window_id"`
-	MaxConcurrency string                            `json:"max_concurrency"`
-	ServiceRoleArn string                            `json:"service_role_arn"`
-	Name           string                            `json:"name"`
-	Description    string                            `json:"description"`
-	MaxErrors      string                            `json:"max_errors"`
-	TaskType       string                            `json:"task_type"`
-	TaskArn        string                            `json:"task_arn"`
-	Targets        []AwsSsmMaintenanceWindowTaskSpec `json:"targets"`
-	LoggingInfo    []AwsSsmMaintenanceWindowTaskSpec `json:"logging_info"`
 }
 
+
+
 type AwsSsmMaintenanceWindowTaskStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

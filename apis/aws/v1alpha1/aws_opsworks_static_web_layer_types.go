@@ -19,38 +19,44 @@ type AwsOpsworksStaticWebLayer struct {
 }
 
 type AwsOpsworksStaticWebLayerSpecEbsVolume struct {
-	Size          int    `json:"size"`
-	Type          string `json:"type"`
 	Iops          int    `json:"iops"`
 	MountPoint    string `json:"mount_point"`
 	NumberOfDisks int    `json:"number_of_disks"`
 	RaidLevel     string `json:"raid_level"`
+	Size          int    `json:"size"`
+	Type          string `json:"type"`
 }
 
 type AwsOpsworksStaticWebLayerSpec struct {
-	CustomDeployRecipes      []string                        `json:"custom_deploy_recipes"`
-	CustomUndeployRecipes    []string                        `json:"custom_undeploy_recipes"`
-	SystemPackages           []string                        `json:"system_packages"`
-	CustomSetupRecipes       []string                        `json:"custom_setup_recipes"`
-	CustomConfigureRecipes   []string                        `json:"custom_configure_recipes"`
-	CustomShutdownRecipes    []string                        `json:"custom_shutdown_recipes"`
-	AutoHealing              bool                            `json:"auto_healing"`
-	InstallUpdatesOnBoot     bool                            `json:"install_updates_on_boot"`
-	DrainElbOnShutdown       bool                            `json:"drain_elb_on_shutdown"`
-	UseEbsOptimizedInstances bool                            `json:"use_ebs_optimized_instances"`
-	EbsVolume                []AwsOpsworksStaticWebLayerSpec `json:"ebs_volume"`
-	Name                     string                          `json:"name"`
 	AutoAssignElasticIps     bool                            `json:"auto_assign_elastic_ips"`
-	CustomInstanceProfileArn string                          `json:"custom_instance_profile_arn"`
-	CustomSecurityGroupIds   []string                        `json:"custom_security_group_ids"`
-	CustomJson               string                          `json:"custom_json"`
-	InstanceShutdownTimeout  int                             `json:"instance_shutdown_timeout"`
-	StackId                  string                          `json:"stack_id"`
 	AutoAssignPublicIps      bool                            `json:"auto_assign_public_ips"`
 	ElasticLoadBalancer      string                          `json:"elastic_load_balancer"`
+	CustomConfigureRecipes   []string                        `json:"custom_configure_recipes"`
+	CustomShutdownRecipes    []string                        `json:"custom_shutdown_recipes"`
+	InstallUpdatesOnBoot     bool                            `json:"install_updates_on_boot"`
+	Name                     string                          `json:"name"`
+	CustomSetupRecipes       []string                        `json:"custom_setup_recipes"`
+	CustomJson               string                          `json:"custom_json"`
+	CustomDeployRecipes      []string                        `json:"custom_deploy_recipes"`
+	CustomUndeployRecipes    []string                        `json:"custom_undeploy_recipes"`
+	CustomSecurityGroupIds   []string                        `json:"custom_security_group_ids"`
+	AutoHealing              bool                            `json:"auto_healing"`
+	InstanceShutdownTimeout  int                             `json:"instance_shutdown_timeout"`
+	DrainElbOnShutdown       bool                            `json:"drain_elb_on_shutdown"`
+	StackId                  string                          `json:"stack_id"`
+	EbsVolume                []AwsOpsworksStaticWebLayerSpec `json:"ebs_volume"`
+	CustomInstanceProfileArn string                          `json:"custom_instance_profile_arn"`
+	SystemPackages           []string                        `json:"system_packages"`
+	UseEbsOptimizedInstances bool                            `json:"use_ebs_optimized_instances"`
 }
 
+
+
 type AwsOpsworksStaticWebLayerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

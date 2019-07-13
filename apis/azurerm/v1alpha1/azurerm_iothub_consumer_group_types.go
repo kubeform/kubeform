@@ -19,13 +19,19 @@ type AzurermIothubConsumerGroup struct {
 }
 
 type AzurermIothubConsumerGroupSpec struct {
-	ResourceGroupName    string `json:"resource_group_name"`
-	Name                 string `json:"name"`
 	IothubName           string `json:"iothub_name"`
 	EventhubEndpointName string `json:"eventhub_endpoint_name"`
+	ResourceGroupName    string `json:"resource_group_name"`
+	Name                 string `json:"name"`
 }
 
+
+
 type AzurermIothubConsumerGroupStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

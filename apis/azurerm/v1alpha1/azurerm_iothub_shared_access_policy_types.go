@@ -19,20 +19,26 @@ type AzurermIothubSharedAccessPolicy struct {
 }
 
 type AzurermIothubSharedAccessPolicySpec struct {
-	SecondaryConnectionString string `json:"secondary_connection_string"`
-	Name                      string `json:"name"`
 	IothubName                string `json:"iothub_name"`
+	RegistryRead              bool   `json:"registry_read"`
 	RegistryWrite             bool   `json:"registry_write"`
+	SecondaryKey              string `json:"secondary_key"`
+	Name                      string `json:"name"`
 	ServiceConnect            bool   `json:"service_connect"`
 	DeviceConnect             bool   `json:"device_connect"`
-	ResourceGroupName         string `json:"resource_group_name"`
-	RegistryRead              bool   `json:"registry_read"`
 	PrimaryKey                string `json:"primary_key"`
 	PrimaryConnectionString   string `json:"primary_connection_string"`
-	SecondaryKey              string `json:"secondary_key"`
+	SecondaryConnectionString string `json:"secondary_connection_string"`
+	ResourceGroupName         string `json:"resource_group_name"`
 }
 
+
+
 type AzurermIothubSharedAccessPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

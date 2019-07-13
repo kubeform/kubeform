@@ -23,12 +23,18 @@ type AwsDynamodbGlobalTableSpecReplica struct {
 }
 
 type AwsDynamodbGlobalTableSpec struct {
+	Arn     string                       `json:"arn"`
 	Name    string                       `json:"name"`
 	Replica []AwsDynamodbGlobalTableSpec `json:"replica"`
-	Arn     string                       `json:"arn"`
 }
 
+
+
 type AwsDynamodbGlobalTableStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

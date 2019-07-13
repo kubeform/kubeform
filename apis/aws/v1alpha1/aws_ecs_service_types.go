@@ -18,26 +18,28 @@ type AwsEcsService struct {
 	Status            AwsEcsServiceStatus `json:"status,omitempty"`
 }
 
-type AwsEcsServiceSpecDeploymentController struct {
-	Type string `json:"type"`
-}
-
-type AwsEcsServiceSpecOrderedPlacementStrategy struct {
-	Type  string `json:"type"`
-	Field string `json:"field"`
-}
-
-type AwsEcsServiceSpecNetworkConfiguration struct {
-	AssignPublicIp bool     `json:"assign_public_ip"`
-	SecurityGroups []string `json:"security_groups"`
-	Subnets        []string `json:"subnets"`
-}
-
 type AwsEcsServiceSpecServiceRegistries struct {
 	ContainerName string `json:"container_name"`
 	ContainerPort int    `json:"container_port"`
 	Port          int    `json:"port"`
 	RegistryArn   string `json:"registry_arn"`
+}
+
+type AwsEcsServiceSpecDeploymentController struct {
+	Type string `json:"type"`
+}
+
+type AwsEcsServiceSpecNetworkConfiguration struct {
+	SecurityGroups []string `json:"security_groups"`
+	Subnets        []string `json:"subnets"`
+	AssignPublicIp bool     `json:"assign_public_ip"`
+}
+
+type AwsEcsServiceSpecLoadBalancer struct {
+	ElbName        string `json:"elb_name"`
+	TargetGroupArn string `json:"target_group_arn"`
+	ContainerName  string `json:"container_name"`
+	ContainerPort  int    `json:"container_port"`
 }
 
 type AwsEcsServiceSpecPlacementStrategy struct {
@@ -46,42 +48,46 @@ type AwsEcsServiceSpecPlacementStrategy struct {
 }
 
 type AwsEcsServiceSpecPlacementConstraints struct {
-	Type       string `json:"type"`
 	Expression string `json:"expression"`
+	Type       string `json:"type"`
 }
 
-type AwsEcsServiceSpecLoadBalancer struct {
-	ContainerPort  int    `json:"container_port"`
-	ElbName        string `json:"elb_name"`
-	TargetGroupArn string `json:"target_group_arn"`
-	ContainerName  string `json:"container_name"`
+type AwsEcsServiceSpecOrderedPlacementStrategy struct {
+	Type  string `json:"type"`
+	Field string `json:"field"`
 }
 
 type AwsEcsServiceSpec struct {
-	SchedulingStrategy              string              `json:"scheduling_strategy"`
-	IamRole                         string              `json:"iam_role"`
-	DeploymentMaximumPercent        int                 `json:"deployment_maximum_percent"`
-	PropagateTags                   string              `json:"propagate_tags"`
-	Tags                            map[string]string   `json:"tags"`
-	Name                            string              `json:"name"`
-	LaunchType                      string              `json:"launch_type"`
-	DesiredCount                    int                 `json:"desired_count"`
-	PlatformVersion                 string              `json:"platform_version"`
-	DeploymentController            []AwsEcsServiceSpec `json:"deployment_controller"`
-	OrderedPlacementStrategy        []AwsEcsServiceSpec `json:"ordered_placement_strategy"`
+	ServiceRegistries               []AwsEcsServiceSpec `json:"service_registries"`
 	Cluster                         string              `json:"cluster"`
 	TaskDefinition                  string              `json:"task_definition"`
+	LaunchType                      string              `json:"launch_type"`
+	IamRole                         string              `json:"iam_role"`
+	DeploymentController            []AwsEcsServiceSpec `json:"deployment_controller"`
 	NetworkConfiguration            []AwsEcsServiceSpec `json:"network_configuration"`
-	ServiceRegistries               []AwsEcsServiceSpec `json:"service_registries"`
+	PropagateTags                   string              `json:"propagate_tags"`
 	EnableEcsManagedTags            bool                `json:"enable_ecs_managed_tags"`
+	DeploymentMaximumPercent        int                 `json:"deployment_maximum_percent"`
 	DeploymentMinimumHealthyPercent int                 `json:"deployment_minimum_healthy_percent"`
+	LoadBalancer                    []AwsEcsServiceSpec `json:"load_balancer"`
 	PlacementStrategy               []AwsEcsServiceSpec `json:"placement_strategy"`
 	PlacementConstraints            []AwsEcsServiceSpec `json:"placement_constraints"`
+	Name                            string              `json:"name"`
+	OrderedPlacementStrategy        []AwsEcsServiceSpec `json:"ordered_placement_strategy"`
+	DesiredCount                    int                 `json:"desired_count"`
 	HealthCheckGracePeriodSeconds   int                 `json:"health_check_grace_period_seconds"`
-	LoadBalancer                    []AwsEcsServiceSpec `json:"load_balancer"`
+	PlatformVersion                 string              `json:"platform_version"`
+	SchedulingStrategy              string              `json:"scheduling_strategy"`
+	Tags                            map[string]string   `json:"tags"`
 }
 
+
+
 type AwsEcsServiceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -37,23 +37,29 @@ type GoogleProjectOrganizationPolicySpecListPolicyDeny struct {
 }
 
 type GoogleProjectOrganizationPolicySpecListPolicy struct {
-	SuggestedValue string                                          `json:"suggested_value"`
 	Allow          []GoogleProjectOrganizationPolicySpecListPolicy `json:"allow"`
 	Deny           []GoogleProjectOrganizationPolicySpecListPolicy `json:"deny"`
+	SuggestedValue string                                          `json:"suggested_value"`
 }
 
 type GoogleProjectOrganizationPolicySpec struct {
 	UpdateTime    string                                `json:"update_time"`
+	Project       string                                `json:"project"`
 	RestorePolicy []GoogleProjectOrganizationPolicySpec `json:"restore_policy"`
 	Constraint    string                                `json:"constraint"`
 	BooleanPolicy []GoogleProjectOrganizationPolicySpec `json:"boolean_policy"`
 	ListPolicy    []GoogleProjectOrganizationPolicySpec `json:"list_policy"`
 	Version       int                                   `json:"version"`
 	Etag          string                                `json:"etag"`
-	Project       string                                `json:"project"`
 }
 
+
+
 type GoogleProjectOrganizationPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

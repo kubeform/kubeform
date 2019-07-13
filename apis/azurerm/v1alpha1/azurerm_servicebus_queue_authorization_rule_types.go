@@ -19,20 +19,26 @@ type AzurermServicebusQueueAuthorizationRule struct {
 }
 
 type AzurermServicebusQueueAuthorizationRuleSpec struct {
+	Name                      string `json:"name"`
+	Manage                    bool   `json:"manage"`
+	PrimaryKey                string `json:"primary_key"`
 	PrimaryConnectionString   string `json:"primary_connection_string"`
+	SecondaryKey              string `json:"secondary_key"`
+	NamespaceName             string `json:"namespace_name"`
+	QueueName                 string `json:"queue_name"`
+	ResourceGroupName         string `json:"resource_group_name"`
 	SecondaryConnectionString string `json:"secondary_connection_string"`
 	Listen                    bool   `json:"listen"`
 	Send                      bool   `json:"send"`
-	NamespaceName             string `json:"namespace_name"`
-	QueueName                 string `json:"queue_name"`
-	SecondaryKey              string `json:"secondary_key"`
-	Manage                    bool   `json:"manage"`
-	PrimaryKey                string `json:"primary_key"`
-	ResourceGroupName         string `json:"resource_group_name"`
-	Name                      string `json:"name"`
 }
 
+
+
 type AzurermServicebusQueueAuthorizationRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

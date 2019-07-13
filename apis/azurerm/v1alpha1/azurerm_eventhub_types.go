@@ -19,33 +19,39 @@ type AzurermEventhub struct {
 }
 
 type AzurermEventhubSpecCaptureDescriptionDestination struct {
-	BlobContainerName string `json:"blob_container_name"`
-	StorageAccountId  string `json:"storage_account_id"`
 	Name              string `json:"name"`
 	ArchiveNameFormat string `json:"archive_name_format"`
+	BlobContainerName string `json:"blob_container_name"`
+	StorageAccountId  string `json:"storage_account_id"`
 }
 
 type AzurermEventhubSpecCaptureDescription struct {
-	SizeLimitInBytes  int                                     `json:"size_limit_in_bytes"`
-	Destination       []AzurermEventhubSpecCaptureDescription `json:"destination"`
 	Enabled           bool                                    `json:"enabled"`
 	SkipEmptyArchives bool                                    `json:"skip_empty_archives"`
 	Encoding          string                                  `json:"encoding"`
 	IntervalInSeconds int                                     `json:"interval_in_seconds"`
+	SizeLimitInBytes  int                                     `json:"size_limit_in_bytes"`
+	Destination       []AzurermEventhubSpecCaptureDescription `json:"destination"`
 }
 
 type AzurermEventhubSpec struct {
-	Name               string                `json:"name"`
-	NamespaceName      string                `json:"namespace_name"`
 	ResourceGroupName  string                `json:"resource_group_name"`
 	Location           string                `json:"location"`
 	PartitionCount     int                   `json:"partition_count"`
 	MessageRetention   int                   `json:"message_retention"`
 	CaptureDescription []AzurermEventhubSpec `json:"capture_description"`
 	PartitionIds       []string              `json:"partition_ids"`
+	Name               string                `json:"name"`
+	NamespaceName      string                `json:"namespace_name"`
 }
 
+
+
 type AzurermEventhubStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

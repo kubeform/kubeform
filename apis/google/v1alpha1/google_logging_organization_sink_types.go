@@ -19,15 +19,21 @@ type GoogleLoggingOrganizationSink struct {
 }
 
 type GoogleLoggingOrganizationSinkSpec struct {
+	Name            string `json:"name"`
 	Destination     string `json:"destination"`
 	Filter          string `json:"filter"`
 	WriterIdentity  string `json:"writer_identity"`
 	OrgId           string `json:"org_id"`
 	IncludeChildren bool   `json:"include_children"`
-	Name            string `json:"name"`
 }
 
+
+
 type GoogleLoggingOrganizationSinkStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

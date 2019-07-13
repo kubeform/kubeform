@@ -14,8 +14,8 @@ import (
 type AwsConfigConfigurationRecorder struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              AwsConfigConfigurationRecorderSpec    `json:"spec,omitempty"`
-	Status            AwsConfigConfigurationRecorderStatus2 `json:"status,omitempty"`
+	Spec              AwsConfigConfigurationRecorderSpec   `json:"spec,omitempty"`
+	Status            AwsConfigConfigurationRecorderStatus `json:"status,omitempty"`
 }
 
 type AwsConfigConfigurationRecorderSpecRecordingGroup struct {
@@ -30,7 +30,13 @@ type AwsConfigConfigurationRecorderSpec struct {
 	RecordingGroup []AwsConfigConfigurationRecorderSpec `json:"recording_group"`
 }
 
-type AwsConfigConfigurationRecorderStatus2 struct {
+
+
+type AwsConfigConfigurationRecorderStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

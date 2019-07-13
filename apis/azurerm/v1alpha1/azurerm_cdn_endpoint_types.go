@@ -18,40 +18,46 @@ type AzurermCdnEndpoint struct {
 	Status            AzurermCdnEndpointStatus `json:"status,omitempty"`
 }
 
-type AzurermCdnEndpointSpecGeoFilter struct {
-	CountryCodes []string `json:"country_codes"`
-	RelativePath string   `json:"relative_path"`
-	Action       string   `json:"action"`
-}
-
 type AzurermCdnEndpointSpecOrigin struct {
-	HttpsPort int    `json:"https_port"`
 	Name      string `json:"name"`
 	HostName  string `json:"host_name"`
 	HttpPort  int    `json:"http_port"`
+	HttpsPort int    `json:"https_port"`
+}
+
+type AzurermCdnEndpointSpecGeoFilter struct {
+	RelativePath string   `json:"relative_path"`
+	Action       string   `json:"action"`
+	CountryCodes []string `json:"country_codes"`
 }
 
 type AzurermCdnEndpointSpec struct {
-	QuerystringCachingBehaviour string                   `json:"querystring_caching_behaviour"`
-	GeoFilter                   []AzurermCdnEndpointSpec `json:"geo_filter"`
-	IsHttpAllowed               bool                     `json:"is_http_allowed"`
+	OptimizationType            string                   `json:"optimization_type"`
+	Location                    string                   `json:"location"`
+	OriginHostHeader            string                   `json:"origin_host_header"`
 	Origin                      []AzurermCdnEndpointSpec `json:"origin"`
-	OriginPath                  string                   `json:"origin_path"`
 	ContentTypesToCompress      []string                 `json:"content_types_to_compress"`
 	IsCompressionEnabled        bool                     `json:"is_compression_enabled"`
+	ProbePath                   string                   `json:"probe_path"`
+	GeoFilter                   []AzurermCdnEndpointSpec `json:"geo_filter"`
+	Name                        string                   `json:"name"`
+	QuerystringCachingBehaviour string                   `json:"querystring_caching_behaviour"`
+	HostName                    string                   `json:"host_name"`
 	Tags                        map[string]string        `json:"tags"`
 	ResourceGroupName           string                   `json:"resource_group_name"`
-	OriginHostHeader            string                   `json:"origin_host_header"`
-	ProbePath                   string                   `json:"probe_path"`
-	OptimizationType            string                   `json:"optimization_type"`
-	HostName                    string                   `json:"host_name"`
-	Name                        string                   `json:"name"`
 	ProfileName                 string                   `json:"profile_name"`
-	Location                    string                   `json:"location"`
+	IsHttpAllowed               bool                     `json:"is_http_allowed"`
 	IsHttpsAllowed              bool                     `json:"is_https_allowed"`
+	OriginPath                  string                   `json:"origin_path"`
 }
 
+
+
 type AzurermCdnEndpointStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

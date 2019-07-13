@@ -29,9 +29,14 @@ type GoogleComputeRegionInstanceGroupManagerSpecVersion struct {
 	TargetSize       []GoogleComputeRegionInstanceGroupManagerSpecVersion `json:"target_size"`
 }
 
-type GoogleComputeRegionInstanceGroupManagerSpecAutoHealingPolicies struct {
-	HealthCheck     string `json:"health_check"`
-	InitialDelaySec int    `json:"initial_delay_sec"`
+type GoogleComputeRegionInstanceGroupManagerSpecRollingUpdatePolicy struct {
+	MinimalAction         string `json:"minimal_action"`
+	Type                  string `json:"type"`
+	MaxSurgeFixed         int    `json:"max_surge_fixed"`
+	MaxSurgePercent       int    `json:"max_surge_percent"`
+	MaxUnavailableFixed   int    `json:"max_unavailable_fixed"`
+	MaxUnavailablePercent int    `json:"max_unavailable_percent"`
+	MinReadySec           int    `json:"min_ready_sec"`
 }
 
 type GoogleComputeRegionInstanceGroupManagerSpecNamedPort struct {
@@ -39,38 +44,39 @@ type GoogleComputeRegionInstanceGroupManagerSpecNamedPort struct {
 	Port int    `json:"port"`
 }
 
-type GoogleComputeRegionInstanceGroupManagerSpecRollingUpdatePolicy struct {
-	MaxUnavailableFixed   int    `json:"max_unavailable_fixed"`
-	MaxUnavailablePercent int    `json:"max_unavailable_percent"`
-	MinReadySec           int    `json:"min_ready_sec"`
-	MinimalAction         string `json:"minimal_action"`
-	Type                  string `json:"type"`
-	MaxSurgeFixed         int    `json:"max_surge_fixed"`
-	MaxSurgePercent       int    `json:"max_surge_percent"`
+type GoogleComputeRegionInstanceGroupManagerSpecAutoHealingPolicies struct {
+	HealthCheck     string `json:"health_check"`
+	InitialDelaySec int    `json:"initial_delay_sec"`
 }
 
 type GoogleComputeRegionInstanceGroupManagerSpec struct {
 	Version                 []GoogleComputeRegionInstanceGroupManagerSpec `json:"version"`
-	SelfLink                string                                        `json:"self_link"`
-	UpdateStrategy          string                                        `json:"update_strategy"`
-	TargetPools             []string                                      `json:"target_pools"`
-	InstanceTemplate        string                                        `json:"instance_template"`
-	Fingerprint             string                                        `json:"fingerprint"`
-	TargetSize              int                                           `json:"target_size"`
-	AutoHealingPolicies     []GoogleComputeRegionInstanceGroupManagerSpec `json:"auto_healing_policies"`
-	Name                    string                                        `json:"name"`
-	Description             string                                        `json:"description"`
 	Project                 string                                        `json:"project"`
-	WaitForInstances        bool                                          `json:"wait_for_instances"`
-	Region                  string                                        `json:"region"`
-	InstanceGroup           string                                        `json:"instance_group"`
-	NamedPort               []GoogleComputeRegionInstanceGroupManagerSpec `json:"named_port"`
-	DistributionPolicyZones []string                                      `json:"distribution_policy_zones"`
+	TargetSize              int                                           `json:"target_size"`
 	RollingUpdatePolicy     []GoogleComputeRegionInstanceGroupManagerSpec `json:"rolling_update_policy"`
 	BaseInstanceName        string                                        `json:"base_instance_name"`
+	NamedPort               []GoogleComputeRegionInstanceGroupManagerSpec `json:"named_port"`
+	UpdateStrategy          string                                        `json:"update_strategy"`
+	Region                  string                                        `json:"region"`
+	Fingerprint             string                                        `json:"fingerprint"`
+	InstanceGroup           string                                        `json:"instance_group"`
+	SelfLink                string                                        `json:"self_link"`
+	WaitForInstances        bool                                          `json:"wait_for_instances"`
+	InstanceTemplate        string                                        `json:"instance_template"`
+	Description             string                                        `json:"description"`
+	TargetPools             []string                                      `json:"target_pools"`
+	AutoHealingPolicies     []GoogleComputeRegionInstanceGroupManagerSpec `json:"auto_healing_policies"`
+	DistributionPolicyZones []string                                      `json:"distribution_policy_zones"`
+	Name                    string                                        `json:"name"`
 }
 
+
+
 type GoogleComputeRegionInstanceGroupManagerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

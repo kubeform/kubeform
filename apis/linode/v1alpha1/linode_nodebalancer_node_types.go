@@ -19,16 +19,22 @@ type LinodeNodebalancerNode struct {
 }
 
 type LinodeNodebalancerNodeSpec struct {
-	NodebalancerId int    `json:"nodebalancer_id"`
 	ConfigId       int    `json:"config_id"`
 	Label          string `json:"label"`
 	Weight         int    `json:"weight"`
 	Mode           string `json:"mode"`
 	Address        string `json:"address"`
 	Status         string `json:"status"`
+	NodebalancerId int    `json:"nodebalancer_id"`
 }
 
+
+
 type LinodeNodebalancerNodeStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

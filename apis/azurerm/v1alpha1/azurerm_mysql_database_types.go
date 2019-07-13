@@ -19,14 +19,20 @@ type AzurermMysqlDatabase struct {
 }
 
 type AzurermMysqlDatabaseSpec struct {
-	ServerName        string `json:"server_name"`
 	Charset           string `json:"charset"`
 	Collation         string `json:"collation"`
 	Name              string `json:"name"`
 	ResourceGroupName string `json:"resource_group_name"`
+	ServerName        string `json:"server_name"`
 }
 
+
+
 type AzurermMysqlDatabaseStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

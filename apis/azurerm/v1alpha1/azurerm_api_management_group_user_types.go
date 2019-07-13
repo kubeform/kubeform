@@ -19,13 +19,19 @@ type AzurermApiManagementGroupUser struct {
 }
 
 type AzurermApiManagementGroupUserSpec struct {
+	ApiManagementName string `json:"api_management_name"`
 	UserId            string `json:"user_id"`
 	GroupName         string `json:"group_name"`
 	ResourceGroupName string `json:"resource_group_name"`
-	ApiManagementName string `json:"api_management_name"`
 }
 
+
+
 type AzurermApiManagementGroupUserStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

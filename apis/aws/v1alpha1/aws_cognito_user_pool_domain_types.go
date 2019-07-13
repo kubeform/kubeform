@@ -19,16 +19,22 @@ type AwsCognitoUserPoolDomain struct {
 }
 
 type AwsCognitoUserPoolDomainSpec struct {
-	Version                   string `json:"version"`
-	Domain                    string `json:"domain"`
 	CertificateArn            string `json:"certificate_arn"`
 	UserPoolId                string `json:"user_pool_id"`
 	AwsAccountId              string `json:"aws_account_id"`
 	CloudfrontDistributionArn string `json:"cloudfront_distribution_arn"`
 	S3Bucket                  string `json:"s3_bucket"`
+	Version                   string `json:"version"`
+	Domain                    string `json:"domain"`
 }
 
+
+
 type AwsCognitoUserPoolDomainStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

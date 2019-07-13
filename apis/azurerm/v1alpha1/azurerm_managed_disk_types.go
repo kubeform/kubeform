@@ -24,33 +24,39 @@ type AzurermManagedDiskSpecEncryptionSettingsDiskEncryptionKey struct {
 }
 
 type AzurermManagedDiskSpecEncryptionSettingsKeyEncryptionKey struct {
-	SourceVaultId string `json:"source_vault_id"`
 	KeyUrl        string `json:"key_url"`
+	SourceVaultId string `json:"source_vault_id"`
 }
 
 type AzurermManagedDiskSpecEncryptionSettings struct {
+	Enabled           bool                                       `json:"enabled"`
 	DiskEncryptionKey []AzurermManagedDiskSpecEncryptionSettings `json:"disk_encryption_key"`
 	KeyEncryptionKey  []AzurermManagedDiskSpecEncryptionSettings `json:"key_encryption_key"`
-	Enabled           bool                                       `json:"enabled"`
 }
 
 type AzurermManagedDiskSpec struct {
-	ImageReferenceId   string                   `json:"image_reference_id"`
-	OsType             string                   `json:"os_type"`
 	DiskSizeGb         int                      `json:"disk_size_gb"`
-	ResourceGroupName  string                   `json:"resource_group_name"`
-	Zones              []string                 `json:"zones"`
-	StorageAccountType string                   `json:"storage_account_type"`
-	CreateOption       string                   `json:"create_option"`
-	SourceResourceId   string                   `json:"source_resource_id"`
-	EncryptionSettings []AzurermManagedDiskSpec `json:"encryption_settings"`
 	Tags               map[string]string        `json:"tags"`
 	Name               string                   `json:"name"`
 	Location           string                   `json:"location"`
+	Zones              []string                 `json:"zones"`
+	CreateOption       string                   `json:"create_option"`
+	ImageReferenceId   string                   `json:"image_reference_id"`
+	EncryptionSettings []AzurermManagedDiskSpec `json:"encryption_settings"`
+	ResourceGroupName  string                   `json:"resource_group_name"`
+	StorageAccountType string                   `json:"storage_account_type"`
 	SourceUri          string                   `json:"source_uri"`
+	SourceResourceId   string                   `json:"source_resource_id"`
+	OsType             string                   `json:"os_type"`
 }
 
+
+
 type AzurermManagedDiskStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

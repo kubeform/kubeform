@@ -19,19 +19,25 @@ type AwsOrganizationsAccount struct {
 }
 
 type AwsOrganizationsAccountSpec struct {
-	IamUserAccessToBilling string            `json:"iam_user_access_to_billing"`
+	JoinedMethod           string            `json:"joined_method"`
 	JoinedTimestamp        string            `json:"joined_timestamp"`
-	Status                 string            `json:"status"`
 	ParentId               string            `json:"parent_id"`
-	Name                   string            `json:"name"`
-	Email                  string            `json:"email"`
+	Status                 string            `json:"status"`
 	RoleName               string            `json:"role_name"`
 	Tags                   map[string]string `json:"tags"`
 	Arn                    string            `json:"arn"`
-	JoinedMethod           string            `json:"joined_method"`
+	Name                   string            `json:"name"`
+	Email                  string            `json:"email"`
+	IamUserAccessToBilling string            `json:"iam_user_access_to_billing"`
 }
 
+
+
 type AwsOrganizationsAccountStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

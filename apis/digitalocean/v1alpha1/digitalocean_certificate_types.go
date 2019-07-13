@@ -19,18 +19,24 @@ type DigitaloceanCertificate struct {
 }
 
 type DigitaloceanCertificateSpec struct {
-	Name             string   `json:"name"`
-	LeafCertificate  string   `json:"leaf_certificate"`
-	Type             string   `json:"type"`
-	State            string   `json:"state"`
-	PrivateKey       string   `json:"private_key"`
-	CertificateChain string   `json:"certificate_chain"`
-	Domains          []string `json:"domains"`
 	NotAfter         string   `json:"not_after"`
+	CertificateChain string   `json:"certificate_chain"`
+	Type             string   `json:"type"`
+	LeafCertificate  string   `json:"leaf_certificate"`
+	Domains          []string `json:"domains"`
+	State            string   `json:"state"`
 	Sha1Fingerprint  string   `json:"sha1_fingerprint"`
+	Name             string   `json:"name"`
+	PrivateKey       string   `json:"private_key"`
 }
 
+
+
 type DigitaloceanCertificateStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

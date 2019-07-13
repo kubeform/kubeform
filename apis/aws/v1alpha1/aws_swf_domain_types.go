@@ -25,7 +25,13 @@ type AwsSwfDomainSpec struct {
 	WorkflowExecutionRetentionPeriodInDays string `json:"workflow_execution_retention_period_in_days"`
 }
 
+
+
 type AwsSwfDomainStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

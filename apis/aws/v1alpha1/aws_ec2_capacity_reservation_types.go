@@ -19,20 +19,26 @@ type AwsEc2CapacityReservation struct {
 }
 
 type AwsEc2CapacityReservationSpec struct {
-	EphemeralStorage      bool              `json:"ephemeral_storage"`
-	InstanceMatchCriteria string            `json:"instance_match_criteria"`
-	Tags                  map[string]string `json:"tags"`
-	EbsOptimized          bool              `json:"ebs_optimized"`
-	EndDate               string            `json:"end_date"`
 	EndDateType           string            `json:"end_date_type"`
-	InstanceType          string            `json:"instance_type"`
-	Tenancy               string            `json:"tenancy"`
-	AvailabilityZone      string            `json:"availability_zone"`
+	EphemeralStorage      bool              `json:"ephemeral_storage"`
 	InstanceCount         int               `json:"instance_count"`
+	InstanceMatchCriteria string            `json:"instance_match_criteria"`
 	InstancePlatform      string            `json:"instance_platform"`
+	InstanceType          string            `json:"instance_type"`
+	AvailabilityZone      string            `json:"availability_zone"`
+	EbsOptimized          bool              `json:"ebs_optimized"`
+	Tenancy               string            `json:"tenancy"`
+	EndDate               string            `json:"end_date"`
+	Tags                  map[string]string `json:"tags"`
 }
 
+
+
 type AwsEc2CapacityReservationStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

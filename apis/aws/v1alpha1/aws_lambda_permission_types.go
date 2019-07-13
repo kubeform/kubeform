@@ -19,18 +19,24 @@ type AwsLambdaPermission struct {
 }
 
 type AwsLambdaPermissionSpec struct {
-	Qualifier         string `json:"qualifier"`
-	SourceAccount     string `json:"source_account"`
-	StatementIdPrefix string `json:"statement_id_prefix"`
-	EventSourceToken  string `json:"event_source_token"`
-	FunctionName      string `json:"function_name"`
 	Principal         string `json:"principal"`
+	Qualifier         string `json:"qualifier"`
+	StatementIdPrefix string `json:"statement_id_prefix"`
 	SourceArn         string `json:"source_arn"`
 	StatementId       string `json:"statement_id"`
 	Action            string `json:"action"`
+	EventSourceToken  string `json:"event_source_token"`
+	FunctionName      string `json:"function_name"`
+	SourceAccount     string `json:"source_account"`
 }
 
+
+
 type AwsLambdaPermissionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

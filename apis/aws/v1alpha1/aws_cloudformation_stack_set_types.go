@@ -19,20 +19,26 @@ type AwsCloudformationStackSet struct {
 }
 
 type AwsCloudformationStackSetSpec struct {
-	Description           string            `json:"description"`
-	ExecutionRoleName     string            `json:"execution_role_name"`
+	AdministrationRoleArn string            `json:"administration_role_arn"`
 	Name                  string            `json:"name"`
 	TemplateBody          string            `json:"template_body"`
 	TemplateUrl           string            `json:"template_url"`
-	AdministrationRoleArn string            `json:"administration_role_arn"`
-	Capabilities          []string          `json:"capabilities"`
-	Parameters            map[string]string `json:"parameters"`
 	StackSetId            string            `json:"stack_set_id"`
 	Tags                  map[string]string `json:"tags"`
 	Arn                   string            `json:"arn"`
+	Capabilities          []string          `json:"capabilities"`
+	Description           string            `json:"description"`
+	ExecutionRoleName     string            `json:"execution_role_name"`
+	Parameters            map[string]string `json:"parameters"`
 }
 
+
+
 type AwsCloudformationStackSetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

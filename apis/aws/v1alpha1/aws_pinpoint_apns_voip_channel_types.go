@@ -19,18 +19,24 @@ type AwsPinpointApnsVoipChannel struct {
 }
 
 type AwsPinpointApnsVoipChannelSpec struct {
-	TokenKey                    string `json:"token_key"`
-	ApplicationId               string `json:"application_id"`
-	Certificate                 string `json:"certificate"`
-	DefaultAuthenticationMethod string `json:"default_authentication_method"`
 	Enabled                     bool   `json:"enabled"`
 	PrivateKey                  string `json:"private_key"`
-	TeamId                      string `json:"team_id"`
-	BundleId                    string `json:"bundle_id"`
+	TokenKey                    string `json:"token_key"`
 	TokenKeyId                  string `json:"token_key_id"`
+	TeamId                      string `json:"team_id"`
+	ApplicationId               string `json:"application_id"`
+	BundleId                    string `json:"bundle_id"`
+	Certificate                 string `json:"certificate"`
+	DefaultAuthenticationMethod string `json:"default_authentication_method"`
 }
 
+
+
 type AwsPinpointApnsVoipChannelStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

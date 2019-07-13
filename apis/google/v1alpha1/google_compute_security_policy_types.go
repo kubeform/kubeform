@@ -28,23 +28,29 @@ type GoogleComputeSecurityPolicySpecRuleMatch struct {
 }
 
 type GoogleComputeSecurityPolicySpecRule struct {
+	Preview     bool                                  `json:"preview"`
+	Action      string                                `json:"action"`
 	Priority    int                                   `json:"priority"`
 	Match       []GoogleComputeSecurityPolicySpecRule `json:"match"`
 	Description string                                `json:"description"`
-	Preview     bool                                  `json:"preview"`
-	Action      string                                `json:"action"`
 }
 
 type GoogleComputeSecurityPolicySpec struct {
+	Fingerprint string                            `json:"fingerprint"`
+	SelfLink    string                            `json:"self_link"`
 	Name        string                            `json:"name"`
 	Description string                            `json:"description"`
 	Project     string                            `json:"project"`
 	Rule        []GoogleComputeSecurityPolicySpec `json:"rule"`
-	Fingerprint string                            `json:"fingerprint"`
-	SelfLink    string                            `json:"self_link"`
 }
 
+
+
 type GoogleComputeSecurityPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

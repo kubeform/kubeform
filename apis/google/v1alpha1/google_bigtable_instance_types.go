@@ -26,18 +26,24 @@ type GoogleBigtableInstanceSpecCluster struct {
 }
 
 type GoogleBigtableInstanceSpec struct {
-	Cluster      []GoogleBigtableInstanceSpec `json:"cluster"`
-	Zone         string                       `json:"zone"`
-	NumNodes     int                          `json:"num_nodes"`
-	InstanceType string                       `json:"instance_type"`
-	Project      string                       `json:"project"`
+	StorageType  string                       `json:"storage_type"`
 	Name         string                       `json:"name"`
 	ClusterId    string                       `json:"cluster_id"`
+	NumNodes     int                          `json:"num_nodes"`
+	InstanceType string                       `json:"instance_type"`
+	Cluster      []GoogleBigtableInstanceSpec `json:"cluster"`
+	Zone         string                       `json:"zone"`
 	DisplayName  string                       `json:"display_name"`
-	StorageType  string                       `json:"storage_type"`
+	Project      string                       `json:"project"`
 }
 
+
+
 type GoogleBigtableInstanceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

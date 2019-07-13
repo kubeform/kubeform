@@ -24,11 +24,11 @@ type GoogleStorageBucketSpecLifecycleRuleAction struct {
 }
 
 type GoogleStorageBucketSpecLifecycleRuleCondition struct {
+	Age                 int      `json:"age"`
 	CreatedBefore       string   `json:"created_before"`
 	IsLive              bool     `json:"is_live"`
 	MatchesStorageClass []string `json:"matches_storage_class"`
 	NumNewerVersions    int      `json:"num_newer_versions"`
-	Age                 int      `json:"age"`
 }
 
 type GoogleStorageBucketSpecLifecycleRule struct {
@@ -37,12 +37,12 @@ type GoogleStorageBucketSpecLifecycleRule struct {
 }
 
 type GoogleStorageBucketSpecWebsite struct {
-	NotFoundPage   string `json:"not_found_page"`
 	MainPageSuffix string `json:"main_page_suffix"`
+	NotFoundPage   string `json:"not_found_page"`
 }
 
-type GoogleStorageBucketSpecEncryption struct {
-	DefaultKmsKeyName string `json:"default_kms_key_name"`
+type GoogleStorageBucketSpecVersioning struct {
+	Enabled bool `json:"enabled"`
 }
 
 type GoogleStorageBucketSpecLogging struct {
@@ -50,36 +50,42 @@ type GoogleStorageBucketSpecLogging struct {
 	LogObjectPrefix string `json:"log_object_prefix"`
 }
 
-type GoogleStorageBucketSpecVersioning struct {
-	Enabled bool `json:"enabled"`
+type GoogleStorageBucketSpecEncryption struct {
+	DefaultKmsKeyName string `json:"default_kms_key_name"`
 }
 
 type GoogleStorageBucketSpecCors struct {
-	Method         []string `json:"method"`
 	ResponseHeader []string `json:"response_header"`
 	MaxAgeSeconds  int      `json:"max_age_seconds"`
 	Origin         []string `json:"origin"`
+	Method         []string `json:"method"`
 }
 
 type GoogleStorageBucketSpec struct {
-	Name          string                    `json:"name"`
-	Location      string                    `json:"location"`
-	Project       string                    `json:"project"`
+	Labels        map[string]string         `json:"labels"`
+	Url           string                    `json:"url"`
 	LifecycleRule []GoogleStorageBucketSpec `json:"lifecycle_rule"`
 	Website       []GoogleStorageBucketSpec `json:"website"`
-	Encryption    []GoogleStorageBucketSpec `json:"encryption"`
 	ForceDestroy  bool                      `json:"force_destroy"`
-	Labels        map[string]string         `json:"labels"`
-	PredefinedAcl string                    `json:"predefined_acl"`
-	Url           string                    `json:"url"`
-	StorageClass  string                    `json:"storage_class"`
-	Logging       []GoogleStorageBucketSpec `json:"logging"`
+	Project       string                    `json:"project"`
 	SelfLink      string                    `json:"self_link"`
+	StorageClass  string                    `json:"storage_class"`
+	Name          string                    `json:"name"`
 	Versioning    []GoogleStorageBucketSpec `json:"versioning"`
+	Logging       []GoogleStorageBucketSpec `json:"logging"`
+	Encryption    []GoogleStorageBucketSpec `json:"encryption"`
+	Location      string                    `json:"location"`
+	PredefinedAcl string                    `json:"predefined_acl"`
 	Cors          []GoogleStorageBucketSpec `json:"cors"`
 }
 
+
+
 type GoogleStorageBucketStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

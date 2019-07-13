@@ -19,22 +19,28 @@ type AwsDocdbClusterSnapshot struct {
 }
 
 type AwsDocdbClusterSnapshotSpec struct {
+	DbClusterSnapshotIdentifier string   `json:"db_cluster_snapshot_identifier"`
+	SnapshotType                string   `json:"snapshot_type"`
+	VpcId                       string   `json:"vpc_id"`
 	DbClusterIdentifier         string   `json:"db_cluster_identifier"`
+	AvailabilityZones           []string `json:"availability_zones"`
 	DbClusterSnapshotArn        string   `json:"db_cluster_snapshot_arn"`
 	StorageEncrypted            bool     `json:"storage_encrypted"`
 	Engine                      string   `json:"engine"`
-	KmsKeyId                    string   `json:"kms_key_id"`
-	VpcId                       string   `json:"vpc_id"`
-	Status                      string   `json:"status"`
-	DbClusterSnapshotIdentifier string   `json:"db_cluster_snapshot_identifier"`
-	AvailabilityZones           []string `json:"availability_zones"`
 	EngineVersion               string   `json:"engine_version"`
+	KmsKeyId                    string   `json:"kms_key_id"`
 	Port                        int      `json:"port"`
 	SourceDbClusterSnapshotArn  string   `json:"source_db_cluster_snapshot_arn"`
-	SnapshotType                string   `json:"snapshot_type"`
+	Status                      string   `json:"status"`
 }
 
+
+
 type AwsDocdbClusterSnapshotStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,12 +19,18 @@ type GoogleProjectService struct {
 }
 
 type GoogleProjectServiceSpec struct {
+	Service          string `json:"service"`
 	Project          string `json:"project"`
 	DisableOnDestroy bool   `json:"disable_on_destroy"`
-	Service          string `json:"service"`
 }
 
+
+
 type GoogleProjectServiceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

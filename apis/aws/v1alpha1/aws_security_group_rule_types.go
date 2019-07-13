@@ -19,20 +19,26 @@ type AwsSecurityGroupRule struct {
 }
 
 type AwsSecurityGroupRuleSpec struct {
-	Type                  string   `json:"type"`
 	ToPort                int      `json:"to_port"`
-	CidrBlocks            []string `json:"cidr_blocks"`
+	Protocol              string   `json:"protocol"`
+	SecurityGroupId       string   `json:"security_group_id"`
 	SourceSecurityGroupId string   `json:"source_security_group_id"`
+	PrefixListIds         []string `json:"prefix_list_ids"`
 	Self                  bool     `json:"self"`
 	Description           string   `json:"description"`
+	Type                  string   `json:"type"`
 	FromPort              int      `json:"from_port"`
-	Protocol              string   `json:"protocol"`
+	CidrBlocks            []string `json:"cidr_blocks"`
 	Ipv6CidrBlocks        []string `json:"ipv6_cidr_blocks"`
-	PrefixListIds         []string `json:"prefix_list_ids"`
-	SecurityGroupId       string   `json:"security_group_id"`
 }
 
+
+
 type AwsSecurityGroupRuleStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

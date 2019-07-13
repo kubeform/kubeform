@@ -19,16 +19,22 @@ type AzurermEventgridTopic struct {
 }
 
 type AzurermEventgridTopicSpec struct {
-	Endpoint           string            `json:"endpoint"`
 	PrimaryAccessKey   string            `json:"primary_access_key"`
 	SecondaryAccessKey string            `json:"secondary_access_key"`
 	Name               string            `json:"name"`
 	Location           string            `json:"location"`
 	ResourceGroupName  string            `json:"resource_group_name"`
 	Tags               map[string]string `json:"tags"`
+	Endpoint           string            `json:"endpoint"`
 }
 
+
+
 type AzurermEventgridTopicStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,12 +19,18 @@ type AwsServiceDiscoveryHttpNamespace struct {
 }
 
 type AwsServiceDiscoveryHttpNamespaceSpec struct {
-	Arn         string `json:"arn"`
 	Name        string `json:"name"`
 	Description string `json:"description"`
+	Arn         string `json:"arn"`
 }
 
+
+
 type AwsServiceDiscoveryHttpNamespaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

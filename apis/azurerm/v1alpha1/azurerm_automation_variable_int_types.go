@@ -19,15 +19,21 @@ type AzurermAutomationVariableInt struct {
 }
 
 type AzurermAutomationVariableIntSpec struct {
-	Value                 int    `json:"value"`
 	ResourceGroupName     string `json:"resource_group_name"`
 	Name                  string `json:"name"`
 	AutomationAccountName string `json:"automation_account_name"`
 	Description           string `json:"description"`
 	Encrypted             bool   `json:"encrypted"`
+	Value                 int    `json:"value"`
 }
 
+
+
 type AzurermAutomationVariableIntStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

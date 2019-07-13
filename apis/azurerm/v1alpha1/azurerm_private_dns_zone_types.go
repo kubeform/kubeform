@@ -19,16 +19,22 @@ type AzurermPrivateDnsZone struct {
 }
 
 type AzurermPrivateDnsZoneSpec struct {
-	Tags                                           map[string]string `json:"tags"`
-	Name                                           string            `json:"name"`
 	NumberOfRecordSets                             int               `json:"number_of_record_sets"`
 	MaxNumberOfRecordSets                          int               `json:"max_number_of_record_sets"`
 	MaxNumberOfVirtualNetworkLinks                 int               `json:"max_number_of_virtual_network_links"`
 	MaxNumberOfVirtualNetworkLinksWithRegistration int               `json:"max_number_of_virtual_network_links_with_registration"`
 	ResourceGroupName                              string            `json:"resource_group_name"`
+	Tags                                           map[string]string `json:"tags"`
+	Name                                           string            `json:"name"`
 }
 
+
+
 type AzurermPrivateDnsZoneStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

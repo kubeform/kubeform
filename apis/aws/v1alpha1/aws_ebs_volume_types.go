@@ -19,18 +19,24 @@ type AwsEbsVolume struct {
 }
 
 type AwsEbsVolumeSpec struct {
+	Iops             int               `json:"iops"`
+	KmsKeyId         string            `json:"kms_key_id"`
+	SnapshotId       string            `json:"snapshot_id"`
 	Type             string            `json:"type"`
 	Tags             map[string]string `json:"tags"`
 	Arn              string            `json:"arn"`
 	AvailabilityZone string            `json:"availability_zone"`
 	Encrypted        bool              `json:"encrypted"`
-	KmsKeyId         string            `json:"kms_key_id"`
-	Iops             int               `json:"iops"`
 	Size             int               `json:"size"`
-	SnapshotId       string            `json:"snapshot_id"`
 }
 
+
+
 type AwsEbsVolumeStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

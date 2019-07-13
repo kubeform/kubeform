@@ -24,18 +24,24 @@ type AzurermDevspaceControllerSpecSku struct {
 }
 
 type AzurermDevspaceControllerSpec struct {
+	Name                                 string                          `json:"name"`
 	Location                             string                          `json:"location"`
 	Sku                                  []AzurermDevspaceControllerSpec `json:"sku"`
 	HostSuffix                           string                          `json:"host_suffix"`
+	DataPlaneFqdn                        string                          `json:"data_plane_fqdn"`
+	ResourceGroupName                    string                          `json:"resource_group_name"`
 	TargetContainerHostResourceId        string                          `json:"target_container_host_resource_id"`
 	TargetContainerHostCredentialsBase64 string                          `json:"target_container_host_credentials_base64"`
-	Name                                 string                          `json:"name"`
-	ResourceGroupName                    string                          `json:"resource_group_name"`
 	Tags                                 map[string]string               `json:"tags"`
-	DataPlaneFqdn                        string                          `json:"data_plane_fqdn"`
 }
 
+
+
 type AzurermDevspaceControllerStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

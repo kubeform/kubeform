@@ -19,15 +19,21 @@ type GoogleRuntimeconfigVariable struct {
 }
 
 type GoogleRuntimeconfigVariableSpec struct {
-	UpdateTime string `json:"update_time"`
 	Name       string `json:"name"`
 	Parent     string `json:"parent"`
 	Project    string `json:"project"`
 	Value      string `json:"value"`
 	Text       string `json:"text"`
+	UpdateTime string `json:"update_time"`
 }
 
+
+
 type GoogleRuntimeconfigVariableStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

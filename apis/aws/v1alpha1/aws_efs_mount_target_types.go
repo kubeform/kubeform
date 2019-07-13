@@ -19,16 +19,22 @@ type AwsEfsMountTarget struct {
 }
 
 type AwsEfsMountTargetSpec struct {
+	FileSystemArn      string   `json:"file_system_arn"`
 	FileSystemId       string   `json:"file_system_id"`
 	IpAddress          string   `json:"ip_address"`
 	SecurityGroups     []string `json:"security_groups"`
 	SubnetId           string   `json:"subnet_id"`
 	NetworkInterfaceId string   `json:"network_interface_id"`
 	DnsName            string   `json:"dns_name"`
-	FileSystemArn      string   `json:"file_system_arn"`
 }
 
+
+
 type AwsEfsMountTargetStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

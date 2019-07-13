@@ -24,18 +24,24 @@ type AwsAppautoscalingScheduledActionSpecScalableTargetAction struct {
 }
 
 type AwsAppautoscalingScheduledActionSpec struct {
-	StartTime            string                                 `json:"start_time"`
-	Name                 string                                 `json:"name"`
-	ServiceNamespace     string                                 `json:"service_namespace"`
-	ResourceId           string                                 `json:"resource_id"`
-	ScalableDimension    string                                 `json:"scalable_dimension"`
 	ScalableTargetAction []AwsAppautoscalingScheduledActionSpec `json:"scalable_target_action"`
 	Schedule             string                                 `json:"schedule"`
+	ScalableDimension    string                                 `json:"scalable_dimension"`
+	ServiceNamespace     string                                 `json:"service_namespace"`
+	ResourceId           string                                 `json:"resource_id"`
+	StartTime            string                                 `json:"start_time"`
 	EndTime              string                                 `json:"end_time"`
 	Arn                  string                                 `json:"arn"`
+	Name                 string                                 `json:"name"`
 }
 
+
+
 type AwsAppautoscalingScheduledActionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

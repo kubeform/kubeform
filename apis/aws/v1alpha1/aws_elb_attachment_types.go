@@ -19,11 +19,17 @@ type AwsElbAttachment struct {
 }
 
 type AwsElbAttachmentSpec struct {
-	Instance string `json:"instance"`
 	Elb      string `json:"elb"`
+	Instance string `json:"instance"`
 }
 
+
+
 type AwsElbAttachmentStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

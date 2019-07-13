@@ -18,15 +18,6 @@ type AzurermBatchPool struct {
 	Status            AzurermBatchPoolStatus `json:"status,omitempty"`
 }
 
-type AzurermBatchPoolSpecAutoScale struct {
-	EvaluationInterval string `json:"evaluation_interval"`
-	Formula            string `json:"formula"`
-}
-
-type AzurermBatchPoolSpecContainerConfiguration struct {
-	Type string `json:"type"`
-}
-
 type AzurermBatchPoolSpecStorageImageReference struct {
 	Id        string `json:"id"`
 	Publisher string `json:"publisher"`
@@ -35,13 +26,16 @@ type AzurermBatchPoolSpecStorageImageReference struct {
 	Version   string `json:"version"`
 }
 
-type AzurermBatchPoolSpecStartTaskResourceFile struct {
-	FileMode                 string `json:"file_mode"`
-	FilePath                 string `json:"file_path"`
-	HttpUrl                  string `json:"http_url"`
-	StorageContainerUrl      string `json:"storage_container_url"`
-	AutoStorageContainerName string `json:"auto_storage_container_name"`
-	BlobPrefix               string `json:"blob_prefix"`
+type AzurermBatchPoolSpecAutoScale struct {
+	EvaluationInterval string `json:"evaluation_interval"`
+	Formula            string `json:"formula"`
+}
+
+type AzurermBatchPoolSpecCertificate struct {
+	Id            string   `json:"id"`
+	StoreLocation string   `json:"store_location"`
+	StoreName     string   `json:"store_name"`
+	Visibility    []string `json:"visibility"`
 }
 
 type AzurermBatchPoolSpecStartTaskUserIdentityAutoUser struct {
@@ -54,46 +48,58 @@ type AzurermBatchPoolSpecStartTaskUserIdentity struct {
 	AutoUser []AzurermBatchPoolSpecStartTaskUserIdentity `json:"auto_user"`
 }
 
+type AzurermBatchPoolSpecStartTaskResourceFile struct {
+	HttpUrl                  string `json:"http_url"`
+	StorageContainerUrl      string `json:"storage_container_url"`
+	AutoStorageContainerName string `json:"auto_storage_container_name"`
+	BlobPrefix               string `json:"blob_prefix"`
+	FileMode                 string `json:"file_mode"`
+	FilePath                 string `json:"file_path"`
+}
+
 type AzurermBatchPoolSpecStartTask struct {
+	Environment       map[string]string               `json:"environment"`
+	UserIdentity      []AzurermBatchPoolSpecStartTask `json:"user_identity"`
 	ResourceFile      []AzurermBatchPoolSpecStartTask `json:"resource_file"`
 	CommandLine       string                          `json:"command_line"`
 	MaxTaskRetryCount int                             `json:"max_task_retry_count"`
 	WaitForSuccess    bool                            `json:"wait_for_success"`
-	Environment       map[string]string               `json:"environment"`
-	UserIdentity      []AzurermBatchPoolSpecStartTask `json:"user_identity"`
 }
 
 type AzurermBatchPoolSpecFixedScale struct {
+	TargetDedicatedNodes   int    `json:"target_dedicated_nodes"`
 	TargetLowPriorityNodes int    `json:"target_low_priority_nodes"`
 	ResizeTimeout          string `json:"resize_timeout"`
-	TargetDedicatedNodes   int    `json:"target_dedicated_nodes"`
 }
 
-type AzurermBatchPoolSpecCertificate struct {
-	Id            string   `json:"id"`
-	StoreLocation string   `json:"store_location"`
-	StoreName     string   `json:"store_name"`
-	Visibility    []string `json:"visibility"`
+type AzurermBatchPoolSpecContainerConfiguration struct {
+	Type string `json:"type"`
 }
 
 type AzurermBatchPoolSpec struct {
-	StopPendingResizeOperation bool                   `json:"stop_pending_resize_operation"`
 	Name                       string                 `json:"name"`
-	ResourceGroupName          string                 `json:"resource_group_name"`
-	AutoScale                  []AzurermBatchPoolSpec `json:"auto_scale"`
+	StorageImageReference      []AzurermBatchPoolSpec `json:"storage_image_reference"`
 	NodeAgentSkuId             string                 `json:"node_agent_sku_id"`
 	AccountName                string                 `json:"account_name"`
-	ContainerConfiguration     []AzurermBatchPoolSpec `json:"container_configuration"`
-	StorageImageReference      []AzurermBatchPoolSpec `json:"storage_image_reference"`
-	DisplayName                string                 `json:"display_name"`
-	MaxTasksPerNode            int                    `json:"max_tasks_per_node"`
-	StartTask                  []AzurermBatchPoolSpec `json:"start_task"`
-	VmSize                     string                 `json:"vm_size"`
-	FixedScale                 []AzurermBatchPoolSpec `json:"fixed_scale"`
+	AutoScale                  []AzurermBatchPoolSpec `json:"auto_scale"`
+	StopPendingResizeOperation bool                   `json:"stop_pending_resize_operation"`
 	Certificate                []AzurermBatchPoolSpec `json:"certificate"`
+	StartTask                  []AzurermBatchPoolSpec `json:"start_task"`
+	ResourceGroupName          string                 `json:"resource_group_name"`
+	FixedScale                 []AzurermBatchPoolSpec `json:"fixed_scale"`
+	MaxTasksPerNode            int                    `json:"max_tasks_per_node"`
+	ContainerConfiguration     []AzurermBatchPoolSpec `json:"container_configuration"`
+	DisplayName                string                 `json:"display_name"`
+	VmSize                     string                 `json:"vm_size"`
 }
 
+
+
 type AzurermBatchPoolStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

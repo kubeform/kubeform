@@ -23,15 +23,21 @@ type AwsDatasyncLocationS3SpecS3Config struct {
 }
 
 type AwsDatasyncLocationS3Spec struct {
-	S3BucketArn  string                      `json:"s3_bucket_arn"`
-	S3Config     []AwsDatasyncLocationS3Spec `json:"s3_config"`
-	Subdirectory string                      `json:"subdirectory"`
 	Tags         map[string]string           `json:"tags"`
 	Uri          string                      `json:"uri"`
 	Arn          string                      `json:"arn"`
+	S3BucketArn  string                      `json:"s3_bucket_arn"`
+	S3Config     []AwsDatasyncLocationS3Spec `json:"s3_config"`
+	Subdirectory string                      `json:"subdirectory"`
 }
 
+
+
 type AwsDatasyncLocationS3Status struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

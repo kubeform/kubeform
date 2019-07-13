@@ -19,18 +19,24 @@ type AzurermBatchCertificate struct {
 }
 
 type AzurermBatchCertificateSpec struct {
-	PublicData          string `json:"public_data"`
 	ResourceGroupName   string `json:"resource_group_name"`
-	Certificate         string `json:"certificate"`
-	Format              string `json:"format"`
 	Password            string `json:"password"`
-	ThumbprintAlgorithm string `json:"thumbprint_algorithm"`
+	Thumbprint          string `json:"thumbprint"`
+	PublicData          string `json:"public_data"`
 	Name                string `json:"name"`
 	AccountName         string `json:"account_name"`
-	Thumbprint          string `json:"thumbprint"`
+	Certificate         string `json:"certificate"`
+	Format              string `json:"format"`
+	ThumbprintAlgorithm string `json:"thumbprint_algorithm"`
 }
 
+
+
 type AzurermBatchCertificateStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

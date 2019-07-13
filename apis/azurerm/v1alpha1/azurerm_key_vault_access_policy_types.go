@@ -19,19 +19,25 @@ type AzurermKeyVaultAccessPolicy struct {
 }
 
 type AzurermKeyVaultAccessPolicySpec struct {
+	ObjectId               string   `json:"object_id"`
+	KeyPermissions         []string `json:"key_permissions"`
 	VaultName              string   `json:"vault_name"`
-	ApplicationId          string   `json:"application_id"`
-	CertificatePermissions []string `json:"certificate_permissions"`
+	ResourceGroupName      string   `json:"resource_group_name"`
+	TenantId               string   `json:"tenant_id"`
 	SecretPermissions      []string `json:"secret_permissions"`
 	StoragePermissions     []string `json:"storage_permissions"`
 	KeyVaultId             string   `json:"key_vault_id"`
-	ResourceGroupName      string   `json:"resource_group_name"`
-	TenantId               string   `json:"tenant_id"`
-	ObjectId               string   `json:"object_id"`
-	KeyPermissions         []string `json:"key_permissions"`
+	ApplicationId          string   `json:"application_id"`
+	CertificatePermissions []string `json:"certificate_permissions"`
 }
 
+
+
 type AzurermKeyVaultAccessPolicyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

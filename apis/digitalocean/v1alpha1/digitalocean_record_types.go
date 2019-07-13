@@ -19,20 +19,26 @@ type DigitaloceanRecord struct {
 }
 
 type DigitaloceanRecordSpec struct {
-	Domain   string `json:"domain"`
-	Priority int    `json:"priority"`
-	Weight   int    `json:"weight"`
-	Value    string `json:"value"`
+	Ttl      int    `json:"ttl"`
 	Fqdn     string `json:"fqdn"`
 	Flags    int    `json:"flags"`
-	Tag      string `json:"tag"`
 	Type     string `json:"type"`
+	Domain   string `json:"domain"`
 	Name     string `json:"name"`
 	Port     int    `json:"port"`
-	Ttl      int    `json:"ttl"`
+	Weight   int    `json:"weight"`
+	Tag      string `json:"tag"`
+	Priority int    `json:"priority"`
+	Value    string `json:"value"`
 }
 
+
+
 type DigitaloceanRecordStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

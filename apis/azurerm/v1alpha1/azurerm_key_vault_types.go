@@ -18,44 +18,50 @@ type AzurermKeyVault struct {
 	Status            AzurermKeyVaultStatus `json:"status,omitempty"`
 }
 
-type AzurermKeyVaultSpecSku struct {
-	Name string `json:"name"`
-}
-
 type AzurermKeyVaultSpecAccessPolicy struct {
-	SecretPermissions      []string `json:"secret_permissions"`
 	StoragePermissions     []string `json:"storage_permissions"`
 	TenantId               string   `json:"tenant_id"`
 	ObjectId               string   `json:"object_id"`
 	ApplicationId          string   `json:"application_id"`
 	CertificatePermissions []string `json:"certificate_permissions"`
 	KeyPermissions         []string `json:"key_permissions"`
+	SecretPermissions      []string `json:"secret_permissions"`
+}
+
+type AzurermKeyVaultSpecSku struct {
+	Name string `json:"name"`
 }
 
 type AzurermKeyVaultSpecNetworkAcls struct {
-	IpRules                 []string `json:"ip_rules"`
-	VirtualNetworkSubnetIds []string `json:"virtual_network_subnet_ids"`
 	DefaultAction           string   `json:"default_action"`
 	Bypass                  string   `json:"bypass"`
+	IpRules                 []string `json:"ip_rules"`
+	VirtualNetworkSubnetIds []string `json:"virtual_network_subnet_ids"`
 }
 
 type AzurermKeyVaultSpec struct {
-	Location                     string                `json:"location"`
-	Sku                          []AzurermKeyVaultSpec `json:"sku"`
-	TenantId                     string                `json:"tenant_id"`
 	AccessPolicy                 []AzurermKeyVaultSpec `json:"access_policy"`
 	EnabledForDeployment         bool                  `json:"enabled_for_deployment"`
-	EnabledForTemplateDeployment bool                  `json:"enabled_for_template_deployment"`
-	Name                         string                `json:"name"`
+	ResourceGroupName            string                `json:"resource_group_name"`
+	Sku                          []AzurermKeyVaultSpec `json:"sku"`
 	SkuName                      string                `json:"sku_name"`
 	VaultUri                     string                `json:"vault_uri"`
+	TenantId                     string                `json:"tenant_id"`
 	EnabledForDiskEncryption     bool                  `json:"enabled_for_disk_encryption"`
+	EnabledForTemplateDeployment bool                  `json:"enabled_for_template_deployment"`
 	NetworkAcls                  []AzurermKeyVaultSpec `json:"network_acls"`
+	Name                         string                `json:"name"`
+	Location                     string                `json:"location"`
 	Tags                         map[string]string     `json:"tags"`
-	ResourceGroupName            string                `json:"resource_group_name"`
 }
 
+
+
 type AzurermKeyVaultStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

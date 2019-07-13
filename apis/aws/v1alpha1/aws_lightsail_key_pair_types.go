@@ -19,18 +19,24 @@ type AwsLightsailKeyPair struct {
 }
 
 type AwsLightsailKeyPairSpec struct {
-	EncryptedPrivateKey  string `json:"encrypted_private_key"`
 	Name                 string `json:"name"`
-	NamePrefix           string `json:"name_prefix"`
-	Fingerprint          string `json:"fingerprint"`
+	PublicKey            string `json:"public_key"`
 	PrivateKey           string `json:"private_key"`
+	EncryptedFingerprint string `json:"encrypted_fingerprint"`
+	EncryptedPrivateKey  string `json:"encrypted_private_key"`
+	NamePrefix           string `json:"name_prefix"`
 	PgpKey               string `json:"pgp_key"`
 	Arn                  string `json:"arn"`
-	PublicKey            string `json:"public_key"`
-	EncryptedFingerprint string `json:"encrypted_fingerprint"`
+	Fingerprint          string `json:"fingerprint"`
 }
 
+
+
 type AwsLightsailKeyPairStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

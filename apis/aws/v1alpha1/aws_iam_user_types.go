@@ -19,16 +19,22 @@ type AwsIamUser struct {
 }
 
 type AwsIamUserSpec struct {
-	PermissionsBoundary string            `json:"permissions_boundary"`
-	ForceDestroy        bool              `json:"force_destroy"`
-	Tags                map[string]string `json:"tags"`
 	Arn                 string            `json:"arn"`
 	UniqueId            string            `json:"unique_id"`
 	Name                string            `json:"name"`
 	Path                string            `json:"path"`
+	PermissionsBoundary string            `json:"permissions_boundary"`
+	ForceDestroy        bool              `json:"force_destroy"`
+	Tags                map[string]string `json:"tags"`
 }
 
+
+
 type AwsIamUserStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

@@ -19,16 +19,22 @@ type GoogleServiceAccount struct {
 }
 
 type GoogleServiceAccountSpec struct {
-	Name        string `json:"name"`
-	AccountId   string `json:"account_id"`
 	DisplayName string `json:"display_name"`
 	Project     string `json:"project"`
 	PolicyData  string `json:"policy_data"`
 	Email       string `json:"email"`
 	UniqueId    string `json:"unique_id"`
+	Name        string `json:"name"`
+	AccountId   string `json:"account_id"`
 }
 
+
+
 type GoogleServiceAccountStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

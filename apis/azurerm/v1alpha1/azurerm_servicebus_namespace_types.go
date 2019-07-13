@@ -19,19 +19,25 @@ type AzurermServicebusNamespace struct {
 }
 
 type AzurermServicebusNamespaceSpec struct {
-	Location                         string            `json:"location"`
-	Capacity                         int               `json:"capacity"`
-	DefaultSecondaryConnectionString string            `json:"default_secondary_connection_string"`
-	Tags                             map[string]string `json:"tags"`
-	DefaultSecondaryKey              string            `json:"default_secondary_key"`
 	Name                             string            `json:"name"`
+	Location                         string            `json:"location"`
 	ResourceGroupName                string            `json:"resource_group_name"`
 	Sku                              string            `json:"sku"`
+	DefaultSecondaryConnectionString string            `json:"default_secondary_connection_string"`
+	Tags                             map[string]string `json:"tags"`
+	Capacity                         int               `json:"capacity"`
 	DefaultPrimaryConnectionString   string            `json:"default_primary_connection_string"`
 	DefaultPrimaryKey                string            `json:"default_primary_key"`
+	DefaultSecondaryKey              string            `json:"default_secondary_key"`
 }
 
+
+
 type AzurermServicebusNamespaceStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

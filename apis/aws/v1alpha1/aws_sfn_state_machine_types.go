@@ -19,15 +19,21 @@ type AwsSfnStateMachine struct {
 }
 
 type AwsSfnStateMachineSpec struct {
-	Tags         map[string]string `json:"tags"`
-	Definition   string            `json:"definition"`
-	Name         string            `json:"name"`
 	RoleArn      string            `json:"role_arn"`
 	CreationDate string            `json:"creation_date"`
 	Status       string            `json:"status"`
+	Tags         map[string]string `json:"tags"`
+	Definition   string            `json:"definition"`
+	Name         string            `json:"name"`
 }
 
+
+
 type AwsSfnStateMachineStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

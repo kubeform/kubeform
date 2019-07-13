@@ -19,17 +19,23 @@ type AwsRdsGlobalCluster struct {
 }
 
 type AwsRdsGlobalClusterSpec struct {
-	DeletionProtection      bool   `json:"deletion_protection"`
-	Engine                  string `json:"engine"`
-	EngineVersion           string `json:"engine_version"`
 	GlobalClusterIdentifier string `json:"global_cluster_identifier"`
 	GlobalClusterResourceId string `json:"global_cluster_resource_id"`
 	StorageEncrypted        bool   `json:"storage_encrypted"`
 	Arn                     string `json:"arn"`
 	DatabaseName            string `json:"database_name"`
+	DeletionProtection      bool   `json:"deletion_protection"`
+	Engine                  string `json:"engine"`
+	EngineVersion           string `json:"engine_version"`
 }
 
+
+
 type AwsRdsGlobalClusterStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

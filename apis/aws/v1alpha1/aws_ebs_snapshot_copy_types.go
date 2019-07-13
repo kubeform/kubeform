@@ -19,20 +19,26 @@ type AwsEbsSnapshotCopy struct {
 }
 
 type AwsEbsSnapshotCopySpec struct {
-	SourceRegion        string            `json:"source_region"`
-	SourceSnapshotId    string            `json:"source_snapshot_id"`
 	Tags                map[string]string `json:"tags"`
-	Description         string            `json:"description"`
-	Encrypted           bool              `json:"encrypted"`
-	KmsKeyId            string            `json:"kms_key_id"`
-	VolumeSize          int               `json:"volume_size"`
-	DataEncryptionKeyId string            `json:"data_encryption_key_id"`
-	VolumeId            string            `json:"volume_id"`
-	OwnerId             string            `json:"owner_id"`
 	OwnerAlias          string            `json:"owner_alias"`
+	VolumeSize          int               `json:"volume_size"`
+	KmsKeyId            string            `json:"kms_key_id"`
+	DataEncryptionKeyId string            `json:"data_encryption_key_id"`
+	SourceRegion        string            `json:"source_region"`
+	VolumeId            string            `json:"volume_id"`
+	Description         string            `json:"description"`
+	OwnerId             string            `json:"owner_id"`
+	Encrypted           bool              `json:"encrypted"`
+	SourceSnapshotId    string            `json:"source_snapshot_id"`
 }
 
+
+
 type AwsEbsSnapshotCopyStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 

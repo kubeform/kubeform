@@ -27,17 +27,23 @@ type AwsBatchJobDefinitionSpecTimeout struct {
 }
 
 type AwsBatchJobDefinitionSpec struct {
-	RetryStrategy       []AwsBatchJobDefinitionSpec `json:"retry_strategy"`
-	Timeout             []AwsBatchJobDefinitionSpec `json:"timeout"`
-	Type                string                      `json:"type"`
-	Revision            int                         `json:"revision"`
 	Arn                 string                      `json:"arn"`
 	Name                string                      `json:"name"`
 	ContainerProperties string                      `json:"container_properties"`
 	Parameters          map[string]string           `json:"parameters"`
+	RetryStrategy       []AwsBatchJobDefinitionSpec `json:"retry_strategy"`
+	Timeout             []AwsBatchJobDefinitionSpec `json:"timeout"`
+	Type                string                      `json:"type"`
+	Revision            int                         `json:"revision"`
 }
 
+
+
 type AwsBatchJobDefinitionStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
 	Output *runtime.RawExtension `json:"output,omitempty"`
 }
 
