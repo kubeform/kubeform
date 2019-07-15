@@ -10,6 +10,8 @@ DOCKER_CODEGEN_PKG="/go/src/k8s.io/code-generator"
 
 pushd $REPO_ROOT
 
+goimports -w $REPO_ROOT/apis
+
 for provider in $(find $REPO_ROOT/apis -maxdepth 1 -mindepth 1 -type d -printf '%f '); do
     rm -rf "$REPO_ROOT"/apis/${provider}/v1alpha1/*.generated.go
 done
