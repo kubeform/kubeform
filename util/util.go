@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 	"text/template"
 
@@ -67,8 +68,15 @@ func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*sc
 
 func TerraformSchemaToStruct(s map[string]*schema.Schema, structName string, out *string) {
 	var statements Statement
+	var keys []string
+	for k := range s {
+		keys = append(keys, k)
+	}
 
-	for key, value := range s {
+	sort.Strings(keys)
+
+	for _, key := range keys {
+		value := s[key]
 		id := SnakeCaseToCamelCase(key)
 		switch value.Type {
 		case schema.TypeString:
