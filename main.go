@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
@@ -33,6 +34,8 @@ func main() {
 			var schemas []map[string]*schema.Schema
 
 			for key, values := range p.ResourcesMap {
+				providerPrefix := strings.Split(key, "_")[0]
+				key = strings.Replace(key, providerPrefix+"_", "", 1)
 				structNames = append(structNames, util.SnakeCaseToCamelCase(key))
 				schemas = append(schemas, values.Schema)
 			}
