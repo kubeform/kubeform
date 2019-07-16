@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -167,7 +168,7 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 				statements = append(statements, Id(id).Id(ptr).Index().Id(structName).Tag(map[string]string{"json": key}))
 				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, providerName, out)
 			default:
-				statements = append(statements, Id(id).Id(ptr).Index().String().Tag(map[string]string{"json": key}))
+				log.Fatalf("Provider %s has resource %s type %s.%s with unknown schema type %s", providerName, structName, structName, id, value.Elem)
 			}
 
 		}
