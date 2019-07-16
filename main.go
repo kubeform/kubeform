@@ -32,10 +32,9 @@ func main() {
 		if ok {
 			var structNames []string
 			var schemas []map[string]*schema.Schema
-
+			providerPrefix := key
 			for key, values := range p.ResourcesMap {
-				providerPrefix := strings.Split(key, "_")[0]
-				key = strings.Replace(key, providerPrefix+"_", "", 1)
+				key = strings.TrimPrefix(key, providerPrefix+"_")
 				structNames = append(structNames, util.SnakeCaseToCamelCase(key))
 				schemas = append(schemas, values.Schema)
 			}
