@@ -24,30 +24,30 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
-	// LinodeDomains returns a LinodeDomainInformer.
-	LinodeDomains() LinodeDomainInformer
-	// LinodeDomainRecords returns a LinodeDomainRecordInformer.
-	LinodeDomainRecords() LinodeDomainRecordInformer
-	// LinodeImages returns a LinodeImageInformer.
-	LinodeImages() LinodeImageInformer
-	// LinodeInstances returns a LinodeInstanceInformer.
-	LinodeInstances() LinodeInstanceInformer
-	// LinodeNodebalancers returns a LinodeNodebalancerInformer.
-	LinodeNodebalancers() LinodeNodebalancerInformer
-	// LinodeNodebalancerConfigs returns a LinodeNodebalancerConfigInformer.
-	LinodeNodebalancerConfigs() LinodeNodebalancerConfigInformer
-	// LinodeNodebalancerNodes returns a LinodeNodebalancerNodeInformer.
-	LinodeNodebalancerNodes() LinodeNodebalancerNodeInformer
-	// LinodeRdnses returns a LinodeRdnsInformer.
-	LinodeRdnses() LinodeRdnsInformer
-	// LinodeSshkeys returns a LinodeSshkeyInformer.
-	LinodeSshkeys() LinodeSshkeyInformer
-	// LinodeStackscripts returns a LinodeStackscriptInformer.
-	LinodeStackscripts() LinodeStackscriptInformer
-	// LinodeTokens returns a LinodeTokenInformer.
-	LinodeTokens() LinodeTokenInformer
-	// LinodeVolumes returns a LinodeVolumeInformer.
-	LinodeVolumes() LinodeVolumeInformer
+	// Domains returns a DomainInformer.
+	Domains() DomainInformer
+	// DomainRecords returns a DomainRecordInformer.
+	DomainRecords() DomainRecordInformer
+	// Images returns a ImageInformer.
+	Images() ImageInformer
+	// Instances returns a InstanceInformer.
+	Instances() InstanceInformer
+	// Nodebalancers returns a NodebalancerInformer.
+	Nodebalancers() NodebalancerInformer
+	// NodebalancerConfigs returns a NodebalancerConfigInformer.
+	NodebalancerConfigs() NodebalancerConfigInformer
+	// NodebalancerNodes returns a NodebalancerNodeInformer.
+	NodebalancerNodes() NodebalancerNodeInformer
+	// Rdnses returns a RdnsInformer.
+	Rdnses() RdnsInformer
+	// Sshkeys returns a SshkeyInformer.
+	Sshkeys() SshkeyInformer
+	// Stackscripts returns a StackscriptInformer.
+	Stackscripts() StackscriptInformer
+	// Tokens returns a TokenInformer.
+	Tokens() TokenInformer
+	// Volumes returns a VolumeInformer.
+	Volumes() VolumeInformer
 }
 
 type version struct {
@@ -61,62 +61,62 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
-// LinodeDomains returns a LinodeDomainInformer.
-func (v *version) LinodeDomains() LinodeDomainInformer {
-	return &linodeDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Domains returns a DomainInformer.
+func (v *version) Domains() DomainInformer {
+	return &domainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// LinodeDomainRecords returns a LinodeDomainRecordInformer.
-func (v *version) LinodeDomainRecords() LinodeDomainRecordInformer {
-	return &linodeDomainRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DomainRecords returns a DomainRecordInformer.
+func (v *version) DomainRecords() DomainRecordInformer {
+	return &domainRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// LinodeImages returns a LinodeImageInformer.
-func (v *version) LinodeImages() LinodeImageInformer {
-	return &linodeImageInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Images returns a ImageInformer.
+func (v *version) Images() ImageInformer {
+	return &imageInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// LinodeInstances returns a LinodeInstanceInformer.
-func (v *version) LinodeInstances() LinodeInstanceInformer {
-	return &linodeInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Instances returns a InstanceInformer.
+func (v *version) Instances() InstanceInformer {
+	return &instanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// LinodeNodebalancers returns a LinodeNodebalancerInformer.
-func (v *version) LinodeNodebalancers() LinodeNodebalancerInformer {
-	return &linodeNodebalancerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Nodebalancers returns a NodebalancerInformer.
+func (v *version) Nodebalancers() NodebalancerInformer {
+	return &nodebalancerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// LinodeNodebalancerConfigs returns a LinodeNodebalancerConfigInformer.
-func (v *version) LinodeNodebalancerConfigs() LinodeNodebalancerConfigInformer {
-	return &linodeNodebalancerConfigInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NodebalancerConfigs returns a NodebalancerConfigInformer.
+func (v *version) NodebalancerConfigs() NodebalancerConfigInformer {
+	return &nodebalancerConfigInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// LinodeNodebalancerNodes returns a LinodeNodebalancerNodeInformer.
-func (v *version) LinodeNodebalancerNodes() LinodeNodebalancerNodeInformer {
-	return &linodeNodebalancerNodeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NodebalancerNodes returns a NodebalancerNodeInformer.
+func (v *version) NodebalancerNodes() NodebalancerNodeInformer {
+	return &nodebalancerNodeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// LinodeRdnses returns a LinodeRdnsInformer.
-func (v *version) LinodeRdnses() LinodeRdnsInformer {
-	return &linodeRdnsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Rdnses returns a RdnsInformer.
+func (v *version) Rdnses() RdnsInformer {
+	return &rdnsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// LinodeSshkeys returns a LinodeSshkeyInformer.
-func (v *version) LinodeSshkeys() LinodeSshkeyInformer {
-	return &linodeSshkeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Sshkeys returns a SshkeyInformer.
+func (v *version) Sshkeys() SshkeyInformer {
+	return &sshkeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// LinodeStackscripts returns a LinodeStackscriptInformer.
-func (v *version) LinodeStackscripts() LinodeStackscriptInformer {
-	return &linodeStackscriptInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Stackscripts returns a StackscriptInformer.
+func (v *version) Stackscripts() StackscriptInformer {
+	return &stackscriptInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// LinodeTokens returns a LinodeTokenInformer.
-func (v *version) LinodeTokens() LinodeTokenInformer {
-	return &linodeTokenInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Tokens returns a TokenInformer.
+func (v *version) Tokens() TokenInformer {
+	return &tokenInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// LinodeVolumes returns a LinodeVolumeInformer.
-func (v *version) LinodeVolumes() LinodeVolumeInformer {
-	return &linodeVolumeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Volumes returns a VolumeInformer.
+func (v *version) Volumes() VolumeInformer {
+	return &volumeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }

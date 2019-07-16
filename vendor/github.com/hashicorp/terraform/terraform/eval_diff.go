@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"log"
+	"reflect"
 	"strings"
 
 	"github.com/hashicorp/hcl2/hcl"
@@ -531,7 +532,7 @@ func processIgnoreChangesIndividual(prior, proposed cty.Value, ignoreChanges []h
 		// away any deeper values we already produced at that point.
 		var ignoreTraversal hcl.Traversal
 		for i, candidate := range ignoreChangesPath {
-			if path.Equals(candidate) {
+			if reflect.DeepEqual(path, candidate) {
 				ignoreTraversal = ignoreChanges[i]
 			}
 		}

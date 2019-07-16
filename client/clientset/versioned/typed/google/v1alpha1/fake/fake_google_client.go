@@ -28,620 +28,620 @@ type FakeGoogleV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeGoogleV1alpha1) GoogleAppEngineApplications() v1alpha1.GoogleAppEngineApplicationInterface {
-	return &FakeGoogleAppEngineApplications{c}
+func (c *FakeGoogleV1alpha1) AppEngineApplications() v1alpha1.AppEngineApplicationInterface {
+	return &FakeAppEngineApplications{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleBigqueryDatasets() v1alpha1.GoogleBigqueryDatasetInterface {
-	return &FakeGoogleBigqueryDatasets{c}
+func (c *FakeGoogleV1alpha1) BigqueryDatasets() v1alpha1.BigqueryDatasetInterface {
+	return &FakeBigqueryDatasets{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleBigqueryTables() v1alpha1.GoogleBigqueryTableInterface {
-	return &FakeGoogleBigqueryTables{c}
+func (c *FakeGoogleV1alpha1) BigqueryTables() v1alpha1.BigqueryTableInterface {
+	return &FakeBigqueryTables{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleBigtableInstances() v1alpha1.GoogleBigtableInstanceInterface {
-	return &FakeGoogleBigtableInstances{c}
+func (c *FakeGoogleV1alpha1) BigtableInstances() v1alpha1.BigtableInstanceInterface {
+	return &FakeBigtableInstances{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleBigtableTables() v1alpha1.GoogleBigtableTableInterface {
-	return &FakeGoogleBigtableTables{c}
+func (c *FakeGoogleV1alpha1) BigtableTables() v1alpha1.BigtableTableInterface {
+	return &FakeBigtableTables{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleBillingAccountIamBindings() v1alpha1.GoogleBillingAccountIamBindingInterface {
-	return &FakeGoogleBillingAccountIamBindings{c}
+func (c *FakeGoogleV1alpha1) BillingAccountIamBindings() v1alpha1.BillingAccountIamBindingInterface {
+	return &FakeBillingAccountIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleBillingAccountIamMembers() v1alpha1.GoogleBillingAccountIamMemberInterface {
-	return &FakeGoogleBillingAccountIamMembers{c}
+func (c *FakeGoogleV1alpha1) BillingAccountIamMembers() v1alpha1.BillingAccountIamMemberInterface {
+	return &FakeBillingAccountIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleBillingAccountIamPolicies() v1alpha1.GoogleBillingAccountIamPolicyInterface {
-	return &FakeGoogleBillingAccountIamPolicies{c}
+func (c *FakeGoogleV1alpha1) BillingAccountIamPolicies() v1alpha1.BillingAccountIamPolicyInterface {
+	return &FakeBillingAccountIamPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleBinaryAuthorizationAttestors() v1alpha1.GoogleBinaryAuthorizationAttestorInterface {
-	return &FakeGoogleBinaryAuthorizationAttestors{c}
+func (c *FakeGoogleV1alpha1) BinaryAuthorizationAttestors() v1alpha1.BinaryAuthorizationAttestorInterface {
+	return &FakeBinaryAuthorizationAttestors{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleBinaryAuthorizationPolicies() v1alpha1.GoogleBinaryAuthorizationPolicyInterface {
-	return &FakeGoogleBinaryAuthorizationPolicies{c}
+func (c *FakeGoogleV1alpha1) BinaryAuthorizationPolicies() v1alpha1.BinaryAuthorizationPolicyInterface {
+	return &FakeBinaryAuthorizationPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleCloudbuildTriggers() v1alpha1.GoogleCloudbuildTriggerInterface {
-	return &FakeGoogleCloudbuildTriggers{c}
+func (c *FakeGoogleV1alpha1) CloudbuildTriggers() v1alpha1.CloudbuildTriggerInterface {
+	return &FakeCloudbuildTriggers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleCloudfunctionsFunctions() v1alpha1.GoogleCloudfunctionsFunctionInterface {
-	return &FakeGoogleCloudfunctionsFunctions{c}
+func (c *FakeGoogleV1alpha1) CloudfunctionsFunctions() v1alpha1.CloudfunctionsFunctionInterface {
+	return &FakeCloudfunctionsFunctions{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleCloudiotRegistries() v1alpha1.GoogleCloudiotRegistryInterface {
-	return &FakeGoogleCloudiotRegistries{c}
+func (c *FakeGoogleV1alpha1) CloudiotRegistries() v1alpha1.CloudiotRegistryInterface {
+	return &FakeCloudiotRegistries{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComposerEnvironments() v1alpha1.GoogleComposerEnvironmentInterface {
-	return &FakeGoogleComposerEnvironments{c}
+func (c *FakeGoogleV1alpha1) ComposerEnvironments() v1alpha1.ComposerEnvironmentInterface {
+	return &FakeComposerEnvironments{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeAddresses() v1alpha1.GoogleComputeAddressInterface {
-	return &FakeGoogleComputeAddresses{c}
+func (c *FakeGoogleV1alpha1) ComputeAddresses() v1alpha1.ComputeAddressInterface {
+	return &FakeComputeAddresses{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeAttachedDisks() v1alpha1.GoogleComputeAttachedDiskInterface {
-	return &FakeGoogleComputeAttachedDisks{c}
+func (c *FakeGoogleV1alpha1) ComputeAttachedDisks() v1alpha1.ComputeAttachedDiskInterface {
+	return &FakeComputeAttachedDisks{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeAutoscalers() v1alpha1.GoogleComputeAutoscalerInterface {
-	return &FakeGoogleComputeAutoscalers{c}
+func (c *FakeGoogleV1alpha1) ComputeAutoscalers() v1alpha1.ComputeAutoscalerInterface {
+	return &FakeComputeAutoscalers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeBackendBuckets() v1alpha1.GoogleComputeBackendBucketInterface {
-	return &FakeGoogleComputeBackendBuckets{c}
+func (c *FakeGoogleV1alpha1) ComputeBackendBuckets() v1alpha1.ComputeBackendBucketInterface {
+	return &FakeComputeBackendBuckets{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeBackendServices() v1alpha1.GoogleComputeBackendServiceInterface {
-	return &FakeGoogleComputeBackendServices{c}
+func (c *FakeGoogleV1alpha1) ComputeBackendServices() v1alpha1.ComputeBackendServiceInterface {
+	return &FakeComputeBackendServices{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeDisks() v1alpha1.GoogleComputeDiskInterface {
-	return &FakeGoogleComputeDisks{c}
+func (c *FakeGoogleV1alpha1) ComputeDisks() v1alpha1.ComputeDiskInterface {
+	return &FakeComputeDisks{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeFirewalls() v1alpha1.GoogleComputeFirewallInterface {
-	return &FakeGoogleComputeFirewalls{c}
+func (c *FakeGoogleV1alpha1) ComputeFirewalls() v1alpha1.ComputeFirewallInterface {
+	return &FakeComputeFirewalls{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeForwardingRules() v1alpha1.GoogleComputeForwardingRuleInterface {
-	return &FakeGoogleComputeForwardingRules{c}
+func (c *FakeGoogleV1alpha1) ComputeForwardingRules() v1alpha1.ComputeForwardingRuleInterface {
+	return &FakeComputeForwardingRules{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeGlobalAddresses() v1alpha1.GoogleComputeGlobalAddressInterface {
-	return &FakeGoogleComputeGlobalAddresses{c}
+func (c *FakeGoogleV1alpha1) ComputeGlobalAddresses() v1alpha1.ComputeGlobalAddressInterface {
+	return &FakeComputeGlobalAddresses{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeGlobalForwardingRules() v1alpha1.GoogleComputeGlobalForwardingRuleInterface {
-	return &FakeGoogleComputeGlobalForwardingRules{c}
+func (c *FakeGoogleV1alpha1) ComputeGlobalForwardingRules() v1alpha1.ComputeGlobalForwardingRuleInterface {
+	return &FakeComputeGlobalForwardingRules{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeHealthChecks() v1alpha1.GoogleComputeHealthCheckInterface {
-	return &FakeGoogleComputeHealthChecks{c}
+func (c *FakeGoogleV1alpha1) ComputeHealthChecks() v1alpha1.ComputeHealthCheckInterface {
+	return &FakeComputeHealthChecks{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeHttpHealthChecks() v1alpha1.GoogleComputeHttpHealthCheckInterface {
-	return &FakeGoogleComputeHttpHealthChecks{c}
+func (c *FakeGoogleV1alpha1) ComputeHttpHealthChecks() v1alpha1.ComputeHttpHealthCheckInterface {
+	return &FakeComputeHttpHealthChecks{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeHttpsHealthChecks() v1alpha1.GoogleComputeHttpsHealthCheckInterface {
-	return &FakeGoogleComputeHttpsHealthChecks{c}
+func (c *FakeGoogleV1alpha1) ComputeHttpsHealthChecks() v1alpha1.ComputeHttpsHealthCheckInterface {
+	return &FakeComputeHttpsHealthChecks{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeImages() v1alpha1.GoogleComputeImageInterface {
-	return &FakeGoogleComputeImages{c}
+func (c *FakeGoogleV1alpha1) ComputeImages() v1alpha1.ComputeImageInterface {
+	return &FakeComputeImages{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeInstances() v1alpha1.GoogleComputeInstanceInterface {
-	return &FakeGoogleComputeInstances{c}
+func (c *FakeGoogleV1alpha1) ComputeInstances() v1alpha1.ComputeInstanceInterface {
+	return &FakeComputeInstances{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeInstanceFromTemplates() v1alpha1.GoogleComputeInstanceFromTemplateInterface {
-	return &FakeGoogleComputeInstanceFromTemplates{c}
+func (c *FakeGoogleV1alpha1) ComputeInstanceFromTemplates() v1alpha1.ComputeInstanceFromTemplateInterface {
+	return &FakeComputeInstanceFromTemplates{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeInstanceGroups() v1alpha1.GoogleComputeInstanceGroupInterface {
-	return &FakeGoogleComputeInstanceGroups{c}
+func (c *FakeGoogleV1alpha1) ComputeInstanceGroups() v1alpha1.ComputeInstanceGroupInterface {
+	return &FakeComputeInstanceGroups{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeInstanceGroupManagers() v1alpha1.GoogleComputeInstanceGroupManagerInterface {
-	return &FakeGoogleComputeInstanceGroupManagers{c}
+func (c *FakeGoogleV1alpha1) ComputeInstanceGroupManagers() v1alpha1.ComputeInstanceGroupManagerInterface {
+	return &FakeComputeInstanceGroupManagers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeInstanceTemplates() v1alpha1.GoogleComputeInstanceTemplateInterface {
-	return &FakeGoogleComputeInstanceTemplates{c}
+func (c *FakeGoogleV1alpha1) ComputeInstanceTemplates() v1alpha1.ComputeInstanceTemplateInterface {
+	return &FakeComputeInstanceTemplates{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeInterconnectAttachments() v1alpha1.GoogleComputeInterconnectAttachmentInterface {
-	return &FakeGoogleComputeInterconnectAttachments{c}
+func (c *FakeGoogleV1alpha1) ComputeInterconnectAttachments() v1alpha1.ComputeInterconnectAttachmentInterface {
+	return &FakeComputeInterconnectAttachments{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeNetworks() v1alpha1.GoogleComputeNetworkInterface {
-	return &FakeGoogleComputeNetworks{c}
+func (c *FakeGoogleV1alpha1) ComputeNetworks() v1alpha1.ComputeNetworkInterface {
+	return &FakeComputeNetworks{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeNetworkPeerings() v1alpha1.GoogleComputeNetworkPeeringInterface {
-	return &FakeGoogleComputeNetworkPeerings{c}
+func (c *FakeGoogleV1alpha1) ComputeNetworkPeerings() v1alpha1.ComputeNetworkPeeringInterface {
+	return &FakeComputeNetworkPeerings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeProjectMetadatas() v1alpha1.GoogleComputeProjectMetadataInterface {
-	return &FakeGoogleComputeProjectMetadatas{c}
+func (c *FakeGoogleV1alpha1) ComputeProjectMetadatas() v1alpha1.ComputeProjectMetadataInterface {
+	return &FakeComputeProjectMetadatas{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeProjectMetadataItems() v1alpha1.GoogleComputeProjectMetadataItemInterface {
-	return &FakeGoogleComputeProjectMetadataItems{c}
+func (c *FakeGoogleV1alpha1) ComputeProjectMetadataItems() v1alpha1.ComputeProjectMetadataItemInterface {
+	return &FakeComputeProjectMetadataItems{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeRegionAutoscalers() v1alpha1.GoogleComputeRegionAutoscalerInterface {
-	return &FakeGoogleComputeRegionAutoscalers{c}
+func (c *FakeGoogleV1alpha1) ComputeRegionAutoscalers() v1alpha1.ComputeRegionAutoscalerInterface {
+	return &FakeComputeRegionAutoscalers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeRegionBackendServices() v1alpha1.GoogleComputeRegionBackendServiceInterface {
-	return &FakeGoogleComputeRegionBackendServices{c}
+func (c *FakeGoogleV1alpha1) ComputeRegionBackendServices() v1alpha1.ComputeRegionBackendServiceInterface {
+	return &FakeComputeRegionBackendServices{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeRegionDisks() v1alpha1.GoogleComputeRegionDiskInterface {
-	return &FakeGoogleComputeRegionDisks{c}
+func (c *FakeGoogleV1alpha1) ComputeRegionDisks() v1alpha1.ComputeRegionDiskInterface {
+	return &FakeComputeRegionDisks{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeRegionInstanceGroupManagers() v1alpha1.GoogleComputeRegionInstanceGroupManagerInterface {
-	return &FakeGoogleComputeRegionInstanceGroupManagers{c}
+func (c *FakeGoogleV1alpha1) ComputeRegionInstanceGroupManagers() v1alpha1.ComputeRegionInstanceGroupManagerInterface {
+	return &FakeComputeRegionInstanceGroupManagers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeRoutes() v1alpha1.GoogleComputeRouteInterface {
-	return &FakeGoogleComputeRoutes{c}
+func (c *FakeGoogleV1alpha1) ComputeRoutes() v1alpha1.ComputeRouteInterface {
+	return &FakeComputeRoutes{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeRouters() v1alpha1.GoogleComputeRouterInterface {
-	return &FakeGoogleComputeRouters{c}
+func (c *FakeGoogleV1alpha1) ComputeRouters() v1alpha1.ComputeRouterInterface {
+	return &FakeComputeRouters{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeRouterInterfaces() v1alpha1.GoogleComputeRouterInterfaceInterface {
-	return &FakeGoogleComputeRouterInterfaces{c}
+func (c *FakeGoogleV1alpha1) ComputeRouterInterfaces() v1alpha1.ComputeRouterInterfaceInterface {
+	return &FakeComputeRouterInterfaces{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeRouterNats() v1alpha1.GoogleComputeRouterNatInterface {
-	return &FakeGoogleComputeRouterNats{c}
+func (c *FakeGoogleV1alpha1) ComputeRouterNats() v1alpha1.ComputeRouterNatInterface {
+	return &FakeComputeRouterNats{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeRouterPeers() v1alpha1.GoogleComputeRouterPeerInterface {
-	return &FakeGoogleComputeRouterPeers{c}
+func (c *FakeGoogleV1alpha1) ComputeRouterPeers() v1alpha1.ComputeRouterPeerInterface {
+	return &FakeComputeRouterPeers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeSecurityPolicies() v1alpha1.GoogleComputeSecurityPolicyInterface {
-	return &FakeGoogleComputeSecurityPolicies{c}
+func (c *FakeGoogleV1alpha1) ComputeSecurityPolicies() v1alpha1.ComputeSecurityPolicyInterface {
+	return &FakeComputeSecurityPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeSharedVpcHostProjects() v1alpha1.GoogleComputeSharedVpcHostProjectInterface {
-	return &FakeGoogleComputeSharedVpcHostProjects{c}
+func (c *FakeGoogleV1alpha1) ComputeSharedVpcHostProjects() v1alpha1.ComputeSharedVpcHostProjectInterface {
+	return &FakeComputeSharedVpcHostProjects{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeSharedVpcServiceProjects() v1alpha1.GoogleComputeSharedVpcServiceProjectInterface {
-	return &FakeGoogleComputeSharedVpcServiceProjects{c}
+func (c *FakeGoogleV1alpha1) ComputeSharedVpcServiceProjects() v1alpha1.ComputeSharedVpcServiceProjectInterface {
+	return &FakeComputeSharedVpcServiceProjects{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeSnapshots() v1alpha1.GoogleComputeSnapshotInterface {
-	return &FakeGoogleComputeSnapshots{c}
+func (c *FakeGoogleV1alpha1) ComputeSnapshots() v1alpha1.ComputeSnapshotInterface {
+	return &FakeComputeSnapshots{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeSslCertificates() v1alpha1.GoogleComputeSslCertificateInterface {
-	return &FakeGoogleComputeSslCertificates{c}
+func (c *FakeGoogleV1alpha1) ComputeSslCertificates() v1alpha1.ComputeSslCertificateInterface {
+	return &FakeComputeSslCertificates{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeSslPolicies() v1alpha1.GoogleComputeSslPolicyInterface {
-	return &FakeGoogleComputeSslPolicies{c}
+func (c *FakeGoogleV1alpha1) ComputeSslPolicies() v1alpha1.ComputeSslPolicyInterface {
+	return &FakeComputeSslPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeSubnetworks() v1alpha1.GoogleComputeSubnetworkInterface {
-	return &FakeGoogleComputeSubnetworks{c}
+func (c *FakeGoogleV1alpha1) ComputeSubnetworks() v1alpha1.ComputeSubnetworkInterface {
+	return &FakeComputeSubnetworks{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeSubnetworkIamBindings() v1alpha1.GoogleComputeSubnetworkIamBindingInterface {
-	return &FakeGoogleComputeSubnetworkIamBindings{c}
+func (c *FakeGoogleV1alpha1) ComputeSubnetworkIamBindings() v1alpha1.ComputeSubnetworkIamBindingInterface {
+	return &FakeComputeSubnetworkIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeSubnetworkIamMembers() v1alpha1.GoogleComputeSubnetworkIamMemberInterface {
-	return &FakeGoogleComputeSubnetworkIamMembers{c}
+func (c *FakeGoogleV1alpha1) ComputeSubnetworkIamMembers() v1alpha1.ComputeSubnetworkIamMemberInterface {
+	return &FakeComputeSubnetworkIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeSubnetworkIamPolicies() v1alpha1.GoogleComputeSubnetworkIamPolicyInterface {
-	return &FakeGoogleComputeSubnetworkIamPolicies{c}
+func (c *FakeGoogleV1alpha1) ComputeSubnetworkIamPolicies() v1alpha1.ComputeSubnetworkIamPolicyInterface {
+	return &FakeComputeSubnetworkIamPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeTargetHttpProxies() v1alpha1.GoogleComputeTargetHttpProxyInterface {
-	return &FakeGoogleComputeTargetHttpProxies{c}
+func (c *FakeGoogleV1alpha1) ComputeTargetHttpProxies() v1alpha1.ComputeTargetHttpProxyInterface {
+	return &FakeComputeTargetHttpProxies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeTargetHttpsProxies() v1alpha1.GoogleComputeTargetHttpsProxyInterface {
-	return &FakeGoogleComputeTargetHttpsProxies{c}
+func (c *FakeGoogleV1alpha1) ComputeTargetHttpsProxies() v1alpha1.ComputeTargetHttpsProxyInterface {
+	return &FakeComputeTargetHttpsProxies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeTargetPools() v1alpha1.GoogleComputeTargetPoolInterface {
-	return &FakeGoogleComputeTargetPools{c}
+func (c *FakeGoogleV1alpha1) ComputeTargetPools() v1alpha1.ComputeTargetPoolInterface {
+	return &FakeComputeTargetPools{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeTargetSslProxies() v1alpha1.GoogleComputeTargetSslProxyInterface {
-	return &FakeGoogleComputeTargetSslProxies{c}
+func (c *FakeGoogleV1alpha1) ComputeTargetSslProxies() v1alpha1.ComputeTargetSslProxyInterface {
+	return &FakeComputeTargetSslProxies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeTargetTcpProxies() v1alpha1.GoogleComputeTargetTcpProxyInterface {
-	return &FakeGoogleComputeTargetTcpProxies{c}
+func (c *FakeGoogleV1alpha1) ComputeTargetTcpProxies() v1alpha1.ComputeTargetTcpProxyInterface {
+	return &FakeComputeTargetTcpProxies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeUrlMaps() v1alpha1.GoogleComputeUrlMapInterface {
-	return &FakeGoogleComputeUrlMaps{c}
+func (c *FakeGoogleV1alpha1) ComputeUrlMaps() v1alpha1.ComputeUrlMapInterface {
+	return &FakeComputeUrlMaps{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeVpnGateways() v1alpha1.GoogleComputeVpnGatewayInterface {
-	return &FakeGoogleComputeVpnGateways{c}
+func (c *FakeGoogleV1alpha1) ComputeVpnGateways() v1alpha1.ComputeVpnGatewayInterface {
+	return &FakeComputeVpnGateways{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleComputeVpnTunnels() v1alpha1.GoogleComputeVpnTunnelInterface {
-	return &FakeGoogleComputeVpnTunnels{c}
+func (c *FakeGoogleV1alpha1) ComputeVpnTunnels() v1alpha1.ComputeVpnTunnelInterface {
+	return &FakeComputeVpnTunnels{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleContainerAnalysisNotes() v1alpha1.GoogleContainerAnalysisNoteInterface {
-	return &FakeGoogleContainerAnalysisNotes{c}
+func (c *FakeGoogleV1alpha1) ContainerAnalysisNotes() v1alpha1.ContainerAnalysisNoteInterface {
+	return &FakeContainerAnalysisNotes{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleContainerClusters() v1alpha1.GoogleContainerClusterInterface {
-	return &FakeGoogleContainerClusters{c}
+func (c *FakeGoogleV1alpha1) ContainerClusters() v1alpha1.ContainerClusterInterface {
+	return &FakeContainerClusters{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleContainerNodePools() v1alpha1.GoogleContainerNodePoolInterface {
-	return &FakeGoogleContainerNodePools{c}
+func (c *FakeGoogleV1alpha1) ContainerNodePools() v1alpha1.ContainerNodePoolInterface {
+	return &FakeContainerNodePools{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleDataflowJobs() v1alpha1.GoogleDataflowJobInterface {
-	return &FakeGoogleDataflowJobs{c}
+func (c *FakeGoogleV1alpha1) DataflowJobs() v1alpha1.DataflowJobInterface {
+	return &FakeDataflowJobs{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleDataprocClusters() v1alpha1.GoogleDataprocClusterInterface {
-	return &FakeGoogleDataprocClusters{c}
+func (c *FakeGoogleV1alpha1) DataprocClusters() v1alpha1.DataprocClusterInterface {
+	return &FakeDataprocClusters{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleDataprocJobs() v1alpha1.GoogleDataprocJobInterface {
-	return &FakeGoogleDataprocJobs{c}
+func (c *FakeGoogleV1alpha1) DataprocJobs() v1alpha1.DataprocJobInterface {
+	return &FakeDataprocJobs{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleDnsManagedZones() v1alpha1.GoogleDnsManagedZoneInterface {
-	return &FakeGoogleDnsManagedZones{c}
+func (c *FakeGoogleV1alpha1) DnsManagedZones() v1alpha1.DnsManagedZoneInterface {
+	return &FakeDnsManagedZones{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleDnsRecordSets() v1alpha1.GoogleDnsRecordSetInterface {
-	return &FakeGoogleDnsRecordSets{c}
+func (c *FakeGoogleV1alpha1) DnsRecordSets() v1alpha1.DnsRecordSetInterface {
+	return &FakeDnsRecordSets{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleEndpointsServices() v1alpha1.GoogleEndpointsServiceInterface {
-	return &FakeGoogleEndpointsServices{c}
+func (c *FakeGoogleV1alpha1) EndpointsServices() v1alpha1.EndpointsServiceInterface {
+	return &FakeEndpointsServices{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleFilestoreInstances() v1alpha1.GoogleFilestoreInstanceInterface {
-	return &FakeGoogleFilestoreInstances{c}
+func (c *FakeGoogleV1alpha1) FilestoreInstances() v1alpha1.FilestoreInstanceInterface {
+	return &FakeFilestoreInstances{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleFolders() v1alpha1.GoogleFolderInterface {
-	return &FakeGoogleFolders{c}
+func (c *FakeGoogleV1alpha1) Folders() v1alpha1.FolderInterface {
+	return &FakeFolders{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleFolderIamBindings() v1alpha1.GoogleFolderIamBindingInterface {
-	return &FakeGoogleFolderIamBindings{c}
+func (c *FakeGoogleV1alpha1) FolderIamBindings() v1alpha1.FolderIamBindingInterface {
+	return &FakeFolderIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleFolderIamMembers() v1alpha1.GoogleFolderIamMemberInterface {
-	return &FakeGoogleFolderIamMembers{c}
+func (c *FakeGoogleV1alpha1) FolderIamMembers() v1alpha1.FolderIamMemberInterface {
+	return &FakeFolderIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleFolderIamPolicies() v1alpha1.GoogleFolderIamPolicyInterface {
-	return &FakeGoogleFolderIamPolicies{c}
+func (c *FakeGoogleV1alpha1) FolderIamPolicies() v1alpha1.FolderIamPolicyInterface {
+	return &FakeFolderIamPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleFolderOrganizationPolicies() v1alpha1.GoogleFolderOrganizationPolicyInterface {
-	return &FakeGoogleFolderOrganizationPolicies{c}
+func (c *FakeGoogleV1alpha1) FolderOrganizationPolicies() v1alpha1.FolderOrganizationPolicyInterface {
+	return &FakeFolderOrganizationPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleKmsCryptoKeys() v1alpha1.GoogleKmsCryptoKeyInterface {
-	return &FakeGoogleKmsCryptoKeys{c}
+func (c *FakeGoogleV1alpha1) KmsCryptoKeys() v1alpha1.KmsCryptoKeyInterface {
+	return &FakeKmsCryptoKeys{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleKmsCryptoKeyIamBindings() v1alpha1.GoogleKmsCryptoKeyIamBindingInterface {
-	return &FakeGoogleKmsCryptoKeyIamBindings{c}
+func (c *FakeGoogleV1alpha1) KmsCryptoKeyIamBindings() v1alpha1.KmsCryptoKeyIamBindingInterface {
+	return &FakeKmsCryptoKeyIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleKmsCryptoKeyIamMembers() v1alpha1.GoogleKmsCryptoKeyIamMemberInterface {
-	return &FakeGoogleKmsCryptoKeyIamMembers{c}
+func (c *FakeGoogleV1alpha1) KmsCryptoKeyIamMembers() v1alpha1.KmsCryptoKeyIamMemberInterface {
+	return &FakeKmsCryptoKeyIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleKmsKeyRings() v1alpha1.GoogleKmsKeyRingInterface {
-	return &FakeGoogleKmsKeyRings{c}
+func (c *FakeGoogleV1alpha1) KmsKeyRings() v1alpha1.KmsKeyRingInterface {
+	return &FakeKmsKeyRings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleKmsKeyRingIamBindings() v1alpha1.GoogleKmsKeyRingIamBindingInterface {
-	return &FakeGoogleKmsKeyRingIamBindings{c}
+func (c *FakeGoogleV1alpha1) KmsKeyRingIamBindings() v1alpha1.KmsKeyRingIamBindingInterface {
+	return &FakeKmsKeyRingIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleKmsKeyRingIamMembers() v1alpha1.GoogleKmsKeyRingIamMemberInterface {
-	return &FakeGoogleKmsKeyRingIamMembers{c}
+func (c *FakeGoogleV1alpha1) KmsKeyRingIamMembers() v1alpha1.KmsKeyRingIamMemberInterface {
+	return &FakeKmsKeyRingIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleKmsKeyRingIamPolicies() v1alpha1.GoogleKmsKeyRingIamPolicyInterface {
-	return &FakeGoogleKmsKeyRingIamPolicies{c}
+func (c *FakeGoogleV1alpha1) KmsKeyRingIamPolicies() v1alpha1.KmsKeyRingIamPolicyInterface {
+	return &FakeKmsKeyRingIamPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleLoggingBillingAccountExclusions() v1alpha1.GoogleLoggingBillingAccountExclusionInterface {
-	return &FakeGoogleLoggingBillingAccountExclusions{c}
+func (c *FakeGoogleV1alpha1) LoggingBillingAccountExclusions() v1alpha1.LoggingBillingAccountExclusionInterface {
+	return &FakeLoggingBillingAccountExclusions{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleLoggingBillingAccountSinks() v1alpha1.GoogleLoggingBillingAccountSinkInterface {
-	return &FakeGoogleLoggingBillingAccountSinks{c}
+func (c *FakeGoogleV1alpha1) LoggingBillingAccountSinks() v1alpha1.LoggingBillingAccountSinkInterface {
+	return &FakeLoggingBillingAccountSinks{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleLoggingFolderExclusions() v1alpha1.GoogleLoggingFolderExclusionInterface {
-	return &FakeGoogleLoggingFolderExclusions{c}
+func (c *FakeGoogleV1alpha1) LoggingFolderExclusions() v1alpha1.LoggingFolderExclusionInterface {
+	return &FakeLoggingFolderExclusions{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleLoggingFolderSinks() v1alpha1.GoogleLoggingFolderSinkInterface {
-	return &FakeGoogleLoggingFolderSinks{c}
+func (c *FakeGoogleV1alpha1) LoggingFolderSinks() v1alpha1.LoggingFolderSinkInterface {
+	return &FakeLoggingFolderSinks{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleLoggingOrganizationExclusions() v1alpha1.GoogleLoggingOrganizationExclusionInterface {
-	return &FakeGoogleLoggingOrganizationExclusions{c}
+func (c *FakeGoogleV1alpha1) LoggingOrganizationExclusions() v1alpha1.LoggingOrganizationExclusionInterface {
+	return &FakeLoggingOrganizationExclusions{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleLoggingOrganizationSinks() v1alpha1.GoogleLoggingOrganizationSinkInterface {
-	return &FakeGoogleLoggingOrganizationSinks{c}
+func (c *FakeGoogleV1alpha1) LoggingOrganizationSinks() v1alpha1.LoggingOrganizationSinkInterface {
+	return &FakeLoggingOrganizationSinks{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleLoggingProjectExclusions() v1alpha1.GoogleLoggingProjectExclusionInterface {
-	return &FakeGoogleLoggingProjectExclusions{c}
+func (c *FakeGoogleV1alpha1) LoggingProjectExclusions() v1alpha1.LoggingProjectExclusionInterface {
+	return &FakeLoggingProjectExclusions{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleLoggingProjectSinks() v1alpha1.GoogleLoggingProjectSinkInterface {
-	return &FakeGoogleLoggingProjectSinks{c}
+func (c *FakeGoogleV1alpha1) LoggingProjectSinks() v1alpha1.LoggingProjectSinkInterface {
+	return &FakeLoggingProjectSinks{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleMonitoringAlertPolicies() v1alpha1.GoogleMonitoringAlertPolicyInterface {
-	return &FakeGoogleMonitoringAlertPolicies{c}
+func (c *FakeGoogleV1alpha1) MonitoringAlertPolicies() v1alpha1.MonitoringAlertPolicyInterface {
+	return &FakeMonitoringAlertPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleMonitoringGroups() v1alpha1.GoogleMonitoringGroupInterface {
-	return &FakeGoogleMonitoringGroups{c}
+func (c *FakeGoogleV1alpha1) MonitoringGroups() v1alpha1.MonitoringGroupInterface {
+	return &FakeMonitoringGroups{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleMonitoringNotificationChannels() v1alpha1.GoogleMonitoringNotificationChannelInterface {
-	return &FakeGoogleMonitoringNotificationChannels{c}
+func (c *FakeGoogleV1alpha1) MonitoringNotificationChannels() v1alpha1.MonitoringNotificationChannelInterface {
+	return &FakeMonitoringNotificationChannels{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleMonitoringUptimeCheckConfigs() v1alpha1.GoogleMonitoringUptimeCheckConfigInterface {
-	return &FakeGoogleMonitoringUptimeCheckConfigs{c}
+func (c *FakeGoogleV1alpha1) MonitoringUptimeCheckConfigs() v1alpha1.MonitoringUptimeCheckConfigInterface {
+	return &FakeMonitoringUptimeCheckConfigs{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleOrganizationIamBindings() v1alpha1.GoogleOrganizationIamBindingInterface {
-	return &FakeGoogleOrganizationIamBindings{c}
+func (c *FakeGoogleV1alpha1) OrganizationIamBindings() v1alpha1.OrganizationIamBindingInterface {
+	return &FakeOrganizationIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleOrganizationIamCustomRoles() v1alpha1.GoogleOrganizationIamCustomRoleInterface {
-	return &FakeGoogleOrganizationIamCustomRoles{c}
+func (c *FakeGoogleV1alpha1) OrganizationIamCustomRoles() v1alpha1.OrganizationIamCustomRoleInterface {
+	return &FakeOrganizationIamCustomRoles{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleOrganizationIamMembers() v1alpha1.GoogleOrganizationIamMemberInterface {
-	return &FakeGoogleOrganizationIamMembers{c}
+func (c *FakeGoogleV1alpha1) OrganizationIamMembers() v1alpha1.OrganizationIamMemberInterface {
+	return &FakeOrganizationIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleOrganizationIamPolicies() v1alpha1.GoogleOrganizationIamPolicyInterface {
-	return &FakeGoogleOrganizationIamPolicies{c}
+func (c *FakeGoogleV1alpha1) OrganizationIamPolicies() v1alpha1.OrganizationIamPolicyInterface {
+	return &FakeOrganizationIamPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleOrganizationPolicies() v1alpha1.GoogleOrganizationPolicyInterface {
-	return &FakeGoogleOrganizationPolicies{c}
+func (c *FakeGoogleV1alpha1) OrganizationPolicies() v1alpha1.OrganizationPolicyInterface {
+	return &FakeOrganizationPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleProjects() v1alpha1.GoogleProjectInterface {
-	return &FakeGoogleProjects{c}
+func (c *FakeGoogleV1alpha1) Projects() v1alpha1.ProjectInterface {
+	return &FakeProjects{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleProjectIamBindings() v1alpha1.GoogleProjectIamBindingInterface {
-	return &FakeGoogleProjectIamBindings{c}
+func (c *FakeGoogleV1alpha1) ProjectIamBindings() v1alpha1.ProjectIamBindingInterface {
+	return &FakeProjectIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleProjectIamCustomRoles() v1alpha1.GoogleProjectIamCustomRoleInterface {
-	return &FakeGoogleProjectIamCustomRoles{c}
+func (c *FakeGoogleV1alpha1) ProjectIamCustomRoles() v1alpha1.ProjectIamCustomRoleInterface {
+	return &FakeProjectIamCustomRoles{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleProjectIamMembers() v1alpha1.GoogleProjectIamMemberInterface {
-	return &FakeGoogleProjectIamMembers{c}
+func (c *FakeGoogleV1alpha1) ProjectIamMembers() v1alpha1.ProjectIamMemberInterface {
+	return &FakeProjectIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleProjectIamPolicies() v1alpha1.GoogleProjectIamPolicyInterface {
-	return &FakeGoogleProjectIamPolicies{c}
+func (c *FakeGoogleV1alpha1) ProjectIamPolicies() v1alpha1.ProjectIamPolicyInterface {
+	return &FakeProjectIamPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleProjectOrganizationPolicies() v1alpha1.GoogleProjectOrganizationPolicyInterface {
-	return &FakeGoogleProjectOrganizationPolicies{c}
+func (c *FakeGoogleV1alpha1) ProjectOrganizationPolicies() v1alpha1.ProjectOrganizationPolicyInterface {
+	return &FakeProjectOrganizationPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleProjectServices() v1alpha1.GoogleProjectServiceInterface {
-	return &FakeGoogleProjectServices{c}
+func (c *FakeGoogleV1alpha1) ProjectServices() v1alpha1.ProjectServiceInterface {
+	return &FakeProjectServices{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleProjectServiceses() v1alpha1.GoogleProjectServicesInterface {
-	return &FakeGoogleProjectServiceses{c}
+func (c *FakeGoogleV1alpha1) ProjectServiceses() v1alpha1.ProjectServicesInterface {
+	return &FakeProjectServiceses{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleProjectUsageExportBuckets() v1alpha1.GoogleProjectUsageExportBucketInterface {
-	return &FakeGoogleProjectUsageExportBuckets{c}
+func (c *FakeGoogleV1alpha1) ProjectUsageExportBuckets() v1alpha1.ProjectUsageExportBucketInterface {
+	return &FakeProjectUsageExportBuckets{c}
 }
 
-func (c *FakeGoogleV1alpha1) GooglePubsubSubscriptions() v1alpha1.GooglePubsubSubscriptionInterface {
-	return &FakeGooglePubsubSubscriptions{c}
+func (c *FakeGoogleV1alpha1) PubsubSubscriptions() v1alpha1.PubsubSubscriptionInterface {
+	return &FakePubsubSubscriptions{c}
 }
 
-func (c *FakeGoogleV1alpha1) GooglePubsubSubscriptionIamBindings() v1alpha1.GooglePubsubSubscriptionIamBindingInterface {
-	return &FakeGooglePubsubSubscriptionIamBindings{c}
+func (c *FakeGoogleV1alpha1) PubsubSubscriptionIamBindings() v1alpha1.PubsubSubscriptionIamBindingInterface {
+	return &FakePubsubSubscriptionIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GooglePubsubSubscriptionIamMembers() v1alpha1.GooglePubsubSubscriptionIamMemberInterface {
-	return &FakeGooglePubsubSubscriptionIamMembers{c}
+func (c *FakeGoogleV1alpha1) PubsubSubscriptionIamMembers() v1alpha1.PubsubSubscriptionIamMemberInterface {
+	return &FakePubsubSubscriptionIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GooglePubsubSubscriptionIamPolicies() v1alpha1.GooglePubsubSubscriptionIamPolicyInterface {
-	return &FakeGooglePubsubSubscriptionIamPolicies{c}
+func (c *FakeGoogleV1alpha1) PubsubSubscriptionIamPolicies() v1alpha1.PubsubSubscriptionIamPolicyInterface {
+	return &FakePubsubSubscriptionIamPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GooglePubsubTopics() v1alpha1.GooglePubsubTopicInterface {
-	return &FakeGooglePubsubTopics{c}
+func (c *FakeGoogleV1alpha1) PubsubTopics() v1alpha1.PubsubTopicInterface {
+	return &FakePubsubTopics{c}
 }
 
-func (c *FakeGoogleV1alpha1) GooglePubsubTopicIamBindings() v1alpha1.GooglePubsubTopicIamBindingInterface {
-	return &FakeGooglePubsubTopicIamBindings{c}
+func (c *FakeGoogleV1alpha1) PubsubTopicIamBindings() v1alpha1.PubsubTopicIamBindingInterface {
+	return &FakePubsubTopicIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GooglePubsubTopicIamMembers() v1alpha1.GooglePubsubTopicIamMemberInterface {
-	return &FakeGooglePubsubTopicIamMembers{c}
+func (c *FakeGoogleV1alpha1) PubsubTopicIamMembers() v1alpha1.PubsubTopicIamMemberInterface {
+	return &FakePubsubTopicIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GooglePubsubTopicIamPolicies() v1alpha1.GooglePubsubTopicIamPolicyInterface {
-	return &FakeGooglePubsubTopicIamPolicies{c}
+func (c *FakeGoogleV1alpha1) PubsubTopicIamPolicies() v1alpha1.PubsubTopicIamPolicyInterface {
+	return &FakePubsubTopicIamPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleRedisInstances() v1alpha1.GoogleRedisInstanceInterface {
-	return &FakeGoogleRedisInstances{c}
+func (c *FakeGoogleV1alpha1) RedisInstances() v1alpha1.RedisInstanceInterface {
+	return &FakeRedisInstances{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleResourceManagerLiens() v1alpha1.GoogleResourceManagerLienInterface {
-	return &FakeGoogleResourceManagerLiens{c}
+func (c *FakeGoogleV1alpha1) ResourceManagerLiens() v1alpha1.ResourceManagerLienInterface {
+	return &FakeResourceManagerLiens{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleRuntimeconfigConfigs() v1alpha1.GoogleRuntimeconfigConfigInterface {
-	return &FakeGoogleRuntimeconfigConfigs{c}
+func (c *FakeGoogleV1alpha1) RuntimeconfigConfigs() v1alpha1.RuntimeconfigConfigInterface {
+	return &FakeRuntimeconfigConfigs{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleRuntimeconfigVariables() v1alpha1.GoogleRuntimeconfigVariableInterface {
-	return &FakeGoogleRuntimeconfigVariables{c}
+func (c *FakeGoogleV1alpha1) RuntimeconfigVariables() v1alpha1.RuntimeconfigVariableInterface {
+	return &FakeRuntimeconfigVariables{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleServiceAccounts() v1alpha1.GoogleServiceAccountInterface {
-	return &FakeGoogleServiceAccounts{c}
+func (c *FakeGoogleV1alpha1) ServiceAccounts() v1alpha1.ServiceAccountInterface {
+	return &FakeServiceAccounts{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleServiceAccountIamBindings() v1alpha1.GoogleServiceAccountIamBindingInterface {
-	return &FakeGoogleServiceAccountIamBindings{c}
+func (c *FakeGoogleV1alpha1) ServiceAccountIamBindings() v1alpha1.ServiceAccountIamBindingInterface {
+	return &FakeServiceAccountIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleServiceAccountIamMembers() v1alpha1.GoogleServiceAccountIamMemberInterface {
-	return &FakeGoogleServiceAccountIamMembers{c}
+func (c *FakeGoogleV1alpha1) ServiceAccountIamMembers() v1alpha1.ServiceAccountIamMemberInterface {
+	return &FakeServiceAccountIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleServiceAccountIamPolicies() v1alpha1.GoogleServiceAccountIamPolicyInterface {
-	return &FakeGoogleServiceAccountIamPolicies{c}
+func (c *FakeGoogleV1alpha1) ServiceAccountIamPolicies() v1alpha1.ServiceAccountIamPolicyInterface {
+	return &FakeServiceAccountIamPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleServiceAccountKeys() v1alpha1.GoogleServiceAccountKeyInterface {
-	return &FakeGoogleServiceAccountKeys{c}
+func (c *FakeGoogleV1alpha1) ServiceAccountKeys() v1alpha1.ServiceAccountKeyInterface {
+	return &FakeServiceAccountKeys{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSourcerepoRepositories() v1alpha1.GoogleSourcerepoRepositoryInterface {
-	return &FakeGoogleSourcerepoRepositories{c}
+func (c *FakeGoogleV1alpha1) SourcerepoRepositories() v1alpha1.SourcerepoRepositoryInterface {
+	return &FakeSourcerepoRepositories{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSpannerDatabases() v1alpha1.GoogleSpannerDatabaseInterface {
-	return &FakeGoogleSpannerDatabases{c}
+func (c *FakeGoogleV1alpha1) SpannerDatabases() v1alpha1.SpannerDatabaseInterface {
+	return &FakeSpannerDatabases{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSpannerDatabaseIamBindings() v1alpha1.GoogleSpannerDatabaseIamBindingInterface {
-	return &FakeGoogleSpannerDatabaseIamBindings{c}
+func (c *FakeGoogleV1alpha1) SpannerDatabaseIamBindings() v1alpha1.SpannerDatabaseIamBindingInterface {
+	return &FakeSpannerDatabaseIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSpannerDatabaseIamMembers() v1alpha1.GoogleSpannerDatabaseIamMemberInterface {
-	return &FakeGoogleSpannerDatabaseIamMembers{c}
+func (c *FakeGoogleV1alpha1) SpannerDatabaseIamMembers() v1alpha1.SpannerDatabaseIamMemberInterface {
+	return &FakeSpannerDatabaseIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSpannerDatabaseIamPolicies() v1alpha1.GoogleSpannerDatabaseIamPolicyInterface {
-	return &FakeGoogleSpannerDatabaseIamPolicies{c}
+func (c *FakeGoogleV1alpha1) SpannerDatabaseIamPolicies() v1alpha1.SpannerDatabaseIamPolicyInterface {
+	return &FakeSpannerDatabaseIamPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSpannerInstances() v1alpha1.GoogleSpannerInstanceInterface {
-	return &FakeGoogleSpannerInstances{c}
+func (c *FakeGoogleV1alpha1) SpannerInstances() v1alpha1.SpannerInstanceInterface {
+	return &FakeSpannerInstances{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSpannerInstanceIamBindings() v1alpha1.GoogleSpannerInstanceIamBindingInterface {
-	return &FakeGoogleSpannerInstanceIamBindings{c}
+func (c *FakeGoogleV1alpha1) SpannerInstanceIamBindings() v1alpha1.SpannerInstanceIamBindingInterface {
+	return &FakeSpannerInstanceIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSpannerInstanceIamMembers() v1alpha1.GoogleSpannerInstanceIamMemberInterface {
-	return &FakeGoogleSpannerInstanceIamMembers{c}
+func (c *FakeGoogleV1alpha1) SpannerInstanceIamMembers() v1alpha1.SpannerInstanceIamMemberInterface {
+	return &FakeSpannerInstanceIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSpannerInstanceIamPolicies() v1alpha1.GoogleSpannerInstanceIamPolicyInterface {
-	return &FakeGoogleSpannerInstanceIamPolicies{c}
+func (c *FakeGoogleV1alpha1) SpannerInstanceIamPolicies() v1alpha1.SpannerInstanceIamPolicyInterface {
+	return &FakeSpannerInstanceIamPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSqlDatabases() v1alpha1.GoogleSqlDatabaseInterface {
-	return &FakeGoogleSqlDatabases{c}
+func (c *FakeGoogleV1alpha1) SqlDatabases() v1alpha1.SqlDatabaseInterface {
+	return &FakeSqlDatabases{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSqlDatabaseInstances() v1alpha1.GoogleSqlDatabaseInstanceInterface {
-	return &FakeGoogleSqlDatabaseInstances{c}
+func (c *FakeGoogleV1alpha1) SqlDatabaseInstances() v1alpha1.SqlDatabaseInstanceInterface {
+	return &FakeSqlDatabaseInstances{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSqlSslCerts() v1alpha1.GoogleSqlSslCertInterface {
-	return &FakeGoogleSqlSslCerts{c}
+func (c *FakeGoogleV1alpha1) SqlSslCerts() v1alpha1.SqlSslCertInterface {
+	return &FakeSqlSslCerts{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleSqlUsers() v1alpha1.GoogleSqlUserInterface {
-	return &FakeGoogleSqlUsers{c}
+func (c *FakeGoogleV1alpha1) SqlUsers() v1alpha1.SqlUserInterface {
+	return &FakeSqlUsers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleStorageBuckets() v1alpha1.GoogleStorageBucketInterface {
-	return &FakeGoogleStorageBuckets{c}
+func (c *FakeGoogleV1alpha1) StorageBuckets() v1alpha1.StorageBucketInterface {
+	return &FakeStorageBuckets{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleStorageBucketAcls() v1alpha1.GoogleStorageBucketAclInterface {
-	return &FakeGoogleStorageBucketAcls{c}
+func (c *FakeGoogleV1alpha1) StorageBucketAcls() v1alpha1.StorageBucketAclInterface {
+	return &FakeStorageBucketAcls{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleStorageBucketIamBindings() v1alpha1.GoogleStorageBucketIamBindingInterface {
-	return &FakeGoogleStorageBucketIamBindings{c}
+func (c *FakeGoogleV1alpha1) StorageBucketIamBindings() v1alpha1.StorageBucketIamBindingInterface {
+	return &FakeStorageBucketIamBindings{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleStorageBucketIamMembers() v1alpha1.GoogleStorageBucketIamMemberInterface {
-	return &FakeGoogleStorageBucketIamMembers{c}
+func (c *FakeGoogleV1alpha1) StorageBucketIamMembers() v1alpha1.StorageBucketIamMemberInterface {
+	return &FakeStorageBucketIamMembers{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleStorageBucketIamPolicies() v1alpha1.GoogleStorageBucketIamPolicyInterface {
-	return &FakeGoogleStorageBucketIamPolicies{c}
+func (c *FakeGoogleV1alpha1) StorageBucketIamPolicies() v1alpha1.StorageBucketIamPolicyInterface {
+	return &FakeStorageBucketIamPolicies{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleStorageBucketObjects() v1alpha1.GoogleStorageBucketObjectInterface {
-	return &FakeGoogleStorageBucketObjects{c}
+func (c *FakeGoogleV1alpha1) StorageBucketObjects() v1alpha1.StorageBucketObjectInterface {
+	return &FakeStorageBucketObjects{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleStorageDefaultObjectAccessControls() v1alpha1.GoogleStorageDefaultObjectAccessControlInterface {
-	return &FakeGoogleStorageDefaultObjectAccessControls{c}
+func (c *FakeGoogleV1alpha1) StorageDefaultObjectAccessControls() v1alpha1.StorageDefaultObjectAccessControlInterface {
+	return &FakeStorageDefaultObjectAccessControls{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleStorageDefaultObjectAcls() v1alpha1.GoogleStorageDefaultObjectAclInterface {
-	return &FakeGoogleStorageDefaultObjectAcls{c}
+func (c *FakeGoogleV1alpha1) StorageDefaultObjectAcls() v1alpha1.StorageDefaultObjectAclInterface {
+	return &FakeStorageDefaultObjectAcls{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleStorageNotifications() v1alpha1.GoogleStorageNotificationInterface {
-	return &FakeGoogleStorageNotifications{c}
+func (c *FakeGoogleV1alpha1) StorageNotifications() v1alpha1.StorageNotificationInterface {
+	return &FakeStorageNotifications{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleStorageObjectAccessControls() v1alpha1.GoogleStorageObjectAccessControlInterface {
-	return &FakeGoogleStorageObjectAccessControls{c}
+func (c *FakeGoogleV1alpha1) StorageObjectAccessControls() v1alpha1.StorageObjectAccessControlInterface {
+	return &FakeStorageObjectAccessControls{c}
 }
 
-func (c *FakeGoogleV1alpha1) GoogleStorageObjectAcls() v1alpha1.GoogleStorageObjectAclInterface {
-	return &FakeGoogleStorageObjectAcls{c}
+func (c *FakeGoogleV1alpha1) StorageObjectAcls() v1alpha1.StorageObjectAclInterface {
+	return &FakeStorageObjectAcls{c}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

@@ -28,1056 +28,1072 @@ type FakeAzurermV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagements() v1alpha1.AzurermApiManagementInterface {
-	return &FakeAzurermApiManagements{c}
+func (c *FakeAzurermV1alpha1) ApiManagements() v1alpha1.ApiManagementInterface {
+	return &FakeApiManagements{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementApis() v1alpha1.AzurermApiManagementApiInterface {
-	return &FakeAzurermApiManagementApis{c}
+func (c *FakeAzurermV1alpha1) ApiManagementApis() v1alpha1.ApiManagementApiInterface {
+	return &FakeApiManagementApis{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementApiOperations() v1alpha1.AzurermApiManagementApiOperationInterface {
-	return &FakeAzurermApiManagementApiOperations{c}
+func (c *FakeAzurermV1alpha1) ApiManagementApiOperations() v1alpha1.ApiManagementApiOperationInterface {
+	return &FakeApiManagementApiOperations{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementApiOperationPolicies() v1alpha1.AzurermApiManagementApiOperationPolicyInterface {
-	return &FakeAzurermApiManagementApiOperationPolicies{c}
+func (c *FakeAzurermV1alpha1) ApiManagementApiOperationPolicies() v1alpha1.ApiManagementApiOperationPolicyInterface {
+	return &FakeApiManagementApiOperationPolicies{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementApiPolicies() v1alpha1.AzurermApiManagementApiPolicyInterface {
-	return &FakeAzurermApiManagementApiPolicies{c}
+func (c *FakeAzurermV1alpha1) ApiManagementApiPolicies() v1alpha1.ApiManagementApiPolicyInterface {
+	return &FakeApiManagementApiPolicies{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementApiSchemas() v1alpha1.AzurermApiManagementApiSchemaInterface {
-	return &FakeAzurermApiManagementApiSchemas{c}
+func (c *FakeAzurermV1alpha1) ApiManagementApiSchemas() v1alpha1.ApiManagementApiSchemaInterface {
+	return &FakeApiManagementApiSchemas{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementApiVersionSets() v1alpha1.AzurermApiManagementApiVersionSetInterface {
-	return &FakeAzurermApiManagementApiVersionSets{c}
+func (c *FakeAzurermV1alpha1) ApiManagementApiVersionSets() v1alpha1.ApiManagementApiVersionSetInterface {
+	return &FakeApiManagementApiVersionSets{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementAuthorizationServers() v1alpha1.AzurermApiManagementAuthorizationServerInterface {
-	return &FakeAzurermApiManagementAuthorizationServers{c}
+func (c *FakeAzurermV1alpha1) ApiManagementAuthorizationServers() v1alpha1.ApiManagementAuthorizationServerInterface {
+	return &FakeApiManagementAuthorizationServers{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementCertificates() v1alpha1.AzurermApiManagementCertificateInterface {
-	return &FakeAzurermApiManagementCertificates{c}
+func (c *FakeAzurermV1alpha1) ApiManagementBackends() v1alpha1.ApiManagementBackendInterface {
+	return &FakeApiManagementBackends{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementGroups() v1alpha1.AzurermApiManagementGroupInterface {
-	return &FakeAzurermApiManagementGroups{c}
+func (c *FakeAzurermV1alpha1) ApiManagementCertificates() v1alpha1.ApiManagementCertificateInterface {
+	return &FakeApiManagementCertificates{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementGroupUsers() v1alpha1.AzurermApiManagementGroupUserInterface {
-	return &FakeAzurermApiManagementGroupUsers{c}
+func (c *FakeAzurermV1alpha1) ApiManagementGroups() v1alpha1.ApiManagementGroupInterface {
+	return &FakeApiManagementGroups{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementLoggers() v1alpha1.AzurermApiManagementLoggerInterface {
-	return &FakeAzurermApiManagementLoggers{c}
+func (c *FakeAzurermV1alpha1) ApiManagementGroupUsers() v1alpha1.ApiManagementGroupUserInterface {
+	return &FakeApiManagementGroupUsers{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementOpenidConnectProviders() v1alpha1.AzurermApiManagementOpenidConnectProviderInterface {
-	return &FakeAzurermApiManagementOpenidConnectProviders{c}
+func (c *FakeAzurermV1alpha1) ApiManagementLoggers() v1alpha1.ApiManagementLoggerInterface {
+	return &FakeApiManagementLoggers{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementProducts() v1alpha1.AzurermApiManagementProductInterface {
-	return &FakeAzurermApiManagementProducts{c}
+func (c *FakeAzurermV1alpha1) ApiManagementOpenidConnectProviders() v1alpha1.ApiManagementOpenidConnectProviderInterface {
+	return &FakeApiManagementOpenidConnectProviders{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementProductApis() v1alpha1.AzurermApiManagementProductApiInterface {
-	return &FakeAzurermApiManagementProductApis{c}
+func (c *FakeAzurermV1alpha1) ApiManagementProducts() v1alpha1.ApiManagementProductInterface {
+	return &FakeApiManagementProducts{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementProductGroups() v1alpha1.AzurermApiManagementProductGroupInterface {
-	return &FakeAzurermApiManagementProductGroups{c}
+func (c *FakeAzurermV1alpha1) ApiManagementProductApis() v1alpha1.ApiManagementProductApiInterface {
+	return &FakeApiManagementProductApis{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementProductPolicies() v1alpha1.AzurermApiManagementProductPolicyInterface {
-	return &FakeAzurermApiManagementProductPolicies{c}
+func (c *FakeAzurermV1alpha1) ApiManagementProductGroups() v1alpha1.ApiManagementProductGroupInterface {
+	return &FakeApiManagementProductGroups{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementProperties() v1alpha1.AzurermApiManagementPropertyInterface {
-	return &FakeAzurermApiManagementProperties{c}
+func (c *FakeAzurermV1alpha1) ApiManagementProductPolicies() v1alpha1.ApiManagementProductPolicyInterface {
+	return &FakeApiManagementProductPolicies{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementSubscriptions() v1alpha1.AzurermApiManagementSubscriptionInterface {
-	return &FakeAzurermApiManagementSubscriptions{c}
+func (c *FakeAzurermV1alpha1) ApiManagementProperties() v1alpha1.ApiManagementPropertyInterface {
+	return &FakeApiManagementProperties{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApiManagementUsers() v1alpha1.AzurermApiManagementUserInterface {
-	return &FakeAzurermApiManagementUsers{c}
+func (c *FakeAzurermV1alpha1) ApiManagementSubscriptions() v1alpha1.ApiManagementSubscriptionInterface {
+	return &FakeApiManagementSubscriptions{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAppServices() v1alpha1.AzurermAppServiceInterface {
-	return &FakeAzurermAppServices{c}
+func (c *FakeAzurermV1alpha1) ApiManagementUsers() v1alpha1.ApiManagementUserInterface {
+	return &FakeApiManagementUsers{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAppServiceActiveSlots() v1alpha1.AzurermAppServiceActiveSlotInterface {
-	return &FakeAzurermAppServiceActiveSlots{c}
+func (c *FakeAzurermV1alpha1) AppServices() v1alpha1.AppServiceInterface {
+	return &FakeAppServices{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAppServiceCustomHostnameBindings() v1alpha1.AzurermAppServiceCustomHostnameBindingInterface {
-	return &FakeAzurermAppServiceCustomHostnameBindings{c}
+func (c *FakeAzurermV1alpha1) AppServiceActiveSlots() v1alpha1.AppServiceActiveSlotInterface {
+	return &FakeAppServiceActiveSlots{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAppServicePlans() v1alpha1.AzurermAppServicePlanInterface {
-	return &FakeAzurermAppServicePlans{c}
+func (c *FakeAzurermV1alpha1) AppServiceCustomHostnameBindings() v1alpha1.AppServiceCustomHostnameBindingInterface {
+	return &FakeAppServiceCustomHostnameBindings{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAppServiceSlots() v1alpha1.AzurermAppServiceSlotInterface {
-	return &FakeAzurermAppServiceSlots{c}
+func (c *FakeAzurermV1alpha1) AppServicePlans() v1alpha1.AppServicePlanInterface {
+	return &FakeAppServicePlans{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApplicationGateways() v1alpha1.AzurermApplicationGatewayInterface {
-	return &FakeAzurermApplicationGateways{c}
+func (c *FakeAzurermV1alpha1) AppServiceSlots() v1alpha1.AppServiceSlotInterface {
+	return &FakeAppServiceSlots{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApplicationInsightses() v1alpha1.AzurermApplicationInsightsInterface {
-	return &FakeAzurermApplicationInsightses{c}
+func (c *FakeAzurermV1alpha1) ApplicationGateways() v1alpha1.ApplicationGatewayInterface {
+	return &FakeApplicationGateways{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApplicationInsightsApiKeys() v1alpha1.AzurermApplicationInsightsApiKeyInterface {
-	return &FakeAzurermApplicationInsightsApiKeys{c}
+func (c *FakeAzurermV1alpha1) ApplicationInsightses() v1alpha1.ApplicationInsightsInterface {
+	return &FakeApplicationInsightses{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApplicationInsightsWebTests() v1alpha1.AzurermApplicationInsightsWebTestInterface {
-	return &FakeAzurermApplicationInsightsWebTests{c}
+func (c *FakeAzurermV1alpha1) ApplicationInsightsApiKeys() v1alpha1.ApplicationInsightsApiKeyInterface {
+	return &FakeApplicationInsightsApiKeys{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermApplicationSecurityGroups() v1alpha1.AzurermApplicationSecurityGroupInterface {
-	return &FakeAzurermApplicationSecurityGroups{c}
+func (c *FakeAzurermV1alpha1) ApplicationInsightsWebTests() v1alpha1.ApplicationInsightsWebTestInterface {
+	return &FakeApplicationInsightsWebTests{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAutomationAccounts() v1alpha1.AzurermAutomationAccountInterface {
-	return &FakeAzurermAutomationAccounts{c}
+func (c *FakeAzurermV1alpha1) ApplicationSecurityGroups() v1alpha1.ApplicationSecurityGroupInterface {
+	return &FakeApplicationSecurityGroups{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAutomationCredentials() v1alpha1.AzurermAutomationCredentialInterface {
-	return &FakeAzurermAutomationCredentials{c}
+func (c *FakeAzurermV1alpha1) AutomationAccounts() v1alpha1.AutomationAccountInterface {
+	return &FakeAutomationAccounts{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAutomationDscConfigurations() v1alpha1.AzurermAutomationDscConfigurationInterface {
-	return &FakeAzurermAutomationDscConfigurations{c}
+func (c *FakeAzurermV1alpha1) AutomationCredentials() v1alpha1.AutomationCredentialInterface {
+	return &FakeAutomationCredentials{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAutomationDscNodeconfigurations() v1alpha1.AzurermAutomationDscNodeconfigurationInterface {
-	return &FakeAzurermAutomationDscNodeconfigurations{c}
+func (c *FakeAzurermV1alpha1) AutomationDscConfigurations() v1alpha1.AutomationDscConfigurationInterface {
+	return &FakeAutomationDscConfigurations{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAutomationModules() v1alpha1.AzurermAutomationModuleInterface {
-	return &FakeAzurermAutomationModules{c}
+func (c *FakeAzurermV1alpha1) AutomationDscNodeconfigurations() v1alpha1.AutomationDscNodeconfigurationInterface {
+	return &FakeAutomationDscNodeconfigurations{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAutomationRunbooks() v1alpha1.AzurermAutomationRunbookInterface {
-	return &FakeAzurermAutomationRunbooks{c}
+func (c *FakeAzurermV1alpha1) AutomationModules() v1alpha1.AutomationModuleInterface {
+	return &FakeAutomationModules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAutomationSchedules() v1alpha1.AzurermAutomationScheduleInterface {
-	return &FakeAzurermAutomationSchedules{c}
+func (c *FakeAzurermV1alpha1) AutomationRunbooks() v1alpha1.AutomationRunbookInterface {
+	return &FakeAutomationRunbooks{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAutomationVariableBools() v1alpha1.AzurermAutomationVariableBoolInterface {
-	return &FakeAzurermAutomationVariableBools{c}
+func (c *FakeAzurermV1alpha1) AutomationSchedules() v1alpha1.AutomationScheduleInterface {
+	return &FakeAutomationSchedules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAutomationVariableDatetimes() v1alpha1.AzurermAutomationVariableDatetimeInterface {
-	return &FakeAzurermAutomationVariableDatetimes{c}
+func (c *FakeAzurermV1alpha1) AutomationVariableBools() v1alpha1.AutomationVariableBoolInterface {
+	return &FakeAutomationVariableBools{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAutomationVariableInts() v1alpha1.AzurermAutomationVariableIntInterface {
-	return &FakeAzurermAutomationVariableInts{c}
+func (c *FakeAzurermV1alpha1) AutomationVariableDatetimes() v1alpha1.AutomationVariableDatetimeInterface {
+	return &FakeAutomationVariableDatetimes{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAutomationVariableStrings() v1alpha1.AzurermAutomationVariableStringInterface {
-	return &FakeAzurermAutomationVariableStrings{c}
+func (c *FakeAzurermV1alpha1) AutomationVariableInts() v1alpha1.AutomationVariableIntInterface {
+	return &FakeAutomationVariableInts{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAutoscaleSettings() v1alpha1.AzurermAutoscaleSettingInterface {
-	return &FakeAzurermAutoscaleSettings{c}
+func (c *FakeAzurermV1alpha1) AutomationVariableStrings() v1alpha1.AutomationVariableStringInterface {
+	return &FakeAutomationVariableStrings{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAvailabilitySets() v1alpha1.AzurermAvailabilitySetInterface {
-	return &FakeAzurermAvailabilitySets{c}
+func (c *FakeAzurermV1alpha1) AutoscaleSettings() v1alpha1.AutoscaleSettingInterface {
+	return &FakeAutoscaleSettings{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAzureadApplications() v1alpha1.AzurermAzureadApplicationInterface {
-	return &FakeAzurermAzureadApplications{c}
+func (c *FakeAzurermV1alpha1) AvailabilitySets() v1alpha1.AvailabilitySetInterface {
+	return &FakeAvailabilitySets{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAzureadServicePrincipals() v1alpha1.AzurermAzureadServicePrincipalInterface {
-	return &FakeAzurermAzureadServicePrincipals{c}
+func (c *FakeAzurermV1alpha1) AzureadApplications() v1alpha1.AzureadApplicationInterface {
+	return &FakeAzureadApplications{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermAzureadServicePrincipalPasswords() v1alpha1.AzurermAzureadServicePrincipalPasswordInterface {
-	return &FakeAzurermAzureadServicePrincipalPasswords{c}
+func (c *FakeAzurermV1alpha1) AzureadServicePrincipals() v1alpha1.AzureadServicePrincipalInterface {
+	return &FakeAzureadServicePrincipals{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermBatchAccounts() v1alpha1.AzurermBatchAccountInterface {
-	return &FakeAzurermBatchAccounts{c}
+func (c *FakeAzurermV1alpha1) AzureadServicePrincipalPasswords() v1alpha1.AzureadServicePrincipalPasswordInterface {
+	return &FakeAzureadServicePrincipalPasswords{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermBatchCertificates() v1alpha1.AzurermBatchCertificateInterface {
-	return &FakeAzurermBatchCertificates{c}
+func (c *FakeAzurermV1alpha1) BatchAccounts() v1alpha1.BatchAccountInterface {
+	return &FakeBatchAccounts{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermBatchPools() v1alpha1.AzurermBatchPoolInterface {
-	return &FakeAzurermBatchPools{c}
+func (c *FakeAzurermV1alpha1) BatchApplications() v1alpha1.BatchApplicationInterface {
+	return &FakeBatchApplications{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermCdnEndpoints() v1alpha1.AzurermCdnEndpointInterface {
-	return &FakeAzurermCdnEndpoints{c}
+func (c *FakeAzurermV1alpha1) BatchCertificates() v1alpha1.BatchCertificateInterface {
+	return &FakeBatchCertificates{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermCdnProfiles() v1alpha1.AzurermCdnProfileInterface {
-	return &FakeAzurermCdnProfiles{c}
+func (c *FakeAzurermV1alpha1) BatchPools() v1alpha1.BatchPoolInterface {
+	return &FakeBatchPools{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermCognitiveAccounts() v1alpha1.AzurermCognitiveAccountInterface {
-	return &FakeAzurermCognitiveAccounts{c}
+func (c *FakeAzurermV1alpha1) CdnEndpoints() v1alpha1.CdnEndpointInterface {
+	return &FakeCdnEndpoints{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermConnectionMonitors() v1alpha1.AzurermConnectionMonitorInterface {
-	return &FakeAzurermConnectionMonitors{c}
+func (c *FakeAzurermV1alpha1) CdnProfiles() v1alpha1.CdnProfileInterface {
+	return &FakeCdnProfiles{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermContainerGroups() v1alpha1.AzurermContainerGroupInterface {
-	return &FakeAzurermContainerGroups{c}
+func (c *FakeAzurermV1alpha1) CognitiveAccounts() v1alpha1.CognitiveAccountInterface {
+	return &FakeCognitiveAccounts{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermContainerRegistries() v1alpha1.AzurermContainerRegistryInterface {
-	return &FakeAzurermContainerRegistries{c}
+func (c *FakeAzurermV1alpha1) ConnectionMonitors() v1alpha1.ConnectionMonitorInterface {
+	return &FakeConnectionMonitors{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermContainerServices() v1alpha1.AzurermContainerServiceInterface {
-	return &FakeAzurermContainerServices{c}
+func (c *FakeAzurermV1alpha1) ContainerGroups() v1alpha1.ContainerGroupInterface {
+	return &FakeContainerGroups{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermCosmosdbAccounts() v1alpha1.AzurermCosmosdbAccountInterface {
-	return &FakeAzurermCosmosdbAccounts{c}
+func (c *FakeAzurermV1alpha1) ContainerRegistries() v1alpha1.ContainerRegistryInterface {
+	return &FakeContainerRegistries{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermCosmosdbCassandraKeyspaces() v1alpha1.AzurermCosmosdbCassandraKeyspaceInterface {
-	return &FakeAzurermCosmosdbCassandraKeyspaces{c}
+func (c *FakeAzurermV1alpha1) ContainerServices() v1alpha1.ContainerServiceInterface {
+	return &FakeContainerServices{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermCosmosdbMongoCollections() v1alpha1.AzurermCosmosdbMongoCollectionInterface {
-	return &FakeAzurermCosmosdbMongoCollections{c}
+func (c *FakeAzurermV1alpha1) CosmosdbAccounts() v1alpha1.CosmosdbAccountInterface {
+	return &FakeCosmosdbAccounts{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermCosmosdbMongoDatabases() v1alpha1.AzurermCosmosdbMongoDatabaseInterface {
-	return &FakeAzurermCosmosdbMongoDatabases{c}
+func (c *FakeAzurermV1alpha1) CosmosdbCassandraKeyspaces() v1alpha1.CosmosdbCassandraKeyspaceInterface {
+	return &FakeCosmosdbCassandraKeyspaces{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermCosmosdbSqlDatabases() v1alpha1.AzurermCosmosdbSqlDatabaseInterface {
-	return &FakeAzurermCosmosdbSqlDatabases{c}
+func (c *FakeAzurermV1alpha1) CosmosdbMongoCollections() v1alpha1.CosmosdbMongoCollectionInterface {
+	return &FakeCosmosdbMongoCollections{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermCosmosdbTables() v1alpha1.AzurermCosmosdbTableInterface {
-	return &FakeAzurermCosmosdbTables{c}
+func (c *FakeAzurermV1alpha1) CosmosdbMongoDatabases() v1alpha1.CosmosdbMongoDatabaseInterface {
+	return &FakeCosmosdbMongoDatabases{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataFactories() v1alpha1.AzurermDataFactoryInterface {
-	return &FakeAzurermDataFactories{c}
+func (c *FakeAzurermV1alpha1) CosmosdbSqlDatabases() v1alpha1.CosmosdbSqlDatabaseInterface {
+	return &FakeCosmosdbSqlDatabases{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataFactoryDatasetMysqls() v1alpha1.AzurermDataFactoryDatasetMysqlInterface {
-	return &FakeAzurermDataFactoryDatasetMysqls{c}
+func (c *FakeAzurermV1alpha1) CosmosdbTables() v1alpha1.CosmosdbTableInterface {
+	return &FakeCosmosdbTables{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataFactoryDatasetPostgresqls() v1alpha1.AzurermDataFactoryDatasetPostgresqlInterface {
-	return &FakeAzurermDataFactoryDatasetPostgresqls{c}
+func (c *FakeAzurermV1alpha1) DataFactories() v1alpha1.DataFactoryInterface {
+	return &FakeDataFactories{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataFactoryDatasetSqlServerTables() v1alpha1.AzurermDataFactoryDatasetSqlServerTableInterface {
-	return &FakeAzurermDataFactoryDatasetSqlServerTables{c}
+func (c *FakeAzurermV1alpha1) DataFactoryDatasetMysqls() v1alpha1.DataFactoryDatasetMysqlInterface {
+	return &FakeDataFactoryDatasetMysqls{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataFactoryLinkedServiceDataLakeStorageGen2s() v1alpha1.AzurermDataFactoryLinkedServiceDataLakeStorageGen2Interface {
-	return &FakeAzurermDataFactoryLinkedServiceDataLakeStorageGen2s{c}
+func (c *FakeAzurermV1alpha1) DataFactoryDatasetPostgresqls() v1alpha1.DataFactoryDatasetPostgresqlInterface {
+	return &FakeDataFactoryDatasetPostgresqls{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataFactoryLinkedServiceMysqls() v1alpha1.AzurermDataFactoryLinkedServiceMysqlInterface {
-	return &FakeAzurermDataFactoryLinkedServiceMysqls{c}
+func (c *FakeAzurermV1alpha1) DataFactoryDatasetSqlServerTables() v1alpha1.DataFactoryDatasetSqlServerTableInterface {
+	return &FakeDataFactoryDatasetSqlServerTables{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataFactoryLinkedServicePostgresqls() v1alpha1.AzurermDataFactoryLinkedServicePostgresqlInterface {
-	return &FakeAzurermDataFactoryLinkedServicePostgresqls{c}
+func (c *FakeAzurermV1alpha1) DataFactoryLinkedServiceDataLakeStorageGen2s() v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2Interface {
+	return &FakeDataFactoryLinkedServiceDataLakeStorageGen2s{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataFactoryLinkedServiceSqlServers() v1alpha1.AzurermDataFactoryLinkedServiceSqlServerInterface {
-	return &FakeAzurermDataFactoryLinkedServiceSqlServers{c}
+func (c *FakeAzurermV1alpha1) DataFactoryLinkedServiceMysqls() v1alpha1.DataFactoryLinkedServiceMysqlInterface {
+	return &FakeDataFactoryLinkedServiceMysqls{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataFactoryPipelines() v1alpha1.AzurermDataFactoryPipelineInterface {
-	return &FakeAzurermDataFactoryPipelines{c}
+func (c *FakeAzurermV1alpha1) DataFactoryLinkedServicePostgresqls() v1alpha1.DataFactoryLinkedServicePostgresqlInterface {
+	return &FakeDataFactoryLinkedServicePostgresqls{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataLakeAnalyticsAccounts() v1alpha1.AzurermDataLakeAnalyticsAccountInterface {
-	return &FakeAzurermDataLakeAnalyticsAccounts{c}
+func (c *FakeAzurermV1alpha1) DataFactoryLinkedServiceSqlServers() v1alpha1.DataFactoryLinkedServiceSqlServerInterface {
+	return &FakeDataFactoryLinkedServiceSqlServers{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataLakeAnalyticsFirewallRules() v1alpha1.AzurermDataLakeAnalyticsFirewallRuleInterface {
-	return &FakeAzurermDataLakeAnalyticsFirewallRules{c}
+func (c *FakeAzurermV1alpha1) DataFactoryPipelines() v1alpha1.DataFactoryPipelineInterface {
+	return &FakeDataFactoryPipelines{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataLakeStores() v1alpha1.AzurermDataLakeStoreInterface {
-	return &FakeAzurermDataLakeStores{c}
+func (c *FakeAzurermV1alpha1) DataLakeAnalyticsAccounts() v1alpha1.DataLakeAnalyticsAccountInterface {
+	return &FakeDataLakeAnalyticsAccounts{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataLakeStoreFiles() v1alpha1.AzurermDataLakeStoreFileInterface {
-	return &FakeAzurermDataLakeStoreFiles{c}
+func (c *FakeAzurermV1alpha1) DataLakeAnalyticsFirewallRules() v1alpha1.DataLakeAnalyticsFirewallRuleInterface {
+	return &FakeDataLakeAnalyticsFirewallRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDataLakeStoreFirewallRules() v1alpha1.AzurermDataLakeStoreFirewallRuleInterface {
-	return &FakeAzurermDataLakeStoreFirewallRules{c}
+func (c *FakeAzurermV1alpha1) DataLakeStores() v1alpha1.DataLakeStoreInterface {
+	return &FakeDataLakeStores{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDatabricksWorkspaces() v1alpha1.AzurermDatabricksWorkspaceInterface {
-	return &FakeAzurermDatabricksWorkspaces{c}
+func (c *FakeAzurermV1alpha1) DataLakeStoreFiles() v1alpha1.DataLakeStoreFileInterface {
+	return &FakeDataLakeStoreFiles{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDdosProtectionPlans() v1alpha1.AzurermDdosProtectionPlanInterface {
-	return &FakeAzurermDdosProtectionPlans{c}
+func (c *FakeAzurermV1alpha1) DataLakeStoreFirewallRules() v1alpha1.DataLakeStoreFirewallRuleInterface {
+	return &FakeDataLakeStoreFirewallRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDevTestLabs() v1alpha1.AzurermDevTestLabInterface {
-	return &FakeAzurermDevTestLabs{c}
+func (c *FakeAzurermV1alpha1) DatabricksWorkspaces() v1alpha1.DatabricksWorkspaceInterface {
+	return &FakeDatabricksWorkspaces{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDevTestLinuxVirtualMachines() v1alpha1.AzurermDevTestLinuxVirtualMachineInterface {
-	return &FakeAzurermDevTestLinuxVirtualMachines{c}
+func (c *FakeAzurermV1alpha1) DdosProtectionPlans() v1alpha1.DdosProtectionPlanInterface {
+	return &FakeDdosProtectionPlans{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDevTestPolicies() v1alpha1.AzurermDevTestPolicyInterface {
-	return &FakeAzurermDevTestPolicies{c}
+func (c *FakeAzurermV1alpha1) DevTestLabs() v1alpha1.DevTestLabInterface {
+	return &FakeDevTestLabs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDevTestVirtualNetworks() v1alpha1.AzurermDevTestVirtualNetworkInterface {
-	return &FakeAzurermDevTestVirtualNetworks{c}
+func (c *FakeAzurermV1alpha1) DevTestLinuxVirtualMachines() v1alpha1.DevTestLinuxVirtualMachineInterface {
+	return &FakeDevTestLinuxVirtualMachines{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDevTestWindowsVirtualMachines() v1alpha1.AzurermDevTestWindowsVirtualMachineInterface {
-	return &FakeAzurermDevTestWindowsVirtualMachines{c}
+func (c *FakeAzurermV1alpha1) DevTestPolicies() v1alpha1.DevTestPolicyInterface {
+	return &FakeDevTestPolicies{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDevspaceControllers() v1alpha1.AzurermDevspaceControllerInterface {
-	return &FakeAzurermDevspaceControllers{c}
+func (c *FakeAzurermV1alpha1) DevTestVirtualNetworks() v1alpha1.DevTestVirtualNetworkInterface {
+	return &FakeDevTestVirtualNetworks{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDnsARecords() v1alpha1.AzurermDnsARecordInterface {
-	return &FakeAzurermDnsARecords{c}
+func (c *FakeAzurermV1alpha1) DevTestWindowsVirtualMachines() v1alpha1.DevTestWindowsVirtualMachineInterface {
+	return &FakeDevTestWindowsVirtualMachines{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDnsAaaaRecords() v1alpha1.AzurermDnsAaaaRecordInterface {
-	return &FakeAzurermDnsAaaaRecords{c}
+func (c *FakeAzurermV1alpha1) DevspaceControllers() v1alpha1.DevspaceControllerInterface {
+	return &FakeDevspaceControllers{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDnsCaaRecords() v1alpha1.AzurermDnsCaaRecordInterface {
-	return &FakeAzurermDnsCaaRecords{c}
+func (c *FakeAzurermV1alpha1) DnsARecords() v1alpha1.DnsARecordInterface {
+	return &FakeDnsARecords{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDnsCnameRecords() v1alpha1.AzurermDnsCnameRecordInterface {
-	return &FakeAzurermDnsCnameRecords{c}
+func (c *FakeAzurermV1alpha1) DnsAaaaRecords() v1alpha1.DnsAaaaRecordInterface {
+	return &FakeDnsAaaaRecords{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDnsMxRecords() v1alpha1.AzurermDnsMxRecordInterface {
-	return &FakeAzurermDnsMxRecords{c}
+func (c *FakeAzurermV1alpha1) DnsCaaRecords() v1alpha1.DnsCaaRecordInterface {
+	return &FakeDnsCaaRecords{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDnsNsRecords() v1alpha1.AzurermDnsNsRecordInterface {
-	return &FakeAzurermDnsNsRecords{c}
+func (c *FakeAzurermV1alpha1) DnsCnameRecords() v1alpha1.DnsCnameRecordInterface {
+	return &FakeDnsCnameRecords{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDnsPtrRecords() v1alpha1.AzurermDnsPtrRecordInterface {
-	return &FakeAzurermDnsPtrRecords{c}
+func (c *FakeAzurermV1alpha1) DnsMxRecords() v1alpha1.DnsMxRecordInterface {
+	return &FakeDnsMxRecords{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDnsSrvRecords() v1alpha1.AzurermDnsSrvRecordInterface {
-	return &FakeAzurermDnsSrvRecords{c}
+func (c *FakeAzurermV1alpha1) DnsNsRecords() v1alpha1.DnsNsRecordInterface {
+	return &FakeDnsNsRecords{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDnsTxtRecords() v1alpha1.AzurermDnsTxtRecordInterface {
-	return &FakeAzurermDnsTxtRecords{c}
+func (c *FakeAzurermV1alpha1) DnsPtrRecords() v1alpha1.DnsPtrRecordInterface {
+	return &FakeDnsPtrRecords{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermDnsZones() v1alpha1.AzurermDnsZoneInterface {
-	return &FakeAzurermDnsZones{c}
+func (c *FakeAzurermV1alpha1) DnsSrvRecords() v1alpha1.DnsSrvRecordInterface {
+	return &FakeDnsSrvRecords{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermEventgridDomains() v1alpha1.AzurermEventgridDomainInterface {
-	return &FakeAzurermEventgridDomains{c}
+func (c *FakeAzurermV1alpha1) DnsTxtRecords() v1alpha1.DnsTxtRecordInterface {
+	return &FakeDnsTxtRecords{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermEventgridEventSubscriptions() v1alpha1.AzurermEventgridEventSubscriptionInterface {
-	return &FakeAzurermEventgridEventSubscriptions{c}
+func (c *FakeAzurermV1alpha1) DnsZones() v1alpha1.DnsZoneInterface {
+	return &FakeDnsZones{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermEventgridTopics() v1alpha1.AzurermEventgridTopicInterface {
-	return &FakeAzurermEventgridTopics{c}
+func (c *FakeAzurermV1alpha1) EventgridDomains() v1alpha1.EventgridDomainInterface {
+	return &FakeEventgridDomains{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermEventhubs() v1alpha1.AzurermEventhubInterface {
-	return &FakeAzurermEventhubs{c}
+func (c *FakeAzurermV1alpha1) EventgridEventSubscriptions() v1alpha1.EventgridEventSubscriptionInterface {
+	return &FakeEventgridEventSubscriptions{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermEventhubAuthorizationRules() v1alpha1.AzurermEventhubAuthorizationRuleInterface {
-	return &FakeAzurermEventhubAuthorizationRules{c}
+func (c *FakeAzurermV1alpha1) EventgridTopics() v1alpha1.EventgridTopicInterface {
+	return &FakeEventgridTopics{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermEventhubConsumerGroups() v1alpha1.AzurermEventhubConsumerGroupInterface {
-	return &FakeAzurermEventhubConsumerGroups{c}
+func (c *FakeAzurermV1alpha1) Eventhubs() v1alpha1.EventhubInterface {
+	return &FakeEventhubs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermEventhubNamespaces() v1alpha1.AzurermEventhubNamespaceInterface {
-	return &FakeAzurermEventhubNamespaces{c}
+func (c *FakeAzurermV1alpha1) EventhubAuthorizationRules() v1alpha1.EventhubAuthorizationRuleInterface {
+	return &FakeEventhubAuthorizationRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermEventhubNamespaceAuthorizationRules() v1alpha1.AzurermEventhubNamespaceAuthorizationRuleInterface {
-	return &FakeAzurermEventhubNamespaceAuthorizationRules{c}
+func (c *FakeAzurermV1alpha1) EventhubConsumerGroups() v1alpha1.EventhubConsumerGroupInterface {
+	return &FakeEventhubConsumerGroups{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermExpressRouteCircuits() v1alpha1.AzurermExpressRouteCircuitInterface {
-	return &FakeAzurermExpressRouteCircuits{c}
+func (c *FakeAzurermV1alpha1) EventhubNamespaces() v1alpha1.EventhubNamespaceInterface {
+	return &FakeEventhubNamespaces{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermExpressRouteCircuitAuthorizations() v1alpha1.AzurermExpressRouteCircuitAuthorizationInterface {
-	return &FakeAzurermExpressRouteCircuitAuthorizations{c}
+func (c *FakeAzurermV1alpha1) EventhubNamespaceAuthorizationRules() v1alpha1.EventhubNamespaceAuthorizationRuleInterface {
+	return &FakeEventhubNamespaceAuthorizationRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermExpressRouteCircuitPeerings() v1alpha1.AzurermExpressRouteCircuitPeeringInterface {
-	return &FakeAzurermExpressRouteCircuitPeerings{c}
+func (c *FakeAzurermV1alpha1) ExpressRouteCircuits() v1alpha1.ExpressRouteCircuitInterface {
+	return &FakeExpressRouteCircuits{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermFirewalls() v1alpha1.AzurermFirewallInterface {
-	return &FakeAzurermFirewalls{c}
+func (c *FakeAzurermV1alpha1) ExpressRouteCircuitAuthorizations() v1alpha1.ExpressRouteCircuitAuthorizationInterface {
+	return &FakeExpressRouteCircuitAuthorizations{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermFirewallApplicationRuleCollections() v1alpha1.AzurermFirewallApplicationRuleCollectionInterface {
-	return &FakeAzurermFirewallApplicationRuleCollections{c}
+func (c *FakeAzurermV1alpha1) ExpressRouteCircuitPeerings() v1alpha1.ExpressRouteCircuitPeeringInterface {
+	return &FakeExpressRouteCircuitPeerings{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermFirewallNatRuleCollections() v1alpha1.AzurermFirewallNatRuleCollectionInterface {
-	return &FakeAzurermFirewallNatRuleCollections{c}
+func (c *FakeAzurermV1alpha1) Firewalls() v1alpha1.FirewallInterface {
+	return &FakeFirewalls{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermFirewallNetworkRuleCollections() v1alpha1.AzurermFirewallNetworkRuleCollectionInterface {
-	return &FakeAzurermFirewallNetworkRuleCollections{c}
+func (c *FakeAzurermV1alpha1) FirewallApplicationRuleCollections() v1alpha1.FirewallApplicationRuleCollectionInterface {
+	return &FakeFirewallApplicationRuleCollections{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermFunctionApps() v1alpha1.AzurermFunctionAppInterface {
-	return &FakeAzurermFunctionApps{c}
+func (c *FakeAzurermV1alpha1) FirewallNatRuleCollections() v1alpha1.FirewallNatRuleCollectionInterface {
+	return &FakeFirewallNatRuleCollections{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermHdinsightHadoopClusters() v1alpha1.AzurermHdinsightHadoopClusterInterface {
-	return &FakeAzurermHdinsightHadoopClusters{c}
+func (c *FakeAzurermV1alpha1) FirewallNetworkRuleCollections() v1alpha1.FirewallNetworkRuleCollectionInterface {
+	return &FakeFirewallNetworkRuleCollections{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermHdinsightHbaseClusters() v1alpha1.AzurermHdinsightHbaseClusterInterface {
-	return &FakeAzurermHdinsightHbaseClusters{c}
+func (c *FakeAzurermV1alpha1) FunctionApps() v1alpha1.FunctionAppInterface {
+	return &FakeFunctionApps{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermHdinsightInteractiveQueryClusters() v1alpha1.AzurermHdinsightInteractiveQueryClusterInterface {
-	return &FakeAzurermHdinsightInteractiveQueryClusters{c}
+func (c *FakeAzurermV1alpha1) HdinsightHadoopClusters() v1alpha1.HdinsightHadoopClusterInterface {
+	return &FakeHdinsightHadoopClusters{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermHdinsightKafkaClusters() v1alpha1.AzurermHdinsightKafkaClusterInterface {
-	return &FakeAzurermHdinsightKafkaClusters{c}
+func (c *FakeAzurermV1alpha1) HdinsightHbaseClusters() v1alpha1.HdinsightHbaseClusterInterface {
+	return &FakeHdinsightHbaseClusters{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermHdinsightMlServicesClusters() v1alpha1.AzurermHdinsightMlServicesClusterInterface {
-	return &FakeAzurermHdinsightMlServicesClusters{c}
+func (c *FakeAzurermV1alpha1) HdinsightInteractiveQueryClusters() v1alpha1.HdinsightInteractiveQueryClusterInterface {
+	return &FakeHdinsightInteractiveQueryClusters{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermHdinsightRserverClusters() v1alpha1.AzurermHdinsightRserverClusterInterface {
-	return &FakeAzurermHdinsightRserverClusters{c}
+func (c *FakeAzurermV1alpha1) HdinsightKafkaClusters() v1alpha1.HdinsightKafkaClusterInterface {
+	return &FakeHdinsightKafkaClusters{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermHdinsightSparkClusters() v1alpha1.AzurermHdinsightSparkClusterInterface {
-	return &FakeAzurermHdinsightSparkClusters{c}
+func (c *FakeAzurermV1alpha1) HdinsightMlServicesClusters() v1alpha1.HdinsightMlServicesClusterInterface {
+	return &FakeHdinsightMlServicesClusters{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermHdinsightStormClusters() v1alpha1.AzurermHdinsightStormClusterInterface {
-	return &FakeAzurermHdinsightStormClusters{c}
+func (c *FakeAzurermV1alpha1) HdinsightRserverClusters() v1alpha1.HdinsightRserverClusterInterface {
+	return &FakeHdinsightRserverClusters{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermImages() v1alpha1.AzurermImageInterface {
-	return &FakeAzurermImages{c}
+func (c *FakeAzurermV1alpha1) HdinsightSparkClusters() v1alpha1.HdinsightSparkClusterInterface {
+	return &FakeHdinsightSparkClusters{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermIotDpses() v1alpha1.AzurermIotDpsInterface {
-	return &FakeAzurermIotDpses{c}
+func (c *FakeAzurermV1alpha1) HdinsightStormClusters() v1alpha1.HdinsightStormClusterInterface {
+	return &FakeHdinsightStormClusters{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermIotDpsCertificates() v1alpha1.AzurermIotDpsCertificateInterface {
-	return &FakeAzurermIotDpsCertificates{c}
+func (c *FakeAzurermV1alpha1) Images() v1alpha1.ImageInterface {
+	return &FakeImages{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermIothubs() v1alpha1.AzurermIothubInterface {
-	return &FakeAzurermIothubs{c}
+func (c *FakeAzurermV1alpha1) IotDpses() v1alpha1.IotDpsInterface {
+	return &FakeIotDpses{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermIothubConsumerGroups() v1alpha1.AzurermIothubConsumerGroupInterface {
-	return &FakeAzurermIothubConsumerGroups{c}
+func (c *FakeAzurermV1alpha1) IotDpsCertificates() v1alpha1.IotDpsCertificateInterface {
+	return &FakeIotDpsCertificates{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermIothubSharedAccessPolicies() v1alpha1.AzurermIothubSharedAccessPolicyInterface {
-	return &FakeAzurermIothubSharedAccessPolicies{c}
+func (c *FakeAzurermV1alpha1) Iothubs() v1alpha1.IothubInterface {
+	return &FakeIothubs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermKeyVaults() v1alpha1.AzurermKeyVaultInterface {
-	return &FakeAzurermKeyVaults{c}
+func (c *FakeAzurermV1alpha1) IothubConsumerGroups() v1alpha1.IothubConsumerGroupInterface {
+	return &FakeIothubConsumerGroups{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermKeyVaultAccessPolicies() v1alpha1.AzurermKeyVaultAccessPolicyInterface {
-	return &FakeAzurermKeyVaultAccessPolicies{c}
+func (c *FakeAzurermV1alpha1) IothubSharedAccessPolicies() v1alpha1.IothubSharedAccessPolicyInterface {
+	return &FakeIothubSharedAccessPolicies{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermKeyVaultCertificates() v1alpha1.AzurermKeyVaultCertificateInterface {
-	return &FakeAzurermKeyVaultCertificates{c}
+func (c *FakeAzurermV1alpha1) KeyVaults() v1alpha1.KeyVaultInterface {
+	return &FakeKeyVaults{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermKeyVaultKeys() v1alpha1.AzurermKeyVaultKeyInterface {
-	return &FakeAzurermKeyVaultKeys{c}
+func (c *FakeAzurermV1alpha1) KeyVaultAccessPolicies() v1alpha1.KeyVaultAccessPolicyInterface {
+	return &FakeKeyVaultAccessPolicies{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermKeyVaultSecrets() v1alpha1.AzurermKeyVaultSecretInterface {
-	return &FakeAzurermKeyVaultSecrets{c}
+func (c *FakeAzurermV1alpha1) KeyVaultCertificates() v1alpha1.KeyVaultCertificateInterface {
+	return &FakeKeyVaultCertificates{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermKubernetesClusters() v1alpha1.AzurermKubernetesClusterInterface {
-	return &FakeAzurermKubernetesClusters{c}
+func (c *FakeAzurermV1alpha1) KeyVaultKeys() v1alpha1.KeyVaultKeyInterface {
+	return &FakeKeyVaultKeys{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLbs() v1alpha1.AzurermLbInterface {
-	return &FakeAzurermLbs{c}
+func (c *FakeAzurermV1alpha1) KeyVaultSecrets() v1alpha1.KeyVaultSecretInterface {
+	return &FakeKeyVaultSecrets{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLbBackendAddressPools() v1alpha1.AzurermLbBackendAddressPoolInterface {
-	return &FakeAzurermLbBackendAddressPools{c}
+func (c *FakeAzurermV1alpha1) KubernetesClusters() v1alpha1.KubernetesClusterInterface {
+	return &FakeKubernetesClusters{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLbNatPools() v1alpha1.AzurermLbNatPoolInterface {
-	return &FakeAzurermLbNatPools{c}
+func (c *FakeAzurermV1alpha1) Lbs() v1alpha1.LbInterface {
+	return &FakeLbs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLbNatRules() v1alpha1.AzurermLbNatRuleInterface {
-	return &FakeAzurermLbNatRules{c}
+func (c *FakeAzurermV1alpha1) LbBackendAddressPools() v1alpha1.LbBackendAddressPoolInterface {
+	return &FakeLbBackendAddressPools{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLbOutboundRules() v1alpha1.AzurermLbOutboundRuleInterface {
-	return &FakeAzurermLbOutboundRules{c}
+func (c *FakeAzurermV1alpha1) LbNatPools() v1alpha1.LbNatPoolInterface {
+	return &FakeLbNatPools{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLbProbes() v1alpha1.AzurermLbProbeInterface {
-	return &FakeAzurermLbProbes{c}
+func (c *FakeAzurermV1alpha1) LbNatRules() v1alpha1.LbNatRuleInterface {
+	return &FakeLbNatRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLbRules() v1alpha1.AzurermLbRuleInterface {
-	return &FakeAzurermLbRules{c}
+func (c *FakeAzurermV1alpha1) LbOutboundRules() v1alpha1.LbOutboundRuleInterface {
+	return &FakeLbOutboundRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLocalNetworkGateways() v1alpha1.AzurermLocalNetworkGatewayInterface {
-	return &FakeAzurermLocalNetworkGateways{c}
+func (c *FakeAzurermV1alpha1) LbProbes() v1alpha1.LbProbeInterface {
+	return &FakeLbProbes{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLogAnalyticsLinkedServices() v1alpha1.AzurermLogAnalyticsLinkedServiceInterface {
-	return &FakeAzurermLogAnalyticsLinkedServices{c}
+func (c *FakeAzurermV1alpha1) LbRules() v1alpha1.LbRuleInterface {
+	return &FakeLbRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLogAnalyticsSolutions() v1alpha1.AzurermLogAnalyticsSolutionInterface {
-	return &FakeAzurermLogAnalyticsSolutions{c}
+func (c *FakeAzurermV1alpha1) LocalNetworkGateways() v1alpha1.LocalNetworkGatewayInterface {
+	return &FakeLocalNetworkGateways{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLogAnalyticsWorkspaces() v1alpha1.AzurermLogAnalyticsWorkspaceInterface {
-	return &FakeAzurermLogAnalyticsWorkspaces{c}
+func (c *FakeAzurermV1alpha1) LogAnalyticsLinkedServices() v1alpha1.LogAnalyticsLinkedServiceInterface {
+	return &FakeLogAnalyticsLinkedServices{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLogAnalyticsWorkspaceLinkedServices() v1alpha1.AzurermLogAnalyticsWorkspaceLinkedServiceInterface {
-	return &FakeAzurermLogAnalyticsWorkspaceLinkedServices{c}
+func (c *FakeAzurermV1alpha1) LogAnalyticsSolutions() v1alpha1.LogAnalyticsSolutionInterface {
+	return &FakeLogAnalyticsSolutions{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLogicAppActionCustoms() v1alpha1.AzurermLogicAppActionCustomInterface {
-	return &FakeAzurermLogicAppActionCustoms{c}
+func (c *FakeAzurermV1alpha1) LogAnalyticsWorkspaces() v1alpha1.LogAnalyticsWorkspaceInterface {
+	return &FakeLogAnalyticsWorkspaces{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLogicAppActionHttps() v1alpha1.AzurermLogicAppActionHttpInterface {
-	return &FakeAzurermLogicAppActionHttps{c}
+func (c *FakeAzurermV1alpha1) LogAnalyticsWorkspaceLinkedServices() v1alpha1.LogAnalyticsWorkspaceLinkedServiceInterface {
+	return &FakeLogAnalyticsWorkspaceLinkedServices{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLogicAppTriggerCustoms() v1alpha1.AzurermLogicAppTriggerCustomInterface {
-	return &FakeAzurermLogicAppTriggerCustoms{c}
+func (c *FakeAzurermV1alpha1) LogicAppActionCustoms() v1alpha1.LogicAppActionCustomInterface {
+	return &FakeLogicAppActionCustoms{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLogicAppTriggerHttpRequests() v1alpha1.AzurermLogicAppTriggerHttpRequestInterface {
-	return &FakeAzurermLogicAppTriggerHttpRequests{c}
+func (c *FakeAzurermV1alpha1) LogicAppActionHttps() v1alpha1.LogicAppActionHttpInterface {
+	return &FakeLogicAppActionHttps{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLogicAppTriggerRecurrences() v1alpha1.AzurermLogicAppTriggerRecurrenceInterface {
-	return &FakeAzurermLogicAppTriggerRecurrences{c}
+func (c *FakeAzurermV1alpha1) LogicAppTriggerCustoms() v1alpha1.LogicAppTriggerCustomInterface {
+	return &FakeLogicAppTriggerCustoms{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermLogicAppWorkflows() v1alpha1.AzurermLogicAppWorkflowInterface {
-	return &FakeAzurermLogicAppWorkflows{c}
+func (c *FakeAzurermV1alpha1) LogicAppTriggerHttpRequests() v1alpha1.LogicAppTriggerHttpRequestInterface {
+	return &FakeLogicAppTriggerHttpRequests{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermManagedDisks() v1alpha1.AzurermManagedDiskInterface {
-	return &FakeAzurermManagedDisks{c}
+func (c *FakeAzurermV1alpha1) LogicAppTriggerRecurrences() v1alpha1.LogicAppTriggerRecurrenceInterface {
+	return &FakeLogicAppTriggerRecurrences{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermManagementGroups() v1alpha1.AzurermManagementGroupInterface {
-	return &FakeAzurermManagementGroups{c}
+func (c *FakeAzurermV1alpha1) LogicAppWorkflows() v1alpha1.LogicAppWorkflowInterface {
+	return &FakeLogicAppWorkflows{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermManagementLocks() v1alpha1.AzurermManagementLockInterface {
-	return &FakeAzurermManagementLocks{c}
+func (c *FakeAzurermV1alpha1) ManagedDisks() v1alpha1.ManagedDiskInterface {
+	return &FakeManagedDisks{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMariadbDatabases() v1alpha1.AzurermMariadbDatabaseInterface {
-	return &FakeAzurermMariadbDatabases{c}
+func (c *FakeAzurermV1alpha1) ManagementGroups() v1alpha1.ManagementGroupInterface {
+	return &FakeManagementGroups{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMariadbFirewallRules() v1alpha1.AzurermMariadbFirewallRuleInterface {
-	return &FakeAzurermMariadbFirewallRules{c}
+func (c *FakeAzurermV1alpha1) ManagementLocks() v1alpha1.ManagementLockInterface {
+	return &FakeManagementLocks{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMariadbServers() v1alpha1.AzurermMariadbServerInterface {
-	return &FakeAzurermMariadbServers{c}
+func (c *FakeAzurermV1alpha1) MariadbDatabases() v1alpha1.MariadbDatabaseInterface {
+	return &FakeMariadbDatabases{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMediaServicesAccounts() v1alpha1.AzurermMediaServicesAccountInterface {
-	return &FakeAzurermMediaServicesAccounts{c}
+func (c *FakeAzurermV1alpha1) MariadbFirewallRules() v1alpha1.MariadbFirewallRuleInterface {
+	return &FakeMariadbFirewallRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMetricAlertrules() v1alpha1.AzurermMetricAlertruleInterface {
-	return &FakeAzurermMetricAlertrules{c}
+func (c *FakeAzurermV1alpha1) MariadbServers() v1alpha1.MariadbServerInterface {
+	return &FakeMariadbServers{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMonitorActionGroups() v1alpha1.AzurermMonitorActionGroupInterface {
-	return &FakeAzurermMonitorActionGroups{c}
+func (c *FakeAzurermV1alpha1) MediaServicesAccounts() v1alpha1.MediaServicesAccountInterface {
+	return &FakeMediaServicesAccounts{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMonitorActivityLogAlerts() v1alpha1.AzurermMonitorActivityLogAlertInterface {
-	return &FakeAzurermMonitorActivityLogAlerts{c}
+func (c *FakeAzurermV1alpha1) MetricAlertrules() v1alpha1.MetricAlertruleInterface {
+	return &FakeMetricAlertrules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMonitorAutoscaleSettings() v1alpha1.AzurermMonitorAutoscaleSettingInterface {
-	return &FakeAzurermMonitorAutoscaleSettings{c}
+func (c *FakeAzurermV1alpha1) MonitorActionGroups() v1alpha1.MonitorActionGroupInterface {
+	return &FakeMonitorActionGroups{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMonitorDiagnosticSettings() v1alpha1.AzurermMonitorDiagnosticSettingInterface {
-	return &FakeAzurermMonitorDiagnosticSettings{c}
+func (c *FakeAzurermV1alpha1) MonitorActivityLogAlerts() v1alpha1.MonitorActivityLogAlertInterface {
+	return &FakeMonitorActivityLogAlerts{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMonitorLogProfiles() v1alpha1.AzurermMonitorLogProfileInterface {
-	return &FakeAzurermMonitorLogProfiles{c}
+func (c *FakeAzurermV1alpha1) MonitorAutoscaleSettings() v1alpha1.MonitorAutoscaleSettingInterface {
+	return &FakeMonitorAutoscaleSettings{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMonitorMetricAlerts() v1alpha1.AzurermMonitorMetricAlertInterface {
-	return &FakeAzurermMonitorMetricAlerts{c}
+func (c *FakeAzurermV1alpha1) MonitorDiagnosticSettings() v1alpha1.MonitorDiagnosticSettingInterface {
+	return &FakeMonitorDiagnosticSettings{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMonitorMetricAlertrules() v1alpha1.AzurermMonitorMetricAlertruleInterface {
-	return &FakeAzurermMonitorMetricAlertrules{c}
+func (c *FakeAzurermV1alpha1) MonitorLogProfiles() v1alpha1.MonitorLogProfileInterface {
+	return &FakeMonitorLogProfiles{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMssqlElasticpools() v1alpha1.AzurermMssqlElasticpoolInterface {
-	return &FakeAzurermMssqlElasticpools{c}
+func (c *FakeAzurermV1alpha1) MonitorMetricAlerts() v1alpha1.MonitorMetricAlertInterface {
+	return &FakeMonitorMetricAlerts{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMysqlConfigurations() v1alpha1.AzurermMysqlConfigurationInterface {
-	return &FakeAzurermMysqlConfigurations{c}
+func (c *FakeAzurermV1alpha1) MonitorMetricAlertrules() v1alpha1.MonitorMetricAlertruleInterface {
+	return &FakeMonitorMetricAlertrules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMysqlDatabases() v1alpha1.AzurermMysqlDatabaseInterface {
-	return &FakeAzurermMysqlDatabases{c}
+func (c *FakeAzurermV1alpha1) MssqlElasticpools() v1alpha1.MssqlElasticpoolInterface {
+	return &FakeMssqlElasticpools{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMysqlFirewallRules() v1alpha1.AzurermMysqlFirewallRuleInterface {
-	return &FakeAzurermMysqlFirewallRules{c}
+func (c *FakeAzurermV1alpha1) MysqlConfigurations() v1alpha1.MysqlConfigurationInterface {
+	return &FakeMysqlConfigurations{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMysqlServers() v1alpha1.AzurermMysqlServerInterface {
-	return &FakeAzurermMysqlServers{c}
+func (c *FakeAzurermV1alpha1) MysqlDatabases() v1alpha1.MysqlDatabaseInterface {
+	return &FakeMysqlDatabases{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermMysqlVirtualNetworkRules() v1alpha1.AzurermMysqlVirtualNetworkRuleInterface {
-	return &FakeAzurermMysqlVirtualNetworkRules{c}
+func (c *FakeAzurermV1alpha1) MysqlFirewallRules() v1alpha1.MysqlFirewallRuleInterface {
+	return &FakeMysqlFirewallRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNetworkConnectionMonitors() v1alpha1.AzurermNetworkConnectionMonitorInterface {
-	return &FakeAzurermNetworkConnectionMonitors{c}
+func (c *FakeAzurermV1alpha1) MysqlServers() v1alpha1.MysqlServerInterface {
+	return &FakeMysqlServers{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNetworkDdosProtectionPlans() v1alpha1.AzurermNetworkDdosProtectionPlanInterface {
-	return &FakeAzurermNetworkDdosProtectionPlans{c}
+func (c *FakeAzurermV1alpha1) MysqlVirtualNetworkRules() v1alpha1.MysqlVirtualNetworkRuleInterface {
+	return &FakeMysqlVirtualNetworkRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNetworkInterfaces() v1alpha1.AzurermNetworkInterfaceInterface {
-	return &FakeAzurermNetworkInterfaces{c}
+func (c *FakeAzurermV1alpha1) NetworkConnectionMonitors() v1alpha1.NetworkConnectionMonitorInterface {
+	return &FakeNetworkConnectionMonitors{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations() v1alpha1.AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInterface {
-	return &FakeAzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations{c}
+func (c *FakeAzurermV1alpha1) NetworkDdosProtectionPlans() v1alpha1.NetworkDdosProtectionPlanInterface {
+	return &FakeNetworkDdosProtectionPlans{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNetworkInterfaceApplicationSecurityGroupAssociations() v1alpha1.AzurermNetworkInterfaceApplicationSecurityGroupAssociationInterface {
-	return &FakeAzurermNetworkInterfaceApplicationSecurityGroupAssociations{c}
+func (c *FakeAzurermV1alpha1) NetworkInterfaces() v1alpha1.NetworkInterfaceInterface {
+	return &FakeNetworkInterfaces{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNetworkInterfaceBackendAddressPoolAssociations() v1alpha1.AzurermNetworkInterfaceBackendAddressPoolAssociationInterface {
-	return &FakeAzurermNetworkInterfaceBackendAddressPoolAssociations{c}
+func (c *FakeAzurermV1alpha1) NetworkInterfaceApplicationGatewayBackendAddressPoolAssociations() v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInterface {
+	return &FakeNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNetworkInterfaceNatRuleAssociations() v1alpha1.AzurermNetworkInterfaceNatRuleAssociationInterface {
-	return &FakeAzurermNetworkInterfaceNatRuleAssociations{c}
+func (c *FakeAzurermV1alpha1) NetworkInterfaceApplicationSecurityGroupAssociations() v1alpha1.NetworkInterfaceApplicationSecurityGroupAssociationInterface {
+	return &FakeNetworkInterfaceApplicationSecurityGroupAssociations{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNetworkPacketCaptures() v1alpha1.AzurermNetworkPacketCaptureInterface {
-	return &FakeAzurermNetworkPacketCaptures{c}
+func (c *FakeAzurermV1alpha1) NetworkInterfaceBackendAddressPoolAssociations() v1alpha1.NetworkInterfaceBackendAddressPoolAssociationInterface {
+	return &FakeNetworkInterfaceBackendAddressPoolAssociations{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNetworkProfiles() v1alpha1.AzurermNetworkProfileInterface {
-	return &FakeAzurermNetworkProfiles{c}
+func (c *FakeAzurermV1alpha1) NetworkInterfaceNatRuleAssociations() v1alpha1.NetworkInterfaceNatRuleAssociationInterface {
+	return &FakeNetworkInterfaceNatRuleAssociations{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNetworkSecurityGroups() v1alpha1.AzurermNetworkSecurityGroupInterface {
-	return &FakeAzurermNetworkSecurityGroups{c}
+func (c *FakeAzurermV1alpha1) NetworkPacketCaptures() v1alpha1.NetworkPacketCaptureInterface {
+	return &FakeNetworkPacketCaptures{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNetworkSecurityRules() v1alpha1.AzurermNetworkSecurityRuleInterface {
-	return &FakeAzurermNetworkSecurityRules{c}
+func (c *FakeAzurermV1alpha1) NetworkProfiles() v1alpha1.NetworkProfileInterface {
+	return &FakeNetworkProfiles{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNetworkWatchers() v1alpha1.AzurermNetworkWatcherInterface {
-	return &FakeAzurermNetworkWatchers{c}
+func (c *FakeAzurermV1alpha1) NetworkSecurityGroups() v1alpha1.NetworkSecurityGroupInterface {
+	return &FakeNetworkSecurityGroups{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNotificationHubs() v1alpha1.AzurermNotificationHubInterface {
-	return &FakeAzurermNotificationHubs{c}
+func (c *FakeAzurermV1alpha1) NetworkSecurityRules() v1alpha1.NetworkSecurityRuleInterface {
+	return &FakeNetworkSecurityRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNotificationHubAuthorizationRules() v1alpha1.AzurermNotificationHubAuthorizationRuleInterface {
-	return &FakeAzurermNotificationHubAuthorizationRules{c}
+func (c *FakeAzurermV1alpha1) NetworkWatchers() v1alpha1.NetworkWatcherInterface {
+	return &FakeNetworkWatchers{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermNotificationHubNamespaces() v1alpha1.AzurermNotificationHubNamespaceInterface {
-	return &FakeAzurermNotificationHubNamespaces{c}
+func (c *FakeAzurermV1alpha1) NotificationHubs() v1alpha1.NotificationHubInterface {
+	return &FakeNotificationHubs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermPacketCaptures() v1alpha1.AzurermPacketCaptureInterface {
-	return &FakeAzurermPacketCaptures{c}
+func (c *FakeAzurermV1alpha1) NotificationHubAuthorizationRules() v1alpha1.NotificationHubAuthorizationRuleInterface {
+	return &FakeNotificationHubAuthorizationRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermPolicyAssignments() v1alpha1.AzurermPolicyAssignmentInterface {
-	return &FakeAzurermPolicyAssignments{c}
+func (c *FakeAzurermV1alpha1) NotificationHubNamespaces() v1alpha1.NotificationHubNamespaceInterface {
+	return &FakeNotificationHubNamespaces{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermPolicyDefinitions() v1alpha1.AzurermPolicyDefinitionInterface {
-	return &FakeAzurermPolicyDefinitions{c}
+func (c *FakeAzurermV1alpha1) PacketCaptures() v1alpha1.PacketCaptureInterface {
+	return &FakePacketCaptures{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermPolicySetDefinitions() v1alpha1.AzurermPolicySetDefinitionInterface {
-	return &FakeAzurermPolicySetDefinitions{c}
+func (c *FakeAzurermV1alpha1) PolicyAssignments() v1alpha1.PolicyAssignmentInterface {
+	return &FakePolicyAssignments{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermPostgresqlConfigurations() v1alpha1.AzurermPostgresqlConfigurationInterface {
-	return &FakeAzurermPostgresqlConfigurations{c}
+func (c *FakeAzurermV1alpha1) PolicyDefinitions() v1alpha1.PolicyDefinitionInterface {
+	return &FakePolicyDefinitions{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermPostgresqlDatabases() v1alpha1.AzurermPostgresqlDatabaseInterface {
-	return &FakeAzurermPostgresqlDatabases{c}
+func (c *FakeAzurermV1alpha1) PolicySetDefinitions() v1alpha1.PolicySetDefinitionInterface {
+	return &FakePolicySetDefinitions{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermPostgresqlFirewallRules() v1alpha1.AzurermPostgresqlFirewallRuleInterface {
-	return &FakeAzurermPostgresqlFirewallRules{c}
+func (c *FakeAzurermV1alpha1) PostgresqlConfigurations() v1alpha1.PostgresqlConfigurationInterface {
+	return &FakePostgresqlConfigurations{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermPostgresqlServers() v1alpha1.AzurermPostgresqlServerInterface {
-	return &FakeAzurermPostgresqlServers{c}
+func (c *FakeAzurermV1alpha1) PostgresqlDatabases() v1alpha1.PostgresqlDatabaseInterface {
+	return &FakePostgresqlDatabases{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermPostgresqlVirtualNetworkRules() v1alpha1.AzurermPostgresqlVirtualNetworkRuleInterface {
-	return &FakeAzurermPostgresqlVirtualNetworkRules{c}
+func (c *FakeAzurermV1alpha1) PostgresqlFirewallRules() v1alpha1.PostgresqlFirewallRuleInterface {
+	return &FakePostgresqlFirewallRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermPrivateDnsZones() v1alpha1.AzurermPrivateDnsZoneInterface {
-	return &FakeAzurermPrivateDnsZones{c}
+func (c *FakeAzurermV1alpha1) PostgresqlServers() v1alpha1.PostgresqlServerInterface {
+	return &FakePostgresqlServers{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermPublicIps() v1alpha1.AzurermPublicIpInterface {
-	return &FakeAzurermPublicIps{c}
+func (c *FakeAzurermV1alpha1) PostgresqlVirtualNetworkRules() v1alpha1.PostgresqlVirtualNetworkRuleInterface {
+	return &FakePostgresqlVirtualNetworkRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermPublicIpPrefixes() v1alpha1.AzurermPublicIpPrefixInterface {
-	return &FakeAzurermPublicIpPrefixes{c}
+func (c *FakeAzurermV1alpha1) PrivateDnsZones() v1alpha1.PrivateDnsZoneInterface {
+	return &FakePrivateDnsZones{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermRecoveryServicesProtectedVms() v1alpha1.AzurermRecoveryServicesProtectedVmInterface {
-	return &FakeAzurermRecoveryServicesProtectedVms{c}
+func (c *FakeAzurermV1alpha1) PublicIps() v1alpha1.PublicIpInterface {
+	return &FakePublicIps{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermRecoveryServicesProtectionPolicyVms() v1alpha1.AzurermRecoveryServicesProtectionPolicyVmInterface {
-	return &FakeAzurermRecoveryServicesProtectionPolicyVms{c}
+func (c *FakeAzurermV1alpha1) PublicIpPrefixes() v1alpha1.PublicIpPrefixInterface {
+	return &FakePublicIpPrefixes{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermRecoveryServicesVaults() v1alpha1.AzurermRecoveryServicesVaultInterface {
-	return &FakeAzurermRecoveryServicesVaults{c}
+func (c *FakeAzurermV1alpha1) RecoveryServicesProtectedVms() v1alpha1.RecoveryServicesProtectedVmInterface {
+	return &FakeRecoveryServicesProtectedVms{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermRedisCaches() v1alpha1.AzurermRedisCacheInterface {
-	return &FakeAzurermRedisCaches{c}
+func (c *FakeAzurermV1alpha1) RecoveryServicesProtectionPolicyVms() v1alpha1.RecoveryServicesProtectionPolicyVmInterface {
+	return &FakeRecoveryServicesProtectionPolicyVms{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermRedisFirewallRules() v1alpha1.AzurermRedisFirewallRuleInterface {
-	return &FakeAzurermRedisFirewallRules{c}
+func (c *FakeAzurermV1alpha1) RecoveryServicesVaults() v1alpha1.RecoveryServicesVaultInterface {
+	return &FakeRecoveryServicesVaults{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermRelayNamespaces() v1alpha1.AzurermRelayNamespaceInterface {
-	return &FakeAzurermRelayNamespaces{c}
+func (c *FakeAzurermV1alpha1) RedisCaches() v1alpha1.RedisCacheInterface {
+	return &FakeRedisCaches{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermResourceGroups() v1alpha1.AzurermResourceGroupInterface {
-	return &FakeAzurermResourceGroups{c}
+func (c *FakeAzurermV1alpha1) RedisFirewallRules() v1alpha1.RedisFirewallRuleInterface {
+	return &FakeRedisFirewallRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermRoleAssignments() v1alpha1.AzurermRoleAssignmentInterface {
-	return &FakeAzurermRoleAssignments{c}
+func (c *FakeAzurermV1alpha1) RelayNamespaces() v1alpha1.RelayNamespaceInterface {
+	return &FakeRelayNamespaces{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermRoleDefinitions() v1alpha1.AzurermRoleDefinitionInterface {
-	return &FakeAzurermRoleDefinitions{c}
+func (c *FakeAzurermV1alpha1) ResourceGroups() v1alpha1.ResourceGroupInterface {
+	return &FakeResourceGroups{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermRoutes() v1alpha1.AzurermRouteInterface {
-	return &FakeAzurermRoutes{c}
+func (c *FakeAzurermV1alpha1) RoleAssignments() v1alpha1.RoleAssignmentInterface {
+	return &FakeRoleAssignments{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermRouteTables() v1alpha1.AzurermRouteTableInterface {
-	return &FakeAzurermRouteTables{c}
+func (c *FakeAzurermV1alpha1) RoleDefinitions() v1alpha1.RoleDefinitionInterface {
+	return &FakeRoleDefinitions{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSchedulerJobs() v1alpha1.AzurermSchedulerJobInterface {
-	return &FakeAzurermSchedulerJobs{c}
+func (c *FakeAzurermV1alpha1) Routes() v1alpha1.RouteInterface {
+	return &FakeRoutes{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSchedulerJobCollections() v1alpha1.AzurermSchedulerJobCollectionInterface {
-	return &FakeAzurermSchedulerJobCollections{c}
+func (c *FakeAzurermV1alpha1) RouteTables() v1alpha1.RouteTableInterface {
+	return &FakeRouteTables{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSearchServices() v1alpha1.AzurermSearchServiceInterface {
-	return &FakeAzurermSearchServices{c}
+func (c *FakeAzurermV1alpha1) SchedulerJobs() v1alpha1.SchedulerJobInterface {
+	return &FakeSchedulerJobs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSecurityCenterContacts() v1alpha1.AzurermSecurityCenterContactInterface {
-	return &FakeAzurermSecurityCenterContacts{c}
+func (c *FakeAzurermV1alpha1) SchedulerJobCollections() v1alpha1.SchedulerJobCollectionInterface {
+	return &FakeSchedulerJobCollections{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSecurityCenterSubscriptionPricings() v1alpha1.AzurermSecurityCenterSubscriptionPricingInterface {
-	return &FakeAzurermSecurityCenterSubscriptionPricings{c}
+func (c *FakeAzurermV1alpha1) SearchServices() v1alpha1.SearchServiceInterface {
+	return &FakeSearchServices{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSecurityCenterWorkspaces() v1alpha1.AzurermSecurityCenterWorkspaceInterface {
-	return &FakeAzurermSecurityCenterWorkspaces{c}
+func (c *FakeAzurermV1alpha1) SecurityCenterContacts() v1alpha1.SecurityCenterContactInterface {
+	return &FakeSecurityCenterContacts{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermServiceFabricClusters() v1alpha1.AzurermServiceFabricClusterInterface {
-	return &FakeAzurermServiceFabricClusters{c}
+func (c *FakeAzurermV1alpha1) SecurityCenterSubscriptionPricings() v1alpha1.SecurityCenterSubscriptionPricingInterface {
+	return &FakeSecurityCenterSubscriptionPricings{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermServicebusNamespaces() v1alpha1.AzurermServicebusNamespaceInterface {
-	return &FakeAzurermServicebusNamespaces{c}
+func (c *FakeAzurermV1alpha1) SecurityCenterWorkspaces() v1alpha1.SecurityCenterWorkspaceInterface {
+	return &FakeSecurityCenterWorkspaces{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermServicebusNamespaceAuthorizationRules() v1alpha1.AzurermServicebusNamespaceAuthorizationRuleInterface {
-	return &FakeAzurermServicebusNamespaceAuthorizationRules{c}
+func (c *FakeAzurermV1alpha1) ServiceFabricClusters() v1alpha1.ServiceFabricClusterInterface {
+	return &FakeServiceFabricClusters{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermServicebusQueues() v1alpha1.AzurermServicebusQueueInterface {
-	return &FakeAzurermServicebusQueues{c}
+func (c *FakeAzurermV1alpha1) ServicebusNamespaces() v1alpha1.ServicebusNamespaceInterface {
+	return &FakeServicebusNamespaces{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermServicebusQueueAuthorizationRules() v1alpha1.AzurermServicebusQueueAuthorizationRuleInterface {
-	return &FakeAzurermServicebusQueueAuthorizationRules{c}
+func (c *FakeAzurermV1alpha1) ServicebusNamespaceAuthorizationRules() v1alpha1.ServicebusNamespaceAuthorizationRuleInterface {
+	return &FakeServicebusNamespaceAuthorizationRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermServicebusSubscriptions() v1alpha1.AzurermServicebusSubscriptionInterface {
-	return &FakeAzurermServicebusSubscriptions{c}
+func (c *FakeAzurermV1alpha1) ServicebusQueues() v1alpha1.ServicebusQueueInterface {
+	return &FakeServicebusQueues{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermServicebusSubscriptionRules() v1alpha1.AzurermServicebusSubscriptionRuleInterface {
-	return &FakeAzurermServicebusSubscriptionRules{c}
+func (c *FakeAzurermV1alpha1) ServicebusQueueAuthorizationRules() v1alpha1.ServicebusQueueAuthorizationRuleInterface {
+	return &FakeServicebusQueueAuthorizationRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermServicebusTopics() v1alpha1.AzurermServicebusTopicInterface {
-	return &FakeAzurermServicebusTopics{c}
+func (c *FakeAzurermV1alpha1) ServicebusSubscriptions() v1alpha1.ServicebusSubscriptionInterface {
+	return &FakeServicebusSubscriptions{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermServicebusTopicAuthorizationRules() v1alpha1.AzurermServicebusTopicAuthorizationRuleInterface {
-	return &FakeAzurermServicebusTopicAuthorizationRules{c}
+func (c *FakeAzurermV1alpha1) ServicebusSubscriptionRules() v1alpha1.ServicebusSubscriptionRuleInterface {
+	return &FakeServicebusSubscriptionRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSharedImages() v1alpha1.AzurermSharedImageInterface {
-	return &FakeAzurermSharedImages{c}
+func (c *FakeAzurermV1alpha1) ServicebusTopics() v1alpha1.ServicebusTopicInterface {
+	return &FakeServicebusTopics{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSharedImageGalleries() v1alpha1.AzurermSharedImageGalleryInterface {
-	return &FakeAzurermSharedImageGalleries{c}
+func (c *FakeAzurermV1alpha1) ServicebusTopicAuthorizationRules() v1alpha1.ServicebusTopicAuthorizationRuleInterface {
+	return &FakeServicebusTopicAuthorizationRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSharedImageVersions() v1alpha1.AzurermSharedImageVersionInterface {
-	return &FakeAzurermSharedImageVersions{c}
+func (c *FakeAzurermV1alpha1) SharedImages() v1alpha1.SharedImageInterface {
+	return &FakeSharedImages{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSignalrServices() v1alpha1.AzurermSignalrServiceInterface {
-	return &FakeAzurermSignalrServices{c}
+func (c *FakeAzurermV1alpha1) SharedImageGalleries() v1alpha1.SharedImageGalleryInterface {
+	return &FakeSharedImageGalleries{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSnapshots() v1alpha1.AzurermSnapshotInterface {
-	return &FakeAzurermSnapshots{c}
+func (c *FakeAzurermV1alpha1) SharedImageVersions() v1alpha1.SharedImageVersionInterface {
+	return &FakeSharedImageVersions{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSqlActiveDirectoryAdministrators() v1alpha1.AzurermSqlActiveDirectoryAdministratorInterface {
-	return &FakeAzurermSqlActiveDirectoryAdministrators{c}
+func (c *FakeAzurermV1alpha1) SignalrServices() v1alpha1.SignalrServiceInterface {
+	return &FakeSignalrServices{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSqlDatabases() v1alpha1.AzurermSqlDatabaseInterface {
-	return &FakeAzurermSqlDatabases{c}
+func (c *FakeAzurermV1alpha1) Snapshots() v1alpha1.SnapshotInterface {
+	return &FakeSnapshots{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSqlElasticpools() v1alpha1.AzurermSqlElasticpoolInterface {
-	return &FakeAzurermSqlElasticpools{c}
+func (c *FakeAzurermV1alpha1) SqlActiveDirectoryAdministrators() v1alpha1.SqlActiveDirectoryAdministratorInterface {
+	return &FakeSqlActiveDirectoryAdministrators{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSqlFirewallRules() v1alpha1.AzurermSqlFirewallRuleInterface {
-	return &FakeAzurermSqlFirewallRules{c}
+func (c *FakeAzurermV1alpha1) SqlDatabases() v1alpha1.SqlDatabaseInterface {
+	return &FakeSqlDatabases{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSqlServers() v1alpha1.AzurermSqlServerInterface {
-	return &FakeAzurermSqlServers{c}
+func (c *FakeAzurermV1alpha1) SqlElasticpools() v1alpha1.SqlElasticpoolInterface {
+	return &FakeSqlElasticpools{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSqlVirtualNetworkRules() v1alpha1.AzurermSqlVirtualNetworkRuleInterface {
-	return &FakeAzurermSqlVirtualNetworkRules{c}
+func (c *FakeAzurermV1alpha1) SqlFirewallRules() v1alpha1.SqlFirewallRuleInterface {
+	return &FakeSqlFirewallRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStorageAccounts() v1alpha1.AzurermStorageAccountInterface {
-	return &FakeAzurermStorageAccounts{c}
+func (c *FakeAzurermV1alpha1) SqlServers() v1alpha1.SqlServerInterface {
+	return &FakeSqlServers{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStorageBlobs() v1alpha1.AzurermStorageBlobInterface {
-	return &FakeAzurermStorageBlobs{c}
+func (c *FakeAzurermV1alpha1) SqlVirtualNetworkRules() v1alpha1.SqlVirtualNetworkRuleInterface {
+	return &FakeSqlVirtualNetworkRules{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStorageContainers() v1alpha1.AzurermStorageContainerInterface {
-	return &FakeAzurermStorageContainers{c}
+func (c *FakeAzurermV1alpha1) StorageAccounts() v1alpha1.StorageAccountInterface {
+	return &FakeStorageAccounts{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStorageQueues() v1alpha1.AzurermStorageQueueInterface {
-	return &FakeAzurermStorageQueues{c}
+func (c *FakeAzurermV1alpha1) StorageBlobs() v1alpha1.StorageBlobInterface {
+	return &FakeStorageBlobs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStorageShares() v1alpha1.AzurermStorageShareInterface {
-	return &FakeAzurermStorageShares{c}
+func (c *FakeAzurermV1alpha1) StorageContainers() v1alpha1.StorageContainerInterface {
+	return &FakeStorageContainers{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStorageTables() v1alpha1.AzurermStorageTableInterface {
-	return &FakeAzurermStorageTables{c}
+func (c *FakeAzurermV1alpha1) StorageQueues() v1alpha1.StorageQueueInterface {
+	return &FakeStorageQueues{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStreamAnalyticsFunctionJavascriptUdves() v1alpha1.AzurermStreamAnalyticsFunctionJavascriptUdfInterface {
-	return &FakeAzurermStreamAnalyticsFunctionJavascriptUdves{c}
+func (c *FakeAzurermV1alpha1) StorageShares() v1alpha1.StorageShareInterface {
+	return &FakeStorageShares{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStreamAnalyticsJobs() v1alpha1.AzurermStreamAnalyticsJobInterface {
-	return &FakeAzurermStreamAnalyticsJobs{c}
+func (c *FakeAzurermV1alpha1) StorageShareDirectories() v1alpha1.StorageShareDirectoryInterface {
+	return &FakeStorageShareDirectories{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStreamAnalyticsOutputBlobs() v1alpha1.AzurermStreamAnalyticsOutputBlobInterface {
-	return &FakeAzurermStreamAnalyticsOutputBlobs{c}
+func (c *FakeAzurermV1alpha1) StorageTables() v1alpha1.StorageTableInterface {
+	return &FakeStorageTables{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStreamAnalyticsOutputEventhubs() v1alpha1.AzurermStreamAnalyticsOutputEventhubInterface {
-	return &FakeAzurermStreamAnalyticsOutputEventhubs{c}
+func (c *FakeAzurermV1alpha1) StorageTableEntities() v1alpha1.StorageTableEntityInterface {
+	return &FakeStorageTableEntities{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStreamAnalyticsOutputMssqls() v1alpha1.AzurermStreamAnalyticsOutputMssqlInterface {
-	return &FakeAzurermStreamAnalyticsOutputMssqls{c}
+func (c *FakeAzurermV1alpha1) StreamAnalyticsFunctionJavascriptUdves() v1alpha1.StreamAnalyticsFunctionJavascriptUdfInterface {
+	return &FakeStreamAnalyticsFunctionJavascriptUdves{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStreamAnalyticsOutputServicebusQueues() v1alpha1.AzurermStreamAnalyticsOutputServicebusQueueInterface {
-	return &FakeAzurermStreamAnalyticsOutputServicebusQueues{c}
+func (c *FakeAzurermV1alpha1) StreamAnalyticsJobs() v1alpha1.StreamAnalyticsJobInterface {
+	return &FakeStreamAnalyticsJobs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStreamAnalyticsStreamInputBlobs() v1alpha1.AzurermStreamAnalyticsStreamInputBlobInterface {
-	return &FakeAzurermStreamAnalyticsStreamInputBlobs{c}
+func (c *FakeAzurermV1alpha1) StreamAnalyticsOutputBlobs() v1alpha1.StreamAnalyticsOutputBlobInterface {
+	return &FakeStreamAnalyticsOutputBlobs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStreamAnalyticsStreamInputEventhubs() v1alpha1.AzurermStreamAnalyticsStreamInputEventhubInterface {
-	return &FakeAzurermStreamAnalyticsStreamInputEventhubs{c}
+func (c *FakeAzurermV1alpha1) StreamAnalyticsOutputEventhubs() v1alpha1.StreamAnalyticsOutputEventhubInterface {
+	return &FakeStreamAnalyticsOutputEventhubs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermStreamAnalyticsStreamInputIothubs() v1alpha1.AzurermStreamAnalyticsStreamInputIothubInterface {
-	return &FakeAzurermStreamAnalyticsStreamInputIothubs{c}
+func (c *FakeAzurermV1alpha1) StreamAnalyticsOutputMssqls() v1alpha1.StreamAnalyticsOutputMssqlInterface {
+	return &FakeStreamAnalyticsOutputMssqls{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSubnets() v1alpha1.AzurermSubnetInterface {
-	return &FakeAzurermSubnets{c}
+func (c *FakeAzurermV1alpha1) StreamAnalyticsOutputServicebusQueues() v1alpha1.StreamAnalyticsOutputServicebusQueueInterface {
+	return &FakeStreamAnalyticsOutputServicebusQueues{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSubnetNetworkSecurityGroupAssociations() v1alpha1.AzurermSubnetNetworkSecurityGroupAssociationInterface {
-	return &FakeAzurermSubnetNetworkSecurityGroupAssociations{c}
+func (c *FakeAzurermV1alpha1) StreamAnalyticsStreamInputBlobs() v1alpha1.StreamAnalyticsStreamInputBlobInterface {
+	return &FakeStreamAnalyticsStreamInputBlobs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermSubnetRouteTableAssociations() v1alpha1.AzurermSubnetRouteTableAssociationInterface {
-	return &FakeAzurermSubnetRouteTableAssociations{c}
+func (c *FakeAzurermV1alpha1) StreamAnalyticsStreamInputEventhubs() v1alpha1.StreamAnalyticsStreamInputEventhubInterface {
+	return &FakeStreamAnalyticsStreamInputEventhubs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermTemplateDeployments() v1alpha1.AzurermTemplateDeploymentInterface {
-	return &FakeAzurermTemplateDeployments{c}
+func (c *FakeAzurermV1alpha1) StreamAnalyticsStreamInputIothubs() v1alpha1.StreamAnalyticsStreamInputIothubInterface {
+	return &FakeStreamAnalyticsStreamInputIothubs{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermTrafficManagerEndpoints() v1alpha1.AzurermTrafficManagerEndpointInterface {
-	return &FakeAzurermTrafficManagerEndpoints{c}
+func (c *FakeAzurermV1alpha1) Subnets() v1alpha1.SubnetInterface {
+	return &FakeSubnets{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermTrafficManagerProfiles() v1alpha1.AzurermTrafficManagerProfileInterface {
-	return &FakeAzurermTrafficManagerProfiles{c}
+func (c *FakeAzurermV1alpha1) SubnetNetworkSecurityGroupAssociations() v1alpha1.SubnetNetworkSecurityGroupAssociationInterface {
+	return &FakeSubnetNetworkSecurityGroupAssociations{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermUserAssignedIdentities() v1alpha1.AzurermUserAssignedIdentityInterface {
-	return &FakeAzurermUserAssignedIdentities{c}
+func (c *FakeAzurermV1alpha1) SubnetRouteTableAssociations() v1alpha1.SubnetRouteTableAssociationInterface {
+	return &FakeSubnetRouteTableAssociations{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermVirtualMachines() v1alpha1.AzurermVirtualMachineInterface {
-	return &FakeAzurermVirtualMachines{c}
+func (c *FakeAzurermV1alpha1) TemplateDeployments() v1alpha1.TemplateDeploymentInterface {
+	return &FakeTemplateDeployments{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermVirtualMachineDataDiskAttachments() v1alpha1.AzurermVirtualMachineDataDiskAttachmentInterface {
-	return &FakeAzurermVirtualMachineDataDiskAttachments{c}
+func (c *FakeAzurermV1alpha1) TrafficManagerEndpoints() v1alpha1.TrafficManagerEndpointInterface {
+	return &FakeTrafficManagerEndpoints{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermVirtualMachineExtensions() v1alpha1.AzurermVirtualMachineExtensionInterface {
-	return &FakeAzurermVirtualMachineExtensions{c}
+func (c *FakeAzurermV1alpha1) TrafficManagerProfiles() v1alpha1.TrafficManagerProfileInterface {
+	return &FakeTrafficManagerProfiles{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermVirtualMachineScaleSets() v1alpha1.AzurermVirtualMachineScaleSetInterface {
-	return &FakeAzurermVirtualMachineScaleSets{c}
+func (c *FakeAzurermV1alpha1) UserAssignedIdentities() v1alpha1.UserAssignedIdentityInterface {
+	return &FakeUserAssignedIdentities{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermVirtualNetworks() v1alpha1.AzurermVirtualNetworkInterface {
-	return &FakeAzurermVirtualNetworks{c}
+func (c *FakeAzurermV1alpha1) VirtualMachines() v1alpha1.VirtualMachineInterface {
+	return &FakeVirtualMachines{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermVirtualNetworkGateways() v1alpha1.AzurermVirtualNetworkGatewayInterface {
-	return &FakeAzurermVirtualNetworkGateways{c}
+func (c *FakeAzurermV1alpha1) VirtualMachineDataDiskAttachments() v1alpha1.VirtualMachineDataDiskAttachmentInterface {
+	return &FakeVirtualMachineDataDiskAttachments{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermVirtualNetworkGatewayConnections() v1alpha1.AzurermVirtualNetworkGatewayConnectionInterface {
-	return &FakeAzurermVirtualNetworkGatewayConnections{c}
+func (c *FakeAzurermV1alpha1) VirtualMachineExtensions() v1alpha1.VirtualMachineExtensionInterface {
+	return &FakeVirtualMachineExtensions{c}
 }
 
-func (c *FakeAzurermV1alpha1) AzurermVirtualNetworkPeerings() v1alpha1.AzurermVirtualNetworkPeeringInterface {
-	return &FakeAzurermVirtualNetworkPeerings{c}
+func (c *FakeAzurermV1alpha1) VirtualMachineScaleSets() v1alpha1.VirtualMachineScaleSetInterface {
+	return &FakeVirtualMachineScaleSets{c}
+}
+
+func (c *FakeAzurermV1alpha1) VirtualNetworks() v1alpha1.VirtualNetworkInterface {
+	return &FakeVirtualNetworks{c}
+}
+
+func (c *FakeAzurermV1alpha1) VirtualNetworkGateways() v1alpha1.VirtualNetworkGatewayInterface {
+	return &FakeVirtualNetworkGateways{c}
+}
+
+func (c *FakeAzurermV1alpha1) VirtualNetworkGatewayConnections() v1alpha1.VirtualNetworkGatewayConnectionInterface {
+	return &FakeVirtualNetworkGatewayConnections{c}
+}
+
+func (c *FakeAzurermV1alpha1) VirtualNetworkPeerings() v1alpha1.VirtualNetworkPeeringInterface {
+	return &FakeVirtualNetworkPeerings{c}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

@@ -18,1054 +18,1070 @@ limitations under the License.
 
 package v1alpha1
 
-// AzurermApiManagementListerExpansion allows custom methods to be added to
-// AzurermApiManagementLister.
-type AzurermApiManagementListerExpansion interface{}
-
-// AzurermApiManagementApiListerExpansion allows custom methods to be added to
-// AzurermApiManagementApiLister.
-type AzurermApiManagementApiListerExpansion interface{}
-
-// AzurermApiManagementApiOperationListerExpansion allows custom methods to be added to
-// AzurermApiManagementApiOperationLister.
-type AzurermApiManagementApiOperationListerExpansion interface{}
-
-// AzurermApiManagementApiOperationPolicyListerExpansion allows custom methods to be added to
-// AzurermApiManagementApiOperationPolicyLister.
-type AzurermApiManagementApiOperationPolicyListerExpansion interface{}
-
-// AzurermApiManagementApiPolicyListerExpansion allows custom methods to be added to
-// AzurermApiManagementApiPolicyLister.
-type AzurermApiManagementApiPolicyListerExpansion interface{}
-
-// AzurermApiManagementApiSchemaListerExpansion allows custom methods to be added to
-// AzurermApiManagementApiSchemaLister.
-type AzurermApiManagementApiSchemaListerExpansion interface{}
-
-// AzurermApiManagementApiVersionSetListerExpansion allows custom methods to be added to
-// AzurermApiManagementApiVersionSetLister.
-type AzurermApiManagementApiVersionSetListerExpansion interface{}
-
-// AzurermApiManagementAuthorizationServerListerExpansion allows custom methods to be added to
-// AzurermApiManagementAuthorizationServerLister.
-type AzurermApiManagementAuthorizationServerListerExpansion interface{}
-
-// AzurermApiManagementCertificateListerExpansion allows custom methods to be added to
-// AzurermApiManagementCertificateLister.
-type AzurermApiManagementCertificateListerExpansion interface{}
-
-// AzurermApiManagementGroupListerExpansion allows custom methods to be added to
-// AzurermApiManagementGroupLister.
-type AzurermApiManagementGroupListerExpansion interface{}
-
-// AzurermApiManagementGroupUserListerExpansion allows custom methods to be added to
-// AzurermApiManagementGroupUserLister.
-type AzurermApiManagementGroupUserListerExpansion interface{}
-
-// AzurermApiManagementLoggerListerExpansion allows custom methods to be added to
-// AzurermApiManagementLoggerLister.
-type AzurermApiManagementLoggerListerExpansion interface{}
-
-// AzurermApiManagementOpenidConnectProviderListerExpansion allows custom methods to be added to
-// AzurermApiManagementOpenidConnectProviderLister.
-type AzurermApiManagementOpenidConnectProviderListerExpansion interface{}
-
-// AzurermApiManagementProductListerExpansion allows custom methods to be added to
-// AzurermApiManagementProductLister.
-type AzurermApiManagementProductListerExpansion interface{}
-
-// AzurermApiManagementProductApiListerExpansion allows custom methods to be added to
-// AzurermApiManagementProductApiLister.
-type AzurermApiManagementProductApiListerExpansion interface{}
-
-// AzurermApiManagementProductGroupListerExpansion allows custom methods to be added to
-// AzurermApiManagementProductGroupLister.
-type AzurermApiManagementProductGroupListerExpansion interface{}
-
-// AzurermApiManagementProductPolicyListerExpansion allows custom methods to be added to
-// AzurermApiManagementProductPolicyLister.
-type AzurermApiManagementProductPolicyListerExpansion interface{}
-
-// AzurermApiManagementPropertyListerExpansion allows custom methods to be added to
-// AzurermApiManagementPropertyLister.
-type AzurermApiManagementPropertyListerExpansion interface{}
-
-// AzurermApiManagementSubscriptionListerExpansion allows custom methods to be added to
-// AzurermApiManagementSubscriptionLister.
-type AzurermApiManagementSubscriptionListerExpansion interface{}
-
-// AzurermApiManagementUserListerExpansion allows custom methods to be added to
-// AzurermApiManagementUserLister.
-type AzurermApiManagementUserListerExpansion interface{}
-
-// AzurermAppServiceListerExpansion allows custom methods to be added to
-// AzurermAppServiceLister.
-type AzurermAppServiceListerExpansion interface{}
-
-// AzurermAppServiceActiveSlotListerExpansion allows custom methods to be added to
-// AzurermAppServiceActiveSlotLister.
-type AzurermAppServiceActiveSlotListerExpansion interface{}
-
-// AzurermAppServiceCustomHostnameBindingListerExpansion allows custom methods to be added to
-// AzurermAppServiceCustomHostnameBindingLister.
-type AzurermAppServiceCustomHostnameBindingListerExpansion interface{}
-
-// AzurermAppServicePlanListerExpansion allows custom methods to be added to
-// AzurermAppServicePlanLister.
-type AzurermAppServicePlanListerExpansion interface{}
-
-// AzurermAppServiceSlotListerExpansion allows custom methods to be added to
-// AzurermAppServiceSlotLister.
-type AzurermAppServiceSlotListerExpansion interface{}
-
-// AzurermApplicationGatewayListerExpansion allows custom methods to be added to
-// AzurermApplicationGatewayLister.
-type AzurermApplicationGatewayListerExpansion interface{}
-
-// AzurermApplicationInsightsListerExpansion allows custom methods to be added to
-// AzurermApplicationInsightsLister.
-type AzurermApplicationInsightsListerExpansion interface{}
-
-// AzurermApplicationInsightsApiKeyListerExpansion allows custom methods to be added to
-// AzurermApplicationInsightsApiKeyLister.
-type AzurermApplicationInsightsApiKeyListerExpansion interface{}
-
-// AzurermApplicationInsightsWebTestListerExpansion allows custom methods to be added to
-// AzurermApplicationInsightsWebTestLister.
-type AzurermApplicationInsightsWebTestListerExpansion interface{}
-
-// AzurermApplicationSecurityGroupListerExpansion allows custom methods to be added to
-// AzurermApplicationSecurityGroupLister.
-type AzurermApplicationSecurityGroupListerExpansion interface{}
-
-// AzurermAutomationAccountListerExpansion allows custom methods to be added to
-// AzurermAutomationAccountLister.
-type AzurermAutomationAccountListerExpansion interface{}
-
-// AzurermAutomationCredentialListerExpansion allows custom methods to be added to
-// AzurermAutomationCredentialLister.
-type AzurermAutomationCredentialListerExpansion interface{}
-
-// AzurermAutomationDscConfigurationListerExpansion allows custom methods to be added to
-// AzurermAutomationDscConfigurationLister.
-type AzurermAutomationDscConfigurationListerExpansion interface{}
-
-// AzurermAutomationDscNodeconfigurationListerExpansion allows custom methods to be added to
-// AzurermAutomationDscNodeconfigurationLister.
-type AzurermAutomationDscNodeconfigurationListerExpansion interface{}
-
-// AzurermAutomationModuleListerExpansion allows custom methods to be added to
-// AzurermAutomationModuleLister.
-type AzurermAutomationModuleListerExpansion interface{}
-
-// AzurermAutomationRunbookListerExpansion allows custom methods to be added to
-// AzurermAutomationRunbookLister.
-type AzurermAutomationRunbookListerExpansion interface{}
-
-// AzurermAutomationScheduleListerExpansion allows custom methods to be added to
-// AzurermAutomationScheduleLister.
-type AzurermAutomationScheduleListerExpansion interface{}
-
-// AzurermAutomationVariableBoolListerExpansion allows custom methods to be added to
-// AzurermAutomationVariableBoolLister.
-type AzurermAutomationVariableBoolListerExpansion interface{}
-
-// AzurermAutomationVariableDatetimeListerExpansion allows custom methods to be added to
-// AzurermAutomationVariableDatetimeLister.
-type AzurermAutomationVariableDatetimeListerExpansion interface{}
-
-// AzurermAutomationVariableIntListerExpansion allows custom methods to be added to
-// AzurermAutomationVariableIntLister.
-type AzurermAutomationVariableIntListerExpansion interface{}
-
-// AzurermAutomationVariableStringListerExpansion allows custom methods to be added to
-// AzurermAutomationVariableStringLister.
-type AzurermAutomationVariableStringListerExpansion interface{}
-
-// AzurermAutoscaleSettingListerExpansion allows custom methods to be added to
-// AzurermAutoscaleSettingLister.
-type AzurermAutoscaleSettingListerExpansion interface{}
-
-// AzurermAvailabilitySetListerExpansion allows custom methods to be added to
-// AzurermAvailabilitySetLister.
-type AzurermAvailabilitySetListerExpansion interface{}
-
-// AzurermAzureadApplicationListerExpansion allows custom methods to be added to
-// AzurermAzureadApplicationLister.
-type AzurermAzureadApplicationListerExpansion interface{}
-
-// AzurermAzureadServicePrincipalListerExpansion allows custom methods to be added to
-// AzurermAzureadServicePrincipalLister.
-type AzurermAzureadServicePrincipalListerExpansion interface{}
-
-// AzurermAzureadServicePrincipalPasswordListerExpansion allows custom methods to be added to
-// AzurermAzureadServicePrincipalPasswordLister.
-type AzurermAzureadServicePrincipalPasswordListerExpansion interface{}
-
-// AzurermBatchAccountListerExpansion allows custom methods to be added to
-// AzurermBatchAccountLister.
-type AzurermBatchAccountListerExpansion interface{}
-
-// AzurermBatchCertificateListerExpansion allows custom methods to be added to
-// AzurermBatchCertificateLister.
-type AzurermBatchCertificateListerExpansion interface{}
-
-// AzurermBatchPoolListerExpansion allows custom methods to be added to
-// AzurermBatchPoolLister.
-type AzurermBatchPoolListerExpansion interface{}
-
-// AzurermCdnEndpointListerExpansion allows custom methods to be added to
-// AzurermCdnEndpointLister.
-type AzurermCdnEndpointListerExpansion interface{}
-
-// AzurermCdnProfileListerExpansion allows custom methods to be added to
-// AzurermCdnProfileLister.
-type AzurermCdnProfileListerExpansion interface{}
-
-// AzurermCognitiveAccountListerExpansion allows custom methods to be added to
-// AzurermCognitiveAccountLister.
-type AzurermCognitiveAccountListerExpansion interface{}
-
-// AzurermConnectionMonitorListerExpansion allows custom methods to be added to
-// AzurermConnectionMonitorLister.
-type AzurermConnectionMonitorListerExpansion interface{}
-
-// AzurermContainerGroupListerExpansion allows custom methods to be added to
-// AzurermContainerGroupLister.
-type AzurermContainerGroupListerExpansion interface{}
-
-// AzurermContainerRegistryListerExpansion allows custom methods to be added to
-// AzurermContainerRegistryLister.
-type AzurermContainerRegistryListerExpansion interface{}
-
-// AzurermContainerServiceListerExpansion allows custom methods to be added to
-// AzurermContainerServiceLister.
-type AzurermContainerServiceListerExpansion interface{}
-
-// AzurermCosmosdbAccountListerExpansion allows custom methods to be added to
-// AzurermCosmosdbAccountLister.
-type AzurermCosmosdbAccountListerExpansion interface{}
-
-// AzurermCosmosdbCassandraKeyspaceListerExpansion allows custom methods to be added to
-// AzurermCosmosdbCassandraKeyspaceLister.
-type AzurermCosmosdbCassandraKeyspaceListerExpansion interface{}
-
-// AzurermCosmosdbMongoCollectionListerExpansion allows custom methods to be added to
-// AzurermCosmosdbMongoCollectionLister.
-type AzurermCosmosdbMongoCollectionListerExpansion interface{}
-
-// AzurermCosmosdbMongoDatabaseListerExpansion allows custom methods to be added to
-// AzurermCosmosdbMongoDatabaseLister.
-type AzurermCosmosdbMongoDatabaseListerExpansion interface{}
-
-// AzurermCosmosdbSqlDatabaseListerExpansion allows custom methods to be added to
-// AzurermCosmosdbSqlDatabaseLister.
-type AzurermCosmosdbSqlDatabaseListerExpansion interface{}
-
-// AzurermCosmosdbTableListerExpansion allows custom methods to be added to
-// AzurermCosmosdbTableLister.
-type AzurermCosmosdbTableListerExpansion interface{}
-
-// AzurermDataFactoryListerExpansion allows custom methods to be added to
-// AzurermDataFactoryLister.
-type AzurermDataFactoryListerExpansion interface{}
-
-// AzurermDataFactoryDatasetMysqlListerExpansion allows custom methods to be added to
-// AzurermDataFactoryDatasetMysqlLister.
-type AzurermDataFactoryDatasetMysqlListerExpansion interface{}
-
-// AzurermDataFactoryDatasetPostgresqlListerExpansion allows custom methods to be added to
-// AzurermDataFactoryDatasetPostgresqlLister.
-type AzurermDataFactoryDatasetPostgresqlListerExpansion interface{}
-
-// AzurermDataFactoryDatasetSqlServerTableListerExpansion allows custom methods to be added to
-// AzurermDataFactoryDatasetSqlServerTableLister.
-type AzurermDataFactoryDatasetSqlServerTableListerExpansion interface{}
-
-// AzurermDataFactoryLinkedServiceDataLakeStorageGen2ListerExpansion allows custom methods to be added to
-// AzurermDataFactoryLinkedServiceDataLakeStorageGen2Lister.
-type AzurermDataFactoryLinkedServiceDataLakeStorageGen2ListerExpansion interface{}
-
-// AzurermDataFactoryLinkedServiceMysqlListerExpansion allows custom methods to be added to
-// AzurermDataFactoryLinkedServiceMysqlLister.
-type AzurermDataFactoryLinkedServiceMysqlListerExpansion interface{}
-
-// AzurermDataFactoryLinkedServicePostgresqlListerExpansion allows custom methods to be added to
-// AzurermDataFactoryLinkedServicePostgresqlLister.
-type AzurermDataFactoryLinkedServicePostgresqlListerExpansion interface{}
-
-// AzurermDataFactoryLinkedServiceSqlServerListerExpansion allows custom methods to be added to
-// AzurermDataFactoryLinkedServiceSqlServerLister.
-type AzurermDataFactoryLinkedServiceSqlServerListerExpansion interface{}
-
-// AzurermDataFactoryPipelineListerExpansion allows custom methods to be added to
-// AzurermDataFactoryPipelineLister.
-type AzurermDataFactoryPipelineListerExpansion interface{}
-
-// AzurermDataLakeAnalyticsAccountListerExpansion allows custom methods to be added to
-// AzurermDataLakeAnalyticsAccountLister.
-type AzurermDataLakeAnalyticsAccountListerExpansion interface{}
-
-// AzurermDataLakeAnalyticsFirewallRuleListerExpansion allows custom methods to be added to
-// AzurermDataLakeAnalyticsFirewallRuleLister.
-type AzurermDataLakeAnalyticsFirewallRuleListerExpansion interface{}
-
-// AzurermDataLakeStoreListerExpansion allows custom methods to be added to
-// AzurermDataLakeStoreLister.
-type AzurermDataLakeStoreListerExpansion interface{}
-
-// AzurermDataLakeStoreFileListerExpansion allows custom methods to be added to
-// AzurermDataLakeStoreFileLister.
-type AzurermDataLakeStoreFileListerExpansion interface{}
-
-// AzurermDataLakeStoreFirewallRuleListerExpansion allows custom methods to be added to
-// AzurermDataLakeStoreFirewallRuleLister.
-type AzurermDataLakeStoreFirewallRuleListerExpansion interface{}
-
-// AzurermDatabricksWorkspaceListerExpansion allows custom methods to be added to
-// AzurermDatabricksWorkspaceLister.
-type AzurermDatabricksWorkspaceListerExpansion interface{}
-
-// AzurermDdosProtectionPlanListerExpansion allows custom methods to be added to
-// AzurermDdosProtectionPlanLister.
-type AzurermDdosProtectionPlanListerExpansion interface{}
-
-// AzurermDevTestLabListerExpansion allows custom methods to be added to
-// AzurermDevTestLabLister.
-type AzurermDevTestLabListerExpansion interface{}
-
-// AzurermDevTestLinuxVirtualMachineListerExpansion allows custom methods to be added to
-// AzurermDevTestLinuxVirtualMachineLister.
-type AzurermDevTestLinuxVirtualMachineListerExpansion interface{}
-
-// AzurermDevTestPolicyListerExpansion allows custom methods to be added to
-// AzurermDevTestPolicyLister.
-type AzurermDevTestPolicyListerExpansion interface{}
-
-// AzurermDevTestVirtualNetworkListerExpansion allows custom methods to be added to
-// AzurermDevTestVirtualNetworkLister.
-type AzurermDevTestVirtualNetworkListerExpansion interface{}
-
-// AzurermDevTestWindowsVirtualMachineListerExpansion allows custom methods to be added to
-// AzurermDevTestWindowsVirtualMachineLister.
-type AzurermDevTestWindowsVirtualMachineListerExpansion interface{}
-
-// AzurermDevspaceControllerListerExpansion allows custom methods to be added to
-// AzurermDevspaceControllerLister.
-type AzurermDevspaceControllerListerExpansion interface{}
-
-// AzurermDnsARecordListerExpansion allows custom methods to be added to
-// AzurermDnsARecordLister.
-type AzurermDnsARecordListerExpansion interface{}
-
-// AzurermDnsAaaaRecordListerExpansion allows custom methods to be added to
-// AzurermDnsAaaaRecordLister.
-type AzurermDnsAaaaRecordListerExpansion interface{}
-
-// AzurermDnsCaaRecordListerExpansion allows custom methods to be added to
-// AzurermDnsCaaRecordLister.
-type AzurermDnsCaaRecordListerExpansion interface{}
-
-// AzurermDnsCnameRecordListerExpansion allows custom methods to be added to
-// AzurermDnsCnameRecordLister.
-type AzurermDnsCnameRecordListerExpansion interface{}
-
-// AzurermDnsMxRecordListerExpansion allows custom methods to be added to
-// AzurermDnsMxRecordLister.
-type AzurermDnsMxRecordListerExpansion interface{}
-
-// AzurermDnsNsRecordListerExpansion allows custom methods to be added to
-// AzurermDnsNsRecordLister.
-type AzurermDnsNsRecordListerExpansion interface{}
-
-// AzurermDnsPtrRecordListerExpansion allows custom methods to be added to
-// AzurermDnsPtrRecordLister.
-type AzurermDnsPtrRecordListerExpansion interface{}
-
-// AzurermDnsSrvRecordListerExpansion allows custom methods to be added to
-// AzurermDnsSrvRecordLister.
-type AzurermDnsSrvRecordListerExpansion interface{}
-
-// AzurermDnsTxtRecordListerExpansion allows custom methods to be added to
-// AzurermDnsTxtRecordLister.
-type AzurermDnsTxtRecordListerExpansion interface{}
-
-// AzurermDnsZoneListerExpansion allows custom methods to be added to
-// AzurermDnsZoneLister.
-type AzurermDnsZoneListerExpansion interface{}
-
-// AzurermEventgridDomainListerExpansion allows custom methods to be added to
-// AzurermEventgridDomainLister.
-type AzurermEventgridDomainListerExpansion interface{}
-
-// AzurermEventgridEventSubscriptionListerExpansion allows custom methods to be added to
-// AzurermEventgridEventSubscriptionLister.
-type AzurermEventgridEventSubscriptionListerExpansion interface{}
-
-// AzurermEventgridTopicListerExpansion allows custom methods to be added to
-// AzurermEventgridTopicLister.
-type AzurermEventgridTopicListerExpansion interface{}
-
-// AzurermEventhubListerExpansion allows custom methods to be added to
-// AzurermEventhubLister.
-type AzurermEventhubListerExpansion interface{}
-
-// AzurermEventhubAuthorizationRuleListerExpansion allows custom methods to be added to
-// AzurermEventhubAuthorizationRuleLister.
-type AzurermEventhubAuthorizationRuleListerExpansion interface{}
-
-// AzurermEventhubConsumerGroupListerExpansion allows custom methods to be added to
-// AzurermEventhubConsumerGroupLister.
-type AzurermEventhubConsumerGroupListerExpansion interface{}
-
-// AzurermEventhubNamespaceListerExpansion allows custom methods to be added to
-// AzurermEventhubNamespaceLister.
-type AzurermEventhubNamespaceListerExpansion interface{}
-
-// AzurermEventhubNamespaceAuthorizationRuleListerExpansion allows custom methods to be added to
-// AzurermEventhubNamespaceAuthorizationRuleLister.
-type AzurermEventhubNamespaceAuthorizationRuleListerExpansion interface{}
-
-// AzurermExpressRouteCircuitListerExpansion allows custom methods to be added to
-// AzurermExpressRouteCircuitLister.
-type AzurermExpressRouteCircuitListerExpansion interface{}
-
-// AzurermExpressRouteCircuitAuthorizationListerExpansion allows custom methods to be added to
-// AzurermExpressRouteCircuitAuthorizationLister.
-type AzurermExpressRouteCircuitAuthorizationListerExpansion interface{}
-
-// AzurermExpressRouteCircuitPeeringListerExpansion allows custom methods to be added to
-// AzurermExpressRouteCircuitPeeringLister.
-type AzurermExpressRouteCircuitPeeringListerExpansion interface{}
-
-// AzurermFirewallListerExpansion allows custom methods to be added to
-// AzurermFirewallLister.
-type AzurermFirewallListerExpansion interface{}
-
-// AzurermFirewallApplicationRuleCollectionListerExpansion allows custom methods to be added to
-// AzurermFirewallApplicationRuleCollectionLister.
-type AzurermFirewallApplicationRuleCollectionListerExpansion interface{}
-
-// AzurermFirewallNatRuleCollectionListerExpansion allows custom methods to be added to
-// AzurermFirewallNatRuleCollectionLister.
-type AzurermFirewallNatRuleCollectionListerExpansion interface{}
-
-// AzurermFirewallNetworkRuleCollectionListerExpansion allows custom methods to be added to
-// AzurermFirewallNetworkRuleCollectionLister.
-type AzurermFirewallNetworkRuleCollectionListerExpansion interface{}
-
-// AzurermFunctionAppListerExpansion allows custom methods to be added to
-// AzurermFunctionAppLister.
-type AzurermFunctionAppListerExpansion interface{}
-
-// AzurermHdinsightHadoopClusterListerExpansion allows custom methods to be added to
-// AzurermHdinsightHadoopClusterLister.
-type AzurermHdinsightHadoopClusterListerExpansion interface{}
-
-// AzurermHdinsightHbaseClusterListerExpansion allows custom methods to be added to
-// AzurermHdinsightHbaseClusterLister.
-type AzurermHdinsightHbaseClusterListerExpansion interface{}
-
-// AzurermHdinsightInteractiveQueryClusterListerExpansion allows custom methods to be added to
-// AzurermHdinsightInteractiveQueryClusterLister.
-type AzurermHdinsightInteractiveQueryClusterListerExpansion interface{}
-
-// AzurermHdinsightKafkaClusterListerExpansion allows custom methods to be added to
-// AzurermHdinsightKafkaClusterLister.
-type AzurermHdinsightKafkaClusterListerExpansion interface{}
-
-// AzurermHdinsightMlServicesClusterListerExpansion allows custom methods to be added to
-// AzurermHdinsightMlServicesClusterLister.
-type AzurermHdinsightMlServicesClusterListerExpansion interface{}
-
-// AzurermHdinsightRserverClusterListerExpansion allows custom methods to be added to
-// AzurermHdinsightRserverClusterLister.
-type AzurermHdinsightRserverClusterListerExpansion interface{}
-
-// AzurermHdinsightSparkClusterListerExpansion allows custom methods to be added to
-// AzurermHdinsightSparkClusterLister.
-type AzurermHdinsightSparkClusterListerExpansion interface{}
-
-// AzurermHdinsightStormClusterListerExpansion allows custom methods to be added to
-// AzurermHdinsightStormClusterLister.
-type AzurermHdinsightStormClusterListerExpansion interface{}
-
-// AzurermImageListerExpansion allows custom methods to be added to
-// AzurermImageLister.
-type AzurermImageListerExpansion interface{}
-
-// AzurermIotDpsListerExpansion allows custom methods to be added to
-// AzurermIotDpsLister.
-type AzurermIotDpsListerExpansion interface{}
-
-// AzurermIotDpsCertificateListerExpansion allows custom methods to be added to
-// AzurermIotDpsCertificateLister.
-type AzurermIotDpsCertificateListerExpansion interface{}
-
-// AzurermIothubListerExpansion allows custom methods to be added to
-// AzurermIothubLister.
-type AzurermIothubListerExpansion interface{}
-
-// AzurermIothubConsumerGroupListerExpansion allows custom methods to be added to
-// AzurermIothubConsumerGroupLister.
-type AzurermIothubConsumerGroupListerExpansion interface{}
-
-// AzurermIothubSharedAccessPolicyListerExpansion allows custom methods to be added to
-// AzurermIothubSharedAccessPolicyLister.
-type AzurermIothubSharedAccessPolicyListerExpansion interface{}
-
-// AzurermKeyVaultListerExpansion allows custom methods to be added to
-// AzurermKeyVaultLister.
-type AzurermKeyVaultListerExpansion interface{}
-
-// AzurermKeyVaultAccessPolicyListerExpansion allows custom methods to be added to
-// AzurermKeyVaultAccessPolicyLister.
-type AzurermKeyVaultAccessPolicyListerExpansion interface{}
-
-// AzurermKeyVaultCertificateListerExpansion allows custom methods to be added to
-// AzurermKeyVaultCertificateLister.
-type AzurermKeyVaultCertificateListerExpansion interface{}
-
-// AzurermKeyVaultKeyListerExpansion allows custom methods to be added to
-// AzurermKeyVaultKeyLister.
-type AzurermKeyVaultKeyListerExpansion interface{}
-
-// AzurermKeyVaultSecretListerExpansion allows custom methods to be added to
-// AzurermKeyVaultSecretLister.
-type AzurermKeyVaultSecretListerExpansion interface{}
-
-// AzurermKubernetesClusterListerExpansion allows custom methods to be added to
-// AzurermKubernetesClusterLister.
-type AzurermKubernetesClusterListerExpansion interface{}
-
-// AzurermLbListerExpansion allows custom methods to be added to
-// AzurermLbLister.
-type AzurermLbListerExpansion interface{}
-
-// AzurermLbBackendAddressPoolListerExpansion allows custom methods to be added to
-// AzurermLbBackendAddressPoolLister.
-type AzurermLbBackendAddressPoolListerExpansion interface{}
-
-// AzurermLbNatPoolListerExpansion allows custom methods to be added to
-// AzurermLbNatPoolLister.
-type AzurermLbNatPoolListerExpansion interface{}
-
-// AzurermLbNatRuleListerExpansion allows custom methods to be added to
-// AzurermLbNatRuleLister.
-type AzurermLbNatRuleListerExpansion interface{}
-
-// AzurermLbOutboundRuleListerExpansion allows custom methods to be added to
-// AzurermLbOutboundRuleLister.
-type AzurermLbOutboundRuleListerExpansion interface{}
-
-// AzurermLbProbeListerExpansion allows custom methods to be added to
-// AzurermLbProbeLister.
-type AzurermLbProbeListerExpansion interface{}
-
-// AzurermLbRuleListerExpansion allows custom methods to be added to
-// AzurermLbRuleLister.
-type AzurermLbRuleListerExpansion interface{}
-
-// AzurermLocalNetworkGatewayListerExpansion allows custom methods to be added to
-// AzurermLocalNetworkGatewayLister.
-type AzurermLocalNetworkGatewayListerExpansion interface{}
-
-// AzurermLogAnalyticsLinkedServiceListerExpansion allows custom methods to be added to
-// AzurermLogAnalyticsLinkedServiceLister.
-type AzurermLogAnalyticsLinkedServiceListerExpansion interface{}
-
-// AzurermLogAnalyticsSolutionListerExpansion allows custom methods to be added to
-// AzurermLogAnalyticsSolutionLister.
-type AzurermLogAnalyticsSolutionListerExpansion interface{}
-
-// AzurermLogAnalyticsWorkspaceListerExpansion allows custom methods to be added to
-// AzurermLogAnalyticsWorkspaceLister.
-type AzurermLogAnalyticsWorkspaceListerExpansion interface{}
-
-// AzurermLogAnalyticsWorkspaceLinkedServiceListerExpansion allows custom methods to be added to
-// AzurermLogAnalyticsWorkspaceLinkedServiceLister.
-type AzurermLogAnalyticsWorkspaceLinkedServiceListerExpansion interface{}
-
-// AzurermLogicAppActionCustomListerExpansion allows custom methods to be added to
-// AzurermLogicAppActionCustomLister.
-type AzurermLogicAppActionCustomListerExpansion interface{}
-
-// AzurermLogicAppActionHttpListerExpansion allows custom methods to be added to
-// AzurermLogicAppActionHttpLister.
-type AzurermLogicAppActionHttpListerExpansion interface{}
-
-// AzurermLogicAppTriggerCustomListerExpansion allows custom methods to be added to
-// AzurermLogicAppTriggerCustomLister.
-type AzurermLogicAppTriggerCustomListerExpansion interface{}
-
-// AzurermLogicAppTriggerHttpRequestListerExpansion allows custom methods to be added to
-// AzurermLogicAppTriggerHttpRequestLister.
-type AzurermLogicAppTriggerHttpRequestListerExpansion interface{}
-
-// AzurermLogicAppTriggerRecurrenceListerExpansion allows custom methods to be added to
-// AzurermLogicAppTriggerRecurrenceLister.
-type AzurermLogicAppTriggerRecurrenceListerExpansion interface{}
-
-// AzurermLogicAppWorkflowListerExpansion allows custom methods to be added to
-// AzurermLogicAppWorkflowLister.
-type AzurermLogicAppWorkflowListerExpansion interface{}
-
-// AzurermManagedDiskListerExpansion allows custom methods to be added to
-// AzurermManagedDiskLister.
-type AzurermManagedDiskListerExpansion interface{}
-
-// AzurermManagementGroupListerExpansion allows custom methods to be added to
-// AzurermManagementGroupLister.
-type AzurermManagementGroupListerExpansion interface{}
-
-// AzurermManagementLockListerExpansion allows custom methods to be added to
-// AzurermManagementLockLister.
-type AzurermManagementLockListerExpansion interface{}
-
-// AzurermMariadbDatabaseListerExpansion allows custom methods to be added to
-// AzurermMariadbDatabaseLister.
-type AzurermMariadbDatabaseListerExpansion interface{}
-
-// AzurermMariadbFirewallRuleListerExpansion allows custom methods to be added to
-// AzurermMariadbFirewallRuleLister.
-type AzurermMariadbFirewallRuleListerExpansion interface{}
-
-// AzurermMariadbServerListerExpansion allows custom methods to be added to
-// AzurermMariadbServerLister.
-type AzurermMariadbServerListerExpansion interface{}
-
-// AzurermMediaServicesAccountListerExpansion allows custom methods to be added to
-// AzurermMediaServicesAccountLister.
-type AzurermMediaServicesAccountListerExpansion interface{}
-
-// AzurermMetricAlertruleListerExpansion allows custom methods to be added to
-// AzurermMetricAlertruleLister.
-type AzurermMetricAlertruleListerExpansion interface{}
-
-// AzurermMonitorActionGroupListerExpansion allows custom methods to be added to
-// AzurermMonitorActionGroupLister.
-type AzurermMonitorActionGroupListerExpansion interface{}
-
-// AzurermMonitorActivityLogAlertListerExpansion allows custom methods to be added to
-// AzurermMonitorActivityLogAlertLister.
-type AzurermMonitorActivityLogAlertListerExpansion interface{}
-
-// AzurermMonitorAutoscaleSettingListerExpansion allows custom methods to be added to
-// AzurermMonitorAutoscaleSettingLister.
-type AzurermMonitorAutoscaleSettingListerExpansion interface{}
-
-// AzurermMonitorDiagnosticSettingListerExpansion allows custom methods to be added to
-// AzurermMonitorDiagnosticSettingLister.
-type AzurermMonitorDiagnosticSettingListerExpansion interface{}
-
-// AzurermMonitorLogProfileListerExpansion allows custom methods to be added to
-// AzurermMonitorLogProfileLister.
-type AzurermMonitorLogProfileListerExpansion interface{}
-
-// AzurermMonitorMetricAlertListerExpansion allows custom methods to be added to
-// AzurermMonitorMetricAlertLister.
-type AzurermMonitorMetricAlertListerExpansion interface{}
-
-// AzurermMonitorMetricAlertruleListerExpansion allows custom methods to be added to
-// AzurermMonitorMetricAlertruleLister.
-type AzurermMonitorMetricAlertruleListerExpansion interface{}
-
-// AzurermMssqlElasticpoolListerExpansion allows custom methods to be added to
-// AzurermMssqlElasticpoolLister.
-type AzurermMssqlElasticpoolListerExpansion interface{}
-
-// AzurermMysqlConfigurationListerExpansion allows custom methods to be added to
-// AzurermMysqlConfigurationLister.
-type AzurermMysqlConfigurationListerExpansion interface{}
-
-// AzurermMysqlDatabaseListerExpansion allows custom methods to be added to
-// AzurermMysqlDatabaseLister.
-type AzurermMysqlDatabaseListerExpansion interface{}
-
-// AzurermMysqlFirewallRuleListerExpansion allows custom methods to be added to
-// AzurermMysqlFirewallRuleLister.
-type AzurermMysqlFirewallRuleListerExpansion interface{}
-
-// AzurermMysqlServerListerExpansion allows custom methods to be added to
-// AzurermMysqlServerLister.
-type AzurermMysqlServerListerExpansion interface{}
-
-// AzurermMysqlVirtualNetworkRuleListerExpansion allows custom methods to be added to
-// AzurermMysqlVirtualNetworkRuleLister.
-type AzurermMysqlVirtualNetworkRuleListerExpansion interface{}
-
-// AzurermNetworkConnectionMonitorListerExpansion allows custom methods to be added to
-// AzurermNetworkConnectionMonitorLister.
-type AzurermNetworkConnectionMonitorListerExpansion interface{}
-
-// AzurermNetworkDdosProtectionPlanListerExpansion allows custom methods to be added to
-// AzurermNetworkDdosProtectionPlanLister.
-type AzurermNetworkDdosProtectionPlanListerExpansion interface{}
-
-// AzurermNetworkInterfaceListerExpansion allows custom methods to be added to
-// AzurermNetworkInterfaceLister.
-type AzurermNetworkInterfaceListerExpansion interface{}
-
-// AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationListerExpansion allows custom methods to be added to
-// AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationLister.
-type AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationListerExpansion interface{}
-
-// AzurermNetworkInterfaceApplicationSecurityGroupAssociationListerExpansion allows custom methods to be added to
-// AzurermNetworkInterfaceApplicationSecurityGroupAssociationLister.
-type AzurermNetworkInterfaceApplicationSecurityGroupAssociationListerExpansion interface{}
-
-// AzurermNetworkInterfaceBackendAddressPoolAssociationListerExpansion allows custom methods to be added to
-// AzurermNetworkInterfaceBackendAddressPoolAssociationLister.
-type AzurermNetworkInterfaceBackendAddressPoolAssociationListerExpansion interface{}
-
-// AzurermNetworkInterfaceNatRuleAssociationListerExpansion allows custom methods to be added to
-// AzurermNetworkInterfaceNatRuleAssociationLister.
-type AzurermNetworkInterfaceNatRuleAssociationListerExpansion interface{}
-
-// AzurermNetworkPacketCaptureListerExpansion allows custom methods to be added to
-// AzurermNetworkPacketCaptureLister.
-type AzurermNetworkPacketCaptureListerExpansion interface{}
-
-// AzurermNetworkProfileListerExpansion allows custom methods to be added to
-// AzurermNetworkProfileLister.
-type AzurermNetworkProfileListerExpansion interface{}
-
-// AzurermNetworkSecurityGroupListerExpansion allows custom methods to be added to
-// AzurermNetworkSecurityGroupLister.
-type AzurermNetworkSecurityGroupListerExpansion interface{}
-
-// AzurermNetworkSecurityRuleListerExpansion allows custom methods to be added to
-// AzurermNetworkSecurityRuleLister.
-type AzurermNetworkSecurityRuleListerExpansion interface{}
-
-// AzurermNetworkWatcherListerExpansion allows custom methods to be added to
-// AzurermNetworkWatcherLister.
-type AzurermNetworkWatcherListerExpansion interface{}
-
-// AzurermNotificationHubListerExpansion allows custom methods to be added to
-// AzurermNotificationHubLister.
-type AzurermNotificationHubListerExpansion interface{}
-
-// AzurermNotificationHubAuthorizationRuleListerExpansion allows custom methods to be added to
-// AzurermNotificationHubAuthorizationRuleLister.
-type AzurermNotificationHubAuthorizationRuleListerExpansion interface{}
-
-// AzurermNotificationHubNamespaceListerExpansion allows custom methods to be added to
-// AzurermNotificationHubNamespaceLister.
-type AzurermNotificationHubNamespaceListerExpansion interface{}
-
-// AzurermPacketCaptureListerExpansion allows custom methods to be added to
-// AzurermPacketCaptureLister.
-type AzurermPacketCaptureListerExpansion interface{}
-
-// AzurermPolicyAssignmentListerExpansion allows custom methods to be added to
-// AzurermPolicyAssignmentLister.
-type AzurermPolicyAssignmentListerExpansion interface{}
-
-// AzurermPolicyDefinitionListerExpansion allows custom methods to be added to
-// AzurermPolicyDefinitionLister.
-type AzurermPolicyDefinitionListerExpansion interface{}
-
-// AzurermPolicySetDefinitionListerExpansion allows custom methods to be added to
-// AzurermPolicySetDefinitionLister.
-type AzurermPolicySetDefinitionListerExpansion interface{}
-
-// AzurermPostgresqlConfigurationListerExpansion allows custom methods to be added to
-// AzurermPostgresqlConfigurationLister.
-type AzurermPostgresqlConfigurationListerExpansion interface{}
-
-// AzurermPostgresqlDatabaseListerExpansion allows custom methods to be added to
-// AzurermPostgresqlDatabaseLister.
-type AzurermPostgresqlDatabaseListerExpansion interface{}
-
-// AzurermPostgresqlFirewallRuleListerExpansion allows custom methods to be added to
-// AzurermPostgresqlFirewallRuleLister.
-type AzurermPostgresqlFirewallRuleListerExpansion interface{}
-
-// AzurermPostgresqlServerListerExpansion allows custom methods to be added to
-// AzurermPostgresqlServerLister.
-type AzurermPostgresqlServerListerExpansion interface{}
-
-// AzurermPostgresqlVirtualNetworkRuleListerExpansion allows custom methods to be added to
-// AzurermPostgresqlVirtualNetworkRuleLister.
-type AzurermPostgresqlVirtualNetworkRuleListerExpansion interface{}
-
-// AzurermPrivateDnsZoneListerExpansion allows custom methods to be added to
-// AzurermPrivateDnsZoneLister.
-type AzurermPrivateDnsZoneListerExpansion interface{}
-
-// AzurermPublicIpListerExpansion allows custom methods to be added to
-// AzurermPublicIpLister.
-type AzurermPublicIpListerExpansion interface{}
-
-// AzurermPublicIpPrefixListerExpansion allows custom methods to be added to
-// AzurermPublicIpPrefixLister.
-type AzurermPublicIpPrefixListerExpansion interface{}
-
-// AzurermRecoveryServicesProtectedVmListerExpansion allows custom methods to be added to
-// AzurermRecoveryServicesProtectedVmLister.
-type AzurermRecoveryServicesProtectedVmListerExpansion interface{}
-
-// AzurermRecoveryServicesProtectionPolicyVmListerExpansion allows custom methods to be added to
-// AzurermRecoveryServicesProtectionPolicyVmLister.
-type AzurermRecoveryServicesProtectionPolicyVmListerExpansion interface{}
-
-// AzurermRecoveryServicesVaultListerExpansion allows custom methods to be added to
-// AzurermRecoveryServicesVaultLister.
-type AzurermRecoveryServicesVaultListerExpansion interface{}
-
-// AzurermRedisCacheListerExpansion allows custom methods to be added to
-// AzurermRedisCacheLister.
-type AzurermRedisCacheListerExpansion interface{}
-
-// AzurermRedisFirewallRuleListerExpansion allows custom methods to be added to
-// AzurermRedisFirewallRuleLister.
-type AzurermRedisFirewallRuleListerExpansion interface{}
-
-// AzurermRelayNamespaceListerExpansion allows custom methods to be added to
-// AzurermRelayNamespaceLister.
-type AzurermRelayNamespaceListerExpansion interface{}
-
-// AzurermResourceGroupListerExpansion allows custom methods to be added to
-// AzurermResourceGroupLister.
-type AzurermResourceGroupListerExpansion interface{}
-
-// AzurermRoleAssignmentListerExpansion allows custom methods to be added to
-// AzurermRoleAssignmentLister.
-type AzurermRoleAssignmentListerExpansion interface{}
-
-// AzurermRoleDefinitionListerExpansion allows custom methods to be added to
-// AzurermRoleDefinitionLister.
-type AzurermRoleDefinitionListerExpansion interface{}
-
-// AzurermRouteListerExpansion allows custom methods to be added to
-// AzurermRouteLister.
-type AzurermRouteListerExpansion interface{}
-
-// AzurermRouteTableListerExpansion allows custom methods to be added to
-// AzurermRouteTableLister.
-type AzurermRouteTableListerExpansion interface{}
-
-// AzurermSchedulerJobListerExpansion allows custom methods to be added to
-// AzurermSchedulerJobLister.
-type AzurermSchedulerJobListerExpansion interface{}
-
-// AzurermSchedulerJobCollectionListerExpansion allows custom methods to be added to
-// AzurermSchedulerJobCollectionLister.
-type AzurermSchedulerJobCollectionListerExpansion interface{}
-
-// AzurermSearchServiceListerExpansion allows custom methods to be added to
-// AzurermSearchServiceLister.
-type AzurermSearchServiceListerExpansion interface{}
-
-// AzurermSecurityCenterContactListerExpansion allows custom methods to be added to
-// AzurermSecurityCenterContactLister.
-type AzurermSecurityCenterContactListerExpansion interface{}
-
-// AzurermSecurityCenterSubscriptionPricingListerExpansion allows custom methods to be added to
-// AzurermSecurityCenterSubscriptionPricingLister.
-type AzurermSecurityCenterSubscriptionPricingListerExpansion interface{}
-
-// AzurermSecurityCenterWorkspaceListerExpansion allows custom methods to be added to
-// AzurermSecurityCenterWorkspaceLister.
-type AzurermSecurityCenterWorkspaceListerExpansion interface{}
-
-// AzurermServiceFabricClusterListerExpansion allows custom methods to be added to
-// AzurermServiceFabricClusterLister.
-type AzurermServiceFabricClusterListerExpansion interface{}
-
-// AzurermServicebusNamespaceListerExpansion allows custom methods to be added to
-// AzurermServicebusNamespaceLister.
-type AzurermServicebusNamespaceListerExpansion interface{}
-
-// AzurermServicebusNamespaceAuthorizationRuleListerExpansion allows custom methods to be added to
-// AzurermServicebusNamespaceAuthorizationRuleLister.
-type AzurermServicebusNamespaceAuthorizationRuleListerExpansion interface{}
-
-// AzurermServicebusQueueListerExpansion allows custom methods to be added to
-// AzurermServicebusQueueLister.
-type AzurermServicebusQueueListerExpansion interface{}
-
-// AzurermServicebusQueueAuthorizationRuleListerExpansion allows custom methods to be added to
-// AzurermServicebusQueueAuthorizationRuleLister.
-type AzurermServicebusQueueAuthorizationRuleListerExpansion interface{}
-
-// AzurermServicebusSubscriptionListerExpansion allows custom methods to be added to
-// AzurermServicebusSubscriptionLister.
-type AzurermServicebusSubscriptionListerExpansion interface{}
-
-// AzurermServicebusSubscriptionRuleListerExpansion allows custom methods to be added to
-// AzurermServicebusSubscriptionRuleLister.
-type AzurermServicebusSubscriptionRuleListerExpansion interface{}
-
-// AzurermServicebusTopicListerExpansion allows custom methods to be added to
-// AzurermServicebusTopicLister.
-type AzurermServicebusTopicListerExpansion interface{}
-
-// AzurermServicebusTopicAuthorizationRuleListerExpansion allows custom methods to be added to
-// AzurermServicebusTopicAuthorizationRuleLister.
-type AzurermServicebusTopicAuthorizationRuleListerExpansion interface{}
-
-// AzurermSharedImageListerExpansion allows custom methods to be added to
-// AzurermSharedImageLister.
-type AzurermSharedImageListerExpansion interface{}
-
-// AzurermSharedImageGalleryListerExpansion allows custom methods to be added to
-// AzurermSharedImageGalleryLister.
-type AzurermSharedImageGalleryListerExpansion interface{}
-
-// AzurermSharedImageVersionListerExpansion allows custom methods to be added to
-// AzurermSharedImageVersionLister.
-type AzurermSharedImageVersionListerExpansion interface{}
-
-// AzurermSignalrServiceListerExpansion allows custom methods to be added to
-// AzurermSignalrServiceLister.
-type AzurermSignalrServiceListerExpansion interface{}
-
-// AzurermSnapshotListerExpansion allows custom methods to be added to
-// AzurermSnapshotLister.
-type AzurermSnapshotListerExpansion interface{}
-
-// AzurermSqlActiveDirectoryAdministratorListerExpansion allows custom methods to be added to
-// AzurermSqlActiveDirectoryAdministratorLister.
-type AzurermSqlActiveDirectoryAdministratorListerExpansion interface{}
-
-// AzurermSqlDatabaseListerExpansion allows custom methods to be added to
-// AzurermSqlDatabaseLister.
-type AzurermSqlDatabaseListerExpansion interface{}
-
-// AzurermSqlElasticpoolListerExpansion allows custom methods to be added to
-// AzurermSqlElasticpoolLister.
-type AzurermSqlElasticpoolListerExpansion interface{}
-
-// AzurermSqlFirewallRuleListerExpansion allows custom methods to be added to
-// AzurermSqlFirewallRuleLister.
-type AzurermSqlFirewallRuleListerExpansion interface{}
-
-// AzurermSqlServerListerExpansion allows custom methods to be added to
-// AzurermSqlServerLister.
-type AzurermSqlServerListerExpansion interface{}
-
-// AzurermSqlVirtualNetworkRuleListerExpansion allows custom methods to be added to
-// AzurermSqlVirtualNetworkRuleLister.
-type AzurermSqlVirtualNetworkRuleListerExpansion interface{}
-
-// AzurermStorageAccountListerExpansion allows custom methods to be added to
-// AzurermStorageAccountLister.
-type AzurermStorageAccountListerExpansion interface{}
-
-// AzurermStorageBlobListerExpansion allows custom methods to be added to
-// AzurermStorageBlobLister.
-type AzurermStorageBlobListerExpansion interface{}
-
-// AzurermStorageContainerListerExpansion allows custom methods to be added to
-// AzurermStorageContainerLister.
-type AzurermStorageContainerListerExpansion interface{}
-
-// AzurermStorageQueueListerExpansion allows custom methods to be added to
-// AzurermStorageQueueLister.
-type AzurermStorageQueueListerExpansion interface{}
-
-// AzurermStorageShareListerExpansion allows custom methods to be added to
-// AzurermStorageShareLister.
-type AzurermStorageShareListerExpansion interface{}
-
-// AzurermStorageTableListerExpansion allows custom methods to be added to
-// AzurermStorageTableLister.
-type AzurermStorageTableListerExpansion interface{}
-
-// AzurermStreamAnalyticsFunctionJavascriptUdfListerExpansion allows custom methods to be added to
-// AzurermStreamAnalyticsFunctionJavascriptUdfLister.
-type AzurermStreamAnalyticsFunctionJavascriptUdfListerExpansion interface{}
-
-// AzurermStreamAnalyticsJobListerExpansion allows custom methods to be added to
-// AzurermStreamAnalyticsJobLister.
-type AzurermStreamAnalyticsJobListerExpansion interface{}
-
-// AzurermStreamAnalyticsOutputBlobListerExpansion allows custom methods to be added to
-// AzurermStreamAnalyticsOutputBlobLister.
-type AzurermStreamAnalyticsOutputBlobListerExpansion interface{}
-
-// AzurermStreamAnalyticsOutputEventhubListerExpansion allows custom methods to be added to
-// AzurermStreamAnalyticsOutputEventhubLister.
-type AzurermStreamAnalyticsOutputEventhubListerExpansion interface{}
-
-// AzurermStreamAnalyticsOutputMssqlListerExpansion allows custom methods to be added to
-// AzurermStreamAnalyticsOutputMssqlLister.
-type AzurermStreamAnalyticsOutputMssqlListerExpansion interface{}
-
-// AzurermStreamAnalyticsOutputServicebusQueueListerExpansion allows custom methods to be added to
-// AzurermStreamAnalyticsOutputServicebusQueueLister.
-type AzurermStreamAnalyticsOutputServicebusQueueListerExpansion interface{}
-
-// AzurermStreamAnalyticsStreamInputBlobListerExpansion allows custom methods to be added to
-// AzurermStreamAnalyticsStreamInputBlobLister.
-type AzurermStreamAnalyticsStreamInputBlobListerExpansion interface{}
-
-// AzurermStreamAnalyticsStreamInputEventhubListerExpansion allows custom methods to be added to
-// AzurermStreamAnalyticsStreamInputEventhubLister.
-type AzurermStreamAnalyticsStreamInputEventhubListerExpansion interface{}
-
-// AzurermStreamAnalyticsStreamInputIothubListerExpansion allows custom methods to be added to
-// AzurermStreamAnalyticsStreamInputIothubLister.
-type AzurermStreamAnalyticsStreamInputIothubListerExpansion interface{}
-
-// AzurermSubnetListerExpansion allows custom methods to be added to
-// AzurermSubnetLister.
-type AzurermSubnetListerExpansion interface{}
-
-// AzurermSubnetNetworkSecurityGroupAssociationListerExpansion allows custom methods to be added to
-// AzurermSubnetNetworkSecurityGroupAssociationLister.
-type AzurermSubnetNetworkSecurityGroupAssociationListerExpansion interface{}
-
-// AzurermSubnetRouteTableAssociationListerExpansion allows custom methods to be added to
-// AzurermSubnetRouteTableAssociationLister.
-type AzurermSubnetRouteTableAssociationListerExpansion interface{}
-
-// AzurermTemplateDeploymentListerExpansion allows custom methods to be added to
-// AzurermTemplateDeploymentLister.
-type AzurermTemplateDeploymentListerExpansion interface{}
-
-// AzurermTrafficManagerEndpointListerExpansion allows custom methods to be added to
-// AzurermTrafficManagerEndpointLister.
-type AzurermTrafficManagerEndpointListerExpansion interface{}
-
-// AzurermTrafficManagerProfileListerExpansion allows custom methods to be added to
-// AzurermTrafficManagerProfileLister.
-type AzurermTrafficManagerProfileListerExpansion interface{}
-
-// AzurermUserAssignedIdentityListerExpansion allows custom methods to be added to
-// AzurermUserAssignedIdentityLister.
-type AzurermUserAssignedIdentityListerExpansion interface{}
-
-// AzurermVirtualMachineListerExpansion allows custom methods to be added to
-// AzurermVirtualMachineLister.
-type AzurermVirtualMachineListerExpansion interface{}
-
-// AzurermVirtualMachineDataDiskAttachmentListerExpansion allows custom methods to be added to
-// AzurermVirtualMachineDataDiskAttachmentLister.
-type AzurermVirtualMachineDataDiskAttachmentListerExpansion interface{}
-
-// AzurermVirtualMachineExtensionListerExpansion allows custom methods to be added to
-// AzurermVirtualMachineExtensionLister.
-type AzurermVirtualMachineExtensionListerExpansion interface{}
-
-// AzurermVirtualMachineScaleSetListerExpansion allows custom methods to be added to
-// AzurermVirtualMachineScaleSetLister.
-type AzurermVirtualMachineScaleSetListerExpansion interface{}
-
-// AzurermVirtualNetworkListerExpansion allows custom methods to be added to
-// AzurermVirtualNetworkLister.
-type AzurermVirtualNetworkListerExpansion interface{}
-
-// AzurermVirtualNetworkGatewayListerExpansion allows custom methods to be added to
-// AzurermVirtualNetworkGatewayLister.
-type AzurermVirtualNetworkGatewayListerExpansion interface{}
-
-// AzurermVirtualNetworkGatewayConnectionListerExpansion allows custom methods to be added to
-// AzurermVirtualNetworkGatewayConnectionLister.
-type AzurermVirtualNetworkGatewayConnectionListerExpansion interface{}
-
-// AzurermVirtualNetworkPeeringListerExpansion allows custom methods to be added to
-// AzurermVirtualNetworkPeeringLister.
-type AzurermVirtualNetworkPeeringListerExpansion interface{}
+// ApiManagementListerExpansion allows custom methods to be added to
+// ApiManagementLister.
+type ApiManagementListerExpansion interface{}
+
+// ApiManagementApiListerExpansion allows custom methods to be added to
+// ApiManagementApiLister.
+type ApiManagementApiListerExpansion interface{}
+
+// ApiManagementApiOperationListerExpansion allows custom methods to be added to
+// ApiManagementApiOperationLister.
+type ApiManagementApiOperationListerExpansion interface{}
+
+// ApiManagementApiOperationPolicyListerExpansion allows custom methods to be added to
+// ApiManagementApiOperationPolicyLister.
+type ApiManagementApiOperationPolicyListerExpansion interface{}
+
+// ApiManagementApiPolicyListerExpansion allows custom methods to be added to
+// ApiManagementApiPolicyLister.
+type ApiManagementApiPolicyListerExpansion interface{}
+
+// ApiManagementApiSchemaListerExpansion allows custom methods to be added to
+// ApiManagementApiSchemaLister.
+type ApiManagementApiSchemaListerExpansion interface{}
+
+// ApiManagementApiVersionSetListerExpansion allows custom methods to be added to
+// ApiManagementApiVersionSetLister.
+type ApiManagementApiVersionSetListerExpansion interface{}
+
+// ApiManagementAuthorizationServerListerExpansion allows custom methods to be added to
+// ApiManagementAuthorizationServerLister.
+type ApiManagementAuthorizationServerListerExpansion interface{}
+
+// ApiManagementBackendListerExpansion allows custom methods to be added to
+// ApiManagementBackendLister.
+type ApiManagementBackendListerExpansion interface{}
+
+// ApiManagementCertificateListerExpansion allows custom methods to be added to
+// ApiManagementCertificateLister.
+type ApiManagementCertificateListerExpansion interface{}
+
+// ApiManagementGroupListerExpansion allows custom methods to be added to
+// ApiManagementGroupLister.
+type ApiManagementGroupListerExpansion interface{}
+
+// ApiManagementGroupUserListerExpansion allows custom methods to be added to
+// ApiManagementGroupUserLister.
+type ApiManagementGroupUserListerExpansion interface{}
+
+// ApiManagementLoggerListerExpansion allows custom methods to be added to
+// ApiManagementLoggerLister.
+type ApiManagementLoggerListerExpansion interface{}
+
+// ApiManagementOpenidConnectProviderListerExpansion allows custom methods to be added to
+// ApiManagementOpenidConnectProviderLister.
+type ApiManagementOpenidConnectProviderListerExpansion interface{}
+
+// ApiManagementProductListerExpansion allows custom methods to be added to
+// ApiManagementProductLister.
+type ApiManagementProductListerExpansion interface{}
+
+// ApiManagementProductApiListerExpansion allows custom methods to be added to
+// ApiManagementProductApiLister.
+type ApiManagementProductApiListerExpansion interface{}
+
+// ApiManagementProductGroupListerExpansion allows custom methods to be added to
+// ApiManagementProductGroupLister.
+type ApiManagementProductGroupListerExpansion interface{}
+
+// ApiManagementProductPolicyListerExpansion allows custom methods to be added to
+// ApiManagementProductPolicyLister.
+type ApiManagementProductPolicyListerExpansion interface{}
+
+// ApiManagementPropertyListerExpansion allows custom methods to be added to
+// ApiManagementPropertyLister.
+type ApiManagementPropertyListerExpansion interface{}
+
+// ApiManagementSubscriptionListerExpansion allows custom methods to be added to
+// ApiManagementSubscriptionLister.
+type ApiManagementSubscriptionListerExpansion interface{}
+
+// ApiManagementUserListerExpansion allows custom methods to be added to
+// ApiManagementUserLister.
+type ApiManagementUserListerExpansion interface{}
+
+// AppServiceListerExpansion allows custom methods to be added to
+// AppServiceLister.
+type AppServiceListerExpansion interface{}
+
+// AppServiceActiveSlotListerExpansion allows custom methods to be added to
+// AppServiceActiveSlotLister.
+type AppServiceActiveSlotListerExpansion interface{}
+
+// AppServiceCustomHostnameBindingListerExpansion allows custom methods to be added to
+// AppServiceCustomHostnameBindingLister.
+type AppServiceCustomHostnameBindingListerExpansion interface{}
+
+// AppServicePlanListerExpansion allows custom methods to be added to
+// AppServicePlanLister.
+type AppServicePlanListerExpansion interface{}
+
+// AppServiceSlotListerExpansion allows custom methods to be added to
+// AppServiceSlotLister.
+type AppServiceSlotListerExpansion interface{}
+
+// ApplicationGatewayListerExpansion allows custom methods to be added to
+// ApplicationGatewayLister.
+type ApplicationGatewayListerExpansion interface{}
+
+// ApplicationInsightsListerExpansion allows custom methods to be added to
+// ApplicationInsightsLister.
+type ApplicationInsightsListerExpansion interface{}
+
+// ApplicationInsightsApiKeyListerExpansion allows custom methods to be added to
+// ApplicationInsightsApiKeyLister.
+type ApplicationInsightsApiKeyListerExpansion interface{}
+
+// ApplicationInsightsWebTestListerExpansion allows custom methods to be added to
+// ApplicationInsightsWebTestLister.
+type ApplicationInsightsWebTestListerExpansion interface{}
+
+// ApplicationSecurityGroupListerExpansion allows custom methods to be added to
+// ApplicationSecurityGroupLister.
+type ApplicationSecurityGroupListerExpansion interface{}
+
+// AutomationAccountListerExpansion allows custom methods to be added to
+// AutomationAccountLister.
+type AutomationAccountListerExpansion interface{}
+
+// AutomationCredentialListerExpansion allows custom methods to be added to
+// AutomationCredentialLister.
+type AutomationCredentialListerExpansion interface{}
+
+// AutomationDscConfigurationListerExpansion allows custom methods to be added to
+// AutomationDscConfigurationLister.
+type AutomationDscConfigurationListerExpansion interface{}
+
+// AutomationDscNodeconfigurationListerExpansion allows custom methods to be added to
+// AutomationDscNodeconfigurationLister.
+type AutomationDscNodeconfigurationListerExpansion interface{}
+
+// AutomationModuleListerExpansion allows custom methods to be added to
+// AutomationModuleLister.
+type AutomationModuleListerExpansion interface{}
+
+// AutomationRunbookListerExpansion allows custom methods to be added to
+// AutomationRunbookLister.
+type AutomationRunbookListerExpansion interface{}
+
+// AutomationScheduleListerExpansion allows custom methods to be added to
+// AutomationScheduleLister.
+type AutomationScheduleListerExpansion interface{}
+
+// AutomationVariableBoolListerExpansion allows custom methods to be added to
+// AutomationVariableBoolLister.
+type AutomationVariableBoolListerExpansion interface{}
+
+// AutomationVariableDatetimeListerExpansion allows custom methods to be added to
+// AutomationVariableDatetimeLister.
+type AutomationVariableDatetimeListerExpansion interface{}
+
+// AutomationVariableIntListerExpansion allows custom methods to be added to
+// AutomationVariableIntLister.
+type AutomationVariableIntListerExpansion interface{}
+
+// AutomationVariableStringListerExpansion allows custom methods to be added to
+// AutomationVariableStringLister.
+type AutomationVariableStringListerExpansion interface{}
+
+// AutoscaleSettingListerExpansion allows custom methods to be added to
+// AutoscaleSettingLister.
+type AutoscaleSettingListerExpansion interface{}
+
+// AvailabilitySetListerExpansion allows custom methods to be added to
+// AvailabilitySetLister.
+type AvailabilitySetListerExpansion interface{}
+
+// AzureadApplicationListerExpansion allows custom methods to be added to
+// AzureadApplicationLister.
+type AzureadApplicationListerExpansion interface{}
+
+// AzureadServicePrincipalListerExpansion allows custom methods to be added to
+// AzureadServicePrincipalLister.
+type AzureadServicePrincipalListerExpansion interface{}
+
+// AzureadServicePrincipalPasswordListerExpansion allows custom methods to be added to
+// AzureadServicePrincipalPasswordLister.
+type AzureadServicePrincipalPasswordListerExpansion interface{}
+
+// BatchAccountListerExpansion allows custom methods to be added to
+// BatchAccountLister.
+type BatchAccountListerExpansion interface{}
+
+// BatchApplicationListerExpansion allows custom methods to be added to
+// BatchApplicationLister.
+type BatchApplicationListerExpansion interface{}
+
+// BatchCertificateListerExpansion allows custom methods to be added to
+// BatchCertificateLister.
+type BatchCertificateListerExpansion interface{}
+
+// BatchPoolListerExpansion allows custom methods to be added to
+// BatchPoolLister.
+type BatchPoolListerExpansion interface{}
+
+// CdnEndpointListerExpansion allows custom methods to be added to
+// CdnEndpointLister.
+type CdnEndpointListerExpansion interface{}
+
+// CdnProfileListerExpansion allows custom methods to be added to
+// CdnProfileLister.
+type CdnProfileListerExpansion interface{}
+
+// CognitiveAccountListerExpansion allows custom methods to be added to
+// CognitiveAccountLister.
+type CognitiveAccountListerExpansion interface{}
+
+// ConnectionMonitorListerExpansion allows custom methods to be added to
+// ConnectionMonitorLister.
+type ConnectionMonitorListerExpansion interface{}
+
+// ContainerGroupListerExpansion allows custom methods to be added to
+// ContainerGroupLister.
+type ContainerGroupListerExpansion interface{}
+
+// ContainerRegistryListerExpansion allows custom methods to be added to
+// ContainerRegistryLister.
+type ContainerRegistryListerExpansion interface{}
+
+// ContainerServiceListerExpansion allows custom methods to be added to
+// ContainerServiceLister.
+type ContainerServiceListerExpansion interface{}
+
+// CosmosdbAccountListerExpansion allows custom methods to be added to
+// CosmosdbAccountLister.
+type CosmosdbAccountListerExpansion interface{}
+
+// CosmosdbCassandraKeyspaceListerExpansion allows custom methods to be added to
+// CosmosdbCassandraKeyspaceLister.
+type CosmosdbCassandraKeyspaceListerExpansion interface{}
+
+// CosmosdbMongoCollectionListerExpansion allows custom methods to be added to
+// CosmosdbMongoCollectionLister.
+type CosmosdbMongoCollectionListerExpansion interface{}
+
+// CosmosdbMongoDatabaseListerExpansion allows custom methods to be added to
+// CosmosdbMongoDatabaseLister.
+type CosmosdbMongoDatabaseListerExpansion interface{}
+
+// CosmosdbSqlDatabaseListerExpansion allows custom methods to be added to
+// CosmosdbSqlDatabaseLister.
+type CosmosdbSqlDatabaseListerExpansion interface{}
+
+// CosmosdbTableListerExpansion allows custom methods to be added to
+// CosmosdbTableLister.
+type CosmosdbTableListerExpansion interface{}
+
+// DataFactoryListerExpansion allows custom methods to be added to
+// DataFactoryLister.
+type DataFactoryListerExpansion interface{}
+
+// DataFactoryDatasetMysqlListerExpansion allows custom methods to be added to
+// DataFactoryDatasetMysqlLister.
+type DataFactoryDatasetMysqlListerExpansion interface{}
+
+// DataFactoryDatasetPostgresqlListerExpansion allows custom methods to be added to
+// DataFactoryDatasetPostgresqlLister.
+type DataFactoryDatasetPostgresqlListerExpansion interface{}
+
+// DataFactoryDatasetSqlServerTableListerExpansion allows custom methods to be added to
+// DataFactoryDatasetSqlServerTableLister.
+type DataFactoryDatasetSqlServerTableListerExpansion interface{}
+
+// DataFactoryLinkedServiceDataLakeStorageGen2ListerExpansion allows custom methods to be added to
+// DataFactoryLinkedServiceDataLakeStorageGen2Lister.
+type DataFactoryLinkedServiceDataLakeStorageGen2ListerExpansion interface{}
+
+// DataFactoryLinkedServiceMysqlListerExpansion allows custom methods to be added to
+// DataFactoryLinkedServiceMysqlLister.
+type DataFactoryLinkedServiceMysqlListerExpansion interface{}
+
+// DataFactoryLinkedServicePostgresqlListerExpansion allows custom methods to be added to
+// DataFactoryLinkedServicePostgresqlLister.
+type DataFactoryLinkedServicePostgresqlListerExpansion interface{}
+
+// DataFactoryLinkedServiceSqlServerListerExpansion allows custom methods to be added to
+// DataFactoryLinkedServiceSqlServerLister.
+type DataFactoryLinkedServiceSqlServerListerExpansion interface{}
+
+// DataFactoryPipelineListerExpansion allows custom methods to be added to
+// DataFactoryPipelineLister.
+type DataFactoryPipelineListerExpansion interface{}
+
+// DataLakeAnalyticsAccountListerExpansion allows custom methods to be added to
+// DataLakeAnalyticsAccountLister.
+type DataLakeAnalyticsAccountListerExpansion interface{}
+
+// DataLakeAnalyticsFirewallRuleListerExpansion allows custom methods to be added to
+// DataLakeAnalyticsFirewallRuleLister.
+type DataLakeAnalyticsFirewallRuleListerExpansion interface{}
+
+// DataLakeStoreListerExpansion allows custom methods to be added to
+// DataLakeStoreLister.
+type DataLakeStoreListerExpansion interface{}
+
+// DataLakeStoreFileListerExpansion allows custom methods to be added to
+// DataLakeStoreFileLister.
+type DataLakeStoreFileListerExpansion interface{}
+
+// DataLakeStoreFirewallRuleListerExpansion allows custom methods to be added to
+// DataLakeStoreFirewallRuleLister.
+type DataLakeStoreFirewallRuleListerExpansion interface{}
+
+// DatabricksWorkspaceListerExpansion allows custom methods to be added to
+// DatabricksWorkspaceLister.
+type DatabricksWorkspaceListerExpansion interface{}
+
+// DdosProtectionPlanListerExpansion allows custom methods to be added to
+// DdosProtectionPlanLister.
+type DdosProtectionPlanListerExpansion interface{}
+
+// DevTestLabListerExpansion allows custom methods to be added to
+// DevTestLabLister.
+type DevTestLabListerExpansion interface{}
+
+// DevTestLinuxVirtualMachineListerExpansion allows custom methods to be added to
+// DevTestLinuxVirtualMachineLister.
+type DevTestLinuxVirtualMachineListerExpansion interface{}
+
+// DevTestPolicyListerExpansion allows custom methods to be added to
+// DevTestPolicyLister.
+type DevTestPolicyListerExpansion interface{}
+
+// DevTestVirtualNetworkListerExpansion allows custom methods to be added to
+// DevTestVirtualNetworkLister.
+type DevTestVirtualNetworkListerExpansion interface{}
+
+// DevTestWindowsVirtualMachineListerExpansion allows custom methods to be added to
+// DevTestWindowsVirtualMachineLister.
+type DevTestWindowsVirtualMachineListerExpansion interface{}
+
+// DevspaceControllerListerExpansion allows custom methods to be added to
+// DevspaceControllerLister.
+type DevspaceControllerListerExpansion interface{}
+
+// DnsARecordListerExpansion allows custom methods to be added to
+// DnsARecordLister.
+type DnsARecordListerExpansion interface{}
+
+// DnsAaaaRecordListerExpansion allows custom methods to be added to
+// DnsAaaaRecordLister.
+type DnsAaaaRecordListerExpansion interface{}
+
+// DnsCaaRecordListerExpansion allows custom methods to be added to
+// DnsCaaRecordLister.
+type DnsCaaRecordListerExpansion interface{}
+
+// DnsCnameRecordListerExpansion allows custom methods to be added to
+// DnsCnameRecordLister.
+type DnsCnameRecordListerExpansion interface{}
+
+// DnsMxRecordListerExpansion allows custom methods to be added to
+// DnsMxRecordLister.
+type DnsMxRecordListerExpansion interface{}
+
+// DnsNsRecordListerExpansion allows custom methods to be added to
+// DnsNsRecordLister.
+type DnsNsRecordListerExpansion interface{}
+
+// DnsPtrRecordListerExpansion allows custom methods to be added to
+// DnsPtrRecordLister.
+type DnsPtrRecordListerExpansion interface{}
+
+// DnsSrvRecordListerExpansion allows custom methods to be added to
+// DnsSrvRecordLister.
+type DnsSrvRecordListerExpansion interface{}
+
+// DnsTxtRecordListerExpansion allows custom methods to be added to
+// DnsTxtRecordLister.
+type DnsTxtRecordListerExpansion interface{}
+
+// DnsZoneListerExpansion allows custom methods to be added to
+// DnsZoneLister.
+type DnsZoneListerExpansion interface{}
+
+// EventgridDomainListerExpansion allows custom methods to be added to
+// EventgridDomainLister.
+type EventgridDomainListerExpansion interface{}
+
+// EventgridEventSubscriptionListerExpansion allows custom methods to be added to
+// EventgridEventSubscriptionLister.
+type EventgridEventSubscriptionListerExpansion interface{}
+
+// EventgridTopicListerExpansion allows custom methods to be added to
+// EventgridTopicLister.
+type EventgridTopicListerExpansion interface{}
+
+// EventhubListerExpansion allows custom methods to be added to
+// EventhubLister.
+type EventhubListerExpansion interface{}
+
+// EventhubAuthorizationRuleListerExpansion allows custom methods to be added to
+// EventhubAuthorizationRuleLister.
+type EventhubAuthorizationRuleListerExpansion interface{}
+
+// EventhubConsumerGroupListerExpansion allows custom methods to be added to
+// EventhubConsumerGroupLister.
+type EventhubConsumerGroupListerExpansion interface{}
+
+// EventhubNamespaceListerExpansion allows custom methods to be added to
+// EventhubNamespaceLister.
+type EventhubNamespaceListerExpansion interface{}
+
+// EventhubNamespaceAuthorizationRuleListerExpansion allows custom methods to be added to
+// EventhubNamespaceAuthorizationRuleLister.
+type EventhubNamespaceAuthorizationRuleListerExpansion interface{}
+
+// ExpressRouteCircuitListerExpansion allows custom methods to be added to
+// ExpressRouteCircuitLister.
+type ExpressRouteCircuitListerExpansion interface{}
+
+// ExpressRouteCircuitAuthorizationListerExpansion allows custom methods to be added to
+// ExpressRouteCircuitAuthorizationLister.
+type ExpressRouteCircuitAuthorizationListerExpansion interface{}
+
+// ExpressRouteCircuitPeeringListerExpansion allows custom methods to be added to
+// ExpressRouteCircuitPeeringLister.
+type ExpressRouteCircuitPeeringListerExpansion interface{}
+
+// FirewallListerExpansion allows custom methods to be added to
+// FirewallLister.
+type FirewallListerExpansion interface{}
+
+// FirewallApplicationRuleCollectionListerExpansion allows custom methods to be added to
+// FirewallApplicationRuleCollectionLister.
+type FirewallApplicationRuleCollectionListerExpansion interface{}
+
+// FirewallNatRuleCollectionListerExpansion allows custom methods to be added to
+// FirewallNatRuleCollectionLister.
+type FirewallNatRuleCollectionListerExpansion interface{}
+
+// FirewallNetworkRuleCollectionListerExpansion allows custom methods to be added to
+// FirewallNetworkRuleCollectionLister.
+type FirewallNetworkRuleCollectionListerExpansion interface{}
+
+// FunctionAppListerExpansion allows custom methods to be added to
+// FunctionAppLister.
+type FunctionAppListerExpansion interface{}
+
+// HdinsightHadoopClusterListerExpansion allows custom methods to be added to
+// HdinsightHadoopClusterLister.
+type HdinsightHadoopClusterListerExpansion interface{}
+
+// HdinsightHbaseClusterListerExpansion allows custom methods to be added to
+// HdinsightHbaseClusterLister.
+type HdinsightHbaseClusterListerExpansion interface{}
+
+// HdinsightInteractiveQueryClusterListerExpansion allows custom methods to be added to
+// HdinsightInteractiveQueryClusterLister.
+type HdinsightInteractiveQueryClusterListerExpansion interface{}
+
+// HdinsightKafkaClusterListerExpansion allows custom methods to be added to
+// HdinsightKafkaClusterLister.
+type HdinsightKafkaClusterListerExpansion interface{}
+
+// HdinsightMlServicesClusterListerExpansion allows custom methods to be added to
+// HdinsightMlServicesClusterLister.
+type HdinsightMlServicesClusterListerExpansion interface{}
+
+// HdinsightRserverClusterListerExpansion allows custom methods to be added to
+// HdinsightRserverClusterLister.
+type HdinsightRserverClusterListerExpansion interface{}
+
+// HdinsightSparkClusterListerExpansion allows custom methods to be added to
+// HdinsightSparkClusterLister.
+type HdinsightSparkClusterListerExpansion interface{}
+
+// HdinsightStormClusterListerExpansion allows custom methods to be added to
+// HdinsightStormClusterLister.
+type HdinsightStormClusterListerExpansion interface{}
+
+// ImageListerExpansion allows custom methods to be added to
+// ImageLister.
+type ImageListerExpansion interface{}
+
+// IotDpsListerExpansion allows custom methods to be added to
+// IotDpsLister.
+type IotDpsListerExpansion interface{}
+
+// IotDpsCertificateListerExpansion allows custom methods to be added to
+// IotDpsCertificateLister.
+type IotDpsCertificateListerExpansion interface{}
+
+// IothubListerExpansion allows custom methods to be added to
+// IothubLister.
+type IothubListerExpansion interface{}
+
+// IothubConsumerGroupListerExpansion allows custom methods to be added to
+// IothubConsumerGroupLister.
+type IothubConsumerGroupListerExpansion interface{}
+
+// IothubSharedAccessPolicyListerExpansion allows custom methods to be added to
+// IothubSharedAccessPolicyLister.
+type IothubSharedAccessPolicyListerExpansion interface{}
+
+// KeyVaultListerExpansion allows custom methods to be added to
+// KeyVaultLister.
+type KeyVaultListerExpansion interface{}
+
+// KeyVaultAccessPolicyListerExpansion allows custom methods to be added to
+// KeyVaultAccessPolicyLister.
+type KeyVaultAccessPolicyListerExpansion interface{}
+
+// KeyVaultCertificateListerExpansion allows custom methods to be added to
+// KeyVaultCertificateLister.
+type KeyVaultCertificateListerExpansion interface{}
+
+// KeyVaultKeyListerExpansion allows custom methods to be added to
+// KeyVaultKeyLister.
+type KeyVaultKeyListerExpansion interface{}
+
+// KeyVaultSecretListerExpansion allows custom methods to be added to
+// KeyVaultSecretLister.
+type KeyVaultSecretListerExpansion interface{}
+
+// KubernetesClusterListerExpansion allows custom methods to be added to
+// KubernetesClusterLister.
+type KubernetesClusterListerExpansion interface{}
+
+// LbListerExpansion allows custom methods to be added to
+// LbLister.
+type LbListerExpansion interface{}
+
+// LbBackendAddressPoolListerExpansion allows custom methods to be added to
+// LbBackendAddressPoolLister.
+type LbBackendAddressPoolListerExpansion interface{}
+
+// LbNatPoolListerExpansion allows custom methods to be added to
+// LbNatPoolLister.
+type LbNatPoolListerExpansion interface{}
+
+// LbNatRuleListerExpansion allows custom methods to be added to
+// LbNatRuleLister.
+type LbNatRuleListerExpansion interface{}
+
+// LbOutboundRuleListerExpansion allows custom methods to be added to
+// LbOutboundRuleLister.
+type LbOutboundRuleListerExpansion interface{}
+
+// LbProbeListerExpansion allows custom methods to be added to
+// LbProbeLister.
+type LbProbeListerExpansion interface{}
+
+// LbRuleListerExpansion allows custom methods to be added to
+// LbRuleLister.
+type LbRuleListerExpansion interface{}
+
+// LocalNetworkGatewayListerExpansion allows custom methods to be added to
+// LocalNetworkGatewayLister.
+type LocalNetworkGatewayListerExpansion interface{}
+
+// LogAnalyticsLinkedServiceListerExpansion allows custom methods to be added to
+// LogAnalyticsLinkedServiceLister.
+type LogAnalyticsLinkedServiceListerExpansion interface{}
+
+// LogAnalyticsSolutionListerExpansion allows custom methods to be added to
+// LogAnalyticsSolutionLister.
+type LogAnalyticsSolutionListerExpansion interface{}
+
+// LogAnalyticsWorkspaceListerExpansion allows custom methods to be added to
+// LogAnalyticsWorkspaceLister.
+type LogAnalyticsWorkspaceListerExpansion interface{}
+
+// LogAnalyticsWorkspaceLinkedServiceListerExpansion allows custom methods to be added to
+// LogAnalyticsWorkspaceLinkedServiceLister.
+type LogAnalyticsWorkspaceLinkedServiceListerExpansion interface{}
+
+// LogicAppActionCustomListerExpansion allows custom methods to be added to
+// LogicAppActionCustomLister.
+type LogicAppActionCustomListerExpansion interface{}
+
+// LogicAppActionHttpListerExpansion allows custom methods to be added to
+// LogicAppActionHttpLister.
+type LogicAppActionHttpListerExpansion interface{}
+
+// LogicAppTriggerCustomListerExpansion allows custom methods to be added to
+// LogicAppTriggerCustomLister.
+type LogicAppTriggerCustomListerExpansion interface{}
+
+// LogicAppTriggerHttpRequestListerExpansion allows custom methods to be added to
+// LogicAppTriggerHttpRequestLister.
+type LogicAppTriggerHttpRequestListerExpansion interface{}
+
+// LogicAppTriggerRecurrenceListerExpansion allows custom methods to be added to
+// LogicAppTriggerRecurrenceLister.
+type LogicAppTriggerRecurrenceListerExpansion interface{}
+
+// LogicAppWorkflowListerExpansion allows custom methods to be added to
+// LogicAppWorkflowLister.
+type LogicAppWorkflowListerExpansion interface{}
+
+// ManagedDiskListerExpansion allows custom methods to be added to
+// ManagedDiskLister.
+type ManagedDiskListerExpansion interface{}
+
+// ManagementGroupListerExpansion allows custom methods to be added to
+// ManagementGroupLister.
+type ManagementGroupListerExpansion interface{}
+
+// ManagementLockListerExpansion allows custom methods to be added to
+// ManagementLockLister.
+type ManagementLockListerExpansion interface{}
+
+// MariadbDatabaseListerExpansion allows custom methods to be added to
+// MariadbDatabaseLister.
+type MariadbDatabaseListerExpansion interface{}
+
+// MariadbFirewallRuleListerExpansion allows custom methods to be added to
+// MariadbFirewallRuleLister.
+type MariadbFirewallRuleListerExpansion interface{}
+
+// MariadbServerListerExpansion allows custom methods to be added to
+// MariadbServerLister.
+type MariadbServerListerExpansion interface{}
+
+// MediaServicesAccountListerExpansion allows custom methods to be added to
+// MediaServicesAccountLister.
+type MediaServicesAccountListerExpansion interface{}
+
+// MetricAlertruleListerExpansion allows custom methods to be added to
+// MetricAlertruleLister.
+type MetricAlertruleListerExpansion interface{}
+
+// MonitorActionGroupListerExpansion allows custom methods to be added to
+// MonitorActionGroupLister.
+type MonitorActionGroupListerExpansion interface{}
+
+// MonitorActivityLogAlertListerExpansion allows custom methods to be added to
+// MonitorActivityLogAlertLister.
+type MonitorActivityLogAlertListerExpansion interface{}
+
+// MonitorAutoscaleSettingListerExpansion allows custom methods to be added to
+// MonitorAutoscaleSettingLister.
+type MonitorAutoscaleSettingListerExpansion interface{}
+
+// MonitorDiagnosticSettingListerExpansion allows custom methods to be added to
+// MonitorDiagnosticSettingLister.
+type MonitorDiagnosticSettingListerExpansion interface{}
+
+// MonitorLogProfileListerExpansion allows custom methods to be added to
+// MonitorLogProfileLister.
+type MonitorLogProfileListerExpansion interface{}
+
+// MonitorMetricAlertListerExpansion allows custom methods to be added to
+// MonitorMetricAlertLister.
+type MonitorMetricAlertListerExpansion interface{}
+
+// MonitorMetricAlertruleListerExpansion allows custom methods to be added to
+// MonitorMetricAlertruleLister.
+type MonitorMetricAlertruleListerExpansion interface{}
+
+// MssqlElasticpoolListerExpansion allows custom methods to be added to
+// MssqlElasticpoolLister.
+type MssqlElasticpoolListerExpansion interface{}
+
+// MysqlConfigurationListerExpansion allows custom methods to be added to
+// MysqlConfigurationLister.
+type MysqlConfigurationListerExpansion interface{}
+
+// MysqlDatabaseListerExpansion allows custom methods to be added to
+// MysqlDatabaseLister.
+type MysqlDatabaseListerExpansion interface{}
+
+// MysqlFirewallRuleListerExpansion allows custom methods to be added to
+// MysqlFirewallRuleLister.
+type MysqlFirewallRuleListerExpansion interface{}
+
+// MysqlServerListerExpansion allows custom methods to be added to
+// MysqlServerLister.
+type MysqlServerListerExpansion interface{}
+
+// MysqlVirtualNetworkRuleListerExpansion allows custom methods to be added to
+// MysqlVirtualNetworkRuleLister.
+type MysqlVirtualNetworkRuleListerExpansion interface{}
+
+// NetworkConnectionMonitorListerExpansion allows custom methods to be added to
+// NetworkConnectionMonitorLister.
+type NetworkConnectionMonitorListerExpansion interface{}
+
+// NetworkDdosProtectionPlanListerExpansion allows custom methods to be added to
+// NetworkDdosProtectionPlanLister.
+type NetworkDdosProtectionPlanListerExpansion interface{}
+
+// NetworkInterfaceListerExpansion allows custom methods to be added to
+// NetworkInterfaceLister.
+type NetworkInterfaceListerExpansion interface{}
+
+// NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationListerExpansion allows custom methods to be added to
+// NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationLister.
+type NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationListerExpansion interface{}
+
+// NetworkInterfaceApplicationSecurityGroupAssociationListerExpansion allows custom methods to be added to
+// NetworkInterfaceApplicationSecurityGroupAssociationLister.
+type NetworkInterfaceApplicationSecurityGroupAssociationListerExpansion interface{}
+
+// NetworkInterfaceBackendAddressPoolAssociationListerExpansion allows custom methods to be added to
+// NetworkInterfaceBackendAddressPoolAssociationLister.
+type NetworkInterfaceBackendAddressPoolAssociationListerExpansion interface{}
+
+// NetworkInterfaceNatRuleAssociationListerExpansion allows custom methods to be added to
+// NetworkInterfaceNatRuleAssociationLister.
+type NetworkInterfaceNatRuleAssociationListerExpansion interface{}
+
+// NetworkPacketCaptureListerExpansion allows custom methods to be added to
+// NetworkPacketCaptureLister.
+type NetworkPacketCaptureListerExpansion interface{}
+
+// NetworkProfileListerExpansion allows custom methods to be added to
+// NetworkProfileLister.
+type NetworkProfileListerExpansion interface{}
+
+// NetworkSecurityGroupListerExpansion allows custom methods to be added to
+// NetworkSecurityGroupLister.
+type NetworkSecurityGroupListerExpansion interface{}
+
+// NetworkSecurityRuleListerExpansion allows custom methods to be added to
+// NetworkSecurityRuleLister.
+type NetworkSecurityRuleListerExpansion interface{}
+
+// NetworkWatcherListerExpansion allows custom methods to be added to
+// NetworkWatcherLister.
+type NetworkWatcherListerExpansion interface{}
+
+// NotificationHubListerExpansion allows custom methods to be added to
+// NotificationHubLister.
+type NotificationHubListerExpansion interface{}
+
+// NotificationHubAuthorizationRuleListerExpansion allows custom methods to be added to
+// NotificationHubAuthorizationRuleLister.
+type NotificationHubAuthorizationRuleListerExpansion interface{}
+
+// NotificationHubNamespaceListerExpansion allows custom methods to be added to
+// NotificationHubNamespaceLister.
+type NotificationHubNamespaceListerExpansion interface{}
+
+// PacketCaptureListerExpansion allows custom methods to be added to
+// PacketCaptureLister.
+type PacketCaptureListerExpansion interface{}
+
+// PolicyAssignmentListerExpansion allows custom methods to be added to
+// PolicyAssignmentLister.
+type PolicyAssignmentListerExpansion interface{}
+
+// PolicyDefinitionListerExpansion allows custom methods to be added to
+// PolicyDefinitionLister.
+type PolicyDefinitionListerExpansion interface{}
+
+// PolicySetDefinitionListerExpansion allows custom methods to be added to
+// PolicySetDefinitionLister.
+type PolicySetDefinitionListerExpansion interface{}
+
+// PostgresqlConfigurationListerExpansion allows custom methods to be added to
+// PostgresqlConfigurationLister.
+type PostgresqlConfigurationListerExpansion interface{}
+
+// PostgresqlDatabaseListerExpansion allows custom methods to be added to
+// PostgresqlDatabaseLister.
+type PostgresqlDatabaseListerExpansion interface{}
+
+// PostgresqlFirewallRuleListerExpansion allows custom methods to be added to
+// PostgresqlFirewallRuleLister.
+type PostgresqlFirewallRuleListerExpansion interface{}
+
+// PostgresqlServerListerExpansion allows custom methods to be added to
+// PostgresqlServerLister.
+type PostgresqlServerListerExpansion interface{}
+
+// PostgresqlVirtualNetworkRuleListerExpansion allows custom methods to be added to
+// PostgresqlVirtualNetworkRuleLister.
+type PostgresqlVirtualNetworkRuleListerExpansion interface{}
+
+// PrivateDnsZoneListerExpansion allows custom methods to be added to
+// PrivateDnsZoneLister.
+type PrivateDnsZoneListerExpansion interface{}
+
+// PublicIpListerExpansion allows custom methods to be added to
+// PublicIpLister.
+type PublicIpListerExpansion interface{}
+
+// PublicIpPrefixListerExpansion allows custom methods to be added to
+// PublicIpPrefixLister.
+type PublicIpPrefixListerExpansion interface{}
+
+// RecoveryServicesProtectedVmListerExpansion allows custom methods to be added to
+// RecoveryServicesProtectedVmLister.
+type RecoveryServicesProtectedVmListerExpansion interface{}
+
+// RecoveryServicesProtectionPolicyVmListerExpansion allows custom methods to be added to
+// RecoveryServicesProtectionPolicyVmLister.
+type RecoveryServicesProtectionPolicyVmListerExpansion interface{}
+
+// RecoveryServicesVaultListerExpansion allows custom methods to be added to
+// RecoveryServicesVaultLister.
+type RecoveryServicesVaultListerExpansion interface{}
+
+// RedisCacheListerExpansion allows custom methods to be added to
+// RedisCacheLister.
+type RedisCacheListerExpansion interface{}
+
+// RedisFirewallRuleListerExpansion allows custom methods to be added to
+// RedisFirewallRuleLister.
+type RedisFirewallRuleListerExpansion interface{}
+
+// RelayNamespaceListerExpansion allows custom methods to be added to
+// RelayNamespaceLister.
+type RelayNamespaceListerExpansion interface{}
+
+// ResourceGroupListerExpansion allows custom methods to be added to
+// ResourceGroupLister.
+type ResourceGroupListerExpansion interface{}
+
+// RoleAssignmentListerExpansion allows custom methods to be added to
+// RoleAssignmentLister.
+type RoleAssignmentListerExpansion interface{}
+
+// RoleDefinitionListerExpansion allows custom methods to be added to
+// RoleDefinitionLister.
+type RoleDefinitionListerExpansion interface{}
+
+// RouteListerExpansion allows custom methods to be added to
+// RouteLister.
+type RouteListerExpansion interface{}
+
+// RouteTableListerExpansion allows custom methods to be added to
+// RouteTableLister.
+type RouteTableListerExpansion interface{}
+
+// SchedulerJobListerExpansion allows custom methods to be added to
+// SchedulerJobLister.
+type SchedulerJobListerExpansion interface{}
+
+// SchedulerJobCollectionListerExpansion allows custom methods to be added to
+// SchedulerJobCollectionLister.
+type SchedulerJobCollectionListerExpansion interface{}
+
+// SearchServiceListerExpansion allows custom methods to be added to
+// SearchServiceLister.
+type SearchServiceListerExpansion interface{}
+
+// SecurityCenterContactListerExpansion allows custom methods to be added to
+// SecurityCenterContactLister.
+type SecurityCenterContactListerExpansion interface{}
+
+// SecurityCenterSubscriptionPricingListerExpansion allows custom methods to be added to
+// SecurityCenterSubscriptionPricingLister.
+type SecurityCenterSubscriptionPricingListerExpansion interface{}
+
+// SecurityCenterWorkspaceListerExpansion allows custom methods to be added to
+// SecurityCenterWorkspaceLister.
+type SecurityCenterWorkspaceListerExpansion interface{}
+
+// ServiceFabricClusterListerExpansion allows custom methods to be added to
+// ServiceFabricClusterLister.
+type ServiceFabricClusterListerExpansion interface{}
+
+// ServicebusNamespaceListerExpansion allows custom methods to be added to
+// ServicebusNamespaceLister.
+type ServicebusNamespaceListerExpansion interface{}
+
+// ServicebusNamespaceAuthorizationRuleListerExpansion allows custom methods to be added to
+// ServicebusNamespaceAuthorizationRuleLister.
+type ServicebusNamespaceAuthorizationRuleListerExpansion interface{}
+
+// ServicebusQueueListerExpansion allows custom methods to be added to
+// ServicebusQueueLister.
+type ServicebusQueueListerExpansion interface{}
+
+// ServicebusQueueAuthorizationRuleListerExpansion allows custom methods to be added to
+// ServicebusQueueAuthorizationRuleLister.
+type ServicebusQueueAuthorizationRuleListerExpansion interface{}
+
+// ServicebusSubscriptionListerExpansion allows custom methods to be added to
+// ServicebusSubscriptionLister.
+type ServicebusSubscriptionListerExpansion interface{}
+
+// ServicebusSubscriptionRuleListerExpansion allows custom methods to be added to
+// ServicebusSubscriptionRuleLister.
+type ServicebusSubscriptionRuleListerExpansion interface{}
+
+// ServicebusTopicListerExpansion allows custom methods to be added to
+// ServicebusTopicLister.
+type ServicebusTopicListerExpansion interface{}
+
+// ServicebusTopicAuthorizationRuleListerExpansion allows custom methods to be added to
+// ServicebusTopicAuthorizationRuleLister.
+type ServicebusTopicAuthorizationRuleListerExpansion interface{}
+
+// SharedImageListerExpansion allows custom methods to be added to
+// SharedImageLister.
+type SharedImageListerExpansion interface{}
+
+// SharedImageGalleryListerExpansion allows custom methods to be added to
+// SharedImageGalleryLister.
+type SharedImageGalleryListerExpansion interface{}
+
+// SharedImageVersionListerExpansion allows custom methods to be added to
+// SharedImageVersionLister.
+type SharedImageVersionListerExpansion interface{}
+
+// SignalrServiceListerExpansion allows custom methods to be added to
+// SignalrServiceLister.
+type SignalrServiceListerExpansion interface{}
+
+// SnapshotListerExpansion allows custom methods to be added to
+// SnapshotLister.
+type SnapshotListerExpansion interface{}
+
+// SqlActiveDirectoryAdministratorListerExpansion allows custom methods to be added to
+// SqlActiveDirectoryAdministratorLister.
+type SqlActiveDirectoryAdministratorListerExpansion interface{}
+
+// SqlDatabaseListerExpansion allows custom methods to be added to
+// SqlDatabaseLister.
+type SqlDatabaseListerExpansion interface{}
+
+// SqlElasticpoolListerExpansion allows custom methods to be added to
+// SqlElasticpoolLister.
+type SqlElasticpoolListerExpansion interface{}
+
+// SqlFirewallRuleListerExpansion allows custom methods to be added to
+// SqlFirewallRuleLister.
+type SqlFirewallRuleListerExpansion interface{}
+
+// SqlServerListerExpansion allows custom methods to be added to
+// SqlServerLister.
+type SqlServerListerExpansion interface{}
+
+// SqlVirtualNetworkRuleListerExpansion allows custom methods to be added to
+// SqlVirtualNetworkRuleLister.
+type SqlVirtualNetworkRuleListerExpansion interface{}
+
+// StorageAccountListerExpansion allows custom methods to be added to
+// StorageAccountLister.
+type StorageAccountListerExpansion interface{}
+
+// StorageBlobListerExpansion allows custom methods to be added to
+// StorageBlobLister.
+type StorageBlobListerExpansion interface{}
+
+// StorageContainerListerExpansion allows custom methods to be added to
+// StorageContainerLister.
+type StorageContainerListerExpansion interface{}
+
+// StorageQueueListerExpansion allows custom methods to be added to
+// StorageQueueLister.
+type StorageQueueListerExpansion interface{}
+
+// StorageShareListerExpansion allows custom methods to be added to
+// StorageShareLister.
+type StorageShareListerExpansion interface{}
+
+// StorageShareDirectoryListerExpansion allows custom methods to be added to
+// StorageShareDirectoryLister.
+type StorageShareDirectoryListerExpansion interface{}
+
+// StorageTableListerExpansion allows custom methods to be added to
+// StorageTableLister.
+type StorageTableListerExpansion interface{}
+
+// StorageTableEntityListerExpansion allows custom methods to be added to
+// StorageTableEntityLister.
+type StorageTableEntityListerExpansion interface{}
+
+// StreamAnalyticsFunctionJavascriptUdfListerExpansion allows custom methods to be added to
+// StreamAnalyticsFunctionJavascriptUdfLister.
+type StreamAnalyticsFunctionJavascriptUdfListerExpansion interface{}
+
+// StreamAnalyticsJobListerExpansion allows custom methods to be added to
+// StreamAnalyticsJobLister.
+type StreamAnalyticsJobListerExpansion interface{}
+
+// StreamAnalyticsOutputBlobListerExpansion allows custom methods to be added to
+// StreamAnalyticsOutputBlobLister.
+type StreamAnalyticsOutputBlobListerExpansion interface{}
+
+// StreamAnalyticsOutputEventhubListerExpansion allows custom methods to be added to
+// StreamAnalyticsOutputEventhubLister.
+type StreamAnalyticsOutputEventhubListerExpansion interface{}
+
+// StreamAnalyticsOutputMssqlListerExpansion allows custom methods to be added to
+// StreamAnalyticsOutputMssqlLister.
+type StreamAnalyticsOutputMssqlListerExpansion interface{}
+
+// StreamAnalyticsOutputServicebusQueueListerExpansion allows custom methods to be added to
+// StreamAnalyticsOutputServicebusQueueLister.
+type StreamAnalyticsOutputServicebusQueueListerExpansion interface{}
+
+// StreamAnalyticsStreamInputBlobListerExpansion allows custom methods to be added to
+// StreamAnalyticsStreamInputBlobLister.
+type StreamAnalyticsStreamInputBlobListerExpansion interface{}
+
+// StreamAnalyticsStreamInputEventhubListerExpansion allows custom methods to be added to
+// StreamAnalyticsStreamInputEventhubLister.
+type StreamAnalyticsStreamInputEventhubListerExpansion interface{}
+
+// StreamAnalyticsStreamInputIothubListerExpansion allows custom methods to be added to
+// StreamAnalyticsStreamInputIothubLister.
+type StreamAnalyticsStreamInputIothubListerExpansion interface{}
+
+// SubnetListerExpansion allows custom methods to be added to
+// SubnetLister.
+type SubnetListerExpansion interface{}
+
+// SubnetNetworkSecurityGroupAssociationListerExpansion allows custom methods to be added to
+// SubnetNetworkSecurityGroupAssociationLister.
+type SubnetNetworkSecurityGroupAssociationListerExpansion interface{}
+
+// SubnetRouteTableAssociationListerExpansion allows custom methods to be added to
+// SubnetRouteTableAssociationLister.
+type SubnetRouteTableAssociationListerExpansion interface{}
+
+// TemplateDeploymentListerExpansion allows custom methods to be added to
+// TemplateDeploymentLister.
+type TemplateDeploymentListerExpansion interface{}
+
+// TrafficManagerEndpointListerExpansion allows custom methods to be added to
+// TrafficManagerEndpointLister.
+type TrafficManagerEndpointListerExpansion interface{}
+
+// TrafficManagerProfileListerExpansion allows custom methods to be added to
+// TrafficManagerProfileLister.
+type TrafficManagerProfileListerExpansion interface{}
+
+// UserAssignedIdentityListerExpansion allows custom methods to be added to
+// UserAssignedIdentityLister.
+type UserAssignedIdentityListerExpansion interface{}
+
+// VirtualMachineListerExpansion allows custom methods to be added to
+// VirtualMachineLister.
+type VirtualMachineListerExpansion interface{}
+
+// VirtualMachineDataDiskAttachmentListerExpansion allows custom methods to be added to
+// VirtualMachineDataDiskAttachmentLister.
+type VirtualMachineDataDiskAttachmentListerExpansion interface{}
+
+// VirtualMachineExtensionListerExpansion allows custom methods to be added to
+// VirtualMachineExtensionLister.
+type VirtualMachineExtensionListerExpansion interface{}
+
+// VirtualMachineScaleSetListerExpansion allows custom methods to be added to
+// VirtualMachineScaleSetLister.
+type VirtualMachineScaleSetListerExpansion interface{}
+
+// VirtualNetworkListerExpansion allows custom methods to be added to
+// VirtualNetworkLister.
+type VirtualNetworkListerExpansion interface{}
+
+// VirtualNetworkGatewayListerExpansion allows custom methods to be added to
+// VirtualNetworkGatewayLister.
+type VirtualNetworkGatewayListerExpansion interface{}
+
+// VirtualNetworkGatewayConnectionListerExpansion allows custom methods to be added to
+// VirtualNetworkGatewayConnectionLister.
+type VirtualNetworkGatewayConnectionListerExpansion interface{}
+
+// VirtualNetworkPeeringListerExpansion allows custom methods to be added to
+// VirtualNetworkPeeringLister.
+type VirtualNetworkPeeringListerExpansion interface{}

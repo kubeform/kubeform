@@ -24,532 +24,540 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
-	// AzurermApiManagements returns a AzurermApiManagementInformer.
-	AzurermApiManagements() AzurermApiManagementInformer
-	// AzurermApiManagementApis returns a AzurermApiManagementApiInformer.
-	AzurermApiManagementApis() AzurermApiManagementApiInformer
-	// AzurermApiManagementApiOperations returns a AzurermApiManagementApiOperationInformer.
-	AzurermApiManagementApiOperations() AzurermApiManagementApiOperationInformer
-	// AzurermApiManagementApiOperationPolicies returns a AzurermApiManagementApiOperationPolicyInformer.
-	AzurermApiManagementApiOperationPolicies() AzurermApiManagementApiOperationPolicyInformer
-	// AzurermApiManagementApiPolicies returns a AzurermApiManagementApiPolicyInformer.
-	AzurermApiManagementApiPolicies() AzurermApiManagementApiPolicyInformer
-	// AzurermApiManagementApiSchemas returns a AzurermApiManagementApiSchemaInformer.
-	AzurermApiManagementApiSchemas() AzurermApiManagementApiSchemaInformer
-	// AzurermApiManagementApiVersionSets returns a AzurermApiManagementApiVersionSetInformer.
-	AzurermApiManagementApiVersionSets() AzurermApiManagementApiVersionSetInformer
-	// AzurermApiManagementAuthorizationServers returns a AzurermApiManagementAuthorizationServerInformer.
-	AzurermApiManagementAuthorizationServers() AzurermApiManagementAuthorizationServerInformer
-	// AzurermApiManagementCertificates returns a AzurermApiManagementCertificateInformer.
-	AzurermApiManagementCertificates() AzurermApiManagementCertificateInformer
-	// AzurermApiManagementGroups returns a AzurermApiManagementGroupInformer.
-	AzurermApiManagementGroups() AzurermApiManagementGroupInformer
-	// AzurermApiManagementGroupUsers returns a AzurermApiManagementGroupUserInformer.
-	AzurermApiManagementGroupUsers() AzurermApiManagementGroupUserInformer
-	// AzurermApiManagementLoggers returns a AzurermApiManagementLoggerInformer.
-	AzurermApiManagementLoggers() AzurermApiManagementLoggerInformer
-	// AzurermApiManagementOpenidConnectProviders returns a AzurermApiManagementOpenidConnectProviderInformer.
-	AzurermApiManagementOpenidConnectProviders() AzurermApiManagementOpenidConnectProviderInformer
-	// AzurermApiManagementProducts returns a AzurermApiManagementProductInformer.
-	AzurermApiManagementProducts() AzurermApiManagementProductInformer
-	// AzurermApiManagementProductApis returns a AzurermApiManagementProductApiInformer.
-	AzurermApiManagementProductApis() AzurermApiManagementProductApiInformer
-	// AzurermApiManagementProductGroups returns a AzurermApiManagementProductGroupInformer.
-	AzurermApiManagementProductGroups() AzurermApiManagementProductGroupInformer
-	// AzurermApiManagementProductPolicies returns a AzurermApiManagementProductPolicyInformer.
-	AzurermApiManagementProductPolicies() AzurermApiManagementProductPolicyInformer
-	// AzurermApiManagementProperties returns a AzurermApiManagementPropertyInformer.
-	AzurermApiManagementProperties() AzurermApiManagementPropertyInformer
-	// AzurermApiManagementSubscriptions returns a AzurermApiManagementSubscriptionInformer.
-	AzurermApiManagementSubscriptions() AzurermApiManagementSubscriptionInformer
-	// AzurermApiManagementUsers returns a AzurermApiManagementUserInformer.
-	AzurermApiManagementUsers() AzurermApiManagementUserInformer
-	// AzurermAppServices returns a AzurermAppServiceInformer.
-	AzurermAppServices() AzurermAppServiceInformer
-	// AzurermAppServiceActiveSlots returns a AzurermAppServiceActiveSlotInformer.
-	AzurermAppServiceActiveSlots() AzurermAppServiceActiveSlotInformer
-	// AzurermAppServiceCustomHostnameBindings returns a AzurermAppServiceCustomHostnameBindingInformer.
-	AzurermAppServiceCustomHostnameBindings() AzurermAppServiceCustomHostnameBindingInformer
-	// AzurermAppServicePlans returns a AzurermAppServicePlanInformer.
-	AzurermAppServicePlans() AzurermAppServicePlanInformer
-	// AzurermAppServiceSlots returns a AzurermAppServiceSlotInformer.
-	AzurermAppServiceSlots() AzurermAppServiceSlotInformer
-	// AzurermApplicationGateways returns a AzurermApplicationGatewayInformer.
-	AzurermApplicationGateways() AzurermApplicationGatewayInformer
-	// AzurermApplicationInsightses returns a AzurermApplicationInsightsInformer.
-	AzurermApplicationInsightses() AzurermApplicationInsightsInformer
-	// AzurermApplicationInsightsApiKeys returns a AzurermApplicationInsightsApiKeyInformer.
-	AzurermApplicationInsightsApiKeys() AzurermApplicationInsightsApiKeyInformer
-	// AzurermApplicationInsightsWebTests returns a AzurermApplicationInsightsWebTestInformer.
-	AzurermApplicationInsightsWebTests() AzurermApplicationInsightsWebTestInformer
-	// AzurermApplicationSecurityGroups returns a AzurermApplicationSecurityGroupInformer.
-	AzurermApplicationSecurityGroups() AzurermApplicationSecurityGroupInformer
-	// AzurermAutomationAccounts returns a AzurermAutomationAccountInformer.
-	AzurermAutomationAccounts() AzurermAutomationAccountInformer
-	// AzurermAutomationCredentials returns a AzurermAutomationCredentialInformer.
-	AzurermAutomationCredentials() AzurermAutomationCredentialInformer
-	// AzurermAutomationDscConfigurations returns a AzurermAutomationDscConfigurationInformer.
-	AzurermAutomationDscConfigurations() AzurermAutomationDscConfigurationInformer
-	// AzurermAutomationDscNodeconfigurations returns a AzurermAutomationDscNodeconfigurationInformer.
-	AzurermAutomationDscNodeconfigurations() AzurermAutomationDscNodeconfigurationInformer
-	// AzurermAutomationModules returns a AzurermAutomationModuleInformer.
-	AzurermAutomationModules() AzurermAutomationModuleInformer
-	// AzurermAutomationRunbooks returns a AzurermAutomationRunbookInformer.
-	AzurermAutomationRunbooks() AzurermAutomationRunbookInformer
-	// AzurermAutomationSchedules returns a AzurermAutomationScheduleInformer.
-	AzurermAutomationSchedules() AzurermAutomationScheduleInformer
-	// AzurermAutomationVariableBools returns a AzurermAutomationVariableBoolInformer.
-	AzurermAutomationVariableBools() AzurermAutomationVariableBoolInformer
-	// AzurermAutomationVariableDatetimes returns a AzurermAutomationVariableDatetimeInformer.
-	AzurermAutomationVariableDatetimes() AzurermAutomationVariableDatetimeInformer
-	// AzurermAutomationVariableInts returns a AzurermAutomationVariableIntInformer.
-	AzurermAutomationVariableInts() AzurermAutomationVariableIntInformer
-	// AzurermAutomationVariableStrings returns a AzurermAutomationVariableStringInformer.
-	AzurermAutomationVariableStrings() AzurermAutomationVariableStringInformer
-	// AzurermAutoscaleSettings returns a AzurermAutoscaleSettingInformer.
-	AzurermAutoscaleSettings() AzurermAutoscaleSettingInformer
-	// AzurermAvailabilitySets returns a AzurermAvailabilitySetInformer.
-	AzurermAvailabilitySets() AzurermAvailabilitySetInformer
-	// AzurermAzureadApplications returns a AzurermAzureadApplicationInformer.
-	AzurermAzureadApplications() AzurermAzureadApplicationInformer
-	// AzurermAzureadServicePrincipals returns a AzurermAzureadServicePrincipalInformer.
-	AzurermAzureadServicePrincipals() AzurermAzureadServicePrincipalInformer
-	// AzurermAzureadServicePrincipalPasswords returns a AzurermAzureadServicePrincipalPasswordInformer.
-	AzurermAzureadServicePrincipalPasswords() AzurermAzureadServicePrincipalPasswordInformer
-	// AzurermBatchAccounts returns a AzurermBatchAccountInformer.
-	AzurermBatchAccounts() AzurermBatchAccountInformer
-	// AzurermBatchCertificates returns a AzurermBatchCertificateInformer.
-	AzurermBatchCertificates() AzurermBatchCertificateInformer
-	// AzurermBatchPools returns a AzurermBatchPoolInformer.
-	AzurermBatchPools() AzurermBatchPoolInformer
-	// AzurermCdnEndpoints returns a AzurermCdnEndpointInformer.
-	AzurermCdnEndpoints() AzurermCdnEndpointInformer
-	// AzurermCdnProfiles returns a AzurermCdnProfileInformer.
-	AzurermCdnProfiles() AzurermCdnProfileInformer
-	// AzurermCognitiveAccounts returns a AzurermCognitiveAccountInformer.
-	AzurermCognitiveAccounts() AzurermCognitiveAccountInformer
-	// AzurermConnectionMonitors returns a AzurermConnectionMonitorInformer.
-	AzurermConnectionMonitors() AzurermConnectionMonitorInformer
-	// AzurermContainerGroups returns a AzurermContainerGroupInformer.
-	AzurermContainerGroups() AzurermContainerGroupInformer
-	// AzurermContainerRegistries returns a AzurermContainerRegistryInformer.
-	AzurermContainerRegistries() AzurermContainerRegistryInformer
-	// AzurermContainerServices returns a AzurermContainerServiceInformer.
-	AzurermContainerServices() AzurermContainerServiceInformer
-	// AzurermCosmosdbAccounts returns a AzurermCosmosdbAccountInformer.
-	AzurermCosmosdbAccounts() AzurermCosmosdbAccountInformer
-	// AzurermCosmosdbCassandraKeyspaces returns a AzurermCosmosdbCassandraKeyspaceInformer.
-	AzurermCosmosdbCassandraKeyspaces() AzurermCosmosdbCassandraKeyspaceInformer
-	// AzurermCosmosdbMongoCollections returns a AzurermCosmosdbMongoCollectionInformer.
-	AzurermCosmosdbMongoCollections() AzurermCosmosdbMongoCollectionInformer
-	// AzurermCosmosdbMongoDatabases returns a AzurermCosmosdbMongoDatabaseInformer.
-	AzurermCosmosdbMongoDatabases() AzurermCosmosdbMongoDatabaseInformer
-	// AzurermCosmosdbSqlDatabases returns a AzurermCosmosdbSqlDatabaseInformer.
-	AzurermCosmosdbSqlDatabases() AzurermCosmosdbSqlDatabaseInformer
-	// AzurermCosmosdbTables returns a AzurermCosmosdbTableInformer.
-	AzurermCosmosdbTables() AzurermCosmosdbTableInformer
-	// AzurermDataFactories returns a AzurermDataFactoryInformer.
-	AzurermDataFactories() AzurermDataFactoryInformer
-	// AzurermDataFactoryDatasetMysqls returns a AzurermDataFactoryDatasetMysqlInformer.
-	AzurermDataFactoryDatasetMysqls() AzurermDataFactoryDatasetMysqlInformer
-	// AzurermDataFactoryDatasetPostgresqls returns a AzurermDataFactoryDatasetPostgresqlInformer.
-	AzurermDataFactoryDatasetPostgresqls() AzurermDataFactoryDatasetPostgresqlInformer
-	// AzurermDataFactoryDatasetSqlServerTables returns a AzurermDataFactoryDatasetSqlServerTableInformer.
-	AzurermDataFactoryDatasetSqlServerTables() AzurermDataFactoryDatasetSqlServerTableInformer
-	// AzurermDataFactoryLinkedServiceDataLakeStorageGen2s returns a AzurermDataFactoryLinkedServiceDataLakeStorageGen2Informer.
-	AzurermDataFactoryLinkedServiceDataLakeStorageGen2s() AzurermDataFactoryLinkedServiceDataLakeStorageGen2Informer
-	// AzurermDataFactoryLinkedServiceMysqls returns a AzurermDataFactoryLinkedServiceMysqlInformer.
-	AzurermDataFactoryLinkedServiceMysqls() AzurermDataFactoryLinkedServiceMysqlInformer
-	// AzurermDataFactoryLinkedServicePostgresqls returns a AzurermDataFactoryLinkedServicePostgresqlInformer.
-	AzurermDataFactoryLinkedServicePostgresqls() AzurermDataFactoryLinkedServicePostgresqlInformer
-	// AzurermDataFactoryLinkedServiceSqlServers returns a AzurermDataFactoryLinkedServiceSqlServerInformer.
-	AzurermDataFactoryLinkedServiceSqlServers() AzurermDataFactoryLinkedServiceSqlServerInformer
-	// AzurermDataFactoryPipelines returns a AzurermDataFactoryPipelineInformer.
-	AzurermDataFactoryPipelines() AzurermDataFactoryPipelineInformer
-	// AzurermDataLakeAnalyticsAccounts returns a AzurermDataLakeAnalyticsAccountInformer.
-	AzurermDataLakeAnalyticsAccounts() AzurermDataLakeAnalyticsAccountInformer
-	// AzurermDataLakeAnalyticsFirewallRules returns a AzurermDataLakeAnalyticsFirewallRuleInformer.
-	AzurermDataLakeAnalyticsFirewallRules() AzurermDataLakeAnalyticsFirewallRuleInformer
-	// AzurermDataLakeStores returns a AzurermDataLakeStoreInformer.
-	AzurermDataLakeStores() AzurermDataLakeStoreInformer
-	// AzurermDataLakeStoreFiles returns a AzurermDataLakeStoreFileInformer.
-	AzurermDataLakeStoreFiles() AzurermDataLakeStoreFileInformer
-	// AzurermDataLakeStoreFirewallRules returns a AzurermDataLakeStoreFirewallRuleInformer.
-	AzurermDataLakeStoreFirewallRules() AzurermDataLakeStoreFirewallRuleInformer
-	// AzurermDatabricksWorkspaces returns a AzurermDatabricksWorkspaceInformer.
-	AzurermDatabricksWorkspaces() AzurermDatabricksWorkspaceInformer
-	// AzurermDdosProtectionPlans returns a AzurermDdosProtectionPlanInformer.
-	AzurermDdosProtectionPlans() AzurermDdosProtectionPlanInformer
-	// AzurermDevTestLabs returns a AzurermDevTestLabInformer.
-	AzurermDevTestLabs() AzurermDevTestLabInformer
-	// AzurermDevTestLinuxVirtualMachines returns a AzurermDevTestLinuxVirtualMachineInformer.
-	AzurermDevTestLinuxVirtualMachines() AzurermDevTestLinuxVirtualMachineInformer
-	// AzurermDevTestPolicies returns a AzurermDevTestPolicyInformer.
-	AzurermDevTestPolicies() AzurermDevTestPolicyInformer
-	// AzurermDevTestVirtualNetworks returns a AzurermDevTestVirtualNetworkInformer.
-	AzurermDevTestVirtualNetworks() AzurermDevTestVirtualNetworkInformer
-	// AzurermDevTestWindowsVirtualMachines returns a AzurermDevTestWindowsVirtualMachineInformer.
-	AzurermDevTestWindowsVirtualMachines() AzurermDevTestWindowsVirtualMachineInformer
-	// AzurermDevspaceControllers returns a AzurermDevspaceControllerInformer.
-	AzurermDevspaceControllers() AzurermDevspaceControllerInformer
-	// AzurermDnsARecords returns a AzurermDnsARecordInformer.
-	AzurermDnsARecords() AzurermDnsARecordInformer
-	// AzurermDnsAaaaRecords returns a AzurermDnsAaaaRecordInformer.
-	AzurermDnsAaaaRecords() AzurermDnsAaaaRecordInformer
-	// AzurermDnsCaaRecords returns a AzurermDnsCaaRecordInformer.
-	AzurermDnsCaaRecords() AzurermDnsCaaRecordInformer
-	// AzurermDnsCnameRecords returns a AzurermDnsCnameRecordInformer.
-	AzurermDnsCnameRecords() AzurermDnsCnameRecordInformer
-	// AzurermDnsMxRecords returns a AzurermDnsMxRecordInformer.
-	AzurermDnsMxRecords() AzurermDnsMxRecordInformer
-	// AzurermDnsNsRecords returns a AzurermDnsNsRecordInformer.
-	AzurermDnsNsRecords() AzurermDnsNsRecordInformer
-	// AzurermDnsPtrRecords returns a AzurermDnsPtrRecordInformer.
-	AzurermDnsPtrRecords() AzurermDnsPtrRecordInformer
-	// AzurermDnsSrvRecords returns a AzurermDnsSrvRecordInformer.
-	AzurermDnsSrvRecords() AzurermDnsSrvRecordInformer
-	// AzurermDnsTxtRecords returns a AzurermDnsTxtRecordInformer.
-	AzurermDnsTxtRecords() AzurermDnsTxtRecordInformer
-	// AzurermDnsZones returns a AzurermDnsZoneInformer.
-	AzurermDnsZones() AzurermDnsZoneInformer
-	// AzurermEventgridDomains returns a AzurermEventgridDomainInformer.
-	AzurermEventgridDomains() AzurermEventgridDomainInformer
-	// AzurermEventgridEventSubscriptions returns a AzurermEventgridEventSubscriptionInformer.
-	AzurermEventgridEventSubscriptions() AzurermEventgridEventSubscriptionInformer
-	// AzurermEventgridTopics returns a AzurermEventgridTopicInformer.
-	AzurermEventgridTopics() AzurermEventgridTopicInformer
-	// AzurermEventhubs returns a AzurermEventhubInformer.
-	AzurermEventhubs() AzurermEventhubInformer
-	// AzurermEventhubAuthorizationRules returns a AzurermEventhubAuthorizationRuleInformer.
-	AzurermEventhubAuthorizationRules() AzurermEventhubAuthorizationRuleInformer
-	// AzurermEventhubConsumerGroups returns a AzurermEventhubConsumerGroupInformer.
-	AzurermEventhubConsumerGroups() AzurermEventhubConsumerGroupInformer
-	// AzurermEventhubNamespaces returns a AzurermEventhubNamespaceInformer.
-	AzurermEventhubNamespaces() AzurermEventhubNamespaceInformer
-	// AzurermEventhubNamespaceAuthorizationRules returns a AzurermEventhubNamespaceAuthorizationRuleInformer.
-	AzurermEventhubNamespaceAuthorizationRules() AzurermEventhubNamespaceAuthorizationRuleInformer
-	// AzurermExpressRouteCircuits returns a AzurermExpressRouteCircuitInformer.
-	AzurermExpressRouteCircuits() AzurermExpressRouteCircuitInformer
-	// AzurermExpressRouteCircuitAuthorizations returns a AzurermExpressRouteCircuitAuthorizationInformer.
-	AzurermExpressRouteCircuitAuthorizations() AzurermExpressRouteCircuitAuthorizationInformer
-	// AzurermExpressRouteCircuitPeerings returns a AzurermExpressRouteCircuitPeeringInformer.
-	AzurermExpressRouteCircuitPeerings() AzurermExpressRouteCircuitPeeringInformer
-	// AzurermFirewalls returns a AzurermFirewallInformer.
-	AzurermFirewalls() AzurermFirewallInformer
-	// AzurermFirewallApplicationRuleCollections returns a AzurermFirewallApplicationRuleCollectionInformer.
-	AzurermFirewallApplicationRuleCollections() AzurermFirewallApplicationRuleCollectionInformer
-	// AzurermFirewallNatRuleCollections returns a AzurermFirewallNatRuleCollectionInformer.
-	AzurermFirewallNatRuleCollections() AzurermFirewallNatRuleCollectionInformer
-	// AzurermFirewallNetworkRuleCollections returns a AzurermFirewallNetworkRuleCollectionInformer.
-	AzurermFirewallNetworkRuleCollections() AzurermFirewallNetworkRuleCollectionInformer
-	// AzurermFunctionApps returns a AzurermFunctionAppInformer.
-	AzurermFunctionApps() AzurermFunctionAppInformer
-	// AzurermHdinsightHadoopClusters returns a AzurermHdinsightHadoopClusterInformer.
-	AzurermHdinsightHadoopClusters() AzurermHdinsightHadoopClusterInformer
-	// AzurermHdinsightHbaseClusters returns a AzurermHdinsightHbaseClusterInformer.
-	AzurermHdinsightHbaseClusters() AzurermHdinsightHbaseClusterInformer
-	// AzurermHdinsightInteractiveQueryClusters returns a AzurermHdinsightInteractiveQueryClusterInformer.
-	AzurermHdinsightInteractiveQueryClusters() AzurermHdinsightInteractiveQueryClusterInformer
-	// AzurermHdinsightKafkaClusters returns a AzurermHdinsightKafkaClusterInformer.
-	AzurermHdinsightKafkaClusters() AzurermHdinsightKafkaClusterInformer
-	// AzurermHdinsightMlServicesClusters returns a AzurermHdinsightMlServicesClusterInformer.
-	AzurermHdinsightMlServicesClusters() AzurermHdinsightMlServicesClusterInformer
-	// AzurermHdinsightRserverClusters returns a AzurermHdinsightRserverClusterInformer.
-	AzurermHdinsightRserverClusters() AzurermHdinsightRserverClusterInformer
-	// AzurermHdinsightSparkClusters returns a AzurermHdinsightSparkClusterInformer.
-	AzurermHdinsightSparkClusters() AzurermHdinsightSparkClusterInformer
-	// AzurermHdinsightStormClusters returns a AzurermHdinsightStormClusterInformer.
-	AzurermHdinsightStormClusters() AzurermHdinsightStormClusterInformer
-	// AzurermImages returns a AzurermImageInformer.
-	AzurermImages() AzurermImageInformer
-	// AzurermIotDpses returns a AzurermIotDpsInformer.
-	AzurermIotDpses() AzurermIotDpsInformer
-	// AzurermIotDpsCertificates returns a AzurermIotDpsCertificateInformer.
-	AzurermIotDpsCertificates() AzurermIotDpsCertificateInformer
-	// AzurermIothubs returns a AzurermIothubInformer.
-	AzurermIothubs() AzurermIothubInformer
-	// AzurermIothubConsumerGroups returns a AzurermIothubConsumerGroupInformer.
-	AzurermIothubConsumerGroups() AzurermIothubConsumerGroupInformer
-	// AzurermIothubSharedAccessPolicies returns a AzurermIothubSharedAccessPolicyInformer.
-	AzurermIothubSharedAccessPolicies() AzurermIothubSharedAccessPolicyInformer
-	// AzurermKeyVaults returns a AzurermKeyVaultInformer.
-	AzurermKeyVaults() AzurermKeyVaultInformer
-	// AzurermKeyVaultAccessPolicies returns a AzurermKeyVaultAccessPolicyInformer.
-	AzurermKeyVaultAccessPolicies() AzurermKeyVaultAccessPolicyInformer
-	// AzurermKeyVaultCertificates returns a AzurermKeyVaultCertificateInformer.
-	AzurermKeyVaultCertificates() AzurermKeyVaultCertificateInformer
-	// AzurermKeyVaultKeys returns a AzurermKeyVaultKeyInformer.
-	AzurermKeyVaultKeys() AzurermKeyVaultKeyInformer
-	// AzurermKeyVaultSecrets returns a AzurermKeyVaultSecretInformer.
-	AzurermKeyVaultSecrets() AzurermKeyVaultSecretInformer
-	// AzurermKubernetesClusters returns a AzurermKubernetesClusterInformer.
-	AzurermKubernetesClusters() AzurermKubernetesClusterInformer
-	// AzurermLbs returns a AzurermLbInformer.
-	AzurermLbs() AzurermLbInformer
-	// AzurermLbBackendAddressPools returns a AzurermLbBackendAddressPoolInformer.
-	AzurermLbBackendAddressPools() AzurermLbBackendAddressPoolInformer
-	// AzurermLbNatPools returns a AzurermLbNatPoolInformer.
-	AzurermLbNatPools() AzurermLbNatPoolInformer
-	// AzurermLbNatRules returns a AzurermLbNatRuleInformer.
-	AzurermLbNatRules() AzurermLbNatRuleInformer
-	// AzurermLbOutboundRules returns a AzurermLbOutboundRuleInformer.
-	AzurermLbOutboundRules() AzurermLbOutboundRuleInformer
-	// AzurermLbProbes returns a AzurermLbProbeInformer.
-	AzurermLbProbes() AzurermLbProbeInformer
-	// AzurermLbRules returns a AzurermLbRuleInformer.
-	AzurermLbRules() AzurermLbRuleInformer
-	// AzurermLocalNetworkGateways returns a AzurermLocalNetworkGatewayInformer.
-	AzurermLocalNetworkGateways() AzurermLocalNetworkGatewayInformer
-	// AzurermLogAnalyticsLinkedServices returns a AzurermLogAnalyticsLinkedServiceInformer.
-	AzurermLogAnalyticsLinkedServices() AzurermLogAnalyticsLinkedServiceInformer
-	// AzurermLogAnalyticsSolutions returns a AzurermLogAnalyticsSolutionInformer.
-	AzurermLogAnalyticsSolutions() AzurermLogAnalyticsSolutionInformer
-	// AzurermLogAnalyticsWorkspaces returns a AzurermLogAnalyticsWorkspaceInformer.
-	AzurermLogAnalyticsWorkspaces() AzurermLogAnalyticsWorkspaceInformer
-	// AzurermLogAnalyticsWorkspaceLinkedServices returns a AzurermLogAnalyticsWorkspaceLinkedServiceInformer.
-	AzurermLogAnalyticsWorkspaceLinkedServices() AzurermLogAnalyticsWorkspaceLinkedServiceInformer
-	// AzurermLogicAppActionCustoms returns a AzurermLogicAppActionCustomInformer.
-	AzurermLogicAppActionCustoms() AzurermLogicAppActionCustomInformer
-	// AzurermLogicAppActionHttps returns a AzurermLogicAppActionHttpInformer.
-	AzurermLogicAppActionHttps() AzurermLogicAppActionHttpInformer
-	// AzurermLogicAppTriggerCustoms returns a AzurermLogicAppTriggerCustomInformer.
-	AzurermLogicAppTriggerCustoms() AzurermLogicAppTriggerCustomInformer
-	// AzurermLogicAppTriggerHttpRequests returns a AzurermLogicAppTriggerHttpRequestInformer.
-	AzurermLogicAppTriggerHttpRequests() AzurermLogicAppTriggerHttpRequestInformer
-	// AzurermLogicAppTriggerRecurrences returns a AzurermLogicAppTriggerRecurrenceInformer.
-	AzurermLogicAppTriggerRecurrences() AzurermLogicAppTriggerRecurrenceInformer
-	// AzurermLogicAppWorkflows returns a AzurermLogicAppWorkflowInformer.
-	AzurermLogicAppWorkflows() AzurermLogicAppWorkflowInformer
-	// AzurermManagedDisks returns a AzurermManagedDiskInformer.
-	AzurermManagedDisks() AzurermManagedDiskInformer
-	// AzurermManagementGroups returns a AzurermManagementGroupInformer.
-	AzurermManagementGroups() AzurermManagementGroupInformer
-	// AzurermManagementLocks returns a AzurermManagementLockInformer.
-	AzurermManagementLocks() AzurermManagementLockInformer
-	// AzurermMariadbDatabases returns a AzurermMariadbDatabaseInformer.
-	AzurermMariadbDatabases() AzurermMariadbDatabaseInformer
-	// AzurermMariadbFirewallRules returns a AzurermMariadbFirewallRuleInformer.
-	AzurermMariadbFirewallRules() AzurermMariadbFirewallRuleInformer
-	// AzurermMariadbServers returns a AzurermMariadbServerInformer.
-	AzurermMariadbServers() AzurermMariadbServerInformer
-	// AzurermMediaServicesAccounts returns a AzurermMediaServicesAccountInformer.
-	AzurermMediaServicesAccounts() AzurermMediaServicesAccountInformer
-	// AzurermMetricAlertrules returns a AzurermMetricAlertruleInformer.
-	AzurermMetricAlertrules() AzurermMetricAlertruleInformer
-	// AzurermMonitorActionGroups returns a AzurermMonitorActionGroupInformer.
-	AzurermMonitorActionGroups() AzurermMonitorActionGroupInformer
-	// AzurermMonitorActivityLogAlerts returns a AzurermMonitorActivityLogAlertInformer.
-	AzurermMonitorActivityLogAlerts() AzurermMonitorActivityLogAlertInformer
-	// AzurermMonitorAutoscaleSettings returns a AzurermMonitorAutoscaleSettingInformer.
-	AzurermMonitorAutoscaleSettings() AzurermMonitorAutoscaleSettingInformer
-	// AzurermMonitorDiagnosticSettings returns a AzurermMonitorDiagnosticSettingInformer.
-	AzurermMonitorDiagnosticSettings() AzurermMonitorDiagnosticSettingInformer
-	// AzurermMonitorLogProfiles returns a AzurermMonitorLogProfileInformer.
-	AzurermMonitorLogProfiles() AzurermMonitorLogProfileInformer
-	// AzurermMonitorMetricAlerts returns a AzurermMonitorMetricAlertInformer.
-	AzurermMonitorMetricAlerts() AzurermMonitorMetricAlertInformer
-	// AzurermMonitorMetricAlertrules returns a AzurermMonitorMetricAlertruleInformer.
-	AzurermMonitorMetricAlertrules() AzurermMonitorMetricAlertruleInformer
-	// AzurermMssqlElasticpools returns a AzurermMssqlElasticpoolInformer.
-	AzurermMssqlElasticpools() AzurermMssqlElasticpoolInformer
-	// AzurermMysqlConfigurations returns a AzurermMysqlConfigurationInformer.
-	AzurermMysqlConfigurations() AzurermMysqlConfigurationInformer
-	// AzurermMysqlDatabases returns a AzurermMysqlDatabaseInformer.
-	AzurermMysqlDatabases() AzurermMysqlDatabaseInformer
-	// AzurermMysqlFirewallRules returns a AzurermMysqlFirewallRuleInformer.
-	AzurermMysqlFirewallRules() AzurermMysqlFirewallRuleInformer
-	// AzurermMysqlServers returns a AzurermMysqlServerInformer.
-	AzurermMysqlServers() AzurermMysqlServerInformer
-	// AzurermMysqlVirtualNetworkRules returns a AzurermMysqlVirtualNetworkRuleInformer.
-	AzurermMysqlVirtualNetworkRules() AzurermMysqlVirtualNetworkRuleInformer
-	// AzurermNetworkConnectionMonitors returns a AzurermNetworkConnectionMonitorInformer.
-	AzurermNetworkConnectionMonitors() AzurermNetworkConnectionMonitorInformer
-	// AzurermNetworkDdosProtectionPlans returns a AzurermNetworkDdosProtectionPlanInformer.
-	AzurermNetworkDdosProtectionPlans() AzurermNetworkDdosProtectionPlanInformer
-	// AzurermNetworkInterfaces returns a AzurermNetworkInterfaceInformer.
-	AzurermNetworkInterfaces() AzurermNetworkInterfaceInformer
-	// AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations returns a AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInformer.
-	AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations() AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInformer
-	// AzurermNetworkInterfaceApplicationSecurityGroupAssociations returns a AzurermNetworkInterfaceApplicationSecurityGroupAssociationInformer.
-	AzurermNetworkInterfaceApplicationSecurityGroupAssociations() AzurermNetworkInterfaceApplicationSecurityGroupAssociationInformer
-	// AzurermNetworkInterfaceBackendAddressPoolAssociations returns a AzurermNetworkInterfaceBackendAddressPoolAssociationInformer.
-	AzurermNetworkInterfaceBackendAddressPoolAssociations() AzurermNetworkInterfaceBackendAddressPoolAssociationInformer
-	// AzurermNetworkInterfaceNatRuleAssociations returns a AzurermNetworkInterfaceNatRuleAssociationInformer.
-	AzurermNetworkInterfaceNatRuleAssociations() AzurermNetworkInterfaceNatRuleAssociationInformer
-	// AzurermNetworkPacketCaptures returns a AzurermNetworkPacketCaptureInformer.
-	AzurermNetworkPacketCaptures() AzurermNetworkPacketCaptureInformer
-	// AzurermNetworkProfiles returns a AzurermNetworkProfileInformer.
-	AzurermNetworkProfiles() AzurermNetworkProfileInformer
-	// AzurermNetworkSecurityGroups returns a AzurermNetworkSecurityGroupInformer.
-	AzurermNetworkSecurityGroups() AzurermNetworkSecurityGroupInformer
-	// AzurermNetworkSecurityRules returns a AzurermNetworkSecurityRuleInformer.
-	AzurermNetworkSecurityRules() AzurermNetworkSecurityRuleInformer
-	// AzurermNetworkWatchers returns a AzurermNetworkWatcherInformer.
-	AzurermNetworkWatchers() AzurermNetworkWatcherInformer
-	// AzurermNotificationHubs returns a AzurermNotificationHubInformer.
-	AzurermNotificationHubs() AzurermNotificationHubInformer
-	// AzurermNotificationHubAuthorizationRules returns a AzurermNotificationHubAuthorizationRuleInformer.
-	AzurermNotificationHubAuthorizationRules() AzurermNotificationHubAuthorizationRuleInformer
-	// AzurermNotificationHubNamespaces returns a AzurermNotificationHubNamespaceInformer.
-	AzurermNotificationHubNamespaces() AzurermNotificationHubNamespaceInformer
-	// AzurermPacketCaptures returns a AzurermPacketCaptureInformer.
-	AzurermPacketCaptures() AzurermPacketCaptureInformer
-	// AzurermPolicyAssignments returns a AzurermPolicyAssignmentInformer.
-	AzurermPolicyAssignments() AzurermPolicyAssignmentInformer
-	// AzurermPolicyDefinitions returns a AzurermPolicyDefinitionInformer.
-	AzurermPolicyDefinitions() AzurermPolicyDefinitionInformer
-	// AzurermPolicySetDefinitions returns a AzurermPolicySetDefinitionInformer.
-	AzurermPolicySetDefinitions() AzurermPolicySetDefinitionInformer
-	// AzurermPostgresqlConfigurations returns a AzurermPostgresqlConfigurationInformer.
-	AzurermPostgresqlConfigurations() AzurermPostgresqlConfigurationInformer
-	// AzurermPostgresqlDatabases returns a AzurermPostgresqlDatabaseInformer.
-	AzurermPostgresqlDatabases() AzurermPostgresqlDatabaseInformer
-	// AzurermPostgresqlFirewallRules returns a AzurermPostgresqlFirewallRuleInformer.
-	AzurermPostgresqlFirewallRules() AzurermPostgresqlFirewallRuleInformer
-	// AzurermPostgresqlServers returns a AzurermPostgresqlServerInformer.
-	AzurermPostgresqlServers() AzurermPostgresqlServerInformer
-	// AzurermPostgresqlVirtualNetworkRules returns a AzurermPostgresqlVirtualNetworkRuleInformer.
-	AzurermPostgresqlVirtualNetworkRules() AzurermPostgresqlVirtualNetworkRuleInformer
-	// AzurermPrivateDnsZones returns a AzurermPrivateDnsZoneInformer.
-	AzurermPrivateDnsZones() AzurermPrivateDnsZoneInformer
-	// AzurermPublicIps returns a AzurermPublicIpInformer.
-	AzurermPublicIps() AzurermPublicIpInformer
-	// AzurermPublicIpPrefixes returns a AzurermPublicIpPrefixInformer.
-	AzurermPublicIpPrefixes() AzurermPublicIpPrefixInformer
-	// AzurermRecoveryServicesProtectedVms returns a AzurermRecoveryServicesProtectedVmInformer.
-	AzurermRecoveryServicesProtectedVms() AzurermRecoveryServicesProtectedVmInformer
-	// AzurermRecoveryServicesProtectionPolicyVms returns a AzurermRecoveryServicesProtectionPolicyVmInformer.
-	AzurermRecoveryServicesProtectionPolicyVms() AzurermRecoveryServicesProtectionPolicyVmInformer
-	// AzurermRecoveryServicesVaults returns a AzurermRecoveryServicesVaultInformer.
-	AzurermRecoveryServicesVaults() AzurermRecoveryServicesVaultInformer
-	// AzurermRedisCaches returns a AzurermRedisCacheInformer.
-	AzurermRedisCaches() AzurermRedisCacheInformer
-	// AzurermRedisFirewallRules returns a AzurermRedisFirewallRuleInformer.
-	AzurermRedisFirewallRules() AzurermRedisFirewallRuleInformer
-	// AzurermRelayNamespaces returns a AzurermRelayNamespaceInformer.
-	AzurermRelayNamespaces() AzurermRelayNamespaceInformer
-	// AzurermResourceGroups returns a AzurermResourceGroupInformer.
-	AzurermResourceGroups() AzurermResourceGroupInformer
-	// AzurermRoleAssignments returns a AzurermRoleAssignmentInformer.
-	AzurermRoleAssignments() AzurermRoleAssignmentInformer
-	// AzurermRoleDefinitions returns a AzurermRoleDefinitionInformer.
-	AzurermRoleDefinitions() AzurermRoleDefinitionInformer
-	// AzurermRoutes returns a AzurermRouteInformer.
-	AzurermRoutes() AzurermRouteInformer
-	// AzurermRouteTables returns a AzurermRouteTableInformer.
-	AzurermRouteTables() AzurermRouteTableInformer
-	// AzurermSchedulerJobs returns a AzurermSchedulerJobInformer.
-	AzurermSchedulerJobs() AzurermSchedulerJobInformer
-	// AzurermSchedulerJobCollections returns a AzurermSchedulerJobCollectionInformer.
-	AzurermSchedulerJobCollections() AzurermSchedulerJobCollectionInformer
-	// AzurermSearchServices returns a AzurermSearchServiceInformer.
-	AzurermSearchServices() AzurermSearchServiceInformer
-	// AzurermSecurityCenterContacts returns a AzurermSecurityCenterContactInformer.
-	AzurermSecurityCenterContacts() AzurermSecurityCenterContactInformer
-	// AzurermSecurityCenterSubscriptionPricings returns a AzurermSecurityCenterSubscriptionPricingInformer.
-	AzurermSecurityCenterSubscriptionPricings() AzurermSecurityCenterSubscriptionPricingInformer
-	// AzurermSecurityCenterWorkspaces returns a AzurermSecurityCenterWorkspaceInformer.
-	AzurermSecurityCenterWorkspaces() AzurermSecurityCenterWorkspaceInformer
-	// AzurermServiceFabricClusters returns a AzurermServiceFabricClusterInformer.
-	AzurermServiceFabricClusters() AzurermServiceFabricClusterInformer
-	// AzurermServicebusNamespaces returns a AzurermServicebusNamespaceInformer.
-	AzurermServicebusNamespaces() AzurermServicebusNamespaceInformer
-	// AzurermServicebusNamespaceAuthorizationRules returns a AzurermServicebusNamespaceAuthorizationRuleInformer.
-	AzurermServicebusNamespaceAuthorizationRules() AzurermServicebusNamespaceAuthorizationRuleInformer
-	// AzurermServicebusQueues returns a AzurermServicebusQueueInformer.
-	AzurermServicebusQueues() AzurermServicebusQueueInformer
-	// AzurermServicebusQueueAuthorizationRules returns a AzurermServicebusQueueAuthorizationRuleInformer.
-	AzurermServicebusQueueAuthorizationRules() AzurermServicebusQueueAuthorizationRuleInformer
-	// AzurermServicebusSubscriptions returns a AzurermServicebusSubscriptionInformer.
-	AzurermServicebusSubscriptions() AzurermServicebusSubscriptionInformer
-	// AzurermServicebusSubscriptionRules returns a AzurermServicebusSubscriptionRuleInformer.
-	AzurermServicebusSubscriptionRules() AzurermServicebusSubscriptionRuleInformer
-	// AzurermServicebusTopics returns a AzurermServicebusTopicInformer.
-	AzurermServicebusTopics() AzurermServicebusTopicInformer
-	// AzurermServicebusTopicAuthorizationRules returns a AzurermServicebusTopicAuthorizationRuleInformer.
-	AzurermServicebusTopicAuthorizationRules() AzurermServicebusTopicAuthorizationRuleInformer
-	// AzurermSharedImages returns a AzurermSharedImageInformer.
-	AzurermSharedImages() AzurermSharedImageInformer
-	// AzurermSharedImageGalleries returns a AzurermSharedImageGalleryInformer.
-	AzurermSharedImageGalleries() AzurermSharedImageGalleryInformer
-	// AzurermSharedImageVersions returns a AzurermSharedImageVersionInformer.
-	AzurermSharedImageVersions() AzurermSharedImageVersionInformer
-	// AzurermSignalrServices returns a AzurermSignalrServiceInformer.
-	AzurermSignalrServices() AzurermSignalrServiceInformer
-	// AzurermSnapshots returns a AzurermSnapshotInformer.
-	AzurermSnapshots() AzurermSnapshotInformer
-	// AzurermSqlActiveDirectoryAdministrators returns a AzurermSqlActiveDirectoryAdministratorInformer.
-	AzurermSqlActiveDirectoryAdministrators() AzurermSqlActiveDirectoryAdministratorInformer
-	// AzurermSqlDatabases returns a AzurermSqlDatabaseInformer.
-	AzurermSqlDatabases() AzurermSqlDatabaseInformer
-	// AzurermSqlElasticpools returns a AzurermSqlElasticpoolInformer.
-	AzurermSqlElasticpools() AzurermSqlElasticpoolInformer
-	// AzurermSqlFirewallRules returns a AzurermSqlFirewallRuleInformer.
-	AzurermSqlFirewallRules() AzurermSqlFirewallRuleInformer
-	// AzurermSqlServers returns a AzurermSqlServerInformer.
-	AzurermSqlServers() AzurermSqlServerInformer
-	// AzurermSqlVirtualNetworkRules returns a AzurermSqlVirtualNetworkRuleInformer.
-	AzurermSqlVirtualNetworkRules() AzurermSqlVirtualNetworkRuleInformer
-	// AzurermStorageAccounts returns a AzurermStorageAccountInformer.
-	AzurermStorageAccounts() AzurermStorageAccountInformer
-	// AzurermStorageBlobs returns a AzurermStorageBlobInformer.
-	AzurermStorageBlobs() AzurermStorageBlobInformer
-	// AzurermStorageContainers returns a AzurermStorageContainerInformer.
-	AzurermStorageContainers() AzurermStorageContainerInformer
-	// AzurermStorageQueues returns a AzurermStorageQueueInformer.
-	AzurermStorageQueues() AzurermStorageQueueInformer
-	// AzurermStorageShares returns a AzurermStorageShareInformer.
-	AzurermStorageShares() AzurermStorageShareInformer
-	// AzurermStorageTables returns a AzurermStorageTableInformer.
-	AzurermStorageTables() AzurermStorageTableInformer
-	// AzurermStreamAnalyticsFunctionJavascriptUdves returns a AzurermStreamAnalyticsFunctionJavascriptUdfInformer.
-	AzurermStreamAnalyticsFunctionJavascriptUdves() AzurermStreamAnalyticsFunctionJavascriptUdfInformer
-	// AzurermStreamAnalyticsJobs returns a AzurermStreamAnalyticsJobInformer.
-	AzurermStreamAnalyticsJobs() AzurermStreamAnalyticsJobInformer
-	// AzurermStreamAnalyticsOutputBlobs returns a AzurermStreamAnalyticsOutputBlobInformer.
-	AzurermStreamAnalyticsOutputBlobs() AzurermStreamAnalyticsOutputBlobInformer
-	// AzurermStreamAnalyticsOutputEventhubs returns a AzurermStreamAnalyticsOutputEventhubInformer.
-	AzurermStreamAnalyticsOutputEventhubs() AzurermStreamAnalyticsOutputEventhubInformer
-	// AzurermStreamAnalyticsOutputMssqls returns a AzurermStreamAnalyticsOutputMssqlInformer.
-	AzurermStreamAnalyticsOutputMssqls() AzurermStreamAnalyticsOutputMssqlInformer
-	// AzurermStreamAnalyticsOutputServicebusQueues returns a AzurermStreamAnalyticsOutputServicebusQueueInformer.
-	AzurermStreamAnalyticsOutputServicebusQueues() AzurermStreamAnalyticsOutputServicebusQueueInformer
-	// AzurermStreamAnalyticsStreamInputBlobs returns a AzurermStreamAnalyticsStreamInputBlobInformer.
-	AzurermStreamAnalyticsStreamInputBlobs() AzurermStreamAnalyticsStreamInputBlobInformer
-	// AzurermStreamAnalyticsStreamInputEventhubs returns a AzurermStreamAnalyticsStreamInputEventhubInformer.
-	AzurermStreamAnalyticsStreamInputEventhubs() AzurermStreamAnalyticsStreamInputEventhubInformer
-	// AzurermStreamAnalyticsStreamInputIothubs returns a AzurermStreamAnalyticsStreamInputIothubInformer.
-	AzurermStreamAnalyticsStreamInputIothubs() AzurermStreamAnalyticsStreamInputIothubInformer
-	// AzurermSubnets returns a AzurermSubnetInformer.
-	AzurermSubnets() AzurermSubnetInformer
-	// AzurermSubnetNetworkSecurityGroupAssociations returns a AzurermSubnetNetworkSecurityGroupAssociationInformer.
-	AzurermSubnetNetworkSecurityGroupAssociations() AzurermSubnetNetworkSecurityGroupAssociationInformer
-	// AzurermSubnetRouteTableAssociations returns a AzurermSubnetRouteTableAssociationInformer.
-	AzurermSubnetRouteTableAssociations() AzurermSubnetRouteTableAssociationInformer
-	// AzurermTemplateDeployments returns a AzurermTemplateDeploymentInformer.
-	AzurermTemplateDeployments() AzurermTemplateDeploymentInformer
-	// AzurermTrafficManagerEndpoints returns a AzurermTrafficManagerEndpointInformer.
-	AzurermTrafficManagerEndpoints() AzurermTrafficManagerEndpointInformer
-	// AzurermTrafficManagerProfiles returns a AzurermTrafficManagerProfileInformer.
-	AzurermTrafficManagerProfiles() AzurermTrafficManagerProfileInformer
-	// AzurermUserAssignedIdentities returns a AzurermUserAssignedIdentityInformer.
-	AzurermUserAssignedIdentities() AzurermUserAssignedIdentityInformer
-	// AzurermVirtualMachines returns a AzurermVirtualMachineInformer.
-	AzurermVirtualMachines() AzurermVirtualMachineInformer
-	// AzurermVirtualMachineDataDiskAttachments returns a AzurermVirtualMachineDataDiskAttachmentInformer.
-	AzurermVirtualMachineDataDiskAttachments() AzurermVirtualMachineDataDiskAttachmentInformer
-	// AzurermVirtualMachineExtensions returns a AzurermVirtualMachineExtensionInformer.
-	AzurermVirtualMachineExtensions() AzurermVirtualMachineExtensionInformer
-	// AzurermVirtualMachineScaleSets returns a AzurermVirtualMachineScaleSetInformer.
-	AzurermVirtualMachineScaleSets() AzurermVirtualMachineScaleSetInformer
-	// AzurermVirtualNetworks returns a AzurermVirtualNetworkInformer.
-	AzurermVirtualNetworks() AzurermVirtualNetworkInformer
-	// AzurermVirtualNetworkGateways returns a AzurermVirtualNetworkGatewayInformer.
-	AzurermVirtualNetworkGateways() AzurermVirtualNetworkGatewayInformer
-	// AzurermVirtualNetworkGatewayConnections returns a AzurermVirtualNetworkGatewayConnectionInformer.
-	AzurermVirtualNetworkGatewayConnections() AzurermVirtualNetworkGatewayConnectionInformer
-	// AzurermVirtualNetworkPeerings returns a AzurermVirtualNetworkPeeringInformer.
-	AzurermVirtualNetworkPeerings() AzurermVirtualNetworkPeeringInformer
+	// ApiManagements returns a ApiManagementInformer.
+	ApiManagements() ApiManagementInformer
+	// ApiManagementApis returns a ApiManagementApiInformer.
+	ApiManagementApis() ApiManagementApiInformer
+	// ApiManagementApiOperations returns a ApiManagementApiOperationInformer.
+	ApiManagementApiOperations() ApiManagementApiOperationInformer
+	// ApiManagementApiOperationPolicies returns a ApiManagementApiOperationPolicyInformer.
+	ApiManagementApiOperationPolicies() ApiManagementApiOperationPolicyInformer
+	// ApiManagementApiPolicies returns a ApiManagementApiPolicyInformer.
+	ApiManagementApiPolicies() ApiManagementApiPolicyInformer
+	// ApiManagementApiSchemas returns a ApiManagementApiSchemaInformer.
+	ApiManagementApiSchemas() ApiManagementApiSchemaInformer
+	// ApiManagementApiVersionSets returns a ApiManagementApiVersionSetInformer.
+	ApiManagementApiVersionSets() ApiManagementApiVersionSetInformer
+	// ApiManagementAuthorizationServers returns a ApiManagementAuthorizationServerInformer.
+	ApiManagementAuthorizationServers() ApiManagementAuthorizationServerInformer
+	// ApiManagementBackends returns a ApiManagementBackendInformer.
+	ApiManagementBackends() ApiManagementBackendInformer
+	// ApiManagementCertificates returns a ApiManagementCertificateInformer.
+	ApiManagementCertificates() ApiManagementCertificateInformer
+	// ApiManagementGroups returns a ApiManagementGroupInformer.
+	ApiManagementGroups() ApiManagementGroupInformer
+	// ApiManagementGroupUsers returns a ApiManagementGroupUserInformer.
+	ApiManagementGroupUsers() ApiManagementGroupUserInformer
+	// ApiManagementLoggers returns a ApiManagementLoggerInformer.
+	ApiManagementLoggers() ApiManagementLoggerInformer
+	// ApiManagementOpenidConnectProviders returns a ApiManagementOpenidConnectProviderInformer.
+	ApiManagementOpenidConnectProviders() ApiManagementOpenidConnectProviderInformer
+	// ApiManagementProducts returns a ApiManagementProductInformer.
+	ApiManagementProducts() ApiManagementProductInformer
+	// ApiManagementProductApis returns a ApiManagementProductApiInformer.
+	ApiManagementProductApis() ApiManagementProductApiInformer
+	// ApiManagementProductGroups returns a ApiManagementProductGroupInformer.
+	ApiManagementProductGroups() ApiManagementProductGroupInformer
+	// ApiManagementProductPolicies returns a ApiManagementProductPolicyInformer.
+	ApiManagementProductPolicies() ApiManagementProductPolicyInformer
+	// ApiManagementProperties returns a ApiManagementPropertyInformer.
+	ApiManagementProperties() ApiManagementPropertyInformer
+	// ApiManagementSubscriptions returns a ApiManagementSubscriptionInformer.
+	ApiManagementSubscriptions() ApiManagementSubscriptionInformer
+	// ApiManagementUsers returns a ApiManagementUserInformer.
+	ApiManagementUsers() ApiManagementUserInformer
+	// AppServices returns a AppServiceInformer.
+	AppServices() AppServiceInformer
+	// AppServiceActiveSlots returns a AppServiceActiveSlotInformer.
+	AppServiceActiveSlots() AppServiceActiveSlotInformer
+	// AppServiceCustomHostnameBindings returns a AppServiceCustomHostnameBindingInformer.
+	AppServiceCustomHostnameBindings() AppServiceCustomHostnameBindingInformer
+	// AppServicePlans returns a AppServicePlanInformer.
+	AppServicePlans() AppServicePlanInformer
+	// AppServiceSlots returns a AppServiceSlotInformer.
+	AppServiceSlots() AppServiceSlotInformer
+	// ApplicationGateways returns a ApplicationGatewayInformer.
+	ApplicationGateways() ApplicationGatewayInformer
+	// ApplicationInsightses returns a ApplicationInsightsInformer.
+	ApplicationInsightses() ApplicationInsightsInformer
+	// ApplicationInsightsApiKeys returns a ApplicationInsightsApiKeyInformer.
+	ApplicationInsightsApiKeys() ApplicationInsightsApiKeyInformer
+	// ApplicationInsightsWebTests returns a ApplicationInsightsWebTestInformer.
+	ApplicationInsightsWebTests() ApplicationInsightsWebTestInformer
+	// ApplicationSecurityGroups returns a ApplicationSecurityGroupInformer.
+	ApplicationSecurityGroups() ApplicationSecurityGroupInformer
+	// AutomationAccounts returns a AutomationAccountInformer.
+	AutomationAccounts() AutomationAccountInformer
+	// AutomationCredentials returns a AutomationCredentialInformer.
+	AutomationCredentials() AutomationCredentialInformer
+	// AutomationDscConfigurations returns a AutomationDscConfigurationInformer.
+	AutomationDscConfigurations() AutomationDscConfigurationInformer
+	// AutomationDscNodeconfigurations returns a AutomationDscNodeconfigurationInformer.
+	AutomationDscNodeconfigurations() AutomationDscNodeconfigurationInformer
+	// AutomationModules returns a AutomationModuleInformer.
+	AutomationModules() AutomationModuleInformer
+	// AutomationRunbooks returns a AutomationRunbookInformer.
+	AutomationRunbooks() AutomationRunbookInformer
+	// AutomationSchedules returns a AutomationScheduleInformer.
+	AutomationSchedules() AutomationScheduleInformer
+	// AutomationVariableBools returns a AutomationVariableBoolInformer.
+	AutomationVariableBools() AutomationVariableBoolInformer
+	// AutomationVariableDatetimes returns a AutomationVariableDatetimeInformer.
+	AutomationVariableDatetimes() AutomationVariableDatetimeInformer
+	// AutomationVariableInts returns a AutomationVariableIntInformer.
+	AutomationVariableInts() AutomationVariableIntInformer
+	// AutomationVariableStrings returns a AutomationVariableStringInformer.
+	AutomationVariableStrings() AutomationVariableStringInformer
+	// AutoscaleSettings returns a AutoscaleSettingInformer.
+	AutoscaleSettings() AutoscaleSettingInformer
+	// AvailabilitySets returns a AvailabilitySetInformer.
+	AvailabilitySets() AvailabilitySetInformer
+	// AzureadApplications returns a AzureadApplicationInformer.
+	AzureadApplications() AzureadApplicationInformer
+	// AzureadServicePrincipals returns a AzureadServicePrincipalInformer.
+	AzureadServicePrincipals() AzureadServicePrincipalInformer
+	// AzureadServicePrincipalPasswords returns a AzureadServicePrincipalPasswordInformer.
+	AzureadServicePrincipalPasswords() AzureadServicePrincipalPasswordInformer
+	// BatchAccounts returns a BatchAccountInformer.
+	BatchAccounts() BatchAccountInformer
+	// BatchApplications returns a BatchApplicationInformer.
+	BatchApplications() BatchApplicationInformer
+	// BatchCertificates returns a BatchCertificateInformer.
+	BatchCertificates() BatchCertificateInformer
+	// BatchPools returns a BatchPoolInformer.
+	BatchPools() BatchPoolInformer
+	// CdnEndpoints returns a CdnEndpointInformer.
+	CdnEndpoints() CdnEndpointInformer
+	// CdnProfiles returns a CdnProfileInformer.
+	CdnProfiles() CdnProfileInformer
+	// CognitiveAccounts returns a CognitiveAccountInformer.
+	CognitiveAccounts() CognitiveAccountInformer
+	// ConnectionMonitors returns a ConnectionMonitorInformer.
+	ConnectionMonitors() ConnectionMonitorInformer
+	// ContainerGroups returns a ContainerGroupInformer.
+	ContainerGroups() ContainerGroupInformer
+	// ContainerRegistries returns a ContainerRegistryInformer.
+	ContainerRegistries() ContainerRegistryInformer
+	// ContainerServices returns a ContainerServiceInformer.
+	ContainerServices() ContainerServiceInformer
+	// CosmosdbAccounts returns a CosmosdbAccountInformer.
+	CosmosdbAccounts() CosmosdbAccountInformer
+	// CosmosdbCassandraKeyspaces returns a CosmosdbCassandraKeyspaceInformer.
+	CosmosdbCassandraKeyspaces() CosmosdbCassandraKeyspaceInformer
+	// CosmosdbMongoCollections returns a CosmosdbMongoCollectionInformer.
+	CosmosdbMongoCollections() CosmosdbMongoCollectionInformer
+	// CosmosdbMongoDatabases returns a CosmosdbMongoDatabaseInformer.
+	CosmosdbMongoDatabases() CosmosdbMongoDatabaseInformer
+	// CosmosdbSqlDatabases returns a CosmosdbSqlDatabaseInformer.
+	CosmosdbSqlDatabases() CosmosdbSqlDatabaseInformer
+	// CosmosdbTables returns a CosmosdbTableInformer.
+	CosmosdbTables() CosmosdbTableInformer
+	// DataFactories returns a DataFactoryInformer.
+	DataFactories() DataFactoryInformer
+	// DataFactoryDatasetMysqls returns a DataFactoryDatasetMysqlInformer.
+	DataFactoryDatasetMysqls() DataFactoryDatasetMysqlInformer
+	// DataFactoryDatasetPostgresqls returns a DataFactoryDatasetPostgresqlInformer.
+	DataFactoryDatasetPostgresqls() DataFactoryDatasetPostgresqlInformer
+	// DataFactoryDatasetSqlServerTables returns a DataFactoryDatasetSqlServerTableInformer.
+	DataFactoryDatasetSqlServerTables() DataFactoryDatasetSqlServerTableInformer
+	// DataFactoryLinkedServiceDataLakeStorageGen2s returns a DataFactoryLinkedServiceDataLakeStorageGen2Informer.
+	DataFactoryLinkedServiceDataLakeStorageGen2s() DataFactoryLinkedServiceDataLakeStorageGen2Informer
+	// DataFactoryLinkedServiceMysqls returns a DataFactoryLinkedServiceMysqlInformer.
+	DataFactoryLinkedServiceMysqls() DataFactoryLinkedServiceMysqlInformer
+	// DataFactoryLinkedServicePostgresqls returns a DataFactoryLinkedServicePostgresqlInformer.
+	DataFactoryLinkedServicePostgresqls() DataFactoryLinkedServicePostgresqlInformer
+	// DataFactoryLinkedServiceSqlServers returns a DataFactoryLinkedServiceSqlServerInformer.
+	DataFactoryLinkedServiceSqlServers() DataFactoryLinkedServiceSqlServerInformer
+	// DataFactoryPipelines returns a DataFactoryPipelineInformer.
+	DataFactoryPipelines() DataFactoryPipelineInformer
+	// DataLakeAnalyticsAccounts returns a DataLakeAnalyticsAccountInformer.
+	DataLakeAnalyticsAccounts() DataLakeAnalyticsAccountInformer
+	// DataLakeAnalyticsFirewallRules returns a DataLakeAnalyticsFirewallRuleInformer.
+	DataLakeAnalyticsFirewallRules() DataLakeAnalyticsFirewallRuleInformer
+	// DataLakeStores returns a DataLakeStoreInformer.
+	DataLakeStores() DataLakeStoreInformer
+	// DataLakeStoreFiles returns a DataLakeStoreFileInformer.
+	DataLakeStoreFiles() DataLakeStoreFileInformer
+	// DataLakeStoreFirewallRules returns a DataLakeStoreFirewallRuleInformer.
+	DataLakeStoreFirewallRules() DataLakeStoreFirewallRuleInformer
+	// DatabricksWorkspaces returns a DatabricksWorkspaceInformer.
+	DatabricksWorkspaces() DatabricksWorkspaceInformer
+	// DdosProtectionPlans returns a DdosProtectionPlanInformer.
+	DdosProtectionPlans() DdosProtectionPlanInformer
+	// DevTestLabs returns a DevTestLabInformer.
+	DevTestLabs() DevTestLabInformer
+	// DevTestLinuxVirtualMachines returns a DevTestLinuxVirtualMachineInformer.
+	DevTestLinuxVirtualMachines() DevTestLinuxVirtualMachineInformer
+	// DevTestPolicies returns a DevTestPolicyInformer.
+	DevTestPolicies() DevTestPolicyInformer
+	// DevTestVirtualNetworks returns a DevTestVirtualNetworkInformer.
+	DevTestVirtualNetworks() DevTestVirtualNetworkInformer
+	// DevTestWindowsVirtualMachines returns a DevTestWindowsVirtualMachineInformer.
+	DevTestWindowsVirtualMachines() DevTestWindowsVirtualMachineInformer
+	// DevspaceControllers returns a DevspaceControllerInformer.
+	DevspaceControllers() DevspaceControllerInformer
+	// DnsARecords returns a DnsARecordInformer.
+	DnsARecords() DnsARecordInformer
+	// DnsAaaaRecords returns a DnsAaaaRecordInformer.
+	DnsAaaaRecords() DnsAaaaRecordInformer
+	// DnsCaaRecords returns a DnsCaaRecordInformer.
+	DnsCaaRecords() DnsCaaRecordInformer
+	// DnsCnameRecords returns a DnsCnameRecordInformer.
+	DnsCnameRecords() DnsCnameRecordInformer
+	// DnsMxRecords returns a DnsMxRecordInformer.
+	DnsMxRecords() DnsMxRecordInformer
+	// DnsNsRecords returns a DnsNsRecordInformer.
+	DnsNsRecords() DnsNsRecordInformer
+	// DnsPtrRecords returns a DnsPtrRecordInformer.
+	DnsPtrRecords() DnsPtrRecordInformer
+	// DnsSrvRecords returns a DnsSrvRecordInformer.
+	DnsSrvRecords() DnsSrvRecordInformer
+	// DnsTxtRecords returns a DnsTxtRecordInformer.
+	DnsTxtRecords() DnsTxtRecordInformer
+	// DnsZones returns a DnsZoneInformer.
+	DnsZones() DnsZoneInformer
+	// EventgridDomains returns a EventgridDomainInformer.
+	EventgridDomains() EventgridDomainInformer
+	// EventgridEventSubscriptions returns a EventgridEventSubscriptionInformer.
+	EventgridEventSubscriptions() EventgridEventSubscriptionInformer
+	// EventgridTopics returns a EventgridTopicInformer.
+	EventgridTopics() EventgridTopicInformer
+	// Eventhubs returns a EventhubInformer.
+	Eventhubs() EventhubInformer
+	// EventhubAuthorizationRules returns a EventhubAuthorizationRuleInformer.
+	EventhubAuthorizationRules() EventhubAuthorizationRuleInformer
+	// EventhubConsumerGroups returns a EventhubConsumerGroupInformer.
+	EventhubConsumerGroups() EventhubConsumerGroupInformer
+	// EventhubNamespaces returns a EventhubNamespaceInformer.
+	EventhubNamespaces() EventhubNamespaceInformer
+	// EventhubNamespaceAuthorizationRules returns a EventhubNamespaceAuthorizationRuleInformer.
+	EventhubNamespaceAuthorizationRules() EventhubNamespaceAuthorizationRuleInformer
+	// ExpressRouteCircuits returns a ExpressRouteCircuitInformer.
+	ExpressRouteCircuits() ExpressRouteCircuitInformer
+	// ExpressRouteCircuitAuthorizations returns a ExpressRouteCircuitAuthorizationInformer.
+	ExpressRouteCircuitAuthorizations() ExpressRouteCircuitAuthorizationInformer
+	// ExpressRouteCircuitPeerings returns a ExpressRouteCircuitPeeringInformer.
+	ExpressRouteCircuitPeerings() ExpressRouteCircuitPeeringInformer
+	// Firewalls returns a FirewallInformer.
+	Firewalls() FirewallInformer
+	// FirewallApplicationRuleCollections returns a FirewallApplicationRuleCollectionInformer.
+	FirewallApplicationRuleCollections() FirewallApplicationRuleCollectionInformer
+	// FirewallNatRuleCollections returns a FirewallNatRuleCollectionInformer.
+	FirewallNatRuleCollections() FirewallNatRuleCollectionInformer
+	// FirewallNetworkRuleCollections returns a FirewallNetworkRuleCollectionInformer.
+	FirewallNetworkRuleCollections() FirewallNetworkRuleCollectionInformer
+	// FunctionApps returns a FunctionAppInformer.
+	FunctionApps() FunctionAppInformer
+	// HdinsightHadoopClusters returns a HdinsightHadoopClusterInformer.
+	HdinsightHadoopClusters() HdinsightHadoopClusterInformer
+	// HdinsightHbaseClusters returns a HdinsightHbaseClusterInformer.
+	HdinsightHbaseClusters() HdinsightHbaseClusterInformer
+	// HdinsightInteractiveQueryClusters returns a HdinsightInteractiveQueryClusterInformer.
+	HdinsightInteractiveQueryClusters() HdinsightInteractiveQueryClusterInformer
+	// HdinsightKafkaClusters returns a HdinsightKafkaClusterInformer.
+	HdinsightKafkaClusters() HdinsightKafkaClusterInformer
+	// HdinsightMlServicesClusters returns a HdinsightMlServicesClusterInformer.
+	HdinsightMlServicesClusters() HdinsightMlServicesClusterInformer
+	// HdinsightRserverClusters returns a HdinsightRserverClusterInformer.
+	HdinsightRserverClusters() HdinsightRserverClusterInformer
+	// HdinsightSparkClusters returns a HdinsightSparkClusterInformer.
+	HdinsightSparkClusters() HdinsightSparkClusterInformer
+	// HdinsightStormClusters returns a HdinsightStormClusterInformer.
+	HdinsightStormClusters() HdinsightStormClusterInformer
+	// Images returns a ImageInformer.
+	Images() ImageInformer
+	// IotDpses returns a IotDpsInformer.
+	IotDpses() IotDpsInformer
+	// IotDpsCertificates returns a IotDpsCertificateInformer.
+	IotDpsCertificates() IotDpsCertificateInformer
+	// Iothubs returns a IothubInformer.
+	Iothubs() IothubInformer
+	// IothubConsumerGroups returns a IothubConsumerGroupInformer.
+	IothubConsumerGroups() IothubConsumerGroupInformer
+	// IothubSharedAccessPolicies returns a IothubSharedAccessPolicyInformer.
+	IothubSharedAccessPolicies() IothubSharedAccessPolicyInformer
+	// KeyVaults returns a KeyVaultInformer.
+	KeyVaults() KeyVaultInformer
+	// KeyVaultAccessPolicies returns a KeyVaultAccessPolicyInformer.
+	KeyVaultAccessPolicies() KeyVaultAccessPolicyInformer
+	// KeyVaultCertificates returns a KeyVaultCertificateInformer.
+	KeyVaultCertificates() KeyVaultCertificateInformer
+	// KeyVaultKeys returns a KeyVaultKeyInformer.
+	KeyVaultKeys() KeyVaultKeyInformer
+	// KeyVaultSecrets returns a KeyVaultSecretInformer.
+	KeyVaultSecrets() KeyVaultSecretInformer
+	// KubernetesClusters returns a KubernetesClusterInformer.
+	KubernetesClusters() KubernetesClusterInformer
+	// Lbs returns a LbInformer.
+	Lbs() LbInformer
+	// LbBackendAddressPools returns a LbBackendAddressPoolInformer.
+	LbBackendAddressPools() LbBackendAddressPoolInformer
+	// LbNatPools returns a LbNatPoolInformer.
+	LbNatPools() LbNatPoolInformer
+	// LbNatRules returns a LbNatRuleInformer.
+	LbNatRules() LbNatRuleInformer
+	// LbOutboundRules returns a LbOutboundRuleInformer.
+	LbOutboundRules() LbOutboundRuleInformer
+	// LbProbes returns a LbProbeInformer.
+	LbProbes() LbProbeInformer
+	// LbRules returns a LbRuleInformer.
+	LbRules() LbRuleInformer
+	// LocalNetworkGateways returns a LocalNetworkGatewayInformer.
+	LocalNetworkGateways() LocalNetworkGatewayInformer
+	// LogAnalyticsLinkedServices returns a LogAnalyticsLinkedServiceInformer.
+	LogAnalyticsLinkedServices() LogAnalyticsLinkedServiceInformer
+	// LogAnalyticsSolutions returns a LogAnalyticsSolutionInformer.
+	LogAnalyticsSolutions() LogAnalyticsSolutionInformer
+	// LogAnalyticsWorkspaces returns a LogAnalyticsWorkspaceInformer.
+	LogAnalyticsWorkspaces() LogAnalyticsWorkspaceInformer
+	// LogAnalyticsWorkspaceLinkedServices returns a LogAnalyticsWorkspaceLinkedServiceInformer.
+	LogAnalyticsWorkspaceLinkedServices() LogAnalyticsWorkspaceLinkedServiceInformer
+	// LogicAppActionCustoms returns a LogicAppActionCustomInformer.
+	LogicAppActionCustoms() LogicAppActionCustomInformer
+	// LogicAppActionHttps returns a LogicAppActionHttpInformer.
+	LogicAppActionHttps() LogicAppActionHttpInformer
+	// LogicAppTriggerCustoms returns a LogicAppTriggerCustomInformer.
+	LogicAppTriggerCustoms() LogicAppTriggerCustomInformer
+	// LogicAppTriggerHttpRequests returns a LogicAppTriggerHttpRequestInformer.
+	LogicAppTriggerHttpRequests() LogicAppTriggerHttpRequestInformer
+	// LogicAppTriggerRecurrences returns a LogicAppTriggerRecurrenceInformer.
+	LogicAppTriggerRecurrences() LogicAppTriggerRecurrenceInformer
+	// LogicAppWorkflows returns a LogicAppWorkflowInformer.
+	LogicAppWorkflows() LogicAppWorkflowInformer
+	// ManagedDisks returns a ManagedDiskInformer.
+	ManagedDisks() ManagedDiskInformer
+	// ManagementGroups returns a ManagementGroupInformer.
+	ManagementGroups() ManagementGroupInformer
+	// ManagementLocks returns a ManagementLockInformer.
+	ManagementLocks() ManagementLockInformer
+	// MariadbDatabases returns a MariadbDatabaseInformer.
+	MariadbDatabases() MariadbDatabaseInformer
+	// MariadbFirewallRules returns a MariadbFirewallRuleInformer.
+	MariadbFirewallRules() MariadbFirewallRuleInformer
+	// MariadbServers returns a MariadbServerInformer.
+	MariadbServers() MariadbServerInformer
+	// MediaServicesAccounts returns a MediaServicesAccountInformer.
+	MediaServicesAccounts() MediaServicesAccountInformer
+	// MetricAlertrules returns a MetricAlertruleInformer.
+	MetricAlertrules() MetricAlertruleInformer
+	// MonitorActionGroups returns a MonitorActionGroupInformer.
+	MonitorActionGroups() MonitorActionGroupInformer
+	// MonitorActivityLogAlerts returns a MonitorActivityLogAlertInformer.
+	MonitorActivityLogAlerts() MonitorActivityLogAlertInformer
+	// MonitorAutoscaleSettings returns a MonitorAutoscaleSettingInformer.
+	MonitorAutoscaleSettings() MonitorAutoscaleSettingInformer
+	// MonitorDiagnosticSettings returns a MonitorDiagnosticSettingInformer.
+	MonitorDiagnosticSettings() MonitorDiagnosticSettingInformer
+	// MonitorLogProfiles returns a MonitorLogProfileInformer.
+	MonitorLogProfiles() MonitorLogProfileInformer
+	// MonitorMetricAlerts returns a MonitorMetricAlertInformer.
+	MonitorMetricAlerts() MonitorMetricAlertInformer
+	// MonitorMetricAlertrules returns a MonitorMetricAlertruleInformer.
+	MonitorMetricAlertrules() MonitorMetricAlertruleInformer
+	// MssqlElasticpools returns a MssqlElasticpoolInformer.
+	MssqlElasticpools() MssqlElasticpoolInformer
+	// MysqlConfigurations returns a MysqlConfigurationInformer.
+	MysqlConfigurations() MysqlConfigurationInformer
+	// MysqlDatabases returns a MysqlDatabaseInformer.
+	MysqlDatabases() MysqlDatabaseInformer
+	// MysqlFirewallRules returns a MysqlFirewallRuleInformer.
+	MysqlFirewallRules() MysqlFirewallRuleInformer
+	// MysqlServers returns a MysqlServerInformer.
+	MysqlServers() MysqlServerInformer
+	// MysqlVirtualNetworkRules returns a MysqlVirtualNetworkRuleInformer.
+	MysqlVirtualNetworkRules() MysqlVirtualNetworkRuleInformer
+	// NetworkConnectionMonitors returns a NetworkConnectionMonitorInformer.
+	NetworkConnectionMonitors() NetworkConnectionMonitorInformer
+	// NetworkDdosProtectionPlans returns a NetworkDdosProtectionPlanInformer.
+	NetworkDdosProtectionPlans() NetworkDdosProtectionPlanInformer
+	// NetworkInterfaces returns a NetworkInterfaceInformer.
+	NetworkInterfaces() NetworkInterfaceInformer
+	// NetworkInterfaceApplicationGatewayBackendAddressPoolAssociations returns a NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInformer.
+	NetworkInterfaceApplicationGatewayBackendAddressPoolAssociations() NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInformer
+	// NetworkInterfaceApplicationSecurityGroupAssociations returns a NetworkInterfaceApplicationSecurityGroupAssociationInformer.
+	NetworkInterfaceApplicationSecurityGroupAssociations() NetworkInterfaceApplicationSecurityGroupAssociationInformer
+	// NetworkInterfaceBackendAddressPoolAssociations returns a NetworkInterfaceBackendAddressPoolAssociationInformer.
+	NetworkInterfaceBackendAddressPoolAssociations() NetworkInterfaceBackendAddressPoolAssociationInformer
+	// NetworkInterfaceNatRuleAssociations returns a NetworkInterfaceNatRuleAssociationInformer.
+	NetworkInterfaceNatRuleAssociations() NetworkInterfaceNatRuleAssociationInformer
+	// NetworkPacketCaptures returns a NetworkPacketCaptureInformer.
+	NetworkPacketCaptures() NetworkPacketCaptureInformer
+	// NetworkProfiles returns a NetworkProfileInformer.
+	NetworkProfiles() NetworkProfileInformer
+	// NetworkSecurityGroups returns a NetworkSecurityGroupInformer.
+	NetworkSecurityGroups() NetworkSecurityGroupInformer
+	// NetworkSecurityRules returns a NetworkSecurityRuleInformer.
+	NetworkSecurityRules() NetworkSecurityRuleInformer
+	// NetworkWatchers returns a NetworkWatcherInformer.
+	NetworkWatchers() NetworkWatcherInformer
+	// NotificationHubs returns a NotificationHubInformer.
+	NotificationHubs() NotificationHubInformer
+	// NotificationHubAuthorizationRules returns a NotificationHubAuthorizationRuleInformer.
+	NotificationHubAuthorizationRules() NotificationHubAuthorizationRuleInformer
+	// NotificationHubNamespaces returns a NotificationHubNamespaceInformer.
+	NotificationHubNamespaces() NotificationHubNamespaceInformer
+	// PacketCaptures returns a PacketCaptureInformer.
+	PacketCaptures() PacketCaptureInformer
+	// PolicyAssignments returns a PolicyAssignmentInformer.
+	PolicyAssignments() PolicyAssignmentInformer
+	// PolicyDefinitions returns a PolicyDefinitionInformer.
+	PolicyDefinitions() PolicyDefinitionInformer
+	// PolicySetDefinitions returns a PolicySetDefinitionInformer.
+	PolicySetDefinitions() PolicySetDefinitionInformer
+	// PostgresqlConfigurations returns a PostgresqlConfigurationInformer.
+	PostgresqlConfigurations() PostgresqlConfigurationInformer
+	// PostgresqlDatabases returns a PostgresqlDatabaseInformer.
+	PostgresqlDatabases() PostgresqlDatabaseInformer
+	// PostgresqlFirewallRules returns a PostgresqlFirewallRuleInformer.
+	PostgresqlFirewallRules() PostgresqlFirewallRuleInformer
+	// PostgresqlServers returns a PostgresqlServerInformer.
+	PostgresqlServers() PostgresqlServerInformer
+	// PostgresqlVirtualNetworkRules returns a PostgresqlVirtualNetworkRuleInformer.
+	PostgresqlVirtualNetworkRules() PostgresqlVirtualNetworkRuleInformer
+	// PrivateDnsZones returns a PrivateDnsZoneInformer.
+	PrivateDnsZones() PrivateDnsZoneInformer
+	// PublicIps returns a PublicIpInformer.
+	PublicIps() PublicIpInformer
+	// PublicIpPrefixes returns a PublicIpPrefixInformer.
+	PublicIpPrefixes() PublicIpPrefixInformer
+	// RecoveryServicesProtectedVms returns a RecoveryServicesProtectedVmInformer.
+	RecoveryServicesProtectedVms() RecoveryServicesProtectedVmInformer
+	// RecoveryServicesProtectionPolicyVms returns a RecoveryServicesProtectionPolicyVmInformer.
+	RecoveryServicesProtectionPolicyVms() RecoveryServicesProtectionPolicyVmInformer
+	// RecoveryServicesVaults returns a RecoveryServicesVaultInformer.
+	RecoveryServicesVaults() RecoveryServicesVaultInformer
+	// RedisCaches returns a RedisCacheInformer.
+	RedisCaches() RedisCacheInformer
+	// RedisFirewallRules returns a RedisFirewallRuleInformer.
+	RedisFirewallRules() RedisFirewallRuleInformer
+	// RelayNamespaces returns a RelayNamespaceInformer.
+	RelayNamespaces() RelayNamespaceInformer
+	// ResourceGroups returns a ResourceGroupInformer.
+	ResourceGroups() ResourceGroupInformer
+	// RoleAssignments returns a RoleAssignmentInformer.
+	RoleAssignments() RoleAssignmentInformer
+	// RoleDefinitions returns a RoleDefinitionInformer.
+	RoleDefinitions() RoleDefinitionInformer
+	// Routes returns a RouteInformer.
+	Routes() RouteInformer
+	// RouteTables returns a RouteTableInformer.
+	RouteTables() RouteTableInformer
+	// SchedulerJobs returns a SchedulerJobInformer.
+	SchedulerJobs() SchedulerJobInformer
+	// SchedulerJobCollections returns a SchedulerJobCollectionInformer.
+	SchedulerJobCollections() SchedulerJobCollectionInformer
+	// SearchServices returns a SearchServiceInformer.
+	SearchServices() SearchServiceInformer
+	// SecurityCenterContacts returns a SecurityCenterContactInformer.
+	SecurityCenterContacts() SecurityCenterContactInformer
+	// SecurityCenterSubscriptionPricings returns a SecurityCenterSubscriptionPricingInformer.
+	SecurityCenterSubscriptionPricings() SecurityCenterSubscriptionPricingInformer
+	// SecurityCenterWorkspaces returns a SecurityCenterWorkspaceInformer.
+	SecurityCenterWorkspaces() SecurityCenterWorkspaceInformer
+	// ServiceFabricClusters returns a ServiceFabricClusterInformer.
+	ServiceFabricClusters() ServiceFabricClusterInformer
+	// ServicebusNamespaces returns a ServicebusNamespaceInformer.
+	ServicebusNamespaces() ServicebusNamespaceInformer
+	// ServicebusNamespaceAuthorizationRules returns a ServicebusNamespaceAuthorizationRuleInformer.
+	ServicebusNamespaceAuthorizationRules() ServicebusNamespaceAuthorizationRuleInformer
+	// ServicebusQueues returns a ServicebusQueueInformer.
+	ServicebusQueues() ServicebusQueueInformer
+	// ServicebusQueueAuthorizationRules returns a ServicebusQueueAuthorizationRuleInformer.
+	ServicebusQueueAuthorizationRules() ServicebusQueueAuthorizationRuleInformer
+	// ServicebusSubscriptions returns a ServicebusSubscriptionInformer.
+	ServicebusSubscriptions() ServicebusSubscriptionInformer
+	// ServicebusSubscriptionRules returns a ServicebusSubscriptionRuleInformer.
+	ServicebusSubscriptionRules() ServicebusSubscriptionRuleInformer
+	// ServicebusTopics returns a ServicebusTopicInformer.
+	ServicebusTopics() ServicebusTopicInformer
+	// ServicebusTopicAuthorizationRules returns a ServicebusTopicAuthorizationRuleInformer.
+	ServicebusTopicAuthorizationRules() ServicebusTopicAuthorizationRuleInformer
+	// SharedImages returns a SharedImageInformer.
+	SharedImages() SharedImageInformer
+	// SharedImageGalleries returns a SharedImageGalleryInformer.
+	SharedImageGalleries() SharedImageGalleryInformer
+	// SharedImageVersions returns a SharedImageVersionInformer.
+	SharedImageVersions() SharedImageVersionInformer
+	// SignalrServices returns a SignalrServiceInformer.
+	SignalrServices() SignalrServiceInformer
+	// Snapshots returns a SnapshotInformer.
+	Snapshots() SnapshotInformer
+	// SqlActiveDirectoryAdministrators returns a SqlActiveDirectoryAdministratorInformer.
+	SqlActiveDirectoryAdministrators() SqlActiveDirectoryAdministratorInformer
+	// SqlDatabases returns a SqlDatabaseInformer.
+	SqlDatabases() SqlDatabaseInformer
+	// SqlElasticpools returns a SqlElasticpoolInformer.
+	SqlElasticpools() SqlElasticpoolInformer
+	// SqlFirewallRules returns a SqlFirewallRuleInformer.
+	SqlFirewallRules() SqlFirewallRuleInformer
+	// SqlServers returns a SqlServerInformer.
+	SqlServers() SqlServerInformer
+	// SqlVirtualNetworkRules returns a SqlVirtualNetworkRuleInformer.
+	SqlVirtualNetworkRules() SqlVirtualNetworkRuleInformer
+	// StorageAccounts returns a StorageAccountInformer.
+	StorageAccounts() StorageAccountInformer
+	// StorageBlobs returns a StorageBlobInformer.
+	StorageBlobs() StorageBlobInformer
+	// StorageContainers returns a StorageContainerInformer.
+	StorageContainers() StorageContainerInformer
+	// StorageQueues returns a StorageQueueInformer.
+	StorageQueues() StorageQueueInformer
+	// StorageShares returns a StorageShareInformer.
+	StorageShares() StorageShareInformer
+	// StorageShareDirectories returns a StorageShareDirectoryInformer.
+	StorageShareDirectories() StorageShareDirectoryInformer
+	// StorageTables returns a StorageTableInformer.
+	StorageTables() StorageTableInformer
+	// StorageTableEntities returns a StorageTableEntityInformer.
+	StorageTableEntities() StorageTableEntityInformer
+	// StreamAnalyticsFunctionJavascriptUdves returns a StreamAnalyticsFunctionJavascriptUdfInformer.
+	StreamAnalyticsFunctionJavascriptUdves() StreamAnalyticsFunctionJavascriptUdfInformer
+	// StreamAnalyticsJobs returns a StreamAnalyticsJobInformer.
+	StreamAnalyticsJobs() StreamAnalyticsJobInformer
+	// StreamAnalyticsOutputBlobs returns a StreamAnalyticsOutputBlobInformer.
+	StreamAnalyticsOutputBlobs() StreamAnalyticsOutputBlobInformer
+	// StreamAnalyticsOutputEventhubs returns a StreamAnalyticsOutputEventhubInformer.
+	StreamAnalyticsOutputEventhubs() StreamAnalyticsOutputEventhubInformer
+	// StreamAnalyticsOutputMssqls returns a StreamAnalyticsOutputMssqlInformer.
+	StreamAnalyticsOutputMssqls() StreamAnalyticsOutputMssqlInformer
+	// StreamAnalyticsOutputServicebusQueues returns a StreamAnalyticsOutputServicebusQueueInformer.
+	StreamAnalyticsOutputServicebusQueues() StreamAnalyticsOutputServicebusQueueInformer
+	// StreamAnalyticsStreamInputBlobs returns a StreamAnalyticsStreamInputBlobInformer.
+	StreamAnalyticsStreamInputBlobs() StreamAnalyticsStreamInputBlobInformer
+	// StreamAnalyticsStreamInputEventhubs returns a StreamAnalyticsStreamInputEventhubInformer.
+	StreamAnalyticsStreamInputEventhubs() StreamAnalyticsStreamInputEventhubInformer
+	// StreamAnalyticsStreamInputIothubs returns a StreamAnalyticsStreamInputIothubInformer.
+	StreamAnalyticsStreamInputIothubs() StreamAnalyticsStreamInputIothubInformer
+	// Subnets returns a SubnetInformer.
+	Subnets() SubnetInformer
+	// SubnetNetworkSecurityGroupAssociations returns a SubnetNetworkSecurityGroupAssociationInformer.
+	SubnetNetworkSecurityGroupAssociations() SubnetNetworkSecurityGroupAssociationInformer
+	// SubnetRouteTableAssociations returns a SubnetRouteTableAssociationInformer.
+	SubnetRouteTableAssociations() SubnetRouteTableAssociationInformer
+	// TemplateDeployments returns a TemplateDeploymentInformer.
+	TemplateDeployments() TemplateDeploymentInformer
+	// TrafficManagerEndpoints returns a TrafficManagerEndpointInformer.
+	TrafficManagerEndpoints() TrafficManagerEndpointInformer
+	// TrafficManagerProfiles returns a TrafficManagerProfileInformer.
+	TrafficManagerProfiles() TrafficManagerProfileInformer
+	// UserAssignedIdentities returns a UserAssignedIdentityInformer.
+	UserAssignedIdentities() UserAssignedIdentityInformer
+	// VirtualMachines returns a VirtualMachineInformer.
+	VirtualMachines() VirtualMachineInformer
+	// VirtualMachineDataDiskAttachments returns a VirtualMachineDataDiskAttachmentInformer.
+	VirtualMachineDataDiskAttachments() VirtualMachineDataDiskAttachmentInformer
+	// VirtualMachineExtensions returns a VirtualMachineExtensionInformer.
+	VirtualMachineExtensions() VirtualMachineExtensionInformer
+	// VirtualMachineScaleSets returns a VirtualMachineScaleSetInformer.
+	VirtualMachineScaleSets() VirtualMachineScaleSetInformer
+	// VirtualNetworks returns a VirtualNetworkInformer.
+	VirtualNetworks() VirtualNetworkInformer
+	// VirtualNetworkGateways returns a VirtualNetworkGatewayInformer.
+	VirtualNetworkGateways() VirtualNetworkGatewayInformer
+	// VirtualNetworkGatewayConnections returns a VirtualNetworkGatewayConnectionInformer.
+	VirtualNetworkGatewayConnections() VirtualNetworkGatewayConnectionInformer
+	// VirtualNetworkPeerings returns a VirtualNetworkPeeringInformer.
+	VirtualNetworkPeerings() VirtualNetworkPeeringInformer
 }
 
 type version struct {
@@ -563,1317 +571,1337 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
-// AzurermApiManagements returns a AzurermApiManagementInformer.
-func (v *version) AzurermApiManagements() AzurermApiManagementInformer {
-	return &azurermApiManagementInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagements returns a ApiManagementInformer.
+func (v *version) ApiManagements() ApiManagementInformer {
+	return &apiManagementInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementApis returns a AzurermApiManagementApiInformer.
-func (v *version) AzurermApiManagementApis() AzurermApiManagementApiInformer {
-	return &azurermApiManagementApiInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementApis returns a ApiManagementApiInformer.
+func (v *version) ApiManagementApis() ApiManagementApiInformer {
+	return &apiManagementApiInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementApiOperations returns a AzurermApiManagementApiOperationInformer.
-func (v *version) AzurermApiManagementApiOperations() AzurermApiManagementApiOperationInformer {
-	return &azurermApiManagementApiOperationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementApiOperations returns a ApiManagementApiOperationInformer.
+func (v *version) ApiManagementApiOperations() ApiManagementApiOperationInformer {
+	return &apiManagementApiOperationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementApiOperationPolicies returns a AzurermApiManagementApiOperationPolicyInformer.
-func (v *version) AzurermApiManagementApiOperationPolicies() AzurermApiManagementApiOperationPolicyInformer {
-	return &azurermApiManagementApiOperationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementApiOperationPolicies returns a ApiManagementApiOperationPolicyInformer.
+func (v *version) ApiManagementApiOperationPolicies() ApiManagementApiOperationPolicyInformer {
+	return &apiManagementApiOperationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementApiPolicies returns a AzurermApiManagementApiPolicyInformer.
-func (v *version) AzurermApiManagementApiPolicies() AzurermApiManagementApiPolicyInformer {
-	return &azurermApiManagementApiPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementApiPolicies returns a ApiManagementApiPolicyInformer.
+func (v *version) ApiManagementApiPolicies() ApiManagementApiPolicyInformer {
+	return &apiManagementApiPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementApiSchemas returns a AzurermApiManagementApiSchemaInformer.
-func (v *version) AzurermApiManagementApiSchemas() AzurermApiManagementApiSchemaInformer {
-	return &azurermApiManagementApiSchemaInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementApiSchemas returns a ApiManagementApiSchemaInformer.
+func (v *version) ApiManagementApiSchemas() ApiManagementApiSchemaInformer {
+	return &apiManagementApiSchemaInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementApiVersionSets returns a AzurermApiManagementApiVersionSetInformer.
-func (v *version) AzurermApiManagementApiVersionSets() AzurermApiManagementApiVersionSetInformer {
-	return &azurermApiManagementApiVersionSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementApiVersionSets returns a ApiManagementApiVersionSetInformer.
+func (v *version) ApiManagementApiVersionSets() ApiManagementApiVersionSetInformer {
+	return &apiManagementApiVersionSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementAuthorizationServers returns a AzurermApiManagementAuthorizationServerInformer.
-func (v *version) AzurermApiManagementAuthorizationServers() AzurermApiManagementAuthorizationServerInformer {
-	return &azurermApiManagementAuthorizationServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementAuthorizationServers returns a ApiManagementAuthorizationServerInformer.
+func (v *version) ApiManagementAuthorizationServers() ApiManagementAuthorizationServerInformer {
+	return &apiManagementAuthorizationServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementCertificates returns a AzurermApiManagementCertificateInformer.
-func (v *version) AzurermApiManagementCertificates() AzurermApiManagementCertificateInformer {
-	return &azurermApiManagementCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementBackends returns a ApiManagementBackendInformer.
+func (v *version) ApiManagementBackends() ApiManagementBackendInformer {
+	return &apiManagementBackendInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementGroups returns a AzurermApiManagementGroupInformer.
-func (v *version) AzurermApiManagementGroups() AzurermApiManagementGroupInformer {
-	return &azurermApiManagementGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementCertificates returns a ApiManagementCertificateInformer.
+func (v *version) ApiManagementCertificates() ApiManagementCertificateInformer {
+	return &apiManagementCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementGroupUsers returns a AzurermApiManagementGroupUserInformer.
-func (v *version) AzurermApiManagementGroupUsers() AzurermApiManagementGroupUserInformer {
-	return &azurermApiManagementGroupUserInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementGroups returns a ApiManagementGroupInformer.
+func (v *version) ApiManagementGroups() ApiManagementGroupInformer {
+	return &apiManagementGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementLoggers returns a AzurermApiManagementLoggerInformer.
-func (v *version) AzurermApiManagementLoggers() AzurermApiManagementLoggerInformer {
-	return &azurermApiManagementLoggerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementGroupUsers returns a ApiManagementGroupUserInformer.
+func (v *version) ApiManagementGroupUsers() ApiManagementGroupUserInformer {
+	return &apiManagementGroupUserInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementOpenidConnectProviders returns a AzurermApiManagementOpenidConnectProviderInformer.
-func (v *version) AzurermApiManagementOpenidConnectProviders() AzurermApiManagementOpenidConnectProviderInformer {
-	return &azurermApiManagementOpenidConnectProviderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementLoggers returns a ApiManagementLoggerInformer.
+func (v *version) ApiManagementLoggers() ApiManagementLoggerInformer {
+	return &apiManagementLoggerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementProducts returns a AzurermApiManagementProductInformer.
-func (v *version) AzurermApiManagementProducts() AzurermApiManagementProductInformer {
-	return &azurermApiManagementProductInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementOpenidConnectProviders returns a ApiManagementOpenidConnectProviderInformer.
+func (v *version) ApiManagementOpenidConnectProviders() ApiManagementOpenidConnectProviderInformer {
+	return &apiManagementOpenidConnectProviderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementProductApis returns a AzurermApiManagementProductApiInformer.
-func (v *version) AzurermApiManagementProductApis() AzurermApiManagementProductApiInformer {
-	return &azurermApiManagementProductApiInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementProducts returns a ApiManagementProductInformer.
+func (v *version) ApiManagementProducts() ApiManagementProductInformer {
+	return &apiManagementProductInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementProductGroups returns a AzurermApiManagementProductGroupInformer.
-func (v *version) AzurermApiManagementProductGroups() AzurermApiManagementProductGroupInformer {
-	return &azurermApiManagementProductGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementProductApis returns a ApiManagementProductApiInformer.
+func (v *version) ApiManagementProductApis() ApiManagementProductApiInformer {
+	return &apiManagementProductApiInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementProductPolicies returns a AzurermApiManagementProductPolicyInformer.
-func (v *version) AzurermApiManagementProductPolicies() AzurermApiManagementProductPolicyInformer {
-	return &azurermApiManagementProductPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementProductGroups returns a ApiManagementProductGroupInformer.
+func (v *version) ApiManagementProductGroups() ApiManagementProductGroupInformer {
+	return &apiManagementProductGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementProperties returns a AzurermApiManagementPropertyInformer.
-func (v *version) AzurermApiManagementProperties() AzurermApiManagementPropertyInformer {
-	return &azurermApiManagementPropertyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementProductPolicies returns a ApiManagementProductPolicyInformer.
+func (v *version) ApiManagementProductPolicies() ApiManagementProductPolicyInformer {
+	return &apiManagementProductPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementSubscriptions returns a AzurermApiManagementSubscriptionInformer.
-func (v *version) AzurermApiManagementSubscriptions() AzurermApiManagementSubscriptionInformer {
-	return &azurermApiManagementSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementProperties returns a ApiManagementPropertyInformer.
+func (v *version) ApiManagementProperties() ApiManagementPropertyInformer {
+	return &apiManagementPropertyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApiManagementUsers returns a AzurermApiManagementUserInformer.
-func (v *version) AzurermApiManagementUsers() AzurermApiManagementUserInformer {
-	return &azurermApiManagementUserInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementSubscriptions returns a ApiManagementSubscriptionInformer.
+func (v *version) ApiManagementSubscriptions() ApiManagementSubscriptionInformer {
+	return &apiManagementSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAppServices returns a AzurermAppServiceInformer.
-func (v *version) AzurermAppServices() AzurermAppServiceInformer {
-	return &azurermAppServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiManagementUsers returns a ApiManagementUserInformer.
+func (v *version) ApiManagementUsers() ApiManagementUserInformer {
+	return &apiManagementUserInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAppServiceActiveSlots returns a AzurermAppServiceActiveSlotInformer.
-func (v *version) AzurermAppServiceActiveSlots() AzurermAppServiceActiveSlotInformer {
-	return &azurermAppServiceActiveSlotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppServices returns a AppServiceInformer.
+func (v *version) AppServices() AppServiceInformer {
+	return &appServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAppServiceCustomHostnameBindings returns a AzurermAppServiceCustomHostnameBindingInformer.
-func (v *version) AzurermAppServiceCustomHostnameBindings() AzurermAppServiceCustomHostnameBindingInformer {
-	return &azurermAppServiceCustomHostnameBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppServiceActiveSlots returns a AppServiceActiveSlotInformer.
+func (v *version) AppServiceActiveSlots() AppServiceActiveSlotInformer {
+	return &appServiceActiveSlotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAppServicePlans returns a AzurermAppServicePlanInformer.
-func (v *version) AzurermAppServicePlans() AzurermAppServicePlanInformer {
-	return &azurermAppServicePlanInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppServiceCustomHostnameBindings returns a AppServiceCustomHostnameBindingInformer.
+func (v *version) AppServiceCustomHostnameBindings() AppServiceCustomHostnameBindingInformer {
+	return &appServiceCustomHostnameBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAppServiceSlots returns a AzurermAppServiceSlotInformer.
-func (v *version) AzurermAppServiceSlots() AzurermAppServiceSlotInformer {
-	return &azurermAppServiceSlotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppServicePlans returns a AppServicePlanInformer.
+func (v *version) AppServicePlans() AppServicePlanInformer {
+	return &appServicePlanInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApplicationGateways returns a AzurermApplicationGatewayInformer.
-func (v *version) AzurermApplicationGateways() AzurermApplicationGatewayInformer {
-	return &azurermApplicationGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppServiceSlots returns a AppServiceSlotInformer.
+func (v *version) AppServiceSlots() AppServiceSlotInformer {
+	return &appServiceSlotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApplicationInsightses returns a AzurermApplicationInsightsInformer.
-func (v *version) AzurermApplicationInsightses() AzurermApplicationInsightsInformer {
-	return &azurermApplicationInsightsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApplicationGateways returns a ApplicationGatewayInformer.
+func (v *version) ApplicationGateways() ApplicationGatewayInformer {
+	return &applicationGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApplicationInsightsApiKeys returns a AzurermApplicationInsightsApiKeyInformer.
-func (v *version) AzurermApplicationInsightsApiKeys() AzurermApplicationInsightsApiKeyInformer {
-	return &azurermApplicationInsightsApiKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApplicationInsightses returns a ApplicationInsightsInformer.
+func (v *version) ApplicationInsightses() ApplicationInsightsInformer {
+	return &applicationInsightsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApplicationInsightsWebTests returns a AzurermApplicationInsightsWebTestInformer.
-func (v *version) AzurermApplicationInsightsWebTests() AzurermApplicationInsightsWebTestInformer {
-	return &azurermApplicationInsightsWebTestInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApplicationInsightsApiKeys returns a ApplicationInsightsApiKeyInformer.
+func (v *version) ApplicationInsightsApiKeys() ApplicationInsightsApiKeyInformer {
+	return &applicationInsightsApiKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermApplicationSecurityGroups returns a AzurermApplicationSecurityGroupInformer.
-func (v *version) AzurermApplicationSecurityGroups() AzurermApplicationSecurityGroupInformer {
-	return &azurermApplicationSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApplicationInsightsWebTests returns a ApplicationInsightsWebTestInformer.
+func (v *version) ApplicationInsightsWebTests() ApplicationInsightsWebTestInformer {
+	return &applicationInsightsWebTestInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAutomationAccounts returns a AzurermAutomationAccountInformer.
-func (v *version) AzurermAutomationAccounts() AzurermAutomationAccountInformer {
-	return &azurermAutomationAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApplicationSecurityGroups returns a ApplicationSecurityGroupInformer.
+func (v *version) ApplicationSecurityGroups() ApplicationSecurityGroupInformer {
+	return &applicationSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAutomationCredentials returns a AzurermAutomationCredentialInformer.
-func (v *version) AzurermAutomationCredentials() AzurermAutomationCredentialInformer {
-	return &azurermAutomationCredentialInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutomationAccounts returns a AutomationAccountInformer.
+func (v *version) AutomationAccounts() AutomationAccountInformer {
+	return &automationAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAutomationDscConfigurations returns a AzurermAutomationDscConfigurationInformer.
-func (v *version) AzurermAutomationDscConfigurations() AzurermAutomationDscConfigurationInformer {
-	return &azurermAutomationDscConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutomationCredentials returns a AutomationCredentialInformer.
+func (v *version) AutomationCredentials() AutomationCredentialInformer {
+	return &automationCredentialInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAutomationDscNodeconfigurations returns a AzurermAutomationDscNodeconfigurationInformer.
-func (v *version) AzurermAutomationDscNodeconfigurations() AzurermAutomationDscNodeconfigurationInformer {
-	return &azurermAutomationDscNodeconfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutomationDscConfigurations returns a AutomationDscConfigurationInformer.
+func (v *version) AutomationDscConfigurations() AutomationDscConfigurationInformer {
+	return &automationDscConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAutomationModules returns a AzurermAutomationModuleInformer.
-func (v *version) AzurermAutomationModules() AzurermAutomationModuleInformer {
-	return &azurermAutomationModuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutomationDscNodeconfigurations returns a AutomationDscNodeconfigurationInformer.
+func (v *version) AutomationDscNodeconfigurations() AutomationDscNodeconfigurationInformer {
+	return &automationDscNodeconfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAutomationRunbooks returns a AzurermAutomationRunbookInformer.
-func (v *version) AzurermAutomationRunbooks() AzurermAutomationRunbookInformer {
-	return &azurermAutomationRunbookInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutomationModules returns a AutomationModuleInformer.
+func (v *version) AutomationModules() AutomationModuleInformer {
+	return &automationModuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAutomationSchedules returns a AzurermAutomationScheduleInformer.
-func (v *version) AzurermAutomationSchedules() AzurermAutomationScheduleInformer {
-	return &azurermAutomationScheduleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutomationRunbooks returns a AutomationRunbookInformer.
+func (v *version) AutomationRunbooks() AutomationRunbookInformer {
+	return &automationRunbookInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAutomationVariableBools returns a AzurermAutomationVariableBoolInformer.
-func (v *version) AzurermAutomationVariableBools() AzurermAutomationVariableBoolInformer {
-	return &azurermAutomationVariableBoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutomationSchedules returns a AutomationScheduleInformer.
+func (v *version) AutomationSchedules() AutomationScheduleInformer {
+	return &automationScheduleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAutomationVariableDatetimes returns a AzurermAutomationVariableDatetimeInformer.
-func (v *version) AzurermAutomationVariableDatetimes() AzurermAutomationVariableDatetimeInformer {
-	return &azurermAutomationVariableDatetimeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutomationVariableBools returns a AutomationVariableBoolInformer.
+func (v *version) AutomationVariableBools() AutomationVariableBoolInformer {
+	return &automationVariableBoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAutomationVariableInts returns a AzurermAutomationVariableIntInformer.
-func (v *version) AzurermAutomationVariableInts() AzurermAutomationVariableIntInformer {
-	return &azurermAutomationVariableIntInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutomationVariableDatetimes returns a AutomationVariableDatetimeInformer.
+func (v *version) AutomationVariableDatetimes() AutomationVariableDatetimeInformer {
+	return &automationVariableDatetimeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAutomationVariableStrings returns a AzurermAutomationVariableStringInformer.
-func (v *version) AzurermAutomationVariableStrings() AzurermAutomationVariableStringInformer {
-	return &azurermAutomationVariableStringInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutomationVariableInts returns a AutomationVariableIntInformer.
+func (v *version) AutomationVariableInts() AutomationVariableIntInformer {
+	return &automationVariableIntInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAutoscaleSettings returns a AzurermAutoscaleSettingInformer.
-func (v *version) AzurermAutoscaleSettings() AzurermAutoscaleSettingInformer {
-	return &azurermAutoscaleSettingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutomationVariableStrings returns a AutomationVariableStringInformer.
+func (v *version) AutomationVariableStrings() AutomationVariableStringInformer {
+	return &automationVariableStringInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAvailabilitySets returns a AzurermAvailabilitySetInformer.
-func (v *version) AzurermAvailabilitySets() AzurermAvailabilitySetInformer {
-	return &azurermAvailabilitySetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutoscaleSettings returns a AutoscaleSettingInformer.
+func (v *version) AutoscaleSettings() AutoscaleSettingInformer {
+	return &autoscaleSettingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAzureadApplications returns a AzurermAzureadApplicationInformer.
-func (v *version) AzurermAzureadApplications() AzurermAzureadApplicationInformer {
-	return &azurermAzureadApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AvailabilitySets returns a AvailabilitySetInformer.
+func (v *version) AvailabilitySets() AvailabilitySetInformer {
+	return &availabilitySetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAzureadServicePrincipals returns a AzurermAzureadServicePrincipalInformer.
-func (v *version) AzurermAzureadServicePrincipals() AzurermAzureadServicePrincipalInformer {
-	return &azurermAzureadServicePrincipalInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AzureadApplications returns a AzureadApplicationInformer.
+func (v *version) AzureadApplications() AzureadApplicationInformer {
+	return &azureadApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermAzureadServicePrincipalPasswords returns a AzurermAzureadServicePrincipalPasswordInformer.
-func (v *version) AzurermAzureadServicePrincipalPasswords() AzurermAzureadServicePrincipalPasswordInformer {
-	return &azurermAzureadServicePrincipalPasswordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AzureadServicePrincipals returns a AzureadServicePrincipalInformer.
+func (v *version) AzureadServicePrincipals() AzureadServicePrincipalInformer {
+	return &azureadServicePrincipalInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermBatchAccounts returns a AzurermBatchAccountInformer.
-func (v *version) AzurermBatchAccounts() AzurermBatchAccountInformer {
-	return &azurermBatchAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AzureadServicePrincipalPasswords returns a AzureadServicePrincipalPasswordInformer.
+func (v *version) AzureadServicePrincipalPasswords() AzureadServicePrincipalPasswordInformer {
+	return &azureadServicePrincipalPasswordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermBatchCertificates returns a AzurermBatchCertificateInformer.
-func (v *version) AzurermBatchCertificates() AzurermBatchCertificateInformer {
-	return &azurermBatchCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BatchAccounts returns a BatchAccountInformer.
+func (v *version) BatchAccounts() BatchAccountInformer {
+	return &batchAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermBatchPools returns a AzurermBatchPoolInformer.
-func (v *version) AzurermBatchPools() AzurermBatchPoolInformer {
-	return &azurermBatchPoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BatchApplications returns a BatchApplicationInformer.
+func (v *version) BatchApplications() BatchApplicationInformer {
+	return &batchApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermCdnEndpoints returns a AzurermCdnEndpointInformer.
-func (v *version) AzurermCdnEndpoints() AzurermCdnEndpointInformer {
-	return &azurermCdnEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BatchCertificates returns a BatchCertificateInformer.
+func (v *version) BatchCertificates() BatchCertificateInformer {
+	return &batchCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermCdnProfiles returns a AzurermCdnProfileInformer.
-func (v *version) AzurermCdnProfiles() AzurermCdnProfileInformer {
-	return &azurermCdnProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BatchPools returns a BatchPoolInformer.
+func (v *version) BatchPools() BatchPoolInformer {
+	return &batchPoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermCognitiveAccounts returns a AzurermCognitiveAccountInformer.
-func (v *version) AzurermCognitiveAccounts() AzurermCognitiveAccountInformer {
-	return &azurermCognitiveAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CdnEndpoints returns a CdnEndpointInformer.
+func (v *version) CdnEndpoints() CdnEndpointInformer {
+	return &cdnEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermConnectionMonitors returns a AzurermConnectionMonitorInformer.
-func (v *version) AzurermConnectionMonitors() AzurermConnectionMonitorInformer {
-	return &azurermConnectionMonitorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CdnProfiles returns a CdnProfileInformer.
+func (v *version) CdnProfiles() CdnProfileInformer {
+	return &cdnProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermContainerGroups returns a AzurermContainerGroupInformer.
-func (v *version) AzurermContainerGroups() AzurermContainerGroupInformer {
-	return &azurermContainerGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CognitiveAccounts returns a CognitiveAccountInformer.
+func (v *version) CognitiveAccounts() CognitiveAccountInformer {
+	return &cognitiveAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermContainerRegistries returns a AzurermContainerRegistryInformer.
-func (v *version) AzurermContainerRegistries() AzurermContainerRegistryInformer {
-	return &azurermContainerRegistryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ConnectionMonitors returns a ConnectionMonitorInformer.
+func (v *version) ConnectionMonitors() ConnectionMonitorInformer {
+	return &connectionMonitorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermContainerServices returns a AzurermContainerServiceInformer.
-func (v *version) AzurermContainerServices() AzurermContainerServiceInformer {
-	return &azurermContainerServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ContainerGroups returns a ContainerGroupInformer.
+func (v *version) ContainerGroups() ContainerGroupInformer {
+	return &containerGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermCosmosdbAccounts returns a AzurermCosmosdbAccountInformer.
-func (v *version) AzurermCosmosdbAccounts() AzurermCosmosdbAccountInformer {
-	return &azurermCosmosdbAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ContainerRegistries returns a ContainerRegistryInformer.
+func (v *version) ContainerRegistries() ContainerRegistryInformer {
+	return &containerRegistryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermCosmosdbCassandraKeyspaces returns a AzurermCosmosdbCassandraKeyspaceInformer.
-func (v *version) AzurermCosmosdbCassandraKeyspaces() AzurermCosmosdbCassandraKeyspaceInformer {
-	return &azurermCosmosdbCassandraKeyspaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ContainerServices returns a ContainerServiceInformer.
+func (v *version) ContainerServices() ContainerServiceInformer {
+	return &containerServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermCosmosdbMongoCollections returns a AzurermCosmosdbMongoCollectionInformer.
-func (v *version) AzurermCosmosdbMongoCollections() AzurermCosmosdbMongoCollectionInformer {
-	return &azurermCosmosdbMongoCollectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CosmosdbAccounts returns a CosmosdbAccountInformer.
+func (v *version) CosmosdbAccounts() CosmosdbAccountInformer {
+	return &cosmosdbAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermCosmosdbMongoDatabases returns a AzurermCosmosdbMongoDatabaseInformer.
-func (v *version) AzurermCosmosdbMongoDatabases() AzurermCosmosdbMongoDatabaseInformer {
-	return &azurermCosmosdbMongoDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CosmosdbCassandraKeyspaces returns a CosmosdbCassandraKeyspaceInformer.
+func (v *version) CosmosdbCassandraKeyspaces() CosmosdbCassandraKeyspaceInformer {
+	return &cosmosdbCassandraKeyspaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermCosmosdbSqlDatabases returns a AzurermCosmosdbSqlDatabaseInformer.
-func (v *version) AzurermCosmosdbSqlDatabases() AzurermCosmosdbSqlDatabaseInformer {
-	return &azurermCosmosdbSqlDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CosmosdbMongoCollections returns a CosmosdbMongoCollectionInformer.
+func (v *version) CosmosdbMongoCollections() CosmosdbMongoCollectionInformer {
+	return &cosmosdbMongoCollectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermCosmosdbTables returns a AzurermCosmosdbTableInformer.
-func (v *version) AzurermCosmosdbTables() AzurermCosmosdbTableInformer {
-	return &azurermCosmosdbTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CosmosdbMongoDatabases returns a CosmosdbMongoDatabaseInformer.
+func (v *version) CosmosdbMongoDatabases() CosmosdbMongoDatabaseInformer {
+	return &cosmosdbMongoDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataFactories returns a AzurermDataFactoryInformer.
-func (v *version) AzurermDataFactories() AzurermDataFactoryInformer {
-	return &azurermDataFactoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CosmosdbSqlDatabases returns a CosmosdbSqlDatabaseInformer.
+func (v *version) CosmosdbSqlDatabases() CosmosdbSqlDatabaseInformer {
+	return &cosmosdbSqlDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataFactoryDatasetMysqls returns a AzurermDataFactoryDatasetMysqlInformer.
-func (v *version) AzurermDataFactoryDatasetMysqls() AzurermDataFactoryDatasetMysqlInformer {
-	return &azurermDataFactoryDatasetMysqlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CosmosdbTables returns a CosmosdbTableInformer.
+func (v *version) CosmosdbTables() CosmosdbTableInformer {
+	return &cosmosdbTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataFactoryDatasetPostgresqls returns a AzurermDataFactoryDatasetPostgresqlInformer.
-func (v *version) AzurermDataFactoryDatasetPostgresqls() AzurermDataFactoryDatasetPostgresqlInformer {
-	return &azurermDataFactoryDatasetPostgresqlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataFactories returns a DataFactoryInformer.
+func (v *version) DataFactories() DataFactoryInformer {
+	return &dataFactoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataFactoryDatasetSqlServerTables returns a AzurermDataFactoryDatasetSqlServerTableInformer.
-func (v *version) AzurermDataFactoryDatasetSqlServerTables() AzurermDataFactoryDatasetSqlServerTableInformer {
-	return &azurermDataFactoryDatasetSqlServerTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataFactoryDatasetMysqls returns a DataFactoryDatasetMysqlInformer.
+func (v *version) DataFactoryDatasetMysqls() DataFactoryDatasetMysqlInformer {
+	return &dataFactoryDatasetMysqlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataFactoryLinkedServiceDataLakeStorageGen2s returns a AzurermDataFactoryLinkedServiceDataLakeStorageGen2Informer.
-func (v *version) AzurermDataFactoryLinkedServiceDataLakeStorageGen2s() AzurermDataFactoryLinkedServiceDataLakeStorageGen2Informer {
-	return &azurermDataFactoryLinkedServiceDataLakeStorageGen2Informer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataFactoryDatasetPostgresqls returns a DataFactoryDatasetPostgresqlInformer.
+func (v *version) DataFactoryDatasetPostgresqls() DataFactoryDatasetPostgresqlInformer {
+	return &dataFactoryDatasetPostgresqlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataFactoryLinkedServiceMysqls returns a AzurermDataFactoryLinkedServiceMysqlInformer.
-func (v *version) AzurermDataFactoryLinkedServiceMysqls() AzurermDataFactoryLinkedServiceMysqlInformer {
-	return &azurermDataFactoryLinkedServiceMysqlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataFactoryDatasetSqlServerTables returns a DataFactoryDatasetSqlServerTableInformer.
+func (v *version) DataFactoryDatasetSqlServerTables() DataFactoryDatasetSqlServerTableInformer {
+	return &dataFactoryDatasetSqlServerTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataFactoryLinkedServicePostgresqls returns a AzurermDataFactoryLinkedServicePostgresqlInformer.
-func (v *version) AzurermDataFactoryLinkedServicePostgresqls() AzurermDataFactoryLinkedServicePostgresqlInformer {
-	return &azurermDataFactoryLinkedServicePostgresqlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataFactoryLinkedServiceDataLakeStorageGen2s returns a DataFactoryLinkedServiceDataLakeStorageGen2Informer.
+func (v *version) DataFactoryLinkedServiceDataLakeStorageGen2s() DataFactoryLinkedServiceDataLakeStorageGen2Informer {
+	return &dataFactoryLinkedServiceDataLakeStorageGen2Informer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataFactoryLinkedServiceSqlServers returns a AzurermDataFactoryLinkedServiceSqlServerInformer.
-func (v *version) AzurermDataFactoryLinkedServiceSqlServers() AzurermDataFactoryLinkedServiceSqlServerInformer {
-	return &azurermDataFactoryLinkedServiceSqlServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataFactoryLinkedServiceMysqls returns a DataFactoryLinkedServiceMysqlInformer.
+func (v *version) DataFactoryLinkedServiceMysqls() DataFactoryLinkedServiceMysqlInformer {
+	return &dataFactoryLinkedServiceMysqlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataFactoryPipelines returns a AzurermDataFactoryPipelineInformer.
-func (v *version) AzurermDataFactoryPipelines() AzurermDataFactoryPipelineInformer {
-	return &azurermDataFactoryPipelineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataFactoryLinkedServicePostgresqls returns a DataFactoryLinkedServicePostgresqlInformer.
+func (v *version) DataFactoryLinkedServicePostgresqls() DataFactoryLinkedServicePostgresqlInformer {
+	return &dataFactoryLinkedServicePostgresqlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataLakeAnalyticsAccounts returns a AzurermDataLakeAnalyticsAccountInformer.
-func (v *version) AzurermDataLakeAnalyticsAccounts() AzurermDataLakeAnalyticsAccountInformer {
-	return &azurermDataLakeAnalyticsAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataFactoryLinkedServiceSqlServers returns a DataFactoryLinkedServiceSqlServerInformer.
+func (v *version) DataFactoryLinkedServiceSqlServers() DataFactoryLinkedServiceSqlServerInformer {
+	return &dataFactoryLinkedServiceSqlServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataLakeAnalyticsFirewallRules returns a AzurermDataLakeAnalyticsFirewallRuleInformer.
-func (v *version) AzurermDataLakeAnalyticsFirewallRules() AzurermDataLakeAnalyticsFirewallRuleInformer {
-	return &azurermDataLakeAnalyticsFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataFactoryPipelines returns a DataFactoryPipelineInformer.
+func (v *version) DataFactoryPipelines() DataFactoryPipelineInformer {
+	return &dataFactoryPipelineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataLakeStores returns a AzurermDataLakeStoreInformer.
-func (v *version) AzurermDataLakeStores() AzurermDataLakeStoreInformer {
-	return &azurermDataLakeStoreInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataLakeAnalyticsAccounts returns a DataLakeAnalyticsAccountInformer.
+func (v *version) DataLakeAnalyticsAccounts() DataLakeAnalyticsAccountInformer {
+	return &dataLakeAnalyticsAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataLakeStoreFiles returns a AzurermDataLakeStoreFileInformer.
-func (v *version) AzurermDataLakeStoreFiles() AzurermDataLakeStoreFileInformer {
-	return &azurermDataLakeStoreFileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataLakeAnalyticsFirewallRules returns a DataLakeAnalyticsFirewallRuleInformer.
+func (v *version) DataLakeAnalyticsFirewallRules() DataLakeAnalyticsFirewallRuleInformer {
+	return &dataLakeAnalyticsFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDataLakeStoreFirewallRules returns a AzurermDataLakeStoreFirewallRuleInformer.
-func (v *version) AzurermDataLakeStoreFirewallRules() AzurermDataLakeStoreFirewallRuleInformer {
-	return &azurermDataLakeStoreFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataLakeStores returns a DataLakeStoreInformer.
+func (v *version) DataLakeStores() DataLakeStoreInformer {
+	return &dataLakeStoreInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDatabricksWorkspaces returns a AzurermDatabricksWorkspaceInformer.
-func (v *version) AzurermDatabricksWorkspaces() AzurermDatabricksWorkspaceInformer {
-	return &azurermDatabricksWorkspaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataLakeStoreFiles returns a DataLakeStoreFileInformer.
+func (v *version) DataLakeStoreFiles() DataLakeStoreFileInformer {
+	return &dataLakeStoreFileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDdosProtectionPlans returns a AzurermDdosProtectionPlanInformer.
-func (v *version) AzurermDdosProtectionPlans() AzurermDdosProtectionPlanInformer {
-	return &azurermDdosProtectionPlanInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataLakeStoreFirewallRules returns a DataLakeStoreFirewallRuleInformer.
+func (v *version) DataLakeStoreFirewallRules() DataLakeStoreFirewallRuleInformer {
+	return &dataLakeStoreFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDevTestLabs returns a AzurermDevTestLabInformer.
-func (v *version) AzurermDevTestLabs() AzurermDevTestLabInformer {
-	return &azurermDevTestLabInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DatabricksWorkspaces returns a DatabricksWorkspaceInformer.
+func (v *version) DatabricksWorkspaces() DatabricksWorkspaceInformer {
+	return &databricksWorkspaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDevTestLinuxVirtualMachines returns a AzurermDevTestLinuxVirtualMachineInformer.
-func (v *version) AzurermDevTestLinuxVirtualMachines() AzurermDevTestLinuxVirtualMachineInformer {
-	return &azurermDevTestLinuxVirtualMachineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DdosProtectionPlans returns a DdosProtectionPlanInformer.
+func (v *version) DdosProtectionPlans() DdosProtectionPlanInformer {
+	return &ddosProtectionPlanInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDevTestPolicies returns a AzurermDevTestPolicyInformer.
-func (v *version) AzurermDevTestPolicies() AzurermDevTestPolicyInformer {
-	return &azurermDevTestPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DevTestLabs returns a DevTestLabInformer.
+func (v *version) DevTestLabs() DevTestLabInformer {
+	return &devTestLabInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDevTestVirtualNetworks returns a AzurermDevTestVirtualNetworkInformer.
-func (v *version) AzurermDevTestVirtualNetworks() AzurermDevTestVirtualNetworkInformer {
-	return &azurermDevTestVirtualNetworkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DevTestLinuxVirtualMachines returns a DevTestLinuxVirtualMachineInformer.
+func (v *version) DevTestLinuxVirtualMachines() DevTestLinuxVirtualMachineInformer {
+	return &devTestLinuxVirtualMachineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDevTestWindowsVirtualMachines returns a AzurermDevTestWindowsVirtualMachineInformer.
-func (v *version) AzurermDevTestWindowsVirtualMachines() AzurermDevTestWindowsVirtualMachineInformer {
-	return &azurermDevTestWindowsVirtualMachineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DevTestPolicies returns a DevTestPolicyInformer.
+func (v *version) DevTestPolicies() DevTestPolicyInformer {
+	return &devTestPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDevspaceControllers returns a AzurermDevspaceControllerInformer.
-func (v *version) AzurermDevspaceControllers() AzurermDevspaceControllerInformer {
-	return &azurermDevspaceControllerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DevTestVirtualNetworks returns a DevTestVirtualNetworkInformer.
+func (v *version) DevTestVirtualNetworks() DevTestVirtualNetworkInformer {
+	return &devTestVirtualNetworkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDnsARecords returns a AzurermDnsARecordInformer.
-func (v *version) AzurermDnsARecords() AzurermDnsARecordInformer {
-	return &azurermDnsARecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DevTestWindowsVirtualMachines returns a DevTestWindowsVirtualMachineInformer.
+func (v *version) DevTestWindowsVirtualMachines() DevTestWindowsVirtualMachineInformer {
+	return &devTestWindowsVirtualMachineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDnsAaaaRecords returns a AzurermDnsAaaaRecordInformer.
-func (v *version) AzurermDnsAaaaRecords() AzurermDnsAaaaRecordInformer {
-	return &azurermDnsAaaaRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DevspaceControllers returns a DevspaceControllerInformer.
+func (v *version) DevspaceControllers() DevspaceControllerInformer {
+	return &devspaceControllerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDnsCaaRecords returns a AzurermDnsCaaRecordInformer.
-func (v *version) AzurermDnsCaaRecords() AzurermDnsCaaRecordInformer {
-	return &azurermDnsCaaRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DnsARecords returns a DnsARecordInformer.
+func (v *version) DnsARecords() DnsARecordInformer {
+	return &dnsARecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDnsCnameRecords returns a AzurermDnsCnameRecordInformer.
-func (v *version) AzurermDnsCnameRecords() AzurermDnsCnameRecordInformer {
-	return &azurermDnsCnameRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DnsAaaaRecords returns a DnsAaaaRecordInformer.
+func (v *version) DnsAaaaRecords() DnsAaaaRecordInformer {
+	return &dnsAaaaRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDnsMxRecords returns a AzurermDnsMxRecordInformer.
-func (v *version) AzurermDnsMxRecords() AzurermDnsMxRecordInformer {
-	return &azurermDnsMxRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DnsCaaRecords returns a DnsCaaRecordInformer.
+func (v *version) DnsCaaRecords() DnsCaaRecordInformer {
+	return &dnsCaaRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDnsNsRecords returns a AzurermDnsNsRecordInformer.
-func (v *version) AzurermDnsNsRecords() AzurermDnsNsRecordInformer {
-	return &azurermDnsNsRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DnsCnameRecords returns a DnsCnameRecordInformer.
+func (v *version) DnsCnameRecords() DnsCnameRecordInformer {
+	return &dnsCnameRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDnsPtrRecords returns a AzurermDnsPtrRecordInformer.
-func (v *version) AzurermDnsPtrRecords() AzurermDnsPtrRecordInformer {
-	return &azurermDnsPtrRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DnsMxRecords returns a DnsMxRecordInformer.
+func (v *version) DnsMxRecords() DnsMxRecordInformer {
+	return &dnsMxRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDnsSrvRecords returns a AzurermDnsSrvRecordInformer.
-func (v *version) AzurermDnsSrvRecords() AzurermDnsSrvRecordInformer {
-	return &azurermDnsSrvRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DnsNsRecords returns a DnsNsRecordInformer.
+func (v *version) DnsNsRecords() DnsNsRecordInformer {
+	return &dnsNsRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDnsTxtRecords returns a AzurermDnsTxtRecordInformer.
-func (v *version) AzurermDnsTxtRecords() AzurermDnsTxtRecordInformer {
-	return &azurermDnsTxtRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DnsPtrRecords returns a DnsPtrRecordInformer.
+func (v *version) DnsPtrRecords() DnsPtrRecordInformer {
+	return &dnsPtrRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermDnsZones returns a AzurermDnsZoneInformer.
-func (v *version) AzurermDnsZones() AzurermDnsZoneInformer {
-	return &azurermDnsZoneInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DnsSrvRecords returns a DnsSrvRecordInformer.
+func (v *version) DnsSrvRecords() DnsSrvRecordInformer {
+	return &dnsSrvRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermEventgridDomains returns a AzurermEventgridDomainInformer.
-func (v *version) AzurermEventgridDomains() AzurermEventgridDomainInformer {
-	return &azurermEventgridDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DnsTxtRecords returns a DnsTxtRecordInformer.
+func (v *version) DnsTxtRecords() DnsTxtRecordInformer {
+	return &dnsTxtRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermEventgridEventSubscriptions returns a AzurermEventgridEventSubscriptionInformer.
-func (v *version) AzurermEventgridEventSubscriptions() AzurermEventgridEventSubscriptionInformer {
-	return &azurermEventgridEventSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DnsZones returns a DnsZoneInformer.
+func (v *version) DnsZones() DnsZoneInformer {
+	return &dnsZoneInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermEventgridTopics returns a AzurermEventgridTopicInformer.
-func (v *version) AzurermEventgridTopics() AzurermEventgridTopicInformer {
-	return &azurermEventgridTopicInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EventgridDomains returns a EventgridDomainInformer.
+func (v *version) EventgridDomains() EventgridDomainInformer {
+	return &eventgridDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermEventhubs returns a AzurermEventhubInformer.
-func (v *version) AzurermEventhubs() AzurermEventhubInformer {
-	return &azurermEventhubInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EventgridEventSubscriptions returns a EventgridEventSubscriptionInformer.
+func (v *version) EventgridEventSubscriptions() EventgridEventSubscriptionInformer {
+	return &eventgridEventSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermEventhubAuthorizationRules returns a AzurermEventhubAuthorizationRuleInformer.
-func (v *version) AzurermEventhubAuthorizationRules() AzurermEventhubAuthorizationRuleInformer {
-	return &azurermEventhubAuthorizationRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EventgridTopics returns a EventgridTopicInformer.
+func (v *version) EventgridTopics() EventgridTopicInformer {
+	return &eventgridTopicInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermEventhubConsumerGroups returns a AzurermEventhubConsumerGroupInformer.
-func (v *version) AzurermEventhubConsumerGroups() AzurermEventhubConsumerGroupInformer {
-	return &azurermEventhubConsumerGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Eventhubs returns a EventhubInformer.
+func (v *version) Eventhubs() EventhubInformer {
+	return &eventhubInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermEventhubNamespaces returns a AzurermEventhubNamespaceInformer.
-func (v *version) AzurermEventhubNamespaces() AzurermEventhubNamespaceInformer {
-	return &azurermEventhubNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EventhubAuthorizationRules returns a EventhubAuthorizationRuleInformer.
+func (v *version) EventhubAuthorizationRules() EventhubAuthorizationRuleInformer {
+	return &eventhubAuthorizationRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermEventhubNamespaceAuthorizationRules returns a AzurermEventhubNamespaceAuthorizationRuleInformer.
-func (v *version) AzurermEventhubNamespaceAuthorizationRules() AzurermEventhubNamespaceAuthorizationRuleInformer {
-	return &azurermEventhubNamespaceAuthorizationRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EventhubConsumerGroups returns a EventhubConsumerGroupInformer.
+func (v *version) EventhubConsumerGroups() EventhubConsumerGroupInformer {
+	return &eventhubConsumerGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermExpressRouteCircuits returns a AzurermExpressRouteCircuitInformer.
-func (v *version) AzurermExpressRouteCircuits() AzurermExpressRouteCircuitInformer {
-	return &azurermExpressRouteCircuitInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EventhubNamespaces returns a EventhubNamespaceInformer.
+func (v *version) EventhubNamespaces() EventhubNamespaceInformer {
+	return &eventhubNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermExpressRouteCircuitAuthorizations returns a AzurermExpressRouteCircuitAuthorizationInformer.
-func (v *version) AzurermExpressRouteCircuitAuthorizations() AzurermExpressRouteCircuitAuthorizationInformer {
-	return &azurermExpressRouteCircuitAuthorizationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EventhubNamespaceAuthorizationRules returns a EventhubNamespaceAuthorizationRuleInformer.
+func (v *version) EventhubNamespaceAuthorizationRules() EventhubNamespaceAuthorizationRuleInformer {
+	return &eventhubNamespaceAuthorizationRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermExpressRouteCircuitPeerings returns a AzurermExpressRouteCircuitPeeringInformer.
-func (v *version) AzurermExpressRouteCircuitPeerings() AzurermExpressRouteCircuitPeeringInformer {
-	return &azurermExpressRouteCircuitPeeringInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ExpressRouteCircuits returns a ExpressRouteCircuitInformer.
+func (v *version) ExpressRouteCircuits() ExpressRouteCircuitInformer {
+	return &expressRouteCircuitInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermFirewalls returns a AzurermFirewallInformer.
-func (v *version) AzurermFirewalls() AzurermFirewallInformer {
-	return &azurermFirewallInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ExpressRouteCircuitAuthorizations returns a ExpressRouteCircuitAuthorizationInformer.
+func (v *version) ExpressRouteCircuitAuthorizations() ExpressRouteCircuitAuthorizationInformer {
+	return &expressRouteCircuitAuthorizationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermFirewallApplicationRuleCollections returns a AzurermFirewallApplicationRuleCollectionInformer.
-func (v *version) AzurermFirewallApplicationRuleCollections() AzurermFirewallApplicationRuleCollectionInformer {
-	return &azurermFirewallApplicationRuleCollectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ExpressRouteCircuitPeerings returns a ExpressRouteCircuitPeeringInformer.
+func (v *version) ExpressRouteCircuitPeerings() ExpressRouteCircuitPeeringInformer {
+	return &expressRouteCircuitPeeringInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermFirewallNatRuleCollections returns a AzurermFirewallNatRuleCollectionInformer.
-func (v *version) AzurermFirewallNatRuleCollections() AzurermFirewallNatRuleCollectionInformer {
-	return &azurermFirewallNatRuleCollectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Firewalls returns a FirewallInformer.
+func (v *version) Firewalls() FirewallInformer {
+	return &firewallInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermFirewallNetworkRuleCollections returns a AzurermFirewallNetworkRuleCollectionInformer.
-func (v *version) AzurermFirewallNetworkRuleCollections() AzurermFirewallNetworkRuleCollectionInformer {
-	return &azurermFirewallNetworkRuleCollectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// FirewallApplicationRuleCollections returns a FirewallApplicationRuleCollectionInformer.
+func (v *version) FirewallApplicationRuleCollections() FirewallApplicationRuleCollectionInformer {
+	return &firewallApplicationRuleCollectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermFunctionApps returns a AzurermFunctionAppInformer.
-func (v *version) AzurermFunctionApps() AzurermFunctionAppInformer {
-	return &azurermFunctionAppInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// FirewallNatRuleCollections returns a FirewallNatRuleCollectionInformer.
+func (v *version) FirewallNatRuleCollections() FirewallNatRuleCollectionInformer {
+	return &firewallNatRuleCollectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermHdinsightHadoopClusters returns a AzurermHdinsightHadoopClusterInformer.
-func (v *version) AzurermHdinsightHadoopClusters() AzurermHdinsightHadoopClusterInformer {
-	return &azurermHdinsightHadoopClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// FirewallNetworkRuleCollections returns a FirewallNetworkRuleCollectionInformer.
+func (v *version) FirewallNetworkRuleCollections() FirewallNetworkRuleCollectionInformer {
+	return &firewallNetworkRuleCollectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermHdinsightHbaseClusters returns a AzurermHdinsightHbaseClusterInformer.
-func (v *version) AzurermHdinsightHbaseClusters() AzurermHdinsightHbaseClusterInformer {
-	return &azurermHdinsightHbaseClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// FunctionApps returns a FunctionAppInformer.
+func (v *version) FunctionApps() FunctionAppInformer {
+	return &functionAppInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermHdinsightInteractiveQueryClusters returns a AzurermHdinsightInteractiveQueryClusterInformer.
-func (v *version) AzurermHdinsightInteractiveQueryClusters() AzurermHdinsightInteractiveQueryClusterInformer {
-	return &azurermHdinsightInteractiveQueryClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// HdinsightHadoopClusters returns a HdinsightHadoopClusterInformer.
+func (v *version) HdinsightHadoopClusters() HdinsightHadoopClusterInformer {
+	return &hdinsightHadoopClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermHdinsightKafkaClusters returns a AzurermHdinsightKafkaClusterInformer.
-func (v *version) AzurermHdinsightKafkaClusters() AzurermHdinsightKafkaClusterInformer {
-	return &azurermHdinsightKafkaClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// HdinsightHbaseClusters returns a HdinsightHbaseClusterInformer.
+func (v *version) HdinsightHbaseClusters() HdinsightHbaseClusterInformer {
+	return &hdinsightHbaseClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermHdinsightMlServicesClusters returns a AzurermHdinsightMlServicesClusterInformer.
-func (v *version) AzurermHdinsightMlServicesClusters() AzurermHdinsightMlServicesClusterInformer {
-	return &azurermHdinsightMlServicesClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// HdinsightInteractiveQueryClusters returns a HdinsightInteractiveQueryClusterInformer.
+func (v *version) HdinsightInteractiveQueryClusters() HdinsightInteractiveQueryClusterInformer {
+	return &hdinsightInteractiveQueryClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermHdinsightRserverClusters returns a AzurermHdinsightRserverClusterInformer.
-func (v *version) AzurermHdinsightRserverClusters() AzurermHdinsightRserverClusterInformer {
-	return &azurermHdinsightRserverClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// HdinsightKafkaClusters returns a HdinsightKafkaClusterInformer.
+func (v *version) HdinsightKafkaClusters() HdinsightKafkaClusterInformer {
+	return &hdinsightKafkaClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermHdinsightSparkClusters returns a AzurermHdinsightSparkClusterInformer.
-func (v *version) AzurermHdinsightSparkClusters() AzurermHdinsightSparkClusterInformer {
-	return &azurermHdinsightSparkClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// HdinsightMlServicesClusters returns a HdinsightMlServicesClusterInformer.
+func (v *version) HdinsightMlServicesClusters() HdinsightMlServicesClusterInformer {
+	return &hdinsightMlServicesClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermHdinsightStormClusters returns a AzurermHdinsightStormClusterInformer.
-func (v *version) AzurermHdinsightStormClusters() AzurermHdinsightStormClusterInformer {
-	return &azurermHdinsightStormClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// HdinsightRserverClusters returns a HdinsightRserverClusterInformer.
+func (v *version) HdinsightRserverClusters() HdinsightRserverClusterInformer {
+	return &hdinsightRserverClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermImages returns a AzurermImageInformer.
-func (v *version) AzurermImages() AzurermImageInformer {
-	return &azurermImageInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// HdinsightSparkClusters returns a HdinsightSparkClusterInformer.
+func (v *version) HdinsightSparkClusters() HdinsightSparkClusterInformer {
+	return &hdinsightSparkClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermIotDpses returns a AzurermIotDpsInformer.
-func (v *version) AzurermIotDpses() AzurermIotDpsInformer {
-	return &azurermIotDpsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// HdinsightStormClusters returns a HdinsightStormClusterInformer.
+func (v *version) HdinsightStormClusters() HdinsightStormClusterInformer {
+	return &hdinsightStormClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermIotDpsCertificates returns a AzurermIotDpsCertificateInformer.
-func (v *version) AzurermIotDpsCertificates() AzurermIotDpsCertificateInformer {
-	return &azurermIotDpsCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Images returns a ImageInformer.
+func (v *version) Images() ImageInformer {
+	return &imageInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermIothubs returns a AzurermIothubInformer.
-func (v *version) AzurermIothubs() AzurermIothubInformer {
-	return &azurermIothubInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IotDpses returns a IotDpsInformer.
+func (v *version) IotDpses() IotDpsInformer {
+	return &iotDpsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermIothubConsumerGroups returns a AzurermIothubConsumerGroupInformer.
-func (v *version) AzurermIothubConsumerGroups() AzurermIothubConsumerGroupInformer {
-	return &azurermIothubConsumerGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IotDpsCertificates returns a IotDpsCertificateInformer.
+func (v *version) IotDpsCertificates() IotDpsCertificateInformer {
+	return &iotDpsCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermIothubSharedAccessPolicies returns a AzurermIothubSharedAccessPolicyInformer.
-func (v *version) AzurermIothubSharedAccessPolicies() AzurermIothubSharedAccessPolicyInformer {
-	return &azurermIothubSharedAccessPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Iothubs returns a IothubInformer.
+func (v *version) Iothubs() IothubInformer {
+	return &iothubInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermKeyVaults returns a AzurermKeyVaultInformer.
-func (v *version) AzurermKeyVaults() AzurermKeyVaultInformer {
-	return &azurermKeyVaultInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IothubConsumerGroups returns a IothubConsumerGroupInformer.
+func (v *version) IothubConsumerGroups() IothubConsumerGroupInformer {
+	return &iothubConsumerGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermKeyVaultAccessPolicies returns a AzurermKeyVaultAccessPolicyInformer.
-func (v *version) AzurermKeyVaultAccessPolicies() AzurermKeyVaultAccessPolicyInformer {
-	return &azurermKeyVaultAccessPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IothubSharedAccessPolicies returns a IothubSharedAccessPolicyInformer.
+func (v *version) IothubSharedAccessPolicies() IothubSharedAccessPolicyInformer {
+	return &iothubSharedAccessPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermKeyVaultCertificates returns a AzurermKeyVaultCertificateInformer.
-func (v *version) AzurermKeyVaultCertificates() AzurermKeyVaultCertificateInformer {
-	return &azurermKeyVaultCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KeyVaults returns a KeyVaultInformer.
+func (v *version) KeyVaults() KeyVaultInformer {
+	return &keyVaultInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermKeyVaultKeys returns a AzurermKeyVaultKeyInformer.
-func (v *version) AzurermKeyVaultKeys() AzurermKeyVaultKeyInformer {
-	return &azurermKeyVaultKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KeyVaultAccessPolicies returns a KeyVaultAccessPolicyInformer.
+func (v *version) KeyVaultAccessPolicies() KeyVaultAccessPolicyInformer {
+	return &keyVaultAccessPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermKeyVaultSecrets returns a AzurermKeyVaultSecretInformer.
-func (v *version) AzurermKeyVaultSecrets() AzurermKeyVaultSecretInformer {
-	return &azurermKeyVaultSecretInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KeyVaultCertificates returns a KeyVaultCertificateInformer.
+func (v *version) KeyVaultCertificates() KeyVaultCertificateInformer {
+	return &keyVaultCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermKubernetesClusters returns a AzurermKubernetesClusterInformer.
-func (v *version) AzurermKubernetesClusters() AzurermKubernetesClusterInformer {
-	return &azurermKubernetesClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KeyVaultKeys returns a KeyVaultKeyInformer.
+func (v *version) KeyVaultKeys() KeyVaultKeyInformer {
+	return &keyVaultKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLbs returns a AzurermLbInformer.
-func (v *version) AzurermLbs() AzurermLbInformer {
-	return &azurermLbInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KeyVaultSecrets returns a KeyVaultSecretInformer.
+func (v *version) KeyVaultSecrets() KeyVaultSecretInformer {
+	return &keyVaultSecretInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLbBackendAddressPools returns a AzurermLbBackendAddressPoolInformer.
-func (v *version) AzurermLbBackendAddressPools() AzurermLbBackendAddressPoolInformer {
-	return &azurermLbBackendAddressPoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KubernetesClusters returns a KubernetesClusterInformer.
+func (v *version) KubernetesClusters() KubernetesClusterInformer {
+	return &kubernetesClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLbNatPools returns a AzurermLbNatPoolInformer.
-func (v *version) AzurermLbNatPools() AzurermLbNatPoolInformer {
-	return &azurermLbNatPoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Lbs returns a LbInformer.
+func (v *version) Lbs() LbInformer {
+	return &lbInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLbNatRules returns a AzurermLbNatRuleInformer.
-func (v *version) AzurermLbNatRules() AzurermLbNatRuleInformer {
-	return &azurermLbNatRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbBackendAddressPools returns a LbBackendAddressPoolInformer.
+func (v *version) LbBackendAddressPools() LbBackendAddressPoolInformer {
+	return &lbBackendAddressPoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLbOutboundRules returns a AzurermLbOutboundRuleInformer.
-func (v *version) AzurermLbOutboundRules() AzurermLbOutboundRuleInformer {
-	return &azurermLbOutboundRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbNatPools returns a LbNatPoolInformer.
+func (v *version) LbNatPools() LbNatPoolInformer {
+	return &lbNatPoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLbProbes returns a AzurermLbProbeInformer.
-func (v *version) AzurermLbProbes() AzurermLbProbeInformer {
-	return &azurermLbProbeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbNatRules returns a LbNatRuleInformer.
+func (v *version) LbNatRules() LbNatRuleInformer {
+	return &lbNatRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLbRules returns a AzurermLbRuleInformer.
-func (v *version) AzurermLbRules() AzurermLbRuleInformer {
-	return &azurermLbRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbOutboundRules returns a LbOutboundRuleInformer.
+func (v *version) LbOutboundRules() LbOutboundRuleInformer {
+	return &lbOutboundRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLocalNetworkGateways returns a AzurermLocalNetworkGatewayInformer.
-func (v *version) AzurermLocalNetworkGateways() AzurermLocalNetworkGatewayInformer {
-	return &azurermLocalNetworkGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbProbes returns a LbProbeInformer.
+func (v *version) LbProbes() LbProbeInformer {
+	return &lbProbeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLogAnalyticsLinkedServices returns a AzurermLogAnalyticsLinkedServiceInformer.
-func (v *version) AzurermLogAnalyticsLinkedServices() AzurermLogAnalyticsLinkedServiceInformer {
-	return &azurermLogAnalyticsLinkedServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbRules returns a LbRuleInformer.
+func (v *version) LbRules() LbRuleInformer {
+	return &lbRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLogAnalyticsSolutions returns a AzurermLogAnalyticsSolutionInformer.
-func (v *version) AzurermLogAnalyticsSolutions() AzurermLogAnalyticsSolutionInformer {
-	return &azurermLogAnalyticsSolutionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LocalNetworkGateways returns a LocalNetworkGatewayInformer.
+func (v *version) LocalNetworkGateways() LocalNetworkGatewayInformer {
+	return &localNetworkGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLogAnalyticsWorkspaces returns a AzurermLogAnalyticsWorkspaceInformer.
-func (v *version) AzurermLogAnalyticsWorkspaces() AzurermLogAnalyticsWorkspaceInformer {
-	return &azurermLogAnalyticsWorkspaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LogAnalyticsLinkedServices returns a LogAnalyticsLinkedServiceInformer.
+func (v *version) LogAnalyticsLinkedServices() LogAnalyticsLinkedServiceInformer {
+	return &logAnalyticsLinkedServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLogAnalyticsWorkspaceLinkedServices returns a AzurermLogAnalyticsWorkspaceLinkedServiceInformer.
-func (v *version) AzurermLogAnalyticsWorkspaceLinkedServices() AzurermLogAnalyticsWorkspaceLinkedServiceInformer {
-	return &azurermLogAnalyticsWorkspaceLinkedServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LogAnalyticsSolutions returns a LogAnalyticsSolutionInformer.
+func (v *version) LogAnalyticsSolutions() LogAnalyticsSolutionInformer {
+	return &logAnalyticsSolutionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLogicAppActionCustoms returns a AzurermLogicAppActionCustomInformer.
-func (v *version) AzurermLogicAppActionCustoms() AzurermLogicAppActionCustomInformer {
-	return &azurermLogicAppActionCustomInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LogAnalyticsWorkspaces returns a LogAnalyticsWorkspaceInformer.
+func (v *version) LogAnalyticsWorkspaces() LogAnalyticsWorkspaceInformer {
+	return &logAnalyticsWorkspaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLogicAppActionHttps returns a AzurermLogicAppActionHttpInformer.
-func (v *version) AzurermLogicAppActionHttps() AzurermLogicAppActionHttpInformer {
-	return &azurermLogicAppActionHttpInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LogAnalyticsWorkspaceLinkedServices returns a LogAnalyticsWorkspaceLinkedServiceInformer.
+func (v *version) LogAnalyticsWorkspaceLinkedServices() LogAnalyticsWorkspaceLinkedServiceInformer {
+	return &logAnalyticsWorkspaceLinkedServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLogicAppTriggerCustoms returns a AzurermLogicAppTriggerCustomInformer.
-func (v *version) AzurermLogicAppTriggerCustoms() AzurermLogicAppTriggerCustomInformer {
-	return &azurermLogicAppTriggerCustomInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LogicAppActionCustoms returns a LogicAppActionCustomInformer.
+func (v *version) LogicAppActionCustoms() LogicAppActionCustomInformer {
+	return &logicAppActionCustomInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLogicAppTriggerHttpRequests returns a AzurermLogicAppTriggerHttpRequestInformer.
-func (v *version) AzurermLogicAppTriggerHttpRequests() AzurermLogicAppTriggerHttpRequestInformer {
-	return &azurermLogicAppTriggerHttpRequestInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LogicAppActionHttps returns a LogicAppActionHttpInformer.
+func (v *version) LogicAppActionHttps() LogicAppActionHttpInformer {
+	return &logicAppActionHttpInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLogicAppTriggerRecurrences returns a AzurermLogicAppTriggerRecurrenceInformer.
-func (v *version) AzurermLogicAppTriggerRecurrences() AzurermLogicAppTriggerRecurrenceInformer {
-	return &azurermLogicAppTriggerRecurrenceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LogicAppTriggerCustoms returns a LogicAppTriggerCustomInformer.
+func (v *version) LogicAppTriggerCustoms() LogicAppTriggerCustomInformer {
+	return &logicAppTriggerCustomInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermLogicAppWorkflows returns a AzurermLogicAppWorkflowInformer.
-func (v *version) AzurermLogicAppWorkflows() AzurermLogicAppWorkflowInformer {
-	return &azurermLogicAppWorkflowInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LogicAppTriggerHttpRequests returns a LogicAppTriggerHttpRequestInformer.
+func (v *version) LogicAppTriggerHttpRequests() LogicAppTriggerHttpRequestInformer {
+	return &logicAppTriggerHttpRequestInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermManagedDisks returns a AzurermManagedDiskInformer.
-func (v *version) AzurermManagedDisks() AzurermManagedDiskInformer {
-	return &azurermManagedDiskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LogicAppTriggerRecurrences returns a LogicAppTriggerRecurrenceInformer.
+func (v *version) LogicAppTriggerRecurrences() LogicAppTriggerRecurrenceInformer {
+	return &logicAppTriggerRecurrenceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermManagementGroups returns a AzurermManagementGroupInformer.
-func (v *version) AzurermManagementGroups() AzurermManagementGroupInformer {
-	return &azurermManagementGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LogicAppWorkflows returns a LogicAppWorkflowInformer.
+func (v *version) LogicAppWorkflows() LogicAppWorkflowInformer {
+	return &logicAppWorkflowInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermManagementLocks returns a AzurermManagementLockInformer.
-func (v *version) AzurermManagementLocks() AzurermManagementLockInformer {
-	return &azurermManagementLockInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ManagedDisks returns a ManagedDiskInformer.
+func (v *version) ManagedDisks() ManagedDiskInformer {
+	return &managedDiskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMariadbDatabases returns a AzurermMariadbDatabaseInformer.
-func (v *version) AzurermMariadbDatabases() AzurermMariadbDatabaseInformer {
-	return &azurermMariadbDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ManagementGroups returns a ManagementGroupInformer.
+func (v *version) ManagementGroups() ManagementGroupInformer {
+	return &managementGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMariadbFirewallRules returns a AzurermMariadbFirewallRuleInformer.
-func (v *version) AzurermMariadbFirewallRules() AzurermMariadbFirewallRuleInformer {
-	return &azurermMariadbFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ManagementLocks returns a ManagementLockInformer.
+func (v *version) ManagementLocks() ManagementLockInformer {
+	return &managementLockInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMariadbServers returns a AzurermMariadbServerInformer.
-func (v *version) AzurermMariadbServers() AzurermMariadbServerInformer {
-	return &azurermMariadbServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MariadbDatabases returns a MariadbDatabaseInformer.
+func (v *version) MariadbDatabases() MariadbDatabaseInformer {
+	return &mariadbDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMediaServicesAccounts returns a AzurermMediaServicesAccountInformer.
-func (v *version) AzurermMediaServicesAccounts() AzurermMediaServicesAccountInformer {
-	return &azurermMediaServicesAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MariadbFirewallRules returns a MariadbFirewallRuleInformer.
+func (v *version) MariadbFirewallRules() MariadbFirewallRuleInformer {
+	return &mariadbFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMetricAlertrules returns a AzurermMetricAlertruleInformer.
-func (v *version) AzurermMetricAlertrules() AzurermMetricAlertruleInformer {
-	return &azurermMetricAlertruleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MariadbServers returns a MariadbServerInformer.
+func (v *version) MariadbServers() MariadbServerInformer {
+	return &mariadbServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMonitorActionGroups returns a AzurermMonitorActionGroupInformer.
-func (v *version) AzurermMonitorActionGroups() AzurermMonitorActionGroupInformer {
-	return &azurermMonitorActionGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MediaServicesAccounts returns a MediaServicesAccountInformer.
+func (v *version) MediaServicesAccounts() MediaServicesAccountInformer {
+	return &mediaServicesAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMonitorActivityLogAlerts returns a AzurermMonitorActivityLogAlertInformer.
-func (v *version) AzurermMonitorActivityLogAlerts() AzurermMonitorActivityLogAlertInformer {
-	return &azurermMonitorActivityLogAlertInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MetricAlertrules returns a MetricAlertruleInformer.
+func (v *version) MetricAlertrules() MetricAlertruleInformer {
+	return &metricAlertruleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMonitorAutoscaleSettings returns a AzurermMonitorAutoscaleSettingInformer.
-func (v *version) AzurermMonitorAutoscaleSettings() AzurermMonitorAutoscaleSettingInformer {
-	return &azurermMonitorAutoscaleSettingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MonitorActionGroups returns a MonitorActionGroupInformer.
+func (v *version) MonitorActionGroups() MonitorActionGroupInformer {
+	return &monitorActionGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMonitorDiagnosticSettings returns a AzurermMonitorDiagnosticSettingInformer.
-func (v *version) AzurermMonitorDiagnosticSettings() AzurermMonitorDiagnosticSettingInformer {
-	return &azurermMonitorDiagnosticSettingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MonitorActivityLogAlerts returns a MonitorActivityLogAlertInformer.
+func (v *version) MonitorActivityLogAlerts() MonitorActivityLogAlertInformer {
+	return &monitorActivityLogAlertInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMonitorLogProfiles returns a AzurermMonitorLogProfileInformer.
-func (v *version) AzurermMonitorLogProfiles() AzurermMonitorLogProfileInformer {
-	return &azurermMonitorLogProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MonitorAutoscaleSettings returns a MonitorAutoscaleSettingInformer.
+func (v *version) MonitorAutoscaleSettings() MonitorAutoscaleSettingInformer {
+	return &monitorAutoscaleSettingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMonitorMetricAlerts returns a AzurermMonitorMetricAlertInformer.
-func (v *version) AzurermMonitorMetricAlerts() AzurermMonitorMetricAlertInformer {
-	return &azurermMonitorMetricAlertInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MonitorDiagnosticSettings returns a MonitorDiagnosticSettingInformer.
+func (v *version) MonitorDiagnosticSettings() MonitorDiagnosticSettingInformer {
+	return &monitorDiagnosticSettingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMonitorMetricAlertrules returns a AzurermMonitorMetricAlertruleInformer.
-func (v *version) AzurermMonitorMetricAlertrules() AzurermMonitorMetricAlertruleInformer {
-	return &azurermMonitorMetricAlertruleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MonitorLogProfiles returns a MonitorLogProfileInformer.
+func (v *version) MonitorLogProfiles() MonitorLogProfileInformer {
+	return &monitorLogProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMssqlElasticpools returns a AzurermMssqlElasticpoolInformer.
-func (v *version) AzurermMssqlElasticpools() AzurermMssqlElasticpoolInformer {
-	return &azurermMssqlElasticpoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MonitorMetricAlerts returns a MonitorMetricAlertInformer.
+func (v *version) MonitorMetricAlerts() MonitorMetricAlertInformer {
+	return &monitorMetricAlertInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMysqlConfigurations returns a AzurermMysqlConfigurationInformer.
-func (v *version) AzurermMysqlConfigurations() AzurermMysqlConfigurationInformer {
-	return &azurermMysqlConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MonitorMetricAlertrules returns a MonitorMetricAlertruleInformer.
+func (v *version) MonitorMetricAlertrules() MonitorMetricAlertruleInformer {
+	return &monitorMetricAlertruleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMysqlDatabases returns a AzurermMysqlDatabaseInformer.
-func (v *version) AzurermMysqlDatabases() AzurermMysqlDatabaseInformer {
-	return &azurermMysqlDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MssqlElasticpools returns a MssqlElasticpoolInformer.
+func (v *version) MssqlElasticpools() MssqlElasticpoolInformer {
+	return &mssqlElasticpoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMysqlFirewallRules returns a AzurermMysqlFirewallRuleInformer.
-func (v *version) AzurermMysqlFirewallRules() AzurermMysqlFirewallRuleInformer {
-	return &azurermMysqlFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MysqlConfigurations returns a MysqlConfigurationInformer.
+func (v *version) MysqlConfigurations() MysqlConfigurationInformer {
+	return &mysqlConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMysqlServers returns a AzurermMysqlServerInformer.
-func (v *version) AzurermMysqlServers() AzurermMysqlServerInformer {
-	return &azurermMysqlServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MysqlDatabases returns a MysqlDatabaseInformer.
+func (v *version) MysqlDatabases() MysqlDatabaseInformer {
+	return &mysqlDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermMysqlVirtualNetworkRules returns a AzurermMysqlVirtualNetworkRuleInformer.
-func (v *version) AzurermMysqlVirtualNetworkRules() AzurermMysqlVirtualNetworkRuleInformer {
-	return &azurermMysqlVirtualNetworkRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MysqlFirewallRules returns a MysqlFirewallRuleInformer.
+func (v *version) MysqlFirewallRules() MysqlFirewallRuleInformer {
+	return &mysqlFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNetworkConnectionMonitors returns a AzurermNetworkConnectionMonitorInformer.
-func (v *version) AzurermNetworkConnectionMonitors() AzurermNetworkConnectionMonitorInformer {
-	return &azurermNetworkConnectionMonitorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MysqlServers returns a MysqlServerInformer.
+func (v *version) MysqlServers() MysqlServerInformer {
+	return &mysqlServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNetworkDdosProtectionPlans returns a AzurermNetworkDdosProtectionPlanInformer.
-func (v *version) AzurermNetworkDdosProtectionPlans() AzurermNetworkDdosProtectionPlanInformer {
-	return &azurermNetworkDdosProtectionPlanInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MysqlVirtualNetworkRules returns a MysqlVirtualNetworkRuleInformer.
+func (v *version) MysqlVirtualNetworkRules() MysqlVirtualNetworkRuleInformer {
+	return &mysqlVirtualNetworkRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNetworkInterfaces returns a AzurermNetworkInterfaceInformer.
-func (v *version) AzurermNetworkInterfaces() AzurermNetworkInterfaceInformer {
-	return &azurermNetworkInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkConnectionMonitors returns a NetworkConnectionMonitorInformer.
+func (v *version) NetworkConnectionMonitors() NetworkConnectionMonitorInformer {
+	return &networkConnectionMonitorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations returns a AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInformer.
-func (v *version) AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations() AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInformer {
-	return &azurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkDdosProtectionPlans returns a NetworkDdosProtectionPlanInformer.
+func (v *version) NetworkDdosProtectionPlans() NetworkDdosProtectionPlanInformer {
+	return &networkDdosProtectionPlanInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNetworkInterfaceApplicationSecurityGroupAssociations returns a AzurermNetworkInterfaceApplicationSecurityGroupAssociationInformer.
-func (v *version) AzurermNetworkInterfaceApplicationSecurityGroupAssociations() AzurermNetworkInterfaceApplicationSecurityGroupAssociationInformer {
-	return &azurermNetworkInterfaceApplicationSecurityGroupAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkInterfaces returns a NetworkInterfaceInformer.
+func (v *version) NetworkInterfaces() NetworkInterfaceInformer {
+	return &networkInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNetworkInterfaceBackendAddressPoolAssociations returns a AzurermNetworkInterfaceBackendAddressPoolAssociationInformer.
-func (v *version) AzurermNetworkInterfaceBackendAddressPoolAssociations() AzurermNetworkInterfaceBackendAddressPoolAssociationInformer {
-	return &azurermNetworkInterfaceBackendAddressPoolAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkInterfaceApplicationGatewayBackendAddressPoolAssociations returns a NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInformer.
+func (v *version) NetworkInterfaceApplicationGatewayBackendAddressPoolAssociations() NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInformer {
+	return &networkInterfaceApplicationGatewayBackendAddressPoolAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNetworkInterfaceNatRuleAssociations returns a AzurermNetworkInterfaceNatRuleAssociationInformer.
-func (v *version) AzurermNetworkInterfaceNatRuleAssociations() AzurermNetworkInterfaceNatRuleAssociationInformer {
-	return &azurermNetworkInterfaceNatRuleAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkInterfaceApplicationSecurityGroupAssociations returns a NetworkInterfaceApplicationSecurityGroupAssociationInformer.
+func (v *version) NetworkInterfaceApplicationSecurityGroupAssociations() NetworkInterfaceApplicationSecurityGroupAssociationInformer {
+	return &networkInterfaceApplicationSecurityGroupAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNetworkPacketCaptures returns a AzurermNetworkPacketCaptureInformer.
-func (v *version) AzurermNetworkPacketCaptures() AzurermNetworkPacketCaptureInformer {
-	return &azurermNetworkPacketCaptureInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkInterfaceBackendAddressPoolAssociations returns a NetworkInterfaceBackendAddressPoolAssociationInformer.
+func (v *version) NetworkInterfaceBackendAddressPoolAssociations() NetworkInterfaceBackendAddressPoolAssociationInformer {
+	return &networkInterfaceBackendAddressPoolAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNetworkProfiles returns a AzurermNetworkProfileInformer.
-func (v *version) AzurermNetworkProfiles() AzurermNetworkProfileInformer {
-	return &azurermNetworkProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkInterfaceNatRuleAssociations returns a NetworkInterfaceNatRuleAssociationInformer.
+func (v *version) NetworkInterfaceNatRuleAssociations() NetworkInterfaceNatRuleAssociationInformer {
+	return &networkInterfaceNatRuleAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNetworkSecurityGroups returns a AzurermNetworkSecurityGroupInformer.
-func (v *version) AzurermNetworkSecurityGroups() AzurermNetworkSecurityGroupInformer {
-	return &azurermNetworkSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkPacketCaptures returns a NetworkPacketCaptureInformer.
+func (v *version) NetworkPacketCaptures() NetworkPacketCaptureInformer {
+	return &networkPacketCaptureInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNetworkSecurityRules returns a AzurermNetworkSecurityRuleInformer.
-func (v *version) AzurermNetworkSecurityRules() AzurermNetworkSecurityRuleInformer {
-	return &azurermNetworkSecurityRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkProfiles returns a NetworkProfileInformer.
+func (v *version) NetworkProfiles() NetworkProfileInformer {
+	return &networkProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNetworkWatchers returns a AzurermNetworkWatcherInformer.
-func (v *version) AzurermNetworkWatchers() AzurermNetworkWatcherInformer {
-	return &azurermNetworkWatcherInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkSecurityGroups returns a NetworkSecurityGroupInformer.
+func (v *version) NetworkSecurityGroups() NetworkSecurityGroupInformer {
+	return &networkSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNotificationHubs returns a AzurermNotificationHubInformer.
-func (v *version) AzurermNotificationHubs() AzurermNotificationHubInformer {
-	return &azurermNotificationHubInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkSecurityRules returns a NetworkSecurityRuleInformer.
+func (v *version) NetworkSecurityRules() NetworkSecurityRuleInformer {
+	return &networkSecurityRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNotificationHubAuthorizationRules returns a AzurermNotificationHubAuthorizationRuleInformer.
-func (v *version) AzurermNotificationHubAuthorizationRules() AzurermNotificationHubAuthorizationRuleInformer {
-	return &azurermNotificationHubAuthorizationRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkWatchers returns a NetworkWatcherInformer.
+func (v *version) NetworkWatchers() NetworkWatcherInformer {
+	return &networkWatcherInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermNotificationHubNamespaces returns a AzurermNotificationHubNamespaceInformer.
-func (v *version) AzurermNotificationHubNamespaces() AzurermNotificationHubNamespaceInformer {
-	return &azurermNotificationHubNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NotificationHubs returns a NotificationHubInformer.
+func (v *version) NotificationHubs() NotificationHubInformer {
+	return &notificationHubInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermPacketCaptures returns a AzurermPacketCaptureInformer.
-func (v *version) AzurermPacketCaptures() AzurermPacketCaptureInformer {
-	return &azurermPacketCaptureInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NotificationHubAuthorizationRules returns a NotificationHubAuthorizationRuleInformer.
+func (v *version) NotificationHubAuthorizationRules() NotificationHubAuthorizationRuleInformer {
+	return &notificationHubAuthorizationRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermPolicyAssignments returns a AzurermPolicyAssignmentInformer.
-func (v *version) AzurermPolicyAssignments() AzurermPolicyAssignmentInformer {
-	return &azurermPolicyAssignmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NotificationHubNamespaces returns a NotificationHubNamespaceInformer.
+func (v *version) NotificationHubNamespaces() NotificationHubNamespaceInformer {
+	return &notificationHubNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermPolicyDefinitions returns a AzurermPolicyDefinitionInformer.
-func (v *version) AzurermPolicyDefinitions() AzurermPolicyDefinitionInformer {
-	return &azurermPolicyDefinitionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PacketCaptures returns a PacketCaptureInformer.
+func (v *version) PacketCaptures() PacketCaptureInformer {
+	return &packetCaptureInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermPolicySetDefinitions returns a AzurermPolicySetDefinitionInformer.
-func (v *version) AzurermPolicySetDefinitions() AzurermPolicySetDefinitionInformer {
-	return &azurermPolicySetDefinitionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PolicyAssignments returns a PolicyAssignmentInformer.
+func (v *version) PolicyAssignments() PolicyAssignmentInformer {
+	return &policyAssignmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermPostgresqlConfigurations returns a AzurermPostgresqlConfigurationInformer.
-func (v *version) AzurermPostgresqlConfigurations() AzurermPostgresqlConfigurationInformer {
-	return &azurermPostgresqlConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PolicyDefinitions returns a PolicyDefinitionInformer.
+func (v *version) PolicyDefinitions() PolicyDefinitionInformer {
+	return &policyDefinitionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermPostgresqlDatabases returns a AzurermPostgresqlDatabaseInformer.
-func (v *version) AzurermPostgresqlDatabases() AzurermPostgresqlDatabaseInformer {
-	return &azurermPostgresqlDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PolicySetDefinitions returns a PolicySetDefinitionInformer.
+func (v *version) PolicySetDefinitions() PolicySetDefinitionInformer {
+	return &policySetDefinitionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermPostgresqlFirewallRules returns a AzurermPostgresqlFirewallRuleInformer.
-func (v *version) AzurermPostgresqlFirewallRules() AzurermPostgresqlFirewallRuleInformer {
-	return &azurermPostgresqlFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PostgresqlConfigurations returns a PostgresqlConfigurationInformer.
+func (v *version) PostgresqlConfigurations() PostgresqlConfigurationInformer {
+	return &postgresqlConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermPostgresqlServers returns a AzurermPostgresqlServerInformer.
-func (v *version) AzurermPostgresqlServers() AzurermPostgresqlServerInformer {
-	return &azurermPostgresqlServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PostgresqlDatabases returns a PostgresqlDatabaseInformer.
+func (v *version) PostgresqlDatabases() PostgresqlDatabaseInformer {
+	return &postgresqlDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermPostgresqlVirtualNetworkRules returns a AzurermPostgresqlVirtualNetworkRuleInformer.
-func (v *version) AzurermPostgresqlVirtualNetworkRules() AzurermPostgresqlVirtualNetworkRuleInformer {
-	return &azurermPostgresqlVirtualNetworkRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PostgresqlFirewallRules returns a PostgresqlFirewallRuleInformer.
+func (v *version) PostgresqlFirewallRules() PostgresqlFirewallRuleInformer {
+	return &postgresqlFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermPrivateDnsZones returns a AzurermPrivateDnsZoneInformer.
-func (v *version) AzurermPrivateDnsZones() AzurermPrivateDnsZoneInformer {
-	return &azurermPrivateDnsZoneInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PostgresqlServers returns a PostgresqlServerInformer.
+func (v *version) PostgresqlServers() PostgresqlServerInformer {
+	return &postgresqlServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermPublicIps returns a AzurermPublicIpInformer.
-func (v *version) AzurermPublicIps() AzurermPublicIpInformer {
-	return &azurermPublicIpInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PostgresqlVirtualNetworkRules returns a PostgresqlVirtualNetworkRuleInformer.
+func (v *version) PostgresqlVirtualNetworkRules() PostgresqlVirtualNetworkRuleInformer {
+	return &postgresqlVirtualNetworkRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermPublicIpPrefixes returns a AzurermPublicIpPrefixInformer.
-func (v *version) AzurermPublicIpPrefixes() AzurermPublicIpPrefixInformer {
-	return &azurermPublicIpPrefixInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PrivateDnsZones returns a PrivateDnsZoneInformer.
+func (v *version) PrivateDnsZones() PrivateDnsZoneInformer {
+	return &privateDnsZoneInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermRecoveryServicesProtectedVms returns a AzurermRecoveryServicesProtectedVmInformer.
-func (v *version) AzurermRecoveryServicesProtectedVms() AzurermRecoveryServicesProtectedVmInformer {
-	return &azurermRecoveryServicesProtectedVmInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PublicIps returns a PublicIpInformer.
+func (v *version) PublicIps() PublicIpInformer {
+	return &publicIpInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermRecoveryServicesProtectionPolicyVms returns a AzurermRecoveryServicesProtectionPolicyVmInformer.
-func (v *version) AzurermRecoveryServicesProtectionPolicyVms() AzurermRecoveryServicesProtectionPolicyVmInformer {
-	return &azurermRecoveryServicesProtectionPolicyVmInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PublicIpPrefixes returns a PublicIpPrefixInformer.
+func (v *version) PublicIpPrefixes() PublicIpPrefixInformer {
+	return &publicIpPrefixInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermRecoveryServicesVaults returns a AzurermRecoveryServicesVaultInformer.
-func (v *version) AzurermRecoveryServicesVaults() AzurermRecoveryServicesVaultInformer {
-	return &azurermRecoveryServicesVaultInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RecoveryServicesProtectedVms returns a RecoveryServicesProtectedVmInformer.
+func (v *version) RecoveryServicesProtectedVms() RecoveryServicesProtectedVmInformer {
+	return &recoveryServicesProtectedVmInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermRedisCaches returns a AzurermRedisCacheInformer.
-func (v *version) AzurermRedisCaches() AzurermRedisCacheInformer {
-	return &azurermRedisCacheInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RecoveryServicesProtectionPolicyVms returns a RecoveryServicesProtectionPolicyVmInformer.
+func (v *version) RecoveryServicesProtectionPolicyVms() RecoveryServicesProtectionPolicyVmInformer {
+	return &recoveryServicesProtectionPolicyVmInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermRedisFirewallRules returns a AzurermRedisFirewallRuleInformer.
-func (v *version) AzurermRedisFirewallRules() AzurermRedisFirewallRuleInformer {
-	return &azurermRedisFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RecoveryServicesVaults returns a RecoveryServicesVaultInformer.
+func (v *version) RecoveryServicesVaults() RecoveryServicesVaultInformer {
+	return &recoveryServicesVaultInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermRelayNamespaces returns a AzurermRelayNamespaceInformer.
-func (v *version) AzurermRelayNamespaces() AzurermRelayNamespaceInformer {
-	return &azurermRelayNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RedisCaches returns a RedisCacheInformer.
+func (v *version) RedisCaches() RedisCacheInformer {
+	return &redisCacheInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermResourceGroups returns a AzurermResourceGroupInformer.
-func (v *version) AzurermResourceGroups() AzurermResourceGroupInformer {
-	return &azurermResourceGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RedisFirewallRules returns a RedisFirewallRuleInformer.
+func (v *version) RedisFirewallRules() RedisFirewallRuleInformer {
+	return &redisFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermRoleAssignments returns a AzurermRoleAssignmentInformer.
-func (v *version) AzurermRoleAssignments() AzurermRoleAssignmentInformer {
-	return &azurermRoleAssignmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RelayNamespaces returns a RelayNamespaceInformer.
+func (v *version) RelayNamespaces() RelayNamespaceInformer {
+	return &relayNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermRoleDefinitions returns a AzurermRoleDefinitionInformer.
-func (v *version) AzurermRoleDefinitions() AzurermRoleDefinitionInformer {
-	return &azurermRoleDefinitionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ResourceGroups returns a ResourceGroupInformer.
+func (v *version) ResourceGroups() ResourceGroupInformer {
+	return &resourceGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermRoutes returns a AzurermRouteInformer.
-func (v *version) AzurermRoutes() AzurermRouteInformer {
-	return &azurermRouteInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RoleAssignments returns a RoleAssignmentInformer.
+func (v *version) RoleAssignments() RoleAssignmentInformer {
+	return &roleAssignmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermRouteTables returns a AzurermRouteTableInformer.
-func (v *version) AzurermRouteTables() AzurermRouteTableInformer {
-	return &azurermRouteTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RoleDefinitions returns a RoleDefinitionInformer.
+func (v *version) RoleDefinitions() RoleDefinitionInformer {
+	return &roleDefinitionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSchedulerJobs returns a AzurermSchedulerJobInformer.
-func (v *version) AzurermSchedulerJobs() AzurermSchedulerJobInformer {
-	return &azurermSchedulerJobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Routes returns a RouteInformer.
+func (v *version) Routes() RouteInformer {
+	return &routeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSchedulerJobCollections returns a AzurermSchedulerJobCollectionInformer.
-func (v *version) AzurermSchedulerJobCollections() AzurermSchedulerJobCollectionInformer {
-	return &azurermSchedulerJobCollectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RouteTables returns a RouteTableInformer.
+func (v *version) RouteTables() RouteTableInformer {
+	return &routeTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSearchServices returns a AzurermSearchServiceInformer.
-func (v *version) AzurermSearchServices() AzurermSearchServiceInformer {
-	return &azurermSearchServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SchedulerJobs returns a SchedulerJobInformer.
+func (v *version) SchedulerJobs() SchedulerJobInformer {
+	return &schedulerJobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSecurityCenterContacts returns a AzurermSecurityCenterContactInformer.
-func (v *version) AzurermSecurityCenterContacts() AzurermSecurityCenterContactInformer {
-	return &azurermSecurityCenterContactInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SchedulerJobCollections returns a SchedulerJobCollectionInformer.
+func (v *version) SchedulerJobCollections() SchedulerJobCollectionInformer {
+	return &schedulerJobCollectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSecurityCenterSubscriptionPricings returns a AzurermSecurityCenterSubscriptionPricingInformer.
-func (v *version) AzurermSecurityCenterSubscriptionPricings() AzurermSecurityCenterSubscriptionPricingInformer {
-	return &azurermSecurityCenterSubscriptionPricingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SearchServices returns a SearchServiceInformer.
+func (v *version) SearchServices() SearchServiceInformer {
+	return &searchServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSecurityCenterWorkspaces returns a AzurermSecurityCenterWorkspaceInformer.
-func (v *version) AzurermSecurityCenterWorkspaces() AzurermSecurityCenterWorkspaceInformer {
-	return &azurermSecurityCenterWorkspaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SecurityCenterContacts returns a SecurityCenterContactInformer.
+func (v *version) SecurityCenterContacts() SecurityCenterContactInformer {
+	return &securityCenterContactInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermServiceFabricClusters returns a AzurermServiceFabricClusterInformer.
-func (v *version) AzurermServiceFabricClusters() AzurermServiceFabricClusterInformer {
-	return &azurermServiceFabricClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SecurityCenterSubscriptionPricings returns a SecurityCenterSubscriptionPricingInformer.
+func (v *version) SecurityCenterSubscriptionPricings() SecurityCenterSubscriptionPricingInformer {
+	return &securityCenterSubscriptionPricingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermServicebusNamespaces returns a AzurermServicebusNamespaceInformer.
-func (v *version) AzurermServicebusNamespaces() AzurermServicebusNamespaceInformer {
-	return &azurermServicebusNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SecurityCenterWorkspaces returns a SecurityCenterWorkspaceInformer.
+func (v *version) SecurityCenterWorkspaces() SecurityCenterWorkspaceInformer {
+	return &securityCenterWorkspaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermServicebusNamespaceAuthorizationRules returns a AzurermServicebusNamespaceAuthorizationRuleInformer.
-func (v *version) AzurermServicebusNamespaceAuthorizationRules() AzurermServicebusNamespaceAuthorizationRuleInformer {
-	return &azurermServicebusNamespaceAuthorizationRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServiceFabricClusters returns a ServiceFabricClusterInformer.
+func (v *version) ServiceFabricClusters() ServiceFabricClusterInformer {
+	return &serviceFabricClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermServicebusQueues returns a AzurermServicebusQueueInformer.
-func (v *version) AzurermServicebusQueues() AzurermServicebusQueueInformer {
-	return &azurermServicebusQueueInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServicebusNamespaces returns a ServicebusNamespaceInformer.
+func (v *version) ServicebusNamespaces() ServicebusNamespaceInformer {
+	return &servicebusNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermServicebusQueueAuthorizationRules returns a AzurermServicebusQueueAuthorizationRuleInformer.
-func (v *version) AzurermServicebusQueueAuthorizationRules() AzurermServicebusQueueAuthorizationRuleInformer {
-	return &azurermServicebusQueueAuthorizationRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServicebusNamespaceAuthorizationRules returns a ServicebusNamespaceAuthorizationRuleInformer.
+func (v *version) ServicebusNamespaceAuthorizationRules() ServicebusNamespaceAuthorizationRuleInformer {
+	return &servicebusNamespaceAuthorizationRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermServicebusSubscriptions returns a AzurermServicebusSubscriptionInformer.
-func (v *version) AzurermServicebusSubscriptions() AzurermServicebusSubscriptionInformer {
-	return &azurermServicebusSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServicebusQueues returns a ServicebusQueueInformer.
+func (v *version) ServicebusQueues() ServicebusQueueInformer {
+	return &servicebusQueueInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermServicebusSubscriptionRules returns a AzurermServicebusSubscriptionRuleInformer.
-func (v *version) AzurermServicebusSubscriptionRules() AzurermServicebusSubscriptionRuleInformer {
-	return &azurermServicebusSubscriptionRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServicebusQueueAuthorizationRules returns a ServicebusQueueAuthorizationRuleInformer.
+func (v *version) ServicebusQueueAuthorizationRules() ServicebusQueueAuthorizationRuleInformer {
+	return &servicebusQueueAuthorizationRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermServicebusTopics returns a AzurermServicebusTopicInformer.
-func (v *version) AzurermServicebusTopics() AzurermServicebusTopicInformer {
-	return &azurermServicebusTopicInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServicebusSubscriptions returns a ServicebusSubscriptionInformer.
+func (v *version) ServicebusSubscriptions() ServicebusSubscriptionInformer {
+	return &servicebusSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermServicebusTopicAuthorizationRules returns a AzurermServicebusTopicAuthorizationRuleInformer.
-func (v *version) AzurermServicebusTopicAuthorizationRules() AzurermServicebusTopicAuthorizationRuleInformer {
-	return &azurermServicebusTopicAuthorizationRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServicebusSubscriptionRules returns a ServicebusSubscriptionRuleInformer.
+func (v *version) ServicebusSubscriptionRules() ServicebusSubscriptionRuleInformer {
+	return &servicebusSubscriptionRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSharedImages returns a AzurermSharedImageInformer.
-func (v *version) AzurermSharedImages() AzurermSharedImageInformer {
-	return &azurermSharedImageInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServicebusTopics returns a ServicebusTopicInformer.
+func (v *version) ServicebusTopics() ServicebusTopicInformer {
+	return &servicebusTopicInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSharedImageGalleries returns a AzurermSharedImageGalleryInformer.
-func (v *version) AzurermSharedImageGalleries() AzurermSharedImageGalleryInformer {
-	return &azurermSharedImageGalleryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServicebusTopicAuthorizationRules returns a ServicebusTopicAuthorizationRuleInformer.
+func (v *version) ServicebusTopicAuthorizationRules() ServicebusTopicAuthorizationRuleInformer {
+	return &servicebusTopicAuthorizationRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSharedImageVersions returns a AzurermSharedImageVersionInformer.
-func (v *version) AzurermSharedImageVersions() AzurermSharedImageVersionInformer {
-	return &azurermSharedImageVersionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SharedImages returns a SharedImageInformer.
+func (v *version) SharedImages() SharedImageInformer {
+	return &sharedImageInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSignalrServices returns a AzurermSignalrServiceInformer.
-func (v *version) AzurermSignalrServices() AzurermSignalrServiceInformer {
-	return &azurermSignalrServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SharedImageGalleries returns a SharedImageGalleryInformer.
+func (v *version) SharedImageGalleries() SharedImageGalleryInformer {
+	return &sharedImageGalleryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSnapshots returns a AzurermSnapshotInformer.
-func (v *version) AzurermSnapshots() AzurermSnapshotInformer {
-	return &azurermSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SharedImageVersions returns a SharedImageVersionInformer.
+func (v *version) SharedImageVersions() SharedImageVersionInformer {
+	return &sharedImageVersionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSqlActiveDirectoryAdministrators returns a AzurermSqlActiveDirectoryAdministratorInformer.
-func (v *version) AzurermSqlActiveDirectoryAdministrators() AzurermSqlActiveDirectoryAdministratorInformer {
-	return &azurermSqlActiveDirectoryAdministratorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SignalrServices returns a SignalrServiceInformer.
+func (v *version) SignalrServices() SignalrServiceInformer {
+	return &signalrServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSqlDatabases returns a AzurermSqlDatabaseInformer.
-func (v *version) AzurermSqlDatabases() AzurermSqlDatabaseInformer {
-	return &azurermSqlDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Snapshots returns a SnapshotInformer.
+func (v *version) Snapshots() SnapshotInformer {
+	return &snapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSqlElasticpools returns a AzurermSqlElasticpoolInformer.
-func (v *version) AzurermSqlElasticpools() AzurermSqlElasticpoolInformer {
-	return &azurermSqlElasticpoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SqlActiveDirectoryAdministrators returns a SqlActiveDirectoryAdministratorInformer.
+func (v *version) SqlActiveDirectoryAdministrators() SqlActiveDirectoryAdministratorInformer {
+	return &sqlActiveDirectoryAdministratorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSqlFirewallRules returns a AzurermSqlFirewallRuleInformer.
-func (v *version) AzurermSqlFirewallRules() AzurermSqlFirewallRuleInformer {
-	return &azurermSqlFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SqlDatabases returns a SqlDatabaseInformer.
+func (v *version) SqlDatabases() SqlDatabaseInformer {
+	return &sqlDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSqlServers returns a AzurermSqlServerInformer.
-func (v *version) AzurermSqlServers() AzurermSqlServerInformer {
-	return &azurermSqlServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SqlElasticpools returns a SqlElasticpoolInformer.
+func (v *version) SqlElasticpools() SqlElasticpoolInformer {
+	return &sqlElasticpoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSqlVirtualNetworkRules returns a AzurermSqlVirtualNetworkRuleInformer.
-func (v *version) AzurermSqlVirtualNetworkRules() AzurermSqlVirtualNetworkRuleInformer {
-	return &azurermSqlVirtualNetworkRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SqlFirewallRules returns a SqlFirewallRuleInformer.
+func (v *version) SqlFirewallRules() SqlFirewallRuleInformer {
+	return &sqlFirewallRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStorageAccounts returns a AzurermStorageAccountInformer.
-func (v *version) AzurermStorageAccounts() AzurermStorageAccountInformer {
-	return &azurermStorageAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SqlServers returns a SqlServerInformer.
+func (v *version) SqlServers() SqlServerInformer {
+	return &sqlServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStorageBlobs returns a AzurermStorageBlobInformer.
-func (v *version) AzurermStorageBlobs() AzurermStorageBlobInformer {
-	return &azurermStorageBlobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SqlVirtualNetworkRules returns a SqlVirtualNetworkRuleInformer.
+func (v *version) SqlVirtualNetworkRules() SqlVirtualNetworkRuleInformer {
+	return &sqlVirtualNetworkRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStorageContainers returns a AzurermStorageContainerInformer.
-func (v *version) AzurermStorageContainers() AzurermStorageContainerInformer {
-	return &azurermStorageContainerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageAccounts returns a StorageAccountInformer.
+func (v *version) StorageAccounts() StorageAccountInformer {
+	return &storageAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStorageQueues returns a AzurermStorageQueueInformer.
-func (v *version) AzurermStorageQueues() AzurermStorageQueueInformer {
-	return &azurermStorageQueueInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageBlobs returns a StorageBlobInformer.
+func (v *version) StorageBlobs() StorageBlobInformer {
+	return &storageBlobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStorageShares returns a AzurermStorageShareInformer.
-func (v *version) AzurermStorageShares() AzurermStorageShareInformer {
-	return &azurermStorageShareInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageContainers returns a StorageContainerInformer.
+func (v *version) StorageContainers() StorageContainerInformer {
+	return &storageContainerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStorageTables returns a AzurermStorageTableInformer.
-func (v *version) AzurermStorageTables() AzurermStorageTableInformer {
-	return &azurermStorageTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageQueues returns a StorageQueueInformer.
+func (v *version) StorageQueues() StorageQueueInformer {
+	return &storageQueueInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStreamAnalyticsFunctionJavascriptUdves returns a AzurermStreamAnalyticsFunctionJavascriptUdfInformer.
-func (v *version) AzurermStreamAnalyticsFunctionJavascriptUdves() AzurermStreamAnalyticsFunctionJavascriptUdfInformer {
-	return &azurermStreamAnalyticsFunctionJavascriptUdfInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageShares returns a StorageShareInformer.
+func (v *version) StorageShares() StorageShareInformer {
+	return &storageShareInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStreamAnalyticsJobs returns a AzurermStreamAnalyticsJobInformer.
-func (v *version) AzurermStreamAnalyticsJobs() AzurermStreamAnalyticsJobInformer {
-	return &azurermStreamAnalyticsJobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageShareDirectories returns a StorageShareDirectoryInformer.
+func (v *version) StorageShareDirectories() StorageShareDirectoryInformer {
+	return &storageShareDirectoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStreamAnalyticsOutputBlobs returns a AzurermStreamAnalyticsOutputBlobInformer.
-func (v *version) AzurermStreamAnalyticsOutputBlobs() AzurermStreamAnalyticsOutputBlobInformer {
-	return &azurermStreamAnalyticsOutputBlobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageTables returns a StorageTableInformer.
+func (v *version) StorageTables() StorageTableInformer {
+	return &storageTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStreamAnalyticsOutputEventhubs returns a AzurermStreamAnalyticsOutputEventhubInformer.
-func (v *version) AzurermStreamAnalyticsOutputEventhubs() AzurermStreamAnalyticsOutputEventhubInformer {
-	return &azurermStreamAnalyticsOutputEventhubInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageTableEntities returns a StorageTableEntityInformer.
+func (v *version) StorageTableEntities() StorageTableEntityInformer {
+	return &storageTableEntityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStreamAnalyticsOutputMssqls returns a AzurermStreamAnalyticsOutputMssqlInformer.
-func (v *version) AzurermStreamAnalyticsOutputMssqls() AzurermStreamAnalyticsOutputMssqlInformer {
-	return &azurermStreamAnalyticsOutputMssqlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StreamAnalyticsFunctionJavascriptUdves returns a StreamAnalyticsFunctionJavascriptUdfInformer.
+func (v *version) StreamAnalyticsFunctionJavascriptUdves() StreamAnalyticsFunctionJavascriptUdfInformer {
+	return &streamAnalyticsFunctionJavascriptUdfInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStreamAnalyticsOutputServicebusQueues returns a AzurermStreamAnalyticsOutputServicebusQueueInformer.
-func (v *version) AzurermStreamAnalyticsOutputServicebusQueues() AzurermStreamAnalyticsOutputServicebusQueueInformer {
-	return &azurermStreamAnalyticsOutputServicebusQueueInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StreamAnalyticsJobs returns a StreamAnalyticsJobInformer.
+func (v *version) StreamAnalyticsJobs() StreamAnalyticsJobInformer {
+	return &streamAnalyticsJobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStreamAnalyticsStreamInputBlobs returns a AzurermStreamAnalyticsStreamInputBlobInformer.
-func (v *version) AzurermStreamAnalyticsStreamInputBlobs() AzurermStreamAnalyticsStreamInputBlobInformer {
-	return &azurermStreamAnalyticsStreamInputBlobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StreamAnalyticsOutputBlobs returns a StreamAnalyticsOutputBlobInformer.
+func (v *version) StreamAnalyticsOutputBlobs() StreamAnalyticsOutputBlobInformer {
+	return &streamAnalyticsOutputBlobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStreamAnalyticsStreamInputEventhubs returns a AzurermStreamAnalyticsStreamInputEventhubInformer.
-func (v *version) AzurermStreamAnalyticsStreamInputEventhubs() AzurermStreamAnalyticsStreamInputEventhubInformer {
-	return &azurermStreamAnalyticsStreamInputEventhubInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StreamAnalyticsOutputEventhubs returns a StreamAnalyticsOutputEventhubInformer.
+func (v *version) StreamAnalyticsOutputEventhubs() StreamAnalyticsOutputEventhubInformer {
+	return &streamAnalyticsOutputEventhubInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermStreamAnalyticsStreamInputIothubs returns a AzurermStreamAnalyticsStreamInputIothubInformer.
-func (v *version) AzurermStreamAnalyticsStreamInputIothubs() AzurermStreamAnalyticsStreamInputIothubInformer {
-	return &azurermStreamAnalyticsStreamInputIothubInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StreamAnalyticsOutputMssqls returns a StreamAnalyticsOutputMssqlInformer.
+func (v *version) StreamAnalyticsOutputMssqls() StreamAnalyticsOutputMssqlInformer {
+	return &streamAnalyticsOutputMssqlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSubnets returns a AzurermSubnetInformer.
-func (v *version) AzurermSubnets() AzurermSubnetInformer {
-	return &azurermSubnetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StreamAnalyticsOutputServicebusQueues returns a StreamAnalyticsOutputServicebusQueueInformer.
+func (v *version) StreamAnalyticsOutputServicebusQueues() StreamAnalyticsOutputServicebusQueueInformer {
+	return &streamAnalyticsOutputServicebusQueueInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSubnetNetworkSecurityGroupAssociations returns a AzurermSubnetNetworkSecurityGroupAssociationInformer.
-func (v *version) AzurermSubnetNetworkSecurityGroupAssociations() AzurermSubnetNetworkSecurityGroupAssociationInformer {
-	return &azurermSubnetNetworkSecurityGroupAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StreamAnalyticsStreamInputBlobs returns a StreamAnalyticsStreamInputBlobInformer.
+func (v *version) StreamAnalyticsStreamInputBlobs() StreamAnalyticsStreamInputBlobInformer {
+	return &streamAnalyticsStreamInputBlobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermSubnetRouteTableAssociations returns a AzurermSubnetRouteTableAssociationInformer.
-func (v *version) AzurermSubnetRouteTableAssociations() AzurermSubnetRouteTableAssociationInformer {
-	return &azurermSubnetRouteTableAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StreamAnalyticsStreamInputEventhubs returns a StreamAnalyticsStreamInputEventhubInformer.
+func (v *version) StreamAnalyticsStreamInputEventhubs() StreamAnalyticsStreamInputEventhubInformer {
+	return &streamAnalyticsStreamInputEventhubInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermTemplateDeployments returns a AzurermTemplateDeploymentInformer.
-func (v *version) AzurermTemplateDeployments() AzurermTemplateDeploymentInformer {
-	return &azurermTemplateDeploymentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StreamAnalyticsStreamInputIothubs returns a StreamAnalyticsStreamInputIothubInformer.
+func (v *version) StreamAnalyticsStreamInputIothubs() StreamAnalyticsStreamInputIothubInformer {
+	return &streamAnalyticsStreamInputIothubInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermTrafficManagerEndpoints returns a AzurermTrafficManagerEndpointInformer.
-func (v *version) AzurermTrafficManagerEndpoints() AzurermTrafficManagerEndpointInformer {
-	return &azurermTrafficManagerEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Subnets returns a SubnetInformer.
+func (v *version) Subnets() SubnetInformer {
+	return &subnetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermTrafficManagerProfiles returns a AzurermTrafficManagerProfileInformer.
-func (v *version) AzurermTrafficManagerProfiles() AzurermTrafficManagerProfileInformer {
-	return &azurermTrafficManagerProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SubnetNetworkSecurityGroupAssociations returns a SubnetNetworkSecurityGroupAssociationInformer.
+func (v *version) SubnetNetworkSecurityGroupAssociations() SubnetNetworkSecurityGroupAssociationInformer {
+	return &subnetNetworkSecurityGroupAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermUserAssignedIdentities returns a AzurermUserAssignedIdentityInformer.
-func (v *version) AzurermUserAssignedIdentities() AzurermUserAssignedIdentityInformer {
-	return &azurermUserAssignedIdentityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SubnetRouteTableAssociations returns a SubnetRouteTableAssociationInformer.
+func (v *version) SubnetRouteTableAssociations() SubnetRouteTableAssociationInformer {
+	return &subnetRouteTableAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermVirtualMachines returns a AzurermVirtualMachineInformer.
-func (v *version) AzurermVirtualMachines() AzurermVirtualMachineInformer {
-	return &azurermVirtualMachineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// TemplateDeployments returns a TemplateDeploymentInformer.
+func (v *version) TemplateDeployments() TemplateDeploymentInformer {
+	return &templateDeploymentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermVirtualMachineDataDiskAttachments returns a AzurermVirtualMachineDataDiskAttachmentInformer.
-func (v *version) AzurermVirtualMachineDataDiskAttachments() AzurermVirtualMachineDataDiskAttachmentInformer {
-	return &azurermVirtualMachineDataDiskAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// TrafficManagerEndpoints returns a TrafficManagerEndpointInformer.
+func (v *version) TrafficManagerEndpoints() TrafficManagerEndpointInformer {
+	return &trafficManagerEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermVirtualMachineExtensions returns a AzurermVirtualMachineExtensionInformer.
-func (v *version) AzurermVirtualMachineExtensions() AzurermVirtualMachineExtensionInformer {
-	return &azurermVirtualMachineExtensionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// TrafficManagerProfiles returns a TrafficManagerProfileInformer.
+func (v *version) TrafficManagerProfiles() TrafficManagerProfileInformer {
+	return &trafficManagerProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermVirtualMachineScaleSets returns a AzurermVirtualMachineScaleSetInformer.
-func (v *version) AzurermVirtualMachineScaleSets() AzurermVirtualMachineScaleSetInformer {
-	return &azurermVirtualMachineScaleSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// UserAssignedIdentities returns a UserAssignedIdentityInformer.
+func (v *version) UserAssignedIdentities() UserAssignedIdentityInformer {
+	return &userAssignedIdentityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermVirtualNetworks returns a AzurermVirtualNetworkInformer.
-func (v *version) AzurermVirtualNetworks() AzurermVirtualNetworkInformer {
-	return &azurermVirtualNetworkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VirtualMachines returns a VirtualMachineInformer.
+func (v *version) VirtualMachines() VirtualMachineInformer {
+	return &virtualMachineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermVirtualNetworkGateways returns a AzurermVirtualNetworkGatewayInformer.
-func (v *version) AzurermVirtualNetworkGateways() AzurermVirtualNetworkGatewayInformer {
-	return &azurermVirtualNetworkGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VirtualMachineDataDiskAttachments returns a VirtualMachineDataDiskAttachmentInformer.
+func (v *version) VirtualMachineDataDiskAttachments() VirtualMachineDataDiskAttachmentInformer {
+	return &virtualMachineDataDiskAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermVirtualNetworkGatewayConnections returns a AzurermVirtualNetworkGatewayConnectionInformer.
-func (v *version) AzurermVirtualNetworkGatewayConnections() AzurermVirtualNetworkGatewayConnectionInformer {
-	return &azurermVirtualNetworkGatewayConnectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VirtualMachineExtensions returns a VirtualMachineExtensionInformer.
+func (v *version) VirtualMachineExtensions() VirtualMachineExtensionInformer {
+	return &virtualMachineExtensionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AzurermVirtualNetworkPeerings returns a AzurermVirtualNetworkPeeringInformer.
-func (v *version) AzurermVirtualNetworkPeerings() AzurermVirtualNetworkPeeringInformer {
-	return &azurermVirtualNetworkPeeringInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VirtualMachineScaleSets returns a VirtualMachineScaleSetInformer.
+func (v *version) VirtualMachineScaleSets() VirtualMachineScaleSetInformer {
+	return &virtualMachineScaleSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// VirtualNetworks returns a VirtualNetworkInformer.
+func (v *version) VirtualNetworks() VirtualNetworkInformer {
+	return &virtualNetworkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// VirtualNetworkGateways returns a VirtualNetworkGatewayInformer.
+func (v *version) VirtualNetworkGateways() VirtualNetworkGatewayInformer {
+	return &virtualNetworkGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// VirtualNetworkGatewayConnections returns a VirtualNetworkGatewayConnectionInformer.
+func (v *version) VirtualNetworkGatewayConnections() VirtualNetworkGatewayConnectionInformer {
+	return &virtualNetworkGatewayConnectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+}
+
+// VirtualNetworkPeerings returns a VirtualNetworkPeeringInformer.
+func (v *version) VirtualNetworkPeerings() VirtualNetworkPeeringInformer {
+	return &virtualNetworkPeeringInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }

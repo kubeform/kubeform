@@ -28,52 +28,52 @@ type FakeLinodeV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeLinodeV1alpha1) LinodeDomains() v1alpha1.LinodeDomainInterface {
-	return &FakeLinodeDomains{c}
+func (c *FakeLinodeV1alpha1) Domains() v1alpha1.DomainInterface {
+	return &FakeDomains{c}
 }
 
-func (c *FakeLinodeV1alpha1) LinodeDomainRecords() v1alpha1.LinodeDomainRecordInterface {
-	return &FakeLinodeDomainRecords{c}
+func (c *FakeLinodeV1alpha1) DomainRecords() v1alpha1.DomainRecordInterface {
+	return &FakeDomainRecords{c}
 }
 
-func (c *FakeLinodeV1alpha1) LinodeImages() v1alpha1.LinodeImageInterface {
-	return &FakeLinodeImages{c}
+func (c *FakeLinodeV1alpha1) Images() v1alpha1.ImageInterface {
+	return &FakeImages{c}
 }
 
-func (c *FakeLinodeV1alpha1) LinodeInstances() v1alpha1.LinodeInstanceInterface {
-	return &FakeLinodeInstances{c}
+func (c *FakeLinodeV1alpha1) Instances() v1alpha1.InstanceInterface {
+	return &FakeInstances{c}
 }
 
-func (c *FakeLinodeV1alpha1) LinodeNodebalancers() v1alpha1.LinodeNodebalancerInterface {
-	return &FakeLinodeNodebalancers{c}
+func (c *FakeLinodeV1alpha1) Nodebalancers() v1alpha1.NodebalancerInterface {
+	return &FakeNodebalancers{c}
 }
 
-func (c *FakeLinodeV1alpha1) LinodeNodebalancerConfigs() v1alpha1.LinodeNodebalancerConfigInterface {
-	return &FakeLinodeNodebalancerConfigs{c}
+func (c *FakeLinodeV1alpha1) NodebalancerConfigs() v1alpha1.NodebalancerConfigInterface {
+	return &FakeNodebalancerConfigs{c}
 }
 
-func (c *FakeLinodeV1alpha1) LinodeNodebalancerNodes() v1alpha1.LinodeNodebalancerNodeInterface {
-	return &FakeLinodeNodebalancerNodes{c}
+func (c *FakeLinodeV1alpha1) NodebalancerNodes() v1alpha1.NodebalancerNodeInterface {
+	return &FakeNodebalancerNodes{c}
 }
 
-func (c *FakeLinodeV1alpha1) LinodeRdnses() v1alpha1.LinodeRdnsInterface {
-	return &FakeLinodeRdnses{c}
+func (c *FakeLinodeV1alpha1) Rdnses() v1alpha1.RdnsInterface {
+	return &FakeRdnses{c}
 }
 
-func (c *FakeLinodeV1alpha1) LinodeSshkeys() v1alpha1.LinodeSshkeyInterface {
-	return &FakeLinodeSshkeys{c}
+func (c *FakeLinodeV1alpha1) Sshkeys() v1alpha1.SshkeyInterface {
+	return &FakeSshkeys{c}
 }
 
-func (c *FakeLinodeV1alpha1) LinodeStackscripts() v1alpha1.LinodeStackscriptInterface {
-	return &FakeLinodeStackscripts{c}
+func (c *FakeLinodeV1alpha1) Stackscripts() v1alpha1.StackscriptInterface {
+	return &FakeStackscripts{c}
 }
 
-func (c *FakeLinodeV1alpha1) LinodeTokens() v1alpha1.LinodeTokenInterface {
-	return &FakeLinodeTokens{c}
+func (c *FakeLinodeV1alpha1) Tokens() v1alpha1.TokenInterface {
+	return &FakeTokens{c}
 }
 
-func (c *FakeLinodeV1alpha1) LinodeVolumes() v1alpha1.LinodeVolumeInterface {
-	return &FakeLinodeVolumes{c}
+func (c *FakeLinodeV1alpha1) Volumes() v1alpha1.VolumeInterface {
+	return &FakeVolumes{c}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

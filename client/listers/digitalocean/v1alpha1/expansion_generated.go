@@ -18,82 +18,82 @@ limitations under the License.
 
 package v1alpha1
 
-// DigitaloceanCdnListerExpansion allows custom methods to be added to
-// DigitaloceanCdnLister.
-type DigitaloceanCdnListerExpansion interface{}
+// CdnListerExpansion allows custom methods to be added to
+// CdnLister.
+type CdnListerExpansion interface{}
 
-// DigitaloceanCertificateListerExpansion allows custom methods to be added to
-// DigitaloceanCertificateLister.
-type DigitaloceanCertificateListerExpansion interface{}
+// CertificateListerExpansion allows custom methods to be added to
+// CertificateLister.
+type CertificateListerExpansion interface{}
 
-// DigitaloceanDatabaseClusterListerExpansion allows custom methods to be added to
-// DigitaloceanDatabaseClusterLister.
-type DigitaloceanDatabaseClusterListerExpansion interface{}
+// DatabaseClusterListerExpansion allows custom methods to be added to
+// DatabaseClusterLister.
+type DatabaseClusterListerExpansion interface{}
 
-// DigitaloceanDomainListerExpansion allows custom methods to be added to
-// DigitaloceanDomainLister.
-type DigitaloceanDomainListerExpansion interface{}
+// DomainListerExpansion allows custom methods to be added to
+// DomainLister.
+type DomainListerExpansion interface{}
 
-// DigitaloceanDropletListerExpansion allows custom methods to be added to
-// DigitaloceanDropletLister.
-type DigitaloceanDropletListerExpansion interface{}
+// DropletListerExpansion allows custom methods to be added to
+// DropletLister.
+type DropletListerExpansion interface{}
 
-// DigitaloceanDropletSnapshotListerExpansion allows custom methods to be added to
-// DigitaloceanDropletSnapshotLister.
-type DigitaloceanDropletSnapshotListerExpansion interface{}
+// DropletSnapshotListerExpansion allows custom methods to be added to
+// DropletSnapshotLister.
+type DropletSnapshotListerExpansion interface{}
 
-// DigitaloceanFirewallListerExpansion allows custom methods to be added to
-// DigitaloceanFirewallLister.
-type DigitaloceanFirewallListerExpansion interface{}
+// FirewallListerExpansion allows custom methods to be added to
+// FirewallLister.
+type FirewallListerExpansion interface{}
 
-// DigitaloceanFloatingIpListerExpansion allows custom methods to be added to
-// DigitaloceanFloatingIpLister.
-type DigitaloceanFloatingIpListerExpansion interface{}
+// FloatingIpListerExpansion allows custom methods to be added to
+// FloatingIpLister.
+type FloatingIpListerExpansion interface{}
 
-// DigitaloceanFloatingIpAssignmentListerExpansion allows custom methods to be added to
-// DigitaloceanFloatingIpAssignmentLister.
-type DigitaloceanFloatingIpAssignmentListerExpansion interface{}
+// FloatingIpAssignmentListerExpansion allows custom methods to be added to
+// FloatingIpAssignmentLister.
+type FloatingIpAssignmentListerExpansion interface{}
 
-// DigitaloceanKubernetesClusterListerExpansion allows custom methods to be added to
-// DigitaloceanKubernetesClusterLister.
-type DigitaloceanKubernetesClusterListerExpansion interface{}
+// KubernetesClusterListerExpansion allows custom methods to be added to
+// KubernetesClusterLister.
+type KubernetesClusterListerExpansion interface{}
 
-// DigitaloceanKubernetesNodePoolListerExpansion allows custom methods to be added to
-// DigitaloceanKubernetesNodePoolLister.
-type DigitaloceanKubernetesNodePoolListerExpansion interface{}
+// KubernetesNodePoolListerExpansion allows custom methods to be added to
+// KubernetesNodePoolLister.
+type KubernetesNodePoolListerExpansion interface{}
 
-// DigitaloceanLoadbalancerListerExpansion allows custom methods to be added to
-// DigitaloceanLoadbalancerLister.
-type DigitaloceanLoadbalancerListerExpansion interface{}
+// LoadbalancerListerExpansion allows custom methods to be added to
+// LoadbalancerLister.
+type LoadbalancerListerExpansion interface{}
 
-// DigitaloceanProjectListerExpansion allows custom methods to be added to
-// DigitaloceanProjectLister.
-type DigitaloceanProjectListerExpansion interface{}
+// ProjectListerExpansion allows custom methods to be added to
+// ProjectLister.
+type ProjectListerExpansion interface{}
 
-// DigitaloceanRecordListerExpansion allows custom methods to be added to
-// DigitaloceanRecordLister.
-type DigitaloceanRecordListerExpansion interface{}
+// RecordListerExpansion allows custom methods to be added to
+// RecordLister.
+type RecordListerExpansion interface{}
 
-// DigitaloceanSpacesBucketListerExpansion allows custom methods to be added to
-// DigitaloceanSpacesBucketLister.
-type DigitaloceanSpacesBucketListerExpansion interface{}
+// SpacesBucketListerExpansion allows custom methods to be added to
+// SpacesBucketLister.
+type SpacesBucketListerExpansion interface{}
 
-// DigitaloceanSshKeyListerExpansion allows custom methods to be added to
-// DigitaloceanSshKeyLister.
-type DigitaloceanSshKeyListerExpansion interface{}
+// SshKeyListerExpansion allows custom methods to be added to
+// SshKeyLister.
+type SshKeyListerExpansion interface{}
 
-// DigitaloceanTagListerExpansion allows custom methods to be added to
-// DigitaloceanTagLister.
-type DigitaloceanTagListerExpansion interface{}
+// TagListerExpansion allows custom methods to be added to
+// TagLister.
+type TagListerExpansion interface{}
 
-// DigitaloceanVolumeListerExpansion allows custom methods to be added to
-// DigitaloceanVolumeLister.
-type DigitaloceanVolumeListerExpansion interface{}
+// VolumeListerExpansion allows custom methods to be added to
+// VolumeLister.
+type VolumeListerExpansion interface{}
 
-// DigitaloceanVolumeAttachmentListerExpansion allows custom methods to be added to
-// DigitaloceanVolumeAttachmentLister.
-type DigitaloceanVolumeAttachmentListerExpansion interface{}
+// VolumeAttachmentListerExpansion allows custom methods to be added to
+// VolumeAttachmentLister.
+type VolumeAttachmentListerExpansion interface{}
 
-// DigitaloceanVolumeSnapshotListerExpansion allows custom methods to be added to
-// DigitaloceanVolumeSnapshotLister.
-type DigitaloceanVolumeSnapshotListerExpansion interface{}
+// VolumeSnapshotListerExpansion allows custom methods to be added to
+// VolumeSnapshotLister.
+type VolumeSnapshotListerExpansion interface{}

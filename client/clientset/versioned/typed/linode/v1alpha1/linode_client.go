@@ -27,18 +27,18 @@ import (
 
 type LinodeV1alpha1Interface interface {
 	RESTClient() rest.Interface
-	LinodeDomainsGetter
-	LinodeDomainRecordsGetter
-	LinodeImagesGetter
-	LinodeInstancesGetter
-	LinodeNodebalancersGetter
-	LinodeNodebalancerConfigsGetter
-	LinodeNodebalancerNodesGetter
-	LinodeRdnsesGetter
-	LinodeSshkeysGetter
-	LinodeStackscriptsGetter
-	LinodeTokensGetter
-	LinodeVolumesGetter
+	DomainsGetter
+	DomainRecordsGetter
+	ImagesGetter
+	InstancesGetter
+	NodebalancersGetter
+	NodebalancerConfigsGetter
+	NodebalancerNodesGetter
+	RdnsesGetter
+	SshkeysGetter
+	StackscriptsGetter
+	TokensGetter
+	VolumesGetter
 }
 
 // LinodeV1alpha1Client is used to interact with features provided by the linode.kubeform.com group.
@@ -46,52 +46,52 @@ type LinodeV1alpha1Client struct {
 	restClient rest.Interface
 }
 
-func (c *LinodeV1alpha1Client) LinodeDomains() LinodeDomainInterface {
-	return newLinodeDomains(c)
+func (c *LinodeV1alpha1Client) Domains() DomainInterface {
+	return newDomains(c)
 }
 
-func (c *LinodeV1alpha1Client) LinodeDomainRecords() LinodeDomainRecordInterface {
-	return newLinodeDomainRecords(c)
+func (c *LinodeV1alpha1Client) DomainRecords() DomainRecordInterface {
+	return newDomainRecords(c)
 }
 
-func (c *LinodeV1alpha1Client) LinodeImages() LinodeImageInterface {
-	return newLinodeImages(c)
+func (c *LinodeV1alpha1Client) Images() ImageInterface {
+	return newImages(c)
 }
 
-func (c *LinodeV1alpha1Client) LinodeInstances() LinodeInstanceInterface {
-	return newLinodeInstances(c)
+func (c *LinodeV1alpha1Client) Instances() InstanceInterface {
+	return newInstances(c)
 }
 
-func (c *LinodeV1alpha1Client) LinodeNodebalancers() LinodeNodebalancerInterface {
-	return newLinodeNodebalancers(c)
+func (c *LinodeV1alpha1Client) Nodebalancers() NodebalancerInterface {
+	return newNodebalancers(c)
 }
 
-func (c *LinodeV1alpha1Client) LinodeNodebalancerConfigs() LinodeNodebalancerConfigInterface {
-	return newLinodeNodebalancerConfigs(c)
+func (c *LinodeV1alpha1Client) NodebalancerConfigs() NodebalancerConfigInterface {
+	return newNodebalancerConfigs(c)
 }
 
-func (c *LinodeV1alpha1Client) LinodeNodebalancerNodes() LinodeNodebalancerNodeInterface {
-	return newLinodeNodebalancerNodes(c)
+func (c *LinodeV1alpha1Client) NodebalancerNodes() NodebalancerNodeInterface {
+	return newNodebalancerNodes(c)
 }
 
-func (c *LinodeV1alpha1Client) LinodeRdnses() LinodeRdnsInterface {
-	return newLinodeRdnses(c)
+func (c *LinodeV1alpha1Client) Rdnses() RdnsInterface {
+	return newRdnses(c)
 }
 
-func (c *LinodeV1alpha1Client) LinodeSshkeys() LinodeSshkeyInterface {
-	return newLinodeSshkeys(c)
+func (c *LinodeV1alpha1Client) Sshkeys() SshkeyInterface {
+	return newSshkeys(c)
 }
 
-func (c *LinodeV1alpha1Client) LinodeStackscripts() LinodeStackscriptInterface {
-	return newLinodeStackscripts(c)
+func (c *LinodeV1alpha1Client) Stackscripts() StackscriptInterface {
+	return newStackscripts(c)
 }
 
-func (c *LinodeV1alpha1Client) LinodeTokens() LinodeTokenInterface {
-	return newLinodeTokens(c)
+func (c *LinodeV1alpha1Client) Tokens() TokenInterface {
+	return newTokens(c)
 }
 
-func (c *LinodeV1alpha1Client) LinodeVolumes() LinodeVolumeInterface {
-	return newLinodeVolumes(c)
+func (c *LinodeV1alpha1Client) Volumes() VolumeInterface {
+	return newVolumes(c)
 }
 
 // NewForConfig creates a new LinodeV1alpha1Client for the given config.

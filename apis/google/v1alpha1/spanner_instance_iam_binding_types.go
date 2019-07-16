@@ -1,0 +1,45 @@
+package v1alpha1
+
+import (
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+)
+
+// +genclient
+// +genclient:nonNamespaced
+// +k8s:openapi-gen=true
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
+
+type SpannerInstanceIamBinding struct {
+	metav1.TypeMeta   `json:",inline,omitempty"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+	Spec              SpannerInstanceIamBindingSpec   `json:"spec,omitempty"`
+	Status            SpannerInstanceIamBindingStatus `json:"status,omitempty"`
+}
+
+type SpannerInstanceIamBindingSpec struct {
+	Instance string `json:"instance"`
+	// +kubebuilder:validation:UniqueItems=true
+	Members []string `json:"members"`
+	Role    string   `json:"role"`
+}
+
+type SpannerInstanceIamBindingStatus struct {
+	// Resource generation, which is updated on mutation by the API Server.
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
+	Output *runtime.RawExtension `json:"output,omitempty"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
+
+// SpannerInstanceIamBindingList is a list of SpannerInstanceIamBindings
+type SpannerInstanceIamBindingList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	// Items is a list of SpannerInstanceIamBinding CRD objects
+	Items []SpannerInstanceIamBinding `json:"items,omitempty"`
+}

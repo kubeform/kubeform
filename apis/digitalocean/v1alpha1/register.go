@@ -37,67 +37,66 @@ func Resource(resource string) schema.GroupResource {
 // Adds the list of known types to api.Scheme.
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
-    
-        &DigitaloceanKubernetesCluster{},
-        &DigitaloceanKubernetesClusterList{},
-    
-        &DigitaloceanKubernetesNodePool{},
-        &DigitaloceanKubernetesNodePoolList{},
-    
-        &DigitaloceanLoadbalancer{},
-        &DigitaloceanLoadbalancerList{},
-    
-        &DigitaloceanProject{},
-        &DigitaloceanProjectList{},
-    
-        &DigitaloceanVolume{},
-        &DigitaloceanVolumeList{},
-    
-        &DigitaloceanCdn{},
-        &DigitaloceanCdnList{},
-    
-        &DigitaloceanFloatingIpAssignment{},
-        &DigitaloceanFloatingIpAssignmentList{},
-    
-        &DigitaloceanRecord{},
-        &DigitaloceanRecordList{},
-    
-        &DigitaloceanTag{},
-        &DigitaloceanTagList{},
-    
-        &DigitaloceanVolumeSnapshot{},
-        &DigitaloceanVolumeSnapshotList{},
-    
-        &DigitaloceanCertificate{},
-        &DigitaloceanCertificateList{},
-    
-        &DigitaloceanDropletSnapshot{},
-        &DigitaloceanDropletSnapshotList{},
-    
-        &DigitaloceanFirewall{},
-        &DigitaloceanFirewallList{},
-    
-        &DigitaloceanDatabaseCluster{},
-        &DigitaloceanDatabaseClusterList{},
-    
-        &DigitaloceanDomain{},
-        &DigitaloceanDomainList{},
-    
-        &DigitaloceanDroplet{},
-        &DigitaloceanDropletList{},
-    
-        &DigitaloceanFloatingIp{},
-        &DigitaloceanFloatingIpList{},
-    
-        &DigitaloceanSpacesBucket{},
-        &DigitaloceanSpacesBucketList{},
-    
-        &DigitaloceanSshKey{},
-        &DigitaloceanSshKeyList{},
-    
-        &DigitaloceanVolumeAttachment{},
-        &DigitaloceanVolumeAttachmentList{},
-    
+
+		&Domain{},
+		&DomainList{},
+
+		&SpacesBucket{},
+		&SpacesBucketList{},
+
+		&VolumeSnapshot{},
+		&VolumeSnapshotList{},
+
+		&Certificate{},
+		&CertificateList{},
+
+		&DropletSnapshot{},
+		&DropletSnapshotList{},
+
+		&Project{},
+		&ProjectList{},
+
+		&Volume{},
+		&VolumeList{},
+
+		&DatabaseCluster{},
+		&DatabaseClusterList{},
+
+		&Droplet{},
+		&DropletList{},
+
+		&Firewall{},
+		&FirewallList{},
+
+		&FloatingIp{},
+		&FloatingIpList{},
+
+		&FloatingIpAssignment{},
+		&FloatingIpAssignmentList{},
+
+		&KubernetesCluster{},
+		&KubernetesClusterList{},
+
+		&KubernetesNodePool{},
+		&KubernetesNodePoolList{},
+
+		&SshKey{},
+		&SshKeyList{},
+
+		&Tag{},
+		&TagList{},
+
+		&Cdn{},
+		&CdnList{},
+
+		&Loadbalancer{},
+		&LoadbalancerList{},
+
+		&Record{},
+		&RecordList{},
+
+		&VolumeAttachment{},
+		&VolumeAttachmentList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

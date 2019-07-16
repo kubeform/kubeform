@@ -27,269 +27,273 @@ import (
 
 type AzurermV1alpha1Interface interface {
 	RESTClient() rest.Interface
-	AzurermApiManagementsGetter
-	AzurermApiManagementApisGetter
-	AzurermApiManagementApiOperationsGetter
-	AzurermApiManagementApiOperationPoliciesGetter
-	AzurermApiManagementApiPoliciesGetter
-	AzurermApiManagementApiSchemasGetter
-	AzurermApiManagementApiVersionSetsGetter
-	AzurermApiManagementAuthorizationServersGetter
-	AzurermApiManagementCertificatesGetter
-	AzurermApiManagementGroupsGetter
-	AzurermApiManagementGroupUsersGetter
-	AzurermApiManagementLoggersGetter
-	AzurermApiManagementOpenidConnectProvidersGetter
-	AzurermApiManagementProductsGetter
-	AzurermApiManagementProductApisGetter
-	AzurermApiManagementProductGroupsGetter
-	AzurermApiManagementProductPoliciesGetter
-	AzurermApiManagementPropertiesGetter
-	AzurermApiManagementSubscriptionsGetter
-	AzurermApiManagementUsersGetter
-	AzurermAppServicesGetter
-	AzurermAppServiceActiveSlotsGetter
-	AzurermAppServiceCustomHostnameBindingsGetter
-	AzurermAppServicePlansGetter
-	AzurermAppServiceSlotsGetter
-	AzurermApplicationGatewaysGetter
-	AzurermApplicationInsightsesGetter
-	AzurermApplicationInsightsApiKeysGetter
-	AzurermApplicationInsightsWebTestsGetter
-	AzurermApplicationSecurityGroupsGetter
-	AzurermAutomationAccountsGetter
-	AzurermAutomationCredentialsGetter
-	AzurermAutomationDscConfigurationsGetter
-	AzurermAutomationDscNodeconfigurationsGetter
-	AzurermAutomationModulesGetter
-	AzurermAutomationRunbooksGetter
-	AzurermAutomationSchedulesGetter
-	AzurermAutomationVariableBoolsGetter
-	AzurermAutomationVariableDatetimesGetter
-	AzurermAutomationVariableIntsGetter
-	AzurermAutomationVariableStringsGetter
-	AzurermAutoscaleSettingsGetter
-	AzurermAvailabilitySetsGetter
-	AzurermAzureadApplicationsGetter
-	AzurermAzureadServicePrincipalsGetter
-	AzurermAzureadServicePrincipalPasswordsGetter
-	AzurermBatchAccountsGetter
-	AzurermBatchCertificatesGetter
-	AzurermBatchPoolsGetter
-	AzurermCdnEndpointsGetter
-	AzurermCdnProfilesGetter
-	AzurermCognitiveAccountsGetter
-	AzurermConnectionMonitorsGetter
-	AzurermContainerGroupsGetter
-	AzurermContainerRegistriesGetter
-	AzurermContainerServicesGetter
-	AzurermCosmosdbAccountsGetter
-	AzurermCosmosdbCassandraKeyspacesGetter
-	AzurermCosmosdbMongoCollectionsGetter
-	AzurermCosmosdbMongoDatabasesGetter
-	AzurermCosmosdbSqlDatabasesGetter
-	AzurermCosmosdbTablesGetter
-	AzurermDataFactoriesGetter
-	AzurermDataFactoryDatasetMysqlsGetter
-	AzurermDataFactoryDatasetPostgresqlsGetter
-	AzurermDataFactoryDatasetSqlServerTablesGetter
-	AzurermDataFactoryLinkedServiceDataLakeStorageGen2sGetter
-	AzurermDataFactoryLinkedServiceMysqlsGetter
-	AzurermDataFactoryLinkedServicePostgresqlsGetter
-	AzurermDataFactoryLinkedServiceSqlServersGetter
-	AzurermDataFactoryPipelinesGetter
-	AzurermDataLakeAnalyticsAccountsGetter
-	AzurermDataLakeAnalyticsFirewallRulesGetter
-	AzurermDataLakeStoresGetter
-	AzurermDataLakeStoreFilesGetter
-	AzurermDataLakeStoreFirewallRulesGetter
-	AzurermDatabricksWorkspacesGetter
-	AzurermDdosProtectionPlansGetter
-	AzurermDevTestLabsGetter
-	AzurermDevTestLinuxVirtualMachinesGetter
-	AzurermDevTestPoliciesGetter
-	AzurermDevTestVirtualNetworksGetter
-	AzurermDevTestWindowsVirtualMachinesGetter
-	AzurermDevspaceControllersGetter
-	AzurermDnsARecordsGetter
-	AzurermDnsAaaaRecordsGetter
-	AzurermDnsCaaRecordsGetter
-	AzurermDnsCnameRecordsGetter
-	AzurermDnsMxRecordsGetter
-	AzurermDnsNsRecordsGetter
-	AzurermDnsPtrRecordsGetter
-	AzurermDnsSrvRecordsGetter
-	AzurermDnsTxtRecordsGetter
-	AzurermDnsZonesGetter
-	AzurermEventgridDomainsGetter
-	AzurermEventgridEventSubscriptionsGetter
-	AzurermEventgridTopicsGetter
-	AzurermEventhubsGetter
-	AzurermEventhubAuthorizationRulesGetter
-	AzurermEventhubConsumerGroupsGetter
-	AzurermEventhubNamespacesGetter
-	AzurermEventhubNamespaceAuthorizationRulesGetter
-	AzurermExpressRouteCircuitsGetter
-	AzurermExpressRouteCircuitAuthorizationsGetter
-	AzurermExpressRouteCircuitPeeringsGetter
-	AzurermFirewallsGetter
-	AzurermFirewallApplicationRuleCollectionsGetter
-	AzurermFirewallNatRuleCollectionsGetter
-	AzurermFirewallNetworkRuleCollectionsGetter
-	AzurermFunctionAppsGetter
-	AzurermHdinsightHadoopClustersGetter
-	AzurermHdinsightHbaseClustersGetter
-	AzurermHdinsightInteractiveQueryClustersGetter
-	AzurermHdinsightKafkaClustersGetter
-	AzurermHdinsightMlServicesClustersGetter
-	AzurermHdinsightRserverClustersGetter
-	AzurermHdinsightSparkClustersGetter
-	AzurermHdinsightStormClustersGetter
-	AzurermImagesGetter
-	AzurermIotDpsesGetter
-	AzurermIotDpsCertificatesGetter
-	AzurermIothubsGetter
-	AzurermIothubConsumerGroupsGetter
-	AzurermIothubSharedAccessPoliciesGetter
-	AzurermKeyVaultsGetter
-	AzurermKeyVaultAccessPoliciesGetter
-	AzurermKeyVaultCertificatesGetter
-	AzurermKeyVaultKeysGetter
-	AzurermKeyVaultSecretsGetter
-	AzurermKubernetesClustersGetter
-	AzurermLbsGetter
-	AzurermLbBackendAddressPoolsGetter
-	AzurermLbNatPoolsGetter
-	AzurermLbNatRulesGetter
-	AzurermLbOutboundRulesGetter
-	AzurermLbProbesGetter
-	AzurermLbRulesGetter
-	AzurermLocalNetworkGatewaysGetter
-	AzurermLogAnalyticsLinkedServicesGetter
-	AzurermLogAnalyticsSolutionsGetter
-	AzurermLogAnalyticsWorkspacesGetter
-	AzurermLogAnalyticsWorkspaceLinkedServicesGetter
-	AzurermLogicAppActionCustomsGetter
-	AzurermLogicAppActionHttpsGetter
-	AzurermLogicAppTriggerCustomsGetter
-	AzurermLogicAppTriggerHttpRequestsGetter
-	AzurermLogicAppTriggerRecurrencesGetter
-	AzurermLogicAppWorkflowsGetter
-	AzurermManagedDisksGetter
-	AzurermManagementGroupsGetter
-	AzurermManagementLocksGetter
-	AzurermMariadbDatabasesGetter
-	AzurermMariadbFirewallRulesGetter
-	AzurermMariadbServersGetter
-	AzurermMediaServicesAccountsGetter
-	AzurermMetricAlertrulesGetter
-	AzurermMonitorActionGroupsGetter
-	AzurermMonitorActivityLogAlertsGetter
-	AzurermMonitorAutoscaleSettingsGetter
-	AzurermMonitorDiagnosticSettingsGetter
-	AzurermMonitorLogProfilesGetter
-	AzurermMonitorMetricAlertsGetter
-	AzurermMonitorMetricAlertrulesGetter
-	AzurermMssqlElasticpoolsGetter
-	AzurermMysqlConfigurationsGetter
-	AzurermMysqlDatabasesGetter
-	AzurermMysqlFirewallRulesGetter
-	AzurermMysqlServersGetter
-	AzurermMysqlVirtualNetworkRulesGetter
-	AzurermNetworkConnectionMonitorsGetter
-	AzurermNetworkDdosProtectionPlansGetter
-	AzurermNetworkInterfacesGetter
-	AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationsGetter
-	AzurermNetworkInterfaceApplicationSecurityGroupAssociationsGetter
-	AzurermNetworkInterfaceBackendAddressPoolAssociationsGetter
-	AzurermNetworkInterfaceNatRuleAssociationsGetter
-	AzurermNetworkPacketCapturesGetter
-	AzurermNetworkProfilesGetter
-	AzurermNetworkSecurityGroupsGetter
-	AzurermNetworkSecurityRulesGetter
-	AzurermNetworkWatchersGetter
-	AzurermNotificationHubsGetter
-	AzurermNotificationHubAuthorizationRulesGetter
-	AzurermNotificationHubNamespacesGetter
-	AzurermPacketCapturesGetter
-	AzurermPolicyAssignmentsGetter
-	AzurermPolicyDefinitionsGetter
-	AzurermPolicySetDefinitionsGetter
-	AzurermPostgresqlConfigurationsGetter
-	AzurermPostgresqlDatabasesGetter
-	AzurermPostgresqlFirewallRulesGetter
-	AzurermPostgresqlServersGetter
-	AzurermPostgresqlVirtualNetworkRulesGetter
-	AzurermPrivateDnsZonesGetter
-	AzurermPublicIpsGetter
-	AzurermPublicIpPrefixesGetter
-	AzurermRecoveryServicesProtectedVmsGetter
-	AzurermRecoveryServicesProtectionPolicyVmsGetter
-	AzurermRecoveryServicesVaultsGetter
-	AzurermRedisCachesGetter
-	AzurermRedisFirewallRulesGetter
-	AzurermRelayNamespacesGetter
-	AzurermResourceGroupsGetter
-	AzurermRoleAssignmentsGetter
-	AzurermRoleDefinitionsGetter
-	AzurermRoutesGetter
-	AzurermRouteTablesGetter
-	AzurermSchedulerJobsGetter
-	AzurermSchedulerJobCollectionsGetter
-	AzurermSearchServicesGetter
-	AzurermSecurityCenterContactsGetter
-	AzurermSecurityCenterSubscriptionPricingsGetter
-	AzurermSecurityCenterWorkspacesGetter
-	AzurermServiceFabricClustersGetter
-	AzurermServicebusNamespacesGetter
-	AzurermServicebusNamespaceAuthorizationRulesGetter
-	AzurermServicebusQueuesGetter
-	AzurermServicebusQueueAuthorizationRulesGetter
-	AzurermServicebusSubscriptionsGetter
-	AzurermServicebusSubscriptionRulesGetter
-	AzurermServicebusTopicsGetter
-	AzurermServicebusTopicAuthorizationRulesGetter
-	AzurermSharedImagesGetter
-	AzurermSharedImageGalleriesGetter
-	AzurermSharedImageVersionsGetter
-	AzurermSignalrServicesGetter
-	AzurermSnapshotsGetter
-	AzurermSqlActiveDirectoryAdministratorsGetter
-	AzurermSqlDatabasesGetter
-	AzurermSqlElasticpoolsGetter
-	AzurermSqlFirewallRulesGetter
-	AzurermSqlServersGetter
-	AzurermSqlVirtualNetworkRulesGetter
-	AzurermStorageAccountsGetter
-	AzurermStorageBlobsGetter
-	AzurermStorageContainersGetter
-	AzurermStorageQueuesGetter
-	AzurermStorageSharesGetter
-	AzurermStorageTablesGetter
-	AzurermStreamAnalyticsFunctionJavascriptUdvesGetter
-	AzurermStreamAnalyticsJobsGetter
-	AzurermStreamAnalyticsOutputBlobsGetter
-	AzurermStreamAnalyticsOutputEventhubsGetter
-	AzurermStreamAnalyticsOutputMssqlsGetter
-	AzurermStreamAnalyticsOutputServicebusQueuesGetter
-	AzurermStreamAnalyticsStreamInputBlobsGetter
-	AzurermStreamAnalyticsStreamInputEventhubsGetter
-	AzurermStreamAnalyticsStreamInputIothubsGetter
-	AzurermSubnetsGetter
-	AzurermSubnetNetworkSecurityGroupAssociationsGetter
-	AzurermSubnetRouteTableAssociationsGetter
-	AzurermTemplateDeploymentsGetter
-	AzurermTrafficManagerEndpointsGetter
-	AzurermTrafficManagerProfilesGetter
-	AzurermUserAssignedIdentitiesGetter
-	AzurermVirtualMachinesGetter
-	AzurermVirtualMachineDataDiskAttachmentsGetter
-	AzurermVirtualMachineExtensionsGetter
-	AzurermVirtualMachineScaleSetsGetter
-	AzurermVirtualNetworksGetter
-	AzurermVirtualNetworkGatewaysGetter
-	AzurermVirtualNetworkGatewayConnectionsGetter
-	AzurermVirtualNetworkPeeringsGetter
+	ApiManagementsGetter
+	ApiManagementApisGetter
+	ApiManagementApiOperationsGetter
+	ApiManagementApiOperationPoliciesGetter
+	ApiManagementApiPoliciesGetter
+	ApiManagementApiSchemasGetter
+	ApiManagementApiVersionSetsGetter
+	ApiManagementAuthorizationServersGetter
+	ApiManagementBackendsGetter
+	ApiManagementCertificatesGetter
+	ApiManagementGroupsGetter
+	ApiManagementGroupUsersGetter
+	ApiManagementLoggersGetter
+	ApiManagementOpenidConnectProvidersGetter
+	ApiManagementProductsGetter
+	ApiManagementProductApisGetter
+	ApiManagementProductGroupsGetter
+	ApiManagementProductPoliciesGetter
+	ApiManagementPropertiesGetter
+	ApiManagementSubscriptionsGetter
+	ApiManagementUsersGetter
+	AppServicesGetter
+	AppServiceActiveSlotsGetter
+	AppServiceCustomHostnameBindingsGetter
+	AppServicePlansGetter
+	AppServiceSlotsGetter
+	ApplicationGatewaysGetter
+	ApplicationInsightsesGetter
+	ApplicationInsightsApiKeysGetter
+	ApplicationInsightsWebTestsGetter
+	ApplicationSecurityGroupsGetter
+	AutomationAccountsGetter
+	AutomationCredentialsGetter
+	AutomationDscConfigurationsGetter
+	AutomationDscNodeconfigurationsGetter
+	AutomationModulesGetter
+	AutomationRunbooksGetter
+	AutomationSchedulesGetter
+	AutomationVariableBoolsGetter
+	AutomationVariableDatetimesGetter
+	AutomationVariableIntsGetter
+	AutomationVariableStringsGetter
+	AutoscaleSettingsGetter
+	AvailabilitySetsGetter
+	AzureadApplicationsGetter
+	AzureadServicePrincipalsGetter
+	AzureadServicePrincipalPasswordsGetter
+	BatchAccountsGetter
+	BatchApplicationsGetter
+	BatchCertificatesGetter
+	BatchPoolsGetter
+	CdnEndpointsGetter
+	CdnProfilesGetter
+	CognitiveAccountsGetter
+	ConnectionMonitorsGetter
+	ContainerGroupsGetter
+	ContainerRegistriesGetter
+	ContainerServicesGetter
+	CosmosdbAccountsGetter
+	CosmosdbCassandraKeyspacesGetter
+	CosmosdbMongoCollectionsGetter
+	CosmosdbMongoDatabasesGetter
+	CosmosdbSqlDatabasesGetter
+	CosmosdbTablesGetter
+	DataFactoriesGetter
+	DataFactoryDatasetMysqlsGetter
+	DataFactoryDatasetPostgresqlsGetter
+	DataFactoryDatasetSqlServerTablesGetter
+	DataFactoryLinkedServiceDataLakeStorageGen2sGetter
+	DataFactoryLinkedServiceMysqlsGetter
+	DataFactoryLinkedServicePostgresqlsGetter
+	DataFactoryLinkedServiceSqlServersGetter
+	DataFactoryPipelinesGetter
+	DataLakeAnalyticsAccountsGetter
+	DataLakeAnalyticsFirewallRulesGetter
+	DataLakeStoresGetter
+	DataLakeStoreFilesGetter
+	DataLakeStoreFirewallRulesGetter
+	DatabricksWorkspacesGetter
+	DdosProtectionPlansGetter
+	DevTestLabsGetter
+	DevTestLinuxVirtualMachinesGetter
+	DevTestPoliciesGetter
+	DevTestVirtualNetworksGetter
+	DevTestWindowsVirtualMachinesGetter
+	DevspaceControllersGetter
+	DnsARecordsGetter
+	DnsAaaaRecordsGetter
+	DnsCaaRecordsGetter
+	DnsCnameRecordsGetter
+	DnsMxRecordsGetter
+	DnsNsRecordsGetter
+	DnsPtrRecordsGetter
+	DnsSrvRecordsGetter
+	DnsTxtRecordsGetter
+	DnsZonesGetter
+	EventgridDomainsGetter
+	EventgridEventSubscriptionsGetter
+	EventgridTopicsGetter
+	EventhubsGetter
+	EventhubAuthorizationRulesGetter
+	EventhubConsumerGroupsGetter
+	EventhubNamespacesGetter
+	EventhubNamespaceAuthorizationRulesGetter
+	ExpressRouteCircuitsGetter
+	ExpressRouteCircuitAuthorizationsGetter
+	ExpressRouteCircuitPeeringsGetter
+	FirewallsGetter
+	FirewallApplicationRuleCollectionsGetter
+	FirewallNatRuleCollectionsGetter
+	FirewallNetworkRuleCollectionsGetter
+	FunctionAppsGetter
+	HdinsightHadoopClustersGetter
+	HdinsightHbaseClustersGetter
+	HdinsightInteractiveQueryClustersGetter
+	HdinsightKafkaClustersGetter
+	HdinsightMlServicesClustersGetter
+	HdinsightRserverClustersGetter
+	HdinsightSparkClustersGetter
+	HdinsightStormClustersGetter
+	ImagesGetter
+	IotDpsesGetter
+	IotDpsCertificatesGetter
+	IothubsGetter
+	IothubConsumerGroupsGetter
+	IothubSharedAccessPoliciesGetter
+	KeyVaultsGetter
+	KeyVaultAccessPoliciesGetter
+	KeyVaultCertificatesGetter
+	KeyVaultKeysGetter
+	KeyVaultSecretsGetter
+	KubernetesClustersGetter
+	LbsGetter
+	LbBackendAddressPoolsGetter
+	LbNatPoolsGetter
+	LbNatRulesGetter
+	LbOutboundRulesGetter
+	LbProbesGetter
+	LbRulesGetter
+	LocalNetworkGatewaysGetter
+	LogAnalyticsLinkedServicesGetter
+	LogAnalyticsSolutionsGetter
+	LogAnalyticsWorkspacesGetter
+	LogAnalyticsWorkspaceLinkedServicesGetter
+	LogicAppActionCustomsGetter
+	LogicAppActionHttpsGetter
+	LogicAppTriggerCustomsGetter
+	LogicAppTriggerHttpRequestsGetter
+	LogicAppTriggerRecurrencesGetter
+	LogicAppWorkflowsGetter
+	ManagedDisksGetter
+	ManagementGroupsGetter
+	ManagementLocksGetter
+	MariadbDatabasesGetter
+	MariadbFirewallRulesGetter
+	MariadbServersGetter
+	MediaServicesAccountsGetter
+	MetricAlertrulesGetter
+	MonitorActionGroupsGetter
+	MonitorActivityLogAlertsGetter
+	MonitorAutoscaleSettingsGetter
+	MonitorDiagnosticSettingsGetter
+	MonitorLogProfilesGetter
+	MonitorMetricAlertsGetter
+	MonitorMetricAlertrulesGetter
+	MssqlElasticpoolsGetter
+	MysqlConfigurationsGetter
+	MysqlDatabasesGetter
+	MysqlFirewallRulesGetter
+	MysqlServersGetter
+	MysqlVirtualNetworkRulesGetter
+	NetworkConnectionMonitorsGetter
+	NetworkDdosProtectionPlansGetter
+	NetworkInterfacesGetter
+	NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationsGetter
+	NetworkInterfaceApplicationSecurityGroupAssociationsGetter
+	NetworkInterfaceBackendAddressPoolAssociationsGetter
+	NetworkInterfaceNatRuleAssociationsGetter
+	NetworkPacketCapturesGetter
+	NetworkProfilesGetter
+	NetworkSecurityGroupsGetter
+	NetworkSecurityRulesGetter
+	NetworkWatchersGetter
+	NotificationHubsGetter
+	NotificationHubAuthorizationRulesGetter
+	NotificationHubNamespacesGetter
+	PacketCapturesGetter
+	PolicyAssignmentsGetter
+	PolicyDefinitionsGetter
+	PolicySetDefinitionsGetter
+	PostgresqlConfigurationsGetter
+	PostgresqlDatabasesGetter
+	PostgresqlFirewallRulesGetter
+	PostgresqlServersGetter
+	PostgresqlVirtualNetworkRulesGetter
+	PrivateDnsZonesGetter
+	PublicIpsGetter
+	PublicIpPrefixesGetter
+	RecoveryServicesProtectedVmsGetter
+	RecoveryServicesProtectionPolicyVmsGetter
+	RecoveryServicesVaultsGetter
+	RedisCachesGetter
+	RedisFirewallRulesGetter
+	RelayNamespacesGetter
+	ResourceGroupsGetter
+	RoleAssignmentsGetter
+	RoleDefinitionsGetter
+	RoutesGetter
+	RouteTablesGetter
+	SchedulerJobsGetter
+	SchedulerJobCollectionsGetter
+	SearchServicesGetter
+	SecurityCenterContactsGetter
+	SecurityCenterSubscriptionPricingsGetter
+	SecurityCenterWorkspacesGetter
+	ServiceFabricClustersGetter
+	ServicebusNamespacesGetter
+	ServicebusNamespaceAuthorizationRulesGetter
+	ServicebusQueuesGetter
+	ServicebusQueueAuthorizationRulesGetter
+	ServicebusSubscriptionsGetter
+	ServicebusSubscriptionRulesGetter
+	ServicebusTopicsGetter
+	ServicebusTopicAuthorizationRulesGetter
+	SharedImagesGetter
+	SharedImageGalleriesGetter
+	SharedImageVersionsGetter
+	SignalrServicesGetter
+	SnapshotsGetter
+	SqlActiveDirectoryAdministratorsGetter
+	SqlDatabasesGetter
+	SqlElasticpoolsGetter
+	SqlFirewallRulesGetter
+	SqlServersGetter
+	SqlVirtualNetworkRulesGetter
+	StorageAccountsGetter
+	StorageBlobsGetter
+	StorageContainersGetter
+	StorageQueuesGetter
+	StorageSharesGetter
+	StorageShareDirectoriesGetter
+	StorageTablesGetter
+	StorageTableEntitiesGetter
+	StreamAnalyticsFunctionJavascriptUdvesGetter
+	StreamAnalyticsJobsGetter
+	StreamAnalyticsOutputBlobsGetter
+	StreamAnalyticsOutputEventhubsGetter
+	StreamAnalyticsOutputMssqlsGetter
+	StreamAnalyticsOutputServicebusQueuesGetter
+	StreamAnalyticsStreamInputBlobsGetter
+	StreamAnalyticsStreamInputEventhubsGetter
+	StreamAnalyticsStreamInputIothubsGetter
+	SubnetsGetter
+	SubnetNetworkSecurityGroupAssociationsGetter
+	SubnetRouteTableAssociationsGetter
+	TemplateDeploymentsGetter
+	TrafficManagerEndpointsGetter
+	TrafficManagerProfilesGetter
+	UserAssignedIdentitiesGetter
+	VirtualMachinesGetter
+	VirtualMachineDataDiskAttachmentsGetter
+	VirtualMachineExtensionsGetter
+	VirtualMachineScaleSetsGetter
+	VirtualNetworksGetter
+	VirtualNetworkGatewaysGetter
+	VirtualNetworkGatewayConnectionsGetter
+	VirtualNetworkPeeringsGetter
 }
 
 // AzurermV1alpha1Client is used to interact with features provided by the azurerm.kubeform.com group.
@@ -297,1056 +301,1072 @@ type AzurermV1alpha1Client struct {
 	restClient rest.Interface
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagements() AzurermApiManagementInterface {
-	return newAzurermApiManagements(c)
+func (c *AzurermV1alpha1Client) ApiManagements() ApiManagementInterface {
+	return newApiManagements(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementApis() AzurermApiManagementApiInterface {
-	return newAzurermApiManagementApis(c)
+func (c *AzurermV1alpha1Client) ApiManagementApis() ApiManagementApiInterface {
+	return newApiManagementApis(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementApiOperations() AzurermApiManagementApiOperationInterface {
-	return newAzurermApiManagementApiOperations(c)
+func (c *AzurermV1alpha1Client) ApiManagementApiOperations() ApiManagementApiOperationInterface {
+	return newApiManagementApiOperations(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementApiOperationPolicies() AzurermApiManagementApiOperationPolicyInterface {
-	return newAzurermApiManagementApiOperationPolicies(c)
+func (c *AzurermV1alpha1Client) ApiManagementApiOperationPolicies() ApiManagementApiOperationPolicyInterface {
+	return newApiManagementApiOperationPolicies(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementApiPolicies() AzurermApiManagementApiPolicyInterface {
-	return newAzurermApiManagementApiPolicies(c)
+func (c *AzurermV1alpha1Client) ApiManagementApiPolicies() ApiManagementApiPolicyInterface {
+	return newApiManagementApiPolicies(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementApiSchemas() AzurermApiManagementApiSchemaInterface {
-	return newAzurermApiManagementApiSchemas(c)
+func (c *AzurermV1alpha1Client) ApiManagementApiSchemas() ApiManagementApiSchemaInterface {
+	return newApiManagementApiSchemas(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementApiVersionSets() AzurermApiManagementApiVersionSetInterface {
-	return newAzurermApiManagementApiVersionSets(c)
+func (c *AzurermV1alpha1Client) ApiManagementApiVersionSets() ApiManagementApiVersionSetInterface {
+	return newApiManagementApiVersionSets(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementAuthorizationServers() AzurermApiManagementAuthorizationServerInterface {
-	return newAzurermApiManagementAuthorizationServers(c)
+func (c *AzurermV1alpha1Client) ApiManagementAuthorizationServers() ApiManagementAuthorizationServerInterface {
+	return newApiManagementAuthorizationServers(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementCertificates() AzurermApiManagementCertificateInterface {
-	return newAzurermApiManagementCertificates(c)
+func (c *AzurermV1alpha1Client) ApiManagementBackends() ApiManagementBackendInterface {
+	return newApiManagementBackends(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementGroups() AzurermApiManagementGroupInterface {
-	return newAzurermApiManagementGroups(c)
+func (c *AzurermV1alpha1Client) ApiManagementCertificates() ApiManagementCertificateInterface {
+	return newApiManagementCertificates(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementGroupUsers() AzurermApiManagementGroupUserInterface {
-	return newAzurermApiManagementGroupUsers(c)
+func (c *AzurermV1alpha1Client) ApiManagementGroups() ApiManagementGroupInterface {
+	return newApiManagementGroups(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementLoggers() AzurermApiManagementLoggerInterface {
-	return newAzurermApiManagementLoggers(c)
+func (c *AzurermV1alpha1Client) ApiManagementGroupUsers() ApiManagementGroupUserInterface {
+	return newApiManagementGroupUsers(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementOpenidConnectProviders() AzurermApiManagementOpenidConnectProviderInterface {
-	return newAzurermApiManagementOpenidConnectProviders(c)
+func (c *AzurermV1alpha1Client) ApiManagementLoggers() ApiManagementLoggerInterface {
+	return newApiManagementLoggers(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementProducts() AzurermApiManagementProductInterface {
-	return newAzurermApiManagementProducts(c)
+func (c *AzurermV1alpha1Client) ApiManagementOpenidConnectProviders() ApiManagementOpenidConnectProviderInterface {
+	return newApiManagementOpenidConnectProviders(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementProductApis() AzurermApiManagementProductApiInterface {
-	return newAzurermApiManagementProductApis(c)
+func (c *AzurermV1alpha1Client) ApiManagementProducts() ApiManagementProductInterface {
+	return newApiManagementProducts(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementProductGroups() AzurermApiManagementProductGroupInterface {
-	return newAzurermApiManagementProductGroups(c)
+func (c *AzurermV1alpha1Client) ApiManagementProductApis() ApiManagementProductApiInterface {
+	return newApiManagementProductApis(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementProductPolicies() AzurermApiManagementProductPolicyInterface {
-	return newAzurermApiManagementProductPolicies(c)
+func (c *AzurermV1alpha1Client) ApiManagementProductGroups() ApiManagementProductGroupInterface {
+	return newApiManagementProductGroups(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementProperties() AzurermApiManagementPropertyInterface {
-	return newAzurermApiManagementProperties(c)
+func (c *AzurermV1alpha1Client) ApiManagementProductPolicies() ApiManagementProductPolicyInterface {
+	return newApiManagementProductPolicies(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementSubscriptions() AzurermApiManagementSubscriptionInterface {
-	return newAzurermApiManagementSubscriptions(c)
+func (c *AzurermV1alpha1Client) ApiManagementProperties() ApiManagementPropertyInterface {
+	return newApiManagementProperties(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApiManagementUsers() AzurermApiManagementUserInterface {
-	return newAzurermApiManagementUsers(c)
+func (c *AzurermV1alpha1Client) ApiManagementSubscriptions() ApiManagementSubscriptionInterface {
+	return newApiManagementSubscriptions(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAppServices() AzurermAppServiceInterface {
-	return newAzurermAppServices(c)
+func (c *AzurermV1alpha1Client) ApiManagementUsers() ApiManagementUserInterface {
+	return newApiManagementUsers(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAppServiceActiveSlots() AzurermAppServiceActiveSlotInterface {
-	return newAzurermAppServiceActiveSlots(c)
+func (c *AzurermV1alpha1Client) AppServices() AppServiceInterface {
+	return newAppServices(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAppServiceCustomHostnameBindings() AzurermAppServiceCustomHostnameBindingInterface {
-	return newAzurermAppServiceCustomHostnameBindings(c)
+func (c *AzurermV1alpha1Client) AppServiceActiveSlots() AppServiceActiveSlotInterface {
+	return newAppServiceActiveSlots(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAppServicePlans() AzurermAppServicePlanInterface {
-	return newAzurermAppServicePlans(c)
+func (c *AzurermV1alpha1Client) AppServiceCustomHostnameBindings() AppServiceCustomHostnameBindingInterface {
+	return newAppServiceCustomHostnameBindings(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAppServiceSlots() AzurermAppServiceSlotInterface {
-	return newAzurermAppServiceSlots(c)
+func (c *AzurermV1alpha1Client) AppServicePlans() AppServicePlanInterface {
+	return newAppServicePlans(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApplicationGateways() AzurermApplicationGatewayInterface {
-	return newAzurermApplicationGateways(c)
+func (c *AzurermV1alpha1Client) AppServiceSlots() AppServiceSlotInterface {
+	return newAppServiceSlots(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApplicationInsightses() AzurermApplicationInsightsInterface {
-	return newAzurermApplicationInsightses(c)
+func (c *AzurermV1alpha1Client) ApplicationGateways() ApplicationGatewayInterface {
+	return newApplicationGateways(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApplicationInsightsApiKeys() AzurermApplicationInsightsApiKeyInterface {
-	return newAzurermApplicationInsightsApiKeys(c)
+func (c *AzurermV1alpha1Client) ApplicationInsightses() ApplicationInsightsInterface {
+	return newApplicationInsightses(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApplicationInsightsWebTests() AzurermApplicationInsightsWebTestInterface {
-	return newAzurermApplicationInsightsWebTests(c)
+func (c *AzurermV1alpha1Client) ApplicationInsightsApiKeys() ApplicationInsightsApiKeyInterface {
+	return newApplicationInsightsApiKeys(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermApplicationSecurityGroups() AzurermApplicationSecurityGroupInterface {
-	return newAzurermApplicationSecurityGroups(c)
+func (c *AzurermV1alpha1Client) ApplicationInsightsWebTests() ApplicationInsightsWebTestInterface {
+	return newApplicationInsightsWebTests(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAutomationAccounts() AzurermAutomationAccountInterface {
-	return newAzurermAutomationAccounts(c)
+func (c *AzurermV1alpha1Client) ApplicationSecurityGroups() ApplicationSecurityGroupInterface {
+	return newApplicationSecurityGroups(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAutomationCredentials() AzurermAutomationCredentialInterface {
-	return newAzurermAutomationCredentials(c)
+func (c *AzurermV1alpha1Client) AutomationAccounts() AutomationAccountInterface {
+	return newAutomationAccounts(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAutomationDscConfigurations() AzurermAutomationDscConfigurationInterface {
-	return newAzurermAutomationDscConfigurations(c)
+func (c *AzurermV1alpha1Client) AutomationCredentials() AutomationCredentialInterface {
+	return newAutomationCredentials(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAutomationDscNodeconfigurations() AzurermAutomationDscNodeconfigurationInterface {
-	return newAzurermAutomationDscNodeconfigurations(c)
+func (c *AzurermV1alpha1Client) AutomationDscConfigurations() AutomationDscConfigurationInterface {
+	return newAutomationDscConfigurations(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAutomationModules() AzurermAutomationModuleInterface {
-	return newAzurermAutomationModules(c)
+func (c *AzurermV1alpha1Client) AutomationDscNodeconfigurations() AutomationDscNodeconfigurationInterface {
+	return newAutomationDscNodeconfigurations(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAutomationRunbooks() AzurermAutomationRunbookInterface {
-	return newAzurermAutomationRunbooks(c)
+func (c *AzurermV1alpha1Client) AutomationModules() AutomationModuleInterface {
+	return newAutomationModules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAutomationSchedules() AzurermAutomationScheduleInterface {
-	return newAzurermAutomationSchedules(c)
+func (c *AzurermV1alpha1Client) AutomationRunbooks() AutomationRunbookInterface {
+	return newAutomationRunbooks(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAutomationVariableBools() AzurermAutomationVariableBoolInterface {
-	return newAzurermAutomationVariableBools(c)
+func (c *AzurermV1alpha1Client) AutomationSchedules() AutomationScheduleInterface {
+	return newAutomationSchedules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAutomationVariableDatetimes() AzurermAutomationVariableDatetimeInterface {
-	return newAzurermAutomationVariableDatetimes(c)
+func (c *AzurermV1alpha1Client) AutomationVariableBools() AutomationVariableBoolInterface {
+	return newAutomationVariableBools(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAutomationVariableInts() AzurermAutomationVariableIntInterface {
-	return newAzurermAutomationVariableInts(c)
+func (c *AzurermV1alpha1Client) AutomationVariableDatetimes() AutomationVariableDatetimeInterface {
+	return newAutomationVariableDatetimes(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAutomationVariableStrings() AzurermAutomationVariableStringInterface {
-	return newAzurermAutomationVariableStrings(c)
+func (c *AzurermV1alpha1Client) AutomationVariableInts() AutomationVariableIntInterface {
+	return newAutomationVariableInts(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAutoscaleSettings() AzurermAutoscaleSettingInterface {
-	return newAzurermAutoscaleSettings(c)
+func (c *AzurermV1alpha1Client) AutomationVariableStrings() AutomationVariableStringInterface {
+	return newAutomationVariableStrings(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAvailabilitySets() AzurermAvailabilitySetInterface {
-	return newAzurermAvailabilitySets(c)
+func (c *AzurermV1alpha1Client) AutoscaleSettings() AutoscaleSettingInterface {
+	return newAutoscaleSettings(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAzureadApplications() AzurermAzureadApplicationInterface {
-	return newAzurermAzureadApplications(c)
+func (c *AzurermV1alpha1Client) AvailabilitySets() AvailabilitySetInterface {
+	return newAvailabilitySets(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAzureadServicePrincipals() AzurermAzureadServicePrincipalInterface {
-	return newAzurermAzureadServicePrincipals(c)
+func (c *AzurermV1alpha1Client) AzureadApplications() AzureadApplicationInterface {
+	return newAzureadApplications(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermAzureadServicePrincipalPasswords() AzurermAzureadServicePrincipalPasswordInterface {
-	return newAzurermAzureadServicePrincipalPasswords(c)
+func (c *AzurermV1alpha1Client) AzureadServicePrincipals() AzureadServicePrincipalInterface {
+	return newAzureadServicePrincipals(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermBatchAccounts() AzurermBatchAccountInterface {
-	return newAzurermBatchAccounts(c)
+func (c *AzurermV1alpha1Client) AzureadServicePrincipalPasswords() AzureadServicePrincipalPasswordInterface {
+	return newAzureadServicePrincipalPasswords(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermBatchCertificates() AzurermBatchCertificateInterface {
-	return newAzurermBatchCertificates(c)
+func (c *AzurermV1alpha1Client) BatchAccounts() BatchAccountInterface {
+	return newBatchAccounts(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermBatchPools() AzurermBatchPoolInterface {
-	return newAzurermBatchPools(c)
+func (c *AzurermV1alpha1Client) BatchApplications() BatchApplicationInterface {
+	return newBatchApplications(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermCdnEndpoints() AzurermCdnEndpointInterface {
-	return newAzurermCdnEndpoints(c)
+func (c *AzurermV1alpha1Client) BatchCertificates() BatchCertificateInterface {
+	return newBatchCertificates(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermCdnProfiles() AzurermCdnProfileInterface {
-	return newAzurermCdnProfiles(c)
+func (c *AzurermV1alpha1Client) BatchPools() BatchPoolInterface {
+	return newBatchPools(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermCognitiveAccounts() AzurermCognitiveAccountInterface {
-	return newAzurermCognitiveAccounts(c)
+func (c *AzurermV1alpha1Client) CdnEndpoints() CdnEndpointInterface {
+	return newCdnEndpoints(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermConnectionMonitors() AzurermConnectionMonitorInterface {
-	return newAzurermConnectionMonitors(c)
+func (c *AzurermV1alpha1Client) CdnProfiles() CdnProfileInterface {
+	return newCdnProfiles(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermContainerGroups() AzurermContainerGroupInterface {
-	return newAzurermContainerGroups(c)
+func (c *AzurermV1alpha1Client) CognitiveAccounts() CognitiveAccountInterface {
+	return newCognitiveAccounts(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermContainerRegistries() AzurermContainerRegistryInterface {
-	return newAzurermContainerRegistries(c)
+func (c *AzurermV1alpha1Client) ConnectionMonitors() ConnectionMonitorInterface {
+	return newConnectionMonitors(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermContainerServices() AzurermContainerServiceInterface {
-	return newAzurermContainerServices(c)
+func (c *AzurermV1alpha1Client) ContainerGroups() ContainerGroupInterface {
+	return newContainerGroups(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermCosmosdbAccounts() AzurermCosmosdbAccountInterface {
-	return newAzurermCosmosdbAccounts(c)
+func (c *AzurermV1alpha1Client) ContainerRegistries() ContainerRegistryInterface {
+	return newContainerRegistries(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermCosmosdbCassandraKeyspaces() AzurermCosmosdbCassandraKeyspaceInterface {
-	return newAzurermCosmosdbCassandraKeyspaces(c)
+func (c *AzurermV1alpha1Client) ContainerServices() ContainerServiceInterface {
+	return newContainerServices(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermCosmosdbMongoCollections() AzurermCosmosdbMongoCollectionInterface {
-	return newAzurermCosmosdbMongoCollections(c)
+func (c *AzurermV1alpha1Client) CosmosdbAccounts() CosmosdbAccountInterface {
+	return newCosmosdbAccounts(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermCosmosdbMongoDatabases() AzurermCosmosdbMongoDatabaseInterface {
-	return newAzurermCosmosdbMongoDatabases(c)
+func (c *AzurermV1alpha1Client) CosmosdbCassandraKeyspaces() CosmosdbCassandraKeyspaceInterface {
+	return newCosmosdbCassandraKeyspaces(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermCosmosdbSqlDatabases() AzurermCosmosdbSqlDatabaseInterface {
-	return newAzurermCosmosdbSqlDatabases(c)
+func (c *AzurermV1alpha1Client) CosmosdbMongoCollections() CosmosdbMongoCollectionInterface {
+	return newCosmosdbMongoCollections(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermCosmosdbTables() AzurermCosmosdbTableInterface {
-	return newAzurermCosmosdbTables(c)
+func (c *AzurermV1alpha1Client) CosmosdbMongoDatabases() CosmosdbMongoDatabaseInterface {
+	return newCosmosdbMongoDatabases(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataFactories() AzurermDataFactoryInterface {
-	return newAzurermDataFactories(c)
+func (c *AzurermV1alpha1Client) CosmosdbSqlDatabases() CosmosdbSqlDatabaseInterface {
+	return newCosmosdbSqlDatabases(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataFactoryDatasetMysqls() AzurermDataFactoryDatasetMysqlInterface {
-	return newAzurermDataFactoryDatasetMysqls(c)
+func (c *AzurermV1alpha1Client) CosmosdbTables() CosmosdbTableInterface {
+	return newCosmosdbTables(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataFactoryDatasetPostgresqls() AzurermDataFactoryDatasetPostgresqlInterface {
-	return newAzurermDataFactoryDatasetPostgresqls(c)
+func (c *AzurermV1alpha1Client) DataFactories() DataFactoryInterface {
+	return newDataFactories(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataFactoryDatasetSqlServerTables() AzurermDataFactoryDatasetSqlServerTableInterface {
-	return newAzurermDataFactoryDatasetSqlServerTables(c)
+func (c *AzurermV1alpha1Client) DataFactoryDatasetMysqls() DataFactoryDatasetMysqlInterface {
+	return newDataFactoryDatasetMysqls(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataFactoryLinkedServiceDataLakeStorageGen2s() AzurermDataFactoryLinkedServiceDataLakeStorageGen2Interface {
-	return newAzurermDataFactoryLinkedServiceDataLakeStorageGen2s(c)
+func (c *AzurermV1alpha1Client) DataFactoryDatasetPostgresqls() DataFactoryDatasetPostgresqlInterface {
+	return newDataFactoryDatasetPostgresqls(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataFactoryLinkedServiceMysqls() AzurermDataFactoryLinkedServiceMysqlInterface {
-	return newAzurermDataFactoryLinkedServiceMysqls(c)
+func (c *AzurermV1alpha1Client) DataFactoryDatasetSqlServerTables() DataFactoryDatasetSqlServerTableInterface {
+	return newDataFactoryDatasetSqlServerTables(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataFactoryLinkedServicePostgresqls() AzurermDataFactoryLinkedServicePostgresqlInterface {
-	return newAzurermDataFactoryLinkedServicePostgresqls(c)
+func (c *AzurermV1alpha1Client) DataFactoryLinkedServiceDataLakeStorageGen2s() DataFactoryLinkedServiceDataLakeStorageGen2Interface {
+	return newDataFactoryLinkedServiceDataLakeStorageGen2s(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataFactoryLinkedServiceSqlServers() AzurermDataFactoryLinkedServiceSqlServerInterface {
-	return newAzurermDataFactoryLinkedServiceSqlServers(c)
+func (c *AzurermV1alpha1Client) DataFactoryLinkedServiceMysqls() DataFactoryLinkedServiceMysqlInterface {
+	return newDataFactoryLinkedServiceMysqls(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataFactoryPipelines() AzurermDataFactoryPipelineInterface {
-	return newAzurermDataFactoryPipelines(c)
+func (c *AzurermV1alpha1Client) DataFactoryLinkedServicePostgresqls() DataFactoryLinkedServicePostgresqlInterface {
+	return newDataFactoryLinkedServicePostgresqls(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataLakeAnalyticsAccounts() AzurermDataLakeAnalyticsAccountInterface {
-	return newAzurermDataLakeAnalyticsAccounts(c)
+func (c *AzurermV1alpha1Client) DataFactoryLinkedServiceSqlServers() DataFactoryLinkedServiceSqlServerInterface {
+	return newDataFactoryLinkedServiceSqlServers(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataLakeAnalyticsFirewallRules() AzurermDataLakeAnalyticsFirewallRuleInterface {
-	return newAzurermDataLakeAnalyticsFirewallRules(c)
+func (c *AzurermV1alpha1Client) DataFactoryPipelines() DataFactoryPipelineInterface {
+	return newDataFactoryPipelines(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataLakeStores() AzurermDataLakeStoreInterface {
-	return newAzurermDataLakeStores(c)
+func (c *AzurermV1alpha1Client) DataLakeAnalyticsAccounts() DataLakeAnalyticsAccountInterface {
+	return newDataLakeAnalyticsAccounts(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataLakeStoreFiles() AzurermDataLakeStoreFileInterface {
-	return newAzurermDataLakeStoreFiles(c)
+func (c *AzurermV1alpha1Client) DataLakeAnalyticsFirewallRules() DataLakeAnalyticsFirewallRuleInterface {
+	return newDataLakeAnalyticsFirewallRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDataLakeStoreFirewallRules() AzurermDataLakeStoreFirewallRuleInterface {
-	return newAzurermDataLakeStoreFirewallRules(c)
+func (c *AzurermV1alpha1Client) DataLakeStores() DataLakeStoreInterface {
+	return newDataLakeStores(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDatabricksWorkspaces() AzurermDatabricksWorkspaceInterface {
-	return newAzurermDatabricksWorkspaces(c)
+func (c *AzurermV1alpha1Client) DataLakeStoreFiles() DataLakeStoreFileInterface {
+	return newDataLakeStoreFiles(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDdosProtectionPlans() AzurermDdosProtectionPlanInterface {
-	return newAzurermDdosProtectionPlans(c)
+func (c *AzurermV1alpha1Client) DataLakeStoreFirewallRules() DataLakeStoreFirewallRuleInterface {
+	return newDataLakeStoreFirewallRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDevTestLabs() AzurermDevTestLabInterface {
-	return newAzurermDevTestLabs(c)
+func (c *AzurermV1alpha1Client) DatabricksWorkspaces() DatabricksWorkspaceInterface {
+	return newDatabricksWorkspaces(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDevTestLinuxVirtualMachines() AzurermDevTestLinuxVirtualMachineInterface {
-	return newAzurermDevTestLinuxVirtualMachines(c)
+func (c *AzurermV1alpha1Client) DdosProtectionPlans() DdosProtectionPlanInterface {
+	return newDdosProtectionPlans(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDevTestPolicies() AzurermDevTestPolicyInterface {
-	return newAzurermDevTestPolicies(c)
+func (c *AzurermV1alpha1Client) DevTestLabs() DevTestLabInterface {
+	return newDevTestLabs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDevTestVirtualNetworks() AzurermDevTestVirtualNetworkInterface {
-	return newAzurermDevTestVirtualNetworks(c)
+func (c *AzurermV1alpha1Client) DevTestLinuxVirtualMachines() DevTestLinuxVirtualMachineInterface {
+	return newDevTestLinuxVirtualMachines(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDevTestWindowsVirtualMachines() AzurermDevTestWindowsVirtualMachineInterface {
-	return newAzurermDevTestWindowsVirtualMachines(c)
+func (c *AzurermV1alpha1Client) DevTestPolicies() DevTestPolicyInterface {
+	return newDevTestPolicies(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDevspaceControllers() AzurermDevspaceControllerInterface {
-	return newAzurermDevspaceControllers(c)
+func (c *AzurermV1alpha1Client) DevTestVirtualNetworks() DevTestVirtualNetworkInterface {
+	return newDevTestVirtualNetworks(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDnsARecords() AzurermDnsARecordInterface {
-	return newAzurermDnsARecords(c)
+func (c *AzurermV1alpha1Client) DevTestWindowsVirtualMachines() DevTestWindowsVirtualMachineInterface {
+	return newDevTestWindowsVirtualMachines(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDnsAaaaRecords() AzurermDnsAaaaRecordInterface {
-	return newAzurermDnsAaaaRecords(c)
+func (c *AzurermV1alpha1Client) DevspaceControllers() DevspaceControllerInterface {
+	return newDevspaceControllers(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDnsCaaRecords() AzurermDnsCaaRecordInterface {
-	return newAzurermDnsCaaRecords(c)
+func (c *AzurermV1alpha1Client) DnsARecords() DnsARecordInterface {
+	return newDnsARecords(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDnsCnameRecords() AzurermDnsCnameRecordInterface {
-	return newAzurermDnsCnameRecords(c)
+func (c *AzurermV1alpha1Client) DnsAaaaRecords() DnsAaaaRecordInterface {
+	return newDnsAaaaRecords(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDnsMxRecords() AzurermDnsMxRecordInterface {
-	return newAzurermDnsMxRecords(c)
+func (c *AzurermV1alpha1Client) DnsCaaRecords() DnsCaaRecordInterface {
+	return newDnsCaaRecords(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDnsNsRecords() AzurermDnsNsRecordInterface {
-	return newAzurermDnsNsRecords(c)
+func (c *AzurermV1alpha1Client) DnsCnameRecords() DnsCnameRecordInterface {
+	return newDnsCnameRecords(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDnsPtrRecords() AzurermDnsPtrRecordInterface {
-	return newAzurermDnsPtrRecords(c)
+func (c *AzurermV1alpha1Client) DnsMxRecords() DnsMxRecordInterface {
+	return newDnsMxRecords(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDnsSrvRecords() AzurermDnsSrvRecordInterface {
-	return newAzurermDnsSrvRecords(c)
+func (c *AzurermV1alpha1Client) DnsNsRecords() DnsNsRecordInterface {
+	return newDnsNsRecords(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDnsTxtRecords() AzurermDnsTxtRecordInterface {
-	return newAzurermDnsTxtRecords(c)
+func (c *AzurermV1alpha1Client) DnsPtrRecords() DnsPtrRecordInterface {
+	return newDnsPtrRecords(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermDnsZones() AzurermDnsZoneInterface {
-	return newAzurermDnsZones(c)
+func (c *AzurermV1alpha1Client) DnsSrvRecords() DnsSrvRecordInterface {
+	return newDnsSrvRecords(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermEventgridDomains() AzurermEventgridDomainInterface {
-	return newAzurermEventgridDomains(c)
+func (c *AzurermV1alpha1Client) DnsTxtRecords() DnsTxtRecordInterface {
+	return newDnsTxtRecords(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermEventgridEventSubscriptions() AzurermEventgridEventSubscriptionInterface {
-	return newAzurermEventgridEventSubscriptions(c)
+func (c *AzurermV1alpha1Client) DnsZones() DnsZoneInterface {
+	return newDnsZones(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermEventgridTopics() AzurermEventgridTopicInterface {
-	return newAzurermEventgridTopics(c)
+func (c *AzurermV1alpha1Client) EventgridDomains() EventgridDomainInterface {
+	return newEventgridDomains(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermEventhubs() AzurermEventhubInterface {
-	return newAzurermEventhubs(c)
+func (c *AzurermV1alpha1Client) EventgridEventSubscriptions() EventgridEventSubscriptionInterface {
+	return newEventgridEventSubscriptions(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermEventhubAuthorizationRules() AzurermEventhubAuthorizationRuleInterface {
-	return newAzurermEventhubAuthorizationRules(c)
+func (c *AzurermV1alpha1Client) EventgridTopics() EventgridTopicInterface {
+	return newEventgridTopics(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermEventhubConsumerGroups() AzurermEventhubConsumerGroupInterface {
-	return newAzurermEventhubConsumerGroups(c)
+func (c *AzurermV1alpha1Client) Eventhubs() EventhubInterface {
+	return newEventhubs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermEventhubNamespaces() AzurermEventhubNamespaceInterface {
-	return newAzurermEventhubNamespaces(c)
+func (c *AzurermV1alpha1Client) EventhubAuthorizationRules() EventhubAuthorizationRuleInterface {
+	return newEventhubAuthorizationRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermEventhubNamespaceAuthorizationRules() AzurermEventhubNamespaceAuthorizationRuleInterface {
-	return newAzurermEventhubNamespaceAuthorizationRules(c)
+func (c *AzurermV1alpha1Client) EventhubConsumerGroups() EventhubConsumerGroupInterface {
+	return newEventhubConsumerGroups(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermExpressRouteCircuits() AzurermExpressRouteCircuitInterface {
-	return newAzurermExpressRouteCircuits(c)
+func (c *AzurermV1alpha1Client) EventhubNamespaces() EventhubNamespaceInterface {
+	return newEventhubNamespaces(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermExpressRouteCircuitAuthorizations() AzurermExpressRouteCircuitAuthorizationInterface {
-	return newAzurermExpressRouteCircuitAuthorizations(c)
+func (c *AzurermV1alpha1Client) EventhubNamespaceAuthorizationRules() EventhubNamespaceAuthorizationRuleInterface {
+	return newEventhubNamespaceAuthorizationRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermExpressRouteCircuitPeerings() AzurermExpressRouteCircuitPeeringInterface {
-	return newAzurermExpressRouteCircuitPeerings(c)
+func (c *AzurermV1alpha1Client) ExpressRouteCircuits() ExpressRouteCircuitInterface {
+	return newExpressRouteCircuits(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermFirewalls() AzurermFirewallInterface {
-	return newAzurermFirewalls(c)
+func (c *AzurermV1alpha1Client) ExpressRouteCircuitAuthorizations() ExpressRouteCircuitAuthorizationInterface {
+	return newExpressRouteCircuitAuthorizations(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermFirewallApplicationRuleCollections() AzurermFirewallApplicationRuleCollectionInterface {
-	return newAzurermFirewallApplicationRuleCollections(c)
+func (c *AzurermV1alpha1Client) ExpressRouteCircuitPeerings() ExpressRouteCircuitPeeringInterface {
+	return newExpressRouteCircuitPeerings(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermFirewallNatRuleCollections() AzurermFirewallNatRuleCollectionInterface {
-	return newAzurermFirewallNatRuleCollections(c)
+func (c *AzurermV1alpha1Client) Firewalls() FirewallInterface {
+	return newFirewalls(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermFirewallNetworkRuleCollections() AzurermFirewallNetworkRuleCollectionInterface {
-	return newAzurermFirewallNetworkRuleCollections(c)
+func (c *AzurermV1alpha1Client) FirewallApplicationRuleCollections() FirewallApplicationRuleCollectionInterface {
+	return newFirewallApplicationRuleCollections(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermFunctionApps() AzurermFunctionAppInterface {
-	return newAzurermFunctionApps(c)
+func (c *AzurermV1alpha1Client) FirewallNatRuleCollections() FirewallNatRuleCollectionInterface {
+	return newFirewallNatRuleCollections(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermHdinsightHadoopClusters() AzurermHdinsightHadoopClusterInterface {
-	return newAzurermHdinsightHadoopClusters(c)
+func (c *AzurermV1alpha1Client) FirewallNetworkRuleCollections() FirewallNetworkRuleCollectionInterface {
+	return newFirewallNetworkRuleCollections(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermHdinsightHbaseClusters() AzurermHdinsightHbaseClusterInterface {
-	return newAzurermHdinsightHbaseClusters(c)
+func (c *AzurermV1alpha1Client) FunctionApps() FunctionAppInterface {
+	return newFunctionApps(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermHdinsightInteractiveQueryClusters() AzurermHdinsightInteractiveQueryClusterInterface {
-	return newAzurermHdinsightInteractiveQueryClusters(c)
+func (c *AzurermV1alpha1Client) HdinsightHadoopClusters() HdinsightHadoopClusterInterface {
+	return newHdinsightHadoopClusters(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermHdinsightKafkaClusters() AzurermHdinsightKafkaClusterInterface {
-	return newAzurermHdinsightKafkaClusters(c)
+func (c *AzurermV1alpha1Client) HdinsightHbaseClusters() HdinsightHbaseClusterInterface {
+	return newHdinsightHbaseClusters(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermHdinsightMlServicesClusters() AzurermHdinsightMlServicesClusterInterface {
-	return newAzurermHdinsightMlServicesClusters(c)
+func (c *AzurermV1alpha1Client) HdinsightInteractiveQueryClusters() HdinsightInteractiveQueryClusterInterface {
+	return newHdinsightInteractiveQueryClusters(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermHdinsightRserverClusters() AzurermHdinsightRserverClusterInterface {
-	return newAzurermHdinsightRserverClusters(c)
+func (c *AzurermV1alpha1Client) HdinsightKafkaClusters() HdinsightKafkaClusterInterface {
+	return newHdinsightKafkaClusters(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermHdinsightSparkClusters() AzurermHdinsightSparkClusterInterface {
-	return newAzurermHdinsightSparkClusters(c)
+func (c *AzurermV1alpha1Client) HdinsightMlServicesClusters() HdinsightMlServicesClusterInterface {
+	return newHdinsightMlServicesClusters(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermHdinsightStormClusters() AzurermHdinsightStormClusterInterface {
-	return newAzurermHdinsightStormClusters(c)
+func (c *AzurermV1alpha1Client) HdinsightRserverClusters() HdinsightRserverClusterInterface {
+	return newHdinsightRserverClusters(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermImages() AzurermImageInterface {
-	return newAzurermImages(c)
+func (c *AzurermV1alpha1Client) HdinsightSparkClusters() HdinsightSparkClusterInterface {
+	return newHdinsightSparkClusters(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermIotDpses() AzurermIotDpsInterface {
-	return newAzurermIotDpses(c)
+func (c *AzurermV1alpha1Client) HdinsightStormClusters() HdinsightStormClusterInterface {
+	return newHdinsightStormClusters(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermIotDpsCertificates() AzurermIotDpsCertificateInterface {
-	return newAzurermIotDpsCertificates(c)
+func (c *AzurermV1alpha1Client) Images() ImageInterface {
+	return newImages(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermIothubs() AzurermIothubInterface {
-	return newAzurermIothubs(c)
+func (c *AzurermV1alpha1Client) IotDpses() IotDpsInterface {
+	return newIotDpses(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermIothubConsumerGroups() AzurermIothubConsumerGroupInterface {
-	return newAzurermIothubConsumerGroups(c)
+func (c *AzurermV1alpha1Client) IotDpsCertificates() IotDpsCertificateInterface {
+	return newIotDpsCertificates(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermIothubSharedAccessPolicies() AzurermIothubSharedAccessPolicyInterface {
-	return newAzurermIothubSharedAccessPolicies(c)
+func (c *AzurermV1alpha1Client) Iothubs() IothubInterface {
+	return newIothubs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermKeyVaults() AzurermKeyVaultInterface {
-	return newAzurermKeyVaults(c)
+func (c *AzurermV1alpha1Client) IothubConsumerGroups() IothubConsumerGroupInterface {
+	return newIothubConsumerGroups(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermKeyVaultAccessPolicies() AzurermKeyVaultAccessPolicyInterface {
-	return newAzurermKeyVaultAccessPolicies(c)
+func (c *AzurermV1alpha1Client) IothubSharedAccessPolicies() IothubSharedAccessPolicyInterface {
+	return newIothubSharedAccessPolicies(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermKeyVaultCertificates() AzurermKeyVaultCertificateInterface {
-	return newAzurermKeyVaultCertificates(c)
+func (c *AzurermV1alpha1Client) KeyVaults() KeyVaultInterface {
+	return newKeyVaults(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermKeyVaultKeys() AzurermKeyVaultKeyInterface {
-	return newAzurermKeyVaultKeys(c)
+func (c *AzurermV1alpha1Client) KeyVaultAccessPolicies() KeyVaultAccessPolicyInterface {
+	return newKeyVaultAccessPolicies(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermKeyVaultSecrets() AzurermKeyVaultSecretInterface {
-	return newAzurermKeyVaultSecrets(c)
+func (c *AzurermV1alpha1Client) KeyVaultCertificates() KeyVaultCertificateInterface {
+	return newKeyVaultCertificates(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermKubernetesClusters() AzurermKubernetesClusterInterface {
-	return newAzurermKubernetesClusters(c)
+func (c *AzurermV1alpha1Client) KeyVaultKeys() KeyVaultKeyInterface {
+	return newKeyVaultKeys(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLbs() AzurermLbInterface {
-	return newAzurermLbs(c)
+func (c *AzurermV1alpha1Client) KeyVaultSecrets() KeyVaultSecretInterface {
+	return newKeyVaultSecrets(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLbBackendAddressPools() AzurermLbBackendAddressPoolInterface {
-	return newAzurermLbBackendAddressPools(c)
+func (c *AzurermV1alpha1Client) KubernetesClusters() KubernetesClusterInterface {
+	return newKubernetesClusters(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLbNatPools() AzurermLbNatPoolInterface {
-	return newAzurermLbNatPools(c)
+func (c *AzurermV1alpha1Client) Lbs() LbInterface {
+	return newLbs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLbNatRules() AzurermLbNatRuleInterface {
-	return newAzurermLbNatRules(c)
+func (c *AzurermV1alpha1Client) LbBackendAddressPools() LbBackendAddressPoolInterface {
+	return newLbBackendAddressPools(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLbOutboundRules() AzurermLbOutboundRuleInterface {
-	return newAzurermLbOutboundRules(c)
+func (c *AzurermV1alpha1Client) LbNatPools() LbNatPoolInterface {
+	return newLbNatPools(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLbProbes() AzurermLbProbeInterface {
-	return newAzurermLbProbes(c)
+func (c *AzurermV1alpha1Client) LbNatRules() LbNatRuleInterface {
+	return newLbNatRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLbRules() AzurermLbRuleInterface {
-	return newAzurermLbRules(c)
+func (c *AzurermV1alpha1Client) LbOutboundRules() LbOutboundRuleInterface {
+	return newLbOutboundRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLocalNetworkGateways() AzurermLocalNetworkGatewayInterface {
-	return newAzurermLocalNetworkGateways(c)
+func (c *AzurermV1alpha1Client) LbProbes() LbProbeInterface {
+	return newLbProbes(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLogAnalyticsLinkedServices() AzurermLogAnalyticsLinkedServiceInterface {
-	return newAzurermLogAnalyticsLinkedServices(c)
+func (c *AzurermV1alpha1Client) LbRules() LbRuleInterface {
+	return newLbRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLogAnalyticsSolutions() AzurermLogAnalyticsSolutionInterface {
-	return newAzurermLogAnalyticsSolutions(c)
+func (c *AzurermV1alpha1Client) LocalNetworkGateways() LocalNetworkGatewayInterface {
+	return newLocalNetworkGateways(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLogAnalyticsWorkspaces() AzurermLogAnalyticsWorkspaceInterface {
-	return newAzurermLogAnalyticsWorkspaces(c)
+func (c *AzurermV1alpha1Client) LogAnalyticsLinkedServices() LogAnalyticsLinkedServiceInterface {
+	return newLogAnalyticsLinkedServices(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLogAnalyticsWorkspaceLinkedServices() AzurermLogAnalyticsWorkspaceLinkedServiceInterface {
-	return newAzurermLogAnalyticsWorkspaceLinkedServices(c)
+func (c *AzurermV1alpha1Client) LogAnalyticsSolutions() LogAnalyticsSolutionInterface {
+	return newLogAnalyticsSolutions(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLogicAppActionCustoms() AzurermLogicAppActionCustomInterface {
-	return newAzurermLogicAppActionCustoms(c)
+func (c *AzurermV1alpha1Client) LogAnalyticsWorkspaces() LogAnalyticsWorkspaceInterface {
+	return newLogAnalyticsWorkspaces(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLogicAppActionHttps() AzurermLogicAppActionHttpInterface {
-	return newAzurermLogicAppActionHttps(c)
+func (c *AzurermV1alpha1Client) LogAnalyticsWorkspaceLinkedServices() LogAnalyticsWorkspaceLinkedServiceInterface {
+	return newLogAnalyticsWorkspaceLinkedServices(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLogicAppTriggerCustoms() AzurermLogicAppTriggerCustomInterface {
-	return newAzurermLogicAppTriggerCustoms(c)
+func (c *AzurermV1alpha1Client) LogicAppActionCustoms() LogicAppActionCustomInterface {
+	return newLogicAppActionCustoms(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLogicAppTriggerHttpRequests() AzurermLogicAppTriggerHttpRequestInterface {
-	return newAzurermLogicAppTriggerHttpRequests(c)
+func (c *AzurermV1alpha1Client) LogicAppActionHttps() LogicAppActionHttpInterface {
+	return newLogicAppActionHttps(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLogicAppTriggerRecurrences() AzurermLogicAppTriggerRecurrenceInterface {
-	return newAzurermLogicAppTriggerRecurrences(c)
+func (c *AzurermV1alpha1Client) LogicAppTriggerCustoms() LogicAppTriggerCustomInterface {
+	return newLogicAppTriggerCustoms(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermLogicAppWorkflows() AzurermLogicAppWorkflowInterface {
-	return newAzurermLogicAppWorkflows(c)
+func (c *AzurermV1alpha1Client) LogicAppTriggerHttpRequests() LogicAppTriggerHttpRequestInterface {
+	return newLogicAppTriggerHttpRequests(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermManagedDisks() AzurermManagedDiskInterface {
-	return newAzurermManagedDisks(c)
+func (c *AzurermV1alpha1Client) LogicAppTriggerRecurrences() LogicAppTriggerRecurrenceInterface {
+	return newLogicAppTriggerRecurrences(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermManagementGroups() AzurermManagementGroupInterface {
-	return newAzurermManagementGroups(c)
+func (c *AzurermV1alpha1Client) LogicAppWorkflows() LogicAppWorkflowInterface {
+	return newLogicAppWorkflows(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermManagementLocks() AzurermManagementLockInterface {
-	return newAzurermManagementLocks(c)
+func (c *AzurermV1alpha1Client) ManagedDisks() ManagedDiskInterface {
+	return newManagedDisks(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMariadbDatabases() AzurermMariadbDatabaseInterface {
-	return newAzurermMariadbDatabases(c)
+func (c *AzurermV1alpha1Client) ManagementGroups() ManagementGroupInterface {
+	return newManagementGroups(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMariadbFirewallRules() AzurermMariadbFirewallRuleInterface {
-	return newAzurermMariadbFirewallRules(c)
+func (c *AzurermV1alpha1Client) ManagementLocks() ManagementLockInterface {
+	return newManagementLocks(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMariadbServers() AzurermMariadbServerInterface {
-	return newAzurermMariadbServers(c)
+func (c *AzurermV1alpha1Client) MariadbDatabases() MariadbDatabaseInterface {
+	return newMariadbDatabases(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMediaServicesAccounts() AzurermMediaServicesAccountInterface {
-	return newAzurermMediaServicesAccounts(c)
+func (c *AzurermV1alpha1Client) MariadbFirewallRules() MariadbFirewallRuleInterface {
+	return newMariadbFirewallRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMetricAlertrules() AzurermMetricAlertruleInterface {
-	return newAzurermMetricAlertrules(c)
+func (c *AzurermV1alpha1Client) MariadbServers() MariadbServerInterface {
+	return newMariadbServers(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMonitorActionGroups() AzurermMonitorActionGroupInterface {
-	return newAzurermMonitorActionGroups(c)
+func (c *AzurermV1alpha1Client) MediaServicesAccounts() MediaServicesAccountInterface {
+	return newMediaServicesAccounts(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMonitorActivityLogAlerts() AzurermMonitorActivityLogAlertInterface {
-	return newAzurermMonitorActivityLogAlerts(c)
+func (c *AzurermV1alpha1Client) MetricAlertrules() MetricAlertruleInterface {
+	return newMetricAlertrules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMonitorAutoscaleSettings() AzurermMonitorAutoscaleSettingInterface {
-	return newAzurermMonitorAutoscaleSettings(c)
+func (c *AzurermV1alpha1Client) MonitorActionGroups() MonitorActionGroupInterface {
+	return newMonitorActionGroups(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMonitorDiagnosticSettings() AzurermMonitorDiagnosticSettingInterface {
-	return newAzurermMonitorDiagnosticSettings(c)
+func (c *AzurermV1alpha1Client) MonitorActivityLogAlerts() MonitorActivityLogAlertInterface {
+	return newMonitorActivityLogAlerts(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMonitorLogProfiles() AzurermMonitorLogProfileInterface {
-	return newAzurermMonitorLogProfiles(c)
+func (c *AzurermV1alpha1Client) MonitorAutoscaleSettings() MonitorAutoscaleSettingInterface {
+	return newMonitorAutoscaleSettings(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMonitorMetricAlerts() AzurermMonitorMetricAlertInterface {
-	return newAzurermMonitorMetricAlerts(c)
+func (c *AzurermV1alpha1Client) MonitorDiagnosticSettings() MonitorDiagnosticSettingInterface {
+	return newMonitorDiagnosticSettings(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMonitorMetricAlertrules() AzurermMonitorMetricAlertruleInterface {
-	return newAzurermMonitorMetricAlertrules(c)
+func (c *AzurermV1alpha1Client) MonitorLogProfiles() MonitorLogProfileInterface {
+	return newMonitorLogProfiles(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMssqlElasticpools() AzurermMssqlElasticpoolInterface {
-	return newAzurermMssqlElasticpools(c)
+func (c *AzurermV1alpha1Client) MonitorMetricAlerts() MonitorMetricAlertInterface {
+	return newMonitorMetricAlerts(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMysqlConfigurations() AzurermMysqlConfigurationInterface {
-	return newAzurermMysqlConfigurations(c)
+func (c *AzurermV1alpha1Client) MonitorMetricAlertrules() MonitorMetricAlertruleInterface {
+	return newMonitorMetricAlertrules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMysqlDatabases() AzurermMysqlDatabaseInterface {
-	return newAzurermMysqlDatabases(c)
+func (c *AzurermV1alpha1Client) MssqlElasticpools() MssqlElasticpoolInterface {
+	return newMssqlElasticpools(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMysqlFirewallRules() AzurermMysqlFirewallRuleInterface {
-	return newAzurermMysqlFirewallRules(c)
+func (c *AzurermV1alpha1Client) MysqlConfigurations() MysqlConfigurationInterface {
+	return newMysqlConfigurations(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMysqlServers() AzurermMysqlServerInterface {
-	return newAzurermMysqlServers(c)
+func (c *AzurermV1alpha1Client) MysqlDatabases() MysqlDatabaseInterface {
+	return newMysqlDatabases(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermMysqlVirtualNetworkRules() AzurermMysqlVirtualNetworkRuleInterface {
-	return newAzurermMysqlVirtualNetworkRules(c)
+func (c *AzurermV1alpha1Client) MysqlFirewallRules() MysqlFirewallRuleInterface {
+	return newMysqlFirewallRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNetworkConnectionMonitors() AzurermNetworkConnectionMonitorInterface {
-	return newAzurermNetworkConnectionMonitors(c)
+func (c *AzurermV1alpha1Client) MysqlServers() MysqlServerInterface {
+	return newMysqlServers(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNetworkDdosProtectionPlans() AzurermNetworkDdosProtectionPlanInterface {
-	return newAzurermNetworkDdosProtectionPlans(c)
+func (c *AzurermV1alpha1Client) MysqlVirtualNetworkRules() MysqlVirtualNetworkRuleInterface {
+	return newMysqlVirtualNetworkRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNetworkInterfaces() AzurermNetworkInterfaceInterface {
-	return newAzurermNetworkInterfaces(c)
+func (c *AzurermV1alpha1Client) NetworkConnectionMonitors() NetworkConnectionMonitorInterface {
+	return newNetworkConnectionMonitors(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations() AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInterface {
-	return newAzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations(c)
+func (c *AzurermV1alpha1Client) NetworkDdosProtectionPlans() NetworkDdosProtectionPlanInterface {
+	return newNetworkDdosProtectionPlans(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNetworkInterfaceApplicationSecurityGroupAssociations() AzurermNetworkInterfaceApplicationSecurityGroupAssociationInterface {
-	return newAzurermNetworkInterfaceApplicationSecurityGroupAssociations(c)
+func (c *AzurermV1alpha1Client) NetworkInterfaces() NetworkInterfaceInterface {
+	return newNetworkInterfaces(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNetworkInterfaceBackendAddressPoolAssociations() AzurermNetworkInterfaceBackendAddressPoolAssociationInterface {
-	return newAzurermNetworkInterfaceBackendAddressPoolAssociations(c)
+func (c *AzurermV1alpha1Client) NetworkInterfaceApplicationGatewayBackendAddressPoolAssociations() NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationInterface {
+	return newNetworkInterfaceApplicationGatewayBackendAddressPoolAssociations(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNetworkInterfaceNatRuleAssociations() AzurermNetworkInterfaceNatRuleAssociationInterface {
-	return newAzurermNetworkInterfaceNatRuleAssociations(c)
+func (c *AzurermV1alpha1Client) NetworkInterfaceApplicationSecurityGroupAssociations() NetworkInterfaceApplicationSecurityGroupAssociationInterface {
+	return newNetworkInterfaceApplicationSecurityGroupAssociations(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNetworkPacketCaptures() AzurermNetworkPacketCaptureInterface {
-	return newAzurermNetworkPacketCaptures(c)
+func (c *AzurermV1alpha1Client) NetworkInterfaceBackendAddressPoolAssociations() NetworkInterfaceBackendAddressPoolAssociationInterface {
+	return newNetworkInterfaceBackendAddressPoolAssociations(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNetworkProfiles() AzurermNetworkProfileInterface {
-	return newAzurermNetworkProfiles(c)
+func (c *AzurermV1alpha1Client) NetworkInterfaceNatRuleAssociations() NetworkInterfaceNatRuleAssociationInterface {
+	return newNetworkInterfaceNatRuleAssociations(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNetworkSecurityGroups() AzurermNetworkSecurityGroupInterface {
-	return newAzurermNetworkSecurityGroups(c)
+func (c *AzurermV1alpha1Client) NetworkPacketCaptures() NetworkPacketCaptureInterface {
+	return newNetworkPacketCaptures(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNetworkSecurityRules() AzurermNetworkSecurityRuleInterface {
-	return newAzurermNetworkSecurityRules(c)
+func (c *AzurermV1alpha1Client) NetworkProfiles() NetworkProfileInterface {
+	return newNetworkProfiles(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNetworkWatchers() AzurermNetworkWatcherInterface {
-	return newAzurermNetworkWatchers(c)
+func (c *AzurermV1alpha1Client) NetworkSecurityGroups() NetworkSecurityGroupInterface {
+	return newNetworkSecurityGroups(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNotificationHubs() AzurermNotificationHubInterface {
-	return newAzurermNotificationHubs(c)
+func (c *AzurermV1alpha1Client) NetworkSecurityRules() NetworkSecurityRuleInterface {
+	return newNetworkSecurityRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNotificationHubAuthorizationRules() AzurermNotificationHubAuthorizationRuleInterface {
-	return newAzurermNotificationHubAuthorizationRules(c)
+func (c *AzurermV1alpha1Client) NetworkWatchers() NetworkWatcherInterface {
+	return newNetworkWatchers(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermNotificationHubNamespaces() AzurermNotificationHubNamespaceInterface {
-	return newAzurermNotificationHubNamespaces(c)
+func (c *AzurermV1alpha1Client) NotificationHubs() NotificationHubInterface {
+	return newNotificationHubs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermPacketCaptures() AzurermPacketCaptureInterface {
-	return newAzurermPacketCaptures(c)
+func (c *AzurermV1alpha1Client) NotificationHubAuthorizationRules() NotificationHubAuthorizationRuleInterface {
+	return newNotificationHubAuthorizationRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermPolicyAssignments() AzurermPolicyAssignmentInterface {
-	return newAzurermPolicyAssignments(c)
+func (c *AzurermV1alpha1Client) NotificationHubNamespaces() NotificationHubNamespaceInterface {
+	return newNotificationHubNamespaces(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermPolicyDefinitions() AzurermPolicyDefinitionInterface {
-	return newAzurermPolicyDefinitions(c)
+func (c *AzurermV1alpha1Client) PacketCaptures() PacketCaptureInterface {
+	return newPacketCaptures(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermPolicySetDefinitions() AzurermPolicySetDefinitionInterface {
-	return newAzurermPolicySetDefinitions(c)
+func (c *AzurermV1alpha1Client) PolicyAssignments() PolicyAssignmentInterface {
+	return newPolicyAssignments(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermPostgresqlConfigurations() AzurermPostgresqlConfigurationInterface {
-	return newAzurermPostgresqlConfigurations(c)
+func (c *AzurermV1alpha1Client) PolicyDefinitions() PolicyDefinitionInterface {
+	return newPolicyDefinitions(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermPostgresqlDatabases() AzurermPostgresqlDatabaseInterface {
-	return newAzurermPostgresqlDatabases(c)
+func (c *AzurermV1alpha1Client) PolicySetDefinitions() PolicySetDefinitionInterface {
+	return newPolicySetDefinitions(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermPostgresqlFirewallRules() AzurermPostgresqlFirewallRuleInterface {
-	return newAzurermPostgresqlFirewallRules(c)
+func (c *AzurermV1alpha1Client) PostgresqlConfigurations() PostgresqlConfigurationInterface {
+	return newPostgresqlConfigurations(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermPostgresqlServers() AzurermPostgresqlServerInterface {
-	return newAzurermPostgresqlServers(c)
+func (c *AzurermV1alpha1Client) PostgresqlDatabases() PostgresqlDatabaseInterface {
+	return newPostgresqlDatabases(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermPostgresqlVirtualNetworkRules() AzurermPostgresqlVirtualNetworkRuleInterface {
-	return newAzurermPostgresqlVirtualNetworkRules(c)
+func (c *AzurermV1alpha1Client) PostgresqlFirewallRules() PostgresqlFirewallRuleInterface {
+	return newPostgresqlFirewallRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermPrivateDnsZones() AzurermPrivateDnsZoneInterface {
-	return newAzurermPrivateDnsZones(c)
+func (c *AzurermV1alpha1Client) PostgresqlServers() PostgresqlServerInterface {
+	return newPostgresqlServers(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermPublicIps() AzurermPublicIpInterface {
-	return newAzurermPublicIps(c)
+func (c *AzurermV1alpha1Client) PostgresqlVirtualNetworkRules() PostgresqlVirtualNetworkRuleInterface {
+	return newPostgresqlVirtualNetworkRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermPublicIpPrefixes() AzurermPublicIpPrefixInterface {
-	return newAzurermPublicIpPrefixes(c)
+func (c *AzurermV1alpha1Client) PrivateDnsZones() PrivateDnsZoneInterface {
+	return newPrivateDnsZones(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermRecoveryServicesProtectedVms() AzurermRecoveryServicesProtectedVmInterface {
-	return newAzurermRecoveryServicesProtectedVms(c)
+func (c *AzurermV1alpha1Client) PublicIps() PublicIpInterface {
+	return newPublicIps(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermRecoveryServicesProtectionPolicyVms() AzurermRecoveryServicesProtectionPolicyVmInterface {
-	return newAzurermRecoveryServicesProtectionPolicyVms(c)
+func (c *AzurermV1alpha1Client) PublicIpPrefixes() PublicIpPrefixInterface {
+	return newPublicIpPrefixes(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermRecoveryServicesVaults() AzurermRecoveryServicesVaultInterface {
-	return newAzurermRecoveryServicesVaults(c)
+func (c *AzurermV1alpha1Client) RecoveryServicesProtectedVms() RecoveryServicesProtectedVmInterface {
+	return newRecoveryServicesProtectedVms(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermRedisCaches() AzurermRedisCacheInterface {
-	return newAzurermRedisCaches(c)
+func (c *AzurermV1alpha1Client) RecoveryServicesProtectionPolicyVms() RecoveryServicesProtectionPolicyVmInterface {
+	return newRecoveryServicesProtectionPolicyVms(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermRedisFirewallRules() AzurermRedisFirewallRuleInterface {
-	return newAzurermRedisFirewallRules(c)
+func (c *AzurermV1alpha1Client) RecoveryServicesVaults() RecoveryServicesVaultInterface {
+	return newRecoveryServicesVaults(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermRelayNamespaces() AzurermRelayNamespaceInterface {
-	return newAzurermRelayNamespaces(c)
+func (c *AzurermV1alpha1Client) RedisCaches() RedisCacheInterface {
+	return newRedisCaches(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermResourceGroups() AzurermResourceGroupInterface {
-	return newAzurermResourceGroups(c)
+func (c *AzurermV1alpha1Client) RedisFirewallRules() RedisFirewallRuleInterface {
+	return newRedisFirewallRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermRoleAssignments() AzurermRoleAssignmentInterface {
-	return newAzurermRoleAssignments(c)
+func (c *AzurermV1alpha1Client) RelayNamespaces() RelayNamespaceInterface {
+	return newRelayNamespaces(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermRoleDefinitions() AzurermRoleDefinitionInterface {
-	return newAzurermRoleDefinitions(c)
+func (c *AzurermV1alpha1Client) ResourceGroups() ResourceGroupInterface {
+	return newResourceGroups(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermRoutes() AzurermRouteInterface {
-	return newAzurermRoutes(c)
+func (c *AzurermV1alpha1Client) RoleAssignments() RoleAssignmentInterface {
+	return newRoleAssignments(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermRouteTables() AzurermRouteTableInterface {
-	return newAzurermRouteTables(c)
+func (c *AzurermV1alpha1Client) RoleDefinitions() RoleDefinitionInterface {
+	return newRoleDefinitions(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSchedulerJobs() AzurermSchedulerJobInterface {
-	return newAzurermSchedulerJobs(c)
+func (c *AzurermV1alpha1Client) Routes() RouteInterface {
+	return newRoutes(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSchedulerJobCollections() AzurermSchedulerJobCollectionInterface {
-	return newAzurermSchedulerJobCollections(c)
+func (c *AzurermV1alpha1Client) RouteTables() RouteTableInterface {
+	return newRouteTables(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSearchServices() AzurermSearchServiceInterface {
-	return newAzurermSearchServices(c)
+func (c *AzurermV1alpha1Client) SchedulerJobs() SchedulerJobInterface {
+	return newSchedulerJobs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSecurityCenterContacts() AzurermSecurityCenterContactInterface {
-	return newAzurermSecurityCenterContacts(c)
+func (c *AzurermV1alpha1Client) SchedulerJobCollections() SchedulerJobCollectionInterface {
+	return newSchedulerJobCollections(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSecurityCenterSubscriptionPricings() AzurermSecurityCenterSubscriptionPricingInterface {
-	return newAzurermSecurityCenterSubscriptionPricings(c)
+func (c *AzurermV1alpha1Client) SearchServices() SearchServiceInterface {
+	return newSearchServices(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSecurityCenterWorkspaces() AzurermSecurityCenterWorkspaceInterface {
-	return newAzurermSecurityCenterWorkspaces(c)
+func (c *AzurermV1alpha1Client) SecurityCenterContacts() SecurityCenterContactInterface {
+	return newSecurityCenterContacts(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermServiceFabricClusters() AzurermServiceFabricClusterInterface {
-	return newAzurermServiceFabricClusters(c)
+func (c *AzurermV1alpha1Client) SecurityCenterSubscriptionPricings() SecurityCenterSubscriptionPricingInterface {
+	return newSecurityCenterSubscriptionPricings(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermServicebusNamespaces() AzurermServicebusNamespaceInterface {
-	return newAzurermServicebusNamespaces(c)
+func (c *AzurermV1alpha1Client) SecurityCenterWorkspaces() SecurityCenterWorkspaceInterface {
+	return newSecurityCenterWorkspaces(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermServicebusNamespaceAuthorizationRules() AzurermServicebusNamespaceAuthorizationRuleInterface {
-	return newAzurermServicebusNamespaceAuthorizationRules(c)
+func (c *AzurermV1alpha1Client) ServiceFabricClusters() ServiceFabricClusterInterface {
+	return newServiceFabricClusters(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermServicebusQueues() AzurermServicebusQueueInterface {
-	return newAzurermServicebusQueues(c)
+func (c *AzurermV1alpha1Client) ServicebusNamespaces() ServicebusNamespaceInterface {
+	return newServicebusNamespaces(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermServicebusQueueAuthorizationRules() AzurermServicebusQueueAuthorizationRuleInterface {
-	return newAzurermServicebusQueueAuthorizationRules(c)
+func (c *AzurermV1alpha1Client) ServicebusNamespaceAuthorizationRules() ServicebusNamespaceAuthorizationRuleInterface {
+	return newServicebusNamespaceAuthorizationRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermServicebusSubscriptions() AzurermServicebusSubscriptionInterface {
-	return newAzurermServicebusSubscriptions(c)
+func (c *AzurermV1alpha1Client) ServicebusQueues() ServicebusQueueInterface {
+	return newServicebusQueues(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermServicebusSubscriptionRules() AzurermServicebusSubscriptionRuleInterface {
-	return newAzurermServicebusSubscriptionRules(c)
+func (c *AzurermV1alpha1Client) ServicebusQueueAuthorizationRules() ServicebusQueueAuthorizationRuleInterface {
+	return newServicebusQueueAuthorizationRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermServicebusTopics() AzurermServicebusTopicInterface {
-	return newAzurermServicebusTopics(c)
+func (c *AzurermV1alpha1Client) ServicebusSubscriptions() ServicebusSubscriptionInterface {
+	return newServicebusSubscriptions(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermServicebusTopicAuthorizationRules() AzurermServicebusTopicAuthorizationRuleInterface {
-	return newAzurermServicebusTopicAuthorizationRules(c)
+func (c *AzurermV1alpha1Client) ServicebusSubscriptionRules() ServicebusSubscriptionRuleInterface {
+	return newServicebusSubscriptionRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSharedImages() AzurermSharedImageInterface {
-	return newAzurermSharedImages(c)
+func (c *AzurermV1alpha1Client) ServicebusTopics() ServicebusTopicInterface {
+	return newServicebusTopics(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSharedImageGalleries() AzurermSharedImageGalleryInterface {
-	return newAzurermSharedImageGalleries(c)
+func (c *AzurermV1alpha1Client) ServicebusTopicAuthorizationRules() ServicebusTopicAuthorizationRuleInterface {
+	return newServicebusTopicAuthorizationRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSharedImageVersions() AzurermSharedImageVersionInterface {
-	return newAzurermSharedImageVersions(c)
+func (c *AzurermV1alpha1Client) SharedImages() SharedImageInterface {
+	return newSharedImages(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSignalrServices() AzurermSignalrServiceInterface {
-	return newAzurermSignalrServices(c)
+func (c *AzurermV1alpha1Client) SharedImageGalleries() SharedImageGalleryInterface {
+	return newSharedImageGalleries(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSnapshots() AzurermSnapshotInterface {
-	return newAzurermSnapshots(c)
+func (c *AzurermV1alpha1Client) SharedImageVersions() SharedImageVersionInterface {
+	return newSharedImageVersions(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSqlActiveDirectoryAdministrators() AzurermSqlActiveDirectoryAdministratorInterface {
-	return newAzurermSqlActiveDirectoryAdministrators(c)
+func (c *AzurermV1alpha1Client) SignalrServices() SignalrServiceInterface {
+	return newSignalrServices(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSqlDatabases() AzurermSqlDatabaseInterface {
-	return newAzurermSqlDatabases(c)
+func (c *AzurermV1alpha1Client) Snapshots() SnapshotInterface {
+	return newSnapshots(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSqlElasticpools() AzurermSqlElasticpoolInterface {
-	return newAzurermSqlElasticpools(c)
+func (c *AzurermV1alpha1Client) SqlActiveDirectoryAdministrators() SqlActiveDirectoryAdministratorInterface {
+	return newSqlActiveDirectoryAdministrators(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSqlFirewallRules() AzurermSqlFirewallRuleInterface {
-	return newAzurermSqlFirewallRules(c)
+func (c *AzurermV1alpha1Client) SqlDatabases() SqlDatabaseInterface {
+	return newSqlDatabases(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSqlServers() AzurermSqlServerInterface {
-	return newAzurermSqlServers(c)
+func (c *AzurermV1alpha1Client) SqlElasticpools() SqlElasticpoolInterface {
+	return newSqlElasticpools(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSqlVirtualNetworkRules() AzurermSqlVirtualNetworkRuleInterface {
-	return newAzurermSqlVirtualNetworkRules(c)
+func (c *AzurermV1alpha1Client) SqlFirewallRules() SqlFirewallRuleInterface {
+	return newSqlFirewallRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStorageAccounts() AzurermStorageAccountInterface {
-	return newAzurermStorageAccounts(c)
+func (c *AzurermV1alpha1Client) SqlServers() SqlServerInterface {
+	return newSqlServers(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStorageBlobs() AzurermStorageBlobInterface {
-	return newAzurermStorageBlobs(c)
+func (c *AzurermV1alpha1Client) SqlVirtualNetworkRules() SqlVirtualNetworkRuleInterface {
+	return newSqlVirtualNetworkRules(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStorageContainers() AzurermStorageContainerInterface {
-	return newAzurermStorageContainers(c)
+func (c *AzurermV1alpha1Client) StorageAccounts() StorageAccountInterface {
+	return newStorageAccounts(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStorageQueues() AzurermStorageQueueInterface {
-	return newAzurermStorageQueues(c)
+func (c *AzurermV1alpha1Client) StorageBlobs() StorageBlobInterface {
+	return newStorageBlobs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStorageShares() AzurermStorageShareInterface {
-	return newAzurermStorageShares(c)
+func (c *AzurermV1alpha1Client) StorageContainers() StorageContainerInterface {
+	return newStorageContainers(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStorageTables() AzurermStorageTableInterface {
-	return newAzurermStorageTables(c)
+func (c *AzurermV1alpha1Client) StorageQueues() StorageQueueInterface {
+	return newStorageQueues(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStreamAnalyticsFunctionJavascriptUdves() AzurermStreamAnalyticsFunctionJavascriptUdfInterface {
-	return newAzurermStreamAnalyticsFunctionJavascriptUdves(c)
+func (c *AzurermV1alpha1Client) StorageShares() StorageShareInterface {
+	return newStorageShares(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStreamAnalyticsJobs() AzurermStreamAnalyticsJobInterface {
-	return newAzurermStreamAnalyticsJobs(c)
+func (c *AzurermV1alpha1Client) StorageShareDirectories() StorageShareDirectoryInterface {
+	return newStorageShareDirectories(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStreamAnalyticsOutputBlobs() AzurermStreamAnalyticsOutputBlobInterface {
-	return newAzurermStreamAnalyticsOutputBlobs(c)
+func (c *AzurermV1alpha1Client) StorageTables() StorageTableInterface {
+	return newStorageTables(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStreamAnalyticsOutputEventhubs() AzurermStreamAnalyticsOutputEventhubInterface {
-	return newAzurermStreamAnalyticsOutputEventhubs(c)
+func (c *AzurermV1alpha1Client) StorageTableEntities() StorageTableEntityInterface {
+	return newStorageTableEntities(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStreamAnalyticsOutputMssqls() AzurermStreamAnalyticsOutputMssqlInterface {
-	return newAzurermStreamAnalyticsOutputMssqls(c)
+func (c *AzurermV1alpha1Client) StreamAnalyticsFunctionJavascriptUdves() StreamAnalyticsFunctionJavascriptUdfInterface {
+	return newStreamAnalyticsFunctionJavascriptUdves(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStreamAnalyticsOutputServicebusQueues() AzurermStreamAnalyticsOutputServicebusQueueInterface {
-	return newAzurermStreamAnalyticsOutputServicebusQueues(c)
+func (c *AzurermV1alpha1Client) StreamAnalyticsJobs() StreamAnalyticsJobInterface {
+	return newStreamAnalyticsJobs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStreamAnalyticsStreamInputBlobs() AzurermStreamAnalyticsStreamInputBlobInterface {
-	return newAzurermStreamAnalyticsStreamInputBlobs(c)
+func (c *AzurermV1alpha1Client) StreamAnalyticsOutputBlobs() StreamAnalyticsOutputBlobInterface {
+	return newStreamAnalyticsOutputBlobs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStreamAnalyticsStreamInputEventhubs() AzurermStreamAnalyticsStreamInputEventhubInterface {
-	return newAzurermStreamAnalyticsStreamInputEventhubs(c)
+func (c *AzurermV1alpha1Client) StreamAnalyticsOutputEventhubs() StreamAnalyticsOutputEventhubInterface {
+	return newStreamAnalyticsOutputEventhubs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermStreamAnalyticsStreamInputIothubs() AzurermStreamAnalyticsStreamInputIothubInterface {
-	return newAzurermStreamAnalyticsStreamInputIothubs(c)
+func (c *AzurermV1alpha1Client) StreamAnalyticsOutputMssqls() StreamAnalyticsOutputMssqlInterface {
+	return newStreamAnalyticsOutputMssqls(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSubnets() AzurermSubnetInterface {
-	return newAzurermSubnets(c)
+func (c *AzurermV1alpha1Client) StreamAnalyticsOutputServicebusQueues() StreamAnalyticsOutputServicebusQueueInterface {
+	return newStreamAnalyticsOutputServicebusQueues(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSubnetNetworkSecurityGroupAssociations() AzurermSubnetNetworkSecurityGroupAssociationInterface {
-	return newAzurermSubnetNetworkSecurityGroupAssociations(c)
+func (c *AzurermV1alpha1Client) StreamAnalyticsStreamInputBlobs() StreamAnalyticsStreamInputBlobInterface {
+	return newStreamAnalyticsStreamInputBlobs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermSubnetRouteTableAssociations() AzurermSubnetRouteTableAssociationInterface {
-	return newAzurermSubnetRouteTableAssociations(c)
+func (c *AzurermV1alpha1Client) StreamAnalyticsStreamInputEventhubs() StreamAnalyticsStreamInputEventhubInterface {
+	return newStreamAnalyticsStreamInputEventhubs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermTemplateDeployments() AzurermTemplateDeploymentInterface {
-	return newAzurermTemplateDeployments(c)
+func (c *AzurermV1alpha1Client) StreamAnalyticsStreamInputIothubs() StreamAnalyticsStreamInputIothubInterface {
+	return newStreamAnalyticsStreamInputIothubs(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermTrafficManagerEndpoints() AzurermTrafficManagerEndpointInterface {
-	return newAzurermTrafficManagerEndpoints(c)
+func (c *AzurermV1alpha1Client) Subnets() SubnetInterface {
+	return newSubnets(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermTrafficManagerProfiles() AzurermTrafficManagerProfileInterface {
-	return newAzurermTrafficManagerProfiles(c)
+func (c *AzurermV1alpha1Client) SubnetNetworkSecurityGroupAssociations() SubnetNetworkSecurityGroupAssociationInterface {
+	return newSubnetNetworkSecurityGroupAssociations(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermUserAssignedIdentities() AzurermUserAssignedIdentityInterface {
-	return newAzurermUserAssignedIdentities(c)
+func (c *AzurermV1alpha1Client) SubnetRouteTableAssociations() SubnetRouteTableAssociationInterface {
+	return newSubnetRouteTableAssociations(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermVirtualMachines() AzurermVirtualMachineInterface {
-	return newAzurermVirtualMachines(c)
+func (c *AzurermV1alpha1Client) TemplateDeployments() TemplateDeploymentInterface {
+	return newTemplateDeployments(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermVirtualMachineDataDiskAttachments() AzurermVirtualMachineDataDiskAttachmentInterface {
-	return newAzurermVirtualMachineDataDiskAttachments(c)
+func (c *AzurermV1alpha1Client) TrafficManagerEndpoints() TrafficManagerEndpointInterface {
+	return newTrafficManagerEndpoints(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermVirtualMachineExtensions() AzurermVirtualMachineExtensionInterface {
-	return newAzurermVirtualMachineExtensions(c)
+func (c *AzurermV1alpha1Client) TrafficManagerProfiles() TrafficManagerProfileInterface {
+	return newTrafficManagerProfiles(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermVirtualMachineScaleSets() AzurermVirtualMachineScaleSetInterface {
-	return newAzurermVirtualMachineScaleSets(c)
+func (c *AzurermV1alpha1Client) UserAssignedIdentities() UserAssignedIdentityInterface {
+	return newUserAssignedIdentities(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermVirtualNetworks() AzurermVirtualNetworkInterface {
-	return newAzurermVirtualNetworks(c)
+func (c *AzurermV1alpha1Client) VirtualMachines() VirtualMachineInterface {
+	return newVirtualMachines(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermVirtualNetworkGateways() AzurermVirtualNetworkGatewayInterface {
-	return newAzurermVirtualNetworkGateways(c)
+func (c *AzurermV1alpha1Client) VirtualMachineDataDiskAttachments() VirtualMachineDataDiskAttachmentInterface {
+	return newVirtualMachineDataDiskAttachments(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermVirtualNetworkGatewayConnections() AzurermVirtualNetworkGatewayConnectionInterface {
-	return newAzurermVirtualNetworkGatewayConnections(c)
+func (c *AzurermV1alpha1Client) VirtualMachineExtensions() VirtualMachineExtensionInterface {
+	return newVirtualMachineExtensions(c)
 }
 
-func (c *AzurermV1alpha1Client) AzurermVirtualNetworkPeerings() AzurermVirtualNetworkPeeringInterface {
-	return newAzurermVirtualNetworkPeerings(c)
+func (c *AzurermV1alpha1Client) VirtualMachineScaleSets() VirtualMachineScaleSetInterface {
+	return newVirtualMachineScaleSets(c)
+}
+
+func (c *AzurermV1alpha1Client) VirtualNetworks() VirtualNetworkInterface {
+	return newVirtualNetworks(c)
+}
+
+func (c *AzurermV1alpha1Client) VirtualNetworkGateways() VirtualNetworkGatewayInterface {
+	return newVirtualNetworkGateways(c)
+}
+
+func (c *AzurermV1alpha1Client) VirtualNetworkGatewayConnections() VirtualNetworkGatewayConnectionInterface {
+	return newVirtualNetworkGatewayConnections(c)
+}
+
+func (c *AzurermV1alpha1Client) VirtualNetworkPeerings() VirtualNetworkPeeringInterface {
+	return newVirtualNetworkPeerings(c)
 }
 
 // NewForConfig creates a new AzurermV1alpha1Client for the given config.

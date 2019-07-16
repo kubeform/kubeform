@@ -18,26 +18,26 @@ limitations under the License.
 
 package v1alpha1
 
-type LinodeDomainExpansion interface{}
+type DomainExpansion interface{}
 
-type LinodeDomainRecordExpansion interface{}
+type DomainRecordExpansion interface{}
 
-type LinodeImageExpansion interface{}
+type ImageExpansion interface{}
 
-type LinodeInstanceExpansion interface{}
+type InstanceExpansion interface{}
 
-type LinodeNodebalancerExpansion interface{}
+type NodebalancerExpansion interface{}
 
-type LinodeNodebalancerConfigExpansion interface{}
+type NodebalancerConfigExpansion interface{}
 
-type LinodeNodebalancerNodeExpansion interface{}
+type NodebalancerNodeExpansion interface{}
 
-type LinodeRdnsExpansion interface{}
+type RdnsExpansion interface{}
 
-type LinodeSshkeyExpansion interface{}
+type SshkeyExpansion interface{}
 
-type LinodeStackscriptExpansion interface{}
+type StackscriptExpansion interface{}
 
-type LinodeTokenExpansion interface{}
+type TokenExpansion interface{}
 
-type LinodeVolumeExpansion interface{}
+type VolumeExpansion interface{}

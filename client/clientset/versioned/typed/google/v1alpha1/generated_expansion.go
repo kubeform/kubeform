@@ -18,310 +18,310 @@ limitations under the License.
 
 package v1alpha1
 
-type GoogleAppEngineApplicationExpansion interface{}
+type AppEngineApplicationExpansion interface{}
 
-type GoogleBigqueryDatasetExpansion interface{}
+type BigqueryDatasetExpansion interface{}
 
-type GoogleBigqueryTableExpansion interface{}
+type BigqueryTableExpansion interface{}
 
-type GoogleBigtableInstanceExpansion interface{}
+type BigtableInstanceExpansion interface{}
 
-type GoogleBigtableTableExpansion interface{}
+type BigtableTableExpansion interface{}
 
-type GoogleBillingAccountIamBindingExpansion interface{}
+type BillingAccountIamBindingExpansion interface{}
 
-type GoogleBillingAccountIamMemberExpansion interface{}
+type BillingAccountIamMemberExpansion interface{}
 
-type GoogleBillingAccountIamPolicyExpansion interface{}
+type BillingAccountIamPolicyExpansion interface{}
 
-type GoogleBinaryAuthorizationAttestorExpansion interface{}
+type BinaryAuthorizationAttestorExpansion interface{}
 
-type GoogleBinaryAuthorizationPolicyExpansion interface{}
+type BinaryAuthorizationPolicyExpansion interface{}
 
-type GoogleCloudbuildTriggerExpansion interface{}
+type CloudbuildTriggerExpansion interface{}
 
-type GoogleCloudfunctionsFunctionExpansion interface{}
+type CloudfunctionsFunctionExpansion interface{}
 
-type GoogleCloudiotRegistryExpansion interface{}
+type CloudiotRegistryExpansion interface{}
 
-type GoogleComposerEnvironmentExpansion interface{}
+type ComposerEnvironmentExpansion interface{}
 
-type GoogleComputeAddressExpansion interface{}
+type ComputeAddressExpansion interface{}
 
-type GoogleComputeAttachedDiskExpansion interface{}
+type ComputeAttachedDiskExpansion interface{}
 
-type GoogleComputeAutoscalerExpansion interface{}
+type ComputeAutoscalerExpansion interface{}
 
-type GoogleComputeBackendBucketExpansion interface{}
+type ComputeBackendBucketExpansion interface{}
 
-type GoogleComputeBackendServiceExpansion interface{}
+type ComputeBackendServiceExpansion interface{}
 
-type GoogleComputeDiskExpansion interface{}
+type ComputeDiskExpansion interface{}
 
-type GoogleComputeFirewallExpansion interface{}
+type ComputeFirewallExpansion interface{}
 
-type GoogleComputeForwardingRuleExpansion interface{}
+type ComputeForwardingRuleExpansion interface{}
 
-type GoogleComputeGlobalAddressExpansion interface{}
+type ComputeGlobalAddressExpansion interface{}
 
-type GoogleComputeGlobalForwardingRuleExpansion interface{}
+type ComputeGlobalForwardingRuleExpansion interface{}
 
-type GoogleComputeHealthCheckExpansion interface{}
+type ComputeHealthCheckExpansion interface{}
 
-type GoogleComputeHttpHealthCheckExpansion interface{}
+type ComputeHttpHealthCheckExpansion interface{}
 
-type GoogleComputeHttpsHealthCheckExpansion interface{}
+type ComputeHttpsHealthCheckExpansion interface{}
 
-type GoogleComputeImageExpansion interface{}
+type ComputeImageExpansion interface{}
 
-type GoogleComputeInstanceExpansion interface{}
+type ComputeInstanceExpansion interface{}
 
-type GoogleComputeInstanceFromTemplateExpansion interface{}
+type ComputeInstanceFromTemplateExpansion interface{}
 
-type GoogleComputeInstanceGroupExpansion interface{}
+type ComputeInstanceGroupExpansion interface{}
 
-type GoogleComputeInstanceGroupManagerExpansion interface{}
+type ComputeInstanceGroupManagerExpansion interface{}
 
-type GoogleComputeInstanceTemplateExpansion interface{}
+type ComputeInstanceTemplateExpansion interface{}
 
-type GoogleComputeInterconnectAttachmentExpansion interface{}
+type ComputeInterconnectAttachmentExpansion interface{}
 
-type GoogleComputeNetworkExpansion interface{}
+type ComputeNetworkExpansion interface{}
 
-type GoogleComputeNetworkPeeringExpansion interface{}
+type ComputeNetworkPeeringExpansion interface{}
 
-type GoogleComputeProjectMetadataExpansion interface{}
+type ComputeProjectMetadataExpansion interface{}
 
-type GoogleComputeProjectMetadataItemExpansion interface{}
+type ComputeProjectMetadataItemExpansion interface{}
 
-type GoogleComputeRegionAutoscalerExpansion interface{}
+type ComputeRegionAutoscalerExpansion interface{}
 
-type GoogleComputeRegionBackendServiceExpansion interface{}
+type ComputeRegionBackendServiceExpansion interface{}
 
-type GoogleComputeRegionDiskExpansion interface{}
+type ComputeRegionDiskExpansion interface{}
 
-type GoogleComputeRegionInstanceGroupManagerExpansion interface{}
+type ComputeRegionInstanceGroupManagerExpansion interface{}
 
-type GoogleComputeRouteExpansion interface{}
+type ComputeRouteExpansion interface{}
 
-type GoogleComputeRouterExpansion interface{}
+type ComputeRouterExpansion interface{}
 
-type GoogleComputeRouterInterfaceExpansion interface{}
+type ComputeRouterInterfaceExpansion interface{}
 
-type GoogleComputeRouterNatExpansion interface{}
+type ComputeRouterNatExpansion interface{}
 
-type GoogleComputeRouterPeerExpansion interface{}
+type ComputeRouterPeerExpansion interface{}
 
-type GoogleComputeSecurityPolicyExpansion interface{}
+type ComputeSecurityPolicyExpansion interface{}
 
-type GoogleComputeSharedVpcHostProjectExpansion interface{}
+type ComputeSharedVpcHostProjectExpansion interface{}
 
-type GoogleComputeSharedVpcServiceProjectExpansion interface{}
+type ComputeSharedVpcServiceProjectExpansion interface{}
 
-type GoogleComputeSnapshotExpansion interface{}
+type ComputeSnapshotExpansion interface{}
 
-type GoogleComputeSslCertificateExpansion interface{}
+type ComputeSslCertificateExpansion interface{}
 
-type GoogleComputeSslPolicyExpansion interface{}
+type ComputeSslPolicyExpansion interface{}
 
-type GoogleComputeSubnetworkExpansion interface{}
+type ComputeSubnetworkExpansion interface{}
 
-type GoogleComputeSubnetworkIamBindingExpansion interface{}
+type ComputeSubnetworkIamBindingExpansion interface{}
 
-type GoogleComputeSubnetworkIamMemberExpansion interface{}
+type ComputeSubnetworkIamMemberExpansion interface{}
 
-type GoogleComputeSubnetworkIamPolicyExpansion interface{}
+type ComputeSubnetworkIamPolicyExpansion interface{}
 
-type GoogleComputeTargetHttpProxyExpansion interface{}
+type ComputeTargetHttpProxyExpansion interface{}
 
-type GoogleComputeTargetHttpsProxyExpansion interface{}
+type ComputeTargetHttpsProxyExpansion interface{}
 
-type GoogleComputeTargetPoolExpansion interface{}
+type ComputeTargetPoolExpansion interface{}
 
-type GoogleComputeTargetSslProxyExpansion interface{}
+type ComputeTargetSslProxyExpansion interface{}
 
-type GoogleComputeTargetTcpProxyExpansion interface{}
+type ComputeTargetTcpProxyExpansion interface{}
 
-type GoogleComputeUrlMapExpansion interface{}
+type ComputeUrlMapExpansion interface{}
 
-type GoogleComputeVpnGatewayExpansion interface{}
+type ComputeVpnGatewayExpansion interface{}
 
-type GoogleComputeVpnTunnelExpansion interface{}
+type ComputeVpnTunnelExpansion interface{}
 
-type GoogleContainerAnalysisNoteExpansion interface{}
+type ContainerAnalysisNoteExpansion interface{}
 
-type GoogleContainerClusterExpansion interface{}
+type ContainerClusterExpansion interface{}
 
-type GoogleContainerNodePoolExpansion interface{}
+type ContainerNodePoolExpansion interface{}
 
-type GoogleDataflowJobExpansion interface{}
+type DataflowJobExpansion interface{}
 
-type GoogleDataprocClusterExpansion interface{}
+type DataprocClusterExpansion interface{}
 
-type GoogleDataprocJobExpansion interface{}
+type DataprocJobExpansion interface{}
 
-type GoogleDnsManagedZoneExpansion interface{}
+type DnsManagedZoneExpansion interface{}
 
-type GoogleDnsRecordSetExpansion interface{}
+type DnsRecordSetExpansion interface{}
 
-type GoogleEndpointsServiceExpansion interface{}
+type EndpointsServiceExpansion interface{}
 
-type GoogleFilestoreInstanceExpansion interface{}
+type FilestoreInstanceExpansion interface{}
 
-type GoogleFolderExpansion interface{}
+type FolderExpansion interface{}
 
-type GoogleFolderIamBindingExpansion interface{}
+type FolderIamBindingExpansion interface{}
 
-type GoogleFolderIamMemberExpansion interface{}
+type FolderIamMemberExpansion interface{}
 
-type GoogleFolderIamPolicyExpansion interface{}
+type FolderIamPolicyExpansion interface{}
 
-type GoogleFolderOrganizationPolicyExpansion interface{}
+type FolderOrganizationPolicyExpansion interface{}
 
-type GoogleKmsCryptoKeyExpansion interface{}
+type KmsCryptoKeyExpansion interface{}
 
-type GoogleKmsCryptoKeyIamBindingExpansion interface{}
+type KmsCryptoKeyIamBindingExpansion interface{}
 
-type GoogleKmsCryptoKeyIamMemberExpansion interface{}
+type KmsCryptoKeyIamMemberExpansion interface{}
 
-type GoogleKmsKeyRingExpansion interface{}
+type KmsKeyRingExpansion interface{}
 
-type GoogleKmsKeyRingIamBindingExpansion interface{}
+type KmsKeyRingIamBindingExpansion interface{}
 
-type GoogleKmsKeyRingIamMemberExpansion interface{}
+type KmsKeyRingIamMemberExpansion interface{}
 
-type GoogleKmsKeyRingIamPolicyExpansion interface{}
+type KmsKeyRingIamPolicyExpansion interface{}
 
-type GoogleLoggingBillingAccountExclusionExpansion interface{}
+type LoggingBillingAccountExclusionExpansion interface{}
 
-type GoogleLoggingBillingAccountSinkExpansion interface{}
+type LoggingBillingAccountSinkExpansion interface{}
 
-type GoogleLoggingFolderExclusionExpansion interface{}
+type LoggingFolderExclusionExpansion interface{}
 
-type GoogleLoggingFolderSinkExpansion interface{}
+type LoggingFolderSinkExpansion interface{}
 
-type GoogleLoggingOrganizationExclusionExpansion interface{}
+type LoggingOrganizationExclusionExpansion interface{}
 
-type GoogleLoggingOrganizationSinkExpansion interface{}
+type LoggingOrganizationSinkExpansion interface{}
 
-type GoogleLoggingProjectExclusionExpansion interface{}
+type LoggingProjectExclusionExpansion interface{}
 
-type GoogleLoggingProjectSinkExpansion interface{}
+type LoggingProjectSinkExpansion interface{}
 
-type GoogleMonitoringAlertPolicyExpansion interface{}
+type MonitoringAlertPolicyExpansion interface{}
 
-type GoogleMonitoringGroupExpansion interface{}
+type MonitoringGroupExpansion interface{}
 
-type GoogleMonitoringNotificationChannelExpansion interface{}
+type MonitoringNotificationChannelExpansion interface{}
 
-type GoogleMonitoringUptimeCheckConfigExpansion interface{}
+type MonitoringUptimeCheckConfigExpansion interface{}
 
-type GoogleOrganizationIamBindingExpansion interface{}
+type OrganizationIamBindingExpansion interface{}
 
-type GoogleOrganizationIamCustomRoleExpansion interface{}
+type OrganizationIamCustomRoleExpansion interface{}
 
-type GoogleOrganizationIamMemberExpansion interface{}
+type OrganizationIamMemberExpansion interface{}
 
-type GoogleOrganizationIamPolicyExpansion interface{}
+type OrganizationIamPolicyExpansion interface{}
 
-type GoogleOrganizationPolicyExpansion interface{}
+type OrganizationPolicyExpansion interface{}
 
-type GoogleProjectExpansion interface{}
+type ProjectExpansion interface{}
 
-type GoogleProjectIamBindingExpansion interface{}
+type ProjectIamBindingExpansion interface{}
 
-type GoogleProjectIamCustomRoleExpansion interface{}
+type ProjectIamCustomRoleExpansion interface{}
 
-type GoogleProjectIamMemberExpansion interface{}
+type ProjectIamMemberExpansion interface{}
 
-type GoogleProjectIamPolicyExpansion interface{}
+type ProjectIamPolicyExpansion interface{}
 
-type GoogleProjectOrganizationPolicyExpansion interface{}
+type ProjectOrganizationPolicyExpansion interface{}
 
-type GoogleProjectServiceExpansion interface{}
+type ProjectServiceExpansion interface{}
 
-type GoogleProjectServicesExpansion interface{}
+type ProjectServicesExpansion interface{}
 
-type GoogleProjectUsageExportBucketExpansion interface{}
+type ProjectUsageExportBucketExpansion interface{}
 
-type GooglePubsubSubscriptionExpansion interface{}
+type PubsubSubscriptionExpansion interface{}
 
-type GooglePubsubSubscriptionIamBindingExpansion interface{}
+type PubsubSubscriptionIamBindingExpansion interface{}
 
-type GooglePubsubSubscriptionIamMemberExpansion interface{}
+type PubsubSubscriptionIamMemberExpansion interface{}
 
-type GooglePubsubSubscriptionIamPolicyExpansion interface{}
+type PubsubSubscriptionIamPolicyExpansion interface{}
 
-type GooglePubsubTopicExpansion interface{}
+type PubsubTopicExpansion interface{}
 
-type GooglePubsubTopicIamBindingExpansion interface{}
+type PubsubTopicIamBindingExpansion interface{}
 
-type GooglePubsubTopicIamMemberExpansion interface{}
+type PubsubTopicIamMemberExpansion interface{}
 
-type GooglePubsubTopicIamPolicyExpansion interface{}
+type PubsubTopicIamPolicyExpansion interface{}
 
-type GoogleRedisInstanceExpansion interface{}
+type RedisInstanceExpansion interface{}
 
-type GoogleResourceManagerLienExpansion interface{}
+type ResourceManagerLienExpansion interface{}
 
-type GoogleRuntimeconfigConfigExpansion interface{}
+type RuntimeconfigConfigExpansion interface{}
 
-type GoogleRuntimeconfigVariableExpansion interface{}
+type RuntimeconfigVariableExpansion interface{}
 
-type GoogleServiceAccountExpansion interface{}
+type ServiceAccountExpansion interface{}
 
-type GoogleServiceAccountIamBindingExpansion interface{}
+type ServiceAccountIamBindingExpansion interface{}
 
-type GoogleServiceAccountIamMemberExpansion interface{}
+type ServiceAccountIamMemberExpansion interface{}
 
-type GoogleServiceAccountIamPolicyExpansion interface{}
+type ServiceAccountIamPolicyExpansion interface{}
 
-type GoogleServiceAccountKeyExpansion interface{}
+type ServiceAccountKeyExpansion interface{}
 
-type GoogleSourcerepoRepositoryExpansion interface{}
+type SourcerepoRepositoryExpansion interface{}
 
-type GoogleSpannerDatabaseExpansion interface{}
+type SpannerDatabaseExpansion interface{}
 
-type GoogleSpannerDatabaseIamBindingExpansion interface{}
+type SpannerDatabaseIamBindingExpansion interface{}
 
-type GoogleSpannerDatabaseIamMemberExpansion interface{}
+type SpannerDatabaseIamMemberExpansion interface{}
 
-type GoogleSpannerDatabaseIamPolicyExpansion interface{}
+type SpannerDatabaseIamPolicyExpansion interface{}
 
-type GoogleSpannerInstanceExpansion interface{}
+type SpannerInstanceExpansion interface{}
 
-type GoogleSpannerInstanceIamBindingExpansion interface{}
+type SpannerInstanceIamBindingExpansion interface{}
 
-type GoogleSpannerInstanceIamMemberExpansion interface{}
+type SpannerInstanceIamMemberExpansion interface{}
 
-type GoogleSpannerInstanceIamPolicyExpansion interface{}
+type SpannerInstanceIamPolicyExpansion interface{}
 
-type GoogleSqlDatabaseExpansion interface{}
+type SqlDatabaseExpansion interface{}
 
-type GoogleSqlDatabaseInstanceExpansion interface{}
+type SqlDatabaseInstanceExpansion interface{}
 
-type GoogleSqlSslCertExpansion interface{}
+type SqlSslCertExpansion interface{}
 
-type GoogleSqlUserExpansion interface{}
+type SqlUserExpansion interface{}
 
-type GoogleStorageBucketExpansion interface{}
+type StorageBucketExpansion interface{}
 
-type GoogleStorageBucketAclExpansion interface{}
+type StorageBucketAclExpansion interface{}
 
-type GoogleStorageBucketIamBindingExpansion interface{}
+type StorageBucketIamBindingExpansion interface{}
 
-type GoogleStorageBucketIamMemberExpansion interface{}
+type StorageBucketIamMemberExpansion interface{}
 
-type GoogleStorageBucketIamPolicyExpansion interface{}
+type StorageBucketIamPolicyExpansion interface{}
 
-type GoogleStorageBucketObjectExpansion interface{}
+type StorageBucketObjectExpansion interface{}
 
-type GoogleStorageDefaultObjectAccessControlExpansion interface{}
+type StorageDefaultObjectAccessControlExpansion interface{}
 
-type GoogleStorageDefaultObjectAclExpansion interface{}
+type StorageDefaultObjectAclExpansion interface{}
 
-type GoogleStorageNotificationExpansion interface{}
+type StorageNotificationExpansion interface{}
 
-type GoogleStorageObjectAccessControlExpansion interface{}
+type StorageObjectAccessControlExpansion interface{}
 
-type GoogleStorageObjectAclExpansion interface{}
+type StorageObjectAclExpansion interface{}

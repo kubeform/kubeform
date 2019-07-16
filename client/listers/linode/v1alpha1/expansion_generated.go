@@ -18,50 +18,50 @@ limitations under the License.
 
 package v1alpha1
 
-// LinodeDomainListerExpansion allows custom methods to be added to
-// LinodeDomainLister.
-type LinodeDomainListerExpansion interface{}
+// DomainListerExpansion allows custom methods to be added to
+// DomainLister.
+type DomainListerExpansion interface{}
 
-// LinodeDomainRecordListerExpansion allows custom methods to be added to
-// LinodeDomainRecordLister.
-type LinodeDomainRecordListerExpansion interface{}
+// DomainRecordListerExpansion allows custom methods to be added to
+// DomainRecordLister.
+type DomainRecordListerExpansion interface{}
 
-// LinodeImageListerExpansion allows custom methods to be added to
-// LinodeImageLister.
-type LinodeImageListerExpansion interface{}
+// ImageListerExpansion allows custom methods to be added to
+// ImageLister.
+type ImageListerExpansion interface{}
 
-// LinodeInstanceListerExpansion allows custom methods to be added to
-// LinodeInstanceLister.
-type LinodeInstanceListerExpansion interface{}
+// InstanceListerExpansion allows custom methods to be added to
+// InstanceLister.
+type InstanceListerExpansion interface{}
 
-// LinodeNodebalancerListerExpansion allows custom methods to be added to
-// LinodeNodebalancerLister.
-type LinodeNodebalancerListerExpansion interface{}
+// NodebalancerListerExpansion allows custom methods to be added to
+// NodebalancerLister.
+type NodebalancerListerExpansion interface{}
 
-// LinodeNodebalancerConfigListerExpansion allows custom methods to be added to
-// LinodeNodebalancerConfigLister.
-type LinodeNodebalancerConfigListerExpansion interface{}
+// NodebalancerConfigListerExpansion allows custom methods to be added to
+// NodebalancerConfigLister.
+type NodebalancerConfigListerExpansion interface{}
 
-// LinodeNodebalancerNodeListerExpansion allows custom methods to be added to
-// LinodeNodebalancerNodeLister.
-type LinodeNodebalancerNodeListerExpansion interface{}
+// NodebalancerNodeListerExpansion allows custom methods to be added to
+// NodebalancerNodeLister.
+type NodebalancerNodeListerExpansion interface{}
 
-// LinodeRdnsListerExpansion allows custom methods to be added to
-// LinodeRdnsLister.
-type LinodeRdnsListerExpansion interface{}
+// RdnsListerExpansion allows custom methods to be added to
+// RdnsLister.
+type RdnsListerExpansion interface{}
 
-// LinodeSshkeyListerExpansion allows custom methods to be added to
-// LinodeSshkeyLister.
-type LinodeSshkeyListerExpansion interface{}
+// SshkeyListerExpansion allows custom methods to be added to
+// SshkeyLister.
+type SshkeyListerExpansion interface{}
 
-// LinodeStackscriptListerExpansion allows custom methods to be added to
-// LinodeStackscriptLister.
-type LinodeStackscriptListerExpansion interface{}
+// StackscriptListerExpansion allows custom methods to be added to
+// StackscriptLister.
+type StackscriptListerExpansion interface{}
 
-// LinodeTokenListerExpansion allows custom methods to be added to
-// LinodeTokenLister.
-type LinodeTokenListerExpansion interface{}
+// TokenListerExpansion allows custom methods to be added to
+// TokenLister.
+type TokenListerExpansion interface{}
 
-// LinodeVolumeListerExpansion allows custom methods to be added to
-// LinodeVolumeLister.
-type LinodeVolumeListerExpansion interface{}
+// VolumeListerExpansion allows custom methods to be added to
+// VolumeLister.
+type VolumeListerExpansion interface{}

@@ -27,26 +27,26 @@ import (
 
 type DigitaloceanV1alpha1Interface interface {
 	RESTClient() rest.Interface
-	DigitaloceanCdnsGetter
-	DigitaloceanCertificatesGetter
-	DigitaloceanDatabaseClustersGetter
-	DigitaloceanDomainsGetter
-	DigitaloceanDropletsGetter
-	DigitaloceanDropletSnapshotsGetter
-	DigitaloceanFirewallsGetter
-	DigitaloceanFloatingIpsGetter
-	DigitaloceanFloatingIpAssignmentsGetter
-	DigitaloceanKubernetesClustersGetter
-	DigitaloceanKubernetesNodePoolsGetter
-	DigitaloceanLoadbalancersGetter
-	DigitaloceanProjectsGetter
-	DigitaloceanRecordsGetter
-	DigitaloceanSpacesBucketsGetter
-	DigitaloceanSshKeysGetter
-	DigitaloceanTagsGetter
-	DigitaloceanVolumesGetter
-	DigitaloceanVolumeAttachmentsGetter
-	DigitaloceanVolumeSnapshotsGetter
+	CdnsGetter
+	CertificatesGetter
+	DatabaseClustersGetter
+	DomainsGetter
+	DropletsGetter
+	DropletSnapshotsGetter
+	FirewallsGetter
+	FloatingIpsGetter
+	FloatingIpAssignmentsGetter
+	KubernetesClustersGetter
+	KubernetesNodePoolsGetter
+	LoadbalancersGetter
+	ProjectsGetter
+	RecordsGetter
+	SpacesBucketsGetter
+	SshKeysGetter
+	TagsGetter
+	VolumesGetter
+	VolumeAttachmentsGetter
+	VolumeSnapshotsGetter
 }
 
 // DigitaloceanV1alpha1Client is used to interact with features provided by the digitalocean.kubeform.com group.
@@ -54,84 +54,84 @@ type DigitaloceanV1alpha1Client struct {
 	restClient rest.Interface
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanCdns() DigitaloceanCdnInterface {
-	return newDigitaloceanCdns(c)
+func (c *DigitaloceanV1alpha1Client) Cdns() CdnInterface {
+	return newCdns(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanCertificates() DigitaloceanCertificateInterface {
-	return newDigitaloceanCertificates(c)
+func (c *DigitaloceanV1alpha1Client) Certificates() CertificateInterface {
+	return newCertificates(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanDatabaseClusters() DigitaloceanDatabaseClusterInterface {
-	return newDigitaloceanDatabaseClusters(c)
+func (c *DigitaloceanV1alpha1Client) DatabaseClusters() DatabaseClusterInterface {
+	return newDatabaseClusters(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanDomains() DigitaloceanDomainInterface {
-	return newDigitaloceanDomains(c)
+func (c *DigitaloceanV1alpha1Client) Domains() DomainInterface {
+	return newDomains(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanDroplets() DigitaloceanDropletInterface {
-	return newDigitaloceanDroplets(c)
+func (c *DigitaloceanV1alpha1Client) Droplets() DropletInterface {
+	return newDroplets(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanDropletSnapshots() DigitaloceanDropletSnapshotInterface {
-	return newDigitaloceanDropletSnapshots(c)
+func (c *DigitaloceanV1alpha1Client) DropletSnapshots() DropletSnapshotInterface {
+	return newDropletSnapshots(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanFirewalls() DigitaloceanFirewallInterface {
-	return newDigitaloceanFirewalls(c)
+func (c *DigitaloceanV1alpha1Client) Firewalls() FirewallInterface {
+	return newFirewalls(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanFloatingIps() DigitaloceanFloatingIpInterface {
-	return newDigitaloceanFloatingIps(c)
+func (c *DigitaloceanV1alpha1Client) FloatingIps() FloatingIpInterface {
+	return newFloatingIps(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanFloatingIpAssignments() DigitaloceanFloatingIpAssignmentInterface {
-	return newDigitaloceanFloatingIpAssignments(c)
+func (c *DigitaloceanV1alpha1Client) FloatingIpAssignments() FloatingIpAssignmentInterface {
+	return newFloatingIpAssignments(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanKubernetesClusters() DigitaloceanKubernetesClusterInterface {
-	return newDigitaloceanKubernetesClusters(c)
+func (c *DigitaloceanV1alpha1Client) KubernetesClusters() KubernetesClusterInterface {
+	return newKubernetesClusters(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanKubernetesNodePools() DigitaloceanKubernetesNodePoolInterface {
-	return newDigitaloceanKubernetesNodePools(c)
+func (c *DigitaloceanV1alpha1Client) KubernetesNodePools() KubernetesNodePoolInterface {
+	return newKubernetesNodePools(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanLoadbalancers() DigitaloceanLoadbalancerInterface {
-	return newDigitaloceanLoadbalancers(c)
+func (c *DigitaloceanV1alpha1Client) Loadbalancers() LoadbalancerInterface {
+	return newLoadbalancers(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanProjects() DigitaloceanProjectInterface {
-	return newDigitaloceanProjects(c)
+func (c *DigitaloceanV1alpha1Client) Projects() ProjectInterface {
+	return newProjects(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanRecords() DigitaloceanRecordInterface {
-	return newDigitaloceanRecords(c)
+func (c *DigitaloceanV1alpha1Client) Records() RecordInterface {
+	return newRecords(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanSpacesBuckets() DigitaloceanSpacesBucketInterface {
-	return newDigitaloceanSpacesBuckets(c)
+func (c *DigitaloceanV1alpha1Client) SpacesBuckets() SpacesBucketInterface {
+	return newSpacesBuckets(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanSshKeys() DigitaloceanSshKeyInterface {
-	return newDigitaloceanSshKeys(c)
+func (c *DigitaloceanV1alpha1Client) SshKeys() SshKeyInterface {
+	return newSshKeys(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanTags() DigitaloceanTagInterface {
-	return newDigitaloceanTags(c)
+func (c *DigitaloceanV1alpha1Client) Tags() TagInterface {
+	return newTags(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanVolumes() DigitaloceanVolumeInterface {
-	return newDigitaloceanVolumes(c)
+func (c *DigitaloceanV1alpha1Client) Volumes() VolumeInterface {
+	return newVolumes(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanVolumeAttachments() DigitaloceanVolumeAttachmentInterface {
-	return newDigitaloceanVolumeAttachments(c)
+func (c *DigitaloceanV1alpha1Client) VolumeAttachments() VolumeAttachmentInterface {
+	return newVolumeAttachments(c)
 }
 
-func (c *DigitaloceanV1alpha1Client) DigitaloceanVolumeSnapshots() DigitaloceanVolumeSnapshotInterface {
-	return newDigitaloceanVolumeSnapshots(c)
+func (c *DigitaloceanV1alpha1Client) VolumeSnapshots() VolumeSnapshotInterface {
+	return newVolumeSnapshots(c)
 }
 
 // NewForConfig creates a new DigitaloceanV1alpha1Client for the given config.

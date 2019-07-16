@@ -24,314 +24,314 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
-	// GoogleAppEngineApplications returns a GoogleAppEngineApplicationInformer.
-	GoogleAppEngineApplications() GoogleAppEngineApplicationInformer
-	// GoogleBigqueryDatasets returns a GoogleBigqueryDatasetInformer.
-	GoogleBigqueryDatasets() GoogleBigqueryDatasetInformer
-	// GoogleBigqueryTables returns a GoogleBigqueryTableInformer.
-	GoogleBigqueryTables() GoogleBigqueryTableInformer
-	// GoogleBigtableInstances returns a GoogleBigtableInstanceInformer.
-	GoogleBigtableInstances() GoogleBigtableInstanceInformer
-	// GoogleBigtableTables returns a GoogleBigtableTableInformer.
-	GoogleBigtableTables() GoogleBigtableTableInformer
-	// GoogleBillingAccountIamBindings returns a GoogleBillingAccountIamBindingInformer.
-	GoogleBillingAccountIamBindings() GoogleBillingAccountIamBindingInformer
-	// GoogleBillingAccountIamMembers returns a GoogleBillingAccountIamMemberInformer.
-	GoogleBillingAccountIamMembers() GoogleBillingAccountIamMemberInformer
-	// GoogleBillingAccountIamPolicies returns a GoogleBillingAccountIamPolicyInformer.
-	GoogleBillingAccountIamPolicies() GoogleBillingAccountIamPolicyInformer
-	// GoogleBinaryAuthorizationAttestors returns a GoogleBinaryAuthorizationAttestorInformer.
-	GoogleBinaryAuthorizationAttestors() GoogleBinaryAuthorizationAttestorInformer
-	// GoogleBinaryAuthorizationPolicies returns a GoogleBinaryAuthorizationPolicyInformer.
-	GoogleBinaryAuthorizationPolicies() GoogleBinaryAuthorizationPolicyInformer
-	// GoogleCloudbuildTriggers returns a GoogleCloudbuildTriggerInformer.
-	GoogleCloudbuildTriggers() GoogleCloudbuildTriggerInformer
-	// GoogleCloudfunctionsFunctions returns a GoogleCloudfunctionsFunctionInformer.
-	GoogleCloudfunctionsFunctions() GoogleCloudfunctionsFunctionInformer
-	// GoogleCloudiotRegistries returns a GoogleCloudiotRegistryInformer.
-	GoogleCloudiotRegistries() GoogleCloudiotRegistryInformer
-	// GoogleComposerEnvironments returns a GoogleComposerEnvironmentInformer.
-	GoogleComposerEnvironments() GoogleComposerEnvironmentInformer
-	// GoogleComputeAddresses returns a GoogleComputeAddressInformer.
-	GoogleComputeAddresses() GoogleComputeAddressInformer
-	// GoogleComputeAttachedDisks returns a GoogleComputeAttachedDiskInformer.
-	GoogleComputeAttachedDisks() GoogleComputeAttachedDiskInformer
-	// GoogleComputeAutoscalers returns a GoogleComputeAutoscalerInformer.
-	GoogleComputeAutoscalers() GoogleComputeAutoscalerInformer
-	// GoogleComputeBackendBuckets returns a GoogleComputeBackendBucketInformer.
-	GoogleComputeBackendBuckets() GoogleComputeBackendBucketInformer
-	// GoogleComputeBackendServices returns a GoogleComputeBackendServiceInformer.
-	GoogleComputeBackendServices() GoogleComputeBackendServiceInformer
-	// GoogleComputeDisks returns a GoogleComputeDiskInformer.
-	GoogleComputeDisks() GoogleComputeDiskInformer
-	// GoogleComputeFirewalls returns a GoogleComputeFirewallInformer.
-	GoogleComputeFirewalls() GoogleComputeFirewallInformer
-	// GoogleComputeForwardingRules returns a GoogleComputeForwardingRuleInformer.
-	GoogleComputeForwardingRules() GoogleComputeForwardingRuleInformer
-	// GoogleComputeGlobalAddresses returns a GoogleComputeGlobalAddressInformer.
-	GoogleComputeGlobalAddresses() GoogleComputeGlobalAddressInformer
-	// GoogleComputeGlobalForwardingRules returns a GoogleComputeGlobalForwardingRuleInformer.
-	GoogleComputeGlobalForwardingRules() GoogleComputeGlobalForwardingRuleInformer
-	// GoogleComputeHealthChecks returns a GoogleComputeHealthCheckInformer.
-	GoogleComputeHealthChecks() GoogleComputeHealthCheckInformer
-	// GoogleComputeHttpHealthChecks returns a GoogleComputeHttpHealthCheckInformer.
-	GoogleComputeHttpHealthChecks() GoogleComputeHttpHealthCheckInformer
-	// GoogleComputeHttpsHealthChecks returns a GoogleComputeHttpsHealthCheckInformer.
-	GoogleComputeHttpsHealthChecks() GoogleComputeHttpsHealthCheckInformer
-	// GoogleComputeImages returns a GoogleComputeImageInformer.
-	GoogleComputeImages() GoogleComputeImageInformer
-	// GoogleComputeInstances returns a GoogleComputeInstanceInformer.
-	GoogleComputeInstances() GoogleComputeInstanceInformer
-	// GoogleComputeInstanceFromTemplates returns a GoogleComputeInstanceFromTemplateInformer.
-	GoogleComputeInstanceFromTemplates() GoogleComputeInstanceFromTemplateInformer
-	// GoogleComputeInstanceGroups returns a GoogleComputeInstanceGroupInformer.
-	GoogleComputeInstanceGroups() GoogleComputeInstanceGroupInformer
-	// GoogleComputeInstanceGroupManagers returns a GoogleComputeInstanceGroupManagerInformer.
-	GoogleComputeInstanceGroupManagers() GoogleComputeInstanceGroupManagerInformer
-	// GoogleComputeInstanceTemplates returns a GoogleComputeInstanceTemplateInformer.
-	GoogleComputeInstanceTemplates() GoogleComputeInstanceTemplateInformer
-	// GoogleComputeInterconnectAttachments returns a GoogleComputeInterconnectAttachmentInformer.
-	GoogleComputeInterconnectAttachments() GoogleComputeInterconnectAttachmentInformer
-	// GoogleComputeNetworks returns a GoogleComputeNetworkInformer.
-	GoogleComputeNetworks() GoogleComputeNetworkInformer
-	// GoogleComputeNetworkPeerings returns a GoogleComputeNetworkPeeringInformer.
-	GoogleComputeNetworkPeerings() GoogleComputeNetworkPeeringInformer
-	// GoogleComputeProjectMetadatas returns a GoogleComputeProjectMetadataInformer.
-	GoogleComputeProjectMetadatas() GoogleComputeProjectMetadataInformer
-	// GoogleComputeProjectMetadataItems returns a GoogleComputeProjectMetadataItemInformer.
-	GoogleComputeProjectMetadataItems() GoogleComputeProjectMetadataItemInformer
-	// GoogleComputeRegionAutoscalers returns a GoogleComputeRegionAutoscalerInformer.
-	GoogleComputeRegionAutoscalers() GoogleComputeRegionAutoscalerInformer
-	// GoogleComputeRegionBackendServices returns a GoogleComputeRegionBackendServiceInformer.
-	GoogleComputeRegionBackendServices() GoogleComputeRegionBackendServiceInformer
-	// GoogleComputeRegionDisks returns a GoogleComputeRegionDiskInformer.
-	GoogleComputeRegionDisks() GoogleComputeRegionDiskInformer
-	// GoogleComputeRegionInstanceGroupManagers returns a GoogleComputeRegionInstanceGroupManagerInformer.
-	GoogleComputeRegionInstanceGroupManagers() GoogleComputeRegionInstanceGroupManagerInformer
-	// GoogleComputeRoutes returns a GoogleComputeRouteInformer.
-	GoogleComputeRoutes() GoogleComputeRouteInformer
-	// GoogleComputeRouters returns a GoogleComputeRouterInformer.
-	GoogleComputeRouters() GoogleComputeRouterInformer
-	// GoogleComputeRouterInterfaces returns a GoogleComputeRouterInterfaceInformer.
-	GoogleComputeRouterInterfaces() GoogleComputeRouterInterfaceInformer
-	// GoogleComputeRouterNats returns a GoogleComputeRouterNatInformer.
-	GoogleComputeRouterNats() GoogleComputeRouterNatInformer
-	// GoogleComputeRouterPeers returns a GoogleComputeRouterPeerInformer.
-	GoogleComputeRouterPeers() GoogleComputeRouterPeerInformer
-	// GoogleComputeSecurityPolicies returns a GoogleComputeSecurityPolicyInformer.
-	GoogleComputeSecurityPolicies() GoogleComputeSecurityPolicyInformer
-	// GoogleComputeSharedVpcHostProjects returns a GoogleComputeSharedVpcHostProjectInformer.
-	GoogleComputeSharedVpcHostProjects() GoogleComputeSharedVpcHostProjectInformer
-	// GoogleComputeSharedVpcServiceProjects returns a GoogleComputeSharedVpcServiceProjectInformer.
-	GoogleComputeSharedVpcServiceProjects() GoogleComputeSharedVpcServiceProjectInformer
-	// GoogleComputeSnapshots returns a GoogleComputeSnapshotInformer.
-	GoogleComputeSnapshots() GoogleComputeSnapshotInformer
-	// GoogleComputeSslCertificates returns a GoogleComputeSslCertificateInformer.
-	GoogleComputeSslCertificates() GoogleComputeSslCertificateInformer
-	// GoogleComputeSslPolicies returns a GoogleComputeSslPolicyInformer.
-	GoogleComputeSslPolicies() GoogleComputeSslPolicyInformer
-	// GoogleComputeSubnetworks returns a GoogleComputeSubnetworkInformer.
-	GoogleComputeSubnetworks() GoogleComputeSubnetworkInformer
-	// GoogleComputeSubnetworkIamBindings returns a GoogleComputeSubnetworkIamBindingInformer.
-	GoogleComputeSubnetworkIamBindings() GoogleComputeSubnetworkIamBindingInformer
-	// GoogleComputeSubnetworkIamMembers returns a GoogleComputeSubnetworkIamMemberInformer.
-	GoogleComputeSubnetworkIamMembers() GoogleComputeSubnetworkIamMemberInformer
-	// GoogleComputeSubnetworkIamPolicies returns a GoogleComputeSubnetworkIamPolicyInformer.
-	GoogleComputeSubnetworkIamPolicies() GoogleComputeSubnetworkIamPolicyInformer
-	// GoogleComputeTargetHttpProxies returns a GoogleComputeTargetHttpProxyInformer.
-	GoogleComputeTargetHttpProxies() GoogleComputeTargetHttpProxyInformer
-	// GoogleComputeTargetHttpsProxies returns a GoogleComputeTargetHttpsProxyInformer.
-	GoogleComputeTargetHttpsProxies() GoogleComputeTargetHttpsProxyInformer
-	// GoogleComputeTargetPools returns a GoogleComputeTargetPoolInformer.
-	GoogleComputeTargetPools() GoogleComputeTargetPoolInformer
-	// GoogleComputeTargetSslProxies returns a GoogleComputeTargetSslProxyInformer.
-	GoogleComputeTargetSslProxies() GoogleComputeTargetSslProxyInformer
-	// GoogleComputeTargetTcpProxies returns a GoogleComputeTargetTcpProxyInformer.
-	GoogleComputeTargetTcpProxies() GoogleComputeTargetTcpProxyInformer
-	// GoogleComputeUrlMaps returns a GoogleComputeUrlMapInformer.
-	GoogleComputeUrlMaps() GoogleComputeUrlMapInformer
-	// GoogleComputeVpnGateways returns a GoogleComputeVpnGatewayInformer.
-	GoogleComputeVpnGateways() GoogleComputeVpnGatewayInformer
-	// GoogleComputeVpnTunnels returns a GoogleComputeVpnTunnelInformer.
-	GoogleComputeVpnTunnels() GoogleComputeVpnTunnelInformer
-	// GoogleContainerAnalysisNotes returns a GoogleContainerAnalysisNoteInformer.
-	GoogleContainerAnalysisNotes() GoogleContainerAnalysisNoteInformer
-	// GoogleContainerClusters returns a GoogleContainerClusterInformer.
-	GoogleContainerClusters() GoogleContainerClusterInformer
-	// GoogleContainerNodePools returns a GoogleContainerNodePoolInformer.
-	GoogleContainerNodePools() GoogleContainerNodePoolInformer
-	// GoogleDataflowJobs returns a GoogleDataflowJobInformer.
-	GoogleDataflowJobs() GoogleDataflowJobInformer
-	// GoogleDataprocClusters returns a GoogleDataprocClusterInformer.
-	GoogleDataprocClusters() GoogleDataprocClusterInformer
-	// GoogleDataprocJobs returns a GoogleDataprocJobInformer.
-	GoogleDataprocJobs() GoogleDataprocJobInformer
-	// GoogleDnsManagedZones returns a GoogleDnsManagedZoneInformer.
-	GoogleDnsManagedZones() GoogleDnsManagedZoneInformer
-	// GoogleDnsRecordSets returns a GoogleDnsRecordSetInformer.
-	GoogleDnsRecordSets() GoogleDnsRecordSetInformer
-	// GoogleEndpointsServices returns a GoogleEndpointsServiceInformer.
-	GoogleEndpointsServices() GoogleEndpointsServiceInformer
-	// GoogleFilestoreInstances returns a GoogleFilestoreInstanceInformer.
-	GoogleFilestoreInstances() GoogleFilestoreInstanceInformer
-	// GoogleFolders returns a GoogleFolderInformer.
-	GoogleFolders() GoogleFolderInformer
-	// GoogleFolderIamBindings returns a GoogleFolderIamBindingInformer.
-	GoogleFolderIamBindings() GoogleFolderIamBindingInformer
-	// GoogleFolderIamMembers returns a GoogleFolderIamMemberInformer.
-	GoogleFolderIamMembers() GoogleFolderIamMemberInformer
-	// GoogleFolderIamPolicies returns a GoogleFolderIamPolicyInformer.
-	GoogleFolderIamPolicies() GoogleFolderIamPolicyInformer
-	// GoogleFolderOrganizationPolicies returns a GoogleFolderOrganizationPolicyInformer.
-	GoogleFolderOrganizationPolicies() GoogleFolderOrganizationPolicyInformer
-	// GoogleKmsCryptoKeys returns a GoogleKmsCryptoKeyInformer.
-	GoogleKmsCryptoKeys() GoogleKmsCryptoKeyInformer
-	// GoogleKmsCryptoKeyIamBindings returns a GoogleKmsCryptoKeyIamBindingInformer.
-	GoogleKmsCryptoKeyIamBindings() GoogleKmsCryptoKeyIamBindingInformer
-	// GoogleKmsCryptoKeyIamMembers returns a GoogleKmsCryptoKeyIamMemberInformer.
-	GoogleKmsCryptoKeyIamMembers() GoogleKmsCryptoKeyIamMemberInformer
-	// GoogleKmsKeyRings returns a GoogleKmsKeyRingInformer.
-	GoogleKmsKeyRings() GoogleKmsKeyRingInformer
-	// GoogleKmsKeyRingIamBindings returns a GoogleKmsKeyRingIamBindingInformer.
-	GoogleKmsKeyRingIamBindings() GoogleKmsKeyRingIamBindingInformer
-	// GoogleKmsKeyRingIamMembers returns a GoogleKmsKeyRingIamMemberInformer.
-	GoogleKmsKeyRingIamMembers() GoogleKmsKeyRingIamMemberInformer
-	// GoogleKmsKeyRingIamPolicies returns a GoogleKmsKeyRingIamPolicyInformer.
-	GoogleKmsKeyRingIamPolicies() GoogleKmsKeyRingIamPolicyInformer
-	// GoogleLoggingBillingAccountExclusions returns a GoogleLoggingBillingAccountExclusionInformer.
-	GoogleLoggingBillingAccountExclusions() GoogleLoggingBillingAccountExclusionInformer
-	// GoogleLoggingBillingAccountSinks returns a GoogleLoggingBillingAccountSinkInformer.
-	GoogleLoggingBillingAccountSinks() GoogleLoggingBillingAccountSinkInformer
-	// GoogleLoggingFolderExclusions returns a GoogleLoggingFolderExclusionInformer.
-	GoogleLoggingFolderExclusions() GoogleLoggingFolderExclusionInformer
-	// GoogleLoggingFolderSinks returns a GoogleLoggingFolderSinkInformer.
-	GoogleLoggingFolderSinks() GoogleLoggingFolderSinkInformer
-	// GoogleLoggingOrganizationExclusions returns a GoogleLoggingOrganizationExclusionInformer.
-	GoogleLoggingOrganizationExclusions() GoogleLoggingOrganizationExclusionInformer
-	// GoogleLoggingOrganizationSinks returns a GoogleLoggingOrganizationSinkInformer.
-	GoogleLoggingOrganizationSinks() GoogleLoggingOrganizationSinkInformer
-	// GoogleLoggingProjectExclusions returns a GoogleLoggingProjectExclusionInformer.
-	GoogleLoggingProjectExclusions() GoogleLoggingProjectExclusionInformer
-	// GoogleLoggingProjectSinks returns a GoogleLoggingProjectSinkInformer.
-	GoogleLoggingProjectSinks() GoogleLoggingProjectSinkInformer
-	// GoogleMonitoringAlertPolicies returns a GoogleMonitoringAlertPolicyInformer.
-	GoogleMonitoringAlertPolicies() GoogleMonitoringAlertPolicyInformer
-	// GoogleMonitoringGroups returns a GoogleMonitoringGroupInformer.
-	GoogleMonitoringGroups() GoogleMonitoringGroupInformer
-	// GoogleMonitoringNotificationChannels returns a GoogleMonitoringNotificationChannelInformer.
-	GoogleMonitoringNotificationChannels() GoogleMonitoringNotificationChannelInformer
-	// GoogleMonitoringUptimeCheckConfigs returns a GoogleMonitoringUptimeCheckConfigInformer.
-	GoogleMonitoringUptimeCheckConfigs() GoogleMonitoringUptimeCheckConfigInformer
-	// GoogleOrganizationIamBindings returns a GoogleOrganizationIamBindingInformer.
-	GoogleOrganizationIamBindings() GoogleOrganizationIamBindingInformer
-	// GoogleOrganizationIamCustomRoles returns a GoogleOrganizationIamCustomRoleInformer.
-	GoogleOrganizationIamCustomRoles() GoogleOrganizationIamCustomRoleInformer
-	// GoogleOrganizationIamMembers returns a GoogleOrganizationIamMemberInformer.
-	GoogleOrganizationIamMembers() GoogleOrganizationIamMemberInformer
-	// GoogleOrganizationIamPolicies returns a GoogleOrganizationIamPolicyInformer.
-	GoogleOrganizationIamPolicies() GoogleOrganizationIamPolicyInformer
-	// GoogleOrganizationPolicies returns a GoogleOrganizationPolicyInformer.
-	GoogleOrganizationPolicies() GoogleOrganizationPolicyInformer
-	// GoogleProjects returns a GoogleProjectInformer.
-	GoogleProjects() GoogleProjectInformer
-	// GoogleProjectIamBindings returns a GoogleProjectIamBindingInformer.
-	GoogleProjectIamBindings() GoogleProjectIamBindingInformer
-	// GoogleProjectIamCustomRoles returns a GoogleProjectIamCustomRoleInformer.
-	GoogleProjectIamCustomRoles() GoogleProjectIamCustomRoleInformer
-	// GoogleProjectIamMembers returns a GoogleProjectIamMemberInformer.
-	GoogleProjectIamMembers() GoogleProjectIamMemberInformer
-	// GoogleProjectIamPolicies returns a GoogleProjectIamPolicyInformer.
-	GoogleProjectIamPolicies() GoogleProjectIamPolicyInformer
-	// GoogleProjectOrganizationPolicies returns a GoogleProjectOrganizationPolicyInformer.
-	GoogleProjectOrganizationPolicies() GoogleProjectOrganizationPolicyInformer
-	// GoogleProjectServices returns a GoogleProjectServiceInformer.
-	GoogleProjectServices() GoogleProjectServiceInformer
-	// GoogleProjectServiceses returns a GoogleProjectServicesInformer.
-	GoogleProjectServiceses() GoogleProjectServicesInformer
-	// GoogleProjectUsageExportBuckets returns a GoogleProjectUsageExportBucketInformer.
-	GoogleProjectUsageExportBuckets() GoogleProjectUsageExportBucketInformer
-	// GooglePubsubSubscriptions returns a GooglePubsubSubscriptionInformer.
-	GooglePubsubSubscriptions() GooglePubsubSubscriptionInformer
-	// GooglePubsubSubscriptionIamBindings returns a GooglePubsubSubscriptionIamBindingInformer.
-	GooglePubsubSubscriptionIamBindings() GooglePubsubSubscriptionIamBindingInformer
-	// GooglePubsubSubscriptionIamMembers returns a GooglePubsubSubscriptionIamMemberInformer.
-	GooglePubsubSubscriptionIamMembers() GooglePubsubSubscriptionIamMemberInformer
-	// GooglePubsubSubscriptionIamPolicies returns a GooglePubsubSubscriptionIamPolicyInformer.
-	GooglePubsubSubscriptionIamPolicies() GooglePubsubSubscriptionIamPolicyInformer
-	// GooglePubsubTopics returns a GooglePubsubTopicInformer.
-	GooglePubsubTopics() GooglePubsubTopicInformer
-	// GooglePubsubTopicIamBindings returns a GooglePubsubTopicIamBindingInformer.
-	GooglePubsubTopicIamBindings() GooglePubsubTopicIamBindingInformer
-	// GooglePubsubTopicIamMembers returns a GooglePubsubTopicIamMemberInformer.
-	GooglePubsubTopicIamMembers() GooglePubsubTopicIamMemberInformer
-	// GooglePubsubTopicIamPolicies returns a GooglePubsubTopicIamPolicyInformer.
-	GooglePubsubTopicIamPolicies() GooglePubsubTopicIamPolicyInformer
-	// GoogleRedisInstances returns a GoogleRedisInstanceInformer.
-	GoogleRedisInstances() GoogleRedisInstanceInformer
-	// GoogleResourceManagerLiens returns a GoogleResourceManagerLienInformer.
-	GoogleResourceManagerLiens() GoogleResourceManagerLienInformer
-	// GoogleRuntimeconfigConfigs returns a GoogleRuntimeconfigConfigInformer.
-	GoogleRuntimeconfigConfigs() GoogleRuntimeconfigConfigInformer
-	// GoogleRuntimeconfigVariables returns a GoogleRuntimeconfigVariableInformer.
-	GoogleRuntimeconfigVariables() GoogleRuntimeconfigVariableInformer
-	// GoogleServiceAccounts returns a GoogleServiceAccountInformer.
-	GoogleServiceAccounts() GoogleServiceAccountInformer
-	// GoogleServiceAccountIamBindings returns a GoogleServiceAccountIamBindingInformer.
-	GoogleServiceAccountIamBindings() GoogleServiceAccountIamBindingInformer
-	// GoogleServiceAccountIamMembers returns a GoogleServiceAccountIamMemberInformer.
-	GoogleServiceAccountIamMembers() GoogleServiceAccountIamMemberInformer
-	// GoogleServiceAccountIamPolicies returns a GoogleServiceAccountIamPolicyInformer.
-	GoogleServiceAccountIamPolicies() GoogleServiceAccountIamPolicyInformer
-	// GoogleServiceAccountKeys returns a GoogleServiceAccountKeyInformer.
-	GoogleServiceAccountKeys() GoogleServiceAccountKeyInformer
-	// GoogleSourcerepoRepositories returns a GoogleSourcerepoRepositoryInformer.
-	GoogleSourcerepoRepositories() GoogleSourcerepoRepositoryInformer
-	// GoogleSpannerDatabases returns a GoogleSpannerDatabaseInformer.
-	GoogleSpannerDatabases() GoogleSpannerDatabaseInformer
-	// GoogleSpannerDatabaseIamBindings returns a GoogleSpannerDatabaseIamBindingInformer.
-	GoogleSpannerDatabaseIamBindings() GoogleSpannerDatabaseIamBindingInformer
-	// GoogleSpannerDatabaseIamMembers returns a GoogleSpannerDatabaseIamMemberInformer.
-	GoogleSpannerDatabaseIamMembers() GoogleSpannerDatabaseIamMemberInformer
-	// GoogleSpannerDatabaseIamPolicies returns a GoogleSpannerDatabaseIamPolicyInformer.
-	GoogleSpannerDatabaseIamPolicies() GoogleSpannerDatabaseIamPolicyInformer
-	// GoogleSpannerInstances returns a GoogleSpannerInstanceInformer.
-	GoogleSpannerInstances() GoogleSpannerInstanceInformer
-	// GoogleSpannerInstanceIamBindings returns a GoogleSpannerInstanceIamBindingInformer.
-	GoogleSpannerInstanceIamBindings() GoogleSpannerInstanceIamBindingInformer
-	// GoogleSpannerInstanceIamMembers returns a GoogleSpannerInstanceIamMemberInformer.
-	GoogleSpannerInstanceIamMembers() GoogleSpannerInstanceIamMemberInformer
-	// GoogleSpannerInstanceIamPolicies returns a GoogleSpannerInstanceIamPolicyInformer.
-	GoogleSpannerInstanceIamPolicies() GoogleSpannerInstanceIamPolicyInformer
-	// GoogleSqlDatabases returns a GoogleSqlDatabaseInformer.
-	GoogleSqlDatabases() GoogleSqlDatabaseInformer
-	// GoogleSqlDatabaseInstances returns a GoogleSqlDatabaseInstanceInformer.
-	GoogleSqlDatabaseInstances() GoogleSqlDatabaseInstanceInformer
-	// GoogleSqlSslCerts returns a GoogleSqlSslCertInformer.
-	GoogleSqlSslCerts() GoogleSqlSslCertInformer
-	// GoogleSqlUsers returns a GoogleSqlUserInformer.
-	GoogleSqlUsers() GoogleSqlUserInformer
-	// GoogleStorageBuckets returns a GoogleStorageBucketInformer.
-	GoogleStorageBuckets() GoogleStorageBucketInformer
-	// GoogleStorageBucketAcls returns a GoogleStorageBucketAclInformer.
-	GoogleStorageBucketAcls() GoogleStorageBucketAclInformer
-	// GoogleStorageBucketIamBindings returns a GoogleStorageBucketIamBindingInformer.
-	GoogleStorageBucketIamBindings() GoogleStorageBucketIamBindingInformer
-	// GoogleStorageBucketIamMembers returns a GoogleStorageBucketIamMemberInformer.
-	GoogleStorageBucketIamMembers() GoogleStorageBucketIamMemberInformer
-	// GoogleStorageBucketIamPolicies returns a GoogleStorageBucketIamPolicyInformer.
-	GoogleStorageBucketIamPolicies() GoogleStorageBucketIamPolicyInformer
-	// GoogleStorageBucketObjects returns a GoogleStorageBucketObjectInformer.
-	GoogleStorageBucketObjects() GoogleStorageBucketObjectInformer
-	// GoogleStorageDefaultObjectAccessControls returns a GoogleStorageDefaultObjectAccessControlInformer.
-	GoogleStorageDefaultObjectAccessControls() GoogleStorageDefaultObjectAccessControlInformer
-	// GoogleStorageDefaultObjectAcls returns a GoogleStorageDefaultObjectAclInformer.
-	GoogleStorageDefaultObjectAcls() GoogleStorageDefaultObjectAclInformer
-	// GoogleStorageNotifications returns a GoogleStorageNotificationInformer.
-	GoogleStorageNotifications() GoogleStorageNotificationInformer
-	// GoogleStorageObjectAccessControls returns a GoogleStorageObjectAccessControlInformer.
-	GoogleStorageObjectAccessControls() GoogleStorageObjectAccessControlInformer
-	// GoogleStorageObjectAcls returns a GoogleStorageObjectAclInformer.
-	GoogleStorageObjectAcls() GoogleStorageObjectAclInformer
+	// AppEngineApplications returns a AppEngineApplicationInformer.
+	AppEngineApplications() AppEngineApplicationInformer
+	// BigqueryDatasets returns a BigqueryDatasetInformer.
+	BigqueryDatasets() BigqueryDatasetInformer
+	// BigqueryTables returns a BigqueryTableInformer.
+	BigqueryTables() BigqueryTableInformer
+	// BigtableInstances returns a BigtableInstanceInformer.
+	BigtableInstances() BigtableInstanceInformer
+	// BigtableTables returns a BigtableTableInformer.
+	BigtableTables() BigtableTableInformer
+	// BillingAccountIamBindings returns a BillingAccountIamBindingInformer.
+	BillingAccountIamBindings() BillingAccountIamBindingInformer
+	// BillingAccountIamMembers returns a BillingAccountIamMemberInformer.
+	BillingAccountIamMembers() BillingAccountIamMemberInformer
+	// BillingAccountIamPolicies returns a BillingAccountIamPolicyInformer.
+	BillingAccountIamPolicies() BillingAccountIamPolicyInformer
+	// BinaryAuthorizationAttestors returns a BinaryAuthorizationAttestorInformer.
+	BinaryAuthorizationAttestors() BinaryAuthorizationAttestorInformer
+	// BinaryAuthorizationPolicies returns a BinaryAuthorizationPolicyInformer.
+	BinaryAuthorizationPolicies() BinaryAuthorizationPolicyInformer
+	// CloudbuildTriggers returns a CloudbuildTriggerInformer.
+	CloudbuildTriggers() CloudbuildTriggerInformer
+	// CloudfunctionsFunctions returns a CloudfunctionsFunctionInformer.
+	CloudfunctionsFunctions() CloudfunctionsFunctionInformer
+	// CloudiotRegistries returns a CloudiotRegistryInformer.
+	CloudiotRegistries() CloudiotRegistryInformer
+	// ComposerEnvironments returns a ComposerEnvironmentInformer.
+	ComposerEnvironments() ComposerEnvironmentInformer
+	// ComputeAddresses returns a ComputeAddressInformer.
+	ComputeAddresses() ComputeAddressInformer
+	// ComputeAttachedDisks returns a ComputeAttachedDiskInformer.
+	ComputeAttachedDisks() ComputeAttachedDiskInformer
+	// ComputeAutoscalers returns a ComputeAutoscalerInformer.
+	ComputeAutoscalers() ComputeAutoscalerInformer
+	// ComputeBackendBuckets returns a ComputeBackendBucketInformer.
+	ComputeBackendBuckets() ComputeBackendBucketInformer
+	// ComputeBackendServices returns a ComputeBackendServiceInformer.
+	ComputeBackendServices() ComputeBackendServiceInformer
+	// ComputeDisks returns a ComputeDiskInformer.
+	ComputeDisks() ComputeDiskInformer
+	// ComputeFirewalls returns a ComputeFirewallInformer.
+	ComputeFirewalls() ComputeFirewallInformer
+	// ComputeForwardingRules returns a ComputeForwardingRuleInformer.
+	ComputeForwardingRules() ComputeForwardingRuleInformer
+	// ComputeGlobalAddresses returns a ComputeGlobalAddressInformer.
+	ComputeGlobalAddresses() ComputeGlobalAddressInformer
+	// ComputeGlobalForwardingRules returns a ComputeGlobalForwardingRuleInformer.
+	ComputeGlobalForwardingRules() ComputeGlobalForwardingRuleInformer
+	// ComputeHealthChecks returns a ComputeHealthCheckInformer.
+	ComputeHealthChecks() ComputeHealthCheckInformer
+	// ComputeHttpHealthChecks returns a ComputeHttpHealthCheckInformer.
+	ComputeHttpHealthChecks() ComputeHttpHealthCheckInformer
+	// ComputeHttpsHealthChecks returns a ComputeHttpsHealthCheckInformer.
+	ComputeHttpsHealthChecks() ComputeHttpsHealthCheckInformer
+	// ComputeImages returns a ComputeImageInformer.
+	ComputeImages() ComputeImageInformer
+	// ComputeInstances returns a ComputeInstanceInformer.
+	ComputeInstances() ComputeInstanceInformer
+	// ComputeInstanceFromTemplates returns a ComputeInstanceFromTemplateInformer.
+	ComputeInstanceFromTemplates() ComputeInstanceFromTemplateInformer
+	// ComputeInstanceGroups returns a ComputeInstanceGroupInformer.
+	ComputeInstanceGroups() ComputeInstanceGroupInformer
+	// ComputeInstanceGroupManagers returns a ComputeInstanceGroupManagerInformer.
+	ComputeInstanceGroupManagers() ComputeInstanceGroupManagerInformer
+	// ComputeInstanceTemplates returns a ComputeInstanceTemplateInformer.
+	ComputeInstanceTemplates() ComputeInstanceTemplateInformer
+	// ComputeInterconnectAttachments returns a ComputeInterconnectAttachmentInformer.
+	ComputeInterconnectAttachments() ComputeInterconnectAttachmentInformer
+	// ComputeNetworks returns a ComputeNetworkInformer.
+	ComputeNetworks() ComputeNetworkInformer
+	// ComputeNetworkPeerings returns a ComputeNetworkPeeringInformer.
+	ComputeNetworkPeerings() ComputeNetworkPeeringInformer
+	// ComputeProjectMetadatas returns a ComputeProjectMetadataInformer.
+	ComputeProjectMetadatas() ComputeProjectMetadataInformer
+	// ComputeProjectMetadataItems returns a ComputeProjectMetadataItemInformer.
+	ComputeProjectMetadataItems() ComputeProjectMetadataItemInformer
+	// ComputeRegionAutoscalers returns a ComputeRegionAutoscalerInformer.
+	ComputeRegionAutoscalers() ComputeRegionAutoscalerInformer
+	// ComputeRegionBackendServices returns a ComputeRegionBackendServiceInformer.
+	ComputeRegionBackendServices() ComputeRegionBackendServiceInformer
+	// ComputeRegionDisks returns a ComputeRegionDiskInformer.
+	ComputeRegionDisks() ComputeRegionDiskInformer
+	// ComputeRegionInstanceGroupManagers returns a ComputeRegionInstanceGroupManagerInformer.
+	ComputeRegionInstanceGroupManagers() ComputeRegionInstanceGroupManagerInformer
+	// ComputeRoutes returns a ComputeRouteInformer.
+	ComputeRoutes() ComputeRouteInformer
+	// ComputeRouters returns a ComputeRouterInformer.
+	ComputeRouters() ComputeRouterInformer
+	// ComputeRouterInterfaces returns a ComputeRouterInterfaceInformer.
+	ComputeRouterInterfaces() ComputeRouterInterfaceInformer
+	// ComputeRouterNats returns a ComputeRouterNatInformer.
+	ComputeRouterNats() ComputeRouterNatInformer
+	// ComputeRouterPeers returns a ComputeRouterPeerInformer.
+	ComputeRouterPeers() ComputeRouterPeerInformer
+	// ComputeSecurityPolicies returns a ComputeSecurityPolicyInformer.
+	ComputeSecurityPolicies() ComputeSecurityPolicyInformer
+	// ComputeSharedVpcHostProjects returns a ComputeSharedVpcHostProjectInformer.
+	ComputeSharedVpcHostProjects() ComputeSharedVpcHostProjectInformer
+	// ComputeSharedVpcServiceProjects returns a ComputeSharedVpcServiceProjectInformer.
+	ComputeSharedVpcServiceProjects() ComputeSharedVpcServiceProjectInformer
+	// ComputeSnapshots returns a ComputeSnapshotInformer.
+	ComputeSnapshots() ComputeSnapshotInformer
+	// ComputeSslCertificates returns a ComputeSslCertificateInformer.
+	ComputeSslCertificates() ComputeSslCertificateInformer
+	// ComputeSslPolicies returns a ComputeSslPolicyInformer.
+	ComputeSslPolicies() ComputeSslPolicyInformer
+	// ComputeSubnetworks returns a ComputeSubnetworkInformer.
+	ComputeSubnetworks() ComputeSubnetworkInformer
+	// ComputeSubnetworkIamBindings returns a ComputeSubnetworkIamBindingInformer.
+	ComputeSubnetworkIamBindings() ComputeSubnetworkIamBindingInformer
+	// ComputeSubnetworkIamMembers returns a ComputeSubnetworkIamMemberInformer.
+	ComputeSubnetworkIamMembers() ComputeSubnetworkIamMemberInformer
+	// ComputeSubnetworkIamPolicies returns a ComputeSubnetworkIamPolicyInformer.
+	ComputeSubnetworkIamPolicies() ComputeSubnetworkIamPolicyInformer
+	// ComputeTargetHttpProxies returns a ComputeTargetHttpProxyInformer.
+	ComputeTargetHttpProxies() ComputeTargetHttpProxyInformer
+	// ComputeTargetHttpsProxies returns a ComputeTargetHttpsProxyInformer.
+	ComputeTargetHttpsProxies() ComputeTargetHttpsProxyInformer
+	// ComputeTargetPools returns a ComputeTargetPoolInformer.
+	ComputeTargetPools() ComputeTargetPoolInformer
+	// ComputeTargetSslProxies returns a ComputeTargetSslProxyInformer.
+	ComputeTargetSslProxies() ComputeTargetSslProxyInformer
+	// ComputeTargetTcpProxies returns a ComputeTargetTcpProxyInformer.
+	ComputeTargetTcpProxies() ComputeTargetTcpProxyInformer
+	// ComputeUrlMaps returns a ComputeUrlMapInformer.
+	ComputeUrlMaps() ComputeUrlMapInformer
+	// ComputeVpnGateways returns a ComputeVpnGatewayInformer.
+	ComputeVpnGateways() ComputeVpnGatewayInformer
+	// ComputeVpnTunnels returns a ComputeVpnTunnelInformer.
+	ComputeVpnTunnels() ComputeVpnTunnelInformer
+	// ContainerAnalysisNotes returns a ContainerAnalysisNoteInformer.
+	ContainerAnalysisNotes() ContainerAnalysisNoteInformer
+	// ContainerClusters returns a ContainerClusterInformer.
+	ContainerClusters() ContainerClusterInformer
+	// ContainerNodePools returns a ContainerNodePoolInformer.
+	ContainerNodePools() ContainerNodePoolInformer
+	// DataflowJobs returns a DataflowJobInformer.
+	DataflowJobs() DataflowJobInformer
+	// DataprocClusters returns a DataprocClusterInformer.
+	DataprocClusters() DataprocClusterInformer
+	// DataprocJobs returns a DataprocJobInformer.
+	DataprocJobs() DataprocJobInformer
+	// DnsManagedZones returns a DnsManagedZoneInformer.
+	DnsManagedZones() DnsManagedZoneInformer
+	// DnsRecordSets returns a DnsRecordSetInformer.
+	DnsRecordSets() DnsRecordSetInformer
+	// EndpointsServices returns a EndpointsServiceInformer.
+	EndpointsServices() EndpointsServiceInformer
+	// FilestoreInstances returns a FilestoreInstanceInformer.
+	FilestoreInstances() FilestoreInstanceInformer
+	// Folders returns a FolderInformer.
+	Folders() FolderInformer
+	// FolderIamBindings returns a FolderIamBindingInformer.
+	FolderIamBindings() FolderIamBindingInformer
+	// FolderIamMembers returns a FolderIamMemberInformer.
+	FolderIamMembers() FolderIamMemberInformer
+	// FolderIamPolicies returns a FolderIamPolicyInformer.
+	FolderIamPolicies() FolderIamPolicyInformer
+	// FolderOrganizationPolicies returns a FolderOrganizationPolicyInformer.
+	FolderOrganizationPolicies() FolderOrganizationPolicyInformer
+	// KmsCryptoKeys returns a KmsCryptoKeyInformer.
+	KmsCryptoKeys() KmsCryptoKeyInformer
+	// KmsCryptoKeyIamBindings returns a KmsCryptoKeyIamBindingInformer.
+	KmsCryptoKeyIamBindings() KmsCryptoKeyIamBindingInformer
+	// KmsCryptoKeyIamMembers returns a KmsCryptoKeyIamMemberInformer.
+	KmsCryptoKeyIamMembers() KmsCryptoKeyIamMemberInformer
+	// KmsKeyRings returns a KmsKeyRingInformer.
+	KmsKeyRings() KmsKeyRingInformer
+	// KmsKeyRingIamBindings returns a KmsKeyRingIamBindingInformer.
+	KmsKeyRingIamBindings() KmsKeyRingIamBindingInformer
+	// KmsKeyRingIamMembers returns a KmsKeyRingIamMemberInformer.
+	KmsKeyRingIamMembers() KmsKeyRingIamMemberInformer
+	// KmsKeyRingIamPolicies returns a KmsKeyRingIamPolicyInformer.
+	KmsKeyRingIamPolicies() KmsKeyRingIamPolicyInformer
+	// LoggingBillingAccountExclusions returns a LoggingBillingAccountExclusionInformer.
+	LoggingBillingAccountExclusions() LoggingBillingAccountExclusionInformer
+	// LoggingBillingAccountSinks returns a LoggingBillingAccountSinkInformer.
+	LoggingBillingAccountSinks() LoggingBillingAccountSinkInformer
+	// LoggingFolderExclusions returns a LoggingFolderExclusionInformer.
+	LoggingFolderExclusions() LoggingFolderExclusionInformer
+	// LoggingFolderSinks returns a LoggingFolderSinkInformer.
+	LoggingFolderSinks() LoggingFolderSinkInformer
+	// LoggingOrganizationExclusions returns a LoggingOrganizationExclusionInformer.
+	LoggingOrganizationExclusions() LoggingOrganizationExclusionInformer
+	// LoggingOrganizationSinks returns a LoggingOrganizationSinkInformer.
+	LoggingOrganizationSinks() LoggingOrganizationSinkInformer
+	// LoggingProjectExclusions returns a LoggingProjectExclusionInformer.
+	LoggingProjectExclusions() LoggingProjectExclusionInformer
+	// LoggingProjectSinks returns a LoggingProjectSinkInformer.
+	LoggingProjectSinks() LoggingProjectSinkInformer
+	// MonitoringAlertPolicies returns a MonitoringAlertPolicyInformer.
+	MonitoringAlertPolicies() MonitoringAlertPolicyInformer
+	// MonitoringGroups returns a MonitoringGroupInformer.
+	MonitoringGroups() MonitoringGroupInformer
+	// MonitoringNotificationChannels returns a MonitoringNotificationChannelInformer.
+	MonitoringNotificationChannels() MonitoringNotificationChannelInformer
+	// MonitoringUptimeCheckConfigs returns a MonitoringUptimeCheckConfigInformer.
+	MonitoringUptimeCheckConfigs() MonitoringUptimeCheckConfigInformer
+	// OrganizationIamBindings returns a OrganizationIamBindingInformer.
+	OrganizationIamBindings() OrganizationIamBindingInformer
+	// OrganizationIamCustomRoles returns a OrganizationIamCustomRoleInformer.
+	OrganizationIamCustomRoles() OrganizationIamCustomRoleInformer
+	// OrganizationIamMembers returns a OrganizationIamMemberInformer.
+	OrganizationIamMembers() OrganizationIamMemberInformer
+	// OrganizationIamPolicies returns a OrganizationIamPolicyInformer.
+	OrganizationIamPolicies() OrganizationIamPolicyInformer
+	// OrganizationPolicies returns a OrganizationPolicyInformer.
+	OrganizationPolicies() OrganizationPolicyInformer
+	// Projects returns a ProjectInformer.
+	Projects() ProjectInformer
+	// ProjectIamBindings returns a ProjectIamBindingInformer.
+	ProjectIamBindings() ProjectIamBindingInformer
+	// ProjectIamCustomRoles returns a ProjectIamCustomRoleInformer.
+	ProjectIamCustomRoles() ProjectIamCustomRoleInformer
+	// ProjectIamMembers returns a ProjectIamMemberInformer.
+	ProjectIamMembers() ProjectIamMemberInformer
+	// ProjectIamPolicies returns a ProjectIamPolicyInformer.
+	ProjectIamPolicies() ProjectIamPolicyInformer
+	// ProjectOrganizationPolicies returns a ProjectOrganizationPolicyInformer.
+	ProjectOrganizationPolicies() ProjectOrganizationPolicyInformer
+	// ProjectServices returns a ProjectServiceInformer.
+	ProjectServices() ProjectServiceInformer
+	// ProjectServiceses returns a ProjectServicesInformer.
+	ProjectServiceses() ProjectServicesInformer
+	// ProjectUsageExportBuckets returns a ProjectUsageExportBucketInformer.
+	ProjectUsageExportBuckets() ProjectUsageExportBucketInformer
+	// PubsubSubscriptions returns a PubsubSubscriptionInformer.
+	PubsubSubscriptions() PubsubSubscriptionInformer
+	// PubsubSubscriptionIamBindings returns a PubsubSubscriptionIamBindingInformer.
+	PubsubSubscriptionIamBindings() PubsubSubscriptionIamBindingInformer
+	// PubsubSubscriptionIamMembers returns a PubsubSubscriptionIamMemberInformer.
+	PubsubSubscriptionIamMembers() PubsubSubscriptionIamMemberInformer
+	// PubsubSubscriptionIamPolicies returns a PubsubSubscriptionIamPolicyInformer.
+	PubsubSubscriptionIamPolicies() PubsubSubscriptionIamPolicyInformer
+	// PubsubTopics returns a PubsubTopicInformer.
+	PubsubTopics() PubsubTopicInformer
+	// PubsubTopicIamBindings returns a PubsubTopicIamBindingInformer.
+	PubsubTopicIamBindings() PubsubTopicIamBindingInformer
+	// PubsubTopicIamMembers returns a PubsubTopicIamMemberInformer.
+	PubsubTopicIamMembers() PubsubTopicIamMemberInformer
+	// PubsubTopicIamPolicies returns a PubsubTopicIamPolicyInformer.
+	PubsubTopicIamPolicies() PubsubTopicIamPolicyInformer
+	// RedisInstances returns a RedisInstanceInformer.
+	RedisInstances() RedisInstanceInformer
+	// ResourceManagerLiens returns a ResourceManagerLienInformer.
+	ResourceManagerLiens() ResourceManagerLienInformer
+	// RuntimeconfigConfigs returns a RuntimeconfigConfigInformer.
+	RuntimeconfigConfigs() RuntimeconfigConfigInformer
+	// RuntimeconfigVariables returns a RuntimeconfigVariableInformer.
+	RuntimeconfigVariables() RuntimeconfigVariableInformer
+	// ServiceAccounts returns a ServiceAccountInformer.
+	ServiceAccounts() ServiceAccountInformer
+	// ServiceAccountIamBindings returns a ServiceAccountIamBindingInformer.
+	ServiceAccountIamBindings() ServiceAccountIamBindingInformer
+	// ServiceAccountIamMembers returns a ServiceAccountIamMemberInformer.
+	ServiceAccountIamMembers() ServiceAccountIamMemberInformer
+	// ServiceAccountIamPolicies returns a ServiceAccountIamPolicyInformer.
+	ServiceAccountIamPolicies() ServiceAccountIamPolicyInformer
+	// ServiceAccountKeys returns a ServiceAccountKeyInformer.
+	ServiceAccountKeys() ServiceAccountKeyInformer
+	// SourcerepoRepositories returns a SourcerepoRepositoryInformer.
+	SourcerepoRepositories() SourcerepoRepositoryInformer
+	// SpannerDatabases returns a SpannerDatabaseInformer.
+	SpannerDatabases() SpannerDatabaseInformer
+	// SpannerDatabaseIamBindings returns a SpannerDatabaseIamBindingInformer.
+	SpannerDatabaseIamBindings() SpannerDatabaseIamBindingInformer
+	// SpannerDatabaseIamMembers returns a SpannerDatabaseIamMemberInformer.
+	SpannerDatabaseIamMembers() SpannerDatabaseIamMemberInformer
+	// SpannerDatabaseIamPolicies returns a SpannerDatabaseIamPolicyInformer.
+	SpannerDatabaseIamPolicies() SpannerDatabaseIamPolicyInformer
+	// SpannerInstances returns a SpannerInstanceInformer.
+	SpannerInstances() SpannerInstanceInformer
+	// SpannerInstanceIamBindings returns a SpannerInstanceIamBindingInformer.
+	SpannerInstanceIamBindings() SpannerInstanceIamBindingInformer
+	// SpannerInstanceIamMembers returns a SpannerInstanceIamMemberInformer.
+	SpannerInstanceIamMembers() SpannerInstanceIamMemberInformer
+	// SpannerInstanceIamPolicies returns a SpannerInstanceIamPolicyInformer.
+	SpannerInstanceIamPolicies() SpannerInstanceIamPolicyInformer
+	// SqlDatabases returns a SqlDatabaseInformer.
+	SqlDatabases() SqlDatabaseInformer
+	// SqlDatabaseInstances returns a SqlDatabaseInstanceInformer.
+	SqlDatabaseInstances() SqlDatabaseInstanceInformer
+	// SqlSslCerts returns a SqlSslCertInformer.
+	SqlSslCerts() SqlSslCertInformer
+	// SqlUsers returns a SqlUserInformer.
+	SqlUsers() SqlUserInformer
+	// StorageBuckets returns a StorageBucketInformer.
+	StorageBuckets() StorageBucketInformer
+	// StorageBucketAcls returns a StorageBucketAclInformer.
+	StorageBucketAcls() StorageBucketAclInformer
+	// StorageBucketIamBindings returns a StorageBucketIamBindingInformer.
+	StorageBucketIamBindings() StorageBucketIamBindingInformer
+	// StorageBucketIamMembers returns a StorageBucketIamMemberInformer.
+	StorageBucketIamMembers() StorageBucketIamMemberInformer
+	// StorageBucketIamPolicies returns a StorageBucketIamPolicyInformer.
+	StorageBucketIamPolicies() StorageBucketIamPolicyInformer
+	// StorageBucketObjects returns a StorageBucketObjectInformer.
+	StorageBucketObjects() StorageBucketObjectInformer
+	// StorageDefaultObjectAccessControls returns a StorageDefaultObjectAccessControlInformer.
+	StorageDefaultObjectAccessControls() StorageDefaultObjectAccessControlInformer
+	// StorageDefaultObjectAcls returns a StorageDefaultObjectAclInformer.
+	StorageDefaultObjectAcls() StorageDefaultObjectAclInformer
+	// StorageNotifications returns a StorageNotificationInformer.
+	StorageNotifications() StorageNotificationInformer
+	// StorageObjectAccessControls returns a StorageObjectAccessControlInformer.
+	StorageObjectAccessControls() StorageObjectAccessControlInformer
+	// StorageObjectAcls returns a StorageObjectAclInformer.
+	StorageObjectAcls() StorageObjectAclInformer
 }
 
 type version struct {
@@ -345,772 +345,772 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
-// GoogleAppEngineApplications returns a GoogleAppEngineApplicationInformer.
-func (v *version) GoogleAppEngineApplications() GoogleAppEngineApplicationInformer {
-	return &googleAppEngineApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppEngineApplications returns a AppEngineApplicationInformer.
+func (v *version) AppEngineApplications() AppEngineApplicationInformer {
+	return &appEngineApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleBigqueryDatasets returns a GoogleBigqueryDatasetInformer.
-func (v *version) GoogleBigqueryDatasets() GoogleBigqueryDatasetInformer {
-	return &googleBigqueryDatasetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BigqueryDatasets returns a BigqueryDatasetInformer.
+func (v *version) BigqueryDatasets() BigqueryDatasetInformer {
+	return &bigqueryDatasetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleBigqueryTables returns a GoogleBigqueryTableInformer.
-func (v *version) GoogleBigqueryTables() GoogleBigqueryTableInformer {
-	return &googleBigqueryTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BigqueryTables returns a BigqueryTableInformer.
+func (v *version) BigqueryTables() BigqueryTableInformer {
+	return &bigqueryTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleBigtableInstances returns a GoogleBigtableInstanceInformer.
-func (v *version) GoogleBigtableInstances() GoogleBigtableInstanceInformer {
-	return &googleBigtableInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BigtableInstances returns a BigtableInstanceInformer.
+func (v *version) BigtableInstances() BigtableInstanceInformer {
+	return &bigtableInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleBigtableTables returns a GoogleBigtableTableInformer.
-func (v *version) GoogleBigtableTables() GoogleBigtableTableInformer {
-	return &googleBigtableTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BigtableTables returns a BigtableTableInformer.
+func (v *version) BigtableTables() BigtableTableInformer {
+	return &bigtableTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleBillingAccountIamBindings returns a GoogleBillingAccountIamBindingInformer.
-func (v *version) GoogleBillingAccountIamBindings() GoogleBillingAccountIamBindingInformer {
-	return &googleBillingAccountIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BillingAccountIamBindings returns a BillingAccountIamBindingInformer.
+func (v *version) BillingAccountIamBindings() BillingAccountIamBindingInformer {
+	return &billingAccountIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleBillingAccountIamMembers returns a GoogleBillingAccountIamMemberInformer.
-func (v *version) GoogleBillingAccountIamMembers() GoogleBillingAccountIamMemberInformer {
-	return &googleBillingAccountIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BillingAccountIamMembers returns a BillingAccountIamMemberInformer.
+func (v *version) BillingAccountIamMembers() BillingAccountIamMemberInformer {
+	return &billingAccountIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleBillingAccountIamPolicies returns a GoogleBillingAccountIamPolicyInformer.
-func (v *version) GoogleBillingAccountIamPolicies() GoogleBillingAccountIamPolicyInformer {
-	return &googleBillingAccountIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BillingAccountIamPolicies returns a BillingAccountIamPolicyInformer.
+func (v *version) BillingAccountIamPolicies() BillingAccountIamPolicyInformer {
+	return &billingAccountIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleBinaryAuthorizationAttestors returns a GoogleBinaryAuthorizationAttestorInformer.
-func (v *version) GoogleBinaryAuthorizationAttestors() GoogleBinaryAuthorizationAttestorInformer {
-	return &googleBinaryAuthorizationAttestorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BinaryAuthorizationAttestors returns a BinaryAuthorizationAttestorInformer.
+func (v *version) BinaryAuthorizationAttestors() BinaryAuthorizationAttestorInformer {
+	return &binaryAuthorizationAttestorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleBinaryAuthorizationPolicies returns a GoogleBinaryAuthorizationPolicyInformer.
-func (v *version) GoogleBinaryAuthorizationPolicies() GoogleBinaryAuthorizationPolicyInformer {
-	return &googleBinaryAuthorizationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BinaryAuthorizationPolicies returns a BinaryAuthorizationPolicyInformer.
+func (v *version) BinaryAuthorizationPolicies() BinaryAuthorizationPolicyInformer {
+	return &binaryAuthorizationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleCloudbuildTriggers returns a GoogleCloudbuildTriggerInformer.
-func (v *version) GoogleCloudbuildTriggers() GoogleCloudbuildTriggerInformer {
-	return &googleCloudbuildTriggerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudbuildTriggers returns a CloudbuildTriggerInformer.
+func (v *version) CloudbuildTriggers() CloudbuildTriggerInformer {
+	return &cloudbuildTriggerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleCloudfunctionsFunctions returns a GoogleCloudfunctionsFunctionInformer.
-func (v *version) GoogleCloudfunctionsFunctions() GoogleCloudfunctionsFunctionInformer {
-	return &googleCloudfunctionsFunctionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudfunctionsFunctions returns a CloudfunctionsFunctionInformer.
+func (v *version) CloudfunctionsFunctions() CloudfunctionsFunctionInformer {
+	return &cloudfunctionsFunctionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleCloudiotRegistries returns a GoogleCloudiotRegistryInformer.
-func (v *version) GoogleCloudiotRegistries() GoogleCloudiotRegistryInformer {
-	return &googleCloudiotRegistryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudiotRegistries returns a CloudiotRegistryInformer.
+func (v *version) CloudiotRegistries() CloudiotRegistryInformer {
+	return &cloudiotRegistryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComposerEnvironments returns a GoogleComposerEnvironmentInformer.
-func (v *version) GoogleComposerEnvironments() GoogleComposerEnvironmentInformer {
-	return &googleComposerEnvironmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComposerEnvironments returns a ComposerEnvironmentInformer.
+func (v *version) ComposerEnvironments() ComposerEnvironmentInformer {
+	return &composerEnvironmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeAddresses returns a GoogleComputeAddressInformer.
-func (v *version) GoogleComputeAddresses() GoogleComputeAddressInformer {
-	return &googleComputeAddressInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeAddresses returns a ComputeAddressInformer.
+func (v *version) ComputeAddresses() ComputeAddressInformer {
+	return &computeAddressInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeAttachedDisks returns a GoogleComputeAttachedDiskInformer.
-func (v *version) GoogleComputeAttachedDisks() GoogleComputeAttachedDiskInformer {
-	return &googleComputeAttachedDiskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeAttachedDisks returns a ComputeAttachedDiskInformer.
+func (v *version) ComputeAttachedDisks() ComputeAttachedDiskInformer {
+	return &computeAttachedDiskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeAutoscalers returns a GoogleComputeAutoscalerInformer.
-func (v *version) GoogleComputeAutoscalers() GoogleComputeAutoscalerInformer {
-	return &googleComputeAutoscalerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeAutoscalers returns a ComputeAutoscalerInformer.
+func (v *version) ComputeAutoscalers() ComputeAutoscalerInformer {
+	return &computeAutoscalerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeBackendBuckets returns a GoogleComputeBackendBucketInformer.
-func (v *version) GoogleComputeBackendBuckets() GoogleComputeBackendBucketInformer {
-	return &googleComputeBackendBucketInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeBackendBuckets returns a ComputeBackendBucketInformer.
+func (v *version) ComputeBackendBuckets() ComputeBackendBucketInformer {
+	return &computeBackendBucketInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeBackendServices returns a GoogleComputeBackendServiceInformer.
-func (v *version) GoogleComputeBackendServices() GoogleComputeBackendServiceInformer {
-	return &googleComputeBackendServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeBackendServices returns a ComputeBackendServiceInformer.
+func (v *version) ComputeBackendServices() ComputeBackendServiceInformer {
+	return &computeBackendServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeDisks returns a GoogleComputeDiskInformer.
-func (v *version) GoogleComputeDisks() GoogleComputeDiskInformer {
-	return &googleComputeDiskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeDisks returns a ComputeDiskInformer.
+func (v *version) ComputeDisks() ComputeDiskInformer {
+	return &computeDiskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeFirewalls returns a GoogleComputeFirewallInformer.
-func (v *version) GoogleComputeFirewalls() GoogleComputeFirewallInformer {
-	return &googleComputeFirewallInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeFirewalls returns a ComputeFirewallInformer.
+func (v *version) ComputeFirewalls() ComputeFirewallInformer {
+	return &computeFirewallInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeForwardingRules returns a GoogleComputeForwardingRuleInformer.
-func (v *version) GoogleComputeForwardingRules() GoogleComputeForwardingRuleInformer {
-	return &googleComputeForwardingRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeForwardingRules returns a ComputeForwardingRuleInformer.
+func (v *version) ComputeForwardingRules() ComputeForwardingRuleInformer {
+	return &computeForwardingRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeGlobalAddresses returns a GoogleComputeGlobalAddressInformer.
-func (v *version) GoogleComputeGlobalAddresses() GoogleComputeGlobalAddressInformer {
-	return &googleComputeGlobalAddressInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeGlobalAddresses returns a ComputeGlobalAddressInformer.
+func (v *version) ComputeGlobalAddresses() ComputeGlobalAddressInformer {
+	return &computeGlobalAddressInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeGlobalForwardingRules returns a GoogleComputeGlobalForwardingRuleInformer.
-func (v *version) GoogleComputeGlobalForwardingRules() GoogleComputeGlobalForwardingRuleInformer {
-	return &googleComputeGlobalForwardingRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeGlobalForwardingRules returns a ComputeGlobalForwardingRuleInformer.
+func (v *version) ComputeGlobalForwardingRules() ComputeGlobalForwardingRuleInformer {
+	return &computeGlobalForwardingRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeHealthChecks returns a GoogleComputeHealthCheckInformer.
-func (v *version) GoogleComputeHealthChecks() GoogleComputeHealthCheckInformer {
-	return &googleComputeHealthCheckInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeHealthChecks returns a ComputeHealthCheckInformer.
+func (v *version) ComputeHealthChecks() ComputeHealthCheckInformer {
+	return &computeHealthCheckInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeHttpHealthChecks returns a GoogleComputeHttpHealthCheckInformer.
-func (v *version) GoogleComputeHttpHealthChecks() GoogleComputeHttpHealthCheckInformer {
-	return &googleComputeHttpHealthCheckInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeHttpHealthChecks returns a ComputeHttpHealthCheckInformer.
+func (v *version) ComputeHttpHealthChecks() ComputeHttpHealthCheckInformer {
+	return &computeHttpHealthCheckInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeHttpsHealthChecks returns a GoogleComputeHttpsHealthCheckInformer.
-func (v *version) GoogleComputeHttpsHealthChecks() GoogleComputeHttpsHealthCheckInformer {
-	return &googleComputeHttpsHealthCheckInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeHttpsHealthChecks returns a ComputeHttpsHealthCheckInformer.
+func (v *version) ComputeHttpsHealthChecks() ComputeHttpsHealthCheckInformer {
+	return &computeHttpsHealthCheckInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeImages returns a GoogleComputeImageInformer.
-func (v *version) GoogleComputeImages() GoogleComputeImageInformer {
-	return &googleComputeImageInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeImages returns a ComputeImageInformer.
+func (v *version) ComputeImages() ComputeImageInformer {
+	return &computeImageInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeInstances returns a GoogleComputeInstanceInformer.
-func (v *version) GoogleComputeInstances() GoogleComputeInstanceInformer {
-	return &googleComputeInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeInstances returns a ComputeInstanceInformer.
+func (v *version) ComputeInstances() ComputeInstanceInformer {
+	return &computeInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeInstanceFromTemplates returns a GoogleComputeInstanceFromTemplateInformer.
-func (v *version) GoogleComputeInstanceFromTemplates() GoogleComputeInstanceFromTemplateInformer {
-	return &googleComputeInstanceFromTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeInstanceFromTemplates returns a ComputeInstanceFromTemplateInformer.
+func (v *version) ComputeInstanceFromTemplates() ComputeInstanceFromTemplateInformer {
+	return &computeInstanceFromTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeInstanceGroups returns a GoogleComputeInstanceGroupInformer.
-func (v *version) GoogleComputeInstanceGroups() GoogleComputeInstanceGroupInformer {
-	return &googleComputeInstanceGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeInstanceGroups returns a ComputeInstanceGroupInformer.
+func (v *version) ComputeInstanceGroups() ComputeInstanceGroupInformer {
+	return &computeInstanceGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeInstanceGroupManagers returns a GoogleComputeInstanceGroupManagerInformer.
-func (v *version) GoogleComputeInstanceGroupManagers() GoogleComputeInstanceGroupManagerInformer {
-	return &googleComputeInstanceGroupManagerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeInstanceGroupManagers returns a ComputeInstanceGroupManagerInformer.
+func (v *version) ComputeInstanceGroupManagers() ComputeInstanceGroupManagerInformer {
+	return &computeInstanceGroupManagerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeInstanceTemplates returns a GoogleComputeInstanceTemplateInformer.
-func (v *version) GoogleComputeInstanceTemplates() GoogleComputeInstanceTemplateInformer {
-	return &googleComputeInstanceTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeInstanceTemplates returns a ComputeInstanceTemplateInformer.
+func (v *version) ComputeInstanceTemplates() ComputeInstanceTemplateInformer {
+	return &computeInstanceTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeInterconnectAttachments returns a GoogleComputeInterconnectAttachmentInformer.
-func (v *version) GoogleComputeInterconnectAttachments() GoogleComputeInterconnectAttachmentInformer {
-	return &googleComputeInterconnectAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeInterconnectAttachments returns a ComputeInterconnectAttachmentInformer.
+func (v *version) ComputeInterconnectAttachments() ComputeInterconnectAttachmentInformer {
+	return &computeInterconnectAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeNetworks returns a GoogleComputeNetworkInformer.
-func (v *version) GoogleComputeNetworks() GoogleComputeNetworkInformer {
-	return &googleComputeNetworkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeNetworks returns a ComputeNetworkInformer.
+func (v *version) ComputeNetworks() ComputeNetworkInformer {
+	return &computeNetworkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeNetworkPeerings returns a GoogleComputeNetworkPeeringInformer.
-func (v *version) GoogleComputeNetworkPeerings() GoogleComputeNetworkPeeringInformer {
-	return &googleComputeNetworkPeeringInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeNetworkPeerings returns a ComputeNetworkPeeringInformer.
+func (v *version) ComputeNetworkPeerings() ComputeNetworkPeeringInformer {
+	return &computeNetworkPeeringInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeProjectMetadatas returns a GoogleComputeProjectMetadataInformer.
-func (v *version) GoogleComputeProjectMetadatas() GoogleComputeProjectMetadataInformer {
-	return &googleComputeProjectMetadataInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeProjectMetadatas returns a ComputeProjectMetadataInformer.
+func (v *version) ComputeProjectMetadatas() ComputeProjectMetadataInformer {
+	return &computeProjectMetadataInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeProjectMetadataItems returns a GoogleComputeProjectMetadataItemInformer.
-func (v *version) GoogleComputeProjectMetadataItems() GoogleComputeProjectMetadataItemInformer {
-	return &googleComputeProjectMetadataItemInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeProjectMetadataItems returns a ComputeProjectMetadataItemInformer.
+func (v *version) ComputeProjectMetadataItems() ComputeProjectMetadataItemInformer {
+	return &computeProjectMetadataItemInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeRegionAutoscalers returns a GoogleComputeRegionAutoscalerInformer.
-func (v *version) GoogleComputeRegionAutoscalers() GoogleComputeRegionAutoscalerInformer {
-	return &googleComputeRegionAutoscalerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeRegionAutoscalers returns a ComputeRegionAutoscalerInformer.
+func (v *version) ComputeRegionAutoscalers() ComputeRegionAutoscalerInformer {
+	return &computeRegionAutoscalerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeRegionBackendServices returns a GoogleComputeRegionBackendServiceInformer.
-func (v *version) GoogleComputeRegionBackendServices() GoogleComputeRegionBackendServiceInformer {
-	return &googleComputeRegionBackendServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeRegionBackendServices returns a ComputeRegionBackendServiceInformer.
+func (v *version) ComputeRegionBackendServices() ComputeRegionBackendServiceInformer {
+	return &computeRegionBackendServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeRegionDisks returns a GoogleComputeRegionDiskInformer.
-func (v *version) GoogleComputeRegionDisks() GoogleComputeRegionDiskInformer {
-	return &googleComputeRegionDiskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeRegionDisks returns a ComputeRegionDiskInformer.
+func (v *version) ComputeRegionDisks() ComputeRegionDiskInformer {
+	return &computeRegionDiskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeRegionInstanceGroupManagers returns a GoogleComputeRegionInstanceGroupManagerInformer.
-func (v *version) GoogleComputeRegionInstanceGroupManagers() GoogleComputeRegionInstanceGroupManagerInformer {
-	return &googleComputeRegionInstanceGroupManagerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeRegionInstanceGroupManagers returns a ComputeRegionInstanceGroupManagerInformer.
+func (v *version) ComputeRegionInstanceGroupManagers() ComputeRegionInstanceGroupManagerInformer {
+	return &computeRegionInstanceGroupManagerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeRoutes returns a GoogleComputeRouteInformer.
-func (v *version) GoogleComputeRoutes() GoogleComputeRouteInformer {
-	return &googleComputeRouteInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeRoutes returns a ComputeRouteInformer.
+func (v *version) ComputeRoutes() ComputeRouteInformer {
+	return &computeRouteInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeRouters returns a GoogleComputeRouterInformer.
-func (v *version) GoogleComputeRouters() GoogleComputeRouterInformer {
-	return &googleComputeRouterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeRouters returns a ComputeRouterInformer.
+func (v *version) ComputeRouters() ComputeRouterInformer {
+	return &computeRouterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeRouterInterfaces returns a GoogleComputeRouterInterfaceInformer.
-func (v *version) GoogleComputeRouterInterfaces() GoogleComputeRouterInterfaceInformer {
-	return &googleComputeRouterInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeRouterInterfaces returns a ComputeRouterInterfaceInformer.
+func (v *version) ComputeRouterInterfaces() ComputeRouterInterfaceInformer {
+	return &computeRouterInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeRouterNats returns a GoogleComputeRouterNatInformer.
-func (v *version) GoogleComputeRouterNats() GoogleComputeRouterNatInformer {
-	return &googleComputeRouterNatInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeRouterNats returns a ComputeRouterNatInformer.
+func (v *version) ComputeRouterNats() ComputeRouterNatInformer {
+	return &computeRouterNatInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeRouterPeers returns a GoogleComputeRouterPeerInformer.
-func (v *version) GoogleComputeRouterPeers() GoogleComputeRouterPeerInformer {
-	return &googleComputeRouterPeerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeRouterPeers returns a ComputeRouterPeerInformer.
+func (v *version) ComputeRouterPeers() ComputeRouterPeerInformer {
+	return &computeRouterPeerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeSecurityPolicies returns a GoogleComputeSecurityPolicyInformer.
-func (v *version) GoogleComputeSecurityPolicies() GoogleComputeSecurityPolicyInformer {
-	return &googleComputeSecurityPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeSecurityPolicies returns a ComputeSecurityPolicyInformer.
+func (v *version) ComputeSecurityPolicies() ComputeSecurityPolicyInformer {
+	return &computeSecurityPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeSharedVpcHostProjects returns a GoogleComputeSharedVpcHostProjectInformer.
-func (v *version) GoogleComputeSharedVpcHostProjects() GoogleComputeSharedVpcHostProjectInformer {
-	return &googleComputeSharedVpcHostProjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeSharedVpcHostProjects returns a ComputeSharedVpcHostProjectInformer.
+func (v *version) ComputeSharedVpcHostProjects() ComputeSharedVpcHostProjectInformer {
+	return &computeSharedVpcHostProjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeSharedVpcServiceProjects returns a GoogleComputeSharedVpcServiceProjectInformer.
-func (v *version) GoogleComputeSharedVpcServiceProjects() GoogleComputeSharedVpcServiceProjectInformer {
-	return &googleComputeSharedVpcServiceProjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeSharedVpcServiceProjects returns a ComputeSharedVpcServiceProjectInformer.
+func (v *version) ComputeSharedVpcServiceProjects() ComputeSharedVpcServiceProjectInformer {
+	return &computeSharedVpcServiceProjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeSnapshots returns a GoogleComputeSnapshotInformer.
-func (v *version) GoogleComputeSnapshots() GoogleComputeSnapshotInformer {
-	return &googleComputeSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeSnapshots returns a ComputeSnapshotInformer.
+func (v *version) ComputeSnapshots() ComputeSnapshotInformer {
+	return &computeSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeSslCertificates returns a GoogleComputeSslCertificateInformer.
-func (v *version) GoogleComputeSslCertificates() GoogleComputeSslCertificateInformer {
-	return &googleComputeSslCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeSslCertificates returns a ComputeSslCertificateInformer.
+func (v *version) ComputeSslCertificates() ComputeSslCertificateInformer {
+	return &computeSslCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeSslPolicies returns a GoogleComputeSslPolicyInformer.
-func (v *version) GoogleComputeSslPolicies() GoogleComputeSslPolicyInformer {
-	return &googleComputeSslPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeSslPolicies returns a ComputeSslPolicyInformer.
+func (v *version) ComputeSslPolicies() ComputeSslPolicyInformer {
+	return &computeSslPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeSubnetworks returns a GoogleComputeSubnetworkInformer.
-func (v *version) GoogleComputeSubnetworks() GoogleComputeSubnetworkInformer {
-	return &googleComputeSubnetworkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeSubnetworks returns a ComputeSubnetworkInformer.
+func (v *version) ComputeSubnetworks() ComputeSubnetworkInformer {
+	return &computeSubnetworkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeSubnetworkIamBindings returns a GoogleComputeSubnetworkIamBindingInformer.
-func (v *version) GoogleComputeSubnetworkIamBindings() GoogleComputeSubnetworkIamBindingInformer {
-	return &googleComputeSubnetworkIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeSubnetworkIamBindings returns a ComputeSubnetworkIamBindingInformer.
+func (v *version) ComputeSubnetworkIamBindings() ComputeSubnetworkIamBindingInformer {
+	return &computeSubnetworkIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeSubnetworkIamMembers returns a GoogleComputeSubnetworkIamMemberInformer.
-func (v *version) GoogleComputeSubnetworkIamMembers() GoogleComputeSubnetworkIamMemberInformer {
-	return &googleComputeSubnetworkIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeSubnetworkIamMembers returns a ComputeSubnetworkIamMemberInformer.
+func (v *version) ComputeSubnetworkIamMembers() ComputeSubnetworkIamMemberInformer {
+	return &computeSubnetworkIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeSubnetworkIamPolicies returns a GoogleComputeSubnetworkIamPolicyInformer.
-func (v *version) GoogleComputeSubnetworkIamPolicies() GoogleComputeSubnetworkIamPolicyInformer {
-	return &googleComputeSubnetworkIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeSubnetworkIamPolicies returns a ComputeSubnetworkIamPolicyInformer.
+func (v *version) ComputeSubnetworkIamPolicies() ComputeSubnetworkIamPolicyInformer {
+	return &computeSubnetworkIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeTargetHttpProxies returns a GoogleComputeTargetHttpProxyInformer.
-func (v *version) GoogleComputeTargetHttpProxies() GoogleComputeTargetHttpProxyInformer {
-	return &googleComputeTargetHttpProxyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeTargetHttpProxies returns a ComputeTargetHttpProxyInformer.
+func (v *version) ComputeTargetHttpProxies() ComputeTargetHttpProxyInformer {
+	return &computeTargetHttpProxyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeTargetHttpsProxies returns a GoogleComputeTargetHttpsProxyInformer.
-func (v *version) GoogleComputeTargetHttpsProxies() GoogleComputeTargetHttpsProxyInformer {
-	return &googleComputeTargetHttpsProxyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeTargetHttpsProxies returns a ComputeTargetHttpsProxyInformer.
+func (v *version) ComputeTargetHttpsProxies() ComputeTargetHttpsProxyInformer {
+	return &computeTargetHttpsProxyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeTargetPools returns a GoogleComputeTargetPoolInformer.
-func (v *version) GoogleComputeTargetPools() GoogleComputeTargetPoolInformer {
-	return &googleComputeTargetPoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeTargetPools returns a ComputeTargetPoolInformer.
+func (v *version) ComputeTargetPools() ComputeTargetPoolInformer {
+	return &computeTargetPoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeTargetSslProxies returns a GoogleComputeTargetSslProxyInformer.
-func (v *version) GoogleComputeTargetSslProxies() GoogleComputeTargetSslProxyInformer {
-	return &googleComputeTargetSslProxyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeTargetSslProxies returns a ComputeTargetSslProxyInformer.
+func (v *version) ComputeTargetSslProxies() ComputeTargetSslProxyInformer {
+	return &computeTargetSslProxyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeTargetTcpProxies returns a GoogleComputeTargetTcpProxyInformer.
-func (v *version) GoogleComputeTargetTcpProxies() GoogleComputeTargetTcpProxyInformer {
-	return &googleComputeTargetTcpProxyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeTargetTcpProxies returns a ComputeTargetTcpProxyInformer.
+func (v *version) ComputeTargetTcpProxies() ComputeTargetTcpProxyInformer {
+	return &computeTargetTcpProxyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeUrlMaps returns a GoogleComputeUrlMapInformer.
-func (v *version) GoogleComputeUrlMaps() GoogleComputeUrlMapInformer {
-	return &googleComputeUrlMapInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeUrlMaps returns a ComputeUrlMapInformer.
+func (v *version) ComputeUrlMaps() ComputeUrlMapInformer {
+	return &computeUrlMapInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeVpnGateways returns a GoogleComputeVpnGatewayInformer.
-func (v *version) GoogleComputeVpnGateways() GoogleComputeVpnGatewayInformer {
-	return &googleComputeVpnGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeVpnGateways returns a ComputeVpnGatewayInformer.
+func (v *version) ComputeVpnGateways() ComputeVpnGatewayInformer {
+	return &computeVpnGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleComputeVpnTunnels returns a GoogleComputeVpnTunnelInformer.
-func (v *version) GoogleComputeVpnTunnels() GoogleComputeVpnTunnelInformer {
-	return &googleComputeVpnTunnelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ComputeVpnTunnels returns a ComputeVpnTunnelInformer.
+func (v *version) ComputeVpnTunnels() ComputeVpnTunnelInformer {
+	return &computeVpnTunnelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleContainerAnalysisNotes returns a GoogleContainerAnalysisNoteInformer.
-func (v *version) GoogleContainerAnalysisNotes() GoogleContainerAnalysisNoteInformer {
-	return &googleContainerAnalysisNoteInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ContainerAnalysisNotes returns a ContainerAnalysisNoteInformer.
+func (v *version) ContainerAnalysisNotes() ContainerAnalysisNoteInformer {
+	return &containerAnalysisNoteInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleContainerClusters returns a GoogleContainerClusterInformer.
-func (v *version) GoogleContainerClusters() GoogleContainerClusterInformer {
-	return &googleContainerClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ContainerClusters returns a ContainerClusterInformer.
+func (v *version) ContainerClusters() ContainerClusterInformer {
+	return &containerClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleContainerNodePools returns a GoogleContainerNodePoolInformer.
-func (v *version) GoogleContainerNodePools() GoogleContainerNodePoolInformer {
-	return &googleContainerNodePoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ContainerNodePools returns a ContainerNodePoolInformer.
+func (v *version) ContainerNodePools() ContainerNodePoolInformer {
+	return &containerNodePoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleDataflowJobs returns a GoogleDataflowJobInformer.
-func (v *version) GoogleDataflowJobs() GoogleDataflowJobInformer {
-	return &googleDataflowJobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataflowJobs returns a DataflowJobInformer.
+func (v *version) DataflowJobs() DataflowJobInformer {
+	return &dataflowJobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleDataprocClusters returns a GoogleDataprocClusterInformer.
-func (v *version) GoogleDataprocClusters() GoogleDataprocClusterInformer {
-	return &googleDataprocClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataprocClusters returns a DataprocClusterInformer.
+func (v *version) DataprocClusters() DataprocClusterInformer {
+	return &dataprocClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleDataprocJobs returns a GoogleDataprocJobInformer.
-func (v *version) GoogleDataprocJobs() GoogleDataprocJobInformer {
-	return &googleDataprocJobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DataprocJobs returns a DataprocJobInformer.
+func (v *version) DataprocJobs() DataprocJobInformer {
+	return &dataprocJobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleDnsManagedZones returns a GoogleDnsManagedZoneInformer.
-func (v *version) GoogleDnsManagedZones() GoogleDnsManagedZoneInformer {
-	return &googleDnsManagedZoneInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DnsManagedZones returns a DnsManagedZoneInformer.
+func (v *version) DnsManagedZones() DnsManagedZoneInformer {
+	return &dnsManagedZoneInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleDnsRecordSets returns a GoogleDnsRecordSetInformer.
-func (v *version) GoogleDnsRecordSets() GoogleDnsRecordSetInformer {
-	return &googleDnsRecordSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DnsRecordSets returns a DnsRecordSetInformer.
+func (v *version) DnsRecordSets() DnsRecordSetInformer {
+	return &dnsRecordSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleEndpointsServices returns a GoogleEndpointsServiceInformer.
-func (v *version) GoogleEndpointsServices() GoogleEndpointsServiceInformer {
-	return &googleEndpointsServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EndpointsServices returns a EndpointsServiceInformer.
+func (v *version) EndpointsServices() EndpointsServiceInformer {
+	return &endpointsServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleFilestoreInstances returns a GoogleFilestoreInstanceInformer.
-func (v *version) GoogleFilestoreInstances() GoogleFilestoreInstanceInformer {
-	return &googleFilestoreInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// FilestoreInstances returns a FilestoreInstanceInformer.
+func (v *version) FilestoreInstances() FilestoreInstanceInformer {
+	return &filestoreInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleFolders returns a GoogleFolderInformer.
-func (v *version) GoogleFolders() GoogleFolderInformer {
-	return &googleFolderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Folders returns a FolderInformer.
+func (v *version) Folders() FolderInformer {
+	return &folderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleFolderIamBindings returns a GoogleFolderIamBindingInformer.
-func (v *version) GoogleFolderIamBindings() GoogleFolderIamBindingInformer {
-	return &googleFolderIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// FolderIamBindings returns a FolderIamBindingInformer.
+func (v *version) FolderIamBindings() FolderIamBindingInformer {
+	return &folderIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleFolderIamMembers returns a GoogleFolderIamMemberInformer.
-func (v *version) GoogleFolderIamMembers() GoogleFolderIamMemberInformer {
-	return &googleFolderIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// FolderIamMembers returns a FolderIamMemberInformer.
+func (v *version) FolderIamMembers() FolderIamMemberInformer {
+	return &folderIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleFolderIamPolicies returns a GoogleFolderIamPolicyInformer.
-func (v *version) GoogleFolderIamPolicies() GoogleFolderIamPolicyInformer {
-	return &googleFolderIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// FolderIamPolicies returns a FolderIamPolicyInformer.
+func (v *version) FolderIamPolicies() FolderIamPolicyInformer {
+	return &folderIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleFolderOrganizationPolicies returns a GoogleFolderOrganizationPolicyInformer.
-func (v *version) GoogleFolderOrganizationPolicies() GoogleFolderOrganizationPolicyInformer {
-	return &googleFolderOrganizationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// FolderOrganizationPolicies returns a FolderOrganizationPolicyInformer.
+func (v *version) FolderOrganizationPolicies() FolderOrganizationPolicyInformer {
+	return &folderOrganizationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleKmsCryptoKeys returns a GoogleKmsCryptoKeyInformer.
-func (v *version) GoogleKmsCryptoKeys() GoogleKmsCryptoKeyInformer {
-	return &googleKmsCryptoKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KmsCryptoKeys returns a KmsCryptoKeyInformer.
+func (v *version) KmsCryptoKeys() KmsCryptoKeyInformer {
+	return &kmsCryptoKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleKmsCryptoKeyIamBindings returns a GoogleKmsCryptoKeyIamBindingInformer.
-func (v *version) GoogleKmsCryptoKeyIamBindings() GoogleKmsCryptoKeyIamBindingInformer {
-	return &googleKmsCryptoKeyIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KmsCryptoKeyIamBindings returns a KmsCryptoKeyIamBindingInformer.
+func (v *version) KmsCryptoKeyIamBindings() KmsCryptoKeyIamBindingInformer {
+	return &kmsCryptoKeyIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleKmsCryptoKeyIamMembers returns a GoogleKmsCryptoKeyIamMemberInformer.
-func (v *version) GoogleKmsCryptoKeyIamMembers() GoogleKmsCryptoKeyIamMemberInformer {
-	return &googleKmsCryptoKeyIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KmsCryptoKeyIamMembers returns a KmsCryptoKeyIamMemberInformer.
+func (v *version) KmsCryptoKeyIamMembers() KmsCryptoKeyIamMemberInformer {
+	return &kmsCryptoKeyIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleKmsKeyRings returns a GoogleKmsKeyRingInformer.
-func (v *version) GoogleKmsKeyRings() GoogleKmsKeyRingInformer {
-	return &googleKmsKeyRingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KmsKeyRings returns a KmsKeyRingInformer.
+func (v *version) KmsKeyRings() KmsKeyRingInformer {
+	return &kmsKeyRingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleKmsKeyRingIamBindings returns a GoogleKmsKeyRingIamBindingInformer.
-func (v *version) GoogleKmsKeyRingIamBindings() GoogleKmsKeyRingIamBindingInformer {
-	return &googleKmsKeyRingIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KmsKeyRingIamBindings returns a KmsKeyRingIamBindingInformer.
+func (v *version) KmsKeyRingIamBindings() KmsKeyRingIamBindingInformer {
+	return &kmsKeyRingIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleKmsKeyRingIamMembers returns a GoogleKmsKeyRingIamMemberInformer.
-func (v *version) GoogleKmsKeyRingIamMembers() GoogleKmsKeyRingIamMemberInformer {
-	return &googleKmsKeyRingIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KmsKeyRingIamMembers returns a KmsKeyRingIamMemberInformer.
+func (v *version) KmsKeyRingIamMembers() KmsKeyRingIamMemberInformer {
+	return &kmsKeyRingIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleKmsKeyRingIamPolicies returns a GoogleKmsKeyRingIamPolicyInformer.
-func (v *version) GoogleKmsKeyRingIamPolicies() GoogleKmsKeyRingIamPolicyInformer {
-	return &googleKmsKeyRingIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KmsKeyRingIamPolicies returns a KmsKeyRingIamPolicyInformer.
+func (v *version) KmsKeyRingIamPolicies() KmsKeyRingIamPolicyInformer {
+	return &kmsKeyRingIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleLoggingBillingAccountExclusions returns a GoogleLoggingBillingAccountExclusionInformer.
-func (v *version) GoogleLoggingBillingAccountExclusions() GoogleLoggingBillingAccountExclusionInformer {
-	return &googleLoggingBillingAccountExclusionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LoggingBillingAccountExclusions returns a LoggingBillingAccountExclusionInformer.
+func (v *version) LoggingBillingAccountExclusions() LoggingBillingAccountExclusionInformer {
+	return &loggingBillingAccountExclusionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleLoggingBillingAccountSinks returns a GoogleLoggingBillingAccountSinkInformer.
-func (v *version) GoogleLoggingBillingAccountSinks() GoogleLoggingBillingAccountSinkInformer {
-	return &googleLoggingBillingAccountSinkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LoggingBillingAccountSinks returns a LoggingBillingAccountSinkInformer.
+func (v *version) LoggingBillingAccountSinks() LoggingBillingAccountSinkInformer {
+	return &loggingBillingAccountSinkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleLoggingFolderExclusions returns a GoogleLoggingFolderExclusionInformer.
-func (v *version) GoogleLoggingFolderExclusions() GoogleLoggingFolderExclusionInformer {
-	return &googleLoggingFolderExclusionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LoggingFolderExclusions returns a LoggingFolderExclusionInformer.
+func (v *version) LoggingFolderExclusions() LoggingFolderExclusionInformer {
+	return &loggingFolderExclusionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleLoggingFolderSinks returns a GoogleLoggingFolderSinkInformer.
-func (v *version) GoogleLoggingFolderSinks() GoogleLoggingFolderSinkInformer {
-	return &googleLoggingFolderSinkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LoggingFolderSinks returns a LoggingFolderSinkInformer.
+func (v *version) LoggingFolderSinks() LoggingFolderSinkInformer {
+	return &loggingFolderSinkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleLoggingOrganizationExclusions returns a GoogleLoggingOrganizationExclusionInformer.
-func (v *version) GoogleLoggingOrganizationExclusions() GoogleLoggingOrganizationExclusionInformer {
-	return &googleLoggingOrganizationExclusionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LoggingOrganizationExclusions returns a LoggingOrganizationExclusionInformer.
+func (v *version) LoggingOrganizationExclusions() LoggingOrganizationExclusionInformer {
+	return &loggingOrganizationExclusionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleLoggingOrganizationSinks returns a GoogleLoggingOrganizationSinkInformer.
-func (v *version) GoogleLoggingOrganizationSinks() GoogleLoggingOrganizationSinkInformer {
-	return &googleLoggingOrganizationSinkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LoggingOrganizationSinks returns a LoggingOrganizationSinkInformer.
+func (v *version) LoggingOrganizationSinks() LoggingOrganizationSinkInformer {
+	return &loggingOrganizationSinkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleLoggingProjectExclusions returns a GoogleLoggingProjectExclusionInformer.
-func (v *version) GoogleLoggingProjectExclusions() GoogleLoggingProjectExclusionInformer {
-	return &googleLoggingProjectExclusionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LoggingProjectExclusions returns a LoggingProjectExclusionInformer.
+func (v *version) LoggingProjectExclusions() LoggingProjectExclusionInformer {
+	return &loggingProjectExclusionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleLoggingProjectSinks returns a GoogleLoggingProjectSinkInformer.
-func (v *version) GoogleLoggingProjectSinks() GoogleLoggingProjectSinkInformer {
-	return &googleLoggingProjectSinkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LoggingProjectSinks returns a LoggingProjectSinkInformer.
+func (v *version) LoggingProjectSinks() LoggingProjectSinkInformer {
+	return &loggingProjectSinkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleMonitoringAlertPolicies returns a GoogleMonitoringAlertPolicyInformer.
-func (v *version) GoogleMonitoringAlertPolicies() GoogleMonitoringAlertPolicyInformer {
-	return &googleMonitoringAlertPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MonitoringAlertPolicies returns a MonitoringAlertPolicyInformer.
+func (v *version) MonitoringAlertPolicies() MonitoringAlertPolicyInformer {
+	return &monitoringAlertPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleMonitoringGroups returns a GoogleMonitoringGroupInformer.
-func (v *version) GoogleMonitoringGroups() GoogleMonitoringGroupInformer {
-	return &googleMonitoringGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MonitoringGroups returns a MonitoringGroupInformer.
+func (v *version) MonitoringGroups() MonitoringGroupInformer {
+	return &monitoringGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleMonitoringNotificationChannels returns a GoogleMonitoringNotificationChannelInformer.
-func (v *version) GoogleMonitoringNotificationChannels() GoogleMonitoringNotificationChannelInformer {
-	return &googleMonitoringNotificationChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MonitoringNotificationChannels returns a MonitoringNotificationChannelInformer.
+func (v *version) MonitoringNotificationChannels() MonitoringNotificationChannelInformer {
+	return &monitoringNotificationChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleMonitoringUptimeCheckConfigs returns a GoogleMonitoringUptimeCheckConfigInformer.
-func (v *version) GoogleMonitoringUptimeCheckConfigs() GoogleMonitoringUptimeCheckConfigInformer {
-	return &googleMonitoringUptimeCheckConfigInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MonitoringUptimeCheckConfigs returns a MonitoringUptimeCheckConfigInformer.
+func (v *version) MonitoringUptimeCheckConfigs() MonitoringUptimeCheckConfigInformer {
+	return &monitoringUptimeCheckConfigInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleOrganizationIamBindings returns a GoogleOrganizationIamBindingInformer.
-func (v *version) GoogleOrganizationIamBindings() GoogleOrganizationIamBindingInformer {
-	return &googleOrganizationIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OrganizationIamBindings returns a OrganizationIamBindingInformer.
+func (v *version) OrganizationIamBindings() OrganizationIamBindingInformer {
+	return &organizationIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleOrganizationIamCustomRoles returns a GoogleOrganizationIamCustomRoleInformer.
-func (v *version) GoogleOrganizationIamCustomRoles() GoogleOrganizationIamCustomRoleInformer {
-	return &googleOrganizationIamCustomRoleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OrganizationIamCustomRoles returns a OrganizationIamCustomRoleInformer.
+func (v *version) OrganizationIamCustomRoles() OrganizationIamCustomRoleInformer {
+	return &organizationIamCustomRoleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleOrganizationIamMembers returns a GoogleOrganizationIamMemberInformer.
-func (v *version) GoogleOrganizationIamMembers() GoogleOrganizationIamMemberInformer {
-	return &googleOrganizationIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OrganizationIamMembers returns a OrganizationIamMemberInformer.
+func (v *version) OrganizationIamMembers() OrganizationIamMemberInformer {
+	return &organizationIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleOrganizationIamPolicies returns a GoogleOrganizationIamPolicyInformer.
-func (v *version) GoogleOrganizationIamPolicies() GoogleOrganizationIamPolicyInformer {
-	return &googleOrganizationIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OrganizationIamPolicies returns a OrganizationIamPolicyInformer.
+func (v *version) OrganizationIamPolicies() OrganizationIamPolicyInformer {
+	return &organizationIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleOrganizationPolicies returns a GoogleOrganizationPolicyInformer.
-func (v *version) GoogleOrganizationPolicies() GoogleOrganizationPolicyInformer {
-	return &googleOrganizationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OrganizationPolicies returns a OrganizationPolicyInformer.
+func (v *version) OrganizationPolicies() OrganizationPolicyInformer {
+	return &organizationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleProjects returns a GoogleProjectInformer.
-func (v *version) GoogleProjects() GoogleProjectInformer {
-	return &googleProjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Projects returns a ProjectInformer.
+func (v *version) Projects() ProjectInformer {
+	return &projectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleProjectIamBindings returns a GoogleProjectIamBindingInformer.
-func (v *version) GoogleProjectIamBindings() GoogleProjectIamBindingInformer {
-	return &googleProjectIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ProjectIamBindings returns a ProjectIamBindingInformer.
+func (v *version) ProjectIamBindings() ProjectIamBindingInformer {
+	return &projectIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleProjectIamCustomRoles returns a GoogleProjectIamCustomRoleInformer.
-func (v *version) GoogleProjectIamCustomRoles() GoogleProjectIamCustomRoleInformer {
-	return &googleProjectIamCustomRoleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ProjectIamCustomRoles returns a ProjectIamCustomRoleInformer.
+func (v *version) ProjectIamCustomRoles() ProjectIamCustomRoleInformer {
+	return &projectIamCustomRoleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleProjectIamMembers returns a GoogleProjectIamMemberInformer.
-func (v *version) GoogleProjectIamMembers() GoogleProjectIamMemberInformer {
-	return &googleProjectIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ProjectIamMembers returns a ProjectIamMemberInformer.
+func (v *version) ProjectIamMembers() ProjectIamMemberInformer {
+	return &projectIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleProjectIamPolicies returns a GoogleProjectIamPolicyInformer.
-func (v *version) GoogleProjectIamPolicies() GoogleProjectIamPolicyInformer {
-	return &googleProjectIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ProjectIamPolicies returns a ProjectIamPolicyInformer.
+func (v *version) ProjectIamPolicies() ProjectIamPolicyInformer {
+	return &projectIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleProjectOrganizationPolicies returns a GoogleProjectOrganizationPolicyInformer.
-func (v *version) GoogleProjectOrganizationPolicies() GoogleProjectOrganizationPolicyInformer {
-	return &googleProjectOrganizationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ProjectOrganizationPolicies returns a ProjectOrganizationPolicyInformer.
+func (v *version) ProjectOrganizationPolicies() ProjectOrganizationPolicyInformer {
+	return &projectOrganizationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleProjectServices returns a GoogleProjectServiceInformer.
-func (v *version) GoogleProjectServices() GoogleProjectServiceInformer {
-	return &googleProjectServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ProjectServices returns a ProjectServiceInformer.
+func (v *version) ProjectServices() ProjectServiceInformer {
+	return &projectServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleProjectServiceses returns a GoogleProjectServicesInformer.
-func (v *version) GoogleProjectServiceses() GoogleProjectServicesInformer {
-	return &googleProjectServicesInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ProjectServiceses returns a ProjectServicesInformer.
+func (v *version) ProjectServiceses() ProjectServicesInformer {
+	return &projectServicesInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleProjectUsageExportBuckets returns a GoogleProjectUsageExportBucketInformer.
-func (v *version) GoogleProjectUsageExportBuckets() GoogleProjectUsageExportBucketInformer {
-	return &googleProjectUsageExportBucketInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ProjectUsageExportBuckets returns a ProjectUsageExportBucketInformer.
+func (v *version) ProjectUsageExportBuckets() ProjectUsageExportBucketInformer {
+	return &projectUsageExportBucketInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GooglePubsubSubscriptions returns a GooglePubsubSubscriptionInformer.
-func (v *version) GooglePubsubSubscriptions() GooglePubsubSubscriptionInformer {
-	return &googlePubsubSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PubsubSubscriptions returns a PubsubSubscriptionInformer.
+func (v *version) PubsubSubscriptions() PubsubSubscriptionInformer {
+	return &pubsubSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GooglePubsubSubscriptionIamBindings returns a GooglePubsubSubscriptionIamBindingInformer.
-func (v *version) GooglePubsubSubscriptionIamBindings() GooglePubsubSubscriptionIamBindingInformer {
-	return &googlePubsubSubscriptionIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PubsubSubscriptionIamBindings returns a PubsubSubscriptionIamBindingInformer.
+func (v *version) PubsubSubscriptionIamBindings() PubsubSubscriptionIamBindingInformer {
+	return &pubsubSubscriptionIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GooglePubsubSubscriptionIamMembers returns a GooglePubsubSubscriptionIamMemberInformer.
-func (v *version) GooglePubsubSubscriptionIamMembers() GooglePubsubSubscriptionIamMemberInformer {
-	return &googlePubsubSubscriptionIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PubsubSubscriptionIamMembers returns a PubsubSubscriptionIamMemberInformer.
+func (v *version) PubsubSubscriptionIamMembers() PubsubSubscriptionIamMemberInformer {
+	return &pubsubSubscriptionIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GooglePubsubSubscriptionIamPolicies returns a GooglePubsubSubscriptionIamPolicyInformer.
-func (v *version) GooglePubsubSubscriptionIamPolicies() GooglePubsubSubscriptionIamPolicyInformer {
-	return &googlePubsubSubscriptionIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PubsubSubscriptionIamPolicies returns a PubsubSubscriptionIamPolicyInformer.
+func (v *version) PubsubSubscriptionIamPolicies() PubsubSubscriptionIamPolicyInformer {
+	return &pubsubSubscriptionIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GooglePubsubTopics returns a GooglePubsubTopicInformer.
-func (v *version) GooglePubsubTopics() GooglePubsubTopicInformer {
-	return &googlePubsubTopicInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PubsubTopics returns a PubsubTopicInformer.
+func (v *version) PubsubTopics() PubsubTopicInformer {
+	return &pubsubTopicInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GooglePubsubTopicIamBindings returns a GooglePubsubTopicIamBindingInformer.
-func (v *version) GooglePubsubTopicIamBindings() GooglePubsubTopicIamBindingInformer {
-	return &googlePubsubTopicIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PubsubTopicIamBindings returns a PubsubTopicIamBindingInformer.
+func (v *version) PubsubTopicIamBindings() PubsubTopicIamBindingInformer {
+	return &pubsubTopicIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GooglePubsubTopicIamMembers returns a GooglePubsubTopicIamMemberInformer.
-func (v *version) GooglePubsubTopicIamMembers() GooglePubsubTopicIamMemberInformer {
-	return &googlePubsubTopicIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PubsubTopicIamMembers returns a PubsubTopicIamMemberInformer.
+func (v *version) PubsubTopicIamMembers() PubsubTopicIamMemberInformer {
+	return &pubsubTopicIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GooglePubsubTopicIamPolicies returns a GooglePubsubTopicIamPolicyInformer.
-func (v *version) GooglePubsubTopicIamPolicies() GooglePubsubTopicIamPolicyInformer {
-	return &googlePubsubTopicIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PubsubTopicIamPolicies returns a PubsubTopicIamPolicyInformer.
+func (v *version) PubsubTopicIamPolicies() PubsubTopicIamPolicyInformer {
+	return &pubsubTopicIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleRedisInstances returns a GoogleRedisInstanceInformer.
-func (v *version) GoogleRedisInstances() GoogleRedisInstanceInformer {
-	return &googleRedisInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RedisInstances returns a RedisInstanceInformer.
+func (v *version) RedisInstances() RedisInstanceInformer {
+	return &redisInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleResourceManagerLiens returns a GoogleResourceManagerLienInformer.
-func (v *version) GoogleResourceManagerLiens() GoogleResourceManagerLienInformer {
-	return &googleResourceManagerLienInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ResourceManagerLiens returns a ResourceManagerLienInformer.
+func (v *version) ResourceManagerLiens() ResourceManagerLienInformer {
+	return &resourceManagerLienInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleRuntimeconfigConfigs returns a GoogleRuntimeconfigConfigInformer.
-func (v *version) GoogleRuntimeconfigConfigs() GoogleRuntimeconfigConfigInformer {
-	return &googleRuntimeconfigConfigInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RuntimeconfigConfigs returns a RuntimeconfigConfigInformer.
+func (v *version) RuntimeconfigConfigs() RuntimeconfigConfigInformer {
+	return &runtimeconfigConfigInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleRuntimeconfigVariables returns a GoogleRuntimeconfigVariableInformer.
-func (v *version) GoogleRuntimeconfigVariables() GoogleRuntimeconfigVariableInformer {
-	return &googleRuntimeconfigVariableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RuntimeconfigVariables returns a RuntimeconfigVariableInformer.
+func (v *version) RuntimeconfigVariables() RuntimeconfigVariableInformer {
+	return &runtimeconfigVariableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleServiceAccounts returns a GoogleServiceAccountInformer.
-func (v *version) GoogleServiceAccounts() GoogleServiceAccountInformer {
-	return &googleServiceAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServiceAccounts returns a ServiceAccountInformer.
+func (v *version) ServiceAccounts() ServiceAccountInformer {
+	return &serviceAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleServiceAccountIamBindings returns a GoogleServiceAccountIamBindingInformer.
-func (v *version) GoogleServiceAccountIamBindings() GoogleServiceAccountIamBindingInformer {
-	return &googleServiceAccountIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServiceAccountIamBindings returns a ServiceAccountIamBindingInformer.
+func (v *version) ServiceAccountIamBindings() ServiceAccountIamBindingInformer {
+	return &serviceAccountIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleServiceAccountIamMembers returns a GoogleServiceAccountIamMemberInformer.
-func (v *version) GoogleServiceAccountIamMembers() GoogleServiceAccountIamMemberInformer {
-	return &googleServiceAccountIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServiceAccountIamMembers returns a ServiceAccountIamMemberInformer.
+func (v *version) ServiceAccountIamMembers() ServiceAccountIamMemberInformer {
+	return &serviceAccountIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleServiceAccountIamPolicies returns a GoogleServiceAccountIamPolicyInformer.
-func (v *version) GoogleServiceAccountIamPolicies() GoogleServiceAccountIamPolicyInformer {
-	return &googleServiceAccountIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServiceAccountIamPolicies returns a ServiceAccountIamPolicyInformer.
+func (v *version) ServiceAccountIamPolicies() ServiceAccountIamPolicyInformer {
+	return &serviceAccountIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleServiceAccountKeys returns a GoogleServiceAccountKeyInformer.
-func (v *version) GoogleServiceAccountKeys() GoogleServiceAccountKeyInformer {
-	return &googleServiceAccountKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServiceAccountKeys returns a ServiceAccountKeyInformer.
+func (v *version) ServiceAccountKeys() ServiceAccountKeyInformer {
+	return &serviceAccountKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSourcerepoRepositories returns a GoogleSourcerepoRepositoryInformer.
-func (v *version) GoogleSourcerepoRepositories() GoogleSourcerepoRepositoryInformer {
-	return &googleSourcerepoRepositoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SourcerepoRepositories returns a SourcerepoRepositoryInformer.
+func (v *version) SourcerepoRepositories() SourcerepoRepositoryInformer {
+	return &sourcerepoRepositoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSpannerDatabases returns a GoogleSpannerDatabaseInformer.
-func (v *version) GoogleSpannerDatabases() GoogleSpannerDatabaseInformer {
-	return &googleSpannerDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SpannerDatabases returns a SpannerDatabaseInformer.
+func (v *version) SpannerDatabases() SpannerDatabaseInformer {
+	return &spannerDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSpannerDatabaseIamBindings returns a GoogleSpannerDatabaseIamBindingInformer.
-func (v *version) GoogleSpannerDatabaseIamBindings() GoogleSpannerDatabaseIamBindingInformer {
-	return &googleSpannerDatabaseIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SpannerDatabaseIamBindings returns a SpannerDatabaseIamBindingInformer.
+func (v *version) SpannerDatabaseIamBindings() SpannerDatabaseIamBindingInformer {
+	return &spannerDatabaseIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSpannerDatabaseIamMembers returns a GoogleSpannerDatabaseIamMemberInformer.
-func (v *version) GoogleSpannerDatabaseIamMembers() GoogleSpannerDatabaseIamMemberInformer {
-	return &googleSpannerDatabaseIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SpannerDatabaseIamMembers returns a SpannerDatabaseIamMemberInformer.
+func (v *version) SpannerDatabaseIamMembers() SpannerDatabaseIamMemberInformer {
+	return &spannerDatabaseIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSpannerDatabaseIamPolicies returns a GoogleSpannerDatabaseIamPolicyInformer.
-func (v *version) GoogleSpannerDatabaseIamPolicies() GoogleSpannerDatabaseIamPolicyInformer {
-	return &googleSpannerDatabaseIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SpannerDatabaseIamPolicies returns a SpannerDatabaseIamPolicyInformer.
+func (v *version) SpannerDatabaseIamPolicies() SpannerDatabaseIamPolicyInformer {
+	return &spannerDatabaseIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSpannerInstances returns a GoogleSpannerInstanceInformer.
-func (v *version) GoogleSpannerInstances() GoogleSpannerInstanceInformer {
-	return &googleSpannerInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SpannerInstances returns a SpannerInstanceInformer.
+func (v *version) SpannerInstances() SpannerInstanceInformer {
+	return &spannerInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSpannerInstanceIamBindings returns a GoogleSpannerInstanceIamBindingInformer.
-func (v *version) GoogleSpannerInstanceIamBindings() GoogleSpannerInstanceIamBindingInformer {
-	return &googleSpannerInstanceIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SpannerInstanceIamBindings returns a SpannerInstanceIamBindingInformer.
+func (v *version) SpannerInstanceIamBindings() SpannerInstanceIamBindingInformer {
+	return &spannerInstanceIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSpannerInstanceIamMembers returns a GoogleSpannerInstanceIamMemberInformer.
-func (v *version) GoogleSpannerInstanceIamMembers() GoogleSpannerInstanceIamMemberInformer {
-	return &googleSpannerInstanceIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SpannerInstanceIamMembers returns a SpannerInstanceIamMemberInformer.
+func (v *version) SpannerInstanceIamMembers() SpannerInstanceIamMemberInformer {
+	return &spannerInstanceIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSpannerInstanceIamPolicies returns a GoogleSpannerInstanceIamPolicyInformer.
-func (v *version) GoogleSpannerInstanceIamPolicies() GoogleSpannerInstanceIamPolicyInformer {
-	return &googleSpannerInstanceIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SpannerInstanceIamPolicies returns a SpannerInstanceIamPolicyInformer.
+func (v *version) SpannerInstanceIamPolicies() SpannerInstanceIamPolicyInformer {
+	return &spannerInstanceIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSqlDatabases returns a GoogleSqlDatabaseInformer.
-func (v *version) GoogleSqlDatabases() GoogleSqlDatabaseInformer {
-	return &googleSqlDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SqlDatabases returns a SqlDatabaseInformer.
+func (v *version) SqlDatabases() SqlDatabaseInformer {
+	return &sqlDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSqlDatabaseInstances returns a GoogleSqlDatabaseInstanceInformer.
-func (v *version) GoogleSqlDatabaseInstances() GoogleSqlDatabaseInstanceInformer {
-	return &googleSqlDatabaseInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SqlDatabaseInstances returns a SqlDatabaseInstanceInformer.
+func (v *version) SqlDatabaseInstances() SqlDatabaseInstanceInformer {
+	return &sqlDatabaseInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSqlSslCerts returns a GoogleSqlSslCertInformer.
-func (v *version) GoogleSqlSslCerts() GoogleSqlSslCertInformer {
-	return &googleSqlSslCertInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SqlSslCerts returns a SqlSslCertInformer.
+func (v *version) SqlSslCerts() SqlSslCertInformer {
+	return &sqlSslCertInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleSqlUsers returns a GoogleSqlUserInformer.
-func (v *version) GoogleSqlUsers() GoogleSqlUserInformer {
-	return &googleSqlUserInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SqlUsers returns a SqlUserInformer.
+func (v *version) SqlUsers() SqlUserInformer {
+	return &sqlUserInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleStorageBuckets returns a GoogleStorageBucketInformer.
-func (v *version) GoogleStorageBuckets() GoogleStorageBucketInformer {
-	return &googleStorageBucketInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageBuckets returns a StorageBucketInformer.
+func (v *version) StorageBuckets() StorageBucketInformer {
+	return &storageBucketInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleStorageBucketAcls returns a GoogleStorageBucketAclInformer.
-func (v *version) GoogleStorageBucketAcls() GoogleStorageBucketAclInformer {
-	return &googleStorageBucketAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageBucketAcls returns a StorageBucketAclInformer.
+func (v *version) StorageBucketAcls() StorageBucketAclInformer {
+	return &storageBucketAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleStorageBucketIamBindings returns a GoogleStorageBucketIamBindingInformer.
-func (v *version) GoogleStorageBucketIamBindings() GoogleStorageBucketIamBindingInformer {
-	return &googleStorageBucketIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageBucketIamBindings returns a StorageBucketIamBindingInformer.
+func (v *version) StorageBucketIamBindings() StorageBucketIamBindingInformer {
+	return &storageBucketIamBindingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleStorageBucketIamMembers returns a GoogleStorageBucketIamMemberInformer.
-func (v *version) GoogleStorageBucketIamMembers() GoogleStorageBucketIamMemberInformer {
-	return &googleStorageBucketIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageBucketIamMembers returns a StorageBucketIamMemberInformer.
+func (v *version) StorageBucketIamMembers() StorageBucketIamMemberInformer {
+	return &storageBucketIamMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleStorageBucketIamPolicies returns a GoogleStorageBucketIamPolicyInformer.
-func (v *version) GoogleStorageBucketIamPolicies() GoogleStorageBucketIamPolicyInformer {
-	return &googleStorageBucketIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageBucketIamPolicies returns a StorageBucketIamPolicyInformer.
+func (v *version) StorageBucketIamPolicies() StorageBucketIamPolicyInformer {
+	return &storageBucketIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleStorageBucketObjects returns a GoogleStorageBucketObjectInformer.
-func (v *version) GoogleStorageBucketObjects() GoogleStorageBucketObjectInformer {
-	return &googleStorageBucketObjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageBucketObjects returns a StorageBucketObjectInformer.
+func (v *version) StorageBucketObjects() StorageBucketObjectInformer {
+	return &storageBucketObjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleStorageDefaultObjectAccessControls returns a GoogleStorageDefaultObjectAccessControlInformer.
-func (v *version) GoogleStorageDefaultObjectAccessControls() GoogleStorageDefaultObjectAccessControlInformer {
-	return &googleStorageDefaultObjectAccessControlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageDefaultObjectAccessControls returns a StorageDefaultObjectAccessControlInformer.
+func (v *version) StorageDefaultObjectAccessControls() StorageDefaultObjectAccessControlInformer {
+	return &storageDefaultObjectAccessControlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleStorageDefaultObjectAcls returns a GoogleStorageDefaultObjectAclInformer.
-func (v *version) GoogleStorageDefaultObjectAcls() GoogleStorageDefaultObjectAclInformer {
-	return &googleStorageDefaultObjectAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageDefaultObjectAcls returns a StorageDefaultObjectAclInformer.
+func (v *version) StorageDefaultObjectAcls() StorageDefaultObjectAclInformer {
+	return &storageDefaultObjectAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleStorageNotifications returns a GoogleStorageNotificationInformer.
-func (v *version) GoogleStorageNotifications() GoogleStorageNotificationInformer {
-	return &googleStorageNotificationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageNotifications returns a StorageNotificationInformer.
+func (v *version) StorageNotifications() StorageNotificationInformer {
+	return &storageNotificationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleStorageObjectAccessControls returns a GoogleStorageObjectAccessControlInformer.
-func (v *version) GoogleStorageObjectAccessControls() GoogleStorageObjectAccessControlInformer {
-	return &googleStorageObjectAccessControlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageObjectAccessControls returns a StorageObjectAccessControlInformer.
+func (v *version) StorageObjectAccessControls() StorageObjectAccessControlInformer {
+	return &storageObjectAccessControlInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// GoogleStorageObjectAcls returns a GoogleStorageObjectAclInformer.
-func (v *version) GoogleStorageObjectAcls() GoogleStorageObjectAclInformer {
-	return &googleStorageObjectAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StorageObjectAcls returns a StorageObjectAclInformer.
+func (v *version) StorageObjectAcls() StorageObjectAclInformer {
+	return &storageObjectAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }

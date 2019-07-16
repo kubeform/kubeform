@@ -24,1034 +24,1034 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
-	// AwsAcmCertificates returns a AwsAcmCertificateInformer.
-	AwsAcmCertificates() AwsAcmCertificateInformer
-	// AwsAcmCertificateValidations returns a AwsAcmCertificateValidationInformer.
-	AwsAcmCertificateValidations() AwsAcmCertificateValidationInformer
-	// AwsAcmpcaCertificateAuthorities returns a AwsAcmpcaCertificateAuthorityInformer.
-	AwsAcmpcaCertificateAuthorities() AwsAcmpcaCertificateAuthorityInformer
-	// AwsAlbs returns a AwsAlbInformer.
-	AwsAlbs() AwsAlbInformer
-	// AwsAlbListeners returns a AwsAlbListenerInformer.
-	AwsAlbListeners() AwsAlbListenerInformer
-	// AwsAlbListenerCertificates returns a AwsAlbListenerCertificateInformer.
-	AwsAlbListenerCertificates() AwsAlbListenerCertificateInformer
-	// AwsAlbListenerRules returns a AwsAlbListenerRuleInformer.
-	AwsAlbListenerRules() AwsAlbListenerRuleInformer
-	// AwsAlbTargetGroups returns a AwsAlbTargetGroupInformer.
-	AwsAlbTargetGroups() AwsAlbTargetGroupInformer
-	// AwsAlbTargetGroupAttachments returns a AwsAlbTargetGroupAttachmentInformer.
-	AwsAlbTargetGroupAttachments() AwsAlbTargetGroupAttachmentInformer
-	// AwsAmis returns a AwsAmiInformer.
-	AwsAmis() AwsAmiInformer
-	// AwsAmiCopies returns a AwsAmiCopyInformer.
-	AwsAmiCopies() AwsAmiCopyInformer
-	// AwsAmiFromInstances returns a AwsAmiFromInstanceInformer.
-	AwsAmiFromInstances() AwsAmiFromInstanceInformer
-	// AwsAmiLaunchPermissions returns a AwsAmiLaunchPermissionInformer.
-	AwsAmiLaunchPermissions() AwsAmiLaunchPermissionInformer
-	// AwsApiGatewayAccounts returns a AwsApiGatewayAccountInformer.
-	AwsApiGatewayAccounts() AwsApiGatewayAccountInformer
-	// AwsApiGatewayApiKeys returns a AwsApiGatewayApiKeyInformer.
-	AwsApiGatewayApiKeys() AwsApiGatewayApiKeyInformer
-	// AwsApiGatewayAuthorizers returns a AwsApiGatewayAuthorizerInformer.
-	AwsApiGatewayAuthorizers() AwsApiGatewayAuthorizerInformer
-	// AwsApiGatewayBasePathMappings returns a AwsApiGatewayBasePathMappingInformer.
-	AwsApiGatewayBasePathMappings() AwsApiGatewayBasePathMappingInformer
-	// AwsApiGatewayClientCertificates returns a AwsApiGatewayClientCertificateInformer.
-	AwsApiGatewayClientCertificates() AwsApiGatewayClientCertificateInformer
-	// AwsApiGatewayDeployments returns a AwsApiGatewayDeploymentInformer.
-	AwsApiGatewayDeployments() AwsApiGatewayDeploymentInformer
-	// AwsApiGatewayDocumentationParts returns a AwsApiGatewayDocumentationPartInformer.
-	AwsApiGatewayDocumentationParts() AwsApiGatewayDocumentationPartInformer
-	// AwsApiGatewayDocumentationVersions returns a AwsApiGatewayDocumentationVersionInformer.
-	AwsApiGatewayDocumentationVersions() AwsApiGatewayDocumentationVersionInformer
-	// AwsApiGatewayDomainNames returns a AwsApiGatewayDomainNameInformer.
-	AwsApiGatewayDomainNames() AwsApiGatewayDomainNameInformer
-	// AwsApiGatewayGatewayResponses returns a AwsApiGatewayGatewayResponseInformer.
-	AwsApiGatewayGatewayResponses() AwsApiGatewayGatewayResponseInformer
-	// AwsApiGatewayIntegrations returns a AwsApiGatewayIntegrationInformer.
-	AwsApiGatewayIntegrations() AwsApiGatewayIntegrationInformer
-	// AwsApiGatewayIntegrationResponses returns a AwsApiGatewayIntegrationResponseInformer.
-	AwsApiGatewayIntegrationResponses() AwsApiGatewayIntegrationResponseInformer
-	// AwsApiGatewayMethods returns a AwsApiGatewayMethodInformer.
-	AwsApiGatewayMethods() AwsApiGatewayMethodInformer
-	// AwsApiGatewayMethodResponses returns a AwsApiGatewayMethodResponseInformer.
-	AwsApiGatewayMethodResponses() AwsApiGatewayMethodResponseInformer
-	// AwsApiGatewayMethodSettingses returns a AwsApiGatewayMethodSettingsInformer.
-	AwsApiGatewayMethodSettingses() AwsApiGatewayMethodSettingsInformer
-	// AwsApiGatewayModels returns a AwsApiGatewayModelInformer.
-	AwsApiGatewayModels() AwsApiGatewayModelInformer
-	// AwsApiGatewayRequestValidators returns a AwsApiGatewayRequestValidatorInformer.
-	AwsApiGatewayRequestValidators() AwsApiGatewayRequestValidatorInformer
-	// AwsApiGatewayResources returns a AwsApiGatewayResourceInformer.
-	AwsApiGatewayResources() AwsApiGatewayResourceInformer
-	// AwsApiGatewayRestApis returns a AwsApiGatewayRestApiInformer.
-	AwsApiGatewayRestApis() AwsApiGatewayRestApiInformer
-	// AwsApiGatewayStages returns a AwsApiGatewayStageInformer.
-	AwsApiGatewayStages() AwsApiGatewayStageInformer
-	// AwsApiGatewayUsagePlans returns a AwsApiGatewayUsagePlanInformer.
-	AwsApiGatewayUsagePlans() AwsApiGatewayUsagePlanInformer
-	// AwsApiGatewayUsagePlanKeys returns a AwsApiGatewayUsagePlanKeyInformer.
-	AwsApiGatewayUsagePlanKeys() AwsApiGatewayUsagePlanKeyInformer
-	// AwsApiGatewayVpcLinks returns a AwsApiGatewayVpcLinkInformer.
-	AwsApiGatewayVpcLinks() AwsApiGatewayVpcLinkInformer
-	// AwsAppCookieStickinessPolicies returns a AwsAppCookieStickinessPolicyInformer.
-	AwsAppCookieStickinessPolicies() AwsAppCookieStickinessPolicyInformer
-	// AwsAppautoscalingPolicies returns a AwsAppautoscalingPolicyInformer.
-	AwsAppautoscalingPolicies() AwsAppautoscalingPolicyInformer
-	// AwsAppautoscalingScheduledActions returns a AwsAppautoscalingScheduledActionInformer.
-	AwsAppautoscalingScheduledActions() AwsAppautoscalingScheduledActionInformer
-	// AwsAppautoscalingTargets returns a AwsAppautoscalingTargetInformer.
-	AwsAppautoscalingTargets() AwsAppautoscalingTargetInformer
-	// AwsAppmeshMeshes returns a AwsAppmeshMeshInformer.
-	AwsAppmeshMeshes() AwsAppmeshMeshInformer
-	// AwsAppmeshRoutes returns a AwsAppmeshRouteInformer.
-	AwsAppmeshRoutes() AwsAppmeshRouteInformer
-	// AwsAppmeshVirtualNodes returns a AwsAppmeshVirtualNodeInformer.
-	AwsAppmeshVirtualNodes() AwsAppmeshVirtualNodeInformer
-	// AwsAppmeshVirtualRouters returns a AwsAppmeshVirtualRouterInformer.
-	AwsAppmeshVirtualRouters() AwsAppmeshVirtualRouterInformer
-	// AwsAppmeshVirtualServices returns a AwsAppmeshVirtualServiceInformer.
-	AwsAppmeshVirtualServices() AwsAppmeshVirtualServiceInformer
-	// AwsAppsyncApiKeys returns a AwsAppsyncApiKeyInformer.
-	AwsAppsyncApiKeys() AwsAppsyncApiKeyInformer
-	// AwsAppsyncDatasources returns a AwsAppsyncDatasourceInformer.
-	AwsAppsyncDatasources() AwsAppsyncDatasourceInformer
-	// AwsAppsyncFunctions returns a AwsAppsyncFunctionInformer.
-	AwsAppsyncFunctions() AwsAppsyncFunctionInformer
-	// AwsAppsyncGraphqlApis returns a AwsAppsyncGraphqlApiInformer.
-	AwsAppsyncGraphqlApis() AwsAppsyncGraphqlApiInformer
-	// AwsAppsyncResolvers returns a AwsAppsyncResolverInformer.
-	AwsAppsyncResolvers() AwsAppsyncResolverInformer
-	// AwsAthenaDatabases returns a AwsAthenaDatabaseInformer.
-	AwsAthenaDatabases() AwsAthenaDatabaseInformer
-	// AwsAthenaNamedQueries returns a AwsAthenaNamedQueryInformer.
-	AwsAthenaNamedQueries() AwsAthenaNamedQueryInformer
-	// AwsAthenaWorkgroups returns a AwsAthenaWorkgroupInformer.
-	AwsAthenaWorkgroups() AwsAthenaWorkgroupInformer
-	// AwsAutoscalingAttachments returns a AwsAutoscalingAttachmentInformer.
-	AwsAutoscalingAttachments() AwsAutoscalingAttachmentInformer
-	// AwsAutoscalingGroups returns a AwsAutoscalingGroupInformer.
-	AwsAutoscalingGroups() AwsAutoscalingGroupInformer
-	// AwsAutoscalingLifecycleHooks returns a AwsAutoscalingLifecycleHookInformer.
-	AwsAutoscalingLifecycleHooks() AwsAutoscalingLifecycleHookInformer
-	// AwsAutoscalingNotifications returns a AwsAutoscalingNotificationInformer.
-	AwsAutoscalingNotifications() AwsAutoscalingNotificationInformer
-	// AwsAutoscalingPolicies returns a AwsAutoscalingPolicyInformer.
-	AwsAutoscalingPolicies() AwsAutoscalingPolicyInformer
-	// AwsAutoscalingSchedules returns a AwsAutoscalingScheduleInformer.
-	AwsAutoscalingSchedules() AwsAutoscalingScheduleInformer
-	// AwsBackupPlans returns a AwsBackupPlanInformer.
-	AwsBackupPlans() AwsBackupPlanInformer
-	// AwsBackupSelections returns a AwsBackupSelectionInformer.
-	AwsBackupSelections() AwsBackupSelectionInformer
-	// AwsBackupVaults returns a AwsBackupVaultInformer.
-	AwsBackupVaults() AwsBackupVaultInformer
-	// AwsBatchComputeEnvironments returns a AwsBatchComputeEnvironmentInformer.
-	AwsBatchComputeEnvironments() AwsBatchComputeEnvironmentInformer
-	// AwsBatchJobDefinitions returns a AwsBatchJobDefinitionInformer.
-	AwsBatchJobDefinitions() AwsBatchJobDefinitionInformer
-	// AwsBatchJobQueues returns a AwsBatchJobQueueInformer.
-	AwsBatchJobQueues() AwsBatchJobQueueInformer
-	// AwsBudgetsBudgets returns a AwsBudgetsBudgetInformer.
-	AwsBudgetsBudgets() AwsBudgetsBudgetInformer
-	// AwsCloud9EnvironmentEc2s returns a AwsCloud9EnvironmentEc2Informer.
-	AwsCloud9EnvironmentEc2s() AwsCloud9EnvironmentEc2Informer
-	// AwsCloudformationStacks returns a AwsCloudformationStackInformer.
-	AwsCloudformationStacks() AwsCloudformationStackInformer
-	// AwsCloudformationStackSets returns a AwsCloudformationStackSetInformer.
-	AwsCloudformationStackSets() AwsCloudformationStackSetInformer
-	// AwsCloudformationStackSetInstances returns a AwsCloudformationStackSetInstanceInformer.
-	AwsCloudformationStackSetInstances() AwsCloudformationStackSetInstanceInformer
-	// AwsCloudfrontDistributions returns a AwsCloudfrontDistributionInformer.
-	AwsCloudfrontDistributions() AwsCloudfrontDistributionInformer
-	// AwsCloudfrontOriginAccessIdentities returns a AwsCloudfrontOriginAccessIdentityInformer.
-	AwsCloudfrontOriginAccessIdentities() AwsCloudfrontOriginAccessIdentityInformer
-	// AwsCloudfrontPublicKeys returns a AwsCloudfrontPublicKeyInformer.
-	AwsCloudfrontPublicKeys() AwsCloudfrontPublicKeyInformer
-	// AwsCloudhsmV2Clusters returns a AwsCloudhsmV2ClusterInformer.
-	AwsCloudhsmV2Clusters() AwsCloudhsmV2ClusterInformer
-	// AwsCloudhsmV2Hsms returns a AwsCloudhsmV2HsmInformer.
-	AwsCloudhsmV2Hsms() AwsCloudhsmV2HsmInformer
-	// AwsCloudtrails returns a AwsCloudtrailInformer.
-	AwsCloudtrails() AwsCloudtrailInformer
-	// AwsCloudwatchDashboards returns a AwsCloudwatchDashboardInformer.
-	AwsCloudwatchDashboards() AwsCloudwatchDashboardInformer
-	// AwsCloudwatchEventPermissions returns a AwsCloudwatchEventPermissionInformer.
-	AwsCloudwatchEventPermissions() AwsCloudwatchEventPermissionInformer
-	// AwsCloudwatchEventRules returns a AwsCloudwatchEventRuleInformer.
-	AwsCloudwatchEventRules() AwsCloudwatchEventRuleInformer
-	// AwsCloudwatchEventTargets returns a AwsCloudwatchEventTargetInformer.
-	AwsCloudwatchEventTargets() AwsCloudwatchEventTargetInformer
-	// AwsCloudwatchLogDestinations returns a AwsCloudwatchLogDestinationInformer.
-	AwsCloudwatchLogDestinations() AwsCloudwatchLogDestinationInformer
-	// AwsCloudwatchLogDestinationPolicies returns a AwsCloudwatchLogDestinationPolicyInformer.
-	AwsCloudwatchLogDestinationPolicies() AwsCloudwatchLogDestinationPolicyInformer
-	// AwsCloudwatchLogGroups returns a AwsCloudwatchLogGroupInformer.
-	AwsCloudwatchLogGroups() AwsCloudwatchLogGroupInformer
-	// AwsCloudwatchLogMetricFilters returns a AwsCloudwatchLogMetricFilterInformer.
-	AwsCloudwatchLogMetricFilters() AwsCloudwatchLogMetricFilterInformer
-	// AwsCloudwatchLogResourcePolicies returns a AwsCloudwatchLogResourcePolicyInformer.
-	AwsCloudwatchLogResourcePolicies() AwsCloudwatchLogResourcePolicyInformer
-	// AwsCloudwatchLogStreams returns a AwsCloudwatchLogStreamInformer.
-	AwsCloudwatchLogStreams() AwsCloudwatchLogStreamInformer
-	// AwsCloudwatchLogSubscriptionFilters returns a AwsCloudwatchLogSubscriptionFilterInformer.
-	AwsCloudwatchLogSubscriptionFilters() AwsCloudwatchLogSubscriptionFilterInformer
-	// AwsCloudwatchMetricAlarms returns a AwsCloudwatchMetricAlarmInformer.
-	AwsCloudwatchMetricAlarms() AwsCloudwatchMetricAlarmInformer
-	// AwsCodebuildProjects returns a AwsCodebuildProjectInformer.
-	AwsCodebuildProjects() AwsCodebuildProjectInformer
-	// AwsCodebuildWebhooks returns a AwsCodebuildWebhookInformer.
-	AwsCodebuildWebhooks() AwsCodebuildWebhookInformer
-	// AwsCodecommitRepositories returns a AwsCodecommitRepositoryInformer.
-	AwsCodecommitRepositories() AwsCodecommitRepositoryInformer
-	// AwsCodecommitTriggers returns a AwsCodecommitTriggerInformer.
-	AwsCodecommitTriggers() AwsCodecommitTriggerInformer
-	// AwsCodedeployApps returns a AwsCodedeployAppInformer.
-	AwsCodedeployApps() AwsCodedeployAppInformer
-	// AwsCodedeployDeploymentConfigs returns a AwsCodedeployDeploymentConfigInformer.
-	AwsCodedeployDeploymentConfigs() AwsCodedeployDeploymentConfigInformer
-	// AwsCodedeployDeploymentGroups returns a AwsCodedeployDeploymentGroupInformer.
-	AwsCodedeployDeploymentGroups() AwsCodedeployDeploymentGroupInformer
-	// AwsCodepipelines returns a AwsCodepipelineInformer.
-	AwsCodepipelines() AwsCodepipelineInformer
-	// AwsCodepipelineWebhooks returns a AwsCodepipelineWebhookInformer.
-	AwsCodepipelineWebhooks() AwsCodepipelineWebhookInformer
-	// AwsCognitoIdentityPools returns a AwsCognitoIdentityPoolInformer.
-	AwsCognitoIdentityPools() AwsCognitoIdentityPoolInformer
-	// AwsCognitoIdentityPoolRolesAttachments returns a AwsCognitoIdentityPoolRolesAttachmentInformer.
-	AwsCognitoIdentityPoolRolesAttachments() AwsCognitoIdentityPoolRolesAttachmentInformer
-	// AwsCognitoIdentityProviders returns a AwsCognitoIdentityProviderInformer.
-	AwsCognitoIdentityProviders() AwsCognitoIdentityProviderInformer
-	// AwsCognitoResourceServers returns a AwsCognitoResourceServerInformer.
-	AwsCognitoResourceServers() AwsCognitoResourceServerInformer
-	// AwsCognitoUserGroups returns a AwsCognitoUserGroupInformer.
-	AwsCognitoUserGroups() AwsCognitoUserGroupInformer
-	// AwsCognitoUserPools returns a AwsCognitoUserPoolInformer.
-	AwsCognitoUserPools() AwsCognitoUserPoolInformer
-	// AwsCognitoUserPoolClients returns a AwsCognitoUserPoolClientInformer.
-	AwsCognitoUserPoolClients() AwsCognitoUserPoolClientInformer
-	// AwsCognitoUserPoolDomains returns a AwsCognitoUserPoolDomainInformer.
-	AwsCognitoUserPoolDomains() AwsCognitoUserPoolDomainInformer
-	// AwsConfigAggregateAuthorizations returns a AwsConfigAggregateAuthorizationInformer.
-	AwsConfigAggregateAuthorizations() AwsConfigAggregateAuthorizationInformer
-	// AwsConfigConfigRules returns a AwsConfigConfigRuleInformer.
-	AwsConfigConfigRules() AwsConfigConfigRuleInformer
-	// AwsConfigConfigurationAggregators returns a AwsConfigConfigurationAggregatorInformer.
-	AwsConfigConfigurationAggregators() AwsConfigConfigurationAggregatorInformer
-	// AwsConfigConfigurationRecorders returns a AwsConfigConfigurationRecorderInformer.
-	AwsConfigConfigurationRecorders() AwsConfigConfigurationRecorderInformer
-	// AwsConfigConfigurationRecorderStatuses returns a AwsConfigConfigurationRecorderStatusInformer.
-	AwsConfigConfigurationRecorderStatuses() AwsConfigConfigurationRecorderStatusInformer
-	// AwsConfigDeliveryChannels returns a AwsConfigDeliveryChannelInformer.
-	AwsConfigDeliveryChannels() AwsConfigDeliveryChannelInformer
-	// AwsCurReportDefinitions returns a AwsCurReportDefinitionInformer.
-	AwsCurReportDefinitions() AwsCurReportDefinitionInformer
-	// AwsCustomerGateways returns a AwsCustomerGatewayInformer.
-	AwsCustomerGateways() AwsCustomerGatewayInformer
-	// AwsDatapipelinePipelines returns a AwsDatapipelinePipelineInformer.
-	AwsDatapipelinePipelines() AwsDatapipelinePipelineInformer
-	// AwsDatasyncAgents returns a AwsDatasyncAgentInformer.
-	AwsDatasyncAgents() AwsDatasyncAgentInformer
-	// AwsDatasyncLocationEfses returns a AwsDatasyncLocationEfsInformer.
-	AwsDatasyncLocationEfses() AwsDatasyncLocationEfsInformer
-	// AwsDatasyncLocationNfses returns a AwsDatasyncLocationNfsInformer.
-	AwsDatasyncLocationNfses() AwsDatasyncLocationNfsInformer
-	// AwsDatasyncLocationS3s returns a AwsDatasyncLocationS3Informer.
-	AwsDatasyncLocationS3s() AwsDatasyncLocationS3Informer
-	// AwsDatasyncTasks returns a AwsDatasyncTaskInformer.
-	AwsDatasyncTasks() AwsDatasyncTaskInformer
-	// AwsDaxClusters returns a AwsDaxClusterInformer.
-	AwsDaxClusters() AwsDaxClusterInformer
-	// AwsDaxParameterGroups returns a AwsDaxParameterGroupInformer.
-	AwsDaxParameterGroups() AwsDaxParameterGroupInformer
-	// AwsDaxSubnetGroups returns a AwsDaxSubnetGroupInformer.
-	AwsDaxSubnetGroups() AwsDaxSubnetGroupInformer
-	// AwsDbClusterSnapshots returns a AwsDbClusterSnapshotInformer.
-	AwsDbClusterSnapshots() AwsDbClusterSnapshotInformer
-	// AwsDbEventSubscriptions returns a AwsDbEventSubscriptionInformer.
-	AwsDbEventSubscriptions() AwsDbEventSubscriptionInformer
-	// AwsDbInstances returns a AwsDbInstanceInformer.
-	AwsDbInstances() AwsDbInstanceInformer
-	// AwsDbInstanceRoleAssociations returns a AwsDbInstanceRoleAssociationInformer.
-	AwsDbInstanceRoleAssociations() AwsDbInstanceRoleAssociationInformer
-	// AwsDbOptionGroups returns a AwsDbOptionGroupInformer.
-	AwsDbOptionGroups() AwsDbOptionGroupInformer
-	// AwsDbParameterGroups returns a AwsDbParameterGroupInformer.
-	AwsDbParameterGroups() AwsDbParameterGroupInformer
-	// AwsDbSecurityGroups returns a AwsDbSecurityGroupInformer.
-	AwsDbSecurityGroups() AwsDbSecurityGroupInformer
-	// AwsDbSnapshots returns a AwsDbSnapshotInformer.
-	AwsDbSnapshots() AwsDbSnapshotInformer
-	// AwsDbSubnetGroups returns a AwsDbSubnetGroupInformer.
-	AwsDbSubnetGroups() AwsDbSubnetGroupInformer
-	// AwsDefaultNetworkAcls returns a AwsDefaultNetworkAclInformer.
-	AwsDefaultNetworkAcls() AwsDefaultNetworkAclInformer
-	// AwsDefaultRouteTables returns a AwsDefaultRouteTableInformer.
-	AwsDefaultRouteTables() AwsDefaultRouteTableInformer
-	// AwsDefaultSecurityGroups returns a AwsDefaultSecurityGroupInformer.
-	AwsDefaultSecurityGroups() AwsDefaultSecurityGroupInformer
-	// AwsDefaultSubnets returns a AwsDefaultSubnetInformer.
-	AwsDefaultSubnets() AwsDefaultSubnetInformer
-	// AwsDefaultVpcs returns a AwsDefaultVpcInformer.
-	AwsDefaultVpcs() AwsDefaultVpcInformer
-	// AwsDefaultVpcDhcpOptionses returns a AwsDefaultVpcDhcpOptionsInformer.
-	AwsDefaultVpcDhcpOptionses() AwsDefaultVpcDhcpOptionsInformer
-	// AwsDevicefarmProjects returns a AwsDevicefarmProjectInformer.
-	AwsDevicefarmProjects() AwsDevicefarmProjectInformer
-	// AwsDirectoryServiceConditionalForwarders returns a AwsDirectoryServiceConditionalForwarderInformer.
-	AwsDirectoryServiceConditionalForwarders() AwsDirectoryServiceConditionalForwarderInformer
-	// AwsDirectoryServiceDirectories returns a AwsDirectoryServiceDirectoryInformer.
-	AwsDirectoryServiceDirectories() AwsDirectoryServiceDirectoryInformer
-	// AwsDirectoryServiceLogSubscriptions returns a AwsDirectoryServiceLogSubscriptionInformer.
-	AwsDirectoryServiceLogSubscriptions() AwsDirectoryServiceLogSubscriptionInformer
-	// AwsDlmLifecyclePolicies returns a AwsDlmLifecyclePolicyInformer.
-	AwsDlmLifecyclePolicies() AwsDlmLifecyclePolicyInformer
-	// AwsDmsCertificates returns a AwsDmsCertificateInformer.
-	AwsDmsCertificates() AwsDmsCertificateInformer
-	// AwsDmsEndpoints returns a AwsDmsEndpointInformer.
-	AwsDmsEndpoints() AwsDmsEndpointInformer
-	// AwsDmsReplicationInstances returns a AwsDmsReplicationInstanceInformer.
-	AwsDmsReplicationInstances() AwsDmsReplicationInstanceInformer
-	// AwsDmsReplicationSubnetGroups returns a AwsDmsReplicationSubnetGroupInformer.
-	AwsDmsReplicationSubnetGroups() AwsDmsReplicationSubnetGroupInformer
-	// AwsDmsReplicationTasks returns a AwsDmsReplicationTaskInformer.
-	AwsDmsReplicationTasks() AwsDmsReplicationTaskInformer
-	// AwsDocdbClusters returns a AwsDocdbClusterInformer.
-	AwsDocdbClusters() AwsDocdbClusterInformer
-	// AwsDocdbClusterInstances returns a AwsDocdbClusterInstanceInformer.
-	AwsDocdbClusterInstances() AwsDocdbClusterInstanceInformer
-	// AwsDocdbClusterParameterGroups returns a AwsDocdbClusterParameterGroupInformer.
-	AwsDocdbClusterParameterGroups() AwsDocdbClusterParameterGroupInformer
-	// AwsDocdbClusterSnapshots returns a AwsDocdbClusterSnapshotInformer.
-	AwsDocdbClusterSnapshots() AwsDocdbClusterSnapshotInformer
-	// AwsDocdbSubnetGroups returns a AwsDocdbSubnetGroupInformer.
-	AwsDocdbSubnetGroups() AwsDocdbSubnetGroupInformer
-	// AwsDxBgpPeers returns a AwsDxBgpPeerInformer.
-	AwsDxBgpPeers() AwsDxBgpPeerInformer
-	// AwsDxConnections returns a AwsDxConnectionInformer.
-	AwsDxConnections() AwsDxConnectionInformer
-	// AwsDxConnectionAssociations returns a AwsDxConnectionAssociationInformer.
-	AwsDxConnectionAssociations() AwsDxConnectionAssociationInformer
-	// AwsDxGateways returns a AwsDxGatewayInformer.
-	AwsDxGateways() AwsDxGatewayInformer
-	// AwsDxGatewayAssociations returns a AwsDxGatewayAssociationInformer.
-	AwsDxGatewayAssociations() AwsDxGatewayAssociationInformer
-	// AwsDxGatewayAssociationProposals returns a AwsDxGatewayAssociationProposalInformer.
-	AwsDxGatewayAssociationProposals() AwsDxGatewayAssociationProposalInformer
-	// AwsDxHostedPrivateVirtualInterfaces returns a AwsDxHostedPrivateVirtualInterfaceInformer.
-	AwsDxHostedPrivateVirtualInterfaces() AwsDxHostedPrivateVirtualInterfaceInformer
-	// AwsDxHostedPrivateVirtualInterfaceAccepters returns a AwsDxHostedPrivateVirtualInterfaceAccepterInformer.
-	AwsDxHostedPrivateVirtualInterfaceAccepters() AwsDxHostedPrivateVirtualInterfaceAccepterInformer
-	// AwsDxHostedPublicVirtualInterfaces returns a AwsDxHostedPublicVirtualInterfaceInformer.
-	AwsDxHostedPublicVirtualInterfaces() AwsDxHostedPublicVirtualInterfaceInformer
-	// AwsDxHostedPublicVirtualInterfaceAccepters returns a AwsDxHostedPublicVirtualInterfaceAccepterInformer.
-	AwsDxHostedPublicVirtualInterfaceAccepters() AwsDxHostedPublicVirtualInterfaceAccepterInformer
-	// AwsDxLags returns a AwsDxLagInformer.
-	AwsDxLags() AwsDxLagInformer
-	// AwsDxPrivateVirtualInterfaces returns a AwsDxPrivateVirtualInterfaceInformer.
-	AwsDxPrivateVirtualInterfaces() AwsDxPrivateVirtualInterfaceInformer
-	// AwsDxPublicVirtualInterfaces returns a AwsDxPublicVirtualInterfaceInformer.
-	AwsDxPublicVirtualInterfaces() AwsDxPublicVirtualInterfaceInformer
-	// AwsDynamodbGlobalTables returns a AwsDynamodbGlobalTableInformer.
-	AwsDynamodbGlobalTables() AwsDynamodbGlobalTableInformer
-	// AwsDynamodbTables returns a AwsDynamodbTableInformer.
-	AwsDynamodbTables() AwsDynamodbTableInformer
-	// AwsDynamodbTableItems returns a AwsDynamodbTableItemInformer.
-	AwsDynamodbTableItems() AwsDynamodbTableItemInformer
-	// AwsEbsDefaultKmsKeys returns a AwsEbsDefaultKmsKeyInformer.
-	AwsEbsDefaultKmsKeys() AwsEbsDefaultKmsKeyInformer
-	// AwsEbsEncryptionByDefaults returns a AwsEbsEncryptionByDefaultInformer.
-	AwsEbsEncryptionByDefaults() AwsEbsEncryptionByDefaultInformer
-	// AwsEbsSnapshots returns a AwsEbsSnapshotInformer.
-	AwsEbsSnapshots() AwsEbsSnapshotInformer
-	// AwsEbsSnapshotCopies returns a AwsEbsSnapshotCopyInformer.
-	AwsEbsSnapshotCopies() AwsEbsSnapshotCopyInformer
-	// AwsEbsVolumes returns a AwsEbsVolumeInformer.
-	AwsEbsVolumes() AwsEbsVolumeInformer
-	// AwsEc2CapacityReservations returns a AwsEc2CapacityReservationInformer.
-	AwsEc2CapacityReservations() AwsEc2CapacityReservationInformer
-	// AwsEc2ClientVpnEndpoints returns a AwsEc2ClientVpnEndpointInformer.
-	AwsEc2ClientVpnEndpoints() AwsEc2ClientVpnEndpointInformer
-	// AwsEc2ClientVpnNetworkAssociations returns a AwsEc2ClientVpnNetworkAssociationInformer.
-	AwsEc2ClientVpnNetworkAssociations() AwsEc2ClientVpnNetworkAssociationInformer
-	// AwsEc2Fleets returns a AwsEc2FleetInformer.
-	AwsEc2Fleets() AwsEc2FleetInformer
-	// AwsEc2TransitGateways returns a AwsEc2TransitGatewayInformer.
-	AwsEc2TransitGateways() AwsEc2TransitGatewayInformer
-	// AwsEc2TransitGatewayRoutes returns a AwsEc2TransitGatewayRouteInformer.
-	AwsEc2TransitGatewayRoutes() AwsEc2TransitGatewayRouteInformer
-	// AwsEc2TransitGatewayRouteTables returns a AwsEc2TransitGatewayRouteTableInformer.
-	AwsEc2TransitGatewayRouteTables() AwsEc2TransitGatewayRouteTableInformer
-	// AwsEc2TransitGatewayRouteTableAssociations returns a AwsEc2TransitGatewayRouteTableAssociationInformer.
-	AwsEc2TransitGatewayRouteTableAssociations() AwsEc2TransitGatewayRouteTableAssociationInformer
-	// AwsEc2TransitGatewayRouteTablePropagations returns a AwsEc2TransitGatewayRouteTablePropagationInformer.
-	AwsEc2TransitGatewayRouteTablePropagations() AwsEc2TransitGatewayRouteTablePropagationInformer
-	// AwsEc2TransitGatewayVpcAttachments returns a AwsEc2TransitGatewayVpcAttachmentInformer.
-	AwsEc2TransitGatewayVpcAttachments() AwsEc2TransitGatewayVpcAttachmentInformer
-	// AwsEc2TransitGatewayVpcAttachmentAccepters returns a AwsEc2TransitGatewayVpcAttachmentAccepterInformer.
-	AwsEc2TransitGatewayVpcAttachmentAccepters() AwsEc2TransitGatewayVpcAttachmentAccepterInformer
-	// AwsEcrLifecyclePolicies returns a AwsEcrLifecyclePolicyInformer.
-	AwsEcrLifecyclePolicies() AwsEcrLifecyclePolicyInformer
-	// AwsEcrRepositories returns a AwsEcrRepositoryInformer.
-	AwsEcrRepositories() AwsEcrRepositoryInformer
-	// AwsEcrRepositoryPolicies returns a AwsEcrRepositoryPolicyInformer.
-	AwsEcrRepositoryPolicies() AwsEcrRepositoryPolicyInformer
-	// AwsEcsClusters returns a AwsEcsClusterInformer.
-	AwsEcsClusters() AwsEcsClusterInformer
-	// AwsEcsServices returns a AwsEcsServiceInformer.
-	AwsEcsServices() AwsEcsServiceInformer
-	// AwsEcsTaskDefinitions returns a AwsEcsTaskDefinitionInformer.
-	AwsEcsTaskDefinitions() AwsEcsTaskDefinitionInformer
-	// AwsEfsFileSystems returns a AwsEfsFileSystemInformer.
-	AwsEfsFileSystems() AwsEfsFileSystemInformer
-	// AwsEfsMountTargets returns a AwsEfsMountTargetInformer.
-	AwsEfsMountTargets() AwsEfsMountTargetInformer
-	// AwsEgressOnlyInternetGateways returns a AwsEgressOnlyInternetGatewayInformer.
-	AwsEgressOnlyInternetGateways() AwsEgressOnlyInternetGatewayInformer
-	// AwsEips returns a AwsEipInformer.
-	AwsEips() AwsEipInformer
-	// AwsEipAssociations returns a AwsEipAssociationInformer.
-	AwsEipAssociations() AwsEipAssociationInformer
-	// AwsEksClusters returns a AwsEksClusterInformer.
-	AwsEksClusters() AwsEksClusterInformer
-	// AwsElasticBeanstalkApplications returns a AwsElasticBeanstalkApplicationInformer.
-	AwsElasticBeanstalkApplications() AwsElasticBeanstalkApplicationInformer
-	// AwsElasticBeanstalkApplicationVersions returns a AwsElasticBeanstalkApplicationVersionInformer.
-	AwsElasticBeanstalkApplicationVersions() AwsElasticBeanstalkApplicationVersionInformer
-	// AwsElasticBeanstalkConfigurationTemplates returns a AwsElasticBeanstalkConfigurationTemplateInformer.
-	AwsElasticBeanstalkConfigurationTemplates() AwsElasticBeanstalkConfigurationTemplateInformer
-	// AwsElasticBeanstalkEnvironments returns a AwsElasticBeanstalkEnvironmentInformer.
-	AwsElasticBeanstalkEnvironments() AwsElasticBeanstalkEnvironmentInformer
-	// AwsElasticacheClusters returns a AwsElasticacheClusterInformer.
-	AwsElasticacheClusters() AwsElasticacheClusterInformer
-	// AwsElasticacheParameterGroups returns a AwsElasticacheParameterGroupInformer.
-	AwsElasticacheParameterGroups() AwsElasticacheParameterGroupInformer
-	// AwsElasticacheReplicationGroups returns a AwsElasticacheReplicationGroupInformer.
-	AwsElasticacheReplicationGroups() AwsElasticacheReplicationGroupInformer
-	// AwsElasticacheSecurityGroups returns a AwsElasticacheSecurityGroupInformer.
-	AwsElasticacheSecurityGroups() AwsElasticacheSecurityGroupInformer
-	// AwsElasticacheSubnetGroups returns a AwsElasticacheSubnetGroupInformer.
-	AwsElasticacheSubnetGroups() AwsElasticacheSubnetGroupInformer
-	// AwsElasticsearchDomains returns a AwsElasticsearchDomainInformer.
-	AwsElasticsearchDomains() AwsElasticsearchDomainInformer
-	// AwsElasticsearchDomainPolicies returns a AwsElasticsearchDomainPolicyInformer.
-	AwsElasticsearchDomainPolicies() AwsElasticsearchDomainPolicyInformer
-	// AwsElastictranscoderPipelines returns a AwsElastictranscoderPipelineInformer.
-	AwsElastictranscoderPipelines() AwsElastictranscoderPipelineInformer
-	// AwsElastictranscoderPresets returns a AwsElastictranscoderPresetInformer.
-	AwsElastictranscoderPresets() AwsElastictranscoderPresetInformer
-	// AwsElbs returns a AwsElbInformer.
-	AwsElbs() AwsElbInformer
-	// AwsElbAttachments returns a AwsElbAttachmentInformer.
-	AwsElbAttachments() AwsElbAttachmentInformer
-	// AwsEmrClusters returns a AwsEmrClusterInformer.
-	AwsEmrClusters() AwsEmrClusterInformer
-	// AwsEmrInstanceGroups returns a AwsEmrInstanceGroupInformer.
-	AwsEmrInstanceGroups() AwsEmrInstanceGroupInformer
-	// AwsEmrSecurityConfigurations returns a AwsEmrSecurityConfigurationInformer.
-	AwsEmrSecurityConfigurations() AwsEmrSecurityConfigurationInformer
-	// AwsFlowLogs returns a AwsFlowLogInformer.
-	AwsFlowLogs() AwsFlowLogInformer
-	// AwsGameliftAliases returns a AwsGameliftAliasInformer.
-	AwsGameliftAliases() AwsGameliftAliasInformer
-	// AwsGameliftBuilds returns a AwsGameliftBuildInformer.
-	AwsGameliftBuilds() AwsGameliftBuildInformer
-	// AwsGameliftFleets returns a AwsGameliftFleetInformer.
-	AwsGameliftFleets() AwsGameliftFleetInformer
-	// AwsGameliftGameSessionQueues returns a AwsGameliftGameSessionQueueInformer.
-	AwsGameliftGameSessionQueues() AwsGameliftGameSessionQueueInformer
-	// AwsGlacierVaults returns a AwsGlacierVaultInformer.
-	AwsGlacierVaults() AwsGlacierVaultInformer
-	// AwsGlacierVaultLocks returns a AwsGlacierVaultLockInformer.
-	AwsGlacierVaultLocks() AwsGlacierVaultLockInformer
-	// AwsGlobalacceleratorAccelerators returns a AwsGlobalacceleratorAcceleratorInformer.
-	AwsGlobalacceleratorAccelerators() AwsGlobalacceleratorAcceleratorInformer
-	// AwsGlobalacceleratorEndpointGroups returns a AwsGlobalacceleratorEndpointGroupInformer.
-	AwsGlobalacceleratorEndpointGroups() AwsGlobalacceleratorEndpointGroupInformer
-	// AwsGlobalacceleratorListeners returns a AwsGlobalacceleratorListenerInformer.
-	AwsGlobalacceleratorListeners() AwsGlobalacceleratorListenerInformer
-	// AwsGlueCatalogDatabases returns a AwsGlueCatalogDatabaseInformer.
-	AwsGlueCatalogDatabases() AwsGlueCatalogDatabaseInformer
-	// AwsGlueCatalogTables returns a AwsGlueCatalogTableInformer.
-	AwsGlueCatalogTables() AwsGlueCatalogTableInformer
-	// AwsGlueClassifiers returns a AwsGlueClassifierInformer.
-	AwsGlueClassifiers() AwsGlueClassifierInformer
-	// AwsGlueConnections returns a AwsGlueConnectionInformer.
-	AwsGlueConnections() AwsGlueConnectionInformer
-	// AwsGlueCrawlers returns a AwsGlueCrawlerInformer.
-	AwsGlueCrawlers() AwsGlueCrawlerInformer
-	// AwsGlueJobs returns a AwsGlueJobInformer.
-	AwsGlueJobs() AwsGlueJobInformer
-	// AwsGlueSecurityConfigurations returns a AwsGlueSecurityConfigurationInformer.
-	AwsGlueSecurityConfigurations() AwsGlueSecurityConfigurationInformer
-	// AwsGlueTriggers returns a AwsGlueTriggerInformer.
-	AwsGlueTriggers() AwsGlueTriggerInformer
-	// AwsGuarddutyDetectors returns a AwsGuarddutyDetectorInformer.
-	AwsGuarddutyDetectors() AwsGuarddutyDetectorInformer
-	// AwsGuarddutyInviteAccepters returns a AwsGuarddutyInviteAccepterInformer.
-	AwsGuarddutyInviteAccepters() AwsGuarddutyInviteAccepterInformer
-	// AwsGuarddutyIpsets returns a AwsGuarddutyIpsetInformer.
-	AwsGuarddutyIpsets() AwsGuarddutyIpsetInformer
-	// AwsGuarddutyMembers returns a AwsGuarddutyMemberInformer.
-	AwsGuarddutyMembers() AwsGuarddutyMemberInformer
-	// AwsGuarddutyThreatintelsets returns a AwsGuarddutyThreatintelsetInformer.
-	AwsGuarddutyThreatintelsets() AwsGuarddutyThreatintelsetInformer
-	// AwsIamAccessKeys returns a AwsIamAccessKeyInformer.
-	AwsIamAccessKeys() AwsIamAccessKeyInformer
-	// AwsIamAccountAliases returns a AwsIamAccountAliasInformer.
-	AwsIamAccountAliases() AwsIamAccountAliasInformer
-	// AwsIamAccountPasswordPolicies returns a AwsIamAccountPasswordPolicyInformer.
-	AwsIamAccountPasswordPolicies() AwsIamAccountPasswordPolicyInformer
-	// AwsIamGroups returns a AwsIamGroupInformer.
-	AwsIamGroups() AwsIamGroupInformer
-	// AwsIamGroupMemberships returns a AwsIamGroupMembershipInformer.
-	AwsIamGroupMemberships() AwsIamGroupMembershipInformer
-	// AwsIamGroupPolicies returns a AwsIamGroupPolicyInformer.
-	AwsIamGroupPolicies() AwsIamGroupPolicyInformer
-	// AwsIamGroupPolicyAttachments returns a AwsIamGroupPolicyAttachmentInformer.
-	AwsIamGroupPolicyAttachments() AwsIamGroupPolicyAttachmentInformer
-	// AwsIamInstanceProfiles returns a AwsIamInstanceProfileInformer.
-	AwsIamInstanceProfiles() AwsIamInstanceProfileInformer
-	// AwsIamOpenidConnectProviders returns a AwsIamOpenidConnectProviderInformer.
-	AwsIamOpenidConnectProviders() AwsIamOpenidConnectProviderInformer
-	// AwsIamPolicies returns a AwsIamPolicyInformer.
-	AwsIamPolicies() AwsIamPolicyInformer
-	// AwsIamPolicyAttachments returns a AwsIamPolicyAttachmentInformer.
-	AwsIamPolicyAttachments() AwsIamPolicyAttachmentInformer
-	// AwsIamRoles returns a AwsIamRoleInformer.
-	AwsIamRoles() AwsIamRoleInformer
-	// AwsIamRolePolicies returns a AwsIamRolePolicyInformer.
-	AwsIamRolePolicies() AwsIamRolePolicyInformer
-	// AwsIamRolePolicyAttachments returns a AwsIamRolePolicyAttachmentInformer.
-	AwsIamRolePolicyAttachments() AwsIamRolePolicyAttachmentInformer
-	// AwsIamSamlProviders returns a AwsIamSamlProviderInformer.
-	AwsIamSamlProviders() AwsIamSamlProviderInformer
-	// AwsIamServerCertificates returns a AwsIamServerCertificateInformer.
-	AwsIamServerCertificates() AwsIamServerCertificateInformer
-	// AwsIamServiceLinkedRoles returns a AwsIamServiceLinkedRoleInformer.
-	AwsIamServiceLinkedRoles() AwsIamServiceLinkedRoleInformer
-	// AwsIamUsers returns a AwsIamUserInformer.
-	AwsIamUsers() AwsIamUserInformer
-	// AwsIamUserGroupMemberships returns a AwsIamUserGroupMembershipInformer.
-	AwsIamUserGroupMemberships() AwsIamUserGroupMembershipInformer
-	// AwsIamUserLoginProfiles returns a AwsIamUserLoginProfileInformer.
-	AwsIamUserLoginProfiles() AwsIamUserLoginProfileInformer
-	// AwsIamUserPolicies returns a AwsIamUserPolicyInformer.
-	AwsIamUserPolicies() AwsIamUserPolicyInformer
-	// AwsIamUserPolicyAttachments returns a AwsIamUserPolicyAttachmentInformer.
-	AwsIamUserPolicyAttachments() AwsIamUserPolicyAttachmentInformer
-	// AwsIamUserSshKeys returns a AwsIamUserSshKeyInformer.
-	AwsIamUserSshKeys() AwsIamUserSshKeyInformer
-	// AwsInspectorAssessmentTargets returns a AwsInspectorAssessmentTargetInformer.
-	AwsInspectorAssessmentTargets() AwsInspectorAssessmentTargetInformer
-	// AwsInspectorAssessmentTemplates returns a AwsInspectorAssessmentTemplateInformer.
-	AwsInspectorAssessmentTemplates() AwsInspectorAssessmentTemplateInformer
-	// AwsInspectorResourceGroups returns a AwsInspectorResourceGroupInformer.
-	AwsInspectorResourceGroups() AwsInspectorResourceGroupInformer
-	// AwsInstances returns a AwsInstanceInformer.
-	AwsInstances() AwsInstanceInformer
-	// AwsInternetGateways returns a AwsInternetGatewayInformer.
-	AwsInternetGateways() AwsInternetGatewayInformer
-	// AwsIotCertificates returns a AwsIotCertificateInformer.
-	AwsIotCertificates() AwsIotCertificateInformer
-	// AwsIotPolicies returns a AwsIotPolicyInformer.
-	AwsIotPolicies() AwsIotPolicyInformer
-	// AwsIotPolicyAttachments returns a AwsIotPolicyAttachmentInformer.
-	AwsIotPolicyAttachments() AwsIotPolicyAttachmentInformer
-	// AwsIotRoleAliases returns a AwsIotRoleAliasInformer.
-	AwsIotRoleAliases() AwsIotRoleAliasInformer
-	// AwsIotThings returns a AwsIotThingInformer.
-	AwsIotThings() AwsIotThingInformer
-	// AwsIotThingPrincipalAttachments returns a AwsIotThingPrincipalAttachmentInformer.
-	AwsIotThingPrincipalAttachments() AwsIotThingPrincipalAttachmentInformer
-	// AwsIotThingTypes returns a AwsIotThingTypeInformer.
-	AwsIotThingTypes() AwsIotThingTypeInformer
-	// AwsIotTopicRules returns a AwsIotTopicRuleInformer.
-	AwsIotTopicRules() AwsIotTopicRuleInformer
-	// AwsKeyPairs returns a AwsKeyPairInformer.
-	AwsKeyPairs() AwsKeyPairInformer
-	// AwsKinesisAnalyticsApplications returns a AwsKinesisAnalyticsApplicationInformer.
-	AwsKinesisAnalyticsApplications() AwsKinesisAnalyticsApplicationInformer
-	// AwsKinesisFirehoseDeliveryStreams returns a AwsKinesisFirehoseDeliveryStreamInformer.
-	AwsKinesisFirehoseDeliveryStreams() AwsKinesisFirehoseDeliveryStreamInformer
-	// AwsKinesisStreams returns a AwsKinesisStreamInformer.
-	AwsKinesisStreams() AwsKinesisStreamInformer
-	// AwsKmsAliases returns a AwsKmsAliasInformer.
-	AwsKmsAliases() AwsKmsAliasInformer
-	// AwsKmsCiphertexts returns a AwsKmsCiphertextInformer.
-	AwsKmsCiphertexts() AwsKmsCiphertextInformer
-	// AwsKmsExternalKeys returns a AwsKmsExternalKeyInformer.
-	AwsKmsExternalKeys() AwsKmsExternalKeyInformer
-	// AwsKmsGrants returns a AwsKmsGrantInformer.
-	AwsKmsGrants() AwsKmsGrantInformer
-	// AwsKmsKeys returns a AwsKmsKeyInformer.
-	AwsKmsKeys() AwsKmsKeyInformer
-	// AwsLambdaAliases returns a AwsLambdaAliasInformer.
-	AwsLambdaAliases() AwsLambdaAliasInformer
-	// AwsLambdaEventSourceMappings returns a AwsLambdaEventSourceMappingInformer.
-	AwsLambdaEventSourceMappings() AwsLambdaEventSourceMappingInformer
-	// AwsLambdaFunctions returns a AwsLambdaFunctionInformer.
-	AwsLambdaFunctions() AwsLambdaFunctionInformer
-	// AwsLambdaLayerVersions returns a AwsLambdaLayerVersionInformer.
-	AwsLambdaLayerVersions() AwsLambdaLayerVersionInformer
-	// AwsLambdaPermissions returns a AwsLambdaPermissionInformer.
-	AwsLambdaPermissions() AwsLambdaPermissionInformer
-	// AwsLaunchConfigurations returns a AwsLaunchConfigurationInformer.
-	AwsLaunchConfigurations() AwsLaunchConfigurationInformer
-	// AwsLaunchTemplates returns a AwsLaunchTemplateInformer.
-	AwsLaunchTemplates() AwsLaunchTemplateInformer
-	// AwsLbs returns a AwsLbInformer.
-	AwsLbs() AwsLbInformer
-	// AwsLbCookieStickinessPolicies returns a AwsLbCookieStickinessPolicyInformer.
-	AwsLbCookieStickinessPolicies() AwsLbCookieStickinessPolicyInformer
-	// AwsLbListeners returns a AwsLbListenerInformer.
-	AwsLbListeners() AwsLbListenerInformer
-	// AwsLbListenerCertificates returns a AwsLbListenerCertificateInformer.
-	AwsLbListenerCertificates() AwsLbListenerCertificateInformer
-	// AwsLbListenerRules returns a AwsLbListenerRuleInformer.
-	AwsLbListenerRules() AwsLbListenerRuleInformer
-	// AwsLbSslNegotiationPolicies returns a AwsLbSslNegotiationPolicyInformer.
-	AwsLbSslNegotiationPolicies() AwsLbSslNegotiationPolicyInformer
-	// AwsLbTargetGroups returns a AwsLbTargetGroupInformer.
-	AwsLbTargetGroups() AwsLbTargetGroupInformer
-	// AwsLbTargetGroupAttachments returns a AwsLbTargetGroupAttachmentInformer.
-	AwsLbTargetGroupAttachments() AwsLbTargetGroupAttachmentInformer
-	// AwsLicensemanagerAssociations returns a AwsLicensemanagerAssociationInformer.
-	AwsLicensemanagerAssociations() AwsLicensemanagerAssociationInformer
-	// AwsLicensemanagerLicenseConfigurations returns a AwsLicensemanagerLicenseConfigurationInformer.
-	AwsLicensemanagerLicenseConfigurations() AwsLicensemanagerLicenseConfigurationInformer
-	// AwsLightsailDomains returns a AwsLightsailDomainInformer.
-	AwsLightsailDomains() AwsLightsailDomainInformer
-	// AwsLightsailInstances returns a AwsLightsailInstanceInformer.
-	AwsLightsailInstances() AwsLightsailInstanceInformer
-	// AwsLightsailKeyPairs returns a AwsLightsailKeyPairInformer.
-	AwsLightsailKeyPairs() AwsLightsailKeyPairInformer
-	// AwsLightsailStaticIps returns a AwsLightsailStaticIpInformer.
-	AwsLightsailStaticIps() AwsLightsailStaticIpInformer
-	// AwsLightsailStaticIpAttachments returns a AwsLightsailStaticIpAttachmentInformer.
-	AwsLightsailStaticIpAttachments() AwsLightsailStaticIpAttachmentInformer
-	// AwsLoadBalancerBackendServerPolicies returns a AwsLoadBalancerBackendServerPolicyInformer.
-	AwsLoadBalancerBackendServerPolicies() AwsLoadBalancerBackendServerPolicyInformer
-	// AwsLoadBalancerListenerPolicies returns a AwsLoadBalancerListenerPolicyInformer.
-	AwsLoadBalancerListenerPolicies() AwsLoadBalancerListenerPolicyInformer
-	// AwsLoadBalancerPolicies returns a AwsLoadBalancerPolicyInformer.
-	AwsLoadBalancerPolicies() AwsLoadBalancerPolicyInformer
-	// AwsMacieMemberAccountAssociations returns a AwsMacieMemberAccountAssociationInformer.
-	AwsMacieMemberAccountAssociations() AwsMacieMemberAccountAssociationInformer
-	// AwsMacieS3BucketAssociations returns a AwsMacieS3BucketAssociationInformer.
-	AwsMacieS3BucketAssociations() AwsMacieS3BucketAssociationInformer
-	// AwsMainRouteTableAssociations returns a AwsMainRouteTableAssociationInformer.
-	AwsMainRouteTableAssociations() AwsMainRouteTableAssociationInformer
-	// AwsMediaPackageChannels returns a AwsMediaPackageChannelInformer.
-	AwsMediaPackageChannels() AwsMediaPackageChannelInformer
-	// AwsMediaStoreContainers returns a AwsMediaStoreContainerInformer.
-	AwsMediaStoreContainers() AwsMediaStoreContainerInformer
-	// AwsMediaStoreContainerPolicies returns a AwsMediaStoreContainerPolicyInformer.
-	AwsMediaStoreContainerPolicies() AwsMediaStoreContainerPolicyInformer
-	// AwsMqBrokers returns a AwsMqBrokerInformer.
-	AwsMqBrokers() AwsMqBrokerInformer
-	// AwsMqConfigurations returns a AwsMqConfigurationInformer.
-	AwsMqConfigurations() AwsMqConfigurationInformer
-	// AwsMskClusters returns a AwsMskClusterInformer.
-	AwsMskClusters() AwsMskClusterInformer
-	// AwsMskConfigurations returns a AwsMskConfigurationInformer.
-	AwsMskConfigurations() AwsMskConfigurationInformer
-	// AwsNatGateways returns a AwsNatGatewayInformer.
-	AwsNatGateways() AwsNatGatewayInformer
-	// AwsNeptuneClusters returns a AwsNeptuneClusterInformer.
-	AwsNeptuneClusters() AwsNeptuneClusterInformer
-	// AwsNeptuneClusterInstances returns a AwsNeptuneClusterInstanceInformer.
-	AwsNeptuneClusterInstances() AwsNeptuneClusterInstanceInformer
-	// AwsNeptuneClusterParameterGroups returns a AwsNeptuneClusterParameterGroupInformer.
-	AwsNeptuneClusterParameterGroups() AwsNeptuneClusterParameterGroupInformer
-	// AwsNeptuneClusterSnapshots returns a AwsNeptuneClusterSnapshotInformer.
-	AwsNeptuneClusterSnapshots() AwsNeptuneClusterSnapshotInformer
-	// AwsNeptuneEventSubscriptions returns a AwsNeptuneEventSubscriptionInformer.
-	AwsNeptuneEventSubscriptions() AwsNeptuneEventSubscriptionInformer
-	// AwsNeptuneParameterGroups returns a AwsNeptuneParameterGroupInformer.
-	AwsNeptuneParameterGroups() AwsNeptuneParameterGroupInformer
-	// AwsNeptuneSubnetGroups returns a AwsNeptuneSubnetGroupInformer.
-	AwsNeptuneSubnetGroups() AwsNeptuneSubnetGroupInformer
-	// AwsNetworkAcls returns a AwsNetworkAclInformer.
-	AwsNetworkAcls() AwsNetworkAclInformer
-	// AwsNetworkAclRules returns a AwsNetworkAclRuleInformer.
-	AwsNetworkAclRules() AwsNetworkAclRuleInformer
-	// AwsNetworkInterfaces returns a AwsNetworkInterfaceInformer.
-	AwsNetworkInterfaces() AwsNetworkInterfaceInformer
-	// AwsNetworkInterfaceAttachments returns a AwsNetworkInterfaceAttachmentInformer.
-	AwsNetworkInterfaceAttachments() AwsNetworkInterfaceAttachmentInformer
-	// AwsNetworkInterfaceSgAttachments returns a AwsNetworkInterfaceSgAttachmentInformer.
-	AwsNetworkInterfaceSgAttachments() AwsNetworkInterfaceSgAttachmentInformer
-	// AwsOpsworksApplications returns a AwsOpsworksApplicationInformer.
-	AwsOpsworksApplications() AwsOpsworksApplicationInformer
-	// AwsOpsworksCustomLayers returns a AwsOpsworksCustomLayerInformer.
-	AwsOpsworksCustomLayers() AwsOpsworksCustomLayerInformer
-	// AwsOpsworksGangliaLayers returns a AwsOpsworksGangliaLayerInformer.
-	AwsOpsworksGangliaLayers() AwsOpsworksGangliaLayerInformer
-	// AwsOpsworksHaproxyLayers returns a AwsOpsworksHaproxyLayerInformer.
-	AwsOpsworksHaproxyLayers() AwsOpsworksHaproxyLayerInformer
-	// AwsOpsworksInstances returns a AwsOpsworksInstanceInformer.
-	AwsOpsworksInstances() AwsOpsworksInstanceInformer
-	// AwsOpsworksJavaAppLayers returns a AwsOpsworksJavaAppLayerInformer.
-	AwsOpsworksJavaAppLayers() AwsOpsworksJavaAppLayerInformer
-	// AwsOpsworksMemcachedLayers returns a AwsOpsworksMemcachedLayerInformer.
-	AwsOpsworksMemcachedLayers() AwsOpsworksMemcachedLayerInformer
-	// AwsOpsworksMysqlLayers returns a AwsOpsworksMysqlLayerInformer.
-	AwsOpsworksMysqlLayers() AwsOpsworksMysqlLayerInformer
-	// AwsOpsworksNodejsAppLayers returns a AwsOpsworksNodejsAppLayerInformer.
-	AwsOpsworksNodejsAppLayers() AwsOpsworksNodejsAppLayerInformer
-	// AwsOpsworksPermissions returns a AwsOpsworksPermissionInformer.
-	AwsOpsworksPermissions() AwsOpsworksPermissionInformer
-	// AwsOpsworksPhpAppLayers returns a AwsOpsworksPhpAppLayerInformer.
-	AwsOpsworksPhpAppLayers() AwsOpsworksPhpAppLayerInformer
-	// AwsOpsworksRailsAppLayers returns a AwsOpsworksRailsAppLayerInformer.
-	AwsOpsworksRailsAppLayers() AwsOpsworksRailsAppLayerInformer
-	// AwsOpsworksRdsDbInstances returns a AwsOpsworksRdsDbInstanceInformer.
-	AwsOpsworksRdsDbInstances() AwsOpsworksRdsDbInstanceInformer
-	// AwsOpsworksStacks returns a AwsOpsworksStackInformer.
-	AwsOpsworksStacks() AwsOpsworksStackInformer
-	// AwsOpsworksStaticWebLayers returns a AwsOpsworksStaticWebLayerInformer.
-	AwsOpsworksStaticWebLayers() AwsOpsworksStaticWebLayerInformer
-	// AwsOpsworksUserProfiles returns a AwsOpsworksUserProfileInformer.
-	AwsOpsworksUserProfiles() AwsOpsworksUserProfileInformer
-	// AwsOrganizationsAccounts returns a AwsOrganizationsAccountInformer.
-	AwsOrganizationsAccounts() AwsOrganizationsAccountInformer
-	// AwsOrganizationsOrganizations returns a AwsOrganizationsOrganizationInformer.
-	AwsOrganizationsOrganizations() AwsOrganizationsOrganizationInformer
-	// AwsOrganizationsOrganizationalUnits returns a AwsOrganizationsOrganizationalUnitInformer.
-	AwsOrganizationsOrganizationalUnits() AwsOrganizationsOrganizationalUnitInformer
-	// AwsOrganizationsPolicies returns a AwsOrganizationsPolicyInformer.
-	AwsOrganizationsPolicies() AwsOrganizationsPolicyInformer
-	// AwsOrganizationsPolicyAttachments returns a AwsOrganizationsPolicyAttachmentInformer.
-	AwsOrganizationsPolicyAttachments() AwsOrganizationsPolicyAttachmentInformer
-	// AwsPinpointAdmChannels returns a AwsPinpointAdmChannelInformer.
-	AwsPinpointAdmChannels() AwsPinpointAdmChannelInformer
-	// AwsPinpointApnsChannels returns a AwsPinpointApnsChannelInformer.
-	AwsPinpointApnsChannels() AwsPinpointApnsChannelInformer
-	// AwsPinpointApnsSandboxChannels returns a AwsPinpointApnsSandboxChannelInformer.
-	AwsPinpointApnsSandboxChannels() AwsPinpointApnsSandboxChannelInformer
-	// AwsPinpointApnsVoipChannels returns a AwsPinpointApnsVoipChannelInformer.
-	AwsPinpointApnsVoipChannels() AwsPinpointApnsVoipChannelInformer
-	// AwsPinpointApnsVoipSandboxChannels returns a AwsPinpointApnsVoipSandboxChannelInformer.
-	AwsPinpointApnsVoipSandboxChannels() AwsPinpointApnsVoipSandboxChannelInformer
-	// AwsPinpointApps returns a AwsPinpointAppInformer.
-	AwsPinpointApps() AwsPinpointAppInformer
-	// AwsPinpointBaiduChannels returns a AwsPinpointBaiduChannelInformer.
-	AwsPinpointBaiduChannels() AwsPinpointBaiduChannelInformer
-	// AwsPinpointEmailChannels returns a AwsPinpointEmailChannelInformer.
-	AwsPinpointEmailChannels() AwsPinpointEmailChannelInformer
-	// AwsPinpointEventStreams returns a AwsPinpointEventStreamInformer.
-	AwsPinpointEventStreams() AwsPinpointEventStreamInformer
-	// AwsPinpointGcmChannels returns a AwsPinpointGcmChannelInformer.
-	AwsPinpointGcmChannels() AwsPinpointGcmChannelInformer
-	// AwsPinpointSmsChannels returns a AwsPinpointSmsChannelInformer.
-	AwsPinpointSmsChannels() AwsPinpointSmsChannelInformer
-	// AwsPlacementGroups returns a AwsPlacementGroupInformer.
-	AwsPlacementGroups() AwsPlacementGroupInformer
-	// AwsProxyProtocolPolicies returns a AwsProxyProtocolPolicyInformer.
-	AwsProxyProtocolPolicies() AwsProxyProtocolPolicyInformer
-	// AwsRamPrincipalAssociations returns a AwsRamPrincipalAssociationInformer.
-	AwsRamPrincipalAssociations() AwsRamPrincipalAssociationInformer
-	// AwsRamResourceAssociations returns a AwsRamResourceAssociationInformer.
-	AwsRamResourceAssociations() AwsRamResourceAssociationInformer
-	// AwsRamResourceShares returns a AwsRamResourceShareInformer.
-	AwsRamResourceShares() AwsRamResourceShareInformer
-	// AwsRdsClusters returns a AwsRdsClusterInformer.
-	AwsRdsClusters() AwsRdsClusterInformer
-	// AwsRdsClusterEndpoints returns a AwsRdsClusterEndpointInformer.
-	AwsRdsClusterEndpoints() AwsRdsClusterEndpointInformer
-	// AwsRdsClusterInstances returns a AwsRdsClusterInstanceInformer.
-	AwsRdsClusterInstances() AwsRdsClusterInstanceInformer
-	// AwsRdsClusterParameterGroups returns a AwsRdsClusterParameterGroupInformer.
-	AwsRdsClusterParameterGroups() AwsRdsClusterParameterGroupInformer
-	// AwsRdsGlobalClusters returns a AwsRdsGlobalClusterInformer.
-	AwsRdsGlobalClusters() AwsRdsGlobalClusterInformer
-	// AwsRedshiftClusters returns a AwsRedshiftClusterInformer.
-	AwsRedshiftClusters() AwsRedshiftClusterInformer
-	// AwsRedshiftEventSubscriptions returns a AwsRedshiftEventSubscriptionInformer.
-	AwsRedshiftEventSubscriptions() AwsRedshiftEventSubscriptionInformer
-	// AwsRedshiftParameterGroups returns a AwsRedshiftParameterGroupInformer.
-	AwsRedshiftParameterGroups() AwsRedshiftParameterGroupInformer
-	// AwsRedshiftSecurityGroups returns a AwsRedshiftSecurityGroupInformer.
-	AwsRedshiftSecurityGroups() AwsRedshiftSecurityGroupInformer
-	// AwsRedshiftSnapshotCopyGrants returns a AwsRedshiftSnapshotCopyGrantInformer.
-	AwsRedshiftSnapshotCopyGrants() AwsRedshiftSnapshotCopyGrantInformer
-	// AwsRedshiftSubnetGroups returns a AwsRedshiftSubnetGroupInformer.
-	AwsRedshiftSubnetGroups() AwsRedshiftSubnetGroupInformer
-	// AwsResourcegroupsGroups returns a AwsResourcegroupsGroupInformer.
-	AwsResourcegroupsGroups() AwsResourcegroupsGroupInformer
-	// AwsRoutes returns a AwsRouteInformer.
-	AwsRoutes() AwsRouteInformer
-	// AwsRoute53DelegationSets returns a AwsRoute53DelegationSetInformer.
-	AwsRoute53DelegationSets() AwsRoute53DelegationSetInformer
-	// AwsRoute53HealthChecks returns a AwsRoute53HealthCheckInformer.
-	AwsRoute53HealthChecks() AwsRoute53HealthCheckInformer
-	// AwsRoute53QueryLogs returns a AwsRoute53QueryLogInformer.
-	AwsRoute53QueryLogs() AwsRoute53QueryLogInformer
-	// AwsRoute53Records returns a AwsRoute53RecordInformer.
-	AwsRoute53Records() AwsRoute53RecordInformer
-	// AwsRoute53ResolverEndpoints returns a AwsRoute53ResolverEndpointInformer.
-	AwsRoute53ResolverEndpoints() AwsRoute53ResolverEndpointInformer
-	// AwsRoute53ResolverRules returns a AwsRoute53ResolverRuleInformer.
-	AwsRoute53ResolverRules() AwsRoute53ResolverRuleInformer
-	// AwsRoute53ResolverRuleAssociations returns a AwsRoute53ResolverRuleAssociationInformer.
-	AwsRoute53ResolverRuleAssociations() AwsRoute53ResolverRuleAssociationInformer
-	// AwsRoute53Zones returns a AwsRoute53ZoneInformer.
-	AwsRoute53Zones() AwsRoute53ZoneInformer
-	// AwsRoute53ZoneAssociations returns a AwsRoute53ZoneAssociationInformer.
-	AwsRoute53ZoneAssociations() AwsRoute53ZoneAssociationInformer
-	// AwsRouteTables returns a AwsRouteTableInformer.
-	AwsRouteTables() AwsRouteTableInformer
-	// AwsRouteTableAssociations returns a AwsRouteTableAssociationInformer.
-	AwsRouteTableAssociations() AwsRouteTableAssociationInformer
-	// AwsS3AccountPublicAccessBlocks returns a AwsS3AccountPublicAccessBlockInformer.
-	AwsS3AccountPublicAccessBlocks() AwsS3AccountPublicAccessBlockInformer
-	// AwsS3Buckets returns a AwsS3BucketInformer.
-	AwsS3Buckets() AwsS3BucketInformer
-	// AwsS3BucketInventories returns a AwsS3BucketInventoryInformer.
-	AwsS3BucketInventories() AwsS3BucketInventoryInformer
-	// AwsS3BucketMetrics returns a AwsS3BucketMetricInformer.
-	AwsS3BucketMetrics() AwsS3BucketMetricInformer
-	// AwsS3BucketNotifications returns a AwsS3BucketNotificationInformer.
-	AwsS3BucketNotifications() AwsS3BucketNotificationInformer
-	// AwsS3BucketObjects returns a AwsS3BucketObjectInformer.
-	AwsS3BucketObjects() AwsS3BucketObjectInformer
-	// AwsS3BucketPolicies returns a AwsS3BucketPolicyInformer.
-	AwsS3BucketPolicies() AwsS3BucketPolicyInformer
-	// AwsS3BucketPublicAccessBlocks returns a AwsS3BucketPublicAccessBlockInformer.
-	AwsS3BucketPublicAccessBlocks() AwsS3BucketPublicAccessBlockInformer
-	// AwsSagemakerEndpoints returns a AwsSagemakerEndpointInformer.
-	AwsSagemakerEndpoints() AwsSagemakerEndpointInformer
-	// AwsSagemakerEndpointConfigurations returns a AwsSagemakerEndpointConfigurationInformer.
-	AwsSagemakerEndpointConfigurations() AwsSagemakerEndpointConfigurationInformer
-	// AwsSagemakerModels returns a AwsSagemakerModelInformer.
-	AwsSagemakerModels() AwsSagemakerModelInformer
-	// AwsSagemakerNotebookInstances returns a AwsSagemakerNotebookInstanceInformer.
-	AwsSagemakerNotebookInstances() AwsSagemakerNotebookInstanceInformer
-	// AwsSagemakerNotebookInstanceLifecycleConfigurations returns a AwsSagemakerNotebookInstanceLifecycleConfigurationInformer.
-	AwsSagemakerNotebookInstanceLifecycleConfigurations() AwsSagemakerNotebookInstanceLifecycleConfigurationInformer
-	// AwsSecretsmanagerSecrets returns a AwsSecretsmanagerSecretInformer.
-	AwsSecretsmanagerSecrets() AwsSecretsmanagerSecretInformer
-	// AwsSecretsmanagerSecretVersions returns a AwsSecretsmanagerSecretVersionInformer.
-	AwsSecretsmanagerSecretVersions() AwsSecretsmanagerSecretVersionInformer
-	// AwsSecurityGroups returns a AwsSecurityGroupInformer.
-	AwsSecurityGroups() AwsSecurityGroupInformer
-	// AwsSecurityGroupRules returns a AwsSecurityGroupRuleInformer.
-	AwsSecurityGroupRules() AwsSecurityGroupRuleInformer
-	// AwsSecurityhubAccounts returns a AwsSecurityhubAccountInformer.
-	AwsSecurityhubAccounts() AwsSecurityhubAccountInformer
-	// AwsSecurityhubProductSubscriptions returns a AwsSecurityhubProductSubscriptionInformer.
-	AwsSecurityhubProductSubscriptions() AwsSecurityhubProductSubscriptionInformer
-	// AwsSecurityhubStandardsSubscriptions returns a AwsSecurityhubStandardsSubscriptionInformer.
-	AwsSecurityhubStandardsSubscriptions() AwsSecurityhubStandardsSubscriptionInformer
-	// AwsServiceDiscoveryHttpNamespaces returns a AwsServiceDiscoveryHttpNamespaceInformer.
-	AwsServiceDiscoveryHttpNamespaces() AwsServiceDiscoveryHttpNamespaceInformer
-	// AwsServiceDiscoveryPrivateDnsNamespaces returns a AwsServiceDiscoveryPrivateDnsNamespaceInformer.
-	AwsServiceDiscoveryPrivateDnsNamespaces() AwsServiceDiscoveryPrivateDnsNamespaceInformer
-	// AwsServiceDiscoveryPublicDnsNamespaces returns a AwsServiceDiscoveryPublicDnsNamespaceInformer.
-	AwsServiceDiscoveryPublicDnsNamespaces() AwsServiceDiscoveryPublicDnsNamespaceInformer
-	// AwsServiceDiscoveryServices returns a AwsServiceDiscoveryServiceInformer.
-	AwsServiceDiscoveryServices() AwsServiceDiscoveryServiceInformer
-	// AwsServicecatalogPortfolios returns a AwsServicecatalogPortfolioInformer.
-	AwsServicecatalogPortfolios() AwsServicecatalogPortfolioInformer
-	// AwsSesActiveReceiptRuleSets returns a AwsSesActiveReceiptRuleSetInformer.
-	AwsSesActiveReceiptRuleSets() AwsSesActiveReceiptRuleSetInformer
-	// AwsSesConfigurationSets returns a AwsSesConfigurationSetInformer.
-	AwsSesConfigurationSets() AwsSesConfigurationSetInformer
-	// AwsSesDomainDkims returns a AwsSesDomainDkimInformer.
-	AwsSesDomainDkims() AwsSesDomainDkimInformer
-	// AwsSesDomainIdentities returns a AwsSesDomainIdentityInformer.
-	AwsSesDomainIdentities() AwsSesDomainIdentityInformer
-	// AwsSesDomainIdentityVerifications returns a AwsSesDomainIdentityVerificationInformer.
-	AwsSesDomainIdentityVerifications() AwsSesDomainIdentityVerificationInformer
-	// AwsSesDomainMailFroms returns a AwsSesDomainMailFromInformer.
-	AwsSesDomainMailFroms() AwsSesDomainMailFromInformer
-	// AwsSesEmailIdentities returns a AwsSesEmailIdentityInformer.
-	AwsSesEmailIdentities() AwsSesEmailIdentityInformer
-	// AwsSesEventDestinations returns a AwsSesEventDestinationInformer.
-	AwsSesEventDestinations() AwsSesEventDestinationInformer
-	// AwsSesIdentityNotificationTopics returns a AwsSesIdentityNotificationTopicInformer.
-	AwsSesIdentityNotificationTopics() AwsSesIdentityNotificationTopicInformer
-	// AwsSesIdentityPolicies returns a AwsSesIdentityPolicyInformer.
-	AwsSesIdentityPolicies() AwsSesIdentityPolicyInformer
-	// AwsSesReceiptFilters returns a AwsSesReceiptFilterInformer.
-	AwsSesReceiptFilters() AwsSesReceiptFilterInformer
-	// AwsSesReceiptRules returns a AwsSesReceiptRuleInformer.
-	AwsSesReceiptRules() AwsSesReceiptRuleInformer
-	// AwsSesReceiptRuleSets returns a AwsSesReceiptRuleSetInformer.
-	AwsSesReceiptRuleSets() AwsSesReceiptRuleSetInformer
-	// AwsSesTemplates returns a AwsSesTemplateInformer.
-	AwsSesTemplates() AwsSesTemplateInformer
-	// AwsSfnActivities returns a AwsSfnActivityInformer.
-	AwsSfnActivities() AwsSfnActivityInformer
-	// AwsSfnStateMachines returns a AwsSfnStateMachineInformer.
-	AwsSfnStateMachines() AwsSfnStateMachineInformer
-	// AwsShieldProtections returns a AwsShieldProtectionInformer.
-	AwsShieldProtections() AwsShieldProtectionInformer
-	// AwsSimpledbDomains returns a AwsSimpledbDomainInformer.
-	AwsSimpledbDomains() AwsSimpledbDomainInformer
-	// AwsSnapshotCreateVolumePermissions returns a AwsSnapshotCreateVolumePermissionInformer.
-	AwsSnapshotCreateVolumePermissions() AwsSnapshotCreateVolumePermissionInformer
-	// AwsSnsPlatformApplications returns a AwsSnsPlatformApplicationInformer.
-	AwsSnsPlatformApplications() AwsSnsPlatformApplicationInformer
-	// AwsSnsSmsPreferenceses returns a AwsSnsSmsPreferencesInformer.
-	AwsSnsSmsPreferenceses() AwsSnsSmsPreferencesInformer
-	// AwsSnsTopics returns a AwsSnsTopicInformer.
-	AwsSnsTopics() AwsSnsTopicInformer
-	// AwsSnsTopicPolicies returns a AwsSnsTopicPolicyInformer.
-	AwsSnsTopicPolicies() AwsSnsTopicPolicyInformer
-	// AwsSnsTopicSubscriptions returns a AwsSnsTopicSubscriptionInformer.
-	AwsSnsTopicSubscriptions() AwsSnsTopicSubscriptionInformer
-	// AwsSpotDatafeedSubscriptions returns a AwsSpotDatafeedSubscriptionInformer.
-	AwsSpotDatafeedSubscriptions() AwsSpotDatafeedSubscriptionInformer
-	// AwsSpotFleetRequests returns a AwsSpotFleetRequestInformer.
-	AwsSpotFleetRequests() AwsSpotFleetRequestInformer
-	// AwsSpotInstanceRequests returns a AwsSpotInstanceRequestInformer.
-	AwsSpotInstanceRequests() AwsSpotInstanceRequestInformer
-	// AwsSqsQueues returns a AwsSqsQueueInformer.
-	AwsSqsQueues() AwsSqsQueueInformer
-	// AwsSqsQueuePolicies returns a AwsSqsQueuePolicyInformer.
-	AwsSqsQueuePolicies() AwsSqsQueuePolicyInformer
-	// AwsSsmActivations returns a AwsSsmActivationInformer.
-	AwsSsmActivations() AwsSsmActivationInformer
-	// AwsSsmAssociations returns a AwsSsmAssociationInformer.
-	AwsSsmAssociations() AwsSsmAssociationInformer
-	// AwsSsmDocuments returns a AwsSsmDocumentInformer.
-	AwsSsmDocuments() AwsSsmDocumentInformer
-	// AwsSsmMaintenanceWindows returns a AwsSsmMaintenanceWindowInformer.
-	AwsSsmMaintenanceWindows() AwsSsmMaintenanceWindowInformer
-	// AwsSsmMaintenanceWindowTargets returns a AwsSsmMaintenanceWindowTargetInformer.
-	AwsSsmMaintenanceWindowTargets() AwsSsmMaintenanceWindowTargetInformer
-	// AwsSsmMaintenanceWindowTasks returns a AwsSsmMaintenanceWindowTaskInformer.
-	AwsSsmMaintenanceWindowTasks() AwsSsmMaintenanceWindowTaskInformer
-	// AwsSsmParameters returns a AwsSsmParameterInformer.
-	AwsSsmParameters() AwsSsmParameterInformer
-	// AwsSsmPatchBaselines returns a AwsSsmPatchBaselineInformer.
-	AwsSsmPatchBaselines() AwsSsmPatchBaselineInformer
-	// AwsSsmPatchGroups returns a AwsSsmPatchGroupInformer.
-	AwsSsmPatchGroups() AwsSsmPatchGroupInformer
-	// AwsSsmResourceDataSyncs returns a AwsSsmResourceDataSyncInformer.
-	AwsSsmResourceDataSyncs() AwsSsmResourceDataSyncInformer
-	// AwsStoragegatewayCaches returns a AwsStoragegatewayCacheInformer.
-	AwsStoragegatewayCaches() AwsStoragegatewayCacheInformer
-	// AwsStoragegatewayCachedIscsiVolumes returns a AwsStoragegatewayCachedIscsiVolumeInformer.
-	AwsStoragegatewayCachedIscsiVolumes() AwsStoragegatewayCachedIscsiVolumeInformer
-	// AwsStoragegatewayGateways returns a AwsStoragegatewayGatewayInformer.
-	AwsStoragegatewayGateways() AwsStoragegatewayGatewayInformer
-	// AwsStoragegatewayNfsFileShares returns a AwsStoragegatewayNfsFileShareInformer.
-	AwsStoragegatewayNfsFileShares() AwsStoragegatewayNfsFileShareInformer
-	// AwsStoragegatewaySmbFileShares returns a AwsStoragegatewaySmbFileShareInformer.
-	AwsStoragegatewaySmbFileShares() AwsStoragegatewaySmbFileShareInformer
-	// AwsStoragegatewayUploadBuffers returns a AwsStoragegatewayUploadBufferInformer.
-	AwsStoragegatewayUploadBuffers() AwsStoragegatewayUploadBufferInformer
-	// AwsStoragegatewayWorkingStorages returns a AwsStoragegatewayWorkingStorageInformer.
-	AwsStoragegatewayWorkingStorages() AwsStoragegatewayWorkingStorageInformer
-	// AwsSubnets returns a AwsSubnetInformer.
-	AwsSubnets() AwsSubnetInformer
-	// AwsSwfDomains returns a AwsSwfDomainInformer.
-	AwsSwfDomains() AwsSwfDomainInformer
-	// AwsTransferServers returns a AwsTransferServerInformer.
-	AwsTransferServers() AwsTransferServerInformer
-	// AwsTransferSshKeys returns a AwsTransferSshKeyInformer.
-	AwsTransferSshKeys() AwsTransferSshKeyInformer
-	// AwsTransferUsers returns a AwsTransferUserInformer.
-	AwsTransferUsers() AwsTransferUserInformer
-	// AwsVolumeAttachments returns a AwsVolumeAttachmentInformer.
-	AwsVolumeAttachments() AwsVolumeAttachmentInformer
-	// AwsVpcs returns a AwsVpcInformer.
-	AwsVpcs() AwsVpcInformer
-	// AwsVpcDhcpOptionses returns a AwsVpcDhcpOptionsInformer.
-	AwsVpcDhcpOptionses() AwsVpcDhcpOptionsInformer
-	// AwsVpcDhcpOptionsAssociations returns a AwsVpcDhcpOptionsAssociationInformer.
-	AwsVpcDhcpOptionsAssociations() AwsVpcDhcpOptionsAssociationInformer
-	// AwsVpcEndpoints returns a AwsVpcEndpointInformer.
-	AwsVpcEndpoints() AwsVpcEndpointInformer
-	// AwsVpcEndpointConnectionNotifications returns a AwsVpcEndpointConnectionNotificationInformer.
-	AwsVpcEndpointConnectionNotifications() AwsVpcEndpointConnectionNotificationInformer
-	// AwsVpcEndpointRouteTableAssociations returns a AwsVpcEndpointRouteTableAssociationInformer.
-	AwsVpcEndpointRouteTableAssociations() AwsVpcEndpointRouteTableAssociationInformer
-	// AwsVpcEndpointServices returns a AwsVpcEndpointServiceInformer.
-	AwsVpcEndpointServices() AwsVpcEndpointServiceInformer
-	// AwsVpcEndpointServiceAllowedPrincipals returns a AwsVpcEndpointServiceAllowedPrincipalInformer.
-	AwsVpcEndpointServiceAllowedPrincipals() AwsVpcEndpointServiceAllowedPrincipalInformer
-	// AwsVpcEndpointSubnetAssociations returns a AwsVpcEndpointSubnetAssociationInformer.
-	AwsVpcEndpointSubnetAssociations() AwsVpcEndpointSubnetAssociationInformer
-	// AwsVpcIpv4CidrBlockAssociations returns a AwsVpcIpv4CidrBlockAssociationInformer.
-	AwsVpcIpv4CidrBlockAssociations() AwsVpcIpv4CidrBlockAssociationInformer
-	// AwsVpcPeeringConnections returns a AwsVpcPeeringConnectionInformer.
-	AwsVpcPeeringConnections() AwsVpcPeeringConnectionInformer
-	// AwsVpcPeeringConnectionAccepters returns a AwsVpcPeeringConnectionAccepterInformer.
-	AwsVpcPeeringConnectionAccepters() AwsVpcPeeringConnectionAccepterInformer
-	// AwsVpcPeeringConnectionOptionses returns a AwsVpcPeeringConnectionOptionsInformer.
-	AwsVpcPeeringConnectionOptionses() AwsVpcPeeringConnectionOptionsInformer
-	// AwsVpnConnections returns a AwsVpnConnectionInformer.
-	AwsVpnConnections() AwsVpnConnectionInformer
-	// AwsVpnConnectionRoutes returns a AwsVpnConnectionRouteInformer.
-	AwsVpnConnectionRoutes() AwsVpnConnectionRouteInformer
-	// AwsVpnGateways returns a AwsVpnGatewayInformer.
-	AwsVpnGateways() AwsVpnGatewayInformer
-	// AwsVpnGatewayAttachments returns a AwsVpnGatewayAttachmentInformer.
-	AwsVpnGatewayAttachments() AwsVpnGatewayAttachmentInformer
-	// AwsVpnGatewayRoutePropagations returns a AwsVpnGatewayRoutePropagationInformer.
-	AwsVpnGatewayRoutePropagations() AwsVpnGatewayRoutePropagationInformer
-	// AwsWafByteMatchSets returns a AwsWafByteMatchSetInformer.
-	AwsWafByteMatchSets() AwsWafByteMatchSetInformer
-	// AwsWafGeoMatchSets returns a AwsWafGeoMatchSetInformer.
-	AwsWafGeoMatchSets() AwsWafGeoMatchSetInformer
-	// AwsWafIpsets returns a AwsWafIpsetInformer.
-	AwsWafIpsets() AwsWafIpsetInformer
-	// AwsWafRateBasedRules returns a AwsWafRateBasedRuleInformer.
-	AwsWafRateBasedRules() AwsWafRateBasedRuleInformer
-	// AwsWafRegexMatchSets returns a AwsWafRegexMatchSetInformer.
-	AwsWafRegexMatchSets() AwsWafRegexMatchSetInformer
-	// AwsWafRegexPatternSets returns a AwsWafRegexPatternSetInformer.
-	AwsWafRegexPatternSets() AwsWafRegexPatternSetInformer
-	// AwsWafRules returns a AwsWafRuleInformer.
-	AwsWafRules() AwsWafRuleInformer
-	// AwsWafRuleGroups returns a AwsWafRuleGroupInformer.
-	AwsWafRuleGroups() AwsWafRuleGroupInformer
-	// AwsWafSizeConstraintSets returns a AwsWafSizeConstraintSetInformer.
-	AwsWafSizeConstraintSets() AwsWafSizeConstraintSetInformer
-	// AwsWafSqlInjectionMatchSets returns a AwsWafSqlInjectionMatchSetInformer.
-	AwsWafSqlInjectionMatchSets() AwsWafSqlInjectionMatchSetInformer
-	// AwsWafWebAcls returns a AwsWafWebAclInformer.
-	AwsWafWebAcls() AwsWafWebAclInformer
-	// AwsWafXssMatchSets returns a AwsWafXssMatchSetInformer.
-	AwsWafXssMatchSets() AwsWafXssMatchSetInformer
-	// AwsWafregionalByteMatchSets returns a AwsWafregionalByteMatchSetInformer.
-	AwsWafregionalByteMatchSets() AwsWafregionalByteMatchSetInformer
-	// AwsWafregionalGeoMatchSets returns a AwsWafregionalGeoMatchSetInformer.
-	AwsWafregionalGeoMatchSets() AwsWafregionalGeoMatchSetInformer
-	// AwsWafregionalIpsets returns a AwsWafregionalIpsetInformer.
-	AwsWafregionalIpsets() AwsWafregionalIpsetInformer
-	// AwsWafregionalRateBasedRules returns a AwsWafregionalRateBasedRuleInformer.
-	AwsWafregionalRateBasedRules() AwsWafregionalRateBasedRuleInformer
-	// AwsWafregionalRegexMatchSets returns a AwsWafregionalRegexMatchSetInformer.
-	AwsWafregionalRegexMatchSets() AwsWafregionalRegexMatchSetInformer
-	// AwsWafregionalRegexPatternSets returns a AwsWafregionalRegexPatternSetInformer.
-	AwsWafregionalRegexPatternSets() AwsWafregionalRegexPatternSetInformer
-	// AwsWafregionalRules returns a AwsWafregionalRuleInformer.
-	AwsWafregionalRules() AwsWafregionalRuleInformer
-	// AwsWafregionalRuleGroups returns a AwsWafregionalRuleGroupInformer.
-	AwsWafregionalRuleGroups() AwsWafregionalRuleGroupInformer
-	// AwsWafregionalSizeConstraintSets returns a AwsWafregionalSizeConstraintSetInformer.
-	AwsWafregionalSizeConstraintSets() AwsWafregionalSizeConstraintSetInformer
-	// AwsWafregionalSqlInjectionMatchSets returns a AwsWafregionalSqlInjectionMatchSetInformer.
-	AwsWafregionalSqlInjectionMatchSets() AwsWafregionalSqlInjectionMatchSetInformer
-	// AwsWafregionalWebAcls returns a AwsWafregionalWebAclInformer.
-	AwsWafregionalWebAcls() AwsWafregionalWebAclInformer
-	// AwsWafregionalWebAclAssociations returns a AwsWafregionalWebAclAssociationInformer.
-	AwsWafregionalWebAclAssociations() AwsWafregionalWebAclAssociationInformer
-	// AwsWafregionalXssMatchSets returns a AwsWafregionalXssMatchSetInformer.
-	AwsWafregionalXssMatchSets() AwsWafregionalXssMatchSetInformer
-	// AwsWorklinkFleets returns a AwsWorklinkFleetInformer.
-	AwsWorklinkFleets() AwsWorklinkFleetInformer
-	// AwsWorklinkWebsiteCertificateAuthorityAssociations returns a AwsWorklinkWebsiteCertificateAuthorityAssociationInformer.
-	AwsWorklinkWebsiteCertificateAuthorityAssociations() AwsWorklinkWebsiteCertificateAuthorityAssociationInformer
-	// AwsXraySamplingRules returns a AwsXraySamplingRuleInformer.
-	AwsXraySamplingRules() AwsXraySamplingRuleInformer
+	// AcmCertificates returns a AcmCertificateInformer.
+	AcmCertificates() AcmCertificateInformer
+	// AcmCertificateValidations returns a AcmCertificateValidationInformer.
+	AcmCertificateValidations() AcmCertificateValidationInformer
+	// AcmpcaCertificateAuthorities returns a AcmpcaCertificateAuthorityInformer.
+	AcmpcaCertificateAuthorities() AcmpcaCertificateAuthorityInformer
+	// Albs returns a AlbInformer.
+	Albs() AlbInformer
+	// AlbListeners returns a AlbListenerInformer.
+	AlbListeners() AlbListenerInformer
+	// AlbListenerCertificates returns a AlbListenerCertificateInformer.
+	AlbListenerCertificates() AlbListenerCertificateInformer
+	// AlbListenerRules returns a AlbListenerRuleInformer.
+	AlbListenerRules() AlbListenerRuleInformer
+	// AlbTargetGroups returns a AlbTargetGroupInformer.
+	AlbTargetGroups() AlbTargetGroupInformer
+	// AlbTargetGroupAttachments returns a AlbTargetGroupAttachmentInformer.
+	AlbTargetGroupAttachments() AlbTargetGroupAttachmentInformer
+	// Amis returns a AmiInformer.
+	Amis() AmiInformer
+	// AmiCopies returns a AmiCopyInformer.
+	AmiCopies() AmiCopyInformer
+	// AmiFromInstances returns a AmiFromInstanceInformer.
+	AmiFromInstances() AmiFromInstanceInformer
+	// AmiLaunchPermissions returns a AmiLaunchPermissionInformer.
+	AmiLaunchPermissions() AmiLaunchPermissionInformer
+	// ApiGatewayAccounts returns a ApiGatewayAccountInformer.
+	ApiGatewayAccounts() ApiGatewayAccountInformer
+	// ApiGatewayApiKeys returns a ApiGatewayApiKeyInformer.
+	ApiGatewayApiKeys() ApiGatewayApiKeyInformer
+	// ApiGatewayAuthorizers returns a ApiGatewayAuthorizerInformer.
+	ApiGatewayAuthorizers() ApiGatewayAuthorizerInformer
+	// ApiGatewayBasePathMappings returns a ApiGatewayBasePathMappingInformer.
+	ApiGatewayBasePathMappings() ApiGatewayBasePathMappingInformer
+	// ApiGatewayClientCertificates returns a ApiGatewayClientCertificateInformer.
+	ApiGatewayClientCertificates() ApiGatewayClientCertificateInformer
+	// ApiGatewayDeployments returns a ApiGatewayDeploymentInformer.
+	ApiGatewayDeployments() ApiGatewayDeploymentInformer
+	// ApiGatewayDocumentationParts returns a ApiGatewayDocumentationPartInformer.
+	ApiGatewayDocumentationParts() ApiGatewayDocumentationPartInformer
+	// ApiGatewayDocumentationVersions returns a ApiGatewayDocumentationVersionInformer.
+	ApiGatewayDocumentationVersions() ApiGatewayDocumentationVersionInformer
+	// ApiGatewayDomainNames returns a ApiGatewayDomainNameInformer.
+	ApiGatewayDomainNames() ApiGatewayDomainNameInformer
+	// ApiGatewayGatewayResponses returns a ApiGatewayGatewayResponseInformer.
+	ApiGatewayGatewayResponses() ApiGatewayGatewayResponseInformer
+	// ApiGatewayIntegrations returns a ApiGatewayIntegrationInformer.
+	ApiGatewayIntegrations() ApiGatewayIntegrationInformer
+	// ApiGatewayIntegrationResponses returns a ApiGatewayIntegrationResponseInformer.
+	ApiGatewayIntegrationResponses() ApiGatewayIntegrationResponseInformer
+	// ApiGatewayMethods returns a ApiGatewayMethodInformer.
+	ApiGatewayMethods() ApiGatewayMethodInformer
+	// ApiGatewayMethodResponses returns a ApiGatewayMethodResponseInformer.
+	ApiGatewayMethodResponses() ApiGatewayMethodResponseInformer
+	// ApiGatewayMethodSettingses returns a ApiGatewayMethodSettingsInformer.
+	ApiGatewayMethodSettingses() ApiGatewayMethodSettingsInformer
+	// ApiGatewayModels returns a ApiGatewayModelInformer.
+	ApiGatewayModels() ApiGatewayModelInformer
+	// ApiGatewayRequestValidators returns a ApiGatewayRequestValidatorInformer.
+	ApiGatewayRequestValidators() ApiGatewayRequestValidatorInformer
+	// ApiGatewayResources returns a ApiGatewayResourceInformer.
+	ApiGatewayResources() ApiGatewayResourceInformer
+	// ApiGatewayRestApis returns a ApiGatewayRestApiInformer.
+	ApiGatewayRestApis() ApiGatewayRestApiInformer
+	// ApiGatewayStages returns a ApiGatewayStageInformer.
+	ApiGatewayStages() ApiGatewayStageInformer
+	// ApiGatewayUsagePlans returns a ApiGatewayUsagePlanInformer.
+	ApiGatewayUsagePlans() ApiGatewayUsagePlanInformer
+	// ApiGatewayUsagePlanKeys returns a ApiGatewayUsagePlanKeyInformer.
+	ApiGatewayUsagePlanKeys() ApiGatewayUsagePlanKeyInformer
+	// ApiGatewayVpcLinks returns a ApiGatewayVpcLinkInformer.
+	ApiGatewayVpcLinks() ApiGatewayVpcLinkInformer
+	// AppCookieStickinessPolicies returns a AppCookieStickinessPolicyInformer.
+	AppCookieStickinessPolicies() AppCookieStickinessPolicyInformer
+	// AppautoscalingPolicies returns a AppautoscalingPolicyInformer.
+	AppautoscalingPolicies() AppautoscalingPolicyInformer
+	// AppautoscalingScheduledActions returns a AppautoscalingScheduledActionInformer.
+	AppautoscalingScheduledActions() AppautoscalingScheduledActionInformer
+	// AppautoscalingTargets returns a AppautoscalingTargetInformer.
+	AppautoscalingTargets() AppautoscalingTargetInformer
+	// AppmeshMeshes returns a AppmeshMeshInformer.
+	AppmeshMeshes() AppmeshMeshInformer
+	// AppmeshRoutes returns a AppmeshRouteInformer.
+	AppmeshRoutes() AppmeshRouteInformer
+	// AppmeshVirtualNodes returns a AppmeshVirtualNodeInformer.
+	AppmeshVirtualNodes() AppmeshVirtualNodeInformer
+	// AppmeshVirtualRouters returns a AppmeshVirtualRouterInformer.
+	AppmeshVirtualRouters() AppmeshVirtualRouterInformer
+	// AppmeshVirtualServices returns a AppmeshVirtualServiceInformer.
+	AppmeshVirtualServices() AppmeshVirtualServiceInformer
+	// AppsyncApiKeys returns a AppsyncApiKeyInformer.
+	AppsyncApiKeys() AppsyncApiKeyInformer
+	// AppsyncDatasources returns a AppsyncDatasourceInformer.
+	AppsyncDatasources() AppsyncDatasourceInformer
+	// AppsyncFunctions returns a AppsyncFunctionInformer.
+	AppsyncFunctions() AppsyncFunctionInformer
+	// AppsyncGraphqlApis returns a AppsyncGraphqlApiInformer.
+	AppsyncGraphqlApis() AppsyncGraphqlApiInformer
+	// AppsyncResolvers returns a AppsyncResolverInformer.
+	AppsyncResolvers() AppsyncResolverInformer
+	// AthenaDatabases returns a AthenaDatabaseInformer.
+	AthenaDatabases() AthenaDatabaseInformer
+	// AthenaNamedQueries returns a AthenaNamedQueryInformer.
+	AthenaNamedQueries() AthenaNamedQueryInformer
+	// AthenaWorkgroups returns a AthenaWorkgroupInformer.
+	AthenaWorkgroups() AthenaWorkgroupInformer
+	// AutoscalingAttachments returns a AutoscalingAttachmentInformer.
+	AutoscalingAttachments() AutoscalingAttachmentInformer
+	// AutoscalingGroups returns a AutoscalingGroupInformer.
+	AutoscalingGroups() AutoscalingGroupInformer
+	// AutoscalingLifecycleHooks returns a AutoscalingLifecycleHookInformer.
+	AutoscalingLifecycleHooks() AutoscalingLifecycleHookInformer
+	// AutoscalingNotifications returns a AutoscalingNotificationInformer.
+	AutoscalingNotifications() AutoscalingNotificationInformer
+	// AutoscalingPolicies returns a AutoscalingPolicyInformer.
+	AutoscalingPolicies() AutoscalingPolicyInformer
+	// AutoscalingSchedules returns a AutoscalingScheduleInformer.
+	AutoscalingSchedules() AutoscalingScheduleInformer
+	// BackupPlans returns a BackupPlanInformer.
+	BackupPlans() BackupPlanInformer
+	// BackupSelections returns a BackupSelectionInformer.
+	BackupSelections() BackupSelectionInformer
+	// BackupVaults returns a BackupVaultInformer.
+	BackupVaults() BackupVaultInformer
+	// BatchComputeEnvironments returns a BatchComputeEnvironmentInformer.
+	BatchComputeEnvironments() BatchComputeEnvironmentInformer
+	// BatchJobDefinitions returns a BatchJobDefinitionInformer.
+	BatchJobDefinitions() BatchJobDefinitionInformer
+	// BatchJobQueues returns a BatchJobQueueInformer.
+	BatchJobQueues() BatchJobQueueInformer
+	// BudgetsBudgets returns a BudgetsBudgetInformer.
+	BudgetsBudgets() BudgetsBudgetInformer
+	// Cloud9EnvironmentEc2s returns a Cloud9EnvironmentEc2Informer.
+	Cloud9EnvironmentEc2s() Cloud9EnvironmentEc2Informer
+	// CloudformationStacks returns a CloudformationStackInformer.
+	CloudformationStacks() CloudformationStackInformer
+	// CloudformationStackSets returns a CloudformationStackSetInformer.
+	CloudformationStackSets() CloudformationStackSetInformer
+	// CloudformationStackSetInstances returns a CloudformationStackSetInstanceInformer.
+	CloudformationStackSetInstances() CloudformationStackSetInstanceInformer
+	// CloudfrontDistributions returns a CloudfrontDistributionInformer.
+	CloudfrontDistributions() CloudfrontDistributionInformer
+	// CloudfrontOriginAccessIdentities returns a CloudfrontOriginAccessIdentityInformer.
+	CloudfrontOriginAccessIdentities() CloudfrontOriginAccessIdentityInformer
+	// CloudfrontPublicKeys returns a CloudfrontPublicKeyInformer.
+	CloudfrontPublicKeys() CloudfrontPublicKeyInformer
+	// CloudhsmV2Clusters returns a CloudhsmV2ClusterInformer.
+	CloudhsmV2Clusters() CloudhsmV2ClusterInformer
+	// CloudhsmV2Hsms returns a CloudhsmV2HsmInformer.
+	CloudhsmV2Hsms() CloudhsmV2HsmInformer
+	// Cloudtrails returns a CloudtrailInformer.
+	Cloudtrails() CloudtrailInformer
+	// CloudwatchDashboards returns a CloudwatchDashboardInformer.
+	CloudwatchDashboards() CloudwatchDashboardInformer
+	// CloudwatchEventPermissions returns a CloudwatchEventPermissionInformer.
+	CloudwatchEventPermissions() CloudwatchEventPermissionInformer
+	// CloudwatchEventRules returns a CloudwatchEventRuleInformer.
+	CloudwatchEventRules() CloudwatchEventRuleInformer
+	// CloudwatchEventTargets returns a CloudwatchEventTargetInformer.
+	CloudwatchEventTargets() CloudwatchEventTargetInformer
+	// CloudwatchLogDestinations returns a CloudwatchLogDestinationInformer.
+	CloudwatchLogDestinations() CloudwatchLogDestinationInformer
+	// CloudwatchLogDestinationPolicies returns a CloudwatchLogDestinationPolicyInformer.
+	CloudwatchLogDestinationPolicies() CloudwatchLogDestinationPolicyInformer
+	// CloudwatchLogGroups returns a CloudwatchLogGroupInformer.
+	CloudwatchLogGroups() CloudwatchLogGroupInformer
+	// CloudwatchLogMetricFilters returns a CloudwatchLogMetricFilterInformer.
+	CloudwatchLogMetricFilters() CloudwatchLogMetricFilterInformer
+	// CloudwatchLogResourcePolicies returns a CloudwatchLogResourcePolicyInformer.
+	CloudwatchLogResourcePolicies() CloudwatchLogResourcePolicyInformer
+	// CloudwatchLogStreams returns a CloudwatchLogStreamInformer.
+	CloudwatchLogStreams() CloudwatchLogStreamInformer
+	// CloudwatchLogSubscriptionFilters returns a CloudwatchLogSubscriptionFilterInformer.
+	CloudwatchLogSubscriptionFilters() CloudwatchLogSubscriptionFilterInformer
+	// CloudwatchMetricAlarms returns a CloudwatchMetricAlarmInformer.
+	CloudwatchMetricAlarms() CloudwatchMetricAlarmInformer
+	// CodebuildProjects returns a CodebuildProjectInformer.
+	CodebuildProjects() CodebuildProjectInformer
+	// CodebuildWebhooks returns a CodebuildWebhookInformer.
+	CodebuildWebhooks() CodebuildWebhookInformer
+	// CodecommitRepositories returns a CodecommitRepositoryInformer.
+	CodecommitRepositories() CodecommitRepositoryInformer
+	// CodecommitTriggers returns a CodecommitTriggerInformer.
+	CodecommitTriggers() CodecommitTriggerInformer
+	// CodedeployApps returns a CodedeployAppInformer.
+	CodedeployApps() CodedeployAppInformer
+	// CodedeployDeploymentConfigs returns a CodedeployDeploymentConfigInformer.
+	CodedeployDeploymentConfigs() CodedeployDeploymentConfigInformer
+	// CodedeployDeploymentGroups returns a CodedeployDeploymentGroupInformer.
+	CodedeployDeploymentGroups() CodedeployDeploymentGroupInformer
+	// Codepipelines returns a CodepipelineInformer.
+	Codepipelines() CodepipelineInformer
+	// CodepipelineWebhooks returns a CodepipelineWebhookInformer.
+	CodepipelineWebhooks() CodepipelineWebhookInformer
+	// CognitoIdentityPools returns a CognitoIdentityPoolInformer.
+	CognitoIdentityPools() CognitoIdentityPoolInformer
+	// CognitoIdentityPoolRolesAttachments returns a CognitoIdentityPoolRolesAttachmentInformer.
+	CognitoIdentityPoolRolesAttachments() CognitoIdentityPoolRolesAttachmentInformer
+	// CognitoIdentityProviders returns a CognitoIdentityProviderInformer.
+	CognitoIdentityProviders() CognitoIdentityProviderInformer
+	// CognitoResourceServers returns a CognitoResourceServerInformer.
+	CognitoResourceServers() CognitoResourceServerInformer
+	// CognitoUserGroups returns a CognitoUserGroupInformer.
+	CognitoUserGroups() CognitoUserGroupInformer
+	// CognitoUserPools returns a CognitoUserPoolInformer.
+	CognitoUserPools() CognitoUserPoolInformer
+	// CognitoUserPoolClients returns a CognitoUserPoolClientInformer.
+	CognitoUserPoolClients() CognitoUserPoolClientInformer
+	// CognitoUserPoolDomains returns a CognitoUserPoolDomainInformer.
+	CognitoUserPoolDomains() CognitoUserPoolDomainInformer
+	// ConfigAggregateAuthorizations returns a ConfigAggregateAuthorizationInformer.
+	ConfigAggregateAuthorizations() ConfigAggregateAuthorizationInformer
+	// ConfigConfigRules returns a ConfigConfigRuleInformer.
+	ConfigConfigRules() ConfigConfigRuleInformer
+	// ConfigConfigurationAggregators returns a ConfigConfigurationAggregatorInformer.
+	ConfigConfigurationAggregators() ConfigConfigurationAggregatorInformer
+	// ConfigConfigurationRecorders returns a ConfigConfigurationRecorderInformer.
+	ConfigConfigurationRecorders() ConfigConfigurationRecorderInformer
+	// ConfigConfigurationRecorderStatus_s returns a ConfigConfigurationRecorderStatus_Informer.
+	ConfigConfigurationRecorderStatus_s() ConfigConfigurationRecorderStatus_Informer
+	// ConfigDeliveryChannels returns a ConfigDeliveryChannelInformer.
+	ConfigDeliveryChannels() ConfigDeliveryChannelInformer
+	// CurReportDefinitions returns a CurReportDefinitionInformer.
+	CurReportDefinitions() CurReportDefinitionInformer
+	// CustomerGateways returns a CustomerGatewayInformer.
+	CustomerGateways() CustomerGatewayInformer
+	// DatapipelinePipelines returns a DatapipelinePipelineInformer.
+	DatapipelinePipelines() DatapipelinePipelineInformer
+	// DatasyncAgents returns a DatasyncAgentInformer.
+	DatasyncAgents() DatasyncAgentInformer
+	// DatasyncLocationEfses returns a DatasyncLocationEfsInformer.
+	DatasyncLocationEfses() DatasyncLocationEfsInformer
+	// DatasyncLocationNfses returns a DatasyncLocationNfsInformer.
+	DatasyncLocationNfses() DatasyncLocationNfsInformer
+	// DatasyncLocationS3s returns a DatasyncLocationS3Informer.
+	DatasyncLocationS3s() DatasyncLocationS3Informer
+	// DatasyncTasks returns a DatasyncTaskInformer.
+	DatasyncTasks() DatasyncTaskInformer
+	// DaxClusters returns a DaxClusterInformer.
+	DaxClusters() DaxClusterInformer
+	// DaxParameterGroups returns a DaxParameterGroupInformer.
+	DaxParameterGroups() DaxParameterGroupInformer
+	// DaxSubnetGroups returns a DaxSubnetGroupInformer.
+	DaxSubnetGroups() DaxSubnetGroupInformer
+	// DbClusterSnapshots returns a DbClusterSnapshotInformer.
+	DbClusterSnapshots() DbClusterSnapshotInformer
+	// DbEventSubscriptions returns a DbEventSubscriptionInformer.
+	DbEventSubscriptions() DbEventSubscriptionInformer
+	// DbInstances returns a DbInstanceInformer.
+	DbInstances() DbInstanceInformer
+	// DbInstanceRoleAssociations returns a DbInstanceRoleAssociationInformer.
+	DbInstanceRoleAssociations() DbInstanceRoleAssociationInformer
+	// DbOptionGroups returns a DbOptionGroupInformer.
+	DbOptionGroups() DbOptionGroupInformer
+	// DbParameterGroups returns a DbParameterGroupInformer.
+	DbParameterGroups() DbParameterGroupInformer
+	// DbSecurityGroups returns a DbSecurityGroupInformer.
+	DbSecurityGroups() DbSecurityGroupInformer
+	// DbSnapshots returns a DbSnapshotInformer.
+	DbSnapshots() DbSnapshotInformer
+	// DbSubnetGroups returns a DbSubnetGroupInformer.
+	DbSubnetGroups() DbSubnetGroupInformer
+	// DefaultNetworkAcls returns a DefaultNetworkAclInformer.
+	DefaultNetworkAcls() DefaultNetworkAclInformer
+	// DefaultRouteTables returns a DefaultRouteTableInformer.
+	DefaultRouteTables() DefaultRouteTableInformer
+	// DefaultSecurityGroups returns a DefaultSecurityGroupInformer.
+	DefaultSecurityGroups() DefaultSecurityGroupInformer
+	// DefaultSubnets returns a DefaultSubnetInformer.
+	DefaultSubnets() DefaultSubnetInformer
+	// DefaultVpcs returns a DefaultVpcInformer.
+	DefaultVpcs() DefaultVpcInformer
+	// DefaultVpcDhcpOptionses returns a DefaultVpcDhcpOptionsInformer.
+	DefaultVpcDhcpOptionses() DefaultVpcDhcpOptionsInformer
+	// DevicefarmProjects returns a DevicefarmProjectInformer.
+	DevicefarmProjects() DevicefarmProjectInformer
+	// DirectoryServiceConditionalForwarders returns a DirectoryServiceConditionalForwarderInformer.
+	DirectoryServiceConditionalForwarders() DirectoryServiceConditionalForwarderInformer
+	// DirectoryServiceDirectories returns a DirectoryServiceDirectoryInformer.
+	DirectoryServiceDirectories() DirectoryServiceDirectoryInformer
+	// DirectoryServiceLogSubscriptions returns a DirectoryServiceLogSubscriptionInformer.
+	DirectoryServiceLogSubscriptions() DirectoryServiceLogSubscriptionInformer
+	// DlmLifecyclePolicies returns a DlmLifecyclePolicyInformer.
+	DlmLifecyclePolicies() DlmLifecyclePolicyInformer
+	// DmsCertificates returns a DmsCertificateInformer.
+	DmsCertificates() DmsCertificateInformer
+	// DmsEndpoints returns a DmsEndpointInformer.
+	DmsEndpoints() DmsEndpointInformer
+	// DmsReplicationInstances returns a DmsReplicationInstanceInformer.
+	DmsReplicationInstances() DmsReplicationInstanceInformer
+	// DmsReplicationSubnetGroups returns a DmsReplicationSubnetGroupInformer.
+	DmsReplicationSubnetGroups() DmsReplicationSubnetGroupInformer
+	// DmsReplicationTasks returns a DmsReplicationTaskInformer.
+	DmsReplicationTasks() DmsReplicationTaskInformer
+	// DocdbClusters returns a DocdbClusterInformer.
+	DocdbClusters() DocdbClusterInformer
+	// DocdbClusterInstances returns a DocdbClusterInstanceInformer.
+	DocdbClusterInstances() DocdbClusterInstanceInformer
+	// DocdbClusterParameterGroups returns a DocdbClusterParameterGroupInformer.
+	DocdbClusterParameterGroups() DocdbClusterParameterGroupInformer
+	// DocdbClusterSnapshots returns a DocdbClusterSnapshotInformer.
+	DocdbClusterSnapshots() DocdbClusterSnapshotInformer
+	// DocdbSubnetGroups returns a DocdbSubnetGroupInformer.
+	DocdbSubnetGroups() DocdbSubnetGroupInformer
+	// DxBgpPeers returns a DxBgpPeerInformer.
+	DxBgpPeers() DxBgpPeerInformer
+	// DxConnections returns a DxConnectionInformer.
+	DxConnections() DxConnectionInformer
+	// DxConnectionAssociations returns a DxConnectionAssociationInformer.
+	DxConnectionAssociations() DxConnectionAssociationInformer
+	// DxGateways returns a DxGatewayInformer.
+	DxGateways() DxGatewayInformer
+	// DxGatewayAssociations returns a DxGatewayAssociationInformer.
+	DxGatewayAssociations() DxGatewayAssociationInformer
+	// DxGatewayAssociationProposals returns a DxGatewayAssociationProposalInformer.
+	DxGatewayAssociationProposals() DxGatewayAssociationProposalInformer
+	// DxHostedPrivateVirtualInterfaces returns a DxHostedPrivateVirtualInterfaceInformer.
+	DxHostedPrivateVirtualInterfaces() DxHostedPrivateVirtualInterfaceInformer
+	// DxHostedPrivateVirtualInterfaceAccepters returns a DxHostedPrivateVirtualInterfaceAccepterInformer.
+	DxHostedPrivateVirtualInterfaceAccepters() DxHostedPrivateVirtualInterfaceAccepterInformer
+	// DxHostedPublicVirtualInterfaces returns a DxHostedPublicVirtualInterfaceInformer.
+	DxHostedPublicVirtualInterfaces() DxHostedPublicVirtualInterfaceInformer
+	// DxHostedPublicVirtualInterfaceAccepters returns a DxHostedPublicVirtualInterfaceAccepterInformer.
+	DxHostedPublicVirtualInterfaceAccepters() DxHostedPublicVirtualInterfaceAccepterInformer
+	// DxLags returns a DxLagInformer.
+	DxLags() DxLagInformer
+	// DxPrivateVirtualInterfaces returns a DxPrivateVirtualInterfaceInformer.
+	DxPrivateVirtualInterfaces() DxPrivateVirtualInterfaceInformer
+	// DxPublicVirtualInterfaces returns a DxPublicVirtualInterfaceInformer.
+	DxPublicVirtualInterfaces() DxPublicVirtualInterfaceInformer
+	// DynamodbGlobalTables returns a DynamodbGlobalTableInformer.
+	DynamodbGlobalTables() DynamodbGlobalTableInformer
+	// DynamodbTables returns a DynamodbTableInformer.
+	DynamodbTables() DynamodbTableInformer
+	// DynamodbTableItems returns a DynamodbTableItemInformer.
+	DynamodbTableItems() DynamodbTableItemInformer
+	// EbsDefaultKmsKeys returns a EbsDefaultKmsKeyInformer.
+	EbsDefaultKmsKeys() EbsDefaultKmsKeyInformer
+	// EbsEncryptionByDefaults returns a EbsEncryptionByDefaultInformer.
+	EbsEncryptionByDefaults() EbsEncryptionByDefaultInformer
+	// EbsSnapshots returns a EbsSnapshotInformer.
+	EbsSnapshots() EbsSnapshotInformer
+	// EbsSnapshotCopies returns a EbsSnapshotCopyInformer.
+	EbsSnapshotCopies() EbsSnapshotCopyInformer
+	// EbsVolumes returns a EbsVolumeInformer.
+	EbsVolumes() EbsVolumeInformer
+	// Ec2CapacityReservations returns a Ec2CapacityReservationInformer.
+	Ec2CapacityReservations() Ec2CapacityReservationInformer
+	// Ec2ClientVpnEndpoints returns a Ec2ClientVpnEndpointInformer.
+	Ec2ClientVpnEndpoints() Ec2ClientVpnEndpointInformer
+	// Ec2ClientVpnNetworkAssociations returns a Ec2ClientVpnNetworkAssociationInformer.
+	Ec2ClientVpnNetworkAssociations() Ec2ClientVpnNetworkAssociationInformer
+	// Ec2Fleets returns a Ec2FleetInformer.
+	Ec2Fleets() Ec2FleetInformer
+	// Ec2TransitGateways returns a Ec2TransitGatewayInformer.
+	Ec2TransitGateways() Ec2TransitGatewayInformer
+	// Ec2TransitGatewayRoutes returns a Ec2TransitGatewayRouteInformer.
+	Ec2TransitGatewayRoutes() Ec2TransitGatewayRouteInformer
+	// Ec2TransitGatewayRouteTables returns a Ec2TransitGatewayRouteTableInformer.
+	Ec2TransitGatewayRouteTables() Ec2TransitGatewayRouteTableInformer
+	// Ec2TransitGatewayRouteTableAssociations returns a Ec2TransitGatewayRouteTableAssociationInformer.
+	Ec2TransitGatewayRouteTableAssociations() Ec2TransitGatewayRouteTableAssociationInformer
+	// Ec2TransitGatewayRouteTablePropagations returns a Ec2TransitGatewayRouteTablePropagationInformer.
+	Ec2TransitGatewayRouteTablePropagations() Ec2TransitGatewayRouteTablePropagationInformer
+	// Ec2TransitGatewayVpcAttachments returns a Ec2TransitGatewayVpcAttachmentInformer.
+	Ec2TransitGatewayVpcAttachments() Ec2TransitGatewayVpcAttachmentInformer
+	// Ec2TransitGatewayVpcAttachmentAccepters returns a Ec2TransitGatewayVpcAttachmentAccepterInformer.
+	Ec2TransitGatewayVpcAttachmentAccepters() Ec2TransitGatewayVpcAttachmentAccepterInformer
+	// EcrLifecyclePolicies returns a EcrLifecyclePolicyInformer.
+	EcrLifecyclePolicies() EcrLifecyclePolicyInformer
+	// EcrRepositories returns a EcrRepositoryInformer.
+	EcrRepositories() EcrRepositoryInformer
+	// EcrRepositoryPolicies returns a EcrRepositoryPolicyInformer.
+	EcrRepositoryPolicies() EcrRepositoryPolicyInformer
+	// EcsClusters returns a EcsClusterInformer.
+	EcsClusters() EcsClusterInformer
+	// EcsServices returns a EcsServiceInformer.
+	EcsServices() EcsServiceInformer
+	// EcsTaskDefinitions returns a EcsTaskDefinitionInformer.
+	EcsTaskDefinitions() EcsTaskDefinitionInformer
+	// EfsFileSystems returns a EfsFileSystemInformer.
+	EfsFileSystems() EfsFileSystemInformer
+	// EfsMountTargets returns a EfsMountTargetInformer.
+	EfsMountTargets() EfsMountTargetInformer
+	// EgressOnlyInternetGateways returns a EgressOnlyInternetGatewayInformer.
+	EgressOnlyInternetGateways() EgressOnlyInternetGatewayInformer
+	// Eips returns a EipInformer.
+	Eips() EipInformer
+	// EipAssociations returns a EipAssociationInformer.
+	EipAssociations() EipAssociationInformer
+	// EksClusters returns a EksClusterInformer.
+	EksClusters() EksClusterInformer
+	// ElasticBeanstalkApplications returns a ElasticBeanstalkApplicationInformer.
+	ElasticBeanstalkApplications() ElasticBeanstalkApplicationInformer
+	// ElasticBeanstalkApplicationVersions returns a ElasticBeanstalkApplicationVersionInformer.
+	ElasticBeanstalkApplicationVersions() ElasticBeanstalkApplicationVersionInformer
+	// ElasticBeanstalkConfigurationTemplates returns a ElasticBeanstalkConfigurationTemplateInformer.
+	ElasticBeanstalkConfigurationTemplates() ElasticBeanstalkConfigurationTemplateInformer
+	// ElasticBeanstalkEnvironments returns a ElasticBeanstalkEnvironmentInformer.
+	ElasticBeanstalkEnvironments() ElasticBeanstalkEnvironmentInformer
+	// ElasticacheClusters returns a ElasticacheClusterInformer.
+	ElasticacheClusters() ElasticacheClusterInformer
+	// ElasticacheParameterGroups returns a ElasticacheParameterGroupInformer.
+	ElasticacheParameterGroups() ElasticacheParameterGroupInformer
+	// ElasticacheReplicationGroups returns a ElasticacheReplicationGroupInformer.
+	ElasticacheReplicationGroups() ElasticacheReplicationGroupInformer
+	// ElasticacheSecurityGroups returns a ElasticacheSecurityGroupInformer.
+	ElasticacheSecurityGroups() ElasticacheSecurityGroupInformer
+	// ElasticacheSubnetGroups returns a ElasticacheSubnetGroupInformer.
+	ElasticacheSubnetGroups() ElasticacheSubnetGroupInformer
+	// ElasticsearchDomains returns a ElasticsearchDomainInformer.
+	ElasticsearchDomains() ElasticsearchDomainInformer
+	// ElasticsearchDomainPolicies returns a ElasticsearchDomainPolicyInformer.
+	ElasticsearchDomainPolicies() ElasticsearchDomainPolicyInformer
+	// ElastictranscoderPipelines returns a ElastictranscoderPipelineInformer.
+	ElastictranscoderPipelines() ElastictranscoderPipelineInformer
+	// ElastictranscoderPresets returns a ElastictranscoderPresetInformer.
+	ElastictranscoderPresets() ElastictranscoderPresetInformer
+	// Elbs returns a ElbInformer.
+	Elbs() ElbInformer
+	// ElbAttachments returns a ElbAttachmentInformer.
+	ElbAttachments() ElbAttachmentInformer
+	// EmrClusters returns a EmrClusterInformer.
+	EmrClusters() EmrClusterInformer
+	// EmrInstanceGroups returns a EmrInstanceGroupInformer.
+	EmrInstanceGroups() EmrInstanceGroupInformer
+	// EmrSecurityConfigurations returns a EmrSecurityConfigurationInformer.
+	EmrSecurityConfigurations() EmrSecurityConfigurationInformer
+	// FlowLogs returns a FlowLogInformer.
+	FlowLogs() FlowLogInformer
+	// GameliftAliases returns a GameliftAliasInformer.
+	GameliftAliases() GameliftAliasInformer
+	// GameliftBuilds returns a GameliftBuildInformer.
+	GameliftBuilds() GameliftBuildInformer
+	// GameliftFleets returns a GameliftFleetInformer.
+	GameliftFleets() GameliftFleetInformer
+	// GameliftGameSessionQueues returns a GameliftGameSessionQueueInformer.
+	GameliftGameSessionQueues() GameliftGameSessionQueueInformer
+	// GlacierVaults returns a GlacierVaultInformer.
+	GlacierVaults() GlacierVaultInformer
+	// GlacierVaultLocks returns a GlacierVaultLockInformer.
+	GlacierVaultLocks() GlacierVaultLockInformer
+	// GlobalacceleratorAccelerators returns a GlobalacceleratorAcceleratorInformer.
+	GlobalacceleratorAccelerators() GlobalacceleratorAcceleratorInformer
+	// GlobalacceleratorEndpointGroups returns a GlobalacceleratorEndpointGroupInformer.
+	GlobalacceleratorEndpointGroups() GlobalacceleratorEndpointGroupInformer
+	// GlobalacceleratorListeners returns a GlobalacceleratorListenerInformer.
+	GlobalacceleratorListeners() GlobalacceleratorListenerInformer
+	// GlueCatalogDatabases returns a GlueCatalogDatabaseInformer.
+	GlueCatalogDatabases() GlueCatalogDatabaseInformer
+	// GlueCatalogTables returns a GlueCatalogTableInformer.
+	GlueCatalogTables() GlueCatalogTableInformer
+	// GlueClassifiers returns a GlueClassifierInformer.
+	GlueClassifiers() GlueClassifierInformer
+	// GlueConnections returns a GlueConnectionInformer.
+	GlueConnections() GlueConnectionInformer
+	// GlueCrawlers returns a GlueCrawlerInformer.
+	GlueCrawlers() GlueCrawlerInformer
+	// GlueJobs returns a GlueJobInformer.
+	GlueJobs() GlueJobInformer
+	// GlueSecurityConfigurations returns a GlueSecurityConfigurationInformer.
+	GlueSecurityConfigurations() GlueSecurityConfigurationInformer
+	// GlueTriggers returns a GlueTriggerInformer.
+	GlueTriggers() GlueTriggerInformer
+	// GuarddutyDetectors returns a GuarddutyDetectorInformer.
+	GuarddutyDetectors() GuarddutyDetectorInformer
+	// GuarddutyInviteAccepters returns a GuarddutyInviteAccepterInformer.
+	GuarddutyInviteAccepters() GuarddutyInviteAccepterInformer
+	// GuarddutyIpsets returns a GuarddutyIpsetInformer.
+	GuarddutyIpsets() GuarddutyIpsetInformer
+	// GuarddutyMembers returns a GuarddutyMemberInformer.
+	GuarddutyMembers() GuarddutyMemberInformer
+	// GuarddutyThreatintelsets returns a GuarddutyThreatintelsetInformer.
+	GuarddutyThreatintelsets() GuarddutyThreatintelsetInformer
+	// IamAccessKeys returns a IamAccessKeyInformer.
+	IamAccessKeys() IamAccessKeyInformer
+	// IamAccountAliases returns a IamAccountAliasInformer.
+	IamAccountAliases() IamAccountAliasInformer
+	// IamAccountPasswordPolicies returns a IamAccountPasswordPolicyInformer.
+	IamAccountPasswordPolicies() IamAccountPasswordPolicyInformer
+	// IamGroups returns a IamGroupInformer.
+	IamGroups() IamGroupInformer
+	// IamGroupMemberships returns a IamGroupMembershipInformer.
+	IamGroupMemberships() IamGroupMembershipInformer
+	// IamGroupPolicies returns a IamGroupPolicyInformer.
+	IamGroupPolicies() IamGroupPolicyInformer
+	// IamGroupPolicyAttachments returns a IamGroupPolicyAttachmentInformer.
+	IamGroupPolicyAttachments() IamGroupPolicyAttachmentInformer
+	// IamInstanceProfiles returns a IamInstanceProfileInformer.
+	IamInstanceProfiles() IamInstanceProfileInformer
+	// IamOpenidConnectProviders returns a IamOpenidConnectProviderInformer.
+	IamOpenidConnectProviders() IamOpenidConnectProviderInformer
+	// IamPolicies returns a IamPolicyInformer.
+	IamPolicies() IamPolicyInformer
+	// IamPolicyAttachments returns a IamPolicyAttachmentInformer.
+	IamPolicyAttachments() IamPolicyAttachmentInformer
+	// IamRoles returns a IamRoleInformer.
+	IamRoles() IamRoleInformer
+	// IamRolePolicies returns a IamRolePolicyInformer.
+	IamRolePolicies() IamRolePolicyInformer
+	// IamRolePolicyAttachments returns a IamRolePolicyAttachmentInformer.
+	IamRolePolicyAttachments() IamRolePolicyAttachmentInformer
+	// IamSamlProviders returns a IamSamlProviderInformer.
+	IamSamlProviders() IamSamlProviderInformer
+	// IamServerCertificates returns a IamServerCertificateInformer.
+	IamServerCertificates() IamServerCertificateInformer
+	// IamServiceLinkedRoles returns a IamServiceLinkedRoleInformer.
+	IamServiceLinkedRoles() IamServiceLinkedRoleInformer
+	// IamUsers returns a IamUserInformer.
+	IamUsers() IamUserInformer
+	// IamUserGroupMemberships returns a IamUserGroupMembershipInformer.
+	IamUserGroupMemberships() IamUserGroupMembershipInformer
+	// IamUserLoginProfiles returns a IamUserLoginProfileInformer.
+	IamUserLoginProfiles() IamUserLoginProfileInformer
+	// IamUserPolicies returns a IamUserPolicyInformer.
+	IamUserPolicies() IamUserPolicyInformer
+	// IamUserPolicyAttachments returns a IamUserPolicyAttachmentInformer.
+	IamUserPolicyAttachments() IamUserPolicyAttachmentInformer
+	// IamUserSshKeys returns a IamUserSshKeyInformer.
+	IamUserSshKeys() IamUserSshKeyInformer
+	// InspectorAssessmentTargets returns a InspectorAssessmentTargetInformer.
+	InspectorAssessmentTargets() InspectorAssessmentTargetInformer
+	// InspectorAssessmentTemplates returns a InspectorAssessmentTemplateInformer.
+	InspectorAssessmentTemplates() InspectorAssessmentTemplateInformer
+	// InspectorResourceGroups returns a InspectorResourceGroupInformer.
+	InspectorResourceGroups() InspectorResourceGroupInformer
+	// Instances returns a InstanceInformer.
+	Instances() InstanceInformer
+	// InternetGateways returns a InternetGatewayInformer.
+	InternetGateways() InternetGatewayInformer
+	// IotCertificates returns a IotCertificateInformer.
+	IotCertificates() IotCertificateInformer
+	// IotPolicies returns a IotPolicyInformer.
+	IotPolicies() IotPolicyInformer
+	// IotPolicyAttachments returns a IotPolicyAttachmentInformer.
+	IotPolicyAttachments() IotPolicyAttachmentInformer
+	// IotRoleAliases returns a IotRoleAliasInformer.
+	IotRoleAliases() IotRoleAliasInformer
+	// IotThings returns a IotThingInformer.
+	IotThings() IotThingInformer
+	// IotThingPrincipalAttachments returns a IotThingPrincipalAttachmentInformer.
+	IotThingPrincipalAttachments() IotThingPrincipalAttachmentInformer
+	// IotThingTypes returns a IotThingTypeInformer.
+	IotThingTypes() IotThingTypeInformer
+	// IotTopicRules returns a IotTopicRuleInformer.
+	IotTopicRules() IotTopicRuleInformer
+	// KeyPairs returns a KeyPairInformer.
+	KeyPairs() KeyPairInformer
+	// KinesisAnalyticsApplications returns a KinesisAnalyticsApplicationInformer.
+	KinesisAnalyticsApplications() KinesisAnalyticsApplicationInformer
+	// KinesisFirehoseDeliveryStreams returns a KinesisFirehoseDeliveryStreamInformer.
+	KinesisFirehoseDeliveryStreams() KinesisFirehoseDeliveryStreamInformer
+	// KinesisStreams returns a KinesisStreamInformer.
+	KinesisStreams() KinesisStreamInformer
+	// KmsAliases returns a KmsAliasInformer.
+	KmsAliases() KmsAliasInformer
+	// KmsCiphertexts returns a KmsCiphertextInformer.
+	KmsCiphertexts() KmsCiphertextInformer
+	// KmsExternalKeys returns a KmsExternalKeyInformer.
+	KmsExternalKeys() KmsExternalKeyInformer
+	// KmsGrants returns a KmsGrantInformer.
+	KmsGrants() KmsGrantInformer
+	// KmsKeys returns a KmsKeyInformer.
+	KmsKeys() KmsKeyInformer
+	// LambdaAliases returns a LambdaAliasInformer.
+	LambdaAliases() LambdaAliasInformer
+	// LambdaEventSourceMappings returns a LambdaEventSourceMappingInformer.
+	LambdaEventSourceMappings() LambdaEventSourceMappingInformer
+	// LambdaFunctions returns a LambdaFunctionInformer.
+	LambdaFunctions() LambdaFunctionInformer
+	// LambdaLayerVersions returns a LambdaLayerVersionInformer.
+	LambdaLayerVersions() LambdaLayerVersionInformer
+	// LambdaPermissions returns a LambdaPermissionInformer.
+	LambdaPermissions() LambdaPermissionInformer
+	// LaunchConfigurations returns a LaunchConfigurationInformer.
+	LaunchConfigurations() LaunchConfigurationInformer
+	// LaunchTemplates returns a LaunchTemplateInformer.
+	LaunchTemplates() LaunchTemplateInformer
+	// Lbs returns a LbInformer.
+	Lbs() LbInformer
+	// LbCookieStickinessPolicies returns a LbCookieStickinessPolicyInformer.
+	LbCookieStickinessPolicies() LbCookieStickinessPolicyInformer
+	// LbListeners returns a LbListenerInformer.
+	LbListeners() LbListenerInformer
+	// LbListenerCertificates returns a LbListenerCertificateInformer.
+	LbListenerCertificates() LbListenerCertificateInformer
+	// LbListenerRules returns a LbListenerRuleInformer.
+	LbListenerRules() LbListenerRuleInformer
+	// LbSslNegotiationPolicies returns a LbSslNegotiationPolicyInformer.
+	LbSslNegotiationPolicies() LbSslNegotiationPolicyInformer
+	// LbTargetGroups returns a LbTargetGroupInformer.
+	LbTargetGroups() LbTargetGroupInformer
+	// LbTargetGroupAttachments returns a LbTargetGroupAttachmentInformer.
+	LbTargetGroupAttachments() LbTargetGroupAttachmentInformer
+	// LicensemanagerAssociations returns a LicensemanagerAssociationInformer.
+	LicensemanagerAssociations() LicensemanagerAssociationInformer
+	// LicensemanagerLicenseConfigurations returns a LicensemanagerLicenseConfigurationInformer.
+	LicensemanagerLicenseConfigurations() LicensemanagerLicenseConfigurationInformer
+	// LightsailDomains returns a LightsailDomainInformer.
+	LightsailDomains() LightsailDomainInformer
+	// LightsailInstances returns a LightsailInstanceInformer.
+	LightsailInstances() LightsailInstanceInformer
+	// LightsailKeyPairs returns a LightsailKeyPairInformer.
+	LightsailKeyPairs() LightsailKeyPairInformer
+	// LightsailStaticIps returns a LightsailStaticIpInformer.
+	LightsailStaticIps() LightsailStaticIpInformer
+	// LightsailStaticIpAttachments returns a LightsailStaticIpAttachmentInformer.
+	LightsailStaticIpAttachments() LightsailStaticIpAttachmentInformer
+	// LoadBalancerBackendServerPolicies returns a LoadBalancerBackendServerPolicyInformer.
+	LoadBalancerBackendServerPolicies() LoadBalancerBackendServerPolicyInformer
+	// LoadBalancerListenerPolicies returns a LoadBalancerListenerPolicyInformer.
+	LoadBalancerListenerPolicies() LoadBalancerListenerPolicyInformer
+	// LoadBalancerPolicies returns a LoadBalancerPolicyInformer.
+	LoadBalancerPolicies() LoadBalancerPolicyInformer
+	// MacieMemberAccountAssociations returns a MacieMemberAccountAssociationInformer.
+	MacieMemberAccountAssociations() MacieMemberAccountAssociationInformer
+	// MacieS3BucketAssociations returns a MacieS3BucketAssociationInformer.
+	MacieS3BucketAssociations() MacieS3BucketAssociationInformer
+	// MainRouteTableAssociations returns a MainRouteTableAssociationInformer.
+	MainRouteTableAssociations() MainRouteTableAssociationInformer
+	// MediaPackageChannels returns a MediaPackageChannelInformer.
+	MediaPackageChannels() MediaPackageChannelInformer
+	// MediaStoreContainers returns a MediaStoreContainerInformer.
+	MediaStoreContainers() MediaStoreContainerInformer
+	// MediaStoreContainerPolicies returns a MediaStoreContainerPolicyInformer.
+	MediaStoreContainerPolicies() MediaStoreContainerPolicyInformer
+	// MqBrokers returns a MqBrokerInformer.
+	MqBrokers() MqBrokerInformer
+	// MqConfigurations returns a MqConfigurationInformer.
+	MqConfigurations() MqConfigurationInformer
+	// MskClusters returns a MskClusterInformer.
+	MskClusters() MskClusterInformer
+	// MskConfigurations returns a MskConfigurationInformer.
+	MskConfigurations() MskConfigurationInformer
+	// NatGateways returns a NatGatewayInformer.
+	NatGateways() NatGatewayInformer
+	// NeptuneClusters returns a NeptuneClusterInformer.
+	NeptuneClusters() NeptuneClusterInformer
+	// NeptuneClusterInstances returns a NeptuneClusterInstanceInformer.
+	NeptuneClusterInstances() NeptuneClusterInstanceInformer
+	// NeptuneClusterParameterGroups returns a NeptuneClusterParameterGroupInformer.
+	NeptuneClusterParameterGroups() NeptuneClusterParameterGroupInformer
+	// NeptuneClusterSnapshots returns a NeptuneClusterSnapshotInformer.
+	NeptuneClusterSnapshots() NeptuneClusterSnapshotInformer
+	// NeptuneEventSubscriptions returns a NeptuneEventSubscriptionInformer.
+	NeptuneEventSubscriptions() NeptuneEventSubscriptionInformer
+	// NeptuneParameterGroups returns a NeptuneParameterGroupInformer.
+	NeptuneParameterGroups() NeptuneParameterGroupInformer
+	// NeptuneSubnetGroups returns a NeptuneSubnetGroupInformer.
+	NeptuneSubnetGroups() NeptuneSubnetGroupInformer
+	// NetworkAcls returns a NetworkAclInformer.
+	NetworkAcls() NetworkAclInformer
+	// NetworkAclRules returns a NetworkAclRuleInformer.
+	NetworkAclRules() NetworkAclRuleInformer
+	// NetworkInterfaces returns a NetworkInterfaceInformer.
+	NetworkInterfaces() NetworkInterfaceInformer
+	// NetworkInterfaceAttachments returns a NetworkInterfaceAttachmentInformer.
+	NetworkInterfaceAttachments() NetworkInterfaceAttachmentInformer
+	// NetworkInterfaceSgAttachments returns a NetworkInterfaceSgAttachmentInformer.
+	NetworkInterfaceSgAttachments() NetworkInterfaceSgAttachmentInformer
+	// OpsworksApplications returns a OpsworksApplicationInformer.
+	OpsworksApplications() OpsworksApplicationInformer
+	// OpsworksCustomLayers returns a OpsworksCustomLayerInformer.
+	OpsworksCustomLayers() OpsworksCustomLayerInformer
+	// OpsworksGangliaLayers returns a OpsworksGangliaLayerInformer.
+	OpsworksGangliaLayers() OpsworksGangliaLayerInformer
+	// OpsworksHaproxyLayers returns a OpsworksHaproxyLayerInformer.
+	OpsworksHaproxyLayers() OpsworksHaproxyLayerInformer
+	// OpsworksInstances returns a OpsworksInstanceInformer.
+	OpsworksInstances() OpsworksInstanceInformer
+	// OpsworksJavaAppLayers returns a OpsworksJavaAppLayerInformer.
+	OpsworksJavaAppLayers() OpsworksJavaAppLayerInformer
+	// OpsworksMemcachedLayers returns a OpsworksMemcachedLayerInformer.
+	OpsworksMemcachedLayers() OpsworksMemcachedLayerInformer
+	// OpsworksMysqlLayers returns a OpsworksMysqlLayerInformer.
+	OpsworksMysqlLayers() OpsworksMysqlLayerInformer
+	// OpsworksNodejsAppLayers returns a OpsworksNodejsAppLayerInformer.
+	OpsworksNodejsAppLayers() OpsworksNodejsAppLayerInformer
+	// OpsworksPermissions returns a OpsworksPermissionInformer.
+	OpsworksPermissions() OpsworksPermissionInformer
+	// OpsworksPhpAppLayers returns a OpsworksPhpAppLayerInformer.
+	OpsworksPhpAppLayers() OpsworksPhpAppLayerInformer
+	// OpsworksRailsAppLayers returns a OpsworksRailsAppLayerInformer.
+	OpsworksRailsAppLayers() OpsworksRailsAppLayerInformer
+	// OpsworksRdsDbInstances returns a OpsworksRdsDbInstanceInformer.
+	OpsworksRdsDbInstances() OpsworksRdsDbInstanceInformer
+	// OpsworksStacks returns a OpsworksStackInformer.
+	OpsworksStacks() OpsworksStackInformer
+	// OpsworksStaticWebLayers returns a OpsworksStaticWebLayerInformer.
+	OpsworksStaticWebLayers() OpsworksStaticWebLayerInformer
+	// OpsworksUserProfiles returns a OpsworksUserProfileInformer.
+	OpsworksUserProfiles() OpsworksUserProfileInformer
+	// OrganizationsAccounts returns a OrganizationsAccountInformer.
+	OrganizationsAccounts() OrganizationsAccountInformer
+	// OrganizationsOrganizations returns a OrganizationsOrganizationInformer.
+	OrganizationsOrganizations() OrganizationsOrganizationInformer
+	// OrganizationsOrganizationalUnits returns a OrganizationsOrganizationalUnitInformer.
+	OrganizationsOrganizationalUnits() OrganizationsOrganizationalUnitInformer
+	// OrganizationsPolicies returns a OrganizationsPolicyInformer.
+	OrganizationsPolicies() OrganizationsPolicyInformer
+	// OrganizationsPolicyAttachments returns a OrganizationsPolicyAttachmentInformer.
+	OrganizationsPolicyAttachments() OrganizationsPolicyAttachmentInformer
+	// PinpointAdmChannels returns a PinpointAdmChannelInformer.
+	PinpointAdmChannels() PinpointAdmChannelInformer
+	// PinpointApnsChannels returns a PinpointApnsChannelInformer.
+	PinpointApnsChannels() PinpointApnsChannelInformer
+	// PinpointApnsSandboxChannels returns a PinpointApnsSandboxChannelInformer.
+	PinpointApnsSandboxChannels() PinpointApnsSandboxChannelInformer
+	// PinpointApnsVoipChannels returns a PinpointApnsVoipChannelInformer.
+	PinpointApnsVoipChannels() PinpointApnsVoipChannelInformer
+	// PinpointApnsVoipSandboxChannels returns a PinpointApnsVoipSandboxChannelInformer.
+	PinpointApnsVoipSandboxChannels() PinpointApnsVoipSandboxChannelInformer
+	// PinpointApps returns a PinpointAppInformer.
+	PinpointApps() PinpointAppInformer
+	// PinpointBaiduChannels returns a PinpointBaiduChannelInformer.
+	PinpointBaiduChannels() PinpointBaiduChannelInformer
+	// PinpointEmailChannels returns a PinpointEmailChannelInformer.
+	PinpointEmailChannels() PinpointEmailChannelInformer
+	// PinpointEventStreams returns a PinpointEventStreamInformer.
+	PinpointEventStreams() PinpointEventStreamInformer
+	// PinpointGcmChannels returns a PinpointGcmChannelInformer.
+	PinpointGcmChannels() PinpointGcmChannelInformer
+	// PinpointSmsChannels returns a PinpointSmsChannelInformer.
+	PinpointSmsChannels() PinpointSmsChannelInformer
+	// PlacementGroups returns a PlacementGroupInformer.
+	PlacementGroups() PlacementGroupInformer
+	// ProxyProtocolPolicies returns a ProxyProtocolPolicyInformer.
+	ProxyProtocolPolicies() ProxyProtocolPolicyInformer
+	// RamPrincipalAssociations returns a RamPrincipalAssociationInformer.
+	RamPrincipalAssociations() RamPrincipalAssociationInformer
+	// RamResourceAssociations returns a RamResourceAssociationInformer.
+	RamResourceAssociations() RamResourceAssociationInformer
+	// RamResourceShares returns a RamResourceShareInformer.
+	RamResourceShares() RamResourceShareInformer
+	// RdsClusters returns a RdsClusterInformer.
+	RdsClusters() RdsClusterInformer
+	// RdsClusterEndpoints returns a RdsClusterEndpointInformer.
+	RdsClusterEndpoints() RdsClusterEndpointInformer
+	// RdsClusterInstances returns a RdsClusterInstanceInformer.
+	RdsClusterInstances() RdsClusterInstanceInformer
+	// RdsClusterParameterGroups returns a RdsClusterParameterGroupInformer.
+	RdsClusterParameterGroups() RdsClusterParameterGroupInformer
+	// RdsGlobalClusters returns a RdsGlobalClusterInformer.
+	RdsGlobalClusters() RdsGlobalClusterInformer
+	// RedshiftClusters returns a RedshiftClusterInformer.
+	RedshiftClusters() RedshiftClusterInformer
+	// RedshiftEventSubscriptions returns a RedshiftEventSubscriptionInformer.
+	RedshiftEventSubscriptions() RedshiftEventSubscriptionInformer
+	// RedshiftParameterGroups returns a RedshiftParameterGroupInformer.
+	RedshiftParameterGroups() RedshiftParameterGroupInformer
+	// RedshiftSecurityGroups returns a RedshiftSecurityGroupInformer.
+	RedshiftSecurityGroups() RedshiftSecurityGroupInformer
+	// RedshiftSnapshotCopyGrants returns a RedshiftSnapshotCopyGrantInformer.
+	RedshiftSnapshotCopyGrants() RedshiftSnapshotCopyGrantInformer
+	// RedshiftSubnetGroups returns a RedshiftSubnetGroupInformer.
+	RedshiftSubnetGroups() RedshiftSubnetGroupInformer
+	// ResourcegroupsGroups returns a ResourcegroupsGroupInformer.
+	ResourcegroupsGroups() ResourcegroupsGroupInformer
+	// Routes returns a RouteInformer.
+	Routes() RouteInformer
+	// Route53DelegationSets returns a Route53DelegationSetInformer.
+	Route53DelegationSets() Route53DelegationSetInformer
+	// Route53HealthChecks returns a Route53HealthCheckInformer.
+	Route53HealthChecks() Route53HealthCheckInformer
+	// Route53QueryLogs returns a Route53QueryLogInformer.
+	Route53QueryLogs() Route53QueryLogInformer
+	// Route53Records returns a Route53RecordInformer.
+	Route53Records() Route53RecordInformer
+	// Route53ResolverEndpoints returns a Route53ResolverEndpointInformer.
+	Route53ResolverEndpoints() Route53ResolverEndpointInformer
+	// Route53ResolverRules returns a Route53ResolverRuleInformer.
+	Route53ResolverRules() Route53ResolverRuleInformer
+	// Route53ResolverRuleAssociations returns a Route53ResolverRuleAssociationInformer.
+	Route53ResolverRuleAssociations() Route53ResolverRuleAssociationInformer
+	// Route53Zones returns a Route53ZoneInformer.
+	Route53Zones() Route53ZoneInformer
+	// Route53ZoneAssociations returns a Route53ZoneAssociationInformer.
+	Route53ZoneAssociations() Route53ZoneAssociationInformer
+	// RouteTables returns a RouteTableInformer.
+	RouteTables() RouteTableInformer
+	// RouteTableAssociations returns a RouteTableAssociationInformer.
+	RouteTableAssociations() RouteTableAssociationInformer
+	// S3AccountPublicAccessBlocks returns a S3AccountPublicAccessBlockInformer.
+	S3AccountPublicAccessBlocks() S3AccountPublicAccessBlockInformer
+	// S3Buckets returns a S3BucketInformer.
+	S3Buckets() S3BucketInformer
+	// S3BucketInventories returns a S3BucketInventoryInformer.
+	S3BucketInventories() S3BucketInventoryInformer
+	// S3BucketMetrics returns a S3BucketMetricInformer.
+	S3BucketMetrics() S3BucketMetricInformer
+	// S3BucketNotifications returns a S3BucketNotificationInformer.
+	S3BucketNotifications() S3BucketNotificationInformer
+	// S3BucketObjects returns a S3BucketObjectInformer.
+	S3BucketObjects() S3BucketObjectInformer
+	// S3BucketPolicies returns a S3BucketPolicyInformer.
+	S3BucketPolicies() S3BucketPolicyInformer
+	// S3BucketPublicAccessBlocks returns a S3BucketPublicAccessBlockInformer.
+	S3BucketPublicAccessBlocks() S3BucketPublicAccessBlockInformer
+	// SagemakerEndpoints returns a SagemakerEndpointInformer.
+	SagemakerEndpoints() SagemakerEndpointInformer
+	// SagemakerEndpointConfigurations returns a SagemakerEndpointConfigurationInformer.
+	SagemakerEndpointConfigurations() SagemakerEndpointConfigurationInformer
+	// SagemakerModels returns a SagemakerModelInformer.
+	SagemakerModels() SagemakerModelInformer
+	// SagemakerNotebookInstances returns a SagemakerNotebookInstanceInformer.
+	SagemakerNotebookInstances() SagemakerNotebookInstanceInformer
+	// SagemakerNotebookInstanceLifecycleConfigurations returns a SagemakerNotebookInstanceLifecycleConfigurationInformer.
+	SagemakerNotebookInstanceLifecycleConfigurations() SagemakerNotebookInstanceLifecycleConfigurationInformer
+	// SecretsmanagerSecrets returns a SecretsmanagerSecretInformer.
+	SecretsmanagerSecrets() SecretsmanagerSecretInformer
+	// SecretsmanagerSecretVersions returns a SecretsmanagerSecretVersionInformer.
+	SecretsmanagerSecretVersions() SecretsmanagerSecretVersionInformer
+	// SecurityGroups returns a SecurityGroupInformer.
+	SecurityGroups() SecurityGroupInformer
+	// SecurityGroupRules returns a SecurityGroupRuleInformer.
+	SecurityGroupRules() SecurityGroupRuleInformer
+	// SecurityhubAccounts returns a SecurityhubAccountInformer.
+	SecurityhubAccounts() SecurityhubAccountInformer
+	// SecurityhubProductSubscriptions returns a SecurityhubProductSubscriptionInformer.
+	SecurityhubProductSubscriptions() SecurityhubProductSubscriptionInformer
+	// SecurityhubStandardsSubscriptions returns a SecurityhubStandardsSubscriptionInformer.
+	SecurityhubStandardsSubscriptions() SecurityhubStandardsSubscriptionInformer
+	// ServiceDiscoveryHttpNamespaces returns a ServiceDiscoveryHttpNamespaceInformer.
+	ServiceDiscoveryHttpNamespaces() ServiceDiscoveryHttpNamespaceInformer
+	// ServiceDiscoveryPrivateDnsNamespaces returns a ServiceDiscoveryPrivateDnsNamespaceInformer.
+	ServiceDiscoveryPrivateDnsNamespaces() ServiceDiscoveryPrivateDnsNamespaceInformer
+	// ServiceDiscoveryPublicDnsNamespaces returns a ServiceDiscoveryPublicDnsNamespaceInformer.
+	ServiceDiscoveryPublicDnsNamespaces() ServiceDiscoveryPublicDnsNamespaceInformer
+	// ServiceDiscoveryServices returns a ServiceDiscoveryServiceInformer.
+	ServiceDiscoveryServices() ServiceDiscoveryServiceInformer
+	// ServicecatalogPortfolios returns a ServicecatalogPortfolioInformer.
+	ServicecatalogPortfolios() ServicecatalogPortfolioInformer
+	// SesActiveReceiptRuleSets returns a SesActiveReceiptRuleSetInformer.
+	SesActiveReceiptRuleSets() SesActiveReceiptRuleSetInformer
+	// SesConfigurationSets returns a SesConfigurationSetInformer.
+	SesConfigurationSets() SesConfigurationSetInformer
+	// SesDomainDkims returns a SesDomainDkimInformer.
+	SesDomainDkims() SesDomainDkimInformer
+	// SesDomainIdentities returns a SesDomainIdentityInformer.
+	SesDomainIdentities() SesDomainIdentityInformer
+	// SesDomainIdentityVerifications returns a SesDomainIdentityVerificationInformer.
+	SesDomainIdentityVerifications() SesDomainIdentityVerificationInformer
+	// SesDomainMailFroms returns a SesDomainMailFromInformer.
+	SesDomainMailFroms() SesDomainMailFromInformer
+	// SesEmailIdentities returns a SesEmailIdentityInformer.
+	SesEmailIdentities() SesEmailIdentityInformer
+	// SesEventDestinations returns a SesEventDestinationInformer.
+	SesEventDestinations() SesEventDestinationInformer
+	// SesIdentityNotificationTopics returns a SesIdentityNotificationTopicInformer.
+	SesIdentityNotificationTopics() SesIdentityNotificationTopicInformer
+	// SesIdentityPolicies returns a SesIdentityPolicyInformer.
+	SesIdentityPolicies() SesIdentityPolicyInformer
+	// SesReceiptFilters returns a SesReceiptFilterInformer.
+	SesReceiptFilters() SesReceiptFilterInformer
+	// SesReceiptRules returns a SesReceiptRuleInformer.
+	SesReceiptRules() SesReceiptRuleInformer
+	// SesReceiptRuleSets returns a SesReceiptRuleSetInformer.
+	SesReceiptRuleSets() SesReceiptRuleSetInformer
+	// SesTemplates returns a SesTemplateInformer.
+	SesTemplates() SesTemplateInformer
+	// SfnActivities returns a SfnActivityInformer.
+	SfnActivities() SfnActivityInformer
+	// SfnStateMachines returns a SfnStateMachineInformer.
+	SfnStateMachines() SfnStateMachineInformer
+	// ShieldProtections returns a ShieldProtectionInformer.
+	ShieldProtections() ShieldProtectionInformer
+	// SimpledbDomains returns a SimpledbDomainInformer.
+	SimpledbDomains() SimpledbDomainInformer
+	// SnapshotCreateVolumePermissions returns a SnapshotCreateVolumePermissionInformer.
+	SnapshotCreateVolumePermissions() SnapshotCreateVolumePermissionInformer
+	// SnsPlatformApplications returns a SnsPlatformApplicationInformer.
+	SnsPlatformApplications() SnsPlatformApplicationInformer
+	// SnsSmsPreferenceses returns a SnsSmsPreferencesInformer.
+	SnsSmsPreferenceses() SnsSmsPreferencesInformer
+	// SnsTopics returns a SnsTopicInformer.
+	SnsTopics() SnsTopicInformer
+	// SnsTopicPolicies returns a SnsTopicPolicyInformer.
+	SnsTopicPolicies() SnsTopicPolicyInformer
+	// SnsTopicSubscriptions returns a SnsTopicSubscriptionInformer.
+	SnsTopicSubscriptions() SnsTopicSubscriptionInformer
+	// SpotDatafeedSubscriptions returns a SpotDatafeedSubscriptionInformer.
+	SpotDatafeedSubscriptions() SpotDatafeedSubscriptionInformer
+	// SpotFleetRequests returns a SpotFleetRequestInformer.
+	SpotFleetRequests() SpotFleetRequestInformer
+	// SpotInstanceRequests returns a SpotInstanceRequestInformer.
+	SpotInstanceRequests() SpotInstanceRequestInformer
+	// SqsQueues returns a SqsQueueInformer.
+	SqsQueues() SqsQueueInformer
+	// SqsQueuePolicies returns a SqsQueuePolicyInformer.
+	SqsQueuePolicies() SqsQueuePolicyInformer
+	// SsmActivations returns a SsmActivationInformer.
+	SsmActivations() SsmActivationInformer
+	// SsmAssociations returns a SsmAssociationInformer.
+	SsmAssociations() SsmAssociationInformer
+	// SsmDocuments returns a SsmDocumentInformer.
+	SsmDocuments() SsmDocumentInformer
+	// SsmMaintenanceWindows returns a SsmMaintenanceWindowInformer.
+	SsmMaintenanceWindows() SsmMaintenanceWindowInformer
+	// SsmMaintenanceWindowTargets returns a SsmMaintenanceWindowTargetInformer.
+	SsmMaintenanceWindowTargets() SsmMaintenanceWindowTargetInformer
+	// SsmMaintenanceWindowTasks returns a SsmMaintenanceWindowTaskInformer.
+	SsmMaintenanceWindowTasks() SsmMaintenanceWindowTaskInformer
+	// SsmParameters returns a SsmParameterInformer.
+	SsmParameters() SsmParameterInformer
+	// SsmPatchBaselines returns a SsmPatchBaselineInformer.
+	SsmPatchBaselines() SsmPatchBaselineInformer
+	// SsmPatchGroups returns a SsmPatchGroupInformer.
+	SsmPatchGroups() SsmPatchGroupInformer
+	// SsmResourceDataSyncs returns a SsmResourceDataSyncInformer.
+	SsmResourceDataSyncs() SsmResourceDataSyncInformer
+	// StoragegatewayCaches returns a StoragegatewayCacheInformer.
+	StoragegatewayCaches() StoragegatewayCacheInformer
+	// StoragegatewayCachedIscsiVolumes returns a StoragegatewayCachedIscsiVolumeInformer.
+	StoragegatewayCachedIscsiVolumes() StoragegatewayCachedIscsiVolumeInformer
+	// StoragegatewayGateways returns a StoragegatewayGatewayInformer.
+	StoragegatewayGateways() StoragegatewayGatewayInformer
+	// StoragegatewayNfsFileShares returns a StoragegatewayNfsFileShareInformer.
+	StoragegatewayNfsFileShares() StoragegatewayNfsFileShareInformer
+	// StoragegatewaySmbFileShares returns a StoragegatewaySmbFileShareInformer.
+	StoragegatewaySmbFileShares() StoragegatewaySmbFileShareInformer
+	// StoragegatewayUploadBuffers returns a StoragegatewayUploadBufferInformer.
+	StoragegatewayUploadBuffers() StoragegatewayUploadBufferInformer
+	// StoragegatewayWorkingStorages returns a StoragegatewayWorkingStorageInformer.
+	StoragegatewayWorkingStorages() StoragegatewayWorkingStorageInformer
+	// Subnets returns a SubnetInformer.
+	Subnets() SubnetInformer
+	// SwfDomains returns a SwfDomainInformer.
+	SwfDomains() SwfDomainInformer
+	// TransferServers returns a TransferServerInformer.
+	TransferServers() TransferServerInformer
+	// TransferSshKeys returns a TransferSshKeyInformer.
+	TransferSshKeys() TransferSshKeyInformer
+	// TransferUsers returns a TransferUserInformer.
+	TransferUsers() TransferUserInformer
+	// VolumeAttachments returns a VolumeAttachmentInformer.
+	VolumeAttachments() VolumeAttachmentInformer
+	// Vpcs returns a VpcInformer.
+	Vpcs() VpcInformer
+	// VpcDhcpOptionses returns a VpcDhcpOptionsInformer.
+	VpcDhcpOptionses() VpcDhcpOptionsInformer
+	// VpcDhcpOptionsAssociations returns a VpcDhcpOptionsAssociationInformer.
+	VpcDhcpOptionsAssociations() VpcDhcpOptionsAssociationInformer
+	// VpcEndpoints returns a VpcEndpointInformer.
+	VpcEndpoints() VpcEndpointInformer
+	// VpcEndpointConnectionNotifications returns a VpcEndpointConnectionNotificationInformer.
+	VpcEndpointConnectionNotifications() VpcEndpointConnectionNotificationInformer
+	// VpcEndpointRouteTableAssociations returns a VpcEndpointRouteTableAssociationInformer.
+	VpcEndpointRouteTableAssociations() VpcEndpointRouteTableAssociationInformer
+	// VpcEndpointServices returns a VpcEndpointServiceInformer.
+	VpcEndpointServices() VpcEndpointServiceInformer
+	// VpcEndpointServiceAllowedPrincipals returns a VpcEndpointServiceAllowedPrincipalInformer.
+	VpcEndpointServiceAllowedPrincipals() VpcEndpointServiceAllowedPrincipalInformer
+	// VpcEndpointSubnetAssociations returns a VpcEndpointSubnetAssociationInformer.
+	VpcEndpointSubnetAssociations() VpcEndpointSubnetAssociationInformer
+	// VpcIpv4CidrBlockAssociations returns a VpcIpv4CidrBlockAssociationInformer.
+	VpcIpv4CidrBlockAssociations() VpcIpv4CidrBlockAssociationInformer
+	// VpcPeeringConnections returns a VpcPeeringConnectionInformer.
+	VpcPeeringConnections() VpcPeeringConnectionInformer
+	// VpcPeeringConnectionAccepters returns a VpcPeeringConnectionAccepterInformer.
+	VpcPeeringConnectionAccepters() VpcPeeringConnectionAccepterInformer
+	// VpcPeeringConnectionOptionses returns a VpcPeeringConnectionOptionsInformer.
+	VpcPeeringConnectionOptionses() VpcPeeringConnectionOptionsInformer
+	// VpnConnections returns a VpnConnectionInformer.
+	VpnConnections() VpnConnectionInformer
+	// VpnConnectionRoutes returns a VpnConnectionRouteInformer.
+	VpnConnectionRoutes() VpnConnectionRouteInformer
+	// VpnGateways returns a VpnGatewayInformer.
+	VpnGateways() VpnGatewayInformer
+	// VpnGatewayAttachments returns a VpnGatewayAttachmentInformer.
+	VpnGatewayAttachments() VpnGatewayAttachmentInformer
+	// VpnGatewayRoutePropagations returns a VpnGatewayRoutePropagationInformer.
+	VpnGatewayRoutePropagations() VpnGatewayRoutePropagationInformer
+	// WafByteMatchSets returns a WafByteMatchSetInformer.
+	WafByteMatchSets() WafByteMatchSetInformer
+	// WafGeoMatchSets returns a WafGeoMatchSetInformer.
+	WafGeoMatchSets() WafGeoMatchSetInformer
+	// WafIpsets returns a WafIpsetInformer.
+	WafIpsets() WafIpsetInformer
+	// WafRateBasedRules returns a WafRateBasedRuleInformer.
+	WafRateBasedRules() WafRateBasedRuleInformer
+	// WafRegexMatchSets returns a WafRegexMatchSetInformer.
+	WafRegexMatchSets() WafRegexMatchSetInformer
+	// WafRegexPatternSets returns a WafRegexPatternSetInformer.
+	WafRegexPatternSets() WafRegexPatternSetInformer
+	// WafRules returns a WafRuleInformer.
+	WafRules() WafRuleInformer
+	// WafRuleGroups returns a WafRuleGroupInformer.
+	WafRuleGroups() WafRuleGroupInformer
+	// WafSizeConstraintSets returns a WafSizeConstraintSetInformer.
+	WafSizeConstraintSets() WafSizeConstraintSetInformer
+	// WafSqlInjectionMatchSets returns a WafSqlInjectionMatchSetInformer.
+	WafSqlInjectionMatchSets() WafSqlInjectionMatchSetInformer
+	// WafWebAcls returns a WafWebAclInformer.
+	WafWebAcls() WafWebAclInformer
+	// WafXssMatchSets returns a WafXssMatchSetInformer.
+	WafXssMatchSets() WafXssMatchSetInformer
+	// WafregionalByteMatchSets returns a WafregionalByteMatchSetInformer.
+	WafregionalByteMatchSets() WafregionalByteMatchSetInformer
+	// WafregionalGeoMatchSets returns a WafregionalGeoMatchSetInformer.
+	WafregionalGeoMatchSets() WafregionalGeoMatchSetInformer
+	// WafregionalIpsets returns a WafregionalIpsetInformer.
+	WafregionalIpsets() WafregionalIpsetInformer
+	// WafregionalRateBasedRules returns a WafregionalRateBasedRuleInformer.
+	WafregionalRateBasedRules() WafregionalRateBasedRuleInformer
+	// WafregionalRegexMatchSets returns a WafregionalRegexMatchSetInformer.
+	WafregionalRegexMatchSets() WafregionalRegexMatchSetInformer
+	// WafregionalRegexPatternSets returns a WafregionalRegexPatternSetInformer.
+	WafregionalRegexPatternSets() WafregionalRegexPatternSetInformer
+	// WafregionalRules returns a WafregionalRuleInformer.
+	WafregionalRules() WafregionalRuleInformer
+	// WafregionalRuleGroups returns a WafregionalRuleGroupInformer.
+	WafregionalRuleGroups() WafregionalRuleGroupInformer
+	// WafregionalSizeConstraintSets returns a WafregionalSizeConstraintSetInformer.
+	WafregionalSizeConstraintSets() WafregionalSizeConstraintSetInformer
+	// WafregionalSqlInjectionMatchSets returns a WafregionalSqlInjectionMatchSetInformer.
+	WafregionalSqlInjectionMatchSets() WafregionalSqlInjectionMatchSetInformer
+	// WafregionalWebAcls returns a WafregionalWebAclInformer.
+	WafregionalWebAcls() WafregionalWebAclInformer
+	// WafregionalWebAclAssociations returns a WafregionalWebAclAssociationInformer.
+	WafregionalWebAclAssociations() WafregionalWebAclAssociationInformer
+	// WafregionalXssMatchSets returns a WafregionalXssMatchSetInformer.
+	WafregionalXssMatchSets() WafregionalXssMatchSetInformer
+	// WorklinkFleets returns a WorklinkFleetInformer.
+	WorklinkFleets() WorklinkFleetInformer
+	// WorklinkWebsiteCertificateAuthorityAssociations returns a WorklinkWebsiteCertificateAuthorityAssociationInformer.
+	WorklinkWebsiteCertificateAuthorityAssociations() WorklinkWebsiteCertificateAuthorityAssociationInformer
+	// XraySamplingRules returns a XraySamplingRuleInformer.
+	XraySamplingRules() XraySamplingRuleInformer
 }
 
 type version struct {
@@ -1065,2572 +1065,2572 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
-// AwsAcmCertificates returns a AwsAcmCertificateInformer.
-func (v *version) AwsAcmCertificates() AwsAcmCertificateInformer {
-	return &awsAcmCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AcmCertificates returns a AcmCertificateInformer.
+func (v *version) AcmCertificates() AcmCertificateInformer {
+	return &acmCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAcmCertificateValidations returns a AwsAcmCertificateValidationInformer.
-func (v *version) AwsAcmCertificateValidations() AwsAcmCertificateValidationInformer {
-	return &awsAcmCertificateValidationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AcmCertificateValidations returns a AcmCertificateValidationInformer.
+func (v *version) AcmCertificateValidations() AcmCertificateValidationInformer {
+	return &acmCertificateValidationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAcmpcaCertificateAuthorities returns a AwsAcmpcaCertificateAuthorityInformer.
-func (v *version) AwsAcmpcaCertificateAuthorities() AwsAcmpcaCertificateAuthorityInformer {
-	return &awsAcmpcaCertificateAuthorityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AcmpcaCertificateAuthorities returns a AcmpcaCertificateAuthorityInformer.
+func (v *version) AcmpcaCertificateAuthorities() AcmpcaCertificateAuthorityInformer {
+	return &acmpcaCertificateAuthorityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAlbs returns a AwsAlbInformer.
-func (v *version) AwsAlbs() AwsAlbInformer {
-	return &awsAlbInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Albs returns a AlbInformer.
+func (v *version) Albs() AlbInformer {
+	return &albInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAlbListeners returns a AwsAlbListenerInformer.
-func (v *version) AwsAlbListeners() AwsAlbListenerInformer {
-	return &awsAlbListenerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AlbListeners returns a AlbListenerInformer.
+func (v *version) AlbListeners() AlbListenerInformer {
+	return &albListenerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAlbListenerCertificates returns a AwsAlbListenerCertificateInformer.
-func (v *version) AwsAlbListenerCertificates() AwsAlbListenerCertificateInformer {
-	return &awsAlbListenerCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AlbListenerCertificates returns a AlbListenerCertificateInformer.
+func (v *version) AlbListenerCertificates() AlbListenerCertificateInformer {
+	return &albListenerCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAlbListenerRules returns a AwsAlbListenerRuleInformer.
-func (v *version) AwsAlbListenerRules() AwsAlbListenerRuleInformer {
-	return &awsAlbListenerRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AlbListenerRules returns a AlbListenerRuleInformer.
+func (v *version) AlbListenerRules() AlbListenerRuleInformer {
+	return &albListenerRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAlbTargetGroups returns a AwsAlbTargetGroupInformer.
-func (v *version) AwsAlbTargetGroups() AwsAlbTargetGroupInformer {
-	return &awsAlbTargetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AlbTargetGroups returns a AlbTargetGroupInformer.
+func (v *version) AlbTargetGroups() AlbTargetGroupInformer {
+	return &albTargetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAlbTargetGroupAttachments returns a AwsAlbTargetGroupAttachmentInformer.
-func (v *version) AwsAlbTargetGroupAttachments() AwsAlbTargetGroupAttachmentInformer {
-	return &awsAlbTargetGroupAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AlbTargetGroupAttachments returns a AlbTargetGroupAttachmentInformer.
+func (v *version) AlbTargetGroupAttachments() AlbTargetGroupAttachmentInformer {
+	return &albTargetGroupAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAmis returns a AwsAmiInformer.
-func (v *version) AwsAmis() AwsAmiInformer {
-	return &awsAmiInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Amis returns a AmiInformer.
+func (v *version) Amis() AmiInformer {
+	return &amiInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAmiCopies returns a AwsAmiCopyInformer.
-func (v *version) AwsAmiCopies() AwsAmiCopyInformer {
-	return &awsAmiCopyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AmiCopies returns a AmiCopyInformer.
+func (v *version) AmiCopies() AmiCopyInformer {
+	return &amiCopyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAmiFromInstances returns a AwsAmiFromInstanceInformer.
-func (v *version) AwsAmiFromInstances() AwsAmiFromInstanceInformer {
-	return &awsAmiFromInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AmiFromInstances returns a AmiFromInstanceInformer.
+func (v *version) AmiFromInstances() AmiFromInstanceInformer {
+	return &amiFromInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAmiLaunchPermissions returns a AwsAmiLaunchPermissionInformer.
-func (v *version) AwsAmiLaunchPermissions() AwsAmiLaunchPermissionInformer {
-	return &awsAmiLaunchPermissionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AmiLaunchPermissions returns a AmiLaunchPermissionInformer.
+func (v *version) AmiLaunchPermissions() AmiLaunchPermissionInformer {
+	return &amiLaunchPermissionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayAccounts returns a AwsApiGatewayAccountInformer.
-func (v *version) AwsApiGatewayAccounts() AwsApiGatewayAccountInformer {
-	return &awsApiGatewayAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayAccounts returns a ApiGatewayAccountInformer.
+func (v *version) ApiGatewayAccounts() ApiGatewayAccountInformer {
+	return &apiGatewayAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayApiKeys returns a AwsApiGatewayApiKeyInformer.
-func (v *version) AwsApiGatewayApiKeys() AwsApiGatewayApiKeyInformer {
-	return &awsApiGatewayApiKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayApiKeys returns a ApiGatewayApiKeyInformer.
+func (v *version) ApiGatewayApiKeys() ApiGatewayApiKeyInformer {
+	return &apiGatewayApiKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayAuthorizers returns a AwsApiGatewayAuthorizerInformer.
-func (v *version) AwsApiGatewayAuthorizers() AwsApiGatewayAuthorizerInformer {
-	return &awsApiGatewayAuthorizerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayAuthorizers returns a ApiGatewayAuthorizerInformer.
+func (v *version) ApiGatewayAuthorizers() ApiGatewayAuthorizerInformer {
+	return &apiGatewayAuthorizerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayBasePathMappings returns a AwsApiGatewayBasePathMappingInformer.
-func (v *version) AwsApiGatewayBasePathMappings() AwsApiGatewayBasePathMappingInformer {
-	return &awsApiGatewayBasePathMappingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayBasePathMappings returns a ApiGatewayBasePathMappingInformer.
+func (v *version) ApiGatewayBasePathMappings() ApiGatewayBasePathMappingInformer {
+	return &apiGatewayBasePathMappingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayClientCertificates returns a AwsApiGatewayClientCertificateInformer.
-func (v *version) AwsApiGatewayClientCertificates() AwsApiGatewayClientCertificateInformer {
-	return &awsApiGatewayClientCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayClientCertificates returns a ApiGatewayClientCertificateInformer.
+func (v *version) ApiGatewayClientCertificates() ApiGatewayClientCertificateInformer {
+	return &apiGatewayClientCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayDeployments returns a AwsApiGatewayDeploymentInformer.
-func (v *version) AwsApiGatewayDeployments() AwsApiGatewayDeploymentInformer {
-	return &awsApiGatewayDeploymentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayDeployments returns a ApiGatewayDeploymentInformer.
+func (v *version) ApiGatewayDeployments() ApiGatewayDeploymentInformer {
+	return &apiGatewayDeploymentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayDocumentationParts returns a AwsApiGatewayDocumentationPartInformer.
-func (v *version) AwsApiGatewayDocumentationParts() AwsApiGatewayDocumentationPartInformer {
-	return &awsApiGatewayDocumentationPartInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayDocumentationParts returns a ApiGatewayDocumentationPartInformer.
+func (v *version) ApiGatewayDocumentationParts() ApiGatewayDocumentationPartInformer {
+	return &apiGatewayDocumentationPartInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayDocumentationVersions returns a AwsApiGatewayDocumentationVersionInformer.
-func (v *version) AwsApiGatewayDocumentationVersions() AwsApiGatewayDocumentationVersionInformer {
-	return &awsApiGatewayDocumentationVersionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayDocumentationVersions returns a ApiGatewayDocumentationVersionInformer.
+func (v *version) ApiGatewayDocumentationVersions() ApiGatewayDocumentationVersionInformer {
+	return &apiGatewayDocumentationVersionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayDomainNames returns a AwsApiGatewayDomainNameInformer.
-func (v *version) AwsApiGatewayDomainNames() AwsApiGatewayDomainNameInformer {
-	return &awsApiGatewayDomainNameInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayDomainNames returns a ApiGatewayDomainNameInformer.
+func (v *version) ApiGatewayDomainNames() ApiGatewayDomainNameInformer {
+	return &apiGatewayDomainNameInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayGatewayResponses returns a AwsApiGatewayGatewayResponseInformer.
-func (v *version) AwsApiGatewayGatewayResponses() AwsApiGatewayGatewayResponseInformer {
-	return &awsApiGatewayGatewayResponseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayGatewayResponses returns a ApiGatewayGatewayResponseInformer.
+func (v *version) ApiGatewayGatewayResponses() ApiGatewayGatewayResponseInformer {
+	return &apiGatewayGatewayResponseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayIntegrations returns a AwsApiGatewayIntegrationInformer.
-func (v *version) AwsApiGatewayIntegrations() AwsApiGatewayIntegrationInformer {
-	return &awsApiGatewayIntegrationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayIntegrations returns a ApiGatewayIntegrationInformer.
+func (v *version) ApiGatewayIntegrations() ApiGatewayIntegrationInformer {
+	return &apiGatewayIntegrationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayIntegrationResponses returns a AwsApiGatewayIntegrationResponseInformer.
-func (v *version) AwsApiGatewayIntegrationResponses() AwsApiGatewayIntegrationResponseInformer {
-	return &awsApiGatewayIntegrationResponseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayIntegrationResponses returns a ApiGatewayIntegrationResponseInformer.
+func (v *version) ApiGatewayIntegrationResponses() ApiGatewayIntegrationResponseInformer {
+	return &apiGatewayIntegrationResponseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayMethods returns a AwsApiGatewayMethodInformer.
-func (v *version) AwsApiGatewayMethods() AwsApiGatewayMethodInformer {
-	return &awsApiGatewayMethodInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayMethods returns a ApiGatewayMethodInformer.
+func (v *version) ApiGatewayMethods() ApiGatewayMethodInformer {
+	return &apiGatewayMethodInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayMethodResponses returns a AwsApiGatewayMethodResponseInformer.
-func (v *version) AwsApiGatewayMethodResponses() AwsApiGatewayMethodResponseInformer {
-	return &awsApiGatewayMethodResponseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayMethodResponses returns a ApiGatewayMethodResponseInformer.
+func (v *version) ApiGatewayMethodResponses() ApiGatewayMethodResponseInformer {
+	return &apiGatewayMethodResponseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayMethodSettingses returns a AwsApiGatewayMethodSettingsInformer.
-func (v *version) AwsApiGatewayMethodSettingses() AwsApiGatewayMethodSettingsInformer {
-	return &awsApiGatewayMethodSettingsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayMethodSettingses returns a ApiGatewayMethodSettingsInformer.
+func (v *version) ApiGatewayMethodSettingses() ApiGatewayMethodSettingsInformer {
+	return &apiGatewayMethodSettingsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayModels returns a AwsApiGatewayModelInformer.
-func (v *version) AwsApiGatewayModels() AwsApiGatewayModelInformer {
-	return &awsApiGatewayModelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayModels returns a ApiGatewayModelInformer.
+func (v *version) ApiGatewayModels() ApiGatewayModelInformer {
+	return &apiGatewayModelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayRequestValidators returns a AwsApiGatewayRequestValidatorInformer.
-func (v *version) AwsApiGatewayRequestValidators() AwsApiGatewayRequestValidatorInformer {
-	return &awsApiGatewayRequestValidatorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayRequestValidators returns a ApiGatewayRequestValidatorInformer.
+func (v *version) ApiGatewayRequestValidators() ApiGatewayRequestValidatorInformer {
+	return &apiGatewayRequestValidatorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayResources returns a AwsApiGatewayResourceInformer.
-func (v *version) AwsApiGatewayResources() AwsApiGatewayResourceInformer {
-	return &awsApiGatewayResourceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayResources returns a ApiGatewayResourceInformer.
+func (v *version) ApiGatewayResources() ApiGatewayResourceInformer {
+	return &apiGatewayResourceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayRestApis returns a AwsApiGatewayRestApiInformer.
-func (v *version) AwsApiGatewayRestApis() AwsApiGatewayRestApiInformer {
-	return &awsApiGatewayRestApiInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayRestApis returns a ApiGatewayRestApiInformer.
+func (v *version) ApiGatewayRestApis() ApiGatewayRestApiInformer {
+	return &apiGatewayRestApiInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayStages returns a AwsApiGatewayStageInformer.
-func (v *version) AwsApiGatewayStages() AwsApiGatewayStageInformer {
-	return &awsApiGatewayStageInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayStages returns a ApiGatewayStageInformer.
+func (v *version) ApiGatewayStages() ApiGatewayStageInformer {
+	return &apiGatewayStageInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayUsagePlans returns a AwsApiGatewayUsagePlanInformer.
-func (v *version) AwsApiGatewayUsagePlans() AwsApiGatewayUsagePlanInformer {
-	return &awsApiGatewayUsagePlanInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayUsagePlans returns a ApiGatewayUsagePlanInformer.
+func (v *version) ApiGatewayUsagePlans() ApiGatewayUsagePlanInformer {
+	return &apiGatewayUsagePlanInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayUsagePlanKeys returns a AwsApiGatewayUsagePlanKeyInformer.
-func (v *version) AwsApiGatewayUsagePlanKeys() AwsApiGatewayUsagePlanKeyInformer {
-	return &awsApiGatewayUsagePlanKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayUsagePlanKeys returns a ApiGatewayUsagePlanKeyInformer.
+func (v *version) ApiGatewayUsagePlanKeys() ApiGatewayUsagePlanKeyInformer {
+	return &apiGatewayUsagePlanKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsApiGatewayVpcLinks returns a AwsApiGatewayVpcLinkInformer.
-func (v *version) AwsApiGatewayVpcLinks() AwsApiGatewayVpcLinkInformer {
-	return &awsApiGatewayVpcLinkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ApiGatewayVpcLinks returns a ApiGatewayVpcLinkInformer.
+func (v *version) ApiGatewayVpcLinks() ApiGatewayVpcLinkInformer {
+	return &apiGatewayVpcLinkInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppCookieStickinessPolicies returns a AwsAppCookieStickinessPolicyInformer.
-func (v *version) AwsAppCookieStickinessPolicies() AwsAppCookieStickinessPolicyInformer {
-	return &awsAppCookieStickinessPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppCookieStickinessPolicies returns a AppCookieStickinessPolicyInformer.
+func (v *version) AppCookieStickinessPolicies() AppCookieStickinessPolicyInformer {
+	return &appCookieStickinessPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppautoscalingPolicies returns a AwsAppautoscalingPolicyInformer.
-func (v *version) AwsAppautoscalingPolicies() AwsAppautoscalingPolicyInformer {
-	return &awsAppautoscalingPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppautoscalingPolicies returns a AppautoscalingPolicyInformer.
+func (v *version) AppautoscalingPolicies() AppautoscalingPolicyInformer {
+	return &appautoscalingPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppautoscalingScheduledActions returns a AwsAppautoscalingScheduledActionInformer.
-func (v *version) AwsAppautoscalingScheduledActions() AwsAppautoscalingScheduledActionInformer {
-	return &awsAppautoscalingScheduledActionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppautoscalingScheduledActions returns a AppautoscalingScheduledActionInformer.
+func (v *version) AppautoscalingScheduledActions() AppautoscalingScheduledActionInformer {
+	return &appautoscalingScheduledActionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppautoscalingTargets returns a AwsAppautoscalingTargetInformer.
-func (v *version) AwsAppautoscalingTargets() AwsAppautoscalingTargetInformer {
-	return &awsAppautoscalingTargetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppautoscalingTargets returns a AppautoscalingTargetInformer.
+func (v *version) AppautoscalingTargets() AppautoscalingTargetInformer {
+	return &appautoscalingTargetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppmeshMeshes returns a AwsAppmeshMeshInformer.
-func (v *version) AwsAppmeshMeshes() AwsAppmeshMeshInformer {
-	return &awsAppmeshMeshInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppmeshMeshes returns a AppmeshMeshInformer.
+func (v *version) AppmeshMeshes() AppmeshMeshInformer {
+	return &appmeshMeshInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppmeshRoutes returns a AwsAppmeshRouteInformer.
-func (v *version) AwsAppmeshRoutes() AwsAppmeshRouteInformer {
-	return &awsAppmeshRouteInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppmeshRoutes returns a AppmeshRouteInformer.
+func (v *version) AppmeshRoutes() AppmeshRouteInformer {
+	return &appmeshRouteInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppmeshVirtualNodes returns a AwsAppmeshVirtualNodeInformer.
-func (v *version) AwsAppmeshVirtualNodes() AwsAppmeshVirtualNodeInformer {
-	return &awsAppmeshVirtualNodeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppmeshVirtualNodes returns a AppmeshVirtualNodeInformer.
+func (v *version) AppmeshVirtualNodes() AppmeshVirtualNodeInformer {
+	return &appmeshVirtualNodeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppmeshVirtualRouters returns a AwsAppmeshVirtualRouterInformer.
-func (v *version) AwsAppmeshVirtualRouters() AwsAppmeshVirtualRouterInformer {
-	return &awsAppmeshVirtualRouterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppmeshVirtualRouters returns a AppmeshVirtualRouterInformer.
+func (v *version) AppmeshVirtualRouters() AppmeshVirtualRouterInformer {
+	return &appmeshVirtualRouterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppmeshVirtualServices returns a AwsAppmeshVirtualServiceInformer.
-func (v *version) AwsAppmeshVirtualServices() AwsAppmeshVirtualServiceInformer {
-	return &awsAppmeshVirtualServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppmeshVirtualServices returns a AppmeshVirtualServiceInformer.
+func (v *version) AppmeshVirtualServices() AppmeshVirtualServiceInformer {
+	return &appmeshVirtualServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppsyncApiKeys returns a AwsAppsyncApiKeyInformer.
-func (v *version) AwsAppsyncApiKeys() AwsAppsyncApiKeyInformer {
-	return &awsAppsyncApiKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppsyncApiKeys returns a AppsyncApiKeyInformer.
+func (v *version) AppsyncApiKeys() AppsyncApiKeyInformer {
+	return &appsyncApiKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppsyncDatasources returns a AwsAppsyncDatasourceInformer.
-func (v *version) AwsAppsyncDatasources() AwsAppsyncDatasourceInformer {
-	return &awsAppsyncDatasourceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppsyncDatasources returns a AppsyncDatasourceInformer.
+func (v *version) AppsyncDatasources() AppsyncDatasourceInformer {
+	return &appsyncDatasourceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppsyncFunctions returns a AwsAppsyncFunctionInformer.
-func (v *version) AwsAppsyncFunctions() AwsAppsyncFunctionInformer {
-	return &awsAppsyncFunctionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppsyncFunctions returns a AppsyncFunctionInformer.
+func (v *version) AppsyncFunctions() AppsyncFunctionInformer {
+	return &appsyncFunctionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppsyncGraphqlApis returns a AwsAppsyncGraphqlApiInformer.
-func (v *version) AwsAppsyncGraphqlApis() AwsAppsyncGraphqlApiInformer {
-	return &awsAppsyncGraphqlApiInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppsyncGraphqlApis returns a AppsyncGraphqlApiInformer.
+func (v *version) AppsyncGraphqlApis() AppsyncGraphqlApiInformer {
+	return &appsyncGraphqlApiInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAppsyncResolvers returns a AwsAppsyncResolverInformer.
-func (v *version) AwsAppsyncResolvers() AwsAppsyncResolverInformer {
-	return &awsAppsyncResolverInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AppsyncResolvers returns a AppsyncResolverInformer.
+func (v *version) AppsyncResolvers() AppsyncResolverInformer {
+	return &appsyncResolverInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAthenaDatabases returns a AwsAthenaDatabaseInformer.
-func (v *version) AwsAthenaDatabases() AwsAthenaDatabaseInformer {
-	return &awsAthenaDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AthenaDatabases returns a AthenaDatabaseInformer.
+func (v *version) AthenaDatabases() AthenaDatabaseInformer {
+	return &athenaDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAthenaNamedQueries returns a AwsAthenaNamedQueryInformer.
-func (v *version) AwsAthenaNamedQueries() AwsAthenaNamedQueryInformer {
-	return &awsAthenaNamedQueryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AthenaNamedQueries returns a AthenaNamedQueryInformer.
+func (v *version) AthenaNamedQueries() AthenaNamedQueryInformer {
+	return &athenaNamedQueryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAthenaWorkgroups returns a AwsAthenaWorkgroupInformer.
-func (v *version) AwsAthenaWorkgroups() AwsAthenaWorkgroupInformer {
-	return &awsAthenaWorkgroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AthenaWorkgroups returns a AthenaWorkgroupInformer.
+func (v *version) AthenaWorkgroups() AthenaWorkgroupInformer {
+	return &athenaWorkgroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAutoscalingAttachments returns a AwsAutoscalingAttachmentInformer.
-func (v *version) AwsAutoscalingAttachments() AwsAutoscalingAttachmentInformer {
-	return &awsAutoscalingAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutoscalingAttachments returns a AutoscalingAttachmentInformer.
+func (v *version) AutoscalingAttachments() AutoscalingAttachmentInformer {
+	return &autoscalingAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAutoscalingGroups returns a AwsAutoscalingGroupInformer.
-func (v *version) AwsAutoscalingGroups() AwsAutoscalingGroupInformer {
-	return &awsAutoscalingGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutoscalingGroups returns a AutoscalingGroupInformer.
+func (v *version) AutoscalingGroups() AutoscalingGroupInformer {
+	return &autoscalingGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAutoscalingLifecycleHooks returns a AwsAutoscalingLifecycleHookInformer.
-func (v *version) AwsAutoscalingLifecycleHooks() AwsAutoscalingLifecycleHookInformer {
-	return &awsAutoscalingLifecycleHookInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutoscalingLifecycleHooks returns a AutoscalingLifecycleHookInformer.
+func (v *version) AutoscalingLifecycleHooks() AutoscalingLifecycleHookInformer {
+	return &autoscalingLifecycleHookInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAutoscalingNotifications returns a AwsAutoscalingNotificationInformer.
-func (v *version) AwsAutoscalingNotifications() AwsAutoscalingNotificationInformer {
-	return &awsAutoscalingNotificationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutoscalingNotifications returns a AutoscalingNotificationInformer.
+func (v *version) AutoscalingNotifications() AutoscalingNotificationInformer {
+	return &autoscalingNotificationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAutoscalingPolicies returns a AwsAutoscalingPolicyInformer.
-func (v *version) AwsAutoscalingPolicies() AwsAutoscalingPolicyInformer {
-	return &awsAutoscalingPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutoscalingPolicies returns a AutoscalingPolicyInformer.
+func (v *version) AutoscalingPolicies() AutoscalingPolicyInformer {
+	return &autoscalingPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsAutoscalingSchedules returns a AwsAutoscalingScheduleInformer.
-func (v *version) AwsAutoscalingSchedules() AwsAutoscalingScheduleInformer {
-	return &awsAutoscalingScheduleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// AutoscalingSchedules returns a AutoscalingScheduleInformer.
+func (v *version) AutoscalingSchedules() AutoscalingScheduleInformer {
+	return &autoscalingScheduleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsBackupPlans returns a AwsBackupPlanInformer.
-func (v *version) AwsBackupPlans() AwsBackupPlanInformer {
-	return &awsBackupPlanInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BackupPlans returns a BackupPlanInformer.
+func (v *version) BackupPlans() BackupPlanInformer {
+	return &backupPlanInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsBackupSelections returns a AwsBackupSelectionInformer.
-func (v *version) AwsBackupSelections() AwsBackupSelectionInformer {
-	return &awsBackupSelectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BackupSelections returns a BackupSelectionInformer.
+func (v *version) BackupSelections() BackupSelectionInformer {
+	return &backupSelectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsBackupVaults returns a AwsBackupVaultInformer.
-func (v *version) AwsBackupVaults() AwsBackupVaultInformer {
-	return &awsBackupVaultInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BackupVaults returns a BackupVaultInformer.
+func (v *version) BackupVaults() BackupVaultInformer {
+	return &backupVaultInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsBatchComputeEnvironments returns a AwsBatchComputeEnvironmentInformer.
-func (v *version) AwsBatchComputeEnvironments() AwsBatchComputeEnvironmentInformer {
-	return &awsBatchComputeEnvironmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BatchComputeEnvironments returns a BatchComputeEnvironmentInformer.
+func (v *version) BatchComputeEnvironments() BatchComputeEnvironmentInformer {
+	return &batchComputeEnvironmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsBatchJobDefinitions returns a AwsBatchJobDefinitionInformer.
-func (v *version) AwsBatchJobDefinitions() AwsBatchJobDefinitionInformer {
-	return &awsBatchJobDefinitionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BatchJobDefinitions returns a BatchJobDefinitionInformer.
+func (v *version) BatchJobDefinitions() BatchJobDefinitionInformer {
+	return &batchJobDefinitionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsBatchJobQueues returns a AwsBatchJobQueueInformer.
-func (v *version) AwsBatchJobQueues() AwsBatchJobQueueInformer {
-	return &awsBatchJobQueueInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BatchJobQueues returns a BatchJobQueueInformer.
+func (v *version) BatchJobQueues() BatchJobQueueInformer {
+	return &batchJobQueueInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsBudgetsBudgets returns a AwsBudgetsBudgetInformer.
-func (v *version) AwsBudgetsBudgets() AwsBudgetsBudgetInformer {
-	return &awsBudgetsBudgetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// BudgetsBudgets returns a BudgetsBudgetInformer.
+func (v *version) BudgetsBudgets() BudgetsBudgetInformer {
+	return &budgetsBudgetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloud9EnvironmentEc2s returns a AwsCloud9EnvironmentEc2Informer.
-func (v *version) AwsCloud9EnvironmentEc2s() AwsCloud9EnvironmentEc2Informer {
-	return &awsCloud9EnvironmentEc2Informer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Cloud9EnvironmentEc2s returns a Cloud9EnvironmentEc2Informer.
+func (v *version) Cloud9EnvironmentEc2s() Cloud9EnvironmentEc2Informer {
+	return &cloud9EnvironmentEc2Informer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudformationStacks returns a AwsCloudformationStackInformer.
-func (v *version) AwsCloudformationStacks() AwsCloudformationStackInformer {
-	return &awsCloudformationStackInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudformationStacks returns a CloudformationStackInformer.
+func (v *version) CloudformationStacks() CloudformationStackInformer {
+	return &cloudformationStackInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudformationStackSets returns a AwsCloudformationStackSetInformer.
-func (v *version) AwsCloudformationStackSets() AwsCloudformationStackSetInformer {
-	return &awsCloudformationStackSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudformationStackSets returns a CloudformationStackSetInformer.
+func (v *version) CloudformationStackSets() CloudformationStackSetInformer {
+	return &cloudformationStackSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudformationStackSetInstances returns a AwsCloudformationStackSetInstanceInformer.
-func (v *version) AwsCloudformationStackSetInstances() AwsCloudformationStackSetInstanceInformer {
-	return &awsCloudformationStackSetInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudformationStackSetInstances returns a CloudformationStackSetInstanceInformer.
+func (v *version) CloudformationStackSetInstances() CloudformationStackSetInstanceInformer {
+	return &cloudformationStackSetInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudfrontDistributions returns a AwsCloudfrontDistributionInformer.
-func (v *version) AwsCloudfrontDistributions() AwsCloudfrontDistributionInformer {
-	return &awsCloudfrontDistributionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudfrontDistributions returns a CloudfrontDistributionInformer.
+func (v *version) CloudfrontDistributions() CloudfrontDistributionInformer {
+	return &cloudfrontDistributionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudfrontOriginAccessIdentities returns a AwsCloudfrontOriginAccessIdentityInformer.
-func (v *version) AwsCloudfrontOriginAccessIdentities() AwsCloudfrontOriginAccessIdentityInformer {
-	return &awsCloudfrontOriginAccessIdentityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudfrontOriginAccessIdentities returns a CloudfrontOriginAccessIdentityInformer.
+func (v *version) CloudfrontOriginAccessIdentities() CloudfrontOriginAccessIdentityInformer {
+	return &cloudfrontOriginAccessIdentityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudfrontPublicKeys returns a AwsCloudfrontPublicKeyInformer.
-func (v *version) AwsCloudfrontPublicKeys() AwsCloudfrontPublicKeyInformer {
-	return &awsCloudfrontPublicKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudfrontPublicKeys returns a CloudfrontPublicKeyInformer.
+func (v *version) CloudfrontPublicKeys() CloudfrontPublicKeyInformer {
+	return &cloudfrontPublicKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudhsmV2Clusters returns a AwsCloudhsmV2ClusterInformer.
-func (v *version) AwsCloudhsmV2Clusters() AwsCloudhsmV2ClusterInformer {
-	return &awsCloudhsmV2ClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudhsmV2Clusters returns a CloudhsmV2ClusterInformer.
+func (v *version) CloudhsmV2Clusters() CloudhsmV2ClusterInformer {
+	return &cloudhsmV2ClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudhsmV2Hsms returns a AwsCloudhsmV2HsmInformer.
-func (v *version) AwsCloudhsmV2Hsms() AwsCloudhsmV2HsmInformer {
-	return &awsCloudhsmV2HsmInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudhsmV2Hsms returns a CloudhsmV2HsmInformer.
+func (v *version) CloudhsmV2Hsms() CloudhsmV2HsmInformer {
+	return &cloudhsmV2HsmInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudtrails returns a AwsCloudtrailInformer.
-func (v *version) AwsCloudtrails() AwsCloudtrailInformer {
-	return &awsCloudtrailInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Cloudtrails returns a CloudtrailInformer.
+func (v *version) Cloudtrails() CloudtrailInformer {
+	return &cloudtrailInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudwatchDashboards returns a AwsCloudwatchDashboardInformer.
-func (v *version) AwsCloudwatchDashboards() AwsCloudwatchDashboardInformer {
-	return &awsCloudwatchDashboardInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudwatchDashboards returns a CloudwatchDashboardInformer.
+func (v *version) CloudwatchDashboards() CloudwatchDashboardInformer {
+	return &cloudwatchDashboardInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudwatchEventPermissions returns a AwsCloudwatchEventPermissionInformer.
-func (v *version) AwsCloudwatchEventPermissions() AwsCloudwatchEventPermissionInformer {
-	return &awsCloudwatchEventPermissionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudwatchEventPermissions returns a CloudwatchEventPermissionInformer.
+func (v *version) CloudwatchEventPermissions() CloudwatchEventPermissionInformer {
+	return &cloudwatchEventPermissionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudwatchEventRules returns a AwsCloudwatchEventRuleInformer.
-func (v *version) AwsCloudwatchEventRules() AwsCloudwatchEventRuleInformer {
-	return &awsCloudwatchEventRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudwatchEventRules returns a CloudwatchEventRuleInformer.
+func (v *version) CloudwatchEventRules() CloudwatchEventRuleInformer {
+	return &cloudwatchEventRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudwatchEventTargets returns a AwsCloudwatchEventTargetInformer.
-func (v *version) AwsCloudwatchEventTargets() AwsCloudwatchEventTargetInformer {
-	return &awsCloudwatchEventTargetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudwatchEventTargets returns a CloudwatchEventTargetInformer.
+func (v *version) CloudwatchEventTargets() CloudwatchEventTargetInformer {
+	return &cloudwatchEventTargetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudwatchLogDestinations returns a AwsCloudwatchLogDestinationInformer.
-func (v *version) AwsCloudwatchLogDestinations() AwsCloudwatchLogDestinationInformer {
-	return &awsCloudwatchLogDestinationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudwatchLogDestinations returns a CloudwatchLogDestinationInformer.
+func (v *version) CloudwatchLogDestinations() CloudwatchLogDestinationInformer {
+	return &cloudwatchLogDestinationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudwatchLogDestinationPolicies returns a AwsCloudwatchLogDestinationPolicyInformer.
-func (v *version) AwsCloudwatchLogDestinationPolicies() AwsCloudwatchLogDestinationPolicyInformer {
-	return &awsCloudwatchLogDestinationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudwatchLogDestinationPolicies returns a CloudwatchLogDestinationPolicyInformer.
+func (v *version) CloudwatchLogDestinationPolicies() CloudwatchLogDestinationPolicyInformer {
+	return &cloudwatchLogDestinationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudwatchLogGroups returns a AwsCloudwatchLogGroupInformer.
-func (v *version) AwsCloudwatchLogGroups() AwsCloudwatchLogGroupInformer {
-	return &awsCloudwatchLogGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudwatchLogGroups returns a CloudwatchLogGroupInformer.
+func (v *version) CloudwatchLogGroups() CloudwatchLogGroupInformer {
+	return &cloudwatchLogGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudwatchLogMetricFilters returns a AwsCloudwatchLogMetricFilterInformer.
-func (v *version) AwsCloudwatchLogMetricFilters() AwsCloudwatchLogMetricFilterInformer {
-	return &awsCloudwatchLogMetricFilterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudwatchLogMetricFilters returns a CloudwatchLogMetricFilterInformer.
+func (v *version) CloudwatchLogMetricFilters() CloudwatchLogMetricFilterInformer {
+	return &cloudwatchLogMetricFilterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudwatchLogResourcePolicies returns a AwsCloudwatchLogResourcePolicyInformer.
-func (v *version) AwsCloudwatchLogResourcePolicies() AwsCloudwatchLogResourcePolicyInformer {
-	return &awsCloudwatchLogResourcePolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudwatchLogResourcePolicies returns a CloudwatchLogResourcePolicyInformer.
+func (v *version) CloudwatchLogResourcePolicies() CloudwatchLogResourcePolicyInformer {
+	return &cloudwatchLogResourcePolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudwatchLogStreams returns a AwsCloudwatchLogStreamInformer.
-func (v *version) AwsCloudwatchLogStreams() AwsCloudwatchLogStreamInformer {
-	return &awsCloudwatchLogStreamInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudwatchLogStreams returns a CloudwatchLogStreamInformer.
+func (v *version) CloudwatchLogStreams() CloudwatchLogStreamInformer {
+	return &cloudwatchLogStreamInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudwatchLogSubscriptionFilters returns a AwsCloudwatchLogSubscriptionFilterInformer.
-func (v *version) AwsCloudwatchLogSubscriptionFilters() AwsCloudwatchLogSubscriptionFilterInformer {
-	return &awsCloudwatchLogSubscriptionFilterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudwatchLogSubscriptionFilters returns a CloudwatchLogSubscriptionFilterInformer.
+func (v *version) CloudwatchLogSubscriptionFilters() CloudwatchLogSubscriptionFilterInformer {
+	return &cloudwatchLogSubscriptionFilterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCloudwatchMetricAlarms returns a AwsCloudwatchMetricAlarmInformer.
-func (v *version) AwsCloudwatchMetricAlarms() AwsCloudwatchMetricAlarmInformer {
-	return &awsCloudwatchMetricAlarmInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CloudwatchMetricAlarms returns a CloudwatchMetricAlarmInformer.
+func (v *version) CloudwatchMetricAlarms() CloudwatchMetricAlarmInformer {
+	return &cloudwatchMetricAlarmInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCodebuildProjects returns a AwsCodebuildProjectInformer.
-func (v *version) AwsCodebuildProjects() AwsCodebuildProjectInformer {
-	return &awsCodebuildProjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CodebuildProjects returns a CodebuildProjectInformer.
+func (v *version) CodebuildProjects() CodebuildProjectInformer {
+	return &codebuildProjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCodebuildWebhooks returns a AwsCodebuildWebhookInformer.
-func (v *version) AwsCodebuildWebhooks() AwsCodebuildWebhookInformer {
-	return &awsCodebuildWebhookInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CodebuildWebhooks returns a CodebuildWebhookInformer.
+func (v *version) CodebuildWebhooks() CodebuildWebhookInformer {
+	return &codebuildWebhookInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCodecommitRepositories returns a AwsCodecommitRepositoryInformer.
-func (v *version) AwsCodecommitRepositories() AwsCodecommitRepositoryInformer {
-	return &awsCodecommitRepositoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CodecommitRepositories returns a CodecommitRepositoryInformer.
+func (v *version) CodecommitRepositories() CodecommitRepositoryInformer {
+	return &codecommitRepositoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCodecommitTriggers returns a AwsCodecommitTriggerInformer.
-func (v *version) AwsCodecommitTriggers() AwsCodecommitTriggerInformer {
-	return &awsCodecommitTriggerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CodecommitTriggers returns a CodecommitTriggerInformer.
+func (v *version) CodecommitTriggers() CodecommitTriggerInformer {
+	return &codecommitTriggerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCodedeployApps returns a AwsCodedeployAppInformer.
-func (v *version) AwsCodedeployApps() AwsCodedeployAppInformer {
-	return &awsCodedeployAppInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CodedeployApps returns a CodedeployAppInformer.
+func (v *version) CodedeployApps() CodedeployAppInformer {
+	return &codedeployAppInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCodedeployDeploymentConfigs returns a AwsCodedeployDeploymentConfigInformer.
-func (v *version) AwsCodedeployDeploymentConfigs() AwsCodedeployDeploymentConfigInformer {
-	return &awsCodedeployDeploymentConfigInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CodedeployDeploymentConfigs returns a CodedeployDeploymentConfigInformer.
+func (v *version) CodedeployDeploymentConfigs() CodedeployDeploymentConfigInformer {
+	return &codedeployDeploymentConfigInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCodedeployDeploymentGroups returns a AwsCodedeployDeploymentGroupInformer.
-func (v *version) AwsCodedeployDeploymentGroups() AwsCodedeployDeploymentGroupInformer {
-	return &awsCodedeployDeploymentGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CodedeployDeploymentGroups returns a CodedeployDeploymentGroupInformer.
+func (v *version) CodedeployDeploymentGroups() CodedeployDeploymentGroupInformer {
+	return &codedeployDeploymentGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCodepipelines returns a AwsCodepipelineInformer.
-func (v *version) AwsCodepipelines() AwsCodepipelineInformer {
-	return &awsCodepipelineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Codepipelines returns a CodepipelineInformer.
+func (v *version) Codepipelines() CodepipelineInformer {
+	return &codepipelineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCodepipelineWebhooks returns a AwsCodepipelineWebhookInformer.
-func (v *version) AwsCodepipelineWebhooks() AwsCodepipelineWebhookInformer {
-	return &awsCodepipelineWebhookInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CodepipelineWebhooks returns a CodepipelineWebhookInformer.
+func (v *version) CodepipelineWebhooks() CodepipelineWebhookInformer {
+	return &codepipelineWebhookInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCognitoIdentityPools returns a AwsCognitoIdentityPoolInformer.
-func (v *version) AwsCognitoIdentityPools() AwsCognitoIdentityPoolInformer {
-	return &awsCognitoIdentityPoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CognitoIdentityPools returns a CognitoIdentityPoolInformer.
+func (v *version) CognitoIdentityPools() CognitoIdentityPoolInformer {
+	return &cognitoIdentityPoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCognitoIdentityPoolRolesAttachments returns a AwsCognitoIdentityPoolRolesAttachmentInformer.
-func (v *version) AwsCognitoIdentityPoolRolesAttachments() AwsCognitoIdentityPoolRolesAttachmentInformer {
-	return &awsCognitoIdentityPoolRolesAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CognitoIdentityPoolRolesAttachments returns a CognitoIdentityPoolRolesAttachmentInformer.
+func (v *version) CognitoIdentityPoolRolesAttachments() CognitoIdentityPoolRolesAttachmentInformer {
+	return &cognitoIdentityPoolRolesAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCognitoIdentityProviders returns a AwsCognitoIdentityProviderInformer.
-func (v *version) AwsCognitoIdentityProviders() AwsCognitoIdentityProviderInformer {
-	return &awsCognitoIdentityProviderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CognitoIdentityProviders returns a CognitoIdentityProviderInformer.
+func (v *version) CognitoIdentityProviders() CognitoIdentityProviderInformer {
+	return &cognitoIdentityProviderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCognitoResourceServers returns a AwsCognitoResourceServerInformer.
-func (v *version) AwsCognitoResourceServers() AwsCognitoResourceServerInformer {
-	return &awsCognitoResourceServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CognitoResourceServers returns a CognitoResourceServerInformer.
+func (v *version) CognitoResourceServers() CognitoResourceServerInformer {
+	return &cognitoResourceServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCognitoUserGroups returns a AwsCognitoUserGroupInformer.
-func (v *version) AwsCognitoUserGroups() AwsCognitoUserGroupInformer {
-	return &awsCognitoUserGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CognitoUserGroups returns a CognitoUserGroupInformer.
+func (v *version) CognitoUserGroups() CognitoUserGroupInformer {
+	return &cognitoUserGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCognitoUserPools returns a AwsCognitoUserPoolInformer.
-func (v *version) AwsCognitoUserPools() AwsCognitoUserPoolInformer {
-	return &awsCognitoUserPoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CognitoUserPools returns a CognitoUserPoolInformer.
+func (v *version) CognitoUserPools() CognitoUserPoolInformer {
+	return &cognitoUserPoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCognitoUserPoolClients returns a AwsCognitoUserPoolClientInformer.
-func (v *version) AwsCognitoUserPoolClients() AwsCognitoUserPoolClientInformer {
-	return &awsCognitoUserPoolClientInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CognitoUserPoolClients returns a CognitoUserPoolClientInformer.
+func (v *version) CognitoUserPoolClients() CognitoUserPoolClientInformer {
+	return &cognitoUserPoolClientInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCognitoUserPoolDomains returns a AwsCognitoUserPoolDomainInformer.
-func (v *version) AwsCognitoUserPoolDomains() AwsCognitoUserPoolDomainInformer {
-	return &awsCognitoUserPoolDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CognitoUserPoolDomains returns a CognitoUserPoolDomainInformer.
+func (v *version) CognitoUserPoolDomains() CognitoUserPoolDomainInformer {
+	return &cognitoUserPoolDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsConfigAggregateAuthorizations returns a AwsConfigAggregateAuthorizationInformer.
-func (v *version) AwsConfigAggregateAuthorizations() AwsConfigAggregateAuthorizationInformer {
-	return &awsConfigAggregateAuthorizationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ConfigAggregateAuthorizations returns a ConfigAggregateAuthorizationInformer.
+func (v *version) ConfigAggregateAuthorizations() ConfigAggregateAuthorizationInformer {
+	return &configAggregateAuthorizationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsConfigConfigRules returns a AwsConfigConfigRuleInformer.
-func (v *version) AwsConfigConfigRules() AwsConfigConfigRuleInformer {
-	return &awsConfigConfigRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ConfigConfigRules returns a ConfigConfigRuleInformer.
+func (v *version) ConfigConfigRules() ConfigConfigRuleInformer {
+	return &configConfigRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsConfigConfigurationAggregators returns a AwsConfigConfigurationAggregatorInformer.
-func (v *version) AwsConfigConfigurationAggregators() AwsConfigConfigurationAggregatorInformer {
-	return &awsConfigConfigurationAggregatorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ConfigConfigurationAggregators returns a ConfigConfigurationAggregatorInformer.
+func (v *version) ConfigConfigurationAggregators() ConfigConfigurationAggregatorInformer {
+	return &configConfigurationAggregatorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsConfigConfigurationRecorders returns a AwsConfigConfigurationRecorderInformer.
-func (v *version) AwsConfigConfigurationRecorders() AwsConfigConfigurationRecorderInformer {
-	return &awsConfigConfigurationRecorderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ConfigConfigurationRecorders returns a ConfigConfigurationRecorderInformer.
+func (v *version) ConfigConfigurationRecorders() ConfigConfigurationRecorderInformer {
+	return &configConfigurationRecorderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsConfigConfigurationRecorderStatuses returns a AwsConfigConfigurationRecorderStatusInformer.
-func (v *version) AwsConfigConfigurationRecorderStatuses() AwsConfigConfigurationRecorderStatusInformer {
-	return &awsConfigConfigurationRecorderStatusInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ConfigConfigurationRecorderStatus_s returns a ConfigConfigurationRecorderStatus_Informer.
+func (v *version) ConfigConfigurationRecorderStatus_s() ConfigConfigurationRecorderStatus_Informer {
+	return &configConfigurationRecorderStatus_Informer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsConfigDeliveryChannels returns a AwsConfigDeliveryChannelInformer.
-func (v *version) AwsConfigDeliveryChannels() AwsConfigDeliveryChannelInformer {
-	return &awsConfigDeliveryChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ConfigDeliveryChannels returns a ConfigDeliveryChannelInformer.
+func (v *version) ConfigDeliveryChannels() ConfigDeliveryChannelInformer {
+	return &configDeliveryChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCurReportDefinitions returns a AwsCurReportDefinitionInformer.
-func (v *version) AwsCurReportDefinitions() AwsCurReportDefinitionInformer {
-	return &awsCurReportDefinitionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CurReportDefinitions returns a CurReportDefinitionInformer.
+func (v *version) CurReportDefinitions() CurReportDefinitionInformer {
+	return &curReportDefinitionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsCustomerGateways returns a AwsCustomerGatewayInformer.
-func (v *version) AwsCustomerGateways() AwsCustomerGatewayInformer {
-	return &awsCustomerGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// CustomerGateways returns a CustomerGatewayInformer.
+func (v *version) CustomerGateways() CustomerGatewayInformer {
+	return &customerGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDatapipelinePipelines returns a AwsDatapipelinePipelineInformer.
-func (v *version) AwsDatapipelinePipelines() AwsDatapipelinePipelineInformer {
-	return &awsDatapipelinePipelineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DatapipelinePipelines returns a DatapipelinePipelineInformer.
+func (v *version) DatapipelinePipelines() DatapipelinePipelineInformer {
+	return &datapipelinePipelineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDatasyncAgents returns a AwsDatasyncAgentInformer.
-func (v *version) AwsDatasyncAgents() AwsDatasyncAgentInformer {
-	return &awsDatasyncAgentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DatasyncAgents returns a DatasyncAgentInformer.
+func (v *version) DatasyncAgents() DatasyncAgentInformer {
+	return &datasyncAgentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDatasyncLocationEfses returns a AwsDatasyncLocationEfsInformer.
-func (v *version) AwsDatasyncLocationEfses() AwsDatasyncLocationEfsInformer {
-	return &awsDatasyncLocationEfsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DatasyncLocationEfses returns a DatasyncLocationEfsInformer.
+func (v *version) DatasyncLocationEfses() DatasyncLocationEfsInformer {
+	return &datasyncLocationEfsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDatasyncLocationNfses returns a AwsDatasyncLocationNfsInformer.
-func (v *version) AwsDatasyncLocationNfses() AwsDatasyncLocationNfsInformer {
-	return &awsDatasyncLocationNfsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DatasyncLocationNfses returns a DatasyncLocationNfsInformer.
+func (v *version) DatasyncLocationNfses() DatasyncLocationNfsInformer {
+	return &datasyncLocationNfsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDatasyncLocationS3s returns a AwsDatasyncLocationS3Informer.
-func (v *version) AwsDatasyncLocationS3s() AwsDatasyncLocationS3Informer {
-	return &awsDatasyncLocationS3Informer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DatasyncLocationS3s returns a DatasyncLocationS3Informer.
+func (v *version) DatasyncLocationS3s() DatasyncLocationS3Informer {
+	return &datasyncLocationS3Informer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDatasyncTasks returns a AwsDatasyncTaskInformer.
-func (v *version) AwsDatasyncTasks() AwsDatasyncTaskInformer {
-	return &awsDatasyncTaskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DatasyncTasks returns a DatasyncTaskInformer.
+func (v *version) DatasyncTasks() DatasyncTaskInformer {
+	return &datasyncTaskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDaxClusters returns a AwsDaxClusterInformer.
-func (v *version) AwsDaxClusters() AwsDaxClusterInformer {
-	return &awsDaxClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DaxClusters returns a DaxClusterInformer.
+func (v *version) DaxClusters() DaxClusterInformer {
+	return &daxClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDaxParameterGroups returns a AwsDaxParameterGroupInformer.
-func (v *version) AwsDaxParameterGroups() AwsDaxParameterGroupInformer {
-	return &awsDaxParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DaxParameterGroups returns a DaxParameterGroupInformer.
+func (v *version) DaxParameterGroups() DaxParameterGroupInformer {
+	return &daxParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDaxSubnetGroups returns a AwsDaxSubnetGroupInformer.
-func (v *version) AwsDaxSubnetGroups() AwsDaxSubnetGroupInformer {
-	return &awsDaxSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DaxSubnetGroups returns a DaxSubnetGroupInformer.
+func (v *version) DaxSubnetGroups() DaxSubnetGroupInformer {
+	return &daxSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDbClusterSnapshots returns a AwsDbClusterSnapshotInformer.
-func (v *version) AwsDbClusterSnapshots() AwsDbClusterSnapshotInformer {
-	return &awsDbClusterSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DbClusterSnapshots returns a DbClusterSnapshotInformer.
+func (v *version) DbClusterSnapshots() DbClusterSnapshotInformer {
+	return &dbClusterSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDbEventSubscriptions returns a AwsDbEventSubscriptionInformer.
-func (v *version) AwsDbEventSubscriptions() AwsDbEventSubscriptionInformer {
-	return &awsDbEventSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DbEventSubscriptions returns a DbEventSubscriptionInformer.
+func (v *version) DbEventSubscriptions() DbEventSubscriptionInformer {
+	return &dbEventSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDbInstances returns a AwsDbInstanceInformer.
-func (v *version) AwsDbInstances() AwsDbInstanceInformer {
-	return &awsDbInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DbInstances returns a DbInstanceInformer.
+func (v *version) DbInstances() DbInstanceInformer {
+	return &dbInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDbInstanceRoleAssociations returns a AwsDbInstanceRoleAssociationInformer.
-func (v *version) AwsDbInstanceRoleAssociations() AwsDbInstanceRoleAssociationInformer {
-	return &awsDbInstanceRoleAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DbInstanceRoleAssociations returns a DbInstanceRoleAssociationInformer.
+func (v *version) DbInstanceRoleAssociations() DbInstanceRoleAssociationInformer {
+	return &dbInstanceRoleAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDbOptionGroups returns a AwsDbOptionGroupInformer.
-func (v *version) AwsDbOptionGroups() AwsDbOptionGroupInformer {
-	return &awsDbOptionGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DbOptionGroups returns a DbOptionGroupInformer.
+func (v *version) DbOptionGroups() DbOptionGroupInformer {
+	return &dbOptionGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDbParameterGroups returns a AwsDbParameterGroupInformer.
-func (v *version) AwsDbParameterGroups() AwsDbParameterGroupInformer {
-	return &awsDbParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DbParameterGroups returns a DbParameterGroupInformer.
+func (v *version) DbParameterGroups() DbParameterGroupInformer {
+	return &dbParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDbSecurityGroups returns a AwsDbSecurityGroupInformer.
-func (v *version) AwsDbSecurityGroups() AwsDbSecurityGroupInformer {
-	return &awsDbSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DbSecurityGroups returns a DbSecurityGroupInformer.
+func (v *version) DbSecurityGroups() DbSecurityGroupInformer {
+	return &dbSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDbSnapshots returns a AwsDbSnapshotInformer.
-func (v *version) AwsDbSnapshots() AwsDbSnapshotInformer {
-	return &awsDbSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DbSnapshots returns a DbSnapshotInformer.
+func (v *version) DbSnapshots() DbSnapshotInformer {
+	return &dbSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDbSubnetGroups returns a AwsDbSubnetGroupInformer.
-func (v *version) AwsDbSubnetGroups() AwsDbSubnetGroupInformer {
-	return &awsDbSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DbSubnetGroups returns a DbSubnetGroupInformer.
+func (v *version) DbSubnetGroups() DbSubnetGroupInformer {
+	return &dbSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDefaultNetworkAcls returns a AwsDefaultNetworkAclInformer.
-func (v *version) AwsDefaultNetworkAcls() AwsDefaultNetworkAclInformer {
-	return &awsDefaultNetworkAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DefaultNetworkAcls returns a DefaultNetworkAclInformer.
+func (v *version) DefaultNetworkAcls() DefaultNetworkAclInformer {
+	return &defaultNetworkAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDefaultRouteTables returns a AwsDefaultRouteTableInformer.
-func (v *version) AwsDefaultRouteTables() AwsDefaultRouteTableInformer {
-	return &awsDefaultRouteTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DefaultRouteTables returns a DefaultRouteTableInformer.
+func (v *version) DefaultRouteTables() DefaultRouteTableInformer {
+	return &defaultRouteTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDefaultSecurityGroups returns a AwsDefaultSecurityGroupInformer.
-func (v *version) AwsDefaultSecurityGroups() AwsDefaultSecurityGroupInformer {
-	return &awsDefaultSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DefaultSecurityGroups returns a DefaultSecurityGroupInformer.
+func (v *version) DefaultSecurityGroups() DefaultSecurityGroupInformer {
+	return &defaultSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDefaultSubnets returns a AwsDefaultSubnetInformer.
-func (v *version) AwsDefaultSubnets() AwsDefaultSubnetInformer {
-	return &awsDefaultSubnetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DefaultSubnets returns a DefaultSubnetInformer.
+func (v *version) DefaultSubnets() DefaultSubnetInformer {
+	return &defaultSubnetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDefaultVpcs returns a AwsDefaultVpcInformer.
-func (v *version) AwsDefaultVpcs() AwsDefaultVpcInformer {
-	return &awsDefaultVpcInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DefaultVpcs returns a DefaultVpcInformer.
+func (v *version) DefaultVpcs() DefaultVpcInformer {
+	return &defaultVpcInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDefaultVpcDhcpOptionses returns a AwsDefaultVpcDhcpOptionsInformer.
-func (v *version) AwsDefaultVpcDhcpOptionses() AwsDefaultVpcDhcpOptionsInformer {
-	return &awsDefaultVpcDhcpOptionsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DefaultVpcDhcpOptionses returns a DefaultVpcDhcpOptionsInformer.
+func (v *version) DefaultVpcDhcpOptionses() DefaultVpcDhcpOptionsInformer {
+	return &defaultVpcDhcpOptionsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDevicefarmProjects returns a AwsDevicefarmProjectInformer.
-func (v *version) AwsDevicefarmProjects() AwsDevicefarmProjectInformer {
-	return &awsDevicefarmProjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DevicefarmProjects returns a DevicefarmProjectInformer.
+func (v *version) DevicefarmProjects() DevicefarmProjectInformer {
+	return &devicefarmProjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDirectoryServiceConditionalForwarders returns a AwsDirectoryServiceConditionalForwarderInformer.
-func (v *version) AwsDirectoryServiceConditionalForwarders() AwsDirectoryServiceConditionalForwarderInformer {
-	return &awsDirectoryServiceConditionalForwarderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DirectoryServiceConditionalForwarders returns a DirectoryServiceConditionalForwarderInformer.
+func (v *version) DirectoryServiceConditionalForwarders() DirectoryServiceConditionalForwarderInformer {
+	return &directoryServiceConditionalForwarderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDirectoryServiceDirectories returns a AwsDirectoryServiceDirectoryInformer.
-func (v *version) AwsDirectoryServiceDirectories() AwsDirectoryServiceDirectoryInformer {
-	return &awsDirectoryServiceDirectoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DirectoryServiceDirectories returns a DirectoryServiceDirectoryInformer.
+func (v *version) DirectoryServiceDirectories() DirectoryServiceDirectoryInformer {
+	return &directoryServiceDirectoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDirectoryServiceLogSubscriptions returns a AwsDirectoryServiceLogSubscriptionInformer.
-func (v *version) AwsDirectoryServiceLogSubscriptions() AwsDirectoryServiceLogSubscriptionInformer {
-	return &awsDirectoryServiceLogSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DirectoryServiceLogSubscriptions returns a DirectoryServiceLogSubscriptionInformer.
+func (v *version) DirectoryServiceLogSubscriptions() DirectoryServiceLogSubscriptionInformer {
+	return &directoryServiceLogSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDlmLifecyclePolicies returns a AwsDlmLifecyclePolicyInformer.
-func (v *version) AwsDlmLifecyclePolicies() AwsDlmLifecyclePolicyInformer {
-	return &awsDlmLifecyclePolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DlmLifecyclePolicies returns a DlmLifecyclePolicyInformer.
+func (v *version) DlmLifecyclePolicies() DlmLifecyclePolicyInformer {
+	return &dlmLifecyclePolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDmsCertificates returns a AwsDmsCertificateInformer.
-func (v *version) AwsDmsCertificates() AwsDmsCertificateInformer {
-	return &awsDmsCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DmsCertificates returns a DmsCertificateInformer.
+func (v *version) DmsCertificates() DmsCertificateInformer {
+	return &dmsCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDmsEndpoints returns a AwsDmsEndpointInformer.
-func (v *version) AwsDmsEndpoints() AwsDmsEndpointInformer {
-	return &awsDmsEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DmsEndpoints returns a DmsEndpointInformer.
+func (v *version) DmsEndpoints() DmsEndpointInformer {
+	return &dmsEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDmsReplicationInstances returns a AwsDmsReplicationInstanceInformer.
-func (v *version) AwsDmsReplicationInstances() AwsDmsReplicationInstanceInformer {
-	return &awsDmsReplicationInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DmsReplicationInstances returns a DmsReplicationInstanceInformer.
+func (v *version) DmsReplicationInstances() DmsReplicationInstanceInformer {
+	return &dmsReplicationInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDmsReplicationSubnetGroups returns a AwsDmsReplicationSubnetGroupInformer.
-func (v *version) AwsDmsReplicationSubnetGroups() AwsDmsReplicationSubnetGroupInformer {
-	return &awsDmsReplicationSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DmsReplicationSubnetGroups returns a DmsReplicationSubnetGroupInformer.
+func (v *version) DmsReplicationSubnetGroups() DmsReplicationSubnetGroupInformer {
+	return &dmsReplicationSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDmsReplicationTasks returns a AwsDmsReplicationTaskInformer.
-func (v *version) AwsDmsReplicationTasks() AwsDmsReplicationTaskInformer {
-	return &awsDmsReplicationTaskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DmsReplicationTasks returns a DmsReplicationTaskInformer.
+func (v *version) DmsReplicationTasks() DmsReplicationTaskInformer {
+	return &dmsReplicationTaskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDocdbClusters returns a AwsDocdbClusterInformer.
-func (v *version) AwsDocdbClusters() AwsDocdbClusterInformer {
-	return &awsDocdbClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DocdbClusters returns a DocdbClusterInformer.
+func (v *version) DocdbClusters() DocdbClusterInformer {
+	return &docdbClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDocdbClusterInstances returns a AwsDocdbClusterInstanceInformer.
-func (v *version) AwsDocdbClusterInstances() AwsDocdbClusterInstanceInformer {
-	return &awsDocdbClusterInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DocdbClusterInstances returns a DocdbClusterInstanceInformer.
+func (v *version) DocdbClusterInstances() DocdbClusterInstanceInformer {
+	return &docdbClusterInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDocdbClusterParameterGroups returns a AwsDocdbClusterParameterGroupInformer.
-func (v *version) AwsDocdbClusterParameterGroups() AwsDocdbClusterParameterGroupInformer {
-	return &awsDocdbClusterParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DocdbClusterParameterGroups returns a DocdbClusterParameterGroupInformer.
+func (v *version) DocdbClusterParameterGroups() DocdbClusterParameterGroupInformer {
+	return &docdbClusterParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDocdbClusterSnapshots returns a AwsDocdbClusterSnapshotInformer.
-func (v *version) AwsDocdbClusterSnapshots() AwsDocdbClusterSnapshotInformer {
-	return &awsDocdbClusterSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DocdbClusterSnapshots returns a DocdbClusterSnapshotInformer.
+func (v *version) DocdbClusterSnapshots() DocdbClusterSnapshotInformer {
+	return &docdbClusterSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDocdbSubnetGroups returns a AwsDocdbSubnetGroupInformer.
-func (v *version) AwsDocdbSubnetGroups() AwsDocdbSubnetGroupInformer {
-	return &awsDocdbSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DocdbSubnetGroups returns a DocdbSubnetGroupInformer.
+func (v *version) DocdbSubnetGroups() DocdbSubnetGroupInformer {
+	return &docdbSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxBgpPeers returns a AwsDxBgpPeerInformer.
-func (v *version) AwsDxBgpPeers() AwsDxBgpPeerInformer {
-	return &awsDxBgpPeerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxBgpPeers returns a DxBgpPeerInformer.
+func (v *version) DxBgpPeers() DxBgpPeerInformer {
+	return &dxBgpPeerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxConnections returns a AwsDxConnectionInformer.
-func (v *version) AwsDxConnections() AwsDxConnectionInformer {
-	return &awsDxConnectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxConnections returns a DxConnectionInformer.
+func (v *version) DxConnections() DxConnectionInformer {
+	return &dxConnectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxConnectionAssociations returns a AwsDxConnectionAssociationInformer.
-func (v *version) AwsDxConnectionAssociations() AwsDxConnectionAssociationInformer {
-	return &awsDxConnectionAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxConnectionAssociations returns a DxConnectionAssociationInformer.
+func (v *version) DxConnectionAssociations() DxConnectionAssociationInformer {
+	return &dxConnectionAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxGateways returns a AwsDxGatewayInformer.
-func (v *version) AwsDxGateways() AwsDxGatewayInformer {
-	return &awsDxGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxGateways returns a DxGatewayInformer.
+func (v *version) DxGateways() DxGatewayInformer {
+	return &dxGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxGatewayAssociations returns a AwsDxGatewayAssociationInformer.
-func (v *version) AwsDxGatewayAssociations() AwsDxGatewayAssociationInformer {
-	return &awsDxGatewayAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxGatewayAssociations returns a DxGatewayAssociationInformer.
+func (v *version) DxGatewayAssociations() DxGatewayAssociationInformer {
+	return &dxGatewayAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxGatewayAssociationProposals returns a AwsDxGatewayAssociationProposalInformer.
-func (v *version) AwsDxGatewayAssociationProposals() AwsDxGatewayAssociationProposalInformer {
-	return &awsDxGatewayAssociationProposalInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxGatewayAssociationProposals returns a DxGatewayAssociationProposalInformer.
+func (v *version) DxGatewayAssociationProposals() DxGatewayAssociationProposalInformer {
+	return &dxGatewayAssociationProposalInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxHostedPrivateVirtualInterfaces returns a AwsDxHostedPrivateVirtualInterfaceInformer.
-func (v *version) AwsDxHostedPrivateVirtualInterfaces() AwsDxHostedPrivateVirtualInterfaceInformer {
-	return &awsDxHostedPrivateVirtualInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxHostedPrivateVirtualInterfaces returns a DxHostedPrivateVirtualInterfaceInformer.
+func (v *version) DxHostedPrivateVirtualInterfaces() DxHostedPrivateVirtualInterfaceInformer {
+	return &dxHostedPrivateVirtualInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxHostedPrivateVirtualInterfaceAccepters returns a AwsDxHostedPrivateVirtualInterfaceAccepterInformer.
-func (v *version) AwsDxHostedPrivateVirtualInterfaceAccepters() AwsDxHostedPrivateVirtualInterfaceAccepterInformer {
-	return &awsDxHostedPrivateVirtualInterfaceAccepterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxHostedPrivateVirtualInterfaceAccepters returns a DxHostedPrivateVirtualInterfaceAccepterInformer.
+func (v *version) DxHostedPrivateVirtualInterfaceAccepters() DxHostedPrivateVirtualInterfaceAccepterInformer {
+	return &dxHostedPrivateVirtualInterfaceAccepterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxHostedPublicVirtualInterfaces returns a AwsDxHostedPublicVirtualInterfaceInformer.
-func (v *version) AwsDxHostedPublicVirtualInterfaces() AwsDxHostedPublicVirtualInterfaceInformer {
-	return &awsDxHostedPublicVirtualInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxHostedPublicVirtualInterfaces returns a DxHostedPublicVirtualInterfaceInformer.
+func (v *version) DxHostedPublicVirtualInterfaces() DxHostedPublicVirtualInterfaceInformer {
+	return &dxHostedPublicVirtualInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxHostedPublicVirtualInterfaceAccepters returns a AwsDxHostedPublicVirtualInterfaceAccepterInformer.
-func (v *version) AwsDxHostedPublicVirtualInterfaceAccepters() AwsDxHostedPublicVirtualInterfaceAccepterInformer {
-	return &awsDxHostedPublicVirtualInterfaceAccepterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxHostedPublicVirtualInterfaceAccepters returns a DxHostedPublicVirtualInterfaceAccepterInformer.
+func (v *version) DxHostedPublicVirtualInterfaceAccepters() DxHostedPublicVirtualInterfaceAccepterInformer {
+	return &dxHostedPublicVirtualInterfaceAccepterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxLags returns a AwsDxLagInformer.
-func (v *version) AwsDxLags() AwsDxLagInformer {
-	return &awsDxLagInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxLags returns a DxLagInformer.
+func (v *version) DxLags() DxLagInformer {
+	return &dxLagInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxPrivateVirtualInterfaces returns a AwsDxPrivateVirtualInterfaceInformer.
-func (v *version) AwsDxPrivateVirtualInterfaces() AwsDxPrivateVirtualInterfaceInformer {
-	return &awsDxPrivateVirtualInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxPrivateVirtualInterfaces returns a DxPrivateVirtualInterfaceInformer.
+func (v *version) DxPrivateVirtualInterfaces() DxPrivateVirtualInterfaceInformer {
+	return &dxPrivateVirtualInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDxPublicVirtualInterfaces returns a AwsDxPublicVirtualInterfaceInformer.
-func (v *version) AwsDxPublicVirtualInterfaces() AwsDxPublicVirtualInterfaceInformer {
-	return &awsDxPublicVirtualInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DxPublicVirtualInterfaces returns a DxPublicVirtualInterfaceInformer.
+func (v *version) DxPublicVirtualInterfaces() DxPublicVirtualInterfaceInformer {
+	return &dxPublicVirtualInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDynamodbGlobalTables returns a AwsDynamodbGlobalTableInformer.
-func (v *version) AwsDynamodbGlobalTables() AwsDynamodbGlobalTableInformer {
-	return &awsDynamodbGlobalTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DynamodbGlobalTables returns a DynamodbGlobalTableInformer.
+func (v *version) DynamodbGlobalTables() DynamodbGlobalTableInformer {
+	return &dynamodbGlobalTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDynamodbTables returns a AwsDynamodbTableInformer.
-func (v *version) AwsDynamodbTables() AwsDynamodbTableInformer {
-	return &awsDynamodbTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DynamodbTables returns a DynamodbTableInformer.
+func (v *version) DynamodbTables() DynamodbTableInformer {
+	return &dynamodbTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsDynamodbTableItems returns a AwsDynamodbTableItemInformer.
-func (v *version) AwsDynamodbTableItems() AwsDynamodbTableItemInformer {
-	return &awsDynamodbTableItemInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DynamodbTableItems returns a DynamodbTableItemInformer.
+func (v *version) DynamodbTableItems() DynamodbTableItemInformer {
+	return &dynamodbTableItemInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEbsDefaultKmsKeys returns a AwsEbsDefaultKmsKeyInformer.
-func (v *version) AwsEbsDefaultKmsKeys() AwsEbsDefaultKmsKeyInformer {
-	return &awsEbsDefaultKmsKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EbsDefaultKmsKeys returns a EbsDefaultKmsKeyInformer.
+func (v *version) EbsDefaultKmsKeys() EbsDefaultKmsKeyInformer {
+	return &ebsDefaultKmsKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEbsEncryptionByDefaults returns a AwsEbsEncryptionByDefaultInformer.
-func (v *version) AwsEbsEncryptionByDefaults() AwsEbsEncryptionByDefaultInformer {
-	return &awsEbsEncryptionByDefaultInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EbsEncryptionByDefaults returns a EbsEncryptionByDefaultInformer.
+func (v *version) EbsEncryptionByDefaults() EbsEncryptionByDefaultInformer {
+	return &ebsEncryptionByDefaultInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEbsSnapshots returns a AwsEbsSnapshotInformer.
-func (v *version) AwsEbsSnapshots() AwsEbsSnapshotInformer {
-	return &awsEbsSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EbsSnapshots returns a EbsSnapshotInformer.
+func (v *version) EbsSnapshots() EbsSnapshotInformer {
+	return &ebsSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEbsSnapshotCopies returns a AwsEbsSnapshotCopyInformer.
-func (v *version) AwsEbsSnapshotCopies() AwsEbsSnapshotCopyInformer {
-	return &awsEbsSnapshotCopyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EbsSnapshotCopies returns a EbsSnapshotCopyInformer.
+func (v *version) EbsSnapshotCopies() EbsSnapshotCopyInformer {
+	return &ebsSnapshotCopyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEbsVolumes returns a AwsEbsVolumeInformer.
-func (v *version) AwsEbsVolumes() AwsEbsVolumeInformer {
-	return &awsEbsVolumeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EbsVolumes returns a EbsVolumeInformer.
+func (v *version) EbsVolumes() EbsVolumeInformer {
+	return &ebsVolumeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEc2CapacityReservations returns a AwsEc2CapacityReservationInformer.
-func (v *version) AwsEc2CapacityReservations() AwsEc2CapacityReservationInformer {
-	return &awsEc2CapacityReservationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Ec2CapacityReservations returns a Ec2CapacityReservationInformer.
+func (v *version) Ec2CapacityReservations() Ec2CapacityReservationInformer {
+	return &ec2CapacityReservationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEc2ClientVpnEndpoints returns a AwsEc2ClientVpnEndpointInformer.
-func (v *version) AwsEc2ClientVpnEndpoints() AwsEc2ClientVpnEndpointInformer {
-	return &awsEc2ClientVpnEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Ec2ClientVpnEndpoints returns a Ec2ClientVpnEndpointInformer.
+func (v *version) Ec2ClientVpnEndpoints() Ec2ClientVpnEndpointInformer {
+	return &ec2ClientVpnEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEc2ClientVpnNetworkAssociations returns a AwsEc2ClientVpnNetworkAssociationInformer.
-func (v *version) AwsEc2ClientVpnNetworkAssociations() AwsEc2ClientVpnNetworkAssociationInformer {
-	return &awsEc2ClientVpnNetworkAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Ec2ClientVpnNetworkAssociations returns a Ec2ClientVpnNetworkAssociationInformer.
+func (v *version) Ec2ClientVpnNetworkAssociations() Ec2ClientVpnNetworkAssociationInformer {
+	return &ec2ClientVpnNetworkAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEc2Fleets returns a AwsEc2FleetInformer.
-func (v *version) AwsEc2Fleets() AwsEc2FleetInformer {
-	return &awsEc2FleetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Ec2Fleets returns a Ec2FleetInformer.
+func (v *version) Ec2Fleets() Ec2FleetInformer {
+	return &ec2FleetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEc2TransitGateways returns a AwsEc2TransitGatewayInformer.
-func (v *version) AwsEc2TransitGateways() AwsEc2TransitGatewayInformer {
-	return &awsEc2TransitGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Ec2TransitGateways returns a Ec2TransitGatewayInformer.
+func (v *version) Ec2TransitGateways() Ec2TransitGatewayInformer {
+	return &ec2TransitGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEc2TransitGatewayRoutes returns a AwsEc2TransitGatewayRouteInformer.
-func (v *version) AwsEc2TransitGatewayRoutes() AwsEc2TransitGatewayRouteInformer {
-	return &awsEc2TransitGatewayRouteInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Ec2TransitGatewayRoutes returns a Ec2TransitGatewayRouteInformer.
+func (v *version) Ec2TransitGatewayRoutes() Ec2TransitGatewayRouteInformer {
+	return &ec2TransitGatewayRouteInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEc2TransitGatewayRouteTables returns a AwsEc2TransitGatewayRouteTableInformer.
-func (v *version) AwsEc2TransitGatewayRouteTables() AwsEc2TransitGatewayRouteTableInformer {
-	return &awsEc2TransitGatewayRouteTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Ec2TransitGatewayRouteTables returns a Ec2TransitGatewayRouteTableInformer.
+func (v *version) Ec2TransitGatewayRouteTables() Ec2TransitGatewayRouteTableInformer {
+	return &ec2TransitGatewayRouteTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEc2TransitGatewayRouteTableAssociations returns a AwsEc2TransitGatewayRouteTableAssociationInformer.
-func (v *version) AwsEc2TransitGatewayRouteTableAssociations() AwsEc2TransitGatewayRouteTableAssociationInformer {
-	return &awsEc2TransitGatewayRouteTableAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Ec2TransitGatewayRouteTableAssociations returns a Ec2TransitGatewayRouteTableAssociationInformer.
+func (v *version) Ec2TransitGatewayRouteTableAssociations() Ec2TransitGatewayRouteTableAssociationInformer {
+	return &ec2TransitGatewayRouteTableAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEc2TransitGatewayRouteTablePropagations returns a AwsEc2TransitGatewayRouteTablePropagationInformer.
-func (v *version) AwsEc2TransitGatewayRouteTablePropagations() AwsEc2TransitGatewayRouteTablePropagationInformer {
-	return &awsEc2TransitGatewayRouteTablePropagationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Ec2TransitGatewayRouteTablePropagations returns a Ec2TransitGatewayRouteTablePropagationInformer.
+func (v *version) Ec2TransitGatewayRouteTablePropagations() Ec2TransitGatewayRouteTablePropagationInformer {
+	return &ec2TransitGatewayRouteTablePropagationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEc2TransitGatewayVpcAttachments returns a AwsEc2TransitGatewayVpcAttachmentInformer.
-func (v *version) AwsEc2TransitGatewayVpcAttachments() AwsEc2TransitGatewayVpcAttachmentInformer {
-	return &awsEc2TransitGatewayVpcAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Ec2TransitGatewayVpcAttachments returns a Ec2TransitGatewayVpcAttachmentInformer.
+func (v *version) Ec2TransitGatewayVpcAttachments() Ec2TransitGatewayVpcAttachmentInformer {
+	return &ec2TransitGatewayVpcAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEc2TransitGatewayVpcAttachmentAccepters returns a AwsEc2TransitGatewayVpcAttachmentAccepterInformer.
-func (v *version) AwsEc2TransitGatewayVpcAttachmentAccepters() AwsEc2TransitGatewayVpcAttachmentAccepterInformer {
-	return &awsEc2TransitGatewayVpcAttachmentAccepterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Ec2TransitGatewayVpcAttachmentAccepters returns a Ec2TransitGatewayVpcAttachmentAccepterInformer.
+func (v *version) Ec2TransitGatewayVpcAttachmentAccepters() Ec2TransitGatewayVpcAttachmentAccepterInformer {
+	return &ec2TransitGatewayVpcAttachmentAccepterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEcrLifecyclePolicies returns a AwsEcrLifecyclePolicyInformer.
-func (v *version) AwsEcrLifecyclePolicies() AwsEcrLifecyclePolicyInformer {
-	return &awsEcrLifecyclePolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EcrLifecyclePolicies returns a EcrLifecyclePolicyInformer.
+func (v *version) EcrLifecyclePolicies() EcrLifecyclePolicyInformer {
+	return &ecrLifecyclePolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEcrRepositories returns a AwsEcrRepositoryInformer.
-func (v *version) AwsEcrRepositories() AwsEcrRepositoryInformer {
-	return &awsEcrRepositoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EcrRepositories returns a EcrRepositoryInformer.
+func (v *version) EcrRepositories() EcrRepositoryInformer {
+	return &ecrRepositoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEcrRepositoryPolicies returns a AwsEcrRepositoryPolicyInformer.
-func (v *version) AwsEcrRepositoryPolicies() AwsEcrRepositoryPolicyInformer {
-	return &awsEcrRepositoryPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EcrRepositoryPolicies returns a EcrRepositoryPolicyInformer.
+func (v *version) EcrRepositoryPolicies() EcrRepositoryPolicyInformer {
+	return &ecrRepositoryPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEcsClusters returns a AwsEcsClusterInformer.
-func (v *version) AwsEcsClusters() AwsEcsClusterInformer {
-	return &awsEcsClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EcsClusters returns a EcsClusterInformer.
+func (v *version) EcsClusters() EcsClusterInformer {
+	return &ecsClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEcsServices returns a AwsEcsServiceInformer.
-func (v *version) AwsEcsServices() AwsEcsServiceInformer {
-	return &awsEcsServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EcsServices returns a EcsServiceInformer.
+func (v *version) EcsServices() EcsServiceInformer {
+	return &ecsServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEcsTaskDefinitions returns a AwsEcsTaskDefinitionInformer.
-func (v *version) AwsEcsTaskDefinitions() AwsEcsTaskDefinitionInformer {
-	return &awsEcsTaskDefinitionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EcsTaskDefinitions returns a EcsTaskDefinitionInformer.
+func (v *version) EcsTaskDefinitions() EcsTaskDefinitionInformer {
+	return &ecsTaskDefinitionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEfsFileSystems returns a AwsEfsFileSystemInformer.
-func (v *version) AwsEfsFileSystems() AwsEfsFileSystemInformer {
-	return &awsEfsFileSystemInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EfsFileSystems returns a EfsFileSystemInformer.
+func (v *version) EfsFileSystems() EfsFileSystemInformer {
+	return &efsFileSystemInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEfsMountTargets returns a AwsEfsMountTargetInformer.
-func (v *version) AwsEfsMountTargets() AwsEfsMountTargetInformer {
-	return &awsEfsMountTargetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EfsMountTargets returns a EfsMountTargetInformer.
+func (v *version) EfsMountTargets() EfsMountTargetInformer {
+	return &efsMountTargetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEgressOnlyInternetGateways returns a AwsEgressOnlyInternetGatewayInformer.
-func (v *version) AwsEgressOnlyInternetGateways() AwsEgressOnlyInternetGatewayInformer {
-	return &awsEgressOnlyInternetGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EgressOnlyInternetGateways returns a EgressOnlyInternetGatewayInformer.
+func (v *version) EgressOnlyInternetGateways() EgressOnlyInternetGatewayInformer {
+	return &egressOnlyInternetGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEips returns a AwsEipInformer.
-func (v *version) AwsEips() AwsEipInformer {
-	return &awsEipInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Eips returns a EipInformer.
+func (v *version) Eips() EipInformer {
+	return &eipInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEipAssociations returns a AwsEipAssociationInformer.
-func (v *version) AwsEipAssociations() AwsEipAssociationInformer {
-	return &awsEipAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EipAssociations returns a EipAssociationInformer.
+func (v *version) EipAssociations() EipAssociationInformer {
+	return &eipAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEksClusters returns a AwsEksClusterInformer.
-func (v *version) AwsEksClusters() AwsEksClusterInformer {
-	return &awsEksClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EksClusters returns a EksClusterInformer.
+func (v *version) EksClusters() EksClusterInformer {
+	return &eksClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElasticBeanstalkApplications returns a AwsElasticBeanstalkApplicationInformer.
-func (v *version) AwsElasticBeanstalkApplications() AwsElasticBeanstalkApplicationInformer {
-	return &awsElasticBeanstalkApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElasticBeanstalkApplications returns a ElasticBeanstalkApplicationInformer.
+func (v *version) ElasticBeanstalkApplications() ElasticBeanstalkApplicationInformer {
+	return &elasticBeanstalkApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElasticBeanstalkApplicationVersions returns a AwsElasticBeanstalkApplicationVersionInformer.
-func (v *version) AwsElasticBeanstalkApplicationVersions() AwsElasticBeanstalkApplicationVersionInformer {
-	return &awsElasticBeanstalkApplicationVersionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElasticBeanstalkApplicationVersions returns a ElasticBeanstalkApplicationVersionInformer.
+func (v *version) ElasticBeanstalkApplicationVersions() ElasticBeanstalkApplicationVersionInformer {
+	return &elasticBeanstalkApplicationVersionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElasticBeanstalkConfigurationTemplates returns a AwsElasticBeanstalkConfigurationTemplateInformer.
-func (v *version) AwsElasticBeanstalkConfigurationTemplates() AwsElasticBeanstalkConfigurationTemplateInformer {
-	return &awsElasticBeanstalkConfigurationTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElasticBeanstalkConfigurationTemplates returns a ElasticBeanstalkConfigurationTemplateInformer.
+func (v *version) ElasticBeanstalkConfigurationTemplates() ElasticBeanstalkConfigurationTemplateInformer {
+	return &elasticBeanstalkConfigurationTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElasticBeanstalkEnvironments returns a AwsElasticBeanstalkEnvironmentInformer.
-func (v *version) AwsElasticBeanstalkEnvironments() AwsElasticBeanstalkEnvironmentInformer {
-	return &awsElasticBeanstalkEnvironmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElasticBeanstalkEnvironments returns a ElasticBeanstalkEnvironmentInformer.
+func (v *version) ElasticBeanstalkEnvironments() ElasticBeanstalkEnvironmentInformer {
+	return &elasticBeanstalkEnvironmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElasticacheClusters returns a AwsElasticacheClusterInformer.
-func (v *version) AwsElasticacheClusters() AwsElasticacheClusterInformer {
-	return &awsElasticacheClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElasticacheClusters returns a ElasticacheClusterInformer.
+func (v *version) ElasticacheClusters() ElasticacheClusterInformer {
+	return &elasticacheClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElasticacheParameterGroups returns a AwsElasticacheParameterGroupInformer.
-func (v *version) AwsElasticacheParameterGroups() AwsElasticacheParameterGroupInformer {
-	return &awsElasticacheParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElasticacheParameterGroups returns a ElasticacheParameterGroupInformer.
+func (v *version) ElasticacheParameterGroups() ElasticacheParameterGroupInformer {
+	return &elasticacheParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElasticacheReplicationGroups returns a AwsElasticacheReplicationGroupInformer.
-func (v *version) AwsElasticacheReplicationGroups() AwsElasticacheReplicationGroupInformer {
-	return &awsElasticacheReplicationGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElasticacheReplicationGroups returns a ElasticacheReplicationGroupInformer.
+func (v *version) ElasticacheReplicationGroups() ElasticacheReplicationGroupInformer {
+	return &elasticacheReplicationGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElasticacheSecurityGroups returns a AwsElasticacheSecurityGroupInformer.
-func (v *version) AwsElasticacheSecurityGroups() AwsElasticacheSecurityGroupInformer {
-	return &awsElasticacheSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElasticacheSecurityGroups returns a ElasticacheSecurityGroupInformer.
+func (v *version) ElasticacheSecurityGroups() ElasticacheSecurityGroupInformer {
+	return &elasticacheSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElasticacheSubnetGroups returns a AwsElasticacheSubnetGroupInformer.
-func (v *version) AwsElasticacheSubnetGroups() AwsElasticacheSubnetGroupInformer {
-	return &awsElasticacheSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElasticacheSubnetGroups returns a ElasticacheSubnetGroupInformer.
+func (v *version) ElasticacheSubnetGroups() ElasticacheSubnetGroupInformer {
+	return &elasticacheSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElasticsearchDomains returns a AwsElasticsearchDomainInformer.
-func (v *version) AwsElasticsearchDomains() AwsElasticsearchDomainInformer {
-	return &awsElasticsearchDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElasticsearchDomains returns a ElasticsearchDomainInformer.
+func (v *version) ElasticsearchDomains() ElasticsearchDomainInformer {
+	return &elasticsearchDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElasticsearchDomainPolicies returns a AwsElasticsearchDomainPolicyInformer.
-func (v *version) AwsElasticsearchDomainPolicies() AwsElasticsearchDomainPolicyInformer {
-	return &awsElasticsearchDomainPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElasticsearchDomainPolicies returns a ElasticsearchDomainPolicyInformer.
+func (v *version) ElasticsearchDomainPolicies() ElasticsearchDomainPolicyInformer {
+	return &elasticsearchDomainPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElastictranscoderPipelines returns a AwsElastictranscoderPipelineInformer.
-func (v *version) AwsElastictranscoderPipelines() AwsElastictranscoderPipelineInformer {
-	return &awsElastictranscoderPipelineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElastictranscoderPipelines returns a ElastictranscoderPipelineInformer.
+func (v *version) ElastictranscoderPipelines() ElastictranscoderPipelineInformer {
+	return &elastictranscoderPipelineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElastictranscoderPresets returns a AwsElastictranscoderPresetInformer.
-func (v *version) AwsElastictranscoderPresets() AwsElastictranscoderPresetInformer {
-	return &awsElastictranscoderPresetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElastictranscoderPresets returns a ElastictranscoderPresetInformer.
+func (v *version) ElastictranscoderPresets() ElastictranscoderPresetInformer {
+	return &elastictranscoderPresetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElbs returns a AwsElbInformer.
-func (v *version) AwsElbs() AwsElbInformer {
-	return &awsElbInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Elbs returns a ElbInformer.
+func (v *version) Elbs() ElbInformer {
+	return &elbInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsElbAttachments returns a AwsElbAttachmentInformer.
-func (v *version) AwsElbAttachments() AwsElbAttachmentInformer {
-	return &awsElbAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ElbAttachments returns a ElbAttachmentInformer.
+func (v *version) ElbAttachments() ElbAttachmentInformer {
+	return &elbAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEmrClusters returns a AwsEmrClusterInformer.
-func (v *version) AwsEmrClusters() AwsEmrClusterInformer {
-	return &awsEmrClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EmrClusters returns a EmrClusterInformer.
+func (v *version) EmrClusters() EmrClusterInformer {
+	return &emrClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEmrInstanceGroups returns a AwsEmrInstanceGroupInformer.
-func (v *version) AwsEmrInstanceGroups() AwsEmrInstanceGroupInformer {
-	return &awsEmrInstanceGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EmrInstanceGroups returns a EmrInstanceGroupInformer.
+func (v *version) EmrInstanceGroups() EmrInstanceGroupInformer {
+	return &emrInstanceGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsEmrSecurityConfigurations returns a AwsEmrSecurityConfigurationInformer.
-func (v *version) AwsEmrSecurityConfigurations() AwsEmrSecurityConfigurationInformer {
-	return &awsEmrSecurityConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// EmrSecurityConfigurations returns a EmrSecurityConfigurationInformer.
+func (v *version) EmrSecurityConfigurations() EmrSecurityConfigurationInformer {
+	return &emrSecurityConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsFlowLogs returns a AwsFlowLogInformer.
-func (v *version) AwsFlowLogs() AwsFlowLogInformer {
-	return &awsFlowLogInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// FlowLogs returns a FlowLogInformer.
+func (v *version) FlowLogs() FlowLogInformer {
+	return &flowLogInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGameliftAliases returns a AwsGameliftAliasInformer.
-func (v *version) AwsGameliftAliases() AwsGameliftAliasInformer {
-	return &awsGameliftAliasInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GameliftAliases returns a GameliftAliasInformer.
+func (v *version) GameliftAliases() GameliftAliasInformer {
+	return &gameliftAliasInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGameliftBuilds returns a AwsGameliftBuildInformer.
-func (v *version) AwsGameliftBuilds() AwsGameliftBuildInformer {
-	return &awsGameliftBuildInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GameliftBuilds returns a GameliftBuildInformer.
+func (v *version) GameliftBuilds() GameliftBuildInformer {
+	return &gameliftBuildInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGameliftFleets returns a AwsGameliftFleetInformer.
-func (v *version) AwsGameliftFleets() AwsGameliftFleetInformer {
-	return &awsGameliftFleetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GameliftFleets returns a GameliftFleetInformer.
+func (v *version) GameliftFleets() GameliftFleetInformer {
+	return &gameliftFleetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGameliftGameSessionQueues returns a AwsGameliftGameSessionQueueInformer.
-func (v *version) AwsGameliftGameSessionQueues() AwsGameliftGameSessionQueueInformer {
-	return &awsGameliftGameSessionQueueInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GameliftGameSessionQueues returns a GameliftGameSessionQueueInformer.
+func (v *version) GameliftGameSessionQueues() GameliftGameSessionQueueInformer {
+	return &gameliftGameSessionQueueInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlacierVaults returns a AwsGlacierVaultInformer.
-func (v *version) AwsGlacierVaults() AwsGlacierVaultInformer {
-	return &awsGlacierVaultInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlacierVaults returns a GlacierVaultInformer.
+func (v *version) GlacierVaults() GlacierVaultInformer {
+	return &glacierVaultInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlacierVaultLocks returns a AwsGlacierVaultLockInformer.
-func (v *version) AwsGlacierVaultLocks() AwsGlacierVaultLockInformer {
-	return &awsGlacierVaultLockInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlacierVaultLocks returns a GlacierVaultLockInformer.
+func (v *version) GlacierVaultLocks() GlacierVaultLockInformer {
+	return &glacierVaultLockInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlobalacceleratorAccelerators returns a AwsGlobalacceleratorAcceleratorInformer.
-func (v *version) AwsGlobalacceleratorAccelerators() AwsGlobalacceleratorAcceleratorInformer {
-	return &awsGlobalacceleratorAcceleratorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlobalacceleratorAccelerators returns a GlobalacceleratorAcceleratorInformer.
+func (v *version) GlobalacceleratorAccelerators() GlobalacceleratorAcceleratorInformer {
+	return &globalacceleratorAcceleratorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlobalacceleratorEndpointGroups returns a AwsGlobalacceleratorEndpointGroupInformer.
-func (v *version) AwsGlobalacceleratorEndpointGroups() AwsGlobalacceleratorEndpointGroupInformer {
-	return &awsGlobalacceleratorEndpointGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlobalacceleratorEndpointGroups returns a GlobalacceleratorEndpointGroupInformer.
+func (v *version) GlobalacceleratorEndpointGroups() GlobalacceleratorEndpointGroupInformer {
+	return &globalacceleratorEndpointGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlobalacceleratorListeners returns a AwsGlobalacceleratorListenerInformer.
-func (v *version) AwsGlobalacceleratorListeners() AwsGlobalacceleratorListenerInformer {
-	return &awsGlobalacceleratorListenerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlobalacceleratorListeners returns a GlobalacceleratorListenerInformer.
+func (v *version) GlobalacceleratorListeners() GlobalacceleratorListenerInformer {
+	return &globalacceleratorListenerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlueCatalogDatabases returns a AwsGlueCatalogDatabaseInformer.
-func (v *version) AwsGlueCatalogDatabases() AwsGlueCatalogDatabaseInformer {
-	return &awsGlueCatalogDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlueCatalogDatabases returns a GlueCatalogDatabaseInformer.
+func (v *version) GlueCatalogDatabases() GlueCatalogDatabaseInformer {
+	return &glueCatalogDatabaseInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlueCatalogTables returns a AwsGlueCatalogTableInformer.
-func (v *version) AwsGlueCatalogTables() AwsGlueCatalogTableInformer {
-	return &awsGlueCatalogTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlueCatalogTables returns a GlueCatalogTableInformer.
+func (v *version) GlueCatalogTables() GlueCatalogTableInformer {
+	return &glueCatalogTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlueClassifiers returns a AwsGlueClassifierInformer.
-func (v *version) AwsGlueClassifiers() AwsGlueClassifierInformer {
-	return &awsGlueClassifierInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlueClassifiers returns a GlueClassifierInformer.
+func (v *version) GlueClassifiers() GlueClassifierInformer {
+	return &glueClassifierInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlueConnections returns a AwsGlueConnectionInformer.
-func (v *version) AwsGlueConnections() AwsGlueConnectionInformer {
-	return &awsGlueConnectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlueConnections returns a GlueConnectionInformer.
+func (v *version) GlueConnections() GlueConnectionInformer {
+	return &glueConnectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlueCrawlers returns a AwsGlueCrawlerInformer.
-func (v *version) AwsGlueCrawlers() AwsGlueCrawlerInformer {
-	return &awsGlueCrawlerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlueCrawlers returns a GlueCrawlerInformer.
+func (v *version) GlueCrawlers() GlueCrawlerInformer {
+	return &glueCrawlerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlueJobs returns a AwsGlueJobInformer.
-func (v *version) AwsGlueJobs() AwsGlueJobInformer {
-	return &awsGlueJobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlueJobs returns a GlueJobInformer.
+func (v *version) GlueJobs() GlueJobInformer {
+	return &glueJobInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlueSecurityConfigurations returns a AwsGlueSecurityConfigurationInformer.
-func (v *version) AwsGlueSecurityConfigurations() AwsGlueSecurityConfigurationInformer {
-	return &awsGlueSecurityConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlueSecurityConfigurations returns a GlueSecurityConfigurationInformer.
+func (v *version) GlueSecurityConfigurations() GlueSecurityConfigurationInformer {
+	return &glueSecurityConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGlueTriggers returns a AwsGlueTriggerInformer.
-func (v *version) AwsGlueTriggers() AwsGlueTriggerInformer {
-	return &awsGlueTriggerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GlueTriggers returns a GlueTriggerInformer.
+func (v *version) GlueTriggers() GlueTriggerInformer {
+	return &glueTriggerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGuarddutyDetectors returns a AwsGuarddutyDetectorInformer.
-func (v *version) AwsGuarddutyDetectors() AwsGuarddutyDetectorInformer {
-	return &awsGuarddutyDetectorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GuarddutyDetectors returns a GuarddutyDetectorInformer.
+func (v *version) GuarddutyDetectors() GuarddutyDetectorInformer {
+	return &guarddutyDetectorInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGuarddutyInviteAccepters returns a AwsGuarddutyInviteAccepterInformer.
-func (v *version) AwsGuarddutyInviteAccepters() AwsGuarddutyInviteAccepterInformer {
-	return &awsGuarddutyInviteAccepterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GuarddutyInviteAccepters returns a GuarddutyInviteAccepterInformer.
+func (v *version) GuarddutyInviteAccepters() GuarddutyInviteAccepterInformer {
+	return &guarddutyInviteAccepterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGuarddutyIpsets returns a AwsGuarddutyIpsetInformer.
-func (v *version) AwsGuarddutyIpsets() AwsGuarddutyIpsetInformer {
-	return &awsGuarddutyIpsetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GuarddutyIpsets returns a GuarddutyIpsetInformer.
+func (v *version) GuarddutyIpsets() GuarddutyIpsetInformer {
+	return &guarddutyIpsetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGuarddutyMembers returns a AwsGuarddutyMemberInformer.
-func (v *version) AwsGuarddutyMembers() AwsGuarddutyMemberInformer {
-	return &awsGuarddutyMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GuarddutyMembers returns a GuarddutyMemberInformer.
+func (v *version) GuarddutyMembers() GuarddutyMemberInformer {
+	return &guarddutyMemberInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsGuarddutyThreatintelsets returns a AwsGuarddutyThreatintelsetInformer.
-func (v *version) AwsGuarddutyThreatintelsets() AwsGuarddutyThreatintelsetInformer {
-	return &awsGuarddutyThreatintelsetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// GuarddutyThreatintelsets returns a GuarddutyThreatintelsetInformer.
+func (v *version) GuarddutyThreatintelsets() GuarddutyThreatintelsetInformer {
+	return &guarddutyThreatintelsetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamAccessKeys returns a AwsIamAccessKeyInformer.
-func (v *version) AwsIamAccessKeys() AwsIamAccessKeyInformer {
-	return &awsIamAccessKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamAccessKeys returns a IamAccessKeyInformer.
+func (v *version) IamAccessKeys() IamAccessKeyInformer {
+	return &iamAccessKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamAccountAliases returns a AwsIamAccountAliasInformer.
-func (v *version) AwsIamAccountAliases() AwsIamAccountAliasInformer {
-	return &awsIamAccountAliasInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamAccountAliases returns a IamAccountAliasInformer.
+func (v *version) IamAccountAliases() IamAccountAliasInformer {
+	return &iamAccountAliasInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamAccountPasswordPolicies returns a AwsIamAccountPasswordPolicyInformer.
-func (v *version) AwsIamAccountPasswordPolicies() AwsIamAccountPasswordPolicyInformer {
-	return &awsIamAccountPasswordPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamAccountPasswordPolicies returns a IamAccountPasswordPolicyInformer.
+func (v *version) IamAccountPasswordPolicies() IamAccountPasswordPolicyInformer {
+	return &iamAccountPasswordPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamGroups returns a AwsIamGroupInformer.
-func (v *version) AwsIamGroups() AwsIamGroupInformer {
-	return &awsIamGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamGroups returns a IamGroupInformer.
+func (v *version) IamGroups() IamGroupInformer {
+	return &iamGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamGroupMemberships returns a AwsIamGroupMembershipInformer.
-func (v *version) AwsIamGroupMemberships() AwsIamGroupMembershipInformer {
-	return &awsIamGroupMembershipInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamGroupMemberships returns a IamGroupMembershipInformer.
+func (v *version) IamGroupMemberships() IamGroupMembershipInformer {
+	return &iamGroupMembershipInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamGroupPolicies returns a AwsIamGroupPolicyInformer.
-func (v *version) AwsIamGroupPolicies() AwsIamGroupPolicyInformer {
-	return &awsIamGroupPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamGroupPolicies returns a IamGroupPolicyInformer.
+func (v *version) IamGroupPolicies() IamGroupPolicyInformer {
+	return &iamGroupPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamGroupPolicyAttachments returns a AwsIamGroupPolicyAttachmentInformer.
-func (v *version) AwsIamGroupPolicyAttachments() AwsIamGroupPolicyAttachmentInformer {
-	return &awsIamGroupPolicyAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamGroupPolicyAttachments returns a IamGroupPolicyAttachmentInformer.
+func (v *version) IamGroupPolicyAttachments() IamGroupPolicyAttachmentInformer {
+	return &iamGroupPolicyAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamInstanceProfiles returns a AwsIamInstanceProfileInformer.
-func (v *version) AwsIamInstanceProfiles() AwsIamInstanceProfileInformer {
-	return &awsIamInstanceProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamInstanceProfiles returns a IamInstanceProfileInformer.
+func (v *version) IamInstanceProfiles() IamInstanceProfileInformer {
+	return &iamInstanceProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamOpenidConnectProviders returns a AwsIamOpenidConnectProviderInformer.
-func (v *version) AwsIamOpenidConnectProviders() AwsIamOpenidConnectProviderInformer {
-	return &awsIamOpenidConnectProviderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamOpenidConnectProviders returns a IamOpenidConnectProviderInformer.
+func (v *version) IamOpenidConnectProviders() IamOpenidConnectProviderInformer {
+	return &iamOpenidConnectProviderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamPolicies returns a AwsIamPolicyInformer.
-func (v *version) AwsIamPolicies() AwsIamPolicyInformer {
-	return &awsIamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamPolicies returns a IamPolicyInformer.
+func (v *version) IamPolicies() IamPolicyInformer {
+	return &iamPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamPolicyAttachments returns a AwsIamPolicyAttachmentInformer.
-func (v *version) AwsIamPolicyAttachments() AwsIamPolicyAttachmentInformer {
-	return &awsIamPolicyAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamPolicyAttachments returns a IamPolicyAttachmentInformer.
+func (v *version) IamPolicyAttachments() IamPolicyAttachmentInformer {
+	return &iamPolicyAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamRoles returns a AwsIamRoleInformer.
-func (v *version) AwsIamRoles() AwsIamRoleInformer {
-	return &awsIamRoleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamRoles returns a IamRoleInformer.
+func (v *version) IamRoles() IamRoleInformer {
+	return &iamRoleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamRolePolicies returns a AwsIamRolePolicyInformer.
-func (v *version) AwsIamRolePolicies() AwsIamRolePolicyInformer {
-	return &awsIamRolePolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamRolePolicies returns a IamRolePolicyInformer.
+func (v *version) IamRolePolicies() IamRolePolicyInformer {
+	return &iamRolePolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamRolePolicyAttachments returns a AwsIamRolePolicyAttachmentInformer.
-func (v *version) AwsIamRolePolicyAttachments() AwsIamRolePolicyAttachmentInformer {
-	return &awsIamRolePolicyAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamRolePolicyAttachments returns a IamRolePolicyAttachmentInformer.
+func (v *version) IamRolePolicyAttachments() IamRolePolicyAttachmentInformer {
+	return &iamRolePolicyAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamSamlProviders returns a AwsIamSamlProviderInformer.
-func (v *version) AwsIamSamlProviders() AwsIamSamlProviderInformer {
-	return &awsIamSamlProviderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamSamlProviders returns a IamSamlProviderInformer.
+func (v *version) IamSamlProviders() IamSamlProviderInformer {
+	return &iamSamlProviderInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamServerCertificates returns a AwsIamServerCertificateInformer.
-func (v *version) AwsIamServerCertificates() AwsIamServerCertificateInformer {
-	return &awsIamServerCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamServerCertificates returns a IamServerCertificateInformer.
+func (v *version) IamServerCertificates() IamServerCertificateInformer {
+	return &iamServerCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamServiceLinkedRoles returns a AwsIamServiceLinkedRoleInformer.
-func (v *version) AwsIamServiceLinkedRoles() AwsIamServiceLinkedRoleInformer {
-	return &awsIamServiceLinkedRoleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamServiceLinkedRoles returns a IamServiceLinkedRoleInformer.
+func (v *version) IamServiceLinkedRoles() IamServiceLinkedRoleInformer {
+	return &iamServiceLinkedRoleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamUsers returns a AwsIamUserInformer.
-func (v *version) AwsIamUsers() AwsIamUserInformer {
-	return &awsIamUserInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamUsers returns a IamUserInformer.
+func (v *version) IamUsers() IamUserInformer {
+	return &iamUserInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamUserGroupMemberships returns a AwsIamUserGroupMembershipInformer.
-func (v *version) AwsIamUserGroupMemberships() AwsIamUserGroupMembershipInformer {
-	return &awsIamUserGroupMembershipInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamUserGroupMemberships returns a IamUserGroupMembershipInformer.
+func (v *version) IamUserGroupMemberships() IamUserGroupMembershipInformer {
+	return &iamUserGroupMembershipInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamUserLoginProfiles returns a AwsIamUserLoginProfileInformer.
-func (v *version) AwsIamUserLoginProfiles() AwsIamUserLoginProfileInformer {
-	return &awsIamUserLoginProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamUserLoginProfiles returns a IamUserLoginProfileInformer.
+func (v *version) IamUserLoginProfiles() IamUserLoginProfileInformer {
+	return &iamUserLoginProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamUserPolicies returns a AwsIamUserPolicyInformer.
-func (v *version) AwsIamUserPolicies() AwsIamUserPolicyInformer {
-	return &awsIamUserPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamUserPolicies returns a IamUserPolicyInformer.
+func (v *version) IamUserPolicies() IamUserPolicyInformer {
+	return &iamUserPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamUserPolicyAttachments returns a AwsIamUserPolicyAttachmentInformer.
-func (v *version) AwsIamUserPolicyAttachments() AwsIamUserPolicyAttachmentInformer {
-	return &awsIamUserPolicyAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamUserPolicyAttachments returns a IamUserPolicyAttachmentInformer.
+func (v *version) IamUserPolicyAttachments() IamUserPolicyAttachmentInformer {
+	return &iamUserPolicyAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIamUserSshKeys returns a AwsIamUserSshKeyInformer.
-func (v *version) AwsIamUserSshKeys() AwsIamUserSshKeyInformer {
-	return &awsIamUserSshKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IamUserSshKeys returns a IamUserSshKeyInformer.
+func (v *version) IamUserSshKeys() IamUserSshKeyInformer {
+	return &iamUserSshKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsInspectorAssessmentTargets returns a AwsInspectorAssessmentTargetInformer.
-func (v *version) AwsInspectorAssessmentTargets() AwsInspectorAssessmentTargetInformer {
-	return &awsInspectorAssessmentTargetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// InspectorAssessmentTargets returns a InspectorAssessmentTargetInformer.
+func (v *version) InspectorAssessmentTargets() InspectorAssessmentTargetInformer {
+	return &inspectorAssessmentTargetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsInspectorAssessmentTemplates returns a AwsInspectorAssessmentTemplateInformer.
-func (v *version) AwsInspectorAssessmentTemplates() AwsInspectorAssessmentTemplateInformer {
-	return &awsInspectorAssessmentTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// InspectorAssessmentTemplates returns a InspectorAssessmentTemplateInformer.
+func (v *version) InspectorAssessmentTemplates() InspectorAssessmentTemplateInformer {
+	return &inspectorAssessmentTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsInspectorResourceGroups returns a AwsInspectorResourceGroupInformer.
-func (v *version) AwsInspectorResourceGroups() AwsInspectorResourceGroupInformer {
-	return &awsInspectorResourceGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// InspectorResourceGroups returns a InspectorResourceGroupInformer.
+func (v *version) InspectorResourceGroups() InspectorResourceGroupInformer {
+	return &inspectorResourceGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsInstances returns a AwsInstanceInformer.
-func (v *version) AwsInstances() AwsInstanceInformer {
-	return &awsInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Instances returns a InstanceInformer.
+func (v *version) Instances() InstanceInformer {
+	return &instanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsInternetGateways returns a AwsInternetGatewayInformer.
-func (v *version) AwsInternetGateways() AwsInternetGatewayInformer {
-	return &awsInternetGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// InternetGateways returns a InternetGatewayInformer.
+func (v *version) InternetGateways() InternetGatewayInformer {
+	return &internetGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIotCertificates returns a AwsIotCertificateInformer.
-func (v *version) AwsIotCertificates() AwsIotCertificateInformer {
-	return &awsIotCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IotCertificates returns a IotCertificateInformer.
+func (v *version) IotCertificates() IotCertificateInformer {
+	return &iotCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIotPolicies returns a AwsIotPolicyInformer.
-func (v *version) AwsIotPolicies() AwsIotPolicyInformer {
-	return &awsIotPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IotPolicies returns a IotPolicyInformer.
+func (v *version) IotPolicies() IotPolicyInformer {
+	return &iotPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIotPolicyAttachments returns a AwsIotPolicyAttachmentInformer.
-func (v *version) AwsIotPolicyAttachments() AwsIotPolicyAttachmentInformer {
-	return &awsIotPolicyAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IotPolicyAttachments returns a IotPolicyAttachmentInformer.
+func (v *version) IotPolicyAttachments() IotPolicyAttachmentInformer {
+	return &iotPolicyAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIotRoleAliases returns a AwsIotRoleAliasInformer.
-func (v *version) AwsIotRoleAliases() AwsIotRoleAliasInformer {
-	return &awsIotRoleAliasInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IotRoleAliases returns a IotRoleAliasInformer.
+func (v *version) IotRoleAliases() IotRoleAliasInformer {
+	return &iotRoleAliasInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIotThings returns a AwsIotThingInformer.
-func (v *version) AwsIotThings() AwsIotThingInformer {
-	return &awsIotThingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IotThings returns a IotThingInformer.
+func (v *version) IotThings() IotThingInformer {
+	return &iotThingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIotThingPrincipalAttachments returns a AwsIotThingPrincipalAttachmentInformer.
-func (v *version) AwsIotThingPrincipalAttachments() AwsIotThingPrincipalAttachmentInformer {
-	return &awsIotThingPrincipalAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IotThingPrincipalAttachments returns a IotThingPrincipalAttachmentInformer.
+func (v *version) IotThingPrincipalAttachments() IotThingPrincipalAttachmentInformer {
+	return &iotThingPrincipalAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIotThingTypes returns a AwsIotThingTypeInformer.
-func (v *version) AwsIotThingTypes() AwsIotThingTypeInformer {
-	return &awsIotThingTypeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IotThingTypes returns a IotThingTypeInformer.
+func (v *version) IotThingTypes() IotThingTypeInformer {
+	return &iotThingTypeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsIotTopicRules returns a AwsIotTopicRuleInformer.
-func (v *version) AwsIotTopicRules() AwsIotTopicRuleInformer {
-	return &awsIotTopicRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// IotTopicRules returns a IotTopicRuleInformer.
+func (v *version) IotTopicRules() IotTopicRuleInformer {
+	return &iotTopicRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsKeyPairs returns a AwsKeyPairInformer.
-func (v *version) AwsKeyPairs() AwsKeyPairInformer {
-	return &awsKeyPairInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KeyPairs returns a KeyPairInformer.
+func (v *version) KeyPairs() KeyPairInformer {
+	return &keyPairInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsKinesisAnalyticsApplications returns a AwsKinesisAnalyticsApplicationInformer.
-func (v *version) AwsKinesisAnalyticsApplications() AwsKinesisAnalyticsApplicationInformer {
-	return &awsKinesisAnalyticsApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KinesisAnalyticsApplications returns a KinesisAnalyticsApplicationInformer.
+func (v *version) KinesisAnalyticsApplications() KinesisAnalyticsApplicationInformer {
+	return &kinesisAnalyticsApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsKinesisFirehoseDeliveryStreams returns a AwsKinesisFirehoseDeliveryStreamInformer.
-func (v *version) AwsKinesisFirehoseDeliveryStreams() AwsKinesisFirehoseDeliveryStreamInformer {
-	return &awsKinesisFirehoseDeliveryStreamInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KinesisFirehoseDeliveryStreams returns a KinesisFirehoseDeliveryStreamInformer.
+func (v *version) KinesisFirehoseDeliveryStreams() KinesisFirehoseDeliveryStreamInformer {
+	return &kinesisFirehoseDeliveryStreamInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsKinesisStreams returns a AwsKinesisStreamInformer.
-func (v *version) AwsKinesisStreams() AwsKinesisStreamInformer {
-	return &awsKinesisStreamInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KinesisStreams returns a KinesisStreamInformer.
+func (v *version) KinesisStreams() KinesisStreamInformer {
+	return &kinesisStreamInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsKmsAliases returns a AwsKmsAliasInformer.
-func (v *version) AwsKmsAliases() AwsKmsAliasInformer {
-	return &awsKmsAliasInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KmsAliases returns a KmsAliasInformer.
+func (v *version) KmsAliases() KmsAliasInformer {
+	return &kmsAliasInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsKmsCiphertexts returns a AwsKmsCiphertextInformer.
-func (v *version) AwsKmsCiphertexts() AwsKmsCiphertextInformer {
-	return &awsKmsCiphertextInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KmsCiphertexts returns a KmsCiphertextInformer.
+func (v *version) KmsCiphertexts() KmsCiphertextInformer {
+	return &kmsCiphertextInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsKmsExternalKeys returns a AwsKmsExternalKeyInformer.
-func (v *version) AwsKmsExternalKeys() AwsKmsExternalKeyInformer {
-	return &awsKmsExternalKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KmsExternalKeys returns a KmsExternalKeyInformer.
+func (v *version) KmsExternalKeys() KmsExternalKeyInformer {
+	return &kmsExternalKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsKmsGrants returns a AwsKmsGrantInformer.
-func (v *version) AwsKmsGrants() AwsKmsGrantInformer {
-	return &awsKmsGrantInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KmsGrants returns a KmsGrantInformer.
+func (v *version) KmsGrants() KmsGrantInformer {
+	return &kmsGrantInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsKmsKeys returns a AwsKmsKeyInformer.
-func (v *version) AwsKmsKeys() AwsKmsKeyInformer {
-	return &awsKmsKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KmsKeys returns a KmsKeyInformer.
+func (v *version) KmsKeys() KmsKeyInformer {
+	return &kmsKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLambdaAliases returns a AwsLambdaAliasInformer.
-func (v *version) AwsLambdaAliases() AwsLambdaAliasInformer {
-	return &awsLambdaAliasInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LambdaAliases returns a LambdaAliasInformer.
+func (v *version) LambdaAliases() LambdaAliasInformer {
+	return &lambdaAliasInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLambdaEventSourceMappings returns a AwsLambdaEventSourceMappingInformer.
-func (v *version) AwsLambdaEventSourceMappings() AwsLambdaEventSourceMappingInformer {
-	return &awsLambdaEventSourceMappingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LambdaEventSourceMappings returns a LambdaEventSourceMappingInformer.
+func (v *version) LambdaEventSourceMappings() LambdaEventSourceMappingInformer {
+	return &lambdaEventSourceMappingInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLambdaFunctions returns a AwsLambdaFunctionInformer.
-func (v *version) AwsLambdaFunctions() AwsLambdaFunctionInformer {
-	return &awsLambdaFunctionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LambdaFunctions returns a LambdaFunctionInformer.
+func (v *version) LambdaFunctions() LambdaFunctionInformer {
+	return &lambdaFunctionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLambdaLayerVersions returns a AwsLambdaLayerVersionInformer.
-func (v *version) AwsLambdaLayerVersions() AwsLambdaLayerVersionInformer {
-	return &awsLambdaLayerVersionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LambdaLayerVersions returns a LambdaLayerVersionInformer.
+func (v *version) LambdaLayerVersions() LambdaLayerVersionInformer {
+	return &lambdaLayerVersionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLambdaPermissions returns a AwsLambdaPermissionInformer.
-func (v *version) AwsLambdaPermissions() AwsLambdaPermissionInformer {
-	return &awsLambdaPermissionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LambdaPermissions returns a LambdaPermissionInformer.
+func (v *version) LambdaPermissions() LambdaPermissionInformer {
+	return &lambdaPermissionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLaunchConfigurations returns a AwsLaunchConfigurationInformer.
-func (v *version) AwsLaunchConfigurations() AwsLaunchConfigurationInformer {
-	return &awsLaunchConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LaunchConfigurations returns a LaunchConfigurationInformer.
+func (v *version) LaunchConfigurations() LaunchConfigurationInformer {
+	return &launchConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLaunchTemplates returns a AwsLaunchTemplateInformer.
-func (v *version) AwsLaunchTemplates() AwsLaunchTemplateInformer {
-	return &awsLaunchTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LaunchTemplates returns a LaunchTemplateInformer.
+func (v *version) LaunchTemplates() LaunchTemplateInformer {
+	return &launchTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLbs returns a AwsLbInformer.
-func (v *version) AwsLbs() AwsLbInformer {
-	return &awsLbInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Lbs returns a LbInformer.
+func (v *version) Lbs() LbInformer {
+	return &lbInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLbCookieStickinessPolicies returns a AwsLbCookieStickinessPolicyInformer.
-func (v *version) AwsLbCookieStickinessPolicies() AwsLbCookieStickinessPolicyInformer {
-	return &awsLbCookieStickinessPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbCookieStickinessPolicies returns a LbCookieStickinessPolicyInformer.
+func (v *version) LbCookieStickinessPolicies() LbCookieStickinessPolicyInformer {
+	return &lbCookieStickinessPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLbListeners returns a AwsLbListenerInformer.
-func (v *version) AwsLbListeners() AwsLbListenerInformer {
-	return &awsLbListenerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbListeners returns a LbListenerInformer.
+func (v *version) LbListeners() LbListenerInformer {
+	return &lbListenerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLbListenerCertificates returns a AwsLbListenerCertificateInformer.
-func (v *version) AwsLbListenerCertificates() AwsLbListenerCertificateInformer {
-	return &awsLbListenerCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbListenerCertificates returns a LbListenerCertificateInformer.
+func (v *version) LbListenerCertificates() LbListenerCertificateInformer {
+	return &lbListenerCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLbListenerRules returns a AwsLbListenerRuleInformer.
-func (v *version) AwsLbListenerRules() AwsLbListenerRuleInformer {
-	return &awsLbListenerRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbListenerRules returns a LbListenerRuleInformer.
+func (v *version) LbListenerRules() LbListenerRuleInformer {
+	return &lbListenerRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLbSslNegotiationPolicies returns a AwsLbSslNegotiationPolicyInformer.
-func (v *version) AwsLbSslNegotiationPolicies() AwsLbSslNegotiationPolicyInformer {
-	return &awsLbSslNegotiationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbSslNegotiationPolicies returns a LbSslNegotiationPolicyInformer.
+func (v *version) LbSslNegotiationPolicies() LbSslNegotiationPolicyInformer {
+	return &lbSslNegotiationPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLbTargetGroups returns a AwsLbTargetGroupInformer.
-func (v *version) AwsLbTargetGroups() AwsLbTargetGroupInformer {
-	return &awsLbTargetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbTargetGroups returns a LbTargetGroupInformer.
+func (v *version) LbTargetGroups() LbTargetGroupInformer {
+	return &lbTargetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLbTargetGroupAttachments returns a AwsLbTargetGroupAttachmentInformer.
-func (v *version) AwsLbTargetGroupAttachments() AwsLbTargetGroupAttachmentInformer {
-	return &awsLbTargetGroupAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LbTargetGroupAttachments returns a LbTargetGroupAttachmentInformer.
+func (v *version) LbTargetGroupAttachments() LbTargetGroupAttachmentInformer {
+	return &lbTargetGroupAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLicensemanagerAssociations returns a AwsLicensemanagerAssociationInformer.
-func (v *version) AwsLicensemanagerAssociations() AwsLicensemanagerAssociationInformer {
-	return &awsLicensemanagerAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LicensemanagerAssociations returns a LicensemanagerAssociationInformer.
+func (v *version) LicensemanagerAssociations() LicensemanagerAssociationInformer {
+	return &licensemanagerAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLicensemanagerLicenseConfigurations returns a AwsLicensemanagerLicenseConfigurationInformer.
-func (v *version) AwsLicensemanagerLicenseConfigurations() AwsLicensemanagerLicenseConfigurationInformer {
-	return &awsLicensemanagerLicenseConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LicensemanagerLicenseConfigurations returns a LicensemanagerLicenseConfigurationInformer.
+func (v *version) LicensemanagerLicenseConfigurations() LicensemanagerLicenseConfigurationInformer {
+	return &licensemanagerLicenseConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLightsailDomains returns a AwsLightsailDomainInformer.
-func (v *version) AwsLightsailDomains() AwsLightsailDomainInformer {
-	return &awsLightsailDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LightsailDomains returns a LightsailDomainInformer.
+func (v *version) LightsailDomains() LightsailDomainInformer {
+	return &lightsailDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLightsailInstances returns a AwsLightsailInstanceInformer.
-func (v *version) AwsLightsailInstances() AwsLightsailInstanceInformer {
-	return &awsLightsailInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LightsailInstances returns a LightsailInstanceInformer.
+func (v *version) LightsailInstances() LightsailInstanceInformer {
+	return &lightsailInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLightsailKeyPairs returns a AwsLightsailKeyPairInformer.
-func (v *version) AwsLightsailKeyPairs() AwsLightsailKeyPairInformer {
-	return &awsLightsailKeyPairInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LightsailKeyPairs returns a LightsailKeyPairInformer.
+func (v *version) LightsailKeyPairs() LightsailKeyPairInformer {
+	return &lightsailKeyPairInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLightsailStaticIps returns a AwsLightsailStaticIpInformer.
-func (v *version) AwsLightsailStaticIps() AwsLightsailStaticIpInformer {
-	return &awsLightsailStaticIpInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LightsailStaticIps returns a LightsailStaticIpInformer.
+func (v *version) LightsailStaticIps() LightsailStaticIpInformer {
+	return &lightsailStaticIpInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLightsailStaticIpAttachments returns a AwsLightsailStaticIpAttachmentInformer.
-func (v *version) AwsLightsailStaticIpAttachments() AwsLightsailStaticIpAttachmentInformer {
-	return &awsLightsailStaticIpAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LightsailStaticIpAttachments returns a LightsailStaticIpAttachmentInformer.
+func (v *version) LightsailStaticIpAttachments() LightsailStaticIpAttachmentInformer {
+	return &lightsailStaticIpAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLoadBalancerBackendServerPolicies returns a AwsLoadBalancerBackendServerPolicyInformer.
-func (v *version) AwsLoadBalancerBackendServerPolicies() AwsLoadBalancerBackendServerPolicyInformer {
-	return &awsLoadBalancerBackendServerPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LoadBalancerBackendServerPolicies returns a LoadBalancerBackendServerPolicyInformer.
+func (v *version) LoadBalancerBackendServerPolicies() LoadBalancerBackendServerPolicyInformer {
+	return &loadBalancerBackendServerPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLoadBalancerListenerPolicies returns a AwsLoadBalancerListenerPolicyInformer.
-func (v *version) AwsLoadBalancerListenerPolicies() AwsLoadBalancerListenerPolicyInformer {
-	return &awsLoadBalancerListenerPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LoadBalancerListenerPolicies returns a LoadBalancerListenerPolicyInformer.
+func (v *version) LoadBalancerListenerPolicies() LoadBalancerListenerPolicyInformer {
+	return &loadBalancerListenerPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsLoadBalancerPolicies returns a AwsLoadBalancerPolicyInformer.
-func (v *version) AwsLoadBalancerPolicies() AwsLoadBalancerPolicyInformer {
-	return &awsLoadBalancerPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// LoadBalancerPolicies returns a LoadBalancerPolicyInformer.
+func (v *version) LoadBalancerPolicies() LoadBalancerPolicyInformer {
+	return &loadBalancerPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsMacieMemberAccountAssociations returns a AwsMacieMemberAccountAssociationInformer.
-func (v *version) AwsMacieMemberAccountAssociations() AwsMacieMemberAccountAssociationInformer {
-	return &awsMacieMemberAccountAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MacieMemberAccountAssociations returns a MacieMemberAccountAssociationInformer.
+func (v *version) MacieMemberAccountAssociations() MacieMemberAccountAssociationInformer {
+	return &macieMemberAccountAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsMacieS3BucketAssociations returns a AwsMacieS3BucketAssociationInformer.
-func (v *version) AwsMacieS3BucketAssociations() AwsMacieS3BucketAssociationInformer {
-	return &awsMacieS3BucketAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MacieS3BucketAssociations returns a MacieS3BucketAssociationInformer.
+func (v *version) MacieS3BucketAssociations() MacieS3BucketAssociationInformer {
+	return &macieS3BucketAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsMainRouteTableAssociations returns a AwsMainRouteTableAssociationInformer.
-func (v *version) AwsMainRouteTableAssociations() AwsMainRouteTableAssociationInformer {
-	return &awsMainRouteTableAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MainRouteTableAssociations returns a MainRouteTableAssociationInformer.
+func (v *version) MainRouteTableAssociations() MainRouteTableAssociationInformer {
+	return &mainRouteTableAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsMediaPackageChannels returns a AwsMediaPackageChannelInformer.
-func (v *version) AwsMediaPackageChannels() AwsMediaPackageChannelInformer {
-	return &awsMediaPackageChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MediaPackageChannels returns a MediaPackageChannelInformer.
+func (v *version) MediaPackageChannels() MediaPackageChannelInformer {
+	return &mediaPackageChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsMediaStoreContainers returns a AwsMediaStoreContainerInformer.
-func (v *version) AwsMediaStoreContainers() AwsMediaStoreContainerInformer {
-	return &awsMediaStoreContainerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MediaStoreContainers returns a MediaStoreContainerInformer.
+func (v *version) MediaStoreContainers() MediaStoreContainerInformer {
+	return &mediaStoreContainerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsMediaStoreContainerPolicies returns a AwsMediaStoreContainerPolicyInformer.
-func (v *version) AwsMediaStoreContainerPolicies() AwsMediaStoreContainerPolicyInformer {
-	return &awsMediaStoreContainerPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MediaStoreContainerPolicies returns a MediaStoreContainerPolicyInformer.
+func (v *version) MediaStoreContainerPolicies() MediaStoreContainerPolicyInformer {
+	return &mediaStoreContainerPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsMqBrokers returns a AwsMqBrokerInformer.
-func (v *version) AwsMqBrokers() AwsMqBrokerInformer {
-	return &awsMqBrokerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MqBrokers returns a MqBrokerInformer.
+func (v *version) MqBrokers() MqBrokerInformer {
+	return &mqBrokerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsMqConfigurations returns a AwsMqConfigurationInformer.
-func (v *version) AwsMqConfigurations() AwsMqConfigurationInformer {
-	return &awsMqConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MqConfigurations returns a MqConfigurationInformer.
+func (v *version) MqConfigurations() MqConfigurationInformer {
+	return &mqConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsMskClusters returns a AwsMskClusterInformer.
-func (v *version) AwsMskClusters() AwsMskClusterInformer {
-	return &awsMskClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MskClusters returns a MskClusterInformer.
+func (v *version) MskClusters() MskClusterInformer {
+	return &mskClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsMskConfigurations returns a AwsMskConfigurationInformer.
-func (v *version) AwsMskConfigurations() AwsMskConfigurationInformer {
-	return &awsMskConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// MskConfigurations returns a MskConfigurationInformer.
+func (v *version) MskConfigurations() MskConfigurationInformer {
+	return &mskConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNatGateways returns a AwsNatGatewayInformer.
-func (v *version) AwsNatGateways() AwsNatGatewayInformer {
-	return &awsNatGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NatGateways returns a NatGatewayInformer.
+func (v *version) NatGateways() NatGatewayInformer {
+	return &natGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNeptuneClusters returns a AwsNeptuneClusterInformer.
-func (v *version) AwsNeptuneClusters() AwsNeptuneClusterInformer {
-	return &awsNeptuneClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NeptuneClusters returns a NeptuneClusterInformer.
+func (v *version) NeptuneClusters() NeptuneClusterInformer {
+	return &neptuneClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNeptuneClusterInstances returns a AwsNeptuneClusterInstanceInformer.
-func (v *version) AwsNeptuneClusterInstances() AwsNeptuneClusterInstanceInformer {
-	return &awsNeptuneClusterInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NeptuneClusterInstances returns a NeptuneClusterInstanceInformer.
+func (v *version) NeptuneClusterInstances() NeptuneClusterInstanceInformer {
+	return &neptuneClusterInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNeptuneClusterParameterGroups returns a AwsNeptuneClusterParameterGroupInformer.
-func (v *version) AwsNeptuneClusterParameterGroups() AwsNeptuneClusterParameterGroupInformer {
-	return &awsNeptuneClusterParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NeptuneClusterParameterGroups returns a NeptuneClusterParameterGroupInformer.
+func (v *version) NeptuneClusterParameterGroups() NeptuneClusterParameterGroupInformer {
+	return &neptuneClusterParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNeptuneClusterSnapshots returns a AwsNeptuneClusterSnapshotInformer.
-func (v *version) AwsNeptuneClusterSnapshots() AwsNeptuneClusterSnapshotInformer {
-	return &awsNeptuneClusterSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NeptuneClusterSnapshots returns a NeptuneClusterSnapshotInformer.
+func (v *version) NeptuneClusterSnapshots() NeptuneClusterSnapshotInformer {
+	return &neptuneClusterSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNeptuneEventSubscriptions returns a AwsNeptuneEventSubscriptionInformer.
-func (v *version) AwsNeptuneEventSubscriptions() AwsNeptuneEventSubscriptionInformer {
-	return &awsNeptuneEventSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NeptuneEventSubscriptions returns a NeptuneEventSubscriptionInformer.
+func (v *version) NeptuneEventSubscriptions() NeptuneEventSubscriptionInformer {
+	return &neptuneEventSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNeptuneParameterGroups returns a AwsNeptuneParameterGroupInformer.
-func (v *version) AwsNeptuneParameterGroups() AwsNeptuneParameterGroupInformer {
-	return &awsNeptuneParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NeptuneParameterGroups returns a NeptuneParameterGroupInformer.
+func (v *version) NeptuneParameterGroups() NeptuneParameterGroupInformer {
+	return &neptuneParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNeptuneSubnetGroups returns a AwsNeptuneSubnetGroupInformer.
-func (v *version) AwsNeptuneSubnetGroups() AwsNeptuneSubnetGroupInformer {
-	return &awsNeptuneSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NeptuneSubnetGroups returns a NeptuneSubnetGroupInformer.
+func (v *version) NeptuneSubnetGroups() NeptuneSubnetGroupInformer {
+	return &neptuneSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNetworkAcls returns a AwsNetworkAclInformer.
-func (v *version) AwsNetworkAcls() AwsNetworkAclInformer {
-	return &awsNetworkAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkAcls returns a NetworkAclInformer.
+func (v *version) NetworkAcls() NetworkAclInformer {
+	return &networkAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNetworkAclRules returns a AwsNetworkAclRuleInformer.
-func (v *version) AwsNetworkAclRules() AwsNetworkAclRuleInformer {
-	return &awsNetworkAclRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkAclRules returns a NetworkAclRuleInformer.
+func (v *version) NetworkAclRules() NetworkAclRuleInformer {
+	return &networkAclRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNetworkInterfaces returns a AwsNetworkInterfaceInformer.
-func (v *version) AwsNetworkInterfaces() AwsNetworkInterfaceInformer {
-	return &awsNetworkInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkInterfaces returns a NetworkInterfaceInformer.
+func (v *version) NetworkInterfaces() NetworkInterfaceInformer {
+	return &networkInterfaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNetworkInterfaceAttachments returns a AwsNetworkInterfaceAttachmentInformer.
-func (v *version) AwsNetworkInterfaceAttachments() AwsNetworkInterfaceAttachmentInformer {
-	return &awsNetworkInterfaceAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkInterfaceAttachments returns a NetworkInterfaceAttachmentInformer.
+func (v *version) NetworkInterfaceAttachments() NetworkInterfaceAttachmentInformer {
+	return &networkInterfaceAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNetworkInterfaceSgAttachments returns a AwsNetworkInterfaceSgAttachmentInformer.
-func (v *version) AwsNetworkInterfaceSgAttachments() AwsNetworkInterfaceSgAttachmentInformer {
-	return &awsNetworkInterfaceSgAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// NetworkInterfaceSgAttachments returns a NetworkInterfaceSgAttachmentInformer.
+func (v *version) NetworkInterfaceSgAttachments() NetworkInterfaceSgAttachmentInformer {
+	return &networkInterfaceSgAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksApplications returns a AwsOpsworksApplicationInformer.
-func (v *version) AwsOpsworksApplications() AwsOpsworksApplicationInformer {
-	return &awsOpsworksApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksApplications returns a OpsworksApplicationInformer.
+func (v *version) OpsworksApplications() OpsworksApplicationInformer {
+	return &opsworksApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksCustomLayers returns a AwsOpsworksCustomLayerInformer.
-func (v *version) AwsOpsworksCustomLayers() AwsOpsworksCustomLayerInformer {
-	return &awsOpsworksCustomLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksCustomLayers returns a OpsworksCustomLayerInformer.
+func (v *version) OpsworksCustomLayers() OpsworksCustomLayerInformer {
+	return &opsworksCustomLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksGangliaLayers returns a AwsOpsworksGangliaLayerInformer.
-func (v *version) AwsOpsworksGangliaLayers() AwsOpsworksGangliaLayerInformer {
-	return &awsOpsworksGangliaLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksGangliaLayers returns a OpsworksGangliaLayerInformer.
+func (v *version) OpsworksGangliaLayers() OpsworksGangliaLayerInformer {
+	return &opsworksGangliaLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksHaproxyLayers returns a AwsOpsworksHaproxyLayerInformer.
-func (v *version) AwsOpsworksHaproxyLayers() AwsOpsworksHaproxyLayerInformer {
-	return &awsOpsworksHaproxyLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksHaproxyLayers returns a OpsworksHaproxyLayerInformer.
+func (v *version) OpsworksHaproxyLayers() OpsworksHaproxyLayerInformer {
+	return &opsworksHaproxyLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksInstances returns a AwsOpsworksInstanceInformer.
-func (v *version) AwsOpsworksInstances() AwsOpsworksInstanceInformer {
-	return &awsOpsworksInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksInstances returns a OpsworksInstanceInformer.
+func (v *version) OpsworksInstances() OpsworksInstanceInformer {
+	return &opsworksInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksJavaAppLayers returns a AwsOpsworksJavaAppLayerInformer.
-func (v *version) AwsOpsworksJavaAppLayers() AwsOpsworksJavaAppLayerInformer {
-	return &awsOpsworksJavaAppLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksJavaAppLayers returns a OpsworksJavaAppLayerInformer.
+func (v *version) OpsworksJavaAppLayers() OpsworksJavaAppLayerInformer {
+	return &opsworksJavaAppLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksMemcachedLayers returns a AwsOpsworksMemcachedLayerInformer.
-func (v *version) AwsOpsworksMemcachedLayers() AwsOpsworksMemcachedLayerInformer {
-	return &awsOpsworksMemcachedLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksMemcachedLayers returns a OpsworksMemcachedLayerInformer.
+func (v *version) OpsworksMemcachedLayers() OpsworksMemcachedLayerInformer {
+	return &opsworksMemcachedLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksMysqlLayers returns a AwsOpsworksMysqlLayerInformer.
-func (v *version) AwsOpsworksMysqlLayers() AwsOpsworksMysqlLayerInformer {
-	return &awsOpsworksMysqlLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksMysqlLayers returns a OpsworksMysqlLayerInformer.
+func (v *version) OpsworksMysqlLayers() OpsworksMysqlLayerInformer {
+	return &opsworksMysqlLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksNodejsAppLayers returns a AwsOpsworksNodejsAppLayerInformer.
-func (v *version) AwsOpsworksNodejsAppLayers() AwsOpsworksNodejsAppLayerInformer {
-	return &awsOpsworksNodejsAppLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksNodejsAppLayers returns a OpsworksNodejsAppLayerInformer.
+func (v *version) OpsworksNodejsAppLayers() OpsworksNodejsAppLayerInformer {
+	return &opsworksNodejsAppLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksPermissions returns a AwsOpsworksPermissionInformer.
-func (v *version) AwsOpsworksPermissions() AwsOpsworksPermissionInformer {
-	return &awsOpsworksPermissionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksPermissions returns a OpsworksPermissionInformer.
+func (v *version) OpsworksPermissions() OpsworksPermissionInformer {
+	return &opsworksPermissionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksPhpAppLayers returns a AwsOpsworksPhpAppLayerInformer.
-func (v *version) AwsOpsworksPhpAppLayers() AwsOpsworksPhpAppLayerInformer {
-	return &awsOpsworksPhpAppLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksPhpAppLayers returns a OpsworksPhpAppLayerInformer.
+func (v *version) OpsworksPhpAppLayers() OpsworksPhpAppLayerInformer {
+	return &opsworksPhpAppLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksRailsAppLayers returns a AwsOpsworksRailsAppLayerInformer.
-func (v *version) AwsOpsworksRailsAppLayers() AwsOpsworksRailsAppLayerInformer {
-	return &awsOpsworksRailsAppLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksRailsAppLayers returns a OpsworksRailsAppLayerInformer.
+func (v *version) OpsworksRailsAppLayers() OpsworksRailsAppLayerInformer {
+	return &opsworksRailsAppLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksRdsDbInstances returns a AwsOpsworksRdsDbInstanceInformer.
-func (v *version) AwsOpsworksRdsDbInstances() AwsOpsworksRdsDbInstanceInformer {
-	return &awsOpsworksRdsDbInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksRdsDbInstances returns a OpsworksRdsDbInstanceInformer.
+func (v *version) OpsworksRdsDbInstances() OpsworksRdsDbInstanceInformer {
+	return &opsworksRdsDbInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksStacks returns a AwsOpsworksStackInformer.
-func (v *version) AwsOpsworksStacks() AwsOpsworksStackInformer {
-	return &awsOpsworksStackInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksStacks returns a OpsworksStackInformer.
+func (v *version) OpsworksStacks() OpsworksStackInformer {
+	return &opsworksStackInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksStaticWebLayers returns a AwsOpsworksStaticWebLayerInformer.
-func (v *version) AwsOpsworksStaticWebLayers() AwsOpsworksStaticWebLayerInformer {
-	return &awsOpsworksStaticWebLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksStaticWebLayers returns a OpsworksStaticWebLayerInformer.
+func (v *version) OpsworksStaticWebLayers() OpsworksStaticWebLayerInformer {
+	return &opsworksStaticWebLayerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOpsworksUserProfiles returns a AwsOpsworksUserProfileInformer.
-func (v *version) AwsOpsworksUserProfiles() AwsOpsworksUserProfileInformer {
-	return &awsOpsworksUserProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OpsworksUserProfiles returns a OpsworksUserProfileInformer.
+func (v *version) OpsworksUserProfiles() OpsworksUserProfileInformer {
+	return &opsworksUserProfileInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOrganizationsAccounts returns a AwsOrganizationsAccountInformer.
-func (v *version) AwsOrganizationsAccounts() AwsOrganizationsAccountInformer {
-	return &awsOrganizationsAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OrganizationsAccounts returns a OrganizationsAccountInformer.
+func (v *version) OrganizationsAccounts() OrganizationsAccountInformer {
+	return &organizationsAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOrganizationsOrganizations returns a AwsOrganizationsOrganizationInformer.
-func (v *version) AwsOrganizationsOrganizations() AwsOrganizationsOrganizationInformer {
-	return &awsOrganizationsOrganizationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OrganizationsOrganizations returns a OrganizationsOrganizationInformer.
+func (v *version) OrganizationsOrganizations() OrganizationsOrganizationInformer {
+	return &organizationsOrganizationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOrganizationsOrganizationalUnits returns a AwsOrganizationsOrganizationalUnitInformer.
-func (v *version) AwsOrganizationsOrganizationalUnits() AwsOrganizationsOrganizationalUnitInformer {
-	return &awsOrganizationsOrganizationalUnitInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OrganizationsOrganizationalUnits returns a OrganizationsOrganizationalUnitInformer.
+func (v *version) OrganizationsOrganizationalUnits() OrganizationsOrganizationalUnitInformer {
+	return &organizationsOrganizationalUnitInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOrganizationsPolicies returns a AwsOrganizationsPolicyInformer.
-func (v *version) AwsOrganizationsPolicies() AwsOrganizationsPolicyInformer {
-	return &awsOrganizationsPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OrganizationsPolicies returns a OrganizationsPolicyInformer.
+func (v *version) OrganizationsPolicies() OrganizationsPolicyInformer {
+	return &organizationsPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsOrganizationsPolicyAttachments returns a AwsOrganizationsPolicyAttachmentInformer.
-func (v *version) AwsOrganizationsPolicyAttachments() AwsOrganizationsPolicyAttachmentInformer {
-	return &awsOrganizationsPolicyAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// OrganizationsPolicyAttachments returns a OrganizationsPolicyAttachmentInformer.
+func (v *version) OrganizationsPolicyAttachments() OrganizationsPolicyAttachmentInformer {
+	return &organizationsPolicyAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsPinpointAdmChannels returns a AwsPinpointAdmChannelInformer.
-func (v *version) AwsPinpointAdmChannels() AwsPinpointAdmChannelInformer {
-	return &awsPinpointAdmChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PinpointAdmChannels returns a PinpointAdmChannelInformer.
+func (v *version) PinpointAdmChannels() PinpointAdmChannelInformer {
+	return &pinpointAdmChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsPinpointApnsChannels returns a AwsPinpointApnsChannelInformer.
-func (v *version) AwsPinpointApnsChannels() AwsPinpointApnsChannelInformer {
-	return &awsPinpointApnsChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PinpointApnsChannels returns a PinpointApnsChannelInformer.
+func (v *version) PinpointApnsChannels() PinpointApnsChannelInformer {
+	return &pinpointApnsChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsPinpointApnsSandboxChannels returns a AwsPinpointApnsSandboxChannelInformer.
-func (v *version) AwsPinpointApnsSandboxChannels() AwsPinpointApnsSandboxChannelInformer {
-	return &awsPinpointApnsSandboxChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PinpointApnsSandboxChannels returns a PinpointApnsSandboxChannelInformer.
+func (v *version) PinpointApnsSandboxChannels() PinpointApnsSandboxChannelInformer {
+	return &pinpointApnsSandboxChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsPinpointApnsVoipChannels returns a AwsPinpointApnsVoipChannelInformer.
-func (v *version) AwsPinpointApnsVoipChannels() AwsPinpointApnsVoipChannelInformer {
-	return &awsPinpointApnsVoipChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PinpointApnsVoipChannels returns a PinpointApnsVoipChannelInformer.
+func (v *version) PinpointApnsVoipChannels() PinpointApnsVoipChannelInformer {
+	return &pinpointApnsVoipChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsPinpointApnsVoipSandboxChannels returns a AwsPinpointApnsVoipSandboxChannelInformer.
-func (v *version) AwsPinpointApnsVoipSandboxChannels() AwsPinpointApnsVoipSandboxChannelInformer {
-	return &awsPinpointApnsVoipSandboxChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PinpointApnsVoipSandboxChannels returns a PinpointApnsVoipSandboxChannelInformer.
+func (v *version) PinpointApnsVoipSandboxChannels() PinpointApnsVoipSandboxChannelInformer {
+	return &pinpointApnsVoipSandboxChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsPinpointApps returns a AwsPinpointAppInformer.
-func (v *version) AwsPinpointApps() AwsPinpointAppInformer {
-	return &awsPinpointAppInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PinpointApps returns a PinpointAppInformer.
+func (v *version) PinpointApps() PinpointAppInformer {
+	return &pinpointAppInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsPinpointBaiduChannels returns a AwsPinpointBaiduChannelInformer.
-func (v *version) AwsPinpointBaiduChannels() AwsPinpointBaiduChannelInformer {
-	return &awsPinpointBaiduChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PinpointBaiduChannels returns a PinpointBaiduChannelInformer.
+func (v *version) PinpointBaiduChannels() PinpointBaiduChannelInformer {
+	return &pinpointBaiduChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsPinpointEmailChannels returns a AwsPinpointEmailChannelInformer.
-func (v *version) AwsPinpointEmailChannels() AwsPinpointEmailChannelInformer {
-	return &awsPinpointEmailChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PinpointEmailChannels returns a PinpointEmailChannelInformer.
+func (v *version) PinpointEmailChannels() PinpointEmailChannelInformer {
+	return &pinpointEmailChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsPinpointEventStreams returns a AwsPinpointEventStreamInformer.
-func (v *version) AwsPinpointEventStreams() AwsPinpointEventStreamInformer {
-	return &awsPinpointEventStreamInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PinpointEventStreams returns a PinpointEventStreamInformer.
+func (v *version) PinpointEventStreams() PinpointEventStreamInformer {
+	return &pinpointEventStreamInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsPinpointGcmChannels returns a AwsPinpointGcmChannelInformer.
-func (v *version) AwsPinpointGcmChannels() AwsPinpointGcmChannelInformer {
-	return &awsPinpointGcmChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PinpointGcmChannels returns a PinpointGcmChannelInformer.
+func (v *version) PinpointGcmChannels() PinpointGcmChannelInformer {
+	return &pinpointGcmChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsPinpointSmsChannels returns a AwsPinpointSmsChannelInformer.
-func (v *version) AwsPinpointSmsChannels() AwsPinpointSmsChannelInformer {
-	return &awsPinpointSmsChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PinpointSmsChannels returns a PinpointSmsChannelInformer.
+func (v *version) PinpointSmsChannels() PinpointSmsChannelInformer {
+	return &pinpointSmsChannelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsPlacementGroups returns a AwsPlacementGroupInformer.
-func (v *version) AwsPlacementGroups() AwsPlacementGroupInformer {
-	return &awsPlacementGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// PlacementGroups returns a PlacementGroupInformer.
+func (v *version) PlacementGroups() PlacementGroupInformer {
+	return &placementGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsProxyProtocolPolicies returns a AwsProxyProtocolPolicyInformer.
-func (v *version) AwsProxyProtocolPolicies() AwsProxyProtocolPolicyInformer {
-	return &awsProxyProtocolPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ProxyProtocolPolicies returns a ProxyProtocolPolicyInformer.
+func (v *version) ProxyProtocolPolicies() ProxyProtocolPolicyInformer {
+	return &proxyProtocolPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRamPrincipalAssociations returns a AwsRamPrincipalAssociationInformer.
-func (v *version) AwsRamPrincipalAssociations() AwsRamPrincipalAssociationInformer {
-	return &awsRamPrincipalAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RamPrincipalAssociations returns a RamPrincipalAssociationInformer.
+func (v *version) RamPrincipalAssociations() RamPrincipalAssociationInformer {
+	return &ramPrincipalAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRamResourceAssociations returns a AwsRamResourceAssociationInformer.
-func (v *version) AwsRamResourceAssociations() AwsRamResourceAssociationInformer {
-	return &awsRamResourceAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RamResourceAssociations returns a RamResourceAssociationInformer.
+func (v *version) RamResourceAssociations() RamResourceAssociationInformer {
+	return &ramResourceAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRamResourceShares returns a AwsRamResourceShareInformer.
-func (v *version) AwsRamResourceShares() AwsRamResourceShareInformer {
-	return &awsRamResourceShareInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RamResourceShares returns a RamResourceShareInformer.
+func (v *version) RamResourceShares() RamResourceShareInformer {
+	return &ramResourceShareInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRdsClusters returns a AwsRdsClusterInformer.
-func (v *version) AwsRdsClusters() AwsRdsClusterInformer {
-	return &awsRdsClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RdsClusters returns a RdsClusterInformer.
+func (v *version) RdsClusters() RdsClusterInformer {
+	return &rdsClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRdsClusterEndpoints returns a AwsRdsClusterEndpointInformer.
-func (v *version) AwsRdsClusterEndpoints() AwsRdsClusterEndpointInformer {
-	return &awsRdsClusterEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RdsClusterEndpoints returns a RdsClusterEndpointInformer.
+func (v *version) RdsClusterEndpoints() RdsClusterEndpointInformer {
+	return &rdsClusterEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRdsClusterInstances returns a AwsRdsClusterInstanceInformer.
-func (v *version) AwsRdsClusterInstances() AwsRdsClusterInstanceInformer {
-	return &awsRdsClusterInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RdsClusterInstances returns a RdsClusterInstanceInformer.
+func (v *version) RdsClusterInstances() RdsClusterInstanceInformer {
+	return &rdsClusterInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRdsClusterParameterGroups returns a AwsRdsClusterParameterGroupInformer.
-func (v *version) AwsRdsClusterParameterGroups() AwsRdsClusterParameterGroupInformer {
-	return &awsRdsClusterParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RdsClusterParameterGroups returns a RdsClusterParameterGroupInformer.
+func (v *version) RdsClusterParameterGroups() RdsClusterParameterGroupInformer {
+	return &rdsClusterParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRdsGlobalClusters returns a AwsRdsGlobalClusterInformer.
-func (v *version) AwsRdsGlobalClusters() AwsRdsGlobalClusterInformer {
-	return &awsRdsGlobalClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RdsGlobalClusters returns a RdsGlobalClusterInformer.
+func (v *version) RdsGlobalClusters() RdsGlobalClusterInformer {
+	return &rdsGlobalClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRedshiftClusters returns a AwsRedshiftClusterInformer.
-func (v *version) AwsRedshiftClusters() AwsRedshiftClusterInformer {
-	return &awsRedshiftClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RedshiftClusters returns a RedshiftClusterInformer.
+func (v *version) RedshiftClusters() RedshiftClusterInformer {
+	return &redshiftClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRedshiftEventSubscriptions returns a AwsRedshiftEventSubscriptionInformer.
-func (v *version) AwsRedshiftEventSubscriptions() AwsRedshiftEventSubscriptionInformer {
-	return &awsRedshiftEventSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RedshiftEventSubscriptions returns a RedshiftEventSubscriptionInformer.
+func (v *version) RedshiftEventSubscriptions() RedshiftEventSubscriptionInformer {
+	return &redshiftEventSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRedshiftParameterGroups returns a AwsRedshiftParameterGroupInformer.
-func (v *version) AwsRedshiftParameterGroups() AwsRedshiftParameterGroupInformer {
-	return &awsRedshiftParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RedshiftParameterGroups returns a RedshiftParameterGroupInformer.
+func (v *version) RedshiftParameterGroups() RedshiftParameterGroupInformer {
+	return &redshiftParameterGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRedshiftSecurityGroups returns a AwsRedshiftSecurityGroupInformer.
-func (v *version) AwsRedshiftSecurityGroups() AwsRedshiftSecurityGroupInformer {
-	return &awsRedshiftSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RedshiftSecurityGroups returns a RedshiftSecurityGroupInformer.
+func (v *version) RedshiftSecurityGroups() RedshiftSecurityGroupInformer {
+	return &redshiftSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRedshiftSnapshotCopyGrants returns a AwsRedshiftSnapshotCopyGrantInformer.
-func (v *version) AwsRedshiftSnapshotCopyGrants() AwsRedshiftSnapshotCopyGrantInformer {
-	return &awsRedshiftSnapshotCopyGrantInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RedshiftSnapshotCopyGrants returns a RedshiftSnapshotCopyGrantInformer.
+func (v *version) RedshiftSnapshotCopyGrants() RedshiftSnapshotCopyGrantInformer {
+	return &redshiftSnapshotCopyGrantInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRedshiftSubnetGroups returns a AwsRedshiftSubnetGroupInformer.
-func (v *version) AwsRedshiftSubnetGroups() AwsRedshiftSubnetGroupInformer {
-	return &awsRedshiftSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RedshiftSubnetGroups returns a RedshiftSubnetGroupInformer.
+func (v *version) RedshiftSubnetGroups() RedshiftSubnetGroupInformer {
+	return &redshiftSubnetGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsResourcegroupsGroups returns a AwsResourcegroupsGroupInformer.
-func (v *version) AwsResourcegroupsGroups() AwsResourcegroupsGroupInformer {
-	return &awsResourcegroupsGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ResourcegroupsGroups returns a ResourcegroupsGroupInformer.
+func (v *version) ResourcegroupsGroups() ResourcegroupsGroupInformer {
+	return &resourcegroupsGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRoutes returns a AwsRouteInformer.
-func (v *version) AwsRoutes() AwsRouteInformer {
-	return &awsRouteInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Routes returns a RouteInformer.
+func (v *version) Routes() RouteInformer {
+	return &routeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRoute53DelegationSets returns a AwsRoute53DelegationSetInformer.
-func (v *version) AwsRoute53DelegationSets() AwsRoute53DelegationSetInformer {
-	return &awsRoute53DelegationSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Route53DelegationSets returns a Route53DelegationSetInformer.
+func (v *version) Route53DelegationSets() Route53DelegationSetInformer {
+	return &route53DelegationSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRoute53HealthChecks returns a AwsRoute53HealthCheckInformer.
-func (v *version) AwsRoute53HealthChecks() AwsRoute53HealthCheckInformer {
-	return &awsRoute53HealthCheckInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Route53HealthChecks returns a Route53HealthCheckInformer.
+func (v *version) Route53HealthChecks() Route53HealthCheckInformer {
+	return &route53HealthCheckInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRoute53QueryLogs returns a AwsRoute53QueryLogInformer.
-func (v *version) AwsRoute53QueryLogs() AwsRoute53QueryLogInformer {
-	return &awsRoute53QueryLogInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Route53QueryLogs returns a Route53QueryLogInformer.
+func (v *version) Route53QueryLogs() Route53QueryLogInformer {
+	return &route53QueryLogInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRoute53Records returns a AwsRoute53RecordInformer.
-func (v *version) AwsRoute53Records() AwsRoute53RecordInformer {
-	return &awsRoute53RecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Route53Records returns a Route53RecordInformer.
+func (v *version) Route53Records() Route53RecordInformer {
+	return &route53RecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRoute53ResolverEndpoints returns a AwsRoute53ResolverEndpointInformer.
-func (v *version) AwsRoute53ResolverEndpoints() AwsRoute53ResolverEndpointInformer {
-	return &awsRoute53ResolverEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Route53ResolverEndpoints returns a Route53ResolverEndpointInformer.
+func (v *version) Route53ResolverEndpoints() Route53ResolverEndpointInformer {
+	return &route53ResolverEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRoute53ResolverRules returns a AwsRoute53ResolverRuleInformer.
-func (v *version) AwsRoute53ResolverRules() AwsRoute53ResolverRuleInformer {
-	return &awsRoute53ResolverRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Route53ResolverRules returns a Route53ResolverRuleInformer.
+func (v *version) Route53ResolverRules() Route53ResolverRuleInformer {
+	return &route53ResolverRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRoute53ResolverRuleAssociations returns a AwsRoute53ResolverRuleAssociationInformer.
-func (v *version) AwsRoute53ResolverRuleAssociations() AwsRoute53ResolverRuleAssociationInformer {
-	return &awsRoute53ResolverRuleAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Route53ResolverRuleAssociations returns a Route53ResolverRuleAssociationInformer.
+func (v *version) Route53ResolverRuleAssociations() Route53ResolverRuleAssociationInformer {
+	return &route53ResolverRuleAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRoute53Zones returns a AwsRoute53ZoneInformer.
-func (v *version) AwsRoute53Zones() AwsRoute53ZoneInformer {
-	return &awsRoute53ZoneInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Route53Zones returns a Route53ZoneInformer.
+func (v *version) Route53Zones() Route53ZoneInformer {
+	return &route53ZoneInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRoute53ZoneAssociations returns a AwsRoute53ZoneAssociationInformer.
-func (v *version) AwsRoute53ZoneAssociations() AwsRoute53ZoneAssociationInformer {
-	return &awsRoute53ZoneAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Route53ZoneAssociations returns a Route53ZoneAssociationInformer.
+func (v *version) Route53ZoneAssociations() Route53ZoneAssociationInformer {
+	return &route53ZoneAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRouteTables returns a AwsRouteTableInformer.
-func (v *version) AwsRouteTables() AwsRouteTableInformer {
-	return &awsRouteTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RouteTables returns a RouteTableInformer.
+func (v *version) RouteTables() RouteTableInformer {
+	return &routeTableInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsRouteTableAssociations returns a AwsRouteTableAssociationInformer.
-func (v *version) AwsRouteTableAssociations() AwsRouteTableAssociationInformer {
-	return &awsRouteTableAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// RouteTableAssociations returns a RouteTableAssociationInformer.
+func (v *version) RouteTableAssociations() RouteTableAssociationInformer {
+	return &routeTableAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsS3AccountPublicAccessBlocks returns a AwsS3AccountPublicAccessBlockInformer.
-func (v *version) AwsS3AccountPublicAccessBlocks() AwsS3AccountPublicAccessBlockInformer {
-	return &awsS3AccountPublicAccessBlockInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// S3AccountPublicAccessBlocks returns a S3AccountPublicAccessBlockInformer.
+func (v *version) S3AccountPublicAccessBlocks() S3AccountPublicAccessBlockInformer {
+	return &s3AccountPublicAccessBlockInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsS3Buckets returns a AwsS3BucketInformer.
-func (v *version) AwsS3Buckets() AwsS3BucketInformer {
-	return &awsS3BucketInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// S3Buckets returns a S3BucketInformer.
+func (v *version) S3Buckets() S3BucketInformer {
+	return &s3BucketInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsS3BucketInventories returns a AwsS3BucketInventoryInformer.
-func (v *version) AwsS3BucketInventories() AwsS3BucketInventoryInformer {
-	return &awsS3BucketInventoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// S3BucketInventories returns a S3BucketInventoryInformer.
+func (v *version) S3BucketInventories() S3BucketInventoryInformer {
+	return &s3BucketInventoryInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsS3BucketMetrics returns a AwsS3BucketMetricInformer.
-func (v *version) AwsS3BucketMetrics() AwsS3BucketMetricInformer {
-	return &awsS3BucketMetricInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// S3BucketMetrics returns a S3BucketMetricInformer.
+func (v *version) S3BucketMetrics() S3BucketMetricInformer {
+	return &s3BucketMetricInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsS3BucketNotifications returns a AwsS3BucketNotificationInformer.
-func (v *version) AwsS3BucketNotifications() AwsS3BucketNotificationInformer {
-	return &awsS3BucketNotificationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// S3BucketNotifications returns a S3BucketNotificationInformer.
+func (v *version) S3BucketNotifications() S3BucketNotificationInformer {
+	return &s3BucketNotificationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsS3BucketObjects returns a AwsS3BucketObjectInformer.
-func (v *version) AwsS3BucketObjects() AwsS3BucketObjectInformer {
-	return &awsS3BucketObjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// S3BucketObjects returns a S3BucketObjectInformer.
+func (v *version) S3BucketObjects() S3BucketObjectInformer {
+	return &s3BucketObjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsS3BucketPolicies returns a AwsS3BucketPolicyInformer.
-func (v *version) AwsS3BucketPolicies() AwsS3BucketPolicyInformer {
-	return &awsS3BucketPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// S3BucketPolicies returns a S3BucketPolicyInformer.
+func (v *version) S3BucketPolicies() S3BucketPolicyInformer {
+	return &s3BucketPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsS3BucketPublicAccessBlocks returns a AwsS3BucketPublicAccessBlockInformer.
-func (v *version) AwsS3BucketPublicAccessBlocks() AwsS3BucketPublicAccessBlockInformer {
-	return &awsS3BucketPublicAccessBlockInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// S3BucketPublicAccessBlocks returns a S3BucketPublicAccessBlockInformer.
+func (v *version) S3BucketPublicAccessBlocks() S3BucketPublicAccessBlockInformer {
+	return &s3BucketPublicAccessBlockInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSagemakerEndpoints returns a AwsSagemakerEndpointInformer.
-func (v *version) AwsSagemakerEndpoints() AwsSagemakerEndpointInformer {
-	return &awsSagemakerEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SagemakerEndpoints returns a SagemakerEndpointInformer.
+func (v *version) SagemakerEndpoints() SagemakerEndpointInformer {
+	return &sagemakerEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSagemakerEndpointConfigurations returns a AwsSagemakerEndpointConfigurationInformer.
-func (v *version) AwsSagemakerEndpointConfigurations() AwsSagemakerEndpointConfigurationInformer {
-	return &awsSagemakerEndpointConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SagemakerEndpointConfigurations returns a SagemakerEndpointConfigurationInformer.
+func (v *version) SagemakerEndpointConfigurations() SagemakerEndpointConfigurationInformer {
+	return &sagemakerEndpointConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSagemakerModels returns a AwsSagemakerModelInformer.
-func (v *version) AwsSagemakerModels() AwsSagemakerModelInformer {
-	return &awsSagemakerModelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SagemakerModels returns a SagemakerModelInformer.
+func (v *version) SagemakerModels() SagemakerModelInformer {
+	return &sagemakerModelInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSagemakerNotebookInstances returns a AwsSagemakerNotebookInstanceInformer.
-func (v *version) AwsSagemakerNotebookInstances() AwsSagemakerNotebookInstanceInformer {
-	return &awsSagemakerNotebookInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SagemakerNotebookInstances returns a SagemakerNotebookInstanceInformer.
+func (v *version) SagemakerNotebookInstances() SagemakerNotebookInstanceInformer {
+	return &sagemakerNotebookInstanceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSagemakerNotebookInstanceLifecycleConfigurations returns a AwsSagemakerNotebookInstanceLifecycleConfigurationInformer.
-func (v *version) AwsSagemakerNotebookInstanceLifecycleConfigurations() AwsSagemakerNotebookInstanceLifecycleConfigurationInformer {
-	return &awsSagemakerNotebookInstanceLifecycleConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SagemakerNotebookInstanceLifecycleConfigurations returns a SagemakerNotebookInstanceLifecycleConfigurationInformer.
+func (v *version) SagemakerNotebookInstanceLifecycleConfigurations() SagemakerNotebookInstanceLifecycleConfigurationInformer {
+	return &sagemakerNotebookInstanceLifecycleConfigurationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSecretsmanagerSecrets returns a AwsSecretsmanagerSecretInformer.
-func (v *version) AwsSecretsmanagerSecrets() AwsSecretsmanagerSecretInformer {
-	return &awsSecretsmanagerSecretInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SecretsmanagerSecrets returns a SecretsmanagerSecretInformer.
+func (v *version) SecretsmanagerSecrets() SecretsmanagerSecretInformer {
+	return &secretsmanagerSecretInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSecretsmanagerSecretVersions returns a AwsSecretsmanagerSecretVersionInformer.
-func (v *version) AwsSecretsmanagerSecretVersions() AwsSecretsmanagerSecretVersionInformer {
-	return &awsSecretsmanagerSecretVersionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SecretsmanagerSecretVersions returns a SecretsmanagerSecretVersionInformer.
+func (v *version) SecretsmanagerSecretVersions() SecretsmanagerSecretVersionInformer {
+	return &secretsmanagerSecretVersionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSecurityGroups returns a AwsSecurityGroupInformer.
-func (v *version) AwsSecurityGroups() AwsSecurityGroupInformer {
-	return &awsSecurityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SecurityGroups returns a SecurityGroupInformer.
+func (v *version) SecurityGroups() SecurityGroupInformer {
+	return &securityGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSecurityGroupRules returns a AwsSecurityGroupRuleInformer.
-func (v *version) AwsSecurityGroupRules() AwsSecurityGroupRuleInformer {
-	return &awsSecurityGroupRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SecurityGroupRules returns a SecurityGroupRuleInformer.
+func (v *version) SecurityGroupRules() SecurityGroupRuleInformer {
+	return &securityGroupRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSecurityhubAccounts returns a AwsSecurityhubAccountInformer.
-func (v *version) AwsSecurityhubAccounts() AwsSecurityhubAccountInformer {
-	return &awsSecurityhubAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SecurityhubAccounts returns a SecurityhubAccountInformer.
+func (v *version) SecurityhubAccounts() SecurityhubAccountInformer {
+	return &securityhubAccountInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSecurityhubProductSubscriptions returns a AwsSecurityhubProductSubscriptionInformer.
-func (v *version) AwsSecurityhubProductSubscriptions() AwsSecurityhubProductSubscriptionInformer {
-	return &awsSecurityhubProductSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SecurityhubProductSubscriptions returns a SecurityhubProductSubscriptionInformer.
+func (v *version) SecurityhubProductSubscriptions() SecurityhubProductSubscriptionInformer {
+	return &securityhubProductSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSecurityhubStandardsSubscriptions returns a AwsSecurityhubStandardsSubscriptionInformer.
-func (v *version) AwsSecurityhubStandardsSubscriptions() AwsSecurityhubStandardsSubscriptionInformer {
-	return &awsSecurityhubStandardsSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SecurityhubStandardsSubscriptions returns a SecurityhubStandardsSubscriptionInformer.
+func (v *version) SecurityhubStandardsSubscriptions() SecurityhubStandardsSubscriptionInformer {
+	return &securityhubStandardsSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsServiceDiscoveryHttpNamespaces returns a AwsServiceDiscoveryHttpNamespaceInformer.
-func (v *version) AwsServiceDiscoveryHttpNamespaces() AwsServiceDiscoveryHttpNamespaceInformer {
-	return &awsServiceDiscoveryHttpNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServiceDiscoveryHttpNamespaces returns a ServiceDiscoveryHttpNamespaceInformer.
+func (v *version) ServiceDiscoveryHttpNamespaces() ServiceDiscoveryHttpNamespaceInformer {
+	return &serviceDiscoveryHttpNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsServiceDiscoveryPrivateDnsNamespaces returns a AwsServiceDiscoveryPrivateDnsNamespaceInformer.
-func (v *version) AwsServiceDiscoveryPrivateDnsNamespaces() AwsServiceDiscoveryPrivateDnsNamespaceInformer {
-	return &awsServiceDiscoveryPrivateDnsNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServiceDiscoveryPrivateDnsNamespaces returns a ServiceDiscoveryPrivateDnsNamespaceInformer.
+func (v *version) ServiceDiscoveryPrivateDnsNamespaces() ServiceDiscoveryPrivateDnsNamespaceInformer {
+	return &serviceDiscoveryPrivateDnsNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsServiceDiscoveryPublicDnsNamespaces returns a AwsServiceDiscoveryPublicDnsNamespaceInformer.
-func (v *version) AwsServiceDiscoveryPublicDnsNamespaces() AwsServiceDiscoveryPublicDnsNamespaceInformer {
-	return &awsServiceDiscoveryPublicDnsNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServiceDiscoveryPublicDnsNamespaces returns a ServiceDiscoveryPublicDnsNamespaceInformer.
+func (v *version) ServiceDiscoveryPublicDnsNamespaces() ServiceDiscoveryPublicDnsNamespaceInformer {
+	return &serviceDiscoveryPublicDnsNamespaceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsServiceDiscoveryServices returns a AwsServiceDiscoveryServiceInformer.
-func (v *version) AwsServiceDiscoveryServices() AwsServiceDiscoveryServiceInformer {
-	return &awsServiceDiscoveryServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServiceDiscoveryServices returns a ServiceDiscoveryServiceInformer.
+func (v *version) ServiceDiscoveryServices() ServiceDiscoveryServiceInformer {
+	return &serviceDiscoveryServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsServicecatalogPortfolios returns a AwsServicecatalogPortfolioInformer.
-func (v *version) AwsServicecatalogPortfolios() AwsServicecatalogPortfolioInformer {
-	return &awsServicecatalogPortfolioInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ServicecatalogPortfolios returns a ServicecatalogPortfolioInformer.
+func (v *version) ServicecatalogPortfolios() ServicecatalogPortfolioInformer {
+	return &servicecatalogPortfolioInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesActiveReceiptRuleSets returns a AwsSesActiveReceiptRuleSetInformer.
-func (v *version) AwsSesActiveReceiptRuleSets() AwsSesActiveReceiptRuleSetInformer {
-	return &awsSesActiveReceiptRuleSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesActiveReceiptRuleSets returns a SesActiveReceiptRuleSetInformer.
+func (v *version) SesActiveReceiptRuleSets() SesActiveReceiptRuleSetInformer {
+	return &sesActiveReceiptRuleSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesConfigurationSets returns a AwsSesConfigurationSetInformer.
-func (v *version) AwsSesConfigurationSets() AwsSesConfigurationSetInformer {
-	return &awsSesConfigurationSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesConfigurationSets returns a SesConfigurationSetInformer.
+func (v *version) SesConfigurationSets() SesConfigurationSetInformer {
+	return &sesConfigurationSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesDomainDkims returns a AwsSesDomainDkimInformer.
-func (v *version) AwsSesDomainDkims() AwsSesDomainDkimInformer {
-	return &awsSesDomainDkimInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesDomainDkims returns a SesDomainDkimInformer.
+func (v *version) SesDomainDkims() SesDomainDkimInformer {
+	return &sesDomainDkimInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesDomainIdentities returns a AwsSesDomainIdentityInformer.
-func (v *version) AwsSesDomainIdentities() AwsSesDomainIdentityInformer {
-	return &awsSesDomainIdentityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesDomainIdentities returns a SesDomainIdentityInformer.
+func (v *version) SesDomainIdentities() SesDomainIdentityInformer {
+	return &sesDomainIdentityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesDomainIdentityVerifications returns a AwsSesDomainIdentityVerificationInformer.
-func (v *version) AwsSesDomainIdentityVerifications() AwsSesDomainIdentityVerificationInformer {
-	return &awsSesDomainIdentityVerificationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesDomainIdentityVerifications returns a SesDomainIdentityVerificationInformer.
+func (v *version) SesDomainIdentityVerifications() SesDomainIdentityVerificationInformer {
+	return &sesDomainIdentityVerificationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesDomainMailFroms returns a AwsSesDomainMailFromInformer.
-func (v *version) AwsSesDomainMailFroms() AwsSesDomainMailFromInformer {
-	return &awsSesDomainMailFromInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesDomainMailFroms returns a SesDomainMailFromInformer.
+func (v *version) SesDomainMailFroms() SesDomainMailFromInformer {
+	return &sesDomainMailFromInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesEmailIdentities returns a AwsSesEmailIdentityInformer.
-func (v *version) AwsSesEmailIdentities() AwsSesEmailIdentityInformer {
-	return &awsSesEmailIdentityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesEmailIdentities returns a SesEmailIdentityInformer.
+func (v *version) SesEmailIdentities() SesEmailIdentityInformer {
+	return &sesEmailIdentityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesEventDestinations returns a AwsSesEventDestinationInformer.
-func (v *version) AwsSesEventDestinations() AwsSesEventDestinationInformer {
-	return &awsSesEventDestinationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesEventDestinations returns a SesEventDestinationInformer.
+func (v *version) SesEventDestinations() SesEventDestinationInformer {
+	return &sesEventDestinationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesIdentityNotificationTopics returns a AwsSesIdentityNotificationTopicInformer.
-func (v *version) AwsSesIdentityNotificationTopics() AwsSesIdentityNotificationTopicInformer {
-	return &awsSesIdentityNotificationTopicInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesIdentityNotificationTopics returns a SesIdentityNotificationTopicInformer.
+func (v *version) SesIdentityNotificationTopics() SesIdentityNotificationTopicInformer {
+	return &sesIdentityNotificationTopicInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesIdentityPolicies returns a AwsSesIdentityPolicyInformer.
-func (v *version) AwsSesIdentityPolicies() AwsSesIdentityPolicyInformer {
-	return &awsSesIdentityPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesIdentityPolicies returns a SesIdentityPolicyInformer.
+func (v *version) SesIdentityPolicies() SesIdentityPolicyInformer {
+	return &sesIdentityPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesReceiptFilters returns a AwsSesReceiptFilterInformer.
-func (v *version) AwsSesReceiptFilters() AwsSesReceiptFilterInformer {
-	return &awsSesReceiptFilterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesReceiptFilters returns a SesReceiptFilterInformer.
+func (v *version) SesReceiptFilters() SesReceiptFilterInformer {
+	return &sesReceiptFilterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesReceiptRules returns a AwsSesReceiptRuleInformer.
-func (v *version) AwsSesReceiptRules() AwsSesReceiptRuleInformer {
-	return &awsSesReceiptRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesReceiptRules returns a SesReceiptRuleInformer.
+func (v *version) SesReceiptRules() SesReceiptRuleInformer {
+	return &sesReceiptRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesReceiptRuleSets returns a AwsSesReceiptRuleSetInformer.
-func (v *version) AwsSesReceiptRuleSets() AwsSesReceiptRuleSetInformer {
-	return &awsSesReceiptRuleSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesReceiptRuleSets returns a SesReceiptRuleSetInformer.
+func (v *version) SesReceiptRuleSets() SesReceiptRuleSetInformer {
+	return &sesReceiptRuleSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSesTemplates returns a AwsSesTemplateInformer.
-func (v *version) AwsSesTemplates() AwsSesTemplateInformer {
-	return &awsSesTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SesTemplates returns a SesTemplateInformer.
+func (v *version) SesTemplates() SesTemplateInformer {
+	return &sesTemplateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSfnActivities returns a AwsSfnActivityInformer.
-func (v *version) AwsSfnActivities() AwsSfnActivityInformer {
-	return &awsSfnActivityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SfnActivities returns a SfnActivityInformer.
+func (v *version) SfnActivities() SfnActivityInformer {
+	return &sfnActivityInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSfnStateMachines returns a AwsSfnStateMachineInformer.
-func (v *version) AwsSfnStateMachines() AwsSfnStateMachineInformer {
-	return &awsSfnStateMachineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SfnStateMachines returns a SfnStateMachineInformer.
+func (v *version) SfnStateMachines() SfnStateMachineInformer {
+	return &sfnStateMachineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsShieldProtections returns a AwsShieldProtectionInformer.
-func (v *version) AwsShieldProtections() AwsShieldProtectionInformer {
-	return &awsShieldProtectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// ShieldProtections returns a ShieldProtectionInformer.
+func (v *version) ShieldProtections() ShieldProtectionInformer {
+	return &shieldProtectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSimpledbDomains returns a AwsSimpledbDomainInformer.
-func (v *version) AwsSimpledbDomains() AwsSimpledbDomainInformer {
-	return &awsSimpledbDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SimpledbDomains returns a SimpledbDomainInformer.
+func (v *version) SimpledbDomains() SimpledbDomainInformer {
+	return &simpledbDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSnapshotCreateVolumePermissions returns a AwsSnapshotCreateVolumePermissionInformer.
-func (v *version) AwsSnapshotCreateVolumePermissions() AwsSnapshotCreateVolumePermissionInformer {
-	return &awsSnapshotCreateVolumePermissionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SnapshotCreateVolumePermissions returns a SnapshotCreateVolumePermissionInformer.
+func (v *version) SnapshotCreateVolumePermissions() SnapshotCreateVolumePermissionInformer {
+	return &snapshotCreateVolumePermissionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSnsPlatformApplications returns a AwsSnsPlatformApplicationInformer.
-func (v *version) AwsSnsPlatformApplications() AwsSnsPlatformApplicationInformer {
-	return &awsSnsPlatformApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SnsPlatformApplications returns a SnsPlatformApplicationInformer.
+func (v *version) SnsPlatformApplications() SnsPlatformApplicationInformer {
+	return &snsPlatformApplicationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSnsSmsPreferenceses returns a AwsSnsSmsPreferencesInformer.
-func (v *version) AwsSnsSmsPreferenceses() AwsSnsSmsPreferencesInformer {
-	return &awsSnsSmsPreferencesInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SnsSmsPreferenceses returns a SnsSmsPreferencesInformer.
+func (v *version) SnsSmsPreferenceses() SnsSmsPreferencesInformer {
+	return &snsSmsPreferencesInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSnsTopics returns a AwsSnsTopicInformer.
-func (v *version) AwsSnsTopics() AwsSnsTopicInformer {
-	return &awsSnsTopicInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SnsTopics returns a SnsTopicInformer.
+func (v *version) SnsTopics() SnsTopicInformer {
+	return &snsTopicInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSnsTopicPolicies returns a AwsSnsTopicPolicyInformer.
-func (v *version) AwsSnsTopicPolicies() AwsSnsTopicPolicyInformer {
-	return &awsSnsTopicPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SnsTopicPolicies returns a SnsTopicPolicyInformer.
+func (v *version) SnsTopicPolicies() SnsTopicPolicyInformer {
+	return &snsTopicPolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSnsTopicSubscriptions returns a AwsSnsTopicSubscriptionInformer.
-func (v *version) AwsSnsTopicSubscriptions() AwsSnsTopicSubscriptionInformer {
-	return &awsSnsTopicSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SnsTopicSubscriptions returns a SnsTopicSubscriptionInformer.
+func (v *version) SnsTopicSubscriptions() SnsTopicSubscriptionInformer {
+	return &snsTopicSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSpotDatafeedSubscriptions returns a AwsSpotDatafeedSubscriptionInformer.
-func (v *version) AwsSpotDatafeedSubscriptions() AwsSpotDatafeedSubscriptionInformer {
-	return &awsSpotDatafeedSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SpotDatafeedSubscriptions returns a SpotDatafeedSubscriptionInformer.
+func (v *version) SpotDatafeedSubscriptions() SpotDatafeedSubscriptionInformer {
+	return &spotDatafeedSubscriptionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSpotFleetRequests returns a AwsSpotFleetRequestInformer.
-func (v *version) AwsSpotFleetRequests() AwsSpotFleetRequestInformer {
-	return &awsSpotFleetRequestInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SpotFleetRequests returns a SpotFleetRequestInformer.
+func (v *version) SpotFleetRequests() SpotFleetRequestInformer {
+	return &spotFleetRequestInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSpotInstanceRequests returns a AwsSpotInstanceRequestInformer.
-func (v *version) AwsSpotInstanceRequests() AwsSpotInstanceRequestInformer {
-	return &awsSpotInstanceRequestInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SpotInstanceRequests returns a SpotInstanceRequestInformer.
+func (v *version) SpotInstanceRequests() SpotInstanceRequestInformer {
+	return &spotInstanceRequestInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSqsQueues returns a AwsSqsQueueInformer.
-func (v *version) AwsSqsQueues() AwsSqsQueueInformer {
-	return &awsSqsQueueInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SqsQueues returns a SqsQueueInformer.
+func (v *version) SqsQueues() SqsQueueInformer {
+	return &sqsQueueInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSqsQueuePolicies returns a AwsSqsQueuePolicyInformer.
-func (v *version) AwsSqsQueuePolicies() AwsSqsQueuePolicyInformer {
-	return &awsSqsQueuePolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SqsQueuePolicies returns a SqsQueuePolicyInformer.
+func (v *version) SqsQueuePolicies() SqsQueuePolicyInformer {
+	return &sqsQueuePolicyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSsmActivations returns a AwsSsmActivationInformer.
-func (v *version) AwsSsmActivations() AwsSsmActivationInformer {
-	return &awsSsmActivationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SsmActivations returns a SsmActivationInformer.
+func (v *version) SsmActivations() SsmActivationInformer {
+	return &ssmActivationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSsmAssociations returns a AwsSsmAssociationInformer.
-func (v *version) AwsSsmAssociations() AwsSsmAssociationInformer {
-	return &awsSsmAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SsmAssociations returns a SsmAssociationInformer.
+func (v *version) SsmAssociations() SsmAssociationInformer {
+	return &ssmAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSsmDocuments returns a AwsSsmDocumentInformer.
-func (v *version) AwsSsmDocuments() AwsSsmDocumentInformer {
-	return &awsSsmDocumentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SsmDocuments returns a SsmDocumentInformer.
+func (v *version) SsmDocuments() SsmDocumentInformer {
+	return &ssmDocumentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSsmMaintenanceWindows returns a AwsSsmMaintenanceWindowInformer.
-func (v *version) AwsSsmMaintenanceWindows() AwsSsmMaintenanceWindowInformer {
-	return &awsSsmMaintenanceWindowInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SsmMaintenanceWindows returns a SsmMaintenanceWindowInformer.
+func (v *version) SsmMaintenanceWindows() SsmMaintenanceWindowInformer {
+	return &ssmMaintenanceWindowInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSsmMaintenanceWindowTargets returns a AwsSsmMaintenanceWindowTargetInformer.
-func (v *version) AwsSsmMaintenanceWindowTargets() AwsSsmMaintenanceWindowTargetInformer {
-	return &awsSsmMaintenanceWindowTargetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SsmMaintenanceWindowTargets returns a SsmMaintenanceWindowTargetInformer.
+func (v *version) SsmMaintenanceWindowTargets() SsmMaintenanceWindowTargetInformer {
+	return &ssmMaintenanceWindowTargetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSsmMaintenanceWindowTasks returns a AwsSsmMaintenanceWindowTaskInformer.
-func (v *version) AwsSsmMaintenanceWindowTasks() AwsSsmMaintenanceWindowTaskInformer {
-	return &awsSsmMaintenanceWindowTaskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SsmMaintenanceWindowTasks returns a SsmMaintenanceWindowTaskInformer.
+func (v *version) SsmMaintenanceWindowTasks() SsmMaintenanceWindowTaskInformer {
+	return &ssmMaintenanceWindowTaskInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSsmParameters returns a AwsSsmParameterInformer.
-func (v *version) AwsSsmParameters() AwsSsmParameterInformer {
-	return &awsSsmParameterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SsmParameters returns a SsmParameterInformer.
+func (v *version) SsmParameters() SsmParameterInformer {
+	return &ssmParameterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSsmPatchBaselines returns a AwsSsmPatchBaselineInformer.
-func (v *version) AwsSsmPatchBaselines() AwsSsmPatchBaselineInformer {
-	return &awsSsmPatchBaselineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SsmPatchBaselines returns a SsmPatchBaselineInformer.
+func (v *version) SsmPatchBaselines() SsmPatchBaselineInformer {
+	return &ssmPatchBaselineInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSsmPatchGroups returns a AwsSsmPatchGroupInformer.
-func (v *version) AwsSsmPatchGroups() AwsSsmPatchGroupInformer {
-	return &awsSsmPatchGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SsmPatchGroups returns a SsmPatchGroupInformer.
+func (v *version) SsmPatchGroups() SsmPatchGroupInformer {
+	return &ssmPatchGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSsmResourceDataSyncs returns a AwsSsmResourceDataSyncInformer.
-func (v *version) AwsSsmResourceDataSyncs() AwsSsmResourceDataSyncInformer {
-	return &awsSsmResourceDataSyncInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SsmResourceDataSyncs returns a SsmResourceDataSyncInformer.
+func (v *version) SsmResourceDataSyncs() SsmResourceDataSyncInformer {
+	return &ssmResourceDataSyncInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsStoragegatewayCaches returns a AwsStoragegatewayCacheInformer.
-func (v *version) AwsStoragegatewayCaches() AwsStoragegatewayCacheInformer {
-	return &awsStoragegatewayCacheInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StoragegatewayCaches returns a StoragegatewayCacheInformer.
+func (v *version) StoragegatewayCaches() StoragegatewayCacheInformer {
+	return &storagegatewayCacheInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsStoragegatewayCachedIscsiVolumes returns a AwsStoragegatewayCachedIscsiVolumeInformer.
-func (v *version) AwsStoragegatewayCachedIscsiVolumes() AwsStoragegatewayCachedIscsiVolumeInformer {
-	return &awsStoragegatewayCachedIscsiVolumeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StoragegatewayCachedIscsiVolumes returns a StoragegatewayCachedIscsiVolumeInformer.
+func (v *version) StoragegatewayCachedIscsiVolumes() StoragegatewayCachedIscsiVolumeInformer {
+	return &storagegatewayCachedIscsiVolumeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsStoragegatewayGateways returns a AwsStoragegatewayGatewayInformer.
-func (v *version) AwsStoragegatewayGateways() AwsStoragegatewayGatewayInformer {
-	return &awsStoragegatewayGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StoragegatewayGateways returns a StoragegatewayGatewayInformer.
+func (v *version) StoragegatewayGateways() StoragegatewayGatewayInformer {
+	return &storagegatewayGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsStoragegatewayNfsFileShares returns a AwsStoragegatewayNfsFileShareInformer.
-func (v *version) AwsStoragegatewayNfsFileShares() AwsStoragegatewayNfsFileShareInformer {
-	return &awsStoragegatewayNfsFileShareInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StoragegatewayNfsFileShares returns a StoragegatewayNfsFileShareInformer.
+func (v *version) StoragegatewayNfsFileShares() StoragegatewayNfsFileShareInformer {
+	return &storagegatewayNfsFileShareInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsStoragegatewaySmbFileShares returns a AwsStoragegatewaySmbFileShareInformer.
-func (v *version) AwsStoragegatewaySmbFileShares() AwsStoragegatewaySmbFileShareInformer {
-	return &awsStoragegatewaySmbFileShareInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StoragegatewaySmbFileShares returns a StoragegatewaySmbFileShareInformer.
+func (v *version) StoragegatewaySmbFileShares() StoragegatewaySmbFileShareInformer {
+	return &storagegatewaySmbFileShareInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsStoragegatewayUploadBuffers returns a AwsStoragegatewayUploadBufferInformer.
-func (v *version) AwsStoragegatewayUploadBuffers() AwsStoragegatewayUploadBufferInformer {
-	return &awsStoragegatewayUploadBufferInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StoragegatewayUploadBuffers returns a StoragegatewayUploadBufferInformer.
+func (v *version) StoragegatewayUploadBuffers() StoragegatewayUploadBufferInformer {
+	return &storagegatewayUploadBufferInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsStoragegatewayWorkingStorages returns a AwsStoragegatewayWorkingStorageInformer.
-func (v *version) AwsStoragegatewayWorkingStorages() AwsStoragegatewayWorkingStorageInformer {
-	return &awsStoragegatewayWorkingStorageInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// StoragegatewayWorkingStorages returns a StoragegatewayWorkingStorageInformer.
+func (v *version) StoragegatewayWorkingStorages() StoragegatewayWorkingStorageInformer {
+	return &storagegatewayWorkingStorageInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSubnets returns a AwsSubnetInformer.
-func (v *version) AwsSubnets() AwsSubnetInformer {
-	return &awsSubnetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Subnets returns a SubnetInformer.
+func (v *version) Subnets() SubnetInformer {
+	return &subnetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsSwfDomains returns a AwsSwfDomainInformer.
-func (v *version) AwsSwfDomains() AwsSwfDomainInformer {
-	return &awsSwfDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SwfDomains returns a SwfDomainInformer.
+func (v *version) SwfDomains() SwfDomainInformer {
+	return &swfDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsTransferServers returns a AwsTransferServerInformer.
-func (v *version) AwsTransferServers() AwsTransferServerInformer {
-	return &awsTransferServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// TransferServers returns a TransferServerInformer.
+func (v *version) TransferServers() TransferServerInformer {
+	return &transferServerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsTransferSshKeys returns a AwsTransferSshKeyInformer.
-func (v *version) AwsTransferSshKeys() AwsTransferSshKeyInformer {
-	return &awsTransferSshKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// TransferSshKeys returns a TransferSshKeyInformer.
+func (v *version) TransferSshKeys() TransferSshKeyInformer {
+	return &transferSshKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsTransferUsers returns a AwsTransferUserInformer.
-func (v *version) AwsTransferUsers() AwsTransferUserInformer {
-	return &awsTransferUserInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// TransferUsers returns a TransferUserInformer.
+func (v *version) TransferUsers() TransferUserInformer {
+	return &transferUserInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVolumeAttachments returns a AwsVolumeAttachmentInformer.
-func (v *version) AwsVolumeAttachments() AwsVolumeAttachmentInformer {
-	return &awsVolumeAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VolumeAttachments returns a VolumeAttachmentInformer.
+func (v *version) VolumeAttachments() VolumeAttachmentInformer {
+	return &volumeAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcs returns a AwsVpcInformer.
-func (v *version) AwsVpcs() AwsVpcInformer {
-	return &awsVpcInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Vpcs returns a VpcInformer.
+func (v *version) Vpcs() VpcInformer {
+	return &vpcInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcDhcpOptionses returns a AwsVpcDhcpOptionsInformer.
-func (v *version) AwsVpcDhcpOptionses() AwsVpcDhcpOptionsInformer {
-	return &awsVpcDhcpOptionsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpcDhcpOptionses returns a VpcDhcpOptionsInformer.
+func (v *version) VpcDhcpOptionses() VpcDhcpOptionsInformer {
+	return &vpcDhcpOptionsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcDhcpOptionsAssociations returns a AwsVpcDhcpOptionsAssociationInformer.
-func (v *version) AwsVpcDhcpOptionsAssociations() AwsVpcDhcpOptionsAssociationInformer {
-	return &awsVpcDhcpOptionsAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpcDhcpOptionsAssociations returns a VpcDhcpOptionsAssociationInformer.
+func (v *version) VpcDhcpOptionsAssociations() VpcDhcpOptionsAssociationInformer {
+	return &vpcDhcpOptionsAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcEndpoints returns a AwsVpcEndpointInformer.
-func (v *version) AwsVpcEndpoints() AwsVpcEndpointInformer {
-	return &awsVpcEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpcEndpoints returns a VpcEndpointInformer.
+func (v *version) VpcEndpoints() VpcEndpointInformer {
+	return &vpcEndpointInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcEndpointConnectionNotifications returns a AwsVpcEndpointConnectionNotificationInformer.
-func (v *version) AwsVpcEndpointConnectionNotifications() AwsVpcEndpointConnectionNotificationInformer {
-	return &awsVpcEndpointConnectionNotificationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpcEndpointConnectionNotifications returns a VpcEndpointConnectionNotificationInformer.
+func (v *version) VpcEndpointConnectionNotifications() VpcEndpointConnectionNotificationInformer {
+	return &vpcEndpointConnectionNotificationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcEndpointRouteTableAssociations returns a AwsVpcEndpointRouteTableAssociationInformer.
-func (v *version) AwsVpcEndpointRouteTableAssociations() AwsVpcEndpointRouteTableAssociationInformer {
-	return &awsVpcEndpointRouteTableAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpcEndpointRouteTableAssociations returns a VpcEndpointRouteTableAssociationInformer.
+func (v *version) VpcEndpointRouteTableAssociations() VpcEndpointRouteTableAssociationInformer {
+	return &vpcEndpointRouteTableAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcEndpointServices returns a AwsVpcEndpointServiceInformer.
-func (v *version) AwsVpcEndpointServices() AwsVpcEndpointServiceInformer {
-	return &awsVpcEndpointServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpcEndpointServices returns a VpcEndpointServiceInformer.
+func (v *version) VpcEndpointServices() VpcEndpointServiceInformer {
+	return &vpcEndpointServiceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcEndpointServiceAllowedPrincipals returns a AwsVpcEndpointServiceAllowedPrincipalInformer.
-func (v *version) AwsVpcEndpointServiceAllowedPrincipals() AwsVpcEndpointServiceAllowedPrincipalInformer {
-	return &awsVpcEndpointServiceAllowedPrincipalInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpcEndpointServiceAllowedPrincipals returns a VpcEndpointServiceAllowedPrincipalInformer.
+func (v *version) VpcEndpointServiceAllowedPrincipals() VpcEndpointServiceAllowedPrincipalInformer {
+	return &vpcEndpointServiceAllowedPrincipalInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcEndpointSubnetAssociations returns a AwsVpcEndpointSubnetAssociationInformer.
-func (v *version) AwsVpcEndpointSubnetAssociations() AwsVpcEndpointSubnetAssociationInformer {
-	return &awsVpcEndpointSubnetAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpcEndpointSubnetAssociations returns a VpcEndpointSubnetAssociationInformer.
+func (v *version) VpcEndpointSubnetAssociations() VpcEndpointSubnetAssociationInformer {
+	return &vpcEndpointSubnetAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcIpv4CidrBlockAssociations returns a AwsVpcIpv4CidrBlockAssociationInformer.
-func (v *version) AwsVpcIpv4CidrBlockAssociations() AwsVpcIpv4CidrBlockAssociationInformer {
-	return &awsVpcIpv4CidrBlockAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpcIpv4CidrBlockAssociations returns a VpcIpv4CidrBlockAssociationInformer.
+func (v *version) VpcIpv4CidrBlockAssociations() VpcIpv4CidrBlockAssociationInformer {
+	return &vpcIpv4CidrBlockAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcPeeringConnections returns a AwsVpcPeeringConnectionInformer.
-func (v *version) AwsVpcPeeringConnections() AwsVpcPeeringConnectionInformer {
-	return &awsVpcPeeringConnectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpcPeeringConnections returns a VpcPeeringConnectionInformer.
+func (v *version) VpcPeeringConnections() VpcPeeringConnectionInformer {
+	return &vpcPeeringConnectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcPeeringConnectionAccepters returns a AwsVpcPeeringConnectionAccepterInformer.
-func (v *version) AwsVpcPeeringConnectionAccepters() AwsVpcPeeringConnectionAccepterInformer {
-	return &awsVpcPeeringConnectionAccepterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpcPeeringConnectionAccepters returns a VpcPeeringConnectionAccepterInformer.
+func (v *version) VpcPeeringConnectionAccepters() VpcPeeringConnectionAccepterInformer {
+	return &vpcPeeringConnectionAccepterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpcPeeringConnectionOptionses returns a AwsVpcPeeringConnectionOptionsInformer.
-func (v *version) AwsVpcPeeringConnectionOptionses() AwsVpcPeeringConnectionOptionsInformer {
-	return &awsVpcPeeringConnectionOptionsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpcPeeringConnectionOptionses returns a VpcPeeringConnectionOptionsInformer.
+func (v *version) VpcPeeringConnectionOptionses() VpcPeeringConnectionOptionsInformer {
+	return &vpcPeeringConnectionOptionsInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpnConnections returns a AwsVpnConnectionInformer.
-func (v *version) AwsVpnConnections() AwsVpnConnectionInformer {
-	return &awsVpnConnectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpnConnections returns a VpnConnectionInformer.
+func (v *version) VpnConnections() VpnConnectionInformer {
+	return &vpnConnectionInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpnConnectionRoutes returns a AwsVpnConnectionRouteInformer.
-func (v *version) AwsVpnConnectionRoutes() AwsVpnConnectionRouteInformer {
-	return &awsVpnConnectionRouteInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpnConnectionRoutes returns a VpnConnectionRouteInformer.
+func (v *version) VpnConnectionRoutes() VpnConnectionRouteInformer {
+	return &vpnConnectionRouteInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpnGateways returns a AwsVpnGatewayInformer.
-func (v *version) AwsVpnGateways() AwsVpnGatewayInformer {
-	return &awsVpnGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpnGateways returns a VpnGatewayInformer.
+func (v *version) VpnGateways() VpnGatewayInformer {
+	return &vpnGatewayInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpnGatewayAttachments returns a AwsVpnGatewayAttachmentInformer.
-func (v *version) AwsVpnGatewayAttachments() AwsVpnGatewayAttachmentInformer {
-	return &awsVpnGatewayAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpnGatewayAttachments returns a VpnGatewayAttachmentInformer.
+func (v *version) VpnGatewayAttachments() VpnGatewayAttachmentInformer {
+	return &vpnGatewayAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsVpnGatewayRoutePropagations returns a AwsVpnGatewayRoutePropagationInformer.
-func (v *version) AwsVpnGatewayRoutePropagations() AwsVpnGatewayRoutePropagationInformer {
-	return &awsVpnGatewayRoutePropagationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VpnGatewayRoutePropagations returns a VpnGatewayRoutePropagationInformer.
+func (v *version) VpnGatewayRoutePropagations() VpnGatewayRoutePropagationInformer {
+	return &vpnGatewayRoutePropagationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafByteMatchSets returns a AwsWafByteMatchSetInformer.
-func (v *version) AwsWafByteMatchSets() AwsWafByteMatchSetInformer {
-	return &awsWafByteMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafByteMatchSets returns a WafByteMatchSetInformer.
+func (v *version) WafByteMatchSets() WafByteMatchSetInformer {
+	return &wafByteMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafGeoMatchSets returns a AwsWafGeoMatchSetInformer.
-func (v *version) AwsWafGeoMatchSets() AwsWafGeoMatchSetInformer {
-	return &awsWafGeoMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafGeoMatchSets returns a WafGeoMatchSetInformer.
+func (v *version) WafGeoMatchSets() WafGeoMatchSetInformer {
+	return &wafGeoMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafIpsets returns a AwsWafIpsetInformer.
-func (v *version) AwsWafIpsets() AwsWafIpsetInformer {
-	return &awsWafIpsetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafIpsets returns a WafIpsetInformer.
+func (v *version) WafIpsets() WafIpsetInformer {
+	return &wafIpsetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafRateBasedRules returns a AwsWafRateBasedRuleInformer.
-func (v *version) AwsWafRateBasedRules() AwsWafRateBasedRuleInformer {
-	return &awsWafRateBasedRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafRateBasedRules returns a WafRateBasedRuleInformer.
+func (v *version) WafRateBasedRules() WafRateBasedRuleInformer {
+	return &wafRateBasedRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafRegexMatchSets returns a AwsWafRegexMatchSetInformer.
-func (v *version) AwsWafRegexMatchSets() AwsWafRegexMatchSetInformer {
-	return &awsWafRegexMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafRegexMatchSets returns a WafRegexMatchSetInformer.
+func (v *version) WafRegexMatchSets() WafRegexMatchSetInformer {
+	return &wafRegexMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafRegexPatternSets returns a AwsWafRegexPatternSetInformer.
-func (v *version) AwsWafRegexPatternSets() AwsWafRegexPatternSetInformer {
-	return &awsWafRegexPatternSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafRegexPatternSets returns a WafRegexPatternSetInformer.
+func (v *version) WafRegexPatternSets() WafRegexPatternSetInformer {
+	return &wafRegexPatternSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafRules returns a AwsWafRuleInformer.
-func (v *version) AwsWafRules() AwsWafRuleInformer {
-	return &awsWafRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafRules returns a WafRuleInformer.
+func (v *version) WafRules() WafRuleInformer {
+	return &wafRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafRuleGroups returns a AwsWafRuleGroupInformer.
-func (v *version) AwsWafRuleGroups() AwsWafRuleGroupInformer {
-	return &awsWafRuleGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafRuleGroups returns a WafRuleGroupInformer.
+func (v *version) WafRuleGroups() WafRuleGroupInformer {
+	return &wafRuleGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafSizeConstraintSets returns a AwsWafSizeConstraintSetInformer.
-func (v *version) AwsWafSizeConstraintSets() AwsWafSizeConstraintSetInformer {
-	return &awsWafSizeConstraintSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafSizeConstraintSets returns a WafSizeConstraintSetInformer.
+func (v *version) WafSizeConstraintSets() WafSizeConstraintSetInformer {
+	return &wafSizeConstraintSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafSqlInjectionMatchSets returns a AwsWafSqlInjectionMatchSetInformer.
-func (v *version) AwsWafSqlInjectionMatchSets() AwsWafSqlInjectionMatchSetInformer {
-	return &awsWafSqlInjectionMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafSqlInjectionMatchSets returns a WafSqlInjectionMatchSetInformer.
+func (v *version) WafSqlInjectionMatchSets() WafSqlInjectionMatchSetInformer {
+	return &wafSqlInjectionMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafWebAcls returns a AwsWafWebAclInformer.
-func (v *version) AwsWafWebAcls() AwsWafWebAclInformer {
-	return &awsWafWebAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafWebAcls returns a WafWebAclInformer.
+func (v *version) WafWebAcls() WafWebAclInformer {
+	return &wafWebAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafXssMatchSets returns a AwsWafXssMatchSetInformer.
-func (v *version) AwsWafXssMatchSets() AwsWafXssMatchSetInformer {
-	return &awsWafXssMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafXssMatchSets returns a WafXssMatchSetInformer.
+func (v *version) WafXssMatchSets() WafXssMatchSetInformer {
+	return &wafXssMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalByteMatchSets returns a AwsWafregionalByteMatchSetInformer.
-func (v *version) AwsWafregionalByteMatchSets() AwsWafregionalByteMatchSetInformer {
-	return &awsWafregionalByteMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalByteMatchSets returns a WafregionalByteMatchSetInformer.
+func (v *version) WafregionalByteMatchSets() WafregionalByteMatchSetInformer {
+	return &wafregionalByteMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalGeoMatchSets returns a AwsWafregionalGeoMatchSetInformer.
-func (v *version) AwsWafregionalGeoMatchSets() AwsWafregionalGeoMatchSetInformer {
-	return &awsWafregionalGeoMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalGeoMatchSets returns a WafregionalGeoMatchSetInformer.
+func (v *version) WafregionalGeoMatchSets() WafregionalGeoMatchSetInformer {
+	return &wafregionalGeoMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalIpsets returns a AwsWafregionalIpsetInformer.
-func (v *version) AwsWafregionalIpsets() AwsWafregionalIpsetInformer {
-	return &awsWafregionalIpsetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalIpsets returns a WafregionalIpsetInformer.
+func (v *version) WafregionalIpsets() WafregionalIpsetInformer {
+	return &wafregionalIpsetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalRateBasedRules returns a AwsWafregionalRateBasedRuleInformer.
-func (v *version) AwsWafregionalRateBasedRules() AwsWafregionalRateBasedRuleInformer {
-	return &awsWafregionalRateBasedRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalRateBasedRules returns a WafregionalRateBasedRuleInformer.
+func (v *version) WafregionalRateBasedRules() WafregionalRateBasedRuleInformer {
+	return &wafregionalRateBasedRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalRegexMatchSets returns a AwsWafregionalRegexMatchSetInformer.
-func (v *version) AwsWafregionalRegexMatchSets() AwsWafregionalRegexMatchSetInformer {
-	return &awsWafregionalRegexMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalRegexMatchSets returns a WafregionalRegexMatchSetInformer.
+func (v *version) WafregionalRegexMatchSets() WafregionalRegexMatchSetInformer {
+	return &wafregionalRegexMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalRegexPatternSets returns a AwsWafregionalRegexPatternSetInformer.
-func (v *version) AwsWafregionalRegexPatternSets() AwsWafregionalRegexPatternSetInformer {
-	return &awsWafregionalRegexPatternSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalRegexPatternSets returns a WafregionalRegexPatternSetInformer.
+func (v *version) WafregionalRegexPatternSets() WafregionalRegexPatternSetInformer {
+	return &wafregionalRegexPatternSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalRules returns a AwsWafregionalRuleInformer.
-func (v *version) AwsWafregionalRules() AwsWafregionalRuleInformer {
-	return &awsWafregionalRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalRules returns a WafregionalRuleInformer.
+func (v *version) WafregionalRules() WafregionalRuleInformer {
+	return &wafregionalRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalRuleGroups returns a AwsWafregionalRuleGroupInformer.
-func (v *version) AwsWafregionalRuleGroups() AwsWafregionalRuleGroupInformer {
-	return &awsWafregionalRuleGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalRuleGroups returns a WafregionalRuleGroupInformer.
+func (v *version) WafregionalRuleGroups() WafregionalRuleGroupInformer {
+	return &wafregionalRuleGroupInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalSizeConstraintSets returns a AwsWafregionalSizeConstraintSetInformer.
-func (v *version) AwsWafregionalSizeConstraintSets() AwsWafregionalSizeConstraintSetInformer {
-	return &awsWafregionalSizeConstraintSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalSizeConstraintSets returns a WafregionalSizeConstraintSetInformer.
+func (v *version) WafregionalSizeConstraintSets() WafregionalSizeConstraintSetInformer {
+	return &wafregionalSizeConstraintSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalSqlInjectionMatchSets returns a AwsWafregionalSqlInjectionMatchSetInformer.
-func (v *version) AwsWafregionalSqlInjectionMatchSets() AwsWafregionalSqlInjectionMatchSetInformer {
-	return &awsWafregionalSqlInjectionMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalSqlInjectionMatchSets returns a WafregionalSqlInjectionMatchSetInformer.
+func (v *version) WafregionalSqlInjectionMatchSets() WafregionalSqlInjectionMatchSetInformer {
+	return &wafregionalSqlInjectionMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalWebAcls returns a AwsWafregionalWebAclInformer.
-func (v *version) AwsWafregionalWebAcls() AwsWafregionalWebAclInformer {
-	return &awsWafregionalWebAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalWebAcls returns a WafregionalWebAclInformer.
+func (v *version) WafregionalWebAcls() WafregionalWebAclInformer {
+	return &wafregionalWebAclInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalWebAclAssociations returns a AwsWafregionalWebAclAssociationInformer.
-func (v *version) AwsWafregionalWebAclAssociations() AwsWafregionalWebAclAssociationInformer {
-	return &awsWafregionalWebAclAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalWebAclAssociations returns a WafregionalWebAclAssociationInformer.
+func (v *version) WafregionalWebAclAssociations() WafregionalWebAclAssociationInformer {
+	return &wafregionalWebAclAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWafregionalXssMatchSets returns a AwsWafregionalXssMatchSetInformer.
-func (v *version) AwsWafregionalXssMatchSets() AwsWafregionalXssMatchSetInformer {
-	return &awsWafregionalXssMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WafregionalXssMatchSets returns a WafregionalXssMatchSetInformer.
+func (v *version) WafregionalXssMatchSets() WafregionalXssMatchSetInformer {
+	return &wafregionalXssMatchSetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWorklinkFleets returns a AwsWorklinkFleetInformer.
-func (v *version) AwsWorklinkFleets() AwsWorklinkFleetInformer {
-	return &awsWorklinkFleetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WorklinkFleets returns a WorklinkFleetInformer.
+func (v *version) WorklinkFleets() WorklinkFleetInformer {
+	return &worklinkFleetInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsWorklinkWebsiteCertificateAuthorityAssociations returns a AwsWorklinkWebsiteCertificateAuthorityAssociationInformer.
-func (v *version) AwsWorklinkWebsiteCertificateAuthorityAssociations() AwsWorklinkWebsiteCertificateAuthorityAssociationInformer {
-	return &awsWorklinkWebsiteCertificateAuthorityAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// WorklinkWebsiteCertificateAuthorityAssociations returns a WorklinkWebsiteCertificateAuthorityAssociationInformer.
+func (v *version) WorklinkWebsiteCertificateAuthorityAssociations() WorklinkWebsiteCertificateAuthorityAssociationInformer {
+	return &worklinkWebsiteCertificateAuthorityAssociationInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsXraySamplingRules returns a AwsXraySamplingRuleInformer.
-func (v *version) AwsXraySamplingRules() AwsXraySamplingRuleInformer {
-	return &awsXraySamplingRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// XraySamplingRules returns a XraySamplingRuleInformer.
+func (v *version) XraySamplingRules() XraySamplingRuleInformer {
+	return &xraySamplingRuleInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }

@@ -27,160 +27,160 @@ import (
 
 type GoogleV1alpha1Interface interface {
 	RESTClient() rest.Interface
-	GoogleAppEngineApplicationsGetter
-	GoogleBigqueryDatasetsGetter
-	GoogleBigqueryTablesGetter
-	GoogleBigtableInstancesGetter
-	GoogleBigtableTablesGetter
-	GoogleBillingAccountIamBindingsGetter
-	GoogleBillingAccountIamMembersGetter
-	GoogleBillingAccountIamPoliciesGetter
-	GoogleBinaryAuthorizationAttestorsGetter
-	GoogleBinaryAuthorizationPoliciesGetter
-	GoogleCloudbuildTriggersGetter
-	GoogleCloudfunctionsFunctionsGetter
-	GoogleCloudiotRegistriesGetter
-	GoogleComposerEnvironmentsGetter
-	GoogleComputeAddressesGetter
-	GoogleComputeAttachedDisksGetter
-	GoogleComputeAutoscalersGetter
-	GoogleComputeBackendBucketsGetter
-	GoogleComputeBackendServicesGetter
-	GoogleComputeDisksGetter
-	GoogleComputeFirewallsGetter
-	GoogleComputeForwardingRulesGetter
-	GoogleComputeGlobalAddressesGetter
-	GoogleComputeGlobalForwardingRulesGetter
-	GoogleComputeHealthChecksGetter
-	GoogleComputeHttpHealthChecksGetter
-	GoogleComputeHttpsHealthChecksGetter
-	GoogleComputeImagesGetter
-	GoogleComputeInstancesGetter
-	GoogleComputeInstanceFromTemplatesGetter
-	GoogleComputeInstanceGroupsGetter
-	GoogleComputeInstanceGroupManagersGetter
-	GoogleComputeInstanceTemplatesGetter
-	GoogleComputeInterconnectAttachmentsGetter
-	GoogleComputeNetworksGetter
-	GoogleComputeNetworkPeeringsGetter
-	GoogleComputeProjectMetadatasGetter
-	GoogleComputeProjectMetadataItemsGetter
-	GoogleComputeRegionAutoscalersGetter
-	GoogleComputeRegionBackendServicesGetter
-	GoogleComputeRegionDisksGetter
-	GoogleComputeRegionInstanceGroupManagersGetter
-	GoogleComputeRoutesGetter
-	GoogleComputeRoutersGetter
-	GoogleComputeRouterInterfacesGetter
-	GoogleComputeRouterNatsGetter
-	GoogleComputeRouterPeersGetter
-	GoogleComputeSecurityPoliciesGetter
-	GoogleComputeSharedVpcHostProjectsGetter
-	GoogleComputeSharedVpcServiceProjectsGetter
-	GoogleComputeSnapshotsGetter
-	GoogleComputeSslCertificatesGetter
-	GoogleComputeSslPoliciesGetter
-	GoogleComputeSubnetworksGetter
-	GoogleComputeSubnetworkIamBindingsGetter
-	GoogleComputeSubnetworkIamMembersGetter
-	GoogleComputeSubnetworkIamPoliciesGetter
-	GoogleComputeTargetHttpProxiesGetter
-	GoogleComputeTargetHttpsProxiesGetter
-	GoogleComputeTargetPoolsGetter
-	GoogleComputeTargetSslProxiesGetter
-	GoogleComputeTargetTcpProxiesGetter
-	GoogleComputeUrlMapsGetter
-	GoogleComputeVpnGatewaysGetter
-	GoogleComputeVpnTunnelsGetter
-	GoogleContainerAnalysisNotesGetter
-	GoogleContainerClustersGetter
-	GoogleContainerNodePoolsGetter
-	GoogleDataflowJobsGetter
-	GoogleDataprocClustersGetter
-	GoogleDataprocJobsGetter
-	GoogleDnsManagedZonesGetter
-	GoogleDnsRecordSetsGetter
-	GoogleEndpointsServicesGetter
-	GoogleFilestoreInstancesGetter
-	GoogleFoldersGetter
-	GoogleFolderIamBindingsGetter
-	GoogleFolderIamMembersGetter
-	GoogleFolderIamPoliciesGetter
-	GoogleFolderOrganizationPoliciesGetter
-	GoogleKmsCryptoKeysGetter
-	GoogleKmsCryptoKeyIamBindingsGetter
-	GoogleKmsCryptoKeyIamMembersGetter
-	GoogleKmsKeyRingsGetter
-	GoogleKmsKeyRingIamBindingsGetter
-	GoogleKmsKeyRingIamMembersGetter
-	GoogleKmsKeyRingIamPoliciesGetter
-	GoogleLoggingBillingAccountExclusionsGetter
-	GoogleLoggingBillingAccountSinksGetter
-	GoogleLoggingFolderExclusionsGetter
-	GoogleLoggingFolderSinksGetter
-	GoogleLoggingOrganizationExclusionsGetter
-	GoogleLoggingOrganizationSinksGetter
-	GoogleLoggingProjectExclusionsGetter
-	GoogleLoggingProjectSinksGetter
-	GoogleMonitoringAlertPoliciesGetter
-	GoogleMonitoringGroupsGetter
-	GoogleMonitoringNotificationChannelsGetter
-	GoogleMonitoringUptimeCheckConfigsGetter
-	GoogleOrganizationIamBindingsGetter
-	GoogleOrganizationIamCustomRolesGetter
-	GoogleOrganizationIamMembersGetter
-	GoogleOrganizationIamPoliciesGetter
-	GoogleOrganizationPoliciesGetter
-	GoogleProjectsGetter
-	GoogleProjectIamBindingsGetter
-	GoogleProjectIamCustomRolesGetter
-	GoogleProjectIamMembersGetter
-	GoogleProjectIamPoliciesGetter
-	GoogleProjectOrganizationPoliciesGetter
-	GoogleProjectServicesGetter
-	GoogleProjectServicesesGetter
-	GoogleProjectUsageExportBucketsGetter
-	GooglePubsubSubscriptionsGetter
-	GooglePubsubSubscriptionIamBindingsGetter
-	GooglePubsubSubscriptionIamMembersGetter
-	GooglePubsubSubscriptionIamPoliciesGetter
-	GooglePubsubTopicsGetter
-	GooglePubsubTopicIamBindingsGetter
-	GooglePubsubTopicIamMembersGetter
-	GooglePubsubTopicIamPoliciesGetter
-	GoogleRedisInstancesGetter
-	GoogleResourceManagerLiensGetter
-	GoogleRuntimeconfigConfigsGetter
-	GoogleRuntimeconfigVariablesGetter
-	GoogleServiceAccountsGetter
-	GoogleServiceAccountIamBindingsGetter
-	GoogleServiceAccountIamMembersGetter
-	GoogleServiceAccountIamPoliciesGetter
-	GoogleServiceAccountKeysGetter
-	GoogleSourcerepoRepositoriesGetter
-	GoogleSpannerDatabasesGetter
-	GoogleSpannerDatabaseIamBindingsGetter
-	GoogleSpannerDatabaseIamMembersGetter
-	GoogleSpannerDatabaseIamPoliciesGetter
-	GoogleSpannerInstancesGetter
-	GoogleSpannerInstanceIamBindingsGetter
-	GoogleSpannerInstanceIamMembersGetter
-	GoogleSpannerInstanceIamPoliciesGetter
-	GoogleSqlDatabasesGetter
-	GoogleSqlDatabaseInstancesGetter
-	GoogleSqlSslCertsGetter
-	GoogleSqlUsersGetter
-	GoogleStorageBucketsGetter
-	GoogleStorageBucketAclsGetter
-	GoogleStorageBucketIamBindingsGetter
-	GoogleStorageBucketIamMembersGetter
-	GoogleStorageBucketIamPoliciesGetter
-	GoogleStorageBucketObjectsGetter
-	GoogleStorageDefaultObjectAccessControlsGetter
-	GoogleStorageDefaultObjectAclsGetter
-	GoogleStorageNotificationsGetter
-	GoogleStorageObjectAccessControlsGetter
-	GoogleStorageObjectAclsGetter
+	AppEngineApplicationsGetter
+	BigqueryDatasetsGetter
+	BigqueryTablesGetter
+	BigtableInstancesGetter
+	BigtableTablesGetter
+	BillingAccountIamBindingsGetter
+	BillingAccountIamMembersGetter
+	BillingAccountIamPoliciesGetter
+	BinaryAuthorizationAttestorsGetter
+	BinaryAuthorizationPoliciesGetter
+	CloudbuildTriggersGetter
+	CloudfunctionsFunctionsGetter
+	CloudiotRegistriesGetter
+	ComposerEnvironmentsGetter
+	ComputeAddressesGetter
+	ComputeAttachedDisksGetter
+	ComputeAutoscalersGetter
+	ComputeBackendBucketsGetter
+	ComputeBackendServicesGetter
+	ComputeDisksGetter
+	ComputeFirewallsGetter
+	ComputeForwardingRulesGetter
+	ComputeGlobalAddressesGetter
+	ComputeGlobalForwardingRulesGetter
+	ComputeHealthChecksGetter
+	ComputeHttpHealthChecksGetter
+	ComputeHttpsHealthChecksGetter
+	ComputeImagesGetter
+	ComputeInstancesGetter
+	ComputeInstanceFromTemplatesGetter
+	ComputeInstanceGroupsGetter
+	ComputeInstanceGroupManagersGetter
+	ComputeInstanceTemplatesGetter
+	ComputeInterconnectAttachmentsGetter
+	ComputeNetworksGetter
+	ComputeNetworkPeeringsGetter
+	ComputeProjectMetadatasGetter
+	ComputeProjectMetadataItemsGetter
+	ComputeRegionAutoscalersGetter
+	ComputeRegionBackendServicesGetter
+	ComputeRegionDisksGetter
+	ComputeRegionInstanceGroupManagersGetter
+	ComputeRoutesGetter
+	ComputeRoutersGetter
+	ComputeRouterInterfacesGetter
+	ComputeRouterNatsGetter
+	ComputeRouterPeersGetter
+	ComputeSecurityPoliciesGetter
+	ComputeSharedVpcHostProjectsGetter
+	ComputeSharedVpcServiceProjectsGetter
+	ComputeSnapshotsGetter
+	ComputeSslCertificatesGetter
+	ComputeSslPoliciesGetter
+	ComputeSubnetworksGetter
+	ComputeSubnetworkIamBindingsGetter
+	ComputeSubnetworkIamMembersGetter
+	ComputeSubnetworkIamPoliciesGetter
+	ComputeTargetHttpProxiesGetter
+	ComputeTargetHttpsProxiesGetter
+	ComputeTargetPoolsGetter
+	ComputeTargetSslProxiesGetter
+	ComputeTargetTcpProxiesGetter
+	ComputeUrlMapsGetter
+	ComputeVpnGatewaysGetter
+	ComputeVpnTunnelsGetter
+	ContainerAnalysisNotesGetter
+	ContainerClustersGetter
+	ContainerNodePoolsGetter
+	DataflowJobsGetter
+	DataprocClustersGetter
+	DataprocJobsGetter
+	DnsManagedZonesGetter
+	DnsRecordSetsGetter
+	EndpointsServicesGetter
+	FilestoreInstancesGetter
+	FoldersGetter
+	FolderIamBindingsGetter
+	FolderIamMembersGetter
+	FolderIamPoliciesGetter
+	FolderOrganizationPoliciesGetter
+	KmsCryptoKeysGetter
+	KmsCryptoKeyIamBindingsGetter
+	KmsCryptoKeyIamMembersGetter
+	KmsKeyRingsGetter
+	KmsKeyRingIamBindingsGetter
+	KmsKeyRingIamMembersGetter
+	KmsKeyRingIamPoliciesGetter
+	LoggingBillingAccountExclusionsGetter
+	LoggingBillingAccountSinksGetter
+	LoggingFolderExclusionsGetter
+	LoggingFolderSinksGetter
+	LoggingOrganizationExclusionsGetter
+	LoggingOrganizationSinksGetter
+	LoggingProjectExclusionsGetter
+	LoggingProjectSinksGetter
+	MonitoringAlertPoliciesGetter
+	MonitoringGroupsGetter
+	MonitoringNotificationChannelsGetter
+	MonitoringUptimeCheckConfigsGetter
+	OrganizationIamBindingsGetter
+	OrganizationIamCustomRolesGetter
+	OrganizationIamMembersGetter
+	OrganizationIamPoliciesGetter
+	OrganizationPoliciesGetter
+	ProjectsGetter
+	ProjectIamBindingsGetter
+	ProjectIamCustomRolesGetter
+	ProjectIamMembersGetter
+	ProjectIamPoliciesGetter
+	ProjectOrganizationPoliciesGetter
+	ProjectServicesGetter
+	ProjectServicesesGetter
+	ProjectUsageExportBucketsGetter
+	PubsubSubscriptionsGetter
+	PubsubSubscriptionIamBindingsGetter
+	PubsubSubscriptionIamMembersGetter
+	PubsubSubscriptionIamPoliciesGetter
+	PubsubTopicsGetter
+	PubsubTopicIamBindingsGetter
+	PubsubTopicIamMembersGetter
+	PubsubTopicIamPoliciesGetter
+	RedisInstancesGetter
+	ResourceManagerLiensGetter
+	RuntimeconfigConfigsGetter
+	RuntimeconfigVariablesGetter
+	ServiceAccountsGetter
+	ServiceAccountIamBindingsGetter
+	ServiceAccountIamMembersGetter
+	ServiceAccountIamPoliciesGetter
+	ServiceAccountKeysGetter
+	SourcerepoRepositoriesGetter
+	SpannerDatabasesGetter
+	SpannerDatabaseIamBindingsGetter
+	SpannerDatabaseIamMembersGetter
+	SpannerDatabaseIamPoliciesGetter
+	SpannerInstancesGetter
+	SpannerInstanceIamBindingsGetter
+	SpannerInstanceIamMembersGetter
+	SpannerInstanceIamPoliciesGetter
+	SqlDatabasesGetter
+	SqlDatabaseInstancesGetter
+	SqlSslCertsGetter
+	SqlUsersGetter
+	StorageBucketsGetter
+	StorageBucketAclsGetter
+	StorageBucketIamBindingsGetter
+	StorageBucketIamMembersGetter
+	StorageBucketIamPoliciesGetter
+	StorageBucketObjectsGetter
+	StorageDefaultObjectAccessControlsGetter
+	StorageDefaultObjectAclsGetter
+	StorageNotificationsGetter
+	StorageObjectAccessControlsGetter
+	StorageObjectAclsGetter
 }
 
 // GoogleV1alpha1Client is used to interact with features provided by the google.kubeform.com group.
@@ -188,620 +188,620 @@ type GoogleV1alpha1Client struct {
 	restClient rest.Interface
 }
 
-func (c *GoogleV1alpha1Client) GoogleAppEngineApplications() GoogleAppEngineApplicationInterface {
-	return newGoogleAppEngineApplications(c)
+func (c *GoogleV1alpha1Client) AppEngineApplications() AppEngineApplicationInterface {
+	return newAppEngineApplications(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleBigqueryDatasets() GoogleBigqueryDatasetInterface {
-	return newGoogleBigqueryDatasets(c)
+func (c *GoogleV1alpha1Client) BigqueryDatasets() BigqueryDatasetInterface {
+	return newBigqueryDatasets(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleBigqueryTables() GoogleBigqueryTableInterface {
-	return newGoogleBigqueryTables(c)
+func (c *GoogleV1alpha1Client) BigqueryTables() BigqueryTableInterface {
+	return newBigqueryTables(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleBigtableInstances() GoogleBigtableInstanceInterface {
-	return newGoogleBigtableInstances(c)
+func (c *GoogleV1alpha1Client) BigtableInstances() BigtableInstanceInterface {
+	return newBigtableInstances(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleBigtableTables() GoogleBigtableTableInterface {
-	return newGoogleBigtableTables(c)
+func (c *GoogleV1alpha1Client) BigtableTables() BigtableTableInterface {
+	return newBigtableTables(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleBillingAccountIamBindings() GoogleBillingAccountIamBindingInterface {
-	return newGoogleBillingAccountIamBindings(c)
+func (c *GoogleV1alpha1Client) BillingAccountIamBindings() BillingAccountIamBindingInterface {
+	return newBillingAccountIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleBillingAccountIamMembers() GoogleBillingAccountIamMemberInterface {
-	return newGoogleBillingAccountIamMembers(c)
+func (c *GoogleV1alpha1Client) BillingAccountIamMembers() BillingAccountIamMemberInterface {
+	return newBillingAccountIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleBillingAccountIamPolicies() GoogleBillingAccountIamPolicyInterface {
-	return newGoogleBillingAccountIamPolicies(c)
+func (c *GoogleV1alpha1Client) BillingAccountIamPolicies() BillingAccountIamPolicyInterface {
+	return newBillingAccountIamPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleBinaryAuthorizationAttestors() GoogleBinaryAuthorizationAttestorInterface {
-	return newGoogleBinaryAuthorizationAttestors(c)
+func (c *GoogleV1alpha1Client) BinaryAuthorizationAttestors() BinaryAuthorizationAttestorInterface {
+	return newBinaryAuthorizationAttestors(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleBinaryAuthorizationPolicies() GoogleBinaryAuthorizationPolicyInterface {
-	return newGoogleBinaryAuthorizationPolicies(c)
+func (c *GoogleV1alpha1Client) BinaryAuthorizationPolicies() BinaryAuthorizationPolicyInterface {
+	return newBinaryAuthorizationPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleCloudbuildTriggers() GoogleCloudbuildTriggerInterface {
-	return newGoogleCloudbuildTriggers(c)
+func (c *GoogleV1alpha1Client) CloudbuildTriggers() CloudbuildTriggerInterface {
+	return newCloudbuildTriggers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleCloudfunctionsFunctions() GoogleCloudfunctionsFunctionInterface {
-	return newGoogleCloudfunctionsFunctions(c)
+func (c *GoogleV1alpha1Client) CloudfunctionsFunctions() CloudfunctionsFunctionInterface {
+	return newCloudfunctionsFunctions(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleCloudiotRegistries() GoogleCloudiotRegistryInterface {
-	return newGoogleCloudiotRegistries(c)
+func (c *GoogleV1alpha1Client) CloudiotRegistries() CloudiotRegistryInterface {
+	return newCloudiotRegistries(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComposerEnvironments() GoogleComposerEnvironmentInterface {
-	return newGoogleComposerEnvironments(c)
+func (c *GoogleV1alpha1Client) ComposerEnvironments() ComposerEnvironmentInterface {
+	return newComposerEnvironments(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeAddresses() GoogleComputeAddressInterface {
-	return newGoogleComputeAddresses(c)
+func (c *GoogleV1alpha1Client) ComputeAddresses() ComputeAddressInterface {
+	return newComputeAddresses(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeAttachedDisks() GoogleComputeAttachedDiskInterface {
-	return newGoogleComputeAttachedDisks(c)
+func (c *GoogleV1alpha1Client) ComputeAttachedDisks() ComputeAttachedDiskInterface {
+	return newComputeAttachedDisks(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeAutoscalers() GoogleComputeAutoscalerInterface {
-	return newGoogleComputeAutoscalers(c)
+func (c *GoogleV1alpha1Client) ComputeAutoscalers() ComputeAutoscalerInterface {
+	return newComputeAutoscalers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeBackendBuckets() GoogleComputeBackendBucketInterface {
-	return newGoogleComputeBackendBuckets(c)
+func (c *GoogleV1alpha1Client) ComputeBackendBuckets() ComputeBackendBucketInterface {
+	return newComputeBackendBuckets(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeBackendServices() GoogleComputeBackendServiceInterface {
-	return newGoogleComputeBackendServices(c)
+func (c *GoogleV1alpha1Client) ComputeBackendServices() ComputeBackendServiceInterface {
+	return newComputeBackendServices(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeDisks() GoogleComputeDiskInterface {
-	return newGoogleComputeDisks(c)
+func (c *GoogleV1alpha1Client) ComputeDisks() ComputeDiskInterface {
+	return newComputeDisks(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeFirewalls() GoogleComputeFirewallInterface {
-	return newGoogleComputeFirewalls(c)
+func (c *GoogleV1alpha1Client) ComputeFirewalls() ComputeFirewallInterface {
+	return newComputeFirewalls(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeForwardingRules() GoogleComputeForwardingRuleInterface {
-	return newGoogleComputeForwardingRules(c)
+func (c *GoogleV1alpha1Client) ComputeForwardingRules() ComputeForwardingRuleInterface {
+	return newComputeForwardingRules(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeGlobalAddresses() GoogleComputeGlobalAddressInterface {
-	return newGoogleComputeGlobalAddresses(c)
+func (c *GoogleV1alpha1Client) ComputeGlobalAddresses() ComputeGlobalAddressInterface {
+	return newComputeGlobalAddresses(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeGlobalForwardingRules() GoogleComputeGlobalForwardingRuleInterface {
-	return newGoogleComputeGlobalForwardingRules(c)
+func (c *GoogleV1alpha1Client) ComputeGlobalForwardingRules() ComputeGlobalForwardingRuleInterface {
+	return newComputeGlobalForwardingRules(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeHealthChecks() GoogleComputeHealthCheckInterface {
-	return newGoogleComputeHealthChecks(c)
+func (c *GoogleV1alpha1Client) ComputeHealthChecks() ComputeHealthCheckInterface {
+	return newComputeHealthChecks(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeHttpHealthChecks() GoogleComputeHttpHealthCheckInterface {
-	return newGoogleComputeHttpHealthChecks(c)
+func (c *GoogleV1alpha1Client) ComputeHttpHealthChecks() ComputeHttpHealthCheckInterface {
+	return newComputeHttpHealthChecks(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeHttpsHealthChecks() GoogleComputeHttpsHealthCheckInterface {
-	return newGoogleComputeHttpsHealthChecks(c)
+func (c *GoogleV1alpha1Client) ComputeHttpsHealthChecks() ComputeHttpsHealthCheckInterface {
+	return newComputeHttpsHealthChecks(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeImages() GoogleComputeImageInterface {
-	return newGoogleComputeImages(c)
+func (c *GoogleV1alpha1Client) ComputeImages() ComputeImageInterface {
+	return newComputeImages(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeInstances() GoogleComputeInstanceInterface {
-	return newGoogleComputeInstances(c)
+func (c *GoogleV1alpha1Client) ComputeInstances() ComputeInstanceInterface {
+	return newComputeInstances(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeInstanceFromTemplates() GoogleComputeInstanceFromTemplateInterface {
-	return newGoogleComputeInstanceFromTemplates(c)
+func (c *GoogleV1alpha1Client) ComputeInstanceFromTemplates() ComputeInstanceFromTemplateInterface {
+	return newComputeInstanceFromTemplates(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeInstanceGroups() GoogleComputeInstanceGroupInterface {
-	return newGoogleComputeInstanceGroups(c)
+func (c *GoogleV1alpha1Client) ComputeInstanceGroups() ComputeInstanceGroupInterface {
+	return newComputeInstanceGroups(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeInstanceGroupManagers() GoogleComputeInstanceGroupManagerInterface {
-	return newGoogleComputeInstanceGroupManagers(c)
+func (c *GoogleV1alpha1Client) ComputeInstanceGroupManagers() ComputeInstanceGroupManagerInterface {
+	return newComputeInstanceGroupManagers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeInstanceTemplates() GoogleComputeInstanceTemplateInterface {
-	return newGoogleComputeInstanceTemplates(c)
+func (c *GoogleV1alpha1Client) ComputeInstanceTemplates() ComputeInstanceTemplateInterface {
+	return newComputeInstanceTemplates(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeInterconnectAttachments() GoogleComputeInterconnectAttachmentInterface {
-	return newGoogleComputeInterconnectAttachments(c)
+func (c *GoogleV1alpha1Client) ComputeInterconnectAttachments() ComputeInterconnectAttachmentInterface {
+	return newComputeInterconnectAttachments(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeNetworks() GoogleComputeNetworkInterface {
-	return newGoogleComputeNetworks(c)
+func (c *GoogleV1alpha1Client) ComputeNetworks() ComputeNetworkInterface {
+	return newComputeNetworks(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeNetworkPeerings() GoogleComputeNetworkPeeringInterface {
-	return newGoogleComputeNetworkPeerings(c)
+func (c *GoogleV1alpha1Client) ComputeNetworkPeerings() ComputeNetworkPeeringInterface {
+	return newComputeNetworkPeerings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeProjectMetadatas() GoogleComputeProjectMetadataInterface {
-	return newGoogleComputeProjectMetadatas(c)
+func (c *GoogleV1alpha1Client) ComputeProjectMetadatas() ComputeProjectMetadataInterface {
+	return newComputeProjectMetadatas(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeProjectMetadataItems() GoogleComputeProjectMetadataItemInterface {
-	return newGoogleComputeProjectMetadataItems(c)
+func (c *GoogleV1alpha1Client) ComputeProjectMetadataItems() ComputeProjectMetadataItemInterface {
+	return newComputeProjectMetadataItems(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeRegionAutoscalers() GoogleComputeRegionAutoscalerInterface {
-	return newGoogleComputeRegionAutoscalers(c)
+func (c *GoogleV1alpha1Client) ComputeRegionAutoscalers() ComputeRegionAutoscalerInterface {
+	return newComputeRegionAutoscalers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeRegionBackendServices() GoogleComputeRegionBackendServiceInterface {
-	return newGoogleComputeRegionBackendServices(c)
+func (c *GoogleV1alpha1Client) ComputeRegionBackendServices() ComputeRegionBackendServiceInterface {
+	return newComputeRegionBackendServices(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeRegionDisks() GoogleComputeRegionDiskInterface {
-	return newGoogleComputeRegionDisks(c)
+func (c *GoogleV1alpha1Client) ComputeRegionDisks() ComputeRegionDiskInterface {
+	return newComputeRegionDisks(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeRegionInstanceGroupManagers() GoogleComputeRegionInstanceGroupManagerInterface {
-	return newGoogleComputeRegionInstanceGroupManagers(c)
+func (c *GoogleV1alpha1Client) ComputeRegionInstanceGroupManagers() ComputeRegionInstanceGroupManagerInterface {
+	return newComputeRegionInstanceGroupManagers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeRoutes() GoogleComputeRouteInterface {
-	return newGoogleComputeRoutes(c)
+func (c *GoogleV1alpha1Client) ComputeRoutes() ComputeRouteInterface {
+	return newComputeRoutes(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeRouters() GoogleComputeRouterInterface {
-	return newGoogleComputeRouters(c)
+func (c *GoogleV1alpha1Client) ComputeRouters() ComputeRouterInterface {
+	return newComputeRouters(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeRouterInterfaces() GoogleComputeRouterInterfaceInterface {
-	return newGoogleComputeRouterInterfaces(c)
+func (c *GoogleV1alpha1Client) ComputeRouterInterfaces() ComputeRouterInterfaceInterface {
+	return newComputeRouterInterfaces(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeRouterNats() GoogleComputeRouterNatInterface {
-	return newGoogleComputeRouterNats(c)
+func (c *GoogleV1alpha1Client) ComputeRouterNats() ComputeRouterNatInterface {
+	return newComputeRouterNats(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeRouterPeers() GoogleComputeRouterPeerInterface {
-	return newGoogleComputeRouterPeers(c)
+func (c *GoogleV1alpha1Client) ComputeRouterPeers() ComputeRouterPeerInterface {
+	return newComputeRouterPeers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeSecurityPolicies() GoogleComputeSecurityPolicyInterface {
-	return newGoogleComputeSecurityPolicies(c)
+func (c *GoogleV1alpha1Client) ComputeSecurityPolicies() ComputeSecurityPolicyInterface {
+	return newComputeSecurityPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeSharedVpcHostProjects() GoogleComputeSharedVpcHostProjectInterface {
-	return newGoogleComputeSharedVpcHostProjects(c)
+func (c *GoogleV1alpha1Client) ComputeSharedVpcHostProjects() ComputeSharedVpcHostProjectInterface {
+	return newComputeSharedVpcHostProjects(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeSharedVpcServiceProjects() GoogleComputeSharedVpcServiceProjectInterface {
-	return newGoogleComputeSharedVpcServiceProjects(c)
+func (c *GoogleV1alpha1Client) ComputeSharedVpcServiceProjects() ComputeSharedVpcServiceProjectInterface {
+	return newComputeSharedVpcServiceProjects(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeSnapshots() GoogleComputeSnapshotInterface {
-	return newGoogleComputeSnapshots(c)
+func (c *GoogleV1alpha1Client) ComputeSnapshots() ComputeSnapshotInterface {
+	return newComputeSnapshots(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeSslCertificates() GoogleComputeSslCertificateInterface {
-	return newGoogleComputeSslCertificates(c)
+func (c *GoogleV1alpha1Client) ComputeSslCertificates() ComputeSslCertificateInterface {
+	return newComputeSslCertificates(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeSslPolicies() GoogleComputeSslPolicyInterface {
-	return newGoogleComputeSslPolicies(c)
+func (c *GoogleV1alpha1Client) ComputeSslPolicies() ComputeSslPolicyInterface {
+	return newComputeSslPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeSubnetworks() GoogleComputeSubnetworkInterface {
-	return newGoogleComputeSubnetworks(c)
+func (c *GoogleV1alpha1Client) ComputeSubnetworks() ComputeSubnetworkInterface {
+	return newComputeSubnetworks(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeSubnetworkIamBindings() GoogleComputeSubnetworkIamBindingInterface {
-	return newGoogleComputeSubnetworkIamBindings(c)
+func (c *GoogleV1alpha1Client) ComputeSubnetworkIamBindings() ComputeSubnetworkIamBindingInterface {
+	return newComputeSubnetworkIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeSubnetworkIamMembers() GoogleComputeSubnetworkIamMemberInterface {
-	return newGoogleComputeSubnetworkIamMembers(c)
+func (c *GoogleV1alpha1Client) ComputeSubnetworkIamMembers() ComputeSubnetworkIamMemberInterface {
+	return newComputeSubnetworkIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeSubnetworkIamPolicies() GoogleComputeSubnetworkIamPolicyInterface {
-	return newGoogleComputeSubnetworkIamPolicies(c)
+func (c *GoogleV1alpha1Client) ComputeSubnetworkIamPolicies() ComputeSubnetworkIamPolicyInterface {
+	return newComputeSubnetworkIamPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeTargetHttpProxies() GoogleComputeTargetHttpProxyInterface {
-	return newGoogleComputeTargetHttpProxies(c)
+func (c *GoogleV1alpha1Client) ComputeTargetHttpProxies() ComputeTargetHttpProxyInterface {
+	return newComputeTargetHttpProxies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeTargetHttpsProxies() GoogleComputeTargetHttpsProxyInterface {
-	return newGoogleComputeTargetHttpsProxies(c)
+func (c *GoogleV1alpha1Client) ComputeTargetHttpsProxies() ComputeTargetHttpsProxyInterface {
+	return newComputeTargetHttpsProxies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeTargetPools() GoogleComputeTargetPoolInterface {
-	return newGoogleComputeTargetPools(c)
+func (c *GoogleV1alpha1Client) ComputeTargetPools() ComputeTargetPoolInterface {
+	return newComputeTargetPools(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeTargetSslProxies() GoogleComputeTargetSslProxyInterface {
-	return newGoogleComputeTargetSslProxies(c)
+func (c *GoogleV1alpha1Client) ComputeTargetSslProxies() ComputeTargetSslProxyInterface {
+	return newComputeTargetSslProxies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeTargetTcpProxies() GoogleComputeTargetTcpProxyInterface {
-	return newGoogleComputeTargetTcpProxies(c)
+func (c *GoogleV1alpha1Client) ComputeTargetTcpProxies() ComputeTargetTcpProxyInterface {
+	return newComputeTargetTcpProxies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeUrlMaps() GoogleComputeUrlMapInterface {
-	return newGoogleComputeUrlMaps(c)
+func (c *GoogleV1alpha1Client) ComputeUrlMaps() ComputeUrlMapInterface {
+	return newComputeUrlMaps(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeVpnGateways() GoogleComputeVpnGatewayInterface {
-	return newGoogleComputeVpnGateways(c)
+func (c *GoogleV1alpha1Client) ComputeVpnGateways() ComputeVpnGatewayInterface {
+	return newComputeVpnGateways(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleComputeVpnTunnels() GoogleComputeVpnTunnelInterface {
-	return newGoogleComputeVpnTunnels(c)
+func (c *GoogleV1alpha1Client) ComputeVpnTunnels() ComputeVpnTunnelInterface {
+	return newComputeVpnTunnels(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleContainerAnalysisNotes() GoogleContainerAnalysisNoteInterface {
-	return newGoogleContainerAnalysisNotes(c)
+func (c *GoogleV1alpha1Client) ContainerAnalysisNotes() ContainerAnalysisNoteInterface {
+	return newContainerAnalysisNotes(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleContainerClusters() GoogleContainerClusterInterface {
-	return newGoogleContainerClusters(c)
+func (c *GoogleV1alpha1Client) ContainerClusters() ContainerClusterInterface {
+	return newContainerClusters(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleContainerNodePools() GoogleContainerNodePoolInterface {
-	return newGoogleContainerNodePools(c)
+func (c *GoogleV1alpha1Client) ContainerNodePools() ContainerNodePoolInterface {
+	return newContainerNodePools(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleDataflowJobs() GoogleDataflowJobInterface {
-	return newGoogleDataflowJobs(c)
+func (c *GoogleV1alpha1Client) DataflowJobs() DataflowJobInterface {
+	return newDataflowJobs(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleDataprocClusters() GoogleDataprocClusterInterface {
-	return newGoogleDataprocClusters(c)
+func (c *GoogleV1alpha1Client) DataprocClusters() DataprocClusterInterface {
+	return newDataprocClusters(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleDataprocJobs() GoogleDataprocJobInterface {
-	return newGoogleDataprocJobs(c)
+func (c *GoogleV1alpha1Client) DataprocJobs() DataprocJobInterface {
+	return newDataprocJobs(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleDnsManagedZones() GoogleDnsManagedZoneInterface {
-	return newGoogleDnsManagedZones(c)
+func (c *GoogleV1alpha1Client) DnsManagedZones() DnsManagedZoneInterface {
+	return newDnsManagedZones(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleDnsRecordSets() GoogleDnsRecordSetInterface {
-	return newGoogleDnsRecordSets(c)
+func (c *GoogleV1alpha1Client) DnsRecordSets() DnsRecordSetInterface {
+	return newDnsRecordSets(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleEndpointsServices() GoogleEndpointsServiceInterface {
-	return newGoogleEndpointsServices(c)
+func (c *GoogleV1alpha1Client) EndpointsServices() EndpointsServiceInterface {
+	return newEndpointsServices(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleFilestoreInstances() GoogleFilestoreInstanceInterface {
-	return newGoogleFilestoreInstances(c)
+func (c *GoogleV1alpha1Client) FilestoreInstances() FilestoreInstanceInterface {
+	return newFilestoreInstances(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleFolders() GoogleFolderInterface {
-	return newGoogleFolders(c)
+func (c *GoogleV1alpha1Client) Folders() FolderInterface {
+	return newFolders(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleFolderIamBindings() GoogleFolderIamBindingInterface {
-	return newGoogleFolderIamBindings(c)
+func (c *GoogleV1alpha1Client) FolderIamBindings() FolderIamBindingInterface {
+	return newFolderIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleFolderIamMembers() GoogleFolderIamMemberInterface {
-	return newGoogleFolderIamMembers(c)
+func (c *GoogleV1alpha1Client) FolderIamMembers() FolderIamMemberInterface {
+	return newFolderIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleFolderIamPolicies() GoogleFolderIamPolicyInterface {
-	return newGoogleFolderIamPolicies(c)
+func (c *GoogleV1alpha1Client) FolderIamPolicies() FolderIamPolicyInterface {
+	return newFolderIamPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleFolderOrganizationPolicies() GoogleFolderOrganizationPolicyInterface {
-	return newGoogleFolderOrganizationPolicies(c)
+func (c *GoogleV1alpha1Client) FolderOrganizationPolicies() FolderOrganizationPolicyInterface {
+	return newFolderOrganizationPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleKmsCryptoKeys() GoogleKmsCryptoKeyInterface {
-	return newGoogleKmsCryptoKeys(c)
+func (c *GoogleV1alpha1Client) KmsCryptoKeys() KmsCryptoKeyInterface {
+	return newKmsCryptoKeys(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleKmsCryptoKeyIamBindings() GoogleKmsCryptoKeyIamBindingInterface {
-	return newGoogleKmsCryptoKeyIamBindings(c)
+func (c *GoogleV1alpha1Client) KmsCryptoKeyIamBindings() KmsCryptoKeyIamBindingInterface {
+	return newKmsCryptoKeyIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleKmsCryptoKeyIamMembers() GoogleKmsCryptoKeyIamMemberInterface {
-	return newGoogleKmsCryptoKeyIamMembers(c)
+func (c *GoogleV1alpha1Client) KmsCryptoKeyIamMembers() KmsCryptoKeyIamMemberInterface {
+	return newKmsCryptoKeyIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleKmsKeyRings() GoogleKmsKeyRingInterface {
-	return newGoogleKmsKeyRings(c)
+func (c *GoogleV1alpha1Client) KmsKeyRings() KmsKeyRingInterface {
+	return newKmsKeyRings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleKmsKeyRingIamBindings() GoogleKmsKeyRingIamBindingInterface {
-	return newGoogleKmsKeyRingIamBindings(c)
+func (c *GoogleV1alpha1Client) KmsKeyRingIamBindings() KmsKeyRingIamBindingInterface {
+	return newKmsKeyRingIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleKmsKeyRingIamMembers() GoogleKmsKeyRingIamMemberInterface {
-	return newGoogleKmsKeyRingIamMembers(c)
+func (c *GoogleV1alpha1Client) KmsKeyRingIamMembers() KmsKeyRingIamMemberInterface {
+	return newKmsKeyRingIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleKmsKeyRingIamPolicies() GoogleKmsKeyRingIamPolicyInterface {
-	return newGoogleKmsKeyRingIamPolicies(c)
+func (c *GoogleV1alpha1Client) KmsKeyRingIamPolicies() KmsKeyRingIamPolicyInterface {
+	return newKmsKeyRingIamPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleLoggingBillingAccountExclusions() GoogleLoggingBillingAccountExclusionInterface {
-	return newGoogleLoggingBillingAccountExclusions(c)
+func (c *GoogleV1alpha1Client) LoggingBillingAccountExclusions() LoggingBillingAccountExclusionInterface {
+	return newLoggingBillingAccountExclusions(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleLoggingBillingAccountSinks() GoogleLoggingBillingAccountSinkInterface {
-	return newGoogleLoggingBillingAccountSinks(c)
+func (c *GoogleV1alpha1Client) LoggingBillingAccountSinks() LoggingBillingAccountSinkInterface {
+	return newLoggingBillingAccountSinks(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleLoggingFolderExclusions() GoogleLoggingFolderExclusionInterface {
-	return newGoogleLoggingFolderExclusions(c)
+func (c *GoogleV1alpha1Client) LoggingFolderExclusions() LoggingFolderExclusionInterface {
+	return newLoggingFolderExclusions(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleLoggingFolderSinks() GoogleLoggingFolderSinkInterface {
-	return newGoogleLoggingFolderSinks(c)
+func (c *GoogleV1alpha1Client) LoggingFolderSinks() LoggingFolderSinkInterface {
+	return newLoggingFolderSinks(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleLoggingOrganizationExclusions() GoogleLoggingOrganizationExclusionInterface {
-	return newGoogleLoggingOrganizationExclusions(c)
+func (c *GoogleV1alpha1Client) LoggingOrganizationExclusions() LoggingOrganizationExclusionInterface {
+	return newLoggingOrganizationExclusions(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleLoggingOrganizationSinks() GoogleLoggingOrganizationSinkInterface {
-	return newGoogleLoggingOrganizationSinks(c)
+func (c *GoogleV1alpha1Client) LoggingOrganizationSinks() LoggingOrganizationSinkInterface {
+	return newLoggingOrganizationSinks(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleLoggingProjectExclusions() GoogleLoggingProjectExclusionInterface {
-	return newGoogleLoggingProjectExclusions(c)
+func (c *GoogleV1alpha1Client) LoggingProjectExclusions() LoggingProjectExclusionInterface {
+	return newLoggingProjectExclusions(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleLoggingProjectSinks() GoogleLoggingProjectSinkInterface {
-	return newGoogleLoggingProjectSinks(c)
+func (c *GoogleV1alpha1Client) LoggingProjectSinks() LoggingProjectSinkInterface {
+	return newLoggingProjectSinks(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleMonitoringAlertPolicies() GoogleMonitoringAlertPolicyInterface {
-	return newGoogleMonitoringAlertPolicies(c)
+func (c *GoogleV1alpha1Client) MonitoringAlertPolicies() MonitoringAlertPolicyInterface {
+	return newMonitoringAlertPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleMonitoringGroups() GoogleMonitoringGroupInterface {
-	return newGoogleMonitoringGroups(c)
+func (c *GoogleV1alpha1Client) MonitoringGroups() MonitoringGroupInterface {
+	return newMonitoringGroups(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleMonitoringNotificationChannels() GoogleMonitoringNotificationChannelInterface {
-	return newGoogleMonitoringNotificationChannels(c)
+func (c *GoogleV1alpha1Client) MonitoringNotificationChannels() MonitoringNotificationChannelInterface {
+	return newMonitoringNotificationChannels(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleMonitoringUptimeCheckConfigs() GoogleMonitoringUptimeCheckConfigInterface {
-	return newGoogleMonitoringUptimeCheckConfigs(c)
+func (c *GoogleV1alpha1Client) MonitoringUptimeCheckConfigs() MonitoringUptimeCheckConfigInterface {
+	return newMonitoringUptimeCheckConfigs(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleOrganizationIamBindings() GoogleOrganizationIamBindingInterface {
-	return newGoogleOrganizationIamBindings(c)
+func (c *GoogleV1alpha1Client) OrganizationIamBindings() OrganizationIamBindingInterface {
+	return newOrganizationIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleOrganizationIamCustomRoles() GoogleOrganizationIamCustomRoleInterface {
-	return newGoogleOrganizationIamCustomRoles(c)
+func (c *GoogleV1alpha1Client) OrganizationIamCustomRoles() OrganizationIamCustomRoleInterface {
+	return newOrganizationIamCustomRoles(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleOrganizationIamMembers() GoogleOrganizationIamMemberInterface {
-	return newGoogleOrganizationIamMembers(c)
+func (c *GoogleV1alpha1Client) OrganizationIamMembers() OrganizationIamMemberInterface {
+	return newOrganizationIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleOrganizationIamPolicies() GoogleOrganizationIamPolicyInterface {
-	return newGoogleOrganizationIamPolicies(c)
+func (c *GoogleV1alpha1Client) OrganizationIamPolicies() OrganizationIamPolicyInterface {
+	return newOrganizationIamPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleOrganizationPolicies() GoogleOrganizationPolicyInterface {
-	return newGoogleOrganizationPolicies(c)
+func (c *GoogleV1alpha1Client) OrganizationPolicies() OrganizationPolicyInterface {
+	return newOrganizationPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleProjects() GoogleProjectInterface {
-	return newGoogleProjects(c)
+func (c *GoogleV1alpha1Client) Projects() ProjectInterface {
+	return newProjects(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleProjectIamBindings() GoogleProjectIamBindingInterface {
-	return newGoogleProjectIamBindings(c)
+func (c *GoogleV1alpha1Client) ProjectIamBindings() ProjectIamBindingInterface {
+	return newProjectIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleProjectIamCustomRoles() GoogleProjectIamCustomRoleInterface {
-	return newGoogleProjectIamCustomRoles(c)
+func (c *GoogleV1alpha1Client) ProjectIamCustomRoles() ProjectIamCustomRoleInterface {
+	return newProjectIamCustomRoles(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleProjectIamMembers() GoogleProjectIamMemberInterface {
-	return newGoogleProjectIamMembers(c)
+func (c *GoogleV1alpha1Client) ProjectIamMembers() ProjectIamMemberInterface {
+	return newProjectIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleProjectIamPolicies() GoogleProjectIamPolicyInterface {
-	return newGoogleProjectIamPolicies(c)
+func (c *GoogleV1alpha1Client) ProjectIamPolicies() ProjectIamPolicyInterface {
+	return newProjectIamPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleProjectOrganizationPolicies() GoogleProjectOrganizationPolicyInterface {
-	return newGoogleProjectOrganizationPolicies(c)
+func (c *GoogleV1alpha1Client) ProjectOrganizationPolicies() ProjectOrganizationPolicyInterface {
+	return newProjectOrganizationPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleProjectServices() GoogleProjectServiceInterface {
-	return newGoogleProjectServices(c)
+func (c *GoogleV1alpha1Client) ProjectServices() ProjectServiceInterface {
+	return newProjectServices(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleProjectServiceses() GoogleProjectServicesInterface {
-	return newGoogleProjectServiceses(c)
+func (c *GoogleV1alpha1Client) ProjectServiceses() ProjectServicesInterface {
+	return newProjectServiceses(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleProjectUsageExportBuckets() GoogleProjectUsageExportBucketInterface {
-	return newGoogleProjectUsageExportBuckets(c)
+func (c *GoogleV1alpha1Client) ProjectUsageExportBuckets() ProjectUsageExportBucketInterface {
+	return newProjectUsageExportBuckets(c)
 }
 
-func (c *GoogleV1alpha1Client) GooglePubsubSubscriptions() GooglePubsubSubscriptionInterface {
-	return newGooglePubsubSubscriptions(c)
+func (c *GoogleV1alpha1Client) PubsubSubscriptions() PubsubSubscriptionInterface {
+	return newPubsubSubscriptions(c)
 }
 
-func (c *GoogleV1alpha1Client) GooglePubsubSubscriptionIamBindings() GooglePubsubSubscriptionIamBindingInterface {
-	return newGooglePubsubSubscriptionIamBindings(c)
+func (c *GoogleV1alpha1Client) PubsubSubscriptionIamBindings() PubsubSubscriptionIamBindingInterface {
+	return newPubsubSubscriptionIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GooglePubsubSubscriptionIamMembers() GooglePubsubSubscriptionIamMemberInterface {
-	return newGooglePubsubSubscriptionIamMembers(c)
+func (c *GoogleV1alpha1Client) PubsubSubscriptionIamMembers() PubsubSubscriptionIamMemberInterface {
+	return newPubsubSubscriptionIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GooglePubsubSubscriptionIamPolicies() GooglePubsubSubscriptionIamPolicyInterface {
-	return newGooglePubsubSubscriptionIamPolicies(c)
+func (c *GoogleV1alpha1Client) PubsubSubscriptionIamPolicies() PubsubSubscriptionIamPolicyInterface {
+	return newPubsubSubscriptionIamPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GooglePubsubTopics() GooglePubsubTopicInterface {
-	return newGooglePubsubTopics(c)
+func (c *GoogleV1alpha1Client) PubsubTopics() PubsubTopicInterface {
+	return newPubsubTopics(c)
 }
 
-func (c *GoogleV1alpha1Client) GooglePubsubTopicIamBindings() GooglePubsubTopicIamBindingInterface {
-	return newGooglePubsubTopicIamBindings(c)
+func (c *GoogleV1alpha1Client) PubsubTopicIamBindings() PubsubTopicIamBindingInterface {
+	return newPubsubTopicIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GooglePubsubTopicIamMembers() GooglePubsubTopicIamMemberInterface {
-	return newGooglePubsubTopicIamMembers(c)
+func (c *GoogleV1alpha1Client) PubsubTopicIamMembers() PubsubTopicIamMemberInterface {
+	return newPubsubTopicIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GooglePubsubTopicIamPolicies() GooglePubsubTopicIamPolicyInterface {
-	return newGooglePubsubTopicIamPolicies(c)
+func (c *GoogleV1alpha1Client) PubsubTopicIamPolicies() PubsubTopicIamPolicyInterface {
+	return newPubsubTopicIamPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleRedisInstances() GoogleRedisInstanceInterface {
-	return newGoogleRedisInstances(c)
+func (c *GoogleV1alpha1Client) RedisInstances() RedisInstanceInterface {
+	return newRedisInstances(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleResourceManagerLiens() GoogleResourceManagerLienInterface {
-	return newGoogleResourceManagerLiens(c)
+func (c *GoogleV1alpha1Client) ResourceManagerLiens() ResourceManagerLienInterface {
+	return newResourceManagerLiens(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleRuntimeconfigConfigs() GoogleRuntimeconfigConfigInterface {
-	return newGoogleRuntimeconfigConfigs(c)
+func (c *GoogleV1alpha1Client) RuntimeconfigConfigs() RuntimeconfigConfigInterface {
+	return newRuntimeconfigConfigs(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleRuntimeconfigVariables() GoogleRuntimeconfigVariableInterface {
-	return newGoogleRuntimeconfigVariables(c)
+func (c *GoogleV1alpha1Client) RuntimeconfigVariables() RuntimeconfigVariableInterface {
+	return newRuntimeconfigVariables(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleServiceAccounts() GoogleServiceAccountInterface {
-	return newGoogleServiceAccounts(c)
+func (c *GoogleV1alpha1Client) ServiceAccounts() ServiceAccountInterface {
+	return newServiceAccounts(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleServiceAccountIamBindings() GoogleServiceAccountIamBindingInterface {
-	return newGoogleServiceAccountIamBindings(c)
+func (c *GoogleV1alpha1Client) ServiceAccountIamBindings() ServiceAccountIamBindingInterface {
+	return newServiceAccountIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleServiceAccountIamMembers() GoogleServiceAccountIamMemberInterface {
-	return newGoogleServiceAccountIamMembers(c)
+func (c *GoogleV1alpha1Client) ServiceAccountIamMembers() ServiceAccountIamMemberInterface {
+	return newServiceAccountIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleServiceAccountIamPolicies() GoogleServiceAccountIamPolicyInterface {
-	return newGoogleServiceAccountIamPolicies(c)
+func (c *GoogleV1alpha1Client) ServiceAccountIamPolicies() ServiceAccountIamPolicyInterface {
+	return newServiceAccountIamPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleServiceAccountKeys() GoogleServiceAccountKeyInterface {
-	return newGoogleServiceAccountKeys(c)
+func (c *GoogleV1alpha1Client) ServiceAccountKeys() ServiceAccountKeyInterface {
+	return newServiceAccountKeys(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSourcerepoRepositories() GoogleSourcerepoRepositoryInterface {
-	return newGoogleSourcerepoRepositories(c)
+func (c *GoogleV1alpha1Client) SourcerepoRepositories() SourcerepoRepositoryInterface {
+	return newSourcerepoRepositories(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSpannerDatabases() GoogleSpannerDatabaseInterface {
-	return newGoogleSpannerDatabases(c)
+func (c *GoogleV1alpha1Client) SpannerDatabases() SpannerDatabaseInterface {
+	return newSpannerDatabases(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSpannerDatabaseIamBindings() GoogleSpannerDatabaseIamBindingInterface {
-	return newGoogleSpannerDatabaseIamBindings(c)
+func (c *GoogleV1alpha1Client) SpannerDatabaseIamBindings() SpannerDatabaseIamBindingInterface {
+	return newSpannerDatabaseIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSpannerDatabaseIamMembers() GoogleSpannerDatabaseIamMemberInterface {
-	return newGoogleSpannerDatabaseIamMembers(c)
+func (c *GoogleV1alpha1Client) SpannerDatabaseIamMembers() SpannerDatabaseIamMemberInterface {
+	return newSpannerDatabaseIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSpannerDatabaseIamPolicies() GoogleSpannerDatabaseIamPolicyInterface {
-	return newGoogleSpannerDatabaseIamPolicies(c)
+func (c *GoogleV1alpha1Client) SpannerDatabaseIamPolicies() SpannerDatabaseIamPolicyInterface {
+	return newSpannerDatabaseIamPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSpannerInstances() GoogleSpannerInstanceInterface {
-	return newGoogleSpannerInstances(c)
+func (c *GoogleV1alpha1Client) SpannerInstances() SpannerInstanceInterface {
+	return newSpannerInstances(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSpannerInstanceIamBindings() GoogleSpannerInstanceIamBindingInterface {
-	return newGoogleSpannerInstanceIamBindings(c)
+func (c *GoogleV1alpha1Client) SpannerInstanceIamBindings() SpannerInstanceIamBindingInterface {
+	return newSpannerInstanceIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSpannerInstanceIamMembers() GoogleSpannerInstanceIamMemberInterface {
-	return newGoogleSpannerInstanceIamMembers(c)
+func (c *GoogleV1alpha1Client) SpannerInstanceIamMembers() SpannerInstanceIamMemberInterface {
+	return newSpannerInstanceIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSpannerInstanceIamPolicies() GoogleSpannerInstanceIamPolicyInterface {
-	return newGoogleSpannerInstanceIamPolicies(c)
+func (c *GoogleV1alpha1Client) SpannerInstanceIamPolicies() SpannerInstanceIamPolicyInterface {
+	return newSpannerInstanceIamPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSqlDatabases() GoogleSqlDatabaseInterface {
-	return newGoogleSqlDatabases(c)
+func (c *GoogleV1alpha1Client) SqlDatabases() SqlDatabaseInterface {
+	return newSqlDatabases(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSqlDatabaseInstances() GoogleSqlDatabaseInstanceInterface {
-	return newGoogleSqlDatabaseInstances(c)
+func (c *GoogleV1alpha1Client) SqlDatabaseInstances() SqlDatabaseInstanceInterface {
+	return newSqlDatabaseInstances(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSqlSslCerts() GoogleSqlSslCertInterface {
-	return newGoogleSqlSslCerts(c)
+func (c *GoogleV1alpha1Client) SqlSslCerts() SqlSslCertInterface {
+	return newSqlSslCerts(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleSqlUsers() GoogleSqlUserInterface {
-	return newGoogleSqlUsers(c)
+func (c *GoogleV1alpha1Client) SqlUsers() SqlUserInterface {
+	return newSqlUsers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleStorageBuckets() GoogleStorageBucketInterface {
-	return newGoogleStorageBuckets(c)
+func (c *GoogleV1alpha1Client) StorageBuckets() StorageBucketInterface {
+	return newStorageBuckets(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleStorageBucketAcls() GoogleStorageBucketAclInterface {
-	return newGoogleStorageBucketAcls(c)
+func (c *GoogleV1alpha1Client) StorageBucketAcls() StorageBucketAclInterface {
+	return newStorageBucketAcls(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleStorageBucketIamBindings() GoogleStorageBucketIamBindingInterface {
-	return newGoogleStorageBucketIamBindings(c)
+func (c *GoogleV1alpha1Client) StorageBucketIamBindings() StorageBucketIamBindingInterface {
+	return newStorageBucketIamBindings(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleStorageBucketIamMembers() GoogleStorageBucketIamMemberInterface {
-	return newGoogleStorageBucketIamMembers(c)
+func (c *GoogleV1alpha1Client) StorageBucketIamMembers() StorageBucketIamMemberInterface {
+	return newStorageBucketIamMembers(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleStorageBucketIamPolicies() GoogleStorageBucketIamPolicyInterface {
-	return newGoogleStorageBucketIamPolicies(c)
+func (c *GoogleV1alpha1Client) StorageBucketIamPolicies() StorageBucketIamPolicyInterface {
+	return newStorageBucketIamPolicies(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleStorageBucketObjects() GoogleStorageBucketObjectInterface {
-	return newGoogleStorageBucketObjects(c)
+func (c *GoogleV1alpha1Client) StorageBucketObjects() StorageBucketObjectInterface {
+	return newStorageBucketObjects(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleStorageDefaultObjectAccessControls() GoogleStorageDefaultObjectAccessControlInterface {
-	return newGoogleStorageDefaultObjectAccessControls(c)
+func (c *GoogleV1alpha1Client) StorageDefaultObjectAccessControls() StorageDefaultObjectAccessControlInterface {
+	return newStorageDefaultObjectAccessControls(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleStorageDefaultObjectAcls() GoogleStorageDefaultObjectAclInterface {
-	return newGoogleStorageDefaultObjectAcls(c)
+func (c *GoogleV1alpha1Client) StorageDefaultObjectAcls() StorageDefaultObjectAclInterface {
+	return newStorageDefaultObjectAcls(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleStorageNotifications() GoogleStorageNotificationInterface {
-	return newGoogleStorageNotifications(c)
+func (c *GoogleV1alpha1Client) StorageNotifications() StorageNotificationInterface {
+	return newStorageNotifications(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleStorageObjectAccessControls() GoogleStorageObjectAccessControlInterface {
-	return newGoogleStorageObjectAccessControls(c)
+func (c *GoogleV1alpha1Client) StorageObjectAccessControls() StorageObjectAccessControlInterface {
+	return newStorageObjectAccessControls(c)
 }
 
-func (c *GoogleV1alpha1Client) GoogleStorageObjectAcls() GoogleStorageObjectAclInterface {
-	return newGoogleStorageObjectAcls(c)
+func (c *GoogleV1alpha1Client) StorageObjectAcls() StorageObjectAclInterface {
+	return newStorageObjectAcls(c)
 }
 
 // NewForConfig creates a new GoogleV1alpha1Client for the given config.

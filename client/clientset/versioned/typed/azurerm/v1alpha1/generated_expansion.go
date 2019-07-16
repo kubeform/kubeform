@@ -18,528 +18,536 @@ limitations under the License.
 
 package v1alpha1
 
-type AzurermApiManagementExpansion interface{}
+type ApiManagementExpansion interface{}
 
-type AzurermApiManagementApiExpansion interface{}
+type ApiManagementApiExpansion interface{}
 
-type AzurermApiManagementApiOperationExpansion interface{}
+type ApiManagementApiOperationExpansion interface{}
 
-type AzurermApiManagementApiOperationPolicyExpansion interface{}
+type ApiManagementApiOperationPolicyExpansion interface{}
 
-type AzurermApiManagementApiPolicyExpansion interface{}
+type ApiManagementApiPolicyExpansion interface{}
 
-type AzurermApiManagementApiSchemaExpansion interface{}
+type ApiManagementApiSchemaExpansion interface{}
 
-type AzurermApiManagementApiVersionSetExpansion interface{}
+type ApiManagementApiVersionSetExpansion interface{}
 
-type AzurermApiManagementAuthorizationServerExpansion interface{}
+type ApiManagementAuthorizationServerExpansion interface{}
 
-type AzurermApiManagementCertificateExpansion interface{}
+type ApiManagementBackendExpansion interface{}
 
-type AzurermApiManagementGroupExpansion interface{}
+type ApiManagementCertificateExpansion interface{}
 
-type AzurermApiManagementGroupUserExpansion interface{}
+type ApiManagementGroupExpansion interface{}
 
-type AzurermApiManagementLoggerExpansion interface{}
+type ApiManagementGroupUserExpansion interface{}
 
-type AzurermApiManagementOpenidConnectProviderExpansion interface{}
+type ApiManagementLoggerExpansion interface{}
 
-type AzurermApiManagementProductExpansion interface{}
+type ApiManagementOpenidConnectProviderExpansion interface{}
 
-type AzurermApiManagementProductApiExpansion interface{}
+type ApiManagementProductExpansion interface{}
 
-type AzurermApiManagementProductGroupExpansion interface{}
+type ApiManagementProductApiExpansion interface{}
 
-type AzurermApiManagementProductPolicyExpansion interface{}
+type ApiManagementProductGroupExpansion interface{}
 
-type AzurermApiManagementPropertyExpansion interface{}
+type ApiManagementProductPolicyExpansion interface{}
 
-type AzurermApiManagementSubscriptionExpansion interface{}
+type ApiManagementPropertyExpansion interface{}
 
-type AzurermApiManagementUserExpansion interface{}
+type ApiManagementSubscriptionExpansion interface{}
 
-type AzurermAppServiceExpansion interface{}
+type ApiManagementUserExpansion interface{}
 
-type AzurermAppServiceActiveSlotExpansion interface{}
+type AppServiceExpansion interface{}
 
-type AzurermAppServiceCustomHostnameBindingExpansion interface{}
+type AppServiceActiveSlotExpansion interface{}
 
-type AzurermAppServicePlanExpansion interface{}
+type AppServiceCustomHostnameBindingExpansion interface{}
 
-type AzurermAppServiceSlotExpansion interface{}
+type AppServicePlanExpansion interface{}
 
-type AzurermApplicationGatewayExpansion interface{}
+type AppServiceSlotExpansion interface{}
 
-type AzurermApplicationInsightsExpansion interface{}
+type ApplicationGatewayExpansion interface{}
 
-type AzurermApplicationInsightsApiKeyExpansion interface{}
+type ApplicationInsightsExpansion interface{}
 
-type AzurermApplicationInsightsWebTestExpansion interface{}
+type ApplicationInsightsApiKeyExpansion interface{}
 
-type AzurermApplicationSecurityGroupExpansion interface{}
+type ApplicationInsightsWebTestExpansion interface{}
 
-type AzurermAutomationAccountExpansion interface{}
+type ApplicationSecurityGroupExpansion interface{}
 
-type AzurermAutomationCredentialExpansion interface{}
+type AutomationAccountExpansion interface{}
 
-type AzurermAutomationDscConfigurationExpansion interface{}
+type AutomationCredentialExpansion interface{}
 
-type AzurermAutomationDscNodeconfigurationExpansion interface{}
+type AutomationDscConfigurationExpansion interface{}
 
-type AzurermAutomationModuleExpansion interface{}
+type AutomationDscNodeconfigurationExpansion interface{}
 
-type AzurermAutomationRunbookExpansion interface{}
+type AutomationModuleExpansion interface{}
 
-type AzurermAutomationScheduleExpansion interface{}
+type AutomationRunbookExpansion interface{}
 
-type AzurermAutomationVariableBoolExpansion interface{}
+type AutomationScheduleExpansion interface{}
 
-type AzurermAutomationVariableDatetimeExpansion interface{}
+type AutomationVariableBoolExpansion interface{}
 
-type AzurermAutomationVariableIntExpansion interface{}
+type AutomationVariableDatetimeExpansion interface{}
 
-type AzurermAutomationVariableStringExpansion interface{}
+type AutomationVariableIntExpansion interface{}
 
-type AzurermAutoscaleSettingExpansion interface{}
+type AutomationVariableStringExpansion interface{}
 
-type AzurermAvailabilitySetExpansion interface{}
+type AutoscaleSettingExpansion interface{}
 
-type AzurermAzureadApplicationExpansion interface{}
+type AvailabilitySetExpansion interface{}
 
-type AzurermAzureadServicePrincipalExpansion interface{}
+type AzureadApplicationExpansion interface{}
 
-type AzurermAzureadServicePrincipalPasswordExpansion interface{}
+type AzureadServicePrincipalExpansion interface{}
 
-type AzurermBatchAccountExpansion interface{}
+type AzureadServicePrincipalPasswordExpansion interface{}
 
-type AzurermBatchCertificateExpansion interface{}
+type BatchAccountExpansion interface{}
 
-type AzurermBatchPoolExpansion interface{}
+type BatchApplicationExpansion interface{}
 
-type AzurermCdnEndpointExpansion interface{}
+type BatchCertificateExpansion interface{}
 
-type AzurermCdnProfileExpansion interface{}
+type BatchPoolExpansion interface{}
 
-type AzurermCognitiveAccountExpansion interface{}
+type CdnEndpointExpansion interface{}
 
-type AzurermConnectionMonitorExpansion interface{}
+type CdnProfileExpansion interface{}
 
-type AzurermContainerGroupExpansion interface{}
+type CognitiveAccountExpansion interface{}
 
-type AzurermContainerRegistryExpansion interface{}
+type ConnectionMonitorExpansion interface{}
 
-type AzurermContainerServiceExpansion interface{}
+type ContainerGroupExpansion interface{}
 
-type AzurermCosmosdbAccountExpansion interface{}
+type ContainerRegistryExpansion interface{}
 
-type AzurermCosmosdbCassandraKeyspaceExpansion interface{}
+type ContainerServiceExpansion interface{}
 
-type AzurermCosmosdbMongoCollectionExpansion interface{}
+type CosmosdbAccountExpansion interface{}
 
-type AzurermCosmosdbMongoDatabaseExpansion interface{}
+type CosmosdbCassandraKeyspaceExpansion interface{}
 
-type AzurermCosmosdbSqlDatabaseExpansion interface{}
+type CosmosdbMongoCollectionExpansion interface{}
 
-type AzurermCosmosdbTableExpansion interface{}
+type CosmosdbMongoDatabaseExpansion interface{}
 
-type AzurermDataFactoryExpansion interface{}
+type CosmosdbSqlDatabaseExpansion interface{}
 
-type AzurermDataFactoryDatasetMysqlExpansion interface{}
+type CosmosdbTableExpansion interface{}
 
-type AzurermDataFactoryDatasetPostgresqlExpansion interface{}
+type DataFactoryExpansion interface{}
 
-type AzurermDataFactoryDatasetSqlServerTableExpansion interface{}
+type DataFactoryDatasetMysqlExpansion interface{}
 
-type AzurermDataFactoryLinkedServiceDataLakeStorageGen2Expansion interface{}
+type DataFactoryDatasetPostgresqlExpansion interface{}
 
-type AzurermDataFactoryLinkedServiceMysqlExpansion interface{}
+type DataFactoryDatasetSqlServerTableExpansion interface{}
 
-type AzurermDataFactoryLinkedServicePostgresqlExpansion interface{}
+type DataFactoryLinkedServiceDataLakeStorageGen2Expansion interface{}
 
-type AzurermDataFactoryLinkedServiceSqlServerExpansion interface{}
+type DataFactoryLinkedServiceMysqlExpansion interface{}
 
-type AzurermDataFactoryPipelineExpansion interface{}
+type DataFactoryLinkedServicePostgresqlExpansion interface{}
 
-type AzurermDataLakeAnalyticsAccountExpansion interface{}
+type DataFactoryLinkedServiceSqlServerExpansion interface{}
 
-type AzurermDataLakeAnalyticsFirewallRuleExpansion interface{}
+type DataFactoryPipelineExpansion interface{}
 
-type AzurermDataLakeStoreExpansion interface{}
+type DataLakeAnalyticsAccountExpansion interface{}
 
-type AzurermDataLakeStoreFileExpansion interface{}
+type DataLakeAnalyticsFirewallRuleExpansion interface{}
 
-type AzurermDataLakeStoreFirewallRuleExpansion interface{}
+type DataLakeStoreExpansion interface{}
 
-type AzurermDatabricksWorkspaceExpansion interface{}
+type DataLakeStoreFileExpansion interface{}
 
-type AzurermDdosProtectionPlanExpansion interface{}
+type DataLakeStoreFirewallRuleExpansion interface{}
 
-type AzurermDevTestLabExpansion interface{}
+type DatabricksWorkspaceExpansion interface{}
 
-type AzurermDevTestLinuxVirtualMachineExpansion interface{}
+type DdosProtectionPlanExpansion interface{}
 
-type AzurermDevTestPolicyExpansion interface{}
+type DevTestLabExpansion interface{}
 
-type AzurermDevTestVirtualNetworkExpansion interface{}
+type DevTestLinuxVirtualMachineExpansion interface{}
 
-type AzurermDevTestWindowsVirtualMachineExpansion interface{}
+type DevTestPolicyExpansion interface{}
 
-type AzurermDevspaceControllerExpansion interface{}
+type DevTestVirtualNetworkExpansion interface{}
 
-type AzurermDnsARecordExpansion interface{}
+type DevTestWindowsVirtualMachineExpansion interface{}
 
-type AzurermDnsAaaaRecordExpansion interface{}
+type DevspaceControllerExpansion interface{}
 
-type AzurermDnsCaaRecordExpansion interface{}
+type DnsARecordExpansion interface{}
 
-type AzurermDnsCnameRecordExpansion interface{}
+type DnsAaaaRecordExpansion interface{}
 
-type AzurermDnsMxRecordExpansion interface{}
+type DnsCaaRecordExpansion interface{}
 
-type AzurermDnsNsRecordExpansion interface{}
+type DnsCnameRecordExpansion interface{}
 
-type AzurermDnsPtrRecordExpansion interface{}
+type DnsMxRecordExpansion interface{}
 
-type AzurermDnsSrvRecordExpansion interface{}
+type DnsNsRecordExpansion interface{}
 
-type AzurermDnsTxtRecordExpansion interface{}
+type DnsPtrRecordExpansion interface{}
 
-type AzurermDnsZoneExpansion interface{}
+type DnsSrvRecordExpansion interface{}
 
-type AzurermEventgridDomainExpansion interface{}
+type DnsTxtRecordExpansion interface{}
 
-type AzurermEventgridEventSubscriptionExpansion interface{}
+type DnsZoneExpansion interface{}
 
-type AzurermEventgridTopicExpansion interface{}
+type EventgridDomainExpansion interface{}
 
-type AzurermEventhubExpansion interface{}
+type EventgridEventSubscriptionExpansion interface{}
 
-type AzurermEventhubAuthorizationRuleExpansion interface{}
+type EventgridTopicExpansion interface{}
 
-type AzurermEventhubConsumerGroupExpansion interface{}
+type EventhubExpansion interface{}
 
-type AzurermEventhubNamespaceExpansion interface{}
+type EventhubAuthorizationRuleExpansion interface{}
 
-type AzurermEventhubNamespaceAuthorizationRuleExpansion interface{}
+type EventhubConsumerGroupExpansion interface{}
 
-type AzurermExpressRouteCircuitExpansion interface{}
+type EventhubNamespaceExpansion interface{}
 
-type AzurermExpressRouteCircuitAuthorizationExpansion interface{}
+type EventhubNamespaceAuthorizationRuleExpansion interface{}
 
-type AzurermExpressRouteCircuitPeeringExpansion interface{}
+type ExpressRouteCircuitExpansion interface{}
 
-type AzurermFirewallExpansion interface{}
+type ExpressRouteCircuitAuthorizationExpansion interface{}
 
-type AzurermFirewallApplicationRuleCollectionExpansion interface{}
+type ExpressRouteCircuitPeeringExpansion interface{}
 
-type AzurermFirewallNatRuleCollectionExpansion interface{}
+type FirewallExpansion interface{}
 
-type AzurermFirewallNetworkRuleCollectionExpansion interface{}
+type FirewallApplicationRuleCollectionExpansion interface{}
 
-type AzurermFunctionAppExpansion interface{}
+type FirewallNatRuleCollectionExpansion interface{}
 
-type AzurermHdinsightHadoopClusterExpansion interface{}
+type FirewallNetworkRuleCollectionExpansion interface{}
 
-type AzurermHdinsightHbaseClusterExpansion interface{}
+type FunctionAppExpansion interface{}
 
-type AzurermHdinsightInteractiveQueryClusterExpansion interface{}
+type HdinsightHadoopClusterExpansion interface{}
 
-type AzurermHdinsightKafkaClusterExpansion interface{}
+type HdinsightHbaseClusterExpansion interface{}
 
-type AzurermHdinsightMlServicesClusterExpansion interface{}
+type HdinsightInteractiveQueryClusterExpansion interface{}
 
-type AzurermHdinsightRserverClusterExpansion interface{}
+type HdinsightKafkaClusterExpansion interface{}
 
-type AzurermHdinsightSparkClusterExpansion interface{}
+type HdinsightMlServicesClusterExpansion interface{}
 
-type AzurermHdinsightStormClusterExpansion interface{}
+type HdinsightRserverClusterExpansion interface{}
 
-type AzurermImageExpansion interface{}
+type HdinsightSparkClusterExpansion interface{}
 
-type AzurermIotDpsExpansion interface{}
+type HdinsightStormClusterExpansion interface{}
 
-type AzurermIotDpsCertificateExpansion interface{}
+type ImageExpansion interface{}
 
-type AzurermIothubExpansion interface{}
+type IotDpsExpansion interface{}
 
-type AzurermIothubConsumerGroupExpansion interface{}
+type IotDpsCertificateExpansion interface{}
 
-type AzurermIothubSharedAccessPolicyExpansion interface{}
+type IothubExpansion interface{}
 
-type AzurermKeyVaultExpansion interface{}
+type IothubConsumerGroupExpansion interface{}
 
-type AzurermKeyVaultAccessPolicyExpansion interface{}
+type IothubSharedAccessPolicyExpansion interface{}
 
-type AzurermKeyVaultCertificateExpansion interface{}
+type KeyVaultExpansion interface{}
 
-type AzurermKeyVaultKeyExpansion interface{}
+type KeyVaultAccessPolicyExpansion interface{}
 
-type AzurermKeyVaultSecretExpansion interface{}
+type KeyVaultCertificateExpansion interface{}
 
-type AzurermKubernetesClusterExpansion interface{}
+type KeyVaultKeyExpansion interface{}
 
-type AzurermLbExpansion interface{}
+type KeyVaultSecretExpansion interface{}
 
-type AzurermLbBackendAddressPoolExpansion interface{}
+type KubernetesClusterExpansion interface{}
 
-type AzurermLbNatPoolExpansion interface{}
+type LbExpansion interface{}
 
-type AzurermLbNatRuleExpansion interface{}
+type LbBackendAddressPoolExpansion interface{}
 
-type AzurermLbOutboundRuleExpansion interface{}
+type LbNatPoolExpansion interface{}
 
-type AzurermLbProbeExpansion interface{}
+type LbNatRuleExpansion interface{}
 
-type AzurermLbRuleExpansion interface{}
+type LbOutboundRuleExpansion interface{}
 
-type AzurermLocalNetworkGatewayExpansion interface{}
+type LbProbeExpansion interface{}
 
-type AzurermLogAnalyticsLinkedServiceExpansion interface{}
+type LbRuleExpansion interface{}
 
-type AzurermLogAnalyticsSolutionExpansion interface{}
+type LocalNetworkGatewayExpansion interface{}
 
-type AzurermLogAnalyticsWorkspaceExpansion interface{}
+type LogAnalyticsLinkedServiceExpansion interface{}
 
-type AzurermLogAnalyticsWorkspaceLinkedServiceExpansion interface{}
+type LogAnalyticsSolutionExpansion interface{}
 
-type AzurermLogicAppActionCustomExpansion interface{}
+type LogAnalyticsWorkspaceExpansion interface{}
 
-type AzurermLogicAppActionHttpExpansion interface{}
+type LogAnalyticsWorkspaceLinkedServiceExpansion interface{}
 
-type AzurermLogicAppTriggerCustomExpansion interface{}
+type LogicAppActionCustomExpansion interface{}
 
-type AzurermLogicAppTriggerHttpRequestExpansion interface{}
+type LogicAppActionHttpExpansion interface{}
 
-type AzurermLogicAppTriggerRecurrenceExpansion interface{}
+type LogicAppTriggerCustomExpansion interface{}
 
-type AzurermLogicAppWorkflowExpansion interface{}
+type LogicAppTriggerHttpRequestExpansion interface{}
 
-type AzurermManagedDiskExpansion interface{}
+type LogicAppTriggerRecurrenceExpansion interface{}
 
-type AzurermManagementGroupExpansion interface{}
+type LogicAppWorkflowExpansion interface{}
 
-type AzurermManagementLockExpansion interface{}
+type ManagedDiskExpansion interface{}
 
-type AzurermMariadbDatabaseExpansion interface{}
+type ManagementGroupExpansion interface{}
 
-type AzurermMariadbFirewallRuleExpansion interface{}
+type ManagementLockExpansion interface{}
 
-type AzurermMariadbServerExpansion interface{}
+type MariadbDatabaseExpansion interface{}
 
-type AzurermMediaServicesAccountExpansion interface{}
+type MariadbFirewallRuleExpansion interface{}
 
-type AzurermMetricAlertruleExpansion interface{}
+type MariadbServerExpansion interface{}
 
-type AzurermMonitorActionGroupExpansion interface{}
+type MediaServicesAccountExpansion interface{}
 
-type AzurermMonitorActivityLogAlertExpansion interface{}
+type MetricAlertruleExpansion interface{}
 
-type AzurermMonitorAutoscaleSettingExpansion interface{}
+type MonitorActionGroupExpansion interface{}
 
-type AzurermMonitorDiagnosticSettingExpansion interface{}
+type MonitorActivityLogAlertExpansion interface{}
 
-type AzurermMonitorLogProfileExpansion interface{}
+type MonitorAutoscaleSettingExpansion interface{}
 
-type AzurermMonitorMetricAlertExpansion interface{}
+type MonitorDiagnosticSettingExpansion interface{}
 
-type AzurermMonitorMetricAlertruleExpansion interface{}
+type MonitorLogProfileExpansion interface{}
 
-type AzurermMssqlElasticpoolExpansion interface{}
+type MonitorMetricAlertExpansion interface{}
 
-type AzurermMysqlConfigurationExpansion interface{}
+type MonitorMetricAlertruleExpansion interface{}
 
-type AzurermMysqlDatabaseExpansion interface{}
+type MssqlElasticpoolExpansion interface{}
 
-type AzurermMysqlFirewallRuleExpansion interface{}
+type MysqlConfigurationExpansion interface{}
 
-type AzurermMysqlServerExpansion interface{}
+type MysqlDatabaseExpansion interface{}
 
-type AzurermMysqlVirtualNetworkRuleExpansion interface{}
+type MysqlFirewallRuleExpansion interface{}
 
-type AzurermNetworkConnectionMonitorExpansion interface{}
+type MysqlServerExpansion interface{}
 
-type AzurermNetworkDdosProtectionPlanExpansion interface{}
+type MysqlVirtualNetworkRuleExpansion interface{}
 
-type AzurermNetworkInterfaceExpansion interface{}
+type NetworkConnectionMonitorExpansion interface{}
 
-type AzurermNetworkInterfaceApplicationGatewayBackendAddressPoolAssociationExpansion interface{}
+type NetworkDdosProtectionPlanExpansion interface{}
 
-type AzurermNetworkInterfaceApplicationSecurityGroupAssociationExpansion interface{}
+type NetworkInterfaceExpansion interface{}
 
-type AzurermNetworkInterfaceBackendAddressPoolAssociationExpansion interface{}
+type NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationExpansion interface{}
 
-type AzurermNetworkInterfaceNatRuleAssociationExpansion interface{}
+type NetworkInterfaceApplicationSecurityGroupAssociationExpansion interface{}
 
-type AzurermNetworkPacketCaptureExpansion interface{}
+type NetworkInterfaceBackendAddressPoolAssociationExpansion interface{}
 
-type AzurermNetworkProfileExpansion interface{}
+type NetworkInterfaceNatRuleAssociationExpansion interface{}
 
-type AzurermNetworkSecurityGroupExpansion interface{}
+type NetworkPacketCaptureExpansion interface{}
 
-type AzurermNetworkSecurityRuleExpansion interface{}
+type NetworkProfileExpansion interface{}
 
-type AzurermNetworkWatcherExpansion interface{}
+type NetworkSecurityGroupExpansion interface{}
 
-type AzurermNotificationHubExpansion interface{}
+type NetworkSecurityRuleExpansion interface{}
 
-type AzurermNotificationHubAuthorizationRuleExpansion interface{}
+type NetworkWatcherExpansion interface{}
 
-type AzurermNotificationHubNamespaceExpansion interface{}
+type NotificationHubExpansion interface{}
 
-type AzurermPacketCaptureExpansion interface{}
+type NotificationHubAuthorizationRuleExpansion interface{}
 
-type AzurermPolicyAssignmentExpansion interface{}
+type NotificationHubNamespaceExpansion interface{}
 
-type AzurermPolicyDefinitionExpansion interface{}
+type PacketCaptureExpansion interface{}
 
-type AzurermPolicySetDefinitionExpansion interface{}
+type PolicyAssignmentExpansion interface{}
 
-type AzurermPostgresqlConfigurationExpansion interface{}
+type PolicyDefinitionExpansion interface{}
 
-type AzurermPostgresqlDatabaseExpansion interface{}
+type PolicySetDefinitionExpansion interface{}
 
-type AzurermPostgresqlFirewallRuleExpansion interface{}
+type PostgresqlConfigurationExpansion interface{}
 
-type AzurermPostgresqlServerExpansion interface{}
+type PostgresqlDatabaseExpansion interface{}
 
-type AzurermPostgresqlVirtualNetworkRuleExpansion interface{}
+type PostgresqlFirewallRuleExpansion interface{}
 
-type AzurermPrivateDnsZoneExpansion interface{}
+type PostgresqlServerExpansion interface{}
 
-type AzurermPublicIpExpansion interface{}
+type PostgresqlVirtualNetworkRuleExpansion interface{}
 
-type AzurermPublicIpPrefixExpansion interface{}
+type PrivateDnsZoneExpansion interface{}
 
-type AzurermRecoveryServicesProtectedVmExpansion interface{}
+type PublicIpExpansion interface{}
 
-type AzurermRecoveryServicesProtectionPolicyVmExpansion interface{}
+type PublicIpPrefixExpansion interface{}
 
-type AzurermRecoveryServicesVaultExpansion interface{}
+type RecoveryServicesProtectedVmExpansion interface{}
 
-type AzurermRedisCacheExpansion interface{}
+type RecoveryServicesProtectionPolicyVmExpansion interface{}
 
-type AzurermRedisFirewallRuleExpansion interface{}
+type RecoveryServicesVaultExpansion interface{}
 
-type AzurermRelayNamespaceExpansion interface{}
+type RedisCacheExpansion interface{}
 
-type AzurermResourceGroupExpansion interface{}
+type RedisFirewallRuleExpansion interface{}
 
-type AzurermRoleAssignmentExpansion interface{}
+type RelayNamespaceExpansion interface{}
 
-type AzurermRoleDefinitionExpansion interface{}
+type ResourceGroupExpansion interface{}
 
-type AzurermRouteExpansion interface{}
+type RoleAssignmentExpansion interface{}
 
-type AzurermRouteTableExpansion interface{}
+type RoleDefinitionExpansion interface{}
 
-type AzurermSchedulerJobExpansion interface{}
+type RouteExpansion interface{}
 
-type AzurermSchedulerJobCollectionExpansion interface{}
+type RouteTableExpansion interface{}
 
-type AzurermSearchServiceExpansion interface{}
+type SchedulerJobExpansion interface{}
 
-type AzurermSecurityCenterContactExpansion interface{}
+type SchedulerJobCollectionExpansion interface{}
 
-type AzurermSecurityCenterSubscriptionPricingExpansion interface{}
+type SearchServiceExpansion interface{}
 
-type AzurermSecurityCenterWorkspaceExpansion interface{}
+type SecurityCenterContactExpansion interface{}
 
-type AzurermServiceFabricClusterExpansion interface{}
+type SecurityCenterSubscriptionPricingExpansion interface{}
 
-type AzurermServicebusNamespaceExpansion interface{}
+type SecurityCenterWorkspaceExpansion interface{}
 
-type AzurermServicebusNamespaceAuthorizationRuleExpansion interface{}
+type ServiceFabricClusterExpansion interface{}
 
-type AzurermServicebusQueueExpansion interface{}
+type ServicebusNamespaceExpansion interface{}
 
-type AzurermServicebusQueueAuthorizationRuleExpansion interface{}
+type ServicebusNamespaceAuthorizationRuleExpansion interface{}
 
-type AzurermServicebusSubscriptionExpansion interface{}
+type ServicebusQueueExpansion interface{}
 
-type AzurermServicebusSubscriptionRuleExpansion interface{}
+type ServicebusQueueAuthorizationRuleExpansion interface{}
 
-type AzurermServicebusTopicExpansion interface{}
+type ServicebusSubscriptionExpansion interface{}
 
-type AzurermServicebusTopicAuthorizationRuleExpansion interface{}
+type ServicebusSubscriptionRuleExpansion interface{}
 
-type AzurermSharedImageExpansion interface{}
+type ServicebusTopicExpansion interface{}
 
-type AzurermSharedImageGalleryExpansion interface{}
+type ServicebusTopicAuthorizationRuleExpansion interface{}
 
-type AzurermSharedImageVersionExpansion interface{}
+type SharedImageExpansion interface{}
 
-type AzurermSignalrServiceExpansion interface{}
+type SharedImageGalleryExpansion interface{}
 
-type AzurermSnapshotExpansion interface{}
+type SharedImageVersionExpansion interface{}
 
-type AzurermSqlActiveDirectoryAdministratorExpansion interface{}
+type SignalrServiceExpansion interface{}
 
-type AzurermSqlDatabaseExpansion interface{}
+type SnapshotExpansion interface{}
 
-type AzurermSqlElasticpoolExpansion interface{}
+type SqlActiveDirectoryAdministratorExpansion interface{}
 
-type AzurermSqlFirewallRuleExpansion interface{}
+type SqlDatabaseExpansion interface{}
 
-type AzurermSqlServerExpansion interface{}
+type SqlElasticpoolExpansion interface{}
 
-type AzurermSqlVirtualNetworkRuleExpansion interface{}
+type SqlFirewallRuleExpansion interface{}
 
-type AzurermStorageAccountExpansion interface{}
+type SqlServerExpansion interface{}
 
-type AzurermStorageBlobExpansion interface{}
+type SqlVirtualNetworkRuleExpansion interface{}
 
-type AzurermStorageContainerExpansion interface{}
+type StorageAccountExpansion interface{}
 
-type AzurermStorageQueueExpansion interface{}
+type StorageBlobExpansion interface{}
 
-type AzurermStorageShareExpansion interface{}
+type StorageContainerExpansion interface{}
 
-type AzurermStorageTableExpansion interface{}
+type StorageQueueExpansion interface{}
 
-type AzurermStreamAnalyticsFunctionJavascriptUdfExpansion interface{}
+type StorageShareExpansion interface{}
 
-type AzurermStreamAnalyticsJobExpansion interface{}
+type StorageShareDirectoryExpansion interface{}
 
-type AzurermStreamAnalyticsOutputBlobExpansion interface{}
+type StorageTableExpansion interface{}
 
-type AzurermStreamAnalyticsOutputEventhubExpansion interface{}
+type StorageTableEntityExpansion interface{}
 
-type AzurermStreamAnalyticsOutputMssqlExpansion interface{}
+type StreamAnalyticsFunctionJavascriptUdfExpansion interface{}
 
-type AzurermStreamAnalyticsOutputServicebusQueueExpansion interface{}
+type StreamAnalyticsJobExpansion interface{}
 
-type AzurermStreamAnalyticsStreamInputBlobExpansion interface{}
+type StreamAnalyticsOutputBlobExpansion interface{}
 
-type AzurermStreamAnalyticsStreamInputEventhubExpansion interface{}
+type StreamAnalyticsOutputEventhubExpansion interface{}
 
-type AzurermStreamAnalyticsStreamInputIothubExpansion interface{}
+type StreamAnalyticsOutputMssqlExpansion interface{}
 
-type AzurermSubnetExpansion interface{}
+type StreamAnalyticsOutputServicebusQueueExpansion interface{}
 
-type AzurermSubnetNetworkSecurityGroupAssociationExpansion interface{}
+type StreamAnalyticsStreamInputBlobExpansion interface{}
 
-type AzurermSubnetRouteTableAssociationExpansion interface{}
+type StreamAnalyticsStreamInputEventhubExpansion interface{}
 
-type AzurermTemplateDeploymentExpansion interface{}
+type StreamAnalyticsStreamInputIothubExpansion interface{}
 
-type AzurermTrafficManagerEndpointExpansion interface{}
+type SubnetExpansion interface{}
 
-type AzurermTrafficManagerProfileExpansion interface{}
+type SubnetNetworkSecurityGroupAssociationExpansion interface{}
 
-type AzurermUserAssignedIdentityExpansion interface{}
+type SubnetRouteTableAssociationExpansion interface{}
 
-type AzurermVirtualMachineExpansion interface{}
+type TemplateDeploymentExpansion interface{}
 
-type AzurermVirtualMachineDataDiskAttachmentExpansion interface{}
+type TrafficManagerEndpointExpansion interface{}
 
-type AzurermVirtualMachineExtensionExpansion interface{}
+type TrafficManagerProfileExpansion interface{}
 
-type AzurermVirtualMachineScaleSetExpansion interface{}
+type UserAssignedIdentityExpansion interface{}
 
-type AzurermVirtualNetworkExpansion interface{}
+type VirtualMachineExpansion interface{}
 
-type AzurermVirtualNetworkGatewayExpansion interface{}
+type VirtualMachineDataDiskAttachmentExpansion interface{}
 
-type AzurermVirtualNetworkGatewayConnectionExpansion interface{}
+type VirtualMachineExtensionExpansion interface{}
 
-type AzurermVirtualNetworkPeeringExpansion interface{}
+type VirtualMachineScaleSetExpansion interface{}
+
+type VirtualNetworkExpansion interface{}
+
+type VirtualNetworkGatewayExpansion interface{}
+
+type VirtualNetworkGatewayConnectionExpansion interface{}
+
+type VirtualNetworkPeeringExpansion interface{}

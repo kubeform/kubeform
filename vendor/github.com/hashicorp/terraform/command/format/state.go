@@ -75,14 +75,11 @@ func State(opts *StateOpts) string {
 			v := m.OutputValues[k]
 			p.buf.WriteString(fmt.Sprintf("%s = ", k))
 			p.writeValue(v.Value, plans.NoOp, 0)
-			p.buf.WriteString("\n")
+			p.buf.WriteString("\n\n")
 		}
 	}
 
-	trimmedOutput := strings.TrimSpace(p.buf.String())
-	trimmedOutput += "[reset]"
-
-	return opts.Color.Color(trimmedOutput)
+	return opts.Color.Color(strings.TrimSpace(p.buf.String()))
 
 }
 
@@ -102,9 +99,9 @@ func formatStateModule(p blockBodyDiffPrinter, m *states.Module, schemas *terraf
 
 			taintStr := ""
 			if v.Current.Status == 'T' {
-				taintStr = " (tainted)"
+				taintStr = "(tainted)"
 			}
-			p.buf.WriteString(fmt.Sprintf("# %s:%s\n", addr.Absolute(m.Addr).Instance(k), taintStr))
+			p.buf.WriteString(fmt.Sprintf("# %s: %s\n", addr.Absolute(m.Addr).Instance(k), taintStr))
 
 			var schema *configschema.Block
 			provider := m.Resources[key].ProviderConfig.ProviderConfig.StringCompact()
@@ -172,7 +169,7 @@ func formatStateModule(p blockBodyDiffPrinter, m *states.Module, schemas *terraf
 			p.buf.WriteString("}\n\n")
 		}
 	}
-	p.buf.WriteString("\n")
+	p.buf.WriteString("[reset]\n")
 }
 
 func formatNestedList(indent string, outputList []interface{}) string {
@@ -234,7 +231,7 @@ func formatListOutput(indent, outputName string, outputList []interface{}) strin
 
 func formatNestedMap(indent string, outputMap map[string]interface{}) string {
 	ks := make([]string, 0, len(outputMap))
-	for k := range outputMap {
+	for k, _ := range outputMap {
 		ks = append(ks, k)
 	}
 	sort.Strings(ks)
@@ -259,7 +256,7 @@ func formatNestedMap(indent string, outputMap map[string]interface{}) string {
 
 func formatMapOutput(indent, outputName string, outputMap map[string]interface{}) string {
 	ks := make([]string, 0, len(outputMap))
-	for k := range outputMap {
+	for k, _ := range outputMap {
 		ks = append(ks, k)
 	}
 	sort.Strings(ks)

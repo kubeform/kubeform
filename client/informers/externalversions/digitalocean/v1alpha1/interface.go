@@ -24,46 +24,46 @@ import (
 
 // Interface provides access to all the informers in this group version.
 type Interface interface {
-	// DigitaloceanCdns returns a DigitaloceanCdnInformer.
-	DigitaloceanCdns() DigitaloceanCdnInformer
-	// DigitaloceanCertificates returns a DigitaloceanCertificateInformer.
-	DigitaloceanCertificates() DigitaloceanCertificateInformer
-	// DigitaloceanDatabaseClusters returns a DigitaloceanDatabaseClusterInformer.
-	DigitaloceanDatabaseClusters() DigitaloceanDatabaseClusterInformer
-	// DigitaloceanDomains returns a DigitaloceanDomainInformer.
-	DigitaloceanDomains() DigitaloceanDomainInformer
-	// DigitaloceanDroplets returns a DigitaloceanDropletInformer.
-	DigitaloceanDroplets() DigitaloceanDropletInformer
-	// DigitaloceanDropletSnapshots returns a DigitaloceanDropletSnapshotInformer.
-	DigitaloceanDropletSnapshots() DigitaloceanDropletSnapshotInformer
-	// DigitaloceanFirewalls returns a DigitaloceanFirewallInformer.
-	DigitaloceanFirewalls() DigitaloceanFirewallInformer
-	// DigitaloceanFloatingIps returns a DigitaloceanFloatingIpInformer.
-	DigitaloceanFloatingIps() DigitaloceanFloatingIpInformer
-	// DigitaloceanFloatingIpAssignments returns a DigitaloceanFloatingIpAssignmentInformer.
-	DigitaloceanFloatingIpAssignments() DigitaloceanFloatingIpAssignmentInformer
-	// DigitaloceanKubernetesClusters returns a DigitaloceanKubernetesClusterInformer.
-	DigitaloceanKubernetesClusters() DigitaloceanKubernetesClusterInformer
-	// DigitaloceanKubernetesNodePools returns a DigitaloceanKubernetesNodePoolInformer.
-	DigitaloceanKubernetesNodePools() DigitaloceanKubernetesNodePoolInformer
-	// DigitaloceanLoadbalancers returns a DigitaloceanLoadbalancerInformer.
-	DigitaloceanLoadbalancers() DigitaloceanLoadbalancerInformer
-	// DigitaloceanProjects returns a DigitaloceanProjectInformer.
-	DigitaloceanProjects() DigitaloceanProjectInformer
-	// DigitaloceanRecords returns a DigitaloceanRecordInformer.
-	DigitaloceanRecords() DigitaloceanRecordInformer
-	// DigitaloceanSpacesBuckets returns a DigitaloceanSpacesBucketInformer.
-	DigitaloceanSpacesBuckets() DigitaloceanSpacesBucketInformer
-	// DigitaloceanSshKeys returns a DigitaloceanSshKeyInformer.
-	DigitaloceanSshKeys() DigitaloceanSshKeyInformer
-	// DigitaloceanTags returns a DigitaloceanTagInformer.
-	DigitaloceanTags() DigitaloceanTagInformer
-	// DigitaloceanVolumes returns a DigitaloceanVolumeInformer.
-	DigitaloceanVolumes() DigitaloceanVolumeInformer
-	// DigitaloceanVolumeAttachments returns a DigitaloceanVolumeAttachmentInformer.
-	DigitaloceanVolumeAttachments() DigitaloceanVolumeAttachmentInformer
-	// DigitaloceanVolumeSnapshots returns a DigitaloceanVolumeSnapshotInformer.
-	DigitaloceanVolumeSnapshots() DigitaloceanVolumeSnapshotInformer
+	// Cdns returns a CdnInformer.
+	Cdns() CdnInformer
+	// Certificates returns a CertificateInformer.
+	Certificates() CertificateInformer
+	// DatabaseClusters returns a DatabaseClusterInformer.
+	DatabaseClusters() DatabaseClusterInformer
+	// Domains returns a DomainInformer.
+	Domains() DomainInformer
+	// Droplets returns a DropletInformer.
+	Droplets() DropletInformer
+	// DropletSnapshots returns a DropletSnapshotInformer.
+	DropletSnapshots() DropletSnapshotInformer
+	// Firewalls returns a FirewallInformer.
+	Firewalls() FirewallInformer
+	// FloatingIps returns a FloatingIpInformer.
+	FloatingIps() FloatingIpInformer
+	// FloatingIpAssignments returns a FloatingIpAssignmentInformer.
+	FloatingIpAssignments() FloatingIpAssignmentInformer
+	// KubernetesClusters returns a KubernetesClusterInformer.
+	KubernetesClusters() KubernetesClusterInformer
+	// KubernetesNodePools returns a KubernetesNodePoolInformer.
+	KubernetesNodePools() KubernetesNodePoolInformer
+	// Loadbalancers returns a LoadbalancerInformer.
+	Loadbalancers() LoadbalancerInformer
+	// Projects returns a ProjectInformer.
+	Projects() ProjectInformer
+	// Records returns a RecordInformer.
+	Records() RecordInformer
+	// SpacesBuckets returns a SpacesBucketInformer.
+	SpacesBuckets() SpacesBucketInformer
+	// SshKeys returns a SshKeyInformer.
+	SshKeys() SshKeyInformer
+	// Tags returns a TagInformer.
+	Tags() TagInformer
+	// Volumes returns a VolumeInformer.
+	Volumes() VolumeInformer
+	// VolumeAttachments returns a VolumeAttachmentInformer.
+	VolumeAttachments() VolumeAttachmentInformer
+	// VolumeSnapshots returns a VolumeSnapshotInformer.
+	VolumeSnapshots() VolumeSnapshotInformer
 }
 
 type version struct {
@@ -77,102 +77,102 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 	return &version{factory: f, namespace: namespace, tweakListOptions: tweakListOptions}
 }
 
-// DigitaloceanCdns returns a DigitaloceanCdnInformer.
-func (v *version) DigitaloceanCdns() DigitaloceanCdnInformer {
-	return &digitaloceanCdnInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Cdns returns a CdnInformer.
+func (v *version) Cdns() CdnInformer {
+	return &cdnInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanCertificates returns a DigitaloceanCertificateInformer.
-func (v *version) DigitaloceanCertificates() DigitaloceanCertificateInformer {
-	return &digitaloceanCertificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Certificates returns a CertificateInformer.
+func (v *version) Certificates() CertificateInformer {
+	return &certificateInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanDatabaseClusters returns a DigitaloceanDatabaseClusterInformer.
-func (v *version) DigitaloceanDatabaseClusters() DigitaloceanDatabaseClusterInformer {
-	return &digitaloceanDatabaseClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DatabaseClusters returns a DatabaseClusterInformer.
+func (v *version) DatabaseClusters() DatabaseClusterInformer {
+	return &databaseClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanDomains returns a DigitaloceanDomainInformer.
-func (v *version) DigitaloceanDomains() DigitaloceanDomainInformer {
-	return &digitaloceanDomainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Domains returns a DomainInformer.
+func (v *version) Domains() DomainInformer {
+	return &domainInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanDroplets returns a DigitaloceanDropletInformer.
-func (v *version) DigitaloceanDroplets() DigitaloceanDropletInformer {
-	return &digitaloceanDropletInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Droplets returns a DropletInformer.
+func (v *version) Droplets() DropletInformer {
+	return &dropletInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanDropletSnapshots returns a DigitaloceanDropletSnapshotInformer.
-func (v *version) DigitaloceanDropletSnapshots() DigitaloceanDropletSnapshotInformer {
-	return &digitaloceanDropletSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// DropletSnapshots returns a DropletSnapshotInformer.
+func (v *version) DropletSnapshots() DropletSnapshotInformer {
+	return &dropletSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanFirewalls returns a DigitaloceanFirewallInformer.
-func (v *version) DigitaloceanFirewalls() DigitaloceanFirewallInformer {
-	return &digitaloceanFirewallInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Firewalls returns a FirewallInformer.
+func (v *version) Firewalls() FirewallInformer {
+	return &firewallInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanFloatingIps returns a DigitaloceanFloatingIpInformer.
-func (v *version) DigitaloceanFloatingIps() DigitaloceanFloatingIpInformer {
-	return &digitaloceanFloatingIpInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// FloatingIps returns a FloatingIpInformer.
+func (v *version) FloatingIps() FloatingIpInformer {
+	return &floatingIpInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanFloatingIpAssignments returns a DigitaloceanFloatingIpAssignmentInformer.
-func (v *version) DigitaloceanFloatingIpAssignments() DigitaloceanFloatingIpAssignmentInformer {
-	return &digitaloceanFloatingIpAssignmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// FloatingIpAssignments returns a FloatingIpAssignmentInformer.
+func (v *version) FloatingIpAssignments() FloatingIpAssignmentInformer {
+	return &floatingIpAssignmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanKubernetesClusters returns a DigitaloceanKubernetesClusterInformer.
-func (v *version) DigitaloceanKubernetesClusters() DigitaloceanKubernetesClusterInformer {
-	return &digitaloceanKubernetesClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KubernetesClusters returns a KubernetesClusterInformer.
+func (v *version) KubernetesClusters() KubernetesClusterInformer {
+	return &kubernetesClusterInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanKubernetesNodePools returns a DigitaloceanKubernetesNodePoolInformer.
-func (v *version) DigitaloceanKubernetesNodePools() DigitaloceanKubernetesNodePoolInformer {
-	return &digitaloceanKubernetesNodePoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// KubernetesNodePools returns a KubernetesNodePoolInformer.
+func (v *version) KubernetesNodePools() KubernetesNodePoolInformer {
+	return &kubernetesNodePoolInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanLoadbalancers returns a DigitaloceanLoadbalancerInformer.
-func (v *version) DigitaloceanLoadbalancers() DigitaloceanLoadbalancerInformer {
-	return &digitaloceanLoadbalancerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Loadbalancers returns a LoadbalancerInformer.
+func (v *version) Loadbalancers() LoadbalancerInformer {
+	return &loadbalancerInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanProjects returns a DigitaloceanProjectInformer.
-func (v *version) DigitaloceanProjects() DigitaloceanProjectInformer {
-	return &digitaloceanProjectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Projects returns a ProjectInformer.
+func (v *version) Projects() ProjectInformer {
+	return &projectInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanRecords returns a DigitaloceanRecordInformer.
-func (v *version) DigitaloceanRecords() DigitaloceanRecordInformer {
-	return &digitaloceanRecordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Records returns a RecordInformer.
+func (v *version) Records() RecordInformer {
+	return &recordInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanSpacesBuckets returns a DigitaloceanSpacesBucketInformer.
-func (v *version) DigitaloceanSpacesBuckets() DigitaloceanSpacesBucketInformer {
-	return &digitaloceanSpacesBucketInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SpacesBuckets returns a SpacesBucketInformer.
+func (v *version) SpacesBuckets() SpacesBucketInformer {
+	return &spacesBucketInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanSshKeys returns a DigitaloceanSshKeyInformer.
-func (v *version) DigitaloceanSshKeys() DigitaloceanSshKeyInformer {
-	return &digitaloceanSshKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SshKeys returns a SshKeyInformer.
+func (v *version) SshKeys() SshKeyInformer {
+	return &sshKeyInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanTags returns a DigitaloceanTagInformer.
-func (v *version) DigitaloceanTags() DigitaloceanTagInformer {
-	return &digitaloceanTagInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Tags returns a TagInformer.
+func (v *version) Tags() TagInformer {
+	return &tagInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanVolumes returns a DigitaloceanVolumeInformer.
-func (v *version) DigitaloceanVolumes() DigitaloceanVolumeInformer {
-	return &digitaloceanVolumeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// Volumes returns a VolumeInformer.
+func (v *version) Volumes() VolumeInformer {
+	return &volumeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanVolumeAttachments returns a DigitaloceanVolumeAttachmentInformer.
-func (v *version) DigitaloceanVolumeAttachments() DigitaloceanVolumeAttachmentInformer {
-	return &digitaloceanVolumeAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VolumeAttachments returns a VolumeAttachmentInformer.
+func (v *version) VolumeAttachments() VolumeAttachmentInformer {
+	return &volumeAttachmentInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// DigitaloceanVolumeSnapshots returns a DigitaloceanVolumeSnapshotInformer.
-func (v *version) DigitaloceanVolumeSnapshots() DigitaloceanVolumeSnapshotInformer {
-	return &digitaloceanVolumeSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// VolumeSnapshots returns a VolumeSnapshotInformer.
+func (v *version) VolumeSnapshots() VolumeSnapshotInformer {
+	return &volumeSnapshotInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }

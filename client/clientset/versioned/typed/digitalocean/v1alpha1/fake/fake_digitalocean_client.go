@@ -28,84 +28,84 @@ type FakeDigitaloceanV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanCdns() v1alpha1.DigitaloceanCdnInterface {
-	return &FakeDigitaloceanCdns{c}
+func (c *FakeDigitaloceanV1alpha1) Cdns() v1alpha1.CdnInterface {
+	return &FakeCdns{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanCertificates() v1alpha1.DigitaloceanCertificateInterface {
-	return &FakeDigitaloceanCertificates{c}
+func (c *FakeDigitaloceanV1alpha1) Certificates() v1alpha1.CertificateInterface {
+	return &FakeCertificates{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanDatabaseClusters() v1alpha1.DigitaloceanDatabaseClusterInterface {
-	return &FakeDigitaloceanDatabaseClusters{c}
+func (c *FakeDigitaloceanV1alpha1) DatabaseClusters() v1alpha1.DatabaseClusterInterface {
+	return &FakeDatabaseClusters{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanDomains() v1alpha1.DigitaloceanDomainInterface {
-	return &FakeDigitaloceanDomains{c}
+func (c *FakeDigitaloceanV1alpha1) Domains() v1alpha1.DomainInterface {
+	return &FakeDomains{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanDroplets() v1alpha1.DigitaloceanDropletInterface {
-	return &FakeDigitaloceanDroplets{c}
+func (c *FakeDigitaloceanV1alpha1) Droplets() v1alpha1.DropletInterface {
+	return &FakeDroplets{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanDropletSnapshots() v1alpha1.DigitaloceanDropletSnapshotInterface {
-	return &FakeDigitaloceanDropletSnapshots{c}
+func (c *FakeDigitaloceanV1alpha1) DropletSnapshots() v1alpha1.DropletSnapshotInterface {
+	return &FakeDropletSnapshots{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanFirewalls() v1alpha1.DigitaloceanFirewallInterface {
-	return &FakeDigitaloceanFirewalls{c}
+func (c *FakeDigitaloceanV1alpha1) Firewalls() v1alpha1.FirewallInterface {
+	return &FakeFirewalls{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanFloatingIps() v1alpha1.DigitaloceanFloatingIpInterface {
-	return &FakeDigitaloceanFloatingIps{c}
+func (c *FakeDigitaloceanV1alpha1) FloatingIps() v1alpha1.FloatingIpInterface {
+	return &FakeFloatingIps{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanFloatingIpAssignments() v1alpha1.DigitaloceanFloatingIpAssignmentInterface {
-	return &FakeDigitaloceanFloatingIpAssignments{c}
+func (c *FakeDigitaloceanV1alpha1) FloatingIpAssignments() v1alpha1.FloatingIpAssignmentInterface {
+	return &FakeFloatingIpAssignments{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanKubernetesClusters() v1alpha1.DigitaloceanKubernetesClusterInterface {
-	return &FakeDigitaloceanKubernetesClusters{c}
+func (c *FakeDigitaloceanV1alpha1) KubernetesClusters() v1alpha1.KubernetesClusterInterface {
+	return &FakeKubernetesClusters{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanKubernetesNodePools() v1alpha1.DigitaloceanKubernetesNodePoolInterface {
-	return &FakeDigitaloceanKubernetesNodePools{c}
+func (c *FakeDigitaloceanV1alpha1) KubernetesNodePools() v1alpha1.KubernetesNodePoolInterface {
+	return &FakeKubernetesNodePools{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanLoadbalancers() v1alpha1.DigitaloceanLoadbalancerInterface {
-	return &FakeDigitaloceanLoadbalancers{c}
+func (c *FakeDigitaloceanV1alpha1) Loadbalancers() v1alpha1.LoadbalancerInterface {
+	return &FakeLoadbalancers{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanProjects() v1alpha1.DigitaloceanProjectInterface {
-	return &FakeDigitaloceanProjects{c}
+func (c *FakeDigitaloceanV1alpha1) Projects() v1alpha1.ProjectInterface {
+	return &FakeProjects{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanRecords() v1alpha1.DigitaloceanRecordInterface {
-	return &FakeDigitaloceanRecords{c}
+func (c *FakeDigitaloceanV1alpha1) Records() v1alpha1.RecordInterface {
+	return &FakeRecords{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanSpacesBuckets() v1alpha1.DigitaloceanSpacesBucketInterface {
-	return &FakeDigitaloceanSpacesBuckets{c}
+func (c *FakeDigitaloceanV1alpha1) SpacesBuckets() v1alpha1.SpacesBucketInterface {
+	return &FakeSpacesBuckets{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanSshKeys() v1alpha1.DigitaloceanSshKeyInterface {
-	return &FakeDigitaloceanSshKeys{c}
+func (c *FakeDigitaloceanV1alpha1) SshKeys() v1alpha1.SshKeyInterface {
+	return &FakeSshKeys{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanTags() v1alpha1.DigitaloceanTagInterface {
-	return &FakeDigitaloceanTags{c}
+func (c *FakeDigitaloceanV1alpha1) Tags() v1alpha1.TagInterface {
+	return &FakeTags{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanVolumes() v1alpha1.DigitaloceanVolumeInterface {
-	return &FakeDigitaloceanVolumes{c}
+func (c *FakeDigitaloceanV1alpha1) Volumes() v1alpha1.VolumeInterface {
+	return &FakeVolumes{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanVolumeAttachments() v1alpha1.DigitaloceanVolumeAttachmentInterface {
-	return &FakeDigitaloceanVolumeAttachments{c}
+func (c *FakeDigitaloceanV1alpha1) VolumeAttachments() v1alpha1.VolumeAttachmentInterface {
+	return &FakeVolumeAttachments{c}
 }
 
-func (c *FakeDigitaloceanV1alpha1) DigitaloceanVolumeSnapshots() v1alpha1.DigitaloceanVolumeSnapshotInterface {
-	return &FakeDigitaloceanVolumeSnapshots{c}
+func (c *FakeDigitaloceanV1alpha1) VolumeSnapshots() v1alpha1.VolumeSnapshotInterface {
+	return &FakeVolumeSnapshots{c}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

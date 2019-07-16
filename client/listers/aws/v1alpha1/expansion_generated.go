@@ -18,2058 +18,2058 @@ limitations under the License.
 
 package v1alpha1
 
-// AwsAcmCertificateListerExpansion allows custom methods to be added to
-// AwsAcmCertificateLister.
-type AwsAcmCertificateListerExpansion interface{}
-
-// AwsAcmCertificateValidationListerExpansion allows custom methods to be added to
-// AwsAcmCertificateValidationLister.
-type AwsAcmCertificateValidationListerExpansion interface{}
-
-// AwsAcmpcaCertificateAuthorityListerExpansion allows custom methods to be added to
-// AwsAcmpcaCertificateAuthorityLister.
-type AwsAcmpcaCertificateAuthorityListerExpansion interface{}
-
-// AwsAlbListerExpansion allows custom methods to be added to
-// AwsAlbLister.
-type AwsAlbListerExpansion interface{}
-
-// AwsAlbListenerListerExpansion allows custom methods to be added to
-// AwsAlbListenerLister.
-type AwsAlbListenerListerExpansion interface{}
-
-// AwsAlbListenerCertificateListerExpansion allows custom methods to be added to
-// AwsAlbListenerCertificateLister.
-type AwsAlbListenerCertificateListerExpansion interface{}
-
-// AwsAlbListenerRuleListerExpansion allows custom methods to be added to
-// AwsAlbListenerRuleLister.
-type AwsAlbListenerRuleListerExpansion interface{}
-
-// AwsAlbTargetGroupListerExpansion allows custom methods to be added to
-// AwsAlbTargetGroupLister.
-type AwsAlbTargetGroupListerExpansion interface{}
-
-// AwsAlbTargetGroupAttachmentListerExpansion allows custom methods to be added to
-// AwsAlbTargetGroupAttachmentLister.
-type AwsAlbTargetGroupAttachmentListerExpansion interface{}
-
-// AwsAmiListerExpansion allows custom methods to be added to
-// AwsAmiLister.
-type AwsAmiListerExpansion interface{}
-
-// AwsAmiCopyListerExpansion allows custom methods to be added to
-// AwsAmiCopyLister.
-type AwsAmiCopyListerExpansion interface{}
-
-// AwsAmiFromInstanceListerExpansion allows custom methods to be added to
-// AwsAmiFromInstanceLister.
-type AwsAmiFromInstanceListerExpansion interface{}
-
-// AwsAmiLaunchPermissionListerExpansion allows custom methods to be added to
-// AwsAmiLaunchPermissionLister.
-type AwsAmiLaunchPermissionListerExpansion interface{}
-
-// AwsApiGatewayAccountListerExpansion allows custom methods to be added to
-// AwsApiGatewayAccountLister.
-type AwsApiGatewayAccountListerExpansion interface{}
-
-// AwsApiGatewayApiKeyListerExpansion allows custom methods to be added to
-// AwsApiGatewayApiKeyLister.
-type AwsApiGatewayApiKeyListerExpansion interface{}
-
-// AwsApiGatewayAuthorizerListerExpansion allows custom methods to be added to
-// AwsApiGatewayAuthorizerLister.
-type AwsApiGatewayAuthorizerListerExpansion interface{}
-
-// AwsApiGatewayBasePathMappingListerExpansion allows custom methods to be added to
-// AwsApiGatewayBasePathMappingLister.
-type AwsApiGatewayBasePathMappingListerExpansion interface{}
-
-// AwsApiGatewayClientCertificateListerExpansion allows custom methods to be added to
-// AwsApiGatewayClientCertificateLister.
-type AwsApiGatewayClientCertificateListerExpansion interface{}
-
-// AwsApiGatewayDeploymentListerExpansion allows custom methods to be added to
-// AwsApiGatewayDeploymentLister.
-type AwsApiGatewayDeploymentListerExpansion interface{}
-
-// AwsApiGatewayDocumentationPartListerExpansion allows custom methods to be added to
-// AwsApiGatewayDocumentationPartLister.
-type AwsApiGatewayDocumentationPartListerExpansion interface{}
-
-// AwsApiGatewayDocumentationVersionListerExpansion allows custom methods to be added to
-// AwsApiGatewayDocumentationVersionLister.
-type AwsApiGatewayDocumentationVersionListerExpansion interface{}
-
-// AwsApiGatewayDomainNameListerExpansion allows custom methods to be added to
-// AwsApiGatewayDomainNameLister.
-type AwsApiGatewayDomainNameListerExpansion interface{}
-
-// AwsApiGatewayGatewayResponseListerExpansion allows custom methods to be added to
-// AwsApiGatewayGatewayResponseLister.
-type AwsApiGatewayGatewayResponseListerExpansion interface{}
-
-// AwsApiGatewayIntegrationListerExpansion allows custom methods to be added to
-// AwsApiGatewayIntegrationLister.
-type AwsApiGatewayIntegrationListerExpansion interface{}
-
-// AwsApiGatewayIntegrationResponseListerExpansion allows custom methods to be added to
-// AwsApiGatewayIntegrationResponseLister.
-type AwsApiGatewayIntegrationResponseListerExpansion interface{}
-
-// AwsApiGatewayMethodListerExpansion allows custom methods to be added to
-// AwsApiGatewayMethodLister.
-type AwsApiGatewayMethodListerExpansion interface{}
-
-// AwsApiGatewayMethodResponseListerExpansion allows custom methods to be added to
-// AwsApiGatewayMethodResponseLister.
-type AwsApiGatewayMethodResponseListerExpansion interface{}
-
-// AwsApiGatewayMethodSettingsListerExpansion allows custom methods to be added to
-// AwsApiGatewayMethodSettingsLister.
-type AwsApiGatewayMethodSettingsListerExpansion interface{}
-
-// AwsApiGatewayModelListerExpansion allows custom methods to be added to
-// AwsApiGatewayModelLister.
-type AwsApiGatewayModelListerExpansion interface{}
-
-// AwsApiGatewayRequestValidatorListerExpansion allows custom methods to be added to
-// AwsApiGatewayRequestValidatorLister.
-type AwsApiGatewayRequestValidatorListerExpansion interface{}
-
-// AwsApiGatewayResourceListerExpansion allows custom methods to be added to
-// AwsApiGatewayResourceLister.
-type AwsApiGatewayResourceListerExpansion interface{}
-
-// AwsApiGatewayRestApiListerExpansion allows custom methods to be added to
-// AwsApiGatewayRestApiLister.
-type AwsApiGatewayRestApiListerExpansion interface{}
-
-// AwsApiGatewayStageListerExpansion allows custom methods to be added to
-// AwsApiGatewayStageLister.
-type AwsApiGatewayStageListerExpansion interface{}
-
-// AwsApiGatewayUsagePlanListerExpansion allows custom methods to be added to
-// AwsApiGatewayUsagePlanLister.
-type AwsApiGatewayUsagePlanListerExpansion interface{}
-
-// AwsApiGatewayUsagePlanKeyListerExpansion allows custom methods to be added to
-// AwsApiGatewayUsagePlanKeyLister.
-type AwsApiGatewayUsagePlanKeyListerExpansion interface{}
-
-// AwsApiGatewayVpcLinkListerExpansion allows custom methods to be added to
-// AwsApiGatewayVpcLinkLister.
-type AwsApiGatewayVpcLinkListerExpansion interface{}
-
-// AwsAppCookieStickinessPolicyListerExpansion allows custom methods to be added to
-// AwsAppCookieStickinessPolicyLister.
-type AwsAppCookieStickinessPolicyListerExpansion interface{}
-
-// AwsAppautoscalingPolicyListerExpansion allows custom methods to be added to
-// AwsAppautoscalingPolicyLister.
-type AwsAppautoscalingPolicyListerExpansion interface{}
-
-// AwsAppautoscalingScheduledActionListerExpansion allows custom methods to be added to
-// AwsAppautoscalingScheduledActionLister.
-type AwsAppautoscalingScheduledActionListerExpansion interface{}
-
-// AwsAppautoscalingTargetListerExpansion allows custom methods to be added to
-// AwsAppautoscalingTargetLister.
-type AwsAppautoscalingTargetListerExpansion interface{}
-
-// AwsAppmeshMeshListerExpansion allows custom methods to be added to
-// AwsAppmeshMeshLister.
-type AwsAppmeshMeshListerExpansion interface{}
-
-// AwsAppmeshRouteListerExpansion allows custom methods to be added to
-// AwsAppmeshRouteLister.
-type AwsAppmeshRouteListerExpansion interface{}
-
-// AwsAppmeshVirtualNodeListerExpansion allows custom methods to be added to
-// AwsAppmeshVirtualNodeLister.
-type AwsAppmeshVirtualNodeListerExpansion interface{}
-
-// AwsAppmeshVirtualRouterListerExpansion allows custom methods to be added to
-// AwsAppmeshVirtualRouterLister.
-type AwsAppmeshVirtualRouterListerExpansion interface{}
-
-// AwsAppmeshVirtualServiceListerExpansion allows custom methods to be added to
-// AwsAppmeshVirtualServiceLister.
-type AwsAppmeshVirtualServiceListerExpansion interface{}
-
-// AwsAppsyncApiKeyListerExpansion allows custom methods to be added to
-// AwsAppsyncApiKeyLister.
-type AwsAppsyncApiKeyListerExpansion interface{}
-
-// AwsAppsyncDatasourceListerExpansion allows custom methods to be added to
-// AwsAppsyncDatasourceLister.
-type AwsAppsyncDatasourceListerExpansion interface{}
-
-// AwsAppsyncFunctionListerExpansion allows custom methods to be added to
-// AwsAppsyncFunctionLister.
-type AwsAppsyncFunctionListerExpansion interface{}
-
-// AwsAppsyncGraphqlApiListerExpansion allows custom methods to be added to
-// AwsAppsyncGraphqlApiLister.
-type AwsAppsyncGraphqlApiListerExpansion interface{}
-
-// AwsAppsyncResolverListerExpansion allows custom methods to be added to
-// AwsAppsyncResolverLister.
-type AwsAppsyncResolverListerExpansion interface{}
-
-// AwsAthenaDatabaseListerExpansion allows custom methods to be added to
-// AwsAthenaDatabaseLister.
-type AwsAthenaDatabaseListerExpansion interface{}
-
-// AwsAthenaNamedQueryListerExpansion allows custom methods to be added to
-// AwsAthenaNamedQueryLister.
-type AwsAthenaNamedQueryListerExpansion interface{}
-
-// AwsAthenaWorkgroupListerExpansion allows custom methods to be added to
-// AwsAthenaWorkgroupLister.
-type AwsAthenaWorkgroupListerExpansion interface{}
-
-// AwsAutoscalingAttachmentListerExpansion allows custom methods to be added to
-// AwsAutoscalingAttachmentLister.
-type AwsAutoscalingAttachmentListerExpansion interface{}
-
-// AwsAutoscalingGroupListerExpansion allows custom methods to be added to
-// AwsAutoscalingGroupLister.
-type AwsAutoscalingGroupListerExpansion interface{}
-
-// AwsAutoscalingLifecycleHookListerExpansion allows custom methods to be added to
-// AwsAutoscalingLifecycleHookLister.
-type AwsAutoscalingLifecycleHookListerExpansion interface{}
-
-// AwsAutoscalingNotificationListerExpansion allows custom methods to be added to
-// AwsAutoscalingNotificationLister.
-type AwsAutoscalingNotificationListerExpansion interface{}
-
-// AwsAutoscalingPolicyListerExpansion allows custom methods to be added to
-// AwsAutoscalingPolicyLister.
-type AwsAutoscalingPolicyListerExpansion interface{}
-
-// AwsAutoscalingScheduleListerExpansion allows custom methods to be added to
-// AwsAutoscalingScheduleLister.
-type AwsAutoscalingScheduleListerExpansion interface{}
-
-// AwsBackupPlanListerExpansion allows custom methods to be added to
-// AwsBackupPlanLister.
-type AwsBackupPlanListerExpansion interface{}
-
-// AwsBackupSelectionListerExpansion allows custom methods to be added to
-// AwsBackupSelectionLister.
-type AwsBackupSelectionListerExpansion interface{}
-
-// AwsBackupVaultListerExpansion allows custom methods to be added to
-// AwsBackupVaultLister.
-type AwsBackupVaultListerExpansion interface{}
-
-// AwsBatchComputeEnvironmentListerExpansion allows custom methods to be added to
-// AwsBatchComputeEnvironmentLister.
-type AwsBatchComputeEnvironmentListerExpansion interface{}
-
-// AwsBatchJobDefinitionListerExpansion allows custom methods to be added to
-// AwsBatchJobDefinitionLister.
-type AwsBatchJobDefinitionListerExpansion interface{}
-
-// AwsBatchJobQueueListerExpansion allows custom methods to be added to
-// AwsBatchJobQueueLister.
-type AwsBatchJobQueueListerExpansion interface{}
-
-// AwsBudgetsBudgetListerExpansion allows custom methods to be added to
-// AwsBudgetsBudgetLister.
-type AwsBudgetsBudgetListerExpansion interface{}
-
-// AwsCloud9EnvironmentEc2ListerExpansion allows custom methods to be added to
-// AwsCloud9EnvironmentEc2Lister.
-type AwsCloud9EnvironmentEc2ListerExpansion interface{}
-
-// AwsCloudformationStackListerExpansion allows custom methods to be added to
-// AwsCloudformationStackLister.
-type AwsCloudformationStackListerExpansion interface{}
-
-// AwsCloudformationStackSetListerExpansion allows custom methods to be added to
-// AwsCloudformationStackSetLister.
-type AwsCloudformationStackSetListerExpansion interface{}
-
-// AwsCloudformationStackSetInstanceListerExpansion allows custom methods to be added to
-// AwsCloudformationStackSetInstanceLister.
-type AwsCloudformationStackSetInstanceListerExpansion interface{}
-
-// AwsCloudfrontDistributionListerExpansion allows custom methods to be added to
-// AwsCloudfrontDistributionLister.
-type AwsCloudfrontDistributionListerExpansion interface{}
-
-// AwsCloudfrontOriginAccessIdentityListerExpansion allows custom methods to be added to
-// AwsCloudfrontOriginAccessIdentityLister.
-type AwsCloudfrontOriginAccessIdentityListerExpansion interface{}
-
-// AwsCloudfrontPublicKeyListerExpansion allows custom methods to be added to
-// AwsCloudfrontPublicKeyLister.
-type AwsCloudfrontPublicKeyListerExpansion interface{}
-
-// AwsCloudhsmV2ClusterListerExpansion allows custom methods to be added to
-// AwsCloudhsmV2ClusterLister.
-type AwsCloudhsmV2ClusterListerExpansion interface{}
-
-// AwsCloudhsmV2HsmListerExpansion allows custom methods to be added to
-// AwsCloudhsmV2HsmLister.
-type AwsCloudhsmV2HsmListerExpansion interface{}
-
-// AwsCloudtrailListerExpansion allows custom methods to be added to
-// AwsCloudtrailLister.
-type AwsCloudtrailListerExpansion interface{}
-
-// AwsCloudwatchDashboardListerExpansion allows custom methods to be added to
-// AwsCloudwatchDashboardLister.
-type AwsCloudwatchDashboardListerExpansion interface{}
-
-// AwsCloudwatchEventPermissionListerExpansion allows custom methods to be added to
-// AwsCloudwatchEventPermissionLister.
-type AwsCloudwatchEventPermissionListerExpansion interface{}
-
-// AwsCloudwatchEventRuleListerExpansion allows custom methods to be added to
-// AwsCloudwatchEventRuleLister.
-type AwsCloudwatchEventRuleListerExpansion interface{}
-
-// AwsCloudwatchEventTargetListerExpansion allows custom methods to be added to
-// AwsCloudwatchEventTargetLister.
-type AwsCloudwatchEventTargetListerExpansion interface{}
-
-// AwsCloudwatchLogDestinationListerExpansion allows custom methods to be added to
-// AwsCloudwatchLogDestinationLister.
-type AwsCloudwatchLogDestinationListerExpansion interface{}
-
-// AwsCloudwatchLogDestinationPolicyListerExpansion allows custom methods to be added to
-// AwsCloudwatchLogDestinationPolicyLister.
-type AwsCloudwatchLogDestinationPolicyListerExpansion interface{}
-
-// AwsCloudwatchLogGroupListerExpansion allows custom methods to be added to
-// AwsCloudwatchLogGroupLister.
-type AwsCloudwatchLogGroupListerExpansion interface{}
-
-// AwsCloudwatchLogMetricFilterListerExpansion allows custom methods to be added to
-// AwsCloudwatchLogMetricFilterLister.
-type AwsCloudwatchLogMetricFilterListerExpansion interface{}
-
-// AwsCloudwatchLogResourcePolicyListerExpansion allows custom methods to be added to
-// AwsCloudwatchLogResourcePolicyLister.
-type AwsCloudwatchLogResourcePolicyListerExpansion interface{}
-
-// AwsCloudwatchLogStreamListerExpansion allows custom methods to be added to
-// AwsCloudwatchLogStreamLister.
-type AwsCloudwatchLogStreamListerExpansion interface{}
-
-// AwsCloudwatchLogSubscriptionFilterListerExpansion allows custom methods to be added to
-// AwsCloudwatchLogSubscriptionFilterLister.
-type AwsCloudwatchLogSubscriptionFilterListerExpansion interface{}
-
-// AwsCloudwatchMetricAlarmListerExpansion allows custom methods to be added to
-// AwsCloudwatchMetricAlarmLister.
-type AwsCloudwatchMetricAlarmListerExpansion interface{}
-
-// AwsCodebuildProjectListerExpansion allows custom methods to be added to
-// AwsCodebuildProjectLister.
-type AwsCodebuildProjectListerExpansion interface{}
-
-// AwsCodebuildWebhookListerExpansion allows custom methods to be added to
-// AwsCodebuildWebhookLister.
-type AwsCodebuildWebhookListerExpansion interface{}
-
-// AwsCodecommitRepositoryListerExpansion allows custom methods to be added to
-// AwsCodecommitRepositoryLister.
-type AwsCodecommitRepositoryListerExpansion interface{}
-
-// AwsCodecommitTriggerListerExpansion allows custom methods to be added to
-// AwsCodecommitTriggerLister.
-type AwsCodecommitTriggerListerExpansion interface{}
-
-// AwsCodedeployAppListerExpansion allows custom methods to be added to
-// AwsCodedeployAppLister.
-type AwsCodedeployAppListerExpansion interface{}
-
-// AwsCodedeployDeploymentConfigListerExpansion allows custom methods to be added to
-// AwsCodedeployDeploymentConfigLister.
-type AwsCodedeployDeploymentConfigListerExpansion interface{}
-
-// AwsCodedeployDeploymentGroupListerExpansion allows custom methods to be added to
-// AwsCodedeployDeploymentGroupLister.
-type AwsCodedeployDeploymentGroupListerExpansion interface{}
-
-// AwsCodepipelineListerExpansion allows custom methods to be added to
-// AwsCodepipelineLister.
-type AwsCodepipelineListerExpansion interface{}
-
-// AwsCodepipelineWebhookListerExpansion allows custom methods to be added to
-// AwsCodepipelineWebhookLister.
-type AwsCodepipelineWebhookListerExpansion interface{}
-
-// AwsCognitoIdentityPoolListerExpansion allows custom methods to be added to
-// AwsCognitoIdentityPoolLister.
-type AwsCognitoIdentityPoolListerExpansion interface{}
-
-// AwsCognitoIdentityPoolRolesAttachmentListerExpansion allows custom methods to be added to
-// AwsCognitoIdentityPoolRolesAttachmentLister.
-type AwsCognitoIdentityPoolRolesAttachmentListerExpansion interface{}
-
-// AwsCognitoIdentityProviderListerExpansion allows custom methods to be added to
-// AwsCognitoIdentityProviderLister.
-type AwsCognitoIdentityProviderListerExpansion interface{}
-
-// AwsCognitoResourceServerListerExpansion allows custom methods to be added to
-// AwsCognitoResourceServerLister.
-type AwsCognitoResourceServerListerExpansion interface{}
-
-// AwsCognitoUserGroupListerExpansion allows custom methods to be added to
-// AwsCognitoUserGroupLister.
-type AwsCognitoUserGroupListerExpansion interface{}
-
-// AwsCognitoUserPoolListerExpansion allows custom methods to be added to
-// AwsCognitoUserPoolLister.
-type AwsCognitoUserPoolListerExpansion interface{}
-
-// AwsCognitoUserPoolClientListerExpansion allows custom methods to be added to
-// AwsCognitoUserPoolClientLister.
-type AwsCognitoUserPoolClientListerExpansion interface{}
-
-// AwsCognitoUserPoolDomainListerExpansion allows custom methods to be added to
-// AwsCognitoUserPoolDomainLister.
-type AwsCognitoUserPoolDomainListerExpansion interface{}
-
-// AwsConfigAggregateAuthorizationListerExpansion allows custom methods to be added to
-// AwsConfigAggregateAuthorizationLister.
-type AwsConfigAggregateAuthorizationListerExpansion interface{}
-
-// AwsConfigConfigRuleListerExpansion allows custom methods to be added to
-// AwsConfigConfigRuleLister.
-type AwsConfigConfigRuleListerExpansion interface{}
-
-// AwsConfigConfigurationAggregatorListerExpansion allows custom methods to be added to
-// AwsConfigConfigurationAggregatorLister.
-type AwsConfigConfigurationAggregatorListerExpansion interface{}
-
-// AwsConfigConfigurationRecorderListerExpansion allows custom methods to be added to
-// AwsConfigConfigurationRecorderLister.
-type AwsConfigConfigurationRecorderListerExpansion interface{}
-
-// AwsConfigConfigurationRecorderStatusListerExpansion allows custom methods to be added to
-// AwsConfigConfigurationRecorderStatusLister.
-type AwsConfigConfigurationRecorderStatusListerExpansion interface{}
-
-// AwsConfigDeliveryChannelListerExpansion allows custom methods to be added to
-// AwsConfigDeliveryChannelLister.
-type AwsConfigDeliveryChannelListerExpansion interface{}
-
-// AwsCurReportDefinitionListerExpansion allows custom methods to be added to
-// AwsCurReportDefinitionLister.
-type AwsCurReportDefinitionListerExpansion interface{}
-
-// AwsCustomerGatewayListerExpansion allows custom methods to be added to
-// AwsCustomerGatewayLister.
-type AwsCustomerGatewayListerExpansion interface{}
-
-// AwsDatapipelinePipelineListerExpansion allows custom methods to be added to
-// AwsDatapipelinePipelineLister.
-type AwsDatapipelinePipelineListerExpansion interface{}
-
-// AwsDatasyncAgentListerExpansion allows custom methods to be added to
-// AwsDatasyncAgentLister.
-type AwsDatasyncAgentListerExpansion interface{}
-
-// AwsDatasyncLocationEfsListerExpansion allows custom methods to be added to
-// AwsDatasyncLocationEfsLister.
-type AwsDatasyncLocationEfsListerExpansion interface{}
-
-// AwsDatasyncLocationNfsListerExpansion allows custom methods to be added to
-// AwsDatasyncLocationNfsLister.
-type AwsDatasyncLocationNfsListerExpansion interface{}
-
-// AwsDatasyncLocationS3ListerExpansion allows custom methods to be added to
-// AwsDatasyncLocationS3Lister.
-type AwsDatasyncLocationS3ListerExpansion interface{}
-
-// AwsDatasyncTaskListerExpansion allows custom methods to be added to
-// AwsDatasyncTaskLister.
-type AwsDatasyncTaskListerExpansion interface{}
-
-// AwsDaxClusterListerExpansion allows custom methods to be added to
-// AwsDaxClusterLister.
-type AwsDaxClusterListerExpansion interface{}
-
-// AwsDaxParameterGroupListerExpansion allows custom methods to be added to
-// AwsDaxParameterGroupLister.
-type AwsDaxParameterGroupListerExpansion interface{}
-
-// AwsDaxSubnetGroupListerExpansion allows custom methods to be added to
-// AwsDaxSubnetGroupLister.
-type AwsDaxSubnetGroupListerExpansion interface{}
-
-// AwsDbClusterSnapshotListerExpansion allows custom methods to be added to
-// AwsDbClusterSnapshotLister.
-type AwsDbClusterSnapshotListerExpansion interface{}
-
-// AwsDbEventSubscriptionListerExpansion allows custom methods to be added to
-// AwsDbEventSubscriptionLister.
-type AwsDbEventSubscriptionListerExpansion interface{}
-
-// AwsDbInstanceListerExpansion allows custom methods to be added to
-// AwsDbInstanceLister.
-type AwsDbInstanceListerExpansion interface{}
-
-// AwsDbInstanceRoleAssociationListerExpansion allows custom methods to be added to
-// AwsDbInstanceRoleAssociationLister.
-type AwsDbInstanceRoleAssociationListerExpansion interface{}
-
-// AwsDbOptionGroupListerExpansion allows custom methods to be added to
-// AwsDbOptionGroupLister.
-type AwsDbOptionGroupListerExpansion interface{}
-
-// AwsDbParameterGroupListerExpansion allows custom methods to be added to
-// AwsDbParameterGroupLister.
-type AwsDbParameterGroupListerExpansion interface{}
-
-// AwsDbSecurityGroupListerExpansion allows custom methods to be added to
-// AwsDbSecurityGroupLister.
-type AwsDbSecurityGroupListerExpansion interface{}
-
-// AwsDbSnapshotListerExpansion allows custom methods to be added to
-// AwsDbSnapshotLister.
-type AwsDbSnapshotListerExpansion interface{}
-
-// AwsDbSubnetGroupListerExpansion allows custom methods to be added to
-// AwsDbSubnetGroupLister.
-type AwsDbSubnetGroupListerExpansion interface{}
-
-// AwsDefaultNetworkAclListerExpansion allows custom methods to be added to
-// AwsDefaultNetworkAclLister.
-type AwsDefaultNetworkAclListerExpansion interface{}
-
-// AwsDefaultRouteTableListerExpansion allows custom methods to be added to
-// AwsDefaultRouteTableLister.
-type AwsDefaultRouteTableListerExpansion interface{}
-
-// AwsDefaultSecurityGroupListerExpansion allows custom methods to be added to
-// AwsDefaultSecurityGroupLister.
-type AwsDefaultSecurityGroupListerExpansion interface{}
-
-// AwsDefaultSubnetListerExpansion allows custom methods to be added to
-// AwsDefaultSubnetLister.
-type AwsDefaultSubnetListerExpansion interface{}
-
-// AwsDefaultVpcListerExpansion allows custom methods to be added to
-// AwsDefaultVpcLister.
-type AwsDefaultVpcListerExpansion interface{}
-
-// AwsDefaultVpcDhcpOptionsListerExpansion allows custom methods to be added to
-// AwsDefaultVpcDhcpOptionsLister.
-type AwsDefaultVpcDhcpOptionsListerExpansion interface{}
-
-// AwsDevicefarmProjectListerExpansion allows custom methods to be added to
-// AwsDevicefarmProjectLister.
-type AwsDevicefarmProjectListerExpansion interface{}
-
-// AwsDirectoryServiceConditionalForwarderListerExpansion allows custom methods to be added to
-// AwsDirectoryServiceConditionalForwarderLister.
-type AwsDirectoryServiceConditionalForwarderListerExpansion interface{}
-
-// AwsDirectoryServiceDirectoryListerExpansion allows custom methods to be added to
-// AwsDirectoryServiceDirectoryLister.
-type AwsDirectoryServiceDirectoryListerExpansion interface{}
-
-// AwsDirectoryServiceLogSubscriptionListerExpansion allows custom methods to be added to
-// AwsDirectoryServiceLogSubscriptionLister.
-type AwsDirectoryServiceLogSubscriptionListerExpansion interface{}
-
-// AwsDlmLifecyclePolicyListerExpansion allows custom methods to be added to
-// AwsDlmLifecyclePolicyLister.
-type AwsDlmLifecyclePolicyListerExpansion interface{}
-
-// AwsDmsCertificateListerExpansion allows custom methods to be added to
-// AwsDmsCertificateLister.
-type AwsDmsCertificateListerExpansion interface{}
-
-// AwsDmsEndpointListerExpansion allows custom methods to be added to
-// AwsDmsEndpointLister.
-type AwsDmsEndpointListerExpansion interface{}
-
-// AwsDmsReplicationInstanceListerExpansion allows custom methods to be added to
-// AwsDmsReplicationInstanceLister.
-type AwsDmsReplicationInstanceListerExpansion interface{}
-
-// AwsDmsReplicationSubnetGroupListerExpansion allows custom methods to be added to
-// AwsDmsReplicationSubnetGroupLister.
-type AwsDmsReplicationSubnetGroupListerExpansion interface{}
-
-// AwsDmsReplicationTaskListerExpansion allows custom methods to be added to
-// AwsDmsReplicationTaskLister.
-type AwsDmsReplicationTaskListerExpansion interface{}
-
-// AwsDocdbClusterListerExpansion allows custom methods to be added to
-// AwsDocdbClusterLister.
-type AwsDocdbClusterListerExpansion interface{}
-
-// AwsDocdbClusterInstanceListerExpansion allows custom methods to be added to
-// AwsDocdbClusterInstanceLister.
-type AwsDocdbClusterInstanceListerExpansion interface{}
-
-// AwsDocdbClusterParameterGroupListerExpansion allows custom methods to be added to
-// AwsDocdbClusterParameterGroupLister.
-type AwsDocdbClusterParameterGroupListerExpansion interface{}
-
-// AwsDocdbClusterSnapshotListerExpansion allows custom methods to be added to
-// AwsDocdbClusterSnapshotLister.
-type AwsDocdbClusterSnapshotListerExpansion interface{}
-
-// AwsDocdbSubnetGroupListerExpansion allows custom methods to be added to
-// AwsDocdbSubnetGroupLister.
-type AwsDocdbSubnetGroupListerExpansion interface{}
-
-// AwsDxBgpPeerListerExpansion allows custom methods to be added to
-// AwsDxBgpPeerLister.
-type AwsDxBgpPeerListerExpansion interface{}
-
-// AwsDxConnectionListerExpansion allows custom methods to be added to
-// AwsDxConnectionLister.
-type AwsDxConnectionListerExpansion interface{}
-
-// AwsDxConnectionAssociationListerExpansion allows custom methods to be added to
-// AwsDxConnectionAssociationLister.
-type AwsDxConnectionAssociationListerExpansion interface{}
-
-// AwsDxGatewayListerExpansion allows custom methods to be added to
-// AwsDxGatewayLister.
-type AwsDxGatewayListerExpansion interface{}
-
-// AwsDxGatewayAssociationListerExpansion allows custom methods to be added to
-// AwsDxGatewayAssociationLister.
-type AwsDxGatewayAssociationListerExpansion interface{}
-
-// AwsDxGatewayAssociationProposalListerExpansion allows custom methods to be added to
-// AwsDxGatewayAssociationProposalLister.
-type AwsDxGatewayAssociationProposalListerExpansion interface{}
-
-// AwsDxHostedPrivateVirtualInterfaceListerExpansion allows custom methods to be added to
-// AwsDxHostedPrivateVirtualInterfaceLister.
-type AwsDxHostedPrivateVirtualInterfaceListerExpansion interface{}
-
-// AwsDxHostedPrivateVirtualInterfaceAccepterListerExpansion allows custom methods to be added to
-// AwsDxHostedPrivateVirtualInterfaceAccepterLister.
-type AwsDxHostedPrivateVirtualInterfaceAccepterListerExpansion interface{}
-
-// AwsDxHostedPublicVirtualInterfaceListerExpansion allows custom methods to be added to
-// AwsDxHostedPublicVirtualInterfaceLister.
-type AwsDxHostedPublicVirtualInterfaceListerExpansion interface{}
-
-// AwsDxHostedPublicVirtualInterfaceAccepterListerExpansion allows custom methods to be added to
-// AwsDxHostedPublicVirtualInterfaceAccepterLister.
-type AwsDxHostedPublicVirtualInterfaceAccepterListerExpansion interface{}
-
-// AwsDxLagListerExpansion allows custom methods to be added to
-// AwsDxLagLister.
-type AwsDxLagListerExpansion interface{}
-
-// AwsDxPrivateVirtualInterfaceListerExpansion allows custom methods to be added to
-// AwsDxPrivateVirtualInterfaceLister.
-type AwsDxPrivateVirtualInterfaceListerExpansion interface{}
-
-// AwsDxPublicVirtualInterfaceListerExpansion allows custom methods to be added to
-// AwsDxPublicVirtualInterfaceLister.
-type AwsDxPublicVirtualInterfaceListerExpansion interface{}
-
-// AwsDynamodbGlobalTableListerExpansion allows custom methods to be added to
-// AwsDynamodbGlobalTableLister.
-type AwsDynamodbGlobalTableListerExpansion interface{}
-
-// AwsDynamodbTableListerExpansion allows custom methods to be added to
-// AwsDynamodbTableLister.
-type AwsDynamodbTableListerExpansion interface{}
-
-// AwsDynamodbTableItemListerExpansion allows custom methods to be added to
-// AwsDynamodbTableItemLister.
-type AwsDynamodbTableItemListerExpansion interface{}
-
-// AwsEbsDefaultKmsKeyListerExpansion allows custom methods to be added to
-// AwsEbsDefaultKmsKeyLister.
-type AwsEbsDefaultKmsKeyListerExpansion interface{}
-
-// AwsEbsEncryptionByDefaultListerExpansion allows custom methods to be added to
-// AwsEbsEncryptionByDefaultLister.
-type AwsEbsEncryptionByDefaultListerExpansion interface{}
-
-// AwsEbsSnapshotListerExpansion allows custom methods to be added to
-// AwsEbsSnapshotLister.
-type AwsEbsSnapshotListerExpansion interface{}
-
-// AwsEbsSnapshotCopyListerExpansion allows custom methods to be added to
-// AwsEbsSnapshotCopyLister.
-type AwsEbsSnapshotCopyListerExpansion interface{}
-
-// AwsEbsVolumeListerExpansion allows custom methods to be added to
-// AwsEbsVolumeLister.
-type AwsEbsVolumeListerExpansion interface{}
-
-// AwsEc2CapacityReservationListerExpansion allows custom methods to be added to
-// AwsEc2CapacityReservationLister.
-type AwsEc2CapacityReservationListerExpansion interface{}
-
-// AwsEc2ClientVpnEndpointListerExpansion allows custom methods to be added to
-// AwsEc2ClientVpnEndpointLister.
-type AwsEc2ClientVpnEndpointListerExpansion interface{}
-
-// AwsEc2ClientVpnNetworkAssociationListerExpansion allows custom methods to be added to
-// AwsEc2ClientVpnNetworkAssociationLister.
-type AwsEc2ClientVpnNetworkAssociationListerExpansion interface{}
-
-// AwsEc2FleetListerExpansion allows custom methods to be added to
-// AwsEc2FleetLister.
-type AwsEc2FleetListerExpansion interface{}
-
-// AwsEc2TransitGatewayListerExpansion allows custom methods to be added to
-// AwsEc2TransitGatewayLister.
-type AwsEc2TransitGatewayListerExpansion interface{}
-
-// AwsEc2TransitGatewayRouteListerExpansion allows custom methods to be added to
-// AwsEc2TransitGatewayRouteLister.
-type AwsEc2TransitGatewayRouteListerExpansion interface{}
-
-// AwsEc2TransitGatewayRouteTableListerExpansion allows custom methods to be added to
-// AwsEc2TransitGatewayRouteTableLister.
-type AwsEc2TransitGatewayRouteTableListerExpansion interface{}
-
-// AwsEc2TransitGatewayRouteTableAssociationListerExpansion allows custom methods to be added to
-// AwsEc2TransitGatewayRouteTableAssociationLister.
-type AwsEc2TransitGatewayRouteTableAssociationListerExpansion interface{}
-
-// AwsEc2TransitGatewayRouteTablePropagationListerExpansion allows custom methods to be added to
-// AwsEc2TransitGatewayRouteTablePropagationLister.
-type AwsEc2TransitGatewayRouteTablePropagationListerExpansion interface{}
-
-// AwsEc2TransitGatewayVpcAttachmentListerExpansion allows custom methods to be added to
-// AwsEc2TransitGatewayVpcAttachmentLister.
-type AwsEc2TransitGatewayVpcAttachmentListerExpansion interface{}
-
-// AwsEc2TransitGatewayVpcAttachmentAccepterListerExpansion allows custom methods to be added to
-// AwsEc2TransitGatewayVpcAttachmentAccepterLister.
-type AwsEc2TransitGatewayVpcAttachmentAccepterListerExpansion interface{}
-
-// AwsEcrLifecyclePolicyListerExpansion allows custom methods to be added to
-// AwsEcrLifecyclePolicyLister.
-type AwsEcrLifecyclePolicyListerExpansion interface{}
-
-// AwsEcrRepositoryListerExpansion allows custom methods to be added to
-// AwsEcrRepositoryLister.
-type AwsEcrRepositoryListerExpansion interface{}
-
-// AwsEcrRepositoryPolicyListerExpansion allows custom methods to be added to
-// AwsEcrRepositoryPolicyLister.
-type AwsEcrRepositoryPolicyListerExpansion interface{}
-
-// AwsEcsClusterListerExpansion allows custom methods to be added to
-// AwsEcsClusterLister.
-type AwsEcsClusterListerExpansion interface{}
-
-// AwsEcsServiceListerExpansion allows custom methods to be added to
-// AwsEcsServiceLister.
-type AwsEcsServiceListerExpansion interface{}
-
-// AwsEcsTaskDefinitionListerExpansion allows custom methods to be added to
-// AwsEcsTaskDefinitionLister.
-type AwsEcsTaskDefinitionListerExpansion interface{}
-
-// AwsEfsFileSystemListerExpansion allows custom methods to be added to
-// AwsEfsFileSystemLister.
-type AwsEfsFileSystemListerExpansion interface{}
-
-// AwsEfsMountTargetListerExpansion allows custom methods to be added to
-// AwsEfsMountTargetLister.
-type AwsEfsMountTargetListerExpansion interface{}
-
-// AwsEgressOnlyInternetGatewayListerExpansion allows custom methods to be added to
-// AwsEgressOnlyInternetGatewayLister.
-type AwsEgressOnlyInternetGatewayListerExpansion interface{}
-
-// AwsEipListerExpansion allows custom methods to be added to
-// AwsEipLister.
-type AwsEipListerExpansion interface{}
-
-// AwsEipAssociationListerExpansion allows custom methods to be added to
-// AwsEipAssociationLister.
-type AwsEipAssociationListerExpansion interface{}
-
-// AwsEksClusterListerExpansion allows custom methods to be added to
-// AwsEksClusterLister.
-type AwsEksClusterListerExpansion interface{}
-
-// AwsElasticBeanstalkApplicationListerExpansion allows custom methods to be added to
-// AwsElasticBeanstalkApplicationLister.
-type AwsElasticBeanstalkApplicationListerExpansion interface{}
-
-// AwsElasticBeanstalkApplicationVersionListerExpansion allows custom methods to be added to
-// AwsElasticBeanstalkApplicationVersionLister.
-type AwsElasticBeanstalkApplicationVersionListerExpansion interface{}
-
-// AwsElasticBeanstalkConfigurationTemplateListerExpansion allows custom methods to be added to
-// AwsElasticBeanstalkConfigurationTemplateLister.
-type AwsElasticBeanstalkConfigurationTemplateListerExpansion interface{}
-
-// AwsElasticBeanstalkEnvironmentListerExpansion allows custom methods to be added to
-// AwsElasticBeanstalkEnvironmentLister.
-type AwsElasticBeanstalkEnvironmentListerExpansion interface{}
-
-// AwsElasticacheClusterListerExpansion allows custom methods to be added to
-// AwsElasticacheClusterLister.
-type AwsElasticacheClusterListerExpansion interface{}
-
-// AwsElasticacheParameterGroupListerExpansion allows custom methods to be added to
-// AwsElasticacheParameterGroupLister.
-type AwsElasticacheParameterGroupListerExpansion interface{}
-
-// AwsElasticacheReplicationGroupListerExpansion allows custom methods to be added to
-// AwsElasticacheReplicationGroupLister.
-type AwsElasticacheReplicationGroupListerExpansion interface{}
-
-// AwsElasticacheSecurityGroupListerExpansion allows custom methods to be added to
-// AwsElasticacheSecurityGroupLister.
-type AwsElasticacheSecurityGroupListerExpansion interface{}
-
-// AwsElasticacheSubnetGroupListerExpansion allows custom methods to be added to
-// AwsElasticacheSubnetGroupLister.
-type AwsElasticacheSubnetGroupListerExpansion interface{}
-
-// AwsElasticsearchDomainListerExpansion allows custom methods to be added to
-// AwsElasticsearchDomainLister.
-type AwsElasticsearchDomainListerExpansion interface{}
-
-// AwsElasticsearchDomainPolicyListerExpansion allows custom methods to be added to
-// AwsElasticsearchDomainPolicyLister.
-type AwsElasticsearchDomainPolicyListerExpansion interface{}
-
-// AwsElastictranscoderPipelineListerExpansion allows custom methods to be added to
-// AwsElastictranscoderPipelineLister.
-type AwsElastictranscoderPipelineListerExpansion interface{}
-
-// AwsElastictranscoderPresetListerExpansion allows custom methods to be added to
-// AwsElastictranscoderPresetLister.
-type AwsElastictranscoderPresetListerExpansion interface{}
-
-// AwsElbListerExpansion allows custom methods to be added to
-// AwsElbLister.
-type AwsElbListerExpansion interface{}
-
-// AwsElbAttachmentListerExpansion allows custom methods to be added to
-// AwsElbAttachmentLister.
-type AwsElbAttachmentListerExpansion interface{}
-
-// AwsEmrClusterListerExpansion allows custom methods to be added to
-// AwsEmrClusterLister.
-type AwsEmrClusterListerExpansion interface{}
-
-// AwsEmrInstanceGroupListerExpansion allows custom methods to be added to
-// AwsEmrInstanceGroupLister.
-type AwsEmrInstanceGroupListerExpansion interface{}
-
-// AwsEmrSecurityConfigurationListerExpansion allows custom methods to be added to
-// AwsEmrSecurityConfigurationLister.
-type AwsEmrSecurityConfigurationListerExpansion interface{}
-
-// AwsFlowLogListerExpansion allows custom methods to be added to
-// AwsFlowLogLister.
-type AwsFlowLogListerExpansion interface{}
-
-// AwsGameliftAliasListerExpansion allows custom methods to be added to
-// AwsGameliftAliasLister.
-type AwsGameliftAliasListerExpansion interface{}
-
-// AwsGameliftBuildListerExpansion allows custom methods to be added to
-// AwsGameliftBuildLister.
-type AwsGameliftBuildListerExpansion interface{}
-
-// AwsGameliftFleetListerExpansion allows custom methods to be added to
-// AwsGameliftFleetLister.
-type AwsGameliftFleetListerExpansion interface{}
-
-// AwsGameliftGameSessionQueueListerExpansion allows custom methods to be added to
-// AwsGameliftGameSessionQueueLister.
-type AwsGameliftGameSessionQueueListerExpansion interface{}
-
-// AwsGlacierVaultListerExpansion allows custom methods to be added to
-// AwsGlacierVaultLister.
-type AwsGlacierVaultListerExpansion interface{}
-
-// AwsGlacierVaultLockListerExpansion allows custom methods to be added to
-// AwsGlacierVaultLockLister.
-type AwsGlacierVaultLockListerExpansion interface{}
-
-// AwsGlobalacceleratorAcceleratorListerExpansion allows custom methods to be added to
-// AwsGlobalacceleratorAcceleratorLister.
-type AwsGlobalacceleratorAcceleratorListerExpansion interface{}
-
-// AwsGlobalacceleratorEndpointGroupListerExpansion allows custom methods to be added to
-// AwsGlobalacceleratorEndpointGroupLister.
-type AwsGlobalacceleratorEndpointGroupListerExpansion interface{}
-
-// AwsGlobalacceleratorListenerListerExpansion allows custom methods to be added to
-// AwsGlobalacceleratorListenerLister.
-type AwsGlobalacceleratorListenerListerExpansion interface{}
-
-// AwsGlueCatalogDatabaseListerExpansion allows custom methods to be added to
-// AwsGlueCatalogDatabaseLister.
-type AwsGlueCatalogDatabaseListerExpansion interface{}
-
-// AwsGlueCatalogTableListerExpansion allows custom methods to be added to
-// AwsGlueCatalogTableLister.
-type AwsGlueCatalogTableListerExpansion interface{}
-
-// AwsGlueClassifierListerExpansion allows custom methods to be added to
-// AwsGlueClassifierLister.
-type AwsGlueClassifierListerExpansion interface{}
-
-// AwsGlueConnectionListerExpansion allows custom methods to be added to
-// AwsGlueConnectionLister.
-type AwsGlueConnectionListerExpansion interface{}
-
-// AwsGlueCrawlerListerExpansion allows custom methods to be added to
-// AwsGlueCrawlerLister.
-type AwsGlueCrawlerListerExpansion interface{}
-
-// AwsGlueJobListerExpansion allows custom methods to be added to
-// AwsGlueJobLister.
-type AwsGlueJobListerExpansion interface{}
-
-// AwsGlueSecurityConfigurationListerExpansion allows custom methods to be added to
-// AwsGlueSecurityConfigurationLister.
-type AwsGlueSecurityConfigurationListerExpansion interface{}
-
-// AwsGlueTriggerListerExpansion allows custom methods to be added to
-// AwsGlueTriggerLister.
-type AwsGlueTriggerListerExpansion interface{}
-
-// AwsGuarddutyDetectorListerExpansion allows custom methods to be added to
-// AwsGuarddutyDetectorLister.
-type AwsGuarddutyDetectorListerExpansion interface{}
-
-// AwsGuarddutyInviteAccepterListerExpansion allows custom methods to be added to
-// AwsGuarddutyInviteAccepterLister.
-type AwsGuarddutyInviteAccepterListerExpansion interface{}
-
-// AwsGuarddutyIpsetListerExpansion allows custom methods to be added to
-// AwsGuarddutyIpsetLister.
-type AwsGuarddutyIpsetListerExpansion interface{}
-
-// AwsGuarddutyMemberListerExpansion allows custom methods to be added to
-// AwsGuarddutyMemberLister.
-type AwsGuarddutyMemberListerExpansion interface{}
-
-// AwsGuarddutyThreatintelsetListerExpansion allows custom methods to be added to
-// AwsGuarddutyThreatintelsetLister.
-type AwsGuarddutyThreatintelsetListerExpansion interface{}
-
-// AwsIamAccessKeyListerExpansion allows custom methods to be added to
-// AwsIamAccessKeyLister.
-type AwsIamAccessKeyListerExpansion interface{}
-
-// AwsIamAccountAliasListerExpansion allows custom methods to be added to
-// AwsIamAccountAliasLister.
-type AwsIamAccountAliasListerExpansion interface{}
-
-// AwsIamAccountPasswordPolicyListerExpansion allows custom methods to be added to
-// AwsIamAccountPasswordPolicyLister.
-type AwsIamAccountPasswordPolicyListerExpansion interface{}
-
-// AwsIamGroupListerExpansion allows custom methods to be added to
-// AwsIamGroupLister.
-type AwsIamGroupListerExpansion interface{}
-
-// AwsIamGroupMembershipListerExpansion allows custom methods to be added to
-// AwsIamGroupMembershipLister.
-type AwsIamGroupMembershipListerExpansion interface{}
-
-// AwsIamGroupPolicyListerExpansion allows custom methods to be added to
-// AwsIamGroupPolicyLister.
-type AwsIamGroupPolicyListerExpansion interface{}
-
-// AwsIamGroupPolicyAttachmentListerExpansion allows custom methods to be added to
-// AwsIamGroupPolicyAttachmentLister.
-type AwsIamGroupPolicyAttachmentListerExpansion interface{}
-
-// AwsIamInstanceProfileListerExpansion allows custom methods to be added to
-// AwsIamInstanceProfileLister.
-type AwsIamInstanceProfileListerExpansion interface{}
-
-// AwsIamOpenidConnectProviderListerExpansion allows custom methods to be added to
-// AwsIamOpenidConnectProviderLister.
-type AwsIamOpenidConnectProviderListerExpansion interface{}
-
-// AwsIamPolicyListerExpansion allows custom methods to be added to
-// AwsIamPolicyLister.
-type AwsIamPolicyListerExpansion interface{}
-
-// AwsIamPolicyAttachmentListerExpansion allows custom methods to be added to
-// AwsIamPolicyAttachmentLister.
-type AwsIamPolicyAttachmentListerExpansion interface{}
-
-// AwsIamRoleListerExpansion allows custom methods to be added to
-// AwsIamRoleLister.
-type AwsIamRoleListerExpansion interface{}
-
-// AwsIamRolePolicyListerExpansion allows custom methods to be added to
-// AwsIamRolePolicyLister.
-type AwsIamRolePolicyListerExpansion interface{}
-
-// AwsIamRolePolicyAttachmentListerExpansion allows custom methods to be added to
-// AwsIamRolePolicyAttachmentLister.
-type AwsIamRolePolicyAttachmentListerExpansion interface{}
-
-// AwsIamSamlProviderListerExpansion allows custom methods to be added to
-// AwsIamSamlProviderLister.
-type AwsIamSamlProviderListerExpansion interface{}
-
-// AwsIamServerCertificateListerExpansion allows custom methods to be added to
-// AwsIamServerCertificateLister.
-type AwsIamServerCertificateListerExpansion interface{}
-
-// AwsIamServiceLinkedRoleListerExpansion allows custom methods to be added to
-// AwsIamServiceLinkedRoleLister.
-type AwsIamServiceLinkedRoleListerExpansion interface{}
-
-// AwsIamUserListerExpansion allows custom methods to be added to
-// AwsIamUserLister.
-type AwsIamUserListerExpansion interface{}
-
-// AwsIamUserGroupMembershipListerExpansion allows custom methods to be added to
-// AwsIamUserGroupMembershipLister.
-type AwsIamUserGroupMembershipListerExpansion interface{}
-
-// AwsIamUserLoginProfileListerExpansion allows custom methods to be added to
-// AwsIamUserLoginProfileLister.
-type AwsIamUserLoginProfileListerExpansion interface{}
-
-// AwsIamUserPolicyListerExpansion allows custom methods to be added to
-// AwsIamUserPolicyLister.
-type AwsIamUserPolicyListerExpansion interface{}
-
-// AwsIamUserPolicyAttachmentListerExpansion allows custom methods to be added to
-// AwsIamUserPolicyAttachmentLister.
-type AwsIamUserPolicyAttachmentListerExpansion interface{}
-
-// AwsIamUserSshKeyListerExpansion allows custom methods to be added to
-// AwsIamUserSshKeyLister.
-type AwsIamUserSshKeyListerExpansion interface{}
-
-// AwsInspectorAssessmentTargetListerExpansion allows custom methods to be added to
-// AwsInspectorAssessmentTargetLister.
-type AwsInspectorAssessmentTargetListerExpansion interface{}
-
-// AwsInspectorAssessmentTemplateListerExpansion allows custom methods to be added to
-// AwsInspectorAssessmentTemplateLister.
-type AwsInspectorAssessmentTemplateListerExpansion interface{}
-
-// AwsInspectorResourceGroupListerExpansion allows custom methods to be added to
-// AwsInspectorResourceGroupLister.
-type AwsInspectorResourceGroupListerExpansion interface{}
-
-// AwsInstanceListerExpansion allows custom methods to be added to
-// AwsInstanceLister.
-type AwsInstanceListerExpansion interface{}
-
-// AwsInternetGatewayListerExpansion allows custom methods to be added to
-// AwsInternetGatewayLister.
-type AwsInternetGatewayListerExpansion interface{}
-
-// AwsIotCertificateListerExpansion allows custom methods to be added to
-// AwsIotCertificateLister.
-type AwsIotCertificateListerExpansion interface{}
-
-// AwsIotPolicyListerExpansion allows custom methods to be added to
-// AwsIotPolicyLister.
-type AwsIotPolicyListerExpansion interface{}
-
-// AwsIotPolicyAttachmentListerExpansion allows custom methods to be added to
-// AwsIotPolicyAttachmentLister.
-type AwsIotPolicyAttachmentListerExpansion interface{}
-
-// AwsIotRoleAliasListerExpansion allows custom methods to be added to
-// AwsIotRoleAliasLister.
-type AwsIotRoleAliasListerExpansion interface{}
-
-// AwsIotThingListerExpansion allows custom methods to be added to
-// AwsIotThingLister.
-type AwsIotThingListerExpansion interface{}
-
-// AwsIotThingPrincipalAttachmentListerExpansion allows custom methods to be added to
-// AwsIotThingPrincipalAttachmentLister.
-type AwsIotThingPrincipalAttachmentListerExpansion interface{}
-
-// AwsIotThingTypeListerExpansion allows custom methods to be added to
-// AwsIotThingTypeLister.
-type AwsIotThingTypeListerExpansion interface{}
-
-// AwsIotTopicRuleListerExpansion allows custom methods to be added to
-// AwsIotTopicRuleLister.
-type AwsIotTopicRuleListerExpansion interface{}
-
-// AwsKeyPairListerExpansion allows custom methods to be added to
-// AwsKeyPairLister.
-type AwsKeyPairListerExpansion interface{}
-
-// AwsKinesisAnalyticsApplicationListerExpansion allows custom methods to be added to
-// AwsKinesisAnalyticsApplicationLister.
-type AwsKinesisAnalyticsApplicationListerExpansion interface{}
-
-// AwsKinesisFirehoseDeliveryStreamListerExpansion allows custom methods to be added to
-// AwsKinesisFirehoseDeliveryStreamLister.
-type AwsKinesisFirehoseDeliveryStreamListerExpansion interface{}
-
-// AwsKinesisStreamListerExpansion allows custom methods to be added to
-// AwsKinesisStreamLister.
-type AwsKinesisStreamListerExpansion interface{}
-
-// AwsKmsAliasListerExpansion allows custom methods to be added to
-// AwsKmsAliasLister.
-type AwsKmsAliasListerExpansion interface{}
-
-// AwsKmsCiphertextListerExpansion allows custom methods to be added to
-// AwsKmsCiphertextLister.
-type AwsKmsCiphertextListerExpansion interface{}
-
-// AwsKmsExternalKeyListerExpansion allows custom methods to be added to
-// AwsKmsExternalKeyLister.
-type AwsKmsExternalKeyListerExpansion interface{}
-
-// AwsKmsGrantListerExpansion allows custom methods to be added to
-// AwsKmsGrantLister.
-type AwsKmsGrantListerExpansion interface{}
-
-// AwsKmsKeyListerExpansion allows custom methods to be added to
-// AwsKmsKeyLister.
-type AwsKmsKeyListerExpansion interface{}
-
-// AwsLambdaAliasListerExpansion allows custom methods to be added to
-// AwsLambdaAliasLister.
-type AwsLambdaAliasListerExpansion interface{}
-
-// AwsLambdaEventSourceMappingListerExpansion allows custom methods to be added to
-// AwsLambdaEventSourceMappingLister.
-type AwsLambdaEventSourceMappingListerExpansion interface{}
-
-// AwsLambdaFunctionListerExpansion allows custom methods to be added to
-// AwsLambdaFunctionLister.
-type AwsLambdaFunctionListerExpansion interface{}
-
-// AwsLambdaLayerVersionListerExpansion allows custom methods to be added to
-// AwsLambdaLayerVersionLister.
-type AwsLambdaLayerVersionListerExpansion interface{}
-
-// AwsLambdaPermissionListerExpansion allows custom methods to be added to
-// AwsLambdaPermissionLister.
-type AwsLambdaPermissionListerExpansion interface{}
-
-// AwsLaunchConfigurationListerExpansion allows custom methods to be added to
-// AwsLaunchConfigurationLister.
-type AwsLaunchConfigurationListerExpansion interface{}
-
-// AwsLaunchTemplateListerExpansion allows custom methods to be added to
-// AwsLaunchTemplateLister.
-type AwsLaunchTemplateListerExpansion interface{}
-
-// AwsLbListerExpansion allows custom methods to be added to
-// AwsLbLister.
-type AwsLbListerExpansion interface{}
-
-// AwsLbCookieStickinessPolicyListerExpansion allows custom methods to be added to
-// AwsLbCookieStickinessPolicyLister.
-type AwsLbCookieStickinessPolicyListerExpansion interface{}
-
-// AwsLbListenerListerExpansion allows custom methods to be added to
-// AwsLbListenerLister.
-type AwsLbListenerListerExpansion interface{}
-
-// AwsLbListenerCertificateListerExpansion allows custom methods to be added to
-// AwsLbListenerCertificateLister.
-type AwsLbListenerCertificateListerExpansion interface{}
-
-// AwsLbListenerRuleListerExpansion allows custom methods to be added to
-// AwsLbListenerRuleLister.
-type AwsLbListenerRuleListerExpansion interface{}
-
-// AwsLbSslNegotiationPolicyListerExpansion allows custom methods to be added to
-// AwsLbSslNegotiationPolicyLister.
-type AwsLbSslNegotiationPolicyListerExpansion interface{}
-
-// AwsLbTargetGroupListerExpansion allows custom methods to be added to
-// AwsLbTargetGroupLister.
-type AwsLbTargetGroupListerExpansion interface{}
-
-// AwsLbTargetGroupAttachmentListerExpansion allows custom methods to be added to
-// AwsLbTargetGroupAttachmentLister.
-type AwsLbTargetGroupAttachmentListerExpansion interface{}
-
-// AwsLicensemanagerAssociationListerExpansion allows custom methods to be added to
-// AwsLicensemanagerAssociationLister.
-type AwsLicensemanagerAssociationListerExpansion interface{}
-
-// AwsLicensemanagerLicenseConfigurationListerExpansion allows custom methods to be added to
-// AwsLicensemanagerLicenseConfigurationLister.
-type AwsLicensemanagerLicenseConfigurationListerExpansion interface{}
-
-// AwsLightsailDomainListerExpansion allows custom methods to be added to
-// AwsLightsailDomainLister.
-type AwsLightsailDomainListerExpansion interface{}
-
-// AwsLightsailInstanceListerExpansion allows custom methods to be added to
-// AwsLightsailInstanceLister.
-type AwsLightsailInstanceListerExpansion interface{}
-
-// AwsLightsailKeyPairListerExpansion allows custom methods to be added to
-// AwsLightsailKeyPairLister.
-type AwsLightsailKeyPairListerExpansion interface{}
-
-// AwsLightsailStaticIpListerExpansion allows custom methods to be added to
-// AwsLightsailStaticIpLister.
-type AwsLightsailStaticIpListerExpansion interface{}
-
-// AwsLightsailStaticIpAttachmentListerExpansion allows custom methods to be added to
-// AwsLightsailStaticIpAttachmentLister.
-type AwsLightsailStaticIpAttachmentListerExpansion interface{}
-
-// AwsLoadBalancerBackendServerPolicyListerExpansion allows custom methods to be added to
-// AwsLoadBalancerBackendServerPolicyLister.
-type AwsLoadBalancerBackendServerPolicyListerExpansion interface{}
-
-// AwsLoadBalancerListenerPolicyListerExpansion allows custom methods to be added to
-// AwsLoadBalancerListenerPolicyLister.
-type AwsLoadBalancerListenerPolicyListerExpansion interface{}
-
-// AwsLoadBalancerPolicyListerExpansion allows custom methods to be added to
-// AwsLoadBalancerPolicyLister.
-type AwsLoadBalancerPolicyListerExpansion interface{}
-
-// AwsMacieMemberAccountAssociationListerExpansion allows custom methods to be added to
-// AwsMacieMemberAccountAssociationLister.
-type AwsMacieMemberAccountAssociationListerExpansion interface{}
-
-// AwsMacieS3BucketAssociationListerExpansion allows custom methods to be added to
-// AwsMacieS3BucketAssociationLister.
-type AwsMacieS3BucketAssociationListerExpansion interface{}
-
-// AwsMainRouteTableAssociationListerExpansion allows custom methods to be added to
-// AwsMainRouteTableAssociationLister.
-type AwsMainRouteTableAssociationListerExpansion interface{}
-
-// AwsMediaPackageChannelListerExpansion allows custom methods to be added to
-// AwsMediaPackageChannelLister.
-type AwsMediaPackageChannelListerExpansion interface{}
-
-// AwsMediaStoreContainerListerExpansion allows custom methods to be added to
-// AwsMediaStoreContainerLister.
-type AwsMediaStoreContainerListerExpansion interface{}
-
-// AwsMediaStoreContainerPolicyListerExpansion allows custom methods to be added to
-// AwsMediaStoreContainerPolicyLister.
-type AwsMediaStoreContainerPolicyListerExpansion interface{}
-
-// AwsMqBrokerListerExpansion allows custom methods to be added to
-// AwsMqBrokerLister.
-type AwsMqBrokerListerExpansion interface{}
-
-// AwsMqConfigurationListerExpansion allows custom methods to be added to
-// AwsMqConfigurationLister.
-type AwsMqConfigurationListerExpansion interface{}
-
-// AwsMskClusterListerExpansion allows custom methods to be added to
-// AwsMskClusterLister.
-type AwsMskClusterListerExpansion interface{}
-
-// AwsMskConfigurationListerExpansion allows custom methods to be added to
-// AwsMskConfigurationLister.
-type AwsMskConfigurationListerExpansion interface{}
-
-// AwsNatGatewayListerExpansion allows custom methods to be added to
-// AwsNatGatewayLister.
-type AwsNatGatewayListerExpansion interface{}
-
-// AwsNeptuneClusterListerExpansion allows custom methods to be added to
-// AwsNeptuneClusterLister.
-type AwsNeptuneClusterListerExpansion interface{}
-
-// AwsNeptuneClusterInstanceListerExpansion allows custom methods to be added to
-// AwsNeptuneClusterInstanceLister.
-type AwsNeptuneClusterInstanceListerExpansion interface{}
-
-// AwsNeptuneClusterParameterGroupListerExpansion allows custom methods to be added to
-// AwsNeptuneClusterParameterGroupLister.
-type AwsNeptuneClusterParameterGroupListerExpansion interface{}
-
-// AwsNeptuneClusterSnapshotListerExpansion allows custom methods to be added to
-// AwsNeptuneClusterSnapshotLister.
-type AwsNeptuneClusterSnapshotListerExpansion interface{}
-
-// AwsNeptuneEventSubscriptionListerExpansion allows custom methods to be added to
-// AwsNeptuneEventSubscriptionLister.
-type AwsNeptuneEventSubscriptionListerExpansion interface{}
-
-// AwsNeptuneParameterGroupListerExpansion allows custom methods to be added to
-// AwsNeptuneParameterGroupLister.
-type AwsNeptuneParameterGroupListerExpansion interface{}
-
-// AwsNeptuneSubnetGroupListerExpansion allows custom methods to be added to
-// AwsNeptuneSubnetGroupLister.
-type AwsNeptuneSubnetGroupListerExpansion interface{}
-
-// AwsNetworkAclListerExpansion allows custom methods to be added to
-// AwsNetworkAclLister.
-type AwsNetworkAclListerExpansion interface{}
-
-// AwsNetworkAclRuleListerExpansion allows custom methods to be added to
-// AwsNetworkAclRuleLister.
-type AwsNetworkAclRuleListerExpansion interface{}
-
-// AwsNetworkInterfaceListerExpansion allows custom methods to be added to
-// AwsNetworkInterfaceLister.
-type AwsNetworkInterfaceListerExpansion interface{}
-
-// AwsNetworkInterfaceAttachmentListerExpansion allows custom methods to be added to
-// AwsNetworkInterfaceAttachmentLister.
-type AwsNetworkInterfaceAttachmentListerExpansion interface{}
-
-// AwsNetworkInterfaceSgAttachmentListerExpansion allows custom methods to be added to
-// AwsNetworkInterfaceSgAttachmentLister.
-type AwsNetworkInterfaceSgAttachmentListerExpansion interface{}
-
-// AwsOpsworksApplicationListerExpansion allows custom methods to be added to
-// AwsOpsworksApplicationLister.
-type AwsOpsworksApplicationListerExpansion interface{}
-
-// AwsOpsworksCustomLayerListerExpansion allows custom methods to be added to
-// AwsOpsworksCustomLayerLister.
-type AwsOpsworksCustomLayerListerExpansion interface{}
-
-// AwsOpsworksGangliaLayerListerExpansion allows custom methods to be added to
-// AwsOpsworksGangliaLayerLister.
-type AwsOpsworksGangliaLayerListerExpansion interface{}
-
-// AwsOpsworksHaproxyLayerListerExpansion allows custom methods to be added to
-// AwsOpsworksHaproxyLayerLister.
-type AwsOpsworksHaproxyLayerListerExpansion interface{}
-
-// AwsOpsworksInstanceListerExpansion allows custom methods to be added to
-// AwsOpsworksInstanceLister.
-type AwsOpsworksInstanceListerExpansion interface{}
-
-// AwsOpsworksJavaAppLayerListerExpansion allows custom methods to be added to
-// AwsOpsworksJavaAppLayerLister.
-type AwsOpsworksJavaAppLayerListerExpansion interface{}
-
-// AwsOpsworksMemcachedLayerListerExpansion allows custom methods to be added to
-// AwsOpsworksMemcachedLayerLister.
-type AwsOpsworksMemcachedLayerListerExpansion interface{}
-
-// AwsOpsworksMysqlLayerListerExpansion allows custom methods to be added to
-// AwsOpsworksMysqlLayerLister.
-type AwsOpsworksMysqlLayerListerExpansion interface{}
-
-// AwsOpsworksNodejsAppLayerListerExpansion allows custom methods to be added to
-// AwsOpsworksNodejsAppLayerLister.
-type AwsOpsworksNodejsAppLayerListerExpansion interface{}
-
-// AwsOpsworksPermissionListerExpansion allows custom methods to be added to
-// AwsOpsworksPermissionLister.
-type AwsOpsworksPermissionListerExpansion interface{}
-
-// AwsOpsworksPhpAppLayerListerExpansion allows custom methods to be added to
-// AwsOpsworksPhpAppLayerLister.
-type AwsOpsworksPhpAppLayerListerExpansion interface{}
-
-// AwsOpsworksRailsAppLayerListerExpansion allows custom methods to be added to
-// AwsOpsworksRailsAppLayerLister.
-type AwsOpsworksRailsAppLayerListerExpansion interface{}
-
-// AwsOpsworksRdsDbInstanceListerExpansion allows custom methods to be added to
-// AwsOpsworksRdsDbInstanceLister.
-type AwsOpsworksRdsDbInstanceListerExpansion interface{}
-
-// AwsOpsworksStackListerExpansion allows custom methods to be added to
-// AwsOpsworksStackLister.
-type AwsOpsworksStackListerExpansion interface{}
-
-// AwsOpsworksStaticWebLayerListerExpansion allows custom methods to be added to
-// AwsOpsworksStaticWebLayerLister.
-type AwsOpsworksStaticWebLayerListerExpansion interface{}
-
-// AwsOpsworksUserProfileListerExpansion allows custom methods to be added to
-// AwsOpsworksUserProfileLister.
-type AwsOpsworksUserProfileListerExpansion interface{}
-
-// AwsOrganizationsAccountListerExpansion allows custom methods to be added to
-// AwsOrganizationsAccountLister.
-type AwsOrganizationsAccountListerExpansion interface{}
-
-// AwsOrganizationsOrganizationListerExpansion allows custom methods to be added to
-// AwsOrganizationsOrganizationLister.
-type AwsOrganizationsOrganizationListerExpansion interface{}
-
-// AwsOrganizationsOrganizationalUnitListerExpansion allows custom methods to be added to
-// AwsOrganizationsOrganizationalUnitLister.
-type AwsOrganizationsOrganizationalUnitListerExpansion interface{}
-
-// AwsOrganizationsPolicyListerExpansion allows custom methods to be added to
-// AwsOrganizationsPolicyLister.
-type AwsOrganizationsPolicyListerExpansion interface{}
-
-// AwsOrganizationsPolicyAttachmentListerExpansion allows custom methods to be added to
-// AwsOrganizationsPolicyAttachmentLister.
-type AwsOrganizationsPolicyAttachmentListerExpansion interface{}
-
-// AwsPinpointAdmChannelListerExpansion allows custom methods to be added to
-// AwsPinpointAdmChannelLister.
-type AwsPinpointAdmChannelListerExpansion interface{}
-
-// AwsPinpointApnsChannelListerExpansion allows custom methods to be added to
-// AwsPinpointApnsChannelLister.
-type AwsPinpointApnsChannelListerExpansion interface{}
-
-// AwsPinpointApnsSandboxChannelListerExpansion allows custom methods to be added to
-// AwsPinpointApnsSandboxChannelLister.
-type AwsPinpointApnsSandboxChannelListerExpansion interface{}
-
-// AwsPinpointApnsVoipChannelListerExpansion allows custom methods to be added to
-// AwsPinpointApnsVoipChannelLister.
-type AwsPinpointApnsVoipChannelListerExpansion interface{}
-
-// AwsPinpointApnsVoipSandboxChannelListerExpansion allows custom methods to be added to
-// AwsPinpointApnsVoipSandboxChannelLister.
-type AwsPinpointApnsVoipSandboxChannelListerExpansion interface{}
-
-// AwsPinpointAppListerExpansion allows custom methods to be added to
-// AwsPinpointAppLister.
-type AwsPinpointAppListerExpansion interface{}
-
-// AwsPinpointBaiduChannelListerExpansion allows custom methods to be added to
-// AwsPinpointBaiduChannelLister.
-type AwsPinpointBaiduChannelListerExpansion interface{}
-
-// AwsPinpointEmailChannelListerExpansion allows custom methods to be added to
-// AwsPinpointEmailChannelLister.
-type AwsPinpointEmailChannelListerExpansion interface{}
-
-// AwsPinpointEventStreamListerExpansion allows custom methods to be added to
-// AwsPinpointEventStreamLister.
-type AwsPinpointEventStreamListerExpansion interface{}
-
-// AwsPinpointGcmChannelListerExpansion allows custom methods to be added to
-// AwsPinpointGcmChannelLister.
-type AwsPinpointGcmChannelListerExpansion interface{}
-
-// AwsPinpointSmsChannelListerExpansion allows custom methods to be added to
-// AwsPinpointSmsChannelLister.
-type AwsPinpointSmsChannelListerExpansion interface{}
-
-// AwsPlacementGroupListerExpansion allows custom methods to be added to
-// AwsPlacementGroupLister.
-type AwsPlacementGroupListerExpansion interface{}
-
-// AwsProxyProtocolPolicyListerExpansion allows custom methods to be added to
-// AwsProxyProtocolPolicyLister.
-type AwsProxyProtocolPolicyListerExpansion interface{}
-
-// AwsRamPrincipalAssociationListerExpansion allows custom methods to be added to
-// AwsRamPrincipalAssociationLister.
-type AwsRamPrincipalAssociationListerExpansion interface{}
-
-// AwsRamResourceAssociationListerExpansion allows custom methods to be added to
-// AwsRamResourceAssociationLister.
-type AwsRamResourceAssociationListerExpansion interface{}
-
-// AwsRamResourceShareListerExpansion allows custom methods to be added to
-// AwsRamResourceShareLister.
-type AwsRamResourceShareListerExpansion interface{}
-
-// AwsRdsClusterListerExpansion allows custom methods to be added to
-// AwsRdsClusterLister.
-type AwsRdsClusterListerExpansion interface{}
-
-// AwsRdsClusterEndpointListerExpansion allows custom methods to be added to
-// AwsRdsClusterEndpointLister.
-type AwsRdsClusterEndpointListerExpansion interface{}
-
-// AwsRdsClusterInstanceListerExpansion allows custom methods to be added to
-// AwsRdsClusterInstanceLister.
-type AwsRdsClusterInstanceListerExpansion interface{}
-
-// AwsRdsClusterParameterGroupListerExpansion allows custom methods to be added to
-// AwsRdsClusterParameterGroupLister.
-type AwsRdsClusterParameterGroupListerExpansion interface{}
-
-// AwsRdsGlobalClusterListerExpansion allows custom methods to be added to
-// AwsRdsGlobalClusterLister.
-type AwsRdsGlobalClusterListerExpansion interface{}
-
-// AwsRedshiftClusterListerExpansion allows custom methods to be added to
-// AwsRedshiftClusterLister.
-type AwsRedshiftClusterListerExpansion interface{}
-
-// AwsRedshiftEventSubscriptionListerExpansion allows custom methods to be added to
-// AwsRedshiftEventSubscriptionLister.
-type AwsRedshiftEventSubscriptionListerExpansion interface{}
-
-// AwsRedshiftParameterGroupListerExpansion allows custom methods to be added to
-// AwsRedshiftParameterGroupLister.
-type AwsRedshiftParameterGroupListerExpansion interface{}
-
-// AwsRedshiftSecurityGroupListerExpansion allows custom methods to be added to
-// AwsRedshiftSecurityGroupLister.
-type AwsRedshiftSecurityGroupListerExpansion interface{}
-
-// AwsRedshiftSnapshotCopyGrantListerExpansion allows custom methods to be added to
-// AwsRedshiftSnapshotCopyGrantLister.
-type AwsRedshiftSnapshotCopyGrantListerExpansion interface{}
-
-// AwsRedshiftSubnetGroupListerExpansion allows custom methods to be added to
-// AwsRedshiftSubnetGroupLister.
-type AwsRedshiftSubnetGroupListerExpansion interface{}
-
-// AwsResourcegroupsGroupListerExpansion allows custom methods to be added to
-// AwsResourcegroupsGroupLister.
-type AwsResourcegroupsGroupListerExpansion interface{}
-
-// AwsRouteListerExpansion allows custom methods to be added to
-// AwsRouteLister.
-type AwsRouteListerExpansion interface{}
-
-// AwsRoute53DelegationSetListerExpansion allows custom methods to be added to
-// AwsRoute53DelegationSetLister.
-type AwsRoute53DelegationSetListerExpansion interface{}
-
-// AwsRoute53HealthCheckListerExpansion allows custom methods to be added to
-// AwsRoute53HealthCheckLister.
-type AwsRoute53HealthCheckListerExpansion interface{}
-
-// AwsRoute53QueryLogListerExpansion allows custom methods to be added to
-// AwsRoute53QueryLogLister.
-type AwsRoute53QueryLogListerExpansion interface{}
-
-// AwsRoute53RecordListerExpansion allows custom methods to be added to
-// AwsRoute53RecordLister.
-type AwsRoute53RecordListerExpansion interface{}
-
-// AwsRoute53ResolverEndpointListerExpansion allows custom methods to be added to
-// AwsRoute53ResolverEndpointLister.
-type AwsRoute53ResolverEndpointListerExpansion interface{}
-
-// AwsRoute53ResolverRuleListerExpansion allows custom methods to be added to
-// AwsRoute53ResolverRuleLister.
-type AwsRoute53ResolverRuleListerExpansion interface{}
-
-// AwsRoute53ResolverRuleAssociationListerExpansion allows custom methods to be added to
-// AwsRoute53ResolverRuleAssociationLister.
-type AwsRoute53ResolverRuleAssociationListerExpansion interface{}
-
-// AwsRoute53ZoneListerExpansion allows custom methods to be added to
-// AwsRoute53ZoneLister.
-type AwsRoute53ZoneListerExpansion interface{}
-
-// AwsRoute53ZoneAssociationListerExpansion allows custom methods to be added to
-// AwsRoute53ZoneAssociationLister.
-type AwsRoute53ZoneAssociationListerExpansion interface{}
-
-// AwsRouteTableListerExpansion allows custom methods to be added to
-// AwsRouteTableLister.
-type AwsRouteTableListerExpansion interface{}
-
-// AwsRouteTableAssociationListerExpansion allows custom methods to be added to
-// AwsRouteTableAssociationLister.
-type AwsRouteTableAssociationListerExpansion interface{}
-
-// AwsS3AccountPublicAccessBlockListerExpansion allows custom methods to be added to
-// AwsS3AccountPublicAccessBlockLister.
-type AwsS3AccountPublicAccessBlockListerExpansion interface{}
-
-// AwsS3BucketListerExpansion allows custom methods to be added to
-// AwsS3BucketLister.
-type AwsS3BucketListerExpansion interface{}
-
-// AwsS3BucketInventoryListerExpansion allows custom methods to be added to
-// AwsS3BucketInventoryLister.
-type AwsS3BucketInventoryListerExpansion interface{}
-
-// AwsS3BucketMetricListerExpansion allows custom methods to be added to
-// AwsS3BucketMetricLister.
-type AwsS3BucketMetricListerExpansion interface{}
-
-// AwsS3BucketNotificationListerExpansion allows custom methods to be added to
-// AwsS3BucketNotificationLister.
-type AwsS3BucketNotificationListerExpansion interface{}
-
-// AwsS3BucketObjectListerExpansion allows custom methods to be added to
-// AwsS3BucketObjectLister.
-type AwsS3BucketObjectListerExpansion interface{}
-
-// AwsS3BucketPolicyListerExpansion allows custom methods to be added to
-// AwsS3BucketPolicyLister.
-type AwsS3BucketPolicyListerExpansion interface{}
-
-// AwsS3BucketPublicAccessBlockListerExpansion allows custom methods to be added to
-// AwsS3BucketPublicAccessBlockLister.
-type AwsS3BucketPublicAccessBlockListerExpansion interface{}
-
-// AwsSagemakerEndpointListerExpansion allows custom methods to be added to
-// AwsSagemakerEndpointLister.
-type AwsSagemakerEndpointListerExpansion interface{}
-
-// AwsSagemakerEndpointConfigurationListerExpansion allows custom methods to be added to
-// AwsSagemakerEndpointConfigurationLister.
-type AwsSagemakerEndpointConfigurationListerExpansion interface{}
-
-// AwsSagemakerModelListerExpansion allows custom methods to be added to
-// AwsSagemakerModelLister.
-type AwsSagemakerModelListerExpansion interface{}
-
-// AwsSagemakerNotebookInstanceListerExpansion allows custom methods to be added to
-// AwsSagemakerNotebookInstanceLister.
-type AwsSagemakerNotebookInstanceListerExpansion interface{}
-
-// AwsSagemakerNotebookInstanceLifecycleConfigurationListerExpansion allows custom methods to be added to
-// AwsSagemakerNotebookInstanceLifecycleConfigurationLister.
-type AwsSagemakerNotebookInstanceLifecycleConfigurationListerExpansion interface{}
-
-// AwsSecretsmanagerSecretListerExpansion allows custom methods to be added to
-// AwsSecretsmanagerSecretLister.
-type AwsSecretsmanagerSecretListerExpansion interface{}
-
-// AwsSecretsmanagerSecretVersionListerExpansion allows custom methods to be added to
-// AwsSecretsmanagerSecretVersionLister.
-type AwsSecretsmanagerSecretVersionListerExpansion interface{}
-
-// AwsSecurityGroupListerExpansion allows custom methods to be added to
-// AwsSecurityGroupLister.
-type AwsSecurityGroupListerExpansion interface{}
-
-// AwsSecurityGroupRuleListerExpansion allows custom methods to be added to
-// AwsSecurityGroupRuleLister.
-type AwsSecurityGroupRuleListerExpansion interface{}
-
-// AwsSecurityhubAccountListerExpansion allows custom methods to be added to
-// AwsSecurityhubAccountLister.
-type AwsSecurityhubAccountListerExpansion interface{}
-
-// AwsSecurityhubProductSubscriptionListerExpansion allows custom methods to be added to
-// AwsSecurityhubProductSubscriptionLister.
-type AwsSecurityhubProductSubscriptionListerExpansion interface{}
-
-// AwsSecurityhubStandardsSubscriptionListerExpansion allows custom methods to be added to
-// AwsSecurityhubStandardsSubscriptionLister.
-type AwsSecurityhubStandardsSubscriptionListerExpansion interface{}
-
-// AwsServiceDiscoveryHttpNamespaceListerExpansion allows custom methods to be added to
-// AwsServiceDiscoveryHttpNamespaceLister.
-type AwsServiceDiscoveryHttpNamespaceListerExpansion interface{}
-
-// AwsServiceDiscoveryPrivateDnsNamespaceListerExpansion allows custom methods to be added to
-// AwsServiceDiscoveryPrivateDnsNamespaceLister.
-type AwsServiceDiscoveryPrivateDnsNamespaceListerExpansion interface{}
-
-// AwsServiceDiscoveryPublicDnsNamespaceListerExpansion allows custom methods to be added to
-// AwsServiceDiscoveryPublicDnsNamespaceLister.
-type AwsServiceDiscoveryPublicDnsNamespaceListerExpansion interface{}
-
-// AwsServiceDiscoveryServiceListerExpansion allows custom methods to be added to
-// AwsServiceDiscoveryServiceLister.
-type AwsServiceDiscoveryServiceListerExpansion interface{}
-
-// AwsServicecatalogPortfolioListerExpansion allows custom methods to be added to
-// AwsServicecatalogPortfolioLister.
-type AwsServicecatalogPortfolioListerExpansion interface{}
-
-// AwsSesActiveReceiptRuleSetListerExpansion allows custom methods to be added to
-// AwsSesActiveReceiptRuleSetLister.
-type AwsSesActiveReceiptRuleSetListerExpansion interface{}
-
-// AwsSesConfigurationSetListerExpansion allows custom methods to be added to
-// AwsSesConfigurationSetLister.
-type AwsSesConfigurationSetListerExpansion interface{}
-
-// AwsSesDomainDkimListerExpansion allows custom methods to be added to
-// AwsSesDomainDkimLister.
-type AwsSesDomainDkimListerExpansion interface{}
-
-// AwsSesDomainIdentityListerExpansion allows custom methods to be added to
-// AwsSesDomainIdentityLister.
-type AwsSesDomainIdentityListerExpansion interface{}
-
-// AwsSesDomainIdentityVerificationListerExpansion allows custom methods to be added to
-// AwsSesDomainIdentityVerificationLister.
-type AwsSesDomainIdentityVerificationListerExpansion interface{}
-
-// AwsSesDomainMailFromListerExpansion allows custom methods to be added to
-// AwsSesDomainMailFromLister.
-type AwsSesDomainMailFromListerExpansion interface{}
-
-// AwsSesEmailIdentityListerExpansion allows custom methods to be added to
-// AwsSesEmailIdentityLister.
-type AwsSesEmailIdentityListerExpansion interface{}
-
-// AwsSesEventDestinationListerExpansion allows custom methods to be added to
-// AwsSesEventDestinationLister.
-type AwsSesEventDestinationListerExpansion interface{}
-
-// AwsSesIdentityNotificationTopicListerExpansion allows custom methods to be added to
-// AwsSesIdentityNotificationTopicLister.
-type AwsSesIdentityNotificationTopicListerExpansion interface{}
-
-// AwsSesIdentityPolicyListerExpansion allows custom methods to be added to
-// AwsSesIdentityPolicyLister.
-type AwsSesIdentityPolicyListerExpansion interface{}
-
-// AwsSesReceiptFilterListerExpansion allows custom methods to be added to
-// AwsSesReceiptFilterLister.
-type AwsSesReceiptFilterListerExpansion interface{}
-
-// AwsSesReceiptRuleListerExpansion allows custom methods to be added to
-// AwsSesReceiptRuleLister.
-type AwsSesReceiptRuleListerExpansion interface{}
-
-// AwsSesReceiptRuleSetListerExpansion allows custom methods to be added to
-// AwsSesReceiptRuleSetLister.
-type AwsSesReceiptRuleSetListerExpansion interface{}
-
-// AwsSesTemplateListerExpansion allows custom methods to be added to
-// AwsSesTemplateLister.
-type AwsSesTemplateListerExpansion interface{}
-
-// AwsSfnActivityListerExpansion allows custom methods to be added to
-// AwsSfnActivityLister.
-type AwsSfnActivityListerExpansion interface{}
-
-// AwsSfnStateMachineListerExpansion allows custom methods to be added to
-// AwsSfnStateMachineLister.
-type AwsSfnStateMachineListerExpansion interface{}
-
-// AwsShieldProtectionListerExpansion allows custom methods to be added to
-// AwsShieldProtectionLister.
-type AwsShieldProtectionListerExpansion interface{}
-
-// AwsSimpledbDomainListerExpansion allows custom methods to be added to
-// AwsSimpledbDomainLister.
-type AwsSimpledbDomainListerExpansion interface{}
-
-// AwsSnapshotCreateVolumePermissionListerExpansion allows custom methods to be added to
-// AwsSnapshotCreateVolumePermissionLister.
-type AwsSnapshotCreateVolumePermissionListerExpansion interface{}
-
-// AwsSnsPlatformApplicationListerExpansion allows custom methods to be added to
-// AwsSnsPlatformApplicationLister.
-type AwsSnsPlatformApplicationListerExpansion interface{}
-
-// AwsSnsSmsPreferencesListerExpansion allows custom methods to be added to
-// AwsSnsSmsPreferencesLister.
-type AwsSnsSmsPreferencesListerExpansion interface{}
-
-// AwsSnsTopicListerExpansion allows custom methods to be added to
-// AwsSnsTopicLister.
-type AwsSnsTopicListerExpansion interface{}
-
-// AwsSnsTopicPolicyListerExpansion allows custom methods to be added to
-// AwsSnsTopicPolicyLister.
-type AwsSnsTopicPolicyListerExpansion interface{}
-
-// AwsSnsTopicSubscriptionListerExpansion allows custom methods to be added to
-// AwsSnsTopicSubscriptionLister.
-type AwsSnsTopicSubscriptionListerExpansion interface{}
-
-// AwsSpotDatafeedSubscriptionListerExpansion allows custom methods to be added to
-// AwsSpotDatafeedSubscriptionLister.
-type AwsSpotDatafeedSubscriptionListerExpansion interface{}
-
-// AwsSpotFleetRequestListerExpansion allows custom methods to be added to
-// AwsSpotFleetRequestLister.
-type AwsSpotFleetRequestListerExpansion interface{}
-
-// AwsSpotInstanceRequestListerExpansion allows custom methods to be added to
-// AwsSpotInstanceRequestLister.
-type AwsSpotInstanceRequestListerExpansion interface{}
-
-// AwsSqsQueueListerExpansion allows custom methods to be added to
-// AwsSqsQueueLister.
-type AwsSqsQueueListerExpansion interface{}
-
-// AwsSqsQueuePolicyListerExpansion allows custom methods to be added to
-// AwsSqsQueuePolicyLister.
-type AwsSqsQueuePolicyListerExpansion interface{}
-
-// AwsSsmActivationListerExpansion allows custom methods to be added to
-// AwsSsmActivationLister.
-type AwsSsmActivationListerExpansion interface{}
-
-// AwsSsmAssociationListerExpansion allows custom methods to be added to
-// AwsSsmAssociationLister.
-type AwsSsmAssociationListerExpansion interface{}
-
-// AwsSsmDocumentListerExpansion allows custom methods to be added to
-// AwsSsmDocumentLister.
-type AwsSsmDocumentListerExpansion interface{}
-
-// AwsSsmMaintenanceWindowListerExpansion allows custom methods to be added to
-// AwsSsmMaintenanceWindowLister.
-type AwsSsmMaintenanceWindowListerExpansion interface{}
-
-// AwsSsmMaintenanceWindowTargetListerExpansion allows custom methods to be added to
-// AwsSsmMaintenanceWindowTargetLister.
-type AwsSsmMaintenanceWindowTargetListerExpansion interface{}
-
-// AwsSsmMaintenanceWindowTaskListerExpansion allows custom methods to be added to
-// AwsSsmMaintenanceWindowTaskLister.
-type AwsSsmMaintenanceWindowTaskListerExpansion interface{}
-
-// AwsSsmParameterListerExpansion allows custom methods to be added to
-// AwsSsmParameterLister.
-type AwsSsmParameterListerExpansion interface{}
-
-// AwsSsmPatchBaselineListerExpansion allows custom methods to be added to
-// AwsSsmPatchBaselineLister.
-type AwsSsmPatchBaselineListerExpansion interface{}
-
-// AwsSsmPatchGroupListerExpansion allows custom methods to be added to
-// AwsSsmPatchGroupLister.
-type AwsSsmPatchGroupListerExpansion interface{}
-
-// AwsSsmResourceDataSyncListerExpansion allows custom methods to be added to
-// AwsSsmResourceDataSyncLister.
-type AwsSsmResourceDataSyncListerExpansion interface{}
-
-// AwsStoragegatewayCacheListerExpansion allows custom methods to be added to
-// AwsStoragegatewayCacheLister.
-type AwsStoragegatewayCacheListerExpansion interface{}
-
-// AwsStoragegatewayCachedIscsiVolumeListerExpansion allows custom methods to be added to
-// AwsStoragegatewayCachedIscsiVolumeLister.
-type AwsStoragegatewayCachedIscsiVolumeListerExpansion interface{}
-
-// AwsStoragegatewayGatewayListerExpansion allows custom methods to be added to
-// AwsStoragegatewayGatewayLister.
-type AwsStoragegatewayGatewayListerExpansion interface{}
-
-// AwsStoragegatewayNfsFileShareListerExpansion allows custom methods to be added to
-// AwsStoragegatewayNfsFileShareLister.
-type AwsStoragegatewayNfsFileShareListerExpansion interface{}
-
-// AwsStoragegatewaySmbFileShareListerExpansion allows custom methods to be added to
-// AwsStoragegatewaySmbFileShareLister.
-type AwsStoragegatewaySmbFileShareListerExpansion interface{}
-
-// AwsStoragegatewayUploadBufferListerExpansion allows custom methods to be added to
-// AwsStoragegatewayUploadBufferLister.
-type AwsStoragegatewayUploadBufferListerExpansion interface{}
-
-// AwsStoragegatewayWorkingStorageListerExpansion allows custom methods to be added to
-// AwsStoragegatewayWorkingStorageLister.
-type AwsStoragegatewayWorkingStorageListerExpansion interface{}
-
-// AwsSubnetListerExpansion allows custom methods to be added to
-// AwsSubnetLister.
-type AwsSubnetListerExpansion interface{}
-
-// AwsSwfDomainListerExpansion allows custom methods to be added to
-// AwsSwfDomainLister.
-type AwsSwfDomainListerExpansion interface{}
-
-// AwsTransferServerListerExpansion allows custom methods to be added to
-// AwsTransferServerLister.
-type AwsTransferServerListerExpansion interface{}
-
-// AwsTransferSshKeyListerExpansion allows custom methods to be added to
-// AwsTransferSshKeyLister.
-type AwsTransferSshKeyListerExpansion interface{}
-
-// AwsTransferUserListerExpansion allows custom methods to be added to
-// AwsTransferUserLister.
-type AwsTransferUserListerExpansion interface{}
-
-// AwsVolumeAttachmentListerExpansion allows custom methods to be added to
-// AwsVolumeAttachmentLister.
-type AwsVolumeAttachmentListerExpansion interface{}
-
-// AwsVpcListerExpansion allows custom methods to be added to
-// AwsVpcLister.
-type AwsVpcListerExpansion interface{}
-
-// AwsVpcDhcpOptionsListerExpansion allows custom methods to be added to
-// AwsVpcDhcpOptionsLister.
-type AwsVpcDhcpOptionsListerExpansion interface{}
-
-// AwsVpcDhcpOptionsAssociationListerExpansion allows custom methods to be added to
-// AwsVpcDhcpOptionsAssociationLister.
-type AwsVpcDhcpOptionsAssociationListerExpansion interface{}
-
-// AwsVpcEndpointListerExpansion allows custom methods to be added to
-// AwsVpcEndpointLister.
-type AwsVpcEndpointListerExpansion interface{}
-
-// AwsVpcEndpointConnectionNotificationListerExpansion allows custom methods to be added to
-// AwsVpcEndpointConnectionNotificationLister.
-type AwsVpcEndpointConnectionNotificationListerExpansion interface{}
-
-// AwsVpcEndpointRouteTableAssociationListerExpansion allows custom methods to be added to
-// AwsVpcEndpointRouteTableAssociationLister.
-type AwsVpcEndpointRouteTableAssociationListerExpansion interface{}
-
-// AwsVpcEndpointServiceListerExpansion allows custom methods to be added to
-// AwsVpcEndpointServiceLister.
-type AwsVpcEndpointServiceListerExpansion interface{}
-
-// AwsVpcEndpointServiceAllowedPrincipalListerExpansion allows custom methods to be added to
-// AwsVpcEndpointServiceAllowedPrincipalLister.
-type AwsVpcEndpointServiceAllowedPrincipalListerExpansion interface{}
-
-// AwsVpcEndpointSubnetAssociationListerExpansion allows custom methods to be added to
-// AwsVpcEndpointSubnetAssociationLister.
-type AwsVpcEndpointSubnetAssociationListerExpansion interface{}
-
-// AwsVpcIpv4CidrBlockAssociationListerExpansion allows custom methods to be added to
-// AwsVpcIpv4CidrBlockAssociationLister.
-type AwsVpcIpv4CidrBlockAssociationListerExpansion interface{}
-
-// AwsVpcPeeringConnectionListerExpansion allows custom methods to be added to
-// AwsVpcPeeringConnectionLister.
-type AwsVpcPeeringConnectionListerExpansion interface{}
-
-// AwsVpcPeeringConnectionAccepterListerExpansion allows custom methods to be added to
-// AwsVpcPeeringConnectionAccepterLister.
-type AwsVpcPeeringConnectionAccepterListerExpansion interface{}
-
-// AwsVpcPeeringConnectionOptionsListerExpansion allows custom methods to be added to
-// AwsVpcPeeringConnectionOptionsLister.
-type AwsVpcPeeringConnectionOptionsListerExpansion interface{}
-
-// AwsVpnConnectionListerExpansion allows custom methods to be added to
-// AwsVpnConnectionLister.
-type AwsVpnConnectionListerExpansion interface{}
-
-// AwsVpnConnectionRouteListerExpansion allows custom methods to be added to
-// AwsVpnConnectionRouteLister.
-type AwsVpnConnectionRouteListerExpansion interface{}
-
-// AwsVpnGatewayListerExpansion allows custom methods to be added to
-// AwsVpnGatewayLister.
-type AwsVpnGatewayListerExpansion interface{}
-
-// AwsVpnGatewayAttachmentListerExpansion allows custom methods to be added to
-// AwsVpnGatewayAttachmentLister.
-type AwsVpnGatewayAttachmentListerExpansion interface{}
-
-// AwsVpnGatewayRoutePropagationListerExpansion allows custom methods to be added to
-// AwsVpnGatewayRoutePropagationLister.
-type AwsVpnGatewayRoutePropagationListerExpansion interface{}
-
-// AwsWafByteMatchSetListerExpansion allows custom methods to be added to
-// AwsWafByteMatchSetLister.
-type AwsWafByteMatchSetListerExpansion interface{}
-
-// AwsWafGeoMatchSetListerExpansion allows custom methods to be added to
-// AwsWafGeoMatchSetLister.
-type AwsWafGeoMatchSetListerExpansion interface{}
-
-// AwsWafIpsetListerExpansion allows custom methods to be added to
-// AwsWafIpsetLister.
-type AwsWafIpsetListerExpansion interface{}
-
-// AwsWafRateBasedRuleListerExpansion allows custom methods to be added to
-// AwsWafRateBasedRuleLister.
-type AwsWafRateBasedRuleListerExpansion interface{}
-
-// AwsWafRegexMatchSetListerExpansion allows custom methods to be added to
-// AwsWafRegexMatchSetLister.
-type AwsWafRegexMatchSetListerExpansion interface{}
-
-// AwsWafRegexPatternSetListerExpansion allows custom methods to be added to
-// AwsWafRegexPatternSetLister.
-type AwsWafRegexPatternSetListerExpansion interface{}
-
-// AwsWafRuleListerExpansion allows custom methods to be added to
-// AwsWafRuleLister.
-type AwsWafRuleListerExpansion interface{}
-
-// AwsWafRuleGroupListerExpansion allows custom methods to be added to
-// AwsWafRuleGroupLister.
-type AwsWafRuleGroupListerExpansion interface{}
-
-// AwsWafSizeConstraintSetListerExpansion allows custom methods to be added to
-// AwsWafSizeConstraintSetLister.
-type AwsWafSizeConstraintSetListerExpansion interface{}
-
-// AwsWafSqlInjectionMatchSetListerExpansion allows custom methods to be added to
-// AwsWafSqlInjectionMatchSetLister.
-type AwsWafSqlInjectionMatchSetListerExpansion interface{}
-
-// AwsWafWebAclListerExpansion allows custom methods to be added to
-// AwsWafWebAclLister.
-type AwsWafWebAclListerExpansion interface{}
-
-// AwsWafXssMatchSetListerExpansion allows custom methods to be added to
-// AwsWafXssMatchSetLister.
-type AwsWafXssMatchSetListerExpansion interface{}
-
-// AwsWafregionalByteMatchSetListerExpansion allows custom methods to be added to
-// AwsWafregionalByteMatchSetLister.
-type AwsWafregionalByteMatchSetListerExpansion interface{}
-
-// AwsWafregionalGeoMatchSetListerExpansion allows custom methods to be added to
-// AwsWafregionalGeoMatchSetLister.
-type AwsWafregionalGeoMatchSetListerExpansion interface{}
-
-// AwsWafregionalIpsetListerExpansion allows custom methods to be added to
-// AwsWafregionalIpsetLister.
-type AwsWafregionalIpsetListerExpansion interface{}
-
-// AwsWafregionalRateBasedRuleListerExpansion allows custom methods to be added to
-// AwsWafregionalRateBasedRuleLister.
-type AwsWafregionalRateBasedRuleListerExpansion interface{}
-
-// AwsWafregionalRegexMatchSetListerExpansion allows custom methods to be added to
-// AwsWafregionalRegexMatchSetLister.
-type AwsWafregionalRegexMatchSetListerExpansion interface{}
-
-// AwsWafregionalRegexPatternSetListerExpansion allows custom methods to be added to
-// AwsWafregionalRegexPatternSetLister.
-type AwsWafregionalRegexPatternSetListerExpansion interface{}
-
-// AwsWafregionalRuleListerExpansion allows custom methods to be added to
-// AwsWafregionalRuleLister.
-type AwsWafregionalRuleListerExpansion interface{}
-
-// AwsWafregionalRuleGroupListerExpansion allows custom methods to be added to
-// AwsWafregionalRuleGroupLister.
-type AwsWafregionalRuleGroupListerExpansion interface{}
-
-// AwsWafregionalSizeConstraintSetListerExpansion allows custom methods to be added to
-// AwsWafregionalSizeConstraintSetLister.
-type AwsWafregionalSizeConstraintSetListerExpansion interface{}
-
-// AwsWafregionalSqlInjectionMatchSetListerExpansion allows custom methods to be added to
-// AwsWafregionalSqlInjectionMatchSetLister.
-type AwsWafregionalSqlInjectionMatchSetListerExpansion interface{}
-
-// AwsWafregionalWebAclListerExpansion allows custom methods to be added to
-// AwsWafregionalWebAclLister.
-type AwsWafregionalWebAclListerExpansion interface{}
-
-// AwsWafregionalWebAclAssociationListerExpansion allows custom methods to be added to
-// AwsWafregionalWebAclAssociationLister.
-type AwsWafregionalWebAclAssociationListerExpansion interface{}
-
-// AwsWafregionalXssMatchSetListerExpansion allows custom methods to be added to
-// AwsWafregionalXssMatchSetLister.
-type AwsWafregionalXssMatchSetListerExpansion interface{}
-
-// AwsWorklinkFleetListerExpansion allows custom methods to be added to
-// AwsWorklinkFleetLister.
-type AwsWorklinkFleetListerExpansion interface{}
-
-// AwsWorklinkWebsiteCertificateAuthorityAssociationListerExpansion allows custom methods to be added to
-// AwsWorklinkWebsiteCertificateAuthorityAssociationLister.
-type AwsWorklinkWebsiteCertificateAuthorityAssociationListerExpansion interface{}
-
-// AwsXraySamplingRuleListerExpansion allows custom methods to be added to
-// AwsXraySamplingRuleLister.
-type AwsXraySamplingRuleListerExpansion interface{}
+// AcmCertificateListerExpansion allows custom methods to be added to
+// AcmCertificateLister.
+type AcmCertificateListerExpansion interface{}
+
+// AcmCertificateValidationListerExpansion allows custom methods to be added to
+// AcmCertificateValidationLister.
+type AcmCertificateValidationListerExpansion interface{}
+
+// AcmpcaCertificateAuthorityListerExpansion allows custom methods to be added to
+// AcmpcaCertificateAuthorityLister.
+type AcmpcaCertificateAuthorityListerExpansion interface{}
+
+// AlbListerExpansion allows custom methods to be added to
+// AlbLister.
+type AlbListerExpansion interface{}
+
+// AlbListenerListerExpansion allows custom methods to be added to
+// AlbListenerLister.
+type AlbListenerListerExpansion interface{}
+
+// AlbListenerCertificateListerExpansion allows custom methods to be added to
+// AlbListenerCertificateLister.
+type AlbListenerCertificateListerExpansion interface{}
+
+// AlbListenerRuleListerExpansion allows custom methods to be added to
+// AlbListenerRuleLister.
+type AlbListenerRuleListerExpansion interface{}
+
+// AlbTargetGroupListerExpansion allows custom methods to be added to
+// AlbTargetGroupLister.
+type AlbTargetGroupListerExpansion interface{}
+
+// AlbTargetGroupAttachmentListerExpansion allows custom methods to be added to
+// AlbTargetGroupAttachmentLister.
+type AlbTargetGroupAttachmentListerExpansion interface{}
+
+// AmiListerExpansion allows custom methods to be added to
+// AmiLister.
+type AmiListerExpansion interface{}
+
+// AmiCopyListerExpansion allows custom methods to be added to
+// AmiCopyLister.
+type AmiCopyListerExpansion interface{}
+
+// AmiFromInstanceListerExpansion allows custom methods to be added to
+// AmiFromInstanceLister.
+type AmiFromInstanceListerExpansion interface{}
+
+// AmiLaunchPermissionListerExpansion allows custom methods to be added to
+// AmiLaunchPermissionLister.
+type AmiLaunchPermissionListerExpansion interface{}
+
+// ApiGatewayAccountListerExpansion allows custom methods to be added to
+// ApiGatewayAccountLister.
+type ApiGatewayAccountListerExpansion interface{}
+
+// ApiGatewayApiKeyListerExpansion allows custom methods to be added to
+// ApiGatewayApiKeyLister.
+type ApiGatewayApiKeyListerExpansion interface{}
+
+// ApiGatewayAuthorizerListerExpansion allows custom methods to be added to
+// ApiGatewayAuthorizerLister.
+type ApiGatewayAuthorizerListerExpansion interface{}
+
+// ApiGatewayBasePathMappingListerExpansion allows custom methods to be added to
+// ApiGatewayBasePathMappingLister.
+type ApiGatewayBasePathMappingListerExpansion interface{}
+
+// ApiGatewayClientCertificateListerExpansion allows custom methods to be added to
+// ApiGatewayClientCertificateLister.
+type ApiGatewayClientCertificateListerExpansion interface{}
+
+// ApiGatewayDeploymentListerExpansion allows custom methods to be added to
+// ApiGatewayDeploymentLister.
+type ApiGatewayDeploymentListerExpansion interface{}
+
+// ApiGatewayDocumentationPartListerExpansion allows custom methods to be added to
+// ApiGatewayDocumentationPartLister.
+type ApiGatewayDocumentationPartListerExpansion interface{}
+
+// ApiGatewayDocumentationVersionListerExpansion allows custom methods to be added to
+// ApiGatewayDocumentationVersionLister.
+type ApiGatewayDocumentationVersionListerExpansion interface{}
+
+// ApiGatewayDomainNameListerExpansion allows custom methods to be added to
+// ApiGatewayDomainNameLister.
+type ApiGatewayDomainNameListerExpansion interface{}
+
+// ApiGatewayGatewayResponseListerExpansion allows custom methods to be added to
+// ApiGatewayGatewayResponseLister.
+type ApiGatewayGatewayResponseListerExpansion interface{}
+
+// ApiGatewayIntegrationListerExpansion allows custom methods to be added to
+// ApiGatewayIntegrationLister.
+type ApiGatewayIntegrationListerExpansion interface{}
+
+// ApiGatewayIntegrationResponseListerExpansion allows custom methods to be added to
+// ApiGatewayIntegrationResponseLister.
+type ApiGatewayIntegrationResponseListerExpansion interface{}
+
+// ApiGatewayMethodListerExpansion allows custom methods to be added to
+// ApiGatewayMethodLister.
+type ApiGatewayMethodListerExpansion interface{}
+
+// ApiGatewayMethodResponseListerExpansion allows custom methods to be added to
+// ApiGatewayMethodResponseLister.
+type ApiGatewayMethodResponseListerExpansion interface{}
+
+// ApiGatewayMethodSettingsListerExpansion allows custom methods to be added to
+// ApiGatewayMethodSettingsLister.
+type ApiGatewayMethodSettingsListerExpansion interface{}
+
+// ApiGatewayModelListerExpansion allows custom methods to be added to
+// ApiGatewayModelLister.
+type ApiGatewayModelListerExpansion interface{}
+
+// ApiGatewayRequestValidatorListerExpansion allows custom methods to be added to
+// ApiGatewayRequestValidatorLister.
+type ApiGatewayRequestValidatorListerExpansion interface{}
+
+// ApiGatewayResourceListerExpansion allows custom methods to be added to
+// ApiGatewayResourceLister.
+type ApiGatewayResourceListerExpansion interface{}
+
+// ApiGatewayRestApiListerExpansion allows custom methods to be added to
+// ApiGatewayRestApiLister.
+type ApiGatewayRestApiListerExpansion interface{}
+
+// ApiGatewayStageListerExpansion allows custom methods to be added to
+// ApiGatewayStageLister.
+type ApiGatewayStageListerExpansion interface{}
+
+// ApiGatewayUsagePlanListerExpansion allows custom methods to be added to
+// ApiGatewayUsagePlanLister.
+type ApiGatewayUsagePlanListerExpansion interface{}
+
+// ApiGatewayUsagePlanKeyListerExpansion allows custom methods to be added to
+// ApiGatewayUsagePlanKeyLister.
+type ApiGatewayUsagePlanKeyListerExpansion interface{}
+
+// ApiGatewayVpcLinkListerExpansion allows custom methods to be added to
+// ApiGatewayVpcLinkLister.
+type ApiGatewayVpcLinkListerExpansion interface{}
+
+// AppCookieStickinessPolicyListerExpansion allows custom methods to be added to
+// AppCookieStickinessPolicyLister.
+type AppCookieStickinessPolicyListerExpansion interface{}
+
+// AppautoscalingPolicyListerExpansion allows custom methods to be added to
+// AppautoscalingPolicyLister.
+type AppautoscalingPolicyListerExpansion interface{}
+
+// AppautoscalingScheduledActionListerExpansion allows custom methods to be added to
+// AppautoscalingScheduledActionLister.
+type AppautoscalingScheduledActionListerExpansion interface{}
+
+// AppautoscalingTargetListerExpansion allows custom methods to be added to
+// AppautoscalingTargetLister.
+type AppautoscalingTargetListerExpansion interface{}
+
+// AppmeshMeshListerExpansion allows custom methods to be added to
+// AppmeshMeshLister.
+type AppmeshMeshListerExpansion interface{}
+
+// AppmeshRouteListerExpansion allows custom methods to be added to
+// AppmeshRouteLister.
+type AppmeshRouteListerExpansion interface{}
+
+// AppmeshVirtualNodeListerExpansion allows custom methods to be added to
+// AppmeshVirtualNodeLister.
+type AppmeshVirtualNodeListerExpansion interface{}
+
+// AppmeshVirtualRouterListerExpansion allows custom methods to be added to
+// AppmeshVirtualRouterLister.
+type AppmeshVirtualRouterListerExpansion interface{}
+
+// AppmeshVirtualServiceListerExpansion allows custom methods to be added to
+// AppmeshVirtualServiceLister.
+type AppmeshVirtualServiceListerExpansion interface{}
+
+// AppsyncApiKeyListerExpansion allows custom methods to be added to
+// AppsyncApiKeyLister.
+type AppsyncApiKeyListerExpansion interface{}
+
+// AppsyncDatasourceListerExpansion allows custom methods to be added to
+// AppsyncDatasourceLister.
+type AppsyncDatasourceListerExpansion interface{}
+
+// AppsyncFunctionListerExpansion allows custom methods to be added to
+// AppsyncFunctionLister.
+type AppsyncFunctionListerExpansion interface{}
+
+// AppsyncGraphqlApiListerExpansion allows custom methods to be added to
+// AppsyncGraphqlApiLister.
+type AppsyncGraphqlApiListerExpansion interface{}
+
+// AppsyncResolverListerExpansion allows custom methods to be added to
+// AppsyncResolverLister.
+type AppsyncResolverListerExpansion interface{}
+
+// AthenaDatabaseListerExpansion allows custom methods to be added to
+// AthenaDatabaseLister.
+type AthenaDatabaseListerExpansion interface{}
+
+// AthenaNamedQueryListerExpansion allows custom methods to be added to
+// AthenaNamedQueryLister.
+type AthenaNamedQueryListerExpansion interface{}
+
+// AthenaWorkgroupListerExpansion allows custom methods to be added to
+// AthenaWorkgroupLister.
+type AthenaWorkgroupListerExpansion interface{}
+
+// AutoscalingAttachmentListerExpansion allows custom methods to be added to
+// AutoscalingAttachmentLister.
+type AutoscalingAttachmentListerExpansion interface{}
+
+// AutoscalingGroupListerExpansion allows custom methods to be added to
+// AutoscalingGroupLister.
+type AutoscalingGroupListerExpansion interface{}
+
+// AutoscalingLifecycleHookListerExpansion allows custom methods to be added to
+// AutoscalingLifecycleHookLister.
+type AutoscalingLifecycleHookListerExpansion interface{}
+
+// AutoscalingNotificationListerExpansion allows custom methods to be added to
+// AutoscalingNotificationLister.
+type AutoscalingNotificationListerExpansion interface{}
+
+// AutoscalingPolicyListerExpansion allows custom methods to be added to
+// AutoscalingPolicyLister.
+type AutoscalingPolicyListerExpansion interface{}
+
+// AutoscalingScheduleListerExpansion allows custom methods to be added to
+// AutoscalingScheduleLister.
+type AutoscalingScheduleListerExpansion interface{}
+
+// BackupPlanListerExpansion allows custom methods to be added to
+// BackupPlanLister.
+type BackupPlanListerExpansion interface{}
+
+// BackupSelectionListerExpansion allows custom methods to be added to
+// BackupSelectionLister.
+type BackupSelectionListerExpansion interface{}
+
+// BackupVaultListerExpansion allows custom methods to be added to
+// BackupVaultLister.
+type BackupVaultListerExpansion interface{}
+
+// BatchComputeEnvironmentListerExpansion allows custom methods to be added to
+// BatchComputeEnvironmentLister.
+type BatchComputeEnvironmentListerExpansion interface{}
+
+// BatchJobDefinitionListerExpansion allows custom methods to be added to
+// BatchJobDefinitionLister.
+type BatchJobDefinitionListerExpansion interface{}
+
+// BatchJobQueueListerExpansion allows custom methods to be added to
+// BatchJobQueueLister.
+type BatchJobQueueListerExpansion interface{}
+
+// BudgetsBudgetListerExpansion allows custom methods to be added to
+// BudgetsBudgetLister.
+type BudgetsBudgetListerExpansion interface{}
+
+// Cloud9EnvironmentEc2ListerExpansion allows custom methods to be added to
+// Cloud9EnvironmentEc2Lister.
+type Cloud9EnvironmentEc2ListerExpansion interface{}
+
+// CloudformationStackListerExpansion allows custom methods to be added to
+// CloudformationStackLister.
+type CloudformationStackListerExpansion interface{}
+
+// CloudformationStackSetListerExpansion allows custom methods to be added to
+// CloudformationStackSetLister.
+type CloudformationStackSetListerExpansion interface{}
+
+// CloudformationStackSetInstanceListerExpansion allows custom methods to be added to
+// CloudformationStackSetInstanceLister.
+type CloudformationStackSetInstanceListerExpansion interface{}
+
+// CloudfrontDistributionListerExpansion allows custom methods to be added to
+// CloudfrontDistributionLister.
+type CloudfrontDistributionListerExpansion interface{}
+
+// CloudfrontOriginAccessIdentityListerExpansion allows custom methods to be added to
+// CloudfrontOriginAccessIdentityLister.
+type CloudfrontOriginAccessIdentityListerExpansion interface{}
+
+// CloudfrontPublicKeyListerExpansion allows custom methods to be added to
+// CloudfrontPublicKeyLister.
+type CloudfrontPublicKeyListerExpansion interface{}
+
+// CloudhsmV2ClusterListerExpansion allows custom methods to be added to
+// CloudhsmV2ClusterLister.
+type CloudhsmV2ClusterListerExpansion interface{}
+
+// CloudhsmV2HsmListerExpansion allows custom methods to be added to
+// CloudhsmV2HsmLister.
+type CloudhsmV2HsmListerExpansion interface{}
+
+// CloudtrailListerExpansion allows custom methods to be added to
+// CloudtrailLister.
+type CloudtrailListerExpansion interface{}
+
+// CloudwatchDashboardListerExpansion allows custom methods to be added to
+// CloudwatchDashboardLister.
+type CloudwatchDashboardListerExpansion interface{}
+
+// CloudwatchEventPermissionListerExpansion allows custom methods to be added to
+// CloudwatchEventPermissionLister.
+type CloudwatchEventPermissionListerExpansion interface{}
+
+// CloudwatchEventRuleListerExpansion allows custom methods to be added to
+// CloudwatchEventRuleLister.
+type CloudwatchEventRuleListerExpansion interface{}
+
+// CloudwatchEventTargetListerExpansion allows custom methods to be added to
+// CloudwatchEventTargetLister.
+type CloudwatchEventTargetListerExpansion interface{}
+
+// CloudwatchLogDestinationListerExpansion allows custom methods to be added to
+// CloudwatchLogDestinationLister.
+type CloudwatchLogDestinationListerExpansion interface{}
+
+// CloudwatchLogDestinationPolicyListerExpansion allows custom methods to be added to
+// CloudwatchLogDestinationPolicyLister.
+type CloudwatchLogDestinationPolicyListerExpansion interface{}
+
+// CloudwatchLogGroupListerExpansion allows custom methods to be added to
+// CloudwatchLogGroupLister.
+type CloudwatchLogGroupListerExpansion interface{}
+
+// CloudwatchLogMetricFilterListerExpansion allows custom methods to be added to
+// CloudwatchLogMetricFilterLister.
+type CloudwatchLogMetricFilterListerExpansion interface{}
+
+// CloudwatchLogResourcePolicyListerExpansion allows custom methods to be added to
+// CloudwatchLogResourcePolicyLister.
+type CloudwatchLogResourcePolicyListerExpansion interface{}
+
+// CloudwatchLogStreamListerExpansion allows custom methods to be added to
+// CloudwatchLogStreamLister.
+type CloudwatchLogStreamListerExpansion interface{}
+
+// CloudwatchLogSubscriptionFilterListerExpansion allows custom methods to be added to
+// CloudwatchLogSubscriptionFilterLister.
+type CloudwatchLogSubscriptionFilterListerExpansion interface{}
+
+// CloudwatchMetricAlarmListerExpansion allows custom methods to be added to
+// CloudwatchMetricAlarmLister.
+type CloudwatchMetricAlarmListerExpansion interface{}
+
+// CodebuildProjectListerExpansion allows custom methods to be added to
+// CodebuildProjectLister.
+type CodebuildProjectListerExpansion interface{}
+
+// CodebuildWebhookListerExpansion allows custom methods to be added to
+// CodebuildWebhookLister.
+type CodebuildWebhookListerExpansion interface{}
+
+// CodecommitRepositoryListerExpansion allows custom methods to be added to
+// CodecommitRepositoryLister.
+type CodecommitRepositoryListerExpansion interface{}
+
+// CodecommitTriggerListerExpansion allows custom methods to be added to
+// CodecommitTriggerLister.
+type CodecommitTriggerListerExpansion interface{}
+
+// CodedeployAppListerExpansion allows custom methods to be added to
+// CodedeployAppLister.
+type CodedeployAppListerExpansion interface{}
+
+// CodedeployDeploymentConfigListerExpansion allows custom methods to be added to
+// CodedeployDeploymentConfigLister.
+type CodedeployDeploymentConfigListerExpansion interface{}
+
+// CodedeployDeploymentGroupListerExpansion allows custom methods to be added to
+// CodedeployDeploymentGroupLister.
+type CodedeployDeploymentGroupListerExpansion interface{}
+
+// CodepipelineListerExpansion allows custom methods to be added to
+// CodepipelineLister.
+type CodepipelineListerExpansion interface{}
+
+// CodepipelineWebhookListerExpansion allows custom methods to be added to
+// CodepipelineWebhookLister.
+type CodepipelineWebhookListerExpansion interface{}
+
+// CognitoIdentityPoolListerExpansion allows custom methods to be added to
+// CognitoIdentityPoolLister.
+type CognitoIdentityPoolListerExpansion interface{}
+
+// CognitoIdentityPoolRolesAttachmentListerExpansion allows custom methods to be added to
+// CognitoIdentityPoolRolesAttachmentLister.
+type CognitoIdentityPoolRolesAttachmentListerExpansion interface{}
+
+// CognitoIdentityProviderListerExpansion allows custom methods to be added to
+// CognitoIdentityProviderLister.
+type CognitoIdentityProviderListerExpansion interface{}
+
+// CognitoResourceServerListerExpansion allows custom methods to be added to
+// CognitoResourceServerLister.
+type CognitoResourceServerListerExpansion interface{}
+
+// CognitoUserGroupListerExpansion allows custom methods to be added to
+// CognitoUserGroupLister.
+type CognitoUserGroupListerExpansion interface{}
+
+// CognitoUserPoolListerExpansion allows custom methods to be added to
+// CognitoUserPoolLister.
+type CognitoUserPoolListerExpansion interface{}
+
+// CognitoUserPoolClientListerExpansion allows custom methods to be added to
+// CognitoUserPoolClientLister.
+type CognitoUserPoolClientListerExpansion interface{}
+
+// CognitoUserPoolDomainListerExpansion allows custom methods to be added to
+// CognitoUserPoolDomainLister.
+type CognitoUserPoolDomainListerExpansion interface{}
+
+// ConfigAggregateAuthorizationListerExpansion allows custom methods to be added to
+// ConfigAggregateAuthorizationLister.
+type ConfigAggregateAuthorizationListerExpansion interface{}
+
+// ConfigConfigRuleListerExpansion allows custom methods to be added to
+// ConfigConfigRuleLister.
+type ConfigConfigRuleListerExpansion interface{}
+
+// ConfigConfigurationAggregatorListerExpansion allows custom methods to be added to
+// ConfigConfigurationAggregatorLister.
+type ConfigConfigurationAggregatorListerExpansion interface{}
+
+// ConfigConfigurationRecorderListerExpansion allows custom methods to be added to
+// ConfigConfigurationRecorderLister.
+type ConfigConfigurationRecorderListerExpansion interface{}
+
+// ConfigConfigurationRecorderStatus_ListerExpansion allows custom methods to be added to
+// ConfigConfigurationRecorderStatus_Lister.
+type ConfigConfigurationRecorderStatus_ListerExpansion interface{}
+
+// ConfigDeliveryChannelListerExpansion allows custom methods to be added to
+// ConfigDeliveryChannelLister.
+type ConfigDeliveryChannelListerExpansion interface{}
+
+// CurReportDefinitionListerExpansion allows custom methods to be added to
+// CurReportDefinitionLister.
+type CurReportDefinitionListerExpansion interface{}
+
+// CustomerGatewayListerExpansion allows custom methods to be added to
+// CustomerGatewayLister.
+type CustomerGatewayListerExpansion interface{}
+
+// DatapipelinePipelineListerExpansion allows custom methods to be added to
+// DatapipelinePipelineLister.
+type DatapipelinePipelineListerExpansion interface{}
+
+// DatasyncAgentListerExpansion allows custom methods to be added to
+// DatasyncAgentLister.
+type DatasyncAgentListerExpansion interface{}
+
+// DatasyncLocationEfsListerExpansion allows custom methods to be added to
+// DatasyncLocationEfsLister.
+type DatasyncLocationEfsListerExpansion interface{}
+
+// DatasyncLocationNfsListerExpansion allows custom methods to be added to
+// DatasyncLocationNfsLister.
+type DatasyncLocationNfsListerExpansion interface{}
+
+// DatasyncLocationS3ListerExpansion allows custom methods to be added to
+// DatasyncLocationS3Lister.
+type DatasyncLocationS3ListerExpansion interface{}
+
+// DatasyncTaskListerExpansion allows custom methods to be added to
+// DatasyncTaskLister.
+type DatasyncTaskListerExpansion interface{}
+
+// DaxClusterListerExpansion allows custom methods to be added to
+// DaxClusterLister.
+type DaxClusterListerExpansion interface{}
+
+// DaxParameterGroupListerExpansion allows custom methods to be added to
+// DaxParameterGroupLister.
+type DaxParameterGroupListerExpansion interface{}
+
+// DaxSubnetGroupListerExpansion allows custom methods to be added to
+// DaxSubnetGroupLister.
+type DaxSubnetGroupListerExpansion interface{}
+
+// DbClusterSnapshotListerExpansion allows custom methods to be added to
+// DbClusterSnapshotLister.
+type DbClusterSnapshotListerExpansion interface{}
+
+// DbEventSubscriptionListerExpansion allows custom methods to be added to
+// DbEventSubscriptionLister.
+type DbEventSubscriptionListerExpansion interface{}
+
+// DbInstanceListerExpansion allows custom methods to be added to
+// DbInstanceLister.
+type DbInstanceListerExpansion interface{}
+
+// DbInstanceRoleAssociationListerExpansion allows custom methods to be added to
+// DbInstanceRoleAssociationLister.
+type DbInstanceRoleAssociationListerExpansion interface{}
+
+// DbOptionGroupListerExpansion allows custom methods to be added to
+// DbOptionGroupLister.
+type DbOptionGroupListerExpansion interface{}
+
+// DbParameterGroupListerExpansion allows custom methods to be added to
+// DbParameterGroupLister.
+type DbParameterGroupListerExpansion interface{}
+
+// DbSecurityGroupListerExpansion allows custom methods to be added to
+// DbSecurityGroupLister.
+type DbSecurityGroupListerExpansion interface{}
+
+// DbSnapshotListerExpansion allows custom methods to be added to
+// DbSnapshotLister.
+type DbSnapshotListerExpansion interface{}
+
+// DbSubnetGroupListerExpansion allows custom methods to be added to
+// DbSubnetGroupLister.
+type DbSubnetGroupListerExpansion interface{}
+
+// DefaultNetworkAclListerExpansion allows custom methods to be added to
+// DefaultNetworkAclLister.
+type DefaultNetworkAclListerExpansion interface{}
+
+// DefaultRouteTableListerExpansion allows custom methods to be added to
+// DefaultRouteTableLister.
+type DefaultRouteTableListerExpansion interface{}
+
+// DefaultSecurityGroupListerExpansion allows custom methods to be added to
+// DefaultSecurityGroupLister.
+type DefaultSecurityGroupListerExpansion interface{}
+
+// DefaultSubnetListerExpansion allows custom methods to be added to
+// DefaultSubnetLister.
+type DefaultSubnetListerExpansion interface{}
+
+// DefaultVpcListerExpansion allows custom methods to be added to
+// DefaultVpcLister.
+type DefaultVpcListerExpansion interface{}
+
+// DefaultVpcDhcpOptionsListerExpansion allows custom methods to be added to
+// DefaultVpcDhcpOptionsLister.
+type DefaultVpcDhcpOptionsListerExpansion interface{}
+
+// DevicefarmProjectListerExpansion allows custom methods to be added to
+// DevicefarmProjectLister.
+type DevicefarmProjectListerExpansion interface{}
+
+// DirectoryServiceConditionalForwarderListerExpansion allows custom methods to be added to
+// DirectoryServiceConditionalForwarderLister.
+type DirectoryServiceConditionalForwarderListerExpansion interface{}
+
+// DirectoryServiceDirectoryListerExpansion allows custom methods to be added to
+// DirectoryServiceDirectoryLister.
+type DirectoryServiceDirectoryListerExpansion interface{}
+
+// DirectoryServiceLogSubscriptionListerExpansion allows custom methods to be added to
+// DirectoryServiceLogSubscriptionLister.
+type DirectoryServiceLogSubscriptionListerExpansion interface{}
+
+// DlmLifecyclePolicyListerExpansion allows custom methods to be added to
+// DlmLifecyclePolicyLister.
+type DlmLifecyclePolicyListerExpansion interface{}
+
+// DmsCertificateListerExpansion allows custom methods to be added to
+// DmsCertificateLister.
+type DmsCertificateListerExpansion interface{}
+
+// DmsEndpointListerExpansion allows custom methods to be added to
+// DmsEndpointLister.
+type DmsEndpointListerExpansion interface{}
+
+// DmsReplicationInstanceListerExpansion allows custom methods to be added to
+// DmsReplicationInstanceLister.
+type DmsReplicationInstanceListerExpansion interface{}
+
+// DmsReplicationSubnetGroupListerExpansion allows custom methods to be added to
+// DmsReplicationSubnetGroupLister.
+type DmsReplicationSubnetGroupListerExpansion interface{}
+
+// DmsReplicationTaskListerExpansion allows custom methods to be added to
+// DmsReplicationTaskLister.
+type DmsReplicationTaskListerExpansion interface{}
+
+// DocdbClusterListerExpansion allows custom methods to be added to
+// DocdbClusterLister.
+type DocdbClusterListerExpansion interface{}
+
+// DocdbClusterInstanceListerExpansion allows custom methods to be added to
+// DocdbClusterInstanceLister.
+type DocdbClusterInstanceListerExpansion interface{}
+
+// DocdbClusterParameterGroupListerExpansion allows custom methods to be added to
+// DocdbClusterParameterGroupLister.
+type DocdbClusterParameterGroupListerExpansion interface{}
+
+// DocdbClusterSnapshotListerExpansion allows custom methods to be added to
+// DocdbClusterSnapshotLister.
+type DocdbClusterSnapshotListerExpansion interface{}
+
+// DocdbSubnetGroupListerExpansion allows custom methods to be added to
+// DocdbSubnetGroupLister.
+type DocdbSubnetGroupListerExpansion interface{}
+
+// DxBgpPeerListerExpansion allows custom methods to be added to
+// DxBgpPeerLister.
+type DxBgpPeerListerExpansion interface{}
+
+// DxConnectionListerExpansion allows custom methods to be added to
+// DxConnectionLister.
+type DxConnectionListerExpansion interface{}
+
+// DxConnectionAssociationListerExpansion allows custom methods to be added to
+// DxConnectionAssociationLister.
+type DxConnectionAssociationListerExpansion interface{}
+
+// DxGatewayListerExpansion allows custom methods to be added to
+// DxGatewayLister.
+type DxGatewayListerExpansion interface{}
+
+// DxGatewayAssociationListerExpansion allows custom methods to be added to
+// DxGatewayAssociationLister.
+type DxGatewayAssociationListerExpansion interface{}
+
+// DxGatewayAssociationProposalListerExpansion allows custom methods to be added to
+// DxGatewayAssociationProposalLister.
+type DxGatewayAssociationProposalListerExpansion interface{}
+
+// DxHostedPrivateVirtualInterfaceListerExpansion allows custom methods to be added to
+// DxHostedPrivateVirtualInterfaceLister.
+type DxHostedPrivateVirtualInterfaceListerExpansion interface{}
+
+// DxHostedPrivateVirtualInterfaceAccepterListerExpansion allows custom methods to be added to
+// DxHostedPrivateVirtualInterfaceAccepterLister.
+type DxHostedPrivateVirtualInterfaceAccepterListerExpansion interface{}
+
+// DxHostedPublicVirtualInterfaceListerExpansion allows custom methods to be added to
+// DxHostedPublicVirtualInterfaceLister.
+type DxHostedPublicVirtualInterfaceListerExpansion interface{}
+
+// DxHostedPublicVirtualInterfaceAccepterListerExpansion allows custom methods to be added to
+// DxHostedPublicVirtualInterfaceAccepterLister.
+type DxHostedPublicVirtualInterfaceAccepterListerExpansion interface{}
+
+// DxLagListerExpansion allows custom methods to be added to
+// DxLagLister.
+type DxLagListerExpansion interface{}
+
+// DxPrivateVirtualInterfaceListerExpansion allows custom methods to be added to
+// DxPrivateVirtualInterfaceLister.
+type DxPrivateVirtualInterfaceListerExpansion interface{}
+
+// DxPublicVirtualInterfaceListerExpansion allows custom methods to be added to
+// DxPublicVirtualInterfaceLister.
+type DxPublicVirtualInterfaceListerExpansion interface{}
+
+// DynamodbGlobalTableListerExpansion allows custom methods to be added to
+// DynamodbGlobalTableLister.
+type DynamodbGlobalTableListerExpansion interface{}
+
+// DynamodbTableListerExpansion allows custom methods to be added to
+// DynamodbTableLister.
+type DynamodbTableListerExpansion interface{}
+
+// DynamodbTableItemListerExpansion allows custom methods to be added to
+// DynamodbTableItemLister.
+type DynamodbTableItemListerExpansion interface{}
+
+// EbsDefaultKmsKeyListerExpansion allows custom methods to be added to
+// EbsDefaultKmsKeyLister.
+type EbsDefaultKmsKeyListerExpansion interface{}
+
+// EbsEncryptionByDefaultListerExpansion allows custom methods to be added to
+// EbsEncryptionByDefaultLister.
+type EbsEncryptionByDefaultListerExpansion interface{}
+
+// EbsSnapshotListerExpansion allows custom methods to be added to
+// EbsSnapshotLister.
+type EbsSnapshotListerExpansion interface{}
+
+// EbsSnapshotCopyListerExpansion allows custom methods to be added to
+// EbsSnapshotCopyLister.
+type EbsSnapshotCopyListerExpansion interface{}
+
+// EbsVolumeListerExpansion allows custom methods to be added to
+// EbsVolumeLister.
+type EbsVolumeListerExpansion interface{}
+
+// Ec2CapacityReservationListerExpansion allows custom methods to be added to
+// Ec2CapacityReservationLister.
+type Ec2CapacityReservationListerExpansion interface{}
+
+// Ec2ClientVpnEndpointListerExpansion allows custom methods to be added to
+// Ec2ClientVpnEndpointLister.
+type Ec2ClientVpnEndpointListerExpansion interface{}
+
+// Ec2ClientVpnNetworkAssociationListerExpansion allows custom methods to be added to
+// Ec2ClientVpnNetworkAssociationLister.
+type Ec2ClientVpnNetworkAssociationListerExpansion interface{}
+
+// Ec2FleetListerExpansion allows custom methods to be added to
+// Ec2FleetLister.
+type Ec2FleetListerExpansion interface{}
+
+// Ec2TransitGatewayListerExpansion allows custom methods to be added to
+// Ec2TransitGatewayLister.
+type Ec2TransitGatewayListerExpansion interface{}
+
+// Ec2TransitGatewayRouteListerExpansion allows custom methods to be added to
+// Ec2TransitGatewayRouteLister.
+type Ec2TransitGatewayRouteListerExpansion interface{}
+
+// Ec2TransitGatewayRouteTableListerExpansion allows custom methods to be added to
+// Ec2TransitGatewayRouteTableLister.
+type Ec2TransitGatewayRouteTableListerExpansion interface{}
+
+// Ec2TransitGatewayRouteTableAssociationListerExpansion allows custom methods to be added to
+// Ec2TransitGatewayRouteTableAssociationLister.
+type Ec2TransitGatewayRouteTableAssociationListerExpansion interface{}
+
+// Ec2TransitGatewayRouteTablePropagationListerExpansion allows custom methods to be added to
+// Ec2TransitGatewayRouteTablePropagationLister.
+type Ec2TransitGatewayRouteTablePropagationListerExpansion interface{}
+
+// Ec2TransitGatewayVpcAttachmentListerExpansion allows custom methods to be added to
+// Ec2TransitGatewayVpcAttachmentLister.
+type Ec2TransitGatewayVpcAttachmentListerExpansion interface{}
+
+// Ec2TransitGatewayVpcAttachmentAccepterListerExpansion allows custom methods to be added to
+// Ec2TransitGatewayVpcAttachmentAccepterLister.
+type Ec2TransitGatewayVpcAttachmentAccepterListerExpansion interface{}
+
+// EcrLifecyclePolicyListerExpansion allows custom methods to be added to
+// EcrLifecyclePolicyLister.
+type EcrLifecyclePolicyListerExpansion interface{}
+
+// EcrRepositoryListerExpansion allows custom methods to be added to
+// EcrRepositoryLister.
+type EcrRepositoryListerExpansion interface{}
+
+// EcrRepositoryPolicyListerExpansion allows custom methods to be added to
+// EcrRepositoryPolicyLister.
+type EcrRepositoryPolicyListerExpansion interface{}
+
+// EcsClusterListerExpansion allows custom methods to be added to
+// EcsClusterLister.
+type EcsClusterListerExpansion interface{}
+
+// EcsServiceListerExpansion allows custom methods to be added to
+// EcsServiceLister.
+type EcsServiceListerExpansion interface{}
+
+// EcsTaskDefinitionListerExpansion allows custom methods to be added to
+// EcsTaskDefinitionLister.
+type EcsTaskDefinitionListerExpansion interface{}
+
+// EfsFileSystemListerExpansion allows custom methods to be added to
+// EfsFileSystemLister.
+type EfsFileSystemListerExpansion interface{}
+
+// EfsMountTargetListerExpansion allows custom methods to be added to
+// EfsMountTargetLister.
+type EfsMountTargetListerExpansion interface{}
+
+// EgressOnlyInternetGatewayListerExpansion allows custom methods to be added to
+// EgressOnlyInternetGatewayLister.
+type EgressOnlyInternetGatewayListerExpansion interface{}
+
+// EipListerExpansion allows custom methods to be added to
+// EipLister.
+type EipListerExpansion interface{}
+
+// EipAssociationListerExpansion allows custom methods to be added to
+// EipAssociationLister.
+type EipAssociationListerExpansion interface{}
+
+// EksClusterListerExpansion allows custom methods to be added to
+// EksClusterLister.
+type EksClusterListerExpansion interface{}
+
+// ElasticBeanstalkApplicationListerExpansion allows custom methods to be added to
+// ElasticBeanstalkApplicationLister.
+type ElasticBeanstalkApplicationListerExpansion interface{}
+
+// ElasticBeanstalkApplicationVersionListerExpansion allows custom methods to be added to
+// ElasticBeanstalkApplicationVersionLister.
+type ElasticBeanstalkApplicationVersionListerExpansion interface{}
+
+// ElasticBeanstalkConfigurationTemplateListerExpansion allows custom methods to be added to
+// ElasticBeanstalkConfigurationTemplateLister.
+type ElasticBeanstalkConfigurationTemplateListerExpansion interface{}
+
+// ElasticBeanstalkEnvironmentListerExpansion allows custom methods to be added to
+// ElasticBeanstalkEnvironmentLister.
+type ElasticBeanstalkEnvironmentListerExpansion interface{}
+
+// ElasticacheClusterListerExpansion allows custom methods to be added to
+// ElasticacheClusterLister.
+type ElasticacheClusterListerExpansion interface{}
+
+// ElasticacheParameterGroupListerExpansion allows custom methods to be added to
+// ElasticacheParameterGroupLister.
+type ElasticacheParameterGroupListerExpansion interface{}
+
+// ElasticacheReplicationGroupListerExpansion allows custom methods to be added to
+// ElasticacheReplicationGroupLister.
+type ElasticacheReplicationGroupListerExpansion interface{}
+
+// ElasticacheSecurityGroupListerExpansion allows custom methods to be added to
+// ElasticacheSecurityGroupLister.
+type ElasticacheSecurityGroupListerExpansion interface{}
+
+// ElasticacheSubnetGroupListerExpansion allows custom methods to be added to
+// ElasticacheSubnetGroupLister.
+type ElasticacheSubnetGroupListerExpansion interface{}
+
+// ElasticsearchDomainListerExpansion allows custom methods to be added to
+// ElasticsearchDomainLister.
+type ElasticsearchDomainListerExpansion interface{}
+
+// ElasticsearchDomainPolicyListerExpansion allows custom methods to be added to
+// ElasticsearchDomainPolicyLister.
+type ElasticsearchDomainPolicyListerExpansion interface{}
+
+// ElastictranscoderPipelineListerExpansion allows custom methods to be added to
+// ElastictranscoderPipelineLister.
+type ElastictranscoderPipelineListerExpansion interface{}
+
+// ElastictranscoderPresetListerExpansion allows custom methods to be added to
+// ElastictranscoderPresetLister.
+type ElastictranscoderPresetListerExpansion interface{}
+
+// ElbListerExpansion allows custom methods to be added to
+// ElbLister.
+type ElbListerExpansion interface{}
+
+// ElbAttachmentListerExpansion allows custom methods to be added to
+// ElbAttachmentLister.
+type ElbAttachmentListerExpansion interface{}
+
+// EmrClusterListerExpansion allows custom methods to be added to
+// EmrClusterLister.
+type EmrClusterListerExpansion interface{}
+
+// EmrInstanceGroupListerExpansion allows custom methods to be added to
+// EmrInstanceGroupLister.
+type EmrInstanceGroupListerExpansion interface{}
+
+// EmrSecurityConfigurationListerExpansion allows custom methods to be added to
+// EmrSecurityConfigurationLister.
+type EmrSecurityConfigurationListerExpansion interface{}
+
+// FlowLogListerExpansion allows custom methods to be added to
+// FlowLogLister.
+type FlowLogListerExpansion interface{}
+
+// GameliftAliasListerExpansion allows custom methods to be added to
+// GameliftAliasLister.
+type GameliftAliasListerExpansion interface{}
+
+// GameliftBuildListerExpansion allows custom methods to be added to
+// GameliftBuildLister.
+type GameliftBuildListerExpansion interface{}
+
+// GameliftFleetListerExpansion allows custom methods to be added to
+// GameliftFleetLister.
+type GameliftFleetListerExpansion interface{}
+
+// GameliftGameSessionQueueListerExpansion allows custom methods to be added to
+// GameliftGameSessionQueueLister.
+type GameliftGameSessionQueueListerExpansion interface{}
+
+// GlacierVaultListerExpansion allows custom methods to be added to
+// GlacierVaultLister.
+type GlacierVaultListerExpansion interface{}
+
+// GlacierVaultLockListerExpansion allows custom methods to be added to
+// GlacierVaultLockLister.
+type GlacierVaultLockListerExpansion interface{}
+
+// GlobalacceleratorAcceleratorListerExpansion allows custom methods to be added to
+// GlobalacceleratorAcceleratorLister.
+type GlobalacceleratorAcceleratorListerExpansion interface{}
+
+// GlobalacceleratorEndpointGroupListerExpansion allows custom methods to be added to
+// GlobalacceleratorEndpointGroupLister.
+type GlobalacceleratorEndpointGroupListerExpansion interface{}
+
+// GlobalacceleratorListenerListerExpansion allows custom methods to be added to
+// GlobalacceleratorListenerLister.
+type GlobalacceleratorListenerListerExpansion interface{}
+
+// GlueCatalogDatabaseListerExpansion allows custom methods to be added to
+// GlueCatalogDatabaseLister.
+type GlueCatalogDatabaseListerExpansion interface{}
+
+// GlueCatalogTableListerExpansion allows custom methods to be added to
+// GlueCatalogTableLister.
+type GlueCatalogTableListerExpansion interface{}
+
+// GlueClassifierListerExpansion allows custom methods to be added to
+// GlueClassifierLister.
+type GlueClassifierListerExpansion interface{}
+
+// GlueConnectionListerExpansion allows custom methods to be added to
+// GlueConnectionLister.
+type GlueConnectionListerExpansion interface{}
+
+// GlueCrawlerListerExpansion allows custom methods to be added to
+// GlueCrawlerLister.
+type GlueCrawlerListerExpansion interface{}
+
+// GlueJobListerExpansion allows custom methods to be added to
+// GlueJobLister.
+type GlueJobListerExpansion interface{}
+
+// GlueSecurityConfigurationListerExpansion allows custom methods to be added to
+// GlueSecurityConfigurationLister.
+type GlueSecurityConfigurationListerExpansion interface{}
+
+// GlueTriggerListerExpansion allows custom methods to be added to
+// GlueTriggerLister.
+type GlueTriggerListerExpansion interface{}
+
+// GuarddutyDetectorListerExpansion allows custom methods to be added to
+// GuarddutyDetectorLister.
+type GuarddutyDetectorListerExpansion interface{}
+
+// GuarddutyInviteAccepterListerExpansion allows custom methods to be added to
+// GuarddutyInviteAccepterLister.
+type GuarddutyInviteAccepterListerExpansion interface{}
+
+// GuarddutyIpsetListerExpansion allows custom methods to be added to
+// GuarddutyIpsetLister.
+type GuarddutyIpsetListerExpansion interface{}
+
+// GuarddutyMemberListerExpansion allows custom methods to be added to
+// GuarddutyMemberLister.
+type GuarddutyMemberListerExpansion interface{}
+
+// GuarddutyThreatintelsetListerExpansion allows custom methods to be added to
+// GuarddutyThreatintelsetLister.
+type GuarddutyThreatintelsetListerExpansion interface{}
+
+// IamAccessKeyListerExpansion allows custom methods to be added to
+// IamAccessKeyLister.
+type IamAccessKeyListerExpansion interface{}
+
+// IamAccountAliasListerExpansion allows custom methods to be added to
+// IamAccountAliasLister.
+type IamAccountAliasListerExpansion interface{}
+
+// IamAccountPasswordPolicyListerExpansion allows custom methods to be added to
+// IamAccountPasswordPolicyLister.
+type IamAccountPasswordPolicyListerExpansion interface{}
+
+// IamGroupListerExpansion allows custom methods to be added to
+// IamGroupLister.
+type IamGroupListerExpansion interface{}
+
+// IamGroupMembershipListerExpansion allows custom methods to be added to
+// IamGroupMembershipLister.
+type IamGroupMembershipListerExpansion interface{}
+
+// IamGroupPolicyListerExpansion allows custom methods to be added to
+// IamGroupPolicyLister.
+type IamGroupPolicyListerExpansion interface{}
+
+// IamGroupPolicyAttachmentListerExpansion allows custom methods to be added to
+// IamGroupPolicyAttachmentLister.
+type IamGroupPolicyAttachmentListerExpansion interface{}
+
+// IamInstanceProfileListerExpansion allows custom methods to be added to
+// IamInstanceProfileLister.
+type IamInstanceProfileListerExpansion interface{}
+
+// IamOpenidConnectProviderListerExpansion allows custom methods to be added to
+// IamOpenidConnectProviderLister.
+type IamOpenidConnectProviderListerExpansion interface{}
+
+// IamPolicyListerExpansion allows custom methods to be added to
+// IamPolicyLister.
+type IamPolicyListerExpansion interface{}
+
+// IamPolicyAttachmentListerExpansion allows custom methods to be added to
+// IamPolicyAttachmentLister.
+type IamPolicyAttachmentListerExpansion interface{}
+
+// IamRoleListerExpansion allows custom methods to be added to
+// IamRoleLister.
+type IamRoleListerExpansion interface{}
+
+// IamRolePolicyListerExpansion allows custom methods to be added to
+// IamRolePolicyLister.
+type IamRolePolicyListerExpansion interface{}
+
+// IamRolePolicyAttachmentListerExpansion allows custom methods to be added to
+// IamRolePolicyAttachmentLister.
+type IamRolePolicyAttachmentListerExpansion interface{}
+
+// IamSamlProviderListerExpansion allows custom methods to be added to
+// IamSamlProviderLister.
+type IamSamlProviderListerExpansion interface{}
+
+// IamServerCertificateListerExpansion allows custom methods to be added to
+// IamServerCertificateLister.
+type IamServerCertificateListerExpansion interface{}
+
+// IamServiceLinkedRoleListerExpansion allows custom methods to be added to
+// IamServiceLinkedRoleLister.
+type IamServiceLinkedRoleListerExpansion interface{}
+
+// IamUserListerExpansion allows custom methods to be added to
+// IamUserLister.
+type IamUserListerExpansion interface{}
+
+// IamUserGroupMembershipListerExpansion allows custom methods to be added to
+// IamUserGroupMembershipLister.
+type IamUserGroupMembershipListerExpansion interface{}
+
+// IamUserLoginProfileListerExpansion allows custom methods to be added to
+// IamUserLoginProfileLister.
+type IamUserLoginProfileListerExpansion interface{}
+
+// IamUserPolicyListerExpansion allows custom methods to be added to
+// IamUserPolicyLister.
+type IamUserPolicyListerExpansion interface{}
+
+// IamUserPolicyAttachmentListerExpansion allows custom methods to be added to
+// IamUserPolicyAttachmentLister.
+type IamUserPolicyAttachmentListerExpansion interface{}
+
+// IamUserSshKeyListerExpansion allows custom methods to be added to
+// IamUserSshKeyLister.
+type IamUserSshKeyListerExpansion interface{}
+
+// InspectorAssessmentTargetListerExpansion allows custom methods to be added to
+// InspectorAssessmentTargetLister.
+type InspectorAssessmentTargetListerExpansion interface{}
+
+// InspectorAssessmentTemplateListerExpansion allows custom methods to be added to
+// InspectorAssessmentTemplateLister.
+type InspectorAssessmentTemplateListerExpansion interface{}
+
+// InspectorResourceGroupListerExpansion allows custom methods to be added to
+// InspectorResourceGroupLister.
+type InspectorResourceGroupListerExpansion interface{}
+
+// InstanceListerExpansion allows custom methods to be added to
+// InstanceLister.
+type InstanceListerExpansion interface{}
+
+// InternetGatewayListerExpansion allows custom methods to be added to
+// InternetGatewayLister.
+type InternetGatewayListerExpansion interface{}
+
+// IotCertificateListerExpansion allows custom methods to be added to
+// IotCertificateLister.
+type IotCertificateListerExpansion interface{}
+
+// IotPolicyListerExpansion allows custom methods to be added to
+// IotPolicyLister.
+type IotPolicyListerExpansion interface{}
+
+// IotPolicyAttachmentListerExpansion allows custom methods to be added to
+// IotPolicyAttachmentLister.
+type IotPolicyAttachmentListerExpansion interface{}
+
+// IotRoleAliasListerExpansion allows custom methods to be added to
+// IotRoleAliasLister.
+type IotRoleAliasListerExpansion interface{}
+
+// IotThingListerExpansion allows custom methods to be added to
+// IotThingLister.
+type IotThingListerExpansion interface{}
+
+// IotThingPrincipalAttachmentListerExpansion allows custom methods to be added to
+// IotThingPrincipalAttachmentLister.
+type IotThingPrincipalAttachmentListerExpansion interface{}
+
+// IotThingTypeListerExpansion allows custom methods to be added to
+// IotThingTypeLister.
+type IotThingTypeListerExpansion interface{}
+
+// IotTopicRuleListerExpansion allows custom methods to be added to
+// IotTopicRuleLister.
+type IotTopicRuleListerExpansion interface{}
+
+// KeyPairListerExpansion allows custom methods to be added to
+// KeyPairLister.
+type KeyPairListerExpansion interface{}
+
+// KinesisAnalyticsApplicationListerExpansion allows custom methods to be added to
+// KinesisAnalyticsApplicationLister.
+type KinesisAnalyticsApplicationListerExpansion interface{}
+
+// KinesisFirehoseDeliveryStreamListerExpansion allows custom methods to be added to
+// KinesisFirehoseDeliveryStreamLister.
+type KinesisFirehoseDeliveryStreamListerExpansion interface{}
+
+// KinesisStreamListerExpansion allows custom methods to be added to
+// KinesisStreamLister.
+type KinesisStreamListerExpansion interface{}
+
+// KmsAliasListerExpansion allows custom methods to be added to
+// KmsAliasLister.
+type KmsAliasListerExpansion interface{}
+
+// KmsCiphertextListerExpansion allows custom methods to be added to
+// KmsCiphertextLister.
+type KmsCiphertextListerExpansion interface{}
+
+// KmsExternalKeyListerExpansion allows custom methods to be added to
+// KmsExternalKeyLister.
+type KmsExternalKeyListerExpansion interface{}
+
+// KmsGrantListerExpansion allows custom methods to be added to
+// KmsGrantLister.
+type KmsGrantListerExpansion interface{}
+
+// KmsKeyListerExpansion allows custom methods to be added to
+// KmsKeyLister.
+type KmsKeyListerExpansion interface{}
+
+// LambdaAliasListerExpansion allows custom methods to be added to
+// LambdaAliasLister.
+type LambdaAliasListerExpansion interface{}
+
+// LambdaEventSourceMappingListerExpansion allows custom methods to be added to
+// LambdaEventSourceMappingLister.
+type LambdaEventSourceMappingListerExpansion interface{}
+
+// LambdaFunctionListerExpansion allows custom methods to be added to
+// LambdaFunctionLister.
+type LambdaFunctionListerExpansion interface{}
+
+// LambdaLayerVersionListerExpansion allows custom methods to be added to
+// LambdaLayerVersionLister.
+type LambdaLayerVersionListerExpansion interface{}
+
+// LambdaPermissionListerExpansion allows custom methods to be added to
+// LambdaPermissionLister.
+type LambdaPermissionListerExpansion interface{}
+
+// LaunchConfigurationListerExpansion allows custom methods to be added to
+// LaunchConfigurationLister.
+type LaunchConfigurationListerExpansion interface{}
+
+// LaunchTemplateListerExpansion allows custom methods to be added to
+// LaunchTemplateLister.
+type LaunchTemplateListerExpansion interface{}
+
+// LbListerExpansion allows custom methods to be added to
+// LbLister.
+type LbListerExpansion interface{}
+
+// LbCookieStickinessPolicyListerExpansion allows custom methods to be added to
+// LbCookieStickinessPolicyLister.
+type LbCookieStickinessPolicyListerExpansion interface{}
+
+// LbListenerListerExpansion allows custom methods to be added to
+// LbListenerLister.
+type LbListenerListerExpansion interface{}
+
+// LbListenerCertificateListerExpansion allows custom methods to be added to
+// LbListenerCertificateLister.
+type LbListenerCertificateListerExpansion interface{}
+
+// LbListenerRuleListerExpansion allows custom methods to be added to
+// LbListenerRuleLister.
+type LbListenerRuleListerExpansion interface{}
+
+// LbSslNegotiationPolicyListerExpansion allows custom methods to be added to
+// LbSslNegotiationPolicyLister.
+type LbSslNegotiationPolicyListerExpansion interface{}
+
+// LbTargetGroupListerExpansion allows custom methods to be added to
+// LbTargetGroupLister.
+type LbTargetGroupListerExpansion interface{}
+
+// LbTargetGroupAttachmentListerExpansion allows custom methods to be added to
+// LbTargetGroupAttachmentLister.
+type LbTargetGroupAttachmentListerExpansion interface{}
+
+// LicensemanagerAssociationListerExpansion allows custom methods to be added to
+// LicensemanagerAssociationLister.
+type LicensemanagerAssociationListerExpansion interface{}
+
+// LicensemanagerLicenseConfigurationListerExpansion allows custom methods to be added to
+// LicensemanagerLicenseConfigurationLister.
+type LicensemanagerLicenseConfigurationListerExpansion interface{}
+
+// LightsailDomainListerExpansion allows custom methods to be added to
+// LightsailDomainLister.
+type LightsailDomainListerExpansion interface{}
+
+// LightsailInstanceListerExpansion allows custom methods to be added to
+// LightsailInstanceLister.
+type LightsailInstanceListerExpansion interface{}
+
+// LightsailKeyPairListerExpansion allows custom methods to be added to
+// LightsailKeyPairLister.
+type LightsailKeyPairListerExpansion interface{}
+
+// LightsailStaticIpListerExpansion allows custom methods to be added to
+// LightsailStaticIpLister.
+type LightsailStaticIpListerExpansion interface{}
+
+// LightsailStaticIpAttachmentListerExpansion allows custom methods to be added to
+// LightsailStaticIpAttachmentLister.
+type LightsailStaticIpAttachmentListerExpansion interface{}
+
+// LoadBalancerBackendServerPolicyListerExpansion allows custom methods to be added to
+// LoadBalancerBackendServerPolicyLister.
+type LoadBalancerBackendServerPolicyListerExpansion interface{}
+
+// LoadBalancerListenerPolicyListerExpansion allows custom methods to be added to
+// LoadBalancerListenerPolicyLister.
+type LoadBalancerListenerPolicyListerExpansion interface{}
+
+// LoadBalancerPolicyListerExpansion allows custom methods to be added to
+// LoadBalancerPolicyLister.
+type LoadBalancerPolicyListerExpansion interface{}
+
+// MacieMemberAccountAssociationListerExpansion allows custom methods to be added to
+// MacieMemberAccountAssociationLister.
+type MacieMemberAccountAssociationListerExpansion interface{}
+
+// MacieS3BucketAssociationListerExpansion allows custom methods to be added to
+// MacieS3BucketAssociationLister.
+type MacieS3BucketAssociationListerExpansion interface{}
+
+// MainRouteTableAssociationListerExpansion allows custom methods to be added to
+// MainRouteTableAssociationLister.
+type MainRouteTableAssociationListerExpansion interface{}
+
+// MediaPackageChannelListerExpansion allows custom methods to be added to
+// MediaPackageChannelLister.
+type MediaPackageChannelListerExpansion interface{}
+
+// MediaStoreContainerListerExpansion allows custom methods to be added to
+// MediaStoreContainerLister.
+type MediaStoreContainerListerExpansion interface{}
+
+// MediaStoreContainerPolicyListerExpansion allows custom methods to be added to
+// MediaStoreContainerPolicyLister.
+type MediaStoreContainerPolicyListerExpansion interface{}
+
+// MqBrokerListerExpansion allows custom methods to be added to
+// MqBrokerLister.
+type MqBrokerListerExpansion interface{}
+
+// MqConfigurationListerExpansion allows custom methods to be added to
+// MqConfigurationLister.
+type MqConfigurationListerExpansion interface{}
+
+// MskClusterListerExpansion allows custom methods to be added to
+// MskClusterLister.
+type MskClusterListerExpansion interface{}
+
+// MskConfigurationListerExpansion allows custom methods to be added to
+// MskConfigurationLister.
+type MskConfigurationListerExpansion interface{}
+
+// NatGatewayListerExpansion allows custom methods to be added to
+// NatGatewayLister.
+type NatGatewayListerExpansion interface{}
+
+// NeptuneClusterListerExpansion allows custom methods to be added to
+// NeptuneClusterLister.
+type NeptuneClusterListerExpansion interface{}
+
+// NeptuneClusterInstanceListerExpansion allows custom methods to be added to
+// NeptuneClusterInstanceLister.
+type NeptuneClusterInstanceListerExpansion interface{}
+
+// NeptuneClusterParameterGroupListerExpansion allows custom methods to be added to
+// NeptuneClusterParameterGroupLister.
+type NeptuneClusterParameterGroupListerExpansion interface{}
+
+// NeptuneClusterSnapshotListerExpansion allows custom methods to be added to
+// NeptuneClusterSnapshotLister.
+type NeptuneClusterSnapshotListerExpansion interface{}
+
+// NeptuneEventSubscriptionListerExpansion allows custom methods to be added to
+// NeptuneEventSubscriptionLister.
+type NeptuneEventSubscriptionListerExpansion interface{}
+
+// NeptuneParameterGroupListerExpansion allows custom methods to be added to
+// NeptuneParameterGroupLister.
+type NeptuneParameterGroupListerExpansion interface{}
+
+// NeptuneSubnetGroupListerExpansion allows custom methods to be added to
+// NeptuneSubnetGroupLister.
+type NeptuneSubnetGroupListerExpansion interface{}
+
+// NetworkAclListerExpansion allows custom methods to be added to
+// NetworkAclLister.
+type NetworkAclListerExpansion interface{}
+
+// NetworkAclRuleListerExpansion allows custom methods to be added to
+// NetworkAclRuleLister.
+type NetworkAclRuleListerExpansion interface{}
+
+// NetworkInterfaceListerExpansion allows custom methods to be added to
+// NetworkInterfaceLister.
+type NetworkInterfaceListerExpansion interface{}
+
+// NetworkInterfaceAttachmentListerExpansion allows custom methods to be added to
+// NetworkInterfaceAttachmentLister.
+type NetworkInterfaceAttachmentListerExpansion interface{}
+
+// NetworkInterfaceSgAttachmentListerExpansion allows custom methods to be added to
+// NetworkInterfaceSgAttachmentLister.
+type NetworkInterfaceSgAttachmentListerExpansion interface{}
+
+// OpsworksApplicationListerExpansion allows custom methods to be added to
+// OpsworksApplicationLister.
+type OpsworksApplicationListerExpansion interface{}
+
+// OpsworksCustomLayerListerExpansion allows custom methods to be added to
+// OpsworksCustomLayerLister.
+type OpsworksCustomLayerListerExpansion interface{}
+
+// OpsworksGangliaLayerListerExpansion allows custom methods to be added to
+// OpsworksGangliaLayerLister.
+type OpsworksGangliaLayerListerExpansion interface{}
+
+// OpsworksHaproxyLayerListerExpansion allows custom methods to be added to
+// OpsworksHaproxyLayerLister.
+type OpsworksHaproxyLayerListerExpansion interface{}
+
+// OpsworksInstanceListerExpansion allows custom methods to be added to
+// OpsworksInstanceLister.
+type OpsworksInstanceListerExpansion interface{}
+
+// OpsworksJavaAppLayerListerExpansion allows custom methods to be added to
+// OpsworksJavaAppLayerLister.
+type OpsworksJavaAppLayerListerExpansion interface{}
+
+// OpsworksMemcachedLayerListerExpansion allows custom methods to be added to
+// OpsworksMemcachedLayerLister.
+type OpsworksMemcachedLayerListerExpansion interface{}
+
+// OpsworksMysqlLayerListerExpansion allows custom methods to be added to
+// OpsworksMysqlLayerLister.
+type OpsworksMysqlLayerListerExpansion interface{}
+
+// OpsworksNodejsAppLayerListerExpansion allows custom methods to be added to
+// OpsworksNodejsAppLayerLister.
+type OpsworksNodejsAppLayerListerExpansion interface{}
+
+// OpsworksPermissionListerExpansion allows custom methods to be added to
+// OpsworksPermissionLister.
+type OpsworksPermissionListerExpansion interface{}
+
+// OpsworksPhpAppLayerListerExpansion allows custom methods to be added to
+// OpsworksPhpAppLayerLister.
+type OpsworksPhpAppLayerListerExpansion interface{}
+
+// OpsworksRailsAppLayerListerExpansion allows custom methods to be added to
+// OpsworksRailsAppLayerLister.
+type OpsworksRailsAppLayerListerExpansion interface{}
+
+// OpsworksRdsDbInstanceListerExpansion allows custom methods to be added to
+// OpsworksRdsDbInstanceLister.
+type OpsworksRdsDbInstanceListerExpansion interface{}
+
+// OpsworksStackListerExpansion allows custom methods to be added to
+// OpsworksStackLister.
+type OpsworksStackListerExpansion interface{}
+
+// OpsworksStaticWebLayerListerExpansion allows custom methods to be added to
+// OpsworksStaticWebLayerLister.
+type OpsworksStaticWebLayerListerExpansion interface{}
+
+// OpsworksUserProfileListerExpansion allows custom methods to be added to
+// OpsworksUserProfileLister.
+type OpsworksUserProfileListerExpansion interface{}
+
+// OrganizationsAccountListerExpansion allows custom methods to be added to
+// OrganizationsAccountLister.
+type OrganizationsAccountListerExpansion interface{}
+
+// OrganizationsOrganizationListerExpansion allows custom methods to be added to
+// OrganizationsOrganizationLister.
+type OrganizationsOrganizationListerExpansion interface{}
+
+// OrganizationsOrganizationalUnitListerExpansion allows custom methods to be added to
+// OrganizationsOrganizationalUnitLister.
+type OrganizationsOrganizationalUnitListerExpansion interface{}
+
+// OrganizationsPolicyListerExpansion allows custom methods to be added to
+// OrganizationsPolicyLister.
+type OrganizationsPolicyListerExpansion interface{}
+
+// OrganizationsPolicyAttachmentListerExpansion allows custom methods to be added to
+// OrganizationsPolicyAttachmentLister.
+type OrganizationsPolicyAttachmentListerExpansion interface{}
+
+// PinpointAdmChannelListerExpansion allows custom methods to be added to
+// PinpointAdmChannelLister.
+type PinpointAdmChannelListerExpansion interface{}
+
+// PinpointApnsChannelListerExpansion allows custom methods to be added to
+// PinpointApnsChannelLister.
+type PinpointApnsChannelListerExpansion interface{}
+
+// PinpointApnsSandboxChannelListerExpansion allows custom methods to be added to
+// PinpointApnsSandboxChannelLister.
+type PinpointApnsSandboxChannelListerExpansion interface{}
+
+// PinpointApnsVoipChannelListerExpansion allows custom methods to be added to
+// PinpointApnsVoipChannelLister.
+type PinpointApnsVoipChannelListerExpansion interface{}
+
+// PinpointApnsVoipSandboxChannelListerExpansion allows custom methods to be added to
+// PinpointApnsVoipSandboxChannelLister.
+type PinpointApnsVoipSandboxChannelListerExpansion interface{}
+
+// PinpointAppListerExpansion allows custom methods to be added to
+// PinpointAppLister.
+type PinpointAppListerExpansion interface{}
+
+// PinpointBaiduChannelListerExpansion allows custom methods to be added to
+// PinpointBaiduChannelLister.
+type PinpointBaiduChannelListerExpansion interface{}
+
+// PinpointEmailChannelListerExpansion allows custom methods to be added to
+// PinpointEmailChannelLister.
+type PinpointEmailChannelListerExpansion interface{}
+
+// PinpointEventStreamListerExpansion allows custom methods to be added to
+// PinpointEventStreamLister.
+type PinpointEventStreamListerExpansion interface{}
+
+// PinpointGcmChannelListerExpansion allows custom methods to be added to
+// PinpointGcmChannelLister.
+type PinpointGcmChannelListerExpansion interface{}
+
+// PinpointSmsChannelListerExpansion allows custom methods to be added to
+// PinpointSmsChannelLister.
+type PinpointSmsChannelListerExpansion interface{}
+
+// PlacementGroupListerExpansion allows custom methods to be added to
+// PlacementGroupLister.
+type PlacementGroupListerExpansion interface{}
+
+// ProxyProtocolPolicyListerExpansion allows custom methods to be added to
+// ProxyProtocolPolicyLister.
+type ProxyProtocolPolicyListerExpansion interface{}
+
+// RamPrincipalAssociationListerExpansion allows custom methods to be added to
+// RamPrincipalAssociationLister.
+type RamPrincipalAssociationListerExpansion interface{}
+
+// RamResourceAssociationListerExpansion allows custom methods to be added to
+// RamResourceAssociationLister.
+type RamResourceAssociationListerExpansion interface{}
+
+// RamResourceShareListerExpansion allows custom methods to be added to
+// RamResourceShareLister.
+type RamResourceShareListerExpansion interface{}
+
+// RdsClusterListerExpansion allows custom methods to be added to
+// RdsClusterLister.
+type RdsClusterListerExpansion interface{}
+
+// RdsClusterEndpointListerExpansion allows custom methods to be added to
+// RdsClusterEndpointLister.
+type RdsClusterEndpointListerExpansion interface{}
+
+// RdsClusterInstanceListerExpansion allows custom methods to be added to
+// RdsClusterInstanceLister.
+type RdsClusterInstanceListerExpansion interface{}
+
+// RdsClusterParameterGroupListerExpansion allows custom methods to be added to
+// RdsClusterParameterGroupLister.
+type RdsClusterParameterGroupListerExpansion interface{}
+
+// RdsGlobalClusterListerExpansion allows custom methods to be added to
+// RdsGlobalClusterLister.
+type RdsGlobalClusterListerExpansion interface{}
+
+// RedshiftClusterListerExpansion allows custom methods to be added to
+// RedshiftClusterLister.
+type RedshiftClusterListerExpansion interface{}
+
+// RedshiftEventSubscriptionListerExpansion allows custom methods to be added to
+// RedshiftEventSubscriptionLister.
+type RedshiftEventSubscriptionListerExpansion interface{}
+
+// RedshiftParameterGroupListerExpansion allows custom methods to be added to
+// RedshiftParameterGroupLister.
+type RedshiftParameterGroupListerExpansion interface{}
+
+// RedshiftSecurityGroupListerExpansion allows custom methods to be added to
+// RedshiftSecurityGroupLister.
+type RedshiftSecurityGroupListerExpansion interface{}
+
+// RedshiftSnapshotCopyGrantListerExpansion allows custom methods to be added to
+// RedshiftSnapshotCopyGrantLister.
+type RedshiftSnapshotCopyGrantListerExpansion interface{}
+
+// RedshiftSubnetGroupListerExpansion allows custom methods to be added to
+// RedshiftSubnetGroupLister.
+type RedshiftSubnetGroupListerExpansion interface{}
+
+// ResourcegroupsGroupListerExpansion allows custom methods to be added to
+// ResourcegroupsGroupLister.
+type ResourcegroupsGroupListerExpansion interface{}
+
+// RouteListerExpansion allows custom methods to be added to
+// RouteLister.
+type RouteListerExpansion interface{}
+
+// Route53DelegationSetListerExpansion allows custom methods to be added to
+// Route53DelegationSetLister.
+type Route53DelegationSetListerExpansion interface{}
+
+// Route53HealthCheckListerExpansion allows custom methods to be added to
+// Route53HealthCheckLister.
+type Route53HealthCheckListerExpansion interface{}
+
+// Route53QueryLogListerExpansion allows custom methods to be added to
+// Route53QueryLogLister.
+type Route53QueryLogListerExpansion interface{}
+
+// Route53RecordListerExpansion allows custom methods to be added to
+// Route53RecordLister.
+type Route53RecordListerExpansion interface{}
+
+// Route53ResolverEndpointListerExpansion allows custom methods to be added to
+// Route53ResolverEndpointLister.
+type Route53ResolverEndpointListerExpansion interface{}
+
+// Route53ResolverRuleListerExpansion allows custom methods to be added to
+// Route53ResolverRuleLister.
+type Route53ResolverRuleListerExpansion interface{}
+
+// Route53ResolverRuleAssociationListerExpansion allows custom methods to be added to
+// Route53ResolverRuleAssociationLister.
+type Route53ResolverRuleAssociationListerExpansion interface{}
+
+// Route53ZoneListerExpansion allows custom methods to be added to
+// Route53ZoneLister.
+type Route53ZoneListerExpansion interface{}
+
+// Route53ZoneAssociationListerExpansion allows custom methods to be added to
+// Route53ZoneAssociationLister.
+type Route53ZoneAssociationListerExpansion interface{}
+
+// RouteTableListerExpansion allows custom methods to be added to
+// RouteTableLister.
+type RouteTableListerExpansion interface{}
+
+// RouteTableAssociationListerExpansion allows custom methods to be added to
+// RouteTableAssociationLister.
+type RouteTableAssociationListerExpansion interface{}
+
+// S3AccountPublicAccessBlockListerExpansion allows custom methods to be added to
+// S3AccountPublicAccessBlockLister.
+type S3AccountPublicAccessBlockListerExpansion interface{}
+
+// S3BucketListerExpansion allows custom methods to be added to
+// S3BucketLister.
+type S3BucketListerExpansion interface{}
+
+// S3BucketInventoryListerExpansion allows custom methods to be added to
+// S3BucketInventoryLister.
+type S3BucketInventoryListerExpansion interface{}
+
+// S3BucketMetricListerExpansion allows custom methods to be added to
+// S3BucketMetricLister.
+type S3BucketMetricListerExpansion interface{}
+
+// S3BucketNotificationListerExpansion allows custom methods to be added to
+// S3BucketNotificationLister.
+type S3BucketNotificationListerExpansion interface{}
+
+// S3BucketObjectListerExpansion allows custom methods to be added to
+// S3BucketObjectLister.
+type S3BucketObjectListerExpansion interface{}
+
+// S3BucketPolicyListerExpansion allows custom methods to be added to
+// S3BucketPolicyLister.
+type S3BucketPolicyListerExpansion interface{}
+
+// S3BucketPublicAccessBlockListerExpansion allows custom methods to be added to
+// S3BucketPublicAccessBlockLister.
+type S3BucketPublicAccessBlockListerExpansion interface{}
+
+// SagemakerEndpointListerExpansion allows custom methods to be added to
+// SagemakerEndpointLister.
+type SagemakerEndpointListerExpansion interface{}
+
+// SagemakerEndpointConfigurationListerExpansion allows custom methods to be added to
+// SagemakerEndpointConfigurationLister.
+type SagemakerEndpointConfigurationListerExpansion interface{}
+
+// SagemakerModelListerExpansion allows custom methods to be added to
+// SagemakerModelLister.
+type SagemakerModelListerExpansion interface{}
+
+// SagemakerNotebookInstanceListerExpansion allows custom methods to be added to
+// SagemakerNotebookInstanceLister.
+type SagemakerNotebookInstanceListerExpansion interface{}
+
+// SagemakerNotebookInstanceLifecycleConfigurationListerExpansion allows custom methods to be added to
+// SagemakerNotebookInstanceLifecycleConfigurationLister.
+type SagemakerNotebookInstanceLifecycleConfigurationListerExpansion interface{}
+
+// SecretsmanagerSecretListerExpansion allows custom methods to be added to
+// SecretsmanagerSecretLister.
+type SecretsmanagerSecretListerExpansion interface{}
+
+// SecretsmanagerSecretVersionListerExpansion allows custom methods to be added to
+// SecretsmanagerSecretVersionLister.
+type SecretsmanagerSecretVersionListerExpansion interface{}
+
+// SecurityGroupListerExpansion allows custom methods to be added to
+// SecurityGroupLister.
+type SecurityGroupListerExpansion interface{}
+
+// SecurityGroupRuleListerExpansion allows custom methods to be added to
+// SecurityGroupRuleLister.
+type SecurityGroupRuleListerExpansion interface{}
+
+// SecurityhubAccountListerExpansion allows custom methods to be added to
+// SecurityhubAccountLister.
+type SecurityhubAccountListerExpansion interface{}
+
+// SecurityhubProductSubscriptionListerExpansion allows custom methods to be added to
+// SecurityhubProductSubscriptionLister.
+type SecurityhubProductSubscriptionListerExpansion interface{}
+
+// SecurityhubStandardsSubscriptionListerExpansion allows custom methods to be added to
+// SecurityhubStandardsSubscriptionLister.
+type SecurityhubStandardsSubscriptionListerExpansion interface{}
+
+// ServiceDiscoveryHttpNamespaceListerExpansion allows custom methods to be added to
+// ServiceDiscoveryHttpNamespaceLister.
+type ServiceDiscoveryHttpNamespaceListerExpansion interface{}
+
+// ServiceDiscoveryPrivateDnsNamespaceListerExpansion allows custom methods to be added to
+// ServiceDiscoveryPrivateDnsNamespaceLister.
+type ServiceDiscoveryPrivateDnsNamespaceListerExpansion interface{}
+
+// ServiceDiscoveryPublicDnsNamespaceListerExpansion allows custom methods to be added to
+// ServiceDiscoveryPublicDnsNamespaceLister.
+type ServiceDiscoveryPublicDnsNamespaceListerExpansion interface{}
+
+// ServiceDiscoveryServiceListerExpansion allows custom methods to be added to
+// ServiceDiscoveryServiceLister.
+type ServiceDiscoveryServiceListerExpansion interface{}
+
+// ServicecatalogPortfolioListerExpansion allows custom methods to be added to
+// ServicecatalogPortfolioLister.
+type ServicecatalogPortfolioListerExpansion interface{}
+
+// SesActiveReceiptRuleSetListerExpansion allows custom methods to be added to
+// SesActiveReceiptRuleSetLister.
+type SesActiveReceiptRuleSetListerExpansion interface{}
+
+// SesConfigurationSetListerExpansion allows custom methods to be added to
+// SesConfigurationSetLister.
+type SesConfigurationSetListerExpansion interface{}
+
+// SesDomainDkimListerExpansion allows custom methods to be added to
+// SesDomainDkimLister.
+type SesDomainDkimListerExpansion interface{}
+
+// SesDomainIdentityListerExpansion allows custom methods to be added to
+// SesDomainIdentityLister.
+type SesDomainIdentityListerExpansion interface{}
+
+// SesDomainIdentityVerificationListerExpansion allows custom methods to be added to
+// SesDomainIdentityVerificationLister.
+type SesDomainIdentityVerificationListerExpansion interface{}
+
+// SesDomainMailFromListerExpansion allows custom methods to be added to
+// SesDomainMailFromLister.
+type SesDomainMailFromListerExpansion interface{}
+
+// SesEmailIdentityListerExpansion allows custom methods to be added to
+// SesEmailIdentityLister.
+type SesEmailIdentityListerExpansion interface{}
+
+// SesEventDestinationListerExpansion allows custom methods to be added to
+// SesEventDestinationLister.
+type SesEventDestinationListerExpansion interface{}
+
+// SesIdentityNotificationTopicListerExpansion allows custom methods to be added to
+// SesIdentityNotificationTopicLister.
+type SesIdentityNotificationTopicListerExpansion interface{}
+
+// SesIdentityPolicyListerExpansion allows custom methods to be added to
+// SesIdentityPolicyLister.
+type SesIdentityPolicyListerExpansion interface{}
+
+// SesReceiptFilterListerExpansion allows custom methods to be added to
+// SesReceiptFilterLister.
+type SesReceiptFilterListerExpansion interface{}
+
+// SesReceiptRuleListerExpansion allows custom methods to be added to
+// SesReceiptRuleLister.
+type SesReceiptRuleListerExpansion interface{}
+
+// SesReceiptRuleSetListerExpansion allows custom methods to be added to
+// SesReceiptRuleSetLister.
+type SesReceiptRuleSetListerExpansion interface{}
+
+// SesTemplateListerExpansion allows custom methods to be added to
+// SesTemplateLister.
+type SesTemplateListerExpansion interface{}
+
+// SfnActivityListerExpansion allows custom methods to be added to
+// SfnActivityLister.
+type SfnActivityListerExpansion interface{}
+
+// SfnStateMachineListerExpansion allows custom methods to be added to
+// SfnStateMachineLister.
+type SfnStateMachineListerExpansion interface{}
+
+// ShieldProtectionListerExpansion allows custom methods to be added to
+// ShieldProtectionLister.
+type ShieldProtectionListerExpansion interface{}
+
+// SimpledbDomainListerExpansion allows custom methods to be added to
+// SimpledbDomainLister.
+type SimpledbDomainListerExpansion interface{}
+
+// SnapshotCreateVolumePermissionListerExpansion allows custom methods to be added to
+// SnapshotCreateVolumePermissionLister.
+type SnapshotCreateVolumePermissionListerExpansion interface{}
+
+// SnsPlatformApplicationListerExpansion allows custom methods to be added to
+// SnsPlatformApplicationLister.
+type SnsPlatformApplicationListerExpansion interface{}
+
+// SnsSmsPreferencesListerExpansion allows custom methods to be added to
+// SnsSmsPreferencesLister.
+type SnsSmsPreferencesListerExpansion interface{}
+
+// SnsTopicListerExpansion allows custom methods to be added to
+// SnsTopicLister.
+type SnsTopicListerExpansion interface{}
+
+// SnsTopicPolicyListerExpansion allows custom methods to be added to
+// SnsTopicPolicyLister.
+type SnsTopicPolicyListerExpansion interface{}
+
+// SnsTopicSubscriptionListerExpansion allows custom methods to be added to
+// SnsTopicSubscriptionLister.
+type SnsTopicSubscriptionListerExpansion interface{}
+
+// SpotDatafeedSubscriptionListerExpansion allows custom methods to be added to
+// SpotDatafeedSubscriptionLister.
+type SpotDatafeedSubscriptionListerExpansion interface{}
+
+// SpotFleetRequestListerExpansion allows custom methods to be added to
+// SpotFleetRequestLister.
+type SpotFleetRequestListerExpansion interface{}
+
+// SpotInstanceRequestListerExpansion allows custom methods to be added to
+// SpotInstanceRequestLister.
+type SpotInstanceRequestListerExpansion interface{}
+
+// SqsQueueListerExpansion allows custom methods to be added to
+// SqsQueueLister.
+type SqsQueueListerExpansion interface{}
+
+// SqsQueuePolicyListerExpansion allows custom methods to be added to
+// SqsQueuePolicyLister.
+type SqsQueuePolicyListerExpansion interface{}
+
+// SsmActivationListerExpansion allows custom methods to be added to
+// SsmActivationLister.
+type SsmActivationListerExpansion interface{}
+
+// SsmAssociationListerExpansion allows custom methods to be added to
+// SsmAssociationLister.
+type SsmAssociationListerExpansion interface{}
+
+// SsmDocumentListerExpansion allows custom methods to be added to
+// SsmDocumentLister.
+type SsmDocumentListerExpansion interface{}
+
+// SsmMaintenanceWindowListerExpansion allows custom methods to be added to
+// SsmMaintenanceWindowLister.
+type SsmMaintenanceWindowListerExpansion interface{}
+
+// SsmMaintenanceWindowTargetListerExpansion allows custom methods to be added to
+// SsmMaintenanceWindowTargetLister.
+type SsmMaintenanceWindowTargetListerExpansion interface{}
+
+// SsmMaintenanceWindowTaskListerExpansion allows custom methods to be added to
+// SsmMaintenanceWindowTaskLister.
+type SsmMaintenanceWindowTaskListerExpansion interface{}
+
+// SsmParameterListerExpansion allows custom methods to be added to
+// SsmParameterLister.
+type SsmParameterListerExpansion interface{}
+
+// SsmPatchBaselineListerExpansion allows custom methods to be added to
+// SsmPatchBaselineLister.
+type SsmPatchBaselineListerExpansion interface{}
+
+// SsmPatchGroupListerExpansion allows custom methods to be added to
+// SsmPatchGroupLister.
+type SsmPatchGroupListerExpansion interface{}
+
+// SsmResourceDataSyncListerExpansion allows custom methods to be added to
+// SsmResourceDataSyncLister.
+type SsmResourceDataSyncListerExpansion interface{}
+
+// StoragegatewayCacheListerExpansion allows custom methods to be added to
+// StoragegatewayCacheLister.
+type StoragegatewayCacheListerExpansion interface{}
+
+// StoragegatewayCachedIscsiVolumeListerExpansion allows custom methods to be added to
+// StoragegatewayCachedIscsiVolumeLister.
+type StoragegatewayCachedIscsiVolumeListerExpansion interface{}
+
+// StoragegatewayGatewayListerExpansion allows custom methods to be added to
+// StoragegatewayGatewayLister.
+type StoragegatewayGatewayListerExpansion interface{}
+
+// StoragegatewayNfsFileShareListerExpansion allows custom methods to be added to
+// StoragegatewayNfsFileShareLister.
+type StoragegatewayNfsFileShareListerExpansion interface{}
+
+// StoragegatewaySmbFileShareListerExpansion allows custom methods to be added to
+// StoragegatewaySmbFileShareLister.
+type StoragegatewaySmbFileShareListerExpansion interface{}
+
+// StoragegatewayUploadBufferListerExpansion allows custom methods to be added to
+// StoragegatewayUploadBufferLister.
+type StoragegatewayUploadBufferListerExpansion interface{}
+
+// StoragegatewayWorkingStorageListerExpansion allows custom methods to be added to
+// StoragegatewayWorkingStorageLister.
+type StoragegatewayWorkingStorageListerExpansion interface{}
+
+// SubnetListerExpansion allows custom methods to be added to
+// SubnetLister.
+type SubnetListerExpansion interface{}
+
+// SwfDomainListerExpansion allows custom methods to be added to
+// SwfDomainLister.
+type SwfDomainListerExpansion interface{}
+
+// TransferServerListerExpansion allows custom methods to be added to
+// TransferServerLister.
+type TransferServerListerExpansion interface{}
+
+// TransferSshKeyListerExpansion allows custom methods to be added to
+// TransferSshKeyLister.
+type TransferSshKeyListerExpansion interface{}
+
+// TransferUserListerExpansion allows custom methods to be added to
+// TransferUserLister.
+type TransferUserListerExpansion interface{}
+
+// VolumeAttachmentListerExpansion allows custom methods to be added to
+// VolumeAttachmentLister.
+type VolumeAttachmentListerExpansion interface{}
+
+// VpcListerExpansion allows custom methods to be added to
+// VpcLister.
+type VpcListerExpansion interface{}
+
+// VpcDhcpOptionsListerExpansion allows custom methods to be added to
+// VpcDhcpOptionsLister.
+type VpcDhcpOptionsListerExpansion interface{}
+
+// VpcDhcpOptionsAssociationListerExpansion allows custom methods to be added to
+// VpcDhcpOptionsAssociationLister.
+type VpcDhcpOptionsAssociationListerExpansion interface{}
+
+// VpcEndpointListerExpansion allows custom methods to be added to
+// VpcEndpointLister.
+type VpcEndpointListerExpansion interface{}
+
+// VpcEndpointConnectionNotificationListerExpansion allows custom methods to be added to
+// VpcEndpointConnectionNotificationLister.
+type VpcEndpointConnectionNotificationListerExpansion interface{}
+
+// VpcEndpointRouteTableAssociationListerExpansion allows custom methods to be added to
+// VpcEndpointRouteTableAssociationLister.
+type VpcEndpointRouteTableAssociationListerExpansion interface{}
+
+// VpcEndpointServiceListerExpansion allows custom methods to be added to
+// VpcEndpointServiceLister.
+type VpcEndpointServiceListerExpansion interface{}
+
+// VpcEndpointServiceAllowedPrincipalListerExpansion allows custom methods to be added to
+// VpcEndpointServiceAllowedPrincipalLister.
+type VpcEndpointServiceAllowedPrincipalListerExpansion interface{}
+
+// VpcEndpointSubnetAssociationListerExpansion allows custom methods to be added to
+// VpcEndpointSubnetAssociationLister.
+type VpcEndpointSubnetAssociationListerExpansion interface{}
+
+// VpcIpv4CidrBlockAssociationListerExpansion allows custom methods to be added to
+// VpcIpv4CidrBlockAssociationLister.
+type VpcIpv4CidrBlockAssociationListerExpansion interface{}
+
+// VpcPeeringConnectionListerExpansion allows custom methods to be added to
+// VpcPeeringConnectionLister.
+type VpcPeeringConnectionListerExpansion interface{}
+
+// VpcPeeringConnectionAccepterListerExpansion allows custom methods to be added to
+// VpcPeeringConnectionAccepterLister.
+type VpcPeeringConnectionAccepterListerExpansion interface{}
+
+// VpcPeeringConnectionOptionsListerExpansion allows custom methods to be added to
+// VpcPeeringConnectionOptionsLister.
+type VpcPeeringConnectionOptionsListerExpansion interface{}
+
+// VpnConnectionListerExpansion allows custom methods to be added to
+// VpnConnectionLister.
+type VpnConnectionListerExpansion interface{}
+
+// VpnConnectionRouteListerExpansion allows custom methods to be added to
+// VpnConnectionRouteLister.
+type VpnConnectionRouteListerExpansion interface{}
+
+// VpnGatewayListerExpansion allows custom methods to be added to
+// VpnGatewayLister.
+type VpnGatewayListerExpansion interface{}
+
+// VpnGatewayAttachmentListerExpansion allows custom methods to be added to
+// VpnGatewayAttachmentLister.
+type VpnGatewayAttachmentListerExpansion interface{}
+
+// VpnGatewayRoutePropagationListerExpansion allows custom methods to be added to
+// VpnGatewayRoutePropagationLister.
+type VpnGatewayRoutePropagationListerExpansion interface{}
+
+// WafByteMatchSetListerExpansion allows custom methods to be added to
+// WafByteMatchSetLister.
+type WafByteMatchSetListerExpansion interface{}
+
+// WafGeoMatchSetListerExpansion allows custom methods to be added to
+// WafGeoMatchSetLister.
+type WafGeoMatchSetListerExpansion interface{}
+
+// WafIpsetListerExpansion allows custom methods to be added to
+// WafIpsetLister.
+type WafIpsetListerExpansion interface{}
+
+// WafRateBasedRuleListerExpansion allows custom methods to be added to
+// WafRateBasedRuleLister.
+type WafRateBasedRuleListerExpansion interface{}
+
+// WafRegexMatchSetListerExpansion allows custom methods to be added to
+// WafRegexMatchSetLister.
+type WafRegexMatchSetListerExpansion interface{}
+
+// WafRegexPatternSetListerExpansion allows custom methods to be added to
+// WafRegexPatternSetLister.
+type WafRegexPatternSetListerExpansion interface{}
+
+// WafRuleListerExpansion allows custom methods to be added to
+// WafRuleLister.
+type WafRuleListerExpansion interface{}
+
+// WafRuleGroupListerExpansion allows custom methods to be added to
+// WafRuleGroupLister.
+type WafRuleGroupListerExpansion interface{}
+
+// WafSizeConstraintSetListerExpansion allows custom methods to be added to
+// WafSizeConstraintSetLister.
+type WafSizeConstraintSetListerExpansion interface{}
+
+// WafSqlInjectionMatchSetListerExpansion allows custom methods to be added to
+// WafSqlInjectionMatchSetLister.
+type WafSqlInjectionMatchSetListerExpansion interface{}
+
+// WafWebAclListerExpansion allows custom methods to be added to
+// WafWebAclLister.
+type WafWebAclListerExpansion interface{}
+
+// WafXssMatchSetListerExpansion allows custom methods to be added to
+// WafXssMatchSetLister.
+type WafXssMatchSetListerExpansion interface{}
+
+// WafregionalByteMatchSetListerExpansion allows custom methods to be added to
+// WafregionalByteMatchSetLister.
+type WafregionalByteMatchSetListerExpansion interface{}
+
+// WafregionalGeoMatchSetListerExpansion allows custom methods to be added to
+// WafregionalGeoMatchSetLister.
+type WafregionalGeoMatchSetListerExpansion interface{}
+
+// WafregionalIpsetListerExpansion allows custom methods to be added to
+// WafregionalIpsetLister.
+type WafregionalIpsetListerExpansion interface{}
+
+// WafregionalRateBasedRuleListerExpansion allows custom methods to be added to
+// WafregionalRateBasedRuleLister.
+type WafregionalRateBasedRuleListerExpansion interface{}
+
+// WafregionalRegexMatchSetListerExpansion allows custom methods to be added to
+// WafregionalRegexMatchSetLister.
+type WafregionalRegexMatchSetListerExpansion interface{}
+
+// WafregionalRegexPatternSetListerExpansion allows custom methods to be added to
+// WafregionalRegexPatternSetLister.
+type WafregionalRegexPatternSetListerExpansion interface{}
+
+// WafregionalRuleListerExpansion allows custom methods to be added to
+// WafregionalRuleLister.
+type WafregionalRuleListerExpansion interface{}
+
+// WafregionalRuleGroupListerExpansion allows custom methods to be added to
+// WafregionalRuleGroupLister.
+type WafregionalRuleGroupListerExpansion interface{}
+
+// WafregionalSizeConstraintSetListerExpansion allows custom methods to be added to
+// WafregionalSizeConstraintSetLister.
+type WafregionalSizeConstraintSetListerExpansion interface{}
+
+// WafregionalSqlInjectionMatchSetListerExpansion allows custom methods to be added to
+// WafregionalSqlInjectionMatchSetLister.
+type WafregionalSqlInjectionMatchSetListerExpansion interface{}
+
+// WafregionalWebAclListerExpansion allows custom methods to be added to
+// WafregionalWebAclLister.
+type WafregionalWebAclListerExpansion interface{}
+
+// WafregionalWebAclAssociationListerExpansion allows custom methods to be added to
+// WafregionalWebAclAssociationLister.
+type WafregionalWebAclAssociationListerExpansion interface{}
+
+// WafregionalXssMatchSetListerExpansion allows custom methods to be added to
+// WafregionalXssMatchSetLister.
+type WafregionalXssMatchSetListerExpansion interface{}
+
+// WorklinkFleetListerExpansion allows custom methods to be added to
+// WorklinkFleetLister.
+type WorklinkFleetListerExpansion interface{}
+
+// WorklinkWebsiteCertificateAuthorityAssociationListerExpansion allows custom methods to be added to
+// WorklinkWebsiteCertificateAuthorityAssociationLister.
+type WorklinkWebsiteCertificateAuthorityAssociationListerExpansion interface{}
+
+// XraySamplingRuleListerExpansion allows custom methods to be added to
+// XraySamplingRuleLister.
+type XraySamplingRuleListerExpansion interface{}

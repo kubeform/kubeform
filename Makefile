@@ -16,7 +16,7 @@
 SHELL=/bin/bash -o pipefail
 
 # The binary to build (just the basename).
-BIN      := apimachinery
+BIN      := kubeform
 
 # This version-strategy uses git tags to set the version string
 git_branch       := $(shell git rev-parse --abbrev-ref HEAD)
@@ -42,7 +42,7 @@ endif
 ### These variables should not need tweaking.
 ###
 
-SRC_DIRS := *.go apis client util hack/gencrd # directories which hold app source (not vendored)
+SRC_DIRS := *.go apis client util # directories which hold app source (not vendored)
 
 DOCKER_PLATFORMS := linux/amd64 linux/arm linux/arm64
 BIN_PLATFORMS    := $(DOCKER_PLATFORMS) windows/amd64 darwin/amd64

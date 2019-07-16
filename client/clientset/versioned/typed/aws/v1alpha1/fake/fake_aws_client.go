@@ -28,2060 +28,2060 @@ type FakeAwsV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeAwsV1alpha1) AwsAcmCertificates() v1alpha1.AwsAcmCertificateInterface {
-	return &FakeAwsAcmCertificates{c}
+func (c *FakeAwsV1alpha1) AcmCertificates() v1alpha1.AcmCertificateInterface {
+	return &FakeAcmCertificates{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAcmCertificateValidations() v1alpha1.AwsAcmCertificateValidationInterface {
-	return &FakeAwsAcmCertificateValidations{c}
+func (c *FakeAwsV1alpha1) AcmCertificateValidations() v1alpha1.AcmCertificateValidationInterface {
+	return &FakeAcmCertificateValidations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAcmpcaCertificateAuthorities() v1alpha1.AwsAcmpcaCertificateAuthorityInterface {
-	return &FakeAwsAcmpcaCertificateAuthorities{c}
+func (c *FakeAwsV1alpha1) AcmpcaCertificateAuthorities() v1alpha1.AcmpcaCertificateAuthorityInterface {
+	return &FakeAcmpcaCertificateAuthorities{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAlbs() v1alpha1.AwsAlbInterface {
-	return &FakeAwsAlbs{c}
+func (c *FakeAwsV1alpha1) Albs() v1alpha1.AlbInterface {
+	return &FakeAlbs{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAlbListeners() v1alpha1.AwsAlbListenerInterface {
-	return &FakeAwsAlbListeners{c}
+func (c *FakeAwsV1alpha1) AlbListeners() v1alpha1.AlbListenerInterface {
+	return &FakeAlbListeners{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAlbListenerCertificates() v1alpha1.AwsAlbListenerCertificateInterface {
-	return &FakeAwsAlbListenerCertificates{c}
+func (c *FakeAwsV1alpha1) AlbListenerCertificates() v1alpha1.AlbListenerCertificateInterface {
+	return &FakeAlbListenerCertificates{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAlbListenerRules() v1alpha1.AwsAlbListenerRuleInterface {
-	return &FakeAwsAlbListenerRules{c}
+func (c *FakeAwsV1alpha1) AlbListenerRules() v1alpha1.AlbListenerRuleInterface {
+	return &FakeAlbListenerRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAlbTargetGroups() v1alpha1.AwsAlbTargetGroupInterface {
-	return &FakeAwsAlbTargetGroups{c}
+func (c *FakeAwsV1alpha1) AlbTargetGroups() v1alpha1.AlbTargetGroupInterface {
+	return &FakeAlbTargetGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAlbTargetGroupAttachments() v1alpha1.AwsAlbTargetGroupAttachmentInterface {
-	return &FakeAwsAlbTargetGroupAttachments{c}
+func (c *FakeAwsV1alpha1) AlbTargetGroupAttachments() v1alpha1.AlbTargetGroupAttachmentInterface {
+	return &FakeAlbTargetGroupAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAmis() v1alpha1.AwsAmiInterface {
-	return &FakeAwsAmis{c}
+func (c *FakeAwsV1alpha1) Amis() v1alpha1.AmiInterface {
+	return &FakeAmis{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAmiCopies() v1alpha1.AwsAmiCopyInterface {
-	return &FakeAwsAmiCopies{c}
+func (c *FakeAwsV1alpha1) AmiCopies() v1alpha1.AmiCopyInterface {
+	return &FakeAmiCopies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAmiFromInstances() v1alpha1.AwsAmiFromInstanceInterface {
-	return &FakeAwsAmiFromInstances{c}
+func (c *FakeAwsV1alpha1) AmiFromInstances() v1alpha1.AmiFromInstanceInterface {
+	return &FakeAmiFromInstances{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAmiLaunchPermissions() v1alpha1.AwsAmiLaunchPermissionInterface {
-	return &FakeAwsAmiLaunchPermissions{c}
+func (c *FakeAwsV1alpha1) AmiLaunchPermissions() v1alpha1.AmiLaunchPermissionInterface {
+	return &FakeAmiLaunchPermissions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayAccounts() v1alpha1.AwsApiGatewayAccountInterface {
-	return &FakeAwsApiGatewayAccounts{c}
+func (c *FakeAwsV1alpha1) ApiGatewayAccounts() v1alpha1.ApiGatewayAccountInterface {
+	return &FakeApiGatewayAccounts{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayApiKeys() v1alpha1.AwsApiGatewayApiKeyInterface {
-	return &FakeAwsApiGatewayApiKeys{c}
+func (c *FakeAwsV1alpha1) ApiGatewayApiKeys() v1alpha1.ApiGatewayApiKeyInterface {
+	return &FakeApiGatewayApiKeys{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayAuthorizers() v1alpha1.AwsApiGatewayAuthorizerInterface {
-	return &FakeAwsApiGatewayAuthorizers{c}
+func (c *FakeAwsV1alpha1) ApiGatewayAuthorizers() v1alpha1.ApiGatewayAuthorizerInterface {
+	return &FakeApiGatewayAuthorizers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayBasePathMappings() v1alpha1.AwsApiGatewayBasePathMappingInterface {
-	return &FakeAwsApiGatewayBasePathMappings{c}
+func (c *FakeAwsV1alpha1) ApiGatewayBasePathMappings() v1alpha1.ApiGatewayBasePathMappingInterface {
+	return &FakeApiGatewayBasePathMappings{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayClientCertificates() v1alpha1.AwsApiGatewayClientCertificateInterface {
-	return &FakeAwsApiGatewayClientCertificates{c}
+func (c *FakeAwsV1alpha1) ApiGatewayClientCertificates() v1alpha1.ApiGatewayClientCertificateInterface {
+	return &FakeApiGatewayClientCertificates{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayDeployments() v1alpha1.AwsApiGatewayDeploymentInterface {
-	return &FakeAwsApiGatewayDeployments{c}
+func (c *FakeAwsV1alpha1) ApiGatewayDeployments() v1alpha1.ApiGatewayDeploymentInterface {
+	return &FakeApiGatewayDeployments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayDocumentationParts() v1alpha1.AwsApiGatewayDocumentationPartInterface {
-	return &FakeAwsApiGatewayDocumentationParts{c}
+func (c *FakeAwsV1alpha1) ApiGatewayDocumentationParts() v1alpha1.ApiGatewayDocumentationPartInterface {
+	return &FakeApiGatewayDocumentationParts{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayDocumentationVersions() v1alpha1.AwsApiGatewayDocumentationVersionInterface {
-	return &FakeAwsApiGatewayDocumentationVersions{c}
+func (c *FakeAwsV1alpha1) ApiGatewayDocumentationVersions() v1alpha1.ApiGatewayDocumentationVersionInterface {
+	return &FakeApiGatewayDocumentationVersions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayDomainNames() v1alpha1.AwsApiGatewayDomainNameInterface {
-	return &FakeAwsApiGatewayDomainNames{c}
+func (c *FakeAwsV1alpha1) ApiGatewayDomainNames() v1alpha1.ApiGatewayDomainNameInterface {
+	return &FakeApiGatewayDomainNames{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayGatewayResponses() v1alpha1.AwsApiGatewayGatewayResponseInterface {
-	return &FakeAwsApiGatewayGatewayResponses{c}
+func (c *FakeAwsV1alpha1) ApiGatewayGatewayResponses() v1alpha1.ApiGatewayGatewayResponseInterface {
+	return &FakeApiGatewayGatewayResponses{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayIntegrations() v1alpha1.AwsApiGatewayIntegrationInterface {
-	return &FakeAwsApiGatewayIntegrations{c}
+func (c *FakeAwsV1alpha1) ApiGatewayIntegrations() v1alpha1.ApiGatewayIntegrationInterface {
+	return &FakeApiGatewayIntegrations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayIntegrationResponses() v1alpha1.AwsApiGatewayIntegrationResponseInterface {
-	return &FakeAwsApiGatewayIntegrationResponses{c}
+func (c *FakeAwsV1alpha1) ApiGatewayIntegrationResponses() v1alpha1.ApiGatewayIntegrationResponseInterface {
+	return &FakeApiGatewayIntegrationResponses{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayMethods() v1alpha1.AwsApiGatewayMethodInterface {
-	return &FakeAwsApiGatewayMethods{c}
+func (c *FakeAwsV1alpha1) ApiGatewayMethods() v1alpha1.ApiGatewayMethodInterface {
+	return &FakeApiGatewayMethods{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayMethodResponses() v1alpha1.AwsApiGatewayMethodResponseInterface {
-	return &FakeAwsApiGatewayMethodResponses{c}
+func (c *FakeAwsV1alpha1) ApiGatewayMethodResponses() v1alpha1.ApiGatewayMethodResponseInterface {
+	return &FakeApiGatewayMethodResponses{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayMethodSettingses() v1alpha1.AwsApiGatewayMethodSettingsInterface {
-	return &FakeAwsApiGatewayMethodSettingses{c}
+func (c *FakeAwsV1alpha1) ApiGatewayMethodSettingses() v1alpha1.ApiGatewayMethodSettingsInterface {
+	return &FakeApiGatewayMethodSettingses{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayModels() v1alpha1.AwsApiGatewayModelInterface {
-	return &FakeAwsApiGatewayModels{c}
+func (c *FakeAwsV1alpha1) ApiGatewayModels() v1alpha1.ApiGatewayModelInterface {
+	return &FakeApiGatewayModels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayRequestValidators() v1alpha1.AwsApiGatewayRequestValidatorInterface {
-	return &FakeAwsApiGatewayRequestValidators{c}
+func (c *FakeAwsV1alpha1) ApiGatewayRequestValidators() v1alpha1.ApiGatewayRequestValidatorInterface {
+	return &FakeApiGatewayRequestValidators{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayResources() v1alpha1.AwsApiGatewayResourceInterface {
-	return &FakeAwsApiGatewayResources{c}
+func (c *FakeAwsV1alpha1) ApiGatewayResources() v1alpha1.ApiGatewayResourceInterface {
+	return &FakeApiGatewayResources{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayRestApis() v1alpha1.AwsApiGatewayRestApiInterface {
-	return &FakeAwsApiGatewayRestApis{c}
+func (c *FakeAwsV1alpha1) ApiGatewayRestApis() v1alpha1.ApiGatewayRestApiInterface {
+	return &FakeApiGatewayRestApis{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayStages() v1alpha1.AwsApiGatewayStageInterface {
-	return &FakeAwsApiGatewayStages{c}
+func (c *FakeAwsV1alpha1) ApiGatewayStages() v1alpha1.ApiGatewayStageInterface {
+	return &FakeApiGatewayStages{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayUsagePlans() v1alpha1.AwsApiGatewayUsagePlanInterface {
-	return &FakeAwsApiGatewayUsagePlans{c}
+func (c *FakeAwsV1alpha1) ApiGatewayUsagePlans() v1alpha1.ApiGatewayUsagePlanInterface {
+	return &FakeApiGatewayUsagePlans{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayUsagePlanKeys() v1alpha1.AwsApiGatewayUsagePlanKeyInterface {
-	return &FakeAwsApiGatewayUsagePlanKeys{c}
+func (c *FakeAwsV1alpha1) ApiGatewayUsagePlanKeys() v1alpha1.ApiGatewayUsagePlanKeyInterface {
+	return &FakeApiGatewayUsagePlanKeys{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsApiGatewayVpcLinks() v1alpha1.AwsApiGatewayVpcLinkInterface {
-	return &FakeAwsApiGatewayVpcLinks{c}
+func (c *FakeAwsV1alpha1) ApiGatewayVpcLinks() v1alpha1.ApiGatewayVpcLinkInterface {
+	return &FakeApiGatewayVpcLinks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppCookieStickinessPolicies() v1alpha1.AwsAppCookieStickinessPolicyInterface {
-	return &FakeAwsAppCookieStickinessPolicies{c}
+func (c *FakeAwsV1alpha1) AppCookieStickinessPolicies() v1alpha1.AppCookieStickinessPolicyInterface {
+	return &FakeAppCookieStickinessPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppautoscalingPolicies() v1alpha1.AwsAppautoscalingPolicyInterface {
-	return &FakeAwsAppautoscalingPolicies{c}
+func (c *FakeAwsV1alpha1) AppautoscalingPolicies() v1alpha1.AppautoscalingPolicyInterface {
+	return &FakeAppautoscalingPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppautoscalingScheduledActions() v1alpha1.AwsAppautoscalingScheduledActionInterface {
-	return &FakeAwsAppautoscalingScheduledActions{c}
+func (c *FakeAwsV1alpha1) AppautoscalingScheduledActions() v1alpha1.AppautoscalingScheduledActionInterface {
+	return &FakeAppautoscalingScheduledActions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppautoscalingTargets() v1alpha1.AwsAppautoscalingTargetInterface {
-	return &FakeAwsAppautoscalingTargets{c}
+func (c *FakeAwsV1alpha1) AppautoscalingTargets() v1alpha1.AppautoscalingTargetInterface {
+	return &FakeAppautoscalingTargets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppmeshMeshes() v1alpha1.AwsAppmeshMeshInterface {
-	return &FakeAwsAppmeshMeshes{c}
+func (c *FakeAwsV1alpha1) AppmeshMeshes() v1alpha1.AppmeshMeshInterface {
+	return &FakeAppmeshMeshes{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppmeshRoutes() v1alpha1.AwsAppmeshRouteInterface {
-	return &FakeAwsAppmeshRoutes{c}
+func (c *FakeAwsV1alpha1) AppmeshRoutes() v1alpha1.AppmeshRouteInterface {
+	return &FakeAppmeshRoutes{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppmeshVirtualNodes() v1alpha1.AwsAppmeshVirtualNodeInterface {
-	return &FakeAwsAppmeshVirtualNodes{c}
+func (c *FakeAwsV1alpha1) AppmeshVirtualNodes() v1alpha1.AppmeshVirtualNodeInterface {
+	return &FakeAppmeshVirtualNodes{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppmeshVirtualRouters() v1alpha1.AwsAppmeshVirtualRouterInterface {
-	return &FakeAwsAppmeshVirtualRouters{c}
+func (c *FakeAwsV1alpha1) AppmeshVirtualRouters() v1alpha1.AppmeshVirtualRouterInterface {
+	return &FakeAppmeshVirtualRouters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppmeshVirtualServices() v1alpha1.AwsAppmeshVirtualServiceInterface {
-	return &FakeAwsAppmeshVirtualServices{c}
+func (c *FakeAwsV1alpha1) AppmeshVirtualServices() v1alpha1.AppmeshVirtualServiceInterface {
+	return &FakeAppmeshVirtualServices{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppsyncApiKeys() v1alpha1.AwsAppsyncApiKeyInterface {
-	return &FakeAwsAppsyncApiKeys{c}
+func (c *FakeAwsV1alpha1) AppsyncApiKeys() v1alpha1.AppsyncApiKeyInterface {
+	return &FakeAppsyncApiKeys{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppsyncDatasources() v1alpha1.AwsAppsyncDatasourceInterface {
-	return &FakeAwsAppsyncDatasources{c}
+func (c *FakeAwsV1alpha1) AppsyncDatasources() v1alpha1.AppsyncDatasourceInterface {
+	return &FakeAppsyncDatasources{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppsyncFunctions() v1alpha1.AwsAppsyncFunctionInterface {
-	return &FakeAwsAppsyncFunctions{c}
+func (c *FakeAwsV1alpha1) AppsyncFunctions() v1alpha1.AppsyncFunctionInterface {
+	return &FakeAppsyncFunctions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppsyncGraphqlApis() v1alpha1.AwsAppsyncGraphqlApiInterface {
-	return &FakeAwsAppsyncGraphqlApis{c}
+func (c *FakeAwsV1alpha1) AppsyncGraphqlApis() v1alpha1.AppsyncGraphqlApiInterface {
+	return &FakeAppsyncGraphqlApis{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAppsyncResolvers() v1alpha1.AwsAppsyncResolverInterface {
-	return &FakeAwsAppsyncResolvers{c}
+func (c *FakeAwsV1alpha1) AppsyncResolvers() v1alpha1.AppsyncResolverInterface {
+	return &FakeAppsyncResolvers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAthenaDatabases() v1alpha1.AwsAthenaDatabaseInterface {
-	return &FakeAwsAthenaDatabases{c}
+func (c *FakeAwsV1alpha1) AthenaDatabases() v1alpha1.AthenaDatabaseInterface {
+	return &FakeAthenaDatabases{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAthenaNamedQueries() v1alpha1.AwsAthenaNamedQueryInterface {
-	return &FakeAwsAthenaNamedQueries{c}
+func (c *FakeAwsV1alpha1) AthenaNamedQueries() v1alpha1.AthenaNamedQueryInterface {
+	return &FakeAthenaNamedQueries{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAthenaWorkgroups() v1alpha1.AwsAthenaWorkgroupInterface {
-	return &FakeAwsAthenaWorkgroups{c}
+func (c *FakeAwsV1alpha1) AthenaWorkgroups() v1alpha1.AthenaWorkgroupInterface {
+	return &FakeAthenaWorkgroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAutoscalingAttachments() v1alpha1.AwsAutoscalingAttachmentInterface {
-	return &FakeAwsAutoscalingAttachments{c}
+func (c *FakeAwsV1alpha1) AutoscalingAttachments() v1alpha1.AutoscalingAttachmentInterface {
+	return &FakeAutoscalingAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAutoscalingGroups() v1alpha1.AwsAutoscalingGroupInterface {
-	return &FakeAwsAutoscalingGroups{c}
+func (c *FakeAwsV1alpha1) AutoscalingGroups() v1alpha1.AutoscalingGroupInterface {
+	return &FakeAutoscalingGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAutoscalingLifecycleHooks() v1alpha1.AwsAutoscalingLifecycleHookInterface {
-	return &FakeAwsAutoscalingLifecycleHooks{c}
+func (c *FakeAwsV1alpha1) AutoscalingLifecycleHooks() v1alpha1.AutoscalingLifecycleHookInterface {
+	return &FakeAutoscalingLifecycleHooks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAutoscalingNotifications() v1alpha1.AwsAutoscalingNotificationInterface {
-	return &FakeAwsAutoscalingNotifications{c}
+func (c *FakeAwsV1alpha1) AutoscalingNotifications() v1alpha1.AutoscalingNotificationInterface {
+	return &FakeAutoscalingNotifications{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAutoscalingPolicies() v1alpha1.AwsAutoscalingPolicyInterface {
-	return &FakeAwsAutoscalingPolicies{c}
+func (c *FakeAwsV1alpha1) AutoscalingPolicies() v1alpha1.AutoscalingPolicyInterface {
+	return &FakeAutoscalingPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsAutoscalingSchedules() v1alpha1.AwsAutoscalingScheduleInterface {
-	return &FakeAwsAutoscalingSchedules{c}
+func (c *FakeAwsV1alpha1) AutoscalingSchedules() v1alpha1.AutoscalingScheduleInterface {
+	return &FakeAutoscalingSchedules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsBackupPlans() v1alpha1.AwsBackupPlanInterface {
-	return &FakeAwsBackupPlans{c}
+func (c *FakeAwsV1alpha1) BackupPlans() v1alpha1.BackupPlanInterface {
+	return &FakeBackupPlans{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsBackupSelections() v1alpha1.AwsBackupSelectionInterface {
-	return &FakeAwsBackupSelections{c}
+func (c *FakeAwsV1alpha1) BackupSelections() v1alpha1.BackupSelectionInterface {
+	return &FakeBackupSelections{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsBackupVaults() v1alpha1.AwsBackupVaultInterface {
-	return &FakeAwsBackupVaults{c}
+func (c *FakeAwsV1alpha1) BackupVaults() v1alpha1.BackupVaultInterface {
+	return &FakeBackupVaults{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsBatchComputeEnvironments() v1alpha1.AwsBatchComputeEnvironmentInterface {
-	return &FakeAwsBatchComputeEnvironments{c}
+func (c *FakeAwsV1alpha1) BatchComputeEnvironments() v1alpha1.BatchComputeEnvironmentInterface {
+	return &FakeBatchComputeEnvironments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsBatchJobDefinitions() v1alpha1.AwsBatchJobDefinitionInterface {
-	return &FakeAwsBatchJobDefinitions{c}
+func (c *FakeAwsV1alpha1) BatchJobDefinitions() v1alpha1.BatchJobDefinitionInterface {
+	return &FakeBatchJobDefinitions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsBatchJobQueues() v1alpha1.AwsBatchJobQueueInterface {
-	return &FakeAwsBatchJobQueues{c}
+func (c *FakeAwsV1alpha1) BatchJobQueues() v1alpha1.BatchJobQueueInterface {
+	return &FakeBatchJobQueues{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsBudgetsBudgets() v1alpha1.AwsBudgetsBudgetInterface {
-	return &FakeAwsBudgetsBudgets{c}
+func (c *FakeAwsV1alpha1) BudgetsBudgets() v1alpha1.BudgetsBudgetInterface {
+	return &FakeBudgetsBudgets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloud9EnvironmentEc2s() v1alpha1.AwsCloud9EnvironmentEc2Interface {
-	return &FakeAwsCloud9EnvironmentEc2s{c}
+func (c *FakeAwsV1alpha1) Cloud9EnvironmentEc2s() v1alpha1.Cloud9EnvironmentEc2Interface {
+	return &FakeCloud9EnvironmentEc2s{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudformationStacks() v1alpha1.AwsCloudformationStackInterface {
-	return &FakeAwsCloudformationStacks{c}
+func (c *FakeAwsV1alpha1) CloudformationStacks() v1alpha1.CloudformationStackInterface {
+	return &FakeCloudformationStacks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudformationStackSets() v1alpha1.AwsCloudformationStackSetInterface {
-	return &FakeAwsCloudformationStackSets{c}
+func (c *FakeAwsV1alpha1) CloudformationStackSets() v1alpha1.CloudformationStackSetInterface {
+	return &FakeCloudformationStackSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudformationStackSetInstances() v1alpha1.AwsCloudformationStackSetInstanceInterface {
-	return &FakeAwsCloudformationStackSetInstances{c}
+func (c *FakeAwsV1alpha1) CloudformationStackSetInstances() v1alpha1.CloudformationStackSetInstanceInterface {
+	return &FakeCloudformationStackSetInstances{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudfrontDistributions() v1alpha1.AwsCloudfrontDistributionInterface {
-	return &FakeAwsCloudfrontDistributions{c}
+func (c *FakeAwsV1alpha1) CloudfrontDistributions() v1alpha1.CloudfrontDistributionInterface {
+	return &FakeCloudfrontDistributions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudfrontOriginAccessIdentities() v1alpha1.AwsCloudfrontOriginAccessIdentityInterface {
-	return &FakeAwsCloudfrontOriginAccessIdentities{c}
+func (c *FakeAwsV1alpha1) CloudfrontOriginAccessIdentities() v1alpha1.CloudfrontOriginAccessIdentityInterface {
+	return &FakeCloudfrontOriginAccessIdentities{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudfrontPublicKeys() v1alpha1.AwsCloudfrontPublicKeyInterface {
-	return &FakeAwsCloudfrontPublicKeys{c}
+func (c *FakeAwsV1alpha1) CloudfrontPublicKeys() v1alpha1.CloudfrontPublicKeyInterface {
+	return &FakeCloudfrontPublicKeys{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudhsmV2Clusters() v1alpha1.AwsCloudhsmV2ClusterInterface {
-	return &FakeAwsCloudhsmV2Clusters{c}
+func (c *FakeAwsV1alpha1) CloudhsmV2Clusters() v1alpha1.CloudhsmV2ClusterInterface {
+	return &FakeCloudhsmV2Clusters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudhsmV2Hsms() v1alpha1.AwsCloudhsmV2HsmInterface {
-	return &FakeAwsCloudhsmV2Hsms{c}
+func (c *FakeAwsV1alpha1) CloudhsmV2Hsms() v1alpha1.CloudhsmV2HsmInterface {
+	return &FakeCloudhsmV2Hsms{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudtrails() v1alpha1.AwsCloudtrailInterface {
-	return &FakeAwsCloudtrails{c}
+func (c *FakeAwsV1alpha1) Cloudtrails() v1alpha1.CloudtrailInterface {
+	return &FakeCloudtrails{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudwatchDashboards() v1alpha1.AwsCloudwatchDashboardInterface {
-	return &FakeAwsCloudwatchDashboards{c}
+func (c *FakeAwsV1alpha1) CloudwatchDashboards() v1alpha1.CloudwatchDashboardInterface {
+	return &FakeCloudwatchDashboards{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudwatchEventPermissions() v1alpha1.AwsCloudwatchEventPermissionInterface {
-	return &FakeAwsCloudwatchEventPermissions{c}
+func (c *FakeAwsV1alpha1) CloudwatchEventPermissions() v1alpha1.CloudwatchEventPermissionInterface {
+	return &FakeCloudwatchEventPermissions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudwatchEventRules() v1alpha1.AwsCloudwatchEventRuleInterface {
-	return &FakeAwsCloudwatchEventRules{c}
+func (c *FakeAwsV1alpha1) CloudwatchEventRules() v1alpha1.CloudwatchEventRuleInterface {
+	return &FakeCloudwatchEventRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudwatchEventTargets() v1alpha1.AwsCloudwatchEventTargetInterface {
-	return &FakeAwsCloudwatchEventTargets{c}
+func (c *FakeAwsV1alpha1) CloudwatchEventTargets() v1alpha1.CloudwatchEventTargetInterface {
+	return &FakeCloudwatchEventTargets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudwatchLogDestinations() v1alpha1.AwsCloudwatchLogDestinationInterface {
-	return &FakeAwsCloudwatchLogDestinations{c}
+func (c *FakeAwsV1alpha1) CloudwatchLogDestinations() v1alpha1.CloudwatchLogDestinationInterface {
+	return &FakeCloudwatchLogDestinations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudwatchLogDestinationPolicies() v1alpha1.AwsCloudwatchLogDestinationPolicyInterface {
-	return &FakeAwsCloudwatchLogDestinationPolicies{c}
+func (c *FakeAwsV1alpha1) CloudwatchLogDestinationPolicies() v1alpha1.CloudwatchLogDestinationPolicyInterface {
+	return &FakeCloudwatchLogDestinationPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudwatchLogGroups() v1alpha1.AwsCloudwatchLogGroupInterface {
-	return &FakeAwsCloudwatchLogGroups{c}
+func (c *FakeAwsV1alpha1) CloudwatchLogGroups() v1alpha1.CloudwatchLogGroupInterface {
+	return &FakeCloudwatchLogGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudwatchLogMetricFilters() v1alpha1.AwsCloudwatchLogMetricFilterInterface {
-	return &FakeAwsCloudwatchLogMetricFilters{c}
+func (c *FakeAwsV1alpha1) CloudwatchLogMetricFilters() v1alpha1.CloudwatchLogMetricFilterInterface {
+	return &FakeCloudwatchLogMetricFilters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudwatchLogResourcePolicies() v1alpha1.AwsCloudwatchLogResourcePolicyInterface {
-	return &FakeAwsCloudwatchLogResourcePolicies{c}
+func (c *FakeAwsV1alpha1) CloudwatchLogResourcePolicies() v1alpha1.CloudwatchLogResourcePolicyInterface {
+	return &FakeCloudwatchLogResourcePolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudwatchLogStreams() v1alpha1.AwsCloudwatchLogStreamInterface {
-	return &FakeAwsCloudwatchLogStreams{c}
+func (c *FakeAwsV1alpha1) CloudwatchLogStreams() v1alpha1.CloudwatchLogStreamInterface {
+	return &FakeCloudwatchLogStreams{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudwatchLogSubscriptionFilters() v1alpha1.AwsCloudwatchLogSubscriptionFilterInterface {
-	return &FakeAwsCloudwatchLogSubscriptionFilters{c}
+func (c *FakeAwsV1alpha1) CloudwatchLogSubscriptionFilters() v1alpha1.CloudwatchLogSubscriptionFilterInterface {
+	return &FakeCloudwatchLogSubscriptionFilters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCloudwatchMetricAlarms() v1alpha1.AwsCloudwatchMetricAlarmInterface {
-	return &FakeAwsCloudwatchMetricAlarms{c}
+func (c *FakeAwsV1alpha1) CloudwatchMetricAlarms() v1alpha1.CloudwatchMetricAlarmInterface {
+	return &FakeCloudwatchMetricAlarms{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCodebuildProjects() v1alpha1.AwsCodebuildProjectInterface {
-	return &FakeAwsCodebuildProjects{c}
+func (c *FakeAwsV1alpha1) CodebuildProjects() v1alpha1.CodebuildProjectInterface {
+	return &FakeCodebuildProjects{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCodebuildWebhooks() v1alpha1.AwsCodebuildWebhookInterface {
-	return &FakeAwsCodebuildWebhooks{c}
+func (c *FakeAwsV1alpha1) CodebuildWebhooks() v1alpha1.CodebuildWebhookInterface {
+	return &FakeCodebuildWebhooks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCodecommitRepositories() v1alpha1.AwsCodecommitRepositoryInterface {
-	return &FakeAwsCodecommitRepositories{c}
+func (c *FakeAwsV1alpha1) CodecommitRepositories() v1alpha1.CodecommitRepositoryInterface {
+	return &FakeCodecommitRepositories{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCodecommitTriggers() v1alpha1.AwsCodecommitTriggerInterface {
-	return &FakeAwsCodecommitTriggers{c}
+func (c *FakeAwsV1alpha1) CodecommitTriggers() v1alpha1.CodecommitTriggerInterface {
+	return &FakeCodecommitTriggers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCodedeployApps() v1alpha1.AwsCodedeployAppInterface {
-	return &FakeAwsCodedeployApps{c}
+func (c *FakeAwsV1alpha1) CodedeployApps() v1alpha1.CodedeployAppInterface {
+	return &FakeCodedeployApps{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCodedeployDeploymentConfigs() v1alpha1.AwsCodedeployDeploymentConfigInterface {
-	return &FakeAwsCodedeployDeploymentConfigs{c}
+func (c *FakeAwsV1alpha1) CodedeployDeploymentConfigs() v1alpha1.CodedeployDeploymentConfigInterface {
+	return &FakeCodedeployDeploymentConfigs{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCodedeployDeploymentGroups() v1alpha1.AwsCodedeployDeploymentGroupInterface {
-	return &FakeAwsCodedeployDeploymentGroups{c}
+func (c *FakeAwsV1alpha1) CodedeployDeploymentGroups() v1alpha1.CodedeployDeploymentGroupInterface {
+	return &FakeCodedeployDeploymentGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCodepipelines() v1alpha1.AwsCodepipelineInterface {
-	return &FakeAwsCodepipelines{c}
+func (c *FakeAwsV1alpha1) Codepipelines() v1alpha1.CodepipelineInterface {
+	return &FakeCodepipelines{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCodepipelineWebhooks() v1alpha1.AwsCodepipelineWebhookInterface {
-	return &FakeAwsCodepipelineWebhooks{c}
+func (c *FakeAwsV1alpha1) CodepipelineWebhooks() v1alpha1.CodepipelineWebhookInterface {
+	return &FakeCodepipelineWebhooks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCognitoIdentityPools() v1alpha1.AwsCognitoIdentityPoolInterface {
-	return &FakeAwsCognitoIdentityPools{c}
+func (c *FakeAwsV1alpha1) CognitoIdentityPools() v1alpha1.CognitoIdentityPoolInterface {
+	return &FakeCognitoIdentityPools{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCognitoIdentityPoolRolesAttachments() v1alpha1.AwsCognitoIdentityPoolRolesAttachmentInterface {
-	return &FakeAwsCognitoIdentityPoolRolesAttachments{c}
+func (c *FakeAwsV1alpha1) CognitoIdentityPoolRolesAttachments() v1alpha1.CognitoIdentityPoolRolesAttachmentInterface {
+	return &FakeCognitoIdentityPoolRolesAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCognitoIdentityProviders() v1alpha1.AwsCognitoIdentityProviderInterface {
-	return &FakeAwsCognitoIdentityProviders{c}
+func (c *FakeAwsV1alpha1) CognitoIdentityProviders() v1alpha1.CognitoIdentityProviderInterface {
+	return &FakeCognitoIdentityProviders{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCognitoResourceServers() v1alpha1.AwsCognitoResourceServerInterface {
-	return &FakeAwsCognitoResourceServers{c}
+func (c *FakeAwsV1alpha1) CognitoResourceServers() v1alpha1.CognitoResourceServerInterface {
+	return &FakeCognitoResourceServers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCognitoUserGroups() v1alpha1.AwsCognitoUserGroupInterface {
-	return &FakeAwsCognitoUserGroups{c}
+func (c *FakeAwsV1alpha1) CognitoUserGroups() v1alpha1.CognitoUserGroupInterface {
+	return &FakeCognitoUserGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCognitoUserPools() v1alpha1.AwsCognitoUserPoolInterface {
-	return &FakeAwsCognitoUserPools{c}
+func (c *FakeAwsV1alpha1) CognitoUserPools() v1alpha1.CognitoUserPoolInterface {
+	return &FakeCognitoUserPools{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCognitoUserPoolClients() v1alpha1.AwsCognitoUserPoolClientInterface {
-	return &FakeAwsCognitoUserPoolClients{c}
+func (c *FakeAwsV1alpha1) CognitoUserPoolClients() v1alpha1.CognitoUserPoolClientInterface {
+	return &FakeCognitoUserPoolClients{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCognitoUserPoolDomains() v1alpha1.AwsCognitoUserPoolDomainInterface {
-	return &FakeAwsCognitoUserPoolDomains{c}
+func (c *FakeAwsV1alpha1) CognitoUserPoolDomains() v1alpha1.CognitoUserPoolDomainInterface {
+	return &FakeCognitoUserPoolDomains{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsConfigAggregateAuthorizations() v1alpha1.AwsConfigAggregateAuthorizationInterface {
-	return &FakeAwsConfigAggregateAuthorizations{c}
+func (c *FakeAwsV1alpha1) ConfigAggregateAuthorizations() v1alpha1.ConfigAggregateAuthorizationInterface {
+	return &FakeConfigAggregateAuthorizations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsConfigConfigRules() v1alpha1.AwsConfigConfigRuleInterface {
-	return &FakeAwsConfigConfigRules{c}
+func (c *FakeAwsV1alpha1) ConfigConfigRules() v1alpha1.ConfigConfigRuleInterface {
+	return &FakeConfigConfigRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsConfigConfigurationAggregators() v1alpha1.AwsConfigConfigurationAggregatorInterface {
-	return &FakeAwsConfigConfigurationAggregators{c}
+func (c *FakeAwsV1alpha1) ConfigConfigurationAggregators() v1alpha1.ConfigConfigurationAggregatorInterface {
+	return &FakeConfigConfigurationAggregators{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsConfigConfigurationRecorders() v1alpha1.AwsConfigConfigurationRecorderInterface {
-	return &FakeAwsConfigConfigurationRecorders{c}
+func (c *FakeAwsV1alpha1) ConfigConfigurationRecorders() v1alpha1.ConfigConfigurationRecorderInterface {
+	return &FakeConfigConfigurationRecorders{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsConfigConfigurationRecorderStatuses() v1alpha1.AwsConfigConfigurationRecorderStatusInterface {
-	return &FakeAwsConfigConfigurationRecorderStatuses{c}
+func (c *FakeAwsV1alpha1) ConfigConfigurationRecorderStatus_s() v1alpha1.ConfigConfigurationRecorderStatus_Interface {
+	return &FakeConfigConfigurationRecorderStatus_s{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsConfigDeliveryChannels() v1alpha1.AwsConfigDeliveryChannelInterface {
-	return &FakeAwsConfigDeliveryChannels{c}
+func (c *FakeAwsV1alpha1) ConfigDeliveryChannels() v1alpha1.ConfigDeliveryChannelInterface {
+	return &FakeConfigDeliveryChannels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCurReportDefinitions() v1alpha1.AwsCurReportDefinitionInterface {
-	return &FakeAwsCurReportDefinitions{c}
+func (c *FakeAwsV1alpha1) CurReportDefinitions() v1alpha1.CurReportDefinitionInterface {
+	return &FakeCurReportDefinitions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsCustomerGateways() v1alpha1.AwsCustomerGatewayInterface {
-	return &FakeAwsCustomerGateways{c}
+func (c *FakeAwsV1alpha1) CustomerGateways() v1alpha1.CustomerGatewayInterface {
+	return &FakeCustomerGateways{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDatapipelinePipelines() v1alpha1.AwsDatapipelinePipelineInterface {
-	return &FakeAwsDatapipelinePipelines{c}
+func (c *FakeAwsV1alpha1) DatapipelinePipelines() v1alpha1.DatapipelinePipelineInterface {
+	return &FakeDatapipelinePipelines{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDatasyncAgents() v1alpha1.AwsDatasyncAgentInterface {
-	return &FakeAwsDatasyncAgents{c}
+func (c *FakeAwsV1alpha1) DatasyncAgents() v1alpha1.DatasyncAgentInterface {
+	return &FakeDatasyncAgents{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDatasyncLocationEfses() v1alpha1.AwsDatasyncLocationEfsInterface {
-	return &FakeAwsDatasyncLocationEfses{c}
+func (c *FakeAwsV1alpha1) DatasyncLocationEfses() v1alpha1.DatasyncLocationEfsInterface {
+	return &FakeDatasyncLocationEfses{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDatasyncLocationNfses() v1alpha1.AwsDatasyncLocationNfsInterface {
-	return &FakeAwsDatasyncLocationNfses{c}
+func (c *FakeAwsV1alpha1) DatasyncLocationNfses() v1alpha1.DatasyncLocationNfsInterface {
+	return &FakeDatasyncLocationNfses{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDatasyncLocationS3s() v1alpha1.AwsDatasyncLocationS3Interface {
-	return &FakeAwsDatasyncLocationS3s{c}
+func (c *FakeAwsV1alpha1) DatasyncLocationS3s() v1alpha1.DatasyncLocationS3Interface {
+	return &FakeDatasyncLocationS3s{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDatasyncTasks() v1alpha1.AwsDatasyncTaskInterface {
-	return &FakeAwsDatasyncTasks{c}
+func (c *FakeAwsV1alpha1) DatasyncTasks() v1alpha1.DatasyncTaskInterface {
+	return &FakeDatasyncTasks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDaxClusters() v1alpha1.AwsDaxClusterInterface {
-	return &FakeAwsDaxClusters{c}
+func (c *FakeAwsV1alpha1) DaxClusters() v1alpha1.DaxClusterInterface {
+	return &FakeDaxClusters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDaxParameterGroups() v1alpha1.AwsDaxParameterGroupInterface {
-	return &FakeAwsDaxParameterGroups{c}
+func (c *FakeAwsV1alpha1) DaxParameterGroups() v1alpha1.DaxParameterGroupInterface {
+	return &FakeDaxParameterGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDaxSubnetGroups() v1alpha1.AwsDaxSubnetGroupInterface {
-	return &FakeAwsDaxSubnetGroups{c}
+func (c *FakeAwsV1alpha1) DaxSubnetGroups() v1alpha1.DaxSubnetGroupInterface {
+	return &FakeDaxSubnetGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDbClusterSnapshots() v1alpha1.AwsDbClusterSnapshotInterface {
-	return &FakeAwsDbClusterSnapshots{c}
+func (c *FakeAwsV1alpha1) DbClusterSnapshots() v1alpha1.DbClusterSnapshotInterface {
+	return &FakeDbClusterSnapshots{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDbEventSubscriptions() v1alpha1.AwsDbEventSubscriptionInterface {
-	return &FakeAwsDbEventSubscriptions{c}
+func (c *FakeAwsV1alpha1) DbEventSubscriptions() v1alpha1.DbEventSubscriptionInterface {
+	return &FakeDbEventSubscriptions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDbInstances() v1alpha1.AwsDbInstanceInterface {
-	return &FakeAwsDbInstances{c}
+func (c *FakeAwsV1alpha1) DbInstances() v1alpha1.DbInstanceInterface {
+	return &FakeDbInstances{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDbInstanceRoleAssociations() v1alpha1.AwsDbInstanceRoleAssociationInterface {
-	return &FakeAwsDbInstanceRoleAssociations{c}
+func (c *FakeAwsV1alpha1) DbInstanceRoleAssociations() v1alpha1.DbInstanceRoleAssociationInterface {
+	return &FakeDbInstanceRoleAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDbOptionGroups() v1alpha1.AwsDbOptionGroupInterface {
-	return &FakeAwsDbOptionGroups{c}
+func (c *FakeAwsV1alpha1) DbOptionGroups() v1alpha1.DbOptionGroupInterface {
+	return &FakeDbOptionGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDbParameterGroups() v1alpha1.AwsDbParameterGroupInterface {
-	return &FakeAwsDbParameterGroups{c}
+func (c *FakeAwsV1alpha1) DbParameterGroups() v1alpha1.DbParameterGroupInterface {
+	return &FakeDbParameterGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDbSecurityGroups() v1alpha1.AwsDbSecurityGroupInterface {
-	return &FakeAwsDbSecurityGroups{c}
+func (c *FakeAwsV1alpha1) DbSecurityGroups() v1alpha1.DbSecurityGroupInterface {
+	return &FakeDbSecurityGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDbSnapshots() v1alpha1.AwsDbSnapshotInterface {
-	return &FakeAwsDbSnapshots{c}
+func (c *FakeAwsV1alpha1) DbSnapshots() v1alpha1.DbSnapshotInterface {
+	return &FakeDbSnapshots{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDbSubnetGroups() v1alpha1.AwsDbSubnetGroupInterface {
-	return &FakeAwsDbSubnetGroups{c}
+func (c *FakeAwsV1alpha1) DbSubnetGroups() v1alpha1.DbSubnetGroupInterface {
+	return &FakeDbSubnetGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDefaultNetworkAcls() v1alpha1.AwsDefaultNetworkAclInterface {
-	return &FakeAwsDefaultNetworkAcls{c}
+func (c *FakeAwsV1alpha1) DefaultNetworkAcls() v1alpha1.DefaultNetworkAclInterface {
+	return &FakeDefaultNetworkAcls{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDefaultRouteTables() v1alpha1.AwsDefaultRouteTableInterface {
-	return &FakeAwsDefaultRouteTables{c}
+func (c *FakeAwsV1alpha1) DefaultRouteTables() v1alpha1.DefaultRouteTableInterface {
+	return &FakeDefaultRouteTables{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDefaultSecurityGroups() v1alpha1.AwsDefaultSecurityGroupInterface {
-	return &FakeAwsDefaultSecurityGroups{c}
+func (c *FakeAwsV1alpha1) DefaultSecurityGroups() v1alpha1.DefaultSecurityGroupInterface {
+	return &FakeDefaultSecurityGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDefaultSubnets() v1alpha1.AwsDefaultSubnetInterface {
-	return &FakeAwsDefaultSubnets{c}
+func (c *FakeAwsV1alpha1) DefaultSubnets() v1alpha1.DefaultSubnetInterface {
+	return &FakeDefaultSubnets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDefaultVpcs() v1alpha1.AwsDefaultVpcInterface {
-	return &FakeAwsDefaultVpcs{c}
+func (c *FakeAwsV1alpha1) DefaultVpcs() v1alpha1.DefaultVpcInterface {
+	return &FakeDefaultVpcs{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDefaultVpcDhcpOptionses() v1alpha1.AwsDefaultVpcDhcpOptionsInterface {
-	return &FakeAwsDefaultVpcDhcpOptionses{c}
+func (c *FakeAwsV1alpha1) DefaultVpcDhcpOptionses() v1alpha1.DefaultVpcDhcpOptionsInterface {
+	return &FakeDefaultVpcDhcpOptionses{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDevicefarmProjects() v1alpha1.AwsDevicefarmProjectInterface {
-	return &FakeAwsDevicefarmProjects{c}
+func (c *FakeAwsV1alpha1) DevicefarmProjects() v1alpha1.DevicefarmProjectInterface {
+	return &FakeDevicefarmProjects{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDirectoryServiceConditionalForwarders() v1alpha1.AwsDirectoryServiceConditionalForwarderInterface {
-	return &FakeAwsDirectoryServiceConditionalForwarders{c}
+func (c *FakeAwsV1alpha1) DirectoryServiceConditionalForwarders() v1alpha1.DirectoryServiceConditionalForwarderInterface {
+	return &FakeDirectoryServiceConditionalForwarders{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDirectoryServiceDirectories() v1alpha1.AwsDirectoryServiceDirectoryInterface {
-	return &FakeAwsDirectoryServiceDirectories{c}
+func (c *FakeAwsV1alpha1) DirectoryServiceDirectories() v1alpha1.DirectoryServiceDirectoryInterface {
+	return &FakeDirectoryServiceDirectories{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDirectoryServiceLogSubscriptions() v1alpha1.AwsDirectoryServiceLogSubscriptionInterface {
-	return &FakeAwsDirectoryServiceLogSubscriptions{c}
+func (c *FakeAwsV1alpha1) DirectoryServiceLogSubscriptions() v1alpha1.DirectoryServiceLogSubscriptionInterface {
+	return &FakeDirectoryServiceLogSubscriptions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDlmLifecyclePolicies() v1alpha1.AwsDlmLifecyclePolicyInterface {
-	return &FakeAwsDlmLifecyclePolicies{c}
+func (c *FakeAwsV1alpha1) DlmLifecyclePolicies() v1alpha1.DlmLifecyclePolicyInterface {
+	return &FakeDlmLifecyclePolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDmsCertificates() v1alpha1.AwsDmsCertificateInterface {
-	return &FakeAwsDmsCertificates{c}
+func (c *FakeAwsV1alpha1) DmsCertificates() v1alpha1.DmsCertificateInterface {
+	return &FakeDmsCertificates{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDmsEndpoints() v1alpha1.AwsDmsEndpointInterface {
-	return &FakeAwsDmsEndpoints{c}
+func (c *FakeAwsV1alpha1) DmsEndpoints() v1alpha1.DmsEndpointInterface {
+	return &FakeDmsEndpoints{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDmsReplicationInstances() v1alpha1.AwsDmsReplicationInstanceInterface {
-	return &FakeAwsDmsReplicationInstances{c}
+func (c *FakeAwsV1alpha1) DmsReplicationInstances() v1alpha1.DmsReplicationInstanceInterface {
+	return &FakeDmsReplicationInstances{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDmsReplicationSubnetGroups() v1alpha1.AwsDmsReplicationSubnetGroupInterface {
-	return &FakeAwsDmsReplicationSubnetGroups{c}
+func (c *FakeAwsV1alpha1) DmsReplicationSubnetGroups() v1alpha1.DmsReplicationSubnetGroupInterface {
+	return &FakeDmsReplicationSubnetGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDmsReplicationTasks() v1alpha1.AwsDmsReplicationTaskInterface {
-	return &FakeAwsDmsReplicationTasks{c}
+func (c *FakeAwsV1alpha1) DmsReplicationTasks() v1alpha1.DmsReplicationTaskInterface {
+	return &FakeDmsReplicationTasks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDocdbClusters() v1alpha1.AwsDocdbClusterInterface {
-	return &FakeAwsDocdbClusters{c}
+func (c *FakeAwsV1alpha1) DocdbClusters() v1alpha1.DocdbClusterInterface {
+	return &FakeDocdbClusters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDocdbClusterInstances() v1alpha1.AwsDocdbClusterInstanceInterface {
-	return &FakeAwsDocdbClusterInstances{c}
+func (c *FakeAwsV1alpha1) DocdbClusterInstances() v1alpha1.DocdbClusterInstanceInterface {
+	return &FakeDocdbClusterInstances{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDocdbClusterParameterGroups() v1alpha1.AwsDocdbClusterParameterGroupInterface {
-	return &FakeAwsDocdbClusterParameterGroups{c}
+func (c *FakeAwsV1alpha1) DocdbClusterParameterGroups() v1alpha1.DocdbClusterParameterGroupInterface {
+	return &FakeDocdbClusterParameterGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDocdbClusterSnapshots() v1alpha1.AwsDocdbClusterSnapshotInterface {
-	return &FakeAwsDocdbClusterSnapshots{c}
+func (c *FakeAwsV1alpha1) DocdbClusterSnapshots() v1alpha1.DocdbClusterSnapshotInterface {
+	return &FakeDocdbClusterSnapshots{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDocdbSubnetGroups() v1alpha1.AwsDocdbSubnetGroupInterface {
-	return &FakeAwsDocdbSubnetGroups{c}
+func (c *FakeAwsV1alpha1) DocdbSubnetGroups() v1alpha1.DocdbSubnetGroupInterface {
+	return &FakeDocdbSubnetGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxBgpPeers() v1alpha1.AwsDxBgpPeerInterface {
-	return &FakeAwsDxBgpPeers{c}
+func (c *FakeAwsV1alpha1) DxBgpPeers() v1alpha1.DxBgpPeerInterface {
+	return &FakeDxBgpPeers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxConnections() v1alpha1.AwsDxConnectionInterface {
-	return &FakeAwsDxConnections{c}
+func (c *FakeAwsV1alpha1) DxConnections() v1alpha1.DxConnectionInterface {
+	return &FakeDxConnections{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxConnectionAssociations() v1alpha1.AwsDxConnectionAssociationInterface {
-	return &FakeAwsDxConnectionAssociations{c}
+func (c *FakeAwsV1alpha1) DxConnectionAssociations() v1alpha1.DxConnectionAssociationInterface {
+	return &FakeDxConnectionAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxGateways() v1alpha1.AwsDxGatewayInterface {
-	return &FakeAwsDxGateways{c}
+func (c *FakeAwsV1alpha1) DxGateways() v1alpha1.DxGatewayInterface {
+	return &FakeDxGateways{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxGatewayAssociations() v1alpha1.AwsDxGatewayAssociationInterface {
-	return &FakeAwsDxGatewayAssociations{c}
+func (c *FakeAwsV1alpha1) DxGatewayAssociations() v1alpha1.DxGatewayAssociationInterface {
+	return &FakeDxGatewayAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxGatewayAssociationProposals() v1alpha1.AwsDxGatewayAssociationProposalInterface {
-	return &FakeAwsDxGatewayAssociationProposals{c}
+func (c *FakeAwsV1alpha1) DxGatewayAssociationProposals() v1alpha1.DxGatewayAssociationProposalInterface {
+	return &FakeDxGatewayAssociationProposals{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxHostedPrivateVirtualInterfaces() v1alpha1.AwsDxHostedPrivateVirtualInterfaceInterface {
-	return &FakeAwsDxHostedPrivateVirtualInterfaces{c}
+func (c *FakeAwsV1alpha1) DxHostedPrivateVirtualInterfaces() v1alpha1.DxHostedPrivateVirtualInterfaceInterface {
+	return &FakeDxHostedPrivateVirtualInterfaces{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxHostedPrivateVirtualInterfaceAccepters() v1alpha1.AwsDxHostedPrivateVirtualInterfaceAccepterInterface {
-	return &FakeAwsDxHostedPrivateVirtualInterfaceAccepters{c}
+func (c *FakeAwsV1alpha1) DxHostedPrivateVirtualInterfaceAccepters() v1alpha1.DxHostedPrivateVirtualInterfaceAccepterInterface {
+	return &FakeDxHostedPrivateVirtualInterfaceAccepters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxHostedPublicVirtualInterfaces() v1alpha1.AwsDxHostedPublicVirtualInterfaceInterface {
-	return &FakeAwsDxHostedPublicVirtualInterfaces{c}
+func (c *FakeAwsV1alpha1) DxHostedPublicVirtualInterfaces() v1alpha1.DxHostedPublicVirtualInterfaceInterface {
+	return &FakeDxHostedPublicVirtualInterfaces{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxHostedPublicVirtualInterfaceAccepters() v1alpha1.AwsDxHostedPublicVirtualInterfaceAccepterInterface {
-	return &FakeAwsDxHostedPublicVirtualInterfaceAccepters{c}
+func (c *FakeAwsV1alpha1) DxHostedPublicVirtualInterfaceAccepters() v1alpha1.DxHostedPublicVirtualInterfaceAccepterInterface {
+	return &FakeDxHostedPublicVirtualInterfaceAccepters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxLags() v1alpha1.AwsDxLagInterface {
-	return &FakeAwsDxLags{c}
+func (c *FakeAwsV1alpha1) DxLags() v1alpha1.DxLagInterface {
+	return &FakeDxLags{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxPrivateVirtualInterfaces() v1alpha1.AwsDxPrivateVirtualInterfaceInterface {
-	return &FakeAwsDxPrivateVirtualInterfaces{c}
+func (c *FakeAwsV1alpha1) DxPrivateVirtualInterfaces() v1alpha1.DxPrivateVirtualInterfaceInterface {
+	return &FakeDxPrivateVirtualInterfaces{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDxPublicVirtualInterfaces() v1alpha1.AwsDxPublicVirtualInterfaceInterface {
-	return &FakeAwsDxPublicVirtualInterfaces{c}
+func (c *FakeAwsV1alpha1) DxPublicVirtualInterfaces() v1alpha1.DxPublicVirtualInterfaceInterface {
+	return &FakeDxPublicVirtualInterfaces{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDynamodbGlobalTables() v1alpha1.AwsDynamodbGlobalTableInterface {
-	return &FakeAwsDynamodbGlobalTables{c}
+func (c *FakeAwsV1alpha1) DynamodbGlobalTables() v1alpha1.DynamodbGlobalTableInterface {
+	return &FakeDynamodbGlobalTables{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDynamodbTables() v1alpha1.AwsDynamodbTableInterface {
-	return &FakeAwsDynamodbTables{c}
+func (c *FakeAwsV1alpha1) DynamodbTables() v1alpha1.DynamodbTableInterface {
+	return &FakeDynamodbTables{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsDynamodbTableItems() v1alpha1.AwsDynamodbTableItemInterface {
-	return &FakeAwsDynamodbTableItems{c}
+func (c *FakeAwsV1alpha1) DynamodbTableItems() v1alpha1.DynamodbTableItemInterface {
+	return &FakeDynamodbTableItems{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEbsDefaultKmsKeys() v1alpha1.AwsEbsDefaultKmsKeyInterface {
-	return &FakeAwsEbsDefaultKmsKeys{c}
+func (c *FakeAwsV1alpha1) EbsDefaultKmsKeys() v1alpha1.EbsDefaultKmsKeyInterface {
+	return &FakeEbsDefaultKmsKeys{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEbsEncryptionByDefaults() v1alpha1.AwsEbsEncryptionByDefaultInterface {
-	return &FakeAwsEbsEncryptionByDefaults{c}
+func (c *FakeAwsV1alpha1) EbsEncryptionByDefaults() v1alpha1.EbsEncryptionByDefaultInterface {
+	return &FakeEbsEncryptionByDefaults{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEbsSnapshots() v1alpha1.AwsEbsSnapshotInterface {
-	return &FakeAwsEbsSnapshots{c}
+func (c *FakeAwsV1alpha1) EbsSnapshots() v1alpha1.EbsSnapshotInterface {
+	return &FakeEbsSnapshots{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEbsSnapshotCopies() v1alpha1.AwsEbsSnapshotCopyInterface {
-	return &FakeAwsEbsSnapshotCopies{c}
+func (c *FakeAwsV1alpha1) EbsSnapshotCopies() v1alpha1.EbsSnapshotCopyInterface {
+	return &FakeEbsSnapshotCopies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEbsVolumes() v1alpha1.AwsEbsVolumeInterface {
-	return &FakeAwsEbsVolumes{c}
+func (c *FakeAwsV1alpha1) EbsVolumes() v1alpha1.EbsVolumeInterface {
+	return &FakeEbsVolumes{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEc2CapacityReservations() v1alpha1.AwsEc2CapacityReservationInterface {
-	return &FakeAwsEc2CapacityReservations{c}
+func (c *FakeAwsV1alpha1) Ec2CapacityReservations() v1alpha1.Ec2CapacityReservationInterface {
+	return &FakeEc2CapacityReservations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEc2ClientVpnEndpoints() v1alpha1.AwsEc2ClientVpnEndpointInterface {
-	return &FakeAwsEc2ClientVpnEndpoints{c}
+func (c *FakeAwsV1alpha1) Ec2ClientVpnEndpoints() v1alpha1.Ec2ClientVpnEndpointInterface {
+	return &FakeEc2ClientVpnEndpoints{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEc2ClientVpnNetworkAssociations() v1alpha1.AwsEc2ClientVpnNetworkAssociationInterface {
-	return &FakeAwsEc2ClientVpnNetworkAssociations{c}
+func (c *FakeAwsV1alpha1) Ec2ClientVpnNetworkAssociations() v1alpha1.Ec2ClientVpnNetworkAssociationInterface {
+	return &FakeEc2ClientVpnNetworkAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEc2Fleets() v1alpha1.AwsEc2FleetInterface {
-	return &FakeAwsEc2Fleets{c}
+func (c *FakeAwsV1alpha1) Ec2Fleets() v1alpha1.Ec2FleetInterface {
+	return &FakeEc2Fleets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEc2TransitGateways() v1alpha1.AwsEc2TransitGatewayInterface {
-	return &FakeAwsEc2TransitGateways{c}
+func (c *FakeAwsV1alpha1) Ec2TransitGateways() v1alpha1.Ec2TransitGatewayInterface {
+	return &FakeEc2TransitGateways{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEc2TransitGatewayRoutes() v1alpha1.AwsEc2TransitGatewayRouteInterface {
-	return &FakeAwsEc2TransitGatewayRoutes{c}
+func (c *FakeAwsV1alpha1) Ec2TransitGatewayRoutes() v1alpha1.Ec2TransitGatewayRouteInterface {
+	return &FakeEc2TransitGatewayRoutes{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEc2TransitGatewayRouteTables() v1alpha1.AwsEc2TransitGatewayRouteTableInterface {
-	return &FakeAwsEc2TransitGatewayRouteTables{c}
+func (c *FakeAwsV1alpha1) Ec2TransitGatewayRouteTables() v1alpha1.Ec2TransitGatewayRouteTableInterface {
+	return &FakeEc2TransitGatewayRouteTables{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEc2TransitGatewayRouteTableAssociations() v1alpha1.AwsEc2TransitGatewayRouteTableAssociationInterface {
-	return &FakeAwsEc2TransitGatewayRouteTableAssociations{c}
+func (c *FakeAwsV1alpha1) Ec2TransitGatewayRouteTableAssociations() v1alpha1.Ec2TransitGatewayRouteTableAssociationInterface {
+	return &FakeEc2TransitGatewayRouteTableAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEc2TransitGatewayRouteTablePropagations() v1alpha1.AwsEc2TransitGatewayRouteTablePropagationInterface {
-	return &FakeAwsEc2TransitGatewayRouteTablePropagations{c}
+func (c *FakeAwsV1alpha1) Ec2TransitGatewayRouteTablePropagations() v1alpha1.Ec2TransitGatewayRouteTablePropagationInterface {
+	return &FakeEc2TransitGatewayRouteTablePropagations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEc2TransitGatewayVpcAttachments() v1alpha1.AwsEc2TransitGatewayVpcAttachmentInterface {
-	return &FakeAwsEc2TransitGatewayVpcAttachments{c}
+func (c *FakeAwsV1alpha1) Ec2TransitGatewayVpcAttachments() v1alpha1.Ec2TransitGatewayVpcAttachmentInterface {
+	return &FakeEc2TransitGatewayVpcAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEc2TransitGatewayVpcAttachmentAccepters() v1alpha1.AwsEc2TransitGatewayVpcAttachmentAccepterInterface {
-	return &FakeAwsEc2TransitGatewayVpcAttachmentAccepters{c}
+func (c *FakeAwsV1alpha1) Ec2TransitGatewayVpcAttachmentAccepters() v1alpha1.Ec2TransitGatewayVpcAttachmentAccepterInterface {
+	return &FakeEc2TransitGatewayVpcAttachmentAccepters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEcrLifecyclePolicies() v1alpha1.AwsEcrLifecyclePolicyInterface {
-	return &FakeAwsEcrLifecyclePolicies{c}
+func (c *FakeAwsV1alpha1) EcrLifecyclePolicies() v1alpha1.EcrLifecyclePolicyInterface {
+	return &FakeEcrLifecyclePolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEcrRepositories() v1alpha1.AwsEcrRepositoryInterface {
-	return &FakeAwsEcrRepositories{c}
+func (c *FakeAwsV1alpha1) EcrRepositories() v1alpha1.EcrRepositoryInterface {
+	return &FakeEcrRepositories{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEcrRepositoryPolicies() v1alpha1.AwsEcrRepositoryPolicyInterface {
-	return &FakeAwsEcrRepositoryPolicies{c}
+func (c *FakeAwsV1alpha1) EcrRepositoryPolicies() v1alpha1.EcrRepositoryPolicyInterface {
+	return &FakeEcrRepositoryPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEcsClusters() v1alpha1.AwsEcsClusterInterface {
-	return &FakeAwsEcsClusters{c}
+func (c *FakeAwsV1alpha1) EcsClusters() v1alpha1.EcsClusterInterface {
+	return &FakeEcsClusters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEcsServices() v1alpha1.AwsEcsServiceInterface {
-	return &FakeAwsEcsServices{c}
+func (c *FakeAwsV1alpha1) EcsServices() v1alpha1.EcsServiceInterface {
+	return &FakeEcsServices{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEcsTaskDefinitions() v1alpha1.AwsEcsTaskDefinitionInterface {
-	return &FakeAwsEcsTaskDefinitions{c}
+func (c *FakeAwsV1alpha1) EcsTaskDefinitions() v1alpha1.EcsTaskDefinitionInterface {
+	return &FakeEcsTaskDefinitions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEfsFileSystems() v1alpha1.AwsEfsFileSystemInterface {
-	return &FakeAwsEfsFileSystems{c}
+func (c *FakeAwsV1alpha1) EfsFileSystems() v1alpha1.EfsFileSystemInterface {
+	return &FakeEfsFileSystems{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEfsMountTargets() v1alpha1.AwsEfsMountTargetInterface {
-	return &FakeAwsEfsMountTargets{c}
+func (c *FakeAwsV1alpha1) EfsMountTargets() v1alpha1.EfsMountTargetInterface {
+	return &FakeEfsMountTargets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEgressOnlyInternetGateways() v1alpha1.AwsEgressOnlyInternetGatewayInterface {
-	return &FakeAwsEgressOnlyInternetGateways{c}
+func (c *FakeAwsV1alpha1) EgressOnlyInternetGateways() v1alpha1.EgressOnlyInternetGatewayInterface {
+	return &FakeEgressOnlyInternetGateways{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEips() v1alpha1.AwsEipInterface {
-	return &FakeAwsEips{c}
+func (c *FakeAwsV1alpha1) Eips() v1alpha1.EipInterface {
+	return &FakeEips{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEipAssociations() v1alpha1.AwsEipAssociationInterface {
-	return &FakeAwsEipAssociations{c}
+func (c *FakeAwsV1alpha1) EipAssociations() v1alpha1.EipAssociationInterface {
+	return &FakeEipAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEksClusters() v1alpha1.AwsEksClusterInterface {
-	return &FakeAwsEksClusters{c}
+func (c *FakeAwsV1alpha1) EksClusters() v1alpha1.EksClusterInterface {
+	return &FakeEksClusters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElasticBeanstalkApplications() v1alpha1.AwsElasticBeanstalkApplicationInterface {
-	return &FakeAwsElasticBeanstalkApplications{c}
+func (c *FakeAwsV1alpha1) ElasticBeanstalkApplications() v1alpha1.ElasticBeanstalkApplicationInterface {
+	return &FakeElasticBeanstalkApplications{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElasticBeanstalkApplicationVersions() v1alpha1.AwsElasticBeanstalkApplicationVersionInterface {
-	return &FakeAwsElasticBeanstalkApplicationVersions{c}
+func (c *FakeAwsV1alpha1) ElasticBeanstalkApplicationVersions() v1alpha1.ElasticBeanstalkApplicationVersionInterface {
+	return &FakeElasticBeanstalkApplicationVersions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElasticBeanstalkConfigurationTemplates() v1alpha1.AwsElasticBeanstalkConfigurationTemplateInterface {
-	return &FakeAwsElasticBeanstalkConfigurationTemplates{c}
+func (c *FakeAwsV1alpha1) ElasticBeanstalkConfigurationTemplates() v1alpha1.ElasticBeanstalkConfigurationTemplateInterface {
+	return &FakeElasticBeanstalkConfigurationTemplates{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElasticBeanstalkEnvironments() v1alpha1.AwsElasticBeanstalkEnvironmentInterface {
-	return &FakeAwsElasticBeanstalkEnvironments{c}
+func (c *FakeAwsV1alpha1) ElasticBeanstalkEnvironments() v1alpha1.ElasticBeanstalkEnvironmentInterface {
+	return &FakeElasticBeanstalkEnvironments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElasticacheClusters() v1alpha1.AwsElasticacheClusterInterface {
-	return &FakeAwsElasticacheClusters{c}
+func (c *FakeAwsV1alpha1) ElasticacheClusters() v1alpha1.ElasticacheClusterInterface {
+	return &FakeElasticacheClusters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElasticacheParameterGroups() v1alpha1.AwsElasticacheParameterGroupInterface {
-	return &FakeAwsElasticacheParameterGroups{c}
+func (c *FakeAwsV1alpha1) ElasticacheParameterGroups() v1alpha1.ElasticacheParameterGroupInterface {
+	return &FakeElasticacheParameterGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElasticacheReplicationGroups() v1alpha1.AwsElasticacheReplicationGroupInterface {
-	return &FakeAwsElasticacheReplicationGroups{c}
+func (c *FakeAwsV1alpha1) ElasticacheReplicationGroups() v1alpha1.ElasticacheReplicationGroupInterface {
+	return &FakeElasticacheReplicationGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElasticacheSecurityGroups() v1alpha1.AwsElasticacheSecurityGroupInterface {
-	return &FakeAwsElasticacheSecurityGroups{c}
+func (c *FakeAwsV1alpha1) ElasticacheSecurityGroups() v1alpha1.ElasticacheSecurityGroupInterface {
+	return &FakeElasticacheSecurityGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElasticacheSubnetGroups() v1alpha1.AwsElasticacheSubnetGroupInterface {
-	return &FakeAwsElasticacheSubnetGroups{c}
+func (c *FakeAwsV1alpha1) ElasticacheSubnetGroups() v1alpha1.ElasticacheSubnetGroupInterface {
+	return &FakeElasticacheSubnetGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElasticsearchDomains() v1alpha1.AwsElasticsearchDomainInterface {
-	return &FakeAwsElasticsearchDomains{c}
+func (c *FakeAwsV1alpha1) ElasticsearchDomains() v1alpha1.ElasticsearchDomainInterface {
+	return &FakeElasticsearchDomains{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElasticsearchDomainPolicies() v1alpha1.AwsElasticsearchDomainPolicyInterface {
-	return &FakeAwsElasticsearchDomainPolicies{c}
+func (c *FakeAwsV1alpha1) ElasticsearchDomainPolicies() v1alpha1.ElasticsearchDomainPolicyInterface {
+	return &FakeElasticsearchDomainPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElastictranscoderPipelines() v1alpha1.AwsElastictranscoderPipelineInterface {
-	return &FakeAwsElastictranscoderPipelines{c}
+func (c *FakeAwsV1alpha1) ElastictranscoderPipelines() v1alpha1.ElastictranscoderPipelineInterface {
+	return &FakeElastictranscoderPipelines{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElastictranscoderPresets() v1alpha1.AwsElastictranscoderPresetInterface {
-	return &FakeAwsElastictranscoderPresets{c}
+func (c *FakeAwsV1alpha1) ElastictranscoderPresets() v1alpha1.ElastictranscoderPresetInterface {
+	return &FakeElastictranscoderPresets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElbs() v1alpha1.AwsElbInterface {
-	return &FakeAwsElbs{c}
+func (c *FakeAwsV1alpha1) Elbs() v1alpha1.ElbInterface {
+	return &FakeElbs{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsElbAttachments() v1alpha1.AwsElbAttachmentInterface {
-	return &FakeAwsElbAttachments{c}
+func (c *FakeAwsV1alpha1) ElbAttachments() v1alpha1.ElbAttachmentInterface {
+	return &FakeElbAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEmrClusters() v1alpha1.AwsEmrClusterInterface {
-	return &FakeAwsEmrClusters{c}
+func (c *FakeAwsV1alpha1) EmrClusters() v1alpha1.EmrClusterInterface {
+	return &FakeEmrClusters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEmrInstanceGroups() v1alpha1.AwsEmrInstanceGroupInterface {
-	return &FakeAwsEmrInstanceGroups{c}
+func (c *FakeAwsV1alpha1) EmrInstanceGroups() v1alpha1.EmrInstanceGroupInterface {
+	return &FakeEmrInstanceGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsEmrSecurityConfigurations() v1alpha1.AwsEmrSecurityConfigurationInterface {
-	return &FakeAwsEmrSecurityConfigurations{c}
+func (c *FakeAwsV1alpha1) EmrSecurityConfigurations() v1alpha1.EmrSecurityConfigurationInterface {
+	return &FakeEmrSecurityConfigurations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsFlowLogs() v1alpha1.AwsFlowLogInterface {
-	return &FakeAwsFlowLogs{c}
+func (c *FakeAwsV1alpha1) FlowLogs() v1alpha1.FlowLogInterface {
+	return &FakeFlowLogs{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGameliftAliases() v1alpha1.AwsGameliftAliasInterface {
-	return &FakeAwsGameliftAliases{c}
+func (c *FakeAwsV1alpha1) GameliftAliases() v1alpha1.GameliftAliasInterface {
+	return &FakeGameliftAliases{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGameliftBuilds() v1alpha1.AwsGameliftBuildInterface {
-	return &FakeAwsGameliftBuilds{c}
+func (c *FakeAwsV1alpha1) GameliftBuilds() v1alpha1.GameliftBuildInterface {
+	return &FakeGameliftBuilds{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGameliftFleets() v1alpha1.AwsGameliftFleetInterface {
-	return &FakeAwsGameliftFleets{c}
+func (c *FakeAwsV1alpha1) GameliftFleets() v1alpha1.GameliftFleetInterface {
+	return &FakeGameliftFleets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGameliftGameSessionQueues() v1alpha1.AwsGameliftGameSessionQueueInterface {
-	return &FakeAwsGameliftGameSessionQueues{c}
+func (c *FakeAwsV1alpha1) GameliftGameSessionQueues() v1alpha1.GameliftGameSessionQueueInterface {
+	return &FakeGameliftGameSessionQueues{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlacierVaults() v1alpha1.AwsGlacierVaultInterface {
-	return &FakeAwsGlacierVaults{c}
+func (c *FakeAwsV1alpha1) GlacierVaults() v1alpha1.GlacierVaultInterface {
+	return &FakeGlacierVaults{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlacierVaultLocks() v1alpha1.AwsGlacierVaultLockInterface {
-	return &FakeAwsGlacierVaultLocks{c}
+func (c *FakeAwsV1alpha1) GlacierVaultLocks() v1alpha1.GlacierVaultLockInterface {
+	return &FakeGlacierVaultLocks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlobalacceleratorAccelerators() v1alpha1.AwsGlobalacceleratorAcceleratorInterface {
-	return &FakeAwsGlobalacceleratorAccelerators{c}
+func (c *FakeAwsV1alpha1) GlobalacceleratorAccelerators() v1alpha1.GlobalacceleratorAcceleratorInterface {
+	return &FakeGlobalacceleratorAccelerators{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlobalacceleratorEndpointGroups() v1alpha1.AwsGlobalacceleratorEndpointGroupInterface {
-	return &FakeAwsGlobalacceleratorEndpointGroups{c}
+func (c *FakeAwsV1alpha1) GlobalacceleratorEndpointGroups() v1alpha1.GlobalacceleratorEndpointGroupInterface {
+	return &FakeGlobalacceleratorEndpointGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlobalacceleratorListeners() v1alpha1.AwsGlobalacceleratorListenerInterface {
-	return &FakeAwsGlobalacceleratorListeners{c}
+func (c *FakeAwsV1alpha1) GlobalacceleratorListeners() v1alpha1.GlobalacceleratorListenerInterface {
+	return &FakeGlobalacceleratorListeners{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlueCatalogDatabases() v1alpha1.AwsGlueCatalogDatabaseInterface {
-	return &FakeAwsGlueCatalogDatabases{c}
+func (c *FakeAwsV1alpha1) GlueCatalogDatabases() v1alpha1.GlueCatalogDatabaseInterface {
+	return &FakeGlueCatalogDatabases{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlueCatalogTables() v1alpha1.AwsGlueCatalogTableInterface {
-	return &FakeAwsGlueCatalogTables{c}
+func (c *FakeAwsV1alpha1) GlueCatalogTables() v1alpha1.GlueCatalogTableInterface {
+	return &FakeGlueCatalogTables{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlueClassifiers() v1alpha1.AwsGlueClassifierInterface {
-	return &FakeAwsGlueClassifiers{c}
+func (c *FakeAwsV1alpha1) GlueClassifiers() v1alpha1.GlueClassifierInterface {
+	return &FakeGlueClassifiers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlueConnections() v1alpha1.AwsGlueConnectionInterface {
-	return &FakeAwsGlueConnections{c}
+func (c *FakeAwsV1alpha1) GlueConnections() v1alpha1.GlueConnectionInterface {
+	return &FakeGlueConnections{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlueCrawlers() v1alpha1.AwsGlueCrawlerInterface {
-	return &FakeAwsGlueCrawlers{c}
+func (c *FakeAwsV1alpha1) GlueCrawlers() v1alpha1.GlueCrawlerInterface {
+	return &FakeGlueCrawlers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlueJobs() v1alpha1.AwsGlueJobInterface {
-	return &FakeAwsGlueJobs{c}
+func (c *FakeAwsV1alpha1) GlueJobs() v1alpha1.GlueJobInterface {
+	return &FakeGlueJobs{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlueSecurityConfigurations() v1alpha1.AwsGlueSecurityConfigurationInterface {
-	return &FakeAwsGlueSecurityConfigurations{c}
+func (c *FakeAwsV1alpha1) GlueSecurityConfigurations() v1alpha1.GlueSecurityConfigurationInterface {
+	return &FakeGlueSecurityConfigurations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGlueTriggers() v1alpha1.AwsGlueTriggerInterface {
-	return &FakeAwsGlueTriggers{c}
+func (c *FakeAwsV1alpha1) GlueTriggers() v1alpha1.GlueTriggerInterface {
+	return &FakeGlueTriggers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGuarddutyDetectors() v1alpha1.AwsGuarddutyDetectorInterface {
-	return &FakeAwsGuarddutyDetectors{c}
+func (c *FakeAwsV1alpha1) GuarddutyDetectors() v1alpha1.GuarddutyDetectorInterface {
+	return &FakeGuarddutyDetectors{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGuarddutyInviteAccepters() v1alpha1.AwsGuarddutyInviteAccepterInterface {
-	return &FakeAwsGuarddutyInviteAccepters{c}
+func (c *FakeAwsV1alpha1) GuarddutyInviteAccepters() v1alpha1.GuarddutyInviteAccepterInterface {
+	return &FakeGuarddutyInviteAccepters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGuarddutyIpsets() v1alpha1.AwsGuarddutyIpsetInterface {
-	return &FakeAwsGuarddutyIpsets{c}
+func (c *FakeAwsV1alpha1) GuarddutyIpsets() v1alpha1.GuarddutyIpsetInterface {
+	return &FakeGuarddutyIpsets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGuarddutyMembers() v1alpha1.AwsGuarddutyMemberInterface {
-	return &FakeAwsGuarddutyMembers{c}
+func (c *FakeAwsV1alpha1) GuarddutyMembers() v1alpha1.GuarddutyMemberInterface {
+	return &FakeGuarddutyMembers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsGuarddutyThreatintelsets() v1alpha1.AwsGuarddutyThreatintelsetInterface {
-	return &FakeAwsGuarddutyThreatintelsets{c}
+func (c *FakeAwsV1alpha1) GuarddutyThreatintelsets() v1alpha1.GuarddutyThreatintelsetInterface {
+	return &FakeGuarddutyThreatintelsets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamAccessKeys() v1alpha1.AwsIamAccessKeyInterface {
-	return &FakeAwsIamAccessKeys{c}
+func (c *FakeAwsV1alpha1) IamAccessKeys() v1alpha1.IamAccessKeyInterface {
+	return &FakeIamAccessKeys{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamAccountAliases() v1alpha1.AwsIamAccountAliasInterface {
-	return &FakeAwsIamAccountAliases{c}
+func (c *FakeAwsV1alpha1) IamAccountAliases() v1alpha1.IamAccountAliasInterface {
+	return &FakeIamAccountAliases{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamAccountPasswordPolicies() v1alpha1.AwsIamAccountPasswordPolicyInterface {
-	return &FakeAwsIamAccountPasswordPolicies{c}
+func (c *FakeAwsV1alpha1) IamAccountPasswordPolicies() v1alpha1.IamAccountPasswordPolicyInterface {
+	return &FakeIamAccountPasswordPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamGroups() v1alpha1.AwsIamGroupInterface {
-	return &FakeAwsIamGroups{c}
+func (c *FakeAwsV1alpha1) IamGroups() v1alpha1.IamGroupInterface {
+	return &FakeIamGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamGroupMemberships() v1alpha1.AwsIamGroupMembershipInterface {
-	return &FakeAwsIamGroupMemberships{c}
+func (c *FakeAwsV1alpha1) IamGroupMemberships() v1alpha1.IamGroupMembershipInterface {
+	return &FakeIamGroupMemberships{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamGroupPolicies() v1alpha1.AwsIamGroupPolicyInterface {
-	return &FakeAwsIamGroupPolicies{c}
+func (c *FakeAwsV1alpha1) IamGroupPolicies() v1alpha1.IamGroupPolicyInterface {
+	return &FakeIamGroupPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamGroupPolicyAttachments() v1alpha1.AwsIamGroupPolicyAttachmentInterface {
-	return &FakeAwsIamGroupPolicyAttachments{c}
+func (c *FakeAwsV1alpha1) IamGroupPolicyAttachments() v1alpha1.IamGroupPolicyAttachmentInterface {
+	return &FakeIamGroupPolicyAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamInstanceProfiles() v1alpha1.AwsIamInstanceProfileInterface {
-	return &FakeAwsIamInstanceProfiles{c}
+func (c *FakeAwsV1alpha1) IamInstanceProfiles() v1alpha1.IamInstanceProfileInterface {
+	return &FakeIamInstanceProfiles{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamOpenidConnectProviders() v1alpha1.AwsIamOpenidConnectProviderInterface {
-	return &FakeAwsIamOpenidConnectProviders{c}
+func (c *FakeAwsV1alpha1) IamOpenidConnectProviders() v1alpha1.IamOpenidConnectProviderInterface {
+	return &FakeIamOpenidConnectProviders{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamPolicies() v1alpha1.AwsIamPolicyInterface {
-	return &FakeAwsIamPolicies{c}
+func (c *FakeAwsV1alpha1) IamPolicies() v1alpha1.IamPolicyInterface {
+	return &FakeIamPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamPolicyAttachments() v1alpha1.AwsIamPolicyAttachmentInterface {
-	return &FakeAwsIamPolicyAttachments{c}
+func (c *FakeAwsV1alpha1) IamPolicyAttachments() v1alpha1.IamPolicyAttachmentInterface {
+	return &FakeIamPolicyAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamRoles() v1alpha1.AwsIamRoleInterface {
-	return &FakeAwsIamRoles{c}
+func (c *FakeAwsV1alpha1) IamRoles() v1alpha1.IamRoleInterface {
+	return &FakeIamRoles{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamRolePolicies() v1alpha1.AwsIamRolePolicyInterface {
-	return &FakeAwsIamRolePolicies{c}
+func (c *FakeAwsV1alpha1) IamRolePolicies() v1alpha1.IamRolePolicyInterface {
+	return &FakeIamRolePolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamRolePolicyAttachments() v1alpha1.AwsIamRolePolicyAttachmentInterface {
-	return &FakeAwsIamRolePolicyAttachments{c}
+func (c *FakeAwsV1alpha1) IamRolePolicyAttachments() v1alpha1.IamRolePolicyAttachmentInterface {
+	return &FakeIamRolePolicyAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamSamlProviders() v1alpha1.AwsIamSamlProviderInterface {
-	return &FakeAwsIamSamlProviders{c}
+func (c *FakeAwsV1alpha1) IamSamlProviders() v1alpha1.IamSamlProviderInterface {
+	return &FakeIamSamlProviders{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamServerCertificates() v1alpha1.AwsIamServerCertificateInterface {
-	return &FakeAwsIamServerCertificates{c}
+func (c *FakeAwsV1alpha1) IamServerCertificates() v1alpha1.IamServerCertificateInterface {
+	return &FakeIamServerCertificates{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamServiceLinkedRoles() v1alpha1.AwsIamServiceLinkedRoleInterface {
-	return &FakeAwsIamServiceLinkedRoles{c}
+func (c *FakeAwsV1alpha1) IamServiceLinkedRoles() v1alpha1.IamServiceLinkedRoleInterface {
+	return &FakeIamServiceLinkedRoles{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamUsers() v1alpha1.AwsIamUserInterface {
-	return &FakeAwsIamUsers{c}
+func (c *FakeAwsV1alpha1) IamUsers() v1alpha1.IamUserInterface {
+	return &FakeIamUsers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamUserGroupMemberships() v1alpha1.AwsIamUserGroupMembershipInterface {
-	return &FakeAwsIamUserGroupMemberships{c}
+func (c *FakeAwsV1alpha1) IamUserGroupMemberships() v1alpha1.IamUserGroupMembershipInterface {
+	return &FakeIamUserGroupMemberships{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamUserLoginProfiles() v1alpha1.AwsIamUserLoginProfileInterface {
-	return &FakeAwsIamUserLoginProfiles{c}
+func (c *FakeAwsV1alpha1) IamUserLoginProfiles() v1alpha1.IamUserLoginProfileInterface {
+	return &FakeIamUserLoginProfiles{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamUserPolicies() v1alpha1.AwsIamUserPolicyInterface {
-	return &FakeAwsIamUserPolicies{c}
+func (c *FakeAwsV1alpha1) IamUserPolicies() v1alpha1.IamUserPolicyInterface {
+	return &FakeIamUserPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamUserPolicyAttachments() v1alpha1.AwsIamUserPolicyAttachmentInterface {
-	return &FakeAwsIamUserPolicyAttachments{c}
+func (c *FakeAwsV1alpha1) IamUserPolicyAttachments() v1alpha1.IamUserPolicyAttachmentInterface {
+	return &FakeIamUserPolicyAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIamUserSshKeys() v1alpha1.AwsIamUserSshKeyInterface {
-	return &FakeAwsIamUserSshKeys{c}
+func (c *FakeAwsV1alpha1) IamUserSshKeys() v1alpha1.IamUserSshKeyInterface {
+	return &FakeIamUserSshKeys{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsInspectorAssessmentTargets() v1alpha1.AwsInspectorAssessmentTargetInterface {
-	return &FakeAwsInspectorAssessmentTargets{c}
+func (c *FakeAwsV1alpha1) InspectorAssessmentTargets() v1alpha1.InspectorAssessmentTargetInterface {
+	return &FakeInspectorAssessmentTargets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsInspectorAssessmentTemplates() v1alpha1.AwsInspectorAssessmentTemplateInterface {
-	return &FakeAwsInspectorAssessmentTemplates{c}
+func (c *FakeAwsV1alpha1) InspectorAssessmentTemplates() v1alpha1.InspectorAssessmentTemplateInterface {
+	return &FakeInspectorAssessmentTemplates{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsInspectorResourceGroups() v1alpha1.AwsInspectorResourceGroupInterface {
-	return &FakeAwsInspectorResourceGroups{c}
+func (c *FakeAwsV1alpha1) InspectorResourceGroups() v1alpha1.InspectorResourceGroupInterface {
+	return &FakeInspectorResourceGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsInstances() v1alpha1.AwsInstanceInterface {
-	return &FakeAwsInstances{c}
+func (c *FakeAwsV1alpha1) Instances() v1alpha1.InstanceInterface {
+	return &FakeInstances{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsInternetGateways() v1alpha1.AwsInternetGatewayInterface {
-	return &FakeAwsInternetGateways{c}
+func (c *FakeAwsV1alpha1) InternetGateways() v1alpha1.InternetGatewayInterface {
+	return &FakeInternetGateways{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIotCertificates() v1alpha1.AwsIotCertificateInterface {
-	return &FakeAwsIotCertificates{c}
+func (c *FakeAwsV1alpha1) IotCertificates() v1alpha1.IotCertificateInterface {
+	return &FakeIotCertificates{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIotPolicies() v1alpha1.AwsIotPolicyInterface {
-	return &FakeAwsIotPolicies{c}
+func (c *FakeAwsV1alpha1) IotPolicies() v1alpha1.IotPolicyInterface {
+	return &FakeIotPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIotPolicyAttachments() v1alpha1.AwsIotPolicyAttachmentInterface {
-	return &FakeAwsIotPolicyAttachments{c}
+func (c *FakeAwsV1alpha1) IotPolicyAttachments() v1alpha1.IotPolicyAttachmentInterface {
+	return &FakeIotPolicyAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIotRoleAliases() v1alpha1.AwsIotRoleAliasInterface {
-	return &FakeAwsIotRoleAliases{c}
+func (c *FakeAwsV1alpha1) IotRoleAliases() v1alpha1.IotRoleAliasInterface {
+	return &FakeIotRoleAliases{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIotThings() v1alpha1.AwsIotThingInterface {
-	return &FakeAwsIotThings{c}
+func (c *FakeAwsV1alpha1) IotThings() v1alpha1.IotThingInterface {
+	return &FakeIotThings{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIotThingPrincipalAttachments() v1alpha1.AwsIotThingPrincipalAttachmentInterface {
-	return &FakeAwsIotThingPrincipalAttachments{c}
+func (c *FakeAwsV1alpha1) IotThingPrincipalAttachments() v1alpha1.IotThingPrincipalAttachmentInterface {
+	return &FakeIotThingPrincipalAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIotThingTypes() v1alpha1.AwsIotThingTypeInterface {
-	return &FakeAwsIotThingTypes{c}
+func (c *FakeAwsV1alpha1) IotThingTypes() v1alpha1.IotThingTypeInterface {
+	return &FakeIotThingTypes{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsIotTopicRules() v1alpha1.AwsIotTopicRuleInterface {
-	return &FakeAwsIotTopicRules{c}
+func (c *FakeAwsV1alpha1) IotTopicRules() v1alpha1.IotTopicRuleInterface {
+	return &FakeIotTopicRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsKeyPairs() v1alpha1.AwsKeyPairInterface {
-	return &FakeAwsKeyPairs{c}
+func (c *FakeAwsV1alpha1) KeyPairs() v1alpha1.KeyPairInterface {
+	return &FakeKeyPairs{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsKinesisAnalyticsApplications() v1alpha1.AwsKinesisAnalyticsApplicationInterface {
-	return &FakeAwsKinesisAnalyticsApplications{c}
+func (c *FakeAwsV1alpha1) KinesisAnalyticsApplications() v1alpha1.KinesisAnalyticsApplicationInterface {
+	return &FakeKinesisAnalyticsApplications{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsKinesisFirehoseDeliveryStreams() v1alpha1.AwsKinesisFirehoseDeliveryStreamInterface {
-	return &FakeAwsKinesisFirehoseDeliveryStreams{c}
+func (c *FakeAwsV1alpha1) KinesisFirehoseDeliveryStreams() v1alpha1.KinesisFirehoseDeliveryStreamInterface {
+	return &FakeKinesisFirehoseDeliveryStreams{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsKinesisStreams() v1alpha1.AwsKinesisStreamInterface {
-	return &FakeAwsKinesisStreams{c}
+func (c *FakeAwsV1alpha1) KinesisStreams() v1alpha1.KinesisStreamInterface {
+	return &FakeKinesisStreams{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsKmsAliases() v1alpha1.AwsKmsAliasInterface {
-	return &FakeAwsKmsAliases{c}
+func (c *FakeAwsV1alpha1) KmsAliases() v1alpha1.KmsAliasInterface {
+	return &FakeKmsAliases{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsKmsCiphertexts() v1alpha1.AwsKmsCiphertextInterface {
-	return &FakeAwsKmsCiphertexts{c}
+func (c *FakeAwsV1alpha1) KmsCiphertexts() v1alpha1.KmsCiphertextInterface {
+	return &FakeKmsCiphertexts{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsKmsExternalKeys() v1alpha1.AwsKmsExternalKeyInterface {
-	return &FakeAwsKmsExternalKeys{c}
+func (c *FakeAwsV1alpha1) KmsExternalKeys() v1alpha1.KmsExternalKeyInterface {
+	return &FakeKmsExternalKeys{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsKmsGrants() v1alpha1.AwsKmsGrantInterface {
-	return &FakeAwsKmsGrants{c}
+func (c *FakeAwsV1alpha1) KmsGrants() v1alpha1.KmsGrantInterface {
+	return &FakeKmsGrants{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsKmsKeys() v1alpha1.AwsKmsKeyInterface {
-	return &FakeAwsKmsKeys{c}
+func (c *FakeAwsV1alpha1) KmsKeys() v1alpha1.KmsKeyInterface {
+	return &FakeKmsKeys{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLambdaAliases() v1alpha1.AwsLambdaAliasInterface {
-	return &FakeAwsLambdaAliases{c}
+func (c *FakeAwsV1alpha1) LambdaAliases() v1alpha1.LambdaAliasInterface {
+	return &FakeLambdaAliases{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLambdaEventSourceMappings() v1alpha1.AwsLambdaEventSourceMappingInterface {
-	return &FakeAwsLambdaEventSourceMappings{c}
+func (c *FakeAwsV1alpha1) LambdaEventSourceMappings() v1alpha1.LambdaEventSourceMappingInterface {
+	return &FakeLambdaEventSourceMappings{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLambdaFunctions() v1alpha1.AwsLambdaFunctionInterface {
-	return &FakeAwsLambdaFunctions{c}
+func (c *FakeAwsV1alpha1) LambdaFunctions() v1alpha1.LambdaFunctionInterface {
+	return &FakeLambdaFunctions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLambdaLayerVersions() v1alpha1.AwsLambdaLayerVersionInterface {
-	return &FakeAwsLambdaLayerVersions{c}
+func (c *FakeAwsV1alpha1) LambdaLayerVersions() v1alpha1.LambdaLayerVersionInterface {
+	return &FakeLambdaLayerVersions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLambdaPermissions() v1alpha1.AwsLambdaPermissionInterface {
-	return &FakeAwsLambdaPermissions{c}
+func (c *FakeAwsV1alpha1) LambdaPermissions() v1alpha1.LambdaPermissionInterface {
+	return &FakeLambdaPermissions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLaunchConfigurations() v1alpha1.AwsLaunchConfigurationInterface {
-	return &FakeAwsLaunchConfigurations{c}
+func (c *FakeAwsV1alpha1) LaunchConfigurations() v1alpha1.LaunchConfigurationInterface {
+	return &FakeLaunchConfigurations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLaunchTemplates() v1alpha1.AwsLaunchTemplateInterface {
-	return &FakeAwsLaunchTemplates{c}
+func (c *FakeAwsV1alpha1) LaunchTemplates() v1alpha1.LaunchTemplateInterface {
+	return &FakeLaunchTemplates{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLbs() v1alpha1.AwsLbInterface {
-	return &FakeAwsLbs{c}
+func (c *FakeAwsV1alpha1) Lbs() v1alpha1.LbInterface {
+	return &FakeLbs{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLbCookieStickinessPolicies() v1alpha1.AwsLbCookieStickinessPolicyInterface {
-	return &FakeAwsLbCookieStickinessPolicies{c}
+func (c *FakeAwsV1alpha1) LbCookieStickinessPolicies() v1alpha1.LbCookieStickinessPolicyInterface {
+	return &FakeLbCookieStickinessPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLbListeners() v1alpha1.AwsLbListenerInterface {
-	return &FakeAwsLbListeners{c}
+func (c *FakeAwsV1alpha1) LbListeners() v1alpha1.LbListenerInterface {
+	return &FakeLbListeners{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLbListenerCertificates() v1alpha1.AwsLbListenerCertificateInterface {
-	return &FakeAwsLbListenerCertificates{c}
+func (c *FakeAwsV1alpha1) LbListenerCertificates() v1alpha1.LbListenerCertificateInterface {
+	return &FakeLbListenerCertificates{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLbListenerRules() v1alpha1.AwsLbListenerRuleInterface {
-	return &FakeAwsLbListenerRules{c}
+func (c *FakeAwsV1alpha1) LbListenerRules() v1alpha1.LbListenerRuleInterface {
+	return &FakeLbListenerRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLbSslNegotiationPolicies() v1alpha1.AwsLbSslNegotiationPolicyInterface {
-	return &FakeAwsLbSslNegotiationPolicies{c}
+func (c *FakeAwsV1alpha1) LbSslNegotiationPolicies() v1alpha1.LbSslNegotiationPolicyInterface {
+	return &FakeLbSslNegotiationPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLbTargetGroups() v1alpha1.AwsLbTargetGroupInterface {
-	return &FakeAwsLbTargetGroups{c}
+func (c *FakeAwsV1alpha1) LbTargetGroups() v1alpha1.LbTargetGroupInterface {
+	return &FakeLbTargetGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLbTargetGroupAttachments() v1alpha1.AwsLbTargetGroupAttachmentInterface {
-	return &FakeAwsLbTargetGroupAttachments{c}
+func (c *FakeAwsV1alpha1) LbTargetGroupAttachments() v1alpha1.LbTargetGroupAttachmentInterface {
+	return &FakeLbTargetGroupAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLicensemanagerAssociations() v1alpha1.AwsLicensemanagerAssociationInterface {
-	return &FakeAwsLicensemanagerAssociations{c}
+func (c *FakeAwsV1alpha1) LicensemanagerAssociations() v1alpha1.LicensemanagerAssociationInterface {
+	return &FakeLicensemanagerAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLicensemanagerLicenseConfigurations() v1alpha1.AwsLicensemanagerLicenseConfigurationInterface {
-	return &FakeAwsLicensemanagerLicenseConfigurations{c}
+func (c *FakeAwsV1alpha1) LicensemanagerLicenseConfigurations() v1alpha1.LicensemanagerLicenseConfigurationInterface {
+	return &FakeLicensemanagerLicenseConfigurations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLightsailDomains() v1alpha1.AwsLightsailDomainInterface {
-	return &FakeAwsLightsailDomains{c}
+func (c *FakeAwsV1alpha1) LightsailDomains() v1alpha1.LightsailDomainInterface {
+	return &FakeLightsailDomains{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLightsailInstances() v1alpha1.AwsLightsailInstanceInterface {
-	return &FakeAwsLightsailInstances{c}
+func (c *FakeAwsV1alpha1) LightsailInstances() v1alpha1.LightsailInstanceInterface {
+	return &FakeLightsailInstances{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLightsailKeyPairs() v1alpha1.AwsLightsailKeyPairInterface {
-	return &FakeAwsLightsailKeyPairs{c}
+func (c *FakeAwsV1alpha1) LightsailKeyPairs() v1alpha1.LightsailKeyPairInterface {
+	return &FakeLightsailKeyPairs{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLightsailStaticIps() v1alpha1.AwsLightsailStaticIpInterface {
-	return &FakeAwsLightsailStaticIps{c}
+func (c *FakeAwsV1alpha1) LightsailStaticIps() v1alpha1.LightsailStaticIpInterface {
+	return &FakeLightsailStaticIps{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLightsailStaticIpAttachments() v1alpha1.AwsLightsailStaticIpAttachmentInterface {
-	return &FakeAwsLightsailStaticIpAttachments{c}
+func (c *FakeAwsV1alpha1) LightsailStaticIpAttachments() v1alpha1.LightsailStaticIpAttachmentInterface {
+	return &FakeLightsailStaticIpAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLoadBalancerBackendServerPolicies() v1alpha1.AwsLoadBalancerBackendServerPolicyInterface {
-	return &FakeAwsLoadBalancerBackendServerPolicies{c}
+func (c *FakeAwsV1alpha1) LoadBalancerBackendServerPolicies() v1alpha1.LoadBalancerBackendServerPolicyInterface {
+	return &FakeLoadBalancerBackendServerPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLoadBalancerListenerPolicies() v1alpha1.AwsLoadBalancerListenerPolicyInterface {
-	return &FakeAwsLoadBalancerListenerPolicies{c}
+func (c *FakeAwsV1alpha1) LoadBalancerListenerPolicies() v1alpha1.LoadBalancerListenerPolicyInterface {
+	return &FakeLoadBalancerListenerPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsLoadBalancerPolicies() v1alpha1.AwsLoadBalancerPolicyInterface {
-	return &FakeAwsLoadBalancerPolicies{c}
+func (c *FakeAwsV1alpha1) LoadBalancerPolicies() v1alpha1.LoadBalancerPolicyInterface {
+	return &FakeLoadBalancerPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsMacieMemberAccountAssociations() v1alpha1.AwsMacieMemberAccountAssociationInterface {
-	return &FakeAwsMacieMemberAccountAssociations{c}
+func (c *FakeAwsV1alpha1) MacieMemberAccountAssociations() v1alpha1.MacieMemberAccountAssociationInterface {
+	return &FakeMacieMemberAccountAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsMacieS3BucketAssociations() v1alpha1.AwsMacieS3BucketAssociationInterface {
-	return &FakeAwsMacieS3BucketAssociations{c}
+func (c *FakeAwsV1alpha1) MacieS3BucketAssociations() v1alpha1.MacieS3BucketAssociationInterface {
+	return &FakeMacieS3BucketAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsMainRouteTableAssociations() v1alpha1.AwsMainRouteTableAssociationInterface {
-	return &FakeAwsMainRouteTableAssociations{c}
+func (c *FakeAwsV1alpha1) MainRouteTableAssociations() v1alpha1.MainRouteTableAssociationInterface {
+	return &FakeMainRouteTableAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsMediaPackageChannels() v1alpha1.AwsMediaPackageChannelInterface {
-	return &FakeAwsMediaPackageChannels{c}
+func (c *FakeAwsV1alpha1) MediaPackageChannels() v1alpha1.MediaPackageChannelInterface {
+	return &FakeMediaPackageChannels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsMediaStoreContainers() v1alpha1.AwsMediaStoreContainerInterface {
-	return &FakeAwsMediaStoreContainers{c}
+func (c *FakeAwsV1alpha1) MediaStoreContainers() v1alpha1.MediaStoreContainerInterface {
+	return &FakeMediaStoreContainers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsMediaStoreContainerPolicies() v1alpha1.AwsMediaStoreContainerPolicyInterface {
-	return &FakeAwsMediaStoreContainerPolicies{c}
+func (c *FakeAwsV1alpha1) MediaStoreContainerPolicies() v1alpha1.MediaStoreContainerPolicyInterface {
+	return &FakeMediaStoreContainerPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsMqBrokers() v1alpha1.AwsMqBrokerInterface {
-	return &FakeAwsMqBrokers{c}
+func (c *FakeAwsV1alpha1) MqBrokers() v1alpha1.MqBrokerInterface {
+	return &FakeMqBrokers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsMqConfigurations() v1alpha1.AwsMqConfigurationInterface {
-	return &FakeAwsMqConfigurations{c}
+func (c *FakeAwsV1alpha1) MqConfigurations() v1alpha1.MqConfigurationInterface {
+	return &FakeMqConfigurations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsMskClusters() v1alpha1.AwsMskClusterInterface {
-	return &FakeAwsMskClusters{c}
+func (c *FakeAwsV1alpha1) MskClusters() v1alpha1.MskClusterInterface {
+	return &FakeMskClusters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsMskConfigurations() v1alpha1.AwsMskConfigurationInterface {
-	return &FakeAwsMskConfigurations{c}
+func (c *FakeAwsV1alpha1) MskConfigurations() v1alpha1.MskConfigurationInterface {
+	return &FakeMskConfigurations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNatGateways() v1alpha1.AwsNatGatewayInterface {
-	return &FakeAwsNatGateways{c}
+func (c *FakeAwsV1alpha1) NatGateways() v1alpha1.NatGatewayInterface {
+	return &FakeNatGateways{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNeptuneClusters() v1alpha1.AwsNeptuneClusterInterface {
-	return &FakeAwsNeptuneClusters{c}
+func (c *FakeAwsV1alpha1) NeptuneClusters() v1alpha1.NeptuneClusterInterface {
+	return &FakeNeptuneClusters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNeptuneClusterInstances() v1alpha1.AwsNeptuneClusterInstanceInterface {
-	return &FakeAwsNeptuneClusterInstances{c}
+func (c *FakeAwsV1alpha1) NeptuneClusterInstances() v1alpha1.NeptuneClusterInstanceInterface {
+	return &FakeNeptuneClusterInstances{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNeptuneClusterParameterGroups() v1alpha1.AwsNeptuneClusterParameterGroupInterface {
-	return &FakeAwsNeptuneClusterParameterGroups{c}
+func (c *FakeAwsV1alpha1) NeptuneClusterParameterGroups() v1alpha1.NeptuneClusterParameterGroupInterface {
+	return &FakeNeptuneClusterParameterGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNeptuneClusterSnapshots() v1alpha1.AwsNeptuneClusterSnapshotInterface {
-	return &FakeAwsNeptuneClusterSnapshots{c}
+func (c *FakeAwsV1alpha1) NeptuneClusterSnapshots() v1alpha1.NeptuneClusterSnapshotInterface {
+	return &FakeNeptuneClusterSnapshots{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNeptuneEventSubscriptions() v1alpha1.AwsNeptuneEventSubscriptionInterface {
-	return &FakeAwsNeptuneEventSubscriptions{c}
+func (c *FakeAwsV1alpha1) NeptuneEventSubscriptions() v1alpha1.NeptuneEventSubscriptionInterface {
+	return &FakeNeptuneEventSubscriptions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNeptuneParameterGroups() v1alpha1.AwsNeptuneParameterGroupInterface {
-	return &FakeAwsNeptuneParameterGroups{c}
+func (c *FakeAwsV1alpha1) NeptuneParameterGroups() v1alpha1.NeptuneParameterGroupInterface {
+	return &FakeNeptuneParameterGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNeptuneSubnetGroups() v1alpha1.AwsNeptuneSubnetGroupInterface {
-	return &FakeAwsNeptuneSubnetGroups{c}
+func (c *FakeAwsV1alpha1) NeptuneSubnetGroups() v1alpha1.NeptuneSubnetGroupInterface {
+	return &FakeNeptuneSubnetGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNetworkAcls() v1alpha1.AwsNetworkAclInterface {
-	return &FakeAwsNetworkAcls{c}
+func (c *FakeAwsV1alpha1) NetworkAcls() v1alpha1.NetworkAclInterface {
+	return &FakeNetworkAcls{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNetworkAclRules() v1alpha1.AwsNetworkAclRuleInterface {
-	return &FakeAwsNetworkAclRules{c}
+func (c *FakeAwsV1alpha1) NetworkAclRules() v1alpha1.NetworkAclRuleInterface {
+	return &FakeNetworkAclRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNetworkInterfaces() v1alpha1.AwsNetworkInterfaceInterface {
-	return &FakeAwsNetworkInterfaces{c}
+func (c *FakeAwsV1alpha1) NetworkInterfaces() v1alpha1.NetworkInterfaceInterface {
+	return &FakeNetworkInterfaces{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNetworkInterfaceAttachments() v1alpha1.AwsNetworkInterfaceAttachmentInterface {
-	return &FakeAwsNetworkInterfaceAttachments{c}
+func (c *FakeAwsV1alpha1) NetworkInterfaceAttachments() v1alpha1.NetworkInterfaceAttachmentInterface {
+	return &FakeNetworkInterfaceAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsNetworkInterfaceSgAttachments() v1alpha1.AwsNetworkInterfaceSgAttachmentInterface {
-	return &FakeAwsNetworkInterfaceSgAttachments{c}
+func (c *FakeAwsV1alpha1) NetworkInterfaceSgAttachments() v1alpha1.NetworkInterfaceSgAttachmentInterface {
+	return &FakeNetworkInterfaceSgAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksApplications() v1alpha1.AwsOpsworksApplicationInterface {
-	return &FakeAwsOpsworksApplications{c}
+func (c *FakeAwsV1alpha1) OpsworksApplications() v1alpha1.OpsworksApplicationInterface {
+	return &FakeOpsworksApplications{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksCustomLayers() v1alpha1.AwsOpsworksCustomLayerInterface {
-	return &FakeAwsOpsworksCustomLayers{c}
+func (c *FakeAwsV1alpha1) OpsworksCustomLayers() v1alpha1.OpsworksCustomLayerInterface {
+	return &FakeOpsworksCustomLayers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksGangliaLayers() v1alpha1.AwsOpsworksGangliaLayerInterface {
-	return &FakeAwsOpsworksGangliaLayers{c}
+func (c *FakeAwsV1alpha1) OpsworksGangliaLayers() v1alpha1.OpsworksGangliaLayerInterface {
+	return &FakeOpsworksGangliaLayers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksHaproxyLayers() v1alpha1.AwsOpsworksHaproxyLayerInterface {
-	return &FakeAwsOpsworksHaproxyLayers{c}
+func (c *FakeAwsV1alpha1) OpsworksHaproxyLayers() v1alpha1.OpsworksHaproxyLayerInterface {
+	return &FakeOpsworksHaproxyLayers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksInstances() v1alpha1.AwsOpsworksInstanceInterface {
-	return &FakeAwsOpsworksInstances{c}
+func (c *FakeAwsV1alpha1) OpsworksInstances() v1alpha1.OpsworksInstanceInterface {
+	return &FakeOpsworksInstances{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksJavaAppLayers() v1alpha1.AwsOpsworksJavaAppLayerInterface {
-	return &FakeAwsOpsworksJavaAppLayers{c}
+func (c *FakeAwsV1alpha1) OpsworksJavaAppLayers() v1alpha1.OpsworksJavaAppLayerInterface {
+	return &FakeOpsworksJavaAppLayers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksMemcachedLayers() v1alpha1.AwsOpsworksMemcachedLayerInterface {
-	return &FakeAwsOpsworksMemcachedLayers{c}
+func (c *FakeAwsV1alpha1) OpsworksMemcachedLayers() v1alpha1.OpsworksMemcachedLayerInterface {
+	return &FakeOpsworksMemcachedLayers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksMysqlLayers() v1alpha1.AwsOpsworksMysqlLayerInterface {
-	return &FakeAwsOpsworksMysqlLayers{c}
+func (c *FakeAwsV1alpha1) OpsworksMysqlLayers() v1alpha1.OpsworksMysqlLayerInterface {
+	return &FakeOpsworksMysqlLayers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksNodejsAppLayers() v1alpha1.AwsOpsworksNodejsAppLayerInterface {
-	return &FakeAwsOpsworksNodejsAppLayers{c}
+func (c *FakeAwsV1alpha1) OpsworksNodejsAppLayers() v1alpha1.OpsworksNodejsAppLayerInterface {
+	return &FakeOpsworksNodejsAppLayers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksPermissions() v1alpha1.AwsOpsworksPermissionInterface {
-	return &FakeAwsOpsworksPermissions{c}
+func (c *FakeAwsV1alpha1) OpsworksPermissions() v1alpha1.OpsworksPermissionInterface {
+	return &FakeOpsworksPermissions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksPhpAppLayers() v1alpha1.AwsOpsworksPhpAppLayerInterface {
-	return &FakeAwsOpsworksPhpAppLayers{c}
+func (c *FakeAwsV1alpha1) OpsworksPhpAppLayers() v1alpha1.OpsworksPhpAppLayerInterface {
+	return &FakeOpsworksPhpAppLayers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksRailsAppLayers() v1alpha1.AwsOpsworksRailsAppLayerInterface {
-	return &FakeAwsOpsworksRailsAppLayers{c}
+func (c *FakeAwsV1alpha1) OpsworksRailsAppLayers() v1alpha1.OpsworksRailsAppLayerInterface {
+	return &FakeOpsworksRailsAppLayers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksRdsDbInstances() v1alpha1.AwsOpsworksRdsDbInstanceInterface {
-	return &FakeAwsOpsworksRdsDbInstances{c}
+func (c *FakeAwsV1alpha1) OpsworksRdsDbInstances() v1alpha1.OpsworksRdsDbInstanceInterface {
+	return &FakeOpsworksRdsDbInstances{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksStacks() v1alpha1.AwsOpsworksStackInterface {
-	return &FakeAwsOpsworksStacks{c}
+func (c *FakeAwsV1alpha1) OpsworksStacks() v1alpha1.OpsworksStackInterface {
+	return &FakeOpsworksStacks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksStaticWebLayers() v1alpha1.AwsOpsworksStaticWebLayerInterface {
-	return &FakeAwsOpsworksStaticWebLayers{c}
+func (c *FakeAwsV1alpha1) OpsworksStaticWebLayers() v1alpha1.OpsworksStaticWebLayerInterface {
+	return &FakeOpsworksStaticWebLayers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOpsworksUserProfiles() v1alpha1.AwsOpsworksUserProfileInterface {
-	return &FakeAwsOpsworksUserProfiles{c}
+func (c *FakeAwsV1alpha1) OpsworksUserProfiles() v1alpha1.OpsworksUserProfileInterface {
+	return &FakeOpsworksUserProfiles{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOrganizationsAccounts() v1alpha1.AwsOrganizationsAccountInterface {
-	return &FakeAwsOrganizationsAccounts{c}
+func (c *FakeAwsV1alpha1) OrganizationsAccounts() v1alpha1.OrganizationsAccountInterface {
+	return &FakeOrganizationsAccounts{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOrganizationsOrganizations() v1alpha1.AwsOrganizationsOrganizationInterface {
-	return &FakeAwsOrganizationsOrganizations{c}
+func (c *FakeAwsV1alpha1) OrganizationsOrganizations() v1alpha1.OrganizationsOrganizationInterface {
+	return &FakeOrganizationsOrganizations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOrganizationsOrganizationalUnits() v1alpha1.AwsOrganizationsOrganizationalUnitInterface {
-	return &FakeAwsOrganizationsOrganizationalUnits{c}
+func (c *FakeAwsV1alpha1) OrganizationsOrganizationalUnits() v1alpha1.OrganizationsOrganizationalUnitInterface {
+	return &FakeOrganizationsOrganizationalUnits{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOrganizationsPolicies() v1alpha1.AwsOrganizationsPolicyInterface {
-	return &FakeAwsOrganizationsPolicies{c}
+func (c *FakeAwsV1alpha1) OrganizationsPolicies() v1alpha1.OrganizationsPolicyInterface {
+	return &FakeOrganizationsPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsOrganizationsPolicyAttachments() v1alpha1.AwsOrganizationsPolicyAttachmentInterface {
-	return &FakeAwsOrganizationsPolicyAttachments{c}
+func (c *FakeAwsV1alpha1) OrganizationsPolicyAttachments() v1alpha1.OrganizationsPolicyAttachmentInterface {
+	return &FakeOrganizationsPolicyAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsPinpointAdmChannels() v1alpha1.AwsPinpointAdmChannelInterface {
-	return &FakeAwsPinpointAdmChannels{c}
+func (c *FakeAwsV1alpha1) PinpointAdmChannels() v1alpha1.PinpointAdmChannelInterface {
+	return &FakePinpointAdmChannels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsPinpointApnsChannels() v1alpha1.AwsPinpointApnsChannelInterface {
-	return &FakeAwsPinpointApnsChannels{c}
+func (c *FakeAwsV1alpha1) PinpointApnsChannels() v1alpha1.PinpointApnsChannelInterface {
+	return &FakePinpointApnsChannels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsPinpointApnsSandboxChannels() v1alpha1.AwsPinpointApnsSandboxChannelInterface {
-	return &FakeAwsPinpointApnsSandboxChannels{c}
+func (c *FakeAwsV1alpha1) PinpointApnsSandboxChannels() v1alpha1.PinpointApnsSandboxChannelInterface {
+	return &FakePinpointApnsSandboxChannels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsPinpointApnsVoipChannels() v1alpha1.AwsPinpointApnsVoipChannelInterface {
-	return &FakeAwsPinpointApnsVoipChannels{c}
+func (c *FakeAwsV1alpha1) PinpointApnsVoipChannels() v1alpha1.PinpointApnsVoipChannelInterface {
+	return &FakePinpointApnsVoipChannels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsPinpointApnsVoipSandboxChannels() v1alpha1.AwsPinpointApnsVoipSandboxChannelInterface {
-	return &FakeAwsPinpointApnsVoipSandboxChannels{c}
+func (c *FakeAwsV1alpha1) PinpointApnsVoipSandboxChannels() v1alpha1.PinpointApnsVoipSandboxChannelInterface {
+	return &FakePinpointApnsVoipSandboxChannels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsPinpointApps() v1alpha1.AwsPinpointAppInterface {
-	return &FakeAwsPinpointApps{c}
+func (c *FakeAwsV1alpha1) PinpointApps() v1alpha1.PinpointAppInterface {
+	return &FakePinpointApps{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsPinpointBaiduChannels() v1alpha1.AwsPinpointBaiduChannelInterface {
-	return &FakeAwsPinpointBaiduChannels{c}
+func (c *FakeAwsV1alpha1) PinpointBaiduChannels() v1alpha1.PinpointBaiduChannelInterface {
+	return &FakePinpointBaiduChannels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsPinpointEmailChannels() v1alpha1.AwsPinpointEmailChannelInterface {
-	return &FakeAwsPinpointEmailChannels{c}
+func (c *FakeAwsV1alpha1) PinpointEmailChannels() v1alpha1.PinpointEmailChannelInterface {
+	return &FakePinpointEmailChannels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsPinpointEventStreams() v1alpha1.AwsPinpointEventStreamInterface {
-	return &FakeAwsPinpointEventStreams{c}
+func (c *FakeAwsV1alpha1) PinpointEventStreams() v1alpha1.PinpointEventStreamInterface {
+	return &FakePinpointEventStreams{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsPinpointGcmChannels() v1alpha1.AwsPinpointGcmChannelInterface {
-	return &FakeAwsPinpointGcmChannels{c}
+func (c *FakeAwsV1alpha1) PinpointGcmChannels() v1alpha1.PinpointGcmChannelInterface {
+	return &FakePinpointGcmChannels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsPinpointSmsChannels() v1alpha1.AwsPinpointSmsChannelInterface {
-	return &FakeAwsPinpointSmsChannels{c}
+func (c *FakeAwsV1alpha1) PinpointSmsChannels() v1alpha1.PinpointSmsChannelInterface {
+	return &FakePinpointSmsChannels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsPlacementGroups() v1alpha1.AwsPlacementGroupInterface {
-	return &FakeAwsPlacementGroups{c}
+func (c *FakeAwsV1alpha1) PlacementGroups() v1alpha1.PlacementGroupInterface {
+	return &FakePlacementGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsProxyProtocolPolicies() v1alpha1.AwsProxyProtocolPolicyInterface {
-	return &FakeAwsProxyProtocolPolicies{c}
+func (c *FakeAwsV1alpha1) ProxyProtocolPolicies() v1alpha1.ProxyProtocolPolicyInterface {
+	return &FakeProxyProtocolPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRamPrincipalAssociations() v1alpha1.AwsRamPrincipalAssociationInterface {
-	return &FakeAwsRamPrincipalAssociations{c}
+func (c *FakeAwsV1alpha1) RamPrincipalAssociations() v1alpha1.RamPrincipalAssociationInterface {
+	return &FakeRamPrincipalAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRamResourceAssociations() v1alpha1.AwsRamResourceAssociationInterface {
-	return &FakeAwsRamResourceAssociations{c}
+func (c *FakeAwsV1alpha1) RamResourceAssociations() v1alpha1.RamResourceAssociationInterface {
+	return &FakeRamResourceAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRamResourceShares() v1alpha1.AwsRamResourceShareInterface {
-	return &FakeAwsRamResourceShares{c}
+func (c *FakeAwsV1alpha1) RamResourceShares() v1alpha1.RamResourceShareInterface {
+	return &FakeRamResourceShares{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRdsClusters() v1alpha1.AwsRdsClusterInterface {
-	return &FakeAwsRdsClusters{c}
+func (c *FakeAwsV1alpha1) RdsClusters() v1alpha1.RdsClusterInterface {
+	return &FakeRdsClusters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRdsClusterEndpoints() v1alpha1.AwsRdsClusterEndpointInterface {
-	return &FakeAwsRdsClusterEndpoints{c}
+func (c *FakeAwsV1alpha1) RdsClusterEndpoints() v1alpha1.RdsClusterEndpointInterface {
+	return &FakeRdsClusterEndpoints{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRdsClusterInstances() v1alpha1.AwsRdsClusterInstanceInterface {
-	return &FakeAwsRdsClusterInstances{c}
+func (c *FakeAwsV1alpha1) RdsClusterInstances() v1alpha1.RdsClusterInstanceInterface {
+	return &FakeRdsClusterInstances{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRdsClusterParameterGroups() v1alpha1.AwsRdsClusterParameterGroupInterface {
-	return &FakeAwsRdsClusterParameterGroups{c}
+func (c *FakeAwsV1alpha1) RdsClusterParameterGroups() v1alpha1.RdsClusterParameterGroupInterface {
+	return &FakeRdsClusterParameterGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRdsGlobalClusters() v1alpha1.AwsRdsGlobalClusterInterface {
-	return &FakeAwsRdsGlobalClusters{c}
+func (c *FakeAwsV1alpha1) RdsGlobalClusters() v1alpha1.RdsGlobalClusterInterface {
+	return &FakeRdsGlobalClusters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRedshiftClusters() v1alpha1.AwsRedshiftClusterInterface {
-	return &FakeAwsRedshiftClusters{c}
+func (c *FakeAwsV1alpha1) RedshiftClusters() v1alpha1.RedshiftClusterInterface {
+	return &FakeRedshiftClusters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRedshiftEventSubscriptions() v1alpha1.AwsRedshiftEventSubscriptionInterface {
-	return &FakeAwsRedshiftEventSubscriptions{c}
+func (c *FakeAwsV1alpha1) RedshiftEventSubscriptions() v1alpha1.RedshiftEventSubscriptionInterface {
+	return &FakeRedshiftEventSubscriptions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRedshiftParameterGroups() v1alpha1.AwsRedshiftParameterGroupInterface {
-	return &FakeAwsRedshiftParameterGroups{c}
+func (c *FakeAwsV1alpha1) RedshiftParameterGroups() v1alpha1.RedshiftParameterGroupInterface {
+	return &FakeRedshiftParameterGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRedshiftSecurityGroups() v1alpha1.AwsRedshiftSecurityGroupInterface {
-	return &FakeAwsRedshiftSecurityGroups{c}
+func (c *FakeAwsV1alpha1) RedshiftSecurityGroups() v1alpha1.RedshiftSecurityGroupInterface {
+	return &FakeRedshiftSecurityGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRedshiftSnapshotCopyGrants() v1alpha1.AwsRedshiftSnapshotCopyGrantInterface {
-	return &FakeAwsRedshiftSnapshotCopyGrants{c}
+func (c *FakeAwsV1alpha1) RedshiftSnapshotCopyGrants() v1alpha1.RedshiftSnapshotCopyGrantInterface {
+	return &FakeRedshiftSnapshotCopyGrants{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRedshiftSubnetGroups() v1alpha1.AwsRedshiftSubnetGroupInterface {
-	return &FakeAwsRedshiftSubnetGroups{c}
+func (c *FakeAwsV1alpha1) RedshiftSubnetGroups() v1alpha1.RedshiftSubnetGroupInterface {
+	return &FakeRedshiftSubnetGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsResourcegroupsGroups() v1alpha1.AwsResourcegroupsGroupInterface {
-	return &FakeAwsResourcegroupsGroups{c}
+func (c *FakeAwsV1alpha1) ResourcegroupsGroups() v1alpha1.ResourcegroupsGroupInterface {
+	return &FakeResourcegroupsGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRoutes() v1alpha1.AwsRouteInterface {
-	return &FakeAwsRoutes{c}
+func (c *FakeAwsV1alpha1) Routes() v1alpha1.RouteInterface {
+	return &FakeRoutes{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRoute53DelegationSets() v1alpha1.AwsRoute53DelegationSetInterface {
-	return &FakeAwsRoute53DelegationSets{c}
+func (c *FakeAwsV1alpha1) Route53DelegationSets() v1alpha1.Route53DelegationSetInterface {
+	return &FakeRoute53DelegationSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRoute53HealthChecks() v1alpha1.AwsRoute53HealthCheckInterface {
-	return &FakeAwsRoute53HealthChecks{c}
+func (c *FakeAwsV1alpha1) Route53HealthChecks() v1alpha1.Route53HealthCheckInterface {
+	return &FakeRoute53HealthChecks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRoute53QueryLogs() v1alpha1.AwsRoute53QueryLogInterface {
-	return &FakeAwsRoute53QueryLogs{c}
+func (c *FakeAwsV1alpha1) Route53QueryLogs() v1alpha1.Route53QueryLogInterface {
+	return &FakeRoute53QueryLogs{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRoute53Records() v1alpha1.AwsRoute53RecordInterface {
-	return &FakeAwsRoute53Records{c}
+func (c *FakeAwsV1alpha1) Route53Records() v1alpha1.Route53RecordInterface {
+	return &FakeRoute53Records{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRoute53ResolverEndpoints() v1alpha1.AwsRoute53ResolverEndpointInterface {
-	return &FakeAwsRoute53ResolverEndpoints{c}
+func (c *FakeAwsV1alpha1) Route53ResolverEndpoints() v1alpha1.Route53ResolverEndpointInterface {
+	return &FakeRoute53ResolverEndpoints{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRoute53ResolverRules() v1alpha1.AwsRoute53ResolverRuleInterface {
-	return &FakeAwsRoute53ResolverRules{c}
+func (c *FakeAwsV1alpha1) Route53ResolverRules() v1alpha1.Route53ResolverRuleInterface {
+	return &FakeRoute53ResolverRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRoute53ResolverRuleAssociations() v1alpha1.AwsRoute53ResolverRuleAssociationInterface {
-	return &FakeAwsRoute53ResolverRuleAssociations{c}
+func (c *FakeAwsV1alpha1) Route53ResolverRuleAssociations() v1alpha1.Route53ResolverRuleAssociationInterface {
+	return &FakeRoute53ResolverRuleAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRoute53Zones() v1alpha1.AwsRoute53ZoneInterface {
-	return &FakeAwsRoute53Zones{c}
+func (c *FakeAwsV1alpha1) Route53Zones() v1alpha1.Route53ZoneInterface {
+	return &FakeRoute53Zones{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRoute53ZoneAssociations() v1alpha1.AwsRoute53ZoneAssociationInterface {
-	return &FakeAwsRoute53ZoneAssociations{c}
+func (c *FakeAwsV1alpha1) Route53ZoneAssociations() v1alpha1.Route53ZoneAssociationInterface {
+	return &FakeRoute53ZoneAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRouteTables() v1alpha1.AwsRouteTableInterface {
-	return &FakeAwsRouteTables{c}
+func (c *FakeAwsV1alpha1) RouteTables() v1alpha1.RouteTableInterface {
+	return &FakeRouteTables{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsRouteTableAssociations() v1alpha1.AwsRouteTableAssociationInterface {
-	return &FakeAwsRouteTableAssociations{c}
+func (c *FakeAwsV1alpha1) RouteTableAssociations() v1alpha1.RouteTableAssociationInterface {
+	return &FakeRouteTableAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsS3AccountPublicAccessBlocks() v1alpha1.AwsS3AccountPublicAccessBlockInterface {
-	return &FakeAwsS3AccountPublicAccessBlocks{c}
+func (c *FakeAwsV1alpha1) S3AccountPublicAccessBlocks() v1alpha1.S3AccountPublicAccessBlockInterface {
+	return &FakeS3AccountPublicAccessBlocks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsS3Buckets() v1alpha1.AwsS3BucketInterface {
-	return &FakeAwsS3Buckets{c}
+func (c *FakeAwsV1alpha1) S3Buckets() v1alpha1.S3BucketInterface {
+	return &FakeS3Buckets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsS3BucketInventories() v1alpha1.AwsS3BucketInventoryInterface {
-	return &FakeAwsS3BucketInventories{c}
+func (c *FakeAwsV1alpha1) S3BucketInventories() v1alpha1.S3BucketInventoryInterface {
+	return &FakeS3BucketInventories{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsS3BucketMetrics() v1alpha1.AwsS3BucketMetricInterface {
-	return &FakeAwsS3BucketMetrics{c}
+func (c *FakeAwsV1alpha1) S3BucketMetrics() v1alpha1.S3BucketMetricInterface {
+	return &FakeS3BucketMetrics{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsS3BucketNotifications() v1alpha1.AwsS3BucketNotificationInterface {
-	return &FakeAwsS3BucketNotifications{c}
+func (c *FakeAwsV1alpha1) S3BucketNotifications() v1alpha1.S3BucketNotificationInterface {
+	return &FakeS3BucketNotifications{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsS3BucketObjects() v1alpha1.AwsS3BucketObjectInterface {
-	return &FakeAwsS3BucketObjects{c}
+func (c *FakeAwsV1alpha1) S3BucketObjects() v1alpha1.S3BucketObjectInterface {
+	return &FakeS3BucketObjects{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsS3BucketPolicies() v1alpha1.AwsS3BucketPolicyInterface {
-	return &FakeAwsS3BucketPolicies{c}
+func (c *FakeAwsV1alpha1) S3BucketPolicies() v1alpha1.S3BucketPolicyInterface {
+	return &FakeS3BucketPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsS3BucketPublicAccessBlocks() v1alpha1.AwsS3BucketPublicAccessBlockInterface {
-	return &FakeAwsS3BucketPublicAccessBlocks{c}
+func (c *FakeAwsV1alpha1) S3BucketPublicAccessBlocks() v1alpha1.S3BucketPublicAccessBlockInterface {
+	return &FakeS3BucketPublicAccessBlocks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSagemakerEndpoints() v1alpha1.AwsSagemakerEndpointInterface {
-	return &FakeAwsSagemakerEndpoints{c}
+func (c *FakeAwsV1alpha1) SagemakerEndpoints() v1alpha1.SagemakerEndpointInterface {
+	return &FakeSagemakerEndpoints{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSagemakerEndpointConfigurations() v1alpha1.AwsSagemakerEndpointConfigurationInterface {
-	return &FakeAwsSagemakerEndpointConfigurations{c}
+func (c *FakeAwsV1alpha1) SagemakerEndpointConfigurations() v1alpha1.SagemakerEndpointConfigurationInterface {
+	return &FakeSagemakerEndpointConfigurations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSagemakerModels() v1alpha1.AwsSagemakerModelInterface {
-	return &FakeAwsSagemakerModels{c}
+func (c *FakeAwsV1alpha1) SagemakerModels() v1alpha1.SagemakerModelInterface {
+	return &FakeSagemakerModels{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSagemakerNotebookInstances() v1alpha1.AwsSagemakerNotebookInstanceInterface {
-	return &FakeAwsSagemakerNotebookInstances{c}
+func (c *FakeAwsV1alpha1) SagemakerNotebookInstances() v1alpha1.SagemakerNotebookInstanceInterface {
+	return &FakeSagemakerNotebookInstances{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSagemakerNotebookInstanceLifecycleConfigurations() v1alpha1.AwsSagemakerNotebookInstanceLifecycleConfigurationInterface {
-	return &FakeAwsSagemakerNotebookInstanceLifecycleConfigurations{c}
+func (c *FakeAwsV1alpha1) SagemakerNotebookInstanceLifecycleConfigurations() v1alpha1.SagemakerNotebookInstanceLifecycleConfigurationInterface {
+	return &FakeSagemakerNotebookInstanceLifecycleConfigurations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSecretsmanagerSecrets() v1alpha1.AwsSecretsmanagerSecretInterface {
-	return &FakeAwsSecretsmanagerSecrets{c}
+func (c *FakeAwsV1alpha1) SecretsmanagerSecrets() v1alpha1.SecretsmanagerSecretInterface {
+	return &FakeSecretsmanagerSecrets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSecretsmanagerSecretVersions() v1alpha1.AwsSecretsmanagerSecretVersionInterface {
-	return &FakeAwsSecretsmanagerSecretVersions{c}
+func (c *FakeAwsV1alpha1) SecretsmanagerSecretVersions() v1alpha1.SecretsmanagerSecretVersionInterface {
+	return &FakeSecretsmanagerSecretVersions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSecurityGroups() v1alpha1.AwsSecurityGroupInterface {
-	return &FakeAwsSecurityGroups{c}
+func (c *FakeAwsV1alpha1) SecurityGroups() v1alpha1.SecurityGroupInterface {
+	return &FakeSecurityGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSecurityGroupRules() v1alpha1.AwsSecurityGroupRuleInterface {
-	return &FakeAwsSecurityGroupRules{c}
+func (c *FakeAwsV1alpha1) SecurityGroupRules() v1alpha1.SecurityGroupRuleInterface {
+	return &FakeSecurityGroupRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSecurityhubAccounts() v1alpha1.AwsSecurityhubAccountInterface {
-	return &FakeAwsSecurityhubAccounts{c}
+func (c *FakeAwsV1alpha1) SecurityhubAccounts() v1alpha1.SecurityhubAccountInterface {
+	return &FakeSecurityhubAccounts{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSecurityhubProductSubscriptions() v1alpha1.AwsSecurityhubProductSubscriptionInterface {
-	return &FakeAwsSecurityhubProductSubscriptions{c}
+func (c *FakeAwsV1alpha1) SecurityhubProductSubscriptions() v1alpha1.SecurityhubProductSubscriptionInterface {
+	return &FakeSecurityhubProductSubscriptions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSecurityhubStandardsSubscriptions() v1alpha1.AwsSecurityhubStandardsSubscriptionInterface {
-	return &FakeAwsSecurityhubStandardsSubscriptions{c}
+func (c *FakeAwsV1alpha1) SecurityhubStandardsSubscriptions() v1alpha1.SecurityhubStandardsSubscriptionInterface {
+	return &FakeSecurityhubStandardsSubscriptions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsServiceDiscoveryHttpNamespaces() v1alpha1.AwsServiceDiscoveryHttpNamespaceInterface {
-	return &FakeAwsServiceDiscoveryHttpNamespaces{c}
+func (c *FakeAwsV1alpha1) ServiceDiscoveryHttpNamespaces() v1alpha1.ServiceDiscoveryHttpNamespaceInterface {
+	return &FakeServiceDiscoveryHttpNamespaces{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsServiceDiscoveryPrivateDnsNamespaces() v1alpha1.AwsServiceDiscoveryPrivateDnsNamespaceInterface {
-	return &FakeAwsServiceDiscoveryPrivateDnsNamespaces{c}
+func (c *FakeAwsV1alpha1) ServiceDiscoveryPrivateDnsNamespaces() v1alpha1.ServiceDiscoveryPrivateDnsNamespaceInterface {
+	return &FakeServiceDiscoveryPrivateDnsNamespaces{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsServiceDiscoveryPublicDnsNamespaces() v1alpha1.AwsServiceDiscoveryPublicDnsNamespaceInterface {
-	return &FakeAwsServiceDiscoveryPublicDnsNamespaces{c}
+func (c *FakeAwsV1alpha1) ServiceDiscoveryPublicDnsNamespaces() v1alpha1.ServiceDiscoveryPublicDnsNamespaceInterface {
+	return &FakeServiceDiscoveryPublicDnsNamespaces{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsServiceDiscoveryServices() v1alpha1.AwsServiceDiscoveryServiceInterface {
-	return &FakeAwsServiceDiscoveryServices{c}
+func (c *FakeAwsV1alpha1) ServiceDiscoveryServices() v1alpha1.ServiceDiscoveryServiceInterface {
+	return &FakeServiceDiscoveryServices{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsServicecatalogPortfolios() v1alpha1.AwsServicecatalogPortfolioInterface {
-	return &FakeAwsServicecatalogPortfolios{c}
+func (c *FakeAwsV1alpha1) ServicecatalogPortfolios() v1alpha1.ServicecatalogPortfolioInterface {
+	return &FakeServicecatalogPortfolios{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesActiveReceiptRuleSets() v1alpha1.AwsSesActiveReceiptRuleSetInterface {
-	return &FakeAwsSesActiveReceiptRuleSets{c}
+func (c *FakeAwsV1alpha1) SesActiveReceiptRuleSets() v1alpha1.SesActiveReceiptRuleSetInterface {
+	return &FakeSesActiveReceiptRuleSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesConfigurationSets() v1alpha1.AwsSesConfigurationSetInterface {
-	return &FakeAwsSesConfigurationSets{c}
+func (c *FakeAwsV1alpha1) SesConfigurationSets() v1alpha1.SesConfigurationSetInterface {
+	return &FakeSesConfigurationSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesDomainDkims() v1alpha1.AwsSesDomainDkimInterface {
-	return &FakeAwsSesDomainDkims{c}
+func (c *FakeAwsV1alpha1) SesDomainDkims() v1alpha1.SesDomainDkimInterface {
+	return &FakeSesDomainDkims{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesDomainIdentities() v1alpha1.AwsSesDomainIdentityInterface {
-	return &FakeAwsSesDomainIdentities{c}
+func (c *FakeAwsV1alpha1) SesDomainIdentities() v1alpha1.SesDomainIdentityInterface {
+	return &FakeSesDomainIdentities{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesDomainIdentityVerifications() v1alpha1.AwsSesDomainIdentityVerificationInterface {
-	return &FakeAwsSesDomainIdentityVerifications{c}
+func (c *FakeAwsV1alpha1) SesDomainIdentityVerifications() v1alpha1.SesDomainIdentityVerificationInterface {
+	return &FakeSesDomainIdentityVerifications{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesDomainMailFroms() v1alpha1.AwsSesDomainMailFromInterface {
-	return &FakeAwsSesDomainMailFroms{c}
+func (c *FakeAwsV1alpha1) SesDomainMailFroms() v1alpha1.SesDomainMailFromInterface {
+	return &FakeSesDomainMailFroms{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesEmailIdentities() v1alpha1.AwsSesEmailIdentityInterface {
-	return &FakeAwsSesEmailIdentities{c}
+func (c *FakeAwsV1alpha1) SesEmailIdentities() v1alpha1.SesEmailIdentityInterface {
+	return &FakeSesEmailIdentities{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesEventDestinations() v1alpha1.AwsSesEventDestinationInterface {
-	return &FakeAwsSesEventDestinations{c}
+func (c *FakeAwsV1alpha1) SesEventDestinations() v1alpha1.SesEventDestinationInterface {
+	return &FakeSesEventDestinations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesIdentityNotificationTopics() v1alpha1.AwsSesIdentityNotificationTopicInterface {
-	return &FakeAwsSesIdentityNotificationTopics{c}
+func (c *FakeAwsV1alpha1) SesIdentityNotificationTopics() v1alpha1.SesIdentityNotificationTopicInterface {
+	return &FakeSesIdentityNotificationTopics{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesIdentityPolicies() v1alpha1.AwsSesIdentityPolicyInterface {
-	return &FakeAwsSesIdentityPolicies{c}
+func (c *FakeAwsV1alpha1) SesIdentityPolicies() v1alpha1.SesIdentityPolicyInterface {
+	return &FakeSesIdentityPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesReceiptFilters() v1alpha1.AwsSesReceiptFilterInterface {
-	return &FakeAwsSesReceiptFilters{c}
+func (c *FakeAwsV1alpha1) SesReceiptFilters() v1alpha1.SesReceiptFilterInterface {
+	return &FakeSesReceiptFilters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesReceiptRules() v1alpha1.AwsSesReceiptRuleInterface {
-	return &FakeAwsSesReceiptRules{c}
+func (c *FakeAwsV1alpha1) SesReceiptRules() v1alpha1.SesReceiptRuleInterface {
+	return &FakeSesReceiptRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesReceiptRuleSets() v1alpha1.AwsSesReceiptRuleSetInterface {
-	return &FakeAwsSesReceiptRuleSets{c}
+func (c *FakeAwsV1alpha1) SesReceiptRuleSets() v1alpha1.SesReceiptRuleSetInterface {
+	return &FakeSesReceiptRuleSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSesTemplates() v1alpha1.AwsSesTemplateInterface {
-	return &FakeAwsSesTemplates{c}
+func (c *FakeAwsV1alpha1) SesTemplates() v1alpha1.SesTemplateInterface {
+	return &FakeSesTemplates{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSfnActivities() v1alpha1.AwsSfnActivityInterface {
-	return &FakeAwsSfnActivities{c}
+func (c *FakeAwsV1alpha1) SfnActivities() v1alpha1.SfnActivityInterface {
+	return &FakeSfnActivities{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSfnStateMachines() v1alpha1.AwsSfnStateMachineInterface {
-	return &FakeAwsSfnStateMachines{c}
+func (c *FakeAwsV1alpha1) SfnStateMachines() v1alpha1.SfnStateMachineInterface {
+	return &FakeSfnStateMachines{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsShieldProtections() v1alpha1.AwsShieldProtectionInterface {
-	return &FakeAwsShieldProtections{c}
+func (c *FakeAwsV1alpha1) ShieldProtections() v1alpha1.ShieldProtectionInterface {
+	return &FakeShieldProtections{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSimpledbDomains() v1alpha1.AwsSimpledbDomainInterface {
-	return &FakeAwsSimpledbDomains{c}
+func (c *FakeAwsV1alpha1) SimpledbDomains() v1alpha1.SimpledbDomainInterface {
+	return &FakeSimpledbDomains{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSnapshotCreateVolumePermissions() v1alpha1.AwsSnapshotCreateVolumePermissionInterface {
-	return &FakeAwsSnapshotCreateVolumePermissions{c}
+func (c *FakeAwsV1alpha1) SnapshotCreateVolumePermissions() v1alpha1.SnapshotCreateVolumePermissionInterface {
+	return &FakeSnapshotCreateVolumePermissions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSnsPlatformApplications() v1alpha1.AwsSnsPlatformApplicationInterface {
-	return &FakeAwsSnsPlatformApplications{c}
+func (c *FakeAwsV1alpha1) SnsPlatformApplications() v1alpha1.SnsPlatformApplicationInterface {
+	return &FakeSnsPlatformApplications{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSnsSmsPreferenceses() v1alpha1.AwsSnsSmsPreferencesInterface {
-	return &FakeAwsSnsSmsPreferenceses{c}
+func (c *FakeAwsV1alpha1) SnsSmsPreferenceses() v1alpha1.SnsSmsPreferencesInterface {
+	return &FakeSnsSmsPreferenceses{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSnsTopics() v1alpha1.AwsSnsTopicInterface {
-	return &FakeAwsSnsTopics{c}
+func (c *FakeAwsV1alpha1) SnsTopics() v1alpha1.SnsTopicInterface {
+	return &FakeSnsTopics{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSnsTopicPolicies() v1alpha1.AwsSnsTopicPolicyInterface {
-	return &FakeAwsSnsTopicPolicies{c}
+func (c *FakeAwsV1alpha1) SnsTopicPolicies() v1alpha1.SnsTopicPolicyInterface {
+	return &FakeSnsTopicPolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSnsTopicSubscriptions() v1alpha1.AwsSnsTopicSubscriptionInterface {
-	return &FakeAwsSnsTopicSubscriptions{c}
+func (c *FakeAwsV1alpha1) SnsTopicSubscriptions() v1alpha1.SnsTopicSubscriptionInterface {
+	return &FakeSnsTopicSubscriptions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSpotDatafeedSubscriptions() v1alpha1.AwsSpotDatafeedSubscriptionInterface {
-	return &FakeAwsSpotDatafeedSubscriptions{c}
+func (c *FakeAwsV1alpha1) SpotDatafeedSubscriptions() v1alpha1.SpotDatafeedSubscriptionInterface {
+	return &FakeSpotDatafeedSubscriptions{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSpotFleetRequests() v1alpha1.AwsSpotFleetRequestInterface {
-	return &FakeAwsSpotFleetRequests{c}
+func (c *FakeAwsV1alpha1) SpotFleetRequests() v1alpha1.SpotFleetRequestInterface {
+	return &FakeSpotFleetRequests{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSpotInstanceRequests() v1alpha1.AwsSpotInstanceRequestInterface {
-	return &FakeAwsSpotInstanceRequests{c}
+func (c *FakeAwsV1alpha1) SpotInstanceRequests() v1alpha1.SpotInstanceRequestInterface {
+	return &FakeSpotInstanceRequests{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSqsQueues() v1alpha1.AwsSqsQueueInterface {
-	return &FakeAwsSqsQueues{c}
+func (c *FakeAwsV1alpha1) SqsQueues() v1alpha1.SqsQueueInterface {
+	return &FakeSqsQueues{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSqsQueuePolicies() v1alpha1.AwsSqsQueuePolicyInterface {
-	return &FakeAwsSqsQueuePolicies{c}
+func (c *FakeAwsV1alpha1) SqsQueuePolicies() v1alpha1.SqsQueuePolicyInterface {
+	return &FakeSqsQueuePolicies{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSsmActivations() v1alpha1.AwsSsmActivationInterface {
-	return &FakeAwsSsmActivations{c}
+func (c *FakeAwsV1alpha1) SsmActivations() v1alpha1.SsmActivationInterface {
+	return &FakeSsmActivations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSsmAssociations() v1alpha1.AwsSsmAssociationInterface {
-	return &FakeAwsSsmAssociations{c}
+func (c *FakeAwsV1alpha1) SsmAssociations() v1alpha1.SsmAssociationInterface {
+	return &FakeSsmAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSsmDocuments() v1alpha1.AwsSsmDocumentInterface {
-	return &FakeAwsSsmDocuments{c}
+func (c *FakeAwsV1alpha1) SsmDocuments() v1alpha1.SsmDocumentInterface {
+	return &FakeSsmDocuments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSsmMaintenanceWindows() v1alpha1.AwsSsmMaintenanceWindowInterface {
-	return &FakeAwsSsmMaintenanceWindows{c}
+func (c *FakeAwsV1alpha1) SsmMaintenanceWindows() v1alpha1.SsmMaintenanceWindowInterface {
+	return &FakeSsmMaintenanceWindows{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSsmMaintenanceWindowTargets() v1alpha1.AwsSsmMaintenanceWindowTargetInterface {
-	return &FakeAwsSsmMaintenanceWindowTargets{c}
+func (c *FakeAwsV1alpha1) SsmMaintenanceWindowTargets() v1alpha1.SsmMaintenanceWindowTargetInterface {
+	return &FakeSsmMaintenanceWindowTargets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSsmMaintenanceWindowTasks() v1alpha1.AwsSsmMaintenanceWindowTaskInterface {
-	return &FakeAwsSsmMaintenanceWindowTasks{c}
+func (c *FakeAwsV1alpha1) SsmMaintenanceWindowTasks() v1alpha1.SsmMaintenanceWindowTaskInterface {
+	return &FakeSsmMaintenanceWindowTasks{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSsmParameters() v1alpha1.AwsSsmParameterInterface {
-	return &FakeAwsSsmParameters{c}
+func (c *FakeAwsV1alpha1) SsmParameters() v1alpha1.SsmParameterInterface {
+	return &FakeSsmParameters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSsmPatchBaselines() v1alpha1.AwsSsmPatchBaselineInterface {
-	return &FakeAwsSsmPatchBaselines{c}
+func (c *FakeAwsV1alpha1) SsmPatchBaselines() v1alpha1.SsmPatchBaselineInterface {
+	return &FakeSsmPatchBaselines{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSsmPatchGroups() v1alpha1.AwsSsmPatchGroupInterface {
-	return &FakeAwsSsmPatchGroups{c}
+func (c *FakeAwsV1alpha1) SsmPatchGroups() v1alpha1.SsmPatchGroupInterface {
+	return &FakeSsmPatchGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSsmResourceDataSyncs() v1alpha1.AwsSsmResourceDataSyncInterface {
-	return &FakeAwsSsmResourceDataSyncs{c}
+func (c *FakeAwsV1alpha1) SsmResourceDataSyncs() v1alpha1.SsmResourceDataSyncInterface {
+	return &FakeSsmResourceDataSyncs{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsStoragegatewayCaches() v1alpha1.AwsStoragegatewayCacheInterface {
-	return &FakeAwsStoragegatewayCaches{c}
+func (c *FakeAwsV1alpha1) StoragegatewayCaches() v1alpha1.StoragegatewayCacheInterface {
+	return &FakeStoragegatewayCaches{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsStoragegatewayCachedIscsiVolumes() v1alpha1.AwsStoragegatewayCachedIscsiVolumeInterface {
-	return &FakeAwsStoragegatewayCachedIscsiVolumes{c}
+func (c *FakeAwsV1alpha1) StoragegatewayCachedIscsiVolumes() v1alpha1.StoragegatewayCachedIscsiVolumeInterface {
+	return &FakeStoragegatewayCachedIscsiVolumes{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsStoragegatewayGateways() v1alpha1.AwsStoragegatewayGatewayInterface {
-	return &FakeAwsStoragegatewayGateways{c}
+func (c *FakeAwsV1alpha1) StoragegatewayGateways() v1alpha1.StoragegatewayGatewayInterface {
+	return &FakeStoragegatewayGateways{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsStoragegatewayNfsFileShares() v1alpha1.AwsStoragegatewayNfsFileShareInterface {
-	return &FakeAwsStoragegatewayNfsFileShares{c}
+func (c *FakeAwsV1alpha1) StoragegatewayNfsFileShares() v1alpha1.StoragegatewayNfsFileShareInterface {
+	return &FakeStoragegatewayNfsFileShares{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsStoragegatewaySmbFileShares() v1alpha1.AwsStoragegatewaySmbFileShareInterface {
-	return &FakeAwsStoragegatewaySmbFileShares{c}
+func (c *FakeAwsV1alpha1) StoragegatewaySmbFileShares() v1alpha1.StoragegatewaySmbFileShareInterface {
+	return &FakeStoragegatewaySmbFileShares{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsStoragegatewayUploadBuffers() v1alpha1.AwsStoragegatewayUploadBufferInterface {
-	return &FakeAwsStoragegatewayUploadBuffers{c}
+func (c *FakeAwsV1alpha1) StoragegatewayUploadBuffers() v1alpha1.StoragegatewayUploadBufferInterface {
+	return &FakeStoragegatewayUploadBuffers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsStoragegatewayWorkingStorages() v1alpha1.AwsStoragegatewayWorkingStorageInterface {
-	return &FakeAwsStoragegatewayWorkingStorages{c}
+func (c *FakeAwsV1alpha1) StoragegatewayWorkingStorages() v1alpha1.StoragegatewayWorkingStorageInterface {
+	return &FakeStoragegatewayWorkingStorages{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSubnets() v1alpha1.AwsSubnetInterface {
-	return &FakeAwsSubnets{c}
+func (c *FakeAwsV1alpha1) Subnets() v1alpha1.SubnetInterface {
+	return &FakeSubnets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsSwfDomains() v1alpha1.AwsSwfDomainInterface {
-	return &FakeAwsSwfDomains{c}
+func (c *FakeAwsV1alpha1) SwfDomains() v1alpha1.SwfDomainInterface {
+	return &FakeSwfDomains{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsTransferServers() v1alpha1.AwsTransferServerInterface {
-	return &FakeAwsTransferServers{c}
+func (c *FakeAwsV1alpha1) TransferServers() v1alpha1.TransferServerInterface {
+	return &FakeTransferServers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsTransferSshKeys() v1alpha1.AwsTransferSshKeyInterface {
-	return &FakeAwsTransferSshKeys{c}
+func (c *FakeAwsV1alpha1) TransferSshKeys() v1alpha1.TransferSshKeyInterface {
+	return &FakeTransferSshKeys{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsTransferUsers() v1alpha1.AwsTransferUserInterface {
-	return &FakeAwsTransferUsers{c}
+func (c *FakeAwsV1alpha1) TransferUsers() v1alpha1.TransferUserInterface {
+	return &FakeTransferUsers{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVolumeAttachments() v1alpha1.AwsVolumeAttachmentInterface {
-	return &FakeAwsVolumeAttachments{c}
+func (c *FakeAwsV1alpha1) VolumeAttachments() v1alpha1.VolumeAttachmentInterface {
+	return &FakeVolumeAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcs() v1alpha1.AwsVpcInterface {
-	return &FakeAwsVpcs{c}
+func (c *FakeAwsV1alpha1) Vpcs() v1alpha1.VpcInterface {
+	return &FakeVpcs{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcDhcpOptionses() v1alpha1.AwsVpcDhcpOptionsInterface {
-	return &FakeAwsVpcDhcpOptionses{c}
+func (c *FakeAwsV1alpha1) VpcDhcpOptionses() v1alpha1.VpcDhcpOptionsInterface {
+	return &FakeVpcDhcpOptionses{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcDhcpOptionsAssociations() v1alpha1.AwsVpcDhcpOptionsAssociationInterface {
-	return &FakeAwsVpcDhcpOptionsAssociations{c}
+func (c *FakeAwsV1alpha1) VpcDhcpOptionsAssociations() v1alpha1.VpcDhcpOptionsAssociationInterface {
+	return &FakeVpcDhcpOptionsAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcEndpoints() v1alpha1.AwsVpcEndpointInterface {
-	return &FakeAwsVpcEndpoints{c}
+func (c *FakeAwsV1alpha1) VpcEndpoints() v1alpha1.VpcEndpointInterface {
+	return &FakeVpcEndpoints{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcEndpointConnectionNotifications() v1alpha1.AwsVpcEndpointConnectionNotificationInterface {
-	return &FakeAwsVpcEndpointConnectionNotifications{c}
+func (c *FakeAwsV1alpha1) VpcEndpointConnectionNotifications() v1alpha1.VpcEndpointConnectionNotificationInterface {
+	return &FakeVpcEndpointConnectionNotifications{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcEndpointRouteTableAssociations() v1alpha1.AwsVpcEndpointRouteTableAssociationInterface {
-	return &FakeAwsVpcEndpointRouteTableAssociations{c}
+func (c *FakeAwsV1alpha1) VpcEndpointRouteTableAssociations() v1alpha1.VpcEndpointRouteTableAssociationInterface {
+	return &FakeVpcEndpointRouteTableAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcEndpointServices() v1alpha1.AwsVpcEndpointServiceInterface {
-	return &FakeAwsVpcEndpointServices{c}
+func (c *FakeAwsV1alpha1) VpcEndpointServices() v1alpha1.VpcEndpointServiceInterface {
+	return &FakeVpcEndpointServices{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcEndpointServiceAllowedPrincipals() v1alpha1.AwsVpcEndpointServiceAllowedPrincipalInterface {
-	return &FakeAwsVpcEndpointServiceAllowedPrincipals{c}
+func (c *FakeAwsV1alpha1) VpcEndpointServiceAllowedPrincipals() v1alpha1.VpcEndpointServiceAllowedPrincipalInterface {
+	return &FakeVpcEndpointServiceAllowedPrincipals{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcEndpointSubnetAssociations() v1alpha1.AwsVpcEndpointSubnetAssociationInterface {
-	return &FakeAwsVpcEndpointSubnetAssociations{c}
+func (c *FakeAwsV1alpha1) VpcEndpointSubnetAssociations() v1alpha1.VpcEndpointSubnetAssociationInterface {
+	return &FakeVpcEndpointSubnetAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcIpv4CidrBlockAssociations() v1alpha1.AwsVpcIpv4CidrBlockAssociationInterface {
-	return &FakeAwsVpcIpv4CidrBlockAssociations{c}
+func (c *FakeAwsV1alpha1) VpcIpv4CidrBlockAssociations() v1alpha1.VpcIpv4CidrBlockAssociationInterface {
+	return &FakeVpcIpv4CidrBlockAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcPeeringConnections() v1alpha1.AwsVpcPeeringConnectionInterface {
-	return &FakeAwsVpcPeeringConnections{c}
+func (c *FakeAwsV1alpha1) VpcPeeringConnections() v1alpha1.VpcPeeringConnectionInterface {
+	return &FakeVpcPeeringConnections{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcPeeringConnectionAccepters() v1alpha1.AwsVpcPeeringConnectionAccepterInterface {
-	return &FakeAwsVpcPeeringConnectionAccepters{c}
+func (c *FakeAwsV1alpha1) VpcPeeringConnectionAccepters() v1alpha1.VpcPeeringConnectionAccepterInterface {
+	return &FakeVpcPeeringConnectionAccepters{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpcPeeringConnectionOptionses() v1alpha1.AwsVpcPeeringConnectionOptionsInterface {
-	return &FakeAwsVpcPeeringConnectionOptionses{c}
+func (c *FakeAwsV1alpha1) VpcPeeringConnectionOptionses() v1alpha1.VpcPeeringConnectionOptionsInterface {
+	return &FakeVpcPeeringConnectionOptionses{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpnConnections() v1alpha1.AwsVpnConnectionInterface {
-	return &FakeAwsVpnConnections{c}
+func (c *FakeAwsV1alpha1) VpnConnections() v1alpha1.VpnConnectionInterface {
+	return &FakeVpnConnections{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpnConnectionRoutes() v1alpha1.AwsVpnConnectionRouteInterface {
-	return &FakeAwsVpnConnectionRoutes{c}
+func (c *FakeAwsV1alpha1) VpnConnectionRoutes() v1alpha1.VpnConnectionRouteInterface {
+	return &FakeVpnConnectionRoutes{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpnGateways() v1alpha1.AwsVpnGatewayInterface {
-	return &FakeAwsVpnGateways{c}
+func (c *FakeAwsV1alpha1) VpnGateways() v1alpha1.VpnGatewayInterface {
+	return &FakeVpnGateways{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpnGatewayAttachments() v1alpha1.AwsVpnGatewayAttachmentInterface {
-	return &FakeAwsVpnGatewayAttachments{c}
+func (c *FakeAwsV1alpha1) VpnGatewayAttachments() v1alpha1.VpnGatewayAttachmentInterface {
+	return &FakeVpnGatewayAttachments{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsVpnGatewayRoutePropagations() v1alpha1.AwsVpnGatewayRoutePropagationInterface {
-	return &FakeAwsVpnGatewayRoutePropagations{c}
+func (c *FakeAwsV1alpha1) VpnGatewayRoutePropagations() v1alpha1.VpnGatewayRoutePropagationInterface {
+	return &FakeVpnGatewayRoutePropagations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafByteMatchSets() v1alpha1.AwsWafByteMatchSetInterface {
-	return &FakeAwsWafByteMatchSets{c}
+func (c *FakeAwsV1alpha1) WafByteMatchSets() v1alpha1.WafByteMatchSetInterface {
+	return &FakeWafByteMatchSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafGeoMatchSets() v1alpha1.AwsWafGeoMatchSetInterface {
-	return &FakeAwsWafGeoMatchSets{c}
+func (c *FakeAwsV1alpha1) WafGeoMatchSets() v1alpha1.WafGeoMatchSetInterface {
+	return &FakeWafGeoMatchSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafIpsets() v1alpha1.AwsWafIpsetInterface {
-	return &FakeAwsWafIpsets{c}
+func (c *FakeAwsV1alpha1) WafIpsets() v1alpha1.WafIpsetInterface {
+	return &FakeWafIpsets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafRateBasedRules() v1alpha1.AwsWafRateBasedRuleInterface {
-	return &FakeAwsWafRateBasedRules{c}
+func (c *FakeAwsV1alpha1) WafRateBasedRules() v1alpha1.WafRateBasedRuleInterface {
+	return &FakeWafRateBasedRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafRegexMatchSets() v1alpha1.AwsWafRegexMatchSetInterface {
-	return &FakeAwsWafRegexMatchSets{c}
+func (c *FakeAwsV1alpha1) WafRegexMatchSets() v1alpha1.WafRegexMatchSetInterface {
+	return &FakeWafRegexMatchSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafRegexPatternSets() v1alpha1.AwsWafRegexPatternSetInterface {
-	return &FakeAwsWafRegexPatternSets{c}
+func (c *FakeAwsV1alpha1) WafRegexPatternSets() v1alpha1.WafRegexPatternSetInterface {
+	return &FakeWafRegexPatternSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafRules() v1alpha1.AwsWafRuleInterface {
-	return &FakeAwsWafRules{c}
+func (c *FakeAwsV1alpha1) WafRules() v1alpha1.WafRuleInterface {
+	return &FakeWafRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafRuleGroups() v1alpha1.AwsWafRuleGroupInterface {
-	return &FakeAwsWafRuleGroups{c}
+func (c *FakeAwsV1alpha1) WafRuleGroups() v1alpha1.WafRuleGroupInterface {
+	return &FakeWafRuleGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafSizeConstraintSets() v1alpha1.AwsWafSizeConstraintSetInterface {
-	return &FakeAwsWafSizeConstraintSets{c}
+func (c *FakeAwsV1alpha1) WafSizeConstraintSets() v1alpha1.WafSizeConstraintSetInterface {
+	return &FakeWafSizeConstraintSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafSqlInjectionMatchSets() v1alpha1.AwsWafSqlInjectionMatchSetInterface {
-	return &FakeAwsWafSqlInjectionMatchSets{c}
+func (c *FakeAwsV1alpha1) WafSqlInjectionMatchSets() v1alpha1.WafSqlInjectionMatchSetInterface {
+	return &FakeWafSqlInjectionMatchSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafWebAcls() v1alpha1.AwsWafWebAclInterface {
-	return &FakeAwsWafWebAcls{c}
+func (c *FakeAwsV1alpha1) WafWebAcls() v1alpha1.WafWebAclInterface {
+	return &FakeWafWebAcls{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafXssMatchSets() v1alpha1.AwsWafXssMatchSetInterface {
-	return &FakeAwsWafXssMatchSets{c}
+func (c *FakeAwsV1alpha1) WafXssMatchSets() v1alpha1.WafXssMatchSetInterface {
+	return &FakeWafXssMatchSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalByteMatchSets() v1alpha1.AwsWafregionalByteMatchSetInterface {
-	return &FakeAwsWafregionalByteMatchSets{c}
+func (c *FakeAwsV1alpha1) WafregionalByteMatchSets() v1alpha1.WafregionalByteMatchSetInterface {
+	return &FakeWafregionalByteMatchSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalGeoMatchSets() v1alpha1.AwsWafregionalGeoMatchSetInterface {
-	return &FakeAwsWafregionalGeoMatchSets{c}
+func (c *FakeAwsV1alpha1) WafregionalGeoMatchSets() v1alpha1.WafregionalGeoMatchSetInterface {
+	return &FakeWafregionalGeoMatchSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalIpsets() v1alpha1.AwsWafregionalIpsetInterface {
-	return &FakeAwsWafregionalIpsets{c}
+func (c *FakeAwsV1alpha1) WafregionalIpsets() v1alpha1.WafregionalIpsetInterface {
+	return &FakeWafregionalIpsets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalRateBasedRules() v1alpha1.AwsWafregionalRateBasedRuleInterface {
-	return &FakeAwsWafregionalRateBasedRules{c}
+func (c *FakeAwsV1alpha1) WafregionalRateBasedRules() v1alpha1.WafregionalRateBasedRuleInterface {
+	return &FakeWafregionalRateBasedRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalRegexMatchSets() v1alpha1.AwsWafregionalRegexMatchSetInterface {
-	return &FakeAwsWafregionalRegexMatchSets{c}
+func (c *FakeAwsV1alpha1) WafregionalRegexMatchSets() v1alpha1.WafregionalRegexMatchSetInterface {
+	return &FakeWafregionalRegexMatchSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalRegexPatternSets() v1alpha1.AwsWafregionalRegexPatternSetInterface {
-	return &FakeAwsWafregionalRegexPatternSets{c}
+func (c *FakeAwsV1alpha1) WafregionalRegexPatternSets() v1alpha1.WafregionalRegexPatternSetInterface {
+	return &FakeWafregionalRegexPatternSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalRules() v1alpha1.AwsWafregionalRuleInterface {
-	return &FakeAwsWafregionalRules{c}
+func (c *FakeAwsV1alpha1) WafregionalRules() v1alpha1.WafregionalRuleInterface {
+	return &FakeWafregionalRules{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalRuleGroups() v1alpha1.AwsWafregionalRuleGroupInterface {
-	return &FakeAwsWafregionalRuleGroups{c}
+func (c *FakeAwsV1alpha1) WafregionalRuleGroups() v1alpha1.WafregionalRuleGroupInterface {
+	return &FakeWafregionalRuleGroups{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalSizeConstraintSets() v1alpha1.AwsWafregionalSizeConstraintSetInterface {
-	return &FakeAwsWafregionalSizeConstraintSets{c}
+func (c *FakeAwsV1alpha1) WafregionalSizeConstraintSets() v1alpha1.WafregionalSizeConstraintSetInterface {
+	return &FakeWafregionalSizeConstraintSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalSqlInjectionMatchSets() v1alpha1.AwsWafregionalSqlInjectionMatchSetInterface {
-	return &FakeAwsWafregionalSqlInjectionMatchSets{c}
+func (c *FakeAwsV1alpha1) WafregionalSqlInjectionMatchSets() v1alpha1.WafregionalSqlInjectionMatchSetInterface {
+	return &FakeWafregionalSqlInjectionMatchSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalWebAcls() v1alpha1.AwsWafregionalWebAclInterface {
-	return &FakeAwsWafregionalWebAcls{c}
+func (c *FakeAwsV1alpha1) WafregionalWebAcls() v1alpha1.WafregionalWebAclInterface {
+	return &FakeWafregionalWebAcls{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalWebAclAssociations() v1alpha1.AwsWafregionalWebAclAssociationInterface {
-	return &FakeAwsWafregionalWebAclAssociations{c}
+func (c *FakeAwsV1alpha1) WafregionalWebAclAssociations() v1alpha1.WafregionalWebAclAssociationInterface {
+	return &FakeWafregionalWebAclAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWafregionalXssMatchSets() v1alpha1.AwsWafregionalXssMatchSetInterface {
-	return &FakeAwsWafregionalXssMatchSets{c}
+func (c *FakeAwsV1alpha1) WafregionalXssMatchSets() v1alpha1.WafregionalXssMatchSetInterface {
+	return &FakeWafregionalXssMatchSets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWorklinkFleets() v1alpha1.AwsWorklinkFleetInterface {
-	return &FakeAwsWorklinkFleets{c}
+func (c *FakeAwsV1alpha1) WorklinkFleets() v1alpha1.WorklinkFleetInterface {
+	return &FakeWorklinkFleets{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsWorklinkWebsiteCertificateAuthorityAssociations() v1alpha1.AwsWorklinkWebsiteCertificateAuthorityAssociationInterface {
-	return &FakeAwsWorklinkWebsiteCertificateAuthorityAssociations{c}
+func (c *FakeAwsV1alpha1) WorklinkWebsiteCertificateAuthorityAssociations() v1alpha1.WorklinkWebsiteCertificateAuthorityAssociationInterface {
+	return &FakeWorklinkWebsiteCertificateAuthorityAssociations{c}
 }
 
-func (c *FakeAwsV1alpha1) AwsXraySamplingRules() v1alpha1.AwsXraySamplingRuleInterface {
-	return &FakeAwsXraySamplingRules{c}
+func (c *FakeAwsV1alpha1) XraySamplingRules() v1alpha1.XraySamplingRuleInterface {
+	return &FakeXraySamplingRules{c}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

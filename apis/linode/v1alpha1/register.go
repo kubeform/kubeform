@@ -37,43 +37,42 @@ func Resource(resource string) schema.GroupResource {
 // Adds the list of known types to api.Scheme.
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
-    
-        &LinodeNodebalancer{},
-        &LinodeNodebalancerList{},
-    
-        &LinodeSshkey{},
-        &LinodeSshkeyList{},
-    
-        &LinodeImage{},
-        &LinodeImageList{},
-    
-        &LinodeInstance{},
-        &LinodeInstanceList{},
-    
-        &LinodeDomain{},
-        &LinodeDomainList{},
-    
-        &LinodeDomainRecord{},
-        &LinodeDomainRecordList{},
-    
-        &LinodeNodebalancerConfig{},
-        &LinodeNodebalancerConfigList{},
-    
-        &LinodeNodebalancerNode{},
-        &LinodeNodebalancerNodeList{},
-    
-        &LinodeRdns{},
-        &LinodeRdnsList{},
-    
-        &LinodeStackscript{},
-        &LinodeStackscriptList{},
-    
-        &LinodeToken{},
-        &LinodeTokenList{},
-    
-        &LinodeVolume{},
-        &LinodeVolumeList{},
-    
+
+		&Domain{},
+		&DomainList{},
+
+		&Nodebalancer{},
+		&NodebalancerList{},
+
+		&NodebalancerConfig{},
+		&NodebalancerConfigList{},
+
+		&Image{},
+		&ImageList{},
+
+		&DomainRecord{},
+		&DomainRecordList{},
+
+		&NodebalancerNode{},
+		&NodebalancerNodeList{},
+
+		&Rdns{},
+		&RdnsList{},
+
+		&Sshkey{},
+		&SshkeyList{},
+
+		&Stackscript{},
+		&StackscriptList{},
+
+		&Token{},
+		&TokenList{},
+
+		&Volume{},
+		&VolumeList{},
+
+		&Instance{},
+		&InstanceList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

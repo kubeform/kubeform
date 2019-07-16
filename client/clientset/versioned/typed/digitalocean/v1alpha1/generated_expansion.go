@@ -18,42 +18,42 @@ limitations under the License.
 
 package v1alpha1
 
-type DigitaloceanCdnExpansion interface{}
+type CdnExpansion interface{}
 
-type DigitaloceanCertificateExpansion interface{}
+type CertificateExpansion interface{}
 
-type DigitaloceanDatabaseClusterExpansion interface{}
+type DatabaseClusterExpansion interface{}
 
-type DigitaloceanDomainExpansion interface{}
+type DomainExpansion interface{}
 
-type DigitaloceanDropletExpansion interface{}
+type DropletExpansion interface{}
 
-type DigitaloceanDropletSnapshotExpansion interface{}
+type DropletSnapshotExpansion interface{}
 
-type DigitaloceanFirewallExpansion interface{}
+type FirewallExpansion interface{}
 
-type DigitaloceanFloatingIpExpansion interface{}
+type FloatingIpExpansion interface{}
 
-type DigitaloceanFloatingIpAssignmentExpansion interface{}
+type FloatingIpAssignmentExpansion interface{}
 
-type DigitaloceanKubernetesClusterExpansion interface{}
+type KubernetesClusterExpansion interface{}
 
-type DigitaloceanKubernetesNodePoolExpansion interface{}
+type KubernetesNodePoolExpansion interface{}
 
-type DigitaloceanLoadbalancerExpansion interface{}
+type LoadbalancerExpansion interface{}
 
-type DigitaloceanProjectExpansion interface{}
+type ProjectExpansion interface{}
 
-type DigitaloceanRecordExpansion interface{}
+type RecordExpansion interface{}
 
-type DigitaloceanSpacesBucketExpansion interface{}
+type SpacesBucketExpansion interface{}
 
-type DigitaloceanSshKeyExpansion interface{}
+type SshKeyExpansion interface{}
 
-type DigitaloceanTagExpansion interface{}
+type TagExpansion interface{}
 
-type DigitaloceanVolumeExpansion interface{}
+type VolumeExpansion interface{}
 
-type DigitaloceanVolumeAttachmentExpansion interface{}
+type VolumeAttachmentExpansion interface{}
 
-type DigitaloceanVolumeSnapshotExpansion interface{}
+type VolumeSnapshotExpansion interface{}
