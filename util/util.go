@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"sort"
+	"strconv"
 	"strings"
 	"text/template"
 
@@ -87,6 +88,19 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName string, out
 	for _, key := range keys {
 		value := s[key]
 		id := SnakeCaseToCamelCase(key)
+
+		if value.MaxItems != 0 {
+			statements = append(statements, Comment("// +kubebuilder:validation:MaxItems="+strconv.Itoa(value.MaxItems)))
+		}
+
+		if value.MinItems != 0 {
+			statements = append(statements, Comment("// +kubebuilder:validation:MinItems="+strconv.Itoa(value.MinItems)))
+		}
+
+		if value.Type == schema.TypeSet {
+			statements = append(statements, Comment("// +kubebuilder:validation:UniqueItems=true"))
+		}
+
 		switch value.Type {
 		case schema.TypeString:
 			statements = append(statements, Id(id).String().Tag(map[string]string{"json": key}))
@@ -110,7 +124,8 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName string, out
 					statements = append(statements, Id(id).Map(String()).String().Tag(map[string]string{"json": key}))
 				}
 			case *schema.Resource:
-				statements = append(statements, Id(id).Map(String()).String().Tag(map[string]string{"json": key}))
+				fmt.Println(structName)
+				statements = append(statements, Id(id).Map(String()).Id(structName+id).Tag(map[string]string{"json": key}))
 				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, out)
 			default:
 				statements = append(statements, Id(id).Map(String()).String().Tag(map[string]string{"json": key}))
@@ -129,7 +144,7 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName string, out
 					statements = append(statements, Id(id).Index().String().Tag(map[string]string{"json": key}))
 				}
 			case *schema.Resource:
-				statements = append(statements, Id(id).Index().Id(structName).Tag(map[string]string{"json": key}))
+				statements = append(statements, Id(id).Index().Id(structName+id).Tag(map[string]string{"json": key}))
 				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, out)
 			default:
 				statements = append(statements, Id(id).Index().String().Tag(map[string]string{"json": key}))
