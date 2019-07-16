@@ -26,7 +26,7 @@ type ApisData struct {
 }
 
 var execeptionList = map[string]string{
-	"ConfigConfigurationRecorderStatus": "ConfigConfigurationRecorderAwsStatus",
+	"ConfigConfigurationRecorderStatus": "ConfigConfigurationRecorderStatus_",
 }
 
 func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*schema.Schema, structNames []string) error {
