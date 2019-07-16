@@ -52,6 +52,7 @@ func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*sc
 		var out string
 
 		TerraformSchemaToStruct(schmeas[i], structName+"Spec", providerName, &out)
+		TerraformSchemaToStruct(schmeas[i], structName+"Spec", providerName, &out)
 		if val, ok := execeptionList[structName]; ok {
 			structName = val
 			structNames[i] = val
