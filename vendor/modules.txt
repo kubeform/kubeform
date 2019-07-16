@@ -11,7 +11,7 @@ cloud.google.com/go/compute/metadata
 cloud.google.com/go/storage
 cloud.google.com/go/internal
 cloud.google.com/go/internal/version
-# contrib.go.opencensus.io/exporter/ocagent v0.5.0
+# contrib.go.opencensus.io/exporter/ocagent v0.4.12
 contrib.go.opencensus.io/exporter/ocagent
 # github.com/Azure/azure-sdk-for-go v30.0.0+incompatible
 github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/resources/mgmt/resources
@@ -79,16 +79,23 @@ github.com/Azure/azure-sdk-for-go/services/web/mgmt/2018-02-01/web
 github.com/Azure/azure-sdk-for-go/storage
 github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2016-02-01/resources
 github.com/Azure/azure-sdk-for-go/version
-# github.com/Azure/go-autorest v11.7.0+incompatible
+# github.com/Azure/go-autorest/autorest v0.5.0
 github.com/Azure/go-autorest/autorest
-github.com/Azure/go-autorest/autorest/adal
 github.com/Azure/go-autorest/autorest/azure
-github.com/Azure/go-autorest/autorest/date
-github.com/Azure/go-autorest/autorest/to
-github.com/Azure/go-autorest/autorest/validation
-github.com/Azure/go-autorest/tracing
-github.com/Azure/go-autorest/logger
+# github.com/Azure/go-autorest/autorest/adal v0.2.0
+github.com/Azure/go-autorest/autorest/adal
+# github.com/Azure/go-autorest/autorest/azure/cli v0.1.0
 github.com/Azure/go-autorest/autorest/azure/cli
+# github.com/Azure/go-autorest/autorest/date v0.1.0
+github.com/Azure/go-autorest/autorest/date
+# github.com/Azure/go-autorest/autorest/to v0.2.0
+github.com/Azure/go-autorest/autorest/to
+# github.com/Azure/go-autorest/autorest/validation v0.1.0
+github.com/Azure/go-autorest/autorest/validation
+# github.com/Azure/go-autorest/logger v0.1.0
+github.com/Azure/go-autorest/logger
+# github.com/Azure/go-autorest/tracing v0.1.0
+github.com/Azure/go-autorest/tracing
 # github.com/PuerkitoBio/purell v1.1.1
 github.com/PuerkitoBio/purell
 # github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578
@@ -99,6 +106,9 @@ github.com/agext/levenshtein
 github.com/apparentlymart/go-cidr/cidr
 # github.com/apparentlymart/go-textseg v1.0.0
 github.com/apparentlymart/go-textseg/textseg
+# github.com/appscode/go v0.0.0-20190621064509-6b292c9166e3
+github.com/appscode/go/log
+github.com/appscode/go/context
 # github.com/armon/go-radix v1.0.0
 github.com/armon/go-radix
 # github.com/aws/aws-sdk-go v1.20.17
@@ -304,6 +314,8 @@ github.com/go-openapi/swag
 # github.com/gogo/protobuf v1.2.1
 github.com/gogo/protobuf/proto
 github.com/gogo/protobuf/sortkeys
+# github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+github.com/golang/glog
 # github.com/golang/protobuf v1.3.1
 github.com/golang/protobuf/jsonpb
 github.com/golang/protobuf/proto
@@ -346,7 +358,7 @@ github.com/grpc-ecosystem/grpc-gateway/internal
 github.com/hashicorp/aws-sdk-go-base
 # github.com/hashicorp/errwrap v1.0.0
 github.com/hashicorp/errwrap
-# github.com/hashicorp/go-azure-helpers v0.4.1
+# github.com/hashicorp/go-azure-helpers v0.4.1 => github.com/hashicorp/go-azure-helpers v0.3.2
 github.com/hashicorp/go-azure-helpers/authentication
 github.com/hashicorp/go-azure-helpers/resourceproviders
 github.com/hashicorp/go-azure-helpers/storage
@@ -843,26 +855,26 @@ k8s.io/api/storage/v1
 k8s.io/api/storage/v1alpha1
 k8s.io/api/storage/v1beta1
 # k8s.io/apimachinery v0.0.0-20190508063446-a3da69d3723c => github.com/kmodules/apimachinery v0.0.0-20190508045248-a52a97a7a2bf
-k8s.io/apimachinery/pkg/runtime
-k8s.io/apimachinery/pkg/util/runtime
 k8s.io/apimachinery/pkg/api/resource
 k8s.io/apimachinery/pkg/apis/meta/v1
-k8s.io/apimachinery/pkg/runtime/schema
+k8s.io/apimachinery/pkg/runtime
 k8s.io/apimachinery/pkg/util/intstr
+k8s.io/apimachinery/pkg/util/runtime
+k8s.io/apimachinery/pkg/runtime/schema
 k8s.io/apimachinery/pkg/runtime/serializer
 k8s.io/apimachinery/pkg/watch
 k8s.io/apimachinery/pkg/types
 k8s.io/apimachinery/pkg/labels
 k8s.io/apimachinery/pkg/api/errors
 k8s.io/apimachinery/pkg/conversion
+k8s.io/apimachinery/pkg/fields
+k8s.io/apimachinery/pkg/selection
 k8s.io/apimachinery/pkg/conversion/queryparams
 k8s.io/apimachinery/pkg/util/errors
 k8s.io/apimachinery/pkg/util/json
 k8s.io/apimachinery/pkg/util/naming
 k8s.io/apimachinery/pkg/util/sets
 k8s.io/apimachinery/pkg/api/apitesting/roundtrip
-k8s.io/apimachinery/pkg/fields
-k8s.io/apimachinery/pkg/selection
 k8s.io/apimachinery/pkg/version
 k8s.io/apimachinery/pkg/runtime/serializer/streaming
 k8s.io/apimachinery/pkg/util/net
