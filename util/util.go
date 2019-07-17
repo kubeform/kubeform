@@ -89,7 +89,6 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 	for _, key := range keys {
 		value := s[key]
 		id := SnakeCaseToCamelCase(key)
-		ptr := ""
 
 		if value.Computed || value.Removed != "" {
 			continue
@@ -98,7 +97,6 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 		if value.Optional {
 			statements = append(statements, Comment("// +optional"))
 			key = key + ",omitempty"
-			ptr = "*"
 		}
 
 		if value.MaxItems != 0 {
@@ -163,7 +161,7 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 					statements = append(statements, Id(id).Index().String().Tag(map[string]string{"json": key}))
 				}
 			case *schema.Resource:
-				statements = append(statements, Id(id).Id(ptr).Index().Id(structName).Tag(map[string]string{"json": key}))
+				statements = append(statements, Id(id).Index().Id(structName).Tag(map[string]string{"json": key}))
 				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, providerName, out)
 			default:
 				log.Fatalf("Provider %s has resource %s type %s.%s with unknown schema type %s", providerName, structName, structName, id, value.Elem)
