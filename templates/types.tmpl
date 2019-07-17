@@ -4,6 +4,7 @@ import (
     "encoding/json"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/kubernetes/pkg/apis/core"
 )
 
 // +genclient
@@ -21,6 +22,8 @@ type {{.Name}} struct {
 {{.Spec}}
 
 type {{.Name}}Status struct {
+    TFState     []byte `json:"tfState,omitempty"`
+    TFStateHash string `json:"tfStateHash,omitempty"`
 	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
