@@ -7,14 +7,13 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"regexp"
 	"sort"
 	"strconv"
-	"strings"
 	"text/template"
 
 	aclog "github.com/appscode/go/log"
 	. "github.com/dave/jennifer/jen"
+	"github.com/gobuffalo/flect"
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
@@ -55,13 +54,13 @@ func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*sc
 			structNames[i] = val
 		}
 
-		TerraformSchemaToStruct(schmeas[i], structName+"Spec", providerName, &out)
+		TerraformSchemaToStruct(schmeas[i], structName+"Spec", providerName, true, &out)
 		typeData := TypeData{
 			Name: structName,
 			Spec: out,
 		}
 
-		templateToGoFile(filepath.Join(templatePath, "types.tmpl"), filepath.Join(versionPath, CamelCaseToSnakeCase(structName)+"_types.go"), typeData)
+		templateToGoFile(filepath.Join(templatePath, "types.tmpl"), filepath.Join(versionPath, flect.Underscore(structName)+"_types.go"), typeData)
 	}
 
 	apiData := ApisData{
@@ -77,7 +76,7 @@ func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*sc
 	return nil
 }
 
-func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerName string, out *string) {
+func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerName string, genProviderRef bool, out *string) {
 	var statements Statement
 	var keys []string
 	for k := range s {
@@ -88,7 +87,7 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 
 	for _, key := range keys {
 		value := s[key]
-		id := SnakeCaseToCamelCase(key)
+		id := flect.Capitalize(flect.Camelize(key))
 
 		if value.Computed || value.Removed != "" {
 			continue
@@ -121,53 +120,57 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 
 		switch value.Type {
 		case schema.TypeString:
-			statements = append(statements, Id(id).String().Tag(map[string]string{"json": key}))
+			statements = append(statements, Id(id).String().Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 		case schema.TypeInt:
-			statements = append(statements, Id(id).Int().Tag(map[string]string{"json": key}))
+			statements = append(statements, Id(id).Int().Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 		case schema.TypeBool:
-			statements = append(statements, Id(id).Bool().Tag(map[string]string{"json": key}))
+			statements = append(statements, Id(id).Bool().Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 		case schema.TypeFloat:
-			statements = append(statements, Id(id).Qual("encoding/json", "Number").Tag(map[string]string{"json": key}))
+			statements = append(statements, Id(id).Qual("encoding/json", "Number").Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 		case schema.TypeMap:
 			switch value.Elem.(type) {
 			case *schema.Schema:
 				switch value.Elem.(*schema.Schema).Type {
 				case schema.TypeInt:
-					statements = append(statements, Id(id).Map(String()).Int().Tag(map[string]string{"json": key}))
+					statements = append(statements, Id(id).Map(String()).Int().Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 				case schema.TypeFloat:
-					statements = append(statements, Id(id).Map(String()).Qual("encoding/json", "Number").Tag(map[string]string{"json": key}))
+					statements = append(statements, Id(id).Map(String()).Qual("encoding/json", "Number").Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 				case schema.TypeBool:
-					statements = append(statements, Id(id).Map(String()).Bool().Tag(map[string]string{"json": key}))
+					statements = append(statements, Id(id).Map(String()).Bool().Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 				case schema.TypeString:
-					statements = append(statements, Id(id).Map(String()).String().Tag(map[string]string{"json": key}))
+					statements = append(statements, Id(id).Map(String()).String().Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 				}
 			case *schema.Resource:
-				statements = append(statements, Id(id).Map(String()).Id(structName+id).Tag(map[string]string{"json": key}))
-				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, providerName, out)
+				statements = append(statements, Id(id).Map(String()).Id(structName+id).Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
+				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, providerName, false, out)
 			default:
-				statements = append(statements, Id(id).Map(String()).String().Tag(map[string]string{"json": key}))
+				statements = append(statements, Id(id).Map(String()).String().Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 			}
 		default:
 			switch value.Elem.(type) {
 			case *schema.Schema:
 				switch value.Elem.(*schema.Schema).Type {
 				case schema.TypeInt:
-					statements = append(statements, Id(id).Index().Int64().Tag(map[string]string{"json": key}))
+					statements = append(statements, Id(id).Index().Int64().Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 				case schema.TypeFloat:
-					statements = append(statements, Id(id).Index().Qual("encoding/json", "Number").Tag(map[string]string{"json": key}))
+					statements = append(statements, Id(id).Index().Qual("encoding/json", "Number").Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 				case schema.TypeBool:
-					statements = append(statements, Id(id).Index().Bool().Tag(map[string]string{"json": key}))
+					statements = append(statements, Id(id).Index().Bool().Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 				case schema.TypeString:
-					statements = append(statements, Id(id).Index().String().Tag(map[string]string{"json": key}))
+					statements = append(statements, Id(id).Index().String().Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
 				}
 			case *schema.Resource:
-				statements = append(statements, Id(id).Index().Id(structName).Tag(map[string]string{"json": key}))
-				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, providerName, out)
+				statements = append(statements, Id(id).Index().Id(structName+id).Tag(map[string]string{"json": flect.Camelize(key), "tf": key}))
+				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, providerName, false, out)
 			default:
 				log.Fatalf("Provider %s has resource %s type %s.%s with unknown schema type %s", providerName, structName, structName, id, value.Elem)
 			}
 
 		}
+	}
+
+	if genProviderRef {
+		statements = append(statements, Id("ProviderRef").Id("core.LocalObjectReference").Tag(map[string]string{"json": "providerRef", "tf": "-"}))
 	}
 
 	c := Type().Id(structName).Struct(statements...)
@@ -186,32 +189,4 @@ func templateToGoFile(templateFile, generatedFilePath string, templateData inter
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-}
-
-func SnakeCaseToCamelCase(inputUnderScoreStr string) (camelCase string) {
-	isToUpper := false
-
-	for k, v := range inputUnderScoreStr {
-		if k == 0 {
-			camelCase = strings.ToUpper(string(inputUnderScoreStr[0]))
-		} else {
-			if isToUpper {
-				camelCase += strings.ToUpper(string(v))
-				isToUpper = false
-			} else {
-				if v == '_' {
-					isToUpper = true
-				} else {
-					camelCase += string(v)
-				}
-			}
-		}
-	}
-	return
-}
-
-func CamelCaseToSnakeCase(str string) string {
-	snake := regexp.MustCompile("(.)([A-Z][a-z]+)").ReplaceAllString(str, "${1}_${2}")
-	snake = regexp.MustCompile("([a-z0-9])([A-Z])").ReplaceAllString(snake, "${1}_${2}")
-	return strings.ToLower(snake)
 }

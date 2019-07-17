@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/gobuffalo/flect"
+
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
 	"github.com/terraform-providers/terraform-provider-aws/aws"
@@ -35,7 +37,7 @@ func main() {
 			providerPrefix := key
 			for key, values := range p.ResourcesMap {
 				key = strings.TrimPrefix(key, providerPrefix+"_")
-				structNames = append(structNames, util.SnakeCaseToCamelCase(key))
+				structNames = append(structNames, flect.Capitalize(flect.Camelize(key)))
 				schemas = append(schemas, values.Schema)
 			}
 

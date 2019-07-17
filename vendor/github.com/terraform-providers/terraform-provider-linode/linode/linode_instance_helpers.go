@@ -113,7 +113,7 @@ func flattenInstanceConfigs(instanceConfigs []linodego.InstanceConfig, diskLabel
 
 		// Determine if swap exists and the size.  If it does not exist, swap_size=0
 		c := map[string]interface{}{
-			"root_device":  "/dev/root",
+			"root_device":  config.RootDevice,
 			"kernel":       config.Kernel,
 			"run_level":    string(config.RunLevel),
 			"virt_mode":    string(config.VirtMode),
@@ -128,18 +128,6 @@ func flattenInstanceConfigs(instanceConfigs []linodego.InstanceConfig, diskLabel
 				"devtmpfs_automount": config.Helpers.DevTmpFsAutomount,
 			}},
 			"devices": devices,
-		}
-
-		// Work-Around API reporting root_device /dev/sda despite not existing and requesting a different root
-		// Linode disk slots are sequentially filled.  No SDA means no disks.
-		if config.Devices.SDA != nil {
-			if config.RootDevice != "/dev/sda" {
-				// don't set an explicit value so the value stored in state will remain
-				c["root_device"] = config.RootDevice
-			} else {
-				// a work-around value
-				c["root_device"] = "/dev/root"
-			}
 		}
 
 		configs = append(configs, c)
@@ -219,15 +207,8 @@ func createInstanceConfigsFromSet(client linodego.Client, instanceID int, cset [
 			if confDevices != nil {
 				configOpts.Devices = *confDevices
 			}
-			// @TODO(displague) should DefaultFunc set /dev/root when no devices?
-			//if len(diskIDLabelMap) == 0 {
-			//	empty := ""
-			//	configOpts.RootDevice = &empty
-			//}
 		}
 
-		//empty := ""
-		//configOpts.RootDevice = &empty
 		if err := detachConfigVolumes(configOpts.Devices, detacher); err != nil {
 			return configIDMap, err
 		}

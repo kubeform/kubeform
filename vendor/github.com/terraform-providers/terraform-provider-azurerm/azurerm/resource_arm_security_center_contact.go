@@ -38,7 +38,7 @@ func resourceArmSecurityCenterContact() *schema.Resource {
 
 			"phone": {
 				Type:         schema.TypeString,
-				Optional:     true,
+				Required:     true,
 				ValidateFunc: validate.NoEmptyStrings,
 			},
 

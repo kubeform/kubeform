@@ -56,9 +56,6 @@ func dataSourceArmSubscriptionsRead(d *schema.ResourceData, meta interface{}) er
 		if v := val.SubscriptionID; v != nil {
 			s["subscription_id"] = *v
 		}
-		if v := val.TenantID; v != nil {
-			s["tenant_id"] = *v
-		}
 		if v := val.DisplayName; v != nil {
 			s["display_name"] = *v
 		}

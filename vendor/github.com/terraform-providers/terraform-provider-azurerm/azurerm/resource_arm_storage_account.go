@@ -6,7 +6,6 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/Azure/azure-sdk-for-go/services/preview/security/mgmt/v1.0/security"
 	"github.com/Azure/azure-sdk-for-go/services/storage/mgmt/2019-04-01/storage"
 	"github.com/hashicorp/go-getter/helper/url"
 	"github.com/hashicorp/terraform/helper/schema"
@@ -52,7 +51,6 @@ func resourceArmStorageAccount() *schema.Resource {
 				ValidateFunc: validation.StringInSlice([]string{
 					string(storage.Storage),
 					string(storage.BlobStorage),
-					string(storage.FileStorage),
 					string(storage.StorageV2),
 				}, true),
 				Default: string(storage.Storage),
@@ -154,12 +152,6 @@ func resourceArmStorageAccount() *schema.Resource {
 				Optional: true,
 				Default:  false,
 				ForceNew: true,
-			},
-
-			"enable_advanced_threat_protection": {
-				Type:     schema.TypeBool,
-				Optional: true,
-				Default:  false,
 			},
 
 			"network_rules": {
@@ -441,7 +433,6 @@ func validateAzureRMStorageAccountTags(v interface{}, _ string) (warnings []stri
 func resourceArmStorageAccountCreate(d *schema.ResourceData, meta interface{}) error {
 	ctx := meta.(*ArmClient).StopContext
 	client := meta.(*ArmClient).storageServiceClient
-	advancedThreatProtectionClient := meta.(*ArmClient).securityCenter.AdvancedThreatProtectionClient
 
 	storageAccountName := d.Get("name").(string)
 	resourceGroupName := d.Get("resource_group_name").(string)
@@ -512,8 +503,8 @@ func resourceArmStorageAccountCreate(d *schema.ResourceData, meta interface{}) e
 		}
 	}
 
-	// AccessTier is only valid for BlobStorage, StorageV2, and FileStorage accounts
-	if accountKind == string(storage.BlobStorage) || accountKind == string(storage.StorageV2) || accountKind == string(storage.FileStorage) {
+	// AccessTier is only valid for BlobStorage and StorageV2 accounts
+	if accountKind == string(storage.BlobStorage) || accountKind == string(storage.StorageV2) {
 		accessTier, ok := d.GetOk("access_tier")
 		if !ok {
 			// default to "Hot"
@@ -524,13 +515,6 @@ func resourceArmStorageAccountCreate(d *schema.ResourceData, meta interface{}) e
 	} else {
 		if isHnsEnabled {
 			return fmt.Errorf("`is_hns_enabled` can only be used with account kinds `StorageV2` and `BlobStorage`")
-		}
-	}
-
-	// AccountTier must be Premium for FileStorage
-	if accountKind == string(storage.FileStorage) {
-		if string(parameters.Sku.Tier) == string(storage.StandardLRS) {
-			return fmt.Errorf("A `account_tier` of `Standard` is not supported for FileStorage accounts.")
 		}
 	}
 
@@ -556,16 +540,6 @@ func resourceArmStorageAccountCreate(d *schema.ResourceData, meta interface{}) e
 	log.Printf("[INFO] storage account %q ID: %q", storageAccountName, *account.ID)
 	d.SetId(*account.ID)
 
-	advancedThreatProtectionSetting := security.AdvancedThreatProtectionSetting{
-		AdvancedThreatProtectionProperties: &security.AdvancedThreatProtectionProperties{
-			IsEnabled: utils.Bool(d.Get("enable_advanced_threat_protection").(bool)),
-		},
-	}
-
-	if _, err = advancedThreatProtectionClient.Create(ctx, d.Id(), advancedThreatProtectionSetting); err != nil {
-		return fmt.Errorf("Error updating Azure Storage Account enable_advanced_threat_protection %q: %+v", storageAccountName, err)
-	}
-
 	return resourceArmStorageAccountRead(d, meta)
 }
 
@@ -575,8 +549,6 @@ func resourceArmStorageAccountCreate(d *schema.ResourceData, meta interface{}) e
 func resourceArmStorageAccountUpdate(d *schema.ResourceData, meta interface{}) error {
 	ctx := meta.(*ArmClient).StopContext
 	client := meta.(*ArmClient).storageServiceClient
-	advancedThreatProtectionClient := meta.(*ArmClient).securityCenter.AdvancedThreatProtectionClient
-
 	id, err := parseAzureResourceID(d.Id())
 	if err != nil {
 		return err
@@ -729,21 +701,6 @@ func resourceArmStorageAccountUpdate(d *schema.ResourceData, meta interface{}) e
 		d.SetPartial("network_rules")
 	}
 
-	if d.HasChange("enable_advanced_threat_protection") {
-
-		opts := security.AdvancedThreatProtectionSetting{
-			AdvancedThreatProtectionProperties: &security.AdvancedThreatProtectionProperties{
-				IsEnabled: utils.Bool(d.Get("enable_advanced_threat_protection").(bool)),
-			},
-		}
-
-		if _, err := advancedThreatProtectionClient.Create(ctx, d.Id(), opts); err != nil {
-			return fmt.Errorf("Error updating Azure Storage Account enable_advanced_threat_protection %q: %+v", storageAccountName, err)
-		}
-
-		d.SetPartial("enable_advanced_threat_protection")
-	}
-
 	d.Partial(false)
 	return resourceArmStorageAccountRead(d, meta)
 }
@@ -751,7 +708,6 @@ func resourceArmStorageAccountUpdate(d *schema.ResourceData, meta interface{}) e
 func resourceArmStorageAccountRead(d *schema.ResourceData, meta interface{}) error {
 	ctx := meta.(*ArmClient).StopContext
 	client := meta.(*ArmClient).storageServiceClient
-	advancedThreatProtectionClient := meta.(*ArmClient).securityCenter.AdvancedThreatProtectionClient
 	endpointSuffix := meta.(*ArmClient).environment.StorageEndpointSuffix
 
 	id, err := parseAzureResourceID(d.Id())
@@ -859,15 +815,6 @@ func resourceArmStorageAccountRead(d *schema.ResourceData, meta interface{}) err
 	identity := flattenAzureRmStorageAccountIdentity(resp.Identity)
 	if err := d.Set("identity", identity); err != nil {
 		return err
-	}
-
-	advancedThreatProtectionSetting, err := advancedThreatProtectionClient.Get(ctx, d.Id())
-	if err != nil {
-		return fmt.Errorf("Error reading the advanced threat protection settings of AzureRM Storage Account %q: %+v", name, err)
-	}
-
-	if atpp := advancedThreatProtectionSetting.AdvancedThreatProtectionProperties; atpp != nil {
-		d.Set("enable_advanced_threat_protection", atpp.IsEnabled)
 	}
 
 	flattenAndSetTags(d, resp.Tags)

@@ -2,7 +2,8 @@ package cdn
 
 import (
 	"github.com/Azure/azure-sdk-for-go/services/cdn/mgmt/2017-10-12/cdn"
-	"github.com/terraform-providers/terraform-provider-azurerm/azurerm/internal/common"
+	"github.com/Azure/go-autorest/autorest"
+	"github.com/terraform-providers/terraform-provider-azurerm/azurerm/internal/ar"
 )
 
 type Client struct {
@@ -11,17 +12,17 @@ type Client struct {
 	ProfilesClient      cdn.ProfilesClient
 }
 
-func BuildClient(o *common.ClientOptions) *Client {
+func BuildClient(endpoint, subscriptionId, partnerId string, auth autorest.Authorizer, skipProviderReg bool) *Client {
 	c := Client{}
 
-	c.CustomDomainsClient = cdn.NewCustomDomainsClientWithBaseURI(o.ResourceManagerEndpoint, o.SubscriptionId)
-	o.ConfigureClient(&c.CustomDomainsClient.Client, o.ResourceManagerAuthorizer)
+	c.CustomDomainsClient = cdn.NewCustomDomainsClientWithBaseURI(endpoint, subscriptionId)
+	ar.ConfigureClient(&c.CustomDomainsClient.Client, auth, partnerId, skipProviderReg)
 
-	c.EndpointsClient = cdn.NewEndpointsClientWithBaseURI(o.ResourceManagerEndpoint, o.SubscriptionId)
-	o.ConfigureClient(&c.EndpointsClient.Client, o.ResourceManagerAuthorizer)
+	c.EndpointsClient = cdn.NewEndpointsClientWithBaseURI(endpoint, subscriptionId)
+	ar.ConfigureClient(&c.EndpointsClient.Client, auth, partnerId, skipProviderReg)
 
-	c.ProfilesClient = cdn.NewProfilesClientWithBaseURI(o.ResourceManagerEndpoint, o.SubscriptionId)
-	o.ConfigureClient(&c.ProfilesClient.Client, o.ResourceManagerAuthorizer)
+	c.ProfilesClient = cdn.NewProfilesClientWithBaseURI(endpoint, subscriptionId)
+	ar.ConfigureClient(&c.ProfilesClient.Client, auth, partnerId, skipProviderReg)
 
 	return &c
 }
