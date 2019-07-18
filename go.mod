@@ -24,7 +24,7 @@ require (
 	github.com/terraform-providers/terraform-provider-google v1.20.0
 	github.com/terraform-providers/terraform-provider-linode v1.8.0
 	gopkg.in/inf.v0 v0.9.1 // indirect
-	k8s.io/api v0.0.0-20190711103429-37c3b8b1ca65 // indirect
+	k8s.io/api v0.0.0-20190711103429-37c3b8b1ca65
 	k8s.io/apimachinery v0.0.0-20190711222657-391ed67afa7b
 	k8s.io/client-go v11.0.1-0.20190409021438-1a26190bd76a+incompatible
 	k8s.io/klog v0.3.1 // indirect
