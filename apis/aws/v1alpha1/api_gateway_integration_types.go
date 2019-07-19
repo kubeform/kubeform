@@ -23,6 +23,8 @@ type ApiGatewayIntegrationSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	CacheKeyParameters []string `json:"cacheKeyParameters,omitempty" tf:"cache_key_parameters,omitempty"`
 	// +optional
+	CacheNamespace string `json:"cacheNamespace,omitempty" tf:"cache_namespace,omitempty"`
+	// +optional
 	ConnectionID string `json:"connectionID,omitempty" tf:"connection_id,omitempty"`
 	// +optional
 	ConnectionType string `json:"connectionType,omitempty" tf:"connection_type,omitempty"`
@@ -33,6 +35,8 @@ type ApiGatewayIntegrationSpec struct {
 	HttpMethod  string `json:"httpMethod" tf:"http_method"`
 	// +optional
 	IntegrationHTTPMethod string `json:"integrationHTTPMethod,omitempty" tf:"integration_http_method,omitempty"`
+	// +optional
+	PassthroughBehavior string `json:"passthroughBehavior,omitempty" tf:"passthrough_behavior,omitempty"`
 	// +optional
 	RequestParameters map[string]string `json:"requestParameters,omitempty" tf:"request_parameters,omitempty"`
 	// +optional
@@ -52,7 +56,7 @@ type ApiGatewayIntegrationStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

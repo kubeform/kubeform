@@ -398,9 +398,20 @@ spec:
         spec:
           properties:
             authorizationKey:
-              type: string
+              description: Sensitive Data. Provide secret name which contains one
+                value only
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            enableBGP:
+              type: boolean
             expressRouteCircuitID:
               type: string
+            expressRouteGatewayBypass:
+              type: boolean
             ipsecPolicy:
               items:
                 properties:
@@ -416,6 +427,10 @@ spec:
                     type: string
                   pfsGroup:
                     type: string
+                  saDatasize:
+                    type: integer
+                  saLifetime:
+                    type: integer
                 required:
                 - dhGroup
                 - ikeEncryption
@@ -445,10 +460,25 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            routingWeight:
+              type: integer
             sharedKey:
-              type: string
+              description: Sensitive Data. Provide secret name which contains one
+                value only
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             type:
               type: string
+            usePolicyBasedTrafficSelectors:
+              type: boolean
             virtualNetworkGatewayID:
               type: string
           required:
@@ -469,8 +499,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

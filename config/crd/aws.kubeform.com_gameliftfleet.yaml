@@ -422,6 +422,10 @@ spec:
               type: array
             ec2InstanceType:
               type: string
+            metricGroups:
+              items:
+                type: string
+              type: array
             name:
               type: string
             newGameSessionProtectionPolicy:
@@ -486,8 +490,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

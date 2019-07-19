@@ -40,11 +40,29 @@ type RdsClusterSpecScalingConfiguration struct {
 
 type RdsClusterSpec struct {
 	// +optional
+	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
+	// +optional
 	BacktrackWindow int `json:"backtrackWindow,omitempty" tf:"backtrack_window,omitempty"`
 	// +optional
 	BackupRetentionPeriod int `json:"backupRetentionPeriod,omitempty" tf:"backup_retention_period,omitempty"`
 	// +optional
+	ClusterIdentifier string `json:"clusterIdentifier,omitempty" tf:"cluster_identifier,omitempty"`
+	// +optional
+	ClusterIdentifierPrefix string `json:"clusterIdentifierPrefix,omitempty" tf:"cluster_identifier_prefix,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	ClusterMembers []string `json:"clusterMembers,omitempty" tf:"cluster_members,omitempty"`
+	// +optional
 	CopyTagsToSnapshot bool `json:"copyTagsToSnapshot,omitempty" tf:"copy_tags_to_snapshot,omitempty"`
+	// +optional
+	DatabaseName string `json:"databaseName,omitempty" tf:"database_name,omitempty"`
+	// +optional
+	DbClusterParameterGroupName string `json:"dbClusterParameterGroupName,omitempty" tf:"db_cluster_parameter_group_name,omitempty"`
+	// +optional
+	DbSubnetGroupName string `json:"dbSubnetGroupName,omitempty" tf:"db_subnet_group_name,omitempty"`
 	// +optional
 	DeletionProtection bool `json:"deletionProtection,omitempty" tf:"deletion_protection,omitempty"`
 	// +optional
@@ -53,6 +71,8 @@ type RdsClusterSpec struct {
 	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
 	// +optional
 	EngineMode string `json:"engineMode,omitempty" tf:"engine_mode,omitempty"`
+	// +optional
+	EngineVersion string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
 	// +optional
 	FinalSnapshotIdentifier string `json:"finalSnapshotIdentifier,omitempty" tf:"final_snapshot_identifier,omitempty"`
 	// +optional
@@ -63,7 +83,18 @@ type RdsClusterSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	IamRoles []string `json:"iamRoles,omitempty" tf:"iam_roles,omitempty"`
 	// +optional
-	MasterPassword string `json:"masterPassword,omitempty" tf:"master_password,omitempty"`
+	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+	// +optional
+	// Sensitive Data. Provide secret name which contains one value only
+	MasterPassword core.LocalObjectReference `json:"masterPassword,omitempty" tf:"master_password,omitempty"`
+	// +optional
+	MasterUsername string `json:"masterUsername,omitempty" tf:"master_username,omitempty"`
+	// +optional
+	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	// +optional
+	PreferredBackupWindow string `json:"preferredBackupWindow,omitempty" tf:"preferred_backup_window,omitempty"`
+	// +optional
+	PreferredMaintenanceWindow string `json:"preferredMaintenanceWindow,omitempty" tf:"preferred_maintenance_window,omitempty"`
 	// +optional
 	ReplicationSourceIdentifier string `json:"replicationSourceIdentifier,omitempty" tf:"replication_source_identifier,omitempty"`
 	// +optional
@@ -81,8 +112,11 @@ type RdsClusterSpec struct {
 	// +optional
 	StorageEncrypted bool `json:"storageEncrypted,omitempty" tf:"storage_encrypted,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	VpcSecurityGroupIDS []string                  `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
+	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type RdsClusterStatus struct {
@@ -90,7 +124,7 @@ type RdsClusterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

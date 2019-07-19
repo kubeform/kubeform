@@ -397,15 +397,56 @@ spec:
           type: object
         spec:
           properties:
+            appliedDNSServers:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            dnsServers:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             enableAcceleratedNetworking:
               type: boolean
             enableIPForwarding:
               type: boolean
+            internalDNSNameLabel:
+              type: string
+            internalFqdn:
+              description: Deprecated
+              type: string
             ipConfiguration:
               items:
                 properties:
+                  applicationGatewayBackendAddressPoolsIDS:
+                    description: Deprecated
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                  applicationSecurityGroupIDS:
+                    description: Deprecated
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                  loadBalancerBackendAddressPoolsIDS:
+                    description: Deprecated
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                  loadBalancerInboundNATRulesIDS:
+                    description: Deprecated
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
                   name:
                     type: string
+                  primary:
+                    type: boolean
                   privateIPAddress:
                     type: string
                   privateIPAddressAllocation:
@@ -423,6 +464,8 @@ spec:
               type: array
             location:
               type: string
+            macAddress:
+              type: string
             name:
               type: string
             networkSecurityGroupID:
@@ -437,6 +480,12 @@ spec:
                   type: string
               type: object
             resourceGroupName:
+              type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
+            virtualMachineID:
               type: string
           required:
           - ipConfiguration
@@ -455,8 +504,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

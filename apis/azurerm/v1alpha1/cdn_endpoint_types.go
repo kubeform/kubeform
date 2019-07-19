@@ -35,6 +35,9 @@ type CdnEndpointSpecOrigin struct {
 
 type CdnEndpointSpec struct {
 	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	ContentTypesToCompress []string `json:"contentTypesToCompress,omitempty" tf:"content_types_to_compress,omitempty"`
+	// +optional
 	GeoFilter []CdnEndpointSpecGeoFilter `json:"geoFilter,omitempty" tf:"geo_filter,omitempty"`
 	// +optional
 	IsCompressionEnabled bool `json:"isCompressionEnabled,omitempty" tf:"is_compression_enabled,omitempty"`
@@ -47,12 +50,20 @@ type CdnEndpointSpec struct {
 	// +optional
 	OptimizationType string `json:"optimizationType,omitempty" tf:"optimization_type,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
-	Origin      []CdnEndpointSpecOrigin `json:"origin" tf:"origin"`
-	ProfileName string                  `json:"profileName" tf:"profile_name"`
+	Origin []CdnEndpointSpecOrigin `json:"origin" tf:"origin"`
 	// +optional
-	QuerystringCachingBehaviour string                    `json:"querystringCachingBehaviour,omitempty" tf:"querystring_caching_behaviour,omitempty"`
-	ResourceGroupName           string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef                 core.LocalObjectReference `json:"providerRef" tf:"-"`
+	OriginHostHeader string `json:"originHostHeader,omitempty" tf:"origin_host_header,omitempty"`
+	// +optional
+	OriginPath string `json:"originPath,omitempty" tf:"origin_path,omitempty"`
+	// +optional
+	ProbePath   string `json:"probePath,omitempty" tf:"probe_path,omitempty"`
+	ProfileName string `json:"profileName" tf:"profile_name"`
+	// +optional
+	QuerystringCachingBehaviour string `json:"querystringCachingBehaviour,omitempty" tf:"querystring_caching_behaviour,omitempty"`
+	ResourceGroupName           string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type CdnEndpointStatus struct {
@@ -60,7 +71,7 @@ type CdnEndpointStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -24,10 +24,17 @@ type AcmCertificateSpec struct {
 	// +optional
 	CertificateChain string `json:"certificateChain,omitempty" tf:"certificate_chain,omitempty"`
 	// +optional
-	PrivateKey string `json:"privateKey,omitempty" tf:"private_key,omitempty"`
+	DomainName string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// Sensitive Data. Provide secret name which contains one value only
+	PrivateKey core.LocalObjectReference `json:"privateKey,omitempty" tf:"private_key,omitempty"`
+	// +optional
+	SubjectAlternativeNames []string `json:"subjectAlternativeNames,omitempty" tf:"subject_alternative_names,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	ValidationMethod string                    `json:"validationMethod,omitempty" tf:"validation_method,omitempty"`
+	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type AcmCertificateStatus struct {
@@ -35,7 +42,7 @@ type AcmCertificateStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

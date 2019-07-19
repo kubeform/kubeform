@@ -28,11 +28,15 @@ type SagemakerEndpointConfigurationSpecProductionVariants struct {
 	InitialVariantWeight json.Number `json:"initialVariantWeight,omitempty" tf:"initial_variant_weight,omitempty"`
 	InstanceType         string      `json:"instanceType" tf:"instance_type"`
 	ModelName            string      `json:"modelName" tf:"model_name"`
+	// +optional
+	VariantName string `json:"variantName,omitempty" tf:"variant_name,omitempty"`
 }
 
 type SagemakerEndpointConfigurationSpec struct {
 	// +optional
-	KmsKeyArn          string                                                 `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
+	KmsKeyArn string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
+	// +optional
+	Name               string                                                 `json:"name,omitempty" tf:"name,omitempty"`
 	ProductionVariants []SagemakerEndpointConfigurationSpecProductionVariants `json:"productionVariants" tf:"production_variants"`
 	// +optional
 	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
@@ -44,7 +48,7 @@ type SagemakerEndpointConfigurationStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

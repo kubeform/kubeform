@@ -397,6 +397,12 @@ spec:
           type: object
         spec:
           properties:
+            enableClassiclink:
+              type: boolean
+            enableClassiclinkDNSSupport:
+              type: boolean
+            enableDNSHostnames:
+              type: boolean
             enableDNSSupport:
               type: boolean
             providerRef:
@@ -425,8 +431,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

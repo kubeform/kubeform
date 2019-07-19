@@ -402,6 +402,16 @@ spec:
                 properties:
                   name:
                     type: string
+                  privateIPAddress:
+                    type: string
+                  privateIPAddressAllocation:
+                    type: string
+                  publicIPAddressID:
+                    type: string
+                  publicIPPrefixID:
+                    type: string
+                  subnetID:
+                    type: string
                   zones:
                     items:
                       type: string
@@ -429,6 +439,10 @@ spec:
               type: string
             sku:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - location
           - name
@@ -445,8 +459,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

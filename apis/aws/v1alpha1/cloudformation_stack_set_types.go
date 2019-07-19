@@ -33,6 +33,8 @@ type CloudformationStackSetSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
+	TemplateBody string `json:"templateBody,omitempty" tf:"template_body,omitempty"`
+	// +optional
 	TemplateURL string                    `json:"templateURL,omitempty" tf:"template_url,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
@@ -42,7 +44,7 @@ type CloudformationStackSetStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

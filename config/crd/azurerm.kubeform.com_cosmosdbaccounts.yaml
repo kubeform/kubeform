@@ -429,6 +429,8 @@ spec:
               description: Deprecated
               items:
                 properties:
+                  ID:
+                    type: string
                   location:
                     type: string
                   priority:
@@ -436,6 +438,21 @@ spec:
                 required:
                 - location
                 - priority
+                type: object
+              type: array
+              uniqueItems: true
+            geoLocation:
+              items:
+                properties:
+                  failoverPriority:
+                    type: integer
+                  location:
+                    type: string
+                  prefix:
+                    type: string
+                required:
+                - failoverPriority
+                - location
                 type: object
               type: array
               uniqueItems: true
@@ -462,6 +479,10 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             virtualNetworkRule:
               items:
                 properties:
@@ -490,8 +511,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

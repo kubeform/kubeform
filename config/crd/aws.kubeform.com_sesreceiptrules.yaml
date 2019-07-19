@@ -438,10 +438,14 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            enabled:
+              type: boolean
             lambdaAction:
               items:
                 properties:
                   functionArn:
+                    type: string
+                  invocationType:
                     type: string
                   position:
                     type: integer
@@ -490,6 +494,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            scanEnabled:
+              type: boolean
             snsAction:
               items:
                 properties:
@@ -518,6 +524,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            tlsPolicy:
+              type: string
             workmailAction:
               items:
                 properties:
@@ -548,8 +556,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

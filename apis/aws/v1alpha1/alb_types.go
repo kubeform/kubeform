@@ -26,6 +26,12 @@ type AlbSpecAccessLogs struct {
 	Prefix string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 }
 
+type AlbSpecSubnetMapping struct {
+	// +optional
+	AllocationID string `json:"allocationID,omitempty" tf:"allocation_id,omitempty"`
+	SubnetID     string `json:"subnetID" tf:"subnet_id"`
+}
+
 type AlbSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -39,9 +45,24 @@ type AlbSpec struct {
 	// +optional
 	IdleTimeout int `json:"idleTimeout,omitempty" tf:"idle_timeout,omitempty"`
 	// +optional
+	Internal bool `json:"internal,omitempty" tf:"internal,omitempty"`
+	// +optional
+	IpAddressType string `json:"ipAddressType,omitempty" tf:"ip_address_type,omitempty"`
+	// +optional
 	LoadBalancerType string `json:"loadBalancerType,omitempty" tf:"load_balancer_type,omitempty"`
 	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SubnetMapping []AlbSpecSubnetMapping `json:"subnetMapping,omitempty" tf:"subnet_mapping,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Subnets []string `json:"subnets,omitempty" tf:"subnets,omitempty"`
 	// +optional
 	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -52,7 +73,7 @@ type AlbStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

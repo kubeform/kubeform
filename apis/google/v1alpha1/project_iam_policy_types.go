@@ -24,9 +24,11 @@ type ProjectIamPolicySpec struct {
 	Authoritative bool `json:"authoritative,omitempty" tf:"authoritative,omitempty"`
 	// +optional
 	// Deprecated
-	DisableProject bool                      `json:"disableProject,omitempty" tf:"disable_project,omitempty"`
-	PolicyData     string                    `json:"policyData" tf:"policy_data"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	DisableProject bool   `json:"disableProject,omitempty" tf:"disable_project,omitempty"`
+	PolicyData     string `json:"policyData" tf:"policy_data"`
+	// +optional
+	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ProjectIamPolicyStatus struct {
@@ -34,7 +36,7 @@ type ProjectIamPolicyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

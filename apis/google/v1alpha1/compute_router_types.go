@@ -40,9 +40,13 @@ type ComputeRouterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Bgp []ComputeRouterSpecBgp `json:"bgp,omitempty" tf:"bgp,omitempty"`
 	// +optional
-	Description string                    `json:"description,omitempty" tf:"description,omitempty"`
-	Name        string                    `json:"name" tf:"name"`
-	Network     string                    `json:"network" tf:"network"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	Network     string `json:"network" tf:"network"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Region      string                    `json:"region,omitempty" tf:"region,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -51,7 +55,7 @@ type ComputeRouterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

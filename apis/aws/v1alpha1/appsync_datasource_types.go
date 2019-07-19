@@ -19,6 +19,8 @@ type AppsyncDatasource struct {
 }
 
 type AppsyncDatasourceSpecDynamodbConfig struct {
+	// +optional
+	Region    string `json:"region,omitempty" tf:"region,omitempty"`
 	TableName string `json:"tableName" tf:"table_name"`
 	// +optional
 	UseCallerCredentials bool `json:"useCallerCredentials,omitempty" tf:"use_caller_credentials,omitempty"`
@@ -26,6 +28,8 @@ type AppsyncDatasourceSpecDynamodbConfig struct {
 
 type AppsyncDatasourceSpecElasticsearchConfig struct {
 	Endpoint string `json:"endpoint" tf:"endpoint"`
+	// +optional
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
 }
 
 type AppsyncDatasourceSpecHttpConfig struct {
@@ -64,7 +68,7 @@ type AppsyncDatasourceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

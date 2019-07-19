@@ -397,9 +397,15 @@ spec:
           type: object
         spec:
           properties:
+            charset:
+              type: string
+            collation:
+              type: string
             instance:
               type: string
             name:
+              type: string
+            project:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -425,8 +431,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

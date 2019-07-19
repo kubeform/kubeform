@@ -399,8 +399,14 @@ spec:
           properties:
             addressFamily:
               type: string
+            amazonAddress:
+              type: string
             bgpAsn:
               type: integer
+            bgpAuthKey:
+              type: string
+            customerAddress:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -428,8 +434,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

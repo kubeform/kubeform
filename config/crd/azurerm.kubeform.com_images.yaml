@@ -400,12 +400,16 @@ spec:
             dataDisk:
               items:
                 properties:
+                  blobURI:
+                    type: string
                   caching:
                     type: string
                   lun:
                     type: integer
                   managedDiskID:
                     type: string
+                  sizeGb:
+                    type: integer
                 type: object
               type: array
             location:
@@ -415,12 +419,18 @@ spec:
             osDisk:
               items:
                 properties:
+                  blobURI:
+                    type: string
                   caching:
+                    type: string
+                  managedDiskID:
                     type: string
                   osState:
                     type: string
                   osType:
                     type: string
+                  sizeGb:
+                    type: integer
                 type: object
               maxItems: 1
               type: array
@@ -437,6 +447,10 @@ spec:
               type: string
             sourceVirtualMachineID:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             zoneResilient:
               type: boolean
           required:
@@ -455,8 +469,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

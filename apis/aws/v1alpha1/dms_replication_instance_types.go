@@ -20,12 +20,33 @@ type DmsReplicationInstance struct {
 
 type DmsReplicationInstanceSpec struct {
 	// +optional
-	ApplyImmediately         bool   `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	AllocatedStorage int `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
+	// +optional
+	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	// +optional
+	AutoMinorVersionUpgrade bool `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
+	// +optional
+	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+	// +optional
+	EngineVersion string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
+	// +optional
+	KmsKeyArn string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
+	// +optional
+	MultiAz bool `json:"multiAz,omitempty" tf:"multi_az,omitempty"`
+	// +optional
+	PreferredMaintenanceWindow string `json:"preferredMaintenanceWindow,omitempty" tf:"preferred_maintenance_window,omitempty"`
+	// +optional
+	PubliclyAccessible       bool   `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
 	ReplicationInstanceClass string `json:"replicationInstanceClass" tf:"replication_instance_class"`
 	ReplicationInstanceID    string `json:"replicationInstanceID" tf:"replication_instance_id"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ReplicationSubnetGroupID string `json:"replicationSubnetGroupID,omitempty" tf:"replication_subnet_group_id,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	VpcSecurityGroupIDS []string                  `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
+	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type DmsReplicationInstanceStatus struct {
@@ -33,7 +54,7 @@ type DmsReplicationInstanceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

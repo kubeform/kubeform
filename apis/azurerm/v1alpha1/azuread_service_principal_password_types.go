@@ -19,10 +19,15 @@ type AzureadServicePrincipalPassword struct {
 }
 
 type AzureadServicePrincipalPasswordSpec struct {
-	EndDate            string                    `json:"endDate" tf:"end_date"`
-	ServicePrincipalID string                    `json:"servicePrincipalID" tf:"service_principal_id"`
-	Value              string                    `json:"value" tf:"value"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	EndDate string `json:"endDate" tf:"end_date"`
+	// +optional
+	KeyID              string `json:"keyID,omitempty" tf:"key_id,omitempty"`
+	ServicePrincipalID string `json:"servicePrincipalID" tf:"service_principal_id"`
+	// +optional
+	StartDate string `json:"startDate,omitempty" tf:"start_date,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Value       core.LocalObjectReference `json:"value" tf:"value"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type AzureadServicePrincipalPasswordStatus struct {
@@ -30,7 +35,7 @@ type AzureadServicePrincipalPasswordStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

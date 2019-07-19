@@ -403,7 +403,14 @@ spec:
                   batchFrequencyInSeconds:
                     type: integer
                   connectionString:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   containerName:
                     type: string
                   encoding:
@@ -421,6 +428,22 @@ spec:
                 - name
                 - type
                 type: object
+              type: array
+            fallbackRoute:
+              items:
+                properties:
+                  condition:
+                    type: string
+                  enabled:
+                    type: boolean
+                  endpointNames:
+                    items:
+                      type: string
+                    type: array
+                  source:
+                    type: string
+                type: object
+              maxItems: 1
               type: array
             ipFilterRule:
               items:
@@ -491,6 +514,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - location
           - name
@@ -508,8 +535,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

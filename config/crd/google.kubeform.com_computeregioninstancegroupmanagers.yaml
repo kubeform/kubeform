@@ -415,6 +415,11 @@ spec:
               type: string
             description:
               type: string
+            distributionPolicyZones:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             instanceTemplate:
               type: string
             name:
@@ -431,6 +436,8 @@ spec:
                 - port
                 type: object
               type: array
+            project:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -471,9 +478,34 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            targetSize:
+              type: integer
             updateStrategy:
               description: Deprecated
               type: string
+            version:
+              description: Deprecated
+              items:
+                properties:
+                  instanceTemplate:
+                    type: string
+                  name:
+                    type: string
+                  targetSize:
+                    items:
+                      properties:
+                        fixed:
+                          type: integer
+                        percent:
+                          type: integer
+                      type: object
+                    maxItems: 1
+                    type: array
+                required:
+                - instanceTemplate
+                - name
+                type: object
+              type: array
             waitForInstances:
               type: boolean
           required:
@@ -492,8 +524,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

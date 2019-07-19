@@ -27,7 +27,9 @@ type ProjectIamCustomRoleSpec struct {
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	Permissions []string `json:"permissions" tf:"permissions"`
-	RoleID      string   `json:"roleID" tf:"role_id"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	RoleID  string `json:"roleID" tf:"role_id"`
 	// +optional
 	Stage       string                    `json:"stage,omitempty" tf:"stage,omitempty"`
 	Title       string                    `json:"title" tf:"title"`
@@ -39,7 +41,7 @@ type ProjectIamCustomRoleStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -18,11 +18,45 @@ type LbTargetGroup struct {
 	Status            LbTargetGroupStatus `json:"status,omitempty"`
 }
 
+type LbTargetGroupSpecHealthCheck struct {
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	HealthyThreshold int `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
+	// +optional
+	Interval int `json:"interval,omitempty" tf:"interval,omitempty"`
+	// +optional
+	Matcher string `json:"matcher,omitempty" tf:"matcher,omitempty"`
+	// +optional
+	Path string `json:"path,omitempty" tf:"path,omitempty"`
+	// +optional
+	Port string `json:"port,omitempty" tf:"port,omitempty"`
+	// +optional
+	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
+	// +optional
+	Timeout int `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	// +optional
+	UnhealthyThreshold int `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
+}
+
+type LbTargetGroupSpecStickiness struct {
+	// +optional
+	CookieDuration int `json:"cookieDuration,omitempty" tf:"cookie_duration,omitempty"`
+	// +optional
+	Enabled bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	Type    string `json:"type" tf:"type"`
+}
+
 type LbTargetGroupSpec struct {
 	// +optional
 	DeregistrationDelay int `json:"deregistrationDelay,omitempty" tf:"deregistration_delay,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	HealthCheck []LbTargetGroupSpecHealthCheck `json:"healthCheck,omitempty" tf:"health_check,omitempty"`
+	// +optional
 	LambdaMultiValueHeadersEnabled bool `json:"lambdaMultiValueHeadersEnabled,omitempty" tf:"lambda_multi_value_headers_enabled,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
@@ -33,6 +67,9 @@ type LbTargetGroupSpec struct {
 	ProxyProtocolV2 bool `json:"proxyProtocolV2,omitempty" tf:"proxy_protocol_v2,omitempty"`
 	// +optional
 	SlowStart int `json:"slowStart,omitempty" tf:"slow_start,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Stickiness []LbTargetGroupSpecStickiness `json:"stickiness,omitempty" tf:"stickiness,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
@@ -47,7 +84,7 @@ type LbTargetGroupStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

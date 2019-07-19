@@ -397,6 +397,11 @@ spec:
           type: object
         spec:
           properties:
+            allowedPrefixes:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             associatedGatewayID:
               type: string
             dxGatewayID:
@@ -430,8 +435,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

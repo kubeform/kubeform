@@ -18,11 +18,24 @@ type ConfigConfigurationRecorder struct {
 	Status            ConfigConfigurationRecorderStatus `json:"status,omitempty"`
 }
 
+type ConfigConfigurationRecorderSpecRecordingGroup struct {
+	// +optional
+	AllSupported bool `json:"allSupported,omitempty" tf:"all_supported,omitempty"`
+	// +optional
+	IncludeGlobalResourceTypes bool `json:"includeGlobalResourceTypes,omitempty" tf:"include_global_resource_types,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	ResourceTypes []string `json:"resourceTypes,omitempty" tf:"resource_types,omitempty"`
+}
+
 type ConfigConfigurationRecorderSpec struct {
 	// +optional
-	Name        string                    `json:"name,omitempty" tf:"name,omitempty"`
-	RoleArn     string                    `json:"roleArn" tf:"role_arn"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	RecordingGroup []ConfigConfigurationRecorderSpecRecordingGroup `json:"recordingGroup,omitempty" tf:"recording_group,omitempty"`
+	RoleArn        string                                          `json:"roleArn" tf:"role_arn"`
+	ProviderRef    core.LocalObjectReference                       `json:"providerRef" tf:"-"`
 }
 
 type ConfigConfigurationRecorderStatus struct {
@@ -30,7 +43,7 @@ type ConfigConfigurationRecorderStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

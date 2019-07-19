@@ -58,6 +58,8 @@ type ComputeURLMapSpec struct {
 	// +optional
 	PathMatcher []ComputeURLMapSpecPathMatcher `json:"pathMatcher,omitempty" tf:"path_matcher,omitempty"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
 	Test        []ComputeURLMapSpecTest   `json:"test,omitempty" tf:"test,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
@@ -67,7 +69,7 @@ type ComputeURLMapStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

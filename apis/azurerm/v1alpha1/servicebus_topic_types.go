@@ -20,6 +20,12 @@ type ServicebusTopic struct {
 
 type ServicebusTopicSpec struct {
 	// +optional
+	AutoDeleteOnIdle string `json:"autoDeleteOnIdle,omitempty" tf:"auto_delete_on_idle,omitempty"`
+	// +optional
+	DefaultMessageTtl string `json:"defaultMessageTtl,omitempty" tf:"default_message_ttl,omitempty"`
+	// +optional
+	DuplicateDetectionHistoryTimeWindow string `json:"duplicateDetectionHistoryTimeWindow,omitempty" tf:"duplicate_detection_history_time_window,omitempty"`
+	// +optional
 	EnableBatchedOperations bool `json:"enableBatchedOperations,omitempty" tf:"enable_batched_operations,omitempty"`
 	// +optional
 	EnableExpress bool `json:"enableExpress,omitempty" tf:"enable_express,omitempty"`
@@ -30,9 +36,11 @@ type ServicebusTopicSpec struct {
 	EnablePartitioning bool `json:"enablePartitioning,omitempty" tf:"enable_partitioning,omitempty"`
 	// +optional
 	// Deprecated
-	Location      string `json:"location,omitempty" tf:"location,omitempty"`
-	Name          string `json:"name" tf:"name"`
-	NamespaceName string `json:"namespaceName" tf:"namespace_name"`
+	Location string `json:"location,omitempty" tf:"location,omitempty"`
+	// +optional
+	MaxSizeInMegabytes int    `json:"maxSizeInMegabytes,omitempty" tf:"max_size_in_megabytes,omitempty"`
+	Name               string `json:"name" tf:"name"`
+	NamespaceName      string `json:"namespaceName" tf:"namespace_name"`
 	// +optional
 	RequiresDuplicateDetection bool   `json:"requiresDuplicateDetection,omitempty" tf:"requires_duplicate_detection,omitempty"`
 	ResourceGroupName          string `json:"resourceGroupName" tf:"resource_group_name"`
@@ -48,7 +56,7 @@ type ServicebusTopicStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

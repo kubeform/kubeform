@@ -11,7 +11,6 @@ import (
 	"strconv"
 	"text/template"
 
-	aclog "github.com/appscode/go/log"
 	. "github.com/dave/jennifer/jen"
 	"github.com/gobuffalo/flect"
 	"github.com/hashicorp/terraform/helper/schema"
@@ -89,7 +88,7 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 		value := s[key]
 		id := flect.Capitalize(flect.Camelize(key))
 
-		if value.Computed || value.Removed != "" {
+		if (value.Computed && !value.Optional) || value.Removed != "" {
 			continue
 		}
 
@@ -114,7 +113,14 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 		}
 
 		if value.Sensitive {
-			aclog.Errorf("Resource %s from provider %s is leaking sensitive info in %s.%s", structName, providerName, structName, id)
+			if value.Type == schema.TypeString {
+				statements = append(statements, Comment("// Sensitive Data. Provide secret name which contains one value only"))
+			} else if value.Type == schema.TypeMap {
+				statements = append(statements, Comment("// Sensitive Data. Provide secret name which contains one or more values"))
+			}
+
+			statements = append(statements, Id(id).Id("core.LocalObjectReference").Tag(map[string]string{"json": jk, "tf": tk}))
+			continue
 		}
 
 		if value.Deprecated != "" {

@@ -397,7 +397,11 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             destination:
+              type: string
+            destinationID:
               type: string
             elasticsearchConfiguration:
               items:
@@ -406,6 +410,19 @@ spec:
                     type: integer
                   bufferingSize:
                     type: integer
+                  cloudwatchLoggingOptions:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                        logGroupName:
+                          type: string
+                        logStreamName:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                    uniqueItems: true
                   domainArn:
                     type: string
                   indexName:
@@ -465,6 +482,19 @@ spec:
                     type: integer
                   bufferSize:
                     type: integer
+                  cloudwatchLoggingOptions:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                        logGroupName:
+                          type: string
+                        logStreamName:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                    uniqueItems: true
                   compressionFormat:
                     type: string
                   dataFormatConversionConfiguration:
@@ -579,7 +609,11 @@ spec:
                         schemaConfiguration:
                           items:
                             properties:
+                              catalogID:
+                                type: string
                               databaseName:
+                                type: string
+                              region:
                                 type: string
                               roleArn:
                                 type: string
@@ -647,6 +681,19 @@ spec:
                           type: integer
                         bufferSize:
                           type: integer
+                        cloudwatchLoggingOptions:
+                          items:
+                            properties:
+                              enabled:
+                                type: boolean
+                              logGroupName:
+                                type: string
+                              logStreamName:
+                                type: string
+                            type: object
+                          maxItems: 1
+                          type: array
+                          uniqueItems: true
                         compressionFormat:
                           type: string
                         kmsKeyArn:
@@ -696,6 +743,19 @@ spec:
             redshiftConfiguration:
               items:
                 properties:
+                  cloudwatchLoggingOptions:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                        logGroupName:
+                          type: string
+                        logStreamName:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                    uniqueItems: true
                   clusterJdbcurl:
                     type: string
                   copyOptions:
@@ -705,7 +765,14 @@ spec:
                   dataTableName:
                     type: string
                   password:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   processingConfiguration:
                     items:
                       properties:
@@ -748,6 +815,19 @@ spec:
                           type: integer
                         bufferSize:
                           type: integer
+                        cloudwatchLoggingOptions:
+                          items:
+                            properties:
+                              enabled:
+                                type: boolean
+                              logGroupName:
+                                type: string
+                              logStreamName:
+                                type: string
+                            type: object
+                          maxItems: 1
+                          type: array
+                          uniqueItems: true
                         compressionFormat:
                           type: string
                         kmsKeyArn:
@@ -784,6 +864,19 @@ spec:
                     type: integer
                   bufferSize:
                     type: integer
+                  cloudwatchLoggingOptions:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                        logGroupName:
+                          type: string
+                        logStreamName:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                    uniqueItems: true
                   compressionFormat:
                     type: string
                   kmsKeyArn:
@@ -801,6 +894,19 @@ spec:
             splunkConfiguration:
               items:
                 properties:
+                  cloudwatchLoggingOptions:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                        logGroupName:
+                          type: string
+                        logStreamName:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                    uniqueItems: true
                   hecAcknowledgmentTimeout:
                     type: integer
                   hecEndpoint:
@@ -852,6 +958,8 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            versionID:
+              type: string
           required:
           - destination
           - name
@@ -867,8 +975,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

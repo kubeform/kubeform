@@ -410,6 +410,10 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - name
           - providerRef
@@ -425,8 +429,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

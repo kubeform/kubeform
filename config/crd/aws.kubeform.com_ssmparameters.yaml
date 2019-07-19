@@ -399,7 +399,11 @@ spec:
           properties:
             allowedPattern:
               type: string
+            arn:
+              type: string
             description:
+              type: string
+            keyID:
               type: string
             name:
               type: string
@@ -423,7 +427,14 @@ spec:
             type:
               type: string
             value:
-              type: string
+              description: Sensitive Data. Provide secret name which contains one
+                value only
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
           required:
           - name
           - providerRef
@@ -440,8 +451,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

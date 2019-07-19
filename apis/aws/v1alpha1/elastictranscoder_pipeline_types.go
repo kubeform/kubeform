@@ -18,6 +18,13 @@ type ElastictranscoderPipeline struct {
 	Status            ElastictranscoderPipelineStatus `json:"status,omitempty"`
 }
 
+type ElastictranscoderPipelineSpecContentConfig struct {
+	// +optional
+	Bucket string `json:"bucket,omitempty" tf:"bucket,omitempty"`
+	// +optional
+	StorageClass string `json:"storageClass,omitempty" tf:"storage_class,omitempty"`
+}
+
 type ElastictranscoderPipelineSpecContentConfigPermissions struct {
 	// +optional
 	Access []string `json:"access,omitempty" tf:"access,omitempty"`
@@ -38,6 +45,13 @@ type ElastictranscoderPipelineSpecNotifications struct {
 	Warning string `json:"warning,omitempty" tf:"warning,omitempty"`
 }
 
+type ElastictranscoderPipelineSpecThumbnailConfig struct {
+	// +optional
+	Bucket string `json:"bucket,omitempty" tf:"bucket,omitempty"`
+	// +optional
+	StorageClass string `json:"storageClass,omitempty" tf:"storage_class,omitempty"`
+}
+
 type ElastictranscoderPipelineSpecThumbnailConfigPermissions struct {
 	// +optional
 	Access []string `json:"access,omitempty" tf:"access,omitempty"`
@@ -51,14 +65,26 @@ type ElastictranscoderPipelineSpec struct {
 	// +optional
 	AwsKmsKeyArn string `json:"awsKmsKeyArn,omitempty" tf:"aws_kms_key_arn,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	ContentConfig []ElastictranscoderPipelineSpecContentConfig `json:"contentConfig,omitempty" tf:"content_config,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ContentConfigPermissions []ElastictranscoderPipelineSpecContentConfigPermissions `json:"contentConfigPermissions,omitempty" tf:"content_config_permissions,omitempty"`
 	InputBucket              string                                                  `json:"inputBucket" tf:"input_bucket"`
 	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	Notifications []ElastictranscoderPipelineSpecNotifications `json:"notifications,omitempty" tf:"notifications,omitempty"`
-	Role          string                                       `json:"role" tf:"role"`
+	// +optional
+	OutputBucket string `json:"outputBucket,omitempty" tf:"output_bucket,omitempty"`
+	Role         string `json:"role" tf:"role"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	ThumbnailConfig []ElastictranscoderPipelineSpecThumbnailConfig `json:"thumbnailConfig,omitempty" tf:"thumbnail_config,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ThumbnailConfigPermissions []ElastictranscoderPipelineSpecThumbnailConfigPermissions `json:"thumbnailConfigPermissions,omitempty" tf:"thumbnail_config_permissions,omitempty"`
@@ -70,7 +96,7 @@ type ElastictranscoderPipelineStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

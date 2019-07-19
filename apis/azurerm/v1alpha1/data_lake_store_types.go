@@ -22,12 +22,16 @@ type DataLakeStoreSpec struct {
 	// +optional
 	EncryptionState string `json:"encryptionState,omitempty" tf:"encryption_state,omitempty"`
 	// +optional
+	EncryptionType string `json:"encryptionType,omitempty" tf:"encryption_type,omitempty"`
+	// +optional
 	FirewallAllowAzureIPS string `json:"firewallAllowAzureIPS,omitempty" tf:"firewall_allow_azure_ips,omitempty"`
 	// +optional
 	FirewallState     string `json:"firewallState,omitempty" tf:"firewall_state,omitempty"`
 	Location          string `json:"location" tf:"location"`
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	Tier        string                    `json:"tier,omitempty" tf:"tier,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -38,7 +42,7 @@ type DataLakeStoreStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -60,7 +60,9 @@ type MonitorActivityLogAlertSpec struct {
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
-	Scopes      []string                  `json:"scopes" tf:"scopes"`
+	Scopes []string `json:"scopes" tf:"scopes"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -69,7 +71,7 @@ type MonitorActivityLogAlertStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

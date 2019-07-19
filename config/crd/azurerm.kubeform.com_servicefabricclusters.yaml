@@ -470,6 +470,8 @@ spec:
                 type: object
               maxItems: 2
               type: array
+            clusterCodeVersion:
+              type: string
             diagnosticsConfig:
               items:
                 properties:
@@ -514,6 +516,19 @@ spec:
             nodeType:
               items:
                 properties:
+                  applicationPorts:
+                    items:
+                      properties:
+                        endPort:
+                          type: integer
+                        startPort:
+                          type: integer
+                      required:
+                      - endPort
+                      - startPort
+                      type: object
+                    maxItems: 1
+                    type: array
                   capacities:
                     additionalProperties:
                       type: string
@@ -522,6 +537,19 @@ spec:
                     type: integer
                   durabilityLevel:
                     type: string
+                  ephemeralPorts:
+                    items:
+                      properties:
+                        endPort:
+                          type: integer
+                        startPort:
+                          type: integer
+                      required:
+                      - endPort
+                      - startPort
+                      type: object
+                    maxItems: 1
+                    type: array
                   httpEndpointPort:
                     type: integer
                   instanceCount:
@@ -572,6 +600,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             upgradeMode:
               type: string
             vmImage:
@@ -597,8 +629,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

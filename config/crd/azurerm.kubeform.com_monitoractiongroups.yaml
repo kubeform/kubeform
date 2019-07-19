@@ -441,6 +441,10 @@ spec:
                 - phoneNumber
                 type: object
               type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             webhookReceiver:
               items:
                 properties:
@@ -469,8 +473,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

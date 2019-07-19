@@ -418,6 +418,8 @@ spec:
               type: object
             tag:
               type: string
+            ttl:
+              type: integer
             type:
               type: string
             value:
@@ -441,8 +443,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -19,8 +19,9 @@ type ApplicationGateway struct {
 }
 
 type ApplicationGatewaySpecAuthenticationCertificate struct {
-	Data string `json:"data" tf:"data"`
-	Name string `json:"name" tf:"name"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Data core.LocalObjectReference `json:"data" tf:"data"`
+	Name string                    `json:"name" tf:"name"`
 }
 
 type ApplicationGatewaySpecAutoscaleConfiguration struct {
@@ -30,7 +31,21 @@ type ApplicationGatewaySpecAutoscaleConfiguration struct {
 }
 
 type ApplicationGatewaySpecBackendAddressPool struct {
-	Name string `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	// Deprecated
+	FqdnList []string `json:"fqdnList,omitempty" tf:"fqdn_list,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	Fqdns []string `json:"fqdns,omitempty" tf:"fqdns,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	// Deprecated
+	IpAddressList []string `json:"ipAddressList,omitempty" tf:"ip_address_list,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	IpAddresses []string `json:"ipAddresses,omitempty" tf:"ip_addresses,omitempty"`
+	Name        string   `json:"name" tf:"name"`
 }
 
 type ApplicationGatewaySpecBackendHTTPSettingsAuthenticationCertificate struct {
@@ -73,6 +88,14 @@ type ApplicationGatewaySpecCustomErrorConfiguration struct {
 
 type ApplicationGatewaySpecFrontendIPConfiguration struct {
 	Name string `json:"name" tf:"name"`
+	// +optional
+	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
+	// +optional
+	PrivateIPAddressAllocation string `json:"privateIPAddressAllocation,omitempty" tf:"private_ip_address_allocation,omitempty"`
+	// +optional
+	PublicIPAddressID string `json:"publicIPAddressID,omitempty" tf:"public_ip_address_id,omitempty"`
+	// +optional
+	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
 }
 
 type ApplicationGatewaySpecFrontendPort struct {
@@ -105,10 +128,20 @@ type ApplicationGatewaySpecHttpListener struct {
 	SslCertificateName string `json:"sslCertificateName,omitempty" tf:"ssl_certificate_name,omitempty"`
 }
 
+type ApplicationGatewaySpecProbeMatch struct {
+	// +optional
+	Body string `json:"body,omitempty" tf:"body,omitempty"`
+	// +optional
+	StatusCode []string `json:"statusCode,omitempty" tf:"status_code,omitempty"`
+}
+
 type ApplicationGatewaySpecProbe struct {
 	// +optional
 	Host     string `json:"host,omitempty" tf:"host,omitempty"`
 	Interval int    `json:"interval" tf:"interval"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Match []ApplicationGatewaySpecProbeMatch `json:"match,omitempty" tf:"match,omitempty"`
 	// +optional
 	MinimumServers int    `json:"minimumServers,omitempty" tf:"minimum_servers,omitempty"`
 	Name           string `json:"name" tf:"name"`
@@ -193,9 +226,24 @@ type ApplicationGatewaySpecSku struct {
 }
 
 type ApplicationGatewaySpecSslCertificate struct {
-	Data     string `json:"data" tf:"data"`
-	Name     string `json:"name" tf:"name"`
-	Password string `json:"password" tf:"password"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Data core.LocalObjectReference `json:"data" tf:"data"`
+	Name string                    `json:"name" tf:"name"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password" tf:"password"`
+}
+
+type ApplicationGatewaySpecSslPolicy struct {
+	// +optional
+	CipherSuites []string `json:"cipherSuites,omitempty" tf:"cipher_suites,omitempty"`
+	// +optional
+	DisabledProtocols []string `json:"disabledProtocols,omitempty" tf:"disabled_protocols,omitempty"`
+	// +optional
+	MinProtocolVersion string `json:"minProtocolVersion,omitempty" tf:"min_protocol_version,omitempty"`
+	// +optional
+	PolicyName string `json:"policyName,omitempty" tf:"policy_name,omitempty"`
+	// +optional
+	PolicyType string `json:"policyType,omitempty" tf:"policy_type,omitempty"`
 }
 
 type ApplicationGatewaySpecUrlPathMapPathRule struct {
@@ -268,6 +316,9 @@ type ApplicationGatewaySpec struct {
 	// +optional
 	CustomErrorConfiguration []ApplicationGatewaySpecCustomErrorConfiguration `json:"customErrorConfiguration,omitempty" tf:"custom_error_configuration,omitempty"`
 	// +optional
+	// Deprecated
+	DisabledSslProtocols []string `json:"disabledSslProtocols,omitempty" tf:"disabled_ssl_protocols,omitempty"`
+	// +optional
 	EnableHttp2 bool `json:"enableHttp2,omitempty" tf:"enable_http2,omitempty"`
 	// +kubebuilder:validation:MinItems=1
 	FrontendIPConfiguration []ApplicationGatewaySpecFrontendIPConfiguration `json:"frontendIPConfiguration" tf:"frontend_ip_configuration"`
@@ -291,6 +342,10 @@ type ApplicationGatewaySpec struct {
 	// +optional
 	SslCertificate []ApplicationGatewaySpecSslCertificate `json:"sslCertificate,omitempty" tf:"ssl_certificate,omitempty"`
 	// +optional
+	SslPolicy []ApplicationGatewaySpecSslPolicy `json:"sslPolicy,omitempty" tf:"ssl_policy,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
 	UrlPathMap []ApplicationGatewaySpecUrlPathMap `json:"urlPathMap,omitempty" tf:"url_path_map,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -305,7 +360,7 @@ type ApplicationGatewayStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

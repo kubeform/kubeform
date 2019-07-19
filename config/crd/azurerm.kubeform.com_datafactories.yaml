@@ -419,6 +419,16 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            identity:
+              items:
+                properties:
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              maxItems: 1
+              type: array
             location:
               type: string
             name:
@@ -434,6 +444,10 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             vstsConfiguration:
               items:
                 properties:
@@ -475,8 +489,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

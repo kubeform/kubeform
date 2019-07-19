@@ -18,8 +18,32 @@ type BigqueryDataset struct {
 	Status            BigqueryDatasetStatus `json:"status,omitempty"`
 }
 
-type BigqueryDatasetSpec struct {
+type BigqueryDatasetSpecAccessView struct {
 	DatasetID string `json:"datasetID" tf:"dataset_id"`
+	ProjectID string `json:"projectID" tf:"project_id"`
+	TableID   string `json:"tableID" tf:"table_id"`
+}
+
+type BigqueryDatasetSpecAccess struct {
+	// +optional
+	Domain string `json:"domain,omitempty" tf:"domain,omitempty"`
+	// +optional
+	GroupByEmail string `json:"groupByEmail,omitempty" tf:"group_by_email,omitempty"`
+	// +optional
+	Role string `json:"role,omitempty" tf:"role,omitempty"`
+	// +optional
+	SpecialGroup string `json:"specialGroup,omitempty" tf:"special_group,omitempty"`
+	// +optional
+	UserByEmail string `json:"userByEmail,omitempty" tf:"user_by_email,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	View []BigqueryDatasetSpecAccessView `json:"view,omitempty" tf:"view,omitempty"`
+}
+
+type BigqueryDatasetSpec struct {
+	// +optional
+	Access    []BigqueryDatasetSpecAccess `json:"access,omitempty" tf:"access,omitempty"`
+	DatasetID string                      `json:"datasetID" tf:"dataset_id"`
 	// +optional
 	DefaultTableExpirationMs int `json:"defaultTableExpirationMs,omitempty" tf:"default_table_expiration_ms,omitempty"`
 	// +optional
@@ -29,7 +53,9 @@ type BigqueryDatasetSpec struct {
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
-	Location    string                    `json:"location,omitempty" tf:"location,omitempty"`
+	Location string `json:"location,omitempty" tf:"location,omitempty"`
+	// +optional
+	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -38,7 +64,7 @@ type BigqueryDatasetStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

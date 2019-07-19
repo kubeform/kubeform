@@ -24,9 +24,11 @@ type TemplateDeploymentSpec struct {
 	// +optional
 	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 	// +optional
-	ParametersBody    string                    `json:"parametersBody,omitempty" tf:"parameters_body,omitempty"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ParametersBody    string `json:"parametersBody,omitempty" tf:"parameters_body,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	TemplateBody string                    `json:"templateBody,omitempty" tf:"template_body,omitempty"`
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type TemplateDeploymentStatus struct {
@@ -34,7 +36,7 @@ type TemplateDeploymentStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

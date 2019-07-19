@@ -18,9 +18,35 @@ type VpcPeeringConnectionAccepter struct {
 	Status            VpcPeeringConnectionAccepterStatus `json:"status,omitempty"`
 }
 
+type VpcPeeringConnectionAccepterSpecAccepter struct {
+	// +optional
+	AllowClassicLinkToRemoteVpc bool `json:"allowClassicLinkToRemoteVpc,omitempty" tf:"allow_classic_link_to_remote_vpc,omitempty"`
+	// +optional
+	AllowRemoteVpcDNSResolution bool `json:"allowRemoteVpcDNSResolution,omitempty" tf:"allow_remote_vpc_dns_resolution,omitempty"`
+	// +optional
+	AllowVpcToRemoteClassicLink bool `json:"allowVpcToRemoteClassicLink,omitempty" tf:"allow_vpc_to_remote_classic_link,omitempty"`
+}
+
+type VpcPeeringConnectionAccepterSpecRequester struct {
+	// +optional
+	AllowClassicLinkToRemoteVpc bool `json:"allowClassicLinkToRemoteVpc,omitempty" tf:"allow_classic_link_to_remote_vpc,omitempty"`
+	// +optional
+	AllowRemoteVpcDNSResolution bool `json:"allowRemoteVpcDNSResolution,omitempty" tf:"allow_remote_vpc_dns_resolution,omitempty"`
+	// +optional
+	AllowVpcToRemoteClassicLink bool `json:"allowVpcToRemoteClassicLink,omitempty" tf:"allow_vpc_to_remote_classic_link,omitempty"`
+}
+
 type VpcPeeringConnectionAccepterSpec struct {
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	Accepter []VpcPeeringConnectionAccepterSpecAccepter `json:"accepter,omitempty" tf:"accepter,omitempty"`
+	// +optional
 	AutoAccept bool `json:"autoAccept,omitempty" tf:"auto_accept,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	Requester []VpcPeeringConnectionAccepterSpecRequester `json:"requester,omitempty" tf:"requester,omitempty"`
 	// +optional
 	Tags                   map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	VpcPeeringConnectionID string                    `json:"vpcPeeringConnectionID" tf:"vpc_peering_connection_id"`
@@ -32,7 +58,7 @@ type VpcPeeringConnectionAccepterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -18,8 +18,18 @@ type MacieS3BucketAssociation struct {
 	Status            MacieS3BucketAssociationStatus `json:"status,omitempty"`
 }
 
+type MacieS3BucketAssociationSpecClassificationType struct {
+	// +optional
+	Continuous string `json:"continuous,omitempty" tf:"continuous,omitempty"`
+	// +optional
+	OneTime string `json:"oneTime,omitempty" tf:"one_time,omitempty"`
+}
+
 type MacieS3BucketAssociationSpec struct {
 	BucketName string `json:"bucketName" tf:"bucket_name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ClassificationType []MacieS3BucketAssociationSpecClassificationType `json:"classificationType,omitempty" tf:"classification_type,omitempty"`
 	// +optional
 	MemberAccountID string `json:"memberAccountID,omitempty" tf:"member_account_id,omitempty"`
 	// +optional
@@ -32,7 +42,7 @@ type MacieS3BucketAssociationStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

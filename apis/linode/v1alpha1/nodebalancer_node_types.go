@@ -19,11 +19,15 @@ type NodebalancerNode struct {
 }
 
 type NodebalancerNodeSpec struct {
-	Address        string                    `json:"address" tf:"address"`
-	ConfigID       int                       `json:"configID" tf:"config_id"`
-	Label          string                    `json:"label" tf:"label"`
-	NodebalancerID int                       `json:"nodebalancerID" tf:"nodebalancer_id"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Address  string `json:"address" tf:"address"`
+	ConfigID int    `json:"configID" tf:"config_id"`
+	Label    string `json:"label" tf:"label"`
+	// +optional
+	Mode           string `json:"mode,omitempty" tf:"mode,omitempty"`
+	NodebalancerID int    `json:"nodebalancerID" tf:"nodebalancer_id"`
+	// +optional
+	Weight      int                       `json:"weight,omitempty" tf:"weight,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type NodebalancerNodeStatus struct {
@@ -31,7 +35,7 @@ type NodebalancerNodeStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

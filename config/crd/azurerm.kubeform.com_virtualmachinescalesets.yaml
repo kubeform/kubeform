@@ -421,7 +421,14 @@ spec:
                   name:
                     type: string
                   protectedSettings:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   provisionAfterExtensions:
                     items:
                       type: string
@@ -444,6 +451,22 @@ spec:
               type: array
               uniqueItems: true
             healthProbeID:
+              type: string
+            identity:
+              items:
+                properties:
+                  identityIDS:
+                    items:
+                      type: string
+                    type: array
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              maxItems: 1
+              type: array
+            licenseType:
               type: string
             location:
               type: string
@@ -481,6 +504,11 @@ spec:
                           type: array
                           uniqueItems: true
                         loadBalancerBackendAddressPoolIDS:
+                          items:
+                            type: string
+                          type: array
+                          uniqueItems: true
+                        loadBalancerInboundNATRulesIDS:
                           items:
                             type: string
                           type: array
@@ -532,7 +560,14 @@ spec:
               items:
                 properties:
                   adminPassword:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   adminUsername:
                     type: string
                   computerNamePrefix:
@@ -545,6 +580,26 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            osProfileLinuxConfig:
+              items:
+                properties:
+                  disablePasswordAuthentication:
+                    type: boolean
+                  sshKeys:
+                    items:
+                      properties:
+                        keyData:
+                          type: string
+                        path:
+                          type: string
+                      required:
+                      - path
+                      type: object
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
+              uniqueItems: true
             osProfileSecrets:
               items:
                 properties:
@@ -575,7 +630,14 @@ spec:
                         component:
                           type: string
                         content:
-                          type: string
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
                         pass:
                           type: string
                         settingName:
@@ -661,6 +723,8 @@ spec:
                     type: integer
                   name:
                     type: string
+                  tier:
+                    type: string
                 required:
                 - capacity
                 - name
@@ -670,21 +734,48 @@ spec:
             storageProfileDataDisk:
               items:
                 properties:
+                  caching:
+                    type: string
                   createOption:
                     type: string
+                  diskSizeGb:
+                    type: integer
                   lun:
                     type: integer
+                  managedDiskType:
+                    type: string
                 required:
                 - createOption
                 - lun
                 type: object
               type: array
+            storageProfileImageReference:
+              items:
+                properties:
+                  ID:
+                    type: string
+                  offer:
+                    type: string
+                  publisher:
+                    type: string
+                  sku:
+                    type: string
+                  version:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+              uniqueItems: true
             storageProfileOsDisk:
               items:
                 properties:
+                  caching:
+                    type: string
                   createOption:
                     type: string
                   image:
+                    type: string
+                  managedDiskType:
                     type: string
                   name:
                     type: string
@@ -701,6 +792,10 @@ spec:
               maxItems: 1
               type: array
               uniqueItems: true
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             upgradePolicyMode:
               type: string
             zones:
@@ -728,8 +823,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

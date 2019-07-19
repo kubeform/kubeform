@@ -26,10 +26,19 @@ type ComputeInstanceGroupSpecNamedPort struct {
 type ComputeInstanceGroupSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	Name        string `json:"name" tf:"name"`
 	// +optional
-	NamedPort   []ComputeInstanceGroupSpecNamedPort `json:"namedPort,omitempty" tf:"named_port,omitempty"`
-	ProviderRef core.LocalObjectReference           `json:"providerRef" tf:"-"`
+	// +kubebuilder:validation:UniqueItems=true
+	Instances []string `json:"instances,omitempty" tf:"instances,omitempty"`
+	Name      string   `json:"name" tf:"name"`
+	// +optional
+	NamedPort []ComputeInstanceGroupSpecNamedPort `json:"namedPort,omitempty" tf:"named_port,omitempty"`
+	// +optional
+	Network string `json:"network,omitempty" tf:"network,omitempty"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ComputeInstanceGroupStatus struct {
@@ -37,7 +46,7 @@ type ComputeInstanceGroupStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

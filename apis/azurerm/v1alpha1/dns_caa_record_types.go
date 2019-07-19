@@ -27,11 +27,13 @@ type DnsCaaRecordSpecRecord struct {
 type DnsCaaRecordSpec struct {
 	Name string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
-	Record            []DnsCaaRecordSpecRecord  `json:"record" tf:"record"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	Ttl               int                       `json:"ttl" tf:"ttl"`
-	ZoneName          string                    `json:"zoneName" tf:"zone_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Record            []DnsCaaRecordSpecRecord `json:"record" tf:"record"`
+	ResourceGroupName string                   `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	Ttl         int                       `json:"ttl" tf:"ttl"`
+	ZoneName    string                    `json:"zoneName" tf:"zone_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type DnsCaaRecordStatus struct {
@@ -39,7 +41,7 @@ type DnsCaaRecordStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

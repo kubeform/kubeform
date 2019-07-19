@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            name:
+              type: string
             namePrefix:
               type: string
             pgpKey:
@@ -410,6 +412,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            publicKey:
+              type: string
           required:
           - providerRef
           type: object
@@ -423,8 +427,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

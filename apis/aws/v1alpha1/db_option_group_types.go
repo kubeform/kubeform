@@ -44,6 +44,10 @@ type DbOptionGroupSpec struct {
 	EngineName         string `json:"engineName" tf:"engine_name"`
 	MajorEngineVersion string `json:"majorEngineVersion" tf:"major_engine_version"`
 	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Option []DbOptionGroupSpecOption `json:"option,omitempty" tf:"option,omitempty"`
 	// +optional
@@ -58,7 +62,7 @@ type DbOptionGroupStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -18,6 +18,8 @@ type Stackscript struct {
 	Status            StackscriptStatus `json:"status,omitempty"`
 }
 
+type StackscriptSpecUserDefinedFields struct{}
+
 type StackscriptSpec struct {
 	Description string   `json:"description" tf:"description"`
 	Images      []string `json:"images" tf:"images"`
@@ -25,9 +27,11 @@ type StackscriptSpec struct {
 	IsPublic bool   `json:"isPublic,omitempty" tf:"is_public,omitempty"`
 	Label    string `json:"label" tf:"label"`
 	// +optional
-	RevNote     string                    `json:"revNote,omitempty" tf:"rev_note,omitempty"`
-	Script      string                    `json:"script" tf:"script"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RevNote string `json:"revNote,omitempty" tf:"rev_note,omitempty"`
+	Script  string `json:"script" tf:"script"`
+	// +optional
+	UserDefinedFields []StackscriptSpecUserDefinedFields `json:"userDefinedFields,omitempty" tf:"user_defined_fields,omitempty"`
+	ProviderRef       core.LocalObjectReference          `json:"providerRef" tf:"-"`
 }
 
 type StackscriptStatus struct {
@@ -35,7 +39,7 @@ type StackscriptStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

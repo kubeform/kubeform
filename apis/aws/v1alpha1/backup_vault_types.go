@@ -19,7 +19,9 @@ type BackupVault struct {
 }
 
 type BackupVaultSpec struct {
-	Name string `json:"name" tf:"name"`
+	// +optional
+	KmsKeyArn string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
+	Name      string `json:"name" tf:"name"`
 	// +optional
 	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -30,7 +32,7 @@ type BackupVaultStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

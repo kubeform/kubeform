@@ -48,8 +48,9 @@ type ContainerServiceSpecMasterProfile struct {
 }
 
 type ContainerServiceSpecServicePrincipal struct {
-	ClientID     string `json:"clientID" tf:"client_id"`
-	ClientSecret string `json:"clientSecret" tf:"client_secret"`
+	ClientID string `json:"clientID" tf:"client_id"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ClientSecret core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
 }
 
 type ContainerServiceSpec struct {
@@ -73,7 +74,9 @@ type ContainerServiceSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	ServicePrincipal []ContainerServiceSpecServicePrincipal `json:"servicePrincipal,omitempty" tf:"service_principal,omitempty"`
-	ProviderRef      core.LocalObjectReference              `json:"providerRef" tf:"-"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ContainerServiceStatus struct {
@@ -81,7 +84,7 @@ type ContainerServiceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

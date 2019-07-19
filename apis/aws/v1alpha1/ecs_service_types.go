@@ -66,6 +66,8 @@ type EcsServiceSpecServiceRegistries struct {
 
 type EcsServiceSpec struct {
 	// +optional
+	Cluster string `json:"cluster,omitempty" tf:"cluster,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	DeploymentController []EcsServiceSpecDeploymentController `json:"deploymentController,omitempty" tf:"deployment_controller,omitempty"`
 	// +optional
@@ -78,6 +80,8 @@ type EcsServiceSpec struct {
 	EnableEcsManagedTags bool `json:"enableEcsManagedTags,omitempty" tf:"enable_ecs_managed_tags,omitempty"`
 	// +optional
 	HealthCheckGracePeriodSeconds int `json:"healthCheckGracePeriodSeconds,omitempty" tf:"health_check_grace_period_seconds,omitempty"`
+	// +optional
+	IamRole string `json:"iamRole,omitempty" tf:"iam_role,omitempty"`
 	// +optional
 	LaunchType string `json:"launchType,omitempty" tf:"launch_type,omitempty"`
 	// +optional
@@ -95,6 +99,8 @@ type EcsServiceSpec struct {
 	// +kubebuilder:validation:MaxItems=10
 	// +kubebuilder:validation:UniqueItems=true
 	PlacementConstraints []EcsServiceSpecPlacementConstraints `json:"placementConstraints,omitempty" tf:"placement_constraints,omitempty"`
+	// +optional
+	PlatformVersion string `json:"platformVersion,omitempty" tf:"platform_version,omitempty"`
 	// +optional
 	PropagateTags string `json:"propagateTags,omitempty" tf:"propagate_tags,omitempty"`
 	// +optional
@@ -114,7 +120,7 @@ type EcsServiceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

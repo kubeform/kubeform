@@ -405,6 +405,8 @@ spec:
               type: boolean
             location:
               type: string
+            maximumThroughputUnits:
+              type: integer
             name:
               type: string
             providerRef:
@@ -420,6 +422,10 @@ spec:
               type: string
             sku:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - location
           - name
@@ -437,8 +443,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

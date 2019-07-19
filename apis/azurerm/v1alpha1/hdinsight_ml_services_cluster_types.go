@@ -19,14 +19,16 @@ type HdinsightMlServicesCluster struct {
 }
 
 type HdinsightMlServicesClusterSpecGateway struct {
-	Enabled  bool   `json:"enabled" tf:"enabled"`
-	Password string `json:"password" tf:"password"`
-	Username string `json:"username" tf:"username"`
+	Enabled bool `json:"enabled" tf:"enabled"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password" tf:"password"`
+	Username string                    `json:"username" tf:"username"`
 }
 
 type HdinsightMlServicesClusterSpecRolesEdgeNode struct {
 	// +optional
-	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -40,7 +42,8 @@ type HdinsightMlServicesClusterSpecRolesEdgeNode struct {
 
 type HdinsightMlServicesClusterSpecRolesHeadNode struct {
 	// +optional
-	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -56,7 +59,8 @@ type HdinsightMlServicesClusterSpecRolesWorkerNode struct {
 	// +optional
 	MinInstanceCount int `json:"minInstanceCount,omitempty" tf:"min_instance_count,omitempty"`
 	// +optional
-	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -71,7 +75,8 @@ type HdinsightMlServicesClusterSpecRolesWorkerNode struct {
 
 type HdinsightMlServicesClusterSpecRolesZookeeperNode struct {
 	// +optional
-	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -95,9 +100,10 @@ type HdinsightMlServicesClusterSpecRoles struct {
 }
 
 type HdinsightMlServicesClusterSpecStorageAccount struct {
-	IsDefault          bool   `json:"isDefault" tf:"is_default"`
-	StorageAccountKey  string `json:"storageAccountKey" tf:"storage_account_key"`
-	StorageContainerID string `json:"storageContainerID" tf:"storage_container_id"`
+	IsDefault bool `json:"isDefault" tf:"is_default"`
+	// Sensitive Data. Provide secret name which contains one value only
+	StorageAccountKey  core.LocalObjectReference `json:"storageAccountKey" tf:"storage_account_key"`
+	StorageContainerID string                    `json:"storageContainerID" tf:"storage_container_id"`
 }
 
 type HdinsightMlServicesClusterSpec struct {
@@ -111,8 +117,10 @@ type HdinsightMlServicesClusterSpec struct {
 	Roles          []HdinsightMlServicesClusterSpecRoles          `json:"roles" tf:"roles"`
 	Rstudio        bool                                           `json:"rstudio" tf:"rstudio"`
 	StorageAccount []HdinsightMlServicesClusterSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
-	Tier           string                                         `json:"tier" tf:"tier"`
-	ProviderRef    core.LocalObjectReference                      `json:"providerRef" tf:"-"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tier        string                    `json:"tier" tf:"tier"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type HdinsightMlServicesClusterStatus struct {
@@ -120,7 +128,7 @@ type HdinsightMlServicesClusterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -418,6 +418,101 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            request:
+              items:
+                properties:
+                  description:
+                    type: string
+                  header:
+                    items:
+                      properties:
+                        defaultValue:
+                          type: string
+                        description:
+                          type: string
+                        name:
+                          type: string
+                        required:
+                          type: boolean
+                        type:
+                          type: string
+                        values:
+                          items:
+                            type: string
+                          type: array
+                          uniqueItems: true
+                      required:
+                      - name
+                      - required
+                      - type
+                      type: object
+                    type: array
+                  queryParameter:
+                    items:
+                      properties:
+                        defaultValue:
+                          type: string
+                        description:
+                          type: string
+                        name:
+                          type: string
+                        required:
+                          type: boolean
+                        type:
+                          type: string
+                        values:
+                          items:
+                            type: string
+                          type: array
+                          uniqueItems: true
+                      required:
+                      - name
+                      - required
+                      - type
+                      type: object
+                    type: array
+                  representation:
+                    items:
+                      properties:
+                        contentType:
+                          type: string
+                        formParameter:
+                          items:
+                            properties:
+                              defaultValue:
+                                type: string
+                              description:
+                                type: string
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              type:
+                                type: string
+                              values:
+                                items:
+                                  type: string
+                                type: array
+                                uniqueItems: true
+                            required:
+                            - name
+                            - required
+                            - type
+                            type: object
+                          type: array
+                        sample:
+                          type: string
+                        schemaID:
+                          type: string
+                        typeName:
+                          type: string
+                      required:
+                      - contentType
+                      type: object
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
             resourceGroupName:
               type: string
             response:
@@ -540,8 +635,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

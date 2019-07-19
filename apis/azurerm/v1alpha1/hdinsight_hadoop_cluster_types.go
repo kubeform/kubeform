@@ -23,14 +23,16 @@ type HdinsightHadoopClusterSpecComponentVersion struct {
 }
 
 type HdinsightHadoopClusterSpecGateway struct {
-	Enabled  bool   `json:"enabled" tf:"enabled"`
-	Password string `json:"password" tf:"password"`
-	Username string `json:"username" tf:"username"`
+	Enabled bool `json:"enabled" tf:"enabled"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password" tf:"password"`
+	Username string                    `json:"username" tf:"username"`
 }
 
 type HdinsightHadoopClusterSpecRolesHeadNode struct {
 	// +optional
-	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -46,7 +48,8 @@ type HdinsightHadoopClusterSpecRolesWorkerNode struct {
 	// +optional
 	MinInstanceCount int `json:"minInstanceCount,omitempty" tf:"min_instance_count,omitempty"`
 	// +optional
-	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -61,7 +64,8 @@ type HdinsightHadoopClusterSpecRolesWorkerNode struct {
 
 type HdinsightHadoopClusterSpecRolesZookeeperNode struct {
 	// +optional
-	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -83,9 +87,10 @@ type HdinsightHadoopClusterSpecRoles struct {
 }
 
 type HdinsightHadoopClusterSpecStorageAccount struct {
-	IsDefault          bool   `json:"isDefault" tf:"is_default"`
-	StorageAccountKey  string `json:"storageAccountKey" tf:"storage_account_key"`
-	StorageContainerID string `json:"storageContainerID" tf:"storage_container_id"`
+	IsDefault bool `json:"isDefault" tf:"is_default"`
+	// Sensitive Data. Provide secret name which contains one value only
+	StorageAccountKey  core.LocalObjectReference `json:"storageAccountKey" tf:"storage_account_key"`
+	StorageContainerID string                    `json:"storageContainerID" tf:"storage_container_id"`
 }
 
 type HdinsightHadoopClusterSpec struct {
@@ -100,8 +105,10 @@ type HdinsightHadoopClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Roles          []HdinsightHadoopClusterSpecRoles          `json:"roles" tf:"roles"`
 	StorageAccount []HdinsightHadoopClusterSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
-	Tier           string                                     `json:"tier" tf:"tier"`
-	ProviderRef    core.LocalObjectReference                  `json:"providerRef" tf:"-"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tier        string                    `json:"tier" tf:"tier"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type HdinsightHadoopClusterStatus struct {
@@ -109,7 +116,7 @@ type HdinsightHadoopClusterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

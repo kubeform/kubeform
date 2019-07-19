@@ -19,8 +19,9 @@ type PinpointGcmChannel struct {
 }
 
 type PinpointGcmChannelSpec struct {
-	ApiKey        string `json:"apiKey" tf:"api_key"`
-	ApplicationID string `json:"applicationID" tf:"application_id"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ApiKey        core.LocalObjectReference `json:"apiKey" tf:"api_key"`
+	ApplicationID string                    `json:"applicationID" tf:"application_id"`
 	// +optional
 	Enabled     bool                      `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -31,7 +32,7 @@ type PinpointGcmChannelStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

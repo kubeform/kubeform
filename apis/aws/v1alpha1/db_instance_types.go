@@ -29,11 +29,25 @@ type DbInstanceSpecS3Import struct {
 
 type DbInstanceSpec struct {
 	// +optional
+	AllocatedStorage int `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
+	// +optional
 	AllowMajorVersionUpgrade bool `json:"allowMajorVersionUpgrade,omitempty" tf:"allow_major_version_upgrade,omitempty"`
+	// +optional
+	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
 	// +optional
 	AutoMinorVersionUpgrade bool `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
 	// +optional
+	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+	// +optional
+	BackupRetentionPeriod int `json:"backupRetentionPeriod,omitempty" tf:"backup_retention_period,omitempty"`
+	// +optional
+	BackupWindow string `json:"backupWindow,omitempty" tf:"backup_window,omitempty"`
+	// +optional
+	CharacterSetName string `json:"characterSetName,omitempty" tf:"character_set_name,omitempty"`
+	// +optional
 	CopyTagsToSnapshot bool `json:"copyTagsToSnapshot,omitempty" tf:"copy_tags_to_snapshot,omitempty"`
+	// +optional
+	DbSubnetGroupName string `json:"dbSubnetGroupName,omitempty" tf:"db_subnet_group_name,omitempty"`
 	// +optional
 	DeletionProtection bool `json:"deletionProtection,omitempty" tf:"deletion_protection,omitempty"`
 	// +optional
@@ -43,20 +57,51 @@ type DbInstanceSpec struct {
 	// +optional
 	EnabledCloudwatchLogsExports []string `json:"enabledCloudwatchLogsExports,omitempty" tf:"enabled_cloudwatch_logs_exports,omitempty"`
 	// +optional
+	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
+	// +optional
+	EngineVersion string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
+	// +optional
 	FinalSnapshotIdentifier string `json:"finalSnapshotIdentifier,omitempty" tf:"final_snapshot_identifier,omitempty"`
 	// +optional
-	IamDatabaseAuthenticationEnabled bool   `json:"iamDatabaseAuthenticationEnabled,omitempty" tf:"iam_database_authentication_enabled,omitempty"`
-	InstanceClass                    string `json:"instanceClass" tf:"instance_class"`
+	IamDatabaseAuthenticationEnabled bool `json:"iamDatabaseAuthenticationEnabled,omitempty" tf:"iam_database_authentication_enabled,omitempty"`
+	// +optional
+	Identifier string `json:"identifier,omitempty" tf:"identifier,omitempty"`
+	// +optional
+	IdentifierPrefix string `json:"identifierPrefix,omitempty" tf:"identifier_prefix,omitempty"`
+	InstanceClass    string `json:"instanceClass" tf:"instance_class"`
 	// +optional
 	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	// +optional
+	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+	// +optional
+	LicenseModel string `json:"licenseModel,omitempty" tf:"license_model,omitempty"`
+	// +optional
+	MaintenanceWindow string `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
 	// +optional
 	MaxAllocatedStorage int `json:"maxAllocatedStorage,omitempty" tf:"max_allocated_storage,omitempty"`
 	// +optional
 	MonitoringInterval int `json:"monitoringInterval,omitempty" tf:"monitoring_interval,omitempty"`
 	// +optional
-	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	MonitoringRoleArn string `json:"monitoringRoleArn,omitempty" tf:"monitoring_role_arn,omitempty"`
+	// +optional
+	MultiAz bool `json:"multiAz,omitempty" tf:"multi_az,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	OptionGroupName string `json:"optionGroupName,omitempty" tf:"option_group_name,omitempty"`
+	// +optional
+	ParameterGroupName string `json:"parameterGroupName,omitempty" tf:"parameter_group_name,omitempty"`
+	// +optional
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	PerformanceInsightsEnabled bool `json:"performanceInsightsEnabled,omitempty" tf:"performance_insights_enabled,omitempty"`
+	// +optional
+	PerformanceInsightsKmsKeyID string `json:"performanceInsightsKmsKeyID,omitempty" tf:"performance_insights_kms_key_id,omitempty"`
+	// +optional
+	PerformanceInsightsRetentionPeriod int `json:"performanceInsightsRetentionPeriod,omitempty" tf:"performance_insights_retention_period,omitempty"`
+	// +optional
+	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	PubliclyAccessible bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
 	// +optional
@@ -74,8 +119,17 @@ type DbInstanceSpec struct {
 	// +optional
 	StorageEncrypted bool `json:"storageEncrypted,omitempty" tf:"storage_encrypted,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	StorageType string `json:"storageType,omitempty" tf:"storage_type,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	Timezone string `json:"timezone,omitempty" tf:"timezone,omitempty"`
+	// +optional
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	VpcSecurityGroupIDS []string                  `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
+	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type DbInstanceStatus struct {
@@ -83,7 +137,7 @@ type DbInstanceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

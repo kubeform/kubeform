@@ -401,9 +401,23 @@ spec:
               items:
                 properties:
                   contents:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   password:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                 required:
                 - contents
                 type: object
@@ -479,6 +493,46 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
+                  x509CertificateProperties:
+                    items:
+                      properties:
+                        extendedKeyUsage:
+                          items:
+                            type: string
+                          type: array
+                        keyUsage:
+                          items:
+                            type: string
+                          type: array
+                        subject:
+                          type: string
+                        subjectAlternativeNames:
+                          items:
+                            properties:
+                              dnsNames:
+                                items:
+                                  type: string
+                                type: array
+                              emails:
+                                items:
+                                  type: string
+                                type: array
+                              upns:
+                                items:
+                                  type: string
+                                type: array
+                            type: object
+                          maxItems: 1
+                          type: array
+                        validityInMonths:
+                          type: integer
+                      required:
+                      - keyUsage
+                      - subject
+                      - validityInMonths
+                      type: object
+                    maxItems: 1
+                    type: array
                 required:
                 - issuerParameters
                 - keyProperties
@@ -486,6 +540,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            keyVaultID:
+              type: string
             name:
               type: string
             providerRef:
@@ -497,6 +553,13 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            tags:
+              additionalProperties:
+                type: string
+              type: object
+            vaultURI:
+              description: Deprecated
+              type: string
           required:
           - certificatePolicy
           - name
@@ -512,8 +575,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

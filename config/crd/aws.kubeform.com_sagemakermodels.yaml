@@ -418,6 +418,8 @@ spec:
               type: boolean
             executionRoleArn:
               type: string
+            name:
+              type: string
             primaryContainer:
               items:
                 properties:
@@ -482,8 +484,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

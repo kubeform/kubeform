@@ -23,11 +23,13 @@ type NotificationHubSpecApnsCredential struct {
 	BundleID        string `json:"bundleID" tf:"bundle_id"`
 	KeyID           string `json:"keyID" tf:"key_id"`
 	TeamID          string `json:"teamID" tf:"team_id"`
-	Token           string `json:"token" tf:"token"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Token core.LocalObjectReference `json:"token" tf:"token"`
 }
 
 type NotificationHubSpecGcmCredential struct {
-	ApiKey string `json:"apiKey" tf:"api_key"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ApiKey core.LocalObjectReference `json:"apiKey" tf:"api_key"`
 }
 
 type NotificationHubSpec struct {
@@ -49,7 +51,7 @@ type NotificationHubStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

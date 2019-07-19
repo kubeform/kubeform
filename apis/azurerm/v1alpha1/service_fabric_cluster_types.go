@@ -63,16 +63,32 @@ type ServiceFabricClusterSpecFabricSettings struct {
 	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
+type ServiceFabricClusterSpecNodeTypeApplicationPorts struct {
+	EndPort   int `json:"endPort" tf:"end_port"`
+	StartPort int `json:"startPort" tf:"start_port"`
+}
+
+type ServiceFabricClusterSpecNodeTypeEphemeralPorts struct {
+	EndPort   int `json:"endPort" tf:"end_port"`
+	StartPort int `json:"startPort" tf:"start_port"`
+}
+
 type ServiceFabricClusterSpecNodeType struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ApplicationPorts []ServiceFabricClusterSpecNodeTypeApplicationPorts `json:"applicationPorts,omitempty" tf:"application_ports,omitempty"`
 	// +optional
 	Capacities         map[string]string `json:"capacities,omitempty" tf:"capacities,omitempty"`
 	ClientEndpointPort int               `json:"clientEndpointPort" tf:"client_endpoint_port"`
 	// +optional
-	DurabilityLevel  string `json:"durabilityLevel,omitempty" tf:"durability_level,omitempty"`
-	HttpEndpointPort int    `json:"httpEndpointPort" tf:"http_endpoint_port"`
-	InstanceCount    int    `json:"instanceCount" tf:"instance_count"`
-	IsPrimary        bool   `json:"isPrimary" tf:"is_primary"`
-	Name             string `json:"name" tf:"name"`
+	DurabilityLevel string `json:"durabilityLevel,omitempty" tf:"durability_level,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	EphemeralPorts   []ServiceFabricClusterSpecNodeTypeEphemeralPorts `json:"ephemeralPorts,omitempty" tf:"ephemeral_ports,omitempty"`
+	HttpEndpointPort int                                              `json:"httpEndpointPort" tf:"http_endpoint_port"`
+	InstanceCount    int                                              `json:"instanceCount" tf:"instance_count"`
+	IsPrimary        bool                                             `json:"isPrimary" tf:"is_primary"`
+	Name             string                                           `json:"name" tf:"name"`
 	// +optional
 	PlacementProperties map[string]string `json:"placementProperties,omitempty" tf:"placement_properties,omitempty"`
 	// +optional
@@ -103,6 +119,8 @@ type ServiceFabricClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=2
 	ClientCertificateThumbprint []ServiceFabricClusterSpecClientCertificateThumbprint `json:"clientCertificateThumbprint,omitempty" tf:"client_certificate_thumbprint,omitempty"`
 	// +optional
+	ClusterCodeVersion string `json:"clusterCodeVersion,omitempty" tf:"cluster_code_version,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	DiagnosticsConfig []ServiceFabricClusterSpecDiagnosticsConfig `json:"diagnosticsConfig,omitempty" tf:"diagnostics_config,omitempty"`
 	// +optional
@@ -116,9 +134,11 @@ type ServiceFabricClusterSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ReverseProxyCertificate []ServiceFabricClusterSpecReverseProxyCertificate `json:"reverseProxyCertificate,omitempty" tf:"reverse_proxy_certificate,omitempty"`
-	UpgradeMode             string                                            `json:"upgradeMode" tf:"upgrade_mode"`
-	VmImage                 string                                            `json:"vmImage" tf:"vm_image"`
-	ProviderRef             core.LocalObjectReference                         `json:"providerRef" tf:"-"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	UpgradeMode string                    `json:"upgradeMode" tf:"upgrade_mode"`
+	VmImage     string                    `json:"vmImage" tf:"vm_image"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ServiceFabricClusterStatus struct {
@@ -126,7 +146,7 @@ type ServiceFabricClusterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

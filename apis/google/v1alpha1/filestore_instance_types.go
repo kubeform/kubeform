@@ -26,6 +26,8 @@ type FilestoreInstanceSpecFileShares struct {
 type FilestoreInstanceSpecNetworks struct {
 	Modes   []string `json:"modes" tf:"modes"`
 	Network string   `json:"network" tf:"network"`
+	// +optional
+	ReservedIPRange string `json:"reservedIPRange,omitempty" tf:"reserved_ip_range,omitempty"`
 }
 
 type FilestoreInstanceSpec struct {
@@ -37,10 +39,12 @@ type FilestoreInstanceSpec struct {
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	Name   string            `json:"name" tf:"name"`
 	// +kubebuilder:validation:MinItems=1
-	Networks    []FilestoreInstanceSpecNetworks `json:"networks" tf:"networks"`
-	Tier        string                          `json:"tier" tf:"tier"`
-	Zone        string                          `json:"zone" tf:"zone"`
-	ProviderRef core.LocalObjectReference       `json:"providerRef" tf:"-"`
+	Networks []FilestoreInstanceSpecNetworks `json:"networks" tf:"networks"`
+	// +optional
+	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
+	Tier        string                    `json:"tier" tf:"tier"`
+	Zone        string                    `json:"zone" tf:"zone"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type FilestoreInstanceStatus struct {
@@ -48,7 +52,7 @@ type FilestoreInstanceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

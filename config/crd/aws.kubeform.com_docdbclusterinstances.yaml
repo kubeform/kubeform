@@ -397,13 +397,23 @@ spec:
           type: object
         spec:
           properties:
+            applyImmediately:
+              type: boolean
             autoMinorVersionUpgrade:
               type: boolean
+            availabilityZone:
+              type: string
             clusterIdentifier:
               type: string
             engine:
               type: string
+            identifier:
+              type: string
+            identifierPrefix:
+              type: string
             instanceClass:
+              type: string
+            preferredMaintenanceWindow:
               type: string
             promotionTier:
               type: integer
@@ -435,8 +445,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

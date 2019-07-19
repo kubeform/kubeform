@@ -399,6 +399,8 @@ spec:
           properties:
             backendPort:
               type: integer
+            enableFloatingIP:
+              type: boolean
             frontendIPConfigurationName:
               type: string
             frontendPort:
@@ -443,8 +445,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

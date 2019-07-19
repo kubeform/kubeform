@@ -24,9 +24,15 @@ type LaunchTemplateSpecBlockDeviceMappingsEbs struct {
 	// +optional
 	Encrypted string `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
 	// +optional
+	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
+	// +optional
+	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	// +optional
+	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
 }
 
 type LaunchTemplateSpecBlockDeviceMappings struct {
@@ -83,6 +89,8 @@ type LaunchTemplateSpecInstanceMarketOptionsSpotOptions struct {
 	MaxPrice string `json:"maxPrice,omitempty" tf:"max_price,omitempty"`
 	// +optional
 	SpotInstanceType string `json:"spotInstanceType,omitempty" tf:"spot_instance_type,omitempty"`
+	// +optional
+	ValidUntil string `json:"validUntil,omitempty" tf:"valid_until,omitempty"`
 }
 
 type LaunchTemplateSpecInstanceMarketOptions struct {
@@ -197,6 +205,8 @@ type LaunchTemplateSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Monitoring []LaunchTemplateSpecMonitoring `json:"monitoring,omitempty" tf:"monitoring,omitempty"`
 	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
 	NetworkInterfaces []LaunchTemplateSpecNetworkInterfaces `json:"networkInterfaces,omitempty" tf:"network_interfaces,omitempty"`
@@ -225,7 +235,7 @@ type LaunchTemplateStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

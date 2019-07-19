@@ -401,7 +401,14 @@ spec:
               items:
                 properties:
                   data:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   name:
                     type: string
                 required:
@@ -424,6 +431,28 @@ spec:
             backendAddressPool:
               items:
                 properties:
+                  fqdnList:
+                    description: Deprecated
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
+                  fqdns:
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
+                  ipAddressList:
+                    description: Deprecated
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
+                  ipAddresses:
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
                   name:
                     type: string
                 required:
@@ -495,12 +524,25 @@ spec:
                 - statusCode
                 type: object
               type: array
+            disabledSslProtocols:
+              description: Deprecated
+              items:
+                type: string
+              type: array
             enableHttp2:
               type: boolean
             frontendIPConfiguration:
               items:
                 properties:
                   name:
+                    type: string
+                  privateIPAddress:
+                    type: string
+                  privateIPAddressAllocation:
+                    type: string
+                  publicIPAddressID:
+                    type: string
+                  subnetID:
                     type: string
                 required:
                 - name
@@ -579,6 +621,18 @@ spec:
                     type: string
                   interval:
                     type: integer
+                  match:
+                    items:
+                      properties:
+                        body:
+                          type: string
+                        statusCode:
+                          items:
+                            type: string
+                          type: array
+                      type: object
+                    maxItems: 1
+                    type: array
                   minimumServers:
                     type: integer
                   name:
@@ -739,17 +793,54 @@ spec:
               items:
                 properties:
                   data:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   name:
                     type: string
                   password:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                 required:
                 - data
                 - name
                 - password
                 type: object
               type: array
+            sslPolicy:
+              items:
+                properties:
+                  cipherSuites:
+                    items:
+                      type: string
+                    type: array
+                  disabledProtocols:
+                    items:
+                      type: string
+                    type: array
+                  minProtocolVersion:
+                    type: string
+                  policyName:
+                    type: string
+                  policyType:
+                    type: string
+                type: object
+              type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             urlPathMap:
               items:
                 properties:
@@ -869,8 +960,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

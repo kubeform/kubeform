@@ -19,9 +19,21 @@ type AutoscalingSchedule struct {
 }
 
 type AutoscalingScheduleSpec struct {
-	AutoscalingGroupName string                    `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
-	ScheduledActionName  string                    `json:"scheduledActionName" tf:"scheduled_action_name"`
-	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AutoscalingGroupName string `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
+	// +optional
+	DesiredCapacity int `json:"desiredCapacity,omitempty" tf:"desired_capacity,omitempty"`
+	// +optional
+	EndTime string `json:"endTime,omitempty" tf:"end_time,omitempty"`
+	// +optional
+	MaxSize int `json:"maxSize,omitempty" tf:"max_size,omitempty"`
+	// +optional
+	MinSize int `json:"minSize,omitempty" tf:"min_size,omitempty"`
+	// +optional
+	Recurrence          string `json:"recurrence,omitempty" tf:"recurrence,omitempty"`
+	ScheduledActionName string `json:"scheduledActionName" tf:"scheduled_action_name"`
+	// +optional
+	StartTime   string                    `json:"startTime,omitempty" tf:"start_time,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type AutoscalingScheduleStatus struct {
@@ -29,7 +41,7 @@ type AutoscalingScheduleStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

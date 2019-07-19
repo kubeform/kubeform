@@ -419,7 +419,13 @@ spec:
               type: boolean
             idleTimeout:
               type: integer
+            internal:
+              type: boolean
+            ipAddressType:
+              type: string
             loadBalancerType:
+              type: string
+            name:
               type: string
             namePrefix:
               type: string
@@ -432,6 +438,28 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            securityGroups:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            subnetMapping:
+              items:
+                properties:
+                  allocationID:
+                    type: string
+                  subnetID:
+                    type: string
+                required:
+                - subnetID
+                type: object
+              type: array
+              uniqueItems: true
+            subnets:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             tags:
               additionalProperties:
                 type: string
@@ -449,8 +477,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

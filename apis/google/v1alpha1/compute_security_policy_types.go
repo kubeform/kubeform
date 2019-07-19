@@ -18,11 +18,40 @@ type ComputeSecurityPolicy struct {
 	Status            ComputeSecurityPolicyStatus `json:"status,omitempty"`
 }
 
+type ComputeSecurityPolicySpecRuleMatchConfig struct {
+	// +kubebuilder:validation:MaxItems=5
+	// +kubebuilder:validation:MinItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	SrcIPRanges []string `json:"srcIPRanges" tf:"src_ip_ranges"`
+}
+
+type ComputeSecurityPolicySpecRuleMatch struct {
+	// +kubebuilder:validation:MaxItems=1
+	Config        []ComputeSecurityPolicySpecRuleMatchConfig `json:"config" tf:"config"`
+	VersionedExpr string                                     `json:"versionedExpr" tf:"versioned_expr"`
+}
+
+type ComputeSecurityPolicySpecRule struct {
+	Action string `json:"action" tf:"action"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +kubebuilder:validation:MaxItems=1
+	Match []ComputeSecurityPolicySpecRuleMatch `json:"match" tf:"match"`
+	// +optional
+	Preview  bool `json:"preview,omitempty" tf:"preview,omitempty"`
+	Priority int  `json:"priority" tf:"priority"`
+}
+
 type ComputeSecurityPolicySpec struct {
 	// +optional
-	Description string                    `json:"description,omitempty" tf:"description,omitempty"`
-	Name        string                    `json:"name" tf:"name"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Rule        []ComputeSecurityPolicySpecRule `json:"rule,omitempty" tf:"rule,omitempty"`
+	ProviderRef core.LocalObjectReference       `json:"providerRef" tf:"-"`
 }
 
 type ComputeSecurityPolicyStatus struct {
@@ -30,7 +59,7 @@ type ComputeSecurityPolicyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

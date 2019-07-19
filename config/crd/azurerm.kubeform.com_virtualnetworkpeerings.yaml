@@ -397,6 +397,12 @@ spec:
           type: object
         spec:
           properties:
+            allowForwardedTraffic:
+              type: boolean
+            allowGatewayTransit:
+              type: boolean
+            allowVirtualNetworkAccess:
+              type: boolean
             name:
               type: string
             providerRef:
@@ -412,6 +418,8 @@ spec:
               type: string
             resourceGroupName:
               type: string
+            useRemoteGateways:
+              type: boolean
             virtualNetworkName:
               type: string
           required:
@@ -431,8 +439,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -26,13 +26,19 @@ type SqsQueueSpec struct {
 	// +optional
 	FifoQueue bool `json:"fifoQueue,omitempty" tf:"fifo_queue,omitempty"`
 	// +optional
+	KmsDataKeyReusePeriodSeconds int `json:"kmsDataKeyReusePeriodSeconds,omitempty" tf:"kms_data_key_reuse_period_seconds,omitempty"`
+	// +optional
 	KmsMasterKeyID string `json:"kmsMasterKeyID,omitempty" tf:"kms_master_key_id,omitempty"`
 	// +optional
 	MaxMessageSize int `json:"maxMessageSize,omitempty" tf:"max_message_size,omitempty"`
 	// +optional
 	MessageRetentionSeconds int `json:"messageRetentionSeconds,omitempty" tf:"message_retention_seconds,omitempty"`
 	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
+	// +optional
+	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional
 	ReceiveWaitTimeSeconds int `json:"receiveWaitTimeSeconds,omitempty" tf:"receive_wait_time_seconds,omitempty"`
 	// +optional
@@ -49,7 +55,7 @@ type SqsQueueStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -442,6 +442,8 @@ spec:
                                 type: integer
                               path:
                                 type: string
+                              port:
+                                type: integer
                               protocol:
                                 type: string
                               timeoutMillis:
@@ -556,8 +558,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -457,6 +457,8 @@ spec:
             encryptionInfo:
               items:
                 properties:
+                  encryptionAtRestKmsKeyArn:
+                    type: string
                   encryptionInTransit:
                     items:
                       properties:
@@ -506,8 +508,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

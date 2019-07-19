@@ -19,8 +19,14 @@ type SqlDatabase struct {
 }
 
 type SqlDatabaseSpec struct {
-	Instance    string                    `json:"instance" tf:"instance"`
-	Name        string                    `json:"name" tf:"name"`
+	// +optional
+	Charset string `json:"charset,omitempty" tf:"charset,omitempty"`
+	// +optional
+	Collation string `json:"collation,omitempty" tf:"collation,omitempty"`
+	Instance  string `json:"instance" tf:"instance"`
+	Name      string `json:"name" tf:"name"`
+	// +optional
+	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -29,7 +35,7 @@ type SqlDatabaseStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

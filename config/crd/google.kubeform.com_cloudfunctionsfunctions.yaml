@@ -407,11 +407,38 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            eventTrigger:
+              items:
+                properties:
+                  eventType:
+                    type: string
+                  failurePolicy:
+                    items:
+                      properties:
+                        retry:
+                          type: boolean
+                      required:
+                      - retry
+                      type: object
+                    maxItems: 1
+                    type: array
+                  resource:
+                    type: string
+                required:
+                - eventType
+                - resource
+                type: object
+              maxItems: 1
+              type: array
+            httpsTriggerURL:
+              type: string
             labels:
               additionalProperties:
                 type: string
               type: object
             name:
+              type: string
+            project:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -422,14 +449,27 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            region:
+              type: string
+            retryOnFailure:
+              description: Deprecated
+              type: boolean
+            runtime:
+              type: string
             sourceArchiveBucket:
               type: string
             sourceArchiveObject:
               type: string
             timeout:
               type: integer
+            triggerBucket:
+              description: Deprecated
+              type: string
             triggerHTTP:
               type: boolean
+            triggerTopic:
+              description: Deprecated
+              type: string
           required:
           - name
           - providerRef
@@ -446,8 +486,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

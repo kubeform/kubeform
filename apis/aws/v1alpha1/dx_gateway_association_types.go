@@ -19,7 +19,14 @@ type DxGatewayAssociation struct {
 }
 
 type DxGatewayAssociationSpec struct {
-	DxGatewayID string `json:"dxGatewayID" tf:"dx_gateway_id"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	AllowedPrefixes []string `json:"allowedPrefixes,omitempty" tf:"allowed_prefixes,omitempty"`
+	// +optional
+	AssociatedGatewayID string `json:"associatedGatewayID,omitempty" tf:"associated_gateway_id,omitempty"`
+	// +optional
+	AssociatedGatewayOwnerAccountID string `json:"associatedGatewayOwnerAccountID,omitempty" tf:"associated_gateway_owner_account_id,omitempty"`
+	DxGatewayID                     string `json:"dxGatewayID" tf:"dx_gateway_id"`
 	// +optional
 	ProposalID string `json:"proposalID,omitempty" tf:"proposal_id,omitempty"`
 	// +optional
@@ -33,7 +40,7 @@ type DxGatewayAssociationStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

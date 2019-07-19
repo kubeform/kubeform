@@ -18,6 +18,11 @@ type ComputeSubnetwork struct {
 	Status            ComputeSubnetworkStatus `json:"status,omitempty"`
 }
 
+type ComputeSubnetworkSpecSecondaryIPRange struct {
+	IpCIDRRange string `json:"ipCIDRRange" tf:"ip_cidr_range"`
+	RangeName   string `json:"rangeName" tf:"range_name"`
+}
+
 type ComputeSubnetworkSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
@@ -27,8 +32,14 @@ type ComputeSubnetworkSpec struct {
 	Name           string `json:"name" tf:"name"`
 	Network        string `json:"network" tf:"network"`
 	// +optional
-	PrivateIPGoogleAccess bool                      `json:"privateIPGoogleAccess,omitempty" tf:"private_ip_google_access,omitempty"`
-	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
+	PrivateIPGoogleAccess bool `json:"privateIPGoogleAccess,omitempty" tf:"private_ip_google_access,omitempty"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	// +optional
+	SecondaryIPRange []ComputeSubnetworkSpecSecondaryIPRange `json:"secondaryIPRange,omitempty" tf:"secondary_ip_range,omitempty"`
+	ProviderRef      core.LocalObjectReference               `json:"providerRef" tf:"-"`
 }
 
 type ComputeSubnetworkStatus struct {
@@ -36,7 +47,7 @@ type ComputeSubnetworkStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

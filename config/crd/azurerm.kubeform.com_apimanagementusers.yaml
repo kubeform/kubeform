@@ -410,7 +410,14 @@ spec:
             note:
               type: string
             password:
-              type: string
+              description: Sensitive Data. Provide secret name which contains one
+                value only
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -421,6 +428,8 @@ spec:
                   type: string
               type: object
             resourceGroupName:
+              type: string
+            state:
               type: string
             userID:
               type: string
@@ -443,8 +452,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

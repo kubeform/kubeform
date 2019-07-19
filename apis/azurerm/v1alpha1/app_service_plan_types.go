@@ -18,21 +18,49 @@ type AppServicePlan struct {
 	Status            AppServicePlanStatus `json:"status,omitempty"`
 }
 
+type AppServicePlanSpecProperties struct {
+	// +optional
+	// Deprecated
+	AppServiceEnvironmentID string `json:"appServiceEnvironmentID,omitempty" tf:"app_service_environment_id,omitempty"`
+	// +optional
+	// Deprecated
+	PerSiteScaling bool `json:"perSiteScaling,omitempty" tf:"per_site_scaling,omitempty"`
+	// +optional
+	// Deprecated
+	Reserved bool `json:"reserved,omitempty" tf:"reserved,omitempty"`
+}
+
 type AppServicePlanSpecSku struct {
-	Size string `json:"size" tf:"size"`
-	Tier string `json:"tier" tf:"tier"`
+	// +optional
+	Capacity int    `json:"capacity,omitempty" tf:"capacity,omitempty"`
+	Size     string `json:"size" tf:"size"`
+	Tier     string `json:"tier" tf:"tier"`
 }
 
 type AppServicePlanSpec struct {
 	// +optional
+	AppServiceEnvironmentID string `json:"appServiceEnvironmentID,omitempty" tf:"app_service_environment_id,omitempty"`
+	// +optional
 	IsXenon bool `json:"isXenon,omitempty" tf:"is_xenon,omitempty"`
 	// +optional
-	Kind              string `json:"kind,omitempty" tf:"kind,omitempty"`
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
+	Kind     string `json:"kind,omitempty" tf:"kind,omitempty"`
+	Location string `json:"location" tf:"location"`
+	// +optional
+	MaximumElasticWorkerCount int    `json:"maximumElasticWorkerCount,omitempty" tf:"maximum_elastic_worker_count,omitempty"`
+	Name                      string `json:"name" tf:"name"`
+	// +optional
+	PerSiteScaling bool `json:"perSiteScaling,omitempty" tf:"per_site_scaling,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// Deprecated
+	Properties []AppServicePlanSpecProperties `json:"properties,omitempty" tf:"properties,omitempty"`
+	// +optional
+	Reserved          bool   `json:"reserved,omitempty" tf:"reserved,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
-	Sku         []AppServicePlanSpecSku   `json:"sku" tf:"sku"`
+	Sku []AppServicePlanSpecSku `json:"sku" tf:"sku"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -41,7 +69,7 @@ type AppServicePlanStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

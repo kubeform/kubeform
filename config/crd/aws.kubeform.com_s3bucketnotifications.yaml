@@ -402,6 +402,8 @@ spec:
             lambdaFunction:
               items:
                 properties:
+                  ID:
+                    type: string
                   events:
                     items:
                       type: string
@@ -429,6 +431,8 @@ spec:
             queue:
               items:
                 properties:
+                  ID:
+                    type: string
                   events:
                     items:
                       type: string
@@ -448,6 +452,8 @@ spec:
             topic:
               items:
                 properties:
+                  ID:
+                    type: string
                   events:
                     items:
                       type: string
@@ -478,8 +484,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -1,6 +1,8 @@
 package v1alpha1
 
 import (
+	"encoding/json"
+
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -24,7 +26,15 @@ type GlueJobSpecCommand struct {
 	ScriptLocation string `json:"scriptLocation" tf:"script_location"`
 }
 
+type GlueJobSpecExecutionProperty struct {
+	// +optional
+	MaxConcurrentRuns int `json:"maxConcurrentRuns,omitempty" tf:"max_concurrent_runs,omitempty"`
+}
+
 type GlueJobSpec struct {
+	// +optional
+	// Deprecated
+	AllocatedCapacity int `json:"allocatedCapacity,omitempty" tf:"allocated_capacity,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	Command []GlueJobSpecCommand `json:"command" tf:"command"`
 	// +optional
@@ -33,6 +43,11 @@ type GlueJobSpec struct {
 	DefaultArguments map[string]string `json:"defaultArguments,omitempty" tf:"default_arguments,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ExecutionProperty []GlueJobSpecExecutionProperty `json:"executionProperty,omitempty" tf:"execution_property,omitempty"`
+	// +optional
+	MaxCapacity json.Number `json:"maxCapacity,omitempty" tf:"max_capacity,omitempty"`
 	// +optional
 	MaxRetries int    `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 	Name       string `json:"name" tf:"name"`
@@ -49,7 +64,7 @@ type GlueJobStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

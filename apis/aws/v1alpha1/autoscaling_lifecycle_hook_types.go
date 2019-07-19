@@ -21,6 +21,8 @@ type AutoscalingLifecycleHook struct {
 type AutoscalingLifecycleHookSpec struct {
 	AutoscalingGroupName string `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
 	// +optional
+	DefaultResult string `json:"defaultResult,omitempty" tf:"default_result,omitempty"`
+	// +optional
 	HeartbeatTimeout    int    `json:"heartbeatTimeout,omitempty" tf:"heartbeat_timeout,omitempty"`
 	LifecycleTransition string `json:"lifecycleTransition" tf:"lifecycle_transition"`
 	Name                string `json:"name" tf:"name"`
@@ -38,7 +40,7 @@ type AutoscalingLifecycleHookStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

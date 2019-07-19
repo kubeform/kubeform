@@ -399,6 +399,8 @@ spec:
           properties:
             label:
               type: string
+            linodeID:
+              type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -410,6 +412,8 @@ spec:
               type: object
             region:
               type: string
+            size:
+              type: integer
             tags:
               items:
                 type: string
@@ -430,8 +434,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

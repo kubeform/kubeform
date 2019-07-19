@@ -66,6 +66,8 @@ type S3BucketSpecLifecycleRule struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Expiration []S3BucketSpecLifecycleRuleExpiration `json:"expiration,omitempty" tf:"expiration,omitempty"`
 	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	NoncurrentVersionExpiration []S3BucketSpecLifecycleRuleNoncurrentVersionExpiration `json:"noncurrentVersionExpiration,omitempty" tf:"noncurrent_version_expiration,omitempty"`
@@ -190,6 +192,13 @@ type S3BucketSpecServerSideEncryptionConfiguration struct {
 	Rule []S3BucketSpecServerSideEncryptionConfigurationRule `json:"rule" tf:"rule"`
 }
 
+type S3BucketSpecVersioning struct {
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	MfaDelete bool `json:"mfaDelete,omitempty" tf:"mfa_delete,omitempty"`
+}
+
 type S3BucketSpecWebsite struct {
 	// +optional
 	ErrorDocument string `json:"errorDocument,omitempty" tf:"error_document,omitempty"`
@@ -203,13 +212,21 @@ type S3BucketSpecWebsite struct {
 
 type S3BucketSpec struct {
 	// +optional
+	AccelerationStatus string `json:"accelerationStatus,omitempty" tf:"acceleration_status,omitempty"`
+	// +optional
 	Acl string `json:"acl,omitempty" tf:"acl,omitempty"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	Bucket string `json:"bucket,omitempty" tf:"bucket,omitempty"`
 	// +optional
 	BucketPrefix string `json:"bucketPrefix,omitempty" tf:"bucket_prefix,omitempty"`
 	// +optional
 	CorsRule []S3BucketSpecCorsRule `json:"corsRule,omitempty" tf:"cors_rule,omitempty"`
 	// +optional
 	ForceDestroy bool `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
+	// +optional
+	HostedZoneID string `json:"hostedZoneID,omitempty" tf:"hosted_zone_id,omitempty"`
 	// +optional
 	LifecycleRule []S3BucketSpecLifecycleRule `json:"lifecycleRule,omitempty" tf:"lifecycle_rule,omitempty"`
 	// +optional
@@ -221,8 +238,12 @@ type S3BucketSpec struct {
 	// +optional
 	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ReplicationConfiguration []S3BucketSpecReplicationConfiguration `json:"replicationConfiguration,omitempty" tf:"replication_configuration,omitempty"`
+	// +optional
+	RequestPayer string `json:"requestPayer,omitempty" tf:"request_payer,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ServerSideEncryptionConfiguration []S3BucketSpecServerSideEncryptionConfiguration `json:"serverSideEncryptionConfiguration,omitempty" tf:"server_side_encryption_configuration,omitempty"`
@@ -230,8 +251,15 @@ type S3BucketSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Website     []S3BucketSpecWebsite     `json:"website,omitempty" tf:"website,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Versioning []S3BucketSpecVersioning `json:"versioning,omitempty" tf:"versioning,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Website []S3BucketSpecWebsite `json:"website,omitempty" tf:"website,omitempty"`
+	// +optional
+	WebsiteDomain string `json:"websiteDomain,omitempty" tf:"website_domain,omitempty"`
+	// +optional
+	WebsiteEndpoint string                    `json:"websiteEndpoint,omitempty" tf:"website_endpoint,omitempty"`
+	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type S3BucketStatus struct {
@@ -239,7 +267,7 @@ type S3BucketStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -397,8 +397,14 @@ spec:
           type: object
         spec:
           properties:
+            autoDeleteOnIdle:
+              type: string
             deadLetteringOnMessageExpiration:
               type: boolean
+            defaultMessageTtl:
+              type: string
+            duplicateDetectionHistoryTimeWindow:
+              type: string
             enableBatchedOperations:
               description: Deprecated
               type: boolean
@@ -409,7 +415,11 @@ spec:
             location:
               description: Deprecated
               type: string
+            lockDuration:
+              type: string
             maxDeliveryCount:
+              type: integer
+            maxSizeInMegabytes:
               type: integer
             name:
               type: string
@@ -449,8 +459,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

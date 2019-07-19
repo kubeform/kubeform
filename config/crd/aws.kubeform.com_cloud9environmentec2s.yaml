@@ -405,6 +405,8 @@ spec:
               type: string
             name:
               type: string
+            ownerArn:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -431,8 +433,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

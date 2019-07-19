@@ -397,13 +397,59 @@ spec:
           type: object
         spec:
           properties:
+            addonProfile:
+              items:
+                properties:
+                  aciConnectorLinux:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                        subnetName:
+                          type: string
+                      required:
+                      - enabled
+                      - subnetName
+                      type: object
+                    maxItems: 1
+                    type: array
+                  httpApplicationRouting:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                      required:
+                      - enabled
+                      type: object
+                    maxItems: 1
+                    type: array
+                  omsAgent:
+                    items:
+                      properties:
+                        enabled:
+                          type: boolean
+                        logAnalyticsWorkspaceID:
+                          type: string
+                      required:
+                      - enabled
+                      - logAnalyticsWorkspaceID
+                      type: object
+                    maxItems: 1
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
             agentPoolProfile:
               items:
                 properties:
                   count:
                     type: integer
+                  maxPods:
+                    type: integer
                   name:
                     type: string
+                  osDiskSizeGb:
+                    type: integer
                   osType:
                     type: string
                   type:
@@ -423,6 +469,8 @@ spec:
               type: array
               uniqueItems: true
             dnsPrefix:
+              type: string
+            kubernetesVersion:
               type: string
             linuxProfile:
               items:
@@ -449,6 +497,26 @@ spec:
               type: string
             name:
               type: string
+            networkProfile:
+              items:
+                properties:
+                  dnsServiceIP:
+                    type: string
+                  dockerBridgeCIDR:
+                    type: string
+                  networkPlugin:
+                    type: string
+                  networkPolicy:
+                    type: string
+                  podCIDR:
+                    type: string
+                  serviceCIDR:
+                    type: string
+                required:
+                - networkPlugin
+                type: object
+              maxItems: 1
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -460,13 +528,55 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            roleBasedAccessControl:
+              items:
+                properties:
+                  azureActiveDirectory:
+                    items:
+                      properties:
+                        clientAppID:
+                          type: string
+                        serverAppID:
+                          type: string
+                        serverAppSecret:
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
+                        tenantID:
+                          type: string
+                      required:
+                      - clientAppID
+                      - serverAppID
+                      - serverAppSecret
+                      type: object
+                    maxItems: 1
+                    type: array
+                  enabled:
+                    type: boolean
+                required:
+                - enabled
+                type: object
+              maxItems: 1
+              type: array
             servicePrincipal:
               items:
                 properties:
                   clientID:
                     type: string
                   clientSecret:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                 required:
                 - clientID
                 - clientSecret
@@ -474,6 +584,10 @@ spec:
               maxItems: 1
               type: array
               uniqueItems: true
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - agentPoolProfile
           - dnsPrefix
@@ -493,8 +607,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

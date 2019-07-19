@@ -37,9 +37,15 @@ type ComputeRegionDiskSpec struct {
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	Name   string            `json:"name" tf:"name"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +kubebuilder:validation:MaxItems=2
 	// +kubebuilder:validation:MinItems=2
 	ReplicaZones []string `json:"replicaZones" tf:"replica_zones"`
+	// +optional
+	Size int `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
 	Snapshot string `json:"snapshot,omitempty" tf:"snapshot,omitempty"`
 	// +optional
@@ -55,7 +61,7 @@ type ComputeRegionDiskStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

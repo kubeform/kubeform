@@ -35,6 +35,8 @@ type AutomationRunbookSpecPublishContentLink struct {
 type AutomationRunbookSpec struct {
 	AccountName string `json:"accountName" tf:"account_name"`
 	// +optional
+	Content string `json:"content,omitempty" tf:"content,omitempty"`
+	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Location    string `json:"location" tf:"location"`
 	LogProgress bool   `json:"logProgress" tf:"log_progress"`
@@ -44,7 +46,9 @@ type AutomationRunbookSpec struct {
 	PublishContentLink []AutomationRunbookSpecPublishContentLink `json:"publishContentLink" tf:"publish_content_link"`
 	ResourceGroupName  string                                    `json:"resourceGroupName" tf:"resource_group_name"`
 	RunbookType        string                                    `json:"runbookType" tf:"runbook_type"`
-	ProviderRef        core.LocalObjectReference                 `json:"providerRef" tf:"-"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type AutomationRunbookStatus struct {
@@ -52,7 +56,7 @@ type AutomationRunbookStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

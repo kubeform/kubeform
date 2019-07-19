@@ -397,6 +397,22 @@ spec:
           type: object
         spec:
           properties:
+            alerts:
+              items:
+                properties:
+                  cpu:
+                    type: integer
+                  io:
+                    type: integer
+                  networkIn:
+                    type: integer
+                  networkOut:
+                    type: integer
+                  transferQuota:
+                    type: integer
+                type: object
+              maxItems: 1
+              type: array
             authorizedKeys:
               items:
                 type: string
@@ -407,17 +423,141 @@ spec:
               type: array
             backupID:
               type: integer
+            backupsEnabled:
+              type: boolean
+            bootConfigLabel:
+              type: string
             config:
               items:
                 properties:
                   comments:
                     type: string
+                  devices:
+                    items:
+                      properties:
+                        sda:
+                          items:
+                            properties:
+                              diskID:
+                                type: integer
+                              diskLabel:
+                                type: string
+                              volumeID:
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sdb:
+                          items:
+                            properties:
+                              diskID:
+                                type: integer
+                              diskLabel:
+                                type: string
+                              volumeID:
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sdc:
+                          items:
+                            properties:
+                              diskID:
+                                type: integer
+                              diskLabel:
+                                type: string
+                              volumeID:
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sdd:
+                          items:
+                            properties:
+                              diskID:
+                                type: integer
+                              diskLabel:
+                                type: string
+                              volumeID:
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sde:
+                          items:
+                            properties:
+                              diskID:
+                                type: integer
+                              diskLabel:
+                                type: string
+                              volumeID:
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sdf:
+                          items:
+                            properties:
+                              diskID:
+                                type: integer
+                              diskLabel:
+                                type: string
+                              volumeID:
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sdg:
+                          items:
+                            properties:
+                              diskID:
+                                type: integer
+                              diskLabel:
+                                type: string
+                              volumeID:
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                        sdh:
+                          items:
+                            properties:
+                              diskID:
+                                type: integer
+                              diskLabel:
+                                type: string
+                              volumeID:
+                                type: integer
+                            type: object
+                          maxItems: 1
+                          type: array
+                      type: object
+                    maxItems: 1
+                    type: array
+                  helpers:
+                    items:
+                      properties:
+                        devtmpfsAutomount:
+                          type: boolean
+                        distro:
+                          type: boolean
+                        modulesDep:
+                          type: boolean
+                        network:
+                          type: boolean
+                        updatedbDisabled:
+                          type: boolean
+                      type: object
+                    maxItems: 1
+                    type: array
                   kernel:
                     type: string
                   label:
                     type: string
                   memoryLimit:
                     type: integer
+                  rootDevice:
+                    type: string
                   runLevel:
                     type: string
                   virtMode:
@@ -437,11 +577,35 @@ spec:
                     items:
                       type: string
                     type: array
+                  filesystem:
+                    type: string
+                  image:
+                    type: string
                   label:
                     type: string
+                  readOnly:
+                    type: boolean
                   rootPass:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   size:
+                    type: integer
+                  stackscriptData:
+                    description: Sensitive Data. Provide secret name which contains
+                      one or more values
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
+                  stackscriptID:
                     type: integer
                 required:
                 - label
@@ -451,6 +615,8 @@ spec:
             group:
               type: string
             image:
+              type: string
+            label:
               type: string
             privateIP:
               type: boolean
@@ -466,12 +632,26 @@ spec:
             region:
               type: string
             rootPass:
-              type: string
+              description: Sensitive Data. Provide secret name which contains one
+                value only
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             stackscriptData:
-              additionalProperties:
-                type: string
+              description: Sensitive Data. Provide secret name which contains one
+                or more values
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
               type: object
             stackscriptID:
+              type: integer
+            swapSize:
               type: integer
             tags:
               items:
@@ -496,8 +676,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

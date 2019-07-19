@@ -24,7 +24,12 @@ type KmsExternalKeySpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	KeyMaterialBase64 string `json:"keyMaterialBase64,omitempty" tf:"key_material_base64,omitempty"`
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	// Sensitive Data. Provide secret name which contains one value only
+	KeyMaterialBase64 core.LocalObjectReference `json:"keyMaterialBase64,omitempty" tf:"key_material_base64,omitempty"`
+	// +optional
+	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
@@ -37,7 +42,7 @@ type KmsExternalKeyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

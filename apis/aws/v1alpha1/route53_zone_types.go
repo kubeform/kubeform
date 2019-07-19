@@ -20,6 +20,8 @@ type Route53Zone struct {
 
 type Route53ZoneSpecVpc struct {
 	VpcID string `json:"vpcID" tf:"vpc_id"`
+	// +optional
+	VpcRegion string `json:"vpcRegion,omitempty" tf:"vpc_region,omitempty"`
 }
 
 type Route53ZoneSpec struct {
@@ -44,7 +46,7 @@ type Route53ZoneStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

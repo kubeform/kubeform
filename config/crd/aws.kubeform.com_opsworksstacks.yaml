@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            agentVersion:
+              type: string
             berkshelfVersion:
               type: string
             color:
@@ -405,7 +407,36 @@ spec:
               type: string
             configurationManagerVersion:
               type: string
+            customCookbooksSource:
+              items:
+                properties:
+                  password:
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
+                  revision:
+                    type: string
+                  sshKey:
+                    type: string
+                  type:
+                    type: string
+                  url:
+                    type: string
+                  username:
+                    type: string
+                required:
+                - type
+                - url
+                type: object
+              type: array
             customJSON:
+              type: string
+            defaultAvailabilityZone:
               type: string
             defaultInstanceProfileArn:
               type: string
@@ -414,6 +445,8 @@ spec:
             defaultRootDeviceType:
               type: string
             defaultSSHKeyName:
+              type: string
+            defaultSubnetID:
               type: string
             hostnameTheme:
               type: string
@@ -442,6 +475,8 @@ spec:
               type: boolean
             useOpsworksSecurityGroups:
               type: boolean
+            vpcID:
+              type: string
           required:
           - defaultInstanceProfileArn
           - name
@@ -459,8 +494,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

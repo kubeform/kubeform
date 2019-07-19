@@ -397,10 +397,19 @@ spec:
           type: object
         spec:
           properties:
+            applyImmediately:
+              type: boolean
             atRestEncryptionEnabled:
               type: boolean
             authToken:
-              type: string
+              description: Sensitive Data. Provide secret name which contains one
+                value only
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             autoMinorVersionUpgrade:
               type: boolean
             automaticFailoverEnabled:
@@ -410,9 +419,32 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            clusterMode:
+              items:
+                properties:
+                  numNodeGroups:
+                    type: integer
+                  replicasPerNodeGroup:
+                    type: integer
+                required:
+                - numNodeGroups
+                - replicasPerNodeGroup
+                type: object
+              maxItems: 1
+              type: array
             engine:
               type: string
+            engineVersion:
+              type: string
+            maintenanceWindow:
+              type: string
+            nodeType:
+              type: string
             notificationTopicArn:
+              type: string
+            numberCacheClusters:
+              type: integer
+            parameterGroupName:
               type: string
             port:
               type: integer
@@ -429,6 +461,16 @@ spec:
               type: string
             replicationGroupID:
               type: string
+            securityGroupIDS:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            securityGroupNames:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             snapshotArns:
               items:
                 type: string
@@ -438,6 +480,10 @@ spec:
               type: string
             snapshotRetentionLimit:
               type: integer
+            snapshotWindow:
+              type: string
+            subnetGroupName:
+              type: string
             tags:
               additionalProperties:
                 type: string
@@ -459,8 +505,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

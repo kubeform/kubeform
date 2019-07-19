@@ -397,8 +397,30 @@ spec:
           type: object
         spec:
           properties:
+            attachment:
+              items:
+                properties:
+                  deviceIndex:
+                    type: integer
+                  instance:
+                    type: string
+                required:
+                - deviceIndex
+                - instance
+                type: object
+              type: array
+              uniqueItems: true
             description:
               type: string
+            privateIP:
+              type: string
+            privateIPS:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            privateIPSCount:
+              type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -408,6 +430,11 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            securityGroups:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             sourceDestCheck:
               type: boolean
             subnetID:
@@ -430,8 +457,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

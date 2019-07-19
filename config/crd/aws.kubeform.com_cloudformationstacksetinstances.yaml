@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            accountID:
+              type: string
             parameterOverrides:
               additionalProperties:
                 type: string
@@ -410,6 +412,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            region:
+              type: string
             retainStack:
               type: boolean
             stackSetName:
@@ -428,8 +432,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

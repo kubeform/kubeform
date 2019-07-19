@@ -19,7 +19,9 @@ type LbNATRule struct {
 }
 
 type LbNATRuleSpec struct {
-	BackendPort                 int    `json:"backendPort" tf:"backend_port"`
+	BackendPort int `json:"backendPort" tf:"backend_port"`
+	// +optional
+	EnableFloatingIP            bool   `json:"enableFloatingIP,omitempty" tf:"enable_floating_ip,omitempty"`
 	FrontendIPConfigurationName string `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`
 	FrontendPort                int    `json:"frontendPort" tf:"frontend_port"`
 	LoadbalancerID              string `json:"loadbalancerID" tf:"loadbalancer_id"`
@@ -37,7 +39,7 @@ type LbNATRuleStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

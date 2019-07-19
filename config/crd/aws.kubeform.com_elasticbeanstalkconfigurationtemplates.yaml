@@ -414,6 +414,24 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            setting:
+              items:
+                properties:
+                  name:
+                    type: string
+                  namespace:
+                    type: string
+                  resource:
+                    type: string
+                  value:
+                    type: string
+                required:
+                - name
+                - namespace
+                - value
+                type: object
+              type: array
+              uniqueItems: true
             solutionStackName:
               type: string
           required:
@@ -431,8 +449,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

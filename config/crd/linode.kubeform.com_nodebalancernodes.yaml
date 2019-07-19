@@ -403,6 +403,8 @@ spec:
               type: integer
             label:
               type: string
+            mode:
+              type: string
             nodebalancerID:
               type: integer
             providerRef:
@@ -414,6 +416,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            weight:
+              type: integer
           required:
           - address
           - configID
@@ -431,8 +435,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

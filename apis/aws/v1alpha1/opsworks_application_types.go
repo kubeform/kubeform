@@ -18,6 +18,21 @@ type OpsworksApplication struct {
 	Status            OpsworksApplicationStatus `json:"status,omitempty"`
 }
 
+type OpsworksApplicationSpecAppSource struct {
+	// +optional
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	// +optional
+	Revision string `json:"revision,omitempty" tf:"revision,omitempty"`
+	// +optional
+	SshKey string `json:"sshKey,omitempty" tf:"ssh_key,omitempty"`
+	Type   string `json:"type" tf:"type"`
+	// +optional
+	Url string `json:"url,omitempty" tf:"url,omitempty"`
+	// +optional
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
+}
+
 type OpsworksApplicationSpecEnvironment struct {
 	Key string `json:"key" tf:"key"`
 	// +optional
@@ -28,11 +43,14 @@ type OpsworksApplicationSpecEnvironment struct {
 type OpsworksApplicationSpecSslConfiguration struct {
 	Certificate string `json:"certificate" tf:"certificate"`
 	// +optional
-	Chain      string `json:"chain,omitempty" tf:"chain,omitempty"`
-	PrivateKey string `json:"privateKey" tf:"private_key"`
+	Chain string `json:"chain,omitempty" tf:"chain,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	PrivateKey core.LocalObjectReference `json:"privateKey" tf:"private_key"`
 }
 
 type OpsworksApplicationSpec struct {
+	// +optional
+	AppSource []OpsworksApplicationSpecAppSource `json:"appSource,omitempty" tf:"app_source,omitempty"`
 	// +optional
 	AutoBundleOnDeploy string `json:"autoBundleOnDeploy,omitempty" tf:"auto_bundle_on_deploy,omitempty"`
 	// +optional
@@ -58,6 +76,8 @@ type OpsworksApplicationSpec struct {
 	// +optional
 	RailsEnv string `json:"railsEnv,omitempty" tf:"rails_env,omitempty"`
 	// +optional
+	ShortName string `json:"shortName,omitempty" tf:"short_name,omitempty"`
+	// +optional
 	SslConfiguration []OpsworksApplicationSpecSslConfiguration `json:"sslConfiguration,omitempty" tf:"ssl_configuration,omitempty"`
 	StackID          string                                    `json:"stackID" tf:"stack_id"`
 	Type             string                                    `json:"type" tf:"type"`
@@ -69,7 +89,7 @@ type OpsworksApplicationStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

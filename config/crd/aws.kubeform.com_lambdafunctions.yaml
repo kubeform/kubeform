@@ -457,12 +457,24 @@ spec:
               type: string
             s3ObjectVersion:
               type: string
+            sourceCodeHash:
+              type: string
             tags:
               additionalProperties:
                 type: string
               type: object
             timeout:
               type: integer
+            tracingConfig:
+              items:
+                properties:
+                  mode:
+                    type: string
+                required:
+                - mode
+                type: object
+              maxItems: 1
+              type: array
             vpcConfig:
               items:
                 properties:
@@ -499,8 +511,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

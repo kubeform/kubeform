@@ -21,11 +21,13 @@ type CloudwatchLogSubscriptionFilter struct {
 type CloudwatchLogSubscriptionFilterSpec struct {
 	DestinationArn string `json:"destinationArn" tf:"destination_arn"`
 	// +optional
-	Distribution  string                    `json:"distribution,omitempty" tf:"distribution,omitempty"`
-	FilterPattern string                    `json:"filterPattern" tf:"filter_pattern"`
-	LogGroupName  string                    `json:"logGroupName" tf:"log_group_name"`
-	Name          string                    `json:"name" tf:"name"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Distribution  string `json:"distribution,omitempty" tf:"distribution,omitempty"`
+	FilterPattern string `json:"filterPattern" tf:"filter_pattern"`
+	LogGroupName  string `json:"logGroupName" tf:"log_group_name"`
+	Name          string `json:"name" tf:"name"`
+	// +optional
+	RoleArn     string                    `json:"roleArn,omitempty" tf:"role_arn,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type CloudwatchLogSubscriptionFilterStatus struct {
@@ -33,7 +35,7 @@ type CloudwatchLogSubscriptionFilterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

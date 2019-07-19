@@ -404,6 +404,8 @@ spec:
             dynamodbConfig:
               items:
                 properties:
+                  region:
+                    type: string
                   tableName:
                     type: string
                   useCallerCredentials:
@@ -417,6 +419,8 @@ spec:
               items:
                 properties:
                   endpoint:
+                    type: string
+                  region:
                     type: string
                 required:
                 - endpoint
@@ -474,8 +478,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

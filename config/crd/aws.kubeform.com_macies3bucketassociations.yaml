@@ -399,6 +399,16 @@ spec:
           properties:
             bucketName:
               type: string
+            classificationType:
+              items:
+                properties:
+                  continuous:
+                    type: string
+                  oneTime:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
             memberAccountID:
               type: string
             prefix:
@@ -426,8 +436,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

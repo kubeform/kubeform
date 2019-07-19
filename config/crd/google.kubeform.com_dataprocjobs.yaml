@@ -418,6 +418,16 @@ spec:
                     items:
                       type: string
                     type: array
+                  loggingConfig:
+                    items:
+                      properties:
+                        driverLogLevels:
+                          additionalProperties:
+                            type: string
+                          type: object
+                      type: object
+                    maxItems: 1
+                    type: array
                   mainClass:
                     type: string
                   mainJarFileURI:
@@ -468,6 +478,16 @@ spec:
                     items:
                       type: string
                     type: array
+                  loggingConfig:
+                    items:
+                      properties:
+                        driverLogLevels:
+                          additionalProperties:
+                            type: string
+                          type: object
+                      type: object
+                    maxItems: 1
+                    type: array
                   properties:
                     additionalProperties:
                       type: string
@@ -495,6 +515,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            project:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -523,6 +545,16 @@ spec:
                     items:
                       type: string
                     type: array
+                  loggingConfig:
+                    items:
+                      properties:
+                        driverLogLevels:
+                          additionalProperties:
+                            type: string
+                          type: object
+                      type: object
+                    maxItems: 1
+                    type: array
                   mainPythonFileURI:
                     type: string
                   properties:
@@ -535,6 +567,14 @@ spec:
                     type: array
                 required:
                 - mainPythonFileURI
+                type: object
+              maxItems: 1
+              type: array
+            reference:
+              items:
+                properties:
+                  jobID:
+                    type: string
                 type: object
               maxItems: 1
               type: array
@@ -567,6 +607,16 @@ spec:
                     items:
                       type: string
                     type: array
+                  loggingConfig:
+                    items:
+                      properties:
+                        driverLogLevels:
+                          additionalProperties:
+                            type: string
+                          type: object
+                      type: object
+                    maxItems: 1
+                    type: array
                   mainClass:
                     type: string
                   mainJarFileURI:
@@ -584,6 +634,16 @@ spec:
                   jarFileUris:
                     items:
                       type: string
+                    type: array
+                  loggingConfig:
+                    items:
+                      properties:
+                        driverLogLevels:
+                          additionalProperties:
+                            type: string
+                          type: object
+                      type: object
+                    maxItems: 1
                     type: array
                   properties:
                     additionalProperties:
@@ -616,8 +676,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -423,6 +423,11 @@ spec:
                 - serviceDelegation
                 type: object
               type: array
+            ipConfigurations:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             name:
               type: string
             networkSecurityGroupID:
@@ -465,8 +470,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

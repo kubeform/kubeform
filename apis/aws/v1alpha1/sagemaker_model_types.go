@@ -52,6 +52,8 @@ type SagemakerModelSpec struct {
 	EnableNetworkIsolation bool   `json:"enableNetworkIsolation,omitempty" tf:"enable_network_isolation,omitempty"`
 	ExecutionRoleArn       string `json:"executionRoleArn" tf:"execution_role_arn"`
 	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	PrimaryContainer []SagemakerModelSpecPrimaryContainer `json:"primaryContainer,omitempty" tf:"primary_container,omitempty"`
 	// +optional
@@ -67,7 +69,7 @@ type SagemakerModelStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

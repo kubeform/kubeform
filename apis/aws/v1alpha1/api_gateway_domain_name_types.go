@@ -18,6 +18,12 @@ type ApiGatewayDomainName struct {
 	Status            ApiGatewayDomainNameStatus `json:"status,omitempty"`
 }
 
+type ApiGatewayDomainNameSpecEndpointConfiguration struct {
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:MinItems=1
+	Types []string `json:"types" tf:"types"`
+}
+
 type ApiGatewayDomainNameSpec struct {
 	// +optional
 	CertificateArn string `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
@@ -28,8 +34,13 @@ type ApiGatewayDomainNameSpec struct {
 	// +optional
 	CertificateName string `json:"certificateName,omitempty" tf:"certificate_name,omitempty"`
 	// +optional
-	CertificatePrivateKey string `json:"certificatePrivateKey,omitempty" tf:"certificate_private_key,omitempty"`
-	DomainName            string `json:"domainName" tf:"domain_name"`
+	// Sensitive Data. Provide secret name which contains one value only
+	CertificatePrivateKey core.LocalObjectReference `json:"certificatePrivateKey,omitempty" tf:"certificate_private_key,omitempty"`
+	DomainName            string                    `json:"domainName" tf:"domain_name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:MinItems=1
+	EndpointConfiguration []ApiGatewayDomainNameSpecEndpointConfiguration `json:"endpointConfiguration,omitempty" tf:"endpoint_configuration,omitempty"`
 	// +optional
 	RegionalCertificateArn string `json:"regionalCertificateArn,omitempty" tf:"regional_certificate_arn,omitempty"`
 	// +optional
@@ -42,7 +53,7 @@ type ApiGatewayDomainNameStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

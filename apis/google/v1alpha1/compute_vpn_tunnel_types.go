@@ -25,11 +25,22 @@ type ComputeVPNTunnelSpec struct {
 	IkeVersion int `json:"ikeVersion,omitempty" tf:"ike_version,omitempty"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	Name   string            `json:"name" tf:"name"`
-	PeerIP string            `json:"peerIP" tf:"peer_ip"`
 	// +optional
-	Router           string                    `json:"router,omitempty" tf:"router,omitempty"`
-	SharedSecret     string                    `json:"sharedSecret" tf:"shared_secret"`
+	// +kubebuilder:validation:UniqueItems=true
+	LocalTrafficSelector []string `json:"localTrafficSelector,omitempty" tf:"local_traffic_selector,omitempty"`
+	Name                 string   `json:"name" tf:"name"`
+	PeerIP               string   `json:"peerIP" tf:"peer_ip"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	RemoteTrafficSelector []string `json:"remoteTrafficSelector,omitempty" tf:"remote_traffic_selector,omitempty"`
+	// +optional
+	Router string `json:"router,omitempty" tf:"router,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	SharedSecret     core.LocalObjectReference `json:"sharedSecret" tf:"shared_secret"`
 	TargetVPNGateway string                    `json:"targetVPNGateway" tf:"target_vpn_gateway"`
 	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
@@ -39,7 +50,7 @@ type ComputeVPNTunnelStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

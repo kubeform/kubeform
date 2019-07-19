@@ -397,17 +397,23 @@ spec:
           type: object
         spec:
           properties:
+            autoDeleteOnIdle:
+              type: string
             deadLetteringOnFilterEvaluationExceptions:
               description: Deprecated
               type: boolean
             deadLetteringOnMessageExpiration:
               type: boolean
+            defaultMessageTtl:
+              type: string
             enableBatchedOperations:
               type: boolean
             forwardTo:
               type: string
             location:
               description: Deprecated
+              type: string
+            lockDuration:
               type: string
             maxDeliveryCount:
               type: integer
@@ -448,8 +454,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

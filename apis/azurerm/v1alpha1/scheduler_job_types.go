@@ -26,19 +26,25 @@ type SchedulerJobSpecActionStorageQueue struct {
 }
 
 type SchedulerJobSpecActionWebAuthenticationActiveDirectory struct {
+	// +optional
+	Audience string `json:"audience,omitempty" tf:"audience,omitempty"`
 	ClientID string `json:"clientID" tf:"client_id"`
-	Secret   string `json:"secret" tf:"secret"`
-	TenantID string `json:"tenantID" tf:"tenant_id"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Secret   core.LocalObjectReference `json:"secret" tf:"secret"`
+	TenantID string                    `json:"tenantID" tf:"tenant_id"`
 }
 
 type SchedulerJobSpecActionWebAuthenticationBasic struct {
-	Password string `json:"password" tf:"password"`
-	Username string `json:"username" tf:"username"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password" tf:"password"`
+	Username string                    `json:"username" tf:"username"`
 }
 
 type SchedulerJobSpecActionWebAuthenticationCertificate struct {
-	Password string `json:"password" tf:"password"`
-	Pfx      string `json:"pfx" tf:"pfx"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password" tf:"password"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Pfx core.LocalObjectReference `json:"pfx" tf:"pfx"`
 }
 
 type SchedulerJobSpecActionWeb struct {
@@ -67,19 +73,25 @@ type SchedulerJobSpecErrorActionStorageQueue struct {
 }
 
 type SchedulerJobSpecErrorActionWebAuthenticationActiveDirectory struct {
+	// +optional
+	Audience string `json:"audience,omitempty" tf:"audience,omitempty"`
 	ClientID string `json:"clientID" tf:"client_id"`
-	Secret   string `json:"secret" tf:"secret"`
-	TenantID string `json:"tenantID" tf:"tenant_id"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Secret   core.LocalObjectReference `json:"secret" tf:"secret"`
+	TenantID string                    `json:"tenantID" tf:"tenant_id"`
 }
 
 type SchedulerJobSpecErrorActionWebAuthenticationBasic struct {
-	Password string `json:"password" tf:"password"`
-	Username string `json:"username" tf:"username"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password" tf:"password"`
+	Username string                    `json:"username" tf:"username"`
 }
 
 type SchedulerJobSpecErrorActionWebAuthenticationCertificate struct {
-	Password string `json:"password" tf:"password"`
-	Pfx      string `json:"pfx" tf:"pfx"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password" tf:"password"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Pfx core.LocalObjectReference `json:"pfx" tf:"pfx"`
 }
 
 type SchedulerJobSpecErrorActionWeb struct {
@@ -107,7 +119,9 @@ type SchedulerJobSpecRecurrenceMonthlyOccurrences struct {
 
 type SchedulerJobSpecRecurrence struct {
 	// +optional
-	Count     int    `json:"count,omitempty" tf:"count,omitempty"`
+	Count int `json:"count,omitempty" tf:"count,omitempty"`
+	// +optional
+	EndTime   string `json:"endTime,omitempty" tf:"end_time,omitempty"`
 	Frequency string `json:"frequency" tf:"frequency"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
@@ -159,7 +173,11 @@ type SchedulerJobSpec struct {
 	ResourceGroupName string                       `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Retry       []SchedulerJobSpecRetry   `json:"retry,omitempty" tf:"retry,omitempty"`
+	Retry []SchedulerJobSpecRetry `json:"retry,omitempty" tf:"retry,omitempty"`
+	// +optional
+	StartTime string `json:"startTime,omitempty" tf:"start_time,omitempty"`
+	// +optional
+	State       string                    `json:"state,omitempty" tf:"state,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -168,7 +186,7 @@ type SchedulerJobStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

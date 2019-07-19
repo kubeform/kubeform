@@ -411,9 +411,23 @@ spec:
               items:
                 properties:
                   certificatePassword:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   encodedCertificate:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   storeName:
                     type: string
                 required:
@@ -422,6 +436,138 @@ spec:
                 - storeName
                 type: object
               maxItems: 10
+              type: array
+            hostnameConfiguration:
+              items:
+                properties:
+                  management:
+                    items:
+                      properties:
+                        certificate:
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
+                        certificatePassword:
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
+                        hostName:
+                          type: string
+                        keyVaultID:
+                          type: string
+                        negotiateClientCertificate:
+                          type: boolean
+                      required:
+                      - hostName
+                      type: object
+                    type: array
+                  portal:
+                    items:
+                      properties:
+                        certificate:
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
+                        certificatePassword:
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
+                        hostName:
+                          type: string
+                        keyVaultID:
+                          type: string
+                        negotiateClientCertificate:
+                          type: boolean
+                      required:
+                      - hostName
+                      type: object
+                    type: array
+                  proxy:
+                    items:
+                      properties:
+                        certificate:
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
+                        certificatePassword:
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
+                        defaultSslBinding:
+                          type: boolean
+                        hostName:
+                          type: string
+                        keyVaultID:
+                          type: string
+                        negotiateClientCertificate:
+                          type: boolean
+                      required:
+                      - hostName
+                      type: object
+                    type: array
+                  scm:
+                    items:
+                      properties:
+                        certificate:
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
+                        certificatePassword:
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
+                        hostName:
+                          type: string
+                        keyVaultID:
+                          type: string
+                        negotiateClientCertificate:
+                          type: boolean
+                      required:
+                      - hostName
+                      type: object
+                    type: array
+                type: object
+              maxItems: 1
               type: array
             identity:
               items:
@@ -437,6 +583,18 @@ spec:
               type: string
             name:
               type: string
+            notificationSenderEmail:
+              type: string
+            policy:
+              items:
+                properties:
+                  xmlContent:
+                    type: string
+                  xmlLink:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -452,6 +610,65 @@ spec:
               type: string
             resourceGroupName:
               type: string
+            security:
+              items:
+                properties:
+                  disableBackendSsl30:
+                    type: boolean
+                  disableBackendTls10:
+                    type: boolean
+                  disableBackendTls11:
+                    type: boolean
+                  disableFrontendSsl30:
+                    type: boolean
+                  disableFrontendTls10:
+                    type: boolean
+                  disableFrontendTls11:
+                    type: boolean
+                  disableTripleDESChipers:
+                    description: Deprecated
+                    type: boolean
+                  disableTripleDESCiphers:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
+            signIn:
+              items:
+                properties:
+                  enabled:
+                    type: boolean
+                required:
+                - enabled
+                type: object
+              maxItems: 1
+              type: array
+            signUp:
+              items:
+                properties:
+                  enabled:
+                    type: boolean
+                  termsOfService:
+                    items:
+                      properties:
+                        consentRequired:
+                          type: boolean
+                        enabled:
+                          type: boolean
+                        text:
+                          type: string
+                      required:
+                      - consentRequired
+                      - enabled
+                      type: object
+                    maxItems: 1
+                    type: array
+                required:
+                - enabled
+                - termsOfService
+                type: object
+              maxItems: 1
+              type: array
             sku:
               items:
                 properties:
@@ -465,6 +682,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - location
           - name
@@ -484,8 +705,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

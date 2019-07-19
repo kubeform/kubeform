@@ -408,9 +408,13 @@ spec:
               type: string
             iamRoleArn:
               type: string
+            maintenanceWindow:
+              type: string
             nodeType:
               type: string
             notificationTopicArn:
+              type: string
+            parameterGroupName:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -423,6 +427,11 @@ spec:
               type: object
             replicationFactor:
               type: integer
+            securityGroupIDS:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             serverSideEncryption:
               items:
                 properties:
@@ -431,6 +440,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            subnetGroupName:
+              type: string
             tags:
               additionalProperties:
                 type: string
@@ -452,8 +463,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

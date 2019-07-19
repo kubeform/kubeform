@@ -24,6 +24,10 @@ type ComputeForwardingRuleSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+	// +optional
+	IpProtocol string `json:"ipProtocol,omitempty" tf:"ip_protocol,omitempty"`
+	// +optional
 	IpVersion string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
 	// +optional
 	// Deprecated
@@ -32,14 +36,24 @@ type ComputeForwardingRuleSpec struct {
 	LoadBalancingScheme string `json:"loadBalancingScheme,omitempty" tf:"load_balancing_scheme,omitempty"`
 	Name                string `json:"name" tf:"name"`
 	// +optional
+	Network string `json:"network,omitempty" tf:"network,omitempty"`
+	// +optional
+	NetworkTier string `json:"networkTier,omitempty" tf:"network_tier,omitempty"`
+	// +optional
 	PortRange string `json:"portRange,omitempty" tf:"port_range,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=5
 	// +kubebuilder:validation:UniqueItems=true
 	Ports []string `json:"ports,omitempty" tf:"ports,omitempty"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	// +optional
 	// Deprecated
 	ServiceLabel string `json:"serviceLabel,omitempty" tf:"service_label,omitempty"`
+	// +optional
+	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 	// +optional
 	Target      string                    `json:"target,omitempty" tf:"target,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -50,7 +64,7 @@ type ComputeForwardingRuleStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

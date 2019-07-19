@@ -19,9 +19,15 @@ type RoleAssignment struct {
 }
 
 type RoleAssignmentSpec struct {
-	PrincipalID string                    `json:"principalID" tf:"principal_id"`
-	Scope       string                    `json:"scope" tf:"scope"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +optional
+	Name        string `json:"name,omitempty" tf:"name,omitempty"`
+	PrincipalID string `json:"principalID" tf:"principal_id"`
+	// +optional
+	RoleDefinitionID string `json:"roleDefinitionID,omitempty" tf:"role_definition_id,omitempty"`
+	// +optional
+	RoleDefinitionName string                    `json:"roleDefinitionName,omitempty" tf:"role_definition_name,omitempty"`
+	Scope              string                    `json:"scope" tf:"scope"`
+	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type RoleAssignmentStatus struct {
@@ -29,7 +35,7 @@ type RoleAssignmentStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

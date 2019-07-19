@@ -21,6 +21,12 @@ type DbSecurityGroup struct {
 type DbSecurityGroupSpecIngress struct {
 	// +optional
 	Cidr string `json:"cidr,omitempty" tf:"cidr,omitempty"`
+	// +optional
+	SecurityGroupID string `json:"securityGroupID,omitempty" tf:"security_group_id,omitempty"`
+	// +optional
+	SecurityGroupName string `json:"securityGroupName,omitempty" tf:"security_group_name,omitempty"`
+	// +optional
+	SecurityGroupOwnerID string `json:"securityGroupOwnerID,omitempty" tf:"security_group_owner_id,omitempty"`
 }
 
 type DbSecurityGroupSpec struct {
@@ -39,7 +45,7 @@ type DbSecurityGroupStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

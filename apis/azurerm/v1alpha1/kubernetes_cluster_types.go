@@ -18,10 +18,40 @@ type KubernetesCluster struct {
 	Status            KubernetesClusterStatus `json:"status,omitempty"`
 }
 
+type KubernetesClusterSpecAddonProfileAciConnectorLinux struct {
+	Enabled    bool   `json:"enabled" tf:"enabled"`
+	SubnetName string `json:"subnetName" tf:"subnet_name"`
+}
+
+type KubernetesClusterSpecAddonProfileHttpApplicationRouting struct {
+	Enabled bool `json:"enabled" tf:"enabled"`
+}
+
+type KubernetesClusterSpecAddonProfileOmsAgent struct {
+	Enabled                 bool   `json:"enabled" tf:"enabled"`
+	LogAnalyticsWorkspaceID string `json:"logAnalyticsWorkspaceID" tf:"log_analytics_workspace_id"`
+}
+
+type KubernetesClusterSpecAddonProfile struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	AciConnectorLinux []KubernetesClusterSpecAddonProfileAciConnectorLinux `json:"aciConnectorLinux,omitempty" tf:"aci_connector_linux,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	HttpApplicationRouting []KubernetesClusterSpecAddonProfileHttpApplicationRouting `json:"httpApplicationRouting,omitempty" tf:"http_application_routing,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	OmsAgent []KubernetesClusterSpecAddonProfileOmsAgent `json:"omsAgent,omitempty" tf:"oms_agent,omitempty"`
+}
+
 type KubernetesClusterSpecAgentPoolProfile struct {
 	// +optional
-	Count int    `json:"count,omitempty" tf:"count,omitempty"`
-	Name  string `json:"name" tf:"name"`
+	Count int `json:"count,omitempty" tf:"count,omitempty"`
+	// +optional
+	MaxPods int    `json:"maxPods,omitempty" tf:"max_pods,omitempty"`
+	Name    string `json:"name" tf:"name"`
+	// +optional
+	OsDiskSizeGb int `json:"osDiskSizeGb,omitempty" tf:"os_disk_size_gb,omitempty"`
 	// +optional
 	OsType string `json:"osType,omitempty" tf:"os_type,omitempty"`
 	// +optional
@@ -41,27 +71,71 @@ type KubernetesClusterSpecLinuxProfile struct {
 	SshKey []KubernetesClusterSpecLinuxProfileSshKey `json:"sshKey" tf:"ssh_key"`
 }
 
+type KubernetesClusterSpecNetworkProfile struct {
+	// +optional
+	DnsServiceIP string `json:"dnsServiceIP,omitempty" tf:"dns_service_ip,omitempty"`
+	// +optional
+	DockerBridgeCIDR string `json:"dockerBridgeCIDR,omitempty" tf:"docker_bridge_cidr,omitempty"`
+	NetworkPlugin    string `json:"networkPlugin" tf:"network_plugin"`
+	// +optional
+	NetworkPolicy string `json:"networkPolicy,omitempty" tf:"network_policy,omitempty"`
+	// +optional
+	PodCIDR string `json:"podCIDR,omitempty" tf:"pod_cidr,omitempty"`
+	// +optional
+	ServiceCIDR string `json:"serviceCIDR,omitempty" tf:"service_cidr,omitempty"`
+}
+
+type KubernetesClusterSpecRoleBasedAccessControlAzureActiveDirectory struct {
+	ClientAppID string `json:"clientAppID" tf:"client_app_id"`
+	ServerAppID string `json:"serverAppID" tf:"server_app_id"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ServerAppSecret core.LocalObjectReference `json:"serverAppSecret" tf:"server_app_secret"`
+	// +optional
+	TenantID string `json:"tenantID,omitempty" tf:"tenant_id,omitempty"`
+}
+
+type KubernetesClusterSpecRoleBasedAccessControl struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	AzureActiveDirectory []KubernetesClusterSpecRoleBasedAccessControlAzureActiveDirectory `json:"azureActiveDirectory,omitempty" tf:"azure_active_directory,omitempty"`
+	Enabled              bool                                                              `json:"enabled" tf:"enabled"`
+}
+
 type KubernetesClusterSpecServicePrincipal struct {
-	ClientID     string `json:"clientID" tf:"client_id"`
-	ClientSecret string `json:"clientSecret" tf:"client_secret"`
+	ClientID string `json:"clientID" tf:"client_id"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ClientSecret core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
 }
 
 type KubernetesClusterSpec struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	AddonProfile     []KubernetesClusterSpecAddonProfile     `json:"addonProfile,omitempty" tf:"addon_profile,omitempty"`
 	AgentPoolProfile []KubernetesClusterSpecAgentPoolProfile `json:"agentPoolProfile" tf:"agent_pool_profile"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ApiServerAuthorizedIPRanges []string `json:"apiServerAuthorizedIPRanges,omitempty" tf:"api_server_authorized_ip_ranges,omitempty"`
 	DnsPrefix                   string   `json:"dnsPrefix" tf:"dns_prefix"`
 	// +optional
+	KubernetesVersion string `json:"kubernetesVersion,omitempty" tf:"kubernetes_version,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	LinuxProfile      []KubernetesClusterSpecLinuxProfile `json:"linuxProfile,omitempty" tf:"linux_profile,omitempty"`
-	Location          string                              `json:"location" tf:"location"`
-	Name              string                              `json:"name" tf:"name"`
-	ResourceGroupName string                              `json:"resourceGroupName" tf:"resource_group_name"`
+	LinuxProfile []KubernetesClusterSpecLinuxProfile `json:"linuxProfile,omitempty" tf:"linux_profile,omitempty"`
+	Location     string                              `json:"location" tf:"location"`
+	Name         string                              `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	NetworkProfile    []KubernetesClusterSpecNetworkProfile `json:"networkProfile,omitempty" tf:"network_profile,omitempty"`
+	ResourceGroupName string                                `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	RoleBasedAccessControl []KubernetesClusterSpecRoleBasedAccessControl `json:"roleBasedAccessControl,omitempty" tf:"role_based_access_control,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	ServicePrincipal []KubernetesClusterSpecServicePrincipal `json:"servicePrincipal" tf:"service_principal"`
-	ProviderRef      core.LocalObjectReference               `json:"providerRef" tf:"-"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type KubernetesClusterStatus struct {
@@ -69,7 +143,7 @@ type KubernetesClusterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

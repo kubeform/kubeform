@@ -32,7 +32,9 @@ type AppmeshVirtualNodeSpecSpecListenerHealthCheck struct {
 	HealthyThreshold int `json:"healthyThreshold" tf:"healthy_threshold"`
 	IntervalMillis   int `json:"intervalMillis" tf:"interval_millis"`
 	// +optional
-	Path               string `json:"path,omitempty" tf:"path,omitempty"`
+	Path string `json:"path,omitempty" tf:"path,omitempty"`
+	// +optional
+	Port               int    `json:"port,omitempty" tf:"port,omitempty"`
 	Protocol           string `json:"protocol" tf:"protocol"`
 	TimeoutMillis      int    `json:"timeoutMillis" tf:"timeout_millis"`
 	UnhealthyThreshold int    `json:"unhealthyThreshold" tf:"unhealthy_threshold"`
@@ -121,7 +123,7 @@ type AppmeshVirtualNodeStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -407,6 +407,14 @@ spec:
                           additionalProperties:
                             type: string
                           type: object
+                        onUnauthenticatedRequest:
+                          type: string
+                        scope:
+                          type: string
+                        sessionCookieName:
+                          type: string
+                        sessionTimeout:
+                          type: integer
                         userPoolArn:
                           type: string
                         userPoolClientID:
@@ -432,9 +440,24 @@ spec:
                         clientID:
                           type: string
                         clientSecret:
-                          type: string
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
                         issuer:
                           type: string
+                        onUnauthenticatedRequest:
+                          type: string
+                        scope:
+                          type: string
+                        sessionCookieName:
+                          type: string
+                        sessionTimeout:
+                          type: integer
                         tokenEndpoint:
                           type: string
                         userInfoEndpoint:
@@ -456,11 +479,15 @@ spec:
                           type: string
                         messageBody:
                           type: string
+                        statusCode:
+                          type: string
                       required:
                       - contentType
                       type: object
                     maxItems: 1
                     type: array
+                  order:
+                    type: integer
                   redirect:
                     items:
                       properties:
@@ -504,6 +531,8 @@ spec:
               uniqueItems: true
             listenerArn:
               type: string
+            priority:
+              type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -529,8 +558,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

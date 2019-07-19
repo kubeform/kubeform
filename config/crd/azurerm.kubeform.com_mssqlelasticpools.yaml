@@ -399,6 +399,11 @@ spec:
           properties:
             location:
               type: string
+            maxSizeBytes:
+              type: integer
+            maxSizeGb:
+              description: A Number represents a JSON number literal.
+              type: string
             name:
               type: string
             perDatabaseSettings:
@@ -447,6 +452,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             zoneRedundant:
               type: boolean
           required:
@@ -468,8 +477,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

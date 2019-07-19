@@ -451,8 +451,23 @@ spec:
               type: string
             revision:
               type: string
+            serviceURL:
+              type: string
             soapPassThrough:
               type: boolean
+            subscriptionKeyParameterNames:
+              items:
+                properties:
+                  header:
+                    type: string
+                  query:
+                    type: string
+                required:
+                - header
+                - query
+                type: object
+              maxItems: 1
+              type: array
           required:
           - apiManagementName
           - displayName
@@ -473,8 +488,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

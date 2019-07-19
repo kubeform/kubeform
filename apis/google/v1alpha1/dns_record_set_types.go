@@ -19,8 +19,10 @@ type DnsRecordSet struct {
 }
 
 type DnsRecordSetSpec struct {
-	ManagedZone string                    `json:"managedZone" tf:"managed_zone"`
-	Name        string                    `json:"name" tf:"name"`
+	ManagedZone string `json:"managedZone" tf:"managed_zone"`
+	Name        string `json:"name" tf:"name"`
+	// +optional
+	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	Rrdatas     []string                  `json:"rrdatas" tf:"rrdatas"`
 	Ttl         int                       `json:"ttl" tf:"ttl"`
 	Type        string                    `json:"type" tf:"type"`
@@ -32,7 +34,7 @@ type DnsRecordSetStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

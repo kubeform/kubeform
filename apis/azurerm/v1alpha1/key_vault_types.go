@@ -18,6 +18,21 @@ type KeyVault struct {
 	Status            KeyVaultStatus `json:"status,omitempty"`
 }
 
+type KeyVaultSpecAccessPolicy struct {
+	// +optional
+	ApplicationID string `json:"applicationID,omitempty" tf:"application_id,omitempty"`
+	// +optional
+	CertificatePermissions []string `json:"certificatePermissions,omitempty" tf:"certificate_permissions,omitempty"`
+	// +optional
+	KeyPermissions []string `json:"keyPermissions,omitempty" tf:"key_permissions,omitempty"`
+	ObjectID       string   `json:"objectID" tf:"object_id"`
+	// +optional
+	SecretPermissions []string `json:"secretPermissions,omitempty" tf:"secret_permissions,omitempty"`
+	// +optional
+	StoragePermissions []string `json:"storagePermissions,omitempty" tf:"storage_permissions,omitempty"`
+	TenantID           string   `json:"tenantID" tf:"tenant_id"`
+}
+
 type KeyVaultSpecNetworkAcls struct {
 	Bypass        string `json:"bypass" tf:"bypass"`
 	DefaultAction string `json:"defaultAction" tf:"default_action"`
@@ -29,7 +44,15 @@ type KeyVaultSpecNetworkAcls struct {
 	VirtualNetworkSubnetIDS []string `json:"virtualNetworkSubnetIDS,omitempty" tf:"virtual_network_subnet_ids,omitempty"`
 }
 
+type KeyVaultSpecSku struct {
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
 type KeyVaultSpec struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1024
+	AccessPolicy []KeyVaultSpecAccessPolicy `json:"accessPolicy,omitempty" tf:"access_policy,omitempty"`
 	// +optional
 	EnabledForDeployment bool `json:"enabledForDeployment,omitempty" tf:"enabled_for_deployment,omitempty"`
 	// +optional
@@ -42,8 +65,16 @@ type KeyVaultSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	NetworkAcls       []KeyVaultSpecNetworkAcls `json:"networkAcls,omitempty" tf:"network_acls,omitempty"`
 	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	TenantID          string                    `json:"tenantID" tf:"tenant_id"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// Deprecated
+	Sku []KeyVaultSpecSku `json:"sku,omitempty" tf:"sku,omitempty"`
+	// +optional
+	SkuName string `json:"skuName,omitempty" tf:"sku_name,omitempty"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	TenantID    string                    `json:"tenantID" tf:"tenant_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type KeyVaultStatus struct {
@@ -51,7 +82,7 @@ type KeyVaultStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

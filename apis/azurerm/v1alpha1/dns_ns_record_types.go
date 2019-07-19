@@ -18,12 +18,24 @@ type DnsNsRecord struct {
 	Status            DnsNsRecordStatus `json:"status,omitempty"`
 }
 
+type DnsNsRecordSpecRecord struct {
+	Nsdname string `json:"nsdname" tf:"nsdname"`
+}
+
 type DnsNsRecordSpec struct {
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	Ttl               int                       `json:"ttl" tf:"ttl"`
-	ZoneName          string                    `json:"zoneName" tf:"zone_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name string `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	// Deprecated
+	Record []DnsNsRecordSpecRecord `json:"record,omitempty" tf:"record,omitempty"`
+	// +optional
+	Records           []string `json:"records,omitempty" tf:"records,omitempty"`
+	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	Ttl         int                       `json:"ttl" tf:"ttl"`
+	ZoneName    string                    `json:"zoneName" tf:"zone_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type DnsNsRecordStatus struct {
@@ -31,7 +43,7 @@ type DnsNsRecordStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

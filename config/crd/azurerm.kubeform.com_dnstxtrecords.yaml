@@ -420,6 +420,10 @@ spec:
               uniqueItems: true
             resourceGroupName:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             ttl:
               type: integer
             zoneName:
@@ -442,8 +446,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -21,6 +21,8 @@ type LocalNetworkGateway struct {
 type LocalNetworkGatewaySpecBgpSettings struct {
 	Asn               int    `json:"asn" tf:"asn"`
 	BgpPeeringAddress string `json:"bgpPeeringAddress" tf:"bgp_peering_address"`
+	// +optional
+	PeerWeight int `json:"peerWeight,omitempty" tf:"peer_weight,omitempty"`
 }
 
 type LocalNetworkGatewaySpec struct {
@@ -32,7 +34,9 @@ type LocalNetworkGatewaySpec struct {
 	Location          string                               `json:"location" tf:"location"`
 	Name              string                               `json:"name" tf:"name"`
 	ResourceGroupName string                               `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference            `json:"providerRef" tf:"-"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type LocalNetworkGatewayStatus struct {
@@ -40,7 +44,7 @@ type LocalNetworkGatewayStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

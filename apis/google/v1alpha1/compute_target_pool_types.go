@@ -30,7 +30,13 @@ type ComputeTargetPoolSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	HealthChecks []string `json:"healthChecks,omitempty" tf:"health_checks,omitempty"`
-	Name         string   `json:"name" tf:"name"`
+	// +optional
+	Instances []string `json:"instances,omitempty" tf:"instances,omitempty"`
+	Name      string   `json:"name" tf:"name"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
 	SessionAffinity string                    `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -41,7 +47,7 @@ type ComputeTargetPoolStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

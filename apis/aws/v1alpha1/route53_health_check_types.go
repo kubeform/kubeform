@@ -29,6 +29,8 @@ type Route53HealthCheckSpec struct {
 	// +optional
 	CloudwatchAlarmRegion string `json:"cloudwatchAlarmRegion,omitempty" tf:"cloudwatch_alarm_region,omitempty"`
 	// +optional
+	EnableSni bool `json:"enableSni,omitempty" tf:"enable_sni,omitempty"`
+	// +optional
 	FailureThreshold int `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 	// +optional
 	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
@@ -64,7 +66,7 @@ type Route53HealthCheckStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

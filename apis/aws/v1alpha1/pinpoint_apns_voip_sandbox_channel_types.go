@@ -21,21 +21,27 @@ type PinpointApnsVoipSandboxChannel struct {
 type PinpointApnsVoipSandboxChannelSpec struct {
 	ApplicationID string `json:"applicationID" tf:"application_id"`
 	// +optional
-	BundleID string `json:"bundleID,omitempty" tf:"bundle_id,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	BundleID core.LocalObjectReference `json:"bundleID,omitempty" tf:"bundle_id,omitempty"`
 	// +optional
-	Certificate string `json:"certificate,omitempty" tf:"certificate,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Certificate core.LocalObjectReference `json:"certificate,omitempty" tf:"certificate,omitempty"`
 	// +optional
 	DefaultAuthenticationMethod string `json:"defaultAuthenticationMethod,omitempty" tf:"default_authentication_method,omitempty"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	PrivateKey string `json:"privateKey,omitempty" tf:"private_key,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	PrivateKey core.LocalObjectReference `json:"privateKey,omitempty" tf:"private_key,omitempty"`
 	// +optional
-	TeamID string `json:"teamID,omitempty" tf:"team_id,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	TeamID core.LocalObjectReference `json:"teamID,omitempty" tf:"team_id,omitempty"`
 	// +optional
-	TokenKey string `json:"tokenKey,omitempty" tf:"token_key,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	TokenKey core.LocalObjectReference `json:"tokenKey,omitempty" tf:"token_key,omitempty"`
 	// +optional
-	TokenKeyID  string                    `json:"tokenKeyID,omitempty" tf:"token_key_id,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	TokenKeyID  core.LocalObjectReference `json:"tokenKeyID,omitempty" tf:"token_key_id,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -44,7 +50,7 @@ type PinpointApnsVoipSandboxChannelStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -421,7 +421,11 @@ spec:
               type: string
             lambdaSuccessFeedbackSampleRate:
               type: integer
+            name:
+              type: string
             namePrefix:
+              type: string
+            policy:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -455,8 +459,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -400,6 +400,13 @@ spec:
             container:
               items:
                 properties:
+                  command:
+                    description: Deprecated
+                    type: string
+                  commands:
+                    items:
+                      type: string
+                    type: array
                   cpu:
                     description: A Number represents a JSON number literal.
                     type: string
@@ -455,6 +462,22 @@ spec:
                     type: string
                   name:
                     type: string
+                  port:
+                    description: Deprecated
+                    type: integer
+                  ports:
+                    items:
+                      properties:
+                        port:
+                          type: integer
+                        protocol:
+                          type: string
+                      type: object
+                    type: array
+                    uniqueItems: true
+                  protocol:
+                    description: Deprecated
+                    type: string
                   readinessProbe:
                     items:
                       properties:
@@ -487,8 +510,13 @@ spec:
                     maxItems: 1
                     type: array
                   secureEnvironmentVariables:
-                    additionalProperties:
-                      type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one or more values
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
                     type: object
                   volume:
                     items:
@@ -535,7 +563,14 @@ spec:
                         workspaceID:
                           type: string
                         workspaceKey:
-                          type: string
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
                       required:
                       - logType
                       - workspaceID
@@ -550,11 +585,33 @@ spec:
               type: array
             dnsNameLabel:
               type: string
+            identity:
+              items:
+                properties:
+                  identityIDS:
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              maxItems: 1
+              type: array
             imageRegistryCredential:
               items:
                 properties:
                   password:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   server:
                     type: string
                   username:
@@ -586,6 +643,10 @@ spec:
               type: string
             restartPolicy:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - container
           - location
@@ -604,8 +665,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

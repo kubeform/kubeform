@@ -412,6 +412,72 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            securityRule:
+              items:
+                properties:
+                  access:
+                    type: string
+                  description:
+                    type: string
+                  destinationAddressPrefix:
+                    type: string
+                  destinationAddressPrefixes:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                  destinationApplicationSecurityGroupIDS:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                  destinationPortRange:
+                    type: string
+                  destinationPortRanges:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                  direction:
+                    type: string
+                  name:
+                    type: string
+                  priority:
+                    type: integer
+                  protocol:
+                    type: string
+                  sourceAddressPrefix:
+                    type: string
+                  sourceAddressPrefixes:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                  sourceApplicationSecurityGroupIDS:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                  sourcePortRange:
+                    type: string
+                  sourcePortRanges:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                required:
+                - access
+                - direction
+                - name
+                - priority
+                - protocol
+                type: object
+              type: array
+              uniqueItems: true
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - location
           - name
@@ -428,8 +494,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

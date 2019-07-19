@@ -18,13 +18,25 @@ type RouteTable struct {
 	Status            RouteTableStatus `json:"status,omitempty"`
 }
 
+type RouteTableSpecRoute struct {
+	AddressPrefix string `json:"addressPrefix" tf:"address_prefix"`
+	Name          string `json:"name" tf:"name"`
+	// +optional
+	NextHopInIPAddress string `json:"nextHopInIPAddress,omitempty" tf:"next_hop_in_ip_address,omitempty"`
+	NextHopType        string `json:"nextHopType" tf:"next_hop_type"`
+}
+
 type RouteTableSpec struct {
 	// +optional
-	DisableBGPRoutePropagation bool                      `json:"disableBGPRoutePropagation,omitempty" tf:"disable_bgp_route_propagation,omitempty"`
-	Location                   string                    `json:"location" tf:"location"`
-	Name                       string                    `json:"name" tf:"name"`
-	ResourceGroupName          string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef                core.LocalObjectReference `json:"providerRef" tf:"-"`
+	DisableBGPRoutePropagation bool   `json:"disableBGPRoutePropagation,omitempty" tf:"disable_bgp_route_propagation,omitempty"`
+	Location                   string `json:"location" tf:"location"`
+	Name                       string `json:"name" tf:"name"`
+	ResourceGroupName          string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Route []RouteTableSpecRoute `json:"route,omitempty" tf:"route,omitempty"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type RouteTableStatus struct {
@@ -32,7 +44,7 @@ type RouteTableStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

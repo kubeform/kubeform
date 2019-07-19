@@ -21,6 +21,8 @@ type IamGroupPolicy struct {
 type IamGroupPolicySpec struct {
 	Group string `json:"group" tf:"group"`
 	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
 	NamePrefix  string                    `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	Policy      string                    `json:"policy" tf:"policy"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -31,7 +33,7 @@ type IamGroupPolicyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

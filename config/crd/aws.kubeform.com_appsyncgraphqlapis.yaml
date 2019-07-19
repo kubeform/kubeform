@@ -450,6 +450,8 @@ spec:
                 properties:
                   appIDClientRegex:
                     type: string
+                  awsRegion:
+                    type: string
                   defaultAction:
                     type: string
                   userPoolID:
@@ -475,8 +477,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

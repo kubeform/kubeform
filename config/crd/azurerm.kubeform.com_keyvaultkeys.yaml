@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            curve:
+              type: string
             keyOpts:
               items:
                 type: string
@@ -404,6 +406,8 @@ spec:
             keySize:
               type: integer
             keyType:
+              type: string
+            keyVaultID:
               type: string
             name:
               type: string
@@ -416,6 +420,13 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            tags:
+              additionalProperties:
+                type: string
+              type: object
+            vaultURI:
+              description: Deprecated
+              type: string
           required:
           - keyOpts
           - keyType
@@ -432,8 +443,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

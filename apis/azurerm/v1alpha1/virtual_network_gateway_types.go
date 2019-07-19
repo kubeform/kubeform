@@ -18,6 +18,15 @@ type VirtualNetworkGateway struct {
 	Status            VirtualNetworkGatewayStatus `json:"status,omitempty"`
 }
 
+type VirtualNetworkGatewaySpecBgpSettings struct {
+	// +optional
+	Asn int `json:"asn,omitempty" tf:"asn,omitempty"`
+	// +optional
+	PeerWeight int `json:"peerWeight,omitempty" tf:"peer_weight,omitempty"`
+	// +optional
+	PeeringAddress string `json:"peeringAddress,omitempty" tf:"peering_address,omitempty"`
+}
+
 type VirtualNetworkGatewaySpecIpConfiguration struct {
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
@@ -57,14 +66,23 @@ type VirtualNetworkGatewaySpecVpnClientConfiguration struct {
 
 type VirtualNetworkGatewaySpec struct {
 	// +optional
+	ActiveActive bool `json:"activeActive,omitempty" tf:"active_active,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	BgpSettings []VirtualNetworkGatewaySpecBgpSettings `json:"bgpSettings,omitempty" tf:"bgp_settings,omitempty"`
+	// +optional
 	DefaultLocalNetworkGatewayID string `json:"defaultLocalNetworkGatewayID,omitempty" tf:"default_local_network_gateway_id,omitempty"`
+	// +optional
+	EnableBGP bool `json:"enableBGP,omitempty" tf:"enable_bgp,omitempty"`
 	// +kubebuilder:validation:MaxItems=2
 	IpConfiguration   []VirtualNetworkGatewaySpecIpConfiguration `json:"ipConfiguration" tf:"ip_configuration"`
 	Location          string                                     `json:"location" tf:"location"`
 	Name              string                                     `json:"name" tf:"name"`
 	ResourceGroupName string                                     `json:"resourceGroupName" tf:"resource_group_name"`
 	Sku               string                                     `json:"sku" tf:"sku"`
-	Type              string                                     `json:"type" tf:"type"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Type string            `json:"type" tf:"type"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	VpnClientConfiguration []VirtualNetworkGatewaySpecVpnClientConfiguration `json:"vpnClientConfiguration,omitempty" tf:"vpn_client_configuration,omitempty"`
@@ -78,7 +96,7 @@ type VirtualNetworkGatewayStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

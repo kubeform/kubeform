@@ -406,6 +406,10 @@ spec:
                 properties:
                   autoDelete:
                     type: boolean
+                  boot:
+                    type: boolean
+                  deviceName:
+                    type: string
                   diskEncryptionKey:
                     items:
                       properties:
@@ -418,7 +422,17 @@ spec:
                     type: string
                   diskSizeGb:
                     type: integer
+                  diskType:
+                    type: string
+                  interface:
+                    type: string
+                  mode:
+                    type: string
                   source:
+                    type: string
+                  sourceImage:
+                    type: string
+                  type:
                     type: string
                 type: object
               type: array
@@ -450,13 +464,25 @@ spec:
               type: string
             minCPUPlatform:
               type: string
+            name:
+              type: string
+            namePrefix:
+              type: string
             networkInterface:
               items:
                 properties:
                   accessConfig:
                     items:
+                      properties:
+                        natIP:
+                          type: string
+                        networkTier:
+                          type: string
                       type: object
                     type: array
+                  address:
+                    description: Deprecated
+                    type: string
                   aliasIPRange:
                     items:
                       properties:
@@ -468,8 +494,18 @@ spec:
                       - ipCIDRRange
                       type: object
                     type: array
+                  network:
+                    type: string
+                  networkIP:
+                    type: string
+                  subnetwork:
+                    type: string
+                  subnetworkProject:
+                    type: string
                 type: object
               type: array
+            project:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -479,9 +515,24 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            region:
+              type: string
+            scheduling:
+              items:
+                properties:
+                  automaticRestart:
+                    type: boolean
+                  onHostMaintenance:
+                    type: string
+                  preemptible:
+                    type: boolean
+                type: object
+              type: array
             serviceAccount:
               items:
                 properties:
+                  email:
+                    type: string
                   scopes:
                     items:
                       type: string
@@ -512,8 +563,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

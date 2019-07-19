@@ -24,11 +24,14 @@ type VirtualMachineExtensionSpec struct {
 	Location                string `json:"location" tf:"location"`
 	Name                    string `json:"name" tf:"name"`
 	// +optional
-	ProtectedSettings string `json:"protectedSettings,omitempty" tf:"protected_settings,omitempty"`
-	Publisher         string `json:"publisher" tf:"publisher"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ProtectedSettings core.LocalObjectReference `json:"protectedSettings,omitempty" tf:"protected_settings,omitempty"`
+	Publisher         string                    `json:"publisher" tf:"publisher"`
+	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Settings           string                    `json:"settings,omitempty" tf:"settings,omitempty"`
+	Settings string `json:"settings,omitempty" tf:"settings,omitempty"`
+	// +optional
+	Tags               map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	Type               string                    `json:"type" tf:"type"`
 	TypeHandlerVersion string                    `json:"typeHandlerVersion" tf:"type_handler_version"`
 	VirtualMachineName string                    `json:"virtualMachineName" tf:"virtual_machine_name"`
@@ -40,7 +43,7 @@ type VirtualMachineExtensionStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

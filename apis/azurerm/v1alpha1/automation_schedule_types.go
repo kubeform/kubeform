@@ -25,8 +25,17 @@ type AutomationScheduleSpecMonthlyOccurrence struct {
 
 type AutomationScheduleSpec struct {
 	// +optional
+	// Deprecated
+	AccountName string `json:"accountName,omitempty" tf:"account_name,omitempty"`
+	// +optional
+	AutomationAccountName string `json:"automationAccountName,omitempty" tf:"automation_account_name,omitempty"`
+	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	Frequency   string `json:"frequency" tf:"frequency"`
+	// +optional
+	ExpiryTime string `json:"expiryTime,omitempty" tf:"expiry_time,omitempty"`
+	Frequency  string `json:"frequency" tf:"frequency"`
+	// +optional
+	Interval int `json:"interval,omitempty" tf:"interval,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	MonthDays []int64 `json:"monthDays,omitempty" tf:"month_days,omitempty"`
@@ -34,6 +43,8 @@ type AutomationScheduleSpec struct {
 	MonthlyOccurrence []AutomationScheduleSpecMonthlyOccurrence `json:"monthlyOccurrence,omitempty" tf:"monthly_occurrence,omitempty"`
 	Name              string                                    `json:"name" tf:"name"`
 	ResourceGroupName string                                    `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	StartTime string `json:"startTime,omitempty" tf:"start_time,omitempty"`
 	// +optional
 	Timezone string `json:"timezone,omitempty" tf:"timezone,omitempty"`
 	// +optional
@@ -47,7 +58,7 @@ type AutomationScheduleStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

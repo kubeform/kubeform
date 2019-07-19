@@ -397,6 +397,37 @@ spec:
           type: object
         spec:
           properties:
+            accessPolicy:
+              items:
+                properties:
+                  applicationID:
+                    type: string
+                  certificatePermissions:
+                    items:
+                      type: string
+                    type: array
+                  keyPermissions:
+                    items:
+                      type: string
+                    type: array
+                  objectID:
+                    type: string
+                  secretPermissions:
+                    items:
+                      type: string
+                    type: array
+                  storagePermissions:
+                    items:
+                      type: string
+                    type: array
+                  tenantID:
+                    type: string
+                required:
+                - objectID
+                - tenantID
+                type: object
+              maxItems: 1024
+              type: array
             enabledForDeployment:
               type: boolean
             enabledForDiskEncryption:
@@ -441,6 +472,21 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            sku:
+              description: Deprecated
+              items:
+                properties:
+                  name:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+            skuName:
+              type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             tenantID:
               type: string
           required:
@@ -460,8 +506,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

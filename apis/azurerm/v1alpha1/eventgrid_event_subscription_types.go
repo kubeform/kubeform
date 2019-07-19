@@ -26,6 +26,11 @@ type EventgridEventSubscriptionSpecHybridConnectionEndpoint struct {
 	HybridConnectionID string `json:"hybridConnectionID" tf:"hybrid_connection_id"`
 }
 
+type EventgridEventSubscriptionSpecRetryPolicy struct {
+	EventTimeToLive     int `json:"eventTimeToLive" tf:"event_time_to_live"`
+	MaxDeliveryAttempts int `json:"maxDeliveryAttempts" tf:"max_delivery_attempts"`
+}
+
 type EventgridEventSubscriptionSpecStorageBlobDeadLetterDestination struct {
 	StorageAccountID         string `json:"storageAccountID" tf:"storage_account_id"`
 	StorageBlobContainerName string `json:"storageBlobContainerName" tf:"storage_blob_container_name"`
@@ -59,9 +64,14 @@ type EventgridEventSubscriptionSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	HybridConnectionEndpoint []EventgridEventSubscriptionSpecHybridConnectionEndpoint `json:"hybridConnectionEndpoint,omitempty" tf:"hybrid_connection_endpoint,omitempty"`
 	// +optional
+	IncludedEventTypes []string `json:"includedEventTypes,omitempty" tf:"included_event_types,omitempty"`
+	// +optional
 	Labels []string `json:"labels,omitempty" tf:"labels,omitempty"`
 	Name   string   `json:"name" tf:"name"`
-	Scope  string   `json:"scope" tf:"scope"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	RetryPolicy []EventgridEventSubscriptionSpecRetryPolicy `json:"retryPolicy,omitempty" tf:"retry_policy,omitempty"`
+	Scope       string                                      `json:"scope" tf:"scope"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	StorageBlobDeadLetterDestination []EventgridEventSubscriptionSpecStorageBlobDeadLetterDestination `json:"storageBlobDeadLetterDestination,omitempty" tf:"storage_blob_dead_letter_destination,omitempty"`
@@ -71,6 +81,8 @@ type EventgridEventSubscriptionSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SubjectFilter []EventgridEventSubscriptionSpecSubjectFilter `json:"subjectFilter,omitempty" tf:"subject_filter,omitempty"`
+	// +optional
+	TopicName string `json:"topicName,omitempty" tf:"topic_name,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	WebhookEndpoint []EventgridEventSubscriptionSpecWebhookEndpoint `json:"webhookEndpoint,omitempty" tf:"webhook_endpoint,omitempty"`
@@ -82,7 +94,7 @@ type EventgridEventSubscriptionStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -399,6 +399,8 @@ spec:
           properties:
             kmsKeyID:
               type: string
+            name:
+              type: string
             namePrefix:
               type: string
             providerRef:
@@ -429,8 +431,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

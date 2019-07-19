@@ -431,6 +431,10 @@ spec:
               type: string
             retryEnabled:
               type: boolean
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             timeout:
               type: integer
           required:
@@ -453,8 +457,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

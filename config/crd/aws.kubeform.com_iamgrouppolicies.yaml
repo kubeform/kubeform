@@ -399,6 +399,8 @@ spec:
           properties:
             group:
               type: string
+            name:
+              type: string
             namePrefix:
               type: string
             policy:
@@ -427,8 +429,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -20,6 +20,12 @@ type ComputeSubnetworkIamMember struct {
 
 type ComputeSubnetworkIamMemberSpec struct {
 	Member string `json:"member" tf:"member"`
+	// +optional
+	// Deprecated
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	// Deprecated
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	Role   string `json:"role" tf:"role"`
 	// Deprecated
 	Subnetwork  string                    `json:"subnetwork" tf:"subnetwork"`
@@ -31,7 +37,7 @@ type ComputeSubnetworkIamMemberStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

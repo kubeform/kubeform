@@ -25,7 +25,8 @@ type MonitoringUptimeCheckConfigSpecContentMatchers struct {
 
 type MonitoringUptimeCheckConfigSpecHttpCheckAuthInfo struct {
 	// +optional
-	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
@@ -92,6 +93,8 @@ type MonitoringUptimeCheckConfigSpec struct {
 	// +optional
 	Period string `json:"period,omitempty" tf:"period,omitempty"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ResourceGroup []MonitoringUptimeCheckConfigSpecResourceGroup `json:"resourceGroup,omitempty" tf:"resource_group,omitempty"`
 	// +optional
@@ -108,7 +111,7 @@ type MonitoringUptimeCheckConfigStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -37,7 +37,9 @@ type SesReceiptRuleSpecBounceAction struct {
 
 type SesReceiptRuleSpecLambdaAction struct {
 	FunctionArn string `json:"functionArn" tf:"function_arn"`
-	Position    int    `json:"position" tf:"position"`
+	// +optional
+	InvocationType string `json:"invocationType,omitempty" tf:"invocation_type,omitempty"`
+	Position       int    `json:"position" tf:"position"`
 	// +optional
 	TopicArn string `json:"topicArn,omitempty" tf:"topic_arn,omitempty"`
 }
@@ -82,6 +84,8 @@ type SesReceiptRuleSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	BounceAction []SesReceiptRuleSpecBounceAction `json:"bounceAction,omitempty" tf:"bounce_action,omitempty"`
 	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	LambdaAction []SesReceiptRuleSpecLambdaAction `json:"lambdaAction,omitempty" tf:"lambda_action,omitempty"`
 	Name         string                           `json:"name" tf:"name"`
@@ -93,11 +97,15 @@ type SesReceiptRuleSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	S3Action []SesReceiptRuleSpecS3Action `json:"s3Action,omitempty" tf:"s3_action,omitempty"`
 	// +optional
+	ScanEnabled bool `json:"scanEnabled,omitempty" tf:"scan_enabled,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SnsAction []SesReceiptRuleSpecSnsAction `json:"snsAction,omitempty" tf:"sns_action,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	StopAction []SesReceiptRuleSpecStopAction `json:"stopAction,omitempty" tf:"stop_action,omitempty"`
+	// +optional
+	TlsPolicy string `json:"tlsPolicy,omitempty" tf:"tls_policy,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	WorkmailAction []SesReceiptRuleSpecWorkmailAction `json:"workmailAction,omitempty" tf:"workmail_action,omitempty"`
@@ -109,7 +117,7 @@ type SesReceiptRuleStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -403,6 +403,8 @@ spec:
               type: boolean
             engine:
               type: string
+            engineVersion:
+              type: string
             globalClusterIdentifier:
               type: string
             providerRef:
@@ -430,8 +432,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

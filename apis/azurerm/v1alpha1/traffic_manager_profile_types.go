@@ -34,11 +34,15 @@ type TrafficManagerProfileSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	DnsConfig []TrafficManagerProfileSpecDnsConfig `json:"dnsConfig" tf:"dns_config"`
 	// +kubebuilder:validation:UniqueItems=true
-	MonitorConfig        []TrafficManagerProfileSpecMonitorConfig `json:"monitorConfig" tf:"monitor_config"`
-	Name                 string                                   `json:"name" tf:"name"`
-	ResourceGroupName    string                                   `json:"resourceGroupName" tf:"resource_group_name"`
-	TrafficRoutingMethod string                                   `json:"trafficRoutingMethod" tf:"traffic_routing_method"`
-	ProviderRef          core.LocalObjectReference                `json:"providerRef" tf:"-"`
+	MonitorConfig []TrafficManagerProfileSpecMonitorConfig `json:"monitorConfig" tf:"monitor_config"`
+	Name          string                                   `json:"name" tf:"name"`
+	// +optional
+	ProfileStatus     string `json:"profileStatus,omitempty" tf:"profile_status,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Tags                 map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	TrafficRoutingMethod string                    `json:"trafficRoutingMethod" tf:"traffic_routing_method"`
+	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type TrafficManagerProfileStatus struct {
@@ -46,7 +50,7 @@ type TrafficManagerProfileStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

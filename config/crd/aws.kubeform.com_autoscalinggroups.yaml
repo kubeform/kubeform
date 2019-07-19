@@ -397,6 +397,15 @@ spec:
           type: object
         spec:
           properties:
+            availabilityZones:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            defaultCooldown:
+              type: integer
+            desiredCapacity:
+              type: integer
             enabledMetrics:
               items:
                 type: string
@@ -406,9 +415,13 @@ spec:
               type: boolean
             healthCheckGracePeriod:
               type: integer
+            healthCheckType:
+              type: string
             initialLifecycleHook:
               items:
                 properties:
+                  defaultResult:
+                    type: string
                   heartbeatTimeout:
                     type: integer
                   lifecycleTransition:
@@ -432,11 +445,20 @@ spec:
             launchTemplate:
               items:
                 properties:
+                  ID:
+                    type: string
+                  name:
+                    type: string
                   version:
                     type: string
                 type: object
               maxItems: 1
               type: array
+            loadBalancers:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             maxSize:
               type: integer
             metricsGranularity:
@@ -459,6 +481,8 @@ spec:
                           type: integer
                         spotAllocationStrategy:
                           type: string
+                        spotInstancePools:
+                          type: integer
                         spotMaxPrice:
                           type: string
                       type: object
@@ -470,6 +494,10 @@ spec:
                         launchTemplateSpecification:
                           items:
                             properties:
+                              launchTemplateID:
+                                type: string
+                              launchTemplateName:
+                                type: string
                               version:
                                 type: string
                             type: object
@@ -494,6 +522,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            name:
+              type: string
             namePrefix:
               type: string
             placementGroup:
@@ -509,6 +539,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            serviceLinkedRoleArn:
+              type: string
             suspendedProcesses:
               items:
                 type: string
@@ -530,10 +562,20 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            targetGroupArns:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             terminationPolicies:
               items:
                 type: string
               type: array
+            vpcZoneIdentifier:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             waitForCapacityTimeout:
               type: string
             waitForElbCapacity:
@@ -553,8 +595,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

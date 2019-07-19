@@ -34,7 +34,10 @@ type SubnetSpec struct {
 	AddressPrefix string `json:"addressPrefix" tf:"address_prefix"`
 	// +optional
 	Delegation []SubnetSpecDelegation `json:"delegation,omitempty" tf:"delegation,omitempty"`
-	Name       string                 `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	IpConfigurations []string `json:"ipConfigurations,omitempty" tf:"ip_configurations,omitempty"`
+	Name             string   `json:"name" tf:"name"`
 	// +optional
 	// Deprecated
 	NetworkSecurityGroupID string `json:"networkSecurityGroupID,omitempty" tf:"network_security_group_id,omitempty"`
@@ -53,7 +56,7 @@ type SubnetStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

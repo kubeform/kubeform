@@ -27,6 +27,10 @@ type LambdaFunctionSpecEnvironment struct {
 	Variables map[string]string `json:"variables,omitempty" tf:"variables,omitempty"`
 }
 
+type LambdaFunctionSpecTracingConfig struct {
+	Mode string `json:"mode" tf:"mode"`
+}
+
 type LambdaFunctionSpecVpcConfig struct {
 	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS" tf:"security_group_ids"`
@@ -67,9 +71,14 @@ type LambdaFunctionSpec struct {
 	// +optional
 	S3ObjectVersion string `json:"s3ObjectVersion,omitempty" tf:"s3_object_version,omitempty"`
 	// +optional
+	SourceCodeHash string `json:"sourceCodeHash,omitempty" tf:"source_code_hash,omitempty"`
+	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	Timeout int `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	TracingConfig []LambdaFunctionSpecTracingConfig `json:"tracingConfig,omitempty" tf:"tracing_config,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	VpcConfig   []LambdaFunctionSpecVpcConfig `json:"vpcConfig,omitempty" tf:"vpc_config,omitempty"`
@@ -81,7 +90,7 @@ type LambdaFunctionStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

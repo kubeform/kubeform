@@ -464,6 +464,8 @@ spec:
                           type: string
                         roleArn:
                           type: string
+                        runOrder:
+                          type: integer
                         version:
                           type: string
                       required:
@@ -503,8 +505,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

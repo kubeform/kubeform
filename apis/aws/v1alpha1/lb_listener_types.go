@@ -21,9 +21,17 @@ type LbListener struct {
 type LbListenerSpecDefaultActionAuthenticateCognito struct {
 	// +optional
 	AuthenticationRequestExtraParams map[string]string `json:"authenticationRequestExtraParams,omitempty" tf:"authentication_request_extra_params,omitempty"`
-	UserPoolArn                      string            `json:"userPoolArn" tf:"user_pool_arn"`
-	UserPoolClientID                 string            `json:"userPoolClientID" tf:"user_pool_client_id"`
-	UserPoolDomain                   string            `json:"userPoolDomain" tf:"user_pool_domain"`
+	// +optional
+	OnUnauthenticatedRequest string `json:"onUnauthenticatedRequest,omitempty" tf:"on_unauthenticated_request,omitempty"`
+	// +optional
+	Scope string `json:"scope,omitempty" tf:"scope,omitempty"`
+	// +optional
+	SessionCookieName string `json:"sessionCookieName,omitempty" tf:"session_cookie_name,omitempty"`
+	// +optional
+	SessionTimeout   int    `json:"sessionTimeout,omitempty" tf:"session_timeout,omitempty"`
+	UserPoolArn      string `json:"userPoolArn" tf:"user_pool_arn"`
+	UserPoolClientID string `json:"userPoolClientID" tf:"user_pool_client_id"`
+	UserPoolDomain   string `json:"userPoolDomain" tf:"user_pool_domain"`
 }
 
 type LbListenerSpecDefaultActionAuthenticateOidc struct {
@@ -31,16 +39,27 @@ type LbListenerSpecDefaultActionAuthenticateOidc struct {
 	AuthenticationRequestExtraParams map[string]string `json:"authenticationRequestExtraParams,omitempty" tf:"authentication_request_extra_params,omitempty"`
 	AuthorizationEndpoint            string            `json:"authorizationEndpoint" tf:"authorization_endpoint"`
 	ClientID                         string            `json:"clientID" tf:"client_id"`
-	ClientSecret                     string            `json:"clientSecret" tf:"client_secret"`
-	Issuer                           string            `json:"issuer" tf:"issuer"`
-	TokenEndpoint                    string            `json:"tokenEndpoint" tf:"token_endpoint"`
-	UserInfoEndpoint                 string            `json:"userInfoEndpoint" tf:"user_info_endpoint"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ClientSecret core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
+	Issuer       string                    `json:"issuer" tf:"issuer"`
+	// +optional
+	OnUnauthenticatedRequest string `json:"onUnauthenticatedRequest,omitempty" tf:"on_unauthenticated_request,omitempty"`
+	// +optional
+	Scope string `json:"scope,omitempty" tf:"scope,omitempty"`
+	// +optional
+	SessionCookieName string `json:"sessionCookieName,omitempty" tf:"session_cookie_name,omitempty"`
+	// +optional
+	SessionTimeout   int    `json:"sessionTimeout,omitempty" tf:"session_timeout,omitempty"`
+	TokenEndpoint    string `json:"tokenEndpoint" tf:"token_endpoint"`
+	UserInfoEndpoint string `json:"userInfoEndpoint" tf:"user_info_endpoint"`
 }
 
 type LbListenerSpecDefaultActionFixedResponse struct {
 	ContentType string `json:"contentType" tf:"content_type"`
 	// +optional
 	MessageBody string `json:"messageBody,omitempty" tf:"message_body,omitempty"`
+	// +optional
+	StatusCode string `json:"statusCode,omitempty" tf:"status_code,omitempty"`
 }
 
 type LbListenerSpecDefaultActionRedirect struct {
@@ -68,6 +87,8 @@ type LbListenerSpecDefaultAction struct {
 	// +kubebuilder:validation:MaxItems=1
 	FixedResponse []LbListenerSpecDefaultActionFixedResponse `json:"fixedResponse,omitempty" tf:"fixed_response,omitempty"`
 	// +optional
+	Order int `json:"order,omitempty" tf:"order,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Redirect []LbListenerSpecDefaultActionRedirect `json:"redirect,omitempty" tf:"redirect,omitempty"`
 	// +optional
@@ -82,7 +103,9 @@ type LbListenerSpec struct {
 	LoadBalancerArn string                        `json:"loadBalancerArn" tf:"load_balancer_arn"`
 	Port            int                           `json:"port" tf:"port"`
 	// +optional
-	Protocol    string                    `json:"protocol,omitempty" tf:"protocol,omitempty"`
+	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
+	// +optional
+	SslPolicy   string                    `json:"sslPolicy,omitempty" tf:"ssl_policy,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -91,7 +114,7 @@ type LbListenerStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

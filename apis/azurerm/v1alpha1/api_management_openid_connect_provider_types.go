@@ -20,8 +20,10 @@ type ApiManagementOpenidConnectProvider struct {
 
 type ApiManagementOpenidConnectProviderSpec struct {
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
-	ClientID          string `json:"clientID" tf:"client_id"`
-	ClientSecret      string `json:"clientSecret" tf:"client_secret"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ClientID core.LocalObjectReference `json:"clientID" tf:"client_id"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ClientSecret core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
 	// +optional
 	Description       string                    `json:"description,omitempty" tf:"description,omitempty"`
 	DisplayName       string                    `json:"displayName" tf:"display_name"`
@@ -36,7 +38,7 @@ type ApiManagementOpenidConnectProviderStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -26,6 +26,10 @@ type DataFactorySpecGithubConfiguration struct {
 	RootFolder     string `json:"rootFolder" tf:"root_folder"`
 }
 
+type DataFactorySpecIdentity struct {
+	Type string `json:"type" tf:"type"`
+}
+
 type DataFactorySpecVstsConfiguration struct {
 	AccountName    string `json:"accountName" tf:"account_name"`
 	BranchName     string `json:"branchName" tf:"branch_name"`
@@ -39,9 +43,14 @@ type DataFactorySpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	GithubConfiguration []DataFactorySpecGithubConfiguration `json:"githubConfiguration,omitempty" tf:"github_configuration,omitempty"`
-	Location            string                               `json:"location" tf:"location"`
-	Name                string                               `json:"name" tf:"name"`
-	ResourceGroupName   string                               `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Identity          []DataFactorySpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	Location          string                    `json:"location" tf:"location"`
+	Name              string                    `json:"name" tf:"name"`
+	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	VstsConfiguration []DataFactorySpecVstsConfiguration `json:"vstsConfiguration,omitempty" tf:"vsts_configuration,omitempty"`
@@ -53,7 +62,7 @@ type DataFactoryStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

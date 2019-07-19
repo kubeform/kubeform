@@ -412,6 +412,8 @@ spec:
               type: object
             resourceID:
               type: string
+            roleArn:
+              type: string
             scalableDimension:
               type: string
             serviceNamespace:
@@ -434,8 +436,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

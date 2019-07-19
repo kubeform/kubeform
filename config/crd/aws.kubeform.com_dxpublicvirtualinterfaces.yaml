@@ -399,9 +399,15 @@ spec:
           properties:
             addressFamily:
               type: string
+            amazonAddress:
+              type: string
             bgpAsn:
               type: integer
+            bgpAuthKey:
+              type: string
             connectionID:
+              type: string
+            customerAddress:
               type: string
             name:
               type: string
@@ -445,8 +451,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

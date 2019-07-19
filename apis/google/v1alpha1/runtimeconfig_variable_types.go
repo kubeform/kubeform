@@ -22,6 +22,8 @@ type RuntimeconfigVariableSpec struct {
 	Name   string `json:"name" tf:"name"`
 	Parent string `json:"parent" tf:"parent"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
 	Text string `json:"text,omitempty" tf:"text,omitempty"`
 	// +optional
 	Value       string                    `json:"value,omitempty" tf:"value,omitempty"`
@@ -33,7 +35,7 @@ type RuntimeconfigVariableStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

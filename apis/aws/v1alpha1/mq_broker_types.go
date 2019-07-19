@@ -18,6 +18,13 @@ type MqBroker struct {
 	Status            MqBrokerStatus `json:"status,omitempty"`
 }
 
+type MqBrokerSpecConfiguration struct {
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	Revision int `json:"revision,omitempty" tf:"revision,omitempty"`
+}
+
 type MqBrokerSpecLogs struct {
 	// +optional
 	Audit bool `json:"audit,omitempty" tf:"audit,omitempty"`
@@ -25,14 +32,21 @@ type MqBrokerSpecLogs struct {
 	General bool `json:"general,omitempty" tf:"general,omitempty"`
 }
 
+type MqBrokerSpecMaintenanceWindowStartTime struct {
+	DayOfWeek string `json:"dayOfWeek" tf:"day_of_week"`
+	TimeOfDay string `json:"timeOfDay" tf:"time_of_day"`
+	TimeZone  string `json:"timeZone" tf:"time_zone"`
+}
+
 type MqBrokerSpecUser struct {
 	// +optional
 	ConsoleAccess bool `json:"consoleAccess,omitempty" tf:"console_access,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Groups   []string `json:"groups,omitempty" tf:"groups,omitempty"`
-	Password string   `json:"password" tf:"password"`
-	Username string   `json:"username" tf:"username"`
+	Groups []string `json:"groups,omitempty" tf:"groups,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password" tf:"password"`
+	Username string                    `json:"username" tf:"username"`
 }
 
 type MqBrokerSpec struct {
@@ -42,6 +56,9 @@ type MqBrokerSpec struct {
 	AutoMinorVersionUpgrade bool   `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
 	BrokerName              string `json:"brokerName" tf:"broker_name"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Configuration []MqBrokerSpecConfiguration `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	// +optional
 	DeploymentMode   string `json:"deploymentMode,omitempty" tf:"deployment_mode,omitempty"`
 	EngineType       string `json:"engineType" tf:"engine_type"`
 	EngineVersion    string `json:"engineVersion" tf:"engine_version"`
@@ -50,9 +67,15 @@ type MqBrokerSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Logs []MqBrokerSpecLogs `json:"logs,omitempty" tf:"logs,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	MaintenanceWindowStartTime []MqBrokerSpecMaintenanceWindowStartTime `json:"maintenanceWindowStartTime,omitempty" tf:"maintenance_window_start_time,omitempty"`
+	// +optional
 	PubliclyAccessible bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups" tf:"security_groups"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SubnetIDS []string `json:"subnetIDS,omitempty" tf:"subnet_ids,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
@@ -65,7 +88,7 @@ type MqBrokerStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

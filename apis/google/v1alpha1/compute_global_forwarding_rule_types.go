@@ -22,13 +22,19 @@ type ComputeGlobalForwardingRuleSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+	// +optional
+	IpProtocol string `json:"ipProtocol,omitempty" tf:"ip_protocol,omitempty"`
+	// +optional
 	IpVersion string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
 	// +optional
 	// Deprecated
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	Name   string            `json:"name" tf:"name"`
 	// +optional
-	PortRange   string                    `json:"portRange,omitempty" tf:"port_range,omitempty"`
+	PortRange string `json:"portRange,omitempty" tf:"port_range,omitempty"`
+	// +optional
+	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	Target      string                    `json:"target" tf:"target"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
@@ -38,7 +44,7 @@ type ComputeGlobalForwardingRuleStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

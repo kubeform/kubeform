@@ -411,6 +411,8 @@ spec:
                   schedule:
                     items:
                       properties:
+                        copyTags:
+                          type: boolean
                         createRule:
                           items:
                             properties:
@@ -418,6 +420,11 @@ spec:
                                 type: integer
                               intervalUnit:
                                 type: string
+                              times:
+                                items:
+                                  type: string
+                                maxItems: 1
+                                type: array
                             required:
                             - interval
                             type: object
@@ -483,8 +490,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

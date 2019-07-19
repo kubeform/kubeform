@@ -19,11 +19,15 @@ type LogAnalyticsWorkspace struct {
 }
 
 type LogAnalyticsWorkspaceSpec struct {
-	Location          string                    `json:"location" tf:"location"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	Sku               string                    `json:"sku" tf:"sku"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	RetentionInDays int    `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	Sku             string `json:"sku" tf:"sku"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type LogAnalyticsWorkspaceStatus struct {
@@ -31,7 +35,7 @@ type LogAnalyticsWorkspaceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

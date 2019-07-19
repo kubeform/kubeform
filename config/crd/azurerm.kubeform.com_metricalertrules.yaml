@@ -399,6 +399,20 @@ spec:
           properties:
             aggregation:
               type: string
+            description:
+              type: string
+            emailAction:
+              items:
+                properties:
+                  customEmails:
+                    items:
+                      type: string
+                    type: array
+                  sendToServiceOwners:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
             enabled:
               type: boolean
             location:
@@ -424,9 +438,27 @@ spec:
               type: string
             resourceID:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             threshold:
               description: A Number represents a JSON number literal.
               type: string
+            webhookAction:
+              items:
+                properties:
+                  properties:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  serviceURI:
+                    type: string
+                required:
+                - serviceURI
+                type: object
+              maxItems: 1
+              type: array
           required:
           - aggregation
           - location
@@ -449,8 +481,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

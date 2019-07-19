@@ -401,8 +401,45 @@ spec:
               type: string
             description:
               type: string
+            ebsBlockDevice:
+              items:
+                properties:
+                  deleteOnTermination:
+                    type: boolean
+                  deviceName:
+                    type: string
+                  encrypted:
+                    type: boolean
+                  iops:
+                    type: integer
+                  snapshotID:
+                    type: string
+                  volumeSize:
+                    type: integer
+                  volumeType:
+                    type: string
+                required:
+                - deviceName
+                type: object
+              type: array
+              uniqueItems: true
             enaSupport:
               type: boolean
+            ephemeralBlockDevice:
+              items:
+                properties:
+                  deviceName:
+                    type: string
+                  virtualName:
+                    type: string
+                required:
+                - deviceName
+                - virtualName
+                type: object
+              type: array
+              uniqueItems: true
+            imageLocation:
+              type: string
             kernelID:
               type: string
             name:
@@ -442,8 +479,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

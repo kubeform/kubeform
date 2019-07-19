@@ -18,6 +18,18 @@ type CloudfunctionsFunction struct {
 	Status            CloudfunctionsFunctionStatus `json:"status,omitempty"`
 }
 
+type CloudfunctionsFunctionSpecEventTriggerFailurePolicy struct {
+	Retry bool `json:"retry" tf:"retry"`
+}
+
+type CloudfunctionsFunctionSpecEventTrigger struct {
+	EventType string `json:"eventType" tf:"event_type"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	FailurePolicy []CloudfunctionsFunctionSpecEventTriggerFailurePolicy `json:"failurePolicy,omitempty" tf:"failure_policy,omitempty"`
+	Resource      string                                                `json:"resource" tf:"resource"`
+}
+
 type CloudfunctionsFunctionSpec struct {
 	// +optional
 	AvailableMemoryMb int `json:"availableMemoryMb,omitempty" tf:"available_memory_mb,omitempty"`
@@ -28,15 +40,35 @@ type CloudfunctionsFunctionSpec struct {
 	// +optional
 	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 	// +optional
-	Labels              map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	Name                string            `json:"name" tf:"name"`
-	SourceArchiveBucket string            `json:"sourceArchiveBucket" tf:"source_archive_bucket"`
-	SourceArchiveObject string            `json:"sourceArchiveObject" tf:"source_archive_object"`
+	// +kubebuilder:validation:MaxItems=1
+	EventTrigger []CloudfunctionsFunctionSpecEventTrigger `json:"eventTrigger,omitempty" tf:"event_trigger,omitempty"`
+	// +optional
+	HttpsTriggerURL string `json:"httpsTriggerURL,omitempty" tf:"https_trigger_url,omitempty"`
+	// +optional
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	Name   string            `json:"name" tf:"name"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	// +optional
+	// Deprecated
+	RetryOnFailure bool `json:"retryOnFailure,omitempty" tf:"retry_on_failure,omitempty"`
+	// +optional
+	Runtime             string `json:"runtime,omitempty" tf:"runtime,omitempty"`
+	SourceArchiveBucket string `json:"sourceArchiveBucket" tf:"source_archive_bucket"`
+	SourceArchiveObject string `json:"sourceArchiveObject" tf:"source_archive_object"`
 	// +optional
 	Timeout int `json:"timeout,omitempty" tf:"timeout,omitempty"`
 	// +optional
-	TriggerHTTP bool                      `json:"triggerHTTP,omitempty" tf:"trigger_http,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// Deprecated
+	TriggerBucket string `json:"triggerBucket,omitempty" tf:"trigger_bucket,omitempty"`
+	// +optional
+	TriggerHTTP bool `json:"triggerHTTP,omitempty" tf:"trigger_http,omitempty"`
+	// +optional
+	// Deprecated
+	TriggerTopic string                    `json:"triggerTopic,omitempty" tf:"trigger_topic,omitempty"`
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type CloudfunctionsFunctionStatus struct {
@@ -44,7 +76,7 @@ type CloudfunctionsFunctionStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

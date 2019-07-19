@@ -48,12 +48,15 @@ type DevTestLinuxVirtualMachineSpec struct {
 	// +optional
 	Notes string `json:"notes,omitempty" tf:"notes,omitempty"`
 	// +optional
-	Password          string `json:"password,omitempty" tf:"password,omitempty"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
-	Size              string `json:"size" tf:"size"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password          core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	Size              string                    `json:"size" tf:"size"`
 	// +optional
-	SshKey      string                    `json:"sshKey,omitempty" tf:"ssh_key,omitempty"`
-	StorageType string                    `json:"storageType" tf:"storage_type"`
+	SshKey      string `json:"sshKey,omitempty" tf:"ssh_key,omitempty"`
+	StorageType string `json:"storageType" tf:"storage_type"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	Username    string                    `json:"username" tf:"username"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
@@ -63,7 +66,7 @@ type DevTestLinuxVirtualMachineStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

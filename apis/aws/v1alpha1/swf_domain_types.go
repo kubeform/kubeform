@@ -22,6 +22,8 @@ type SwfDomainSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
 	NamePrefix                             string                    `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	WorkflowExecutionRetentionPeriodInDays string                    `json:"workflowExecutionRetentionPeriodInDays" tf:"workflow_execution_retention_period_in_days"`
 	ProviderRef                            core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -32,7 +34,7 @@ type SwfDomainStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

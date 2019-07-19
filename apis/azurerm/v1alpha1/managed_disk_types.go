@@ -41,6 +41,8 @@ type ManagedDiskSpecEncryptionSettings struct {
 type ManagedDiskSpec struct {
 	CreateOption string `json:"createOption" tf:"create_option"`
 	// +optional
+	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	EncryptionSettings []ManagedDiskSpecEncryptionSettings `json:"encryptionSettings,omitempty" tf:"encryption_settings,omitempty"`
 	// +optional
@@ -51,8 +53,12 @@ type ManagedDiskSpec struct {
 	OsType            string `json:"osType,omitempty" tf:"os_type,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	SourceResourceID   string `json:"sourceResourceID,omitempty" tf:"source_resource_id,omitempty"`
+	SourceResourceID string `json:"sourceResourceID,omitempty" tf:"source_resource_id,omitempty"`
+	// +optional
+	SourceURI          string `json:"sourceURI,omitempty" tf:"source_uri,omitempty"`
 	StorageAccountType string `json:"storageAccountType" tf:"storage_account_type"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Zones       []string                  `json:"zones,omitempty" tf:"zones,omitempty"`
@@ -64,7 +70,7 @@ type ManagedDiskStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -44,7 +44,11 @@ type SnsTopicSpec struct {
 	// +optional
 	LambdaSuccessFeedbackSampleRate int `json:"lambdaSuccessFeedbackSampleRate,omitempty" tf:"lambda_success_feedback_sample_rate,omitempty"`
 	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
+	// +optional
+	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional
 	SqsFailureFeedbackRoleArn string `json:"sqsFailureFeedbackRoleArn,omitempty" tf:"sqs_failure_feedback_role_arn,omitempty"`
 	// +optional
@@ -61,7 +65,7 @@ type SnsTopicStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -399,7 +399,13 @@ spec:
           properties:
             assignIpv6AddressOnCreation:
               type: boolean
+            availabilityZone:
+              type: string
+            availabilityZoneID:
+              type: string
             cidrBlock:
+              type: string
+            ipv6CIDRBlock:
               type: string
             mapPublicIPOnLaunch:
               type: boolean
@@ -433,8 +439,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -45,6 +45,8 @@ type MonitorActionGroupSpec struct {
 	// +optional
 	SmsReceiver []MonitorActionGroupSpecSmsReceiver `json:"smsReceiver,omitempty" tf:"sms_receiver,omitempty"`
 	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
 	WebhookReceiver []MonitorActionGroupSpecWebhookReceiver `json:"webhookReceiver,omitempty" tf:"webhook_receiver,omitempty"`
 	ProviderRef     core.LocalObjectReference               `json:"providerRef" tf:"-"`
 }
@@ -54,7 +56,7 @@ type MonitorActionGroupStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

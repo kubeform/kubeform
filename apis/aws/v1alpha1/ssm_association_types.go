@@ -24,11 +24,18 @@ type SsmAssociationSpecOutputLocation struct {
 	S3KeyPrefix string `json:"s3KeyPrefix,omitempty" tf:"s3_key_prefix,omitempty"`
 }
 
+type SsmAssociationSpecTargets struct {
+	Key    string   `json:"key" tf:"key"`
+	Values []string `json:"values" tf:"values"`
+}
+
 type SsmAssociationSpec struct {
 	// +optional
 	AssociationName string `json:"associationName,omitempty" tf:"association_name,omitempty"`
 	// +optional
 	ComplianceSeverity string `json:"complianceSeverity,omitempty" tf:"compliance_severity,omitempty"`
+	// +optional
+	DocumentVersion string `json:"documentVersion,omitempty" tf:"document_version,omitempty"`
 	// +optional
 	InstanceID string `json:"instanceID,omitempty" tf:"instance_id,omitempty"`
 	// +optional
@@ -40,8 +47,13 @@ type SsmAssociationSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	OutputLocation []SsmAssociationSpecOutputLocation `json:"outputLocation,omitempty" tf:"output_location,omitempty"`
 	// +optional
-	ScheduleExpression string                    `json:"scheduleExpression,omitempty" tf:"schedule_expression,omitempty"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	// +optional
+	ScheduleExpression string `json:"scheduleExpression,omitempty" tf:"schedule_expression,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=5
+	Targets     []SsmAssociationSpecTargets `json:"targets,omitempty" tf:"targets,omitempty"`
+	ProviderRef core.LocalObjectReference   `json:"providerRef" tf:"-"`
 }
 
 type SsmAssociationStatus struct {
@@ -49,7 +61,7 @@ type SsmAssociationStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

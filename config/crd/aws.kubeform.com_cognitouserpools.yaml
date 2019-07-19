@@ -397,6 +397,28 @@ spec:
           type: object
         spec:
           properties:
+            adminCreateUserConfig:
+              items:
+                properties:
+                  allowAdminCreateUserOnly:
+                    type: boolean
+                  inviteMessageTemplate:
+                    items:
+                      properties:
+                        emailMessage:
+                          type: string
+                        emailSubject:
+                          type: string
+                        smsMessage:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                  unusedAccountValidityDays:
+                    type: integer
+                type: object
+              maxItems: 1
+              type: array
             aliasAttributes:
               items:
                 type: string
@@ -429,10 +451,56 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            emailVerificationMessage:
+              type: string
+            emailVerificationSubject:
+              type: string
+            lambdaConfig:
+              items:
+                properties:
+                  createAuthChallenge:
+                    type: string
+                  customMessage:
+                    type: string
+                  defineAuthChallenge:
+                    type: string
+                  postAuthentication:
+                    type: string
+                  postConfirmation:
+                    type: string
+                  preAuthentication:
+                    type: string
+                  preSignUp:
+                    type: string
+                  preTokenGeneration:
+                    type: string
+                  userMigration:
+                    type: string
+                  verifyAuthChallengeResponse:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
             mfaConfiguration:
               type: string
             name:
               type: string
+            passwordPolicy:
+              items:
+                properties:
+                  minimumLength:
+                    type: integer
+                  requireLowercase:
+                    type: boolean
+                  requireNumbers:
+                    type: boolean
+                  requireSymbols:
+                    type: boolean
+                  requireUppercase:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -518,6 +586,24 @@ spec:
               items:
                 type: string
               type: array
+            verificationMessageTemplate:
+              items:
+                properties:
+                  defaultEmailOption:
+                    type: string
+                  emailMessage:
+                    type: string
+                  emailMessageByLink:
+                    type: string
+                  emailSubject:
+                    type: string
+                  emailSubjectByLink:
+                    type: string
+                  smsMessage:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
           required:
           - name
           - providerRef
@@ -532,8 +618,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

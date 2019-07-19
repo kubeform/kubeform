@@ -28,7 +28,9 @@ type ComputeSslPolicySpec struct {
 	MinTlsVersion string `json:"minTlsVersion,omitempty" tf:"min_tls_version,omitempty"`
 	Name          string `json:"name" tf:"name"`
 	// +optional
-	Profile     string                    `json:"profile,omitempty" tf:"profile,omitempty"`
+	Profile string `json:"profile,omitempty" tf:"profile,omitempty"`
+	// +optional
+	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -37,7 +39,7 @@ type ComputeSslPolicyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

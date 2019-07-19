@@ -23,13 +23,15 @@ type DevTestPolicySpec struct {
 	Description   string `json:"description,omitempty" tf:"description,omitempty"`
 	EvaluatorType string `json:"evaluatorType" tf:"evaluator_type"`
 	// +optional
-	FactData          string                    `json:"factData,omitempty" tf:"fact_data,omitempty"`
-	LabName           string                    `json:"labName" tf:"lab_name"`
-	Name              string                    `json:"name" tf:"name"`
-	PolicySetName     string                    `json:"policySetName" tf:"policy_set_name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	Threshold         string                    `json:"threshold" tf:"threshold"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	FactData          string `json:"factData,omitempty" tf:"fact_data,omitempty"`
+	LabName           string `json:"labName" tf:"lab_name"`
+	Name              string `json:"name" tf:"name"`
+	PolicySetName     string `json:"policySetName" tf:"policy_set_name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	Threshold   string                    `json:"threshold" tf:"threshold"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type DevTestPolicyStatus struct {
@@ -37,7 +39,7 @@ type DevTestPolicyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

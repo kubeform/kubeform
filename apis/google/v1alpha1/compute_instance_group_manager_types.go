@@ -43,6 +43,21 @@ type ComputeInstanceGroupManagerSpecRollingUpdatePolicy struct {
 	Type          string `json:"type" tf:"type"`
 }
 
+type ComputeInstanceGroupManagerSpecVersionTargetSize struct {
+	// +optional
+	Fixed int `json:"fixed,omitempty" tf:"fixed,omitempty"`
+	// +optional
+	Percent int `json:"percent,omitempty" tf:"percent,omitempty"`
+}
+
+type ComputeInstanceGroupManagerSpecVersion struct {
+	InstanceTemplate string `json:"instanceTemplate" tf:"instance_template"`
+	Name             string `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	TargetSize []ComputeInstanceGroupManagerSpecVersionTargetSize `json:"targetSize,omitempty" tf:"target_size,omitempty"`
+}
+
 type ComputeInstanceGroupManagerSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -57,6 +72,8 @@ type ComputeInstanceGroupManagerSpec struct {
 	// +optional
 	NamedPort []ComputeInstanceGroupManagerSpecNamedPort `json:"namedPort,omitempty" tf:"named_port,omitempty"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// Deprecated
 	RollingUpdatePolicy []ComputeInstanceGroupManagerSpecRollingUpdatePolicy `json:"rollingUpdatePolicy,omitempty" tf:"rolling_update_policy,omitempty"`
@@ -64,10 +81,17 @@ type ComputeInstanceGroupManagerSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	TargetPools []string `json:"targetPools,omitempty" tf:"target_pools,omitempty"`
 	// +optional
+	TargetSize int `json:"targetSize,omitempty" tf:"target_size,omitempty"`
+	// +optional
 	UpdateStrategy string `json:"updateStrategy,omitempty" tf:"update_strategy,omitempty"`
 	// +optional
-	WaitForInstances bool                      `json:"waitForInstances,omitempty" tf:"wait_for_instances,omitempty"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// Deprecated
+	Version []ComputeInstanceGroupManagerSpecVersion `json:"version,omitempty" tf:"version,omitempty"`
+	// +optional
+	WaitForInstances bool `json:"waitForInstances,omitempty" tf:"wait_for_instances,omitempty"`
+	// +optional
+	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ComputeInstanceGroupManagerStatus struct {
@@ -75,7 +99,7 @@ type ComputeInstanceGroupManagerStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -18,15 +18,63 @@ type SecurityGroup struct {
 	Status            SecurityGroupStatus `json:"status,omitempty"`
 }
 
+type SecurityGroupSpecEgress struct {
+	// +optional
+	CidrBlocks []string `json:"cidrBlocks,omitempty" tf:"cidr_blocks,omitempty"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	FromPort    int    `json:"fromPort" tf:"from_port"`
+	// +optional
+	Ipv6CIDRBlocks []string `json:"ipv6CIDRBlocks,omitempty" tf:"ipv6_cidr_blocks,omitempty"`
+	// +optional
+	PrefixListIDS []string `json:"prefixListIDS,omitempty" tf:"prefix_list_ids,omitempty"`
+	Protocol      string   `json:"protocol" tf:"protocol"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
+	// +optional
+	Self   bool `json:"self,omitempty" tf:"self,omitempty"`
+	ToPort int  `json:"toPort" tf:"to_port"`
+}
+
+type SecurityGroupSpecIngress struct {
+	// +optional
+	CidrBlocks []string `json:"cidrBlocks,omitempty" tf:"cidr_blocks,omitempty"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	FromPort    int    `json:"fromPort" tf:"from_port"`
+	// +optional
+	Ipv6CIDRBlocks []string `json:"ipv6CIDRBlocks,omitempty" tf:"ipv6_cidr_blocks,omitempty"`
+	// +optional
+	PrefixListIDS []string `json:"prefixListIDS,omitempty" tf:"prefix_list_ids,omitempty"`
+	Protocol      string   `json:"protocol" tf:"protocol"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
+	// +optional
+	Self   bool `json:"self,omitempty" tf:"self,omitempty"`
+	ToPort int  `json:"toPort" tf:"to_port"`
+}
+
 type SecurityGroupSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Egress []SecurityGroupSpecEgress `json:"egress,omitempty" tf:"egress,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Ingress []SecurityGroupSpecIngress `json:"ingress,omitempty" tf:"ingress,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
 	RevokeRulesOnDelete bool `json:"revokeRulesOnDelete,omitempty" tf:"revoke_rules_on_delete,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	VpcID       string                    `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -35,7 +83,7 @@ type SecurityGroupStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

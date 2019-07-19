@@ -18,20 +18,55 @@ type FunctionApp struct {
 	Status            FunctionAppStatus `json:"status,omitempty"`
 }
 
+type FunctionAppSpecConnectionString struct {
+	Name string `json:"name" tf:"name"`
+	Type string `json:"type" tf:"type"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Value core.LocalObjectReference `json:"value" tf:"value"`
+}
+
+type FunctionAppSpecIdentity struct {
+	Type string `json:"type" tf:"type"`
+}
+
+type FunctionAppSpecSiteConfig struct {
+	// +optional
+	AlwaysOn bool `json:"alwaysOn,omitempty" tf:"always_on,omitempty"`
+	// +optional
+	LinuxFxVersion string `json:"linuxFxVersion,omitempty" tf:"linux_fx_version,omitempty"`
+	// +optional
+	Use32BitWorkerProcess bool `json:"use32BitWorkerProcess,omitempty" tf:"use_32_bit_worker_process,omitempty"`
+	// +optional
+	WebsocketsEnabled bool `json:"websocketsEnabled,omitempty" tf:"websockets_enabled,omitempty"`
+}
+
 type FunctionAppSpec struct {
 	AppServicePlanID string `json:"appServicePlanID" tf:"app_service_plan_id"`
 	// +optional
 	AppSettings map[string]string `json:"appSettings,omitempty" tf:"app_settings,omitempty"`
 	// +optional
+	ClientAffinityEnabled bool `json:"clientAffinityEnabled,omitempty" tf:"client_affinity_enabled,omitempty"`
+	// +optional
+	ConnectionString []FunctionAppSpecConnectionString `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
+	// +optional
 	EnableBuiltinLogging bool `json:"enableBuiltinLogging,omitempty" tf:"enable_builtin_logging,omitempty"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	HttpsOnly               bool   `json:"httpsOnly,omitempty" tf:"https_only,omitempty"`
-	Location                string `json:"location" tf:"location"`
-	Name                    string `json:"name" tf:"name"`
-	ResourceGroupName       string `json:"resourceGroupName" tf:"resource_group_name"`
-	StorageConnectionString string `json:"storageConnectionString" tf:"storage_connection_string"`
+	HttpsOnly bool `json:"httpsOnly,omitempty" tf:"https_only,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Identity          []FunctionAppSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	Location          string                    `json:"location" tf:"location"`
+	Name              string                    `json:"name" tf:"name"`
+	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	SiteConfig []FunctionAppSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	StorageConnectionString core.LocalObjectReference `json:"storageConnectionString" tf:"storage_connection_string"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	Version     string                    `json:"version,omitempty" tf:"version,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -42,7 +77,7 @@ type FunctionAppStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

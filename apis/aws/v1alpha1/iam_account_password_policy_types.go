@@ -22,8 +22,22 @@ type IamAccountPasswordPolicySpec struct {
 	// +optional
 	AllowUsersToChangePassword bool `json:"allowUsersToChangePassword,omitempty" tf:"allow_users_to_change_password,omitempty"`
 	// +optional
-	MinimumPasswordLength int                       `json:"minimumPasswordLength,omitempty" tf:"minimum_password_length,omitempty"`
-	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
+	HardExpiry bool `json:"hardExpiry,omitempty" tf:"hard_expiry,omitempty"`
+	// +optional
+	MaxPasswordAge int `json:"maxPasswordAge,omitempty" tf:"max_password_age,omitempty"`
+	// +optional
+	MinimumPasswordLength int `json:"minimumPasswordLength,omitempty" tf:"minimum_password_length,omitempty"`
+	// +optional
+	PasswordReusePrevention int `json:"passwordReusePrevention,omitempty" tf:"password_reuse_prevention,omitempty"`
+	// +optional
+	RequireLowercaseCharacters bool `json:"requireLowercaseCharacters,omitempty" tf:"require_lowercase_characters,omitempty"`
+	// +optional
+	RequireNumbers bool `json:"requireNumbers,omitempty" tf:"require_numbers,omitempty"`
+	// +optional
+	RequireSymbols bool `json:"requireSymbols,omitempty" tf:"require_symbols,omitempty"`
+	// +optional
+	RequireUppercaseCharacters bool                      `json:"requireUppercaseCharacters,omitempty" tf:"require_uppercase_characters,omitempty"`
+	ProviderRef                core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type IamAccountPasswordPolicyStatus struct {
@@ -31,7 +45,7 @@ type IamAccountPasswordPolicyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

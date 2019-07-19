@@ -399,6 +399,13 @@ spec:
           properties:
             availableToOtherTenants:
               type: boolean
+            homepage:
+              type: string
+            identifierUris:
+              items:
+                type: string
+              minItems: 1
+              type: array
             name:
               type: string
             oauth2AllowImplicitFlow:
@@ -412,6 +419,10 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            replyUrls:
+              items:
+                type: string
+              type: array
           required:
           - name
           - providerRef
@@ -426,8 +437,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

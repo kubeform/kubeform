@@ -35,13 +35,19 @@ type MssqlElasticpoolSpecSku struct {
 
 type MssqlElasticpoolSpec struct {
 	Location string `json:"location" tf:"location"`
-	Name     string `json:"name" tf:"name"`
+	// +optional
+	MaxSizeBytes int `json:"maxSizeBytes,omitempty" tf:"max_size_bytes,omitempty"`
+	// +optional
+	MaxSizeGb json.Number `json:"maxSizeGb,omitempty" tf:"max_size_gb,omitempty"`
+	Name      string      `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
 	PerDatabaseSettings []MssqlElasticpoolSpecPerDatabaseSettings `json:"perDatabaseSettings" tf:"per_database_settings"`
 	ResourceGroupName   string                                    `json:"resourceGroupName" tf:"resource_group_name"`
 	ServerName          string                                    `json:"serverName" tf:"server_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku []MssqlElasticpoolSpecSku `json:"sku" tf:"sku"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	ZoneRedundant bool                      `json:"zoneRedundant,omitempty" tf:"zone_redundant,omitempty"`
 	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -52,7 +58,7 @@ type MssqlElasticpoolStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -399,6 +399,12 @@ spec:
           properties:
             algorithm:
               type: string
+            dropletIDS:
+              items:
+                format: int64
+                type: integer
+              type: array
+              uniqueItems: true
             dropletTag:
               type: string
             enableProxyProtocol:
@@ -426,6 +432,29 @@ spec:
                 type: object
               minItems: 1
               type: array
+            healthcheck:
+              items:
+                properties:
+                  checkIntervalSeconds:
+                    type: integer
+                  healthyThreshold:
+                    type: integer
+                  path:
+                    type: string
+                  port:
+                    type: integer
+                  protocol:
+                    type: string
+                  responseTimeoutSeconds:
+                    type: integer
+                  unhealthyThreshold:
+                    type: integer
+                required:
+                - port
+                - protocol
+                type: object
+              maxItems: 1
+              type: array
             name:
               type: string
             providerRef:
@@ -441,6 +470,18 @@ spec:
               type: boolean
             region:
               type: string
+            stickySessions:
+              items:
+                properties:
+                  cookieName:
+                    type: string
+                  cookieTtlSeconds:
+                    type: integer
+                  type:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
           required:
           - forwardingRule
           - name
@@ -457,8 +498,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

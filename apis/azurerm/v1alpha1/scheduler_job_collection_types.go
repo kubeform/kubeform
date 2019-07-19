@@ -24,6 +24,9 @@ type SchedulerJobCollectionSpecQuota struct {
 	MaxRecurrenceFrequency string `json:"maxRecurrenceFrequency" tf:"max_recurrence_frequency"`
 	// +optional
 	MaxRecurrenceInterval int `json:"maxRecurrenceInterval,omitempty" tf:"max_recurrence_interval,omitempty"`
+	// +optional
+	// Deprecated
+	MaxRetryInterval int `json:"maxRetryInterval,omitempty" tf:"max_retry_interval,omitempty"`
 }
 
 type SchedulerJobCollectionSpec struct {
@@ -35,7 +38,9 @@ type SchedulerJobCollectionSpec struct {
 	ResourceGroupName string                            `json:"resourceGroupName" tf:"resource_group_name"`
 	Sku               string                            `json:"sku" tf:"sku"`
 	// +optional
-	State       string                    `json:"state,omitempty" tf:"state,omitempty"`
+	State string `json:"state,omitempty" tf:"state,omitempty"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -44,7 +49,7 @@ type SchedulerJobCollectionStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -397,12 +397,26 @@ spec:
           type: object
         spec:
           properties:
+            allocatedStorage:
+              type: integer
             allowMajorVersionUpgrade:
+              type: boolean
+            applyImmediately:
               type: boolean
             autoMinorVersionUpgrade:
               type: boolean
+            availabilityZone:
+              type: string
+            backupRetentionPeriod:
+              type: integer
+            backupWindow:
+              type: string
+            characterSetName:
+              type: string
             copyTagsToSnapshot:
               type: boolean
+            dbSubnetGroupName:
+              type: string
             deletionProtection:
               type: boolean
             domain:
@@ -413,22 +427,59 @@ spec:
               items:
                 type: string
               type: array
+            engine:
+              type: string
+            engineVersion:
+              type: string
             finalSnapshotIdentifier:
               type: string
             iamDatabaseAuthenticationEnabled:
               type: boolean
+            identifier:
+              type: string
+            identifierPrefix:
+              type: string
             instanceClass:
               type: string
             iops:
               type: integer
+            kmsKeyID:
+              type: string
+            licenseModel:
+              type: string
+            maintenanceWindow:
+              type: string
             maxAllocatedStorage:
               type: integer
             monitoringInterval:
               type: integer
-            password:
+            monitoringRoleArn:
               type: string
+            multiAz:
+              type: boolean
+            name:
+              type: string
+            optionGroupName:
+              type: string
+            parameterGroupName:
+              type: string
+            password:
+              description: Sensitive Data. Provide secret name which contains one
+                value only
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             performanceInsightsEnabled:
               type: boolean
+            performanceInsightsKmsKeyID:
+              type: string
+            performanceInsightsRetentionPeriod:
+              type: integer
+            port:
+              type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -474,10 +525,21 @@ spec:
               type: string
             storageEncrypted:
               type: boolean
+            storageType:
+              type: string
             tags:
               additionalProperties:
                 type: string
               type: object
+            timezone:
+              type: string
+            username:
+              type: string
+            vpcSecurityGroupIDS:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
           required:
           - instanceClass
           - providerRef
@@ -492,8 +554,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

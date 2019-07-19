@@ -23,11 +23,21 @@ type VirtualMachineSpecBootDiagnostics struct {
 	StorageURI string `json:"storageURI" tf:"storage_uri"`
 }
 
+type VirtualMachineSpecIdentity struct {
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	IdentityIDS []string `json:"identityIDS,omitempty" tf:"identity_ids,omitempty"`
+	Type        string   `json:"type" tf:"type"`
+}
+
 type VirtualMachineSpecOsProfile struct {
 	// +optional
-	AdminPassword string `json:"adminPassword,omitempty" tf:"admin_password,omitempty"`
-	AdminUsername string `json:"adminUsername" tf:"admin_username"`
-	ComputerName  string `json:"computerName" tf:"computer_name"`
+	// Sensitive Data. Provide secret name which contains one value only
+	AdminPassword core.LocalObjectReference `json:"adminPassword,omitempty" tf:"admin_password,omitempty"`
+	AdminUsername string                    `json:"adminUsername" tf:"admin_username"`
+	ComputerName  string                    `json:"computerName" tf:"computer_name"`
+	// +optional
+	CustomData string `json:"customData,omitempty" tf:"custom_data,omitempty"`
 }
 
 type VirtualMachineSpecOsProfileLinuxConfigSshKeys struct {
@@ -54,10 +64,11 @@ type VirtualMachineSpecOsProfileSecrets struct {
 }
 
 type VirtualMachineSpecOsProfileWindowsConfigAdditionalUnattendConfig struct {
-	Component   string `json:"component" tf:"component"`
-	Content     string `json:"content" tf:"content"`
-	Pass        string `json:"pass" tf:"pass"`
-	SettingName string `json:"settingName" tf:"setting_name"`
+	Component string `json:"component" tf:"component"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Content     core.LocalObjectReference `json:"content" tf:"content"`
+	Pass        string                    `json:"pass" tf:"pass"`
+	SettingName string                    `json:"settingName" tf:"setting_name"`
 }
 
 type VirtualMachineSpecOsProfileWindowsConfigWinrm struct {
@@ -85,11 +96,52 @@ type VirtualMachineSpecPlan struct {
 	Publisher string `json:"publisher" tf:"publisher"`
 }
 
-type VirtualMachineSpecStorageOsDisk struct {
+type VirtualMachineSpecStorageDataDisk struct {
+	// +optional
+	Caching      string `json:"caching,omitempty" tf:"caching,omitempty"`
 	CreateOption string `json:"createOption" tf:"create_option"`
 	// +optional
+	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	Lun        int `json:"lun" tf:"lun"`
+	// +optional
+	ManagedDiskID string `json:"managedDiskID,omitempty" tf:"managed_disk_id,omitempty"`
+	// +optional
+	ManagedDiskType string `json:"managedDiskType,omitempty" tf:"managed_disk_type,omitempty"`
+	Name            string `json:"name" tf:"name"`
+	// +optional
+	VhdURI string `json:"vhdURI,omitempty" tf:"vhd_uri,omitempty"`
+	// +optional
+	WriteAcceleratorEnabled bool `json:"writeAcceleratorEnabled,omitempty" tf:"write_accelerator_enabled,omitempty"`
+}
+
+type VirtualMachineSpecStorageImageReference struct {
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	Offer string `json:"offer,omitempty" tf:"offer,omitempty"`
+	// +optional
+	Publisher string `json:"publisher,omitempty" tf:"publisher,omitempty"`
+	// +optional
+	Sku string `json:"sku,omitempty" tf:"sku,omitempty"`
+	// +optional
+	Version string `json:"version,omitempty" tf:"version,omitempty"`
+}
+
+type VirtualMachineSpecStorageOsDisk struct {
+	// +optional
+	Caching      string `json:"caching,omitempty" tf:"caching,omitempty"`
+	CreateOption string `json:"createOption" tf:"create_option"`
+	// +optional
+	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	// +optional
 	ImageURI string `json:"imageURI,omitempty" tf:"image_uri,omitempty"`
-	Name     string `json:"name" tf:"name"`
+	// +optional
+	ManagedDiskID string `json:"managedDiskID,omitempty" tf:"managed_disk_id,omitempty"`
+	// +optional
+	ManagedDiskType string `json:"managedDiskType,omitempty" tf:"managed_disk_type,omitempty"`
+	Name            string `json:"name" tf:"name"`
+	// +optional
+	OsType string `json:"osType,omitempty" tf:"os_type,omitempty"`
 	// +optional
 	VhdURI string `json:"vhdURI,omitempty" tf:"vhd_uri,omitempty"`
 	// +optional
@@ -98,15 +150,22 @@ type VirtualMachineSpecStorageOsDisk struct {
 
 type VirtualMachineSpec struct {
 	// +optional
+	AvailabilitySetID string `json:"availabilitySetID,omitempty" tf:"availability_set_id,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	BootDiagnostics []VirtualMachineSpecBootDiagnostics `json:"bootDiagnostics,omitempty" tf:"boot_diagnostics,omitempty"`
 	// +optional
 	DeleteDataDisksOnTermination bool `json:"deleteDataDisksOnTermination,omitempty" tf:"delete_data_disks_on_termination,omitempty"`
 	// +optional
-	DeleteOsDiskOnTermination bool     `json:"deleteOsDiskOnTermination,omitempty" tf:"delete_os_disk_on_termination,omitempty"`
-	Location                  string   `json:"location" tf:"location"`
-	Name                      string   `json:"name" tf:"name"`
-	NetworkInterfaceIDS       []string `json:"networkInterfaceIDS" tf:"network_interface_ids"`
+	DeleteOsDiskOnTermination bool `json:"deleteOsDiskOnTermination,omitempty" tf:"delete_os_disk_on_termination,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Identity []VirtualMachineSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	// +optional
+	LicenseType         string   `json:"licenseType,omitempty" tf:"license_type,omitempty"`
+	Location            string   `json:"location" tf:"location"`
+	Name                string   `json:"name" tf:"name"`
+	NetworkInterfaceIDS []string `json:"networkInterfaceIDS" tf:"network_interface_ids"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
@@ -127,9 +186,17 @@ type VirtualMachineSpec struct {
 	// +optional
 	PrimaryNetworkInterfaceID string `json:"primaryNetworkInterfaceID,omitempty" tf:"primary_network_interface_id,omitempty"`
 	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	StorageDataDisk []VirtualMachineSpecStorageDataDisk `json:"storageDataDisk,omitempty" tf:"storage_data_disk,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	StorageImageReference []VirtualMachineSpecStorageImageReference `json:"storageImageReference,omitempty" tf:"storage_image_reference,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	StorageOsDisk []VirtualMachineSpecStorageOsDisk `json:"storageOsDisk" tf:"storage_os_disk"`
-	VmSize        string                            `json:"vmSize" tf:"vm_size"`
+	// +optional
+	Tags   map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VmSize string            `json:"vmSize" tf:"vm_size"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Zones       []string                  `json:"zones,omitempty" tf:"zones,omitempty"`
@@ -141,7 +208,7 @@ type VirtualMachineStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

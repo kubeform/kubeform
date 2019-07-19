@@ -19,13 +19,39 @@ type ElasticacheCluster struct {
 }
 
 type ElasticacheClusterSpec struct {
+	// +optional
+	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	// +optional
+	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+	// +optional
+	AzMode    string `json:"azMode,omitempty" tf:"az_mode,omitempty"`
 	ClusterID string `json:"clusterID" tf:"cluster_id"`
 	// +optional
+	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
+	// +optional
+	EngineVersion string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
+	// +optional
+	MaintenanceWindow string `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
+	// +optional
+	NodeType string `json:"nodeType,omitempty" tf:"node_type,omitempty"`
+	// +optional
 	NotificationTopicArn string `json:"notificationTopicArn,omitempty" tf:"notification_topic_arn,omitempty"`
+	// +optional
+	NumCacheNodes int `json:"numCacheNodes,omitempty" tf:"num_cache_nodes,omitempty"`
+	// +optional
+	ParameterGroupName string `json:"parameterGroupName,omitempty" tf:"parameter_group_name,omitempty"`
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	PreferredAvailabilityZones []string `json:"preferredAvailabilityZones,omitempty" tf:"preferred_availability_zones,omitempty"`
+	// +optional
+	ReplicationGroupID string `json:"replicationGroupID,omitempty" tf:"replication_group_id,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SecurityGroupNames []string `json:"securityGroupNames,omitempty" tf:"security_group_names,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SnapshotArns []string `json:"snapshotArns,omitempty" tf:"snapshot_arns,omitempty"`
@@ -33,6 +59,10 @@ type ElasticacheClusterSpec struct {
 	SnapshotName string `json:"snapshotName,omitempty" tf:"snapshot_name,omitempty"`
 	// +optional
 	SnapshotRetentionLimit int `json:"snapshotRetentionLimit,omitempty" tf:"snapshot_retention_limit,omitempty"`
+	// +optional
+	SnapshotWindow string `json:"snapshotWindow,omitempty" tf:"snapshot_window,omitempty"`
+	// +optional
+	SubnetGroupName string `json:"subnetGroupName,omitempty" tf:"subnet_group_name,omitempty"`
 	// +optional
 	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -43,7 +73,7 @@ type ElasticacheClusterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

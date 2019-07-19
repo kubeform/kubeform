@@ -402,8 +402,17 @@ spec:
             attachedDisk:
               items:
                 properties:
-                  diskEncryptionKeyRaw:
+                  deviceName:
                     type: string
+                  diskEncryptionKeyRaw:
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   mode:
                     type: string
                   source:
@@ -417,7 +426,30 @@ spec:
                 properties:
                   autoDelete:
                     type: boolean
+                  deviceName:
+                    type: string
                   diskEncryptionKeyRaw:
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
+                  initializeParams:
+                    items:
+                      properties:
+                        image:
+                          type: string
+                        size:
+                          type: integer
+                        type:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                  source:
                     type: string
                 type: object
               maxItems: 1
@@ -431,6 +463,18 @@ spec:
               type: boolean
             description:
               type: string
+            guestAccelerator:
+              items:
+                properties:
+                  count:
+                    type: integer
+                  type:
+                    type: string
+                required:
+                - count
+                - type
+                type: object
+              type: array
             labels:
               additionalProperties:
                 type: string
@@ -453,10 +497,17 @@ spec:
                   accessConfig:
                     items:
                       properties:
+                        natIP:
+                          type: string
+                        networkTier:
+                          type: string
                         publicPtrDomainName:
                           type: string
                       type: object
                     type: array
+                  address:
+                    description: Deprecated
+                    type: string
                   aliasIPRange:
                     items:
                       properties:
@@ -468,8 +519,18 @@ spec:
                       - ipCIDRRange
                       type: object
                     type: array
+                  network:
+                    type: string
+                  networkIP:
+                    type: string
+                  subnetwork:
+                    type: string
+                  subnetworkProject:
+                    type: string
                 type: object
               type: array
+            project:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -479,6 +540,18 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            scheduling:
+              items:
+                properties:
+                  automaticRestart:
+                    type: boolean
+                  onHostMaintenance:
+                    type: string
+                  preemptible:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
             scratchDisk:
               items:
                 properties:
@@ -489,6 +562,8 @@ spec:
             serviceAccount:
               items:
                 properties:
+                  email:
+                    type: string
                   scopes:
                     items:
                       type: string
@@ -504,6 +579,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            zone:
+              type: string
           required:
           - bootDisk
           - machineType
@@ -521,8 +598,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

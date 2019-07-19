@@ -20,6 +20,10 @@ type DatasyncAgent struct {
 
 type DatasyncAgentSpec struct {
 	// +optional
+	ActivationKey string `json:"activationKey,omitempty" tf:"activation_key,omitempty"`
+	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
@@ -31,7 +35,7 @@ type DatasyncAgentStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

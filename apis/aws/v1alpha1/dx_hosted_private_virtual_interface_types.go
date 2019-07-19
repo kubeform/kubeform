@@ -20,8 +20,14 @@ type DxHostedPrivateVirtualInterface struct {
 
 type DxHostedPrivateVirtualInterfaceSpec struct {
 	AddressFamily string `json:"addressFamily" tf:"address_family"`
+	// +optional
+	AmazonAddress string `json:"amazonAddress,omitempty" tf:"amazon_address,omitempty"`
 	BgpAsn        int    `json:"bgpAsn" tf:"bgp_asn"`
-	ConnectionID  string `json:"connectionID" tf:"connection_id"`
+	// +optional
+	BgpAuthKey   string `json:"bgpAuthKey,omitempty" tf:"bgp_auth_key,omitempty"`
+	ConnectionID string `json:"connectionID" tf:"connection_id"`
+	// +optional
+	CustomerAddress string `json:"customerAddress,omitempty" tf:"customer_address,omitempty"`
 	// +optional
 	Mtu            int                       `json:"mtu,omitempty" tf:"mtu,omitempty"`
 	Name           string                    `json:"name" tf:"name"`
@@ -35,7 +41,7 @@ type DxHostedPrivateVirtualInterfaceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

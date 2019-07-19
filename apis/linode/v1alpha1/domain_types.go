@@ -39,6 +39,8 @@ type DomainSpec struct {
 	// +optional
 	SoaEmail string `json:"soaEmail,omitempty" tf:"soa_email,omitempty"`
 	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
@@ -52,7 +54,7 @@ type DomainStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

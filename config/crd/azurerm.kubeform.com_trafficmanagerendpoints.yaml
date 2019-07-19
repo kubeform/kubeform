@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            endpointLocation:
+              type: string
+            endpointStatus:
+              type: string
             geoMappings:
               items:
                 type: string
@@ -405,6 +409,8 @@ spec:
               type: integer
             name:
               type: string
+            priority:
+              type: integer
             profileName:
               type: string
             providerRef:
@@ -418,10 +424,14 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            target:
+              type: string
             targetResourceID:
               type: string
             type:
               type: string
+            weight:
+              type: integer
           required:
           - name
           - profileName
@@ -439,8 +449,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

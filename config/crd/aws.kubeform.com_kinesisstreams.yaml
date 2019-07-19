@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             encryptionType:
               type: string
             enforceConsumerDeletion:
@@ -442,8 +444,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -400,7 +400,12 @@ spec:
             ipConfiguration:
               items:
                 properties:
+                  internalPublicIPAddressID:
+                    description: Deprecated
+                    type: string
                   name:
+                    type: string
+                  publicIPAddressID:
                     type: string
                   subnetID:
                     type: string
@@ -425,6 +430,10 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - ipConfiguration
           - location
@@ -442,8 +451,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

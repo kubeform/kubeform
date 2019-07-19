@@ -31,6 +31,11 @@ type ApiManagementAPISpecImport struct {
 	WsdlSelector []ApiManagementAPISpecImportWsdlSelector `json:"wsdlSelector,omitempty" tf:"wsdl_selector,omitempty"`
 }
 
+type ApiManagementAPISpecSubscriptionKeyParameterNames struct {
+	Header string `json:"header" tf:"header"`
+	Query  string `json:"query" tf:"query"`
+}
+
 type ApiManagementAPISpec struct {
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	// +optional
@@ -46,8 +51,13 @@ type ApiManagementAPISpec struct {
 	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`
 	Revision          string   `json:"revision" tf:"revision"`
 	// +optional
-	SoapPassThrough bool                      `json:"soapPassThrough,omitempty" tf:"soap_pass_through,omitempty"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ServiceURL string `json:"serviceURL,omitempty" tf:"service_url,omitempty"`
+	// +optional
+	SoapPassThrough bool `json:"soapPassThrough,omitempty" tf:"soap_pass_through,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	SubscriptionKeyParameterNames []ApiManagementAPISpecSubscriptionKeyParameterNames `json:"subscriptionKeyParameterNames,omitempty" tf:"subscription_key_parameter_names,omitempty"`
+	ProviderRef                   core.LocalObjectReference                           `json:"providerRef" tf:"-"`
 }
 
 type ApiManagementAPIStatus struct {
@@ -55,7 +65,7 @@ type ApiManagementAPIStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

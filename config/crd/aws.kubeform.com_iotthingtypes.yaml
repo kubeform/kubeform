@@ -406,6 +406,12 @@ spec:
                 properties:
                   description:
                     type: string
+                  searchableAttributes:
+                    items:
+                      type: string
+                    maxItems: 3
+                    type: array
+                    uniqueItems: true
                 type: object
               maxItems: 1
               type: array
@@ -432,8 +438,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -24,6 +24,8 @@ type OrganizationsAccountSpec struct {
 	IamUserAccessToBilling string `json:"iamUserAccessToBilling,omitempty" tf:"iam_user_access_to_billing,omitempty"`
 	Name                   string `json:"name" tf:"name"`
 	// +optional
+	ParentID string `json:"parentID,omitempty" tf:"parent_id,omitempty"`
+	// +optional
 	RoleName string `json:"roleName,omitempty" tf:"role_name,omitempty"`
 	// +optional
 	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
@@ -35,7 +37,7 @@ type OrganizationsAccountStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

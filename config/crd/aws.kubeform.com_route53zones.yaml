@@ -423,6 +423,8 @@ spec:
                 properties:
                   vpcID:
                     type: string
+                  vpcRegion:
+                    type: string
                 required:
                 - vpcID
                 type: object
@@ -443,8 +445,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

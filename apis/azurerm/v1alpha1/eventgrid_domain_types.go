@@ -50,11 +50,13 @@ type EventgridDomainSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	InputMappingFields []EventgridDomainSpecInputMappingFields `json:"inputMappingFields,omitempty" tf:"input_mapping_fields,omitempty"`
 	// +optional
-	InputSchema       string                    `json:"inputSchema,omitempty" tf:"input_schema,omitempty"`
-	Location          string                    `json:"location" tf:"location"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	InputSchema       string `json:"inputSchema,omitempty" tf:"input_schema,omitempty"`
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type EventgridDomainStatus struct {
@@ -62,7 +64,7 @@ type EventgridDomainStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

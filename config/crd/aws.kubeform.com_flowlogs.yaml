@@ -401,7 +401,12 @@ spec:
               type: string
             iamRoleArn:
               type: string
+            logDestination:
+              type: string
             logDestinationType:
+              type: string
+            logGroupName:
+              description: Deprecated
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -432,8 +437,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

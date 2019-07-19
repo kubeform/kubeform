@@ -18,6 +18,11 @@ type DataprocJob struct {
 	Status            DataprocJobStatus `json:"status,omitempty"`
 }
 
+type DataprocJobSpecHadoopConfigLoggingConfig struct {
+	// +optional
+	DriverLogLevels map[string]string `json:"driverLogLevels,omitempty" tf:"driver_log_levels,omitempty"`
+}
+
 type DataprocJobSpecHadoopConfig struct {
 	// +optional
 	ArchiveUris []string `json:"archiveUris,omitempty" tf:"archive_uris,omitempty"`
@@ -27,6 +32,9 @@ type DataprocJobSpecHadoopConfig struct {
 	FileUris []string `json:"fileUris,omitempty" tf:"file_uris,omitempty"`
 	// +optional
 	JarFileUris []string `json:"jarFileUris,omitempty" tf:"jar_file_uris,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	LoggingConfig []DataprocJobSpecHadoopConfigLoggingConfig `json:"loggingConfig,omitempty" tf:"logging_config,omitempty"`
 	// +optional
 	MainClass string `json:"mainClass,omitempty" tf:"main_class,omitempty"`
 	// +optional
@@ -50,11 +58,19 @@ type DataprocJobSpecHiveConfig struct {
 	ScriptVariables map[string]string `json:"scriptVariables,omitempty" tf:"script_variables,omitempty"`
 }
 
+type DataprocJobSpecPigConfigLoggingConfig struct {
+	// +optional
+	DriverLogLevels map[string]string `json:"driverLogLevels,omitempty" tf:"driver_log_levels,omitempty"`
+}
+
 type DataprocJobSpecPigConfig struct {
 	// +optional
 	ContinueOnFailure bool `json:"continueOnFailure,omitempty" tf:"continue_on_failure,omitempty"`
 	// +optional
 	JarFileUris []string `json:"jarFileUris,omitempty" tf:"jar_file_uris,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	LoggingConfig []DataprocJobSpecPigConfigLoggingConfig `json:"loggingConfig,omitempty" tf:"logging_config,omitempty"`
 	// +optional
 	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 	// +optional
@@ -69,6 +85,11 @@ type DataprocJobSpecPlacement struct {
 	ClusterName string `json:"clusterName" tf:"cluster_name"`
 }
 
+type DataprocJobSpecPysparkConfigLoggingConfig struct {
+	// +optional
+	DriverLogLevels map[string]string `json:"driverLogLevels,omitempty" tf:"driver_log_levels,omitempty"`
+}
+
 type DataprocJobSpecPysparkConfig struct {
 	// +optional
 	ArchiveUris []string `json:"archiveUris,omitempty" tf:"archive_uris,omitempty"`
@@ -77,17 +98,30 @@ type DataprocJobSpecPysparkConfig struct {
 	// +optional
 	FileUris []string `json:"fileUris,omitempty" tf:"file_uris,omitempty"`
 	// +optional
-	JarFileUris       []string `json:"jarFileUris,omitempty" tf:"jar_file_uris,omitempty"`
-	MainPythonFileURI string   `json:"mainPythonFileURI" tf:"main_python_file_uri"`
+	JarFileUris []string `json:"jarFileUris,omitempty" tf:"jar_file_uris,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	LoggingConfig     []DataprocJobSpecPysparkConfigLoggingConfig `json:"loggingConfig,omitempty" tf:"logging_config,omitempty"`
+	MainPythonFileURI string                                      `json:"mainPythonFileURI" tf:"main_python_file_uri"`
 	// +optional
 	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 	// +optional
 	PythonFileUris []string `json:"pythonFileUris,omitempty" tf:"python_file_uris,omitempty"`
 }
 
+type DataprocJobSpecReference struct {
+	// +optional
+	JobID string `json:"jobID,omitempty" tf:"job_id,omitempty"`
+}
+
 type DataprocJobSpecScheduling struct {
 	// +optional
 	MaxFailuresPerHour int `json:"maxFailuresPerHour,omitempty" tf:"max_failures_per_hour,omitempty"`
+}
+
+type DataprocJobSpecSparkConfigLoggingConfig struct {
+	// +optional
+	DriverLogLevels map[string]string `json:"driverLogLevels,omitempty" tf:"driver_log_levels,omitempty"`
 }
 
 type DataprocJobSpecSparkConfig struct {
@@ -100,6 +134,9 @@ type DataprocJobSpecSparkConfig struct {
 	// +optional
 	JarFileUris []string `json:"jarFileUris,omitempty" tf:"jar_file_uris,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	LoggingConfig []DataprocJobSpecSparkConfigLoggingConfig `json:"loggingConfig,omitempty" tf:"logging_config,omitempty"`
+	// +optional
 	MainClass string `json:"mainClass,omitempty" tf:"main_class,omitempty"`
 	// +optional
 	MainJarFileURI string `json:"mainJarFileURI,omitempty" tf:"main_jar_file_uri,omitempty"`
@@ -107,9 +144,17 @@ type DataprocJobSpecSparkConfig struct {
 	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 }
 
+type DataprocJobSpecSparksqlConfigLoggingConfig struct {
+	// +optional
+	DriverLogLevels map[string]string `json:"driverLogLevels,omitempty" tf:"driver_log_levels,omitempty"`
+}
+
 type DataprocJobSpecSparksqlConfig struct {
 	// +optional
 	JarFileUris []string `json:"jarFileUris,omitempty" tf:"jar_file_uris,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	LoggingConfig []DataprocJobSpecSparksqlConfigLoggingConfig `json:"loggingConfig,omitempty" tf:"logging_config,omitempty"`
 	// +optional
 	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 	// +optional
@@ -137,8 +182,13 @@ type DataprocJobSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Placement []DataprocJobSpecPlacement `json:"placement" tf:"placement"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	PysparkConfig []DataprocJobSpecPysparkConfig `json:"pysparkConfig,omitempty" tf:"pyspark_config,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Reference []DataprocJobSpecReference `json:"reference,omitempty" tf:"reference,omitempty"`
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
@@ -158,7 +208,7 @@ type DataprocJobStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

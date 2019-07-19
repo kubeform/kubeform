@@ -19,7 +19,25 @@ type NetworkInterface struct {
 }
 
 type NetworkInterfaceSpecIpConfiguration struct {
-	Name string `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	// Deprecated
+	ApplicationGatewayBackendAddressPoolsIDS []string `json:"applicationGatewayBackendAddressPoolsIDS,omitempty" tf:"application_gateway_backend_address_pools_ids,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	// Deprecated
+	ApplicationSecurityGroupIDS []string `json:"applicationSecurityGroupIDS,omitempty" tf:"application_security_group_ids,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	// Deprecated
+	LoadBalancerBackendAddressPoolsIDS []string `json:"loadBalancerBackendAddressPoolsIDS,omitempty" tf:"load_balancer_backend_address_pools_ids,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	// Deprecated
+	LoadBalancerInboundNATRulesIDS []string `json:"loadBalancerInboundNATRulesIDS,omitempty" tf:"load_balancer_inbound_nat_rules_ids,omitempty"`
+	Name                           string   `json:"name" tf:"name"`
+	// +optional
+	Primary bool `json:"primary,omitempty" tf:"primary,omitempty"`
 	// +optional
 	PrivateIPAddress           string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
 	PrivateIPAddressAllocation string `json:"privateIPAddressAllocation" tf:"private_ip_address_allocation"`
@@ -33,16 +51,33 @@ type NetworkInterfaceSpecIpConfiguration struct {
 
 type NetworkInterfaceSpec struct {
 	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	AppliedDNSServers []string `json:"appliedDNSServers,omitempty" tf:"applied_dns_servers,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	DnsServers []string `json:"dnsServers,omitempty" tf:"dns_servers,omitempty"`
+	// +optional
 	EnableAcceleratedNetworking bool `json:"enableAcceleratedNetworking,omitempty" tf:"enable_accelerated_networking,omitempty"`
 	// +optional
-	EnableIPForwarding bool                                  `json:"enableIPForwarding,omitempty" tf:"enable_ip_forwarding,omitempty"`
-	IpConfiguration    []NetworkInterfaceSpecIpConfiguration `json:"ipConfiguration" tf:"ip_configuration"`
-	Location           string                                `json:"location" tf:"location"`
-	Name               string                                `json:"name" tf:"name"`
+	EnableIPForwarding bool `json:"enableIPForwarding,omitempty" tf:"enable_ip_forwarding,omitempty"`
 	// +optional
-	NetworkSecurityGroupID string                    `json:"networkSecurityGroupID,omitempty" tf:"network_security_group_id,omitempty"`
-	ResourceGroupName      string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef            core.LocalObjectReference `json:"providerRef" tf:"-"`
+	InternalDNSNameLabel string `json:"internalDNSNameLabel,omitempty" tf:"internal_dns_name_label,omitempty"`
+	// +optional
+	// Deprecated
+	InternalFqdn    string                                `json:"internalFqdn,omitempty" tf:"internal_fqdn,omitempty"`
+	IpConfiguration []NetworkInterfaceSpecIpConfiguration `json:"ipConfiguration" tf:"ip_configuration"`
+	Location        string                                `json:"location" tf:"location"`
+	// +optional
+	MacAddress string `json:"macAddress,omitempty" tf:"mac_address,omitempty"`
+	Name       string `json:"name" tf:"name"`
+	// +optional
+	NetworkSecurityGroupID string `json:"networkSecurityGroupID,omitempty" tf:"network_security_group_id,omitempty"`
+	ResourceGroupName      string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	VirtualMachineID string                    `json:"virtualMachineID,omitempty" tf:"virtual_machine_id,omitempty"`
+	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type NetworkInterfaceStatus struct {
@@ -50,7 +85,7 @@ type NetworkInterfaceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

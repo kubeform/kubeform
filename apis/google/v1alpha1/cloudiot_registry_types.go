@@ -32,6 +32,14 @@ type CloudiotRegistrySpecEventNotificationConfig struct {
 	PubsubTopicName string `json:"pubsubTopicName" tf:"pubsub_topic_name"`
 }
 
+type CloudiotRegistrySpecHttpConfig struct {
+	HttpEnabledState string `json:"httpEnabledState" tf:"http_enabled_state"`
+}
+
+type CloudiotRegistrySpecMqttConfig struct {
+	MqttEnabledState string `json:"mqttEnabledState" tf:"mqtt_enabled_state"`
+}
+
 type CloudiotRegistrySpecStateNotificationConfig struct {
 	PubsubTopicName string `json:"pubsubTopicName" tf:"pubsub_topic_name"`
 }
@@ -42,7 +50,15 @@ type CloudiotRegistrySpec struct {
 	Credentials []CloudiotRegistrySpecCredentials `json:"credentials,omitempty" tf:"credentials,omitempty"`
 	// +optional
 	EventNotificationConfig map[string]CloudiotRegistrySpecEventNotificationConfig `json:"eventNotificationConfig,omitempty" tf:"event_notification_config,omitempty"`
-	Name                    string                                                 `json:"name" tf:"name"`
+	// +optional
+	HttpConfig map[string]CloudiotRegistrySpecHttpConfig `json:"httpConfig,omitempty" tf:"http_config,omitempty"`
+	// +optional
+	MqttConfig map[string]CloudiotRegistrySpecMqttConfig `json:"mqttConfig,omitempty" tf:"mqtt_config,omitempty"`
+	Name       string                                    `json:"name" tf:"name"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
 	StateNotificationConfig map[string]CloudiotRegistrySpecStateNotificationConfig `json:"stateNotificationConfig,omitempty" tf:"state_notification_config,omitempty"`
 	ProviderRef             core.LocalObjectReference                              `json:"providerRef" tf:"-"`
@@ -53,7 +69,7 @@ type CloudiotRegistryStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

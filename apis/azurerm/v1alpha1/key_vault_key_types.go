@@ -19,11 +19,20 @@ type KeyVaultKey struct {
 }
 
 type KeyVaultKeySpec struct {
+	// +optional
+	Curve   string   `json:"curve,omitempty" tf:"curve,omitempty"`
 	KeyOpts []string `json:"keyOpts" tf:"key_opts"`
 	// +optional
-	KeySize     int                       `json:"keySize,omitempty" tf:"key_size,omitempty"`
-	KeyType     string                    `json:"keyType" tf:"key_type"`
-	Name        string                    `json:"name" tf:"name"`
+	KeySize int    `json:"keySize,omitempty" tf:"key_size,omitempty"`
+	KeyType string `json:"keyType" tf:"key_type"`
+	// +optional
+	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
+	Name       string `json:"name" tf:"name"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	// Deprecated
+	VaultURI    string                    `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -32,7 +41,7 @@ type KeyVaultKeyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

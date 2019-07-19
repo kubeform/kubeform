@@ -397,8 +397,16 @@ spec:
           type: object
         spec:
           properties:
+            allocationID:
+              type: string
             allowReassociation:
               type: boolean
+            instanceID:
+              type: string
+            networkInterfaceID:
+              type: string
+            privateIPAddress:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -408,6 +416,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            publicIP:
+              type: string
           required:
           - providerRef
           type: object
@@ -421,8 +431,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

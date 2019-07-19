@@ -433,10 +433,54 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            blueGreenDeploymentConfig:
+              items:
+                properties:
+                  deploymentReadyOption:
+                    items:
+                      properties:
+                        actionOnTimeout:
+                          type: string
+                        waitTimeInMinutes:
+                          type: integer
+                      type: object
+                    maxItems: 1
+                    type: array
+                  greenFleetProvisioningOption:
+                    items:
+                      properties:
+                        action:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                  terminateBlueInstancesOnDeploymentSuccess:
+                    items:
+                      properties:
+                        action:
+                          type: string
+                        terminationWaitTimeInMinutes:
+                          type: integer
+                      type: object
+                    maxItems: 1
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
             deploymentConfigName:
               type: string
             deploymentGroupName:
               type: string
+            deploymentStyle:
+              items:
+                properties:
+                  deploymentOption:
+                    type: string
+                  deploymentType:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
             ec2TagFilter:
               items:
                 properties:
@@ -477,6 +521,75 @@ spec:
                 required:
                 - clusterName
                 - serviceName
+                type: object
+              maxItems: 1
+              type: array
+            loadBalancerInfo:
+              items:
+                properties:
+                  elbInfo:
+                    items:
+                      properties:
+                        name:
+                          type: string
+                      type: object
+                    type: array
+                    uniqueItems: true
+                  targetGroupInfo:
+                    items:
+                      properties:
+                        name:
+                          type: string
+                      type: object
+                    type: array
+                    uniqueItems: true
+                  targetGroupPairInfo:
+                    items:
+                      properties:
+                        prodTrafficRoute:
+                          items:
+                            properties:
+                              listenerArns:
+                                items:
+                                  type: string
+                                type: array
+                                uniqueItems: true
+                            required:
+                            - listenerArns
+                            type: object
+                          maxItems: 1
+                          minItems: 1
+                          type: array
+                        targetGroup:
+                          items:
+                            properties:
+                              name:
+                                type: string
+                            required:
+                            - name
+                            type: object
+                          maxItems: 2
+                          minItems: 1
+                          type: array
+                        testTrafficRoute:
+                          items:
+                            properties:
+                              listenerArns:
+                                items:
+                                  type: string
+                                type: array
+                                uniqueItems: true
+                            required:
+                            - listenerArns
+                            type: object
+                          maxItems: 1
+                          type: array
+                      required:
+                      - prodTrafficRoute
+                      - targetGroup
+                      type: object
+                    maxItems: 1
+                    type: array
                 type: object
               maxItems: 1
               type: array
@@ -538,8 +651,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

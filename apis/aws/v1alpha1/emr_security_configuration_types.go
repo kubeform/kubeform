@@ -21,6 +21,8 @@ type EmrSecurityConfiguration struct {
 type EmrSecurityConfigurationSpec struct {
 	Configuration string `json:"configuration" tf:"configuration"`
 	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
 	NamePrefix  string                    `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
@@ -30,7 +32,7 @@ type EmrSecurityConfigurationStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

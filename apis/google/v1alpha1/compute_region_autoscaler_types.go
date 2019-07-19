@@ -20,6 +20,10 @@ type ComputeRegionAutoscaler struct {
 	Status            ComputeRegionAutoscalerStatus `json:"status,omitempty"`
 }
 
+type ComputeRegionAutoscalerSpecAutoscalingPolicyCpuUtilization struct {
+	Target json.Number `json:"target" tf:"target"`
+}
+
 type ComputeRegionAutoscalerSpecAutoscalingPolicyLoadBalancingUtilization struct {
 	Target json.Number `json:"target" tf:"target"`
 }
@@ -35,6 +39,9 @@ type ComputeRegionAutoscalerSpecAutoscalingPolicy struct {
 	CooldownPeriod int `json:"cooldownPeriod,omitempty" tf:"cooldown_period,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
+	CpuUtilization []ComputeRegionAutoscalerSpecAutoscalingPolicyCpuUtilization `json:"cpuUtilization,omitempty" tf:"cpu_utilization,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
 	LoadBalancingUtilization []ComputeRegionAutoscalerSpecAutoscalingPolicyLoadBalancingUtilization `json:"loadBalancingUtilization,omitempty" tf:"load_balancing_utilization,omitempty"`
 	MaxReplicas              int                                                                    `json:"maxReplicas" tf:"max_replicas"`
 	// +optional
@@ -46,8 +53,12 @@ type ComputeRegionAutoscalerSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	AutoscalingPolicy []ComputeRegionAutoscalerSpecAutoscalingPolicy `json:"autoscalingPolicy" tf:"autoscaling_policy"`
 	// +optional
-	Description string                    `json:"description,omitempty" tf:"description,omitempty"`
-	Name        string                    `json:"name" tf:"name"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Region      string                    `json:"region,omitempty" tf:"region,omitempty"`
 	Target      string                    `json:"target" tf:"target"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
@@ -57,7 +68,7 @@ type ComputeRegionAutoscalerStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -20,13 +20,27 @@ type RedisInstance struct {
 
 type RedisInstanceSpec struct {
 	// +optional
+	AlternativeLocationID string `json:"alternativeLocationID,omitempty" tf:"alternative_location_id,omitempty"`
+	// +optional
+	AuthorizedNetwork string `json:"authorizedNetwork,omitempty" tf:"authorized_network,omitempty"`
+	// +optional
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 	// +optional
-	Labels       map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	MemorySizeGb int               `json:"memorySizeGb" tf:"memory_size_gb"`
-	Name         string            `json:"name" tf:"name"`
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
+	LocationID   string `json:"locationID,omitempty" tf:"location_id,omitempty"`
+	MemorySizeGb int    `json:"memorySizeGb" tf:"memory_size_gb"`
+	Name         string `json:"name" tf:"name"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	RedisConfigs map[string]string `json:"redisConfigs,omitempty" tf:"redis_configs,omitempty"`
+	// +optional
+	RedisVersion string `json:"redisVersion,omitempty" tf:"redis_version,omitempty"`
+	// +optional
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	// +optional
+	ReservedIPRange string `json:"reservedIPRange,omitempty" tf:"reserved_ip_range,omitempty"`
 	// +optional
 	Tier        string                    `json:"tier,omitempty" tf:"tier,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -37,7 +51,7 @@ type RedisInstanceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

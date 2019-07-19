@@ -35,8 +35,10 @@ type LambdaLayerVersionSpec struct {
 	// +optional
 	S3Key string `json:"s3Key,omitempty" tf:"s3_key,omitempty"`
 	// +optional
-	S3ObjectVersion string                    `json:"s3ObjectVersion,omitempty" tf:"s3_object_version,omitempty"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	S3ObjectVersion string `json:"s3ObjectVersion,omitempty" tf:"s3_object_version,omitempty"`
+	// +optional
+	SourceCodeHash string                    `json:"sourceCodeHash,omitempty" tf:"source_code_hash,omitempty"`
+	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type LambdaLayerVersionStatus struct {
@@ -44,7 +46,7 @@ type LambdaLayerVersionStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

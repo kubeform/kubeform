@@ -20,13 +20,18 @@ type StoragegatewayGateway struct {
 
 type StoragegatewayGatewaySpecSmbActiveDirectorySettings struct {
 	DomainName string `json:"domainName" tf:"domain_name"`
-	Password   string `json:"password" tf:"password"`
-	Username   string `json:"username" tf:"username"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password" tf:"password"`
+	Username string                    `json:"username" tf:"username"`
 }
 
 type StoragegatewayGatewaySpec struct {
-	GatewayName     string `json:"gatewayName" tf:"gateway_name"`
-	GatewayTimezone string `json:"gatewayTimezone" tf:"gateway_timezone"`
+	// +optional
+	ActivationKey string `json:"activationKey,omitempty" tf:"activation_key,omitempty"`
+	// +optional
+	GatewayIPAddress string `json:"gatewayIPAddress,omitempty" tf:"gateway_ip_address,omitempty"`
+	GatewayName      string `json:"gatewayName" tf:"gateway_name"`
+	GatewayTimezone  string `json:"gatewayTimezone" tf:"gateway_timezone"`
 	// +optional
 	GatewayType string `json:"gatewayType,omitempty" tf:"gateway_type,omitempty"`
 	// +optional
@@ -35,7 +40,8 @@ type StoragegatewayGatewaySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SmbActiveDirectorySettings []StoragegatewayGatewaySpecSmbActiveDirectorySettings `json:"smbActiveDirectorySettings,omitempty" tf:"smb_active_directory_settings,omitempty"`
 	// +optional
-	SmbGuestPassword string `json:"smbGuestPassword,omitempty" tf:"smb_guest_password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	SmbGuestPassword core.LocalObjectReference `json:"smbGuestPassword,omitempty" tf:"smb_guest_password,omitempty"`
 	// +optional
 	TapeDriveType string                    `json:"tapeDriveType,omitempty" tf:"tape_drive_type,omitempty"`
 	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -46,7 +52,7 @@ type StoragegatewayGatewayStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

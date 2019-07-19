@@ -397,11 +397,49 @@ spec:
           type: object
         spec:
           properties:
+            accountID:
+              type: string
             budgetType:
               type: string
+            costFilters:
+              additionalProperties:
+                type: string
+              type: object
+            costTypes:
+              items:
+                properties:
+                  includeCredit:
+                    type: boolean
+                  includeDiscount:
+                    type: boolean
+                  includeOtherSubscription:
+                    type: boolean
+                  includeRecurring:
+                    type: boolean
+                  includeRefund:
+                    type: boolean
+                  includeSubscription:
+                    type: boolean
+                  includeSupport:
+                    type: boolean
+                  includeTax:
+                    type: boolean
+                  includeUpfront:
+                    type: boolean
+                  useAmortized:
+                    type: boolean
+                  useBlended:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
             limitAmount:
               type: string
             limitUnit:
+              type: string
+            name:
+              type: string
+            namePrefix:
               type: string
             notification:
               items:
@@ -466,8 +504,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

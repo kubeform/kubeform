@@ -30,6 +30,10 @@ type DbParameterGroupSpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Family      string `json:"family" tf:"family"`
 	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Parameter []DbParameterGroupSpecParameter `json:"parameter,omitempty" tf:"parameter,omitempty"`
 	// +optional
@@ -42,7 +46,7 @@ type DbParameterGroupStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

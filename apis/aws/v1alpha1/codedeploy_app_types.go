@@ -20,9 +20,11 @@ type CodedeployApp struct {
 
 type CodedeployAppSpec struct {
 	// +optional
-	ComputePlatform string                    `json:"computePlatform,omitempty" tf:"compute_platform,omitempty"`
-	Name            string                    `json:"name" tf:"name"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ComputePlatform string `json:"computePlatform,omitempty" tf:"compute_platform,omitempty"`
+	Name            string `json:"name" tf:"name"`
+	// +optional
+	UniqueID    string                    `json:"uniqueID,omitempty" tf:"unique_id,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type CodedeployAppStatus struct {
@@ -30,7 +32,7 @@ type CodedeployAppStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

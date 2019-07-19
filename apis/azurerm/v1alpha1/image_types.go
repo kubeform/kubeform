@@ -20,20 +20,30 @@ type Image struct {
 
 type ImageSpecDataDisk struct {
 	// +optional
+	BlobURI string `json:"blobURI,omitempty" tf:"blob_uri,omitempty"`
+	// +optional
 	Caching string `json:"caching,omitempty" tf:"caching,omitempty"`
 	// +optional
 	Lun int `json:"lun,omitempty" tf:"lun,omitempty"`
 	// +optional
 	ManagedDiskID string `json:"managedDiskID,omitempty" tf:"managed_disk_id,omitempty"`
+	// +optional
+	SizeGb int `json:"sizeGb,omitempty" tf:"size_gb,omitempty"`
 }
 
 type ImageSpecOsDisk struct {
 	// +optional
+	BlobURI string `json:"blobURI,omitempty" tf:"blob_uri,omitempty"`
+	// +optional
 	Caching string `json:"caching,omitempty" tf:"caching,omitempty"`
+	// +optional
+	ManagedDiskID string `json:"managedDiskID,omitempty" tf:"managed_disk_id,omitempty"`
 	// +optional
 	OsState string `json:"osState,omitempty" tf:"os_state,omitempty"`
 	// +optional
 	OsType string `json:"osType,omitempty" tf:"os_type,omitempty"`
+	// +optional
+	SizeGb int `json:"sizeGb,omitempty" tf:"size_gb,omitempty"`
 }
 
 type ImageSpec struct {
@@ -48,6 +58,8 @@ type ImageSpec struct {
 	// +optional
 	SourceVirtualMachineID string `json:"sourceVirtualMachineID,omitempty" tf:"source_virtual_machine_id,omitempty"`
 	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
 	ZoneResilient bool                      `json:"zoneResilient,omitempty" tf:"zone_resilient,omitempty"`
 	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
@@ -57,7 +69,7 @@ type ImageStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

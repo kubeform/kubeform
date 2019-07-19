@@ -397,6 +397,32 @@ spec:
           type: object
         spec:
           properties:
+            appSource:
+              items:
+                properties:
+                  password:
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
+                  revision:
+                    type: string
+                  sshKey:
+                    type: string
+                  type:
+                    type: string
+                  url:
+                    type: string
+                  username:
+                    type: string
+                required:
+                - type
+                type: object
+              type: array
             autoBundleOnDeploy:
               type: string
             awsFlowRubySettings:
@@ -445,6 +471,8 @@ spec:
               type: object
             railsEnv:
               type: string
+            shortName:
+              type: string
             sslConfiguration:
               items:
                 properties:
@@ -453,7 +481,14 @@ spec:
                   chain:
                     type: string
                   privateKey:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                 required:
                 - certificate
                 - privateKey
@@ -479,8 +514,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

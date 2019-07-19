@@ -20,6 +20,8 @@ type PublicIP struct {
 
 type PublicIPSpec struct {
 	// +optional
+	AllocationMethod string `json:"allocationMethod,omitempty" tf:"allocation_method,omitempty"`
+	// +optional
 	DomainNameLabel string `json:"domainNameLabel,omitempty" tf:"domain_name_label,omitempty"`
 	// +optional
 	IdleTimeoutInMinutes int `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
@@ -28,12 +30,17 @@ type PublicIPSpec struct {
 	Location  string `json:"location" tf:"location"`
 	Name      string `json:"name" tf:"name"`
 	// +optional
+	// Deprecated
+	PublicIPAddressAllocation string `json:"publicIPAddressAllocation,omitempty" tf:"public_ip_address_allocation,omitempty"`
+	// +optional
 	PublicIPPrefixID  string `json:"publicIPPrefixID,omitempty" tf:"public_ip_prefix_id,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	ReverseFqdn string `json:"reverseFqdn,omitempty" tf:"reverse_fqdn,omitempty"`
 	// +optional
 	Sku string `json:"sku,omitempty" tf:"sku,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Zones       []string                  `json:"zones,omitempty" tf:"zones,omitempty"`
@@ -45,7 +52,7 @@ type PublicIPStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

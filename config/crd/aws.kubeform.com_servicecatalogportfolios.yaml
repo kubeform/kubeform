@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            description:
+              type: string
             name:
               type: string
             providerName:
@@ -428,8 +430,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

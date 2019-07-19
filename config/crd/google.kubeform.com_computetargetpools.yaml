@@ -409,7 +409,13 @@ spec:
                 type: string
               maxItems: 1
               type: array
+            instances:
+              items:
+                type: string
+              type: array
             name:
+              type: string
+            project:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -420,6 +426,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            region:
+              type: string
             sessionAffinity:
               type: string
           required:
@@ -436,8 +444,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

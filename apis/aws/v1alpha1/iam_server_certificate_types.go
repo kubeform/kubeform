@@ -19,14 +19,19 @@ type IamServerCertificate struct {
 }
 
 type IamServerCertificateSpec struct {
+	// +optional
+	Arn             string `json:"arn,omitempty" tf:"arn,omitempty"`
 	CertificateBody string `json:"certificateBody" tf:"certificate_body"`
 	// +optional
 	CertificateChain string `json:"certificateChain,omitempty" tf:"certificate_chain,omitempty"`
 	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
-	Path        string                    `json:"path,omitempty" tf:"path,omitempty"`
-	PrivateKey  string                    `json:"privateKey" tf:"private_key"`
+	Path string `json:"path,omitempty" tf:"path,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	PrivateKey  core.LocalObjectReference `json:"privateKey" tf:"private_key"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -35,7 +40,7 @@ type IamServerCertificateStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

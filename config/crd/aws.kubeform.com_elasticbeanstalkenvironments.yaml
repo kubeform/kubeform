@@ -399,9 +399,13 @@ spec:
           properties:
             application:
               type: string
+            cnamePrefix:
+              type: string
             description:
               type: string
             name:
+              type: string
+            platformArn:
               type: string
             pollInterval:
               type: string
@@ -432,6 +436,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            solutionStackName:
+              type: string
             tags:
               additionalProperties:
                 type: string
@@ -439,6 +445,8 @@ spec:
             templateName:
               type: string
             tier:
+              type: string
+            versionLabel:
               type: string
             waitForReadyTimeout:
               type: string
@@ -457,8 +465,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -20,17 +20,23 @@ type ServicebusSubscription struct {
 
 type ServicebusSubscriptionSpec struct {
 	// +optional
+	AutoDeleteOnIdle string `json:"autoDeleteOnIdle,omitempty" tf:"auto_delete_on_idle,omitempty"`
+	// +optional
 	// Deprecated
 	DeadLetteringOnFilterEvaluationExceptions bool `json:"deadLetteringOnFilterEvaluationExceptions,omitempty" tf:"dead_lettering_on_filter_evaluation_exceptions,omitempty"`
 	// +optional
 	DeadLetteringOnMessageExpiration bool `json:"deadLetteringOnMessageExpiration,omitempty" tf:"dead_lettering_on_message_expiration,omitempty"`
+	// +optional
+	DefaultMessageTtl string `json:"defaultMessageTtl,omitempty" tf:"default_message_ttl,omitempty"`
 	// +optional
 	EnableBatchedOperations bool `json:"enableBatchedOperations,omitempty" tf:"enable_batched_operations,omitempty"`
 	// +optional
 	ForwardTo string `json:"forwardTo,omitempty" tf:"forward_to,omitempty"`
 	// +optional
 	// Deprecated
-	Location         string `json:"location,omitempty" tf:"location,omitempty"`
+	Location string `json:"location,omitempty" tf:"location,omitempty"`
+	// +optional
+	LockDuration     string `json:"lockDuration,omitempty" tf:"lock_duration,omitempty"`
 	MaxDeliveryCount int    `json:"maxDeliveryCount" tf:"max_delivery_count"`
 	Name             string `json:"name" tf:"name"`
 	NamespaceName    string `json:"namespaceName" tf:"namespace_name"`
@@ -46,7 +52,7 @@ type ServicebusSubscriptionStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -397,7 +397,13 @@ spec:
           type: object
         spec:
           properties:
+            accelerationStatus:
+              type: string
             acl:
+              type: string
+            arn:
+              type: string
+            bucket:
               type: string
             bucketPrefix:
               type: string
@@ -429,9 +435,13 @@ spec:
               type: array
             forceDestroy:
               type: boolean
+            hostedZoneID:
+              type: string
             lifecycleRule:
               items:
                 properties:
+                  ID:
+                    type: string
                   abortIncompleteMultipartUploadDays:
                     type: integer
                   enabled:
@@ -550,6 +560,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            region:
+              type: string
             replicationConfiguration:
               items:
                 properties:
@@ -640,6 +652,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            requestPayer:
+              type: string
             serverSideEncryptionConfiguration:
               items:
                 properties:
@@ -672,6 +686,16 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            versioning:
+              items:
+                properties:
+                  enabled:
+                    type: boolean
+                  mfaDelete:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
             website:
               items:
                 properties:
@@ -686,6 +710,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            websiteDomain:
+              type: string
+            websiteEndpoint:
+              type: string
           required:
           - providerRef
           type: object
@@ -699,8 +727,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

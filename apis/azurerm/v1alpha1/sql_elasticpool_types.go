@@ -19,13 +19,21 @@ type SqlElasticpool struct {
 }
 
 type SqlElasticpoolSpec struct {
-	Dtu               int                       `json:"dtu" tf:"dtu"`
-	Edition           string                    `json:"edition" tf:"edition"`
-	Location          string                    `json:"location" tf:"location"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ServerName        string                    `json:"serverName" tf:"server_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +optional
+	DbDtuMax int `json:"dbDtuMax,omitempty" tf:"db_dtu_max,omitempty"`
+	// +optional
+	DbDtuMin int    `json:"dbDtuMin,omitempty" tf:"db_dtu_min,omitempty"`
+	Dtu      int    `json:"dtu" tf:"dtu"`
+	Edition  string `json:"edition" tf:"edition"`
+	Location string `json:"location" tf:"location"`
+	Name     string `json:"name" tf:"name"`
+	// +optional
+	PoolSize          int    `json:"poolSize,omitempty" tf:"pool_size,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	ServerName        string `json:"serverName" tf:"server_name"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type SqlElasticpoolStatus struct {
@@ -33,7 +41,7 @@ type SqlElasticpoolStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

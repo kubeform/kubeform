@@ -52,15 +52,22 @@ type DmsEndpointSpecS3Settings struct {
 
 type DmsEndpointSpec struct {
 	// +optional
+	CertificateArn string `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
+	// +optional
 	DatabaseName string `json:"databaseName,omitempty" tf:"database_name,omitempty"`
 	EndpointID   string `json:"endpointID" tf:"endpoint_id"`
 	EndpointType string `json:"endpointType" tf:"endpoint_type"`
 	EngineName   string `json:"engineName" tf:"engine_name"`
 	// +optional
+	ExtraConnectionAttributes string `json:"extraConnectionAttributes,omitempty" tf:"extra_connection_attributes,omitempty"`
+	// +optional
+	KmsKeyArn string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	MongodbSettings []DmsEndpointSpecMongodbSettings `json:"mongodbSettings,omitempty" tf:"mongodb_settings,omitempty"`
 	// +optional
-	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
@@ -70,6 +77,8 @@ type DmsEndpointSpec struct {
 	ServerName string `json:"serverName,omitempty" tf:"server_name,omitempty"`
 	// +optional
 	ServiceAccessRole string `json:"serviceAccessRole,omitempty" tf:"service_access_role,omitempty"`
+	// +optional
+	SslMode string `json:"sslMode,omitempty" tf:"ssl_mode,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
@@ -82,7 +91,7 @@ type DmsEndpointStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

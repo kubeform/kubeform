@@ -433,6 +433,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - bandwidthInMbps
           - location
@@ -453,8 +457,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

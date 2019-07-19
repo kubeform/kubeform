@@ -53,6 +53,13 @@ type ContainerGroupSpecContainerLivenessProbe struct {
 	TimeoutSeconds int `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 }
 
+type ContainerGroupSpecContainerPorts struct {
+	// +optional
+	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	// +optional
+	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
+}
+
 type ContainerGroupSpecContainerReadinessProbeHttpGet struct {
 	// +optional
 	Path string `json:"path,omitempty" tf:"path,omitempty"`
@@ -90,7 +97,12 @@ type ContainerGroupSpecContainerVolume struct {
 }
 
 type ContainerGroupSpecContainer struct {
-	Cpu json.Number `json:"cpu" tf:"cpu"`
+	// +optional
+	// Deprecated
+	Command string `json:"command,omitempty" tf:"command,omitempty"`
+	// +optional
+	Commands []string    `json:"commands,omitempty" tf:"commands,omitempty"`
+	Cpu      json.Number `json:"cpu" tf:"cpu"`
 	// +optional
 	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 	// +optional
@@ -103,10 +115,20 @@ type ContainerGroupSpecContainer struct {
 	Memory        json.Number                                `json:"memory" tf:"memory"`
 	Name          string                                     `json:"name" tf:"name"`
 	// +optional
+	// Deprecated
+	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Ports []ContainerGroupSpecContainerPorts `json:"ports,omitempty" tf:"ports,omitempty"`
+	// +optional
+	// Deprecated
+	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ReadinessProbe []ContainerGroupSpecContainerReadinessProbe `json:"readinessProbe,omitempty" tf:"readiness_probe,omitempty"`
 	// +optional
-	SecureEnvironmentVariables map[string]string `json:"secureEnvironmentVariables,omitempty" tf:"secure_environment_variables,omitempty"`
+	// Sensitive Data. Provide secret name which contains one or more values
+	SecureEnvironmentVariables core.LocalObjectReference `json:"secureEnvironmentVariables,omitempty" tf:"secure_environment_variables,omitempty"`
 	// +optional
 	Volume []ContainerGroupSpecContainerVolume `json:"volume,omitempty" tf:"volume,omitempty"`
 }
@@ -114,9 +136,10 @@ type ContainerGroupSpecContainer struct {
 type ContainerGroupSpecDiagnosticsLogAnalytics struct {
 	LogType string `json:"logType" tf:"log_type"`
 	// +optional
-	Metadata     map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
-	WorkspaceID  string            `json:"workspaceID" tf:"workspace_id"`
-	WorkspaceKey string            `json:"workspaceKey" tf:"workspace_key"`
+	Metadata    map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	WorkspaceID string            `json:"workspaceID" tf:"workspace_id"`
+	// Sensitive Data. Provide secret name which contains one value only
+	WorkspaceKey core.LocalObjectReference `json:"workspaceKey" tf:"workspace_key"`
 }
 
 type ContainerGroupSpecDiagnostics struct {
@@ -124,10 +147,18 @@ type ContainerGroupSpecDiagnostics struct {
 	LogAnalytics []ContainerGroupSpecDiagnosticsLogAnalytics `json:"logAnalytics" tf:"log_analytics"`
 }
 
+type ContainerGroupSpecIdentity struct {
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	IdentityIDS []string `json:"identityIDS,omitempty" tf:"identity_ids,omitempty"`
+	Type        string   `json:"type" tf:"type"`
+}
+
 type ContainerGroupSpecImageRegistryCredential struct {
-	Password string `json:"password" tf:"password"`
-	Server   string `json:"server" tf:"server"`
-	Username string `json:"username" tf:"username"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password" tf:"password"`
+	Server   string                    `json:"server" tf:"server"`
+	Username string                    `json:"username" tf:"username"`
 }
 
 type ContainerGroupSpec struct {
@@ -138,6 +169,9 @@ type ContainerGroupSpec struct {
 	// +optional
 	DnsNameLabel string `json:"dnsNameLabel,omitempty" tf:"dns_name_label,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Identity []ContainerGroupSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	// +optional
 	ImageRegistryCredential []ContainerGroupSpecImageRegistryCredential `json:"imageRegistryCredential,omitempty" tf:"image_registry_credential,omitempty"`
 	// +optional
 	IpAddressType     string `json:"ipAddressType,omitempty" tf:"ip_address_type,omitempty"`
@@ -146,8 +180,10 @@ type ContainerGroupSpec struct {
 	OsType            string `json:"osType" tf:"os_type"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	RestartPolicy string                    `json:"restartPolicy,omitempty" tf:"restart_policy,omitempty"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RestartPolicy string `json:"restartPolicy,omitempty" tf:"restart_policy,omitempty"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ContainerGroupStatus struct {
@@ -155,7 +191,7 @@ type ContainerGroupStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

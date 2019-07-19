@@ -24,18 +24,36 @@ type StorageAccountSpecCustomDomain struct {
 	UseSubdomain bool `json:"useSubdomain,omitempty" tf:"use_subdomain,omitempty"`
 }
 
+type StorageAccountSpecIdentity struct {
+	Type string `json:"type" tf:"type"`
+}
+
 type StorageAccountSpecNetworkRules struct {
 	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Bypass []string `json:"bypass,omitempty" tf:"bypass,omitempty"`
+	// +optional
 	DefaultAction string `json:"defaultAction,omitempty" tf:"default_action,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	IpRules []string `json:"ipRules,omitempty" tf:"ip_rules,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	VirtualNetworkSubnetIDS []string `json:"virtualNetworkSubnetIDS,omitempty" tf:"virtual_network_subnet_ids,omitempty"`
 }
 
 type StorageAccountSpec struct {
+	// +optional
+	AccessTier string `json:"accessTier,omitempty" tf:"access_tier,omitempty"`
 	// +optional
 	AccountEncryptionSource string `json:"accountEncryptionSource,omitempty" tf:"account_encryption_source,omitempty"`
 	// +optional
 	AccountKind            string `json:"accountKind,omitempty" tf:"account_kind,omitempty"`
 	AccountReplicationType string `json:"accountReplicationType" tf:"account_replication_type"`
 	AccountTier            string `json:"accountTier" tf:"account_tier"`
+	// +optional
+	// Deprecated
+	AccountType string `json:"accountType,omitempty" tf:"account_type,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CustomDomain []StorageAccountSpecCustomDomain `json:"customDomain,omitempty" tf:"custom_domain,omitempty"`
@@ -46,6 +64,9 @@ type StorageAccountSpec struct {
 	// +optional
 	EnableHTTPSTrafficOnly bool `json:"enableHTTPSTrafficOnly,omitempty" tf:"enable_https_traffic_only,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Identity []StorageAccountSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	// +optional
 	IsHnsEnabled bool   `json:"isHnsEnabled,omitempty" tf:"is_hns_enabled,omitempty"`
 	Location     string `json:"location" tf:"location"`
 	Name         string `json:"name" tf:"name"`
@@ -53,7 +74,9 @@ type StorageAccountSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	NetworkRules      []StorageAccountSpecNetworkRules `json:"networkRules,omitempty" tf:"network_rules,omitempty"`
 	ResourceGroupName string                           `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference        `json:"providerRef" tf:"-"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type StorageAccountStatus struct {
@@ -61,7 +84,7 @@ type StorageAccountStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

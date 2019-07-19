@@ -19,10 +19,18 @@ type ComputeSslCertificate struct {
 }
 
 type ComputeSslCertificateSpec struct {
-	Certificate string `json:"certificate" tf:"certificate"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Certificate core.LocalObjectReference `json:"certificate" tf:"certificate"`
 	// +optional
-	Description string                    `json:"description,omitempty" tf:"description,omitempty"`
-	PrivateKey  string                    `json:"privateKey" tf:"private_key"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	PrivateKey core.LocalObjectReference `json:"privateKey" tf:"private_key"`
+	// +optional
+	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -31,7 +39,7 @@ type ComputeSslCertificateStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

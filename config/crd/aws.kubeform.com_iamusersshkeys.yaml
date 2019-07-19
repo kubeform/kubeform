@@ -410,6 +410,8 @@ spec:
               type: object
             publicKey:
               type: string
+            status:
+              type: string
             username:
               type: string
           required:
@@ -428,8 +430,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

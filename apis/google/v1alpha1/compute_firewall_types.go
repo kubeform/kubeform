@@ -40,6 +40,11 @@ type ComputeFirewallSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	DestinationRanges []string `json:"destinationRanges,omitempty" tf:"destination_ranges,omitempty"`
+	// +optional
+	Direction string `json:"direction,omitempty" tf:"direction,omitempty"`
+	// +optional
 	Disabled bool `json:"disabled,omitempty" tf:"disabled,omitempty"`
 	// +optional
 	// Deprecated
@@ -48,6 +53,11 @@ type ComputeFirewallSpec struct {
 	Network       string `json:"network" tf:"network"`
 	// +optional
 	Priority int `json:"priority,omitempty" tf:"priority,omitempty"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SourceRanges []string `json:"sourceRanges,omitempty" tf:"source_ranges,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
@@ -70,7 +80,7 @@ type ComputeFirewallStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

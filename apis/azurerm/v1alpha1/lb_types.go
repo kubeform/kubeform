@@ -21,6 +21,16 @@ type Lb struct {
 type LbSpecFrontendIPConfiguration struct {
 	Name string `json:"name" tf:"name"`
 	// +optional
+	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
+	// +optional
+	PrivateIPAddressAllocation string `json:"privateIPAddressAllocation,omitempty" tf:"private_ip_address_allocation,omitempty"`
+	// +optional
+	PublicIPAddressID string `json:"publicIPAddressID,omitempty" tf:"public_ip_address_id,omitempty"`
+	// +optional
+	PublicIPPrefixID string `json:"publicIPPrefixID,omitempty" tf:"public_ip_prefix_id,omitempty"`
+	// +optional
+	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Zones []string `json:"zones,omitempty" tf:"zones,omitempty"`
 }
@@ -33,7 +43,9 @@ type LbSpec struct {
 	Name                    string                          `json:"name" tf:"name"`
 	ResourceGroupName       string                          `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Sku         string                    `json:"sku,omitempty" tf:"sku,omitempty"`
+	Sku string `json:"sku,omitempty" tf:"sku,omitempty"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -42,7 +54,7 @@ type LbStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

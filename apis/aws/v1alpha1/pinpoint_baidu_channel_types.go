@@ -19,11 +19,13 @@ type PinpointBaiduChannel struct {
 }
 
 type PinpointBaiduChannelSpec struct {
-	ApiKey        string `json:"apiKey" tf:"api_key"`
-	ApplicationID string `json:"applicationID" tf:"application_id"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ApiKey        core.LocalObjectReference `json:"apiKey" tf:"api_key"`
+	ApplicationID string                    `json:"applicationID" tf:"application_id"`
 	// +optional
-	Enabled     bool                      `json:"enabled,omitempty" tf:"enabled,omitempty"`
-	SecretKey   string                    `json:"secretKey" tf:"secret_key"`
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	SecretKey   core.LocalObjectReference `json:"secretKey" tf:"secret_key"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -32,7 +34,7 @@ type PinpointBaiduChannelStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

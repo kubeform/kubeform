@@ -34,18 +34,21 @@ type MariadbServerSpecStorageProfile struct {
 }
 
 type MariadbServerSpec struct {
-	AdministratorLogin         string `json:"administratorLogin" tf:"administrator_login"`
-	AdministratorLoginPassword string `json:"administratorLoginPassword" tf:"administrator_login_password"`
-	Location                   string `json:"location" tf:"location"`
-	Name                       string `json:"name" tf:"name"`
-	ResourceGroupName          string `json:"resourceGroupName" tf:"resource_group_name"`
+	AdministratorLogin string `json:"administratorLogin" tf:"administrator_login"`
+	// Sensitive Data. Provide secret name which contains one value only
+	AdministratorLoginPassword core.LocalObjectReference `json:"administratorLoginPassword" tf:"administrator_login_password"`
+	Location                   string                    `json:"location" tf:"location"`
+	Name                       string                    `json:"name" tf:"name"`
+	ResourceGroupName          string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku            []MariadbServerSpecSku `json:"sku" tf:"sku"`
 	SslEnforcement string                 `json:"sslEnforcement" tf:"ssl_enforcement"`
 	// +kubebuilder:validation:MaxItems=1
 	StorageProfile []MariadbServerSpecStorageProfile `json:"storageProfile" tf:"storage_profile"`
-	Version        string                            `json:"version" tf:"version"`
-	ProviderRef    core.LocalObjectReference         `json:"providerRef" tf:"-"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	Version     string                    `json:"version" tf:"version"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type MariadbServerStatus struct {
@@ -53,7 +56,7 @@ type MariadbServerStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

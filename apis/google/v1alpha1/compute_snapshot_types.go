@@ -18,9 +18,16 @@ type ComputeSnapshot struct {
 	Status            ComputeSnapshotStatus `json:"status,omitempty"`
 }
 
+type ComputeSnapshotSpecSnapshotEncryptionKey struct {
+	// +optional
+	// Sensitive Data. Provide secret name which contains one value only
+	RawKey core.LocalObjectReference `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
+}
+
 type ComputeSnapshotSpecSourceDiskEncryptionKey struct {
 	// +optional
-	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	RawKey core.LocalObjectReference `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
 }
 
 type ComputeSnapshotSpec struct {
@@ -30,16 +37,23 @@ type ComputeSnapshotSpec struct {
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	Name   string            `json:"name" tf:"name"`
 	// +optional
-	// Deprecated
-	SnapshotEncryptionKeyRaw string `json:"snapshotEncryptionKeyRaw,omitempty" tf:"snapshot_encryption_key_raw,omitempty"`
-	SourceDisk               string `json:"sourceDisk" tf:"source_disk"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	SnapshotEncryptionKey []ComputeSnapshotSpecSnapshotEncryptionKey `json:"snapshotEncryptionKey,omitempty" tf:"snapshot_encryption_key,omitempty"`
+	// +optional
+	// Sensitive Data. Provide secret name which contains one value only
+	SnapshotEncryptionKeyRaw core.LocalObjectReference `json:"snapshotEncryptionKeyRaw,omitempty" tf:"snapshot_encryption_key_raw,omitempty"`
+	SourceDisk               string                    `json:"sourceDisk" tf:"source_disk"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SourceDiskEncryptionKey []ComputeSnapshotSpecSourceDiskEncryptionKey `json:"sourceDiskEncryptionKey,omitempty" tf:"source_disk_encryption_key,omitempty"`
 	// +optional
-	// Deprecated
-	SourceDiskEncryptionKeyRaw string                    `json:"sourceDiskEncryptionKeyRaw,omitempty" tf:"source_disk_encryption_key_raw,omitempty"`
-	ProviderRef                core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// Sensitive Data. Provide secret name which contains one value only
+	SourceDiskEncryptionKeyRaw core.LocalObjectReference `json:"sourceDiskEncryptionKeyRaw,omitempty" tf:"source_disk_encryption_key_raw,omitempty"`
+	// +optional
+	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ComputeSnapshotStatus struct {
@@ -47,7 +61,7 @@ type ComputeSnapshotStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

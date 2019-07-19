@@ -24,12 +24,16 @@ type EventhubNamespaceSpec struct {
 	// +optional
 	Capacity int `json:"capacity,omitempty" tf:"capacity,omitempty"`
 	// +optional
-	KafkaEnabled      bool                      `json:"kafkaEnabled,omitempty" tf:"kafka_enabled,omitempty"`
-	Location          string                    `json:"location" tf:"location"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	Sku               string                    `json:"sku" tf:"sku"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	KafkaEnabled bool   `json:"kafkaEnabled,omitempty" tf:"kafka_enabled,omitempty"`
+	Location     string `json:"location" tf:"location"`
+	// +optional
+	MaximumThroughputUnits int    `json:"maximumThroughputUnits,omitempty" tf:"maximum_throughput_units,omitempty"`
+	Name                   string `json:"name" tf:"name"`
+	ResourceGroupName      string `json:"resourceGroupName" tf:"resource_group_name"`
+	Sku                    string `json:"sku" tf:"sku"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type EventhubNamespaceStatus struct {
@@ -37,7 +41,7 @@ type EventhubNamespaceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

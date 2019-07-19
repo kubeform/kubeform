@@ -409,6 +409,8 @@ spec:
               type: string
             contentLanguage:
               type: string
+            contentType:
+              type: string
             detectMd5hash:
               type: string
             name:
@@ -423,6 +425,8 @@ spec:
                   type: string
               type: object
             source:
+              type: string
+            storageClass:
               type: string
           required:
           - bucket
@@ -439,8 +443,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

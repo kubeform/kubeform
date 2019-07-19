@@ -25,9 +25,13 @@ type ComputeRouterPeerSpec struct {
 	Name                    string `json:"name" tf:"name"`
 	PeerAsn                 int    `json:"peerAsn" tf:"peer_asn"`
 	// +optional
-	PeerIPAddress string                    `json:"peerIPAddress,omitempty" tf:"peer_ip_address,omitempty"`
-	Router        string                    `json:"router" tf:"router"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	PeerIPAddress string `json:"peerIPAddress,omitempty" tf:"peer_ip_address,omitempty"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Region      string                    `json:"region,omitempty" tf:"region,omitempty"`
+	Router      string                    `json:"router" tf:"router"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ComputeRouterPeerStatus struct {
@@ -35,7 +39,7 @@ type ComputeRouterPeerStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

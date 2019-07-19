@@ -397,11 +397,15 @@ spec:
           type: object
         spec:
           properties:
+            deviceName:
+              type: string
             disk:
               type: string
             instance:
               type: string
             mode:
+              type: string
+            project:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -412,6 +416,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            zone:
+              type: string
           required:
           - disk
           - instance
@@ -427,8 +433,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

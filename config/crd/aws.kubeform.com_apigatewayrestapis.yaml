@@ -407,6 +407,21 @@ spec:
               type: string
             description:
               type: string
+            endpointConfiguration:
+              items:
+                properties:
+                  types:
+                    items:
+                      type: string
+                    maxItems: 1
+                    minItems: 1
+                    type: array
+                required:
+                - types
+                type: object
+              maxItems: 1
+              minItems: 1
+              type: array
             minimumCompressionSize:
               type: integer
             name:
@@ -436,8 +451,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

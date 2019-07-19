@@ -45,6 +45,14 @@ type DynamodbTableSpecLocalSecondaryIndex struct {
 	RangeKey         string   `json:"rangeKey" tf:"range_key"`
 }
 
+type DynamodbTableSpecPointInTimeRecovery struct {
+	Enabled bool `json:"enabled" tf:"enabled"`
+}
+
+type DynamodbTableSpecServerSideEncryption struct {
+	Enabled bool `json:"enabled" tf:"enabled"`
+}
+
 type DynamodbTableSpecTtl struct {
 	AttributeName string `json:"attributeName" tf:"attribute_name"`
 	// +optional
@@ -65,11 +73,19 @@ type DynamodbTableSpec struct {
 	LocalSecondaryIndex []DynamodbTableSpecLocalSecondaryIndex `json:"localSecondaryIndex,omitempty" tf:"local_secondary_index,omitempty"`
 	Name                string                                 `json:"name" tf:"name"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	PointInTimeRecovery []DynamodbTableSpecPointInTimeRecovery `json:"pointInTimeRecovery,omitempty" tf:"point_in_time_recovery,omitempty"`
+	// +optional
 	RangeKey string `json:"rangeKey,omitempty" tf:"range_key,omitempty"`
 	// +optional
 	ReadCapacity int `json:"readCapacity,omitempty" tf:"read_capacity,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ServerSideEncryption []DynamodbTableSpecServerSideEncryption `json:"serverSideEncryption,omitempty" tf:"server_side_encryption,omitempty"`
+	// +optional
 	StreamEnabled bool `json:"streamEnabled,omitempty" tf:"stream_enabled,omitempty"`
+	// +optional
+	StreamViewType string `json:"streamViewType,omitempty" tf:"stream_view_type,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
@@ -85,7 +101,7 @@ type DynamodbTableStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

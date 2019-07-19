@@ -20,7 +20,11 @@ type CloudformationStackSetInstance struct {
 
 type CloudformationStackSetInstanceSpec struct {
 	// +optional
+	AccountID string `json:"accountID,omitempty" tf:"account_id,omitempty"`
+	// +optional
 	ParameterOverrides map[string]string `json:"parameterOverrides,omitempty" tf:"parameter_overrides,omitempty"`
+	// +optional
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
 	RetainStack  bool                      `json:"retainStack,omitempty" tf:"retain_stack,omitempty"`
 	StackSetName string                    `json:"stackSetName" tf:"stack_set_name"`
@@ -32,7 +36,7 @@ type CloudformationStackSetInstanceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -19,8 +19,9 @@ type ContainerRegistry struct {
 }
 
 type ContainerRegistrySpecStorageAccount struct {
-	AccessKey string `json:"accessKey" tf:"access_key"`
-	Name      string `json:"name" tf:"name"`
+	// Sensitive Data. Provide secret name which contains one value only
+	AccessKey core.LocalObjectReference `json:"accessKey" tf:"access_key"`
+	Name      string                    `json:"name" tf:"name"`
 }
 
 type ContainerRegistrySpec struct {
@@ -40,8 +41,10 @@ type ContainerRegistrySpec struct {
 	// Deprecated
 	StorageAccount []ContainerRegistrySpecStorageAccount `json:"storageAccount,omitempty" tf:"storage_account,omitempty"`
 	// +optional
-	StorageAccountID string                    `json:"storageAccountID,omitempty" tf:"storage_account_id,omitempty"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	StorageAccountID string `json:"storageAccountID,omitempty" tf:"storage_account_id,omitempty"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ContainerRegistryStatus struct {
@@ -49,7 +52,7 @@ type ContainerRegistryStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

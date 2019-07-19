@@ -409,6 +409,8 @@ spec:
               type: string
             memory:
               type: string
+            networkMode:
+              type: string
             pidMode:
               type: string
             placementConstraints:
@@ -478,6 +480,8 @@ spec:
                           additionalProperties:
                             type: string
                           type: object
+                        scope:
+                          type: string
                       type: object
                     maxItems: 1
                     type: array
@@ -505,8 +509,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

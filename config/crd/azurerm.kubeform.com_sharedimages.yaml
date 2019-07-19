@@ -440,6 +440,10 @@ spec:
               type: string
             resourceGroupName:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - galleryName
           - identifier
@@ -459,8 +463,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

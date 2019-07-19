@@ -18,6 +18,11 @@ type ComputeDisk struct {
 	Status            ComputeDiskStatus `json:"status,omitempty"`
 }
 
+type ComputeDiskSpecDiskEncryptionKey struct {
+	// +optional
+	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
+}
+
 type ComputeDiskSpecSourceImageEncryptionKey struct {
 	// +optional
 	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
@@ -32,13 +37,20 @@ type ComputeDiskSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	// Deprecated
-	DiskEncryptionKeyRaw string `json:"diskEncryptionKeyRaw,omitempty" tf:"disk_encryption_key_raw,omitempty"`
+	// +kubebuilder:validation:MaxItems=1
+	DiskEncryptionKey []ComputeDiskSpecDiskEncryptionKey `json:"diskEncryptionKey,omitempty" tf:"disk_encryption_key,omitempty"`
+	// +optional
+	// Sensitive Data. Provide secret name which contains one value only
+	DiskEncryptionKeyRaw core.LocalObjectReference `json:"diskEncryptionKeyRaw,omitempty" tf:"disk_encryption_key_raw,omitempty"`
 	// +optional
 	Image string `json:"image,omitempty" tf:"image,omitempty"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	Name   string            `json:"name" tf:"name"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Size int `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
 	Snapshot string `json:"snapshot,omitempty" tf:"snapshot,omitempty"`
 	// +optional
@@ -48,7 +60,9 @@ type ComputeDiskSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SourceSnapshotEncryptionKey []ComputeDiskSpecSourceSnapshotEncryptionKey `json:"sourceSnapshotEncryptionKey,omitempty" tf:"source_snapshot_encryption_key,omitempty"`
 	// +optional
-	Type        string                    `json:"type,omitempty" tf:"type,omitempty"`
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
+	// +optional
+	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -57,7 +71,7 @@ type ComputeDiskStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            name:
+              type: string
             principalID:
               type: string
             providerRef:
@@ -408,6 +410,10 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            roleDefinitionID:
+              type: string
+            roleDefinitionName:
+              type: string
             scope:
               type: string
           required:
@@ -425,8 +431,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

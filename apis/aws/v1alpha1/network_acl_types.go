@@ -18,7 +18,48 @@ type NetworkACL struct {
 	Status            NetworkACLStatus `json:"status,omitempty"`
 }
 
+type NetworkACLSpecEgress struct {
+	Action string `json:"action" tf:"action"`
+	// +optional
+	CidrBlock string `json:"cidrBlock,omitempty" tf:"cidr_block,omitempty"`
+	FromPort  int    `json:"fromPort" tf:"from_port"`
+	// +optional
+	IcmpCode int `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
+	// +optional
+	IcmpType int `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
+	// +optional
+	Ipv6CIDRBlock string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block,omitempty"`
+	Protocol      string `json:"protocol" tf:"protocol"`
+	RuleNo        int    `json:"ruleNo" tf:"rule_no"`
+	ToPort        int    `json:"toPort" tf:"to_port"`
+}
+
+type NetworkACLSpecIngress struct {
+	Action string `json:"action" tf:"action"`
+	// +optional
+	CidrBlock string `json:"cidrBlock,omitempty" tf:"cidr_block,omitempty"`
+	FromPort  int    `json:"fromPort" tf:"from_port"`
+	// +optional
+	IcmpCode int `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
+	// +optional
+	IcmpType int `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
+	// +optional
+	Ipv6CIDRBlock string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block,omitempty"`
+	Protocol      string `json:"protocol" tf:"protocol"`
+	RuleNo        int    `json:"ruleNo" tf:"rule_no"`
+	ToPort        int    `json:"toPort" tf:"to_port"`
+}
+
 type NetworkACLSpec struct {
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Egress []NetworkACLSpecEgress `json:"egress,omitempty" tf:"egress,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Ingress []NetworkACLSpecIngress `json:"ingress,omitempty" tf:"ingress,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SubnetIDS []string `json:"subnetIDS,omitempty" tf:"subnet_ids,omitempty"`
 	// +optional
 	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	VpcID       string                    `json:"vpcID" tf:"vpc_id"`
@@ -30,7 +71,7 @@ type NetworkACLStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

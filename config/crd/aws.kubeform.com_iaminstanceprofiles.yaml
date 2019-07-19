@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            name:
+              type: string
             namePrefix:
               type: string
             path:
@@ -410,6 +412,14 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            role:
+              type: string
+            roles:
+              description: Deprecated
+              items:
+                type: string
+              type: array
+              uniqueItems: true
           required:
           - providerRef
           type: object
@@ -423,8 +433,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

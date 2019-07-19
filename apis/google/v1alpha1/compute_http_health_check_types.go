@@ -31,6 +31,8 @@ type ComputeHTTPHealthCheckSpec struct {
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
 	RequestPath string `json:"requestPath,omitempty" tf:"request_path,omitempty"`
 	// +optional
 	TimeoutSec int `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
@@ -44,7 +46,7 @@ type ComputeHTTPHealthCheckStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

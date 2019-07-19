@@ -26,7 +26,9 @@ type MonitoringNotificationChannelSpec struct {
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	Type   string            `json:"type" tf:"type"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Type    string `json:"type" tf:"type"`
 	// +optional
 	UserLabels  map[string]string         `json:"userLabels,omitempty" tf:"user_labels,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -37,7 +39,7 @@ type MonitoringNotificationChannelStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

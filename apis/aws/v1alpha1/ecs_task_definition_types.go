@@ -41,6 +41,8 @@ type EcsTaskDefinitionSpecVolumeDockerVolumeConfiguration struct {
 	DriverOpts map[string]string `json:"driverOpts,omitempty" tf:"driver_opts,omitempty"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
+	Scope string `json:"scope,omitempty" tf:"scope,omitempty"`
 }
 
 type EcsTaskDefinitionSpecVolume struct {
@@ -63,6 +65,8 @@ type EcsTaskDefinitionSpec struct {
 	IpcMode string `json:"ipcMode,omitempty" tf:"ipc_mode,omitempty"`
 	// +optional
 	Memory string `json:"memory,omitempty" tf:"memory,omitempty"`
+	// +optional
+	NetworkMode string `json:"networkMode,omitempty" tf:"network_mode,omitempty"`
 	// +optional
 	PidMode string `json:"pidMode,omitempty" tf:"pid_mode,omitempty"`
 	// +optional
@@ -90,7 +94,7 @@ type EcsTaskDefinitionStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

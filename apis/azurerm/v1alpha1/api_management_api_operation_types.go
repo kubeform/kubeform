@@ -18,6 +18,68 @@ type ApiManagementAPIOperation struct {
 	Status            ApiManagementAPIOperationStatus `json:"status,omitempty"`
 }
 
+type ApiManagementAPIOperationSpecRequestHeader struct {
+	// +optional
+	DefaultValue string `json:"defaultValue,omitempty" tf:"default_value,omitempty"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	Required    bool   `json:"required" tf:"required"`
+	Type        string `json:"type" tf:"type"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Values []string `json:"values,omitempty" tf:"values,omitempty"`
+}
+
+type ApiManagementAPIOperationSpecRequestQueryParameter struct {
+	// +optional
+	DefaultValue string `json:"defaultValue,omitempty" tf:"default_value,omitempty"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	Required    bool   `json:"required" tf:"required"`
+	Type        string `json:"type" tf:"type"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Values []string `json:"values,omitempty" tf:"values,omitempty"`
+}
+
+type ApiManagementAPIOperationSpecRequestRepresentationFormParameter struct {
+	// +optional
+	DefaultValue string `json:"defaultValue,omitempty" tf:"default_value,omitempty"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	Required    bool   `json:"required" tf:"required"`
+	Type        string `json:"type" tf:"type"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Values []string `json:"values,omitempty" tf:"values,omitempty"`
+}
+
+type ApiManagementAPIOperationSpecRequestRepresentation struct {
+	ContentType string `json:"contentType" tf:"content_type"`
+	// +optional
+	FormParameter []ApiManagementAPIOperationSpecRequestRepresentationFormParameter `json:"formParameter,omitempty" tf:"form_parameter,omitempty"`
+	// +optional
+	Sample string `json:"sample,omitempty" tf:"sample,omitempty"`
+	// +optional
+	SchemaID string `json:"schemaID,omitempty" tf:"schema_id,omitempty"`
+	// +optional
+	TypeName string `json:"typeName,omitempty" tf:"type_name,omitempty"`
+}
+
+type ApiManagementAPIOperationSpecRequest struct {
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	Header []ApiManagementAPIOperationSpecRequestHeader `json:"header,omitempty" tf:"header,omitempty"`
+	// +optional
+	QueryParameter []ApiManagementAPIOperationSpecRequestQueryParameter `json:"queryParameter,omitempty" tf:"query_parameter,omitempty"`
+	// +optional
+	Representation []ApiManagementAPIOperationSpecRequestRepresentation `json:"representation,omitempty" tf:"representation,omitempty"`
+}
+
 type ApiManagementAPIOperationSpecResponseHeader struct {
 	// +optional
 	DefaultValue string `json:"defaultValue,omitempty" tf:"default_value,omitempty"`
@@ -83,11 +145,14 @@ type ApiManagementAPIOperationSpec struct {
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	ApiName           string `json:"apiName" tf:"api_name"`
 	// +optional
-	Description       string `json:"description,omitempty" tf:"description,omitempty"`
-	DisplayName       string `json:"displayName" tf:"display_name"`
-	Method            string `json:"method" tf:"method"`
-	OperationID       string `json:"operationID" tf:"operation_id"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	DisplayName string `json:"displayName" tf:"display_name"`
+	Method      string `json:"method" tf:"method"`
+	OperationID string `json:"operationID" tf:"operation_id"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Request           []ApiManagementAPIOperationSpecRequest `json:"request,omitempty" tf:"request,omitempty"`
+	ResourceGroupName string                                 `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Response []ApiManagementAPIOperationSpecResponse `json:"response,omitempty" tf:"response,omitempty"`
 	// +optional
@@ -101,7 +166,7 @@ type ApiManagementAPIOperationStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

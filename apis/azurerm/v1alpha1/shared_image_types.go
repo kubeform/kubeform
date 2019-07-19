@@ -38,9 +38,11 @@ type SharedImageSpec struct {
 	// +optional
 	PrivacyStatementURI string `json:"privacyStatementURI,omitempty" tf:"privacy_statement_uri,omitempty"`
 	// +optional
-	ReleaseNoteURI    string                    `json:"releaseNoteURI,omitempty" tf:"release_note_uri,omitempty"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ReleaseNoteURI    string `json:"releaseNoteURI,omitempty" tf:"release_note_uri,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type SharedImageStatus struct {
@@ -48,7 +50,7 @@ type SharedImageStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

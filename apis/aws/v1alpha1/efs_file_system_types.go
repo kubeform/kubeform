@@ -22,6 +22,14 @@ type EfsFileSystem struct {
 
 type EfsFileSystemSpec struct {
 	// +optional
+	CreationToken string `json:"creationToken,omitempty" tf:"creation_token,omitempty"`
+	// +optional
+	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
+	// +optional
+	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+	// +optional
+	PerformanceMode string `json:"performanceMode,omitempty" tf:"performance_mode,omitempty"`
+	// +optional
 	ProvisionedThroughputInMibps json.Number `json:"provisionedThroughputInMibps,omitempty" tf:"provisioned_throughput_in_mibps,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
@@ -35,7 +43,7 @@ type EfsFileSystemStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

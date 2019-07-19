@@ -19,11 +19,13 @@ type RecoveryServicesProtectedVm struct {
 }
 
 type RecoveryServicesProtectedVmSpec struct {
-	BackupPolicyID    string                    `json:"backupPolicyID" tf:"backup_policy_id"`
-	RecoveryVaultName string                    `json:"recoveryVaultName" tf:"recovery_vault_name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	SourceVmID        string                    `json:"sourceVmID" tf:"source_vm_id"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	BackupPolicyID    string `json:"backupPolicyID" tf:"backup_policy_id"`
+	RecoveryVaultName string `json:"recoveryVaultName" tf:"recovery_vault_name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	SourceVmID        string `json:"sourceVmID" tf:"source_vm_id"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type RecoveryServicesProtectedVmStatus struct {
@@ -31,7 +33,7 @@ type RecoveryServicesProtectedVmStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

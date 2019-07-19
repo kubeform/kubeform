@@ -21,7 +21,13 @@ type ComputeSubnetworkIamBinding struct {
 type ComputeSubnetworkIamBindingSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Members []string `json:"members" tf:"members"`
-	Role    string   `json:"role" tf:"role"`
+	// +optional
+	// Deprecated
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	// Deprecated
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	Role   string `json:"role" tf:"role"`
 	// Deprecated
 	Subnetwork  string                    `json:"subnetwork" tf:"subnetwork"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -32,7 +38,7 @@ type ComputeSubnetworkIamBindingStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

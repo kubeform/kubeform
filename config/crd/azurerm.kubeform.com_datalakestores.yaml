@@ -399,6 +399,8 @@ spec:
           properties:
             encryptionState:
               type: string
+            encryptionType:
+              type: string
             firewallAllowAzureIPS:
               type: string
             firewallState:
@@ -418,6 +420,10 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             tier:
               type: string
           required:
@@ -436,8 +442,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

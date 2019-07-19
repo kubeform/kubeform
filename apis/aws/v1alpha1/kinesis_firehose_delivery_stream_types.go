@@ -20,6 +20,15 @@ type KinesisFirehoseDeliveryStream struct {
 	Status            KinesisFirehoseDeliveryStreamStatus `json:"status,omitempty"`
 }
 
+type KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationCloudwatchLoggingOptions struct {
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	LogGroupName string `json:"logGroupName,omitempty" tf:"log_group_name,omitempty"`
+	// +optional
+	LogStreamName string `json:"logStreamName,omitempty" tf:"log_stream_name,omitempty"`
+}
+
 type KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationProcessingConfigurationProcessorsParameters struct {
 	ParameterName  string `json:"parameterName" tf:"parameter_name"`
 	ParameterValue string `json:"parameterValue" tf:"parameter_value"`
@@ -42,9 +51,13 @@ type KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration struct {
 	// +optional
 	BufferingInterval int `json:"bufferingInterval,omitempty" tf:"buffering_interval,omitempty"`
 	// +optional
-	BufferingSize int    `json:"bufferingSize,omitempty" tf:"buffering_size,omitempty"`
-	DomainArn     string `json:"domainArn" tf:"domain_arn"`
-	IndexName     string `json:"indexName" tf:"index_name"`
+	BufferingSize int `json:"bufferingSize,omitempty" tf:"buffering_size,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecElasticsearchConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
+	DomainArn                string                                                                                `json:"domainArn" tf:"domain_arn"`
+	IndexName                string                                                                                `json:"indexName" tf:"index_name"`
 	// +optional
 	IndexRotationPeriod string `json:"indexRotationPeriod,omitempty" tf:"index_rotation_period,omitempty"`
 	// +optional
@@ -57,6 +70,15 @@ type KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration struct {
 	S3BackupMode string `json:"s3BackupMode,omitempty" tf:"s3_backup_mode,omitempty"`
 	// +optional
 	TypeName string `json:"typeName,omitempty" tf:"type_name,omitempty"`
+}
+
+type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationCloudwatchLoggingOptions struct {
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	LogGroupName string `json:"logGroupName,omitempty" tf:"log_group_name,omitempty"`
+	// +optional
+	LogStreamName string `json:"logStreamName,omitempty" tf:"log_stream_name,omitempty"`
 }
 
 type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJSONSerDe struct {
@@ -140,9 +162,13 @@ type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversio
 }
 
 type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration struct {
+	// +optional
+	CatalogID    string `json:"catalogID,omitempty" tf:"catalog_id,omitempty"`
 	DatabaseName string `json:"databaseName" tf:"database_name"`
-	RoleArn      string `json:"roleArn" tf:"role_arn"`
-	TableName    string `json:"tableName" tf:"table_name"`
+	// +optional
+	Region    string `json:"region,omitempty" tf:"region,omitempty"`
+	RoleArn   string `json:"roleArn" tf:"role_arn"`
+	TableName string `json:"tableName" tf:"table_name"`
 	// +optional
 	VersionID string `json:"versionID,omitempty" tf:"version_id,omitempty"`
 }
@@ -176,12 +202,25 @@ type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigura
 	Processors []KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationProcessingConfigurationProcessors `json:"processors,omitempty" tf:"processors,omitempty"`
 }
 
+type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions struct {
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	LogGroupName string `json:"logGroupName,omitempty" tf:"log_group_name,omitempty"`
+	// +optional
+	LogStreamName string `json:"logStreamName,omitempty" tf:"log_stream_name,omitempty"`
+}
+
 type KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfiguration struct {
 	BucketArn string `json:"bucketArn" tf:"bucket_arn"`
 	// +optional
 	BufferInterval int `json:"bufferInterval,omitempty" tf:"buffer_interval,omitempty"`
 	// +optional
 	BufferSize int `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
 	// +optional
 	CompressionFormat string `json:"compressionFormat,omitempty" tf:"compression_format,omitempty"`
 	// +optional
@@ -197,6 +236,10 @@ type KinesisFirehoseDeliveryStreamSpecExtendedS3Configuration struct {
 	BufferInterval int `json:"bufferInterval,omitempty" tf:"buffer_interval,omitempty"`
 	// +optional
 	BufferSize int `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecExtendedS3ConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
 	// +optional
 	CompressionFormat string `json:"compressionFormat,omitempty" tf:"compression_format,omitempty"`
 	// +optional
@@ -224,6 +267,15 @@ type KinesisFirehoseDeliveryStreamSpecKinesisSourceConfiguration struct {
 	RoleArn          string `json:"roleArn" tf:"role_arn"`
 }
 
+type KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationCloudwatchLoggingOptions struct {
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	LogGroupName string `json:"logGroupName,omitempty" tf:"log_group_name,omitempty"`
+	// +optional
+	LogStreamName string `json:"logStreamName,omitempty" tf:"log_stream_name,omitempty"`
+}
+
 type KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurationProcessorsParameters struct {
 	ParameterName  string `json:"parameterName" tf:"parameter_name"`
 	ParameterValue string `json:"parameterValue" tf:"parameter_value"`
@@ -242,12 +294,25 @@ type KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurati
 	Processors []KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfigurationProcessors `json:"processors,omitempty" tf:"processors,omitempty"`
 }
 
+type KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions struct {
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	LogGroupName string `json:"logGroupName,omitempty" tf:"log_group_name,omitempty"`
+	// +optional
+	LogStreamName string `json:"logStreamName,omitempty" tf:"log_stream_name,omitempty"`
+}
+
 type KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration struct {
 	BucketArn string `json:"bucketArn" tf:"bucket_arn"`
 	// +optional
 	BufferInterval int `json:"bufferInterval,omitempty" tf:"buffer_interval,omitempty"`
 	// +optional
 	BufferSize int `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
 	// +optional
 	CompressionFormat string `json:"compressionFormat,omitempty" tf:"compression_format,omitempty"`
 	// +optional
@@ -258,13 +323,18 @@ type KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationS3BackupConfiguration
 }
 
 type KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration struct {
-	ClusterJdbcurl string `json:"clusterJdbcurl" tf:"cluster_jdbcurl"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
+	ClusterJdbcurl           string                                                                           `json:"clusterJdbcurl" tf:"cluster_jdbcurl"`
 	// +optional
 	CopyOptions string `json:"copyOptions,omitempty" tf:"copy_options,omitempty"`
 	// +optional
 	DataTableColumns string `json:"dataTableColumns,omitempty" tf:"data_table_columns,omitempty"`
 	DataTableName    string `json:"dataTableName" tf:"data_table_name"`
-	Password         string `json:"password" tf:"password"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password" tf:"password"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ProcessingConfiguration []KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfiguration `json:"processingConfiguration,omitempty" tf:"processing_configuration,omitempty"`
@@ -279,6 +349,15 @@ type KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration struct {
 	Username     string `json:"username" tf:"username"`
 }
 
+type KinesisFirehoseDeliveryStreamSpecS3ConfigurationCloudwatchLoggingOptions struct {
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	LogGroupName string `json:"logGroupName,omitempty" tf:"log_group_name,omitempty"`
+	// +optional
+	LogStreamName string `json:"logStreamName,omitempty" tf:"log_stream_name,omitempty"`
+}
+
 type KinesisFirehoseDeliveryStreamSpecS3Configuration struct {
 	BucketArn string `json:"bucketArn" tf:"bucket_arn"`
 	// +optional
@@ -286,12 +365,25 @@ type KinesisFirehoseDeliveryStreamSpecS3Configuration struct {
 	// +optional
 	BufferSize int `json:"bufferSize,omitempty" tf:"buffer_size,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecS3ConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
+	// +optional
 	CompressionFormat string `json:"compressionFormat,omitempty" tf:"compression_format,omitempty"`
 	// +optional
 	KmsKeyArn string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
 	// +optional
 	Prefix  string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 	RoleArn string `json:"roleArn" tf:"role_arn"`
+}
+
+type KinesisFirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptions struct {
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	LogGroupName string `json:"logGroupName,omitempty" tf:"log_group_name,omitempty"`
+	// +optional
+	LogStreamName string `json:"logStreamName,omitempty" tf:"log_stream_name,omitempty"`
 }
 
 type KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfigurationProcessorsParameters struct {
@@ -314,6 +406,10 @@ type KinesisFirehoseDeliveryStreamSpecSplunkConfigurationProcessingConfiguration
 
 type KinesisFirehoseDeliveryStreamSpecSplunkConfiguration struct {
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	CloudwatchLoggingOptions []KinesisFirehoseDeliveryStreamSpecSplunkConfigurationCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
+	// +optional
 	HecAcknowledgmentTimeout int    `json:"hecAcknowledgmentTimeout,omitempty" tf:"hec_acknowledgment_timeout,omitempty"`
 	HecEndpoint              string `json:"hecEndpoint" tf:"hec_endpoint"`
 	// +optional
@@ -329,7 +425,11 @@ type KinesisFirehoseDeliveryStreamSpecSplunkConfiguration struct {
 }
 
 type KinesisFirehoseDeliveryStreamSpec struct {
+	// +optional
+	Arn         string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Destination string `json:"destination" tf:"destination"`
+	// +optional
+	DestinationID string `json:"destinationID,omitempty" tf:"destination_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ElasticsearchConfiguration []KinesisFirehoseDeliveryStreamSpecElasticsearchConfiguration `json:"elasticsearchConfiguration,omitempty" tf:"elasticsearch_configuration,omitempty"`
@@ -350,7 +450,9 @@ type KinesisFirehoseDeliveryStreamSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SplunkConfiguration []KinesisFirehoseDeliveryStreamSpecSplunkConfiguration `json:"splunkConfiguration,omitempty" tf:"splunk_configuration,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	VersionID   string                    `json:"versionID,omitempty" tf:"version_id,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -359,7 +461,7 @@ type KinesisFirehoseDeliveryStreamStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

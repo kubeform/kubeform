@@ -397,7 +397,13 @@ spec:
           type: object
         spec:
           properties:
+            collation:
+              type: string
             createMode:
+              type: string
+            edition:
+              type: string
+            elasticPoolName:
               type: string
             import:
               items:
@@ -405,13 +411,27 @@ spec:
                   administratorLogin:
                     type: string
                   administratorLoginPassword:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   authenticationType:
                     type: string
                   operationMode:
                     type: string
                   storageKey:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   storageKeyType:
                     type: string
                   storageURI:
@@ -428,6 +448,8 @@ spec:
               type: array
             location:
               type: string
+            maxSizeBytes:
+              type: string
             name:
               type: string
             providerRef:
@@ -441,10 +463,59 @@ spec:
               type: object
             readScale:
               type: boolean
+            requestedServiceObjectiveID:
+              type: string
+            requestedServiceObjectiveName:
+              type: string
             resourceGroupName:
+              type: string
+            restorePointInTime:
               type: string
             serverName:
               type: string
+            sourceDatabaseDeletionDate:
+              type: string
+            sourceDatabaseID:
+              type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
+            threatDetectionPolicy:
+              items:
+                properties:
+                  disabledAlerts:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                  emailAccountAdmins:
+                    type: string
+                  emailAddresses:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                  retentionDays:
+                    type: integer
+                  state:
+                    type: string
+                  storageAccountAccessKey:
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
+                  storageEndpoint:
+                    type: string
+                  useServerDefault:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
           required:
           - location
           - name
@@ -462,8 +533,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

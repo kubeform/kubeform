@@ -403,6 +403,16 @@ spec:
               type: boolean
             brokerName:
               type: string
+            configuration:
+              items:
+                properties:
+                  ID:
+                    type: string
+                  revision:
+                    type: integer
+                type: object
+              maxItems: 1
+              type: array
             deploymentMode:
               type: string
             engineType:
@@ -418,6 +428,22 @@ spec:
                     type: boolean
                   general:
                     type: boolean
+                type: object
+              maxItems: 1
+              type: array
+            maintenanceWindowStartTime:
+              items:
+                properties:
+                  dayOfWeek:
+                    type: string
+                  timeOfDay:
+                    type: string
+                  timeZone:
+                    type: string
+                required:
+                - dayOfWeek
+                - timeOfDay
+                - timeZone
                 type: object
               maxItems: 1
               type: array
@@ -437,6 +463,11 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            subnetIDS:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             tags:
               additionalProperties:
                 type: string
@@ -452,7 +483,14 @@ spec:
                     type: array
                     uniqueItems: true
                   password:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   username:
                     type: string
                 required:
@@ -480,8 +518,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

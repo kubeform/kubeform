@@ -18,6 +18,14 @@ type ElasticBeanstalkConfigurationTemplate struct {
 	Status            ElasticBeanstalkConfigurationTemplateStatus `json:"status,omitempty"`
 }
 
+type ElasticBeanstalkConfigurationTemplateSpecSetting struct {
+	Name      string `json:"name" tf:"name"`
+	Namespace string `json:"namespace" tf:"namespace"`
+	// +optional
+	Resource string `json:"resource,omitempty" tf:"resource,omitempty"`
+	Value    string `json:"value" tf:"value"`
+}
+
 type ElasticBeanstalkConfigurationTemplateSpec struct {
 	Application string `json:"application" tf:"application"`
 	// +optional
@@ -25,6 +33,9 @@ type ElasticBeanstalkConfigurationTemplateSpec struct {
 	// +optional
 	EnvironmentID string `json:"environmentID,omitempty" tf:"environment_id,omitempty"`
 	Name          string `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Setting []ElasticBeanstalkConfigurationTemplateSpecSetting `json:"setting,omitempty" tf:"setting,omitempty"`
 	// +optional
 	SolutionStackName string                    `json:"solutionStackName,omitempty" tf:"solution_stack_name,omitempty"`
 	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -35,7 +46,7 @@ type ElasticBeanstalkConfigurationTemplateStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

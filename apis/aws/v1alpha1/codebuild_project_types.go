@@ -43,6 +43,13 @@ type CodebuildProjectSpecCache struct {
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
+type CodebuildProjectSpecEnvironmentEnvironmentVariable struct {
+	Name string `json:"name" tf:"name"`
+	// +optional
+	Type  string `json:"type,omitempty" tf:"type,omitempty"`
+	Value string `json:"value" tf:"value"`
+}
+
 type CodebuildProjectSpecEnvironmentRegistryCredential struct {
 	Credential         string `json:"credential" tf:"credential"`
 	CredentialProvider string `json:"credentialProvider" tf:"credential_provider"`
@@ -52,7 +59,9 @@ type CodebuildProjectSpecEnvironment struct {
 	// +optional
 	Certificate string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 	ComputeType string `json:"computeType" tf:"compute_type"`
-	Image       string `json:"image" tf:"image"`
+	// +optional
+	EnvironmentVariable []CodebuildProjectSpecEnvironmentEnvironmentVariable `json:"environmentVariable,omitempty" tf:"environment_variable,omitempty"`
+	Image               string                                               `json:"image" tf:"image"`
 	// +optional
 	ImagePullCredentialsType string `json:"imagePullCredentialsType,omitempty" tf:"image_pull_credentials_type,omitempty"`
 	// +optional
@@ -109,8 +118,9 @@ type CodebuildProjectSpecSecondaryArtifacts struct {
 
 type CodebuildProjectSpecSecondarySourcesAuth struct {
 	// +optional
-	Resource string `json:"resource,omitempty" tf:"resource,omitempty"`
-	Type     string `json:"type" tf:"type"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Resource core.LocalObjectReference `json:"resource,omitempty" tf:"resource,omitempty"`
+	Type     string                    `json:"type" tf:"type"`
 }
 
 type CodebuildProjectSpecSecondarySources struct {
@@ -133,8 +143,9 @@ type CodebuildProjectSpecSecondarySources struct {
 
 type CodebuildProjectSpecSourceAuth struct {
 	// +optional
-	Resource string `json:"resource,omitempty" tf:"resource,omitempty"`
-	Type     string `json:"type" tf:"type"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Resource core.LocalObjectReference `json:"resource,omitempty" tf:"resource,omitempty"`
+	Type     string                    `json:"type" tf:"type"`
 }
 
 type CodebuildProjectSpecSource struct {
@@ -175,6 +186,10 @@ type CodebuildProjectSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Cache []CodebuildProjectSpecCache `json:"cache,omitempty" tf:"cache,omitempty"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	EncryptionKey string `json:"encryptionKey,omitempty" tf:"encryption_key,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	Environment []CodebuildProjectSpecEnvironment `json:"environment" tf:"environment"`
@@ -205,7 +220,7 @@ type CodebuildProjectStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

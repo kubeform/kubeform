@@ -397,14 +397,36 @@ spec:
           type: object
         spec:
           properties:
+            appServiceEnvironmentID:
+              type: string
             isXenon:
               type: boolean
             kind:
               type: string
             location:
               type: string
+            maximumElasticWorkerCount:
+              type: integer
             name:
               type: string
+            perSiteScaling:
+              type: boolean
+            properties:
+              description: Deprecated
+              items:
+                properties:
+                  appServiceEnvironmentID:
+                    description: Deprecated
+                    type: string
+                  perSiteScaling:
+                    description: Deprecated
+                    type: boolean
+                  reserved:
+                    description: Deprecated
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -414,11 +436,15 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            reserved:
+              type: boolean
             resourceGroupName:
               type: string
             sku:
               items:
                 properties:
+                  capacity:
+                    type: integer
                   size:
                     type: string
                   tier:
@@ -429,6 +455,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - location
           - name
@@ -446,8 +476,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

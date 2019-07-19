@@ -29,7 +29,8 @@ type VirtualMachineScaleSetSpecExtension struct {
 	AutoUpgradeMinorVersion bool   `json:"autoUpgradeMinorVersion,omitempty" tf:"auto_upgrade_minor_version,omitempty"`
 	Name                    string `json:"name" tf:"name"`
 	// +optional
-	ProtectedSettings string `json:"protectedSettings,omitempty" tf:"protected_settings,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ProtectedSettings core.LocalObjectReference `json:"protectedSettings,omitempty" tf:"protected_settings,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ProvisionAfterExtensions []string `json:"provisionAfterExtensions,omitempty" tf:"provision_after_extensions,omitempty"`
@@ -38,6 +39,12 @@ type VirtualMachineScaleSetSpecExtension struct {
 	Settings           string `json:"settings,omitempty" tf:"settings,omitempty"`
 	Type               string `json:"type" tf:"type"`
 	TypeHandlerVersion string `json:"typeHandlerVersion" tf:"type_handler_version"`
+}
+
+type VirtualMachineScaleSetSpecIdentity struct {
+	// +optional
+	IdentityIDS []string `json:"identityIDS,omitempty" tf:"identity_ids,omitempty"`
+	Type        string   `json:"type" tf:"type"`
 }
 
 type VirtualMachineScaleSetSpecNetworkProfileDnsSettings struct {
@@ -61,8 +68,11 @@ type VirtualMachineScaleSetSpecNetworkProfileIpConfiguration struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	LoadBalancerBackendAddressPoolIDS []string `json:"loadBalancerBackendAddressPoolIDS,omitempty" tf:"load_balancer_backend_address_pool_ids,omitempty"`
-	Name                              string   `json:"name" tf:"name"`
-	Primary                           bool     `json:"primary" tf:"primary"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	LoadBalancerInboundNATRulesIDS []string `json:"loadBalancerInboundNATRulesIDS,omitempty" tf:"load_balancer_inbound_nat_rules_ids,omitempty"`
+	Name                           string   `json:"name" tf:"name"`
+	Primary                        bool     `json:"primary" tf:"primary"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	PublicIPAddressConfiguration []VirtualMachineScaleSetSpecNetworkProfileIpConfigurationPublicIPAddressConfiguration `json:"publicIPAddressConfiguration,omitempty" tf:"public_ip_address_configuration,omitempty"`
@@ -86,11 +96,25 @@ type VirtualMachineScaleSetSpecNetworkProfile struct {
 
 type VirtualMachineScaleSetSpecOsProfile struct {
 	// +optional
-	AdminPassword      string `json:"adminPassword,omitempty" tf:"admin_password,omitempty"`
-	AdminUsername      string `json:"adminUsername" tf:"admin_username"`
-	ComputerNamePrefix string `json:"computerNamePrefix" tf:"computer_name_prefix"`
+	// Sensitive Data. Provide secret name which contains one value only
+	AdminPassword      core.LocalObjectReference `json:"adminPassword,omitempty" tf:"admin_password,omitempty"`
+	AdminUsername      string                    `json:"adminUsername" tf:"admin_username"`
+	ComputerNamePrefix string                    `json:"computerNamePrefix" tf:"computer_name_prefix"`
 	// +optional
 	CustomData string `json:"customData,omitempty" tf:"custom_data,omitempty"`
+}
+
+type VirtualMachineScaleSetSpecOsProfileLinuxConfigSshKeys struct {
+	// +optional
+	KeyData string `json:"keyData,omitempty" tf:"key_data,omitempty"`
+	Path    string `json:"path" tf:"path"`
+}
+
+type VirtualMachineScaleSetSpecOsProfileLinuxConfig struct {
+	// +optional
+	DisablePasswordAuthentication bool `json:"disablePasswordAuthentication,omitempty" tf:"disable_password_authentication,omitempty"`
+	// +optional
+	SshKeys []VirtualMachineScaleSetSpecOsProfileLinuxConfigSshKeys `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
 }
 
 type VirtualMachineScaleSetSpecOsProfileSecretsVaultCertificates struct {
@@ -106,10 +130,11 @@ type VirtualMachineScaleSetSpecOsProfileSecrets struct {
 }
 
 type VirtualMachineScaleSetSpecOsProfileWindowsConfigAdditionalUnattendConfig struct {
-	Component   string `json:"component" tf:"component"`
-	Content     string `json:"content" tf:"content"`
-	Pass        string `json:"pass" tf:"pass"`
-	SettingName string `json:"settingName" tf:"setting_name"`
+	Component string `json:"component" tf:"component"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Content     core.LocalObjectReference `json:"content" tf:"content"`
+	Pass        string                    `json:"pass" tf:"pass"`
+	SettingName string                    `json:"settingName" tf:"setting_name"`
 }
 
 type VirtualMachineScaleSetSpecOsProfileWindowsConfigWinrm struct {
@@ -149,17 +174,42 @@ type VirtualMachineScaleSetSpecRollingUpgradePolicy struct {
 type VirtualMachineScaleSetSpecSku struct {
 	Capacity int    `json:"capacity" tf:"capacity"`
 	Name     string `json:"name" tf:"name"`
+	// +optional
+	Tier string `json:"tier,omitempty" tf:"tier,omitempty"`
 }
 
 type VirtualMachineScaleSetSpecStorageProfileDataDisk struct {
+	// +optional
+	Caching      string `json:"caching,omitempty" tf:"caching,omitempty"`
 	CreateOption string `json:"createOption" tf:"create_option"`
-	Lun          int    `json:"lun" tf:"lun"`
+	// +optional
+	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
+	Lun        int `json:"lun" tf:"lun"`
+	// +optional
+	ManagedDiskType string `json:"managedDiskType,omitempty" tf:"managed_disk_type,omitempty"`
+}
+
+type VirtualMachineScaleSetSpecStorageProfileImageReference struct {
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	Offer string `json:"offer,omitempty" tf:"offer,omitempty"`
+	// +optional
+	Publisher string `json:"publisher,omitempty" tf:"publisher,omitempty"`
+	// +optional
+	Sku string `json:"sku,omitempty" tf:"sku,omitempty"`
+	// +optional
+	Version string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type VirtualMachineScaleSetSpecStorageProfileOsDisk struct {
+	// +optional
+	Caching      string `json:"caching,omitempty" tf:"caching,omitempty"`
 	CreateOption string `json:"createOption" tf:"create_option"`
 	// +optional
 	Image string `json:"image,omitempty" tf:"image,omitempty"`
+	// +optional
+	ManagedDiskType string `json:"managedDiskType,omitempty" tf:"managed_disk_type,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
@@ -182,12 +232,21 @@ type VirtualMachineScaleSetSpec struct {
 	Extension []VirtualMachineScaleSetSpecExtension `json:"extension,omitempty" tf:"extension,omitempty"`
 	// +optional
 	HealthProbeID string `json:"healthProbeID,omitempty" tf:"health_probe_id,omitempty"`
-	Location      string `json:"location" tf:"location"`
-	Name          string `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Identity []VirtualMachineScaleSetSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	// +optional
+	LicenseType string `json:"licenseType,omitempty" tf:"license_type,omitempty"`
+	Location    string `json:"location" tf:"location"`
+	Name        string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
 	NetworkProfile []VirtualMachineScaleSetSpecNetworkProfile `json:"networkProfile" tf:"network_profile"`
 	// +kubebuilder:validation:MaxItems=1
 	OsProfile []VirtualMachineScaleSetSpecOsProfile `json:"osProfile" tf:"os_profile"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	OsProfileLinuxConfig []VirtualMachineScaleSetSpecOsProfileLinuxConfig `json:"osProfileLinuxConfig,omitempty" tf:"os_profile_linux_config,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	OsProfileSecrets []VirtualMachineScaleSetSpecOsProfileSecrets `json:"osProfileSecrets,omitempty" tf:"os_profile_secrets,omitempty"`
@@ -213,10 +272,16 @@ type VirtualMachineScaleSetSpec struct {
 	Sku []VirtualMachineScaleSetSpecSku `json:"sku" tf:"sku"`
 	// +optional
 	StorageProfileDataDisk []VirtualMachineScaleSetSpecStorageProfileDataDisk `json:"storageProfileDataDisk,omitempty" tf:"storage_profile_data_disk,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	StorageProfileImageReference []VirtualMachineScaleSetSpecStorageProfileImageReference `json:"storageProfileImageReference,omitempty" tf:"storage_profile_image_reference,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	StorageProfileOsDisk []VirtualMachineScaleSetSpecStorageProfileOsDisk `json:"storageProfileOsDisk" tf:"storage_profile_os_disk"`
-	UpgradePolicyMode    string                                           `json:"upgradePolicyMode" tf:"upgrade_policy_mode"`
+	// +optional
+	Tags              map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	UpgradePolicyMode string            `json:"upgradePolicyMode" tf:"upgrade_policy_mode"`
 	// +optional
 	Zones       []string                  `json:"zones,omitempty" tf:"zones,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -227,7 +292,7 @@ type VirtualMachineScaleSetStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

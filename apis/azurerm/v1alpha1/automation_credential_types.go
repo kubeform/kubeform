@@ -21,9 +21,10 @@ type AutomationCredential struct {
 type AutomationCredentialSpec struct {
 	AccountName string `json:"accountName" tf:"account_name"`
 	// +optional
-	Description       string                    `json:"description,omitempty" tf:"description,omitempty"`
-	Name              string                    `json:"name" tf:"name"`
-	Password          string                    `json:"password" tf:"password"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password          core.LocalObjectReference `json:"password" tf:"password"`
 	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	Username          string                    `json:"username" tf:"username"`
 	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -34,7 +35,7 @@ type AutomationCredentialStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

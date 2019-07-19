@@ -427,6 +427,47 @@ spec:
               type: string
             configurationsJSON:
               type: string
+            coreInstanceCount:
+              description: Deprecated
+              type: integer
+            coreInstanceGroup:
+              items:
+                properties:
+                  autoscalingPolicy:
+                    type: string
+                  bidPrice:
+                    type: string
+                  ebsConfig:
+                    items:
+                      properties:
+                        iops:
+                          type: integer
+                        size:
+                          type: integer
+                        type:
+                          type: string
+                        volumesPerInstance:
+                          type: integer
+                      required:
+                      - size
+                      - type
+                      type: object
+                    type: array
+                    uniqueItems: true
+                  instanceCount:
+                    type: integer
+                  instanceType:
+                    type: string
+                  name:
+                    type: string
+                required:
+                - instanceType
+                type: object
+              maxItems: 1
+              type: array
+            coreInstanceType:
+              description: Deprecated
+              type: string
             customAmiID:
               type: string
             ebsRootVolumeSize:
@@ -455,17 +496,79 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            instanceGroup:
+              description: Deprecated
+              items:
+                properties:
+                  autoscalingPolicy:
+                    type: string
+                  bidPrice:
+                    type: string
+                  ebsConfig:
+                    items:
+                      properties:
+                        iops:
+                          type: integer
+                        size:
+                          type: integer
+                        type:
+                          type: string
+                        volumesPerInstance:
+                          type: integer
+                      required:
+                      - size
+                      - type
+                      type: object
+                    type: array
+                    uniqueItems: true
+                  instanceCount:
+                    type: integer
+                  instanceRole:
+                    type: string
+                  instanceType:
+                    type: string
+                  name:
+                    type: string
+                required:
+                - instanceRole
+                - instanceType
+                type: object
+              type: array
+              uniqueItems: true
+            keepJobFlowAliveWhenNoSteps:
+              type: boolean
             kerberosAttributes:
               items:
                 properties:
                   adDomainJoinPassword:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   adDomainJoinUser:
                     type: string
                   crossRealmTrustPrincipalPassword:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   kdcAdminPassword:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   realm:
                     type: string
                 required:
@@ -475,6 +578,40 @@ spec:
               maxItems: 1
               type: array
             logURI:
+              type: string
+            masterInstanceGroup:
+              items:
+                properties:
+                  bidPrice:
+                    type: string
+                  ebsConfig:
+                    items:
+                      properties:
+                        iops:
+                          type: integer
+                        size:
+                          type: integer
+                        type:
+                          type: string
+                        volumesPerInstance:
+                          type: integer
+                      required:
+                      - size
+                      - type
+                      type: object
+                    type: array
+                    uniqueItems: true
+                  instanceType:
+                    type: string
+                  name:
+                    type: string
+                required:
+                - instanceType
+                type: object
+              maxItems: 1
+              type: array
+            masterInstanceType:
+              description: Deprecated
               type: string
             name:
               type: string
@@ -489,14 +626,51 @@ spec:
               type: object
             releaseLabel:
               type: string
+            scaleDownBehavior:
+              type: string
             securityConfiguration:
               type: string
             serviceRole:
               type: string
+            step:
+              items:
+                properties:
+                  actionOnFailure:
+                    type: string
+                  hadoopJarStep:
+                    items:
+                      properties:
+                        args:
+                          items:
+                            type: string
+                          type: array
+                        jar:
+                          type: string
+                        mainClass:
+                          type: string
+                        properties:
+                          additionalProperties:
+                            type: string
+                          type: object
+                      required:
+                      - jar
+                      type: object
+                    maxItems: 1
+                    type: array
+                  name:
+                    type: string
+                required:
+                - actionOnFailure
+                - hadoopJarStep
+                - name
+                type: object
+              type: array
             tags:
               additionalProperties:
                 type: string
               type: object
+            terminationProtection:
+              type: boolean
             visibleToAllUsers:
               type: boolean
           required:
@@ -515,8 +689,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

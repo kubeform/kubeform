@@ -19,7 +19,11 @@ type RedshiftCluster struct {
 }
 
 type RedshiftClusterSpecLogging struct {
-	Enable bool `json:"enable" tf:"enable"`
+	// +optional
+	BucketName string `json:"bucketName,omitempty" tf:"bucket_name,omitempty"`
+	Enable     bool   `json:"enable" tf:"enable"`
+	// +optional
+	S3KeyPrefix string `json:"s3KeyPrefix,omitempty" tf:"s3_key_prefix,omitempty"`
 }
 
 type RedshiftClusterSpecSnapshotCopy struct {
@@ -34,21 +38,48 @@ type RedshiftClusterSpec struct {
 	// +optional
 	AllowVersionUpgrade bool `json:"allowVersionUpgrade,omitempty" tf:"allow_version_upgrade,omitempty"`
 	// +optional
-	AutomatedSnapshotRetentionPeriod int    `json:"automatedSnapshotRetentionPeriod,omitempty" tf:"automated_snapshot_retention_period,omitempty"`
-	ClusterIdentifier                string `json:"clusterIdentifier" tf:"cluster_identifier"`
+	AutomatedSnapshotRetentionPeriod int `json:"automatedSnapshotRetentionPeriod,omitempty" tf:"automated_snapshot_retention_period,omitempty"`
+	// +optional
+	AvailabilityZone  string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+	ClusterIdentifier string `json:"clusterIdentifier" tf:"cluster_identifier"`
+	// +optional
+	ClusterParameterGroupName string `json:"clusterParameterGroupName,omitempty" tf:"cluster_parameter_group_name,omitempty"`
+	// +optional
+	ClusterPublicKey string `json:"clusterPublicKey,omitempty" tf:"cluster_public_key,omitempty"`
+	// +optional
+	ClusterRevisionNumber string `json:"clusterRevisionNumber,omitempty" tf:"cluster_revision_number,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	ClusterSecurityGroups []string `json:"clusterSecurityGroups,omitempty" tf:"cluster_security_groups,omitempty"`
+	// +optional
+	ClusterSubnetGroupName string `json:"clusterSubnetGroupName,omitempty" tf:"cluster_subnet_group_name,omitempty"`
+	// +optional
+	ClusterType string `json:"clusterType,omitempty" tf:"cluster_type,omitempty"`
 	// +optional
 	ClusterVersion string `json:"clusterVersion,omitempty" tf:"cluster_version,omitempty"`
+	// +optional
+	DatabaseName string `json:"databaseName,omitempty" tf:"database_name,omitempty"`
 	// +optional
 	ElasticIP string `json:"elasticIP,omitempty" tf:"elastic_ip,omitempty"`
 	// +optional
 	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
 	// +optional
+	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
+	// +optional
+	EnhancedVpcRouting bool `json:"enhancedVpcRouting,omitempty" tf:"enhanced_vpc_routing,omitempty"`
+	// +optional
 	FinalSnapshotIdentifier string `json:"finalSnapshotIdentifier,omitempty" tf:"final_snapshot_identifier,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	IamRoles []string `json:"iamRoles,omitempty" tf:"iam_roles,omitempty"`
+	// +optional
+	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Logging []RedshiftClusterSpecLogging `json:"logging,omitempty" tf:"logging,omitempty"`
 	// +optional
-	MasterPassword string `json:"masterPassword,omitempty" tf:"master_password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	MasterPassword core.LocalObjectReference `json:"masterPassword,omitempty" tf:"master_password,omitempty"`
 	// +optional
 	MasterUsername string `json:"masterUsername,omitempty" tf:"master_username,omitempty"`
 	NodeType       string `json:"nodeType" tf:"node_type"`
@@ -58,6 +89,8 @@ type RedshiftClusterSpec struct {
 	OwnerAccount string `json:"ownerAccount,omitempty" tf:"owner_account,omitempty"`
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	// +optional
+	PreferredMaintenanceWindow string `json:"preferredMaintenanceWindow,omitempty" tf:"preferred_maintenance_window,omitempty"`
 	// +optional
 	PubliclyAccessible bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
 	// +optional
@@ -70,8 +103,11 @@ type RedshiftClusterSpec struct {
 	// +optional
 	SnapshotIdentifier string `json:"snapshotIdentifier,omitempty" tf:"snapshot_identifier,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	VpcSecurityGroupIDS []string                  `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
+	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type RedshiftClusterStatus struct {
@@ -79,7 +115,7 @@ type RedshiftClusterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

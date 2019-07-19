@@ -399,6 +399,8 @@ spec:
           properties:
             autoscalingGroupName:
               type: string
+            defaultResult:
+              type: string
             heartbeatTimeout:
               type: integer
             lifecycleTransition:
@@ -436,8 +438,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

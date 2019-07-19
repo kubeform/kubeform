@@ -20,19 +20,42 @@ type MonitorMetricAlertrule struct {
 	Status            MonitorMetricAlertruleStatus `json:"status,omitempty"`
 }
 
+type MonitorMetricAlertruleSpecEmailAction struct {
+	// +optional
+	CustomEmails []string `json:"customEmails,omitempty" tf:"custom_emails,omitempty"`
+	// +optional
+	SendToServiceOwners bool `json:"sendToServiceOwners,omitempty" tf:"send_to_service_owners,omitempty"`
+}
+
+type MonitorMetricAlertruleSpecWebhookAction struct {
+	// +optional
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
+	ServiceURI string            `json:"serviceURI" tf:"service_uri"`
+}
+
 type MonitorMetricAlertruleSpec struct {
 	Aggregation string `json:"aggregation" tf:"aggregation"`
 	// +optional
-	Enabled           bool                      `json:"enabled,omitempty" tf:"enabled,omitempty"`
-	Location          string                    `json:"location" tf:"location"`
-	MetricName        string                    `json:"metricName" tf:"metric_name"`
-	Name              string                    `json:"name" tf:"name"`
-	Operator          string                    `json:"operator" tf:"operator"`
-	Period            string                    `json:"period" tf:"period"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ResourceID        string                    `json:"resourceID" tf:"resource_id"`
-	Threshold         json.Number               `json:"threshold" tf:"threshold"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	EmailAction []MonitorMetricAlertruleSpecEmailAction `json:"emailAction,omitempty" tf:"email_action,omitempty"`
+	// +optional
+	Enabled           bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	Location          string `json:"location" tf:"location"`
+	MetricName        string `json:"metricName" tf:"metric_name"`
+	Name              string `json:"name" tf:"name"`
+	Operator          string `json:"operator" tf:"operator"`
+	Period            string `json:"period" tf:"period"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	ResourceID        string `json:"resourceID" tf:"resource_id"`
+	// +optional
+	Tags      map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Threshold json.Number       `json:"threshold" tf:"threshold"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	WebhookAction []MonitorMetricAlertruleSpecWebhookAction `json:"webhookAction,omitempty" tf:"webhook_action,omitempty"`
+	ProviderRef   core.LocalObjectReference                 `json:"providerRef" tf:"-"`
 }
 
 type MonitorMetricAlertruleStatus struct {
@@ -40,7 +63,7 @@ type MonitorMetricAlertruleStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

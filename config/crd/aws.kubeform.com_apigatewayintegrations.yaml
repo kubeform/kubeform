@@ -402,6 +402,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            cacheNamespace:
+              type: string
             connectionID:
               type: string
             connectionType:
@@ -413,6 +415,8 @@ spec:
             httpMethod:
               type: string
             integrationHTTPMethod:
+              type: string
+            passthroughBehavior:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -458,8 +462,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -20,10 +20,12 @@ type BatchCertificate struct {
 
 type BatchCertificateSpec struct {
 	AccountName string `json:"accountName" tf:"account_name"`
-	Certificate string `json:"certificate" tf:"certificate"`
-	Format      string `json:"format" tf:"format"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Certificate core.LocalObjectReference `json:"certificate" tf:"certificate"`
+	Format      string                    `json:"format" tf:"format"`
 	// +optional
-	Password            string                    `json:"password,omitempty" tf:"password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password            core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	ResourceGroupName   string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	Thumbprint          string                    `json:"thumbprint" tf:"thumbprint"`
 	ThumbprintAlgorithm string                    `json:"thumbprintAlgorithm" tf:"thumbprint_algorithm"`
@@ -35,7 +37,7 @@ type BatchCertificateStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -397,7 +397,136 @@ spec:
           type: object
         spec:
           properties:
+            allowStoppingForUpdate:
+              type: boolean
+            attachedDisk:
+              items:
+                properties:
+                  deviceName:
+                    type: string
+                  diskEncryptionKeyRaw:
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
+                  mode:
+                    type: string
+                  source:
+                    type: string
+                required:
+                - source
+                type: object
+              type: array
+            bootDisk:
+              items:
+                properties:
+                  autoDelete:
+                    type: boolean
+                  deviceName:
+                    type: string
+                  diskEncryptionKeyRaw:
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
+                  initializeParams:
+                    items:
+                      properties:
+                        image:
+                          type: string
+                        size:
+                          type: integer
+                        type:
+                          type: string
+                      type: object
+                    maxItems: 1
+                    type: array
+                  source:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+            canIPForward:
+              type: boolean
+            deletionProtection:
+              type: boolean
+            description:
+              type: string
+            guestAccelerator:
+              items:
+                properties:
+                  count:
+                    type: integer
+                  type:
+                    type: string
+                required:
+                - count
+                - type
+                type: object
+              type: array
+            labels:
+              additionalProperties:
+                type: string
+              type: object
+            machineType:
+              type: string
+            metadata:
+              additionalProperties:
+                type: string
+              type: object
+            metadataStartupScript:
+              type: string
+            minCPUPlatform:
+              type: string
             name:
+              type: string
+            networkInterface:
+              items:
+                properties:
+                  accessConfig:
+                    items:
+                      properties:
+                        natIP:
+                          type: string
+                        networkTier:
+                          type: string
+                        publicPtrDomainName:
+                          type: string
+                      type: object
+                    type: array
+                  address:
+                    description: Deprecated
+                    type: string
+                  aliasIPRange:
+                    items:
+                      properties:
+                        ipCIDRRange:
+                          type: string
+                        subnetworkRangeName:
+                          type: string
+                      required:
+                      - ipCIDRRange
+                      type: object
+                    type: array
+                  network:
+                    type: string
+                  networkIP:
+                    type: string
+                  subnetwork:
+                    type: string
+                  subnetworkProject:
+                    type: string
+                type: object
+              type: array
+            project:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -408,7 +537,48 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            scheduling:
+              items:
+                properties:
+                  automaticRestart:
+                    type: boolean
+                  onHostMaintenance:
+                    type: string
+                  preemptible:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
+            scratchDisk:
+              items:
+                properties:
+                  interface:
+                    type: string
+                type: object
+              type: array
+            serviceAccount:
+              items:
+                properties:
+                  email:
+                    type: string
+                  scopes:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                required:
+                - scopes
+                type: object
+              maxItems: 1
+              type: array
             sourceInstanceTemplate:
+              type: string
+            tags:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            zone:
               type: string
           required:
           - name
@@ -425,8 +595,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

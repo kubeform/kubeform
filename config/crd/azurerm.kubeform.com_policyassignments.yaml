@@ -401,6 +401,14 @@ spec:
               type: string
             displayName:
               type: string
+            identity:
+              items:
+                properties:
+                  type:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
             location:
               type: string
             name:
@@ -440,8 +448,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

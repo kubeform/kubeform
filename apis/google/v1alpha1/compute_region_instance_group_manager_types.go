@@ -43,6 +43,21 @@ type ComputeRegionInstanceGroupManagerSpecRollingUpdatePolicy struct {
 	Type          string `json:"type" tf:"type"`
 }
 
+type ComputeRegionInstanceGroupManagerSpecVersionTargetSize struct {
+	// +optional
+	Fixed int `json:"fixed,omitempty" tf:"fixed,omitempty"`
+	// +optional
+	Percent int `json:"percent,omitempty" tf:"percent,omitempty"`
+}
+
+type ComputeRegionInstanceGroupManagerSpecVersion struct {
+	InstanceTemplate string `json:"instanceTemplate" tf:"instance_template"`
+	Name             string `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	TargetSize []ComputeRegionInstanceGroupManagerSpecVersionTargetSize `json:"targetSize,omitempty" tf:"target_size,omitempty"`
+}
+
 type ComputeRegionInstanceGroupManagerSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -52,11 +67,16 @@ type ComputeRegionInstanceGroupManagerSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	DistributionPolicyZones []string `json:"distributionPolicyZones,omitempty" tf:"distribution_policy_zones,omitempty"`
+	// +optional
 	InstanceTemplate string `json:"instanceTemplate,omitempty" tf:"instance_template,omitempty"`
 	Name             string `json:"name" tf:"name"`
 	// +optional
 	NamedPort []ComputeRegionInstanceGroupManagerSpecNamedPort `json:"namedPort,omitempty" tf:"named_port,omitempty"`
-	Region    string                                           `json:"region" tf:"region"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Region  string `json:"region" tf:"region"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// Deprecated
@@ -65,8 +85,13 @@ type ComputeRegionInstanceGroupManagerSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	TargetPools []string `json:"targetPools,omitempty" tf:"target_pools,omitempty"`
 	// +optional
+	TargetSize int `json:"targetSize,omitempty" tf:"target_size,omitempty"`
+	// +optional
 	// Deprecated
 	UpdateStrategy string `json:"updateStrategy,omitempty" tf:"update_strategy,omitempty"`
+	// +optional
+	// Deprecated
+	Version []ComputeRegionInstanceGroupManagerSpecVersion `json:"version,omitempty" tf:"version,omitempty"`
 	// +optional
 	WaitForInstances bool                      `json:"waitForInstances,omitempty" tf:"wait_for_instances,omitempty"`
 	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -77,7 +102,7 @@ type ComputeRegionInstanceGroupManagerStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

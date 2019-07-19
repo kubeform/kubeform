@@ -397,12 +397,34 @@ spec:
           type: object
         spec:
           properties:
+            applyImmediately:
+              type: boolean
+            availabilityZones:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             backtrackWindow:
               type: integer
             backupRetentionPeriod:
               type: integer
+            clusterIdentifier:
+              type: string
+            clusterIdentifierPrefix:
+              type: string
+            clusterMembers:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             copyTagsToSnapshot:
               type: boolean
+            databaseName:
+              type: string
+            dbClusterParameterGroupName:
+              type: string
+            dbSubnetGroupName:
+              type: string
             deletionProtection:
               type: boolean
             enabledCloudwatchLogsExports:
@@ -412,6 +434,8 @@ spec:
             engine:
               type: string
             engineMode:
+              type: string
+            engineVersion:
               type: string
             finalSnapshotIdentifier:
               type: string
@@ -424,7 +448,24 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            kmsKeyID:
+              type: string
             masterPassword:
+              description: Sensitive Data. Provide secret name which contains one
+                value only
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            masterUsername:
+              type: string
+            port:
+              type: integer
+            preferredBackupWindow:
+              type: string
+            preferredMaintenanceWindow:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -484,6 +525,11 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            vpcSecurityGroupIDS:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
           required:
           - providerRef
           type: object
@@ -497,8 +543,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

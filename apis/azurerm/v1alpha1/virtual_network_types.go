@@ -23,6 +23,13 @@ type VirtualNetworkSpecDdosProtectionPlan struct {
 	ID     string `json:"ID" tf:"id"`
 }
 
+type VirtualNetworkSpecSubnet struct {
+	AddressPrefix string `json:"addressPrefix" tf:"address_prefix"`
+	Name          string `json:"name" tf:"name"`
+	// +optional
+	SecurityGroup string `json:"securityGroup,omitempty" tf:"security_group,omitempty"`
+}
+
 type VirtualNetworkSpec struct {
 	// +kubebuilder:validation:MinItems=1
 	AddressSpace []string `json:"addressSpace" tf:"address_space"`
@@ -30,11 +37,16 @@ type VirtualNetworkSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	DdosProtectionPlan []VirtualNetworkSpecDdosProtectionPlan `json:"ddosProtectionPlan,omitempty" tf:"ddos_protection_plan,omitempty"`
 	// +optional
-	DnsServers        []string                  `json:"dnsServers,omitempty" tf:"dns_servers,omitempty"`
-	Location          string                    `json:"location" tf:"location"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	DnsServers        []string `json:"dnsServers,omitempty" tf:"dns_servers,omitempty"`
+	Location          string   `json:"location" tf:"location"`
+	Name              string   `json:"name" tf:"name"`
+	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Subnet []VirtualNetworkSpecSubnet `json:"subnet,omitempty" tf:"subnet,omitempty"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type VirtualNetworkStatus struct {
@@ -42,7 +54,7 @@ type VirtualNetworkStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

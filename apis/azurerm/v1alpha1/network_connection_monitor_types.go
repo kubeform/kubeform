@@ -44,8 +44,10 @@ type NetworkConnectionMonitorSpec struct {
 	NetworkWatcherName string `json:"networkWatcherName" tf:"network_watcher_name"`
 	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
-	Source      []NetworkConnectionMonitorSpecSource `json:"source" tf:"source"`
-	ProviderRef core.LocalObjectReference            `json:"providerRef" tf:"-"`
+	Source []NetworkConnectionMonitorSpecSource `json:"source" tf:"source"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type NetworkConnectionMonitorStatus struct {
@@ -53,7 +55,7 @@ type NetworkConnectionMonitorStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

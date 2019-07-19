@@ -22,6 +22,9 @@ type VolumeSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	// Deprecated
+	FilesystemType string `json:"filesystemType,omitempty" tf:"filesystem_type,omitempty"`
+	// +optional
 	InitialFilesystemLabel string `json:"initialFilesystemLabel,omitempty" tf:"initial_filesystem_label,omitempty"`
 	// +optional
 	InitialFilesystemType string `json:"initialFilesystemType,omitempty" tf:"initial_filesystem_type,omitempty"`
@@ -38,7 +41,7 @@ type VolumeStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

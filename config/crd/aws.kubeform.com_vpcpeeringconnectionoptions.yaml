@@ -397,6 +397,19 @@ spec:
           type: object
         spec:
           properties:
+            accepter:
+              items:
+                properties:
+                  allowClassicLinkToRemoteVpc:
+                    type: boolean
+                  allowRemoteVpcDNSResolution:
+                    type: boolean
+                  allowVpcToRemoteClassicLink:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
+              uniqueItems: true
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -406,6 +419,19 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            requester:
+              items:
+                properties:
+                  allowClassicLinkToRemoteVpc:
+                    type: boolean
+                  allowRemoteVpcDNSResolution:
+                    type: boolean
+                  allowVpcToRemoteClassicLink:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
+              uniqueItems: true
             vpcPeeringConnectionID:
               type: string
           required:
@@ -422,8 +448,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

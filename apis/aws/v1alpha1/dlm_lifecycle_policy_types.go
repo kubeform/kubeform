@@ -22,6 +22,9 @@ type DlmLifecyclePolicySpecPolicyDetailsScheduleCreateRule struct {
 	Interval int `json:"interval" tf:"interval"`
 	// +optional
 	IntervalUnit string `json:"intervalUnit,omitempty" tf:"interval_unit,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Times []string `json:"times,omitempty" tf:"times,omitempty"`
 }
 
 type DlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule struct {
@@ -29,6 +32,8 @@ type DlmLifecyclePolicySpecPolicyDetailsScheduleRetainRule struct {
 }
 
 type DlmLifecyclePolicySpecPolicyDetailsSchedule struct {
+	// +optional
+	CopyTags bool `json:"copyTags,omitempty" tf:"copy_tags,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	CreateRule []DlmLifecyclePolicySpecPolicyDetailsScheduleCreateRule `json:"createRule" tf:"create_rule"`
 	Name       string                                                  `json:"name" tf:"name"`
@@ -59,7 +64,7 @@ type DlmLifecyclePolicyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -20,9 +20,17 @@ type KeyVaultSecret struct {
 
 type KeyVaultSecretSpec struct {
 	// +optional
-	ContentType string                    `json:"contentType,omitempty" tf:"content_type,omitempty"`
-	Name        string                    `json:"name" tf:"name"`
-	Value       string                    `json:"value" tf:"value"`
+	ContentType string `json:"contentType,omitempty" tf:"content_type,omitempty"`
+	// +optional
+	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
+	Name       string `json:"name" tf:"name"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Value core.LocalObjectReference `json:"value" tf:"value"`
+	// +optional
+	// Deprecated
+	VaultURI    string                    `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -31,7 +39,7 @@ type KeyVaultSecretStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

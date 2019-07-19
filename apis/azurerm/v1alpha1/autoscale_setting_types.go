@@ -117,8 +117,10 @@ type AutoscaleSettingSpec struct {
 	// +kubebuilder:validation:MaxItems=20
 	Profile           []AutoscaleSettingSpecProfile `json:"profile" tf:"profile"`
 	ResourceGroupName string                        `json:"resourceGroupName" tf:"resource_group_name"`
-	TargetResourceID  string                        `json:"targetResourceID" tf:"target_resource_id"`
-	ProviderRef       core.LocalObjectReference     `json:"providerRef" tf:"-"`
+	// +optional
+	Tags             map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	TargetResourceID string                    `json:"targetResourceID" tf:"target_resource_id"`
+	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type AutoscaleSettingStatus struct {
@@ -126,7 +128,7 @@ type AutoscaleSettingStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

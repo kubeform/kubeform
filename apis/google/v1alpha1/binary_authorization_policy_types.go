@@ -51,7 +51,9 @@ type BinaryAuthorizationPolicySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	DefaultAdmissionRule []BinaryAuthorizationPolicySpecDefaultAdmissionRule `json:"defaultAdmissionRule" tf:"default_admission_rule"`
 	// +optional
-	Description string                    `json:"description,omitempty" tf:"description,omitempty"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -60,7 +62,7 @@ type BinaryAuthorizationPolicyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -427,6 +427,13 @@ spec:
               uniqueItems: true
             description:
               type: string
+            destinationRanges:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            direction:
+              type: string
             disabled:
               type: boolean
             enableLogging:
@@ -438,6 +445,8 @@ spec:
               type: string
             priority:
               type: integer
+            project:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -447,6 +456,11 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            sourceRanges:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             sourceServiceAccounts:
               items:
                 type: string
@@ -484,8 +498,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

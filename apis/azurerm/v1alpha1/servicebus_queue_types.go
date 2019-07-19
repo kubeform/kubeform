@@ -20,7 +20,13 @@ type ServicebusQueue struct {
 
 type ServicebusQueueSpec struct {
 	// +optional
+	AutoDeleteOnIdle string `json:"autoDeleteOnIdle,omitempty" tf:"auto_delete_on_idle,omitempty"`
+	// +optional
 	DeadLetteringOnMessageExpiration bool `json:"deadLetteringOnMessageExpiration,omitempty" tf:"dead_lettering_on_message_expiration,omitempty"`
+	// +optional
+	DefaultMessageTtl string `json:"defaultMessageTtl,omitempty" tf:"default_message_ttl,omitempty"`
+	// +optional
+	DuplicateDetectionHistoryTimeWindow string `json:"duplicateDetectionHistoryTimeWindow,omitempty" tf:"duplicate_detection_history_time_window,omitempty"`
 	// +optional
 	// Deprecated
 	EnableBatchedOperations bool `json:"enableBatchedOperations,omitempty" tf:"enable_batched_operations,omitempty"`
@@ -32,9 +38,13 @@ type ServicebusQueueSpec struct {
 	// Deprecated
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
-	MaxDeliveryCount int    `json:"maxDeliveryCount,omitempty" tf:"max_delivery_count,omitempty"`
-	Name             string `json:"name" tf:"name"`
-	NamespaceName    string `json:"namespaceName" tf:"namespace_name"`
+	LockDuration string `json:"lockDuration,omitempty" tf:"lock_duration,omitempty"`
+	// +optional
+	MaxDeliveryCount int `json:"maxDeliveryCount,omitempty" tf:"max_delivery_count,omitempty"`
+	// +optional
+	MaxSizeInMegabytes int    `json:"maxSizeInMegabytes,omitempty" tf:"max_size_in_megabytes,omitempty"`
+	Name               string `json:"name" tf:"name"`
+	NamespaceName      string `json:"namespaceName" tf:"namespace_name"`
 	// +optional
 	RequiresDuplicateDetection bool `json:"requiresDuplicateDetection,omitempty" tf:"requires_duplicate_detection,omitempty"`
 	// +optional
@@ -51,7 +61,7 @@ type ServicebusQueueStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

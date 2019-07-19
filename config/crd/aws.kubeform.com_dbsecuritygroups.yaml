@@ -404,6 +404,12 @@ spec:
                 properties:
                   cidr:
                     type: string
+                  securityGroupID:
+                    type: string
+                  securityGroupName:
+                    type: string
+                  securityGroupOwnerID:
+                    type: string
                 type: object
               type: array
               uniqueItems: true
@@ -437,8 +443,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

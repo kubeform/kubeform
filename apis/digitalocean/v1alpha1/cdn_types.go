@@ -22,9 +22,11 @@ type CdnSpec struct {
 	// +optional
 	CertificateID string `json:"certificateID,omitempty" tf:"certificate_id,omitempty"`
 	// +optional
-	CustomDomain string                    `json:"customDomain,omitempty" tf:"custom_domain,omitempty"`
-	Origin       string                    `json:"origin" tf:"origin"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	CustomDomain string `json:"customDomain,omitempty" tf:"custom_domain,omitempty"`
+	Origin       string `json:"origin" tf:"origin"`
+	// +optional
+	Ttl         int                       `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type CdnStatus struct {
@@ -32,7 +34,7 @@ type CdnStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

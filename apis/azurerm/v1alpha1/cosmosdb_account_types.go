@@ -31,8 +31,17 @@ type CosmosdbAccountSpecConsistencyPolicy struct {
 }
 
 type CosmosdbAccountSpecFailoverPolicy struct {
+	// +optional
+	ID       string `json:"ID,omitempty" tf:"id,omitempty"`
 	Location string `json:"location" tf:"location"`
 	Priority int    `json:"priority" tf:"priority"`
+}
+
+type CosmosdbAccountSpecGeoLocation struct {
+	FailoverPriority int    `json:"failoverPriority" tf:"failover_priority"`
+	Location         string `json:"location" tf:"location"`
+	// +optional
+	Prefix string `json:"prefix,omitempty" tf:"prefix,omitempty"`
 }
 
 type CosmosdbAccountSpecVirtualNetworkRule struct {
@@ -54,6 +63,9 @@ type CosmosdbAccountSpec struct {
 	// Deprecated
 	FailoverPolicy []CosmosdbAccountSpecFailoverPolicy `json:"failoverPolicy,omitempty" tf:"failover_policy,omitempty"`
 	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	GeoLocation []CosmosdbAccountSpecGeoLocation `json:"geoLocation,omitempty" tf:"geo_location,omitempty"`
+	// +optional
 	IpRangeFilter string `json:"ipRangeFilter,omitempty" tf:"ip_range_filter,omitempty"`
 	// +optional
 	IsVirtualNetworkFilterEnabled bool `json:"isVirtualNetworkFilterEnabled,omitempty" tf:"is_virtual_network_filter_enabled,omitempty"`
@@ -63,6 +75,8 @@ type CosmosdbAccountSpec struct {
 	Name              string `json:"name" tf:"name"`
 	OfferType         string `json:"offerType" tf:"offer_type"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	VirtualNetworkRule []CosmosdbAccountSpecVirtualNetworkRule `json:"virtualNetworkRule,omitempty" tf:"virtual_network_rule,omitempty"`
@@ -74,7 +88,7 @@ type CosmosdbAccountStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

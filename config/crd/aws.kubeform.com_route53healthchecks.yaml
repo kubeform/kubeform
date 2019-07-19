@@ -408,6 +408,8 @@ spec:
               type: string
             cloudwatchAlarmRegion:
               type: string
+            enableSni:
+              type: boolean
             failureThreshold:
               type: integer
             fqdn:
@@ -464,8 +466,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

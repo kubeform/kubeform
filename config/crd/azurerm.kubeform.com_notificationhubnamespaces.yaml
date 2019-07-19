@@ -416,6 +416,19 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            sku:
+              description: Deprecated
+              items:
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+                type: object
+              maxItems: 1
+              type: array
+            skuName:
+              type: string
           required:
           - location
           - name
@@ -433,8 +446,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

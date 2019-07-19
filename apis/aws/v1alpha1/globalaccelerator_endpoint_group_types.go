@@ -33,6 +33,8 @@ type GlobalacceleratorEndpointGroupSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	EndpointConfiguration []GlobalacceleratorEndpointGroupSpecEndpointConfiguration `json:"endpointConfiguration,omitempty" tf:"endpoint_configuration,omitempty"`
 	// +optional
+	EndpointGroupRegion string `json:"endpointGroupRegion,omitempty" tf:"endpoint_group_region,omitempty"`
+	// +optional
 	HealthCheckIntervalSeconds int `json:"healthCheckIntervalSeconds,omitempty" tf:"health_check_interval_seconds,omitempty"`
 	// +optional
 	HealthCheckPath string `json:"healthCheckPath,omitempty" tf:"health_check_path,omitempty"`
@@ -53,7 +55,7 @@ type GlobalacceleratorEndpointGroupStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

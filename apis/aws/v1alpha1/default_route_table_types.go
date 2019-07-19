@@ -18,11 +18,35 @@ type DefaultRouteTable struct {
 	Status            DefaultRouteTableStatus `json:"status,omitempty"`
 }
 
+type DefaultRouteTableSpecRoute struct {
+	// +optional
+	CidrBlock string `json:"cidrBlock,omitempty" tf:"cidr_block,omitempty"`
+	// +optional
+	EgressOnlyGatewayID string `json:"egressOnlyGatewayID,omitempty" tf:"egress_only_gateway_id,omitempty"`
+	// +optional
+	GatewayID string `json:"gatewayID,omitempty" tf:"gateway_id,omitempty"`
+	// +optional
+	InstanceID string `json:"instanceID,omitempty" tf:"instance_id,omitempty"`
+	// +optional
+	Ipv6CIDRBlock string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block,omitempty"`
+	// +optional
+	NatGatewayID string `json:"natGatewayID,omitempty" tf:"nat_gateway_id,omitempty"`
+	// +optional
+	NetworkInterfaceID string `json:"networkInterfaceID,omitempty" tf:"network_interface_id,omitempty"`
+	// +optional
+	TransitGatewayID string `json:"transitGatewayID,omitempty" tf:"transit_gateway_id,omitempty"`
+	// +optional
+	VpcPeeringConnectionID string `json:"vpcPeeringConnectionID,omitempty" tf:"vpc_peering_connection_id,omitempty"`
+}
+
 type DefaultRouteTableSpec struct {
 	DefaultRouteTableID string `json:"defaultRouteTableID" tf:"default_route_table_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	PropagatingVgws []string `json:"propagatingVgws,omitempty" tf:"propagating_vgws,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Route []DefaultRouteTableSpecRoute `json:"route,omitempty" tf:"route,omitempty"`
 	// +optional
 	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -33,7 +57,7 @@ type DefaultRouteTableStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -419,6 +419,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            includedEventTypes:
+              items:
+                type: string
+              type: array
             labels:
               items:
                 type: string
@@ -434,6 +438,19 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            retryPolicy:
+              items:
+                properties:
+                  eventTimeToLive:
+                    type: integer
+                  maxDeliveryAttempts:
+                    type: integer
+                required:
+                - eventTimeToLive
+                - maxDeliveryAttempts
+                type: object
+              maxItems: 1
+              type: array
             scope:
               type: string
             storageBlobDeadLetterDestination:
@@ -474,6 +491,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            topicName:
+              type: string
             webhookEndpoint:
               items:
                 properties:
@@ -499,8 +518,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

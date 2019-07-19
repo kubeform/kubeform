@@ -18,6 +18,21 @@ type ElasticsearchDomain struct {
 	Status            ElasticsearchDomainStatus `json:"status,omitempty"`
 }
 
+type ElasticsearchDomainSpecClusterConfig struct {
+	// +optional
+	DedicatedMasterCount int `json:"dedicatedMasterCount,omitempty" tf:"dedicated_master_count,omitempty"`
+	// +optional
+	DedicatedMasterEnabled bool `json:"dedicatedMasterEnabled,omitempty" tf:"dedicated_master_enabled,omitempty"`
+	// +optional
+	DedicatedMasterType string `json:"dedicatedMasterType,omitempty" tf:"dedicated_master_type,omitempty"`
+	// +optional
+	InstanceCount int `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
+	// +optional
+	InstanceType string `json:"instanceType,omitempty" tf:"instance_type,omitempty"`
+	// +optional
+	ZoneAwarenessEnabled bool `json:"zoneAwarenessEnabled,omitempty" tf:"zone_awareness_enabled,omitempty"`
+}
+
 type ElasticsearchDomainSpecCognitoOptions struct {
 	// +optional
 	Enabled        bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
@@ -26,11 +41,31 @@ type ElasticsearchDomainSpecCognitoOptions struct {
 	UserPoolID     string `json:"userPoolID" tf:"user_pool_id"`
 }
 
+type ElasticsearchDomainSpecEbsOptions struct {
+	EbsEnabled bool `json:"ebsEnabled" tf:"ebs_enabled"`
+	// +optional
+	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	// +optional
+	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	// +optional
+	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
+}
+
+type ElasticsearchDomainSpecEncryptAtRest struct {
+	Enabled bool `json:"enabled" tf:"enabled"`
+	// +optional
+	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+}
+
 type ElasticsearchDomainSpecLogPublishingOptions struct {
 	CloudwatchLogGroupArn string `json:"cloudwatchLogGroupArn" tf:"cloudwatch_log_group_arn"`
 	// +optional
 	Enabled bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	LogType string `json:"logType" tf:"log_type"`
+}
+
+type ElasticsearchDomainSpecNodeToNodeEncryption struct {
+	Enabled bool `json:"enabled" tf:"enabled"`
 }
 
 type ElasticsearchDomainSpecSnapshotOptions struct {
@@ -48,14 +83,30 @@ type ElasticsearchDomainSpecVpcOptions struct {
 
 type ElasticsearchDomainSpec struct {
 	// +optional
+	AccessPolicies string `json:"accessPolicies,omitempty" tf:"access_policies,omitempty"`
+	// +optional
+	AdvancedOptions map[string]string `json:"advancedOptions,omitempty" tf:"advanced_options,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	ClusterConfig []ElasticsearchDomainSpecClusterConfig `json:"clusterConfig,omitempty" tf:"cluster_config,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CognitoOptions []ElasticsearchDomainSpecCognitoOptions `json:"cognitoOptions,omitempty" tf:"cognito_options,omitempty"`
 	DomainName     string                                  `json:"domainName" tf:"domain_name"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	EbsOptions []ElasticsearchDomainSpecEbsOptions `json:"ebsOptions,omitempty" tf:"ebs_options,omitempty"`
+	// +optional
 	ElasticsearchVersion string `json:"elasticsearchVersion,omitempty" tf:"elasticsearch_version,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	EncryptAtRest []ElasticsearchDomainSpecEncryptAtRest `json:"encryptAtRest,omitempty" tf:"encrypt_at_rest,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	LogPublishingOptions []ElasticsearchDomainSpecLogPublishingOptions `json:"logPublishingOptions,omitempty" tf:"log_publishing_options,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	NodeToNodeEncryption []ElasticsearchDomainSpecNodeToNodeEncryption `json:"nodeToNodeEncryption,omitempty" tf:"node_to_node_encryption,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SnapshotOptions []ElasticsearchDomainSpecSnapshotOptions `json:"snapshotOptions,omitempty" tf:"snapshot_options,omitempty"`
@@ -72,7 +123,7 @@ type ElasticsearchDomainStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -19,7 +19,10 @@ type StorageDefaultObjectACL struct {
 }
 
 type StorageDefaultObjectACLSpec struct {
-	Bucket      string                    `json:"bucket" tf:"bucket"`
+	Bucket string `json:"bucket" tf:"bucket"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	RoleEntity  []string                  `json:"roleEntity,omitempty" tf:"role_entity,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -28,7 +31,7 @@ type StorageDefaultObjectACLStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

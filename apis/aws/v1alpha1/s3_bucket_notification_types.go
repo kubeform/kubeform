@@ -26,6 +26,8 @@ type S3BucketNotificationSpecLambdaFunction struct {
 	// +optional
 	FilterSuffix string `json:"filterSuffix,omitempty" tf:"filter_suffix,omitempty"`
 	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
 	LambdaFunctionArn string `json:"lambdaFunctionArn,omitempty" tf:"lambda_function_arn,omitempty"`
 }
 
@@ -36,7 +38,9 @@ type S3BucketNotificationSpecQueue struct {
 	FilterPrefix string `json:"filterPrefix,omitempty" tf:"filter_prefix,omitempty"`
 	// +optional
 	FilterSuffix string `json:"filterSuffix,omitempty" tf:"filter_suffix,omitempty"`
-	QueueArn     string `json:"queueArn" tf:"queue_arn"`
+	// +optional
+	ID       string `json:"ID,omitempty" tf:"id,omitempty"`
+	QueueArn string `json:"queueArn" tf:"queue_arn"`
 }
 
 type S3BucketNotificationSpecTopic struct {
@@ -46,7 +50,9 @@ type S3BucketNotificationSpecTopic struct {
 	FilterPrefix string `json:"filterPrefix,omitempty" tf:"filter_prefix,omitempty"`
 	// +optional
 	FilterSuffix string `json:"filterSuffix,omitempty" tf:"filter_suffix,omitempty"`
-	TopicArn     string `json:"topicArn" tf:"topic_arn"`
+	// +optional
+	ID       string `json:"ID,omitempty" tf:"id,omitempty"`
+	TopicArn string `json:"topicArn" tf:"topic_arn"`
 }
 
 type S3BucketNotificationSpec struct {
@@ -65,7 +71,7 @@ type S3BucketNotificationStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

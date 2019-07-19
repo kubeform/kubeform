@@ -401,6 +401,10 @@ spec:
               type: string
             description:
               type: string
+            ipAddress:
+              type: string
+            ipProtocol:
+              type: string
             ipVersion:
               type: string
             labels:
@@ -412,6 +416,10 @@ spec:
               type: string
             name:
               type: string
+            network:
+              type: string
+            networkTier:
+              type: string
             portRange:
               type: string
             ports:
@@ -420,6 +428,8 @@ spec:
               maxItems: 5
               type: array
               uniqueItems: true
+            project:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -429,8 +439,12 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            region:
+              type: string
             serviceLabel:
               description: Deprecated
+              type: string
+            subnetwork:
               type: string
             target:
               type: string
@@ -448,8 +462,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -20,6 +20,31 @@ type BudgetsBudget struct {
 	Status            BudgetsBudgetStatus `json:"status,omitempty"`
 }
 
+type BudgetsBudgetSpecCostTypes struct {
+	// +optional
+	IncludeCredit bool `json:"includeCredit,omitempty" tf:"include_credit,omitempty"`
+	// +optional
+	IncludeDiscount bool `json:"includeDiscount,omitempty" tf:"include_discount,omitempty"`
+	// +optional
+	IncludeOtherSubscription bool `json:"includeOtherSubscription,omitempty" tf:"include_other_subscription,omitempty"`
+	// +optional
+	IncludeRecurring bool `json:"includeRecurring,omitempty" tf:"include_recurring,omitempty"`
+	// +optional
+	IncludeRefund bool `json:"includeRefund,omitempty" tf:"include_refund,omitempty"`
+	// +optional
+	IncludeSubscription bool `json:"includeSubscription,omitempty" tf:"include_subscription,omitempty"`
+	// +optional
+	IncludeSupport bool `json:"includeSupport,omitempty" tf:"include_support,omitempty"`
+	// +optional
+	IncludeTax bool `json:"includeTax,omitempty" tf:"include_tax,omitempty"`
+	// +optional
+	IncludeUpfront bool `json:"includeUpfront,omitempty" tf:"include_upfront,omitempty"`
+	// +optional
+	UseAmortized bool `json:"useAmortized,omitempty" tf:"use_amortized,omitempty"`
+	// +optional
+	UseBlended bool `json:"useBlended,omitempty" tf:"use_blended,omitempty"`
+}
+
 type BudgetsBudgetSpecNotification struct {
 	ComparisonOperator string `json:"comparisonOperator" tf:"comparison_operator"`
 	NotificationType   string `json:"notificationType" tf:"notification_type"`
@@ -34,9 +59,20 @@ type BudgetsBudgetSpecNotification struct {
 }
 
 type BudgetsBudgetSpec struct {
-	BudgetType  string `json:"budgetType" tf:"budget_type"`
-	LimitAmount string `json:"limitAmount" tf:"limit_amount"`
-	LimitUnit   string `json:"limitUnit" tf:"limit_unit"`
+	// +optional
+	AccountID  string `json:"accountID,omitempty" tf:"account_id,omitempty"`
+	BudgetType string `json:"budgetType" tf:"budget_type"`
+	// +optional
+	CostFilters map[string]string `json:"costFilters,omitempty" tf:"cost_filters,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	CostTypes   []BudgetsBudgetSpecCostTypes `json:"costTypes,omitempty" tf:"cost_types,omitempty"`
+	LimitAmount string                       `json:"limitAmount" tf:"limit_amount"`
+	LimitUnit   string                       `json:"limitUnit" tf:"limit_unit"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Notification []BudgetsBudgetSpecNotification `json:"notification,omitempty" tf:"notification,omitempty"`
@@ -52,7 +88,7 @@ type BudgetsBudgetStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

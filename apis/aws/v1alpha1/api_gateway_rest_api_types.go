@@ -18,6 +18,12 @@ type ApiGatewayRestAPI struct {
 	Status            ApiGatewayRestAPIStatus `json:"status,omitempty"`
 }
 
+type ApiGatewayRestAPISpecEndpointConfiguration struct {
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:MinItems=1
+	Types []string `json:"types" tf:"types"`
+}
+
 type ApiGatewayRestAPISpec struct {
 	// +optional
 	ApiKeySource string `json:"apiKeySource,omitempty" tf:"api_key_source,omitempty"`
@@ -27,6 +33,10 @@ type ApiGatewayRestAPISpec struct {
 	Body string `json:"body,omitempty" tf:"body,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:MinItems=1
+	EndpointConfiguration []ApiGatewayRestAPISpecEndpointConfiguration `json:"endpointConfiguration,omitempty" tf:"endpoint_configuration,omitempty"`
 	// +optional
 	MinimumCompressionSize int    `json:"minimumCompressionSize,omitempty" tf:"minimum_compression_size,omitempty"`
 	Name                   string `json:"name" tf:"name"`
@@ -40,7 +50,7 @@ type ApiGatewayRestAPIStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

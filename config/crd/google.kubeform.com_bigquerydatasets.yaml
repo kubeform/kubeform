@@ -397,6 +397,37 @@ spec:
           type: object
         spec:
           properties:
+            access:
+              items:
+                properties:
+                  domain:
+                    type: string
+                  groupByEmail:
+                    type: string
+                  role:
+                    type: string
+                  specialGroup:
+                    type: string
+                  userByEmail:
+                    type: string
+                  view:
+                    items:
+                      properties:
+                        datasetID:
+                          type: string
+                        projectID:
+                          type: string
+                        tableID:
+                          type: string
+                      required:
+                      - datasetID
+                      - projectID
+                      - tableID
+                      type: object
+                    maxItems: 1
+                    type: array
+                type: object
+              type: array
             datasetID:
               type: string
             defaultTableExpirationMs:
@@ -410,6 +441,8 @@ spec:
                 type: string
               type: object
             location:
+              type: string
+            project:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -434,8 +467,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

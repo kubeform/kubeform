@@ -20,15 +20,39 @@ type RdsClusterInstance struct {
 
 type RdsClusterInstanceSpec struct {
 	// +optional
-	AutoMinorVersionUpgrade bool   `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
-	ClusterIdentifier       string `json:"clusterIdentifier" tf:"cluster_identifier"`
+	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	// +optional
+	AutoMinorVersionUpgrade bool `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
+	// +optional
+	AvailabilityZone  string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+	ClusterIdentifier string `json:"clusterIdentifier" tf:"cluster_identifier"`
 	// +optional
 	CopyTagsToSnapshot bool `json:"copyTagsToSnapshot,omitempty" tf:"copy_tags_to_snapshot,omitempty"`
 	// +optional
-	Engine        string `json:"engine,omitempty" tf:"engine,omitempty"`
-	InstanceClass string `json:"instanceClass" tf:"instance_class"`
+	DbParameterGroupName string `json:"dbParameterGroupName,omitempty" tf:"db_parameter_group_name,omitempty"`
+	// +optional
+	DbSubnetGroupName string `json:"dbSubnetGroupName,omitempty" tf:"db_subnet_group_name,omitempty"`
+	// +optional
+	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
+	// +optional
+	EngineVersion string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
+	// +optional
+	Identifier string `json:"identifier,omitempty" tf:"identifier,omitempty"`
+	// +optional
+	IdentifierPrefix string `json:"identifierPrefix,omitempty" tf:"identifier_prefix,omitempty"`
+	InstanceClass    string `json:"instanceClass" tf:"instance_class"`
 	// +optional
 	MonitoringInterval int `json:"monitoringInterval,omitempty" tf:"monitoring_interval,omitempty"`
+	// +optional
+	MonitoringRoleArn string `json:"monitoringRoleArn,omitempty" tf:"monitoring_role_arn,omitempty"`
+	// +optional
+	PerformanceInsightsEnabled bool `json:"performanceInsightsEnabled,omitempty" tf:"performance_insights_enabled,omitempty"`
+	// +optional
+	PerformanceInsightsKmsKeyID string `json:"performanceInsightsKmsKeyID,omitempty" tf:"performance_insights_kms_key_id,omitempty"`
+	// +optional
+	PreferredBackupWindow string `json:"preferredBackupWindow,omitempty" tf:"preferred_backup_window,omitempty"`
+	// +optional
+	PreferredMaintenanceWindow string `json:"preferredMaintenanceWindow,omitempty" tf:"preferred_maintenance_window,omitempty"`
 	// +optional
 	PromotionTier int `json:"promotionTier,omitempty" tf:"promotion_tier,omitempty"`
 	// +optional
@@ -43,7 +67,7 @@ type RdsClusterInstanceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -33,9 +33,15 @@ type CloudformationStackSpec struct {
 	// +optional
 	OnFailure string `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 	// +optional
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	// +optional
+	PolicyBody string `json:"policyBody,omitempty" tf:"policy_body,omitempty"`
+	// +optional
 	PolicyURL string `json:"policyURL,omitempty" tf:"policy_url,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	TemplateBody string `json:"templateBody,omitempty" tf:"template_body,omitempty"`
 	// +optional
 	TemplateURL string `json:"templateURL,omitempty" tf:"template_url,omitempty"`
 	// +optional
@@ -48,7 +54,7 @@ type CloudformationStackStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -18,12 +18,22 @@ type LogAnalyticsLinkedService struct {
 	Status            LogAnalyticsLinkedServiceStatus `json:"status,omitempty"`
 }
 
+type LogAnalyticsLinkedServiceSpecLinkedServiceProperties struct {
+	ResourceID string `json:"resourceID" tf:"resource_id"`
+}
+
 type LogAnalyticsLinkedServiceSpec struct {
 	// +optional
-	LinkedServiceName string                    `json:"linkedServiceName,omitempty" tf:"linked_service_name,omitempty"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	WorkspaceName     string                    `json:"workspaceName" tf:"workspace_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	LinkedServiceName string `json:"linkedServiceName,omitempty" tf:"linked_service_name,omitempty"`
+	// +optional
+	LinkedServiceProperties []LogAnalyticsLinkedServiceSpecLinkedServiceProperties `json:"linkedServiceProperties,omitempty" tf:"linked_service_properties,omitempty"`
+	ResourceGroupName       string                                                 `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	ResourceID string `json:"resourceID,omitempty" tf:"resource_id,omitempty"`
+	// +optional
+	Tags          map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	WorkspaceName string                    `json:"workspaceName" tf:"workspace_name"`
+	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type LogAnalyticsLinkedServiceStatus struct {
@@ -31,7 +41,7 @@ type LogAnalyticsLinkedServiceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

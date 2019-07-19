@@ -397,8 +397,25 @@ spec:
           type: object
         spec:
           properties:
+            accepter:
+              items:
+                properties:
+                  allowClassicLinkToRemoteVpc:
+                    type: boolean
+                  allowRemoteVpcDNSResolution:
+                    type: boolean
+                  allowVpcToRemoteClassicLink:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
+              uniqueItems: true
             autoAccept:
               type: boolean
+            peerOwnerID:
+              type: string
+            peerRegion:
+              type: string
             peerVpcID:
               type: string
             providerRef:
@@ -410,6 +427,19 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            requester:
+              items:
+                properties:
+                  allowClassicLinkToRemoteVpc:
+                    type: boolean
+                  allowRemoteVpcDNSResolution:
+                    type: boolean
+                  allowVpcToRemoteClassicLink:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
+              uniqueItems: true
             tags:
               additionalProperties:
                 type: string
@@ -431,8 +461,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -414,6 +414,20 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            subnet:
+              items:
+                properties:
+                  useInVirtualMachineCreation:
+                    type: string
+                  usePublicIPAddress:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - labName
           - name
@@ -430,8 +444,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

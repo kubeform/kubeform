@@ -29,10 +29,13 @@ type DevspaceControllerSpec struct {
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
-	Sku                                  []DevspaceControllerSpecSku `json:"sku" tf:"sku"`
-	TargetContainerHostCredentialsBase64 string                      `json:"targetContainerHostCredentialsBase64" tf:"target_container_host_credentials_base64"`
-	TargetContainerHostResourceID        string                      `json:"targetContainerHostResourceID" tf:"target_container_host_resource_id"`
-	ProviderRef                          core.LocalObjectReference   `json:"providerRef" tf:"-"`
+	Sku []DevspaceControllerSpecSku `json:"sku" tf:"sku"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	TargetContainerHostCredentialsBase64 core.LocalObjectReference `json:"targetContainerHostCredentialsBase64" tf:"target_container_host_credentials_base64"`
+	TargetContainerHostResourceID        string                    `json:"targetContainerHostResourceID" tf:"target_container_host_resource_id"`
+	ProviderRef                          core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type DevspaceControllerStatus struct {
@@ -40,7 +43,7 @@ type DevspaceControllerStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

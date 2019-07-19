@@ -397,10 +397,19 @@ spec:
           type: object
         spec:
           properties:
+            accountName:
+              description: Deprecated
+              type: string
+            automationAccountName:
+              type: string
             description:
+              type: string
+            expiryTime:
               type: string
             frequency:
               type: string
+            interval:
+              type: integer
             monthDays:
               items:
                 format: int64
@@ -432,6 +441,8 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            startTime:
+              type: string
             timezone:
               type: string
             weekDays:
@@ -455,8 +466,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -19,9 +19,11 @@ type AppautoscalingTarget struct {
 }
 
 type AppautoscalingTargetSpec struct {
-	MaxCapacity       int                       `json:"maxCapacity" tf:"max_capacity"`
-	MinCapacity       int                       `json:"minCapacity" tf:"min_capacity"`
-	ResourceID        string                    `json:"resourceID" tf:"resource_id"`
+	MaxCapacity int    `json:"maxCapacity" tf:"max_capacity"`
+	MinCapacity int    `json:"minCapacity" tf:"min_capacity"`
+	ResourceID  string `json:"resourceID" tf:"resource_id"`
+	// +optional
+	RoleArn           string                    `json:"roleArn,omitempty" tf:"role_arn,omitempty"`
 	ScalableDimension string                    `json:"scalableDimension" tf:"scalable_dimension"`
 	ServiceNamespace  string                    `json:"serviceNamespace" tf:"service_namespace"`
 	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -32,7 +34,7 @@ type AppautoscalingTargetStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

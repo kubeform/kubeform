@@ -18,11 +18,52 @@ type NetworkSecurityGroup struct {
 	Status            NetworkSecurityGroupStatus `json:"status,omitempty"`
 }
 
+type NetworkSecurityGroupSpecSecurityRule struct {
+	Access string `json:"access" tf:"access"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	DestinationAddressPrefix string `json:"destinationAddressPrefix,omitempty" tf:"destination_address_prefix,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	DestinationAddressPrefixes []string `json:"destinationAddressPrefixes,omitempty" tf:"destination_address_prefixes,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	DestinationApplicationSecurityGroupIDS []string `json:"destinationApplicationSecurityGroupIDS,omitempty" tf:"destination_application_security_group_ids,omitempty"`
+	// +optional
+	DestinationPortRange string `json:"destinationPortRange,omitempty" tf:"destination_port_range,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	DestinationPortRanges []string `json:"destinationPortRanges,omitempty" tf:"destination_port_ranges,omitempty"`
+	Direction             string   `json:"direction" tf:"direction"`
+	Name                  string   `json:"name" tf:"name"`
+	Priority              int      `json:"priority" tf:"priority"`
+	Protocol              string   `json:"protocol" tf:"protocol"`
+	// +optional
+	SourceAddressPrefix string `json:"sourceAddressPrefix,omitempty" tf:"source_address_prefix,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SourceAddressPrefixes []string `json:"sourceAddressPrefixes,omitempty" tf:"source_address_prefixes,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SourceApplicationSecurityGroupIDS []string `json:"sourceApplicationSecurityGroupIDS,omitempty" tf:"source_application_security_group_ids,omitempty"`
+	// +optional
+	SourcePortRange string `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SourcePortRanges []string `json:"sourcePortRanges,omitempty" tf:"source_port_ranges,omitempty"`
+}
+
 type NetworkSecurityGroupSpec struct {
-	Location          string                    `json:"location" tf:"location"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SecurityRule []NetworkSecurityGroupSpecSecurityRule `json:"securityRule,omitempty" tf:"security_rule,omitempty"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type NetworkSecurityGroupStatus struct {
@@ -30,7 +71,7 @@ type NetworkSecurityGroupStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -37,10 +37,16 @@ type BigqueryTableSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	ExpirationTime int `json:"expirationTime,omitempty" tf:"expiration_time,omitempty"`
+	// +optional
 	FriendlyName string `json:"friendlyName,omitempty" tf:"friendly_name,omitempty"`
 	// +optional
-	Labels  map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	TableID string            `json:"tableID" tf:"table_id"`
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Schema  string `json:"schema,omitempty" tf:"schema,omitempty"`
+	TableID string `json:"tableID" tf:"table_id"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	TimePartitioning []BigqueryTableSpecTimePartitioning `json:"timePartitioning,omitempty" tf:"time_partitioning,omitempty"`
@@ -55,7 +61,7 @@ type BigqueryTableStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

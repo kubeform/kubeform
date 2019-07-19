@@ -414,6 +414,27 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            route:
+              items:
+                properties:
+                  addressPrefix:
+                    type: string
+                  name:
+                    type: string
+                  nextHopInIPAddress:
+                    type: string
+                  nextHopType:
+                    type: string
+                required:
+                - addressPrefix
+                - name
+                - nextHopType
+                type: object
+              type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - location
           - name
@@ -430,8 +451,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -26,13 +26,16 @@ type ExpressRouteCircuitPeeringSpec struct {
 	ExpressRouteCircuitName string `json:"expressRouteCircuitName" tf:"express_route_circuit_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	MicrosoftPeeringConfig     []ExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig `json:"microsoftPeeringConfig,omitempty" tf:"microsoft_peering_config,omitempty"`
-	PeeringType                string                                                 `json:"peeringType" tf:"peering_type"`
-	PrimaryPeerAddressPrefix   string                                                 `json:"primaryPeerAddressPrefix" tf:"primary_peer_address_prefix"`
-	ResourceGroupName          string                                                 `json:"resourceGroupName" tf:"resource_group_name"`
-	SecondaryPeerAddressPrefix string                                                 `json:"secondaryPeerAddressPrefix" tf:"secondary_peer_address_prefix"`
+	MicrosoftPeeringConfig []ExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig `json:"microsoftPeeringConfig,omitempty" tf:"microsoft_peering_config,omitempty"`
 	// +optional
-	SharedKey   string                    `json:"sharedKey,omitempty" tf:"shared_key,omitempty"`
+	PeerAsn                    int    `json:"peerAsn,omitempty" tf:"peer_asn,omitempty"`
+	PeeringType                string `json:"peeringType" tf:"peering_type"`
+	PrimaryPeerAddressPrefix   string `json:"primaryPeerAddressPrefix" tf:"primary_peer_address_prefix"`
+	ResourceGroupName          string `json:"resourceGroupName" tf:"resource_group_name"`
+	SecondaryPeerAddressPrefix string `json:"secondaryPeerAddressPrefix" tf:"secondary_peer_address_prefix"`
+	// +optional
+	// Sensitive Data. Provide secret name which contains one value only
+	SharedKey   core.LocalObjectReference `json:"sharedKey,omitempty" tf:"shared_key,omitempty"`
 	VlanID      int                       `json:"vlanID" tf:"vlan_id"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
@@ -42,7 +45,7 @@ type ExpressRouteCircuitPeeringStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -41,15 +41,40 @@ type ComputeBackendServiceSpecBackend struct {
 	MaxUtilization json.Number `json:"maxUtilization,omitempty" tf:"max_utilization,omitempty"`
 }
 
+type ComputeBackendServiceSpecCdnPolicyCacheKeyPolicy struct {
+	// +optional
+	IncludeHost bool `json:"includeHost,omitempty" tf:"include_host,omitempty"`
+	// +optional
+	IncludeProtocol bool `json:"includeProtocol,omitempty" tf:"include_protocol,omitempty"`
+	// +optional
+	IncludeQueryString bool `json:"includeQueryString,omitempty" tf:"include_query_string,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	QueryStringBlacklist []string `json:"queryStringBlacklist,omitempty" tf:"query_string_blacklist,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	QueryStringWhitelist []string `json:"queryStringWhitelist,omitempty" tf:"query_string_whitelist,omitempty"`
+}
+
+type ComputeBackendServiceSpecCdnPolicy struct {
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	CacheKeyPolicy []ComputeBackendServiceSpecCdnPolicyCacheKeyPolicy `json:"cacheKeyPolicy,omitempty" tf:"cache_key_policy,omitempty"`
+}
+
 type ComputeBackendServiceSpecIap struct {
-	Oauth2ClientID     string `json:"oauth2ClientID" tf:"oauth2_client_id"`
-	Oauth2ClientSecret string `json:"oauth2ClientSecret" tf:"oauth2_client_secret"`
+	Oauth2ClientID string `json:"oauth2ClientID" tf:"oauth2_client_id"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Oauth2ClientSecret core.LocalObjectReference `json:"oauth2ClientSecret" tf:"oauth2_client_secret"`
 }
 
 type ComputeBackendServiceSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Backend []ComputeBackendServiceSpecBackend `json:"backend,omitempty" tf:"backend,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	CdnPolicy []ComputeBackendServiceSpecCdnPolicy `json:"cdnPolicy,omitempty" tf:"cdn_policy,omitempty"`
 	// +optional
 	ConnectionDrainingTimeoutSec int `json:"connectionDrainingTimeoutSec,omitempty" tf:"connection_draining_timeout_sec,omitempty"`
 	// +optional
@@ -69,8 +94,18 @@ type ComputeBackendServiceSpec struct {
 	Iap  []ComputeBackendServiceSpecIap `json:"iap,omitempty" tf:"iap,omitempty"`
 	Name string                         `json:"name" tf:"name"`
 	// +optional
-	SecurityPolicy string                    `json:"securityPolicy,omitempty" tf:"security_policy,omitempty"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	PortName string `json:"portName,omitempty" tf:"port_name,omitempty"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
+	// +optional
+	SecurityPolicy string `json:"securityPolicy,omitempty" tf:"security_policy,omitempty"`
+	// +optional
+	SessionAffinity string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
+	// +optional
+	TimeoutSec  int                       `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ComputeBackendServiceStatus struct {
@@ -78,7 +113,7 @@ type ComputeBackendServiceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

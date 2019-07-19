@@ -399,6 +399,8 @@ spec:
           properties:
             accountName:
               type: string
+            content:
+              type: string
             description:
               type: string
             location:
@@ -447,6 +449,10 @@ spec:
               type: string
             runbookType:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - accountName
           - location
@@ -468,8 +474,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

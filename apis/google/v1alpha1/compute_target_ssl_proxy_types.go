@@ -24,6 +24,8 @@ type ComputeTargetSslProxySpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
 	ProxyHeader string `json:"proxyHeader,omitempty" tf:"proxy_header,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	SslCertificates []string `json:"sslCertificates" tf:"ssl_certificates"`
@@ -37,7 +39,7 @@ type ComputeTargetSslProxyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

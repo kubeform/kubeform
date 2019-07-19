@@ -18,10 +18,20 @@ type AmiFromInstance struct {
 	Status            AmiFromInstanceStatus `json:"status,omitempty"`
 }
 
+type AmiFromInstanceSpecEbsBlockDevice struct{}
+
+type AmiFromInstanceSpecEphemeralBlockDevice struct{}
+
 type AmiFromInstanceSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	Name        string `json:"name" tf:"name"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	EbsBlockDevice []AmiFromInstanceSpecEbsBlockDevice `json:"ebsBlockDevice,omitempty" tf:"ebs_block_device,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	EphemeralBlockDevice []AmiFromInstanceSpecEphemeralBlockDevice `json:"ephemeralBlockDevice,omitempty" tf:"ephemeral_block_device,omitempty"`
+	Name                 string                                    `json:"name" tf:"name"`
 	// +optional
 	SnapshotWithoutReboot bool   `json:"snapshotWithoutReboot,omitempty" tf:"snapshot_without_reboot,omitempty"`
 	SourceInstanceID      string `json:"sourceInstanceID" tf:"source_instance_id"`
@@ -35,7 +45,7 @@ type AmiFromInstanceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

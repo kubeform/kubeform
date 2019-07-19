@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            accessTier:
+              type: string
             accountEncryptionSource:
               type: string
             accountKind:
@@ -404,6 +406,9 @@ spec:
             accountReplicationType:
               type: string
             accountTier:
+              type: string
+            accountType:
+              description: Deprecated
               type: string
             customDomain:
               items:
@@ -423,6 +428,16 @@ spec:
               type: boolean
             enableHTTPSTrafficOnly:
               type: boolean
+            identity:
+              items:
+                properties:
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              maxItems: 1
+              type: array
             isHnsEnabled:
               type: boolean
             location:
@@ -432,8 +447,23 @@ spec:
             networkRules:
               items:
                 properties:
+                  bypass:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
                   defaultAction:
                     type: string
+                  ipRules:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                  virtualNetworkSubnetIDS:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
                 type: object
               maxItems: 1
               type: array
@@ -448,6 +478,10 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - accountReplicationType
           - accountTier
@@ -466,8 +500,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -20,8 +20,9 @@ type Iothub struct {
 
 type IothubSpecEndpoint struct {
 	// +optional
-	BatchFrequencyInSeconds int    `json:"batchFrequencyInSeconds,omitempty" tf:"batch_frequency_in_seconds,omitempty"`
-	ConnectionString        string `json:"connectionString" tf:"connection_string"`
+	BatchFrequencyInSeconds int `json:"batchFrequencyInSeconds,omitempty" tf:"batch_frequency_in_seconds,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ConnectionString core.LocalObjectReference `json:"connectionString" tf:"connection_string"`
 	// +optional
 	ContainerName string `json:"containerName,omitempty" tf:"container_name,omitempty"`
 	// +optional
@@ -32,6 +33,17 @@ type IothubSpecEndpoint struct {
 	MaxChunkSizeInBytes int    `json:"maxChunkSizeInBytes,omitempty" tf:"max_chunk_size_in_bytes,omitempty"`
 	Name                string `json:"name" tf:"name"`
 	Type                string `json:"type" tf:"type"`
+}
+
+type IothubSpecFallbackRoute struct {
+	// +optional
+	Condition string `json:"condition,omitempty" tf:"condition,omitempty"`
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	EndpointNames []string `json:"endpointNames,omitempty" tf:"endpoint_names,omitempty"`
+	// +optional
+	Source string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type IothubSpecIpFilterRule struct {
@@ -59,6 +71,9 @@ type IothubSpec struct {
 	// +optional
 	Endpoint []IothubSpecEndpoint `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	FallbackRoute []IothubSpecFallbackRoute `json:"fallbackRoute,omitempty" tf:"fallback_route,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	IpFilterRule      []IothubSpecIpFilterRule `json:"ipFilterRule,omitempty" tf:"ip_filter_rule,omitempty"`
 	Location          string                   `json:"location" tf:"location"`
@@ -67,7 +82,9 @@ type IothubSpec struct {
 	// +optional
 	Route []IothubSpecRoute `json:"route,omitempty" tf:"route,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
-	Sku         []IothubSpecSku           `json:"sku" tf:"sku"`
+	Sku []IothubSpecSku `json:"sku" tf:"sku"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -76,7 +93,7 @@ type IothubStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

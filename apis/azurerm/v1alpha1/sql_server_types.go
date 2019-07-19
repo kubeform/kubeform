@@ -19,13 +19,16 @@ type SqlServer struct {
 }
 
 type SqlServerSpec struct {
-	AdministratorLogin         string                    `json:"administratorLogin" tf:"administrator_login"`
-	AdministratorLoginPassword string                    `json:"administratorLoginPassword" tf:"administrator_login_password"`
+	AdministratorLogin string `json:"administratorLogin" tf:"administrator_login"`
+	// Sensitive Data. Provide secret name which contains one value only
+	AdministratorLoginPassword core.LocalObjectReference `json:"administratorLoginPassword" tf:"administrator_login_password"`
 	Location                   string                    `json:"location" tf:"location"`
 	Name                       string                    `json:"name" tf:"name"`
 	ResourceGroupName          string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	Version                    string                    `json:"version" tf:"version"`
-	ProviderRef                core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	Version     string                    `json:"version" tf:"version"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type SqlServerStatus struct {
@@ -33,7 +36,7 @@ type SqlServerStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

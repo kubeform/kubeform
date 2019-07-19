@@ -415,7 +415,14 @@ spec:
                   enabled:
                     type: boolean
                   password:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   username:
                     type: string
                 required:
@@ -447,7 +454,14 @@ spec:
                     items:
                       properties:
                         password:
-                          type: string
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
                         sshKeys:
                           items:
                             type: string
@@ -475,7 +489,14 @@ spec:
                         numberOfDisksPerNode:
                           type: integer
                         password:
-                          type: string
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
                         sshKeys:
                           items:
                             type: string
@@ -503,7 +524,14 @@ spec:
                     items:
                       properties:
                         password:
-                          type: string
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
                         sshKeys:
                           items:
                             type: string
@@ -536,7 +564,14 @@ spec:
                   isDefault:
                     type: boolean
                   storageAccountKey:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   storageContainerID:
                     type: string
                 required:
@@ -545,6 +580,10 @@ spec:
                 - storageContainerID
                 type: object
               type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             tier:
               type: string
           required:
@@ -569,8 +608,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

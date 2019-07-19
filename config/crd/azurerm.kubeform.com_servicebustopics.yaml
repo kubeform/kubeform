@@ -397,6 +397,12 @@ spec:
           type: object
         spec:
           properties:
+            autoDeleteOnIdle:
+              type: string
+            defaultMessageTtl:
+              type: string
+            duplicateDetectionHistoryTimeWindow:
+              type: string
             enableBatchedOperations:
               type: boolean
             enableExpress:
@@ -409,6 +415,8 @@ spec:
             location:
               description: Deprecated
               type: string
+            maxSizeInMegabytes:
+              type: integer
             name:
               type: string
             namespaceName:
@@ -446,8 +454,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

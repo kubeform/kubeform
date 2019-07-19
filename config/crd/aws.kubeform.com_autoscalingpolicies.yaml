@@ -405,6 +405,8 @@ spec:
               type: integer
             estimatedInstanceWarmup:
               type: integer
+            metricAggregationType:
+              type: string
             minAdjustmentMagnitude:
               type: integer
             name:
@@ -506,8 +508,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

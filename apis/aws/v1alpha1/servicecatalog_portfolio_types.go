@@ -19,7 +19,9 @@ type ServicecatalogPortfolio struct {
 }
 
 type ServicecatalogPortfolioSpec struct {
-	Name string `json:"name" tf:"name"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Name        string `json:"name" tf:"name"`
 	// +optional
 	ProviderName string `json:"providerName,omitempty" tf:"provider_name,omitempty"`
 	// +optional
@@ -32,7 +34,7 @@ type ServicecatalogPortfolioStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

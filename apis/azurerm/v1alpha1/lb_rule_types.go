@@ -19,18 +19,26 @@ type LbRule struct {
 }
 
 type LbRuleSpec struct {
-	BackendPort int `json:"backendPort" tf:"backend_port"`
+	// +optional
+	BackendAddressPoolID string `json:"backendAddressPoolID,omitempty" tf:"backend_address_pool_id,omitempty"`
+	BackendPort          int    `json:"backendPort" tf:"backend_port"`
 	// +optional
 	DisableOutboundSnat bool `json:"disableOutboundSnat,omitempty" tf:"disable_outbound_snat,omitempty"`
 	// +optional
 	EnableFloatingIP            bool   `json:"enableFloatingIP,omitempty" tf:"enable_floating_ip,omitempty"`
 	FrontendIPConfigurationName string `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`
 	FrontendPort                int    `json:"frontendPort" tf:"frontend_port"`
-	LoadbalancerID              string `json:"loadbalancerID" tf:"loadbalancer_id"`
+	// +optional
+	IdleTimeoutInMinutes int `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
+	// +optional
+	LoadDistribution string `json:"loadDistribution,omitempty" tf:"load_distribution,omitempty"`
+	LoadbalancerID   string `json:"loadbalancerID" tf:"loadbalancer_id"`
 	// +optional
 	// Deprecated
-	Location          string                    `json:"location,omitempty" tf:"location,omitempty"`
-	Name              string                    `json:"name" tf:"name"`
+	Location string `json:"location,omitempty" tf:"location,omitempty"`
+	Name     string `json:"name" tf:"name"`
+	// +optional
+	ProbeID           string                    `json:"probeID,omitempty" tf:"probe_id,omitempty"`
 	Protocol          string                    `json:"protocol" tf:"protocol"`
 	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -41,7 +49,7 @@ type LbRuleStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -23,7 +23,17 @@ type RouteSpec struct {
 	DestinationCIDRBlock string `json:"destinationCIDRBlock,omitempty" tf:"destination_cidr_block,omitempty"`
 	// +optional
 	DestinationIpv6CIDRBlock string `json:"destinationIpv6CIDRBlock,omitempty" tf:"destination_ipv6_cidr_block,omitempty"`
-	RouteTableID             string `json:"routeTableID" tf:"route_table_id"`
+	// +optional
+	EgressOnlyGatewayID string `json:"egressOnlyGatewayID,omitempty" tf:"egress_only_gateway_id,omitempty"`
+	// +optional
+	GatewayID string `json:"gatewayID,omitempty" tf:"gateway_id,omitempty"`
+	// +optional
+	InstanceID string `json:"instanceID,omitempty" tf:"instance_id,omitempty"`
+	// +optional
+	NatGatewayID string `json:"natGatewayID,omitempty" tf:"nat_gateway_id,omitempty"`
+	// +optional
+	NetworkInterfaceID string `json:"networkInterfaceID,omitempty" tf:"network_interface_id,omitempty"`
+	RouteTableID       string `json:"routeTableID" tf:"route_table_id"`
 	// +optional
 	TransitGatewayID string `json:"transitGatewayID,omitempty" tf:"transit_gateway_id,omitempty"`
 	// +optional
@@ -36,7 +46,7 @@ type RouteStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

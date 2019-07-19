@@ -403,6 +403,23 @@ spec:
               type: string
             clusterID:
               type: string
+            ebsConfig:
+              items:
+                properties:
+                  iops:
+                    type: integer
+                  size:
+                    type: integer
+                  type:
+                    type: string
+                  volumesPerInstance:
+                    type: integer
+                required:
+                - size
+                - type
+                type: object
+              type: array
+              uniqueItems: true
             ebsOptimized:
               type: boolean
             instanceCount:
@@ -435,8 +452,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

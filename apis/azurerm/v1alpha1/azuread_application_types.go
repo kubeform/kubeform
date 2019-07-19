@@ -20,11 +20,18 @@ type AzureadApplication struct {
 
 type AzureadApplicationSpec struct {
 	// +optional
-	AvailableToOtherTenants bool   `json:"availableToOtherTenants,omitempty" tf:"available_to_other_tenants,omitempty"`
-	Name                    string `json:"name" tf:"name"`
+	AvailableToOtherTenants bool `json:"availableToOtherTenants,omitempty" tf:"available_to_other_tenants,omitempty"`
 	// +optional
-	Oauth2AllowImplicitFlow bool                      `json:"oauth2AllowImplicitFlow,omitempty" tf:"oauth2_allow_implicit_flow,omitempty"`
-	ProviderRef             core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Homepage string `json:"homepage,omitempty" tf:"homepage,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MinItems=1
+	IdentifierUris []string `json:"identifierUris,omitempty" tf:"identifier_uris,omitempty"`
+	Name           string   `json:"name" tf:"name"`
+	// +optional
+	Oauth2AllowImplicitFlow bool `json:"oauth2AllowImplicitFlow,omitempty" tf:"oauth2_allow_implicit_flow,omitempty"`
+	// +optional
+	ReplyUrls   []string                  `json:"replyUrls,omitempty" tf:"reply_urls,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type AzureadApplicationStatus struct {
@@ -32,7 +39,7 @@ type AzureadApplicationStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

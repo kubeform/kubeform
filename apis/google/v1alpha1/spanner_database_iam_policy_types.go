@@ -19,9 +19,11 @@ type SpannerDatabaseIamPolicy struct {
 }
 
 type SpannerDatabaseIamPolicySpec struct {
-	Database    string                    `json:"database" tf:"database"`
-	Instance    string                    `json:"instance" tf:"instance"`
-	PolicyData  string                    `json:"policyData" tf:"policy_data"`
+	Database   string `json:"database" tf:"database"`
+	Instance   string `json:"instance" tf:"instance"`
+	PolicyData string `json:"policyData" tf:"policy_data"`
+	// +optional
+	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -30,7 +32,7 @@ type SpannerDatabaseIamPolicyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

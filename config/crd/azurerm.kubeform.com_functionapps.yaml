@@ -403,12 +403,46 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            clientAffinityEnabled:
+              type: boolean
+            connectionString:
+              items:
+                properties:
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  value:
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
+                required:
+                - name
+                - type
+                - value
+                type: object
+              type: array
             enableBuiltinLogging:
               type: boolean
             enabled:
               type: boolean
             httpsOnly:
               type: boolean
+            identity:
+              items:
+                properties:
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              maxItems: 1
+              type: array
             location:
               type: string
             name:
@@ -424,8 +458,33 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            siteConfig:
+              items:
+                properties:
+                  alwaysOn:
+                    type: boolean
+                  linuxFxVersion:
+                    type: string
+                  use32BitWorkerProcess:
+                    type: boolean
+                  websocketsEnabled:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
             storageConnectionString:
-              type: string
+              description: Sensitive Data. Provide secret name which contains one
+                value only
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             version:
               type: string
           required:
@@ -446,8 +505,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

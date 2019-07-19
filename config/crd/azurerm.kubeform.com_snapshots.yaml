@@ -399,6 +399,8 @@ spec:
           properties:
             createOption:
               type: string
+            diskSizeGb:
+              type: integer
             encryptionSettings:
               items:
                 properties:
@@ -456,6 +458,10 @@ spec:
               type: string
             storageAccountID:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - createOption
           - location
@@ -473,8 +479,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

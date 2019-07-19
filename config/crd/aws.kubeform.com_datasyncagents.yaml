@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            activationKey:
+              type: string
+            ipAddress:
+              type: string
             name:
               type: string
             providerRef:
@@ -425,8 +429,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

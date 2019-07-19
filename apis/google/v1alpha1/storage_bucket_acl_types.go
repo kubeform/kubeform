@@ -23,8 +23,10 @@ type StorageBucketACLSpec struct {
 	// +optional
 	DefaultACL string `json:"defaultACL,omitempty" tf:"default_acl,omitempty"`
 	// +optional
-	PredefinedACL string                    `json:"predefinedACL,omitempty" tf:"predefined_acl,omitempty"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	PredefinedACL string `json:"predefinedACL,omitempty" tf:"predefined_acl,omitempty"`
+	// +optional
+	RoleEntity  []string                  `json:"roleEntity,omitempty" tf:"role_entity,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type StorageBucketACLStatus struct {
@@ -32,7 +34,7 @@ type StorageBucketACLStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

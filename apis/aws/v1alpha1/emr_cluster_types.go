@@ -25,6 +25,30 @@ type EmrClusterSpecBootstrapAction struct {
 	Path string   `json:"path" tf:"path"`
 }
 
+type EmrClusterSpecCoreInstanceGroupEbsConfig struct {
+	// +optional
+	Iops int    `json:"iops,omitempty" tf:"iops,omitempty"`
+	Size int    `json:"size" tf:"size"`
+	Type string `json:"type" tf:"type"`
+	// +optional
+	VolumesPerInstance int `json:"volumesPerInstance,omitempty" tf:"volumes_per_instance,omitempty"`
+}
+
+type EmrClusterSpecCoreInstanceGroup struct {
+	// +optional
+	AutoscalingPolicy string `json:"autoscalingPolicy,omitempty" tf:"autoscaling_policy,omitempty"`
+	// +optional
+	BidPrice string `json:"bidPrice,omitempty" tf:"bid_price,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	EbsConfig []EmrClusterSpecCoreInstanceGroupEbsConfig `json:"ebsConfig,omitempty" tf:"ebs_config,omitempty"`
+	// +optional
+	InstanceCount int    `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
+	InstanceType  string `json:"instanceType" tf:"instance_type"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
 type EmrClusterSpecEc2Attributes struct {
 	// +optional
 	AdditionalMasterSecurityGroups string `json:"additionalMasterSecurityGroups,omitempty" tf:"additional_master_security_groups,omitempty"`
@@ -43,15 +67,80 @@ type EmrClusterSpecEc2Attributes struct {
 	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
 }
 
+type EmrClusterSpecInstanceGroupEbsConfig struct {
+	// +optional
+	Iops int    `json:"iops,omitempty" tf:"iops,omitempty"`
+	Size int    `json:"size" tf:"size"`
+	Type string `json:"type" tf:"type"`
+	// +optional
+	VolumesPerInstance int `json:"volumesPerInstance,omitempty" tf:"volumes_per_instance,omitempty"`
+}
+
+type EmrClusterSpecInstanceGroup struct {
+	// +optional
+	AutoscalingPolicy string `json:"autoscalingPolicy,omitempty" tf:"autoscaling_policy,omitempty"`
+	// +optional
+	BidPrice string `json:"bidPrice,omitempty" tf:"bid_price,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	EbsConfig []EmrClusterSpecInstanceGroupEbsConfig `json:"ebsConfig,omitempty" tf:"ebs_config,omitempty"`
+	// +optional
+	InstanceCount int    `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
+	InstanceRole  string `json:"instanceRole" tf:"instance_role"`
+	InstanceType  string `json:"instanceType" tf:"instance_type"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
 type EmrClusterSpecKerberosAttributes struct {
 	// +optional
-	AdDomainJoinPassword string `json:"adDomainJoinPassword,omitempty" tf:"ad_domain_join_password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	AdDomainJoinPassword core.LocalObjectReference `json:"adDomainJoinPassword,omitempty" tf:"ad_domain_join_password,omitempty"`
 	// +optional
 	AdDomainJoinUser string `json:"adDomainJoinUser,omitempty" tf:"ad_domain_join_user,omitempty"`
 	// +optional
-	CrossRealmTrustPrincipalPassword string `json:"crossRealmTrustPrincipalPassword,omitempty" tf:"cross_realm_trust_principal_password,omitempty"`
-	KdcAdminPassword                 string `json:"kdcAdminPassword" tf:"kdc_admin_password"`
-	Realm                            string `json:"realm" tf:"realm"`
+	// Sensitive Data. Provide secret name which contains one value only
+	CrossRealmTrustPrincipalPassword core.LocalObjectReference `json:"crossRealmTrustPrincipalPassword,omitempty" tf:"cross_realm_trust_principal_password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	KdcAdminPassword core.LocalObjectReference `json:"kdcAdminPassword" tf:"kdc_admin_password"`
+	Realm            string                    `json:"realm" tf:"realm"`
+}
+
+type EmrClusterSpecMasterInstanceGroupEbsConfig struct {
+	// +optional
+	Iops int    `json:"iops,omitempty" tf:"iops,omitempty"`
+	Size int    `json:"size" tf:"size"`
+	Type string `json:"type" tf:"type"`
+	// +optional
+	VolumesPerInstance int `json:"volumesPerInstance,omitempty" tf:"volumes_per_instance,omitempty"`
+}
+
+type EmrClusterSpecMasterInstanceGroup struct {
+	// +optional
+	BidPrice string `json:"bidPrice,omitempty" tf:"bid_price,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	EbsConfig    []EmrClusterSpecMasterInstanceGroupEbsConfig `json:"ebsConfig,omitempty" tf:"ebs_config,omitempty"`
+	InstanceType string                                       `json:"instanceType" tf:"instance_type"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
+type EmrClusterSpecStepHadoopJarStep struct {
+	// +optional
+	Args []string `json:"args,omitempty" tf:"args,omitempty"`
+	Jar  string   `json:"jar" tf:"jar"`
+	// +optional
+	MainClass string `json:"mainClass,omitempty" tf:"main_class,omitempty"`
+	// +optional
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
+}
+
+type EmrClusterSpecStep struct {
+	ActionOnFailure string `json:"actionOnFailure" tf:"action_on_failure"`
+	// +kubebuilder:validation:MaxItems=1
+	HadoopJarStep []EmrClusterSpecStepHadoopJarStep `json:"hadoopJarStep" tf:"hadoop_jar_step"`
+	Name          string                            `json:"name" tf:"name"`
 }
 
 type EmrClusterSpec struct {
@@ -70,6 +159,15 @@ type EmrClusterSpec struct {
 	// +optional
 	ConfigurationsJSON string `json:"configurationsJSON,omitempty" tf:"configurations_json,omitempty"`
 	// +optional
+	// Deprecated
+	CoreInstanceCount int `json:"coreInstanceCount,omitempty" tf:"core_instance_count,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	CoreInstanceGroup []EmrClusterSpecCoreInstanceGroup `json:"coreInstanceGroup,omitempty" tf:"core_instance_group,omitempty"`
+	// +optional
+	// Deprecated
+	CoreInstanceType string `json:"coreInstanceType,omitempty" tf:"core_instance_type,omitempty"`
+	// +optional
 	CustomAmiID string `json:"customAmiID,omitempty" tf:"custom_ami_id,omitempty"`
 	// +optional
 	EbsRootVolumeSize int `json:"ebsRootVolumeSize,omitempty" tf:"ebs_root_volume_size,omitempty"`
@@ -77,17 +175,35 @@ type EmrClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Ec2Attributes []EmrClusterSpecEc2Attributes `json:"ec2Attributes,omitempty" tf:"ec2_attributes,omitempty"`
 	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	// Deprecated
+	InstanceGroup []EmrClusterSpecInstanceGroup `json:"instanceGroup,omitempty" tf:"instance_group,omitempty"`
+	// +optional
+	KeepJobFlowAliveWhenNoSteps bool `json:"keepJobFlowAliveWhenNoSteps,omitempty" tf:"keep_job_flow_alive_when_no_steps,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	KerberosAttributes []EmrClusterSpecKerberosAttributes `json:"kerberosAttributes,omitempty" tf:"kerberos_attributes,omitempty"`
 	// +optional
-	LogURI       string `json:"logURI,omitempty" tf:"log_uri,omitempty"`
-	Name         string `json:"name" tf:"name"`
-	ReleaseLabel string `json:"releaseLabel" tf:"release_label"`
+	LogURI string `json:"logURI,omitempty" tf:"log_uri,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	MasterInstanceGroup []EmrClusterSpecMasterInstanceGroup `json:"masterInstanceGroup,omitempty" tf:"master_instance_group,omitempty"`
+	// +optional
+	// Deprecated
+	MasterInstanceType string `json:"masterInstanceType,omitempty" tf:"master_instance_type,omitempty"`
+	Name               string `json:"name" tf:"name"`
+	ReleaseLabel       string `json:"releaseLabel" tf:"release_label"`
+	// +optional
+	ScaleDownBehavior string `json:"scaleDownBehavior,omitempty" tf:"scale_down_behavior,omitempty"`
 	// +optional
 	SecurityConfiguration string `json:"securityConfiguration,omitempty" tf:"security_configuration,omitempty"`
 	ServiceRole           string `json:"serviceRole" tf:"service_role"`
 	// +optional
+	Step []EmrClusterSpecStep `json:"step,omitempty" tf:"step,omitempty"`
+	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	TerminationProtection bool `json:"terminationProtection,omitempty" tf:"termination_protection,omitempty"`
 	// +optional
 	VisibleToAllUsers bool                      `json:"visibleToAllUsers,omitempty" tf:"visible_to_all_users,omitempty"`
 	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -98,7 +214,7 @@ type EmrClusterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

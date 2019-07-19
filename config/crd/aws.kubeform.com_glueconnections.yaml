@@ -397,9 +397,16 @@ spec:
           type: object
         spec:
           properties:
+            catalogID:
+              type: string
             connectionProperties:
-              additionalProperties:
-                type: string
+              description: Sensitive Data. Provide secret name which contains one
+                or more values
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
               type: object
             connectionType:
               type: string
@@ -449,8 +456,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

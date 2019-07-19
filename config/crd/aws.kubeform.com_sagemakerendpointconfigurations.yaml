@@ -399,6 +399,8 @@ spec:
           properties:
             kmsKeyArn:
               type: string
+            name:
+              type: string
             productionVariants:
               items:
                 properties:
@@ -412,6 +414,8 @@ spec:
                   instanceType:
                     type: string
                   modelName:
+                    type: string
+                  variantName:
                     type: string
                 required:
                 - initialInstanceCount
@@ -446,8 +450,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

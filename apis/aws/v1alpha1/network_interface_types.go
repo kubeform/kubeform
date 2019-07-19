@@ -18,9 +18,27 @@ type NetworkInterface struct {
 	Status            NetworkInterfaceStatus `json:"status,omitempty"`
 }
 
+type NetworkInterfaceSpecAttachment struct {
+	DeviceIndex int    `json:"deviceIndex" tf:"device_index"`
+	Instance    string `json:"instance" tf:"instance"`
+}
+
 type NetworkInterfaceSpec struct {
 	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	Attachment []NetworkInterfaceSpecAttachment `json:"attachment,omitempty" tf:"attachment,omitempty"`
+	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	PrivateIP string `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	PrivateIPS []string `json:"privateIPS,omitempty" tf:"private_ips,omitempty"`
+	// +optional
+	PrivateIPSCount int `json:"privateIPSCount,omitempty" tf:"private_ips_count,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
 	SourceDestCheck bool   `json:"sourceDestCheck,omitempty" tf:"source_dest_check,omitempty"`
 	SubnetID        string `json:"subnetID" tf:"subnet_id"`
@@ -34,7 +52,7 @@ type NetworkInterfaceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

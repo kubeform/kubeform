@@ -19,12 +19,14 @@ type ApiManagementLogger struct {
 }
 
 type ApiManagementLoggerSpecApplicationInsights struct {
-	InstrumentationKey string `json:"instrumentationKey" tf:"instrumentation_key"`
+	// Sensitive Data. Provide secret name which contains one value only
+	InstrumentationKey core.LocalObjectReference `json:"instrumentationKey" tf:"instrumentation_key"`
 }
 
 type ApiManagementLoggerSpecEventhub struct {
-	ConnectionString string `json:"connectionString" tf:"connection_string"`
-	Name             string `json:"name" tf:"name"`
+	// Sensitive Data. Provide secret name which contains one value only
+	ConnectionString core.LocalObjectReference `json:"connectionString" tf:"connection_string"`
+	Name             string                    `json:"name" tf:"name"`
 }
 
 type ApiManagementLoggerSpec struct {
@@ -49,7 +51,7 @@ type ApiManagementLoggerStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

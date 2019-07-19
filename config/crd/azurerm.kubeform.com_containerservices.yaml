@@ -486,7 +486,14 @@ spec:
                   clientID:
                     type: string
                   clientSecret:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                 required:
                 - clientID
                 - clientSecret
@@ -494,6 +501,10 @@ spec:
               maxItems: 1
               type: array
               uniqueItems: true
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - agentPoolProfile
           - diagnosticsProfile
@@ -515,8 +526,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -399,6 +399,17 @@ spec:
           properties:
             awsKmsKeyArn:
               type: string
+            contentConfig:
+              items:
+                properties:
+                  bucket:
+                    type: string
+                  storageClass:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+              uniqueItems: true
             contentConfigPermissions:
               items:
                 properties:
@@ -415,6 +426,8 @@ spec:
               uniqueItems: true
             inputBucket:
               type: string
+            name:
+              type: string
             notifications:
               items:
                 properties:
@@ -430,6 +443,8 @@ spec:
               maxItems: 1
               type: array
               uniqueItems: true
+            outputBucket:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -441,6 +456,17 @@ spec:
               type: object
             role:
               type: string
+            thumbnailConfig:
+              items:
+                properties:
+                  bucket:
+                    type: string
+                  storageClass:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+              uniqueItems: true
             thumbnailConfigPermissions:
               items:
                 properties:
@@ -470,8 +496,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

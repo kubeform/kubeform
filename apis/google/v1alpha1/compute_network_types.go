@@ -25,8 +25,12 @@ type ComputeNetworkSpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	// Deprecated
-	Ipv4Range   string                    `json:"ipv4Range,omitempty" tf:"ipv4_range,omitempty"`
-	Name        string                    `json:"name" tf:"name"`
+	Ipv4Range string `json:"ipv4Range,omitempty" tf:"ipv4_range,omitempty"`
+	Name      string `json:"name" tf:"name"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	RoutingMode string                    `json:"routingMode,omitempty" tf:"routing_mode,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -35,7 +39,7 @@ type ComputeNetworkStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

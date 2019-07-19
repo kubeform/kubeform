@@ -20,11 +20,21 @@ type DocdbClusterInstance struct {
 
 type DocdbClusterInstanceSpec struct {
 	// +optional
-	AutoMinorVersionUpgrade bool   `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
-	ClusterIdentifier       string `json:"clusterIdentifier" tf:"cluster_identifier"`
+	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
 	// +optional
-	Engine        string `json:"engine,omitempty" tf:"engine,omitempty"`
-	InstanceClass string `json:"instanceClass" tf:"instance_class"`
+	AutoMinorVersionUpgrade bool `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
+	// +optional
+	AvailabilityZone  string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+	ClusterIdentifier string `json:"clusterIdentifier" tf:"cluster_identifier"`
+	// +optional
+	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
+	// +optional
+	Identifier string `json:"identifier,omitempty" tf:"identifier,omitempty"`
+	// +optional
+	IdentifierPrefix string `json:"identifierPrefix,omitempty" tf:"identifier_prefix,omitempty"`
+	InstanceClass    string `json:"instanceClass" tf:"instance_class"`
+	// +optional
+	PreferredMaintenanceWindow string `json:"preferredMaintenanceWindow,omitempty" tf:"preferred_maintenance_window,omitempty"`
 	// +optional
 	PromotionTier int `json:"promotionTier,omitempty" tf:"promotion_tier,omitempty"`
 	// +optional
@@ -37,7 +47,7 @@ type DocdbClusterInstanceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

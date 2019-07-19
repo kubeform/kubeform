@@ -73,6 +73,8 @@ type RecoveryServicesProtectionPolicyVmSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	RetentionYearly []RecoveryServicesProtectionPolicyVmSpecRetentionYearly `json:"retentionYearly,omitempty" tf:"retention_yearly,omitempty"`
 	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
 	Timezone    string                    `json:"timezone,omitempty" tf:"timezone,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
@@ -82,7 +84,7 @@ type RecoveryServicesProtectionPolicyVmStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

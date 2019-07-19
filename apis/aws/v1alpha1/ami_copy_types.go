@@ -18,11 +18,23 @@ type AmiCopy struct {
 	Status            AmiCopyStatus `json:"status,omitempty"`
 }
 
+type AmiCopySpecEbsBlockDevice struct{}
+
+type AmiCopySpecEphemeralBlockDevice struct{}
+
 type AmiCopySpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	Encrypted       bool   `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
+	// +kubebuilder:validation:UniqueItems=true
+	EbsBlockDevice []AmiCopySpecEbsBlockDevice `json:"ebsBlockDevice,omitempty" tf:"ebs_block_device,omitempty"`
+	// +optional
+	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	EphemeralBlockDevice []AmiCopySpecEphemeralBlockDevice `json:"ephemeralBlockDevice,omitempty" tf:"ephemeral_block_device,omitempty"`
+	// +optional
+	KmsKeyID        string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	Name            string `json:"name" tf:"name"`
 	SourceAmiID     string `json:"sourceAmiID" tf:"source_ami_id"`
 	SourceAmiRegion string `json:"sourceAmiRegion" tf:"source_ami_region"`
@@ -36,7 +48,7 @@ type AmiCopyStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

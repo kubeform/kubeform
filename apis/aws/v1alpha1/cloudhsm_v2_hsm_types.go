@@ -19,7 +19,13 @@ type CloudhsmV2Hsm struct {
 }
 
 type CloudhsmV2HsmSpec struct {
-	ClusterID   string                    `json:"clusterID" tf:"cluster_id"`
+	// +optional
+	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+	ClusterID        string `json:"clusterID" tf:"cluster_id"`
+	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+	// +optional
+	SubnetID    string                    `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -28,7 +34,7 @@ type CloudhsmV2HsmStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

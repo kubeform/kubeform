@@ -397,9 +397,22 @@ spec:
           type: object
         spec:
           properties:
+            applyImmediately:
+              type: boolean
+            availabilityZones:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             backupRetentionPeriod:
               type: integer
+            clusterIdentifier:
+              type: string
+            clusterIdentifierPrefix:
+              type: string
             engine:
+              type: string
+            engineVersion:
               type: string
             finalSnapshotIdentifier:
               type: string
@@ -410,10 +423,18 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            kmsKeyArn:
+              type: string
             neptuneClusterParameterGroupName:
+              type: string
+            neptuneSubnetGroupName:
               type: string
             port:
               type: integer
+            preferredBackupWindow:
+              type: string
+            preferredMaintenanceWindow:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -435,6 +456,11 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            vpcSecurityGroupIDS:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
           required:
           - providerRef
           type: object
@@ -448,8 +474,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

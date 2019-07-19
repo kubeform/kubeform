@@ -58,6 +58,8 @@ type CloudbuildTriggerSpec struct {
 	// +optional
 	Filename string `json:"filename,omitempty" tf:"filename,omitempty"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
 	Substitutions map[string]string `json:"substitutions,omitempty" tf:"substitutions,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -70,7 +72,7 @@ type CloudbuildTriggerStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

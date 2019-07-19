@@ -397,6 +397,9 @@ spec:
           type: object
         spec:
           properties:
+            allocatedCapacity:
+              description: Deprecated
+              type: integer
             command:
               items:
                 properties:
@@ -418,6 +421,17 @@ spec:
                 type: string
               type: object
             description:
+              type: string
+            executionProperty:
+              items:
+                properties:
+                  maxConcurrentRuns:
+                    type: integer
+                type: object
+              maxItems: 1
+              type: array
+            maxCapacity:
+              description: A Number represents a JSON number literal.
               type: string
             maxRetries:
               type: integer
@@ -454,8 +468,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

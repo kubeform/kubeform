@@ -19,9 +19,11 @@ type KeyVaultCertificate struct {
 }
 
 type KeyVaultCertificateSpecCertificate struct {
-	Contents string `json:"contents" tf:"contents"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Contents core.LocalObjectReference `json:"contents" tf:"contents"`
 	// +optional
-	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 }
 
 type KeyVaultCertificateSpecCertificatePolicyIssuerParameters struct {
@@ -57,6 +59,26 @@ type KeyVaultCertificateSpecCertificatePolicySecretProperties struct {
 	ContentType string `json:"contentType" tf:"content_type"`
 }
 
+type KeyVaultCertificateSpecCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames struct {
+	// +optional
+	DnsNames []string `json:"dnsNames,omitempty" tf:"dns_names,omitempty"`
+	// +optional
+	Emails []string `json:"emails,omitempty" tf:"emails,omitempty"`
+	// +optional
+	Upns []string `json:"upns,omitempty" tf:"upns,omitempty"`
+}
+
+type KeyVaultCertificateSpecCertificatePolicyX509CertificateProperties struct {
+	// +optional
+	ExtendedKeyUsage []string `json:"extendedKeyUsage,omitempty" tf:"extended_key_usage,omitempty"`
+	KeyUsage         []string `json:"keyUsage" tf:"key_usage"`
+	Subject          string   `json:"subject" tf:"subject"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	SubjectAlternativeNames []KeyVaultCertificateSpecCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames `json:"subjectAlternativeNames,omitempty" tf:"subject_alternative_names,omitempty"`
+	ValidityInMonths        int                                                                                        `json:"validityInMonths" tf:"validity_in_months"`
+}
+
 type KeyVaultCertificateSpecCertificatePolicy struct {
 	// +kubebuilder:validation:MaxItems=1
 	IssuerParameters []KeyVaultCertificateSpecCertificatePolicyIssuerParameters `json:"issuerParameters" tf:"issuer_parameters"`
@@ -66,6 +88,9 @@ type KeyVaultCertificateSpecCertificatePolicy struct {
 	LifetimeAction []KeyVaultCertificateSpecCertificatePolicyLifetimeAction `json:"lifetimeAction,omitempty" tf:"lifetime_action,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	SecretProperties []KeyVaultCertificateSpecCertificatePolicySecretProperties `json:"secretProperties" tf:"secret_properties"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	X509CertificateProperties []KeyVaultCertificateSpecCertificatePolicyX509CertificateProperties `json:"x509CertificateProperties,omitempty" tf:"x509_certificate_properties,omitempty"`
 }
 
 type KeyVaultCertificateSpec struct {
@@ -74,8 +99,15 @@ type KeyVaultCertificateSpec struct {
 	Certificate []KeyVaultCertificateSpecCertificate `json:"certificate,omitempty" tf:"certificate,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	CertificatePolicy []KeyVaultCertificateSpecCertificatePolicy `json:"certificatePolicy" tf:"certificate_policy"`
-	Name              string                                     `json:"name" tf:"name"`
-	ProviderRef       core.LocalObjectReference                  `json:"providerRef" tf:"-"`
+	// +optional
+	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
+	Name       string `json:"name" tf:"name"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	// Deprecated
+	VaultURI    string                    `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type KeyVaultCertificateStatus struct {
@@ -83,7 +115,7 @@ type KeyVaultCertificateStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

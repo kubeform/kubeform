@@ -397,6 +397,51 @@ spec:
           type: object
         spec:
           properties:
+            additionalZones:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            addonsConfig:
+              items:
+                properties:
+                  horizontalPodAutoscaling:
+                    items:
+                      properties:
+                        disabled:
+                          type: boolean
+                      type: object
+                    maxItems: 1
+                    type: array
+                  httpLoadBalancing:
+                    items:
+                      properties:
+                        disabled:
+                          type: boolean
+                      type: object
+                    maxItems: 1
+                    type: array
+                  kubernetesDashboard:
+                    items:
+                      properties:
+                        disabled:
+                          type: boolean
+                      type: object
+                    maxItems: 1
+                    type: array
+                  networkPolicyConfig:
+                    items:
+                      properties:
+                        disabled:
+                          type: boolean
+                      type: object
+                    maxItems: 1
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
+            clusterIpv4CIDR:
+              type: string
             description:
               type: string
             enableBinaryAuthorization:
@@ -414,13 +459,23 @@ spec:
             ipAllocationPolicy:
               items:
                 properties:
+                  clusterIpv4CIDRBlock:
+                    type: string
+                  clusterSecondaryRangeName:
+                    type: string
                   createSubnetwork:
                     type: boolean
+                  servicesIpv4CIDRBlock:
+                    type: string
+                  servicesSecondaryRangeName:
+                    type: string
                   subnetworkName:
                     type: string
                 type: object
               maxItems: 1
               type: array
+            loggingService:
+              type: string
             maintenancePolicy:
               items:
                 properties:
@@ -439,16 +494,275 @@ spec:
                 type: object
               maxItems: 1
               type: array
-            masterAuthorizedNetworksConfig:
+            masterAuth:
               items:
+                properties:
+                  clientCertificateConfig:
+                    items:
+                      properties:
+                        issueClientCertificate:
+                          type: boolean
+                      required:
+                      - issueClientCertificate
+                      type: object
+                    maxItems: 1
+                    type: array
+                  password:
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
+                  username:
+                    type: string
+                required:
+                - password
+                - username
                 type: object
               maxItems: 1
               type: array
+            masterAuthorizedNetworksConfig:
+              items:
+                properties:
+                  cidrBlocks:
+                    items:
+                      properties:
+                        cidrBlock:
+                          type: string
+                        displayName:
+                          type: string
+                      required:
+                      - cidrBlock
+                      type: object
+                    maxItems: 20
+                    type: array
+                    uniqueItems: true
+                type: object
+              maxItems: 1
+              type: array
+            masterIpv4CIDRBlock:
+              description: Deprecated
+              type: string
             minMasterVersion:
+              type: string
+            monitoringService:
               type: string
             name:
               type: string
             network:
+              type: string
+            networkPolicy:
+              items:
+                properties:
+                  enabled:
+                    type: boolean
+                  provider:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+            nodeConfig:
+              items:
+                properties:
+                  diskSizeGb:
+                    type: integer
+                  diskType:
+                    type: string
+                  guestAccelerator:
+                    items:
+                      properties:
+                        count:
+                          type: integer
+                        type:
+                          type: string
+                      required:
+                      - count
+                      - type
+                      type: object
+                    type: array
+                  imageType:
+                    type: string
+                  labels:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  localSsdCount:
+                    type: integer
+                  machineType:
+                    type: string
+                  metadata:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  minCPUPlatform:
+                    type: string
+                  oauthScopes:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                  preemptible:
+                    type: boolean
+                  serviceAccount:
+                    type: string
+                  tags:
+                    items:
+                      type: string
+                    type: array
+                  taint:
+                    description: Deprecated
+                    items:
+                      properties:
+                        effect:
+                          type: string
+                        key:
+                          type: string
+                        value:
+                          type: string
+                      required:
+                      - effect
+                      - key
+                      - value
+                      type: object
+                    type: array
+                  workloadMetadataConfig:
+                    description: Deprecated
+                    items:
+                      properties:
+                        nodeMetadata:
+                          type: string
+                      required:
+                      - nodeMetadata
+                      type: object
+                    maxItems: 1
+                    type: array
+                type: object
+              maxItems: 1
+              type: array
+            nodePool:
+              items:
+                properties:
+                  autoscaling:
+                    items:
+                      properties:
+                        maxNodeCount:
+                          type: integer
+                        minNodeCount:
+                          type: integer
+                      required:
+                      - maxNodeCount
+                      - minNodeCount
+                      type: object
+                    maxItems: 1
+                    type: array
+                  initialNodeCount:
+                    type: integer
+                  management:
+                    items:
+                      properties:
+                        autoRepair:
+                          type: boolean
+                        autoUpgrade:
+                          type: boolean
+                      type: object
+                    maxItems: 1
+                    type: array
+                  maxPodsPerNode:
+                    description: Deprecated
+                    type: integer
+                  name:
+                    type: string
+                  namePrefix:
+                    description: Deprecated
+                    type: string
+                  nodeConfig:
+                    items:
+                      properties:
+                        diskSizeGb:
+                          type: integer
+                        diskType:
+                          type: string
+                        guestAccelerator:
+                          items:
+                            properties:
+                              count:
+                                type: integer
+                              type:
+                                type: string
+                            required:
+                            - count
+                            - type
+                            type: object
+                          type: array
+                        imageType:
+                          type: string
+                        labels:
+                          additionalProperties:
+                            type: string
+                          type: object
+                        localSsdCount:
+                          type: integer
+                        machineType:
+                          type: string
+                        metadata:
+                          additionalProperties:
+                            type: string
+                          type: object
+                        minCPUPlatform:
+                          type: string
+                        oauthScopes:
+                          items:
+                            type: string
+                          type: array
+                          uniqueItems: true
+                        preemptible:
+                          type: boolean
+                        serviceAccount:
+                          type: string
+                        tags:
+                          items:
+                            type: string
+                          type: array
+                        taint:
+                          description: Deprecated
+                          items:
+                            properties:
+                              effect:
+                                type: string
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                            - effect
+                            - key
+                            - value
+                            type: object
+                          type: array
+                        workloadMetadataConfig:
+                          description: Deprecated
+                          items:
+                            properties:
+                              nodeMetadata:
+                                type: string
+                            required:
+                            - nodeMetadata
+                            type: object
+                          maxItems: 1
+                          type: array
+                      type: object
+                    maxItems: 1
+                    type: array
+                  nodeCount:
+                    type: integer
+                  version:
+                    type: string
+                type: object
+              type: array
+            nodeVersion:
               type: string
             podSecurityPolicyConfig:
               description: Deprecated
@@ -461,6 +775,23 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            privateCluster:
+              description: Deprecated
+              type: boolean
+            privateClusterConfig:
+              items:
+                properties:
+                  enablePrivateEndpoint:
+                    type: boolean
+                  enablePrivateNodes:
+                    type: boolean
+                  masterIpv4CIDRBlock:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+            project:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -470,12 +801,18 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            region:
+              type: string
             removeDefaultNodePool:
               type: boolean
             resourceLabels:
               additionalProperties:
                 type: string
               type: object
+            subnetwork:
+              type: string
+            zone:
+              type: string
           required:
           - name
           - providerRef
@@ -490,8 +827,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

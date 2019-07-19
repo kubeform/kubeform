@@ -416,6 +416,12 @@ spec:
               type: object
             roleArn:
               type: string
+            securityGroups:
+              items:
+                type: string
+              minItems: 1
+              type: array
+              uniqueItems: true
             subnetID:
               type: string
             tags:
@@ -438,8 +444,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

@@ -30,6 +30,8 @@ type LbProbeSpec struct {
 	NumberOfProbes int `json:"numberOfProbes,omitempty" tf:"number_of_probes,omitempty"`
 	Port           int `json:"port" tf:"port"`
 	// +optional
+	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
+	// +optional
 	RequestPath       string                    `json:"requestPath,omitempty" tf:"request_path,omitempty"`
 	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -40,7 +42,7 @@ type LbProbeStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

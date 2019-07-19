@@ -408,6 +408,21 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            recordingGroup:
+              items:
+                properties:
+                  allSupported:
+                    type: boolean
+                  includeGlobalResourceTypes:
+                    type: boolean
+                  resourceTypes:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
+                type: object
+              maxItems: 1
+              type: array
             roleArn:
               type: string
           required:
@@ -424,8 +439,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

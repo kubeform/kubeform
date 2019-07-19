@@ -434,6 +434,25 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            subnet:
+              items:
+                properties:
+                  addressPrefix:
+                    type: string
+                  name:
+                    type: string
+                  securityGroup:
+                    type: string
+                required:
+                - addressPrefix
+                - name
+                type: object
+              type: array
+              uniqueItems: true
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - addressSpace
           - location
@@ -451,8 +470,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

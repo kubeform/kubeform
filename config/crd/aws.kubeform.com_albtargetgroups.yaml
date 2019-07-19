@@ -399,8 +399,34 @@ spec:
           properties:
             deregistrationDelay:
               type: integer
+            healthCheck:
+              items:
+                properties:
+                  enabled:
+                    type: boolean
+                  healthyThreshold:
+                    type: integer
+                  interval:
+                    type: integer
+                  matcher:
+                    type: string
+                  path:
+                    type: string
+                  port:
+                    type: string
+                  protocol:
+                    type: string
+                  timeout:
+                    type: integer
+                  unhealthyThreshold:
+                    type: integer
+                type: object
+              maxItems: 1
+              type: array
             lambdaMultiValueHeadersEnabled:
               type: boolean
+            name:
+              type: string
             namePrefix:
               type: string
             port:
@@ -420,6 +446,20 @@ spec:
               type: boolean
             slowStart:
               type: integer
+            stickiness:
+              items:
+                properties:
+                  cookieDuration:
+                    type: integer
+                  enabled:
+                    type: boolean
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              maxItems: 1
+              type: array
             tags:
               additionalProperties:
                 type: string
@@ -441,8 +481,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

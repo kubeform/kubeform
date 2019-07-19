@@ -397,7 +397,19 @@ spec:
           type: object
         spec:
           properties:
+            authDomain:
+              type: string
+            featureSettings:
+              items:
+                properties:
+                  splitHealthChecks:
+                    type: boolean
+                type: object
+              maxItems: 1
+              type: array
             locationID:
+              type: string
+            project:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -408,6 +420,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            servingStatus:
+              type: string
           required:
           - locationID
           - providerRef
@@ -422,8 +436,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

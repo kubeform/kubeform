@@ -18,9 +18,23 @@ type AppEngineApplication struct {
 	Status            AppEngineApplicationStatus `json:"status,omitempty"`
 }
 
+type AppEngineApplicationSpecFeatureSettings struct {
+	// +optional
+	SplitHealthChecks bool `json:"splitHealthChecks,omitempty" tf:"split_health_checks,omitempty"`
+}
+
 type AppEngineApplicationSpec struct {
-	LocationID  string                    `json:"locationID" tf:"location_id"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +optional
+	AuthDomain string `json:"authDomain,omitempty" tf:"auth_domain,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	FeatureSettings []AppEngineApplicationSpecFeatureSettings `json:"featureSettings,omitempty" tf:"feature_settings,omitempty"`
+	LocationID      string                                    `json:"locationID" tf:"location_id"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	ServingStatus string                    `json:"servingStatus,omitempty" tf:"serving_status,omitempty"`
+	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type AppEngineApplicationStatus struct {
@@ -28,7 +42,7 @@ type AppEngineApplicationStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -24,7 +24,12 @@ type FlowLogSpec struct {
 	// +optional
 	IamRoleArn string `json:"iamRoleArn,omitempty" tf:"iam_role_arn,omitempty"`
 	// +optional
+	LogDestination string `json:"logDestination,omitempty" tf:"log_destination,omitempty"`
+	// +optional
 	LogDestinationType string `json:"logDestinationType,omitempty" tf:"log_destination_type,omitempty"`
+	// +optional
+	// Deprecated
+	LogGroupName string `json:"logGroupName,omitempty" tf:"log_group_name,omitempty"`
 	// +optional
 	SubnetID    string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
 	TrafficType string `json:"trafficType" tf:"traffic_type"`
@@ -38,7 +43,7 @@ type FlowLogStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

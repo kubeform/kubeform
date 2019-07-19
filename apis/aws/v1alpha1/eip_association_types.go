@@ -20,8 +20,18 @@ type EipAssociation struct {
 
 type EipAssociationSpec struct {
 	// +optional
-	AllowReassociation bool                      `json:"allowReassociation,omitempty" tf:"allow_reassociation,omitempty"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AllocationID string `json:"allocationID,omitempty" tf:"allocation_id,omitempty"`
+	// +optional
+	AllowReassociation bool `json:"allowReassociation,omitempty" tf:"allow_reassociation,omitempty"`
+	// +optional
+	InstanceID string `json:"instanceID,omitempty" tf:"instance_id,omitempty"`
+	// +optional
+	NetworkInterfaceID string `json:"networkInterfaceID,omitempty" tf:"network_interface_id,omitempty"`
+	// +optional
+	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
+	// +optional
+	PublicIP    string                    `json:"publicIP,omitempty" tf:"public_ip,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type EipAssociationStatus struct {
@@ -29,7 +39,7 @@ type EipAssociationStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

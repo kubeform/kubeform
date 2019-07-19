@@ -397,15 +397,23 @@ spec:
           type: object
         spec:
           properties:
+            alternativeLocationID:
+              type: string
+            authorizedNetwork:
+              type: string
             displayName:
               type: string
             labels:
               additionalProperties:
                 type: string
               type: object
+            locationID:
+              type: string
             memorySizeGb:
               type: integer
             name:
+              type: string
+            project:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -420,6 +428,12 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            redisVersion:
+              type: string
+            region:
+              type: string
+            reservedIPRange:
+              type: string
             tier:
               type: string
           required:
@@ -437,8 +451,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

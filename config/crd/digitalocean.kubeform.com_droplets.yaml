@@ -436,6 +436,11 @@ spec:
               uniqueItems: true
             userData:
               type: string
+            volumeIDS:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
           required:
           - image
           - name
@@ -453,8 +458,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

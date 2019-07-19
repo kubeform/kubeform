@@ -19,7 +19,25 @@ type NodebalancerConfig struct {
 }
 
 type NodebalancerConfigSpec struct {
-	NodebalancerID int `json:"nodebalancerID" tf:"nodebalancer_id"`
+	// +optional
+	Algorithm string `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
+	// +optional
+	Check string `json:"check,omitempty" tf:"check,omitempty"`
+	// +optional
+	CheckAttempts int `json:"checkAttempts,omitempty" tf:"check_attempts,omitempty"`
+	// +optional
+	CheckBody string `json:"checkBody,omitempty" tf:"check_body,omitempty"`
+	// +optional
+	CheckInterval int `json:"checkInterval,omitempty" tf:"check_interval,omitempty"`
+	// +optional
+	CheckPassive bool `json:"checkPassive,omitempty" tf:"check_passive,omitempty"`
+	// +optional
+	CheckPath string `json:"checkPath,omitempty" tf:"check_path,omitempty"`
+	// +optional
+	CheckTimeout int `json:"checkTimeout,omitempty" tf:"check_timeout,omitempty"`
+	// +optional
+	CipherSuite    string `json:"cipherSuite,omitempty" tf:"cipher_suite,omitempty"`
+	NodebalancerID int    `json:"nodebalancerID" tf:"nodebalancer_id"`
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
@@ -27,7 +45,10 @@ type NodebalancerConfigSpec struct {
 	// +optional
 	SslCert string `json:"sslCert,omitempty" tf:"ssl_cert,omitempty"`
 	// +optional
-	SslKey      string                    `json:"sslKey,omitempty" tf:"ssl_key,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	SslKey core.LocalObjectReference `json:"sslKey,omitempty" tf:"ssl_key,omitempty"`
+	// +optional
+	Stickiness  string                    `json:"stickiness,omitempty" tf:"stickiness,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -36,7 +57,7 @@ type NodebalancerConfigStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

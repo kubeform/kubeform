@@ -18,9 +18,35 @@ type VpcPeeringConnectionOptions struct {
 	Status            VpcPeeringConnectionOptionsStatus `json:"status,omitempty"`
 }
 
+type VpcPeeringConnectionOptionsSpecAccepter struct {
+	// +optional
+	AllowClassicLinkToRemoteVpc bool `json:"allowClassicLinkToRemoteVpc,omitempty" tf:"allow_classic_link_to_remote_vpc,omitempty"`
+	// +optional
+	AllowRemoteVpcDNSResolution bool `json:"allowRemoteVpcDNSResolution,omitempty" tf:"allow_remote_vpc_dns_resolution,omitempty"`
+	// +optional
+	AllowVpcToRemoteClassicLink bool `json:"allowVpcToRemoteClassicLink,omitempty" tf:"allow_vpc_to_remote_classic_link,omitempty"`
+}
+
+type VpcPeeringConnectionOptionsSpecRequester struct {
+	// +optional
+	AllowClassicLinkToRemoteVpc bool `json:"allowClassicLinkToRemoteVpc,omitempty" tf:"allow_classic_link_to_remote_vpc,omitempty"`
+	// +optional
+	AllowRemoteVpcDNSResolution bool `json:"allowRemoteVpcDNSResolution,omitempty" tf:"allow_remote_vpc_dns_resolution,omitempty"`
+	// +optional
+	AllowVpcToRemoteClassicLink bool `json:"allowVpcToRemoteClassicLink,omitempty" tf:"allow_vpc_to_remote_classic_link,omitempty"`
+}
+
 type VpcPeeringConnectionOptionsSpec struct {
-	VpcPeeringConnectionID string                    `json:"vpcPeeringConnectionID" tf:"vpc_peering_connection_id"`
-	ProviderRef            core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	Accepter []VpcPeeringConnectionOptionsSpecAccepter `json:"accepter,omitempty" tf:"accepter,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// +kubebuilder:validation:UniqueItems=true
+	Requester              []VpcPeeringConnectionOptionsSpecRequester `json:"requester,omitempty" tf:"requester,omitempty"`
+	VpcPeeringConnectionID string                                     `json:"vpcPeeringConnectionID" tf:"vpc_peering_connection_id"`
+	ProviderRef            core.LocalObjectReference                  `json:"providerRef" tf:"-"`
 }
 
 type VpcPeeringConnectionOptionsStatus struct {
@@ -28,7 +54,7 @@ type VpcPeeringConnectionOptionsStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

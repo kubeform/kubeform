@@ -31,11 +31,15 @@ type StorageBucketObjectSpec struct {
 	// +optional
 	ContentLanguage string `json:"contentLanguage,omitempty" tf:"content_language,omitempty"`
 	// +optional
+	ContentType string `json:"contentType,omitempty" tf:"content_type,omitempty"`
+	// +optional
 	DetectMd5hash string `json:"detectMd5hash,omitempty" tf:"detect_md5hash,omitempty"`
 	Name          string `json:"name" tf:"name"`
 	// +optional
-	Source      string                    `json:"source,omitempty" tf:"source,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Source string `json:"source,omitempty" tf:"source,omitempty"`
+	// +optional
+	StorageClass string                    `json:"storageClass,omitempty" tf:"storage_class,omitempty"`
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type StorageBucketObjectStatus struct {
@@ -43,7 +47,7 @@ type StorageBucketObjectStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

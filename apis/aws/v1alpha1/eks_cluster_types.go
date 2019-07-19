@@ -37,6 +37,8 @@ type EksClusterSpec struct {
 	EnabledClusterLogTypes []string `json:"enabledClusterLogTypes,omitempty" tf:"enabled_cluster_log_types,omitempty"`
 	Name                   string   `json:"name" tf:"name"`
 	RoleArn                string   `json:"roleArn" tf:"role_arn"`
+	// +optional
+	Version string `json:"version,omitempty" tf:"version,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	VpcConfig   []EksClusterSpecVpcConfig `json:"vpcConfig" tf:"vpc_config"`
@@ -48,7 +50,7 @@ type EksClusterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

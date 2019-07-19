@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            backendAddressPoolID:
+              type: string
             backendPort:
               type: integer
             disableOutboundSnat:
@@ -407,12 +409,18 @@ spec:
               type: string
             frontendPort:
               type: integer
+            idleTimeoutInMinutes:
+              type: integer
+            loadDistribution:
+              type: string
             loadbalancerID:
               type: string
             location:
               description: Deprecated
               type: string
             name:
+              type: string
+            probeID:
               type: string
             protocol:
               type: string
@@ -447,8 +455,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

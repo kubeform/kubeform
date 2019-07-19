@@ -408,6 +408,8 @@ spec:
                     type: integer
                   bgpPeeringAddress:
                     type: string
+                  peerWeight:
+                    type: integer
                 required:
                 - asn
                 - bgpPeeringAddress
@@ -431,6 +433,10 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
           required:
           - addressSpace
           - gatewayAddress
@@ -449,8 +455,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

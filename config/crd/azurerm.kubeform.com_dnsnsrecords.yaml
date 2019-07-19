@@ -408,8 +408,27 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            record:
+              description: Deprecated
+              items:
+                properties:
+                  nsdname:
+                    type: string
+                required:
+                - nsdname
+                type: object
+              type: array
+              uniqueItems: true
+            records:
+              items:
+                type: string
+              type: array
             resourceGroupName:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             ttl:
               type: integer
             zoneName:
@@ -431,8 +450,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

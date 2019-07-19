@@ -424,7 +424,27 @@ spec:
                 - pubsubTopicName
                 type: object
               type: object
+            httpConfig:
+              additionalProperties:
+                properties:
+                  httpEnabledState:
+                    type: string
+                required:
+                - httpEnabledState
+                type: object
+              type: object
+            mqttConfig:
+              additionalProperties:
+                properties:
+                  mqttEnabledState:
+                    type: string
+                required:
+                - mqttEnabledState
+                type: object
+              type: object
             name:
+              type: string
+            project:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -435,6 +455,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            region:
+              type: string
             stateNotificationConfig:
               additionalProperties:
                 properties:
@@ -458,8 +480,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

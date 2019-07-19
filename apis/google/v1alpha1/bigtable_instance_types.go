@@ -25,6 +25,8 @@ type BigtableInstanceSpecCluster struct {
 	NumNodes int `json:"numNodes,omitempty" tf:"num_nodes,omitempty"`
 	// +optional
 	StorageType string `json:"storageType,omitempty" tf:"storage_type,omitempty"`
+	// +optional
+	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type BigtableInstanceSpec struct {
@@ -36,14 +38,21 @@ type BigtableInstanceSpec struct {
 	// Deprecated
 	ClusterID string `json:"clusterID,omitempty" tf:"cluster_id,omitempty"`
 	// +optional
+	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+	// +optional
 	InstanceType string `json:"instanceType,omitempty" tf:"instance_type,omitempty"`
 	Name         string `json:"name" tf:"name"`
 	// +optional
 	// Deprecated
 	NumNodes int `json:"numNodes,omitempty" tf:"num_nodes,omitempty"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
 	// Deprecated
-	StorageType string                    `json:"storageType,omitempty" tf:"storage_type,omitempty"`
+	StorageType string `json:"storageType,omitempty" tf:"storage_type,omitempty"`
+	// +optional
+	// Deprecated
+	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -52,7 +61,7 @@ type BigtableInstanceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

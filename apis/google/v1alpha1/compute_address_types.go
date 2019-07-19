@@ -20,13 +20,23 @@ type ComputeAddress struct {
 
 type ComputeAddressSpec struct {
 	// +optional
+	Address string `json:"address,omitempty" tf:"address,omitempty"`
+	// +optional
 	AddressType string `json:"addressType,omitempty" tf:"address_type,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	// Deprecated
-	Labels      map[string]string         `json:"labels,omitempty" tf:"labels,omitempty"`
-	Name        string                    `json:"name" tf:"name"`
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	Name   string            `json:"name" tf:"name"`
+	// +optional
+	NetworkTier string `json:"networkTier,omitempty" tf:"network_tier,omitempty"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	// +optional
+	Subnetwork  string                    `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -35,7 +45,7 @@ type ComputeAddressStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

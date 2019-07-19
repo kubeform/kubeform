@@ -25,13 +25,22 @@ type VirtualNetworkGatewayConnectionSpecIpsecPolicy struct {
 	IpsecEncryption string `json:"ipsecEncryption" tf:"ipsec_encryption"`
 	IpsecIntegrity  string `json:"ipsecIntegrity" tf:"ipsec_integrity"`
 	PfsGroup        string `json:"pfsGroup" tf:"pfs_group"`
+	// +optional
+	SaDatasize int `json:"saDatasize,omitempty" tf:"sa_datasize,omitempty"`
+	// +optional
+	SaLifetime int `json:"saLifetime,omitempty" tf:"sa_lifetime,omitempty"`
 }
 
 type VirtualNetworkGatewayConnectionSpec struct {
 	// +optional
-	AuthorizationKey string `json:"authorizationKey,omitempty" tf:"authorization_key,omitempty"`
+	// Sensitive Data. Provide secret name which contains one value only
+	AuthorizationKey core.LocalObjectReference `json:"authorizationKey,omitempty" tf:"authorization_key,omitempty"`
+	// +optional
+	EnableBGP bool `json:"enableBGP,omitempty" tf:"enable_bgp,omitempty"`
 	// +optional
 	ExpressRouteCircuitID string `json:"expressRouteCircuitID,omitempty" tf:"express_route_circuit_id,omitempty"`
+	// +optional
+	ExpressRouteGatewayBypass bool `json:"expressRouteGatewayBypass,omitempty" tf:"express_route_gateway_bypass,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	IpsecPolicy []VirtualNetworkGatewayConnectionSpecIpsecPolicy `json:"ipsecPolicy,omitempty" tf:"ipsec_policy,omitempty"`
@@ -43,10 +52,17 @@ type VirtualNetworkGatewayConnectionSpec struct {
 	PeerVirtualNetworkGatewayID string `json:"peerVirtualNetworkGatewayID,omitempty" tf:"peer_virtual_network_gateway_id,omitempty"`
 	ResourceGroupName           string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	SharedKey               string                    `json:"sharedKey,omitempty" tf:"shared_key,omitempty"`
-	Type                    string                    `json:"type" tf:"type"`
-	VirtualNetworkGatewayID string                    `json:"virtualNetworkGatewayID" tf:"virtual_network_gateway_id"`
-	ProviderRef             core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RoutingWeight int `json:"routingWeight,omitempty" tf:"routing_weight,omitempty"`
+	// +optional
+	// Sensitive Data. Provide secret name which contains one value only
+	SharedKey core.LocalObjectReference `json:"sharedKey,omitempty" tf:"shared_key,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Type string            `json:"type" tf:"type"`
+	// +optional
+	UsePolicyBasedTrafficSelectors bool                      `json:"usePolicyBasedTrafficSelectors,omitempty" tf:"use_policy_based_traffic_selectors,omitempty"`
+	VirtualNetworkGatewayID        string                    `json:"virtualNetworkGatewayID" tf:"virtual_network_gateway_id"`
+	ProviderRef                    core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type VirtualNetworkGatewayConnectionStatus struct {
@@ -54,7 +70,7 @@ type VirtualNetworkGatewayConnectionStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

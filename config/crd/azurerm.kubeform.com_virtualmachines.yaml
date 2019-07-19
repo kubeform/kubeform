@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            availabilitySetID:
+              type: string
             bootDiagnostics:
               items:
                 properties:
@@ -414,6 +416,23 @@ spec:
               type: boolean
             deleteOsDiskOnTermination:
               type: boolean
+            identity:
+              items:
+                properties:
+                  identityIDS:
+                    items:
+                      type: string
+                    minItems: 1
+                    type: array
+                  type:
+                    type: string
+                required:
+                - type
+                type: object
+              maxItems: 1
+              type: array
+            licenseType:
+              type: string
             location:
               type: string
             name:
@@ -426,10 +445,19 @@ spec:
               items:
                 properties:
                   adminPassword:
-                    type: string
+                    description: Sensitive Data. Provide secret name which contains
+                      one value only
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
                   adminUsername:
                     type: string
                   computerName:
+                    type: string
+                  customData:
                     type: string
                 required:
                 - adminUsername
@@ -490,7 +518,14 @@ spec:
                         component:
                           type: string
                         content:
-                          type: string
+                          description: Sensitive Data. Provide secret name which contains
+                            one value only
+                          properties:
+                            name:
+                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                                TODO: Add other useful fields. apiVersion, kind, uid?'
+                              type: string
+                          type: object
                         pass:
                           type: string
                         settingName:
@@ -552,14 +587,68 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            storageDataDisk:
+              items:
+                properties:
+                  caching:
+                    type: string
+                  createOption:
+                    type: string
+                  diskSizeGb:
+                    type: integer
+                  lun:
+                    type: integer
+                  managedDiskID:
+                    type: string
+                  managedDiskType:
+                    type: string
+                  name:
+                    type: string
+                  vhdURI:
+                    type: string
+                  writeAcceleratorEnabled:
+                    type: boolean
+                required:
+                - createOption
+                - lun
+                - name
+                type: object
+              type: array
+            storageImageReference:
+              items:
+                properties:
+                  ID:
+                    type: string
+                  offer:
+                    type: string
+                  publisher:
+                    type: string
+                  sku:
+                    type: string
+                  version:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
+              uniqueItems: true
             storageOsDisk:
               items:
                 properties:
+                  caching:
+                    type: string
                   createOption:
                     type: string
+                  diskSizeGb:
+                    type: integer
                   imageURI:
                     type: string
+                  managedDiskID:
+                    type: string
+                  managedDiskType:
+                    type: string
                   name:
+                    type: string
+                  osType:
                     type: string
                   vhdURI:
                     type: string
@@ -571,6 +660,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             vmSize:
               type: string
             zones:
@@ -597,8 +690,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

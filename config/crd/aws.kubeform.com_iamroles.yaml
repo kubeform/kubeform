@@ -405,6 +405,8 @@ spec:
               type: boolean
             maxSessionDuration:
               type: integer
+            name:
+              type: string
             namePrefix:
               type: string
             path:
@@ -438,8 +440,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

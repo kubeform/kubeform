@@ -397,6 +397,24 @@ spec:
           type: object
         spec:
           properties:
+            algorithm:
+              type: string
+            check:
+              type: string
+            checkAttempts:
+              type: integer
+            checkBody:
+              type: string
+            checkInterval:
+              type: integer
+            checkPassive:
+              type: boolean
+            checkPath:
+              type: string
+            checkTimeout:
+              type: integer
+            cipherSuite:
+              type: string
             nodebalancerID:
               type: integer
             port:
@@ -415,6 +433,15 @@ spec:
             sslCert:
               type: string
             sslKey:
+              description: Sensitive Data. Provide secret name which contains one
+                value only
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            stickiness:
               type: string
           required:
           - nodebalancerID
@@ -430,8 +457,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

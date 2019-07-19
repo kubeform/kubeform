@@ -428,6 +428,8 @@ spec:
               type: string
             self:
               type: boolean
+            sourceSecurityGroupID:
+              type: string
             toPort:
               type: integer
             type:
@@ -450,8 +452,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

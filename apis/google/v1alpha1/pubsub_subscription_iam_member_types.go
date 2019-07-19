@@ -19,7 +19,9 @@ type PubsubSubscriptionIamMember struct {
 }
 
 type PubsubSubscriptionIamMemberSpec struct {
-	Member       string                    `json:"member" tf:"member"`
+	Member string `json:"member" tf:"member"`
+	// +optional
+	Project      string                    `json:"project,omitempty" tf:"project,omitempty"`
 	Role         string                    `json:"role" tf:"role"`
 	Subscription string                    `json:"subscription" tf:"subscription"`
 	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -30,7 +32,7 @@ type PubsubSubscriptionIamMemberStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            catalogID:
+              type: string
             databaseName:
               type: string
             description:
@@ -537,8 +539,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

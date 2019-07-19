@@ -18,11 +18,24 @@ type AutomationAccount struct {
 	Status            AutomationAccountStatus `json:"status,omitempty"`
 }
 
+type AutomationAccountSpecSku struct {
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
 type AutomationAccountSpec struct {
-	Location          string                    `json:"location" tf:"location"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// Deprecated
+	Sku []AutomationAccountSpecSku `json:"sku,omitempty" tf:"sku,omitempty"`
+	// +optional
+	SkuName string `json:"skuName,omitempty" tf:"sku_name,omitempty"`
+	// +optional
+	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type AutomationAccountStatus struct {
@@ -30,7 +43,7 @@ type AutomationAccountStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

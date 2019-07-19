@@ -20,20 +20,49 @@ type ComputeInstance struct {
 
 type ComputeInstanceSpecAttachedDisk struct {
 	// +optional
-	DiskEncryptionKeyRaw string `json:"diskEncryptionKeyRaw,omitempty" tf:"disk_encryption_key_raw,omitempty"`
+	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
+	// +optional
+	// Sensitive Data. Provide secret name which contains one value only
+	DiskEncryptionKeyRaw core.LocalObjectReference `json:"diskEncryptionKeyRaw,omitempty" tf:"disk_encryption_key_raw,omitempty"`
 	// +optional
 	Mode   string `json:"mode,omitempty" tf:"mode,omitempty"`
 	Source string `json:"source" tf:"source"`
+}
+
+type ComputeInstanceSpecBootDiskInitializeParams struct {
+	// +optional
+	Image string `json:"image,omitempty" tf:"image,omitempty"`
+	// +optional
+	Size int `json:"size,omitempty" tf:"size,omitempty"`
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type ComputeInstanceSpecBootDisk struct {
 	// +optional
 	AutoDelete bool `json:"autoDelete,omitempty" tf:"auto_delete,omitempty"`
 	// +optional
-	DiskEncryptionKeyRaw string `json:"diskEncryptionKeyRaw,omitempty" tf:"disk_encryption_key_raw,omitempty"`
+	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
+	// +optional
+	// Sensitive Data. Provide secret name which contains one value only
+	DiskEncryptionKeyRaw core.LocalObjectReference `json:"diskEncryptionKeyRaw,omitempty" tf:"disk_encryption_key_raw,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	InitializeParams []ComputeInstanceSpecBootDiskInitializeParams `json:"initializeParams,omitempty" tf:"initialize_params,omitempty"`
+	// +optional
+	Source string `json:"source,omitempty" tf:"source,omitempty"`
+}
+
+type ComputeInstanceSpecGuestAccelerator struct {
+	Count int    `json:"count" tf:"count"`
+	Type  string `json:"type" tf:"type"`
 }
 
 type ComputeInstanceSpecNetworkInterfaceAccessConfig struct {
+	// +optional
+	NatIP string `json:"natIP,omitempty" tf:"nat_ip,omitempty"`
+	// +optional
+	NetworkTier string `json:"networkTier,omitempty" tf:"network_tier,omitempty"`
 	// +optional
 	PublicPtrDomainName string `json:"publicPtrDomainName,omitempty" tf:"public_ptr_domain_name,omitempty"`
 }
@@ -48,7 +77,27 @@ type ComputeInstanceSpecNetworkInterface struct {
 	// +optional
 	AccessConfig []ComputeInstanceSpecNetworkInterfaceAccessConfig `json:"accessConfig,omitempty" tf:"access_config,omitempty"`
 	// +optional
+	// Deprecated
+	Address string `json:"address,omitempty" tf:"address,omitempty"`
+	// +optional
 	AliasIPRange []ComputeInstanceSpecNetworkInterfaceAliasIPRange `json:"aliasIPRange,omitempty" tf:"alias_ip_range,omitempty"`
+	// +optional
+	Network string `json:"network,omitempty" tf:"network,omitempty"`
+	// +optional
+	NetworkIP string `json:"networkIP,omitempty" tf:"network_ip,omitempty"`
+	// +optional
+	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
+	// +optional
+	SubnetworkProject string `json:"subnetworkProject,omitempty" tf:"subnetwork_project,omitempty"`
+}
+
+type ComputeInstanceSpecScheduling struct {
+	// +optional
+	AutomaticRestart bool `json:"automaticRestart,omitempty" tf:"automatic_restart,omitempty"`
+	// +optional
+	OnHostMaintenance string `json:"onHostMaintenance,omitempty" tf:"on_host_maintenance,omitempty"`
+	// +optional
+	Preemptible bool `json:"preemptible,omitempty" tf:"preemptible,omitempty"`
 }
 
 type ComputeInstanceSpecScratchDisk struct {
@@ -57,6 +106,8 @@ type ComputeInstanceSpecScratchDisk struct {
 }
 
 type ComputeInstanceSpecServiceAccount struct {
+	// +optional
+	Email string `json:"email,omitempty" tf:"email,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
 	Scopes []string `json:"scopes" tf:"scopes"`
 }
@@ -78,6 +129,8 @@ type ComputeInstanceSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
+	GuestAccelerator []ComputeInstanceSpecGuestAccelerator `json:"guestAccelerator,omitempty" tf:"guest_accelerator,omitempty"`
+	// +optional
 	Labels      map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	MachineType string            `json:"machineType" tf:"machine_type"`
 	// +optional
@@ -89,13 +142,20 @@ type ComputeInstanceSpec struct {
 	Name             string                                `json:"name" tf:"name"`
 	NetworkInterface []ComputeInstanceSpecNetworkInterface `json:"networkInterface" tf:"network_interface"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	Scheduling []ComputeInstanceSpecScheduling `json:"scheduling,omitempty" tf:"scheduling,omitempty"`
+	// +optional
 	ScratchDisk []ComputeInstanceSpecScratchDisk `json:"scratchDisk,omitempty" tf:"scratch_disk,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ServiceAccount []ComputeInstanceSpecServiceAccount `json:"serviceAccount,omitempty" tf:"service_account,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Tags        []string                  `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
@@ -104,7 +164,7 @@ type ComputeInstanceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -31,13 +31,22 @@ type DaxClusterSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	IamRoleArn  string `json:"iamRoleArn" tf:"iam_role_arn"`
-	NodeType    string `json:"nodeType" tf:"node_type"`
+	// +optional
+	MaintenanceWindow string `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
+	NodeType          string `json:"nodeType" tf:"node_type"`
 	// +optional
 	NotificationTopicArn string `json:"notificationTopicArn,omitempty" tf:"notification_topic_arn,omitempty"`
-	ReplicationFactor    int    `json:"replicationFactor" tf:"replication_factor"`
+	// +optional
+	ParameterGroupName string `json:"parameterGroupName,omitempty" tf:"parameter_group_name,omitempty"`
+	ReplicationFactor  int    `json:"replicationFactor" tf:"replication_factor"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ServerSideEncryption []DaxClusterSpecServerSideEncryption `json:"serverSideEncryption,omitempty" tf:"server_side_encryption,omitempty"`
+	// +optional
+	SubnetGroupName string `json:"subnetGroupName,omitempty" tf:"subnet_group_name,omitempty"`
 	// +optional
 	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -48,7 +57,7 @@ type DaxClusterStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

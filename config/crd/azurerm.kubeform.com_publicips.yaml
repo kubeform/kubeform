@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            allocationMethod:
+              type: string
             domainNameLabel:
               type: string
             idleTimeoutInMinutes:
@@ -416,6 +418,9 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            publicIPAddressAllocation:
+              description: Deprecated
+              type: string
             publicIPPrefixID:
               type: string
             resourceGroupName:
@@ -424,6 +429,10 @@ spec:
               type: string
             sku:
               type: string
+            tags:
+              additionalProperties:
+                type: string
+              type: object
             zones:
               items:
                 type: string
@@ -445,8 +454,7 @@ spec:
             output:
               type: object
             tfState:
-              format: byte
-              type: string
+              type: object
             tfStateHash:
               type: string
           type: object

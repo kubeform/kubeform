@@ -24,6 +24,8 @@ type LoggingProjectSinkSpec struct {
 	Filter string `json:"filter,omitempty" tf:"filter,omitempty"`
 	Name   string `json:"name" tf:"name"`
 	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
 	UniqueWriterIdentity bool                      `json:"uniqueWriterIdentity,omitempty" tf:"unique_writer_identity,omitempty"`
 	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
@@ -33,7 +35,7 @@ type LoggingProjectSinkStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -18,27 +18,79 @@ type SpotFleetRequest struct {
 	Status            SpotFleetRequestStatus `json:"status,omitempty"`
 }
 
+type SpotFleetRequestSpecLaunchSpecificationEbsBlockDevice struct {
+	// +optional
+	DeleteOnTermination bool   `json:"deleteOnTermination,omitempty" tf:"delete_on_termination,omitempty"`
+	DeviceName          string `json:"deviceName" tf:"device_name"`
+	// +optional
+	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
+	// +optional
+	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	// +optional
+	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
+	// +optional
+	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	// +optional
+	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
+}
+
+type SpotFleetRequestSpecLaunchSpecificationEphemeralBlockDevice struct {
+	DeviceName  string `json:"deviceName" tf:"device_name"`
+	VirtualName string `json:"virtualName" tf:"virtual_name"`
+}
+
+type SpotFleetRequestSpecLaunchSpecificationRootBlockDevice struct {
+	// +optional
+	DeleteOnTermination bool `json:"deleteOnTermination,omitempty" tf:"delete_on_termination,omitempty"`
+	// +optional
+	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	// +optional
+	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	// +optional
+	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
+}
+
 type SpotFleetRequestSpecLaunchSpecification struct {
 	Ami string `json:"ami" tf:"ami"`
 	// +optional
 	AssociatePublicIPAddress bool `json:"associatePublicIPAddress,omitempty" tf:"associate_public_ip_address,omitempty"`
 	// +optional
+	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	EbsBlockDevice []SpotFleetRequestSpecLaunchSpecificationEbsBlockDevice `json:"ebsBlockDevice,omitempty" tf:"ebs_block_device,omitempty"`
+	// +optional
 	EbsOptimized bool `json:"ebsOptimized,omitempty" tf:"ebs_optimized,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	EphemeralBlockDevice []SpotFleetRequestSpecLaunchSpecificationEphemeralBlockDevice `json:"ephemeralBlockDevice,omitempty" tf:"ephemeral_block_device,omitempty"`
 	// +optional
 	IamInstanceProfile string `json:"iamInstanceProfile,omitempty" tf:"iam_instance_profile,omitempty"`
 	// +optional
 	IamInstanceProfileArn string `json:"iamInstanceProfileArn,omitempty" tf:"iam_instance_profile_arn,omitempty"`
 	InstanceType          string `json:"instanceType" tf:"instance_type"`
 	// +optional
+	KeyName string `json:"keyName,omitempty" tf:"key_name,omitempty"`
+	// +optional
 	Monitoring bool `json:"monitoring,omitempty" tf:"monitoring,omitempty"`
+	// +optional
+	PlacementGroup string `json:"placementGroup,omitempty" tf:"placement_group,omitempty"`
 	// +optional
 	PlacementTenancy string `json:"placementTenancy,omitempty" tf:"placement_tenancy,omitempty"`
 	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	RootBlockDevice []SpotFleetRequestSpecLaunchSpecificationRootBlockDevice `json:"rootBlockDevice,omitempty" tf:"root_block_device,omitempty"`
+	// +optional
 	SpotPrice string `json:"spotPrice,omitempty" tf:"spot_price,omitempty"`
+	// +optional
+	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	UserData string `json:"userData,omitempty" tf:"user_data,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	VpcSecurityGroupIDS []string `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
 	// +optional
 	WeightedCapacity string `json:"weightedCapacity,omitempty" tf:"weighted_capacity,omitempty"`
 }
@@ -58,10 +110,16 @@ type SpotFleetRequestSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	LaunchSpecification []SpotFleetRequestSpecLaunchSpecification `json:"launchSpecification" tf:"launch_specification"`
 	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	LoadBalancers []string `json:"loadBalancers,omitempty" tf:"load_balancers,omitempty"`
+	// +optional
 	ReplaceUnhealthyInstances bool `json:"replaceUnhealthyInstances,omitempty" tf:"replace_unhealthy_instances,omitempty"`
 	// +optional
 	SpotPrice      string `json:"spotPrice,omitempty" tf:"spot_price,omitempty"`
 	TargetCapacity int    `json:"targetCapacity" tf:"target_capacity"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	TargetGroupArns []string `json:"targetGroupArns,omitempty" tf:"target_group_arns,omitempty"`
 	// +optional
 	TerminateInstancesWithExpiration bool `json:"terminateInstancesWithExpiration,omitempty" tf:"terminate_instances_with_expiration,omitempty"`
 	// +optional
@@ -78,7 +136,7 @@ type SpotFleetRequestStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

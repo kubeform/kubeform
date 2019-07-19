@@ -18,14 +18,24 @@ type NotificationHubNamespace struct {
 	Status            NotificationHubNamespaceStatus `json:"status,omitempty"`
 }
 
+type NotificationHubNamespaceSpecSku struct {
+	Name string `json:"name" tf:"name"`
+}
+
 type NotificationHubNamespaceSpec struct {
 	// +optional
-	Enabled           bool                      `json:"enabled,omitempty" tf:"enabled,omitempty"`
-	Location          string                    `json:"location" tf:"location"`
-	Name              string                    `json:"name" tf:"name"`
-	NamespaceType     string                    `json:"namespaceType" tf:"namespace_type"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Enabled           bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
+	NamespaceType     string `json:"namespaceType" tf:"namespace_type"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	// +kubebuilder:validation:MaxItems=1
+	// Deprecated
+	Sku []NotificationHubNamespaceSpecSku `json:"sku,omitempty" tf:"sku,omitempty"`
+	// +optional
+	SkuName     string                    `json:"skuName,omitempty" tf:"sku_name,omitempty"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type NotificationHubNamespaceStatus struct {
@@ -33,7 +43,7 @@ type NotificationHubNamespaceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

@@ -19,7 +19,8 @@ type OpsworksRdsDbInstance struct {
 }
 
 type OpsworksRdsDbInstanceSpec struct {
-	DbPassword       string                    `json:"dbPassword" tf:"db_password"`
+	// Sensitive Data. Provide secret name which contains one value only
+	DbPassword       core.LocalObjectReference `json:"dbPassword" tf:"db_password"`
 	DbUser           string                    `json:"dbUser" tf:"db_user"`
 	RdsDbInstanceArn string                    `json:"rdsDbInstanceArn" tf:"rds_db_instance_arn"`
 	StackID          string                    `json:"stackID" tf:"stack_id"`
@@ -31,7 +32,7 @@ type OpsworksRdsDbInstanceStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }

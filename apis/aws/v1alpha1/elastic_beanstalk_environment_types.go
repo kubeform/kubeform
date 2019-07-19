@@ -29,19 +29,27 @@ type ElasticBeanstalkEnvironmentSpecSetting struct {
 type ElasticBeanstalkEnvironmentSpec struct {
 	Application string `json:"application" tf:"application"`
 	// +optional
+	CnamePrefix string `json:"cnamePrefix,omitempty" tf:"cname_prefix,omitempty"`
+	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
+	// +optional
+	PlatformArn string `json:"platformArn,omitempty" tf:"platform_arn,omitempty"`
 	// +optional
 	PollInterval string `json:"pollInterval,omitempty" tf:"poll_interval,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Setting []ElasticBeanstalkEnvironmentSpecSetting `json:"setting,omitempty" tf:"setting,omitempty"`
 	// +optional
+	SolutionStackName string `json:"solutionStackName,omitempty" tf:"solution_stack_name,omitempty"`
+	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	TemplateName string `json:"templateName,omitempty" tf:"template_name,omitempty"`
 	// +optional
 	Tier string `json:"tier,omitempty" tf:"tier,omitempty"`
+	// +optional
+	VersionLabel string `json:"versionLabel,omitempty" tf:"version_label,omitempty"`
 	// +optional
 	WaitForReadyTimeout string                    `json:"waitForReadyTimeout,omitempty" tf:"wait_for_ready_timeout,omitempty"`
 	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
@@ -52,7 +60,7 @@ type ElasticBeanstalkEnvironmentStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 
-	TFState     []byte                `json:"tfState,omitempty"`
+	TFState     *runtime.RawExtension `json:"tfState,omitempty"`
 	TFStateHash string                `json:"tfStateHash,omitempty"`
 	Output      *runtime.RawExtension `json:"output,omitempty"`
 }
