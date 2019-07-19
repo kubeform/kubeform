@@ -21,13 +21,13 @@ type ApiManagementCertificate struct {
 type ApiManagementCertificateSpec struct {
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Data core.LocalObjectReference `json:"data" tf:"data"`
-	Name string                    `json:"name" tf:"name"`
+	Data *core.LocalObjectReference `json:"data" tf:"data"`
+	Name string                     `json:"name" tf:"name"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Password          core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Password          *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	ResourceGroupName string                     `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type ApiManagementCertificateStatus struct {

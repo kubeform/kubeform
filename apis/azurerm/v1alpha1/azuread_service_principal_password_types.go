@@ -26,8 +26,8 @@ type AzureadServicePrincipalPasswordSpec struct {
 	// +optional
 	StartDate string `json:"startDate,omitempty" tf:"start_date,omitempty"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Value       core.LocalObjectReference `json:"value" tf:"value"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Value       *core.LocalObjectReference `json:"value" tf:"value"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type AzureadServicePrincipalPasswordStatus struct {

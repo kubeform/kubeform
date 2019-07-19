@@ -31,7 +31,7 @@ type GlueConnectionSpec struct {
 	// +optional
 	CatalogID string `json:"catalogID,omitempty" tf:"catalog_id,omitempty"`
 	// Sensitive Data. Provide secret name which contains one or more values
-	ConnectionProperties core.LocalObjectReference `json:"connectionProperties" tf:"connection_properties"`
+	ConnectionProperties *core.LocalObjectReference `json:"connectionProperties" tf:"connection_properties"`
 	// +optional
 	ConnectionType string `json:"connectionType,omitempty" tf:"connection_type,omitempty"`
 	// +optional

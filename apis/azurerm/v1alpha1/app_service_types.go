@@ -26,13 +26,13 @@ type AppServiceSpecAuthSettingsActiveDirectory struct {
 	ClientID         string   `json:"clientID" tf:"client_id"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret core.LocalObjectReference `json:"clientSecret,omitempty" tf:"client_secret,omitempty"`
+	ClientSecret *core.LocalObjectReference `json:"clientSecret,omitempty" tf:"client_secret,omitempty"`
 }
 
 type AppServiceSpecAuthSettingsFacebook struct {
 	AppID string `json:"appID" tf:"app_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	AppSecret core.LocalObjectReference `json:"appSecret" tf:"app_secret"`
+	AppSecret *core.LocalObjectReference `json:"appSecret" tf:"app_secret"`
 	// +optional
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
 }
@@ -40,7 +40,7 @@ type AppServiceSpecAuthSettingsFacebook struct {
 type AppServiceSpecAuthSettingsGoogle struct {
 	ClientID string `json:"clientID" tf:"client_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
+	ClientSecret *core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
 	// +optional
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
 }
@@ -48,7 +48,7 @@ type AppServiceSpecAuthSettingsGoogle struct {
 type AppServiceSpecAuthSettingsMicrosoft struct {
 	ClientID string `json:"clientID" tf:"client_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
+	ClientSecret *core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
 	// +optional
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
 }
@@ -56,7 +56,7 @@ type AppServiceSpecAuthSettingsMicrosoft struct {
 type AppServiceSpecAuthSettingsTwitter struct {
 	ConsumerKey string `json:"consumerKey" tf:"consumer_key"`
 	// Sensitive Data. Provide secret name which contains one value only
-	ConsumerSecret core.LocalObjectReference `json:"consumerSecret" tf:"consumer_secret"`
+	ConsumerSecret *core.LocalObjectReference `json:"consumerSecret" tf:"consumer_secret"`
 }
 
 type AppServiceSpecAuthSettings struct {
@@ -98,7 +98,7 @@ type AppServiceSpecConnectionString struct {
 	Name string `json:"name" tf:"name"`
 	Type string `json:"type" tf:"type"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Value core.LocalObjectReference `json:"value" tf:"value"`
+	Value *core.LocalObjectReference `json:"value" tf:"value"`
 }
 
 type AppServiceSpecIdentity struct {
@@ -109,7 +109,7 @@ type AppServiceSpecLogsApplicationLogsAzureBlobStorage struct {
 	Level           string `json:"level" tf:"level"`
 	RetentionInDays int    `json:"retentionInDays" tf:"retention_in_days"`
 	// Sensitive Data. Provide secret name which contains one value only
-	SasURL core.LocalObjectReference `json:"sasURL" tf:"sas_url"`
+	SasURL *core.LocalObjectReference `json:"sasURL" tf:"sas_url"`
 }
 
 type AppServiceSpecLogsApplicationLogs struct {

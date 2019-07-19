@@ -30,7 +30,7 @@ type ElasticacheReplicationGroupSpec struct {
 	AtRestEncryptionEnabled bool `json:"atRestEncryptionEnabled,omitempty" tf:"at_rest_encryption_enabled,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	AuthToken core.LocalObjectReference `json:"authToken,omitempty" tf:"auth_token,omitempty"`
+	AuthToken *core.LocalObjectReference `json:"authToken,omitempty" tf:"auth_token,omitempty"`
 	// +optional
 	AutoMinorVersionUpgrade bool `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
 	// +optional

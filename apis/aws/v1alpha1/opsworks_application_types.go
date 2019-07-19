@@ -21,7 +21,7 @@ type OpsworksApplication struct {
 type OpsworksApplicationSpecAppSource struct {
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	Revision string `json:"revision,omitempty" tf:"revision,omitempty"`
 	// +optional
@@ -45,7 +45,7 @@ type OpsworksApplicationSpecSslConfiguration struct {
 	// +optional
 	Chain string `json:"chain,omitempty" tf:"chain,omitempty"`
 	// Sensitive Data. Provide secret name which contains one value only
-	PrivateKey core.LocalObjectReference `json:"privateKey" tf:"private_key"`
+	PrivateKey *core.LocalObjectReference `json:"privateKey" tf:"private_key"`
 }
 
 type OpsworksApplicationSpec struct {

@@ -40,9 +40,9 @@ type ComputeVPNTunnelSpec struct {
 	// +optional
 	Router string `json:"router,omitempty" tf:"router,omitempty"`
 	// Sensitive Data. Provide secret name which contains one value only
-	SharedSecret     core.LocalObjectReference `json:"sharedSecret" tf:"shared_secret"`
-	TargetVPNGateway string                    `json:"targetVPNGateway" tf:"target_vpn_gateway"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SharedSecret     *core.LocalObjectReference `json:"sharedSecret" tf:"shared_secret"`
+	TargetVPNGateway string                     `json:"targetVPNGateway" tf:"target_vpn_gateway"`
+	ProviderRef      core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type ComputeVPNTunnelStatus struct {

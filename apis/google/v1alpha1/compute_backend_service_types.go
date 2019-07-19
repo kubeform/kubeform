@@ -65,7 +65,7 @@ type ComputeBackendServiceSpecCdnPolicy struct {
 type ComputeBackendServiceSpecIap struct {
 	Oauth2ClientID string `json:"oauth2ClientID" tf:"oauth2_client_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Oauth2ClientSecret core.LocalObjectReference `json:"oauth2ClientSecret" tf:"oauth2_client_secret"`
+	Oauth2ClientSecret *core.LocalObjectReference `json:"oauth2ClientSecret" tf:"oauth2_client_secret"`
 }
 
 type ComputeBackendServiceSpec struct {

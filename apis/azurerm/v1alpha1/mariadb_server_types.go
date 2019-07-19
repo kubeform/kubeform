@@ -36,10 +36,10 @@ type MariadbServerSpecStorageProfile struct {
 type MariadbServerSpec struct {
 	AdministratorLogin string `json:"administratorLogin" tf:"administrator_login"`
 	// Sensitive Data. Provide secret name which contains one value only
-	AdministratorLoginPassword core.LocalObjectReference `json:"administratorLoginPassword" tf:"administrator_login_password"`
-	Location                   string                    `json:"location" tf:"location"`
-	Name                       string                    `json:"name" tf:"name"`
-	ResourceGroupName          string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	AdministratorLoginPassword *core.LocalObjectReference `json:"administratorLoginPassword" tf:"administrator_login_password"`
+	Location                   string                     `json:"location" tf:"location"`
+	Name                       string                     `json:"name" tf:"name"`
+	ResourceGroupName          string                     `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku            []MariadbServerSpecSku `json:"sku" tf:"sku"`
 	SslEnforcement string                 `json:"sslEnforcement" tf:"ssl_enforcement"`

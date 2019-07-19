@@ -179,11 +179,11 @@ type InstanceSpecDisk struct {
 	ReadOnly bool `json:"readOnly,omitempty" tf:"read_only,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	RootPass core.LocalObjectReference `json:"rootPass,omitempty" tf:"root_pass,omitempty"`
-	Size     int                       `json:"size" tf:"size"`
+	RootPass *core.LocalObjectReference `json:"rootPass,omitempty" tf:"root_pass,omitempty"`
+	Size     int                        `json:"size" tf:"size"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one or more values
-	StackscriptData core.LocalObjectReference `json:"stackscriptData,omitempty" tf:"stackscript_data,omitempty"`
+	StackscriptData *core.LocalObjectReference `json:"stackscriptData,omitempty" tf:"stackscript_data,omitempty"`
 	// +optional
 	StackscriptID int `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
 }
@@ -217,10 +217,10 @@ type InstanceSpec struct {
 	Region    string `json:"region" tf:"region"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	RootPass core.LocalObjectReference `json:"rootPass,omitempty" tf:"root_pass,omitempty"`
+	RootPass *core.LocalObjectReference `json:"rootPass,omitempty" tf:"root_pass,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one or more values
-	StackscriptData core.LocalObjectReference `json:"stackscriptData,omitempty" tf:"stackscript_data,omitempty"`
+	StackscriptData *core.LocalObjectReference `json:"stackscriptData,omitempty" tf:"stackscript_data,omitempty"`
 	// +optional
 	StackscriptID int `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
 	// +optional

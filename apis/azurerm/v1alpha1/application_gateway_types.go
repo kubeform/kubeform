@@ -20,8 +20,8 @@ type ApplicationGateway struct {
 
 type ApplicationGatewaySpecAuthenticationCertificate struct {
 	// Sensitive Data. Provide secret name which contains one value only
-	Data core.LocalObjectReference `json:"data" tf:"data"`
-	Name string                    `json:"name" tf:"name"`
+	Data *core.LocalObjectReference `json:"data" tf:"data"`
+	Name string                     `json:"name" tf:"name"`
 }
 
 type ApplicationGatewaySpecAutoscaleConfiguration struct {
@@ -227,10 +227,10 @@ type ApplicationGatewaySpecSku struct {
 
 type ApplicationGatewaySpecSslCertificate struct {
 	// Sensitive Data. Provide secret name which contains one value only
-	Data core.LocalObjectReference `json:"data" tf:"data"`
-	Name string                    `json:"name" tf:"name"`
+	Data *core.LocalObjectReference `json:"data" tf:"data"`
+	Name string                     `json:"name" tf:"name"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password" tf:"password"`
+	Password *core.LocalObjectReference `json:"password" tf:"password"`
 }
 
 type ApplicationGatewaySpecSslPolicy struct {

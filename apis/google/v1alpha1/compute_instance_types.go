@@ -23,7 +23,7 @@ type ComputeInstanceSpecAttachedDisk struct {
 	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	DiskEncryptionKeyRaw core.LocalObjectReference `json:"diskEncryptionKeyRaw,omitempty" tf:"disk_encryption_key_raw,omitempty"`
+	DiskEncryptionKeyRaw *core.LocalObjectReference `json:"diskEncryptionKeyRaw,omitempty" tf:"disk_encryption_key_raw,omitempty"`
 	// +optional
 	Mode   string `json:"mode,omitempty" tf:"mode,omitempty"`
 	Source string `json:"source" tf:"source"`
@@ -45,7 +45,7 @@ type ComputeInstanceSpecBootDisk struct {
 	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	DiskEncryptionKeyRaw core.LocalObjectReference `json:"diskEncryptionKeyRaw,omitempty" tf:"disk_encryption_key_raw,omitempty"`
+	DiskEncryptionKeyRaw *core.LocalObjectReference `json:"diskEncryptionKeyRaw,omitempty" tf:"disk_encryption_key_raw,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	InitializeParams []ComputeInstanceSpecBootDiskInitializeParams `json:"initializeParams,omitempty" tf:"initialize_params,omitempty"`

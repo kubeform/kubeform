@@ -30,7 +30,7 @@ type VirtualMachineScaleSetSpecExtension struct {
 	Name                    string `json:"name" tf:"name"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	ProtectedSettings core.LocalObjectReference `json:"protectedSettings,omitempty" tf:"protected_settings,omitempty"`
+	ProtectedSettings *core.LocalObjectReference `json:"protectedSettings,omitempty" tf:"protected_settings,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ProvisionAfterExtensions []string `json:"provisionAfterExtensions,omitempty" tf:"provision_after_extensions,omitempty"`
@@ -97,9 +97,9 @@ type VirtualMachineScaleSetSpecNetworkProfile struct {
 type VirtualMachineScaleSetSpecOsProfile struct {
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	AdminPassword      core.LocalObjectReference `json:"adminPassword,omitempty" tf:"admin_password,omitempty"`
-	AdminUsername      string                    `json:"adminUsername" tf:"admin_username"`
-	ComputerNamePrefix string                    `json:"computerNamePrefix" tf:"computer_name_prefix"`
+	AdminPassword      *core.LocalObjectReference `json:"adminPassword,omitempty" tf:"admin_password,omitempty"`
+	AdminUsername      string                     `json:"adminUsername" tf:"admin_username"`
+	ComputerNamePrefix string                     `json:"computerNamePrefix" tf:"computer_name_prefix"`
 	// +optional
 	CustomData string `json:"customData,omitempty" tf:"custom_data,omitempty"`
 }
@@ -132,9 +132,9 @@ type VirtualMachineScaleSetSpecOsProfileSecrets struct {
 type VirtualMachineScaleSetSpecOsProfileWindowsConfigAdditionalUnattendConfig struct {
 	Component string `json:"component" tf:"component"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Content     core.LocalObjectReference `json:"content" tf:"content"`
-	Pass        string                    `json:"pass" tf:"pass"`
-	SettingName string                    `json:"settingName" tf:"setting_name"`
+	Content     *core.LocalObjectReference `json:"content" tf:"content"`
+	Pass        string                     `json:"pass" tf:"pass"`
+	SettingName string                     `json:"settingName" tf:"setting_name"`
 }
 
 type VirtualMachineScaleSetSpecOsProfileWindowsConfigWinrm struct {

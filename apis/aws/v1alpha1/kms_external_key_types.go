@@ -27,7 +27,7 @@ type KmsExternalKeySpec struct {
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	KeyMaterialBase64 core.LocalObjectReference `json:"keyMaterialBase64,omitempty" tf:"key_material_base64,omitempty"`
+	KeyMaterialBase64 *core.LocalObjectReference `json:"keyMaterialBase64,omitempty" tf:"key_material_base64,omitempty"`
 	// +optional
 	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional

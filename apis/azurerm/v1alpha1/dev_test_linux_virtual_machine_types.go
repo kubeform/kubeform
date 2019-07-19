@@ -49,9 +49,9 @@ type DevTestLinuxVirtualMachineSpec struct {
 	Notes string `json:"notes,omitempty" tf:"notes,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Password          core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	Size              string                    `json:"size" tf:"size"`
+	Password          *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	ResourceGroupName string                     `json:"resourceGroupName" tf:"resource_group_name"`
+	Size              string                     `json:"size" tf:"size"`
 	// +optional
 	SshKey      string `json:"sshKey,omitempty" tf:"ssh_key,omitempty"`
 	StorageType string `json:"storageType" tf:"storage_type"`

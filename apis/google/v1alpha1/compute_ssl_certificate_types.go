@@ -20,7 +20,7 @@ type ComputeSslCertificate struct {
 
 type ComputeSslCertificateSpec struct {
 	// Sensitive Data. Provide secret name which contains one value only
-	Certificate core.LocalObjectReference `json:"certificate" tf:"certificate"`
+	Certificate *core.LocalObjectReference `json:"certificate" tf:"certificate"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -28,7 +28,7 @@ type ComputeSslCertificateSpec struct {
 	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// Sensitive Data. Provide secret name which contains one value only
-	PrivateKey core.LocalObjectReference `json:"privateKey" tf:"private_key"`
+	PrivateKey *core.LocalObjectReference `json:"privateKey" tf:"private_key"`
 	// +optional
 	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`

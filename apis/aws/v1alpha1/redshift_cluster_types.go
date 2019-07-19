@@ -79,7 +79,7 @@ type RedshiftClusterSpec struct {
 	Logging []RedshiftClusterSpecLogging `json:"logging,omitempty" tf:"logging,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	MasterPassword core.LocalObjectReference `json:"masterPassword,omitempty" tf:"master_password,omitempty"`
+	MasterPassword *core.LocalObjectReference `json:"masterPassword,omitempty" tf:"master_password,omitempty"`
 	// +optional
 	MasterUsername string `json:"masterUsername,omitempty" tf:"master_username,omitempty"`
 	NodeType       string `json:"nodeType" tf:"node_type"`

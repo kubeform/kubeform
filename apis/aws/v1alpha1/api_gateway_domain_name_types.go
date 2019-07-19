@@ -35,8 +35,8 @@ type ApiGatewayDomainNameSpec struct {
 	CertificateName string `json:"certificateName,omitempty" tf:"certificate_name,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	CertificatePrivateKey core.LocalObjectReference `json:"certificatePrivateKey,omitempty" tf:"certificate_private_key,omitempty"`
-	DomainName            string                    `json:"domainName" tf:"domain_name"`
+	CertificatePrivateKey *core.LocalObjectReference `json:"certificatePrivateKey,omitempty" tf:"certificate_private_key,omitempty"`
+	DomainName            string                     `json:"domainName" tf:"domain_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1

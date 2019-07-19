@@ -35,7 +35,7 @@ type SqlDatabaseInstanceSpecReplicaConfiguration struct {
 	MasterHeartbeatPeriod int `json:"masterHeartbeatPeriod,omitempty" tf:"master_heartbeat_period,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	SslCipher string `json:"sslCipher,omitempty" tf:"ssl_cipher,omitempty"`
 	// +optional

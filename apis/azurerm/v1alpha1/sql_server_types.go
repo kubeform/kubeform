@@ -21,10 +21,10 @@ type SqlServer struct {
 type SqlServerSpec struct {
 	AdministratorLogin string `json:"administratorLogin" tf:"administrator_login"`
 	// Sensitive Data. Provide secret name which contains one value only
-	AdministratorLoginPassword core.LocalObjectReference `json:"administratorLoginPassword" tf:"administrator_login_password"`
-	Location                   string                    `json:"location" tf:"location"`
-	Name                       string                    `json:"name" tf:"name"`
-	ResourceGroupName          string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	AdministratorLoginPassword *core.LocalObjectReference `json:"administratorLoginPassword" tf:"administrator_login_password"`
+	Location                   string                     `json:"location" tf:"location"`
+	Name                       string                     `json:"name" tf:"name"`
+	ResourceGroupName          string                     `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	Version     string                    `json:"version" tf:"version"`

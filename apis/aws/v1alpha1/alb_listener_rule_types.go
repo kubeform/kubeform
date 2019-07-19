@@ -40,8 +40,8 @@ type AlbListenerRuleSpecActionAuthenticateOidc struct {
 	AuthorizationEndpoint            string            `json:"authorizationEndpoint" tf:"authorization_endpoint"`
 	ClientID                         string            `json:"clientID" tf:"client_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
-	Issuer       string                    `json:"issuer" tf:"issuer"`
+	ClientSecret *core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
+	Issuer       string                     `json:"issuer" tf:"issuer"`
 	// +optional
 	OnUnauthenticatedRequest string `json:"onUnauthenticatedRequest,omitempty" tf:"on_unauthenticated_request,omitempty"`
 	// +optional

@@ -27,7 +27,7 @@ type KeyVaultSecretSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Value core.LocalObjectReference `json:"value" tf:"value"`
+	Value *core.LocalObjectReference `json:"value" tf:"value"`
 	// +optional
 	// Deprecated
 	VaultURI    string                    `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`

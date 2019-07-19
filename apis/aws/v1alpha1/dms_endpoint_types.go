@@ -67,7 +67,7 @@ type DmsEndpointSpec struct {
 	MongodbSettings []DmsEndpointSpecMongodbSettings `json:"mongodbSettings,omitempty" tf:"mongodb_settings,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional

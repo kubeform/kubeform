@@ -29,7 +29,7 @@ type CertificateSpec struct {
 	Name            string `json:"name" tf:"name"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	PrivateKey core.LocalObjectReference `json:"privateKey,omitempty" tf:"private_key,omitempty"`
+	PrivateKey *core.LocalObjectReference `json:"privateKey,omitempty" tf:"private_key,omitempty"`
 	// +optional
 	Type        string                    `json:"type,omitempty" tf:"type,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`

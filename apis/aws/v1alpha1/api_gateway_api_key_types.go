@@ -26,8 +26,8 @@ type ApiGatewayAPIKeySpec struct {
 	Name    string `json:"name" tf:"name"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Value       core.LocalObjectReference `json:"value,omitempty" tf:"value,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Value       *core.LocalObjectReference `json:"value,omitempty" tf:"value,omitempty"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type ApiGatewayAPIKeyStatus struct {

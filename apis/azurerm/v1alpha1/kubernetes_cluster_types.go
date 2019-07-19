@@ -89,7 +89,7 @@ type KubernetesClusterSpecRoleBasedAccessControlAzureActiveDirectory struct {
 	ClientAppID string `json:"clientAppID" tf:"client_app_id"`
 	ServerAppID string `json:"serverAppID" tf:"server_app_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	ServerAppSecret core.LocalObjectReference `json:"serverAppSecret" tf:"server_app_secret"`
+	ServerAppSecret *core.LocalObjectReference `json:"serverAppSecret" tf:"server_app_secret"`
 	// +optional
 	TenantID string `json:"tenantID,omitempty" tf:"tenant_id,omitempty"`
 }
@@ -104,7 +104,7 @@ type KubernetesClusterSpecRoleBasedAccessControl struct {
 type KubernetesClusterSpecServicePrincipal struct {
 	ClientID string `json:"clientID" tf:"client_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
+	ClientSecret *core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
 }
 
 type KubernetesClusterSpec struct {

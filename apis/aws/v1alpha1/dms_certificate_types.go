@@ -22,11 +22,11 @@ type DmsCertificateSpec struct {
 	CertificateID string `json:"certificateID" tf:"certificate_id"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	CertificatePem core.LocalObjectReference `json:"certificatePem,omitempty" tf:"certificate_pem,omitempty"`
+	CertificatePem *core.LocalObjectReference `json:"certificatePem,omitempty" tf:"certificate_pem,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	CertificateWallet core.LocalObjectReference `json:"certificateWallet,omitempty" tf:"certificate_wallet,omitempty"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	CertificateWallet *core.LocalObjectReference `json:"certificateWallet,omitempty" tf:"certificate_wallet,omitempty"`
+	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type DmsCertificateStatus struct {

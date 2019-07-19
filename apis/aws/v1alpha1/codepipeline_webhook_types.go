@@ -23,7 +23,7 @@ type CodepipelineWebhookSpecAuthenticationConfiguration struct {
 	AllowedIPRange string `json:"allowedIPRange,omitempty" tf:"allowed_ip_range,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	SecretToken core.LocalObjectReference `json:"secretToken,omitempty" tf:"secret_token,omitempty"`
+	SecretToken *core.LocalObjectReference `json:"secretToken,omitempty" tf:"secret_token,omitempty"`
 }
 
 type CodepipelineWebhookSpecFilter struct {

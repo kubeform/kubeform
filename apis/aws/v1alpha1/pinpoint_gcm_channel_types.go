@@ -20,8 +20,8 @@ type PinpointGcmChannel struct {
 
 type PinpointGcmChannelSpec struct {
 	// Sensitive Data. Provide secret name which contains one value only
-	ApiKey        core.LocalObjectReference `json:"apiKey" tf:"api_key"`
-	ApplicationID string                    `json:"applicationID" tf:"application_id"`
+	ApiKey        *core.LocalObjectReference `json:"apiKey" tf:"api_key"`
+	ApplicationID string                     `json:"applicationID" tf:"application_id"`
 	// +optional
 	Enabled     bool                      `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`

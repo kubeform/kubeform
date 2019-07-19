@@ -27,7 +27,7 @@ type AcmCertificateSpec struct {
 	DomainName string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	PrivateKey core.LocalObjectReference `json:"privateKey,omitempty" tf:"private_key,omitempty"`
+	PrivateKey *core.LocalObjectReference `json:"privateKey,omitempty" tf:"private_key,omitempty"`
 	// +optional
 	SubjectAlternativeNames []string `json:"subjectAlternativeNames,omitempty" tf:"subject_alternative_names,omitempty"`
 	// +optional

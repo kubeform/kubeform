@@ -95,15 +95,15 @@ type EmrClusterSpecInstanceGroup struct {
 type EmrClusterSpecKerberosAttributes struct {
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	AdDomainJoinPassword core.LocalObjectReference `json:"adDomainJoinPassword,omitempty" tf:"ad_domain_join_password,omitempty"`
+	AdDomainJoinPassword *core.LocalObjectReference `json:"adDomainJoinPassword,omitempty" tf:"ad_domain_join_password,omitempty"`
 	// +optional
 	AdDomainJoinUser string `json:"adDomainJoinUser,omitempty" tf:"ad_domain_join_user,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	CrossRealmTrustPrincipalPassword core.LocalObjectReference `json:"crossRealmTrustPrincipalPassword,omitempty" tf:"cross_realm_trust_principal_password,omitempty"`
+	CrossRealmTrustPrincipalPassword *core.LocalObjectReference `json:"crossRealmTrustPrincipalPassword,omitempty" tf:"cross_realm_trust_principal_password,omitempty"`
 	// Sensitive Data. Provide secret name which contains one value only
-	KdcAdminPassword core.LocalObjectReference `json:"kdcAdminPassword" tf:"kdc_admin_password"`
-	Realm            string                    `json:"realm" tf:"realm"`
+	KdcAdminPassword *core.LocalObjectReference `json:"kdcAdminPassword" tf:"kdc_admin_password"`
+	Realm            string                     `json:"realm" tf:"realm"`
 }
 
 type EmrClusterSpecMasterInstanceGroupEbsConfig struct {

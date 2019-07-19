@@ -45,8 +45,8 @@ type MqBrokerSpecUser struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Groups []string `json:"groups,omitempty" tf:"groups,omitempty"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password" tf:"password"`
-	Username string                    `json:"username" tf:"username"`
+	Password *core.LocalObjectReference `json:"password" tf:"password"`
+	Username string                     `json:"username" tf:"username"`
 }
 
 type MqBrokerSpec struct {

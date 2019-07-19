@@ -29,8 +29,8 @@ type ApiManagementUserSpec struct {
 	Note string `json:"note,omitempty" tf:"note,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Password          core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	Password          *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	ResourceGroupName string                     `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	State       string                    `json:"state,omitempty" tf:"state,omitempty"`
 	UserID      string                    `json:"userID" tf:"user_id"`

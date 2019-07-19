@@ -23,8 +23,8 @@ type KmsCiphertextSpec struct {
 	Context map[string]string `json:"context,omitempty" tf:"context,omitempty"`
 	KeyID   string            `json:"keyID" tf:"key_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Plaintext   core.LocalObjectReference `json:"plaintext" tf:"plaintext"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Plaintext   *core.LocalObjectReference `json:"plaintext" tf:"plaintext"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type KmsCiphertextStatus struct {

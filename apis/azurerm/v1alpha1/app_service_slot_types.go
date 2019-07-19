@@ -22,7 +22,7 @@ type AppServiceSlotSpecConnectionString struct {
 	Name string `json:"name" tf:"name"`
 	Type string `json:"type" tf:"type"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Value core.LocalObjectReference `json:"value" tf:"value"`
+	Value *core.LocalObjectReference `json:"value" tf:"value"`
 }
 
 type AppServiceSlotSpecIdentity struct {

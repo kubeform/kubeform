@@ -25,9 +25,9 @@ type VirtualMachineExtensionSpec struct {
 	Name                    string `json:"name" tf:"name"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	ProtectedSettings core.LocalObjectReference `json:"protectedSettings,omitempty" tf:"protected_settings,omitempty"`
-	Publisher         string                    `json:"publisher" tf:"publisher"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	ProtectedSettings *core.LocalObjectReference `json:"protectedSettings,omitempty" tf:"protected_settings,omitempty"`
+	Publisher         string                     `json:"publisher" tf:"publisher"`
+	ResourceGroupName string                     `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Settings string `json:"settings,omitempty" tf:"settings,omitempty"`
 	// +optional

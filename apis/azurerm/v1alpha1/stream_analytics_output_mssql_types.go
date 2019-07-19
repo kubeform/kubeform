@@ -22,13 +22,13 @@ type StreamAnalyticsOutputMssqlSpec struct {
 	Database string `json:"database" tf:"database"`
 	Name     string `json:"name" tf:"name"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Password               core.LocalObjectReference `json:"password" tf:"password"`
-	ResourceGroupName      string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	Server                 string                    `json:"server" tf:"server"`
-	StreamAnalyticsJobName string                    `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`
-	Table                  string                    `json:"table" tf:"table"`
-	User                   string                    `json:"user" tf:"user"`
-	ProviderRef            core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Password               *core.LocalObjectReference `json:"password" tf:"password"`
+	ResourceGroupName      string                     `json:"resourceGroupName" tf:"resource_group_name"`
+	Server                 string                     `json:"server" tf:"server"`
+	StreamAnalyticsJobName string                     `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`
+	Table                  string                     `json:"table" tf:"table"`
+	User                   string                     `json:"user" tf:"user"`
+	ProviderRef            core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type StreamAnalyticsOutputMssqlStatus struct {

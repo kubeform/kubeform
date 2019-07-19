@@ -22,7 +22,7 @@ type IothubSpecEndpoint struct {
 	// +optional
 	BatchFrequencyInSeconds int `json:"batchFrequencyInSeconds,omitempty" tf:"batch_frequency_in_seconds,omitempty"`
 	// Sensitive Data. Provide secret name which contains one value only
-	ConnectionString core.LocalObjectReference `json:"connectionString" tf:"connection_string"`
+	ConnectionString *core.LocalObjectReference `json:"connectionString" tf:"connection_string"`
 	// +optional
 	ContainerName string `json:"containerName,omitempty" tf:"container_name,omitempty"`
 	// +optional

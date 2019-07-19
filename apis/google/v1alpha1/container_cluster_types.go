@@ -86,8 +86,8 @@ type ContainerClusterSpecMasterAuth struct {
 	// +kubebuilder:validation:MaxItems=1
 	ClientCertificateConfig []ContainerClusterSpecMasterAuthClientCertificateConfig `json:"clientCertificateConfig,omitempty" tf:"client_certificate_config,omitempty"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password" tf:"password"`
-	Username string                    `json:"username" tf:"username"`
+	Password *core.LocalObjectReference `json:"password" tf:"password"`
+	Username string                     `json:"username" tf:"username"`
 }
 
 type ContainerClusterSpecMasterAuthorizedNetworksConfigCidrBlocks struct {

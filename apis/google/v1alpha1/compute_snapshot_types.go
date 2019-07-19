@@ -21,13 +21,13 @@ type ComputeSnapshot struct {
 type ComputeSnapshotSpecSnapshotEncryptionKey struct {
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	RawKey core.LocalObjectReference `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
+	RawKey *core.LocalObjectReference `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
 }
 
 type ComputeSnapshotSpecSourceDiskEncryptionKey struct {
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	RawKey core.LocalObjectReference `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
+	RawKey *core.LocalObjectReference `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
 }
 
 type ComputeSnapshotSpec struct {
@@ -43,14 +43,14 @@ type ComputeSnapshotSpec struct {
 	SnapshotEncryptionKey []ComputeSnapshotSpecSnapshotEncryptionKey `json:"snapshotEncryptionKey,omitempty" tf:"snapshot_encryption_key,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	SnapshotEncryptionKeyRaw core.LocalObjectReference `json:"snapshotEncryptionKeyRaw,omitempty" tf:"snapshot_encryption_key_raw,omitempty"`
-	SourceDisk               string                    `json:"sourceDisk" tf:"source_disk"`
+	SnapshotEncryptionKeyRaw *core.LocalObjectReference `json:"snapshotEncryptionKeyRaw,omitempty" tf:"snapshot_encryption_key_raw,omitempty"`
+	SourceDisk               string                     `json:"sourceDisk" tf:"source_disk"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SourceDiskEncryptionKey []ComputeSnapshotSpecSourceDiskEncryptionKey `json:"sourceDiskEncryptionKey,omitempty" tf:"source_disk_encryption_key,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	SourceDiskEncryptionKeyRaw core.LocalObjectReference `json:"sourceDiskEncryptionKeyRaw,omitempty" tf:"source_disk_encryption_key_raw,omitempty"`
+	SourceDiskEncryptionKeyRaw *core.LocalObjectReference `json:"sourceDiskEncryptionKeyRaw,omitempty" tf:"source_disk_encryption_key_raw,omitempty"`
 	// +optional
 	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`

@@ -119,8 +119,8 @@ type CodebuildProjectSpecSecondaryArtifacts struct {
 type CodebuildProjectSpecSecondarySourcesAuth struct {
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Resource core.LocalObjectReference `json:"resource,omitempty" tf:"resource,omitempty"`
-	Type     string                    `json:"type" tf:"type"`
+	Resource *core.LocalObjectReference `json:"resource,omitempty" tf:"resource,omitempty"`
+	Type     string                     `json:"type" tf:"type"`
 }
 
 type CodebuildProjectSpecSecondarySources struct {
@@ -144,8 +144,8 @@ type CodebuildProjectSpecSecondarySources struct {
 type CodebuildProjectSpecSourceAuth struct {
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Resource core.LocalObjectReference `json:"resource,omitempty" tf:"resource,omitempty"`
-	Type     string                    `json:"type" tf:"type"`
+	Resource *core.LocalObjectReference `json:"resource,omitempty" tf:"resource,omitempty"`
+	Type     string                     `json:"type" tf:"type"`
 }
 
 type CodebuildProjectSpecSource struct {

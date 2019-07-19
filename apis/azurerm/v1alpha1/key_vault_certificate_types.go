@@ -20,10 +20,10 @@ type KeyVaultCertificate struct {
 
 type KeyVaultCertificateSpecCertificate struct {
 	// Sensitive Data. Provide secret name which contains one value only
-	Contents core.LocalObjectReference `json:"contents" tf:"contents"`
+	Contents *core.LocalObjectReference `json:"contents" tf:"contents"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 }
 
 type KeyVaultCertificateSpecCertificatePolicyIssuerParameters struct {

@@ -46,7 +46,7 @@ type NodebalancerConfigSpec struct {
 	SslCert string `json:"sslCert,omitempty" tf:"ssl_cert,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	SslKey core.LocalObjectReference `json:"sslKey,omitempty" tf:"ssl_key,omitempty"`
+	SslKey *core.LocalObjectReference `json:"sslKey,omitempty" tf:"ssl_key,omitempty"`
 	// +optional
 	Stickiness  string                    `json:"stickiness,omitempty" tf:"stickiness,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`

@@ -334,7 +334,7 @@ type KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration struct {
 	DataTableColumns string `json:"dataTableColumns,omitempty" tf:"data_table_columns,omitempty"`
 	DataTableName    string `json:"dataTableName" tf:"data_table_name"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password" tf:"password"`
+	Password *core.LocalObjectReference `json:"password" tf:"password"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ProcessingConfiguration []KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfiguration `json:"processingConfiguration,omitempty" tf:"processing_configuration,omitempty"`

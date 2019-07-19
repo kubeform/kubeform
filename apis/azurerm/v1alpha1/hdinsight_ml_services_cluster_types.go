@@ -21,14 +21,14 @@ type HdinsightMlServicesCluster struct {
 type HdinsightMlServicesClusterSpecGateway struct {
 	Enabled bool `json:"enabled" tf:"enabled"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password" tf:"password"`
-	Username string                    `json:"username" tf:"username"`
+	Password *core.LocalObjectReference `json:"password" tf:"password"`
+	Username string                     `json:"username" tf:"username"`
 }
 
 type HdinsightMlServicesClusterSpecRolesEdgeNode struct {
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -43,7 +43,7 @@ type HdinsightMlServicesClusterSpecRolesEdgeNode struct {
 type HdinsightMlServicesClusterSpecRolesHeadNode struct {
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -60,7 +60,7 @@ type HdinsightMlServicesClusterSpecRolesWorkerNode struct {
 	MinInstanceCount int `json:"minInstanceCount,omitempty" tf:"min_instance_count,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -76,7 +76,7 @@ type HdinsightMlServicesClusterSpecRolesWorkerNode struct {
 type HdinsightMlServicesClusterSpecRolesZookeeperNode struct {
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
+	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -102,8 +102,8 @@ type HdinsightMlServicesClusterSpecRoles struct {
 type HdinsightMlServicesClusterSpecStorageAccount struct {
 	IsDefault bool `json:"isDefault" tf:"is_default"`
 	// Sensitive Data. Provide secret name which contains one value only
-	StorageAccountKey  core.LocalObjectReference `json:"storageAccountKey" tf:"storage_account_key"`
-	StorageContainerID string                    `json:"storageContainerID" tf:"storage_container_id"`
+	StorageAccountKey  *core.LocalObjectReference `json:"storageAccountKey" tf:"storage_account_key"`
+	StorageContainerID string                     `json:"storageContainerID" tf:"storage_container_id"`
 }
 
 type HdinsightMlServicesClusterSpec struct {

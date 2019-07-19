@@ -24,12 +24,12 @@ type NotificationHubSpecApnsCredential struct {
 	KeyID           string `json:"keyID" tf:"key_id"`
 	TeamID          string `json:"teamID" tf:"team_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Token core.LocalObjectReference `json:"token" tf:"token"`
+	Token *core.LocalObjectReference `json:"token" tf:"token"`
 }
 
 type NotificationHubSpecGcmCredential struct {
 	// Sensitive Data. Provide secret name which contains one value only
-	ApiKey core.LocalObjectReference `json:"apiKey" tf:"api_key"`
+	ApiKey *core.LocalObjectReference `json:"apiKey" tf:"api_key"`
 }
 
 type NotificationHubSpec struct {

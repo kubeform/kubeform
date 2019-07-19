@@ -21,14 +21,14 @@ type SqlDatabase struct {
 type SqlDatabaseSpecImport struct {
 	AdministratorLogin string `json:"administratorLogin" tf:"administrator_login"`
 	// Sensitive Data. Provide secret name which contains one value only
-	AdministratorLoginPassword core.LocalObjectReference `json:"administratorLoginPassword" tf:"administrator_login_password"`
-	AuthenticationType         string                    `json:"authenticationType" tf:"authentication_type"`
+	AdministratorLoginPassword *core.LocalObjectReference `json:"administratorLoginPassword" tf:"administrator_login_password"`
+	AuthenticationType         string                     `json:"authenticationType" tf:"authentication_type"`
 	// +optional
 	OperationMode string `json:"operationMode,omitempty" tf:"operation_mode,omitempty"`
 	// Sensitive Data. Provide secret name which contains one value only
-	StorageKey     core.LocalObjectReference `json:"storageKey" tf:"storage_key"`
-	StorageKeyType string                    `json:"storageKeyType" tf:"storage_key_type"`
-	StorageURI     string                    `json:"storageURI" tf:"storage_uri"`
+	StorageKey     *core.LocalObjectReference `json:"storageKey" tf:"storage_key"`
+	StorageKeyType string                     `json:"storageKeyType" tf:"storage_key_type"`
+	StorageURI     string                     `json:"storageURI" tf:"storage_uri"`
 }
 
 type SqlDatabaseSpecThreatDetectionPolicy struct {
@@ -46,7 +46,7 @@ type SqlDatabaseSpecThreatDetectionPolicy struct {
 	State string `json:"state,omitempty" tf:"state,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	StorageAccountAccessKey core.LocalObjectReference `json:"storageAccountAccessKey,omitempty" tf:"storage_account_access_key,omitempty"`
+	StorageAccountAccessKey *core.LocalObjectReference `json:"storageAccountAccessKey,omitempty" tf:"storage_account_access_key,omitempty"`
 	// +optional
 	StorageEndpoint string `json:"storageEndpoint,omitempty" tf:"storage_endpoint,omitempty"`
 	// +optional

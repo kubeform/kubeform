@@ -33,9 +33,9 @@ type VirtualMachineSpecIdentity struct {
 type VirtualMachineSpecOsProfile struct {
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	AdminPassword core.LocalObjectReference `json:"adminPassword,omitempty" tf:"admin_password,omitempty"`
-	AdminUsername string                    `json:"adminUsername" tf:"admin_username"`
-	ComputerName  string                    `json:"computerName" tf:"computer_name"`
+	AdminPassword *core.LocalObjectReference `json:"adminPassword,omitempty" tf:"admin_password,omitempty"`
+	AdminUsername string                     `json:"adminUsername" tf:"admin_username"`
+	ComputerName  string                     `json:"computerName" tf:"computer_name"`
 	// +optional
 	CustomData string `json:"customData,omitempty" tf:"custom_data,omitempty"`
 }
@@ -66,9 +66,9 @@ type VirtualMachineSpecOsProfileSecrets struct {
 type VirtualMachineSpecOsProfileWindowsConfigAdditionalUnattendConfig struct {
 	Component string `json:"component" tf:"component"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Content     core.LocalObjectReference `json:"content" tf:"content"`
-	Pass        string                    `json:"pass" tf:"pass"`
-	SettingName string                    `json:"settingName" tf:"setting_name"`
+	Content     *core.LocalObjectReference `json:"content" tf:"content"`
+	Pass        string                     `json:"pass" tf:"pass"`
+	SettingName string                     `json:"settingName" tf:"setting_name"`
 }
 
 type VirtualMachineSpecOsProfileWindowsConfigWinrm struct {

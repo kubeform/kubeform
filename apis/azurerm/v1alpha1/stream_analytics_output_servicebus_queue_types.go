@@ -36,10 +36,10 @@ type StreamAnalyticsOutputServicebusQueueSpec struct {
 	Serialization       []StreamAnalyticsOutputServicebusQueueSpecSerialization `json:"serialization" tf:"serialization"`
 	ServicebusNamespace string                                                  `json:"servicebusNamespace" tf:"servicebus_namespace"`
 	// Sensitive Data. Provide secret name which contains one value only
-	SharedAccessPolicyKey  core.LocalObjectReference `json:"sharedAccessPolicyKey" tf:"shared_access_policy_key"`
-	SharedAccessPolicyName string                    `json:"sharedAccessPolicyName" tf:"shared_access_policy_name"`
-	StreamAnalyticsJobName string                    `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`
-	ProviderRef            core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SharedAccessPolicyKey  *core.LocalObjectReference `json:"sharedAccessPolicyKey" tf:"shared_access_policy_key"`
+	SharedAccessPolicyName string                     `json:"sharedAccessPolicyName" tf:"shared_access_policy_name"`
+	StreamAnalyticsJobName string                     `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`
+	ProviderRef            core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type StreamAnalyticsOutputServicebusQueueStatus struct {

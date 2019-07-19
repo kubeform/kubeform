@@ -50,7 +50,7 @@ type ContainerServiceSpecMasterProfile struct {
 type ContainerServiceSpecServicePrincipal struct {
 	ClientID string `json:"clientID" tf:"client_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
+	ClientSecret *core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
 }
 
 type ContainerServiceSpec struct {

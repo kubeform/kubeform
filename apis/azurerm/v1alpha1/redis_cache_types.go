@@ -29,10 +29,10 @@ type RedisCacheSpecRedisConfiguration struct {
 	AofBackupEnabled bool `json:"aofBackupEnabled,omitempty" tf:"aof_backup_enabled,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	AofStorageConnectionString0 core.LocalObjectReference `json:"aofStorageConnectionString0,omitempty" tf:"aof_storage_connection_string_0,omitempty"`
+	AofStorageConnectionString0 *core.LocalObjectReference `json:"aofStorageConnectionString0,omitempty" tf:"aof_storage_connection_string_0,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	AofStorageConnectionString1 core.LocalObjectReference `json:"aofStorageConnectionString1,omitempty" tf:"aof_storage_connection_string_1,omitempty"`
+	AofStorageConnectionString1 *core.LocalObjectReference `json:"aofStorageConnectionString1,omitempty" tf:"aof_storage_connection_string_1,omitempty"`
 	// +optional
 	EnableAuthentication bool `json:"enableAuthentication,omitempty" tf:"enable_authentication,omitempty"`
 	// +optional
@@ -53,7 +53,7 @@ type RedisCacheSpecRedisConfiguration struct {
 	RdbBackupMaxSnapshotCount int `json:"rdbBackupMaxSnapshotCount,omitempty" tf:"rdb_backup_max_snapshot_count,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	RdbStorageConnectionString core.LocalObjectReference `json:"rdbStorageConnectionString,omitempty" tf:"rdb_storage_connection_string,omitempty"`
+	RdbStorageConnectionString *core.LocalObjectReference `json:"rdbStorageConnectionString,omitempty" tf:"rdb_storage_connection_string,omitempty"`
 }
 
 type RedisCacheSpec struct {

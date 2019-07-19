@@ -22,7 +22,7 @@ type FunctionAppSpecConnectionString struct {
 	Name string `json:"name" tf:"name"`
 	Type string `json:"type" tf:"type"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Value core.LocalObjectReference `json:"value" tf:"value"`
+	Value *core.LocalObjectReference `json:"value" tf:"value"`
 }
 
 type FunctionAppSpecIdentity struct {
@@ -64,7 +64,7 @@ type FunctionAppSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SiteConfig []FunctionAppSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
 	// Sensitive Data. Provide secret name which contains one value only
-	StorageConnectionString core.LocalObjectReference `json:"storageConnectionString" tf:"storage_connection_string"`
+	StorageConnectionString *core.LocalObjectReference `json:"storageConnectionString" tf:"storage_connection_string"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

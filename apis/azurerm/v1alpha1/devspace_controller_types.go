@@ -33,9 +33,9 @@ type DevspaceControllerSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// Sensitive Data. Provide secret name which contains one value only
-	TargetContainerHostCredentialsBase64 core.LocalObjectReference `json:"targetContainerHostCredentialsBase64" tf:"target_container_host_credentials_base64"`
-	TargetContainerHostResourceID        string                    `json:"targetContainerHostResourceID" tf:"target_container_host_resource_id"`
-	ProviderRef                          core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TargetContainerHostCredentialsBase64 *core.LocalObjectReference `json:"targetContainerHostCredentialsBase64" tf:"target_container_host_credentials_base64"`
+	TargetContainerHostResourceID        string                     `json:"targetContainerHostResourceID" tf:"target_container_host_resource_id"`
+	ProviderRef                          core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type DevspaceControllerStatus struct {

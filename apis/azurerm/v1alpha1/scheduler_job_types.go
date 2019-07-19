@@ -30,21 +30,21 @@ type SchedulerJobSpecActionWebAuthenticationActiveDirectory struct {
 	Audience string `json:"audience,omitempty" tf:"audience,omitempty"`
 	ClientID string `json:"clientID" tf:"client_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Secret   core.LocalObjectReference `json:"secret" tf:"secret"`
-	TenantID string                    `json:"tenantID" tf:"tenant_id"`
+	Secret   *core.LocalObjectReference `json:"secret" tf:"secret"`
+	TenantID string                     `json:"tenantID" tf:"tenant_id"`
 }
 
 type SchedulerJobSpecActionWebAuthenticationBasic struct {
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password" tf:"password"`
-	Username string                    `json:"username" tf:"username"`
+	Password *core.LocalObjectReference `json:"password" tf:"password"`
+	Username string                     `json:"username" tf:"username"`
 }
 
 type SchedulerJobSpecActionWebAuthenticationCertificate struct {
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password" tf:"password"`
+	Password *core.LocalObjectReference `json:"password" tf:"password"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Pfx core.LocalObjectReference `json:"pfx" tf:"pfx"`
+	Pfx *core.LocalObjectReference `json:"pfx" tf:"pfx"`
 }
 
 type SchedulerJobSpecActionWeb struct {
@@ -77,21 +77,21 @@ type SchedulerJobSpecErrorActionWebAuthenticationActiveDirectory struct {
 	Audience string `json:"audience,omitempty" tf:"audience,omitempty"`
 	ClientID string `json:"clientID" tf:"client_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Secret   core.LocalObjectReference `json:"secret" tf:"secret"`
-	TenantID string                    `json:"tenantID" tf:"tenant_id"`
+	Secret   *core.LocalObjectReference `json:"secret" tf:"secret"`
+	TenantID string                     `json:"tenantID" tf:"tenant_id"`
 }
 
 type SchedulerJobSpecErrorActionWebAuthenticationBasic struct {
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password" tf:"password"`
-	Username string                    `json:"username" tf:"username"`
+	Password *core.LocalObjectReference `json:"password" tf:"password"`
+	Username string                     `json:"username" tf:"username"`
 }
 
 type SchedulerJobSpecErrorActionWebAuthenticationCertificate struct {
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password" tf:"password"`
+	Password *core.LocalObjectReference `json:"password" tf:"password"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Pfx core.LocalObjectReference `json:"pfx" tf:"pfx"`
+	Pfx *core.LocalObjectReference `json:"pfx" tf:"pfx"`
 }
 
 type SchedulerJobSpecErrorActionWeb struct {

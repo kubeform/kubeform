@@ -47,7 +47,7 @@ type DirectoryServiceDirectorySpec struct {
 	EnableSso bool   `json:"enableSso,omitempty" tf:"enable_sso,omitempty"`
 	Name      string `json:"name" tf:"name"`
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password" tf:"password"`
+	Password *core.LocalObjectReference `json:"password" tf:"password"`
 	// +optional
 	ShortName string `json:"shortName,omitempty" tf:"short_name,omitempty"`
 	// +optional

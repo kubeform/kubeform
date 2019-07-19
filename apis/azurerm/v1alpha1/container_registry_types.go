@@ -20,8 +20,8 @@ type ContainerRegistry struct {
 
 type ContainerRegistrySpecStorageAccount struct {
 	// Sensitive Data. Provide secret name which contains one value only
-	AccessKey core.LocalObjectReference `json:"accessKey" tf:"access_key"`
-	Name      string                    `json:"name" tf:"name"`
+	AccessKey *core.LocalObjectReference `json:"accessKey" tf:"access_key"`
+	Name      string                     `json:"name" tf:"name"`
 }
 
 type ContainerRegistrySpec struct {

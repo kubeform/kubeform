@@ -128,7 +128,7 @@ type ContainerGroupSpecContainer struct {
 	ReadinessProbe []ContainerGroupSpecContainerReadinessProbe `json:"readinessProbe,omitempty" tf:"readiness_probe,omitempty"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one or more values
-	SecureEnvironmentVariables core.LocalObjectReference `json:"secureEnvironmentVariables,omitempty" tf:"secure_environment_variables,omitempty"`
+	SecureEnvironmentVariables *core.LocalObjectReference `json:"secureEnvironmentVariables,omitempty" tf:"secure_environment_variables,omitempty"`
 	// +optional
 	Volume []ContainerGroupSpecContainerVolume `json:"volume,omitempty" tf:"volume,omitempty"`
 }
@@ -139,7 +139,7 @@ type ContainerGroupSpecDiagnosticsLogAnalytics struct {
 	Metadata    map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 	WorkspaceID string            `json:"workspaceID" tf:"workspace_id"`
 	// Sensitive Data. Provide secret name which contains one value only
-	WorkspaceKey core.LocalObjectReference `json:"workspaceKey" tf:"workspace_key"`
+	WorkspaceKey *core.LocalObjectReference `json:"workspaceKey" tf:"workspace_key"`
 }
 
 type ContainerGroupSpecDiagnostics struct {
@@ -156,9 +156,9 @@ type ContainerGroupSpecIdentity struct {
 
 type ContainerGroupSpecImageRegistryCredential struct {
 	// Sensitive Data. Provide secret name which contains one value only
-	Password core.LocalObjectReference `json:"password" tf:"password"`
-	Server   string                    `json:"server" tf:"server"`
-	Username string                    `json:"username" tf:"username"`
+	Password *core.LocalObjectReference `json:"password" tf:"password"`
+	Server   string                     `json:"server" tf:"server"`
+	Username string                     `json:"username" tf:"username"`
 }
 
 type ContainerGroupSpec struct {

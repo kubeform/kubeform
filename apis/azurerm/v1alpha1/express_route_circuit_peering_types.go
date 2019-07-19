@@ -35,9 +35,9 @@ type ExpressRouteCircuitPeeringSpec struct {
 	SecondaryPeerAddressPrefix string `json:"secondaryPeerAddressPrefix" tf:"secondary_peer_address_prefix"`
 	// +optional
 	// Sensitive Data. Provide secret name which contains one value only
-	SharedKey   core.LocalObjectReference `json:"sharedKey,omitempty" tf:"shared_key,omitempty"`
-	VlanID      int                       `json:"vlanID" tf:"vlan_id"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SharedKey   *core.LocalObjectReference `json:"sharedKey,omitempty" tf:"shared_key,omitempty"`
+	VlanID      int                        `json:"vlanID" tf:"vlan_id"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type ExpressRouteCircuitPeeringStatus struct {
