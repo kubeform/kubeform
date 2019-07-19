@@ -530,8 +530,6 @@ spec:
               type: object
             tfState:
               type: object
-            tfStateHash:
-              type: string
           type: object
       type: object
   versions:

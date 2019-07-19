@@ -38,65 +38,65 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 
-		&Firewall{},
-		&FirewallList{},
-
-		&Record{},
-		&RecordList{},
-
-		&SpacesBucket{},
-		&SpacesBucketList{},
-
 		&Certificate{},
 		&CertificateList{},
 
-		&Cdn{},
-		&CdnList{},
-
-		&Droplet{},
-		&DropletList{},
-
-		&Loadbalancer{},
-		&LoadbalancerList{},
-
-		&SshKey{},
-		&SshKeyList{},
-
-		&VolumeAttachment{},
-		&VolumeAttachmentList{},
-
-		&DropletSnapshot{},
-		&DropletSnapshotList{},
-
-		&FloatingIP{},
-		&FloatingIPList{},
+		&Firewall{},
+		&FirewallList{},
 
 		&KubernetesCluster{},
 		&KubernetesClusterList{},
 
-		&VolumeSnapshot{},
-		&VolumeSnapshotList{},
+		&Loadbalancer{},
+		&LoadbalancerList{},
 
-		&FloatingIPAssignment{},
-		&FloatingIPAssignmentList{},
+		&SpacesBucket{},
+		&SpacesBucketList{},
 
-		&Project{},
-		&ProjectList{},
-
-		&Volume{},
-		&VolumeList{},
+		&SshKey{},
+		&SshKeyList{},
 
 		&Tag{},
 		&TagList{},
 
+		&Volume{},
+		&VolumeList{},
+
+		&VolumeAttachment{},
+		&VolumeAttachmentList{},
+
+		&Droplet{},
+		&DropletList{},
+
+		&Project{},
+		&ProjectList{},
+
+		&VolumeSnapshot{},
+		&VolumeSnapshotList{},
+
 		&DatabaseCluster{},
 		&DatabaseClusterList{},
+
+		&DropletSnapshot{},
+		&DropletSnapshotList{},
+
+		&Cdn{},
+		&CdnList{},
 
 		&Domain{},
 		&DomainList{},
 
+		&FloatingIP{},
+		&FloatingIPList{},
+
+		&FloatingIPAssignment{},
+		&FloatingIPAssignmentList{},
+
 		&KubernetesNodePool{},
 		&KubernetesNodePoolList{},
+
+		&Record{},
+		&RecordList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,
