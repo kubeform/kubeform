@@ -118,9 +118,7 @@ type CodebuildProjectSpecSecondaryArtifacts struct {
 
 type CodebuildProjectSpecSecondarySourcesAuth struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Resource *core.LocalObjectReference `json:"resource,omitempty" tf:"resource,omitempty"`
-	Type     string                     `json:"type" tf:"type"`
+	Type string `json:"type" tf:"type"`
 }
 
 type CodebuildProjectSpecSecondarySources struct {
@@ -143,9 +141,7 @@ type CodebuildProjectSpecSecondarySources struct {
 
 type CodebuildProjectSpecSourceAuth struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Resource *core.LocalObjectReference `json:"resource,omitempty" tf:"resource,omitempty"`
-	Type     string                     `json:"type" tf:"type"`
+	Type string `json:"type" tf:"type"`
 }
 
 type CodebuildProjectSpecSource struct {
@@ -176,6 +172,8 @@ type CodebuildProjectSpecVpcConfig struct {
 }
 
 type CodebuildProjectSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	Artifacts []CodebuildProjectSpecArtifacts `json:"artifacts" tf:"artifacts"`
@@ -211,8 +209,7 @@ type CodebuildProjectSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	VpcConfig   []CodebuildProjectSpecVpcConfig `json:"vpcConfig,omitempty" tf:"vpc_config,omitempty"`
-	ProviderRef core.LocalObjectReference       `json:"providerRef" tf:"-"`
+	VpcConfig []CodebuildProjectSpecVpcConfig `json:"vpcConfig,omitempty" tf:"vpc_config,omitempty"`
 }
 
 type CodebuildProjectStatus struct {

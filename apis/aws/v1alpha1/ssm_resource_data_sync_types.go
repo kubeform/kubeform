@@ -30,10 +30,10 @@ type SsmResourceDataSyncSpecS3Destination struct {
 }
 
 type SsmResourceDataSyncSpec struct {
-	Name string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
 	S3Destination []SsmResourceDataSyncSpecS3Destination `json:"s3Destination" tf:"s3_destination"`
-	ProviderRef   core.LocalObjectReference              `json:"providerRef" tf:"-"`
 }
 
 type SsmResourceDataSyncStatus struct {

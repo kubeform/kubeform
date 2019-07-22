@@ -19,6 +19,7 @@ type LicensemanagerLicenseConfiguration struct {
 }
 
 type LicensemanagerLicenseConfigurationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -30,8 +31,7 @@ type LicensemanagerLicenseConfigurationSpec struct {
 	LicenseRules []string `json:"licenseRules,omitempty" tf:"license_rules,omitempty"`
 	Name         string   `json:"name" tf:"name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type LicensemanagerLicenseConfigurationStatus struct {

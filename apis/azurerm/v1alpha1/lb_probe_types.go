@@ -19,6 +19,7 @@ type LbProbe struct {
 }
 
 type LbProbeSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	IntervalInSeconds int    `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 	LoadbalancerID    string `json:"loadbalancerID" tf:"loadbalancer_id"`
@@ -32,9 +33,8 @@ type LbProbeSpec struct {
 	// +optional
 	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 	// +optional
-	RequestPath       string                    `json:"requestPath,omitempty" tf:"request_path,omitempty"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RequestPath       string `json:"requestPath,omitempty" tf:"request_path,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type LbProbeStatus struct {

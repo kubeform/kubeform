@@ -19,11 +19,7 @@ type KeyVaultCertificate struct {
 }
 
 type KeyVaultCertificateSpecCertificate struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	Contents *core.LocalObjectReference `json:"contents" tf:"contents"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 }
 
 type KeyVaultCertificateSpecCertificatePolicyIssuerParameters struct {
@@ -94,6 +90,8 @@ type KeyVaultCertificateSpecCertificatePolicy struct {
 }
 
 type KeyVaultCertificateSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Certificate []KeyVaultCertificateSpecCertificate `json:"certificate,omitempty" tf:"certificate,omitempty"`
@@ -106,8 +104,7 @@ type KeyVaultCertificateSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// Deprecated
-	VaultURI    string                    `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VaultURI string `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`
 }
 
 type KeyVaultCertificateStatus struct {

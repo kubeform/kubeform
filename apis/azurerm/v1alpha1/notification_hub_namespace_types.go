@@ -23,6 +23,7 @@ type NotificationHubNamespaceSpecSku struct {
 }
 
 type NotificationHubNamespaceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Enabled           bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	Location          string `json:"location" tf:"location"`
@@ -34,8 +35,7 @@ type NotificationHubNamespaceSpec struct {
 	// Deprecated
 	Sku []NotificationHubNamespaceSpecSku `json:"sku,omitempty" tf:"sku,omitempty"`
 	// +optional
-	SkuName     string                    `json:"skuName,omitempty" tf:"sku_name,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SkuName string `json:"skuName,omitempty" tf:"sku_name,omitempty"`
 }
 
 type NotificationHubNamespaceStatus struct {

@@ -19,6 +19,7 @@ type ComputeAttachedDisk struct {
 }
 
 type ComputeAttachedDiskSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
 	Disk       string `json:"disk" tf:"disk"`
@@ -28,8 +29,7 @@ type ComputeAttachedDiskSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type ComputeAttachedDiskStatus struct {

@@ -51,6 +51,7 @@ type CodedeployDeploymentConfigSpecTrafficRoutingConfig struct {
 }
 
 type CodedeployDeploymentConfigSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ComputePlatform      string `json:"computePlatform,omitempty" tf:"compute_platform,omitempty"`
 	DeploymentConfigName string `json:"deploymentConfigName" tf:"deployment_config_name"`
@@ -60,7 +61,6 @@ type CodedeployDeploymentConfigSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	TrafficRoutingConfig []CodedeployDeploymentConfigSpecTrafficRoutingConfig `json:"trafficRoutingConfig,omitempty" tf:"traffic_routing_config,omitempty"`
-	ProviderRef          core.LocalObjectReference                            `json:"providerRef" tf:"-"`
 }
 
 type CodedeployDeploymentConfigStatus struct {

@@ -19,7 +19,8 @@ type ComputeSubnetworkIamPolicy struct {
 }
 
 type ComputeSubnetworkIamPolicySpec struct {
-	PolicyData string `json:"policyData" tf:"policy_data"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	PolicyData  string                    `json:"policyData" tf:"policy_data"`
 	// +optional
 	// Deprecated
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
@@ -27,8 +28,7 @@ type ComputeSubnetworkIamPolicySpec struct {
 	// Deprecated
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// Deprecated
-	Subnetwork  string                    `json:"subnetwork" tf:"subnetwork"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Subnetwork string `json:"subnetwork" tf:"subnetwork"`
 }
 
 type ComputeSubnetworkIamPolicyStatus struct {

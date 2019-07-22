@@ -55,6 +55,7 @@ type EventgridEventSubscriptionSpecWebhookEndpoint struct {
 }
 
 type EventgridEventSubscriptionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	EventDeliverySchema string `json:"eventDeliverySchema,omitempty" tf:"event_delivery_schema,omitempty"`
 	// +optional
@@ -86,7 +87,6 @@ type EventgridEventSubscriptionSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	WebhookEndpoint []EventgridEventSubscriptionSpecWebhookEndpoint `json:"webhookEndpoint,omitempty" tf:"webhook_endpoint,omitempty"`
-	ProviderRef     core.LocalObjectReference                       `json:"providerRef" tf:"-"`
 }
 
 type EventgridEventSubscriptionStatus struct {

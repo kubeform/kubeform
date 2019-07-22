@@ -21,8 +21,6 @@ type FunctionApp struct {
 type FunctionAppSpecConnectionString struct {
 	Name string `json:"name" tf:"name"`
 	Type string `json:"type" tf:"type"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Value *core.LocalObjectReference `json:"value" tf:"value"`
 }
 
 type FunctionAppSpecIdentity struct {
@@ -41,7 +39,9 @@ type FunctionAppSpecSiteConfig struct {
 }
 
 type FunctionAppSpec struct {
-	AppServicePlanID string `json:"appServicePlanID" tf:"app_service_plan_id"`
+	Secret           *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef      core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	AppServicePlanID string                     `json:"appServicePlanID" tf:"app_service_plan_id"`
 	// +optional
 	AppSettings map[string]string `json:"appSettings,omitempty" tf:"app_settings,omitempty"`
 	// +optional
@@ -63,13 +63,10 @@ type FunctionAppSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SiteConfig []FunctionAppSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
-	// Sensitive Data. Provide secret name which contains one value only
-	StorageConnectionString *core.LocalObjectReference `json:"storageConnectionString" tf:"storage_connection_string"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Version     string                    `json:"version,omitempty" tf:"version,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Version string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type FunctionAppStatus struct {

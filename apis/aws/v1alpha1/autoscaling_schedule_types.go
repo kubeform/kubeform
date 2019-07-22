@@ -19,7 +19,8 @@ type AutoscalingSchedule struct {
 }
 
 type AutoscalingScheduleSpec struct {
-	AutoscalingGroupName string `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
+	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AutoscalingGroupName string                    `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
 	// +optional
 	DesiredCapacity int `json:"desiredCapacity,omitempty" tf:"desired_capacity,omitempty"`
 	// +optional
@@ -32,8 +33,7 @@ type AutoscalingScheduleSpec struct {
 	Recurrence          string `json:"recurrence,omitempty" tf:"recurrence,omitempty"`
 	ScheduledActionName string `json:"scheduledActionName" tf:"scheduled_action_name"`
 	// +optional
-	StartTime   string                    `json:"startTime,omitempty" tf:"start_time,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	StartTime string `json:"startTime,omitempty" tf:"start_time,omitempty"`
 }
 
 type AutoscalingScheduleStatus struct {

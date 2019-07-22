@@ -25,6 +25,7 @@ type ApiGatewayRestAPISpecEndpointConfiguration struct {
 }
 
 type ApiGatewayRestAPISpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ApiKeySource string `json:"apiKeySource,omitempty" tf:"api_key_source,omitempty"`
 	// +optional
@@ -41,8 +42,7 @@ type ApiGatewayRestAPISpec struct {
 	MinimumCompressionSize int    `json:"minimumCompressionSize,omitempty" tf:"minimum_compression_size,omitempty"`
 	Name                   string `json:"name" tf:"name"`
 	// +optional
-	Policy      string                    `json:"policy,omitempty" tf:"policy,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 }
 
 type ApiGatewayRestAPIStatus struct {

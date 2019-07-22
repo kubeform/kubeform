@@ -32,10 +32,8 @@ type VirtualMachineSpecIdentity struct {
 
 type VirtualMachineSpecOsProfile struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	AdminPassword *core.LocalObjectReference `json:"adminPassword,omitempty" tf:"admin_password,omitempty"`
-	AdminUsername string                     `json:"adminUsername" tf:"admin_username"`
-	ComputerName  string                     `json:"computerName" tf:"computer_name"`
+	AdminUsername string `json:"adminUsername" tf:"admin_username"`
+	ComputerName  string `json:"computerName" tf:"computer_name"`
 	// +optional
 	CustomData string `json:"customData,omitempty" tf:"custom_data,omitempty"`
 }
@@ -64,11 +62,9 @@ type VirtualMachineSpecOsProfileSecrets struct {
 }
 
 type VirtualMachineSpecOsProfileWindowsConfigAdditionalUnattendConfig struct {
-	Component string `json:"component" tf:"component"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Content     *core.LocalObjectReference `json:"content" tf:"content"`
-	Pass        string                     `json:"pass" tf:"pass"`
-	SettingName string                     `json:"settingName" tf:"setting_name"`
+	Component   string `json:"component" tf:"component"`
+	Pass        string `json:"pass" tf:"pass"`
+	SettingName string `json:"settingName" tf:"setting_name"`
 }
 
 type VirtualMachineSpecOsProfileWindowsConfigWinrm struct {
@@ -149,6 +145,8 @@ type VirtualMachineSpecStorageOsDisk struct {
 }
 
 type VirtualMachineSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	AvailabilitySetID string `json:"availabilitySetID,omitempty" tf:"availability_set_id,omitempty"`
 	// +optional
@@ -199,8 +197,7 @@ type VirtualMachineSpec struct {
 	VmSize string            `json:"vmSize" tf:"vm_size"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Zones       []string                  `json:"zones,omitempty" tf:"zones,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zones []string `json:"zones,omitempty" tf:"zones,omitempty"`
 }
 
 type VirtualMachineStatus struct {

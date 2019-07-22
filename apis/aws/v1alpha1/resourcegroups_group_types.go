@@ -25,13 +25,13 @@ type ResourcegroupsGroupSpecResourceQuery struct {
 }
 
 type ResourcegroupsGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	ResourceQuery []ResourcegroupsGroupSpecResourceQuery `json:"resourceQuery" tf:"resource_query"`
-	ProviderRef   core.LocalObjectReference              `json:"providerRef" tf:"-"`
 }
 
 type ResourcegroupsGroupStatus struct {

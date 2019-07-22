@@ -19,12 +19,12 @@ type SpannerDatabaseIamPolicy struct {
 }
 
 type SpannerDatabaseIamPolicySpec struct {
-	Database   string `json:"database" tf:"database"`
-	Instance   string `json:"instance" tf:"instance"`
-	PolicyData string `json:"policyData" tf:"policy_data"`
-	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Database    string                    `json:"database" tf:"database"`
+	Instance    string                    `json:"instance" tf:"instance"`
+	PolicyData  string                    `json:"policyData" tf:"policy_data"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type SpannerDatabaseIamPolicyStatus struct {

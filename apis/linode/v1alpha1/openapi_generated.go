@@ -2268,6 +2268,11 @@ func schema_kubeform_apis_linode_v1alpha1_DomainRecordSpec(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"domainID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -2334,13 +2339,8 @@ func schema_kubeform_apis_linode_v1alpha1_DomainRecordSpec(ref common.ReferenceC
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"domainID", "name", "recordType", "target", "providerRef"},
+				Required: []string{"providerRef", "domainID", "name", "recordType", "target"},
 			},
 		},
 		Dependencies: []string{
@@ -2385,6 +2385,11 @@ func schema_kubeform_apis_linode_v1alpha1_DomainSpec(ref common.ReferenceCallbac
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"axfrIPS": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -2484,13 +2489,8 @@ func schema_kubeform_apis_linode_v1alpha1_DomainSpec(ref common.ReferenceCallbac
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"domain", "type", "providerRef"},
+				Required: []string{"providerRef", "domain", "type"},
 			},
 		},
 		Dependencies: []string{
@@ -2625,6 +2625,11 @@ func schema_kubeform_apis_linode_v1alpha1_ImageSpec(ref common.ReferenceCallback
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -2649,13 +2654,8 @@ func schema_kubeform_apis_linode_v1alpha1_ImageSpec(ref common.ReferenceCallback
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"diskID", "label", "linodeID", "providerRef"},
+				Required: []string{"providerRef", "diskID", "label", "linodeID"},
 			},
 		},
 		Dependencies: []string{
@@ -2790,6 +2790,16 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"alerts": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -2900,18 +2910,6 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 							Format: "",
 						},
 					},
-					"rootPass": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
-					"stackscriptData": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one or more values",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"stackscriptID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -2949,13 +2947,8 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"region", "providerRef"},
+				Required: []string{"providerRef", "region"},
 			},
 		},
 		Dependencies: []string{
@@ -3534,22 +3527,10 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecDisk(ref common.ReferenceC
 							Format: "",
 						},
 					},
-					"rootPass": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"size": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
 							Format: "int32",
-						},
-					},
-					"stackscriptData": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one or more values",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
 					},
 					"stackscriptID": {
@@ -3559,11 +3540,9 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecDisk(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"label", "size"},
+				Required: []string{"label"},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
 	}
 }
 
@@ -3737,6 +3716,16 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"algorithm": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -3815,25 +3804,14 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"sslKey": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"stickiness": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"nodebalancerID", "providerRef"},
+				Required: []string{"providerRef", "nodebalancerID"},
 			},
 		},
 		Dependencies: []string{
@@ -4015,6 +3993,11 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerNodeSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"address": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4051,13 +4034,8 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerNodeSpec(ref common.Refere
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"address", "configID", "label", "nodebalancerID", "providerRef"},
+				Required: []string{"providerRef", "address", "configID", "label", "nodebalancerID"},
 			},
 		},
 		Dependencies: []string{
@@ -4102,6 +4080,11 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerSpec(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"clientConnThrottle": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -4133,13 +4116,8 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerSpec(ref common.ReferenceC
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"region", "providerRef"},
+				Required: []string{"providerRef", "region"},
 			},
 		},
 		Dependencies: []string{
@@ -4274,6 +4252,11 @@ func schema_kubeform_apis_linode_v1alpha1_RdnsSpec(ref common.ReferenceCallback)
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"address": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4286,13 +4269,8 @@ func schema_kubeform_apis_linode_v1alpha1_RdnsSpec(ref common.ReferenceCallback)
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"address", "rdns", "providerRef"},
+				Required: []string{"providerRef", "address", "rdns"},
 			},
 		},
 		Dependencies: []string{
@@ -4427,6 +4405,11 @@ func schema_kubeform_apis_linode_v1alpha1_SshkeySpec(ref common.ReferenceCallbac
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4439,13 +4422,8 @@ func schema_kubeform_apis_linode_v1alpha1_SshkeySpec(ref common.ReferenceCallbac
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"label", "sshKey", "providerRef"},
+				Required: []string{"providerRef", "label", "sshKey"},
 			},
 		},
 		Dependencies: []string{
@@ -4580,6 +4558,11 @@ func schema_kubeform_apis_linode_v1alpha1_StackscriptSpec(ref common.ReferenceCa
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4635,13 +4618,8 @@ func schema_kubeform_apis_linode_v1alpha1_StackscriptSpec(ref common.ReferenceCa
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"description", "images", "label", "script", "providerRef"},
+				Required: []string{"providerRef", "description", "images", "label", "script"},
 			},
 		},
 		Dependencies: []string{
@@ -4786,6 +4764,11 @@ func schema_kubeform_apis_linode_v1alpha1_TokenSpec(ref common.ReferenceCallback
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"expiry": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4804,13 +4787,8 @@ func schema_kubeform_apis_linode_v1alpha1_TokenSpec(ref common.ReferenceCallback
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"scopes", "providerRef"},
+				Required: []string{"providerRef", "scopes"},
 			},
 		},
 		Dependencies: []string{
@@ -4945,6 +4923,11 @@ func schema_kubeform_apis_linode_v1alpha1_VolumeSpec(ref common.ReferenceCallbac
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"label": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4982,13 +4965,8 @@ func schema_kubeform_apis_linode_v1alpha1_VolumeSpec(ref common.ReferenceCallbac
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"label", "region", "providerRef"},
+				Required: []string{"providerRef", "label", "region"},
 			},
 		},
 		Dependencies: []string{

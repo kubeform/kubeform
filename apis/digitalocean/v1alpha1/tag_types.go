@@ -19,8 +19,8 @@ type Tag struct {
 }
 
 type TagSpec struct {
-	Name        string                    `json:"name" tf:"name"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
 }
 
 type TagStatus struct {

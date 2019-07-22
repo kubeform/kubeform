@@ -19,13 +19,13 @@ type PubsubTopicIamBinding struct {
 }
 
 type PubsubTopicIamBindingSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:UniqueItems=true
 	Members []string `json:"members" tf:"members"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	Role        string                    `json:"role" tf:"role"`
-	Topic       string                    `json:"topic" tf:"topic"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Role    string `json:"role" tf:"role"`
+	Topic   string `json:"topic" tf:"topic"`
 }
 
 type PubsubTopicIamBindingStatus struct {

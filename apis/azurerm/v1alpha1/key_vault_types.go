@@ -50,6 +50,7 @@ type KeyVaultSpecSku struct {
 }
 
 type KeyVaultSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1024
 	AccessPolicy []KeyVaultSpecAccessPolicy `json:"accessPolicy,omitempty" tf:"access_policy,omitempty"`
@@ -72,9 +73,8 @@ type KeyVaultSpec struct {
 	// +optional
 	SkuName string `json:"skuName,omitempty" tf:"sku_name,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	TenantID    string                    `json:"tenantID" tf:"tenant_id"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	TenantID string            `json:"tenantID" tf:"tenant_id"`
 }
 
 type KeyVaultStatus struct {

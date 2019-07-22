@@ -24,6 +24,7 @@ type ConfigDeliveryChannelSpecSnapshotDeliveryProperties struct {
 }
 
 type ConfigDeliveryChannelSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Name         string `json:"name,omitempty" tf:"name,omitempty"`
 	S3BucketName string `json:"s3BucketName" tf:"s3_bucket_name"`
@@ -33,8 +34,7 @@ type ConfigDeliveryChannelSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SnapshotDeliveryProperties []ConfigDeliveryChannelSpecSnapshotDeliveryProperties `json:"snapshotDeliveryProperties,omitempty" tf:"snapshot_delivery_properties,omitempty"`
 	// +optional
-	SnsTopicArn string                    `json:"snsTopicArn,omitempty" tf:"sns_topic_arn,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SnsTopicArn string `json:"snsTopicArn,omitempty" tf:"sns_topic_arn,omitempty"`
 }
 
 type ConfigDeliveryChannelStatus struct {

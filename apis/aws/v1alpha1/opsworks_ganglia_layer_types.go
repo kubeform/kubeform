@@ -31,6 +31,7 @@ type OpsworksGangliaLayerSpecEbsVolume struct {
 }
 
 type OpsworksGangliaLayerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AutoAssignElasticIPS bool `json:"autoAssignElasticIPS,omitempty" tf:"auto_assign_elastic_ips,omitempty"`
 	// +optional
@@ -77,8 +78,7 @@ type OpsworksGangliaLayerSpec struct {
 	// +optional
 	UseEbsOptimizedInstances bool `json:"useEbsOptimizedInstances,omitempty" tf:"use_ebs_optimized_instances,omitempty"`
 	// +optional
-	Username    string                    `json:"username,omitempty" tf:"username,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type OpsworksGangliaLayerStatus struct {

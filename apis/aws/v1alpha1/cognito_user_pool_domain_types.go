@@ -19,11 +19,11 @@ type CognitoUserPoolDomain struct {
 }
 
 type CognitoUserPoolDomainSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
-	CertificateArn string                    `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
-	Domain         string                    `json:"domain" tf:"domain"`
-	UserPoolID     string                    `json:"userPoolID" tf:"user_pool_id"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	CertificateArn string `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
+	Domain         string `json:"domain" tf:"domain"`
+	UserPoolID     string `json:"userPoolID" tf:"user_pool_id"`
 }
 
 type CognitoUserPoolDomainStatus struct {

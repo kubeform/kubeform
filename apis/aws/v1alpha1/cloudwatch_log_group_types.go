@@ -19,6 +19,7 @@ type CloudwatchLogGroup struct {
 }
 
 type CloudwatchLogGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional
@@ -28,8 +29,7 @@ type CloudwatchLogGroupSpec struct {
 	// +optional
 	RetentionInDays int `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type CloudwatchLogGroupStatus struct {

@@ -34,7 +34,8 @@ type MssqlElasticpoolSpecSku struct {
 }
 
 type MssqlElasticpoolSpec struct {
-	Location string `json:"location" tf:"location"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Location    string                    `json:"location" tf:"location"`
 	// +optional
 	MaxSizeBytes int `json:"maxSizeBytes,omitempty" tf:"max_size_bytes,omitempty"`
 	// +optional
@@ -49,8 +50,7 @@ type MssqlElasticpoolSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	ZoneRedundant bool                      `json:"zoneRedundant,omitempty" tf:"zone_redundant,omitempty"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ZoneRedundant bool `json:"zoneRedundant,omitempty" tf:"zone_redundant,omitempty"`
 }
 
 type MssqlElasticpoolStatus struct {

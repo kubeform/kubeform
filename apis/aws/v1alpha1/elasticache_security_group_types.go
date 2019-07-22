@@ -19,12 +19,12 @@ type ElasticacheSecurityGroup struct {
 }
 
 type ElasticacheSecurityGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
-	SecurityGroupNames []string                  `json:"securityGroupNames" tf:"security_group_names"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SecurityGroupNames []string `json:"securityGroupNames" tf:"security_group_names"`
 }
 
 type ElasticacheSecurityGroupStatus struct {

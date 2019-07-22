@@ -39,9 +39,7 @@ type AlbListenerRuleSpecActionAuthenticateOidc struct {
 	AuthenticationRequestExtraParams map[string]string `json:"authenticationRequestExtraParams,omitempty" tf:"authentication_request_extra_params,omitempty"`
 	AuthorizationEndpoint            string            `json:"authorizationEndpoint" tf:"authorization_endpoint"`
 	ClientID                         string            `json:"clientID" tf:"client_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret *core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
-	Issuer       string                     `json:"issuer" tf:"issuer"`
+	Issuer                           string            `json:"issuer" tf:"issuer"`
 	// +optional
 	OnUnauthenticatedRequest string `json:"onUnauthenticatedRequest,omitempty" tf:"on_unauthenticated_request,omitempty"`
 	// +optional
@@ -105,13 +103,14 @@ type AlbListenerRuleSpecCondition struct {
 }
 
 type AlbListenerRuleSpec struct {
-	Action []AlbListenerRuleSpecAction `json:"action" tf:"action"`
+	Secret      *core.LocalObjectReference  `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference   `json:"providerRef" tf:"-"`
+	Action      []AlbListenerRuleSpecAction `json:"action" tf:"action"`
 	// +kubebuilder:validation:UniqueItems=true
 	Condition   []AlbListenerRuleSpecCondition `json:"condition" tf:"condition"`
 	ListenerArn string                         `json:"listenerArn" tf:"listener_arn"`
 	// +optional
-	Priority    int                       `json:"priority,omitempty" tf:"priority,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Priority int `json:"priority,omitempty" tf:"priority,omitempty"`
 }
 
 type AlbListenerRuleStatus struct {

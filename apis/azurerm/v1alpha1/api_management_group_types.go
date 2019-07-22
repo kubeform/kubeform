@@ -19,7 +19,8 @@ type ApiManagementGroup struct {
 }
 
 type ApiManagementGroupSpec struct {
-	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApiManagementName string                    `json:"apiManagementName" tf:"api_management_name"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	DisplayName string `json:"displayName" tf:"display_name"`
@@ -28,8 +29,7 @@ type ApiManagementGroupSpec struct {
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Type        string                    `json:"type,omitempty" tf:"type,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type ApiManagementGroupStatus struct {

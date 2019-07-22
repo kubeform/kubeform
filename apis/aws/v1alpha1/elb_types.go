@@ -46,6 +46,7 @@ type ElbSpecListener struct {
 }
 
 type ElbSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AccessLogs []ElbSpecAccessLogs `json:"accessLogs,omitempty" tf:"access_logs,omitempty"`
@@ -83,8 +84,7 @@ type ElbSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Subnets []string `json:"subnets,omitempty" tf:"subnets,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ElbStatus struct {

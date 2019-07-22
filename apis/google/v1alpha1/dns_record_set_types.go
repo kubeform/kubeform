@@ -19,14 +19,14 @@ type DnsRecordSet struct {
 }
 
 type DnsRecordSetSpec struct {
-	ManagedZone string `json:"managedZone" tf:"managed_zone"`
-	Name        string `json:"name" tf:"name"`
-	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	Rrdatas     []string                  `json:"rrdatas" tf:"rrdatas"`
-	Ttl         int                       `json:"ttl" tf:"ttl"`
-	Type        string                    `json:"type" tf:"type"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ManagedZone string                    `json:"managedZone" tf:"managed_zone"`
+	Name        string                    `json:"name" tf:"name"`
+	// +optional
+	Project string   `json:"project,omitempty" tf:"project,omitempty"`
+	Rrdatas []string `json:"rrdatas" tf:"rrdatas"`
+	Ttl     int      `json:"ttl" tf:"ttl"`
+	Type    string   `json:"type" tf:"type"`
 }
 
 type DnsRecordSetStatus struct {

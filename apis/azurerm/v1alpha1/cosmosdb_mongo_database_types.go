@@ -19,10 +19,10 @@ type CosmosdbMongoDatabase struct {
 }
 
 type CosmosdbMongoDatabaseSpec struct {
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
 	AccountName       string                    `json:"accountName" tf:"account_name"`
 	Name              string                    `json:"name" tf:"name"`
 	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type CosmosdbMongoDatabaseStatus struct {

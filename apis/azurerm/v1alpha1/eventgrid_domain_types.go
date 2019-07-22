@@ -43,6 +43,7 @@ type EventgridDomainSpecInputMappingFields struct {
 }
 
 type EventgridDomainSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	InputMappingDefaultValues []EventgridDomainSpecInputMappingDefaultValues `json:"inputMappingDefaultValues,omitempty" tf:"input_mapping_default_values,omitempty"`
@@ -55,8 +56,7 @@ type EventgridDomainSpec struct {
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type EventgridDomainStatus struct {

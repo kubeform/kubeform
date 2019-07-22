@@ -40,7 +40,8 @@ type DefaultRouteTableSpecRoute struct {
 }
 
 type DefaultRouteTableSpec struct {
-	DefaultRouteTableID string `json:"defaultRouteTableID" tf:"default_route_table_id"`
+	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
+	DefaultRouteTableID string                    `json:"defaultRouteTableID" tf:"default_route_table_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	PropagatingVgws []string `json:"propagatingVgws,omitempty" tf:"propagating_vgws,omitempty"`
@@ -48,8 +49,7 @@ type DefaultRouteTableSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Route []DefaultRouteTableSpecRoute `json:"route,omitempty" tf:"route,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type DefaultRouteTableStatus struct {

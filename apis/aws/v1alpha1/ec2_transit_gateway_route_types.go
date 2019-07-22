@@ -19,13 +19,13 @@ type Ec2TransitGatewayRoute struct {
 }
 
 type Ec2TransitGatewayRouteSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Blackhole            bool   `json:"blackhole,omitempty" tf:"blackhole,omitempty"`
 	DestinationCIDRBlock string `json:"destinationCIDRBlock" tf:"destination_cidr_block"`
 	// +optional
-	TransitGatewayAttachmentID string                    `json:"transitGatewayAttachmentID,omitempty" tf:"transit_gateway_attachment_id,omitempty"`
-	TransitGatewayRouteTableID string                    `json:"transitGatewayRouteTableID" tf:"transit_gateway_route_table_id"`
-	ProviderRef                core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TransitGatewayAttachmentID string `json:"transitGatewayAttachmentID,omitempty" tf:"transit_gateway_attachment_id,omitempty"`
+	TransitGatewayRouteTableID string `json:"transitGatewayRouteTableID" tf:"transit_gateway_route_table_id"`
 }
 
 type Ec2TransitGatewayRouteStatus struct {

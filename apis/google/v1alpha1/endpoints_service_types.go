@@ -19,6 +19,7 @@ type EndpointsService struct {
 }
 
 type EndpointsServiceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	GrpcConfig string `json:"grpcConfig,omitempty" tf:"grpc_config,omitempty"`
 	// +optional
@@ -29,9 +30,8 @@ type EndpointsServiceSpec struct {
 	// Deprecated
 	ProtocOutput string `json:"protocOutput,omitempty" tf:"protoc_output,omitempty"`
 	// +optional
-	ProtocOutputBase64 string                    `json:"protocOutputBase64,omitempty" tf:"protoc_output_base64,omitempty"`
-	ServiceName        string                    `json:"serviceName" tf:"service_name"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ProtocOutputBase64 string `json:"protocOutputBase64,omitempty" tf:"protoc_output_base64,omitempty"`
+	ServiceName        string `json:"serviceName" tf:"service_name"`
 }
 
 type EndpointsServiceStatus struct {

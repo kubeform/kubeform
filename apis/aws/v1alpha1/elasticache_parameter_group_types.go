@@ -24,14 +24,14 @@ type ElasticacheParameterGroupSpecParameter struct {
 }
 
 type ElasticacheParameterGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Family      string `json:"family" tf:"family"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Parameter   []ElasticacheParameterGroupSpecParameter `json:"parameter,omitempty" tf:"parameter,omitempty"`
-	ProviderRef core.LocalObjectReference                `json:"providerRef" tf:"-"`
+	Parameter []ElasticacheParameterGroupSpecParameter `json:"parameter,omitempty" tf:"parameter,omitempty"`
 }
 
 type ElasticacheParameterGroupStatus struct {

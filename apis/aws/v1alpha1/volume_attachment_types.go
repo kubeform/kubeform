@@ -19,14 +19,14 @@ type VolumeAttachment struct {
 }
 
 type VolumeAttachmentSpec struct {
-	DeviceName string `json:"deviceName" tf:"device_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	DeviceName  string                    `json:"deviceName" tf:"device_name"`
 	// +optional
 	ForceDetach bool   `json:"forceDetach,omitempty" tf:"force_detach,omitempty"`
 	InstanceID  string `json:"instanceID" tf:"instance_id"`
 	// +optional
-	SkipDestroy bool                      `json:"skipDestroy,omitempty" tf:"skip_destroy,omitempty"`
-	VolumeID    string                    `json:"volumeID" tf:"volume_id"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SkipDestroy bool   `json:"skipDestroy,omitempty" tf:"skip_destroy,omitempty"`
+	VolumeID    string `json:"volumeID" tf:"volume_id"`
 }
 
 type VolumeAttachmentStatus struct {

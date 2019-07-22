@@ -46,6 +46,7 @@ type CloudwatchMetricAlarmSpecMetricQuery struct {
 }
 
 type CloudwatchMetricAlarmSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ActionsEnabled bool `json:"actionsEnabled,omitempty" tf:"actions_enabled,omitempty"`
 	// +optional
@@ -87,8 +88,7 @@ type CloudwatchMetricAlarmSpec struct {
 	// +optional
 	TreatMissingData string `json:"treatMissingData,omitempty" tf:"treat_missing_data,omitempty"`
 	// +optional
-	Unit        string                    `json:"unit,omitempty" tf:"unit,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Unit string `json:"unit,omitempty" tf:"unit,omitempty"`
 }
 
 type CloudwatchMetricAlarmStatus struct {

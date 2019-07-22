@@ -19,6 +19,7 @@ type Vpc struct {
 }
 
 type VpcSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AssignGeneratedIpv6CIDRBlock bool   `json:"assignGeneratedIpv6CIDRBlock,omitempty" tf:"assign_generated_ipv6_cidr_block,omitempty"`
 	CidrBlock                    string `json:"cidrBlock" tf:"cidr_block"`
@@ -33,8 +34,7 @@ type VpcSpec struct {
 	// +optional
 	InstanceTenancy string `json:"instanceTenancy,omitempty" tf:"instance_tenancy,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type VpcStatus struct {

@@ -19,9 +19,9 @@ type ElbAttachment struct {
 }
 
 type ElbAttachmentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	Elb         string                    `json:"elb" tf:"elb"`
 	Instance    string                    `json:"instance" tf:"instance"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ElbAttachmentStatus struct {

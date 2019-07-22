@@ -19,13 +19,13 @@ type DmsReplicationSubnetGroup struct {
 }
 
 type DmsReplicationSubnetGroupSpec struct {
-	ReplicationSubnetGroupDescription string `json:"replicationSubnetGroupDescription" tf:"replication_subnet_group_description"`
-	ReplicationSubnetGroupID          string `json:"replicationSubnetGroupID" tf:"replication_subnet_group_id"`
+	ProviderRef                       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ReplicationSubnetGroupDescription string                    `json:"replicationSubnetGroupDescription" tf:"replication_subnet_group_description"`
+	ReplicationSubnetGroupID          string                    `json:"replicationSubnetGroupID" tf:"replication_subnet_group_id"`
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type DmsReplicationSubnetGroupStatus struct {

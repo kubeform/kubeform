@@ -60,6 +60,7 @@ type ComposerEnvironmentSpecConfig struct {
 }
 
 type ComposerEnvironmentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Config []ComposerEnvironmentSpecConfig `json:"config,omitempty" tf:"config,omitempty"`
@@ -69,8 +70,7 @@ type ComposerEnvironmentSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region      string                    `json:"region,omitempty" tf:"region,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
 }
 
 type ComposerEnvironmentStatus struct {

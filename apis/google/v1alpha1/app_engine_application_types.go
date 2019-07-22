@@ -24,6 +24,7 @@ type AppEngineApplicationSpecFeatureSettings struct {
 }
 
 type AppEngineApplicationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AuthDomain string `json:"authDomain,omitempty" tf:"auth_domain,omitempty"`
 	// +optional
@@ -33,8 +34,7 @@ type AppEngineApplicationSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	ServingStatus string                    `json:"servingStatus,omitempty" tf:"serving_status,omitempty"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ServingStatus string `json:"servingStatus,omitempty" tf:"serving_status,omitempty"`
 }
 
 type AppEngineApplicationStatus struct {

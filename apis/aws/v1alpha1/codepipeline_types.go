@@ -55,6 +55,7 @@ type CodepipelineSpecStage struct {
 }
 
 type CodepipelineSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	ArtifactStore []CodepipelineSpecArtifactStore `json:"artifactStore" tf:"artifact_store"`
 	Name          string                          `json:"name" tf:"name"`
@@ -62,8 +63,7 @@ type CodepipelineSpec struct {
 	// +kubebuilder:validation:MinItems=2
 	Stage []CodepipelineSpecStage `json:"stage" tf:"stage"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type CodepipelineStatus struct {

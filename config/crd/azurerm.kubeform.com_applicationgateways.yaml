@@ -400,19 +400,9 @@ spec:
             authenticationCertificate:
               items:
                 properties:
-                  data:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   name:
                     type: string
                 required:
-                - data
                 - name
                 type: object
               type: array
@@ -774,6 +764,15 @@ spec:
                 - name
                 type: object
               type: array
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             sku:
               items:
                 properties:
@@ -792,30 +791,10 @@ spec:
             sslCertificate:
               items:
                 properties:
-                  data:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   name:
                     type: string
-                  password:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                 required:
-                - data
                 - name
-                - password
                 type: object
               type: array
             sslPolicy:

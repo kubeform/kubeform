@@ -26,6 +26,7 @@ type ComputeRegionBackendServiceSpecBackend struct {
 }
 
 type ComputeRegionBackendServiceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Backend []ComputeRegionBackendServiceSpecBackend `json:"backend,omitempty" tf:"backend,omitempty"`
@@ -47,8 +48,7 @@ type ComputeRegionBackendServiceSpec struct {
 	// +optional
 	SessionAffinity string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 	// +optional
-	TimeoutSec  int                       `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TimeoutSec int `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
 }
 
 type ComputeRegionBackendServiceStatus struct {

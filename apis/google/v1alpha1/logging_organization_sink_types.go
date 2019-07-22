@@ -19,14 +19,14 @@ type LoggingOrganizationSink struct {
 }
 
 type LoggingOrganizationSinkSpec struct {
-	Destination string `json:"destination" tf:"destination"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Destination string                    `json:"destination" tf:"destination"`
 	// +optional
 	Filter string `json:"filter,omitempty" tf:"filter,omitempty"`
 	// +optional
-	IncludeChildren bool                      `json:"includeChildren,omitempty" tf:"include_children,omitempty"`
-	Name            string                    `json:"name" tf:"name"`
-	OrgID           string                    `json:"orgID" tf:"org_id"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	IncludeChildren bool   `json:"includeChildren,omitempty" tf:"include_children,omitempty"`
+	Name            string `json:"name" tf:"name"`
+	OrgID           string `json:"orgID" tf:"org_id"`
 }
 
 type LoggingOrganizationSinkStatus struct {

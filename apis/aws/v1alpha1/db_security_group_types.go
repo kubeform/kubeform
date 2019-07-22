@@ -30,14 +30,14 @@ type DbSecurityGroupSpecIngress struct {
 }
 
 type DbSecurityGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
 	Ingress []DbSecurityGroupSpecIngress `json:"ingress" tf:"ingress"`
 	Name    string                       `json:"name" tf:"name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type DbSecurityGroupStatus struct {

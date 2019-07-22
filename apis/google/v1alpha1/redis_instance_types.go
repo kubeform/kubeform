@@ -19,6 +19,7 @@ type RedisInstance struct {
 }
 
 type RedisInstanceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AlternativeLocationID string `json:"alternativeLocationID,omitempty" tf:"alternative_location_id,omitempty"`
 	// +optional
@@ -42,8 +43,7 @@ type RedisInstanceSpec struct {
 	// +optional
 	ReservedIPRange string `json:"reservedIPRange,omitempty" tf:"reserved_ip_range,omitempty"`
 	// +optional
-	Tier        string                    `json:"tier,omitempty" tf:"tier,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tier string `json:"tier,omitempty" tf:"tier,omitempty"`
 }
 
 type RedisInstanceStatus struct {

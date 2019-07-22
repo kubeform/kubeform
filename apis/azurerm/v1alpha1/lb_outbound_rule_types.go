@@ -23,6 +23,7 @@ type LbOutboundRuleSpecFrontendIPConfiguration struct {
 }
 
 type LbOutboundRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllocatedOutboundPorts int    `json:"allocatedOutboundPorts,omitempty" tf:"allocated_outbound_ports,omitempty"`
 	BackendAddressPoolID   string `json:"backendAddressPoolID" tf:"backend_address_pool_id"`
@@ -32,12 +33,11 @@ type LbOutboundRuleSpec struct {
 	// +kubebuilder:validation:MinItems=1
 	FrontendIPConfiguration []LbOutboundRuleSpecFrontendIPConfiguration `json:"frontendIPConfiguration,omitempty" tf:"frontend_ip_configuration,omitempty"`
 	// +optional
-	IdleTimeoutInMinutes int                       `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
-	LoadbalancerID       string                    `json:"loadbalancerID" tf:"loadbalancer_id"`
-	Name                 string                    `json:"name" tf:"name"`
-	Protocol             string                    `json:"protocol" tf:"protocol"`
-	ResourceGroupName    string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
+	IdleTimeoutInMinutes int    `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
+	LoadbalancerID       string `json:"loadbalancerID" tf:"loadbalancer_id"`
+	Name                 string `json:"name" tf:"name"`
+	Protocol             string `json:"protocol" tf:"protocol"`
+	ResourceGroupName    string `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type LbOutboundRuleStatus struct {

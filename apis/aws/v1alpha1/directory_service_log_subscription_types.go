@@ -19,9 +19,9 @@ type DirectoryServiceLogSubscription struct {
 }
 
 type DirectoryServiceLogSubscriptionSpec struct {
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 	DirectoryID  string                    `json:"directoryID" tf:"directory_id"`
 	LogGroupName string                    `json:"logGroupName" tf:"log_group_name"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type DirectoryServiceLogSubscriptionStatus struct {

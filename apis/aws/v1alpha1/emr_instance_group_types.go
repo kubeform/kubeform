@@ -28,6 +28,7 @@ type EmrInstanceGroupSpecEbsConfig struct {
 }
 
 type EmrInstanceGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AutoscalingPolicy string `json:"autoscalingPolicy,omitempty" tf:"autoscaling_policy,omitempty"`
 	// +optional
@@ -42,8 +43,7 @@ type EmrInstanceGroupSpec struct {
 	InstanceCount int    `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
 	InstanceType  string `json:"instanceType" tf:"instance_type"`
 	// +optional
-	Name        string                    `json:"name,omitempty" tf:"name,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type EmrInstanceGroupStatus struct {

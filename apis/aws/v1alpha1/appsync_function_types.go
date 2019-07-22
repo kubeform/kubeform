@@ -19,16 +19,16 @@ type AppsyncFunction struct {
 }
 
 type AppsyncFunctionSpec struct {
-	ApiID      string `json:"apiID" tf:"api_id"`
-	DataSource string `json:"dataSource" tf:"data_source"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApiID       string                    `json:"apiID" tf:"api_id"`
+	DataSource  string                    `json:"dataSource" tf:"data_source"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	FunctionVersion         string                    `json:"functionVersion,omitempty" tf:"function_version,omitempty"`
-	Name                    string                    `json:"name" tf:"name"`
-	RequestMappingTemplate  string                    `json:"requestMappingTemplate" tf:"request_mapping_template"`
-	ResponseMappingTemplate string                    `json:"responseMappingTemplate" tf:"response_mapping_template"`
-	ProviderRef             core.LocalObjectReference `json:"providerRef" tf:"-"`
+	FunctionVersion         string `json:"functionVersion,omitempty" tf:"function_version,omitempty"`
+	Name                    string `json:"name" tf:"name"`
+	RequestMappingTemplate  string `json:"requestMappingTemplate" tf:"request_mapping_template"`
+	ResponseMappingTemplate string `json:"responseMappingTemplate" tf:"response_mapping_template"`
 }
 
 type AppsyncFunctionStatus struct {

@@ -19,12 +19,12 @@ type IotThing struct {
 }
 
 type IotThingSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Attributes map[string]string `json:"attributes,omitempty" tf:"attributes,omitempty"`
 	Name       string            `json:"name" tf:"name"`
 	// +optional
-	ThingTypeName string                    `json:"thingTypeName,omitempty" tf:"thing_type_name,omitempty"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ThingTypeName string `json:"thingTypeName,omitempty" tf:"thing_type_name,omitempty"`
 }
 
 type IotThingStatus struct {

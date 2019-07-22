@@ -62,6 +62,7 @@ type WafregionalWebACLSpecRule struct {
 }
 
 type WafregionalWebACLSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	DefaultAction []WafregionalWebACLSpecDefaultAction `json:"defaultAction" tf:"default_action"`
 	// +optional
@@ -71,8 +72,7 @@ type WafregionalWebACLSpec struct {
 	Name                 string                                      `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Rule        []WafregionalWebACLSpecRule `json:"rule,omitempty" tf:"rule,omitempty"`
-	ProviderRef core.LocalObjectReference   `json:"providerRef" tf:"-"`
+	Rule []WafregionalWebACLSpecRule `json:"rule,omitempty" tf:"rule,omitempty"`
 }
 
 type WafregionalWebACLStatus struct {

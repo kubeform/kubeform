@@ -19,14 +19,14 @@ type LoggingOrganizationExclusion struct {
 }
 
 type LoggingOrganizationExclusionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	Disabled    bool                      `json:"disabled,omitempty" tf:"disabled,omitempty"`
-	Filter      string                    `json:"filter" tf:"filter"`
-	Name        string                    `json:"name" tf:"name"`
-	OrgID       string                    `json:"orgID" tf:"org_id"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Disabled bool   `json:"disabled,omitempty" tf:"disabled,omitempty"`
+	Filter   string `json:"filter" tf:"filter"`
+	Name     string `json:"name" tf:"name"`
+	OrgID    string `json:"orgID" tf:"org_id"`
 }
 
 type LoggingOrganizationExclusionStatus struct {

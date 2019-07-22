@@ -24,13 +24,13 @@ type DaxParameterGroupSpecParameters struct {
 }
 
 type DaxParameterGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Parameters  []DaxParameterGroupSpecParameters `json:"parameters,omitempty" tf:"parameters,omitempty"`
-	ProviderRef core.LocalObjectReference         `json:"providerRef" tf:"-"`
+	Parameters []DaxParameterGroupSpecParameters `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type DaxParameterGroupStatus struct {

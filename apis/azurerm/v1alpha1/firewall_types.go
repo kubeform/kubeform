@@ -29,14 +29,14 @@ type FirewallSpecIpConfiguration struct {
 }
 
 type FirewallSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	IpConfiguration   []FirewallSpecIpConfiguration `json:"ipConfiguration" tf:"ip_configuration"`
 	Location          string                        `json:"location" tf:"location"`
 	Name              string                        `json:"name" tf:"name"`
 	ResourceGroupName string                        `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type FirewallStatus struct {

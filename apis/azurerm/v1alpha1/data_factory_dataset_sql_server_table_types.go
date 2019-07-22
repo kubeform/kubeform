@@ -27,6 +27,7 @@ type DataFactoryDatasetSQLServerTableSpecSchemaColumn struct {
 }
 
 type DataFactoryDatasetSQLServerTableSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AdditionalProperties map[string]string `json:"additionalProperties,omitempty" tf:"additional_properties,omitempty"`
 	// +optional
@@ -44,8 +45,7 @@ type DataFactoryDatasetSQLServerTableSpec struct {
 	// +optional
 	SchemaColumn []DataFactoryDatasetSQLServerTableSpecSchemaColumn `json:"schemaColumn,omitempty" tf:"schema_column,omitempty"`
 	// +optional
-	TableName   string                    `json:"tableName,omitempty" tf:"table_name,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TableName string `json:"tableName,omitempty" tf:"table_name,omitempty"`
 }
 
 type DataFactoryDatasetSQLServerTableStatus struct {

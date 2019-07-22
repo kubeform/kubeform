@@ -19,9 +19,9 @@ type IamRolePolicyAttachment struct {
 }
 
 type IamRolePolicyAttachmentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	PolicyArn   string                    `json:"policyArn" tf:"policy_arn"`
 	Role        string                    `json:"role" tf:"role"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type IamRolePolicyAttachmentStatus struct {

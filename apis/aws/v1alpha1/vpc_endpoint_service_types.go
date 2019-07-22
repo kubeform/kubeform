@@ -19,7 +19,8 @@ type VpcEndpointService struct {
 }
 
 type VpcEndpointServiceSpec struct {
-	AcceptanceRequired bool `json:"acceptanceRequired" tf:"acceptance_required"`
+	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AcceptanceRequired bool                      `json:"acceptanceRequired" tf:"acceptance_required"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AllowedPrincipals []string `json:"allowedPrincipals,omitempty" tf:"allowed_principals,omitempty"`
@@ -27,8 +28,7 @@ type VpcEndpointServiceSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	NetworkLoadBalancerArns []string `json:"networkLoadBalancerArns" tf:"network_load_balancer_arns"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type VpcEndpointServiceStatus struct {

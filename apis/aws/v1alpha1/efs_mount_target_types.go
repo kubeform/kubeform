@@ -19,14 +19,14 @@ type EfsMountTarget struct {
 }
 
 type EfsMountTargetSpec struct {
-	FileSystemID string `json:"fileSystemID" tf:"file_system_id"`
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	FileSystemID string                    `json:"fileSystemID" tf:"file_system_id"`
 	// +optional
 	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	SecurityGroups []string                  `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
-	SubnetID       string                    `json:"subnetID" tf:"subnet_id"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
+	SubnetID       string   `json:"subnetID" tf:"subnet_id"`
 }
 
 type EfsMountTargetStatus struct {

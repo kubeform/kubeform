@@ -25,8 +25,9 @@ type CosmosdbMongoCollectionSpecIndexes struct {
 }
 
 type CosmosdbMongoCollectionSpec struct {
-	AccountName  string `json:"accountName" tf:"account_name"`
-	DatabaseName string `json:"databaseName" tf:"database_name"`
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AccountName  string                    `json:"accountName" tf:"account_name"`
+	DatabaseName string                    `json:"databaseName" tf:"database_name"`
 	// +optional
 	DefaultTtlSeconds int `json:"defaultTtlSeconds,omitempty" tf:"default_ttl_seconds,omitempty"`
 	// +optional
@@ -35,8 +36,7 @@ type CosmosdbMongoCollectionSpec struct {
 	Name              string                               `json:"name" tf:"name"`
 	ResourceGroupName string                               `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	ShardKey    string                    `json:"shardKey,omitempty" tf:"shard_key,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ShardKey string `json:"shardKey,omitempty" tf:"shard_key,omitempty"`
 }
 
 type CosmosdbMongoCollectionStatus struct {

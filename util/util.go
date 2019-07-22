@@ -52,8 +52,8 @@ func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*sc
 			structName = val
 			structNames[i] = val
 		}
-
-		TerraformSchemaToStruct(schmeas[i], structName+"Spec", providerName, true, &out)
+		genSecret := false
+		TerraformSchemaToStruct(schmeas[i], structName+"Spec", providerName, true, &genSecret, &out)
 		typeData := TypeData{
 			Name: structName,
 			Spec: out,
@@ -75,7 +75,7 @@ func GenerateProviderAPIS(providerName, version string, schmeas []map[string]*sc
 	return nil
 }
 
-func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerName string, genProviderRef bool, out *string) {
+func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerName string, genProviderRef bool, genSecret *bool, out *string) {
 	var statements Statement
 	var keys []string
 	for k := range s {
@@ -113,13 +113,12 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 		}
 
 		if value.Sensitive {
-			if value.Type == schema.TypeString {
-				statements = append(statements, Comment("// Sensitive Data. Provide secret name which contains one value only"))
-			} else if value.Type == schema.TypeMap {
-				statements = append(statements, Comment("// Sensitive Data. Provide secret name which contains one or more values"))
-			}
-
-			statements = append(statements, Id(id).Id("*core.LocalObjectReference").Tag(map[string]string{"json": jk, "tf": tk}))
+			//if value.Type == schema.TypeString {
+			//	statements = append(statements, Comment("// Sensitive Data. Provide secret name which contains one value only"))
+			//} else if value.Type == schema.TypeMap {
+			//	statements = append(statements, Comment("// Sensitive Data. Provide secret name which contains one or more values"))
+			//}
+			*genSecret = true
 			continue
 		}
 
@@ -151,7 +150,7 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 				}
 			case *schema.Resource:
 				statements = append(statements, Id(id).Map(String()).Id(structName+id).Tag(map[string]string{"json": jk, "tf": tk}))
-				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, providerName, false, out)
+				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, providerName, false, genSecret, out)
 			default:
 				statements = append(statements, Id(id).Map(String()).String().Tag(map[string]string{"json": jk, "tf": tk}))
 			}
@@ -170,7 +169,7 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 				}
 			case *schema.Resource:
 				statements = append(statements, Id(id).Index().Id(structName+id).Tag(map[string]string{"json": jk, "tf": tk}))
-				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, providerName, false, out)
+				TerraformSchemaToStruct(value.Elem.(*schema.Resource).Schema, structName+id, providerName, false, genSecret, out)
 			default:
 				log.Fatalf("Provider %s has resource %s type %s.%s with unknown schema type %s", providerName, structName, structName, id, value.Elem)
 			}
@@ -179,7 +178,11 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 	}
 
 	if genProviderRef {
-		statements = append(statements, Id("ProviderRef").Id("core.LocalObjectReference").Tag(map[string]string{"json": "providerRef", "tf": "-"}))
+		statements = append(Statement{Id("ProviderRef").Id("core.LocalObjectReference").Tag(map[string]string{"json": "providerRef", "tf": "-"})}, statements...)
+		if *genSecret {
+			statements = append(Statement{Id("Secret").Id("*core.LocalObjectReference").Tag(map[string]string{"json": "secret,omitempty", "tf": "-"})}, statements...)
+		}
+		statements = append(Statement{Line()}, statements...)
 	}
 
 	c := Type().Id(structName).Struct(statements...)

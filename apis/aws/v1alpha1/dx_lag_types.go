@@ -19,14 +19,14 @@ type DxLag struct {
 }
 
 type DxLagSpec struct {
-	ConnectionsBandwidth string `json:"connectionsBandwidth" tf:"connections_bandwidth"`
+	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ConnectionsBandwidth string                    `json:"connectionsBandwidth" tf:"connections_bandwidth"`
 	// +optional
 	ForceDestroy bool   `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
 	Location     string `json:"location" tf:"location"`
 	Name         string `json:"name" tf:"name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type DxLagStatus struct {

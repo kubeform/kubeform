@@ -19,6 +19,7 @@ type IamAccountPasswordPolicy struct {
 }
 
 type IamAccountPasswordPolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllowUsersToChangePassword bool `json:"allowUsersToChangePassword,omitempty" tf:"allow_users_to_change_password,omitempty"`
 	// +optional
@@ -36,8 +37,7 @@ type IamAccountPasswordPolicySpec struct {
 	// +optional
 	RequireSymbols bool `json:"requireSymbols,omitempty" tf:"require_symbols,omitempty"`
 	// +optional
-	RequireUppercaseCharacters bool                      `json:"requireUppercaseCharacters,omitempty" tf:"require_uppercase_characters,omitempty"`
-	ProviderRef                core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RequireUppercaseCharacters bool `json:"requireUppercaseCharacters,omitempty" tf:"require_uppercase_characters,omitempty"`
 }
 
 type IamAccountPasswordPolicyStatus struct {

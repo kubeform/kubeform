@@ -19,6 +19,7 @@ type StoragegatewaySmbFileShare struct {
 }
 
 type StoragegatewaySmbFileShareSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Authentication string `json:"authentication,omitempty" tf:"authentication,omitempty"`
 	// +optional
@@ -43,8 +44,7 @@ type StoragegatewaySmbFileShareSpec struct {
 	RoleArn       string `json:"roleArn" tf:"role_arn"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	ValidUserList []string                  `json:"validUserList,omitempty" tf:"valid_user_list,omitempty"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ValidUserList []string `json:"validUserList,omitempty" tf:"valid_user_list,omitempty"`
 }
 
 type StoragegatewaySmbFileShareStatus struct {

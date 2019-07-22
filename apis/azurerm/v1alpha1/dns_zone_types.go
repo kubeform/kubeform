@@ -19,7 +19,8 @@ type DnsZone struct {
 }
 
 type DnsZoneSpec struct {
-	Name string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	RegistrationVirtualNetworkIDS []string `json:"registrationVirtualNetworkIDS,omitempty" tf:"registration_virtual_network_ids,omitempty"`
 	// +optional
@@ -28,8 +29,7 @@ type DnsZoneSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	ZoneType    string                    `json:"zoneType,omitempty" tf:"zone_type,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ZoneType string `json:"zoneType,omitempty" tf:"zone_type,omitempty"`
 }
 
 type DnsZoneStatus struct {

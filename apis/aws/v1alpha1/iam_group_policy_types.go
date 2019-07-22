@@ -19,13 +19,13 @@ type IamGroupPolicy struct {
 }
 
 type IamGroupPolicySpec struct {
-	Group string `json:"group" tf:"group"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Group       string                    `json:"group" tf:"group"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	NamePrefix  string                    `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
-	Policy      string                    `json:"policy" tf:"policy"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
+	Policy     string `json:"policy" tf:"policy"`
 }
 
 type IamGroupPolicyStatus struct {

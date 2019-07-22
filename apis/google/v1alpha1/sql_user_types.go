@@ -19,16 +19,15 @@ type SqlUser struct {
 }
 
 type SqlUserSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	Host     string `json:"host,omitempty" tf:"host,omitempty"`
 	Instance string `json:"instance" tf:"instance"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type SqlUserStatus struct {

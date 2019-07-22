@@ -32,11 +32,11 @@ type WafRegexMatchSetSpecRegexMatchTuple struct {
 }
 
 type WafRegexMatchSetSpec struct {
-	Name string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	RegexMatchTuple []WafRegexMatchSetSpecRegexMatchTuple `json:"regexMatchTuple,omitempty" tf:"regex_match_tuple,omitempty"`
-	ProviderRef     core.LocalObjectReference             `json:"providerRef" tf:"-"`
 }
 
 type WafRegexMatchSetStatus struct {

@@ -104,6 +104,7 @@ type ComputeInstanceTemplateSpecServiceAccount struct {
 }
 
 type ComputeInstanceTemplateSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	CanIPForward bool `json:"canIPForward,omitempty" tf:"can_ip_forward,omitempty"`
 	// +optional
@@ -139,8 +140,7 @@ type ComputeInstanceTemplateSpec struct {
 	ServiceAccount []ComputeInstanceTemplateSpecServiceAccount `json:"serviceAccount,omitempty" tf:"service_account,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Tags        []string                  `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ComputeInstanceTemplateStatus struct {

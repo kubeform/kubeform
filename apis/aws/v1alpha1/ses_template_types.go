@@ -19,14 +19,14 @@ type SesTemplate struct {
 }
 
 type SesTemplateSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Html string `json:"html,omitempty" tf:"html,omitempty"`
 	Name string `json:"name" tf:"name"`
 	// +optional
 	Subject string `json:"subject,omitempty" tf:"subject,omitempty"`
 	// +optional
-	Text        string                    `json:"text,omitempty" tf:"text,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Text string `json:"text,omitempty" tf:"text,omitempty"`
 }
 
 type SesTemplateStatus struct {

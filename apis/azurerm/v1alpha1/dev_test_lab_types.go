@@ -19,14 +19,14 @@ type DevTestLab struct {
 }
 
 type DevTestLabSpec struct {
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Location          string                    `json:"location" tf:"location"`
+	Name              string                    `json:"name" tf:"name"`
+	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	StorageType string `json:"storageType,omitempty" tf:"storage_type,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type DevTestLabStatus struct {

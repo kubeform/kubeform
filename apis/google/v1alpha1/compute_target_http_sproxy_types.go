@@ -19,6 +19,7 @@ type ComputeTargetHTTPSProxy struct {
 }
 
 type ComputeTargetHTTPSProxySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
@@ -28,9 +29,8 @@ type ComputeTargetHTTPSProxySpec struct {
 	QuicOverride    string   `json:"quicOverride,omitempty" tf:"quic_override,omitempty"`
 	SslCertificates []string `json:"sslCertificates" tf:"ssl_certificates"`
 	// +optional
-	SslPolicy   string                    `json:"sslPolicy,omitempty" tf:"ssl_policy,omitempty"`
-	UrlMap      string                    `json:"urlMap" tf:"url_map"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SslPolicy string `json:"sslPolicy,omitempty" tf:"ssl_policy,omitempty"`
+	UrlMap    string `json:"urlMap" tf:"url_map"`
 }
 
 type ComputeTargetHTTPSProxyStatus struct {

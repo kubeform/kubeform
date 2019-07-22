@@ -19,9 +19,9 @@ type VpnGatewayAttachment struct {
 }
 
 type VpnGatewayAttachmentSpec struct {
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 	VpcID        string                    `json:"vpcID" tf:"vpc_id"`
 	VpnGatewayID string                    `json:"vpnGatewayID" tf:"vpn_gateway_id"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type VpnGatewayAttachmentStatus struct {

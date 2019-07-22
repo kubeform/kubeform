@@ -19,10 +19,10 @@ type NetworkInterfaceAttachment struct {
 }
 
 type NetworkInterfaceAttachmentSpec struct {
+	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
 	DeviceIndex        int                       `json:"deviceIndex" tf:"device_index"`
 	InstanceID         string                    `json:"instanceID" tf:"instance_id"`
 	NetworkInterfaceID string                    `json:"networkInterfaceID" tf:"network_interface_id"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type NetworkInterfaceAttachmentStatus struct {

@@ -19,6 +19,7 @@ type DocdbClusterInstance struct {
 }
 
 type DocdbClusterInstanceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
 	// +optional
@@ -38,8 +39,7 @@ type DocdbClusterInstanceSpec struct {
 	// +optional
 	PromotionTier int `json:"promotionTier,omitempty" tf:"promotion_tier,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type DocdbClusterInstanceStatus struct {

@@ -26,6 +26,7 @@ type AppautoscalingScheduledActionSpecScalableTargetAction struct {
 }
 
 type AppautoscalingScheduledActionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	EndTime    string `json:"endTime,omitempty" tf:"end_time,omitempty"`
 	Name       string `json:"name" tf:"name"`
@@ -39,8 +40,7 @@ type AppautoscalingScheduledActionSpec struct {
 	Schedule         string `json:"schedule,omitempty" tf:"schedule,omitempty"`
 	ServiceNamespace string `json:"serviceNamespace" tf:"service_namespace"`
 	// +optional
-	StartTime   string                    `json:"startTime,omitempty" tf:"start_time,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	StartTime string `json:"startTime,omitempty" tf:"start_time,omitempty"`
 }
 
 type AppautoscalingScheduledActionStatus struct {

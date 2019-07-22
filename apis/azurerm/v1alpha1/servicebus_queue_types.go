@@ -19,6 +19,7 @@ type ServicebusQueue struct {
 }
 
 type ServicebusQueueSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AutoDeleteOnIdle string `json:"autoDeleteOnIdle,omitempty" tf:"auto_delete_on_idle,omitempty"`
 	// +optional
@@ -52,8 +53,7 @@ type ServicebusQueueSpec struct {
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// Deprecated
-	SupportOrdering bool                      `json:"supportOrdering,omitempty" tf:"support_ordering,omitempty"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SupportOrdering bool `json:"supportOrdering,omitempty" tf:"support_ordering,omitempty"`
 }
 
 type ServicebusQueueStatus struct {

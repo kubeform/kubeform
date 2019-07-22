@@ -19,7 +19,8 @@ type Ec2CapacityReservation struct {
 }
 
 type Ec2CapacityReservationSpec struct {
-	AvailabilityZone string `json:"availabilityZone" tf:"availability_zone"`
+	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AvailabilityZone string                    `json:"availabilityZone" tf:"availability_zone"`
 	// +optional
 	EbsOptimized bool `json:"ebsOptimized,omitempty" tf:"ebs_optimized,omitempty"`
 	// +optional
@@ -36,8 +37,7 @@ type Ec2CapacityReservationSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Tenancy     string                    `json:"tenancy,omitempty" tf:"tenancy,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tenancy string `json:"tenancy,omitempty" tf:"tenancy,omitempty"`
 }
 
 type Ec2CapacityReservationStatus struct {

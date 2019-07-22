@@ -19,12 +19,12 @@ type ComputeNetworkPeering struct {
 }
 
 type ComputeNetworkPeeringSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
-	AutoCreateRoutes bool                      `json:"autoCreateRoutes,omitempty" tf:"auto_create_routes,omitempty"`
-	Name             string                    `json:"name" tf:"name"`
-	Network          string                    `json:"network" tf:"network"`
-	PeerNetwork      string                    `json:"peerNetwork" tf:"peer_network"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AutoCreateRoutes bool   `json:"autoCreateRoutes,omitempty" tf:"auto_create_routes,omitempty"`
+	Name             string `json:"name" tf:"name"`
+	Network          string `json:"network" tf:"network"`
+	PeerNetwork      string `json:"peerNetwork" tf:"peer_network"`
 }
 
 type ComputeNetworkPeeringStatus struct {

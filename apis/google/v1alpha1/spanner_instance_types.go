@@ -19,8 +19,9 @@ type SpannerInstance struct {
 }
 
 type SpannerInstanceSpec struct {
-	Config      string `json:"config" tf:"config"`
-	DisplayName string `json:"displayName" tf:"display_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Config      string                    `json:"config" tf:"config"`
+	DisplayName string                    `json:"displayName" tf:"display_name"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
@@ -28,8 +29,7 @@ type SpannerInstanceSpec struct {
 	// +optional
 	NumNodes int `json:"numNodes,omitempty" tf:"num_nodes,omitempty"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type SpannerInstanceStatus struct {

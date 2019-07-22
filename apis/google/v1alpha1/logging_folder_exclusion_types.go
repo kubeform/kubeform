@@ -19,14 +19,14 @@ type LoggingFolderExclusion struct {
 }
 
 type LoggingFolderExclusionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	Disabled    bool                      `json:"disabled,omitempty" tf:"disabled,omitempty"`
-	Filter      string                    `json:"filter" tf:"filter"`
-	Folder      string                    `json:"folder" tf:"folder"`
-	Name        string                    `json:"name" tf:"name"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Disabled bool   `json:"disabled,omitempty" tf:"disabled,omitempty"`
+	Filter   string `json:"filter" tf:"filter"`
+	Folder   string `json:"folder" tf:"folder"`
+	Name     string `json:"name" tf:"name"`
 }
 
 type LoggingFolderExclusionStatus struct {

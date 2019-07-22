@@ -509,15 +509,6 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
-                  secureEnvironmentVariables:
-                    description: Sensitive Data. Provide secret name which contains
-                      one or more values
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   volume:
                     items:
                       properties:
@@ -562,19 +553,9 @@ spec:
                           type: object
                         workspaceID:
                           type: string
-                        workspaceKey:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                       required:
                       - logType
                       - workspaceID
-                      - workspaceKey
                       type: object
                     maxItems: 1
                     type: array
@@ -603,21 +584,11 @@ spec:
             imageRegistryCredential:
               items:
                 properties:
-                  password:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   server:
                     type: string
                   username:
                     type: string
                 required:
-                - password
                 - server
                 - username
                 type: object
@@ -643,6 +614,15 @@ spec:
               type: string
             restartPolicy:
               type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             tags:
               additionalProperties:
                 type: string

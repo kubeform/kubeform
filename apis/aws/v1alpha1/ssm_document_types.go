@@ -24,7 +24,8 @@ type SsmDocumentSpecPermissions struct {
 }
 
 type SsmDocumentSpec struct {
-	Content string `json:"content" tf:"content"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Content     string                    `json:"content" tf:"content"`
 	// +optional
 	DocumentFormat string `json:"documentFormat,omitempty" tf:"document_format,omitempty"`
 	DocumentType   string `json:"documentType" tf:"document_type"`
@@ -32,8 +33,7 @@ type SsmDocumentSpec struct {
 	// +optional
 	Permissions map[string]SsmDocumentSpecPermissions `json:"permissions,omitempty" tf:"permissions,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type SsmDocumentStatus struct {

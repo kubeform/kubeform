@@ -19,12 +19,11 @@ type OpsworksRdsDbInstance struct {
 }
 
 type OpsworksRdsDbInstanceSpec struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	DbPassword       *core.LocalObjectReference `json:"dbPassword" tf:"db_password"`
+	Secret           *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef      core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	DbUser           string                     `json:"dbUser" tf:"db_user"`
 	RdsDbInstanceArn string                     `json:"rdsDbInstanceArn" tf:"rds_db_instance_arn"`
 	StackID          string                     `json:"stackID" tf:"stack_id"`
-	ProviderRef      core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type OpsworksRdsDbInstanceStatus struct {

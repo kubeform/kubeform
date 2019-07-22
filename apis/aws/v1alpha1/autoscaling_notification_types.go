@@ -19,12 +19,12 @@ type AutoscalingNotification struct {
 }
 
 type AutoscalingNotificationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:UniqueItems=true
 	GroupNames []string `json:"groupNames" tf:"group_names"`
 	// +kubebuilder:validation:UniqueItems=true
-	Notifications []string                  `json:"notifications" tf:"notifications"`
-	TopicArn      string                    `json:"topicArn" tf:"topic_arn"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Notifications []string `json:"notifications" tf:"notifications"`
+	TopicArn      string   `json:"topicArn" tf:"topic_arn"`
 }
 
 type AutoscalingNotificationStatus struct {

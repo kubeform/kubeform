@@ -50,6 +50,7 @@ type NetworkInterfaceSpecIpConfiguration struct {
 }
 
 type NetworkInterfaceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AppliedDNSServers []string `json:"appliedDNSServers,omitempty" tf:"applied_dns_servers,omitempty"`
@@ -76,8 +77,7 @@ type NetworkInterfaceSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	VirtualMachineID string                    `json:"virtualMachineID,omitempty" tf:"virtual_machine_id,omitempty"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VirtualMachineID string `json:"virtualMachineID,omitempty" tf:"virtual_machine_id,omitempty"`
 }
 
 type NetworkInterfaceStatus struct {

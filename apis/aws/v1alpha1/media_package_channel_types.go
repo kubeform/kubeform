@@ -19,12 +19,12 @@ type MediaPackageChannel struct {
 }
 
 type MediaPackageChannelSpec struct {
-	ChannelID string `json:"channelID" tf:"channel_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ChannelID   string                    `json:"channelID" tf:"channel_id"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type MediaPackageChannelStatus struct {

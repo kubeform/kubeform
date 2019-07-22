@@ -19,9 +19,9 @@ type AmiLaunchPermission struct {
 }
 
 type AmiLaunchPermissionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	AccountID   string                    `json:"accountID" tf:"account_id"`
 	ImageID     string                    `json:"imageID" tf:"image_id"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type AmiLaunchPermissionStatus struct {

@@ -24,6 +24,7 @@ type ComputeSubnetworkSpecSecondaryIPRange struct {
 }
 
 type ComputeSubnetworkSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -39,7 +40,6 @@ type ComputeSubnetworkSpec struct {
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
 	SecondaryIPRange []ComputeSubnetworkSpecSecondaryIPRange `json:"secondaryIPRange,omitempty" tf:"secondary_ip_range,omitempty"`
-	ProviderRef      core.LocalObjectReference               `json:"providerRef" tf:"-"`
 }
 
 type ComputeSubnetworkStatus struct {

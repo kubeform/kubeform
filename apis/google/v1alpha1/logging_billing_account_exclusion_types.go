@@ -19,14 +19,14 @@ type LoggingBillingAccountExclusion struct {
 }
 
 type LoggingBillingAccountExclusionSpec struct {
-	BillingAccount string `json:"billingAccount" tf:"billing_account"`
+	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	BillingAccount string                    `json:"billingAccount" tf:"billing_account"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	Disabled    bool                      `json:"disabled,omitempty" tf:"disabled,omitempty"`
-	Filter      string                    `json:"filter" tf:"filter"`
-	Name        string                    `json:"name" tf:"name"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Disabled bool   `json:"disabled,omitempty" tf:"disabled,omitempty"`
+	Filter   string `json:"filter" tf:"filter"`
+	Name     string `json:"name" tf:"name"`
 }
 
 type LoggingBillingAccountExclusionStatus struct {

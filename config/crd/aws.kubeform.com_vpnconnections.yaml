@@ -408,6 +408,15 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             staticRoutesOnly:
               type: boolean
             tags:
@@ -418,26 +427,8 @@ spec:
               type: string
             tunnel1InsideCIDR:
               type: string
-            tunnel1PresharedKey:
-              description: Sensitive Data. Provide secret name which contains one
-                value only
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
             tunnel2InsideCIDR:
               type: string
-            tunnel2PresharedKey:
-              description: Sensitive Data. Provide secret name which contains one
-                value only
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
             type:
               type: string
             vpnGatewayID:
@@ -445,7 +436,6 @@ spec:
           required:
           - customerGatewayID
           - providerRef
-          - type
           type: object
         status:
           properties:

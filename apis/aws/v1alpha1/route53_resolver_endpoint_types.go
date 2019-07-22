@@ -25,7 +25,8 @@ type Route53ResolverEndpointSpecIpAddress struct {
 }
 
 type Route53ResolverEndpointSpec struct {
-	Direction string `json:"direction" tf:"direction"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Direction   string                    `json:"direction" tf:"direction"`
 	// +kubebuilder:validation:MaxItems=10
 	// +kubebuilder:validation:MinItems=2
 	// +kubebuilder:validation:UniqueItems=true
@@ -37,8 +38,7 @@ type Route53ResolverEndpointSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS" tf:"security_group_ids"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type Route53ResolverEndpointStatus struct {

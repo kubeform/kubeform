@@ -40,6 +40,7 @@ type ApiGatewayUsagePlanSpecThrottleSettings struct {
 }
 
 type ApiGatewayUsagePlanSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ApiStages []ApiGatewayUsagePlanSpecApiStages `json:"apiStages,omitempty" tf:"api_stages,omitempty"`
 	// +optional
@@ -55,7 +56,6 @@ type ApiGatewayUsagePlanSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	ThrottleSettings []ApiGatewayUsagePlanSpecThrottleSettings `json:"throttleSettings,omitempty" tf:"throttle_settings,omitempty"`
-	ProviderRef      core.LocalObjectReference                 `json:"providerRef" tf:"-"`
 }
 
 type ApiGatewayUsagePlanStatus struct {

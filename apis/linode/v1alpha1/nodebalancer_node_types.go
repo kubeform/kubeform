@@ -19,15 +19,15 @@ type NodebalancerNode struct {
 }
 
 type NodebalancerNodeSpec struct {
-	Address  string `json:"address" tf:"address"`
-	ConfigID int    `json:"configID" tf:"config_id"`
-	Label    string `json:"label" tf:"label"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Address     string                    `json:"address" tf:"address"`
+	ConfigID    int                       `json:"configID" tf:"config_id"`
+	Label       string                    `json:"label" tf:"label"`
 	// +optional
 	Mode           string `json:"mode,omitempty" tf:"mode,omitempty"`
 	NodebalancerID int    `json:"nodebalancerID" tf:"nodebalancer_id"`
 	// +optional
-	Weight      int                       `json:"weight,omitempty" tf:"weight,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Weight int `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type NodebalancerNodeStatus struct {

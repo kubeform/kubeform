@@ -71,6 +71,7 @@ type AcmpcaCertificateAuthoritySpecRevocationConfiguration struct {
 }
 
 type AcmpcaCertificateAuthoritySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	CertificateAuthorityConfiguration []AcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration `json:"certificateAuthorityConfiguration" tf:"certificate_authority_configuration"`
 	// +optional
@@ -83,8 +84,7 @@ type AcmpcaCertificateAuthoritySpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Type        string                    `json:"type,omitempty" tf:"type,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type AcmpcaCertificateAuthorityStatus struct {

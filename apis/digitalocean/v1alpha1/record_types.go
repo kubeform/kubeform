@@ -19,7 +19,8 @@ type Record struct {
 }
 
 type RecordSpec struct {
-	Domain string `json:"domain" tf:"domain"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Domain      string                    `json:"domain" tf:"domain"`
 	// +optional
 	Flags int    `json:"flags,omitempty" tf:"flags,omitempty"`
 	Name  string `json:"name" tf:"name"`
@@ -34,8 +35,7 @@ type RecordSpec struct {
 	Type  string `json:"type" tf:"type"`
 	Value string `json:"value" tf:"value"`
 	// +optional
-	Weight      int                       `json:"weight,omitempty" tf:"weight,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Weight int `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type RecordStatus struct {

@@ -178,17 +178,15 @@ type InstanceSpecDisk struct {
 	// +optional
 	ReadOnly bool `json:"readOnly,omitempty" tf:"read_only,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	RootPass *core.LocalObjectReference `json:"rootPass,omitempty" tf:"root_pass,omitempty"`
-	Size     int                        `json:"size" tf:"size"`
+	Size int `json:"size" tf:"size"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one or more values
-	StackscriptData *core.LocalObjectReference `json:"stackscriptData,omitempty" tf:"stackscript_data,omitempty"`
 	// +optional
 	StackscriptID int `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
 }
 
 type InstanceSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Alerts []InstanceSpecAlerts `json:"alerts,omitempty" tf:"alerts,omitempty"`
@@ -216,11 +214,7 @@ type InstanceSpec struct {
 	PrivateIP bool   `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
 	Region    string `json:"region" tf:"region"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	RootPass *core.LocalObjectReference `json:"rootPass,omitempty" tf:"root_pass,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one or more values
-	StackscriptData *core.LocalObjectReference `json:"stackscriptData,omitempty" tf:"stackscript_data,omitempty"`
 	// +optional
 	StackscriptID int `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
 	// +optional
@@ -231,8 +225,7 @@ type InstanceSpec struct {
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 	// +optional
-	WatchdogEnabled bool                      `json:"watchdogEnabled,omitempty" tf:"watchdog_enabled,omitempty"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	WatchdogEnabled bool `json:"watchdogEnabled,omitempty" tf:"watchdog_enabled,omitempty"`
 }
 
 type InstanceStatus struct {

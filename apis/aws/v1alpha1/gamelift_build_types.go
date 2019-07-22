@@ -25,13 +25,13 @@ type GameliftBuildSpecStorageLocation struct {
 }
 
 type GameliftBuildSpec struct {
-	Name            string `json:"name" tf:"name"`
-	OperatingSystem string `json:"operatingSystem" tf:"operating_system"`
+	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name            string                    `json:"name" tf:"name"`
+	OperatingSystem string                    `json:"operatingSystem" tf:"operating_system"`
 	// +kubebuilder:validation:MaxItems=1
 	StorageLocation []GameliftBuildSpecStorageLocation `json:"storageLocation" tf:"storage_location"`
 	// +optional
-	Version     string                    `json:"version,omitempty" tf:"version,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Version string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type GameliftBuildStatus struct {

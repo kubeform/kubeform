@@ -23,6 +23,7 @@ type TransferServerSpecEndpointDetails struct {
 }
 
 type TransferServerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	EndpointDetails []TransferServerSpecEndpointDetails `json:"endpointDetails,omitempty" tf:"endpoint_details,omitempty"`
@@ -39,8 +40,7 @@ type TransferServerSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Url         string                    `json:"url,omitempty" tf:"url,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Url string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type TransferServerStatus struct {

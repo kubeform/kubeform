@@ -19,15 +19,15 @@ type MonitoringGroup struct {
 }
 
 type MonitoringGroupSpec struct {
-	DisplayName string `json:"displayName" tf:"display_name"`
-	Filter      string `json:"filter" tf:"filter"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	DisplayName string                    `json:"displayName" tf:"display_name"`
+	Filter      string                    `json:"filter" tf:"filter"`
 	// +optional
 	IsCluster bool `json:"isCluster,omitempty" tf:"is_cluster,omitempty"`
 	// +optional
 	ParentName string `json:"parentName,omitempty" tf:"parent_name,omitempty"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type MonitoringGroupStatus struct {

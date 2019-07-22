@@ -19,9 +19,7 @@ type ApplicationGateway struct {
 }
 
 type ApplicationGatewaySpecAuthenticationCertificate struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	Data *core.LocalObjectReference `json:"data" tf:"data"`
-	Name string                     `json:"name" tf:"name"`
+	Name string `json:"name" tf:"name"`
 }
 
 type ApplicationGatewaySpecAutoscaleConfiguration struct {
@@ -226,11 +224,7 @@ type ApplicationGatewaySpecSku struct {
 }
 
 type ApplicationGatewaySpecSslCertificate struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	Data *core.LocalObjectReference `json:"data" tf:"data"`
-	Name string                     `json:"name" tf:"name"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
+	Name string `json:"name" tf:"name"`
 }
 
 type ApplicationGatewaySpecSslPolicy struct {
@@ -305,6 +299,8 @@ type ApplicationGatewaySpecWafConfiguration struct {
 }
 
 type ApplicationGatewaySpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	AuthenticationCertificate []ApplicationGatewaySpecAuthenticationCertificate `json:"authenticationCertificate,omitempty" tf:"authentication_certificate,omitempty"`
 	// +optional
@@ -351,8 +347,7 @@ type ApplicationGatewaySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	WafConfiguration []ApplicationGatewaySpecWafConfiguration `json:"wafConfiguration,omitempty" tf:"waf_configuration,omitempty"`
 	// +optional
-	Zones       []string                  `json:"zones,omitempty" tf:"zones,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zones []string `json:"zones,omitempty" tf:"zones,omitempty"`
 }
 
 type ApplicationGatewayStatus struct {

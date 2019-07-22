@@ -19,9 +19,9 @@ type EbsEncryptionByDefault struct {
 }
 
 type EbsEncryptionByDefaultSpec struct {
-	// +optional
-	Enabled     bool                      `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 }
 
 type EbsEncryptionByDefaultStatus struct {

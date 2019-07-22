@@ -19,6 +19,7 @@ type RedshiftEventSubscription struct {
 }
 
 type RedshiftEventSubscriptionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
@@ -34,8 +35,7 @@ type RedshiftEventSubscriptionSpec struct {
 	// +optional
 	SourceType string `json:"sourceType,omitempty" tf:"source_type,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type RedshiftEventSubscriptionStatus struct {

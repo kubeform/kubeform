@@ -57,6 +57,7 @@ type DefaultSecurityGroupSpecIngress struct {
 }
 
 type DefaultSecurityGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Egress []DefaultSecurityGroupSpecEgress `json:"egress,omitempty" tf:"egress,omitempty"`
@@ -68,8 +69,7 @@ type DefaultSecurityGroupSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	VpcID       string                    `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
 }
 
 type DefaultSecurityGroupStatus struct {

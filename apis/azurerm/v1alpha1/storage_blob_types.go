@@ -19,6 +19,7 @@ type StorageBlob struct {
 }
 
 type StorageBlobSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Attempts int `json:"attempts,omitempty" tf:"attempts,omitempty"`
 	// +optional
@@ -38,8 +39,7 @@ type StorageBlobSpec struct {
 	StorageAccountName   string `json:"storageAccountName" tf:"storage_account_name"`
 	StorageContainerName string `json:"storageContainerName" tf:"storage_container_name"`
 	// +optional
-	Type        string                    `json:"type,omitempty" tf:"type,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type StorageBlobStatus struct {

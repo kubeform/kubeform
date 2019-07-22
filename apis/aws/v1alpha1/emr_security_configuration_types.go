@@ -19,12 +19,12 @@ type EmrSecurityConfiguration struct {
 }
 
 type EmrSecurityConfigurationSpec struct {
-	Configuration string `json:"configuration" tf:"configuration"`
+	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Configuration string                    `json:"configuration" tf:"configuration"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	NamePrefix  string                    `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 }
 
 type EmrSecurityConfigurationStatus struct {

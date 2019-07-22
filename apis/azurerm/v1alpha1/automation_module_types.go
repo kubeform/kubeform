@@ -31,12 +31,12 @@ type AutomationModuleSpecModuleLink struct {
 }
 
 type AutomationModuleSpec struct {
-	AutomationAccountName string `json:"automationAccountName" tf:"automation_account_name"`
+	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AutomationAccountName string                    `json:"automationAccountName" tf:"automation_account_name"`
 	// +kubebuilder:validation:MaxItems=1
 	ModuleLink        []AutomationModuleSpecModuleLink `json:"moduleLink" tf:"module_link"`
 	Name              string                           `json:"name" tf:"name"`
 	ResourceGroupName string                           `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference        `json:"providerRef" tf:"-"`
 }
 
 type AutomationModuleStatus struct {

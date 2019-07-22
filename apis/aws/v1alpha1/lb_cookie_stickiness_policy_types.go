@@ -19,12 +19,12 @@ type LbCookieStickinessPolicy struct {
 }
 
 type LbCookieStickinessPolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
-	CookieExpirationPeriod int                       `json:"cookieExpirationPeriod,omitempty" tf:"cookie_expiration_period,omitempty"`
-	LbPort                 int                       `json:"lbPort" tf:"lb_port"`
-	LoadBalancer           string                    `json:"loadBalancer" tf:"load_balancer"`
-	Name                   string                    `json:"name" tf:"name"`
-	ProviderRef            core.LocalObjectReference `json:"providerRef" tf:"-"`
+	CookieExpirationPeriod int    `json:"cookieExpirationPeriod,omitempty" tf:"cookie_expiration_period,omitempty"`
+	LbPort                 int    `json:"lbPort" tf:"lb_port"`
+	LoadBalancer           string `json:"loadBalancer" tf:"load_balancer"`
+	Name                   string `json:"name" tf:"name"`
 }
 
 type LbCookieStickinessPolicyStatus struct {

@@ -28,12 +28,12 @@ type ContainerAnalysisNoteSpecAttestationAuthority struct {
 }
 
 type ContainerAnalysisNoteSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	AttestationAuthority []ContainerAnalysisNoteSpecAttestationAuthority `json:"attestationAuthority" tf:"attestation_authority"`
 	Name                 string                                          `json:"name" tf:"name"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type ContainerAnalysisNoteStatus struct {

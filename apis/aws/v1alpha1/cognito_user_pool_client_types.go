@@ -19,6 +19,7 @@ type CognitoUserPoolClient struct {
 }
 
 type CognitoUserPoolClientSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=3
 	// +kubebuilder:validation:UniqueItems=true
@@ -53,8 +54,7 @@ type CognitoUserPoolClientSpec struct {
 	UserPoolID                 string   `json:"userPoolID" tf:"user_pool_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	WriteAttributes []string                  `json:"writeAttributes,omitempty" tf:"write_attributes,omitempty"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	WriteAttributes []string `json:"writeAttributes,omitempty" tf:"write_attributes,omitempty"`
 }
 
 type CognitoUserPoolClientStatus struct {

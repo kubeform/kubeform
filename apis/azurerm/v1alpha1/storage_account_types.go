@@ -43,6 +43,7 @@ type StorageAccountSpecNetworkRules struct {
 }
 
 type StorageAccountSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AccessTier string `json:"accessTier,omitempty" tf:"access_tier,omitempty"`
 	// +optional
@@ -75,8 +76,7 @@ type StorageAccountSpec struct {
 	NetworkRules      []StorageAccountSpecNetworkRules `json:"networkRules,omitempty" tf:"network_rules,omitempty"`
 	ResourceGroupName string                           `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type StorageAccountStatus struct {

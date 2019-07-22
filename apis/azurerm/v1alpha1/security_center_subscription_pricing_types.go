@@ -19,8 +19,8 @@ type SecurityCenterSubscriptionPricing struct {
 }
 
 type SecurityCenterSubscriptionPricingSpec struct {
-	Tier        string                    `json:"tier" tf:"tier"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tier        string                    `json:"tier" tf:"tier"`
 }
 
 type SecurityCenterSubscriptionPricingStatus struct {

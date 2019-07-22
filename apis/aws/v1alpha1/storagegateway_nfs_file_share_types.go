@@ -30,6 +30,7 @@ type StoragegatewayNfsFileShareSpecNfsFileShareDefaults struct {
 }
 
 type StoragegatewayNfsFileShareSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=100
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
@@ -55,8 +56,7 @@ type StoragegatewayNfsFileShareSpec struct {
 	RequesterPays bool   `json:"requesterPays,omitempty" tf:"requester_pays,omitempty"`
 	RoleArn       string `json:"roleArn" tf:"role_arn"`
 	// +optional
-	Squash      string                    `json:"squash,omitempty" tf:"squash,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Squash string `json:"squash,omitempty" tf:"squash,omitempty"`
 }
 
 type StoragegatewayNfsFileShareStatus struct {

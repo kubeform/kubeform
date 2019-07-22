@@ -333,8 +333,6 @@ type KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration struct {
 	// +optional
 	DataTableColumns string `json:"dataTableColumns,omitempty" tf:"data_table_columns,omitempty"`
 	DataTableName    string `json:"dataTableName" tf:"data_table_name"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ProcessingConfiguration []KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfiguration `json:"processingConfiguration,omitempty" tf:"processing_configuration,omitempty"`
@@ -425,6 +423,8 @@ type KinesisFirehoseDeliveryStreamSpecSplunkConfiguration struct {
 }
 
 type KinesisFirehoseDeliveryStreamSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	Arn         string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Destination string `json:"destination" tf:"destination"`
@@ -452,8 +452,7 @@ type KinesisFirehoseDeliveryStreamSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	VersionID   string                    `json:"versionID,omitempty" tf:"version_id,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VersionID string `json:"versionID,omitempty" tf:"version_id,omitempty"`
 }
 
 type KinesisFirehoseDeliveryStreamStatus struct {

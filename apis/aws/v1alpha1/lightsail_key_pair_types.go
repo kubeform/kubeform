@@ -19,6 +19,7 @@ type LightsailKeyPair struct {
 }
 
 type LightsailKeyPairSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
@@ -26,8 +27,7 @@ type LightsailKeyPairSpec struct {
 	// +optional
 	PgpKey string `json:"pgpKey,omitempty" tf:"pgp_key,omitempty"`
 	// +optional
-	PublicKey   string                    `json:"publicKey,omitempty" tf:"public_key,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	PublicKey string `json:"publicKey,omitempty" tf:"public_key,omitempty"`
 }
 
 type LightsailKeyPairStatus struct {

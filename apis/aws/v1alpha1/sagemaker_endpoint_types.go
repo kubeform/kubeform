@@ -19,12 +19,12 @@ type SagemakerEndpoint struct {
 }
 
 type SagemakerEndpointSpec struct {
-	EndpointConfigName string `json:"endpointConfigName" tf:"endpoint_config_name"`
+	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	EndpointConfigName string                    `json:"endpointConfigName" tf:"endpoint_config_name"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type SagemakerEndpointStatus struct {

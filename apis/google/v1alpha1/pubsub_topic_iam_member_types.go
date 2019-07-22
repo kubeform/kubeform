@@ -19,12 +19,12 @@ type PubsubTopicIamMember struct {
 }
 
 type PubsubTopicIamMemberSpec struct {
-	Member string `json:"member" tf:"member"`
-	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	Role        string                    `json:"role" tf:"role"`
-	Topic       string                    `json:"topic" tf:"topic"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Member      string                    `json:"member" tf:"member"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Role    string `json:"role" tf:"role"`
+	Topic   string `json:"topic" tf:"topic"`
 }
 
 type PubsubTopicIamMemberStatus struct {

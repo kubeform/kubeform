@@ -127,8 +127,6 @@ type ContainerGroupSpecContainer struct {
 	// +kubebuilder:validation:MaxItems=1
 	ReadinessProbe []ContainerGroupSpecContainerReadinessProbe `json:"readinessProbe,omitempty" tf:"readiness_probe,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one or more values
-	SecureEnvironmentVariables *core.LocalObjectReference `json:"secureEnvironmentVariables,omitempty" tf:"secure_environment_variables,omitempty"`
 	// +optional
 	Volume []ContainerGroupSpecContainerVolume `json:"volume,omitempty" tf:"volume,omitempty"`
 }
@@ -138,8 +136,6 @@ type ContainerGroupSpecDiagnosticsLogAnalytics struct {
 	// +optional
 	Metadata    map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 	WorkspaceID string            `json:"workspaceID" tf:"workspace_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	WorkspaceKey *core.LocalObjectReference `json:"workspaceKey" tf:"workspace_key"`
 }
 
 type ContainerGroupSpecDiagnostics struct {
@@ -155,14 +151,14 @@ type ContainerGroupSpecIdentity struct {
 }
 
 type ContainerGroupSpecImageRegistryCredential struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
-	Server   string                     `json:"server" tf:"server"`
-	Username string                     `json:"username" tf:"username"`
+	Server   string `json:"server" tf:"server"`
+	Username string `json:"username" tf:"username"`
 }
 
 type ContainerGroupSpec struct {
-	Container []ContainerGroupSpecContainer `json:"container" tf:"container"`
+	Secret      *core.LocalObjectReference    `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference     `json:"providerRef" tf:"-"`
+	Container   []ContainerGroupSpecContainer `json:"container" tf:"container"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Diagnostics []ContainerGroupSpecDiagnostics `json:"diagnostics,omitempty" tf:"diagnostics,omitempty"`
@@ -182,8 +178,7 @@ type ContainerGroupSpec struct {
 	// +optional
 	RestartPolicy string `json:"restartPolicy,omitempty" tf:"restart_policy,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ContainerGroupStatus struct {

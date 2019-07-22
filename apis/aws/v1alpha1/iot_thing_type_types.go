@@ -28,13 +28,13 @@ type IotThingTypeSpecProperties struct {
 }
 
 type IotThingTypeSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Deprecated bool   `json:"deprecated,omitempty" tf:"deprecated,omitempty"`
 	Name       string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Properties  []IotThingTypeSpecProperties `json:"properties,omitempty" tf:"properties,omitempty"`
-	ProviderRef core.LocalObjectReference    `json:"providerRef" tf:"-"`
+	Properties []IotThingTypeSpecProperties `json:"properties,omitempty" tf:"properties,omitempty"`
 }
 
 type IotThingTypeStatus struct {

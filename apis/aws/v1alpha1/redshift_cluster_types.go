@@ -35,6 +35,8 @@ type RedshiftClusterSpecSnapshotCopy struct {
 }
 
 type RedshiftClusterSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	AllowVersionUpgrade bool `json:"allowVersionUpgrade,omitempty" tf:"allow_version_upgrade,omitempty"`
 	// +optional
@@ -78,8 +80,6 @@ type RedshiftClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Logging []RedshiftClusterSpecLogging `json:"logging,omitempty" tf:"logging,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	MasterPassword *core.LocalObjectReference `json:"masterPassword,omitempty" tf:"master_password,omitempty"`
 	// +optional
 	MasterUsername string `json:"masterUsername,omitempty" tf:"master_username,omitempty"`
 	NodeType       string `json:"nodeType" tf:"node_type"`
@@ -106,8 +106,7 @@ type RedshiftClusterSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	VpcSecurityGroupIDS []string                  `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
-	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcSecurityGroupIDS []string `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
 }
 
 type RedshiftClusterStatus struct {

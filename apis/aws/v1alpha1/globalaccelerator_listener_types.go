@@ -26,15 +26,15 @@ type GlobalacceleratorListenerSpecPortRange struct {
 }
 
 type GlobalacceleratorListenerSpec struct {
-	AcceleratorArn string `json:"acceleratorArn" tf:"accelerator_arn"`
+	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AcceleratorArn string                    `json:"acceleratorArn" tf:"accelerator_arn"`
 	// +optional
 	ClientAffinity string `json:"clientAffinity,omitempty" tf:"client_affinity,omitempty"`
 	// +kubebuilder:validation:MaxItems=10
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
-	PortRange   []GlobalacceleratorListenerSpecPortRange `json:"portRange" tf:"port_range"`
-	Protocol    string                                   `json:"protocol" tf:"protocol"`
-	ProviderRef core.LocalObjectReference                `json:"providerRef" tf:"-"`
+	PortRange []GlobalacceleratorListenerSpecPortRange `json:"portRange" tf:"port_range"`
+	Protocol  string                                   `json:"protocol" tf:"protocol"`
 }
 
 type GlobalacceleratorListenerStatus struct {

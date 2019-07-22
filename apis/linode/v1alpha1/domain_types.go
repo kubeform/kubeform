@@ -19,6 +19,7 @@ type Domain struct {
 }
 
 type DomainSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AxfrIPS []string `json:"axfrIPS,omitempty" tf:"axfr_ips,omitempty"`
@@ -44,9 +45,8 @@ type DomainSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	TtlSec      int                       `json:"ttlSec,omitempty" tf:"ttl_sec,omitempty"`
-	Type        string                    `json:"type" tf:"type"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TtlSec int    `json:"ttlSec,omitempty" tf:"ttl_sec,omitempty"`
+	Type   string `json:"type" tf:"type"`
 }
 
 type DomainStatus struct {

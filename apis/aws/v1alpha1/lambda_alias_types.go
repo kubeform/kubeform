@@ -26,6 +26,7 @@ type LambdaAliasSpecRoutingConfig struct {
 }
 
 type LambdaAliasSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description     string `json:"description,omitempty" tf:"description,omitempty"`
 	FunctionName    string `json:"functionName" tf:"function_name"`
@@ -34,7 +35,6 @@ type LambdaAliasSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RoutingConfig []LambdaAliasSpecRoutingConfig `json:"routingConfig,omitempty" tf:"routing_config,omitempty"`
-	ProviderRef   core.LocalObjectReference      `json:"providerRef" tf:"-"`
 }
 
 type LambdaAliasStatus struct {

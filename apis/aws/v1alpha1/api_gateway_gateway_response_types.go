@@ -19,6 +19,7 @@ type ApiGatewayGatewayResponse struct {
 }
 
 type ApiGatewayGatewayResponseSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ResponseParameters map[string]string `json:"responseParameters,omitempty" tf:"response_parameters,omitempty"`
 	// +optional
@@ -26,8 +27,7 @@ type ApiGatewayGatewayResponseSpec struct {
 	ResponseType      string            `json:"responseType" tf:"response_type"`
 	RestAPIID         string            `json:"restAPIID" tf:"rest_api_id"`
 	// +optional
-	StatusCode  string                    `json:"statusCode,omitempty" tf:"status_code,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	StatusCode string `json:"statusCode,omitempty" tf:"status_code,omitempty"`
 }
 
 type ApiGatewayGatewayResponseStatus struct {

@@ -85,9 +85,7 @@ type ContainerClusterSpecMasterAuth struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ClientCertificateConfig []ContainerClusterSpecMasterAuthClientCertificateConfig `json:"clientCertificateConfig,omitempty" tf:"client_certificate_config,omitempty"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
-	Username string                     `json:"username" tf:"username"`
+	Username                string                                                  `json:"username" tf:"username"`
 }
 
 type ContainerClusterSpecMasterAuthorizedNetworksConfigCidrBlocks struct {
@@ -266,6 +264,8 @@ type ContainerClusterSpecPrivateClusterConfig struct {
 }
 
 type ContainerClusterSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AdditionalZones []string `json:"additionalZones,omitempty" tf:"additional_zones,omitempty"`
@@ -343,8 +343,7 @@ type ContainerClusterSpec struct {
 	// +optional
 	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 	// +optional
-	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type ContainerClusterStatus struct {

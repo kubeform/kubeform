@@ -19,6 +19,7 @@ type SnsSmsPreferences struct {
 }
 
 type SnsSmsPreferencesSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DefaultSenderID string `json:"defaultSenderID,omitempty" tf:"default_sender_id,omitempty"`
 	// +optional
@@ -30,8 +31,7 @@ type SnsSmsPreferencesSpec struct {
 	// +optional
 	MonthlySpendLimit string `json:"monthlySpendLimit,omitempty" tf:"monthly_spend_limit,omitempty"`
 	// +optional
-	UsageReportS3Bucket string                    `json:"usageReportS3Bucket,omitempty" tf:"usage_report_s3_bucket,omitempty"`
-	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
+	UsageReportS3Bucket string `json:"usageReportS3Bucket,omitempty" tf:"usage_report_s3_bucket,omitempty"`
 }
 
 type SnsSmsPreferencesStatus struct {

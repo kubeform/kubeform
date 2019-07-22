@@ -50,6 +50,7 @@ type CloudbuildTriggerSpecTriggerTemplate struct {
 }
 
 type CloudbuildTriggerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Build []CloudbuildTriggerSpecBuild `json:"build,omitempty" tf:"build,omitempty"`
@@ -64,7 +65,6 @@ type CloudbuildTriggerSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	TriggerTemplate []CloudbuildTriggerSpecTriggerTemplate `json:"triggerTemplate,omitempty" tf:"trigger_template,omitempty"`
-	ProviderRef     core.LocalObjectReference              `json:"providerRef" tf:"-"`
 }
 
 type CloudbuildTriggerStatus struct {

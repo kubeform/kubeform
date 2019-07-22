@@ -19,6 +19,7 @@ type NeptuneSubnetGroup struct {
 }
 
 type NeptuneSubnetGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -29,8 +30,7 @@ type NeptuneSubnetGroupSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type NeptuneSubnetGroupStatus struct {

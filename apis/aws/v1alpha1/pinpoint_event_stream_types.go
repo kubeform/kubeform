@@ -19,10 +19,10 @@ type PinpointEventStream struct {
 }
 
 type PinpointEventStreamSpec struct {
+	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
 	ApplicationID        string                    `json:"applicationID" tf:"application_id"`
 	DestinationStreamArn string                    `json:"destinationStreamArn" tf:"destination_stream_arn"`
 	RoleArn              string                    `json:"roleArn" tf:"role_arn"`
-	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type PinpointEventStreamStatus struct {

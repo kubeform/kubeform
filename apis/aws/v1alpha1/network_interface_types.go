@@ -24,6 +24,7 @@ type NetworkInterfaceSpecAttachment struct {
 }
 
 type NetworkInterfaceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Attachment []NetworkInterfaceSpecAttachment `json:"attachment,omitempty" tf:"attachment,omitempty"`
@@ -43,8 +44,7 @@ type NetworkInterfaceSpec struct {
 	SourceDestCheck bool   `json:"sourceDestCheck,omitempty" tf:"source_dest_check,omitempty"`
 	SubnetID        string `json:"subnetID" tf:"subnet_id"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type NetworkInterfaceStatus struct {

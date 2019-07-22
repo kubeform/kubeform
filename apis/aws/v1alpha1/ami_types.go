@@ -40,6 +40,7 @@ type AmiSpecEphemeralBlockDevice struct {
 }
 
 type AmiSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Architecture string `json:"architecture,omitempty" tf:"architecture,omitempty"`
 	// +optional
@@ -66,8 +67,7 @@ type AmiSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	VirtualizationType string                    `json:"virtualizationType,omitempty" tf:"virtualization_type,omitempty"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VirtualizationType string `json:"virtualizationType,omitempty" tf:"virtualization_type,omitempty"`
 }
 
 type AmiStatus struct {

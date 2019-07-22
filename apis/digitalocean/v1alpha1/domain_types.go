@@ -19,10 +19,10 @@ type Domain struct {
 }
 
 type DomainSpec struct {
-	// +optional
-	IpAddress   string                    `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
-	Name        string                    `json:"name" tf:"name"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+	Name      string `json:"name" tf:"name"`
 }
 
 type DomainStatus struct {

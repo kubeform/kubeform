@@ -19,13 +19,13 @@ type SqlVirtualNetworkRule struct {
 }
 
 type SqlVirtualNetworkRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
-	IgnoreMissingVnetServiceEndpoint bool                      `json:"ignoreMissingVnetServiceEndpoint,omitempty" tf:"ignore_missing_vnet_service_endpoint,omitempty"`
-	Name                             string                    `json:"name" tf:"name"`
-	ResourceGroupName                string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ServerName                       string                    `json:"serverName" tf:"server_name"`
-	SubnetID                         string                    `json:"subnetID" tf:"subnet_id"`
-	ProviderRef                      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	IgnoreMissingVnetServiceEndpoint bool   `json:"ignoreMissingVnetServiceEndpoint,omitempty" tf:"ignore_missing_vnet_service_endpoint,omitempty"`
+	Name                             string `json:"name" tf:"name"`
+	ResourceGroupName                string `json:"resourceGroupName" tf:"resource_group_name"`
+	ServerName                       string `json:"serverName" tf:"server_name"`
+	SubnetID                         string `json:"subnetID" tf:"subnet_id"`
 }
 
 type SqlVirtualNetworkRuleStatus struct {

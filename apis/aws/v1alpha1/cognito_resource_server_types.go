@@ -24,14 +24,14 @@ type CognitoResourceServerSpecScope struct {
 }
 
 type CognitoResourceServerSpec struct {
-	Identifier string `json:"identifier" tf:"identifier"`
-	Name       string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Identifier  string                    `json:"identifier" tf:"identifier"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=25
 	// +kubebuilder:validation:UniqueItems=true
-	Scope       []CognitoResourceServerSpecScope `json:"scope,omitempty" tf:"scope,omitempty"`
-	UserPoolID  string                           `json:"userPoolID" tf:"user_pool_id"`
-	ProviderRef core.LocalObjectReference        `json:"providerRef" tf:"-"`
+	Scope      []CognitoResourceServerSpecScope `json:"scope,omitempty" tf:"scope,omitempty"`
+	UserPoolID string                           `json:"userPoolID" tf:"user_pool_id"`
 }
 
 type CognitoResourceServerStatus struct {

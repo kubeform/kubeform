@@ -33,7 +33,8 @@ type BigqueryTableSpecView struct {
 }
 
 type BigqueryTableSpec struct {
-	DatasetID string `json:"datasetID" tf:"dataset_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	DatasetID   string                    `json:"datasetID" tf:"dataset_id"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -52,8 +53,7 @@ type BigqueryTableSpec struct {
 	TimePartitioning []BigqueryTableSpecTimePartitioning `json:"timePartitioning,omitempty" tf:"time_partitioning,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	View        []BigqueryTableSpecView   `json:"view,omitempty" tf:"view,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	View []BigqueryTableSpecView `json:"view,omitempty" tf:"view,omitempty"`
 }
 
 type BigqueryTableStatus struct {

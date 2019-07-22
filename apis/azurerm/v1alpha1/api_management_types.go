@@ -23,21 +23,13 @@ type ApiManagementSpecAdditionalLocation struct {
 }
 
 type ApiManagementSpecCertificate struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	CertificatePassword *core.LocalObjectReference `json:"certificatePassword" tf:"certificate_password"`
-	// Sensitive Data. Provide secret name which contains one value only
-	EncodedCertificate *core.LocalObjectReference `json:"encodedCertificate" tf:"encoded_certificate"`
-	StoreName          string                     `json:"storeName" tf:"store_name"`
+	StoreName string `json:"storeName" tf:"store_name"`
 }
 
 type ApiManagementSpecHostnameConfigurationManagement struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Certificate *core.LocalObjectReference `json:"certificate,omitempty" tf:"certificate,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	CertificatePassword *core.LocalObjectReference `json:"certificatePassword,omitempty" tf:"certificate_password,omitempty"`
-	HostName            string                     `json:"hostName" tf:"host_name"`
+	HostName string `json:"hostName" tf:"host_name"`
 	// +optional
 	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
 	// +optional
@@ -46,12 +38,8 @@ type ApiManagementSpecHostnameConfigurationManagement struct {
 
 type ApiManagementSpecHostnameConfigurationPortal struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Certificate *core.LocalObjectReference `json:"certificate,omitempty" tf:"certificate,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	CertificatePassword *core.LocalObjectReference `json:"certificatePassword,omitempty" tf:"certificate_password,omitempty"`
-	HostName            string                     `json:"hostName" tf:"host_name"`
+	HostName string `json:"hostName" tf:"host_name"`
 	// +optional
 	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
 	// +optional
@@ -60,11 +48,7 @@ type ApiManagementSpecHostnameConfigurationPortal struct {
 
 type ApiManagementSpecHostnameConfigurationProxy struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Certificate *core.LocalObjectReference `json:"certificate,omitempty" tf:"certificate,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	CertificatePassword *core.LocalObjectReference `json:"certificatePassword,omitempty" tf:"certificate_password,omitempty"`
 	// +optional
 	DefaultSslBinding bool   `json:"defaultSslBinding,omitempty" tf:"default_ssl_binding,omitempty"`
 	HostName          string `json:"hostName" tf:"host_name"`
@@ -76,12 +60,8 @@ type ApiManagementSpecHostnameConfigurationProxy struct {
 
 type ApiManagementSpecHostnameConfigurationScm struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Certificate *core.LocalObjectReference `json:"certificate,omitempty" tf:"certificate,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	CertificatePassword *core.LocalObjectReference `json:"certificatePassword,omitempty" tf:"certificate_password,omitempty"`
-	HostName            string                     `json:"hostName" tf:"host_name"`
+	HostName string `json:"hostName" tf:"host_name"`
 	// +optional
 	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
 	// +optional
@@ -153,6 +133,8 @@ type ApiManagementSpecSku struct {
 }
 
 type ApiManagementSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AdditionalLocation []ApiManagementSpecAdditionalLocation `json:"additionalLocation,omitempty" tf:"additional_location,omitempty"`
@@ -187,8 +169,7 @@ type ApiManagementSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Sku []ApiManagementSpecSku `json:"sku" tf:"sku"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ApiManagementStatus struct {

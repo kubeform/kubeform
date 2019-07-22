@@ -19,7 +19,8 @@ type ComputeSubnetworkIamMember struct {
 }
 
 type ComputeSubnetworkIamMemberSpec struct {
-	Member string `json:"member" tf:"member"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Member      string                    `json:"member" tf:"member"`
 	// +optional
 	// Deprecated
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
@@ -28,8 +29,7 @@ type ComputeSubnetworkIamMemberSpec struct {
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	Role   string `json:"role" tf:"role"`
 	// Deprecated
-	Subnetwork  string                    `json:"subnetwork" tf:"subnetwork"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Subnetwork string `json:"subnetwork" tf:"subnetwork"`
 }
 
 type ComputeSubnetworkIamMemberStatus struct {

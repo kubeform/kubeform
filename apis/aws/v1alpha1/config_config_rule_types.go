@@ -50,6 +50,7 @@ type ConfigConfigRuleSpecSource struct {
 }
 
 type ConfigConfigRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -61,8 +62,7 @@ type ConfigConfigRuleSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Scope []ConfigConfigRuleSpecScope `json:"scope,omitempty" tf:"scope,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
-	Source      []ConfigConfigRuleSpecSource `json:"source" tf:"source"`
-	ProviderRef core.LocalObjectReference    `json:"providerRef" tf:"-"`
+	Source []ConfigConfigRuleSpecSource `json:"source" tf:"source"`
 }
 
 type ConfigConfigRuleStatus struct {

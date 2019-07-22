@@ -19,13 +19,13 @@ type ApiGatewayRequestValidator struct {
 }
 
 type ApiGatewayRequestValidatorSpec struct {
-	Name      string `json:"name" tf:"name"`
-	RestAPIID string `json:"restAPIID" tf:"rest_api_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
+	RestAPIID   string                    `json:"restAPIID" tf:"rest_api_id"`
 	// +optional
 	ValidateRequestBody bool `json:"validateRequestBody,omitempty" tf:"validate_request_body,omitempty"`
 	// +optional
-	ValidateRequestParameters bool                      `json:"validateRequestParameters,omitempty" tf:"validate_request_parameters,omitempty"`
-	ProviderRef               core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ValidateRequestParameters bool `json:"validateRequestParameters,omitempty" tf:"validate_request_parameters,omitempty"`
 }
 
 type ApiGatewayRequestValidatorStatus struct {

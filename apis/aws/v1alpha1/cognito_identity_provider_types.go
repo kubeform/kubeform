@@ -19,15 +19,15 @@ type CognitoIdentityProvider struct {
 }
 
 type CognitoIdentityProviderSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AttributeMapping map[string]string `json:"attributeMapping,omitempty" tf:"attribute_mapping,omitempty"`
 	// +optional
-	IdpIdentifiers  []string                  `json:"idpIdentifiers,omitempty" tf:"idp_identifiers,omitempty"`
-	ProviderDetails map[string]string         `json:"providerDetails" tf:"provider_details"`
-	ProviderName    string                    `json:"providerName" tf:"provider_name"`
-	ProviderType    string                    `json:"providerType" tf:"provider_type"`
-	UserPoolID      string                    `json:"userPoolID" tf:"user_pool_id"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	IdpIdentifiers  []string          `json:"idpIdentifiers,omitempty" tf:"idp_identifiers,omitempty"`
+	ProviderDetails map[string]string `json:"providerDetails" tf:"provider_details"`
+	ProviderName    string            `json:"providerName" tf:"provider_name"`
+	ProviderType    string            `json:"providerType" tf:"provider_type"`
+	UserPoolID      string            `json:"userPoolID" tf:"user_pool_id"`
 }
 
 type CognitoIdentityProviderStatus struct {

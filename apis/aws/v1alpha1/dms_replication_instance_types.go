@@ -19,6 +19,7 @@ type DmsReplicationInstance struct {
 }
 
 type DmsReplicationInstanceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllocatedStorage int `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
 	// +optional
@@ -45,8 +46,7 @@ type DmsReplicationInstanceSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	VpcSecurityGroupIDS []string                  `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
-	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcSecurityGroupIDS []string `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
 }
 
 type DmsReplicationInstanceStatus struct {

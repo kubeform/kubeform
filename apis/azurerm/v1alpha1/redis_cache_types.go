@@ -28,11 +28,7 @@ type RedisCacheSpecRedisConfiguration struct {
 	// +optional
 	AofBackupEnabled bool `json:"aofBackupEnabled,omitempty" tf:"aof_backup_enabled,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	AofStorageConnectionString0 *core.LocalObjectReference `json:"aofStorageConnectionString0,omitempty" tf:"aof_storage_connection_string_0,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	AofStorageConnectionString1 *core.LocalObjectReference `json:"aofStorageConnectionString1,omitempty" tf:"aof_storage_connection_string_1,omitempty"`
 	// +optional
 	EnableAuthentication bool `json:"enableAuthentication,omitempty" tf:"enable_authentication,omitempty"`
 	// +optional
@@ -52,12 +48,12 @@ type RedisCacheSpecRedisConfiguration struct {
 	// +optional
 	RdbBackupMaxSnapshotCount int `json:"rdbBackupMaxSnapshotCount,omitempty" tf:"rdb_backup_max_snapshot_count,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	RdbStorageConnectionString *core.LocalObjectReference `json:"rdbStorageConnectionString,omitempty" tf:"rdb_storage_connection_string,omitempty"`
 }
 
 type RedisCacheSpec struct {
-	Capacity int `json:"capacity" tf:"capacity"`
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	Capacity    int                        `json:"capacity" tf:"capacity"`
 	// +optional
 	EnableNonSslPort bool   `json:"enableNonSslPort,omitempty" tf:"enable_non_ssl_port,omitempty"`
 	Family           string `json:"family" tf:"family"`
@@ -82,8 +78,7 @@ type RedisCacheSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Zones       []string                  `json:"zones,omitempty" tf:"zones,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zones []string `json:"zones,omitempty" tf:"zones,omitempty"`
 }
 
 type RedisCacheStatus struct {

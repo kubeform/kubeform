@@ -95,6 +95,7 @@ type AutoscalingGroupSpecTag struct {
 }
 
 type AutoscalingGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
@@ -159,8 +160,7 @@ type AutoscalingGroupSpec struct {
 	// +optional
 	WaitForCapacityTimeout string `json:"waitForCapacityTimeout,omitempty" tf:"wait_for_capacity_timeout,omitempty"`
 	// +optional
-	WaitForElbCapacity int                       `json:"waitForElbCapacity,omitempty" tf:"wait_for_elb_capacity,omitempty"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	WaitForElbCapacity int `json:"waitForElbCapacity,omitempty" tf:"wait_for_elb_capacity,omitempty"`
 }
 
 type AutoscalingGroupStatus struct {

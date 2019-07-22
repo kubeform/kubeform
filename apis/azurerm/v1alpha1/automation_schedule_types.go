@@ -24,6 +24,7 @@ type AutomationScheduleSpecMonthlyOccurrence struct {
 }
 
 type AutomationScheduleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// Deprecated
 	AccountName string `json:"accountName,omitempty" tf:"account_name,omitempty"`
@@ -49,8 +50,7 @@ type AutomationScheduleSpec struct {
 	Timezone string `json:"timezone,omitempty" tf:"timezone,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	WeekDays    []string                  `json:"weekDays,omitempty" tf:"week_days,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	WeekDays []string `json:"weekDays,omitempty" tf:"week_days,omitempty"`
 }
 
 type AutomationScheduleStatus struct {

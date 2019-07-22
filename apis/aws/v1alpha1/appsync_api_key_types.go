@@ -19,12 +19,12 @@ type AppsyncAPIKey struct {
 }
 
 type AppsyncAPIKeySpec struct {
-	ApiID string `json:"apiID" tf:"api_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApiID       string                    `json:"apiID" tf:"api_id"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	Expires     string                    `json:"expires,omitempty" tf:"expires,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Expires string `json:"expires,omitempty" tf:"expires,omitempty"`
 }
 
 type AppsyncAPIKeyStatus struct {

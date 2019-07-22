@@ -764,15 +764,6 @@ spec:
                     type: string
                   dataTableName:
                     type: string
-                  password:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   processingConfiguration:
                     items:
                       properties:
@@ -849,7 +840,6 @@ spec:
                 required:
                 - clusterJdbcurl
                 - dataTableName
-                - password
                 - roleArn
                 - username
                 type: object
@@ -891,6 +881,15 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             splunkConfiguration:
               items:
                 properties:

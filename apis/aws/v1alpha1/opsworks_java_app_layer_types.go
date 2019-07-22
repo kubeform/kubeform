@@ -31,6 +31,7 @@ type OpsworksJavaAppLayerSpecEbsVolume struct {
 }
 
 type OpsworksJavaAppLayerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AppServer string `json:"appServer,omitempty" tf:"app_server,omitempty"`
 	// +optional
@@ -82,8 +83,7 @@ type OpsworksJavaAppLayerSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	SystemPackages []string `json:"systemPackages,omitempty" tf:"system_packages,omitempty"`
 	// +optional
-	UseEbsOptimizedInstances bool                      `json:"useEbsOptimizedInstances,omitempty" tf:"use_ebs_optimized_instances,omitempty"`
-	ProviderRef              core.LocalObjectReference `json:"providerRef" tf:"-"`
+	UseEbsOptimizedInstances bool `json:"useEbsOptimizedInstances,omitempty" tf:"use_ebs_optimized_instances,omitempty"`
 }
 
 type OpsworksJavaAppLayerStatus struct {

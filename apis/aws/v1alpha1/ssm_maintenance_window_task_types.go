@@ -36,6 +36,7 @@ type SsmMaintenanceWindowTaskSpecTaskParameters struct {
 }
 
 type SsmMaintenanceWindowTaskSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -54,7 +55,6 @@ type SsmMaintenanceWindowTaskSpec struct {
 	TaskParameters []SsmMaintenanceWindowTaskSpecTaskParameters `json:"taskParameters,omitempty" tf:"task_parameters,omitempty"`
 	TaskType       string                                       `json:"taskType" tf:"task_type"`
 	WindowID       string                                       `json:"windowID" tf:"window_id"`
-	ProviderRef    core.LocalObjectReference                    `json:"providerRef" tf:"-"`
 }
 
 type SsmMaintenanceWindowTaskStatus struct {

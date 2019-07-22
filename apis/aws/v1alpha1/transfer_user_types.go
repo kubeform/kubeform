@@ -19,6 +19,7 @@ type TransferUser struct {
 }
 
 type TransferUserSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	HomeDirectory string `json:"homeDirectory,omitempty" tf:"home_directory,omitempty"`
 	// +optional
@@ -26,9 +27,8 @@ type TransferUserSpec struct {
 	Role     string `json:"role" tf:"role"`
 	ServerID string `json:"serverID" tf:"server_id"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	UserName    string                    `json:"userName" tf:"user_name"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	UserName string            `json:"userName" tf:"user_name"`
 }
 
 type TransferUserStatus struct {

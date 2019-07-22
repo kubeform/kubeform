@@ -19,6 +19,7 @@ type DataFactoryLinkedServiceDataLakeStorageGen2 struct {
 }
 
 type DataFactoryLinkedServiceDataLakeStorageGen2Spec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AdditionalProperties map[string]string `json:"additionalProperties,omitempty" tf:"additional_properties,omitempty"`
 	// +optional
@@ -30,13 +31,12 @@ type DataFactoryLinkedServiceDataLakeStorageGen2Spec struct {
 	IntegrationRuntimeName string `json:"integrationRuntimeName,omitempty" tf:"integration_runtime_name,omitempty"`
 	Name                   string `json:"name" tf:"name"`
 	// +optional
-	Parameters          map[string]string         `json:"parameters,omitempty" tf:"parameters,omitempty"`
-	ResourceGroupName   string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ServicePrincipalID  string                    `json:"servicePrincipalID" tf:"service_principal_id"`
-	ServicePrincipalKey string                    `json:"servicePrincipalKey" tf:"service_principal_key"`
-	Tenant              string                    `json:"tenant" tf:"tenant"`
-	Url                 string                    `json:"url" tf:"url"`
-	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Parameters          map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	ResourceGroupName   string            `json:"resourceGroupName" tf:"resource_group_name"`
+	ServicePrincipalID  string            `json:"servicePrincipalID" tf:"service_principal_id"`
+	ServicePrincipalKey string            `json:"servicePrincipalKey" tf:"service_principal_key"`
+	Tenant              string            `json:"tenant" tf:"tenant"`
+	Url                 string            `json:"url" tf:"url"`
 }
 
 type DataFactoryLinkedServiceDataLakeStorageGen2Status struct {

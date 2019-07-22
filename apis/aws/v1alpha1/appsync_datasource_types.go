@@ -41,7 +41,8 @@ type AppsyncDatasourceSpecLambdaConfig struct {
 }
 
 type AppsyncDatasourceSpec struct {
-	ApiID string `json:"apiID" tf:"api_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApiID       string                    `json:"apiID" tf:"api_id"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -58,9 +59,8 @@ type AppsyncDatasourceSpec struct {
 	LambdaConfig []AppsyncDatasourceSpecLambdaConfig `json:"lambdaConfig,omitempty" tf:"lambda_config,omitempty"`
 	Name         string                              `json:"name" tf:"name"`
 	// +optional
-	ServiceRoleArn string                    `json:"serviceRoleArn,omitempty" tf:"service_role_arn,omitempty"`
-	Type           string                    `json:"type" tf:"type"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ServiceRoleArn string `json:"serviceRoleArn,omitempty" tf:"service_role_arn,omitempty"`
+	Type           string `json:"type" tf:"type"`
 }
 
 type AppsyncDatasourceStatus struct {

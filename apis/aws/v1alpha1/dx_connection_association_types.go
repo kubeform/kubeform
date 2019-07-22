@@ -19,9 +19,9 @@ type DxConnectionAssociation struct {
 }
 
 type DxConnectionAssociationSpec struct {
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 	ConnectionID string                    `json:"connectionID" tf:"connection_id"`
 	LagID        string                    `json:"lagID" tf:"lag_id"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type DxConnectionAssociationStatus struct {

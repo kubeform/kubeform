@@ -107,6 +107,7 @@ type MonitoringAlertPolicySpecConditions struct {
 }
 
 type MonitoringAlertPolicySpec struct {
+	ProviderRef core.LocalObjectReference             `json:"providerRef" tf:"-"`
 	Combiner    string                                `json:"combiner" tf:"combiner"`
 	Conditions  []MonitoringAlertPolicySpecConditions `json:"conditions" tf:"conditions"`
 	DisplayName string                                `json:"displayName" tf:"display_name"`
@@ -116,8 +117,7 @@ type MonitoringAlertPolicySpec struct {
 	// +optional
 	NotificationChannels []string `json:"notificationChannels,omitempty" tf:"notification_channels,omitempty"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type MonitoringAlertPolicyStatus struct {

@@ -40,6 +40,7 @@ type RouteTableSpecRoute struct {
 }
 
 type RouteTableSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	PropagatingVgws []string `json:"propagatingVgws,omitempty" tf:"propagating_vgws,omitempty"`
@@ -47,9 +48,8 @@ type RouteTableSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Route []RouteTableSpecRoute `json:"route,omitempty" tf:"route,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	VpcID       string                    `json:"vpcID" tf:"vpc_id"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VpcID string            `json:"vpcID" tf:"vpc_id"`
 }
 
 type RouteTableStatus struct {

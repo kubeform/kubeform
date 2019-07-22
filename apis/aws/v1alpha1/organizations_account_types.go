@@ -19,7 +19,8 @@ type OrganizationsAccount struct {
 }
 
 type OrganizationsAccountSpec struct {
-	Email string `json:"email" tf:"email"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Email       string                    `json:"email" tf:"email"`
 	// +optional
 	IamUserAccessToBilling string `json:"iamUserAccessToBilling,omitempty" tf:"iam_user_access_to_billing,omitempty"`
 	Name                   string `json:"name" tf:"name"`
@@ -28,8 +29,7 @@ type OrganizationsAccountSpec struct {
 	// +optional
 	RoleName string `json:"roleName,omitempty" tf:"role_name,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type OrganizationsAccountStatus struct {

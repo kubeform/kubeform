@@ -19,8 +19,8 @@ type IamAccountAlias struct {
 }
 
 type IamAccountAliasSpec struct {
-	AccountAlias string                    `json:"accountAlias" tf:"account_alias"`
 	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AccountAlias string                    `json:"accountAlias" tf:"account_alias"`
 }
 
 type IamAccountAliasStatus struct {

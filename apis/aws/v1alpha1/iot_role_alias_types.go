@@ -19,11 +19,11 @@ type IotRoleAlias struct {
 }
 
 type IotRoleAliasSpec struct {
-	Alias string `json:"alias" tf:"alias"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Alias       string                    `json:"alias" tf:"alias"`
 	// +optional
-	CredentialDuration int                       `json:"credentialDuration,omitempty" tf:"credential_duration,omitempty"`
-	RoleArn            string                    `json:"roleArn" tf:"role_arn"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	CredentialDuration int    `json:"credentialDuration,omitempty" tf:"credential_duration,omitempty"`
+	RoleArn            string `json:"roleArn" tf:"role_arn"`
 }
 
 type IotRoleAliasStatus struct {

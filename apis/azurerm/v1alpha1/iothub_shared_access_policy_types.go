@@ -19,6 +19,7 @@ type IothubSharedAccessPolicy struct {
 }
 
 type IothubSharedAccessPolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DeviceConnect bool   `json:"deviceConnect,omitempty" tf:"device_connect,omitempty"`
 	IothubName    string `json:"iothubName" tf:"iothub_name"`
@@ -29,8 +30,7 @@ type IothubSharedAccessPolicySpec struct {
 	RegistryWrite     bool   `json:"registryWrite,omitempty" tf:"registry_write,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	ServiceConnect bool                      `json:"serviceConnect,omitempty" tf:"service_connect,omitempty"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ServiceConnect bool `json:"serviceConnect,omitempty" tf:"service_connect,omitempty"`
 }
 
 type IothubSharedAccessPolicyStatus struct {

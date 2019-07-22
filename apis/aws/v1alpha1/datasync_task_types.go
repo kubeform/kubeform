@@ -40,6 +40,7 @@ type DatasyncTaskSpecOptions struct {
 }
 
 type DatasyncTaskSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	CloudwatchLogGroupArn  string `json:"cloudwatchLogGroupArn,omitempty" tf:"cloudwatch_log_group_arn,omitempty"`
 	DestinationLocationArn string `json:"destinationLocationArn" tf:"destination_location_arn"`
@@ -50,8 +51,7 @@ type DatasyncTaskSpec struct {
 	Options           []DatasyncTaskSpecOptions `json:"options,omitempty" tf:"options,omitempty"`
 	SourceLocationArn string                    `json:"sourceLocationArn" tf:"source_location_arn"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type DatasyncTaskStatus struct {

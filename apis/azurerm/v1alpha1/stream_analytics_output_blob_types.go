@@ -29,19 +29,18 @@ type StreamAnalyticsOutputBlobSpecSerialization struct {
 }
 
 type StreamAnalyticsOutputBlobSpec struct {
-	DateFormat        string `json:"dateFormat" tf:"date_format"`
-	Name              string `json:"name" tf:"name"`
-	PathPattern       string `json:"pathPattern" tf:"path_pattern"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	DateFormat        string                     `json:"dateFormat" tf:"date_format"`
+	Name              string                     `json:"name" tf:"name"`
+	PathPattern       string                     `json:"pathPattern" tf:"path_pattern"`
+	ResourceGroupName string                     `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
-	Serialization []StreamAnalyticsOutputBlobSpecSerialization `json:"serialization" tf:"serialization"`
-	// Sensitive Data. Provide secret name which contains one value only
-	StorageAccountKey      *core.LocalObjectReference `json:"storageAccountKey" tf:"storage_account_key"`
-	StorageAccountName     string                     `json:"storageAccountName" tf:"storage_account_name"`
-	StorageContainerName   string                     `json:"storageContainerName" tf:"storage_container_name"`
-	StreamAnalyticsJobName string                     `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`
-	TimeFormat             string                     `json:"timeFormat" tf:"time_format"`
-	ProviderRef            core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	Serialization          []StreamAnalyticsOutputBlobSpecSerialization `json:"serialization" tf:"serialization"`
+	StorageAccountName     string                                       `json:"storageAccountName" tf:"storage_account_name"`
+	StorageContainerName   string                                       `json:"storageContainerName" tf:"storage_container_name"`
+	StreamAnalyticsJobName string                                       `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`
+	TimeFormat             string                                       `json:"timeFormat" tf:"time_format"`
 }
 
 type StreamAnalyticsOutputBlobStatus struct {

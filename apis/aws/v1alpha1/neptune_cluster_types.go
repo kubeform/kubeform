@@ -19,6 +19,7 @@ type NeptuneCluster struct {
 }
 
 type NeptuneClusterSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
 	// +optional
@@ -65,8 +66,7 @@ type NeptuneClusterSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	VpcSecurityGroupIDS []string                  `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
-	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcSecurityGroupIDS []string `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
 }
 
 type NeptuneClusterStatus struct {

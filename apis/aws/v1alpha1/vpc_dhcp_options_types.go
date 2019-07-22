@@ -19,6 +19,7 @@ type VpcDHCPOptions struct {
 }
 
 type VpcDHCPOptionsSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DomainName string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
 	// +optional
@@ -30,8 +31,7 @@ type VpcDHCPOptionsSpec struct {
 	// +optional
 	NtpServers []string `json:"ntpServers,omitempty" tf:"ntp_servers,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type VpcDHCPOptionsStatus struct {

@@ -38,44 +38,47 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 
-		&DatabaseCluster{},
-		&DatabaseClusterList{},
-
-		&Droplet{},
-		&DropletList{},
-
-		&FloatingIP{},
-		&FloatingIPList{},
-
-		&KubernetesNodePool{},
-		&KubernetesNodePoolList{},
-
-		&Tag{},
-		&TagList{},
-
-		&VolumeSnapshot{},
-		&VolumeSnapshotList{},
-
-		&SshKey{},
-		&SshKeyList{},
-
 		&VolumeAttachment{},
 		&VolumeAttachmentList{},
 
-		&Domain{},
-		&DomainList{},
+		&Certificate{},
+		&CertificateList{},
 
 		&DropletSnapshot{},
 		&DropletSnapshotList{},
 
-		&Firewall{},
-		&FirewallList{},
-
-		&FloatingIPAssignment{},
-		&FloatingIPAssignmentList{},
+		&FloatingIP{},
+		&FloatingIPList{},
 
 		&KubernetesCluster{},
 		&KubernetesClusterList{},
+
+		&Record{},
+		&RecordList{},
+
+		&Tag{},
+		&TagList{},
+
+		&Volume{},
+		&VolumeList{},
+
+		&VolumeSnapshot{},
+		&VolumeSnapshotList{},
+
+		&KubernetesNodePool{},
+		&KubernetesNodePoolList{},
+
+		&SpacesBucket{},
+		&SpacesBucketList{},
+
+		&Cdn{},
+		&CdnList{},
+
+		&Domain{},
+		&DomainList{},
+
+		&Firewall{},
+		&FirewallList{},
 
 		&Loadbalancer{},
 		&LoadbalancerList{},
@@ -83,20 +86,17 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&Project{},
 		&ProjectList{},
 
-		&Certificate{},
-		&CertificateList{},
+		&DatabaseCluster{},
+		&DatabaseClusterList{},
 
-		&Cdn{},
-		&CdnList{},
+		&Droplet{},
+		&DropletList{},
 
-		&Record{},
-		&RecordList{},
+		&FloatingIPAssignment{},
+		&FloatingIPAssignmentList{},
 
-		&SpacesBucket{},
-		&SpacesBucketList{},
-
-		&Volume{},
-		&VolumeList{},
+		&SshKey{},
+		&SshKeyList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

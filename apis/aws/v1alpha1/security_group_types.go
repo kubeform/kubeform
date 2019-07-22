@@ -57,6 +57,7 @@ type SecurityGroupSpecIngress struct {
 }
 
 type SecurityGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -74,8 +75,7 @@ type SecurityGroupSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	VpcID       string                    `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
 }
 
 type SecurityGroupStatus struct {

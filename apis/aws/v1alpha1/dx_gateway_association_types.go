@@ -19,6 +19,7 @@ type DxGatewayAssociation struct {
 }
 
 type DxGatewayAssociationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AllowedPrefixes []string `json:"allowedPrefixes,omitempty" tf:"allowed_prefixes,omitempty"`
@@ -31,8 +32,7 @@ type DxGatewayAssociationSpec struct {
 	ProposalID string `json:"proposalID,omitempty" tf:"proposal_id,omitempty"`
 	// +optional
 	// Deprecated
-	VpnGatewayID string                    `json:"vpnGatewayID,omitempty" tf:"vpn_gateway_id,omitempty"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpnGatewayID string `json:"vpnGatewayID,omitempty" tf:"vpn_gateway_id,omitempty"`
 }
 
 type DxGatewayAssociationStatus struct {

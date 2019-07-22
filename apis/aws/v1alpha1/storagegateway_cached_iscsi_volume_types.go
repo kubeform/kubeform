@@ -19,15 +19,15 @@ type StoragegatewayCachedIscsiVolume struct {
 }
 
 type StoragegatewayCachedIscsiVolumeSpec struct {
-	GatewayArn         string `json:"gatewayArn" tf:"gateway_arn"`
-	NetworkInterfaceID string `json:"networkInterfaceID" tf:"network_interface_id"`
+	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	GatewayArn         string                    `json:"gatewayArn" tf:"gateway_arn"`
+	NetworkInterfaceID string                    `json:"networkInterfaceID" tf:"network_interface_id"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	// +optional
-	SourceVolumeArn   string                    `json:"sourceVolumeArn,omitempty" tf:"source_volume_arn,omitempty"`
-	TargetName        string                    `json:"targetName" tf:"target_name"`
-	VolumeSizeInBytes int                       `json:"volumeSizeInBytes" tf:"volume_size_in_bytes"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SourceVolumeArn   string `json:"sourceVolumeArn,omitempty" tf:"source_volume_arn,omitempty"`
+	TargetName        string `json:"targetName" tf:"target_name"`
+	VolumeSizeInBytes int    `json:"volumeSizeInBytes" tf:"volume_size_in_bytes"`
 }
 
 type StoragegatewayCachedIscsiVolumeStatus struct {

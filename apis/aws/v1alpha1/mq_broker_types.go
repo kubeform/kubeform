@@ -43,13 +43,13 @@ type MqBrokerSpecUser struct {
 	ConsoleAccess bool `json:"consoleAccess,omitempty" tf:"console_access,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Groups []string `json:"groups,omitempty" tf:"groups,omitempty"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
-	Username string                     `json:"username" tf:"username"`
+	Groups   []string `json:"groups,omitempty" tf:"groups,omitempty"`
+	Username string   `json:"username" tf:"username"`
 }
 
 type MqBrokerSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
 	// +optional
@@ -79,8 +79,7 @@ type MqBrokerSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
-	User        []MqBrokerSpecUser        `json:"user" tf:"user"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	User []MqBrokerSpecUser `json:"user" tf:"user"`
 }
 
 type MqBrokerStatus struct {

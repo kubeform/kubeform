@@ -19,6 +19,7 @@ type ApiGatewayIntegrationResponse struct {
 }
 
 type ApiGatewayIntegrationResponseSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ContentHandling string `json:"contentHandling,omitempty" tf:"content_handling,omitempty"`
 	HttpMethod      string `json:"httpMethod" tf:"http_method"`
@@ -29,9 +30,8 @@ type ApiGatewayIntegrationResponseSpec struct {
 	ResponseTemplates map[string]string `json:"responseTemplates,omitempty" tf:"response_templates,omitempty"`
 	RestAPIID         string            `json:"restAPIID" tf:"rest_api_id"`
 	// +optional
-	SelectionPattern string                    `json:"selectionPattern,omitempty" tf:"selection_pattern,omitempty"`
-	StatusCode       string                    `json:"statusCode" tf:"status_code"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SelectionPattern string `json:"selectionPattern,omitempty" tf:"selection_pattern,omitempty"`
+	StatusCode       string `json:"statusCode" tf:"status_code"`
 }
 
 type ApiGatewayIntegrationResponseStatus struct {

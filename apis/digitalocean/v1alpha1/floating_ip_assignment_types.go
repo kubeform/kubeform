@@ -19,9 +19,9 @@ type FloatingIPAssignment struct {
 }
 
 type FloatingIPAssignmentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	DropletID   int                       `json:"dropletID" tf:"droplet_id"`
 	IpAddress   string                    `json:"ipAddress" tf:"ip_address"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type FloatingIPAssignmentStatus struct {

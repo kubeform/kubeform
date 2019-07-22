@@ -23,6 +23,7 @@ type AmiCopySpecEbsBlockDevice struct{}
 type AmiCopySpecEphemeralBlockDevice struct{}
 
 type AmiCopySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -39,8 +40,7 @@ type AmiCopySpec struct {
 	SourceAmiID     string `json:"sourceAmiID" tf:"source_ami_id"`
 	SourceAmiRegion string `json:"sourceAmiRegion" tf:"source_ami_region"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type AmiCopyStatus struct {

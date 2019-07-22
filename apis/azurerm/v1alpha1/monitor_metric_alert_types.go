@@ -44,6 +44,7 @@ type MonitorMetricAlertSpecCriteria struct {
 }
 
 type MonitorMetricAlertSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Action []MonitorMetricAlertSpecAction `json:"action,omitempty" tf:"action,omitempty"`
@@ -68,8 +69,7 @@ type MonitorMetricAlertSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	WindowSize  string                    `json:"windowSize,omitempty" tf:"window_size,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	WindowSize string `json:"windowSize,omitempty" tf:"window_size,omitempty"`
 }
 
 type MonitorMetricAlertStatus struct {

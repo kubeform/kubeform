@@ -19,9 +19,9 @@ type FolderIamPolicy struct {
 }
 
 type FolderIamPolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	Folder      string                    `json:"folder" tf:"folder"`
 	PolicyData  string                    `json:"policyData" tf:"policy_data"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type FolderIamPolicyStatus struct {

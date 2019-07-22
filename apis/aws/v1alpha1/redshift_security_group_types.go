@@ -28,12 +28,12 @@ type RedshiftSecurityGroupSpecIngress struct {
 }
 
 type RedshiftSecurityGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
-	Ingress     []RedshiftSecurityGroupSpecIngress `json:"ingress" tf:"ingress"`
-	Name        string                             `json:"name" tf:"name"`
-	ProviderRef core.LocalObjectReference          `json:"providerRef" tf:"-"`
+	Ingress []RedshiftSecurityGroupSpecIngress `json:"ingress" tf:"ingress"`
+	Name    string                             `json:"name" tf:"name"`
 }
 
 type RedshiftSecurityGroupStatus struct {

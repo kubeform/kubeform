@@ -19,6 +19,7 @@ type Subnet struct {
 }
 
 type SubnetSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AssignIpv6AddressOnCreation bool `json:"assignIpv6AddressOnCreation,omitempty" tf:"assign_ipv6_address_on_creation,omitempty"`
 	// +optional
@@ -31,9 +32,8 @@ type SubnetSpec struct {
 	// +optional
 	MapPublicIPOnLaunch bool `json:"mapPublicIPOnLaunch,omitempty" tf:"map_public_ip_on_launch,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	VpcID       string                    `json:"vpcID" tf:"vpc_id"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VpcID string            `json:"vpcID" tf:"vpc_id"`
 }
 
 type SubnetStatus struct {

@@ -19,14 +19,14 @@ type DxHostedPrivateVirtualInterfaceAccepter struct {
 }
 
 type DxHostedPrivateVirtualInterfaceAccepterSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DxGatewayID string `json:"dxGatewayID,omitempty" tf:"dx_gateway_id,omitempty"`
 	// +optional
 	Tags               map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	VirtualInterfaceID string            `json:"virtualInterfaceID" tf:"virtual_interface_id"`
 	// +optional
-	VpnGatewayID string                    `json:"vpnGatewayID,omitempty" tf:"vpn_gateway_id,omitempty"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpnGatewayID string `json:"vpnGatewayID,omitempty" tf:"vpn_gateway_id,omitempty"`
 }
 
 type DxHostedPrivateVirtualInterfaceAccepterStatus struct {

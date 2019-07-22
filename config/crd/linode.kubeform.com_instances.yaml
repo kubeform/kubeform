@@ -585,31 +585,12 @@ spec:
                     type: string
                   readOnly:
                     type: boolean
-                  rootPass:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   size:
                     type: integer
-                  stackscriptData:
-                    description: Sensitive Data. Provide secret name which contains
-                      one or more values
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   stackscriptID:
                     type: integer
                 required:
                 - label
-                - size
                 type: object
               type: array
             group:
@@ -631,18 +612,9 @@ spec:
               type: object
             region:
               type: string
-            rootPass:
-              description: Sensitive Data. Provide secret name which contains one
-                value only
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
-            stackscriptData:
-              description: Sensitive Data. Provide secret name which contains one
-                or more values
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
               properties:
                 name:
                   description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names

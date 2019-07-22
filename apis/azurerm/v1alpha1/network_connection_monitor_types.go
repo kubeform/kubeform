@@ -33,6 +33,7 @@ type NetworkConnectionMonitorSpecSource struct {
 }
 
 type NetworkConnectionMonitorSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AutoStart bool `json:"autoStart,omitempty" tf:"auto_start,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
@@ -46,8 +47,7 @@ type NetworkConnectionMonitorSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Source []NetworkConnectionMonitorSpecSource `json:"source" tf:"source"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type NetworkConnectionMonitorStatus struct {

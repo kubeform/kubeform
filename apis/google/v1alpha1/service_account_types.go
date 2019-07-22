@@ -19,15 +19,15 @@ type ServiceAccount struct {
 }
 
 type ServiceAccountSpec struct {
-	AccountID string `json:"accountID" tf:"account_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AccountID   string                    `json:"accountID" tf:"account_id"`
 	// +optional
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 	// +optional
 	// Deprecated
 	PolicyData string `json:"policyData,omitempty" tf:"policy_data,omitempty"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type ServiceAccountStatus struct {

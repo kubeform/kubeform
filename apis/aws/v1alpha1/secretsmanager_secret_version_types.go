@@ -19,17 +19,14 @@ type SecretsmanagerSecretVersion struct {
 }
 
 type SecretsmanagerSecretVersionSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	SecretBinary *core.LocalObjectReference `json:"secretBinary,omitempty" tf:"secret_binary,omitempty"`
-	SecretID     string                     `json:"secretID" tf:"secret_id"`
+	SecretID string `json:"secretID" tf:"secret_id"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	SecretString *core.LocalObjectReference `json:"secretString,omitempty" tf:"secret_string,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	VersionStages []string                  `json:"versionStages,omitempty" tf:"version_stages,omitempty"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VersionStages []string `json:"versionStages,omitempty" tf:"version_stages,omitempty"`
 }
 
 type SecretsmanagerSecretVersionStatus struct {

@@ -19,14 +19,14 @@ type SpacesBucket struct {
 }
 
 type SpacesBucketSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Acl string `json:"acl,omitempty" tf:"acl,omitempty"`
 	// +optional
 	ForceDestroy bool   `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
 	Name         string `json:"name" tf:"name"`
 	// +optional
-	Region      string                    `json:"region,omitempty" tf:"region,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
 }
 
 type SpacesBucketStatus struct {

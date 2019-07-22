@@ -19,10 +19,10 @@ type ComputeProjectMetadata struct {
 }
 
 type ComputeProjectMetadataSpec struct {
-	Metadata map[string]string `json:"metadata" tf:"metadata"`
-	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Metadata    map[string]string         `json:"metadata" tf:"metadata"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type ComputeProjectMetadataStatus struct {

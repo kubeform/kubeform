@@ -19,11 +19,11 @@ type GuarddutyDetector struct {
 }
 
 type GuarddutyDetectorSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Enable bool `json:"enable,omitempty" tf:"enable,omitempty"`
 	// +optional
-	FindingPublishingFrequency string                    `json:"findingPublishingFrequency,omitempty" tf:"finding_publishing_frequency,omitempty"`
-	ProviderRef                core.LocalObjectReference `json:"providerRef" tf:"-"`
+	FindingPublishingFrequency string `json:"findingPublishingFrequency,omitempty" tf:"finding_publishing_frequency,omitempty"`
 }
 
 type GuarddutyDetectorStatus struct {

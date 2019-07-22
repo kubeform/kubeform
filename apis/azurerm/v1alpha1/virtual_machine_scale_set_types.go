@@ -29,8 +29,6 @@ type VirtualMachineScaleSetSpecExtension struct {
 	AutoUpgradeMinorVersion bool   `json:"autoUpgradeMinorVersion,omitempty" tf:"auto_upgrade_minor_version,omitempty"`
 	Name                    string `json:"name" tf:"name"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	ProtectedSettings *core.LocalObjectReference `json:"protectedSettings,omitempty" tf:"protected_settings,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ProvisionAfterExtensions []string `json:"provisionAfterExtensions,omitempty" tf:"provision_after_extensions,omitempty"`
@@ -96,10 +94,8 @@ type VirtualMachineScaleSetSpecNetworkProfile struct {
 
 type VirtualMachineScaleSetSpecOsProfile struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	AdminPassword      *core.LocalObjectReference `json:"adminPassword,omitempty" tf:"admin_password,omitempty"`
-	AdminUsername      string                     `json:"adminUsername" tf:"admin_username"`
-	ComputerNamePrefix string                     `json:"computerNamePrefix" tf:"computer_name_prefix"`
+	AdminUsername      string `json:"adminUsername" tf:"admin_username"`
+	ComputerNamePrefix string `json:"computerNamePrefix" tf:"computer_name_prefix"`
 	// +optional
 	CustomData string `json:"customData,omitempty" tf:"custom_data,omitempty"`
 }
@@ -130,11 +126,9 @@ type VirtualMachineScaleSetSpecOsProfileSecrets struct {
 }
 
 type VirtualMachineScaleSetSpecOsProfileWindowsConfigAdditionalUnattendConfig struct {
-	Component string `json:"component" tf:"component"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Content     *core.LocalObjectReference `json:"content" tf:"content"`
-	Pass        string                     `json:"pass" tf:"pass"`
-	SettingName string                     `json:"settingName" tf:"setting_name"`
+	Component   string `json:"component" tf:"component"`
+	Pass        string `json:"pass" tf:"pass"`
+	SettingName string `json:"settingName" tf:"setting_name"`
 }
 
 type VirtualMachineScaleSetSpecOsProfileWindowsConfigWinrm struct {
@@ -220,6 +214,8 @@ type VirtualMachineScaleSetSpecStorageProfileOsDisk struct {
 }
 
 type VirtualMachineScaleSetSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	AutomaticOsUpgrade bool `json:"automaticOsUpgrade,omitempty" tf:"automatic_os_upgrade,omitempty"`
 	// +optional
@@ -283,8 +279,7 @@ type VirtualMachineScaleSetSpec struct {
 	Tags              map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	UpgradePolicyMode string            `json:"upgradePolicyMode" tf:"upgrade_policy_mode"`
 	// +optional
-	Zones       []string                  `json:"zones,omitempty" tf:"zones,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zones []string `json:"zones,omitempty" tf:"zones,omitempty"`
 }
 
 type VirtualMachineScaleSetStatus struct {

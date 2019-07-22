@@ -19,6 +19,7 @@ type EventhubNamespace struct {
 }
 
 type EventhubNamespaceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AutoInflateEnabled bool `json:"autoInflateEnabled,omitempty" tf:"auto_inflate_enabled,omitempty"`
 	// +optional
@@ -32,8 +33,7 @@ type EventhubNamespaceSpec struct {
 	ResourceGroupName      string `json:"resourceGroupName" tf:"resource_group_name"`
 	Sku                    string `json:"sku" tf:"sku"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type EventhubNamespaceStatus struct {

@@ -19,12 +19,12 @@ type RamResourceShare struct {
 }
 
 type RamResourceShareSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllowExternalPrincipals bool   `json:"allowExternalPrincipals,omitempty" tf:"allow_external_principals,omitempty"`
 	Name                    string `json:"name" tf:"name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type RamResourceShareStatus struct {

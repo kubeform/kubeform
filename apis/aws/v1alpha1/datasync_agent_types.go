@@ -19,6 +19,7 @@ type DatasyncAgent struct {
 }
 
 type DatasyncAgentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ActivationKey string `json:"activationKey,omitempty" tf:"activation_key,omitempty"`
 	// +optional
@@ -26,8 +27,7 @@ type DatasyncAgentSpec struct {
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type DatasyncAgentStatus struct {

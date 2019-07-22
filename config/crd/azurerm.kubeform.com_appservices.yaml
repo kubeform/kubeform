@@ -415,15 +415,6 @@ spec:
                           type: array
                         clientID:
                           type: string
-                        clientSecret:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                       required:
                       - clientID
                       type: object
@@ -446,22 +437,12 @@ spec:
                       properties:
                         appID:
                           type: string
-                        appSecret:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         oauthScopes:
                           items:
                             type: string
                           type: array
                       required:
                       - appID
-                      - appSecret
                       type: object
                     maxItems: 1
                     type: array
@@ -470,22 +451,12 @@ spec:
                       properties:
                         clientID:
                           type: string
-                        clientSecret:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         oauthScopes:
                           items:
                             type: string
                           type: array
                       required:
                       - clientID
-                      - clientSecret
                       type: object
                     maxItems: 1
                     type: array
@@ -496,22 +467,12 @@ spec:
                       properties:
                         clientID:
                           type: string
-                        clientSecret:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         oauthScopes:
                           items:
                             type: string
                           type: array
                       required:
                       - clientID
-                      - clientSecret
                       type: object
                     maxItems: 1
                     type: array
@@ -527,18 +488,8 @@ spec:
                       properties:
                         consumerKey:
                           type: string
-                        consumerSecret:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                       required:
                       - consumerKey
-                      - consumerSecret
                       type: object
                     maxItems: 1
                     type: array
@@ -560,19 +511,9 @@ spec:
                     type: string
                   type:
                     type: string
-                  value:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                 required:
                 - name
                 - type
-                - value
                 type: object
               type: array
               uniqueItems: true
@@ -605,21 +546,9 @@ spec:
                                 type: string
                               retentionInDays:
                                 type: integer
-                              sasURL:
-                                description: Sensitive Data. Provide secret name which
-                                  contains one value only
-                                properties:
-                                  name:
-                                    description: 'Name of the referent. More info:
-                                      https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                      TODO: Add other useful fields. apiVersion, kind,
-                                      uid?'
-                                    type: string
-                                type: object
                             required:
                             - level
                             - retentionInDays
-                            - sasURL
                             type: object
                           maxItems: 1
                           type: array
@@ -642,6 +571,15 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             siteConfig:
               items:
                 properties:

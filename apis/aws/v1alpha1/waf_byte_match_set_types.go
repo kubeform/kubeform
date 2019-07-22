@@ -35,11 +35,11 @@ type WafByteMatchSetSpecByteMatchTuples struct {
 }
 
 type WafByteMatchSetSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ByteMatchTuples []WafByteMatchSetSpecByteMatchTuples `json:"byteMatchTuples,omitempty" tf:"byte_match_tuples,omitempty"`
 	Name            string                               `json:"name" tf:"name"`
-	ProviderRef     core.LocalObjectReference            `json:"providerRef" tf:"-"`
 }
 
 type WafByteMatchSetStatus struct {

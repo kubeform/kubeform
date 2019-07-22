@@ -19,11 +19,11 @@ type ApiGatewayDocumentationVersion struct {
 }
 
 type ApiGatewayDocumentationVersionSpec struct {
-	// +optional
-	Description string                    `json:"description,omitempty" tf:"description,omitempty"`
-	RestAPIID   string                    `json:"restAPIID" tf:"rest_api_id"`
-	Version     string                    `json:"version" tf:"version"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	RestAPIID   string `json:"restAPIID" tf:"rest_api_id"`
+	Version     string `json:"version" tf:"version"`
 }
 
 type ApiGatewayDocumentationVersionStatus struct {

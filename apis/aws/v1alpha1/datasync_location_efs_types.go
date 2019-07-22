@@ -25,14 +25,14 @@ type DatasyncLocationEfsSpecEc2Config struct {
 }
 
 type DatasyncLocationEfsSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	Ec2Config        []DatasyncLocationEfsSpecEc2Config `json:"ec2Config" tf:"ec2_config"`
 	EfsFileSystemArn string                             `json:"efsFileSystemArn" tf:"efs_file_system_arn"`
 	// +optional
 	Subdirectory string `json:"subdirectory,omitempty" tf:"subdirectory,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type DatasyncLocationEfsStatus struct {

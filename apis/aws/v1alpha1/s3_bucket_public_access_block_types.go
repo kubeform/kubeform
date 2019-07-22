@@ -19,6 +19,7 @@ type S3BucketPublicAccessBlock struct {
 }
 
 type S3BucketPublicAccessBlockSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	BlockPublicAcls bool `json:"blockPublicAcls,omitempty" tf:"block_public_acls,omitempty"`
 	// +optional
@@ -27,8 +28,7 @@ type S3BucketPublicAccessBlockSpec struct {
 	// +optional
 	IgnorePublicAcls bool `json:"ignorePublicAcls,omitempty" tf:"ignore_public_acls,omitempty"`
 	// +optional
-	RestrictPublicBuckets bool                      `json:"restrictPublicBuckets,omitempty" tf:"restrict_public_buckets,omitempty"`
-	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RestrictPublicBuckets bool `json:"restrictPublicBuckets,omitempty" tf:"restrict_public_buckets,omitempty"`
 }
 
 type S3BucketPublicAccessBlockStatus struct {

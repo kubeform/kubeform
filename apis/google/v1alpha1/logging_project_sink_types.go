@@ -19,15 +19,15 @@ type LoggingProjectSink struct {
 }
 
 type LoggingProjectSinkSpec struct {
-	Destination string `json:"destination" tf:"destination"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Destination string                    `json:"destination" tf:"destination"`
 	// +optional
 	Filter string `json:"filter,omitempty" tf:"filter,omitempty"`
 	Name   string `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	UniqueWriterIdentity bool                      `json:"uniqueWriterIdentity,omitempty" tf:"unique_writer_identity,omitempty"`
-	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
+	UniqueWriterIdentity bool `json:"uniqueWriterIdentity,omitempty" tf:"unique_writer_identity,omitempty"`
 }
 
 type LoggingProjectSinkStatus struct {

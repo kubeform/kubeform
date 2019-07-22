@@ -88,8 +88,6 @@ type KubernetesClusterSpecNetworkProfile struct {
 type KubernetesClusterSpecRoleBasedAccessControlAzureActiveDirectory struct {
 	ClientAppID string `json:"clientAppID" tf:"client_app_id"`
 	ServerAppID string `json:"serverAppID" tf:"server_app_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	ServerAppSecret *core.LocalObjectReference `json:"serverAppSecret" tf:"server_app_secret"`
 	// +optional
 	TenantID string `json:"tenantID,omitempty" tf:"tenant_id,omitempty"`
 }
@@ -103,11 +101,11 @@ type KubernetesClusterSpecRoleBasedAccessControl struct {
 
 type KubernetesClusterSpecServicePrincipal struct {
 	ClientID string `json:"clientID" tf:"client_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret *core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
 }
 
 type KubernetesClusterSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AddonProfile     []KubernetesClusterSpecAddonProfile     `json:"addonProfile,omitempty" tf:"addon_profile,omitempty"`
@@ -134,8 +132,7 @@ type KubernetesClusterSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	ServicePrincipal []KubernetesClusterSpecServicePrincipal `json:"servicePrincipal" tf:"service_principal"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type KubernetesClusterStatus struct {

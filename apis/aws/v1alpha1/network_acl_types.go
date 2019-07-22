@@ -51,6 +51,7 @@ type NetworkACLSpecIngress struct {
 }
 
 type NetworkACLSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Egress []NetworkACLSpecEgress `json:"egress,omitempty" tf:"egress,omitempty"`
@@ -61,9 +62,8 @@ type NetworkACLSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS,omitempty" tf:"subnet_ids,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	VpcID       string                    `json:"vpcID" tf:"vpc_id"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VpcID string            `json:"vpcID" tf:"vpc_id"`
 }
 
 type NetworkACLStatus struct {

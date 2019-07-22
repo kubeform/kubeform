@@ -41,6 +41,7 @@ type GlueTriggerSpecPredicate struct {
 }
 
 type GlueTriggerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MinItems=1
 	Actions []GlueTriggerSpecActions `json:"actions" tf:"actions"`
 	// +optional
@@ -52,9 +53,8 @@ type GlueTriggerSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Predicate []GlueTriggerSpecPredicate `json:"predicate,omitempty" tf:"predicate,omitempty"`
 	// +optional
-	Schedule    string                    `json:"schedule,omitempty" tf:"schedule,omitempty"`
-	Type        string                    `json:"type" tf:"type"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Schedule string `json:"schedule,omitempty" tf:"schedule,omitempty"`
+	Type     string `json:"type" tf:"type"`
 }
 
 type GlueTriggerStatus struct {

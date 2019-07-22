@@ -19,6 +19,8 @@ type KmsExternalKey struct {
 }
 
 type KmsExternalKeySpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	DeletionWindowInDays int `json:"deletionWindowInDays,omitempty" tf:"deletion_window_in_days,omitempty"`
 	// +optional
@@ -26,15 +28,12 @@ type KmsExternalKeySpec struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	KeyMaterialBase64 *core.LocalObjectReference `json:"keyMaterialBase64,omitempty" tf:"key_material_base64,omitempty"`
 	// +optional
 	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	ValidTo     string                    `json:"validTo,omitempty" tf:"valid_to,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ValidTo string `json:"validTo,omitempty" tf:"valid_to,omitempty"`
 }
 
 type KmsExternalKeyStatus struct {

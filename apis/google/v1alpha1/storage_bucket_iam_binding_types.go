@@ -19,11 +19,11 @@ type StorageBucketIamBinding struct {
 }
 
 type StorageBucketIamBindingSpec struct {
-	Bucket string `json:"bucket" tf:"bucket"`
-	// +kubebuilder:validation:UniqueItems=true
-	Members     []string                  `json:"members" tf:"members"`
-	Role        string                    `json:"role" tf:"role"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Bucket      string                    `json:"bucket" tf:"bucket"`
+	// +kubebuilder:validation:UniqueItems=true
+	Members []string `json:"members" tf:"members"`
+	Role    string   `json:"role" tf:"role"`
 }
 
 type StorageBucketIamBindingStatus struct {

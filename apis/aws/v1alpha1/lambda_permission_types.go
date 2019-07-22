@@ -19,7 +19,8 @@ type LambdaPermission struct {
 }
 
 type LambdaPermissionSpec struct {
-	Action string `json:"action" tf:"action"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Action      string                    `json:"action" tf:"action"`
 	// +optional
 	EventSourceToken string `json:"eventSourceToken,omitempty" tf:"event_source_token,omitempty"`
 	FunctionName     string `json:"functionName" tf:"function_name"`
@@ -33,8 +34,7 @@ type LambdaPermissionSpec struct {
 	// +optional
 	StatementID string `json:"statementID,omitempty" tf:"statement_id,omitempty"`
 	// +optional
-	StatementIDPrefix string                    `json:"statementIDPrefix,omitempty" tf:"statement_id_prefix,omitempty"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	StatementIDPrefix string `json:"statementIDPrefix,omitempty" tf:"statement_id_prefix,omitempty"`
 }
 
 type LambdaPermissionStatus struct {

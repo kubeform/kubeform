@@ -30,8 +30,9 @@ type SchedulerJobCollectionSpecQuota struct {
 }
 
 type SchedulerJobCollectionSpec struct {
-	Location string `json:"location" tf:"location"`
-	Name     string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Location    string                    `json:"location" tf:"location"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Quota             []SchedulerJobCollectionSpecQuota `json:"quota,omitempty" tf:"quota,omitempty"`
@@ -40,8 +41,7 @@ type SchedulerJobCollectionSpec struct {
 	// +optional
 	State string `json:"state,omitempty" tf:"state,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type SchedulerJobCollectionStatus struct {

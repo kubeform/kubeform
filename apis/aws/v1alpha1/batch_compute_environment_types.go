@@ -56,15 +56,15 @@ type BatchComputeEnvironmentSpecComputeResources struct {
 }
 
 type BatchComputeEnvironmentSpec struct {
-	ComputeEnvironmentName string `json:"computeEnvironmentName" tf:"compute_environment_name"`
+	ProviderRef            core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ComputeEnvironmentName string                    `json:"computeEnvironmentName" tf:"compute_environment_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ComputeResources []BatchComputeEnvironmentSpecComputeResources `json:"computeResources,omitempty" tf:"compute_resources,omitempty"`
 	ServiceRole      string                                        `json:"serviceRole" tf:"service_role"`
 	// +optional
-	State       string                    `json:"state,omitempty" tf:"state,omitempty"`
-	Type        string                    `json:"type" tf:"type"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	State string `json:"state,omitempty" tf:"state,omitempty"`
+	Type  string `json:"type" tf:"type"`
 }
 
 type BatchComputeEnvironmentStatus struct {

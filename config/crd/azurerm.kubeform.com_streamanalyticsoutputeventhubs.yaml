@@ -412,6 +412,15 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             serialization:
               items:
                 properties:
@@ -430,15 +439,6 @@ spec:
               type: array
             servicebusNamespace:
               type: string
-            sharedAccessPolicyKey:
-              description: Sensitive Data. Provide secret name which contains one
-                value only
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
             sharedAccessPolicyName:
               type: string
             streamAnalyticsJobName:
@@ -450,7 +450,6 @@ spec:
           - resourceGroupName
           - serialization
           - servicebusNamespace
-          - sharedAccessPolicyKey
           - sharedAccessPolicyName
           - streamAnalyticsJobName
           type: object

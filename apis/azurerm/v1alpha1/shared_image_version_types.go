@@ -24,6 +24,7 @@ type SharedImageVersionSpecTargetRegion struct {
 }
 
 type SharedImageVersionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ExcludeFromLatest bool   `json:"excludeFromLatest,omitempty" tf:"exclude_from_latest,omitempty"`
 	GalleryName       string `json:"galleryName" tf:"gallery_name"`
@@ -36,7 +37,6 @@ type SharedImageVersionSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
 	TargetRegion []SharedImageVersionSpecTargetRegion `json:"targetRegion" tf:"target_region"`
-	ProviderRef  core.LocalObjectReference            `json:"providerRef" tf:"-"`
 }
 
 type SharedImageVersionStatus struct {

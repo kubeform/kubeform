@@ -44,12 +44,12 @@ type ApiGatewayMethodSettingsSpecSettings struct {
 }
 
 type ApiGatewayMethodSettingsSpec struct {
-	MethodPath string `json:"methodPath" tf:"method_path"`
-	RestAPIID  string `json:"restAPIID" tf:"rest_api_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	MethodPath  string                    `json:"methodPath" tf:"method_path"`
+	RestAPIID   string                    `json:"restAPIID" tf:"rest_api_id"`
 	// +kubebuilder:validation:MaxItems=1
-	Settings    []ApiGatewayMethodSettingsSpecSettings `json:"settings" tf:"settings"`
-	StageName   string                                 `json:"stageName" tf:"stage_name"`
-	ProviderRef core.LocalObjectReference              `json:"providerRef" tf:"-"`
+	Settings  []ApiGatewayMethodSettingsSpecSettings `json:"settings" tf:"settings"`
+	StageName string                                 `json:"stageName" tf:"stage_name"`
 }
 
 type ApiGatewayMethodSettingsStatus struct {

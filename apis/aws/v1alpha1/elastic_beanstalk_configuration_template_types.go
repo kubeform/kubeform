@@ -27,7 +27,8 @@ type ElasticBeanstalkConfigurationTemplateSpecSetting struct {
 }
 
 type ElasticBeanstalkConfigurationTemplateSpec struct {
-	Application string `json:"application" tf:"application"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Application string                    `json:"application" tf:"application"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -37,8 +38,7 @@ type ElasticBeanstalkConfigurationTemplateSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Setting []ElasticBeanstalkConfigurationTemplateSpecSetting `json:"setting,omitempty" tf:"setting,omitempty"`
 	// +optional
-	SolutionStackName string                    `json:"solutionStackName,omitempty" tf:"solution_stack_name,omitempty"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SolutionStackName string `json:"solutionStackName,omitempty" tf:"solution_stack_name,omitempty"`
 }
 
 type ElasticBeanstalkConfigurationTemplateStatus struct {

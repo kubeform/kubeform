@@ -19,11 +19,11 @@ type KmsKeyRingIamBinding struct {
 }
 
 type KmsKeyRingIamBindingSpec struct {
-	KeyRingID string `json:"keyRingID" tf:"key_ring_id"`
-	// +kubebuilder:validation:UniqueItems=true
-	Members     []string                  `json:"members" tf:"members"`
-	Role        string                    `json:"role" tf:"role"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	KeyRingID   string                    `json:"keyRingID" tf:"key_ring_id"`
+	// +kubebuilder:validation:UniqueItems=true
+	Members []string `json:"members" tf:"members"`
+	Role    string   `json:"role" tf:"role"`
 }
 
 type KmsKeyRingIamBindingStatus struct {

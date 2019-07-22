@@ -27,6 +27,7 @@ type ComputeImageSpecRawDisk struct {
 }
 
 type ComputeImageSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// Deprecated
 	CreateTimeout int `json:"createTimeout,omitempty" tf:"create_timeout,omitempty"`
@@ -45,8 +46,7 @@ type ComputeImageSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	RawDisk []ComputeImageSpecRawDisk `json:"rawDisk,omitempty" tf:"raw_disk,omitempty"`
 	// +optional
-	SourceDisk  string                    `json:"sourceDisk,omitempty" tf:"source_disk,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SourceDisk string `json:"sourceDisk,omitempty" tf:"source_disk,omitempty"`
 }
 
 type ComputeImageStatus struct {

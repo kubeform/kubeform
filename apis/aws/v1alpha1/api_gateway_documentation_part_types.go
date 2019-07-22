@@ -31,11 +31,11 @@ type ApiGatewayDocumentationPartSpecLocation struct {
 }
 
 type ApiGatewayDocumentationPartSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
-	Location    []ApiGatewayDocumentationPartSpecLocation `json:"location" tf:"location"`
-	Properties  string                                    `json:"properties" tf:"properties"`
-	RestAPIID   string                                    `json:"restAPIID" tf:"rest_api_id"`
-	ProviderRef core.LocalObjectReference                 `json:"providerRef" tf:"-"`
+	Location   []ApiGatewayDocumentationPartSpecLocation `json:"location" tf:"location"`
+	Properties string                                    `json:"properties" tf:"properties"`
+	RestAPIID  string                                    `json:"restAPIID" tf:"rest_api_id"`
 }
 
 type ApiGatewayDocumentationPartStatus struct {

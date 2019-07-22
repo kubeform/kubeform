@@ -420,15 +420,6 @@ spec:
               type: string
             clientRegistrationEndpoint:
               type: string
-            clientSecret:
-              description: Sensitive Data. Provide secret name which contains one
-                value only
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
             defaultScope:
               type: string
             description:
@@ -453,17 +444,17 @@ spec:
               type: object
             resourceGroupName:
               type: string
-            resourceOwnerPassword:
-              description: Sensitive Data. Provide secret name which contains one
-                value only
+            resourceOwnerUsername:
+              type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
               properties:
                 name:
                   description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            resourceOwnerUsername:
-              type: string
             supportState:
               type: boolean
             tokenBodyParameter:

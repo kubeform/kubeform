@@ -31,13 +31,13 @@ type CodebuildWebhookSpecFilterGroup struct {
 }
 
 type CodebuildWebhookSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	BranchFilter string `json:"branchFilter,omitempty" tf:"branch_filter,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	FilterGroup []CodebuildWebhookSpecFilterGroup `json:"filterGroup,omitempty" tf:"filter_group,omitempty"`
 	ProjectName string                            `json:"projectName" tf:"project_name"`
-	ProviderRef core.LocalObjectReference         `json:"providerRef" tf:"-"`
 }
 
 type CodebuildWebhookStatus struct {

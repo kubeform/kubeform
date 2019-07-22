@@ -24,6 +24,7 @@ type ComputeInstanceGroupSpecNamedPort struct {
 }
 
 type ComputeInstanceGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -37,8 +38,7 @@ type ComputeInstanceGroupSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type ComputeInstanceGroupStatus struct {

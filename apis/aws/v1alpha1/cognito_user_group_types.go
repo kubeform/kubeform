@@ -19,15 +19,15 @@ type CognitoUserGroup struct {
 }
 
 type CognitoUserGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
 	Precedence int `json:"precedence,omitempty" tf:"precedence,omitempty"`
 	// +optional
-	RoleArn     string                    `json:"roleArn,omitempty" tf:"role_arn,omitempty"`
-	UserPoolID  string                    `json:"userPoolID" tf:"user_pool_id"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RoleArn    string `json:"roleArn,omitempty" tf:"role_arn,omitempty"`
+	UserPoolID string `json:"userPoolID" tf:"user_pool_id"`
 }
 
 type CognitoUserGroupStatus struct {

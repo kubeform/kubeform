@@ -75,6 +75,7 @@ type SesReceiptRuleSpecWorkmailAction struct {
 }
 
 type SesReceiptRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AddHeaderAction []SesReceiptRuleSpecAddHeaderAction `json:"addHeaderAction,omitempty" tf:"add_header_action,omitempty"`
@@ -109,7 +110,6 @@ type SesReceiptRuleSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	WorkmailAction []SesReceiptRuleSpecWorkmailAction `json:"workmailAction,omitempty" tf:"workmail_action,omitempty"`
-	ProviderRef    core.LocalObjectReference          `json:"providerRef" tf:"-"`
 }
 
 type SesReceiptRuleStatus struct {

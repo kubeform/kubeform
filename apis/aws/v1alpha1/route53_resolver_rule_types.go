@@ -25,7 +25,8 @@ type Route53ResolverRuleSpecTargetIP struct {
 }
 
 type Route53ResolverRuleSpec struct {
-	DomainName string `json:"domainName" tf:"domain_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	DomainName  string                    `json:"domainName" tf:"domain_name"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
@@ -35,8 +36,7 @@ type Route53ResolverRuleSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	TargetIP    []Route53ResolverRuleSpecTargetIP `json:"targetIP,omitempty" tf:"target_ip,omitempty"`
-	ProviderRef core.LocalObjectReference         `json:"providerRef" tf:"-"`
+	TargetIP []Route53ResolverRuleSpecTargetIP `json:"targetIP,omitempty" tf:"target_ip,omitempty"`
 }
 
 type Route53ResolverRuleStatus struct {

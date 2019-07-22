@@ -103,6 +103,7 @@ type IotTopicRuleSpecSqs struct {
 }
 
 type IotTopicRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	CloudwatchAlarm []IotTopicRuleSpecCloudwatchAlarm `json:"cloudwatchAlarm,omitempty" tf:"cloudwatch_alarm,omitempty"`
@@ -141,8 +142,7 @@ type IotTopicRuleSpec struct {
 	SqlVersion string                `json:"sqlVersion" tf:"sql_version"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Sqs         []IotTopicRuleSpecSqs     `json:"sqs,omitempty" tf:"sqs,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Sqs []IotTopicRuleSpecSqs `json:"sqs,omitempty" tf:"sqs,omitempty"`
 }
 
 type IotTopicRuleStatus struct {

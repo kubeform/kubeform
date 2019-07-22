@@ -55,7 +55,8 @@ type EcsTaskDefinitionSpecVolume struct {
 }
 
 type EcsTaskDefinitionSpec struct {
-	ContainerDefinitions string `json:"containerDefinitions" tf:"container_definitions"`
+	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ContainerDefinitions string                    `json:"containerDefinitions" tf:"container_definitions"`
 	// +optional
 	Cpu string `json:"cpu,omitempty" tf:"cpu,omitempty"`
 	// +optional
@@ -85,8 +86,7 @@ type EcsTaskDefinitionSpec struct {
 	TaskRoleArn string `json:"taskRoleArn,omitempty" tf:"task_role_arn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Volume      []EcsTaskDefinitionSpecVolume `json:"volume,omitempty" tf:"volume,omitempty"`
-	ProviderRef core.LocalObjectReference     `json:"providerRef" tf:"-"`
+	Volume []EcsTaskDefinitionSpecVolume `json:"volume,omitempty" tf:"volume,omitempty"`
 }
 
 type EcsTaskDefinitionStatus struct {

@@ -19,6 +19,7 @@ type ApiGatewayMethod struct {
 }
 
 type ApiGatewayMethodSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ApiKeyRequired bool   `json:"apiKeyRequired,omitempty" tf:"api_key_required,omitempty"`
 	Authorization  string `json:"authorization" tf:"authorization"`
@@ -33,10 +34,9 @@ type ApiGatewayMethodSpec struct {
 	// +optional
 	RequestParameters map[string]bool `json:"requestParameters,omitempty" tf:"request_parameters,omitempty"`
 	// +optional
-	RequestValidatorID string                    `json:"requestValidatorID,omitempty" tf:"request_validator_id,omitempty"`
-	ResourceID         string                    `json:"resourceID" tf:"resource_id"`
-	RestAPIID          string                    `json:"restAPIID" tf:"rest_api_id"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RequestValidatorID string `json:"requestValidatorID,omitempty" tf:"request_validator_id,omitempty"`
+	ResourceID         string `json:"resourceID" tf:"resource_id"`
+	RestAPIID          string `json:"restAPIID" tf:"rest_api_id"`
 }
 
 type ApiGatewayMethodStatus struct {

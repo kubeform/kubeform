@@ -19,6 +19,7 @@ type PolicyDefinition struct {
 }
 
 type PolicyDefinitionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	DisplayName string `json:"displayName" tf:"display_name"`
@@ -31,9 +32,8 @@ type PolicyDefinitionSpec struct {
 	// +optional
 	Parameters string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 	// +optional
-	PolicyRule  string                    `json:"policyRule,omitempty" tf:"policy_rule,omitempty"`
-	PolicyType  string                    `json:"policyType" tf:"policy_type"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	PolicyRule string `json:"policyRule,omitempty" tf:"policy_rule,omitempty"`
+	PolicyType string `json:"policyType" tf:"policy_type"`
 }
 
 type PolicyDefinitionStatus struct {

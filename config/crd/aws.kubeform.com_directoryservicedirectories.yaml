@@ -432,16 +432,16 @@ spec:
               type: boolean
             name:
               type: string
-            password:
-              description: Sensitive Data. Provide secret name which contains one
-                value only
+            providerRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
               properties:
                 name:
                   description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            providerRef:
+            secret:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
               properties:
@@ -478,7 +478,6 @@ spec:
               type: array
           required:
           - name
-          - password
           - providerRef
           type: object
         status:

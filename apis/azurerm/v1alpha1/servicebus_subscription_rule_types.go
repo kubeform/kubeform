@@ -38,6 +38,7 @@ type ServicebusSubscriptionRuleSpecCorrelationFilter struct {
 }
 
 type ServicebusSubscriptionRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Action string `json:"action,omitempty" tf:"action,omitempty"`
 	// +optional
@@ -48,10 +49,9 @@ type ServicebusSubscriptionRuleSpec struct {
 	NamespaceName     string                                            `json:"namespaceName" tf:"namespace_name"`
 	ResourceGroupName string                                            `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	SqlFilter        string                    `json:"sqlFilter,omitempty" tf:"sql_filter,omitempty"`
-	SubscriptionName string                    `json:"subscriptionName" tf:"subscription_name"`
-	TopicName        string                    `json:"topicName" tf:"topic_name"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SqlFilter        string `json:"sqlFilter,omitempty" tf:"sql_filter,omitempty"`
+	SubscriptionName string `json:"subscriptionName" tf:"subscription_name"`
+	TopicName        string `json:"topicName" tf:"topic_name"`
 }
 
 type ServicebusSubscriptionRuleStatus struct {

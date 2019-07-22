@@ -34,11 +34,11 @@ type WafregionalSizeConstraintSetSpecSizeConstraints struct {
 }
 
 type WafregionalSizeConstraintSetSpec struct {
-	Name string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SizeConstraints []WafregionalSizeConstraintSetSpecSizeConstraints `json:"sizeConstraints,omitempty" tf:"size_constraints,omitempty"`
-	ProviderRef     core.LocalObjectReference                         `json:"providerRef" tf:"-"`
 }
 
 type WafregionalSizeConstraintSetStatus struct {

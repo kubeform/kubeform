@@ -83,6 +83,7 @@ type ContainerNodePoolSpecNodeConfig struct {
 }
 
 type ContainerNodePoolSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Autoscaling []ContainerNodePoolSpecAutoscaling `json:"autoscaling,omitempty" tf:"autoscaling,omitempty"`
@@ -112,8 +113,7 @@ type ContainerNodePoolSpec struct {
 	// +optional
 	Version string `json:"version,omitempty" tf:"version,omitempty"`
 	// +optional
-	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type ContainerNodePoolStatus struct {

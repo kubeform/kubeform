@@ -32,9 +32,9 @@ type VirtualNetworkGatewayConnectionSpecIpsecPolicy struct {
 }
 
 type VirtualNetworkGatewayConnectionSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	AuthorizationKey *core.LocalObjectReference `json:"authorizationKey,omitempty" tf:"authorization_key,omitempty"`
 	// +optional
 	EnableBGP bool `json:"enableBGP,omitempty" tf:"enable_bgp,omitempty"`
 	// +optional
@@ -54,15 +54,12 @@ type VirtualNetworkGatewayConnectionSpec struct {
 	// +optional
 	RoutingWeight int `json:"routingWeight,omitempty" tf:"routing_weight,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	SharedKey *core.LocalObjectReference `json:"sharedKey,omitempty" tf:"shared_key,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	Type string            `json:"type" tf:"type"`
 	// +optional
-	UsePolicyBasedTrafficSelectors bool                      `json:"usePolicyBasedTrafficSelectors,omitempty" tf:"use_policy_based_traffic_selectors,omitempty"`
-	VirtualNetworkGatewayID        string                    `json:"virtualNetworkGatewayID" tf:"virtual_network_gateway_id"`
-	ProviderRef                    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	UsePolicyBasedTrafficSelectors bool   `json:"usePolicyBasedTrafficSelectors,omitempty" tf:"use_policy_based_traffic_selectors,omitempty"`
+	VirtualNetworkGatewayID        string `json:"virtualNetworkGatewayID" tf:"virtual_network_gateway_id"`
 }
 
 type VirtualNetworkGatewayConnectionStatus struct {

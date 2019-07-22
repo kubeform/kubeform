@@ -19,9 +19,9 @@ type DropletSnapshot struct {
 }
 
 type DropletSnapshotSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	DropletID   string                    `json:"dropletID" tf:"droplet_id"`
 	Name        string                    `json:"name" tf:"name"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type DropletSnapshotStatus struct {

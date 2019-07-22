@@ -19,8 +19,8 @@ type SesReceiptRuleSet struct {
 }
 
 type SesReceiptRuleSetSpec struct {
-	RuleSetName string                    `json:"ruleSetName" tf:"rule_set_name"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RuleSetName string                    `json:"ruleSetName" tf:"rule_set_name"`
 }
 
 type SesReceiptRuleSetStatus struct {

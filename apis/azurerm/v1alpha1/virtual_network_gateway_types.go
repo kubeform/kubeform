@@ -65,6 +65,7 @@ type VirtualNetworkGatewaySpecVpnClientConfiguration struct {
 }
 
 type VirtualNetworkGatewaySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ActiveActive bool `json:"activeActive,omitempty" tf:"active_active,omitempty"`
 	// +optional
@@ -87,8 +88,7 @@ type VirtualNetworkGatewaySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	VpnClientConfiguration []VirtualNetworkGatewaySpecVpnClientConfiguration `json:"vpnClientConfiguration,omitempty" tf:"vpn_client_configuration,omitempty"`
 	// +optional
-	VpnType     string                    `json:"vpnType,omitempty" tf:"vpn_type,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpnType string `json:"vpnType,omitempty" tf:"vpn_type,omitempty"`
 }
 
 type VirtualNetworkGatewayStatus struct {

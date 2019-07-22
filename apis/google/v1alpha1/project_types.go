@@ -36,6 +36,7 @@ type ProjectSpecAppEngine struct {
 }
 
 type ProjectSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// Deprecated
@@ -53,8 +54,7 @@ type ProjectSpec struct {
 	OrgID     string `json:"orgID,omitempty" tf:"org_id,omitempty"`
 	ProjectID string `json:"projectID" tf:"project_id"`
 	// +optional
-	SkipDelete  bool                      `json:"skipDelete,omitempty" tf:"skip_delete,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SkipDelete bool `json:"skipDelete,omitempty" tf:"skip_delete,omitempty"`
 }
 
 type ProjectStatus struct {

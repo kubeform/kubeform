@@ -19,6 +19,8 @@ type IamServerCertificate struct {
 }
 
 type IamServerCertificateSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	Arn             string `json:"arn,omitempty" tf:"arn,omitempty"`
 	CertificateBody string `json:"certificateBody" tf:"certificate_body"`
@@ -30,9 +32,6 @@ type IamServerCertificateSpec struct {
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
 	Path string `json:"path,omitempty" tf:"path,omitempty"`
-	// Sensitive Data. Provide secret name which contains one value only
-	PrivateKey  *core.LocalObjectReference `json:"privateKey" tf:"private_key"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type IamServerCertificateStatus struct {

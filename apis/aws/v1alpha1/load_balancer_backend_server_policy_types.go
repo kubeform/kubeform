@@ -19,12 +19,12 @@ type LoadBalancerBackendServerPolicy struct {
 }
 
 type LoadBalancerBackendServerPolicySpec struct {
-	InstancePort     int    `json:"instancePort" tf:"instance_port"`
-	LoadBalancerName string `json:"loadBalancerName" tf:"load_balancer_name"`
+	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	InstancePort     int                       `json:"instancePort" tf:"instance_port"`
+	LoadBalancerName string                    `json:"loadBalancerName" tf:"load_balancer_name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	PolicyNames []string                  `json:"policyNames,omitempty" tf:"policy_names,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	PolicyNames []string `json:"policyNames,omitempty" tf:"policy_names,omitempty"`
 }
 
 type LoadBalancerBackendServerPolicyStatus struct {

@@ -39,7 +39,8 @@ type SnapshotSpecEncryptionSettings struct {
 }
 
 type SnapshotSpec struct {
-	CreateOption string `json:"createOption" tf:"create_option"`
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	CreateOption string                    `json:"createOption" tf:"create_option"`
 	// +optional
 	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
 	// +optional
@@ -55,8 +56,7 @@ type SnapshotSpec struct {
 	// +optional
 	StorageAccountID string `json:"storageAccountID,omitempty" tf:"storage_account_id,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type SnapshotStatus struct {

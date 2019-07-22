@@ -31,6 +31,7 @@ type DevTestWindowsVirtualMachineSpecInboundNATRule struct {
 }
 
 type DevTestWindowsVirtualMachineSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllowClaim bool `json:"allowClaim,omitempty" tf:"allow_claim,omitempty"`
 	// +optional
@@ -52,9 +53,8 @@ type DevTestWindowsVirtualMachineSpec struct {
 	Size              string `json:"size" tf:"size"`
 	StorageType       string `json:"storageType" tf:"storage_type"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	Username    string                    `json:"username" tf:"username"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Username string            `json:"username" tf:"username"`
 }
 
 type DevTestWindowsVirtualMachineStatus struct {

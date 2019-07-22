@@ -19,12 +19,12 @@ type IamUserSSHKey struct {
 }
 
 type IamUserSSHKeySpec struct {
-	Encoding  string `json:"encoding" tf:"encoding"`
-	PublicKey string `json:"publicKey" tf:"public_key"`
-	// +optional
-	Status      string                    `json:"status,omitempty" tf:"status,omitempty"`
-	Username    string                    `json:"username" tf:"username"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Encoding    string                    `json:"encoding" tf:"encoding"`
+	PublicKey   string                    `json:"publicKey" tf:"public_key"`
+	// +optional
+	Status   string `json:"status,omitempty" tf:"status,omitempty"`
+	Username string `json:"username" tf:"username"`
 }
 
 type IamUserSSHKeyStatus struct {

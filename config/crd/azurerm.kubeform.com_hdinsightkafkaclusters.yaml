@@ -414,20 +414,10 @@ spec:
                 properties:
                   enabled:
                     type: boolean
-                  password:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   username:
                     type: string
                 required:
                 - enabled
-                - password
                 - username
                 type: object
               maxItems: 1
@@ -453,15 +443,6 @@ spec:
                   headNode:
                     items:
                       properties:
-                        password:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         sshKeys:
                           items:
                             type: string
@@ -488,15 +469,6 @@ spec:
                           type: integer
                         numberOfDisksPerNode:
                           type: integer
-                        password:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         sshKeys:
                           items:
                             type: string
@@ -523,15 +495,6 @@ spec:
                   zookeeperNode:
                     items:
                       properties:
-                        password:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         sshKeys:
                           items:
                             type: string
@@ -558,25 +521,24 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             storageAccount:
               items:
                 properties:
                   isDefault:
                     type: boolean
-                  storageAccountKey:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   storageContainerID:
                     type: string
                 required:
                 - isDefault
-                - storageAccountKey
                 - storageContainerID
                 type: object
               type: array

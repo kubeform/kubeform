@@ -19,6 +19,7 @@ type SqlDatabase struct {
 }
 
 type SqlDatabaseSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Charset string `json:"charset,omitempty" tf:"charset,omitempty"`
 	// +optional
@@ -26,8 +27,7 @@ type SqlDatabaseSpec struct {
 	Instance  string `json:"instance" tf:"instance"`
 	Name      string `json:"name" tf:"name"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type SqlDatabaseStatus struct {

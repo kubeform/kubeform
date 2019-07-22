@@ -19,16 +19,16 @@ type ComputeRouterInterface struct {
 }
 
 type ComputeRouterInterfaceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	IpRange string `json:"ipRange,omitempty" tf:"ip_range,omitempty"`
 	Name    string `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region      string                    `json:"region,omitempty" tf:"region,omitempty"`
-	Router      string                    `json:"router" tf:"router"`
-	VpnTunnel   string                    `json:"vpnTunnel" tf:"vpn_tunnel"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Region    string `json:"region,omitempty" tf:"region,omitempty"`
+	Router    string `json:"router" tf:"router"`
+	VpnTunnel string `json:"vpnTunnel" tf:"vpn_tunnel"`
 }
 
 type ComputeRouterInterfaceStatus struct {

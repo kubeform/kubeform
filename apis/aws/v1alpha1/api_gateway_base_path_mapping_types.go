@@ -19,13 +19,13 @@ type ApiGatewayBasePathMapping struct {
 }
 
 type ApiGatewayBasePathMappingSpec struct {
-	ApiID string `json:"apiID" tf:"api_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApiID       string                    `json:"apiID" tf:"api_id"`
 	// +optional
 	BasePath   string `json:"basePath,omitempty" tf:"base_path,omitempty"`
 	DomainName string `json:"domainName" tf:"domain_name"`
 	// +optional
-	StageName   string                    `json:"stageName,omitempty" tf:"stage_name,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	StageName string `json:"stageName,omitempty" tf:"stage_name,omitempty"`
 }
 
 type ApiGatewayBasePathMappingStatus struct {

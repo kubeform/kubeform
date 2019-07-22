@@ -50,6 +50,7 @@ type ComputeAutoscalerSpecAutoscalingPolicy struct {
 }
 
 type ComputeAutoscalerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	AutoscalingPolicy []ComputeAutoscalerSpecAutoscalingPolicy `json:"autoscalingPolicy" tf:"autoscaling_policy"`
 	// +optional
@@ -59,8 +60,7 @@ type ComputeAutoscalerSpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	Target  string `json:"target" tf:"target"`
 	// +optional
-	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type ComputeAutoscalerStatus struct {

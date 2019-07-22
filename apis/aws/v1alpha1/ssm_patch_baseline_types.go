@@ -39,6 +39,7 @@ type SsmPatchBaselineSpecGlobalFilter struct {
 }
 
 type SsmPatchBaselineSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ApprovalRule []SsmPatchBaselineSpecApprovalRule `json:"approvalRule,omitempty" tf:"approval_rule,omitempty"`
 	// +optional
@@ -58,8 +59,7 @@ type SsmPatchBaselineSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	RejectedPatches []string `json:"rejectedPatches,omitempty" tf:"rejected_patches,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type SsmPatchBaselineStatus struct {

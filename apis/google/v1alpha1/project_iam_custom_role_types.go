@@ -19,6 +19,7 @@ type ProjectIamCustomRole struct {
 }
 
 type ProjectIamCustomRoleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// Deprecated
 	Deleted bool `json:"deleted,omitempty" tf:"deleted,omitempty"`
@@ -31,9 +32,8 @@ type ProjectIamCustomRoleSpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	RoleID  string `json:"roleID" tf:"role_id"`
 	// +optional
-	Stage       string                    `json:"stage,omitempty" tf:"stage,omitempty"`
-	Title       string                    `json:"title" tf:"title"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Stage string `json:"stage,omitempty" tf:"stage,omitempty"`
+	Title string `json:"title" tf:"title"`
 }
 
 type ProjectIamCustomRoleStatus struct {

@@ -19,6 +19,7 @@ type LbRule struct {
 }
 
 type LbRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	BackendAddressPoolID string `json:"backendAddressPoolID,omitempty" tf:"backend_address_pool_id,omitempty"`
 	BackendPort          int    `json:"backendPort" tf:"backend_port"`
@@ -38,10 +39,9 @@ type LbRuleSpec struct {
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
-	ProbeID           string                    `json:"probeID,omitempty" tf:"probe_id,omitempty"`
-	Protocol          string                    `json:"protocol" tf:"protocol"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ProbeID           string `json:"probeID,omitempty" tf:"probe_id,omitempty"`
+	Protocol          string `json:"protocol" tf:"protocol"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type LbRuleStatus struct {

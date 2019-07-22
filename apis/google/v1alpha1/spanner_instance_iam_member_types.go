@@ -19,12 +19,12 @@ type SpannerInstanceIamMember struct {
 }
 
 type SpannerInstanceIamMemberSpec struct {
-	Instance string `json:"instance" tf:"instance"`
-	Member   string `json:"member" tf:"member"`
-	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	Role        string                    `json:"role" tf:"role"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Instance    string                    `json:"instance" tf:"instance"`
+	Member      string                    `json:"member" tf:"member"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Role    string `json:"role" tf:"role"`
 }
 
 type SpannerInstanceIamMemberStatus struct {

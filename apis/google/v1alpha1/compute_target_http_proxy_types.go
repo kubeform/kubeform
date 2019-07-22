@@ -19,13 +19,13 @@ type ComputeTargetHTTPProxy struct {
 }
 
 type ComputeTargetHTTPProxySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	UrlMap      string                    `json:"urlMap" tf:"url_map"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	UrlMap  string `json:"urlMap" tf:"url_map"`
 }
 
 type ComputeTargetHTTPProxyStatus struct {

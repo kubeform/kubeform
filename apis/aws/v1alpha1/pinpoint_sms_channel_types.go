@@ -19,14 +19,14 @@ type PinpointSmsChannel struct {
 }
 
 type PinpointSmsChannelSpec struct {
-	ApplicationID string `json:"applicationID" tf:"application_id"`
+	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApplicationID string                    `json:"applicationID" tf:"application_id"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
 	SenderID string `json:"senderID,omitempty" tf:"sender_id,omitempty"`
 	// +optional
-	ShortCode   string                    `json:"shortCode,omitempty" tf:"short_code,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ShortCode string `json:"shortCode,omitempty" tf:"short_code,omitempty"`
 }
 
 type PinpointSmsChannelStatus struct {

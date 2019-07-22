@@ -19,6 +19,7 @@ type ProjectIamPolicy struct {
 }
 
 type ProjectIamPolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// Deprecated
 	Authoritative bool `json:"authoritative,omitempty" tf:"authoritative,omitempty"`
@@ -27,8 +28,7 @@ type ProjectIamPolicySpec struct {
 	DisableProject bool   `json:"disableProject,omitempty" tf:"disable_project,omitempty"`
 	PolicyData     string `json:"policyData" tf:"policy_data"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type ProjectIamPolicyStatus struct {

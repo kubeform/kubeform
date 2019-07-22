@@ -19,9 +19,9 @@ type Sshkey struct {
 }
 
 type SshkeySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	Label       string                    `json:"label" tf:"label"`
 	SshKey      string                    `json:"sshKey" tf:"ssh_key"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type SshkeyStatus struct {

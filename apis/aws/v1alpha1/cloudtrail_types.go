@@ -34,6 +34,7 @@ type CloudtrailSpecEventSelector struct {
 }
 
 type CloudtrailSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	CloudWatchLogsGroupArn string `json:"cloudWatchLogsGroupArn,omitempty" tf:"cloud_watch_logs_group_arn,omitempty"`
 	// +optional
@@ -60,8 +61,7 @@ type CloudtrailSpec struct {
 	// +optional
 	SnsTopicName string `json:"snsTopicName,omitempty" tf:"sns_topic_name,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type CloudtrailStatus struct {

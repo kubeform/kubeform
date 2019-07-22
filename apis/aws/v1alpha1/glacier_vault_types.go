@@ -25,14 +25,14 @@ type GlacierVaultSpecNotification struct {
 }
 
 type GlacierVaultSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AccessPolicy string `json:"accessPolicy,omitempty" tf:"access_policy,omitempty"`
 	Name         string `json:"name" tf:"name"`
 	// +optional
 	Notification []GlacierVaultSpecNotification `json:"notification,omitempty" tf:"notification,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type GlacierVaultStatus struct {

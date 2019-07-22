@@ -28,6 +28,7 @@ type CognitoIdentityPoolSpecCognitoIdentityProviders struct {
 }
 
 type CognitoIdentityPoolSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllowUnauthenticatedIdentities bool `json:"allowUnauthenticatedIdentities,omitempty" tf:"allow_unauthenticated_identities,omitempty"`
 	// +optional
@@ -41,8 +42,7 @@ type CognitoIdentityPoolSpec struct {
 	// +optional
 	SamlProviderArns []string `json:"samlProviderArns,omitempty" tf:"saml_provider_arns,omitempty"`
 	// +optional
-	SupportedLoginProviders map[string]string         `json:"supportedLoginProviders,omitempty" tf:"supported_login_providers,omitempty"`
-	ProviderRef             core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SupportedLoginProviders map[string]string `json:"supportedLoginProviders,omitempty" tf:"supported_login_providers,omitempty"`
 }
 
 type CognitoIdentityPoolStatus struct {

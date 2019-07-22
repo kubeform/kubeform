@@ -76,6 +76,7 @@ type Ec2FleetSpecTargetCapacitySpecification struct {
 }
 
 type Ec2FleetSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ExcessCapacityTerminationPolicy string `json:"excessCapacityTerminationPolicy,omitempty" tf:"excess_capacity_termination_policy,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
@@ -99,8 +100,7 @@ type Ec2FleetSpec struct {
 	// +optional
 	TerminateInstancesWithExpiration bool `json:"terminateInstancesWithExpiration,omitempty" tf:"terminate_instances_with_expiration,omitempty"`
 	// +optional
-	Type        string                    `json:"type,omitempty" tf:"type,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type Ec2FleetStatus struct {

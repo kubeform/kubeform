@@ -23,7 +23,9 @@ type ExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig struct {
 }
 
 type ExpressRouteCircuitPeeringSpec struct {
-	ExpressRouteCircuitName string `json:"expressRouteCircuitName" tf:"express_route_circuit_name"`
+	Secret                  *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef             core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ExpressRouteCircuitName string                     `json:"expressRouteCircuitName" tf:"express_route_circuit_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	MicrosoftPeeringConfig []ExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig `json:"microsoftPeeringConfig,omitempty" tf:"microsoft_peering_config,omitempty"`
@@ -34,10 +36,7 @@ type ExpressRouteCircuitPeeringSpec struct {
 	ResourceGroupName          string `json:"resourceGroupName" tf:"resource_group_name"`
 	SecondaryPeerAddressPrefix string `json:"secondaryPeerAddressPrefix" tf:"secondary_peer_address_prefix"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	SharedKey   *core.LocalObjectReference `json:"sharedKey,omitempty" tf:"shared_key,omitempty"`
-	VlanID      int                        `json:"vlanID" tf:"vlan_id"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	VlanID int `json:"vlanID" tf:"vlan_id"`
 }
 
 type ExpressRouteCircuitPeeringStatus struct {

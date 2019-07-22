@@ -83,6 +83,7 @@ type StorageBucketSpecWebsite struct {
 }
 
 type StorageBucketSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Cors []StorageBucketSpecCors `json:"cors,omitempty" tf:"cors,omitempty"`
 	// +optional
@@ -109,8 +110,7 @@ type StorageBucketSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Versioning []StorageBucketSpecVersioning `json:"versioning,omitempty" tf:"versioning,omitempty"`
 	// +optional
-	Website     []StorageBucketSpecWebsite `json:"website,omitempty" tf:"website,omitempty"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	Website []StorageBucketSpecWebsite `json:"website,omitempty" tf:"website,omitempty"`
 }
 
 type StorageBucketStatus struct {

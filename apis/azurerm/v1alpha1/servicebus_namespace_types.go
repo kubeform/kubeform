@@ -19,6 +19,7 @@ type ServicebusNamespace struct {
 }
 
 type ServicebusNamespaceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Capacity          int    `json:"capacity,omitempty" tf:"capacity,omitempty"`
 	Location          string `json:"location" tf:"location"`
@@ -26,8 +27,7 @@ type ServicebusNamespaceSpec struct {
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	Sku               string `json:"sku" tf:"sku"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ServicebusNamespaceStatus struct {

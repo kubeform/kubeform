@@ -19,11 +19,11 @@ type WorklinkWebsiteCertificateAuthorityAssociation struct {
 }
 
 type WorklinkWebsiteCertificateAuthorityAssociationSpec struct {
-	Certificate string `json:"certificate" tf:"certificate"`
-	// +optional
-	DisplayName string                    `json:"displayName,omitempty" tf:"display_name,omitempty"`
-	FleetArn    string                    `json:"fleetArn" tf:"fleet_arn"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Certificate string                    `json:"certificate" tf:"certificate"`
+	// +optional
+	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+	FleetArn    string `json:"fleetArn" tf:"fleet_arn"`
 }
 
 type WorklinkWebsiteCertificateAuthorityAssociationStatus struct {

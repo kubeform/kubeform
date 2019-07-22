@@ -71,15 +71,15 @@ type AppmeshRouteSpecSpec struct {
 }
 
 type AppmeshRouteSpec struct {
-	MeshName string `json:"meshName" tf:"mesh_name"`
-	Name     string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	MeshName    string                    `json:"meshName" tf:"mesh_name"`
+	Name        string                    `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	Spec []AppmeshRouteSpecSpec `json:"spec" tf:"spec"`
 	// +optional
-	Tags              map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	VirtualRouterName string                    `json:"virtualRouterName" tf:"virtual_router_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags              map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VirtualRouterName string            `json:"virtualRouterName" tf:"virtual_router_name"`
 }
 
 type AppmeshRouteStatus struct {

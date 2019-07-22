@@ -19,15 +19,15 @@ type RoleAssignment struct {
 }
 
 type RoleAssignmentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Name        string `json:"name,omitempty" tf:"name,omitempty"`
 	PrincipalID string `json:"principalID" tf:"principal_id"`
 	// +optional
 	RoleDefinitionID string `json:"roleDefinitionID,omitempty" tf:"role_definition_id,omitempty"`
 	// +optional
-	RoleDefinitionName string                    `json:"roleDefinitionName,omitempty" tf:"role_definition_name,omitempty"`
-	Scope              string                    `json:"scope" tf:"scope"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RoleDefinitionName string `json:"roleDefinitionName,omitempty" tf:"role_definition_name,omitempty"`
+	Scope              string `json:"scope" tf:"scope"`
 }
 
 type RoleAssignmentStatus struct {

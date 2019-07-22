@@ -19,6 +19,7 @@ type LambdaLayerVersion struct {
 }
 
 type LambdaLayerVersionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=5
 	// +kubebuilder:validation:UniqueItems=true
@@ -37,8 +38,7 @@ type LambdaLayerVersionSpec struct {
 	// +optional
 	S3ObjectVersion string `json:"s3ObjectVersion,omitempty" tf:"s3_object_version,omitempty"`
 	// +optional
-	SourceCodeHash string                    `json:"sourceCodeHash,omitempty" tf:"source_code_hash,omitempty"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SourceCodeHash string `json:"sourceCodeHash,omitempty" tf:"source_code_hash,omitempty"`
 }
 
 type LambdaLayerVersionStatus struct {

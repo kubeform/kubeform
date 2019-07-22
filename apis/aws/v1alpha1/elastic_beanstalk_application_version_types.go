@@ -19,8 +19,9 @@ type ElasticBeanstalkApplicationVersion struct {
 }
 
 type ElasticBeanstalkApplicationVersionSpec struct {
-	Application string `json:"application" tf:"application"`
-	Bucket      string `json:"bucket" tf:"bucket"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Application string                    `json:"application" tf:"application"`
+	Bucket      string                    `json:"bucket" tf:"bucket"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -28,8 +29,7 @@ type ElasticBeanstalkApplicationVersionSpec struct {
 	Key         string `json:"key" tf:"key"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ElasticBeanstalkApplicationVersionStatus struct {

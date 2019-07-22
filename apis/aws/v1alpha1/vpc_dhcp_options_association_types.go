@@ -19,9 +19,9 @@ type VpcDHCPOptionsAssociation struct {
 }
 
 type VpcDHCPOptionsAssociationSpec struct {
+	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
 	DhcpOptionsID string                    `json:"dhcpOptionsID" tf:"dhcp_options_id"`
 	VpcID         string                    `json:"vpcID" tf:"vpc_id"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type VpcDHCPOptionsAssociationStatus struct {

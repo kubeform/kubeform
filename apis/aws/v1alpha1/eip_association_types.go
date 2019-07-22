@@ -19,6 +19,7 @@ type EipAssociation struct {
 }
 
 type EipAssociationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllocationID string `json:"allocationID,omitempty" tf:"allocation_id,omitempty"`
 	// +optional
@@ -30,8 +31,7 @@ type EipAssociationSpec struct {
 	// +optional
 	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
 	// +optional
-	PublicIP    string                    `json:"publicIP,omitempty" tf:"public_ip,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	PublicIP string `json:"publicIP,omitempty" tf:"public_ip,omitempty"`
 }
 
 type EipAssociationStatus struct {

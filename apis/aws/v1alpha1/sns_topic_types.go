@@ -19,6 +19,7 @@ type SnsTopic struct {
 }
 
 type SnsTopicSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ApplicationFailureFeedbackRoleArn string `json:"applicationFailureFeedbackRoleArn,omitempty" tf:"application_failure_feedback_role_arn,omitempty"`
 	// +optional
@@ -56,8 +57,7 @@ type SnsTopicSpec struct {
 	// +optional
 	SqsSuccessFeedbackSampleRate int `json:"sqsSuccessFeedbackSampleRate,omitempty" tf:"sqs_success_feedback_sample_rate,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type SnsTopicStatus struct {

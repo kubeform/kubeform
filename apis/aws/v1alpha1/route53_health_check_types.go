@@ -19,6 +19,7 @@ type Route53HealthCheck struct {
 }
 
 type Route53HealthCheckSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ChildHealthThreshold int `json:"childHealthThreshold,omitempty" tf:"child_health_threshold,omitempty"`
 	// +optional
@@ -56,9 +57,8 @@ type Route53HealthCheckSpec struct {
 	// +optional
 	SearchString string `json:"searchString,omitempty" tf:"search_string,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	Type        string                    `json:"type" tf:"type"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Type string            `json:"type" tf:"type"`
 }
 
 type Route53HealthCheckStatus struct {

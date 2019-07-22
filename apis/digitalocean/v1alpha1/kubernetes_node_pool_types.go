@@ -19,14 +19,14 @@ type KubernetesNodePool struct {
 }
 
 type KubernetesNodePoolSpec struct {
-	ClusterID string `json:"clusterID" tf:"cluster_id"`
-	Name      string `json:"name" tf:"name"`
-	NodeCount int    `json:"nodeCount" tf:"node_count"`
-	Size      string `json:"size" tf:"size"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ClusterID   string                    `json:"clusterID" tf:"cluster_id"`
+	Name        string                    `json:"name" tf:"name"`
+	NodeCount   int                       `json:"nodeCount" tf:"node_count"`
+	Size        string                    `json:"size" tf:"size"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Tags        []string                  `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type KubernetesNodePoolStatus struct {

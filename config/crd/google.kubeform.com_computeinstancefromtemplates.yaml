@@ -404,15 +404,6 @@ spec:
                 properties:
                   deviceName:
                     type: string
-                  diskEncryptionKeyRaw:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   mode:
                     type: string
                   source:
@@ -428,15 +419,6 @@ spec:
                     type: boolean
                   deviceName:
                     type: string
-                  diskEncryptionKeyRaw:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   initializeParams:
                     items:
                       properties:
@@ -556,6 +538,15 @@ spec:
                     type: string
                 type: object
               type: array
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             serviceAccount:
               items:
                 properties:

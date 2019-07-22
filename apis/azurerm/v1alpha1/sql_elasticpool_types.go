@@ -19,6 +19,7 @@ type SqlElasticpool struct {
 }
 
 type SqlElasticpoolSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DbDtuMax int `json:"dbDtuMax,omitempty" tf:"db_dtu_max,omitempty"`
 	// +optional
@@ -32,8 +33,7 @@ type SqlElasticpoolSpec struct {
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	ServerName        string `json:"serverName" tf:"server_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type SqlElasticpoolStatus struct {

@@ -19,9 +19,9 @@ type CloudwatchLogStream struct {
 }
 
 type CloudwatchLogStreamSpec struct {
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 	LogGroupName string                    `json:"logGroupName" tf:"log_group_name"`
 	Name         string                    `json:"name" tf:"name"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type CloudwatchLogStreamStatus struct {

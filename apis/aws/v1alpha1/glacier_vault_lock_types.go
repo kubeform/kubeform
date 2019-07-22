@@ -19,12 +19,12 @@ type GlacierVaultLock struct {
 }
 
 type GlacierVaultLockSpec struct {
-	CompleteLock bool `json:"completeLock" tf:"complete_lock"`
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	CompleteLock bool                      `json:"completeLock" tf:"complete_lock"`
 	// +optional
-	IgnoreDeletionError bool                      `json:"ignoreDeletionError,omitempty" tf:"ignore_deletion_error,omitempty"`
-	Policy              string                    `json:"policy" tf:"policy"`
-	VaultName           string                    `json:"vaultName" tf:"vault_name"`
-	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
+	IgnoreDeletionError bool   `json:"ignoreDeletionError,omitempty" tf:"ignore_deletion_error,omitempty"`
+	Policy              string `json:"policy" tf:"policy"`
+	VaultName           string `json:"vaultName" tf:"vault_name"`
 }
 
 type GlacierVaultLockStatus struct {

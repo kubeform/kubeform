@@ -48,6 +48,7 @@ type LbTargetGroupSpecStickiness struct {
 }
 
 type LbTargetGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DeregistrationDelay int `json:"deregistrationDelay,omitempty" tf:"deregistration_delay,omitempty"`
 	// +optional
@@ -75,8 +76,7 @@ type LbTargetGroupSpec struct {
 	// +optional
 	TargetType string `json:"targetType,omitempty" tf:"target_type,omitempty"`
 	// +optional
-	VpcID       string                    `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
 }
 
 type LbTargetGroupStatus struct {

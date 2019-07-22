@@ -19,6 +19,7 @@ type SecurityGroupRule struct {
 }
 
 type SecurityGroupRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	CidrBlocks []string `json:"cidrBlocks,omitempty" tf:"cidr_blocks,omitempty"`
 	// +optional
@@ -33,10 +34,9 @@ type SecurityGroupRuleSpec struct {
 	// +optional
 	Self bool `json:"self,omitempty" tf:"self,omitempty"`
 	// +optional
-	SourceSecurityGroupID string                    `json:"sourceSecurityGroupID,omitempty" tf:"source_security_group_id,omitempty"`
-	ToPort                int                       `json:"toPort" tf:"to_port"`
-	Type                  string                    `json:"type" tf:"type"`
-	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SourceSecurityGroupID string `json:"sourceSecurityGroupID,omitempty" tf:"source_security_group_id,omitempty"`
+	ToPort                int    `json:"toPort" tf:"to_port"`
+	Type                  string `json:"type" tf:"type"`
 }
 
 type SecurityGroupRuleStatus struct {

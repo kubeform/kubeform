@@ -19,12 +19,12 @@ type BatchJobQueue struct {
 }
 
 type BatchJobQueueSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=3
-	ComputeEnvironments []string                  `json:"computeEnvironments" tf:"compute_environments"`
-	Name                string                    `json:"name" tf:"name"`
-	Priority            int                       `json:"priority" tf:"priority"`
-	State               string                    `json:"state" tf:"state"`
-	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ComputeEnvironments []string `json:"computeEnvironments" tf:"compute_environments"`
+	Name                string   `json:"name" tf:"name"`
+	Priority            int      `json:"priority" tf:"priority"`
+	State               string   `json:"state" tf:"state"`
 }
 
 type BatchJobQueueStatus struct {

@@ -19,11 +19,11 @@ type DbSnapshot struct {
 }
 
 type DbSnapshotSpec struct {
-	DbInstanceIdentifier string `json:"dbInstanceIdentifier" tf:"db_instance_identifier"`
-	DbSnapshotIdentifier string `json:"dbSnapshotIdentifier" tf:"db_snapshot_identifier"`
+	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
+	DbInstanceIdentifier string                    `json:"dbInstanceIdentifier" tf:"db_instance_identifier"`
+	DbSnapshotIdentifier string                    `json:"dbSnapshotIdentifier" tf:"db_snapshot_identifier"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type DbSnapshotStatus struct {

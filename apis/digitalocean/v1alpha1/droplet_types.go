@@ -19,6 +19,7 @@ type Droplet struct {
 }
 
 type DropletSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Backups bool   `json:"backups,omitempty" tf:"backups,omitempty"`
 	Image   string `json:"image" tf:"image"`
@@ -43,8 +44,7 @@ type DropletSpec struct {
 	UserData string `json:"userData,omitempty" tf:"user_data,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	VolumeIDS   []string                  `json:"volumeIDS,omitempty" tf:"volume_ids,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VolumeIDS []string `json:"volumeIDS,omitempty" tf:"volume_ids,omitempty"`
 }
 
 type DropletStatus struct {

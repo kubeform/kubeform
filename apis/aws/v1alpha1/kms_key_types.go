@@ -19,6 +19,7 @@ type KmsKey struct {
 }
 
 type KmsKeySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DeletionWindowInDays int `json:"deletionWindowInDays,omitempty" tf:"deletion_window_in_days,omitempty"`
 	// +optional
@@ -32,8 +33,7 @@ type KmsKeySpec struct {
 	// +optional
 	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type KmsKeyStatus struct {

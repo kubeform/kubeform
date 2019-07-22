@@ -19,6 +19,7 @@ type ServicebusSubscription struct {
 }
 
 type ServicebusSubscriptionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AutoDeleteOnIdle string `json:"autoDeleteOnIdle,omitempty" tf:"auto_delete_on_idle,omitempty"`
 	// +optional
@@ -41,10 +42,9 @@ type ServicebusSubscriptionSpec struct {
 	Name             string `json:"name" tf:"name"`
 	NamespaceName    string `json:"namespaceName" tf:"namespace_name"`
 	// +optional
-	RequiresSession   bool                      `json:"requiresSession,omitempty" tf:"requires_session,omitempty"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	TopicName         string                    `json:"topicName" tf:"topic_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RequiresSession   bool   `json:"requiresSession,omitempty" tf:"requires_session,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	TopicName         string `json:"topicName" tf:"topic_name"`
 }
 
 type ServicebusSubscriptionStatus struct {

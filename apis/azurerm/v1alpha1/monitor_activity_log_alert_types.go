@@ -47,6 +47,7 @@ type MonitorActivityLogAlertSpecCriteria struct {
 }
 
 type MonitorActivityLogAlertSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Action []MonitorActivityLogAlertSpecAction `json:"action,omitempty" tf:"action,omitempty"`
@@ -62,8 +63,7 @@ type MonitorActivityLogAlertSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Scopes []string `json:"scopes" tf:"scopes"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type MonitorActivityLogAlertStatus struct {

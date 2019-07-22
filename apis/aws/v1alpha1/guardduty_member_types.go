@@ -19,16 +19,16 @@ type GuarddutyMember struct {
 }
 
 type GuarddutyMemberSpec struct {
-	AccountID  string `json:"accountID" tf:"account_id"`
-	DetectorID string `json:"detectorID" tf:"detector_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AccountID   string                    `json:"accountID" tf:"account_id"`
+	DetectorID  string                    `json:"detectorID" tf:"detector_id"`
 	// +optional
 	DisableEmailNotification bool   `json:"disableEmailNotification,omitempty" tf:"disable_email_notification,omitempty"`
 	Email                    string `json:"email" tf:"email"`
 	// +optional
 	InvitationMessage string `json:"invitationMessage,omitempty" tf:"invitation_message,omitempty"`
 	// +optional
-	Invite      bool                      `json:"invite,omitempty" tf:"invite,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Invite bool `json:"invite,omitempty" tf:"invite,omitempty"`
 }
 
 type GuarddutyMemberStatus struct {

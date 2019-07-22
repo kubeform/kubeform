@@ -19,9 +19,9 @@ type OrganizationIamPolicy struct {
 }
 
 type OrganizationIamPolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	OrgID       string                    `json:"orgID" tf:"org_id"`
 	PolicyData  string                    `json:"policyData" tf:"policy_data"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type OrganizationIamPolicyStatus struct {

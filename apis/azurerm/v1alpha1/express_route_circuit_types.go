@@ -24,6 +24,7 @@ type ExpressRouteCircuitSpecSku struct {
 }
 
 type ExpressRouteCircuitSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllowClassicOperations bool   `json:"allowClassicOperations,omitempty" tf:"allow_classic_operations,omitempty"`
 	BandwidthInMbps        int    `json:"bandwidthInMbps" tf:"bandwidth_in_mbps"`
@@ -35,8 +36,7 @@ type ExpressRouteCircuitSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Sku []ExpressRouteCircuitSpecSku `json:"sku" tf:"sku"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ExpressRouteCircuitStatus struct {

@@ -19,13 +19,13 @@ type OpsworksUserProfile struct {
 }
 
 type OpsworksUserProfileSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllowSelfManagement bool `json:"allowSelfManagement,omitempty" tf:"allow_self_management,omitempty"`
 	// +optional
-	SshPublicKey string                    `json:"sshPublicKey,omitempty" tf:"ssh_public_key,omitempty"`
-	SshUsername  string                    `json:"sshUsername" tf:"ssh_username"`
-	UserArn      string                    `json:"userArn" tf:"user_arn"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SshPublicKey string `json:"sshPublicKey,omitempty" tf:"ssh_public_key,omitempty"`
+	SshUsername  string `json:"sshUsername" tf:"ssh_username"`
+	UserArn      string `json:"userArn" tf:"user_arn"`
 }
 
 type OpsworksUserProfileStatus struct {

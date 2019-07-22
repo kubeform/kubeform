@@ -19,12 +19,12 @@ type ProjectService struct {
 }
 
 type ProjectServiceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DisableOnDestroy bool `json:"disableOnDestroy,omitempty" tf:"disable_on_destroy,omitempty"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	Service     string                    `json:"service" tf:"service"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Service string `json:"service" tf:"service"`
 }
 
 type ProjectServiceStatus struct {

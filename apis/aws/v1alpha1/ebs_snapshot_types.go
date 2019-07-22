@@ -19,12 +19,12 @@ type EbsSnapshot struct {
 }
 
 type EbsSnapshotSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	VolumeID    string                    `json:"volumeID" tf:"volume_id"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VolumeID string            `json:"volumeID" tf:"volume_id"`
 }
 
 type EbsSnapshotStatus struct {

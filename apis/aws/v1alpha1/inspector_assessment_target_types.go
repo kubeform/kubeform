@@ -19,10 +19,10 @@ type InspectorAssessmentTarget struct {
 }
 
 type InspectorAssessmentTargetSpec struct {
-	Name string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
-	ResourceGroupArn string                    `json:"resourceGroupArn,omitempty" tf:"resource_group_arn,omitempty"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ResourceGroupArn string `json:"resourceGroupArn,omitempty" tf:"resource_group_arn,omitempty"`
 }
 
 type InspectorAssessmentTargetStatus struct {

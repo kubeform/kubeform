@@ -54,6 +54,7 @@ type FolderOrganizationPolicySpecRestorePolicy struct {
 }
 
 type FolderOrganizationPolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	BooleanPolicy []FolderOrganizationPolicySpecBooleanPolicy `json:"booleanPolicy,omitempty" tf:"boolean_policy,omitempty"`
@@ -66,8 +67,7 @@ type FolderOrganizationPolicySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	RestorePolicy []FolderOrganizationPolicySpecRestorePolicy `json:"restorePolicy,omitempty" tf:"restore_policy,omitempty"`
 	// +optional
-	Version     int                       `json:"version,omitempty" tf:"version,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Version int `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type FolderOrganizationPolicyStatus struct {

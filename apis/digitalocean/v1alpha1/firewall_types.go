@@ -55,6 +55,7 @@ type FirewallSpecOutboundRule struct {
 }
 
 type FirewallSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	DropletIDS []int64 `json:"dropletIDS,omitempty" tf:"droplet_ids,omitempty"`
@@ -67,8 +68,7 @@ type FirewallSpec struct {
 	OutboundRule []FirewallSpecOutboundRule `json:"outboundRule,omitempty" tf:"outbound_rule,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Tags        []string                  `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type FirewallStatus struct {

@@ -19,6 +19,7 @@ type NetworkACLRule struct {
 }
 
 type NetworkACLRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	CidrBlock string `json:"cidrBlock,omitempty" tf:"cidr_block,omitempty"`
 	// +optional
@@ -36,8 +37,7 @@ type NetworkACLRuleSpec struct {
 	RuleAction    string `json:"ruleAction" tf:"rule_action"`
 	RuleNumber    int    `json:"ruleNumber" tf:"rule_number"`
 	// +optional
-	ToPort      int                       `json:"toPort,omitempty" tf:"to_port,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ToPort int `json:"toPort,omitempty" tf:"to_port,omitempty"`
 }
 
 type NetworkACLRuleStatus struct {

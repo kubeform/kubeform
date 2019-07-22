@@ -19,7 +19,8 @@ type ApiManagementProduct struct {
 }
 
 type ApiManagementProductSpec struct {
-	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApiManagementName string                    `json:"apiManagementName" tf:"api_management_name"`
 	// +optional
 	ApprovalRequired bool `json:"approvalRequired,omitempty" tf:"approval_required,omitempty"`
 	// +optional
@@ -32,8 +33,7 @@ type ApiManagementProductSpec struct {
 	// +optional
 	SubscriptionsLimit int `json:"subscriptionsLimit,omitempty" tf:"subscriptions_limit,omitempty"`
 	// +optional
-	Terms       string                    `json:"terms,omitempty" tf:"terms,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Terms string `json:"terms,omitempty" tf:"terms,omitempty"`
 }
 
 type ApiManagementProductStatus struct {

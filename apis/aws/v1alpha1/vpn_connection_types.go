@@ -19,7 +19,9 @@ type VpnConnection struct {
 }
 
 type VpnConnectionSpec struct {
-	CustomerGatewayID string `json:"customerGatewayID" tf:"customer_gateway_id"`
+	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	CustomerGatewayID string                     `json:"customerGatewayID" tf:"customer_gateway_id"`
 	// +optional
 	StaticRoutesOnly bool `json:"staticRoutesOnly,omitempty" tf:"static_routes_only,omitempty"`
 	// +optional
@@ -29,17 +31,12 @@ type VpnConnectionSpec struct {
 	// +optional
 	Tunnel1InsideCIDR string `json:"tunnel1InsideCIDR,omitempty" tf:"tunnel1_inside_cidr,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Tunnel1PresharedKey *core.LocalObjectReference `json:"tunnel1PresharedKey,omitempty" tf:"tunnel1_preshared_key,omitempty"`
 	// +optional
 	Tunnel2InsideCIDR string `json:"tunnel2InsideCIDR,omitempty" tf:"tunnel2_inside_cidr,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Tunnel2PresharedKey *core.LocalObjectReference `json:"tunnel2PresharedKey,omitempty" tf:"tunnel2_preshared_key,omitempty"`
-	Type                string                     `json:"type" tf:"type"`
+	Type string `json:"type" tf:"type"`
 	// +optional
-	VpnGatewayID string                    `json:"vpnGatewayID,omitempty" tf:"vpn_gateway_id,omitempty"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpnGatewayID string `json:"vpnGatewayID,omitempty" tf:"vpn_gateway_id,omitempty"`
 }
 
 type VpnConnectionStatus struct {

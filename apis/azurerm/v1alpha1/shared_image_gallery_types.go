@@ -19,14 +19,14 @@ type SharedImageGallery struct {
 }
 
 type SharedImageGallerySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description       string `json:"description,omitempty" tf:"description,omitempty"`
 	Location          string `json:"location" tf:"location"`
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type SharedImageGalleryStatus struct {

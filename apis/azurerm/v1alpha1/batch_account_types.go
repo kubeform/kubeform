@@ -19,16 +19,16 @@ type BatchAccount struct {
 }
 
 type BatchAccountSpec struct {
-	Location string `json:"location" tf:"location"`
-	Name     string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Location    string                    `json:"location" tf:"location"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	PoolAllocationMode string `json:"poolAllocationMode,omitempty" tf:"pool_allocation_mode,omitempty"`
 	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	StorageAccountID string `json:"storageAccountID,omitempty" tf:"storage_account_id,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type BatchAccountStatus struct {

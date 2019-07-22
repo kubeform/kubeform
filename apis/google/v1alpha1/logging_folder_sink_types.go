@@ -19,14 +19,14 @@ type LoggingFolderSink struct {
 }
 
 type LoggingFolderSinkSpec struct {
-	Destination string `json:"destination" tf:"destination"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Destination string                    `json:"destination" tf:"destination"`
 	// +optional
 	Filter string `json:"filter,omitempty" tf:"filter,omitempty"`
 	Folder string `json:"folder" tf:"folder"`
 	// +optional
-	IncludeChildren bool                      `json:"includeChildren,omitempty" tf:"include_children,omitempty"`
-	Name            string                    `json:"name" tf:"name"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	IncludeChildren bool   `json:"includeChildren,omitempty" tf:"include_children,omitempty"`
+	Name            string `json:"name" tf:"name"`
 }
 
 type LoggingFolderSinkStatus struct {

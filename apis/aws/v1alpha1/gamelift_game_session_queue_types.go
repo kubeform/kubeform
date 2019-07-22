@@ -25,14 +25,14 @@ type GameliftGameSessionQueueSpecPlayerLatencyPolicy struct {
 }
 
 type GameliftGameSessionQueueSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Destinations []string `json:"destinations,omitempty" tf:"destinations,omitempty"`
 	Name         string   `json:"name" tf:"name"`
 	// +optional
 	PlayerLatencyPolicy []GameliftGameSessionQueueSpecPlayerLatencyPolicy `json:"playerLatencyPolicy,omitempty" tf:"player_latency_policy,omitempty"`
 	// +optional
-	TimeoutInSeconds int                       `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TimeoutInSeconds int `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 }
 
 type GameliftGameSessionQueueStatus struct {

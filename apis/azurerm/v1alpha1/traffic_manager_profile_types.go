@@ -31,6 +31,7 @@ type TrafficManagerProfileSpecMonitorConfig struct {
 }
 
 type TrafficManagerProfileSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:UniqueItems=true
 	DnsConfig []TrafficManagerProfileSpecDnsConfig `json:"dnsConfig" tf:"dns_config"`
 	// +kubebuilder:validation:UniqueItems=true
@@ -40,9 +41,8 @@ type TrafficManagerProfileSpec struct {
 	ProfileStatus     string `json:"profileStatus,omitempty" tf:"profile_status,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags                 map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	TrafficRoutingMethod string                    `json:"trafficRoutingMethod" tf:"traffic_routing_method"`
-	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags                 map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	TrafficRoutingMethod string            `json:"trafficRoutingMethod" tf:"traffic_routing_method"`
 }
 
 type TrafficManagerProfileStatus struct {

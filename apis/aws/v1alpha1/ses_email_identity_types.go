@@ -19,8 +19,8 @@ type SesEmailIdentity struct {
 }
 
 type SesEmailIdentitySpec struct {
-	Email       string                    `json:"email" tf:"email"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Email       string                    `json:"email" tf:"email"`
 }
 
 type SesEmailIdentityStatus struct {

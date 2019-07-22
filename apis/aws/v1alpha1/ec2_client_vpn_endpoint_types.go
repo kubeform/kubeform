@@ -35,6 +35,7 @@ type Ec2ClientVPNEndpointSpecConnectionLogOptions struct {
 }
 
 type Ec2ClientVPNEndpointSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	AuthenticationOptions []Ec2ClientVPNEndpointSpecAuthenticationOptions `json:"authenticationOptions" tf:"authentication_options"`
 	ClientCIDRBlock       string                                          `json:"clientCIDRBlock" tf:"client_cidr_block"`
@@ -49,8 +50,7 @@ type Ec2ClientVPNEndpointSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	TransportProtocol string                    `json:"transportProtocol,omitempty" tf:"transport_protocol,omitempty"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TransportProtocol string `json:"transportProtocol,omitempty" tf:"transport_protocol,omitempty"`
 }
 
 type Ec2ClientVPNEndpointStatus struct {

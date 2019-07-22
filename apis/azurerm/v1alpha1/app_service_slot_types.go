@@ -21,8 +21,6 @@ type AppServiceSlot struct {
 type AppServiceSlotSpecConnectionString struct {
 	Name string `json:"name" tf:"name"`
 	Type string `json:"type" tf:"type"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Value *core.LocalObjectReference `json:"value" tf:"value"`
 }
 
 type AppServiceSlotSpecIdentity struct {
@@ -95,8 +93,10 @@ type AppServiceSlotSpecSiteConfig struct {
 }
 
 type AppServiceSlotSpec struct {
-	AppServiceName   string `json:"appServiceName" tf:"app_service_name"`
-	AppServicePlanID string `json:"appServicePlanID" tf:"app_service_plan_id"`
+	Secret           *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef      core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	AppServiceName   string                     `json:"appServiceName" tf:"app_service_name"`
+	AppServicePlanID string                     `json:"appServicePlanID" tf:"app_service_plan_id"`
 	// +optional
 	AppSettings map[string]string `json:"appSettings,omitempty" tf:"app_settings,omitempty"`
 	// +optional
@@ -118,8 +118,7 @@ type AppServiceSlotSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SiteConfig []AppServiceSlotSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type AppServiceSlotStatus struct {

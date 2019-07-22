@@ -19,10 +19,10 @@ type ServiceDiscoveryPublicDNSNamespace struct {
 }
 
 type ServiceDiscoveryPublicDNSNamespaceSpec struct {
-	// +optional
-	Description string                    `json:"description,omitempty" tf:"description,omitempty"`
-	Name        string                    `json:"name" tf:"name"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Name        string `json:"name" tf:"name"`
 }
 
 type ServiceDiscoveryPublicDNSNamespaceStatus struct {

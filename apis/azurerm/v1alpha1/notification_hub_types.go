@@ -23,16 +23,13 @@ type NotificationHubSpecApnsCredential struct {
 	BundleID        string `json:"bundleID" tf:"bundle_id"`
 	KeyID           string `json:"keyID" tf:"key_id"`
 	TeamID          string `json:"teamID" tf:"team_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Token *core.LocalObjectReference `json:"token" tf:"token"`
 }
 
-type NotificationHubSpecGcmCredential struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	ApiKey *core.LocalObjectReference `json:"apiKey" tf:"api_key"`
-}
+type NotificationHubSpecGcmCredential struct{}
 
 type NotificationHubSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ApnsCredential []NotificationHubSpecApnsCredential `json:"apnsCredential,omitempty" tf:"apns_credential,omitempty"`
@@ -43,7 +40,6 @@ type NotificationHubSpec struct {
 	Name              string                             `json:"name" tf:"name"`
 	NamespaceName     string                             `json:"namespaceName" tf:"namespace_name"`
 	ResourceGroupName string                             `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference          `json:"providerRef" tf:"-"`
 }
 
 type NotificationHubStatus struct {

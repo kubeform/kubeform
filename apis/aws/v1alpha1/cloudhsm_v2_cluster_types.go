@@ -19,14 +19,14 @@ type CloudhsmV2Cluster struct {
 }
 
 type CloudhsmV2ClusterSpec struct {
-	HsmType string `json:"hsmType" tf:"hsm_type"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	HsmType     string                    `json:"hsmType" tf:"hsm_type"`
 	// +optional
 	SourceBackupIdentifier string `json:"sourceBackupIdentifier,omitempty" tf:"source_backup_identifier,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type CloudhsmV2ClusterStatus struct {

@@ -19,6 +19,7 @@ type IamPolicyAttachment struct {
 }
 
 type IamPolicyAttachmentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Groups    []string `json:"groups,omitempty" tf:"groups,omitempty"`
@@ -29,8 +30,7 @@ type IamPolicyAttachmentSpec struct {
 	Roles []string `json:"roles,omitempty" tf:"roles,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Users       []string                  `json:"users,omitempty" tf:"users,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Users []string `json:"users,omitempty" tf:"users,omitempty"`
 }
 
 type IamPolicyAttachmentStatus struct {

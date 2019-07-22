@@ -400,15 +400,6 @@ spec:
             appSource:
               items:
                 properties:
-                  password:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   revision:
                     type: string
                   sshKey:
@@ -471,6 +462,15 @@ spec:
               type: object
             railsEnv:
               type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             shortName:
               type: string
             sslConfiguration:
@@ -480,18 +480,8 @@ spec:
                     type: string
                   chain:
                     type: string
-                  privateKey:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                 required:
                 - certificate
-                - privateKey
                 type: object
               type: array
             stackID:

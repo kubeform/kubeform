@@ -32,15 +32,15 @@ type RoleDefinitionSpecPermissions struct {
 }
 
 type RoleDefinitionSpec struct {
-	AssignableScopes []string `json:"assignableScopes" tf:"assignable_scopes"`
+	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AssignableScopes []string                  `json:"assignableScopes" tf:"assignable_scopes"`
 	// +optional
 	Description string                          `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string                          `json:"name" tf:"name"`
 	Permissions []RoleDefinitionSpecPermissions `json:"permissions" tf:"permissions"`
 	// +optional
-	RoleDefinitionID string                    `json:"roleDefinitionID,omitempty" tf:"role_definition_id,omitempty"`
-	Scope            string                    `json:"scope" tf:"scope"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RoleDefinitionID string `json:"roleDefinitionID,omitempty" tf:"role_definition_id,omitempty"`
+	Scope            string `json:"scope" tf:"scope"`
 }
 
 type RoleDefinitionStatus struct {

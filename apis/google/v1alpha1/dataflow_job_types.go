@@ -19,6 +19,7 @@ type DataflowJob struct {
 }
 
 type DataflowJobSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	MaxWorkers int    `json:"maxWorkers,omitempty" tf:"max_workers,omitempty"`
 	Name       string `json:"name" tf:"name"`
@@ -33,8 +34,7 @@ type DataflowJobSpec struct {
 	TempGcsLocation string `json:"tempGcsLocation" tf:"temp_gcs_location"`
 	TemplateGcsPath string `json:"templateGcsPath" tf:"template_gcs_path"`
 	// +optional
-	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type DataflowJobStatus struct {

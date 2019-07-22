@@ -47,6 +47,7 @@ type MonitorDiagnosticSettingSpecMetric struct {
 }
 
 type MonitorDiagnosticSettingSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	EventhubAuthorizationRuleID string `json:"eventhubAuthorizationRuleID,omitempty" tf:"eventhub_authorization_rule_id,omitempty"`
 	// +optional
@@ -61,9 +62,8 @@ type MonitorDiagnosticSettingSpec struct {
 	Metric []MonitorDiagnosticSettingSpecMetric `json:"metric,omitempty" tf:"metric,omitempty"`
 	Name   string                               `json:"name" tf:"name"`
 	// +optional
-	StorageAccountID string                    `json:"storageAccountID,omitempty" tf:"storage_account_id,omitempty"`
-	TargetResourceID string                    `json:"targetResourceID" tf:"target_resource_id"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	StorageAccountID string `json:"storageAccountID,omitempty" tf:"storage_account_id,omitempty"`
+	TargetResourceID string `json:"targetResourceID" tf:"target_resource_id"`
 }
 
 type MonitorDiagnosticSettingStatus struct {

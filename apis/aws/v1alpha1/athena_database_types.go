@@ -25,14 +25,14 @@ type AthenaDatabaseSpecEncryptionConfiguration struct {
 }
 
 type AthenaDatabaseSpec struct {
-	Bucket string `json:"bucket" tf:"bucket"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Bucket      string                    `json:"bucket" tf:"bucket"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	EncryptionConfiguration []AthenaDatabaseSpecEncryptionConfiguration `json:"encryptionConfiguration,omitempty" tf:"encryption_configuration,omitempty"`
 	// +optional
-	ForceDestroy bool                      `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
-	Name         string                    `json:"name" tf:"name"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ForceDestroy bool   `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
+	Name         string `json:"name" tf:"name"`
 }
 
 type AthenaDatabaseStatus struct {

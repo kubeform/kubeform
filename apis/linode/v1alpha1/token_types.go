@@ -19,12 +19,12 @@ type Token struct {
 }
 
 type TokenSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Expiry string `json:"expiry,omitempty" tf:"expiry,omitempty"`
 	// +optional
-	Label       string                    `json:"label,omitempty" tf:"label,omitempty"`
-	Scopes      string                    `json:"scopes" tf:"scopes"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Label  string `json:"label,omitempty" tf:"label,omitempty"`
+	Scopes string `json:"scopes" tf:"scopes"`
 }
 
 type TokenStatus struct {

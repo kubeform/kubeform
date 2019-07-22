@@ -42,14 +42,14 @@ type FirewallApplicationRuleCollectionSpecRule struct {
 }
 
 type FirewallApplicationRuleCollectionSpec struct {
-	Action            string `json:"action" tf:"action"`
-	AzureFirewallName string `json:"azureFirewallName" tf:"azure_firewall_name"`
-	Name              string `json:"name" tf:"name"`
-	Priority          int    `json:"priority" tf:"priority"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Action            string                    `json:"action" tf:"action"`
+	AzureFirewallName string                    `json:"azureFirewallName" tf:"azure_firewall_name"`
+	Name              string                    `json:"name" tf:"name"`
+	Priority          int                       `json:"priority" tf:"priority"`
+	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MinItems=1
-	Rule        []FirewallApplicationRuleCollectionSpecRule `json:"rule" tf:"rule"`
-	ProviderRef core.LocalObjectReference                   `json:"providerRef" tf:"-"`
+	Rule []FirewallApplicationRuleCollectionSpecRule `json:"rule" tf:"rule"`
 }
 
 type FirewallApplicationRuleCollectionStatus struct {

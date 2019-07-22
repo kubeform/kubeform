@@ -19,6 +19,7 @@ type NotificationHubAuthorizationRule struct {
 }
 
 type NotificationHubAuthorizationRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Listen bool `json:"listen,omitempty" tf:"listen,omitempty"`
 	// +optional
@@ -28,8 +29,7 @@ type NotificationHubAuthorizationRuleSpec struct {
 	NotificationHubName string `json:"notificationHubName" tf:"notification_hub_name"`
 	ResourceGroupName   string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Send        bool                      `json:"send,omitempty" tf:"send,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Send bool `json:"send,omitempty" tf:"send,omitempty"`
 }
 
 type NotificationHubAuthorizationRuleStatus struct {

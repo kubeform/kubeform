@@ -19,6 +19,7 @@ type PublicIP struct {
 }
 
 type PublicIPSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllocationMethod string `json:"allocationMethod,omitempty" tf:"allocation_method,omitempty"`
 	// +optional
@@ -43,8 +44,7 @@ type PublicIPSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Zones       []string                  `json:"zones,omitempty" tf:"zones,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zones []string `json:"zones,omitempty" tf:"zones,omitempty"`
 }
 
 type PublicIPStatus struct {

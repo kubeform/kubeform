@@ -19,7 +19,8 @@ type EventhubConsumerGroup struct {
 }
 
 type EventhubConsumerGroupSpec struct {
-	EventhubName string `json:"eventhubName" tf:"eventhub_name"`
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	EventhubName string                    `json:"eventhubName" tf:"eventhub_name"`
 	// +optional
 	// Deprecated
 	Location          string `json:"location,omitempty" tf:"location,omitempty"`
@@ -27,8 +28,7 @@ type EventhubConsumerGroupSpec struct {
 	NamespaceName     string `json:"namespaceName" tf:"namespace_name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	UserMetadata string                    `json:"userMetadata,omitempty" tf:"user_metadata,omitempty"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	UserMetadata string `json:"userMetadata,omitempty" tf:"user_metadata,omitempty"`
 }
 
 type EventhubConsumerGroupStatus struct {

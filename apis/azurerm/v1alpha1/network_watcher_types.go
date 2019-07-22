@@ -19,12 +19,12 @@ type NetworkWatcher struct {
 }
 
 type NetworkWatcherSpec struct {
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Location          string                    `json:"location" tf:"location"`
+	Name              string                    `json:"name" tf:"name"`
+	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type NetworkWatcherStatus struct {

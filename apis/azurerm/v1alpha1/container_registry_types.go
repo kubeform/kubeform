@@ -19,12 +19,12 @@ type ContainerRegistry struct {
 }
 
 type ContainerRegistrySpecStorageAccount struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	AccessKey *core.LocalObjectReference `json:"accessKey" tf:"access_key"`
-	Name      string                     `json:"name" tf:"name"`
+	Name string `json:"name" tf:"name"`
 }
 
 type ContainerRegistrySpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	AdminEnabled bool `json:"adminEnabled,omitempty" tf:"admin_enabled,omitempty"`
 	// +optional
@@ -43,8 +43,7 @@ type ContainerRegistrySpec struct {
 	// +optional
 	StorageAccountID string `json:"storageAccountID,omitempty" tf:"storage_account_id,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ContainerRegistryStatus struct {

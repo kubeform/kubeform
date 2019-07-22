@@ -64,11 +64,11 @@ type ComputeBackendServiceSpecCdnPolicy struct {
 
 type ComputeBackendServiceSpecIap struct {
 	Oauth2ClientID string `json:"oauth2ClientID" tf:"oauth2_client_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Oauth2ClientSecret *core.LocalObjectReference `json:"oauth2ClientSecret" tf:"oauth2_client_secret"`
 }
 
 type ComputeBackendServiceSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Backend []ComputeBackendServiceSpecBackend `json:"backend,omitempty" tf:"backend,omitempty"`
@@ -104,8 +104,7 @@ type ComputeBackendServiceSpec struct {
 	// +optional
 	SessionAffinity string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 	// +optional
-	TimeoutSec  int                       `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TimeoutSec int `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
 }
 
 type ComputeBackendServiceStatus struct {

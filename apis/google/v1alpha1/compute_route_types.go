@@ -19,6 +19,7 @@ type ComputeRoute struct {
 }
 
 type ComputeRouteSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	DestRange   string `json:"destRange" tf:"dest_range"`
@@ -40,8 +41,7 @@ type ComputeRouteSpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Tags        []string                  `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ComputeRouteStatus struct {

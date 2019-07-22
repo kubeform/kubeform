@@ -19,14 +19,14 @@ type StorageBucketACL struct {
 }
 
 type StorageBucketACLSpec struct {
-	Bucket string `json:"bucket" tf:"bucket"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Bucket      string                    `json:"bucket" tf:"bucket"`
 	// +optional
 	DefaultACL string `json:"defaultACL,omitempty" tf:"default_acl,omitempty"`
 	// +optional
 	PredefinedACL string `json:"predefinedACL,omitempty" tf:"predefined_acl,omitempty"`
 	// +optional
-	RoleEntity  []string                  `json:"roleEntity,omitempty" tf:"role_entity,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RoleEntity []string `json:"roleEntity,omitempty" tf:"role_entity,omitempty"`
 }
 
 type StorageBucketACLStatus struct {

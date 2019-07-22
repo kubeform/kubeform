@@ -26,6 +26,7 @@ type NeptuneParameterGroupSpecParameter struct {
 }
 
 type NeptuneParameterGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Family      string `json:"family" tf:"family"`
@@ -34,8 +35,7 @@ type NeptuneParameterGroupSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Parameter []NeptuneParameterGroupSpecParameter `json:"parameter,omitempty" tf:"parameter,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type NeptuneParameterGroupStatus struct {

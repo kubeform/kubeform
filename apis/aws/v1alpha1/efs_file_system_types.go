@@ -21,6 +21,7 @@ type EfsFileSystem struct {
 }
 
 type EfsFileSystemSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	CreationToken string `json:"creationToken,omitempty" tf:"creation_token,omitempty"`
 	// +optional
@@ -34,8 +35,7 @@ type EfsFileSystemSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	ThroughputMode string                    `json:"throughputMode,omitempty" tf:"throughput_mode,omitempty"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ThroughputMode string `json:"throughputMode,omitempty" tf:"throughput_mode,omitempty"`
 }
 
 type EfsFileSystemStatus struct {

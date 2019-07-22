@@ -19,9 +19,9 @@ type StoragegatewayWorkingStorage struct {
 }
 
 type StoragegatewayWorkingStorageSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	DiskID      string                    `json:"diskID" tf:"disk_id"`
 	GatewayArn  string                    `json:"gatewayArn" tf:"gateway_arn"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type StoragegatewayWorkingStorageStatus struct {

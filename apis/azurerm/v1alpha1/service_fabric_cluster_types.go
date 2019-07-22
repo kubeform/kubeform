@@ -103,6 +103,7 @@ type ServiceFabricClusterSpecReverseProxyCertificate struct {
 }
 
 type ServiceFabricClusterSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AddOnFeatures []string `json:"addOnFeatures,omitempty" tf:"add_on_features,omitempty"`
@@ -135,10 +136,9 @@ type ServiceFabricClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	ReverseProxyCertificate []ServiceFabricClusterSpecReverseProxyCertificate `json:"reverseProxyCertificate,omitempty" tf:"reverse_proxy_certificate,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	UpgradeMode string                    `json:"upgradeMode" tf:"upgrade_mode"`
-	VmImage     string                    `json:"vmImage" tf:"vm_image"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags        map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	UpgradeMode string            `json:"upgradeMode" tf:"upgrade_mode"`
+	VmImage     string            `json:"vmImage" tf:"vm_image"`
 }
 
 type ServiceFabricClusterStatus struct {

@@ -19,12 +19,12 @@ type GuarddutyThreatintelset struct {
 }
 
 type GuarddutyThreatintelsetSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	Activate    bool                      `json:"activate" tf:"activate"`
 	DetectorID  string                    `json:"detectorID" tf:"detector_id"`
 	Format      string                    `json:"format" tf:"format"`
 	Location    string                    `json:"location" tf:"location"`
 	Name        string                    `json:"name" tf:"name"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type GuarddutyThreatintelsetStatus struct {

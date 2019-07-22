@@ -25,6 +25,7 @@ type SharedImageSpecIdentifier struct {
 }
 
 type SharedImageSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -41,8 +42,7 @@ type SharedImageSpec struct {
 	ReleaseNoteURI    string `json:"releaseNoteURI,omitempty" tf:"release_note_uri,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type SharedImageStatus struct {

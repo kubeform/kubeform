@@ -19,16 +19,16 @@ type ApiManagementProperty struct {
 }
 
 type ApiManagementPropertySpec struct {
-	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
-	DisplayName       string `json:"displayName" tf:"display_name"`
-	Name              string `json:"name" tf:"name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApiManagementName string                    `json:"apiManagementName" tf:"api_management_name"`
+	DisplayName       string                    `json:"displayName" tf:"display_name"`
+	Name              string                    `json:"name" tf:"name"`
+	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Secret bool `json:"secret,omitempty" tf:"secret,omitempty"`
 	// +optional
-	Tags        []string                  `json:"tags,omitempty" tf:"tags,omitempty"`
-	Value       string                    `json:"value" tf:"value"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags  []string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Value string   `json:"value" tf:"value"`
 }
 
 type ApiManagementPropertyStatus struct {

@@ -41,6 +41,7 @@ type BigqueryDatasetSpecAccess struct {
 }
 
 type BigqueryDatasetSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Access    []BigqueryDatasetSpecAccess `json:"access,omitempty" tf:"access,omitempty"`
 	DatasetID string                      `json:"datasetID" tf:"dataset_id"`
@@ -55,8 +56,7 @@ type BigqueryDatasetSpec struct {
 	// +optional
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type BigqueryDatasetStatus struct {

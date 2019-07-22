@@ -33,14 +33,14 @@ type SagemakerEndpointConfigurationSpecProductionVariants struct {
 }
 
 type SagemakerEndpointConfigurationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	KmsKeyArn string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
 	// +optional
 	Name               string                                                 `json:"name,omitempty" tf:"name,omitempty"`
 	ProductionVariants []SagemakerEndpointConfigurationSpecProductionVariants `json:"productionVariants" tf:"production_variants"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type SagemakerEndpointConfigurationStatus struct {

@@ -54,6 +54,7 @@ type LoadbalancerSpecStickySessions struct {
 }
 
 type LoadbalancerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Algorithm string `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 	// +optional
@@ -75,7 +76,6 @@ type LoadbalancerSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	StickySessions []LoadbalancerSpecStickySessions `json:"stickySessions,omitempty" tf:"sticky_sessions,omitempty"`
-	ProviderRef    core.LocalObjectReference        `json:"providerRef" tf:"-"`
 }
 
 type LoadbalancerStatus struct {

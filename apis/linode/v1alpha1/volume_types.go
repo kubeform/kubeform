@@ -19,7 +19,8 @@ type Volume struct {
 }
 
 type VolumeSpec struct {
-	Label string `json:"label" tf:"label"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Label       string                    `json:"label" tf:"label"`
 	// +optional
 	LinodeID int    `json:"linodeID,omitempty" tf:"linode_id,omitempty"`
 	Region   string `json:"region" tf:"region"`
@@ -27,8 +28,7 @@ type VolumeSpec struct {
 	Size int `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Tags        []string                  `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type VolumeStatus struct {

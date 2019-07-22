@@ -66,7 +66,8 @@ type SpotInstanceRequestSpecRootBlockDevice struct {
 }
 
 type SpotInstanceRequestSpec struct {
-	Ami string `json:"ami" tf:"ami"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Ami         string                    `json:"ami" tf:"ami"`
 	// +optional
 	AssociatePublicIPAddress bool `json:"associatePublicIPAddress,omitempty" tf:"associate_public_ip_address,omitempty"`
 	// +optional
@@ -150,8 +151,7 @@ type SpotInstanceRequestSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	VpcSecurityGroupIDS []string `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
 	// +optional
-	WaitForFulfillment bool                      `json:"waitForFulfillment,omitempty" tf:"wait_for_fulfillment,omitempty"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	WaitForFulfillment bool `json:"waitForFulfillment,omitempty" tf:"wait_for_fulfillment,omitempty"`
 }
 
 type SpotInstanceRequestStatus struct {

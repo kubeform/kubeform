@@ -30,6 +30,7 @@ type SsmAssociationSpecTargets struct {
 }
 
 type SsmAssociationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AssociationName string `json:"associationName,omitempty" tf:"association_name,omitempty"`
 	// +optional
@@ -52,8 +53,7 @@ type SsmAssociationSpec struct {
 	ScheduleExpression string `json:"scheduleExpression,omitempty" tf:"schedule_expression,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=5
-	Targets     []SsmAssociationSpecTargets `json:"targets,omitempty" tf:"targets,omitempty"`
-	ProviderRef core.LocalObjectReference   `json:"providerRef" tf:"-"`
+	Targets []SsmAssociationSpecTargets `json:"targets,omitempty" tf:"targets,omitempty"`
 }
 
 type SsmAssociationStatus struct {

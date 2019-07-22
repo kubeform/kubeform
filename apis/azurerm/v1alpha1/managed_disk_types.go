@@ -39,7 +39,8 @@ type ManagedDiskSpecEncryptionSettings struct {
 }
 
 type ManagedDiskSpec struct {
-	CreateOption string `json:"createOption" tf:"create_option"`
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	CreateOption string                    `json:"createOption" tf:"create_option"`
 	// +optional
 	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
 	// +optional
@@ -61,8 +62,7 @@ type ManagedDiskSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Zones       []string                  `json:"zones,omitempty" tf:"zones,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zones []string `json:"zones,omitempty" tf:"zones,omitempty"`
 }
 
 type ManagedDiskStatus struct {

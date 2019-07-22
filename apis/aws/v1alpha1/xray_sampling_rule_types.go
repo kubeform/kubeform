@@ -21,6 +21,7 @@ type XraySamplingRule struct {
 }
 
 type XraySamplingRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Attributes    map[string]string `json:"attributes,omitempty" tf:"attributes,omitempty"`
 	FixedRate     json.Number       `json:"fixedRate" tf:"fixed_rate"`
@@ -30,12 +31,11 @@ type XraySamplingRuleSpec struct {
 	ReservoirSize int               `json:"reservoirSize" tf:"reservoir_size"`
 	ResourceArn   string            `json:"resourceArn" tf:"resource_arn"`
 	// +optional
-	RuleName    string                    `json:"ruleName,omitempty" tf:"rule_name,omitempty"`
-	ServiceName string                    `json:"serviceName" tf:"service_name"`
-	ServiceType string                    `json:"serviceType" tf:"service_type"`
-	UrlPath     string                    `json:"urlPath" tf:"url_path"`
-	Version     int                       `json:"version" tf:"version"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RuleName    string `json:"ruleName,omitempty" tf:"rule_name,omitempty"`
+	ServiceName string `json:"serviceName" tf:"service_name"`
+	ServiceType string `json:"serviceType" tf:"service_type"`
+	UrlPath     string `json:"urlPath" tf:"url_path"`
+	Version     int    `json:"version" tf:"version"`
 }
 
 type XraySamplingRuleStatus struct {

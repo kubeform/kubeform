@@ -28,10 +28,10 @@ type GlueConnectionSpecPhysicalConnectionRequirements struct {
 }
 
 type GlueConnectionSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	CatalogID string `json:"catalogID,omitempty" tf:"catalog_id,omitempty"`
-	// Sensitive Data. Provide secret name which contains one or more values
-	ConnectionProperties *core.LocalObjectReference `json:"connectionProperties" tf:"connection_properties"`
 	// +optional
 	ConnectionType string `json:"connectionType,omitempty" tf:"connection_type,omitempty"`
 	// +optional
@@ -42,7 +42,6 @@ type GlueConnectionSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	PhysicalConnectionRequirements []GlueConnectionSpecPhysicalConnectionRequirements `json:"physicalConnectionRequirements,omitempty" tf:"physical_connection_requirements,omitempty"`
-	ProviderRef                    core.LocalObjectReference                          `json:"providerRef" tf:"-"`
 }
 
 type GlueConnectionStatus struct {

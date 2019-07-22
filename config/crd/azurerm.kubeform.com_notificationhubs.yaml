@@ -408,38 +408,16 @@ spec:
                     type: string
                   teamID:
                     type: string
-                  token:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                 required:
                 - applicationMode
                 - bundleID
                 - keyID
                 - teamID
-                - token
                 type: object
               maxItems: 1
               type: array
             gcmCredential:
               items:
-                properties:
-                  apiKey:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
-                required:
-                - apiKey
                 type: object
               maxItems: 1
               type: array
@@ -460,6 +438,15 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
           required:
           - location
           - name

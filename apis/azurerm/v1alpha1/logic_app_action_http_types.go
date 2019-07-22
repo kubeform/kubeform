@@ -19,15 +19,15 @@ type LogicAppActionHTTP struct {
 }
 
 type LogicAppActionHTTPSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Body string `json:"body,omitempty" tf:"body,omitempty"`
 	// +optional
-	Headers     map[string]string         `json:"headers,omitempty" tf:"headers,omitempty"`
-	LogicAppID  string                    `json:"logicAppID" tf:"logic_app_id"`
-	Method      string                    `json:"method" tf:"method"`
-	Name        string                    `json:"name" tf:"name"`
-	Uri         string                    `json:"uri" tf:"uri"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Headers    map[string]string `json:"headers,omitempty" tf:"headers,omitempty"`
+	LogicAppID string            `json:"logicAppID" tf:"logic_app_id"`
+	Method     string            `json:"method" tf:"method"`
+	Name       string            `json:"name" tf:"name"`
+	Uri        string            `json:"uri" tf:"uri"`
 }
 
 type LogicAppActionHTTPStatus struct {

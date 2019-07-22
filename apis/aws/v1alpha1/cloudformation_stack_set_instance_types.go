@@ -19,6 +19,7 @@ type CloudformationStackSetInstance struct {
 }
 
 type CloudformationStackSetInstanceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AccountID string `json:"accountID,omitempty" tf:"account_id,omitempty"`
 	// +optional
@@ -26,9 +27,8 @@ type CloudformationStackSetInstanceSpec struct {
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
-	RetainStack  bool                      `json:"retainStack,omitempty" tf:"retain_stack,omitempty"`
-	StackSetName string                    `json:"stackSetName" tf:"stack_set_name"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RetainStack  bool   `json:"retainStack,omitempty" tf:"retain_stack,omitempty"`
+	StackSetName string `json:"stackSetName" tf:"stack_set_name"`
 }
 
 type CloudformationStackSetInstanceStatus struct {

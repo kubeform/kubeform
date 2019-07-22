@@ -19,15 +19,14 @@ type AutomationCredential struct {
 }
 
 type AutomationCredentialSpec struct {
-	AccountName string `json:"accountName" tf:"account_name"`
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	AccountName string                     `json:"accountName" tf:"account_name"`
 	// +optional
-	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	Name        string `json:"name" tf:"name"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Password          *core.LocalObjectReference `json:"password" tf:"password"`
-	ResourceGroupName string                     `json:"resourceGroupName" tf:"resource_group_name"`
-	Username          string                     `json:"username" tf:"username"`
-	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	Description       string `json:"description,omitempty" tf:"description,omitempty"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Username          string `json:"username" tf:"username"`
 }
 
 type AutomationCredentialStatus struct {

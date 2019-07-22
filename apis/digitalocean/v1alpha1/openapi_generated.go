@@ -2203,6 +2203,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_CdnSpec(ref common.ReferenceCall
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"certificateID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -2227,13 +2232,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_CdnSpec(ref common.ReferenceCall
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"origin", "providerRef"},
+				Required: []string{"providerRef", "origin"},
 			},
 		},
 		Dependencies: []string{
@@ -2368,6 +2368,16 @@ func schema_kubeform_apis_digitalocean_v1alpha1_CertificateSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"certificateChain": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -2399,25 +2409,14 @@ func schema_kubeform_apis_digitalocean_v1alpha1_CertificateSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"privateKey": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"type": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -2552,6 +2551,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DatabaseClusterSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"engine": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -2600,13 +2604,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DatabaseClusterSpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"engine", "name", "nodeCount", "region", "size", "version", "providerRef"},
+				Required: []string{"providerRef", "engine", "name", "nodeCount", "region", "size", "version"},
 			},
 		},
 		Dependencies: []string{
@@ -2766,6 +2765,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DomainSpec(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"ipAddress": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -2778,13 +2782,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DomainSpec(ref common.ReferenceC
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -3009,6 +3008,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSnapshotSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"dropletID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -3021,13 +3025,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSnapshotSpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"dropletID", "name", "providerRef"},
+				Required: []string{"providerRef", "dropletID", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -3072,6 +3071,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSpec(ref common.Reference
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"backups": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -3171,13 +3175,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSpec(ref common.Reference
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"image", "name", "region", "size", "providerRef"},
+				Required: []string{"providerRef", "image", "name", "region", "size"},
 			},
 		},
 		Dependencies: []string{
@@ -3312,6 +3311,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FirewallSpec(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"dropletIDS": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -3368,13 +3372,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FirewallSpec(ref common.Referenc
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -3706,6 +3705,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FloatingIPAssignmentSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"dropletID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -3718,13 +3722,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FloatingIPAssignmentSpec(ref com
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"dropletID", "ipAddress", "providerRef"},
+				Required: []string{"providerRef", "dropletID", "ipAddress"},
 			},
 		},
 		Dependencies: []string{
@@ -3816,6 +3815,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FloatingIPSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"dropletID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -3834,13 +3838,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FloatingIPSpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"region", "providerRef"},
+				Required: []string{"providerRef", "region"},
 			},
 		},
 		Dependencies: []string{
@@ -3975,6 +3974,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesClusterSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4018,13 +4022,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesClusterSpec(ref common
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "nodePool", "region", "version", "providerRef"},
+				Required: []string{"providerRef", "name", "nodePool", "region", "version"},
 			},
 		},
 		Dependencies: []string{
@@ -4203,6 +4202,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesNodePoolSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"clusterID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4240,13 +4244,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesNodePoolSpec(ref commo
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"clusterID", "name", "nodeCount", "size", "providerRef"},
+				Required: []string{"providerRef", "clusterID", "name", "nodeCount", "size"},
 			},
 		},
 		Dependencies: []string{
@@ -4381,6 +4380,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_LoadbalancerSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"algorithm": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4466,13 +4470,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_LoadbalancerSpec(ref common.Refe
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"forwardingRule", "name", "region", "providerRef"},
+				Required: []string{"providerRef", "forwardingRule", "name", "region"},
 			},
 		},
 		Dependencies: []string{
@@ -4741,6 +4740,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_ProjectSpec(ref common.Reference
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4778,13 +4782,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_ProjectSpec(ref common.Reference
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -4919,6 +4918,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_RecordSpec(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"domain": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4979,13 +4983,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_RecordSpec(ref common.ReferenceC
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"domain", "name", "type", "value", "providerRef"},
+				Required: []string{"providerRef", "domain", "name", "type", "value"},
 			},
 		},
 		Dependencies: []string{
@@ -5120,6 +5119,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_SpacesBucketSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"acl": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -5144,13 +5148,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_SpacesBucketSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -5285,6 +5284,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_SshKeySpec(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -5297,13 +5301,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_SshKeySpec(ref common.ReferenceC
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "publicKey", "providerRef"},
+				Required: []string{"providerRef", "name", "publicKey"},
 			},
 		},
 		Dependencies: []string{
@@ -5438,19 +5437,19 @@ func schema_kubeform_apis_digitalocean_v1alpha1_TagSpec(ref common.ReferenceCall
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -5628,6 +5627,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeAttachmentSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"dropletID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -5640,13 +5644,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeAttachmentSpec(ref common.
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"dropletID", "volumeID", "providerRef"},
+				Required: []string{"providerRef", "dropletID", "volumeID"},
 			},
 		},
 		Dependencies: []string{
@@ -5828,6 +5827,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeSnapshotSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -5840,13 +5844,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeSnapshotSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "volumeID", "providerRef"},
+				Required: []string{"providerRef", "name", "volumeID"},
 			},
 		},
 		Dependencies: []string{
@@ -5891,6 +5890,11 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeSpec(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -5940,13 +5944,8 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeSpec(ref common.ReferenceC
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "region", "size", "providerRef"},
+				Required: []string{"providerRef", "name", "region", "size"},
 			},
 		},
 		Dependencies: []string{

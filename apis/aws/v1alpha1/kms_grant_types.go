@@ -26,6 +26,7 @@ type KmsGrantSpecConstraints struct {
 }
 
 type KmsGrantSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Constraints []KmsGrantSpecConstraints `json:"constraints,omitempty" tf:"constraints,omitempty"`
@@ -41,8 +42,7 @@ type KmsGrantSpec struct {
 	// +optional
 	RetireOnDelete bool `json:"retireOnDelete,omitempty" tf:"retire_on_delete,omitempty"`
 	// +optional
-	RetiringPrincipal string                    `json:"retiringPrincipal,omitempty" tf:"retiring_principal,omitempty"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RetiringPrincipal string `json:"retiringPrincipal,omitempty" tf:"retiring_principal,omitempty"`
 }
 
 type KmsGrantStatus struct {

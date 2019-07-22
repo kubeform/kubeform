@@ -19,6 +19,7 @@ type KinesisStream struct {
 }
 
 type KinesisStreamSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
@@ -35,8 +36,7 @@ type KinesisStreamSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	ShardLevelMetrics []string `json:"shardLevelMetrics,omitempty" tf:"shard_level_metrics,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type KinesisStreamStatus struct {

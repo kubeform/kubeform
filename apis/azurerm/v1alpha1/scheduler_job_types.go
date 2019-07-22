@@ -29,23 +29,14 @@ type SchedulerJobSpecActionWebAuthenticationActiveDirectory struct {
 	// +optional
 	Audience string `json:"audience,omitempty" tf:"audience,omitempty"`
 	ClientID string `json:"clientID" tf:"client_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Secret   *core.LocalObjectReference `json:"secret" tf:"secret"`
-	TenantID string                     `json:"tenantID" tf:"tenant_id"`
+	TenantID string `json:"tenantID" tf:"tenant_id"`
 }
 
 type SchedulerJobSpecActionWebAuthenticationBasic struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
-	Username string                     `json:"username" tf:"username"`
+	Username string `json:"username" tf:"username"`
 }
 
-type SchedulerJobSpecActionWebAuthenticationCertificate struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Pfx *core.LocalObjectReference `json:"pfx" tf:"pfx"`
-}
+type SchedulerJobSpecActionWebAuthenticationCertificate struct{}
 
 type SchedulerJobSpecActionWeb struct {
 	// +optional
@@ -76,23 +67,14 @@ type SchedulerJobSpecErrorActionWebAuthenticationActiveDirectory struct {
 	// +optional
 	Audience string `json:"audience,omitempty" tf:"audience,omitempty"`
 	ClientID string `json:"clientID" tf:"client_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Secret   *core.LocalObjectReference `json:"secret" tf:"secret"`
-	TenantID string                     `json:"tenantID" tf:"tenant_id"`
+	TenantID string `json:"tenantID" tf:"tenant_id"`
 }
 
 type SchedulerJobSpecErrorActionWebAuthenticationBasic struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
-	Username string                     `json:"username" tf:"username"`
+	Username string `json:"username" tf:"username"`
 }
 
-type SchedulerJobSpecErrorActionWebAuthenticationCertificate struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Pfx *core.LocalObjectReference `json:"pfx" tf:"pfx"`
-}
+type SchedulerJobSpecErrorActionWebAuthenticationCertificate struct{}
 
 type SchedulerJobSpecErrorActionWeb struct {
 	// +optional
@@ -152,6 +134,8 @@ type SchedulerJobSpecRetry struct {
 }
 
 type SchedulerJobSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ActionStorageQueue []SchedulerJobSpecActionStorageQueue `json:"actionStorageQueue,omitempty" tf:"action_storage_queue,omitempty"`
@@ -177,8 +161,7 @@ type SchedulerJobSpec struct {
 	// +optional
 	StartTime string `json:"startTime,omitempty" tf:"start_time,omitempty"`
 	// +optional
-	State       string                    `json:"state,omitempty" tf:"state,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	State string `json:"state,omitempty" tf:"state,omitempty"`
 }
 
 type SchedulerJobStatus struct {

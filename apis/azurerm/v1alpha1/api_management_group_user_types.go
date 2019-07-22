@@ -19,11 +19,11 @@ type ApiManagementGroupUser struct {
 }
 
 type ApiManagementGroupUserSpec struct {
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
 	ApiManagementName string                    `json:"apiManagementName" tf:"api_management_name"`
 	GroupName         string                    `json:"groupName" tf:"group_name"`
 	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	UserID            string                    `json:"userID" tf:"user_id"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ApiManagementGroupUserStatus struct {

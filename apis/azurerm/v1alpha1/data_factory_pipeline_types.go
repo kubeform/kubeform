@@ -19,6 +19,7 @@ type DataFactoryPipeline struct {
 }
 
 type DataFactoryPipelineSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Annotations     []string `json:"annotations,omitempty" tf:"annotations,omitempty"`
 	DataFactoryName string   `json:"dataFactoryName" tf:"data_factory_name"`
@@ -29,8 +30,7 @@ type DataFactoryPipelineSpec struct {
 	Parameters        map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 	ResourceGroupName string            `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Variables   map[string]string         `json:"variables,omitempty" tf:"variables,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Variables map[string]string `json:"variables,omitempty" tf:"variables,omitempty"`
 }
 
 type DataFactoryPipelineStatus struct {

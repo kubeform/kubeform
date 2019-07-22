@@ -22,8 +22,6 @@ type ComputeInstanceFromTemplateSpecAttachedDisk struct {
 	// +optional
 	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	DiskEncryptionKeyRaw *core.LocalObjectReference `json:"diskEncryptionKeyRaw,omitempty" tf:"disk_encryption_key_raw,omitempty"`
 	// +optional
 	Mode   string `json:"mode,omitempty" tf:"mode,omitempty"`
 	Source string `json:"source" tf:"source"`
@@ -44,8 +42,6 @@ type ComputeInstanceFromTemplateSpecBootDisk struct {
 	// +optional
 	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	DiskEncryptionKeyRaw *core.LocalObjectReference `json:"diskEncryptionKeyRaw,omitempty" tf:"disk_encryption_key_raw,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	InitializeParams []ComputeInstanceFromTemplateSpecBootDiskInitializeParams `json:"initializeParams,omitempty" tf:"initialize_params,omitempty"`
@@ -113,6 +109,8 @@ type ComputeInstanceFromTemplateSpecServiceAccount struct {
 }
 
 type ComputeInstanceFromTemplateSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	AllowStoppingForUpdate bool `json:"allowStoppingForUpdate,omitempty" tf:"allow_stopping_for_update,omitempty"`
 	// +optional
@@ -156,8 +154,7 @@ type ComputeInstanceFromTemplateSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type ComputeInstanceFromTemplateStatus struct {

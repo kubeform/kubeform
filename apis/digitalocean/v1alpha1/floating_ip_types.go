@@ -19,12 +19,12 @@ type FloatingIP struct {
 }
 
 type FloatingIPSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DropletID int `json:"dropletID,omitempty" tf:"droplet_id,omitempty"`
 	// +optional
-	IpAddress   string                    `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
-	Region      string                    `json:"region" tf:"region"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+	Region    string `json:"region" tf:"region"`
 }
 
 type FloatingIPStatus struct {

@@ -19,14 +19,14 @@ type ApiManagementProductPolicy struct {
 }
 
 type ApiManagementProductPolicySpec struct {
-	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
-	ProductID         string `json:"productID" tf:"product_id"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApiManagementName string                    `json:"apiManagementName" tf:"api_management_name"`
+	ProductID         string                    `json:"productID" tf:"product_id"`
+	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	XmlContent string `json:"xmlContent,omitempty" tf:"xml_content,omitempty"`
 	// +optional
-	XmlLink     string                    `json:"xmlLink,omitempty" tf:"xml_link,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	XmlLink string `json:"xmlLink,omitempty" tf:"xml_link,omitempty"`
 }
 
 type ApiManagementProductPolicyStatus struct {

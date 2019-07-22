@@ -19,6 +19,7 @@ type Eip struct {
 }
 
 type EipSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AssociateWithPrivateIP string `json:"associateWithPrivateIP,omitempty" tf:"associate_with_private_ip,omitempty"`
 	// +optional
@@ -30,8 +31,7 @@ type EipSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Vpc         bool                      `json:"vpc,omitempty" tf:"vpc,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Vpc bool `json:"vpc,omitempty" tf:"vpc,omitempty"`
 }
 
 type EipStatus struct {

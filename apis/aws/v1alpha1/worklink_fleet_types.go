@@ -32,6 +32,7 @@ type WorklinkFleetSpecNetwork struct {
 }
 
 type WorklinkFleetSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AuditStreamArn string `json:"auditStreamArn,omitempty" tf:"audit_stream_arn,omitempty"`
 	// +optional
@@ -46,8 +47,7 @@ type WorklinkFleetSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Network []WorklinkFleetSpecNetwork `json:"network,omitempty" tf:"network,omitempty"`
 	// +optional
-	OptimizeForEndUserLocation bool                      `json:"optimizeForEndUserLocation,omitempty" tf:"optimize_for_end_user_location,omitempty"`
-	ProviderRef                core.LocalObjectReference `json:"providerRef" tf:"-"`
+	OptimizeForEndUserLocation bool `json:"optimizeForEndUserLocation,omitempty" tf:"optimize_for_end_user_location,omitempty"`
 }
 
 type WorklinkFleetStatus struct {

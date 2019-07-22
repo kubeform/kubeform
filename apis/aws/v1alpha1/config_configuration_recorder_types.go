@@ -29,13 +29,13 @@ type ConfigConfigurationRecorderSpecRecordingGroup struct {
 }
 
 type ConfigConfigurationRecorderSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RecordingGroup []ConfigConfigurationRecorderSpecRecordingGroup `json:"recordingGroup,omitempty" tf:"recording_group,omitempty"`
 	RoleArn        string                                          `json:"roleArn" tf:"role_arn"`
-	ProviderRef    core.LocalObjectReference                       `json:"providerRef" tf:"-"`
 }
 
 type ConfigConfigurationRecorderStatus struct {

@@ -19,6 +19,8 @@ type Certificate struct {
 }
 
 type CertificateSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	CertificateChain string `json:"certificateChain,omitempty" tf:"certificate_chain,omitempty"`
 	// +optional
@@ -28,11 +30,8 @@ type CertificateSpec struct {
 	LeafCertificate string `json:"leafCertificate,omitempty" tf:"leaf_certificate,omitempty"`
 	Name            string `json:"name" tf:"name"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	PrivateKey *core.LocalObjectReference `json:"privateKey,omitempty" tf:"private_key,omitempty"`
 	// +optional
-	Type        string                    `json:"type,omitempty" tf:"type,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type CertificateStatus struct {

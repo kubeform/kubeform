@@ -34,21 +34,20 @@ type MysqlServerSpecStorageProfile struct {
 }
 
 type MysqlServerSpec struct {
-	AdministratorLogin string `json:"administratorLogin" tf:"administrator_login"`
-	// Sensitive Data. Provide secret name which contains one value only
-	AdministratorLoginPassword *core.LocalObjectReference `json:"administratorLoginPassword" tf:"administrator_login_password"`
-	Location                   string                     `json:"location" tf:"location"`
-	Name                       string                     `json:"name" tf:"name"`
-	ResourceGroupName          string                     `json:"resourceGroupName" tf:"resource_group_name"`
+	Secret             *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef        core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	AdministratorLogin string                     `json:"administratorLogin" tf:"administrator_login"`
+	Location           string                     `json:"location" tf:"location"`
+	Name               string                     `json:"name" tf:"name"`
+	ResourceGroupName  string                     `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku            []MysqlServerSpecSku `json:"sku" tf:"sku"`
 	SslEnforcement string               `json:"sslEnforcement" tf:"ssl_enforcement"`
 	// +kubebuilder:validation:MaxItems=1
 	StorageProfile []MysqlServerSpecStorageProfile `json:"storageProfile" tf:"storage_profile"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	Version     string                    `json:"version" tf:"version"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags    map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Version string            `json:"version" tf:"version"`
 }
 
 type MysqlServerStatus struct {

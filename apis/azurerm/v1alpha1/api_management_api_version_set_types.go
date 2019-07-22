@@ -19,7 +19,8 @@ type ApiManagementAPIVersionSet struct {
 }
 
 type ApiManagementAPIVersionSetSpec struct {
-	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApiManagementName string                    `json:"apiManagementName" tf:"api_management_name"`
 	// +optional
 	Description       string `json:"description,omitempty" tf:"description,omitempty"`
 	DisplayName       string `json:"displayName" tf:"display_name"`
@@ -28,9 +29,8 @@ type ApiManagementAPIVersionSetSpec struct {
 	// +optional
 	VersionHeaderName string `json:"versionHeaderName,omitempty" tf:"version_header_name,omitempty"`
 	// +optional
-	VersionQueryName string                    `json:"versionQueryName,omitempty" tf:"version_query_name,omitempty"`
-	VersioningScheme string                    `json:"versioningScheme" tf:"versioning_scheme"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VersionQueryName string `json:"versionQueryName,omitempty" tf:"version_query_name,omitempty"`
+	VersioningScheme string `json:"versioningScheme" tf:"versioning_scheme"`
 }
 
 type ApiManagementAPIVersionSetStatus struct {

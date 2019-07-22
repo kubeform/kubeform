@@ -50,7 +50,8 @@ type GameliftFleetSpecRuntimeConfiguration struct {
 }
 
 type GameliftFleetSpec struct {
-	BuildID string `json:"buildID" tf:"build_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	BuildID     string                    `json:"buildID" tf:"build_id"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -68,7 +69,6 @@ type GameliftFleetSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RuntimeConfiguration []GameliftFleetSpecRuntimeConfiguration `json:"runtimeConfiguration,omitempty" tf:"runtime_configuration,omitempty"`
-	ProviderRef          core.LocalObjectReference               `json:"providerRef" tf:"-"`
 }
 
 type GameliftFleetStatus struct {

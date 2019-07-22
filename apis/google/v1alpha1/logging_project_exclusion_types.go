@@ -19,6 +19,7 @@ type LoggingProjectExclusion struct {
 }
 
 type LoggingProjectExclusionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -26,8 +27,7 @@ type LoggingProjectExclusionSpec struct {
 	Filter   string `json:"filter" tf:"filter"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type LoggingProjectExclusionStatus struct {

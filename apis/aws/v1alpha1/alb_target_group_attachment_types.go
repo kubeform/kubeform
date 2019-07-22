@@ -19,13 +19,13 @@ type AlbTargetGroupAttachment struct {
 }
 
 type AlbTargetGroupAttachmentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	// +optional
-	Port           int                       `json:"port,omitempty" tf:"port,omitempty"`
-	TargetGroupArn string                    `json:"targetGroupArn" tf:"target_group_arn"`
-	TargetID       string                    `json:"targetID" tf:"target_id"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Port           int    `json:"port,omitempty" tf:"port,omitempty"`
+	TargetGroupArn string `json:"targetGroupArn" tf:"target_group_arn"`
+	TargetID       string `json:"targetID" tf:"target_id"`
 }
 
 type AlbTargetGroupAttachmentStatus struct {

@@ -31,6 +31,7 @@ type OpsworksMemcachedLayerSpecEbsVolume struct {
 }
 
 type OpsworksMemcachedLayerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllocatedMemory int `json:"allocatedMemory,omitempty" tf:"allocated_memory,omitempty"`
 	// +optional
@@ -74,8 +75,7 @@ type OpsworksMemcachedLayerSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	SystemPackages []string `json:"systemPackages,omitempty" tf:"system_packages,omitempty"`
 	// +optional
-	UseEbsOptimizedInstances bool                      `json:"useEbsOptimizedInstances,omitempty" tf:"use_ebs_optimized_instances,omitempty"`
-	ProviderRef              core.LocalObjectReference `json:"providerRef" tf:"-"`
+	UseEbsOptimizedInstances bool `json:"useEbsOptimizedInstances,omitempty" tf:"use_ebs_optimized_instances,omitempty"`
 }
 
 type OpsworksMemcachedLayerStatus struct {

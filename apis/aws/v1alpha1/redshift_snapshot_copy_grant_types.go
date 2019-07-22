@@ -19,12 +19,12 @@ type RedshiftSnapshotCopyGrant struct {
 }
 
 type RedshiftSnapshotCopyGrantSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	KmsKeyID              string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	SnapshotCopyGrantName string `json:"snapshotCopyGrantName" tf:"snapshot_copy_grant_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type RedshiftSnapshotCopyGrantStatus struct {

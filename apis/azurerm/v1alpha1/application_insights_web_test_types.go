@@ -19,8 +19,9 @@ type ApplicationInsightsWebTest struct {
 }
 
 type ApplicationInsightsWebTestSpec struct {
-	ApplicationInsightsID string `json:"applicationInsightsID" tf:"application_insights_id"`
-	Configuration         string `json:"configuration" tf:"configuration"`
+	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApplicationInsightsID string                    `json:"applicationInsightsID" tf:"application_insights_id"`
+	Configuration         string                    `json:"configuration" tf:"configuration"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -38,8 +39,7 @@ type ApplicationInsightsWebTestSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Timeout     int                       `json:"timeout,omitempty" tf:"timeout,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Timeout int `json:"timeout,omitempty" tf:"timeout,omitempty"`
 }
 
 type ApplicationInsightsWebTestStatus struct {

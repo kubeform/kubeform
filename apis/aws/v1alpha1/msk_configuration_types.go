@@ -19,13 +19,13 @@ type MskConfiguration struct {
 }
 
 type MskConfigurationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
-	KafkaVersions    []string                  `json:"kafkaVersions" tf:"kafka_versions"`
-	Name             string                    `json:"name" tf:"name"`
-	ServerProperties string                    `json:"serverProperties" tf:"server_properties"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	KafkaVersions    []string `json:"kafkaVersions" tf:"kafka_versions"`
+	Name             string   `json:"name" tf:"name"`
+	ServerProperties string   `json:"serverProperties" tf:"server_properties"`
 }
 
 type MskConfigurationStatus struct {

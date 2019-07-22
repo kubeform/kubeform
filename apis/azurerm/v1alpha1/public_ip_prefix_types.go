@@ -19,8 +19,9 @@ type PublicIPPrefix struct {
 }
 
 type PublicIPPrefixSpec struct {
-	Location string `json:"location" tf:"location"`
-	Name     string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Location    string                    `json:"location" tf:"location"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	PrefixLength      int    `json:"prefixLength,omitempty" tf:"prefix_length,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
@@ -30,8 +31,7 @@ type PublicIPPrefixSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Zones       []string                  `json:"zones,omitempty" tf:"zones,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zones []string `json:"zones,omitempty" tf:"zones,omitempty"`
 }
 
 type PublicIPPrefixStatus struct {

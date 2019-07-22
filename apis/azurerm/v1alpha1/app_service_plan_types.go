@@ -38,6 +38,7 @@ type AppServicePlanSpecSku struct {
 }
 
 type AppServicePlanSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AppServiceEnvironmentID string `json:"appServiceEnvironmentID,omitempty" tf:"app_service_environment_id,omitempty"`
 	// +optional
@@ -60,8 +61,7 @@ type AppServicePlanSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Sku []AppServicePlanSpecSku `json:"sku" tf:"sku"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type AppServicePlanStatus struct {

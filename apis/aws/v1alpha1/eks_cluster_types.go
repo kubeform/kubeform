@@ -32,6 +32,7 @@ type EksClusterSpecVpcConfig struct {
 }
 
 type EksClusterSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	EnabledClusterLogTypes []string `json:"enabledClusterLogTypes,omitempty" tf:"enabled_cluster_log_types,omitempty"`
@@ -41,8 +42,7 @@ type EksClusterSpec struct {
 	Version string `json:"version,omitempty" tf:"version,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
-	VpcConfig   []EksClusterSpecVpcConfig `json:"vpcConfig" tf:"vpc_config"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcConfig []EksClusterSpecVpcConfig `json:"vpcConfig" tf:"vpc_config"`
 }
 
 type EksClusterStatus struct {

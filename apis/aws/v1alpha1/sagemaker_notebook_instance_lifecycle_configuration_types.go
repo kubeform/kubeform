@@ -19,13 +19,13 @@ type SagemakerNotebookInstanceLifecycleConfiguration struct {
 }
 
 type SagemakerNotebookInstanceLifecycleConfigurationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	OnCreate string `json:"onCreate,omitempty" tf:"on_create,omitempty"`
 	// +optional
-	OnStart     string                    `json:"onStart,omitempty" tf:"on_start,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	OnStart string `json:"onStart,omitempty" tf:"on_start,omitempty"`
 }
 
 type SagemakerNotebookInstanceLifecycleConfigurationStatus struct {

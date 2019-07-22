@@ -19,11 +19,11 @@ type NatGateway struct {
 }
 
 type NatGatewaySpec struct {
-	AllocationID string `json:"allocationID" tf:"allocation_id"`
-	SubnetID     string `json:"subnetID" tf:"subnet_id"`
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AllocationID string                    `json:"allocationID" tf:"allocation_id"`
+	SubnetID     string                    `json:"subnetID" tf:"subnet_id"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type NatGatewayStatus struct {

@@ -19,6 +19,7 @@ type Project struct {
 }
 
 type ProjectSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -28,8 +29,7 @@ type ProjectSpec struct {
 	Purpose string `json:"purpose,omitempty" tf:"purpose,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Resources   []string                  `json:"resources,omitempty" tf:"resources,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Resources []string `json:"resources,omitempty" tf:"resources,omitempty"`
 }
 
 type ProjectStatus struct {

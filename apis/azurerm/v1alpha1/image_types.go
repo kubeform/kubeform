@@ -47,6 +47,7 @@ type ImageSpecOsDisk struct {
 }
 
 type ImageSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DataDisk []ImageSpecDataDisk `json:"dataDisk,omitempty" tf:"data_disk,omitempty"`
 	Location string              `json:"location" tf:"location"`
@@ -60,8 +61,7 @@ type ImageSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	ZoneResilient bool                      `json:"zoneResilient,omitempty" tf:"zone_resilient,omitempty"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ZoneResilient bool `json:"zoneResilient,omitempty" tf:"zone_resilient,omitempty"`
 }
 
 type ImageStatus struct {

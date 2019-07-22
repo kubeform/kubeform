@@ -19,12 +19,12 @@ type DefaultSubnet struct {
 }
 
 type DefaultSubnetSpec struct {
-	AvailabilityZone string `json:"availabilityZone" tf:"availability_zone"`
+	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AvailabilityZone string                    `json:"availabilityZone" tf:"availability_zone"`
 	// +optional
 	MapPublicIPOnLaunch bool `json:"mapPublicIPOnLaunch,omitempty" tf:"map_public_ip_on_launch,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type DefaultSubnetStatus struct {

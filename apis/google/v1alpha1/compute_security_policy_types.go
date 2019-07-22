@@ -43,6 +43,7 @@ type ComputeSecurityPolicySpecRule struct {
 }
 
 type ComputeSecurityPolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
@@ -50,8 +51,7 @@ type ComputeSecurityPolicySpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Rule        []ComputeSecurityPolicySpecRule `json:"rule,omitempty" tf:"rule,omitempty"`
-	ProviderRef core.LocalObjectReference       `json:"providerRef" tf:"-"`
+	Rule []ComputeSecurityPolicySpecRule `json:"rule,omitempty" tf:"rule,omitempty"`
 }
 
 type ComputeSecurityPolicyStatus struct {

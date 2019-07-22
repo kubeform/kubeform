@@ -26,6 +26,7 @@ type RdsClusterParameterGroupSpecParameter struct {
 }
 
 type RdsClusterParameterGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Family      string `json:"family" tf:"family"`
@@ -37,8 +38,7 @@ type RdsClusterParameterGroupSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Parameter []RdsClusterParameterGroupSpecParameter `json:"parameter,omitempty" tf:"parameter,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type RdsClusterParameterGroupStatus struct {

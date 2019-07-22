@@ -19,6 +19,7 @@ type DataLakeStore struct {
 }
 
 type DataLakeStoreSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	EncryptionState string `json:"encryptionState,omitempty" tf:"encryption_state,omitempty"`
 	// +optional
@@ -33,8 +34,7 @@ type DataLakeStoreSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Tier        string                    `json:"tier,omitempty" tf:"tier,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tier string `json:"tier,omitempty" tf:"tier,omitempty"`
 }
 
 type DataLakeStoreStatus struct {

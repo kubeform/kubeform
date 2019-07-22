@@ -19,14 +19,11 @@ type PinpointBaiduChannel struct {
 }
 
 type PinpointBaiduChannelSpec struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	ApiKey        *core.LocalObjectReference `json:"apiKey" tf:"api_key"`
+	Secret        *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef   core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	ApplicationID string                     `json:"applicationID" tf:"application_id"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
-	// Sensitive Data. Provide secret name which contains one value only
-	SecretKey   *core.LocalObjectReference `json:"secretKey" tf:"secret_key"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type PinpointBaiduChannelStatus struct {

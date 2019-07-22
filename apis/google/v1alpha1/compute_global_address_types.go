@@ -19,6 +19,7 @@ type ComputeGlobalAddress struct {
 }
 
 type ComputeGlobalAddressSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AddressType string `json:"addressType,omitempty" tf:"address_type,omitempty"`
 	// +optional
@@ -39,8 +40,7 @@ type ComputeGlobalAddressSpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	// Deprecated
-	Purpose     string                    `json:"purpose,omitempty" tf:"purpose,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Purpose string `json:"purpose,omitempty" tf:"purpose,omitempty"`
 }
 
 type ComputeGlobalAddressStatus struct {

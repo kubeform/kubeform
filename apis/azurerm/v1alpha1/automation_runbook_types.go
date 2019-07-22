@@ -33,7 +33,8 @@ type AutomationRunbookSpecPublishContentLink struct {
 }
 
 type AutomationRunbookSpec struct {
-	AccountName string `json:"accountName" tf:"account_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AccountName string                    `json:"accountName" tf:"account_name"`
 	// +optional
 	Content string `json:"content,omitempty" tf:"content,omitempty"`
 	// +optional
@@ -47,8 +48,7 @@ type AutomationRunbookSpec struct {
 	ResourceGroupName  string                                    `json:"resourceGroupName" tf:"resource_group_name"`
 	RunbookType        string                                    `json:"runbookType" tf:"runbook_type"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type AutomationRunbookStatus struct {

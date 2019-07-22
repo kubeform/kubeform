@@ -19,15 +19,14 @@ type ApiGatewayAPIKey struct {
 }
 
 type ApiGatewayAPIKeySpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	Enabled bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	Name    string `json:"name" tf:"name"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Value       *core.LocalObjectReference `json:"value,omitempty" tf:"value,omitempty"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type ApiGatewayAPIKeyStatus struct {

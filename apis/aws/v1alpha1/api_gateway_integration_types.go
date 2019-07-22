@@ -19,6 +19,7 @@ type ApiGatewayIntegration struct {
 }
 
 type ApiGatewayIntegrationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	CacheKeyParameters []string `json:"cacheKeyParameters,omitempty" tf:"cache_key_parameters,omitempty"`
@@ -47,8 +48,7 @@ type ApiGatewayIntegrationSpec struct {
 	TimeoutMilliseconds int    `json:"timeoutMilliseconds,omitempty" tf:"timeout_milliseconds,omitempty"`
 	Type                string `json:"type" tf:"type"`
 	// +optional
-	Uri         string                    `json:"uri,omitempty" tf:"uri,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Uri string `json:"uri,omitempty" tf:"uri,omitempty"`
 }
 
 type ApiGatewayIntegrationStatus struct {

@@ -19,7 +19,8 @@ type EbsVolume struct {
 }
 
 type EbsVolumeSpec struct {
-	AvailabilityZone string `json:"availabilityZone" tf:"availability_zone"`
+	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AvailabilityZone string                    `json:"availabilityZone" tf:"availability_zone"`
 	// +optional
 	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
 	// +optional
@@ -33,8 +34,7 @@ type EbsVolumeSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Type        string                    `json:"type,omitempty" tf:"type,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type EbsVolumeStatus struct {

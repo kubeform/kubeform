@@ -19,8 +19,8 @@ type AzureadServicePrincipal struct {
 }
 
 type AzureadServicePrincipalSpec struct {
-	ApplicationID string                    `json:"applicationID" tf:"application_id"`
 	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApplicationID string                    `json:"applicationID" tf:"application_id"`
 }
 
 type AzureadServicePrincipalStatus struct {

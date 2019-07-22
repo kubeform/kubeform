@@ -55,6 +55,7 @@ type RecoveryServicesProtectionPolicyVmSpecRetentionYearly struct {
 }
 
 type RecoveryServicesProtectionPolicyVmSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	Backup            []RecoveryServicesProtectionPolicyVmSpecBackup `json:"backup" tf:"backup"`
 	Name              string                                         `json:"name" tf:"name"`
@@ -75,8 +76,7 @@ type RecoveryServicesProtectionPolicyVmSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Timezone    string                    `json:"timezone,omitempty" tf:"timezone,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Timezone string `json:"timezone,omitempty" tf:"timezone,omitempty"`
 }
 
 type RecoveryServicesProtectionPolicyVmStatus struct {

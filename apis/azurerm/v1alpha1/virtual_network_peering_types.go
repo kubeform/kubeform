@@ -19,6 +19,7 @@ type VirtualNetworkPeering struct {
 }
 
 type VirtualNetworkPeeringSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllowForwardedTraffic bool `json:"allowForwardedTraffic,omitempty" tf:"allow_forwarded_traffic,omitempty"`
 	// +optional
@@ -29,9 +30,8 @@ type VirtualNetworkPeeringSpec struct {
 	RemoteVirtualNetworkID    string `json:"remoteVirtualNetworkID" tf:"remote_virtual_network_id"`
 	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	UseRemoteGateways  bool                      `json:"useRemoteGateways,omitempty" tf:"use_remote_gateways,omitempty"`
-	VirtualNetworkName string                    `json:"virtualNetworkName" tf:"virtual_network_name"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	UseRemoteGateways  bool   `json:"useRemoteGateways,omitempty" tf:"use_remote_gateways,omitempty"`
+	VirtualNetworkName string `json:"virtualNetworkName" tf:"virtual_network_name"`
 }
 
 type VirtualNetworkPeeringStatus struct {

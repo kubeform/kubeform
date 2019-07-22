@@ -49,11 +49,11 @@ type ContainerServiceSpecMasterProfile struct {
 
 type ContainerServiceSpecServicePrincipal struct {
 	ClientID string `json:"clientID" tf:"client_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret *core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
 }
 
 type ContainerServiceSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	AgentPoolProfile []ContainerServiceSpecAgentPoolProfile `json:"agentPoolProfile" tf:"agent_pool_profile"`
@@ -75,8 +75,7 @@ type ContainerServiceSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	ServicePrincipal []ContainerServiceSpecServicePrincipal `json:"servicePrincipal,omitempty" tf:"service_principal,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type ContainerServiceStatus struct {

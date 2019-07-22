@@ -19,6 +19,7 @@ type DmsReplicationTask struct {
 }
 
 type DmsReplicationTaskSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	CdcStartTime           string `json:"cdcStartTime,omitempty" tf:"cdc_start_time,omitempty"`
 	MigrationType          string `json:"migrationType" tf:"migration_type"`
@@ -29,9 +30,8 @@ type DmsReplicationTaskSpec struct {
 	SourceEndpointArn       string `json:"sourceEndpointArn" tf:"source_endpoint_arn"`
 	TableMappings           string `json:"tableMappings" tf:"table_mappings"`
 	// +optional
-	Tags              map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	TargetEndpointArn string                    `json:"targetEndpointArn" tf:"target_endpoint_arn"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags              map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	TargetEndpointArn string            `json:"targetEndpointArn" tf:"target_endpoint_arn"`
 }
 
 type DmsReplicationTaskStatus struct {

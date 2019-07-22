@@ -26,6 +26,7 @@ type DevTestVirtualNetworkSpecSubnet struct {
 }
 
 type DevTestVirtualNetworkSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description       string `json:"description,omitempty" tf:"description,omitempty"`
 	LabName           string `json:"labName" tf:"lab_name"`
@@ -35,8 +36,7 @@ type DevTestVirtualNetworkSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Subnet []DevTestVirtualNetworkSpecSubnet `json:"subnet,omitempty" tf:"subnet,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type DevTestVirtualNetworkStatus struct {

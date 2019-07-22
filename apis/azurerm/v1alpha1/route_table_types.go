@@ -27,6 +27,7 @@ type RouteTableSpecRoute struct {
 }
 
 type RouteTableSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DisableBGPRoutePropagation bool   `json:"disableBGPRoutePropagation,omitempty" tf:"disable_bgp_route_propagation,omitempty"`
 	Location                   string `json:"location" tf:"location"`
@@ -35,8 +36,7 @@ type RouteTableSpec struct {
 	// +optional
 	Route []RouteTableSpecRoute `json:"route,omitempty" tf:"route,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type RouteTableStatus struct {

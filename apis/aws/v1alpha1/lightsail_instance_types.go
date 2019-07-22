@@ -19,17 +19,17 @@ type LightsailInstance struct {
 }
 
 type LightsailInstanceSpec struct {
-	AvailabilityZone string `json:"availabilityZone" tf:"availability_zone"`
-	BlueprintID      string `json:"blueprintID" tf:"blueprint_id"`
-	BundleID         string `json:"bundleID" tf:"bundle_id"`
+	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AvailabilityZone string                    `json:"availabilityZone" tf:"availability_zone"`
+	BlueprintID      string                    `json:"blueprintID" tf:"blueprint_id"`
+	BundleID         string                    `json:"bundleID" tf:"bundle_id"`
 	// +optional
 	KeyPairName string `json:"keyPairName,omitempty" tf:"key_pair_name,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	UserData    string                    `json:"userData,omitempty" tf:"user_data,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	UserData string `json:"userData,omitempty" tf:"user_data,omitempty"`
 }
 
 type LightsailInstanceStatus struct {

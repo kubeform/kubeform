@@ -19,6 +19,7 @@ type ServicebusTopicAuthorizationRule struct {
 }
 
 type ServicebusTopicAuthorizationRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Listen bool `json:"listen,omitempty" tf:"listen,omitempty"`
 	// +optional
@@ -27,9 +28,8 @@ type ServicebusTopicAuthorizationRuleSpec struct {
 	NamespaceName     string `json:"namespaceName" tf:"namespace_name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Send        bool                      `json:"send,omitempty" tf:"send,omitempty"`
-	TopicName   string                    `json:"topicName" tf:"topic_name"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Send      bool   `json:"send,omitempty" tf:"send,omitempty"`
+	TopicName string `json:"topicName" tf:"topic_name"`
 }
 
 type ServicebusTopicAuthorizationRuleStatus struct {

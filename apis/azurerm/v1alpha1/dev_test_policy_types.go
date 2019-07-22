@@ -19,6 +19,7 @@ type DevTestPolicy struct {
 }
 
 type DevTestPolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description   string `json:"description,omitempty" tf:"description,omitempty"`
 	EvaluatorType string `json:"evaluatorType" tf:"evaluator_type"`
@@ -29,9 +30,8 @@ type DevTestPolicySpec struct {
 	PolicySetName     string `json:"policySetName" tf:"policy_set_name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	Threshold   string                    `json:"threshold" tf:"threshold"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags      map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Threshold string            `json:"threshold" tf:"threshold"`
 }
 
 type DevTestPolicyStatus struct {

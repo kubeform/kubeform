@@ -60,6 +60,7 @@ type DynamodbTableSpecTtl struct {
 }
 
 type DynamodbTableSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:UniqueItems=true
 	Attribute []DynamodbTableSpecAttribute `json:"attribute" tf:"attribute"`
 	// +optional
@@ -92,8 +93,7 @@ type DynamodbTableSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Ttl []DynamodbTableSpecTtl `json:"ttl,omitempty" tf:"ttl,omitempty"`
 	// +optional
-	WriteCapacity int                       `json:"writeCapacity,omitempty" tf:"write_capacity,omitempty"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	WriteCapacity int `json:"writeCapacity,omitempty" tf:"write_capacity,omitempty"`
 }
 
 type DynamodbTableStatus struct {

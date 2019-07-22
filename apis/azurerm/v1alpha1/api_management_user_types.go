@@ -19,7 +19,9 @@ type ApiManagementUser struct {
 }
 
 type ApiManagementUserSpec struct {
-	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
+	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ApiManagementName string                     `json:"apiManagementName" tf:"api_management_name"`
 	// +optional
 	Confirmation string `json:"confirmation,omitempty" tf:"confirmation,omitempty"`
 	Email        string `json:"email" tf:"email"`
@@ -28,13 +30,10 @@ type ApiManagementUserSpec struct {
 	// +optional
 	Note string `json:"note,omitempty" tf:"note,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password          *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
-	ResourceGroupName string                     `json:"resourceGroupName" tf:"resource_group_name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	State       string                    `json:"state,omitempty" tf:"state,omitempty"`
-	UserID      string                    `json:"userID" tf:"user_id"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	State  string `json:"state,omitempty" tf:"state,omitempty"`
+	UserID string `json:"userID" tf:"user_id"`
 }
 
 type ApiManagementUserStatus struct {

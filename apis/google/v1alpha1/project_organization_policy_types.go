@@ -54,6 +54,7 @@ type ProjectOrganizationPolicySpecRestorePolicy struct {
 }
 
 type ProjectOrganizationPolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	BooleanPolicy []ProjectOrganizationPolicySpecBooleanPolicy `json:"booleanPolicy,omitempty" tf:"boolean_policy,omitempty"`
@@ -66,8 +67,7 @@ type ProjectOrganizationPolicySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	RestorePolicy []ProjectOrganizationPolicySpecRestorePolicy `json:"restorePolicy,omitempty" tf:"restore_policy,omitempty"`
 	// +optional
-	Version     int                       `json:"version,omitempty" tf:"version,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Version int `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type ProjectOrganizationPolicyStatus struct {

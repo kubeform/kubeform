@@ -21,8 +21,9 @@ type Stackscript struct {
 type StackscriptSpecUserDefinedFields struct{}
 
 type StackscriptSpec struct {
-	Description string   `json:"description" tf:"description"`
-	Images      []string `json:"images" tf:"images"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Description string                    `json:"description" tf:"description"`
+	Images      []string                  `json:"images" tf:"images"`
 	// +optional
 	IsPublic bool   `json:"isPublic,omitempty" tf:"is_public,omitempty"`
 	Label    string `json:"label" tf:"label"`
@@ -31,7 +32,6 @@ type StackscriptSpec struct {
 	Script  string `json:"script" tf:"script"`
 	// +optional
 	UserDefinedFields []StackscriptSpecUserDefinedFields `json:"userDefinedFields,omitempty" tf:"user_defined_fields,omitempty"`
-	ProviderRef       core.LocalObjectReference          `json:"providerRef" tf:"-"`
 }
 
 type StackscriptStatus struct {

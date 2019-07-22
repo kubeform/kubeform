@@ -19,9 +19,9 @@ type ShieldProtection struct {
 }
 
 type ShieldProtectionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	Name        string                    `json:"name" tf:"name"`
 	ResourceArn string                    `json:"resourceArn" tf:"resource_arn"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ShieldProtectionStatus struct {

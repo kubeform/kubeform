@@ -19,11 +19,11 @@ type ProjectIamMember struct {
 }
 
 type ProjectIamMemberSpec struct {
-	Member string `json:"member" tf:"member"`
-	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	Role        string                    `json:"role" tf:"role"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Member      string                    `json:"member" tf:"member"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Role    string `json:"role" tf:"role"`
 }
 
 type ProjectIamMemberStatus struct {

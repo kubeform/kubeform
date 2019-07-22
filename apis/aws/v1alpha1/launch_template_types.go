@@ -163,6 +163,7 @@ type LaunchTemplateSpecTagSpecifications struct {
 }
 
 type LaunchTemplateSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	BlockDeviceMappings []LaunchTemplateSpecBlockDeviceMappings `json:"blockDeviceMappings,omitempty" tf:"block_device_mappings,omitempty"`
 	// +optional
@@ -226,8 +227,7 @@ type LaunchTemplateSpec struct {
 	UserData string `json:"userData,omitempty" tf:"user_data,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	VpcSecurityGroupIDS []string                  `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
-	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcSecurityGroupIDS []string `json:"vpcSecurityGroupIDS,omitempty" tf:"vpc_security_group_ids,omitempty"`
 }
 
 type LaunchTemplateStatus struct {

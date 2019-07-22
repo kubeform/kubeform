@@ -19,6 +19,7 @@ type S3AccountPublicAccessBlock struct {
 }
 
 type S3AccountPublicAccessBlockSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AccountID string `json:"accountID,omitempty" tf:"account_id,omitempty"`
 	// +optional
@@ -28,8 +29,7 @@ type S3AccountPublicAccessBlockSpec struct {
 	// +optional
 	IgnorePublicAcls bool `json:"ignorePublicAcls,omitempty" tf:"ignore_public_acls,omitempty"`
 	// +optional
-	RestrictPublicBuckets bool                      `json:"restrictPublicBuckets,omitempty" tf:"restrict_public_buckets,omitempty"`
-	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RestrictPublicBuckets bool `json:"restrictPublicBuckets,omitempty" tf:"restrict_public_buckets,omitempty"`
 }
 
 type S3AccountPublicAccessBlockStatus struct {

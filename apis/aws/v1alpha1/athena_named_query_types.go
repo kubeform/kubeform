@@ -19,12 +19,12 @@ type AthenaNamedQuery struct {
 }
 
 type AthenaNamedQuerySpec struct {
-	Database string `json:"database" tf:"database"`
-	// +optional
-	Description string                    `json:"description,omitempty" tf:"description,omitempty"`
-	Name        string                    `json:"name" tf:"name"`
-	Query       string                    `json:"query" tf:"query"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Database    string                    `json:"database" tf:"database"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	Query       string `json:"query" tf:"query"`
 }
 
 type AthenaNamedQueryStatus struct {

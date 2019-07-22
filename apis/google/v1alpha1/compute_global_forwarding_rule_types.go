@@ -19,6 +19,7 @@ type ComputeGlobalForwardingRule struct {
 }
 
 type ComputeGlobalForwardingRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -34,9 +35,8 @@ type ComputeGlobalForwardingRuleSpec struct {
 	// +optional
 	PortRange string `json:"portRange,omitempty" tf:"port_range,omitempty"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	Target      string                    `json:"target" tf:"target"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Target  string `json:"target" tf:"target"`
 }
 
 type ComputeGlobalForwardingRuleStatus struct {

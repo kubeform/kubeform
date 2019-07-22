@@ -19,14 +19,14 @@ type CloudhsmV2Hsm struct {
 }
 
 type CloudhsmV2HsmSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	ClusterID        string `json:"clusterID" tf:"cluster_id"`
 	// +optional
 	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional
-	SubnetID    string                    `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
 }
 
 type CloudhsmV2HsmStatus struct {

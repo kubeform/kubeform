@@ -19,11 +19,11 @@ type SesDomainMailFrom struct {
 }
 
 type SesDomainMailFromSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
-	BehaviorOnMxFailure string                    `json:"behaviorOnMxFailure,omitempty" tf:"behavior_on_mx_failure,omitempty"`
-	Domain              string                    `json:"domain" tf:"domain"`
-	MailFromDomain      string                    `json:"mailFromDomain" tf:"mail_from_domain"`
-	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
+	BehaviorOnMxFailure string `json:"behaviorOnMxFailure,omitempty" tf:"behavior_on_mx_failure,omitempty"`
+	Domain              string `json:"domain" tf:"domain"`
+	MailFromDomain      string `json:"mailFromDomain" tf:"mail_from_domain"`
 }
 
 type SesDomainMailFromStatus struct {

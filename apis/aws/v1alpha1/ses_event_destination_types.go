@@ -34,6 +34,7 @@ type SesEventDestinationSpecSnsDestination struct {
 }
 
 type SesEventDestinationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	CloudwatchDestination []SesEventDestinationSpecCloudwatchDestination `json:"cloudwatchDestination,omitempty" tf:"cloudwatch_destination,omitempty"`
@@ -51,7 +52,6 @@ type SesEventDestinationSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	SnsDestination []SesEventDestinationSpecSnsDestination `json:"snsDestination,omitempty" tf:"sns_destination,omitempty"`
-	ProviderRef    core.LocalObjectReference               `json:"providerRef" tf:"-"`
 }
 
 type SesEventDestinationStatus struct {

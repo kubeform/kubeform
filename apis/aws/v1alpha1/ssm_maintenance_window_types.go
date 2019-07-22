@@ -19,6 +19,7 @@ type SsmMaintenanceWindow struct {
 }
 
 type SsmMaintenanceWindowSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllowUnassociatedTargets bool `json:"allowUnassociatedTargets,omitempty" tf:"allow_unassociated_targets,omitempty"`
 	Cutoff                   int  `json:"cutoff" tf:"cutoff"`
@@ -34,8 +35,7 @@ type SsmMaintenanceWindowSpec struct {
 	// +optional
 	StartDate string `json:"startDate,omitempty" tf:"start_date,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type SsmMaintenanceWindowStatus struct {

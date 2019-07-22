@@ -19,6 +19,7 @@ type ApiGatewayDeployment struct {
 }
 
 type ApiGatewayDeploymentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	RestAPIID   string `json:"restAPIID" tf:"rest_api_id"`
@@ -27,8 +28,7 @@ type ApiGatewayDeploymentSpec struct {
 	// +optional
 	StageName string `json:"stageName,omitempty" tf:"stage_name,omitempty"`
 	// +optional
-	Variables   map[string]string         `json:"variables,omitempty" tf:"variables,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Variables map[string]string `json:"variables,omitempty" tf:"variables,omitempty"`
 }
 
 type ApiGatewayDeploymentStatus struct {

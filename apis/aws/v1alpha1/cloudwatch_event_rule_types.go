@@ -19,6 +19,7 @@ type CloudwatchEventRule struct {
 }
 
 type CloudwatchEventRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -34,8 +35,7 @@ type CloudwatchEventRuleSpec struct {
 	// +optional
 	ScheduleExpression string `json:"scheduleExpression,omitempty" tf:"schedule_expression,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type CloudwatchEventRuleStatus struct {

@@ -28,15 +28,15 @@ type GlobalacceleratorAcceleratorSpecAttributes struct {
 }
 
 type GlobalacceleratorAcceleratorSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Attributes []GlobalacceleratorAcceleratorSpecAttributes `json:"attributes,omitempty" tf:"attributes,omitempty"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	IpAddressType string                    `json:"ipAddressType,omitempty" tf:"ip_address_type,omitempty"`
-	Name          string                    `json:"name" tf:"name"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	IpAddressType string `json:"ipAddressType,omitempty" tf:"ip_address_type,omitempty"`
+	Name          string `json:"name" tf:"name"`
 }
 
 type GlobalacceleratorAcceleratorStatus struct {

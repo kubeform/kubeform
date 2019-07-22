@@ -19,6 +19,7 @@ type ComputeInterconnectAttachment struct {
 }
 
 type ComputeInterconnectAttachmentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description  string `json:"description,omitempty" tf:"description,omitempty"`
 	Interconnect string `json:"interconnect" tf:"interconnect"`
@@ -26,9 +27,8 @@ type ComputeInterconnectAttachmentSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region      string                    `json:"region,omitempty" tf:"region,omitempty"`
-	Router      string                    `json:"router" tf:"router"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	Router string `json:"router" tf:"router"`
 }
 
 type ComputeInterconnectAttachmentStatus struct {

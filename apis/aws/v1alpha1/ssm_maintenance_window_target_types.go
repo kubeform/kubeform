@@ -24,6 +24,7 @@ type SsmMaintenanceWindowTargetSpecTargets struct {
 }
 
 type SsmMaintenanceWindowTargetSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -32,9 +33,8 @@ type SsmMaintenanceWindowTargetSpec struct {
 	OwnerInformation string `json:"ownerInformation,omitempty" tf:"owner_information,omitempty"`
 	ResourceType     string `json:"resourceType" tf:"resource_type"`
 	// +kubebuilder:validation:MaxItems=5
-	Targets     []SsmMaintenanceWindowTargetSpecTargets `json:"targets" tf:"targets"`
-	WindowID    string                                  `json:"windowID" tf:"window_id"`
-	ProviderRef core.LocalObjectReference               `json:"providerRef" tf:"-"`
+	Targets  []SsmMaintenanceWindowTargetSpecTargets `json:"targets" tf:"targets"`
+	WindowID string                                  `json:"windowID" tf:"window_id"`
 }
 
 type SsmMaintenanceWindowTargetStatus struct {

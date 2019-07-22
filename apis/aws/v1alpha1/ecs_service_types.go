@@ -65,6 +65,7 @@ type EcsServiceSpecServiceRegistries struct {
 }
 
 type EcsServiceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Cluster string `json:"cluster,omitempty" tf:"cluster,omitempty"`
 	// +optional
@@ -110,9 +111,8 @@ type EcsServiceSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	ServiceRegistries []EcsServiceSpecServiceRegistries `json:"serviceRegistries,omitempty" tf:"service_registries,omitempty"`
 	// +optional
-	Tags           map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	TaskDefinition string                    `json:"taskDefinition" tf:"task_definition"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags           map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	TaskDefinition string            `json:"taskDefinition" tf:"task_definition"`
 }
 
 type EcsServiceStatus struct {

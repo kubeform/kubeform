@@ -19,10 +19,10 @@ type ServiceAccountIamMember struct {
 }
 
 type ServiceAccountIamMemberSpec struct {
+	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
 	Member           string                    `json:"member" tf:"member"`
 	Role             string                    `json:"role" tf:"role"`
 	ServiceAccountID string                    `json:"serviceAccountID" tf:"service_account_id"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type ServiceAccountIamMemberStatus struct {

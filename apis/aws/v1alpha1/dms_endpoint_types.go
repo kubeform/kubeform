@@ -51,6 +51,8 @@ type DmsEndpointSpecS3Settings struct {
 }
 
 type DmsEndpointSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	CertificateArn string `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
 	// +optional
@@ -66,8 +68,6 @@ type DmsEndpointSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	MongodbSettings []DmsEndpointSpecMongodbSettings `json:"mongodbSettings,omitempty" tf:"mongodb_settings,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
@@ -82,8 +82,7 @@ type DmsEndpointSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Username    string                    `json:"username,omitempty" tf:"username,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type DmsEndpointStatus struct {

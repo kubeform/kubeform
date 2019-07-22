@@ -19,6 +19,7 @@ type EbsSnapshotCopy struct {
 }
 
 type EbsSnapshotCopySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -28,8 +29,7 @@ type EbsSnapshotCopySpec struct {
 	SourceRegion     string `json:"sourceRegion" tf:"source_region"`
 	SourceSnapshotID string `json:"sourceSnapshotID" tf:"source_snapshot_id"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type EbsSnapshotCopyStatus struct {

@@ -20,8 +20,6 @@ type OpsworksStack struct {
 
 type OpsworksStackSpecCustomCookbooksSource struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	Revision string `json:"revision,omitempty" tf:"revision,omitempty"`
 	// +optional
@@ -33,6 +31,8 @@ type OpsworksStackSpecCustomCookbooksSource struct {
 }
 
 type OpsworksStackSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	AgentVersion string `json:"agentVersion,omitempty" tf:"agent_version,omitempty"`
 	// +optional
@@ -72,8 +72,7 @@ type OpsworksStackSpec struct {
 	// +optional
 	UseOpsworksSecurityGroups bool `json:"useOpsworksSecurityGroups,omitempty" tf:"use_opsworks_security_groups,omitempty"`
 	// +optional
-	VpcID       string                    `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
 }
 
 type OpsworksStackStatus struct {

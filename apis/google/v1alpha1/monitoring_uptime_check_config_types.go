@@ -25,8 +25,6 @@ type MonitoringUptimeCheckConfigSpecContentMatchers struct {
 
 type MonitoringUptimeCheckConfigSpecHttpCheckAuthInfo struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
@@ -77,6 +75,8 @@ type MonitoringUptimeCheckConfigSpecTcpCheck struct {
 }
 
 type MonitoringUptimeCheckConfigSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	ContentMatchers []MonitoringUptimeCheckConfigSpecContentMatchers `json:"contentMatchers,omitempty" tf:"content_matchers,omitempty"`
 	DisplayName     string                                           `json:"displayName" tf:"display_name"`
@@ -101,9 +101,8 @@ type MonitoringUptimeCheckConfigSpec struct {
 	SelectedRegions []string `json:"selectedRegions,omitempty" tf:"selected_regions,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	TcpCheck    []MonitoringUptimeCheckConfigSpecTcpCheck `json:"tcpCheck,omitempty" tf:"tcp_check,omitempty"`
-	Timeout     string                                    `json:"timeout" tf:"timeout"`
-	ProviderRef core.LocalObjectReference                 `json:"providerRef" tf:"-"`
+	TcpCheck []MonitoringUptimeCheckConfigSpecTcpCheck `json:"tcpCheck,omitempty" tf:"tcp_check,omitempty"`
+	Timeout  string                                    `json:"timeout" tf:"timeout"`
 }
 
 type MonitoringUptimeCheckConfigStatus struct {

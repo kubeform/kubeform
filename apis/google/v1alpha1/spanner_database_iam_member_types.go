@@ -19,13 +19,13 @@ type SpannerDatabaseIamMember struct {
 }
 
 type SpannerDatabaseIamMemberSpec struct {
-	Database string `json:"database" tf:"database"`
-	Instance string `json:"instance" tf:"instance"`
-	Member   string `json:"member" tf:"member"`
-	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	Role        string                    `json:"role" tf:"role"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Database    string                    `json:"database" tf:"database"`
+	Instance    string                    `json:"instance" tf:"instance"`
+	Member      string                    `json:"member" tf:"member"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Role    string `json:"role" tf:"role"`
 }
 
 type SpannerDatabaseIamMemberStatus struct {

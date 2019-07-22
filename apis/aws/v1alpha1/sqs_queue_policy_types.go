@@ -19,9 +19,9 @@ type SqsQueuePolicy struct {
 }
 
 type SqsQueuePolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	Policy      string                    `json:"policy" tf:"policy"`
 	QueueURL    string                    `json:"queueURL" tf:"queue_url"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type SqsQueuePolicyStatus struct {

@@ -31,6 +31,7 @@ type VirtualNetworkSpecSubnet struct {
 }
 
 type VirtualNetworkSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MinItems=1
 	AddressSpace []string `json:"addressSpace" tf:"address_space"`
 	// +optional
@@ -45,8 +46,7 @@ type VirtualNetworkSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Subnet []VirtualNetworkSpecSubnet `json:"subnet,omitempty" tf:"subnet,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type VirtualNetworkStatus struct {

@@ -19,6 +19,7 @@ type KeyVaultKey struct {
 }
 
 type KeyVaultKeySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Curve   string   `json:"curve,omitempty" tf:"curve,omitempty"`
 	KeyOpts []string `json:"keyOpts" tf:"key_opts"`
@@ -32,8 +33,7 @@ type KeyVaultKeySpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// Deprecated
-	VaultURI    string                    `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VaultURI string `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`
 }
 
 type KeyVaultKeyStatus struct {

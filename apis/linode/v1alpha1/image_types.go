@@ -19,12 +19,12 @@ type Image struct {
 }
 
 type ImageSpec struct {
-	// +optional
-	Description string                    `json:"description,omitempty" tf:"description,omitempty"`
-	DiskID      int                       `json:"diskID" tf:"disk_id"`
-	Label       string                    `json:"label" tf:"label"`
-	LinodeID    int                       `json:"linodeID" tf:"linode_id"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	DiskID      int    `json:"diskID" tf:"disk_id"`
+	Label       string `json:"label" tf:"label"`
+	LinodeID    int    `json:"linodeID" tf:"linode_id"`
 }
 
 type ImageStatus struct {

@@ -24,15 +24,15 @@ type DnsMxRecordSpecRecord struct {
 }
 
 type DnsMxRecordSpec struct {
-	Name string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
 	Record            []DnsMxRecordSpecRecord `json:"record" tf:"record"`
 	ResourceGroupName string                  `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	Ttl         int                       `json:"ttl" tf:"ttl"`
-	ZoneName    string                    `json:"zoneName" tf:"zone_name"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Ttl      int               `json:"ttl" tf:"ttl"`
+	ZoneName string            `json:"zoneName" tf:"zone_name"`
 }
 
 type DnsMxRecordStatus struct {

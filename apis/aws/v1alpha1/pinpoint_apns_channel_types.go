@@ -19,30 +19,19 @@ type PinpointApnsChannel struct {
 }
 
 type PinpointApnsChannelSpec struct {
-	ApplicationID string `json:"applicationID" tf:"application_id"`
+	Secret        *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef   core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ApplicationID string                     `json:"applicationID" tf:"application_id"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	BundleID *core.LocalObjectReference `json:"bundleID,omitempty" tf:"bundle_id,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Certificate *core.LocalObjectReference `json:"certificate,omitempty" tf:"certificate,omitempty"`
 	// +optional
 	DefaultAuthenticationMethod string `json:"defaultAuthenticationMethod,omitempty" tf:"default_authentication_method,omitempty"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	PrivateKey *core.LocalObjectReference `json:"privateKey,omitempty" tf:"private_key,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	TeamID *core.LocalObjectReference `json:"teamID,omitempty" tf:"team_id,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	TokenKey *core.LocalObjectReference `json:"tokenKey,omitempty" tf:"token_key,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	TokenKeyID  *core.LocalObjectReference `json:"tokenKeyID,omitempty" tf:"token_key_id,omitempty"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type PinpointApnsChannelStatus struct {

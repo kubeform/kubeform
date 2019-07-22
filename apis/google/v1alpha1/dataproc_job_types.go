@@ -166,6 +166,7 @@ type DataprocJobSpecSparksqlConfig struct {
 }
 
 type DataprocJobSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ForceDelete bool `json:"forceDelete,omitempty" tf:"force_delete,omitempty"`
 	// +optional
@@ -200,7 +201,6 @@ type DataprocJobSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SparksqlConfig []DataprocJobSpecSparksqlConfig `json:"sparksqlConfig,omitempty" tf:"sparksql_config,omitempty"`
-	ProviderRef    core.LocalObjectReference       `json:"providerRef" tf:"-"`
 }
 
 type DataprocJobStatus struct {

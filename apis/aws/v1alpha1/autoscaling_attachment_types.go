@@ -19,12 +19,12 @@ type AutoscalingAttachment struct {
 }
 
 type AutoscalingAttachmentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AlbTargetGroupArn    string `json:"albTargetGroupArn,omitempty" tf:"alb_target_group_arn,omitempty"`
 	AutoscalingGroupName string `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
 	// +optional
-	Elb         string                    `json:"elb,omitempty" tf:"elb,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Elb string `json:"elb,omitempty" tf:"elb,omitempty"`
 }
 
 type AutoscalingAttachmentStatus struct {

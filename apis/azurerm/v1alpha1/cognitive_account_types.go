@@ -24,15 +24,15 @@ type CognitiveAccountSpecSku struct {
 }
 
 type CognitiveAccountSpec struct {
-	Kind              string `json:"kind" tf:"kind"`
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Kind              string                    `json:"kind" tf:"kind"`
+	Location          string                    `json:"location" tf:"location"`
+	Name              string                    `json:"name" tf:"name"`
+	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku []CognitiveAccountSpecSku `json:"sku" tf:"sku"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type CognitiveAccountStatus struct {

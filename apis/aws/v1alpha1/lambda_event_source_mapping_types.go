@@ -19,6 +19,7 @@ type LambdaEventSourceMapping struct {
 }
 
 type LambdaEventSourceMappingSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	BatchSize int `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
 	// +optional
@@ -28,8 +29,7 @@ type LambdaEventSourceMappingSpec struct {
 	// +optional
 	StartingPosition string `json:"startingPosition,omitempty" tf:"starting_position,omitempty"`
 	// +optional
-	StartingPositionTimestamp string                    `json:"startingPositionTimestamp,omitempty" tf:"starting_position_timestamp,omitempty"`
-	ProviderRef               core.LocalObjectReference `json:"providerRef" tf:"-"`
+	StartingPositionTimestamp string `json:"startingPositionTimestamp,omitempty" tf:"starting_position_timestamp,omitempty"`
 }
 
 type LambdaEventSourceMappingStatus struct {

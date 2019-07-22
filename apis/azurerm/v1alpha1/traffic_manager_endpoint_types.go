@@ -19,6 +19,7 @@ type TrafficManagerEndpoint struct {
 }
 
 type TrafficManagerEndpointSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	EndpointLocation string `json:"endpointLocation,omitempty" tf:"endpoint_location,omitempty"`
 	// +optional
@@ -38,8 +39,7 @@ type TrafficManagerEndpointSpec struct {
 	TargetResourceID string `json:"targetResourceID,omitempty" tf:"target_resource_id,omitempty"`
 	Type             string `json:"type" tf:"type"`
 	// +optional
-	Weight      int                       `json:"weight,omitempty" tf:"weight,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Weight int `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type TrafficManagerEndpointStatus struct {

@@ -19,10 +19,10 @@ type EcrRepository struct {
 }
 
 type EcrRepositorySpec struct {
-	Name string `json:"name" tf:"name"`
-	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type EcrRepositoryStatus struct {

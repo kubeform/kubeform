@@ -19,10 +19,10 @@ type DataLakeStoreFile struct {
 }
 
 type DataLakeStoreFileSpec struct {
+	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
 	AccountName    string                    `json:"accountName" tf:"account_name"`
 	LocalFilePath  string                    `json:"localFilePath" tf:"local_file_path"`
 	RemoteFilePath string                    `json:"remoteFilePath" tf:"remote_file_path"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type DataLakeStoreFileStatus struct {

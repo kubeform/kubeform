@@ -21,6 +21,7 @@ type ComputeTargetPool struct {
 }
 
 type ComputeTargetPoolSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	BackupPool string `json:"backupPool,omitempty" tf:"backup_pool,omitempty"`
 	// +optional
@@ -38,8 +39,7 @@ type ComputeTargetPoolSpec struct {
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
-	SessionAffinity string                    `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SessionAffinity string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 }
 
 type ComputeTargetPoolStatus struct {

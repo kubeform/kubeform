@@ -19,13 +19,13 @@ type LbBackendAddressPool struct {
 }
 
 type LbBackendAddressPoolSpec struct {
-	LoadbalancerID string `json:"loadbalancerID" tf:"loadbalancer_id"`
+	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	LoadbalancerID string                    `json:"loadbalancerID" tf:"loadbalancer_id"`
 	// +optional
 	// Deprecated
-	Location          string                    `json:"location,omitempty" tf:"location,omitempty"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Location          string `json:"location,omitempty" tf:"location,omitempty"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type LbBackendAddressPoolStatus struct {

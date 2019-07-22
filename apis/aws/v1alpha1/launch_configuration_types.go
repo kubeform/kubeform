@@ -53,6 +53,7 @@ type LaunchConfigurationSpecRootBlockDevice struct {
 }
 
 type LaunchConfigurationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AssociatePublicIPAddress bool `json:"associatePublicIPAddress,omitempty" tf:"associate_public_ip_address,omitempty"`
 	// +optional
@@ -93,8 +94,7 @@ type LaunchConfigurationSpec struct {
 	VpcClassicLinkID string `json:"vpcClassicLinkID,omitempty" tf:"vpc_classic_link_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	VpcClassicLinkSecurityGroups []string                  `json:"vpcClassicLinkSecurityGroups,omitempty" tf:"vpc_classic_link_security_groups,omitempty"`
-	ProviderRef                  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcClassicLinkSecurityGroups []string `json:"vpcClassicLinkSecurityGroups,omitempty" tf:"vpc_classic_link_security_groups,omitempty"`
 }
 
 type LaunchConfigurationStatus struct {

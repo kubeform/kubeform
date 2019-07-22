@@ -19,6 +19,7 @@ type ComputeNetwork struct {
 }
 
 type ComputeNetworkSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AutoCreateSubnetworks bool `json:"autoCreateSubnetworks,omitempty" tf:"auto_create_subnetworks,omitempty"`
 	// +optional
@@ -30,8 +31,7 @@ type ComputeNetworkSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	RoutingMode string                    `json:"routingMode,omitempty" tf:"routing_mode,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RoutingMode string `json:"routingMode,omitempty" tf:"routing_mode,omitempty"`
 }
 
 type ComputeNetworkStatus struct {

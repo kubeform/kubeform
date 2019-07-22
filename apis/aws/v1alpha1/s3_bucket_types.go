@@ -211,6 +211,7 @@ type S3BucketSpecWebsite struct {
 }
 
 type S3BucketSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AccelerationStatus string `json:"accelerationStatus,omitempty" tf:"acceleration_status,omitempty"`
 	// +optional
@@ -258,8 +259,7 @@ type S3BucketSpec struct {
 	// +optional
 	WebsiteDomain string `json:"websiteDomain,omitempty" tf:"website_domain,omitempty"`
 	// +optional
-	WebsiteEndpoint string                    `json:"websiteEndpoint,omitempty" tf:"website_endpoint,omitempty"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	WebsiteEndpoint string `json:"websiteEndpoint,omitempty" tf:"website_endpoint,omitempty"`
 }
 
 type S3BucketStatus struct {

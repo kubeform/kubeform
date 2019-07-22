@@ -19,7 +19,8 @@ type NetworkSecurityRule struct {
 }
 
 type NetworkSecurityRuleSpec struct {
-	Access string `json:"access" tf:"access"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Access      string                    `json:"access" tf:"access"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -55,8 +56,7 @@ type NetworkSecurityRuleSpec struct {
 	SourcePortRange string `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	SourcePortRanges []string                  `json:"sourcePortRanges,omitempty" tf:"source_port_ranges,omitempty"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SourcePortRanges []string `json:"sourcePortRanges,omitempty" tf:"source_port_ranges,omitempty"`
 }
 
 type NetworkSecurityRuleStatus struct {

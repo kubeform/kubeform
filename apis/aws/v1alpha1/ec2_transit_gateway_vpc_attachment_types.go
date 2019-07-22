@@ -19,6 +19,7 @@ type Ec2TransitGatewayVpcAttachment struct {
 }
 
 type Ec2TransitGatewayVpcAttachmentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DnsSupport string `json:"dnsSupport,omitempty" tf:"dns_support,omitempty"`
 	// +optional
@@ -31,10 +32,9 @@ type Ec2TransitGatewayVpcAttachmentSpec struct {
 	// +optional
 	TransitGatewayDefaultRouteTableAssociation bool `json:"transitGatewayDefaultRouteTableAssociation,omitempty" tf:"transit_gateway_default_route_table_association,omitempty"`
 	// +optional
-	TransitGatewayDefaultRouteTablePropagation bool                      `json:"transitGatewayDefaultRouteTablePropagation,omitempty" tf:"transit_gateway_default_route_table_propagation,omitempty"`
-	TransitGatewayID                           string                    `json:"transitGatewayID" tf:"transit_gateway_id"`
-	VpcID                                      string                    `json:"vpcID" tf:"vpc_id"`
-	ProviderRef                                core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TransitGatewayDefaultRouteTablePropagation bool   `json:"transitGatewayDefaultRouteTablePropagation,omitempty" tf:"transit_gateway_default_route_table_propagation,omitempty"`
+	TransitGatewayID                           string `json:"transitGatewayID" tf:"transit_gateway_id"`
+	VpcID                                      string `json:"vpcID" tf:"vpc_id"`
 }
 
 type Ec2TransitGatewayVpcAttachmentStatus struct {

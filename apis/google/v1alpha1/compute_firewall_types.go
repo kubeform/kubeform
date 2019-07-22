@@ -31,6 +31,7 @@ type ComputeFirewallSpecDeny struct {
 }
 
 type ComputeFirewallSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Allow []ComputeFirewallSpecAllow `json:"allow,omitempty" tf:"allow,omitempty"`
@@ -71,8 +72,7 @@ type ComputeFirewallSpec struct {
 	TargetServiceAccounts []string `json:"targetServiceAccounts,omitempty" tf:"target_service_accounts,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	TargetTags  []string                  `json:"targetTags,omitempty" tf:"target_tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TargetTags []string `json:"targetTags,omitempty" tf:"target_tags,omitempty"`
 }
 
 type ComputeFirewallStatus struct {

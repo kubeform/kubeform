@@ -19,6 +19,7 @@ type S3BucketObject struct {
 }
 
 type S3BucketObjectSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Acl    string `json:"acl,omitempty" tf:"acl,omitempty"`
 	Bucket string `json:"bucket" tf:"bucket"`
@@ -50,8 +51,7 @@ type S3BucketObjectSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	WebsiteRedirect string                    `json:"websiteRedirect,omitempty" tf:"website_redirect,omitempty"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	WebsiteRedirect string `json:"websiteRedirect,omitempty" tf:"website_redirect,omitempty"`
 }
 
 type S3BucketObjectStatus struct {

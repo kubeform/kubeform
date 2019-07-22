@@ -29,6 +29,7 @@ type ComputeRegionDiskSpecSourceSnapshotEncryptionKey struct {
 }
 
 type ComputeRegionDiskSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -52,8 +53,7 @@ type ComputeRegionDiskSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SourceSnapshotEncryptionKey []ComputeRegionDiskSpecSourceSnapshotEncryptionKey `json:"sourceSnapshotEncryptionKey,omitempty" tf:"source_snapshot_encryption_key,omitempty"`
 	// +optional
-	Type        string                    `json:"type,omitempty" tf:"type,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type ComputeRegionDiskStatus struct {

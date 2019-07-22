@@ -19,6 +19,7 @@ type OpsworksPermission struct {
 }
 
 type OpsworksPermissionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllowSSH bool `json:"allowSSH,omitempty" tf:"allow_ssh,omitempty"`
 	// +optional
@@ -26,9 +27,8 @@ type OpsworksPermissionSpec struct {
 	// +optional
 	Level string `json:"level,omitempty" tf:"level,omitempty"`
 	// +optional
-	StackID     string                    `json:"stackID,omitempty" tf:"stack_id,omitempty"`
-	UserArn     string                    `json:"userArn" tf:"user_arn"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	StackID string `json:"stackID,omitempty" tf:"stack_id,omitempty"`
+	UserArn string `json:"userArn" tf:"user_arn"`
 }
 
 type OpsworksPermissionStatus struct {

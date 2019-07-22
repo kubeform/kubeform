@@ -19,11 +19,11 @@ type BillingAccountIamBinding struct {
 }
 
 type BillingAccountIamBindingSpec struct {
-	BillingAccountID string `json:"billingAccountID" tf:"billing_account_id"`
+	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	BillingAccountID string                    `json:"billingAccountID" tf:"billing_account_id"`
 	// +kubebuilder:validation:UniqueItems=true
-	Members     []string                  `json:"members" tf:"members"`
-	Role        string                    `json:"role" tf:"role"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Members []string `json:"members" tf:"members"`
+	Role    string   `json:"role" tf:"role"`
 }
 
 type BillingAccountIamBindingStatus struct {

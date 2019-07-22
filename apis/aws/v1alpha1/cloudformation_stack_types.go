@@ -19,6 +19,7 @@ type CloudformationStack struct {
 }
 
 type CloudformationStackSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Capabilities []string `json:"capabilities,omitempty" tf:"capabilities,omitempty"`
@@ -45,8 +46,7 @@ type CloudformationStackSpec struct {
 	// +optional
 	TemplateURL string `json:"templateURL,omitempty" tf:"template_url,omitempty"`
 	// +optional
-	TimeoutInMinutes int                       `json:"timeoutInMinutes,omitempty" tf:"timeout_in_minutes,omitempty"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TimeoutInMinutes int `json:"timeoutInMinutes,omitempty" tf:"timeout_in_minutes,omitempty"`
 }
 
 type CloudformationStackStatus struct {

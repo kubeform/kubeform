@@ -45,6 +45,7 @@ type ServiceDiscoveryServiceSpecHealthCheckCustomConfig struct {
 }
 
 type ServiceDiscoveryServiceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -58,8 +59,7 @@ type ServiceDiscoveryServiceSpec struct {
 	HealthCheckCustomConfig []ServiceDiscoveryServiceSpecHealthCheckCustomConfig `json:"healthCheckCustomConfig,omitempty" tf:"health_check_custom_config,omitempty"`
 	Name                    string                                               `json:"name" tf:"name"`
 	// +optional
-	NamespaceID string                    `json:"namespaceID,omitempty" tf:"namespace_id,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	NamespaceID string `json:"namespaceID,omitempty" tf:"namespace_id,omitempty"`
 }
 
 type ServiceDiscoveryServiceStatus struct {

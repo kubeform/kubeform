@@ -19,15 +19,15 @@ type ApplicationInsightsAPIKey struct {
 }
 
 type ApplicationInsightsAPIKeySpec struct {
-	ApplicationInsightsID string `json:"applicationInsightsID" tf:"application_insights_id"`
-	Name                  string `json:"name" tf:"name"`
+	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApplicationInsightsID string                    `json:"applicationInsightsID" tf:"application_insights_id"`
+	Name                  string                    `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ReadPermissions []string `json:"readPermissions,omitempty" tf:"read_permissions,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	WritePermissions []string                  `json:"writePermissions,omitempty" tf:"write_permissions,omitempty"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	WritePermissions []string `json:"writePermissions,omitempty" tf:"write_permissions,omitempty"`
 }
 
 type ApplicationInsightsAPIKeyStatus struct {

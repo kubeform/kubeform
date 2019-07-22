@@ -410,37 +410,17 @@ spec:
                 properties:
                   administratorLogin:
                     type: string
-                  administratorLoginPassword:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   authenticationType:
                     type: string
                   operationMode:
                     type: string
-                  storageKey:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   storageKeyType:
                     type: string
                   storageURI:
                     type: string
                 required:
                 - administratorLogin
-                - administratorLoginPassword
                 - authenticationType
-                - storageKey
                 - storageKeyType
                 - storageURI
                 type: object
@@ -471,6 +451,15 @@ spec:
               type: string
             restorePointInTime:
               type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             serverName:
               type: string
             sourceDatabaseDeletionDate:
@@ -500,15 +489,6 @@ spec:
                     type: integer
                   state:
                     type: string
-                  storageAccountAccessKey:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   storageEndpoint:
                     type: string
                   useServerDefault:

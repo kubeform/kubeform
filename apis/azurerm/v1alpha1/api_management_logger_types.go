@@ -18,19 +18,16 @@ type ApiManagementLogger struct {
 	Status            ApiManagementLoggerStatus `json:"status,omitempty"`
 }
 
-type ApiManagementLoggerSpecApplicationInsights struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	InstrumentationKey *core.LocalObjectReference `json:"instrumentationKey" tf:"instrumentation_key"`
-}
+type ApiManagementLoggerSpecApplicationInsights struct{}
 
 type ApiManagementLoggerSpecEventhub struct {
-	// Sensitive Data. Provide secret name which contains one value only
-	ConnectionString *core.LocalObjectReference `json:"connectionString" tf:"connection_string"`
-	Name             string                     `json:"name" tf:"name"`
+	Name string `json:"name" tf:"name"`
 }
 
 type ApiManagementLoggerSpec struct {
-	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
+	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ApiManagementName string                     `json:"apiManagementName" tf:"api_management_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ApplicationInsights []ApiManagementLoggerSpecApplicationInsights `json:"applicationInsights,omitempty" tf:"application_insights,omitempty"`
@@ -43,7 +40,6 @@ type ApiManagementLoggerSpec struct {
 	Eventhub          []ApiManagementLoggerSpecEventhub `json:"eventhub,omitempty" tf:"eventhub,omitempty"`
 	Name              string                            `json:"name" tf:"name"`
 	ResourceGroupName string                            `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference         `json:"providerRef" tf:"-"`
 }
 
 type ApiManagementLoggerStatus struct {

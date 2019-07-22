@@ -19,13 +19,13 @@ type PinpointEmailChannel struct {
 }
 
 type PinpointEmailChannelSpec struct {
-	ApplicationID string `json:"applicationID" tf:"application_id"`
+	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ApplicationID string                    `json:"applicationID" tf:"application_id"`
 	// +optional
-	Enabled     bool                      `json:"enabled,omitempty" tf:"enabled,omitempty"`
-	FromAddress string                    `json:"fromAddress" tf:"from_address"`
-	Identity    string                    `json:"identity" tf:"identity"`
-	RoleArn     string                    `json:"roleArn" tf:"role_arn"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Enabled     bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	FromAddress string `json:"fromAddress" tf:"from_address"`
+	Identity    string `json:"identity" tf:"identity"`
+	RoleArn     string `json:"roleArn" tf:"role_arn"`
 }
 
 type PinpointEmailChannelStatus struct {

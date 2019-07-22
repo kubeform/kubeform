@@ -29,17 +29,16 @@ type StreamAnalyticsOutputServicebusQueueSpecSerialization struct {
 }
 
 type StreamAnalyticsOutputServicebusQueueSpec struct {
-	Name              string `json:"name" tf:"name"`
-	QueueName         string `json:"queueName" tf:"queue_name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	Name              string                     `json:"name" tf:"name"`
+	QueueName         string                     `json:"queueName" tf:"queue_name"`
+	ResourceGroupName string                     `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
-	Serialization       []StreamAnalyticsOutputServicebusQueueSpecSerialization `json:"serialization" tf:"serialization"`
-	ServicebusNamespace string                                                  `json:"servicebusNamespace" tf:"servicebus_namespace"`
-	// Sensitive Data. Provide secret name which contains one value only
-	SharedAccessPolicyKey  *core.LocalObjectReference `json:"sharedAccessPolicyKey" tf:"shared_access_policy_key"`
-	SharedAccessPolicyName string                     `json:"sharedAccessPolicyName" tf:"shared_access_policy_name"`
-	StreamAnalyticsJobName string                     `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`
-	ProviderRef            core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	Serialization          []StreamAnalyticsOutputServicebusQueueSpecSerialization `json:"serialization" tf:"serialization"`
+	ServicebusNamespace    string                                                  `json:"servicebusNamespace" tf:"servicebus_namespace"`
+	SharedAccessPolicyName string                                                  `json:"sharedAccessPolicyName" tf:"shared_access_policy_name"`
+	StreamAnalyticsJobName string                                                  `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`
 }
 
 type StreamAnalyticsOutputServicebusQueueStatus struct {

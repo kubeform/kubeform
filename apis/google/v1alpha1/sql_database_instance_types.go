@@ -34,8 +34,6 @@ type SqlDatabaseInstanceSpecReplicaConfiguration struct {
 	// +optional
 	MasterHeartbeatPeriod int `json:"masterHeartbeatPeriod,omitempty" tf:"master_heartbeat_period,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	SslCipher string `json:"sslCipher,omitempty" tf:"ssl_cipher,omitempty"`
 	// +optional
@@ -136,6 +134,8 @@ type SqlDatabaseInstanceSpecSettings struct {
 }
 
 type SqlDatabaseInstanceSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	DatabaseVersion string `json:"databaseVersion,omitempty" tf:"database_version,omitempty"`
 	// +optional
@@ -150,8 +150,7 @@ type SqlDatabaseInstanceSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	ReplicaConfiguration []SqlDatabaseInstanceSpecReplicaConfiguration `json:"replicaConfiguration,omitempty" tf:"replica_configuration,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
-	Settings    []SqlDatabaseInstanceSpecSettings `json:"settings" tf:"settings"`
-	ProviderRef core.LocalObjectReference         `json:"providerRef" tf:"-"`
+	Settings []SqlDatabaseInstanceSpecSettings `json:"settings" tf:"settings"`
 }
 
 type SqlDatabaseInstanceStatus struct {

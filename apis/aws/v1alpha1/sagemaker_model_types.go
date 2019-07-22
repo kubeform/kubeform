@@ -46,6 +46,7 @@ type SagemakerModelSpecVpcConfig struct {
 }
 
 type SagemakerModelSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Container []SagemakerModelSpecContainer `json:"container,omitempty" tf:"container,omitempty"`
 	// +optional
@@ -60,8 +61,7 @@ type SagemakerModelSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	VpcConfig   []SagemakerModelSpecVpcConfig `json:"vpcConfig,omitempty" tf:"vpc_config,omitempty"`
-	ProviderRef core.LocalObjectReference     `json:"providerRef" tf:"-"`
+	VpcConfig []SagemakerModelSpecVpcConfig `json:"vpcConfig,omitempty" tf:"vpc_config,omitempty"`
 }
 
 type SagemakerModelStatus struct {

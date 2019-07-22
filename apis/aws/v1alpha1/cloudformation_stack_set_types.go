@@ -19,7 +19,8 @@ type CloudformationStackSet struct {
 }
 
 type CloudformationStackSetSpec struct {
-	AdministrationRoleArn string `json:"administrationRoleArn" tf:"administration_role_arn"`
+	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AdministrationRoleArn string                    `json:"administrationRoleArn" tf:"administration_role_arn"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Capabilities []string `json:"capabilities,omitempty" tf:"capabilities,omitempty"`
@@ -35,8 +36,7 @@ type CloudformationStackSetSpec struct {
 	// +optional
 	TemplateBody string `json:"templateBody,omitempty" tf:"template_body,omitempty"`
 	// +optional
-	TemplateURL string                    `json:"templateURL,omitempty" tf:"template_url,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TemplateURL string `json:"templateURL,omitempty" tf:"template_url,omitempty"`
 }
 
 type CloudformationStackSetStatus struct {

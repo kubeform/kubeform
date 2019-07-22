@@ -19,14 +19,14 @@ type LogicAppTriggerHTTPRequest struct {
 }
 
 type LogicAppTriggerHTTPRequestSpec struct {
-	LogicAppID string `json:"logicAppID" tf:"logic_app_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	LogicAppID  string                    `json:"logicAppID" tf:"logic_app_id"`
 	// +optional
 	Method string `json:"method,omitempty" tf:"method,omitempty"`
 	Name   string `json:"name" tf:"name"`
 	// +optional
-	RelativePath string                    `json:"relativePath,omitempty" tf:"relative_path,omitempty"`
-	Schema       string                    `json:"schema" tf:"schema"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RelativePath string `json:"relativePath,omitempty" tf:"relative_path,omitempty"`
+	Schema       string `json:"schema" tf:"schema"`
 }
 
 type LogicAppTriggerHTTPRequestStatus struct {

@@ -20,12 +20,12 @@ type StoragegatewayGateway struct {
 
 type StoragegatewayGatewaySpecSmbActiveDirectorySettings struct {
 	DomainName string `json:"domainName" tf:"domain_name"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
-	Username string                     `json:"username" tf:"username"`
+	Username   string `json:"username" tf:"username"`
 }
 
 type StoragegatewayGatewaySpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	ActivationKey string `json:"activationKey,omitempty" tf:"activation_key,omitempty"`
 	// +optional
@@ -40,11 +40,8 @@ type StoragegatewayGatewaySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SmbActiveDirectorySettings []StoragegatewayGatewaySpecSmbActiveDirectorySettings `json:"smbActiveDirectorySettings,omitempty" tf:"smb_active_directory_settings,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	SmbGuestPassword *core.LocalObjectReference `json:"smbGuestPassword,omitempty" tf:"smb_guest_password,omitempty"`
 	// +optional
-	TapeDriveType string                    `json:"tapeDriveType,omitempty" tf:"tape_drive_type,omitempty"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TapeDriveType string `json:"tapeDriveType,omitempty" tf:"tape_drive_type,omitempty"`
 }
 
 type StoragegatewayGatewayStatus struct {

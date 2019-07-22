@@ -24,13 +24,13 @@ type LbSslNegotiationPolicySpecAttribute struct {
 }
 
 type LbSslNegotiationPolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Attribute    []LbSslNegotiationPolicySpecAttribute `json:"attribute,omitempty" tf:"attribute,omitempty"`
 	LbPort       int                                   `json:"lbPort" tf:"lb_port"`
 	LoadBalancer string                                `json:"loadBalancer" tf:"load_balancer"`
 	Name         string                                `json:"name" tf:"name"`
-	ProviderRef  core.LocalObjectReference             `json:"providerRef" tf:"-"`
 }
 
 type LbSslNegotiationPolicyStatus struct {

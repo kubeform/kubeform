@@ -19,7 +19,8 @@ type ComputeTargetSslProxy struct {
 }
 
 type ComputeTargetSslProxySpec struct {
-	BackendService string `json:"backendService" tf:"backend_service"`
+	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	BackendService string                    `json:"backendService" tf:"backend_service"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
@@ -30,8 +31,7 @@ type ComputeTargetSslProxySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SslCertificates []string `json:"sslCertificates" tf:"ssl_certificates"`
 	// +optional
-	SslPolicy   string                    `json:"sslPolicy,omitempty" tf:"ssl_policy,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SslPolicy string `json:"sslPolicy,omitempty" tf:"ssl_policy,omitempty"`
 }
 
 type ComputeTargetSslProxyStatus struct {

@@ -59,6 +59,7 @@ type ComputeInstanceGroupManagerSpecVersion struct {
 }
 
 type ComputeInstanceGroupManagerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// Deprecated
@@ -90,8 +91,7 @@ type ComputeInstanceGroupManagerSpec struct {
 	// +optional
 	WaitForInstances bool `json:"waitForInstances,omitempty" tf:"wait_for_instances,omitempty"`
 	// +optional
-	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type ComputeInstanceGroupManagerStatus struct {

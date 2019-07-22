@@ -19,11 +19,11 @@ type OrganizationIamBinding struct {
 }
 
 type OrganizationIamBindingSpec struct {
-	// +kubebuilder:validation:UniqueItems=true
-	Members     []string                  `json:"members" tf:"members"`
-	OrgID       string                    `json:"orgID" tf:"org_id"`
-	Role        string                    `json:"role" tf:"role"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +kubebuilder:validation:UniqueItems=true
+	Members []string `json:"members" tf:"members"`
+	OrgID   string   `json:"orgID" tf:"org_id"`
+	Role    string   `json:"role" tf:"role"`
 }
 
 type OrganizationIamBindingStatus struct {

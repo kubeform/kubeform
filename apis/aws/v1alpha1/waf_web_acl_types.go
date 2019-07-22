@@ -62,6 +62,7 @@ type WafWebACLSpecRules struct {
 }
 
 type WafWebACLSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	DefaultAction []WafWebACLSpecDefaultAction `json:"defaultAction" tf:"default_action"`
@@ -72,8 +73,7 @@ type WafWebACLSpec struct {
 	Name                 string                              `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Rules       []WafWebACLSpecRules      `json:"rules,omitempty" tf:"rules,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Rules []WafWebACLSpecRules `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type WafWebACLStatus struct {

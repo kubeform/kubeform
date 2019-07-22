@@ -19,14 +19,14 @@ type CodecommitRepository struct {
 }
 
 type CodecommitRepositorySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DefaultBranch string `json:"defaultBranch,omitempty" tf:"default_branch,omitempty"`
 	// +optional
 	Description    string `json:"description,omitempty" tf:"description,omitempty"`
 	RepositoryName string `json:"repositoryName" tf:"repository_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type CodecommitRepositoryStatus struct {

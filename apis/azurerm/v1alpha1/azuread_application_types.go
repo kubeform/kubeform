@@ -19,6 +19,7 @@ type AzureadApplication struct {
 }
 
 type AzureadApplicationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AvailableToOtherTenants bool `json:"availableToOtherTenants,omitempty" tf:"available_to_other_tenants,omitempty"`
 	// +optional
@@ -30,8 +31,7 @@ type AzureadApplicationSpec struct {
 	// +optional
 	Oauth2AllowImplicitFlow bool `json:"oauth2AllowImplicitFlow,omitempty" tf:"oauth2_allow_implicit_flow,omitempty"`
 	// +optional
-	ReplyUrls   []string                  `json:"replyUrls,omitempty" tf:"reply_urls,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ReplyUrls []string `json:"replyUrls,omitempty" tf:"reply_urls,omitempty"`
 }
 
 type AzureadApplicationStatus struct {

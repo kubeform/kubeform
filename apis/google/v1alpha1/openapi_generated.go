@@ -2943,6 +2943,11 @@ func schema_kubeform_apis_google_v1alpha1_AppEngineApplicationSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"authDomain": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -2979,13 +2984,8 @@ func schema_kubeform_apis_google_v1alpha1_AppEngineApplicationSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"locationID", "providerRef"},
+				Required: []string{"providerRef", "locationID"},
 			},
 		},
 		Dependencies: []string{
@@ -3138,6 +3138,11 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryDatasetSpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"access": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -3200,13 +3205,8 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryDatasetSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"datasetID", "providerRef"},
+				Required: []string{"providerRef", "datasetID"},
 			},
 		},
 		Dependencies: []string{
@@ -3428,6 +3428,11 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryTableSpec(ref common.Reference
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"datasetID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -3508,13 +3513,8 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryTableSpec(ref common.Reference
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"datasetID", "tableID", "providerRef"},
+				Required: []string{"providerRef", "datasetID", "tableID"},
 			},
 		},
 		Dependencies: []string{
@@ -3705,6 +3705,11 @@ func schema_kubeform_apis_google_v1alpha1_BigtableInstanceSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"cluster": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -3769,13 +3774,8 @@ func schema_kubeform_apis_google_v1alpha1_BigtableInstanceSpec(ref common.Refere
 							Format:      "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -3946,6 +3946,11 @@ func schema_kubeform_apis_google_v1alpha1_BigtableTableSpec(ref common.Reference
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"instanceName": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -3977,13 +3982,8 @@ func schema_kubeform_apis_google_v1alpha1_BigtableTableSpec(ref common.Reference
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"instanceName", "name", "providerRef"},
+				Required: []string{"providerRef", "instanceName", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -4118,6 +4118,11 @@ func schema_kubeform_apis_google_v1alpha1_BillingAccountIamBindingSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"billingAccountID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4143,13 +4148,8 @@ func schema_kubeform_apis_google_v1alpha1_BillingAccountIamBindingSpec(ref commo
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"billingAccountID", "members", "role", "providerRef"},
+				Required: []string{"providerRef", "billingAccountID", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -4284,6 +4284,11 @@ func schema_kubeform_apis_google_v1alpha1_BillingAccountIamMemberSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"billingAccountID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4302,13 +4307,8 @@ func schema_kubeform_apis_google_v1alpha1_BillingAccountIamMemberSpec(ref common
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"billingAccountID", "member", "role", "providerRef"},
+				Required: []string{"providerRef", "billingAccountID", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -4443,6 +4443,11 @@ func schema_kubeform_apis_google_v1alpha1_BillingAccountIamPolicySpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"billingAccountID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -4455,13 +4460,8 @@ func schema_kubeform_apis_google_v1alpha1_BillingAccountIamPolicySpec(ref common
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"billingAccountID", "policyData", "providerRef"},
+				Required: []string{"providerRef", "billingAccountID", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -4596,6 +4596,11 @@ func schema_kubeform_apis_google_v1alpha1_BinaryAuthorizationAttestorSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"attestationAuthorityNote": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -4626,13 +4631,8 @@ func schema_kubeform_apis_google_v1alpha1_BinaryAuthorizationAttestorSpec(ref co
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"attestationAuthorityNote", "name", "providerRef"},
+				Required: []string{"providerRef", "attestationAuthorityNote", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -4825,6 +4825,11 @@ func schema_kubeform_apis_google_v1alpha1_BinaryAuthorizationPolicySpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"admissionWhitelistPatterns": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -4873,13 +4878,8 @@ func schema_kubeform_apis_google_v1alpha1_BinaryAuthorizationPolicySpec(ref comm
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"defaultAdmissionRule", "providerRef"},
+				Required: []string{"providerRef", "defaultAdmissionRule"},
 			},
 		},
 		Dependencies: []string{
@@ -5114,6 +5114,11 @@ func schema_kubeform_apis_google_v1alpha1_CloudbuildTriggerSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"build": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -5168,11 +5173,6 @@ func schema_kubeform_apis_google_v1alpha1_CloudbuildTriggerSpec(ref common.Refer
 									},
 								},
 							},
-						},
-					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
 					},
 				},
@@ -5435,6 +5435,11 @@ func schema_kubeform_apis_google_v1alpha1_CloudfunctionsFunctionSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"availableMemoryMb": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -5568,13 +5573,8 @@ func schema_kubeform_apis_google_v1alpha1_CloudfunctionsFunctionSpec(ref common.
 							Format:      "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "sourceArchiveBucket", "sourceArchiveObject", "providerRef"},
+				Required: []string{"providerRef", "name", "sourceArchiveBucket", "sourceArchiveObject"},
 			},
 		},
 		Dependencies: []string{
@@ -5767,6 +5767,11 @@ func schema_kubeform_apis_google_v1alpha1_CloudiotRegistrySpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"credentials": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -5849,13 +5854,8 @@ func schema_kubeform_apis_google_v1alpha1_CloudiotRegistrySpec(ref common.Refere
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -6118,6 +6118,11 @@ func schema_kubeform_apis_google_v1alpha1_ComposerEnvironmentSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"config": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -6162,13 +6167,8 @@ func schema_kubeform_apis_google_v1alpha1_ComposerEnvironmentSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -6475,6 +6475,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAddressSpec(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"address": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -6538,13 +6543,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAddressSpec(ref common.Referenc
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -6679,6 +6679,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAttachedDiskSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"deviceName": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -6715,13 +6720,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAttachedDiskSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"disk", "instance", "providerRef"},
+				Required: []string{"providerRef", "disk", "instance"},
 			},
 		},
 		Dependencies: []string{
@@ -6856,6 +6856,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAutoscalerSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"autoscalingPolicy": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -6898,13 +6903,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAutoscalerSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"autoscalingPolicy", "name", "target", "providerRef"},
+				Required: []string{"providerRef", "autoscalingPolicy", "name", "target"},
 			},
 		},
 		Dependencies: []string{
@@ -7177,6 +7177,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeBackendBucketSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bucketName": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -7207,13 +7212,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeBackendBucketSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bucketName", "name", "providerRef"},
+				Required: []string{"providerRef", "bucketName", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -7348,6 +7348,16 @@ func schema_kubeform_apis_google_v1alpha1_ComputeBackendServiceSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"backend": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -7471,13 +7481,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeBackendServiceSpec(ref common.R
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"healthChecks", "name", "providerRef"},
+				Required: []string{"providerRef", "healthChecks", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -7645,18 +7650,10 @@ func schema_kubeform_apis_google_v1alpha1_ComputeBackendServiceSpecIap(ref commo
 							Format: "",
 						},
 					},
-					"oauth2ClientSecret": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"oauth2ClientID", "oauth2ClientSecret"},
+				Required: []string{"oauth2ClientID"},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
 	}
 }
 
@@ -7787,6 +7784,16 @@ func schema_kubeform_apis_google_v1alpha1_ComputeDiskSpec(ref common.ReferenceCa
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -7803,12 +7810,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeDiskSpec(ref common.ReferenceCa
 									},
 								},
 							},
-						},
-					},
-					"diskEncryptionKeyRaw": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
 					},
 					"image": {
@@ -7891,13 +7892,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeDiskSpec(ref common.ReferenceCa
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -8086,6 +8082,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeFirewallSpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"allow": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -8237,13 +8238,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeFirewallSpec(ref common.Referen
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "network", "providerRef"},
+				Required: []string{"providerRef", "name", "network"},
 			},
 		},
 		Dependencies: []string{
@@ -8442,6 +8438,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeForwardingRuleSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"backendService": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -8561,13 +8562,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeForwardingRuleSpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -8702,6 +8698,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeGlobalAddressSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"addressType": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -8768,13 +8769,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeGlobalAddressSpec(ref common.Re
 							Format:      "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -8909,6 +8905,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeGlobalForwardingRuleSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -8972,13 +8973,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeGlobalForwardingRuleSpec(ref co
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "target", "providerRef"},
+				Required: []string{"providerRef", "name", "target"},
 			},
 		},
 		Dependencies: []string{
@@ -9113,6 +9109,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPHealthCheckSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"checkIntervalSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -9173,13 +9174,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPHealthCheckSpec(ref common.
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -9314,6 +9310,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPSHealthCheckSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"checkIntervalSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -9374,13 +9375,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPSHealthCheckSpec(ref common
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -9515,6 +9511,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHealthCheckSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"checkIntervalSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -9605,13 +9606,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHealthCheckSpec(ref common.Refe
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -9902,6 +9898,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeImageSpec(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"createTimeout": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
@@ -9978,13 +9979,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeImageSpec(ref common.ReferenceC
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -10193,6 +10189,16 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"allowStoppingForUpdate": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -10384,13 +10390,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpec(ref co
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "sourceInstanceTemplate", "providerRef"},
+				Required: []string{"providerRef", "name", "sourceInstanceTemplate"},
 			},
 		},
 		Dependencies: []string{
@@ -10410,12 +10411,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpecAttache
 							Format: "",
 						},
 					},
-					"diskEncryptionKeyRaw": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"mode": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -10432,8 +10427,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpecAttache
 				Required: []string{"source"},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
 	}
 }
 
@@ -10453,12 +10446,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpecBootDis
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"diskEncryptionKeyRaw": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
 					},
 					"initializeParams": {
@@ -10483,7 +10470,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpecBootDis
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeInstanceFromTemplateSpecBootDiskInitializeParams"},
+			"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeInstanceFromTemplateSpecBootDiskInitializeParams"},
 	}
 }
 
@@ -10963,6 +10950,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupManagerSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"autoHealingPolicies": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
@@ -11081,13 +11073,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupManagerSpec(ref co
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"baseInstanceName", "name", "providerRef"},
+				Required: []string{"providerRef", "baseInstanceName", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -11300,6 +11287,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -11355,13 +11347,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -11478,6 +11465,16 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"allowStoppingForUpdate": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -11670,13 +11667,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bootDisk", "machineType", "name", "networkInterface", "providerRef"},
+				Required: []string{"providerRef", "bootDisk", "machineType", "name", "networkInterface"},
 			},
 		},
 		Dependencies: []string{
@@ -11696,12 +11688,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpecAttachedDisk(ref co
 							Format: "",
 						},
 					},
-					"diskEncryptionKeyRaw": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"mode": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -11718,8 +11704,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpecAttachedDisk(ref co
 				Required: []string{"source"},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
 	}
 }
 
@@ -11739,12 +11723,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpecBootDisk(ref common
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
-						},
-					},
-					"diskEncryptionKeyRaw": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
 					},
 					"initializeParams": {
@@ -11769,7 +11747,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpecBootDisk(ref common
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/google/v1alpha1.ComputeInstanceSpecBootDiskInitializeParams"},
+			"kubeform.dev/kubeform/apis/google/v1alpha1.ComputeInstanceSpecBootDiskInitializeParams"},
 	}
 }
 
@@ -12159,6 +12137,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceTemplateSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"canIPForward": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -12320,13 +12303,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceTemplateSpec(ref common
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"disk", "machineType", "providerRef"},
+				Required: []string{"providerRef", "disk", "machineType"},
 			},
 		},
 		Dependencies: []string{
@@ -12776,6 +12754,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInterconnectAttachmentSpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -12812,13 +12795,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInterconnectAttachmentSpec(ref 
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"interconnect", "name", "router", "providerRef"},
+				Required: []string{"providerRef", "interconnect", "name", "router"},
 			},
 		},
 		Dependencies: []string{
@@ -13043,6 +13021,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeNetworkPeeringSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"autoCreateRoutes": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -13067,13 +13050,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeNetworkPeeringSpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "network", "peerNetwork", "providerRef"},
+				Required: []string{"providerRef", "name", "network", "peerNetwork"},
 			},
 		},
 		Dependencies: []string{
@@ -13118,6 +13096,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeNetworkSpec(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"autoCreateSubnetworks": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -13155,13 +13138,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeNetworkSpec(ref common.Referenc
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -13339,6 +13317,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeProjectMetadataItemSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"key": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -13357,13 +13340,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeProjectMetadataItemSpec(ref com
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"key", "value", "providerRef"},
+				Required: []string{"providerRef", "key", "value"},
 			},
 		},
 		Dependencies: []string{
@@ -13455,6 +13433,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeProjectMetadataSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"object"},
@@ -13475,13 +13458,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeProjectMetadataSpec(ref common.
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"metadata", "providerRef"},
+				Required: []string{"providerRef", "metadata"},
 			},
 		},
 		Dependencies: []string{
@@ -13616,6 +13594,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionAutoscalerSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"autoscalingPolicy": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -13658,13 +13641,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionAutoscalerSpec(ref common
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"autoscalingPolicy", "name", "target", "providerRef"},
+				Required: []string{"providerRef", "autoscalingPolicy", "name", "target"},
 			},
 		},
 		Dependencies: []string{
@@ -13937,6 +13915,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionBackendServiceSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"backend": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -14010,13 +13993,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionBackendServiceSpec(ref co
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"healthChecks", "name", "providerRef"},
+				Required: []string{"providerRef", "healthChecks", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -14175,6 +14153,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionDiskSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -14268,13 +14251,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionDiskSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "replicaZones", "providerRef"},
+				Required: []string{"providerRef", "name", "replicaZones"},
 			},
 		},
 		Dependencies: []string{
@@ -14445,6 +14423,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionInstanceGroupManagerSpec(
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"autoHealingPolicies": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
@@ -14577,13 +14560,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionInstanceGroupManagerSpec(
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"baseInstanceName", "name", "region", "providerRef"},
+				Required: []string{"providerRef", "baseInstanceName", "name", "region"},
 			},
 		},
 		Dependencies: []string{
@@ -14886,6 +14864,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouteSpec(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -14965,13 +14948,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouteSpec(ref common.ReferenceC
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"destRange", "name", "network", "providerRef"},
+				Required: []string{"providerRef", "destRange", "name", "network"},
 			},
 		},
 		Dependencies: []string{
@@ -15149,6 +15127,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterInterfaceSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"ipRange": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -15185,13 +15168,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterInterfaceSpec(ref common.
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "router", "vpnTunnel", "providerRef"},
+				Required: []string{"providerRef", "name", "router", "vpnTunnel"},
 			},
 		},
 		Dependencies: []string{
@@ -15373,6 +15351,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterNATSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"icmpIdleTimeoutSec": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -15464,13 +15447,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterNATSpec(ref common.Refere
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "natIPAllocateOption", "router", "providerRef"},
+				Required: []string{"providerRef", "name", "natIPAllocateOption", "router"},
 			},
 		},
 		Dependencies: []string{
@@ -15650,6 +15628,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterPeerSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"advertisedRoutePriority": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -15698,13 +15681,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterPeerSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"interface", "name", "peerAsn", "router", "providerRef"},
+				Required: []string{"providerRef", "interface", "name", "peerAsn", "router"},
 			},
 		},
 		Dependencies: []string{
@@ -15749,6 +15727,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterSpec(ref common.Reference
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bgp": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -15791,13 +15774,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterSpec(ref common.Reference
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "network", "providerRef"},
+				Required: []string{"providerRef", "name", "network"},
 			},
 		},
 		Dependencies: []string{
@@ -16008,6 +15986,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSecurityPolicySpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -16038,13 +16021,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSecurityPolicySpec(ref common.R
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -16289,19 +16267,19 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSharedVpcHostProjectSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"project": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"project", "providerRef"},
+				Required: []string{"providerRef", "project"},
 			},
 		},
 		Dependencies: []string{
@@ -16436,6 +16414,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSharedVpcServiceProjectSpec(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"hostProject": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -16448,13 +16431,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSharedVpcServiceProjectSpec(ref
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"hostProject", "serviceProject", "providerRef"},
+				Required: []string{"providerRef", "hostProject", "serviceProject"},
 			},
 		},
 		Dependencies: []string{
@@ -16589,6 +16567,16 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -16633,12 +16621,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpec(ref common.Referen
 							},
 						},
 					},
-					"snapshotEncryptionKeyRaw": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"sourceDisk": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -16657,25 +16639,14 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpec(ref common.Referen
 							},
 						},
 					},
-					"sourceDiskEncryptionKeyRaw": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"zone": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "sourceDisk", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -16688,18 +16659,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpecSnapshotEncryptionK
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"rawKey": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
-				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
 	}
 }
 
@@ -16708,18 +16669,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpecSourceDiskEncryptio
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"rawKey": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
-				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
 	}
 }
 
@@ -16850,10 +16801,14 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSslCertificateSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"certificate": {
+					"secret": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
 					},
 					"description": {
@@ -16874,25 +16829,14 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSslCertificateSpec(ref common.R
 							Format: "",
 						},
 					},
-					"privateKey": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"project": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"certificate", "privateKey", "providerRef"},
+				Required: []string{"providerRef"},
 			},
 		},
 		Dependencies: []string{
@@ -17027,6 +16971,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSslPolicySpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"customFeatures": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -17070,13 +17019,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSslPolicySpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -17254,6 +17198,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkIamBindingSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"members": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -17294,13 +17243,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkIamBindingSpec(ref co
 							Format:      "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"members", "role", "subnetwork", "providerRef"},
+				Required: []string{"providerRef", "members", "role", "subnetwork"},
 			},
 		},
 		Dependencies: []string{
@@ -17435,6 +17379,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkIamMemberSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"member": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -17468,13 +17417,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkIamMemberSpec(ref com
 							Format:      "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"member", "role", "subnetwork", "providerRef"},
+				Required: []string{"providerRef", "member", "role", "subnetwork"},
 			},
 		},
 		Dependencies: []string{
@@ -17609,6 +17553,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkIamPolicySpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"policyData": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -17636,13 +17585,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkIamPolicySpec(ref com
 							Format:      "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"policyData", "subnetwork", "providerRef"},
+				Required: []string{"providerRef", "policyData", "subnetwork"},
 			},
 		},
 		Dependencies: []string{
@@ -17734,6 +17678,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -17794,13 +17743,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkSpec(ref common.Refer
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"ipCIDRRange", "name", "network", "providerRef"},
+				Required: []string{"providerRef", "ipCIDRRange", "name", "network"},
 			},
 		},
 		Dependencies: []string{
@@ -17960,6 +17904,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetHTTPProxySpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -17984,13 +17933,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetHTTPProxySpec(ref common.
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "urlMap", "providerRef"},
+				Required: []string{"providerRef", "name", "urlMap"},
 			},
 		},
 		Dependencies: []string{
@@ -18125,6 +18069,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetHTTPSProxySpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -18174,13 +18123,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetHTTPSProxySpec(ref common
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "sslCertificates", "urlMap", "providerRef"},
+				Required: []string{"providerRef", "name", "sslCertificates", "urlMap"},
 			},
 		},
 		Dependencies: []string{
@@ -18315,6 +18259,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetPoolSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"backupPool": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -18383,13 +18332,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetPoolSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -18524,6 +18468,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxySpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"backendService": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -18573,13 +18522,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxySpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"backendService", "name", "sslCertificates", "providerRef"},
+				Required: []string{"providerRef", "backendService", "name", "sslCertificates"},
 			},
 		},
 		Dependencies: []string{
@@ -18714,6 +18658,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetTcpProxySpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"backendService": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -18744,13 +18693,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetTcpProxySpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"backendService", "name", "providerRef"},
+				Required: []string{"providerRef", "backendService", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -18885,6 +18829,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeURLMapSpec(ref common.Reference
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"defaultService": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -18945,13 +18894,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeURLMapSpec(ref common.Reference
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"defaultService", "name", "providerRef"},
+				Required: []string{"providerRef", "defaultService", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -19238,6 +19182,11 @@ func schema_kubeform_apis_google_v1alpha1_ComputeVPNGatewaySpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -19268,13 +19217,8 @@ func schema_kubeform_apis_google_v1alpha1_ComputeVPNGatewaySpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "network", "providerRef"},
+				Required: []string{"providerRef", "name", "network"},
 			},
 		},
 		Dependencies: []string{
@@ -19409,6 +19353,16 @@ func schema_kubeform_apis_google_v1alpha1_ComputeVPNTunnelSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -19491,25 +19445,14 @@ func schema_kubeform_apis_google_v1alpha1_ComputeVPNTunnelSpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"sharedSecret": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"targetVPNGateway": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "peerIP", "sharedSecret", "targetVPNGateway", "providerRef"},
+				Required: []string{"providerRef", "name", "peerIP", "targetVPNGateway"},
 			},
 		},
 		Dependencies: []string{
@@ -19644,6 +19587,11 @@ func schema_kubeform_apis_google_v1alpha1_ContainerAnalysisNoteSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"attestationAuthority": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -19668,13 +19616,8 @@ func schema_kubeform_apis_google_v1alpha1_ContainerAnalysisNoteSpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"attestationAuthority", "name", "providerRef"},
+				Required: []string{"providerRef", "attestationAuthority", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -19855,6 +19798,16 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"additionalZones": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -20127,13 +20080,8 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -20387,12 +20335,6 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecMasterAuth(ref com
 							},
 						},
 					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"username": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -20400,11 +20342,11 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecMasterAuth(ref com
 						},
 					},
 				},
-				Required: []string{"password", "username"},
+				Required: []string{"username"},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference", "kubeform.dev/kubeform/apis/google/v1alpha1.ContainerClusterSpecMasterAuthClientCertificateConfig"},
+			"kubeform.dev/kubeform/apis/google/v1alpha1.ContainerClusterSpecMasterAuthClientCertificateConfig"},
 	}
 }
 
@@ -21273,6 +21215,11 @@ func schema_kubeform_apis_google_v1alpha1_ContainerNodePoolSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"autoscaling": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -21371,13 +21318,8 @@ func schema_kubeform_apis_google_v1alpha1_ContainerNodePoolSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"cluster", "providerRef"},
+				Required: []string{"providerRef", "cluster"},
 			},
 		},
 		Dependencies: []string{
@@ -21790,6 +21732,11 @@ func schema_kubeform_apis_google_v1alpha1_DataflowJobSpec(ref common.ReferenceCa
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"maxWorkers": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -21852,13 +21799,8 @@ func schema_kubeform_apis_google_v1alpha1_DataflowJobSpec(ref common.ReferenceCa
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "tempGcsLocation", "templateGcsPath", "providerRef"},
+				Required: []string{"providerRef", "name", "tempGcsLocation", "templateGcsPath"},
 			},
 		},
 		Dependencies: []string{
@@ -21993,6 +21935,11 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"clusterConfig": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -22037,13 +21984,8 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -22602,6 +22544,11 @@ func schema_kubeform_apis_google_v1alpha1_DataprocJobSpec(ref common.ReferenceCa
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"forceDelete": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -22742,13 +22689,8 @@ func schema_kubeform_apis_google_v1alpha1_DataprocJobSpec(ref common.ReferenceCa
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"placement", "providerRef"},
+				Required: []string{"providerRef", "placement"},
 			},
 		},
 		Dependencies: []string{
@@ -23644,6 +23586,11 @@ func schema_kubeform_apis_google_v1alpha1_DnsManagedZoneSpec(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -23682,13 +23629,8 @@ func schema_kubeform_apis_google_v1alpha1_DnsManagedZoneSpec(ref common.Referenc
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"dnsName", "name", "providerRef"},
+				Required: []string{"providerRef", "dnsName", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -23823,6 +23765,11 @@ func schema_kubeform_apis_google_v1alpha1_DnsRecordSetSpec(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"managedZone": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -23866,13 +23813,8 @@ func schema_kubeform_apis_google_v1alpha1_DnsRecordSetSpec(ref common.ReferenceC
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"managedZone", "name", "rrdatas", "ttl", "type", "providerRef"},
+				Required: []string{"providerRef", "managedZone", "name", "rrdatas", "ttl", "type"},
 			},
 		},
 		Dependencies: []string{
@@ -24007,6 +23949,11 @@ func schema_kubeform_apis_google_v1alpha1_EndpointsServiceSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"grpcConfig": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -24044,13 +23991,8 @@ func schema_kubeform_apis_google_v1alpha1_EndpointsServiceSpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"serviceName", "providerRef"},
+				Required: []string{"providerRef", "serviceName"},
 			},
 		},
 		Dependencies: []string{
@@ -24185,6 +24127,11 @@ func schema_kubeform_apis_google_v1alpha1_FilestoreInstanceSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -24253,13 +24200,8 @@ func schema_kubeform_apis_google_v1alpha1_FilestoreInstanceSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"fileShares", "name", "networks", "tier", "zone", "providerRef"},
+				Required: []string{"providerRef", "fileShares", "name", "networks", "tier", "zone"},
 			},
 		},
 		Dependencies: []string{
@@ -24500,6 +24442,11 @@ func schema_kubeform_apis_google_v1alpha1_FolderIamBindingSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"folder": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -24525,13 +24472,8 @@ func schema_kubeform_apis_google_v1alpha1_FolderIamBindingSpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"folder", "members", "role", "providerRef"},
+				Required: []string{"providerRef", "folder", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -24666,6 +24608,11 @@ func schema_kubeform_apis_google_v1alpha1_FolderIamMemberSpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"folder": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -24684,13 +24631,8 @@ func schema_kubeform_apis_google_v1alpha1_FolderIamMemberSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"folder", "member", "role", "providerRef"},
+				Required: []string{"providerRef", "folder", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -24825,6 +24767,11 @@ func schema_kubeform_apis_google_v1alpha1_FolderIamPolicySpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"folder": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -24837,13 +24784,8 @@ func schema_kubeform_apis_google_v1alpha1_FolderIamPolicySpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"folder", "policyData", "providerRef"},
+				Required: []string{"providerRef", "folder", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -25025,6 +24967,11 @@ func schema_kubeform_apis_google_v1alpha1_FolderOrganizationPolicySpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"booleanPolicy": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -25079,13 +25026,8 @@ func schema_kubeform_apis_google_v1alpha1_FolderOrganizationPolicySpec(ref commo
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"constraint", "folder", "providerRef"},
+				Required: []string{"providerRef", "constraint", "folder"},
 			},
 		},
 		Dependencies: []string{
@@ -25274,6 +25216,11 @@ func schema_kubeform_apis_google_v1alpha1_FolderSpec(ref common.ReferenceCallbac
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"displayName": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -25286,13 +25233,8 @@ func schema_kubeform_apis_google_v1alpha1_FolderSpec(ref common.ReferenceCallbac
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"displayName", "parent", "providerRef"},
+				Required: []string{"providerRef", "displayName", "parent"},
 			},
 		},
 		Dependencies: []string{
@@ -25470,6 +25412,11 @@ func schema_kubeform_apis_google_v1alpha1_KmsCryptoKeyIamBindingSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"cryptoKeyID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -25495,13 +25442,8 @@ func schema_kubeform_apis_google_v1alpha1_KmsCryptoKeyIamBindingSpec(ref common.
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"cryptoKeyID", "members", "role", "providerRef"},
+				Required: []string{"providerRef", "cryptoKeyID", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -25636,6 +25578,11 @@ func schema_kubeform_apis_google_v1alpha1_KmsCryptoKeyIamMemberSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"cryptoKeyID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -25654,13 +25601,8 @@ func schema_kubeform_apis_google_v1alpha1_KmsCryptoKeyIamMemberSpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"cryptoKeyID", "member", "role", "providerRef"},
+				Required: []string{"providerRef", "cryptoKeyID", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -25752,6 +25694,11 @@ func schema_kubeform_apis_google_v1alpha1_KmsCryptoKeySpec(ref common.ReferenceC
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"keyRing": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -25770,13 +25717,8 @@ func schema_kubeform_apis_google_v1alpha1_KmsCryptoKeySpec(ref common.ReferenceC
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"keyRing", "name", "providerRef"},
+				Required: []string{"providerRef", "keyRing", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -25954,6 +25896,11 @@ func schema_kubeform_apis_google_v1alpha1_KmsKeyRingIamBindingSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"keyRingID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -25979,13 +25926,8 @@ func schema_kubeform_apis_google_v1alpha1_KmsKeyRingIamBindingSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"keyRingID", "members", "role", "providerRef"},
+				Required: []string{"providerRef", "keyRingID", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -26120,6 +26062,11 @@ func schema_kubeform_apis_google_v1alpha1_KmsKeyRingIamMemberSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"keyRingID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -26138,13 +26085,8 @@ func schema_kubeform_apis_google_v1alpha1_KmsKeyRingIamMemberSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"keyRingID", "member", "role", "providerRef"},
+				Required: []string{"providerRef", "keyRingID", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -26279,6 +26221,11 @@ func schema_kubeform_apis_google_v1alpha1_KmsKeyRingIamPolicySpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"keyRingID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -26291,13 +26238,8 @@ func schema_kubeform_apis_google_v1alpha1_KmsKeyRingIamPolicySpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"keyRingID", "policyData", "providerRef"},
+				Required: []string{"providerRef", "keyRingID", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -26389,6 +26331,11 @@ func schema_kubeform_apis_google_v1alpha1_KmsKeyRingSpec(ref common.ReferenceCal
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"location": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -26407,13 +26354,8 @@ func schema_kubeform_apis_google_v1alpha1_KmsKeyRingSpec(ref common.ReferenceCal
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"location", "name", "providerRef"},
+				Required: []string{"providerRef", "location", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -26548,6 +26490,11 @@ func schema_kubeform_apis_google_v1alpha1_LoggingBillingAccountExclusionSpec(ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"billingAccount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -26578,13 +26525,8 @@ func schema_kubeform_apis_google_v1alpha1_LoggingBillingAccountExclusionSpec(ref
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"billingAccount", "filter", "name", "providerRef"},
+				Required: []string{"providerRef", "billingAccount", "filter", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -26719,6 +26661,11 @@ func schema_kubeform_apis_google_v1alpha1_LoggingBillingAccountSinkSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"billingAccount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -26743,13 +26690,8 @@ func schema_kubeform_apis_google_v1alpha1_LoggingBillingAccountSinkSpec(ref comm
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"billingAccount", "destination", "name", "providerRef"},
+				Required: []string{"providerRef", "billingAccount", "destination", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -26884,6 +26826,11 @@ func schema_kubeform_apis_google_v1alpha1_LoggingFolderExclusionSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -26914,13 +26861,8 @@ func schema_kubeform_apis_google_v1alpha1_LoggingFolderExclusionSpec(ref common.
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"filter", "folder", "name", "providerRef"},
+				Required: []string{"providerRef", "filter", "folder", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -27055,6 +26997,11 @@ func schema_kubeform_apis_google_v1alpha1_LoggingFolderSinkSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"destination": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -27085,13 +27032,8 @@ func schema_kubeform_apis_google_v1alpha1_LoggingFolderSinkSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"destination", "folder", "name", "providerRef"},
+				Required: []string{"providerRef", "destination", "folder", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -27226,6 +27168,11 @@ func schema_kubeform_apis_google_v1alpha1_LoggingOrganizationExclusionSpec(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -27256,13 +27203,8 @@ func schema_kubeform_apis_google_v1alpha1_LoggingOrganizationExclusionSpec(ref c
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"filter", "name", "orgID", "providerRef"},
+				Required: []string{"providerRef", "filter", "name", "orgID"},
 			},
 		},
 		Dependencies: []string{
@@ -27397,6 +27339,11 @@ func schema_kubeform_apis_google_v1alpha1_LoggingOrganizationSinkSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"destination": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -27427,13 +27374,8 @@ func schema_kubeform_apis_google_v1alpha1_LoggingOrganizationSinkSpec(ref common
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"destination", "name", "orgID", "providerRef"},
+				Required: []string{"providerRef", "destination", "name", "orgID"},
 			},
 		},
 		Dependencies: []string{
@@ -27568,6 +27510,11 @@ func schema_kubeform_apis_google_v1alpha1_LoggingProjectExclusionSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -27598,13 +27545,8 @@ func schema_kubeform_apis_google_v1alpha1_LoggingProjectExclusionSpec(ref common
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"filter", "name", "providerRef"},
+				Required: []string{"providerRef", "filter", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -27739,6 +27681,11 @@ func schema_kubeform_apis_google_v1alpha1_LoggingProjectSinkSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"destination": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -27769,13 +27716,8 @@ func schema_kubeform_apis_google_v1alpha1_LoggingProjectSinkSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"destination", "name", "providerRef"},
+				Required: []string{"providerRef", "destination", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -27910,6 +27852,11 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringAlertPolicySpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"combiner": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -27972,13 +27919,8 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringAlertPolicySpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"combiner", "conditions", "displayName", "enabled", "providerRef"},
+				Required: []string{"providerRef", "combiner", "conditions", "displayName", "enabled"},
 			},
 		},
 		Dependencies: []string{
@@ -28467,6 +28409,11 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringGroupSpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"displayName": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -28497,13 +28444,8 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringGroupSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"displayName", "filter", "providerRef"},
+				Required: []string{"providerRef", "displayName", "filter"},
 			},
 		},
 		Dependencies: []string{
@@ -28638,6 +28580,11 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringNotificationChannelSpec(ref 
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -28696,13 +28643,8 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringNotificationChannelSpec(ref 
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"displayName", "type", "providerRef"},
+				Required: []string{"providerRef", "displayName", "type"},
 			},
 		},
 		Dependencies: []string{
@@ -28837,6 +28779,16 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringUptimeCheckConfigSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"contentMatchers": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -28952,13 +28904,8 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringUptimeCheckConfigSpec(ref co
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"displayName", "timeout", "providerRef"},
+				Required: []string{"providerRef", "displayName", "timeout"},
 			},
 		},
 		Dependencies: []string{
@@ -29054,12 +29001,6 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringUptimeCheckConfigSpecHttpChe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"username": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -29069,8 +29010,6 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringUptimeCheckConfigSpecHttpChe
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
 	}
 }
 
@@ -29319,6 +29258,11 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationIamBindingSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"members": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -29344,13 +29288,8 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationIamBindingSpec(ref common.
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"members", "orgID", "role", "providerRef"},
+				Required: []string{"providerRef", "members", "orgID", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -29485,6 +29424,11 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationIamCustomRoleSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"deleted": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
@@ -29535,13 +29479,8 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationIamCustomRoleSpec(ref comm
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"orgID", "permissions", "roleID", "title", "providerRef"},
+				Required: []string{"providerRef", "orgID", "permissions", "roleID", "title"},
 			},
 		},
 		Dependencies: []string{
@@ -29676,6 +29615,11 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationIamMemberSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"member": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -29694,13 +29638,8 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationIamMemberSpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"member", "orgID", "role", "providerRef"},
+				Required: []string{"providerRef", "member", "orgID", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -29835,6 +29774,11 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationIamPolicySpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"orgID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -29847,13 +29791,8 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationIamPolicySpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"orgID", "policyData", "providerRef"},
+				Required: []string{"providerRef", "orgID", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -29988,6 +29927,11 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationPolicySpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"booleanPolicy": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -30042,13 +29986,8 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationPolicySpec(ref common.Refe
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"constraint", "orgID", "providerRef"},
+				Required: []string{"providerRef", "constraint", "orgID"},
 			},
 		},
 		Dependencies: []string{
@@ -30370,6 +30309,11 @@ func schema_kubeform_apis_google_v1alpha1_ProjectIamBindingSpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"members": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -30395,13 +30339,8 @@ func schema_kubeform_apis_google_v1alpha1_ProjectIamBindingSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"members", "role", "providerRef"},
+				Required: []string{"providerRef", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -30536,6 +30475,11 @@ func schema_kubeform_apis_google_v1alpha1_ProjectIamCustomRoleSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"deleted": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
@@ -30586,13 +30530,8 @@ func schema_kubeform_apis_google_v1alpha1_ProjectIamCustomRoleSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"permissions", "roleID", "title", "providerRef"},
+				Required: []string{"providerRef", "permissions", "roleID", "title"},
 			},
 		},
 		Dependencies: []string{
@@ -30727,6 +30666,11 @@ func schema_kubeform_apis_google_v1alpha1_ProjectIamMemberSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"member": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -30745,13 +30689,8 @@ func schema_kubeform_apis_google_v1alpha1_ProjectIamMemberSpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"member", "role", "providerRef"},
+				Required: []string{"providerRef", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -30886,6 +30825,11 @@ func schema_kubeform_apis_google_v1alpha1_ProjectIamPolicySpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"authoritative": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
@@ -30912,13 +30856,8 @@ func schema_kubeform_apis_google_v1alpha1_ProjectIamPolicySpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"policyData", "providerRef"},
+				Required: []string{"providerRef", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -31100,6 +31039,11 @@ func schema_kubeform_apis_google_v1alpha1_ProjectOrganizationPolicySpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"booleanPolicy": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -31154,13 +31098,8 @@ func schema_kubeform_apis_google_v1alpha1_ProjectOrganizationPolicySpec(ref comm
 							Format: "int32",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"constraint", "project", "providerRef"},
+				Required: []string{"providerRef", "constraint", "project"},
 			},
 		},
 		Dependencies: []string{
@@ -31439,6 +31378,11 @@ func schema_kubeform_apis_google_v1alpha1_ProjectServiceSpec(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"disableOnDestroy": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -31457,13 +31401,8 @@ func schema_kubeform_apis_google_v1alpha1_ProjectServiceSpec(ref common.Referenc
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"service", "providerRef"},
+				Required: []string{"providerRef", "service"},
 			},
 		},
 		Dependencies: []string{
@@ -31598,6 +31537,11 @@ func schema_kubeform_apis_google_v1alpha1_ProjectServicesSpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"disableOnDestroy": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -31623,13 +31567,8 @@ func schema_kubeform_apis_google_v1alpha1_ProjectServicesSpec(ref common.Referen
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"services", "providerRef"},
+				Required: []string{"providerRef", "services"},
 			},
 		},
 		Dependencies: []string{
@@ -31674,6 +31613,11 @@ func schema_kubeform_apis_google_v1alpha1_ProjectSpec(ref common.ReferenceCallba
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"appEngine": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Deprecated",
@@ -31743,13 +31687,8 @@ func schema_kubeform_apis_google_v1alpha1_ProjectSpec(ref common.ReferenceCallba
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "projectID", "providerRef"},
+				Required: []string{"providerRef", "name", "projectID"},
 			},
 		},
 		Dependencies: []string{
@@ -31946,6 +31885,11 @@ func schema_kubeform_apis_google_v1alpha1_ProjectUsageExportBucketSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bucketName": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -31964,13 +31908,8 @@ func schema_kubeform_apis_google_v1alpha1_ProjectUsageExportBucketSpec(ref commo
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bucketName", "providerRef"},
+				Required: []string{"providerRef", "bucketName"},
 			},
 		},
 		Dependencies: []string{
@@ -32148,6 +32087,11 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionIamBindingSpec(ref c
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"members": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -32179,13 +32123,8 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionIamBindingSpec(ref c
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"members", "role", "subscription", "providerRef"},
+				Required: []string{"providerRef", "members", "role", "subscription"},
 			},
 		},
 		Dependencies: []string{
@@ -32320,6 +32259,11 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionIamMemberSpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"member": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -32344,13 +32288,8 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionIamMemberSpec(ref co
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"member", "role", "subscription", "providerRef"},
+				Required: []string{"providerRef", "member", "role", "subscription"},
 			},
 		},
 		Dependencies: []string{
@@ -32485,6 +32424,11 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionIamPolicySpec(ref co
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"policyData": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -32503,13 +32447,8 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionIamPolicySpec(ref co
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"policyData", "subscription", "providerRef"},
+				Required: []string{"providerRef", "policyData", "subscription"},
 			},
 		},
 		Dependencies: []string{
@@ -32601,6 +32540,11 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionSpec(ref common.Refe
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"ackDeadlineSeconds": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},
@@ -32637,13 +32581,8 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "topic", "providerRef"},
+				Required: []string{"providerRef", "name", "topic"},
 			},
 		},
 		Dependencies: []string{
@@ -32854,6 +32793,11 @@ func schema_kubeform_apis_google_v1alpha1_PubsubTopicIamBindingSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"members": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -32885,13 +32829,8 @@ func schema_kubeform_apis_google_v1alpha1_PubsubTopicIamBindingSpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"members", "role", "topic", "providerRef"},
+				Required: []string{"providerRef", "members", "role", "topic"},
 			},
 		},
 		Dependencies: []string{
@@ -33026,6 +32965,11 @@ func schema_kubeform_apis_google_v1alpha1_PubsubTopicIamMemberSpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"member": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -33050,13 +32994,8 @@ func schema_kubeform_apis_google_v1alpha1_PubsubTopicIamMemberSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"member", "role", "topic", "providerRef"},
+				Required: []string{"providerRef", "member", "role", "topic"},
 			},
 		},
 		Dependencies: []string{
@@ -33191,6 +33130,11 @@ func schema_kubeform_apis_google_v1alpha1_PubsubTopicIamPolicySpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"policyData": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -33209,13 +33153,8 @@ func schema_kubeform_apis_google_v1alpha1_PubsubTopicIamPolicySpec(ref common.Re
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"policyData", "topic", "providerRef"},
+				Required: []string{"providerRef", "policyData", "topic"},
 			},
 		},
 		Dependencies: []string{
@@ -33307,6 +33246,11 @@ func schema_kubeform_apis_google_v1alpha1_PubsubTopicSpec(ref common.ReferenceCa
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -33319,13 +33263,8 @@ func schema_kubeform_apis_google_v1alpha1_PubsubTopicSpec(ref common.ReferenceCa
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -33460,6 +33399,11 @@ func schema_kubeform_apis_google_v1alpha1_RedisInstanceSpec(ref common.Reference
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"alternativeLocationID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -33554,13 +33498,8 @@ func schema_kubeform_apis_google_v1alpha1_RedisInstanceSpec(ref common.Reference
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"memorySizeGb", "name", "providerRef"},
+				Required: []string{"providerRef", "memorySizeGb", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -33695,6 +33634,11 @@ func schema_kubeform_apis_google_v1alpha1_ResourceManagerLienSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"origin": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -33726,13 +33670,8 @@ func schema_kubeform_apis_google_v1alpha1_ResourceManagerLienSpec(ref common.Ref
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"origin", "parent", "reason", "restrictions", "providerRef"},
+				Required: []string{"providerRef", "origin", "parent", "reason", "restrictions"},
 			},
 		},
 		Dependencies: []string{
@@ -33867,6 +33806,11 @@ func schema_kubeform_apis_google_v1alpha1_RuntimeconfigConfigSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -33885,13 +33829,8 @@ func schema_kubeform_apis_google_v1alpha1_RuntimeconfigConfigSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -34026,6 +33965,11 @@ func schema_kubeform_apis_google_v1alpha1_RuntimeconfigVariableSpec(ref common.R
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -34056,13 +34000,8 @@ func schema_kubeform_apis_google_v1alpha1_RuntimeconfigVariableSpec(ref common.R
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "parent", "providerRef"},
+				Required: []string{"providerRef", "name", "parent"},
 			},
 		},
 		Dependencies: []string{
@@ -34240,6 +34179,11 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountIamBindingSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"members": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -34265,13 +34209,8 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountIamBindingSpec(ref commo
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"members", "role", "serviceAccountID", "providerRef"},
+				Required: []string{"providerRef", "members", "role", "serviceAccountID"},
 			},
 		},
 		Dependencies: []string{
@@ -34406,6 +34345,11 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountIamMemberSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"member": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -34424,13 +34368,8 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountIamMemberSpec(ref common
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"member", "role", "serviceAccountID", "providerRef"},
+				Required: []string{"providerRef", "member", "role", "serviceAccountID"},
 			},
 		},
 		Dependencies: []string{
@@ -34565,6 +34504,11 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountIamPolicySpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"policyData": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -34577,13 +34521,8 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountIamPolicySpec(ref common
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"policyData", "serviceAccountID", "providerRef"},
+				Required: []string{"providerRef", "policyData", "serviceAccountID"},
 			},
 		},
 		Dependencies: []string{
@@ -34718,6 +34657,11 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountKeySpec(ref common.Refer
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"keyAlgorithm": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -34748,13 +34692,8 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountKeySpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"serviceAccountID", "providerRef"},
+				Required: []string{"providerRef", "serviceAccountID"},
 			},
 		},
 		Dependencies: []string{
@@ -34846,6 +34785,11 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountSpec(ref common.Referenc
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"accountID": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -34871,13 +34815,8 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountSpec(ref common.Referenc
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"accountID", "providerRef"},
+				Required: []string{"providerRef", "accountID"},
 			},
 		},
 		Dependencies: []string{
@@ -35012,6 +34951,11 @@ func schema_kubeform_apis_google_v1alpha1_SourcerepoRepositorySpec(ref common.Re
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"name": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -35024,13 +34968,8 @@ func schema_kubeform_apis_google_v1alpha1_SourcerepoRepositorySpec(ref common.Re
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -35208,6 +35147,11 @@ func schema_kubeform_apis_google_v1alpha1_SpannerDatabaseIamBindingSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"database": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -35245,13 +35189,8 @@ func schema_kubeform_apis_google_v1alpha1_SpannerDatabaseIamBindingSpec(ref comm
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"database", "instance", "members", "role", "providerRef"},
+				Required: []string{"providerRef", "database", "instance", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -35386,6 +35325,11 @@ func schema_kubeform_apis_google_v1alpha1_SpannerDatabaseIamMemberSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"database": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -35416,13 +35360,8 @@ func schema_kubeform_apis_google_v1alpha1_SpannerDatabaseIamMemberSpec(ref commo
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"database", "instance", "member", "role", "providerRef"},
+				Required: []string{"providerRef", "database", "instance", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -35557,6 +35496,11 @@ func schema_kubeform_apis_google_v1alpha1_SpannerDatabaseIamPolicySpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"database": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -35581,13 +35525,8 @@ func schema_kubeform_apis_google_v1alpha1_SpannerDatabaseIamPolicySpec(ref commo
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"database", "instance", "policyData", "providerRef"},
+				Required: []string{"providerRef", "database", "instance", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -35679,6 +35618,11 @@ func schema_kubeform_apis_google_v1alpha1_SpannerDatabaseSpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"ddl": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -35710,13 +35654,8 @@ func schema_kubeform_apis_google_v1alpha1_SpannerDatabaseSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"instance", "name", "providerRef"},
+				Required: []string{"providerRef", "instance", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -35894,6 +35833,11 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceIamBindingSpec(ref comm
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"instance": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -35925,13 +35869,8 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceIamBindingSpec(ref comm
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"instance", "members", "role", "providerRef"},
+				Required: []string{"providerRef", "instance", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -36066,6 +36005,11 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceIamMemberSpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"instance": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -36090,13 +36034,8 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceIamMemberSpec(ref commo
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"instance", "member", "role", "providerRef"},
+				Required: []string{"providerRef", "instance", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -36231,6 +36170,11 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceIamPolicySpec(ref commo
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"instance": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -36249,13 +36193,8 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceIamPolicySpec(ref commo
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"instance", "policyData", "providerRef"},
+				Required: []string{"providerRef", "instance", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -36347,6 +36286,11 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceSpec(ref common.Referen
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"config": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -36391,13 +36335,8 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"config", "displayName", "providerRef"},
+				Required: []string{"providerRef", "config", "displayName"},
 			},
 		},
 		Dependencies: []string{
@@ -36575,6 +36514,16 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"databaseVersion": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -36629,13 +36578,8 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpec(ref common.Ref
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"settings", "providerRef"},
+				Required: []string{"providerRef", "settings"},
 			},
 		},
 		Dependencies: []string{
@@ -36691,12 +36635,6 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpecReplicaConfigur
 							Format: "int32",
 						},
 					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"sslCipher": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -36718,8 +36656,6 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpecReplicaConfigur
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/api/core/v1.LocalObjectReference"},
 	}
 }
 
@@ -37145,6 +37081,11 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseSpec(ref common.ReferenceCa
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"charset": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -37175,13 +37116,8 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseSpec(ref common.ReferenceCa
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"instance", "name", "providerRef"},
+				Required: []string{"providerRef", "instance", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -37316,6 +37252,11 @@ func schema_kubeform_apis_google_v1alpha1_SqlSslCertSpec(ref common.ReferenceCal
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"commonName": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -37328,13 +37269,8 @@ func schema_kubeform_apis_google_v1alpha1_SqlSslCertSpec(ref common.ReferenceCal
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"commonName", "instance", "providerRef"},
+				Required: []string{"providerRef", "commonName", "instance"},
 			},
 		},
 		Dependencies: []string{
@@ -37469,6 +37405,16 @@ func schema_kubeform_apis_google_v1alpha1_SqlUserSpec(ref common.ReferenceCallba
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"secret": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"host": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -37487,25 +37433,14 @@ func schema_kubeform_apis_google_v1alpha1_SqlUserSpec(ref common.ReferenceCallba
 							Format: "",
 						},
 					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Sensitive Data. Provide secret name which contains one value only",
-							Ref:         ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 					"project": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"instance", "name", "providerRef"},
+				Required: []string{"providerRef", "instance", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -37683,6 +37618,11 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketACLSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bucket": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -37714,13 +37654,8 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketACLSpec(ref common.Refere
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bucket", "providerRef"},
+				Required: []string{"providerRef", "bucket"},
 			},
 		},
 		Dependencies: []string{
@@ -37855,6 +37790,11 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketIamBindingSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bucket": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -37880,13 +37820,8 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketIamBindingSpec(ref common
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bucket", "members", "role", "providerRef"},
+				Required: []string{"providerRef", "bucket", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -38021,6 +37956,11 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketIamMemberSpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bucket": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -38039,13 +37979,8 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketIamMemberSpec(ref common.
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bucket", "member", "role", "providerRef"},
+				Required: []string{"providerRef", "bucket", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -38180,6 +38115,11 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketIamPolicySpec(ref common.
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bucket": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -38192,13 +38132,8 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketIamPolicySpec(ref common.
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bucket", "policyData", "providerRef"},
+				Required: []string{"providerRef", "bucket", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -38380,6 +38315,11 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketObjectSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bucket": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -38446,13 +38386,8 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketObjectSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bucket", "name", "providerRef"},
+				Required: []string{"providerRef", "bucket", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -38497,6 +38432,11 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketSpec(ref common.Reference
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"cors": {
 						SchemaProps: spec.SchemaProps{
 							Type: []string{"array"},
@@ -38613,13 +38553,8 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketSpec(ref common.Reference
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"name", "providerRef"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -39010,6 +38945,11 @@ func schema_kubeform_apis_google_v1alpha1_StorageDefaultObjectACLSpec(ref common
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bucket": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -39029,13 +38969,8 @@ func schema_kubeform_apis_google_v1alpha1_StorageDefaultObjectACLSpec(ref common
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bucket", "providerRef"},
+				Required: []string{"providerRef", "bucket"},
 			},
 		},
 		Dependencies: []string{
@@ -39170,6 +39105,11 @@ func schema_kubeform_apis_google_v1alpha1_StorageDefaultObjectAccessControlSpec(
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bucket": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -39194,13 +39134,8 @@ func schema_kubeform_apis_google_v1alpha1_StorageDefaultObjectAccessControlSpec(
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bucket", "entity", "role", "providerRef"},
+				Required: []string{"providerRef", "bucket", "entity", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -39335,6 +39270,11 @@ func schema_kubeform_apis_google_v1alpha1_StorageNotificationSpec(ref common.Ref
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bucket": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -39386,13 +39326,8 @@ func schema_kubeform_apis_google_v1alpha1_StorageNotificationSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bucket", "payloadFormat", "topic", "providerRef"},
+				Required: []string{"providerRef", "bucket", "payloadFormat", "topic"},
 			},
 		},
 		Dependencies: []string{
@@ -39527,6 +39462,11 @@ func schema_kubeform_apis_google_v1alpha1_StorageObjectACLSpec(ref common.Refere
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bucket": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -39558,13 +39498,8 @@ func schema_kubeform_apis_google_v1alpha1_StorageObjectACLSpec(ref common.Refere
 							},
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bucket", "object", "providerRef"},
+				Required: []string{"providerRef", "bucket", "object"},
 			},
 		},
 		Dependencies: []string{
@@ -39699,6 +39634,11 @@ func schema_kubeform_apis_google_v1alpha1_StorageObjectAccessControlSpec(ref com
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
 					"bucket": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
@@ -39723,13 +39663,8 @@ func schema_kubeform_apis_google_v1alpha1_StorageObjectAccessControlSpec(ref com
 							Format: "",
 						},
 					},
-					"providerRef": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
-						},
-					},
 				},
-				Required: []string{"bucket", "entity", "object", "role", "providerRef"},
+				Required: []string{"providerRef", "bucket", "entity", "object", "role"},
 			},
 		},
 		Dependencies: []string{

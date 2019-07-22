@@ -19,8 +19,9 @@ type DomainRecord struct {
 }
 
 type DomainRecordSpec struct {
-	DomainID int    `json:"domainID" tf:"domain_id"`
-	Name     string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	DomainID    int                       `json:"domainID" tf:"domain_id"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
@@ -36,8 +37,7 @@ type DomainRecordSpec struct {
 	// +optional
 	TtlSec int `json:"ttlSec,omitempty" tf:"ttl_sec,omitempty"`
 	// +optional
-	Weight      int                       `json:"weight,omitempty" tf:"weight,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Weight int `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type DomainRecordStatus struct {

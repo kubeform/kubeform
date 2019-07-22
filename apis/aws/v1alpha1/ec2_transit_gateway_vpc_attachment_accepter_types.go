@@ -19,14 +19,14 @@ type Ec2TransitGatewayVpcAttachmentAccepter struct {
 }
 
 type Ec2TransitGatewayVpcAttachmentAccepterSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Tags                       map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	TransitGatewayAttachmentID string            `json:"transitGatewayAttachmentID" tf:"transit_gateway_attachment_id"`
 	// +optional
 	TransitGatewayDefaultRouteTableAssociation bool `json:"transitGatewayDefaultRouteTableAssociation,omitempty" tf:"transit_gateway_default_route_table_association,omitempty"`
 	// +optional
-	TransitGatewayDefaultRouteTablePropagation bool                      `json:"transitGatewayDefaultRouteTablePropagation,omitempty" tf:"transit_gateway_default_route_table_propagation,omitempty"`
-	ProviderRef                                core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TransitGatewayDefaultRouteTablePropagation bool `json:"transitGatewayDefaultRouteTablePropagation,omitempty" tf:"transit_gateway_default_route_table_propagation,omitempty"`
 }
 
 type Ec2TransitGatewayVpcAttachmentAccepterStatus struct {

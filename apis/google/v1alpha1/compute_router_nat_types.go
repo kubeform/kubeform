@@ -29,6 +29,7 @@ type ComputeRouterNATSpecSubnetwork struct {
 }
 
 type ComputeRouterNATSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	IcmpIdleTimeoutSec int `json:"icmpIdleTimeoutSec,omitempty" tf:"icmp_idle_timeout_sec,omitempty"`
 	// +optional
@@ -53,8 +54,7 @@ type ComputeRouterNATSpec struct {
 	// +optional
 	TcpTransitoryIdleTimeoutSec int `json:"tcpTransitoryIdleTimeoutSec,omitempty" tf:"tcp_transitory_idle_timeout_sec,omitempty"`
 	// +optional
-	UdpIdleTimeoutSec int                       `json:"udpIdleTimeoutSec,omitempty" tf:"udp_idle_timeout_sec,omitempty"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	UdpIdleTimeoutSec int `json:"udpIdleTimeoutSec,omitempty" tf:"udp_idle_timeout_sec,omitempty"`
 }
 
 type ComputeRouterNATStatus struct {

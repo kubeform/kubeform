@@ -19,6 +19,7 @@ type SnsPlatformApplication struct {
 }
 
 type SnsPlatformApplicationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	EventDeliveryFailureTopicArn string `json:"eventDeliveryFailureTopicArn,omitempty" tf:"event_delivery_failure_topic_arn,omitempty"`
 	// +optional
@@ -37,8 +38,7 @@ type SnsPlatformApplicationSpec struct {
 	// +optional
 	SuccessFeedbackRoleArn string `json:"successFeedbackRoleArn,omitempty" tf:"success_feedback_role_arn,omitempty"`
 	// +optional
-	SuccessFeedbackSampleRate string                    `json:"successFeedbackSampleRate,omitempty" tf:"success_feedback_sample_rate,omitempty"`
-	ProviderRef               core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SuccessFeedbackSampleRate string `json:"successFeedbackSampleRate,omitempty" tf:"success_feedback_sample_rate,omitempty"`
 }
 
 type SnsPlatformApplicationStatus struct {

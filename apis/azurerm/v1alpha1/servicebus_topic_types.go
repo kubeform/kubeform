@@ -19,6 +19,7 @@ type ServicebusTopic struct {
 }
 
 type ServicebusTopicSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AutoDeleteOnIdle string `json:"autoDeleteOnIdle,omitempty" tf:"auto_delete_on_idle,omitempty"`
 	// +optional
@@ -47,8 +48,7 @@ type ServicebusTopicSpec struct {
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
-	SupportOrdering bool                      `json:"supportOrdering,omitempty" tf:"support_ordering,omitempty"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SupportOrdering bool `json:"supportOrdering,omitempty" tf:"support_ordering,omitempty"`
 }
 
 type ServicebusTopicStatus struct {

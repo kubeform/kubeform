@@ -19,6 +19,7 @@ type FlowLog struct {
 }
 
 type FlowLogSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	EniID string `json:"eniID,omitempty" tf:"eni_id,omitempty"`
 	// +optional
@@ -34,8 +35,7 @@ type FlowLogSpec struct {
 	SubnetID    string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
 	TrafficType string `json:"trafficType" tf:"traffic_type"`
 	// +optional
-	VpcID       string                    `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
 }
 
 type FlowLogStatus struct {

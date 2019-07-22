@@ -19,6 +19,8 @@ type SsmParameter struct {
 }
 
 type SsmParameterSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	AllowedPattern string `json:"allowedPattern,omitempty" tf:"allowed_pattern,omitempty"`
 	// +optional
@@ -35,9 +37,6 @@ type SsmParameterSpec struct {
 	// +optional
 	Tier string `json:"tier,omitempty" tf:"tier,omitempty"`
 	Type string `json:"type" tf:"type"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Value       *core.LocalObjectReference `json:"value" tf:"value"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 }
 
 type SsmParameterStatus struct {

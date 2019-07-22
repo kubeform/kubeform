@@ -19,12 +19,12 @@ type KeyPair struct {
 }
 
 type KeyPairSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	KeyName string `json:"keyName,omitempty" tf:"key_name,omitempty"`
 	// +optional
-	KeyNamePrefix string                    `json:"keyNamePrefix,omitempty" tf:"key_name_prefix,omitempty"`
-	PublicKey     string                    `json:"publicKey" tf:"public_key"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	KeyNamePrefix string `json:"keyNamePrefix,omitempty" tf:"key_name_prefix,omitempty"`
+	PublicKey     string `json:"publicKey" tf:"public_key"`
 }
 
 type KeyPairStatus struct {

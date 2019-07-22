@@ -24,6 +24,7 @@ type PolicyAssignmentSpecIdentity struct {
 }
 
 type PolicyAssignmentSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -37,10 +38,9 @@ type PolicyAssignmentSpec struct {
 	// +optional
 	NotScopes []string `json:"notScopes,omitempty" tf:"not_scopes,omitempty"`
 	// +optional
-	Parameters         string                    `json:"parameters,omitempty" tf:"parameters,omitempty"`
-	PolicyDefinitionID string                    `json:"policyDefinitionID" tf:"policy_definition_id"`
-	Scope              string                    `json:"scope" tf:"scope"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Parameters         string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	PolicyDefinitionID string `json:"policyDefinitionID" tf:"policy_definition_id"`
+	Scope              string `json:"scope" tf:"scope"`
 }
 
 type PolicyAssignmentStatus struct {

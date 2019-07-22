@@ -19,6 +19,7 @@ type GlueCatalogDatabase struct {
 }
 
 type GlueCatalogDatabaseSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	CatalogID string `json:"catalogID,omitempty" tf:"catalog_id,omitempty"`
 	// +optional
@@ -27,8 +28,7 @@ type GlueCatalogDatabaseSpec struct {
 	LocationURI string `json:"locationURI,omitempty" tf:"location_uri,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
-	Parameters  map[string]string         `json:"parameters,omitempty" tf:"parameters,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type GlueCatalogDatabaseStatus struct {

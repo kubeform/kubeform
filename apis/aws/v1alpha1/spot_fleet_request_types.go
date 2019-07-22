@@ -96,6 +96,7 @@ type SpotFleetRequestSpecLaunchSpecification struct {
 }
 
 type SpotFleetRequestSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AllocationStrategy string `json:"allocationStrategy,omitempty" tf:"allocation_strategy,omitempty"`
 	// +optional
@@ -127,8 +128,7 @@ type SpotFleetRequestSpec struct {
 	// +optional
 	ValidUntil string `json:"validUntil,omitempty" tf:"valid_until,omitempty"`
 	// +optional
-	WaitForFulfillment bool                      `json:"waitForFulfillment,omitempty" tf:"wait_for_fulfillment,omitempty"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	WaitForFulfillment bool `json:"waitForFulfillment,omitempty" tf:"wait_for_fulfillment,omitempty"`
 }
 
 type SpotFleetRequestStatus struct {

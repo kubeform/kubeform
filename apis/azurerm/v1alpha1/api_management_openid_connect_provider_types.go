@@ -19,18 +19,15 @@ type ApiManagementOpenidConnectProvider struct {
 }
 
 type ApiManagementOpenidConnectProviderSpec struct {
-	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
-	// Sensitive Data. Provide secret name which contains one value only
-	ClientID *core.LocalObjectReference `json:"clientID" tf:"client_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret *core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
+	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ApiManagementName string                     `json:"apiManagementName" tf:"api_management_name"`
 	// +optional
-	Description       string                    `json:"description,omitempty" tf:"description,omitempty"`
-	DisplayName       string                    `json:"displayName" tf:"display_name"`
-	MetadataEndpoint  string                    `json:"metadataEndpoint" tf:"metadata_endpoint"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Description       string `json:"description,omitempty" tf:"description,omitempty"`
+	DisplayName       string `json:"displayName" tf:"display_name"`
+	MetadataEndpoint  string `json:"metadataEndpoint" tf:"metadata_endpoint"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type ApiManagementOpenidConnectProviderStatus struct {

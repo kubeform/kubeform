@@ -19,6 +19,7 @@ type ComputeAddress struct {
 }
 
 type ComputeAddressSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Address string `json:"address,omitempty" tf:"address,omitempty"`
 	// +optional
@@ -36,8 +37,7 @@ type ComputeAddressSpec struct {
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
-	Subnetwork  string                    `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 }
 
 type ComputeAddressStatus struct {

@@ -39,9 +39,7 @@ type AlbListenerSpecDefaultActionAuthenticateOidc struct {
 	AuthenticationRequestExtraParams map[string]string `json:"authenticationRequestExtraParams,omitempty" tf:"authentication_request_extra_params,omitempty"`
 	AuthorizationEndpoint            string            `json:"authorizationEndpoint" tf:"authorization_endpoint"`
 	ClientID                         string            `json:"clientID" tf:"client_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret *core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
-	Issuer       string                     `json:"issuer" tf:"issuer"`
+	Issuer                           string            `json:"issuer" tf:"issuer"`
 	// +optional
 	OnUnauthenticatedRequest string `json:"onUnauthenticatedRequest,omitempty" tf:"on_unauthenticated_request,omitempty"`
 	// +optional
@@ -97,6 +95,8 @@ type AlbListenerSpecDefaultAction struct {
 }
 
 type AlbListenerSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	CertificateArn  string                         `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
 	DefaultAction   []AlbListenerSpecDefaultAction `json:"defaultAction" tf:"default_action"`
@@ -105,8 +105,7 @@ type AlbListenerSpec struct {
 	// +optional
 	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 	// +optional
-	SslPolicy   string                    `json:"sslPolicy,omitempty" tf:"ssl_policy,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SslPolicy string `json:"sslPolicy,omitempty" tf:"ssl_policy,omitempty"`
 }
 
 type AlbListenerStatus struct {

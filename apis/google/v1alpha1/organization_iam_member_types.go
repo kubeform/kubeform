@@ -19,10 +19,10 @@ type OrganizationIamMember struct {
 }
 
 type OrganizationIamMemberSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	Member      string                    `json:"member" tf:"member"`
 	OrgID       string                    `json:"orgID" tf:"org_id"`
 	Role        string                    `json:"role" tf:"role"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type OrganizationIamMemberStatus struct {

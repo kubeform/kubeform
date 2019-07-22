@@ -43,6 +43,7 @@ type GlueCrawlerSpecSchemaChangePolicy struct {
 }
 
 type GlueCrawlerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Classifiers []string `json:"classifiers,omitempty" tf:"classifiers,omitempty"`
 	// +optional
@@ -69,8 +70,7 @@ type GlueCrawlerSpec struct {
 	// +optional
 	SecurityConfiguration string `json:"securityConfiguration,omitempty" tf:"security_configuration,omitempty"`
 	// +optional
-	TablePrefix string                    `json:"tablePrefix,omitempty" tf:"table_prefix,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TablePrefix string `json:"tablePrefix,omitempty" tf:"table_prefix,omitempty"`
 }
 
 type GlueCrawlerStatus struct {

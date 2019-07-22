@@ -19,6 +19,7 @@ type IamPolicy struct {
 }
 
 type IamPolicySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -26,9 +27,8 @@ type IamPolicySpec struct {
 	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
-	Path        string                    `json:"path,omitempty" tf:"path,omitempty"`
-	Policy      string                    `json:"policy" tf:"policy"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Path   string `json:"path,omitempty" tf:"path,omitempty"`
+	Policy string `json:"policy" tf:"policy"`
 }
 
 type IamPolicyStatus struct {

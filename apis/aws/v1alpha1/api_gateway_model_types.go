@@ -19,14 +19,14 @@ type ApiGatewayModel struct {
 }
 
 type ApiGatewayModelSpec struct {
-	ContentType string `json:"contentType" tf:"content_type"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ContentType string                    `json:"contentType" tf:"content_type"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	RestAPIID   string `json:"restAPIID" tf:"rest_api_id"`
 	// +optional
-	Schema      string                    `json:"schema,omitempty" tf:"schema,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Schema string `json:"schema,omitempty" tf:"schema,omitempty"`
 }
 
 type ApiGatewayModelStatus struct {

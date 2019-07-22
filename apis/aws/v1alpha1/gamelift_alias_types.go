@@ -27,12 +27,12 @@ type GameliftAliasSpecRoutingStrategy struct {
 }
 
 type GameliftAliasSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
 	RoutingStrategy []GameliftAliasSpecRoutingStrategy `json:"routingStrategy" tf:"routing_strategy"`
-	ProviderRef     core.LocalObjectReference          `json:"providerRef" tf:"-"`
 }
 
 type GameliftAliasStatus struct {

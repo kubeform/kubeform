@@ -19,6 +19,7 @@ type Volume struct {
 }
 
 type VolumeSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -32,8 +33,7 @@ type VolumeSpec struct {
 	Region                string `json:"region" tf:"region"`
 	Size                  int    `json:"size" tf:"size"`
 	// +optional
-	SnapshotID  string                    `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 }
 
 type VolumeStatus struct {

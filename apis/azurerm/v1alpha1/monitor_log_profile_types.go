@@ -25,6 +25,7 @@ type MonitorLogProfileSpecRetentionPolicy struct {
 }
 
 type MonitorLogProfileSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	Categories []string `json:"categories" tf:"categories"`
@@ -37,8 +38,7 @@ type MonitorLogProfileSpec struct {
 	// +optional
 	ServicebusRuleID string `json:"servicebusRuleID,omitempty" tf:"servicebus_rule_id,omitempty"`
 	// +optional
-	StorageAccountID string                    `json:"storageAccountID,omitempty" tf:"storage_account_id,omitempty"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	StorageAccountID string `json:"storageAccountID,omitempty" tf:"storage_account_id,omitempty"`
 }
 
 type MonitorLogProfileStatus struct {

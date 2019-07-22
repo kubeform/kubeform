@@ -19,6 +19,7 @@ type Route struct {
 }
 
 type RouteSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DestinationCIDRBlock string `json:"destinationCIDRBlock,omitempty" tf:"destination_cidr_block,omitempty"`
 	// +optional
@@ -37,8 +38,7 @@ type RouteSpec struct {
 	// +optional
 	TransitGatewayID string `json:"transitGatewayID,omitempty" tf:"transit_gateway_id,omitempty"`
 	// +optional
-	VpcPeeringConnectionID string                    `json:"vpcPeeringConnectionID,omitempty" tf:"vpc_peering_connection_id,omitempty"`
-	ProviderRef            core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcPeeringConnectionID string `json:"vpcPeeringConnectionID,omitempty" tf:"vpc_peering_connection_id,omitempty"`
 }
 
 type RouteStatus struct {

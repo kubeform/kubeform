@@ -19,13 +19,13 @@ type ProjectServices struct {
 }
 
 type ProjectServicesSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DisableOnDestroy bool `json:"disableOnDestroy,omitempty" tf:"disable_on_destroy,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
-	Services    []string                  `json:"services" tf:"services"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Services []string `json:"services" tf:"services"`
 }
 
 type ProjectServicesStatus struct {

@@ -94,16 +94,10 @@ type EmrClusterSpecInstanceGroup struct {
 
 type EmrClusterSpecKerberosAttributes struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	AdDomainJoinPassword *core.LocalObjectReference `json:"adDomainJoinPassword,omitempty" tf:"ad_domain_join_password,omitempty"`
 	// +optional
 	AdDomainJoinUser string `json:"adDomainJoinUser,omitempty" tf:"ad_domain_join_user,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	CrossRealmTrustPrincipalPassword *core.LocalObjectReference `json:"crossRealmTrustPrincipalPassword,omitempty" tf:"cross_realm_trust_principal_password,omitempty"`
-	// Sensitive Data. Provide secret name which contains one value only
-	KdcAdminPassword *core.LocalObjectReference `json:"kdcAdminPassword" tf:"kdc_admin_password"`
-	Realm            string                     `json:"realm" tf:"realm"`
+	Realm string `json:"realm" tf:"realm"`
 }
 
 type EmrClusterSpecMasterInstanceGroupEbsConfig struct {
@@ -144,6 +138,8 @@ type EmrClusterSpecStep struct {
 }
 
 type EmrClusterSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	AdditionalInfo string `json:"additionalInfo,omitempty" tf:"additional_info,omitempty"`
 	// +optional
@@ -205,8 +201,7 @@ type EmrClusterSpec struct {
 	// +optional
 	TerminationProtection bool `json:"terminationProtection,omitempty" tf:"termination_protection,omitempty"`
 	// +optional
-	VisibleToAllUsers bool                      `json:"visibleToAllUsers,omitempty" tf:"visible_to_all_users,omitempty"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VisibleToAllUsers bool `json:"visibleToAllUsers,omitempty" tf:"visible_to_all_users,omitempty"`
 }
 
 type EmrClusterStatus struct {

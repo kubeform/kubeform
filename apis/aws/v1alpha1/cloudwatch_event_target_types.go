@@ -74,7 +74,8 @@ type CloudwatchEventTargetSpecSqsTarget struct {
 }
 
 type CloudwatchEventTargetSpec struct {
-	Arn string `json:"arn" tf:"arn"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Arn         string                    `json:"arn" tf:"arn"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	BatchTarget []CloudwatchEventTargetSpecBatchTarget `json:"batchTarget,omitempty" tf:"batch_target,omitempty"`
@@ -101,8 +102,7 @@ type CloudwatchEventTargetSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SqsTarget []CloudwatchEventTargetSpecSqsTarget `json:"sqsTarget,omitempty" tf:"sqs_target,omitempty"`
 	// +optional
-	TargetID    string                    `json:"targetID,omitempty" tf:"target_id,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TargetID string `json:"targetID,omitempty" tf:"target_id,omitempty"`
 }
 
 type CloudwatchEventTargetStatus struct {

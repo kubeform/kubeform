@@ -60,6 +60,7 @@ type MskClusterSpecEncryptionInfo struct {
 }
 
 type MskClusterSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MaxItems=1
 	BrokerNodeGroupInfo []MskClusterSpecBrokerNodeGroupInfo `json:"brokerNodeGroupInfo" tf:"broker_node_group_info"`
 	// +optional
@@ -77,8 +78,7 @@ type MskClusterSpec struct {
 	KafkaVersion        string `json:"kafkaVersion" tf:"kafka_version"`
 	NumberOfBrokerNodes int    `json:"numberOfBrokerNodes" tf:"number_of_broker_nodes"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type MskClusterStatus struct {

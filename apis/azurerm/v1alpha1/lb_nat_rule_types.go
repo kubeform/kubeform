@@ -19,7 +19,8 @@ type LbNATRule struct {
 }
 
 type LbNATRuleSpec struct {
-	BackendPort int `json:"backendPort" tf:"backend_port"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	BackendPort int                       `json:"backendPort" tf:"backend_port"`
 	// +optional
 	EnableFloatingIP            bool   `json:"enableFloatingIP,omitempty" tf:"enable_floating_ip,omitempty"`
 	FrontendIPConfigurationName string `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`
@@ -27,11 +28,10 @@ type LbNATRuleSpec struct {
 	LoadbalancerID              string `json:"loadbalancerID" tf:"loadbalancer_id"`
 	// +optional
 	// Deprecated
-	Location          string                    `json:"location,omitempty" tf:"location,omitempty"`
-	Name              string                    `json:"name" tf:"name"`
-	Protocol          string                    `json:"protocol" tf:"protocol"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Location          string `json:"location,omitempty" tf:"location,omitempty"`
+	Name              string `json:"name" tf:"name"`
+	Protocol          string `json:"protocol" tf:"protocol"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type LbNATRuleStatus struct {

@@ -19,12 +19,12 @@ type CodedeployApp struct {
 }
 
 type CodedeployAppSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ComputePlatform string `json:"computePlatform,omitempty" tf:"compute_platform,omitempty"`
 	Name            string `json:"name" tf:"name"`
 	// +optional
-	UniqueID    string                    `json:"uniqueID,omitempty" tf:"unique_id,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	UniqueID string `json:"uniqueID,omitempty" tf:"unique_id,omitempty"`
 }
 
 type CodedeployAppStatus struct {

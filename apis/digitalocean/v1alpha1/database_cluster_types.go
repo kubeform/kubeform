@@ -24,7 +24,8 @@ type DatabaseClusterSpecMaintenanceWindow struct {
 }
 
 type DatabaseClusterSpec struct {
-	Engine string `json:"engine" tf:"engine"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Engine      string                    `json:"engine" tf:"engine"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	MaintenanceWindow []DatabaseClusterSpecMaintenanceWindow `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
@@ -33,7 +34,6 @@ type DatabaseClusterSpec struct {
 	Region            string                                 `json:"region" tf:"region"`
 	Size              string                                 `json:"size" tf:"size"`
 	Version           string                                 `json:"version" tf:"version"`
-	ProviderRef       core.LocalObjectReference              `json:"providerRef" tf:"-"`
 }
 
 type DatabaseClusterStatus struct {

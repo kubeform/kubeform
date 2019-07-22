@@ -564,19 +564,8 @@ spec:
                   auth:
                     items:
                       properties:
-                        resource:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         type:
                           type: string
-                      required:
-                      - type
                       type: object
                     type: array
                     uniqueItems: true
@@ -600,6 +589,15 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             serviceRole:
               type: string
             source:
@@ -608,19 +606,8 @@ spec:
                   auth:
                     items:
                       properties:
-                        resource:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         type:
                           type: string
-                      required:
-                      - type
                       type: object
                     type: array
                     uniqueItems: true

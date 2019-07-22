@@ -25,14 +25,14 @@ type WafRateBasedRuleSpecPredicates struct {
 }
 
 type WafRateBasedRuleSpec struct {
-	MetricName string `json:"metricName" tf:"metric_name"`
-	Name       string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	MetricName  string                    `json:"metricName" tf:"metric_name"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Predicates  []WafRateBasedRuleSpecPredicates `json:"predicates,omitempty" tf:"predicates,omitempty"`
-	RateKey     string                           `json:"rateKey" tf:"rate_key"`
-	RateLimit   int                              `json:"rateLimit" tf:"rate_limit"`
-	ProviderRef core.LocalObjectReference        `json:"providerRef" tf:"-"`
+	Predicates []WafRateBasedRuleSpecPredicates `json:"predicates,omitempty" tf:"predicates,omitempty"`
+	RateKey    string                           `json:"rateKey" tf:"rate_key"`
+	RateLimit  int                              `json:"rateLimit" tf:"rate_limit"`
 }
 
 type WafRateBasedRuleStatus struct {

@@ -193,6 +193,7 @@ type KinesisAnalyticsApplicationSpecReferenceDataSources struct {
 }
 
 type KinesisAnalyticsApplicationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CloudwatchLoggingOptions []KinesisAnalyticsApplicationSpecCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
@@ -211,8 +212,7 @@ type KinesisAnalyticsApplicationSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	ReferenceDataSources []KinesisAnalyticsApplicationSpecReferenceDataSources `json:"referenceDataSources,omitempty" tf:"reference_data_sources,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type KinesisAnalyticsApplicationStatus struct {

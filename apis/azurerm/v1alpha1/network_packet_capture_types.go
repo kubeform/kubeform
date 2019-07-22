@@ -38,6 +38,7 @@ type NetworkPacketCaptureSpecStorageLocation struct {
 }
 
 type NetworkPacketCaptureSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Filter []NetworkPacketCaptureSpecFilter `json:"filter,omitempty" tf:"filter,omitempty"`
 	// +optional
@@ -52,7 +53,6 @@ type NetworkPacketCaptureSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	StorageLocation  []NetworkPacketCaptureSpecStorageLocation `json:"storageLocation" tf:"storage_location"`
 	TargetResourceID string                                    `json:"targetResourceID" tf:"target_resource_id"`
-	ProviderRef      core.LocalObjectReference                 `json:"providerRef" tf:"-"`
 }
 
 type NetworkPacketCaptureStatus struct {

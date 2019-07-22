@@ -19,13 +19,13 @@ type SesIdentityNotificationTopic struct {
 }
 
 type SesIdentityNotificationTopicSpec struct {
-	Identity string `json:"identity" tf:"identity"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Identity    string                    `json:"identity" tf:"identity"`
 	// +optional
 	IncludeOriginalHeaders bool   `json:"includeOriginalHeaders,omitempty" tf:"include_original_headers,omitempty"`
 	NotificationType       string `json:"notificationType" tf:"notification_type"`
 	// +optional
-	TopicArn    string                    `json:"topicArn,omitempty" tf:"topic_arn,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TopicArn string `json:"topicArn,omitempty" tf:"topic_arn,omitempty"`
 }
 
 type SesIdentityNotificationTopicStatus struct {

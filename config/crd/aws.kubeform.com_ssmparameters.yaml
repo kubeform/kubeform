@@ -418,6 +418,15 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             tags:
               additionalProperties:
                 type: string
@@ -426,20 +435,10 @@ spec:
               type: string
             type:
               type: string
-            value:
-              description: Sensitive Data. Provide secret name which contains one
-                value only
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
           required:
           - name
           - providerRef
           - type
-          - value
           type: object
         status:
           properties:

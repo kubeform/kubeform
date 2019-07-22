@@ -23,6 +23,7 @@ type AmiFromInstanceSpecEbsBlockDevice struct{}
 type AmiFromInstanceSpecEphemeralBlockDevice struct{}
 
 type AmiFromInstanceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -36,8 +37,7 @@ type AmiFromInstanceSpec struct {
 	SnapshotWithoutReboot bool   `json:"snapshotWithoutReboot,omitempty" tf:"snapshot_without_reboot,omitempty"`
 	SourceInstanceID      string `json:"sourceInstanceID" tf:"source_instance_id"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type AmiFromInstanceStatus struct {

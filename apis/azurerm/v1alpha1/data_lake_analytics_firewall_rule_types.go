@@ -19,12 +19,12 @@ type DataLakeAnalyticsFirewallRule struct {
 }
 
 type DataLakeAnalyticsFirewallRuleSpec struct {
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
 	AccountName       string                    `json:"accountName" tf:"account_name"`
 	EndIPAddress      string                    `json:"endIPAddress" tf:"end_ip_address"`
 	Name              string                    `json:"name" tf:"name"`
 	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	StartIPAddress    string                    `json:"startIPAddress" tf:"start_ip_address"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type DataLakeAnalyticsFirewallRuleStatus struct {

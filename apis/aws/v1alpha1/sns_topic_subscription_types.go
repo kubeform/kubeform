@@ -19,6 +19,7 @@ type SnsTopicSubscription struct {
 }
 
 type SnsTopicSubscriptionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ConfirmationTimeoutInMinutes int `json:"confirmationTimeoutInMinutes,omitempty" tf:"confirmation_timeout_in_minutes,omitempty"`
 	// +optional
@@ -30,9 +31,8 @@ type SnsTopicSubscriptionSpec struct {
 	FilterPolicy string `json:"filterPolicy,omitempty" tf:"filter_policy,omitempty"`
 	Protocol     string `json:"protocol" tf:"protocol"`
 	// +optional
-	RawMessageDelivery bool                      `json:"rawMessageDelivery,omitempty" tf:"raw_message_delivery,omitempty"`
-	TopicArn           string                    `json:"topicArn" tf:"topic_arn"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RawMessageDelivery bool   `json:"rawMessageDelivery,omitempty" tf:"raw_message_delivery,omitempty"`
+	TopicArn           string `json:"topicArn" tf:"topic_arn"`
 }
 
 type SnsTopicSubscriptionStatus struct {

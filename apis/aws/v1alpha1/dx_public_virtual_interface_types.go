@@ -19,7 +19,8 @@ type DxPublicVirtualInterface struct {
 }
 
 type DxPublicVirtualInterfaceSpec struct {
-	AddressFamily string `json:"addressFamily" tf:"address_family"`
+	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AddressFamily string                    `json:"addressFamily" tf:"address_family"`
 	// +optional
 	AmazonAddress string `json:"amazonAddress,omitempty" tf:"amazon_address,omitempty"`
 	BgpAsn        int    `json:"bgpAsn" tf:"bgp_asn"`
@@ -33,9 +34,8 @@ type DxPublicVirtualInterfaceSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	RouteFilterPrefixes []string `json:"routeFilterPrefixes" tf:"route_filter_prefixes"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	Vlan        int                       `json:"vlan" tf:"vlan"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Vlan int               `json:"vlan" tf:"vlan"`
 }
 
 type DxPublicVirtualInterfaceStatus struct {

@@ -20,15 +20,11 @@ type SqlDatabase struct {
 
 type SqlDatabaseSpecImport struct {
 	AdministratorLogin string `json:"administratorLogin" tf:"administrator_login"`
-	// Sensitive Data. Provide secret name which contains one value only
-	AdministratorLoginPassword *core.LocalObjectReference `json:"administratorLoginPassword" tf:"administrator_login_password"`
-	AuthenticationType         string                     `json:"authenticationType" tf:"authentication_type"`
+	AuthenticationType string `json:"authenticationType" tf:"authentication_type"`
 	// +optional
-	OperationMode string `json:"operationMode,omitempty" tf:"operation_mode,omitempty"`
-	// Sensitive Data. Provide secret name which contains one value only
-	StorageKey     *core.LocalObjectReference `json:"storageKey" tf:"storage_key"`
-	StorageKeyType string                     `json:"storageKeyType" tf:"storage_key_type"`
-	StorageURI     string                     `json:"storageURI" tf:"storage_uri"`
+	OperationMode  string `json:"operationMode,omitempty" tf:"operation_mode,omitempty"`
+	StorageKeyType string `json:"storageKeyType" tf:"storage_key_type"`
+	StorageURI     string `json:"storageURI" tf:"storage_uri"`
 }
 
 type SqlDatabaseSpecThreatDetectionPolicy struct {
@@ -45,8 +41,6 @@ type SqlDatabaseSpecThreatDetectionPolicy struct {
 	// +optional
 	State string `json:"state,omitempty" tf:"state,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	StorageAccountAccessKey *core.LocalObjectReference `json:"storageAccountAccessKey,omitempty" tf:"storage_account_access_key,omitempty"`
 	// +optional
 	StorageEndpoint string `json:"storageEndpoint,omitempty" tf:"storage_endpoint,omitempty"`
 	// +optional
@@ -54,6 +48,8 @@ type SqlDatabaseSpecThreatDetectionPolicy struct {
 }
 
 type SqlDatabaseSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	Collation string `json:"collation,omitempty" tf:"collation,omitempty"`
 	// +optional
@@ -88,7 +84,6 @@ type SqlDatabaseSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ThreatDetectionPolicy []SqlDatabaseSpecThreatDetectionPolicy `json:"threatDetectionPolicy,omitempty" tf:"threat_detection_policy,omitempty"`
-	ProviderRef           core.LocalObjectReference              `json:"providerRef" tf:"-"`
 }
 
 type SqlDatabaseStatus struct {

@@ -19,6 +19,7 @@ type DnsManagedZone struct {
 }
 
 type DnsManagedZoneSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	DnsName     string `json:"dnsName" tf:"dns_name"`
@@ -26,8 +27,7 @@ type DnsManagedZoneSpec struct {
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	Name   string            `json:"name" tf:"name"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type DnsManagedZoneStatus struct {

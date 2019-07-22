@@ -19,11 +19,11 @@ type Route53ResolverRuleAssociation struct {
 }
 
 type Route53ResolverRuleAssociationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
-	Name           string                    `json:"name,omitempty" tf:"name,omitempty"`
-	ResolverRuleID string                    `json:"resolverRuleID" tf:"resolver_rule_id"`
-	VpcID          string                    `json:"vpcID" tf:"vpc_id"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name           string `json:"name,omitempty" tf:"name,omitempty"`
+	ResolverRuleID string `json:"resolverRuleID" tf:"resolver_rule_id"`
+	VpcID          string `json:"vpcID" tf:"vpc_id"`
 }
 
 type Route53ResolverRuleAssociationStatus struct {

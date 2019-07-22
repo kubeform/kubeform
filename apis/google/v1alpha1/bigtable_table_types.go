@@ -19,13 +19,13 @@ type BigtableTable struct {
 }
 
 type BigtableTableSpec struct {
-	InstanceName string `json:"instanceName" tf:"instance_name"`
-	Name         string `json:"name" tf:"name"`
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
+	InstanceName string                    `json:"instanceName" tf:"instance_name"`
+	Name         string                    `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	SplitKeys   []string                  `json:"splitKeys,omitempty" tf:"split_keys,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SplitKeys []string `json:"splitKeys,omitempty" tf:"split_keys,omitempty"`
 }
 
 type BigtableTableStatus struct {

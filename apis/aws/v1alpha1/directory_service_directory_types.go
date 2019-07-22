@@ -34,6 +34,8 @@ type DirectoryServiceDirectorySpecVpcSettings struct {
 }
 
 type DirectoryServiceDirectorySpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	Alias string `json:"alias,omitempty" tf:"alias,omitempty"`
 	// +optional
@@ -46,8 +48,6 @@ type DirectoryServiceDirectorySpec struct {
 	// +optional
 	EnableSso bool   `json:"enableSso,omitempty" tf:"enable_sso,omitempty"`
 	Name      string `json:"name" tf:"name"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
 	// +optional
 	ShortName string `json:"shortName,omitempty" tf:"short_name,omitempty"`
 	// +optional
@@ -59,7 +59,6 @@ type DirectoryServiceDirectorySpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	VpcSettings []DirectoryServiceDirectorySpecVpcSettings `json:"vpcSettings,omitempty" tf:"vpc_settings,omitempty"`
-	ProviderRef core.LocalObjectReference                  `json:"providerRef" tf:"-"`
 }
 
 type DirectoryServiceDirectoryStatus struct {

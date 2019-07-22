@@ -19,9 +19,9 @@ type Route53QueryLog struct {
 }
 
 type Route53QueryLogSpec struct {
+	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
 	CloudwatchLogGroupArn string                    `json:"cloudwatchLogGroupArn" tf:"cloudwatch_log_group_arn"`
 	ZoneID                string                    `json:"zoneID" tf:"zone_id"`
-	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type Route53QueryLogStatus struct {

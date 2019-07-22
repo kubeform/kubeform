@@ -19,6 +19,8 @@ type NodebalancerConfig struct {
 }
 
 type NodebalancerConfigSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	Algorithm string `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 	// +optional
@@ -45,11 +47,8 @@ type NodebalancerConfigSpec struct {
 	// +optional
 	SslCert string `json:"sslCert,omitempty" tf:"ssl_cert,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	SslKey *core.LocalObjectReference `json:"sslKey,omitempty" tf:"ssl_key,omitempty"`
 	// +optional
-	Stickiness  string                    `json:"stickiness,omitempty" tf:"stickiness,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Stickiness string `json:"stickiness,omitempty" tf:"stickiness,omitempty"`
 }
 
 type NodebalancerConfigStatus struct {

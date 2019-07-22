@@ -19,14 +19,14 @@ type Cdn struct {
 }
 
 type CdnSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	CertificateID string `json:"certificateID,omitempty" tf:"certificate_id,omitempty"`
 	// +optional
 	CustomDomain string `json:"customDomain,omitempty" tf:"custom_domain,omitempty"`
 	Origin       string `json:"origin" tf:"origin"`
 	// +optional
-	Ttl         int                       `json:"ttl,omitempty" tf:"ttl,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Ttl int `json:"ttl,omitempty" tf:"ttl,omitempty"`
 }
 
 type CdnStatus struct {

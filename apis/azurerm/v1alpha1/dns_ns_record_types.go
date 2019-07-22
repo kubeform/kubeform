@@ -23,7 +23,8 @@ type DnsNsRecordSpecRecord struct {
 }
 
 type DnsNsRecordSpec struct {
-	Name string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	// Deprecated
@@ -32,10 +33,9 @@ type DnsNsRecordSpec struct {
 	Records           []string `json:"records,omitempty" tf:"records,omitempty"`
 	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	Ttl         int                       `json:"ttl" tf:"ttl"`
-	ZoneName    string                    `json:"zoneName" tf:"zone_name"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Ttl      int               `json:"ttl" tf:"ttl"`
+	ZoneName string            `json:"zoneName" tf:"zone_name"`
 }
 
 type DnsNsRecordStatus struct {

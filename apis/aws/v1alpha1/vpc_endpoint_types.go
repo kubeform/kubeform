@@ -19,6 +19,7 @@ type VpcEndpoint struct {
 }
 
 type VpcEndpointSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AutoAccept bool `json:"autoAccept,omitempty" tf:"auto_accept,omitempty"`
 	// +optional
@@ -38,9 +39,8 @@ type VpcEndpointSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	VpcEndpointType string                    `json:"vpcEndpointType,omitempty" tf:"vpc_endpoint_type,omitempty"`
-	VpcID           string                    `json:"vpcID" tf:"vpc_id"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcEndpointType string `json:"vpcEndpointType,omitempty" tf:"vpc_endpoint_type,omitempty"`
+	VpcID           string `json:"vpcID" tf:"vpc_id"`
 }
 
 type VpcEndpointStatus struct {

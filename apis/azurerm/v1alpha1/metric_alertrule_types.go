@@ -34,7 +34,8 @@ type MetricAlertruleSpecWebhookAction struct {
 }
 
 type MetricAlertruleSpec struct {
-	Aggregation string `json:"aggregation" tf:"aggregation"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Aggregation string                    `json:"aggregation" tf:"aggregation"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -55,7 +56,6 @@ type MetricAlertruleSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	WebhookAction []MetricAlertruleSpecWebhookAction `json:"webhookAction,omitempty" tf:"webhook_action,omitempty"`
-	ProviderRef   core.LocalObjectReference          `json:"providerRef" tf:"-"`
 }
 
 type MetricAlertruleStatus struct {

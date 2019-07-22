@@ -19,13 +19,13 @@ type ApiGatewayVpcLink struct {
 }
 
 type ApiGatewayVpcLinkSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
-	TargetArns  []string                  `json:"targetArns" tf:"target_arns"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TargetArns []string `json:"targetArns" tf:"target_arns"`
 }
 
 type ApiGatewayVpcLinkStatus struct {

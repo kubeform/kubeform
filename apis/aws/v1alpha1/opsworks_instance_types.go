@@ -49,6 +49,7 @@ type OpsworksInstanceSpecRootBlockDevice struct {
 }
 
 type OpsworksInstanceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AgentVersion string `json:"agentVersion,omitempty" tf:"agent_version,omitempty"`
 	// +optional
@@ -137,8 +138,7 @@ type OpsworksInstanceSpec struct {
 	// +optional
 	Tenancy string `json:"tenancy,omitempty" tf:"tenancy,omitempty"`
 	// +optional
-	VirtualizationType string                    `json:"virtualizationType,omitempty" tf:"virtualization_type,omitempty"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VirtualizationType string `json:"virtualizationType,omitempty" tf:"virtualization_type,omitempty"`
 }
 
 type OpsworksInstanceStatus struct {

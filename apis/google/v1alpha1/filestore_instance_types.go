@@ -31,6 +31,7 @@ type FilestoreInstanceSpecNetworks struct {
 }
 
 type FilestoreInstanceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
@@ -41,10 +42,9 @@ type FilestoreInstanceSpec struct {
 	// +kubebuilder:validation:MinItems=1
 	Networks []FilestoreInstanceSpecNetworks `json:"networks" tf:"networks"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	Tier        string                    `json:"tier" tf:"tier"`
-	Zone        string                    `json:"zone" tf:"zone"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Tier    string `json:"tier" tf:"tier"`
+	Zone    string `json:"zone" tf:"zone"`
 }
 
 type FilestoreInstanceStatus struct {

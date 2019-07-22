@@ -19,7 +19,8 @@ type DxHostedPrivateVirtualInterface struct {
 }
 
 type DxHostedPrivateVirtualInterfaceSpec struct {
-	AddressFamily string `json:"addressFamily" tf:"address_family"`
+	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AddressFamily string                    `json:"addressFamily" tf:"address_family"`
 	// +optional
 	AmazonAddress string `json:"amazonAddress,omitempty" tf:"amazon_address,omitempty"`
 	BgpAsn        int    `json:"bgpAsn" tf:"bgp_asn"`
@@ -29,11 +30,10 @@ type DxHostedPrivateVirtualInterfaceSpec struct {
 	// +optional
 	CustomerAddress string `json:"customerAddress,omitempty" tf:"customer_address,omitempty"`
 	// +optional
-	Mtu            int                       `json:"mtu,omitempty" tf:"mtu,omitempty"`
-	Name           string                    `json:"name" tf:"name"`
-	OwnerAccountID string                    `json:"ownerAccountID" tf:"owner_account_id"`
-	Vlan           int                       `json:"vlan" tf:"vlan"`
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Mtu            int    `json:"mtu,omitempty" tf:"mtu,omitempty"`
+	Name           string `json:"name" tf:"name"`
+	OwnerAccountID string `json:"ownerAccountID" tf:"owner_account_id"`
+	Vlan           int    `json:"vlan" tf:"vlan"`
 }
 
 type DxHostedPrivateVirtualInterfaceStatus struct {

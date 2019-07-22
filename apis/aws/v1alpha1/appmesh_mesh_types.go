@@ -30,13 +30,13 @@ type AppmeshMeshSpecSpec struct {
 }
 
 type AppmeshMeshSpec struct {
-	Name string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Spec []AppmeshMeshSpecSpec `json:"spec,omitempty" tf:"spec,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type AppmeshMeshStatus struct {

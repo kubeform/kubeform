@@ -36,6 +36,7 @@ type ComputeRouterSpecBgp struct {
 }
 
 type ComputeRouterSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Bgp []ComputeRouterSpecBgp `json:"bgp,omitempty" tf:"bgp,omitempty"`
@@ -46,8 +47,7 @@ type ComputeRouterSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region      string                    `json:"region,omitempty" tf:"region,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
 }
 
 type ComputeRouterStatus struct {

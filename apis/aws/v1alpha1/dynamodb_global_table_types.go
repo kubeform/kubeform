@@ -23,10 +23,10 @@ type DynamodbGlobalTableSpecReplica struct {
 }
 
 type DynamodbGlobalTableSpec struct {
-	Name string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
-	Replica     []DynamodbGlobalTableSpecReplica `json:"replica" tf:"replica"`
-	ProviderRef core.LocalObjectReference        `json:"providerRef" tf:"-"`
+	Replica []DynamodbGlobalTableSpecReplica `json:"replica" tf:"replica"`
 }
 
 type DynamodbGlobalTableStatus struct {

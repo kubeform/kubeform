@@ -19,6 +19,7 @@ type ManagementGroup struct {
 }
 
 type ManagementGroupSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 	// +optional
@@ -27,8 +28,7 @@ type ManagementGroupSpec struct {
 	ParentManagementGroupID string `json:"parentManagementGroupID,omitempty" tf:"parent_management_group_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	SubscriptionIDS []string                  `json:"subscriptionIDS,omitempty" tf:"subscription_ids,omitempty"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	SubscriptionIDS []string `json:"subscriptionIDS,omitempty" tf:"subscription_ids,omitempty"`
 }
 
 type ManagementGroupStatus struct {

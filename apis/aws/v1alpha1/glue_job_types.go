@@ -32,6 +32,7 @@ type GlueJobSpecExecutionProperty struct {
 }
 
 type GlueJobSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// Deprecated
 	AllocatedCapacity int `json:"allocatedCapacity,omitempty" tf:"allocated_capacity,omitempty"`
@@ -55,8 +56,7 @@ type GlueJobSpec struct {
 	// +optional
 	SecurityConfiguration string `json:"securityConfiguration,omitempty" tf:"security_configuration,omitempty"`
 	// +optional
-	Timeout     int                       `json:"timeout,omitempty" tf:"timeout,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Timeout int `json:"timeout,omitempty" tf:"timeout,omitempty"`
 }
 
 type GlueJobStatus struct {

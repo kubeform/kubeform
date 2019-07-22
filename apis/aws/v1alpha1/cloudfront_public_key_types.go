@@ -19,14 +19,14 @@ type CloudfrontPublicKey struct {
 }
 
 type CloudfrontPublicKeySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Comment    string `json:"comment,omitempty" tf:"comment,omitempty"`
 	EncodedKey string `json:"encodedKey" tf:"encoded_key"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	NamePrefix  string                    `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 }
 
 type CloudfrontPublicKeyStatus struct {

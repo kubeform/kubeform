@@ -31,6 +31,7 @@ type OpsworksNodejsAppLayerSpecEbsVolume struct {
 }
 
 type OpsworksNodejsAppLayerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AutoAssignElasticIPS bool `json:"autoAssignElasticIPS,omitempty" tf:"auto_assign_elastic_ips,omitempty"`
 	// +optional
@@ -74,8 +75,7 @@ type OpsworksNodejsAppLayerSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	SystemPackages []string `json:"systemPackages,omitempty" tf:"system_packages,omitempty"`
 	// +optional
-	UseEbsOptimizedInstances bool                      `json:"useEbsOptimizedInstances,omitempty" tf:"use_ebs_optimized_instances,omitempty"`
-	ProviderRef              core.LocalObjectReference `json:"providerRef" tf:"-"`
+	UseEbsOptimizedInstances bool `json:"useEbsOptimizedInstances,omitempty" tf:"use_ebs_optimized_instances,omitempty"`
 }
 
 type OpsworksNodejsAppLayerStatus struct {

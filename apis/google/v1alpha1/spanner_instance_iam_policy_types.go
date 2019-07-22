@@ -19,11 +19,11 @@ type SpannerInstanceIamPolicy struct {
 }
 
 type SpannerInstanceIamPolicySpec struct {
-	Instance   string `json:"instance" tf:"instance"`
-	PolicyData string `json:"policyData" tf:"policy_data"`
-	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Instance    string                    `json:"instance" tf:"instance"`
+	PolicyData  string                    `json:"policyData" tf:"policy_data"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type SpannerInstanceIamPolicyStatus struct {

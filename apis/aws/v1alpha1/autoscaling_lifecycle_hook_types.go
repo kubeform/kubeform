@@ -19,7 +19,8 @@ type AutoscalingLifecycleHook struct {
 }
 
 type AutoscalingLifecycleHookSpec struct {
-	AutoscalingGroupName string `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
+	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AutoscalingGroupName string                    `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
 	// +optional
 	DefaultResult string `json:"defaultResult,omitempty" tf:"default_result,omitempty"`
 	// +optional
@@ -31,8 +32,7 @@ type AutoscalingLifecycleHookSpec struct {
 	// +optional
 	NotificationTargetArn string `json:"notificationTargetArn,omitempty" tf:"notification_target_arn,omitempty"`
 	// +optional
-	RoleArn     string                    `json:"roleArn,omitempty" tf:"role_arn,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	RoleArn string `json:"roleArn,omitempty" tf:"role_arn,omitempty"`
 }
 
 type AutoscalingLifecycleHookStatus struct {

@@ -19,6 +19,7 @@ type OrganizationsOrganization struct {
 }
 
 type OrganizationsOrganizationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AwsServiceAccessPrincipals []string `json:"awsServiceAccessPrincipals,omitempty" tf:"aws_service_access_principals,omitempty"`
@@ -26,8 +27,7 @@ type OrganizationsOrganizationSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	EnabledPolicyTypes []string `json:"enabledPolicyTypes,omitempty" tf:"enabled_policy_types,omitempty"`
 	// +optional
-	FeatureSet  string                    `json:"featureSet,omitempty" tf:"feature_set,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	FeatureSet string `json:"featureSet,omitempty" tf:"feature_set,omitempty"`
 }
 
 type OrganizationsOrganizationStatus struct {

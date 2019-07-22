@@ -19,13 +19,13 @@ type IamUserLoginProfile struct {
 }
 
 type IamUserLoginProfileSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	PasswordLength int `json:"passwordLength,omitempty" tf:"password_length,omitempty"`
 	// +optional
-	PasswordResetRequired bool                      `json:"passwordResetRequired,omitempty" tf:"password_reset_required,omitempty"`
-	PgpKey                string                    `json:"pgpKey" tf:"pgp_key"`
-	User                  string                    `json:"user" tf:"user"`
-	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
+	PasswordResetRequired bool   `json:"passwordResetRequired,omitempty" tf:"password_reset_required,omitempty"`
+	PgpKey                string `json:"pgpKey" tf:"pgp_key"`
+	User                  string `json:"user" tf:"user"`
 }
 
 type IamUserLoginProfileStatus struct {

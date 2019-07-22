@@ -82,6 +82,7 @@ type ElasticsearchDomainSpecVpcOptions struct {
 }
 
 type ElasticsearchDomainSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AccessPolicies string `json:"accessPolicies,omitempty" tf:"access_policies,omitempty"`
 	// +optional
@@ -114,8 +115,7 @@ type ElasticsearchDomainSpec struct {
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	VpcOptions  []ElasticsearchDomainSpecVpcOptions `json:"vpcOptions,omitempty" tf:"vpc_options,omitempty"`
-	ProviderRef core.LocalObjectReference           `json:"providerRef" tf:"-"`
+	VpcOptions []ElasticsearchDomainSpecVpcOptions `json:"vpcOptions,omitempty" tf:"vpc_options,omitempty"`
 }
 
 type ElasticsearchDomainStatus struct {

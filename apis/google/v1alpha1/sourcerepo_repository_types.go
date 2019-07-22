@@ -19,10 +19,10 @@ type SourcerepoRepository struct {
 }
 
 type SourcerepoRepositorySpec struct {
-	Name string `json:"name" tf:"name"`
-	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }
 
 type SourcerepoRepositoryStatus struct {

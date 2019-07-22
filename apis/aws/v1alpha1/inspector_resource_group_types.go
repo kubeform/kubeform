@@ -19,8 +19,8 @@ type InspectorResourceGroup struct {
 }
 
 type InspectorResourceGroupSpec struct {
-	Tags        map[string]string         `json:"tags" tf:"tags"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags        map[string]string         `json:"tags" tf:"tags"`
 }
 
 type InspectorResourceGroupStatus struct {

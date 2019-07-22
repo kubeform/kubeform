@@ -23,6 +23,7 @@ type LogAnalyticsWorkspaceLinkedServiceSpecLinkedServiceProperties struct {
 }
 
 type LogAnalyticsWorkspaceLinkedServiceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	LinkedServiceName string `json:"linkedServiceName,omitempty" tf:"linked_service_name,omitempty"`
 	// +optional
@@ -31,9 +32,8 @@ type LogAnalyticsWorkspaceLinkedServiceSpec struct {
 	// +optional
 	ResourceID string `json:"resourceID,omitempty" tf:"resource_id,omitempty"`
 	// +optional
-	Tags          map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	WorkspaceName string                    `json:"workspaceName" tf:"workspace_name"`
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags          map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	WorkspaceName string            `json:"workspaceName" tf:"workspace_name"`
 }
 
 type LogAnalyticsWorkspaceLinkedServiceStatus struct {

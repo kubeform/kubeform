@@ -25,6 +25,7 @@ type PubsubSubscriptionSpecPushConfig struct {
 }
 
 type PubsubSubscriptionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AckDeadlineSeconds int    `json:"ackDeadlineSeconds,omitempty" tf:"ack_deadline_seconds,omitempty"`
 	Name               string `json:"name" tf:"name"`
@@ -32,9 +33,8 @@ type PubsubSubscriptionSpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	PushConfig  []PubsubSubscriptionSpecPushConfig `json:"pushConfig,omitempty" tf:"push_config,omitempty"`
-	Topic       string                             `json:"topic" tf:"topic"`
-	ProviderRef core.LocalObjectReference          `json:"providerRef" tf:"-"`
+	PushConfig []PubsubSubscriptionSpecPushConfig `json:"pushConfig,omitempty" tf:"push_config,omitempty"`
+	Topic      string                             `json:"topic" tf:"topic"`
 }
 
 type PubsubSubscriptionStatus struct {

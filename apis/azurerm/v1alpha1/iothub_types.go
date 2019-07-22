@@ -21,8 +21,6 @@ type Iothub struct {
 type IothubSpecEndpoint struct {
 	// +optional
 	BatchFrequencyInSeconds int `json:"batchFrequencyInSeconds,omitempty" tf:"batch_frequency_in_seconds,omitempty"`
-	// Sensitive Data. Provide secret name which contains one value only
-	ConnectionString *core.LocalObjectReference `json:"connectionString" tf:"connection_string"`
 	// +optional
 	ContainerName string `json:"containerName,omitempty" tf:"container_name,omitempty"`
 	// +optional
@@ -68,6 +66,8 @@ type IothubSpecSku struct {
 }
 
 type IothubSpec struct {
+	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
 	// +optional
 	Endpoint []IothubSpecEndpoint `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
@@ -84,8 +84,7 @@ type IothubSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Sku []IothubSpecSku `json:"sku" tf:"sku"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type IothubStatus struct {

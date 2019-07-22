@@ -19,9 +19,9 @@ type SubnetRouteTableAssociation struct {
 }
 
 type SubnetRouteTableAssociationSpec struct {
+	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 	RouteTableID string                    `json:"routeTableID" tf:"route_table_id"`
 	SubnetID     string                    `json:"subnetID" tf:"subnet_id"`
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type SubnetRouteTableAssociationStatus struct {

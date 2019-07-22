@@ -36,6 +36,7 @@ type LbSpecFrontendIPConfiguration struct {
 }
 
 type LbSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	FrontendIPConfiguration []LbSpecFrontendIPConfiguration `json:"frontendIPConfiguration,omitempty" tf:"frontend_ip_configuration,omitempty"`
@@ -45,8 +46,7 @@ type LbSpec struct {
 	// +optional
 	Sku string `json:"sku,omitempty" tf:"sku,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type LbStatus struct {

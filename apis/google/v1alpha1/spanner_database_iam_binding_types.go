@@ -19,14 +19,14 @@ type SpannerDatabaseIamBinding struct {
 }
 
 type SpannerDatabaseIamBindingSpec struct {
-	Database string `json:"database" tf:"database"`
-	Instance string `json:"instance" tf:"instance"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Database    string                    `json:"database" tf:"database"`
+	Instance    string                    `json:"instance" tf:"instance"`
 	// +kubebuilder:validation:UniqueItems=true
 	Members []string `json:"members" tf:"members"`
 	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	Role        string                    `json:"role" tf:"role"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Role    string `json:"role" tf:"role"`
 }
 
 type SpannerDatabaseIamBindingStatus struct {

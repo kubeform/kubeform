@@ -31,7 +31,8 @@ type SubnetSpecDelegation struct {
 }
 
 type SubnetSpec struct {
-	AddressPrefix string `json:"addressPrefix" tf:"address_prefix"`
+	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AddressPrefix string                    `json:"addressPrefix" tf:"address_prefix"`
 	// +optional
 	Delegation []SubnetSpecDelegation `json:"delegation,omitempty" tf:"delegation,omitempty"`
 	// +optional
@@ -46,9 +47,8 @@ type SubnetSpec struct {
 	// Deprecated
 	RouteTableID string `json:"routeTableID,omitempty" tf:"route_table_id,omitempty"`
 	// +optional
-	ServiceEndpoints   []string                  `json:"serviceEndpoints,omitempty" tf:"service_endpoints,omitempty"`
-	VirtualNetworkName string                    `json:"virtualNetworkName" tf:"virtual_network_name"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ServiceEndpoints   []string `json:"serviceEndpoints,omitempty" tf:"service_endpoints,omitempty"`
+	VirtualNetworkName string   `json:"virtualNetworkName" tf:"virtual_network_name"`
 }
 
 type SubnetStatus struct {

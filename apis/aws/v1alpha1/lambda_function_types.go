@@ -39,6 +39,7 @@ type LambdaFunctionSpecVpcConfig struct {
 }
 
 type LambdaFunctionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	DeadLetterConfig []LambdaFunctionSpecDeadLetterConfig `json:"deadLetterConfig,omitempty" tf:"dead_letter_config,omitempty"`
@@ -81,8 +82,7 @@ type LambdaFunctionSpec struct {
 	TracingConfig []LambdaFunctionSpecTracingConfig `json:"tracingConfig,omitempty" tf:"tracing_config,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	VpcConfig   []LambdaFunctionSpecVpcConfig `json:"vpcConfig,omitempty" tf:"vpc_config,omitempty"`
-	ProviderRef core.LocalObjectReference     `json:"providerRef" tf:"-"`
+	VpcConfig []LambdaFunctionSpecVpcConfig `json:"vpcConfig,omitempty" tf:"vpc_config,omitempty"`
 }
 
 type LambdaFunctionStatus struct {

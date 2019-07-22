@@ -62,6 +62,7 @@ type ElastictranscoderPipelineSpecThumbnailConfigPermissions struct {
 }
 
 type ElastictranscoderPipelineSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AwsKmsKeyArn string `json:"awsKmsKeyArn,omitempty" tf:"aws_kms_key_arn,omitempty"`
 	// +optional
@@ -88,7 +89,6 @@ type ElastictranscoderPipelineSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ThumbnailConfigPermissions []ElastictranscoderPipelineSpecThumbnailConfigPermissions `json:"thumbnailConfigPermissions,omitempty" tf:"thumbnail_config_permissions,omitempty"`
-	ProviderRef                core.LocalObjectReference                                 `json:"providerRef" tf:"-"`
 }
 
 type ElastictranscoderPipelineStatus struct {

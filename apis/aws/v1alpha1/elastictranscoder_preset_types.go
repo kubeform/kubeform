@@ -114,6 +114,7 @@ type ElastictranscoderPresetSpecVideoWatermarks struct {
 }
 
 type ElastictranscoderPresetSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
@@ -142,7 +143,6 @@ type ElastictranscoderPresetSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	VideoWatermarks []ElastictranscoderPresetSpecVideoWatermarks `json:"videoWatermarks,omitempty" tf:"video_watermarks,omitempty"`
-	ProviderRef     core.LocalObjectReference                    `json:"providerRef" tf:"-"`
 }
 
 type ElastictranscoderPresetStatus struct {

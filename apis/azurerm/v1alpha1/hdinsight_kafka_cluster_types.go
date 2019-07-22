@@ -23,16 +23,12 @@ type HdinsightKafkaClusterSpecComponentVersion struct {
 }
 
 type HdinsightKafkaClusterSpecGateway struct {
-	Enabled bool `json:"enabled" tf:"enabled"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
-	Username string                     `json:"username" tf:"username"`
+	Enabled  bool   `json:"enabled" tf:"enabled"`
+	Username string `json:"username" tf:"username"`
 }
 
 type HdinsightKafkaClusterSpecRolesHeadNode struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -49,8 +45,6 @@ type HdinsightKafkaClusterSpecRolesWorkerNode struct {
 	MinInstanceCount     int `json:"minInstanceCount,omitempty" tf:"min_instance_count,omitempty"`
 	NumberOfDisksPerNode int `json:"numberOfDisksPerNode" tf:"number_of_disks_per_node"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -65,8 +59,6 @@ type HdinsightKafkaClusterSpecRolesWorkerNode struct {
 
 type HdinsightKafkaClusterSpecRolesZookeeperNode struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -88,14 +80,14 @@ type HdinsightKafkaClusterSpecRoles struct {
 }
 
 type HdinsightKafkaClusterSpecStorageAccount struct {
-	IsDefault bool `json:"isDefault" tf:"is_default"`
-	// Sensitive Data. Provide secret name which contains one value only
-	StorageAccountKey  *core.LocalObjectReference `json:"storageAccountKey" tf:"storage_account_key"`
-	StorageContainerID string                     `json:"storageContainerID" tf:"storage_container_id"`
+	IsDefault          bool   `json:"isDefault" tf:"is_default"`
+	StorageContainerID string `json:"storageContainerID" tf:"storage_container_id"`
 }
 
 type HdinsightKafkaClusterSpec struct {
-	ClusterVersion string `json:"clusterVersion" tf:"cluster_version"`
+	Secret         *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef    core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ClusterVersion string                     `json:"clusterVersion" tf:"cluster_version"`
 	// +kubebuilder:validation:MaxItems=1
 	ComponentVersion []HdinsightKafkaClusterSpecComponentVersion `json:"componentVersion" tf:"component_version"`
 	// +kubebuilder:validation:MaxItems=1
@@ -107,9 +99,8 @@ type HdinsightKafkaClusterSpec struct {
 	Roles          []HdinsightKafkaClusterSpecRoles          `json:"roles" tf:"roles"`
 	StorageAccount []HdinsightKafkaClusterSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	Tier        string                    `json:"tier" tf:"tier"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tier string            `json:"tier" tf:"tier"`
 }
 
 type HdinsightKafkaClusterStatus struct {

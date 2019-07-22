@@ -19,6 +19,7 @@ type SsmActivation struct {
 }
 
 type SsmActivationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -29,8 +30,7 @@ type SsmActivationSpec struct {
 	// +optional
 	RegistrationLimit int `json:"registrationLimit,omitempty" tf:"registration_limit,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type SsmActivationStatus struct {

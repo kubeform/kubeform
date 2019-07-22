@@ -444,15 +444,6 @@ spec:
             osProfile:
               items:
                 properties:
-                  adminPassword:
-                    description: Sensitive Data. Provide secret name which contains
-                      one value only
-                    properties:
-                      name:
-                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                          TODO: Add other useful fields. apiVersion, kind, uid?'
-                        type: string
-                    type: object
                   adminUsername:
                     type: string
                   computerName:
@@ -460,7 +451,6 @@ spec:
                   customData:
                     type: string
                 required:
-                - adminUsername
                 - computerName
                 type: object
               maxItems: 1
@@ -517,22 +507,12 @@ spec:
                       properties:
                         component:
                           type: string
-                        content:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         pass:
                           type: string
                         settingName:
                           type: string
                       required:
                       - component
-                      - content
                       - pass
                       - settingName
                       type: object
@@ -587,6 +567,15 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             storageDataDisk:
               items:
                 properties:

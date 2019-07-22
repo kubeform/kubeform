@@ -19,15 +19,15 @@ type ApiGatewayMethodResponse struct {
 }
 
 type ApiGatewayMethodResponseSpec struct {
-	HttpMethod string `json:"httpMethod" tf:"http_method"`
-	ResourceID string `json:"resourceID" tf:"resource_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	HttpMethod  string                    `json:"httpMethod" tf:"http_method"`
+	ResourceID  string                    `json:"resourceID" tf:"resource_id"`
 	// +optional
 	ResponseModels map[string]string `json:"responseModels,omitempty" tf:"response_models,omitempty"`
 	// +optional
-	ResponseParameters map[string]bool           `json:"responseParameters,omitempty" tf:"response_parameters,omitempty"`
-	RestAPIID          string                    `json:"restAPIID" tf:"rest_api_id"`
-	StatusCode         string                    `json:"statusCode" tf:"status_code"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	ResponseParameters map[string]bool `json:"responseParameters,omitempty" tf:"response_parameters,omitempty"`
+	RestAPIID          string          `json:"restAPIID" tf:"rest_api_id"`
+	StatusCode         string          `json:"statusCode" tf:"status_code"`
 }
 
 type ApiGatewayMethodResponseStatus struct {

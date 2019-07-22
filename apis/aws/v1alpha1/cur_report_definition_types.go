@@ -19,6 +19,7 @@ type CurReportDefinition struct {
 }
 
 type CurReportDefinitionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AdditionalArtifacts []string `json:"additionalArtifacts,omitempty" tf:"additional_artifacts,omitempty"`
@@ -29,10 +30,9 @@ type CurReportDefinitionSpec struct {
 	ReportName               string   `json:"reportName" tf:"report_name"`
 	S3Bucket                 string   `json:"s3Bucket" tf:"s3_bucket"`
 	// +optional
-	S3Prefix    string                    `json:"s3Prefix,omitempty" tf:"s3_prefix,omitempty"`
-	S3Region    string                    `json:"s3Region" tf:"s3_region"`
-	TimeUnit    string                    `json:"timeUnit" tf:"time_unit"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	S3Prefix string `json:"s3Prefix,omitempty" tf:"s3_prefix,omitempty"`
+	S3Region string `json:"s3Region" tf:"s3_region"`
+	TimeUnit string `json:"timeUnit" tf:"time_unit"`
 }
 
 type CurReportDefinitionStatus struct {

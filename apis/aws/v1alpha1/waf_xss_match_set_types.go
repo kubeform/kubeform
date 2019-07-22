@@ -32,11 +32,11 @@ type WafXssMatchSetSpecXssMatchTuples struct {
 }
 
 type WafXssMatchSetSpec struct {
-	Name string `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	XssMatchTuples []WafXssMatchSetSpecXssMatchTuples `json:"xssMatchTuples,omitempty" tf:"xss_match_tuples,omitempty"`
-	ProviderRef    core.LocalObjectReference          `json:"providerRef" tf:"-"`
 }
 
 type WafXssMatchSetStatus struct {

@@ -34,6 +34,7 @@ type CdnEndpointSpecOrigin struct {
 }
 
 type CdnEndpointSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ContentTypesToCompress []string `json:"contentTypesToCompress,omitempty" tf:"content_types_to_compress,omitempty"`
@@ -62,8 +63,7 @@ type CdnEndpointSpec struct {
 	QuerystringCachingBehaviour string `json:"querystringCachingBehaviour,omitempty" tf:"querystring_caching_behaviour,omitempty"`
 	ResourceGroupName           string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type CdnEndpointStatus struct {

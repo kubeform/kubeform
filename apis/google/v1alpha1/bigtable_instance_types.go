@@ -30,6 +30,7 @@ type BigtableInstanceSpecCluster struct {
 }
 
 type BigtableInstanceSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
@@ -52,8 +53,7 @@ type BigtableInstanceSpec struct {
 	StorageType string `json:"storageType,omitempty" tf:"storage_type,omitempty"`
 	// +optional
 	// Deprecated
-	Zone        string                    `json:"zone,omitempty" tf:"zone,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }
 
 type BigtableInstanceStatus struct {

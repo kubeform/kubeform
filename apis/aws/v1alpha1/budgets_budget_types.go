@@ -59,6 +59,7 @@ type BudgetsBudgetSpecNotification struct {
 }
 
 type BudgetsBudgetSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AccountID  string `json:"accountID,omitempty" tf:"account_id,omitempty"`
 	BudgetType string `json:"budgetType" tf:"budget_type"`
@@ -77,10 +78,9 @@ type BudgetsBudgetSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Notification []BudgetsBudgetSpecNotification `json:"notification,omitempty" tf:"notification,omitempty"`
 	// +optional
-	TimePeriodEnd   string                    `json:"timePeriodEnd,omitempty" tf:"time_period_end,omitempty"`
-	TimePeriodStart string                    `json:"timePeriodStart" tf:"time_period_start"`
-	TimeUnit        string                    `json:"timeUnit" tf:"time_unit"`
-	ProviderRef     core.LocalObjectReference `json:"providerRef" tf:"-"`
+	TimePeriodEnd   string `json:"timePeriodEnd,omitempty" tf:"time_period_end,omitempty"`
+	TimePeriodStart string `json:"timePeriodStart" tf:"time_period_start"`
+	TimeUnit        string `json:"timeUnit" tf:"time_unit"`
 }
 
 type BudgetsBudgetStatus struct {

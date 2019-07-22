@@ -25,38 +25,28 @@ type AppServiceSpecAuthSettingsActiveDirectory struct {
 	AllowedAudiences []string `json:"allowedAudiences,omitempty" tf:"allowed_audiences,omitempty"`
 	ClientID         string   `json:"clientID" tf:"client_id"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret *core.LocalObjectReference `json:"clientSecret,omitempty" tf:"client_secret,omitempty"`
 }
 
 type AppServiceSpecAuthSettingsFacebook struct {
 	AppID string `json:"appID" tf:"app_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	AppSecret *core.LocalObjectReference `json:"appSecret" tf:"app_secret"`
 	// +optional
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
 }
 
 type AppServiceSpecAuthSettingsGoogle struct {
 	ClientID string `json:"clientID" tf:"client_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret *core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
 	// +optional
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
 }
 
 type AppServiceSpecAuthSettingsMicrosoft struct {
 	ClientID string `json:"clientID" tf:"client_id"`
-	// Sensitive Data. Provide secret name which contains one value only
-	ClientSecret *core.LocalObjectReference `json:"clientSecret" tf:"client_secret"`
 	// +optional
 	OauthScopes []string `json:"oauthScopes,omitempty" tf:"oauth_scopes,omitempty"`
 }
 
 type AppServiceSpecAuthSettingsTwitter struct {
 	ConsumerKey string `json:"consumerKey" tf:"consumer_key"`
-	// Sensitive Data. Provide secret name which contains one value only
-	ConsumerSecret *core.LocalObjectReference `json:"consumerSecret" tf:"consumer_secret"`
 }
 
 type AppServiceSpecAuthSettings struct {
@@ -97,8 +87,6 @@ type AppServiceSpecAuthSettings struct {
 type AppServiceSpecConnectionString struct {
 	Name string `json:"name" tf:"name"`
 	Type string `json:"type" tf:"type"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Value *core.LocalObjectReference `json:"value" tf:"value"`
 }
 
 type AppServiceSpecIdentity struct {
@@ -108,8 +96,6 @@ type AppServiceSpecIdentity struct {
 type AppServiceSpecLogsApplicationLogsAzureBlobStorage struct {
 	Level           string `json:"level" tf:"level"`
 	RetentionInDays int    `json:"retentionInDays" tf:"retention_in_days"`
-	// Sensitive Data. Provide secret name which contains one value only
-	SasURL *core.LocalObjectReference `json:"sasURL" tf:"sas_url"`
 }
 
 type AppServiceSpecLogsApplicationLogs struct {
@@ -190,7 +176,9 @@ type AppServiceSpecSiteConfig struct {
 }
 
 type AppServiceSpec struct {
-	AppServicePlanID string `json:"appServicePlanID" tf:"app_service_plan_id"`
+	Secret           *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef      core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	AppServicePlanID string                     `json:"appServicePlanID" tf:"app_service_plan_id"`
 	// +optional
 	AppSettings map[string]string `json:"appSettings,omitempty" tf:"app_settings,omitempty"`
 	// +optional
@@ -220,8 +208,7 @@ type AppServiceSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SiteConfig []AppServiceSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type AppServiceStatus struct {

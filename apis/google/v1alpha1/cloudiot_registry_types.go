@@ -45,6 +45,7 @@ type CloudiotRegistrySpecStateNotificationConfig struct {
 }
 
 type CloudiotRegistrySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=10
 	Credentials []CloudiotRegistrySpecCredentials `json:"credentials,omitempty" tf:"credentials,omitempty"`
@@ -61,7 +62,6 @@ type CloudiotRegistrySpec struct {
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
 	StateNotificationConfig map[string]CloudiotRegistrySpecStateNotificationConfig `json:"stateNotificationConfig,omitempty" tf:"state_notification_config,omitempty"`
-	ProviderRef             core.LocalObjectReference                              `json:"providerRef" tf:"-"`
 }
 
 type CloudiotRegistryStatus struct {

@@ -19,6 +19,7 @@ type ComputeRouterPeer struct {
 }
 
 type ComputeRouterPeerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AdvertisedRoutePriority int    `json:"advertisedRoutePriority,omitempty" tf:"advertised_route_priority,omitempty"`
 	Interface               string `json:"interface" tf:"interface"`
@@ -29,9 +30,8 @@ type ComputeRouterPeerSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region      string                    `json:"region,omitempty" tf:"region,omitempty"`
-	Router      string                    `json:"router" tf:"router"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	Router string `json:"router" tf:"router"`
 }
 
 type ComputeRouterPeerStatus struct {

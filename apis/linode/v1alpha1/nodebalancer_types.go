@@ -19,6 +19,7 @@ type Nodebalancer struct {
 }
 
 type NodebalancerSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	ClientConnThrottle int `json:"clientConnThrottle,omitempty" tf:"client_conn_throttle,omitempty"`
 	// +optional
@@ -26,8 +27,7 @@ type NodebalancerSpec struct {
 	Region string `json:"region" tf:"region"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Tags        []string                  `json:"tags,omitempty" tf:"tags,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
 type NodebalancerStatus struct {

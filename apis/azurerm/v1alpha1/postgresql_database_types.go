@@ -19,12 +19,12 @@ type PostgresqlDatabase struct {
 }
 
 type PostgresqlDatabaseSpec struct {
+	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
 	Charset           string                    `json:"charset" tf:"charset"`
 	Collation         string                    `json:"collation" tf:"collation"`
 	Name              string                    `json:"name" tf:"name"`
 	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	ServerName        string                    `json:"serverName" tf:"server_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
 }
 
 type PostgresqlDatabaseStatus struct {

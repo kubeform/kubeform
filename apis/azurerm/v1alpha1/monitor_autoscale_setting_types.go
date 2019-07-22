@@ -107,6 +107,7 @@ type MonitorAutoscaleSettingSpecProfile struct {
 }
 
 type MonitorAutoscaleSettingSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Enabled  bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	Location string `json:"location" tf:"location"`
@@ -118,9 +119,8 @@ type MonitorAutoscaleSettingSpec struct {
 	Profile           []MonitorAutoscaleSettingSpecProfile `json:"profile" tf:"profile"`
 	ResourceGroupName string                               `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags             map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	TargetResourceID string                    `json:"targetResourceID" tf:"target_resource_id"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags             map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	TargetResourceID string            `json:"targetResourceID" tf:"target_resource_id"`
 }
 
 type MonitorAutoscaleSettingStatus struct {

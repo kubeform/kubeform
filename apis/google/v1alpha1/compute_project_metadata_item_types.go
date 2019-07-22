@@ -19,11 +19,11 @@ type ComputeProjectMetadataItem struct {
 }
 
 type ComputeProjectMetadataItemSpec struct {
-	Key string `json:"key" tf:"key"`
-	// +optional
-	Project     string                    `json:"project,omitempty" tf:"project,omitempty"`
-	Value       string                    `json:"value" tf:"value"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Key         string                    `json:"key" tf:"key"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Value   string `json:"value" tf:"value"`
 }
 
 type ComputeProjectMetadataItemStatus struct {

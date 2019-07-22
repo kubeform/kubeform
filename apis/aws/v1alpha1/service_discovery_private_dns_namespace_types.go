@@ -19,11 +19,11 @@ type ServiceDiscoveryPrivateDNSNamespace struct {
 }
 
 type ServiceDiscoveryPrivateDNSNamespaceSpec struct {
-	// +optional
-	Description string                    `json:"description,omitempty" tf:"description,omitempty"`
-	Name        string                    `json:"name" tf:"name"`
-	Vpc         string                    `json:"vpc" tf:"vpc"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	Vpc         string `json:"vpc" tf:"vpc"`
 }
 
 type ServiceDiscoveryPrivateDNSNamespaceStatus struct {

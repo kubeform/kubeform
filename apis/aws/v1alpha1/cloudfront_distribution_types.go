@@ -225,6 +225,7 @@ type CloudfrontDistributionSpecViewerCertificate struct {
 }
 
 type CloudfrontDistributionSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Aliases []string `json:"aliases,omitempty" tf:"aliases,omitempty"`
@@ -265,8 +266,7 @@ type CloudfrontDistributionSpec struct {
 	// +optional
 	WaitForDeployment bool `json:"waitForDeployment,omitempty" tf:"wait_for_deployment,omitempty"`
 	// +optional
-	WebACLID    string                    `json:"webACLID,omitempty" tf:"web_acl_id,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	WebACLID string `json:"webACLID,omitempty" tf:"web_acl_id,omitempty"`
 }
 
 type CloudfrontDistributionStatus struct {

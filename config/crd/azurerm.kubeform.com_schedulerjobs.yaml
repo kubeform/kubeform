@@ -426,20 +426,10 @@ spec:
                           type: string
                         clientID:
                           type: string
-                        secret:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         tenantID:
                           type: string
                       required:
                       - clientID
-                      - secret
                       - tenantID
                       type: object
                     maxItems: 1
@@ -447,47 +437,15 @@ spec:
                   authenticationBasic:
                     items:
                       properties:
-                        password:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         username:
                           type: string
                       required:
-                      - password
                       - username
                       type: object
                     maxItems: 1
                     type: array
                   authenticationCertificate:
                     items:
-                      properties:
-                        password:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
-                        pfx:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
-                      required:
-                      - password
-                      - pfx
                       type: object
                     maxItems: 1
                     type: array
@@ -536,20 +494,10 @@ spec:
                           type: string
                         clientID:
                           type: string
-                        secret:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         tenantID:
                           type: string
                       required:
                       - clientID
-                      - secret
                       - tenantID
                       type: object
                     maxItems: 1
@@ -557,47 +505,15 @@ spec:
                   authenticationBasic:
                     items:
                       properties:
-                        password:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
                         username:
                           type: string
                       required:
-                      - password
                       - username
                       type: object
                     maxItems: 1
                     type: array
                   authenticationCertificate:
                     items:
-                      properties:
-                        password:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
-                        pfx:
-                          description: Sensitive Data. Provide secret name which contains
-                            one value only
-                          properties:
-                            name:
-                              description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                                TODO: Add other useful fields. apiVersion, kind, uid?'
-                              type: string
-                          type: object
-                      required:
-                      - password
-                      - pfx
                       type: object
                     maxItems: 1
                     type: array
@@ -697,6 +613,15 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             startTime:
               type: string
             state:

@@ -19,6 +19,7 @@ type DataFactoryLinkedServiceMysql struct {
 }
 
 type DataFactoryLinkedServiceMysqlSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	AdditionalProperties map[string]string `json:"additionalProperties,omitempty" tf:"additional_properties,omitempty"`
 	// +optional
@@ -31,9 +32,8 @@ type DataFactoryLinkedServiceMysqlSpec struct {
 	IntegrationRuntimeName string `json:"integrationRuntimeName,omitempty" tf:"integration_runtime_name,omitempty"`
 	Name                   string `json:"name" tf:"name"`
 	// +optional
-	Parameters        map[string]string         `json:"parameters,omitempty" tf:"parameters,omitempty"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Parameters        map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	ResourceGroupName string            `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type DataFactoryLinkedServiceMysqlStatus struct {

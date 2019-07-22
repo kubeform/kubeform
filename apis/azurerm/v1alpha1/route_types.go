@@ -19,14 +19,14 @@ type Route struct {
 }
 
 type RouteSpec struct {
-	AddressPrefix string `json:"addressPrefix" tf:"address_prefix"`
-	Name          string `json:"name" tf:"name"`
+	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AddressPrefix string                    `json:"addressPrefix" tf:"address_prefix"`
+	Name          string                    `json:"name" tf:"name"`
 	// +optional
-	NextHopInIPAddress string                    `json:"nextHopInIPAddress,omitempty" tf:"next_hop_in_ip_address,omitempty"`
-	NextHopType        string                    `json:"nextHopType" tf:"next_hop_type"`
-	ResourceGroupName  string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	RouteTableName     string                    `json:"routeTableName" tf:"route_table_name"`
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
+	NextHopInIPAddress string `json:"nextHopInIPAddress,omitempty" tf:"next_hop_in_ip_address,omitempty"`
+	NextHopType        string `json:"nextHopType" tf:"next_hop_type"`
+	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
+	RouteTableName     string `json:"routeTableName" tf:"route_table_name"`
 }
 
 type RouteStatus struct {

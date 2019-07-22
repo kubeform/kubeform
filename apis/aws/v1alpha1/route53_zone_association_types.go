@@ -19,11 +19,11 @@ type Route53ZoneAssociation struct {
 }
 
 type Route53ZoneAssociationSpec struct {
-	VpcID string `json:"vpcID" tf:"vpc_id"`
-	// +optional
-	VpcRegion   string                    `json:"vpcRegion,omitempty" tf:"vpc_region,omitempty"`
-	ZoneID      string                    `json:"zoneID" tf:"zone_id"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcID       string                    `json:"vpcID" tf:"vpc_id"`
+	// +optional
+	VpcRegion string `json:"vpcRegion,omitempty" tf:"vpc_region,omitempty"`
+	ZoneID    string `json:"zoneID" tf:"zone_id"`
 }
 
 type Route53ZoneAssociationStatus struct {

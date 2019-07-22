@@ -19,8 +19,8 @@ type EgressOnlyInternetGateway struct {
 }
 
 type EgressOnlyInternetGatewaySpec struct {
-	VpcID       string                    `json:"vpcID" tf:"vpc_id"`
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcID       string                    `json:"vpcID" tf:"vpc_id"`
 }
 
 type EgressOnlyInternetGatewayStatus struct {

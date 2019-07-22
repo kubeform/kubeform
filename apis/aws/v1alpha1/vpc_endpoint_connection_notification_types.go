@@ -19,6 +19,7 @@ type VpcEndpointConnectionNotification struct {
 }
 
 type VpcEndpointConnectionNotificationSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	ConnectionEvents          []string `json:"connectionEvents" tf:"connection_events"`
@@ -26,8 +27,7 @@ type VpcEndpointConnectionNotificationSpec struct {
 	// +optional
 	VpcEndpointID string `json:"vpcEndpointID,omitempty" tf:"vpc_endpoint_id,omitempty"`
 	// +optional
-	VpcEndpointServiceID string                    `json:"vpcEndpointServiceID,omitempty" tf:"vpc_endpoint_service_id,omitempty"`
-	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
+	VpcEndpointServiceID string `json:"vpcEndpointServiceID,omitempty" tf:"vpc_endpoint_service_id,omitempty"`
 }
 
 type VpcEndpointConnectionNotificationStatus struct {

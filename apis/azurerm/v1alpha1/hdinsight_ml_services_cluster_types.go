@@ -19,16 +19,12 @@ type HdinsightMlServicesCluster struct {
 }
 
 type HdinsightMlServicesClusterSpecGateway struct {
-	Enabled bool `json:"enabled" tf:"enabled"`
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password" tf:"password"`
-	Username string                     `json:"username" tf:"username"`
+	Enabled  bool   `json:"enabled" tf:"enabled"`
+	Username string `json:"username" tf:"username"`
 }
 
 type HdinsightMlServicesClusterSpecRolesEdgeNode struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -42,8 +38,6 @@ type HdinsightMlServicesClusterSpecRolesEdgeNode struct {
 
 type HdinsightMlServicesClusterSpecRolesHeadNode struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -59,8 +53,6 @@ type HdinsightMlServicesClusterSpecRolesWorkerNode struct {
 	// +optional
 	MinInstanceCount int `json:"minInstanceCount,omitempty" tf:"min_instance_count,omitempty"`
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -75,8 +67,6 @@ type HdinsightMlServicesClusterSpecRolesWorkerNode struct {
 
 type HdinsightMlServicesClusterSpecRolesZookeeperNode struct {
 	// +optional
-	// Sensitive Data. Provide secret name which contains one value only
-	Password *core.LocalObjectReference `json:"password,omitempty" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -100,14 +90,14 @@ type HdinsightMlServicesClusterSpecRoles struct {
 }
 
 type HdinsightMlServicesClusterSpecStorageAccount struct {
-	IsDefault bool `json:"isDefault" tf:"is_default"`
-	// Sensitive Data. Provide secret name which contains one value only
-	StorageAccountKey  *core.LocalObjectReference `json:"storageAccountKey" tf:"storage_account_key"`
-	StorageContainerID string                     `json:"storageContainerID" tf:"storage_container_id"`
+	IsDefault          bool   `json:"isDefault" tf:"is_default"`
+	StorageContainerID string `json:"storageContainerID" tf:"storage_container_id"`
 }
 
 type HdinsightMlServicesClusterSpec struct {
-	ClusterVersion string `json:"clusterVersion" tf:"cluster_version"`
+	Secret         *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	ProviderRef    core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ClusterVersion string                     `json:"clusterVersion" tf:"cluster_version"`
 	// +kubebuilder:validation:MaxItems=1
 	Gateway           []HdinsightMlServicesClusterSpecGateway `json:"gateway" tf:"gateway"`
 	Location          string                                  `json:"location" tf:"location"`
@@ -118,9 +108,8 @@ type HdinsightMlServicesClusterSpec struct {
 	Rstudio        bool                                           `json:"rstudio" tf:"rstudio"`
 	StorageAccount []HdinsightMlServicesClusterSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
 	// +optional
-	Tags        map[string]string         `json:"tags,omitempty" tf:"tags,omitempty"`
-	Tier        string                    `json:"tier" tf:"tier"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tier string            `json:"tier" tf:"tier"`
 }
 
 type HdinsightMlServicesClusterStatus struct {

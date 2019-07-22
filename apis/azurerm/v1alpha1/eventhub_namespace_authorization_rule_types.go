@@ -19,6 +19,7 @@ type EventhubNamespaceAuthorizationRule struct {
 }
 
 type EventhubNamespaceAuthorizationRuleSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Listen bool `json:"listen,omitempty" tf:"listen,omitempty"`
 	// +optional
@@ -30,8 +31,7 @@ type EventhubNamespaceAuthorizationRuleSpec struct {
 	NamespaceName     string `json:"namespaceName" tf:"namespace_name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Send        bool                      `json:"send,omitempty" tf:"send,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	Send bool `json:"send,omitempty" tf:"send,omitempty"`
 }
 
 type EventhubNamespaceAuthorizationRuleStatus struct {

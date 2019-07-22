@@ -19,6 +19,7 @@ type MonitoringNotificationChannel struct {
 }
 
 type MonitoringNotificationChannelSpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	DisplayName string `json:"displayName" tf:"display_name"`
@@ -30,8 +31,7 @@ type MonitoringNotificationChannelSpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	Type    string `json:"type" tf:"type"`
 	// +optional
-	UserLabels  map[string]string         `json:"userLabels,omitempty" tf:"user_labels,omitempty"`
-	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+	UserLabels map[string]string `json:"userLabels,omitempty" tf:"user_labels,omitempty"`
 }
 
 type MonitoringNotificationChannelStatus struct {

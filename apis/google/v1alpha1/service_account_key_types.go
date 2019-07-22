@@ -19,6 +19,7 @@ type ServiceAccountKey struct {
 }
 
 type ServiceAccountKeySpec struct {
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 	// +optional
 	KeyAlgorithm string `json:"keyAlgorithm,omitempty" tf:"key_algorithm,omitempty"`
 	// +optional
@@ -26,9 +27,8 @@ type ServiceAccountKeySpec struct {
 	// +optional
 	PrivateKeyType string `json:"privateKeyType,omitempty" tf:"private_key_type,omitempty"`
 	// +optional
-	PublicKeyType    string                    `json:"publicKeyType,omitempty" tf:"public_key_type,omitempty"`
-	ServiceAccountID string                    `json:"serviceAccountID" tf:"service_account_id"`
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
+	PublicKeyType    string `json:"publicKeyType,omitempty" tf:"public_key_type,omitempty"`
+	ServiceAccountID string `json:"serviceAccountID" tf:"service_account_id"`
 }
 
 type ServiceAccountKeyStatus struct {

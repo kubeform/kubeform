@@ -19,16 +19,16 @@ type AutomationDscConfiguration struct {
 }
 
 type AutomationDscConfigurationSpec struct {
-	AutomationAccountName string `json:"automationAccountName" tf:"automation_account_name"`
-	ContentEmbedded       string `json:"contentEmbedded" tf:"content_embedded"`
+	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
+	AutomationAccountName string                    `json:"automationAccountName" tf:"automation_account_name"`
+	ContentEmbedded       string                    `json:"contentEmbedded" tf:"content_embedded"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Location    string `json:"location" tf:"location"`
 	// +optional
-	LogVerbose        bool                      `json:"logVerbose,omitempty" tf:"log_verbose,omitempty"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
+	LogVerbose        bool   `json:"logVerbose,omitempty" tf:"log_verbose,omitempty"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type AutomationDscConfigurationStatus struct {
