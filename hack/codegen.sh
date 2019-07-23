@@ -37,7 +37,7 @@ for gv in $(find $REPO_ROOT/apis -maxdepth 1 -mindepth 1 -type d -printf '%f/v1a
     appscode/gengo:release-1.14 openapi-gen \
     --v 1 --logtostderr \
     --go-header-file "hack/gengo/boilerplate.go.txt" \
-    --input-dirs "$PACKAGE_NAME/apis/${gv},k8s.io/apimachinery/pkg/apis/meta/v1,k8s.io/apimachinery/pkg/api/resource,k8s.io/apimachinery/pkg/runtime,k8s.io/apimachinery/pkg/util/intstr" \
+    --input-dirs "$PACKAGE_NAME/apis/${gv},k8s.io/apimachinery/pkg/apis/meta/v1,k8s.io/apimachinery/pkg/api/resource,k8s.io/apimachinery/pkg/runtime,k8s.io/apimachinery/pkg/util/intstr,k8s.io/api/core/v1" \
     --output-package "$PACKAGE_NAME/apis/${gv}" \
     --report-filename config/api-rules/violation_exceptions.list
 done
