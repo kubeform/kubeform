@@ -25,6 +25,7 @@ type ExpressRouteCircuitSpecSku struct {
 
 type ExpressRouteCircuitSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AllowClassicOperations bool   `json:"allowClassicOperations,omitempty" tf:"allow_classic_operations,omitempty"`
 	BandwidthInMbps        int    `json:"bandwidthInMbps" tf:"bandwidth_in_mbps"`

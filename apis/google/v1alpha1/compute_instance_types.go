@@ -109,8 +109,10 @@ type ComputeInstanceSpecServiceAccount struct {
 }
 
 type ComputeInstanceSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	AllowStoppingForUpdate bool `json:"allowStoppingForUpdate,omitempty" tf:"allow_stopping_for_update,omitempty"`
 	// +optional

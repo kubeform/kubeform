@@ -20,8 +20,9 @@ type DnsRecordSet struct {
 
 type DnsRecordSetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ManagedZone string                    `json:"managedZone" tf:"managed_zone"`
-	Name        string                    `json:"name" tf:"name"`
+
+	ManagedZone string `json:"managedZone" tf:"managed_zone"`
+	Name        string `json:"name" tf:"name"`
 	// +optional
 	Project string   `json:"project,omitempty" tf:"project,omitempty"`
 	Rrdatas []string `json:"rrdatas" tf:"rrdatas"`

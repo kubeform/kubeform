@@ -156,9 +156,11 @@ type ContainerGroupSpecImageRegistryCredential struct {
 }
 
 type ContainerGroupSpec struct {
-	Secret      *core.LocalObjectReference    `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference     `json:"providerRef" tf:"-"`
-	Container   []ContainerGroupSpecContainer `json:"container" tf:"container"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	Container []ContainerGroupSpecContainer `json:"container" tf:"container"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Diagnostics []ContainerGroupSpecDiagnostics `json:"diagnostics,omitempty" tf:"diagnostics,omitempty"`

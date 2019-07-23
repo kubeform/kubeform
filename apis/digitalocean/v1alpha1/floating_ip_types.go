@@ -20,6 +20,7 @@ type FloatingIP struct {
 
 type FloatingIPSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	DropletID int `json:"dropletID,omitempty" tf:"droplet_id,omitempty"`
 	// +optional

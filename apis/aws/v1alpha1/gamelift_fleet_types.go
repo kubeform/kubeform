@@ -51,7 +51,8 @@ type GameliftFleetSpecRuntimeConfiguration struct {
 
 type GameliftFleetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	BuildID     string                    `json:"buildID" tf:"build_id"`
+
+	BuildID string `json:"buildID" tf:"build_id"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

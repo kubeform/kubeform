@@ -19,9 +19,10 @@ type ApplicationInsightsAPIKey struct {
 }
 
 type ApplicationInsightsAPIKeySpec struct {
-	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ApplicationInsightsID string                    `json:"applicationInsightsID" tf:"application_insights_id"`
-	Name                  string                    `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	ApplicationInsightsID string `json:"applicationInsightsID" tf:"application_insights_id"`
+	Name                  string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ReadPermissions []string `json:"readPermissions,omitempty" tf:"read_permissions,omitempty"`

@@ -56,6 +56,7 @@ type RecoveryServicesProtectionPolicyVmSpecRetentionYearly struct {
 
 type RecoveryServicesProtectionPolicyVmSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:MaxItems=1
 	Backup            []RecoveryServicesProtectionPolicyVmSpecBackup `json:"backup" tf:"backup"`
 	Name              string                                         `json:"name" tf:"name"`

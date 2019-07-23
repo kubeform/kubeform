@@ -108,6 +108,7 @@ type MonitorAutoscaleSettingSpecProfile struct {
 
 type MonitorAutoscaleSettingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Enabled  bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	Location string `json:"location" tf:"location"`

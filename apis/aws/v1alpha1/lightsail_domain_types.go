@@ -20,7 +20,8 @@ type LightsailDomain struct {
 
 type LightsailDomainSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DomainName  string                    `json:"domainName" tf:"domain_name"`
+
+	DomainName string `json:"domainName" tf:"domain_name"`
 }
 
 type LightsailDomainStatus struct {

@@ -20,6 +20,7 @@ type Route53HealthCheck struct {
 
 type Route53HealthCheckSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	ChildHealthThreshold int `json:"childHealthThreshold,omitempty" tf:"child_health_threshold,omitempty"`
 	// +optional

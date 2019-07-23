@@ -32,6 +32,7 @@ type ComputeFirewallSpecDeny struct {
 
 type ComputeFirewallSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Allow []ComputeFirewallSpecAllow `json:"allow,omitempty" tf:"allow,omitempty"`

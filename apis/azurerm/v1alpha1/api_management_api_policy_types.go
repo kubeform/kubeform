@@ -19,10 +19,11 @@ type ApiManagementAPIPolicy struct {
 }
 
 type ApiManagementAPIPolicySpec struct {
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ApiManagementName string                    `json:"apiManagementName" tf:"api_management_name"`
-	ApiName           string                    `json:"apiName" tf:"api_name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
+	ApiName           string `json:"apiName" tf:"api_name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	XmlContent string `json:"xmlContent,omitempty" tf:"xml_content,omitempty"`
 	// +optional

@@ -20,9 +20,10 @@ type KmsKeyRingIamMember struct {
 
 type KmsKeyRingIamMemberSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	KeyRingID   string                    `json:"keyRingID" tf:"key_ring_id"`
-	Member      string                    `json:"member" tf:"member"`
-	Role        string                    `json:"role" tf:"role"`
+
+	KeyRingID string `json:"keyRingID" tf:"key_ring_id"`
+	Member    string `json:"member" tf:"member"`
+	Role      string `json:"role" tf:"role"`
 }
 
 type KmsKeyRingIamMemberStatus struct {

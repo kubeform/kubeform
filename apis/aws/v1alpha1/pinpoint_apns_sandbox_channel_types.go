@@ -19,9 +19,11 @@ type PinpointApnsSandboxChannel struct {
 }
 
 type PinpointApnsSandboxChannelSpec struct {
-	Secret        *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef   core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	ApplicationID string                     `json:"applicationID" tf:"application_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	ApplicationID string `json:"applicationID" tf:"application_id"`
 	// +optional
 	// +optional
 	// +optional

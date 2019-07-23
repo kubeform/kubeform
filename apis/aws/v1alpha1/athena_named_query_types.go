@@ -20,7 +20,8 @@ type AthenaNamedQuery struct {
 
 type AthenaNamedQuerySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Database    string                    `json:"database" tf:"database"`
+
+	Database string `json:"database" tf:"database"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`

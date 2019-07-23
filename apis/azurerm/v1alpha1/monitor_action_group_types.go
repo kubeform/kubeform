@@ -36,6 +36,7 @@ type MonitorActionGroupSpecWebhookReceiver struct {
 
 type MonitorActionGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	EmailReceiver []MonitorActionGroupSpecEmailReceiver `json:"emailReceiver,omitempty" tf:"email_receiver,omitempty"`
 	// +optional

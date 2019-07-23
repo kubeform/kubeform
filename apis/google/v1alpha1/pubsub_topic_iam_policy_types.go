@@ -20,7 +20,8 @@ type PubsubTopicIamPolicy struct {
 
 type PubsubTopicIamPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	PolicyData  string                    `json:"policyData" tf:"policy_data"`
+
+	PolicyData string `json:"policyData" tf:"policy_data"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	Topic   string `json:"topic" tf:"topic"`

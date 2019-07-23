@@ -20,6 +20,7 @@ type EipAssociation struct {
 
 type EipAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AllocationID string `json:"allocationID,omitempty" tf:"allocation_id,omitempty"`
 	// +optional

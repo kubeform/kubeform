@@ -20,9 +20,10 @@ type ApiGatewayResource struct {
 
 type ApiGatewayResourceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ParentID    string                    `json:"parentID" tf:"parent_id"`
-	PathPart    string                    `json:"pathPart" tf:"path_part"`
-	RestAPIID   string                    `json:"restAPIID" tf:"rest_api_id"`
+
+	ParentID  string `json:"parentID" tf:"parent_id"`
+	PathPart  string `json:"pathPart" tf:"path_part"`
+	RestAPIID string `json:"restAPIID" tf:"rest_api_id"`
 }
 
 type ApiGatewayResourceStatus struct {

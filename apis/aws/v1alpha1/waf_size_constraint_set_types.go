@@ -35,7 +35,8 @@ type WafSizeConstraintSetSpecSizeConstraints struct {
 
 type WafSizeConstraintSetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Name string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SizeConstraints []WafSizeConstraintSetSpecSizeConstraints `json:"sizeConstraints,omitempty" tf:"size_constraints,omitempty"`

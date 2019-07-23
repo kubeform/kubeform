@@ -52,8 +52,10 @@ type ContainerServiceSpecServicePrincipal struct {
 }
 
 type ContainerServiceSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	AgentPoolProfile []ContainerServiceSpecAgentPoolProfile `json:"agentPoolProfile" tf:"agent_pool_profile"`

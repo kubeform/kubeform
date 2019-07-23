@@ -34,6 +34,7 @@ type LbSpecSubnetMapping struct {
 
 type LbSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AccessLogs []LbSpecAccessLogs `json:"accessLogs,omitempty" tf:"access_logs,omitempty"`

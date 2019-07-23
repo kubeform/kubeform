@@ -25,7 +25,8 @@ type SsmDocumentSpecPermissions struct {
 
 type SsmDocumentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Content     string                    `json:"content" tf:"content"`
+
+	Content string `json:"content" tf:"content"`
 	// +optional
 	DocumentFormat string `json:"documentFormat,omitempty" tf:"document_format,omitempty"`
 	DocumentType   string `json:"documentType" tf:"document_type"`

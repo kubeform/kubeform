@@ -20,8 +20,9 @@ type SsmPatchGroup struct {
 
 type SsmPatchGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	BaselineID  string                    `json:"baselineID" tf:"baseline_id"`
-	PatchGroup  string                    `json:"patchGroup" tf:"patch_group"`
+
+	BaselineID string `json:"baselineID" tf:"baseline_id"`
+	PatchGroup string `json:"patchGroup" tf:"patch_group"`
 }
 
 type SsmPatchGroupStatus struct {

@@ -33,6 +33,7 @@ type WafRuleGroupSpecActivatedRule struct {
 
 type WafRuleGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ActivatedRule []WafRuleGroupSpecActivatedRule `json:"activatedRule,omitempty" tf:"activated_rule,omitempty"`

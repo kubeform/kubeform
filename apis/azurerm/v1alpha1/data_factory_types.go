@@ -41,6 +41,7 @@ type DataFactorySpecVstsConfiguration struct {
 
 type DataFactorySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	GithubConfiguration []DataFactorySpecGithubConfiguration `json:"githubConfiguration,omitempty" tf:"github_configuration,omitempty"`

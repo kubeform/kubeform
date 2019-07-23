@@ -19,15 +19,17 @@ type StreamAnalyticsOutputMssql struct {
 }
 
 type StreamAnalyticsOutputMssqlSpec struct {
-	Secret                 *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef            core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	Database               string                     `json:"database" tf:"database"`
-	Name                   string                     `json:"name" tf:"name"`
-	ResourceGroupName      string                     `json:"resourceGroupName" tf:"resource_group_name"`
-	Server                 string                     `json:"server" tf:"server"`
-	StreamAnalyticsJobName string                     `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`
-	Table                  string                     `json:"table" tf:"table"`
-	User                   string                     `json:"user" tf:"user"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	Database               string `json:"database" tf:"database"`
+	Name                   string `json:"name" tf:"name"`
+	ResourceGroupName      string `json:"resourceGroupName" tf:"resource_group_name"`
+	Server                 string `json:"server" tf:"server"`
+	StreamAnalyticsJobName string `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`
+	Table                  string `json:"table" tf:"table"`
+	User                   string `json:"user" tf:"user"`
 }
 
 type StreamAnalyticsOutputMssqlStatus struct {

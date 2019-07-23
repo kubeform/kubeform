@@ -19,8 +19,10 @@ type SqlUser struct {
 }
 
 type SqlUserSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	Host     string `json:"host,omitempty" tf:"host,omitempty"`
 	Instance string `json:"instance" tf:"instance"`

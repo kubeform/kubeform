@@ -20,6 +20,7 @@ type DatasyncAgent struct {
 
 type DatasyncAgentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	ActivationKey string `json:"activationKey,omitempty" tf:"activation_key,omitempty"`
 	// +optional

@@ -30,6 +30,7 @@ type ComputeRouterNATSpecSubnetwork struct {
 
 type ComputeRouterNATSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	IcmpIdleTimeoutSec int `json:"icmpIdleTimeoutSec,omitempty" tf:"icmp_idle_timeout_sec,omitempty"`
 	// +optional

@@ -95,8 +95,10 @@ type AlbListenerSpecDefaultAction struct {
 }
 
 type AlbListenerSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	CertificateArn  string                         `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
 	DefaultAction   []AlbListenerSpecDefaultAction `json:"defaultAction" tf:"default_action"`

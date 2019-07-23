@@ -20,8 +20,9 @@ type PublicIPPrefix struct {
 
 type PublicIPPrefixSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Location    string                    `json:"location" tf:"location"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Location string `json:"location" tf:"location"`
+	Name     string `json:"name" tf:"name"`
 	// +optional
 	PrefixLength      int    `json:"prefixLength,omitempty" tf:"prefix_length,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`

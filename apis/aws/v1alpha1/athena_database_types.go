@@ -26,7 +26,8 @@ type AthenaDatabaseSpecEncryptionConfiguration struct {
 
 type AthenaDatabaseSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Bucket      string                    `json:"bucket" tf:"bucket"`
+
+	Bucket string `json:"bucket" tf:"bucket"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	EncryptionConfiguration []AthenaDatabaseSpecEncryptionConfiguration `json:"encryptionConfiguration,omitempty" tf:"encryption_configuration,omitempty"`

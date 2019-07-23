@@ -20,7 +20,8 @@ type NetworkSecurityRule struct {
 
 type NetworkSecurityRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Access      string                    `json:"access" tf:"access"`
+
+	Access string `json:"access" tf:"access"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

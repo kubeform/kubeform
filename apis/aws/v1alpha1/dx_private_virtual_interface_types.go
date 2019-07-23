@@ -19,8 +19,9 @@ type DxPrivateVirtualInterface struct {
 }
 
 type DxPrivateVirtualInterfaceSpec struct {
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AddressFamily string                    `json:"addressFamily" tf:"address_family"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	AddressFamily string `json:"addressFamily" tf:"address_family"`
 	// +optional
 	AmazonAddress string `json:"amazonAddress,omitempty" tf:"amazon_address,omitempty"`
 	BgpAsn        int    `json:"bgpAsn" tf:"bgp_asn"`

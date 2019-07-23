@@ -20,8 +20,9 @@ type SqlSslCert struct {
 
 type SqlSslCertSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	CommonName  string                    `json:"commonName" tf:"common_name"`
-	Instance    string                    `json:"instance" tf:"instance"`
+
+	CommonName string `json:"commonName" tf:"common_name"`
+	Instance   string `json:"instance" tf:"instance"`
 }
 
 type SqlSslCertStatus struct {

@@ -20,6 +20,7 @@ type LogicAppActionHTTP struct {
 
 type LogicAppActionHTTPSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Body string `json:"body,omitempty" tf:"body,omitempty"`
 	// +optional

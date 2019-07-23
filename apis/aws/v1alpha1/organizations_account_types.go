@@ -20,7 +20,8 @@ type OrganizationsAccount struct {
 
 type OrganizationsAccountSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Email       string                    `json:"email" tf:"email"`
+
+	Email string `json:"email" tf:"email"`
 	// +optional
 	IamUserAccessToBilling string `json:"iamUserAccessToBilling,omitempty" tf:"iam_user_access_to_billing,omitempty"`
 	Name                   string `json:"name" tf:"name"`

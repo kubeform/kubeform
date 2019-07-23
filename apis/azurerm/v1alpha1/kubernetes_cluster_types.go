@@ -104,8 +104,10 @@ type KubernetesClusterSpecServicePrincipal struct {
 }
 
 type KubernetesClusterSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AddonProfile     []KubernetesClusterSpecAddonProfile     `json:"addonProfile,omitempty" tf:"addon_profile,omitempty"`

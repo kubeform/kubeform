@@ -19,9 +19,10 @@ type BigtableTable struct {
 }
 
 type BigtableTableSpec struct {
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
-	InstanceName string                    `json:"instanceName" tf:"instance_name"`
-	Name         string                    `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	InstanceName string `json:"instanceName" tf:"instance_name"`
+	Name         string `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

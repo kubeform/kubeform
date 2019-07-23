@@ -32,6 +32,7 @@ type OpsworksMemcachedLayerSpecEbsVolume struct {
 
 type OpsworksMemcachedLayerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AllocatedMemory int `json:"allocatedMemory,omitempty" tf:"allocated_memory,omitempty"`
 	// +optional

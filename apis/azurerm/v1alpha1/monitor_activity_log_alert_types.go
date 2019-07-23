@@ -48,6 +48,7 @@ type MonitorActivityLogAlertSpecCriteria struct {
 
 type MonitorActivityLogAlertSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Action []MonitorActivityLogAlertSpecAction `json:"action,omitempty" tf:"action,omitempty"`

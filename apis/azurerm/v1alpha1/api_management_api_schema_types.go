@@ -19,13 +19,14 @@ type ApiManagementAPISchema struct {
 }
 
 type ApiManagementAPISchemaSpec struct {
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ApiManagementName string                    `json:"apiManagementName" tf:"api_management_name"`
-	ApiName           string                    `json:"apiName" tf:"api_name"`
-	ContentType       string                    `json:"contentType" tf:"content_type"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	SchemaID          string                    `json:"schemaID" tf:"schema_id"`
-	Value             string                    `json:"value" tf:"value"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
+	ApiName           string `json:"apiName" tf:"api_name"`
+	ContentType       string `json:"contentType" tf:"content_type"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	SchemaID          string `json:"schemaID" tf:"schema_id"`
+	Value             string `json:"value" tf:"value"`
 }
 
 type ApiManagementAPISchemaStatus struct {

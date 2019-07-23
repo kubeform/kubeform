@@ -24,10 +24,12 @@ type ApiManagementAuthorizationServerSpecTokenBodyParameter struct {
 }
 
 type ApiManagementAuthorizationServerSpec struct {
-	Secret                *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef           core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	ApiManagementName     string                     `json:"apiManagementName" tf:"api_management_name"`
-	AuthorizationEndpoint string                     `json:"authorizationEndpoint" tf:"authorization_endpoint"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	ApiManagementName     string `json:"apiManagementName" tf:"api_management_name"`
+	AuthorizationEndpoint string `json:"authorizationEndpoint" tf:"authorization_endpoint"`
 	// +kubebuilder:validation:UniqueItems=true
 	AuthorizationMethods []string `json:"authorizationMethods" tf:"authorization_methods"`
 	// +optional

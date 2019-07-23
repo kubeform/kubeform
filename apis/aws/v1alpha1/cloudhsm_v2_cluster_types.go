@@ -20,7 +20,8 @@ type CloudhsmV2Cluster struct {
 
 type CloudhsmV2ClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	HsmType     string                    `json:"hsmType" tf:"hsm_type"`
+
+	HsmType string `json:"hsmType" tf:"hsm_type"`
 	// +optional
 	SourceBackupIdentifier string `json:"sourceBackupIdentifier,omitempty" tf:"source_backup_identifier,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true

@@ -51,8 +51,10 @@ type DmsEndpointSpecS3Settings struct {
 }
 
 type DmsEndpointSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	CertificateArn string `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
 	// +optional

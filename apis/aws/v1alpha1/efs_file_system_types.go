@@ -22,6 +22,7 @@ type EfsFileSystem struct {
 
 type EfsFileSystemSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	CreationToken string `json:"creationToken,omitempty" tf:"creation_token,omitempty"`
 	// +optional

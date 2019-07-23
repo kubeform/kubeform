@@ -20,7 +20,8 @@ type VirtualMachineDataDiskAttachment struct {
 
 type VirtualMachineDataDiskAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Caching     string                    `json:"caching" tf:"caching"`
+
+	Caching string `json:"caching" tf:"caching"`
 	// +optional
 	CreateOption     string `json:"createOption,omitempty" tf:"create_option,omitempty"`
 	Lun              int    `json:"lun" tf:"lun"`

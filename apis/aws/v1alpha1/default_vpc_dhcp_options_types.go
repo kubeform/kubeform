@@ -20,6 +20,7 @@ type DefaultVpcDHCPOptions struct {
 
 type DefaultVpcDHCPOptionsSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	NetbiosNameServers []string `json:"netbiosNameServers,omitempty" tf:"netbios_name_servers,omitempty"`
 	// +optional

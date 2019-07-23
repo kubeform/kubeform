@@ -19,9 +19,10 @@ type ApplicationInsightsWebTest struct {
 }
 
 type ApplicationInsightsWebTestSpec struct {
-	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ApplicationInsightsID string                    `json:"applicationInsightsID" tf:"application_insights_id"`
-	Configuration         string                    `json:"configuration" tf:"configuration"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	ApplicationInsightsID string `json:"applicationInsightsID" tf:"application_insights_id"`
+	Configuration         string `json:"configuration" tf:"configuration"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

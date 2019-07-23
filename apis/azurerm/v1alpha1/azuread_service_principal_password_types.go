@@ -19,9 +19,11 @@ type AzureadServicePrincipalPassword struct {
 }
 
 type AzureadServicePrincipalPasswordSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	EndDate     string                     `json:"endDate" tf:"end_date"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	EndDate string `json:"endDate" tf:"end_date"`
 	// +optional
 	KeyID              string `json:"keyID,omitempty" tf:"key_id,omitempty"`
 	ServicePrincipalID string `json:"servicePrincipalID" tf:"service_principal_id"`

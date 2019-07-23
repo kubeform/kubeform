@@ -36,6 +36,7 @@ type GlueClassifierSpecXmlClassifier struct {
 
 type GlueClassifierSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	GrokClassifier []GlueClassifierSpecGrokClassifier `json:"grokClassifier,omitempty" tf:"grok_classifier,omitempty"`

@@ -19,8 +19,9 @@ type AutomationVariableBool struct {
 }
 
 type AutomationVariableBoolSpec struct {
-	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AutomationAccountName string                    `json:"automationAccountName" tf:"automation_account_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	AutomationAccountName string `json:"automationAccountName" tf:"automation_account_name"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

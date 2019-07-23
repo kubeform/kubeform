@@ -20,6 +20,7 @@ type IamUserLoginProfile struct {
 
 type IamUserLoginProfileSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	PasswordLength int `json:"passwordLength,omitempty" tf:"password_length,omitempty"`
 	// +optional

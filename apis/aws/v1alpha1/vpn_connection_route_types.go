@@ -19,9 +19,10 @@ type VpnConnectionRoute struct {
 }
 
 type VpnConnectionRouteSpec struct {
-	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DestinationCIDRBlock string                    `json:"destinationCIDRBlock" tf:"destination_cidr_block"`
-	VpnConnectionID      string                    `json:"vpnConnectionID" tf:"vpn_connection_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	DestinationCIDRBlock string `json:"destinationCIDRBlock" tf:"destination_cidr_block"`
+	VpnConnectionID      string `json:"vpnConnectionID" tf:"vpn_connection_id"`
 }
 
 type VpnConnectionRouteStatus struct {

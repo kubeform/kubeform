@@ -40,6 +40,7 @@ type EventhubSpecCaptureDescription struct {
 
 type EventhubSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CaptureDescription []EventhubSpecCaptureDescription `json:"captureDescription,omitempty" tf:"capture_description,omitempty"`

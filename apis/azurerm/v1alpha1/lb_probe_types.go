@@ -20,6 +20,7 @@ type LbProbe struct {
 
 type LbProbeSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	IntervalInSeconds int    `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 	LoadbalancerID    string `json:"loadbalancerID" tf:"loadbalancer_id"`

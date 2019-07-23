@@ -20,6 +20,7 @@ type SqlElasticpool struct {
 
 type SqlElasticpoolSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	DbDtuMax int `json:"dbDtuMax,omitempty" tf:"db_dtu_max,omitempty"`
 	// +optional

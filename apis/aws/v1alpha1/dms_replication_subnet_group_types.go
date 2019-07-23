@@ -19,9 +19,10 @@ type DmsReplicationSubnetGroup struct {
 }
 
 type DmsReplicationSubnetGroupSpec struct {
-	ProviderRef                       core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ReplicationSubnetGroupDescription string                    `json:"replicationSubnetGroupDescription" tf:"replication_subnet_group_description"`
-	ReplicationSubnetGroupID          string                    `json:"replicationSubnetGroupID" tf:"replication_subnet_group_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	ReplicationSubnetGroupDescription string `json:"replicationSubnetGroupDescription" tf:"replication_subnet_group_description"`
+	ReplicationSubnetGroupID          string `json:"replicationSubnetGroupID" tf:"replication_subnet_group_id"`
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
 	// +optional

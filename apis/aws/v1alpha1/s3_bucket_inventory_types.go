@@ -62,7 +62,8 @@ type S3BucketInventorySpecSchedule struct {
 
 type S3BucketInventorySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Bucket      string                    `json:"bucket" tf:"bucket"`
+
+	Bucket string `json:"bucket" tf:"bucket"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	Destination []S3BucketInventorySpecDestination `json:"destination" tf:"destination"`

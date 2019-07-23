@@ -26,9 +26,10 @@ type BackupSelectionSpecSelectionTag struct {
 
 type BackupSelectionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	IamRoleArn  string                    `json:"iamRoleArn" tf:"iam_role_arn"`
-	Name        string                    `json:"name" tf:"name"`
-	PlanID      string                    `json:"planID" tf:"plan_id"`
+
+	IamRoleArn string `json:"iamRoleArn" tf:"iam_role_arn"`
+	Name       string `json:"name" tf:"name"`
+	PlanID     string `json:"planID" tf:"plan_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Resources []string `json:"resources,omitempty" tf:"resources,omitempty"`

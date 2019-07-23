@@ -20,7 +20,8 @@ type PubsubTopic struct {
 
 type PubsubTopicSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Name string `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }

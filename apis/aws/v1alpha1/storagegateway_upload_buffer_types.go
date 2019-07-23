@@ -20,8 +20,9 @@ type StoragegatewayUploadBuffer struct {
 
 type StoragegatewayUploadBufferSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DiskID      string                    `json:"diskID" tf:"disk_id"`
-	GatewayArn  string                    `json:"gatewayArn" tf:"gateway_arn"`
+
+	DiskID     string `json:"diskID" tf:"disk_id"`
+	GatewayArn string `json:"gatewayArn" tf:"gateway_arn"`
 }
 
 type StoragegatewayUploadBufferStatus struct {

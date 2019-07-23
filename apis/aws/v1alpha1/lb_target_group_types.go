@@ -49,6 +49,7 @@ type LbTargetGroupSpecStickiness struct {
 
 type LbTargetGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	DeregistrationDelay int `json:"deregistrationDelay,omitempty" tf:"deregistration_delay,omitempty"`
 	// +optional

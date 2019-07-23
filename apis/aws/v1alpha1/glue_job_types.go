@@ -33,6 +33,7 @@ type GlueJobSpecExecutionProperty struct {
 
 type GlueJobSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// Deprecated
 	AllocatedCapacity int `json:"allocatedCapacity,omitempty" tf:"allocated_capacity,omitempty"`

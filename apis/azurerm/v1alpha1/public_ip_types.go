@@ -20,6 +20,7 @@ type PublicIP struct {
 
 type PublicIPSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AllocationMethod string `json:"allocationMethod,omitempty" tf:"allocation_method,omitempty"`
 	// +optional

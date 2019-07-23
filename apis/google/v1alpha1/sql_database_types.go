@@ -20,6 +20,7 @@ type SqlDatabase struct {
 
 type SqlDatabaseSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Charset string `json:"charset,omitempty" tf:"charset,omitempty"`
 	// +optional

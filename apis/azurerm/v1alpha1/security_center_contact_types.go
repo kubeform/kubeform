@@ -19,11 +19,12 @@ type SecurityCenterContact struct {
 }
 
 type SecurityCenterContactSpec struct {
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AlertNotifications bool                      `json:"alertNotifications" tf:"alert_notifications"`
-	AlertsToAdmins     bool                      `json:"alertsToAdmins" tf:"alerts_to_admins"`
-	Email              string                    `json:"email" tf:"email"`
-	Phone              string                    `json:"phone" tf:"phone"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	AlertNotifications bool   `json:"alertNotifications" tf:"alert_notifications"`
+	AlertsToAdmins     bool   `json:"alertsToAdmins" tf:"alerts_to_admins"`
+	Email              string `json:"email" tf:"email"`
+	Phone              string `json:"phone" tf:"phone"`
 }
 
 type SecurityCenterContactStatus struct {

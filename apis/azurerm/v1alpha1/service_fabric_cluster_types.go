@@ -104,6 +104,7 @@ type ServiceFabricClusterSpecReverseProxyCertificate struct {
 
 type ServiceFabricClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AddOnFeatures []string `json:"addOnFeatures,omitempty" tf:"add_on_features,omitempty"`

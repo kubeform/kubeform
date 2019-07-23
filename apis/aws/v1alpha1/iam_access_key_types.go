@@ -20,6 +20,7 @@ type IamAccessKey struct {
 
 type IamAccessKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	PgpKey string `json:"pgpKey,omitempty" tf:"pgp_key,omitempty"`
 	// +optional

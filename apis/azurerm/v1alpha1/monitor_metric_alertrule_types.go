@@ -35,7 +35,8 @@ type MonitorMetricAlertruleSpecWebhookAction struct {
 
 type MonitorMetricAlertruleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Aggregation string                    `json:"aggregation" tf:"aggregation"`
+
+	Aggregation string `json:"aggregation" tf:"aggregation"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

@@ -19,11 +19,12 @@ type MysqlConfiguration struct {
 }
 
 type MysqlConfigurationSpec struct {
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ServerName        string                    `json:"serverName" tf:"server_name"`
-	Value             string                    `json:"value" tf:"value"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	ServerName        string `json:"serverName" tf:"server_name"`
+	Value             string `json:"value" tf:"value"`
 }
 
 type MysqlConfigurationStatus struct {

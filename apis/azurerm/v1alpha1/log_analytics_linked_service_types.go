@@ -24,6 +24,7 @@ type LogAnalyticsLinkedServiceSpecLinkedServiceProperties struct {
 
 type LogAnalyticsLinkedServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	LinkedServiceName string `json:"linkedServiceName,omitempty" tf:"linked_service_name,omitempty"`
 	// +optional

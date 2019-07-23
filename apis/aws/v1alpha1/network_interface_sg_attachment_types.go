@@ -19,9 +19,10 @@ type NetworkInterfaceSgAttachment struct {
 }
 
 type NetworkInterfaceSgAttachmentSpec struct {
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
-	NetworkInterfaceID string                    `json:"networkInterfaceID" tf:"network_interface_id"`
-	SecurityGroupID    string                    `json:"securityGroupID" tf:"security_group_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	NetworkInterfaceID string `json:"networkInterfaceID" tf:"network_interface_id"`
+	SecurityGroupID    string `json:"securityGroupID" tf:"security_group_id"`
 }
 
 type NetworkInterfaceSgAttachmentStatus struct {

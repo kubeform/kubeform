@@ -20,6 +20,7 @@ type SqlVirtualNetworkRule struct {
 
 type SqlVirtualNetworkRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	IgnoreMissingVnetServiceEndpoint bool   `json:"ignoreMissingVnetServiceEndpoint,omitempty" tf:"ignore_missing_vnet_service_endpoint,omitempty"`
 	Name                             string `json:"name" tf:"name"`

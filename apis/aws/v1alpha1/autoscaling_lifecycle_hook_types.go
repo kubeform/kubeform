@@ -19,8 +19,9 @@ type AutoscalingLifecycleHook struct {
 }
 
 type AutoscalingLifecycleHookSpec struct {
-	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AutoscalingGroupName string                    `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	AutoscalingGroupName string `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
 	// +optional
 	DefaultResult string `json:"defaultResult,omitempty" tf:"default_result,omitempty"`
 	// +optional

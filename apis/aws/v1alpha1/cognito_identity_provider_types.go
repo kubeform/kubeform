@@ -20,6 +20,7 @@ type CognitoIdentityProvider struct {
 
 type CognitoIdentityProviderSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AttributeMapping map[string]string `json:"attributeMapping,omitempty" tf:"attribute_mapping,omitempty"`
 	// +optional

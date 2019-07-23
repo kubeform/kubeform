@@ -20,6 +20,7 @@ type EndpointsService struct {
 
 type EndpointsServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	GrpcConfig string `json:"grpcConfig,omitempty" tf:"grpc_config,omitempty"`
 	// +optional

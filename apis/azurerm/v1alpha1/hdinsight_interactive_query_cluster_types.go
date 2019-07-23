@@ -84,9 +84,11 @@ type HdinsightInteractiveQueryClusterSpecStorageAccount struct {
 }
 
 type HdinsightInteractiveQueryClusterSpec struct {
-	Secret         *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef    core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	ClusterVersion string                     `json:"clusterVersion" tf:"cluster_version"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	ClusterVersion string `json:"clusterVersion" tf:"cluster_version"`
 	// +kubebuilder:validation:MaxItems=1
 	ComponentVersion []HdinsightInteractiveQueryClusterSpecComponentVersion `json:"componentVersion" tf:"component_version"`
 	// +kubebuilder:validation:MaxItems=1

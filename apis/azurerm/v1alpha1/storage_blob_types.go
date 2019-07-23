@@ -20,6 +20,7 @@ type StorageBlob struct {
 
 type StorageBlobSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Attempts int `json:"attempts,omitempty" tf:"attempts,omitempty"`
 	// +optional

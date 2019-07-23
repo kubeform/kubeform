@@ -32,6 +32,7 @@ type VirtualNetworkSpecSubnet struct {
 
 type VirtualNetworkSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:MinItems=1
 	AddressSpace []string `json:"addressSpace" tf:"address_space"`
 	// +optional

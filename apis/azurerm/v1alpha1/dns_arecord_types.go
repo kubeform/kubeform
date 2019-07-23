@@ -20,7 +20,8 @@ type DnsARecord struct {
 
 type DnsARecordSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Name string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
 	Records           []string `json:"records" tf:"records"`
 	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`

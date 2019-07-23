@@ -25,8 +25,9 @@ type CognitoResourceServerSpecScope struct {
 
 type CognitoResourceServerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Identifier  string                    `json:"identifier" tf:"identifier"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Identifier string `json:"identifier" tf:"identifier"`
+	Name       string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=25
 	// +kubebuilder:validation:UniqueItems=true

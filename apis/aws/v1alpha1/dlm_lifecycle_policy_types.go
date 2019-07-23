@@ -50,9 +50,10 @@ type DlmLifecyclePolicySpecPolicyDetails struct {
 }
 
 type DlmLifecyclePolicySpec struct {
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Description      string                    `json:"description" tf:"description"`
-	ExecutionRoleArn string                    `json:"executionRoleArn" tf:"execution_role_arn"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Description      string `json:"description" tf:"description"`
+	ExecutionRoleArn string `json:"executionRoleArn" tf:"execution_role_arn"`
 	// +kubebuilder:validation:MaxItems=1
 	PolicyDetails []DlmLifecyclePolicySpecPolicyDetails `json:"policyDetails" tf:"policy_details"`
 	// +optional

@@ -95,9 +95,11 @@ type HdinsightMlServicesClusterSpecStorageAccount struct {
 }
 
 type HdinsightMlServicesClusterSpec struct {
-	Secret         *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef    core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	ClusterVersion string                     `json:"clusterVersion" tf:"cluster_version"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	ClusterVersion string `json:"clusterVersion" tf:"cluster_version"`
 	// +kubebuilder:validation:MaxItems=1
 	Gateway           []HdinsightMlServicesClusterSpecGateway `json:"gateway" tf:"gateway"`
 	Location          string                                  `json:"location" tf:"location"`

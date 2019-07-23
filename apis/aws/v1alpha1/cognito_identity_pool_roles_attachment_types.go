@@ -43,8 +43,9 @@ type CognitoIdentityPoolRolesAttachmentSpecRoles struct {
 }
 
 type CognitoIdentityPoolRolesAttachmentSpec struct {
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
-	IdentityPoolID string                    `json:"identityPoolID" tf:"identity_pool_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	IdentityPoolID string `json:"identityPoolID" tf:"identity_pool_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	RoleMapping []CognitoIdentityPoolRolesAttachmentSpecRoleMapping    `json:"roleMapping,omitempty" tf:"role_mapping,omitempty"`

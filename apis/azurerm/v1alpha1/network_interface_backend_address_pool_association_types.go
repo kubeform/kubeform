@@ -19,10 +19,11 @@ type NetworkInterfaceBackendAddressPoolAssociation struct {
 }
 
 type NetworkInterfaceBackendAddressPoolAssociationSpec struct {
-	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
-	BackendAddressPoolID string                    `json:"backendAddressPoolID" tf:"backend_address_pool_id"`
-	IpConfigurationName  string                    `json:"ipConfigurationName" tf:"ip_configuration_name"`
-	NetworkInterfaceID   string                    `json:"networkInterfaceID" tf:"network_interface_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	BackendAddressPoolID string `json:"backendAddressPoolID" tf:"backend_address_pool_id"`
+	IpConfigurationName  string `json:"ipConfigurationName" tf:"ip_configuration_name"`
+	NetworkInterfaceID   string `json:"networkInterfaceID" tf:"network_interface_id"`
 }
 
 type NetworkInterfaceBackendAddressPoolAssociationStatus struct {

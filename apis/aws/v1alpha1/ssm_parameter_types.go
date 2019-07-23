@@ -19,8 +19,10 @@ type SsmParameter struct {
 }
 
 type SsmParameterSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	AllowedPattern string `json:"allowedPattern,omitempty" tf:"allowed_pattern,omitempty"`
 	// +optional

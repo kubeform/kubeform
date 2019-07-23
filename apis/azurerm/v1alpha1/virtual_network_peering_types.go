@@ -20,6 +20,7 @@ type VirtualNetworkPeering struct {
 
 type VirtualNetworkPeeringSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AllowForwardedTraffic bool `json:"allowForwardedTraffic,omitempty" tf:"allow_forwarded_traffic,omitempty"`
 	// +optional

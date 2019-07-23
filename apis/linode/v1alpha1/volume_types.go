@@ -20,7 +20,8 @@ type Volume struct {
 
 type VolumeSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Label       string                    `json:"label" tf:"label"`
+
+	Label string `json:"label" tf:"label"`
 	// +optional
 	LinodeID int    `json:"linodeID,omitempty" tf:"linode_id,omitempty"`
 	Region   string `json:"region" tf:"region"`

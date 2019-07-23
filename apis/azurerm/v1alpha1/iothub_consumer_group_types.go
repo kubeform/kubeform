@@ -19,11 +19,12 @@ type IothubConsumerGroup struct {
 }
 
 type IothubConsumerGroupSpec struct {
-	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
-	EventhubEndpointName string                    `json:"eventhubEndpointName" tf:"eventhub_endpoint_name"`
-	IothubName           string                    `json:"iothubName" tf:"iothub_name"`
-	Name                 string                    `json:"name" tf:"name"`
-	ResourceGroupName    string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	EventhubEndpointName string `json:"eventhubEndpointName" tf:"eventhub_endpoint_name"`
+	IothubName           string `json:"iothubName" tf:"iothub_name"`
+	Name                 string `json:"name" tf:"name"`
+	ResourceGroupName    string `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type IothubConsumerGroupStatus struct {

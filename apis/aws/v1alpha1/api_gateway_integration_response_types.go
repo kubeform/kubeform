@@ -20,6 +20,7 @@ type ApiGatewayIntegrationResponse struct {
 
 type ApiGatewayIntegrationResponseSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	ContentHandling string `json:"contentHandling,omitempty" tf:"content_handling,omitempty"`
 	HttpMethod      string `json:"httpMethod" tf:"http_method"`

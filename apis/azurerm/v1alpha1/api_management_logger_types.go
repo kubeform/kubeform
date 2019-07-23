@@ -25,9 +25,11 @@ type ApiManagementLoggerSpecEventhub struct {
 }
 
 type ApiManagementLoggerSpec struct {
-	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	ApiManagementName string                     `json:"apiManagementName" tf:"api_management_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ApplicationInsights []ApiManagementLoggerSpecApplicationInsights `json:"applicationInsights,omitempty" tf:"application_insights,omitempty"`

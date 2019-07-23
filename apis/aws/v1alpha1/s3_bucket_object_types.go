@@ -20,6 +20,7 @@ type S3BucketObject struct {
 
 type S3BucketObjectSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Acl    string `json:"acl,omitempty" tf:"acl,omitempty"`
 	Bucket string `json:"bucket" tf:"bucket"`

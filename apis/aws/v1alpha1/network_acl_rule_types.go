@@ -20,6 +20,7 @@ type NetworkACLRule struct {
 
 type NetworkACLRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	CidrBlock string `json:"cidrBlock,omitempty" tf:"cidr_block,omitempty"`
 	// +optional

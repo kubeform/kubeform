@@ -20,7 +20,8 @@ type VolumeAttachment struct {
 
 type VolumeAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DeviceName  string                    `json:"deviceName" tf:"device_name"`
+
+	DeviceName string `json:"deviceName" tf:"device_name"`
 	// +optional
 	ForceDetach bool   `json:"forceDetach,omitempty" tf:"force_detach,omitempty"`
 	InstanceID  string `json:"instanceID" tf:"instance_id"`

@@ -20,6 +20,7 @@ type LbTargetGroupAttachment struct {
 
 type LbTargetGroupAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	// +optional

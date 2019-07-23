@@ -20,7 +20,8 @@ type StorageBucketObject struct {
 
 type StorageBucketObjectSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Bucket      string                    `json:"bucket" tf:"bucket"`
+
+	Bucket string `json:"bucket" tf:"bucket"`
 	// +optional
 	CacheControl string `json:"cacheControl,omitempty" tf:"cache_control,omitempty"`
 	// +optional

@@ -29,6 +29,7 @@ type GlobalacceleratorAcceleratorSpecAttributes struct {
 
 type GlobalacceleratorAcceleratorSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Attributes []GlobalacceleratorAcceleratorSpecAttributes `json:"attributes,omitempty" tf:"attributes,omitempty"`

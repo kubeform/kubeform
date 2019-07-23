@@ -20,8 +20,9 @@ type OrganizationsOrganizationalUnit struct {
 
 type OrganizationsOrganizationalUnitSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
-	ParentID    string                    `json:"parentID" tf:"parent_id"`
+
+	Name     string `json:"name" tf:"name"`
+	ParentID string `json:"parentID" tf:"parent_id"`
 }
 
 type OrganizationsOrganizationalUnitStatus struct {

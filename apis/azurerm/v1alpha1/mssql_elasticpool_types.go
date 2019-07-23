@@ -35,7 +35,8 @@ type MssqlElasticpoolSpecSku struct {
 
 type MssqlElasticpoolSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Location    string                    `json:"location" tf:"location"`
+
+	Location string `json:"location" tf:"location"`
 	// +optional
 	MaxSizeBytes int `json:"maxSizeBytes,omitempty" tf:"max_size_bytes,omitempty"`
 	// +optional

@@ -20,6 +20,7 @@ type CodecommitRepository struct {
 
 type CodecommitRepositorySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	DefaultBranch string `json:"defaultBranch,omitempty" tf:"default_branch,omitempty"`
 	// +optional

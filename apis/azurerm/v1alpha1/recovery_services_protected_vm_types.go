@@ -19,11 +19,12 @@ type RecoveryServicesProtectedVm struct {
 }
 
 type RecoveryServicesProtectedVmSpec struct {
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
-	BackupPolicyID    string                    `json:"backupPolicyID" tf:"backup_policy_id"`
-	RecoveryVaultName string                    `json:"recoveryVaultName" tf:"recovery_vault_name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	SourceVmID        string                    `json:"sourceVmID" tf:"source_vm_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	BackupPolicyID    string `json:"backupPolicyID" tf:"backup_policy_id"`
+	RecoveryVaultName string `json:"recoveryVaultName" tf:"recovery_vault_name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	SourceVmID        string `json:"sourceVmID" tf:"source_vm_id"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

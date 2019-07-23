@@ -20,7 +20,8 @@ type MqConfiguration struct {
 
 type MqConfigurationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Data        string                    `json:"data" tf:"data"`
+
+	Data string `json:"data" tf:"data"`
 	// +optional
 	Description   string `json:"description,omitempty" tf:"description,omitempty"`
 	EngineType    string `json:"engineType" tf:"engine_type"`

@@ -32,8 +32,9 @@ type RoleDefinitionSpecPermissions struct {
 }
 
 type RoleDefinitionSpec struct {
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AssignableScopes []string                  `json:"assignableScopes" tf:"assignable_scopes"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	AssignableScopes []string `json:"assignableScopes" tf:"assignable_scopes"`
 	// +optional
 	Description string                          `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string                          `json:"name" tf:"name"`

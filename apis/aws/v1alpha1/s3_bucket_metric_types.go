@@ -27,7 +27,8 @@ type S3BucketMetricSpecFilter struct {
 
 type S3BucketMetricSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Bucket      string                    `json:"bucket" tf:"bucket"`
+
+	Bucket string `json:"bucket" tf:"bucket"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Filter []S3BucketMetricSpecFilter `json:"filter,omitempty" tf:"filter,omitempty"`

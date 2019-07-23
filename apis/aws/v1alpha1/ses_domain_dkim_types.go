@@ -20,7 +20,8 @@ type SesDomainDkim struct {
 
 type SesDomainDkimSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Domain      string                    `json:"domain" tf:"domain"`
+
+	Domain string `json:"domain" tf:"domain"`
 }
 
 type SesDomainDkimStatus struct {

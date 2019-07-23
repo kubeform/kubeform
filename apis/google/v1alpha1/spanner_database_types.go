@@ -20,6 +20,7 @@ type SpannerDatabase struct {
 
 type SpannerDatabaseSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Ddl      []string `json:"ddl,omitempty" tf:"ddl,omitempty"`
 	Instance string   `json:"instance" tf:"instance"`

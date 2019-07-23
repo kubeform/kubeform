@@ -19,8 +19,10 @@ type IamServerCertificate struct {
 }
 
 type IamServerCertificateSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	Arn             string `json:"arn,omitempty" tf:"arn,omitempty"`
 	CertificateBody string `json:"certificateBody" tf:"certificate_body"`

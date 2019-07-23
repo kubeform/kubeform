@@ -170,6 +170,7 @@ type CodedeployDeploymentGroupSpecTriggerConfiguration struct {
 
 type CodedeployDeploymentGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AlarmConfiguration []CodedeployDeploymentGroupSpecAlarmConfiguration `json:"alarmConfiguration,omitempty" tf:"alarm_configuration,omitempty"`

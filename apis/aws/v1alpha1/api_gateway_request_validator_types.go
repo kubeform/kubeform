@@ -20,8 +20,9 @@ type ApiGatewayRequestValidator struct {
 
 type ApiGatewayRequestValidatorSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
-	RestAPIID   string                    `json:"restAPIID" tf:"rest_api_id"`
+
+	Name      string `json:"name" tf:"name"`
+	RestAPIID string `json:"restAPIID" tf:"rest_api_id"`
 	// +optional
 	ValidateRequestBody bool `json:"validateRequestBody,omitempty" tf:"validate_request_body,omitempty"`
 	// +optional

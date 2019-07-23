@@ -19,9 +19,10 @@ type LoadBalancerListenerPolicy struct {
 }
 
 type LoadBalancerListenerPolicySpec struct {
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
-	LoadBalancerName string                    `json:"loadBalancerName" tf:"load_balancer_name"`
-	LoadBalancerPort int                       `json:"loadBalancerPort" tf:"load_balancer_port"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	LoadBalancerName string `json:"loadBalancerName" tf:"load_balancer_name"`
+	LoadBalancerPort int    `json:"loadBalancerPort" tf:"load_balancer_port"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	PolicyNames []string `json:"policyNames,omitempty" tf:"policy_names,omitempty"`

@@ -25,7 +25,8 @@ type DatabaseClusterSpecMaintenanceWindow struct {
 
 type DatabaseClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Engine      string                    `json:"engine" tf:"engine"`
+
+	Engine string `json:"engine" tf:"engine"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	MaintenanceWindow []DatabaseClusterSpecMaintenanceWindow `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`

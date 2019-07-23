@@ -20,6 +20,7 @@ type Cloud9EnvironmentEc2 struct {
 
 type Cloud9EnvironmentEc2Spec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AutomaticStopTimeMinutes int `json:"automaticStopTimeMinutes,omitempty" tf:"automatic_stop_time_minutes,omitempty"`
 	// +optional

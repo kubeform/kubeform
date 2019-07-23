@@ -19,8 +19,9 @@ type DxLag struct {
 }
 
 type DxLagSpec struct {
-	ProviderRef          core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ConnectionsBandwidth string                    `json:"connectionsBandwidth" tf:"connections_bandwidth"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	ConnectionsBandwidth string `json:"connectionsBandwidth" tf:"connections_bandwidth"`
 	// +optional
 	ForceDestroy bool   `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
 	Location     string `json:"location" tf:"location"`

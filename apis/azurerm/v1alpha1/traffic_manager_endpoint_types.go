@@ -20,6 +20,7 @@ type TrafficManagerEndpoint struct {
 
 type TrafficManagerEndpointSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	EndpointLocation string `json:"endpointLocation,omitempty" tf:"endpoint_location,omitempty"`
 	// +optional

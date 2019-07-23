@@ -31,8 +31,9 @@ type SchedulerJobCollectionSpecQuota struct {
 
 type SchedulerJobCollectionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Location    string                    `json:"location" tf:"location"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Location string `json:"location" tf:"location"`
+	Name     string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Quota             []SchedulerJobCollectionSpecQuota `json:"quota,omitempty" tf:"quota,omitempty"`

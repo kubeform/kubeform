@@ -31,6 +31,7 @@ type StoragegatewayNfsFileShareSpecNfsFileShareDefaults struct {
 
 type StoragegatewayNfsFileShareSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:MaxItems=100
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true

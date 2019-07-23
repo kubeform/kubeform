@@ -8,7 +8,7 @@ metadata:
 spec:
   group: google.kubeform.com
   names:
-    kind: ProjectService
+    kind: ProjectServices
     plural: projectservices
   scope: ""
   validation:
@@ -410,11 +410,14 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            service:
-              type: string
+            services:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
           required:
           - providerRef
-          - service
+          - services
           type: object
         status:
           properties:

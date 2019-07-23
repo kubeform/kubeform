@@ -83,6 +83,7 @@ type ElasticsearchDomainSpecVpcOptions struct {
 
 type ElasticsearchDomainSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AccessPolicies string `json:"accessPolicies,omitempty" tf:"access_policies,omitempty"`
 	// +optional

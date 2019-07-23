@@ -33,7 +33,8 @@ type WafregionalXssMatchSetSpecXssMatchTuple struct {
 
 type WafregionalXssMatchSetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Name string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	XssMatchTuple []WafregionalXssMatchSetSpecXssMatchTuple `json:"xssMatchTuple,omitempty" tf:"xss_match_tuple,omitempty"`

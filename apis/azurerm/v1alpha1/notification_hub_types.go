@@ -28,8 +28,10 @@ type NotificationHubSpecApnsCredential struct {
 type NotificationHubSpecGcmCredential struct{}
 
 type NotificationHubSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ApnsCredential []NotificationHubSpecApnsCredential `json:"apnsCredential,omitempty" tf:"apns_credential,omitempty"`

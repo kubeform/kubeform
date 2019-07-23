@@ -40,6 +40,7 @@ type LambdaFunctionSpecVpcConfig struct {
 
 type LambdaFunctionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	DeadLetterConfig []LambdaFunctionSpecDeadLetterConfig `json:"deadLetterConfig,omitempty" tf:"dead_letter_config,omitempty"`

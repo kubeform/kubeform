@@ -19,8 +19,9 @@ type SecurityhubStandardsSubscription struct {
 }
 
 type SecurityhubStandardsSubscriptionSpec struct {
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
-	StandardsArn string                    `json:"standardsArn" tf:"standards_arn"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	StandardsArn string `json:"standardsArn" tf:"standards_arn"`
 }
 
 type SecurityhubStandardsSubscriptionStatus struct {

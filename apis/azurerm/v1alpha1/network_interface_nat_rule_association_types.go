@@ -19,10 +19,11 @@ type NetworkInterfaceNATRuleAssociation struct {
 }
 
 type NetworkInterfaceNATRuleAssociationSpec struct {
-	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
-	IpConfigurationName string                    `json:"ipConfigurationName" tf:"ip_configuration_name"`
-	NatRuleID           string                    `json:"natRuleID" tf:"nat_rule_id"`
-	NetworkInterfaceID  string                    `json:"networkInterfaceID" tf:"network_interface_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	IpConfigurationName string `json:"ipConfigurationName" tf:"ip_configuration_name"`
+	NatRuleID           string `json:"natRuleID" tf:"nat_rule_id"`
+	NetworkInterfaceID  string `json:"networkInterfaceID" tf:"network_interface_id"`
 }
 
 type NetworkInterfaceNATRuleAssociationStatus struct {

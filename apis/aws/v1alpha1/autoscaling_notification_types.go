@@ -20,6 +20,7 @@ type AutoscalingNotification struct {
 
 type AutoscalingNotificationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:UniqueItems=true
 	GroupNames []string `json:"groupNames" tf:"group_names"`
 	// +kubebuilder:validation:UniqueItems=true

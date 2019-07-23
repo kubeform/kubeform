@@ -27,7 +27,8 @@ type MacieS3BucketAssociationSpecClassificationType struct {
 
 type MacieS3BucketAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	BucketName  string                    `json:"bucketName" tf:"bucket_name"`
+
+	BucketName string `json:"bucketName" tf:"bucket_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ClassificationType []MacieS3BucketAssociationSpecClassificationType `json:"classificationType,omitempty" tf:"classification_type,omitempty"`

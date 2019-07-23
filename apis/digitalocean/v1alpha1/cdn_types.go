@@ -20,6 +20,7 @@ type Cdn struct {
 
 type CdnSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	CertificateID string `json:"certificateID,omitempty" tf:"certificate_id,omitempty"`
 	// +optional

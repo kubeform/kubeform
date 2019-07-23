@@ -19,8 +19,9 @@ type CloudwatchLogSubscriptionFilter struct {
 }
 
 type CloudwatchLogSubscriptionFilterSpec struct {
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DestinationArn string                    `json:"destinationArn" tf:"destination_arn"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	DestinationArn string `json:"destinationArn" tf:"destination_arn"`
 	// +optional
 	Distribution  string `json:"distribution,omitempty" tf:"distribution,omitempty"`
 	FilterPattern string `json:"filterPattern" tf:"filter_pattern"`

@@ -29,6 +29,7 @@ type EmrInstanceGroupSpecEbsConfig struct {
 
 type EmrInstanceGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AutoscalingPolicy string `json:"autoscalingPolicy,omitempty" tf:"autoscaling_policy,omitempty"`
 	// +optional

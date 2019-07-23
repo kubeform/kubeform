@@ -134,8 +134,10 @@ type SchedulerJobSpecRetry struct {
 }
 
 type SchedulerJobSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ActionStorageQueue []SchedulerJobSpecActionStorageQueue `json:"actionStorageQueue,omitempty" tf:"action_storage_queue,omitempty"`

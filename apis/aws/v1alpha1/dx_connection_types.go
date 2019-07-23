@@ -20,9 +20,10 @@ type DxConnection struct {
 
 type DxConnectionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Bandwidth   string                    `json:"bandwidth" tf:"bandwidth"`
-	Location    string                    `json:"location" tf:"location"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Bandwidth string `json:"bandwidth" tf:"bandwidth"`
+	Location  string `json:"location" tf:"location"`
+	Name      string `json:"name" tf:"name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

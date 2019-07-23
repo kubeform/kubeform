@@ -19,9 +19,11 @@ type ApiManagementUser struct {
 }
 
 type ApiManagementUserSpec struct {
-	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	ApiManagementName string                     `json:"apiManagementName" tf:"api_management_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	// +optional
 	Confirmation string `json:"confirmation,omitempty" tf:"confirmation,omitempty"`
 	Email        string `json:"email" tf:"email"`

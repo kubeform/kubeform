@@ -25,9 +25,10 @@ type CosmosdbMongoCollectionSpecIndexes struct {
 }
 
 type CosmosdbMongoCollectionSpec struct {
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AccountName  string                    `json:"accountName" tf:"account_name"`
-	DatabaseName string                    `json:"databaseName" tf:"database_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	AccountName  string `json:"accountName" tf:"account_name"`
+	DatabaseName string `json:"databaseName" tf:"database_name"`
 	// +optional
 	DefaultTtlSeconds int `json:"defaultTtlSeconds,omitempty" tf:"default_ttl_seconds,omitempty"`
 	// +optional

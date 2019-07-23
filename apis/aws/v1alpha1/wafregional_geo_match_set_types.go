@@ -25,6 +25,7 @@ type WafregionalGeoMatchSetSpecGeoMatchConstraint struct {
 
 type WafregionalGeoMatchSetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	GeoMatchConstraint []WafregionalGeoMatchSetSpecGeoMatchConstraint `json:"geoMatchConstraint,omitempty" tf:"geo_match_constraint,omitempty"`

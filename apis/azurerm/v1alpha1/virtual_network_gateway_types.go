@@ -66,6 +66,7 @@ type VirtualNetworkGatewaySpecVpnClientConfiguration struct {
 
 type VirtualNetworkGatewaySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	ActiveActive bool `json:"activeActive,omitempty" tf:"active_active,omitempty"`
 	// +optional

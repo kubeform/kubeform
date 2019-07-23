@@ -25,6 +25,7 @@ type WafIpsetSpecIpSetDescriptors struct {
 
 type WafIpsetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	IpSetDescriptors []WafIpsetSpecIpSetDescriptors `json:"ipSetDescriptors,omitempty" tf:"ip_set_descriptors,omitempty"`

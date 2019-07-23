@@ -20,9 +20,10 @@ type CloudwatchLogDestination struct {
 
 type CloudwatchLogDestinationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
-	RoleArn     string                    `json:"roleArn" tf:"role_arn"`
-	TargetArn   string                    `json:"targetArn" tf:"target_arn"`
+
+	Name      string `json:"name" tf:"name"`
+	RoleArn   string `json:"roleArn" tf:"role_arn"`
+	TargetArn string `json:"targetArn" tf:"target_arn"`
 }
 
 type CloudwatchLogDestinationStatus struct {

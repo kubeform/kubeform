@@ -26,6 +26,7 @@ type DatasyncLocationEfsSpecEc2Config struct {
 
 type DatasyncLocationEfsSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:MaxItems=1
 	Ec2Config        []DatasyncLocationEfsSpecEc2Config `json:"ec2Config" tf:"ec2_config"`
 	EfsFileSystemArn string                             `json:"efsFileSystemArn" tf:"efs_file_system_arn"`

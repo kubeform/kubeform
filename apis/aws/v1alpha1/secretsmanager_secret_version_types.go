@@ -19,8 +19,10 @@ type SecretsmanagerSecretVersion struct {
 }
 
 type SecretsmanagerSecretVersionSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	SecretID string `json:"secretID" tf:"secret_id"`
 	// +optional

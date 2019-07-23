@@ -20,6 +20,7 @@ type DxHostedPrivateVirtualInterfaceAccepter struct {
 
 type DxHostedPrivateVirtualInterfaceAccepterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	DxGatewayID string `json:"dxGatewayID,omitempty" tf:"dx_gateway_id,omitempty"`
 	// +optional

@@ -19,9 +19,11 @@ type AutomationCredential struct {
 }
 
 type AutomationCredentialSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	AccountName string                     `json:"accountName" tf:"account_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	AccountName string `json:"accountName" tf:"account_name"`
 	// +optional
 	Description       string `json:"description,omitempty" tf:"description,omitempty"`
 	Name              string `json:"name" tf:"name"`

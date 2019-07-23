@@ -20,6 +20,7 @@ type DefaultVpc struct {
 
 type DefaultVpcSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	EnableClassiclink bool `json:"enableClassiclink,omitempty" tf:"enable_classiclink,omitempty"`
 	// +optional

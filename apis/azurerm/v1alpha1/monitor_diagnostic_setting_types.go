@@ -48,6 +48,7 @@ type MonitorDiagnosticSettingSpecMetric struct {
 
 type MonitorDiagnosticSettingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	EventhubAuthorizationRuleID string `json:"eventhubAuthorizationRuleID,omitempty" tf:"eventhub_authorization_rule_id,omitempty"`
 	// +optional

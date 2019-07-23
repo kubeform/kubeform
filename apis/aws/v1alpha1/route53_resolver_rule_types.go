@@ -26,7 +26,8 @@ type Route53ResolverRuleSpecTargetIP struct {
 
 type Route53ResolverRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DomainName  string                    `json:"domainName" tf:"domain_name"`
+
+	DomainName string `json:"domainName" tf:"domain_name"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional

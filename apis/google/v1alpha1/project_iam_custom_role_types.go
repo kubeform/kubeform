@@ -20,6 +20,7 @@ type ProjectIamCustomRole struct {
 
 type ProjectIamCustomRoleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// Deprecated
 	Deleted bool `json:"deleted,omitempty" tf:"deleted,omitempty"`

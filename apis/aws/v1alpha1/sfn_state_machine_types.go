@@ -20,9 +20,10 @@ type SfnStateMachine struct {
 
 type SfnStateMachineSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Definition  string                    `json:"definition" tf:"definition"`
-	Name        string                    `json:"name" tf:"name"`
-	RoleArn     string                    `json:"roleArn" tf:"role_arn"`
+
+	Definition string `json:"definition" tf:"definition"`
+	Name       string `json:"name" tf:"name"`
+	RoleArn    string `json:"roleArn" tf:"role_arn"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

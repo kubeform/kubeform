@@ -58,6 +58,7 @@ type DefaultSecurityGroupSpecIngress struct {
 
 type DefaultSecurityGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Egress []DefaultSecurityGroupSpecEgress `json:"egress,omitempty" tf:"egress,omitempty"`

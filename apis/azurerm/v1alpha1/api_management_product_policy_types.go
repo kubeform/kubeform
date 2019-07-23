@@ -19,10 +19,11 @@ type ApiManagementProductPolicy struct {
 }
 
 type ApiManagementProductPolicySpec struct {
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ApiManagementName string                    `json:"apiManagementName" tf:"api_management_name"`
-	ProductID         string                    `json:"productID" tf:"product_id"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
+	ProductID         string `json:"productID" tf:"product_id"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	XmlContent string `json:"xmlContent,omitempty" tf:"xml_content,omitempty"`
 	// +optional

@@ -32,6 +32,7 @@ type OpsworksRailsAppLayerSpecEbsVolume struct {
 
 type OpsworksRailsAppLayerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AppServer string `json:"appServer,omitempty" tf:"app_server,omitempty"`
 	// +optional

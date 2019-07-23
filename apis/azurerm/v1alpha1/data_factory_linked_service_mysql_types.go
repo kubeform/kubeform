@@ -20,6 +20,7 @@ type DataFactoryLinkedServiceMysql struct {
 
 type DataFactoryLinkedServiceMysqlSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AdditionalProperties map[string]string `json:"additionalProperties,omitempty" tf:"additional_properties,omitempty"`
 	// +optional

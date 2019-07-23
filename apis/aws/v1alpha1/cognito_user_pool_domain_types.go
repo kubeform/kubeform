@@ -20,6 +20,7 @@ type CognitoUserPoolDomain struct {
 
 type CognitoUserPoolDomainSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	CertificateArn string `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
 	Domain         string `json:"domain" tf:"domain"`

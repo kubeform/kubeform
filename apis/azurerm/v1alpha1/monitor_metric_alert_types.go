@@ -45,6 +45,7 @@ type MonitorMetricAlertSpecCriteria struct {
 
 type MonitorMetricAlertSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Action []MonitorMetricAlertSpecAction `json:"action,omitempty" tf:"action,omitempty"`

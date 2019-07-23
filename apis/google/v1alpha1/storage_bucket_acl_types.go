@@ -20,7 +20,8 @@ type StorageBucketACL struct {
 
 type StorageBucketACLSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Bucket      string                    `json:"bucket" tf:"bucket"`
+
+	Bucket string `json:"bucket" tf:"bucket"`
 	// +optional
 	DefaultACL string `json:"defaultACL,omitempty" tf:"default_acl,omitempty"`
 	// +optional

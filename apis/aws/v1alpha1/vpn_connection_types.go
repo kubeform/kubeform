@@ -19,9 +19,11 @@ type VpnConnection struct {
 }
 
 type VpnConnectionSpec struct {
-	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	CustomerGatewayID string                     `json:"customerGatewayID" tf:"customer_gateway_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	CustomerGatewayID string `json:"customerGatewayID" tf:"customer_gateway_id"`
 	// +optional
 	StaticRoutesOnly bool `json:"staticRoutesOnly,omitempty" tf:"static_routes_only,omitempty"`
 	// +optional

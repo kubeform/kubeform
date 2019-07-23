@@ -61,6 +61,7 @@ type MskClusterSpecEncryptionInfo struct {
 
 type MskClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:MaxItems=1
 	BrokerNodeGroupInfo []MskClusterSpecBrokerNodeGroupInfo `json:"brokerNodeGroupInfo" tf:"broker_node_group_info"`
 	// +optional

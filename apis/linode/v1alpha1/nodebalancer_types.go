@@ -20,6 +20,7 @@ type Nodebalancer struct {
 
 type NodebalancerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	ClientConnThrottle int `json:"clientConnThrottle,omitempty" tf:"client_conn_throttle,omitempty"`
 	// +optional

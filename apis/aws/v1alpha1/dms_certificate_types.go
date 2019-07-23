@@ -19,9 +19,11 @@ type DmsCertificate struct {
 }
 
 type DmsCertificateSpec struct {
-	Secret        *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef   core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	CertificateID string                     `json:"certificateID" tf:"certificate_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	CertificateID string `json:"certificateID" tf:"certificate_id"`
 	// +optional
 	// +optional
 }

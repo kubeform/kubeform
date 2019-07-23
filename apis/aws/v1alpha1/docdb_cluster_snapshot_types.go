@@ -19,9 +19,10 @@ type DocdbClusterSnapshot struct {
 }
 
 type DocdbClusterSnapshotSpec struct {
-	ProviderRef                 core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DbClusterIdentifier         string                    `json:"dbClusterIdentifier" tf:"db_cluster_identifier"`
-	DbClusterSnapshotIdentifier string                    `json:"dbClusterSnapshotIdentifier" tf:"db_cluster_snapshot_identifier"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	DbClusterIdentifier         string `json:"dbClusterIdentifier" tf:"db_cluster_identifier"`
+	DbClusterSnapshotIdentifier string `json:"dbClusterSnapshotIdentifier" tf:"db_cluster_snapshot_identifier"`
 }
 
 type DocdbClusterSnapshotStatus struct {

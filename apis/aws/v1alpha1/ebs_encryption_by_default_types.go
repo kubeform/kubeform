@@ -20,6 +20,7 @@ type EbsEncryptionByDefault struct {
 
 type EbsEncryptionByDefaultSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 }

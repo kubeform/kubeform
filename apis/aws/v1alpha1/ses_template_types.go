@@ -20,6 +20,7 @@ type SesTemplate struct {
 
 type SesTemplateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Html string `json:"html,omitempty" tf:"html,omitempty"`
 	Name string `json:"name" tf:"name"`

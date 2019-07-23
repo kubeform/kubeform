@@ -54,6 +54,7 @@ type LaunchConfigurationSpecRootBlockDevice struct {
 
 type LaunchConfigurationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AssociatePublicIPAddress bool `json:"associatePublicIPAddress,omitempty" tf:"associate_public_ip_address,omitempty"`
 	// +optional

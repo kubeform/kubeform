@@ -19,10 +19,12 @@ type ApiManagementCertificate struct {
 }
 
 type ApiManagementCertificateSpec struct {
-	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	ApiManagementName string                     `json:"apiManagementName" tf:"api_management_name"`
-	Name              string                     `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
+	Name              string `json:"name" tf:"name"`
 	// +optional
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 }

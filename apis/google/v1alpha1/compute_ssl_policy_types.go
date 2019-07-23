@@ -20,6 +20,7 @@ type ComputeSslPolicy struct {
 
 type ComputeSslPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	CustomFeatures []string `json:"customFeatures,omitempty" tf:"custom_features,omitempty"`

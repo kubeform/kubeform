@@ -20,6 +20,7 @@ type ServicebusQueueAuthorizationRule struct {
 
 type ServicebusQueueAuthorizationRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Listen bool `json:"listen,omitempty" tf:"listen,omitempty"`
 	// +optional

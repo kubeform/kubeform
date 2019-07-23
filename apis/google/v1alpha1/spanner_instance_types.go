@@ -20,8 +20,9 @@ type SpannerInstance struct {
 
 type SpannerInstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Config      string                    `json:"config" tf:"config"`
-	DisplayName string                    `json:"displayName" tf:"display_name"`
+
+	Config      string `json:"config" tf:"config"`
+	DisplayName string `json:"displayName" tf:"display_name"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional

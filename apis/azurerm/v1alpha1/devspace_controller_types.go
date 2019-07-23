@@ -24,12 +24,14 @@ type DevspaceControllerSpecSku struct {
 }
 
 type DevspaceControllerSpec struct {
-	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	HostSuffix        string                     `json:"hostSuffix" tf:"host_suffix"`
-	Location          string                     `json:"location" tf:"location"`
-	Name              string                     `json:"name" tf:"name"`
-	ResourceGroupName string                     `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	HostSuffix        string `json:"hostSuffix" tf:"host_suffix"`
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku []DevspaceControllerSpecSku `json:"sku" tf:"sku"`
 	// +optional

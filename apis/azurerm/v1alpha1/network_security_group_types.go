@@ -55,10 +55,11 @@ type NetworkSecurityGroupSpecSecurityRule struct {
 }
 
 type NetworkSecurityGroupSpec struct {
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Location          string                    `json:"location" tf:"location"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SecurityRule []NetworkSecurityGroupSpecSecurityRule `json:"securityRule,omitempty" tf:"security_rule,omitempty"`

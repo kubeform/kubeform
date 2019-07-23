@@ -20,6 +20,7 @@ type ComputeForwardingRule struct {
 
 type ComputeForwardingRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	BackendService string `json:"backendService,omitempty" tf:"backend_service,omitempty"`
 	// +optional

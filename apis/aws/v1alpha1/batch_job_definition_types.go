@@ -30,6 +30,7 @@ type BatchJobDefinitionSpecTimeout struct {
 
 type BatchJobDefinitionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	ContainerProperties string `json:"containerProperties,omitempty" tf:"container_properties,omitempty"`
 	Name                string `json:"name" tf:"name"`

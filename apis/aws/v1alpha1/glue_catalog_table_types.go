@@ -88,6 +88,7 @@ type GlueCatalogTableSpecStorageDescriptor struct {
 
 type GlueCatalogTableSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	CatalogID    string `json:"catalogID,omitempty" tf:"catalog_id,omitempty"`
 	DatabaseName string `json:"databaseName" tf:"database_name"`

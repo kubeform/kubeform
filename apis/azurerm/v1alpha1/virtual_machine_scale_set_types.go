@@ -214,8 +214,10 @@ type VirtualMachineScaleSetSpecStorageProfileOsDisk struct {
 }
 
 type VirtualMachineScaleSetSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	AutomaticOsUpgrade bool `json:"automaticOsUpgrade,omitempty" tf:"automatic_os_upgrade,omitempty"`
 	// +optional

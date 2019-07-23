@@ -20,8 +20,9 @@ type InspectorAssessmentTemplate struct {
 
 type InspectorAssessmentTemplateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Duration    int                       `json:"duration" tf:"duration"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Duration int    `json:"duration" tf:"duration"`
+	Name     string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
 	RulesPackageArns []string `json:"rulesPackageArns" tf:"rules_package_arns"`
 	TargetArn        string   `json:"targetArn" tf:"target_arn"`

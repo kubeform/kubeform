@@ -20,8 +20,9 @@ type PlacementGroup struct {
 
 type PlacementGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
-	Strategy    string                    `json:"strategy" tf:"strategy"`
+
+	Name     string `json:"name" tf:"name"`
+	Strategy string `json:"strategy" tf:"strategy"`
 }
 
 type PlacementGroupStatus struct {

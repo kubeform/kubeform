@@ -20,7 +20,8 @@ type InspectorAssessmentTarget struct {
 
 type InspectorAssessmentTargetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Name string `json:"name" tf:"name"`
 	// +optional
 	ResourceGroupArn string `json:"resourceGroupArn,omitempty" tf:"resource_group_arn,omitempty"`
 }

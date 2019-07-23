@@ -20,8 +20,9 @@ type KmsKeyRingIamPolicy struct {
 
 type KmsKeyRingIamPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	KeyRingID   string                    `json:"keyRingID" tf:"key_ring_id"`
-	PolicyData  string                    `json:"policyData" tf:"policy_data"`
+
+	KeyRingID  string `json:"keyRingID" tf:"key_ring_id"`
+	PolicyData string `json:"policyData" tf:"policy_data"`
 }
 
 type KmsKeyRingIamPolicyStatus struct {

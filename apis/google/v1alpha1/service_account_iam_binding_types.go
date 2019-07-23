@@ -20,6 +20,7 @@ type ServiceAccountIamBinding struct {
 
 type ServiceAccountIamBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:UniqueItems=true
 	Members          []string `json:"members" tf:"members"`
 	Role             string   `json:"role" tf:"role"`

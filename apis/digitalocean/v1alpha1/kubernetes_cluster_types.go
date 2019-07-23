@@ -29,7 +29,8 @@ type KubernetesClusterSpecNodePool struct {
 
 type KubernetesClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Name string `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	NodePool []KubernetesClusterSpecNodePool `json:"nodePool" tf:"node_pool"`

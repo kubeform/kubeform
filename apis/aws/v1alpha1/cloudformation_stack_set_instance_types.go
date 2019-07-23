@@ -20,6 +20,7 @@ type CloudformationStackSetInstance struct {
 
 type CloudformationStackSetInstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AccountID string `json:"accountID,omitempty" tf:"account_id,omitempty"`
 	// +optional

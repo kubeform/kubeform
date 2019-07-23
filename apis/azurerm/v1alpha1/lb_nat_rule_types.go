@@ -20,7 +20,8 @@ type LbNATRule struct {
 
 type LbNATRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	BackendPort int                       `json:"backendPort" tf:"backend_port"`
+
+	BackendPort int `json:"backendPort" tf:"backend_port"`
 	// +optional
 	EnableFloatingIP            bool   `json:"enableFloatingIP,omitempty" tf:"enable_floating_ip,omitempty"`
 	FrontendIPConfigurationName string `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`

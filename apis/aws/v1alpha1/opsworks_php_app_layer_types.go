@@ -32,6 +32,7 @@ type OpsworksPhpAppLayerSpecEbsVolume struct {
 
 type OpsworksPhpAppLayerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AutoAssignElasticIPS bool `json:"autoAssignElasticIPS,omitempty" tf:"auto_assign_elastic_ips,omitempty"`
 	// +optional

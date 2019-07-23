@@ -24,7 +24,8 @@ type DatasyncLocationS3SpecS3Config struct {
 
 type DatasyncLocationS3Spec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	S3BucketArn string                    `json:"s3BucketArn" tf:"s3_bucket_arn"`
+
+	S3BucketArn string `json:"s3BucketArn" tf:"s3_bucket_arn"`
 	// +kubebuilder:validation:MaxItems=1
 	S3Config     []DatasyncLocationS3SpecS3Config `json:"s3Config" tf:"s3_config"`
 	Subdirectory string                           `json:"subdirectory" tf:"subdirectory"`

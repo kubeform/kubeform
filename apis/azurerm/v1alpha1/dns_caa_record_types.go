@@ -26,7 +26,8 @@ type DnsCaaRecordSpecRecord struct {
 
 type DnsCaaRecordSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Name string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
 	Record            []DnsCaaRecordSpecRecord `json:"record" tf:"record"`
 	ResourceGroupName string                   `json:"resourceGroupName" tf:"resource_group_name"`

@@ -19,9 +19,10 @@ type VpnGatewayRoutePropagation struct {
 }
 
 type VpnGatewayRoutePropagationSpec struct {
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
-	RouteTableID string                    `json:"routeTableID" tf:"route_table_id"`
-	VpnGatewayID string                    `json:"vpnGatewayID" tf:"vpn_gateway_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	RouteTableID string `json:"routeTableID" tf:"route_table_id"`
+	VpnGatewayID string `json:"vpnGatewayID" tf:"vpn_gateway_id"`
 }
 
 type VpnGatewayRoutePropagationStatus struct {

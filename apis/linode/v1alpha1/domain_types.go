@@ -20,6 +20,7 @@ type Domain struct {
 
 type DomainSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AxfrIPS []string `json:"axfrIPS,omitempty" tf:"axfr_ips,omitempty"`

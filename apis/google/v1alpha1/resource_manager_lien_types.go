@@ -19,11 +19,12 @@ type ResourceManagerLien struct {
 }
 
 type ResourceManagerLienSpec struct {
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Origin       string                    `json:"origin" tf:"origin"`
-	Parent       string                    `json:"parent" tf:"parent"`
-	Reason       string                    `json:"reason" tf:"reason"`
-	Restrictions []string                  `json:"restrictions" tf:"restrictions"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Origin       string   `json:"origin" tf:"origin"`
+	Parent       string   `json:"parent" tf:"parent"`
+	Reason       string   `json:"reason" tf:"reason"`
+	Restrictions []string `json:"restrictions" tf:"restrictions"`
 }
 
 type ResourceManagerLienStatus struct {

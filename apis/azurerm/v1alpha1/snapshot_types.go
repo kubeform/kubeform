@@ -39,8 +39,9 @@ type SnapshotSpecEncryptionSettings struct {
 }
 
 type SnapshotSpec struct {
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
-	CreateOption string                    `json:"createOption" tf:"create_option"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	CreateOption string `json:"createOption" tf:"create_option"`
 	// +optional
 	DiskSizeGb int `json:"diskSizeGb,omitempty" tf:"disk_size_gb,omitempty"`
 	// +optional

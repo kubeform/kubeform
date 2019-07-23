@@ -20,7 +20,8 @@ type DirectoryServiceConditionalForwarder struct {
 
 type DirectoryServiceConditionalForwarderSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DirectoryID string                    `json:"directoryID" tf:"directory_id"`
+
+	DirectoryID string `json:"directoryID" tf:"directory_id"`
 	// +kubebuilder:validation:MinItems=1
 	DnsIPS           []string `json:"dnsIPS" tf:"dns_ips"`
 	RemoteDomainName string   `json:"remoteDomainName" tf:"remote_domain_name"`

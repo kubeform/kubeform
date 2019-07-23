@@ -24,10 +24,11 @@ type SignalrServiceSpecSku struct {
 }
 
 type SignalrServiceSpec struct {
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Location          string                    `json:"location" tf:"location"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku []SignalrServiceSpecSku `json:"sku" tf:"sku"`
 	// +optional

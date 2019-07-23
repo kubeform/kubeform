@@ -63,6 +63,7 @@ type ElastictranscoderPipelineSpecThumbnailConfigPermissions struct {
 
 type ElastictranscoderPipelineSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AwsKmsKeyArn string `json:"awsKmsKeyArn,omitempty" tf:"aws_kms_key_arn,omitempty"`
 	// +optional

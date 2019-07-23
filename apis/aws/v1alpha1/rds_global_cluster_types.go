@@ -20,6 +20,7 @@ type RdsGlobalCluster struct {
 
 type RdsGlobalClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	DatabaseName string `json:"databaseName,omitempty" tf:"database_name,omitempty"`
 	// +optional

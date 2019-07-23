@@ -51,6 +51,7 @@ type ComputeAutoscalerSpecAutoscalingPolicy struct {
 
 type ComputeAutoscalerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:MaxItems=1
 	AutoscalingPolicy []ComputeAutoscalerSpecAutoscalingPolicy `json:"autoscalingPolicy" tf:"autoscaling_policy"`
 	// +optional

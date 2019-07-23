@@ -142,9 +142,10 @@ type ApiManagementAPIOperationSpecTemplateParameter struct {
 }
 
 type ApiManagementAPIOperationSpec struct {
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ApiManagementName string                    `json:"apiManagementName" tf:"api_management_name"`
-	ApiName           string                    `json:"apiName" tf:"api_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
+	ApiName           string `json:"apiName" tf:"api_name"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	DisplayName string `json:"displayName" tf:"display_name"`

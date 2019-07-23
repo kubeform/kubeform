@@ -20,7 +20,8 @@ type KmsKeyRingIamBinding struct {
 
 type KmsKeyRingIamBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	KeyRingID   string                    `json:"keyRingID" tf:"key_ring_id"`
+
+	KeyRingID string `json:"keyRingID" tf:"key_ring_id"`
 	// +kubebuilder:validation:UniqueItems=true
 	Members []string `json:"members" tf:"members"`
 	Role    string   `json:"role" tf:"role"`

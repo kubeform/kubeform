@@ -20,6 +20,7 @@ type ServicebusNamespace struct {
 
 type ServicebusNamespaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Capacity          int    `json:"capacity,omitempty" tf:"capacity,omitempty"`
 	Location          string `json:"location" tf:"location"`

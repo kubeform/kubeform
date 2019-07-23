@@ -34,7 +34,8 @@ type BigqueryTableSpecView struct {
 
 type BigqueryTableSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DatasetID   string                    `json:"datasetID" tf:"dataset_id"`
+
+	DatasetID string `json:"datasetID" tf:"dataset_id"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

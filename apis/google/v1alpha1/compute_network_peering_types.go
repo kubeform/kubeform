@@ -20,6 +20,7 @@ type ComputeNetworkPeering struct {
 
 type ComputeNetworkPeeringSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AutoCreateRoutes bool   `json:"autoCreateRoutes,omitempty" tf:"auto_create_routes,omitempty"`
 	Name             string `json:"name" tf:"name"`

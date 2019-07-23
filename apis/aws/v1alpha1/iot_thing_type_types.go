@@ -29,6 +29,7 @@ type IotThingTypeSpecProperties struct {
 
 type IotThingTypeSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Deprecated bool   `json:"deprecated,omitempty" tf:"deprecated,omitempty"`
 	Name       string `json:"name" tf:"name"`

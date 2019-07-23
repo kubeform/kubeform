@@ -31,8 +31,9 @@ type SubnetSpecDelegation struct {
 }
 
 type SubnetSpec struct {
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AddressPrefix string                    `json:"addressPrefix" tf:"address_prefix"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	AddressPrefix string `json:"addressPrefix" tf:"address_prefix"`
 	// +optional
 	Delegation []SubnetSpecDelegation `json:"delegation,omitempty" tf:"delegation,omitempty"`
 	// +optional

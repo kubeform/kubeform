@@ -20,6 +20,7 @@ type VpnGateway struct {
 
 type VpnGatewaySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AmazonSideAsn string `json:"amazonSideAsn,omitempty" tf:"amazon_side_asn,omitempty"`
 	// +optional

@@ -20,6 +20,7 @@ type IothubSharedAccessPolicy struct {
 
 type IothubSharedAccessPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	DeviceConnect bool   `json:"deviceConnect,omitempty" tf:"device_connect,omitempty"`
 	IothubName    string `json:"iothubName" tf:"iothub_name"`

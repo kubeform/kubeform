@@ -20,6 +20,7 @@ type DnsManagedZone struct {
 
 type DnsManagedZoneSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	DnsName     string `json:"dnsName" tf:"dns_name"`

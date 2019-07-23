@@ -20,7 +20,8 @@ type ServiceAccount struct {
 
 type ServiceAccountSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AccountID   string                    `json:"accountID" tf:"account_id"`
+
+	AccountID string `json:"accountID" tf:"account_id"`
 	// +optional
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 	// +optional

@@ -19,9 +19,10 @@ type StoragegatewayCachedIscsiVolume struct {
 }
 
 type StoragegatewayCachedIscsiVolumeSpec struct {
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
-	GatewayArn         string                    `json:"gatewayArn" tf:"gateway_arn"`
-	NetworkInterfaceID string                    `json:"networkInterfaceID" tf:"network_interface_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	GatewayArn         string `json:"gatewayArn" tf:"gateway_arn"`
+	NetworkInterfaceID string `json:"networkInterfaceID" tf:"network_interface_id"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	// +optional

@@ -19,8 +19,10 @@ type KeyVaultSecret struct {
 }
 
 type KeyVaultSecretSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	ContentType string `json:"contentType,omitempty" tf:"content_type,omitempty"`
 	// +optional

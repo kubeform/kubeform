@@ -20,8 +20,9 @@ type GuarddutyMember struct {
 
 type GuarddutyMemberSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AccountID   string                    `json:"accountID" tf:"account_id"`
-	DetectorID  string                    `json:"detectorID" tf:"detector_id"`
+
+	AccountID  string `json:"accountID" tf:"account_id"`
+	DetectorID string `json:"detectorID" tf:"detector_id"`
 	// +optional
 	DisableEmailNotification bool   `json:"disableEmailNotification,omitempty" tf:"disable_email_notification,omitempty"`
 	Email                    string `json:"email" tf:"email"`

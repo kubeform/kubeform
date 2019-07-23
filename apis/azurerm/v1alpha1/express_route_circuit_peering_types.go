@@ -23,9 +23,11 @@ type ExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig struct {
 }
 
 type ExpressRouteCircuitPeeringSpec struct {
-	Secret                  *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef             core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	ExpressRouteCircuitName string                     `json:"expressRouteCircuitName" tf:"express_route_circuit_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	ExpressRouteCircuitName string `json:"expressRouteCircuitName" tf:"express_route_circuit_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	MicrosoftPeeringConfig []ExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig `json:"microsoftPeeringConfig,omitempty" tf:"microsoft_peering_config,omitempty"`

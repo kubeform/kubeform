@@ -39,6 +39,7 @@ type ConfigConfigurationAggregatorSpecOrganizationAggregationSource struct {
 
 type ConfigConfigurationAggregatorSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AccountAggregationSource []ConfigConfigurationAggregatorSpecAccountAggregationSource `json:"accountAggregationSource,omitempty" tf:"account_aggregation_source,omitempty"`

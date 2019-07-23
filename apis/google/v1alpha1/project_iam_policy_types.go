@@ -20,6 +20,7 @@ type ProjectIamPolicy struct {
 
 type ProjectIamPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// Deprecated
 	Authoritative bool `json:"authoritative,omitempty" tf:"authoritative,omitempty"`

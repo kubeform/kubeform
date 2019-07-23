@@ -39,6 +39,7 @@ type AppServicePlanSpecSku struct {
 
 type AppServicePlanSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AppServiceEnvironmentID string `json:"appServiceEnvironmentID,omitempty" tf:"app_service_environment_id,omitempty"`
 	// +optional

@@ -164,6 +164,7 @@ type LaunchTemplateSpecTagSpecifications struct {
 
 type LaunchTemplateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	BlockDeviceMappings []LaunchTemplateSpecBlockDeviceMappings `json:"blockDeviceMappings,omitempty" tf:"block_device_mappings,omitempty"`
 	// +optional

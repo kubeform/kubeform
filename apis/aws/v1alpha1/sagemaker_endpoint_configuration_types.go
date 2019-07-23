@@ -34,6 +34,7 @@ type SagemakerEndpointConfigurationSpecProductionVariants struct {
 
 type SagemakerEndpointConfigurationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	KmsKeyArn string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
 	// +optional

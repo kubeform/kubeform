@@ -56,6 +56,7 @@ type EventgridEventSubscriptionSpecWebhookEndpoint struct {
 
 type EventgridEventSubscriptionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	EventDeliverySchema string `json:"eventDeliverySchema,omitempty" tf:"event_delivery_schema,omitempty"`
 	// +optional

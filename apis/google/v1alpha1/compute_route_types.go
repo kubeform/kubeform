@@ -20,6 +20,7 @@ type ComputeRoute struct {
 
 type ComputeRouteSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	DestRange   string `json:"destRange" tf:"dest_range"`

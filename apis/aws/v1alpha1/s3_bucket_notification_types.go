@@ -57,7 +57,8 @@ type S3BucketNotificationSpecTopic struct {
 
 type S3BucketNotificationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Bucket      string                    `json:"bucket" tf:"bucket"`
+
+	Bucket string `json:"bucket" tf:"bucket"`
 	// +optional
 	LambdaFunction []S3BucketNotificationSpecLambdaFunction `json:"lambdaFunction,omitempty" tf:"lambda_function,omitempty"`
 	// +optional

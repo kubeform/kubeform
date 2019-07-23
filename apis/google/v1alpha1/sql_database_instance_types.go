@@ -134,8 +134,10 @@ type SqlDatabaseInstanceSpecSettings struct {
 }
 
 type SqlDatabaseInstanceSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	DatabaseVersion string `json:"databaseVersion,omitempty" tf:"database_version,omitempty"`
 	// +optional

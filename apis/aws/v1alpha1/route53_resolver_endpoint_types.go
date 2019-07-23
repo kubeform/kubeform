@@ -26,7 +26,8 @@ type Route53ResolverEndpointSpecIpAddress struct {
 
 type Route53ResolverEndpointSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Direction   string                    `json:"direction" tf:"direction"`
+
+	Direction string `json:"direction" tf:"direction"`
 	// +kubebuilder:validation:MaxItems=10
 	// +kubebuilder:validation:MinItems=2
 	// +kubebuilder:validation:UniqueItems=true

@@ -20,8 +20,9 @@ type KmsCryptoKey struct {
 
 type KmsCryptoKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	KeyRing     string                    `json:"keyRing" tf:"key_ring"`
-	Name        string                    `json:"name" tf:"name"`
+
+	KeyRing string `json:"keyRing" tf:"key_ring"`
+	Name    string `json:"name" tf:"name"`
 	// +optional
 	RotationPeriod string `json:"rotationPeriod,omitempty" tf:"rotation_period,omitempty"`
 }

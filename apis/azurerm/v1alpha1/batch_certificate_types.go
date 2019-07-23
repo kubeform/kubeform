@@ -19,10 +19,12 @@ type BatchCertificate struct {
 }
 
 type BatchCertificateSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	AccountName string                     `json:"accountName" tf:"account_name"`
-	Format      string                     `json:"format" tf:"format"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	AccountName string `json:"accountName" tf:"account_name"`
+	Format      string `json:"format" tf:"format"`
 	// +optional
 	ResourceGroupName   string `json:"resourceGroupName" tf:"resource_group_name"`
 	Thumbprint          string `json:"thumbprint" tf:"thumbprint"`

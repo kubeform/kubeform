@@ -20,7 +20,8 @@ type SesDomainIdentity struct {
 
 type SesDomainIdentitySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Domain      string                    `json:"domain" tf:"domain"`
+
+	Domain string `json:"domain" tf:"domain"`
 }
 
 type SesDomainIdentityStatus struct {

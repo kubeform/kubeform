@@ -20,6 +20,7 @@ type CodedeployApp struct {
 
 type CodedeployAppSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	ComputePlatform string `json:"computePlatform,omitempty" tf:"compute_platform,omitempty"`
 	Name            string `json:"name" tf:"name"`

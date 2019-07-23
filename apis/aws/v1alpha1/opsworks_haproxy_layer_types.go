@@ -32,6 +32,7 @@ type OpsworksHaproxyLayerSpecEbsVolume struct {
 
 type OpsworksHaproxyLayerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AutoAssignElasticIPS bool `json:"autoAssignElasticIPS,omitempty" tf:"auto_assign_elastic_ips,omitempty"`
 	// +optional

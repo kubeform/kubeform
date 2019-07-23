@@ -20,8 +20,9 @@ type IamUserPolicyAttachment struct {
 
 type IamUserPolicyAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	PolicyArn   string                    `json:"policyArn" tf:"policy_arn"`
-	User        string                    `json:"user" tf:"user"`
+
+	PolicyArn string `json:"policyArn" tf:"policy_arn"`
+	User      string `json:"user" tf:"user"`
 }
 
 type IamUserPolicyAttachmentStatus struct {

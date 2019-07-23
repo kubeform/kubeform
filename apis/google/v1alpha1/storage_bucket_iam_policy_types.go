@@ -20,8 +20,9 @@ type StorageBucketIamPolicy struct {
 
 type StorageBucketIamPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Bucket      string                    `json:"bucket" tf:"bucket"`
-	PolicyData  string                    `json:"policyData" tf:"policy_data"`
+
+	Bucket     string `json:"bucket" tf:"bucket"`
+	PolicyData string `json:"policyData" tf:"policy_data"`
 }
 
 type StorageBucketIamPolicyStatus struct {

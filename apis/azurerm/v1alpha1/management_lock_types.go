@@ -20,8 +20,9 @@ type ManagementLock struct {
 
 type ManagementLockSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	LockLevel   string                    `json:"lockLevel" tf:"lock_level"`
-	Name        string                    `json:"name" tf:"name"`
+
+	LockLevel string `json:"lockLevel" tf:"lock_level"`
+	Name      string `json:"name" tf:"name"`
 	// +optional
 	Notes string `json:"notes,omitempty" tf:"notes,omitempty"`
 	Scope string `json:"scope" tf:"scope"`

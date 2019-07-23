@@ -19,8 +19,9 @@ type EfsMountTarget struct {
 }
 
 type EfsMountTargetSpec struct {
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
-	FileSystemID string                    `json:"fileSystemID" tf:"file_system_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	FileSystemID string `json:"fileSystemID" tf:"file_system_id"`
 	// +optional
 	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional

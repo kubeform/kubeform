@@ -38,47 +38,8 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 
-		&VolumeAttachment{},
-		&VolumeAttachmentList{},
-
-		&Certificate{},
-		&CertificateList{},
-
-		&DropletSnapshot{},
-		&DropletSnapshotList{},
-
-		&FloatingIP{},
-		&FloatingIPList{},
-
-		&KubernetesCluster{},
-		&KubernetesClusterList{},
-
-		&Record{},
-		&RecordList{},
-
-		&Tag{},
-		&TagList{},
-
-		&Volume{},
-		&VolumeList{},
-
-		&VolumeSnapshot{},
-		&VolumeSnapshotList{},
-
-		&KubernetesNodePool{},
-		&KubernetesNodePoolList{},
-
-		&SpacesBucket{},
-		&SpacesBucketList{},
-
-		&Cdn{},
-		&CdnList{},
-
-		&Domain{},
-		&DomainList{},
-
-		&Firewall{},
-		&FirewallList{},
+		&DatabaseCluster{},
+		&DatabaseClusterList{},
 
 		&Loadbalancer{},
 		&LoadbalancerList{},
@@ -86,14 +47,53 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&Project{},
 		&ProjectList{},
 
-		&DatabaseCluster{},
-		&DatabaseClusterList{},
+		&Certificate{},
+		&CertificateList{},
+
+		&Tag{},
+		&TagList{},
+
+		&Volume{},
+		&VolumeList{},
+
+		&Domain{},
+		&DomainList{},
+
+		&FloatingIP{},
+		&FloatingIPList{},
+
+		&FloatingIPAssignment{},
+		&FloatingIPAssignmentList{},
+
+		&KubernetesCluster{},
+		&KubernetesClusterList{},
+
+		&KubernetesNodePool{},
+		&KubernetesNodePoolList{},
+
+		&SpacesBucket{},
+		&SpacesBucketList{},
+
+		&VolumeAttachment{},
+		&VolumeAttachmentList{},
+
+		&VolumeSnapshot{},
+		&VolumeSnapshotList{},
+
+		&Cdn{},
+		&CdnList{},
 
 		&Droplet{},
 		&DropletList{},
 
-		&FloatingIPAssignment{},
-		&FloatingIPAssignmentList{},
+		&DropletSnapshot{},
+		&DropletSnapshotList{},
+
+		&Firewall{},
+		&FirewallList{},
+
+		&Record{},
+		&RecordList{},
 
 		&SshKey{},
 		&SshKeyList{},

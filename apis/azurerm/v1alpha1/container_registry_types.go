@@ -23,8 +23,10 @@ type ContainerRegistrySpecStorageAccount struct {
 }
 
 type ContainerRegistrySpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	AdminEnabled bool `json:"adminEnabled,omitempty" tf:"admin_enabled,omitempty"`
 	// +optional

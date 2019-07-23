@@ -32,6 +32,7 @@ type FilestoreInstanceSpecNetworks struct {
 
 type FilestoreInstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +kubebuilder:validation:MaxItems=1

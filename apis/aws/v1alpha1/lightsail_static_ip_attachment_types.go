@@ -19,9 +19,10 @@ type LightsailStaticIPAttachment struct {
 }
 
 type LightsailStaticIPAttachmentSpec struct {
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
-	InstanceName string                    `json:"instanceName" tf:"instance_name"`
-	StaticIPName string                    `json:"staticIPName" tf:"static_ip_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	InstanceName string `json:"instanceName" tf:"instance_name"`
+	StaticIPName string `json:"staticIPName" tf:"static_ip_name"`
 }
 
 type LightsailStaticIPAttachmentStatus struct {

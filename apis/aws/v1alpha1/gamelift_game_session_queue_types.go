@@ -26,6 +26,7 @@ type GameliftGameSessionQueueSpecPlayerLatencyPolicy struct {
 
 type GameliftGameSessionQueueSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Destinations []string `json:"destinations,omitempty" tf:"destinations,omitempty"`
 	Name         string   `json:"name" tf:"name"`

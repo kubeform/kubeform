@@ -167,6 +167,7 @@ type DataprocJobSpecSparksqlConfig struct {
 
 type DataprocJobSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	ForceDelete bool `json:"forceDelete,omitempty" tf:"force_delete,omitempty"`
 	// +optional

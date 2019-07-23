@@ -20,6 +20,7 @@ type ApiGatewayDeployment struct {
 
 type ApiGatewayDeploymentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	RestAPIID   string `json:"restAPIID" tf:"rest_api_id"`

@@ -20,7 +20,8 @@ type KmsCryptoKeyIamBinding struct {
 
 type KmsCryptoKeyIamBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	CryptoKeyID string                    `json:"cryptoKeyID" tf:"crypto_key_id"`
+
+	CryptoKeyID string `json:"cryptoKeyID" tf:"crypto_key_id"`
 	// +kubebuilder:validation:UniqueItems=true
 	Members []string `json:"members" tf:"members"`
 	Role    string   `json:"role" tf:"role"`

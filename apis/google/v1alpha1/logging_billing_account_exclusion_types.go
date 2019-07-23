@@ -19,8 +19,9 @@ type LoggingBillingAccountExclusion struct {
 }
 
 type LoggingBillingAccountExclusionSpec struct {
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
-	BillingAccount string                    `json:"billingAccount" tf:"billing_account"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	BillingAccount string `json:"billingAccount" tf:"billing_account"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

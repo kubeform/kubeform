@@ -19,10 +19,11 @@ type IamOpenidConnectProvider struct {
 }
 
 type IamOpenidConnectProviderSpec struct {
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ClientIDList   []string                  `json:"clientIDList" tf:"client_id_list"`
-	ThumbprintList []string                  `json:"thumbprintList" tf:"thumbprint_list"`
-	Url            string                    `json:"url" tf:"url"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	ClientIDList   []string `json:"clientIDList" tf:"client_id_list"`
+	ThumbprintList []string `json:"thumbprintList" tf:"thumbprint_list"`
+	Url            string   `json:"url" tf:"url"`
 }
 
 type IamOpenidConnectProviderStatus struct {

@@ -77,6 +77,7 @@ type Ec2FleetSpecTargetCapacitySpecification struct {
 
 type Ec2FleetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	ExcessCapacityTerminationPolicy string `json:"excessCapacityTerminationPolicy,omitempty" tf:"excess_capacity_termination_policy,omitempty"`
 	// +kubebuilder:validation:MaxItems=1

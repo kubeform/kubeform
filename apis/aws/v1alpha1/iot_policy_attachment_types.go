@@ -20,8 +20,9 @@ type IotPolicyAttachment struct {
 
 type IotPolicyAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Policy      string                    `json:"policy" tf:"policy"`
-	Target      string                    `json:"target" tf:"target"`
+
+	Policy string `json:"policy" tf:"policy"`
+	Target string `json:"target" tf:"target"`
 }
 
 type IotPolicyAttachmentStatus struct {

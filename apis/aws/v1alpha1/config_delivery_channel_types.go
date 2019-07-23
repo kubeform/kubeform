@@ -25,6 +25,7 @@ type ConfigDeliveryChannelSpecSnapshotDeliveryProperties struct {
 
 type ConfigDeliveryChannelSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Name         string `json:"name,omitempty" tf:"name,omitempty"`
 	S3BucketName string `json:"s3BucketName" tf:"s3_bucket_name"`

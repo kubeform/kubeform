@@ -67,7 +67,8 @@ type SpotInstanceRequestSpecRootBlockDevice struct {
 
 type SpotInstanceRequestSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Ami         string                    `json:"ami" tf:"ami"`
+
+	Ami string `json:"ami" tf:"ami"`
 	// +optional
 	AssociatePublicIPAddress bool `json:"associatePublicIPAddress,omitempty" tf:"associate_public_ip_address,omitempty"`
 	// +optional

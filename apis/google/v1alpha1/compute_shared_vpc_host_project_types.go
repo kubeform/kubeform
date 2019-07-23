@@ -20,7 +20,8 @@ type ComputeSharedVpcHostProject struct {
 
 type ComputeSharedVpcHostProjectSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Project     string                    `json:"project" tf:"project"`
+
+	Project string `json:"project" tf:"project"`
 }
 
 type ComputeSharedVpcHostProjectStatus struct {

@@ -25,6 +25,7 @@ type ApiGatewayStageSpecAccessLogSettings struct {
 
 type ApiGatewayStageSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AccessLogSettings []ApiGatewayStageSpecAccessLogSettings `json:"accessLogSettings,omitempty" tf:"access_log_settings,omitempty"`

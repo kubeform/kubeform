@@ -20,7 +20,8 @@ type OrganizationsPolicy struct {
 
 type OrganizationsPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Content     string                    `json:"content" tf:"content"`
+
+	Content string `json:"content" tf:"content"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`

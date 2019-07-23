@@ -20,7 +20,8 @@ type IamGroupPolicy struct {
 
 type IamGroupPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Group       string                    `json:"group" tf:"group"`
+
+	Group string `json:"group" tf:"group"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional

@@ -20,6 +20,7 @@ type StoragegatewaySmbFileShare struct {
 
 type StoragegatewaySmbFileShareSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Authentication string `json:"authentication,omitempty" tf:"authentication,omitempty"`
 	// +optional

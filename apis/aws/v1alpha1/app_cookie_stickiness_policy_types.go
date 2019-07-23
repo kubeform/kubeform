@@ -19,11 +19,12 @@ type AppCookieStickinessPolicy struct {
 }
 
 type AppCookieStickinessPolicySpec struct {
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
-	CookieName   string                    `json:"cookieName" tf:"cookie_name"`
-	LbPort       int                       `json:"lbPort" tf:"lb_port"`
-	LoadBalancer string                    `json:"loadBalancer" tf:"load_balancer"`
-	Name         string                    `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	CookieName   string `json:"cookieName" tf:"cookie_name"`
+	LbPort       int    `json:"lbPort" tf:"lb_port"`
+	LoadBalancer string `json:"loadBalancer" tf:"load_balancer"`
+	Name         string `json:"name" tf:"name"`
 }
 
 type AppCookieStickinessPolicyStatus struct {

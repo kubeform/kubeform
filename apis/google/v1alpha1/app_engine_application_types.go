@@ -25,6 +25,7 @@ type AppEngineApplicationSpecFeatureSettings struct {
 
 type AppEngineApplicationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AuthDomain string `json:"authDomain,omitempty" tf:"auth_domain,omitempty"`
 	// +optional

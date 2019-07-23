@@ -20,6 +20,7 @@ type DmsReplicationInstance struct {
 
 type DmsReplicationInstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AllocatedStorage int `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
 	// +optional

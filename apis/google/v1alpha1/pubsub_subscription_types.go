@@ -26,6 +26,7 @@ type PubsubSubscriptionSpecPushConfig struct {
 
 type PubsubSubscriptionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AckDeadlineSeconds int    `json:"ackDeadlineSeconds,omitempty" tf:"ack_deadline_seconds,omitempty"`
 	Name               string `json:"name" tf:"name"`

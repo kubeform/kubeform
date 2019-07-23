@@ -20,8 +20,9 @@ type LogicAppWorkflow struct {
 
 type LogicAppWorkflowSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Location    string                    `json:"location" tf:"location"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Location string `json:"location" tf:"location"`
+	Name     string `json:"name" tf:"name"`
 	// +optional
 	Parameters        map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 	ResourceGroupName string            `json:"resourceGroupName" tf:"resource_group_name"`

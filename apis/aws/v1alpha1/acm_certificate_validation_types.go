@@ -19,8 +19,9 @@ type AcmCertificateValidation struct {
 }
 
 type AcmCertificateValidationSpec struct {
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
-	CertificateArn string                    `json:"certificateArn" tf:"certificate_arn"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	CertificateArn string `json:"certificateArn" tf:"certificate_arn"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ValidationRecordFqdns []string `json:"validationRecordFqdns,omitempty" tf:"validation_record_fqdns,omitempty"`

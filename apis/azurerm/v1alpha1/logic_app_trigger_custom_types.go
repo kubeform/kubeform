@@ -20,9 +20,10 @@ type LogicAppTriggerCustom struct {
 
 type LogicAppTriggerCustomSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Body        string                    `json:"body" tf:"body"`
-	LogicAppID  string                    `json:"logicAppID" tf:"logic_app_id"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Body       string `json:"body" tf:"body"`
+	LogicAppID string `json:"logicAppID" tf:"logic_app_id"`
+	Name       string `json:"name" tf:"name"`
 }
 
 type LogicAppTriggerCustomStatus struct {

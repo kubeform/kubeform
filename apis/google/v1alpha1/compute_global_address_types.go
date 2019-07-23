@@ -20,6 +20,7 @@ type ComputeGlobalAddress struct {
 
 type ComputeGlobalAddressSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AddressType string `json:"addressType,omitempty" tf:"address_type,omitempty"`
 	// +optional

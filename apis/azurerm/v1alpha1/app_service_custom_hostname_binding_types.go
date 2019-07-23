@@ -19,10 +19,11 @@ type AppServiceCustomHostnameBinding struct {
 }
 
 type AppServiceCustomHostnameBindingSpec struct {
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AppServiceName    string                    `json:"appServiceName" tf:"app_service_name"`
-	Hostname          string                    `json:"hostname" tf:"hostname"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	AppServiceName    string `json:"appServiceName" tf:"app_service_name"`
+	Hostname          string `json:"hostname" tf:"hostname"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type AppServiceCustomHostnameBindingStatus struct {

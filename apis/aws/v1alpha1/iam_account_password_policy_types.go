@@ -20,6 +20,7 @@ type IamAccountPasswordPolicy struct {
 
 type IamAccountPasswordPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AllowUsersToChangePassword bool `json:"allowUsersToChangePassword,omitempty" tf:"allow_users_to_change_password,omitempty"`
 	// +optional

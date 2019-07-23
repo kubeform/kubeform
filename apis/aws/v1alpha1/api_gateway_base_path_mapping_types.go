@@ -20,7 +20,8 @@ type ApiGatewayBasePathMapping struct {
 
 type ApiGatewayBasePathMappingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ApiID       string                    `json:"apiID" tf:"api_id"`
+
+	ApiID string `json:"apiID" tf:"api_id"`
 	// +optional
 	BasePath   string `json:"basePath,omitempty" tf:"base_path,omitempty"`
 	DomainName string `json:"domainName" tf:"domain_name"`

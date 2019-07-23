@@ -25,6 +25,7 @@ type DatasyncLocationNfsSpecOnPremConfig struct {
 
 type DatasyncLocationNfsSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:MaxItems=1
 	OnPremConfig   []DatasyncLocationNfsSpecOnPremConfig `json:"onPremConfig" tf:"on_prem_config"`
 	ServerHostname string                                `json:"serverHostname" tf:"server_hostname"`

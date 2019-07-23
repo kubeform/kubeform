@@ -20,8 +20,9 @@ type CustomerGateway struct {
 
 type CustomerGatewaySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	BgpAsn      int                       `json:"bgpAsn" tf:"bgp_asn"`
-	IpAddress   string                    `json:"ipAddress" tf:"ip_address"`
+
+	BgpAsn    int    `json:"bgpAsn" tf:"bgp_asn"`
+	IpAddress string `json:"ipAddress" tf:"ip_address"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	Type string            `json:"type" tf:"type"`

@@ -20,6 +20,7 @@ type ComputeAddress struct {
 
 type ComputeAddressSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Address string `json:"address,omitempty" tf:"address,omitempty"`
 	// +optional

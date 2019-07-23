@@ -185,8 +185,10 @@ type InstanceSpecDisk struct {
 }
 
 type InstanceSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Alerts []InstanceSpecAlerts `json:"alerts,omitempty" tf:"alerts,omitempty"`

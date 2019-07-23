@@ -41,9 +41,10 @@ type DbOptionGroupSpecOption struct {
 }
 
 type DbOptionGroupSpec struct {
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
-	EngineName         string                    `json:"engineName" tf:"engine_name"`
-	MajorEngineVersion string                    `json:"majorEngineVersion" tf:"major_engine_version"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	EngineName         string `json:"engineName" tf:"engine_name"`
+	MajorEngineVersion string `json:"majorEngineVersion" tf:"major_engine_version"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional

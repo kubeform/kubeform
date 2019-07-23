@@ -19,9 +19,10 @@ type VpcEndpointRouteTableAssociation struct {
 }
 
 type VpcEndpointRouteTableAssociationSpec struct {
-	ProviderRef   core.LocalObjectReference `json:"providerRef" tf:"-"`
-	RouteTableID  string                    `json:"routeTableID" tf:"route_table_id"`
-	VpcEndpointID string                    `json:"vpcEndpointID" tf:"vpc_endpoint_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	RouteTableID  string `json:"routeTableID" tf:"route_table_id"`
+	VpcEndpointID string `json:"vpcEndpointID" tf:"vpc_endpoint_id"`
 }
 
 type VpcEndpointRouteTableAssociationStatus struct {

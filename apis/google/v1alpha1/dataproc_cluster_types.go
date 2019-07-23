@@ -129,6 +129,7 @@ type DataprocClusterSpecClusterConfig struct {
 
 type DataprocClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ClusterConfig []DataprocClusterSpecClusterConfig `json:"clusterConfig,omitempty" tf:"cluster_config,omitempty"`

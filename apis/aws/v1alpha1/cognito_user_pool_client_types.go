@@ -20,6 +20,7 @@ type CognitoUserPoolClient struct {
 
 type CognitoUserPoolClientSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=3
 	// +kubebuilder:validation:UniqueItems=true

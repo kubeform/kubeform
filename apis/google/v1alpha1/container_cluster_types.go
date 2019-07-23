@@ -264,8 +264,10 @@ type ContainerClusterSpecPrivateClusterConfig struct {
 }
 
 type ContainerClusterSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AdditionalZones []string `json:"additionalZones,omitempty" tf:"additional_zones,omitempty"`

@@ -20,6 +20,7 @@ type VpcDHCPOptions struct {
 
 type VpcDHCPOptionsSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	DomainName string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
 	// +optional

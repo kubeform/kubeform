@@ -19,8 +19,9 @@ type SagemakerNotebookInstance struct {
 }
 
 type SagemakerNotebookInstanceSpec struct {
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
-	InstanceType string                    `json:"instanceType" tf:"instance_type"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	InstanceType string `json:"instanceType" tf:"instance_type"`
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional

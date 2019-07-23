@@ -22,8 +22,9 @@ type StackscriptSpecUserDefinedFields struct{}
 
 type StackscriptSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Description string                    `json:"description" tf:"description"`
-	Images      []string                  `json:"images" tf:"images"`
+
+	Description string   `json:"description" tf:"description"`
+	Images      []string `json:"images" tf:"images"`
 	// +optional
 	IsPublic bool   `json:"isPublic,omitempty" tf:"is_public,omitempty"`
 	Label    string `json:"label" tf:"label"`

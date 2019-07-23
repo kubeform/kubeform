@@ -50,6 +50,7 @@ type GlueSecurityConfigurationSpecEncryptionConfiguration struct {
 
 type GlueSecurityConfigurationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:MaxItems=1
 	EncryptionConfiguration []GlueSecurityConfigurationSpecEncryptionConfiguration `json:"encryptionConfiguration" tf:"encryption_configuration"`
 	Name                    string                                                 `json:"name" tf:"name"`

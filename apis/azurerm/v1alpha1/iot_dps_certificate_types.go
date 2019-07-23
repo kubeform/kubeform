@@ -19,11 +19,13 @@ type IotDpsCertificate struct {
 }
 
 type IotDpsCertificateSpec struct {
-	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	IotDpsName        string                     `json:"iotDpsName" tf:"iot_dps_name"`
-	Name              string                     `json:"name" tf:"name"`
-	ResourceGroupName string                     `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	IotDpsName        string `json:"iotDpsName" tf:"iot_dps_name"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type IotDpsCertificateStatus struct {

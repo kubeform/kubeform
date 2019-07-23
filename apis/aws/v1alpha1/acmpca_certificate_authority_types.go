@@ -72,6 +72,7 @@ type AcmpcaCertificateAuthoritySpecRevocationConfiguration struct {
 
 type AcmpcaCertificateAuthoritySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:MaxItems=1
 	CertificateAuthorityConfiguration []AcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration `json:"certificateAuthorityConfiguration" tf:"certificate_authority_configuration"`
 	// +optional

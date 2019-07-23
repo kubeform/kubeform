@@ -20,6 +20,7 @@ type Vpc struct {
 
 type VpcSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AssignGeneratedIpv6CIDRBlock bool   `json:"assignGeneratedIpv6CIDRBlock,omitempty" tf:"assign_generated_ipv6_cidr_block,omitempty"`
 	CidrBlock                    string `json:"cidrBlock" tf:"cidr_block"`

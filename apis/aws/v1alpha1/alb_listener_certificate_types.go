@@ -19,9 +19,10 @@ type AlbListenerCertificate struct {
 }
 
 type AlbListenerCertificateSpec struct {
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
-	CertificateArn string                    `json:"certificateArn" tf:"certificate_arn"`
-	ListenerArn    string                    `json:"listenerArn" tf:"listener_arn"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	CertificateArn string `json:"certificateArn" tf:"certificate_arn"`
+	ListenerArn    string `json:"listenerArn" tf:"listener_arn"`
 }
 
 type AlbListenerCertificateStatus struct {

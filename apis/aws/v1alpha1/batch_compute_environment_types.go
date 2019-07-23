@@ -56,8 +56,9 @@ type BatchComputeEnvironmentSpecComputeResources struct {
 }
 
 type BatchComputeEnvironmentSpec struct {
-	ProviderRef            core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ComputeEnvironmentName string                    `json:"computeEnvironmentName" tf:"compute_environment_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	ComputeEnvironmentName string `json:"computeEnvironmentName" tf:"compute_environment_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ComputeResources []BatchComputeEnvironmentSpecComputeResources `json:"computeResources,omitempty" tf:"compute_resources,omitempty"`

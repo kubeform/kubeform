@@ -20,6 +20,7 @@ type Route53DelegationSet struct {
 
 type Route53DelegationSetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	ReferenceName string `json:"referenceName,omitempty" tf:"reference_name,omitempty"`
 }

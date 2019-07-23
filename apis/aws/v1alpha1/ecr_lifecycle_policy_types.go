@@ -20,8 +20,9 @@ type EcrLifecyclePolicy struct {
 
 type EcrLifecyclePolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Policy      string                    `json:"policy" tf:"policy"`
-	Repository  string                    `json:"repository" tf:"repository"`
+
+	Policy     string `json:"policy" tf:"policy"`
+	Repository string `json:"repository" tf:"repository"`
 }
 
 type EcrLifecyclePolicyStatus struct {

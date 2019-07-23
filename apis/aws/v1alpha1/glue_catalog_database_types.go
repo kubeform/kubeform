@@ -20,6 +20,7 @@ type GlueCatalogDatabase struct {
 
 type GlueCatalogDatabaseSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	CatalogID string `json:"catalogID,omitempty" tf:"catalog_id,omitempty"`
 	// +optional

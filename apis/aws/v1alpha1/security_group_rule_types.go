@@ -20,6 +20,7 @@ type SecurityGroupRule struct {
 
 type SecurityGroupRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	CidrBlocks []string `json:"cidrBlocks,omitempty" tf:"cidr_blocks,omitempty"`
 	// +optional

@@ -20,8 +20,9 @@ type ApiGatewayMethodResponse struct {
 
 type ApiGatewayMethodResponseSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	HttpMethod  string                    `json:"httpMethod" tf:"http_method"`
-	ResourceID  string                    `json:"resourceID" tf:"resource_id"`
+
+	HttpMethod string `json:"httpMethod" tf:"http_method"`
+	ResourceID string `json:"resourceID" tf:"resource_id"`
 	// +optional
 	ResponseModels map[string]string `json:"responseModels,omitempty" tf:"response_models,omitempty"`
 	// +optional

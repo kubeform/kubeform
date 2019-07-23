@@ -40,8 +40,9 @@ type DefaultRouteTableSpecRoute struct {
 }
 
 type DefaultRouteTableSpec struct {
-	ProviderRef         core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DefaultRouteTableID string                    `json:"defaultRouteTableID" tf:"default_route_table_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	DefaultRouteTableID string `json:"defaultRouteTableID" tf:"default_route_table_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	PropagatingVgws []string `json:"propagatingVgws,omitempty" tf:"propagating_vgws,omitempty"`

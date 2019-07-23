@@ -20,6 +20,7 @@ type S3BucketPublicAccessBlock struct {
 
 type S3BucketPublicAccessBlockSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	BlockPublicAcls bool `json:"blockPublicAcls,omitempty" tf:"block_public_acls,omitempty"`
 	// +optional

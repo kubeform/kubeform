@@ -20,6 +20,7 @@ type ComputeHTTPHealthCheck struct {
 
 type ComputeHTTPHealthCheckSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	CheckIntervalSec int `json:"checkIntervalSec,omitempty" tf:"check_interval_sec,omitempty"`
 	// +optional

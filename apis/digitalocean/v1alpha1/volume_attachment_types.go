@@ -20,8 +20,9 @@ type VolumeAttachment struct {
 
 type VolumeAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DropletID   int                       `json:"dropletID" tf:"droplet_id"`
-	VolumeID    string                    `json:"volumeID" tf:"volume_id"`
+
+	DropletID int    `json:"dropletID" tf:"droplet_id"`
+	VolumeID  string `json:"volumeID" tf:"volume_id"`
 }
 
 type VolumeAttachmentStatus struct {

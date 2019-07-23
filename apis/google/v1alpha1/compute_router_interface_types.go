@@ -20,6 +20,7 @@ type ComputeRouterInterface struct {
 
 type ComputeRouterInterfaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	IpRange string `json:"ipRange,omitempty" tf:"ip_range,omitempty"`
 	Name    string `json:"name" tf:"name"`

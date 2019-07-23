@@ -20,8 +20,9 @@ type MonitoringGroup struct {
 
 type MonitoringGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DisplayName string                    `json:"displayName" tf:"display_name"`
-	Filter      string                    `json:"filter" tf:"filter"`
+
+	DisplayName string `json:"displayName" tf:"display_name"`
+	Filter      string `json:"filter" tf:"filter"`
 	// +optional
 	IsCluster bool `json:"isCluster,omitempty" tf:"is_cluster,omitempty"`
 	// +optional

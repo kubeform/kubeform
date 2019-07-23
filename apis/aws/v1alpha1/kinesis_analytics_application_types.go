@@ -194,6 +194,7 @@ type KinesisAnalyticsApplicationSpecReferenceDataSources struct {
 
 type KinesisAnalyticsApplicationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CloudwatchLoggingOptions []KinesisAnalyticsApplicationSpecCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`

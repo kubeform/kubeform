@@ -20,6 +20,7 @@ type Token struct {
 
 type TokenSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Expiry string `json:"expiry,omitempty" tf:"expiry,omitempty"`
 	// +optional

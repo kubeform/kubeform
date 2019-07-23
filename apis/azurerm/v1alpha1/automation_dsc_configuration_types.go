@@ -19,9 +19,10 @@ type AutomationDscConfiguration struct {
 }
 
 type AutomationDscConfigurationSpec struct {
-	ProviderRef           core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AutomationAccountName string                    `json:"automationAccountName" tf:"automation_account_name"`
-	ContentEmbedded       string                    `json:"contentEmbedded" tf:"content_embedded"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	AutomationAccountName string `json:"automationAccountName" tf:"automation_account_name"`
+	ContentEmbedded       string `json:"contentEmbedded" tf:"content_embedded"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Location    string `json:"location" tf:"location"`

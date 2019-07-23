@@ -48,6 +48,7 @@ type ImageSpecOsDisk struct {
 
 type ImageSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	DataDisk []ImageSpecDataDisk `json:"dataDisk,omitempty" tf:"data_disk,omitempty"`
 	Location string              `json:"location" tf:"location"`

@@ -32,6 +32,7 @@ type DevTestWindowsVirtualMachineSpecInboundNATRule struct {
 
 type DevTestWindowsVirtualMachineSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AllowClaim bool `json:"allowClaim,omitempty" tf:"allow_claim,omitempty"`
 	// +optional

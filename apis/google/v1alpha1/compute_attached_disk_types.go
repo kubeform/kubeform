@@ -20,6 +20,7 @@ type ComputeAttachedDisk struct {
 
 type ComputeAttachedDiskSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
 	Disk       string `json:"disk" tf:"disk"`

@@ -27,12 +27,14 @@ type StreamAnalyticsStreamInputEventhubSpecSerialization struct {
 }
 
 type StreamAnalyticsStreamInputEventhubSpec struct {
-	Secret                    *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef               core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	EventhubConsumerGroupName string                     `json:"eventhubConsumerGroupName" tf:"eventhub_consumer_group_name"`
-	EventhubName              string                     `json:"eventhubName" tf:"eventhub_name"`
-	Name                      string                     `json:"name" tf:"name"`
-	ResourceGroupName         string                     `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	EventhubConsumerGroupName string `json:"eventhubConsumerGroupName" tf:"eventhub_consumer_group_name"`
+	EventhubName              string `json:"eventhubName" tf:"eventhub_name"`
+	Name                      string `json:"name" tf:"name"`
+	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Serialization          []StreamAnalyticsStreamInputEventhubSpecSerialization `json:"serialization" tf:"serialization"`
 	ServicebusNamespace    string                                                `json:"servicebusNamespace" tf:"servicebus_namespace"`

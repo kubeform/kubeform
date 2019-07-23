@@ -24,6 +24,7 @@ type NotificationHubNamespaceSpecSku struct {
 
 type NotificationHubNamespaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Enabled           bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	Location          string `json:"location" tf:"location"`

@@ -20,6 +20,7 @@ type DataLakeStore struct {
 
 type DataLakeStoreSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	EncryptionState string `json:"encryptionState,omitempty" tf:"encryption_state,omitempty"`
 	// +optional

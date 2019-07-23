@@ -44,6 +44,7 @@ type StorageAccountSpecNetworkRules struct {
 
 type StorageAccountSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AccessTier string `json:"accessTier,omitempty" tf:"access_tier,omitempty"`
 	// +optional

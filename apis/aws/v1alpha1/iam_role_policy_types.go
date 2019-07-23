@@ -20,6 +20,7 @@ type IamRolePolicy struct {
 
 type IamRolePolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional

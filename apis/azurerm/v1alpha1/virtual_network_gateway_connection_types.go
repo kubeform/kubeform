@@ -32,8 +32,10 @@ type VirtualNetworkGatewayConnectionSpecIpsecPolicy struct {
 }
 
 type VirtualNetworkGatewayConnectionSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	// +optional
 	EnableBGP bool `json:"enableBGP,omitempty" tf:"enable_bgp,omitempty"`

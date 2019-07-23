@@ -20,6 +20,7 @@ type LambdaLayerVersion struct {
 
 type LambdaLayerVersionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=5
 	// +kubebuilder:validation:UniqueItems=true

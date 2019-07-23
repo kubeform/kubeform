@@ -26,8 +26,9 @@ type LoadBalancerPolicySpecPolicyAttribute struct {
 }
 
 type LoadBalancerPolicySpec struct {
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
-	LoadBalancerName string                    `json:"loadBalancerName" tf:"load_balancer_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	LoadBalancerName string `json:"loadBalancerName" tf:"load_balancer_name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	PolicyAttribute []LoadBalancerPolicySpecPolicyAttribute `json:"policyAttribute,omitempty" tf:"policy_attribute,omitempty"`

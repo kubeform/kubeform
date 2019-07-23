@@ -82,6 +82,7 @@ type AppautoscalingPolicySpecTargetTrackingScalingPolicyConfiguration struct {
 
 type AppautoscalingPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Alarms []string `json:"alarms,omitempty" tf:"alarms,omitempty"`
 	Name   string   `json:"name" tf:"name"`

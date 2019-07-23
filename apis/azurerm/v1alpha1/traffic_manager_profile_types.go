@@ -32,6 +32,7 @@ type TrafficManagerProfileSpecMonitorConfig struct {
 
 type TrafficManagerProfileSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:UniqueItems=true
 	DnsConfig []TrafficManagerProfileSpecDnsConfig `json:"dnsConfig" tf:"dns_config"`
 	// +kubebuilder:validation:UniqueItems=true

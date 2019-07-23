@@ -19,9 +19,10 @@ type TemplateDeployment struct {
 }
 
 type TemplateDeploymentSpec struct {
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DeploymentMode string                    `json:"deploymentMode" tf:"deployment_mode"`
-	Name           string                    `json:"name" tf:"name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	DeploymentMode string `json:"deploymentMode" tf:"deployment_mode"`
+	Name           string `json:"name" tf:"name"`
 	// +optional
 	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 	// +optional

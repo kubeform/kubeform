@@ -20,6 +20,7 @@ type LoggingProjectExclusion struct {
 
 type LoggingProjectExclusionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

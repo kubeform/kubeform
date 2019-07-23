@@ -19,10 +19,11 @@ type BillingAccountIamMember struct {
 }
 
 type BillingAccountIamMemberSpec struct {
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
-	BillingAccountID string                    `json:"billingAccountID" tf:"billing_account_id"`
-	Member           string                    `json:"member" tf:"member"`
-	Role             string                    `json:"role" tf:"role"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	BillingAccountID string `json:"billingAccountID" tf:"billing_account_id"`
+	Member           string `json:"member" tf:"member"`
+	Role             string `json:"role" tf:"role"`
 }
 
 type BillingAccountIamMemberStatus struct {

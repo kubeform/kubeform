@@ -19,11 +19,12 @@ type MysqlVirtualNetworkRule struct {
 }
 
 type MysqlVirtualNetworkRuleSpec struct {
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name              string                    `json:"name" tf:"name"`
-	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	ServerName        string                    `json:"serverName" tf:"server_name"`
-	SubnetID          string                    `json:"subnetID" tf:"subnet_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	ServerName        string `json:"serverName" tf:"server_name"`
+	SubnetID          string `json:"subnetID" tf:"subnet_id"`
 }
 
 type MysqlVirtualNetworkRuleStatus struct {

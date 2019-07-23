@@ -31,8 +31,10 @@ type OpsworksStackSpecCustomCookbooksSource struct {
 }
 
 type OpsworksStackSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	AgentVersion string `json:"agentVersion,omitempty" tf:"agent_version,omitempty"`
 	// +optional

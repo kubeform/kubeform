@@ -19,8 +19,9 @@ type Ec2CapacityReservation struct {
 }
 
 type Ec2CapacityReservationSpec struct {
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AvailabilityZone string                    `json:"availabilityZone" tf:"availability_zone"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	AvailabilityZone string `json:"availabilityZone" tf:"availability_zone"`
 	// +optional
 	EbsOptimized bool `json:"ebsOptimized,omitempty" tf:"ebs_optimized,omitempty"`
 	// +optional

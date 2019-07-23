@@ -48,8 +48,10 @@ type SqlDatabaseSpecThreatDetectionPolicy struct {
 }
 
 type SqlDatabaseSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	Collation string `json:"collation,omitempty" tf:"collation,omitempty"`
 	// +optional

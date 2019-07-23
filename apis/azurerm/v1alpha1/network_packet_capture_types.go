@@ -39,6 +39,7 @@ type NetworkPacketCaptureSpecStorageLocation struct {
 
 type NetworkPacketCaptureSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Filter []NetworkPacketCaptureSpecFilter `json:"filter,omitempty" tf:"filter,omitempty"`
 	// +optional

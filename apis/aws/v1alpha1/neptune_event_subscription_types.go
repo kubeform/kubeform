@@ -20,6 +20,7 @@ type NeptuneEventSubscription struct {
 
 type NeptuneEventSubscriptionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional

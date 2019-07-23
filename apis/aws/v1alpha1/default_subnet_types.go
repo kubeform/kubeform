@@ -19,8 +19,9 @@ type DefaultSubnet struct {
 }
 
 type DefaultSubnetSpec struct {
-	ProviderRef      core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AvailabilityZone string                    `json:"availabilityZone" tf:"availability_zone"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	AvailabilityZone string `json:"availabilityZone" tf:"availability_zone"`
 	// +optional
 	MapPublicIPOnLaunch bool `json:"mapPublicIPOnLaunch,omitempty" tf:"map_public_ip_on_launch,omitempty"`
 	// +optional

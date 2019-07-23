@@ -25,7 +25,8 @@ type DnsMxRecordSpecRecord struct {
 
 type DnsMxRecordSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Name string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
 	Record            []DnsMxRecordSpecRecord `json:"record" tf:"record"`
 	ResourceGroupName string                  `json:"resourceGroupName" tf:"resource_group_name"`

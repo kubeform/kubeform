@@ -31,7 +31,8 @@ type AppmeshMeshSpecSpec struct {
 
 type AppmeshMeshSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Name string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Spec []AppmeshMeshSpecSpec `json:"spec,omitempty" tf:"spec,omitempty"`

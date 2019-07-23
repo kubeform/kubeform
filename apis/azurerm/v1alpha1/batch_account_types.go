@@ -20,8 +20,9 @@ type BatchAccount struct {
 
 type BatchAccountSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Location    string                    `json:"location" tf:"location"`
-	Name        string                    `json:"name" tf:"name"`
+
+	Location string `json:"location" tf:"location"`
+	Name     string `json:"name" tf:"name"`
 	// +optional
 	PoolAllocationMode string `json:"poolAllocationMode,omitempty" tf:"pool_allocation_mode,omitempty"`
 	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`

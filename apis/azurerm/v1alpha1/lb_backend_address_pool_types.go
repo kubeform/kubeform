@@ -19,8 +19,9 @@ type LbBackendAddressPool struct {
 }
 
 type LbBackendAddressPoolSpec struct {
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
-	LoadbalancerID string                    `json:"loadbalancerID" tf:"loadbalancer_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	LoadbalancerID string `json:"loadbalancerID" tf:"loadbalancer_id"`
 	// +optional
 	// Deprecated
 	Location          string `json:"location,omitempty" tf:"location,omitempty"`

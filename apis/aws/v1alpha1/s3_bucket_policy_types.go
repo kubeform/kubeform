@@ -20,8 +20,9 @@ type S3BucketPolicy struct {
 
 type S3BucketPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Bucket      string                    `json:"bucket" tf:"bucket"`
-	Policy      string                    `json:"policy" tf:"policy"`
+
+	Bucket string `json:"bucket" tf:"bucket"`
+	Policy string `json:"policy" tf:"policy"`
 }
 
 type S3BucketPolicyStatus struct {

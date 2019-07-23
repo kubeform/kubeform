@@ -44,6 +44,7 @@ type GlueCrawlerSpecSchemaChangePolicy struct {
 
 type GlueCrawlerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Classifiers []string `json:"classifiers,omitempty" tf:"classifiers,omitempty"`
 	// +optional

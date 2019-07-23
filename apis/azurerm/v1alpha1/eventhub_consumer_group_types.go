@@ -19,8 +19,9 @@ type EventhubConsumerGroup struct {
 }
 
 type EventhubConsumerGroupSpec struct {
-	ProviderRef  core.LocalObjectReference `json:"providerRef" tf:"-"`
-	EventhubName string                    `json:"eventhubName" tf:"eventhub_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	EventhubName string `json:"eventhubName" tf:"eventhub_name"`
 	// +optional
 	// Deprecated
 	Location          string `json:"location,omitempty" tf:"location,omitempty"`

@@ -19,8 +19,9 @@ type VpcEndpointService struct {
 }
 
 type VpcEndpointServiceSpec struct {
-	ProviderRef        core.LocalObjectReference `json:"providerRef" tf:"-"`
-	AcceptanceRequired bool                      `json:"acceptanceRequired" tf:"acceptance_required"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	AcceptanceRequired bool `json:"acceptanceRequired" tf:"acceptance_required"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AllowedPrincipals []string `json:"allowedPrincipals,omitempty" tf:"allowed_principals,omitempty"`

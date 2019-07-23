@@ -30,9 +30,11 @@ type CodepipelineWebhookSpecFilter struct {
 }
 
 type CodepipelineWebhookSpec struct {
-	Secret         *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef    core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	Authentication string                     `json:"authentication" tf:"authentication"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	Authentication string `json:"authentication" tf:"authentication"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1

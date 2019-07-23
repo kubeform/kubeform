@@ -20,8 +20,9 @@ type SpannerDatabaseIamBinding struct {
 
 type SpannerDatabaseIamBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Database    string                    `json:"database" tf:"database"`
-	Instance    string                    `json:"instance" tf:"instance"`
+
+	Database string `json:"database" tf:"database"`
+	Instance string `json:"instance" tf:"instance"`
 	// +kubebuilder:validation:UniqueItems=true
 	Members []string `json:"members" tf:"members"`
 	// +optional

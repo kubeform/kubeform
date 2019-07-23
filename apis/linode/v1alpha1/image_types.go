@@ -20,6 +20,7 @@ type Image struct {
 
 type ImageSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	DiskID      int    `json:"diskID" tf:"disk_id"`

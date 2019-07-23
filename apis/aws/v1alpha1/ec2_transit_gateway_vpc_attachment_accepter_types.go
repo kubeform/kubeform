@@ -20,6 +20,7 @@ type Ec2TransitGatewayVpcAttachmentAccepter struct {
 
 type Ec2TransitGatewayVpcAttachmentAccepterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Tags                       map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	TransitGatewayAttachmentID string            `json:"transitGatewayAttachmentID" tf:"transit_gateway_attachment_id"`

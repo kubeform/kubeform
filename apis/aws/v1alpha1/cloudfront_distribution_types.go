@@ -226,6 +226,7 @@ type CloudfrontDistributionSpecViewerCertificate struct {
 
 type CloudfrontDistributionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Aliases []string `json:"aliases,omitempty" tf:"aliases,omitempty"`

@@ -27,6 +27,7 @@ type LambdaAliasSpecRoutingConfig struct {
 
 type LambdaAliasSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Description     string `json:"description,omitempty" tf:"description,omitempty"`
 	FunctionName    string `json:"functionName" tf:"function_name"`

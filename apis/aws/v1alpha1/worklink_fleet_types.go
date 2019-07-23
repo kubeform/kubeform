@@ -33,6 +33,7 @@ type WorklinkFleetSpecNetwork struct {
 
 type WorklinkFleetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AuditStreamArn string `json:"auditStreamArn,omitempty" tf:"audit_stream_arn,omitempty"`
 	// +optional

@@ -20,7 +20,8 @@ type EbsDefaultKmsKey struct {
 
 type EbsDefaultKmsKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	KeyArn      string                    `json:"keyArn" tf:"key_arn"`
+
+	KeyArn string `json:"keyArn" tf:"key_arn"`
 }
 
 type EbsDefaultKmsKeyStatus struct {

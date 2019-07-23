@@ -46,6 +46,7 @@ type CloudiotRegistrySpecStateNotificationConfig struct {
 
 type CloudiotRegistrySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=10
 	Credentials []CloudiotRegistrySpecCredentials `json:"credentials,omitempty" tf:"credentials,omitempty"`

@@ -19,8 +19,10 @@ type AcmCertificate struct {
 }
 
 type AcmCertificateSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	CertificateBody string `json:"certificateBody,omitempty" tf:"certificate_body,omitempty"`
 	// +optional

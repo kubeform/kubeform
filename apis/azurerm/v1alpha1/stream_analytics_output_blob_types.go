@@ -29,12 +29,14 @@ type StreamAnalyticsOutputBlobSpecSerialization struct {
 }
 
 type StreamAnalyticsOutputBlobSpec struct {
-	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	DateFormat        string                     `json:"dateFormat" tf:"date_format"`
-	Name              string                     `json:"name" tf:"name"`
-	PathPattern       string                     `json:"pathPattern" tf:"path_pattern"`
-	ResourceGroupName string                     `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	DateFormat        string `json:"dateFormat" tf:"date_format"`
+	Name              string `json:"name" tf:"name"`
+	PathPattern       string `json:"pathPattern" tf:"path_pattern"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Serialization          []StreamAnalyticsOutputBlobSpecSerialization `json:"serialization" tf:"serialization"`
 	StorageAccountName     string                                       `json:"storageAccountName" tf:"storage_account_name"`

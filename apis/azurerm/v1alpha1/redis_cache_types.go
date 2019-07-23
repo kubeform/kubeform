@@ -51,9 +51,11 @@ type RedisCacheSpecRedisConfiguration struct {
 }
 
 type RedisCacheSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	Capacity    int                        `json:"capacity" tf:"capacity"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	Capacity int `json:"capacity" tf:"capacity"`
 	// +optional
 	EnableNonSslPort bool   `json:"enableNonSslPort,omitempty" tf:"enable_non_ssl_port,omitempty"`
 	Family           string `json:"family" tf:"family"`

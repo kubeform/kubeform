@@ -22,6 +22,7 @@ type ComputeTargetPool struct {
 
 type ComputeTargetPoolSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	BackupPool string `json:"backupPool,omitempty" tf:"backup_pool,omitempty"`
 	// +optional

@@ -19,17 +19,18 @@ type StreamAnalyticsJob struct {
 }
 
 type StreamAnalyticsJobSpec struct {
-	ProviderRef                        core.LocalObjectReference `json:"providerRef" tf:"-"`
-	CompatibilityLevel                 string                    `json:"compatibilityLevel" tf:"compatibility_level"`
-	DataLocale                         string                    `json:"dataLocale" tf:"data_locale"`
-	EventsLateArrivalMaxDelayInSeconds int                       `json:"eventsLateArrivalMaxDelayInSeconds" tf:"events_late_arrival_max_delay_in_seconds"`
-	EventsOutOfOrderMaxDelayInSeconds  int                       `json:"eventsOutOfOrderMaxDelayInSeconds" tf:"events_out_of_order_max_delay_in_seconds"`
-	EventsOutOfOrderPolicy             string                    `json:"eventsOutOfOrderPolicy" tf:"events_out_of_order_policy"`
-	Location                           string                    `json:"location" tf:"location"`
-	Name                               string                    `json:"name" tf:"name"`
-	OutputErrorPolicy                  string                    `json:"outputErrorPolicy" tf:"output_error_policy"`
-	ResourceGroupName                  string                    `json:"resourceGroupName" tf:"resource_group_name"`
-	StreamingUnits                     int                       `json:"streamingUnits" tf:"streaming_units"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	CompatibilityLevel                 string `json:"compatibilityLevel" tf:"compatibility_level"`
+	DataLocale                         string `json:"dataLocale" tf:"data_locale"`
+	EventsLateArrivalMaxDelayInSeconds int    `json:"eventsLateArrivalMaxDelayInSeconds" tf:"events_late_arrival_max_delay_in_seconds"`
+	EventsOutOfOrderMaxDelayInSeconds  int    `json:"eventsOutOfOrderMaxDelayInSeconds" tf:"events_out_of_order_max_delay_in_seconds"`
+	EventsOutOfOrderPolicy             string `json:"eventsOutOfOrderPolicy" tf:"events_out_of_order_policy"`
+	Location                           string `json:"location" tf:"location"`
+	Name                               string `json:"name" tf:"name"`
+	OutputErrorPolicy                  string `json:"outputErrorPolicy" tf:"output_error_policy"`
+	ResourceGroupName                  string `json:"resourceGroupName" tf:"resource_group_name"`
+	StreamingUnits                     int    `json:"streamingUnits" tf:"streaming_units"`
 	// +optional
 	Tags                map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	TransformationQuery string            `json:"transformationQuery" tf:"transformation_query"`

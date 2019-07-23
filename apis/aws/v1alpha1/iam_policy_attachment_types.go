@@ -20,6 +20,7 @@ type IamPolicyAttachment struct {
 
 type IamPolicyAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Groups    []string `json:"groups,omitempty" tf:"groups,omitempty"`

@@ -28,6 +28,7 @@ type DataFactoryDatasetMysqlSpecSchemaColumn struct {
 
 type DataFactoryDatasetMysqlSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AdditionalProperties map[string]string `json:"additionalProperties,omitempty" tf:"additional_properties,omitempty"`
 	// +optional

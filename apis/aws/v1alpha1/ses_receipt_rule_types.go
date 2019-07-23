@@ -76,6 +76,7 @@ type SesReceiptRuleSpecWorkmailAction struct {
 
 type SesReceiptRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AddHeaderAction []SesReceiptRuleSpecAddHeaderAction `json:"addHeaderAction,omitempty" tf:"add_header_action,omitempty"`

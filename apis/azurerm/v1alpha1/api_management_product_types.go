@@ -19,8 +19,9 @@ type ApiManagementProduct struct {
 }
 
 type ApiManagementProductSpec struct {
-	ProviderRef       core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ApiManagementName string                    `json:"apiManagementName" tf:"api_management_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	// +optional
 	ApprovalRequired bool `json:"approvalRequired,omitempty" tf:"approval_required,omitempty"`
 	// +optional

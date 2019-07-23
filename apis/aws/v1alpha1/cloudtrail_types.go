@@ -35,6 +35,7 @@ type CloudtrailSpecEventSelector struct {
 
 type CloudtrailSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	CloudWatchLogsGroupArn string `json:"cloudWatchLogsGroupArn,omitempty" tf:"cloud_watch_logs_group_arn,omitempty"`
 	// +optional

@@ -63,6 +63,7 @@ type WafregionalWebACLSpecRule struct {
 
 type WafregionalWebACLSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:MaxItems=1
 	DefaultAction []WafregionalWebACLSpecDefaultAction `json:"defaultAction" tf:"default_action"`
 	// +optional

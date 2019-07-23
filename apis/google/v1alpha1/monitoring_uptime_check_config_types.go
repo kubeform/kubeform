@@ -75,8 +75,10 @@ type MonitoringUptimeCheckConfigSpecTcpCheck struct {
 }
 
 type MonitoringUptimeCheckConfigSpec struct {
-	Secret      *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef core.LocalObjectReference  `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	ContentMatchers []MonitoringUptimeCheckConfigSpecContentMatchers `json:"contentMatchers,omitempty" tf:"content_matchers,omitempty"`
 	DisplayName     string                                           `json:"displayName" tf:"display_name"`

@@ -55,6 +55,7 @@ type LoadbalancerSpecStickySessions struct {
 
 type LoadbalancerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Algorithm string `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 	// +optional

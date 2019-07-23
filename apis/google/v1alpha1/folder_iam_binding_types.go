@@ -20,7 +20,8 @@ type FolderIamBinding struct {
 
 type FolderIamBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Folder      string                    `json:"folder" tf:"folder"`
+
+	Folder string `json:"folder" tf:"folder"`
 	// +kubebuilder:validation:UniqueItems=true
 	Members []string `json:"members" tf:"members"`
 	Role    string   `json:"role" tf:"role"`

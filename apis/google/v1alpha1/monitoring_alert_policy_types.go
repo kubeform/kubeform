@@ -107,7 +107,8 @@ type MonitoringAlertPolicySpecConditions struct {
 }
 
 type MonitoringAlertPolicySpec struct {
-	ProviderRef core.LocalObjectReference             `json:"providerRef" tf:"-"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	Combiner    string                                `json:"combiner" tf:"combiner"`
 	Conditions  []MonitoringAlertPolicySpecConditions `json:"conditions" tf:"conditions"`
 	DisplayName string                                `json:"displayName" tf:"display_name"`

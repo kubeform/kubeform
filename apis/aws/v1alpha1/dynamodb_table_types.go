@@ -61,6 +61,7 @@ type DynamodbTableSpecTtl struct {
 
 type DynamodbTableSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +kubebuilder:validation:UniqueItems=true
 	Attribute []DynamodbTableSpecAttribute `json:"attribute" tf:"attribute"`
 	// +optional

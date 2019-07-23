@@ -27,13 +27,15 @@ type StreamAnalyticsStreamInputIothubSpecSerialization struct {
 }
 
 type StreamAnalyticsStreamInputIothubSpec struct {
-	Secret                    *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef               core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	Endpoint                  string                     `json:"endpoint" tf:"endpoint"`
-	EventhubConsumerGroupName string                     `json:"eventhubConsumerGroupName" tf:"eventhub_consumer_group_name"`
-	IothubNamespace           string                     `json:"iothubNamespace" tf:"iothub_namespace"`
-	Name                      string                     `json:"name" tf:"name"`
-	ResourceGroupName         string                     `json:"resourceGroupName" tf:"resource_group_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	Endpoint                  string `json:"endpoint" tf:"endpoint"`
+	EventhubConsumerGroupName string `json:"eventhubConsumerGroupName" tf:"eventhub_consumer_group_name"`
+	IothubNamespace           string `json:"iothubNamespace" tf:"iothub_namespace"`
+	Name                      string `json:"name" tf:"name"`
+	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Serialization          []StreamAnalyticsStreamInputIothubSpecSerialization `json:"serialization" tf:"serialization"`
 	SharedAccessPolicyName string                                              `json:"sharedAccessPolicyName" tf:"shared_access_policy_name"`

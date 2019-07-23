@@ -34,6 +34,7 @@ type AlbSpecSubnetMapping struct {
 
 type AlbSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AccessLogs []AlbSpecAccessLogs `json:"accessLogs,omitempty" tf:"access_logs,omitempty"`

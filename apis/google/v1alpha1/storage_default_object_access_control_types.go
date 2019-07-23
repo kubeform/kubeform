@@ -20,8 +20,9 @@ type StorageDefaultObjectAccessControl struct {
 
 type StorageDefaultObjectAccessControlSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Bucket      string                    `json:"bucket" tf:"bucket"`
-	Entity      string                    `json:"entity" tf:"entity"`
+
+	Bucket string `json:"bucket" tf:"bucket"`
+	Entity string `json:"entity" tf:"entity"`
 	// +optional
 	Object string `json:"object,omitempty" tf:"object,omitempty"`
 	Role   string `json:"role" tf:"role"`

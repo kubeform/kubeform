@@ -20,6 +20,7 @@ type ServicebusQueue struct {
 
 type ServicebusQueueSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AutoDeleteOnIdle string `json:"autoDeleteOnIdle,omitempty" tf:"auto_delete_on_idle,omitempty"`
 	// +optional

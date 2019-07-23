@@ -20,7 +20,8 @@ type Record struct {
 
 type RecordSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	Domain      string                    `json:"domain" tf:"domain"`
+
+	Domain string `json:"domain" tf:"domain"`
 	// +optional
 	Flags int    `json:"flags,omitempty" tf:"flags,omitempty"`
 	Name  string `json:"name" tf:"name"`

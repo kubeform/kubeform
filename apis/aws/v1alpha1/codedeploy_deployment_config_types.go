@@ -52,6 +52,7 @@ type CodedeployDeploymentConfigSpecTrafficRoutingConfig struct {
 
 type CodedeployDeploymentConfigSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	ComputePlatform      string `json:"computePlatform,omitempty" tf:"compute_platform,omitempty"`
 	DeploymentConfigName string `json:"deploymentConfigName" tf:"deployment_config_name"`

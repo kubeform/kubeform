@@ -60,6 +60,7 @@ type ComputeRegionInstanceGroupManagerSpecVersion struct {
 
 type ComputeRegionInstanceGroupManagerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// Deprecated

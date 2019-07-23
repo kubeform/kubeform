@@ -19,10 +19,11 @@ type NetworkInterfaceApplicationSecurityGroupAssociation struct {
 }
 
 type NetworkInterfaceApplicationSecurityGroupAssociationSpec struct {
-	ProviderRef                core.LocalObjectReference `json:"providerRef" tf:"-"`
-	ApplicationSecurityGroupID string                    `json:"applicationSecurityGroupID" tf:"application_security_group_id"`
-	IpConfigurationName        string                    `json:"ipConfigurationName" tf:"ip_configuration_name"`
-	NetworkInterfaceID         string                    `json:"networkInterfaceID" tf:"network_interface_id"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	ApplicationSecurityGroupID string `json:"applicationSecurityGroupID" tf:"application_security_group_id"`
+	IpConfigurationName        string `json:"ipConfigurationName" tf:"ip_configuration_name"`
+	NetworkInterfaceID         string `json:"networkInterfaceID" tf:"network_interface_id"`
 }
 
 type NetworkInterfaceApplicationSecurityGroupAssociationStatus struct {

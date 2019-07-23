@@ -20,6 +20,7 @@ type OpsworksPermission struct {
 
 type OpsworksPermissionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	AllowSSH bool `json:"allowSSH,omitempty" tf:"allow_ssh,omitempty"`
 	// +optional

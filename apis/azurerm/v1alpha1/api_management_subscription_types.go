@@ -19,10 +19,12 @@ type ApiManagementSubscription struct {
 }
 
 type ApiManagementSubscriptionSpec struct {
-	Secret            *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
-	ProviderRef       core.LocalObjectReference  `json:"providerRef" tf:"-"`
-	ApiManagementName string                     `json:"apiManagementName" tf:"api_management_name"`
-	DisplayName       string                     `json:"displayName" tf:"display_name"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
+	DisplayName       string `json:"displayName" tf:"display_name"`
 	// +optional
 	ProductID         string `json:"productID" tf:"product_id"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`

@@ -20,6 +20,7 @@ type LbCookieStickinessPolicy struct {
 
 type LbCookieStickinessPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	CookieExpirationPeriod int    `json:"cookieExpirationPeriod,omitempty" tf:"cookie_expiration_period,omitempty"`
 	LbPort                 int    `json:"lbPort" tf:"lb_port"`

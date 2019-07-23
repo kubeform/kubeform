@@ -50,6 +50,7 @@ type CosmosdbAccountSpecVirtualNetworkRule struct {
 
 type CosmosdbAccountSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Capabilities []CosmosdbAccountSpecCapabilities `json:"capabilities,omitempty" tf:"capabilities,omitempty"`

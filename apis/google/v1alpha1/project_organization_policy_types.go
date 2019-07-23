@@ -55,6 +55,7 @@ type ProjectOrganizationPolicySpecRestorePolicy struct {
 
 type ProjectOrganizationPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	BooleanPolicy []ProjectOrganizationPolicySpecBooleanPolicy `json:"booleanPolicy,omitempty" tf:"boolean_policy,omitempty"`

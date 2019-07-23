@@ -20,8 +20,9 @@ type DynamodbTableItem struct {
 
 type DynamodbTableItemSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
-	HashKey     string                    `json:"hashKey" tf:"hash_key"`
-	Item        string                    `json:"item" tf:"item"`
+
+	HashKey string `json:"hashKey" tf:"hash_key"`
+	Item    string `json:"item" tf:"item"`
 	// +optional
 	RangeKey  string `json:"rangeKey,omitempty" tf:"range_key,omitempty"`
 	TableName string `json:"tableName" tf:"table_name"`

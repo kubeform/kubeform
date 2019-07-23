@@ -48,8 +48,9 @@ type ComputeURLMapSpecTest struct {
 }
 
 type ComputeURLMapSpec struct {
-	ProviderRef    core.LocalObjectReference `json:"providerRef" tf:"-"`
-	DefaultService string                    `json:"defaultService" tf:"default_service"`
+	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
+	DefaultService string `json:"defaultService" tf:"default_service"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

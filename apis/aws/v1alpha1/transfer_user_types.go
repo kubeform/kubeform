@@ -20,6 +20,7 @@ type TransferUser struct {
 
 type TransferUserSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	HomeDirectory string `json:"homeDirectory,omitempty" tf:"home_directory,omitempty"`
 	// +optional

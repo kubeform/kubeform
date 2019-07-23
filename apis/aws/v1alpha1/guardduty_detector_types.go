@@ -20,6 +20,7 @@ type GuarddutyDetector struct {
 
 type GuarddutyDetectorSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
+
 	// +optional
 	Enable bool `json:"enable,omitempty" tf:"enable,omitempty"`
 	// +optional
