@@ -12563,19 +12563,13 @@ func schema_kubeform_apis_linode_v1alpha1_DomainRecordStatus(ref common.Referenc
 					},
 					"tfState": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -12713,19 +12707,13 @@ func schema_kubeform_apis_linode_v1alpha1_DomainStatus(ref common.ReferenceCallb
 					},
 					"tfState": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -12878,19 +12866,13 @@ func schema_kubeform_apis_linode_v1alpha1_ImageStatus(ref common.ReferenceCallba
 					},
 					"tfState": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -13761,19 +13743,13 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceStatus(ref common.ReferenceCal
 					},
 					"tfState": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -14034,19 +14010,13 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigStatus(ref common.Re
 					},
 					"tfState": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -14258,19 +14228,13 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerNodeStatus(ref common.Refe
 					},
 					"tfState": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -14340,19 +14304,13 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerStatus(ref common.Referenc
 					},
 					"tfState": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -14493,19 +14451,13 @@ func schema_kubeform_apis_linode_v1alpha1_RdnsStatus(ref common.ReferenceCallbac
 					},
 					"tfState": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -14646,19 +14598,13 @@ func schema_kubeform_apis_linode_v1alpha1_SshkeyStatus(ref common.ReferenceCallb
 					},
 					"tfState": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -14852,19 +14798,13 @@ func schema_kubeform_apis_linode_v1alpha1_StackscriptStatus(ref common.Reference
 					},
 					"tfState": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -15011,19 +14951,13 @@ func schema_kubeform_apis_linode_v1alpha1_TokenStatus(ref common.ReferenceCallba
 					},
 					"tfState": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }
 
@@ -15189,18 +15123,12 @@ func schema_kubeform_apis_linode_v1alpha1_VolumeStatus(ref common.ReferenceCallb
 					},
 					"tfState": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
-						},
-					},
-					"output": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
 	}
 }

@@ -38,26 +38,113 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 
-		&KubernetesCluster{},
-		&KubernetesClusterList{},
+		&StreamAnalyticsJob{},
+		&StreamAnalyticsJobList{},
+
+		&ApplicationInsights{},
+		&ApplicationInsightsList{},
+
+		&AzureadServicePrincipal{},
+		&AzureadServicePrincipalList{},
+
+		&EventhubConsumerGroup{},
+		&EventhubConsumerGroupList{},
+
+		&LogAnalyticsWorkspace{},
+		&LogAnalyticsWorkspaceList{},
+
+		&MonitorDiagnosticSetting{},
+		&MonitorDiagnosticSettingList{},
+
+		&ServicebusSubscription{},
+		&ServicebusSubscriptionList{},
+
+		&SignalrService{},
+		&SignalrServiceList{},
+
+		&ApiManagementSubscription{},
+		&ApiManagementSubscriptionList{},
+
+		&BatchPool{},
+		&BatchPoolList{},
+
+		&DevTestWindowsVirtualMachine{},
+		&DevTestWindowsVirtualMachineList{},
+
+		&IothubConsumerGroup{},
+		&IothubConsumerGroupList{},
+
+		&LbBackendAddressPool{},
+		&LbBackendAddressPoolList{},
+
+		&ApiManagementAPIOperation{},
+		&ApiManagementAPIOperationList{},
+
+		&DevTestVirtualNetwork{},
+		&DevTestVirtualNetworkList{},
+
+		&DnsCaaRecord{},
+		&DnsCaaRecordList{},
+
+		&Iothub{},
+		&IothubList{},
+
+		&PostgresqlServer{},
+		&PostgresqlServerList{},
+
+		&ApplicationInsightsWebTest{},
+		&ApplicationInsightsWebTestList{},
+
+		&SecurityCenterContact{},
+		&SecurityCenterContactList{},
+
+		&TrafficManagerProfile{},
+		&TrafficManagerProfileList{},
+
+		&ApiManagementAPIOperationPolicy{},
+		&ApiManagementAPIOperationPolicyList{},
 
 		&AutomationVariableBool{},
 		&AutomationVariableBoolList{},
 
-		&DevTestLinuxVirtualMachine{},
-		&DevTestLinuxVirtualMachineList{},
+		&AutomationVariableInt{},
+		&AutomationVariableIntList{},
 
-		&DevTestPolicy{},
-		&DevTestPolicyList{},
+		&EventhubNamespace{},
+		&EventhubNamespaceList{},
 
-		&DnsMxRecord{},
-		&DnsMxRecordList{},
+		&PostgresqlVirtualNetworkRule{},
+		&PostgresqlVirtualNetworkRuleList{},
 
-		&FirewallNetworkRuleCollection{},
-		&FirewallNetworkRuleCollectionList{},
+		&StorageQueue{},
+		&StorageQueueList{},
 
-		&ContainerService{},
-		&ContainerServiceList{},
+		&TemplateDeployment{},
+		&TemplateDeploymentList{},
+
+		&ApiManagementGroup{},
+		&ApiManagementGroupList{},
+
+		&AutomationVariableDatetime{},
+		&AutomationVariableDatetimeList{},
+
+		&DdosProtectionPlan{},
+		&DdosProtectionPlanList{},
+
+		&KeyVaultCertificate{},
+		&KeyVaultCertificateList{},
+
+		&VirtualMachineScaleSet{},
+		&VirtualMachineScaleSetList{},
+
+		&HdinsightRserverCluster{},
+		&HdinsightRserverClusterList{},
+
+		&MonitorAutoscaleSetting{},
+		&MonitorAutoscaleSettingList{},
+
+		&ExpressRouteCircuitAuthorization{},
+		&ExpressRouteCircuitAuthorizationList{},
 
 		&DataFactoryLinkedServicePostgresql{},
 		&DataFactoryLinkedServicePostgresqlList{},
@@ -68,611 +155,230 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&LogicAppTriggerHTTPRequest{},
 		&LogicAppTriggerHTTPRequestList{},
 
-		&NetworkPacketCapture{},
-		&NetworkPacketCaptureList{},
-
-		&ApiManagementAPISchema{},
-		&ApiManagementAPISchemaList{},
-
-		&AzureadServicePrincipalPassword{},
-		&AzureadServicePrincipalPasswordList{},
-
-		&BatchPool{},
-		&BatchPoolList{},
-
-		&RecoveryServicesVault{},
-		&RecoveryServicesVaultList{},
-
-		&RoleDefinition{},
-		&RoleDefinitionList{},
-
-		&TemplateDeployment{},
-		&TemplateDeploymentList{},
-
-		&HdinsightHbaseCluster{},
-		&HdinsightHbaseClusterList{},
-
-		&NotificationHub{},
-		&NotificationHubList{},
-
-		&PostgresqlVirtualNetworkRule{},
-		&PostgresqlVirtualNetworkRuleList{},
-
-		&ApiManagementLogger{},
-		&ApiManagementLoggerList{},
-
-		&AutomationVariableString{},
-		&AutomationVariableStringList{},
-
-		&DataFactoryDatasetPostgresql{},
-		&DataFactoryDatasetPostgresqlList{},
-
-		&NetworkInterface{},
-		&NetworkInterfaceList{},
-
-		&ServicebusSubscriptionRule{},
-		&ServicebusSubscriptionRuleList{},
-
-		&VirtualMachineScaleSet{},
-		&VirtualMachineScaleSetList{},
-
-		&AutomationDscNodeconfiguration{},
-		&AutomationDscNodeconfigurationList{},
-
-		&DataLakeStoreFile{},
-		&DataLakeStoreFileList{},
-
-		&MariadbServer{},
-		&MariadbServerList{},
-
-		&LbNATPool{},
-		&LbNATPoolList{},
-
-		&MysqlConfiguration{},
-		&MysqlConfigurationList{},
-
-		&AutomationAccount{},
-		&AutomationAccountList{},
-
-		&IothubConsumerGroup{},
-		&IothubConsumerGroupList{},
-
-		&KeyVaultKey{},
-		&KeyVaultKeyList{},
-
-		&StorageShare{},
-		&StorageShareList{},
-
-		&IothubSharedAccessPolicy{},
-		&IothubSharedAccessPolicyList{},
-
-		&LbRule{},
-		&LbRuleList{},
-
-		&RecoveryServicesProtectedVm{},
-		&RecoveryServicesProtectedVmList{},
-
-		&ApiManagement{},
-		&ApiManagementList{},
-
-		&ApiManagementUser{},
-		&ApiManagementUserList{},
-
-		&HdinsightKafkaCluster{},
-		&HdinsightKafkaClusterList{},
-
-		&VirtualMachine{},
-		&VirtualMachineList{},
-
-		&VirtualNetworkGateway{},
-		&VirtualNetworkGatewayList{},
-
-		&ApiManagementGroupUser{},
-		&ApiManagementGroupUserList{},
-
-		&HdinsightSparkCluster{},
-		&HdinsightSparkClusterList{},
-
-		&KeyVaultSecret{},
-		&KeyVaultSecretList{},
-
-		&DataFactoryPipeline{},
-		&DataFactoryPipelineList{},
-
-		&DevTestLab{},
-		&DevTestLabList{},
-
-		&ExpressRouteCircuit{},
-		&ExpressRouteCircuitList{},
-
-		&LocalNetworkGateway{},
-		&LocalNetworkGatewayList{},
-
-		&PolicyAssignment{},
-		&PolicyAssignmentList{},
-
-		&CosmosdbAccount{},
-		&CosmosdbAccountList{},
-
-		&CosmosdbCassandraKeyspace{},
-		&CosmosdbCassandraKeyspaceList{},
-
-		&CosmosdbMongoCollection{},
-		&CosmosdbMongoCollectionList{},
-
-		&SecurityCenterContact{},
-		&SecurityCenterContactList{},
-
-		&ServicebusQueueAuthorizationRule{},
-		&ServicebusQueueAuthorizationRuleList{},
-
-		&SqlElasticpool{},
-		&SqlElasticpoolList{},
-
-		&RecoveryServicesProtectionPolicyVm{},
-		&RecoveryServicesProtectionPolicyVmList{},
-
-		&AvailabilitySet{},
-		&AvailabilitySetList{},
-
-		&ExpressRouteCircuitAuthorization{},
-		&ExpressRouteCircuitAuthorizationList{},
-
 		&MysqlVirtualNetworkRule{},
 		&MysqlVirtualNetworkRuleList{},
-
-		&DnsNsRecord{},
-		&DnsNsRecordList{},
-
-		&AppServiceCustomHostnameBinding{},
-		&AppServiceCustomHostnameBindingList{},
-
-		&DataLakeAnalyticsAccount{},
-		&DataLakeAnalyticsAccountList{},
-
-		&EventhubNamespace{},
-		&EventhubNamespaceList{},
-
-		&DnsCaaRecord{},
-		&DnsCaaRecordList{},
-
-		&ServicebusNamespace{},
-		&ServicebusNamespaceList{},
-
-		&MariadbDatabase{},
-		&MariadbDatabaseList{},
-
-		&PostgresqlFirewallRule{},
-		&PostgresqlFirewallRuleList{},
-
-		&ServicebusNamespaceAuthorizationRule{},
-		&ServicebusNamespaceAuthorizationRuleList{},
-
-		&ServicebusTopic{},
-		&ServicebusTopicList{},
-
-		&ApplicationInsightsWebTest{},
-		&ApplicationInsightsWebTestList{},
-
-		&IotDps{},
-		&IotDpsList{},
-
-		&IotDpsCertificate{},
-		&IotDpsCertificateList{},
-
-		&ApiManagementProperty{},
-		&ApiManagementPropertyList{},
-
-		&HdinsightHadoopCluster{},
-		&HdinsightHadoopClusterList{},
-
-		&MariadbFirewallRule{},
-		&MariadbFirewallRuleList{},
-
-		&SignalrService{},
-		&SignalrServiceList{},
-
-		&SchedulerJobCollection{},
-		&SchedulerJobCollectionList{},
-
-		&SecurityCenterWorkspace{},
-		&SecurityCenterWorkspaceList{},
-
-		&VirtualNetworkGatewayConnection{},
-		&VirtualNetworkGatewayConnectionList{},
-
-		&ContainerGroup{},
-		&ContainerGroupList{},
-
-		&PolicyDefinition{},
-		&PolicyDefinitionList{},
-
-		&RoleAssignment{},
-		&RoleAssignmentList{},
-
-		&NetworkSecurityGroup{},
-		&NetworkSecurityGroupList{},
-
-		&DnsAaaaRecord{},
-		&DnsAaaaRecordList{},
-
-		&EventgridDomain{},
-		&EventgridDomainList{},
-
-		&EventhubAuthorizationRule{},
-		&EventhubAuthorizationRuleList{},
-
-		&ApiManagementSubscription{},
-		&ApiManagementSubscriptionList{},
-
-		&TrafficManagerProfile{},
-		&TrafficManagerProfileList{},
-
-		&UserAssignedIdentity{},
-		&UserAssignedIdentityList{},
-
-		&StreamAnalyticsJob{},
-		&StreamAnalyticsJobList{},
-
-		&AzureadServicePrincipal{},
-		&AzureadServicePrincipalList{},
-
-		&LogicAppActionHTTP{},
-		&LogicAppActionHTTPList{},
-
-		&SchedulerJob{},
-		&SchedulerJobList{},
-
-		&FirewallApplicationRuleCollection{},
-		&FirewallApplicationRuleCollectionList{},
-
-		&NetworkDdosProtectionPlan{},
-		&NetworkDdosProtectionPlanList{},
-
-		&VirtualNetworkPeering{},
-		&VirtualNetworkPeeringList{},
-
-		&DnsCnameRecord{},
-		&DnsCnameRecordList{},
-
-		&AppServicePlan{},
-		&AppServicePlanList{},
-
-		&AutomationVariableDatetime{},
-		&AutomationVariableDatetimeList{},
-
-		&AutoscaleSetting{},
-		&AutoscaleSettingList{},
-
-		&ServiceFabricCluster{},
-		&ServiceFabricClusterList{},
-
-		&LogAnalyticsSolution{},
-		&LogAnalyticsSolutionList{},
-
-		&MediaServicesAccount{},
-		&MediaServicesAccountList{},
-
-		&MonitorAutoscaleSetting{},
-		&MonitorAutoscaleSettingList{},
-
-		&ApiManagementAPIVersionSet{},
-		&ApiManagementAPIVersionSetList{},
-
-		&ApiManagementProductGroup{},
-		&ApiManagementProductGroupList{},
-
-		&AppService{},
-		&AppServiceList{},
-
-		&DataLakeAnalyticsFirewallRule{},
-		&DataLakeAnalyticsFirewallRuleList{},
-
-		&DatabricksWorkspace{},
-		&DatabricksWorkspaceList{},
-
-		&LogAnalyticsLinkedService{},
-		&LogAnalyticsLinkedServiceList{},
-
-		&SecurityCenterSubscriptionPricing{},
-		&SecurityCenterSubscriptionPricingList{},
-
-		&StreamAnalyticsFunctionJavascriptUdf{},
-		&StreamAnalyticsFunctionJavascriptUdfList{},
-
-		&ApiManagementAPIOperation{},
-		&ApiManagementAPIOperationList{},
-
-		&ApiManagementAPIOperationPolicy{},
-		&ApiManagementAPIOperationPolicyList{},
-
-		&HdinsightMlServicesCluster{},
-		&HdinsightMlServicesClusterList{},
-
-		&MysqlDatabase{},
-		&MysqlDatabaseList{},
-
-		&VirtualMachineExtension{},
-		&VirtualMachineExtensionList{},
-
-		&ApiManagementAPI{},
-		&ApiManagementAPIList{},
-
-		&DataFactoryLinkedServiceMysql{},
-		&DataFactoryLinkedServiceMysqlList{},
-
-		&EventgridTopic{},
-		&EventgridTopicList{},
-
-		&SharedImageVersion{},
-		&SharedImageVersionList{},
-
-		&EventhubConsumerGroup{},
-		&EventhubConsumerGroupList{},
-
-		&LogicAppWorkflow{},
-		&LogicAppWorkflowList{},
-
-		&SharedImageGallery{},
-		&SharedImageGalleryList{},
-
-		&DevTestWindowsVirtualMachine{},
-		&DevTestWindowsVirtualMachineList{},
-
-		&LogAnalyticsWorkspace{},
-		&LogAnalyticsWorkspaceList{},
-
-		&TrafficManagerEndpoint{},
-		&TrafficManagerEndpointList{},
-
-		&ApplicationGateway{},
-		&ApplicationGatewayList{},
-
-		&CosmosdbTable{},
-		&CosmosdbTableList{},
-
-		&DataFactoryLinkedServiceDataLakeStorageGen2{},
-		&DataFactoryLinkedServiceDataLakeStorageGen2List{},
-
-		&Route{},
-		&RouteList{},
-
-		&ManagementGroup{},
-		&ManagementGroupList{},
-
-		&AutomationDscConfiguration{},
-		&AutomationDscConfigurationList{},
-
-		&BatchCertificate{},
-		&BatchCertificateList{},
-
-		&DnsSrvRecord{},
-		&DnsSrvRecordList{},
-
-		&HdinsightInteractiveQueryCluster{},
-		&HdinsightInteractiveQueryClusterList{},
-
-		&StreamAnalyticsOutputBlob{},
-		&StreamAnalyticsOutputBlobList{},
-
-		&Image{},
-		&ImageList{},
-
-		&PacketCapture{},
-		&PacketCaptureList{},
 
 		&StorageBlob{},
 		&StorageBlobList{},
 
-		&SqlVirtualNetworkRule{},
-		&SqlVirtualNetworkRuleList{},
+		&AutomationSchedule{},
+		&AutomationScheduleList{},
 
-		&StreamAnalyticsOutputServicebusQueue{},
-		&StreamAnalyticsOutputServicebusQueueList{},
+		&AutomationVariableString{},
+		&AutomationVariableStringList{},
 
-		&DataLakeStore{},
-		&DataLakeStoreList{},
+		&Image{},
+		&ImageList{},
 
-		&LbBackendAddressPool{},
-		&LbBackendAddressPoolList{},
-
-		&PolicySetDefinition{},
-		&PolicySetDefinitionList{},
-
-		&StorageAccount{},
-		&StorageAccountList{},
-
-		&SubnetNetworkSecurityGroupAssociation{},
-		&SubnetNetworkSecurityGroupAssociationList{},
-
-		&DnsARecord{},
-		&DnsARecordList{},
-
-		&ApiManagementProduct{},
-		&ApiManagementProductList{},
-
-		&ApiManagementProductPolicy{},
-		&ApiManagementProductPolicyList{},
-
-		&ApplicationSecurityGroup{},
-		&ApplicationSecurityGroupList{},
-
-		&DnsPtrRecord{},
-		&DnsPtrRecordList{},
-
-		&PrivateDNSZone{},
-		&PrivateDNSZoneList{},
-
-		&PublicIPPrefix{},
-		&PublicIPPrefixList{},
-
-		&ServicebusQueue{},
-		&ServicebusQueueList{},
-
-		&SqlServer{},
-		&SqlServerList{},
-
-		&LbOutboundRule{},
-		&LbOutboundRuleList{},
-
-		&NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation{},
-		&NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationList{},
-
-		&PostgresqlDatabase{},
-		&PostgresqlDatabaseList{},
-
-		&Iothub{},
-		&IothubList{},
-
-		&StreamAnalyticsStreamInputBlob{},
-		&StreamAnalyticsStreamInputBlobList{},
-
-		&ApiManagementCertificate{},
-		&ApiManagementCertificateList{},
-
-		&ApiManagementProductAPI{},
-		&ApiManagementProductAPIList{},
-
-		&EventhubNamespaceAuthorizationRule{},
-		&EventhubNamespaceAuthorizationRuleList{},
-
-		&SearchService{},
-		&SearchServiceList{},
-
-		&VirtualMachineDataDiskAttachment{},
-		&VirtualMachineDataDiskAttachmentList{},
-
-		&MonitorLogProfile{},
-		&MonitorLogProfileList{},
-
-		&NetworkInterfaceApplicationSecurityGroupAssociation{},
-		&NetworkInterfaceApplicationSecurityGroupAssociationList{},
-
-		&NotificationHubAuthorizationRule{},
-		&NotificationHubAuthorizationRuleList{},
-
-		&CdnEndpoint{},
-		&CdnEndpointList{},
+		&LogicAppActionHTTP{},
+		&LogicAppActionHTTPList{},
 
 		&MonitorActivityLogAlert{},
 		&MonitorActivityLogAlertList{},
 
-		&ServicebusSubscription{},
-		&ServicebusSubscriptionList{},
+		&MysqlDatabase{},
+		&MysqlDatabaseList{},
 
-		&SharedImage{},
-		&SharedImageList{},
+		&PostgresqlDatabase{},
+		&PostgresqlDatabaseList{},
 
-		&ApiManagementAPIPolicy{},
-		&ApiManagementAPIPolicyList{},
+		&ApplicationGateway{},
+		&ApplicationGatewayList{},
 
-		&ApiManagementAuthorizationServer{},
-		&ApiManagementAuthorizationServerList{},
+		&EventhubAuthorizationRule{},
+		&EventhubAuthorizationRuleList{},
 
-		&Firewall{},
-		&FirewallList{},
+		&LbNATPool{},
+		&LbNATPoolList{},
 
-		&RedisCache{},
-		&RedisCacheList{},
+		&MysqlServer{},
+		&MysqlServerList{},
 
-		&CognitiveAccount{},
-		&CognitiveAccountList{},
+		&NetworkWatcher{},
+		&NetworkWatcherList{},
 
-		&DataFactory{},
-		&DataFactoryList{},
-
-		&NotificationHubNamespace{},
-		&NotificationHubNamespaceList{},
-
-		&Snapshot{},
-		&SnapshotList{},
+		&StreamAnalyticsOutputServicebusQueue{},
+		&StreamAnalyticsOutputServicebusQueueList{},
 
 		&SubnetRouteTableAssociation{},
 		&SubnetRouteTableAssociationList{},
 
-		&CosmosdbSQLDatabase{},
-		&CosmosdbSQLDatabaseList{},
+		&AutomationRunbook{},
+		&AutomationRunbookList{},
 
-		&HdinsightStormCluster{},
-		&HdinsightStormClusterList{},
+		&CosmosdbTable{},
+		&CosmosdbTableList{},
 
-		&MssqlElasticpool{},
-		&MssqlElasticpoolList{},
+		&DataFactory{},
+		&DataFactoryList{},
 
-		&DataFactoryDatasetMysql{},
-		&DataFactoryDatasetMysqlList{},
+		&MonitorActionGroup{},
+		&MonitorActionGroupList{},
 
-		&DevTestVirtualNetwork{},
-		&DevTestVirtualNetworkList{},
+		&ServiceFabricCluster{},
+		&ServiceFabricClusterList{},
 
-		&BatchAccount{},
-		&BatchAccountList{},
+		&ApiManagementProduct{},
+		&ApiManagementProductList{},
 
-		&StorageTable{},
-		&StorageTableList{},
+		&HdinsightHbaseCluster{},
+		&HdinsightHbaseClusterList{},
 
-		&StreamAnalyticsStreamInputIothub{},
-		&StreamAnalyticsStreamInputIothubList{},
+		&RoleDefinition{},
+		&RoleDefinitionList{},
 
-		&LogicAppTriggerCustom{},
-		&LogicAppTriggerCustomList{},
+		&SecurityCenterWorkspace{},
+		&SecurityCenterWorkspaceList{},
 
-		&NetworkConnectionMonitor{},
-		&NetworkConnectionMonitorList{},
+		&SqlDatabase{},
+		&SqlDatabaseList{},
 
-		&PublicIP{},
-		&PublicIPList{},
+		&ApiManagementUser{},
+		&ApiManagementUserList{},
 
-		&StorageContainer{},
-		&StorageContainerList{},
+		&AppService{},
+		&AppServiceList{},
 
-		&ApiManagementOpenidConnectProvider{},
-		&ApiManagementOpenidConnectProviderList{},
-
-		&ApplicationInsightsAPIKey{},
-		&ApplicationInsightsAPIKeyList{},
-
-		&MetricAlertrule{},
-		&MetricAlertruleList{},
-
-		&CdnProfile{},
-		&CdnProfileList{},
-
-		&KeyVault{},
-		&KeyVaultList{},
+		&ConnectionMonitor{},
+		&ConnectionMonitorList{},
 
 		&MonitorMetricAlert{},
 		&MonitorMetricAlertList{},
 
-		&ApiManagementGroup{},
-		&ApiManagementGroupList{},
+		&RecoveryServicesProtectedVm{},
+		&RecoveryServicesProtectedVmList{},
 
-		&AutomationVariableInt{},
-		&AutomationVariableIntList{},
+		&DataFactoryLinkedServiceMysql{},
+		&DataFactoryLinkedServiceMysqlList{},
 
-		&PostgresqlConfiguration{},
-		&PostgresqlConfigurationList{},
+		&DataLakeStore{},
+		&DataLakeStoreList{},
 
-		&AzureadApplication{},
-		&AzureadApplicationList{},
+		&ManagementLock{},
+		&ManagementLockList{},
 
-		&LogicAppActionCustom{},
-		&LogicAppActionCustomList{},
+		&PublicIP{},
+		&PublicIPList{},
 
-		&StreamAnalyticsStreamInputEventhub{},
-		&StreamAnalyticsStreamInputEventhubList{},
+		&ServicebusQueue{},
+		&ServicebusQueueList{},
 
-		&EventgridEventSubscription{},
-		&EventgridEventSubscriptionList{},
+		&SqlElasticpool{},
+		&SqlElasticpoolList{},
+
+		&ApiManagementAPISchema{},
+		&ApiManagementAPISchemaList{},
+
+		&ApiManagementCertificate{},
+		&ApiManagementCertificateList{},
+
+		&IotDpsCertificate{},
+		&IotDpsCertificateList{},
+
+		&VirtualMachine{},
+		&VirtualMachineList{},
+
+		&NetworkConnectionMonitor{},
+		&NetworkConnectionMonitorList{},
+
+		&Snapshot{},
+		&SnapshotList{},
+
+		&StorageAccount{},
+		&StorageAccountList{},
+
+		&ContainerGroup{},
+		&ContainerGroupList{},
+
+		&CosmosdbMongoCollection{},
+		&CosmosdbMongoCollectionList{},
+
+		&FunctionApp{},
+		&FunctionAppList{},
+
+		&ApiManagementAuthorizationServer{},
+		&ApiManagementAuthorizationServerList{},
+
+		&AutomationDscNodeconfiguration{},
+		&AutomationDscNodeconfigurationList{},
+
+		&CdnEndpoint{},
+		&CdnEndpointList{},
+
+		&RecoveryServicesVault{},
+		&RecoveryServicesVaultList{},
 
 		&RedisFirewallRule{},
 		&RedisFirewallRuleList{},
 
-		&RouteTable{},
-		&RouteTableList{},
+		&SqlServer{},
+		&SqlServerList{},
 
-		&MonitorMetricAlertrule{},
-		&MonitorMetricAlertruleList{},
+		&StorageContainer{},
+		&StorageContainerList{},
+
+		&EventgridDomain{},
+		&EventgridDomainList{},
+
+		&CosmosdbSQLDatabase{},
+		&CosmosdbSQLDatabaseList{},
+
+		&DevspaceController{},
+		&DevspaceControllerList{},
+
+		&KeyVaultAccessPolicy{},
+		&KeyVaultAccessPolicyList{},
+
+		&RelayNamespace{},
+		&RelayNamespaceList{},
+
+		&ServicebusTopicAuthorizationRule{},
+		&ServicebusTopicAuthorizationRuleList{},
+
+		&AppServiceSlot{},
+		&AppServiceSlotList{},
+
+		&DataFactoryPipeline{},
+		&DataFactoryPipelineList{},
+
+		&DatabricksWorkspace{},
+		&DatabricksWorkspaceList{},
+
+		&DnsCnameRecord{},
+		&DnsCnameRecordList{},
+
+		&HdinsightSparkCluster{},
+		&HdinsightSparkClusterList{},
+
+		&LogicAppTriggerRecurrence{},
+		&LogicAppTriggerRecurrenceList{},
+
+		&Route{},
+		&RouteList{},
+
+		&AutomationCredential{},
+		&AutomationCredentialList{},
+
+		&EventgridTopic{},
+		&EventgridTopicList{},
+
+		&PolicyDefinition{},
+		&PolicyDefinitionList{},
+
+		&RedisCache{},
+		&RedisCacheList{},
+
+		&SecurityCenterSubscriptionPricing{},
+		&SecurityCenterSubscriptionPricingList{},
+
+		&AutomationModule{},
+		&AutomationModuleList{},
+
+		&DataFactoryLinkedServiceDataLakeStorageGen2{},
+		&DataFactoryLinkedServiceDataLakeStorageGen2List{},
+
+		&KeyVault{},
+		&KeyVaultList{},
 
 		&SqlActiveDirectoryAdministrator{},
 		&SqlActiveDirectoryAdministratorList{},
@@ -680,152 +386,446 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&Subnet{},
 		&SubnetList{},
 
-		&ExpressRouteCircuitPeering{},
-		&ExpressRouteCircuitPeeringList{},
+		&MonitorMetricAlertrule{},
+		&MonitorMetricAlertruleList{},
 
-		&ManagedDisk{},
-		&ManagedDiskList{},
+		&NetworkInterface{},
+		&NetworkInterfaceList{},
 
-		&MonitorDiagnosticSetting{},
-		&MonitorDiagnosticSettingList{},
+		&SearchService{},
+		&SearchServiceList{},
 
-		&ContainerRegistry{},
-		&ContainerRegistryList{},
+		&VirtualNetworkPeering{},
+		&VirtualNetworkPeeringList{},
 
-		&ManagementLock{},
-		&ManagementLockList{},
+		&AppServiceCustomHostnameBinding{},
+		&AppServiceCustomHostnameBindingList{},
 
-		&MysqlFirewallRule{},
-		&MysqlFirewallRuleList{},
+		&LogAnalyticsSolution{},
+		&LogAnalyticsSolutionList{},
 
-		&SqlFirewallRule{},
-		&SqlFirewallRuleList{},
+		&NotificationHubNamespace{},
+		&NotificationHubNamespaceList{},
 
-		&AppServiceSlot{},
-		&AppServiceSlotList{},
+		&SchedulerJob{},
+		&SchedulerJobList{},
 
-		&AutomationModule{},
-		&AutomationModuleList{},
+		&AzureadServicePrincipalPassword{},
+		&AzureadServicePrincipalPasswordList{},
 
-		&ConnectionMonitor{},
-		&ConnectionMonitorList{},
+		&FirewallNetworkRuleCollection{},
+		&FirewallNetworkRuleCollectionList{},
 
-		&ApplicationInsights{},
-		&ApplicationInsightsList{},
+		&ServicebusSubscriptionRule{},
+		&ServicebusSubscriptionRuleList{},
 
-		&LbProbe{},
-		&LbProbeList{},
+		&SharedImageVersion{},
+		&SharedImageVersionList{},
 
-		&PostgresqlServer{},
-		&PostgresqlServerList{},
+		&ApiManagementProductAPI{},
+		&ApiManagementProductAPIList{},
 
-		&StreamAnalyticsOutputMssql{},
-		&StreamAnalyticsOutputMssqlList{},
+		&AutomationAccount{},
+		&AutomationAccountList{},
 
-		&Eventhub{},
-		&EventhubList{},
-
-		&Lb{},
-		&LbList{},
-
-		&NetworkInterfaceNATRuleAssociation{},
-		&NetworkInterfaceNATRuleAssociationList{},
-
-		&ServicebusTopicAuthorizationRule{},
-		&ServicebusTopicAuthorizationRuleList{},
-
-		&StorageQueue{},
-		&StorageQueueList{},
-
-		&AutomationCredential{},
-		&AutomationCredentialList{},
-
-		&DnsTxtRecord{},
-		&DnsTxtRecordList{},
-
-		&HdinsightRserverCluster{},
-		&HdinsightRserverClusterList{},
-
-		&NetworkSecurityRule{},
-		&NetworkSecurityRuleList{},
-
-		&RelayNamespace{},
-		&RelayNamespaceList{},
-
-		&CosmosdbMongoDatabase{},
-		&CosmosdbMongoDatabaseList{},
-
-		&DevspaceController{},
-		&DevspaceControllerList{},
-
-		&StreamAnalyticsOutputEventhub{},
-		&StreamAnalyticsOutputEventhubList{},
-
-		&NetworkProfile{},
-		&NetworkProfileList{},
-
-		&AppServiceActiveSlot{},
-		&AppServiceActiveSlotList{},
-
-		&FirewallNATRuleCollection{},
-		&FirewallNATRuleCollectionList{},
-
-		&MonitorActionGroup{},
-		&MonitorActionGroupList{},
-
-		&DnsZone{},
-		&DnsZoneList{},
+		&PublicIPPrefix{},
+		&PublicIPPrefixList{},
 
 		&LbNATRule{},
 		&LbNATRuleList{},
 
-		&LogAnalyticsWorkspaceLinkedService{},
-		&LogAnalyticsWorkspaceLinkedServiceList{},
+		&LbProbe{},
+		&LbProbeList{},
 
-		&NetworkInterfaceBackendAddressPoolAssociation{},
-		&NetworkInterfaceBackendAddressPoolAssociationList{},
+		&LogAnalyticsLinkedService{},
+		&LogAnalyticsLinkedServiceList{},
 
-		&ResourceGroup{},
-		&ResourceGroupList{},
+		&NetworkPacketCapture{},
+		&NetworkPacketCaptureList{},
 
-		&AutomationSchedule{},
-		&AutomationScheduleList{},
+		&NetworkSecurityRule{},
+		&NetworkSecurityRuleList{},
+
+		&ApiManagement{},
+		&ApiManagementList{},
+
+		&ExpressRouteCircuitPeering{},
+		&ExpressRouteCircuitPeeringList{},
+
+		&ServicebusTopic{},
+		&ServicebusTopicList{},
+
+		&AutoscaleSetting{},
+		&AutoscaleSettingList{},
+
+		&ManagementGroup{},
+		&ManagementGroupList{},
+
+		&EventhubNamespaceAuthorizationRule{},
+		&EventhubNamespaceAuthorizationRuleList{},
+
+		&MonitorLogProfile{},
+		&MonitorLogProfileList{},
+
+		&MysqlFirewallRule{},
+		&MysqlFirewallRuleList{},
+
+		&SchedulerJobCollection{},
+		&SchedulerJobCollectionList{},
+
+		&AppServiceActiveSlot{},
+		&AppServiceActiveSlotList{},
+
+		&CosmosdbMongoDatabase{},
+		&CosmosdbMongoDatabaseList{},
+
+		&Eventhub{},
+		&EventhubList{},
+
+		&BatchAccount{},
+		&BatchAccountList{},
+
+		&KubernetesCluster{},
+		&KubernetesClusterList{},
+
+		&LogicAppTriggerCustom{},
+		&LogicAppTriggerCustomList{},
+
+		&LogicAppWorkflow{},
+		&LogicAppWorkflowList{},
+
+		&PolicyAssignment{},
+		&PolicyAssignmentList{},
+
+		&DataLakeStoreFile{},
+		&DataLakeStoreFileList{},
+
+		&DevTestLab{},
+		&DevTestLabList{},
+
+		&LbRule{},
+		&LbRuleList{},
+
+		&PostgresqlFirewallRule{},
+		&PostgresqlFirewallRuleList{},
+
+		&VirtualMachineExtension{},
+		&VirtualMachineExtensionList{},
+
+		&ApiManagementProductPolicy{},
+		&ApiManagementProductPolicyList{},
+
+		&CognitiveAccount{},
+		&CognitiveAccountList{},
+
+		&DnsARecord{},
+		&DnsARecordList{},
+
+		&RoleAssignment{},
+		&RoleAssignmentList{},
+
+		&StreamAnalyticsOutputBlob{},
+		&StreamAnalyticsOutputBlobList{},
+
+		&VirtualNetworkGatewayConnection{},
+		&VirtualNetworkGatewayConnectionList{},
+
+		&DnsSrvRecord{},
+		&DnsSrvRecordList{},
+
+		&HdinsightMlServicesCluster{},
+		&HdinsightMlServicesClusterList{},
+
+		&Lb{},
+		&LbList{},
+
+		&NotificationHubAuthorizationRule{},
+		&NotificationHubAuthorizationRuleList{},
+
+		&VirtualMachineDataDiskAttachment{},
+		&VirtualMachineDataDiskAttachmentList{},
+
+		&ApiManagementAPI{},
+		&ApiManagementAPIList{},
+
+		&ApiManagementGroupUser{},
+		&ApiManagementGroupUserList{},
+
+		&CdnProfile{},
+		&CdnProfileList{},
+
+		&ServicebusQueueAuthorizationRule{},
+		&ServicebusQueueAuthorizationRuleList{},
+
+		&DataFactoryDatasetMysql{},
+		&DataFactoryDatasetMysqlList{},
+
+		&DataFactoryDatasetPostgresql{},
+		&DataFactoryDatasetPostgresqlList{},
 
 		&DataLakeStoreFirewallRule{},
 		&DataLakeStoreFirewallRuleList{},
 
-		&DdosProtectionPlan{},
-		&DdosProtectionPlanList{},
+		&ExpressRouteCircuit{},
+		&ExpressRouteCircuitList{},
 
-		&MysqlServer{},
-		&MysqlServerList{},
+		&MysqlConfiguration{},
+		&MysqlConfigurationList{},
 
-		&SqlDatabase{},
-		&SqlDatabaseList{},
+		&RecoveryServicesProtectionPolicyVm{},
+		&RecoveryServicesProtectionPolicyVmList{},
 
-		&VirtualNetwork{},
-		&VirtualNetworkList{},
+		&StreamAnalyticsStreamInputIothub{},
+		&StreamAnalyticsStreamInputIothubList{},
 
-		&AutomationRunbook{},
-		&AutomationRunbookList{},
+		&DevTestLinuxVirtualMachine{},
+		&DevTestLinuxVirtualMachineList{},
+
+		&LogAnalyticsWorkspaceLinkedService{},
+		&LogAnalyticsWorkspaceLinkedServiceList{},
+
+		&MediaServicesAccount{},
+		&MediaServicesAccountList{},
+
+		&PacketCapture{},
+		&PacketCaptureList{},
+
+		&StreamAnalyticsFunctionJavascriptUdf{},
+		&StreamAnalyticsFunctionJavascriptUdfList{},
 
 		&DataFactoryDatasetSQLServerTable{},
 		&DataFactoryDatasetSQLServerTableList{},
 
-		&LogicAppTriggerRecurrence{},
-		&LogicAppTriggerRecurrenceList{},
+		&DnsTxtRecord{},
+		&DnsTxtRecordList{},
 
-		&NetworkWatcher{},
-		&NetworkWatcherList{},
+		&LbOutboundRule{},
+		&LbOutboundRuleList{},
 
-		&FunctionApp{},
-		&FunctionAppList{},
+		&LocalNetworkGateway{},
+		&LocalNetworkGatewayList{},
 
-		&KeyVaultAccessPolicy{},
-		&KeyVaultAccessPolicyList{},
+		&SqlVirtualNetworkRule{},
+		&SqlVirtualNetworkRuleList{},
 
-		&KeyVaultCertificate{},
-		&KeyVaultCertificateList{},
+		&TrafficManagerEndpoint{},
+		&TrafficManagerEndpointList{},
+
+		&AvailabilitySet{},
+		&AvailabilitySetList{},
+
+		&PostgresqlConfiguration{},
+		&PostgresqlConfigurationList{},
+
+		&ServicebusNamespace{},
+		&ServicebusNamespaceList{},
+
+		&StreamAnalyticsStreamInputBlob{},
+		&StreamAnalyticsStreamInputBlobList{},
+
+		&StreamAnalyticsStreamInputEventhub{},
+		&StreamAnalyticsStreamInputEventhubList{},
+
+		&DevTestPolicy{},
+		&DevTestPolicyList{},
+
+		&HdinsightStormCluster{},
+		&HdinsightStormClusterList{},
+
+		&PolicySetDefinition{},
+		&PolicySetDefinitionList{},
+
+		&SqlFirewallRule{},
+		&SqlFirewallRuleList{},
+
+		&ApiManagementProperty{},
+		&ApiManagementPropertyList{},
+
+		&ContainerRegistry{},
+		&ContainerRegistryList{},
+
+		&CosmosdbAccount{},
+		&CosmosdbAccountList{},
+
+		&HdinsightInteractiveQueryCluster{},
+		&HdinsightInteractiveQueryClusterList{},
+
+		&HdinsightKafkaCluster{},
+		&HdinsightKafkaClusterList{},
+
+		&NetworkInterfaceNATRuleAssociation{},
+		&NetworkInterfaceNATRuleAssociationList{},
+
+		&RouteTable{},
+		&RouteTableList{},
+
+		&AutomationDscConfiguration{},
+		&AutomationDscConfigurationList{},
+
+		&ContainerService{},
+		&ContainerServiceList{},
+
+		&DnsAaaaRecord{},
+		&DnsAaaaRecordList{},
+
+		&FirewallNATRuleCollection{},
+		&FirewallNATRuleCollectionList{},
+
+		&NetworkInterfaceApplicationSecurityGroupAssociation{},
+		&NetworkInterfaceApplicationSecurityGroupAssociationList{},
+
+		&StreamAnalyticsOutputEventhub{},
+		&StreamAnalyticsOutputEventhubList{},
+
+		&ApiManagementLogger{},
+		&ApiManagementLoggerList{},
+
+		&BatchCertificate{},
+		&BatchCertificateList{},
+
+		&CosmosdbCassandraKeyspace{},
+		&CosmosdbCassandraKeyspaceList{},
+
+		&IothubSharedAccessPolicy{},
+		&IothubSharedAccessPolicyList{},
+
+		&MetricAlertrule{},
+		&MetricAlertruleList{},
+
+		&PrivateDNSZone{},
+		&PrivateDNSZoneList{},
+
+		&ApiManagementAPIVersionSet{},
+		&ApiManagementAPIVersionSetList{},
+
+		&ApiManagementProductGroup{},
+		&ApiManagementProductGroupList{},
+
+		&KeyVaultSecret{},
+		&KeyVaultSecretList{},
+
+		&NetworkSecurityGroup{},
+		&NetworkSecurityGroupList{},
+
+		&NotificationHub{},
+		&NotificationHubList{},
+
+		&SharedImage{},
+		&SharedImageList{},
+
+		&VirtualNetwork{},
+		&VirtualNetworkList{},
+
+		&ApiManagementAPIPolicy{},
+		&ApiManagementAPIPolicyList{},
+
+		&DataLakeAnalyticsAccount{},
+		&DataLakeAnalyticsAccountList{},
+
+		&DnsMxRecord{},
+		&DnsMxRecordList{},
+
+		&ResourceGroup{},
+		&ResourceGroupList{},
+
+		&MariadbFirewallRule{},
+		&MariadbFirewallRuleList{},
+
+		&MssqlElasticpool{},
+		&MssqlElasticpoolList{},
+
+		&ServicebusNamespaceAuthorizationRule{},
+		&ServicebusNamespaceAuthorizationRuleList{},
+
+		&StorageShare{},
+		&StorageShareList{},
+
+		&AppServicePlan{},
+		&AppServicePlanList{},
+
+		&DataLakeAnalyticsFirewallRule{},
+		&DataLakeAnalyticsFirewallRuleList{},
+
+		&HdinsightHadoopCluster{},
+		&HdinsightHadoopClusterList{},
+
+		&ManagedDisk{},
+		&ManagedDiskList{},
+
+		&NetworkProfile{},
+		&NetworkProfileList{},
+
+		&LogicAppActionCustom{},
+		&LogicAppActionCustomList{},
+
+		&StreamAnalyticsOutputMssql{},
+		&StreamAnalyticsOutputMssqlList{},
+
+		&ApplicationSecurityGroup{},
+		&ApplicationSecurityGroupList{},
+
+		&IotDps{},
+		&IotDpsList{},
+
+		&VirtualNetworkGateway{},
+		&VirtualNetworkGatewayList{},
+
+		&ApplicationInsightsAPIKey{},
+		&ApplicationInsightsAPIKeyList{},
+
+		&DnsNsRecord{},
+		&DnsNsRecordList{},
+
+		&DnsPtrRecord{},
+		&DnsPtrRecordList{},
+
+		&MariadbDatabase{},
+		&MariadbDatabaseList{},
+
+		&UserAssignedIdentity{},
+		&UserAssignedIdentityList{},
+
+		&ApiManagementOpenidConnectProvider{},
+		&ApiManagementOpenidConnectProviderList{},
+
+		&DnsZone{},
+		&DnsZoneList{},
+
+		&EventgridEventSubscription{},
+		&EventgridEventSubscriptionList{},
+
+		&KeyVaultKey{},
+		&KeyVaultKeyList{},
+
+		&MariadbServer{},
+		&MariadbServerList{},
+
+		&NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation{},
+		&NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationList{},
+
+		&NetworkInterfaceBackendAddressPoolAssociation{},
+		&NetworkInterfaceBackendAddressPoolAssociationList{},
+
+		&Firewall{},
+		&FirewallList{},
+
+		&NetworkDdosProtectionPlan{},
+		&NetworkDdosProtectionPlanList{},
+
+		&SubnetNetworkSecurityGroupAssociation{},
+		&SubnetNetworkSecurityGroupAssociationList{},
+
+		&AzureadApplication{},
+		&AzureadApplicationList{},
+
+		&FirewallApplicationRuleCollection{},
+		&FirewallApplicationRuleCollectionList{},
+
+		&SharedImageGallery{},
+		&SharedImageGalleryList{},
+
+		&StorageTable{},
+		&StorageTableList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

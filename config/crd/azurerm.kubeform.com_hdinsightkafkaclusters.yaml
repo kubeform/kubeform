@@ -567,10 +567,8 @@ spec:
                 API Server.
               format: int64
               type: integer
-            output:
-              type: object
             tfState:
-              type: object
+              type: string
           type: object
       type: object
   versions:
