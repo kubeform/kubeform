@@ -43,6 +43,7 @@ type ComputeVPNTunnelSpec struct {
 	RemoteTrafficSelector []string `json:"remoteTrafficSelector,omitempty" tf:"remote_traffic_selector,omitempty"`
 	// +optional
 	Router           string `json:"router,omitempty" tf:"router,omitempty"`
+	SharedSecret     string `json:"-" sensitive:"true" tf:"shared_secret"`
 	TargetVPNGateway string `json:"targetVPNGateway" tf:"target_vpn_gateway"`
 }
 

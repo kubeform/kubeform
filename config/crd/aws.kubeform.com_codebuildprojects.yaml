@@ -566,6 +566,8 @@ spec:
                       properties:
                         type:
                           type: string
+                      required:
+                      - type
                       type: object
                     type: array
                     uniqueItems: true
@@ -608,6 +610,8 @@ spec:
                       properties:
                         type:
                           type: string
+                      required:
+                      - type
                       type: object
                     type: array
                     uniqueItems: true

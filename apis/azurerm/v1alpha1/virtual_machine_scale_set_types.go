@@ -29,6 +29,7 @@ type VirtualMachineScaleSetSpecExtension struct {
 	AutoUpgradeMinorVersion bool   `json:"autoUpgradeMinorVersion,omitempty" tf:"auto_upgrade_minor_version,omitempty"`
 	Name                    string `json:"name" tf:"name"`
 	// +optional
+	ProtectedSettings string `json:"-" sensitive:"true" tf:"protected_settings,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ProvisionAfterExtensions []string `json:"provisionAfterExtensions,omitempty" tf:"provision_after_extensions,omitempty"`
@@ -94,6 +95,7 @@ type VirtualMachineScaleSetSpecNetworkProfile struct {
 
 type VirtualMachineScaleSetSpecOsProfile struct {
 	// +optional
+	AdminPassword      string `json:"-" sensitive:"true" tf:"admin_password,omitempty"`
 	AdminUsername      string `json:"adminUsername" tf:"admin_username"`
 	ComputerNamePrefix string `json:"computerNamePrefix" tf:"computer_name_prefix"`
 	// +optional
@@ -127,6 +129,7 @@ type VirtualMachineScaleSetSpecOsProfileSecrets struct {
 
 type VirtualMachineScaleSetSpecOsProfileWindowsConfigAdditionalUnattendConfig struct {
 	Component   string `json:"component" tf:"component"`
+	Content     string `json:"-" sensitive:"true" tf:"content"`
 	Pass        string `json:"pass" tf:"pass"`
 	SettingName string `json:"settingName" tf:"setting_name"`
 }

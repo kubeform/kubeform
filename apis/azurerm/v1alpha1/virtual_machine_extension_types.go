@@ -28,6 +28,7 @@ type VirtualMachineExtensionSpec struct {
 	Location                string `json:"location" tf:"location"`
 	Name                    string `json:"name" tf:"name"`
 	// +optional
+	ProtectedSettings string `json:"-" sensitive:"true" tf:"protected_settings,omitempty"`
 	Publisher         string `json:"publisher" tf:"publisher"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional

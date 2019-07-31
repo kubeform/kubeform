@@ -33,6 +33,7 @@ type ElasticacheReplicationGroupSpec struct {
 	// +optional
 	AtRestEncryptionEnabled bool `json:"atRestEncryptionEnabled,omitempty" tf:"at_rest_encryption_enabled,omitempty"`
 	// +optional
+	AuthToken string `json:"-" sensitive:"true" tf:"auth_token,omitempty"`
 	// +optional
 	AutoMinorVersionUpgrade bool `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
 	// +optional

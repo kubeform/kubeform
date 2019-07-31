@@ -20,6 +20,7 @@ type OpsworksApplication struct {
 
 type OpsworksApplicationSpecAppSource struct {
 	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
 	Revision string `json:"revision,omitempty" tf:"revision,omitempty"`
 	// +optional
@@ -41,7 +42,8 @@ type OpsworksApplicationSpecEnvironment struct {
 type OpsworksApplicationSpecSslConfiguration struct {
 	Certificate string `json:"certificate" tf:"certificate"`
 	// +optional
-	Chain string `json:"chain,omitempty" tf:"chain,omitempty"`
+	Chain      string `json:"chain,omitempty" tf:"chain,omitempty"`
+	PrivateKey string `json:"-" sensitive:"true" tf:"private_key"`
 }
 
 type OpsworksApplicationSpec struct {

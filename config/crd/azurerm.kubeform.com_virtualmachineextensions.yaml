@@ -441,6 +441,7 @@ spec:
           - location
           - name
           - providerRef
+          - publisher
           - resourceGroupName
           - type
           - typeHandlerVersion

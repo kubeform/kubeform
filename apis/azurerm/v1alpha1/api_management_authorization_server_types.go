@@ -41,6 +41,7 @@ type ApiManagementAuthorizationServerSpec struct {
 	ClientID                   string   `json:"clientID" tf:"client_id"`
 	ClientRegistrationEndpoint string   `json:"clientRegistrationEndpoint" tf:"client_registration_endpoint"`
 	// +optional
+	ClientSecret string `json:"-" sensitive:"true" tf:"client_secret,omitempty"`
 	// +optional
 	DefaultScope string `json:"defaultScope,omitempty" tf:"default_scope,omitempty"`
 	// +optional
@@ -51,6 +52,7 @@ type ApiManagementAuthorizationServerSpec struct {
 	Name              string   `json:"name" tf:"name"`
 	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
+	ResourceOwnerPassword string `json:"-" sensitive:"true" tf:"resource_owner_password,omitempty"`
 	// +optional
 	ResourceOwnerUsername string `json:"resourceOwnerUsername,omitempty" tf:"resource_owner_username,omitempty"`
 	// +optional

@@ -26846,7 +26846,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpec(ref common.Referen
 						},
 					},
 				},
-				Required: []string{"providerRef", "name"},
+				Required: []string{"providerRef", "name", "sourceDisk"},
 			},
 		},
 		Dependencies: []string{

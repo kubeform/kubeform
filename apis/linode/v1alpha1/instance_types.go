@@ -178,8 +178,10 @@ type InstanceSpecDisk struct {
 	// +optional
 	ReadOnly bool `json:"readOnly,omitempty" tf:"read_only,omitempty"`
 	// +optional
-	Size int `json:"size" tf:"size"`
+	RootPass string `json:"-" sensitive:"true" tf:"root_pass,omitempty"`
+	Size     int    `json:"size" tf:"size"`
 	// +optional
+	StackscriptData map[string]string `json:"-" sensitive:"true" tf:"stackscript_data,omitempty"`
 	// +optional
 	StackscriptID int `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
 }
@@ -216,7 +218,9 @@ type InstanceSpec struct {
 	PrivateIP bool   `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
 	Region    string `json:"region" tf:"region"`
 	// +optional
+	RootPass string `json:"-" sensitive:"true" tf:"root_pass,omitempty"`
 	// +optional
+	StackscriptData map[string]string `json:"-" sensitive:"true" tf:"stackscript_data,omitempty"`
 	// +optional
 	StackscriptID int `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
 	// +optional

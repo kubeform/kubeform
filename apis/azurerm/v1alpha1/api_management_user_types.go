@@ -32,6 +32,7 @@ type ApiManagementUserSpec struct {
 	// +optional
 	Note string `json:"note,omitempty" tf:"note,omitempty"`
 	// +optional
+	Password          string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	State  string `json:"state,omitempty" tf:"state,omitempty"`

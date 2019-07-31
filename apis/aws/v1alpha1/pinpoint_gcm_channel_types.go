@@ -23,6 +23,7 @@ type PinpointGcmChannelSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	ApiKey        string `json:"-" sensitive:"true" tf:"api_key"`
 	ApplicationID string `json:"applicationID" tf:"application_id"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`

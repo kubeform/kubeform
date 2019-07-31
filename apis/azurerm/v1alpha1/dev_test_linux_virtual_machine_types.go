@@ -52,6 +52,7 @@ type DevTestLinuxVirtualMachineSpec struct {
 	// +optional
 	Notes string `json:"notes,omitempty" tf:"notes,omitempty"`
 	// +optional
+	Password          string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	Size              string `json:"size" tf:"size"`
 	// +optional

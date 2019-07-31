@@ -37,6 +37,7 @@ type StreamAnalyticsStreamInputBlobSpec struct {
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Serialization          []StreamAnalyticsStreamInputBlobSpecSerialization `json:"serialization" tf:"serialization"`
+	StorageAccountKey      string                                            `json:"-" sensitive:"true" tf:"storage_account_key"`
 	StorageAccountName     string                                            `json:"storageAccountName" tf:"storage_account_name"`
 	StorageContainerName   string                                            `json:"storageContainerName" tf:"storage_container_name"`
 	StreamAnalyticsJobName string                                            `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`

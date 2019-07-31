@@ -70,6 +70,7 @@ type DmsEndpointSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	MongodbSettings []DmsEndpointSpecMongodbSettings `json:"mongodbSettings,omitempty" tf:"mongodb_settings,omitempty"`
 	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional

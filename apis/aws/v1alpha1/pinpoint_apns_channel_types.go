@@ -25,15 +25,21 @@ type PinpointApnsChannelSpec struct {
 
 	ApplicationID string `json:"applicationID" tf:"application_id"`
 	// +optional
+	BundleID string `json:"-" sensitive:"true" tf:"bundle_id,omitempty"`
 	// +optional
+	Certificate string `json:"-" sensitive:"true" tf:"certificate,omitempty"`
 	// +optional
 	DefaultAuthenticationMethod string `json:"defaultAuthenticationMethod,omitempty" tf:"default_authentication_method,omitempty"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
+	PrivateKey string `json:"-" sensitive:"true" tf:"private_key,omitempty"`
 	// +optional
+	TeamID string `json:"-" sensitive:"true" tf:"team_id,omitempty"`
 	// +optional
+	TokenKey string `json:"-" sensitive:"true" tf:"token_key,omitempty"`
 	// +optional
+	TokenKeyID string `json:"-" sensitive:"true" tf:"token_key_id,omitempty"`
 }
 
 type PinpointApnsChannelStatus struct {

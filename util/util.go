@@ -113,11 +113,11 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 		}
 
 		if value.Sensitive {
-			//if value.Type == schema.TypeString {
-			//	statements = append(statements, Comment("// Sensitive Data. Provide secret name which contains one value only"))
-			//} else if value.Type == schema.TypeMap {
-			//	statements = append(statements, Comment("// Sensitive Data. Provide secret name which contains one or more values"))
-			//}
+			if value.Type == schema.TypeString {
+				statements = append(statements, Id(id).String().Tag(map[string]string{"json": "-", "tf": tk, "sensitive": "true"}))
+			} else if value.Type == schema.TypeMap {
+				statements = append(statements, Id(id).Map(String()).String().Tag(map[string]string{"json": "-", "tf": tk, "sensitive": "true"}))
+			}
 			*genSecret = true
 			continue
 		}

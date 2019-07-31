@@ -23,9 +23,12 @@ type NotificationHubSpecApnsCredential struct {
 	BundleID        string `json:"bundleID" tf:"bundle_id"`
 	KeyID           string `json:"keyID" tf:"key_id"`
 	TeamID          string `json:"teamID" tf:"team_id"`
+	Token           string `json:"-" sensitive:"true" tf:"token"`
 }
 
-type NotificationHubSpecGcmCredential struct{}
+type NotificationHubSpecGcmCredential struct {
+	ApiKey string `json:"-" sensitive:"true" tf:"api_key"`
+}
 
 type NotificationHubSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`

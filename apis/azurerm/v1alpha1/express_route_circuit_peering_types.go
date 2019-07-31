@@ -38,7 +38,8 @@ type ExpressRouteCircuitPeeringSpec struct {
 	ResourceGroupName          string `json:"resourceGroupName" tf:"resource_group_name"`
 	SecondaryPeerAddressPrefix string `json:"secondaryPeerAddressPrefix" tf:"secondary_peer_address_prefix"`
 	// +optional
-	VlanID int `json:"vlanID" tf:"vlan_id"`
+	SharedKey string `json:"-" sensitive:"true" tf:"shared_key,omitempty"`
+	VlanID    int    `json:"vlanID" tf:"vlan_id"`
 }
 
 type ExpressRouteCircuitPeeringStatus struct {

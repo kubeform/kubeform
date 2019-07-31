@@ -432,6 +432,7 @@ spec:
           required:
           - apiManagementName
           - displayName
+          - productID
           - providerRef
           - resourceGroupName
           - userID

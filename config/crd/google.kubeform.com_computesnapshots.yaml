@@ -442,6 +442,7 @@ spec:
           required:
           - name
           - providerRef
+          - sourceDisk
           type: object
         status:
           properties:

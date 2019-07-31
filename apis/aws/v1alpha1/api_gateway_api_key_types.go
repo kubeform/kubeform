@@ -29,6 +29,7 @@ type ApiGatewayAPIKeySpec struct {
 	Enabled bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	Name    string `json:"name" tf:"name"`
 	// +optional
+	Value string `json:"-" sensitive:"true" tf:"value,omitempty"`
 }
 
 type ApiGatewayAPIKeyStatus struct {

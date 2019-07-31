@@ -445,6 +445,7 @@ spec:
                   type: string
               type: object
           required:
+          - domainName
           - providerRef
           type: object
         status:

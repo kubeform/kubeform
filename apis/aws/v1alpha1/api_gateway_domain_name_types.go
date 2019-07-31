@@ -38,7 +38,8 @@ type ApiGatewayDomainNameSpec struct {
 	// +optional
 	CertificateName string `json:"certificateName,omitempty" tf:"certificate_name,omitempty"`
 	// +optional
-	DomainName string `json:"domainName" tf:"domain_name"`
+	CertificatePrivateKey string `json:"-" sensitive:"true" tf:"certificate_private_key,omitempty"`
+	DomainName            string `json:"domainName" tf:"domain_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1

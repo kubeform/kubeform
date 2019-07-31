@@ -18,10 +18,13 @@ type ApiManagementLogger struct {
 	Status            ApiManagementLoggerStatus `json:"status,omitempty"`
 }
 
-type ApiManagementLoggerSpecApplicationInsights struct{}
+type ApiManagementLoggerSpecApplicationInsights struct {
+	InstrumentationKey string `json:"-" sensitive:"true" tf:"instrumentation_key"`
+}
 
 type ApiManagementLoggerSpecEventhub struct {
-	Name string `json:"name" tf:"name"`
+	ConnectionString string `json:"-" sensitive:"true" tf:"connection_string"`
+	Name             string `json:"name" tf:"name"`
 }
 
 type ApiManagementLoggerSpec struct {

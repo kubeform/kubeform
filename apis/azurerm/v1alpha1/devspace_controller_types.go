@@ -35,8 +35,9 @@ type DevspaceControllerSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Sku []DevspaceControllerSpecSku `json:"sku" tf:"sku"`
 	// +optional
-	Tags                          map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	TargetContainerHostResourceID string            `json:"targetContainerHostResourceID" tf:"target_container_host_resource_id"`
+	Tags                                 map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	TargetContainerHostCredentialsBase64 string            `json:"-" sensitive:"true" tf:"target_container_host_credentials_base64"`
+	TargetContainerHostResourceID        string            `json:"targetContainerHostResourceID" tf:"target_container_host_resource_id"`
 }
 
 type DevspaceControllerStatus struct {

@@ -49,6 +49,7 @@ type NodebalancerConfigSpec struct {
 	// +optional
 	SslCert string `json:"sslCert,omitempty" tf:"ssl_cert,omitempty"`
 	// +optional
+	SslKey string `json:"-" sensitive:"true" tf:"ssl_key,omitempty"`
 	// +optional
 	Stickiness string `json:"stickiness,omitempty" tf:"stickiness,omitempty"`
 }

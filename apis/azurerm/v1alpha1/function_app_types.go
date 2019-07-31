@@ -19,8 +19,9 @@ type FunctionApp struct {
 }
 
 type FunctionAppSpecConnectionString struct {
-	Name string `json:"name" tf:"name"`
-	Type string `json:"type" tf:"type"`
+	Name  string `json:"name" tf:"name"`
+	Type  string `json:"type" tf:"type"`
+	Value string `json:"-" sensitive:"true" tf:"value"`
 }
 
 type FunctionAppSpecIdentity struct {
@@ -64,7 +65,8 @@ type FunctionAppSpec struct {
 	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	SiteConfig []FunctionAppSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
+	SiteConfig              []FunctionAppSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
+	StorageConnectionString string                      `json:"-" sensitive:"true" tf:"storage_connection_string"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

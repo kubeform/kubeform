@@ -13740,7 +13740,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecDisk(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"label"},
+				Required: []string{"label", "size"},
 			},
 		},
 	}

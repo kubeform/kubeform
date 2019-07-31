@@ -24,11 +24,13 @@ type HdinsightHadoopClusterSpecComponentVersion struct {
 
 type HdinsightHadoopClusterSpecGateway struct {
 	Enabled  bool   `json:"enabled" tf:"enabled"`
+	Password string `json:"-" sensitive:"true" tf:"password"`
 	Username string `json:"username" tf:"username"`
 }
 
 type HdinsightHadoopClusterSpecRolesHeadNode struct {
 	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -44,6 +46,7 @@ type HdinsightHadoopClusterSpecRolesWorkerNode struct {
 	// +optional
 	MinInstanceCount int `json:"minInstanceCount,omitempty" tf:"min_instance_count,omitempty"`
 	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -58,6 +61,7 @@ type HdinsightHadoopClusterSpecRolesWorkerNode struct {
 
 type HdinsightHadoopClusterSpecRolesZookeeperNode struct {
 	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
@@ -80,6 +84,7 @@ type HdinsightHadoopClusterSpecRoles struct {
 
 type HdinsightHadoopClusterSpecStorageAccount struct {
 	IsDefault          bool   `json:"isDefault" tf:"is_default"`
+	StorageAccountKey  string `json:"-" sensitive:"true" tf:"storage_account_key"`
 	StorageContainerID string `json:"storageContainerID" tf:"storage_container_id"`
 }
 

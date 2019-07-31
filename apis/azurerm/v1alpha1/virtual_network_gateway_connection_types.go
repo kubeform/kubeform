@@ -37,6 +37,7 @@ type VirtualNetworkGatewayConnectionSpec struct {
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
+	AuthorizationKey string `json:"-" sensitive:"true" tf:"authorization_key,omitempty"`
 	// +optional
 	EnableBGP bool `json:"enableBGP,omitempty" tf:"enable_bgp,omitempty"`
 	// +optional
@@ -56,6 +57,7 @@ type VirtualNetworkGatewayConnectionSpec struct {
 	// +optional
 	RoutingWeight int `json:"routingWeight,omitempty" tf:"routing_weight,omitempty"`
 	// +optional
+	SharedKey string `json:"-" sensitive:"true" tf:"shared_key,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	Type string            `json:"type" tf:"type"`

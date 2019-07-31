@@ -118,7 +118,8 @@ type CodebuildProjectSpecSecondaryArtifacts struct {
 
 type CodebuildProjectSpecSecondarySourcesAuth struct {
 	// +optional
-	Type string `json:"type" tf:"type"`
+	Resource string `json:"-" sensitive:"true" tf:"resource,omitempty"`
+	Type     string `json:"type" tf:"type"`
 }
 
 type CodebuildProjectSpecSecondarySources struct {
@@ -141,7 +142,8 @@ type CodebuildProjectSpecSecondarySources struct {
 
 type CodebuildProjectSpecSourceAuth struct {
 	// +optional
-	Type string `json:"type" tf:"type"`
+	Resource string `json:"-" sensitive:"true" tf:"resource,omitempty"`
+	Type     string `json:"type" tf:"type"`
 }
 
 type CodebuildProjectSpecSource struct {

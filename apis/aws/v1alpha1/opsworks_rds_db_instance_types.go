@@ -23,6 +23,7 @@ type OpsworksRdsDbInstanceSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	DbPassword       string `json:"-" sensitive:"true" tf:"db_password"`
 	DbUser           string `json:"dbUser" tf:"db_user"`
 	RdsDbInstanceArn string `json:"rdsDbInstanceArn" tf:"rds_db_instance_arn"`
 	StackID          string `json:"stackID" tf:"stack_id"`

@@ -25,7 +25,9 @@ type DmsCertificateSpec struct {
 
 	CertificateID string `json:"certificateID" tf:"certificate_id"`
 	// +optional
+	CertificatePem string `json:"-" sensitive:"true" tf:"certificate_pem,omitempty"`
 	// +optional
+	CertificateWallet string `json:"-" sensitive:"true" tf:"certificate_wallet,omitempty"`
 }
 
 type DmsCertificateStatus struct {

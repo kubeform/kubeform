@@ -425,6 +425,7 @@ spec:
           - apiManagementName
           - name
           - providerRef
+          - resourceGroupName
           type: object
         status:
           properties:

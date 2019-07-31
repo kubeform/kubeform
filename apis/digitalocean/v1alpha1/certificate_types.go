@@ -32,6 +32,7 @@ type CertificateSpec struct {
 	LeafCertificate string `json:"leafCertificate,omitempty" tf:"leaf_certificate,omitempty"`
 	Name            string `json:"name" tf:"name"`
 	// +optional
+	PrivateKey string `json:"-" sensitive:"true" tf:"private_key,omitempty"`
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }

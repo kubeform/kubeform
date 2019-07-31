@@ -127,6 +127,7 @@ type ContainerGroupSpecContainer struct {
 	// +kubebuilder:validation:MaxItems=1
 	ReadinessProbe []ContainerGroupSpecContainerReadinessProbe `json:"readinessProbe,omitempty" tf:"readiness_probe,omitempty"`
 	// +optional
+	SecureEnvironmentVariables map[string]string `json:"-" sensitive:"true" tf:"secure_environment_variables,omitempty"`
 	// +optional
 	Volume []ContainerGroupSpecContainerVolume `json:"volume,omitempty" tf:"volume,omitempty"`
 }
@@ -134,8 +135,9 @@ type ContainerGroupSpecContainer struct {
 type ContainerGroupSpecDiagnosticsLogAnalytics struct {
 	LogType string `json:"logType" tf:"log_type"`
 	// +optional
-	Metadata    map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
-	WorkspaceID string            `json:"workspaceID" tf:"workspace_id"`
+	Metadata     map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	WorkspaceID  string            `json:"workspaceID" tf:"workspace_id"`
+	WorkspaceKey string            `json:"-" sensitive:"true" tf:"workspace_key"`
 }
 
 type ContainerGroupSpecDiagnostics struct {
@@ -151,6 +153,7 @@ type ContainerGroupSpecIdentity struct {
 }
 
 type ContainerGroupSpecImageRegistryCredential struct {
+	Password string `json:"-" sensitive:"true" tf:"password"`
 	Server   string `json:"server" tf:"server"`
 	Username string `json:"username" tf:"username"`
 }

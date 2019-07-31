@@ -32459,6 +32459,13 @@ func (in *GlueConnectionSpec) DeepCopyInto(out *GlueConnectionSpec) {
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
+	if in.ConnectionProperties != nil {
+		in, out := &in.ConnectionProperties, &out.ConnectionProperties
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
+	}
 	if in.MatchCriteria != nil {
 		in, out := &in.MatchCriteria, &out.MatchCriteria
 		*out = make([]string, len(*in))

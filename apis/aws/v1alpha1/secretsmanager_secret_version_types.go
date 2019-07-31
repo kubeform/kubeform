@@ -24,8 +24,10 @@ type SecretsmanagerSecretVersionSpec struct {
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	SecretID string `json:"secretID" tf:"secret_id"`
+	SecretBinary string `json:"-" sensitive:"true" tf:"secret_binary,omitempty"`
+	SecretID     string `json:"secretID" tf:"secret_id"`
 	// +optional
+	SecretString string `json:"-" sensitive:"true" tf:"secret_string,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	VersionStages []string `json:"versionStages,omitempty" tf:"version_stages,omitempty"`

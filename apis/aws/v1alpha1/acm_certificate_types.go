@@ -30,6 +30,7 @@ type AcmCertificateSpec struct {
 	// +optional
 	DomainName string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
 	// +optional
+	PrivateKey string `json:"-" sensitive:"true" tf:"private_key,omitempty"`
 	// +optional
 	SubjectAlternativeNames []string `json:"subjectAlternativeNames,omitempty" tf:"subject_alternative_names,omitempty"`
 	// +optional

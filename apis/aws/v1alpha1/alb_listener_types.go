@@ -39,6 +39,7 @@ type AlbListenerSpecDefaultActionAuthenticateOidc struct {
 	AuthenticationRequestExtraParams map[string]string `json:"authenticationRequestExtraParams,omitempty" tf:"authentication_request_extra_params,omitempty"`
 	AuthorizationEndpoint            string            `json:"authorizationEndpoint" tf:"authorization_endpoint"`
 	ClientID                         string            `json:"clientID" tf:"client_id"`
+	ClientSecret                     string            `json:"-" sensitive:"true" tf:"client_secret"`
 	Issuer                           string            `json:"issuer" tf:"issuer"`
 	// +optional
 	OnUnauthenticatedRequest string `json:"onUnauthenticatedRequest,omitempty" tf:"on_unauthenticated_request,omitempty"`

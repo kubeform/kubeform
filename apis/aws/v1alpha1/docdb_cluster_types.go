@@ -52,6 +52,7 @@ type DocdbClusterSpec struct {
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional
+	MasterPassword string `json:"-" sensitive:"true" tf:"master_password,omitempty"`
 	// +optional
 	MasterUsername string `json:"masterUsername,omitempty" tf:"master_username,omitempty"`
 	// +optional

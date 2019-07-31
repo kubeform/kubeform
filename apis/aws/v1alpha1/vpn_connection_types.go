@@ -33,10 +33,12 @@ type VpnConnectionSpec struct {
 	// +optional
 	Tunnel1InsideCIDR string `json:"tunnel1InsideCIDR,omitempty" tf:"tunnel1_inside_cidr,omitempty"`
 	// +optional
+	Tunnel1PresharedKey string `json:"-" sensitive:"true" tf:"tunnel1_preshared_key,omitempty"`
 	// +optional
 	Tunnel2InsideCIDR string `json:"tunnel2InsideCIDR,omitempty" tf:"tunnel2_inside_cidr,omitempty"`
 	// +optional
-	Type string `json:"type" tf:"type"`
+	Tunnel2PresharedKey string `json:"-" sensitive:"true" tf:"tunnel2_preshared_key,omitempty"`
+	Type                string `json:"type" tf:"type"`
 	// +optional
 	VpnGatewayID string `json:"vpnGatewayID,omitempty" tf:"vpn_gateway_id,omitempty"`
 }

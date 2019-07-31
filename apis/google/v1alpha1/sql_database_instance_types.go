@@ -34,6 +34,7 @@ type SqlDatabaseInstanceSpecReplicaConfiguration struct {
 	// +optional
 	MasterHeartbeatPeriod int `json:"masterHeartbeatPeriod,omitempty" tf:"master_heartbeat_period,omitempty"`
 	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
 	SslCipher string `json:"sslCipher,omitempty" tf:"ssl_cipher,omitempty"`
 	// +optional

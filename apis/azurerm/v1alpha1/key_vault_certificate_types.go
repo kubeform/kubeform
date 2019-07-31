@@ -19,7 +19,9 @@ type KeyVaultCertificate struct {
 }
 
 type KeyVaultCertificateSpecCertificate struct {
+	Contents string `json:"-" sensitive:"true" tf:"contents"`
 	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 }
 
 type KeyVaultCertificateSpecCertificatePolicyIssuerParameters struct {

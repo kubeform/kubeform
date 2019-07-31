@@ -429,6 +429,7 @@ spec:
           - accountName
           - format
           - providerRef
+          - resourceGroupName
           - thumbprint
           - thumbprintAlgorithm
           type: object

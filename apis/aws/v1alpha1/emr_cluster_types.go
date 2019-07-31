@@ -94,10 +94,13 @@ type EmrClusterSpecInstanceGroup struct {
 
 type EmrClusterSpecKerberosAttributes struct {
 	// +optional
+	AdDomainJoinPassword string `json:"-" sensitive:"true" tf:"ad_domain_join_password,omitempty"`
 	// +optional
 	AdDomainJoinUser string `json:"adDomainJoinUser,omitempty" tf:"ad_domain_join_user,omitempty"`
 	// +optional
-	Realm string `json:"realm" tf:"realm"`
+	CrossRealmTrustPrincipalPassword string `json:"-" sensitive:"true" tf:"cross_realm_trust_principal_password,omitempty"`
+	KdcAdminPassword                 string `json:"-" sensitive:"true" tf:"kdc_admin_password"`
+	Realm                            string `json:"realm" tf:"realm"`
 }
 
 type EmrClusterSpecMasterInstanceGroupEbsConfig struct {

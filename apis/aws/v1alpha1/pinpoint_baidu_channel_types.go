@@ -23,9 +23,11 @@ type PinpointBaiduChannelSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	ApiKey        string `json:"-" sensitive:"true" tf:"api_key"`
 	ApplicationID string `json:"applicationID" tf:"application_id"`
 	// +optional
-	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	Enabled   bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	SecretKey string `json:"-" sensitive:"true" tf:"secret_key"`
 }
 
 type PinpointBaiduChannelStatus struct {

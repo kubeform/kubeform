@@ -20,6 +20,7 @@ type OpsworksStack struct {
 
 type OpsworksStackSpecCustomCookbooksSource struct {
 	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
 	Revision string `json:"revision,omitempty" tf:"revision,omitempty"`
 	// +optional

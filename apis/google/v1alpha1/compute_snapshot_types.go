@@ -20,10 +20,12 @@ type ComputeSnapshot struct {
 
 type ComputeSnapshotSpecSnapshotEncryptionKey struct {
 	// +optional
+	RawKey string `json:"-" sensitive:"true" tf:"raw_key,omitempty"`
 }
 
 type ComputeSnapshotSpecSourceDiskEncryptionKey struct {
 	// +optional
+	RawKey string `json:"-" sensitive:"true" tf:"raw_key,omitempty"`
 }
 
 type ComputeSnapshotSpec struct {
@@ -42,11 +44,13 @@ type ComputeSnapshotSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SnapshotEncryptionKey []ComputeSnapshotSpecSnapshotEncryptionKey `json:"snapshotEncryptionKey,omitempty" tf:"snapshot_encryption_key,omitempty"`
 	// +optional
-	SourceDisk string `json:"sourceDisk" tf:"source_disk"`
+	SnapshotEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"snapshot_encryption_key_raw,omitempty"`
+	SourceDisk               string `json:"sourceDisk" tf:"source_disk"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SourceDiskEncryptionKey []ComputeSnapshotSpecSourceDiskEncryptionKey `json:"sourceDiskEncryptionKey,omitempty" tf:"source_disk_encryption_key,omitempty"`
 	// +optional
+	SourceDiskEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"source_disk_encryption_key_raw,omitempty"`
 	// +optional
 	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }

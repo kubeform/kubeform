@@ -333,6 +333,7 @@ type KinesisFirehoseDeliveryStreamSpecRedshiftConfiguration struct {
 	// +optional
 	DataTableColumns string `json:"dataTableColumns,omitempty" tf:"data_table_columns,omitempty"`
 	DataTableName    string `json:"dataTableName" tf:"data_table_name"`
+	Password         string `json:"-" sensitive:"true" tf:"password"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ProcessingConfiguration []KinesisFirehoseDeliveryStreamSpecRedshiftConfigurationProcessingConfiguration `json:"processingConfiguration,omitempty" tf:"processing_configuration,omitempty"`

@@ -63,7 +63,8 @@ type ComputeBackendServiceSpecCdnPolicy struct {
 }
 
 type ComputeBackendServiceSpecIap struct {
-	Oauth2ClientID string `json:"oauth2ClientID" tf:"oauth2_client_id"`
+	Oauth2ClientID     string `json:"oauth2ClientID" tf:"oauth2_client_id"`
+	Oauth2ClientSecret string `json:"-" sensitive:"true" tf:"oauth2_client_secret"`
 }
 
 type ComputeBackendServiceSpec struct {

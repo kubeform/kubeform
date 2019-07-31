@@ -15974,7 +15974,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementCertificateSpec(ref comm
 						},
 					},
 				},
-				Required: []string{"providerRef", "apiManagementName", "name"},
+				Required: []string{"providerRef", "apiManagementName", "name", "resourceGroupName"},
 			},
 		},
 		Dependencies: []string{
@@ -18019,6 +18019,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementSpecHostnameConfiguratio
 						},
 					},
 				},
+				Required: []string{"hostName"},
 			},
 		},
 	}
@@ -18049,6 +18050,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementSpecHostnameConfiguratio
 						},
 					},
 				},
+				Required: []string{"hostName"},
 			},
 		},
 	}
@@ -18116,6 +18118,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementSpecHostnameConfiguratio
 						},
 					},
 				},
+				Required: []string{"hostName"},
 			},
 		},
 	}
@@ -18513,7 +18516,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementSubscriptionSpec(ref com
 						},
 					},
 				},
-				Required: []string{"providerRef", "apiManagementName", "displayName", "resourceGroupName", "userID"},
+				Required: []string{"providerRef", "apiManagementName", "displayName", "productID", "resourceGroupName", "userID"},
 			},
 		},
 		Dependencies: []string{
@@ -18713,7 +18716,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementUserSpec(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"providerRef", "apiManagementName", "email", "firstName", "lastName", "userID"},
+				Required: []string{"providerRef", "apiManagementName", "email", "firstName", "lastName", "resourceGroupName", "userID"},
 			},
 		},
 		Dependencies: []string{
@@ -27149,7 +27152,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchCertificateSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "accountName", "format", "thumbprint", "thumbprintAlgorithm"},
+				Required: []string{"providerRef", "accountName", "format", "resourceGroupName", "thumbprint", "thumbprintAlgorithm"},
 			},
 		},
 		Dependencies: []string{
@@ -35358,7 +35361,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestLinuxVirtualMachineSpec(ref co
 						},
 					},
 				},
-				Required: []string{"providerRef", "galleryImageReference", "labName", "labSubnetName", "labVirtualNetworkID", "location", "name", "size", "storageType", "username"},
+				Required: []string{"providerRef", "galleryImageReference", "labName", "labSubnetName", "labVirtualNetworkID", "location", "name", "resourceGroupName", "size", "storageType", "username"},
 			},
 		},
 		Dependencies: []string{
@@ -40823,7 +40826,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitPeeringSpec(ref co
 						},
 					},
 				},
-				Required: []string{"providerRef", "expressRouteCircuitName", "peeringType", "primaryPeerAddressPrefix", "resourceGroupName", "secondaryPeerAddressPrefix"},
+				Required: []string{"providerRef", "expressRouteCircuitName", "peeringType", "primaryPeerAddressPrefix", "resourceGroupName", "secondaryPeerAddressPrefix", "vlanID"},
 			},
 		},
 		Dependencies: []string{
@@ -79453,7 +79456,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineExtensionSpec(ref commo
 						},
 					},
 				},
-				Required: []string{"providerRef", "location", "name", "resourceGroupName", "type", "typeHandlerVersion", "virtualMachineName"},
+				Required: []string{"providerRef", "location", "name", "publisher", "resourceGroupName", "type", "typeHandlerVersion", "virtualMachineName"},
 			},
 		},
 		Dependencies: []string{
@@ -80282,7 +80285,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineScaleSetSpecOsProfile(r
 						},
 					},
 				},
-				Required: []string{"computerNamePrefix"},
+				Required: []string{"adminUsername", "computerNamePrefix"},
 			},
 		},
 	}
@@ -81106,7 +81109,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineSpecOsProfile(ref commo
 						},
 					},
 				},
-				Required: []string{"computerName"},
+				Required: []string{"adminUsername", "computerName"},
 			},
 		},
 	}

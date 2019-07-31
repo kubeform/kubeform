@@ -19,6 +19,7 @@ type ApplicationGateway struct {
 }
 
 type ApplicationGatewaySpecAuthenticationCertificate struct {
+	Data string `json:"-" sensitive:"true" tf:"data"`
 	Name string `json:"name" tf:"name"`
 }
 
@@ -224,7 +225,9 @@ type ApplicationGatewaySpecSku struct {
 }
 
 type ApplicationGatewaySpecSslCertificate struct {
-	Name string `json:"name" tf:"name"`
+	Data     string `json:"-" sensitive:"true" tf:"data"`
+	Name     string `json:"name" tf:"name"`
+	Password string `json:"-" sensitive:"true" tf:"password"`
 }
 
 type ApplicationGatewaySpecSslPolicy struct {

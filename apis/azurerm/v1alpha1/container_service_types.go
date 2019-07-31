@@ -48,7 +48,8 @@ type ContainerServiceSpecMasterProfile struct {
 }
 
 type ContainerServiceSpecServicePrincipal struct {
-	ClientID string `json:"clientID" tf:"client_id"`
+	ClientID     string `json:"clientID" tf:"client_id"`
+	ClientSecret string `json:"-" sensitive:"true" tf:"client_secret"`
 }
 
 type ContainerServiceSpec struct {

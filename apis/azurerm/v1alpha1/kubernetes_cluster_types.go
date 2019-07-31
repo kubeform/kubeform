@@ -86,8 +86,9 @@ type KubernetesClusterSpecNetworkProfile struct {
 }
 
 type KubernetesClusterSpecRoleBasedAccessControlAzureActiveDirectory struct {
-	ClientAppID string `json:"clientAppID" tf:"client_app_id"`
-	ServerAppID string `json:"serverAppID" tf:"server_app_id"`
+	ClientAppID     string `json:"clientAppID" tf:"client_app_id"`
+	ServerAppID     string `json:"serverAppID" tf:"server_app_id"`
+	ServerAppSecret string `json:"-" sensitive:"true" tf:"server_app_secret"`
 	// +optional
 	TenantID string `json:"tenantID,omitempty" tf:"tenant_id,omitempty"`
 }
@@ -100,7 +101,8 @@ type KubernetesClusterSpecRoleBasedAccessControl struct {
 }
 
 type KubernetesClusterSpecServicePrincipal struct {
-	ClientID string `json:"clientID" tf:"client_id"`
+	ClientID     string `json:"clientID" tf:"client_id"`
+	ClientSecret string `json:"-" sensitive:"true" tf:"client_secret"`
 }
 
 type KubernetesClusterSpec struct {

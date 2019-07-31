@@ -26,9 +26,11 @@ type ApiManagementSubscriptionSpec struct {
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	DisplayName       string `json:"displayName" tf:"display_name"`
 	// +optional
+	PrimaryKey        string `json:"-" sensitive:"true" tf:"primary_key,omitempty"`
 	ProductID         string `json:"productID" tf:"product_id"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
+	SecondaryKey string `json:"-" sensitive:"true" tf:"secondary_key,omitempty"`
 	// +optional
 	State string `json:"state,omitempty" tf:"state,omitempty"`
 	// +optional

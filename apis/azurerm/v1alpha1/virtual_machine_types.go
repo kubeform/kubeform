@@ -32,6 +32,7 @@ type VirtualMachineSpecIdentity struct {
 
 type VirtualMachineSpecOsProfile struct {
 	// +optional
+	AdminPassword string `json:"-" sensitive:"true" tf:"admin_password,omitempty"`
 	AdminUsername string `json:"adminUsername" tf:"admin_username"`
 	ComputerName  string `json:"computerName" tf:"computer_name"`
 	// +optional
@@ -63,6 +64,7 @@ type VirtualMachineSpecOsProfileSecrets struct {
 
 type VirtualMachineSpecOsProfileWindowsConfigAdditionalUnattendConfig struct {
 	Component   string `json:"component" tf:"component"`
+	Content     string `json:"-" sensitive:"true" tf:"content"`
 	Pass        string `json:"pass" tf:"pass"`
 	SettingName string `json:"settingName" tf:"setting_name"`
 }

@@ -25,6 +25,7 @@ type MonitoringUptimeCheckConfigSpecContentMatchers struct {
 
 type MonitoringUptimeCheckConfigSpecHttpCheckAuthInfo struct {
 	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
 	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }

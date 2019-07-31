@@ -24,6 +24,8 @@ type ApiManagementOpenidConnectProviderSpec struct {
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
+	ClientID          string `json:"-" sensitive:"true" tf:"client_id"`
+	ClientSecret      string `json:"-" sensitive:"true" tf:"client_secret"`
 	// +optional
 	Description       string `json:"description,omitempty" tf:"description,omitempty"`
 	DisplayName       string `json:"displayName" tf:"display_name"`

@@ -439,6 +439,7 @@ spec:
           - firstName
           - lastName
           - providerRef
+          - resourceGroupName
           - userID
           type: object
         status:

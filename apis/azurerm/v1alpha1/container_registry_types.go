@@ -19,7 +19,8 @@ type ContainerRegistry struct {
 }
 
 type ContainerRegistrySpecStorageAccount struct {
-	Name string `json:"name" tf:"name"`
+	AccessKey string `json:"-" sensitive:"true" tf:"access_key"`
+	Name      string `json:"name" tf:"name"`
 }
 
 type ContainerRegistrySpec struct {

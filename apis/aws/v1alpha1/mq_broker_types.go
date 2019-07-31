@@ -44,6 +44,7 @@ type MqBrokerSpecUser struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Groups   []string `json:"groups,omitempty" tf:"groups,omitempty"`
+	Password string   `json:"-" sensitive:"true" tf:"password"`
 	Username string   `json:"username" tf:"username"`
 }
 

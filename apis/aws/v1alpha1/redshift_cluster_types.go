@@ -82,6 +82,7 @@ type RedshiftClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Logging []RedshiftClusterSpecLogging `json:"logging,omitempty" tf:"logging,omitempty"`
 	// +optional
+	MasterPassword string `json:"-" sensitive:"true" tf:"master_password,omitempty"`
 	// +optional
 	MasterUsername string `json:"masterUsername,omitempty" tf:"master_username,omitempty"`
 	NodeType       string `json:"nodeType" tf:"node_type"`

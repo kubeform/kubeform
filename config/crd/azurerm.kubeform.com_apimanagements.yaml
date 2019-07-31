@@ -429,6 +429,8 @@ spec:
                           type: string
                         negotiateClientCertificate:
                           type: boolean
+                      required:
+                      - hostName
                       type: object
                     type: array
                   portal:
@@ -440,6 +442,8 @@ spec:
                           type: string
                         negotiateClientCertificate:
                           type: boolean
+                      required:
+                      - hostName
                       type: object
                     type: array
                   proxy:
@@ -466,6 +470,8 @@ spec:
                           type: string
                         negotiateClientCertificate:
                           type: boolean
+                      required:
+                      - hostName
                       type: object
                     type: array
                 type: object

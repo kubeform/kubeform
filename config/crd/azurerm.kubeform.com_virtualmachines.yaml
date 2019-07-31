@@ -451,6 +451,7 @@ spec:
                   customData:
                     type: string
                 required:
+                - adminUsername
                 - computerName
                 type: object
               maxItems: 1

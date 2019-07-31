@@ -38,6 +38,7 @@ type StreamAnalyticsStreamInputIothubSpec struct {
 	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Serialization          []StreamAnalyticsStreamInputIothubSpecSerialization `json:"serialization" tf:"serialization"`
+	SharedAccessPolicyKey  string                                              `json:"-" sensitive:"true" tf:"shared_access_policy_key"`
 	SharedAccessPolicyName string                                              `json:"sharedAccessPolicyName" tf:"shared_access_policy_name"`
 	StreamAnalyticsJobName string                                              `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`
 }

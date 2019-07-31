@@ -27,6 +27,7 @@ type AutomationCredentialSpec struct {
 	// +optional
 	Description       string `json:"description,omitempty" tf:"description,omitempty"`
 	Name              string `json:"name" tf:"name"`
+	Password          string `json:"-" sensitive:"true" tf:"password"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	Username          string `json:"username" tf:"username"`
 }

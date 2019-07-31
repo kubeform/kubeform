@@ -20,6 +20,7 @@ type StoragegatewayGateway struct {
 
 type StoragegatewayGatewaySpecSmbActiveDirectorySettings struct {
 	DomainName string `json:"domainName" tf:"domain_name"`
+	Password   string `json:"-" sensitive:"true" tf:"password"`
 	Username   string `json:"username" tf:"username"`
 }
 
@@ -42,6 +43,7 @@ type StoragegatewayGatewaySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	SmbActiveDirectorySettings []StoragegatewayGatewaySpecSmbActiveDirectorySettings `json:"smbActiveDirectorySettings,omitempty" tf:"smb_active_directory_settings,omitempty"`
 	// +optional
+	SmbGuestPassword string `json:"-" sensitive:"true" tf:"smb_guest_password,omitempty"`
 	// +optional
 	TapeDriveType string `json:"tapeDriveType,omitempty" tf:"tape_drive_type,omitempty"`
 }

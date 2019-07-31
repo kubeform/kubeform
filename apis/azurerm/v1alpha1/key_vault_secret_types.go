@@ -29,7 +29,8 @@ type KeyVaultSecretSpec struct {
 	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
 	Name       string `json:"name" tf:"name"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Value string            `json:"-" sensitive:"true" tf:"value"`
 	// +optional
 	// Deprecated
 	VaultURI string `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`

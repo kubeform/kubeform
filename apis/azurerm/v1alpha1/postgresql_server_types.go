@@ -38,10 +38,11 @@ type PostgresqlServerSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	AdministratorLogin string `json:"administratorLogin" tf:"administrator_login"`
-	Location           string `json:"location" tf:"location"`
-	Name               string `json:"name" tf:"name"`
-	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
+	AdministratorLogin         string `json:"administratorLogin" tf:"administrator_login"`
+	AdministratorLoginPassword string `json:"-" sensitive:"true" tf:"administrator_login_password"`
+	Location                   string `json:"location" tf:"location"`
+	Name                       string `json:"name" tf:"name"`
+	ResourceGroupName          string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku            []PostgresqlServerSpecSku `json:"sku" tf:"sku"`
 	SslEnforcement string                    `json:"sslEnforcement" tf:"ssl_enforcement"`

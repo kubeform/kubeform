@@ -28,6 +28,7 @@ type SqlUserSpec struct {
 	Instance string `json:"instance" tf:"instance"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }

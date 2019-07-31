@@ -22,6 +22,7 @@ type ComputeInstanceFromTemplateSpecAttachedDisk struct {
 	// +optional
 	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
 	// +optional
+	DiskEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"disk_encryption_key_raw,omitempty"`
 	// +optional
 	Mode   string `json:"mode,omitempty" tf:"mode,omitempty"`
 	Source string `json:"source" tf:"source"`
@@ -42,6 +43,7 @@ type ComputeInstanceFromTemplateSpecBootDisk struct {
 	// +optional
 	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
 	// +optional
+	DiskEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"disk_encryption_key_raw,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	InitializeParams []ComputeInstanceFromTemplateSpecBootDiskInitializeParams `json:"initializeParams,omitempty" tf:"initialize_params,omitempty"`

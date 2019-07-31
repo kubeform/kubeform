@@ -8547,6 +8547,13 @@ func (in *ContainerGroupSpecContainer) DeepCopyInto(out *ContainerGroupSpecConta
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.SecureEnvironmentVariables != nil {
+		in, out := &in.SecureEnvironmentVariables, &out.SecureEnvironmentVariables
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
+	}
 	if in.Volume != nil {
 		in, out := &in.Volume, &out.Volume
 		*out = make([]ContainerGroupSpecContainerVolume, len(*in))

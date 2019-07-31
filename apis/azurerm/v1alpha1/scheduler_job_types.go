@@ -29,14 +29,19 @@ type SchedulerJobSpecActionWebAuthenticationActiveDirectory struct {
 	// +optional
 	Audience string `json:"audience,omitempty" tf:"audience,omitempty"`
 	ClientID string `json:"clientID" tf:"client_id"`
+	Secret   string `json:"-" sensitive:"true" tf:"secret"`
 	TenantID string `json:"tenantID" tf:"tenant_id"`
 }
 
 type SchedulerJobSpecActionWebAuthenticationBasic struct {
+	Password string `json:"-" sensitive:"true" tf:"password"`
 	Username string `json:"username" tf:"username"`
 }
 
-type SchedulerJobSpecActionWebAuthenticationCertificate struct{}
+type SchedulerJobSpecActionWebAuthenticationCertificate struct {
+	Password string `json:"-" sensitive:"true" tf:"password"`
+	Pfx      string `json:"-" sensitive:"true" tf:"pfx"`
+}
 
 type SchedulerJobSpecActionWeb struct {
 	// +optional
@@ -67,14 +72,19 @@ type SchedulerJobSpecErrorActionWebAuthenticationActiveDirectory struct {
 	// +optional
 	Audience string `json:"audience,omitempty" tf:"audience,omitempty"`
 	ClientID string `json:"clientID" tf:"client_id"`
+	Secret   string `json:"-" sensitive:"true" tf:"secret"`
 	TenantID string `json:"tenantID" tf:"tenant_id"`
 }
 
 type SchedulerJobSpecErrorActionWebAuthenticationBasic struct {
+	Password string `json:"-" sensitive:"true" tf:"password"`
 	Username string `json:"username" tf:"username"`
 }
 
-type SchedulerJobSpecErrorActionWebAuthenticationCertificate struct{}
+type SchedulerJobSpecErrorActionWebAuthenticationCertificate struct {
+	Password string `json:"-" sensitive:"true" tf:"password"`
+	Pfx      string `json:"-" sensitive:"true" tf:"pfx"`
+}
 
 type SchedulerJobSpecErrorActionWeb struct {
 	// +optional

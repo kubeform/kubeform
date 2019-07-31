@@ -436,6 +436,7 @@ spec:
           required:
           - customerGatewayID
           - providerRef
+          - type
           type: object
         status:
           properties:

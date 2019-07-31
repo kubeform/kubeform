@@ -485,6 +485,7 @@ spec:
           - location
           - name
           - providerRef
+          - resourceGroupName
           - size
           - storageType
           - username

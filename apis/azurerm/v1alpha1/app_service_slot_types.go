@@ -19,8 +19,9 @@ type AppServiceSlot struct {
 }
 
 type AppServiceSlotSpecConnectionString struct {
-	Name string `json:"name" tf:"name"`
-	Type string `json:"type" tf:"type"`
+	Name  string `json:"name" tf:"name"`
+	Type  string `json:"type" tf:"type"`
+	Value string `json:"-" sensitive:"true" tf:"value"`
 }
 
 type AppServiceSlotSpecIdentity struct {

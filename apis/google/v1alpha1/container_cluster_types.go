@@ -85,6 +85,7 @@ type ContainerClusterSpecMasterAuth struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ClientCertificateConfig []ContainerClusterSpecMasterAuthClientCertificateConfig `json:"clientCertificateConfig,omitempty" tf:"client_certificate_config,omitempty"`
+	Password                string                                                  `json:"-" sensitive:"true" tf:"password"`
 	Username                string                                                  `json:"username" tf:"username"`
 }
 

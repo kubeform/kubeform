@@ -24,6 +24,8 @@ type PinpointAdmChannelSpec struct {
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	ApplicationID string `json:"applicationID" tf:"application_id"`
+	ClientID      string `json:"-" sensitive:"true" tf:"client_id"`
+	ClientSecret  string `json:"-" sensitive:"true" tf:"client_secret"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 }

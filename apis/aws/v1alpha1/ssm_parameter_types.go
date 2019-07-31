@@ -37,8 +37,9 @@ type SsmParameterSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
-	Tier string `json:"tier,omitempty" tf:"tier,omitempty"`
-	Type string `json:"type" tf:"type"`
+	Tier  string `json:"tier,omitempty" tf:"tier,omitempty"`
+	Type  string `json:"type" tf:"type"`
+	Value string `json:"-" sensitive:"true" tf:"value"`
 }
 
 type SsmParameterStatus struct {

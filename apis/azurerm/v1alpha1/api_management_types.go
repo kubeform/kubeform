@@ -23,13 +23,17 @@ type ApiManagementSpecAdditionalLocation struct {
 }
 
 type ApiManagementSpecCertificate struct {
-	StoreName string `json:"storeName" tf:"store_name"`
+	CertificatePassword string `json:"-" sensitive:"true" tf:"certificate_password"`
+	EncodedCertificate  string `json:"-" sensitive:"true" tf:"encoded_certificate"`
+	StoreName           string `json:"storeName" tf:"store_name"`
 }
 
 type ApiManagementSpecHostnameConfigurationManagement struct {
 	// +optional
+	Certificate string `json:"-" sensitive:"true" tf:"certificate,omitempty"`
 	// +optional
-	HostName string `json:"hostName" tf:"host_name"`
+	CertificatePassword string `json:"-" sensitive:"true" tf:"certificate_password,omitempty"`
+	HostName            string `json:"hostName" tf:"host_name"`
 	// +optional
 	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
 	// +optional
@@ -38,8 +42,10 @@ type ApiManagementSpecHostnameConfigurationManagement struct {
 
 type ApiManagementSpecHostnameConfigurationPortal struct {
 	// +optional
+	Certificate string `json:"-" sensitive:"true" tf:"certificate,omitempty"`
 	// +optional
-	HostName string `json:"hostName" tf:"host_name"`
+	CertificatePassword string `json:"-" sensitive:"true" tf:"certificate_password,omitempty"`
+	HostName            string `json:"hostName" tf:"host_name"`
 	// +optional
 	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
 	// +optional
@@ -48,7 +54,9 @@ type ApiManagementSpecHostnameConfigurationPortal struct {
 
 type ApiManagementSpecHostnameConfigurationProxy struct {
 	// +optional
+	Certificate string `json:"-" sensitive:"true" tf:"certificate,omitempty"`
 	// +optional
+	CertificatePassword string `json:"-" sensitive:"true" tf:"certificate_password,omitempty"`
 	// +optional
 	DefaultSslBinding bool   `json:"defaultSslBinding,omitempty" tf:"default_ssl_binding,omitempty"`
 	HostName          string `json:"hostName" tf:"host_name"`
@@ -60,8 +68,10 @@ type ApiManagementSpecHostnameConfigurationProxy struct {
 
 type ApiManagementSpecHostnameConfigurationScm struct {
 	// +optional
+	Certificate string `json:"-" sensitive:"true" tf:"certificate,omitempty"`
 	// +optional
-	HostName string `json:"hostName" tf:"host_name"`
+	CertificatePassword string `json:"-" sensitive:"true" tf:"certificate_password,omitempty"`
+	HostName            string `json:"hostName" tf:"host_name"`
 	// +optional
 	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
 	// +optional

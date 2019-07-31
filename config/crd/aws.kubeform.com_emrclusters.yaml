@@ -544,6 +544,8 @@ spec:
                     type: string
                   realm:
                     type: string
+                required:
+                - realm
                 type: object
               maxItems: 1
               type: array

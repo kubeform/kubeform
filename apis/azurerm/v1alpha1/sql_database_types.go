@@ -19,10 +19,12 @@ type SqlDatabase struct {
 }
 
 type SqlDatabaseSpecImport struct {
-	AdministratorLogin string `json:"administratorLogin" tf:"administrator_login"`
-	AuthenticationType string `json:"authenticationType" tf:"authentication_type"`
+	AdministratorLogin         string `json:"administratorLogin" tf:"administrator_login"`
+	AdministratorLoginPassword string `json:"-" sensitive:"true" tf:"administrator_login_password"`
+	AuthenticationType         string `json:"authenticationType" tf:"authentication_type"`
 	// +optional
 	OperationMode  string `json:"operationMode,omitempty" tf:"operation_mode,omitempty"`
+	StorageKey     string `json:"-" sensitive:"true" tf:"storage_key"`
 	StorageKeyType string `json:"storageKeyType" tf:"storage_key_type"`
 	StorageURI     string `json:"storageURI" tf:"storage_uri"`
 }
@@ -41,6 +43,7 @@ type SqlDatabaseSpecThreatDetectionPolicy struct {
 	// +optional
 	State string `json:"state,omitempty" tf:"state,omitempty"`
 	// +optional
+	StorageAccountAccessKey string `json:"-" sensitive:"true" tf:"storage_account_access_key,omitempty"`
 	// +optional
 	StorageEndpoint string `json:"storageEndpoint,omitempty" tf:"storage_endpoint,omitempty"`
 	// +optional

@@ -22,6 +22,7 @@ type CodepipelineWebhookSpecAuthenticationConfiguration struct {
 	// +optional
 	AllowedIPRange string `json:"allowedIPRange,omitempty" tf:"allowed_ip_range,omitempty"`
 	// +optional
+	SecretToken string `json:"-" sensitive:"true" tf:"secret_token,omitempty"`
 }
 
 type CodepipelineWebhookSpecFilter struct {

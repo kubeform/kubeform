@@ -451,6 +451,13 @@ func (in *InstanceSpec) DeepCopyInto(out *InstanceSpec) {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.StackscriptData != nil {
+		in, out := &in.StackscriptData, &out.StackscriptData
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
+	}
 	if in.Tags != nil {
 		in, out := &in.Tags, &out.Tags
 		*out = make([]string, len(*in))
@@ -725,6 +732,13 @@ func (in *InstanceSpecDisk) DeepCopyInto(out *InstanceSpecDisk) {
 		in, out := &in.AuthorizedUsers, &out.AuthorizedUsers
 		*out = make([]string, len(*in))
 		copy(*out, *in)
+	}
+	if in.StackscriptData != nil {
+		in, out := &in.StackscriptData, &out.StackscriptData
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
 	}
 	return
 }

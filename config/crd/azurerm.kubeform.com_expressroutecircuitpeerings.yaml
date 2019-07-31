@@ -448,6 +448,7 @@ spec:
           - providerRef
           - resourceGroupName
           - secondaryPeerAddressPrefix
+          - vlanID
           type: object
         status:
           properties:

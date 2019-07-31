@@ -29,6 +29,7 @@ type AzureadServicePrincipalPasswordSpec struct {
 	ServicePrincipalID string `json:"servicePrincipalID" tf:"service_principal_id"`
 	// +optional
 	StartDate string `json:"startDate,omitempty" tf:"start_date,omitempty"`
+	Value     string `json:"-" sensitive:"true" tf:"value"`
 }
 
 type AzureadServicePrincipalPasswordStatus struct {

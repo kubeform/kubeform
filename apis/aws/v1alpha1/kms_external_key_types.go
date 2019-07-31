@@ -30,6 +30,7 @@ type KmsExternalKeySpec struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
+	KeyMaterialBase64 string `json:"-" sensitive:"true" tf:"key_material_base64,omitempty"`
 	// +optional
 	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional

@@ -591,6 +591,7 @@ spec:
                     type: integer
                 required:
                 - label
+                - size
                 type: object
               type: array
             group:

@@ -33,7 +33,8 @@ type IamServerCertificateSpec struct {
 	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
-	Path string `json:"path,omitempty" tf:"path,omitempty"`
+	Path       string `json:"path,omitempty" tf:"path,omitempty"`
+	PrivateKey string `json:"-" sensitive:"true" tf:"private_key"`
 }
 
 type IamServerCertificateStatus struct {

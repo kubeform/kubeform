@@ -50,6 +50,7 @@ type DirectoryServiceDirectorySpec struct {
 	// +optional
 	EnableSso bool   `json:"enableSso,omitempty" tf:"enable_sso,omitempty"`
 	Name      string `json:"name" tf:"name"`
+	Password  string `json:"-" sensitive:"true" tf:"password"`
 	// +optional
 	ShortName string `json:"shortName,omitempty" tf:"short_name,omitempty"`
 	// +optional

@@ -39,6 +39,7 @@ type StreamAnalyticsOutputServicebusQueueSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Serialization          []StreamAnalyticsOutputServicebusQueueSpecSerialization `json:"serialization" tf:"serialization"`
 	ServicebusNamespace    string                                                  `json:"servicebusNamespace" tf:"servicebus_namespace"`
+	SharedAccessPolicyKey  string                                                  `json:"-" sensitive:"true" tf:"shared_access_policy_key"`
 	SharedAccessPolicyName string                                                  `json:"sharedAccessPolicyName" tf:"shared_access_policy_name"`
 	StreamAnalyticsJobName string                                                  `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`
 }

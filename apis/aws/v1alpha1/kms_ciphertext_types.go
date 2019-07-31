@@ -24,8 +24,9 @@ type KmsCiphertextSpec struct {
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	Context map[string]string `json:"context,omitempty" tf:"context,omitempty"`
-	KeyID   string            `json:"keyID" tf:"key_id"`
+	Context   map[string]string `json:"context,omitempty" tf:"context,omitempty"`
+	KeyID     string            `json:"keyID" tf:"key_id"`
+	Plaintext string            `json:"-" sensitive:"true" tf:"plaintext"`
 }
 
 type KmsCiphertextStatus struct {

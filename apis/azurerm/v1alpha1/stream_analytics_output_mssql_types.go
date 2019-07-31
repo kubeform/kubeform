@@ -25,6 +25,7 @@ type StreamAnalyticsOutputMssqlSpec struct {
 
 	Database               string `json:"database" tf:"database"`
 	Name                   string `json:"name" tf:"name"`
+	Password               string `json:"-" sensitive:"true" tf:"password"`
 	ResourceGroupName      string `json:"resourceGroupName" tf:"resource_group_name"`
 	Server                 string `json:"server" tf:"server"`
 	StreamAnalyticsJobName string `json:"streamAnalyticsJobName" tf:"stream_analytics_job_name"`

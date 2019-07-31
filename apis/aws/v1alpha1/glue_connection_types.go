@@ -33,7 +33,8 @@ type GlueConnectionSpec struct {
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	CatalogID string `json:"catalogID,omitempty" tf:"catalog_id,omitempty"`
+	CatalogID            string            `json:"catalogID,omitempty" tf:"catalog_id,omitempty"`
+	ConnectionProperties map[string]string `json:"-" sensitive:"true" tf:"connection_properties"`
 	// +optional
 	ConnectionType string `json:"connectionType,omitempty" tf:"connection_type,omitempty"`
 	// +optional

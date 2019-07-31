@@ -44,6 +44,7 @@ type ComputeDiskSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	DiskEncryptionKey []ComputeDiskSpecDiskEncryptionKey `json:"diskEncryptionKey,omitempty" tf:"disk_encryption_key,omitempty"`
 	// +optional
+	DiskEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"disk_encryption_key_raw,omitempty"`
 	// +optional
 	Image string `json:"image,omitempty" tf:"image,omitempty"`
 	// +optional
