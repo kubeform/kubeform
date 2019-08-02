@@ -465,8 +465,69 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                allocatedCapacity:
+                  description: Deprecated
+                  type: integer
+                command:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      scriptLocation:
+                        type: string
+                    required:
+                    - scriptLocation
+                    type: object
+                  maxItems: 1
+                  type: array
+                connections:
+                  items:
+                    type: string
+                  type: array
+                defaultArguments:
+                  additionalProperties:
+                    type: string
+                  type: object
+                description:
+                  type: string
+                executionProperty:
+                  items:
+                    properties:
+                      maxConcurrentRuns:
+                        type: integer
+                    type: object
+                  maxItems: 1
+                  type: array
+                maxCapacity:
+                  description: A Number represents a JSON number literal.
+                  type: string
+                maxRetries:
+                  type: integer
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                roleArn:
+                  type: string
+                securityConfiguration:
+                  type: string
+                timeout:
+                  type: integer
+              required:
+              - command
+              - name
+              - providerRef
+              - roleArn
+              type: object
           type: object
       type: object
   versions:

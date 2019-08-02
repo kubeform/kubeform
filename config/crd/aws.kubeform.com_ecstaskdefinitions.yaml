@@ -506,8 +506,110 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                containerDefinitions:
+                  type: string
+                cpu:
+                  type: string
+                executionRoleArn:
+                  type: string
+                family:
+                  type: string
+                ipcMode:
+                  type: string
+                memory:
+                  type: string
+                networkMode:
+                  type: string
+                pidMode:
+                  type: string
+                placementConstraints:
+                  items:
+                    properties:
+                      expression:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 10
+                  type: array
+                  uniqueItems: true
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                proxyConfiguration:
+                  items:
+                    properties:
+                      containerName:
+                        type: string
+                      properties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      type:
+                        type: string
+                    required:
+                    - containerName
+                    type: object
+                  maxItems: 1
+                  type: array
+                requiresCompatibilities:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                taskRoleArn:
+                  type: string
+                volume:
+                  items:
+                    properties:
+                      dockerVolumeConfiguration:
+                        items:
+                          properties:
+                            autoprovision:
+                              type: boolean
+                            driver:
+                              type: string
+                            driverOpts:
+                              additionalProperties:
+                                type: string
+                              type: object
+                            labels:
+                              additionalProperties:
+                                type: string
+                              type: object
+                            scope:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      hostPath:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  type: array
+                  uniqueItems: true
+              required:
+              - containerDefinitions
+              - family
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

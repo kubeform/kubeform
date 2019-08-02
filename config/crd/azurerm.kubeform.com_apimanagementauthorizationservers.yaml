@@ -490,8 +490,94 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                apiManagementName:
+                  type: string
+                authorizationEndpoint:
+                  type: string
+                authorizationMethods:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                bearerTokenSendingMethods:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                clientAuthenticationMethod:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                clientID:
+                  type: string
+                clientRegistrationEndpoint:
+                  type: string
+                defaultScope:
+                  type: string
+                description:
+                  type: string
+                displayName:
+                  type: string
+                grantTypes:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                resourceOwnerUsername:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                supportState:
+                  type: boolean
+                tokenBodyParameter:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      value:
+                        type: string
+                    required:
+                    - name
+                    - value
+                    type: object
+                  type: array
+                tokenEndpoint:
+                  type: string
+              required:
+              - apiManagementName
+              - authorizationEndpoint
+              - authorizationMethods
+              - clientID
+              - clientRegistrationEndpoint
+              - displayName
+              - grantTypes
+              - name
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

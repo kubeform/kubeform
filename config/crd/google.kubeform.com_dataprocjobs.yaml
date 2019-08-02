@@ -673,8 +673,277 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                forceDelete:
+                  type: boolean
+                hadoopConfig:
+                  items:
+                    properties:
+                      archiveUris:
+                        items:
+                          type: string
+                        type: array
+                      args:
+                        items:
+                          type: string
+                        type: array
+                      fileUris:
+                        items:
+                          type: string
+                        type: array
+                      jarFileUris:
+                        items:
+                          type: string
+                        type: array
+                      loggingConfig:
+                        items:
+                          properties:
+                            driverLogLevels:
+                              additionalProperties:
+                                type: string
+                              type: object
+                          type: object
+                        maxItems: 1
+                        type: array
+                      mainClass:
+                        type: string
+                      mainJarFileURI:
+                        type: string
+                      properties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    type: object
+                  maxItems: 1
+                  type: array
+                hiveConfig:
+                  items:
+                    properties:
+                      continueOnFailure:
+                        type: boolean
+                      jarFileUris:
+                        items:
+                          type: string
+                        type: array
+                      properties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      queryFileURI:
+                        type: string
+                      queryList:
+                        items:
+                          type: string
+                        type: array
+                      scriptVariables:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    type: object
+                  maxItems: 1
+                  type: array
+                labels:
+                  additionalProperties:
+                    type: string
+                  type: object
+                pigConfig:
+                  items:
+                    properties:
+                      continueOnFailure:
+                        type: boolean
+                      jarFileUris:
+                        items:
+                          type: string
+                        type: array
+                      loggingConfig:
+                        items:
+                          properties:
+                            driverLogLevels:
+                              additionalProperties:
+                                type: string
+                              type: object
+                          type: object
+                        maxItems: 1
+                        type: array
+                      properties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      queryFileURI:
+                        type: string
+                      queryList:
+                        items:
+                          type: string
+                        type: array
+                      scriptVariables:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    type: object
+                  maxItems: 1
+                  type: array
+                placement:
+                  items:
+                    properties:
+                      clusterName:
+                        type: string
+                    required:
+                    - clusterName
+                    type: object
+                  maxItems: 1
+                  type: array
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                pysparkConfig:
+                  items:
+                    properties:
+                      archiveUris:
+                        items:
+                          type: string
+                        type: array
+                      args:
+                        items:
+                          type: string
+                        type: array
+                      fileUris:
+                        items:
+                          type: string
+                        type: array
+                      jarFileUris:
+                        items:
+                          type: string
+                        type: array
+                      loggingConfig:
+                        items:
+                          properties:
+                            driverLogLevels:
+                              additionalProperties:
+                                type: string
+                              type: object
+                          type: object
+                        maxItems: 1
+                        type: array
+                      mainPythonFileURI:
+                        type: string
+                      properties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      pythonFileUris:
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - mainPythonFileURI
+                    type: object
+                  maxItems: 1
+                  type: array
+                reference:
+                  items:
+                    properties:
+                      jobID:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                region:
+                  type: string
+                scheduling:
+                  items:
+                    properties:
+                      maxFailuresPerHour:
+                        type: integer
+                    type: object
+                  maxItems: 1
+                  type: array
+                sparkConfig:
+                  items:
+                    properties:
+                      archiveUris:
+                        items:
+                          type: string
+                        type: array
+                      args:
+                        items:
+                          type: string
+                        type: array
+                      fileUris:
+                        items:
+                          type: string
+                        type: array
+                      jarFileUris:
+                        items:
+                          type: string
+                        type: array
+                      loggingConfig:
+                        items:
+                          properties:
+                            driverLogLevels:
+                              additionalProperties:
+                                type: string
+                              type: object
+                          type: object
+                        maxItems: 1
+                        type: array
+                      mainClass:
+                        type: string
+                      mainJarFileURI:
+                        type: string
+                      properties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    type: object
+                  maxItems: 1
+                  type: array
+                sparksqlConfig:
+                  items:
+                    properties:
+                      jarFileUris:
+                        items:
+                          type: string
+                        type: array
+                      loggingConfig:
+                        items:
+                          properties:
+                            driverLogLevels:
+                              additionalProperties:
+                                type: string
+                              type: object
+                          type: object
+                        maxItems: 1
+                        type: array
+                      properties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      queryFileURI:
+                        type: string
+                      queryList:
+                        items:
+                          type: string
+                        type: array
+                      scriptVariables:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - placement
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

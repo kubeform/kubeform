@@ -467,8 +467,71 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                build:
+                  items:
+                    properties:
+                      images:
+                        items:
+                          type: string
+                        type: array
+                      step:
+                        items:
+                          properties:
+                            args:
+                              type: string
+                            name:
+                              type: string
+                          type: object
+                        type: array
+                      tags:
+                        items:
+                          type: string
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                description:
+                  type: string
+                filename:
+                  type: string
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                substitutions:
+                  additionalProperties:
+                    type: string
+                  type: object
+                triggerTemplate:
+                  items:
+                    properties:
+                      branchName:
+                        type: string
+                      commitSha:
+                        type: string
+                      dir:
+                        type: string
+                      project:
+                        type: string
+                      repoName:
+                        type: string
+                      tagName:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

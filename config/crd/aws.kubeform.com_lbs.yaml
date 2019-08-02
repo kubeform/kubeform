@@ -474,8 +474,78 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                accessLogs:
+                  items:
+                    properties:
+                      bucket:
+                        type: string
+                      enabled:
+                        type: boolean
+                      prefix:
+                        type: string
+                    required:
+                    - bucket
+                    type: object
+                  maxItems: 1
+                  type: array
+                enableCrossZoneLoadBalancing:
+                  type: boolean
+                enableDeletionProtection:
+                  type: boolean
+                enableHttp2:
+                  type: boolean
+                idleTimeout:
+                  type: integer
+                internal:
+                  type: boolean
+                ipAddressType:
+                  type: string
+                loadBalancerType:
+                  type: string
+                name:
+                  type: string
+                namePrefix:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                securityGroups:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                subnetMapping:
+                  items:
+                    properties:
+                      allocationID:
+                        type: string
+                      subnetID:
+                        type: string
+                    required:
+                    - subnetID
+                    type: object
+                  type: array
+                  uniqueItems: true
+                subnets:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

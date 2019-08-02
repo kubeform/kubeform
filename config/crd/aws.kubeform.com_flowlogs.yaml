@@ -434,8 +434,38 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                eniID:
+                  type: string
+                iamRoleArn:
+                  type: string
+                logDestination:
+                  type: string
+                logDestinationType:
+                  type: string
+                logGroupName:
+                  description: Deprecated
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                subnetID:
+                  type: string
+                trafficType:
+                  type: string
+                vpcID:
+                  type: string
+              required:
+              - providerRef
+              - trafficType
+              type: object
           type: object
       type: object
   versions:

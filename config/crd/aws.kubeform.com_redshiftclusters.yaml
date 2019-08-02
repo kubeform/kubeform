@@ -528,8 +528,132 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                allowVersionUpgrade:
+                  type: boolean
+                automatedSnapshotRetentionPeriod:
+                  type: integer
+                availabilityZone:
+                  type: string
+                clusterIdentifier:
+                  type: string
+                clusterParameterGroupName:
+                  type: string
+                clusterPublicKey:
+                  type: string
+                clusterRevisionNumber:
+                  type: string
+                clusterSecurityGroups:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                clusterSubnetGroupName:
+                  type: string
+                clusterType:
+                  type: string
+                clusterVersion:
+                  type: string
+                databaseName:
+                  type: string
+                elasticIP:
+                  type: string
+                encrypted:
+                  type: boolean
+                endpoint:
+                  type: string
+                enhancedVpcRouting:
+                  type: boolean
+                finalSnapshotIdentifier:
+                  type: string
+                iamRoles:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                kmsKeyID:
+                  type: string
+                logging:
+                  items:
+                    properties:
+                      bucketName:
+                        type: string
+                      enable:
+                        type: boolean
+                      s3KeyPrefix:
+                        type: string
+                    required:
+                    - enable
+                    type: object
+                  maxItems: 1
+                  type: array
+                masterUsername:
+                  type: string
+                nodeType:
+                  type: string
+                numberOfNodes:
+                  type: integer
+                ownerAccount:
+                  type: string
+                port:
+                  type: integer
+                preferredMaintenanceWindow:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                publiclyAccessible:
+                  type: boolean
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                skipFinalSnapshot:
+                  type: boolean
+                snapshotClusterIdentifier:
+                  type: string
+                snapshotCopy:
+                  items:
+                    properties:
+                      destinationRegion:
+                        type: string
+                      grantName:
+                        type: string
+                      retentionPeriod:
+                        type: integer
+                    required:
+                    - destinationRegion
+                    type: object
+                  maxItems: 1
+                  type: array
+                snapshotIdentifier:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                vpcSecurityGroupIDS:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+              required:
+              - clusterIdentifier
+              - nodeType
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

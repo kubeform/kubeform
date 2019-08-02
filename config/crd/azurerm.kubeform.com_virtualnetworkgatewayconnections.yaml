@@ -487,8 +487,91 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                enableBGP:
+                  type: boolean
+                expressRouteCircuitID:
+                  type: string
+                expressRouteGatewayBypass:
+                  type: boolean
+                ipsecPolicy:
+                  items:
+                    properties:
+                      dhGroup:
+                        type: string
+                      ikeEncryption:
+                        type: string
+                      ikeIntegrity:
+                        type: string
+                      ipsecEncryption:
+                        type: string
+                      ipsecIntegrity:
+                        type: string
+                      pfsGroup:
+                        type: string
+                      saDatasize:
+                        type: integer
+                      saLifetime:
+                        type: integer
+                    required:
+                    - dhGroup
+                    - ikeEncryption
+                    - ikeIntegrity
+                    - ipsecEncryption
+                    - ipsecIntegrity
+                    - pfsGroup
+                    type: object
+                  maxItems: 1
+                  type: array
+                localNetworkGatewayID:
+                  type: string
+                location:
+                  type: string
+                name:
+                  type: string
+                peerVirtualNetworkGatewayID:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                routingWeight:
+                  type: integer
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                type:
+                  type: string
+                usePolicyBasedTrafficSelectors:
+                  type: boolean
+                virtualNetworkGatewayID:
+                  type: string
+              required:
+              - location
+              - name
+              - providerRef
+              - resourceGroupName
+              - type
+              - virtualNetworkGatewayID
+              type: object
           type: object
       type: object
   versions:

@@ -496,8 +496,100 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                dropletIDS:
+                  items:
+                    format: int64
+                    type: integer
+                  type: array
+                  uniqueItems: true
+                inboundRule:
+                  items:
+                    properties:
+                      portRange:
+                        type: string
+                      protocol:
+                        type: string
+                      sourceAddresses:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      sourceDropletIDS:
+                        items:
+                          format: int64
+                          type: integer
+                        type: array
+                        uniqueItems: true
+                      sourceLoadBalancerUids:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      sourceTags:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - protocol
+                    type: object
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                outboundRule:
+                  items:
+                    properties:
+                      destinationAddresses:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      destinationDropletIDS:
+                        items:
+                          format: int64
+                          type: integer
+                        type: array
+                        uniqueItems: true
+                      destinationLoadBalancerUids:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      destinationTags:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      portRange:
+                        type: string
+                      protocol:
+                        type: string
+                    required:
+                    - protocol
+                    type: object
+                  type: array
+                  uniqueItems: true
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                tags:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+              required:
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

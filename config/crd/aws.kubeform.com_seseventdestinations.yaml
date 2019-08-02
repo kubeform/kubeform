@@ -471,8 +471,75 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                cloudwatchDestination:
+                  items:
+                    properties:
+                      defaultValue:
+                        type: string
+                      dimensionName:
+                        type: string
+                      valueSource:
+                        type: string
+                    required:
+                    - defaultValue
+                    - dimensionName
+                    - valueSource
+                    type: object
+                  type: array
+                  uniqueItems: true
+                configurationSetName:
+                  type: string
+                enabled:
+                  type: boolean
+                kinesisDestination:
+                  items:
+                    properties:
+                      roleArn:
+                        type: string
+                      streamArn:
+                        type: string
+                    required:
+                    - roleArn
+                    - streamArn
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                matchingTypes:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                snsDestination:
+                  items:
+                    properties:
+                      topicArn:
+                        type: string
+                    required:
+                    - topicArn
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+              required:
+              - configurationSetName
+              - matchingTypes
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

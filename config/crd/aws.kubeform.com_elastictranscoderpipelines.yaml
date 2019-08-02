@@ -493,8 +493,97 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                awsKmsKeyArn:
+                  type: string
+                contentConfig:
+                  items:
+                    properties:
+                      bucket:
+                        type: string
+                      storageClass:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                contentConfigPermissions:
+                  items:
+                    properties:
+                      access:
+                        items:
+                          type: string
+                        type: array
+                      grantee:
+                        type: string
+                      granteeType:
+                        type: string
+                    type: object
+                  type: array
+                  uniqueItems: true
+                inputBucket:
+                  type: string
+                name:
+                  type: string
+                notifications:
+                  items:
+                    properties:
+                      completed:
+                        type: string
+                      error:
+                        type: string
+                      progressing:
+                        type: string
+                      warning:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                outputBucket:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                role:
+                  type: string
+                thumbnailConfig:
+                  items:
+                    properties:
+                      bucket:
+                        type: string
+                      storageClass:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                thumbnailConfigPermissions:
+                  items:
+                    properties:
+                      access:
+                        items:
+                          type: string
+                        type: array
+                      grantee:
+                        type: string
+                      granteeType:
+                        type: string
+                    type: object
+                  type: array
+                  uniqueItems: true
+              required:
+              - inputBucket
+              - providerRef
+              - role
+              type: object
           type: object
       type: object
   versions:

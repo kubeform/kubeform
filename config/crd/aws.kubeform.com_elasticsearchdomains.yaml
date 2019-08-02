@@ -546,8 +546,150 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                accessPolicies:
+                  type: string
+                advancedOptions:
+                  additionalProperties:
+                    type: string
+                  type: object
+                clusterConfig:
+                  items:
+                    properties:
+                      dedicatedMasterCount:
+                        type: integer
+                      dedicatedMasterEnabled:
+                        type: boolean
+                      dedicatedMasterType:
+                        type: string
+                      instanceCount:
+                        type: integer
+                      instanceType:
+                        type: string
+                      zoneAwarenessEnabled:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                cognitoOptions:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                      identityPoolID:
+                        type: string
+                      roleArn:
+                        type: string
+                      userPoolID:
+                        type: string
+                    required:
+                    - identityPoolID
+                    - roleArn
+                    - userPoolID
+                    type: object
+                  maxItems: 1
+                  type: array
+                domainName:
+                  type: string
+                ebsOptions:
+                  items:
+                    properties:
+                      ebsEnabled:
+                        type: boolean
+                      iops:
+                        type: integer
+                      volumeSize:
+                        type: integer
+                      volumeType:
+                        type: string
+                    required:
+                    - ebsEnabled
+                    type: object
+                  maxItems: 1
+                  type: array
+                elasticsearchVersion:
+                  type: string
+                encryptAtRest:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                      kmsKeyID:
+                        type: string
+                    required:
+                    - enabled
+                    type: object
+                  maxItems: 1
+                  type: array
+                logPublishingOptions:
+                  items:
+                    properties:
+                      cloudwatchLogGroupArn:
+                        type: string
+                      enabled:
+                        type: boolean
+                      logType:
+                        type: string
+                    required:
+                    - cloudwatchLogGroupArn
+                    - logType
+                    type: object
+                  type: array
+                  uniqueItems: true
+                nodeToNodeEncryption:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                    required:
+                    - enabled
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                snapshotOptions:
+                  items:
+                    properties:
+                      automatedSnapshotStartHour:
+                        type: integer
+                    required:
+                    - automatedSnapshotStartHour
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                vpcOptions:
+                  items:
+                    properties:
+                      securityGroupIDS:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      subnetIDS:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - domainName
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

@@ -533,8 +533,137 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                cors:
+                  items:
+                    properties:
+                      maxAgeSeconds:
+                        type: integer
+                      method:
+                        items:
+                          type: string
+                        type: array
+                      origin:
+                        items:
+                          type: string
+                        type: array
+                      responseHeader:
+                        items:
+                          type: string
+                        type: array
+                    type: object
+                  type: array
+                encryption:
+                  items:
+                    properties:
+                      defaultKmsKeyName:
+                        type: string
+                    required:
+                    - defaultKmsKeyName
+                    type: object
+                  maxItems: 1
+                  type: array
+                forceDestroy:
+                  type: boolean
+                labels:
+                  additionalProperties:
+                    type: string
+                  type: object
+                lifecycleRule:
+                  items:
+                    properties:
+                      action:
+                        items:
+                          properties:
+                            storageClass:
+                              type: string
+                            type:
+                              type: string
+                          required:
+                          - type
+                          type: object
+                        maxItems: 1
+                        minItems: 1
+                        type: array
+                        uniqueItems: true
+                      condition:
+                        items:
+                          properties:
+                            age:
+                              type: integer
+                            createdBefore:
+                              type: string
+                            isLive:
+                              type: boolean
+                            matchesStorageClass:
+                              items:
+                                type: string
+                              minItems: 1
+                              type: array
+                            numNewerVersions:
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        minItems: 1
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - action
+                    - condition
+                    type: object
+                  maxItems: 100
+                  type: array
+                location:
+                  type: string
+                logging:
+                  items:
+                    properties:
+                      logBucket:
+                        type: string
+                      logObjectPrefix:
+                        type: string
+                    required:
+                    - logBucket
+                    type: object
+                  maxItems: 1
+                  type: array
+                name:
+                  type: string
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                storageClass:
+                  type: string
+                versioning:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                website:
+                  items:
+                    properties:
+                      mainPageSuffix:
+                        type: string
+                      notFoundPage:
+                        type: string
+                    type: object
+                  type: array
+              required:
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

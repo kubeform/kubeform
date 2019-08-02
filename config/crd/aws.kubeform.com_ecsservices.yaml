@@ -536,8 +536,140 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                cluster:
+                  type: string
+                deploymentController:
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                deploymentMaximumPercent:
+                  type: integer
+                deploymentMinimumHealthyPercent:
+                  type: integer
+                desiredCount:
+                  type: integer
+                enableEcsManagedTags:
+                  type: boolean
+                healthCheckGracePeriodSeconds:
+                  type: integer
+                iamRole:
+                  type: string
+                launchType:
+                  type: string
+                loadBalancer:
+                  items:
+                    properties:
+                      containerName:
+                        type: string
+                      containerPort:
+                        type: integer
+                      elbName:
+                        type: string
+                      targetGroupArn:
+                        type: string
+                    required:
+                    - containerName
+                    - containerPort
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                networkConfiguration:
+                  items:
+                    properties:
+                      assignPublicIP:
+                        type: boolean
+                      securityGroups:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      subnets:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - subnets
+                    type: object
+                  maxItems: 1
+                  type: array
+                orderedPlacementStrategy:
+                  items:
+                    properties:
+                      field:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 5
+                  type: array
+                placementConstraints:
+                  items:
+                    properties:
+                      expression:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 10
+                  type: array
+                  uniqueItems: true
+                platformVersion:
+                  type: string
+                propagateTags:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                schedulingStrategy:
+                  type: string
+                serviceRegistries:
+                  items:
+                    properties:
+                      containerName:
+                        type: string
+                      containerPort:
+                        type: integer
+                      port:
+                        type: integer
+                      registryArn:
+                        type: string
+                    required:
+                    - registryArn
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                taskDefinition:
+                  type: string
+              required:
+              - name
+              - providerRef
+              - taskDefinition
+              type: object
           type: object
       type: object
   versions:

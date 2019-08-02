@@ -475,8 +475,79 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                action:
+                  type: string
+                azureFirewallName:
+                  type: string
+                name:
+                  type: string
+                priority:
+                  type: integer
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                rule:
+                  items:
+                    properties:
+                      description:
+                        type: string
+                      destinationAddresses:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      destinationPorts:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      name:
+                        type: string
+                      protocols:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      sourceAddresses:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      translatedAddress:
+                        type: string
+                      translatedPort:
+                        type: string
+                    required:
+                    - destinationAddresses
+                    - destinationPorts
+                    - name
+                    - protocols
+                    - sourceAddresses
+                    - translatedAddress
+                    - translatedPort
+                    type: object
+                  minItems: 1
+                  type: array
+                  uniqueItems: true
+              required:
+              - action
+              - azureFirewallName
+              - name
+              - priority
+              - providerRef
+              - resourceGroupName
+              - rule
+              type: object
           type: object
       type: object
   versions:

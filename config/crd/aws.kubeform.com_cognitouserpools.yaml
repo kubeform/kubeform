@@ -615,8 +615,219 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                adminCreateUserConfig:
+                  items:
+                    properties:
+                      allowAdminCreateUserOnly:
+                        type: boolean
+                      inviteMessageTemplate:
+                        items:
+                          properties:
+                            emailMessage:
+                              type: string
+                            emailSubject:
+                              type: string
+                            smsMessage:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      unusedAccountValidityDays:
+                        type: integer
+                    type: object
+                  maxItems: 1
+                  type: array
+                aliasAttributes:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                autoVerifiedAttributes:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                deviceConfiguration:
+                  items:
+                    properties:
+                      challengeRequiredOnNewDevice:
+                        type: boolean
+                      deviceOnlyRememberedOnUserPrompt:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                emailConfiguration:
+                  items:
+                    properties:
+                      emailSendingAccount:
+                        type: string
+                      replyToEmailAddress:
+                        type: string
+                      sourceArn:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                emailVerificationMessage:
+                  type: string
+                emailVerificationSubject:
+                  type: string
+                lambdaConfig:
+                  items:
+                    properties:
+                      createAuthChallenge:
+                        type: string
+                      customMessage:
+                        type: string
+                      defineAuthChallenge:
+                        type: string
+                      postAuthentication:
+                        type: string
+                      postConfirmation:
+                        type: string
+                      preAuthentication:
+                        type: string
+                      preSignUp:
+                        type: string
+                      preTokenGeneration:
+                        type: string
+                      userMigration:
+                        type: string
+                      verifyAuthChallengeResponse:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                mfaConfiguration:
+                  type: string
+                name:
+                  type: string
+                passwordPolicy:
+                  items:
+                    properties:
+                      minimumLength:
+                        type: integer
+                      requireLowercase:
+                        type: boolean
+                      requireNumbers:
+                        type: boolean
+                      requireSymbols:
+                        type: boolean
+                      requireUppercase:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                schema:
+                  items:
+                    properties:
+                      attributeDataType:
+                        type: string
+                      developerOnlyAttribute:
+                        type: boolean
+                      mutable:
+                        type: boolean
+                      name:
+                        type: string
+                      numberAttributeConstraints:
+                        items:
+                          properties:
+                            maxValue:
+                              type: string
+                            minValue:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      required:
+                        type: boolean
+                      stringAttributeConstraints:
+                        items:
+                          properties:
+                            maxLength:
+                              type: string
+                            minLength:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                    required:
+                    - attributeDataType
+                    - name
+                    type: object
+                  maxItems: 50
+                  minItems: 1
+                  type: array
+                  uniqueItems: true
+                smsAuthenticationMessage:
+                  type: string
+                smsConfiguration:
+                  items:
+                    properties:
+                      externalID:
+                        type: string
+                      snsCallerArn:
+                        type: string
+                    required:
+                    - externalID
+                    - snsCallerArn
+                    type: object
+                  maxItems: 1
+                  type: array
+                smsVerificationMessage:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                userPoolAddOns:
+                  items:
+                    properties:
+                      advancedSecurityMode:
+                        type: string
+                    required:
+                    - advancedSecurityMode
+                    type: object
+                  maxItems: 1
+                  type: array
+                usernameAttributes:
+                  items:
+                    type: string
+                  type: array
+                verificationMessageTemplate:
+                  items:
+                    properties:
+                      defaultEmailOption:
+                        type: string
+                      emailMessage:
+                        type: string
+                      emailMessageByLink:
+                        type: string
+                      emailSubject:
+                        type: string
+                      emailSubjectByLink:
+                        type: string
+                      smsMessage:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

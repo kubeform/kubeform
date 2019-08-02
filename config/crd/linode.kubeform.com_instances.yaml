@@ -646,8 +646,250 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                alerts:
+                  items:
+                    properties:
+                      cpu:
+                        type: integer
+                      io:
+                        type: integer
+                      networkIn:
+                        type: integer
+                      networkOut:
+                        type: integer
+                      transferQuota:
+                        type: integer
+                    type: object
+                  maxItems: 1
+                  type: array
+                authorizedKeys:
+                  items:
+                    type: string
+                  type: array
+                authorizedUsers:
+                  items:
+                    type: string
+                  type: array
+                backupID:
+                  type: integer
+                backupsEnabled:
+                  type: boolean
+                bootConfigLabel:
+                  type: string
+                config:
+                  items:
+                    properties:
+                      comments:
+                        type: string
+                      devices:
+                        items:
+                          properties:
+                            sda:
+                              items:
+                                properties:
+                                  diskID:
+                                    type: integer
+                                  diskLabel:
+                                    type: string
+                                  volumeID:
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sdb:
+                              items:
+                                properties:
+                                  diskID:
+                                    type: integer
+                                  diskLabel:
+                                    type: string
+                                  volumeID:
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sdc:
+                              items:
+                                properties:
+                                  diskID:
+                                    type: integer
+                                  diskLabel:
+                                    type: string
+                                  volumeID:
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sdd:
+                              items:
+                                properties:
+                                  diskID:
+                                    type: integer
+                                  diskLabel:
+                                    type: string
+                                  volumeID:
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sde:
+                              items:
+                                properties:
+                                  diskID:
+                                    type: integer
+                                  diskLabel:
+                                    type: string
+                                  volumeID:
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sdf:
+                              items:
+                                properties:
+                                  diskID:
+                                    type: integer
+                                  diskLabel:
+                                    type: string
+                                  volumeID:
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sdg:
+                              items:
+                                properties:
+                                  diskID:
+                                    type: integer
+                                  diskLabel:
+                                    type: string
+                                  volumeID:
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            sdh:
+                              items:
+                                properties:
+                                  diskID:
+                                    type: integer
+                                  diskLabel:
+                                    type: string
+                                  volumeID:
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                          type: object
+                        maxItems: 1
+                        type: array
+                      helpers:
+                        items:
+                          properties:
+                            devtmpfsAutomount:
+                              type: boolean
+                            distro:
+                              type: boolean
+                            modulesDep:
+                              type: boolean
+                            network:
+                              type: boolean
+                            updatedbDisabled:
+                              type: boolean
+                          type: object
+                        maxItems: 1
+                        type: array
+                      kernel:
+                        type: string
+                      label:
+                        type: string
+                      memoryLimit:
+                        type: integer
+                      rootDevice:
+                        type: string
+                      runLevel:
+                        type: string
+                      virtMode:
+                        type: string
+                    required:
+                    - label
+                    type: object
+                  type: array
+                disk:
+                  items:
+                    properties:
+                      authorizedKeys:
+                        items:
+                          type: string
+                        type: array
+                      authorizedUsers:
+                        items:
+                          type: string
+                        type: array
+                      filesystem:
+                        type: string
+                      image:
+                        type: string
+                      label:
+                        type: string
+                      readOnly:
+                        type: boolean
+                      size:
+                        type: integer
+                      stackscriptID:
+                        type: integer
+                    required:
+                    - label
+                    - size
+                    type: object
+                  type: array
+                group:
+                  type: string
+                image:
+                  type: string
+                label:
+                  type: string
+                privateIP:
+                  type: boolean
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                region:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                stackscriptID:
+                  type: integer
+                swapSize:
+                  type: integer
+                tags:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                type:
+                  type: string
+                watchdogEnabled:
+                  type: boolean
+              required:
+              - providerRef
+              - region
+              type: object
           type: object
       type: object
   versions:

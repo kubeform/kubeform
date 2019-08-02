@@ -490,8 +490,94 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                computeEnvironmentName:
+                  type: string
+                computeResources:
+                  items:
+                    properties:
+                      bidPercentage:
+                        type: integer
+                      desiredVcpus:
+                        type: integer
+                      ec2KeyPair:
+                        type: string
+                      imageID:
+                        type: string
+                      instanceRole:
+                        type: string
+                      instanceType:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      launchTemplate:
+                        items:
+                          properties:
+                            launchTemplateID:
+                              type: string
+                            launchTemplateName:
+                              type: string
+                            version:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      maxVcpus:
+                        type: integer
+                      minVcpus:
+                        type: integer
+                      securityGroupIDS:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      spotIamFleetRole:
+                        type: string
+                      subnets:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      tags:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      type:
+                        type: string
+                    required:
+                    - instanceRole
+                    - instanceType
+                    - maxVcpus
+                    - minVcpus
+                    - securityGroupIDS
+                    - subnets
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                serviceRole:
+                  type: string
+                state:
+                  type: string
+                type:
+                  type: string
+              required:
+              - computeEnvironmentName
+              - providerRef
+              - serviceRole
+              - type
+              type: object
           type: object
       type: object
   versions:

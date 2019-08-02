@@ -514,8 +514,118 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                excessCapacityTerminationPolicy:
+                  type: string
+                launchTemplateConfig:
+                  items:
+                    properties:
+                      launchTemplateSpecification:
+                        items:
+                          properties:
+                            launchTemplateID:
+                              type: string
+                            launchTemplateName:
+                              type: string
+                            version:
+                              type: string
+                          required:
+                          - version
+                          type: object
+                        maxItems: 1
+                        minItems: 1
+                        type: array
+                      override:
+                        items:
+                          properties:
+                            availabilityZone:
+                              type: string
+                            instanceType:
+                              type: string
+                            maxPrice:
+                              type: string
+                            priority:
+                              description: A Number represents a JSON number literal.
+                              type: string
+                            subnetID:
+                              type: string
+                            weightedCapacity:
+                              description: A Number represents a JSON number literal.
+                              type: string
+                          type: object
+                        maxItems: 50
+                        type: array
+                    required:
+                    - launchTemplateSpecification
+                    type: object
+                  maxItems: 1
+                  minItems: 1
+                  type: array
+                onDemandOptions:
+                  items:
+                    properties:
+                      allocationStrategy:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                replaceUnhealthyInstances:
+                  type: boolean
+                spotOptions:
+                  items:
+                    properties:
+                      allocationStrategy:
+                        type: string
+                      instanceInterruptionBehavior:
+                        type: string
+                      instancePoolsToUseCount:
+                        type: integer
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                targetCapacitySpecification:
+                  items:
+                    properties:
+                      defaultTargetCapacityType:
+                        type: string
+                      onDemandTargetCapacity:
+                        type: integer
+                      spotTargetCapacity:
+                        type: integer
+                      totalTargetCapacity:
+                        type: integer
+                    required:
+                    - defaultTargetCapacityType
+                    - totalTargetCapacity
+                    type: object
+                  maxItems: 1
+                  minItems: 1
+                  type: array
+                terminateInstances:
+                  type: boolean
+                terminateInstancesWithExpiration:
+                  type: boolean
+                type:
+                  type: string
+              required:
+              - launchTemplateConfig
+              - providerRef
+              - targetCapacitySpecification
+              type: object
           type: object
       type: object
   versions:

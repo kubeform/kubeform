@@ -458,8 +458,62 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                description:
+                  type: string
+                diskEncryptionKey:
+                  items:
+                    properties:
+                      rawKey:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                labels:
+                  additionalProperties:
+                    type: string
+                  type: object
+                name:
+                  type: string
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                region:
+                  type: string
+                replicaZones:
+                  items:
+                    type: string
+                  maxItems: 2
+                  minItems: 2
+                  type: array
+                size:
+                  type: integer
+                snapshot:
+                  type: string
+                sourceSnapshotEncryptionKey:
+                  items:
+                    properties:
+                      rawKey:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                type:
+                  type: string
+              required:
+              - name
+              - providerRef
+              - replicaZones
+              type: object
           type: object
       type: object
   versions:

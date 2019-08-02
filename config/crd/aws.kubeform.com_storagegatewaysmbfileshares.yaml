@@ -451,8 +451,55 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                authentication:
+                  type: string
+                defaultStorageClass:
+                  type: string
+                gatewayArn:
+                  type: string
+                guessMimeTypeEnabled:
+                  type: boolean
+                invalidUserList:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                kmsEncrypted:
+                  type: boolean
+                kmsKeyArn:
+                  type: string
+                locationArn:
+                  type: string
+                objectACL:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                readOnly:
+                  type: boolean
+                requesterPays:
+                  type: boolean
+                roleArn:
+                  type: string
+                validUserList:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+              required:
+              - gatewayArn
+              - locationArn
+              - providerRef
+              - roleArn
+              type: object
           type: object
       type: object
   versions:

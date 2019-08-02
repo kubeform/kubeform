@@ -495,8 +495,99 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                algorithm:
+                  type: string
+                dropletIDS:
+                  items:
+                    format: int64
+                    type: integer
+                  type: array
+                  uniqueItems: true
+                dropletTag:
+                  type: string
+                enableProxyProtocol:
+                  type: boolean
+                forwardingRule:
+                  items:
+                    properties:
+                      certificateID:
+                        type: string
+                      entryPort:
+                        type: integer
+                      entryProtocol:
+                        type: string
+                      targetPort:
+                        type: integer
+                      targetProtocol:
+                        type: string
+                      tlsPassthrough:
+                        type: boolean
+                    required:
+                    - entryPort
+                    - entryProtocol
+                    - targetPort
+                    - targetProtocol
+                    type: object
+                  minItems: 1
+                  type: array
+                healthcheck:
+                  items:
+                    properties:
+                      checkIntervalSeconds:
+                        type: integer
+                      healthyThreshold:
+                        type: integer
+                      path:
+                        type: string
+                      port:
+                        type: integer
+                      protocol:
+                        type: string
+                      responseTimeoutSeconds:
+                        type: integer
+                      unhealthyThreshold:
+                        type: integer
+                    required:
+                    - port
+                    - protocol
+                    type: object
+                  maxItems: 1
+                  type: array
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                redirectHTTPToHTTPS:
+                  type: boolean
+                region:
+                  type: string
+                stickySessions:
+                  items:
+                    properties:
+                      cookieName:
+                        type: string
+                      cookieTtlSeconds:
+                        type: integer
+                      type:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - forwardingRule
+              - name
+              - providerRef
+              - region
+              type: object
           type: object
       type: object
   versions:

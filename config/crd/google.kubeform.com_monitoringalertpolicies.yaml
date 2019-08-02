@@ -544,8 +544,150 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                combiner:
+                  type: string
+                conditions:
+                  items:
+                    properties:
+                      conditionAbsent:
+                        items:
+                          properties:
+                            aggregations:
+                              items:
+                                properties:
+                                  alignmentPeriod:
+                                    type: string
+                                  crossSeriesReducer:
+                                    type: string
+                                  groupByFields:
+                                    items:
+                                      type: string
+                                    type: array
+                                  perSeriesAligner:
+                                    type: string
+                                type: object
+                              type: array
+                            duration:
+                              type: string
+                            filter:
+                              type: string
+                            trigger:
+                              items:
+                                properties:
+                                  count:
+                                    type: integer
+                                  percent:
+                                    description: A Number represents a JSON number
+                                      literal.
+                                    type: string
+                                type: object
+                              maxItems: 1
+                              type: array
+                          required:
+                          - duration
+                          type: object
+                        maxItems: 1
+                        type: array
+                      conditionThreshold:
+                        items:
+                          properties:
+                            aggregations:
+                              items:
+                                properties:
+                                  alignmentPeriod:
+                                    type: string
+                                  crossSeriesReducer:
+                                    type: string
+                                  groupByFields:
+                                    items:
+                                      type: string
+                                    type: array
+                                  perSeriesAligner:
+                                    type: string
+                                type: object
+                              type: array
+                            comparison:
+                              type: string
+                            denominatorAggregations:
+                              items:
+                                properties:
+                                  alignmentPeriod:
+                                    type: string
+                                  crossSeriesReducer:
+                                    type: string
+                                  groupByFields:
+                                    items:
+                                      type: string
+                                    type: array
+                                  perSeriesAligner:
+                                    type: string
+                                type: object
+                              type: array
+                            denominatorFilter:
+                              type: string
+                            duration:
+                              type: string
+                            filter:
+                              type: string
+                            thresholdValue:
+                              description: A Number represents a JSON number literal.
+                              type: string
+                            trigger:
+                              items:
+                                properties:
+                                  count:
+                                    type: integer
+                                  percent:
+                                    description: A Number represents a JSON number
+                                      literal.
+                                    type: string
+                                type: object
+                              maxItems: 1
+                              type: array
+                          required:
+                          - comparison
+                          - duration
+                          type: object
+                        maxItems: 1
+                        type: array
+                      displayName:
+                        type: string
+                    required:
+                    - displayName
+                    type: object
+                  type: array
+                displayName:
+                  type: string
+                enabled:
+                  type: boolean
+                labels:
+                  items:
+                    type: string
+                  type: array
+                notificationChannels:
+                  items:
+                    type: string
+                  type: array
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+              required:
+              - combiner
+              - conditions
+              - displayName
+              - enabled
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

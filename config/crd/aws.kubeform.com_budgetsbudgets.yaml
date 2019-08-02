@@ -501,8 +501,105 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                accountID:
+                  type: string
+                budgetType:
+                  type: string
+                costFilters:
+                  additionalProperties:
+                    type: string
+                  type: object
+                costTypes:
+                  items:
+                    properties:
+                      includeCredit:
+                        type: boolean
+                      includeDiscount:
+                        type: boolean
+                      includeOtherSubscription:
+                        type: boolean
+                      includeRecurring:
+                        type: boolean
+                      includeRefund:
+                        type: boolean
+                      includeSubscription:
+                        type: boolean
+                      includeSupport:
+                        type: boolean
+                      includeTax:
+                        type: boolean
+                      includeUpfront:
+                        type: boolean
+                      useAmortized:
+                        type: boolean
+                      useBlended:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                limitAmount:
+                  type: string
+                limitUnit:
+                  type: string
+                name:
+                  type: string
+                namePrefix:
+                  type: string
+                notification:
+                  items:
+                    properties:
+                      comparisonOperator:
+                        type: string
+                      notificationType:
+                        type: string
+                      subscriberEmailAddresses:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      subscriberSnsTopicArns:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      threshold:
+                        description: A Number represents a JSON number literal.
+                        type: string
+                      thresholdType:
+                        type: string
+                    required:
+                    - comparisonOperator
+                    - notificationType
+                    - threshold
+                    - thresholdType
+                    type: object
+                  type: array
+                  uniqueItems: true
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                timePeriodEnd:
+                  type: string
+                timePeriodStart:
+                  type: string
+                timeUnit:
+                  type: string
+              required:
+              - budgetType
+              - limitAmount
+              - limitUnit
+              - providerRef
+              - timePeriodStart
+              - timeUnit
+              type: object
           type: object
       type: object
   versions:

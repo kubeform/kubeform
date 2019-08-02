@@ -801,8 +801,405 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                automaticOsUpgrade:
+                  type: boolean
+                bootDiagnostics:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                      storageURI:
+                        type: string
+                    required:
+                    - storageURI
+                    type: object
+                  maxItems: 1
+                  type: array
+                evictionPolicy:
+                  type: string
+                extension:
+                  items:
+                    properties:
+                      autoUpgradeMinorVersion:
+                        type: boolean
+                      name:
+                        type: string
+                      provisionAfterExtensions:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      publisher:
+                        type: string
+                      settings:
+                        type: string
+                      type:
+                        type: string
+                      typeHandlerVersion:
+                        type: string
+                    required:
+                    - name
+                    - publisher
+                    - type
+                    - typeHandlerVersion
+                    type: object
+                  type: array
+                  uniqueItems: true
+                healthProbeID:
+                  type: string
+                identity:
+                  items:
+                    properties:
+                      identityIDS:
+                        items:
+                          type: string
+                        type: array
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                licenseType:
+                  type: string
+                location:
+                  type: string
+                name:
+                  type: string
+                networkProfile:
+                  items:
+                    properties:
+                      acceleratedNetworking:
+                        type: boolean
+                      dnsSettings:
+                        items:
+                          properties:
+                            dnsServers:
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - dnsServers
+                          type: object
+                        maxItems: 1
+                        type: array
+                      ipConfiguration:
+                        items:
+                          properties:
+                            applicationGatewayBackendAddressPoolIDS:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                            applicationSecurityGroupIDS:
+                              items:
+                                type: string
+                              maxItems: 20
+                              type: array
+                              uniqueItems: true
+                            loadBalancerBackendAddressPoolIDS:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                            loadBalancerInboundNATRulesIDS:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                            name:
+                              type: string
+                            primary:
+                              type: boolean
+                            publicIPAddressConfiguration:
+                              items:
+                                properties:
+                                  domainNameLabel:
+                                    type: string
+                                  idleTimeout:
+                                    type: integer
+                                  name:
+                                    type: string
+                                required:
+                                - domainNameLabel
+                                - idleTimeout
+                                - name
+                                type: object
+                              maxItems: 1
+                              type: array
+                            subnetID:
+                              type: string
+                          required:
+                          - name
+                          - primary
+                          - subnetID
+                          type: object
+                        type: array
+                      ipForwarding:
+                        type: boolean
+                      name:
+                        type: string
+                      networkSecurityGroupID:
+                        type: string
+                      primary:
+                        type: boolean
+                    required:
+                    - ipConfiguration
+                    - name
+                    - primary
+                    type: object
+                  type: array
+                  uniqueItems: true
+                osProfile:
+                  items:
+                    properties:
+                      adminUsername:
+                        type: string
+                      computerNamePrefix:
+                        type: string
+                      customData:
+                        type: string
+                    required:
+                    - adminUsername
+                    - computerNamePrefix
+                    type: object
+                  maxItems: 1
+                  type: array
+                osProfileLinuxConfig:
+                  items:
+                    properties:
+                      disablePasswordAuthentication:
+                        type: boolean
+                      sshKeys:
+                        items:
+                          properties:
+                            keyData:
+                              type: string
+                            path:
+                              type: string
+                          required:
+                          - path
+                          type: object
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                osProfileSecrets:
+                  items:
+                    properties:
+                      sourceVaultID:
+                        type: string
+                      vaultCertificates:
+                        items:
+                          properties:
+                            certificateStore:
+                              type: string
+                            certificateURL:
+                              type: string
+                          required:
+                          - certificateURL
+                          type: object
+                        type: array
+                    required:
+                    - sourceVaultID
+                    type: object
+                  type: array
+                  uniqueItems: true
+                osProfileWindowsConfig:
+                  items:
+                    properties:
+                      additionalUnattendConfig:
+                        items:
+                          properties:
+                            component:
+                              type: string
+                            pass:
+                              type: string
+                            settingName:
+                              type: string
+                          required:
+                          - component
+                          - pass
+                          - settingName
+                          type: object
+                        type: array
+                      enableAutomaticUpgrades:
+                        type: boolean
+                      provisionVmAgent:
+                        type: boolean
+                      winrm:
+                        items:
+                          properties:
+                            certificateURL:
+                              type: string
+                            protocol:
+                              type: string
+                          required:
+                          - protocol
+                          type: object
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                overprovision:
+                  type: boolean
+                plan:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      product:
+                        type: string
+                      publisher:
+                        type: string
+                    required:
+                    - name
+                    - product
+                    - publisher
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                priority:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                rollingUpgradePolicy:
+                  items:
+                    properties:
+                      maxBatchInstancePercent:
+                        type: integer
+                      maxUnhealthyInstancePercent:
+                        type: integer
+                      maxUnhealthyUpgradedInstancePercent:
+                        type: integer
+                      pauseTimeBetweenBatches:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                singlePlacementGroup:
+                  type: boolean
+                sku:
+                  items:
+                    properties:
+                      capacity:
+                        type: integer
+                      name:
+                        type: string
+                      tier:
+                        type: string
+                    required:
+                    - capacity
+                    - name
+                    type: object
+                  maxItems: 1
+                  type: array
+                storageProfileDataDisk:
+                  items:
+                    properties:
+                      caching:
+                        type: string
+                      createOption:
+                        type: string
+                      diskSizeGb:
+                        type: integer
+                      lun:
+                        type: integer
+                      managedDiskType:
+                        type: string
+                    required:
+                    - createOption
+                    - lun
+                    type: object
+                  type: array
+                storageProfileImageReference:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      offer:
+                        type: string
+                      publisher:
+                        type: string
+                      sku:
+                        type: string
+                      version:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                storageProfileOsDisk:
+                  items:
+                    properties:
+                      caching:
+                        type: string
+                      createOption:
+                        type: string
+                      image:
+                        type: string
+                      managedDiskType:
+                        type: string
+                      name:
+                        type: string
+                      osType:
+                        type: string
+                      vhdContainers:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - createOption
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                upgradePolicyMode:
+                  type: string
+                zones:
+                  items:
+                    type: string
+                  type: array
+              required:
+              - location
+              - name
+              - networkProfile
+              - osProfile
+              - providerRef
+              - resourceGroupName
+              - sku
+              - storageProfileOsDisk
+              - upgradePolicyMode
+              type: object
           type: object
       type: object
   versions:

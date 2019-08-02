@@ -497,8 +497,101 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                accessTier:
+                  type: string
+                accountEncryptionSource:
+                  type: string
+                accountKind:
+                  type: string
+                accountReplicationType:
+                  type: string
+                accountTier:
+                  type: string
+                accountType:
+                  description: Deprecated
+                  type: string
+                customDomain:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      useSubdomain:
+                        type: boolean
+                    required:
+                    - name
+                    type: object
+                  maxItems: 1
+                  type: array
+                enableBlobEncryption:
+                  type: boolean
+                enableFileEncryption:
+                  type: boolean
+                enableHTTPSTrafficOnly:
+                  type: boolean
+                identity:
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                isHnsEnabled:
+                  type: boolean
+                location:
+                  type: string
+                name:
+                  type: string
+                networkRules:
+                  items:
+                    properties:
+                      bypass:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      defaultAction:
+                        type: string
+                      ipRules:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      virtualNetworkSubnetIDS:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - accountReplicationType
+              - accountTier
+              - location
+              - name
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

@@ -461,8 +461,65 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                apnsCredential:
+                  items:
+                    properties:
+                      applicationMode:
+                        type: string
+                      bundleID:
+                        type: string
+                      keyID:
+                        type: string
+                      teamID:
+                        type: string
+                    required:
+                    - applicationMode
+                    - bundleID
+                    - keyID
+                    - teamID
+                    type: object
+                  maxItems: 1
+                  type: array
+                gcmCredential:
+                  items:
+                    type: object
+                  maxItems: 1
+                  type: array
+                location:
+                  type: string
+                name:
+                  type: string
+                namespaceName:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+              required:
+              - location
+              - name
+              - namespaceName
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

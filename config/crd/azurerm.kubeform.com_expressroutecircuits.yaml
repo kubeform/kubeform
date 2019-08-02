@@ -454,8 +454,58 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                allowClassicOperations:
+                  type: boolean
+                bandwidthInMbps:
+                  type: integer
+                location:
+                  type: string
+                name:
+                  type: string
+                peeringLocation:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                serviceProviderName:
+                  type: string
+                sku:
+                  items:
+                    properties:
+                      family:
+                        type: string
+                      tier:
+                        type: string
+                    required:
+                    - family
+                    - tier
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - bandwidthInMbps
+              - location
+              - name
+              - peeringLocation
+              - providerRef
+              - resourceGroupName
+              - serviceProviderName
+              - sku
+              type: object
           type: object
       type: object
   versions:

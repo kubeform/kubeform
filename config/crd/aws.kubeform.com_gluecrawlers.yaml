@@ -490,8 +490,94 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                classifiers:
+                  items:
+                    type: string
+                  type: array
+                configuration:
+                  type: string
+                databaseName:
+                  type: string
+                description:
+                  type: string
+                dynamodbTarget:
+                  items:
+                    properties:
+                      path:
+                        type: string
+                    required:
+                    - path
+                    type: object
+                  minItems: 1
+                  type: array
+                jdbcTarget:
+                  items:
+                    properties:
+                      connectionName:
+                        type: string
+                      exclusions:
+                        items:
+                          type: string
+                        type: array
+                      path:
+                        type: string
+                    required:
+                    - connectionName
+                    - path
+                    type: object
+                  minItems: 1
+                  type: array
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                role:
+                  type: string
+                s3Target:
+                  items:
+                    properties:
+                      exclusions:
+                        items:
+                          type: string
+                        type: array
+                      path:
+                        type: string
+                    required:
+                    - path
+                    type: object
+                  minItems: 1
+                  type: array
+                schedule:
+                  type: string
+                schemaChangePolicy:
+                  items:
+                    properties:
+                      deleteBehavior:
+                        type: string
+                      updateBehavior:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                securityConfiguration:
+                  type: string
+                tablePrefix:
+                  type: string
+              required:
+              - databaseName
+              - name
+              - providerRef
+              - role
+              type: object
           type: object
       type: object
   versions:

@@ -677,8 +677,281 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                availabilitySetID:
+                  type: string
+                bootDiagnostics:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                      storageURI:
+                        type: string
+                    required:
+                    - enabled
+                    - storageURI
+                    type: object
+                  maxItems: 1
+                  type: array
+                deleteDataDisksOnTermination:
+                  type: boolean
+                deleteOsDiskOnTermination:
+                  type: boolean
+                identity:
+                  items:
+                    properties:
+                      identityIDS:
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                licenseType:
+                  type: string
+                location:
+                  type: string
+                name:
+                  type: string
+                networkInterfaceIDS:
+                  items:
+                    type: string
+                  type: array
+                osProfile:
+                  items:
+                    properties:
+                      adminUsername:
+                        type: string
+                      computerName:
+                        type: string
+                      customData:
+                        type: string
+                    required:
+                    - adminUsername
+                    - computerName
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                osProfileLinuxConfig:
+                  items:
+                    properties:
+                      disablePasswordAuthentication:
+                        type: boolean
+                      sshKeys:
+                        items:
+                          properties:
+                            keyData:
+                              type: string
+                            path:
+                              type: string
+                          required:
+                          - keyData
+                          - path
+                          type: object
+                        type: array
+                    required:
+                    - disablePasswordAuthentication
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                osProfileSecrets:
+                  items:
+                    properties:
+                      sourceVaultID:
+                        type: string
+                      vaultCertificates:
+                        items:
+                          properties:
+                            certificateStore:
+                              type: string
+                            certificateURL:
+                              type: string
+                          required:
+                          - certificateURL
+                          type: object
+                        type: array
+                    required:
+                    - sourceVaultID
+                    type: object
+                  type: array
+                osProfileWindowsConfig:
+                  items:
+                    properties:
+                      additionalUnattendConfig:
+                        items:
+                          properties:
+                            component:
+                              type: string
+                            pass:
+                              type: string
+                            settingName:
+                              type: string
+                          required:
+                          - component
+                          - pass
+                          - settingName
+                          type: object
+                        type: array
+                      enableAutomaticUpgrades:
+                        type: boolean
+                      provisionVmAgent:
+                        type: boolean
+                      timezone:
+                        type: string
+                      winrm:
+                        items:
+                          properties:
+                            certificateURL:
+                              type: string
+                            protocol:
+                              type: string
+                          required:
+                          - protocol
+                          type: object
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                plan:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      product:
+                        type: string
+                      publisher:
+                        type: string
+                    required:
+                    - name
+                    - product
+                    - publisher
+                    type: object
+                  maxItems: 1
+                  type: array
+                primaryNetworkInterfaceID:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                storageDataDisk:
+                  items:
+                    properties:
+                      caching:
+                        type: string
+                      createOption:
+                        type: string
+                      diskSizeGb:
+                        type: integer
+                      lun:
+                        type: integer
+                      managedDiskID:
+                        type: string
+                      managedDiskType:
+                        type: string
+                      name:
+                        type: string
+                      vhdURI:
+                        type: string
+                      writeAcceleratorEnabled:
+                        type: boolean
+                    required:
+                    - createOption
+                    - lun
+                    - name
+                    type: object
+                  type: array
+                storageImageReference:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      offer:
+                        type: string
+                      publisher:
+                        type: string
+                      sku:
+                        type: string
+                      version:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                storageOsDisk:
+                  items:
+                    properties:
+                      caching:
+                        type: string
+                      createOption:
+                        type: string
+                      diskSizeGb:
+                        type: integer
+                      imageURI:
+                        type: string
+                      managedDiskID:
+                        type: string
+                      managedDiskType:
+                        type: string
+                      name:
+                        type: string
+                      osType:
+                        type: string
+                      vhdURI:
+                        type: string
+                      writeAcceleratorEnabled:
+                        type: boolean
+                    required:
+                    - createOption
+                    - name
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                vmSize:
+                  type: string
+                zones:
+                  items:
+                    type: string
+                  maxItems: 1
+                  type: array
+              required:
+              - location
+              - name
+              - networkInterfaceIDS
+              - providerRef
+              - resourceGroupName
+              - storageOsDisk
+              - vmSize
+              type: object
           type: object
       type: object
   versions:

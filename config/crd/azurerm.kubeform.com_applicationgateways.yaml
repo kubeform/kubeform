@@ -936,8 +936,540 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                authenticationCertificate:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  type: array
+                autoscaleConfiguration:
+                  items:
+                    properties:
+                      maxCapacity:
+                        type: integer
+                      minCapacity:
+                        type: integer
+                    required:
+                    - minCapacity
+                    type: object
+                  maxItems: 1
+                  type: array
+                backendAddressPool:
+                  items:
+                    properties:
+                      fqdnList:
+                        description: Deprecated
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                      fqdns:
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                      ipAddressList:
+                        description: Deprecated
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                      ipAddresses:
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                      name:
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  type: array
+                backendHTTPSettings:
+                  items:
+                    properties:
+                      affinityCookieName:
+                        type: string
+                      authenticationCertificate:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                          required:
+                          - name
+                          type: object
+                        type: array
+                      connectionDraining:
+                        items:
+                          properties:
+                            drainTimeoutSec:
+                              type: integer
+                            enabled:
+                              type: boolean
+                          required:
+                          - drainTimeoutSec
+                          - enabled
+                          type: object
+                        maxItems: 1
+                        type: array
+                      cookieBasedAffinity:
+                        type: string
+                      hostName:
+                        type: string
+                      name:
+                        type: string
+                      path:
+                        type: string
+                      pickHostNameFromBackendAddress:
+                        type: boolean
+                      port:
+                        type: integer
+                      probeName:
+                        type: string
+                      protocol:
+                        type: string
+                      requestTimeout:
+                        type: integer
+                    required:
+                    - cookieBasedAffinity
+                    - name
+                    - port
+                    - protocol
+                    type: object
+                  minItems: 1
+                  type: array
+                customErrorConfiguration:
+                  items:
+                    properties:
+                      customErrorPageURL:
+                        type: string
+                      statusCode:
+                        type: string
+                    required:
+                    - customErrorPageURL
+                    - statusCode
+                    type: object
+                  type: array
+                disabledSslProtocols:
+                  description: Deprecated
+                  items:
+                    type: string
+                  type: array
+                enableHttp2:
+                  type: boolean
+                frontendIPConfiguration:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      privateIPAddress:
+                        type: string
+                      privateIPAddressAllocation:
+                        type: string
+                      publicIPAddressID:
+                        type: string
+                      subnetID:
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  minItems: 1
+                  type: array
+                frontendPort:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      port:
+                        type: integer
+                    required:
+                    - name
+                    - port
+                    type: object
+                  type: array
+                gatewayIPConfiguration:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      subnetID:
+                        type: string
+                    required:
+                    - name
+                    - subnetID
+                    type: object
+                  maxItems: 2
+                  type: array
+                httpListener:
+                  items:
+                    properties:
+                      customErrorConfiguration:
+                        items:
+                          properties:
+                            customErrorPageURL:
+                              type: string
+                            statusCode:
+                              type: string
+                          required:
+                          - customErrorPageURL
+                          - statusCode
+                          type: object
+                        type: array
+                      frontendIPConfigurationName:
+                        type: string
+                      frontendPortName:
+                        type: string
+                      hostName:
+                        type: string
+                      name:
+                        type: string
+                      protocol:
+                        type: string
+                      requireSni:
+                        type: boolean
+                      sslCertificateName:
+                        type: string
+                    required:
+                    - frontendIPConfigurationName
+                    - frontendPortName
+                    - name
+                    - protocol
+                    type: object
+                  type: array
+                location:
+                  type: string
+                name:
+                  type: string
+                probe:
+                  items:
+                    properties:
+                      host:
+                        type: string
+                      interval:
+                        type: integer
+                      match:
+                        items:
+                          properties:
+                            body:
+                              type: string
+                            statusCode:
+                              items:
+                                type: string
+                              type: array
+                          type: object
+                        maxItems: 1
+                        type: array
+                      minimumServers:
+                        type: integer
+                      name:
+                        type: string
+                      path:
+                        type: string
+                      pickHostNameFromBackendHTTPSettings:
+                        type: boolean
+                      protocol:
+                        type: string
+                      timeout:
+                        type: integer
+                      unhealthyThreshold:
+                        type: integer
+                    required:
+                    - interval
+                    - name
+                    - path
+                    - protocol
+                    - timeout
+                    - unhealthyThreshold
+                    type: object
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                redirectConfiguration:
+                  items:
+                    properties:
+                      includePath:
+                        type: boolean
+                      includeQueryString:
+                        type: boolean
+                      name:
+                        type: string
+                      redirectType:
+                        type: string
+                      targetListenerName:
+                        type: string
+                      targetURL:
+                        type: string
+                    required:
+                    - name
+                    - redirectType
+                    type: object
+                  type: array
+                requestRoutingRule:
+                  items:
+                    properties:
+                      backendAddressPoolName:
+                        type: string
+                      backendHTTPSettingsName:
+                        type: string
+                      httpListenerName:
+                        type: string
+                      name:
+                        type: string
+                      redirectConfigurationName:
+                        type: string
+                      rewriteRuleSetName:
+                        type: string
+                      ruleType:
+                        type: string
+                      urlPathMapName:
+                        type: string
+                    required:
+                    - httpListenerName
+                    - name
+                    - ruleType
+                    type: object
+                  minItems: 1
+                  type: array
+                resourceGroupName:
+                  type: string
+                rewriteRuleSet:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      rewriteRule:
+                        items:
+                          properties:
+                            condition:
+                              items:
+                                properties:
+                                  ignoreCase:
+                                    type: boolean
+                                  negate:
+                                    type: boolean
+                                  pattern:
+                                    type: string
+                                  variable:
+                                    type: string
+                                required:
+                                - pattern
+                                - variable
+                                type: object
+                              type: array
+                            name:
+                              type: string
+                            requestHeaderConfiguration:
+                              items:
+                                properties:
+                                  headerName:
+                                    type: string
+                                  headerValue:
+                                    type: string
+                                required:
+                                - headerName
+                                - headerValue
+                                type: object
+                              type: array
+                            responseHeaderConfiguration:
+                              items:
+                                properties:
+                                  headerName:
+                                    type: string
+                                  headerValue:
+                                    type: string
+                                required:
+                                - headerName
+                                - headerValue
+                                type: object
+                              type: array
+                            ruleSequence:
+                              type: integer
+                          required:
+                          - name
+                          - ruleSequence
+                          type: object
+                        type: array
+                    required:
+                    - name
+                    type: object
+                  type: array
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                sku:
+                  items:
+                    properties:
+                      capacity:
+                        type: integer
+                      name:
+                        type: string
+                      tier:
+                        type: string
+                    required:
+                    - name
+                    - tier
+                    type: object
+                  maxItems: 1
+                  type: array
+                sslCertificate:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  type: array
+                sslPolicy:
+                  items:
+                    properties:
+                      cipherSuites:
+                        items:
+                          type: string
+                        type: array
+                      disabledProtocols:
+                        items:
+                          type: string
+                        type: array
+                      minProtocolVersion:
+                        type: string
+                      policyName:
+                        type: string
+                      policyType:
+                        type: string
+                    type: object
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                urlPathMap:
+                  items:
+                    properties:
+                      defaultBackendAddressPoolName:
+                        type: string
+                      defaultBackendHTTPSettingsName:
+                        type: string
+                      defaultRedirectConfigurationName:
+                        type: string
+                      defaultRewriteRuleSetName:
+                        type: string
+                      name:
+                        type: string
+                      pathRule:
+                        items:
+                          properties:
+                            backendAddressPoolName:
+                              type: string
+                            backendHTTPSettingsName:
+                              type: string
+                            name:
+                              type: string
+                            paths:
+                              items:
+                                type: string
+                              type: array
+                            redirectConfigurationName:
+                              type: string
+                            rewriteRuleSetName:
+                              type: string
+                          required:
+                          - name
+                          - paths
+                          type: object
+                        type: array
+                    required:
+                    - name
+                    - pathRule
+                    type: object
+                  type: array
+                wafConfiguration:
+                  items:
+                    properties:
+                      disabledRuleGroup:
+                        items:
+                          properties:
+                            ruleGroupName:
+                              type: string
+                            rules:
+                              items:
+                                format: int64
+                                type: integer
+                              type: array
+                          required:
+                          - ruleGroupName
+                          type: object
+                        type: array
+                      enabled:
+                        type: boolean
+                      exclusion:
+                        items:
+                          properties:
+                            matchVariable:
+                              type: string
+                            selector:
+                              type: string
+                            selectorMatchOperator:
+                              type: string
+                          required:
+                          - matchVariable
+                          type: object
+                        type: array
+                      fileUploadLimitMb:
+                        type: integer
+                      firewallMode:
+                        type: string
+                      maxRequestBodySizeKb:
+                        type: integer
+                      requestBodyCheck:
+                        type: boolean
+                      ruleSetType:
+                        type: string
+                      ruleSetVersion:
+                        type: string
+                    required:
+                    - enabled
+                    - firewallMode
+                    - ruleSetVersion
+                    type: object
+                  maxItems: 1
+                  type: array
+                zones:
+                  items:
+                    type: string
+                  type: array
+              required:
+              - backendAddressPool
+              - backendHTTPSettings
+              - frontendIPConfiguration
+              - frontendPort
+              - gatewayIPConfiguration
+              - httpListener
+              - location
+              - name
+              - providerRef
+              - requestRoutingRule
+              - resourceGroupName
+              - sku
+              type: object
           type: object
       type: object
   versions:

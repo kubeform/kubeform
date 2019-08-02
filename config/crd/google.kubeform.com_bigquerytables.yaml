@@ -462,8 +462,66 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                datasetID:
+                  type: string
+                description:
+                  type: string
+                expirationTime:
+                  type: integer
+                friendlyName:
+                  type: string
+                labels:
+                  additionalProperties:
+                    type: string
+                  type: object
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                schema:
+                  type: string
+                tableID:
+                  type: string
+                timePartitioning:
+                  items:
+                    properties:
+                      expirationMs:
+                        type: integer
+                      field:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                view:
+                  items:
+                    properties:
+                      query:
+                        type: string
+                      useLegacySQL:
+                        type: boolean
+                    required:
+                    - query
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - datasetID
+              - providerRef
+              - tableID
+              type: object
           type: object
       type: object
   versions:

@@ -467,8 +467,71 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                description:
+                  type: string
+                name:
+                  type: string
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                rule:
+                  items:
+                    properties:
+                      action:
+                        type: string
+                      description:
+                        type: string
+                      match:
+                        items:
+                          properties:
+                            config:
+                              items:
+                                properties:
+                                  srcIPRanges:
+                                    items:
+                                      type: string
+                                    maxItems: 5
+                                    minItems: 1
+                                    type: array
+                                    uniqueItems: true
+                                required:
+                                - srcIPRanges
+                                type: object
+                              maxItems: 1
+                              type: array
+                            versionedExpr:
+                              type: string
+                          required:
+                          - config
+                          - versionedExpr
+                          type: object
+                        maxItems: 1
+                        type: array
+                      preview:
+                        type: boolean
+                      priority:
+                        type: integer
+                    required:
+                    - action
+                    - match
+                    - priority
+                    type: object
+                  type: array
+                  uniqueItems: true
+              required:
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

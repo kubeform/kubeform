@@ -442,8 +442,46 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                backendPort:
+                  type: integer
+                enableFloatingIP:
+                  type: boolean
+                frontendIPConfigurationName:
+                  type: string
+                frontendPort:
+                  type: integer
+                loadbalancerID:
+                  type: string
+                location:
+                  description: Deprecated
+                  type: string
+                name:
+                  type: string
+                protocol:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+              required:
+              - backendPort
+              - frontendIPConfigurationName
+              - frontendPort
+              - loadbalancerID
+              - name
+              - protocol
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

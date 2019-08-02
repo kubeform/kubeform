@@ -427,8 +427,31 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                autoCreateRoutes:
+                  type: boolean
+                name:
+                  type: string
+                network:
+                  type: string
+                peerNetwork:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+              required:
+              - name
+              - network
+              - peerNetwork
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

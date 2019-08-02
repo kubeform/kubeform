@@ -503,8 +503,107 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                accessPolicy:
+                  items:
+                    properties:
+                      applicationID:
+                        type: string
+                      certificatePermissions:
+                        items:
+                          type: string
+                        type: array
+                      keyPermissions:
+                        items:
+                          type: string
+                        type: array
+                      objectID:
+                        type: string
+                      secretPermissions:
+                        items:
+                          type: string
+                        type: array
+                      storagePermissions:
+                        items:
+                          type: string
+                        type: array
+                      tenantID:
+                        type: string
+                    required:
+                    - objectID
+                    - tenantID
+                    type: object
+                  maxItems: 1024
+                  type: array
+                enabledForDeployment:
+                  type: boolean
+                enabledForDiskEncryption:
+                  type: boolean
+                enabledForTemplateDeployment:
+                  type: boolean
+                location:
+                  type: string
+                name:
+                  type: string
+                networkAcls:
+                  items:
+                    properties:
+                      bypass:
+                        type: string
+                      defaultAction:
+                        type: string
+                      ipRules:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      virtualNetworkSubnetIDS:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - bypass
+                    - defaultAction
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                sku:
+                  description: Deprecated
+                  items:
+                    properties:
+                      name:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                skuName:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                tenantID:
+                  type: string
+              required:
+              - location
+              - name
+              - providerRef
+              - resourceGroupName
+              - tenantID
+              type: object
           type: object
       type: object
   versions:

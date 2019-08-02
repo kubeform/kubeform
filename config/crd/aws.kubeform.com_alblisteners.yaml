@@ -547,8 +547,151 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                certificateArn:
+                  type: string
+                defaultAction:
+                  items:
+                    properties:
+                      authenticateCognito:
+                        items:
+                          properties:
+                            authenticationRequestExtraParams:
+                              additionalProperties:
+                                type: string
+                              type: object
+                            onUnauthenticatedRequest:
+                              type: string
+                            scope:
+                              type: string
+                            sessionCookieName:
+                              type: string
+                            sessionTimeout:
+                              type: integer
+                            userPoolArn:
+                              type: string
+                            userPoolClientID:
+                              type: string
+                            userPoolDomain:
+                              type: string
+                          required:
+                          - userPoolArn
+                          - userPoolClientID
+                          - userPoolDomain
+                          type: object
+                        maxItems: 1
+                        type: array
+                      authenticateOidc:
+                        items:
+                          properties:
+                            authenticationRequestExtraParams:
+                              additionalProperties:
+                                type: string
+                              type: object
+                            authorizationEndpoint:
+                              type: string
+                            clientID:
+                              type: string
+                            issuer:
+                              type: string
+                            onUnauthenticatedRequest:
+                              type: string
+                            scope:
+                              type: string
+                            sessionCookieName:
+                              type: string
+                            sessionTimeout:
+                              type: integer
+                            tokenEndpoint:
+                              type: string
+                            userInfoEndpoint:
+                              type: string
+                          required:
+                          - authorizationEndpoint
+                          - clientID
+                          - issuer
+                          - tokenEndpoint
+                          - userInfoEndpoint
+                          type: object
+                        maxItems: 1
+                        type: array
+                      fixedResponse:
+                        items:
+                          properties:
+                            contentType:
+                              type: string
+                            messageBody:
+                              type: string
+                            statusCode:
+                              type: string
+                          required:
+                          - contentType
+                          type: object
+                        maxItems: 1
+                        type: array
+                      order:
+                        type: integer
+                      redirect:
+                        items:
+                          properties:
+                            host:
+                              type: string
+                            path:
+                              type: string
+                            port:
+                              type: string
+                            protocol:
+                              type: string
+                            query:
+                              type: string
+                            statusCode:
+                              type: string
+                          required:
+                          - statusCode
+                          type: object
+                        maxItems: 1
+                        type: array
+                      targetGroupArn:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  type: array
+                loadBalancerArn:
+                  type: string
+                port:
+                  type: integer
+                protocol:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                sslPolicy:
+                  type: string
+              required:
+              - defaultAction
+              - loadBalancerArn
+              - port
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

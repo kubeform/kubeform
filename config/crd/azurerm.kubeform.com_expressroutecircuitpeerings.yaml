@@ -457,8 +457,61 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                expressRouteCircuitName:
+                  type: string
+                microsoftPeeringConfig:
+                  items:
+                    properties:
+                      advertisedPublicPrefixes:
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - advertisedPublicPrefixes
+                    type: object
+                  maxItems: 1
+                  type: array
+                peerAsn:
+                  type: integer
+                peeringType:
+                  type: string
+                primaryPeerAddressPrefix:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                secondaryPeerAddressPrefix:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                vlanID:
+                  type: integer
+              required:
+              - expressRouteCircuitName
+              - peeringType
+              - primaryPeerAddressPrefix
+              - providerRef
+              - resourceGroupName
+              - secondaryPeerAddressPrefix
+              - vlanID
+              type: object
           type: object
       type: object
   versions:

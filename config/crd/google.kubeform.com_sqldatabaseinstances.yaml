@@ -563,8 +563,167 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                databaseVersion:
+                  type: string
+                masterInstanceName:
+                  type: string
+                name:
+                  type: string
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                region:
+                  type: string
+                replicaConfiguration:
+                  items:
+                    properties:
+                      caCertificate:
+                        type: string
+                      clientCertificate:
+                        type: string
+                      clientKey:
+                        type: string
+                      connectRetryInterval:
+                        type: integer
+                      dumpFilePath:
+                        type: string
+                      failoverTarget:
+                        type: boolean
+                      masterHeartbeatPeriod:
+                        type: integer
+                      sslCipher:
+                        type: string
+                      username:
+                        type: string
+                      verifyServerCertificate:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                settings:
+                  items:
+                    properties:
+                      activationPolicy:
+                        type: string
+                      authorizedGaeApplications:
+                        items:
+                          type: string
+                        type: array
+                      availabilityType:
+                        type: string
+                      backupConfiguration:
+                        items:
+                          properties:
+                            binaryLogEnabled:
+                              type: boolean
+                            enabled:
+                              type: boolean
+                            startTime:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      crashSafeReplication:
+                        type: boolean
+                      databaseFlags:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          type: object
+                        type: array
+                      diskAutoresize:
+                        type: boolean
+                      diskSize:
+                        type: integer
+                      diskType:
+                        type: string
+                      ipConfiguration:
+                        items:
+                          properties:
+                            authorizedNetworks:
+                              items:
+                                properties:
+                                  expirationTime:
+                                    type: string
+                                  name:
+                                    type: string
+                                  value:
+                                    type: string
+                                type: object
+                              type: array
+                              uniqueItems: true
+                            ipv4Enabled:
+                              type: boolean
+                            privateNetwork:
+                              type: string
+                            requireSsl:
+                              type: boolean
+                          type: object
+                        maxItems: 1
+                        type: array
+                      locationPreference:
+                        items:
+                          properties:
+                            followGaeApplication:
+                              type: string
+                            zone:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      maintenanceWindow:
+                        items:
+                          properties:
+                            day:
+                              type: integer
+                            hour:
+                              type: integer
+                            updateTrack:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      pricingPlan:
+                        type: string
+                      replicationType:
+                        type: string
+                      tier:
+                        type: string
+                      userLabels:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    required:
+                    - tier
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - providerRef
+              - settings
+              type: object
           type: object
       type: object
   versions:

@@ -482,8 +482,86 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                administratorLogin:
+                  type: string
+                location:
+                  type: string
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                sku:
+                  items:
+                    properties:
+                      capacity:
+                        type: integer
+                      family:
+                        type: string
+                      name:
+                        type: string
+                      tier:
+                        type: string
+                    required:
+                    - capacity
+                    - family
+                    - name
+                    - tier
+                    type: object
+                  maxItems: 1
+                  type: array
+                sslEnforcement:
+                  type: string
+                storageProfile:
+                  items:
+                    properties:
+                      backupRetentionDays:
+                        type: integer
+                      geoRedundantBackup:
+                        type: string
+                      storageMb:
+                        type: integer
+                    required:
+                    - storageMb
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                version:
+                  type: string
+              required:
+              - administratorLogin
+              - location
+              - name
+              - providerRef
+              - resourceGroupName
+              - sku
+              - sslEnforcement
+              - storageProfile
+              - version
+              type: object
           type: object
       type: object
   versions:

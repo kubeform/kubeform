@@ -516,8 +516,120 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                accessLogs:
+                  items:
+                    properties:
+                      bucket:
+                        type: string
+                      bucketPrefix:
+                        type: string
+                      enabled:
+                        type: boolean
+                      interval:
+                        type: integer
+                    required:
+                    - bucket
+                    type: object
+                  maxItems: 1
+                  type: array
+                availabilityZones:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                connectionDraining:
+                  type: boolean
+                connectionDrainingTimeout:
+                  type: integer
+                crossZoneLoadBalancing:
+                  type: boolean
+                healthCheck:
+                  items:
+                    properties:
+                      healthyThreshold:
+                        type: integer
+                      interval:
+                        type: integer
+                      target:
+                        type: string
+                      timeout:
+                        type: integer
+                      unhealthyThreshold:
+                        type: integer
+                    required:
+                    - healthyThreshold
+                    - interval
+                    - target
+                    - timeout
+                    - unhealthyThreshold
+                    type: object
+                  maxItems: 1
+                  type: array
+                idleTimeout:
+                  type: integer
+                instances:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                internal:
+                  type: boolean
+                listener:
+                  items:
+                    properties:
+                      instancePort:
+                        type: integer
+                      instanceProtocol:
+                        type: string
+                      lbPort:
+                        type: integer
+                      lbProtocol:
+                        type: string
+                      sslCertificateID:
+                        type: string
+                    required:
+                    - instancePort
+                    - instanceProtocol
+                    - lbPort
+                    - lbProtocol
+                    type: object
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                namePrefix:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                securityGroups:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                sourceSecurityGroup:
+                  type: string
+                subnets:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - listener
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

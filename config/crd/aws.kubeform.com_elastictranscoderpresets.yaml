@@ -543,8 +543,147 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                audio:
+                  items:
+                    properties:
+                      audioPackingMode:
+                        type: string
+                      bitRate:
+                        type: string
+                      channels:
+                        type: string
+                      codec:
+                        type: string
+                      sampleRate:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                audioCodecOptions:
+                  items:
+                    properties:
+                      bitDepth:
+                        type: string
+                      bitOrder:
+                        type: string
+                      profile:
+                        type: string
+                      signed:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                container:
+                  type: string
+                description:
+                  type: string
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                thumbnails:
+                  items:
+                    properties:
+                      aspectRatio:
+                        type: string
+                      format:
+                        type: string
+                      interval:
+                        type: string
+                      maxHeight:
+                        type: string
+                      maxWidth:
+                        type: string
+                      paddingPolicy:
+                        type: string
+                      resolution:
+                        type: string
+                      sizingPolicy:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                type:
+                  type: string
+                video:
+                  items:
+                    properties:
+                      aspectRatio:
+                        type: string
+                      bitRate:
+                        type: string
+                      codec:
+                        type: string
+                      displayAspectRatio:
+                        type: string
+                      fixedGop:
+                        type: string
+                      frameRate:
+                        type: string
+                      keyframesMaxDist:
+                        type: string
+                      maxFrameRate:
+                        type: string
+                      maxHeight:
+                        type: string
+                      maxWidth:
+                        type: string
+                      paddingPolicy:
+                        type: string
+                      resolution:
+                        type: string
+                      sizingPolicy:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                videoCodecOptions:
+                  additionalProperties:
+                    type: string
+                  type: object
+                videoWatermarks:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      horizontalAlign:
+                        type: string
+                      horizontalOffset:
+                        type: string
+                      maxHeight:
+                        type: string
+                      maxWidth:
+                        type: string
+                      opacity:
+                        type: string
+                      sizingPolicy:
+                        type: string
+                      target:
+                        type: string
+                      verticalAlign:
+                        type: string
+                      verticalOffset:
+                        type: string
+                    type: object
+                  type: array
+                  uniqueItems: true
+              required:
+              - container
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

@@ -505,8 +505,109 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                brokerNodeGroupInfo:
+                  items:
+                    properties:
+                      azDistribution:
+                        type: string
+                      clientSubnets:
+                        items:
+                          type: string
+                        type: array
+                      ebsVolumeSize:
+                        type: integer
+                      instanceType:
+                        type: string
+                      securityGroups:
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - clientSubnets
+                    - ebsVolumeSize
+                    - instanceType
+                    - securityGroups
+                    type: object
+                  maxItems: 1
+                  type: array
+                clientAuthentication:
+                  items:
+                    properties:
+                      tls:
+                        items:
+                          properties:
+                            certificateAuthorityArns:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                clusterName:
+                  type: string
+                configurationInfo:
+                  items:
+                    properties:
+                      arn:
+                        type: string
+                      revision:
+                        type: integer
+                    required:
+                    - arn
+                    - revision
+                    type: object
+                  maxItems: 1
+                  type: array
+                encryptionInfo:
+                  items:
+                    properties:
+                      encryptionAtRestKmsKeyArn:
+                        type: string
+                      encryptionInTransit:
+                        items:
+                          properties:
+                            clientBroker:
+                              type: string
+                            inCluster:
+                              type: boolean
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                enhancedMonitoring:
+                  type: string
+                kafkaVersion:
+                  type: string
+                numberOfBrokerNodes:
+                  type: integer
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - brokerNodeGroupInfo
+              - clusterName
+              - kafkaVersion
+              - numberOfBrokerNodes
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

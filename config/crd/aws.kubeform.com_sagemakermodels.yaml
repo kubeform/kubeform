@@ -481,8 +481,85 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                container:
+                  items:
+                    properties:
+                      containerHostname:
+                        type: string
+                      environment:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      image:
+                        type: string
+                      modelDataURL:
+                        type: string
+                    required:
+                    - image
+                    type: object
+                  type: array
+                enableNetworkIsolation:
+                  type: boolean
+                executionRoleArn:
+                  type: string
+                name:
+                  type: string
+                primaryContainer:
+                  items:
+                    properties:
+                      containerHostname:
+                        type: string
+                      environment:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      image:
+                        type: string
+                      modelDataURL:
+                        type: string
+                    required:
+                    - image
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                vpcConfig:
+                  items:
+                    properties:
+                      securityGroupIDS:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      subnets:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - securityGroupIDS
+                    - subnets
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - executionRoleArn
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

@@ -488,8 +488,92 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                defaultService:
+                  type: string
+                description:
+                  type: string
+                hostRule:
+                  items:
+                    properties:
+                      description:
+                        type: string
+                      hosts:
+                        items:
+                          type: string
+                        type: array
+                      pathMatcher:
+                        type: string
+                    required:
+                    - hosts
+                    - pathMatcher
+                    type: object
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                pathMatcher:
+                  items:
+                    properties:
+                      defaultService:
+                        type: string
+                      description:
+                        type: string
+                      name:
+                        type: string
+                      pathRule:
+                        items:
+                          properties:
+                            paths:
+                              items:
+                                type: string
+                              type: array
+                            service:
+                              type: string
+                          required:
+                          - paths
+                          - service
+                          type: object
+                        type: array
+                    required:
+                    - defaultService
+                    - name
+                    type: object
+                  type: array
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                test:
+                  items:
+                    properties:
+                      description:
+                        type: string
+                      host:
+                        type: string
+                      path:
+                        type: string
+                      service:
+                        type: string
+                    required:
+                    - host
+                    - path
+                    - service
+                    type: object
+                  type: array
+              required:
+              - defaultService
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

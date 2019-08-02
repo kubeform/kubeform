@@ -515,8 +515,119 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                eventDeliverySchema:
+                  type: string
+                eventhubEndpoint:
+                  items:
+                    properties:
+                      eventhubID:
+                        type: string
+                    required:
+                    - eventhubID
+                    type: object
+                  maxItems: 1
+                  type: array
+                hybridConnectionEndpoint:
+                  items:
+                    properties:
+                      hybridConnectionID:
+                        type: string
+                    required:
+                    - hybridConnectionID
+                    type: object
+                  maxItems: 1
+                  type: array
+                includedEventTypes:
+                  items:
+                    type: string
+                  type: array
+                labels:
+                  items:
+                    type: string
+                  type: array
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                retryPolicy:
+                  items:
+                    properties:
+                      eventTimeToLive:
+                        type: integer
+                      maxDeliveryAttempts:
+                        type: integer
+                    required:
+                    - eventTimeToLive
+                    - maxDeliveryAttempts
+                    type: object
+                  maxItems: 1
+                  type: array
+                scope:
+                  type: string
+                storageBlobDeadLetterDestination:
+                  items:
+                    properties:
+                      storageAccountID:
+                        type: string
+                      storageBlobContainerName:
+                        type: string
+                    required:
+                    - storageAccountID
+                    - storageBlobContainerName
+                    type: object
+                  maxItems: 1
+                  type: array
+                storageQueueEndpoint:
+                  items:
+                    properties:
+                      queueName:
+                        type: string
+                      storageAccountID:
+                        type: string
+                    required:
+                    - queueName
+                    - storageAccountID
+                    type: object
+                  maxItems: 1
+                  type: array
+                subjectFilter:
+                  items:
+                    properties:
+                      caseSensitive:
+                        type: boolean
+                      subjectBeginsWith:
+                        type: string
+                      subjectEndsWith:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                topicName:
+                  type: string
+                webhookEndpoint:
+                  items:
+                    properties:
+                      url:
+                        type: string
+                    required:
+                    - url
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - name
+              - providerRef
+              - scope
+              type: object
           type: object
       type: object
   versions:

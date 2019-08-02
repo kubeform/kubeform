@@ -553,8 +553,157 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                addHeaderAction:
+                  items:
+                    properties:
+                      headerName:
+                        type: string
+                      headerValue:
+                        type: string
+                      position:
+                        type: integer
+                    required:
+                    - headerName
+                    - headerValue
+                    - position
+                    type: object
+                  type: array
+                  uniqueItems: true
+                after:
+                  type: string
+                bounceAction:
+                  items:
+                    properties:
+                      message:
+                        type: string
+                      position:
+                        type: integer
+                      sender:
+                        type: string
+                      smtpReplyCode:
+                        type: string
+                      statusCode:
+                        type: string
+                      topicArn:
+                        type: string
+                    required:
+                    - message
+                    - position
+                    - sender
+                    - smtpReplyCode
+                    type: object
+                  type: array
+                  uniqueItems: true
+                enabled:
+                  type: boolean
+                lambdaAction:
+                  items:
+                    properties:
+                      functionArn:
+                        type: string
+                      invocationType:
+                        type: string
+                      position:
+                        type: integer
+                      topicArn:
+                        type: string
+                    required:
+                    - functionArn
+                    - position
+                    type: object
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                recipients:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                ruleSetName:
+                  type: string
+                s3Action:
+                  items:
+                    properties:
+                      bucketName:
+                        type: string
+                      kmsKeyArn:
+                        type: string
+                      objectKeyPrefix:
+                        type: string
+                      position:
+                        type: integer
+                      topicArn:
+                        type: string
+                    required:
+                    - bucketName
+                    - position
+                    type: object
+                  type: array
+                  uniqueItems: true
+                scanEnabled:
+                  type: boolean
+                snsAction:
+                  items:
+                    properties:
+                      position:
+                        type: integer
+                      topicArn:
+                        type: string
+                    required:
+                    - position
+                    - topicArn
+                    type: object
+                  type: array
+                  uniqueItems: true
+                stopAction:
+                  items:
+                    properties:
+                      position:
+                        type: integer
+                      scope:
+                        type: string
+                      topicArn:
+                        type: string
+                    required:
+                    - position
+                    - scope
+                    type: object
+                  type: array
+                  uniqueItems: true
+                tlsPolicy:
+                  type: string
+                workmailAction:
+                  items:
+                    properties:
+                      organizationArn:
+                        type: string
+                      position:
+                        type: integer
+                      topicArn:
+                        type: string
+                    required:
+                    - organizationArn
+                    - position
+                    type: object
+                  type: array
+                  uniqueItems: true
+              required:
+              - name
+              - providerRef
+              - ruleSetName
+              type: object
           type: object
       type: object
   versions:

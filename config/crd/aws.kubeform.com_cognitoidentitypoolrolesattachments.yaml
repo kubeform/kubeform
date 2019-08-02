@@ -463,8 +463,67 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                identityPoolID:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                roleMapping:
+                  items:
+                    properties:
+                      ambiguousRoleResolution:
+                        type: string
+                      identityProvider:
+                        type: string
+                      mappingRule:
+                        items:
+                          properties:
+                            claim:
+                              type: string
+                            matchType:
+                              type: string
+                            roleArn:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                          - claim
+                          - matchType
+                          - roleArn
+                          - value
+                          type: object
+                        maxItems: 25
+                        type: array
+                      type:
+                        type: string
+                    required:
+                    - identityProvider
+                    - type
+                    type: object
+                  type: array
+                  uniqueItems: true
+                roles:
+                  additionalProperties:
+                    properties:
+                      authenticated:
+                        type: string
+                      unauthenticated:
+                        type: string
+                    type: object
+                  type: object
+              required:
+              - identityPoolID
+              - providerRef
+              - roles
+              type: object
           type: object
       type: object
   versions:

@@ -447,8 +447,51 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                apiKeyRequired:
+                  type: boolean
+                authorization:
+                  type: string
+                authorizationScopes:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                authorizerID:
+                  type: string
+                httpMethod:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                requestModels:
+                  additionalProperties:
+                    type: string
+                  type: object
+                requestParameters:
+                  additionalProperties:
+                    type: boolean
+                  type: object
+                requestValidatorID:
+                  type: string
+                resourceID:
+                  type: string
+                restAPIID:
+                  type: string
+              required:
+              - authorization
+              - httpMethod
+              - providerRef
+              - resourceID
+              - restAPIID
+              type: object
           type: object
       type: object
   versions:

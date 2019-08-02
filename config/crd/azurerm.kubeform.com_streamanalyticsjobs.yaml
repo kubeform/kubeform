@@ -453,8 +453,57 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                compatibilityLevel:
+                  type: string
+                dataLocale:
+                  type: string
+                eventsLateArrivalMaxDelayInSeconds:
+                  type: integer
+                eventsOutOfOrderMaxDelayInSeconds:
+                  type: integer
+                eventsOutOfOrderPolicy:
+                  type: string
+                location:
+                  type: string
+                name:
+                  type: string
+                outputErrorPolicy:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                streamingUnits:
+                  type: integer
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                transformationQuery:
+                  type: string
+              required:
+              - compatibilityLevel
+              - dataLocale
+              - eventsLateArrivalMaxDelayInSeconds
+              - eventsOutOfOrderMaxDelayInSeconds
+              - eventsOutOfOrderPolicy
+              - location
+              - name
+              - outputErrorPolicy
+              - providerRef
+              - resourceGroupName
+              - streamingUnits
+              - transformationQuery
+              type: object
           type: object
       type: object
   versions:

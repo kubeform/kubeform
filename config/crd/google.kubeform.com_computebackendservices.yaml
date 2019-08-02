@@ -525,8 +525,129 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                backend:
+                  items:
+                    properties:
+                      balancingMode:
+                        type: string
+                      capacityScaler:
+                        description: A Number represents a JSON number literal.
+                        type: string
+                      description:
+                        type: string
+                      group:
+                        type: string
+                      maxConnections:
+                        type: integer
+                      maxConnectionsPerInstance:
+                        type: integer
+                      maxRate:
+                        type: integer
+                      maxRatePerInstance:
+                        description: A Number represents a JSON number literal.
+                        type: string
+                      maxUtilization:
+                        description: A Number represents a JSON number literal.
+                        type: string
+                    type: object
+                  type: array
+                  uniqueItems: true
+                cdnPolicy:
+                  items:
+                    properties:
+                      cacheKeyPolicy:
+                        items:
+                          properties:
+                            includeHost:
+                              type: boolean
+                            includeProtocol:
+                              type: boolean
+                            includeQueryString:
+                              type: boolean
+                            queryStringBlacklist:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                            queryStringWhitelist:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                connectionDrainingTimeoutSec:
+                  type: integer
+                customRequestHeaders:
+                  description: Deprecated
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                description:
+                  type: string
+                enableCdn:
+                  type: boolean
+                healthChecks:
+                  items:
+                    type: string
+                  maxItems: 1
+                  minItems: 1
+                  type: array
+                  uniqueItems: true
+                iap:
+                  items:
+                    properties:
+                      oauth2ClientID:
+                        type: string
+                    required:
+                    - oauth2ClientID
+                    type: object
+                  maxItems: 1
+                  type: array
+                name:
+                  type: string
+                portName:
+                  type: string
+                project:
+                  type: string
+                protocol:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                securityPolicy:
+                  type: string
+                sessionAffinity:
+                  type: string
+                timeoutSec:
+                  type: integer
+              required:
+              - healthChecks
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

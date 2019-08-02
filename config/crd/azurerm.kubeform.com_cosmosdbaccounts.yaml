@@ -508,8 +508,112 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                capabilities:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  type: array
+                  uniqueItems: true
+                consistencyPolicy:
+                  items:
+                    properties:
+                      consistencyLevel:
+                        type: string
+                      maxIntervalInSeconds:
+                        type: integer
+                      maxStalenessPrefix:
+                        type: integer
+                    required:
+                    - consistencyLevel
+                    type: object
+                  maxItems: 1
+                  type: array
+                enableAutomaticFailover:
+                  type: boolean
+                enableMultipleWriteLocations:
+                  type: boolean
+                failoverPolicy:
+                  description: Deprecated
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      location:
+                        type: string
+                      priority:
+                        type: integer
+                    required:
+                    - location
+                    - priority
+                    type: object
+                  type: array
+                  uniqueItems: true
+                geoLocation:
+                  items:
+                    properties:
+                      failoverPriority:
+                        type: integer
+                      location:
+                        type: string
+                      prefix:
+                        type: string
+                    required:
+                    - failoverPriority
+                    - location
+                    type: object
+                  type: array
+                  uniqueItems: true
+                ipRangeFilter:
+                  type: string
+                isVirtualNetworkFilterEnabled:
+                  type: boolean
+                kind:
+                  type: string
+                location:
+                  type: string
+                name:
+                  type: string
+                offerType:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                virtualNetworkRule:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                    required:
+                    - ID
+                    type: object
+                  type: array
+                  uniqueItems: true
+              required:
+              - consistencyPolicy
+              - location
+              - name
+              - offerType
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

@@ -464,8 +464,68 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                access:
+                  items:
+                    properties:
+                      domain:
+                        type: string
+                      groupByEmail:
+                        type: string
+                      role:
+                        type: string
+                      specialGroup:
+                        type: string
+                      userByEmail:
+                        type: string
+                      view:
+                        items:
+                          properties:
+                            datasetID:
+                              type: string
+                            projectID:
+                              type: string
+                            tableID:
+                              type: string
+                          required:
+                          - datasetID
+                          - projectID
+                          - tableID
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  type: array
+                datasetID:
+                  type: string
+                defaultTableExpirationMs:
+                  type: integer
+                description:
+                  type: string
+                friendlyName:
+                  type: string
+                labels:
+                  additionalProperties:
+                    type: string
+                  type: object
+                location:
+                  type: string
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+              required:
+              - datasetID
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

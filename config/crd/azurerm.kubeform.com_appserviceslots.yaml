@@ -555,8 +555,159 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                appServiceName:
+                  type: string
+                appServicePlanID:
+                  type: string
+                appSettings:
+                  additionalProperties:
+                    type: string
+                  type: object
+                clientAffinityEnabled:
+                  type: boolean
+                connectionString:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - name
+                    - type
+                    type: object
+                  type: array
+                  uniqueItems: true
+                enabled:
+                  type: boolean
+                httpsOnly:
+                  type: boolean
+                identity:
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                location:
+                  type: string
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                siteConfig:
+                  items:
+                    properties:
+                      alwaysOn:
+                        type: boolean
+                      appCommandLine:
+                        type: string
+                      cors:
+                        items:
+                          properties:
+                            allowedOrigins:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                            supportCredentials:
+                              type: boolean
+                          required:
+                          - allowedOrigins
+                          type: object
+                        maxItems: 1
+                        type: array
+                      defaultDocuments:
+                        items:
+                          type: string
+                        type: array
+                      dotnetFrameworkVersion:
+                        type: string
+                      ftpsState:
+                        type: string
+                      http2Enabled:
+                        type: boolean
+                      ipRestriction:
+                        items:
+                          properties:
+                            ipAddress:
+                              type: string
+                            subnetMask:
+                              type: string
+                          required:
+                          - ipAddress
+                          type: object
+                        type: array
+                      javaContainer:
+                        type: string
+                      javaContainerVersion:
+                        type: string
+                      javaVersion:
+                        type: string
+                      linuxFxVersion:
+                        type: string
+                      localMysqlEnabled:
+                        type: boolean
+                      managedPipelineMode:
+                        type: string
+                      minTlsVersion:
+                        type: string
+                      phpVersion:
+                        type: string
+                      pythonVersion:
+                        type: string
+                      remoteDebuggingEnabled:
+                        type: boolean
+                      remoteDebuggingVersion:
+                        type: string
+                      scmType:
+                        type: string
+                      use32BitWorkerProcess:
+                        type: boolean
+                      virtualNetworkName:
+                        type: string
+                      websocketsEnabled:
+                        type: boolean
+                      windowsFxVersion:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - appServiceName
+              - appServicePlanID
+              - location
+              - name
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

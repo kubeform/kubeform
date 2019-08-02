@@ -457,8 +457,61 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                appEngine:
+                  description: Deprecated
+                  items:
+                    properties:
+                      authDomain:
+                        type: string
+                      featureSettings:
+                        items:
+                          properties:
+                            splitHealthChecks:
+                              type: boolean
+                          type: object
+                        maxItems: 1
+                        type: array
+                      locationID:
+                        type: string
+                      servingStatus:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                autoCreateNetwork:
+                  type: boolean
+                billingAccount:
+                  type: string
+                folderID:
+                  type: string
+                labels:
+                  additionalProperties:
+                    type: string
+                  type: object
+                name:
+                  type: string
+                orgID:
+                  type: string
+                projectID:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                skipDelete:
+                  type: boolean
+              required:
+              - name
+              - projectID
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

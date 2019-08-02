@@ -470,8 +470,74 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                emailReceiver:
+                  items:
+                    properties:
+                      emailAddress:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                    - emailAddress
+                    - name
+                    type: object
+                  type: array
+                enabled:
+                  type: boolean
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                shortName:
+                  type: string
+                smsReceiver:
+                  items:
+                    properties:
+                      countryCode:
+                        type: string
+                      name:
+                        type: string
+                      phoneNumber:
+                        type: string
+                    required:
+                    - countryCode
+                    - name
+                    - phoneNumber
+                    type: object
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                webhookReceiver:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      serviceURI:
+                        type: string
+                    required:
+                    - name
+                    - serviceURI
+                    type: object
+                  type: array
+              required:
+              - name
+              - providerRef
+              - resourceGroupName
+              - shortName
+              type: object
           type: object
       type: object
   versions:

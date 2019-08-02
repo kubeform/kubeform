@@ -550,8 +550,154 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                clusterConfig:
+                  items:
+                    properties:
+                      deleteAutogenBucket:
+                        description: Deprecated
+                        type: boolean
+                      gceClusterConfig:
+                        items:
+                          properties:
+                            internalIPOnly:
+                              type: boolean
+                            metadata:
+                              additionalProperties:
+                                type: string
+                              type: object
+                            network:
+                              type: string
+                            serviceAccount:
+                              type: string
+                            serviceAccountScopes:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                            subnetwork:
+                              type: string
+                            tags:
+                              items:
+                                type: string
+                              type: array
+                            zone:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      initializationAction:
+                        items:
+                          properties:
+                            script:
+                              type: string
+                            timeoutSec:
+                              type: integer
+                          required:
+                          - script
+                          type: object
+                        type: array
+                      masterConfig:
+                        items:
+                          properties:
+                            diskConfig:
+                              items:
+                                properties:
+                                  bootDiskSizeGb:
+                                    type: integer
+                                  bootDiskType:
+                                    type: string
+                                  numLocalSsds:
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            machineType:
+                              type: string
+                            numInstances:
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                      preemptibleWorkerConfig:
+                        items:
+                          properties:
+                            diskConfig:
+                              items:
+                                properties:
+                                  bootDiskSizeGb:
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            numInstances:
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                      softwareConfig:
+                        items:
+                          properties:
+                            imageVersion:
+                              type: string
+                            overrideProperties:
+                              additionalProperties:
+                                type: string
+                              type: object
+                          type: object
+                        maxItems: 1
+                        type: array
+                      stagingBucket:
+                        type: string
+                      workerConfig:
+                        items:
+                          properties:
+                            diskConfig:
+                              items:
+                                properties:
+                                  bootDiskSizeGb:
+                                    type: integer
+                                  bootDiskType:
+                                    type: string
+                                  numLocalSsds:
+                                    type: integer
+                                type: object
+                              maxItems: 1
+                              type: array
+                            machineType:
+                              type: string
+                            numInstances:
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                labels:
+                  additionalProperties:
+                    type: string
+                  type: object
+                name:
+                  type: string
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                region:
+                  type: string
+              required:
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

@@ -482,8 +482,86 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                applyImmediately:
+                  type: boolean
+                availabilityZones:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                backupRetentionPeriod:
+                  type: integer
+                clusterIdentifier:
+                  type: string
+                clusterIdentifierPrefix:
+                  type: string
+                clusterMembers:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                dbClusterParameterGroupName:
+                  type: string
+                dbSubnetGroupName:
+                  type: string
+                enabledCloudwatchLogsExports:
+                  items:
+                    type: string
+                  type: array
+                engine:
+                  type: string
+                engineVersion:
+                  type: string
+                finalSnapshotIdentifier:
+                  type: string
+                kmsKeyID:
+                  type: string
+                masterUsername:
+                  type: string
+                port:
+                  type: integer
+                preferredBackupWindow:
+                  type: string
+                preferredMaintenanceWindow:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                skipFinalSnapshot:
+                  type: boolean
+                snapshotIdentifier:
+                  type: string
+                storageEncrypted:
+                  type: boolean
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                vpcSecurityGroupIDS:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+              required:
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

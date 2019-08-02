@@ -442,8 +442,46 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                cdcStartTime:
+                  type: string
+                migrationType:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                replicationInstanceArn:
+                  type: string
+                replicationTaskID:
+                  type: string
+                replicationTaskSettings:
+                  type: string
+                sourceEndpointArn:
+                  type: string
+                tableMappings:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                targetEndpointArn:
+                  type: string
+              required:
+              - migrationType
+              - providerRef
+              - replicationInstanceArn
+              - replicationTaskID
+              - sourceEndpointArn
+              - tableMappings
+              - targetEndpointArn
+              type: object
           type: object
       type: object
   versions:

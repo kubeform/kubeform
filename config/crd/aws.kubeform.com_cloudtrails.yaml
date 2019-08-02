@@ -471,8 +471,75 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                cloudWatchLogsGroupArn:
+                  type: string
+                cloudWatchLogsRoleArn:
+                  type: string
+                enableLogFileValidation:
+                  type: boolean
+                enableLogging:
+                  type: boolean
+                eventSelector:
+                  items:
+                    properties:
+                      dataResource:
+                        items:
+                          properties:
+                            type:
+                              type: string
+                            values:
+                              items:
+                                type: string
+                              maxItems: 250
+                              type: array
+                          required:
+                          - type
+                          - values
+                          type: object
+                        type: array
+                      includeManagementEvents:
+                        type: boolean
+                      readWriteType:
+                        type: string
+                    type: object
+                  maxItems: 5
+                  type: array
+                includeGlobalServiceEvents:
+                  type: boolean
+                isMultiRegionTrail:
+                  type: boolean
+                isOrganizationTrail:
+                  type: boolean
+                kmsKeyID:
+                  type: string
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                s3BucketName:
+                  type: string
+                s3KeyPrefix:
+                  type: string
+                snsTopicName:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - name
+              - providerRef
+              - s3BucketName
+              type: object
           type: object
       type: object
   versions:

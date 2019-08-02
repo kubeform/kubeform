@@ -676,8 +676,280 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                appServicePlanID:
+                  type: string
+                appSettings:
+                  additionalProperties:
+                    type: string
+                  type: object
+                authSettings:
+                  items:
+                    properties:
+                      activeDirectory:
+                        items:
+                          properties:
+                            allowedAudiences:
+                              items:
+                                type: string
+                              type: array
+                            clientID:
+                              type: string
+                          required:
+                          - clientID
+                          type: object
+                        maxItems: 1
+                        type: array
+                      additionalLoginParams:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      allowedExternalRedirectUrls:
+                        items:
+                          type: string
+                        type: array
+                      defaultProvider:
+                        type: string
+                      enabled:
+                        type: boolean
+                      facebook:
+                        items:
+                          properties:
+                            appID:
+                              type: string
+                            oauthScopes:
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - appID
+                          type: object
+                        maxItems: 1
+                        type: array
+                      google:
+                        items:
+                          properties:
+                            clientID:
+                              type: string
+                            oauthScopes:
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - clientID
+                          type: object
+                        maxItems: 1
+                        type: array
+                      issuer:
+                        type: string
+                      microsoft:
+                        items:
+                          properties:
+                            clientID:
+                              type: string
+                            oauthScopes:
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - clientID
+                          type: object
+                        maxItems: 1
+                        type: array
+                      runtimeVersion:
+                        type: string
+                      tokenRefreshExtensionHours:
+                        description: A Number represents a JSON number literal.
+                        type: string
+                      tokenStoreEnabled:
+                        type: boolean
+                      twitter:
+                        items:
+                          properties:
+                            consumerKey:
+                              type: string
+                          required:
+                          - consumerKey
+                          type: object
+                        maxItems: 1
+                        type: array
+                      unauthenticatedClientAction:
+                        type: string
+                    required:
+                    - enabled
+                    type: object
+                  maxItems: 1
+                  type: array
+                clientAffinityEnabled:
+                  type: boolean
+                clientCertEnabled:
+                  type: boolean
+                connectionString:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - name
+                    - type
+                    type: object
+                  type: array
+                  uniqueItems: true
+                enabled:
+                  type: boolean
+                httpsOnly:
+                  type: boolean
+                identity:
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                location:
+                  type: string
+                logs:
+                  items:
+                    properties:
+                      applicationLogs:
+                        items:
+                          properties:
+                            azureBlobStorage:
+                              items:
+                                properties:
+                                  level:
+                                    type: string
+                                  retentionInDays:
+                                    type: integer
+                                required:
+                                - level
+                                - retentionInDays
+                                type: object
+                              maxItems: 1
+                              type: array
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                siteConfig:
+                  items:
+                    properties:
+                      alwaysOn:
+                        type: boolean
+                      appCommandLine:
+                        type: string
+                      cors:
+                        items:
+                          properties:
+                            allowedOrigins:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                            supportCredentials:
+                              type: boolean
+                          required:
+                          - allowedOrigins
+                          type: object
+                        maxItems: 1
+                        type: array
+                      defaultDocuments:
+                        items:
+                          type: string
+                        type: array
+                      dotnetFrameworkVersion:
+                        type: string
+                      ftpsState:
+                        type: string
+                      http2Enabled:
+                        type: boolean
+                      ipRestriction:
+                        items:
+                          properties:
+                            ipAddress:
+                              type: string
+                            subnetMask:
+                              type: string
+                          required:
+                          - ipAddress
+                          type: object
+                        type: array
+                      javaContainer:
+                        type: string
+                      javaContainerVersion:
+                        type: string
+                      javaVersion:
+                        type: string
+                      linuxFxVersion:
+                        type: string
+                      localMysqlEnabled:
+                        type: boolean
+                      managedPipelineMode:
+                        type: string
+                      minTlsVersion:
+                        type: string
+                      phpVersion:
+                        type: string
+                      pythonVersion:
+                        type: string
+                      remoteDebuggingEnabled:
+                        type: boolean
+                      remoteDebuggingVersion:
+                        type: string
+                      scmType:
+                        type: string
+                      use32BitWorkerProcess:
+                        type: boolean
+                      virtualNetworkName:
+                        type: string
+                      websocketsEnabled:
+                        type: boolean
+                      windowsFxVersion:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - appServicePlanID
+              - location
+              - name
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

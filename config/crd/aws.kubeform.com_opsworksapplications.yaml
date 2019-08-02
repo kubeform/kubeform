@@ -501,8 +501,105 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                appSource:
+                  items:
+                    properties:
+                      revision:
+                        type: string
+                      sshKey:
+                        type: string
+                      type:
+                        type: string
+                      url:
+                        type: string
+                      username:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  type: array
+                autoBundleOnDeploy:
+                  type: string
+                awsFlowRubySettings:
+                  type: string
+                dataSourceArn:
+                  type: string
+                dataSourceDatabaseName:
+                  type: string
+                dataSourceType:
+                  type: string
+                description:
+                  type: string
+                documentRoot:
+                  type: string
+                domains:
+                  items:
+                    type: string
+                  type: array
+                enableSsl:
+                  type: boolean
+                environment:
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      secure:
+                        type: boolean
+                      value:
+                        type: string
+                    required:
+                    - key
+                    - value
+                    type: object
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                railsEnv:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                shortName:
+                  type: string
+                sslConfiguration:
+                  items:
+                    properties:
+                      certificate:
+                        type: string
+                      chain:
+                        type: string
+                    required:
+                    - certificate
+                    type: object
+                  type: array
+                stackID:
+                  type: string
+                type:
+                  type: string
+              required:
+              - name
+              - providerRef
+              - stackID
+              - type
+              type: object
           type: object
       type: object
   versions:

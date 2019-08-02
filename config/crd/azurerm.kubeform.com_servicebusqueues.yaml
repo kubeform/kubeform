@@ -456,8 +456,60 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                autoDeleteOnIdle:
+                  type: string
+                deadLetteringOnMessageExpiration:
+                  type: boolean
+                defaultMessageTtl:
+                  type: string
+                duplicateDetectionHistoryTimeWindow:
+                  type: string
+                enableBatchedOperations:
+                  description: Deprecated
+                  type: boolean
+                enableExpress:
+                  type: boolean
+                enablePartitioning:
+                  type: boolean
+                location:
+                  description: Deprecated
+                  type: string
+                lockDuration:
+                  type: string
+                maxDeliveryCount:
+                  type: integer
+                maxSizeInMegabytes:
+                  type: integer
+                name:
+                  type: string
+                namespaceName:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                requiresDuplicateDetection:
+                  type: boolean
+                requiresSession:
+                  type: boolean
+                resourceGroupName:
+                  type: string
+                supportOrdering:
+                  description: Deprecated
+                  type: boolean
+              required:
+              - name
+              - namespaceName
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

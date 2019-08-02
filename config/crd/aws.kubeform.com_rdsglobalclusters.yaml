@@ -429,8 +429,33 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                databaseName:
+                  type: string
+                deletionProtection:
+                  type: boolean
+                engine:
+                  type: string
+                engineVersion:
+                  type: string
+                globalClusterIdentifier:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                storageEncrypted:
+                  type: boolean
+              required:
+              - globalClusterIdentifier
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

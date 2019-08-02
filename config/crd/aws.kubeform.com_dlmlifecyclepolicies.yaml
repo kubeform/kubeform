@@ -487,8 +487,91 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                description:
+                  type: string
+                executionRoleArn:
+                  type: string
+                policyDetails:
+                  items:
+                    properties:
+                      resourceTypes:
+                        items:
+                          type: string
+                        type: array
+                      schedule:
+                        items:
+                          properties:
+                            copyTags:
+                              type: boolean
+                            createRule:
+                              items:
+                                properties:
+                                  interval:
+                                    type: integer
+                                  intervalUnit:
+                                    type: string
+                                  times:
+                                    items:
+                                      type: string
+                                    maxItems: 1
+                                    type: array
+                                required:
+                                - interval
+                                type: object
+                              maxItems: 1
+                              type: array
+                            name:
+                              type: string
+                            retainRule:
+                              items:
+                                properties:
+                                  count:
+                                    type: integer
+                                required:
+                                - count
+                                type: object
+                              maxItems: 1
+                              type: array
+                            tagsToAdd:
+                              additionalProperties:
+                                type: string
+                              type: object
+                          required:
+                          - createRule
+                          - name
+                          - retainRule
+                          type: object
+                        type: array
+                      targetTags:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    required:
+                    - resourceTypes
+                    - schedule
+                    - targetTags
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                state:
+                  type: string
+              required:
+              - description
+              - executionRoleArn
+              - policyDetails
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

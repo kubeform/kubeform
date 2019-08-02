@@ -586,8 +586,190 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                allowStoppingForUpdate:
+                  type: boolean
+                attachedDisk:
+                  items:
+                    properties:
+                      deviceName:
+                        type: string
+                      mode:
+                        type: string
+                      source:
+                        type: string
+                    required:
+                    - source
+                    type: object
+                  type: array
+                bootDisk:
+                  items:
+                    properties:
+                      autoDelete:
+                        type: boolean
+                      deviceName:
+                        type: string
+                      initializeParams:
+                        items:
+                          properties:
+                            image:
+                              type: string
+                            size:
+                              type: integer
+                            type:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      source:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                canIPForward:
+                  type: boolean
+                createTimeout:
+                  description: Deprecated
+                  type: integer
+                deletionProtection:
+                  type: boolean
+                description:
+                  type: string
+                guestAccelerator:
+                  items:
+                    properties:
+                      count:
+                        type: integer
+                      type:
+                        type: string
+                    required:
+                    - count
+                    - type
+                    type: object
+                  type: array
+                labels:
+                  additionalProperties:
+                    type: string
+                  type: object
+                machineType:
+                  type: string
+                metadata:
+                  additionalProperties:
+                    type: string
+                  type: object
+                metadataStartupScript:
+                  type: string
+                minCPUPlatform:
+                  type: string
+                name:
+                  type: string
+                networkInterface:
+                  items:
+                    properties:
+                      accessConfig:
+                        items:
+                          properties:
+                            natIP:
+                              type: string
+                            networkTier:
+                              type: string
+                            publicPtrDomainName:
+                              type: string
+                          type: object
+                        type: array
+                      address:
+                        description: Deprecated
+                        type: string
+                      aliasIPRange:
+                        items:
+                          properties:
+                            ipCIDRRange:
+                              type: string
+                            subnetworkRangeName:
+                              type: string
+                          required:
+                          - ipCIDRRange
+                          type: object
+                        type: array
+                      network:
+                        type: string
+                      networkIP:
+                        type: string
+                      subnetwork:
+                        type: string
+                      subnetworkProject:
+                        type: string
+                    type: object
+                  type: array
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                scheduling:
+                  items:
+                    properties:
+                      automaticRestart:
+                        type: boolean
+                      onHostMaintenance:
+                        type: string
+                      preemptible:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                scratchDisk:
+                  items:
+                    properties:
+                      interface:
+                        type: string
+                    type: object
+                  type: array
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                serviceAccount:
+                  items:
+                    properties:
+                      email:
+                        type: string
+                      scopes:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - scopes
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                zone:
+                  type: string
+              required:
+              - bootDisk
+              - machineType
+              - name
+              - networkInterface
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

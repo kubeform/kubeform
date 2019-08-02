@@ -485,8 +485,89 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                apiManagementName:
+                  type: string
+                description:
+                  type: string
+                displayName:
+                  type: string
+                import:
+                  items:
+                    properties:
+                      contentFormat:
+                        type: string
+                      contentValue:
+                        type: string
+                      wsdlSelector:
+                        items:
+                          properties:
+                            endpointName:
+                              type: string
+                            serviceName:
+                              type: string
+                          required:
+                          - endpointName
+                          - serviceName
+                          type: object
+                        maxItems: 1
+                        type: array
+                    required:
+                    - contentFormat
+                    - contentValue
+                    type: object
+                  maxItems: 1
+                  type: array
+                name:
+                  type: string
+                path:
+                  type: string
+                protocols:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                revision:
+                  type: string
+                serviceURL:
+                  type: string
+                soapPassThrough:
+                  type: boolean
+                subscriptionKeyParameterNames:
+                  items:
+                    properties:
+                      header:
+                        type: string
+                      query:
+                        type: string
+                    required:
+                    - header
+                    - query
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - apiManagementName
+              - displayName
+              - name
+              - path
+              - protocols
+              - providerRef
+              - resourceGroupName
+              - revision
+              type: object
           type: object
       type: object
   versions:

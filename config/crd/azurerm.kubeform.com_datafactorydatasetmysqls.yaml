@@ -459,8 +459,63 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                additionalProperties:
+                  additionalProperties:
+                    type: string
+                  type: object
+                annotations:
+                  items:
+                    type: string
+                  type: array
+                dataFactoryName:
+                  type: string
+                description:
+                  type: string
+                folder:
+                  type: string
+                linkedServiceName:
+                  type: string
+                name:
+                  type: string
+                parameters:
+                  additionalProperties:
+                    type: string
+                  type: object
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                schemaColumn:
+                  items:
+                    properties:
+                      description:
+                        type: string
+                      name:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  type: array
+                tableName:
+                  type: string
+              required:
+              - dataFactoryName
+              - linkedServiceName
+              - name
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

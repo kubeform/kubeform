@@ -624,8 +624,228 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                cloudwatchAlarm:
+                  items:
+                    properties:
+                      alarmName:
+                        type: string
+                      roleArn:
+                        type: string
+                      stateReason:
+                        type: string
+                      stateValue:
+                        type: string
+                    required:
+                    - alarmName
+                    - roleArn
+                    - stateReason
+                    - stateValue
+                    type: object
+                  type: array
+                  uniqueItems: true
+                cloudwatchMetric:
+                  items:
+                    properties:
+                      metricName:
+                        type: string
+                      metricNamespace:
+                        type: string
+                      metricTimestamp:
+                        type: string
+                      metricUnit:
+                        type: string
+                      metricValue:
+                        type: string
+                      roleArn:
+                        type: string
+                    required:
+                    - metricName
+                    - metricNamespace
+                    - metricUnit
+                    - metricValue
+                    - roleArn
+                    type: object
+                  type: array
+                  uniqueItems: true
+                description:
+                  type: string
+                dynamodb:
+                  items:
+                    properties:
+                      hashKeyField:
+                        type: string
+                      hashKeyType:
+                        type: string
+                      hashKeyValue:
+                        type: string
+                      payloadField:
+                        type: string
+                      rangeKeyField:
+                        type: string
+                      rangeKeyType:
+                        type: string
+                      rangeKeyValue:
+                        type: string
+                      roleArn:
+                        type: string
+                      tableName:
+                        type: string
+                    required:
+                    - hashKeyField
+                    - hashKeyValue
+                    - roleArn
+                    - tableName
+                    type: object
+                  type: array
+                  uniqueItems: true
+                elasticsearch:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      endpoint:
+                        type: string
+                      index:
+                        type: string
+                      roleArn:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - ID
+                    - endpoint
+                    - index
+                    - roleArn
+                    - type
+                    type: object
+                  type: array
+                  uniqueItems: true
+                enabled:
+                  type: boolean
+                firehose:
+                  items:
+                    properties:
+                      deliveryStreamName:
+                        type: string
+                      roleArn:
+                        type: string
+                      separator:
+                        type: string
+                    required:
+                    - deliveryStreamName
+                    - roleArn
+                    type: object
+                  type: array
+                  uniqueItems: true
+                kinesis:
+                  items:
+                    properties:
+                      partitionKey:
+                        type: string
+                      roleArn:
+                        type: string
+                      streamName:
+                        type: string
+                    required:
+                    - roleArn
+                    - streamName
+                    type: object
+                  type: array
+                  uniqueItems: true
+                lambda:
+                  items:
+                    properties:
+                      functionArn:
+                        type: string
+                    required:
+                    - functionArn
+                    type: object
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                republish:
+                  items:
+                    properties:
+                      roleArn:
+                        type: string
+                      topic:
+                        type: string
+                    required:
+                    - roleArn
+                    - topic
+                    type: object
+                  type: array
+                  uniqueItems: true
+                s3:
+                  items:
+                    properties:
+                      bucketName:
+                        type: string
+                      key:
+                        type: string
+                      roleArn:
+                        type: string
+                    required:
+                    - bucketName
+                    - key
+                    - roleArn
+                    type: object
+                  type: array
+                  uniqueItems: true
+                sns:
+                  items:
+                    properties:
+                      messageFormat:
+                        type: string
+                      roleArn:
+                        type: string
+                      targetArn:
+                        type: string
+                    required:
+                    - roleArn
+                    - targetArn
+                    type: object
+                  type: array
+                  uniqueItems: true
+                sql:
+                  type: string
+                sqlVersion:
+                  type: string
+                sqs:
+                  items:
+                    properties:
+                      queueURL:
+                        type: string
+                      roleArn:
+                        type: string
+                      useBase64:
+                        type: boolean
+                    required:
+                    - queueURL
+                    - roleArn
+                    - useBase64
+                    type: object
+                  type: array
+                  uniqueItems: true
+              required:
+              - enabled
+              - name
+              - providerRef
+              - sql
+              - sqlVersion
+              type: object
           type: object
       type: object
   versions:

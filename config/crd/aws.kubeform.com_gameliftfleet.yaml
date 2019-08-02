@@ -487,8 +487,91 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                buildID:
+                  type: string
+                description:
+                  type: string
+                ec2InboundPermission:
+                  items:
+                    properties:
+                      fromPort:
+                        type: integer
+                      ipRange:
+                        type: string
+                      protocol:
+                        type: string
+                      toPort:
+                        type: integer
+                    required:
+                    - fromPort
+                    - ipRange
+                    - protocol
+                    - toPort
+                    type: object
+                  maxItems: 50
+                  type: array
+                ec2InstanceType:
+                  type: string
+                metricGroups:
+                  items:
+                    type: string
+                  type: array
+                name:
+                  type: string
+                newGameSessionProtectionPolicy:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceCreationLimitPolicy:
+                  items:
+                    properties:
+                      newGameSessionsPerCreator:
+                        type: integer
+                      policyPeriodInMinutes:
+                        type: integer
+                    type: object
+                  maxItems: 1
+                  type: array
+                runtimeConfiguration:
+                  items:
+                    properties:
+                      gameSessionActivationTimeoutSeconds:
+                        type: integer
+                      maxConcurrentGameSessionActivations:
+                        type: integer
+                      serverProcess:
+                        items:
+                          properties:
+                            concurrentExecutions:
+                              type: integer
+                            launchPath:
+                              type: string
+                            parameters:
+                              type: string
+                          required:
+                          - concurrentExecutions
+                          - launchPath
+                          type: object
+                        maxItems: 50
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - buildID
+              - ec2InstanceType
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

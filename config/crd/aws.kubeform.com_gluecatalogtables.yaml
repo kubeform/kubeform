@@ -536,8 +536,140 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                catalogID:
+                  type: string
+                databaseName:
+                  type: string
+                description:
+                  type: string
+                name:
+                  type: string
+                owner:
+                  type: string
+                parameters:
+                  additionalProperties:
+                    type: string
+                  type: object
+                partitionKeys:
+                  items:
+                    properties:
+                      comment:
+                        type: string
+                      name:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                retention:
+                  type: integer
+                storageDescriptor:
+                  items:
+                    properties:
+                      bucketColumns:
+                        items:
+                          type: string
+                        type: array
+                      columns:
+                        items:
+                          properties:
+                            comment:
+                              type: string
+                            name:
+                              type: string
+                            type:
+                              type: string
+                          required:
+                          - name
+                          type: object
+                        type: array
+                      compressed:
+                        type: boolean
+                      inputFormat:
+                        type: string
+                      location:
+                        type: string
+                      numberOfBuckets:
+                        type: integer
+                      outputFormat:
+                        type: string
+                      parameters:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      serDeInfo:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                            parameters:
+                              additionalProperties:
+                                type: string
+                              type: object
+                            serializationLibrary:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      skewedInfo:
+                        items:
+                          properties:
+                            skewedColumnNames:
+                              items:
+                                type: string
+                              type: array
+                            skewedColumnValueLocationMaps:
+                              additionalProperties:
+                                type: string
+                              type: object
+                            skewedColumnValues:
+                              items:
+                                type: string
+                              type: array
+                          type: object
+                        maxItems: 1
+                        type: array
+                      sortColumns:
+                        items:
+                          properties:
+                            column:
+                              type: string
+                            sortOrder:
+                              type: integer
+                          required:
+                          - column
+                          - sortOrder
+                          type: object
+                        type: array
+                      storedAsSubDirectories:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                tableType:
+                  type: string
+                viewExpandedText:
+                  type: string
+                viewOriginalText:
+                  type: string
+              required:
+              - databaseName
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

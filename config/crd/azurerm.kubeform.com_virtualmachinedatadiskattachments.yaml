@@ -432,8 +432,36 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                caching:
+                  type: string
+                createOption:
+                  type: string
+                lun:
+                  type: integer
+                managedDiskID:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                virtualMachineID:
+                  type: string
+                writeAcceleratorEnabled:
+                  type: boolean
+              required:
+              - caching
+              - lun
+              - managedDiskID
+              - providerRef
+              - virtualMachineID
+              type: object
           type: object
       type: object
   versions:

@@ -491,8 +491,95 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                checkIntervalSec:
+                  type: integer
+                description:
+                  type: string
+                healthyThreshold:
+                  type: integer
+                httpHealthCheck:
+                  items:
+                    properties:
+                      host:
+                        type: string
+                      port:
+                        type: integer
+                      proxyHeader:
+                        type: string
+                      requestPath:
+                        type: string
+                      response:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                httpsHealthCheck:
+                  items:
+                    properties:
+                      host:
+                        type: string
+                      port:
+                        type: integer
+                      proxyHeader:
+                        type: string
+                      requestPath:
+                        type: string
+                      response:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                name:
+                  type: string
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                sslHealthCheck:
+                  items:
+                    properties:
+                      port:
+                        type: integer
+                      proxyHeader:
+                        type: string
+                      request:
+                        type: string
+                      response:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                tcpHealthCheck:
+                  items:
+                    properties:
+                      port:
+                        type: integer
+                      proxyHeader:
+                        type: string
+                      request:
+                        type: string
+                      response:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                timeoutSec:
+                  type: integer
+                unhealthyThreshold:
+                  type: integer
+              required:
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

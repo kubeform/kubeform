@@ -445,8 +445,49 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                endpointConfiguration:
+                  items:
+                    properties:
+                      endpointID:
+                        type: string
+                      weight:
+                        type: integer
+                    type: object
+                  maxItems: 10
+                  type: array
+                  uniqueItems: true
+                endpointGroupRegion:
+                  type: string
+                healthCheckIntervalSeconds:
+                  type: integer
+                healthCheckPath:
+                  type: string
+                healthCheckPort:
+                  type: integer
+                healthCheckProtocol:
+                  type: string
+                listenerArn:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                thresholdCount:
+                  type: integer
+                trafficDialPercentage:
+                  description: A Number represents a JSON number literal.
+                  type: string
+              required:
+              - listenerArn
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

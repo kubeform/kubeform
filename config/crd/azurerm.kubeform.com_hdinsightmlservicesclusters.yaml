@@ -579,8 +579,183 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                clusterVersion:
+                  type: string
+                gateway:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                      username:
+                        type: string
+                    required:
+                    - enabled
+                    - username
+                    type: object
+                  maxItems: 1
+                  type: array
+                location:
+                  type: string
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                roles:
+                  items:
+                    properties:
+                      edgeNode:
+                        items:
+                          properties:
+                            sshKeys:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                            subnetID:
+                              type: string
+                            username:
+                              type: string
+                            virtualNetworkID:
+                              type: string
+                            vmSize:
+                              type: string
+                          required:
+                          - username
+                          - vmSize
+                          type: object
+                        maxItems: 1
+                        type: array
+                      headNode:
+                        items:
+                          properties:
+                            sshKeys:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                            subnetID:
+                              type: string
+                            username:
+                              type: string
+                            virtualNetworkID:
+                              type: string
+                            vmSize:
+                              type: string
+                          required:
+                          - username
+                          - vmSize
+                          type: object
+                        maxItems: 1
+                        type: array
+                      workerNode:
+                        items:
+                          properties:
+                            minInstanceCount:
+                              type: integer
+                            sshKeys:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                            subnetID:
+                              type: string
+                            targetInstanceCount:
+                              type: integer
+                            username:
+                              type: string
+                            virtualNetworkID:
+                              type: string
+                            vmSize:
+                              type: string
+                          required:
+                          - targetInstanceCount
+                          - username
+                          - vmSize
+                          type: object
+                        maxItems: 1
+                        type: array
+                      zookeeperNode:
+                        items:
+                          properties:
+                            sshKeys:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                            subnetID:
+                              type: string
+                            username:
+                              type: string
+                            virtualNetworkID:
+                              type: string
+                            vmSize:
+                              type: string
+                          required:
+                          - username
+                          - vmSize
+                          type: object
+                        maxItems: 1
+                        type: array
+                    required:
+                    - edgeNode
+                    - headNode
+                    - workerNode
+                    - zookeeperNode
+                    type: object
+                  maxItems: 1
+                  type: array
+                rstudio:
+                  type: boolean
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                storageAccount:
+                  items:
+                    properties:
+                      isDefault:
+                        type: boolean
+                      storageContainerID:
+                        type: string
+                    required:
+                    - isDefault
+                    - storageContainerID
+                    type: object
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                tier:
+                  type: string
+              required:
+              - clusterVersion
+              - gateway
+              - location
+              - name
+              - providerRef
+              - resourceGroupName
+              - roles
+              - rstudio
+              - storageAccount
+              - tier
+              type: object
           type: object
       type: object
   versions:

@@ -454,8 +454,58 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                activationKey:
+                  type: string
+                gatewayIPAddress:
+                  type: string
+                gatewayName:
+                  type: string
+                gatewayTimezone:
+                  type: string
+                gatewayType:
+                  type: string
+                mediumChangerType:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                smbActiveDirectorySettings:
+                  items:
+                    properties:
+                      domainName:
+                        type: string
+                      username:
+                        type: string
+                    required:
+                    - domainName
+                    - username
+                    type: object
+                  maxItems: 1
+                  type: array
+                tapeDriveType:
+                  type: string
+              required:
+              - gatewayName
+              - gatewayTimezone
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

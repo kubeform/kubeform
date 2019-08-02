@@ -501,8 +501,105 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                bucket:
+                  type: string
+                destination:
+                  items:
+                    properties:
+                      bucket:
+                        items:
+                          properties:
+                            accountID:
+                              type: string
+                            bucketArn:
+                              type: string
+                            encryption:
+                              items:
+                                properties:
+                                  sseKms:
+                                    items:
+                                      properties:
+                                        keyID:
+                                          type: string
+                                      required:
+                                      - keyID
+                                      type: object
+                                    maxItems: 1
+                                    type: array
+                                  sseS3:
+                                    items:
+                                      type: object
+                                    maxItems: 1
+                                    type: array
+                                type: object
+                              maxItems: 1
+                              type: array
+                            format:
+                              type: string
+                            prefix:
+                              type: string
+                          required:
+                          - bucketArn
+                          - format
+                          type: object
+                        maxItems: 1
+                        minItems: 1
+                        type: array
+                    required:
+                    - bucket
+                    type: object
+                  maxItems: 1
+                  minItems: 1
+                  type: array
+                enabled:
+                  type: boolean
+                filter:
+                  items:
+                    properties:
+                      prefix:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                includedObjectVersions:
+                  type: string
+                name:
+                  type: string
+                optionalFields:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                schedule:
+                  items:
+                    properties:
+                      frequency:
+                        type: string
+                    required:
+                    - frequency
+                    type: object
+                  maxItems: 1
+                  minItems: 1
+                  type: array
+              required:
+              - bucket
+              - destination
+              - includedObjectVersions
+              - name
+              - providerRef
+              - schedule
+              type: object
           type: object
       type: object
   versions:

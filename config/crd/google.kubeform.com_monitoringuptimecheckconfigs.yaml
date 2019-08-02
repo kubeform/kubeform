@@ -524,8 +524,128 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                contentMatchers:
+                  items:
+                    properties:
+                      content:
+                        type: string
+                    type: object
+                  type: array
+                displayName:
+                  type: string
+                httpCheck:
+                  items:
+                    properties:
+                      authInfo:
+                        items:
+                          properties:
+                            username:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      headers:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      maskHeaders:
+                        type: boolean
+                      path:
+                        type: string
+                      port:
+                        type: integer
+                      useSsl:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                internalCheckers:
+                  items:
+                    properties:
+                      displayName:
+                        type: string
+                      gcpZone:
+                        type: string
+                      name:
+                        type: string
+                      network:
+                        type: string
+                      peerProjectID:
+                        type: string
+                    type: object
+                  type: array
+                isInternal:
+                  type: boolean
+                monitoredResource:
+                  items:
+                    properties:
+                      labels:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      type:
+                        type: string
+                    required:
+                    - labels
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                period:
+                  type: string
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroup:
+                  items:
+                    properties:
+                      groupID:
+                        type: string
+                      resourceType:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                selectedRegions:
+                  items:
+                    type: string
+                  type: array
+                tcpCheck:
+                  items:
+                    properties:
+                      port:
+                        type: integer
+                    required:
+                    - port
+                    type: object
+                  maxItems: 1
+                  type: array
+                timeout:
+                  type: string
+              required:
+              - displayName
+              - providerRef
+              - timeout
+              type: object
           type: object
       type: object
   versions:

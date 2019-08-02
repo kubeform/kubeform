@@ -460,8 +460,64 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                description:
+                  type: string
+                eula:
+                  type: string
+                galleryName:
+                  type: string
+                identifier:
+                  items:
+                    properties:
+                      offer:
+                        type: string
+                      publisher:
+                        type: string
+                      sku:
+                        type: string
+                    required:
+                    - offer
+                    - publisher
+                    - sku
+                    type: object
+                  maxItems: 1
+                  type: array
+                location:
+                  type: string
+                name:
+                  type: string
+                osType:
+                  type: string
+                privacyStatementURI:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                releaseNoteURI:
+                  type: string
+                resourceGroupName:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - galleryName
+              - identifier
+              - location
+              - name
+              - osType
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

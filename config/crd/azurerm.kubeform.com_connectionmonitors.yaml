@@ -464,8 +464,68 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                autoStart:
+                  type: boolean
+                destination:
+                  items:
+                    properties:
+                      address:
+                        type: string
+                      port:
+                        type: integer
+                      virtualMachineID:
+                        type: string
+                    required:
+                    - port
+                    type: object
+                  maxItems: 1
+                  type: array
+                intervalInSeconds:
+                  type: integer
+                location:
+                  type: string
+                name:
+                  type: string
+                networkWatcherName:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                source:
+                  items:
+                    properties:
+                      port:
+                        type: integer
+                      virtualMachineID:
+                        type: string
+                    required:
+                    - virtualMachineID
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - destination
+              - location
+              - name
+              - networkWatcherName
+              - providerRef
+              - resourceGroupName
+              - source
+              type: object
           type: object
       type: object
   versions:

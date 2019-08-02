@@ -465,8 +465,69 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                admissionWhitelistPatterns:
+                  items:
+                    properties:
+                      namePattern:
+                        type: string
+                    type: object
+                  type: array
+                clusterAdmissionRules:
+                  items:
+                    properties:
+                      cluster:
+                        type: string
+                      enforcementMode:
+                        type: string
+                      evaluationMode:
+                        type: string
+                      requireAttestationsBy:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - cluster
+                    type: object
+                  type: array
+                  uniqueItems: true
+                defaultAdmissionRule:
+                  items:
+                    properties:
+                      enforcementMode:
+                        type: string
+                      evaluationMode:
+                        type: string
+                      requireAttestationsBy:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - enforcementMode
+                    - evaluationMode
+                    type: object
+                  maxItems: 1
+                  type: array
+                description:
+                  type: string
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+              required:
+              - defaultAdmissionRule
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

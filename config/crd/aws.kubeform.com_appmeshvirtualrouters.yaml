@@ -460,8 +460,64 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                meshName:
+                  type: string
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                spec:
+                  items:
+                    properties:
+                      listener:
+                        items:
+                          properties:
+                            portMapping:
+                              items:
+                                properties:
+                                  port:
+                                    type: integer
+                                  protocol:
+                                    type: string
+                                required:
+                                - port
+                                - protocol
+                                type: object
+                              maxItems: 1
+                              minItems: 1
+                              type: array
+                          required:
+                          - portMapping
+                          type: object
+                        maxItems: 1
+                        minItems: 1
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - listener
+                    type: object
+                  maxItems: 1
+                  minItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - meshName
+              - name
+              - providerRef
+              - spec
+              type: object
           type: object
       type: object
   versions:

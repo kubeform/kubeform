@@ -493,8 +493,97 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                autoAssignElasticIPS:
+                  type: boolean
+                autoAssignPublicIPS:
+                  type: boolean
+                autoHealing:
+                  type: boolean
+                customConfigureRecipes:
+                  items:
+                    type: string
+                  type: array
+                customDeployRecipes:
+                  items:
+                    type: string
+                  type: array
+                customInstanceProfileArn:
+                  type: string
+                customJSON:
+                  type: string
+                customSecurityGroupIDS:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                customSetupRecipes:
+                  items:
+                    type: string
+                  type: array
+                customShutdownRecipes:
+                  items:
+                    type: string
+                  type: array
+                customUndeployRecipes:
+                  items:
+                    type: string
+                  type: array
+                drainElbOnShutdown:
+                  type: boolean
+                ebsVolume:
+                  items:
+                    properties:
+                      iops:
+                        type: integer
+                      mountPoint:
+                        type: string
+                      numberOfDisks:
+                        type: integer
+                      raidLevel:
+                        type: string
+                      size:
+                        type: integer
+                      type:
+                        type: string
+                    required:
+                    - mountPoint
+                    - numberOfDisks
+                    - size
+                    type: object
+                  type: array
+                  uniqueItems: true
+                elasticLoadBalancer:
+                  type: string
+                installUpdatesOnBoot:
+                  type: boolean
+                instanceShutdownTimeout:
+                  type: integer
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                stackID:
+                  type: string
+                systemPackages:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                useEbsOptimizedInstances:
+                  type: boolean
+              required:
+              - providerRef
+              - stackID
+              type: object
           type: object
       type: object
   versions:

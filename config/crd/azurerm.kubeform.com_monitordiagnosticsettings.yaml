@@ -480,8 +480,84 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                eventhubAuthorizationRuleID:
+                  type: string
+                eventhubName:
+                  type: string
+                log:
+                  items:
+                    properties:
+                      category:
+                        type: string
+                      enabled:
+                        type: boolean
+                      retentionPolicy:
+                        items:
+                          properties:
+                            days:
+                              type: integer
+                            enabled:
+                              type: boolean
+                          required:
+                          - enabled
+                          type: object
+                        maxItems: 1
+                        type: array
+                    required:
+                    - category
+                    - retentionPolicy
+                    type: object
+                  type: array
+                  uniqueItems: true
+                logAnalyticsWorkspaceID:
+                  type: string
+                metric:
+                  items:
+                    properties:
+                      category:
+                        type: string
+                      enabled:
+                        type: boolean
+                      retentionPolicy:
+                        items:
+                          properties:
+                            days:
+                              type: integer
+                            enabled:
+                              type: boolean
+                          required:
+                          - enabled
+                          type: object
+                        maxItems: 1
+                        type: array
+                    required:
+                    - category
+                    - retentionPolicy
+                    type: object
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                storageAccountID:
+                  type: string
+                targetResourceID:
+                  type: string
+              required:
+              - name
+              - providerRef
+              - targetResourceID
+              type: object
           type: object
       type: object
   versions:

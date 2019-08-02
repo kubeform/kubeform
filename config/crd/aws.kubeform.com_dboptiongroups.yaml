@@ -469,8 +469,73 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                engineName:
+                  type: string
+                majorEngineVersion:
+                  type: string
+                name:
+                  type: string
+                namePrefix:
+                  type: string
+                option:
+                  items:
+                    properties:
+                      dbSecurityGroupMemberships:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      optionName:
+                        type: string
+                      optionSettings:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                          - name
+                          - value
+                          type: object
+                        type: array
+                        uniqueItems: true
+                      port:
+                        type: integer
+                      version:
+                        type: string
+                      vpcSecurityGroupMemberships:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - optionName
+                    type: object
+                  type: array
+                  uniqueItems: true
+                optionGroupDescription:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - engineName
+              - majorEngineVersion
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

@@ -452,8 +452,56 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                propagatingVgws:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                route:
+                  items:
+                    properties:
+                      cidrBlock:
+                        type: string
+                      egressOnlyGatewayID:
+                        type: string
+                      gatewayID:
+                        type: string
+                      instanceID:
+                        type: string
+                      ipv6CIDRBlock:
+                        type: string
+                      natGatewayID:
+                        type: string
+                      networkInterfaceID:
+                        type: string
+                      transitGatewayID:
+                        type: string
+                      vpcPeeringConnectionID:
+                        type: string
+                    type: object
+                  type: array
+                  uniqueItems: true
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                vpcID:
+                  type: string
+              required:
+              - providerRef
+              - vpcID
+              type: object
           type: object
       type: object
   versions:

@@ -504,8 +504,108 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                description:
+                  type: string
+                egress:
+                  items:
+                    properties:
+                      cidrBlocks:
+                        items:
+                          type: string
+                        type: array
+                      description:
+                        type: string
+                      fromPort:
+                        type: integer
+                      ipv6CIDRBlocks:
+                        items:
+                          type: string
+                        type: array
+                      prefixListIDS:
+                        items:
+                          type: string
+                        type: array
+                      protocol:
+                        type: string
+                      securityGroups:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      self:
+                        type: boolean
+                      toPort:
+                        type: integer
+                    required:
+                    - fromPort
+                    - protocol
+                    - toPort
+                    type: object
+                  type: array
+                  uniqueItems: true
+                ingress:
+                  items:
+                    properties:
+                      cidrBlocks:
+                        items:
+                          type: string
+                        type: array
+                      description:
+                        type: string
+                      fromPort:
+                        type: integer
+                      ipv6CIDRBlocks:
+                        items:
+                          type: string
+                        type: array
+                      prefixListIDS:
+                        items:
+                          type: string
+                        type: array
+                      protocol:
+                        type: string
+                      securityGroups:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      self:
+                        type: boolean
+                      toPort:
+                        type: integer
+                    required:
+                    - fromPort
+                    - protocol
+                    - toPort
+                    type: object
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                namePrefix:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                revokeRulesOnDelete:
+                  type: boolean
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                vpcID:
+                  type: string
+              required:
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

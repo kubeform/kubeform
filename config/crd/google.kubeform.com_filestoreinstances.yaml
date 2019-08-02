@@ -465,8 +465,69 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                description:
+                  type: string
+                fileShares:
+                  items:
+                    properties:
+                      capacityGb:
+                        type: integer
+                      name:
+                        type: string
+                    required:
+                    - capacityGb
+                    - name
+                    type: object
+                  maxItems: 1
+                  type: array
+                labels:
+                  additionalProperties:
+                    type: string
+                  type: object
+                name:
+                  type: string
+                networks:
+                  items:
+                    properties:
+                      modes:
+                        items:
+                          type: string
+                        type: array
+                      network:
+                        type: string
+                      reservedIPRange:
+                        type: string
+                    required:
+                    - modes
+                    - network
+                    type: object
+                  minItems: 1
+                  type: array
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                tier:
+                  type: string
+                zone:
+                  type: string
+              required:
+              - fileShares
+              - name
+              - networks
+              - providerRef
+              - tier
+              - zone
+              type: object
           type: object
       type: object
   versions:

@@ -463,8 +463,67 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                accountName:
+                  description: Deprecated
+                  type: string
+                automationAccountName:
+                  type: string
+                description:
+                  type: string
+                expiryTime:
+                  type: string
+                frequency:
+                  type: string
+                interval:
+                  type: integer
+                monthDays:
+                  items:
+                    format: int64
+                    type: integer
+                  type: array
+                  uniqueItems: true
+                monthlyOccurrence:
+                  items:
+                    properties:
+                      day:
+                        type: string
+                      occurrence:
+                        type: integer
+                    required:
+                    - day
+                    - occurrence
+                    type: object
+                  type: array
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                startTime:
+                  type: string
+                timezone:
+                  type: string
+                weekDays:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+              required:
+              - frequency
+              - name
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

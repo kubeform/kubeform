@@ -33,8 +33,9 @@ type LightsailKeyPairSpec struct {
 type LightsailKeyPairStatus struct {
 	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
-	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
-	TFState            string `json:"tfState,omitempty"`
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+	// +optional
+	State *LightsailKeyPairSpec `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -477,8 +477,81 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                credentials:
+                  items:
+                    properties:
+                      publicKeyCertificate:
+                        additionalProperties:
+                          properties:
+                            certificate:
+                              type: string
+                            format:
+                              type: string
+                          required:
+                          - certificate
+                          - format
+                          type: object
+                        type: object
+                    type: object
+                  maxItems: 10
+                  type: array
+                eventNotificationConfig:
+                  additionalProperties:
+                    properties:
+                      pubsubTopicName:
+                        type: string
+                    required:
+                    - pubsubTopicName
+                    type: object
+                  type: object
+                httpConfig:
+                  additionalProperties:
+                    properties:
+                      httpEnabledState:
+                        type: string
+                    required:
+                    - httpEnabledState
+                    type: object
+                  type: object
+                mqttConfig:
+                  additionalProperties:
+                    properties:
+                      mqttEnabledState:
+                        type: string
+                    required:
+                    - mqttEnabledState
+                    type: object
+                  type: object
+                name:
+                  type: string
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                region:
+                  type: string
+                stateNotificationConfig:
+                  additionalProperties:
+                    properties:
+                      pubsubTopicName:
+                        type: string
+                    required:
+                    - pubsubTopicName
+                    type: object
+                  type: object
+              required:
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

@@ -639,8 +639,243 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                actionStorageQueue:
+                  items:
+                    properties:
+                      message:
+                        type: string
+                      sasToken:
+                        type: string
+                      storageAccountName:
+                        type: string
+                      storageQueueName:
+                        type: string
+                    required:
+                    - message
+                    - sasToken
+                    - storageAccountName
+                    - storageQueueName
+                    type: object
+                  maxItems: 1
+                  type: array
+                actionWeb:
+                  items:
+                    properties:
+                      authenticationActiveDirectory:
+                        items:
+                          properties:
+                            audience:
+                              type: string
+                            clientID:
+                              type: string
+                            tenantID:
+                              type: string
+                          required:
+                          - clientID
+                          - tenantID
+                          type: object
+                        maxItems: 1
+                        type: array
+                      authenticationBasic:
+                        items:
+                          properties:
+                            username:
+                              type: string
+                          required:
+                          - username
+                          type: object
+                        maxItems: 1
+                        type: array
+                      authenticationCertificate:
+                        items:
+                          type: object
+                        maxItems: 1
+                        type: array
+                      body:
+                        type: string
+                      headers:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      method:
+                        type: string
+                      url:
+                        type: string
+                    required:
+                    - method
+                    - url
+                    type: object
+                  maxItems: 1
+                  type: array
+                errorActionStorageQueue:
+                  items:
+                    properties:
+                      message:
+                        type: string
+                      sasToken:
+                        type: string
+                      storageAccountName:
+                        type: string
+                      storageQueueName:
+                        type: string
+                    required:
+                    - message
+                    - sasToken
+                    - storageAccountName
+                    - storageQueueName
+                    type: object
+                  maxItems: 1
+                  type: array
+                errorActionWeb:
+                  items:
+                    properties:
+                      authenticationActiveDirectory:
+                        items:
+                          properties:
+                            audience:
+                              type: string
+                            clientID:
+                              type: string
+                            tenantID:
+                              type: string
+                          required:
+                          - clientID
+                          - tenantID
+                          type: object
+                        maxItems: 1
+                        type: array
+                      authenticationBasic:
+                        items:
+                          properties:
+                            username:
+                              type: string
+                          required:
+                          - username
+                          type: object
+                        maxItems: 1
+                        type: array
+                      authenticationCertificate:
+                        items:
+                          type: object
+                        maxItems: 1
+                        type: array
+                      body:
+                        type: string
+                      headers:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      method:
+                        type: string
+                      url:
+                        type: string
+                    required:
+                    - method
+                    - url
+                    type: object
+                  maxItems: 1
+                  type: array
+                jobCollectionName:
+                  type: string
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                recurrence:
+                  items:
+                    properties:
+                      count:
+                        type: integer
+                      endTime:
+                        type: string
+                      frequency:
+                        type: string
+                      hours:
+                        items:
+                          format: int64
+                          type: integer
+                        type: array
+                        uniqueItems: true
+                      interval:
+                        type: integer
+                      minutes:
+                        items:
+                          format: int64
+                          type: integer
+                        type: array
+                        uniqueItems: true
+                      monthDays:
+                        items:
+                          format: int64
+                          type: integer
+                        minItems: 1
+                        type: array
+                        uniqueItems: true
+                      monthlyOccurrences:
+                        items:
+                          properties:
+                            day:
+                              type: string
+                            occurrence:
+                              type: integer
+                          required:
+                          - day
+                          - occurrence
+                          type: object
+                        minItems: 1
+                        type: array
+                        uniqueItems: true
+                      weekDays:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - frequency
+                    type: object
+                  maxItems: 1
+                  minItems: 1
+                  type: array
+                resourceGroupName:
+                  type: string
+                retry:
+                  items:
+                    properties:
+                      count:
+                        type: integer
+                      interval:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                startTime:
+                  type: string
+                state:
+                  type: string
+              required:
+              - jobCollectionName
+              - name
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

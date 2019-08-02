@@ -447,8 +447,51 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                additionalArtifacts:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                additionalSchemaElements:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                compression:
+                  type: string
+                format:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                reportName:
+                  type: string
+                s3Bucket:
+                  type: string
+                s3Prefix:
+                  type: string
+                s3Region:
+                  type: string
+                timeUnit:
+                  type: string
+              required:
+              - additionalSchemaElements
+              - compression
+              - format
+              - providerRef
+              - reportName
+              - s3Bucket
+              - s3Region
+              - timeUnit
+              type: object
           type: object
       type: object
   versions:

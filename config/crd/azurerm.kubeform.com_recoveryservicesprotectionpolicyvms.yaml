@@ -526,8 +526,130 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                backup:
+                  items:
+                    properties:
+                      frequency:
+                        type: string
+                      time:
+                        type: string
+                      weekdays:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - frequency
+                    - time
+                    type: object
+                  maxItems: 1
+                  type: array
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                recoveryVaultName:
+                  type: string
+                resourceGroupName:
+                  type: string
+                retentionDaily:
+                  items:
+                    properties:
+                      count:
+                        type: integer
+                    required:
+                    - count
+                    type: object
+                  maxItems: 1
+                  type: array
+                retentionMonthly:
+                  items:
+                    properties:
+                      count:
+                        type: integer
+                      weekdays:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      weeks:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - count
+                    - weekdays
+                    - weeks
+                    type: object
+                  maxItems: 1
+                  type: array
+                retentionWeekly:
+                  items:
+                    properties:
+                      count:
+                        type: integer
+                      weekdays:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - count
+                    - weekdays
+                    type: object
+                  maxItems: 1
+                  type: array
+                retentionYearly:
+                  items:
+                    properties:
+                      count:
+                        type: integer
+                      months:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      weekdays:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      weeks:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - count
+                    - months
+                    - weekdays
+                    - weeks
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                timezone:
+                  type: string
+              required:
+              - backup
+              - name
+              - providerRef
+              - recoveryVaultName
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

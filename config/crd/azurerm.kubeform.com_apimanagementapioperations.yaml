@@ -632,8 +632,236 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                apiManagementName:
+                  type: string
+                apiName:
+                  type: string
+                description:
+                  type: string
+                displayName:
+                  type: string
+                method:
+                  type: string
+                operationID:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                request:
+                  items:
+                    properties:
+                      description:
+                        type: string
+                      header:
+                        items:
+                          properties:
+                            defaultValue:
+                              type: string
+                            description:
+                              type: string
+                            name:
+                              type: string
+                            required:
+                              type: boolean
+                            type:
+                              type: string
+                            values:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                          required:
+                          - name
+                          - required
+                          - type
+                          type: object
+                        type: array
+                      queryParameter:
+                        items:
+                          properties:
+                            defaultValue:
+                              type: string
+                            description:
+                              type: string
+                            name:
+                              type: string
+                            required:
+                              type: boolean
+                            type:
+                              type: string
+                            values:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                          required:
+                          - name
+                          - required
+                          - type
+                          type: object
+                        type: array
+                      representation:
+                        items:
+                          properties:
+                            contentType:
+                              type: string
+                            formParameter:
+                              items:
+                                properties:
+                                  defaultValue:
+                                    type: string
+                                  description:
+                                    type: string
+                                  name:
+                                    type: string
+                                  required:
+                                    type: boolean
+                                  type:
+                                    type: string
+                                  values:
+                                    items:
+                                      type: string
+                                    type: array
+                                    uniqueItems: true
+                                required:
+                                - name
+                                - required
+                                - type
+                                type: object
+                              type: array
+                            sample:
+                              type: string
+                            schemaID:
+                              type: string
+                            typeName:
+                              type: string
+                          required:
+                          - contentType
+                          type: object
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                resourceGroupName:
+                  type: string
+                response:
+                  items:
+                    properties:
+                      description:
+                        type: string
+                      header:
+                        items:
+                          properties:
+                            defaultValue:
+                              type: string
+                            description:
+                              type: string
+                            name:
+                              type: string
+                            required:
+                              type: boolean
+                            type:
+                              type: string
+                            values:
+                              items:
+                                type: string
+                              type: array
+                              uniqueItems: true
+                          required:
+                          - name
+                          - required
+                          - type
+                          type: object
+                        type: array
+                      representation:
+                        items:
+                          properties:
+                            contentType:
+                              type: string
+                            formParameter:
+                              items:
+                                properties:
+                                  defaultValue:
+                                    type: string
+                                  description:
+                                    type: string
+                                  name:
+                                    type: string
+                                  required:
+                                    type: boolean
+                                  type:
+                                    type: string
+                                  values:
+                                    items:
+                                      type: string
+                                    type: array
+                                    uniqueItems: true
+                                required:
+                                - name
+                                - required
+                                - type
+                                type: object
+                              type: array
+                            sample:
+                              type: string
+                            schemaID:
+                              type: string
+                            typeName:
+                              type: string
+                          required:
+                          - contentType
+                          type: object
+                        type: array
+                      statusCode:
+                        type: integer
+                    required:
+                    - statusCode
+                    type: object
+                  type: array
+                templateParameter:
+                  items:
+                    properties:
+                      defaultValue:
+                        type: string
+                      description:
+                        type: string
+                      name:
+                        type: string
+                      required:
+                        type: boolean
+                      type:
+                        type: string
+                      values:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - name
+                    - required
+                    - type
+                    type: object
+                  type: array
+                urlTemplate:
+                  type: string
+              required:
+              - apiManagementName
+              - apiName
+              - displayName
+              - method
+              - operationID
+              - providerRef
+              - resourceGroupName
+              - urlTemplate
+              type: object
           type: object
       type: object
   versions:

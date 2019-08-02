@@ -453,8 +453,57 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                attributes:
+                  additionalProperties:
+                    type: string
+                  type: object
+                fixedRate:
+                  description: A Number represents a JSON number literal.
+                  type: string
+                host:
+                  type: string
+                httpMethod:
+                  type: string
+                priority:
+                  type: integer
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                reservoirSize:
+                  type: integer
+                resourceArn:
+                  type: string
+                ruleName:
+                  type: string
+                serviceName:
+                  type: string
+                serviceType:
+                  type: string
+                urlPath:
+                  type: string
+                version:
+                  type: integer
+              required:
+              - fixedRate
+              - host
+              - httpMethod
+              - priority
+              - providerRef
+              - reservoirSize
+              - resourceArn
+              - serviceName
+              - serviceType
+              - urlPath
+              - version
+              type: object
           type: object
       type: object
   versions:

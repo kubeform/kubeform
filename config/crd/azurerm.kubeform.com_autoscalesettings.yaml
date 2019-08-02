@@ -598,8 +598,203 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                enabled:
+                  type: boolean
+                location:
+                  type: string
+                name:
+                  type: string
+                notification:
+                  items:
+                    properties:
+                      email:
+                        items:
+                          properties:
+                            customEmails:
+                              items:
+                                type: string
+                              type: array
+                            sendToSubscriptionAdministrator:
+                              type: boolean
+                            sendToSubscriptionCoAdministrator:
+                              type: boolean
+                          type: object
+                        maxItems: 1
+                        type: array
+                      webhook:
+                        items:
+                          properties:
+                            properties:
+                              additionalProperties:
+                                type: string
+                              type: object
+                            serviceURI:
+                              type: string
+                          required:
+                          - serviceURI
+                          type: object
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                profile:
+                  items:
+                    properties:
+                      capacity:
+                        items:
+                          properties:
+                            default:
+                              type: integer
+                            maximum:
+                              type: integer
+                            minimum:
+                              type: integer
+                          required:
+                          - default
+                          - maximum
+                          - minimum
+                          type: object
+                        maxItems: 1
+                        type: array
+                      fixedDate:
+                        items:
+                          properties:
+                            end:
+                              type: string
+                            start:
+                              type: string
+                            timezone:
+                              type: string
+                          required:
+                          - end
+                          - start
+                          type: object
+                        maxItems: 1
+                        type: array
+                      name:
+                        type: string
+                      recurrence:
+                        items:
+                          properties:
+                            days:
+                              items:
+                                type: string
+                              type: array
+                            hours:
+                              items:
+                                format: int64
+                                type: integer
+                              maxItems: 1
+                              type: array
+                            minutes:
+                              items:
+                                format: int64
+                                type: integer
+                              maxItems: 1
+                              type: array
+                            timezone:
+                              type: string
+                          required:
+                          - days
+                          - hours
+                          - minutes
+                          type: object
+                        maxItems: 1
+                        type: array
+                      rule:
+                        items:
+                          properties:
+                            metricTrigger:
+                              items:
+                                properties:
+                                  metricName:
+                                    type: string
+                                  metricResourceID:
+                                    type: string
+                                  operator:
+                                    type: string
+                                  statistic:
+                                    type: string
+                                  threshold:
+                                    description: A Number represents a JSON number
+                                      literal.
+                                    type: string
+                                  timeAggregation:
+                                    type: string
+                                  timeGrain:
+                                    type: string
+                                  timeWindow:
+                                    type: string
+                                required:
+                                - metricName
+                                - metricResourceID
+                                - operator
+                                - statistic
+                                - threshold
+                                - timeAggregation
+                                - timeGrain
+                                - timeWindow
+                                type: object
+                              maxItems: 1
+                              type: array
+                            scaleAction:
+                              items:
+                                properties:
+                                  cooldown:
+                                    type: string
+                                  direction:
+                                    type: string
+                                  type:
+                                    type: string
+                                  value:
+                                    type: integer
+                                required:
+                                - cooldown
+                                - direction
+                                - type
+                                - value
+                                type: object
+                              maxItems: 1
+                              type: array
+                          required:
+                          - metricTrigger
+                          - scaleAction
+                          type: object
+                        maxItems: 10
+                        type: array
+                    required:
+                    - capacity
+                    - name
+                    type: object
+                  maxItems: 20
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                targetResourceID:
+                  type: string
+              required:
+              - location
+              - name
+              - profile
+              - providerRef
+              - resourceGroupName
+              - targetResourceID
+              type: object
           type: object
       type: object
   versions:

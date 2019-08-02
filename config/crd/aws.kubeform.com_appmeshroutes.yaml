@@ -513,8 +513,117 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                meshName:
+                  type: string
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                spec:
+                  items:
+                    properties:
+                      httpRoute:
+                        items:
+                          properties:
+                            action:
+                              items:
+                                properties:
+                                  weightedTarget:
+                                    items:
+                                      properties:
+                                        virtualNode:
+                                          type: string
+                                        weight:
+                                          type: integer
+                                      required:
+                                      - virtualNode
+                                      - weight
+                                      type: object
+                                    maxItems: 10
+                                    minItems: 1
+                                    type: array
+                                    uniqueItems: true
+                                required:
+                                - weightedTarget
+                                type: object
+                              maxItems: 1
+                              minItems: 1
+                              type: array
+                            match:
+                              items:
+                                properties:
+                                  prefix:
+                                    type: string
+                                required:
+                                - prefix
+                                type: object
+                              maxItems: 1
+                              minItems: 1
+                              type: array
+                          required:
+                          - action
+                          - match
+                          type: object
+                        maxItems: 1
+                        type: array
+                      tcpRoute:
+                        items:
+                          properties:
+                            action:
+                              items:
+                                properties:
+                                  weightedTarget:
+                                    items:
+                                      properties:
+                                        virtualNode:
+                                          type: string
+                                        weight:
+                                          type: integer
+                                      required:
+                                      - virtualNode
+                                      - weight
+                                      type: object
+                                    maxItems: 10
+                                    minItems: 1
+                                    type: array
+                                    uniqueItems: true
+                                required:
+                                - weightedTarget
+                                type: object
+                              maxItems: 1
+                              minItems: 1
+                              type: array
+                          required:
+                          - action
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  minItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                virtualRouterName:
+                  type: string
+              required:
+              - meshName
+              - name
+              - providerRef
+              - spec
+              - virtualRouterName
+              type: object
           type: object
       type: object
   versions:

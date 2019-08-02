@@ -491,8 +491,95 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                appServicePlanID:
+                  type: string
+                appSettings:
+                  additionalProperties:
+                    type: string
+                  type: object
+                clientAffinityEnabled:
+                  type: boolean
+                connectionString:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - name
+                    - type
+                    type: object
+                  type: array
+                enableBuiltinLogging:
+                  type: boolean
+                enabled:
+                  type: boolean
+                httpsOnly:
+                  type: boolean
+                identity:
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                location:
+                  type: string
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                siteConfig:
+                  items:
+                    properties:
+                      alwaysOn:
+                        type: boolean
+                      linuxFxVersion:
+                        type: string
+                      use32BitWorkerProcess:
+                        type: boolean
+                      websocketsEnabled:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                version:
+                  type: string
+              required:
+              - appServicePlanID
+              - location
+              - name
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

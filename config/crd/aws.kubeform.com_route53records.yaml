@@ -494,8 +494,98 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                alias:
+                  items:
+                    properties:
+                      evaluateTargetHealth:
+                        type: boolean
+                      name:
+                        type: string
+                      zoneID:
+                        type: string
+                    required:
+                    - evaluateTargetHealth
+                    - name
+                    - zoneID
+                    type: object
+                  type: array
+                  uniqueItems: true
+                allowOverwrite:
+                  type: boolean
+                failoverRoutingPolicy:
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  type: array
+                geolocationRoutingPolicy:
+                  items:
+                    properties:
+                      continent:
+                        type: string
+                      country:
+                        type: string
+                      subdivision:
+                        type: string
+                    type: object
+                  type: array
+                healthCheckID:
+                  type: string
+                latencyRoutingPolicy:
+                  items:
+                    properties:
+                      region:
+                        type: string
+                    required:
+                    - region
+                    type: object
+                  type: array
+                multivalueAnswerRoutingPolicy:
+                  type: boolean
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                records:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                setIdentifier:
+                  type: string
+                ttl:
+                  type: integer
+                type:
+                  type: string
+                weightedRoutingPolicy:
+                  items:
+                    properties:
+                      weight:
+                        type: integer
+                    required:
+                    - weight
+                    type: object
+                  type: array
+                zoneID:
+                  type: string
+              required:
+              - name
+              - providerRef
+              - type
+              - zoneID
+              type: object
           type: object
       type: object
   versions:

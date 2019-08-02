@@ -555,8 +555,159 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                meshName:
+                  type: string
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                spec:
+                  items:
+                    properties:
+                      backend:
+                        items:
+                          properties:
+                            virtualService:
+                              items:
+                                properties:
+                                  virtualServiceName:
+                                    type: string
+                                required:
+                                - virtualServiceName
+                                type: object
+                              maxItems: 1
+                              type: array
+                          type: object
+                        maxItems: 25
+                        type: array
+                        uniqueItems: true
+                      listener:
+                        items:
+                          properties:
+                            healthCheck:
+                              items:
+                                properties:
+                                  healthyThreshold:
+                                    type: integer
+                                  intervalMillis:
+                                    type: integer
+                                  path:
+                                    type: string
+                                  port:
+                                    type: integer
+                                  protocol:
+                                    type: string
+                                  timeoutMillis:
+                                    type: integer
+                                  unhealthyThreshold:
+                                    type: integer
+                                required:
+                                - healthyThreshold
+                                - intervalMillis
+                                - protocol
+                                - timeoutMillis
+                                - unhealthyThreshold
+                                type: object
+                              maxItems: 1
+                              type: array
+                            portMapping:
+                              items:
+                                properties:
+                                  port:
+                                    type: integer
+                                  protocol:
+                                    type: string
+                                required:
+                                - port
+                                - protocol
+                                type: object
+                              maxItems: 1
+                              minItems: 1
+                              type: array
+                          required:
+                          - portMapping
+                          type: object
+                        maxItems: 1
+                        type: array
+                        uniqueItems: true
+                      logging:
+                        items:
+                          properties:
+                            accessLog:
+                              items:
+                                properties:
+                                  file:
+                                    items:
+                                      properties:
+                                        path:
+                                          type: string
+                                      required:
+                                      - path
+                                      type: object
+                                    maxItems: 1
+                                    type: array
+                                type: object
+                              maxItems: 1
+                              type: array
+                          type: object
+                        maxItems: 1
+                        type: array
+                      serviceDiscovery:
+                        items:
+                          properties:
+                            awsCloudMap:
+                              items:
+                                properties:
+                                  attributes:
+                                    additionalProperties:
+                                      type: string
+                                    type: object
+                                  namespaceName:
+                                    type: string
+                                  serviceName:
+                                    type: string
+                                required:
+                                - namespaceName
+                                - serviceName
+                                type: object
+                              maxItems: 1
+                              type: array
+                            dns:
+                              items:
+                                properties:
+                                  hostname:
+                                    type: string
+                                required:
+                                - hostname
+                                type: object
+                              maxItems: 1
+                              type: array
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  minItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - meshName
+              - name
+              - providerRef
+              - spec
+              type: object
           type: object
       type: object
   versions:

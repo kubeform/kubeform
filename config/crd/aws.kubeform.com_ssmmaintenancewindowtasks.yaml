@@ -484,8 +484,88 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                description:
+                  type: string
+                loggingInfo:
+                  items:
+                    properties:
+                      s3BucketName:
+                        type: string
+                      s3BucketPrefix:
+                        type: string
+                      s3Region:
+                        type: string
+                    required:
+                    - s3BucketName
+                    - s3Region
+                    type: object
+                  maxItems: 1
+                  type: array
+                maxConcurrency:
+                  type: string
+                maxErrors:
+                  type: string
+                name:
+                  type: string
+                priority:
+                  type: integer
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                serviceRoleArn:
+                  type: string
+                targets:
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      values:
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - key
+                    - values
+                    type: object
+                  type: array
+                taskArn:
+                  type: string
+                taskParameters:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      values:
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - name
+                    - values
+                    type: object
+                  type: array
+                taskType:
+                  type: string
+                windowID:
+                  type: string
+              required:
+              - maxConcurrency
+              - maxErrors
+              - providerRef
+              - serviceRoleArn
+              - targets
+              - taskArn
+              - taskType
+              - windowID
+              type: object
           type: object
       type: object
   versions:

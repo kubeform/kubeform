@@ -473,8 +473,77 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                appServiceEnvironmentID:
+                  type: string
+                isXenon:
+                  type: boolean
+                kind:
+                  type: string
+                location:
+                  type: string
+                maximumElasticWorkerCount:
+                  type: integer
+                name:
+                  type: string
+                perSiteScaling:
+                  type: boolean
+                properties:
+                  description: Deprecated
+                  items:
+                    properties:
+                      appServiceEnvironmentID:
+                        description: Deprecated
+                        type: string
+                      perSiteScaling:
+                        description: Deprecated
+                        type: boolean
+                      reserved:
+                        description: Deprecated
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                reserved:
+                  type: boolean
+                resourceGroupName:
+                  type: string
+                sku:
+                  items:
+                    properties:
+                      capacity:
+                        type: integer
+                      size:
+                        type: string
+                      tier:
+                        type: string
+                    required:
+                    - size
+                    - tier
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - location
+              - name
+              - providerRef
+              - resourceGroupName
+              - sku
+              type: object
           type: object
       type: object
   versions:

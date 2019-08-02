@@ -564,8 +564,168 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                accountName:
+                  type: string
+                autoScale:
+                  items:
+                    properties:
+                      evaluationInterval:
+                        type: string
+                      formula:
+                        type: string
+                    required:
+                    - formula
+                    type: object
+                  maxItems: 1
+                  type: array
+                certificate:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      storeLocation:
+                        type: string
+                      storeName:
+                        type: string
+                      visibility:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - ID
+                    - storeLocation
+                    type: object
+                  type: array
+                containerConfiguration:
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                displayName:
+                  type: string
+                fixedScale:
+                  items:
+                    properties:
+                      resizeTimeout:
+                        type: string
+                      targetDedicatedNodes:
+                        type: integer
+                      targetLowPriorityNodes:
+                        type: integer
+                    type: object
+                  maxItems: 1
+                  type: array
+                maxTasksPerNode:
+                  type: integer
+                name:
+                  type: string
+                nodeAgentSkuID:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                startTask:
+                  items:
+                    properties:
+                      commandLine:
+                        type: string
+                      environment:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      maxTaskRetryCount:
+                        type: integer
+                      resourceFile:
+                        items:
+                          properties:
+                            autoStorageContainerName:
+                              type: string
+                            blobPrefix:
+                              type: string
+                            fileMode:
+                              type: string
+                            filePath:
+                              type: string
+                            httpURL:
+                              type: string
+                            storageContainerURL:
+                              type: string
+                          type: object
+                        type: array
+                      userIdentity:
+                        items:
+                          properties:
+                            autoUser:
+                              items:
+                                properties:
+                                  elevationLevel:
+                                    type: string
+                                  scope:
+                                    type: string
+                                type: object
+                              maxItems: 1
+                              type: array
+                            userName:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      waitForSuccess:
+                        type: boolean
+                    required:
+                    - commandLine
+                    - userIdentity
+                    type: object
+                  maxItems: 1
+                  type: array
+                stopPendingResizeOperation:
+                  type: boolean
+                storageImageReference:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      offer:
+                        type: string
+                      publisher:
+                        type: string
+                      sku:
+                        type: string
+                      version:
+                        type: string
+                    required:
+                    - offer
+                    - publisher
+                    - sku
+                    - version
+                    type: object
+                  maxItems: 1
+                  type: array
+                vmSize:
+                  type: string
+              required:
+              - accountName
+              - name
+              - nodeAgentSkuID
+              - providerRef
+              - resourceGroupName
+              - storageImageReference
+              - vmSize
+              type: object
           type: object
       type: object
   versions:

@@ -648,8 +648,252 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                alarmConfiguration:
+                  items:
+                    properties:
+                      alarms:
+                        items:
+                          type: string
+                        maxItems: 10
+                        type: array
+                        uniqueItems: true
+                      enabled:
+                        type: boolean
+                      ignorePollAlarmFailure:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                appName:
+                  type: string
+                autoRollbackConfiguration:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                      events:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                    type: object
+                  maxItems: 1
+                  type: array
+                autoscalingGroups:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                blueGreenDeploymentConfig:
+                  items:
+                    properties:
+                      deploymentReadyOption:
+                        items:
+                          properties:
+                            actionOnTimeout:
+                              type: string
+                            waitTimeInMinutes:
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                      greenFleetProvisioningOption:
+                        items:
+                          properties:
+                            action:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      terminateBlueInstancesOnDeploymentSuccess:
+                        items:
+                          properties:
+                            action:
+                              type: string
+                            terminationWaitTimeInMinutes:
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                deploymentConfigName:
+                  type: string
+                deploymentGroupName:
+                  type: string
+                deploymentStyle:
+                  items:
+                    properties:
+                      deploymentOption:
+                        type: string
+                      deploymentType:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                ec2TagFilter:
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      type:
+                        type: string
+                      value:
+                        type: string
+                    type: object
+                  type: array
+                  uniqueItems: true
+                ec2TagSet:
+                  items:
+                    properties:
+                      ec2TagFilter:
+                        items:
+                          properties:
+                            key:
+                              type: string
+                            type:
+                              type: string
+                            value:
+                              type: string
+                          type: object
+                        type: array
+                        uniqueItems: true
+                    type: object
+                  type: array
+                  uniqueItems: true
+                ecsService:
+                  items:
+                    properties:
+                      clusterName:
+                        type: string
+                      serviceName:
+                        type: string
+                    required:
+                    - clusterName
+                    - serviceName
+                    type: object
+                  maxItems: 1
+                  type: array
+                loadBalancerInfo:
+                  items:
+                    properties:
+                      elbInfo:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                          type: object
+                        type: array
+                        uniqueItems: true
+                      targetGroupInfo:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                          type: object
+                        type: array
+                        uniqueItems: true
+                      targetGroupPairInfo:
+                        items:
+                          properties:
+                            prodTrafficRoute:
+                              items:
+                                properties:
+                                  listenerArns:
+                                    items:
+                                      type: string
+                                    type: array
+                                    uniqueItems: true
+                                required:
+                                - listenerArns
+                                type: object
+                              maxItems: 1
+                              minItems: 1
+                              type: array
+                            targetGroup:
+                              items:
+                                properties:
+                                  name:
+                                    type: string
+                                required:
+                                - name
+                                type: object
+                              maxItems: 2
+                              minItems: 1
+                              type: array
+                            testTrafficRoute:
+                              items:
+                                properties:
+                                  listenerArns:
+                                    items:
+                                      type: string
+                                    type: array
+                                    uniqueItems: true
+                                required:
+                                - listenerArns
+                                type: object
+                              maxItems: 1
+                              type: array
+                          required:
+                          - prodTrafficRoute
+                          - targetGroup
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                onPremisesInstanceTagFilter:
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      type:
+                        type: string
+                      value:
+                        type: string
+                    type: object
+                  type: array
+                  uniqueItems: true
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                serviceRoleArn:
+                  type: string
+                triggerConfiguration:
+                  items:
+                    properties:
+                      triggerEvents:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      triggerName:
+                        type: string
+                      triggerTargetArn:
+                        type: string
+                    required:
+                    - triggerEvents
+                    - triggerName
+                    - triggerTargetArn
+                    type: object
+                  type: array
+                  uniqueItems: true
+              required:
+              - appName
+              - deploymentGroupName
+              - providerRef
+              - serviceRoleArn
+              type: object
           type: object
       type: object
   versions:

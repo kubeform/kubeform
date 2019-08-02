@@ -475,8 +475,79 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                apiID:
+                  type: string
+                description:
+                  type: string
+                dynamodbConfig:
+                  items:
+                    properties:
+                      region:
+                        type: string
+                      tableName:
+                        type: string
+                      useCallerCredentials:
+                        type: boolean
+                    required:
+                    - tableName
+                    type: object
+                  maxItems: 1
+                  type: array
+                elasticsearchConfig:
+                  items:
+                    properties:
+                      endpoint:
+                        type: string
+                      region:
+                        type: string
+                    required:
+                    - endpoint
+                    type: object
+                  maxItems: 1
+                  type: array
+                httpConfig:
+                  items:
+                    properties:
+                      endpoint:
+                        type: string
+                    required:
+                    - endpoint
+                    type: object
+                  maxItems: 1
+                  type: array
+                lambdaConfig:
+                  items:
+                    properties:
+                      functionArn:
+                        type: string
+                    required:
+                    - functionArn
+                    type: object
+                  maxItems: 1
+                  type: array
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                serviceRoleArn:
+                  type: string
+                type:
+                  type: string
+              required:
+              - apiID
+              - name
+              - providerRef
+              - type
+              type: object
           type: object
       type: object
   versions:

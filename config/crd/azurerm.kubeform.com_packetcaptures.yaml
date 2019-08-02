@@ -462,8 +462,66 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                filter:
+                  items:
+                    properties:
+                      localIPAddress:
+                        type: string
+                      localPort:
+                        type: string
+                      protocol:
+                        type: string
+                      remoteIPAddress:
+                        type: string
+                      remotePort:
+                        type: string
+                    required:
+                    - protocol
+                    type: object
+                  type: array
+                maximumBytesPerPacket:
+                  type: integer
+                maximumBytesPerSession:
+                  type: integer
+                maximumCaptureDuration:
+                  type: integer
+                name:
+                  type: string
+                networkWatcherName:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                storageLocation:
+                  items:
+                    properties:
+                      filePath:
+                        type: string
+                      storageAccountID:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                targetResourceID:
+                  type: string
+              required:
+              - name
+              - networkWatcherName
+              - providerRef
+              - resourceGroupName
+              - storageLocation
+              - targetResourceID
+              type: object
           type: object
       type: object
   versions:

@@ -502,8 +502,106 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                artifactStore:
+                  items:
+                    properties:
+                      encryptionKey:
+                        items:
+                          properties:
+                            ID:
+                              type: string
+                            type:
+                              type: string
+                          required:
+                          - ID
+                          - type
+                          type: object
+                        maxItems: 1
+                        type: array
+                      location:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - location
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                roleArn:
+                  type: string
+                stage:
+                  items:
+                    properties:
+                      action:
+                        items:
+                          properties:
+                            category:
+                              type: string
+                            configuration:
+                              additionalProperties:
+                                type: string
+                              type: object
+                            inputArtifacts:
+                              items:
+                                type: string
+                              type: array
+                            name:
+                              type: string
+                            outputArtifacts:
+                              items:
+                                type: string
+                              type: array
+                            owner:
+                              type: string
+                            provider:
+                              type: string
+                            roleArn:
+                              type: string
+                            runOrder:
+                              type: integer
+                            version:
+                              type: string
+                          required:
+                          - category
+                          - name
+                          - owner
+                          - provider
+                          - version
+                          type: object
+                        type: array
+                      name:
+                        type: string
+                    required:
+                    - action
+                    - name
+                    type: object
+                  minItems: 2
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - artifactStore
+              - name
+              - providerRef
+              - roleArn
+              - stage
+              type: object
           type: object
       type: object
   versions:

@@ -438,8 +438,42 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                metricName:
+                  type: string
+                name:
+                  type: string
+                predicates:
+                  items:
+                    properties:
+                      dataID:
+                        type: string
+                      negated:
+                        type: boolean
+                      type:
+                        type: string
+                    required:
+                    - dataID
+                    - negated
+                    - type
+                    type: object
+                  type: array
+                  uniqueItems: true
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+              required:
+              - metricName
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

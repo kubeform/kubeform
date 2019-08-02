@@ -14076,15 +14076,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPIOperationPolicyStatus
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIOperationPolicySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIOperationPolicySpec"},
 	}
 }
 
@@ -14750,15 +14751,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPIOperationStatus(ref c
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIOperationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIOperationSpec"},
 	}
 }
 
@@ -14915,15 +14917,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPIPolicyStatus(ref comm
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIPolicySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIPolicySpec"},
 	}
 }
 
@@ -15086,15 +15089,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPISchemaStatus(ref comm
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPISchemaSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPISchemaSpec"},
 	}
 }
 
@@ -15311,15 +15315,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPIStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPISpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPISpec"},
 	}
 }
 
@@ -15494,15 +15499,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAPIVersionSetStatus(ref 
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIVersionSetSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAPIVersionSetSpec"},
 	}
 }
 
@@ -15795,15 +15801,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAuthorizationServerStatu
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAuthorizationServerSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementAuthorizationServerSpec"},
 	}
 }
 
@@ -15953,15 +15960,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementCertificateStatus(ref co
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementCertificateSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementCertificateSpec"},
 	}
 }
 
@@ -16130,15 +16138,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementGroupStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementGroupSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementGroupSpec"},
 	}
 }
 
@@ -16289,15 +16298,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementGroupUserStatus(ref comm
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementGroupUserSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementGroupUserSpec"},
 	}
 }
 
@@ -16559,15 +16569,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementLoggerStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementLoggerSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementLoggerSpec"},
 	}
 }
 
@@ -16735,15 +16746,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementOpenidConnectProviderSta
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementOpenidConnectProviderSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementOpenidConnectProviderSpec"},
 	}
 }
 
@@ -16937,15 +16949,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementProductAPIStatus(ref com
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductAPISpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductAPISpec"},
 	}
 }
 
@@ -17096,15 +17109,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementProductGroupStatus(ref c
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductGroupSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductGroupSpec"},
 	}
 }
 
@@ -17308,15 +17322,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementProductPolicyStatus(ref 
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductPolicySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductPolicySpec"},
 	}
 }
 
@@ -17413,15 +17428,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementProductStatus(ref common
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementProductSpec"},
 	}
 }
 
@@ -17597,15 +17613,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementPropertyStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementPropertySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementPropertySpec"},
 	}
 }
 
@@ -18247,15 +18264,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementStatus(ref common.Refere
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementSpec"},
 	}
 }
 
@@ -18429,15 +18447,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementSubscriptionStatus(ref c
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementSubscriptionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementSubscriptionSpec"},
 	}
 }
 
@@ -18623,15 +18642,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementUserStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementUserSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApiManagementUserSpec"},
 	}
 }
 
@@ -18819,15 +18839,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceActiveSlotStatus(ref common
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceActiveSlotSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceActiveSlotSpec"},
 	}
 }
 
@@ -18972,15 +18993,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceCustomHostnameBindingStatus
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceCustomHostnameBindingSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceCustomHostnameBindingSpec"},
 	}
 }
 
@@ -19311,15 +19333,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServicePlanStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServicePlanSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServicePlanSpec"},
 	}
 }
 
@@ -19841,15 +19864,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSlotSpec"},
 	}
 }
 
@@ -20673,15 +20697,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceStatus(ref common.Reference
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AppServiceSpec"},
 	}
 }
 
@@ -22334,15 +22359,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewayStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationGatewaySpec"},
 	}
 }
 
@@ -22550,15 +22576,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationInsightsAPIKeyStatus(ref c
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationInsightsAPIKeySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationInsightsAPIKeySpec"},
 	}
 }
 
@@ -22680,15 +22707,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationInsightsStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationInsightsSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationInsightsSpec"},
 	}
 }
 
@@ -22908,15 +22936,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationInsightsWebTestStatus(ref 
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationInsightsWebTestSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationInsightsWebTestSpec"},
 	}
 }
 
@@ -23075,15 +23104,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationSecurityGroupStatus(ref co
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationSecurityGroupSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ApplicationSecurityGroupSpec"},
 	}
 }
 
@@ -23279,15 +23309,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationAccountStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationAccountSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationAccountSpec"},
 	}
 }
 
@@ -23449,15 +23480,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationCredentialStatus(ref common
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationCredentialSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationCredentialSpec"},
 	}
 }
 
@@ -23626,15 +23658,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationDscConfigurationStatus(ref 
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationDscConfigurationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationDscConfigurationSpec"},
 	}
 }
 
@@ -23785,15 +23818,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationDscNodeconfigurationStatus(
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationDscNodeconfigurationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationDscNodeconfigurationSpec"},
 	}
 }
 
@@ -24008,15 +24042,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationModuleStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationModuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationModuleSpec"},
 	}
 }
 
@@ -24287,15 +24322,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationRunbookStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationRunbookSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationRunbookSpec"},
 	}
 }
 
@@ -24546,15 +24582,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationScheduleStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationScheduleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationScheduleSpec"},
 	}
 }
 
@@ -24717,15 +24754,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationVariableBoolStatus(ref comm
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableBoolSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableBoolSpec"},
 	}
 }
 
@@ -24888,15 +24926,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationVariableDatetimeStatus(ref 
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableDatetimeSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableDatetimeSpec"},
 	}
 }
 
@@ -25059,15 +25098,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationVariableIntStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableIntSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableIntSpec"},
 	}
 }
 
@@ -25230,15 +25270,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationVariableStringStatus(ref co
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableStringSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutomationVariableStringSpec"},
 	}
 }
 
@@ -25867,15 +25908,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutoscaleSettingStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutoscaleSettingSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AutoscaleSettingSpec"},
 	}
 }
 
@@ -26052,15 +26094,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AvailabilitySetStatus(ref common.Refe
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AvailabilitySetSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AvailabilitySetSpec"},
 	}
 }
 
@@ -26237,15 +26280,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzureadApplicationStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzureadApplicationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzureadApplicationSpec"},
 	}
 }
 
@@ -26491,15 +26535,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzureadServicePrincipalPasswordStatus
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzureadServicePrincipalPasswordSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzureadServicePrincipalPasswordSpec"},
 	}
 }
 
@@ -26542,15 +26587,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzureadServicePrincipalStatus(ref com
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzureadServicePrincipalSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.AzureadServicePrincipalSpec"},
 	}
 }
 
@@ -26721,15 +26767,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchAccountStatus(ref common.Referen
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchAccountSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchAccountSpec"},
 	}
 }
 
@@ -26891,15 +26938,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchCertificateStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchCertificateSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchCertificateSpec"},
 	}
 }
 
@@ -27481,15 +27529,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchPoolStatus(ref common.ReferenceC
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchPoolSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.BatchPoolSpec"},
 	}
 }
 
@@ -27814,15 +27863,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_CdnEndpointStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.CdnEndpointSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CdnEndpointSpec"},
 	}
 }
 
@@ -27987,15 +28037,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_CdnProfileStatus(ref common.Reference
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.CdnProfileSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CdnProfileSpec"},
 	}
 }
 
@@ -28197,15 +28248,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_CognitiveAccountStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.CognitiveAccountSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CognitiveAccountSpec"},
 	}
 }
 
@@ -28462,15 +28514,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ConnectionMonitorStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ConnectionMonitorSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ConnectionMonitorSpec"},
 	}
 }
 
@@ -29271,15 +29324,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerGroupSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerGroupSpec"},
 	}
 }
 
@@ -29506,15 +29560,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistryStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerRegistrySpec"},
 	}
 }
 
@@ -29896,15 +29951,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerServiceStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerServiceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ContainerServiceSpec"},
 	}
 }
 
@@ -30291,15 +30347,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbAccountStatus(ref common.Refe
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbAccountSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbAccountSpec"},
 	}
 }
 
@@ -30444,15 +30501,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbCassandraKeyspaceStatus(ref c
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbCassandraKeyspaceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbCassandraKeyspaceSpec"},
 	}
 }
 
@@ -30652,15 +30710,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbMongoCollectionStatus(ref com
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbMongoCollectionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbMongoCollectionSpec"},
 	}
 }
 
@@ -30805,15 +30864,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbMongoDatabaseStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbMongoDatabaseSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbMongoDatabaseSpec"},
 	}
 }
 
@@ -30958,15 +31018,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbSQLDatabaseStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbSQLDatabaseSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbSQLDatabaseSpec"},
 	}
 }
 
@@ -31111,15 +31172,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbTableStatus(ref common.Refere
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbTableSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.CosmosdbTableSpec"},
 	}
 }
 
@@ -31415,15 +31477,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryDatasetMysqlStatus(ref com
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryDatasetMysqlSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryDatasetMysqlSpec"},
 	}
 }
 
@@ -31676,15 +31739,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryDatasetPostgresqlStatus(re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryDatasetPostgresqlSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryDatasetPostgresqlSpec"},
 	}
 }
 
@@ -31937,15 +32001,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryDatasetSQLServerTableStatu
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryDatasetSQLServerTableSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryDatasetSQLServerTableSpec"},
 	}
 }
 
@@ -32167,15 +32232,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryLinkedServiceDataLakeStora
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2Spec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServiceDataLakeStorageGen2Spec"},
 	}
 }
 
@@ -32379,15 +32445,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryLinkedServiceMysqlStatus(r
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServiceMysqlSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServiceMysqlSpec"},
 	}
 }
 
@@ -32591,15 +32658,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryLinkedServicePostgresqlSta
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServicePostgresqlSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServicePostgresqlSpec"},
 	}
 }
 
@@ -32803,15 +32871,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryLinkedServiceSQLServerStat
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServiceSQLServerSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryLinkedServiceSQLServerSpec"},
 	}
 }
 
@@ -33050,15 +33119,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryPipelineStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryPipelineSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactoryPipelineSpec"},
 	}
 }
 
@@ -33274,15 +33344,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataFactoryStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactorySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataFactorySpec"},
 	}
 }
 
@@ -33453,15 +33524,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataLakeAnalyticsAccountStatus(ref co
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeAnalyticsAccountSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeAnalyticsAccountSpec"},
 	}
 }
 
@@ -33618,15 +33690,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataLakeAnalyticsFirewallRuleStatus(r
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeAnalyticsFirewallRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeAnalyticsFirewallRuleSpec"},
 	}
 }
 
@@ -33814,15 +33887,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataLakeStoreFileStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeStoreFileSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeStoreFileSpec"},
 	}
 }
 
@@ -33979,15 +34053,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataLakeStoreFirewallRuleStatus(ref c
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeStoreFirewallRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeStoreFirewallRuleSpec"},
 	}
 }
 
@@ -34133,15 +34208,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DataLakeStoreStatus(ref common.Refere
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeStoreSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DataLakeStoreSpec"},
 	}
 }
 
@@ -34312,15 +34388,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DatabricksWorkspaceStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DatabricksWorkspaceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DatabricksWorkspaceSpec"},
 	}
 }
 
@@ -34479,15 +34556,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DdosProtectionPlanStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DdosProtectionPlanSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DdosProtectionPlanSpec"},
 	}
 }
 
@@ -34652,15 +34730,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestLabStatus(ref common.Reference
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestLabSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestLabSpec"},
 	}
 }
 
@@ -34970,15 +35049,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestLinuxVirtualMachineStatus(ref 
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestLinuxVirtualMachineSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestLinuxVirtualMachineSpec"},
 	}
 }
 
@@ -35167,15 +35247,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestPolicyStatus(ref common.Refere
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestPolicySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestPolicySpec"},
 	}
 }
 
@@ -35376,15 +35457,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestVirtualNetworkStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestVirtualNetworkSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestVirtualNetworkSpec"},
 	}
 }
 
@@ -35689,15 +35771,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestWindowsVirtualMachineStatus(re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestWindowsVirtualMachineSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevTestWindowsVirtualMachineSpec"},
 	}
 }
 
@@ -35910,15 +35993,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevspaceControllerStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevspaceControllerSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DevspaceControllerSpec"},
 	}
 }
 
@@ -36096,15 +36180,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsARecordStatus(ref common.Reference
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsARecordSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsARecordSpec"},
 	}
 }
 
@@ -36282,15 +36367,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsAaaaRecordStatus(ref common.Refere
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsAaaaRecordSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsAaaaRecordSpec"},
 	}
 }
 
@@ -36498,15 +36584,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsCaaRecordStatus(ref common.Referen
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsCaaRecordSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsCaaRecordSpec"},
 	}
 }
 
@@ -36677,15 +36764,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsCnameRecordStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsCnameRecordSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsCnameRecordSpec"},
 	}
 }
 
@@ -36887,15 +36975,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsMxRecordStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsMxRecordSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsMxRecordSpec"},
 	}
 }
 
@@ -37105,15 +37194,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsNsRecordStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsNsRecordSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsNsRecordSpec"},
 	}
 }
 
@@ -37291,15 +37381,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsPtrRecordStatus(ref common.Referen
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsPtrRecordSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsPtrRecordSpec"},
 	}
 }
 
@@ -37513,15 +37604,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsSrvRecordStatus(ref common.Referen
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsSrvRecordSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsSrvRecordSpec"},
 	}
 }
 
@@ -37717,15 +37809,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsTxtRecordStatus(ref common.Referen
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsTxtRecordSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsTxtRecordSpec"},
 	}
 }
 
@@ -37910,15 +38003,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_DnsZoneStatus(ref common.ReferenceCal
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsZoneSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.DnsZoneSpec"},
 	}
 }
 
@@ -38185,15 +38279,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventgridDomainStatus(ref common.Refe
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventgridDomainSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventgridDomainSpec"},
 	}
 }
 
@@ -38616,15 +38711,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventgridEventSubscriptionStatus(ref 
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventgridEventSubscriptionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventgridEventSubscriptionSpec"},
 	}
 }
 
@@ -38783,15 +38879,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventgridTopicStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventgridTopicSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventgridTopicSpec"},
 	}
 }
 
@@ -39010,15 +39107,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubAuthorizationRuleStatus(ref c
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubAuthorizationRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubAuthorizationRuleSpec"},
 	}
 }
 
@@ -39182,15 +39280,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubConsumerGroupStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubConsumerGroupSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubConsumerGroupSpec"},
 	}
 }
 
@@ -39450,15 +39549,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceAuthorizationRuleSta
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceAuthorizationRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceAuthorizationRuleSpec"},
 	}
 }
 
@@ -39604,15 +39704,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubNamespaceSpec"},
 	}
 }
 
@@ -39792,15 +39893,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubStatus(ref common.ReferenceCa
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.EventhubSpec"},
 	}
 }
 
@@ -39988,15 +40090,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitAuthorizationStatu
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ExpressRouteCircuitAuthorizationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ExpressRouteCircuitAuthorizationSpec"},
 	}
 }
 
@@ -40255,15 +40358,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitPeeringStatus(ref 
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ExpressRouteCircuitPeeringSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ExpressRouteCircuitPeeringSpec"},
 	}
 }
 
@@ -40393,15 +40497,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ExpressRouteCircuitSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ExpressRouteCircuitSpec"},
 	}
 }
 
@@ -40716,15 +40821,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_FirewallApplicationRuleCollectionStat
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallApplicationRuleCollectionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallApplicationRuleCollectionSpec"},
 	}
 }
 
@@ -41029,15 +41135,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_FirewallNATRuleCollectionStatus(ref c
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallNATRuleCollectionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallNATRuleCollectionSpec"},
 	}
 }
 
@@ -41283,15 +41390,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_FirewallNetworkRuleCollectionStatus(r
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallNetworkRuleCollectionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallNetworkRuleCollectionSpec"},
 	}
 }
 
@@ -41410,15 +41518,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_FirewallStatus(ref common.ReferenceCa
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FirewallSpec"},
 	}
 }
 
@@ -41748,15 +41857,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_FunctionAppStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.FunctionAppSpec"},
 	}
 }
 
@@ -42262,15 +42372,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightHadoopClusterStatus(ref comm
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightHadoopClusterSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightHadoopClusterSpec"},
 	}
 }
 
@@ -42776,15 +42887,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightHbaseClusterStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightHbaseClusterSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightHbaseClusterSpec"},
 	}
 }
 
@@ -43290,15 +43402,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightInteractiveQueryClusterStatu
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightInteractiveQueryClusterSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightInteractiveQueryClusterSpec"},
 	}
 }
 
@@ -43810,15 +43923,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightKafkaClusterStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightKafkaClusterSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightKafkaClusterSpec"},
 	}
 }
 
@@ -44361,15 +44475,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightMlServicesClusterStatus(ref 
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightMlServicesClusterSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightMlServicesClusterSpec"},
 	}
 }
 
@@ -44912,15 +45027,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightRserverClusterStatus(ref com
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightRserverClusterSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightRserverClusterSpec"},
 	}
 }
 
@@ -45426,15 +45542,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightSparkClusterStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightSparkClusterSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightSparkClusterSpec"},
 	}
 }
 
@@ -45940,15 +46057,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightStormClusterStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightStormClusterSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.HdinsightStormClusterSpec"},
 	}
 }
 
@@ -46233,15 +46351,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ImageStatus(ref common.ReferenceCallb
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ImageSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ImageSpec"},
 	}
 }
 
@@ -46434,15 +46553,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_IotDpsCertificateStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.IotDpsCertificateSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IotDpsCertificateSpec"},
 	}
 }
 
@@ -46601,15 +46721,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_IotDpsStatus(ref common.ReferenceCall
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.IotDpsSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IotDpsSpec"},
 	}
 }
 
@@ -46803,15 +46924,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubConsumerGroupStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubConsumerGroupSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubConsumerGroupSpec"},
 	}
 }
 
@@ -47027,15 +47149,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubSharedAccessPolicyStatus(ref co
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSharedAccessPolicySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSharedAccessPolicySpec"},
 	}
 }
 
@@ -47379,15 +47502,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubStatus(ref common.ReferenceCall
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.IothubSpec"},
 	}
 }
 
@@ -47647,15 +47771,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultAccessPolicyStatus(ref common
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultAccessPolicySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultAccessPolicySpec"},
 	}
 }
 
@@ -48202,15 +48327,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultCertificateStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultCertificateSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultCertificateSpec"},
 	}
 }
 
@@ -48401,15 +48527,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultKeyStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultKeySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultKeySpec"},
 	}
 }
 
@@ -48627,15 +48754,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultSecretStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultSecretSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultSecretSpec"},
 	}
 }
 
@@ -48923,15 +49051,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultStatus(ref common.ReferenceCa
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KeyVaultSpec"},
 	}
 }
 
@@ -49556,15 +49685,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.KubernetesClusterSpec"},
 	}
 }
 
@@ -49759,15 +49889,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbBackendAddressPoolStatus(ref common
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbBackendAddressPoolSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbBackendAddressPoolSpec"},
 	}
 }
 
@@ -49996,15 +50127,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbNATPoolStatus(ref common.ReferenceC
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbNATPoolSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbNATPoolSpec"},
 	}
 }
 
@@ -50186,15 +50318,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbNATRuleStatus(ref common.ReferenceC
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbNATRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbNATRuleSpec"},
 	}
 }
 
@@ -50400,15 +50533,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbOutboundRuleStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbOutboundRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbOutboundRuleSpec"},
 	}
 }
 
@@ -50590,15 +50724,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbProbeStatus(ref common.ReferenceCal
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbProbeSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbProbeSpec"},
 	}
 }
 
@@ -50810,15 +50945,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbRuleStatus(ref common.ReferenceCall
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbRuleSpec"},
 	}
 }
 
@@ -50967,15 +51103,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LbStatus(ref common.ReferenceCallback
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LbSpec"},
 	}
 }
 
@@ -51196,15 +51333,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LocalNetworkGatewayStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LocalNetworkGatewaySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LocalNetworkGatewaySpec"},
 	}
 }
 
@@ -51400,15 +51538,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogAnalyticsLinkedServiceStatus(ref c
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsLinkedServiceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsLinkedServiceSpec"},
 	}
 }
 
@@ -51608,15 +51747,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogAnalyticsSolutionStatus(ref common
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsSolutionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsSolutionSpec"},
 	}
 }
 
@@ -51855,15 +51995,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogAnalyticsWorkspaceLinkedServiceSta
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsWorkspaceLinkedServiceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsWorkspaceLinkedServiceSpec"},
 	}
 }
 
@@ -51991,15 +52132,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogAnalyticsWorkspaceStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsWorkspaceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogAnalyticsWorkspaceSpec"},
 	}
 }
 
@@ -52144,15 +52286,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppActionCustomStatus(ref common
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppActionCustomSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppActionCustomSpec"},
 	}
 }
 
@@ -52323,15 +52466,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppActionHTTPStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppActionHTTPSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppActionHTTPSpec"},
 	}
 }
 
@@ -52476,15 +52620,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppTriggerCustomStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppTriggerCustomSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppTriggerCustomSpec"},
 	}
 }
 
@@ -52641,15 +52786,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppTriggerHTTPRequestStatus(ref 
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppTriggerHTTPRequestSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppTriggerHTTPRequestSpec"},
 	}
 }
 
@@ -52800,15 +52946,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppTriggerRecurrenceStatus(ref c
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppTriggerRecurrenceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppTriggerRecurrenceSpec"},
 	}
 }
 
@@ -52993,15 +53140,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogicAppWorkflowStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppWorkflowSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.LogicAppWorkflowSpec"},
 	}
 }
 
@@ -53322,15 +53470,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ManagedDiskStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagedDiskSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagedDiskSpec"},
 	}
 }
 
@@ -53488,15 +53637,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ManagementGroupStatus(ref common.Refe
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagementGroupSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagementGroupSpec"},
 	}
 }
 
@@ -53647,15 +53797,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ManagementLockStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagementLockSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ManagementLockSpec"},
 	}
 }
 
@@ -53812,15 +53963,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MariadbDatabaseStatus(ref common.Refe
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbDatabaseSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbDatabaseSpec"},
 	}
 }
 
@@ -53977,15 +54129,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MariadbFirewallRuleStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbFirewallRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbFirewallRuleSpec"},
 	}
 }
 
@@ -54259,15 +54412,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MariadbServerStatus(ref common.Refere
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbServerSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MariadbServerSpec"},
 	}
 }
 
@@ -54449,15 +54603,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MediaServicesAccountStatus(ref common
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MediaServicesAccountSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MediaServicesAccountSpec"},
 	}
 }
 
@@ -54752,15 +54907,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MetricAlertruleStatus(ref common.Refe
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MetricAlertruleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MetricAlertruleSpec"},
 	}
 }
 
@@ -55042,15 +55198,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorActionGroupStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorActionGroupSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorActionGroupSpec"},
 	}
 }
 
@@ -55358,15 +55515,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorActivityLogAlertStatus(ref com
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorActivityLogAlertSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorActivityLogAlertSpec"},
 	}
 }
 
@@ -55995,15 +56153,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorAutoscaleSettingStatus(ref com
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorAutoscaleSettingSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorAutoscaleSettingSpec"},
 	}
 }
 
@@ -56318,15 +56477,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorDiagnosticSettingStatus(ref co
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorDiagnosticSettingSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorDiagnosticSettingSpec"},
 	}
 }
 
@@ -56534,15 +56694,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorLogProfileStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorLogProfileSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorLogProfileSpec"},
 	}
 }
 
@@ -56896,15 +57057,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorMetricAlertStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorMetricAlertSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorMetricAlertSpec"},
 	}
 }
 
@@ -57199,15 +57361,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MonitorMetricAlertruleStatus(ref comm
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorMetricAlertruleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MonitorMetricAlertruleSpec"},
 	}
 }
 
@@ -57476,15 +57639,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MssqlElasticpoolStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MssqlElasticpoolSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MssqlElasticpoolSpec"},
 	}
 }
 
@@ -57635,15 +57799,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlConfigurationStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlConfigurationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlConfigurationSpec"},
 	}
 }
 
@@ -57800,15 +57965,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlDatabaseStatus(ref common.Refere
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlDatabaseSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlDatabaseSpec"},
 	}
 }
 
@@ -57965,15 +58131,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlFirewallRuleStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlFirewallRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlFirewallRuleSpec"},
 	}
 }
 
@@ -58247,15 +58414,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlServerStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlServerSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlServerSpec"},
 	}
 }
 
@@ -58406,15 +58574,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlVirtualNetworkRuleStatus(ref com
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlVirtualNetworkRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.MysqlVirtualNetworkRuleSpec"},
 	}
 }
 
@@ -58671,15 +58840,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkConnectionMonitorStatus(ref co
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkConnectionMonitorSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkConnectionMonitorSpec"},
 	}
 }
 
@@ -58838,15 +59008,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkDdosProtectionPlanStatus(ref c
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkDdosProtectionPlanSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkDdosProtectionPlanSpec"},
 	}
 }
 
@@ -59034,15 +59205,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkInterfaceApplicationGatewayBac
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationSpec"},
 	}
 }
 
@@ -59187,15 +59359,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkInterfaceApplicationSecurityGr
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceApplicationSecurityGroupAssociationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceApplicationSecurityGroupAssociationSpec"},
 	}
 }
 
@@ -59340,15 +59513,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkInterfaceBackendAddressPoolAss
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceBackendAddressPoolAssociationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceBackendAddressPoolAssociationSpec"},
 	}
 }
 
@@ -59540,15 +59714,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkInterfaceNATRuleAssociationSta
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceNATRuleAssociationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceNATRuleAssociationSpec"},
 	}
 }
 
@@ -59809,15 +59984,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkInterfaceStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkInterfaceSpec"},
 	}
 }
 
@@ -60077,15 +60253,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkPacketCaptureStatus(ref common
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkPacketCaptureSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkPacketCaptureSpec"},
 	}
 }
 
@@ -60314,15 +60491,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkProfileStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkProfileSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkProfileSpec"},
 	}
 }
 
@@ -60644,15 +60822,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkSecurityGroupStatus(ref common
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkSecurityGroupSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkSecurityGroupSpec"},
 	}
 }
 
@@ -60929,15 +61108,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkSecurityRuleStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkSecurityRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkSecurityRuleSpec"},
 	}
 }
 
@@ -61096,15 +61276,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NetworkWatcherStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkWatcherSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NetworkWatcherSpec"},
 	}
 }
 
@@ -61316,15 +61497,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubAuthorizationRuleStatu
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubAuthorizationRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubAuthorizationRuleSpec"},
 	}
 }
 
@@ -61566,15 +61748,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubNamespaceStatus(ref co
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubNamespaceSpec"},
 	}
 }
 
@@ -61711,15 +61894,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubStatus(ref common.Refe
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.NotificationHubSpec"},
 	}
 }
 
@@ -61979,15 +62163,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_PacketCaptureStatus(ref common.Refere
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PacketCaptureSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PacketCaptureSpec"},
 	}
 }
 
@@ -62199,15 +62384,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_PolicyAssignmentStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PolicyAssignmentSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PolicyAssignmentSpec"},
 	}
 }
 
@@ -62388,15 +62574,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_PolicyDefinitionStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PolicyDefinitionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PolicyDefinitionSpec"},
 	}
 }
 
@@ -62571,15 +62758,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_PolicySetDefinitionStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PolicySetDefinitionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PolicySetDefinitionSpec"},
 	}
 }
 
@@ -62730,15 +62918,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlConfigurationStatus(ref com
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlConfigurationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlConfigurationSpec"},
 	}
 }
 
@@ -62895,15 +63084,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlDatabaseStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlDatabaseSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlDatabaseSpec"},
 	}
 }
 
@@ -63060,15 +63250,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlFirewallRuleStatus(ref comm
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlFirewallRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlFirewallRuleSpec"},
 	}
 }
 
@@ -63342,15 +63533,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlServerStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlServerSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlServerSpec"},
 	}
 }
 
@@ -63507,15 +63699,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlVirtualNetworkRuleStatus(re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlVirtualNetworkRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PostgresqlVirtualNetworkRuleSpec"},
 	}
 }
 
@@ -63668,15 +63861,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_PrivateDNSZoneStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSZoneSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PrivateDNSZoneSpec"},
 	}
 }
 
@@ -63950,15 +64144,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_PublicIPPrefixStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PublicIPPrefixSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PublicIPPrefixSpec"},
 	}
 }
 
@@ -64089,15 +64284,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_PublicIPStatus(ref common.ReferenceCa
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.PublicIPSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.PublicIPSpec"},
 	}
 }
 
@@ -64262,15 +64458,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_RecoveryServicesProtectedVmStatus(ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.RecoveryServicesProtectedVmSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RecoveryServicesProtectedVmSpec"},
 	}
 }
 
@@ -64687,15 +64884,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_RecoveryServicesProtectionPolicyVmSta
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.RecoveryServicesProtectionPolicyVmSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RecoveryServicesProtectionPolicyVmSpec"},
 	}
 }
 
@@ -64860,15 +65058,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_RecoveryServicesVaultStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.RecoveryServicesVaultSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RecoveryServicesVaultSpec"},
 	}
 }
 
@@ -65214,15 +65413,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisCacheStatus(ref common.Reference
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.RedisCacheSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RedisCacheSpec"},
 	}
 }
 
@@ -65379,15 +65579,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisFirewallRuleStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.RedisFirewallRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RedisFirewallRuleSpec"},
 	}
 }
 
@@ -65584,15 +65785,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_RelayNamespaceStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.RelayNamespaceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RelayNamespaceSpec"},
 	}
 }
 
@@ -65745,15 +65947,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ResourceGroupStatus(ref common.Refere
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ResourceGroupSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ResourceGroupSpec"},
 	}
 }
 
@@ -65910,15 +66113,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_RoleAssignmentStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.RoleAssignmentSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RoleAssignmentSpec"},
 	}
 }
 
@@ -66158,15 +66362,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_RoleDefinitionStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.RoleDefinitionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RoleDefinitionSpec"},
 	}
 }
 
@@ -66329,15 +66534,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_RouteStatus(ref common.ReferenceCallb
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.RouteSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RouteSpec"},
 	}
 }
 
@@ -66551,15 +66757,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_RouteTableStatus(ref common.Reference
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.RouteTableSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.RouteTableSpec"},
 	}
 }
 
@@ -66823,15 +67030,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SchedulerJobCollectionStatus(ref comm
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SchedulerJobCollectionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SchedulerJobCollectionSpec"},
 	}
 }
 
@@ -67534,15 +67742,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SchedulerJobStatus(ref common.Referen
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SchedulerJobSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SchedulerJobSpec"},
 	}
 }
 
@@ -67719,15 +67928,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SearchServiceStatus(ref common.Refere
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SearchServiceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SearchServiceSpec"},
 	}
 }
 
@@ -67878,15 +68088,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SecurityCenterContactStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SecurityCenterContactSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SecurityCenterContactSpec"},
 	}
 }
 
@@ -68019,15 +68230,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SecurityCenterSubscriptionPricingStat
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SecurityCenterSubscriptionPricingSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SecurityCenterSubscriptionPricingSpec"},
 	}
 }
 
@@ -68166,15 +68378,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SecurityCenterWorkspaceStatus(ref com
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SecurityCenterWorkspaceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SecurityCenterWorkspaceSpec"},
 	}
 }
 
@@ -68883,15 +69096,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServiceFabricClusterStatus(ref common
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServiceFabricClusterSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServiceFabricClusterSpec"},
 	}
 }
 
@@ -69097,15 +69311,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusNamespaceAuthorizationRuleS
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusNamespaceAuthorizationRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusNamespaceAuthorizationRuleSpec"},
 	}
 }
 
@@ -69233,15 +69448,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusNamespaceStatus(ref common.
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusNamespaceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusNamespaceSpec"},
 	}
 }
 
@@ -69453,15 +69669,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusQueueAuthorizationRuleStatu
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusQueueAuthorizationRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusQueueAuthorizationRuleSpec"},
 	}
 }
 
@@ -69650,15 +69867,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusQueueStatus(ref common.Refe
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusQueueSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusQueueSpec"},
 	}
 }
 
@@ -69995,15 +70213,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusSubscriptionRuleStatus(ref 
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusSubscriptionRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusSubscriptionRuleSpec"},
 	}
 }
 
@@ -70126,15 +70345,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusSubscriptionStatus(ref comm
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusSubscriptionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusSubscriptionSpec"},
 	}
 }
 
@@ -70346,15 +70566,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusTopicAuthorizationRuleStatu
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusTopicAuthorizationRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusTopicAuthorizationRuleSpec"},
 	}
 }
 
@@ -70530,15 +70751,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusTopicStatus(ref common.Refe
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusTopicSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.ServicebusTopicSpec"},
 	}
 }
 
@@ -70746,15 +70968,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SharedImageGalleryStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SharedImageGallerySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SharedImageGallerySpec"},
 	}
 }
 
@@ -70949,15 +71172,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SharedImageStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SharedImageSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SharedImageSpec"},
 	}
 }
 
@@ -71177,15 +71401,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SharedImageVersionStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SharedImageVersionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SharedImageVersionSpec"},
 	}
 }
 
@@ -71381,15 +71606,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SignalrServiceStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SignalrServiceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SignalrServiceSpec"},
 	}
 }
 
@@ -71685,15 +71911,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SnapshotStatus(ref common.ReferenceCa
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SnapshotSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SnapshotSpec"},
 	}
 }
 
@@ -71850,15 +72077,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlActiveDirectoryAdministratorStatus
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlActiveDirectoryAdministratorSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlActiveDirectoryAdministratorSpec"},
 	}
 }
 
@@ -72229,15 +72457,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlDatabaseStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlDatabaseSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlDatabaseSpec"},
 	}
 }
 
@@ -72432,15 +72661,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlElasticpoolStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlElasticpoolSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlElasticpoolSpec"},
 	}
 }
 
@@ -72597,15 +72827,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlFirewallRuleStatus(ref common.Refe
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlFirewallRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlFirewallRuleSpec"},
 	}
 }
 
@@ -72781,15 +73012,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlServerStatus(ref common.ReferenceC
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlServerSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlServerSpec"},
 	}
 }
 
@@ -72946,15 +73178,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlVirtualNetworkRuleStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlVirtualNetworkRuleSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SqlVirtualNetworkRuleSpec"},
 	}
 }
 
@@ -73311,15 +73544,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageAccountSpec"},
 	}
 }
 
@@ -73526,15 +73760,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageBlobStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageBlobSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageBlobSpec"},
 	}
 }
 
@@ -73685,15 +73920,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageContainerStatus(ref common.Ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageContainerSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageContainerSpec"},
 	}
 }
 
@@ -73838,15 +74074,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageQueueStatus(ref common.Referen
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageQueueSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageQueueSpec"},
 	}
 }
 
@@ -73997,15 +74234,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageShareStatus(ref common.Referen
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageShareSpec"},
 	}
 }
 
@@ -74150,15 +74388,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageTableStatus(ref common.Referen
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StorageTableSpec"},
 	}
 }
 
@@ -74371,15 +74610,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsFunctionJavascriptUdfS
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsFunctionJavascriptUdfSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsFunctionJavascriptUdfSpec"},
 	}
 }
 
@@ -74586,15 +74826,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsJobStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsJobSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsJobSpec"},
 	}
 }
 
@@ -74823,15 +75064,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsOutputBlobStatus(ref c
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputBlobSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputBlobSpec"},
 	}
 }
 
@@ -75048,15 +75290,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsOutputEventhubStatus(r
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputEventhubSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputEventhubSpec"},
 	}
 }
 
@@ -75230,15 +75473,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsOutputMssqlStatus(ref 
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputMssqlSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputMssqlSpec"},
 	}
 }
 
@@ -75455,15 +75699,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsOutputServicebusQueueS
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputServicebusQueueSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsOutputServicebusQueueSpec"},
 	}
 }
 
@@ -75686,15 +75931,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsStreamInputBlobStatus(
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsStreamInputBlobSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsStreamInputBlobSpec"},
 	}
 }
 
@@ -75911,15 +76157,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsStreamInputEventhubSta
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsStreamInputEventhubSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsStreamInputEventhubSpec"},
 	}
 }
 
@@ -76136,15 +76383,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsStreamInputIothubStatu
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsStreamInputIothubSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.StreamAnalyticsStreamInputIothubSpec"},
 	}
 }
 
@@ -76373,15 +76621,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SubnetNetworkSecurityGroupAssociation
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SubnetNetworkSecurityGroupAssociationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SubnetNetworkSecurityGroupAssociationSpec"},
 	}
 }
 
@@ -76520,15 +76769,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SubnetRouteTableAssociationStatus(ref
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SubnetRouteTableAssociationSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SubnetRouteTableAssociationSpec"},
 	}
 }
 
@@ -76706,15 +76956,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_SubnetStatus(ref common.ReferenceCall
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.SubnetSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.SubnetSpec"},
 	}
 }
 
@@ -76885,15 +77136,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_TemplateDeploymentStatus(ref common.R
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.TemplateDeploymentSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TemplateDeploymentSpec"},
 	}
 }
 
@@ -77099,15 +77351,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerEndpointStatus(ref comm
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerEndpointSpec"},
 	}
 }
 
@@ -77352,15 +77605,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_TrafficManagerProfileStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerProfileSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.TrafficManagerProfileSpec"},
 	}
 }
 
@@ -77519,15 +77773,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_UserAssignedIdentityStatus(ref common
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.UserAssignedIdentitySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.UserAssignedIdentitySpec"},
 	}
 }
 
@@ -77733,15 +77988,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineDataDiskAttachmentStatu
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineDataDiskAttachmentSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineDataDiskAttachmentSpec"},
 	}
 }
 
@@ -77941,15 +78197,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineExtensionStatus(ref com
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineExtensionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineExtensionSpec"},
 	}
 }
 
@@ -79228,15 +79485,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineScaleSetStatus(ref comm
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineScaleSetSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineScaleSetSpec"},
 	}
 }
 
@@ -80021,15 +80279,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualMachineSpec"},
 	}
 }
 
@@ -80406,15 +80665,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualNetworkGatewayConnectionStatus
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkGatewayConnectionSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkGatewayConnectionSpec"},
 	}
 }
 
@@ -80796,15 +81056,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualNetworkGatewayStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkGatewaySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkGatewaySpec"},
 	}
 }
 
@@ -81026,15 +81287,16 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualNetworkPeeringStatus(ref commo
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkPeeringSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkPeeringSpec"},
 	}
 }
 
@@ -81209,14 +81471,15 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualNetworkStatus(ref common.Refer
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/azurerm/v1alpha1.VirtualNetworkSpec"},
 	}
 }

@@ -447,8 +447,51 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                kmsKeyArn:
+                  type: string
+                name:
+                  type: string
+                productionVariants:
+                  items:
+                    properties:
+                      acceleratorType:
+                        type: string
+                      initialInstanceCount:
+                        type: integer
+                      initialVariantWeight:
+                        description: A Number represents a JSON number literal.
+                        type: string
+                      instanceType:
+                        type: string
+                      modelName:
+                        type: string
+                      variantName:
+                        type: string
+                    required:
+                    - initialInstanceCount
+                    - instanceType
+                    - modelName
+                    type: object
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - productionVariants
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

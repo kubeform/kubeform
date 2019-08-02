@@ -522,8 +522,126 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                agentPoolProfile:
+                  items:
+                    properties:
+                      count:
+                        type: integer
+                      dnsPrefix:
+                        type: string
+                      name:
+                        type: string
+                      vmSize:
+                        type: string
+                    required:
+                    - dnsPrefix
+                    - name
+                    - vmSize
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                diagnosticsProfile:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                    required:
+                    - enabled
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                linuxProfile:
+                  items:
+                    properties:
+                      adminUsername:
+                        type: string
+                      sshKey:
+                        items:
+                          properties:
+                            keyData:
+                              type: string
+                          required:
+                          - keyData
+                          type: object
+                        maxItems: 1
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - adminUsername
+                    - sshKey
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                location:
+                  type: string
+                masterProfile:
+                  items:
+                    properties:
+                      count:
+                        type: integer
+                      dnsPrefix:
+                        type: string
+                    required:
+                    - dnsPrefix
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                orchestrationPlatform:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                servicePrincipal:
+                  items:
+                    properties:
+                      clientID:
+                        type: string
+                    required:
+                    - clientID
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - agentPoolProfile
+              - diagnosticsProfile
+              - linuxProfile
+              - location
+              - masterProfile
+              - name
+              - orchestrationPlatform
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

@@ -676,8 +676,280 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                artifacts:
+                  items:
+                    properties:
+                      encryptionDisabled:
+                        type: boolean
+                      location:
+                        type: string
+                      name:
+                        type: string
+                      namespaceType:
+                        type: string
+                      packaging:
+                        type: string
+                      path:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                badgeEnabled:
+                  type: boolean
+                buildTimeout:
+                  type: integer
+                cache:
+                  items:
+                    properties:
+                      location:
+                        type: string
+                      modes:
+                        items:
+                          type: string
+                        type: array
+                      type:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
+                description:
+                  type: string
+                encryptionKey:
+                  type: string
+                environment:
+                  items:
+                    properties:
+                      certificate:
+                        type: string
+                      computeType:
+                        type: string
+                      environmentVariable:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                          - name
+                          - value
+                          type: object
+                        type: array
+                      image:
+                        type: string
+                      imagePullCredentialsType:
+                        type: string
+                      privilegedMode:
+                        type: boolean
+                      registryCredential:
+                        items:
+                          properties:
+                            credential:
+                              type: string
+                            credentialProvider:
+                              type: string
+                          required:
+                          - credential
+                          - credentialProvider
+                          type: object
+                        maxItems: 1
+                        type: array
+                      type:
+                        type: string
+                    required:
+                    - computeType
+                    - image
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                logsConfig:
+                  items:
+                    properties:
+                      cloudwatchLogs:
+                        items:
+                          properties:
+                            groupName:
+                              type: string
+                            status:
+                              type: string
+                            streamName:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      s3Logs:
+                        items:
+                          properties:
+                            encryptionDisabled:
+                              type: boolean
+                            location:
+                              type: string
+                            status:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                secondaryArtifacts:
+                  items:
+                    properties:
+                      artifactIdentifier:
+                        type: string
+                      encryptionDisabled:
+                        type: boolean
+                      location:
+                        type: string
+                      name:
+                        type: string
+                      namespaceType:
+                        type: string
+                      packaging:
+                        type: string
+                      path:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - artifactIdentifier
+                    - type
+                    type: object
+                  type: array
+                  uniqueItems: true
+                secondarySources:
+                  items:
+                    properties:
+                      auth:
+                        items:
+                          properties:
+                            type:
+                              type: string
+                          required:
+                          - type
+                          type: object
+                        type: array
+                        uniqueItems: true
+                      buildspec:
+                        type: string
+                      gitCloneDepth:
+                        type: integer
+                      insecureSsl:
+                        type: boolean
+                      location:
+                        type: string
+                      reportBuildStatus:
+                        type: boolean
+                      sourceIdentifier:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - sourceIdentifier
+                    - type
+                    type: object
+                  type: array
+                  uniqueItems: true
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                serviceRole:
+                  type: string
+                source:
+                  items:
+                    properties:
+                      auth:
+                        items:
+                          properties:
+                            type:
+                              type: string
+                          required:
+                          - type
+                          type: object
+                        type: array
+                        uniqueItems: true
+                      buildspec:
+                        type: string
+                      gitCloneDepth:
+                        type: integer
+                      insecureSsl:
+                        type: boolean
+                      location:
+                        type: string
+                      reportBuildStatus:
+                        type: boolean
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                vpcConfig:
+                  items:
+                    properties:
+                      securityGroupIDS:
+                        items:
+                          type: string
+                        maxItems: 5
+                        type: array
+                        uniqueItems: true
+                      subnets:
+                        items:
+                          type: string
+                        maxItems: 16
+                        type: array
+                        uniqueItems: true
+                      vpcID:
+                        type: string
+                    required:
+                    - securityGroupIDS
+                    - subnets
+                    - vpcID
+                    type: object
+                  maxItems: 1
+                  type: array
+              required:
+              - artifacts
+              - environment
+              - name
+              - providerRef
+              - serviceRole
+              - source
+              type: object
           type: object
       type: object
   versions:

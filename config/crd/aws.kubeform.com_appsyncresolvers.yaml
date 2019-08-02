@@ -445,8 +445,49 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                apiID:
+                  type: string
+                dataSource:
+                  type: string
+                field:
+                  type: string
+                kind:
+                  type: string
+                pipelineConfig:
+                  items:
+                    properties:
+                      functions:
+                        items:
+                          type: string
+                        type: array
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                requestTemplate:
+                  type: string
+                responseTemplate:
+                  type: string
+                type:
+                  type: string
+              required:
+              - apiID
+              - field
+              - providerRef
+              - requestTemplate
+              - responseTemplate
+              - type
+              type: object
           type: object
       type: object
   versions:

@@ -483,8 +483,87 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                availableMemoryMb:
+                  type: integer
+                description:
+                  type: string
+                entryPoint:
+                  type: string
+                environmentVariables:
+                  additionalProperties:
+                    type: string
+                  type: object
+                eventTrigger:
+                  items:
+                    properties:
+                      eventType:
+                        type: string
+                      failurePolicy:
+                        items:
+                          properties:
+                            retry:
+                              type: boolean
+                          required:
+                          - retry
+                          type: object
+                        maxItems: 1
+                        type: array
+                      resource:
+                        type: string
+                    required:
+                    - eventType
+                    - resource
+                    type: object
+                  maxItems: 1
+                  type: array
+                httpsTriggerURL:
+                  type: string
+                labels:
+                  additionalProperties:
+                    type: string
+                  type: object
+                name:
+                  type: string
+                project:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                region:
+                  type: string
+                retryOnFailure:
+                  description: Deprecated
+                  type: boolean
+                runtime:
+                  type: string
+                sourceArchiveBucket:
+                  type: string
+                sourceArchiveObject:
+                  type: string
+                timeout:
+                  type: integer
+                triggerBucket:
+                  description: Deprecated
+                  type: string
+                triggerHTTP:
+                  type: boolean
+                triggerTopic:
+                  description: Deprecated
+                  type: string
+              required:
+              - name
+              - providerRef
+              - sourceArchiveBucket
+              - sourceArchiveObject
+              type: object
           type: object
       type: object
   versions:

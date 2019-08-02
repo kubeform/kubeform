@@ -514,8 +514,118 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                applyImmediately:
+                  type: boolean
+                autoMinorVersionUpgrade:
+                  type: boolean
+                brokerName:
+                  type: string
+                configuration:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      revision:
+                        type: integer
+                    type: object
+                  maxItems: 1
+                  type: array
+                deploymentMode:
+                  type: string
+                engineType:
+                  type: string
+                engineVersion:
+                  type: string
+                hostInstanceType:
+                  type: string
+                logs:
+                  items:
+                    properties:
+                      audit:
+                        type: boolean
+                      general:
+                        type: boolean
+                    type: object
+                  maxItems: 1
+                  type: array
+                maintenanceWindowStartTime:
+                  items:
+                    properties:
+                      dayOfWeek:
+                        type: string
+                      timeOfDay:
+                        type: string
+                      timeZone:
+                        type: string
+                    required:
+                    - dayOfWeek
+                    - timeOfDay
+                    - timeZone
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                publiclyAccessible:
+                  type: boolean
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                securityGroups:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                subnetIDS:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                user:
+                  items:
+                    properties:
+                      consoleAccess:
+                        type: boolean
+                      groups:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      username:
+                        type: string
+                    required:
+                    - username
+                    type: object
+                  type: array
+                  uniqueItems: true
+              required:
+              - brokerName
+              - engineType
+              - engineVersion
+              - hostInstanceType
+              - providerRef
+              - securityGroups
+              - user
+              type: object
           type: object
       type: object
   versions:

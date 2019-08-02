@@ -626,8 +626,230 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                addOnFeatures:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                azureActiveDirectory:
+                  items:
+                    properties:
+                      clientApplicationID:
+                        type: string
+                      clusterApplicationID:
+                        type: string
+                      tenantID:
+                        type: string
+                    required:
+                    - clientApplicationID
+                    - clusterApplicationID
+                    - tenantID
+                    type: object
+                  maxItems: 1
+                  type: array
+                certificate:
+                  items:
+                    properties:
+                      thumbprint:
+                        type: string
+                      thumbprintSecondary:
+                        type: string
+                      x509StoreName:
+                        type: string
+                    required:
+                    - thumbprint
+                    - x509StoreName
+                    type: object
+                  maxItems: 1
+                  type: array
+                certificateCommonNames:
+                  items:
+                    properties:
+                      commonNames:
+                        items:
+                          properties:
+                            certificateCommonName:
+                              type: string
+                            certificateIssuerThumbprint:
+                              type: string
+                          required:
+                          - certificateCommonName
+                          type: object
+                        minItems: 1
+                        type: array
+                        uniqueItems: true
+                      x509StoreName:
+                        type: string
+                    required:
+                    - commonNames
+                    - x509StoreName
+                    type: object
+                  maxItems: 1
+                  type: array
+                clientCertificateThumbprint:
+                  items:
+                    properties:
+                      isAdmin:
+                        type: boolean
+                      thumbprint:
+                        type: string
+                    required:
+                    - isAdmin
+                    - thumbprint
+                    type: object
+                  maxItems: 2
+                  type: array
+                clusterCodeVersion:
+                  type: string
+                diagnosticsConfig:
+                  items:
+                    properties:
+                      blobEndpoint:
+                        type: string
+                      protectedAccountKeyName:
+                        type: string
+                      queueEndpoint:
+                        type: string
+                      storageAccountName:
+                        type: string
+                      tableEndpoint:
+                        type: string
+                    required:
+                    - blobEndpoint
+                    - protectedAccountKeyName
+                    - queueEndpoint
+                    - storageAccountName
+                    - tableEndpoint
+                    type: object
+                  maxItems: 1
+                  type: array
+                fabricSettings:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      parameters:
+                        additionalProperties:
+                          type: string
+                        type: object
+                    required:
+                    - name
+                    type: object
+                  type: array
+                location:
+                  type: string
+                managementEndpoint:
+                  type: string
+                name:
+                  type: string
+                nodeType:
+                  items:
+                    properties:
+                      applicationPorts:
+                        items:
+                          properties:
+                            endPort:
+                              type: integer
+                            startPort:
+                              type: integer
+                          required:
+                          - endPort
+                          - startPort
+                          type: object
+                        maxItems: 1
+                        type: array
+                      capacities:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      clientEndpointPort:
+                        type: integer
+                      durabilityLevel:
+                        type: string
+                      ephemeralPorts:
+                        items:
+                          properties:
+                            endPort:
+                              type: integer
+                            startPort:
+                              type: integer
+                          required:
+                          - endPort
+                          - startPort
+                          type: object
+                        maxItems: 1
+                        type: array
+                      httpEndpointPort:
+                        type: integer
+                      instanceCount:
+                        type: integer
+                      isPrimary:
+                        type: boolean
+                      name:
+                        type: string
+                      placementProperties:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      reverseProxyEndpointPort:
+                        type: integer
+                    required:
+                    - clientEndpointPort
+                    - httpEndpointPort
+                    - instanceCount
+                    - isPrimary
+                    - name
+                    type: object
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                reliabilityLevel:
+                  type: string
+                resourceGroupName:
+                  type: string
+                reverseProxyCertificate:
+                  items:
+                    properties:
+                      thumbprint:
+                        type: string
+                      thumbprintSecondary:
+                        type: string
+                      x509StoreName:
+                        type: string
+                    required:
+                    - thumbprint
+                    - x509StoreName
+                    type: object
+                  maxItems: 1
+                  type: array
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                upgradeMode:
+                  type: string
+                vmImage:
+                  type: string
+              required:
+              - location
+              - managementEndpoint
+              - name
+              - nodeType
+              - providerRef
+              - reliabilityLevel
+              - resourceGroupName
+              - upgradeMode
+              - vmImage
+              type: object
           type: object
       type: object
   versions:

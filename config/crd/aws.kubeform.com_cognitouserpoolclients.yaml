@@ -471,8 +471,75 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                allowedOauthFlows:
+                  items:
+                    type: string
+                  maxItems: 3
+                  type: array
+                  uniqueItems: true
+                allowedOauthFlowsUserPoolClient:
+                  type: boolean
+                allowedOauthScopes:
+                  items:
+                    type: string
+                  maxItems: 25
+                  type: array
+                  uniqueItems: true
+                callbackUrls:
+                  items:
+                    type: string
+                  maxItems: 100
+                  type: array
+                defaultRedirectURI:
+                  type: string
+                explicitAuthFlows:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                generateSecret:
+                  type: boolean
+                logoutUrls:
+                  items:
+                    type: string
+                  maxItems: 100
+                  type: array
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                readAttributes:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                refreshTokenValidity:
+                  type: integer
+                supportedIdentityProviders:
+                  items:
+                    type: string
+                  type: array
+                userPoolID:
+                  type: string
+                writeAttributes:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+              required:
+              - name
+              - providerRef
+              - userPoolID
+              type: object
           type: object
       type: object
   versions:

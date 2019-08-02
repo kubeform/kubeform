@@ -499,8 +499,103 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                defaultAction:
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                  uniqueItems: true
+                loggingConfiguration:
+                  items:
+                    properties:
+                      logDestination:
+                        type: string
+                      redactedFields:
+                        items:
+                          properties:
+                            fieldToMatch:
+                              items:
+                                properties:
+                                  data:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                type: object
+                              type: array
+                              uniqueItems: true
+                          required:
+                          - fieldToMatch
+                          type: object
+                        maxItems: 1
+                        type: array
+                    required:
+                    - logDestination
+                    type: object
+                  maxItems: 1
+                  type: array
+                metricName:
+                  type: string
+                name:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                rules:
+                  items:
+                    properties:
+                      action:
+                        items:
+                          properties:
+                            type:
+                              type: string
+                          required:
+                          - type
+                          type: object
+                        maxItems: 1
+                        type: array
+                      overrideAction:
+                        items:
+                          properties:
+                            type:
+                              type: string
+                          required:
+                          - type
+                          type: object
+                        maxItems: 1
+                        type: array
+                      priority:
+                        type: integer
+                      ruleID:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - priority
+                    - ruleID
+                    type: object
+                  type: array
+                  uniqueItems: true
+              required:
+              - defaultAction
+              - metricName
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

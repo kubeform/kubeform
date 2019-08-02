@@ -642,8 +642,246 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                container:
+                  items:
+                    properties:
+                      command:
+                        description: Deprecated
+                        type: string
+                      commands:
+                        items:
+                          type: string
+                        type: array
+                      cpu:
+                        description: A Number represents a JSON number literal.
+                        type: string
+                      environmentVariables:
+                        additionalProperties:
+                          type: string
+                        type: object
+                      gpu:
+                        items:
+                          properties:
+                            count:
+                              type: integer
+                            sku:
+                              type: string
+                          type: object
+                        maxItems: 1
+                        type: array
+                      image:
+                        type: string
+                      livenessProbe:
+                        items:
+                          properties:
+                            exec:
+                              items:
+                                type: string
+                              type: array
+                            failureThreshold:
+                              type: integer
+                            httpGet:
+                              items:
+                                properties:
+                                  path:
+                                    type: string
+                                  port:
+                                    type: integer
+                                  scheme:
+                                    type: string
+                                type: object
+                              type: array
+                            initialDelaySeconds:
+                              type: integer
+                            periodSeconds:
+                              type: integer
+                            successThreshold:
+                              type: integer
+                            timeoutSeconds:
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                      memory:
+                        description: A Number represents a JSON number literal.
+                        type: string
+                      name:
+                        type: string
+                      port:
+                        description: Deprecated
+                        type: integer
+                      ports:
+                        items:
+                          properties:
+                            port:
+                              type: integer
+                            protocol:
+                              type: string
+                          type: object
+                        type: array
+                        uniqueItems: true
+                      protocol:
+                        description: Deprecated
+                        type: string
+                      readinessProbe:
+                        items:
+                          properties:
+                            exec:
+                              items:
+                                type: string
+                              type: array
+                            failureThreshold:
+                              type: integer
+                            httpGet:
+                              items:
+                                properties:
+                                  path:
+                                    type: string
+                                  port:
+                                    type: integer
+                                  scheme:
+                                    type: string
+                                type: object
+                              type: array
+                            initialDelaySeconds:
+                              type: integer
+                            periodSeconds:
+                              type: integer
+                            successThreshold:
+                              type: integer
+                            timeoutSeconds:
+                              type: integer
+                          type: object
+                        maxItems: 1
+                        type: array
+                      volume:
+                        items:
+                          properties:
+                            mountPath:
+                              type: string
+                            name:
+                              type: string
+                            readOnly:
+                              type: boolean
+                            shareName:
+                              type: string
+                            storageAccountKey:
+                              type: string
+                            storageAccountName:
+                              type: string
+                          required:
+                          - mountPath
+                          - name
+                          - shareName
+                          - storageAccountKey
+                          - storageAccountName
+                          type: object
+                        type: array
+                    required:
+                    - cpu
+                    - image
+                    - memory
+                    - name
+                    type: object
+                  type: array
+                diagnostics:
+                  items:
+                    properties:
+                      logAnalytics:
+                        items:
+                          properties:
+                            logType:
+                              type: string
+                            metadata:
+                              additionalProperties:
+                                type: string
+                              type: object
+                            workspaceID:
+                              type: string
+                          required:
+                          - logType
+                          - workspaceID
+                          type: object
+                        maxItems: 1
+                        type: array
+                    required:
+                    - logAnalytics
+                    type: object
+                  maxItems: 1
+                  type: array
+                dnsNameLabel:
+                  type: string
+                identity:
+                  items:
+                    properties:
+                      identityIDS:
+                        items:
+                          type: string
+                        minItems: 1
+                        type: array
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                imageRegistryCredential:
+                  items:
+                    properties:
+                      server:
+                        type: string
+                      username:
+                        type: string
+                    required:
+                    - server
+                    - username
+                    type: object
+                  type: array
+                ipAddressType:
+                  type: string
+                location:
+                  type: string
+                name:
+                  type: string
+                osType:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                restartPolicy:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+              required:
+              - container
+              - location
+              - name
+              - osType
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

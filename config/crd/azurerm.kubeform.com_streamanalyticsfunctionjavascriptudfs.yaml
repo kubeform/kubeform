@@ -450,8 +450,54 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                input:
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  minItems: 1
+                  type: array
+                name:
+                  type: string
+                output:
+                  items:
+                    properties:
+                      type:
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                script:
+                  type: string
+                streamAnalyticsJobName:
+                  type: string
+              required:
+              - input
+              - name
+              - output
+              - providerRef
+              - resourceGroupName
+              - script
+              - streamAnalyticsJobName
+              type: object
           type: object
       type: object
   versions:

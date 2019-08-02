@@ -530,8 +530,134 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                attribute:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                    required:
+                    - name
+                    - type
+                    type: object
+                  type: array
+                  uniqueItems: true
+                billingMode:
+                  type: string
+                globalSecondaryIndex:
+                  items:
+                    properties:
+                      hashKey:
+                        type: string
+                      name:
+                        type: string
+                      nonKeyAttributes:
+                        items:
+                          type: string
+                        type: array
+                      projectionType:
+                        type: string
+                      rangeKey:
+                        type: string
+                      readCapacity:
+                        type: integer
+                      writeCapacity:
+                        type: integer
+                    required:
+                    - hashKey
+                    - name
+                    - projectionType
+                    type: object
+                  type: array
+                  uniqueItems: true
+                hashKey:
+                  type: string
+                localSecondaryIndex:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      nonKeyAttributes:
+                        items:
+                          type: string
+                        type: array
+                      projectionType:
+                        type: string
+                      rangeKey:
+                        type: string
+                    required:
+                    - name
+                    - projectionType
+                    - rangeKey
+                    type: object
+                  type: array
+                  uniqueItems: true
+                name:
+                  type: string
+                pointInTimeRecovery:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                    required:
+                    - enabled
+                    type: object
+                  maxItems: 1
+                  type: array
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                rangeKey:
+                  type: string
+                readCapacity:
+                  type: integer
+                serverSideEncryption:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                    required:
+                    - enabled
+                    type: object
+                  maxItems: 1
+                  type: array
+                streamEnabled:
+                  type: boolean
+                streamViewType:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                ttl:
+                  items:
+                    properties:
+                      attributeName:
+                        type: string
+                      enabled:
+                        type: boolean
+                    required:
+                    - attributeName
+                    type: object
+                  maxItems: 1
+                  type: array
+                writeCapacity:
+                  type: integer
+              required:
+              - attribute
+              - hashKey
+              - name
+              - providerRef
+              type: object
           type: object
       type: object
   versions:

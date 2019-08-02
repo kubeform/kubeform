@@ -501,8 +501,105 @@ spec:
                 API Server.
               format: int64
               type: integer
-            tfState:
-              type: string
+            state:
+              properties:
+                appliedDNSServers:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                dnsServers:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                enableAcceleratedNetworking:
+                  type: boolean
+                enableIPForwarding:
+                  type: boolean
+                internalDNSNameLabel:
+                  type: string
+                internalFqdn:
+                  description: Deprecated
+                  type: string
+                ipConfiguration:
+                  items:
+                    properties:
+                      applicationGatewayBackendAddressPoolsIDS:
+                        description: Deprecated
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      applicationSecurityGroupIDS:
+                        description: Deprecated
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      loadBalancerBackendAddressPoolsIDS:
+                        description: Deprecated
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      loadBalancerInboundNATRulesIDS:
+                        description: Deprecated
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
+                      name:
+                        type: string
+                      primary:
+                        type: boolean
+                      privateIPAddress:
+                        type: string
+                      privateIPAddressAllocation:
+                        type: string
+                      privateIPAddressVersion:
+                        type: string
+                      publicIPAddressID:
+                        type: string
+                      subnetID:
+                        type: string
+                    required:
+                    - name
+                    - privateIPAddressAllocation
+                    type: object
+                  type: array
+                location:
+                  type: string
+                macAddress:
+                  type: string
+                name:
+                  type: string
+                networkSecurityGroupID:
+                  type: string
+                providerRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                resourceGroupName:
+                  type: string
+                tags:
+                  additionalProperties:
+                    type: string
+                  type: object
+                virtualMachineID:
+                  type: string
+              required:
+              - ipConfiguration
+              - location
+              - name
+              - providerRef
+              - resourceGroupName
+              type: object
           type: object
       type: object
   versions:

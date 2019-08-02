@@ -12561,15 +12561,16 @@ func schema_kubeform_apis_linode_v1alpha1_DomainRecordStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.DomainRecordSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/linode/v1alpha1.DomainRecordSpec"},
 	}
 }
 
@@ -12705,15 +12706,16 @@ func schema_kubeform_apis_linode_v1alpha1_DomainStatus(ref common.ReferenceCallb
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.DomainSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/linode/v1alpha1.DomainSpec"},
 	}
 }
 
@@ -12864,15 +12866,16 @@ func schema_kubeform_apis_linode_v1alpha1_ImageStatus(ref common.ReferenceCallba
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.ImageSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/linode/v1alpha1.ImageSpec"},
 	}
 }
 
@@ -13741,15 +13744,16 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceStatus(ref common.ReferenceCal
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.InstanceSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/linode/v1alpha1.InstanceSpec"},
 	}
 }
 
@@ -14008,15 +14012,16 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigStatus(ref common.Re
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.NodebalancerConfigSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/linode/v1alpha1.NodebalancerConfigSpec"},
 	}
 }
 
@@ -14226,15 +14231,16 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerNodeStatus(ref common.Refe
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.NodebalancerNodeSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/linode/v1alpha1.NodebalancerNodeSpec"},
 	}
 }
 
@@ -14302,15 +14308,16 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerStatus(ref common.Referenc
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.NodebalancerSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/linode/v1alpha1.NodebalancerSpec"},
 	}
 }
 
@@ -14449,15 +14456,16 @@ func schema_kubeform_apis_linode_v1alpha1_RdnsStatus(ref common.ReferenceCallbac
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.RdnsSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/linode/v1alpha1.RdnsSpec"},
 	}
 }
 
@@ -14596,15 +14604,16 @@ func schema_kubeform_apis_linode_v1alpha1_SshkeyStatus(ref common.ReferenceCallb
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.SshkeySpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/linode/v1alpha1.SshkeySpec"},
 	}
 }
 
@@ -14796,15 +14805,16 @@ func schema_kubeform_apis_linode_v1alpha1_StackscriptStatus(ref common.Reference
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.StackscriptSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/linode/v1alpha1.StackscriptSpec"},
 	}
 }
 
@@ -14949,15 +14959,16 @@ func schema_kubeform_apis_linode_v1alpha1_TokenStatus(ref common.ReferenceCallba
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.TokenSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/linode/v1alpha1.TokenSpec"},
 	}
 }
 
@@ -15121,14 +15132,15 @@ func schema_kubeform_apis_linode_v1alpha1_VolumeStatus(ref common.ReferenceCallb
 							Format:      "int64",
 						},
 					},
-					"tfState": {
+					"state": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Ref: ref("kubeform.dev/kubeform/apis/linode/v1alpha1.VolumeSpec"),
 						},
 					},
 				},
 			},
 		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/linode/v1alpha1.VolumeSpec"},
 	}
 }
