@@ -8,7 +8,7 @@ metadata:
 spec:
   group: google.kubeform.com
   names:
-    kind: ProjectService
+    kind: ProjectServices
     plural: projectservices
   scope: ""
   validation:
@@ -410,11 +410,14 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            service:
-              type: string
+            services:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
           required:
           - providerRef
-          - service
+          - services
           type: object
         status:
           properties:
@@ -423,7 +426,7 @@ spec:
                 API Server.
               format: int64
               type: integer
-            state:
+            output:
               properties:
                 disableOnDestroy:
                   type: boolean
@@ -438,11 +441,32 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
-                service:
-                  type: string
+                services:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
               required:
               - providerRef
-              - service
+              - services
+              type: object
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  description: A Number represents a JSON number literal.
+                  type: string
+              required:
+              - lineage
+              - serial
+              - terraform_version
+              - version
               type: object
           type: object
       type: object

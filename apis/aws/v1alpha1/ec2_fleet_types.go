@@ -5,6 +5,7 @@ import (
 
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"kubeform.dev/kubeform/apis"
 )
 
 // +genclient
@@ -108,7 +109,9 @@ type Ec2FleetStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 	// +optional
-	State *Ec2FleetSpec `json:"state,omitempty"`
+	Output *Ec2FleetSpec `json:"output,omitempty"`
+	// +optional
+	State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

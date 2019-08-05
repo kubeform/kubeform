@@ -482,7 +482,7 @@ spec:
                 API Server.
               format: int64
               type: integer
-            state:
+            output:
               properties:
                 administratorLogin:
                   type: string
@@ -560,6 +560,24 @@ spec:
               - sku
               - sslEnforcement
               - storageProfile
+              - version
+              type: object
+            state:
+              properties:
+                lineage:
+                  type: string
+                serial:
+                  format: int64
+                  type: integer
+                terraform_version:
+                  type: string
+                version:
+                  description: A Number represents a JSON number literal.
+                  type: string
+              required:
+              - lineage
+              - serial
+              - terraform_version
               - version
               type: object
           type: object

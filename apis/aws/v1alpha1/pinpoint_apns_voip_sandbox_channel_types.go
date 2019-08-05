@@ -3,6 +3,7 @@ package v1alpha1
 import (
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"kubeform.dev/kubeform/apis"
 )
 
 // +genclient
@@ -46,7 +47,9 @@ type PinpointApnsVoipSandboxChannelStatus struct {
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 	// +optional
-	State *PinpointApnsVoipSandboxChannelSpec `json:"state,omitempty"`
+	Output *PinpointApnsVoipSandboxChannelSpec `json:"output,omitempty"`
+	// +optional
+	State *apis.State `json:"state,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
