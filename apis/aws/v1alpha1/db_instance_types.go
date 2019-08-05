@@ -30,7 +30,7 @@ type DbInstanceSpecS3Import struct {
 type DbInstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Address string `json:"address" tf:"address"`
 	// +optional

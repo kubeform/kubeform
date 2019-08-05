@@ -21,7 +21,7 @@ type EventgridTopic struct {
 type EventgridTopicSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Endpoint           string `json:"endpoint" tf:"endpoint"`
 	Location           string `json:"location" tf:"location"`

@@ -21,7 +21,7 @@ type AzureadServicePrincipalPassword struct {
 type AzureadServicePrincipalPasswordSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	EndDate string `json:"endDate" tf:"end_date"`
 	// +optional

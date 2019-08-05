@@ -21,7 +21,7 @@ type DmsCertificate struct {
 type DmsCertificateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	CertificateArn string `json:"certificateArn" tf:"certificate_arn"`
 	CertificateID  string `json:"certificateID" tf:"certificate_id"`

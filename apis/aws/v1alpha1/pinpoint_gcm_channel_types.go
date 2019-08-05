@@ -21,7 +21,7 @@ type PinpointGcmChannel struct {
 type PinpointGcmChannelSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	ApiKey        string `json:"-" sensitive:"true" tf:"api_key"`
 	ApplicationID string `json:"applicationID" tf:"application_id"`

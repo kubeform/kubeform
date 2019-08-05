@@ -26,7 +26,7 @@ type SignalrServiceSpecSku struct {
 type SignalrServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Hostname                  string `json:"hostname" tf:"hostname"`
 	IpAddress                 string `json:"ipAddress" tf:"ip_address"`

@@ -21,7 +21,7 @@ type BatchAccount struct {
 type BatchAccountSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	AccountEndpoint string `json:"accountEndpoint" tf:"account_endpoint"`
 	Location        string `json:"location" tf:"location"`

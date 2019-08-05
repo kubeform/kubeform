@@ -21,7 +21,7 @@ type IamServerCertificate struct {
 type IamServerCertificateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
 	Arn             string `json:"arn,omitempty" tf:"arn,omitempty"`

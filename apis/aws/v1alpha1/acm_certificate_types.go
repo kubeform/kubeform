@@ -28,7 +28,7 @@ type AcmCertificateSpecDomainValidationOptions struct {
 type AcmCertificateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Arn string `json:"arn" tf:"arn"`
 	// +optional

@@ -37,7 +37,7 @@ type RedshiftClusterSpecSnapshotCopy struct {
 type RedshiftClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
 	AllowVersionUpgrade bool   `json:"allowVersionUpgrade,omitempty" tf:"allow_version_upgrade,omitempty"`

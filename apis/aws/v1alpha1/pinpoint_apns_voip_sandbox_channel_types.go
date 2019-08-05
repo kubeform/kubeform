@@ -21,7 +21,7 @@ type PinpointApnsVoipSandboxChannel struct {
 type PinpointApnsVoipSandboxChannelSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	ApplicationID string `json:"applicationID" tf:"application_id"`
 	// +optional

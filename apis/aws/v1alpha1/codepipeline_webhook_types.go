@@ -33,7 +33,7 @@ type CodepipelineWebhookSpecFilter struct {
 type CodepipelineWebhookSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Authentication string `json:"authentication" tf:"authentication"`
 	// +optional

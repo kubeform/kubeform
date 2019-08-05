@@ -26,7 +26,7 @@ type ExpressRouteCircuitSpecSku struct {
 type ExpressRouteCircuitSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
 	AllowClassicOperations           bool   `json:"allowClassicOperations,omitempty" tf:"allow_classic_operations,omitempty"`

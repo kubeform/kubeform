@@ -21,7 +21,7 @@ type ApiGatewayAPIKey struct {
 type ApiGatewayAPIKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	CreatedDate string `json:"createdDate" tf:"created_date"`
 	// +optional

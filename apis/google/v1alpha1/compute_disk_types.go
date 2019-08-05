@@ -39,7 +39,7 @@ type ComputeDiskSpecSourceSnapshotEncryptionKey struct {
 type ComputeDiskSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional

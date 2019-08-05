@@ -21,7 +21,7 @@ type StreamAnalyticsOutputMssql struct {
 type StreamAnalyticsOutputMssqlSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Database               string `json:"database" tf:"database"`
 	Name                   string `json:"name" tf:"name"`

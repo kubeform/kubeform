@@ -21,7 +21,7 @@ type SqlSslCert struct {
 type SqlSslCertSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Cert             string `json:"cert" tf:"cert"`
 	CertSerialNumber string `json:"certSerialNumber" tf:"cert_serial_number"`

@@ -21,7 +21,7 @@ type ApiManagementOpenidConnectProvider struct {
 type ApiManagementOpenidConnectProviderSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	ClientID          string `json:"-" sensitive:"true" tf:"client_id"`

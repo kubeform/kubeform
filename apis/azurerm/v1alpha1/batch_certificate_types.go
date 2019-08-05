@@ -21,7 +21,7 @@ type BatchCertificate struct {
 type BatchCertificateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	AccountName string `json:"accountName" tf:"account_name"`
 	Certificate string `json:"-" sensitive:"true" tf:"certificate"`

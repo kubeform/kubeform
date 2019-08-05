@@ -31,7 +31,7 @@ type StreamAnalyticsOutputEventhubSpecSerialization struct {
 type StreamAnalyticsOutputEventhubSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	EventhubName      string `json:"eventhubName" tf:"eventhub_name"`
 	Name              string `json:"name" tf:"name"`

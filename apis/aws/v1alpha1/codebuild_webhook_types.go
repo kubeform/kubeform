@@ -33,7 +33,7 @@ type CodebuildWebhookSpecFilterGroup struct {
 type CodebuildWebhookSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
 	BranchFilter string `json:"branchFilter,omitempty" tf:"branch_filter,omitempty"`

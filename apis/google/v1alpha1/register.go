@@ -38,377 +38,233 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 
-		&BillingAccountIamBinding{},
-		&BillingAccountIamBindingList{},
-
-		&ComputeVPNGateway{},
-		&ComputeVPNGatewayList{},
-
-		&ComputeHTTPSHealthCheck{},
-		&ComputeHTTPSHealthCheckList{},
-
-		&ContainerAnalysisNote{},
-		&ContainerAnalysisNoteList{},
-
-		&StorageObjectAccessControl{},
-		&StorageObjectAccessControlList{},
-
-		&ProjectUsageExportBucket{},
-		&ProjectUsageExportBucketList{},
-
-		&ComputeRegionInstanceGroupManager{},
-		&ComputeRegionInstanceGroupManagerList{},
-
-		&ComputeSubnetworkIamMember{},
-		&ComputeSubnetworkIamMemberList{},
-
-		&ComputeBackendService{},
-		&ComputeBackendServiceList{},
-
-		&LoggingProjectSink{},
-		&LoggingProjectSinkList{},
-
-		&SpannerInstanceIamBinding{},
-		&SpannerInstanceIamBindingList{},
-
-		&LoggingBillingAccountExclusion{},
-		&LoggingBillingAccountExclusionList{},
-
-		&SpannerDatabaseIamBinding{},
-		&SpannerDatabaseIamBindingList{},
-
-		&OrganizationIamBinding{},
-		&OrganizationIamBindingList{},
-
-		&SpannerInstance{},
-		&SpannerInstanceList{},
-
-		&BinaryAuthorizationPolicy{},
-		&BinaryAuthorizationPolicyList{},
-
-		&LoggingOrganizationExclusion{},
-		&LoggingOrganizationExclusionList{},
-
-		&AppEngineApplication{},
-		&AppEngineApplicationList{},
-
-		&DnsManagedZone{},
-		&DnsManagedZoneList{},
-
-		&KmsCryptoKey{},
-		&KmsCryptoKeyList{},
-
-		&ComputeAutoscaler{},
-		&ComputeAutoscalerList{},
-
-		&MonitoringUptimeCheckConfig{},
-		&MonitoringUptimeCheckConfigList{},
-
-		&DataprocCluster{},
-		&DataprocClusterList{},
-
-		&ComputeTargetPool{},
-		&ComputeTargetPoolList{},
-
-		&StorageBucketIamPolicy{},
-		&StorageBucketIamPolicyList{},
-
-		&ComputeProjectMetadata{},
-		&ComputeProjectMetadataList{},
-
-		&LoggingProjectExclusion{},
-		&LoggingProjectExclusionList{},
-
-		&CloudfunctionsFunction{},
-		&CloudfunctionsFunctionList{},
-
-		&StorageDefaultObjectACL{},
-		&StorageDefaultObjectACLList{},
-
-		&ComputeGlobalAddress{},
-		&ComputeGlobalAddressList{},
-
-		&KmsKeyRingIamPolicy{},
-		&KmsKeyRingIamPolicyList{},
-
-		&ComputeSharedVpcServiceProject{},
-		&ComputeSharedVpcServiceProjectList{},
-
-		&PubsubTopicIamMember{},
-		&PubsubTopicIamMemberList{},
-
-		&Folder{},
-		&FolderList{},
-
-		&ComputeInstanceTemplate{},
-		&ComputeInstanceTemplateList{},
-
-		&PubsubSubscription{},
-		&PubsubSubscriptionList{},
-
-		&ServiceAccountIamBinding{},
-		&ServiceAccountIamBindingList{},
-
-		&SqlDatabase{},
-		&SqlDatabaseList{},
-
-		&ProjectIamCustomRole{},
-		&ProjectIamCustomRoleList{},
-
-		&SpannerDatabase{},
-		&SpannerDatabaseList{},
-
-		&ComputeSharedVpcHostProject{},
-		&ComputeSharedVpcHostProjectList{},
-
-		&ContainerNodePool{},
-		&ContainerNodePoolList{},
-
-		&ComputeSslCertificate{},
-		&ComputeSslCertificateList{},
-
-		&ComputeFirewall{},
-		&ComputeFirewallList{},
-
-		&StorageBucketIamMember{},
-		&StorageBucketIamMemberList{},
-
-		&ServiceAccount{},
-		&ServiceAccountList{},
-
-		&ComputeRegionBackendService{},
-		&ComputeRegionBackendServiceList{},
-
-		&ComputeTargetTcpProxy{},
-		&ComputeTargetTcpProxyList{},
-
-		&ComputeRouterInterface{},
-		&ComputeRouterInterfaceList{},
-
-		&ComputeInterconnectAttachment{},
-		&ComputeInterconnectAttachmentList{},
-
-		&RedisInstance{},
-		&RedisInstanceList{},
-
-		&LoggingFolderExclusion{},
-		&LoggingFolderExclusionList{},
-
-		&FolderOrganizationPolicy{},
-		&FolderOrganizationPolicyList{},
-
-		&BigtableTable{},
-		&BigtableTableList{},
-
-		&SqlSslCert{},
-		&SqlSslCertList{},
-
-		&RuntimeconfigVariable{},
-		&RuntimeconfigVariableList{},
-
-		&ComputeBackendBucket{},
-		&ComputeBackendBucketList{},
-
-		&ComputeTargetHTTPSProxy{},
-		&ComputeTargetHTTPSProxyList{},
-
-		&ComputeSubnetwork{},
-		&ComputeSubnetworkList{},
-
-		&RuntimeconfigConfig{},
-		&RuntimeconfigConfigList{},
-
-		&LoggingOrganizationSink{},
-		&LoggingOrganizationSinkList{},
-
-		&KmsCryptoKeyIamMember{},
-		&KmsCryptoKeyIamMemberList{},
-
-		&ComputeInstanceGroup{},
-		&ComputeInstanceGroupList{},
-
-		&BinaryAuthorizationAttestor{},
-		&BinaryAuthorizationAttestorList{},
-
-		&ComputeTargetSslProxy{},
-		&ComputeTargetSslProxyList{},
-
-		&ComputeGlobalForwardingRule{},
-		&ComputeGlobalForwardingRuleList{},
-
-		&ComputeSecurityPolicy{},
-		&ComputeSecurityPolicyList{},
-
-		&SourcerepoRepository{},
-		&SourcerepoRepositoryList{},
-
-		&ComputeHTTPHealthCheck{},
-		&ComputeHTTPHealthCheckList{},
-
-		&StorageDefaultObjectAccessControl{},
-		&StorageDefaultObjectAccessControlList{},
-
-		&MonitoringNotificationChannel{},
-		&MonitoringNotificationChannelList{},
-
-		&StorageBucketIamBinding{},
-		&StorageBucketIamBindingList{},
-
-		&StorageBucketObject{},
-		&StorageBucketObjectList{},
-
-		&FolderIamPolicy{},
-		&FolderIamPolicyList{},
-
-		&ComputeRouter{},
-		&ComputeRouterList{},
-
-		&ComputeRegionAutoscaler{},
-		&ComputeRegionAutoscalerList{},
-
-		&StorageNotification{},
-		&StorageNotificationList{},
-
-		&BillingAccountIamMember{},
-		&BillingAccountIamMemberList{},
-
-		&DataflowJob{},
-		&DataflowJobList{},
-
-		&ContainerCluster{},
-		&ContainerClusterList{},
-
-		&ComputeTargetHTTPProxy{},
-		&ComputeTargetHTTPProxyList{},
-
-		&StorageObjectACL{},
-		&StorageObjectACLList{},
-
-		&SqlUser{},
-		&SqlUserList{},
-
-		&ComputeForwardingRule{},
-		&ComputeForwardingRuleList{},
-
-		&ProjectOrganizationPolicy{},
-		&ProjectOrganizationPolicyList{},
-
-		&EndpointsService{},
-		&EndpointsServiceList{},
-
-		&ComputeHealthCheck{},
-		&ComputeHealthCheckList{},
-
-		&ComputeInstanceGroupManager{},
-		&ComputeInstanceGroupManagerList{},
-
-		&SpannerDatabaseIamMember{},
-		&SpannerDatabaseIamMemberList{},
-
-		&CloudbuildTrigger{},
-		&CloudbuildTriggerList{},
-
-		&ProjectIamBinding{},
-		&ProjectIamBindingList{},
-
-		&ProjectService{},
-		&ProjectServiceList{},
-
-		&ComputeRouterPeer{},
-		&ComputeRouterPeerList{},
+		&MonitoringAlertPolicy{},
+		&MonitoringAlertPolicyList{},
 
 		&PubsubTopicIamBinding{},
 		&PubsubTopicIamBindingList{},
 
-		&BillingAccountIamPolicy{},
-		&BillingAccountIamPolicyList{},
+		&ComputeRegionBackendService{},
+		&ComputeRegionBackendServiceList{},
 
-		&ServiceAccountIamMember{},
-		&ServiceAccountIamMemberList{},
-
-		&ComputeAddress{},
-		&ComputeAddressList{},
-
-		&KmsKeyRingIamMember{},
-		&KmsKeyRingIamMemberList{},
-
-		&KmsCryptoKeyIamBinding{},
-		&KmsCryptoKeyIamBindingList{},
-
-		&Project{},
-		&ProjectList{},
-
-		&ComputeInstance{},
-		&ComputeInstanceList{},
-
-		&LoggingFolderSink{},
-		&LoggingFolderSinkList{},
-
-		&OrganizationPolicy{},
-		&OrganizationPolicyList{},
-
-		&SpannerDatabaseIamPolicy{},
-		&SpannerDatabaseIamPolicyList{},
-
-		&ComputeVPNTunnel{},
-		&ComputeVPNTunnelList{},
-
-		&FilestoreInstance{},
-		&FilestoreInstanceList{},
-
-		&MonitoringAlertPolicy{},
-		&MonitoringAlertPolicyList{},
-
-		&PubsubSubscriptionIamMember{},
-		&PubsubSubscriptionIamMemberList{},
-
-		&ComputeSubnetworkIamPolicy{},
-		&ComputeSubnetworkIamPolicyList{},
-
-		&ComputeNetworkPeering{},
-		&ComputeNetworkPeeringList{},
-
-		&ComputeInstanceFromTemplate{},
-		&ComputeInstanceFromTemplateList{},
-
-		&FolderIamMember{},
-		&FolderIamMemberList{},
-
-		&ServiceAccountIamPolicy{},
-		&ServiceAccountIamPolicyList{},
-
-		&StorageBucketACL{},
-		&StorageBucketACLList{},
-
-		&ProjectIamMember{},
-		&ProjectIamMemberList{},
-
-		&ProjectServices{},
-		&ProjectServicesList{},
+		&ComputeSharedVpcHostProject{},
+		&ComputeSharedVpcHostProjectList{},
 
 		&PubsubTopicIamPolicy{},
 		&PubsubTopicIamPolicyList{},
 
-		&ProjectIamPolicy{},
-		&ProjectIamPolicyList{},
+		&BillingAccountIamPolicy{},
+		&BillingAccountIamPolicyList{},
 
-		&ComputeDisk{},
-		&ComputeDiskList{},
+		&ComputeVPNTunnel{},
+		&ComputeVPNTunnelList{},
 
-		&KmsKeyRing{},
-		&KmsKeyRingList{},
+		&StorageBucket{},
+		&StorageBucketList{},
 
-		&PubsubSubscriptionIamPolicy{},
-		&PubsubSubscriptionIamPolicyList{},
+		&ComputeSubnetworkIamMember{},
+		&ComputeSubnetworkIamMemberList{},
 
-		&KmsKeyRingIamBinding{},
-		&KmsKeyRingIamBindingList{},
+		&BinaryAuthorizationAttestor{},
+		&BinaryAuthorizationAttestorList{},
+
+		&ComputeVPNGateway{},
+		&ComputeVPNGatewayList{},
+
+		&ComputeRegionAutoscaler{},
+		&ComputeRegionAutoscalerList{},
+
+		&RedisInstance{},
+		&RedisInstanceList{},
 
 		&ComputeNetwork{},
 		&ComputeNetworkList{},
 
+		&PubsubSubscriptionIamBinding{},
+		&PubsubSubscriptionIamBindingList{},
+
+		&SqlSslCert{},
+		&SqlSslCertList{},
+
+		&StorageNotification{},
+		&StorageNotificationList{},
+
+		&ComputeRegionInstanceGroupManager{},
+		&ComputeRegionInstanceGroupManagerList{},
+
+		&ComposerEnvironment{},
+		&ComposerEnvironmentList{},
+
+		&BigtableTable{},
+		&BigtableTableList{},
+
+		&BigqueryDataset{},
+		&BigqueryDatasetList{},
+
+		&OrganizationIamMember{},
+		&OrganizationIamMemberList{},
+
+		&KmsKeyRingIamPolicy{},
+		&KmsKeyRingIamPolicyList{},
+
+		&FolderIamPolicy{},
+		&FolderIamPolicyList{},
+
 		&ComputeSslPolicy{},
 		&ComputeSslPolicyList{},
+
+		&ComputeAutoscaler{},
+		&ComputeAutoscalerList{},
+
+		&MonitoringNotificationChannel{},
+		&MonitoringNotificationChannelList{},
+
+		&SourcerepoRepository{},
+		&SourcerepoRepositoryList{},
+
+		&StorageBucketIamPolicy{},
+		&StorageBucketIamPolicyList{},
+
+		&LoggingOrganizationExclusion{},
+		&LoggingOrganizationExclusionList{},
+
+		&DataprocJob{},
+		&DataprocJobList{},
+
+		&ComputeHealthCheck{},
+		&ComputeHealthCheckList{},
+
+		&LoggingOrganizationSink{},
+		&LoggingOrganizationSinkList{},
+
+		&SqlDatabase{},
+		&SqlDatabaseList{},
+
+		&ComputeBackendService{},
+		&ComputeBackendServiceList{},
+
+		&ComputeSharedVpcServiceProject{},
+		&ComputeSharedVpcServiceProjectList{},
+
+		&LoggingFolderExclusion{},
+		&LoggingFolderExclusionList{},
+
+		&LoggingBillingAccountSink{},
+		&LoggingBillingAccountSinkList{},
+
+		&SqlDatabaseInstance{},
+		&SqlDatabaseInstanceList{},
+
+		&ResourceManagerLien{},
+		&ResourceManagerLienList{},
+
+		&StorageObjectAccessControl{},
+		&StorageObjectAccessControlList{},
+
+		&MonitoringGroup{},
+		&MonitoringGroupList{},
+
+		&ServiceAccountIamBinding{},
+		&ServiceAccountIamBindingList{},
+
+		&SpannerInstanceIamBinding{},
+		&SpannerInstanceIamBindingList{},
+
+		&ComputeHTTPHealthCheck{},
+		&ComputeHTTPHealthCheckList{},
+
+		&OrganizationIamPolicy{},
+		&OrganizationIamPolicyList{},
+
+		&StorageBucketIamMember{},
+		&StorageBucketIamMemberList{},
+
+		&ComputeSslCertificate{},
+		&ComputeSslCertificateList{},
+
+		&ComputeGlobalForwardingRule{},
+		&ComputeGlobalForwardingRuleList{},
+
+		&LoggingProjectSink{},
+		&LoggingProjectSinkList{},
+
+		&ComputeInstanceGroup{},
+		&ComputeInstanceGroupList{},
+
+		&DataprocCluster{},
+		&DataprocClusterList{},
+
+		&OrganizationIamCustomRole{},
+		&OrganizationIamCustomRoleList{},
+
+		&BillingAccountIamBinding{},
+		&BillingAccountIamBindingList{},
+
+		&PubsubTopic{},
+		&PubsubTopicList{},
+
+		&KmsCryptoKey{},
+		&KmsCryptoKeyList{},
+
+		&OrganizationIamBinding{},
+		&OrganizationIamBindingList{},
+
+		&ServiceAccountIamPolicy{},
+		&ServiceAccountIamPolicyList{},
+
+		&ComputeFirewall{},
+		&ComputeFirewallList{},
+
+		&ComputeHTTPSHealthCheck{},
+		&ComputeHTTPSHealthCheckList{},
+
+		&SpannerInstance{},
+		&SpannerInstanceList{},
+
+		&KmsKeyRingIamBinding{},
+		&KmsKeyRingIamBindingList{},
+
+		&ComputeInstance{},
+		&ComputeInstanceList{},
+
+		&SpannerDatabaseIamPolicy{},
+		&SpannerDatabaseIamPolicyList{},
+
+		&ComputeInstanceTemplate{},
+		&ComputeInstanceTemplateList{},
+
+		&DataflowJob{},
+		&DataflowJobList{},
+
+		&ComputeAttachedDisk{},
+		&ComputeAttachedDiskList{},
+
+		&ComputeProjectMetadataItem{},
+		&ComputeProjectMetadataItemList{},
+
+		&ComputeBackendBucket{},
+		&ComputeBackendBucketList{},
+
+		&ComputeDisk{},
+		&ComputeDiskList{},
+
+		&FilestoreInstance{},
+		&FilestoreInstanceList{},
+
+		&DnsManagedZone{},
+		&DnsManagedZoneList{},
+
+		&ComputeInstanceFromTemplate{},
+		&ComputeInstanceFromTemplateList{},
+
+		&ComputeAddress{},
+		&ComputeAddressList{},
+
+		&ComputeSubnetworkIamBinding{},
+		&ComputeSubnetworkIamBindingList{},
+
+		&ContainerNodePool{},
+		&ContainerNodePoolList{},
 
 		&ComputeImage{},
 		&ComputeImageList{},
@@ -416,89 +272,233 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ServiceAccountKey{},
 		&ServiceAccountKeyList{},
 
-		&BigqueryTable{},
-		&BigqueryTableList{},
+		&CloudbuildTrigger{},
+		&CloudbuildTriggerList{},
 
-		&StorageBucket{},
-		&StorageBucketList{},
+		&ComputeProjectMetadata{},
+		&ComputeProjectMetadataList{},
 
-		&OrganizationIamPolicy{},
-		&OrganizationIamPolicyList{},
+		&ComputeTargetTcpProxy{},
+		&ComputeTargetTcpProxyList{},
 
-		&ComputeSnapshot{},
-		&ComputeSnapshotList{},
+		&PubsubSubscription{},
+		&PubsubSubscriptionList{},
 
-		&ComputeURLMap{},
-		&ComputeURLMapList{},
+		&PubsubSubscriptionIamMember{},
+		&PubsubSubscriptionIamMemberList{},
 
-		&ComputeRouterNAT{},
-		&ComputeRouterNATList{},
+		&ComputeRouterInterface{},
+		&ComputeRouterInterfaceList{},
 
-		&SqlDatabaseInstance{},
-		&SqlDatabaseInstanceList{},
+		&ServiceAccountIamMember{},
+		&ServiceAccountIamMemberList{},
 
-		&ComputeRegionDisk{},
-		&ComputeRegionDiskList{},
-
-		&MonitoringGroup{},
-		&MonitoringGroupList{},
-
-		&ComputeSubnetworkIamBinding{},
-		&ComputeSubnetworkIamBindingList{},
-
-		&OrganizationIamMember{},
-		&OrganizationIamMemberList{},
-
-		&BigqueryDataset{},
-		&BigqueryDatasetList{},
-
-		&OrganizationIamCustomRole{},
-		&OrganizationIamCustomRoleList{},
-
-		&PubsubSubscriptionIamBinding{},
-		&PubsubSubscriptionIamBindingList{},
-
-		&ResourceManagerLien{},
-		&ResourceManagerLienList{},
-
-		&PubsubTopic{},
-		&PubsubTopicList{},
-
-		&DnsRecordSet{},
-		&DnsRecordSetList{},
-
-		&ComputeAttachedDisk{},
-		&ComputeAttachedDiskList{},
-
-		&LoggingBillingAccountSink{},
-		&LoggingBillingAccountSinkList{},
-
-		&DataprocJob{},
-		&DataprocJobList{},
-
-		&ComposerEnvironment{},
-		&ComposerEnvironmentList{},
-
-		&CloudiotRegistry{},
-		&CloudiotRegistryList{},
-
-		&BigtableInstance{},
-		&BigtableInstanceList{},
-
-		&SpannerInstanceIamMember{},
-		&SpannerInstanceIamMemberList{},
-
-		&ComputeRoute{},
-		&ComputeRouteList{},
+		&ComputeInstanceGroupManager{},
+		&ComputeInstanceGroupManagerList{},
 
 		&FolderIamBinding{},
 		&FolderIamBindingList{},
 
-		&ComputeProjectMetadataItem{},
-		&ComputeProjectMetadataItemList{},
+		&ProjectIamCustomRole{},
+		&ProjectIamCustomRoleList{},
+
+		&ProjectService{},
+		&ProjectServiceList{},
+
+		&FolderIamMember{},
+		&FolderIamMemberList{},
+
+		&ComputeTargetSslProxy{},
+		&ComputeTargetSslProxyList{},
+
+		&ComputeRouter{},
+		&ComputeRouterList{},
+
+		&LoggingProjectExclusion{},
+		&LoggingProjectExclusionList{},
+
+		&ComputeURLMap{},
+		&ComputeURLMapList{},
+
+		&EndpointsService{},
+		&EndpointsServiceList{},
+
+		&ComputeRouterPeer{},
+		&ComputeRouterPeerList{},
+
+		&LoggingFolderSink{},
+		&LoggingFolderSinkList{},
 
 		&SpannerInstanceIamPolicy{},
 		&SpannerInstanceIamPolicyList{},
+
+		&ServiceAccount{},
+		&ServiceAccountList{},
+
+		&ComputeInterconnectAttachment{},
+		&ComputeInterconnectAttachmentList{},
+
+		&Folder{},
+		&FolderList{},
+
+		&FolderOrganizationPolicy{},
+		&FolderOrganizationPolicyList{},
+
+		&BigtableInstance{},
+		&BigtableInstanceList{},
+
+		&SpannerDatabase{},
+		&SpannerDatabaseList{},
+
+		&ComputeForwardingRule{},
+		&ComputeForwardingRuleList{},
+
+		&StorageBucketACL{},
+		&StorageBucketACLList{},
+
+		&CloudiotRegistry{},
+		&CloudiotRegistryList{},
+
+		&ProjectIamMember{},
+		&ProjectIamMemberList{},
+
+		&SpannerInstanceIamMember{},
+		&SpannerInstanceIamMemberList{},
+
+		&ComputeTargetHTTPSProxy{},
+		&ComputeTargetHTTPSProxyList{},
+
+		&ComputeRegionDisk{},
+		&ComputeRegionDiskList{},
+
+		&ContainerAnalysisNote{},
+		&ContainerAnalysisNoteList{},
+
+		&DnsRecordSet{},
+		&DnsRecordSetList{},
+
+		&BigqueryTable{},
+		&BigqueryTableList{},
+
+		&KmsKeyRing{},
+		&KmsKeyRingList{},
+
+		&ContainerCluster{},
+		&ContainerClusterList{},
+
+		&ComputeSubnetworkIamPolicy{},
+		&ComputeSubnetworkIamPolicyList{},
+
+		&StorageDefaultObjectACL{},
+		&StorageDefaultObjectACLList{},
+
+		&KmsCryptoKeyIamMember{},
+		&KmsCryptoKeyIamMemberList{},
+
+		&RuntimeconfigVariable{},
+		&RuntimeconfigVariableList{},
+
+		&ComputeSnapshot{},
+		&ComputeSnapshotList{},
+
+		&MonitoringUptimeCheckConfig{},
+		&MonitoringUptimeCheckConfigList{},
+
+		&StorageBucketObject{},
+		&StorageBucketObjectList{},
+
+		&AppEngineApplication{},
+		&AppEngineApplicationList{},
+
+		&ComputeRoute{},
+		&ComputeRouteList{},
+
+		&BillingAccountIamMember{},
+		&BillingAccountIamMemberList{},
+
+		&CloudfunctionsFunction{},
+		&CloudfunctionsFunctionList{},
+
+		&ProjectOrganizationPolicy{},
+		&ProjectOrganizationPolicyList{},
+
+		&RuntimeconfigConfig{},
+		&RuntimeconfigConfigList{},
+
+		&PubsubTopicIamMember{},
+		&PubsubTopicIamMemberList{},
+
+		&Project{},
+		&ProjectList{},
+
+		&ProjectIamBinding{},
+		&ProjectIamBindingList{},
+
+		&SpannerDatabaseIamBinding{},
+		&SpannerDatabaseIamBindingList{},
+
+		&ComputeTargetHTTPProxy{},
+		&ComputeTargetHTTPProxyList{},
+
+		&ComputeGlobalAddress{},
+		&ComputeGlobalAddressList{},
+
+		&ComputeRouterNAT{},
+		&ComputeRouterNATList{},
+
+		&ProjectServices{},
+		&ProjectServicesList{},
+
+		&StorageObjectACL{},
+		&StorageObjectACLList{},
+
+		&SqlUser{},
+		&SqlUserList{},
+
+		&ComputeTargetPool{},
+		&ComputeTargetPoolList{},
+
+		&SpannerDatabaseIamMember{},
+		&SpannerDatabaseIamMemberList{},
+
+		&ComputeNetworkPeering{},
+		&ComputeNetworkPeeringList{},
+
+		&ProjectUsageExportBucket{},
+		&ProjectUsageExportBucketList{},
+
+		&KmsKeyRingIamMember{},
+		&KmsKeyRingIamMemberList{},
+
+		&ProjectIamPolicy{},
+		&ProjectIamPolicyList{},
+
+		&LoggingBillingAccountExclusion{},
+		&LoggingBillingAccountExclusionList{},
+
+		&OrganizationPolicy{},
+		&OrganizationPolicyList{},
+
+		&BinaryAuthorizationPolicy{},
+		&BinaryAuthorizationPolicyList{},
+
+		&ComputeSubnetwork{},
+		&ComputeSubnetworkList{},
+
+		&StorageDefaultObjectAccessControl{},
+		&StorageDefaultObjectAccessControlList{},
+
+		&StorageBucketIamBinding{},
+		&StorageBucketIamBindingList{},
+
+		&KmsCryptoKeyIamBinding{},
+		&KmsCryptoKeyIamBindingList{},
+
+		&PubsubSubscriptionIamPolicy{},
+		&PubsubSubscriptionIamPolicyList{},
+
+		&ComputeSecurityPolicy{},
+		&ComputeSecurityPolicyList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

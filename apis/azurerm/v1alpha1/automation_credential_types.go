@@ -21,7 +21,7 @@ type AutomationCredential struct {
 type AutomationCredentialSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	AccountName string `json:"accountName" tf:"account_name"`
 	// +optional

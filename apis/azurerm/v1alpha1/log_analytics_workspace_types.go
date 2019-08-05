@@ -21,7 +21,7 @@ type LogAnalyticsWorkspace struct {
 type LogAnalyticsWorkspaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Location          string `json:"location" tf:"location"`
 	Name              string `json:"name" tf:"name"`

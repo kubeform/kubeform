@@ -21,7 +21,7 @@ type ApplicationInsights struct {
 type ApplicationInsightsSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	AppID              string `json:"appID" tf:"app_id"`
 	ApplicationType    string `json:"applicationType" tf:"application_type"`

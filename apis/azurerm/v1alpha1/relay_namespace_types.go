@@ -25,7 +25,7 @@ type RelayNamespaceSpecSku struct {
 type RelayNamespaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Location                  string `json:"location" tf:"location"`
 	MetricID                  string `json:"metricID" tf:"metric_id"`

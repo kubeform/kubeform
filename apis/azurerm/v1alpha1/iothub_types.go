@@ -76,7 +76,7 @@ type IothubSpecSku struct {
 type IothubSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
 	Endpoint                   []IothubSpecEndpoint `json:"endpoint,omitempty" tf:"endpoint,omitempty"`

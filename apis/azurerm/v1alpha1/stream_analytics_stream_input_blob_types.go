@@ -29,7 +29,7 @@ type StreamAnalyticsStreamInputBlobSpecSerialization struct {
 type StreamAnalyticsStreamInputBlobSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	DateFormat        string `json:"dateFormat" tf:"date_format"`
 	Name              string `json:"name" tf:"name"`

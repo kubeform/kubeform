@@ -26,7 +26,7 @@ type ContainerRegistrySpecStorageAccount struct {
 type ContainerRegistrySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
 	AdminEnabled  bool   `json:"adminEnabled,omitempty" tf:"admin_enabled,omitempty"`

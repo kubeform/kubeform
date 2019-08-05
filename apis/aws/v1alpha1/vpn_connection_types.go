@@ -35,7 +35,7 @@ type VpnConnectionSpecVgwTelemetry struct {
 type VpnConnectionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	CustomerGatewayConfiguration string `json:"customerGatewayConfiguration" tf:"customer_gateway_configuration"`
 	CustomerGatewayID            string `json:"customerGatewayID" tf:"customer_gateway_id"`

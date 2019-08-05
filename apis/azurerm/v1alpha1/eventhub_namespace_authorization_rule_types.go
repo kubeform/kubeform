@@ -21,7 +21,7 @@ type EventhubNamespaceAuthorizationRule struct {
 type EventhubNamespaceAuthorizationRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
 	Listen bool `json:"listen,omitempty" tf:"listen,omitempty"`

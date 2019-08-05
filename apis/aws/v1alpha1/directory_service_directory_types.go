@@ -36,7 +36,7 @@ type DirectoryServiceDirectorySpecVpcSettings struct {
 type DirectoryServiceDirectorySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	AccessURL string `json:"accessURL" tf:"access_url"`
 	// +optional

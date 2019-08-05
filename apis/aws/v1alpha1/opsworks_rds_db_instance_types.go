@@ -21,7 +21,7 @@ type OpsworksRdsDbInstance struct {
 type OpsworksRdsDbInstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	DbPassword       string `json:"-" sensitive:"true" tf:"db_password"`
 	DbUser           string `json:"dbUser" tf:"db_user"`

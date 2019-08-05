@@ -21,7 +21,7 @@ type ServicebusNamespace struct {
 type ServicebusNamespaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
 	Capacity                         int    `json:"capacity,omitempty" tf:"capacity,omitempty"`

@@ -31,7 +31,7 @@ type StreamAnalyticsOutputServicebusQueueSpecSerialization struct {
 type StreamAnalyticsOutputServicebusQueueSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Name              string `json:"name" tf:"name"`
 	QueueName         string `json:"queueName" tf:"queue_name"`

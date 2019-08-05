@@ -26,7 +26,7 @@ type ApiManagementAuthorizationServerSpecTokenBodyParameter struct {
 type ApiManagementAuthorizationServerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	ApiManagementName     string `json:"apiManagementName" tf:"api_management_name"`
 	AuthorizationEndpoint string `json:"authorizationEndpoint" tf:"authorization_endpoint"`

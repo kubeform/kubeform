@@ -176,7 +176,7 @@ type CodebuildProjectSpecVpcConfig struct {
 type CodebuildProjectSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Arn string `json:"arn" tf:"arn"`
 	// +kubebuilder:validation:MaxItems=1

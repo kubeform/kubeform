@@ -103,7 +103,7 @@ type HdinsightMlServicesClusterSpecStorageAccount struct {
 type HdinsightMlServicesClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	ClusterVersion  string `json:"clusterVersion" tf:"cluster_version"`
 	EdgeSSHEndpoint string `json:"edgeSSHEndpoint" tf:"edge_ssh_endpoint"`

@@ -57,7 +57,7 @@ type RedisCacheSpecRedisConfiguration struct {
 type RedisCacheSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Capacity int `json:"capacity" tf:"capacity"`
 	// +optional

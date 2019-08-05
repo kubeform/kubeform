@@ -21,7 +21,7 @@ type IotDpsCertificate struct {
 type IotDpsCertificateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	CertificateContent string `json:"-" sensitive:"true" tf:"certificate_content"`
 	IotDpsName         string `json:"iotDpsName" tf:"iot_dps_name"`

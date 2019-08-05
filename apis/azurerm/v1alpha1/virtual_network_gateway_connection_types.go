@@ -34,7 +34,7 @@ type VirtualNetworkGatewayConnectionSpecIpsecPolicy struct {
 type VirtualNetworkGatewayConnectionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
 	AuthorizationKey string `json:"-" sensitive:"true" tf:"authorization_key,omitempty"`

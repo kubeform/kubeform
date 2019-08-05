@@ -26,7 +26,7 @@ type DevspaceControllerSpecSku struct {
 type DevspaceControllerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	DataPlaneFqdn     string `json:"dataPlaneFqdn" tf:"data_plane_fqdn"`
 	HostSuffix        string `json:"hostSuffix" tf:"host_suffix"`

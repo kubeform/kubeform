@@ -146,7 +146,7 @@ type EmrClusterSpecStep struct {
 type EmrClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
 	AdditionalInfo string `json:"additionalInfo,omitempty" tf:"additional_info,omitempty"`

@@ -21,7 +21,7 @@ type KmsCiphertext struct {
 type KmsCiphertextSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	CiphertextBlob string `json:"ciphertextBlob" tf:"ciphertext_blob"`
 	// +optional

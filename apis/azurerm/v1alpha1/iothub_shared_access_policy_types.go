@@ -21,7 +21,7 @@ type IothubSharedAccessPolicy struct {
 type IothubSharedAccessPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
 	DeviceConnect           bool   `json:"deviceConnect,omitempty" tf:"device_connect,omitempty"`

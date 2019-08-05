@@ -21,7 +21,7 @@ type ExpressRouteCircuitAuthorization struct {
 type ExpressRouteCircuitAuthorizationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	AuthorizationKey        string `json:"-" sensitive:"true" tf:"authorization_key"`
 	AuthorizationUseStatus  string `json:"authorizationUseStatus" tf:"authorization_use_status"`

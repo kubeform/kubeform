@@ -25,7 +25,7 @@ type ExpressRouteCircuitPeeringSpecMicrosoftPeeringConfig struct {
 type ExpressRouteCircuitPeeringSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	AzureAsn                int    `json:"azureAsn" tf:"azure_asn"`
 	ExpressRouteCircuitName string `json:"expressRouteCircuitName" tf:"express_route_circuit_name"`
