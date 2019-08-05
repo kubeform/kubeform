@@ -23,14 +23,17 @@ type BatchAccountSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	AccountEndpoint string `json:"accountEndpoint" tf:"account_endpoint"`
+	// +optional
+	AccountEndpoint string `json:"accountEndpoint,omitempty" tf:"account_endpoint,omitempty"`
 	Location        string `json:"location" tf:"location"`
 	Name            string `json:"name" tf:"name"`
 	// +optional
 	PoolAllocationMode string `json:"poolAllocationMode,omitempty" tf:"pool_allocation_mode,omitempty"`
-	PrimaryAccessKey   string `json:"-" sensitive:"true" tf:"primary_access_key"`
-	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
-	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key"`
+	// +optional
+	PrimaryAccessKey  string `json:"-" sensitive:"true" tf:"primary_access_key,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key,omitempty"`
 	// +optional
 	StorageAccountID string `json:"storageAccountID,omitempty" tf:"storage_account_id,omitempty"`
 	// +optional

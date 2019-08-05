@@ -28,9 +28,11 @@ type NotificationHubAuthorizationRuleSpec struct {
 	Name                string `json:"name" tf:"name"`
 	NamespaceName       string `json:"namespaceName" tf:"namespace_name"`
 	NotificationHubName string `json:"notificationHubName" tf:"notification_hub_name"`
-	PrimaryAccessKey    string `json:"primaryAccessKey" tf:"primary_access_key"`
-	ResourceGroupName   string `json:"resourceGroupName" tf:"resource_group_name"`
-	SecondaryAccessKey  string `json:"secondaryAccessKey" tf:"secondary_access_key"`
+	// +optional
+	PrimaryAccessKey  string `json:"primaryAccessKey,omitempty" tf:"primary_access_key,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	SecondaryAccessKey string `json:"secondaryAccessKey,omitempty" tf:"secondary_access_key,omitempty"`
 	// +optional
 	Send bool `json:"send,omitempty" tf:"send,omitempty"`
 }

@@ -21,8 +21,9 @@ type EcrLifecyclePolicy struct {
 type EcrLifecyclePolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Policy     string `json:"policy" tf:"policy"`
-	RegistryID string `json:"registryID" tf:"registry_id"`
+	Policy string `json:"policy" tf:"policy"`
+	// +optional
+	RegistryID string `json:"registryID,omitempty" tf:"registry_id,omitempty"`
 	Repository string `json:"repository" tf:"repository"`
 }
 

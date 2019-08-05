@@ -28,13 +28,16 @@ type CognitiveAccountSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	Endpoint           string `json:"endpoint" tf:"endpoint"`
-	Kind               string `json:"kind" tf:"kind"`
-	Location           string `json:"location" tf:"location"`
-	Name               string `json:"name" tf:"name"`
-	PrimaryAccessKey   string `json:"-" sensitive:"true" tf:"primary_access_key"`
-	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
-	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key"`
+	// +optional
+	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
+	Kind     string `json:"kind" tf:"kind"`
+	Location string `json:"location" tf:"location"`
+	Name     string `json:"name" tf:"name"`
+	// +optional
+	PrimaryAccessKey  string `json:"-" sensitive:"true" tf:"primary_access_key,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku []CognitiveAccountSpecSku `json:"sku" tf:"sku"`
 	// +optional

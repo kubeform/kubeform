@@ -413,7 +413,6 @@ spec:
                   subnetID:
                     type: string
                 required:
-                - ipID
                 - subnetID
                 type: object
               maxItems: 10
@@ -443,9 +442,7 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - direction
-          - hostVpcID
           - ipAddress
           - providerRef
           - securityGroupIDS
@@ -475,7 +472,6 @@ spec:
                       subnetID:
                         type: string
                     required:
-                    - ipID
                     - subnetID
                     type: object
                   maxItems: 10
@@ -505,9 +501,7 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - direction
-              - hostVpcID
               - ipAddress
               - providerRef
               - securityGroupIDS

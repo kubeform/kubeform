@@ -447,8 +447,6 @@ spec:
             tapeDriveType:
               type: string
           required:
-          - arn
-          - gatewayID
           - gatewayName
           - gatewayTimezone
           - providerRef
@@ -512,8 +510,6 @@ spec:
                 tapeDriveType:
                   type: string
               required:
-              - arn
-              - gatewayID
               - gatewayName
               - gatewayTimezone
               - providerRef

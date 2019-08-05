@@ -21,12 +21,15 @@ type EfsMountTarget struct {
 type EfsMountTargetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	DnsName       string `json:"dnsName" tf:"dns_name"`
-	FileSystemArn string `json:"fileSystemArn" tf:"file_system_arn"`
+	// +optional
+	DnsName string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
+	// +optional
+	FileSystemArn string `json:"fileSystemArn,omitempty" tf:"file_system_arn,omitempty"`
 	FileSystemID  string `json:"fileSystemID" tf:"file_system_id"`
 	// +optional
-	IpAddress          string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
-	NetworkInterfaceID string `json:"networkInterfaceID" tf:"network_interface_id"`
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+	// +optional
+	NetworkInterfaceID string `json:"networkInterfaceID,omitempty" tf:"network_interface_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`

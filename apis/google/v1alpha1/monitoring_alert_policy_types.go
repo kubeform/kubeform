@@ -104,12 +104,15 @@ type MonitoringAlertPolicySpecConditions struct {
 	// +kubebuilder:validation:MaxItems=1
 	ConditionThreshold []MonitoringAlertPolicySpecConditionsConditionThreshold `json:"conditionThreshold,omitempty" tf:"condition_threshold,omitempty"`
 	DisplayName        string                                                  `json:"displayName" tf:"display_name"`
-	Name               string                                                  `json:"name" tf:"name"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type MonitoringAlertPolicySpecCreationRecord struct {
-	MutateTime string `json:"mutateTime" tf:"mutate_time"`
-	MutatedBy  string `json:"mutatedBy" tf:"mutated_by"`
+	// +optional
+	MutateTime string `json:"mutateTime,omitempty" tf:"mutate_time,omitempty"`
+	// +optional
+	MutatedBy string `json:"mutatedBy,omitempty" tf:"mutated_by,omitempty"`
 }
 
 type MonitoringAlertPolicySpec struct {
@@ -117,13 +120,15 @@ type MonitoringAlertPolicySpec struct {
 
 	Combiner   string                                `json:"combiner" tf:"combiner"`
 	Conditions []MonitoringAlertPolicySpecConditions `json:"conditions" tf:"conditions"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	CreationRecord []MonitoringAlertPolicySpecCreationRecord `json:"creationRecord" tf:"creation_record"`
+	CreationRecord []MonitoringAlertPolicySpecCreationRecord `json:"creationRecord,omitempty" tf:"creation_record,omitempty"`
 	DisplayName    string                                    `json:"displayName" tf:"display_name"`
 	Enabled        bool                                      `json:"enabled" tf:"enabled"`
 	// +optional
 	Labels []string `json:"labels,omitempty" tf:"labels,omitempty"`
-	Name   string   `json:"name" tf:"name"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	NotificationChannels []string `json:"notificationChannels,omitempty" tf:"notification_channels,omitempty"`
 	// +optional

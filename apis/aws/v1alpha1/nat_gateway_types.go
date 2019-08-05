@@ -21,11 +21,14 @@ type NatGateway struct {
 type NatGatewaySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	AllocationID       string `json:"allocationID" tf:"allocation_id"`
-	NetworkInterfaceID string `json:"networkInterfaceID" tf:"network_interface_id"`
-	PrivateIP          string `json:"privateIP" tf:"private_ip"`
-	PublicIP           string `json:"publicIP" tf:"public_ip"`
-	SubnetID           string `json:"subnetID" tf:"subnet_id"`
+	AllocationID string `json:"allocationID" tf:"allocation_id"`
+	// +optional
+	NetworkInterfaceID string `json:"networkInterfaceID,omitempty" tf:"network_interface_id,omitempty"`
+	// +optional
+	PrivateIP string `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
+	// +optional
+	PublicIP string `json:"publicIP,omitempty" tf:"public_ip,omitempty"`
+	SubnetID string `json:"subnetID" tf:"subnet_id"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

@@ -23,12 +23,14 @@ type ApiGatewayAPIKeySpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	CreatedDate string `json:"createdDate" tf:"created_date"`
+	// +optional
+	CreatedDate string `json:"createdDate,omitempty" tf:"created_date,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	Enabled         bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
-	LastUpdatedDate string `json:"lastUpdatedDate" tf:"last_updated_date"`
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	LastUpdatedDate string `json:"lastUpdatedDate,omitempty" tf:"last_updated_date,omitempty"`
 	Name            string `json:"name" tf:"name"`
 	// +optional
 	Value string `json:"-" sensitive:"true" tf:"value,omitempty"`

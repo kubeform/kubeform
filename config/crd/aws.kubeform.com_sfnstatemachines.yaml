@@ -421,12 +421,10 @@ spec:
                 type: string
               type: object
           required:
-          - creationDate
           - definition
           - name
           - providerRef
           - roleArn
-          - status
           type: object
         status:
           properties:
@@ -461,12 +459,10 @@ spec:
                     type: string
                   type: object
               required:
-              - creationDate
               - definition
               - name
               - providerRef
               - roleArn
-              - status
               type: object
             state:
               properties:

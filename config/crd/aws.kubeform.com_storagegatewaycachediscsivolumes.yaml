@@ -433,17 +433,10 @@ spec:
             volumeSizeInBytes:
               type: integer
           required:
-          - arn
-          - chapEnabled
           - gatewayArn
-          - lunNumber
           - networkInterfaceID
-          - networkInterfacePort
           - providerRef
-          - targetArn
           - targetName
-          - volumeArn
-          - volumeID
           - volumeSizeInBytes
           type: object
         status:
@@ -491,17 +484,10 @@ spec:
                 volumeSizeInBytes:
                   type: integer
               required:
-              - arn
-              - chapEnabled
               - gatewayArn
-              - lunNumber
               - networkInterfaceID
-              - networkInterfacePort
               - providerRef
-              - targetArn
               - targetName
-              - volumeArn
-              - volumeID
               - volumeSizeInBytes
               type: object
             state:

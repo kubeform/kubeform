@@ -21,13 +21,18 @@ type CloudfrontOriginAccessIdentity struct {
 type CloudfrontOriginAccessIdentitySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CallerReference              string `json:"callerReference" tf:"caller_reference"`
-	CloudfrontAccessIdentityPath string `json:"cloudfrontAccessIdentityPath" tf:"cloudfront_access_identity_path"`
 	// +optional
-	Comment           string `json:"comment,omitempty" tf:"comment,omitempty"`
-	Etag              string `json:"etag" tf:"etag"`
-	IamArn            string `json:"iamArn" tf:"iam_arn"`
-	S3CanonicalUserID string `json:"s3CanonicalUserID" tf:"s3_canonical_user_id"`
+	CallerReference string `json:"callerReference,omitempty" tf:"caller_reference,omitempty"`
+	// +optional
+	CloudfrontAccessIdentityPath string `json:"cloudfrontAccessIdentityPath,omitempty" tf:"cloudfront_access_identity_path,omitempty"`
+	// +optional
+	Comment string `json:"comment,omitempty" tf:"comment,omitempty"`
+	// +optional
+	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
+	// +optional
+	IamArn string `json:"iamArn,omitempty" tf:"iam_arn,omitempty"`
+	// +optional
+	S3CanonicalUserID string `json:"s3CanonicalUserID,omitempty" tf:"s3_canonical_user_id,omitempty"`
 }
 
 type CloudfrontOriginAccessIdentityStatus struct {

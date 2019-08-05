@@ -419,8 +419,6 @@ spec:
             user:
               type: string
           required:
-          - encryptedPassword
-          - keyFingerprint
           - pgpKey
           - providerRef
           - user
@@ -456,8 +454,6 @@ spec:
                 user:
                   type: string
               required:
-              - encryptedPassword
-              - keyFingerprint
               - pgpKey
               - providerRef
               - user

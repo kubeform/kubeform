@@ -420,7 +420,6 @@ spec:
                   type: string
               type: object
           required:
-          - certificateArn
           - certificateID
           - providerRef
           type: object
@@ -456,7 +455,6 @@ spec:
                       type: string
                   type: object
               required:
-              - certificateArn
               - certificateID
               - providerRef
               type: object

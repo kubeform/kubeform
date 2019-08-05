@@ -22,9 +22,10 @@ type BillingAccountIamMemberSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	BillingAccountID string `json:"billingAccountID" tf:"billing_account_id"`
-	Etag             string `json:"etag" tf:"etag"`
-	Member           string `json:"member" tf:"member"`
-	Role             string `json:"role" tf:"role"`
+	// +optional
+	Etag   string `json:"etag,omitempty" tf:"etag,omitempty"`
+	Member string `json:"member" tf:"member"`
+	Role   string `json:"role" tf:"role"`
 }
 
 type BillingAccountIamMemberStatus struct {

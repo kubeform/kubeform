@@ -433,7 +433,6 @@ spec:
                     type: string
                 required:
                 - backendPort
-                - frontendPort
                 - protocol
                 type: object
               type: array
@@ -485,7 +484,6 @@ spec:
             username:
               type: string
           required:
-          - fqdn
           - galleryImageReference
           - labName
           - labSubnetName
@@ -496,7 +494,6 @@ spec:
           - resourceGroupName
           - size
           - storageType
-          - uniqueIdentifier
           - username
           type: object
         status:
@@ -544,7 +541,6 @@ spec:
                         type: string
                     required:
                     - backendPort
-                    - frontendPort
                     - protocol
                     type: object
                   type: array
@@ -596,7 +592,6 @@ spec:
                 username:
                   type: string
               required:
-              - fqdn
               - galleryImageReference
               - labName
               - labSubnetName
@@ -607,7 +602,6 @@ spec:
               - resourceGroupName
               - size
               - storageType
-              - uniqueIdentifier
               - username
               type: object
             state:

@@ -21,12 +21,14 @@ type AppsyncFunction struct {
 type AppsyncFunctionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	ApiID      string `json:"apiID" tf:"api_id"`
-	Arn        string `json:"arn" tf:"arn"`
+	ApiID string `json:"apiID" tf:"api_id"`
+	// +optional
+	Arn        string `json:"arn,omitempty" tf:"arn,omitempty"`
 	DataSource string `json:"dataSource" tf:"data_source"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	FunctionID  string `json:"functionID" tf:"function_id"`
+	// +optional
+	FunctionID string `json:"functionID,omitempty" tf:"function_id,omitempty"`
 	// +optional
 	FunctionVersion         string `json:"functionVersion,omitempty" tf:"function_version,omitempty"`
 	Name                    string `json:"name" tf:"name"`

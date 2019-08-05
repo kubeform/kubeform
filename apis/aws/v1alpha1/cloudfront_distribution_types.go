@@ -227,12 +227,15 @@ type CloudfrontDistributionSpecViewerCertificate struct {
 type CloudfrontDistributionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	ActiveTrustedSigners map[string]string `json:"activeTrustedSigners" tf:"active_trusted_signers"`
+	// +optional
+	ActiveTrustedSigners map[string]string `json:"activeTrustedSigners,omitempty" tf:"active_trusted_signers,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Aliases         []string `json:"aliases,omitempty" tf:"aliases,omitempty"`
-	Arn             string   `json:"arn" tf:"arn"`
-	CallerReference string   `json:"callerReference" tf:"caller_reference"`
+	Aliases []string `json:"aliases,omitempty" tf:"aliases,omitempty"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	CallerReference string `json:"callerReference,omitempty" tf:"caller_reference,omitempty"`
 	// +optional
 	Comment string `json:"comment,omitempty" tf:"comment,omitempty"`
 	// +optional
@@ -242,16 +245,21 @@ type CloudfrontDistributionSpec struct {
 	DefaultCacheBehavior []CloudfrontDistributionSpecDefaultCacheBehavior `json:"defaultCacheBehavior" tf:"default_cache_behavior"`
 	// +optional
 	DefaultRootObject string `json:"defaultRootObject,omitempty" tf:"default_root_object,omitempty"`
-	DomainName        string `json:"domainName" tf:"domain_name"`
-	Enabled           bool   `json:"enabled" tf:"enabled"`
-	Etag              string `json:"etag" tf:"etag"`
-	HostedZoneID      string `json:"hostedZoneID" tf:"hosted_zone_id"`
 	// +optional
-	HttpVersion                 string `json:"httpVersion,omitempty" tf:"http_version,omitempty"`
-	InProgressValidationBatches int    `json:"inProgressValidationBatches" tf:"in_progress_validation_batches"`
+	DomainName string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
+	Enabled    bool   `json:"enabled" tf:"enabled"`
 	// +optional
-	IsIpv6Enabled    bool   `json:"isIpv6Enabled,omitempty" tf:"is_ipv6_enabled,omitempty"`
-	LastModifiedTime string `json:"lastModifiedTime" tf:"last_modified_time"`
+	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
+	// +optional
+	HostedZoneID string `json:"hostedZoneID,omitempty" tf:"hosted_zone_id,omitempty"`
+	// +optional
+	HttpVersion string `json:"httpVersion,omitempty" tf:"http_version,omitempty"`
+	// +optional
+	InProgressValidationBatches int `json:"inProgressValidationBatches,omitempty" tf:"in_progress_validation_batches,omitempty"`
+	// +optional
+	IsIpv6Enabled bool `json:"isIpv6Enabled,omitempty" tf:"is_ipv6_enabled,omitempty"`
+	// +optional
+	LastModifiedTime string `json:"lastModifiedTime,omitempty" tf:"last_modified_time,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	LoggingConfig []CloudfrontDistributionSpecLoggingConfig `json:"loggingConfig,omitempty" tf:"logging_config,omitempty"`
@@ -267,8 +275,9 @@ type CloudfrontDistributionSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Restrictions []CloudfrontDistributionSpecRestrictions `json:"restrictions" tf:"restrictions"`
 	// +optional
-	RetainOnDelete bool   `json:"retainOnDelete,omitempty" tf:"retain_on_delete,omitempty"`
-	Status         string `json:"status" tf:"status"`
+	RetainOnDelete bool `json:"retainOnDelete,omitempty" tf:"retain_on_delete,omitempty"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +kubebuilder:validation:MaxItems=1

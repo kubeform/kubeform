@@ -411,7 +411,6 @@ spec:
                   type: string
               type: object
           required:
-          - arn
           - domainName
           - providerRef
           type: object
@@ -438,7 +437,6 @@ spec:
                       type: string
                   type: object
               required:
-              - arn
               - domainName
               - providerRef
               type: object

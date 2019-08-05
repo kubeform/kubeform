@@ -424,10 +424,7 @@ spec:
             subnetID:
               type: string
           required:
-          - dnsName
-          - fileSystemArn
           - fileSystemID
-          - networkInterfaceID
           - providerRef
           - subnetID
           type: object
@@ -467,10 +464,7 @@ spec:
                 subnetID:
                   type: string
               required:
-              - dnsName
-              - fileSystemArn
               - fileSystemID
-              - networkInterfaceID
               - providerRef
               - subnetID
               type: object

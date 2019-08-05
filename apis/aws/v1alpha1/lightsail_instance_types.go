@@ -21,25 +21,34 @@ type LightsailInstance struct {
 type LightsailInstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn              string `json:"arn" tf:"arn"`
+	// +optional
+	Arn              string `json:"arn,omitempty" tf:"arn,omitempty"`
 	AvailabilityZone string `json:"availabilityZone" tf:"availability_zone"`
 	BlueprintID      string `json:"blueprintID" tf:"blueprint_id"`
 	BundleID         string `json:"bundleID" tf:"bundle_id"`
-	CpuCount         int    `json:"cpuCount" tf:"cpu_count"`
-	CreatedAt        string `json:"createdAt" tf:"created_at"`
-	Ipv6Address      string `json:"ipv6Address" tf:"ipv6_address"`
-	IsStaticIP       bool   `json:"isStaticIP" tf:"is_static_ip"`
 	// +optional
-	KeyPairName      string `json:"keyPairName,omitempty" tf:"key_pair_name,omitempty"`
-	Name             string `json:"name" tf:"name"`
-	PrivateIPAddress string `json:"privateIPAddress" tf:"private_ip_address"`
-	PublicIPAddress  string `json:"publicIPAddress" tf:"public_ip_address"`
-	RamSize          int    `json:"ramSize" tf:"ram_size"`
+	CpuCount int `json:"cpuCount,omitempty" tf:"cpu_count,omitempty"`
+	// +optional
+	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
+	// +optional
+	Ipv6Address string `json:"ipv6Address,omitempty" tf:"ipv6_address,omitempty"`
+	// +optional
+	IsStaticIP bool `json:"isStaticIP,omitempty" tf:"is_static_ip,omitempty"`
+	// +optional
+	KeyPairName string `json:"keyPairName,omitempty" tf:"key_pair_name,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	// +optional
+	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
+	// +optional
+	PublicIPAddress string `json:"publicIPAddress,omitempty" tf:"public_ip_address,omitempty"`
+	// +optional
+	RamSize int `json:"ramSize,omitempty" tf:"ram_size,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	UserData string `json:"userData,omitempty" tf:"user_data,omitempty"`
-	Username string `json:"username" tf:"username"`
+	// +optional
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type LightsailInstanceStatus struct {

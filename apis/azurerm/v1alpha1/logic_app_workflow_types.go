@@ -21,7 +21,8 @@ type LogicAppWorkflow struct {
 type LogicAppWorkflowSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	AccessEndpoint string `json:"accessEndpoint" tf:"access_endpoint"`
+	// +optional
+	AccessEndpoint string `json:"accessEndpoint,omitempty" tf:"access_endpoint,omitempty"`
 	Location       string `json:"location" tf:"location"`
 	Name           string `json:"name" tf:"name"`
 	// +optional

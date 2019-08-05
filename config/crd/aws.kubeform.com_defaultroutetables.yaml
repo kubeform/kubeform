@@ -447,9 +447,7 @@ spec:
               type: string
           required:
           - defaultRouteTableID
-          - ownerID
           - providerRef
-          - vpcID
           type: object
         status:
           properties:
@@ -510,9 +508,7 @@ spec:
                   type: string
               required:
               - defaultRouteTableID
-              - ownerID
               - providerRef
-              - vpcID
               type: object
             state:
               properties:

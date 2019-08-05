@@ -417,7 +417,6 @@ spec:
           required:
           - providerRef
           - region
-          - urn
           type: object
         status:
           properties:
@@ -448,7 +447,6 @@ spec:
               required:
               - providerRef
               - region
-              - urn
               type: object
             state:
               properties:

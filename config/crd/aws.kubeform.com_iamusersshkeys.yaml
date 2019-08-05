@@ -420,10 +420,8 @@ spec:
               type: string
           required:
           - encoding
-          - fingerprint
           - providerRef
           - publicKey
-          - sshPublicKeyID
           - username
           type: object
         status:
@@ -458,10 +456,8 @@ spec:
                   type: string
               required:
               - encoding
-              - fingerprint
               - providerRef
               - publicKey
-              - sshPublicKeyID
               - username
               type: object
             state:

@@ -424,7 +424,6 @@ spec:
                   type: string
               type: object
           required:
-          - authorizationUseStatus
           - expressRouteCircuitName
           - name
           - providerRef
@@ -466,7 +465,6 @@ spec:
                       type: string
                   type: object
               required:
-              - authorizationUseStatus
               - expressRouteCircuitName
               - name
               - providerRef

@@ -488,7 +488,6 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
           - defaultAction
           - metricName
           - name
@@ -594,7 +593,6 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
               - defaultAction
               - metricName
               - name

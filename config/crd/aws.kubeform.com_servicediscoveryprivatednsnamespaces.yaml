@@ -417,8 +417,6 @@ spec:
             vpc:
               type: string
           required:
-          - arn
-          - hostedZone
           - name
           - providerRef
           - vpc
@@ -452,8 +450,6 @@ spec:
                 vpc:
                   type: string
               required:
-              - arn
-              - hostedZone
               - name
               - providerRef
               - vpc

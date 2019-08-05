@@ -422,7 +422,6 @@ spec:
               type: string
           required:
           - providerRef
-          - stackID
           - stackSetName
           type: object
         status:
@@ -459,7 +458,6 @@ spec:
                   type: string
               required:
               - providerRef
-              - stackID
               - stackSetName
               type: object
             state:

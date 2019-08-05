@@ -425,8 +425,6 @@ spec:
               description: Deprecated
               type: string
           required:
-          - associatedGatewayOwnerAccountID
-          - associatedGatewayType
           - dxGatewayID
           - dxGatewayOwnerAccountID
           - providerRef
@@ -468,8 +466,6 @@ spec:
                   description: Deprecated
                   type: string
               required:
-              - associatedGatewayOwnerAccountID
-              - associatedGatewayType
               - dxGatewayID
               - dxGatewayOwnerAccountID
               - providerRef

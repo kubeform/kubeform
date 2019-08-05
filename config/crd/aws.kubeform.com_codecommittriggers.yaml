@@ -436,7 +436,6 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - configurationID
           - providerRef
           - repositoryName
           - trigger
@@ -489,7 +488,6 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - configurationID
               - providerRef
               - repositoryName
               - trigger

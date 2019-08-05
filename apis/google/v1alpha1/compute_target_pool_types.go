@@ -38,8 +38,9 @@ type ComputeTargetPoolSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region   string `json:"region,omitempty" tf:"region,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	SessionAffinity string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 }

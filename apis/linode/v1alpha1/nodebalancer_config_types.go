@@ -19,8 +19,10 @@ type NodebalancerConfig struct {
 }
 
 type NodebalancerConfigSpecNodeStatus struct {
-	StatusDown int `json:"statusDown" tf:"status_down"`
-	StatusUp   int `json:"statusUp" tf:"status_up"`
+	// +optional
+	StatusDown int `json:"statusDown,omitempty" tf:"status_down,omitempty"`
+	// +optional
+	StatusUp int `json:"statusUp,omitempty" tf:"status_up,omitempty"`
 }
 
 type NodebalancerConfigSpec struct {
@@ -45,17 +47,20 @@ type NodebalancerConfigSpec struct {
 	// +optional
 	CheckTimeout int `json:"checkTimeout,omitempty" tf:"check_timeout,omitempty"`
 	// +optional
-	CipherSuite    string                                      `json:"cipherSuite,omitempty" tf:"cipher_suite,omitempty"`
-	NodeStatus     map[string]NodebalancerConfigSpecNodeStatus `json:"nodeStatus" tf:"node_status"`
+	CipherSuite string `json:"cipherSuite,omitempty" tf:"cipher_suite,omitempty"`
+	// +optional
+	NodeStatus     map[string]NodebalancerConfigSpecNodeStatus `json:"nodeStatus,omitempty" tf:"node_status,omitempty"`
 	NodebalancerID int                                         `json:"nodebalancerID" tf:"nodebalancer_id"`
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 	// +optional
-	SslCert        string `json:"sslCert,omitempty" tf:"ssl_cert,omitempty"`
-	SslCommonname  string `json:"sslCommonname" tf:"ssl_commonname"`
-	SslFingerprint string `json:"sslFingerprint" tf:"ssl_fingerprint"`
+	SslCert string `json:"sslCert,omitempty" tf:"ssl_cert,omitempty"`
+	// +optional
+	SslCommonname string `json:"sslCommonname,omitempty" tf:"ssl_commonname,omitempty"`
+	// +optional
+	SslFingerprint string `json:"sslFingerprint,omitempty" tf:"ssl_fingerprint,omitempty"`
 	// +optional
 	SslKey string `json:"-" sensitive:"true" tf:"ssl_key,omitempty"`
 	// +optional

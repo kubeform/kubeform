@@ -547,18 +547,11 @@ spec:
                     uniqueItems: true
                   vpcID:
                     type: string
-                required:
-                - availabilityZones
-                - vpcID
                 type: object
               maxItems: 1
               type: array
           required:
-          - arn
-          - domainID
           - domainName
-          - endpoint
-          - kibanaEndpoint
           - providerRef
           type: object
         status:
@@ -720,18 +713,11 @@ spec:
                         uniqueItems: true
                       vpcID:
                         type: string
-                    required:
-                    - availabilityZones
-                    - vpcID
                     type: object
                   maxItems: 1
                   type: array
               required:
-              - arn
-              - domainID
               - domainName
-              - endpoint
-              - kibanaEndpoint
               - providerRef
               type: object
             state:

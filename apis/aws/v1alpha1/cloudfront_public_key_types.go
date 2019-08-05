@@ -21,11 +21,13 @@ type CloudfrontPublicKey struct {
 type CloudfrontPublicKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CallerReference string `json:"callerReference" tf:"caller_reference"`
+	// +optional
+	CallerReference string `json:"callerReference,omitempty" tf:"caller_reference,omitempty"`
 	// +optional
 	Comment    string `json:"comment,omitempty" tf:"comment,omitempty"`
 	EncodedKey string `json:"encodedKey" tf:"encoded_key"`
-	Etag       string `json:"etag" tf:"etag"`
+	// +optional
+	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional

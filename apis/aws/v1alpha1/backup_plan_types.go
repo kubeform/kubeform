@@ -44,13 +44,15 @@ type BackupPlanSpecRule struct {
 type BackupPlanSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn  string `json:"arn" tf:"arn"`
+	// +optional
+	Arn  string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Name string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
 	Rule []BackupPlanSpecRule `json:"rule" tf:"rule"`
 	// +optional
-	Tags    map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Version string            `json:"version" tf:"version"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	Version string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type BackupPlanStatus struct {

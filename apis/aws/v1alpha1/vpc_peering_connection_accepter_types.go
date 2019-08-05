@@ -39,24 +39,29 @@ type VpcPeeringConnectionAccepterSpecRequester struct {
 type VpcPeeringConnectionAccepterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	AcceptStatus string `json:"acceptStatus" tf:"accept_status"`
+	// +optional
+	AcceptStatus string `json:"acceptStatus,omitempty" tf:"accept_status,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	Accepter []VpcPeeringConnectionAccepterSpecAccepter `json:"accepter,omitempty" tf:"accepter,omitempty"`
 	// +optional
-	AutoAccept  bool   `json:"autoAccept,omitempty" tf:"auto_accept,omitempty"`
-	PeerOwnerID string `json:"peerOwnerID" tf:"peer_owner_id"`
-	PeerRegion  string `json:"peerRegion" tf:"peer_region"`
-	PeerVpcID   string `json:"peerVpcID" tf:"peer_vpc_id"`
+	AutoAccept bool `json:"autoAccept,omitempty" tf:"auto_accept,omitempty"`
+	// +optional
+	PeerOwnerID string `json:"peerOwnerID,omitempty" tf:"peer_owner_id,omitempty"`
+	// +optional
+	PeerRegion string `json:"peerRegion,omitempty" tf:"peer_region,omitempty"`
+	// +optional
+	PeerVpcID string `json:"peerVpcID,omitempty" tf:"peer_vpc_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	Requester []VpcPeeringConnectionAccepterSpecRequester `json:"requester,omitempty" tf:"requester,omitempty"`
 	// +optional
-	Tags                   map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	VpcID                  string            `json:"vpcID" tf:"vpc_id"`
-	VpcPeeringConnectionID string            `json:"vpcPeeringConnectionID" tf:"vpc_peering_connection_id"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	VpcID                  string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
+	VpcPeeringConnectionID string `json:"vpcPeeringConnectionID" tf:"vpc_peering_connection_id"`
 }
 
 type VpcPeeringConnectionAccepterStatus struct {

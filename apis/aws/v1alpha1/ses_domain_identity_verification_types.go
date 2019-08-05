@@ -21,7 +21,8 @@ type SesDomainIdentityVerification struct {
 type SesDomainIdentityVerificationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn    string `json:"arn" tf:"arn"`
+	// +optional
+	Arn    string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Domain string `json:"domain" tf:"domain"`
 }
 

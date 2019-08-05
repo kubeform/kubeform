@@ -21,7 +21,8 @@ type KmsKeyRingIamBinding struct {
 type KmsKeyRingIamBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Etag      string `json:"etag" tf:"etag"`
+	// +optional
+	Etag      string `json:"etag,omitempty" tf:"etag,omitempty"`
 	KeyRingID string `json:"keyRingID" tf:"key_ring_id"`
 	// +kubebuilder:validation:UniqueItems=true
 	Members []string `json:"members" tf:"members"`

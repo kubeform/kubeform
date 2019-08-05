@@ -25,11 +25,13 @@ type DxGatewayAssociationProposalSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	AllowedPrefixes []string `json:"allowedPrefixes,omitempty" tf:"allowed_prefixes,omitempty"`
 	// +optional
-	AssociatedGatewayID             string `json:"associatedGatewayID,omitempty" tf:"associated_gateway_id,omitempty"`
-	AssociatedGatewayOwnerAccountID string `json:"associatedGatewayOwnerAccountID" tf:"associated_gateway_owner_account_id"`
-	AssociatedGatewayType           string `json:"associatedGatewayType" tf:"associated_gateway_type"`
-	DxGatewayID                     string `json:"dxGatewayID" tf:"dx_gateway_id"`
-	DxGatewayOwnerAccountID         string `json:"dxGatewayOwnerAccountID" tf:"dx_gateway_owner_account_id"`
+	AssociatedGatewayID string `json:"associatedGatewayID,omitempty" tf:"associated_gateway_id,omitempty"`
+	// +optional
+	AssociatedGatewayOwnerAccountID string `json:"associatedGatewayOwnerAccountID,omitempty" tf:"associated_gateway_owner_account_id,omitempty"`
+	// +optional
+	AssociatedGatewayType   string `json:"associatedGatewayType,omitempty" tf:"associated_gateway_type,omitempty"`
+	DxGatewayID             string `json:"dxGatewayID" tf:"dx_gateway_id"`
+	DxGatewayOwnerAccountID string `json:"dxGatewayOwnerAccountID" tf:"dx_gateway_owner_account_id"`
 	// +optional
 	// Deprecated
 	VpnGatewayID string `json:"vpnGatewayID,omitempty" tf:"vpn_gateway_id,omitempty"`

@@ -421,10 +421,8 @@ spec:
                 type: string
               type: object
           required:
-          - clientID
           - location
           - name
-          - principalID
           - providerRef
           - resourceGroupName
           type: object
@@ -461,10 +459,8 @@ spec:
                     type: string
                   type: object
               required:
-              - clientID
               - location
               - name
-              - principalID
               - providerRef
               - resourceGroupName
               type: object

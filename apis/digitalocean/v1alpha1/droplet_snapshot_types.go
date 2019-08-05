@@ -23,13 +23,17 @@ type DropletSnapshot struct {
 type DropletSnapshotSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CreatedAt   string `json:"createdAt" tf:"created_at"`
-	DropletID   string `json:"dropletID" tf:"droplet_id"`
-	MinDiskSize int    `json:"minDiskSize" tf:"min_disk_size"`
+	// +optional
+	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
+	DropletID string `json:"dropletID" tf:"droplet_id"`
+	// +optional
+	MinDiskSize int    `json:"minDiskSize,omitempty" tf:"min_disk_size,omitempty"`
 	Name        string `json:"name" tf:"name"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Regions []string    `json:"regions" tf:"regions"`
-	Size    json.Number `json:"size" tf:"size"`
+	Regions []string `json:"regions,omitempty" tf:"regions,omitempty"`
+	// +optional
+	Size json.Number `json:"size,omitempty" tf:"size,omitempty"`
 }
 
 type DropletSnapshotStatus struct {

@@ -413,7 +413,6 @@ spec:
             vpcID:
               type: string
           required:
-          - originalRouteTableID
           - providerRef
           - routeTableID
           - vpcID
@@ -443,7 +442,6 @@ spec:
                 vpcID:
                   type: string
               required:
-              - originalRouteTableID
               - providerRef
               - routeTableID
               - vpcID

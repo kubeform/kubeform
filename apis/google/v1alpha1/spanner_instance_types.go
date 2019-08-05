@@ -31,7 +31,8 @@ type SpannerInstanceSpec struct {
 	NumNodes int `json:"numNodes,omitempty" tf:"num_nodes,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
-	State   string `json:"state" tf:"state"`
+	// +optional
+	State string `json:"state,omitempty" tf:"state,omitempty"`
 }
 
 type SpannerInstanceStatus struct {

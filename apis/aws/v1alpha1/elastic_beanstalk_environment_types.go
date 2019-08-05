@@ -37,25 +37,33 @@ type ElasticBeanstalkEnvironmentSpecSetting struct {
 type ElasticBeanstalkEnvironmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	AllSettings       []ElasticBeanstalkEnvironmentSpecAllSettings `json:"allSettings" tf:"all_settings"`
-	Application       string                                       `json:"application" tf:"application"`
-	Arn               string                                       `json:"arn" tf:"arn"`
-	AutoscalingGroups []string                                     `json:"autoscalingGroups" tf:"autoscaling_groups"`
-	Cname             string                                       `json:"cname" tf:"cname"`
+	AllSettings []ElasticBeanstalkEnvironmentSpecAllSettings `json:"allSettings,omitempty" tf:"all_settings,omitempty"`
+	Application string                                       `json:"application" tf:"application"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	AutoscalingGroups []string `json:"autoscalingGroups,omitempty" tf:"autoscaling_groups,omitempty"`
+	// +optional
+	Cname string `json:"cname,omitempty" tf:"cname,omitempty"`
 	// +optional
 	CnamePrefix string `json:"cnamePrefix,omitempty" tf:"cname_prefix,omitempty"`
 	// +optional
-	Description          string   `json:"description,omitempty" tf:"description,omitempty"`
-	Instances            []string `json:"instances" tf:"instances"`
-	LaunchConfigurations []string `json:"launchConfigurations" tf:"launch_configurations"`
-	LoadBalancers        []string `json:"loadBalancers" tf:"load_balancers"`
-	Name                 string   `json:"name" tf:"name"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	Instances []string `json:"instances,omitempty" tf:"instances,omitempty"`
+	// +optional
+	LaunchConfigurations []string `json:"launchConfigurations,omitempty" tf:"launch_configurations,omitempty"`
+	// +optional
+	LoadBalancers []string `json:"loadBalancers,omitempty" tf:"load_balancers,omitempty"`
+	Name          string   `json:"name" tf:"name"`
 	// +optional
 	PlatformArn string `json:"platformArn,omitempty" tf:"platform_arn,omitempty"`
 	// +optional
-	PollInterval string   `json:"pollInterval,omitempty" tf:"poll_interval,omitempty"`
-	Queues       []string `json:"queues" tf:"queues"`
+	PollInterval string `json:"pollInterval,omitempty" tf:"poll_interval,omitempty"`
+	// +optional
+	Queues []string `json:"queues,omitempty" tf:"queues,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Setting []ElasticBeanstalkEnvironmentSpecSetting `json:"setting,omitempty" tf:"setting,omitempty"`
@@ -66,8 +74,9 @@ type ElasticBeanstalkEnvironmentSpec struct {
 	// +optional
 	TemplateName string `json:"templateName,omitempty" tf:"template_name,omitempty"`
 	// +optional
-	Tier     string   `json:"tier,omitempty" tf:"tier,omitempty"`
-	Triggers []string `json:"triggers" tf:"triggers"`
+	Tier string `json:"tier,omitempty" tf:"tier,omitempty"`
+	// +optional
+	Triggers []string `json:"triggers,omitempty" tf:"triggers,omitempty"`
 	// +optional
 	VersionLabel string `json:"versionLabel,omitempty" tf:"version_label,omitempty"`
 	// +optional

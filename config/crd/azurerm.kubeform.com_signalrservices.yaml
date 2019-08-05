@@ -447,14 +447,10 @@ spec:
                 type: string
               type: object
           required:
-          - hostname
-          - ipAddress
           - location
           - name
           - providerRef
-          - publicPort
           - resourceGroupName
-          - serverPort
           - sku
           type: object
         status:
@@ -516,14 +512,10 @@ spec:
                     type: string
                   type: object
               required:
-              - hostname
-              - ipAddress
               - location
               - name
               - providerRef
-              - publicPort
               - resourceGroupName
-              - serverPort
               - sku
               type: object
             state:

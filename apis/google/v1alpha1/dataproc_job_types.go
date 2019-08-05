@@ -83,7 +83,8 @@ type DataprocJobSpecPigConfig struct {
 
 type DataprocJobSpecPlacement struct {
 	ClusterName string `json:"clusterName" tf:"cluster_name"`
-	ClusterUUID string `json:"clusterUUID" tf:"cluster_uuid"`
+	// +optional
+	ClusterUUID string `json:"clusterUUID,omitempty" tf:"cluster_uuid,omitempty"`
 }
 
 type DataprocJobSpecPysparkConfigLoggingConfig struct {
@@ -167,17 +168,23 @@ type DataprocJobSpecSparksqlConfig struct {
 }
 
 type DataprocJobSpecStatus struct {
-	Details        string `json:"details" tf:"details"`
-	State          string `json:"state" tf:"state"`
-	StateStartTime string `json:"stateStartTime" tf:"state_start_time"`
-	Substate       string `json:"substate" tf:"substate"`
+	// +optional
+	Details string `json:"details,omitempty" tf:"details,omitempty"`
+	// +optional
+	State string `json:"state,omitempty" tf:"state,omitempty"`
+	// +optional
+	StateStartTime string `json:"stateStartTime,omitempty" tf:"state_start_time,omitempty"`
+	// +optional
+	Substate string `json:"substate,omitempty" tf:"substate,omitempty"`
 }
 
 type DataprocJobSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	DriverControlsFilesURI  string `json:"driverControlsFilesURI" tf:"driver_controls_files_uri"`
-	DriverOutputResourceURI string `json:"driverOutputResourceURI" tf:"driver_output_resource_uri"`
+	// +optional
+	DriverControlsFilesURI string `json:"driverControlsFilesURI,omitempty" tf:"driver_controls_files_uri,omitempty"`
+	// +optional
+	DriverOutputResourceURI string `json:"driverOutputResourceURI,omitempty" tf:"driver_output_resource_uri,omitempty"`
 	// +optional
 	ForceDelete bool `json:"forceDelete,omitempty" tf:"force_delete,omitempty"`
 	// +optional
@@ -212,8 +219,9 @@ type DataprocJobSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SparksqlConfig []DataprocJobSpecSparksqlConfig `json:"sparksqlConfig,omitempty" tf:"sparksql_config,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Status []DataprocJobSpecStatus `json:"status" tf:"status"`
+	Status []DataprocJobSpecStatus `json:"status,omitempty" tf:"status,omitempty"`
 }
 
 type DataprocJobStatus struct {

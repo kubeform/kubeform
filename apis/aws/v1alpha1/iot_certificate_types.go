@@ -21,9 +21,10 @@ type IotCertificate struct {
 type IotCertificateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Active bool   `json:"active" tf:"active"`
-	Arn    string `json:"arn" tf:"arn"`
-	Csr    string `json:"csr" tf:"csr"`
+	Active bool `json:"active" tf:"active"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	Csr string `json:"csr" tf:"csr"`
 }
 
 type IotCertificateStatus struct {

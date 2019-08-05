@@ -425,7 +425,6 @@ spec:
               description: Deprecated
               type: string
           required:
-          - etag
           - members
           - providerRef
           - role
@@ -468,7 +467,6 @@ spec:
                   description: Deprecated
                   type: string
               required:
-              - etag
               - members
               - providerRef
               - role

@@ -422,7 +422,6 @@ spec:
                           type: string
                       required:
                       - enabled
-                      - httpApplicationRoutingZoneName
                       type: object
                     maxItems: 1
                     type: array
@@ -468,8 +467,6 @@ spec:
                   vnetSubnetID:
                     type: string
                 required:
-                - dnsPrefix
-                - fqdn
                 - name
                 - vmSize
                 type: object
@@ -494,11 +491,6 @@ spec:
                     type: string
                   username:
                     type: string
-                required:
-                - clientCertificate
-                - clusterCaCertificate
-                - host
-                - username
                 type: object
               maxItems: 1
               type: array
@@ -513,11 +505,6 @@ spec:
                     type: string
                   username:
                     type: string
-                required:
-                - clientCertificate
-                - clusterCaCertificate
-                - host
-                - username
                 type: object
               maxItems: 1
               type: array
@@ -633,12 +620,8 @@ spec:
           required:
           - agentPoolProfile
           - dnsPrefix
-          - fqdn
-          - kubeAdminConfig
-          - kubeConfig
           - location
           - name
-          - nodeResourceGroup
           - providerRef
           - resourceGroupName
           - servicePrincipal
@@ -677,7 +660,6 @@ spec:
                               type: string
                           required:
                           - enabled
-                          - httpApplicationRoutingZoneName
                           type: object
                         maxItems: 1
                         type: array
@@ -723,8 +705,6 @@ spec:
                       vnetSubnetID:
                         type: string
                     required:
-                    - dnsPrefix
-                    - fqdn
                     - name
                     - vmSize
                     type: object
@@ -749,11 +729,6 @@ spec:
                         type: string
                       username:
                         type: string
-                    required:
-                    - clientCertificate
-                    - clusterCaCertificate
-                    - host
-                    - username
                     type: object
                   maxItems: 1
                   type: array
@@ -768,11 +743,6 @@ spec:
                         type: string
                       username:
                         type: string
-                    required:
-                    - clientCertificate
-                    - clusterCaCertificate
-                    - host
-                    - username
                     type: object
                   maxItems: 1
                   type: array
@@ -888,12 +858,8 @@ spec:
               required:
               - agentPoolProfile
               - dnsPrefix
-              - fqdn
-              - kubeAdminConfig
-              - kubeConfig
               - location
               - name
-              - nodeResourceGroup
               - providerRef
               - resourceGroupName
               - servicePrincipal

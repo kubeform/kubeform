@@ -21,7 +21,8 @@ type EcsCluster struct {
 type EcsClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn  string `json:"arn" tf:"arn"`
+	// +optional
+	Arn  string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Name string `json:"name" tf:"name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

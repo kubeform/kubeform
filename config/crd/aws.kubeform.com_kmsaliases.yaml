@@ -417,9 +417,7 @@ spec:
             targetKeyID:
               type: string
           required:
-          - arn
           - providerRef
-          - targetKeyArn
           - targetKeyID
           type: object
         status:
@@ -451,9 +449,7 @@ spec:
                 targetKeyID:
                   type: string
               required:
-              - arn
               - providerRef
-              - targetKeyArn
               - targetKeyID
               type: object
             state:

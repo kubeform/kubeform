@@ -556,13 +556,11 @@ spec:
           - clusterVersion
           - componentVersion
           - gateway
-          - httpsEndpoint
           - location
           - name
           - providerRef
           - resourceGroupName
           - roles
-          - sshEndpoint
           - storageAccount
           - tier
           type: object
@@ -734,13 +732,11 @@ spec:
               - clusterVersion
               - componentVersion
               - gateway
-              - httpsEndpoint
               - location
               - name
               - providerRef
               - resourceGroupName
               - roles
-              - sshEndpoint
               - storageAccount
               - tier
               type: object

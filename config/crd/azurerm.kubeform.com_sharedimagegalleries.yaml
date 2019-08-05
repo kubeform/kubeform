@@ -425,7 +425,6 @@ spec:
           - name
           - providerRef
           - resourceGroupName
-          - uniqueName
           type: object
         status:
           properties:
@@ -464,7 +463,6 @@ spec:
               - name
               - providerRef
               - resourceGroupName
-              - uniqueName
               type: object
             state:
               properties:

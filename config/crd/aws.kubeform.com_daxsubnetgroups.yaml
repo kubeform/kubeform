@@ -421,7 +421,6 @@ spec:
           - name
           - providerRef
           - subnetIDS
-          - vpcID
           type: object
         status:
           properties:
@@ -456,7 +455,6 @@ spec:
               - name
               - providerRef
               - subnetIDS
-              - vpcID
               type: object
             state:
               properties:

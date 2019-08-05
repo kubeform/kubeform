@@ -21,7 +21,8 @@ type SnsTopicSubscription struct {
 type SnsTopicSubscriptionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	ConfirmationTimeoutInMinutes int `json:"confirmationTimeoutInMinutes,omitempty" tf:"confirmation_timeout_in_minutes,omitempty"`
 	// +optional

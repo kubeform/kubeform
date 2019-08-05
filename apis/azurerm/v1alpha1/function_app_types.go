@@ -25,9 +25,11 @@ type FunctionAppSpecConnectionString struct {
 }
 
 type FunctionAppSpecIdentity struct {
-	PrincipalID string `json:"principalID" tf:"principal_id"`
-	TenantID    string `json:"tenantID" tf:"tenant_id"`
-	Type        string `json:"type" tf:"type"`
+	// +optional
+	PrincipalID string `json:"principalID,omitempty" tf:"principal_id,omitempty"`
+	// +optional
+	TenantID string `json:"tenantID,omitempty" tf:"tenant_id,omitempty"`
+	Type     string `json:"type" tf:"type"`
 }
 
 type FunctionAppSpecSiteConfig struct {
@@ -42,8 +44,10 @@ type FunctionAppSpecSiteConfig struct {
 }
 
 type FunctionAppSpecSiteCredential struct {
-	Password string `json:"-" sensitive:"true" tf:"password"`
-	Username string `json:"username" tf:"username"`
+	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
+	// +optional
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type FunctionAppSpec struct {
@@ -58,7 +62,8 @@ type FunctionAppSpec struct {
 	ClientAffinityEnabled bool `json:"clientAffinityEnabled,omitempty" tf:"client_affinity_enabled,omitempty"`
 	// +optional
 	ConnectionString []FunctionAppSpecConnectionString `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
-	DefaultHostname  string                            `json:"defaultHostname" tf:"default_hostname"`
+	// +optional
+	DefaultHostname string `json:"defaultHostname,omitempty" tf:"default_hostname,omitempty"`
 	// +optional
 	EnableBuiltinLogging bool `json:"enableBuiltinLogging,omitempty" tf:"enable_builtin_logging,omitempty"`
 	// +optional
@@ -67,18 +72,22 @@ type FunctionAppSpec struct {
 	HttpsOnly bool `json:"httpsOnly,omitempty" tf:"https_only,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Identity                    []FunctionAppSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
-	Kind                        string                    `json:"kind" tf:"kind"`
-	Location                    string                    `json:"location" tf:"location"`
-	Name                        string                    `json:"name" tf:"name"`
-	OutboundIPAddresses         string                    `json:"outboundIPAddresses" tf:"outbound_ip_addresses"`
-	PossibleOutboundIPAddresses string                    `json:"possibleOutboundIPAddresses" tf:"possible_outbound_ip_addresses"`
-	ResourceGroupName           string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	Identity []FunctionAppSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	// +optional
+	Kind     string `json:"kind,omitempty" tf:"kind,omitempty"`
+	Location string `json:"location" tf:"location"`
+	Name     string `json:"name" tf:"name"`
+	// +optional
+	OutboundIPAddresses string `json:"outboundIPAddresses,omitempty" tf:"outbound_ip_addresses,omitempty"`
+	// +optional
+	PossibleOutboundIPAddresses string `json:"possibleOutboundIPAddresses,omitempty" tf:"possible_outbound_ip_addresses,omitempty"`
+	ResourceGroupName           string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SiteConfig []FunctionAppSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	SiteCredential          []FunctionAppSpecSiteCredential `json:"siteCredential" tf:"site_credential"`
+	SiteCredential          []FunctionAppSpecSiteCredential `json:"siteCredential,omitempty" tf:"site_credential,omitempty"`
 	StorageConnectionString string                          `json:"-" sensitive:"true" tf:"storage_connection_string"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

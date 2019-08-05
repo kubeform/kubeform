@@ -23,7 +23,8 @@ type DmsCertificateSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	CertificateArn string `json:"certificateArn" tf:"certificate_arn"`
+	// +optional
+	CertificateArn string `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
 	CertificateID  string `json:"certificateID" tf:"certificate_id"`
 	// +optional
 	CertificatePem string `json:"-" sensitive:"true" tf:"certificate_pem,omitempty"`

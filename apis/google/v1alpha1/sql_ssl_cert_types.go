@@ -23,15 +23,22 @@ type SqlSslCertSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	Cert             string `json:"cert" tf:"cert"`
-	CertSerialNumber string `json:"certSerialNumber" tf:"cert_serial_number"`
+	// +optional
+	Cert string `json:"cert,omitempty" tf:"cert,omitempty"`
+	// +optional
+	CertSerialNumber string `json:"certSerialNumber,omitempty" tf:"cert_serial_number,omitempty"`
 	CommonName       string `json:"commonName" tf:"common_name"`
-	CreateTime       string `json:"createTime" tf:"create_time"`
-	ExpirationTime   string `json:"expirationTime" tf:"expiration_time"`
-	Instance         string `json:"instance" tf:"instance"`
-	PrivateKey       string `json:"-" sensitive:"true" tf:"private_key"`
-	ServerCaCert     string `json:"serverCaCert" tf:"server_ca_cert"`
-	Sha1Fingerprint  string `json:"sha1Fingerprint" tf:"sha1_fingerprint"`
+	// +optional
+	CreateTime string `json:"createTime,omitempty" tf:"create_time,omitempty"`
+	// +optional
+	ExpirationTime string `json:"expirationTime,omitempty" tf:"expiration_time,omitempty"`
+	Instance       string `json:"instance" tf:"instance"`
+	// +optional
+	PrivateKey string `json:"-" sensitive:"true" tf:"private_key,omitempty"`
+	// +optional
+	ServerCaCert string `json:"serverCaCert,omitempty" tf:"server_ca_cert,omitempty"`
+	// +optional
+	Sha1Fingerprint string `json:"sha1Fingerprint,omitempty" tf:"sha1_fingerprint,omitempty"`
 }
 
 type SqlSslCertStatus struct {

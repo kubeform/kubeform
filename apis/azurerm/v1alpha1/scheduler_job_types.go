@@ -39,11 +39,14 @@ type SchedulerJobSpecActionWebAuthenticationBasic struct {
 }
 
 type SchedulerJobSpecActionWebAuthenticationCertificate struct {
-	Expiration  string `json:"expiration" tf:"expiration"`
-	Password    string `json:"-" sensitive:"true" tf:"password"`
-	Pfx         string `json:"-" sensitive:"true" tf:"pfx"`
-	SubjectName string `json:"subjectName" tf:"subject_name"`
-	Thumbprint  string `json:"thumbprint" tf:"thumbprint"`
+	// +optional
+	Expiration string `json:"expiration,omitempty" tf:"expiration,omitempty"`
+	Password   string `json:"-" sensitive:"true" tf:"password"`
+	Pfx        string `json:"-" sensitive:"true" tf:"pfx"`
+	// +optional
+	SubjectName string `json:"subjectName,omitempty" tf:"subject_name,omitempty"`
+	// +optional
+	Thumbprint string `json:"thumbprint,omitempty" tf:"thumbprint,omitempty"`
 }
 
 type SchedulerJobSpecActionWeb struct {
@@ -85,11 +88,14 @@ type SchedulerJobSpecErrorActionWebAuthenticationBasic struct {
 }
 
 type SchedulerJobSpecErrorActionWebAuthenticationCertificate struct {
-	Expiration  string `json:"expiration" tf:"expiration"`
-	Password    string `json:"-" sensitive:"true" tf:"password"`
-	Pfx         string `json:"-" sensitive:"true" tf:"pfx"`
-	SubjectName string `json:"subjectName" tf:"subject_name"`
-	Thumbprint  string `json:"thumbprint" tf:"thumbprint"`
+	// +optional
+	Expiration string `json:"expiration,omitempty" tf:"expiration,omitempty"`
+	Password   string `json:"-" sensitive:"true" tf:"password"`
+	Pfx        string `json:"-" sensitive:"true" tf:"pfx"`
+	// +optional
+	SubjectName string `json:"subjectName,omitempty" tf:"subject_name,omitempty"`
+	// +optional
+	Thumbprint string `json:"thumbprint,omitempty" tf:"thumbprint,omitempty"`
 }
 
 type SchedulerJobSpecErrorActionWeb struct {

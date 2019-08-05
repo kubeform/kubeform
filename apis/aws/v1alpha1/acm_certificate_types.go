@@ -19,10 +19,14 @@ type AcmCertificate struct {
 }
 
 type AcmCertificateSpecDomainValidationOptions struct {
-	DomainName          string `json:"domainName" tf:"domain_name"`
-	ResourceRecordName  string `json:"resourceRecordName" tf:"resource_record_name"`
-	ResourceRecordType  string `json:"resourceRecordType" tf:"resource_record_type"`
-	ResourceRecordValue string `json:"resourceRecordValue" tf:"resource_record_value"`
+	// +optional
+	DomainName string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
+	// +optional
+	ResourceRecordName string `json:"resourceRecordName,omitempty" tf:"resource_record_name,omitempty"`
+	// +optional
+	ResourceRecordType string `json:"resourceRecordType,omitempty" tf:"resource_record_type,omitempty"`
+	// +optional
+	ResourceRecordValue string `json:"resourceRecordValue,omitempty" tf:"resource_record_value,omitempty"`
 }
 
 type AcmCertificateSpec struct {
@@ -30,21 +34,24 @@ type AcmCertificateSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	CertificateBody string `json:"certificateBody,omitempty" tf:"certificate_body,omitempty"`
 	// +optional
 	CertificateChain string `json:"certificateChain,omitempty" tf:"certificate_chain,omitempty"`
 	// +optional
-	DomainName              string                                      `json:"domainName,omitempty" tf:"domain_name,omitempty"`
-	DomainValidationOptions []AcmCertificateSpecDomainValidationOptions `json:"domainValidationOptions" tf:"domain_validation_options"`
+	DomainName string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
+	// +optional
+	DomainValidationOptions []AcmCertificateSpecDomainValidationOptions `json:"domainValidationOptions,omitempty" tf:"domain_validation_options,omitempty"`
 	// +optional
 	PrivateKey string `json:"-" sensitive:"true" tf:"private_key,omitempty"`
 	// +optional
 	SubjectAlternativeNames []string `json:"subjectAlternativeNames,omitempty" tf:"subject_alternative_names,omitempty"`
 	// +optional
-	Tags             map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	ValidationEmails []string          `json:"validationEmails" tf:"validation_emails"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	ValidationEmails []string `json:"validationEmails,omitempty" tf:"validation_emails,omitempty"`
 	// +optional
 	ValidationMethod string `json:"validationMethod,omitempty" tf:"validation_method,omitempty"`
 }

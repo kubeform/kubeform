@@ -462,7 +462,6 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - clientSecret
           - name
           - providerRef
           - userPoolID
@@ -541,7 +540,6 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - clientSecret
               - name
               - providerRef
               - userPoolID

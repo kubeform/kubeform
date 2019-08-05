@@ -23,7 +23,8 @@ type ApplicationInsightsAPIKeySpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	ApiKey                string `json:"-" sensitive:"true" tf:"api_key"`
+	// +optional
+	ApiKey                string `json:"-" sensitive:"true" tf:"api_key,omitempty"`
 	ApplicationInsightsID string `json:"applicationInsightsID" tf:"application_insights_id"`
 	Name                  string `json:"name" tf:"name"`
 	// +optional

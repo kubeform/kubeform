@@ -435,7 +435,6 @@ spec:
           required:
           - name
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -484,7 +483,6 @@ spec:
               required:
               - name
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

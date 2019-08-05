@@ -418,14 +418,6 @@ spec:
                     type: integer
                   volumeType:
                     type: string
-                required:
-                - deleteOnTermination
-                - deviceName
-                - encrypted
-                - iops
-                - snapshotID
-                - volumeSize
-                - volumeType
                 type: object
               type: array
               uniqueItems: true
@@ -440,9 +432,6 @@ spec:
                     type: string
                   virtualName:
                     type: string
-                required:
-                - deviceName
-                - virtualName
                 type: object
               type: array
               uniqueItems: true
@@ -484,20 +473,10 @@ spec:
             virtualizationType:
               type: string
           required:
-          - architecture
-          - enaSupport
-          - imageLocation
-          - kernelID
-          - manageEbsSnapshots
           - name
           - providerRef
-          - ramdiskID
-          - rootDeviceName
-          - rootSnapshotID
           - sourceAmiID
           - sourceAmiRegion
-          - sriovNetSupport
-          - virtualizationType
           type: object
         status:
           properties:
@@ -529,14 +508,6 @@ spec:
                         type: integer
                       volumeType:
                         type: string
-                    required:
-                    - deleteOnTermination
-                    - deviceName
-                    - encrypted
-                    - iops
-                    - snapshotID
-                    - volumeSize
-                    - volumeType
                     type: object
                   type: array
                   uniqueItems: true
@@ -551,9 +522,6 @@ spec:
                         type: string
                       virtualName:
                         type: string
-                    required:
-                    - deviceName
-                    - virtualName
                     type: object
                   type: array
                   uniqueItems: true
@@ -595,20 +563,10 @@ spec:
                 virtualizationType:
                   type: string
               required:
-              - architecture
-              - enaSupport
-              - imageLocation
-              - kernelID
-              - manageEbsSnapshots
               - name
               - providerRef
-              - ramdiskID
-              - rootDeviceName
-              - rootSnapshotID
               - sourceAmiID
               - sourceAmiRegion
-              - sriovNetSupport
-              - virtualizationType
               type: object
             state:
               properties:

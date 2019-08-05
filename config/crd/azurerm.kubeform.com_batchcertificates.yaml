@@ -432,9 +432,7 @@ spec:
           required:
           - accountName
           - format
-          - name
           - providerRef
-          - publicData
           - resourceGroupName
           - thumbprint
           - thumbprintAlgorithm
@@ -483,9 +481,7 @@ spec:
               required:
               - accountName
               - format
-              - name
               - providerRef
-              - publicData
               - resourceGroupName
               - thumbprint
               - thumbprintAlgorithm

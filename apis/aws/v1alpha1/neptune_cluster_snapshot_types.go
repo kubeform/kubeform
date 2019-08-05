@@ -21,21 +21,34 @@ type NeptuneClusterSnapshot struct {
 type NeptuneClusterSnapshotSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	AllocatedStorage            int      `json:"allocatedStorage" tf:"allocated_storage"`
-	AvailabilityZones           []string `json:"availabilityZones" tf:"availability_zones"`
-	DbClusterIdentifier         string   `json:"dbClusterIdentifier" tf:"db_cluster_identifier"`
-	DbClusterSnapshotArn        string   `json:"dbClusterSnapshotArn" tf:"db_cluster_snapshot_arn"`
-	DbClusterSnapshotIdentifier string   `json:"dbClusterSnapshotIdentifier" tf:"db_cluster_snapshot_identifier"`
-	Engine                      string   `json:"engine" tf:"engine"`
-	EngineVersion               string   `json:"engineVersion" tf:"engine_version"`
-	KmsKeyID                    string   `json:"kmsKeyID" tf:"kms_key_id"`
-	LicenseModel                string   `json:"licenseModel" tf:"license_model"`
-	Port                        int      `json:"port" tf:"port"`
-	SnapshotType                string   `json:"snapshotType" tf:"snapshot_type"`
-	SourceDbClusterSnapshotArn  string   `json:"sourceDbClusterSnapshotArn" tf:"source_db_cluster_snapshot_arn"`
-	Status                      string   `json:"status" tf:"status"`
-	StorageEncrypted            bool     `json:"storageEncrypted" tf:"storage_encrypted"`
-	VpcID                       string   `json:"vpcID" tf:"vpc_id"`
+	// +optional
+	AllocatedStorage int `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
+	// +optional
+	AvailabilityZones   []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
+	DbClusterIdentifier string   `json:"dbClusterIdentifier" tf:"db_cluster_identifier"`
+	// +optional
+	DbClusterSnapshotArn        string `json:"dbClusterSnapshotArn,omitempty" tf:"db_cluster_snapshot_arn,omitempty"`
+	DbClusterSnapshotIdentifier string `json:"dbClusterSnapshotIdentifier" tf:"db_cluster_snapshot_identifier"`
+	// +optional
+	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
+	// +optional
+	EngineVersion string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
+	// +optional
+	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+	// +optional
+	LicenseModel string `json:"licenseModel,omitempty" tf:"license_model,omitempty"`
+	// +optional
+	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	// +optional
+	SnapshotType string `json:"snapshotType,omitempty" tf:"snapshot_type,omitempty"`
+	// +optional
+	SourceDbClusterSnapshotArn string `json:"sourceDbClusterSnapshotArn,omitempty" tf:"source_db_cluster_snapshot_arn,omitempty"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
+	// +optional
+	StorageEncrypted bool `json:"storageEncrypted,omitempty" tf:"storage_encrypted,omitempty"`
+	// +optional
+	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
 }
 
 type NeptuneClusterSnapshotStatus struct {

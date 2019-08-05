@@ -21,7 +21,8 @@ type CloudwatchDashboard struct {
 type CloudwatchDashboardSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	DashboardArn  string `json:"dashboardArn" tf:"dashboard_arn"`
+	// +optional
+	DashboardArn  string `json:"dashboardArn,omitempty" tf:"dashboard_arn,omitempty"`
 	DashboardBody string `json:"dashboardBody" tf:"dashboard_body"`
 	DashboardName string `json:"dashboardName" tf:"dashboard_name"`
 }

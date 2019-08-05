@@ -470,10 +470,8 @@ spec:
             virtualizationType:
               type: string
           required:
-          - manageEbsSnapshots
           - name
           - providerRef
-          - rootSnapshotID
           type: object
         status:
           properties:
@@ -557,10 +555,8 @@ spec:
                 virtualizationType:
                   type: string
               required:
-              - manageEbsSnapshots
               - name
               - providerRef
-              - rootSnapshotID
               type: object
             state:
               properties:

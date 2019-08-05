@@ -484,11 +484,8 @@ spec:
               type: array
           required:
           - defaultService
-          - fingerprint
-          - mapID
           - name
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -586,11 +583,8 @@ spec:
                   type: array
               required:
               - defaultService
-              - fingerprint
-              - mapID
               - name
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

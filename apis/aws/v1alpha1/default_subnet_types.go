@@ -21,19 +21,27 @@ type DefaultSubnet struct {
 type DefaultSubnetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn                         string `json:"arn" tf:"arn"`
-	AssignIpv6AddressOnCreation bool   `json:"assignIpv6AddressOnCreation" tf:"assign_ipv6_address_on_creation"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	AssignIpv6AddressOnCreation bool   `json:"assignIpv6AddressOnCreation,omitempty" tf:"assign_ipv6_address_on_creation,omitempty"`
 	AvailabilityZone            string `json:"availabilityZone" tf:"availability_zone"`
-	AvailabilityZoneID          string `json:"availabilityZoneID" tf:"availability_zone_id"`
-	CidrBlock                   string `json:"cidrBlock" tf:"cidr_block"`
-	Ipv6CIDRBlock               string `json:"ipv6CIDRBlock" tf:"ipv6_cidr_block"`
-	Ipv6CIDRBlockAssociationID  string `json:"ipv6CIDRBlockAssociationID" tf:"ipv6_cidr_block_association_id"`
 	// +optional
-	MapPublicIPOnLaunch bool   `json:"mapPublicIPOnLaunch,omitempty" tf:"map_public_ip_on_launch,omitempty"`
-	OwnerID             string `json:"ownerID" tf:"owner_id"`
+	AvailabilityZoneID string `json:"availabilityZoneID,omitempty" tf:"availability_zone_id,omitempty"`
 	// +optional
-	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	VpcID string            `json:"vpcID" tf:"vpc_id"`
+	CidrBlock string `json:"cidrBlock,omitempty" tf:"cidr_block,omitempty"`
+	// +optional
+	Ipv6CIDRBlock string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block,omitempty"`
+	// +optional
+	Ipv6CIDRBlockAssociationID string `json:"ipv6CIDRBlockAssociationID,omitempty" tf:"ipv6_cidr_block_association_id,omitempty"`
+	// +optional
+	MapPublicIPOnLaunch bool `json:"mapPublicIPOnLaunch,omitempty" tf:"map_public_ip_on_launch,omitempty"`
+	// +optional
+	OwnerID string `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
 }
 
 type DefaultSubnetStatus struct {

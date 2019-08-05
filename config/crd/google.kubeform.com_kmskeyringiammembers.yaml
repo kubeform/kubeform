@@ -415,7 +415,6 @@ spec:
             role:
               type: string
           required:
-          - etag
           - keyRingID
           - member
           - providerRef
@@ -448,7 +447,6 @@ spec:
                 role:
                   type: string
               required:
-              - etag
               - keyRingID
               - member
               - providerRef

@@ -431,7 +431,6 @@ spec:
           required:
           - name
           - providerRef
-          - state
           - tempGcsLocation
           - templateGcsPath
           type: object
@@ -478,7 +477,6 @@ spec:
               required:
               - name
               - providerRef
-              - state
               - tempGcsLocation
               - templateGcsPath
               type: object

@@ -425,7 +425,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - providerRef
           - subnetIDS
           type: object
@@ -466,7 +465,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - providerRef
               - subnetIDS
               type: object

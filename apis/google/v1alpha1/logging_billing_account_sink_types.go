@@ -24,9 +24,10 @@ type LoggingBillingAccountSinkSpec struct {
 	BillingAccount string `json:"billingAccount" tf:"billing_account"`
 	Destination    string `json:"destination" tf:"destination"`
 	// +optional
-	Filter         string `json:"filter,omitempty" tf:"filter,omitempty"`
-	Name           string `json:"name" tf:"name"`
-	WriterIdentity string `json:"writerIdentity" tf:"writer_identity"`
+	Filter string `json:"filter,omitempty" tf:"filter,omitempty"`
+	Name   string `json:"name" tf:"name"`
+	// +optional
+	WriterIdentity string `json:"writerIdentity,omitempty" tf:"writer_identity,omitempty"`
 }
 
 type LoggingBillingAccountSinkStatus struct {

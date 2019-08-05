@@ -52,7 +52,8 @@ type ConfigConfigRuleSpecSource struct {
 type ConfigConfigRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -60,7 +61,8 @@ type ConfigConfigRuleSpec struct {
 	// +optional
 	MaximumExecutionFrequency string `json:"maximumExecutionFrequency,omitempty" tf:"maximum_execution_frequency,omitempty"`
 	Name                      string `json:"name" tf:"name"`
-	RuleID                    string `json:"ruleID" tf:"rule_id"`
+	// +optional
+	RuleID string `json:"ruleID,omitempty" tf:"rule_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Scope []ConfigConfigRuleSpecScope `json:"scope,omitempty" tf:"scope,omitempty"`

@@ -21,30 +21,36 @@ type ComputeRegionDisk struct {
 type ComputeRegionDiskSpecDiskEncryptionKey struct {
 	// +optional
 	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
-	Sha256 string `json:"sha256" tf:"sha256"`
+	// +optional
+	Sha256 string `json:"sha256,omitempty" tf:"sha256,omitempty"`
 }
 
 type ComputeRegionDiskSpecSourceSnapshotEncryptionKey struct {
 	// +optional
 	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
-	Sha256 string `json:"sha256" tf:"sha256"`
+	// +optional
+	Sha256 string `json:"sha256,omitempty" tf:"sha256,omitempty"`
 }
 
 type ComputeRegionDiskSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	DiskEncryptionKey []ComputeRegionDiskSpecDiskEncryptionKey `json:"diskEncryptionKey,omitempty" tf:"disk_encryption_key,omitempty"`
-	LabelFingerprint  string                                   `json:"labelFingerprint" tf:"label_fingerprint"`
 	// +optional
-	Labels              map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	LastAttachTimestamp string            `json:"lastAttachTimestamp" tf:"last_attach_timestamp"`
-	LastDetachTimestamp string            `json:"lastDetachTimestamp" tf:"last_detach_timestamp"`
-	Name                string            `json:"name" tf:"name"`
+	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
+	// +optional
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
+	LastAttachTimestamp string `json:"lastAttachTimestamp,omitempty" tf:"last_attach_timestamp,omitempty"`
+	// +optional
+	LastDetachTimestamp string `json:"lastDetachTimestamp,omitempty" tf:"last_detach_timestamp,omitempty"`
+	Name                string `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
@@ -52,7 +58,8 @@ type ComputeRegionDiskSpec struct {
 	// +kubebuilder:validation:MaxItems=2
 	// +kubebuilder:validation:MinItems=2
 	ReplicaZones []string `json:"replicaZones" tf:"replica_zones"`
-	SelfLink     string   `json:"selfLink" tf:"self_link"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	Size int `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
@@ -60,10 +67,12 @@ type ComputeRegionDiskSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SourceSnapshotEncryptionKey []ComputeRegionDiskSpecSourceSnapshotEncryptionKey `json:"sourceSnapshotEncryptionKey,omitempty" tf:"source_snapshot_encryption_key,omitempty"`
-	SourceSnapshotID            string                                             `json:"sourceSnapshotID" tf:"source_snapshot_id"`
 	// +optional
-	Type  string   `json:"type,omitempty" tf:"type,omitempty"`
-	Users []string `json:"users" tf:"users"`
+	SourceSnapshotID string `json:"sourceSnapshotID,omitempty" tf:"source_snapshot_id,omitempty"`
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
+	// +optional
+	Users []string `json:"users,omitempty" tf:"users,omitempty"`
 }
 
 type ComputeRegionDiskStatus struct {

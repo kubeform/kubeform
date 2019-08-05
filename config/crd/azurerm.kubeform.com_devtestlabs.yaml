@@ -431,16 +431,10 @@ spec:
             uniqueIdentifier:
               type: string
           required:
-          - artifactsStorageAccountID
-          - defaultPremiumStorageAccountID
-          - defaultStorageAccountID
-          - keyVaultID
           - location
           - name
-          - premiumDataDiskStorageAccountID
           - providerRef
           - resourceGroupName
-          - uniqueIdentifier
           type: object
         status:
           properties:
@@ -485,16 +479,10 @@ spec:
                 uniqueIdentifier:
                   type: string
               required:
-              - artifactsStorageAccountID
-              - defaultPremiumStorageAccountID
-              - defaultStorageAccountID
-              - keyVaultID
               - location
               - name
-              - premiumDataDiskStorageAccountID
               - providerRef
               - resourceGroupName
-              - uniqueIdentifier
               type: object
             state:
               properties:

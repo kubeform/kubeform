@@ -98,14 +98,16 @@ type HdinsightKafkaClusterSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	ComponentVersion []HdinsightKafkaClusterSpecComponentVersion `json:"componentVersion" tf:"component_version"`
 	// +kubebuilder:validation:MaxItems=1
-	Gateway           []HdinsightKafkaClusterSpecGateway `json:"gateway" tf:"gateway"`
-	HttpsEndpoint     string                             `json:"httpsEndpoint" tf:"https_endpoint"`
-	Location          string                             `json:"location" tf:"location"`
-	Name              string                             `json:"name" tf:"name"`
-	ResourceGroupName string                             `json:"resourceGroupName" tf:"resource_group_name"`
+	Gateway []HdinsightKafkaClusterSpecGateway `json:"gateway" tf:"gateway"`
+	// +optional
+	HttpsEndpoint     string `json:"httpsEndpoint,omitempty" tf:"https_endpoint,omitempty"`
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
-	Roles          []HdinsightKafkaClusterSpecRoles          `json:"roles" tf:"roles"`
-	SshEndpoint    string                                    `json:"sshEndpoint" tf:"ssh_endpoint"`
+	Roles []HdinsightKafkaClusterSpecRoles `json:"roles" tf:"roles"`
+	// +optional
+	SshEndpoint    string                                    `json:"sshEndpoint,omitempty" tf:"ssh_endpoint,omitempty"`
 	StorageAccount []HdinsightKafkaClusterSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

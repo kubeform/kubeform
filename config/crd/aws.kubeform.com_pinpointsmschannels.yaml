@@ -420,9 +420,7 @@ spec:
               type: integer
           required:
           - applicationID
-          - promotionalMessagesPerSecond
           - providerRef
-          - transactionalMessagesPerSecond
           type: object
         status:
           properties:
@@ -456,9 +454,7 @@ spec:
                   type: integer
               required:
               - applicationID
-              - promotionalMessagesPerSecond
               - providerRef
-              - transactionalMessagesPerSecond
               type: object
             state:
               properties:

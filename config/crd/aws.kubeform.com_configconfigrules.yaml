@@ -463,10 +463,8 @@ spec:
               maxItems: 1
               type: array
           required:
-          - arn
           - name
           - providerRef
-          - ruleID
           - source
           type: object
         status:
@@ -544,10 +542,8 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - arn
               - name
               - providerRef
-              - ruleID
               - source
               type: object
             state:

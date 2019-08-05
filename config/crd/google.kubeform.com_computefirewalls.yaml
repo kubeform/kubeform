@@ -488,11 +488,9 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - creationTimestamp
           - name
           - network
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -594,11 +592,9 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - creationTimestamp
               - name
               - network
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

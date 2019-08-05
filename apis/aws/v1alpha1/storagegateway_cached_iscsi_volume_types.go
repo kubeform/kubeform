@@ -21,20 +21,27 @@ type StoragegatewayCachedIscsiVolume struct {
 type StoragegatewayCachedIscsiVolumeSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn                  string `json:"arn" tf:"arn"`
-	ChapEnabled          bool   `json:"chapEnabled" tf:"chap_enabled"`
-	GatewayArn           string `json:"gatewayArn" tf:"gateway_arn"`
-	LunNumber            int    `json:"lunNumber" tf:"lun_number"`
-	NetworkInterfaceID   string `json:"networkInterfaceID" tf:"network_interface_id"`
-	NetworkInterfacePort int    `json:"networkInterfacePort" tf:"network_interface_port"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	ChapEnabled bool   `json:"chapEnabled,omitempty" tf:"chap_enabled,omitempty"`
+	GatewayArn  string `json:"gatewayArn" tf:"gateway_arn"`
+	// +optional
+	LunNumber          int    `json:"lunNumber,omitempty" tf:"lun_number,omitempty"`
+	NetworkInterfaceID string `json:"networkInterfaceID" tf:"network_interface_id"`
+	// +optional
+	NetworkInterfacePort int `json:"networkInterfacePort,omitempty" tf:"network_interface_port,omitempty"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
 	// +optional
-	SourceVolumeArn   string `json:"sourceVolumeArn,omitempty" tf:"source_volume_arn,omitempty"`
-	TargetArn         string `json:"targetArn" tf:"target_arn"`
-	TargetName        string `json:"targetName" tf:"target_name"`
-	VolumeArn         string `json:"volumeArn" tf:"volume_arn"`
-	VolumeID          string `json:"volumeID" tf:"volume_id"`
+	SourceVolumeArn string `json:"sourceVolumeArn,omitempty" tf:"source_volume_arn,omitempty"`
+	// +optional
+	TargetArn  string `json:"targetArn,omitempty" tf:"target_arn,omitempty"`
+	TargetName string `json:"targetName" tf:"target_name"`
+	// +optional
+	VolumeArn string `json:"volumeArn,omitempty" tf:"volume_arn,omitempty"`
+	// +optional
+	VolumeID          string `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 	VolumeSizeInBytes int    `json:"volumeSizeInBytes" tf:"volume_size_in_bytes"`
 }
 

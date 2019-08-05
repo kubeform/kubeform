@@ -611,7 +611,6 @@ spec:
             vmImage:
               type: string
           required:
-          - clusterEndpoint
           - location
           - managementEndpoint
           - name
@@ -845,7 +844,6 @@ spec:
                 vmImage:
                   type: string
               required:
-              - clusterEndpoint
               - location
               - managementEndpoint
               - name

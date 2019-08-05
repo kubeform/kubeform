@@ -501,16 +501,8 @@ spec:
             type:
               type: string
           required:
-          - arn
-          - certificate
           - certificateAuthorityConfiguration
-          - certificateChain
-          - certificateSigningRequest
-          - notAfter
-          - notBefore
           - providerRef
-          - serial
-          - status
           type: object
         status:
           properties:
@@ -625,16 +617,8 @@ spec:
                 type:
                   type: string
               required:
-              - arn
-              - certificate
               - certificateAuthorityConfiguration
-              - certificateChain
-              - certificateSigningRequest
-              - notAfter
-              - notBefore
               - providerRef
-              - serial
-              - status
               type: object
             state:
               properties:

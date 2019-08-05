@@ -87,8 +87,9 @@ type ComputeBackendServiceSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	EnableCdn   bool   `json:"enableCdn,omitempty" tf:"enable_cdn,omitempty"`
-	Fingerprint string `json:"fingerprint" tf:"fingerprint"`
+	EnableCdn bool `json:"enableCdn,omitempty" tf:"enable_cdn,omitempty"`
+	// +optional
+	Fingerprint string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
@@ -105,7 +106,8 @@ type ComputeBackendServiceSpec struct {
 	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 	// +optional
 	SecurityPolicy string `json:"securityPolicy,omitempty" tf:"security_policy,omitempty"`
-	SelfLink       string `json:"selfLink" tf:"self_link"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	SessionAffinity string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 	// +optional

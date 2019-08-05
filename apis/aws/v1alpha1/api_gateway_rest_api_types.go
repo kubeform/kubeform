@@ -32,21 +32,24 @@ type ApiGatewayRestAPISpec struct {
 	// +optional
 	BinaryMediaTypes []string `json:"binaryMediaTypes,omitempty" tf:"binary_media_types,omitempty"`
 	// +optional
-	Body        string `json:"body,omitempty" tf:"body,omitempty"`
-	CreatedDate string `json:"createdDate" tf:"created_date"`
+	Body string `json:"body,omitempty" tf:"body,omitempty"`
+	// +optional
+	CreatedDate string `json:"createdDate,omitempty" tf:"created_date,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	EndpointConfiguration []ApiGatewayRestAPISpecEndpointConfiguration `json:"endpointConfiguration,omitempty" tf:"endpoint_configuration,omitempty"`
-	ExecutionArn          string                                       `json:"executionArn" tf:"execution_arn"`
+	// +optional
+	ExecutionArn string `json:"executionArn,omitempty" tf:"execution_arn,omitempty"`
 	// +optional
 	MinimumCompressionSize int    `json:"minimumCompressionSize,omitempty" tf:"minimum_compression_size,omitempty"`
 	Name                   string `json:"name" tf:"name"`
 	// +optional
-	Policy         string `json:"policy,omitempty" tf:"policy,omitempty"`
-	RootResourceID string `json:"rootResourceID" tf:"root_resource_id"`
+	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
+	// +optional
+	RootResourceID string `json:"rootResourceID,omitempty" tf:"root_resource_id,omitempty"`
 }
 
 type ApiGatewayRestAPIStatus struct {

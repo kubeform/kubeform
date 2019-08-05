@@ -21,18 +21,22 @@ type OrganizationsAccount struct {
 type OrganizationsAccountSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn   string `json:"arn" tf:"arn"`
+	// +optional
+	Arn   string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Email string `json:"email" tf:"email"`
 	// +optional
 	IamUserAccessToBilling string `json:"iamUserAccessToBilling,omitempty" tf:"iam_user_access_to_billing,omitempty"`
-	JoinedMethod           string `json:"joinedMethod" tf:"joined_method"`
-	JoinedTimestamp        string `json:"joinedTimestamp" tf:"joined_timestamp"`
-	Name                   string `json:"name" tf:"name"`
+	// +optional
+	JoinedMethod string `json:"joinedMethod,omitempty" tf:"joined_method,omitempty"`
+	// +optional
+	JoinedTimestamp string `json:"joinedTimestamp,omitempty" tf:"joined_timestamp,omitempty"`
+	Name            string `json:"name" tf:"name"`
 	// +optional
 	ParentID string `json:"parentID,omitempty" tf:"parent_id,omitempty"`
 	// +optional
 	RoleName string `json:"roleName,omitempty" tf:"role_name,omitempty"`
-	Status   string `json:"status" tf:"status"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

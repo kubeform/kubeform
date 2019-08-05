@@ -425,10 +425,6 @@ spec:
                 type: string
               type: object
           required:
-          - domainName
-          - domainNameServers
-          - ntpServers
-          - ownerID
           - providerRef
           type: object
         status:
@@ -468,10 +464,6 @@ spec:
                     type: string
                   type: object
               required:
-              - domainName
-              - domainNameServers
-              - ntpServers
-              - ownerID
               - providerRef
               type: object
             state:

@@ -439,12 +439,8 @@ spec:
                 type: string
               type: array
           required:
-          - creationTimestamp
-          - labelFingerprint
           - name
           - providerRef
-          - selfLink
-          - users
           type: object
         status:
           properties:
@@ -497,12 +493,8 @@ spec:
                     type: string
                   type: array
               required:
-              - creationTimestamp
-              - labelFingerprint
               - name
               - providerRef
-              - selfLink
-              - users
               type: object
             state:
               properties:

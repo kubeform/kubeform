@@ -420,7 +420,6 @@ spec:
               description: Deprecated
               type: string
           required:
-          - etag
           - policyData
           - providerRef
           - subnetwork
@@ -457,7 +456,6 @@ spec:
                   description: Deprecated
                   type: string
               required:
-              - etag
               - policyData
               - providerRef
               - subnetwork

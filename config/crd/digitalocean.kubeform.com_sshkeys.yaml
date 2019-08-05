@@ -413,7 +413,6 @@ spec:
             publicKey:
               type: string
           required:
-          - fingerprint
           - name
           - providerRef
           - publicKey
@@ -443,7 +442,6 @@ spec:
                 publicKey:
                   type: string
               required:
-              - fingerprint
               - name
               - providerRef
               - publicKey

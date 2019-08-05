@@ -69,7 +69,8 @@ type ContainerClusterSpecIpAllocationPolicy struct {
 }
 
 type ContainerClusterSpecMaintenancePolicyDailyMaintenanceWindow struct {
-	Duration  string `json:"duration" tf:"duration"`
+	// +optional
+	Duration  string `json:"duration,omitempty" tf:"duration,omitempty"`
 	StartTime string `json:"startTime" tf:"start_time"`
 }
 
@@ -83,14 +84,17 @@ type ContainerClusterSpecMasterAuthClientCertificateConfig struct {
 }
 
 type ContainerClusterSpecMasterAuth struct {
-	ClientCertificate string `json:"clientCertificate" tf:"client_certificate"`
+	// +optional
+	ClientCertificate string `json:"clientCertificate,omitempty" tf:"client_certificate,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ClientCertificateConfig []ContainerClusterSpecMasterAuthClientCertificateConfig `json:"clientCertificateConfig,omitempty" tf:"client_certificate_config,omitempty"`
-	ClientKey               string                                                  `json:"-" sensitive:"true" tf:"client_key"`
-	ClusterCaCertificate    string                                                  `json:"clusterCaCertificate" tf:"cluster_ca_certificate"`
-	Password                string                                                  `json:"-" sensitive:"true" tf:"password"`
-	Username                string                                                  `json:"username" tf:"username"`
+	// +optional
+	ClientKey string `json:"-" sensitive:"true" tf:"client_key,omitempty"`
+	// +optional
+	ClusterCaCertificate string `json:"clusterCaCertificate,omitempty" tf:"cluster_ca_certificate,omitempty"`
+	Password             string `json:"-" sensitive:"true" tf:"password"`
+	Username             string `json:"username" tf:"username"`
 }
 
 type ContainerClusterSpecMasterAuthorizedNetworksConfigCidrBlocks struct {
@@ -234,8 +238,9 @@ type ContainerClusterSpecNodePool struct {
 	// +kubebuilder:validation:MaxItems=1
 	Autoscaling []ContainerClusterSpecNodePoolAutoscaling `json:"autoscaling,omitempty" tf:"autoscaling,omitempty"`
 	// +optional
-	InitialNodeCount  int      `json:"initialNodeCount,omitempty" tf:"initial_node_count,omitempty"`
-	InstanceGroupUrls []string `json:"instanceGroupUrls" tf:"instance_group_urls"`
+	InitialNodeCount int `json:"initialNodeCount,omitempty" tf:"initial_node_count,omitempty"`
+	// +optional
+	InstanceGroupUrls []string `json:"instanceGroupUrls,omitempty" tf:"instance_group_urls,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Management []ContainerClusterSpecNodePoolManagement `json:"management,omitempty" tf:"management,omitempty"`
@@ -267,8 +272,10 @@ type ContainerClusterSpecPrivateClusterConfig struct {
 	EnablePrivateNodes bool `json:"enablePrivateNodes,omitempty" tf:"enable_private_nodes,omitempty"`
 	// +optional
 	MasterIpv4CIDRBlock string `json:"masterIpv4CIDRBlock,omitempty" tf:"master_ipv4_cidr_block,omitempty"`
-	PrivateEndpoint     string `json:"privateEndpoint" tf:"private_endpoint"`
-	PublicEndpoint      string `json:"publicEndpoint" tf:"public_endpoint"`
+	// +optional
+	PrivateEndpoint string `json:"privateEndpoint,omitempty" tf:"private_endpoint,omitempty"`
+	// +optional
+	PublicEndpoint string `json:"publicEndpoint,omitempty" tf:"public_endpoint,omitempty"`
 }
 
 type ContainerClusterSpec struct {
@@ -295,11 +302,13 @@ type ContainerClusterSpec struct {
 	EnableLegacyAbac bool `json:"enableLegacyAbac,omitempty" tf:"enable_legacy_abac,omitempty"`
 	// +optional
 	// Deprecated
-	EnableTpu bool   `json:"enableTpu,omitempty" tf:"enable_tpu,omitempty"`
-	Endpoint  string `json:"endpoint" tf:"endpoint"`
+	EnableTpu bool `json:"enableTpu,omitempty" tf:"enable_tpu,omitempty"`
 	// +optional
-	InitialNodeCount  int      `json:"initialNodeCount,omitempty" tf:"initial_node_count,omitempty"`
-	InstanceGroupUrls []string `json:"instanceGroupUrls" tf:"instance_group_urls"`
+	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
+	// +optional
+	InitialNodeCount int `json:"initialNodeCount,omitempty" tf:"initial_node_count,omitempty"`
+	// +optional
+	InstanceGroupUrls []string `json:"instanceGroupUrls,omitempty" tf:"instance_group_urls,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	IpAllocationPolicy []ContainerClusterSpecIpAllocationPolicy `json:"ipAllocationPolicy,omitempty" tf:"ip_allocation_policy,omitempty"`
@@ -317,7 +326,8 @@ type ContainerClusterSpec struct {
 	// +optional
 	// Deprecated
 	MasterIpv4CIDRBlock string `json:"masterIpv4CIDRBlock,omitempty" tf:"master_ipv4_cidr_block,omitempty"`
-	MasterVersion       string `json:"masterVersion" tf:"master_version"`
+	// +optional
+	MasterVersion string `json:"masterVersion,omitempty" tf:"master_version,omitempty"`
 	// +optional
 	MinMasterVersion string `json:"minMasterVersion,omitempty" tf:"min_master_version,omitempty"`
 	// +optional

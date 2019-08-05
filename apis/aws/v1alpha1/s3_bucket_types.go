@@ -220,11 +220,13 @@ type S3BucketSpec struct {
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
-	Bucket           string `json:"bucket,omitempty" tf:"bucket,omitempty"`
-	BucketDomainName string `json:"bucketDomainName" tf:"bucket_domain_name"`
+	Bucket string `json:"bucket,omitempty" tf:"bucket,omitempty"`
 	// +optional
-	BucketPrefix             string `json:"bucketPrefix,omitempty" tf:"bucket_prefix,omitempty"`
-	BucketRegionalDomainName string `json:"bucketRegionalDomainName" tf:"bucket_regional_domain_name"`
+	BucketDomainName string `json:"bucketDomainName,omitempty" tf:"bucket_domain_name,omitempty"`
+	// +optional
+	BucketPrefix string `json:"bucketPrefix,omitempty" tf:"bucket_prefix,omitempty"`
+	// +optional
+	BucketRegionalDomainName string `json:"bucketRegionalDomainName,omitempty" tf:"bucket_regional_domain_name,omitempty"`
 	// +optional
 	CorsRule []S3BucketSpecCorsRule `json:"corsRule,omitempty" tf:"cors_rule,omitempty"`
 	// +optional

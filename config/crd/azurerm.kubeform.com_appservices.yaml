@@ -533,8 +533,6 @@ spec:
                   type:
                     type: string
                 required:
-                - principalID
-                - tenantID
                 - type
                 type: object
               maxItems: 1
@@ -675,8 +673,6 @@ spec:
                 properties:
                   username:
                     type: string
-                required:
-                - username
                 type: object
               maxItems: 1
               type: array
@@ -687,9 +683,6 @@ spec:
                     type: string
                   repoURL:
                     type: string
-                required:
-                - branch
-                - repoURL
                 type: object
               maxItems: 1
               type: array
@@ -699,15 +692,10 @@ spec:
               type: object
           required:
           - appServicePlanID
-          - defaultSiteHostname
           - location
           - name
-          - outboundIPAddresses
-          - possibleOutboundIPAddresses
           - providerRef
           - resourceGroupName
-          - siteCredential
-          - sourceControl
           type: object
         status:
           properties:
@@ -854,8 +842,6 @@ spec:
                       type:
                         type: string
                     required:
-                    - principalID
-                    - tenantID
                     - type
                     type: object
                   maxItems: 1
@@ -996,8 +982,6 @@ spec:
                     properties:
                       username:
                         type: string
-                    required:
-                    - username
                     type: object
                   maxItems: 1
                   type: array
@@ -1008,9 +992,6 @@ spec:
                         type: string
                       repoURL:
                         type: string
-                    required:
-                    - branch
-                    - repoURL
                     type: object
                   maxItems: 1
                   type: array
@@ -1020,15 +1001,10 @@ spec:
                   type: object
               required:
               - appServicePlanID
-              - defaultSiteHostname
               - location
               - name
-              - outboundIPAddresses
-              - possibleOutboundIPAddresses
               - providerRef
               - resourceGroupName
-              - siteCredential
-              - sourceControl
               type: object
             state:
               properties:

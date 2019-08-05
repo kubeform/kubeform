@@ -434,7 +434,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - family
           - name
           - providerRef
@@ -485,7 +484,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - family
               - name
               - providerRef

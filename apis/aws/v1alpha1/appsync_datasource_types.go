@@ -44,7 +44,8 @@ type AppsyncDatasourceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ApiID string `json:"apiID" tf:"api_id"`
-	Arn   string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional

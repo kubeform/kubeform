@@ -94,7 +94,7 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 
 		jk := flect.Camelize(key) // json key
 		tk := key                 // terraform key
-		if value.Optional {
+		if value.Optional || value.Computed {
 			statements = append(statements, Comment("// +optional"))
 			jk = jk + ",omitempty"
 			tk = tk + ",omitempty"

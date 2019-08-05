@@ -466,22 +466,11 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - disk
           - image
-          - ipv4Address
-          - ipv4AddressPrivate
-          - ipv6Address
-          - locked
-          - memory
           - name
-          - priceHourly
-          - priceMonthly
           - providerRef
           - region
           - size
-          - status
-          - urn
-          - vcpus
           type: object
         status:
           properties:
@@ -561,22 +550,11 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - disk
               - image
-              - ipv4Address
-              - ipv4AddressPrivate
-              - ipv6Address
-              - locked
-              - memory
               - name
-              - priceHourly
-              - priceMonthly
               - providerRef
               - region
               - size
-              - status
-              - urn
-              - vcpus
               type: object
             state:
               properties:

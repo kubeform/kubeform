@@ -427,11 +427,8 @@ spec:
                 type: string
               type: object
           required:
-          - activationCode
-          - expired
           - iamRole
           - providerRef
-          - registrationCount
           type: object
         status:
           properties:
@@ -472,11 +469,8 @@ spec:
                     type: string
                   type: object
               required:
-              - activationCode
-              - expired
               - iamRole
               - providerRef
-              - registrationCount
               type: object
             state:
               properties:

@@ -435,12 +435,8 @@ spec:
             vpcPeeringConnectionID:
               type: string
           required:
-          - destinationPrefixListID
-          - instanceOwnerID
-          - origin
           - providerRef
           - routeTableID
-          - state
           type: object
         status:
           properties:
@@ -489,12 +485,8 @@ spec:
                 vpcPeeringConnectionID:
                   type: string
               required:
-              - destinationPrefixListID
-              - instanceOwnerID
-              - origin
               - providerRef
               - routeTableID
-              - state
               type: object
             state:
               properties:

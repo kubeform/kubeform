@@ -415,11 +415,8 @@ spec:
             supportCode:
               type: string
           required:
-          - arn
-          - ipAddress
           - name
           - providerRef
-          - supportCode
           type: object
         status:
           properties:
@@ -448,11 +445,8 @@ spec:
                 supportCode:
                   type: string
               required:
-              - arn
-              - ipAddress
               - name
               - providerRef
-              - supportCode
               type: object
             state:
               properties:

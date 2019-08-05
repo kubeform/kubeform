@@ -445,7 +445,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - destinationLocationArn
           - providerRef
           - sourceLocationArn
@@ -507,7 +506,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - destinationLocationArn
               - providerRef
               - sourceLocationArn

@@ -415,7 +415,6 @@ spec:
                 type: string
               type: object
           required:
-          - creationDate
           - name
           - providerRef
           type: object
@@ -446,7 +445,6 @@ spec:
                     type: string
                   type: object
               required:
-              - creationDate
               - name
               - providerRef
               type: object

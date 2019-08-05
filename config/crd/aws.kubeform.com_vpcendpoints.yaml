@@ -410,9 +410,6 @@ spec:
                     type: string
                   hostedZoneID:
                     type: string
-                required:
-                - dnsName
-                - hostedZoneID
                 type: object
               type: array
             networkInterfaceIDS:
@@ -467,15 +464,8 @@ spec:
             vpcID:
               type: string
           required:
-          - cidrBlocks
-          - dnsEntry
-          - networkInterfaceIDS
-          - ownerID
-          - prefixListID
           - providerRef
-          - requesterManaged
           - serviceName
-          - state
           - vpcID
           type: object
         status:
@@ -500,9 +490,6 @@ spec:
                         type: string
                       hostedZoneID:
                         type: string
-                    required:
-                    - dnsName
-                    - hostedZoneID
                     type: object
                   type: array
                 networkInterfaceIDS:
@@ -557,15 +544,8 @@ spec:
                 vpcID:
                   type: string
               required:
-              - cidrBlocks
-              - dnsEntry
-              - networkInterfaceIDS
-              - ownerID
-              - prefixListID
               - providerRef
-              - requesterManaged
               - serviceName
-              - state
               - vpcID
               type: object
             state:

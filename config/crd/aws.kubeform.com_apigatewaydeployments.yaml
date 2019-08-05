@@ -425,9 +425,6 @@ spec:
                 type: string
               type: object
           required:
-          - createdDate
-          - executionArn
-          - invokeURL
           - providerRef
           - restAPIID
           type: object
@@ -468,9 +465,6 @@ spec:
                     type: string
                   type: object
               required:
-              - createdDate
-              - executionArn
-              - invokeURL
               - providerRef
               - restAPIID
               type: object

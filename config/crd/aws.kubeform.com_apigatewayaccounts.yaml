@@ -416,15 +416,11 @@ spec:
                   rateLimit:
                     description: A Number represents a JSON number literal.
                     type: string
-                required:
-                - burstLimit
-                - rateLimit
                 type: object
               maxItems: 1
               type: array
           required:
           - providerRef
-          - throttleSettings
           type: object
         status:
           properties:
@@ -454,15 +450,11 @@ spec:
                       rateLimit:
                         description: A Number represents a JSON number literal.
                         type: string
-                    required:
-                    - burstLimit
-                    - rateLimit
                     type: object
                   maxItems: 1
                   type: array
               required:
               - providerRef
-              - throttleSettings
               type: object
             state:
               properties:

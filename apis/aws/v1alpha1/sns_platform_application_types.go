@@ -21,7 +21,8 @@ type SnsPlatformApplication struct {
 type SnsPlatformApplicationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	EventDeliveryFailureTopicArn string `json:"eventDeliveryFailureTopicArn,omitempty" tf:"event_delivery_failure_topic_arn,omitempty"`
 	// +optional

@@ -431,7 +431,6 @@ spec:
                 type: string
               type: object
           required:
-          - creationDate
           - dtu
           - edition
           - location
@@ -483,7 +482,6 @@ spec:
                     type: string
                   type: object
               required:
-              - creationDate
               - dtu
               - edition
               - location

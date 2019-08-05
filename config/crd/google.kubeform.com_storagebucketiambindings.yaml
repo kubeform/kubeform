@@ -419,7 +419,6 @@ spec:
               type: string
           required:
           - bucket
-          - etag
           - members
           - providerRef
           - role
@@ -455,7 +454,6 @@ spec:
                   type: string
               required:
               - bucket
-              - etag
               - members
               - providerRef
               - role

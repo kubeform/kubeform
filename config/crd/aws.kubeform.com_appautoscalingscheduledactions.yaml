@@ -433,7 +433,6 @@ spec:
             startTime:
               type: string
           required:
-          - arn
           - name
           - providerRef
           - resourceID
@@ -484,7 +483,6 @@ spec:
                 startTime:
                   type: string
               required:
-              - arn
               - name
               - providerRef
               - resourceID

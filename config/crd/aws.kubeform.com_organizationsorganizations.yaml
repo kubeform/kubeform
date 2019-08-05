@@ -408,11 +408,6 @@ spec:
                     type: string
                   name:
                     type: string
-                required:
-                - ID
-                - arn
-                - email
-                - name
                 type: object
               type: array
             arn:
@@ -446,11 +441,6 @@ spec:
                     type: string
                   name:
                     type: string
-                required:
-                - ID
-                - arn
-                - email
-                - name
                 type: object
               type: array
             providerRef:
@@ -478,27 +468,12 @@ spec:
                           type: string
                         type:
                           type: string
-                      required:
-                      - status
-                      - type
                       type: object
                     type: array
-                required:
-                - ID
-                - arn
-                - name
-                - policyTypes
                 type: object
               type: array
           required:
-          - accounts
-          - arn
-          - masterAccountArn
-          - masterAccountEmail
-          - masterAccountID
-          - nonMasterAccounts
           - providerRef
-          - roots
           type: object
         status:
           properties:
@@ -520,11 +495,6 @@ spec:
                         type: string
                       name:
                         type: string
-                    required:
-                    - ID
-                    - arn
-                    - email
-                    - name
                     type: object
                   type: array
                 arn:
@@ -558,11 +528,6 @@ spec:
                         type: string
                       name:
                         type: string
-                    required:
-                    - ID
-                    - arn
-                    - email
-                    - name
                     type: object
                   type: array
                 providerRef:
@@ -590,27 +555,12 @@ spec:
                               type: string
                             type:
                               type: string
-                          required:
-                          - status
-                          - type
                           type: object
                         type: array
-                    required:
-                    - ID
-                    - arn
-                    - name
-                    - policyTypes
                     type: object
                   type: array
               required:
-              - accounts
-              - arn
-              - masterAccountArn
-              - masterAccountEmail
-              - masterAccountID
-              - nonMasterAccounts
               - providerRef
-              - roots
               type: object
             state:
               properties:

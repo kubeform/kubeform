@@ -26,13 +26,16 @@ type ComputeSubnetworkSpecSecondaryIPRange struct {
 type ComputeSubnetworkSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	EnableFlowLogs bool   `json:"enableFlowLogs,omitempty" tf:"enable_flow_logs,omitempty"`
-	Fingerprint    string `json:"fingerprint" tf:"fingerprint"`
-	GatewayAddress string `json:"gatewayAddress" tf:"gateway_address"`
+	EnableFlowLogs bool `json:"enableFlowLogs,omitempty" tf:"enable_flow_logs,omitempty"`
+	// +optional
+	Fingerprint string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
+	// +optional
+	GatewayAddress string `json:"gatewayAddress,omitempty" tf:"gateway_address,omitempty"`
 	IpCIDRRange    string `json:"ipCIDRRange" tf:"ip_cidr_range"`
 	Name           string `json:"name" tf:"name"`
 	Network        string `json:"network" tf:"network"`
@@ -44,7 +47,8 @@ type ComputeSubnetworkSpec struct {
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
 	SecondaryIPRange []ComputeSubnetworkSpecSecondaryIPRange `json:"secondaryIPRange,omitempty" tf:"secondary_ip_range,omitempty"`
-	SelfLink         string                                  `json:"selfLink" tf:"self_link"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 }
 
 type ComputeSubnetworkStatus struct {

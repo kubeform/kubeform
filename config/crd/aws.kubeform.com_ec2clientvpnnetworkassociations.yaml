@@ -422,10 +422,7 @@ spec:
           required:
           - clientVPNEndpointID
           - providerRef
-          - securityGroups
-          - status
           - subnetID
-          - vpcID
           type: object
         status:
           properties:
@@ -461,10 +458,7 @@ spec:
               required:
               - clientVPNEndpointID
               - providerRef
-              - securityGroups
-              - status
               - subnetID
-              - vpcID
               type: object
             state:
               properties:

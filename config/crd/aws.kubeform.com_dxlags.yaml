@@ -425,10 +425,7 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - connectionsBandwidth
-          - hasLogicalRedundancy
-          - jumboFrameCapable
           - location
           - name
           - providerRef
@@ -470,10 +467,7 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - connectionsBandwidth
-              - hasLogicalRedundancy
-              - jumboFrameCapable
               - location
               - name
               - providerRef

@@ -499,8 +499,6 @@ spec:
             vpcID:
               type: string
           required:
-          - arn
-          - ownerID
           - providerRef
           type: object
         status:
@@ -614,8 +612,6 @@ spec:
                 vpcID:
                   type: string
               required:
-              - arn
-              - ownerID
               - providerRef
               type: object
             state:

@@ -420,7 +420,6 @@ spec:
             targetArn:
               type: string
           required:
-          - arn
           - duration
           - name
           - providerRef
@@ -459,7 +458,6 @@ spec:
                 targetArn:
                   type: string
               required:
-              - arn
               - duration
               - name
               - providerRef

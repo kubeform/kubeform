@@ -438,8 +438,6 @@ spec:
                   type:
                     type: string
                 required:
-                - principalID
-                - tenantID
                 - type
                 type: object
               maxItems: 1
@@ -554,34 +552,8 @@ spec:
           - accountTier
           - location
           - name
-          - primaryBlobEndpoint
-          - primaryBlobHost
-          - primaryDfsEndpoint
-          - primaryDfsHost
-          - primaryFileEndpoint
-          - primaryFileHost
-          - primaryLocation
-          - primaryQueueEndpoint
-          - primaryQueueHost
-          - primaryTableEndpoint
-          - primaryTableHost
-          - primaryWebEndpoint
-          - primaryWebHost
           - providerRef
           - resourceGroupName
-          - secondaryBlobEndpoint
-          - secondaryBlobHost
-          - secondaryDfsEndpoint
-          - secondaryDfsHost
-          - secondaryFileEndpoint
-          - secondaryFileHost
-          - secondaryLocation
-          - secondaryQueueEndpoint
-          - secondaryQueueHost
-          - secondaryTableEndpoint
-          - secondaryTableHost
-          - secondaryWebEndpoint
-          - secondaryWebHost
           type: object
         status:
           properties:
@@ -633,8 +605,6 @@ spec:
                       type:
                         type: string
                     required:
-                    - principalID
-                    - tenantID
                     - type
                     type: object
                   maxItems: 1
@@ -749,34 +719,8 @@ spec:
               - accountTier
               - location
               - name
-              - primaryBlobEndpoint
-              - primaryBlobHost
-              - primaryDfsEndpoint
-              - primaryDfsHost
-              - primaryFileEndpoint
-              - primaryFileHost
-              - primaryLocation
-              - primaryQueueEndpoint
-              - primaryQueueHost
-              - primaryTableEndpoint
-              - primaryTableHost
-              - primaryWebEndpoint
-              - primaryWebHost
               - providerRef
               - resourceGroupName
-              - secondaryBlobEndpoint
-              - secondaryBlobHost
-              - secondaryDfsEndpoint
-              - secondaryDfsHost
-              - secondaryFileEndpoint
-              - secondaryFileHost
-              - secondaryLocation
-              - secondaryQueueEndpoint
-              - secondaryQueueHost
-              - secondaryTableEndpoint
-              - secondaryTableHost
-              - secondaryWebEndpoint
-              - secondaryWebHost
               type: object
             state:
               properties:

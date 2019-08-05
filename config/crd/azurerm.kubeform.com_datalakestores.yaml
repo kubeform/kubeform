@@ -429,7 +429,6 @@ spec:
             tier:
               type: string
           required:
-          - endpoint
           - location
           - name
           - providerRef
@@ -476,7 +475,6 @@ spec:
                 tier:
                   type: string
               required:
-              - endpoint
               - location
               - name
               - providerRef

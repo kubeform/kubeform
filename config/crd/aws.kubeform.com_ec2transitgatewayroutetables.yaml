@@ -417,8 +417,6 @@ spec:
             transitGatewayID:
               type: string
           required:
-          - defaultAssociationRouteTable
-          - defaultPropagationRouteTable
           - providerRef
           - transitGatewayID
           type: object
@@ -451,8 +449,6 @@ spec:
                 transitGatewayID:
                   type: string
               required:
-              - defaultAssociationRouteTable
-              - defaultPropagationRouteTable
               - providerRef
               - transitGatewayID
               type: object

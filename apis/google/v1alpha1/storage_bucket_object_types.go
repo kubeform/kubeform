@@ -34,11 +34,13 @@ type StorageBucketObjectSpec struct {
 	ContentLanguage string `json:"contentLanguage,omitempty" tf:"content_language,omitempty"`
 	// +optional
 	ContentType string `json:"contentType,omitempty" tf:"content_type,omitempty"`
-	Crc32c      string `json:"crc32c" tf:"crc32c"`
+	// +optional
+	Crc32c string `json:"crc32c,omitempty" tf:"crc32c,omitempty"`
 	// +optional
 	DetectMd5hash string `json:"detectMd5hash,omitempty" tf:"detect_md5hash,omitempty"`
-	Md5hash       string `json:"md5hash" tf:"md5hash"`
-	Name          string `json:"name" tf:"name"`
+	// +optional
+	Md5hash string `json:"md5hash,omitempty" tf:"md5hash,omitempty"`
+	Name    string `json:"name" tf:"name"`
 	// +optional
 	Source string `json:"source,omitempty" tf:"source,omitempty"`
 	// +optional

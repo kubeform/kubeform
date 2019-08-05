@@ -423,13 +423,8 @@ spec:
             uniqueID:
               type: string
           required:
-          - arn
           - awsServiceName
-          - createDate
-          - name
-          - path
           - providerRef
-          - uniqueID
           type: object
         status:
           properties:
@@ -466,13 +461,8 @@ spec:
                 uniqueID:
                   type: string
               required:
-              - arn
               - awsServiceName
-              - createDate
-              - name
-              - path
               - providerRef
-              - uniqueID
               type: object
             state:
               properties:

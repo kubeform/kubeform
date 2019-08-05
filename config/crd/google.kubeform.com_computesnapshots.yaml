@@ -442,8 +442,6 @@ spec:
                 properties:
                   sha256:
                     type: string
-                required:
-                - sha256
                 type: object
               maxItems: 1
               type: array
@@ -469,19 +467,9 @@ spec:
             zone:
               type: string
           required:
-          - creationTimestamp
-          - diskSizeGb
-          - labelFingerprint
-          - licenses
           - name
           - providerRef
-          - selfLink
-          - snapshotEncryptionKeySha256
-          - snapshotID
           - sourceDisk
-          - sourceDiskEncryptionKeySha256
-          - sourceDiskLink
-          - storageBytes
           type: object
         status:
           properties:
@@ -537,8 +525,6 @@ spec:
                     properties:
                       sha256:
                         type: string
-                    required:
-                    - sha256
                     type: object
                   maxItems: 1
                   type: array
@@ -564,19 +550,9 @@ spec:
                 zone:
                   type: string
               required:
-              - creationTimestamp
-              - diskSizeGb
-              - labelFingerprint
-              - licenses
               - name
               - providerRef
-              - selfLink
-              - snapshotEncryptionKeySha256
-              - snapshotID
               - sourceDisk
-              - sourceDiskEncryptionKeySha256
-              - sourceDiskLink
-              - storageBytes
               type: object
             state:
               properties:

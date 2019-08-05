@@ -422,9 +422,6 @@ spec:
               type: string
           required:
           - clusterID
-          - hsmEniID
-          - hsmID
-          - hsmState
           - providerRef
           type: object
         status:
@@ -461,9 +458,6 @@ spec:
                   type: string
               required:
               - clusterID
-              - hsmEniID
-              - hsmID
-              - hsmState
               - providerRef
               type: object
             state:

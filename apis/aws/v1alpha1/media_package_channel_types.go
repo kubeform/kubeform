@@ -19,13 +19,17 @@ type MediaPackageChannel struct {
 }
 
 type MediaPackageChannelSpecHlsIngestIngestEndpoints struct {
-	Password string `json:"-" sensitive:"true" tf:"password"`
-	Url      string `json:"url" tf:"url"`
-	Username string `json:"username" tf:"username"`
+	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
+	// +optional
+	Url string `json:"url,omitempty" tf:"url,omitempty"`
+	// +optional
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type MediaPackageChannelSpecHlsIngest struct {
-	IngestEndpoints []MediaPackageChannelSpecHlsIngestIngestEndpoints `json:"ingestEndpoints" tf:"ingest_endpoints"`
+	// +optional
+	IngestEndpoints []MediaPackageChannelSpecHlsIngestIngestEndpoints `json:"ingestEndpoints,omitempty" tf:"ingest_endpoints,omitempty"`
 }
 
 type MediaPackageChannelSpec struct {
@@ -33,11 +37,13 @@ type MediaPackageChannelSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	Arn       string `json:"arn" tf:"arn"`
+	// +optional
+	Arn       string `json:"arn,omitempty" tf:"arn,omitempty"`
 	ChannelID string `json:"channelID" tf:"channel_id"`
 	// +optional
-	Description string                             `json:"description,omitempty" tf:"description,omitempty"`
-	HlsIngest   []MediaPackageChannelSpecHlsIngest `json:"hlsIngest" tf:"hls_ingest"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	HlsIngest []MediaPackageChannelSpecHlsIngest `json:"hlsIngest,omitempty" tf:"hls_ingest,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

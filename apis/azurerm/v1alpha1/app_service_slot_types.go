@@ -25,9 +25,11 @@ type AppServiceSlotSpecConnectionString struct {
 }
 
 type AppServiceSlotSpecIdentity struct {
-	PrincipalID string `json:"principalID" tf:"principal_id"`
-	TenantID    string `json:"tenantID" tf:"tenant_id"`
-	Type        string `json:"type" tf:"type"`
+	// +optional
+	PrincipalID string `json:"principalID,omitempty" tf:"principal_id,omitempty"`
+	// +optional
+	TenantID string `json:"tenantID,omitempty" tf:"tenant_id,omitempty"`
+	Type     string `json:"type" tf:"type"`
 }
 
 type AppServiceSlotSpecSiteConfigCors struct {
@@ -96,8 +98,10 @@ type AppServiceSlotSpecSiteConfig struct {
 }
 
 type AppServiceSlotSpecSiteCredential struct {
-	Password string `json:"-" sensitive:"true" tf:"password"`
-	Username string `json:"username" tf:"username"`
+	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
+	// +optional
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type AppServiceSlotSpec struct {
@@ -113,8 +117,9 @@ type AppServiceSlotSpec struct {
 	ClientAffinityEnabled bool `json:"clientAffinityEnabled,omitempty" tf:"client_affinity_enabled,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	ConnectionString    []AppServiceSlotSpecConnectionString `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
-	DefaultSiteHostname string                               `json:"defaultSiteHostname" tf:"default_site_hostname"`
+	ConnectionString []AppServiceSlotSpecConnectionString `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
+	// +optional
+	DefaultSiteHostname string `json:"defaultSiteHostname,omitempty" tf:"default_site_hostname,omitempty"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
@@ -128,8 +133,9 @@ type AppServiceSlotSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SiteConfig []AppServiceSlotSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	SiteCredential []AppServiceSlotSpecSiteCredential `json:"siteCredential" tf:"site_credential"`
+	SiteCredential []AppServiceSlotSpecSiteCredential `json:"siteCredential,omitempty" tf:"site_credential,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

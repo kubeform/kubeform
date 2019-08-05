@@ -21,14 +21,16 @@ type Volume struct {
 type VolumeSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	FilesystemPath string `json:"filesystemPath" tf:"filesystem_path"`
+	// +optional
+	FilesystemPath string `json:"filesystemPath,omitempty" tf:"filesystem_path,omitempty"`
 	Label          string `json:"label" tf:"label"`
 	// +optional
 	LinodeID int    `json:"linodeID,omitempty" tf:"linode_id,omitempty"`
 	Region   string `json:"region" tf:"region"`
 	// +optional
-	Size   int    `json:"size,omitempty" tf:"size,omitempty"`
-	Status string `json:"status" tf:"status"`
+	Size int `json:"size,omitempty" tf:"size,omitempty"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`

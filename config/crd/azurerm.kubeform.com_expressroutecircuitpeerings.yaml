@@ -448,14 +448,11 @@ spec:
             vlanID:
               type: integer
           required:
-          - azureAsn
           - expressRouteCircuitName
           - peeringType
-          - primaryAzurePort
           - primaryPeerAddressPrefix
           - providerRef
           - resourceGroupName
-          - secondaryAzurePort
           - secondaryPeerAddressPrefix
           - vlanID
           type: object
@@ -519,14 +516,11 @@ spec:
                 vlanID:
                   type: integer
               required:
-              - azureAsn
               - expressRouteCircuitName
               - peeringType
-              - primaryAzurePort
               - primaryPeerAddressPrefix
               - providerRef
               - resourceGroupName
-              - secondaryAzurePort
               - secondaryPeerAddressPrefix
               - vlanID
               type: object

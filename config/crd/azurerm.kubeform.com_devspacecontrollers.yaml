@@ -445,7 +445,6 @@ spec:
             targetContainerHostResourceID:
               type: string
           required:
-          - dataPlaneFqdn
           - hostSuffix
           - location
           - name
@@ -511,7 +510,6 @@ spec:
                 targetContainerHostResourceID:
                   type: string
               required:
-              - dataPlaneFqdn
               - hostSuffix
               - location
               - name

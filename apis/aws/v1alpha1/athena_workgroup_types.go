@@ -48,7 +48,8 @@ type AthenaWorkgroupSpecConfiguration struct {
 type AthenaWorkgroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Configuration []AthenaWorkgroupSpecConfiguration `json:"configuration,omitempty" tf:"configuration,omitempty"`

@@ -450,11 +450,9 @@ spec:
             version:
               type: string
           required:
-          - arn
           - name
           - providerRef
           - rule
-          - version
           type: object
         status:
           properties:
@@ -518,11 +516,9 @@ spec:
                 version:
                   type: string
               required:
-              - arn
               - name
               - providerRef
               - rule
-              - version
               type: object
             state:
               properties:

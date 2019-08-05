@@ -430,7 +430,6 @@ spec:
                 type: string
               type: object
           required:
-          - appID
           - applicationType
           - location
           - name
@@ -479,7 +478,6 @@ spec:
                     type: string
                   type: object
               required:
-              - appID
               - applicationType
               - location
               - name

@@ -21,17 +21,21 @@ type NeptuneClusterInstance struct {
 type NeptuneClusterInstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Address string `json:"address" tf:"address"`
 	// +optional
-	ApplyImmediately bool   `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
-	Arn              string `json:"arn" tf:"arn"`
+	Address string `json:"address,omitempty" tf:"address,omitempty"`
+	// +optional
+	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	AutoMinorVersionUpgrade bool `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
 	// +optional
 	AvailabilityZone  string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	ClusterIdentifier string `json:"clusterIdentifier" tf:"cluster_identifier"`
-	DbiResourceID     string `json:"dbiResourceID" tf:"dbi_resource_id"`
-	Endpoint          string `json:"endpoint" tf:"endpoint"`
+	// +optional
+	DbiResourceID string `json:"dbiResourceID,omitempty" tf:"dbi_resource_id,omitempty"`
+	// +optional
+	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
 	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
 	// +optional
@@ -41,7 +45,8 @@ type NeptuneClusterInstanceSpec struct {
 	// +optional
 	IdentifierPrefix string `json:"identifierPrefix,omitempty" tf:"identifier_prefix,omitempty"`
 	InstanceClass    string `json:"instanceClass" tf:"instance_class"`
-	KmsKeyArn        string `json:"kmsKeyArn" tf:"kms_key_arn"`
+	// +optional
+	KmsKeyArn string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
 	// +optional
 	NeptuneParameterGroupName string `json:"neptuneParameterGroupName,omitempty" tf:"neptune_parameter_group_name,omitempty"`
 	// +optional
@@ -56,10 +61,12 @@ type NeptuneClusterInstanceSpec struct {
 	PromotionTier int `json:"promotionTier,omitempty" tf:"promotion_tier,omitempty"`
 	// +optional
 	PubliclyAccessible bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
-	StorageEncrypted   bool `json:"storageEncrypted" tf:"storage_encrypted"`
 	// +optional
-	Tags   map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Writer bool              `json:"writer" tf:"writer"`
+	StorageEncrypted bool `json:"storageEncrypted,omitempty" tf:"storage_encrypted,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	Writer bool `json:"writer,omitempty" tf:"writer,omitempty"`
 }
 
 type NeptuneClusterInstanceStatus struct {

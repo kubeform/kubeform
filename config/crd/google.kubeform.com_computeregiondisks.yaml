@@ -408,8 +408,6 @@ spec:
                     type: string
                   sha256:
                     type: string
-                required:
-                - sha256
                 type: object
               maxItems: 1
               type: array
@@ -457,8 +455,6 @@ spec:
                     type: string
                   sha256:
                     type: string
-                required:
-                - sha256
                 type: object
               maxItems: 1
               type: array
@@ -471,16 +467,9 @@ spec:
                 type: string
               type: array
           required:
-          - creationTimestamp
-          - labelFingerprint
-          - lastAttachTimestamp
-          - lastDetachTimestamp
           - name
           - providerRef
           - replicaZones
-          - selfLink
-          - sourceSnapshotID
-          - users
           type: object
         status:
           properties:
@@ -502,8 +491,6 @@ spec:
                         type: string
                       sha256:
                         type: string
-                    required:
-                    - sha256
                     type: object
                   maxItems: 1
                   type: array
@@ -551,8 +538,6 @@ spec:
                         type: string
                       sha256:
                         type: string
-                    required:
-                    - sha256
                     type: object
                   maxItems: 1
                   type: array
@@ -565,16 +550,9 @@ spec:
                     type: string
                   type: array
               required:
-              - creationTimestamp
-              - labelFingerprint
-              - lastAttachTimestamp
-              - lastDetachTimestamp
               - name
               - providerRef
               - replicaZones
-              - selfLink
-              - sourceSnapshotID
-              - users
               type: object
             state:
               properties:

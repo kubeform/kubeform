@@ -420,7 +420,6 @@ spec:
               type: string
           required:
           - name
-          - properties
           - providerRef
           - resourceGroupName
           - storageAccountName
@@ -457,7 +456,6 @@ spec:
                   type: string
               required:
               - name
-              - properties
               - providerRef
               - resourceGroupName
               - storageAccountName

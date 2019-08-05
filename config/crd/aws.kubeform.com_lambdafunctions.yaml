@@ -505,22 +505,15 @@ spec:
                 required:
                 - securityGroupIDS
                 - subnetIDS
-                - vpcID
                 type: object
               maxItems: 1
               type: array
           required:
-          - arn
           - functionName
           - handler
-          - invokeArn
-          - lastModified
           - providerRef
-          - qualifiedArn
           - role
           - runtime
-          - sourceCodeSize
-          - version
           type: object
         status:
           properties:
@@ -639,22 +632,15 @@ spec:
                     required:
                     - securityGroupIDS
                     - subnetIDS
-                    - vpcID
                     type: object
                   maxItems: 1
                   type: array
               required:
-              - arn
               - functionName
               - handler
-              - invokeArn
-              - lastModified
               - providerRef
-              - qualifiedArn
               - role
               - runtime
-              - sourceCodeSize
-              - version
               type: object
             state:
               properties:

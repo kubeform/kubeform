@@ -430,7 +430,6 @@ spec:
               type: integer
           required:
           - domain
-          - fqdn
           - name
           - providerRef
           - type
@@ -478,7 +477,6 @@ spec:
                   type: integer
               required:
               - domain
-              - fqdn
               - name
               - providerRef
               - type

@@ -506,9 +506,6 @@ spec:
             virtualRouterName:
               type: string
           required:
-          - arn
-          - createdDate
-          - lastUpdatedDate
           - meshName
           - name
           - providerRef
@@ -633,9 +630,6 @@ spec:
                 virtualRouterName:
                   type: string
               required:
-              - arn
-              - createdDate
-              - lastUpdatedDate
               - meshName
               - name
               - providerRef

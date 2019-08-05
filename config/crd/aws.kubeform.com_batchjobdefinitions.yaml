@@ -437,10 +437,8 @@ spec:
             type:
               type: string
           required:
-          - arn
           - name
           - providerRef
-          - revision
           - type
           type: object
         status:
@@ -492,10 +490,8 @@ spec:
                 type:
                   type: string
               required:
-              - arn
               - name
               - providerRef
-              - revision
               - type
               type: object
             state:

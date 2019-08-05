@@ -97,7 +97,8 @@ type AutoscalingGroupSpecTag struct {
 type AutoscalingGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`

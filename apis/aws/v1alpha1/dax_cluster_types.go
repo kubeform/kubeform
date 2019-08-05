@@ -19,10 +19,14 @@ type DaxCluster struct {
 }
 
 type DaxClusterSpecNodes struct {
-	Address          string `json:"address" tf:"address"`
-	AvailabilityZone string `json:"availabilityZone" tf:"availability_zone"`
-	ID               string `json:"ID" tf:"id"`
-	Port             int    `json:"port" tf:"port"`
+	// +optional
+	Address string `json:"address,omitempty" tf:"address,omitempty"`
+	// +optional
+	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	Port int `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type DaxClusterSpecServerSideEncryption struct {
@@ -33,26 +37,31 @@ type DaxClusterSpecServerSideEncryption struct {
 type DaxClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	AvailabilityZones     []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
-	ClusterAddress        string   `json:"clusterAddress" tf:"cluster_address"`
-	ClusterName           string   `json:"clusterName" tf:"cluster_name"`
-	ConfigurationEndpoint string   `json:"configurationEndpoint" tf:"configuration_endpoint"`
+	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
+	// +optional
+	ClusterAddress string `json:"clusterAddress,omitempty" tf:"cluster_address,omitempty"`
+	ClusterName    string `json:"clusterName" tf:"cluster_name"`
+	// +optional
+	ConfigurationEndpoint string `json:"configurationEndpoint,omitempty" tf:"configuration_endpoint,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	IamRoleArn  string `json:"iamRoleArn" tf:"iam_role_arn"`
 	// +optional
-	MaintenanceWindow string                `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
-	NodeType          string                `json:"nodeType" tf:"node_type"`
-	Nodes             []DaxClusterSpecNodes `json:"nodes" tf:"nodes"`
+	MaintenanceWindow string `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
+	NodeType          string `json:"nodeType" tf:"node_type"`
+	// +optional
+	Nodes []DaxClusterSpecNodes `json:"nodes,omitempty" tf:"nodes,omitempty"`
 	// +optional
 	NotificationTopicArn string `json:"notificationTopicArn,omitempty" tf:"notification_topic_arn,omitempty"`
 	// +optional
 	ParameterGroupName string `json:"parameterGroupName,omitempty" tf:"parameter_group_name,omitempty"`
-	Port               int    `json:"port" tf:"port"`
-	ReplicationFactor  int    `json:"replicationFactor" tf:"replication_factor"`
+	// +optional
+	Port              int `json:"port,omitempty" tf:"port,omitempty"`
+	ReplicationFactor int `json:"replicationFactor" tf:"replication_factor"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids,omitempty"`

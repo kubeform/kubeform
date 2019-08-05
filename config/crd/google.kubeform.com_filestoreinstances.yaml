@@ -438,7 +438,6 @@ spec:
                   reservedIPRange:
                     type: string
                 required:
-                - ipAddresses
                 - modes
                 - network
                 type: object
@@ -460,8 +459,6 @@ spec:
             zone:
               type: string
           required:
-          - createTime
-          - etag
           - fileShares
           - name
           - networks
@@ -519,7 +516,6 @@ spec:
                       reservedIPRange:
                         type: string
                     required:
-                    - ipAddresses
                     - modes
                     - network
                     type: object
@@ -541,8 +537,6 @@ spec:
                 zone:
                   type: string
               required:
-              - createTime
-              - etag
               - fileShares
               - name
               - networks

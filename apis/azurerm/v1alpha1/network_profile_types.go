@@ -32,11 +32,12 @@ type NetworkProfileSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +kubebuilder:validation:MaxItems=1
-	ContainerNetworkInterface    []NetworkProfileSpecContainerNetworkInterface `json:"containerNetworkInterface" tf:"container_network_interface"`
-	ContainerNetworkInterfaceIDS []string                                      `json:"containerNetworkInterfaceIDS" tf:"container_network_interface_ids"`
-	Location                     string                                        `json:"location" tf:"location"`
-	Name                         string                                        `json:"name" tf:"name"`
-	ResourceGroupName            string                                        `json:"resourceGroupName" tf:"resource_group_name"`
+	ContainerNetworkInterface []NetworkProfileSpecContainerNetworkInterface `json:"containerNetworkInterface" tf:"container_network_interface"`
+	// +optional
+	ContainerNetworkInterfaceIDS []string `json:"containerNetworkInterfaceIDS,omitempty" tf:"container_network_interface_ids,omitempty"`
+	Location                     string   `json:"location" tf:"location"`
+	Name                         string   `json:"name" tf:"name"`
+	ResourceGroupName            string   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

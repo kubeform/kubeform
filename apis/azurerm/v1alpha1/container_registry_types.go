@@ -29,17 +29,20 @@ type ContainerRegistrySpec struct {
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	AdminEnabled  bool   `json:"adminEnabled,omitempty" tf:"admin_enabled,omitempty"`
-	AdminPassword string `json:"-" sensitive:"true" tf:"admin_password"`
-	AdminUsername string `json:"adminUsername" tf:"admin_username"`
+	AdminEnabled bool `json:"adminEnabled,omitempty" tf:"admin_enabled,omitempty"`
+	// +optional
+	AdminPassword string `json:"-" sensitive:"true" tf:"admin_password,omitempty"`
+	// +optional
+	AdminUsername string `json:"adminUsername,omitempty" tf:"admin_username,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	GeoreplicationLocations []string `json:"georeplicationLocations,omitempty" tf:"georeplication_locations,omitempty"`
 	Location                string   `json:"location" tf:"location"`
-	LoginServer             string   `json:"loginServer" tf:"login_server"`
-	Name                    string   `json:"name" tf:"name"`
-	ResourceGroupName       string   `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	LoginServer       string `json:"loginServer,omitempty" tf:"login_server,omitempty"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Sku string `json:"sku,omitempty" tf:"sku,omitempty"`
 	// +optional

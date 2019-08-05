@@ -59,7 +59,8 @@ type SecurityGroupSpecIngress struct {
 type SecurityGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -72,7 +73,8 @@ type SecurityGroupSpec struct {
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
-	OwnerID    string `json:"ownerID" tf:"owner_id"`
+	// +optional
+	OwnerID string `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
 	// +optional
 	RevokeRulesOnDelete bool `json:"revokeRulesOnDelete,omitempty" tf:"revoke_rules_on_delete,omitempty"`
 	// +optional

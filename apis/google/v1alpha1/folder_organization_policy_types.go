@@ -60,15 +60,17 @@ type FolderOrganizationPolicySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	BooleanPolicy []FolderOrganizationPolicySpecBooleanPolicy `json:"booleanPolicy,omitempty" tf:"boolean_policy,omitempty"`
 	Constraint    string                                      `json:"constraint" tf:"constraint"`
-	Etag          string                                      `json:"etag" tf:"etag"`
-	Folder        string                                      `json:"folder" tf:"folder"`
+	// +optional
+	Etag   string `json:"etag,omitempty" tf:"etag,omitempty"`
+	Folder string `json:"folder" tf:"folder"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ListPolicy []FolderOrganizationPolicySpecListPolicy `json:"listPolicy,omitempty" tf:"list_policy,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RestorePolicy []FolderOrganizationPolicySpecRestorePolicy `json:"restorePolicy,omitempty" tf:"restore_policy,omitempty"`
-	UpdateTime    string                                      `json:"updateTime" tf:"update_time"`
+	// +optional
+	UpdateTime string `json:"updateTime,omitempty" tf:"update_time,omitempty"`
 	// +optional
 	Version int `json:"version,omitempty" tf:"version,omitempty"`
 }

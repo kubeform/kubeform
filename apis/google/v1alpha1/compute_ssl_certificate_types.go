@@ -23,9 +23,11 @@ type ComputeSslCertificateSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	Certificate       string `json:"-" sensitive:"true" tf:"certificate"`
-	CertificateID     int    `json:"certificateID" tf:"certificate_id"`
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
+	Certificate string `json:"-" sensitive:"true" tf:"certificate"`
+	// +optional
+	CertificateID int `json:"certificateID,omitempty" tf:"certificate_id,omitempty"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -34,8 +36,9 @@ type ComputeSslCertificateSpec struct {
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	PrivateKey string `json:"-" sensitive:"true" tf:"private_key"`
 	// +optional
-	Project  string `json:"project,omitempty" tf:"project,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 }
 
 type ComputeSslCertificateStatus struct {

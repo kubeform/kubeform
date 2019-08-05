@@ -429,10 +429,8 @@ spec:
           required:
           - location
           - name
-          - primaryKey
           - providerRef
           - resourceGroupName
-          - secondaryKey
           - sku
           type: object
         status:
@@ -476,10 +474,8 @@ spec:
               required:
               - location
               - name
-              - primaryKey
               - providerRef
               - resourceGroupName
-              - secondaryKey
               - sku
               type: object
             state:

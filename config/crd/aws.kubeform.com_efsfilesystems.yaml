@@ -428,8 +428,6 @@ spec:
             throughputMode:
               type: string
           required:
-          - arn
-          - dnsName
           - providerRef
           type: object
         status:
@@ -472,8 +470,6 @@ spec:
                 throughputMode:
                   type: string
               required:
-              - arn
-              - dnsName
               - providerRef
               type: object
             state:

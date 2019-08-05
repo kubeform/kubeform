@@ -33,15 +33,17 @@ type ComputeRouteSpec struct {
 	// +optional
 	NextHopInstanceZone string `json:"nextHopInstanceZone,omitempty" tf:"next_hop_instance_zone,omitempty"`
 	// +optional
-	NextHopIP      string `json:"nextHopIP,omitempty" tf:"next_hop_ip,omitempty"`
-	NextHopNetwork string `json:"nextHopNetwork" tf:"next_hop_network"`
+	NextHopIP string `json:"nextHopIP,omitempty" tf:"next_hop_ip,omitempty"`
+	// +optional
+	NextHopNetwork string `json:"nextHopNetwork,omitempty" tf:"next_hop_network,omitempty"`
 	// +optional
 	NextHopVPNTunnel string `json:"nextHopVPNTunnel,omitempty" tf:"next_hop_vpn_tunnel,omitempty"`
 	// +optional
 	Priority int `json:"priority,omitempty" tf:"priority,omitempty"`
 	// +optional
-	Project  string `json:"project,omitempty" tf:"project,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`

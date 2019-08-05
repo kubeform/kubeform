@@ -468,7 +468,6 @@ spec:
               type: string
           required:
           - administratorLogin
-          - fqdn
           - location
           - name
           - providerRef
@@ -558,7 +557,6 @@ spec:
                   type: string
               required:
               - administratorLogin
-              - fqdn
               - location
               - name
               - providerRef

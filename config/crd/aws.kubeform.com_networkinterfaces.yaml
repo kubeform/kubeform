@@ -407,7 +407,6 @@ spec:
                   instance:
                     type: string
                 required:
-                - attachmentID
                 - deviceIndex
                 - instance
                 type: object
@@ -449,7 +448,6 @@ spec:
                 type: string
               type: object
           required:
-          - privateDNSName
           - providerRef
           - subnetID
           type: object
@@ -472,7 +470,6 @@ spec:
                       instance:
                         type: string
                     required:
-                    - attachmentID
                     - deviceIndex
                     - instance
                     type: object
@@ -514,7 +511,6 @@ spec:
                     type: string
                   type: object
               required:
-              - privateDNSName
               - providerRef
               - subnetID
               type: object

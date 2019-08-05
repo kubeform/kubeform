@@ -62,9 +62,12 @@ type MskClusterSpecEncryptionInfo struct {
 type MskClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn                 string `json:"arn" tf:"arn"`
-	BootstrapBrokers    string `json:"bootstrapBrokers" tf:"bootstrap_brokers"`
-	BootstrapBrokersTls string `json:"bootstrapBrokersTls" tf:"bootstrap_brokers_tls"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	BootstrapBrokers string `json:"bootstrapBrokers,omitempty" tf:"bootstrap_brokers,omitempty"`
+	// +optional
+	BootstrapBrokersTls string `json:"bootstrapBrokersTls,omitempty" tf:"bootstrap_brokers_tls,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	BrokerNodeGroupInfo []MskClusterSpecBrokerNodeGroupInfo `json:"brokerNodeGroupInfo" tf:"broker_node_group_info"`
 	// +optional
@@ -74,7 +77,8 @@ type MskClusterSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ConfigurationInfo []MskClusterSpecConfigurationInfo `json:"configurationInfo,omitempty" tf:"configuration_info,omitempty"`
-	CurrentVersion    string                            `json:"currentVersion" tf:"current_version"`
+	// +optional
+	CurrentVersion string `json:"currentVersion,omitempty" tf:"current_version,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	EncryptionInfo []MskClusterSpecEncryptionInfo `json:"encryptionInfo,omitempty" tf:"encryption_info,omitempty"`
@@ -83,8 +87,9 @@ type MskClusterSpec struct {
 	KafkaVersion        string `json:"kafkaVersion" tf:"kafka_version"`
 	NumberOfBrokerNodes int    `json:"numberOfBrokerNodes" tf:"number_of_broker_nodes"`
 	// +optional
-	Tags                   map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	ZookeeperConnectString string            `json:"zookeeperConnectString" tf:"zookeeper_connect_string"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	ZookeeperConnectString string `json:"zookeeperConnectString,omitempty" tf:"zookeeper_connect_string,omitempty"`
 }
 
 type MskClusterStatus struct {

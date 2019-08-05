@@ -423,11 +423,9 @@ spec:
             type:
               type: string
           required:
-          - arn
           - instanceType
           - name
           - providerRef
-          - type
           type: object
         status:
           properties:
@@ -464,11 +462,9 @@ spec:
                 type:
                   type: string
               required:
-              - arn
               - instanceType
               - name
               - providerRef
-              - type
               type: object
             state:
               properties:

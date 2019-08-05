@@ -21,8 +21,10 @@ type ApiGatewayAccount struct {
 }
 
 type ApiGatewayAccountSpecThrottleSettings struct {
-	BurstLimit int         `json:"burstLimit" tf:"burst_limit"`
-	RateLimit  json.Number `json:"rateLimit" tf:"rate_limit"`
+	// +optional
+	BurstLimit int `json:"burstLimit,omitempty" tf:"burst_limit,omitempty"`
+	// +optional
+	RateLimit json.Number `json:"rateLimit,omitempty" tf:"rate_limit,omitempty"`
 }
 
 type ApiGatewayAccountSpec struct {
@@ -30,8 +32,9 @@ type ApiGatewayAccountSpec struct {
 
 	// +optional
 	CloudwatchRoleArn string `json:"cloudwatchRoleArn,omitempty" tf:"cloudwatch_role_arn,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	ThrottleSettings []ApiGatewayAccountSpecThrottleSettings `json:"throttleSettings" tf:"throttle_settings"`
+	ThrottleSettings []ApiGatewayAccountSpecThrottleSettings `json:"throttleSettings,omitempty" tf:"throttle_settings,omitempty"`
 }
 
 type ApiGatewayAccountStatus struct {

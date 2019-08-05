@@ -24,27 +24,36 @@ type ProjectSpecAppEngineFeatureSettings struct {
 }
 
 type ProjectSpecAppEngineUrlDispatchRule struct {
-	Domain  string `json:"domain" tf:"domain"`
-	Path    string `json:"path" tf:"path"`
-	Service string `json:"service" tf:"service"`
+	// +optional
+	Domain string `json:"domain,omitempty" tf:"domain,omitempty"`
+	// +optional
+	Path string `json:"path,omitempty" tf:"path,omitempty"`
+	// +optional
+	Service string `json:"service,omitempty" tf:"service,omitempty"`
 }
 
 type ProjectSpecAppEngine struct {
 	// +optional
-	AuthDomain      string `json:"authDomain,omitempty" tf:"auth_domain,omitempty"`
-	CodeBucket      string `json:"codeBucket" tf:"code_bucket"`
-	DefaultBucket   string `json:"defaultBucket" tf:"default_bucket"`
-	DefaultHostname string `json:"defaultHostname" tf:"default_hostname"`
+	AuthDomain string `json:"authDomain,omitempty" tf:"auth_domain,omitempty"`
+	// +optional
+	CodeBucket string `json:"codeBucket,omitempty" tf:"code_bucket,omitempty"`
+	// +optional
+	DefaultBucket string `json:"defaultBucket,omitempty" tf:"default_bucket,omitempty"`
+	// +optional
+	DefaultHostname string `json:"defaultHostname,omitempty" tf:"default_hostname,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	FeatureSettings []ProjectSpecAppEngineFeatureSettings `json:"featureSettings,omitempty" tf:"feature_settings,omitempty"`
-	GcrDomain       string                                `json:"gcrDomain" tf:"gcr_domain"`
+	// +optional
+	GcrDomain string `json:"gcrDomain,omitempty" tf:"gcr_domain,omitempty"`
 	// +optional
 	LocationID string `json:"locationID,omitempty" tf:"location_id,omitempty"`
-	Name       string `json:"name" tf:"name"`
 	// +optional
-	ServingStatus   string                                `json:"servingStatus,omitempty" tf:"serving_status,omitempty"`
-	UrlDispatchRule []ProjectSpecAppEngineUrlDispatchRule `json:"urlDispatchRule" tf:"url_dispatch_rule"`
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	ServingStatus string `json:"servingStatus,omitempty" tf:"serving_status,omitempty"`
+	// +optional
+	UrlDispatchRule []ProjectSpecAppEngineUrlDispatchRule `json:"urlDispatchRule,omitempty" tf:"url_dispatch_rule,omitempty"`
 }
 
 type ProjectSpec struct {
@@ -63,7 +72,8 @@ type ProjectSpec struct {
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	Name   string            `json:"name" tf:"name"`
-	Number string            `json:"number" tf:"number"`
+	// +optional
+	Number string `json:"number,omitempty" tf:"number,omitempty"`
 	// +optional
 	OrgID     string `json:"orgID,omitempty" tf:"org_id,omitempty"`
 	ProjectID string `json:"projectID" tf:"project_id"`

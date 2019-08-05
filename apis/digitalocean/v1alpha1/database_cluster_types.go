@@ -26,21 +26,27 @@ type DatabaseClusterSpecMaintenanceWindow struct {
 type DatabaseClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Database string `json:"database" tf:"database"`
+	// +optional
+	Database string `json:"database,omitempty" tf:"database,omitempty"`
 	Engine   string `json:"engine" tf:"engine"`
-	Host     string `json:"host" tf:"host"`
+	// +optional
+	Host string `json:"host,omitempty" tf:"host,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	MaintenanceWindow []DatabaseClusterSpecMaintenanceWindow `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
 	Name              string                                 `json:"name" tf:"name"`
 	NodeCount         int                                    `json:"nodeCount" tf:"node_count"`
-	Password          string                                 `json:"password" tf:"password"`
-	Port              int                                    `json:"port" tf:"port"`
-	Region            string                                 `json:"region" tf:"region"`
-	Size              string                                 `json:"size" tf:"size"`
-	Uri               string                                 `json:"uri" tf:"uri"`
-	User              string                                 `json:"user" tf:"user"`
-	Version           string                                 `json:"version" tf:"version"`
+	// +optional
+	Password string `json:"password,omitempty" tf:"password,omitempty"`
+	// +optional
+	Port   int    `json:"port,omitempty" tf:"port,omitempty"`
+	Region string `json:"region" tf:"region"`
+	Size   string `json:"size" tf:"size"`
+	// +optional
+	Uri string `json:"uri,omitempty" tf:"uri,omitempty"`
+	// +optional
+	User    string `json:"user,omitempty" tf:"user,omitempty"`
+	Version string `json:"version" tf:"version"`
 }
 
 type DatabaseClusterStatus struct {

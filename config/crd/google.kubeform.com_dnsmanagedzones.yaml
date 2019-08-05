@@ -425,7 +425,6 @@ spec:
           required:
           - dnsName
           - name
-          - nameServers
           - providerRef
           type: object
         status:
@@ -465,7 +464,6 @@ spec:
               required:
               - dnsName
               - name
-              - nameServers
               - providerRef
               type: object
             state:

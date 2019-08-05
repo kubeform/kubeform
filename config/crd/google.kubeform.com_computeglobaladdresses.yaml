@@ -439,12 +439,8 @@ spec:
             selfLink:
               type: string
           required:
-          - address
-          - creationTimestamp
-          - labelFingerprint
           - name
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -497,12 +493,8 @@ spec:
                 selfLink:
                   type: string
               required:
-              - address
-              - creationTimestamp
-              - labelFingerprint
               - name
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

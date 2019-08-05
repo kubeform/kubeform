@@ -502,16 +502,11 @@ spec:
             zookeeperConnectString:
               type: string
           required:
-          - arn
-          - bootstrapBrokers
-          - bootstrapBrokersTls
           - brokerNodeGroupInfo
           - clusterName
-          - currentVersion
           - kafkaVersion
           - numberOfBrokerNodes
           - providerRef
-          - zookeeperConnectString
           type: object
         status:
           properties:
@@ -627,16 +622,11 @@ spec:
                 zookeeperConnectString:
                   type: string
               required:
-              - arn
-              - bootstrapBrokers
-              - bootstrapBrokersTls
               - brokerNodeGroupInfo
               - clusterName
-              - currentVersion
               - kafkaVersion
               - numberOfBrokerNodes
               - providerRef
-              - zookeeperConnectString
               type: object
             state:
               properties:

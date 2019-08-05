@@ -443,14 +443,10 @@ spec:
             selfLink:
               type: string
           required:
-          - creationTimestamp
-          - fingerprint
-          - gatewayAddress
           - ipCIDRRange
           - name
           - network
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -507,14 +503,10 @@ spec:
                 selfLink:
                   type: string
               required:
-              - creationTimestamp
-              - fingerprint
-              - gatewayAddress
               - ipCIDRRange
               - name
               - network
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

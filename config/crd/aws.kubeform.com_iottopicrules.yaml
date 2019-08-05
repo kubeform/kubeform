@@ -613,7 +613,6 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
           - enabled
           - name
           - providerRef
@@ -845,7 +844,6 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
               - enabled
               - name
               - providerRef

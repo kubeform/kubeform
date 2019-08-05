@@ -26,8 +26,9 @@ type DevTestLinuxVirtualMachineSpecGalleryImageReference struct {
 }
 
 type DevTestLinuxVirtualMachineSpecInboundNATRule struct {
-	BackendPort  int    `json:"backendPort" tf:"backend_port"`
-	FrontendPort int    `json:"frontendPort" tf:"frontend_port"`
+	BackendPort int `json:"backendPort" tf:"backend_port"`
+	// +optional
+	FrontendPort int    `json:"frontendPort,omitempty" tf:"frontend_port,omitempty"`
 	Protocol     string `json:"protocol" tf:"protocol"`
 }
 
@@ -39,8 +40,9 @@ type DevTestLinuxVirtualMachineSpec struct {
 	// +optional
 	AllowClaim bool `json:"allowClaim,omitempty" tf:"allow_claim,omitempty"`
 	// +optional
-	DisallowPublicIPAddress bool   `json:"disallowPublicIPAddress,omitempty" tf:"disallow_public_ip_address,omitempty"`
-	Fqdn                    string `json:"fqdn" tf:"fqdn"`
+	DisallowPublicIPAddress bool `json:"disallowPublicIPAddress,omitempty" tf:"disallow_public_ip_address,omitempty"`
+	// +optional
+	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	GalleryImageReference []DevTestLinuxVirtualMachineSpecGalleryImageReference `json:"galleryImageReference" tf:"gallery_image_reference"`
 	// +optional
@@ -61,9 +63,10 @@ type DevTestLinuxVirtualMachineSpec struct {
 	SshKey      string `json:"sshKey,omitempty" tf:"ssh_key,omitempty"`
 	StorageType string `json:"storageType" tf:"storage_type"`
 	// +optional
-	Tags             map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	UniqueIdentifier string            `json:"uniqueIdentifier" tf:"unique_identifier"`
-	Username         string            `json:"username" tf:"username"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	UniqueIdentifier string `json:"uniqueIdentifier,omitempty" tf:"unique_identifier,omitempty"`
+	Username         string `json:"username" tf:"username"`
 }
 
 type DevTestLinuxVirtualMachineStatus struct {

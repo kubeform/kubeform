@@ -557,13 +557,9 @@ spec:
             version:
               type: string
           required:
-          - certificateData
           - certificatePolicy
           - name
           - providerRef
-          - secretID
-          - thumbprint
-          - version
           type: object
         status:
           properties:
@@ -734,13 +730,9 @@ spec:
                 version:
                   type: string
               required:
-              - certificateData
               - certificatePolicy
               - name
               - providerRef
-              - secretID
-              - thumbprint
-              - version
               type: object
             state:
               properties:

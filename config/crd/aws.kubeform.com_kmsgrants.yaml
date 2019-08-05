@@ -445,8 +445,6 @@ spec:
             retiringPrincipal:
               type: string
           required:
-          - grantID
-          - grantToken
           - granteePrincipal
           - keyID
           - operations
@@ -509,8 +507,6 @@ spec:
                 retiringPrincipal:
                   type: string
               required:
-              - grantID
-              - grantToken
               - granteePrincipal
               - keyID
               - operations

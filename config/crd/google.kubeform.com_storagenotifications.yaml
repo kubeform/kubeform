@@ -429,7 +429,6 @@ spec:
           - bucket
           - payloadFormat
           - providerRef
-          - selfLink
           - topic
           type: object
         status:
@@ -473,7 +472,6 @@ spec:
               - bucket
               - payloadFormat
               - providerRef
-              - selfLink
               - topic
               type: object
             state:

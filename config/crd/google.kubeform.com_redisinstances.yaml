@@ -445,12 +445,8 @@ spec:
             tier:
               type: string
           required:
-          - createTime
-          - currentLocationID
-          - host
           - memorySizeGb
           - name
-          - port
           - providerRef
           type: object
         status:
@@ -510,12 +506,8 @@ spec:
                 tier:
                   type: string
               required:
-              - createTime
-              - currentLocationID
-              - host
               - memorySizeGb
               - name
-              - port
               - providerRef
               type: object
             state:

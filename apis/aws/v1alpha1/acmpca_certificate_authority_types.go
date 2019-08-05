@@ -73,23 +73,31 @@ type AcmpcaCertificateAuthoritySpecRevocationConfiguration struct {
 type AcmpcaCertificateAuthoritySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn         string `json:"arn" tf:"arn"`
-	Certificate string `json:"certificate" tf:"certificate"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	Certificate string `json:"certificate,omitempty" tf:"certificate,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	CertificateAuthorityConfiguration []AcmpcaCertificateAuthoritySpecCertificateAuthorityConfiguration `json:"certificateAuthorityConfiguration" tf:"certificate_authority_configuration"`
-	CertificateChain                  string                                                            `json:"certificateChain" tf:"certificate_chain"`
-	CertificateSigningRequest         string                                                            `json:"certificateSigningRequest" tf:"certificate_signing_request"`
 	// +optional
-	Enabled   bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
-	NotAfter  string `json:"notAfter" tf:"not_after"`
-	NotBefore string `json:"notBefore" tf:"not_before"`
+	CertificateChain string `json:"certificateChain,omitempty" tf:"certificate_chain,omitempty"`
+	// +optional
+	CertificateSigningRequest string `json:"certificateSigningRequest,omitempty" tf:"certificate_signing_request,omitempty"`
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	NotAfter string `json:"notAfter,omitempty" tf:"not_after,omitempty"`
+	// +optional
+	NotBefore string `json:"notBefore,omitempty" tf:"not_before,omitempty"`
 	// +optional
 	PermanentDeletionTimeInDays int `json:"permanentDeletionTimeInDays,omitempty" tf:"permanent_deletion_time_in_days,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RevocationConfiguration []AcmpcaCertificateAuthoritySpecRevocationConfiguration `json:"revocationConfiguration,omitempty" tf:"revocation_configuration,omitempty"`
-	Serial                  string                                                  `json:"serial" tf:"serial"`
-	Status                  string                                                  `json:"status" tf:"status"`
+	// +optional
+	Serial string `json:"serial,omitempty" tf:"serial,omitempty"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

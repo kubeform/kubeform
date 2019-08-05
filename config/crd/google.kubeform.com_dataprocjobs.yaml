@@ -518,7 +518,6 @@ spec:
                     type: string
                 required:
                 - clusterName
-                - clusterUUID
                 type: object
               maxItems: 1
               type: array
@@ -680,20 +679,12 @@ spec:
                     type: string
                   substate:
                     type: string
-                required:
-                - details
-                - state
-                - stateStartTime
-                - substate
                 type: object
               maxItems: 1
               type: array
           required:
-          - driverControlsFilesURI
-          - driverOutputResourceURI
           - placement
           - providerRef
-          - status
           type: object
         status:
           properties:
@@ -825,7 +816,6 @@ spec:
                         type: string
                     required:
                     - clusterName
-                    - clusterUUID
                     type: object
                   maxItems: 1
                   type: array
@@ -987,20 +977,12 @@ spec:
                         type: string
                       substate:
                         type: string
-                    required:
-                    - details
-                    - state
-                    - stateStartTime
-                    - substate
                     type: object
                   maxItems: 1
                   type: array
               required:
-              - driverControlsFilesURI
-              - driverOutputResourceURI
               - placement
               - providerRef
-              - status
               type: object
             state:
               properties:

@@ -44,9 +44,11 @@ type EmrInstanceGroupSpec struct {
 	InstanceCount int    `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
 	InstanceType  string `json:"instanceType" tf:"instance_type"`
 	// +optional
-	Name                 string `json:"name,omitempty" tf:"name,omitempty"`
-	RunningInstanceCount int    `json:"runningInstanceCount" tf:"running_instance_count"`
-	Status               string `json:"status" tf:"status"`
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	RunningInstanceCount int `json:"runningInstanceCount,omitempty" tf:"running_instance_count,omitempty"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
 }
 
 type EmrInstanceGroupStatus struct {

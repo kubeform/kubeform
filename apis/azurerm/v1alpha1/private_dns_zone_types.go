@@ -21,12 +21,16 @@ type PrivateDNSZone struct {
 type PrivateDNSZoneSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	MaxNumberOfRecordSets                          int    `json:"maxNumberOfRecordSets" tf:"max_number_of_record_sets"`
-	MaxNumberOfVirtualNetworkLinks                 int    `json:"maxNumberOfVirtualNetworkLinks" tf:"max_number_of_virtual_network_links"`
-	MaxNumberOfVirtualNetworkLinksWithRegistration int    `json:"maxNumberOfVirtualNetworkLinksWithRegistration" tf:"max_number_of_virtual_network_links_with_registration"`
+	// +optional
+	MaxNumberOfRecordSets int `json:"maxNumberOfRecordSets,omitempty" tf:"max_number_of_record_sets,omitempty"`
+	// +optional
+	MaxNumberOfVirtualNetworkLinks int `json:"maxNumberOfVirtualNetworkLinks,omitempty" tf:"max_number_of_virtual_network_links,omitempty"`
+	// +optional
+	MaxNumberOfVirtualNetworkLinksWithRegistration int    `json:"maxNumberOfVirtualNetworkLinksWithRegistration,omitempty" tf:"max_number_of_virtual_network_links_with_registration,omitempty"`
 	Name                                           string `json:"name" tf:"name"`
-	NumberOfRecordSets                             int    `json:"numberOfRecordSets" tf:"number_of_record_sets"`
-	ResourceGroupName                              string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	NumberOfRecordSets int    `json:"numberOfRecordSets,omitempty" tf:"number_of_record_sets,omitempty"`
+	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

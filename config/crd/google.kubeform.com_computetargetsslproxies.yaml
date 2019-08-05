@@ -431,11 +431,8 @@ spec:
               type: string
           required:
           - backendService
-          - creationTimestamp
           - name
           - providerRef
-          - proxyID
-          - selfLink
           - sslCertificates
           type: object
         status:
@@ -481,11 +478,8 @@ spec:
                   type: string
               required:
               - backendService
-              - creationTimestamp
               - name
               - providerRef
-              - proxyID
-              - selfLink
               - sslCertificates
               type: object
             state:

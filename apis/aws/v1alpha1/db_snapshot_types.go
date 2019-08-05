@@ -21,27 +21,44 @@ type DbSnapshot struct {
 type DbSnapshotSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	AllocatedStorage           int    `json:"allocatedStorage" tf:"allocated_storage"`
-	AvailabilityZone           string `json:"availabilityZone" tf:"availability_zone"`
-	DbInstanceIdentifier       string `json:"dbInstanceIdentifier" tf:"db_instance_identifier"`
-	DbSnapshotArn              string `json:"dbSnapshotArn" tf:"db_snapshot_arn"`
-	DbSnapshotIdentifier       string `json:"dbSnapshotIdentifier" tf:"db_snapshot_identifier"`
-	Encrypted                  bool   `json:"encrypted" tf:"encrypted"`
-	Engine                     string `json:"engine" tf:"engine"`
-	EngineVersion              string `json:"engineVersion" tf:"engine_version"`
-	Iops                       int    `json:"iops" tf:"iops"`
-	KmsKeyID                   string `json:"kmsKeyID" tf:"kms_key_id"`
-	LicenseModel               string `json:"licenseModel" tf:"license_model"`
-	OptionGroupName            string `json:"optionGroupName" tf:"option_group_name"`
-	Port                       int    `json:"port" tf:"port"`
-	SnapshotType               string `json:"snapshotType" tf:"snapshot_type"`
-	SourceDbSnapshotIdentifier string `json:"sourceDbSnapshotIdentifier" tf:"source_db_snapshot_identifier"`
-	SourceRegion               string `json:"sourceRegion" tf:"source_region"`
-	Status                     string `json:"status" tf:"status"`
-	StorageType                string `json:"storageType" tf:"storage_type"`
 	// +optional
-	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	VpcID string            `json:"vpcID" tf:"vpc_id"`
+	AllocatedStorage int `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
+	// +optional
+	AvailabilityZone     string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+	DbInstanceIdentifier string `json:"dbInstanceIdentifier" tf:"db_instance_identifier"`
+	// +optional
+	DbSnapshotArn        string `json:"dbSnapshotArn,omitempty" tf:"db_snapshot_arn,omitempty"`
+	DbSnapshotIdentifier string `json:"dbSnapshotIdentifier" tf:"db_snapshot_identifier"`
+	// +optional
+	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
+	// +optional
+	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
+	// +optional
+	EngineVersion string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
+	// +optional
+	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	// +optional
+	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+	// +optional
+	LicenseModel string `json:"licenseModel,omitempty" tf:"license_model,omitempty"`
+	// +optional
+	OptionGroupName string `json:"optionGroupName,omitempty" tf:"option_group_name,omitempty"`
+	// +optional
+	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	// +optional
+	SnapshotType string `json:"snapshotType,omitempty" tf:"snapshot_type,omitempty"`
+	// +optional
+	SourceDbSnapshotIdentifier string `json:"sourceDbSnapshotIdentifier,omitempty" tf:"source_db_snapshot_identifier,omitempty"`
+	// +optional
+	SourceRegion string `json:"sourceRegion,omitempty" tf:"source_region,omitempty"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
+	// +optional
+	StorageType string `json:"storageType,omitempty" tf:"storage_type,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
 }
 
 type DbSnapshotStatus struct {

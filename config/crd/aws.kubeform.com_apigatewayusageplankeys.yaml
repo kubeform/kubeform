@@ -419,10 +419,8 @@ spec:
           required:
           - keyID
           - keyType
-          - name
           - providerRef
           - usagePlanID
-          - value
           type: object
         status:
           properties:
@@ -455,10 +453,8 @@ spec:
               required:
               - keyID
               - keyType
-              - name
               - providerRef
               - usagePlanID
-              - value
               type: object
             state:
               properties:

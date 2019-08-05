@@ -499,11 +499,9 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
           - containerDefinitions
           - family
           - providerRef
-          - revision
           type: object
         status:
           properties:
@@ -616,11 +614,9 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
               - containerDefinitions
               - family
               - providerRef
-              - revision
               type: object
             state:
               properties:

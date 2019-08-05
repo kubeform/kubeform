@@ -420,7 +420,6 @@ spec:
             role:
               type: string
           required:
-          - etag
           - instance
           - members
           - providerRef
@@ -458,7 +457,6 @@ spec:
                 role:
                   type: string
               required:
-              - etag
               - instance
               - members
               - providerRef

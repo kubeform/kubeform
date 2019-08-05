@@ -23,9 +23,11 @@ type ApplicationInsightsSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	AppID              string `json:"appID" tf:"app_id"`
-	ApplicationType    string `json:"applicationType" tf:"application_type"`
-	InstrumentationKey string `json:"-" sensitive:"true" tf:"instrumentation_key"`
+	// +optional
+	AppID           string `json:"appID,omitempty" tf:"app_id,omitempty"`
+	ApplicationType string `json:"applicationType" tf:"application_type"`
+	// +optional
+	InstrumentationKey string `json:"-" sensitive:"true" tf:"instrumentation_key,omitempty"`
 	Location           string `json:"location" tf:"location"`
 	Name               string `json:"name" tf:"name"`
 	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`

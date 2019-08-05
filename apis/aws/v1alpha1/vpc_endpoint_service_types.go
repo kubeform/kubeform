@@ -25,18 +25,25 @@ type VpcEndpointServiceSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AllowedPrincipals []string `json:"allowedPrincipals,omitempty" tf:"allowed_principals,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	AvailabilityZones []string `json:"availabilityZones" tf:"availability_zones"`
+	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	BaseEndpointDNSNames []string `json:"baseEndpointDNSNames" tf:"base_endpoint_dns_names"`
-	ManagesVpcEndpoints  bool     `json:"managesVpcEndpoints" tf:"manages_vpc_endpoints"`
+	BaseEndpointDNSNames []string `json:"baseEndpointDNSNames,omitempty" tf:"base_endpoint_dns_names,omitempty"`
+	// +optional
+	ManagesVpcEndpoints bool `json:"managesVpcEndpoints,omitempty" tf:"manages_vpc_endpoints,omitempty"`
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	NetworkLoadBalancerArns []string `json:"networkLoadBalancerArns" tf:"network_load_balancer_arns"`
-	PrivateDNSName          string   `json:"privateDNSName" tf:"private_dns_name"`
-	ServiceName             string   `json:"serviceName" tf:"service_name"`
-	ServiceType             string   `json:"serviceType" tf:"service_type"`
-	State                   string   `json:"state" tf:"state"`
+	// +optional
+	PrivateDNSName string `json:"privateDNSName,omitempty" tf:"private_dns_name,omitempty"`
+	// +optional
+	ServiceName string `json:"serviceName,omitempty" tf:"service_name,omitempty"`
+	// +optional
+	ServiceType string `json:"serviceType,omitempty" tf:"service_type,omitempty"`
+	// +optional
+	State string `json:"state,omitempty" tf:"state,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

@@ -21,14 +21,17 @@ type ComputeTargetHTTPProxy struct {
 type ComputeTargetHTTPProxySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
-	Project  string `json:"project,omitempty" tf:"project,omitempty"`
-	ProxyID  int    `json:"proxyID" tf:"proxy_id"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	ProxyID int `json:"proxyID,omitempty" tf:"proxy_id,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	UrlMap   string `json:"urlMap" tf:"url_map"`
 }
 

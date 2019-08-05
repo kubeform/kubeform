@@ -445,15 +445,8 @@ spec:
               type: object
           required:
           - acceptanceRequired
-          - availabilityZones
-          - baseEndpointDNSNames
-          - managesVpcEndpoints
           - networkLoadBalancerArns
-          - privateDNSName
           - providerRef
-          - serviceName
-          - serviceType
-          - state
           type: object
         status:
           properties:
@@ -512,15 +505,8 @@ spec:
                   type: object
               required:
               - acceptanceRequired
-              - availabilityZones
-              - baseEndpointDNSNames
-              - managesVpcEndpoints
               - networkLoadBalancerArns
-              - privateDNSName
               - providerRef
-              - serviceName
-              - serviceType
-              - state
               type: object
             state:
               properties:

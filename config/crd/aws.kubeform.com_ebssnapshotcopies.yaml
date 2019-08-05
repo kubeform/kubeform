@@ -431,14 +431,9 @@ spec:
             volumeSize:
               type: integer
           required:
-          - dataEncryptionKeyID
-          - ownerAlias
-          - ownerID
           - providerRef
           - sourceRegion
           - sourceSnapshotID
-          - volumeID
-          - volumeSize
           type: object
         status:
           properties:
@@ -483,14 +478,9 @@ spec:
                 volumeSize:
                   type: integer
               required:
-              - dataEncryptionKeyID
-              - ownerAlias
-              - ownerID
               - providerRef
               - sourceRegion
               - sourceSnapshotID
-              - volumeID
-              - volumeSize
               type: object
             state:
               properties:

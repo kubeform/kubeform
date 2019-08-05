@@ -419,7 +419,6 @@ spec:
             url:
               type: string
           required:
-          - arn
           - clientIDList
           - providerRef
           - thumbprintList
@@ -456,7 +455,6 @@ spec:
                 url:
                   type: string
               required:
-              - arn
               - clientIDList
               - providerRef
               - thumbprintList

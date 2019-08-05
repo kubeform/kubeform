@@ -412,7 +412,6 @@ spec:
               type: object
           required:
           - applicationID
-          - displayName
           - providerRef
           type: object
         status:
@@ -439,7 +438,6 @@ spec:
                   type: object
               required:
               - applicationID
-              - displayName
               - providerRef
               type: object
             state:

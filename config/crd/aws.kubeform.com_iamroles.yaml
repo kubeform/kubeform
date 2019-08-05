@@ -433,11 +433,8 @@ spec:
             uniqueID:
               type: string
           required:
-          - arn
           - assumeRolePolicy
-          - createDate
           - providerRef
-          - uniqueID
           type: object
         status:
           properties:
@@ -484,11 +481,8 @@ spec:
                 uniqueID:
                   type: string
               required:
-              - arn
               - assumeRolePolicy
-              - createDate
               - providerRef
-              - uniqueID
               type: object
             state:
               properties:

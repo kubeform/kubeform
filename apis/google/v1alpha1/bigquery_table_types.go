@@ -35,32 +35,41 @@ type BigqueryTableSpecView struct {
 type BigqueryTableSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CreationTime int    `json:"creationTime" tf:"creation_time"`
+	// +optional
+	CreationTime int    `json:"creationTime,omitempty" tf:"creation_time,omitempty"`
 	DatasetID    string `json:"datasetID" tf:"dataset_id"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	Etag        string `json:"etag" tf:"etag"`
+	// +optional
+	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
 	// +optional
 	ExpirationTime int `json:"expirationTime,omitempty" tf:"expiration_time,omitempty"`
 	// +optional
 	FriendlyName string `json:"friendlyName,omitempty" tf:"friendly_name,omitempty"`
 	// +optional
-	Labels           map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	LastModifiedTime int               `json:"lastModifiedTime" tf:"last_modified_time"`
-	Location         string            `json:"location" tf:"location"`
-	NumBytes         int               `json:"numBytes" tf:"num_bytes"`
-	NumLongTermBytes int               `json:"numLongTermBytes" tf:"num_long_term_bytes"`
-	NumRows          int               `json:"numRows" tf:"num_rows"`
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
+	LastModifiedTime int `json:"lastModifiedTime,omitempty" tf:"last_modified_time,omitempty"`
+	// +optional
+	Location string `json:"location,omitempty" tf:"location,omitempty"`
+	// +optional
+	NumBytes int `json:"numBytes,omitempty" tf:"num_bytes,omitempty"`
+	// +optional
+	NumLongTermBytes int `json:"numLongTermBytes,omitempty" tf:"num_long_term_bytes,omitempty"`
+	// +optional
+	NumRows int `json:"numRows,omitempty" tf:"num_rows,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Schema   string `json:"schema,omitempty" tf:"schema,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Schema string `json:"schema,omitempty" tf:"schema,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	TableID  string `json:"tableID" tf:"table_id"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	TimePartitioning []BigqueryTableSpecTimePartitioning `json:"timePartitioning,omitempty" tf:"time_partitioning,omitempty"`
-	Type             string                              `json:"type" tf:"type"`
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	View []BigqueryTableSpecView `json:"view,omitempty" tf:"view,omitempty"`

@@ -479,16 +479,12 @@ spec:
           required:
           - apiManagementName
           - displayName
-          - isCurrent
-          - isOnline
           - name
           - path
           - protocols
           - providerRef
           - resourceGroupName
           - revision
-          - version
-          - versionSetID
           type: object
         status:
           properties:
@@ -581,16 +577,12 @@ spec:
               required:
               - apiManagementName
               - displayName
-              - isCurrent
-              - isOnline
               - name
               - path
               - protocols
               - providerRef
               - resourceGroupName
               - revision
-              - version
-              - versionSetID
               type: object
             state:
               properties:

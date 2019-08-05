@@ -178,13 +178,15 @@ type CodebuildProjectSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	Artifacts []CodebuildProjectSpecArtifacts `json:"artifacts" tf:"artifacts"`
 	// +optional
-	BadgeEnabled bool   `json:"badgeEnabled,omitempty" tf:"badge_enabled,omitempty"`
-	BadgeURL     string `json:"badgeURL" tf:"badge_url"`
+	BadgeEnabled bool `json:"badgeEnabled,omitempty" tf:"badge_enabled,omitempty"`
+	// +optional
+	BadgeURL string `json:"badgeURL,omitempty" tf:"badge_url,omitempty"`
 	// +optional
 	BuildTimeout int `json:"buildTimeout,omitempty" tf:"build_timeout,omitempty"`
 	// +optional

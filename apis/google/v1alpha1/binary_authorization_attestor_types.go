@@ -22,11 +22,13 @@ type BinaryAuthorizationAttestorSpecAttestationAuthorityNotePublicKeys struct {
 	AsciiArmoredPgpPublicKey string `json:"asciiArmoredPgpPublicKey" tf:"ascii_armored_pgp_public_key"`
 	// +optional
 	Comment string `json:"comment,omitempty" tf:"comment,omitempty"`
-	ID      string `json:"ID" tf:"id"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
 }
 
 type BinaryAuthorizationAttestorSpecAttestationAuthorityNote struct {
-	DelegationServiceAccountEmail string `json:"delegationServiceAccountEmail" tf:"delegation_service_account_email"`
+	// +optional
+	DelegationServiceAccountEmail string `json:"delegationServiceAccountEmail,omitempty" tf:"delegation_service_account_email,omitempty"`
 	NoteReference                 string `json:"noteReference" tf:"note_reference"`
 	// +optional
 	PublicKeys []BinaryAuthorizationAttestorSpecAttestationAuthorityNotePublicKeys `json:"publicKeys,omitempty" tf:"public_keys,omitempty"`

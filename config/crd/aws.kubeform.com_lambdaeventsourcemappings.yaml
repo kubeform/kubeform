@@ -432,14 +432,8 @@ spec:
               type: string
           required:
           - eventSourceArn
-          - functionArn
           - functionName
-          - lastModified
-          - lastProcessingResult
           - providerRef
-          - state
-          - stateTransitionReason
-          - uuid
           type: object
         status:
           properties:
@@ -485,14 +479,8 @@ spec:
                   type: string
               required:
               - eventSourceArn
-              - functionArn
               - functionName
-              - lastModified
-              - lastProcessingResult
               - providerRef
-              - state
-              - stateTransitionReason
-              - uuid
               type: object
             state:
               properties:

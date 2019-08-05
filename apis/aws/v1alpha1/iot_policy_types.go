@@ -21,8 +21,10 @@ type IotPolicy struct {
 type IotPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn              string `json:"arn" tf:"arn"`
-	DefaultVersionID string `json:"defaultVersionID" tf:"default_version_id"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	DefaultVersionID string `json:"defaultVersionID,omitempty" tf:"default_version_id,omitempty"`
 	Name             string `json:"name" tf:"name"`
 	Policy           string `json:"policy" tf:"policy"`
 }

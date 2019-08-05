@@ -35,8 +35,9 @@ type ComputeImageSpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	Family           string `json:"family,omitempty" tf:"family,omitempty"`
-	LabelFingerprint string `json:"labelFingerprint" tf:"label_fingerprint"`
+	Family string `json:"family,omitempty" tf:"family,omitempty"`
+	// +optional
+	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
@@ -46,8 +47,9 @@ type ComputeImageSpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	RawDisk  []ComputeImageSpecRawDisk `json:"rawDisk,omitempty" tf:"raw_disk,omitempty"`
-	SelfLink string                    `json:"selfLink" tf:"self_link"`
+	RawDisk []ComputeImageSpecRawDisk `json:"rawDisk,omitempty" tf:"raw_disk,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	SourceDisk string `json:"sourceDisk,omitempty" tf:"source_disk,omitempty"`
 }

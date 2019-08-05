@@ -417,7 +417,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - endpointConfigName
           - providerRef
           type: object
@@ -450,7 +449,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - endpointConfigName
               - providerRef
               type: object

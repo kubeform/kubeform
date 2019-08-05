@@ -468,8 +468,6 @@ spec:
                           type: string
                         numInstances:
                           type: integer
-                      required:
-                      - instanceNames
                       type: object
                     maxItems: 1
                     type: array
@@ -490,8 +488,6 @@ spec:
                           type: array
                         numInstances:
                           type: integer
-                      required:
-                      - instanceNames
                       type: object
                     maxItems: 1
                     type: array
@@ -508,8 +504,6 @@ spec:
                           additionalProperties:
                             type: string
                           type: object
-                      required:
-                      - properties
                       type: object
                     maxItems: 1
                     type: array
@@ -538,13 +532,9 @@ spec:
                           type: string
                         numInstances:
                           type: integer
-                      required:
-                      - instanceNames
                       type: object
                     maxItems: 1
                     type: array
-                required:
-                - bucket
                 type: object
               maxItems: 1
               type: array
@@ -651,8 +641,6 @@ spec:
                               type: string
                             numInstances:
                               type: integer
-                          required:
-                          - instanceNames
                           type: object
                         maxItems: 1
                         type: array
@@ -673,8 +661,6 @@ spec:
                               type: array
                             numInstances:
                               type: integer
-                          required:
-                          - instanceNames
                           type: object
                         maxItems: 1
                         type: array
@@ -691,8 +677,6 @@ spec:
                               additionalProperties:
                                 type: string
                               type: object
-                          required:
-                          - properties
                           type: object
                         maxItems: 1
                         type: array
@@ -721,13 +705,9 @@ spec:
                               type: string
                             numInstances:
                               type: integer
-                          required:
-                          - instanceNames
                           type: object
                         maxItems: 1
                         type: array
-                    required:
-                    - bucket
                     type: object
                   maxItems: 1
                   type: array

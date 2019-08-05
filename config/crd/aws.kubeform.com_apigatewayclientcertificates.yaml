@@ -415,9 +415,6 @@ spec:
                   type: string
               type: object
           required:
-          - createdDate
-          - expirationDate
-          - pemEncodedCertificate
           - providerRef
           type: object
         status:
@@ -447,9 +444,6 @@ spec:
                       type: string
                   type: object
               required:
-              - createdDate
-              - expirationDate
-              - pemEncodedCertificate
               - providerRef
               type: object
             state:

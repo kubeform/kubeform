@@ -428,10 +428,8 @@ spec:
           - name
           - namespaceName
           - notificationHubName
-          - primaryAccessKey
           - providerRef
           - resourceGroupName
-          - secondaryAccessKey
           type: object
         status:
           properties:
@@ -473,10 +471,8 @@ spec:
               - name
               - namespaceName
               - notificationHubName
-              - primaryAccessKey
               - providerRef
               - resourceGroupName
-              - secondaryAccessKey
               type: object
             state:
               properties:

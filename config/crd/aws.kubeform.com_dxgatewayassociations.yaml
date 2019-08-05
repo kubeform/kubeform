@@ -429,10 +429,7 @@ spec:
               description: Deprecated
               type: string
           required:
-          - associatedGatewayType
-          - dxGatewayAssociationID
           - dxGatewayID
-          - dxGatewayOwnerAccountID
           - providerRef
           type: object
         status:
@@ -476,10 +473,7 @@ spec:
                   description: Deprecated
                   type: string
               required:
-              - associatedGatewayType
-              - dxGatewayAssociationID
               - dxGatewayID
-              - dxGatewayOwnerAccountID
               - providerRef
               type: object
             state:

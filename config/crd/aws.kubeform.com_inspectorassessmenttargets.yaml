@@ -413,7 +413,6 @@ spec:
             resourceGroupArn:
               type: string
           required:
-          - arn
           - name
           - providerRef
           type: object
@@ -442,7 +441,6 @@ spec:
                 resourceGroupArn:
                   type: string
               required:
-              - arn
               - name
               - providerRef
               type: object

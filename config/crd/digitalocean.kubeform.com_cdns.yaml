@@ -419,8 +419,6 @@ spec:
             ttl:
               type: integer
           required:
-          - createdAt
-          - endpoint
           - origin
           - providerRef
           type: object
@@ -455,8 +453,6 @@ spec:
                 ttl:
                   type: integer
               required:
-              - createdAt
-              - endpoint
               - origin
               - providerRef
               type: object

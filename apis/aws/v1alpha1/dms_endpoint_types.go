@@ -59,7 +59,8 @@ type DmsEndpointSpec struct {
 	CertificateArn string `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
 	// +optional
 	DatabaseName string `json:"databaseName,omitempty" tf:"database_name,omitempty"`
-	EndpointArn  string `json:"endpointArn" tf:"endpoint_arn"`
+	// +optional
+	EndpointArn  string `json:"endpointArn,omitempty" tf:"endpoint_arn,omitempty"`
 	EndpointID   string `json:"endpointID" tf:"endpoint_id"`
 	EndpointType string `json:"endpointType" tf:"endpoint_type"`
 	EngineName   string `json:"engineName" tf:"engine_name"`

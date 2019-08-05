@@ -416,12 +416,6 @@ spec:
                   zoneRedundant:
                     description: Deprecated
                     type: boolean
-                required:
-                - creationDate
-                - licenseType
-                - maxSizeBytes
-                - state
-                - zoneRedundant
                 type: object
               maxItems: 1
               type: array
@@ -487,7 +481,6 @@ spec:
             zoneRedundant:
               type: boolean
           required:
-          - elasticPoolProperties
           - location
           - name
           - perDatabaseSettings
@@ -524,12 +517,6 @@ spec:
                       zoneRedundant:
                         description: Deprecated
                         type: boolean
-                    required:
-                    - creationDate
-                    - licenseType
-                    - maxSizeBytes
-                    - state
-                    - zoneRedundant
                     type: object
                   maxItems: 1
                   type: array
@@ -595,7 +582,6 @@ spec:
                 zoneRedundant:
                   type: boolean
               required:
-              - elasticPoolProperties
               - location
               - name
               - perDatabaseSettings

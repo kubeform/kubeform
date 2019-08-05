@@ -410,12 +410,6 @@ spec:
                     type: string
                   manufacturerHardwareCertificate:
                     type: string
-                required:
-                - awsHardwareCertificate
-                - clusterCertificate
-                - clusterCsr
-                - hsmCertificate
-                - manufacturerHardwareCertificate
                 type: object
               maxItems: 1
               type: array
@@ -450,14 +444,9 @@ spec:
             vpcID:
               type: string
           required:
-          - clusterCertificates
-          - clusterID
-          - clusterState
           - hsmType
           - providerRef
-          - securityGroupID
           - subnetIDS
-          - vpcID
           type: object
         status:
           properties:
@@ -481,12 +470,6 @@ spec:
                         type: string
                       manufacturerHardwareCertificate:
                         type: string
-                    required:
-                    - awsHardwareCertificate
-                    - clusterCertificate
-                    - clusterCsr
-                    - hsmCertificate
-                    - manufacturerHardwareCertificate
                     type: object
                   maxItems: 1
                   type: array
@@ -521,14 +504,9 @@ spec:
                 vpcID:
                   type: string
               required:
-              - clusterCertificates
-              - clusterID
-              - clusterState
               - hsmType
               - providerRef
-              - securityGroupID
               - subnetIDS
-              - vpcID
               type: object
             state:
               properties:

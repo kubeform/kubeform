@@ -448,7 +448,6 @@ spec:
           - name
           - providerRef
           - resourceGroupName
-          - syntheticMonitorID
           type: object
         status:
           properties:
@@ -510,7 +509,6 @@ spec:
               - name
               - providerRef
               - resourceGroupName
-              - syntheticMonitorID
               type: object
             state:
               properties:

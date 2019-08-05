@@ -31,8 +31,9 @@ type CognitoIdentityPoolSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	AllowUnauthenticatedIdentities bool   `json:"allowUnauthenticatedIdentities,omitempty" tf:"allow_unauthenticated_identities,omitempty"`
-	Arn                            string `json:"arn" tf:"arn"`
+	AllowUnauthenticatedIdentities bool `json:"allowUnauthenticatedIdentities,omitempty" tf:"allow_unauthenticated_identities,omitempty"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	CognitoIdentityProviders []CognitoIdentityPoolSpecCognitoIdentityProviders `json:"cognitoIdentityProviders,omitempty" tf:"cognito_identity_providers,omitempty"`

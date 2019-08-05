@@ -436,10 +436,7 @@ spec:
               type: string
           required:
           - name
-          - notAfter
           - providerRef
-          - sha1Fingerprint
-          - state
           type: object
         status:
           properties:
@@ -489,10 +486,7 @@ spec:
                   type: string
               required:
               - name
-              - notAfter
               - providerRef
-              - sha1Fingerprint
-              - state
               type: object
             state:
               properties:

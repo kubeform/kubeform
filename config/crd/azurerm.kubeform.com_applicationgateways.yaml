@@ -405,7 +405,6 @@ spec:
                   name:
                     type: string
                 required:
-                - ID
                 - name
                 type: object
               type: array
@@ -451,7 +450,6 @@ spec:
                   name:
                     type: string
                 required:
-                - ID
                 - name
                 type: object
               type: array
@@ -470,7 +468,6 @@ spec:
                         name:
                           type: string
                       required:
-                      - ID
                       - name
                       type: object
                     type: array
@@ -508,11 +505,9 @@ spec:
                   requestTimeout:
                     type: integer
                 required:
-                - ID
                 - cookieBasedAffinity
                 - name
                 - port
-                - probeID
                 - protocol
                 type: object
               minItems: 1
@@ -527,7 +522,6 @@ spec:
                   statusCode:
                     type: string
                 required:
-                - ID
                 - customErrorPageURL
                 - statusCode
                 type: object
@@ -555,7 +549,6 @@ spec:
                   subnetID:
                     type: string
                 required:
-                - ID
                 - name
                 type: object
               minItems: 1
@@ -570,7 +563,6 @@ spec:
                   port:
                     type: integer
                 required:
-                - ID
                 - name
                 - port
                 type: object
@@ -585,7 +577,6 @@ spec:
                   subnetID:
                     type: string
                 required:
-                - ID
                 - name
                 - subnetID
                 type: object
@@ -606,7 +597,6 @@ spec:
                         statusCode:
                           type: string
                       required:
-                      - ID
                       - customErrorPageURL
                       - statusCode
                       type: object
@@ -632,14 +622,10 @@ spec:
                   sslCertificateName:
                     type: string
                 required:
-                - ID
-                - frontendIPConfigurationID
                 - frontendIPConfigurationName
-                - frontendPortID
                 - frontendPortName
                 - name
                 - protocol
-                - sslCertificateID
                 type: object
               type: array
             location:
@@ -682,7 +668,6 @@ spec:
                   unhealthyThreshold:
                     type: integer
                 required:
-                - ID
                 - interval
                 - name
                 - path
@@ -720,10 +705,8 @@ spec:
                   targetURL:
                     type: string
                 required:
-                - ID
                 - name
                 - redirectType
-                - targetListenerID
                 type: object
               type: array
             requestRoutingRule:
@@ -760,16 +743,9 @@ spec:
                   urlPathMapName:
                     type: string
                 required:
-                - ID
-                - backendAddressPoolID
-                - backendHTTPSettingsID
-                - httpListenerID
                 - httpListenerName
                 - name
-                - redirectConfigurationID
-                - rewriteRuleSetID
                 - ruleType
-                - urlPathMapID
                 type: object
               minItems: 1
               type: array
@@ -835,7 +811,6 @@ spec:
                       type: object
                     type: array
                 required:
-                - ID
                 - name
                 type: object
               type: array
@@ -873,9 +848,7 @@ spec:
                   publicCertData:
                     type: string
                 required:
-                - ID
                 - name
-                - publicCertData
                 type: object
               type: array
             sslPolicy:
@@ -952,21 +925,11 @@ spec:
                         rewriteRuleSetName:
                           type: string
                       required:
-                      - ID
-                      - backendAddressPoolID
-                      - backendHTTPSettingsID
                       - name
                       - paths
-                      - redirectConfigurationID
-                      - rewriteRuleSetID
                       type: object
                     type: array
                 required:
-                - ID
-                - defaultBackendAddressPoolID
-                - defaultBackendHTTPSettingsID
-                - defaultRedirectConfigurationID
-                - defaultRewriteRuleSetID
                 - name
                 - pathRule
                 type: object
@@ -1057,7 +1020,6 @@ spec:
                       name:
                         type: string
                     required:
-                    - ID
                     - name
                     type: object
                   type: array
@@ -1103,7 +1065,6 @@ spec:
                       name:
                         type: string
                     required:
-                    - ID
                     - name
                     type: object
                   type: array
@@ -1122,7 +1083,6 @@ spec:
                             name:
                               type: string
                           required:
-                          - ID
                           - name
                           type: object
                         type: array
@@ -1160,11 +1120,9 @@ spec:
                       requestTimeout:
                         type: integer
                     required:
-                    - ID
                     - cookieBasedAffinity
                     - name
                     - port
-                    - probeID
                     - protocol
                     type: object
                   minItems: 1
@@ -1179,7 +1137,6 @@ spec:
                       statusCode:
                         type: string
                     required:
-                    - ID
                     - customErrorPageURL
                     - statusCode
                     type: object
@@ -1207,7 +1164,6 @@ spec:
                       subnetID:
                         type: string
                     required:
-                    - ID
                     - name
                     type: object
                   minItems: 1
@@ -1222,7 +1178,6 @@ spec:
                       port:
                         type: integer
                     required:
-                    - ID
                     - name
                     - port
                     type: object
@@ -1237,7 +1192,6 @@ spec:
                       subnetID:
                         type: string
                     required:
-                    - ID
                     - name
                     - subnetID
                     type: object
@@ -1258,7 +1212,6 @@ spec:
                             statusCode:
                               type: string
                           required:
-                          - ID
                           - customErrorPageURL
                           - statusCode
                           type: object
@@ -1284,14 +1237,10 @@ spec:
                       sslCertificateName:
                         type: string
                     required:
-                    - ID
-                    - frontendIPConfigurationID
                     - frontendIPConfigurationName
-                    - frontendPortID
                     - frontendPortName
                     - name
                     - protocol
-                    - sslCertificateID
                     type: object
                   type: array
                 location:
@@ -1334,7 +1283,6 @@ spec:
                       unhealthyThreshold:
                         type: integer
                     required:
-                    - ID
                     - interval
                     - name
                     - path
@@ -1372,10 +1320,8 @@ spec:
                       targetURL:
                         type: string
                     required:
-                    - ID
                     - name
                     - redirectType
-                    - targetListenerID
                     type: object
                   type: array
                 requestRoutingRule:
@@ -1412,16 +1358,9 @@ spec:
                       urlPathMapName:
                         type: string
                     required:
-                    - ID
-                    - backendAddressPoolID
-                    - backendHTTPSettingsID
-                    - httpListenerID
                     - httpListenerName
                     - name
-                    - redirectConfigurationID
-                    - rewriteRuleSetID
                     - ruleType
-                    - urlPathMapID
                     type: object
                   minItems: 1
                   type: array
@@ -1487,7 +1426,6 @@ spec:
                           type: object
                         type: array
                     required:
-                    - ID
                     - name
                     type: object
                   type: array
@@ -1525,9 +1463,7 @@ spec:
                       publicCertData:
                         type: string
                     required:
-                    - ID
                     - name
-                    - publicCertData
                     type: object
                   type: array
                 sslPolicy:
@@ -1604,21 +1540,11 @@ spec:
                             rewriteRuleSetName:
                               type: string
                           required:
-                          - ID
-                          - backendAddressPoolID
-                          - backendHTTPSettingsID
                           - name
                           - paths
-                          - redirectConfigurationID
-                          - rewriteRuleSetID
                           type: object
                         type: array
                     required:
-                    - ID
-                    - defaultBackendAddressPoolID
-                    - defaultBackendHTTPSettingsID
-                    - defaultRedirectConfigurationID
-                    - defaultRewriteRuleSetID
                     - name
                     - pathRule
                     type: object

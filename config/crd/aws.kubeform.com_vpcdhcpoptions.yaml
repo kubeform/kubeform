@@ -429,7 +429,6 @@ spec:
                 type: string
               type: object
           required:
-          - ownerID
           - providerRef
           type: object
         status:
@@ -473,7 +472,6 @@ spec:
                     type: string
                   type: object
               required:
-              - ownerID
               - providerRef
               type: object
             state:

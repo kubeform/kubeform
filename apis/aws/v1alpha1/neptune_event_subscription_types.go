@@ -21,8 +21,10 @@ type NeptuneEventSubscription struct {
 type NeptuneEventSubscriptionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn           string `json:"arn" tf:"arn"`
-	CustomerAwsID string `json:"customerAwsID" tf:"customer_aws_id"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	CustomerAwsID string `json:"customerAwsID,omitempty" tf:"customer_aws_id,omitempty"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional

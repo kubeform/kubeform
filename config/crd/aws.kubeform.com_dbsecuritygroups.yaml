@@ -431,7 +431,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - ingress
           - name
           - providerRef
@@ -479,7 +478,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - ingress
               - name
               - providerRef

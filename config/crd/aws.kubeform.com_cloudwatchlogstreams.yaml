@@ -413,7 +413,6 @@ spec:
                   type: string
               type: object
           required:
-          - arn
           - logGroupName
           - name
           - providerRef
@@ -443,7 +442,6 @@ spec:
                       type: string
                   type: object
               required:
-              - arn
               - logGroupName
               - name
               - providerRef

@@ -21,13 +21,17 @@ type DxConnection struct {
 type DxConnectionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn                  string `json:"arn" tf:"arn"`
-	AwsDevice            string `json:"awsDevice" tf:"aws_device"`
-	Bandwidth            string `json:"bandwidth" tf:"bandwidth"`
-	HasLogicalRedundancy string `json:"hasLogicalRedundancy" tf:"has_logical_redundancy"`
-	JumboFrameCapable    bool   `json:"jumboFrameCapable" tf:"jumbo_frame_capable"`
-	Location             string `json:"location" tf:"location"`
-	Name                 string `json:"name" tf:"name"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	AwsDevice string `json:"awsDevice,omitempty" tf:"aws_device,omitempty"`
+	Bandwidth string `json:"bandwidth" tf:"bandwidth"`
+	// +optional
+	HasLogicalRedundancy string `json:"hasLogicalRedundancy,omitempty" tf:"has_logical_redundancy,omitempty"`
+	// +optional
+	JumboFrameCapable bool   `json:"jumboFrameCapable,omitempty" tf:"jumbo_frame_capable,omitempty"`
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

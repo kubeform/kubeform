@@ -537,7 +537,6 @@ spec:
             sslPolicy:
               type: string
           required:
-          - arn
           - defaultAction
           - loadBalancerArn
           - port
@@ -692,7 +691,6 @@ spec:
                 sslPolicy:
                   type: string
               required:
-              - arn
               - defaultAction
               - loadBalancerArn
               - port

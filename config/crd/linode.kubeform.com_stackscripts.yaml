@@ -443,13 +443,6 @@ spec:
                     type: string
                   oneOf:
                     type: string
-                required:
-                - default
-                - example
-                - label
-                - manyOf
-                - name
-                - oneOf
                 type: object
               type: array
             userGravatarID:
@@ -457,17 +450,11 @@ spec:
             username:
               type: string
           required:
-          - created
-          - deploymentsActive
-          - deploymentsTotal
           - description
           - images
           - label
           - providerRef
           - script
-          - updated
-          - userGravatarID
-          - username
           type: object
         status:
           properties:
@@ -524,13 +511,6 @@ spec:
                         type: string
                       oneOf:
                         type: string
-                    required:
-                    - default
-                    - example
-                    - label
-                    - manyOf
-                    - name
-                    - oneOf
                     type: object
                   type: array
                 userGravatarID:
@@ -538,17 +518,11 @@ spec:
                 username:
                   type: string
               required:
-              - created
-              - deploymentsActive
-              - deploymentsTotal
               - description
               - images
               - label
               - providerRef
               - script
-              - updated
-              - userGravatarID
-              - username
               type: object
             state:
               properties:

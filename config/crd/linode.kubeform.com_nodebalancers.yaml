@@ -437,23 +437,13 @@ spec:
                   total:
                     description: A Number represents a JSON number literal.
                     type: string
-                required:
-                - in
-                - out
-                - total
                 type: object
               type: object
             updated:
               type: string
           required:
-          - created
-          - hostname
-          - ipv4
-          - ipv6
           - providerRef
           - region
-          - transfer
-          - updated
           type: object
         status:
           properties:
@@ -504,23 +494,13 @@ spec:
                       total:
                         description: A Number represents a JSON number literal.
                         type: string
-                    required:
-                    - in
-                    - out
-                    - total
                     type: object
                   type: object
                 updated:
                   type: string
               required:
-              - created
-              - hostname
-              - ipv4
-              - ipv6
               - providerRef
               - region
-              - transfer
-              - updated
               type: object
             state:
               properties:

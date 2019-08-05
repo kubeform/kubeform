@@ -443,8 +443,6 @@ spec:
               maxItems: 1
               type: array
           required:
-          - fqdn
-          - ipAddress
           - location
           - name
           - providerRef
@@ -505,8 +503,6 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - fqdn
-              - ipAddress
               - location
               - name
               - providerRef

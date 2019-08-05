@@ -411,7 +411,6 @@ spec:
                   name:
                     type: string
                 required:
-                - ID
                 - name
                 type: object
               minItems: 1
@@ -466,7 +465,6 @@ spec:
                       name:
                         type: string
                     required:
-                    - ID
                     - name
                     type: object
                   minItems: 1

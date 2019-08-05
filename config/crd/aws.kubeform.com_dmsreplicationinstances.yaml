@@ -451,11 +451,8 @@ spec:
               uniqueItems: true
           required:
           - providerRef
-          - replicationInstanceArn
           - replicationInstanceClass
           - replicationInstanceID
-          - replicationInstancePrivateIPS
-          - replicationInstancePublicIPS
           type: object
         status:
           properties:
@@ -520,11 +517,8 @@ spec:
                   uniqueItems: true
               required:
               - providerRef
-              - replicationInstanceArn
               - replicationInstanceClass
               - replicationInstanceID
-              - replicationInstancePrivateIPS
-              - replicationInstancePublicIPS
               type: object
             state:
               properties:

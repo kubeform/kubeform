@@ -24,21 +24,29 @@ type DropletSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	Backups            bool   `json:"backups,omitempty" tf:"backups,omitempty"`
-	Disk               int    `json:"disk" tf:"disk"`
-	Image              string `json:"image" tf:"image"`
-	Ipv4Address        string `json:"ipv4Address" tf:"ipv4_address"`
-	Ipv4AddressPrivate string `json:"ipv4AddressPrivate" tf:"ipv4_address_private"`
+	Backups bool `json:"backups,omitempty" tf:"backups,omitempty"`
 	// +optional
-	Ipv6        bool   `json:"ipv6,omitempty" tf:"ipv6,omitempty"`
-	Ipv6Address string `json:"ipv6Address" tf:"ipv6_address"`
-	Locked      bool   `json:"locked" tf:"locked"`
-	Memory      int    `json:"memory" tf:"memory"`
+	Disk  int    `json:"disk,omitempty" tf:"disk,omitempty"`
+	Image string `json:"image" tf:"image"`
 	// +optional
-	Monitoring   bool        `json:"monitoring,omitempty" tf:"monitoring,omitempty"`
-	Name         string      `json:"name" tf:"name"`
-	PriceHourly  json.Number `json:"priceHourly" tf:"price_hourly"`
-	PriceMonthly json.Number `json:"priceMonthly" tf:"price_monthly"`
+	Ipv4Address string `json:"ipv4Address,omitempty" tf:"ipv4_address,omitempty"`
+	// +optional
+	Ipv4AddressPrivate string `json:"ipv4AddressPrivate,omitempty" tf:"ipv4_address_private,omitempty"`
+	// +optional
+	Ipv6 bool `json:"ipv6,omitempty" tf:"ipv6,omitempty"`
+	// +optional
+	Ipv6Address string `json:"ipv6Address,omitempty" tf:"ipv6_address,omitempty"`
+	// +optional
+	Locked bool `json:"locked,omitempty" tf:"locked,omitempty"`
+	// +optional
+	Memory int `json:"memory,omitempty" tf:"memory,omitempty"`
+	// +optional
+	Monitoring bool   `json:"monitoring,omitempty" tf:"monitoring,omitempty"`
+	Name       string `json:"name" tf:"name"`
+	// +optional
+	PriceHourly json.Number `json:"priceHourly,omitempty" tf:"price_hourly,omitempty"`
+	// +optional
+	PriceMonthly json.Number `json:"priceMonthly,omitempty" tf:"price_monthly,omitempty"`
 	// +optional
 	PrivateNetworking bool   `json:"privateNetworking,omitempty" tf:"private_networking,omitempty"`
 	Region            string `json:"region" tf:"region"`
@@ -48,14 +56,17 @@ type DropletSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SshKeys []string `json:"sshKeys,omitempty" tf:"ssh_keys,omitempty"`
-	Status  string   `json:"status" tf:"status"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Urn  string   `json:"urn" tf:"urn"`
+	// +optional
+	Urn string `json:"urn,omitempty" tf:"urn,omitempty"`
 	// +optional
 	UserData string `json:"userData,omitempty" tf:"user_data,omitempty"`
-	Vcpus    int    `json:"vcpus" tf:"vcpus"`
+	// +optional
+	Vcpus int `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	VolumeIDS []string `json:"volumeIDS,omitempty" tf:"volume_ids,omitempty"`

@@ -413,7 +413,6 @@ spec:
                   type: string
               type: object
           required:
-          - accountID
           - providerRef
           type: object
         status:
@@ -441,7 +440,6 @@ spec:
                       type: string
                   type: object
               required:
-              - accountID
               - providerRef
               type: object
             state:

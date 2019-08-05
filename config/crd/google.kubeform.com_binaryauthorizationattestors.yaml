@@ -414,12 +414,10 @@ spec:
                         comment:
                           type: string
                       required:
-                      - ID
                       - asciiArmoredPgpPublicKey
                       type: object
                     type: array
                 required:
-                - delegationServiceAccountEmail
                 - noteReference
                 type: object
               maxItems: 1
@@ -470,12 +468,10 @@ spec:
                             comment:
                               type: string
                           required:
-                          - ID
                           - asciiArmoredPgpPublicKey
                           type: object
                         type: array
                     required:
-                    - delegationServiceAccountEmail
                     - noteReference
                     type: object
                   maxItems: 1

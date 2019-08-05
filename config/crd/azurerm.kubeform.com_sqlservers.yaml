@@ -433,7 +433,6 @@ spec:
               type: string
           required:
           - administratorLogin
-          - fullyQualifiedDomainName
           - location
           - name
           - providerRef
@@ -485,7 +484,6 @@ spec:
                   type: string
               required:
               - administratorLogin
-              - fullyQualifiedDomainName
               - location
               - name
               - providerRef

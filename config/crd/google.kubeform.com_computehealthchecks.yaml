@@ -487,11 +487,8 @@ spec:
             unhealthyThreshold:
               type: integer
           required:
-          - creationTimestamp
           - name
           - providerRef
-          - selfLink
-          - type
           type: object
         status:
           properties:
@@ -592,11 +589,8 @@ spec:
                 unhealthyThreshold:
                   type: integer
               required:
-              - creationTimestamp
               - name
               - providerRef
-              - selfLink
-              - type
               type: object
             state:
               properties:

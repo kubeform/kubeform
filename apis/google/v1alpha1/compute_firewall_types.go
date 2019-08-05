@@ -35,8 +35,9 @@ type ComputeFirewallSpec struct {
 
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Allow             []ComputeFirewallSpecAllow `json:"allow,omitempty" tf:"allow,omitempty"`
-	CreationTimestamp string                     `json:"creationTimestamp" tf:"creation_timestamp"`
+	Allow []ComputeFirewallSpecAllow `json:"allow,omitempty" tf:"allow,omitempty"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Deny []ComputeFirewallSpecDeny `json:"deny,omitempty" tf:"deny,omitempty"`
@@ -57,8 +58,9 @@ type ComputeFirewallSpec struct {
 	// +optional
 	Priority int `json:"priority,omitempty" tf:"priority,omitempty"`
 	// +optional
-	Project  string `json:"project,omitempty" tf:"project,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SourceRanges []string `json:"sourceRanges,omitempty" tf:"source_ranges,omitempty"`

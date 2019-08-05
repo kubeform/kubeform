@@ -430,7 +430,6 @@ spec:
             workspaceName:
               type: string
           required:
-          - name
           - providerRef
           - resourceGroupName
           - workspaceName
@@ -477,7 +476,6 @@ spec:
                 workspaceName:
                   type: string
               required:
-              - name
               - providerRef
               - resourceGroupName
               - workspaceName

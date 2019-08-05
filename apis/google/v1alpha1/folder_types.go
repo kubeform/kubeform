@@ -21,11 +21,14 @@ type Folder struct {
 type FolderSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CreateTime     string `json:"createTime" tf:"create_time"`
-	DisplayName    string `json:"displayName" tf:"display_name"`
-	LifecycleState string `json:"lifecycleState" tf:"lifecycle_state"`
-	Name           string `json:"name" tf:"name"`
-	Parent         string `json:"parent" tf:"parent"`
+	// +optional
+	CreateTime  string `json:"createTime,omitempty" tf:"create_time,omitempty"`
+	DisplayName string `json:"displayName" tf:"display_name"`
+	// +optional
+	LifecycleState string `json:"lifecycleState,omitempty" tf:"lifecycle_state,omitempty"`
+	// +optional
+	Name   string `json:"name,omitempty" tf:"name,omitempty"`
+	Parent string `json:"parent" tf:"parent"`
 }
 
 type FolderStatus struct {

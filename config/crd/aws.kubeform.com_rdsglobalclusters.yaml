@@ -423,9 +423,7 @@ spec:
             storageEncrypted:
               type: boolean
           required:
-          - arn
           - globalClusterIdentifier
-          - globalClusterResourceID
           - providerRef
           type: object
         status:
@@ -463,9 +461,7 @@ spec:
                 storageEncrypted:
                   type: boolean
               required:
-              - arn
               - globalClusterIdentifier
-              - globalClusterResourceID
               - providerRef
               type: object
             state:

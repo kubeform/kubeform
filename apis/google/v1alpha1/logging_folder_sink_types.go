@@ -28,7 +28,8 @@ type LoggingFolderSinkSpec struct {
 	// +optional
 	IncludeChildren bool   `json:"includeChildren,omitempty" tf:"include_children,omitempty"`
 	Name            string `json:"name" tf:"name"`
-	WriterIdentity  string `json:"writerIdentity" tf:"writer_identity"`
+	// +optional
+	WriterIdentity string `json:"writerIdentity,omitempty" tf:"writer_identity,omitempty"`
 }
 
 type LoggingFolderSinkStatus struct {

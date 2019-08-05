@@ -28,7 +28,8 @@ type AppautoscalingScheduledActionSpecScalableTargetAction struct {
 type AppautoscalingScheduledActionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	EndTime    string `json:"endTime,omitempty" tf:"end_time,omitempty"`
 	Name       string `json:"name" tf:"name"`

@@ -19,7 +19,8 @@ type SqlDatabaseInstance struct {
 }
 
 type SqlDatabaseInstanceSpecIpAddress struct {
-	IpAddress string `json:"ipAddress" tf:"ip_address"`
+	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional
 	TimeToRetire string `json:"timeToRetire,omitempty" tf:"time_to_retire,omitempty"`
 }
@@ -50,11 +51,16 @@ type SqlDatabaseInstanceSpecReplicaConfiguration struct {
 }
 
 type SqlDatabaseInstanceSpecServerCaCert struct {
-	Cert            string `json:"cert" tf:"cert"`
-	CommonName      string `json:"commonName" tf:"common_name"`
-	CreateTime      string `json:"createTime" tf:"create_time"`
-	ExpirationTime  string `json:"expirationTime" tf:"expiration_time"`
-	Sha1Fingerprint string `json:"sha1Fingerprint" tf:"sha1_fingerprint"`
+	// +optional
+	Cert string `json:"cert,omitempty" tf:"cert,omitempty"`
+	// +optional
+	CommonName string `json:"commonName,omitempty" tf:"common_name,omitempty"`
+	// +optional
+	CreateTime string `json:"createTime,omitempty" tf:"create_time,omitempty"`
+	// +optional
+	ExpirationTime string `json:"expirationTime,omitempty" tf:"expiration_time,omitempty"`
+	// +optional
+	Sha1Fingerprint string `json:"sha1Fingerprint,omitempty" tf:"sha1_fingerprint,omitempty"`
 }
 
 type SqlDatabaseInstanceSpecSettingsBackupConfiguration struct {
@@ -146,7 +152,8 @@ type SqlDatabaseInstanceSpecSettings struct {
 	Tier            string `json:"tier" tf:"tier"`
 	// +optional
 	UserLabels map[string]string `json:"userLabels,omitempty" tf:"user_labels,omitempty"`
-	Version    int               `json:"version" tf:"version"`
+	// +optional
+	Version int `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type SqlDatabaseInstanceSpec struct {
@@ -154,11 +161,14 @@ type SqlDatabaseInstanceSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	ConnectionName string `json:"connectionName" tf:"connection_name"`
 	// +optional
-	DatabaseVersion string                             `json:"databaseVersion,omitempty" tf:"database_version,omitempty"`
-	FirstIPAddress  string                             `json:"firstIPAddress" tf:"first_ip_address"`
-	IpAddress       []SqlDatabaseInstanceSpecIpAddress `json:"ipAddress" tf:"ip_address"`
+	ConnectionName string `json:"connectionName,omitempty" tf:"connection_name,omitempty"`
+	// +optional
+	DatabaseVersion string `json:"databaseVersion,omitempty" tf:"database_version,omitempty"`
+	// +optional
+	FirstIPAddress string `json:"firstIPAddress,omitempty" tf:"first_ip_address,omitempty"`
+	// +optional
+	IpAddress []SqlDatabaseInstanceSpecIpAddress `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional
 	MasterInstanceName string `json:"masterInstanceName,omitempty" tf:"master_instance_name,omitempty"`
 	// +optional
@@ -170,10 +180,13 @@ type SqlDatabaseInstanceSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ReplicaConfiguration []SqlDatabaseInstanceSpecReplicaConfiguration `json:"replicaConfiguration,omitempty" tf:"replica_configuration,omitempty"`
-	SelfLink             string                                        `json:"selfLink" tf:"self_link"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	ServerCaCert               []SqlDatabaseInstanceSpecServerCaCert `json:"serverCaCert" tf:"server_ca_cert"`
-	ServiceAccountEmailAddress string                                `json:"serviceAccountEmailAddress" tf:"service_account_email_address"`
+	ServerCaCert []SqlDatabaseInstanceSpecServerCaCert `json:"serverCaCert,omitempty" tf:"server_ca_cert,omitempty"`
+	// +optional
+	ServiceAccountEmailAddress string `json:"serviceAccountEmailAddress,omitempty" tf:"service_account_email_address,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	Settings []SqlDatabaseInstanceSpecSettings `json:"settings" tf:"settings"`
 }

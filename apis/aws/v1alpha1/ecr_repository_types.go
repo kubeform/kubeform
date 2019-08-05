@@ -21,10 +21,13 @@ type EcrRepository struct {
 type EcrRepositorySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn           string `json:"arn" tf:"arn"`
-	Name          string `json:"name" tf:"name"`
-	RegistryID    string `json:"registryID" tf:"registry_id"`
-	RepositoryURL string `json:"repositoryURL" tf:"repository_url"`
+	// +optional
+	Arn  string `json:"arn,omitempty" tf:"arn,omitempty"`
+	Name string `json:"name" tf:"name"`
+	// +optional
+	RegistryID string `json:"registryID,omitempty" tf:"registry_id,omitempty"`
+	// +optional
+	RepositoryURL string `json:"repositoryURL,omitempty" tf:"repository_url,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

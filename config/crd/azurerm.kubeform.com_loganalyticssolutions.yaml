@@ -411,7 +411,6 @@ spec:
                   publisher:
                     type: string
                 required:
-                - name
                 - product
                 - publisher
                 type: object
@@ -466,7 +465,6 @@ spec:
                       publisher:
                         type: string
                     required:
-                    - name
                     - product
                     - publisher
                     type: object

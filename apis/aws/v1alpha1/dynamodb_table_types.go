@@ -62,7 +62,8 @@ type DynamodbTableSpecTtl struct {
 type DynamodbTableSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
 	Attribute []DynamodbTableSpecAttribute `json:"attribute" tf:"attribute"`
 	// +optional
@@ -85,10 +86,12 @@ type DynamodbTableSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ServerSideEncryption []DynamodbTableSpecServerSideEncryption `json:"serverSideEncryption,omitempty" tf:"server_side_encryption,omitempty"`
-	StreamArn            string                                  `json:"streamArn" tf:"stream_arn"`
 	// +optional
-	StreamEnabled bool   `json:"streamEnabled,omitempty" tf:"stream_enabled,omitempty"`
-	StreamLabel   string `json:"streamLabel" tf:"stream_label"`
+	StreamArn string `json:"streamArn,omitempty" tf:"stream_arn,omitempty"`
+	// +optional
+	StreamEnabled bool `json:"streamEnabled,omitempty" tf:"stream_enabled,omitempty"`
+	// +optional
+	StreamLabel string `json:"streamLabel,omitempty" tf:"stream_label,omitempty"`
 	// +optional
 	StreamViewType string `json:"streamViewType,omitempty" tf:"stream_view_type,omitempty"`
 	// +optional

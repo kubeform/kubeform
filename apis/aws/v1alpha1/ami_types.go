@@ -57,14 +57,16 @@ type AmiSpec struct {
 	// +optional
 	ImageLocation string `json:"imageLocation,omitempty" tf:"image_location,omitempty"`
 	// +optional
-	KernelID           string `json:"kernelID,omitempty" tf:"kernel_id,omitempty"`
-	ManageEbsSnapshots bool   `json:"manageEbsSnapshots" tf:"manage_ebs_snapshots"`
+	KernelID string `json:"kernelID,omitempty" tf:"kernel_id,omitempty"`
+	// +optional
+	ManageEbsSnapshots bool   `json:"manageEbsSnapshots,omitempty" tf:"manage_ebs_snapshots,omitempty"`
 	Name               string `json:"name" tf:"name"`
 	// +optional
 	RamdiskID string `json:"ramdiskID,omitempty" tf:"ramdisk_id,omitempty"`
 	// +optional
 	RootDeviceName string `json:"rootDeviceName,omitempty" tf:"root_device_name,omitempty"`
-	RootSnapshotID string `json:"rootSnapshotID" tf:"root_snapshot_id"`
+	// +optional
+	RootSnapshotID string `json:"rootSnapshotID,omitempty" tf:"root_snapshot_id,omitempty"`
 	// +optional
 	SriovNetSupport string `json:"sriovNetSupport,omitempty" tf:"sriov_net_support,omitempty"`
 	// +optional

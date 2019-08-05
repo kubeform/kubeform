@@ -441,9 +441,7 @@ spec:
           - destRange
           - name
           - network
-          - nextHopNetwork
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -498,9 +496,7 @@ spec:
               - destRange
               - name
               - network
-              - nextHopNetwork
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

@@ -26,9 +26,12 @@ type MqBrokerSpecConfiguration struct {
 }
 
 type MqBrokerSpecInstances struct {
-	ConsoleURL string   `json:"consoleURL" tf:"console_url"`
-	Endpoints  []string `json:"endpoints" tf:"endpoints"`
-	IpAddress  string   `json:"ipAddress" tf:"ip_address"`
+	// +optional
+	ConsoleURL string `json:"consoleURL,omitempty" tf:"console_url,omitempty"`
+	// +optional
+	Endpoints []string `json:"endpoints,omitempty" tf:"endpoints,omitempty"`
+	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 }
 
 type MqBrokerSpecLogs struct {
@@ -60,8 +63,9 @@ type MqBrokerSpec struct {
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	ApplyImmediately bool   `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
-	Arn              string `json:"arn" tf:"arn"`
+	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	AutoMinorVersionUpgrade bool   `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
 	BrokerName              string `json:"brokerName" tf:"broker_name"`
@@ -69,11 +73,12 @@ type MqBrokerSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Configuration []MqBrokerSpecConfiguration `json:"configuration,omitempty" tf:"configuration,omitempty"`
 	// +optional
-	DeploymentMode   string                  `json:"deploymentMode,omitempty" tf:"deployment_mode,omitempty"`
-	EngineType       string                  `json:"engineType" tf:"engine_type"`
-	EngineVersion    string                  `json:"engineVersion" tf:"engine_version"`
-	HostInstanceType string                  `json:"hostInstanceType" tf:"host_instance_type"`
-	Instances        []MqBrokerSpecInstances `json:"instances" tf:"instances"`
+	DeploymentMode   string `json:"deploymentMode,omitempty" tf:"deployment_mode,omitempty"`
+	EngineType       string `json:"engineType" tf:"engine_type"`
+	EngineVersion    string `json:"engineVersion" tf:"engine_version"`
+	HostInstanceType string `json:"hostInstanceType" tf:"host_instance_type"`
+	// +optional
+	Instances []MqBrokerSpecInstances `json:"instances,omitempty" tf:"instances,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Logs []MqBrokerSpecLogs `json:"logs,omitempty" tf:"logs,omitempty"`

@@ -22,8 +22,9 @@ type ComputeInstanceFromTemplateSpecAttachedDisk struct {
 	// +optional
 	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
 	// +optional
-	DiskEncryptionKeyRaw    string `json:"-" sensitive:"true" tf:"disk_encryption_key_raw,omitempty"`
-	DiskEncryptionKeySha256 string `json:"diskEncryptionKeySha256" tf:"disk_encryption_key_sha256"`
+	DiskEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"disk_encryption_key_raw,omitempty"`
+	// +optional
+	DiskEncryptionKeySha256 string `json:"diskEncryptionKeySha256,omitempty" tf:"disk_encryption_key_sha256,omitempty"`
 	// +optional
 	Mode   string `json:"mode,omitempty" tf:"mode,omitempty"`
 	Source string `json:"source" tf:"source"`
@@ -44,8 +45,9 @@ type ComputeInstanceFromTemplateSpecBootDisk struct {
 	// +optional
 	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
 	// +optional
-	DiskEncryptionKeyRaw    string `json:"-" sensitive:"true" tf:"disk_encryption_key_raw,omitempty"`
-	DiskEncryptionKeySha256 string `json:"diskEncryptionKeySha256" tf:"disk_encryption_key_sha256"`
+	DiskEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"disk_encryption_key_raw,omitempty"`
+	// +optional
+	DiskEncryptionKeySha256 string `json:"diskEncryptionKeySha256,omitempty" tf:"disk_encryption_key_sha256,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	InitializeParams []ComputeInstanceFromTemplateSpecBootDiskInitializeParams `json:"initializeParams,omitempty" tf:"initialize_params,omitempty"`
@@ -59,8 +61,9 @@ type ComputeInstanceFromTemplateSpecGuestAccelerator struct {
 }
 
 type ComputeInstanceFromTemplateSpecNetworkInterfaceAccessConfig struct {
+	// +optional
 	// Deprecated
-	AssignedNATIP string `json:"assignedNATIP" tf:"assigned_nat_ip"`
+	AssignedNATIP string `json:"assignedNATIP,omitempty" tf:"assigned_nat_ip,omitempty"`
 	// +optional
 	NatIP string `json:"natIP,omitempty" tf:"nat_ip,omitempty"`
 	// +optional
@@ -83,7 +86,8 @@ type ComputeInstanceFromTemplateSpecNetworkInterface struct {
 	Address string `json:"address,omitempty" tf:"address,omitempty"`
 	// +optional
 	AliasIPRange []ComputeInstanceFromTemplateSpecNetworkInterfaceAliasIPRange `json:"aliasIPRange,omitempty" tf:"alias_ip_range,omitempty"`
-	Name         string                                                        `json:"name" tf:"name"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	Network string `json:"network,omitempty" tf:"network,omitempty"`
 	// +optional
@@ -128,23 +132,27 @@ type ComputeInstanceFromTemplateSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	BootDisk []ComputeInstanceFromTemplateSpecBootDisk `json:"bootDisk,omitempty" tf:"boot_disk,omitempty"`
 	// +optional
-	CanIPForward bool   `json:"canIPForward,omitempty" tf:"can_ip_forward,omitempty"`
-	CpuPlatform  string `json:"cpuPlatform" tf:"cpu_platform"`
+	CanIPForward bool `json:"canIPForward,omitempty" tf:"can_ip_forward,omitempty"`
+	// +optional
+	CpuPlatform string `json:"cpuPlatform,omitempty" tf:"cpu_platform,omitempty"`
 	// +optional
 	DeletionProtection bool `json:"deletionProtection,omitempty" tf:"deletion_protection,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	GuestAccelerator []ComputeInstanceFromTemplateSpecGuestAccelerator `json:"guestAccelerator,omitempty" tf:"guest_accelerator,omitempty"`
-	InstanceID       string                                            `json:"instanceID" tf:"instance_id"`
-	LabelFingerprint string                                            `json:"labelFingerprint" tf:"label_fingerprint"`
+	// +optional
+	InstanceID string `json:"instanceID,omitempty" tf:"instance_id,omitempty"`
+	// +optional
+	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
 	MachineType string `json:"machineType,omitempty" tf:"machine_type,omitempty"`
 	// +optional
-	Metadata            map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
-	MetadataFingerprint string            `json:"metadataFingerprint" tf:"metadata_fingerprint"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	// +optional
+	MetadataFingerprint string `json:"metadataFingerprint,omitempty" tf:"metadata_fingerprint,omitempty"`
 	// +optional
 	MetadataStartupScript string `json:"metadataStartupScript,omitempty" tf:"metadata_startup_script,omitempty"`
 	// +optional
@@ -159,15 +167,17 @@ type ComputeInstanceFromTemplateSpec struct {
 	Scheduling []ComputeInstanceFromTemplateSpecScheduling `json:"scheduling,omitempty" tf:"scheduling,omitempty"`
 	// +optional
 	ScratchDisk []ComputeInstanceFromTemplateSpecScratchDisk `json:"scratchDisk,omitempty" tf:"scratch_disk,omitempty"`
-	SelfLink    string                                       `json:"selfLink" tf:"self_link"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ServiceAccount         []ComputeInstanceFromTemplateSpecServiceAccount `json:"serviceAccount,omitempty" tf:"service_account,omitempty"`
 	SourceInstanceTemplate string                                          `json:"sourceInstanceTemplate" tf:"source_instance_template"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Tags            []string `json:"tags,omitempty" tf:"tags,omitempty"`
-	TagsFingerprint string   `json:"tagsFingerprint" tf:"tags_fingerprint"`
+	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	TagsFingerprint string `json:"tagsFingerprint,omitempty" tf:"tags_fingerprint,omitempty"`
 	// +optional
 	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }

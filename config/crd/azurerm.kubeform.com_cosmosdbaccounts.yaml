@@ -455,7 +455,6 @@ spec:
                   prefix:
                     type: string
                 required:
-                - ID
                 - failoverPriority
                 - location
                 type: object
@@ -516,15 +515,11 @@ spec:
                 type: string
               type: array
           required:
-          - consistencyPolicy
-          - endpoint
           - location
           - name
           - offerType
           - providerRef
-          - readEndpoints
           - resourceGroupName
-          - writeEndpoints
           type: object
         status:
           properties:
@@ -593,7 +588,6 @@ spec:
                       prefix:
                         type: string
                     required:
-                    - ID
                     - failoverPriority
                     - location
                     type: object
@@ -654,15 +648,11 @@ spec:
                     type: string
                   type: array
               required:
-              - consistencyPolicy
-              - endpoint
               - location
               - name
               - offerType
               - providerRef
-              - readEndpoints
               - resourceGroupName
-              - writeEndpoints
               type: object
             state:
               properties:

@@ -21,14 +21,18 @@ type DefaultVpcDHCPOptions struct {
 type DefaultVpcDHCPOptionsSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	DomainName        string `json:"domainName" tf:"domain_name"`
-	DomainNameServers string `json:"domainNameServers" tf:"domain_name_servers"`
+	// +optional
+	DomainName string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
+	// +optional
+	DomainNameServers string `json:"domainNameServers,omitempty" tf:"domain_name_servers,omitempty"`
 	// +optional
 	NetbiosNameServers []string `json:"netbiosNameServers,omitempty" tf:"netbios_name_servers,omitempty"`
 	// +optional
 	NetbiosNodeType string `json:"netbiosNodeType,omitempty" tf:"netbios_node_type,omitempty"`
-	NtpServers      string `json:"ntpServers" tf:"ntp_servers"`
-	OwnerID         string `json:"ownerID" tf:"owner_id"`
+	// +optional
+	NtpServers string `json:"ntpServers,omitempty" tf:"ntp_servers,omitempty"`
+	// +optional
+	OwnerID string `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

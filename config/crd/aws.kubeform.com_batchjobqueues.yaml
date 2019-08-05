@@ -420,7 +420,6 @@ spec:
             state:
               type: string
           required:
-          - arn
           - computeEnvironments
           - name
           - priority
@@ -459,7 +458,6 @@ spec:
                 state:
                   type: string
               required:
-              - arn
               - computeEnvironments
               - name
               - priority

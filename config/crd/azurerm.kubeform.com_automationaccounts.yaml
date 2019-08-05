@@ -434,9 +434,6 @@ spec:
                 type: string
               type: object
           required:
-          - dscPrimaryAccessKey
-          - dscSecondaryAccessKey
-          - dscServerEndpoint
           - location
           - name
           - providerRef
@@ -488,9 +485,6 @@ spec:
                     type: string
                   type: object
               required:
-              - dscPrimaryAccessKey
-              - dscSecondaryAccessKey
-              - dscServerEndpoint
               - location
               - name
               - providerRef

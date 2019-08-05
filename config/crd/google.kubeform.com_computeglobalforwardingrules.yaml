@@ -432,10 +432,8 @@ spec:
             target:
               type: string
           required:
-          - labelFingerprint
           - name
           - providerRef
-          - selfLink
           - target
           type: object
         status:
@@ -482,10 +480,8 @@ spec:
                 target:
                   type: string
               required:
-              - labelFingerprint
               - name
               - providerRef
-              - selfLink
               - target
               type: object
             state:

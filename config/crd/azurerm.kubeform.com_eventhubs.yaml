@@ -468,7 +468,6 @@ spec:
           - name
           - namespaceName
           - partitionCount
-          - partitionIDS
           - providerRef
           - resourceGroupName
           type: object
@@ -552,7 +551,6 @@ spec:
               - name
               - namespaceName
               - partitionCount
-              - partitionIDS
               - providerRef
               - resourceGroupName
               type: object

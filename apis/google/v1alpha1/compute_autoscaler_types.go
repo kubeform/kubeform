@@ -54,13 +54,15 @@ type ComputeAutoscalerSpec struct {
 
 	// +kubebuilder:validation:MaxItems=1
 	AutoscalingPolicy []ComputeAutoscalerSpecAutoscalingPolicy `json:"autoscalingPolicy" tf:"autoscaling_policy"`
-	CreationTimestamp string                                   `json:"creationTimestamp" tf:"creation_timestamp"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
-	Project  string `json:"project,omitempty" tf:"project,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	Target   string `json:"target" tf:"target"`
 	// +optional
 	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`

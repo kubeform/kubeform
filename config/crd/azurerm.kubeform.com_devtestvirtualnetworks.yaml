@@ -423,8 +423,6 @@ spec:
                     type: string
                   usePublicIPAddress:
                     type: string
-                required:
-                - name
                 type: object
               maxItems: 1
               type: array
@@ -439,7 +437,6 @@ spec:
           - name
           - providerRef
           - resourceGroupName
-          - uniqueIdentifier
           type: object
         status:
           properties:
@@ -476,8 +473,6 @@ spec:
                         type: string
                       usePublicIPAddress:
                         type: string
-                    required:
-                    - name
                     type: object
                   maxItems: 1
                   type: array
@@ -492,7 +487,6 @@ spec:
               - name
               - providerRef
               - resourceGroupName
-              - uniqueIdentifier
               type: object
             state:
               properties:

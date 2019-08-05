@@ -420,7 +420,6 @@ spec:
             subscription:
               type: string
           required:
-          - etag
           - members
           - providerRef
           - role
@@ -458,7 +457,6 @@ spec:
                 subscription:
                   type: string
               required:
-              - etag
               - members
               - providerRef
               - role

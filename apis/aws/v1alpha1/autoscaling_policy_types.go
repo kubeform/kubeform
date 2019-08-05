@@ -65,8 +65,9 @@ type AutoscalingPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	AdjustmentType       string `json:"adjustmentType,omitempty" tf:"adjustment_type,omitempty"`
-	Arn                  string `json:"arn" tf:"arn"`
+	AdjustmentType string `json:"adjustmentType,omitempty" tf:"adjustment_type,omitempty"`
+	// +optional
+	Arn                  string `json:"arn,omitempty" tf:"arn,omitempty"`
 	AutoscalingGroupName string `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
 	// +optional
 	Cooldown int `json:"cooldown,omitempty" tf:"cooldown,omitempty"`

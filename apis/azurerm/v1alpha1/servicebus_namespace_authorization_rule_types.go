@@ -26,14 +26,18 @@ type ServicebusNamespaceAuthorizationRuleSpec struct {
 	// +optional
 	Listen bool `json:"listen,omitempty" tf:"listen,omitempty"`
 	// +optional
-	Manage                    bool   `json:"manage,omitempty" tf:"manage,omitempty"`
-	Name                      string `json:"name" tf:"name"`
-	NamespaceName             string `json:"namespaceName" tf:"namespace_name"`
-	PrimaryConnectionString   string `json:"-" sensitive:"true" tf:"primary_connection_string"`
-	PrimaryKey                string `json:"-" sensitive:"true" tf:"primary_key"`
-	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
-	SecondaryConnectionString string `json:"-" sensitive:"true" tf:"secondary_connection_string"`
-	SecondaryKey              string `json:"-" sensitive:"true" tf:"secondary_key"`
+	Manage        bool   `json:"manage,omitempty" tf:"manage,omitempty"`
+	Name          string `json:"name" tf:"name"`
+	NamespaceName string `json:"namespaceName" tf:"namespace_name"`
+	// +optional
+	PrimaryConnectionString string `json:"-" sensitive:"true" tf:"primary_connection_string,omitempty"`
+	// +optional
+	PrimaryKey        string `json:"-" sensitive:"true" tf:"primary_key,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	SecondaryConnectionString string `json:"-" sensitive:"true" tf:"secondary_connection_string,omitempty"`
+	// +optional
+	SecondaryKey string `json:"-" sensitive:"true" tf:"secondary_key,omitempty"`
 	// +optional
 	Send bool `json:"send,omitempty" tf:"send,omitempty"`
 }

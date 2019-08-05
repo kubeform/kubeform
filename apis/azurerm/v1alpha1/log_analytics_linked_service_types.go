@@ -29,8 +29,9 @@ type LogAnalyticsLinkedServiceSpec struct {
 	LinkedServiceName string `json:"linkedServiceName,omitempty" tf:"linked_service_name,omitempty"`
 	// +optional
 	LinkedServiceProperties []LogAnalyticsLinkedServiceSpecLinkedServiceProperties `json:"linkedServiceProperties,omitempty" tf:"linked_service_properties,omitempty"`
-	Name                    string                                                 `json:"name" tf:"name"`
-	ResourceGroupName       string                                                 `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	Name              string `json:"name,omitempty" tf:"name,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	ResourceID string `json:"resourceID,omitempty" tf:"resource_id,omitempty"`
 	// +optional

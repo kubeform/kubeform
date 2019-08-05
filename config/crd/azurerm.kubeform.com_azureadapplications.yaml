@@ -426,7 +426,6 @@ spec:
                 type: string
               type: array
           required:
-          - applicationID
           - name
           - providerRef
           type: object
@@ -468,7 +467,6 @@ spec:
                     type: string
                   type: array
               required:
-              - applicationID
               - name
               - providerRef
               type: object

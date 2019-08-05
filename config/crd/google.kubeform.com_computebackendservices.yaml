@@ -518,11 +518,9 @@ spec:
             timeoutSec:
               type: integer
           required:
-          - fingerprint
           - healthChecks
           - name
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -654,11 +652,9 @@ spec:
                 timeoutSec:
                   type: integer
               required:
-              - fingerprint
               - healthChecks
               - name
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

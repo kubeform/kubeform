@@ -459,10 +459,8 @@ spec:
           - authenticationOptions
           - clientCIDRBlock
           - connectionLogOptions
-          - dnsName
           - providerRef
           - serverCertificateArn
-          - status
           type: object
         status:
           properties:
@@ -535,10 +533,8 @@ spec:
               - authenticationOptions
               - clientCIDRBlock
               - connectionLogOptions
-              - dnsName
               - providerRef
               - serverCertificateArn
-              - status
               type: object
             state:
               properties:

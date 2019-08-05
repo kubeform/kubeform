@@ -459,7 +459,6 @@ spec:
           - providerRef
           - targetAction
           - targetPipeline
-          - url
           type: object
         status:
           properties:
@@ -532,7 +531,6 @@ spec:
               - providerRef
               - targetAction
               - targetPipeline
-              - url
               type: object
             state:
               properties:

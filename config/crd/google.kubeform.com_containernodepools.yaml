@@ -535,7 +535,6 @@ spec:
               type: string
           required:
           - cluster
-          - instanceGroupUrls
           - providerRef
           type: object
         status:
@@ -685,7 +684,6 @@ spec:
                   type: string
               required:
               - cluster
-              - instanceGroupUrls
               - providerRef
               type: object
             state:

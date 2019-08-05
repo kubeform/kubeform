@@ -414,7 +414,6 @@ spec:
               type: string
           required:
           - accountID
-          - arn
           - providerRef
           - region
           type: object
@@ -444,7 +443,6 @@ spec:
                   type: string
               required:
               - accountID
-              - arn
               - providerRef
               - region
               type: object

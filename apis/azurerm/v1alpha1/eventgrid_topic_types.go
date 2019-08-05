@@ -23,12 +23,15 @@ type EventgridTopicSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	Endpoint           string `json:"endpoint" tf:"endpoint"`
-	Location           string `json:"location" tf:"location"`
-	Name               string `json:"name" tf:"name"`
-	PrimaryAccessKey   string `json:"-" sensitive:"true" tf:"primary_access_key"`
-	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
-	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key"`
+	// +optional
+	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
+	Location string `json:"location" tf:"location"`
+	Name     string `json:"name" tf:"name"`
+	// +optional
+	PrimaryAccessKey  string `json:"-" sensitive:"true" tf:"primary_access_key,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

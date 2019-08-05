@@ -422,11 +422,7 @@ spec:
             user:
               type: string
           required:
-          - encryptedSecret
-          - keyFingerprint
           - providerRef
-          - secret
-          - sesSMTPPassword
           - user
           type: object
         status:
@@ -463,11 +459,7 @@ spec:
                 user:
                   type: string
               required:
-              - encryptedSecret
-              - keyFingerprint
               - providerRef
-              - secret
-              - sesSMTPPassword
               - user
               type: object
             state:

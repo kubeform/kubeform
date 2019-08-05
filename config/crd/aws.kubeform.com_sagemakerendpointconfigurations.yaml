@@ -439,7 +439,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - productionVariants
           - providerRef
           type: object
@@ -494,7 +493,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - productionVariants
               - providerRef
               type: object

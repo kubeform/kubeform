@@ -426,8 +426,6 @@ spec:
                   type: string
               type: object
           required:
-          - createdDate
-          - lastUpdatedDate
           - name
           - providerRef
           type: object
@@ -469,8 +467,6 @@ spec:
                       type: string
                   type: object
               required:
-              - createdDate
-              - lastUpdatedDate
               - name
               - providerRef
               type: object

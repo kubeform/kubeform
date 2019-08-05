@@ -21,7 +21,8 @@ type ComputeSubnetworkIamBinding struct {
 type ComputeSubnetworkIamBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Etag string `json:"etag" tf:"etag"`
+	// +optional
+	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
 	Members []string `json:"members" tf:"members"`
 	// +optional

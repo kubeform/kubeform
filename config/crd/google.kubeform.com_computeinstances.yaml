@@ -411,7 +411,6 @@ spec:
                   source:
                     type: string
                 required:
-                - diskEncryptionKeySha256
                 - source
                 type: object
               type: array
@@ -438,8 +437,6 @@ spec:
                     type: array
                   source:
                     type: string
-                required:
-                - diskEncryptionKeySha256
                 type: object
               maxItems: 1
               type: array
@@ -503,8 +500,6 @@ spec:
                           type: string
                         publicPtrDomainName:
                           type: string
-                      required:
-                      - assignedNATIP
                       type: object
                     type: array
                   address:
@@ -531,8 +526,6 @@ spec:
                     type: string
                   subnetworkProject:
                     type: string
-                required:
-                - name
                 type: object
               type: array
             project:
@@ -602,16 +595,10 @@ spec:
               type: string
           required:
           - bootDisk
-          - cpuPlatform
-          - instanceID
-          - labelFingerprint
           - machineType
-          - metadataFingerprint
           - name
           - networkInterface
           - providerRef
-          - selfLink
-          - tagsFingerprint
           type: object
         status:
           properties:
@@ -636,7 +623,6 @@ spec:
                       source:
                         type: string
                     required:
-                    - diskEncryptionKeySha256
                     - source
                     type: object
                   type: array
@@ -663,8 +649,6 @@ spec:
                         type: array
                       source:
                         type: string
-                    required:
-                    - diskEncryptionKeySha256
                     type: object
                   maxItems: 1
                   type: array
@@ -728,8 +712,6 @@ spec:
                               type: string
                             publicPtrDomainName:
                               type: string
-                          required:
-                          - assignedNATIP
                           type: object
                         type: array
                       address:
@@ -756,8 +738,6 @@ spec:
                         type: string
                       subnetworkProject:
                         type: string
-                    required:
-                    - name
                     type: object
                   type: array
                 project:
@@ -827,16 +807,10 @@ spec:
                   type: string
               required:
               - bootDisk
-              - cpuPlatform
-              - instanceID
-              - labelFingerprint
               - machineType
-              - metadataFingerprint
               - name
               - networkInterface
               - providerRef
-              - selfLink
-              - tagsFingerprint
               type: object
             state:
               properties:

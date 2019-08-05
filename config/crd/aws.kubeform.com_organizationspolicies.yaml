@@ -417,7 +417,6 @@ spec:
             type:
               type: string
           required:
-          - arn
           - content
           - name
           - providerRef
@@ -451,7 +450,6 @@ spec:
                 type:
                   type: string
               required:
-              - arn
               - content
               - name
               - providerRef

@@ -24,17 +24,20 @@ type DxPrivateVirtualInterfaceSpec struct {
 	AddressFamily string `json:"addressFamily" tf:"address_family"`
 	// +optional
 	AmazonAddress string `json:"amazonAddress,omitempty" tf:"amazon_address,omitempty"`
-	Arn           string `json:"arn" tf:"arn"`
-	AwsDevice     string `json:"awsDevice" tf:"aws_device"`
-	BgpAsn        int    `json:"bgpAsn" tf:"bgp_asn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	AwsDevice string `json:"awsDevice,omitempty" tf:"aws_device,omitempty"`
+	BgpAsn    int    `json:"bgpAsn" tf:"bgp_asn"`
 	// +optional
 	BgpAuthKey   string `json:"bgpAuthKey,omitempty" tf:"bgp_auth_key,omitempty"`
 	ConnectionID string `json:"connectionID" tf:"connection_id"`
 	// +optional
 	CustomerAddress string `json:"customerAddress,omitempty" tf:"customer_address,omitempty"`
 	// +optional
-	DxGatewayID       string `json:"dxGatewayID,omitempty" tf:"dx_gateway_id,omitempty"`
-	JumboFrameCapable bool   `json:"jumboFrameCapable" tf:"jumbo_frame_capable"`
+	DxGatewayID string `json:"dxGatewayID,omitempty" tf:"dx_gateway_id,omitempty"`
+	// +optional
+	JumboFrameCapable bool `json:"jumboFrameCapable,omitempty" tf:"jumbo_frame_capable,omitempty"`
 	// +optional
 	Mtu  int    `json:"mtu,omitempty" tf:"mtu,omitempty"`
 	Name string `json:"name" tf:"name"`

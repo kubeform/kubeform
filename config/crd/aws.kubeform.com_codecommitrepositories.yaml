@@ -425,11 +425,7 @@ spec:
                 type: string
               type: object
           required:
-          - arn
-          - cloneURLHTTP
-          - cloneURLSSH
           - providerRef
-          - repositoryID
           - repositoryName
           type: object
         status:
@@ -469,11 +465,7 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
-              - cloneURLHTTP
-              - cloneURLSSH
               - providerRef
-              - repositoryID
               - repositoryName
               type: object
             state:

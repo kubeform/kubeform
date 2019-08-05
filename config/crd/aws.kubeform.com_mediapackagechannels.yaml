@@ -413,13 +413,8 @@ spec:
                           type: string
                         username:
                           type: string
-                      required:
-                      - url
-                      - username
                       type: object
                     type: array
-                required:
-                - ingestEndpoints
                 type: object
               type: array
             providerRef:
@@ -445,9 +440,7 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - channelID
-          - hlsIngest
           - providerRef
           type: object
         status:
@@ -475,13 +468,8 @@ spec:
                               type: string
                             username:
                               type: string
-                          required:
-                          - url
-                          - username
                           type: object
                         type: array
-                    required:
-                    - ingestEndpoints
                     type: object
                   type: array
                 providerRef:
@@ -507,9 +495,7 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - channelID
-              - hlsIngest
               - providerRef
               type: object
             state:

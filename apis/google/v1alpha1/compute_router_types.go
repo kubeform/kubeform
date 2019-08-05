@@ -40,8 +40,9 @@ type ComputeRouterSpec struct {
 
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Bgp               []ComputeRouterSpecBgp `json:"bgp,omitempty" tf:"bgp,omitempty"`
-	CreationTimestamp string                 `json:"creationTimestamp" tf:"creation_timestamp"`
+	Bgp []ComputeRouterSpecBgp `json:"bgp,omitempty" tf:"bgp,omitempty"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
@@ -49,8 +50,9 @@ type ComputeRouterSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region   string `json:"region,omitempty" tf:"region,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 }
 
 type ComputeRouterStatus struct {

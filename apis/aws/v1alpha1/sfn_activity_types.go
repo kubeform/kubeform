@@ -21,7 +21,8 @@ type SfnActivity struct {
 type SfnActivitySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CreationDate string `json:"creationDate" tf:"creation_date"`
+	// +optional
+	CreationDate string `json:"creationDate,omitempty" tf:"creation_date,omitempty"`
 	Name         string `json:"name" tf:"name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

@@ -427,7 +427,6 @@ spec:
             workflowVersion:
               type: string
           required:
-          - accessEndpoint
           - location
           - name
           - providerRef
@@ -472,7 +471,6 @@ spec:
                 workflowVersion:
                   type: string
               required:
-              - accessEndpoint
               - location
               - name
               - providerRef

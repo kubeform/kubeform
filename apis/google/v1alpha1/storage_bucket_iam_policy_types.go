@@ -21,8 +21,9 @@ type StorageBucketIamPolicy struct {
 type StorageBucketIamPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Bucket     string `json:"bucket" tf:"bucket"`
-	Etag       string `json:"etag" tf:"etag"`
+	Bucket string `json:"bucket" tf:"bucket"`
+	// +optional
+	Etag       string `json:"etag,omitempty" tf:"etag,omitempty"`
 	PolicyData string `json:"policyData" tf:"policy_data"`
 }
 

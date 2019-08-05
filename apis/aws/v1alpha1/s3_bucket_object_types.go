@@ -50,8 +50,9 @@ type S3BucketObjectSpec struct {
 	// +optional
 	StorageClass string `json:"storageClass,omitempty" tf:"storage_class,omitempty"`
 	// +optional
-	Tags      map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	VersionID string            `json:"versionID" tf:"version_id"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	VersionID string `json:"versionID,omitempty" tf:"version_id,omitempty"`
 	// +optional
 	WebsiteRedirect string `json:"websiteRedirect,omitempty" tf:"website_redirect,omitempty"`
 }

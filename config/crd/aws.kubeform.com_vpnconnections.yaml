@@ -419,10 +419,6 @@ spec:
                     type: string
                   state:
                     type: string
-                required:
-                - destinationCIDRBlock
-                - source
-                - state
                 type: object
               type: array
               uniqueItems: true
@@ -484,35 +480,15 @@ spec:
                     type: string
                   statusMessage:
                     type: string
-                required:
-                - acceptedRouteCount
-                - lastStatusChange
-                - outsideIPAddress
-                - status
-                - statusMessage
                 type: object
               type: array
               uniqueItems: true
             vpnGatewayID:
               type: string
           required:
-          - customerGatewayConfiguration
           - customerGatewayID
           - providerRef
-          - routes
-          - transitGatewayAttachmentID
-          - tunnel1Address
-          - tunnel1BGPAsn
-          - tunnel1BGPHoldtime
-          - tunnel1CgwInsideAddress
-          - tunnel1VgwInsideAddress
-          - tunnel2Address
-          - tunnel2BGPAsn
-          - tunnel2BGPHoldtime
-          - tunnel2CgwInsideAddress
-          - tunnel2VgwInsideAddress
           - type
-          - vgwTelemetry
           type: object
         status:
           properties:
@@ -545,10 +521,6 @@ spec:
                         type: string
                       state:
                         type: string
-                    required:
-                    - destinationCIDRBlock
-                    - source
-                    - state
                     type: object
                   type: array
                   uniqueItems: true
@@ -610,35 +582,15 @@ spec:
                         type: string
                       statusMessage:
                         type: string
-                    required:
-                    - acceptedRouteCount
-                    - lastStatusChange
-                    - outsideIPAddress
-                    - status
-                    - statusMessage
                     type: object
                   type: array
                   uniqueItems: true
                 vpnGatewayID:
                   type: string
               required:
-              - customerGatewayConfiguration
               - customerGatewayID
               - providerRef
-              - routes
-              - transitGatewayAttachmentID
-              - tunnel1Address
-              - tunnel1BGPAsn
-              - tunnel1BGPHoldtime
-              - tunnel1CgwInsideAddress
-              - tunnel1VgwInsideAddress
-              - tunnel2Address
-              - tunnel2BGPAsn
-              - tunnel2BGPHoldtime
-              - tunnel2CgwInsideAddress
-              - tunnel2VgwInsideAddress
               - type
-              - vgwTelemetry
               type: object
             state:
               properties:

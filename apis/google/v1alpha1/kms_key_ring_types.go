@@ -24,8 +24,9 @@ type KmsKeyRingSpec struct {
 	Location string `json:"location" tf:"location"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
-	Project  string `json:"project,omitempty" tf:"project,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 }
 
 type KmsKeyRingStatus struct {

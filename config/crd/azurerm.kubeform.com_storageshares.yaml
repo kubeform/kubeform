@@ -421,7 +421,6 @@ spec:
           - providerRef
           - resourceGroupName
           - storageAccountName
-          - url
           type: object
         status:
           properties:
@@ -456,7 +455,6 @@ spec:
               - providerRef
               - resourceGroupName
               - storageAccountName
-              - url
               type: object
             state:
               properties:

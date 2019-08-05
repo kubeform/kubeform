@@ -21,7 +21,8 @@ type TransferUser struct {
 type TransferUserSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	HomeDirectory string `json:"homeDirectory,omitempty" tf:"home_directory,omitempty"`
 	// +optional

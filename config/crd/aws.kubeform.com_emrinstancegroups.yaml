@@ -445,8 +445,6 @@ spec:
           - clusterID
           - instanceType
           - providerRef
-          - runningInstanceCount
-          - status
           type: object
         status:
           properties:
@@ -505,8 +503,6 @@ spec:
               - clusterID
               - instanceType
               - providerRef
-              - runningInstanceCount
-              - status
               type: object
             state:
               properties:

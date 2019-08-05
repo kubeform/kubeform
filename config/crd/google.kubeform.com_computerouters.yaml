@@ -446,11 +446,9 @@ spec:
             selfLink:
               type: string
           required:
-          - creationTimestamp
           - name
           - network
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -510,11 +508,9 @@ spec:
                 selfLink:
                   type: string
               required:
-              - creationTimestamp
               - name
               - network
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

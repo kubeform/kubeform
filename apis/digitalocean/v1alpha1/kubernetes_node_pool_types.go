@@ -19,21 +19,27 @@ type KubernetesNodePool struct {
 }
 
 type KubernetesNodePoolSpecNodes struct {
-	CreatedAt string `json:"createdAt" tf:"created_at"`
-	ID        string `json:"ID" tf:"id"`
-	Name      string `json:"name" tf:"name"`
-	Status    string `json:"status" tf:"status"`
-	UpdatedAt string `json:"updatedAt" tf:"updated_at"`
+	// +optional
+	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
+	// +optional
+	UpdatedAt string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 }
 
 type KubernetesNodePoolSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	ClusterID string                        `json:"clusterID" tf:"cluster_id"`
-	Name      string                        `json:"name" tf:"name"`
-	NodeCount int                           `json:"nodeCount" tf:"node_count"`
-	Nodes     []KubernetesNodePoolSpecNodes `json:"nodes" tf:"nodes"`
-	Size      string                        `json:"size" tf:"size"`
+	ClusterID string `json:"clusterID" tf:"cluster_id"`
+	Name      string `json:"name" tf:"name"`
+	NodeCount int    `json:"nodeCount" tf:"node_count"`
+	// +optional
+	Nodes []KubernetesNodePoolSpecNodes `json:"nodes,omitempty" tf:"nodes,omitempty"`
+	Size  string                        `json:"size" tf:"size"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`

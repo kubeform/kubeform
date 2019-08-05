@@ -428,12 +428,8 @@ spec:
             updatedAt:
               type: string
           required:
-          - createdAt
           - name
-          - ownerID
-          - ownerUUID
           - providerRef
-          - updatedAt
           type: object
         status:
           properties:
@@ -475,12 +471,8 @@ spec:
                 updatedAt:
                   type: string
               required:
-              - createdAt
               - name
-              - ownerID
-              - ownerUUID
               - providerRef
-              - updatedAt
               type: object
             state:
               properties:

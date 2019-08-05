@@ -426,7 +426,6 @@ spec:
           - config
           - displayName
           - providerRef
-          - state
           type: object
         status:
           properties:
@@ -466,7 +465,6 @@ spec:
               - config
               - displayName
               - providerRef
-              - state
               type: object
             state:
               properties:

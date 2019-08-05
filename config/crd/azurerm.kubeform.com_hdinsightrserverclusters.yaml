@@ -568,16 +568,13 @@ spec:
               type: string
           required:
           - clusterVersion
-          - edgeSSHEndpoint
           - gateway
-          - httpsEndpoint
           - location
           - name
           - providerRef
           - resourceGroupName
           - roles
           - rstudio
-          - sshEndpoint
           - storageAccount
           - tier
           type: object
@@ -761,16 +758,13 @@ spec:
                   type: string
               required:
               - clusterVersion
-              - edgeSSHEndpoint
               - gateway
-              - httpsEndpoint
               - location
               - name
               - providerRef
               - resourceGroupName
               - roles
               - rstudio
-              - sshEndpoint
               - storageAccount
               - tier
               type: object

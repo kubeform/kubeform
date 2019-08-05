@@ -23,10 +23,12 @@ type EfsFileSystem struct {
 type EfsFileSystemSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	CreationToken string `json:"creationToken,omitempty" tf:"creation_token,omitempty"`
-	DnsName       string `json:"dnsName" tf:"dns_name"`
+	// +optional
+	DnsName string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
 	// +optional
 	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
 	// +optional

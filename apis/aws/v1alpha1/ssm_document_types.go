@@ -37,25 +37,37 @@ type SsmDocumentSpecPermissions struct {
 type SsmDocumentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn            string `json:"arn" tf:"arn"`
-	Content        string `json:"content" tf:"content"`
-	CreatedDate    string `json:"createdDate" tf:"created_date"`
-	DefaultVersion string `json:"defaultVersion" tf:"default_version"`
-	Description    string `json:"description" tf:"description"`
 	// +optional
-	DocumentFormat string                     `json:"documentFormat,omitempty" tf:"document_format,omitempty"`
-	DocumentType   string                     `json:"documentType" tf:"document_type"`
-	Hash           string                     `json:"hash" tf:"hash"`
-	HashType       string                     `json:"hashType" tf:"hash_type"`
-	LatestVersion  string                     `json:"latestVersion" tf:"latest_version"`
-	Name           string                     `json:"name" tf:"name"`
-	Owner          string                     `json:"owner" tf:"owner"`
-	Parameter      []SsmDocumentSpecParameter `json:"parameter" tf:"parameter"`
+	Arn     string `json:"arn,omitempty" tf:"arn,omitempty"`
+	Content string `json:"content" tf:"content"`
 	// +optional
-	Permissions   map[string]SsmDocumentSpecPermissions `json:"permissions,omitempty" tf:"permissions,omitempty"`
-	PlatformTypes []string                              `json:"platformTypes" tf:"platform_types"`
-	SchemaVersion string                                `json:"schemaVersion" tf:"schema_version"`
-	Status        string                                `json:"status" tf:"status"`
+	CreatedDate string `json:"createdDate,omitempty" tf:"created_date,omitempty"`
+	// +optional
+	DefaultVersion string `json:"defaultVersion,omitempty" tf:"default_version,omitempty"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	DocumentFormat string `json:"documentFormat,omitempty" tf:"document_format,omitempty"`
+	DocumentType   string `json:"documentType" tf:"document_type"`
+	// +optional
+	Hash string `json:"hash,omitempty" tf:"hash,omitempty"`
+	// +optional
+	HashType string `json:"hashType,omitempty" tf:"hash_type,omitempty"`
+	// +optional
+	LatestVersion string `json:"latestVersion,omitempty" tf:"latest_version,omitempty"`
+	Name          string `json:"name" tf:"name"`
+	// +optional
+	Owner string `json:"owner,omitempty" tf:"owner,omitempty"`
+	// +optional
+	Parameter []SsmDocumentSpecParameter `json:"parameter,omitempty" tf:"parameter,omitempty"`
+	// +optional
+	Permissions map[string]SsmDocumentSpecPermissions `json:"permissions,omitempty" tf:"permissions,omitempty"`
+	// +optional
+	PlatformTypes []string `json:"platformTypes,omitempty" tf:"platform_types,omitempty"`
+	// +optional
+	SchemaVersion string `json:"schemaVersion,omitempty" tf:"schema_version,omitempty"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

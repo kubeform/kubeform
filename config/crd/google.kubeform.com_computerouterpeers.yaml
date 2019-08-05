@@ -426,7 +426,6 @@ spec:
               type: string
           required:
           - interface
-          - ipAddress
           - name
           - peerAsn
           - providerRef
@@ -470,7 +469,6 @@ spec:
                   type: string
               required:
               - interface
-              - ipAddress
               - name
               - peerAsn
               - providerRef

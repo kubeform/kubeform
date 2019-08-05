@@ -415,7 +415,6 @@ spec:
             publicKey:
               type: string
           required:
-          - fingerprint
           - providerRef
           - publicKey
           type: object
@@ -446,7 +445,6 @@ spec:
                 publicKey:
                   type: string
               required:
-              - fingerprint
               - providerRef
               - publicKey
               type: object

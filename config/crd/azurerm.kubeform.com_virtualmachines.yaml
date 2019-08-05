@@ -429,7 +429,6 @@ spec:
                   type:
                     type: string
                 required:
-                - principalID
                 - type
                 type: object
               maxItems: 1
@@ -714,7 +713,6 @@ spec:
                       type:
                         type: string
                     required:
-                    - principalID
                     - type
                     type: object
                   maxItems: 1

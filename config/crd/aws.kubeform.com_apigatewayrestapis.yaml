@@ -444,11 +444,8 @@ spec:
             rootResourceID:
               type: string
           required:
-          - createdDate
-          - executionArn
           - name
           - providerRef
-          - rootResourceID
           type: object
         status:
           properties:
@@ -506,11 +503,8 @@ spec:
                 rootResourceID:
                   type: string
               required:
-              - createdDate
-              - executionArn
               - name
               - providerRef
-              - rootResourceID
               type: object
             state:
               properties:

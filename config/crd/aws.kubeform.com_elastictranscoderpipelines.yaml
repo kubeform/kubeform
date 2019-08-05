@@ -484,7 +484,6 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
           - inputBucket
           - providerRef
           - role
@@ -585,7 +584,6 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
               - inputBucket
               - providerRef
               - role

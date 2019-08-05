@@ -32,15 +32,17 @@ type StoragegatewayNfsFileShareSpecNfsFileShareDefaults struct {
 type StoragegatewayNfsFileShareSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +kubebuilder:validation:MaxItems=100
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	ClientList []string `json:"clientList" tf:"client_list"`
 	// +optional
 	DefaultStorageClass string `json:"defaultStorageClass,omitempty" tf:"default_storage_class,omitempty"`
-	FileshareID         string `json:"fileshareID" tf:"fileshare_id"`
-	GatewayArn          string `json:"gatewayArn" tf:"gateway_arn"`
+	// +optional
+	FileshareID string `json:"fileshareID,omitempty" tf:"fileshare_id,omitempty"`
+	GatewayArn  string `json:"gatewayArn" tf:"gateway_arn"`
 	// +optional
 	GuessMimeTypeEnabled bool `json:"guessMimeTypeEnabled,omitempty" tf:"guess_mime_type_enabled,omitempty"`
 	// +optional

@@ -423,8 +423,6 @@ spec:
           - network
           - peerNetwork
           - providerRef
-          - state
-          - stateDetails
           type: object
         status:
           properties:
@@ -461,8 +459,6 @@ spec:
               - network
               - peerNetwork
               - providerRef
-              - state
-              - stateDetails
               type: object
             state:
               properties:

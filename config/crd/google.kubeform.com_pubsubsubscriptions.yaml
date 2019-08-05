@@ -432,7 +432,6 @@ spec:
               type: string
           required:
           - name
-          - path
           - providerRef
           - topic
           type: object
@@ -480,7 +479,6 @@ spec:
                   type: string
               required:
               - name
-              - path
               - providerRef
               - topic
               type: object

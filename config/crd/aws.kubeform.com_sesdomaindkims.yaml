@@ -413,7 +413,6 @@ spec:
                   type: string
               type: object
           required:
-          - dkimTokens
           - domain
           - providerRef
           type: object
@@ -442,7 +441,6 @@ spec:
                       type: string
                   type: object
               required:
-              - dkimTokens
               - domain
               - providerRef
               type: object

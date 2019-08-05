@@ -432,14 +432,8 @@ spec:
             vpcOwnerID:
               type: string
           required:
-          - dnsSupport
-          - ipv6Support
           - providerRef
-          - subnetIDS
           - transitGatewayAttachmentID
-          - transitGatewayID
-          - vpcID
-          - vpcOwnerID
           type: object
         status:
           properties:
@@ -485,14 +479,8 @@ spec:
                 vpcOwnerID:
                   type: string
               required:
-              - dnsSupport
-              - ipv6Support
               - providerRef
-              - subnetIDS
               - transitGatewayAttachmentID
-              - transitGatewayID
-              - vpcID
-              - vpcOwnerID
               type: object
             state:
               properties:

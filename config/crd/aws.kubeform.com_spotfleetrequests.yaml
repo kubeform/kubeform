@@ -544,11 +544,9 @@ spec:
             waitForFulfillment:
               type: boolean
           required:
-          - clientToken
           - iamFleetRole
           - launchSpecification
           - providerRef
-          - spotRequestState
           - targetCapacity
           type: object
         status:
@@ -707,11 +705,9 @@ spec:
                 waitForFulfillment:
                   type: boolean
               required:
-              - clientToken
               - iamFleetRole
               - launchSpecification
               - providerRef
-              - spotRequestState
               - targetCapacity
               type: object
             state:

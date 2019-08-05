@@ -416,7 +416,6 @@ spec:
               type: object
           required:
           - configuration
-          - creationDate
           - providerRef
           type: object
         status:
@@ -447,7 +446,6 @@ spec:
                   type: object
               required:
               - configuration
-              - creationDate
               - providerRef
               type: object
             state:

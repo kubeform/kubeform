@@ -48,7 +48,8 @@ type CodepipelineWebhookSpec struct {
 	Tags           map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	TargetAction   string            `json:"targetAction" tf:"target_action"`
 	TargetPipeline string            `json:"targetPipeline" tf:"target_pipeline"`
-	Url            string            `json:"url" tf:"url"`
+	// +optional
+	Url string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type CodepipelineWebhookStatus struct {

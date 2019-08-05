@@ -413,7 +413,6 @@ spec:
             referenceName:
               type: string
           required:
-          - nameServers
           - providerRef
           type: object
         status:
@@ -441,7 +440,6 @@ spec:
                 referenceName:
                   type: string
               required:
-              - nameServers
               - providerRef
               type: object
             state:

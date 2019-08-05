@@ -443,7 +443,6 @@ spec:
                 type: string
               type: object
           required:
-          - endpoint
           - kind
           - location
           - name
@@ -506,7 +505,6 @@ spec:
                     type: string
                   type: object
               required:
-              - endpoint
               - kind
               - location
               - name

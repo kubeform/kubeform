@@ -425,7 +425,6 @@ spec:
           - name
           - providerRef
           - resourceGroupName
-          - virtualNetworkIDS
           type: object
         status:
           properties:
@@ -464,7 +463,6 @@ spec:
               - name
               - providerRef
               - resourceGroupName
-              - virtualNetworkIDS
               type: object
             state:
               properties:

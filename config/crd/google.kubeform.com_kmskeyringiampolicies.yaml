@@ -413,7 +413,6 @@ spec:
                   type: string
               type: object
           required:
-          - etag
           - keyRingID
           - policyData
           - providerRef
@@ -443,7 +442,6 @@ spec:
                       type: string
                   type: object
               required:
-              - etag
               - keyRingID
               - policyData
               - providerRef

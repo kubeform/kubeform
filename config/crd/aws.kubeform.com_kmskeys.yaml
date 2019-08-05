@@ -427,8 +427,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
-          - keyID
           - providerRef
           type: object
         status:
@@ -470,8 +468,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
-              - keyID
               - providerRef
               type: object
             state:

@@ -51,7 +51,8 @@ type ElbSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AccessLogs []ElbSpecAccessLogs `json:"accessLogs,omitempty" tf:"access_logs,omitempty"`
-	Arn        string              `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
@@ -60,8 +61,9 @@ type ElbSpec struct {
 	// +optional
 	ConnectionDrainingTimeout int `json:"connectionDrainingTimeout,omitempty" tf:"connection_draining_timeout,omitempty"`
 	// +optional
-	CrossZoneLoadBalancing bool   `json:"crossZoneLoadBalancing,omitempty" tf:"cross_zone_load_balancing,omitempty"`
-	DnsName                string `json:"dnsName" tf:"dns_name"`
+	CrossZoneLoadBalancing bool `json:"crossZoneLoadBalancing,omitempty" tf:"cross_zone_load_balancing,omitempty"`
+	// +optional
+	DnsName string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	HealthCheck []ElbSpecHealthCheck `json:"healthCheck,omitempty" tf:"health_check,omitempty"`
@@ -82,14 +84,16 @@ type ElbSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
-	SourceSecurityGroup   string `json:"sourceSecurityGroup,omitempty" tf:"source_security_group,omitempty"`
-	SourceSecurityGroupID string `json:"sourceSecurityGroupID" tf:"source_security_group_id"`
+	SourceSecurityGroup string `json:"sourceSecurityGroup,omitempty" tf:"source_security_group,omitempty"`
+	// +optional
+	SourceSecurityGroupID string `json:"sourceSecurityGroupID,omitempty" tf:"source_security_group_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Subnets []string `json:"subnets,omitempty" tf:"subnets,omitempty"`
 	// +optional
-	Tags   map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	ZoneID string            `json:"zoneID" tf:"zone_id"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	ZoneID string `json:"zoneID,omitempty" tf:"zone_id,omitempty"`
 }
 
 type ElbStatus struct {

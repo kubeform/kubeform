@@ -21,7 +21,8 @@ type GuarddutyDetector struct {
 type GuarddutyDetectorSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	AccountID string `json:"accountID" tf:"account_id"`
+	// +optional
+	AccountID string `json:"accountID,omitempty" tf:"account_id,omitempty"`
 	// +optional
 	Enable bool `json:"enable,omitempty" tf:"enable,omitempty"`
 	// +optional

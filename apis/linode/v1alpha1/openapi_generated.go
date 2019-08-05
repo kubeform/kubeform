@@ -12908,7 +12908,7 @@ func schema_kubeform_apis_linode_v1alpha1_ImageSpec(ref common.ReferenceCallback
 						},
 					},
 				},
-				Required: []string{"providerRef", "created", "createdBy", "deprecated", "diskID", "expiry", "isPublic", "label", "linodeID", "size", "type", "vendor"},
+				Required: []string{"providerRef", "diskID", "label", "linodeID"},
 			},
 		},
 		Dependencies: []string{
@@ -13262,7 +13262,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 						},
 					},
 				},
-				Required: []string{"providerRef", "backups", "ipAddress", "ipv4", "ipv6", "privateIPAddress", "region", "specs", "status"},
+				Required: []string{"providerRef", "region"},
 			},
 		},
 		Dependencies: []string{
@@ -13337,7 +13337,6 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecBackups(ref common.Referen
 						},
 					},
 				},
-				Required: []string{"enabled", "schedule"},
 			},
 		},
 		Dependencies: []string{
@@ -13364,7 +13363,6 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecBackupsSchedule(ref common
 						},
 					},
 				},
-				Required: []string{"day", "window"},
 			},
 		},
 	}
@@ -13918,7 +13916,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecDisk(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"ID", "label", "size"},
+				Required: []string{"label", "size"},
 			},
 		},
 	}
@@ -13955,7 +13953,6 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpecSpecs(ref common.Reference
 						},
 					},
 				},
-				Required: []string{"disk", "memory", "transfer", "vcpus"},
 			},
 		},
 	}
@@ -14251,7 +14248,7 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpec(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"providerRef", "nodeStatus", "nodebalancerID", "sslCommonname", "sslFingerprint"},
+				Required: []string{"providerRef", "nodebalancerID"},
 			},
 		},
 		Dependencies: []string{
@@ -14278,7 +14275,6 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpecNodeStatus(ref c
 						},
 					},
 				},
-				Required: []string{"statusDown", "statusUp"},
 			},
 		},
 	}
@@ -14506,7 +14502,7 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerNodeSpec(ref common.Refere
 						},
 					},
 				},
-				Required: []string{"providerRef", "address", "configID", "label", "nodebalancerID", "status"},
+				Required: []string{"providerRef", "address", "configID", "label", "nodebalancerID"},
 			},
 		},
 		Dependencies: []string{
@@ -14631,7 +14627,7 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerSpec(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"providerRef", "created", "hostname", "ipv4", "ipv6", "region", "transfer", "updated"},
+				Required: []string{"providerRef", "region"},
 			},
 		},
 		Dependencies: []string{
@@ -14664,7 +14660,6 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerSpecTransfer(ref common.Re
 						},
 					},
 				},
-				Required: []string{"in", "out", "total"},
 			},
 		},
 	}
@@ -14974,7 +14969,7 @@ func schema_kubeform_apis_linode_v1alpha1_SshkeySpec(ref common.ReferenceCallbac
 						},
 					},
 				},
-				Required: []string{"providerRef", "created", "label", "sshKey"},
+				Required: []string{"providerRef", "label", "sshKey"},
 			},
 		},
 		Dependencies: []string{
@@ -15206,7 +15201,7 @@ func schema_kubeform_apis_linode_v1alpha1_StackscriptSpec(ref common.ReferenceCa
 						},
 					},
 				},
-				Required: []string{"providerRef", "created", "deploymentsActive", "deploymentsTotal", "description", "images", "label", "script", "updated", "userGravatarID", "username"},
+				Required: []string{"providerRef", "description", "images", "label", "script"},
 			},
 		},
 		Dependencies: []string{
@@ -15257,7 +15252,6 @@ func schema_kubeform_apis_linode_v1alpha1_StackscriptSpecUserDefinedFields(ref c
 						},
 					},
 				},
-				Required: []string{"default", "example", "label", "manyOf", "name", "oneOf"},
 			},
 		},
 	}
@@ -15426,7 +15420,7 @@ func schema_kubeform_apis_linode_v1alpha1_TokenSpec(ref common.ReferenceCallback
 						},
 					},
 				},
-				Required: []string{"providerRef", "created", "scopes", "token"},
+				Required: []string{"providerRef", "scopes"},
 			},
 		},
 		Dependencies: []string{
@@ -15616,7 +15610,7 @@ func schema_kubeform_apis_linode_v1alpha1_VolumeSpec(ref common.ReferenceCallbac
 						},
 					},
 				},
-				Required: []string{"providerRef", "filesystemPath", "label", "region", "status"},
+				Required: []string{"providerRef", "label", "region"},
 			},
 		},
 		Dependencies: []string{

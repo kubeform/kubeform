@@ -23,18 +23,22 @@ type LogAnalyticsWorkspaceSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	PortalURL         string `json:"portalURL" tf:"portal_url"`
-	PrimarySharedKey  string `json:"-" sensitive:"true" tf:"primary_shared_key"`
+	Location string `json:"location" tf:"location"`
+	Name     string `json:"name" tf:"name"`
+	// +optional
+	PortalURL string `json:"portalURL,omitempty" tf:"portal_url,omitempty"`
+	// +optional
+	PrimarySharedKey  string `json:"-" sensitive:"true" tf:"primary_shared_key,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	RetentionInDays    int    `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
-	SecondarySharedKey string `json:"-" sensitive:"true" tf:"secondary_shared_key"`
+	RetentionInDays int `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	// +optional
+	SecondarySharedKey string `json:"-" sensitive:"true" tf:"secondary_shared_key,omitempty"`
 	Sku                string `json:"sku" tf:"sku"`
 	// +optional
-	Tags        map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	WorkspaceID string            `json:"workspaceID" tf:"workspace_id"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	WorkspaceID string `json:"workspaceID,omitempty" tf:"workspace_id,omitempty"`
 }
 
 type LogAnalyticsWorkspaceStatus struct {

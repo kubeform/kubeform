@@ -465,16 +465,9 @@ spec:
             writer:
               type: boolean
           required:
-          - arn
           - clusterIdentifier
-          - dbiResourceID
-          - endpoint
           - instanceClass
-          - kmsKeyID
-          - port
           - providerRef
-          - storageEncrypted
-          - writer
           type: object
         status:
           properties:
@@ -553,16 +546,9 @@ spec:
                 writer:
                   type: boolean
               required:
-              - arn
               - clusterIdentifier
-              - dbiResourceID
-              - endpoint
               - instanceClass
-              - kmsKeyID
-              - port
               - providerRef
-              - storageEncrypted
-              - writer
               type: object
             state:
               properties:

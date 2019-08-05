@@ -21,7 +21,8 @@ type PubsubSubscriptionIamMember struct {
 type PubsubSubscriptionIamMemberSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Etag   string `json:"etag" tf:"etag"`
+	// +optional
+	Etag   string `json:"etag,omitempty" tf:"etag,omitempty"`
 	Member string `json:"member" tf:"member"`
 	// +optional
 	Project      string `json:"project,omitempty" tf:"project,omitempty"`

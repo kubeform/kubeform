@@ -507,7 +507,6 @@ spec:
                     type: string
                 required:
                 - displayName
-                - name
                 type: object
               type: array
             creationRecord:
@@ -517,9 +516,6 @@ spec:
                     type: string
                   mutatedBy:
                     type: string
-                required:
-                - mutateTime
-                - mutatedBy
                 type: object
               maxItems: 1
               type: array
@@ -551,10 +547,8 @@ spec:
           required:
           - combiner
           - conditions
-          - creationRecord
           - displayName
           - enabled
-          - name
           - providerRef
           type: object
         status:
@@ -678,7 +672,6 @@ spec:
                         type: string
                     required:
                     - displayName
-                    - name
                     type: object
                   type: array
                 creationRecord:
@@ -688,9 +681,6 @@ spec:
                         type: string
                       mutatedBy:
                         type: string
-                    required:
-                    - mutateTime
-                    - mutatedBy
                     type: object
                   maxItems: 1
                   type: array
@@ -722,10 +712,8 @@ spec:
               required:
               - combiner
               - conditions
-              - creationRecord
               - displayName
               - enabled
-              - name
               - providerRef
               type: object
             state:

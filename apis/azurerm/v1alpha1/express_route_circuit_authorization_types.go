@@ -23,8 +23,10 @@ type ExpressRouteCircuitAuthorizationSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	AuthorizationKey        string `json:"-" sensitive:"true" tf:"authorization_key"`
-	AuthorizationUseStatus  string `json:"authorizationUseStatus" tf:"authorization_use_status"`
+	// +optional
+	AuthorizationKey string `json:"-" sensitive:"true" tf:"authorization_key,omitempty"`
+	// +optional
+	AuthorizationUseStatus  string `json:"authorizationUseStatus,omitempty" tf:"authorization_use_status,omitempty"`
 	ExpressRouteCircuitName string `json:"expressRouteCircuitName" tf:"express_route_circuit_name"`
 	Name                    string `json:"name" tf:"name"`
 	ResourceGroupName       string `json:"resourceGroupName" tf:"resource_group_name"`

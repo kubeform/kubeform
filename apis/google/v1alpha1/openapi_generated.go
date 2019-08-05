@@ -13239,7 +13239,7 @@ func schema_kubeform_apis_google_v1alpha1_AppEngineApplicationSpec(ref common.Re
 						},
 					},
 				},
-				Required: []string{"providerRef", "codeBucket", "defaultBucket", "defaultHostname", "gcrDomain", "locationID", "name", "urlDispatchRule"},
+				Required: []string{"providerRef", "locationID"},
 			},
 		},
 		Dependencies: []string{
@@ -13290,7 +13290,6 @@ func schema_kubeform_apis_google_v1alpha1_AppEngineApplicationSpecUrlDispatchRul
 						},
 					},
 				},
-				Required: []string{"domain", "path", "service"},
 			},
 		},
 	}
@@ -13515,7 +13514,7 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryDatasetSpec(ref common.Referen
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTime", "datasetID", "etag", "lastModifiedTime", "selfLink"},
+				Required: []string{"providerRef", "datasetID"},
 			},
 		},
 		Dependencies: []string{
@@ -13877,7 +13876,7 @@ func schema_kubeform_apis_google_v1alpha1_BigqueryTableSpec(ref common.Reference
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTime", "datasetID", "etag", "lastModifiedTime", "location", "numBytes", "numLongTermBytes", "numRows", "selfLink", "tableID", "type"},
+				Required: []string{"providerRef", "datasetID", "tableID"},
 			},
 		},
 		Dependencies: []string{
@@ -14518,7 +14517,7 @@ func schema_kubeform_apis_google_v1alpha1_BillingAccountIamBindingSpec(ref commo
 						},
 					},
 				},
-				Required: []string{"providerRef", "billingAccountID", "etag", "members", "role"},
+				Required: []string{"providerRef", "billingAccountID", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -14683,7 +14682,7 @@ func schema_kubeform_apis_google_v1alpha1_BillingAccountIamMemberSpec(ref common
 						},
 					},
 				},
-				Required: []string{"providerRef", "billingAccountID", "etag", "member", "role"},
+				Required: []string{"providerRef", "billingAccountID", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -14842,7 +14841,7 @@ func schema_kubeform_apis_google_v1alpha1_BillingAccountIamPolicySpec(ref common
 						},
 					},
 				},
-				Required: []string{"providerRef", "billingAccountID", "etag", "policyData"},
+				Required: []string{"providerRef", "billingAccountID", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -15052,7 +15051,7 @@ func schema_kubeform_apis_google_v1alpha1_BinaryAuthorizationAttestorSpecAttesta
 						},
 					},
 				},
-				Required: []string{"delegationServiceAccountEmail", "noteReference"},
+				Required: []string{"noteReference"},
 			},
 		},
 		Dependencies: []string{
@@ -15085,7 +15084,7 @@ func schema_kubeform_apis_google_v1alpha1_BinaryAuthorizationAttestorSpecAttesta
 						},
 					},
 				},
-				Required: []string{"asciiArmoredPgpPublicKey", "ID"},
+				Required: []string{"asciiArmoredPgpPublicKey"},
 			},
 		},
 	}
@@ -16624,7 +16623,6 @@ func schema_kubeform_apis_google_v1alpha1_ComposerEnvironmentSpecConfig(ref comm
 						},
 					},
 				},
-				Required: []string{"airflowURI", "dagGcsPrefix", "gkeCluster"},
 			},
 		},
 		Dependencies: []string{
@@ -16761,7 +16759,6 @@ func schema_kubeform_apis_google_v1alpha1_ComposerEnvironmentSpecConfigSoftwareC
 						},
 					},
 				},
-				Required: []string{"imageVersion"},
 			},
 		},
 	}
@@ -16995,7 +16992,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAddressSpec(ref common.Referenc
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "labelFingerprint", "name", "selfLink", "users"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -17367,7 +17364,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeAutoscalerSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "autoscalingPolicy", "creationTimestamp", "name", "selfLink", "target"},
+				Required: []string{"providerRef", "autoscalingPolicy", "name", "target"},
 			},
 		},
 		Dependencies: []string{
@@ -17688,7 +17685,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeBackendBucketSpec(ref common.Re
 						},
 					},
 				},
-				Required: []string{"providerRef", "bucketName", "creationTimestamp", "name", "selfLink"},
+				Required: []string{"providerRef", "bucketName", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -17969,7 +17966,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeBackendServiceSpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "fingerprint", "healthChecks", "name", "selfLink"},
+				Required: []string{"providerRef", "healthChecks", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -18442,7 +18439,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeDiskSpec(ref common.ReferenceCa
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "diskEncryptionKeySha256", "labelFingerprint", "lastAttachTimestamp", "lastDetachTimestamp", "name", "selfLink", "sourceImageID", "sourceSnapshotID", "users"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -18469,7 +18466,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeDiskSpecDiskEncryptionKey(ref c
 						},
 					},
 				},
-				Required: []string{"sha256"},
 			},
 		},
 	}
@@ -18494,7 +18490,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeDiskSpecSourceImageEncryptionKe
 						},
 					},
 				},
-				Required: []string{"sha256"},
 			},
 		},
 	}
@@ -18519,7 +18514,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeDiskSpecSourceSnapshotEncryptio
 						},
 					},
 				},
-				Required: []string{"sha256"},
 			},
 		},
 	}
@@ -18821,7 +18815,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeFirewallSpec(ref common.Referen
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "name", "network", "selfLink"},
+				Required: []string{"providerRef", "name", "network"},
 			},
 		},
 		Dependencies: []string{
@@ -19170,7 +19164,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeForwardingRuleSpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "labelFingerprint", "name", "selfLink", "serviceName"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -19401,7 +19395,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeGlobalAddressSpec(ref common.Re
 						},
 					},
 				},
-				Required: []string{"providerRef", "address", "creationTimestamp", "labelFingerprint", "name", "selfLink"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -19617,7 +19611,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeGlobalForwardingRuleSpec(ref co
 						},
 					},
 				},
-				Required: []string{"providerRef", "labelFingerprint", "name", "selfLink", "target"},
+				Required: []string{"providerRef", "name", "target"},
 			},
 		},
 		Dependencies: []string{
@@ -19830,7 +19824,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPHealthCheckSpec(ref common.
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "name", "selfLink"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -20043,7 +20037,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHTTPSHealthCheckSpec(ref common
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "name", "selfLink"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -20292,7 +20286,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeHealthCheckSpec(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "name", "selfLink", "type"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -20677,7 +20671,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeImageSpec(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"providerRef", "labelFingerprint", "name", "selfLink"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -21124,7 +21118,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpec(ref co
 						},
 					},
 				},
-				Required: []string{"providerRef", "cpuPlatform", "instanceID", "labelFingerprint", "metadataFingerprint", "name", "selfLink", "sourceInstanceTemplate", "tagsFingerprint"},
+				Required: []string{"providerRef", "name", "sourceInstanceTemplate"},
 			},
 		},
 		Dependencies: []string{
@@ -21163,7 +21157,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpecAttache
 						},
 					},
 				},
-				Required: []string{"diskEncryptionKeySha256", "source"},
+				Required: []string{"source"},
 			},
 		},
 	}
@@ -21212,7 +21206,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpecBootDis
 						},
 					},
 				},
-				Required: []string{"diskEncryptionKeySha256"},
 			},
 		},
 		Dependencies: []string{
@@ -21343,7 +21336,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpecNetwork
 						},
 					},
 				},
-				Required: []string{"name"},
 			},
 		},
 		Dependencies: []string{
@@ -21383,7 +21375,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpecNetwork
 						},
 					},
 				},
-				Required: []string{"assignedNATIP"},
 			},
 		},
 	}
@@ -21853,7 +21844,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupManagerSpec(ref co
 						},
 					},
 				},
-				Required: []string{"providerRef", "baseInstanceName", "fingerprint", "instanceGroup", "name", "selfLink"},
+				Required: []string{"providerRef", "baseInstanceName", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -22139,7 +22130,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceGroupSpec(ref common.Re
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "selfLink", "size"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -22495,7 +22486,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpec(ref common.Referen
 						},
 					},
 				},
-				Required: []string{"providerRef", "bootDisk", "cpuPlatform", "instanceID", "labelFingerprint", "machineType", "metadataFingerprint", "name", "networkInterface", "selfLink", "tagsFingerprint"},
+				Required: []string{"providerRef", "bootDisk", "machineType", "name", "networkInterface"},
 			},
 		},
 		Dependencies: []string{
@@ -22534,7 +22525,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpecAttachedDisk(ref co
 						},
 					},
 				},
-				Required: []string{"diskEncryptionKeySha256", "source"},
+				Required: []string{"source"},
 			},
 		},
 	}
@@ -22583,7 +22574,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpecBootDisk(ref common
 						},
 					},
 				},
-				Required: []string{"diskEncryptionKeySha256"},
 			},
 		},
 		Dependencies: []string{
@@ -22714,7 +22704,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpecNetworkInterface(re
 						},
 					},
 				},
-				Required: []string{"name"},
 			},
 		},
 		Dependencies: []string{
@@ -22754,7 +22743,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpecNetworkInterfaceAcc
 						},
 					},
 				},
-				Required: []string{"assignedNATIP"},
 			},
 		},
 	}
@@ -23177,7 +23165,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceTemplateSpec(ref common
 						},
 					},
 				},
-				Required: []string{"providerRef", "disk", "machineType", "metadataFingerprint", "selfLink", "tagsFingerprint"},
+				Required: []string{"providerRef", "disk", "machineType"},
 			},
 		},
 		Dependencies: []string{
@@ -23415,7 +23403,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceTemplateSpecNetworkInte
 						},
 					},
 				},
-				Required: []string{"assignedNATIP"},
 			},
 		},
 	}
@@ -23719,7 +23706,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInterconnectAttachmentSpec(ref 
 						},
 					},
 				},
-				Required: []string{"providerRef", "cloudRouterIPAddress", "creationTimestamp", "customerRouterIPAddress", "googleReferenceID", "interconnect", "name", "privateInterconnectInfo", "router", "selfLink"},
+				Required: []string{"providerRef", "interconnect", "name", "router"},
 			},
 		},
 		Dependencies: []string{
@@ -23740,7 +23727,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInterconnectAttachmentSpecPriva
 						},
 					},
 				},
-				Required: []string{"tag8021q"},
 			},
 		},
 	}
@@ -24005,7 +23991,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeNetworkPeeringSpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "network", "peerNetwork", "state", "stateDetails"},
+				Required: []string{"providerRef", "name", "network", "peerNetwork"},
 			},
 		},
 		Dependencies: []string{
@@ -24105,7 +24091,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeNetworkSpec(ref common.Referenc
 						},
 					},
 				},
-				Required: []string{"providerRef", "gatewayIpv4", "name", "selfLink"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -24620,7 +24606,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionAutoscalerSpec(ref common
 						},
 					},
 				},
-				Required: []string{"providerRef", "autoscalingPolicy", "creationTimestamp", "name", "selfLink", "target"},
+				Required: []string{"providerRef", "autoscalingPolicy", "name", "target"},
 			},
 		},
 		Dependencies: []string{
@@ -24984,7 +24970,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionBackendServiceSpec(ref co
 						},
 					},
 				},
-				Required: []string{"providerRef", "fingerprint", "healthChecks", "name", "selfLink"},
+				Required: []string{"providerRef", "healthChecks", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -25291,7 +25277,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionDiskSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "labelFingerprint", "lastAttachTimestamp", "lastDetachTimestamp", "name", "replicaZones", "selfLink", "sourceSnapshotID", "users"},
+				Required: []string{"providerRef", "name", "replicaZones"},
 			},
 		},
 		Dependencies: []string{
@@ -25318,7 +25304,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionDiskSpecDiskEncryptionKey
 						},
 					},
 				},
-				Required: []string{"sha256"},
 			},
 		},
 	}
@@ -25343,7 +25328,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionDiskSpecSourceSnapshotEnc
 						},
 					},
 				},
-				Required: []string{"sha256"},
 			},
 		},
 	}
@@ -25632,7 +25616,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRegionInstanceGroupManagerSpec(
 						},
 					},
 				},
-				Required: []string{"providerRef", "baseInstanceName", "fingerprint", "instanceGroup", "name", "region", "selfLink"},
+				Required: []string{"providerRef", "baseInstanceName", "name", "region"},
 			},
 		},
 		Dependencies: []string{
@@ -26032,7 +26016,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouteSpec(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"providerRef", "destRange", "name", "network", "nextHopNetwork", "selfLink"},
+				Required: []string{"providerRef", "destRange", "name", "network"},
 			},
 		},
 		Dependencies: []string{
@@ -26771,7 +26755,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterPeerSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "interface", "ipAddress", "name", "peerAsn", "router"},
+				Required: []string{"providerRef", "interface", "name", "peerAsn", "router"},
 			},
 		},
 		Dependencies: []string{
@@ -26876,7 +26860,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeRouterSpec(ref common.Reference
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "name", "network", "selfLink"},
+				Required: []string{"providerRef", "name", "network"},
 			},
 		},
 		Dependencies: []string{
@@ -27135,7 +27119,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSecurityPolicySpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "fingerprint", "name", "selfLink"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -27828,7 +27812,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpec(ref common.Referen
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "diskSizeGb", "labelFingerprint", "licenses", "name", "selfLink", "snapshotEncryptionKeySha256", "snapshotID", "sourceDisk", "sourceDiskEncryptionKeySha256", "sourceDiskLink", "storageBytes"},
+				Required: []string{"providerRef", "name", "sourceDisk"},
 			},
 		},
 		Dependencies: []string{
@@ -27849,7 +27833,6 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpecSnapshotEncryptionK
 						},
 					},
 				},
-				Required: []string{"sha256"},
 			},
 		},
 	}
@@ -28045,7 +28028,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSslCertificateSpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "certificateID", "creationTimestamp", "selfLink"},
+				Required: []string{"providerRef"},
 			},
 		},
 		Dependencies: []string{
@@ -28260,7 +28243,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSslPolicySpec(ref common.Refere
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "enabledFeatures", "fingerprint", "name", "selfLink"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -28490,7 +28473,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkIamBindingSpec(ref co
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "members", "role", "subnetwork"},
+				Required: []string{"providerRef", "members", "role", "subnetwork"},
 			},
 		},
 		Dependencies: []string{
@@ -28670,7 +28653,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkIamMemberSpec(ref com
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "member", "role", "subnetwork"},
+				Required: []string{"providerRef", "member", "role", "subnetwork"},
 			},
 		},
 		Dependencies: []string{
@@ -28844,7 +28827,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkIamPolicySpec(ref com
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "policyData", "subnetwork"},
+				Required: []string{"providerRef", "policyData", "subnetwork"},
 			},
 		},
 		Dependencies: []string{
@@ -29026,7 +29009,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSubnetworkSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "fingerprint", "gatewayAddress", "ipCIDRRange", "name", "network", "selfLink"},
+				Required: []string{"providerRef", "ipCIDRRange", "name", "network"},
 			},
 		},
 		Dependencies: []string{
@@ -29234,7 +29217,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetHTTPProxySpec(ref common.
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "name", "proxyID", "selfLink", "urlMap"},
+				Required: []string{"providerRef", "name", "urlMap"},
 			},
 		},
 		Dependencies: []string{
@@ -29442,7 +29425,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetHTTPSProxySpec(ref common
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "name", "proxyID", "selfLink", "sslCertificates", "urlMap"},
+				Required: []string{"providerRef", "name", "sslCertificates", "urlMap"},
 			},
 		},
 		Dependencies: []string{
@@ -29657,7 +29640,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetPoolSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "selfLink"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -29865,7 +29848,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetSslProxySpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "backendService", "creationTimestamp", "name", "proxyID", "selfLink", "sslCertificates"},
+				Required: []string{"providerRef", "backendService", "name", "sslCertificates"},
 			},
 		},
 		Dependencies: []string{
@@ -30054,7 +30037,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeTargetTcpProxySpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "backendService", "creationTimestamp", "name", "proxyID", "selfLink"},
+				Required: []string{"providerRef", "backendService", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -30273,7 +30256,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeURLMapSpec(ref common.Reference
 						},
 					},
 				},
-				Required: []string{"providerRef", "defaultService", "fingerprint", "mapID", "name", "selfLink"},
+				Required: []string{"providerRef", "defaultService", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -30608,7 +30591,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeVPNGatewaySpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "name", "network", "selfLink"},
+				Required: []string{"providerRef", "name", "network"},
 			},
 		},
 		Dependencies: []string{
@@ -30872,7 +30855,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeVPNTunnelSpec(ref common.Refere
 						},
 					},
 				},
-				Required: []string{"providerRef", "creationTimestamp", "detailedStatus", "labelFingerprint", "name", "peerIP", "selfLink", "sharedSecretHash", "targetVPNGateway"},
+				Required: []string{"providerRef", "name", "peerIP", "targetVPNGateway"},
 			},
 		},
 		Dependencies: []string{
@@ -31526,7 +31509,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpec(ref common.Refere
 						},
 					},
 				},
-				Required: []string{"providerRef", "endpoint", "instanceGroupUrls", "masterVersion", "name"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -31762,7 +31745,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecMaintenancePolicyD
 						},
 					},
 				},
-				Required: []string{"duration", "startTime"},
+				Required: []string{"startTime"},
 			},
 		},
 	}
@@ -31805,7 +31788,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecMasterAuth(ref com
 						},
 					},
 				},
-				Required: []string{"clientCertificate", "clusterCaCertificate", "username"},
+				Required: []string{"username"},
 			},
 		},
 		Dependencies: []string{
@@ -32230,7 +32213,6 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecNodePool(ref commo
 						},
 					},
 				},
-				Required: []string{"instanceGroupUrls"},
 			},
 		},
 		Dependencies: []string{
@@ -32572,7 +32554,6 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpecPrivateClusterConf
 						},
 					},
 				},
-				Required: []string{"privateEndpoint", "publicEndpoint"},
 			},
 		},
 	}
@@ -32822,7 +32803,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerNodePoolSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "cluster", "instanceGroupUrls"},
+				Required: []string{"providerRef", "cluster"},
 			},
 		},
 		Dependencies: []string{
@@ -33309,7 +33290,7 @@ func schema_kubeform_apis_google_v1alpha1_DataflowJobSpec(ref common.ReferenceCa
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "state", "tempGcsLocation", "templateGcsPath"},
+				Required: []string{"providerRef", "name", "tempGcsLocation", "templateGcsPath"},
 			},
 		},
 		Dependencies: []string{
@@ -33600,7 +33581,6 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfig(ref c
 						},
 					},
 				},
-				Required: []string{"bucket"},
 			},
 		},
 		Dependencies: []string{
@@ -33759,7 +33739,6 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigMaster
 						},
 					},
 				},
-				Required: []string{"instanceNames"},
 			},
 		},
 		Dependencies: []string{
@@ -33835,7 +33814,6 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigPreemp
 						},
 					},
 				},
-				Required: []string{"instanceNames"},
 			},
 		},
 		Dependencies: []string{
@@ -33902,7 +33880,6 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigSoftwa
 						},
 					},
 				},
-				Required: []string{"properties"},
 			},
 		},
 	}
@@ -33952,7 +33929,6 @@ func schema_kubeform_apis_google_v1alpha1_DataprocClusterSpecClusterConfigWorker
 						},
 					},
 				},
-				Required: []string{"instanceNames"},
 			},
 		},
 		Dependencies: []string{
@@ -34287,7 +34263,7 @@ func schema_kubeform_apis_google_v1alpha1_DataprocJobSpec(ref common.ReferenceCa
 						},
 					},
 				},
-				Required: []string{"providerRef", "driverControlsFilesURI", "driverOutputResourceURI", "placement", "status"},
+				Required: []string{"providerRef", "placement"},
 			},
 		},
 		Dependencies: []string{
@@ -34640,7 +34616,7 @@ func schema_kubeform_apis_google_v1alpha1_DataprocJobSpecPlacement(ref common.Re
 						},
 					},
 				},
-				Required: []string{"clusterName", "clusterUUID"},
+				Required: []string{"clusterName"},
 			},
 		},
 	}
@@ -35093,7 +35069,6 @@ func schema_kubeform_apis_google_v1alpha1_DataprocJobSpecStatus(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"details", "state", "stateStartTime", "substate"},
 			},
 		},
 	}
@@ -35283,7 +35258,7 @@ func schema_kubeform_apis_google_v1alpha1_DnsManagedZoneSpec(ref common.Referenc
 						},
 					},
 				},
-				Required: []string{"providerRef", "dnsName", "name", "nameServers"},
+				Required: []string{"providerRef", "dnsName", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -35681,7 +35656,7 @@ func schema_kubeform_apis_google_v1alpha1_EndpointsServiceSpec(ref common.Refere
 						},
 					},
 				},
-				Required: []string{"providerRef", "apis", "configID", "dnsAddress", "endpoints", "serviceName"},
+				Required: []string{"providerRef", "serviceName"},
 			},
 		},
 		Dependencies: []string{
@@ -35726,7 +35701,6 @@ func schema_kubeform_apis_google_v1alpha1_EndpointsServiceSpecApis(ref common.Re
 						},
 					},
 				},
-				Required: []string{"methods", "name", "syntax", "version"},
 			},
 		},
 		Dependencies: []string{
@@ -35765,7 +35739,6 @@ func schema_kubeform_apis_google_v1alpha1_EndpointsServiceSpecApisMethods(ref co
 						},
 					},
 				},
-				Required: []string{"name", "requestType", "responseType", "syntax"},
 			},
 		},
 	}
@@ -35790,7 +35763,6 @@ func schema_kubeform_apis_google_v1alpha1_EndpointsServiceSpecEndpoints(ref comm
 						},
 					},
 				},
-				Required: []string{"address", "name"},
 			},
 		},
 	}
@@ -36009,7 +35981,7 @@ func schema_kubeform_apis_google_v1alpha1_FilestoreInstanceSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "createTime", "etag", "fileShares", "name", "networks", "tier", "zone"},
+				Required: []string{"providerRef", "fileShares", "name", "networks", "tier", "zone"},
 			},
 		},
 		Dependencies: []string{
@@ -36087,7 +36059,7 @@ func schema_kubeform_apis_google_v1alpha1_FilestoreInstanceSpecNetworks(ref comm
 						},
 					},
 				},
-				Required: []string{"ipAddresses", "modes", "network"},
+				Required: []string{"modes", "network"},
 			},
 		},
 	}
@@ -36300,7 +36272,7 @@ func schema_kubeform_apis_google_v1alpha1_FolderIamBindingSpec(ref common.Refere
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "folder", "members", "role"},
+				Required: []string{"providerRef", "folder", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -36465,7 +36437,7 @@ func schema_kubeform_apis_google_v1alpha1_FolderIamMemberSpec(ref common.Referen
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "folder", "member", "role"},
+				Required: []string{"providerRef", "folder", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -36624,7 +36596,7 @@ func schema_kubeform_apis_google_v1alpha1_FolderIamPolicySpec(ref common.Referen
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "folder", "policyData"},
+				Required: []string{"providerRef", "folder", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -36878,7 +36850,7 @@ func schema_kubeform_apis_google_v1alpha1_FolderOrganizationPolicySpec(ref commo
 						},
 					},
 				},
-				Required: []string{"providerRef", "constraint", "etag", "folder", "updateTime"},
+				Required: []string{"providerRef", "constraint", "folder"},
 			},
 		},
 		Dependencies: []string{
@@ -37103,7 +37075,7 @@ func schema_kubeform_apis_google_v1alpha1_FolderSpec(ref common.ReferenceCallbac
 						},
 					},
 				},
-				Required: []string{"providerRef", "createTime", "displayName", "lifecycleState", "name", "parent"},
+				Required: []string{"providerRef", "displayName", "parent"},
 			},
 		},
 		Dependencies: []string{
@@ -37318,7 +37290,7 @@ func schema_kubeform_apis_google_v1alpha1_KmsCryptoKeyIamBindingSpec(ref common.
 						},
 					},
 				},
-				Required: []string{"providerRef", "cryptoKeyID", "etag", "members", "role"},
+				Required: []string{"providerRef", "cryptoKeyID", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -37483,7 +37455,7 @@ func schema_kubeform_apis_google_v1alpha1_KmsCryptoKeyIamMemberSpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "cryptoKeyID", "etag", "member", "role"},
+				Required: []string{"providerRef", "cryptoKeyID", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -37605,7 +37577,7 @@ func schema_kubeform_apis_google_v1alpha1_KmsCryptoKeySpec(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"providerRef", "keyRing", "name", "selfLink"},
+				Required: []string{"providerRef", "keyRing", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -37820,7 +37792,7 @@ func schema_kubeform_apis_google_v1alpha1_KmsKeyRingIamBindingSpec(ref common.Re
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "keyRingID", "members", "role"},
+				Required: []string{"providerRef", "keyRingID", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -37985,7 +37957,7 @@ func schema_kubeform_apis_google_v1alpha1_KmsKeyRingIamMemberSpec(ref common.Ref
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "keyRingID", "member", "role"},
+				Required: []string{"providerRef", "keyRingID", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -38144,7 +38116,7 @@ func schema_kubeform_apis_google_v1alpha1_KmsKeyRingIamPolicySpec(ref common.Ref
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "keyRingID", "policyData"},
+				Required: []string{"providerRef", "keyRingID", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -38266,7 +38238,7 @@ func schema_kubeform_apis_google_v1alpha1_KmsKeyRingSpec(ref common.ReferenceCal
 						},
 					},
 				},
-				Required: []string{"providerRef", "location", "name", "selfLink"},
+				Required: []string{"providerRef", "location", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -38608,7 +38580,7 @@ func schema_kubeform_apis_google_v1alpha1_LoggingBillingAccountSinkSpec(ref comm
 						},
 					},
 				},
-				Required: []string{"providerRef", "billingAccount", "destination", "name", "writerIdentity"},
+				Required: []string{"providerRef", "billingAccount", "destination", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -38956,7 +38928,7 @@ func schema_kubeform_apis_google_v1alpha1_LoggingFolderSinkSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "destination", "folder", "name", "writerIdentity"},
+				Required: []string{"providerRef", "destination", "folder", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -39304,7 +39276,7 @@ func schema_kubeform_apis_google_v1alpha1_LoggingOrganizationSinkSpec(ref common
 						},
 					},
 				},
-				Required: []string{"providerRef", "destination", "name", "orgID", "writerIdentity"},
+				Required: []string{"providerRef", "destination", "name", "orgID"},
 			},
 		},
 		Dependencies: []string{
@@ -39652,7 +39624,7 @@ func schema_kubeform_apis_google_v1alpha1_LoggingProjectSinkSpec(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"providerRef", "destination", "name", "writerIdentity"},
+				Required: []string{"providerRef", "destination", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -39873,7 +39845,7 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringAlertPolicySpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "combiner", "conditions", "creationRecord", "displayName", "enabled", "name"},
+				Required: []string{"providerRef", "combiner", "conditions", "displayName", "enabled"},
 			},
 		},
 		Dependencies: []string{
@@ -39924,7 +39896,7 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringAlertPolicySpecConditions(re
 						},
 					},
 				},
-				Required: []string{"displayName", "name"},
+				Required: []string{"displayName"},
 			},
 		},
 		Dependencies: []string{
@@ -40260,7 +40232,6 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringAlertPolicySpecCreationRecor
 						},
 					},
 				},
-				Required: []string{"mutateTime", "mutatedBy"},
 			},
 		},
 	}
@@ -40435,7 +40406,7 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringGroupSpec(ref common.Referen
 						},
 					},
 				},
-				Required: []string{"providerRef", "displayName", "filter", "name"},
+				Required: []string{"providerRef", "displayName", "filter"},
 			},
 		},
 		Dependencies: []string{
@@ -40646,7 +40617,7 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringNotificationChannelSpec(ref 
 						},
 					},
 				},
-				Required: []string{"providerRef", "displayName", "name", "type", "verificationStatus"},
+				Required: []string{"providerRef", "displayName", "type"},
 			},
 		},
 		Dependencies: []string{
@@ -40913,7 +40884,7 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringUptimeCheckConfigSpec(ref co
 						},
 					},
 				},
-				Required: []string{"providerRef", "displayName", "name", "timeout"},
+				Required: []string{"providerRef", "displayName", "timeout"},
 			},
 		},
 		Dependencies: []string{
@@ -41303,7 +41274,7 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationIamBindingSpec(ref common.
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "members", "orgID", "role"},
+				Required: []string{"providerRef", "members", "orgID", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -41659,7 +41630,7 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationIamMemberSpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "member", "orgID", "role"},
+				Required: []string{"providerRef", "member", "orgID", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -41818,7 +41789,7 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationIamPolicySpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "orgID", "policyData"},
+				Required: []string{"providerRef", "orgID", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -42025,7 +41996,7 @@ func schema_kubeform_apis_google_v1alpha1_OrganizationPolicySpec(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"providerRef", "constraint", "etag", "orgID", "updateTime"},
+				Required: []string{"providerRef", "constraint", "orgID"},
 			},
 		},
 		Dependencies: []string{
@@ -42384,7 +42355,7 @@ func schema_kubeform_apis_google_v1alpha1_ProjectIamBindingSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "members", "role"},
+				Required: []string{"providerRef", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -42740,7 +42711,7 @@ func schema_kubeform_apis_google_v1alpha1_ProjectIamMemberSpec(ref common.Refere
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "member", "role"},
+				Required: []string{"providerRef", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -42920,7 +42891,7 @@ func schema_kubeform_apis_google_v1alpha1_ProjectIamPolicySpec(ref common.Refere
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "policyData", "restorePolicy"},
+				Required: []string{"providerRef", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -43174,7 +43145,7 @@ func schema_kubeform_apis_google_v1alpha1_ProjectOrganizationPolicySpec(ref comm
 						},
 					},
 				},
-				Required: []string{"providerRef", "constraint", "etag", "project", "updateTime"},
+				Required: []string{"providerRef", "constraint", "project"},
 			},
 		},
 		Dependencies: []string{
@@ -43769,7 +43740,7 @@ func schema_kubeform_apis_google_v1alpha1_ProjectSpec(ref common.ReferenceCallba
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "number", "projectID"},
+				Required: []string{"providerRef", "name", "projectID"},
 			},
 		},
 		Dependencies: []string{
@@ -43856,7 +43827,6 @@ func schema_kubeform_apis_google_v1alpha1_ProjectSpecAppEngine(ref common.Refere
 						},
 					},
 				},
-				Required: []string{"codeBucket", "defaultBucket", "defaultHostname", "gcrDomain", "name", "urlDispatchRule"},
 			},
 		},
 		Dependencies: []string{
@@ -43907,7 +43877,6 @@ func schema_kubeform_apis_google_v1alpha1_ProjectSpecAppEngineUrlDispatchRule(re
 						},
 					},
 				},
-				Required: []string{"domain", "path", "service"},
 			},
 		},
 	}
@@ -44285,7 +44254,7 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionIamBindingSpec(ref c
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "members", "role", "subscription"},
+				Required: []string{"providerRef", "members", "role", "subscription"},
 			},
 		},
 		Dependencies: []string{
@@ -44456,7 +44425,7 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionIamMemberSpec(ref co
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "member", "role", "subscription"},
+				Required: []string{"providerRef", "member", "role", "subscription"},
 			},
 		},
 		Dependencies: []string{
@@ -44621,7 +44590,7 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionIamPolicySpec(ref co
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "policyData", "subscription"},
+				Required: []string{"providerRef", "policyData", "subscription"},
 			},
 		},
 		Dependencies: []string{
@@ -44761,7 +44730,7 @@ func schema_kubeform_apis_google_v1alpha1_PubsubSubscriptionSpec(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "path", "topic"},
+				Required: []string{"providerRef", "name", "topic"},
 			},
 		},
 		Dependencies: []string{
@@ -45015,7 +44984,7 @@ func schema_kubeform_apis_google_v1alpha1_PubsubTopicIamBindingSpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "members", "role", "topic"},
+				Required: []string{"providerRef", "members", "role", "topic"},
 			},
 		},
 		Dependencies: []string{
@@ -45186,7 +45155,7 @@ func schema_kubeform_apis_google_v1alpha1_PubsubTopicIamMemberSpec(ref common.Re
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "member", "role", "topic"},
+				Required: []string{"providerRef", "member", "role", "topic"},
 			},
 		},
 		Dependencies: []string{
@@ -45351,7 +45320,7 @@ func schema_kubeform_apis_google_v1alpha1_PubsubTopicIamPolicySpec(ref common.Re
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "policyData", "topic"},
+				Required: []string{"providerRef", "policyData", "topic"},
 			},
 		},
 		Dependencies: []string{
@@ -45720,7 +45689,7 @@ func schema_kubeform_apis_google_v1alpha1_RedisInstanceSpec(ref common.Reference
 						},
 					},
 				},
-				Required: []string{"providerRef", "createTime", "currentLocationID", "host", "memorySizeGb", "name", "port"},
+				Required: []string{"providerRef", "memorySizeGb", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -45904,7 +45873,7 @@ func schema_kubeform_apis_google_v1alpha1_ResourceManagerLienSpec(ref common.Ref
 						},
 					},
 				},
-				Required: []string{"providerRef", "createTime", "name", "origin", "parent", "reason", "restrictions"},
+				Required: []string{"providerRef", "origin", "parent", "reason", "restrictions"},
 			},
 		},
 		Dependencies: []string{
@@ -46240,7 +46209,7 @@ func schema_kubeform_apis_google_v1alpha1_RuntimeconfigVariableSpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "parent", "updateTime"},
+				Required: []string{"providerRef", "name", "parent"},
 			},
 		},
 		Dependencies: []string{
@@ -46455,7 +46424,7 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountIamBindingSpec(ref commo
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "members", "role", "serviceAccountID"},
+				Required: []string{"providerRef", "members", "role", "serviceAccountID"},
 			},
 		},
 		Dependencies: []string{
@@ -46620,7 +46589,7 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountIamMemberSpec(ref common
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "member", "role", "serviceAccountID"},
+				Required: []string{"providerRef", "member", "role", "serviceAccountID"},
 			},
 		},
 		Dependencies: []string{
@@ -46779,7 +46748,7 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountIamPolicySpec(ref common
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "policyData", "serviceAccountID"},
+				Required: []string{"providerRef", "policyData", "serviceAccountID"},
 			},
 		},
 		Dependencies: []string{
@@ -46991,7 +46960,7 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountKeySpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "privateKeyEncrypted", "privateKeyFingerprint", "publicKey", "serviceAccountID", "validAfter", "validBefore"},
+				Required: []string{"providerRef", "serviceAccountID"},
 			},
 		},
 		Dependencies: []string{
@@ -47132,7 +47101,7 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountSpec(ref common.Referenc
 						},
 					},
 				},
-				Required: []string{"providerRef", "accountID", "email", "name", "uniqueID"},
+				Required: []string{"providerRef", "accountID"},
 			},
 		},
 		Dependencies: []string{
@@ -47297,7 +47266,7 @@ func schema_kubeform_apis_google_v1alpha1_SourcerepoRepositorySpec(ref common.Re
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "size", "url"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -47524,7 +47493,7 @@ func schema_kubeform_apis_google_v1alpha1_SpannerDatabaseIamBindingSpec(ref comm
 						},
 					},
 				},
-				Required: []string{"providerRef", "database", "etag", "instance", "members", "role"},
+				Required: []string{"providerRef", "database", "instance", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -47701,7 +47670,7 @@ func schema_kubeform_apis_google_v1alpha1_SpannerDatabaseIamMemberSpec(ref commo
 						},
 					},
 				},
-				Required: []string{"providerRef", "database", "etag", "instance", "member", "role"},
+				Required: []string{"providerRef", "database", "instance", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -47872,7 +47841,7 @@ func schema_kubeform_apis_google_v1alpha1_SpannerDatabaseIamPolicySpec(ref commo
 						},
 					},
 				},
-				Required: []string{"providerRef", "database", "etag", "instance", "policyData"},
+				Required: []string{"providerRef", "database", "instance", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -48007,7 +47976,7 @@ func schema_kubeform_apis_google_v1alpha1_SpannerDatabaseSpec(ref common.Referen
 						},
 					},
 				},
-				Required: []string{"providerRef", "instance", "name", "state"},
+				Required: []string{"providerRef", "instance", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -48228,7 +48197,7 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceIamBindingSpec(ref comm
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "instance", "members", "role"},
+				Required: []string{"providerRef", "instance", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -48399,7 +48368,7 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceIamMemberSpec(ref commo
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "instance", "member", "role"},
+				Required: []string{"providerRef", "instance", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -48564,7 +48533,7 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceIamPolicySpec(ref commo
 						},
 					},
 				},
-				Required: []string{"providerRef", "etag", "instance", "policyData"},
+				Required: []string{"providerRef", "instance", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -48712,7 +48681,7 @@ func schema_kubeform_apis_google_v1alpha1_SpannerInstanceSpec(ref common.Referen
 						},
 					},
 				},
-				Required: []string{"providerRef", "config", "displayName", "state"},
+				Required: []string{"providerRef", "config", "displayName"},
 			},
 		},
 		Dependencies: []string{
@@ -49003,7 +48972,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpec(ref common.Ref
 						},
 					},
 				},
-				Required: []string{"providerRef", "connectionName", "firstIPAddress", "ipAddress", "selfLink", "serverCaCert", "serviceAccountEmailAddress", "settings"},
+				Required: []string{"providerRef", "settings"},
 			},
 		},
 		Dependencies: []string{
@@ -49030,7 +48999,6 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpecIpAddress(ref c
 						},
 					},
 				},
-				Required: []string{"ipAddress"},
 			},
 		},
 	}
@@ -49145,7 +49113,6 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpecServerCaCert(re
 						},
 					},
 				},
-				Required: []string{"cert", "commonName", "createTime", "expirationTime", "sha1Fingerprint"},
 			},
 		},
 	}
@@ -49305,7 +49272,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpecSettings(ref co
 						},
 					},
 				},
-				Required: []string{"tier", "version"},
+				Required: []string{"tier"},
 			},
 		},
 		Dependencies: []string{
@@ -49621,7 +49588,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseSpec(ref common.ReferenceCa
 						},
 					},
 				},
-				Required: []string{"providerRef", "instance", "name", "selfLink"},
+				Required: []string{"providerRef", "instance", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -49815,7 +49782,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlSslCertSpec(ref common.ReferenceCal
 						},
 					},
 				},
-				Required: []string{"providerRef", "cert", "certSerialNumber", "commonName", "createTime", "expirationTime", "instance", "serverCaCert", "sha1Fingerprint"},
+				Required: []string{"providerRef", "commonName", "instance"},
 			},
 		},
 		Dependencies: []string{
@@ -50372,7 +50339,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketIamBindingSpec(ref common
 						},
 					},
 				},
-				Required: []string{"providerRef", "bucket", "etag", "members", "role"},
+				Required: []string{"providerRef", "bucket", "members", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -50537,7 +50504,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketIamMemberSpec(ref common.
 						},
 					},
 				},
-				Required: []string{"providerRef", "bucket", "etag", "member", "role"},
+				Required: []string{"providerRef", "bucket", "member", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -50696,7 +50663,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketIamPolicySpec(ref common.
 						},
 					},
 				},
-				Required: []string{"providerRef", "bucket", "etag", "policyData"},
+				Required: []string{"providerRef", "bucket", "policyData"},
 			},
 		},
 		Dependencies: []string{
@@ -50962,7 +50929,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketObjectSpec(ref common.Ref
 						},
 					},
 				},
-				Required: []string{"providerRef", "bucket", "crc32c", "md5hash", "name"},
+				Required: []string{"providerRef", "bucket", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -51141,7 +51108,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageBucketSpec(ref common.Reference
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "selfLink", "url"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -51758,7 +51725,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageDefaultObjectAccessControlSpec(
 						},
 					},
 				},
-				Required: []string{"providerRef", "bucket", "domain", "email", "entity", "entityID", "generation", "projectTeam", "role"},
+				Required: []string{"providerRef", "bucket", "entity", "role"},
 			},
 		},
 		Dependencies: []string{
@@ -51980,7 +51947,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageNotificationSpec(ref common.Ref
 						},
 					},
 				},
-				Required: []string{"providerRef", "bucket", "payloadFormat", "selfLink", "topic"},
+				Required: []string{"providerRef", "bucket", "payloadFormat", "topic"},
 			},
 		},
 		Dependencies: []string{
@@ -52353,7 +52320,7 @@ func schema_kubeform_apis_google_v1alpha1_StorageObjectAccessControlSpec(ref com
 						},
 					},
 				},
-				Required: []string{"providerRef", "bucket", "domain", "email", "entity", "entityID", "generation", "object", "projectTeam", "role"},
+				Required: []string{"providerRef", "bucket", "entity", "object", "role"},
 			},
 		},
 		Dependencies: []string{

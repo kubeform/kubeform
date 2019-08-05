@@ -418,12 +418,6 @@ spec:
                     type: string
                   rawConfig:
                     type: string
-                required:
-                - clientCertificate
-                - clientKey
-                - clusterCaCertificate
-                - host
-                - rawConfig
                 type: object
               type: array
             name:
@@ -450,12 +444,6 @@ spec:
                           type: string
                         updatedAt:
                           type: string
-                      required:
-                      - ID
-                      - createdAt
-                      - name
-                      - status
-                      - updatedAt
                       type: object
                     type: array
                   size:
@@ -466,10 +454,8 @@ spec:
                     type: array
                     uniqueItems: true
                 required:
-                - ID
                 - name
                 - nodeCount
-                - nodes
                 - size
                 type: object
               maxItems: 1
@@ -500,18 +486,10 @@ spec:
             version:
               type: string
           required:
-          - clusterSubnet
-          - createdAt
-          - endpoint
-          - ipv4Address
-          - kubeConfig
           - name
           - nodePool
           - providerRef
           - region
-          - serviceSubnet
-          - status
-          - updatedAt
           - version
           type: object
         status:
@@ -544,12 +522,6 @@ spec:
                         type: string
                       rawConfig:
                         type: string
-                    required:
-                    - clientCertificate
-                    - clientKey
-                    - clusterCaCertificate
-                    - host
-                    - rawConfig
                     type: object
                   type: array
                 name:
@@ -576,12 +548,6 @@ spec:
                               type: string
                             updatedAt:
                               type: string
-                          required:
-                          - ID
-                          - createdAt
-                          - name
-                          - status
-                          - updatedAt
                           type: object
                         type: array
                       size:
@@ -592,10 +558,8 @@ spec:
                         type: array
                         uniqueItems: true
                     required:
-                    - ID
                     - name
                     - nodeCount
-                    - nodes
                     - size
                     type: object
                   maxItems: 1
@@ -626,18 +590,10 @@ spec:
                 version:
                   type: string
               required:
-              - clusterSubnet
-              - createdAt
-              - endpoint
-              - ipv4Address
-              - kubeConfig
               - name
               - nodePool
               - providerRef
               - region
-              - serviceSubnet
-              - status
-              - updatedAt
               - version
               type: object
             state:

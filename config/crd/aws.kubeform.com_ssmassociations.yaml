@@ -456,7 +456,6 @@ spec:
               maxItems: 5
               type: array
           required:
-          - associationID
           - name
           - providerRef
           type: object
@@ -528,7 +527,6 @@ spec:
                   maxItems: 5
                   type: array
               required:
-              - associationID
               - name
               - providerRef
               type: object

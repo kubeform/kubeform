@@ -439,7 +439,6 @@ spec:
             visibilityTimeoutSeconds:
               type: integer
           required:
-          - arn
           - providerRef
           type: object
         status:
@@ -493,7 +492,6 @@ spec:
                 visibilityTimeoutSeconds:
                   type: integer
               required:
-              - arn
               - providerRef
               type: object
             state:

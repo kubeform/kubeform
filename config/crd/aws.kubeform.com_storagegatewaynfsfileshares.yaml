@@ -454,9 +454,7 @@ spec:
             squash:
               type: string
           required:
-          - arn
           - clientList
-          - fileshareID
           - gatewayArn
           - locationArn
           - providerRef
@@ -528,9 +526,7 @@ spec:
                 squash:
                   type: string
               required:
-              - arn
               - clientList
-              - fileshareID
               - gatewayArn
               - locationArn
               - providerRef

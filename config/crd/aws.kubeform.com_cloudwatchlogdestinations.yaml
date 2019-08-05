@@ -415,7 +415,6 @@ spec:
             targetArn:
               type: string
           required:
-          - arn
           - name
           - providerRef
           - roleArn
@@ -448,7 +447,6 @@ spec:
                 targetArn:
                   type: string
               required:
-              - arn
               - name
               - providerRef
               - roleArn

@@ -446,10 +446,8 @@ spec:
             sourceDisk:
               type: string
           required:
-          - labelFingerprint
           - name
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -509,10 +507,8 @@ spec:
                 sourceDisk:
                   type: string
               required:
-              - labelFingerprint
               - name
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

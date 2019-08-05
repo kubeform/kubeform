@@ -27,7 +27,8 @@ type NodebalancerNodeSpec struct {
 	// +optional
 	Mode           string `json:"mode,omitempty" tf:"mode,omitempty"`
 	NodebalancerID int    `json:"nodebalancerID" tf:"nodebalancer_id"`
-	Status         string `json:"status" tf:"status"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
 	Weight int `json:"weight,omitempty" tf:"weight,omitempty"`
 }

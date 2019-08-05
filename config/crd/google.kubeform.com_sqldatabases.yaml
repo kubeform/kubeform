@@ -422,7 +422,6 @@ spec:
           - instance
           - name
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -458,7 +457,6 @@ spec:
               - instance
               - name
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

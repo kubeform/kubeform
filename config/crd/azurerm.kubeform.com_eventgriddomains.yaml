@@ -451,7 +451,6 @@ spec:
                 type: string
               type: object
           required:
-          - endpoint
           - location
           - name
           - providerRef
@@ -520,7 +519,6 @@ spec:
                     type: string
                   type: object
               required:
-              - endpoint
               - location
               - name
               - providerRef

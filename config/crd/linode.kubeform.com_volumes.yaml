@@ -424,11 +424,9 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - filesystemPath
           - label
           - providerRef
           - region
-          - status
           type: object
         status:
           properties:
@@ -466,11 +464,9 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - filesystemPath
               - label
               - providerRef
               - region
-              - status
               type: object
             state:
               properties:

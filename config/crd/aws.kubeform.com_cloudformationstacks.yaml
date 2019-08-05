@@ -448,7 +448,6 @@ spec:
               type: integer
           required:
           - name
-          - outputs
           - providerRef
           type: object
         status:
@@ -511,7 +510,6 @@ spec:
                   type: integer
               required:
               - name
-              - outputs
               - providerRef
               type: object
             state:

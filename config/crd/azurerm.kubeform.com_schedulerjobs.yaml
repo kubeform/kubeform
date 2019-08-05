@@ -453,10 +453,6 @@ spec:
                           type: string
                         thumbprint:
                           type: string
-                      required:
-                      - expiration
-                      - subjectName
-                      - thumbprint
                       type: object
                     maxItems: 1
                     type: array
@@ -532,10 +528,6 @@ spec:
                           type: string
                         thumbprint:
                           type: string
-                      required:
-                      - expiration
-                      - subjectName
-                      - thumbprint
                       type: object
                     maxItems: 1
                     type: array
@@ -719,10 +711,6 @@ spec:
                               type: string
                             thumbprint:
                               type: string
-                          required:
-                          - expiration
-                          - subjectName
-                          - thumbprint
                           type: object
                         maxItems: 1
                         type: array
@@ -798,10 +786,6 @@ spec:
                               type: string
                             thumbprint:
                               type: string
-                          required:
-                          - expiration
-                          - subjectName
-                          - thumbprint
                           type: object
                         maxItems: 1
                         type: array

@@ -28,15 +28,20 @@ type StorageObjectAccessControlSpecProjectTeam struct {
 type StorageObjectAccessControlSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Bucket     string `json:"bucket" tf:"bucket"`
-	Domain     string `json:"domain" tf:"domain"`
-	Email      string `json:"email" tf:"email"`
-	Entity     string `json:"entity" tf:"entity"`
-	EntityID   string `json:"entityID" tf:"entity_id"`
-	Generation int    `json:"generation" tf:"generation"`
+	Bucket string `json:"bucket" tf:"bucket"`
+	// +optional
+	Domain string `json:"domain,omitempty" tf:"domain,omitempty"`
+	// +optional
+	Email  string `json:"email,omitempty" tf:"email,omitempty"`
+	Entity string `json:"entity" tf:"entity"`
+	// +optional
+	EntityID string `json:"entityID,omitempty" tf:"entity_id,omitempty"`
+	// +optional
+	Generation int    `json:"generation,omitempty" tf:"generation,omitempty"`
 	Object     string `json:"object" tf:"object"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	ProjectTeam []StorageObjectAccessControlSpecProjectTeam `json:"projectTeam" tf:"project_team"`
+	ProjectTeam []StorageObjectAccessControlSpecProjectTeam `json:"projectTeam,omitempty" tf:"project_team,omitempty"`
 	Role        string                                      `json:"role" tf:"role"`
 }
 

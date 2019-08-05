@@ -413,7 +413,6 @@ spec:
                     type: string
                 required:
                 - name
-                - privateIPAddress
                 - subnetID
                 type: object
               maxItems: 1
@@ -469,7 +468,6 @@ spec:
                         type: string
                     required:
                     - name
-                    - privateIPAddress
                     - subnetID
                     type: object
                   maxItems: 1

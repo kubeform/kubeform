@@ -21,8 +21,10 @@ type IamUserLoginProfile struct {
 type IamUserLoginProfileSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	EncryptedPassword string `json:"encryptedPassword" tf:"encrypted_password"`
-	KeyFingerprint    string `json:"keyFingerprint" tf:"key_fingerprint"`
+	// +optional
+	EncryptedPassword string `json:"encryptedPassword,omitempty" tf:"encrypted_password,omitempty"`
+	// +optional
+	KeyFingerprint string `json:"keyFingerprint,omitempty" tf:"key_fingerprint,omitempty"`
 	// +optional
 	PasswordLength int `json:"passwordLength,omitempty" tf:"password_length,omitempty"`
 	// +optional

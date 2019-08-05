@@ -432,12 +432,10 @@ spec:
             uri:
               type: string
           required:
-          - arn
           - onPremConfig
           - providerRef
           - serverHostname
           - subdirectory
-          - uri
           type: object
         status:
           properties:
@@ -483,12 +481,10 @@ spec:
                 uri:
                   type: string
               required:
-              - arn
               - onPremConfig
               - providerRef
               - serverHostname
               - subdirectory
-              - uri
               type: object
             state:
               properties:

@@ -21,19 +21,27 @@ type Image struct {
 type ImageSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Created    string `json:"created" tf:"created"`
-	CreatedBy  string `json:"createdBy" tf:"created_by"`
-	Deprecated bool   `json:"deprecated" tf:"deprecated"`
+	// +optional
+	Created string `json:"created,omitempty" tf:"created,omitempty"`
+	// +optional
+	CreatedBy string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
+	// +optional
+	Deprecated bool `json:"deprecated,omitempty" tf:"deprecated,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	DiskID      int    `json:"diskID" tf:"disk_id"`
-	Expiry      string `json:"expiry" tf:"expiry"`
-	IsPublic    bool   `json:"isPublic" tf:"is_public"`
-	Label       string `json:"label" tf:"label"`
-	LinodeID    int    `json:"linodeID" tf:"linode_id"`
-	Size        int    `json:"size" tf:"size"`
-	Type        string `json:"type" tf:"type"`
-	Vendor      string `json:"vendor" tf:"vendor"`
+	// +optional
+	Expiry string `json:"expiry,omitempty" tf:"expiry,omitempty"`
+	// +optional
+	IsPublic bool   `json:"isPublic,omitempty" tf:"is_public,omitempty"`
+	Label    string `json:"label" tf:"label"`
+	LinodeID int    `json:"linodeID" tf:"linode_id"`
+	// +optional
+	Size int `json:"size,omitempty" tf:"size,omitempty"`
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
+	// +optional
+	Vendor string `json:"vendor,omitempty" tf:"vendor,omitempty"`
 }
 
 type ImageStatus struct {

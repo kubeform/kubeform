@@ -25,8 +25,10 @@ type TransferServerSpecEndpointDetails struct {
 type TransferServerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn      string `json:"arn" tf:"arn"`
-	Endpoint string `json:"endpoint" tf:"endpoint"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	EndpointDetails []TransferServerSpecEndpointDetails `json:"endpointDetails,omitempty" tf:"endpoint_details,omitempty"`

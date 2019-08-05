@@ -418,7 +418,6 @@ spec:
             role:
               type: string
           required:
-          - etag
           - members
           - orgID
           - providerRef
@@ -454,7 +453,6 @@ spec:
                 role:
                   type: string
               required:
-              - etag
               - members
               - orgID
               - providerRef

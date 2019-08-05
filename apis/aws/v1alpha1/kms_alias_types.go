@@ -21,12 +21,14 @@ type KmsAlias struct {
 type KmsAliasSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
-	NamePrefix   string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
-	TargetKeyArn string `json:"targetKeyArn" tf:"target_key_arn"`
+	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
+	// +optional
+	TargetKeyArn string `json:"targetKeyArn,omitempty" tf:"target_key_arn,omitempty"`
 	TargetKeyID  string `json:"targetKeyID" tf:"target_key_id"`
 }
 

@@ -434,8 +434,6 @@ spec:
               type: string
           required:
           - bucket
-          - crc32c
-          - md5hash
           - name
           - providerRef
           type: object
@@ -485,8 +483,6 @@ spec:
                   type: string
               required:
               - bucket
-              - crc32c
-              - md5hash
               - name
               - providerRef
               type: object

@@ -475,10 +475,8 @@ spec:
               type: string
           required:
           - autoscalingPolicy
-          - creationTimestamp
           - name
           - providerRef
-          - selfLink
           - target
           type: object
         status:
@@ -568,10 +566,8 @@ spec:
                   type: string
               required:
               - autoscalingPolicy
-              - creationTimestamp
               - name
               - providerRef
-              - selfLink
               - target
               type: object
             state:

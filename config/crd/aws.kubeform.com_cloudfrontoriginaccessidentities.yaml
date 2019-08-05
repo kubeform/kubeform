@@ -419,12 +419,7 @@ spec:
             s3CanonicalUserID:
               type: string
           required:
-          - callerReference
-          - cloudfrontAccessIdentityPath
-          - etag
-          - iamArn
           - providerRef
-          - s3CanonicalUserID
           type: object
         status:
           properties:
@@ -457,12 +452,7 @@ spec:
                 s3CanonicalUserID:
                   type: string
               required:
-              - callerReference
-              - cloudfrontAccessIdentityPath
-              - etag
-              - iamArn
               - providerRef
-              - s3CanonicalUserID
               type: object
             state:
               properties:

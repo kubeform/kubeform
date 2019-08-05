@@ -427,7 +427,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - providerRef
           type: object
         status:
@@ -469,7 +468,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - providerRef
               type: object
             state:

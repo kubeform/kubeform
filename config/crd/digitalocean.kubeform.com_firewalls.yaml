@@ -501,11 +501,8 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - createdAt
           - name
-          - pendingChanges
           - providerRef
-          - status
           type: object
         status:
           properties:
@@ -620,11 +617,8 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - createdAt
               - name
-              - pendingChanges
               - providerRef
-              - status
               type: object
             state:
               properties:

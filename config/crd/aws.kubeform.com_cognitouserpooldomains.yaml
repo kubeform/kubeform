@@ -421,13 +421,9 @@ spec:
             version:
               type: string
           required:
-          - awsAccountID
-          - cloudfrontDistributionArn
           - domain
           - providerRef
-          - s3Bucket
           - userPoolID
-          - version
           type: object
         status:
           properties:
@@ -462,13 +458,9 @@ spec:
                 version:
                   type: string
               required:
-              - awsAccountID
-              - cloudfrontDistributionArn
               - domain
               - providerRef
-              - s3Bucket
               - userPoolID
-              - version
               type: object
             state:
               properties:

@@ -476,7 +476,6 @@ spec:
                 type: string
               type: object
           required:
-          - hostName
           - location
           - name
           - origin
@@ -572,7 +571,6 @@ spec:
                     type: string
                   type: object
               required:
-              - hostName
               - location
               - name
               - origin

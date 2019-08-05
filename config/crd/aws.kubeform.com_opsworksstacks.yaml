@@ -482,13 +482,11 @@ spec:
             vpcID:
               type: string
           required:
-          - arn
           - defaultInstanceProfileArn
           - name
           - providerRef
           - region
           - serviceRoleArn
-          - stackEndpoint
           type: object
         status:
           properties:
@@ -584,13 +582,11 @@ spec:
                 vpcID:
                   type: string
               required:
-              - arn
               - defaultInstanceProfileArn
               - name
               - providerRef
               - region
               - serviceRoleArn
-              - stackEndpoint
               type: object
             state:
               properties:

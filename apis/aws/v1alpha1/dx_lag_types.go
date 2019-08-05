@@ -21,14 +21,17 @@ type DxLag struct {
 type DxLagSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn                  string `json:"arn" tf:"arn"`
+	// +optional
+	Arn                  string `json:"arn,omitempty" tf:"arn,omitempty"`
 	ConnectionsBandwidth string `json:"connectionsBandwidth" tf:"connections_bandwidth"`
 	// +optional
-	ForceDestroy         bool   `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
-	HasLogicalRedundancy string `json:"hasLogicalRedundancy" tf:"has_logical_redundancy"`
-	JumboFrameCapable    bool   `json:"jumboFrameCapable" tf:"jumbo_frame_capable"`
-	Location             string `json:"location" tf:"location"`
-	Name                 string `json:"name" tf:"name"`
+	ForceDestroy bool `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
+	// +optional
+	HasLogicalRedundancy string `json:"hasLogicalRedundancy,omitempty" tf:"has_logical_redundancy,omitempty"`
+	// +optional
+	JumboFrameCapable bool   `json:"jumboFrameCapable,omitempty" tf:"jumbo_frame_capable,omitempty"`
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

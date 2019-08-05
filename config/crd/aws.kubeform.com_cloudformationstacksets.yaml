@@ -437,10 +437,8 @@ spec:
               type: string
           required:
           - administrationRoleArn
-          - arn
           - name
           - providerRef
-          - stackSetID
           type: object
         status:
           properties:
@@ -491,10 +489,8 @@ spec:
                   type: string
               required:
               - administrationRoleArn
-              - arn
               - name
               - providerRef
-              - stackSetID
               type: object
             state:
               properties:

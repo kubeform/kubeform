@@ -21,13 +21,17 @@ type IamAccessKey struct {
 type IamAccessKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	EncryptedSecret string `json:"encryptedSecret" tf:"encrypted_secret"`
-	KeyFingerprint  string `json:"keyFingerprint" tf:"key_fingerprint"`
+	// +optional
+	EncryptedSecret string `json:"encryptedSecret,omitempty" tf:"encrypted_secret,omitempty"`
+	// +optional
+	KeyFingerprint string `json:"keyFingerprint,omitempty" tf:"key_fingerprint,omitempty"`
 	// +optional
 	PgpKey string `json:"pgpKey,omitempty" tf:"pgp_key,omitempty"`
+	// +optional
 	// Deprecated
-	Secret          string `json:"secret" tf:"secret"`
-	SesSMTPPassword string `json:"sesSMTPPassword" tf:"ses_smtp_password"`
+	Secret string `json:"secret,omitempty" tf:"secret,omitempty"`
+	// +optional
+	SesSMTPPassword string `json:"sesSMTPPassword,omitempty" tf:"ses_smtp_password,omitempty"`
 	// +optional
 	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	User   string `json:"user" tf:"user"`

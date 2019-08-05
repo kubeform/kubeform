@@ -409,9 +409,7 @@ spec:
                       type: string
                     type: array
                 required:
-                - gatewayRegionalURL
                 - location
-                - publicIPAddresses
                 type: object
               maxItems: 1
               type: array
@@ -499,8 +497,6 @@ spec:
                   type:
                     type: string
                 required:
-                - principalID
-                - tenantID
                 - type
                 type: object
               maxItems: 1
@@ -632,18 +628,12 @@ spec:
                 type: string
               type: object
           required:
-          - gatewayRegionalURL
-          - gatewayURL
           - location
-          - managementAPIURL
           - name
-          - portalURL
           - providerRef
-          - publicIPAddresses
           - publisherEmail
           - publisherName
           - resourceGroupName
-          - scmURL
           - sku
           type: object
         status:
@@ -667,9 +657,7 @@ spec:
                           type: string
                         type: array
                     required:
-                    - gatewayRegionalURL
                     - location
-                    - publicIPAddresses
                     type: object
                   maxItems: 1
                   type: array
@@ -757,8 +745,6 @@ spec:
                       type:
                         type: string
                     required:
-                    - principalID
-                    - tenantID
                     - type
                     type: object
                   maxItems: 1
@@ -890,18 +876,12 @@ spec:
                     type: string
                   type: object
               required:
-              - gatewayRegionalURL
-              - gatewayURL
               - location
-              - managementAPIURL
               - name
-              - portalURL
               - providerRef
-              - publicIPAddresses
               - publisherEmail
               - publisherName
               - resourceGroupName
-              - scmURL
               - sku
               type: object
             state:

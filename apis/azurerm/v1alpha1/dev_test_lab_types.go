@@ -21,19 +21,25 @@ type DevTestLab struct {
 type DevTestLabSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	ArtifactsStorageAccountID       string `json:"artifactsStorageAccountID" tf:"artifacts_storage_account_id"`
-	DefaultPremiumStorageAccountID  string `json:"defaultPremiumStorageAccountID" tf:"default_premium_storage_account_id"`
-	DefaultStorageAccountID         string `json:"defaultStorageAccountID" tf:"default_storage_account_id"`
-	KeyVaultID                      string `json:"keyVaultID" tf:"key_vault_id"`
-	Location                        string `json:"location" tf:"location"`
-	Name                            string `json:"name" tf:"name"`
-	PremiumDataDiskStorageAccountID string `json:"premiumDataDiskStorageAccountID" tf:"premium_data_disk_storage_account_id"`
+	// +optional
+	ArtifactsStorageAccountID string `json:"artifactsStorageAccountID,omitempty" tf:"artifacts_storage_account_id,omitempty"`
+	// +optional
+	DefaultPremiumStorageAccountID string `json:"defaultPremiumStorageAccountID,omitempty" tf:"default_premium_storage_account_id,omitempty"`
+	// +optional
+	DefaultStorageAccountID string `json:"defaultStorageAccountID,omitempty" tf:"default_storage_account_id,omitempty"`
+	// +optional
+	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
+	Location   string `json:"location" tf:"location"`
+	Name       string `json:"name" tf:"name"`
+	// +optional
+	PremiumDataDiskStorageAccountID string `json:"premiumDataDiskStorageAccountID,omitempty" tf:"premium_data_disk_storage_account_id,omitempty"`
 	ResourceGroupName               string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	StorageType string `json:"storageType,omitempty" tf:"storage_type,omitempty"`
 	// +optional
-	Tags             map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	UniqueIdentifier string            `json:"uniqueIdentifier" tf:"unique_identifier"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	UniqueIdentifier string `json:"uniqueIdentifier,omitempty" tf:"unique_identifier,omitempty"`
 }
 
 type DevTestLabStatus struct {

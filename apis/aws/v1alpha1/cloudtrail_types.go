@@ -36,7 +36,8 @@ type CloudtrailSpecEventSelector struct {
 type CloudtrailSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	CloudWatchLogsGroupArn string `json:"cloudWatchLogsGroupArn,omitempty" tf:"cloud_watch_logs_group_arn,omitempty"`
 	// +optional
@@ -48,7 +49,8 @@ type CloudtrailSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=5
 	EventSelector []CloudtrailSpecEventSelector `json:"eventSelector,omitempty" tf:"event_selector,omitempty"`
-	HomeRegion    string                        `json:"homeRegion" tf:"home_region"`
+	// +optional
+	HomeRegion string `json:"homeRegion,omitempty" tf:"home_region,omitempty"`
 	// +optional
 	IncludeGlobalServiceEvents bool `json:"includeGlobalServiceEvents,omitempty" tf:"include_global_service_events,omitempty"`
 	// +optional

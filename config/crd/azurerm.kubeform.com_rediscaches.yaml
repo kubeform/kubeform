@@ -460,8 +460,6 @@ spec:
                     type: integer
                   rdbBackupMaxSnapshotCount:
                     type: integer
-                required:
-                - maxclients
                 type: object
               maxItems: 1
               type: array
@@ -496,14 +494,11 @@ spec:
           required:
           - capacity
           - family
-          - hostname
           - location
           - name
-          - port
           - providerRef
           - resourceGroupName
           - skuName
-          - sslPort
           type: object
         status:
           properties:
@@ -577,8 +572,6 @@ spec:
                         type: integer
                       rdbBackupMaxSnapshotCount:
                         type: integer
-                    required:
-                    - maxclients
                     type: object
                   maxItems: 1
                   type: array
@@ -613,14 +606,11 @@ spec:
               required:
               - capacity
               - family
-              - hostname
               - location
               - name
-              - port
               - providerRef
               - resourceGroupName
               - skuName
-              - sslPort
               type: object
             state:
               properties:

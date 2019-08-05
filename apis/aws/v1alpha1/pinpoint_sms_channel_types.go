@@ -23,13 +23,15 @@ type PinpointSmsChannelSpec struct {
 
 	ApplicationID string `json:"applicationID" tf:"application_id"`
 	// +optional
-	Enabled                      bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
-	PromotionalMessagesPerSecond int  `json:"promotionalMessagesPerSecond" tf:"promotional_messages_per_second"`
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
+	PromotionalMessagesPerSecond int `json:"promotionalMessagesPerSecond,omitempty" tf:"promotional_messages_per_second,omitempty"`
 	// +optional
 	SenderID string `json:"senderID,omitempty" tf:"sender_id,omitempty"`
 	// +optional
-	ShortCode                      string `json:"shortCode,omitempty" tf:"short_code,omitempty"`
-	TransactionalMessagesPerSecond int    `json:"transactionalMessagesPerSecond" tf:"transactional_messages_per_second"`
+	ShortCode string `json:"shortCode,omitempty" tf:"short_code,omitempty"`
+	// +optional
+	TransactionalMessagesPerSecond int `json:"transactionalMessagesPerSecond,omitempty" tf:"transactional_messages_per_second,omitempty"`
 }
 
 type PinpointSmsChannelStatus struct {

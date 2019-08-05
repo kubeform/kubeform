@@ -416,12 +416,6 @@ spec:
                     type: string
                   updatedAt:
                     type: string
-                required:
-                - ID
-                - createdAt
-                - name
-                - status
-                - updatedAt
                 type: object
               type: array
             providerRef:
@@ -444,7 +438,6 @@ spec:
           - clusterID
           - name
           - nodeCount
-          - nodes
           - providerRef
           - size
           type: object
@@ -476,12 +469,6 @@ spec:
                         type: string
                       updatedAt:
                         type: string
-                    required:
-                    - ID
-                    - createdAt
-                    - name
-                    - status
-                    - updatedAt
                     type: object
                   type: array
                 providerRef:
@@ -504,7 +491,6 @@ spec:
               - clusterID
               - name
               - nodeCount
-              - nodes
               - providerRef
               - size
               type: object

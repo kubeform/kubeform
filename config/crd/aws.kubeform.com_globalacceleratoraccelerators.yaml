@@ -422,9 +422,6 @@ spec:
                     type: array
                   ipFamily:
                     type: string
-                required:
-                - ipAddresses
-                - ipFamily
                 type: object
               type: array
             name:
@@ -439,7 +436,6 @@ spec:
                   type: string
               type: object
           required:
-          - ipSets
           - name
           - providerRef
           type: object
@@ -477,9 +473,6 @@ spec:
                         type: array
                       ipFamily:
                         type: string
-                    required:
-                    - ipAddresses
-                    - ipFamily
                     type: object
                   type: array
                 name:
@@ -494,7 +487,6 @@ spec:
                       type: string
                   type: object
               required:
-              - ipSets
               - name
               - providerRef
               type: object

@@ -44,8 +44,9 @@ type RdsClusterSpec struct {
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	ApplyImmediately bool   `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
-	Arn              string `json:"arn" tf:"arn"`
+	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
@@ -59,8 +60,9 @@ type RdsClusterSpec struct {
 	ClusterIdentifierPrefix string `json:"clusterIdentifierPrefix,omitempty" tf:"cluster_identifier_prefix,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	ClusterMembers    []string `json:"clusterMembers,omitempty" tf:"cluster_members,omitempty"`
-	ClusterResourceID string   `json:"clusterResourceID" tf:"cluster_resource_id"`
+	ClusterMembers []string `json:"clusterMembers,omitempty" tf:"cluster_members,omitempty"`
+	// +optional
+	ClusterResourceID string `json:"clusterResourceID,omitempty" tf:"cluster_resource_id,omitempty"`
 	// +optional
 	CopyTagsToSnapshot bool `json:"copyTagsToSnapshot,omitempty" tf:"copy_tags_to_snapshot,omitempty"`
 	// +optional
@@ -73,7 +75,8 @@ type RdsClusterSpec struct {
 	DeletionProtection bool `json:"deletionProtection,omitempty" tf:"deletion_protection,omitempty"`
 	// +optional
 	EnabledCloudwatchLogsExports []string `json:"enabledCloudwatchLogsExports,omitempty" tf:"enabled_cloudwatch_logs_exports,omitempty"`
-	Endpoint                     string   `json:"endpoint" tf:"endpoint"`
+	// +optional
+	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
 	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
 	// +optional
@@ -84,7 +87,8 @@ type RdsClusterSpec struct {
 	FinalSnapshotIdentifier string `json:"finalSnapshotIdentifier,omitempty" tf:"final_snapshot_identifier,omitempty"`
 	// +optional
 	GlobalClusterIdentifier string `json:"globalClusterIdentifier,omitempty" tf:"global_cluster_identifier,omitempty"`
-	HostedZoneID            string `json:"hostedZoneID" tf:"hosted_zone_id"`
+	// +optional
+	HostedZoneID string `json:"hostedZoneID,omitempty" tf:"hosted_zone_id,omitempty"`
 	// +optional
 	IamDatabaseAuthenticationEnabled bool `json:"iamDatabaseAuthenticationEnabled,omitempty" tf:"iam_database_authentication_enabled,omitempty"`
 	// +optional
@@ -102,7 +106,8 @@ type RdsClusterSpec struct {
 	PreferredBackupWindow string `json:"preferredBackupWindow,omitempty" tf:"preferred_backup_window,omitempty"`
 	// +optional
 	PreferredMaintenanceWindow string `json:"preferredMaintenanceWindow,omitempty" tf:"preferred_maintenance_window,omitempty"`
-	ReaderEndpoint             string `json:"readerEndpoint" tf:"reader_endpoint"`
+	// +optional
+	ReaderEndpoint string `json:"readerEndpoint,omitempty" tf:"reader_endpoint,omitempty"`
 	// +optional
 	ReplicationSourceIdentifier string `json:"replicationSourceIdentifier,omitempty" tf:"replication_source_identifier,omitempty"`
 	// +optional

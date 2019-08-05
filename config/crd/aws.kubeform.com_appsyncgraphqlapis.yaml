@@ -469,11 +469,9 @@ spec:
               maxItems: 1
               type: array
           required:
-          - arn
           - authenticationType
           - name
           - providerRef
-          - uris
           type: object
         status:
           properties:
@@ -556,11 +554,9 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - arn
               - authenticationType
               - name
               - providerRef
-              - uris
               type: object
             state:
               properties:

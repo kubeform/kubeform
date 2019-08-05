@@ -430,10 +430,8 @@ spec:
               type: string
           required:
           - displayName
-          - name
           - providerRef
           - type
-          - verificationStatus
           type: object
         status:
           properties:
@@ -477,10 +475,8 @@ spec:
                   type: string
               required:
               - displayName
-              - name
               - providerRef
               - type
-              - verificationStatus
               type: object
             state:
               properties:

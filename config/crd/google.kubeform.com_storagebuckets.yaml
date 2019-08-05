@@ -529,8 +529,6 @@ spec:
           required:
           - name
           - providerRef
-          - selfLink
-          - url
           type: object
         status:
           properties:
@@ -673,8 +671,6 @@ spec:
               required:
               - name
               - providerRef
-              - selfLink
-              - url
               type: object
             state:
               properties:

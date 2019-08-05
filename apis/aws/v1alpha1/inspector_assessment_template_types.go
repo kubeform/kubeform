@@ -21,7 +21,8 @@ type InspectorAssessmentTemplate struct {
 type InspectorAssessmentTemplateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn      string `json:"arn" tf:"arn"`
+	// +optional
+	Arn      string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Duration int    `json:"duration" tf:"duration"`
 	Name     string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true

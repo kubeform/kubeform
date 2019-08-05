@@ -421,11 +421,8 @@ spec:
             urlMap:
               type: string
           required:
-          - creationTimestamp
           - name
           - providerRef
-          - proxyID
-          - selfLink
           - urlMap
           type: object
         status:
@@ -461,11 +458,8 @@ spec:
                 urlMap:
                   type: string
               required:
-              - creationTimestamp
               - name
               - providerRef
-              - proxyID
-              - selfLink
               - urlMap
               type: object
             state:

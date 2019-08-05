@@ -440,8 +440,6 @@ spec:
           required:
           - name
           - providerRef
-          - selfLink
-          - size
           type: object
         status:
           properties:
@@ -495,8 +493,6 @@ spec:
               required:
               - name
               - providerRef
-              - selfLink
-              - size
               type: object
             state:
               properties:

@@ -426,8 +426,6 @@ spec:
             resourceGroupName:
               type: string
           required:
-          - backendIPConfigurations
-          - loadBalancingRules
           - loadbalancerID
           - name
           - providerRef
@@ -471,8 +469,6 @@ spec:
                 resourceGroupName:
                   type: string
               required:
-              - backendIPConfigurations
-              - loadBalancingRules
               - loadbalancerID
               - name
               - providerRef

@@ -21,20 +21,26 @@ type Ec2TransitGatewayVpcAttachmentAccepter struct {
 type Ec2TransitGatewayVpcAttachmentAccepterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	DnsSupport  string `json:"dnsSupport" tf:"dns_support"`
-	Ipv6Support string `json:"ipv6Support" tf:"ipv6_support"`
+	// +optional
+	DnsSupport string `json:"dnsSupport,omitempty" tf:"dns_support,omitempty"`
+	// +optional
+	Ipv6Support string `json:"ipv6Support,omitempty" tf:"ipv6_support,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
+	SubnetIDS []string `json:"subnetIDS,omitempty" tf:"subnet_ids,omitempty"`
 	// +optional
 	Tags                       map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	TransitGatewayAttachmentID string            `json:"transitGatewayAttachmentID" tf:"transit_gateway_attachment_id"`
 	// +optional
 	TransitGatewayDefaultRouteTableAssociation bool `json:"transitGatewayDefaultRouteTableAssociation,omitempty" tf:"transit_gateway_default_route_table_association,omitempty"`
 	// +optional
-	TransitGatewayDefaultRouteTablePropagation bool   `json:"transitGatewayDefaultRouteTablePropagation,omitempty" tf:"transit_gateway_default_route_table_propagation,omitempty"`
-	TransitGatewayID                           string `json:"transitGatewayID" tf:"transit_gateway_id"`
-	VpcID                                      string `json:"vpcID" tf:"vpc_id"`
-	VpcOwnerID                                 string `json:"vpcOwnerID" tf:"vpc_owner_id"`
+	TransitGatewayDefaultRouteTablePropagation bool `json:"transitGatewayDefaultRouteTablePropagation,omitempty" tf:"transit_gateway_default_route_table_propagation,omitempty"`
+	// +optional
+	TransitGatewayID string `json:"transitGatewayID,omitempty" tf:"transit_gateway_id,omitempty"`
+	// +optional
+	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
+	// +optional
+	VpcOwnerID string `json:"vpcOwnerID,omitempty" tf:"vpc_owner_id,omitempty"`
 }
 
 type Ec2TransitGatewayVpcAttachmentAccepterStatus struct {

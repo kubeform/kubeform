@@ -433,10 +433,7 @@ spec:
                     maxItems: 1
                     type: array
                 required:
-                - inboundNATRules
-                - loadBalancerRules
                 - name
-                - outboundRules
                 type: object
               minItems: 1
               type: array
@@ -470,8 +467,6 @@ spec:
           required:
           - location
           - name
-          - privateIPAddress
-          - privateIPAddresses
           - providerRef
           - resourceGroupName
           type: object
@@ -520,10 +515,7 @@ spec:
                         maxItems: 1
                         type: array
                     required:
-                    - inboundNATRules
-                    - loadBalancerRules
                     - name
-                    - outboundRules
                     type: object
                   minItems: 1
                   type: array
@@ -557,8 +549,6 @@ spec:
               required:
               - location
               - name
-              - privateIPAddress
-              - privateIPAddresses
               - providerRef
               - resourceGroupName
               type: object

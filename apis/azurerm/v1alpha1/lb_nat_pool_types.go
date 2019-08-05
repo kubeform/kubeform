@@ -21,8 +21,9 @@ type LbNATPool struct {
 type LbNATPoolSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	BackendPort                 int    `json:"backendPort" tf:"backend_port"`
-	FrontendIPConfigurationID   string `json:"frontendIPConfigurationID" tf:"frontend_ip_configuration_id"`
+	BackendPort int `json:"backendPort" tf:"backend_port"`
+	// +optional
+	FrontendIPConfigurationID   string `json:"frontendIPConfigurationID,omitempty" tf:"frontend_ip_configuration_id,omitempty"`
 	FrontendIPConfigurationName string `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`
 	FrontendPortEnd             int    `json:"frontendPortEnd" tf:"frontend_port_end"`
 	FrontendPortStart           int    `json:"frontendPortStart" tf:"frontend_port_start"`

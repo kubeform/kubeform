@@ -422,10 +422,8 @@ spec:
               type: string
           required:
           - bucketName
-          - creationTimestamp
           - name
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -461,10 +459,8 @@ spec:
                   type: string
               required:
               - bucketName
-              - creationTimestamp
               - name
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

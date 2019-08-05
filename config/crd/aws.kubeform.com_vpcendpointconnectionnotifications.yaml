@@ -425,9 +425,7 @@ spec:
           required:
           - connectionEvents
           - connectionNotificationArn
-          - notificationType
           - providerRef
-          - state
           type: object
         status:
           properties:
@@ -466,9 +464,7 @@ spec:
               required:
               - connectionEvents
               - connectionNotificationArn
-              - notificationType
               - providerRef
-              - state
               type: object
             state:
               properties:

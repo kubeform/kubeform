@@ -25,7 +25,8 @@ type DataLakeStoreSpec struct {
 	EncryptionState string `json:"encryptionState,omitempty" tf:"encryption_state,omitempty"`
 	// +optional
 	EncryptionType string `json:"encryptionType,omitempty" tf:"encryption_type,omitempty"`
-	Endpoint       string `json:"endpoint" tf:"endpoint"`
+	// +optional
+	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
 	FirewallAllowAzureIPS string `json:"firewallAllowAzureIPS,omitempty" tf:"firewall_allow_azure_ips,omitempty"`
 	// +optional

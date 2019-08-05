@@ -50,8 +50,10 @@ type AlbTargetGroupSpecStickiness struct {
 type AlbTargetGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn       string `json:"arn" tf:"arn"`
-	ArnSuffix string `json:"arnSuffix" tf:"arn_suffix"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	ArnSuffix string `json:"arnSuffix,omitempty" tf:"arn_suffix,omitempty"`
 	// +optional
 	DeregistrationDelay int `json:"deregistrationDelay,omitempty" tf:"deregistration_delay,omitempty"`
 	// +optional

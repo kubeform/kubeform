@@ -431,7 +431,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - instanceType
           - name
           - providerRef
@@ -480,7 +479,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - instanceType
               - name
               - providerRef

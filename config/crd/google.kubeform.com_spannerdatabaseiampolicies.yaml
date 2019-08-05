@@ -418,7 +418,6 @@ spec:
               type: object
           required:
           - database
-          - etag
           - instance
           - policyData
           - providerRef
@@ -453,7 +452,6 @@ spec:
                   type: object
               required:
               - database
-              - etag
               - instance
               - policyData
               - providerRef

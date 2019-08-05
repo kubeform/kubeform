@@ -408,11 +408,6 @@ spec:
                     type: string
                   name:
                     type: string
-                required:
-                - ID
-                - arn
-                - email
-                - name
                 type: object
               type: array
             arn:
@@ -431,8 +426,6 @@ spec:
                   type: string
               type: object
           required:
-          - accounts
-          - arn
           - name
           - parentID
           - providerRef
@@ -457,11 +450,6 @@ spec:
                         type: string
                       name:
                         type: string
-                    required:
-                    - ID
-                    - arn
-                    - email
-                    - name
                     type: object
                   type: array
                 arn:
@@ -480,8 +468,6 @@ spec:
                       type: string
                   type: object
               required:
-              - accounts
-              - arn
               - name
               - parentID
               - providerRef

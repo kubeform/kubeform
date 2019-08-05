@@ -559,16 +559,8 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - address
-          - arn
-          - caCertIdentifier
-          - endpoint
-          - hostedZoneID
           - instanceClass
           - providerRef
-          - replicas
-          - resourceID
-          - status
           type: object
         status:
           properties:
@@ -741,16 +733,8 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - address
-              - arn
-              - caCertIdentifier
-              - endpoint
-              - hostedZoneID
               - instanceClass
               - providerRef
-              - replicas
-              - resourceID
-              - status
               type: object
             state:
               properties:

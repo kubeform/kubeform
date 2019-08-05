@@ -21,9 +21,11 @@ type SesDomainIdentity struct {
 type SesDomainIdentitySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn               string `json:"arn" tf:"arn"`
-	Domain            string `json:"domain" tf:"domain"`
-	VerificationToken string `json:"verificationToken" tf:"verification_token"`
+	// +optional
+	Arn    string `json:"arn,omitempty" tf:"arn,omitempty"`
+	Domain string `json:"domain" tf:"domain"`
+	// +optional
+	VerificationToken string `json:"verificationToken,omitempty" tf:"verification_token,omitempty"`
 }
 
 type SesDomainIdentityStatus struct {

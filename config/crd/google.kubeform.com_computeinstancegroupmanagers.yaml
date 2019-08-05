@@ -510,11 +510,8 @@ spec:
               type: string
           required:
           - baseInstanceName
-          - fingerprint
-          - instanceGroup
           - name
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -638,11 +635,8 @@ spec:
                   type: string
               required:
               - baseInstanceName
-              - fingerprint
-              - instanceGroup
               - name
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

@@ -21,8 +21,10 @@ type RedshiftEventSubscription struct {
 type RedshiftEventSubscriptionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn           string `json:"arn" tf:"arn"`
-	CustomerAwsID string `json:"customerAwsID" tf:"customer_aws_id"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	CustomerAwsID string `json:"customerAwsID,omitempty" tf:"customer_aws_id,omitempty"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
@@ -37,7 +39,8 @@ type RedshiftEventSubscriptionSpec struct {
 	SourceIDS []string `json:"sourceIDS,omitempty" tf:"source_ids,omitempty"`
 	// +optional
 	SourceType string `json:"sourceType,omitempty" tf:"source_type,omitempty"`
-	Status     string `json:"status" tf:"status"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

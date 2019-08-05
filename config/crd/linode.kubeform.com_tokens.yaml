@@ -417,10 +417,8 @@ spec:
             token:
               type: string
           required:
-          - created
           - providerRef
           - scopes
-          - token
           type: object
         status:
           properties:
@@ -451,10 +449,8 @@ spec:
                 token:
                   type: string
               required:
-              - created
               - providerRef
               - scopes
-              - token
               type: object
             state:
               properties:

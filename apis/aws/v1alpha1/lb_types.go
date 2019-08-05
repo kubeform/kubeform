@@ -38,9 +38,12 @@ type LbSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AccessLogs []LbSpecAccessLogs `json:"accessLogs,omitempty" tf:"access_logs,omitempty"`
-	Arn        string             `json:"arn" tf:"arn"`
-	ArnSuffix  string             `json:"arnSuffix" tf:"arn_suffix"`
-	DnsName    string             `json:"dnsName" tf:"dns_name"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	ArnSuffix string `json:"arnSuffix,omitempty" tf:"arn_suffix,omitempty"`
+	// +optional
+	DnsName string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
 	// +optional
 	EnableCrossZoneLoadBalancing bool `json:"enableCrossZoneLoadBalancing,omitempty" tf:"enable_cross_zone_load_balancing,omitempty"`
 	// +optional
@@ -69,9 +72,11 @@ type LbSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Subnets []string `json:"subnets,omitempty" tf:"subnets,omitempty"`
 	// +optional
-	Tags   map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	VpcID  string            `json:"vpcID" tf:"vpc_id"`
-	ZoneID string            `json:"zoneID" tf:"zone_id"`
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
+	// +optional
+	ZoneID string `json:"zoneID,omitempty" tf:"zone_id,omitempty"`
 }
 
 type LbStatus struct {

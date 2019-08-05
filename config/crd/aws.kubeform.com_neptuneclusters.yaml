@@ -477,13 +477,7 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
-          - clusterMembers
-          - clusterResourceID
-          - endpoint
-          - hostedZoneID
           - providerRef
-          - readerEndpoint
           type: object
         status:
           properties:
@@ -574,13 +568,7 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
-              - clusterMembers
-              - clusterResourceID
-              - endpoint
-              - hostedZoneID
               - providerRef
-              - readerEndpoint
               type: object
             state:
               properties:

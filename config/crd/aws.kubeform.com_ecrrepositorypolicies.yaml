@@ -415,7 +415,6 @@ spec:
           required:
           - policy
           - providerRef
-          - registryID
           - repository
           type: object
         status:
@@ -445,7 +444,6 @@ spec:
               required:
               - policy
               - providerRef
-              - registryID
               - repository
               type: object
             state:

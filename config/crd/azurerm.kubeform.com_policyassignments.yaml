@@ -410,9 +410,6 @@ spec:
                     type: string
                   type:
                     type: string
-                required:
-                - principalID
-                - tenantID
                 type: object
               maxItems: 1
               type: array
@@ -467,9 +464,6 @@ spec:
                         type: string
                       type:
                         type: string
-                    required:
-                    - principalID
-                    - tenantID
                     type: object
                   maxItems: 1
                   type: array

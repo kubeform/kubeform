@@ -445,7 +445,6 @@ spec:
           - name
           - providerRef
           - resourceGroupName
-          - subnets
           type: object
         status:
           properties:
@@ -504,7 +503,6 @@ spec:
               - name
               - providerRef
               - resourceGroupName
-              - subnets
               type: object
             state:
               properties:

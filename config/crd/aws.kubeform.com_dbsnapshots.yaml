@@ -449,26 +449,9 @@ spec:
             vpcID:
               type: string
           required:
-          - allocatedStorage
-          - availabilityZone
           - dbInstanceIdentifier
-          - dbSnapshotArn
           - dbSnapshotIdentifier
-          - encrypted
-          - engine
-          - engineVersion
-          - iops
-          - kmsKeyID
-          - licenseModel
-          - optionGroupName
-          - port
           - providerRef
-          - snapshotType
-          - sourceDbSnapshotIdentifier
-          - sourceRegion
-          - status
-          - storageType
-          - vpcID
           type: object
         status:
           properties:
@@ -531,26 +514,9 @@ spec:
                 vpcID:
                   type: string
               required:
-              - allocatedStorage
-              - availabilityZone
               - dbInstanceIdentifier
-              - dbSnapshotArn
               - dbSnapshotIdentifier
-              - encrypted
-              - engine
-              - engineVersion
-              - iops
-              - kmsKeyID
-              - licenseModel
-              - optionGroupName
-              - port
               - providerRef
-              - snapshotType
-              - sourceDbSnapshotIdentifier
-              - sourceRegion
-              - status
-              - storageType
-              - vpcID
               type: object
             state:
               properties:

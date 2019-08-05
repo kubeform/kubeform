@@ -460,7 +460,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - engineName
           - majorEngineVersion
           - providerRef
@@ -537,7 +536,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - engineName
               - majorEngineVersion
               - providerRef

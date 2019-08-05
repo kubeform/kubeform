@@ -21,15 +21,18 @@ type ComputeGlobalAddress struct {
 type ComputeGlobalAddressSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Address string `json:"address" tf:"address"`
 	// +optional
-	AddressType       string `json:"addressType,omitempty" tf:"address_type,omitempty"`
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
+	Address string `json:"address,omitempty" tf:"address,omitempty"`
+	// +optional
+	AddressType string `json:"addressType,omitempty" tf:"address_type,omitempty"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	IpVersion        string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
-	LabelFingerprint string `json:"labelFingerprint" tf:"label_fingerprint"`
+	IpVersion string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
+	// +optional
+	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
 	// +optional
 	// Deprecated
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
@@ -44,8 +47,9 @@ type ComputeGlobalAddressSpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	// Deprecated
-	Purpose  string `json:"purpose,omitempty" tf:"purpose,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Purpose string `json:"purpose,omitempty" tf:"purpose,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 }
 
 type ComputeGlobalAddressStatus struct {

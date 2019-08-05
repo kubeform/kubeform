@@ -21,11 +21,13 @@ type IamGroup struct {
 type IamGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn  string `json:"arn" tf:"arn"`
+	// +optional
+	Arn  string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Name string `json:"name" tf:"name"`
 	// +optional
-	Path     string `json:"path,omitempty" tf:"path,omitempty"`
-	UniqueID string `json:"uniqueID" tf:"unique_id"`
+	Path string `json:"path,omitempty" tf:"path,omitempty"`
+	// +optional
+	UniqueID string `json:"uniqueID,omitempty" tf:"unique_id,omitempty"`
 }
 
 type IamGroupStatus struct {

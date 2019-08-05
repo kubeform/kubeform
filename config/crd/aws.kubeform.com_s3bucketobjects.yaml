@@ -448,7 +448,6 @@ spec:
           - bucket
           - key
           - providerRef
-          - versionID
           type: object
         status:
           properties:
@@ -510,7 +509,6 @@ spec:
               - bucket
               - key
               - providerRef
-              - versionID
               type: object
             state:
               properties:

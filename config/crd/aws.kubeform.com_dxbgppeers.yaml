@@ -426,10 +426,7 @@ spec:
               type: string
           required:
           - addressFamily
-          - awsDevice
           - bgpAsn
-          - bgpPeerID
-          - bgpStatus
           - providerRef
           - virtualInterfaceID
           type: object
@@ -471,10 +468,7 @@ spec:
                   type: string
               required:
               - addressFamily
-              - awsDevice
               - bgpAsn
-              - bgpPeerID
-              - bgpStatus
               - providerRef
               - virtualInterfaceID
               type: object

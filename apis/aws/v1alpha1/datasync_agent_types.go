@@ -23,7 +23,8 @@ type DatasyncAgentSpec struct {
 
 	// +optional
 	ActivationKey string `json:"activationKey,omitempty" tf:"activation_key,omitempty"`
-	Arn           string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional

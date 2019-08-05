@@ -22,8 +22,9 @@ type ComputeForwardingRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	BackendService    string `json:"backendService,omitempty" tf:"backend_service,omitempty"`
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
+	BackendService string `json:"backendService,omitempty" tf:"backend_service,omitempty"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -31,8 +32,9 @@ type ComputeForwardingRuleSpec struct {
 	// +optional
 	IpProtocol string `json:"ipProtocol,omitempty" tf:"ip_protocol,omitempty"`
 	// +optional
-	IpVersion        string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
-	LabelFingerprint string `json:"labelFingerprint" tf:"label_fingerprint"`
+	IpVersion string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
+	// +optional
+	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
 	// +optional
 	// Deprecated
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
@@ -52,13 +54,15 @@ type ComputeForwardingRuleSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region   string `json:"region,omitempty" tf:"region,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	// Deprecated
 	ServiceLabel string `json:"serviceLabel,omitempty" tf:"service_label,omitempty"`
+	// +optional
 	// Deprecated
-	ServiceName string `json:"serviceName" tf:"service_name"`
+	ServiceName string `json:"serviceName,omitempty" tf:"service_name,omitempty"`
 	// +optional
 	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 	// +optional

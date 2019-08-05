@@ -445,7 +445,6 @@ spec:
               type: object
           required:
           - containerNetworkInterface
-          - containerNetworkInterfaceIDS
           - location
           - name
           - providerRef
@@ -508,7 +507,6 @@ spec:
                   type: object
               required:
               - containerNetworkInterface
-              - containerNetworkInterfaceIDS
               - location
               - name
               - providerRef

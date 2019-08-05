@@ -431,10 +431,7 @@ spec:
             vpcID:
               type: string
           required:
-          - arn
           - cidrBlock
-          - ipv6CIDRBlockAssociationID
-          - ownerID
           - providerRef
           - vpcID
           type: object
@@ -481,10 +478,7 @@ spec:
                 vpcID:
                   type: string
               required:
-              - arn
               - cidrBlock
-              - ipv6CIDRBlockAssociationID
-              - ownerID
               - providerRef
               - vpcID
               type: object

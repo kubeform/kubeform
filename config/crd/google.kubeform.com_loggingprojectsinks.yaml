@@ -422,7 +422,6 @@ spec:
           - destination
           - name
           - providerRef
-          - writerIdentity
           type: object
         status:
           properties:
@@ -458,7 +457,6 @@ spec:
               - destination
               - name
               - providerRef
-              - writerIdentity
               type: object
             state:
               properties:

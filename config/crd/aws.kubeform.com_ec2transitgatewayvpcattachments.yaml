@@ -435,7 +435,6 @@ spec:
           - subnetIDS
           - transitGatewayID
           - vpcID
-          - vpcOwnerID
           type: object
         status:
           properties:
@@ -484,7 +483,6 @@ spec:
               - subnetIDS
               - transitGatewayID
               - vpcID
-              - vpcOwnerID
               type: object
             state:
               properties:

@@ -421,7 +421,6 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
           - name
           - providerRef
           - replica
@@ -459,7 +458,6 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
               - name
               - providerRef
               - replica

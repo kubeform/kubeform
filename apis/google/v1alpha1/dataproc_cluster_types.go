@@ -56,8 +56,9 @@ type DataprocClusterSpecClusterConfigMasterConfigDiskConfig struct {
 type DataprocClusterSpecClusterConfigMasterConfig struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	DiskConfig    []DataprocClusterSpecClusterConfigMasterConfigDiskConfig `json:"diskConfig,omitempty" tf:"disk_config,omitempty"`
-	InstanceNames []string                                                 `json:"instanceNames" tf:"instance_names"`
+	DiskConfig []DataprocClusterSpecClusterConfigMasterConfigDiskConfig `json:"diskConfig,omitempty" tf:"disk_config,omitempty"`
+	// +optional
+	InstanceNames []string `json:"instanceNames,omitempty" tf:"instance_names,omitempty"`
 	// +optional
 	MachineType string `json:"machineType,omitempty" tf:"machine_type,omitempty"`
 	// +optional
@@ -72,8 +73,9 @@ type DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig struct {
 type DataprocClusterSpecClusterConfigPreemptibleWorkerConfig struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	DiskConfig    []DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig `json:"diskConfig,omitempty" tf:"disk_config,omitempty"`
-	InstanceNames []string                                                            `json:"instanceNames" tf:"instance_names"`
+	DiskConfig []DataprocClusterSpecClusterConfigPreemptibleWorkerConfigDiskConfig `json:"diskConfig,omitempty" tf:"disk_config,omitempty"`
+	// +optional
+	InstanceNames []string `json:"instanceNames,omitempty" tf:"instance_names,omitempty"`
 	// +optional
 	NumInstances int `json:"numInstances,omitempty" tf:"num_instances,omitempty"`
 }
@@ -83,7 +85,8 @@ type DataprocClusterSpecClusterConfigSoftwareConfig struct {
 	ImageVersion string `json:"imageVersion,omitempty" tf:"image_version,omitempty"`
 	// +optional
 	OverrideProperties map[string]string `json:"overrideProperties,omitempty" tf:"override_properties,omitempty"`
-	Properties         map[string]string `json:"properties" tf:"properties"`
+	// +optional
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 }
 
 type DataprocClusterSpecClusterConfigWorkerConfigDiskConfig struct {
@@ -98,8 +101,9 @@ type DataprocClusterSpecClusterConfigWorkerConfigDiskConfig struct {
 type DataprocClusterSpecClusterConfigWorkerConfig struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	DiskConfig    []DataprocClusterSpecClusterConfigWorkerConfigDiskConfig `json:"diskConfig,omitempty" tf:"disk_config,omitempty"`
-	InstanceNames []string                                                 `json:"instanceNames" tf:"instance_names"`
+	DiskConfig []DataprocClusterSpecClusterConfigWorkerConfigDiskConfig `json:"diskConfig,omitempty" tf:"disk_config,omitempty"`
+	// +optional
+	InstanceNames []string `json:"instanceNames,omitempty" tf:"instance_names,omitempty"`
 	// +optional
 	MachineType string `json:"machineType,omitempty" tf:"machine_type,omitempty"`
 	// +optional
@@ -107,7 +111,8 @@ type DataprocClusterSpecClusterConfigWorkerConfig struct {
 }
 
 type DataprocClusterSpecClusterConfig struct {
-	Bucket string `json:"bucket" tf:"bucket"`
+	// +optional
+	Bucket string `json:"bucket,omitempty" tf:"bucket,omitempty"`
 	// +optional
 	// Deprecated
 	DeleteAutogenBucket bool `json:"deleteAutogenBucket,omitempty" tf:"delete_autogen_bucket,omitempty"`

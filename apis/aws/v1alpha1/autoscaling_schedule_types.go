@@ -21,7 +21,8 @@ type AutoscalingSchedule struct {
 type AutoscalingScheduleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn                  string `json:"arn" tf:"arn"`
+	// +optional
+	Arn                  string `json:"arn,omitempty" tf:"arn,omitempty"`
 	AutoscalingGroupName string `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
 	// +optional
 	DesiredCapacity int `json:"desiredCapacity,omitempty" tf:"desired_capacity,omitempty"`

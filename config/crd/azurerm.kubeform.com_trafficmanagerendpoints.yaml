@@ -435,7 +435,6 @@ spec:
             weight:
               type: integer
           required:
-          - endpointMonitorStatus
           - name
           - profileName
           - providerRef
@@ -489,7 +488,6 @@ spec:
                 weight:
                   type: integer
               required:
-              - endpointMonitorStatus
               - name
               - profileName
               - providerRef

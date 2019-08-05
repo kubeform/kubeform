@@ -435,8 +435,6 @@ spec:
                   type:
                     type: string
                 required:
-                - principalID
-                - tenantID
                 - type
                 type: object
               maxItems: 1
@@ -490,8 +488,6 @@ spec:
                 properties:
                   username:
                     type: string
-                required:
-                - username
                 type: object
               maxItems: 1
               type: array
@@ -503,15 +499,10 @@ spec:
               type: string
           required:
           - appServicePlanID
-          - defaultHostname
-          - kind
           - location
           - name
-          - outboundIPAddresses
-          - possibleOutboundIPAddresses
           - providerRef
           - resourceGroupName
-          - siteCredential
           type: object
         status:
           properties:
@@ -560,8 +551,6 @@ spec:
                       type:
                         type: string
                     required:
-                    - principalID
-                    - tenantID
                     - type
                     type: object
                   maxItems: 1
@@ -615,8 +604,6 @@ spec:
                     properties:
                       username:
                         type: string
-                    required:
-                    - username
                     type: object
                   maxItems: 1
                   type: array
@@ -628,15 +615,10 @@ spec:
                   type: string
               required:
               - appServicePlanID
-              - defaultHostname
-              - kind
               - location
               - name
-              - outboundIPAddresses
-              - possibleOutboundIPAddresses
               - providerRef
               - resourceGroupName
-              - siteCredential
               type: object
             state:
               properties:

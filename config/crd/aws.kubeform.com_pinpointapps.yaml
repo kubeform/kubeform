@@ -449,7 +449,6 @@ spec:
               maxItems: 1
               type: array
           required:
-          - applicationID
           - providerRef
           type: object
         status:
@@ -513,7 +512,6 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - applicationID
               - providerRef
               type: object
             state:

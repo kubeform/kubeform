@@ -54,8 +54,9 @@ type CodedeployDeploymentConfigSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	ComputePlatform      string `json:"computePlatform,omitempty" tf:"compute_platform,omitempty"`
-	DeploymentConfigID   string `json:"deploymentConfigID" tf:"deployment_config_id"`
+	ComputePlatform string `json:"computePlatform,omitempty" tf:"compute_platform,omitempty"`
+	// +optional
+	DeploymentConfigID   string `json:"deploymentConfigID,omitempty" tf:"deployment_config_id,omitempty"`
 	DeploymentConfigName string `json:"deploymentConfigName" tf:"deployment_config_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

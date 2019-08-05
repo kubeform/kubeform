@@ -427,11 +427,9 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
           - clusterEndpointIdentifier
           - clusterIdentifier
           - customEndpointType
-          - endpoint
           - providerRef
           type: object
         status:
@@ -473,11 +471,9 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
               - clusterEndpointIdentifier
               - clusterIdentifier
               - customEndpointType
-              - endpoint
               - providerRef
               type: object
             state:

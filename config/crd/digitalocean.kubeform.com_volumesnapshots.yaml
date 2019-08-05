@@ -423,12 +423,8 @@ spec:
             volumeID:
               type: string
           required:
-          - createdAt
-          - minDiskSize
           - name
           - providerRef
-          - regions
-          - size
           - volumeID
           type: object
         status:
@@ -466,12 +462,8 @@ spec:
                 volumeID:
                   type: string
               required:
-              - createdAt
-              - minDiskSize
               - name
               - providerRef
-              - regions
-              - size
               - volumeID
               type: object
             state:

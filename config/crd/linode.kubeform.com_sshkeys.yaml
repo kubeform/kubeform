@@ -413,7 +413,6 @@ spec:
             sshKey:
               type: string
           required:
-          - created
           - label
           - providerRef
           - sshKey
@@ -443,7 +442,6 @@ spec:
                 sshKey:
                   type: string
               required:
-              - created
               - label
               - providerRef
               - sshKey

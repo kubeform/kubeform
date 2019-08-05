@@ -453,15 +453,9 @@ spec:
                           additionalProperties:
                             type: string
                           type: object
-                      required:
-                      - imageVersion
                       type: object
                     maxItems: 1
                     type: array
-                required:
-                - airflowURI
-                - dagGcsPrefix
-                - gkeCluster
                 type: object
               maxItems: 1
               type: array
@@ -553,15 +547,9 @@ spec:
                               additionalProperties:
                                 type: string
                               type: object
-                          required:
-                          - imageVersion
                           type: object
                         maxItems: 1
                         type: array
-                    required:
-                    - airflowURI
-                    - dagGcsPrefix
-                    - gkeCluster
                     type: object
                   maxItems: 1
                   type: array

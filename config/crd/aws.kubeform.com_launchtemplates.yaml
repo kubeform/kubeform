@@ -644,9 +644,6 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
-          - defaultVersion
-          - latestVersion
           - providerRef
           type: object
         status:
@@ -905,9 +902,6 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
-              - defaultVersion
-              - latestVersion
               - providerRef
               type: object
             state:

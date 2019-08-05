@@ -32,14 +32,16 @@ type DbInstanceSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	Address string `json:"address" tf:"address"`
+	// +optional
+	Address string `json:"address,omitempty" tf:"address,omitempty"`
 	// +optional
 	AllocatedStorage int `json:"allocatedStorage,omitempty" tf:"allocated_storage,omitempty"`
 	// +optional
 	AllowMajorVersionUpgrade bool `json:"allowMajorVersionUpgrade,omitempty" tf:"allow_major_version_upgrade,omitempty"`
 	// +optional
-	ApplyImmediately bool   `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
-	Arn              string `json:"arn" tf:"arn"`
+	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	AutoMinorVersionUpgrade bool `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
 	// +optional
@@ -47,8 +49,9 @@ type DbInstanceSpec struct {
 	// +optional
 	BackupRetentionPeriod int `json:"backupRetentionPeriod,omitempty" tf:"backup_retention_period,omitempty"`
 	// +optional
-	BackupWindow     string `json:"backupWindow,omitempty" tf:"backup_window,omitempty"`
-	CaCertIdentifier string `json:"caCertIdentifier" tf:"ca_cert_identifier"`
+	BackupWindow string `json:"backupWindow,omitempty" tf:"backup_window,omitempty"`
+	// +optional
+	CaCertIdentifier string `json:"caCertIdentifier,omitempty" tf:"ca_cert_identifier,omitempty"`
 	// +optional
 	CharacterSetName string `json:"characterSetName,omitempty" tf:"character_set_name,omitempty"`
 	// +optional
@@ -63,14 +66,16 @@ type DbInstanceSpec struct {
 	DomainIamRoleName string `json:"domainIamRoleName,omitempty" tf:"domain_iam_role_name,omitempty"`
 	// +optional
 	EnabledCloudwatchLogsExports []string `json:"enabledCloudwatchLogsExports,omitempty" tf:"enabled_cloudwatch_logs_exports,omitempty"`
-	Endpoint                     string   `json:"endpoint" tf:"endpoint"`
+	// +optional
+	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
 	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
 	// +optional
 	EngineVersion string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
 	// +optional
 	FinalSnapshotIdentifier string `json:"finalSnapshotIdentifier,omitempty" tf:"final_snapshot_identifier,omitempty"`
-	HostedZoneID            string `json:"hostedZoneID" tf:"hosted_zone_id"`
+	// +optional
+	HostedZoneID string `json:"hostedZoneID,omitempty" tf:"hosted_zone_id,omitempty"`
 	// +optional
 	IamDatabaseAuthenticationEnabled bool `json:"iamDatabaseAuthenticationEnabled,omitempty" tf:"iam_database_authentication_enabled,omitempty"`
 	// +optional
@@ -111,11 +116,13 @@ type DbInstanceSpec struct {
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
-	PubliclyAccessible bool     `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
-	Replicas           []string `json:"replicas" tf:"replicas"`
+	PubliclyAccessible bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
+	// +optional
+	Replicas []string `json:"replicas,omitempty" tf:"replicas,omitempty"`
 	// +optional
 	ReplicateSourceDb string `json:"replicateSourceDb,omitempty" tf:"replicate_source_db,omitempty"`
-	ResourceID        string `json:"resourceID" tf:"resource_id"`
+	// +optional
+	ResourceID string `json:"resourceID,omitempty" tf:"resource_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	S3Import []DbInstanceSpecS3Import `json:"s3Import,omitempty" tf:"s3_import,omitempty"`
@@ -126,7 +133,8 @@ type DbInstanceSpec struct {
 	SkipFinalSnapshot bool `json:"skipFinalSnapshot,omitempty" tf:"skip_final_snapshot,omitempty"`
 	// +optional
 	SnapshotIdentifier string `json:"snapshotIdentifier,omitempty" tf:"snapshot_identifier,omitempty"`
-	Status             string `json:"status" tf:"status"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
 	StorageEncrypted bool `json:"storageEncrypted,omitempty" tf:"storage_encrypted,omitempty"`
 	// +optional

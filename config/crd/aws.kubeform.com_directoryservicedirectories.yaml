@@ -486,11 +486,8 @@ spec:
               maxItems: 1
               type: array
           required:
-          - accessURL
-          - dnsIPAddresses
           - name
           - providerRef
-          - securityGroupID
           type: object
         status:
           properties:
@@ -590,11 +587,8 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - accessURL
-              - dnsIPAddresses
               - name
               - providerRef
-              - securityGroupID
               type: object
             state:
               properties:

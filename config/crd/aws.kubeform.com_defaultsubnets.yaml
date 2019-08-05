@@ -431,16 +431,8 @@ spec:
             vpcID:
               type: string
           required:
-          - arn
-          - assignIpv6AddressOnCreation
           - availabilityZone
-          - availabilityZoneID
-          - cidrBlock
-          - ipv6CIDRBlock
-          - ipv6CIDRBlockAssociationID
-          - ownerID
           - providerRef
-          - vpcID
           type: object
         status:
           properties:
@@ -485,16 +477,8 @@ spec:
                 vpcID:
                   type: string
               required:
-              - arn
-              - assignIpv6AddressOnCreation
               - availabilityZone
-              - availabilityZoneID
-              - cidrBlock
-              - ipv6CIDRBlock
-              - ipv6CIDRBlockAssociationID
-              - ownerID
               - providerRef
-              - vpcID
               type: object
             state:
               properties:

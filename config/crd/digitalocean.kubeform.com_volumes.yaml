@@ -434,13 +434,10 @@ spec:
             urn:
               type: string
           required:
-          - dropletIDS
-          - filesystemLabel
           - name
           - providerRef
           - region
           - size
-          - urn
           type: object
         status:
           properties:
@@ -488,13 +485,10 @@ spec:
                 urn:
                   type: string
               required:
-              - dropletIDS
-              - filesystemLabel
               - name
               - providerRef
               - region
               - size
-              - urn
               type: object
             state:
               properties:

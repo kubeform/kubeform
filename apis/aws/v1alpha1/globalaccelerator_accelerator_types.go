@@ -28,8 +28,10 @@ type GlobalacceleratorAcceleratorSpecAttributes struct {
 }
 
 type GlobalacceleratorAcceleratorSpecIpSets struct {
-	IpAddresses []string `json:"ipAddresses" tf:"ip_addresses"`
-	IpFamily    string   `json:"ipFamily" tf:"ip_family"`
+	// +optional
+	IpAddresses []string `json:"ipAddresses,omitempty" tf:"ip_addresses,omitempty"`
+	// +optional
+	IpFamily string `json:"ipFamily,omitempty" tf:"ip_family,omitempty"`
 }
 
 type GlobalacceleratorAcceleratorSpec struct {
@@ -41,9 +43,10 @@ type GlobalacceleratorAcceleratorSpec struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	IpAddressType string                                   `json:"ipAddressType,omitempty" tf:"ip_address_type,omitempty"`
-	IpSets        []GlobalacceleratorAcceleratorSpecIpSets `json:"ipSets" tf:"ip_sets"`
-	Name          string                                   `json:"name" tf:"name"`
+	IpAddressType string `json:"ipAddressType,omitempty" tf:"ip_address_type,omitempty"`
+	// +optional
+	IpSets []GlobalacceleratorAcceleratorSpecIpSets `json:"ipSets,omitempty" tf:"ip_sets,omitempty"`
+	Name   string                                   `json:"name" tf:"name"`
 }
 
 type GlobalacceleratorAcceleratorStatus struct {

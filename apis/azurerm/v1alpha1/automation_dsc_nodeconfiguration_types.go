@@ -22,10 +22,11 @@ type AutomationDscNodeconfigurationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	AutomationAccountName string `json:"automationAccountName" tf:"automation_account_name"`
-	ConfigurationName     string `json:"configurationName" tf:"configuration_name"`
-	ContentEmbedded       string `json:"contentEmbedded" tf:"content_embedded"`
-	Name                  string `json:"name" tf:"name"`
-	ResourceGroupName     string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	ConfigurationName string `json:"configurationName,omitempty" tf:"configuration_name,omitempty"`
+	ContentEmbedded   string `json:"contentEmbedded" tf:"content_embedded"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type AutomationDscNodeconfigurationStatus struct {

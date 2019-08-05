@@ -417,12 +417,10 @@ spec:
             status:
               type: string
           required:
-          - attachmentID
           - deviceIndex
           - instanceID
           - networkInterfaceID
           - providerRef
-          - status
           type: object
         status:
           properties:
@@ -453,12 +451,10 @@ spec:
                 status:
                   type: string
               required:
-              - attachmentID
               - deviceIndex
               - instanceID
               - networkInterfaceID
               - providerRef
-              - status
               type: object
             state:
               properties:

@@ -21,7 +21,8 @@ type OrganizationIamMember struct {
 type OrganizationIamMemberSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Etag   string `json:"etag" tf:"etag"`
+	// +optional
+	Etag   string `json:"etag,omitempty" tf:"etag,omitempty"`
 	Member string `json:"member" tf:"member"`
 	OrgID  string `json:"orgID" tf:"org_id"`
 	Role   string `json:"role" tf:"role"`

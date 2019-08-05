@@ -21,23 +21,27 @@ type ComputeSslPolicy struct {
 type ComputeSslPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	CustomFeatures []string `json:"customFeatures,omitempty" tf:"custom_features,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	EnabledFeatures []string `json:"enabledFeatures" tf:"enabled_features"`
-	Fingerprint     string   `json:"fingerprint" tf:"fingerprint"`
+	EnabledFeatures []string `json:"enabledFeatures,omitempty" tf:"enabled_features,omitempty"`
+	// +optional
+	Fingerprint string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 	// +optional
 	MinTlsVersion string `json:"minTlsVersion,omitempty" tf:"min_tls_version,omitempty"`
 	Name          string `json:"name" tf:"name"`
 	// +optional
 	Profile string `json:"profile,omitempty" tf:"profile,omitempty"`
 	// +optional
-	Project  string `json:"project,omitempty" tf:"project,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 }
 
 type ComputeSslPolicyStatus struct {

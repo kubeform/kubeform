@@ -497,7 +497,6 @@ spec:
           - providerRef
           - resourceGroupName
           - tenantID
-          - vaultURI
           type: object
         status:
           properties:
@@ -608,7 +607,6 @@ spec:
               - providerRef
               - resourceGroupName
               - tenantID
-              - vaultURI
               type: object
             state:
               properties:

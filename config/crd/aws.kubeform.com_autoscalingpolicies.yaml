@@ -496,7 +496,6 @@ spec:
               maxItems: 1
               type: array
           required:
-          - arn
           - autoscalingGroupName
           - name
           - providerRef
@@ -609,7 +608,6 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - arn
               - autoscalingGroupName
               - name
               - providerRef

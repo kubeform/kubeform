@@ -19,33 +19,45 @@ type Stackscript struct {
 }
 
 type StackscriptSpecUserDefinedFields struct {
-	Default string `json:"default" tf:"default"`
-	Example string `json:"example" tf:"example"`
-	Label   string `json:"label" tf:"label"`
-	ManyOf  string `json:"manyOf" tf:"many_of"`
-	Name    string `json:"name" tf:"name"`
-	OneOf   string `json:"oneOf" tf:"one_of"`
+	// +optional
+	Default string `json:"default,omitempty" tf:"default,omitempty"`
+	// +optional
+	Example string `json:"example,omitempty" tf:"example,omitempty"`
+	// +optional
+	Label string `json:"label,omitempty" tf:"label,omitempty"`
+	// +optional
+	ManyOf string `json:"manyOf,omitempty" tf:"many_of,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	OneOf string `json:"oneOf,omitempty" tf:"one_of,omitempty"`
 }
 
 type StackscriptSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Created           string   `json:"created" tf:"created"`
-	DeploymentsActive int      `json:"deploymentsActive" tf:"deployments_active"`
-	DeploymentsTotal  int      `json:"deploymentsTotal" tf:"deployments_total"`
-	Description       string   `json:"description" tf:"description"`
-	Images            []string `json:"images" tf:"images"`
+	// +optional
+	Created string `json:"created,omitempty" tf:"created,omitempty"`
+	// +optional
+	DeploymentsActive int `json:"deploymentsActive,omitempty" tf:"deployments_active,omitempty"`
+	// +optional
+	DeploymentsTotal int      `json:"deploymentsTotal,omitempty" tf:"deployments_total,omitempty"`
+	Description      string   `json:"description" tf:"description"`
+	Images           []string `json:"images" tf:"images"`
 	// +optional
 	IsPublic bool   `json:"isPublic,omitempty" tf:"is_public,omitempty"`
 	Label    string `json:"label" tf:"label"`
 	// +optional
 	RevNote string `json:"revNote,omitempty" tf:"rev_note,omitempty"`
 	Script  string `json:"script" tf:"script"`
-	Updated string `json:"updated" tf:"updated"`
+	// +optional
+	Updated string `json:"updated,omitempty" tf:"updated,omitempty"`
 	// +optional
 	UserDefinedFields []StackscriptSpecUserDefinedFields `json:"userDefinedFields,omitempty" tf:"user_defined_fields,omitempty"`
-	UserGravatarID    string                             `json:"userGravatarID" tf:"user_gravatar_id"`
-	Username          string                             `json:"username" tf:"username"`
+	// +optional
+	UserGravatarID string `json:"userGravatarID,omitempty" tf:"user_gravatar_id,omitempty"`
+	// +optional
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type StackscriptStatus struct {

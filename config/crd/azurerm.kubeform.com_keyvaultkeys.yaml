@@ -438,15 +438,10 @@ spec:
             "y":
               type: string
           required:
-          - e
           - keyOpts
           - keyType
-          - "n"
           - name
           - providerRef
-          - version
-          - x
-          - "y"
           type: object
         status:
           properties:
@@ -498,15 +493,10 @@ spec:
                 "y":
                   type: string
               required:
-              - e
               - keyOpts
               - keyType
-              - "n"
               - name
               - providerRef
-              - version
-              - x
-              - "y"
               type: object
             state:
               properties:

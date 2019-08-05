@@ -500,9 +500,6 @@ spec:
             transitEncryptionEnabled:
               type: boolean
           required:
-          - configurationEndpointAddress
-          - memberClusters
-          - primaryEndpointAddress
           - providerRef
           - replicationGroupDescription
           - replicationGroupID
@@ -619,9 +616,6 @@ spec:
                 transitEncryptionEnabled:
                   type: boolean
               required:
-              - configurationEndpointAddress
-              - memberClusters
-              - primaryEndpointAddress
               - providerRef
               - replicationGroupDescription
               - replicationGroupID

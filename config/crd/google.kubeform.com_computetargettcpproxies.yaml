@@ -424,11 +424,8 @@ spec:
               type: string
           required:
           - backendService
-          - creationTimestamp
           - name
           - providerRef
-          - proxyID
-          - selfLink
           type: object
         status:
           properties:
@@ -466,11 +463,8 @@ spec:
                   type: string
               required:
               - backendService
-              - creationTimestamp
               - name
               - providerRef
-              - proxyID
-              - selfLink
               type: object
             state:
               properties:

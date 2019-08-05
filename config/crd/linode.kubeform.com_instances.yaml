@@ -435,15 +435,9 @@ spec:
                           type: string
                         window:
                           type: string
-                      required:
-                      - day
-                      - window
                       type: object
                     maxItems: 1
                     type: array
-                required:
-                - enabled
-                - schedule
                 type: object
               maxItems: 1
               type: array
@@ -616,7 +610,6 @@ spec:
                   stackscriptID:
                     type: integer
                 required:
-                - ID
                 - label
                 - size
                 type: object
@@ -671,11 +664,6 @@ spec:
                     type: integer
                   vcpus:
                     type: integer
-                required:
-                - disk
-                - memory
-                - transfer
-                - vcpus
                 type: object
               maxItems: 1
               type: array
@@ -695,15 +683,8 @@ spec:
             watchdogEnabled:
               type: boolean
           required:
-          - backups
-          - ipAddress
-          - ipv4
-          - ipv6
-          - privateIPAddress
           - providerRef
           - region
-          - specs
-          - status
           type: object
         status:
           properties:
@@ -752,15 +733,9 @@ spec:
                               type: string
                             window:
                               type: string
-                          required:
-                          - day
-                          - window
                           type: object
                         maxItems: 1
                         type: array
-                    required:
-                    - enabled
-                    - schedule
                     type: object
                   maxItems: 1
                   type: array
@@ -933,7 +908,6 @@ spec:
                       stackscriptID:
                         type: integer
                     required:
-                    - ID
                     - label
                     - size
                     type: object
@@ -988,11 +962,6 @@ spec:
                         type: integer
                       vcpus:
                         type: integer
-                    required:
-                    - disk
-                    - memory
-                    - transfer
-                    - vcpus
                     type: object
                   maxItems: 1
                   type: array
@@ -1012,15 +981,8 @@ spec:
                 watchdogEnabled:
                   type: boolean
               required:
-              - backups
-              - ipAddress
-              - ipv4
-              - ipv6
-              - privateIPAddress
               - providerRef
               - region
-              - specs
-              - status
               type: object
             state:
               properties:

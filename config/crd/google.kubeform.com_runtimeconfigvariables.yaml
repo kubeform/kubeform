@@ -422,7 +422,6 @@ spec:
           - name
           - parent
           - providerRef
-          - updateTime
           type: object
         status:
           properties:
@@ -458,7 +457,6 @@ spec:
               - name
               - parent
               - providerRef
-              - updateTime
               type: object
             state:
               properties:

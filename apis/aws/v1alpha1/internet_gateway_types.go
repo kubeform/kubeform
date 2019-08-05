@@ -21,7 +21,8 @@ type InternetGateway struct {
 type InternetGatewaySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	OwnerID string `json:"ownerID" tf:"owner_id"`
+	// +optional
+	OwnerID string `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

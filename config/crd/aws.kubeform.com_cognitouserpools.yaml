@@ -613,10 +613,6 @@ spec:
               maxItems: 1
               type: array
           required:
-          - arn
-          - creationDate
-          - endpoint
-          - lastModifiedDate
           - name
           - providerRef
           type: object
@@ -845,10 +841,6 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - arn
-              - creationDate
-              - endpoint
-              - lastModifiedDate
               - name
               - providerRef
               type: object

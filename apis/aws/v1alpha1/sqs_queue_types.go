@@ -21,7 +21,8 @@ type SqsQueue struct {
 type SqsQueueSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	ContentBasedDeduplication bool `json:"contentBasedDeduplication,omitempty" tf:"content_based_deduplication,omitempty"`
 	// +optional

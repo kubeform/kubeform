@@ -435,20 +435,9 @@ spec:
             vpcID:
               type: string
           required:
-          - availabilityZones
           - dbClusterIdentifier
-          - dbClusterSnapshotArn
           - dbClusterSnapshotIdentifier
-          - engine
-          - engineVersion
-          - kmsKeyID
-          - port
           - providerRef
-          - snapshotType
-          - sourceDbClusterSnapshotArn
-          - status
-          - storageEncrypted
-          - vpcID
           type: object
         status:
           properties:
@@ -497,20 +486,9 @@ spec:
                 vpcID:
                   type: string
               required:
-              - availabilityZones
               - dbClusterIdentifier
-              - dbClusterSnapshotArn
               - dbClusterSnapshotIdentifier
-              - engine
-              - engineVersion
-              - kmsKeyID
-              - port
               - providerRef
-              - snapshotType
-              - sourceDbClusterSnapshotArn
-              - status
-              - storageEncrypted
-              - vpcID
               type: object
             state:
               properties:

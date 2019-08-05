@@ -21,14 +21,19 @@ type Vpc struct {
 type VpcSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	AssignGeneratedIpv6CIDRBlock bool   `json:"assignGeneratedIpv6CIDRBlock,omitempty" tf:"assign_generated_ipv6_cidr_block,omitempty"`
 	CidrBlock                    string `json:"cidrBlock" tf:"cidr_block"`
-	DefaultNetworkACLID          string `json:"defaultNetworkACLID" tf:"default_network_acl_id"`
-	DefaultRouteTableID          string `json:"defaultRouteTableID" tf:"default_route_table_id"`
-	DefaultSecurityGroupID       string `json:"defaultSecurityGroupID" tf:"default_security_group_id"`
-	DhcpOptionsID                string `json:"dhcpOptionsID" tf:"dhcp_options_id"`
+	// +optional
+	DefaultNetworkACLID string `json:"defaultNetworkACLID,omitempty" tf:"default_network_acl_id,omitempty"`
+	// +optional
+	DefaultRouteTableID string `json:"defaultRouteTableID,omitempty" tf:"default_route_table_id,omitempty"`
+	// +optional
+	DefaultSecurityGroupID string `json:"defaultSecurityGroupID,omitempty" tf:"default_security_group_id,omitempty"`
+	// +optional
+	DhcpOptionsID string `json:"dhcpOptionsID,omitempty" tf:"dhcp_options_id,omitempty"`
 	// +optional
 	EnableClassiclink bool `json:"enableClassiclink,omitempty" tf:"enable_classiclink,omitempty"`
 	// +optional
@@ -38,11 +43,15 @@ type VpcSpec struct {
 	// +optional
 	EnableDNSSupport bool `json:"enableDNSSupport,omitempty" tf:"enable_dns_support,omitempty"`
 	// +optional
-	InstanceTenancy   string `json:"instanceTenancy,omitempty" tf:"instance_tenancy,omitempty"`
-	Ipv6AssociationID string `json:"ipv6AssociationID" tf:"ipv6_association_id"`
-	Ipv6CIDRBlock     string `json:"ipv6CIDRBlock" tf:"ipv6_cidr_block"`
-	MainRouteTableID  string `json:"mainRouteTableID" tf:"main_route_table_id"`
-	OwnerID           string `json:"ownerID" tf:"owner_id"`
+	InstanceTenancy string `json:"instanceTenancy,omitempty" tf:"instance_tenancy,omitempty"`
+	// +optional
+	Ipv6AssociationID string `json:"ipv6AssociationID,omitempty" tf:"ipv6_association_id,omitempty"`
+	// +optional
+	Ipv6CIDRBlock string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block,omitempty"`
+	// +optional
+	MainRouteTableID string `json:"mainRouteTableID,omitempty" tf:"main_route_table_id,omitempty"`
+	// +optional
+	OwnerID string `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

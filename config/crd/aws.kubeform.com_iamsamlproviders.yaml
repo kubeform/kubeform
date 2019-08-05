@@ -415,11 +415,9 @@ spec:
             validUntil:
               type: string
           required:
-          - arn
           - name
           - providerRef
           - samlMetadataDocument
-          - validUntil
           type: object
         status:
           properties:
@@ -448,11 +446,9 @@ spec:
                 validUntil:
                   type: string
               required:
-              - arn
               - name
               - providerRef
               - samlMetadataDocument
-              - validUntil
               type: object
             state:
               properties:

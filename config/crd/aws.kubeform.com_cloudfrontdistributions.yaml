@@ -811,20 +811,11 @@ spec:
             webACLID:
               type: string
           required:
-          - activeTrustedSigners
-          - arn
-          - callerReference
           - defaultCacheBehavior
-          - domainName
           - enabled
-          - etag
-          - hostedZoneID
-          - inProgressValidationBatches
-          - lastModifiedTime
           - origin
           - providerRef
           - restrictions
-          - status
           - viewerCertificate
           type: object
         status:
@@ -1250,20 +1241,11 @@ spec:
                 webACLID:
                   type: string
               required:
-              - activeTrustedSigners
-              - arn
-              - callerReference
               - defaultCacheBehavior
-              - domainName
               - enabled
-              - etag
-              - hostedZoneID
-              - inProgressValidationBatches
-              - lastModifiedTime
               - origin
               - providerRef
               - restrictions
-              - status
               - viewerCertificate
               type: object
             state:

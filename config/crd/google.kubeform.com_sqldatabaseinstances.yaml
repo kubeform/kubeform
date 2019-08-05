@@ -410,8 +410,6 @@ spec:
                     type: string
                   timeToRetire:
                     type: string
-                required:
-                - ipAddress
                 type: object
               type: array
             masterInstanceName:
@@ -481,12 +479,6 @@ spec:
                     type: string
                   sha1Fingerprint:
                     type: string
-                required:
-                - cert
-                - commonName
-                - createTime
-                - expirationTime
-                - sha1Fingerprint
                 type: object
               maxItems: 1
               type: array
@@ -592,18 +584,11 @@ spec:
                     type: integer
                 required:
                 - tier
-                - version
                 type: object
               maxItems: 1
               type: array
           required:
-          - connectionName
-          - firstIPAddress
-          - ipAddress
           - providerRef
-          - selfLink
-          - serverCaCert
-          - serviceAccountEmailAddress
           - settings
           type: object
         status:
@@ -628,8 +613,6 @@ spec:
                         type: string
                       timeToRetire:
                         type: string
-                    required:
-                    - ipAddress
                     type: object
                   type: array
                 masterInstanceName:
@@ -699,12 +682,6 @@ spec:
                         type: string
                       sha1Fingerprint:
                         type: string
-                    required:
-                    - cert
-                    - commonName
-                    - createTime
-                    - expirationTime
-                    - sha1Fingerprint
                     type: object
                   maxItems: 1
                   type: array
@@ -810,18 +787,11 @@ spec:
                         type: integer
                     required:
                     - tier
-                    - version
                     type: object
                   maxItems: 1
                   type: array
               required:
-              - connectionName
-              - firstIPAddress
-              - ipAddress
               - providerRef
-              - selfLink
-              - serverCaCert
-              - serviceAccountEmailAddress
               - settings
               type: object
             state:

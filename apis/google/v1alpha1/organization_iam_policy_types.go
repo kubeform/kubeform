@@ -21,7 +21,8 @@ type OrganizationIamPolicy struct {
 type OrganizationIamPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Etag       string `json:"etag" tf:"etag"`
+	// +optional
+	Etag       string `json:"etag,omitempty" tf:"etag,omitempty"`
 	OrgID      string `json:"orgID" tf:"org_id"`
 	PolicyData string `json:"policyData" tf:"policy_data"`
 }

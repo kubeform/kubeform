@@ -524,13 +524,10 @@ spec:
             writeCapacity:
               type: integer
           required:
-          - arn
           - attribute
           - hashKey
           - name
           - providerRef
-          - streamArn
-          - streamLabel
           type: object
         status:
           properties:
@@ -668,13 +665,10 @@ spec:
                 writeCapacity:
                   type: integer
               required:
-              - arn
               - attribute
               - hashKey
               - name
               - providerRef
-              - streamArn
-              - streamLabel
               type: object
             state:
               properties:

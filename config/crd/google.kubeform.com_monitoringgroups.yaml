@@ -421,7 +421,6 @@ spec:
           required:
           - displayName
           - filter
-          - name
           - providerRef
           type: object
         status:
@@ -457,7 +456,6 @@ spec:
               required:
               - displayName
               - filter
-              - name
               - providerRef
               type: object
             state:

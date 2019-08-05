@@ -473,8 +473,6 @@ spec:
             vpcID:
               type: string
           required:
-          - arn
-          - arnSuffix
           - providerRef
           type: object
         status:
@@ -562,8 +560,6 @@ spec:
                 vpcID:
                   type: string
               required:
-              - arn
-              - arnSuffix
               - providerRef
               type: object
             state:

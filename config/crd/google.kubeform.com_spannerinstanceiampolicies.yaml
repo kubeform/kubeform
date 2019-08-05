@@ -415,7 +415,6 @@ spec:
                   type: string
               type: object
           required:
-          - etag
           - instance
           - policyData
           - providerRef
@@ -447,7 +446,6 @@ spec:
                       type: string
                   type: object
               required:
-              - etag
               - instance
               - policyData
               - providerRef

@@ -21,7 +21,8 @@ type PubsubSubscriptionIamPolicy struct {
 type PubsubSubscriptionIamPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Etag       string `json:"etag" tf:"etag"`
+	// +optional
+	Etag       string `json:"etag,omitempty" tf:"etag,omitempty"`
 	PolicyData string `json:"policyData" tf:"policy_data"`
 	// +optional
 	Project      string `json:"project,omitempty" tf:"project,omitempty"`

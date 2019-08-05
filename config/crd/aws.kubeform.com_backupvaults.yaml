@@ -419,10 +419,8 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - name
           - providerRef
-          - recoveryPoints
           type: object
         status:
           properties:
@@ -455,10 +453,8 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - name
               - providerRef
-              - recoveryPoints
               type: object
             state:
               properties:

@@ -466,7 +466,6 @@ spec:
               type: string
           required:
           - apiID
-          - arn
           - name
           - providerRef
           - type
@@ -549,7 +548,6 @@ spec:
                   type: string
               required:
               - apiID
-              - arn
               - name
               - providerRef
               - type

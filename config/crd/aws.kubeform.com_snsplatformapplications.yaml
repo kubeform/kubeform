@@ -431,7 +431,6 @@ spec:
             successFeedbackSampleRate:
               type: string
           required:
-          - arn
           - name
           - platform
           - platformCredential
@@ -480,7 +479,6 @@ spec:
                 successFeedbackSampleRate:
                   type: string
               required:
-              - arn
               - name
               - platform
               - platformCredential

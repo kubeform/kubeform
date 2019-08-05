@@ -415,7 +415,6 @@ spec:
             virtualInterfaceID:
               type: string
           required:
-          - arn
           - providerRef
           - virtualInterfaceID
           type: object
@@ -446,7 +445,6 @@ spec:
                 virtualInterfaceID:
                   type: string
               required:
-              - arn
               - providerRef
               - virtualInterfaceID
               type: object

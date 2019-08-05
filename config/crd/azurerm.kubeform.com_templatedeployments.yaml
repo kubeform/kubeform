@@ -427,7 +427,6 @@ spec:
           required:
           - deploymentMode
           - name
-          - outputs
           - providerRef
           - resourceGroupName
           type: object
@@ -470,7 +469,6 @@ spec:
               required:
               - deploymentMode
               - name
-              - outputs
               - providerRef
               - resourceGroupName
               type: object

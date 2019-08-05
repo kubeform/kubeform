@@ -425,7 +425,6 @@ spec:
             topicArn:
               type: string
           required:
-          - arn
           - endpoint
           - protocol
           - providerRef
@@ -468,7 +467,6 @@ spec:
                 topicArn:
                   type: string
               required:
-              - arn
               - endpoint
               - protocol
               - providerRef

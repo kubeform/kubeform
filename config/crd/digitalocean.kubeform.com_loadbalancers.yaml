@@ -490,12 +490,9 @@ spec:
               type: string
           required:
           - forwardingRule
-          - ip
           - name
           - providerRef
           - region
-          - status
-          - urn
           type: object
         status:
           properties:
@@ -599,12 +596,9 @@ spec:
                   type: string
               required:
               - forwardingRule
-              - ip
               - name
               - providerRef
               - region
-              - status
-              - urn
               type: object
             state:
               properties:

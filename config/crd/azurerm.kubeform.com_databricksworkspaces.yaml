@@ -424,7 +424,6 @@ spec:
               type: object
           required:
           - location
-          - managedResourceGroupID
           - name
           - providerRef
           - resourceGroupName
@@ -466,7 +465,6 @@ spec:
                   type: object
               required:
               - location
-              - managedResourceGroupID
               - name
               - providerRef
               - resourceGroupName

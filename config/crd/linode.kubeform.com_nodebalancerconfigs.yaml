@@ -422,9 +422,6 @@ spec:
                     type: integer
                   statusUp:
                     type: integer
-                required:
-                - statusDown
-                - statusUp
                 type: object
               type: object
             nodebalancerID:
@@ -460,11 +457,8 @@ spec:
             stickiness:
               type: string
           required:
-          - nodeStatus
           - nodebalancerID
           - providerRef
-          - sslCommonname
-          - sslFingerprint
           type: object
         status:
           properties:
@@ -500,9 +494,6 @@ spec:
                         type: integer
                       statusUp:
                         type: integer
-                    required:
-                    - statusDown
-                    - statusUp
                     type: object
                   type: object
                 nodebalancerID:
@@ -538,11 +529,8 @@ spec:
                 stickiness:
                   type: string
               required:
-              - nodeStatus
               - nodebalancerID
               - providerRef
-              - sslCommonname
-              - sslFingerprint
               type: object
             state:
               properties:

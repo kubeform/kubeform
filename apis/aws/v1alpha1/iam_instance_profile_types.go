@@ -21,8 +21,10 @@ type IamInstanceProfile struct {
 type IamInstanceProfileSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn        string `json:"arn" tf:"arn"`
-	CreateDate string `json:"createDate" tf:"create_date"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	CreateDate string `json:"createDate,omitempty" tf:"create_date,omitempty"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
@@ -34,8 +36,9 @@ type IamInstanceProfileSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	// Deprecated
-	Roles    []string `json:"roles,omitempty" tf:"roles,omitempty"`
-	UniqueID string   `json:"uniqueID" tf:"unique_id"`
+	Roles []string `json:"roles,omitempty" tf:"roles,omitempty"`
+	// +optional
+	UniqueID string `json:"uniqueID,omitempty" tf:"unique_id,omitempty"`
 }
 
 type IamInstanceProfileStatus struct {

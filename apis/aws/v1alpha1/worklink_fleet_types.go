@@ -34,11 +34,14 @@ type WorklinkFleetSpecNetwork struct {
 type WorklinkFleetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	AuditStreamArn string `json:"auditStreamArn,omitempty" tf:"audit_stream_arn,omitempty"`
-	CompanyCode    string `json:"companyCode" tf:"company_code"`
-	CreatedTime    string `json:"createdTime" tf:"created_time"`
+	// +optional
+	CompanyCode string `json:"companyCode,omitempty" tf:"company_code,omitempty"`
+	// +optional
+	CreatedTime string `json:"createdTime,omitempty" tf:"created_time,omitempty"`
 	// +optional
 	DeviceCaCertificate string `json:"deviceCaCertificate,omitempty" tf:"device_ca_certificate,omitempty"`
 	// +optional
@@ -46,8 +49,9 @@ type WorklinkFleetSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	IdentityProvider []WorklinkFleetSpecIdentityProvider `json:"identityProvider,omitempty" tf:"identity_provider,omitempty"`
-	LastUpdatedTime  string                              `json:"lastUpdatedTime" tf:"last_updated_time"`
-	Name             string                              `json:"name" tf:"name"`
+	// +optional
+	LastUpdatedTime string `json:"lastUpdatedTime,omitempty" tf:"last_updated_time,omitempty"`
+	Name            string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Network []WorklinkFleetSpecNetwork `json:"network,omitempty" tf:"network,omitempty"`

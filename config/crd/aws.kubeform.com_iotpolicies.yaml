@@ -415,8 +415,6 @@ spec:
                   type: string
               type: object
           required:
-          - arn
-          - defaultVersionID
           - name
           - policy
           - providerRef
@@ -448,8 +446,6 @@ spec:
                       type: string
                   type: object
               required:
-              - arn
-              - defaultVersionID
               - name
               - policy
               - providerRef

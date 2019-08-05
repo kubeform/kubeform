@@ -440,7 +440,6 @@ spec:
                     type: string
                 required:
                 - deviceName
-                - volumeID
                 type: object
               type: array
               uniqueItems: true
@@ -533,8 +532,6 @@ spec:
                     type: integer
                   volumeType:
                     type: string
-                required:
-                - volumeID
                 type: object
               maxItems: 1
               type: array
@@ -568,15 +565,8 @@ spec:
               uniqueItems: true
           required:
           - ami
-          - arn
-          - instanceState
           - instanceType
-          - passwordData
-          - primaryNetworkInterfaceID
-          - privateDNS
           - providerRef
-          - publicDNS
-          - publicIP
           type: object
         status:
           properties:
@@ -630,7 +620,6 @@ spec:
                         type: string
                     required:
                     - deviceName
-                    - volumeID
                     type: object
                   type: array
                   uniqueItems: true
@@ -723,8 +712,6 @@ spec:
                         type: integer
                       volumeType:
                         type: string
-                    required:
-                    - volumeID
                     type: object
                   maxItems: 1
                   type: array
@@ -758,15 +745,8 @@ spec:
                   uniqueItems: true
               required:
               - ami
-              - arn
-              - instanceState
               - instanceType
-              - passwordData
-              - primaryNetworkInterfaceID
-              - privateDNS
               - providerRef
-              - publicDNS
-              - publicIP
               type: object
             state:
               properties:

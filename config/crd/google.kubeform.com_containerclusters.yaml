@@ -493,7 +493,6 @@ spec:
                         startTime:
                           type: string
                       required:
-                      - duration
                       - startTime
                       type: object
                     maxItems: 1
@@ -523,8 +522,6 @@ spec:
                   username:
                     type: string
                 required:
-                - clientCertificate
-                - clusterCaCertificate
                 - username
                 type: object
               maxItems: 1
@@ -771,8 +768,6 @@ spec:
                     type: integer
                   version:
                     type: string
-                required:
-                - instanceGroupUrls
                 type: object
               type: array
             nodeVersion:
@@ -804,9 +799,6 @@ spec:
                     type: string
                   publicEndpoint:
                     type: string
-                required:
-                - privateEndpoint
-                - publicEndpoint
                 type: object
               maxItems: 1
               type: array
@@ -843,9 +835,6 @@ spec:
             zone:
               type: string
           required:
-          - endpoint
-          - instanceGroupUrls
-          - masterVersion
           - name
           - providerRef
           type: object
@@ -954,7 +943,6 @@ spec:
                             startTime:
                               type: string
                           required:
-                          - duration
                           - startTime
                           type: object
                         maxItems: 1
@@ -984,8 +972,6 @@ spec:
                       username:
                         type: string
                     required:
-                    - clientCertificate
-                    - clusterCaCertificate
                     - username
                     type: object
                   maxItems: 1
@@ -1232,8 +1218,6 @@ spec:
                         type: integer
                       version:
                         type: string
-                    required:
-                    - instanceGroupUrls
                     type: object
                   type: array
                 nodeVersion:
@@ -1265,9 +1249,6 @@ spec:
                         type: string
                       publicEndpoint:
                         type: string
-                    required:
-                    - privateEndpoint
-                    - publicEndpoint
                     type: object
                   maxItems: 1
                   type: array
@@ -1304,9 +1285,6 @@ spec:
                 zone:
                   type: string
               required:
-              - endpoint
-              - instanceGroupUrls
-              - masterVersion
               - name
               - providerRef
               type: object

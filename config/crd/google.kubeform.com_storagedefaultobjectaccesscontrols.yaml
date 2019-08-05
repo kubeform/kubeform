@@ -434,12 +434,7 @@ spec:
               type: string
           required:
           - bucket
-          - domain
-          - email
           - entity
-          - entityID
-          - generation
-          - projectTeam
           - providerRef
           - role
           type: object
@@ -489,12 +484,7 @@ spec:
                   type: string
               required:
               - bucket
-              - domain
-              - email
               - entity
-              - entityID
-              - generation
-              - projectTeam
               - providerRef
               - role
               type: object

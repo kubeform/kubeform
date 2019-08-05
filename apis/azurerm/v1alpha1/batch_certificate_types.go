@@ -26,10 +26,12 @@ type BatchCertificateSpec struct {
 	AccountName string `json:"accountName" tf:"account_name"`
 	Certificate string `json:"-" sensitive:"true" tf:"certificate"`
 	Format      string `json:"format" tf:"format"`
-	Name        string `json:"name" tf:"name"`
 	// +optional
-	Password            string `json:"-" sensitive:"true" tf:"password,omitempty"`
-	PublicData          string `json:"publicData" tf:"public_data"`
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
+	// +optional
+	PublicData          string `json:"publicData,omitempty" tf:"public_data,omitempty"`
 	ResourceGroupName   string `json:"resourceGroupName" tf:"resource_group_name"`
 	Thumbprint          string `json:"thumbprint" tf:"thumbprint"`
 	ThumbprintAlgorithm string `json:"thumbprintAlgorithm" tf:"thumbprint_algorithm"`

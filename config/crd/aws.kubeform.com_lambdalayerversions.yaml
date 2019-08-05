@@ -439,13 +439,8 @@ spec:
             version:
               type: string
           required:
-          - arn
-          - createdDate
-          - layerArn
           - layerName
           - providerRef
-          - sourceCodeSize
-          - version
           type: object
         status:
           properties:
@@ -498,13 +493,8 @@ spec:
                 version:
                   type: string
               required:
-              - arn
-              - createdDate
-              - layerArn
               - layerName
               - providerRef
-              - sourceCodeSize
-              - version
               type: object
             state:
               properties:

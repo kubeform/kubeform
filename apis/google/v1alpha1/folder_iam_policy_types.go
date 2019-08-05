@@ -21,7 +21,8 @@ type FolderIamPolicy struct {
 type FolderIamPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Etag       string `json:"etag" tf:"etag"`
+	// +optional
+	Etag       string `json:"etag,omitempty" tf:"etag,omitempty"`
 	Folder     string `json:"folder" tf:"folder"`
 	PolicyData string `json:"policyData" tf:"policy_data"`
 }

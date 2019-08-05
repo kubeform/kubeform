@@ -21,8 +21,10 @@ type ServicecatalogPortfolio struct {
 type ServicecatalogPortfolioSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn         string `json:"arn" tf:"arn"`
-	CreatedTime string `json:"createdTime" tf:"created_time"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	CreatedTime string `json:"createdTime,omitempty" tf:"created_time,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`

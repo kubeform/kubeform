@@ -428,7 +428,6 @@ spec:
               maxItems: 1
               type: array
           required:
-          - ipPrefix
           - location
           - name
           - providerRef
@@ -474,7 +473,6 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - ipPrefix
               - location
               - name
               - providerRef

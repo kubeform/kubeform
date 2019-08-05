@@ -434,10 +434,6 @@ spec:
                     type: array
                   ipAddress:
                     type: string
-                required:
-                - consoleURL
-                - endpoints
-                - ipAddress
                 type: object
               type: array
             logs:
@@ -518,12 +514,10 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
           - brokerName
           - engineType
           - engineVersion
           - hostInstanceType
-          - instances
           - providerRef
           - securityGroups
           - user
@@ -574,10 +568,6 @@ spec:
                         type: array
                       ipAddress:
                         type: string
-                    required:
-                    - consoleURL
-                    - endpoints
-                    - ipAddress
                     type: object
                   type: array
                 logs:
@@ -658,12 +648,10 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
               - brokerName
               - engineType
               - engineVersion
               - hostInstanceType
-              - instances
               - providerRef
               - securityGroups
               - user

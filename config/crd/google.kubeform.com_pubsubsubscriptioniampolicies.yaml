@@ -415,7 +415,6 @@ spec:
             subscription:
               type: string
           required:
-          - etag
           - policyData
           - providerRef
           - subscription
@@ -447,7 +446,6 @@ spec:
                 subscription:
                   type: string
               required:
-              - etag
               - policyData
               - providerRef
               - subscription

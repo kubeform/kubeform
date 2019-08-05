@@ -444,18 +444,12 @@ spec:
             version:
               type: string
           required:
-          - database
           - engine
-          - host
           - name
           - nodeCount
-          - password
-          - port
           - providerRef
           - region
           - size
-          - uri
-          - user
           - version
           type: object
         status:
@@ -514,18 +508,12 @@ spec:
                 version:
                   type: string
               required:
-              - database
               - engine
-              - host
               - name
               - nodeCount
-              - password
-              - port
               - providerRef
               - region
               - size
-              - uri
-              - user
               - version
               type: object
             state:

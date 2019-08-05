@@ -455,13 +455,8 @@ spec:
                   type: string
               type: object
           required:
-          - certificateUploadDate
-          - cloudfrontDomainName
-          - cloudfrontZoneID
           - domainName
           - providerRef
-          - regionalDomainName
-          - regionalZoneID
           type: object
         status:
           properties:
@@ -530,13 +525,8 @@ spec:
                       type: string
                   type: object
               required:
-              - certificateUploadDate
-              - cloudfrontDomainName
-              - cloudfrontZoneID
               - domainName
               - providerRef
-              - regionalDomainName
-              - regionalZoneID
               type: object
             state:
               properties:

@@ -483,8 +483,6 @@ spec:
                           type: string
                         networkTier:
                           type: string
-                      required:
-                      - assignedNATIP
                       type: object
                     type: array
                   address:
@@ -562,10 +560,7 @@ spec:
           required:
           - disk
           - machineType
-          - metadataFingerprint
           - providerRef
-          - selfLink
-          - tagsFingerprint
           type: object
         status:
           properties:
@@ -662,8 +657,6 @@ spec:
                               type: string
                             networkTier:
                               type: string
-                          required:
-                          - assignedNATIP
                           type: object
                         type: array
                       address:
@@ -741,10 +734,7 @@ spec:
               required:
               - disk
               - machineType
-              - metadataFingerprint
               - providerRef
-              - selfLink
-              - tagsFingerprint
               type: object
             state:
               properties:

@@ -36,7 +36,8 @@ type Ec2TransitGatewayVpcAttachmentSpec struct {
 	TransitGatewayDefaultRouteTablePropagation bool   `json:"transitGatewayDefaultRouteTablePropagation,omitempty" tf:"transit_gateway_default_route_table_propagation,omitempty"`
 	TransitGatewayID                           string `json:"transitGatewayID" tf:"transit_gateway_id"`
 	VpcID                                      string `json:"vpcID" tf:"vpc_id"`
-	VpcOwnerID                                 string `json:"vpcOwnerID" tf:"vpc_owner_id"`
+	// +optional
+	VpcOwnerID string `json:"vpcOwnerID,omitempty" tf:"vpc_owner_id,omitempty"`
 }
 
 type Ec2TransitGatewayVpcAttachmentStatus struct {

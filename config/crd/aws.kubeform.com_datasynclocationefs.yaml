@@ -435,11 +435,9 @@ spec:
             uri:
               type: string
           required:
-          - arn
           - ec2Config
           - efsFileSystemArn
           - providerRef
-          - uri
           type: object
         status:
           properties:
@@ -488,11 +486,9 @@ spec:
                 uri:
                   type: string
               required:
-              - arn
               - ec2Config
               - efsFileSystemArn
               - providerRef
-              - uri
               type: object
             state:
               properties:

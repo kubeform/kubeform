@@ -451,12 +451,7 @@ spec:
             vpcPeeringConnectionID:
               type: string
           required:
-          - acceptStatus
-          - peerOwnerID
-          - peerRegion
-          - peerVpcID
           - providerRef
-          - vpcID
           - vpcPeeringConnectionID
           type: object
         status:
@@ -522,12 +517,7 @@ spec:
                 vpcPeeringConnectionID:
                   type: string
               required:
-              - acceptStatus
-              - peerOwnerID
-              - peerRegion
-              - peerVpcID
               - providerRef
-              - vpcID
               - vpcPeeringConnectionID
               type: object
             state:

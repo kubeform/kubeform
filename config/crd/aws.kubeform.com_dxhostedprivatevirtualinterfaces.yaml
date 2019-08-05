@@ -434,11 +434,8 @@ spec:
               type: integer
           required:
           - addressFamily
-          - arn
-          - awsDevice
           - bgpAsn
           - connectionID
-          - jumboFrameCapable
           - name
           - ownerAccountID
           - providerRef
@@ -490,11 +487,8 @@ spec:
                   type: integer
               required:
               - addressFamily
-              - arn
-              - awsDevice
               - bgpAsn
               - connectionID
-              - jumboFrameCapable
               - name
               - ownerAccountID
               - providerRef

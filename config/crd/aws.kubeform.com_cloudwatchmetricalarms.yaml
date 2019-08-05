@@ -504,7 +504,6 @@ spec:
               type: string
           required:
           - alarmName
-          - arn
           - comparisonOperator
           - evaluationPeriods
           - providerRef
@@ -626,7 +625,6 @@ spec:
                   type: string
               required:
               - alarmName
-              - arn
               - comparisonOperator
               - evaluationPeriods
               - providerRef

@@ -483,12 +483,9 @@ spec:
               maxItems: 1
               type: array
           required:
-          - arn
           - buildID
           - ec2InstanceType
-          - logPaths
           - name
-          - operatingSystem
           - providerRef
           type: object
         status:
@@ -586,12 +583,9 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - arn
               - buildID
               - ec2InstanceType
-              - logPaths
               - name
-              - operatingSystem
               - providerRef
               type: object
             state:

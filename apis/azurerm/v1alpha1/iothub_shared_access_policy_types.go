@@ -24,18 +24,22 @@ type IothubSharedAccessPolicySpec struct {
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	DeviceConnect           bool   `json:"deviceConnect,omitempty" tf:"device_connect,omitempty"`
-	IothubName              string `json:"iothubName" tf:"iothub_name"`
-	Name                    string `json:"name" tf:"name"`
-	PrimaryConnectionString string `json:"-" sensitive:"true" tf:"primary_connection_string"`
-	PrimaryKey              string `json:"-" sensitive:"true" tf:"primary_key"`
+	DeviceConnect bool   `json:"deviceConnect,omitempty" tf:"device_connect,omitempty"`
+	IothubName    string `json:"iothubName" tf:"iothub_name"`
+	Name          string `json:"name" tf:"name"`
+	// +optional
+	PrimaryConnectionString string `json:"-" sensitive:"true" tf:"primary_connection_string,omitempty"`
+	// +optional
+	PrimaryKey string `json:"-" sensitive:"true" tf:"primary_key,omitempty"`
 	// +optional
 	RegistryRead bool `json:"registryRead,omitempty" tf:"registry_read,omitempty"`
 	// +optional
-	RegistryWrite             bool   `json:"registryWrite,omitempty" tf:"registry_write,omitempty"`
-	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
-	SecondaryConnectionString string `json:"-" sensitive:"true" tf:"secondary_connection_string"`
-	SecondaryKey              string `json:"-" sensitive:"true" tf:"secondary_key"`
+	RegistryWrite     bool   `json:"registryWrite,omitempty" tf:"registry_write,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	SecondaryConnectionString string `json:"-" sensitive:"true" tf:"secondary_connection_string,omitempty"`
+	// +optional
+	SecondaryKey string `json:"-" sensitive:"true" tf:"secondary_key,omitempty"`
 	// +optional
 	ServiceConnect bool `json:"serviceConnect,omitempty" tf:"service_connect,omitempty"`
 }

@@ -44,15 +44,19 @@ type ComposerEnvironmentSpecConfigSoftwareConfig struct {
 	AirflowConfigOverrides map[string]string `json:"airflowConfigOverrides,omitempty" tf:"airflow_config_overrides,omitempty"`
 	// +optional
 	EnvVariables map[string]string `json:"envVariables,omitempty" tf:"env_variables,omitempty"`
-	ImageVersion string            `json:"imageVersion" tf:"image_version"`
+	// +optional
+	ImageVersion string `json:"imageVersion,omitempty" tf:"image_version,omitempty"`
 	// +optional
 	PypiPackages map[string]string `json:"pypiPackages,omitempty" tf:"pypi_packages,omitempty"`
 }
 
 type ComposerEnvironmentSpecConfig struct {
-	AirflowURI   string `json:"airflowURI" tf:"airflow_uri"`
-	DagGcsPrefix string `json:"dagGcsPrefix" tf:"dag_gcs_prefix"`
-	GkeCluster   string `json:"gkeCluster" tf:"gke_cluster"`
+	// +optional
+	AirflowURI string `json:"airflowURI,omitempty" tf:"airflow_uri,omitempty"`
+	// +optional
+	DagGcsPrefix string `json:"dagGcsPrefix,omitempty" tf:"dag_gcs_prefix,omitempty"`
+	// +optional
+	GkeCluster string `json:"gkeCluster,omitempty" tf:"gke_cluster,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	NodeConfig []ComposerEnvironmentSpecConfigNodeConfig `json:"nodeConfig,omitempty" tf:"node_config,omitempty"`

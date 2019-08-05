@@ -21,10 +21,13 @@ type LightsailStaticIP struct {
 type LightsailStaticIPSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn         string `json:"arn" tf:"arn"`
-	IpAddress   string `json:"ipAddress" tf:"ip_address"`
-	Name        string `json:"name" tf:"name"`
-	SupportCode string `json:"supportCode" tf:"support_code"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+	Name      string `json:"name" tf:"name"`
+	// +optional
+	SupportCode string `json:"supportCode,omitempty" tf:"support_code,omitempty"`
 }
 
 type LightsailStaticIPStatus struct {

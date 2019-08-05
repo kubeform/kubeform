@@ -438,8 +438,6 @@ spec:
               type: integer
           required:
           - addressFamily
-          - arn
-          - awsDevice
           - bgpAsn
           - connectionID
           - name
@@ -497,8 +495,6 @@ spec:
                   type: integer
               required:
               - addressFamily
-              - arn
-              - awsDevice
               - bgpAsn
               - connectionID
               - name

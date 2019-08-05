@@ -423,7 +423,6 @@ spec:
           - name
           - orgID
           - providerRef
-          - writerIdentity
           type: object
         status:
           properties:
@@ -460,7 +459,6 @@ spec:
               - name
               - orgID
               - providerRef
-              - writerIdentity
               type: object
             state:
               properties:

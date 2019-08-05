@@ -33,7 +33,8 @@ type InstanceSpecEbsBlockDevice struct {
 	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
-	VolumeID   string `json:"volumeID" tf:"volume_id"`
+	// +optional
+	VolumeID string `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 	// +optional
 	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional
@@ -59,8 +60,9 @@ type InstanceSpecRootBlockDevice struct {
 	// +optional
 	DeleteOnTermination bool `json:"deleteOnTermination,omitempty" tf:"delete_on_termination,omitempty"`
 	// +optional
-	Iops     int    `json:"iops,omitempty" tf:"iops,omitempty"`
-	VolumeID string `json:"volumeID" tf:"volume_id"`
+	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	// +optional
+	VolumeID string `json:"volumeID,omitempty" tf:"volume_id,omitempty"`
 	// +optional
 	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional
@@ -71,7 +73,8 @@ type InstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	Ami string `json:"ami" tf:"ami"`
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	AssociatePublicIPAddress bool `json:"associatePublicIPAddress,omitempty" tf:"associate_public_ip_address,omitempty"`
 	// +optional
@@ -101,8 +104,9 @@ type InstanceSpec struct {
 	IamInstanceProfile string `json:"iamInstanceProfile,omitempty" tf:"iam_instance_profile,omitempty"`
 	// +optional
 	InstanceInitiatedShutdownBehavior string `json:"instanceInitiatedShutdownBehavior,omitempty" tf:"instance_initiated_shutdown_behavior,omitempty"`
-	InstanceState                     string `json:"instanceState" tf:"instance_state"`
-	InstanceType                      string `json:"instanceType" tf:"instance_type"`
+	// +optional
+	InstanceState string `json:"instanceState,omitempty" tf:"instance_state,omitempty"`
+	InstanceType  string `json:"instanceType" tf:"instance_type"`
 	// +optional
 	Ipv6AddressCount int `json:"ipv6AddressCount,omitempty" tf:"ipv6_address_count,omitempty"`
 	// +optional
@@ -114,15 +118,20 @@ type InstanceSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	NetworkInterface []InstanceSpecNetworkInterface `json:"networkInterface,omitempty" tf:"network_interface,omitempty"`
-	PasswordData     string                         `json:"passwordData" tf:"password_data"`
 	// +optional
-	PlacementGroup            string `json:"placementGroup,omitempty" tf:"placement_group,omitempty"`
-	PrimaryNetworkInterfaceID string `json:"primaryNetworkInterfaceID" tf:"primary_network_interface_id"`
-	PrivateDNS                string `json:"privateDNS" tf:"private_dns"`
+	PasswordData string `json:"passwordData,omitempty" tf:"password_data,omitempty"`
+	// +optional
+	PlacementGroup string `json:"placementGroup,omitempty" tf:"placement_group,omitempty"`
+	// +optional
+	PrimaryNetworkInterfaceID string `json:"primaryNetworkInterfaceID,omitempty" tf:"primary_network_interface_id,omitempty"`
+	// +optional
+	PrivateDNS string `json:"privateDNS,omitempty" tf:"private_dns,omitempty"`
 	// +optional
 	PrivateIP string `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
-	PublicDNS string `json:"publicDNS" tf:"public_dns"`
-	PublicIP  string `json:"publicIP" tf:"public_ip"`
+	// +optional
+	PublicDNS string `json:"publicDNS,omitempty" tf:"public_dns,omitempty"`
+	// +optional
+	PublicIP string `json:"publicIP,omitempty" tf:"public_ip,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RootBlockDevice []InstanceSpecRootBlockDevice `json:"rootBlockDevice,omitempty" tf:"root_block_device,omitempty"`

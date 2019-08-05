@@ -149,8 +149,9 @@ type ContainerGroupSpecIdentity struct {
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	IdentityIDS []string `json:"identityIDS,omitempty" tf:"identity_ids,omitempty"`
-	PrincipalID string   `json:"principalID" tf:"principal_id"`
-	Type        string   `json:"type" tf:"type"`
+	// +optional
+	PrincipalID string `json:"principalID,omitempty" tf:"principal_id,omitempty"`
+	Type        string `json:"type" tf:"type"`
 }
 
 type ContainerGroupSpecImageRegistryCredential struct {
@@ -170,13 +171,15 @@ type ContainerGroupSpec struct {
 	Diagnostics []ContainerGroupSpecDiagnostics `json:"diagnostics,omitempty" tf:"diagnostics,omitempty"`
 	// +optional
 	DnsNameLabel string `json:"dnsNameLabel,omitempty" tf:"dns_name_label,omitempty"`
-	Fqdn         string `json:"fqdn" tf:"fqdn"`
+	// +optional
+	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Identity []ContainerGroupSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
 	// +optional
 	ImageRegistryCredential []ContainerGroupSpecImageRegistryCredential `json:"imageRegistryCredential,omitempty" tf:"image_registry_credential,omitempty"`
-	IpAddress               string                                      `json:"ipAddress" tf:"ip_address"`
+	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional
 	IpAddressType     string `json:"ipAddressType,omitempty" tf:"ip_address_type,omitempty"`
 	Location          string `json:"location" tf:"location"`

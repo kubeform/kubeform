@@ -545,7 +545,6 @@ spec:
               type: object
           required:
           - action
-          - arn
           - condition
           - listenerArn
           - providerRef
@@ -707,7 +706,6 @@ spec:
                   type: object
               required:
               - action
-              - arn
               - condition
               - listenerArn
               - providerRef

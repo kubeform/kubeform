@@ -442,7 +442,6 @@ spec:
                     type: string
                 required:
                 - deviceName
-                - volumeID
                 type: object
               type: array
               uniqueItems: true
@@ -539,8 +538,6 @@ spec:
                     type: integer
                   volumeType:
                     type: string
-                required:
-                - volumeID
                 type: object
               maxItems: 1
               type: array
@@ -590,18 +587,8 @@ spec:
               type: boolean
           required:
           - ami
-          - arn
-          - instanceState
           - instanceType
-          - passwordData
-          - primaryNetworkInterfaceID
-          - privateDNS
           - providerRef
-          - publicDNS
-          - publicIP
-          - spotBidStatus
-          - spotInstanceID
-          - spotRequestState
           type: object
         status:
           properties:
@@ -657,7 +644,6 @@ spec:
                         type: string
                     required:
                     - deviceName
-                    - volumeID
                     type: object
                   type: array
                   uniqueItems: true
@@ -754,8 +740,6 @@ spec:
                         type: integer
                       volumeType:
                         type: string
-                    required:
-                    - volumeID
                     type: object
                   maxItems: 1
                   type: array
@@ -805,18 +789,8 @@ spec:
                   type: boolean
               required:
               - ami
-              - arn
-              - instanceState
               - instanceType
-              - passwordData
-              - primaryNetworkInterfaceID
-              - privateDNS
               - providerRef
-              - publicDNS
-              - publicIP
-              - spotBidStatus
-              - spotInstanceID
-              - spotRequestState
               type: object
             state:
               properties:

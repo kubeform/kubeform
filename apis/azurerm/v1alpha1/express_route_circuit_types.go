@@ -29,15 +29,17 @@ type ExpressRouteCircuitSpec struct {
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	AllowClassicOperations           bool   `json:"allowClassicOperations,omitempty" tf:"allow_classic_operations,omitempty"`
-	BandwidthInMbps                  int    `json:"bandwidthInMbps" tf:"bandwidth_in_mbps"`
-	Location                         string `json:"location" tf:"location"`
-	Name                             string `json:"name" tf:"name"`
-	PeeringLocation                  string `json:"peeringLocation" tf:"peering_location"`
-	ResourceGroupName                string `json:"resourceGroupName" tf:"resource_group_name"`
-	ServiceKey                       string `json:"-" sensitive:"true" tf:"service_key"`
-	ServiceProviderName              string `json:"serviceProviderName" tf:"service_provider_name"`
-	ServiceProviderProvisioningState string `json:"serviceProviderProvisioningState" tf:"service_provider_provisioning_state"`
+	AllowClassicOperations bool   `json:"allowClassicOperations,omitempty" tf:"allow_classic_operations,omitempty"`
+	BandwidthInMbps        int    `json:"bandwidthInMbps" tf:"bandwidth_in_mbps"`
+	Location               string `json:"location" tf:"location"`
+	Name                   string `json:"name" tf:"name"`
+	PeeringLocation        string `json:"peeringLocation" tf:"peering_location"`
+	ResourceGroupName      string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	ServiceKey          string `json:"-" sensitive:"true" tf:"service_key,omitempty"`
+	ServiceProviderName string `json:"serviceProviderName" tf:"service_provider_name"`
+	// +optional
+	ServiceProviderProvisioningState string `json:"serviceProviderProvisioningState,omitempty" tf:"service_provider_provisioning_state,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku []ExpressRouteCircuitSpecSku `json:"sku" tf:"sku"`
 	// +optional

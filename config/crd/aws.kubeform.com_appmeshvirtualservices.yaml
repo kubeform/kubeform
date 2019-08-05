@@ -454,9 +454,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
-          - createdDate
-          - lastUpdatedDate
           - meshName
           - name
           - providerRef
@@ -528,9 +525,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
-              - createdDate
-              - lastUpdatedDate
               - meshName
               - name
               - providerRef

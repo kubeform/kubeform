@@ -419,10 +419,8 @@ spec:
             urn:
               type: string
           required:
-          - bucketDomainName
           - name
           - providerRef
-          - urn
           type: object
         status:
           properties:
@@ -455,10 +453,8 @@ spec:
                 urn:
                   type: string
               required:
-              - bucketDomainName
               - name
               - providerRef
-              - urn
               type: object
             state:
               properties:

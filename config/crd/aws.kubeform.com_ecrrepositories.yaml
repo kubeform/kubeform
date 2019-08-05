@@ -419,11 +419,8 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - name
           - providerRef
-          - registryID
-          - repositoryURL
           type: object
         status:
           properties:
@@ -456,11 +453,8 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - name
               - providerRef
-              - registryID
-              - repositoryURL
               type: object
             state:
               properties:

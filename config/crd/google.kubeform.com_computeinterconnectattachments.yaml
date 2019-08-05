@@ -416,8 +416,6 @@ spec:
                 properties:
                   tag8021q:
                     type: integer
-                required:
-                - tag8021q
                 type: object
               maxItems: 1
               type: array
@@ -439,16 +437,10 @@ spec:
             selfLink:
               type: string
           required:
-          - cloudRouterIPAddress
-          - creationTimestamp
-          - customerRouterIPAddress
-          - googleReferenceID
           - interconnect
           - name
-          - privateInterconnectInfo
           - providerRef
           - router
-          - selfLink
           type: object
         status:
           properties:
@@ -478,8 +470,6 @@ spec:
                     properties:
                       tag8021q:
                         type: integer
-                    required:
-                    - tag8021q
                     type: object
                   maxItems: 1
                   type: array
@@ -501,16 +491,10 @@ spec:
                 selfLink:
                   type: string
               required:
-              - cloudRouterIPAddress
-              - creationTimestamp
-              - customerRouterIPAddress
-              - googleReferenceID
               - interconnect
               - name
-              - privateInterconnectInfo
               - providerRef
               - router
-              - selfLink
               type: object
             state:
               properties:

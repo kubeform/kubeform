@@ -21,8 +21,9 @@ type ComputeTargetTcpProxy struct {
 type ComputeTargetTcpProxySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	BackendService    string `json:"backendService" tf:"backend_service"`
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
+	BackendService string `json:"backendService" tf:"backend_service"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
@@ -30,8 +31,10 @@ type ComputeTargetTcpProxySpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	ProxyHeader string `json:"proxyHeader,omitempty" tf:"proxy_header,omitempty"`
-	ProxyID     int    `json:"proxyID" tf:"proxy_id"`
-	SelfLink    string `json:"selfLink" tf:"self_link"`
+	// +optional
+	ProxyID int `json:"proxyID,omitempty" tf:"proxy_id,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 }
 
 type ComputeTargetTcpProxyStatus struct {

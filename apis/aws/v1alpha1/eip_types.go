@@ -21,19 +21,26 @@ type Eip struct {
 type EipSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	AllocationID string `json:"allocationID" tf:"allocation_id"`
+	// +optional
+	AllocationID string `json:"allocationID,omitempty" tf:"allocation_id,omitempty"`
 	// +optional
 	AssociateWithPrivateIP string `json:"associateWithPrivateIP,omitempty" tf:"associate_with_private_ip,omitempty"`
-	AssociationID          string `json:"associationID" tf:"association_id"`
-	Domain                 string `json:"domain" tf:"domain"`
+	// +optional
+	AssociationID string `json:"associationID,omitempty" tf:"association_id,omitempty"`
+	// +optional
+	Domain string `json:"domain,omitempty" tf:"domain,omitempty"`
 	// +optional
 	Instance string `json:"instance,omitempty" tf:"instance,omitempty"`
 	// +optional
 	NetworkInterface string `json:"networkInterface,omitempty" tf:"network_interface,omitempty"`
-	PrivateDNS       string `json:"privateDNS" tf:"private_dns"`
-	PrivateIP        string `json:"privateIP" tf:"private_ip"`
-	PublicDNS        string `json:"publicDNS" tf:"public_dns"`
-	PublicIP         string `json:"publicIP" tf:"public_ip"`
+	// +optional
+	PrivateDNS string `json:"privateDNS,omitempty" tf:"private_dns,omitempty"`
+	// +optional
+	PrivateIP string `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
+	// +optional
+	PublicDNS string `json:"publicDNS,omitempty" tf:"public_dns,omitempty"`
+	// +optional
+	PublicIP string `json:"publicIP,omitempty" tf:"public_ip,omitempty"`
 	// +optional
 	PublicIpv4Pool string `json:"publicIpv4Pool,omitempty" tf:"public_ipv4_pool,omitempty"`
 	// +optional

@@ -417,8 +417,6 @@ spec:
           required:
           - name
           - providerRef
-          - size
-          - url
           type: object
         status:
           properties:
@@ -449,8 +447,6 @@ spec:
               required:
               - name
               - providerRef
-              - size
-              - url
               type: object
             state:
               properties:

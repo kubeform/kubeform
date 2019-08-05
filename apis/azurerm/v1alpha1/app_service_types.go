@@ -96,9 +96,11 @@ type AppServiceSpecConnectionString struct {
 }
 
 type AppServiceSpecIdentity struct {
-	PrincipalID string `json:"principalID" tf:"principal_id"`
-	TenantID    string `json:"tenantID" tf:"tenant_id"`
-	Type        string `json:"type" tf:"type"`
+	// +optional
+	PrincipalID string `json:"principalID,omitempty" tf:"principal_id,omitempty"`
+	// +optional
+	TenantID string `json:"tenantID,omitempty" tf:"tenant_id,omitempty"`
+	Type     string `json:"type" tf:"type"`
 }
 
 type AppServiceSpecLogsApplicationLogsAzureBlobStorage struct {
@@ -185,13 +187,17 @@ type AppServiceSpecSiteConfig struct {
 }
 
 type AppServiceSpecSiteCredential struct {
-	Password string `json:"-" sensitive:"true" tf:"password"`
-	Username string `json:"username" tf:"username"`
+	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
+	// +optional
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type AppServiceSpecSourceControl struct {
-	Branch  string `json:"branch" tf:"branch"`
-	RepoURL string `json:"repoURL" tf:"repo_url"`
+	// +optional
+	Branch string `json:"branch,omitempty" tf:"branch,omitempty"`
+	// +optional
+	RepoURL string `json:"repoURL,omitempty" tf:"repo_url,omitempty"`
 }
 
 type AppServiceSpec struct {
@@ -211,8 +217,9 @@ type AppServiceSpec struct {
 	ClientCertEnabled bool `json:"clientCertEnabled,omitempty" tf:"client_cert_enabled,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	ConnectionString    []AppServiceSpecConnectionString `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
-	DefaultSiteHostname string                           `json:"defaultSiteHostname" tf:"default_site_hostname"`
+	ConnectionString []AppServiceSpecConnectionString `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
+	// +optional
+	DefaultSiteHostname string `json:"defaultSiteHostname,omitempty" tf:"default_site_hostname,omitempty"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
@@ -223,18 +230,22 @@ type AppServiceSpec struct {
 	Location string                   `json:"location" tf:"location"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Logs                        []AppServiceSpecLogs `json:"logs,omitempty" tf:"logs,omitempty"`
-	Name                        string               `json:"name" tf:"name"`
-	OutboundIPAddresses         string               `json:"outboundIPAddresses" tf:"outbound_ip_addresses"`
-	PossibleOutboundIPAddresses string               `json:"possibleOutboundIPAddresses" tf:"possible_outbound_ip_addresses"`
-	ResourceGroupName           string               `json:"resourceGroupName" tf:"resource_group_name"`
+	Logs []AppServiceSpecLogs `json:"logs,omitempty" tf:"logs,omitempty"`
+	Name string               `json:"name" tf:"name"`
+	// +optional
+	OutboundIPAddresses string `json:"outboundIPAddresses,omitempty" tf:"outbound_ip_addresses,omitempty"`
+	// +optional
+	PossibleOutboundIPAddresses string `json:"possibleOutboundIPAddresses,omitempty" tf:"possible_outbound_ip_addresses,omitempty"`
+	ResourceGroupName           string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SiteConfig []AppServiceSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	SiteCredential []AppServiceSpecSiteCredential `json:"siteCredential" tf:"site_credential"`
+	SiteCredential []AppServiceSpecSiteCredential `json:"siteCredential,omitempty" tf:"site_credential,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	SourceControl []AppServiceSpecSourceControl `json:"sourceControl" tf:"source_control"`
+	SourceControl []AppServiceSpecSourceControl `json:"sourceControl,omitempty" tf:"source_control,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

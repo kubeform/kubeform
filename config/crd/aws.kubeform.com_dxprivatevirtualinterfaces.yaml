@@ -440,11 +440,8 @@ spec:
               type: string
           required:
           - addressFamily
-          - arn
-          - awsDevice
           - bgpAsn
           - connectionID
-          - jumboFrameCapable
           - name
           - providerRef
           - vlan
@@ -501,11 +498,8 @@ spec:
                   type: string
               required:
               - addressFamily
-              - arn
-              - awsDevice
               - bgpAsn
               - connectionID
-              - jumboFrameCapable
               - name
               - providerRef
               - vlan

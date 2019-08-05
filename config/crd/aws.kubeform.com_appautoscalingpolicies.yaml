@@ -511,7 +511,6 @@ spec:
               maxItems: 1
               type: array
           required:
-          - arn
           - name
           - providerRef
           - resourceID
@@ -641,7 +640,6 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - arn
               - name
               - providerRef
               - resourceID

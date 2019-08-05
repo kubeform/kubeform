@@ -434,10 +434,7 @@ spec:
             zoneType:
               type: string
           required:
-          - maxNumberOfRecordSets
           - name
-          - nameServers
-          - numberOfRecordSets
           - providerRef
           - resourceGroupName
           type: object
@@ -487,10 +484,7 @@ spec:
                 zoneType:
                   type: string
               required:
-              - maxNumberOfRecordSets
               - name
-              - nameServers
-              - numberOfRecordSets
               - providerRef
               - resourceGroupName
               type: object

@@ -19,50 +19,69 @@ type AmiCopy struct {
 }
 
 type AmiCopySpecEbsBlockDevice struct {
-	DeleteOnTermination bool   `json:"deleteOnTermination" tf:"delete_on_termination"`
-	DeviceName          string `json:"deviceName" tf:"device_name"`
-	Encrypted           bool   `json:"encrypted" tf:"encrypted"`
-	Iops                int    `json:"iops" tf:"iops"`
-	SnapshotID          string `json:"snapshotID" tf:"snapshot_id"`
-	VolumeSize          int    `json:"volumeSize" tf:"volume_size"`
-	VolumeType          string `json:"volumeType" tf:"volume_type"`
+	// +optional
+	DeleteOnTermination bool `json:"deleteOnTermination,omitempty" tf:"delete_on_termination,omitempty"`
+	// +optional
+	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
+	// +optional
+	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
+	// +optional
+	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	// +optional
+	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
+	// +optional
+	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
+	// +optional
+	VolumeType string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
 }
 
 type AmiCopySpecEphemeralBlockDevice struct {
-	DeviceName  string `json:"deviceName" tf:"device_name"`
-	VirtualName string `json:"virtualName" tf:"virtual_name"`
+	// +optional
+	DeviceName string `json:"deviceName,omitempty" tf:"device_name,omitempty"`
+	// +optional
+	VirtualName string `json:"virtualName,omitempty" tf:"virtual_name,omitempty"`
 }
 
 type AmiCopySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Architecture string `json:"architecture" tf:"architecture"`
+	// +optional
+	Architecture string `json:"architecture,omitempty" tf:"architecture,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	EbsBlockDevice []AmiCopySpecEbsBlockDevice `json:"ebsBlockDevice,omitempty" tf:"ebs_block_device,omitempty"`
-	EnaSupport     bool                        `json:"enaSupport" tf:"ena_support"`
+	// +optional
+	EnaSupport bool `json:"enaSupport,omitempty" tf:"ena_support,omitempty"`
 	// +optional
 	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	EphemeralBlockDevice []AmiCopySpecEphemeralBlockDevice `json:"ephemeralBlockDevice,omitempty" tf:"ephemeral_block_device,omitempty"`
-	ImageLocation        string                            `json:"imageLocation" tf:"image_location"`
-	KernelID             string                            `json:"kernelID" tf:"kernel_id"`
 	// +optional
-	KmsKeyID           string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
-	ManageEbsSnapshots bool   `json:"manageEbsSnapshots" tf:"manage_ebs_snapshots"`
+	ImageLocation string `json:"imageLocation,omitempty" tf:"image_location,omitempty"`
+	// +optional
+	KernelID string `json:"kernelID,omitempty" tf:"kernel_id,omitempty"`
+	// +optional
+	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+	// +optional
+	ManageEbsSnapshots bool   `json:"manageEbsSnapshots,omitempty" tf:"manage_ebs_snapshots,omitempty"`
 	Name               string `json:"name" tf:"name"`
-	RamdiskID          string `json:"ramdiskID" tf:"ramdisk_id"`
-	RootDeviceName     string `json:"rootDeviceName" tf:"root_device_name"`
-	RootSnapshotID     string `json:"rootSnapshotID" tf:"root_snapshot_id"`
-	SourceAmiID        string `json:"sourceAmiID" tf:"source_ami_id"`
-	SourceAmiRegion    string `json:"sourceAmiRegion" tf:"source_ami_region"`
-	SriovNetSupport    string `json:"sriovNetSupport" tf:"sriov_net_support"`
 	// +optional
-	Tags               map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	VirtualizationType string            `json:"virtualizationType" tf:"virtualization_type"`
+	RamdiskID string `json:"ramdiskID,omitempty" tf:"ramdisk_id,omitempty"`
+	// +optional
+	RootDeviceName string `json:"rootDeviceName,omitempty" tf:"root_device_name,omitempty"`
+	// +optional
+	RootSnapshotID  string `json:"rootSnapshotID,omitempty" tf:"root_snapshot_id,omitempty"`
+	SourceAmiID     string `json:"sourceAmiID" tf:"source_ami_id"`
+	SourceAmiRegion string `json:"sourceAmiRegion" tf:"source_ami_region"`
+	// +optional
+	SriovNetSupport string `json:"sriovNetSupport,omitempty" tf:"sriov_net_support,omitempty"`
+	// +optional
+	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	VirtualizationType string `json:"virtualizationType,omitempty" tf:"virtualization_type,omitempty"`
 }
 
 type AmiCopyStatus struct {

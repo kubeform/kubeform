@@ -430,9 +430,7 @@ spec:
             resourceGroupName:
               type: string
           required:
-          - backendIPConfigurationID
           - backendPort
-          - frontendIPConfigurationID
           - frontendIPConfigurationName
           - frontendPort
           - loadbalancerID
@@ -483,9 +481,7 @@ spec:
                 resourceGroupName:
                   type: string
               required:
-              - backendIPConfigurationID
               - backendPort
-              - frontendIPConfigurationID
               - frontendIPConfigurationName
               - frontendPort
               - loadbalancerID

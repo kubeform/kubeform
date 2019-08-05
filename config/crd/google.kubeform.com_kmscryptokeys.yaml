@@ -418,7 +418,6 @@ spec:
           - keyRing
           - name
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -450,7 +449,6 @@ spec:
               - keyRing
               - name
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

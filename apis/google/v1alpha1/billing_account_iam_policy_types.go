@@ -22,8 +22,9 @@ type BillingAccountIamPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	BillingAccountID string `json:"billingAccountID" tf:"billing_account_id"`
-	Etag             string `json:"etag" tf:"etag"`
-	PolicyData       string `json:"policyData" tf:"policy_data"`
+	// +optional
+	Etag       string `json:"etag,omitempty" tf:"etag,omitempty"`
+	PolicyData string `json:"policyData" tf:"policy_data"`
 }
 
 type BillingAccountIamPolicyStatus struct {

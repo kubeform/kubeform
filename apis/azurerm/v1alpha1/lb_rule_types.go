@@ -27,8 +27,9 @@ type LbRuleSpec struct {
 	// +optional
 	DisableOutboundSnat bool `json:"disableOutboundSnat,omitempty" tf:"disable_outbound_snat,omitempty"`
 	// +optional
-	EnableFloatingIP            bool   `json:"enableFloatingIP,omitempty" tf:"enable_floating_ip,omitempty"`
-	FrontendIPConfigurationID   string `json:"frontendIPConfigurationID" tf:"frontend_ip_configuration_id"`
+	EnableFloatingIP bool `json:"enableFloatingIP,omitempty" tf:"enable_floating_ip,omitempty"`
+	// +optional
+	FrontendIPConfigurationID   string `json:"frontendIPConfigurationID,omitempty" tf:"frontend_ip_configuration_id,omitempty"`
 	FrontendIPConfigurationName string `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`
 	FrontendPort                int    `json:"frontendPort" tf:"frontend_port"`
 	// +optional

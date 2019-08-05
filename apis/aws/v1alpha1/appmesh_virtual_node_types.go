@@ -110,9 +110,12 @@ type AppmeshVirtualNodeSpecSpec struct {
 type AppmeshVirtualNodeSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn             string `json:"arn" tf:"arn"`
-	CreatedDate     string `json:"createdDate" tf:"created_date"`
-	LastUpdatedDate string `json:"lastUpdatedDate" tf:"last_updated_date"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	CreatedDate string `json:"createdDate,omitempty" tf:"created_date,omitempty"`
+	// +optional
+	LastUpdatedDate string `json:"lastUpdatedDate,omitempty" tf:"last_updated_date,omitempty"`
 	MeshName        string `json:"meshName" tf:"mesh_name"`
 	Name            string `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1

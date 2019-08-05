@@ -23,13 +23,16 @@ type ComputeVPNTunnelSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional
-	Description    string `json:"description,omitempty" tf:"description,omitempty"`
-	DetailedStatus string `json:"detailedStatus" tf:"detailed_status"`
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
-	IkeVersion       int    `json:"ikeVersion,omitempty" tf:"ike_version,omitempty"`
-	LabelFingerprint string `json:"labelFingerprint" tf:"label_fingerprint"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	DetailedStatus string `json:"detailedStatus,omitempty" tf:"detailed_status,omitempty"`
+	// +optional
+	IkeVersion int `json:"ikeVersion,omitempty" tf:"ike_version,omitempty"`
+	// +optional
+	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
@@ -45,10 +48,12 @@ type ComputeVPNTunnelSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	RemoteTrafficSelector []string `json:"remoteTrafficSelector,omitempty" tf:"remote_traffic_selector,omitempty"`
 	// +optional
-	Router           string `json:"router,omitempty" tf:"router,omitempty"`
-	SelfLink         string `json:"selfLink" tf:"self_link"`
-	SharedSecret     string `json:"-" sensitive:"true" tf:"shared_secret"`
-	SharedSecretHash string `json:"sharedSecretHash" tf:"shared_secret_hash"`
+	Router string `json:"router,omitempty" tf:"router,omitempty"`
+	// +optional
+	SelfLink     string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
+	SharedSecret string `json:"-" sensitive:"true" tf:"shared_secret"`
+	// +optional
+	SharedSecretHash string `json:"sharedSecretHash,omitempty" tf:"shared_secret_hash,omitempty"`
 	TargetVPNGateway string `json:"targetVPNGateway" tf:"target_vpn_gateway"`
 }
 

@@ -38,12 +38,15 @@ type DmsReplicationInstanceSpec struct {
 	// +optional
 	PreferredMaintenanceWindow string `json:"preferredMaintenanceWindow,omitempty" tf:"preferred_maintenance_window,omitempty"`
 	// +optional
-	PubliclyAccessible            bool     `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
-	ReplicationInstanceArn        string   `json:"replicationInstanceArn" tf:"replication_instance_arn"`
-	ReplicationInstanceClass      string   `json:"replicationInstanceClass" tf:"replication_instance_class"`
-	ReplicationInstanceID         string   `json:"replicationInstanceID" tf:"replication_instance_id"`
-	ReplicationInstancePrivateIPS []string `json:"replicationInstancePrivateIPS" tf:"replication_instance_private_ips"`
-	ReplicationInstancePublicIPS  []string `json:"replicationInstancePublicIPS" tf:"replication_instance_public_ips"`
+	PubliclyAccessible bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
+	// +optional
+	ReplicationInstanceArn   string `json:"replicationInstanceArn,omitempty" tf:"replication_instance_arn,omitempty"`
+	ReplicationInstanceClass string `json:"replicationInstanceClass" tf:"replication_instance_class"`
+	ReplicationInstanceID    string `json:"replicationInstanceID" tf:"replication_instance_id"`
+	// +optional
+	ReplicationInstancePrivateIPS []string `json:"replicationInstancePrivateIPS,omitempty" tf:"replication_instance_private_ips,omitempty"`
+	// +optional
+	ReplicationInstancePublicIPS []string `json:"replicationInstancePublicIPS,omitempty" tf:"replication_instance_public_ips,omitempty"`
 	// +optional
 	ReplicationSubnetGroupID string `json:"replicationSubnetGroupID,omitempty" tf:"replication_subnet_group_id,omitempty"`
 	// +optional

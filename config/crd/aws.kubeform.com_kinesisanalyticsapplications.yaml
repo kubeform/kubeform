@@ -409,7 +409,6 @@ spec:
                   roleArn:
                     type: string
                 required:
-                - ID
                 - logStreamArn
                 - roleArn
                 type: object
@@ -538,8 +537,6 @@ spec:
                                 type: array
                               recordFormatType:
                                 type: string
-                            required:
-                            - recordFormatType
                             type: object
                           maxItems: 1
                           type: array
@@ -554,8 +551,6 @@ spec:
                       properties:
                         startingPosition:
                           type: string
-                      required:
-                      - startingPosition
                       type: object
                     type: array
                   streamNames:
@@ -564,11 +559,8 @@ spec:
                     type: array
                     uniqueItems: true
                 required:
-                - ID
                 - namePrefix
                 - schema
-                - startingPositionConfiguration
-                - streamNames
                 type: object
               maxItems: 1
               type: array
@@ -631,7 +623,6 @@ spec:
                     maxItems: 1
                     type: array
                 required:
-                - ID
                 - name
                 - schema
                 type: object
@@ -720,8 +711,6 @@ spec:
                                 type: array
                               recordFormatType:
                                 type: string
-                            required:
-                            - recordFormatType
                             type: object
                           maxItems: 1
                           type: array
@@ -734,7 +723,6 @@ spec:
                   tableName:
                     type: string
                 required:
-                - ID
                 - s3
                 - schema
                 - tableName
@@ -750,13 +738,8 @@ spec:
             version:
               type: integer
           required:
-          - arn
-          - createTimestamp
-          - lastUpdateTimestamp
           - name
           - providerRef
-          - status
-          - version
           type: object
         status:
           properties:
@@ -779,7 +762,6 @@ spec:
                       roleArn:
                         type: string
                     required:
-                    - ID
                     - logStreamArn
                     - roleArn
                     type: object
@@ -908,8 +890,6 @@ spec:
                                     type: array
                                   recordFormatType:
                                     type: string
-                                required:
-                                - recordFormatType
                                 type: object
                               maxItems: 1
                               type: array
@@ -924,8 +904,6 @@ spec:
                           properties:
                             startingPosition:
                               type: string
-                          required:
-                          - startingPosition
                           type: object
                         type: array
                       streamNames:
@@ -934,11 +912,8 @@ spec:
                         type: array
                         uniqueItems: true
                     required:
-                    - ID
                     - namePrefix
                     - schema
-                    - startingPositionConfiguration
-                    - streamNames
                     type: object
                   maxItems: 1
                   type: array
@@ -1001,7 +976,6 @@ spec:
                         maxItems: 1
                         type: array
                     required:
-                    - ID
                     - name
                     - schema
                     type: object
@@ -1090,8 +1064,6 @@ spec:
                                     type: array
                                   recordFormatType:
                                     type: string
-                                required:
-                                - recordFormatType
                                 type: object
                               maxItems: 1
                               type: array
@@ -1104,7 +1076,6 @@ spec:
                       tableName:
                         type: string
                     required:
-                    - ID
                     - s3
                     - schema
                     - tableName
@@ -1120,13 +1091,8 @@ spec:
                 version:
                   type: integer
               required:
-              - arn
-              - createTimestamp
-              - lastUpdateTimestamp
               - name
               - providerRef
-              - status
-              - version
               type: object
             state:
               properties:

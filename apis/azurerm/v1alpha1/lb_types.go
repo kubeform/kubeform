@@ -19,13 +19,16 @@ type Lb struct {
 }
 
 type LbSpecFrontendIPConfiguration struct {
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	InboundNATRules []string `json:"inboundNATRules" tf:"inbound_nat_rules"`
+	InboundNATRules []string `json:"inboundNATRules,omitempty" tf:"inbound_nat_rules,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	LoadBalancerRules []string `json:"loadBalancerRules" tf:"load_balancer_rules"`
+	LoadBalancerRules []string `json:"loadBalancerRules,omitempty" tf:"load_balancer_rules,omitempty"`
 	Name              string   `json:"name" tf:"name"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	OutboundRules []string `json:"outboundRules" tf:"outbound_rules"`
+	OutboundRules []string `json:"outboundRules,omitempty" tf:"outbound_rules,omitempty"`
 	// +optional
 	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
 	// +optional
@@ -49,9 +52,11 @@ type LbSpec struct {
 	FrontendIPConfiguration []LbSpecFrontendIPConfiguration `json:"frontendIPConfiguration,omitempty" tf:"frontend_ip_configuration,omitempty"`
 	Location                string                          `json:"location" tf:"location"`
 	Name                    string                          `json:"name" tf:"name"`
-	PrivateIPAddress        string                          `json:"privateIPAddress" tf:"private_ip_address"`
-	PrivateIPAddresses      []string                        `json:"privateIPAddresses" tf:"private_ip_addresses"`
-	ResourceGroupName       string                          `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
+	// +optional
+	PrivateIPAddresses []string `json:"privateIPAddresses,omitempty" tf:"private_ip_addresses,omitempty"`
+	ResourceGroupName  string   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Sku string `json:"sku,omitempty" tf:"sku,omitempty"`
 	// +optional

@@ -434,19 +434,8 @@ spec:
                           type: string
                         service:
                           type: string
-                      required:
-                      - domain
-                      - path
-                      - service
                       type: object
                     type: array
-                required:
-                - codeBucket
-                - defaultBucket
-                - defaultHostname
-                - gcrDomain
-                - name
-                - urlDispatchRule
                 type: object
               maxItems: 1
               type: array
@@ -481,7 +470,6 @@ spec:
               type: boolean
           required:
           - name
-          - number
           - projectID
           - providerRef
           type: object
@@ -531,19 +519,8 @@ spec:
                               type: string
                             service:
                               type: string
-                          required:
-                          - domain
-                          - path
-                          - service
                           type: object
                         type: array
-                    required:
-                    - codeBucket
-                    - defaultBucket
-                    - defaultHostname
-                    - gcrDomain
-                    - name
-                    - urlDispatchRule
                     type: object
                   maxItems: 1
                   type: array
@@ -578,7 +555,6 @@ spec:
                   type: boolean
               required:
               - name
-              - number
               - projectID
               - providerRef
               type: object

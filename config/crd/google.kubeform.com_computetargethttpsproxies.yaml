@@ -429,11 +429,8 @@ spec:
             urlMap:
               type: string
           required:
-          - creationTimestamp
           - name
           - providerRef
-          - proxyID
-          - selfLink
           - sslCertificates
           - urlMap
           type: object
@@ -478,11 +475,8 @@ spec:
                 urlMap:
                   type: string
               required:
-              - creationTimestamp
               - name
               - providerRef
-              - proxyID
-              - selfLink
               - sslCertificates
               - urlMap
               type: object

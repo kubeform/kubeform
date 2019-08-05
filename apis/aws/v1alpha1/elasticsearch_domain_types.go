@@ -73,15 +73,17 @@ type ElasticsearchDomainSpecSnapshotOptions struct {
 }
 
 type ElasticsearchDomainSpecVpcOptions struct {
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	AvailabilityZones []string `json:"availabilityZones" tf:"availability_zones"`
+	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS,omitempty" tf:"subnet_ids,omitempty"`
-	VpcID     string   `json:"vpcID" tf:"vpc_id"`
+	// +optional
+	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
 }
 
 type ElasticsearchDomainSpec struct {
@@ -91,15 +93,17 @@ type ElasticsearchDomainSpec struct {
 	AccessPolicies string `json:"accessPolicies,omitempty" tf:"access_policies,omitempty"`
 	// +optional
 	AdvancedOptions map[string]string `json:"advancedOptions,omitempty" tf:"advanced_options,omitempty"`
-	Arn             string            `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ClusterConfig []ElasticsearchDomainSpecClusterConfig `json:"clusterConfig,omitempty" tf:"cluster_config,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CognitoOptions []ElasticsearchDomainSpecCognitoOptions `json:"cognitoOptions,omitempty" tf:"cognito_options,omitempty"`
-	DomainID       string                                  `json:"domainID" tf:"domain_id"`
-	DomainName     string                                  `json:"domainName" tf:"domain_name"`
+	// +optional
+	DomainID   string `json:"domainID,omitempty" tf:"domain_id,omitempty"`
+	DomainName string `json:"domainName" tf:"domain_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	EbsOptions []ElasticsearchDomainSpecEbsOptions `json:"ebsOptions,omitempty" tf:"ebs_options,omitempty"`
@@ -107,9 +111,11 @@ type ElasticsearchDomainSpec struct {
 	ElasticsearchVersion string `json:"elasticsearchVersion,omitempty" tf:"elasticsearch_version,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	EncryptAtRest  []ElasticsearchDomainSpecEncryptAtRest `json:"encryptAtRest,omitempty" tf:"encrypt_at_rest,omitempty"`
-	Endpoint       string                                 `json:"endpoint" tf:"endpoint"`
-	KibanaEndpoint string                                 `json:"kibanaEndpoint" tf:"kibana_endpoint"`
+	EncryptAtRest []ElasticsearchDomainSpecEncryptAtRest `json:"encryptAtRest,omitempty" tf:"encrypt_at_rest,omitempty"`
+	// +optional
+	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
+	// +optional
+	KibanaEndpoint string `json:"kibanaEndpoint,omitempty" tf:"kibana_endpoint,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	LogPublishingOptions []ElasticsearchDomainSpecLogPublishingOptions `json:"logPublishingOptions,omitempty" tf:"log_publishing_options,omitempty"`

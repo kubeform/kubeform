@@ -76,7 +76,8 @@ type KeyVaultSpec struct {
 	// +optional
 	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	TenantID string            `json:"tenantID" tf:"tenant_id"`
-	VaultURI string            `json:"vaultURI" tf:"vault_uri"`
+	// +optional
+	VaultURI string `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`
 }
 
 type KeyVaultStatus struct {

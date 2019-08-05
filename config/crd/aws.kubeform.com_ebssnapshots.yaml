@@ -427,14 +427,8 @@ spec:
             volumeSize:
               type: integer
           required:
-          - dataEncryptionKeyID
-          - encrypted
-          - kmsKeyID
-          - ownerAlias
-          - ownerID
           - providerRef
           - volumeID
-          - volumeSize
           type: object
         status:
           properties:
@@ -475,14 +469,8 @@ spec:
                 volumeSize:
                   type: integer
               required:
-              - dataEncryptionKeyID
-              - encrypted
-              - kmsKeyID
-              - ownerAlias
-              - ownerID
               - providerRef
               - volumeID
-              - volumeSize
               type: object
             state:
               properties:

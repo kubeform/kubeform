@@ -419,7 +419,6 @@ spec:
             vpnGatewayID:
               type: string
           required:
-          - arn
           - providerRef
           - virtualInterfaceID
           type: object
@@ -454,7 +453,6 @@ spec:
                 vpnGatewayID:
                   type: string
               required:
-              - arn
               - providerRef
               - virtualInterfaceID
               type: object

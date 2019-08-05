@@ -22,11 +22,14 @@ type Ec2ClientVPNNetworkAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	ClientVPNEndpointID string `json:"clientVPNEndpointID" tf:"client_vpn_endpoint_id"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	SecurityGroups []string `json:"securityGroups" tf:"security_groups"`
-	Status         string   `json:"status" tf:"status"`
-	SubnetID       string   `json:"subnetID" tf:"subnet_id"`
-	VpcID          string   `json:"vpcID" tf:"vpc_id"`
+	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
+	// +optional
+	Status   string `json:"status,omitempty" tf:"status,omitempty"`
+	SubnetID string `json:"subnetID" tf:"subnet_id"`
+	// +optional
+	VpcID string `json:"vpcID,omitempty" tf:"vpc_id,omitempty"`
 }
 
 type Ec2ClientVPNNetworkAssociationStatus struct {

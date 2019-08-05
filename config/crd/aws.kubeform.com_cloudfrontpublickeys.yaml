@@ -419,9 +419,7 @@ spec:
                   type: string
               type: object
           required:
-          - callerReference
           - encodedKey
-          - etag
           - providerRef
           type: object
         status:
@@ -455,9 +453,7 @@ spec:
                       type: string
                   type: object
               required:
-              - callerReference
               - encodedKey
-              - etag
               - providerRef
               type: object
             state:

@@ -25,20 +25,27 @@ type ServiceAccountKeySpec struct {
 
 	// +optional
 	KeyAlgorithm string `json:"keyAlgorithm,omitempty" tf:"key_algorithm,omitempty"`
-	Name         string `json:"name" tf:"name"`
 	// +optional
-	PgpKey                string `json:"pgpKey,omitempty" tf:"pgp_key,omitempty"`
-	PrivateKey            string `json:"-" sensitive:"true" tf:"private_key"`
-	PrivateKeyEncrypted   string `json:"privateKeyEncrypted" tf:"private_key_encrypted"`
-	PrivateKeyFingerprint string `json:"privateKeyFingerprint" tf:"private_key_fingerprint"`
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	PgpKey string `json:"pgpKey,omitempty" tf:"pgp_key,omitempty"`
+	// +optional
+	PrivateKey string `json:"-" sensitive:"true" tf:"private_key,omitempty"`
+	// +optional
+	PrivateKeyEncrypted string `json:"privateKeyEncrypted,omitempty" tf:"private_key_encrypted,omitempty"`
+	// +optional
+	PrivateKeyFingerprint string `json:"privateKeyFingerprint,omitempty" tf:"private_key_fingerprint,omitempty"`
 	// +optional
 	PrivateKeyType string `json:"privateKeyType,omitempty" tf:"private_key_type,omitempty"`
-	PublicKey      string `json:"publicKey" tf:"public_key"`
+	// +optional
+	PublicKey string `json:"publicKey,omitempty" tf:"public_key,omitempty"`
 	// +optional
 	PublicKeyType    string `json:"publicKeyType,omitempty" tf:"public_key_type,omitempty"`
 	ServiceAccountID string `json:"serviceAccountID" tf:"service_account_id"`
-	ValidAfter       string `json:"validAfter" tf:"valid_after"`
-	ValidBefore      string `json:"validBefore" tf:"valid_before"`
+	// +optional
+	ValidAfter string `json:"validAfter,omitempty" tf:"valid_after,omitempty"`
+	// +optional
+	ValidBefore string `json:"validBefore,omitempty" tf:"valid_before,omitempty"`
 }
 
 type ServiceAccountKeyStatus struct {

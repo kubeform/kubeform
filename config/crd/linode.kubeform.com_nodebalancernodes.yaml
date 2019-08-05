@@ -426,7 +426,6 @@ spec:
           - label
           - nodebalancerID
           - providerRef
-          - status
           type: object
         status:
           properties:
@@ -466,7 +465,6 @@ spec:
               - label
               - nodebalancerID
               - providerRef
-              - status
               type: object
             state:
               properties:

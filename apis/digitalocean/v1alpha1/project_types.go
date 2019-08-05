@@ -21,20 +21,24 @@ type Project struct {
 type ProjectSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CreatedAt string `json:"createdAt" tf:"created_at"`
+	// +optional
+	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	Environment string `json:"environment,omitempty" tf:"environment,omitempty"`
 	Name        string `json:"name" tf:"name"`
-	OwnerID     int    `json:"ownerID" tf:"owner_id"`
-	OwnerUUID   string `json:"ownerUUID" tf:"owner_uuid"`
+	// +optional
+	OwnerID int `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
+	// +optional
+	OwnerUUID string `json:"ownerUUID,omitempty" tf:"owner_uuid,omitempty"`
 	// +optional
 	Purpose string `json:"purpose,omitempty" tf:"purpose,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Resources []string `json:"resources,omitempty" tf:"resources,omitempty"`
-	UpdatedAt string   `json:"updatedAt" tf:"updated_at"`
+	// +optional
+	UpdatedAt string `json:"updatedAt,omitempty" tf:"updated_at,omitempty"`
 }
 
 type ProjectStatus struct {

@@ -21,17 +21,23 @@ type EbsSnapshot struct {
 type EbsSnapshotSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	DataEncryptionKeyID string `json:"dataEncryptionKeyID" tf:"data_encryption_key_id"`
+	// +optional
+	DataEncryptionKeyID string `json:"dataEncryptionKeyID,omitempty" tf:"data_encryption_key_id,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	Encrypted   bool   `json:"encrypted" tf:"encrypted"`
-	KmsKeyID    string `json:"kmsKeyID" tf:"kms_key_id"`
-	OwnerAlias  string `json:"ownerAlias" tf:"owner_alias"`
-	OwnerID     string `json:"ownerID" tf:"owner_id"`
 	// +optional
-	Tags       map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	VolumeID   string            `json:"volumeID" tf:"volume_id"`
-	VolumeSize int               `json:"volumeSize" tf:"volume_size"`
+	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
+	// +optional
+	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+	// +optional
+	OwnerAlias string `json:"ownerAlias,omitempty" tf:"owner_alias,omitempty"`
+	// +optional
+	OwnerID string `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
+	// +optional
+	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VolumeID string            `json:"volumeID" tf:"volume_id"`
+	// +optional
+	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 }
 
 type EbsSnapshotStatus struct {

@@ -21,14 +21,18 @@ type CodecommitRepository struct {
 type CodecommitRepositorySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn          string `json:"arn" tf:"arn"`
-	CloneURLHTTP string `json:"cloneURLHTTP" tf:"clone_url_http"`
-	CloneURLSSH  string `json:"cloneURLSSH" tf:"clone_url_ssh"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	CloneURLHTTP string `json:"cloneURLHTTP,omitempty" tf:"clone_url_http,omitempty"`
+	// +optional
+	CloneURLSSH string `json:"cloneURLSSH,omitempty" tf:"clone_url_ssh,omitempty"`
 	// +optional
 	DefaultBranch string `json:"defaultBranch,omitempty" tf:"default_branch,omitempty"`
 	// +optional
-	Description    string `json:"description,omitempty" tf:"description,omitempty"`
-	RepositoryID   string `json:"repositoryID" tf:"repository_id"`
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	RepositoryID   string `json:"repositoryID,omitempty" tf:"repository_id,omitempty"`
 	RepositoryName string `json:"repositoryName" tf:"repository_name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

@@ -26,14 +26,16 @@ type DatasyncLocationNfsSpecOnPremConfig struct {
 type DatasyncLocationNfsSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	OnPremConfig   []DatasyncLocationNfsSpecOnPremConfig `json:"onPremConfig" tf:"on_prem_config"`
 	ServerHostname string                                `json:"serverHostname" tf:"server_hostname"`
 	Subdirectory   string                                `json:"subdirectory" tf:"subdirectory"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Uri  string            `json:"uri" tf:"uri"`
+	// +optional
+	Uri string `json:"uri,omitempty" tf:"uri,omitempty"`
 }
 
 type DatasyncLocationNfsStatus struct {

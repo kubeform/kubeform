@@ -453,20 +453,9 @@ spec:
             writer:
               type: boolean
           required:
-          - arn
           - clusterIdentifier
-          - dbSubnetGroupName
-          - dbiResourceID
-          - endpoint
-          - engineVersion
           - instanceClass
-          - kmsKeyID
-          - port
-          - preferredBackupWindow
           - providerRef
-          - publiclyAccessible
-          - storageEncrypted
-          - writer
           type: object
         status:
           properties:
@@ -533,20 +522,9 @@ spec:
                 writer:
                   type: boolean
               required:
-              - arn
               - clusterIdentifier
-              - dbSubnetGroupName
-              - dbiResourceID
-              - endpoint
-              - engineVersion
               - instanceClass
-              - kmsKeyID
-              - port
-              - preferredBackupWindow
               - providerRef
-              - publiclyAccessible
-              - storageEncrypted
-              - writer
               type: object
             state:
               properties:

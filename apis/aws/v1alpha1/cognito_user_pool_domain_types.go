@@ -21,14 +21,18 @@ type CognitoUserPoolDomain struct {
 type CognitoUserPoolDomainSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	AwsAccountID string `json:"awsAccountID" tf:"aws_account_id"`
 	// +optional
-	CertificateArn            string `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
-	CloudfrontDistributionArn string `json:"cloudfrontDistributionArn" tf:"cloudfront_distribution_arn"`
+	AwsAccountID string `json:"awsAccountID,omitempty" tf:"aws_account_id,omitempty"`
+	// +optional
+	CertificateArn string `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
+	// +optional
+	CloudfrontDistributionArn string `json:"cloudfrontDistributionArn,omitempty" tf:"cloudfront_distribution_arn,omitempty"`
 	Domain                    string `json:"domain" tf:"domain"`
-	S3Bucket                  string `json:"s3Bucket" tf:"s3_bucket"`
-	UserPoolID                string `json:"userPoolID" tf:"user_pool_id"`
-	Version                   string `json:"version" tf:"version"`
+	// +optional
+	S3Bucket   string `json:"s3Bucket,omitempty" tf:"s3_bucket,omitempty"`
+	UserPoolID string `json:"userPoolID" tf:"user_pool_id"`
+	// +optional
+	Version string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type CognitoUserPoolDomainStatus struct {

@@ -429,12 +429,9 @@ spec:
               type: string
           required:
           - apiManagementName
-          - expiration
           - name
           - providerRef
           - resourceGroupName
-          - subject
-          - thumbprint
           type: object
         status:
           properties:
@@ -477,12 +474,9 @@ spec:
                   type: string
               required:
               - apiManagementName
-              - expiration
               - name
               - providerRef
               - resourceGroupName
-              - subject
-              - thumbprint
               type: object
             state:
               properties:

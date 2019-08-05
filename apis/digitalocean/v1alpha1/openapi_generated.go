@@ -12449,7 +12449,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_CdnSpec(ref common.ReferenceCall
 						},
 					},
 				},
-				Required: []string{"providerRef", "createdAt", "endpoint", "origin"},
+				Required: []string{"providerRef", "origin"},
 			},
 		},
 		Dependencies: []string{
@@ -12650,7 +12650,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_CertificateSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "notAfter", "sha1Fingerprint", "state"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -12875,7 +12875,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DatabaseClusterSpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "database", "engine", "host", "name", "nodeCount", "password", "port", "region", "size", "uri", "user", "version"},
+				Required: []string{"providerRef", "engine", "name", "nodeCount", "region", "size", "version"},
 			},
 		},
 		Dependencies: []string{
@@ -13059,7 +13059,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DomainSpec(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"providerRef", "name", "urn"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -13333,7 +13333,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSnapshotSpec(ref common.R
 						},
 					},
 				},
-				Required: []string{"providerRef", "createdAt", "dropletID", "minDiskSize", "name", "regions", "size"},
+				Required: []string{"providerRef", "dropletID", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -13549,7 +13549,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_DropletSpec(ref common.Reference
 						},
 					},
 				},
-				Required: []string{"providerRef", "disk", "image", "ipv4Address", "ipv4AddressPrivate", "ipv6Address", "locked", "memory", "name", "priceHourly", "priceMonthly", "region", "size", "status", "urn", "vcpus"},
+				Required: []string{"providerRef", "image", "name", "region", "size"},
 			},
 		},
 		Dependencies: []string{
@@ -13770,7 +13770,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FirewallSpec(ref common.Referenc
 						},
 					},
 				},
-				Required: []string{"providerRef", "createdAt", "name", "pendingChanges", "status"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -14272,7 +14272,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_FloatingIPSpec(ref common.Refere
 						},
 					},
 				},
-				Required: []string{"providerRef", "region", "urn"},
+				Required: []string{"providerRef", "region"},
 			},
 		},
 		Dependencies: []string{
@@ -14510,7 +14510,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesClusterSpec(ref common
 						},
 					},
 				},
-				Required: []string{"providerRef", "clusterSubnet", "createdAt", "endpoint", "ipv4Address", "kubeConfig", "name", "nodePool", "region", "serviceSubnet", "status", "updatedAt", "version"},
+				Required: []string{"providerRef", "name", "nodePool", "region", "version"},
 			},
 		},
 		Dependencies: []string{
@@ -14555,7 +14555,6 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesClusterSpecKubeConfig(
 						},
 					},
 				},
-				Required: []string{"clientCertificate", "clientKey", "clusterCaCertificate", "host", "rawConfig"},
 			},
 		},
 	}
@@ -14617,7 +14616,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesClusterSpecNodePool(re
 						},
 					},
 				},
-				Required: []string{"ID", "name", "nodeCount", "nodes", "size"},
+				Required: []string{"name", "nodeCount", "size"},
 			},
 		},
 		Dependencies: []string{
@@ -14662,7 +14661,6 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesClusterSpecNodePoolNod
 						},
 					},
 				},
-				Required: []string{"createdAt", "ID", "name", "status", "updatedAt"},
 			},
 		},
 	}
@@ -14850,7 +14848,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesNodePoolSpec(ref commo
 						},
 					},
 				},
-				Required: []string{"providerRef", "clusterID", "name", "nodeCount", "nodes", "size"},
+				Required: []string{"providerRef", "clusterID", "name", "nodeCount", "size"},
 			},
 		},
 		Dependencies: []string{
@@ -14895,7 +14893,6 @@ func schema_kubeform_apis_digitalocean_v1alpha1_KubernetesNodePoolSpecNodes(ref 
 						},
 					},
 				},
-				Required: []string{"createdAt", "ID", "name", "status", "updatedAt"},
 			},
 		},
 	}
@@ -15137,7 +15134,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_LoadbalancerSpec(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"providerRef", "forwardingRule", "ip", "name", "region", "status", "urn"},
+				Required: []string{"providerRef", "forwardingRule", "name", "region"},
 			},
 		},
 		Dependencies: []string{
@@ -15473,7 +15470,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_ProjectSpec(ref common.Reference
 						},
 					},
 				},
-				Required: []string{"providerRef", "createdAt", "name", "ownerID", "ownerUUID", "updatedAt"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -15680,7 +15677,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_RecordSpec(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"providerRef", "domain", "fqdn", "name", "type", "value"},
+				Required: []string{"providerRef", "domain", "name", "type", "value"},
 			},
 		},
 		Dependencies: []string{
@@ -15857,7 +15854,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_SpacesBucketSpec(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"providerRef", "bucketDomainName", "name", "urn"},
+				Required: []string{"providerRef", "name"},
 			},
 		},
 		Dependencies: []string{
@@ -16016,7 +16013,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_SshKeySpec(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"providerRef", "fingerprint", "name", "publicKey"},
+				Required: []string{"providerRef", "name", "publicKey"},
 			},
 		},
 		Dependencies: []string{
@@ -16590,7 +16587,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeSnapshotSpec(ref common.Re
 						},
 					},
 				},
-				Required: []string{"providerRef", "createdAt", "minDiskSize", "name", "regions", "size", "volumeID"},
+				Required: []string{"providerRef", "name", "volumeID"},
 			},
 		},
 		Dependencies: []string{
@@ -16715,7 +16712,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_VolumeSpec(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"providerRef", "dropletIDS", "filesystemLabel", "name", "region", "size", "urn"},
+				Required: []string{"providerRef", "name", "region", "size"},
 			},
 		},
 		Dependencies: []string{

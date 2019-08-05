@@ -422,7 +422,6 @@ spec:
           - applicationID
           - fromAddress
           - identity
-          - messagesPerSecond
           - providerRef
           - roleArn
           type: object
@@ -460,7 +459,6 @@ spec:
               - applicationID
               - fromAddress
               - identity
-              - messagesPerSecond
               - providerRef
               - roleArn
               type: object

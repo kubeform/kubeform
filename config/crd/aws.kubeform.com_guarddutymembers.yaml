@@ -425,7 +425,6 @@ spec:
           - detectorID
           - email
           - providerRef
-          - relationshipStatus
           type: object
         status:
           properties:
@@ -464,7 +463,6 @@ spec:
               - detectorID
               - email
               - providerRef
-              - relationshipStatus
               type: object
             state:
               properties:

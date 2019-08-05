@@ -437,12 +437,9 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
           - domainName
-          - ownerID
           - providerRef
           - ruleType
-          - shareStatus
           type: object
         status:
           properties:
@@ -493,12 +490,9 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
               - domainName
-              - ownerID
               - providerRef
               - ruleType
-              - shareStatus
               type: object
             state:
               properties:

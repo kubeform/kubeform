@@ -423,7 +423,6 @@ spec:
             userName:
               type: string
           required:
-          - arn
           - providerRef
           - role
           - serverID
@@ -464,7 +463,6 @@ spec:
                 userName:
                   type: string
               required:
-              - arn
               - providerRef
               - role
               - serverID

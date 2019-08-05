@@ -450,7 +450,6 @@ spec:
               type: string
           required:
           - dnsConfig
-          - fqdn
           - monitorConfig
           - name
           - providerRef
@@ -519,7 +518,6 @@ spec:
                   type: string
               required:
               - dnsConfig
-              - fqdn
               - monitorConfig
               - name
               - providerRef

@@ -408,8 +408,6 @@ spec:
                     type: string
                   sha256:
                     type: string
-                required:
-                - sha256
                 type: object
               maxItems: 1
               type: array
@@ -463,8 +461,6 @@ spec:
                     type: string
                   sha256:
                     type: string
-                required:
-                - sha256
                 type: object
               maxItems: 1
               type: array
@@ -477,8 +473,6 @@ spec:
                     type: string
                   sha256:
                     type: string
-                required:
-                - sha256
                 type: object
               maxItems: 1
               type: array
@@ -493,17 +487,8 @@ spec:
             zone:
               type: string
           required:
-          - creationTimestamp
-          - diskEncryptionKeySha256
-          - labelFingerprint
-          - lastAttachTimestamp
-          - lastDetachTimestamp
           - name
           - providerRef
-          - selfLink
-          - sourceImageID
-          - sourceSnapshotID
-          - users
           type: object
         status:
           properties:
@@ -525,8 +510,6 @@ spec:
                         type: string
                       sha256:
                         type: string
-                    required:
-                    - sha256
                     type: object
                   maxItems: 1
                   type: array
@@ -580,8 +563,6 @@ spec:
                         type: string
                       sha256:
                         type: string
-                    required:
-                    - sha256
                     type: object
                   maxItems: 1
                   type: array
@@ -594,8 +575,6 @@ spec:
                         type: string
                       sha256:
                         type: string
-                    required:
-                    - sha256
                     type: object
                   maxItems: 1
                   type: array
@@ -610,17 +589,8 @@ spec:
                 zone:
                   type: string
               required:
-              - creationTimestamp
-              - diskEncryptionKeySha256
-              - labelFingerprint
-              - lastAttachTimestamp
-              - lastDetachTimestamp
               - name
               - providerRef
-              - selfLink
-              - sourceImageID
-              - sourceSnapshotID
-              - users
               type: object
             state:
               properties:

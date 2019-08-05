@@ -24,30 +24,39 @@ type AppEngineApplicationSpecFeatureSettings struct {
 }
 
 type AppEngineApplicationSpecUrlDispatchRule struct {
-	Domain  string `json:"domain" tf:"domain"`
-	Path    string `json:"path" tf:"path"`
-	Service string `json:"service" tf:"service"`
+	// +optional
+	Domain string `json:"domain,omitempty" tf:"domain,omitempty"`
+	// +optional
+	Path string `json:"path,omitempty" tf:"path,omitempty"`
+	// +optional
+	Service string `json:"service,omitempty" tf:"service,omitempty"`
 }
 
 type AppEngineApplicationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	AuthDomain      string `json:"authDomain,omitempty" tf:"auth_domain,omitempty"`
-	CodeBucket      string `json:"codeBucket" tf:"code_bucket"`
-	DefaultBucket   string `json:"defaultBucket" tf:"default_bucket"`
-	DefaultHostname string `json:"defaultHostname" tf:"default_hostname"`
+	AuthDomain string `json:"authDomain,omitempty" tf:"auth_domain,omitempty"`
+	// +optional
+	CodeBucket string `json:"codeBucket,omitempty" tf:"code_bucket,omitempty"`
+	// +optional
+	DefaultBucket string `json:"defaultBucket,omitempty" tf:"default_bucket,omitempty"`
+	// +optional
+	DefaultHostname string `json:"defaultHostname,omitempty" tf:"default_hostname,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	FeatureSettings []AppEngineApplicationSpecFeatureSettings `json:"featureSettings,omitempty" tf:"feature_settings,omitempty"`
-	GcrDomain       string                                    `json:"gcrDomain" tf:"gcr_domain"`
-	LocationID      string                                    `json:"locationID" tf:"location_id"`
-	Name            string                                    `json:"name" tf:"name"`
+	// +optional
+	GcrDomain  string `json:"gcrDomain,omitempty" tf:"gcr_domain,omitempty"`
+	LocationID string `json:"locationID" tf:"location_id"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	ServingStatus   string                                    `json:"servingStatus,omitempty" tf:"serving_status,omitempty"`
-	UrlDispatchRule []AppEngineApplicationSpecUrlDispatchRule `json:"urlDispatchRule" tf:"url_dispatch_rule"`
+	ServingStatus string `json:"servingStatus,omitempty" tf:"serving_status,omitempty"`
+	// +optional
+	UrlDispatchRule []AppEngineApplicationSpecUrlDispatchRule `json:"urlDispatchRule,omitempty" tf:"url_dispatch_rule,omitempty"`
 }
 
 type AppEngineApplicationStatus struct {

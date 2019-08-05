@@ -417,10 +417,7 @@ spec:
                   type: string
               type: object
           required:
-          - createTime
           - displayName
-          - lifecycleState
-          - name
           - parent
           - providerRef
           type: object
@@ -453,10 +450,7 @@ spec:
                       type: string
                   type: object
               required:
-              - createTime
               - displayName
-              - lifecycleState
-              - name
               - parent
               - providerRef
               type: object

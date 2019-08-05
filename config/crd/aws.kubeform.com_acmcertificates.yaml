@@ -416,11 +416,6 @@ spec:
                     type: string
                   resourceRecordValue:
                     type: string
-                required:
-                - domainName
-                - resourceRecordName
-                - resourceRecordType
-                - resourceRecordValue
                 type: object
               type: array
             providerRef:
@@ -456,10 +451,7 @@ spec:
             validationMethod:
               type: string
           required:
-          - arn
-          - domainValidationOptions
           - providerRef
-          - validationEmails
           type: object
         status:
           properties:
@@ -489,11 +481,6 @@ spec:
                         type: string
                       resourceRecordValue:
                         type: string
-                    required:
-                    - domainName
-                    - resourceRecordName
-                    - resourceRecordType
-                    - resourceRecordValue
                     type: object
                   type: array
                 providerRef:
@@ -529,10 +516,7 @@ spec:
                 validationMethod:
                   type: string
               required:
-              - arn
-              - domainValidationOptions
               - providerRef
-              - validationEmails
               type: object
             state:
               properties:

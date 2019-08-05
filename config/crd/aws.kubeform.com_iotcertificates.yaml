@@ -414,7 +414,6 @@ spec:
               type: object
           required:
           - active
-          - arn
           - csr
           - providerRef
           type: object
@@ -444,7 +443,6 @@ spec:
                   type: object
               required:
               - active
-              - arn
               - csr
               - providerRef
               type: object

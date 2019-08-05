@@ -422,9 +422,7 @@ spec:
             serverProperties:
               type: string
           required:
-          - arn
           - kafkaVersions
-          - latestRevision
           - name
           - providerRef
           - serverProperties
@@ -463,9 +461,7 @@ spec:
                 serverProperties:
                   type: string
               required:
-              - arn
               - kafkaVersions
-              - latestRevision
               - name
               - providerRef
               - serverProperties

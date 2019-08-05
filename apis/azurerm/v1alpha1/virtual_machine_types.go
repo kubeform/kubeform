@@ -27,8 +27,9 @@ type VirtualMachineSpecIdentity struct {
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	IdentityIDS []string `json:"identityIDS,omitempty" tf:"identity_ids,omitempty"`
-	PrincipalID string   `json:"principalID" tf:"principal_id"`
-	Type        string   `json:"type" tf:"type"`
+	// +optional
+	PrincipalID string `json:"principalID,omitempty" tf:"principal_id,omitempty"`
+	Type        string `json:"type" tf:"type"`
 }
 
 type VirtualMachineSpecOsProfile struct {

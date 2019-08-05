@@ -426,7 +426,6 @@ spec:
               minItems: 1
               type: array
           required:
-          - arn
           - name
           - providerRef
           - resourceQuery
@@ -469,7 +468,6 @@ spec:
                   minItems: 1
                   type: array
               required:
-              - arn
               - name
               - providerRef
               - resourceQuery

@@ -36,8 +36,9 @@ type RouteTableSpec struct {
 	ResourceGroupName          string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Route []RouteTableSpecRoute `json:"route,omitempty" tf:"route,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Subnets []string `json:"subnets" tf:"subnets"`
+	Subnets []string `json:"subnets,omitempty" tf:"subnets,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

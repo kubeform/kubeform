@@ -451,7 +451,6 @@ spec:
               maxItems: 1
               type: array
           required:
-          - deploymentConfigID
           - deploymentConfigName
           - providerRef
           type: object
@@ -518,7 +517,6 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - deploymentConfigID
               - deploymentConfigName
               - providerRef
               type: object

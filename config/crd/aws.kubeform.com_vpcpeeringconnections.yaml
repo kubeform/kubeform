@@ -449,7 +449,6 @@ spec:
             vpcID:
               type: string
           required:
-          - acceptStatus
           - peerVpcID
           - providerRef
           - vpcID
@@ -515,7 +514,6 @@ spec:
                 vpcID:
                   type: string
               required:
-              - acceptStatus
               - peerVpcID
               - providerRef
               - vpcID

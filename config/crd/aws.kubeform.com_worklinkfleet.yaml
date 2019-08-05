@@ -460,10 +460,6 @@ spec:
                   type: string
               type: object
           required:
-          - arn
-          - companyCode
-          - createdTime
-          - lastUpdatedTime
           - name
           - providerRef
           type: object
@@ -539,10 +535,6 @@ spec:
                       type: string
                   type: object
               required:
-              - arn
-              - companyCode
-              - createdTime
-              - lastUpdatedTime
               - name
               - providerRef
               type: object

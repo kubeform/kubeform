@@ -30,8 +30,9 @@ type StorageNotificationSpec struct {
 	// +optional
 	ObjectNamePrefix string `json:"objectNamePrefix,omitempty" tf:"object_name_prefix,omitempty"`
 	PayloadFormat    string `json:"payloadFormat" tf:"payload_format"`
-	SelfLink         string `json:"selfLink" tf:"self_link"`
-	Topic            string `json:"topic" tf:"topic"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
+	Topic    string `json:"topic" tf:"topic"`
 }
 
 type StorageNotificationStatus struct {

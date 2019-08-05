@@ -432,15 +432,9 @@ spec:
             sha1Fingerprint:
               type: string
           required:
-          - cert
-          - certSerialNumber
           - commonName
-          - createTime
-          - expirationTime
           - instance
           - providerRef
-          - serverCaCert
-          - sha1Fingerprint
           type: object
         status:
           properties:
@@ -486,15 +480,9 @@ spec:
                 sha1Fingerprint:
                   type: string
               required:
-              - cert
-              - certSerialNumber
               - commonName
-              - createTime
-              - expirationTime
               - instance
               - providerRef
-              - serverCaCert
-              - sha1Fingerprint
               type: object
             state:
               properties:

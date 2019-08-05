@@ -70,8 +70,9 @@ type ComputeHealthCheckSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	CheckIntervalSec  int    `json:"checkIntervalSec,omitempty" tf:"check_interval_sec,omitempty"`
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
+	CheckIntervalSec int `json:"checkIntervalSec,omitempty" tf:"check_interval_sec,omitempty"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -84,8 +85,9 @@ type ComputeHealthCheckSpec struct {
 	HttpsHealthCheck []ComputeHealthCheckSpecHttpsHealthCheck `json:"httpsHealthCheck,omitempty" tf:"https_health_check,omitempty"`
 	Name             string                                   `json:"name" tf:"name"`
 	// +optional
-	Project  string `json:"project,omitempty" tf:"project,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SslHealthCheck []ComputeHealthCheckSpecSslHealthCheck `json:"sslHealthCheck,omitempty" tf:"ssl_health_check,omitempty"`
@@ -93,8 +95,9 @@ type ComputeHealthCheckSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	TcpHealthCheck []ComputeHealthCheckSpecTcpHealthCheck `json:"tcpHealthCheck,omitempty" tf:"tcp_health_check,omitempty"`
 	// +optional
-	TimeoutSec int    `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
-	Type       string `json:"type" tf:"type"`
+	TimeoutSec int `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 	// +optional
 	UnhealthyThreshold int `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
 }

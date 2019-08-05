@@ -436,7 +436,6 @@ spec:
             version:
               type: integer
           required:
-          - arn
           - fixedRate
           - host
           - httpMethod
@@ -497,7 +496,6 @@ spec:
                 version:
                   type: integer
               required:
-              - arn
               - fixedRate
               - host
               - httpMethod

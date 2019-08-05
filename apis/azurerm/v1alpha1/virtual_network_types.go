@@ -25,8 +25,9 @@ type VirtualNetworkSpecDdosProtectionPlan struct {
 
 type VirtualNetworkSpecSubnet struct {
 	AddressPrefix string `json:"addressPrefix" tf:"address_prefix"`
-	ID            string `json:"ID" tf:"id"`
-	Name          string `json:"name" tf:"name"`
+	// +optional
+	ID   string `json:"ID,omitempty" tf:"id,omitempty"`
+	Name string `json:"name" tf:"name"`
 	// +optional
 	SecurityGroup string `json:"securityGroup,omitempty" tf:"security_group,omitempty"`
 }

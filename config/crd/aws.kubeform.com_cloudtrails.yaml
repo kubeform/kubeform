@@ -464,8 +464,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
-          - homeRegion
           - name
           - providerRef
           - s3BucketName
@@ -546,8 +544,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
-              - homeRegion
               - name
               - providerRef
               - s3BucketName

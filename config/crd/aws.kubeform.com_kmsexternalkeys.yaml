@@ -438,10 +438,6 @@ spec:
             validTo:
               type: string
           required:
-          - arn
-          - expirationModel
-          - keyState
-          - keyUsage
           - providerRef
           type: object
         status:
@@ -494,10 +490,6 @@ spec:
                 validTo:
                   type: string
               required:
-              - arn
-              - expirationModel
-              - keyState
-              - keyUsage
               - providerRef
               type: object
             state:

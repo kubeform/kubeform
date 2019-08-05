@@ -468,22 +468,10 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - content
-          - createdDate
-          - defaultVersion
-          - description
           - documentType
-          - hash
-          - hashType
-          - latestVersion
           - name
-          - owner
-          - parameter
-          - platformTypes
           - providerRef
-          - schemaVersion
-          - status
           type: object
         status:
           properties:
@@ -565,22 +553,10 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - content
-              - createdDate
-              - defaultVersion
-              - description
               - documentType
-              - hash
-              - hashType
-              - latestVersion
               - name
-              - owner
-              - parameter
-              - platformTypes
               - providerRef
-              - schemaVersion
-              - status
               type: object
             state:
               properties:

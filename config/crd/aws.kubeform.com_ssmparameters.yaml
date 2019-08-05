@@ -441,7 +441,6 @@ spec:
           - name
           - providerRef
           - type
-          - version
           type: object
         status:
           properties:
@@ -496,7 +495,6 @@ spec:
               - name
               - providerRef
               - type
-              - version
               type: object
             state:
               properties:

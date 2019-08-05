@@ -26,8 +26,9 @@ type SnsTopicSpec struct {
 	// +optional
 	ApplicationSuccessFeedbackRoleArn string `json:"applicationSuccessFeedbackRoleArn,omitempty" tf:"application_success_feedback_role_arn,omitempty"`
 	// +optional
-	ApplicationSuccessFeedbackSampleRate int    `json:"applicationSuccessFeedbackSampleRate,omitempty" tf:"application_success_feedback_sample_rate,omitempty"`
-	Arn                                  string `json:"arn" tf:"arn"`
+	ApplicationSuccessFeedbackSampleRate int `json:"applicationSuccessFeedbackSampleRate,omitempty" tf:"application_success_feedback_sample_rate,omitempty"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	DeliveryPolicy string `json:"deliveryPolicy,omitempty" tf:"delivery_policy,omitempty"`
 	// +optional

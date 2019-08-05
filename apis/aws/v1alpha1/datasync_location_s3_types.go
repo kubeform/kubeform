@@ -25,14 +25,16 @@ type DatasyncLocationS3SpecS3Config struct {
 type DatasyncLocationS3Spec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn         string `json:"arn" tf:"arn"`
+	// +optional
+	Arn         string `json:"arn,omitempty" tf:"arn,omitempty"`
 	S3BucketArn string `json:"s3BucketArn" tf:"s3_bucket_arn"`
 	// +kubebuilder:validation:MaxItems=1
 	S3Config     []DatasyncLocationS3SpecS3Config `json:"s3Config" tf:"s3_config"`
 	Subdirectory string                           `json:"subdirectory" tf:"subdirectory"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Uri  string            `json:"uri" tf:"uri"`
+	// +optional
+	Uri string `json:"uri,omitempty" tf:"uri,omitempty"`
 }
 
 type DatasyncLocationS3Status struct {

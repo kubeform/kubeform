@@ -28,8 +28,9 @@ type ComputeGlobalForwardingRuleSpec struct {
 	// +optional
 	IpProtocol string `json:"ipProtocol,omitempty" tf:"ip_protocol,omitempty"`
 	// +optional
-	IpVersion        string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
-	LabelFingerprint string `json:"labelFingerprint" tf:"label_fingerprint"`
+	IpVersion string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
+	// +optional
+	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
 	// +optional
 	// Deprecated
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
@@ -37,8 +38,9 @@ type ComputeGlobalForwardingRuleSpec struct {
 	// +optional
 	PortRange string `json:"portRange,omitempty" tf:"port_range,omitempty"`
 	// +optional
-	Project  string `json:"project,omitempty" tf:"project,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	Target   string `json:"target" tf:"target"`
 }
 

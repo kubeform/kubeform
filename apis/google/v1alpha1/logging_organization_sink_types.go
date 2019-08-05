@@ -28,7 +28,8 @@ type LoggingOrganizationSinkSpec struct {
 	IncludeChildren bool   `json:"includeChildren,omitempty" tf:"include_children,omitempty"`
 	Name            string `json:"name" tf:"name"`
 	OrgID           string `json:"orgID" tf:"org_id"`
-	WriterIdentity  string `json:"writerIdentity" tf:"writer_identity"`
+	// +optional
+	WriterIdentity string `json:"writerIdentity,omitempty" tf:"writer_identity,omitempty"`
 }
 
 type LoggingOrganizationSinkStatus struct {

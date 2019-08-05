@@ -418,7 +418,6 @@ spec:
               type: string
           required:
           - automationAccountName
-          - configurationName
           - contentEmbedded
           - name
           - providerRef
@@ -454,7 +453,6 @@ spec:
                   type: string
               required:
               - automationAccountName
-              - configurationName
               - contentEmbedded
               - name
               - providerRef

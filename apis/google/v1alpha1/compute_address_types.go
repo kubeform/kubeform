@@ -24,12 +24,14 @@ type ComputeAddressSpec struct {
 	// +optional
 	Address string `json:"address,omitempty" tf:"address,omitempty"`
 	// +optional
-	AddressType       string `json:"addressType,omitempty" tf:"address_type,omitempty"`
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
+	AddressType string `json:"addressType,omitempty" tf:"address_type,omitempty"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
 	// Deprecated
-	LabelFingerprint string `json:"labelFingerprint" tf:"label_fingerprint"`
+	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
 	// +optional
 	// Deprecated
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
@@ -39,11 +41,13 @@ type ComputeAddressSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region   string `json:"region,omitempty" tf:"region,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
-	Subnetwork string   `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
-	Users      []string `json:"users" tf:"users"`
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
+	// +optional
+	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
+	// +optional
+	Users []string `json:"users,omitempty" tf:"users,omitempty"`
 }
 
 type ComputeAddressStatus struct {

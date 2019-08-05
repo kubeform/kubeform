@@ -21,7 +21,8 @@ type KmsKey struct {
 type KmsKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	DeletionWindowInDays int `json:"deletionWindowInDays,omitempty" tf:"deletion_window_in_days,omitempty"`
 	// +optional
@@ -29,8 +30,9 @@ type KmsKeySpec struct {
 	// +optional
 	EnableKeyRotation bool `json:"enableKeyRotation,omitempty" tf:"enable_key_rotation,omitempty"`
 	// +optional
-	IsEnabled bool   `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
-	KeyID     string `json:"keyID" tf:"key_id"`
+	IsEnabled bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
+	// +optional
+	KeyID string `json:"keyID,omitempty" tf:"key_id,omitempty"`
 	// +optional
 	KeyUsage string `json:"keyUsage,omitempty" tf:"key_usage,omitempty"`
 	// +optional

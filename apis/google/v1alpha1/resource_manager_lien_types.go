@@ -21,8 +21,10 @@ type ResourceManagerLien struct {
 type ResourceManagerLienSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CreateTime   string   `json:"createTime" tf:"create_time"`
-	Name         string   `json:"name" tf:"name"`
+	// +optional
+	CreateTime string `json:"createTime,omitempty" tf:"create_time,omitempty"`
+	// +optional
+	Name         string   `json:"name,omitempty" tf:"name,omitempty"`
 	Origin       string   `json:"origin" tf:"origin"`
 	Parent       string   `json:"parent" tf:"parent"`
 	Reason       string   `json:"reason" tf:"reason"`

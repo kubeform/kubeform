@@ -415,7 +415,6 @@ spec:
           required:
           - name
           - providerRef
-          - urn
           type: object
         status:
           properties:
@@ -444,7 +443,6 @@ spec:
               required:
               - name
               - providerRef
-              - urn
               type: object
             state:
               properties:

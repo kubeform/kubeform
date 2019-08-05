@@ -421,11 +421,8 @@ spec:
             version:
               type: integer
           required:
-          - arn
-          - defaultClientID
           - name
           - providerRef
-          - version
           type: object
         status:
           properties:
@@ -460,11 +457,8 @@ spec:
                 version:
                   type: integer
               required:
-              - arn
-              - defaultClientID
               - name
               - providerRef
-              - version
               type: object
             state:
               properties:

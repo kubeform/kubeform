@@ -425,11 +425,6 @@ spec:
             publicKey:
               type: string
           required:
-          - arn
-          - encryptedFingerprint
-          - encryptedPrivateKey
-          - fingerprint
-          - privateKey
           - providerRef
           type: object
         status:
@@ -469,11 +464,6 @@ spec:
                 publicKey:
                   type: string
               required:
-              - arn
-              - encryptedFingerprint
-              - encryptedPrivateKey
-              - fingerprint
-              - privateKey
               - providerRef
               type: object
             state:

@@ -434,7 +434,6 @@ spec:
           - identifier
           - name
           - providerRef
-          - scopeIdentifiers
           - userPoolID
           type: object
         status:
@@ -483,7 +482,6 @@ spec:
               - identifier
               - name
               - providerRef
-              - scopeIdentifiers
               - userPoolID
               type: object
             state:

@@ -21,19 +21,22 @@ type ComputeDisk struct {
 type ComputeDiskSpecDiskEncryptionKey struct {
 	// +optional
 	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
-	Sha256 string `json:"sha256" tf:"sha256"`
+	// +optional
+	Sha256 string `json:"sha256,omitempty" tf:"sha256,omitempty"`
 }
 
 type ComputeDiskSpecSourceImageEncryptionKey struct {
 	// +optional
 	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
-	Sha256 string `json:"sha256" tf:"sha256"`
+	// +optional
+	Sha256 string `json:"sha256,omitempty" tf:"sha256,omitempty"`
 }
 
 type ComputeDiskSpecSourceSnapshotEncryptionKey struct {
 	// +optional
 	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
-	Sha256 string `json:"sha256" tf:"sha256"`
+	// +optional
+	Sha256 string `json:"sha256,omitempty" tf:"sha256,omitempty"`
 }
 
 type ComputeDiskSpec struct {
@@ -41,7 +44,8 @@ type ComputeDiskSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -49,19 +53,24 @@ type ComputeDiskSpec struct {
 	DiskEncryptionKey []ComputeDiskSpecDiskEncryptionKey `json:"diskEncryptionKey,omitempty" tf:"disk_encryption_key,omitempty"`
 	// +optional
 	DiskEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"disk_encryption_key_raw,omitempty"`
+	// +optional
 	// Deprecated
-	DiskEncryptionKeySha256 string `json:"diskEncryptionKeySha256" tf:"disk_encryption_key_sha256"`
+	DiskEncryptionKeySha256 string `json:"diskEncryptionKeySha256,omitempty" tf:"disk_encryption_key_sha256,omitempty"`
 	// +optional
-	Image            string `json:"image,omitempty" tf:"image,omitempty"`
-	LabelFingerprint string `json:"labelFingerprint" tf:"label_fingerprint"`
+	Image string `json:"image,omitempty" tf:"image,omitempty"`
 	// +optional
-	Labels              map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	LastAttachTimestamp string            `json:"lastAttachTimestamp" tf:"last_attach_timestamp"`
-	LastDetachTimestamp string            `json:"lastDetachTimestamp" tf:"last_detach_timestamp"`
-	Name                string            `json:"name" tf:"name"`
+	LabelFingerprint string `json:"labelFingerprint,omitempty" tf:"label_fingerprint,omitempty"`
 	// +optional
-	Project  string `json:"project,omitempty" tf:"project,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
+	LastAttachTimestamp string `json:"lastAttachTimestamp,omitempty" tf:"last_attach_timestamp,omitempty"`
+	// +optional
+	LastDetachTimestamp string `json:"lastDetachTimestamp,omitempty" tf:"last_detach_timestamp,omitempty"`
+	Name                string `json:"name" tf:"name"`
+	// +optional
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	Size int `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
@@ -69,14 +78,17 @@ type ComputeDiskSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SourceImageEncryptionKey []ComputeDiskSpecSourceImageEncryptionKey `json:"sourceImageEncryptionKey,omitempty" tf:"source_image_encryption_key,omitempty"`
-	SourceImageID            string                                    `json:"sourceImageID" tf:"source_image_id"`
+	// +optional
+	SourceImageID string `json:"sourceImageID,omitempty" tf:"source_image_id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SourceSnapshotEncryptionKey []ComputeDiskSpecSourceSnapshotEncryptionKey `json:"sourceSnapshotEncryptionKey,omitempty" tf:"source_snapshot_encryption_key,omitempty"`
-	SourceSnapshotID            string                                       `json:"sourceSnapshotID" tf:"source_snapshot_id"`
 	// +optional
-	Type  string   `json:"type,omitempty" tf:"type,omitempty"`
-	Users []string `json:"users" tf:"users"`
+	SourceSnapshotID string `json:"sourceSnapshotID,omitempty" tf:"source_snapshot_id,omitempty"`
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
+	// +optional
+	Users []string `json:"users,omitempty" tf:"users,omitempty"`
 	// +optional
 	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }

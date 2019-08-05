@@ -19,31 +19,45 @@ type EndpointsService struct {
 }
 
 type EndpointsServiceSpecApisMethods struct {
-	Name         string `json:"name" tf:"name"`
-	RequestType  string `json:"requestType" tf:"request_type"`
-	ResponseType string `json:"responseType" tf:"response_type"`
-	Syntax       string `json:"syntax" tf:"syntax"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	RequestType string `json:"requestType,omitempty" tf:"request_type,omitempty"`
+	// +optional
+	ResponseType string `json:"responseType,omitempty" tf:"response_type,omitempty"`
+	// +optional
+	Syntax string `json:"syntax,omitempty" tf:"syntax,omitempty"`
 }
 
 type EndpointsServiceSpecApis struct {
-	Methods []EndpointsServiceSpecApisMethods `json:"methods" tf:"methods"`
-	Name    string                            `json:"name" tf:"name"`
-	Syntax  string                            `json:"syntax" tf:"syntax"`
-	Version string                            `json:"version" tf:"version"`
+	// +optional
+	Methods []EndpointsServiceSpecApisMethods `json:"methods,omitempty" tf:"methods,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	Syntax string `json:"syntax,omitempty" tf:"syntax,omitempty"`
+	// +optional
+	Version string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type EndpointsServiceSpecEndpoints struct {
-	Address string `json:"address" tf:"address"`
-	Name    string `json:"name" tf:"name"`
+	// +optional
+	Address string `json:"address,omitempty" tf:"address,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type EndpointsServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Apis       []EndpointsServiceSpecApis      `json:"apis" tf:"apis"`
-	ConfigID   string                          `json:"configID" tf:"config_id"`
-	DnsAddress string                          `json:"dnsAddress" tf:"dns_address"`
-	Endpoints  []EndpointsServiceSpecEndpoints `json:"endpoints" tf:"endpoints"`
+	// +optional
+	Apis []EndpointsServiceSpecApis `json:"apis,omitempty" tf:"apis,omitempty"`
+	// +optional
+	ConfigID string `json:"configID,omitempty" tf:"config_id,omitempty"`
+	// +optional
+	DnsAddress string `json:"dnsAddress,omitempty" tf:"dns_address,omitempty"`
+	// +optional
+	Endpoints []EndpointsServiceSpecEndpoints `json:"endpoints,omitempty" tf:"endpoints,omitempty"`
 	// +optional
 	GrpcConfig string `json:"grpcConfig,omitempty" tf:"grpc_config,omitempty"`
 	// +optional

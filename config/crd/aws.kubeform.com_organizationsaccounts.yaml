@@ -429,13 +429,9 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - email
-          - joinedMethod
-          - joinedTimestamp
           - name
           - providerRef
-          - status
           type: object
         status:
           properties:
@@ -478,13 +474,9 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - email
-              - joinedMethod
-              - joinedTimestamp
               - name
               - providerRef
-              - status
               type: object
             state:
               properties:

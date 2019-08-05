@@ -54,9 +54,10 @@ type CloudwatchMetricAlarmSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	AlarmActions []string `json:"alarmActions,omitempty" tf:"alarm_actions,omitempty"`
 	// +optional
-	AlarmDescription   string `json:"alarmDescription,omitempty" tf:"alarm_description,omitempty"`
-	AlarmName          string `json:"alarmName" tf:"alarm_name"`
-	Arn                string `json:"arn" tf:"arn"`
+	AlarmDescription string `json:"alarmDescription,omitempty" tf:"alarm_description,omitempty"`
+	AlarmName        string `json:"alarmName" tf:"alarm_name"`
+	// +optional
+	Arn                string `json:"arn,omitempty" tf:"arn,omitempty"`
 	ComparisonOperator string `json:"comparisonOperator" tf:"comparison_operator"`
 	// +optional
 	DatapointsToAlarm int `json:"datapointsToAlarm,omitempty" tf:"datapoints_to_alarm,omitempty"`

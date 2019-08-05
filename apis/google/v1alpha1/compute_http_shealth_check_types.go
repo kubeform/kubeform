@@ -22,8 +22,9 @@ type ComputeHTTPSHealthCheckSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	CheckIntervalSec  int    `json:"checkIntervalSec,omitempty" tf:"check_interval_sec,omitempty"`
-	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
+	CheckIntervalSec int `json:"checkIntervalSec,omitempty" tf:"check_interval_sec,omitempty"`
+	// +optional
+	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -37,7 +38,8 @@ type ComputeHTTPSHealthCheckSpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	RequestPath string `json:"requestPath,omitempty" tf:"request_path,omitempty"`
-	SelfLink    string `json:"selfLink" tf:"self_link"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	TimeoutSec int `json:"timeoutSec,omitempty" tf:"timeout_sec,omitempty"`
 	// +optional

@@ -429,12 +429,10 @@ spec:
             uri:
               type: string
           required:
-          - arn
           - providerRef
           - s3BucketArn
           - s3Config
           - subdirectory
-          - uri
           type: object
         status:
           properties:
@@ -477,12 +475,10 @@ spec:
                 uri:
                   type: string
               required:
-              - arn
               - providerRef
               - s3BucketArn
               - s3Config
               - subdirectory
-              - uri
               type: object
             state:
               properties:

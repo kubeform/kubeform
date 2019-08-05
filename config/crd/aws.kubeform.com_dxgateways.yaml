@@ -415,7 +415,6 @@ spec:
           required:
           - amazonSideAsn
           - name
-          - ownerAccountID
           - providerRef
           type: object
         status:
@@ -445,7 +444,6 @@ spec:
               required:
               - amazonSideAsn
               - name
-              - ownerAccountID
               - providerRef
               type: object
             state:

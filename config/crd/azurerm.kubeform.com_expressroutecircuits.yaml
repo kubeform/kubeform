@@ -456,7 +456,6 @@ spec:
           - providerRef
           - resourceGroupName
           - serviceProviderName
-          - serviceProviderProvisioningState
           - sku
           type: object
         status:
@@ -527,7 +526,6 @@ spec:
               - providerRef
               - resourceGroupName
               - serviceProviderName
-              - serviceProviderProvisioningState
               - sku
               type: object
             state:

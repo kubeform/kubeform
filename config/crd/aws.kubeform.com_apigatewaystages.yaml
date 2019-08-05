@@ -451,8 +451,6 @@ spec:
               type: boolean
           required:
           - deploymentID
-          - executionArn
-          - invokeURL
           - providerRef
           - restAPIID
           - stageName
@@ -520,8 +518,6 @@ spec:
                   type: boolean
               required:
               - deploymentID
-              - executionArn
-              - invokeURL
               - providerRef
               - restAPIID
               - stageName

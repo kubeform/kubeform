@@ -24,8 +24,9 @@ type KubernetesClusterSpecAddonProfileAciConnectorLinux struct {
 }
 
 type KubernetesClusterSpecAddonProfileHttpApplicationRouting struct {
-	Enabled                        bool   `json:"enabled" tf:"enabled"`
-	HttpApplicationRoutingZoneName string `json:"httpApplicationRoutingZoneName" tf:"http_application_routing_zone_name"`
+	Enabled bool `json:"enabled" tf:"enabled"`
+	// +optional
+	HttpApplicationRoutingZoneName string `json:"httpApplicationRoutingZoneName,omitempty" tf:"http_application_routing_zone_name,omitempty"`
 }
 
 type KubernetesClusterSpecAddonProfileOmsAgent struct {
@@ -48,10 +49,12 @@ type KubernetesClusterSpecAddonProfile struct {
 type KubernetesClusterSpecAgentPoolProfile struct {
 	// +optional
 	Count int `json:"count,omitempty" tf:"count,omitempty"`
+	// +optional
 	// Deprecated
-	DnsPrefix string `json:"dnsPrefix" tf:"dns_prefix"`
+	DnsPrefix string `json:"dnsPrefix,omitempty" tf:"dns_prefix,omitempty"`
+	// +optional
 	// Deprecated
-	Fqdn string `json:"fqdn" tf:"fqdn"`
+	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 	// +optional
 	MaxPods int    `json:"maxPods,omitempty" tf:"max_pods,omitempty"`
 	Name    string `json:"name" tf:"name"`
@@ -67,21 +70,33 @@ type KubernetesClusterSpecAgentPoolProfile struct {
 }
 
 type KubernetesClusterSpecKubeAdminConfig struct {
-	ClientCertificate    string `json:"clientCertificate" tf:"client_certificate"`
-	ClientKey            string `json:"-" sensitive:"true" tf:"client_key"`
-	ClusterCaCertificate string `json:"clusterCaCertificate" tf:"cluster_ca_certificate"`
-	Host                 string `json:"host" tf:"host"`
-	Password             string `json:"-" sensitive:"true" tf:"password"`
-	Username             string `json:"username" tf:"username"`
+	// +optional
+	ClientCertificate string `json:"clientCertificate,omitempty" tf:"client_certificate,omitempty"`
+	// +optional
+	ClientKey string `json:"-" sensitive:"true" tf:"client_key,omitempty"`
+	// +optional
+	ClusterCaCertificate string `json:"clusterCaCertificate,omitempty" tf:"cluster_ca_certificate,omitempty"`
+	// +optional
+	Host string `json:"host,omitempty" tf:"host,omitempty"`
+	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
+	// +optional
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type KubernetesClusterSpecKubeConfig struct {
-	ClientCertificate    string `json:"clientCertificate" tf:"client_certificate"`
-	ClientKey            string `json:"-" sensitive:"true" tf:"client_key"`
-	ClusterCaCertificate string `json:"clusterCaCertificate" tf:"cluster_ca_certificate"`
-	Host                 string `json:"host" tf:"host"`
-	Password             string `json:"-" sensitive:"true" tf:"password"`
-	Username             string `json:"username" tf:"username"`
+	// +optional
+	ClientCertificate string `json:"clientCertificate,omitempty" tf:"client_certificate,omitempty"`
+	// +optional
+	ClientKey string `json:"-" sensitive:"true" tf:"client_key,omitempty"`
+	// +optional
+	ClusterCaCertificate string `json:"clusterCaCertificate,omitempty" tf:"cluster_ca_certificate,omitempty"`
+	// +optional
+	Host string `json:"host,omitempty" tf:"host,omitempty"`
+	// +optional
+	Password string `json:"-" sensitive:"true" tf:"password,omitempty"`
+	// +optional
+	Username string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type KubernetesClusterSpecLinuxProfileSshKey struct {
@@ -141,13 +156,18 @@ type KubernetesClusterSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	ApiServerAuthorizedIPRanges []string `json:"apiServerAuthorizedIPRanges,omitempty" tf:"api_server_authorized_ip_ranges,omitempty"`
 	DnsPrefix                   string   `json:"dnsPrefix" tf:"dns_prefix"`
-	Fqdn                        string   `json:"fqdn" tf:"fqdn"`
+	// +optional
+	Fqdn string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	KubeAdminConfig    []KubernetesClusterSpecKubeAdminConfig `json:"kubeAdminConfig" tf:"kube_admin_config"`
-	KubeAdminConfigRaw string                                 `json:"-" sensitive:"true" tf:"kube_admin_config_raw"`
+	KubeAdminConfig []KubernetesClusterSpecKubeAdminConfig `json:"kubeAdminConfig,omitempty" tf:"kube_admin_config,omitempty"`
+	// +optional
+	KubeAdminConfigRaw string `json:"-" sensitive:"true" tf:"kube_admin_config_raw,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	KubeConfig    []KubernetesClusterSpecKubeConfig `json:"kubeConfig" tf:"kube_config"`
-	KubeConfigRaw string                            `json:"-" sensitive:"true" tf:"kube_config_raw"`
+	KubeConfig []KubernetesClusterSpecKubeConfig `json:"kubeConfig,omitempty" tf:"kube_config,omitempty"`
+	// +optional
+	KubeConfigRaw string `json:"-" sensitive:"true" tf:"kube_config_raw,omitempty"`
 	// +optional
 	KubernetesVersion string `json:"kubernetesVersion,omitempty" tf:"kubernetes_version,omitempty"`
 	// +optional
@@ -157,9 +177,10 @@ type KubernetesClusterSpec struct {
 	Name         string                              `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	NetworkProfile    []KubernetesClusterSpecNetworkProfile `json:"networkProfile,omitempty" tf:"network_profile,omitempty"`
-	NodeResourceGroup string                                `json:"nodeResourceGroup" tf:"node_resource_group"`
-	ResourceGroupName string                                `json:"resourceGroupName" tf:"resource_group_name"`
+	NetworkProfile []KubernetesClusterSpecNetworkProfile `json:"networkProfile,omitempty" tf:"network_profile,omitempty"`
+	// +optional
+	NodeResourceGroup string `json:"nodeResourceGroup,omitempty" tf:"node_resource_group,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RoleBasedAccessControl []KubernetesClusterSpecRoleBasedAccessControl `json:"roleBasedAccessControl,omitempty" tf:"role_based_access_control,omitempty"`

@@ -21,10 +21,12 @@ type IamSamlProvider struct {
 type IamSamlProviderSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn                  string `json:"arn" tf:"arn"`
+	// +optional
+	Arn                  string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Name                 string `json:"name" tf:"name"`
 	SamlMetadataDocument string `json:"samlMetadataDocument" tf:"saml_metadata_document"`
-	ValidUntil           string `json:"validUntil" tf:"valid_until"`
+	// +optional
+	ValidUntil string `json:"validUntil,omitempty" tf:"valid_until,omitempty"`
 }
 
 type IamSamlProviderStatus struct {

@@ -153,11 +153,13 @@ type CognitoUserPoolSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AliasAttributes []string `json:"aliasAttributes,omitempty" tf:"alias_attributes,omitempty"`
-	Arn             string   `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AutoVerifiedAttributes []string `json:"autoVerifiedAttributes,omitempty" tf:"auto_verified_attributes,omitempty"`
-	CreationDate           string   `json:"creationDate" tf:"creation_date"`
+	// +optional
+	CreationDate string `json:"creationDate,omitempty" tf:"creation_date,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	DeviceConfiguration []CognitoUserPoolSpecDeviceConfiguration `json:"deviceConfiguration,omitempty" tf:"device_configuration,omitempty"`
@@ -168,11 +170,13 @@ type CognitoUserPoolSpec struct {
 	EmailVerificationMessage string `json:"emailVerificationMessage,omitempty" tf:"email_verification_message,omitempty"`
 	// +optional
 	EmailVerificationSubject string `json:"emailVerificationSubject,omitempty" tf:"email_verification_subject,omitempty"`
-	Endpoint                 string `json:"endpoint" tf:"endpoint"`
+	// +optional
+	Endpoint string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	LambdaConfig     []CognitoUserPoolSpecLambdaConfig `json:"lambdaConfig,omitempty" tf:"lambda_config,omitempty"`
-	LastModifiedDate string                            `json:"lastModifiedDate" tf:"last_modified_date"`
+	LambdaConfig []CognitoUserPoolSpecLambdaConfig `json:"lambdaConfig,omitempty" tf:"lambda_config,omitempty"`
+	// +optional
+	LastModifiedDate string `json:"lastModifiedDate,omitempty" tf:"last_modified_date,omitempty"`
 	// +optional
 	MfaConfiguration string `json:"mfaConfiguration,omitempty" tf:"mfa_configuration,omitempty"`
 	Name             string `json:"name" tf:"name"`

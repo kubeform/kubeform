@@ -71,8 +71,9 @@ type OpsworksInstanceSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	EbsBlockDevice []OpsworksInstanceSpecEbsBlockDevice `json:"ebsBlockDevice,omitempty" tf:"ebs_block_device,omitempty"`
 	// +optional
-	EbsOptimized  bool   `json:"ebsOptimized,omitempty" tf:"ebs_optimized,omitempty"`
-	Ec2InstanceID string `json:"ec2InstanceID" tf:"ec2_instance_id"`
+	EbsOptimized bool `json:"ebsOptimized,omitempty" tf:"ebs_optimized,omitempty"`
+	// +optional
+	Ec2InstanceID string `json:"ec2InstanceID,omitempty" tf:"ec2_instance_id,omitempty"`
 	// +optional
 	EcsClusterArn string `json:"ecsClusterArn,omitempty" tf:"ecs_cluster_arn,omitempty"`
 	// +optional

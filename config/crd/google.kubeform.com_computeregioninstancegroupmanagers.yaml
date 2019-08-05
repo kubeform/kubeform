@@ -516,12 +516,9 @@ spec:
               type: boolean
           required:
           - baseInstanceName
-          - fingerprint
-          - instanceGroup
           - name
           - providerRef
           - region
-          - selfLink
           type: object
         status:
           properties:
@@ -651,12 +648,9 @@ spec:
                   type: boolean
               required:
               - baseInstanceName
-              - fingerprint
-              - instanceGroup
               - name
               - providerRef
               - region
-              - selfLink
               type: object
             state:
               properties:

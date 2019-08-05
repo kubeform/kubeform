@@ -20,7 +20,8 @@ type ApplicationGateway struct {
 
 type ApplicationGatewaySpecAuthenticationCertificate struct {
 	Data string `json:"-" sensitive:"true" tf:"data"`
-	ID   string `json:"ID" tf:"id"`
+	// +optional
+	ID   string `json:"ID,omitempty" tf:"id,omitempty"`
 	Name string `json:"name" tf:"name"`
 }
 
@@ -38,7 +39,8 @@ type ApplicationGatewaySpecBackendAddressPool struct {
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	Fqdns []string `json:"fqdns,omitempty" tf:"fqdns,omitempty"`
-	ID    string   `json:"ID" tf:"id"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	// Deprecated
@@ -50,7 +52,8 @@ type ApplicationGatewaySpecBackendAddressPool struct {
 }
 
 type ApplicationGatewaySpecBackendHTTPSettingsAuthenticationCertificate struct {
-	ID   string `json:"ID" tf:"id"`
+	// +optional
+	ID   string `json:"ID,omitempty" tf:"id,omitempty"`
 	Name string `json:"name" tf:"name"`
 }
 
@@ -70,14 +73,16 @@ type ApplicationGatewaySpecBackendHTTPSettings struct {
 	CookieBasedAffinity string                                                        `json:"cookieBasedAffinity" tf:"cookie_based_affinity"`
 	// +optional
 	HostName string `json:"hostName,omitempty" tf:"host_name,omitempty"`
-	ID       string `json:"ID" tf:"id"`
-	Name     string `json:"name" tf:"name"`
+	// +optional
+	ID   string `json:"ID,omitempty" tf:"id,omitempty"`
+	Name string `json:"name" tf:"name"`
 	// +optional
 	Path string `json:"path,omitempty" tf:"path,omitempty"`
 	// +optional
-	PickHostNameFromBackendAddress bool   `json:"pickHostNameFromBackendAddress,omitempty" tf:"pick_host_name_from_backend_address,omitempty"`
-	Port                           int    `json:"port" tf:"port"`
-	ProbeID                        string `json:"probeID" tf:"probe_id"`
+	PickHostNameFromBackendAddress bool `json:"pickHostNameFromBackendAddress,omitempty" tf:"pick_host_name_from_backend_address,omitempty"`
+	Port                           int  `json:"port" tf:"port"`
+	// +optional
+	ProbeID string `json:"probeID,omitempty" tf:"probe_id,omitempty"`
 	// +optional
 	ProbeName string `json:"probeName,omitempty" tf:"probe_name,omitempty"`
 	Protocol  string `json:"protocol" tf:"protocol"`
@@ -87,12 +92,14 @@ type ApplicationGatewaySpecBackendHTTPSettings struct {
 
 type ApplicationGatewaySpecCustomErrorConfiguration struct {
 	CustomErrorPageURL string `json:"customErrorPageURL" tf:"custom_error_page_url"`
-	ID                 string `json:"ID" tf:"id"`
-	StatusCode         string `json:"statusCode" tf:"status_code"`
+	// +optional
+	ID         string `json:"ID,omitempty" tf:"id,omitempty"`
+	StatusCode string `json:"statusCode" tf:"status_code"`
 }
 
 type ApplicationGatewaySpecFrontendIPConfiguration struct {
-	ID   string `json:"ID" tf:"id"`
+	// +optional
+	ID   string `json:"ID,omitempty" tf:"id,omitempty"`
 	Name string `json:"name" tf:"name"`
 	// +optional
 	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
@@ -105,38 +112,45 @@ type ApplicationGatewaySpecFrontendIPConfiguration struct {
 }
 
 type ApplicationGatewaySpecFrontendPort struct {
-	ID   string `json:"ID" tf:"id"`
+	// +optional
+	ID   string `json:"ID,omitempty" tf:"id,omitempty"`
 	Name string `json:"name" tf:"name"`
 	Port int    `json:"port" tf:"port"`
 }
 
 type ApplicationGatewaySpecGatewayIPConfiguration struct {
-	ID       string `json:"ID" tf:"id"`
+	// +optional
+	ID       string `json:"ID,omitempty" tf:"id,omitempty"`
 	Name     string `json:"name" tf:"name"`
 	SubnetID string `json:"subnetID" tf:"subnet_id"`
 }
 
 type ApplicationGatewaySpecHttpListenerCustomErrorConfiguration struct {
 	CustomErrorPageURL string `json:"customErrorPageURL" tf:"custom_error_page_url"`
-	ID                 string `json:"ID" tf:"id"`
-	StatusCode         string `json:"statusCode" tf:"status_code"`
+	// +optional
+	ID         string `json:"ID,omitempty" tf:"id,omitempty"`
+	StatusCode string `json:"statusCode" tf:"status_code"`
 }
 
 type ApplicationGatewaySpecHttpListener struct {
 	// +optional
-	CustomErrorConfiguration    []ApplicationGatewaySpecHttpListenerCustomErrorConfiguration `json:"customErrorConfiguration,omitempty" tf:"custom_error_configuration,omitempty"`
-	FrontendIPConfigurationID   string                                                       `json:"frontendIPConfigurationID" tf:"frontend_ip_configuration_id"`
-	FrontendIPConfigurationName string                                                       `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`
-	FrontendPortID              string                                                       `json:"frontendPortID" tf:"frontend_port_id"`
-	FrontendPortName            string                                                       `json:"frontendPortName" tf:"frontend_port_name"`
+	CustomErrorConfiguration []ApplicationGatewaySpecHttpListenerCustomErrorConfiguration `json:"customErrorConfiguration,omitempty" tf:"custom_error_configuration,omitempty"`
+	// +optional
+	FrontendIPConfigurationID   string `json:"frontendIPConfigurationID,omitempty" tf:"frontend_ip_configuration_id,omitempty"`
+	FrontendIPConfigurationName string `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`
+	// +optional
+	FrontendPortID   string `json:"frontendPortID,omitempty" tf:"frontend_port_id,omitempty"`
+	FrontendPortName string `json:"frontendPortName" tf:"frontend_port_name"`
 	// +optional
 	HostName string `json:"hostName,omitempty" tf:"host_name,omitempty"`
-	ID       string `json:"ID" tf:"id"`
+	// +optional
+	ID       string `json:"ID,omitempty" tf:"id,omitempty"`
 	Name     string `json:"name" tf:"name"`
 	Protocol string `json:"protocol" tf:"protocol"`
 	// +optional
-	RequireSni       bool   `json:"requireSni,omitempty" tf:"require_sni,omitempty"`
-	SslCertificateID string `json:"sslCertificateID" tf:"ssl_certificate_id"`
+	RequireSni bool `json:"requireSni,omitempty" tf:"require_sni,omitempty"`
+	// +optional
+	SslCertificateID string `json:"sslCertificateID,omitempty" tf:"ssl_certificate_id,omitempty"`
 	// +optional
 	SslCertificateName string `json:"sslCertificateName,omitempty" tf:"ssl_certificate_name,omitempty"`
 }
@@ -150,8 +164,9 @@ type ApplicationGatewaySpecProbeMatch struct {
 
 type ApplicationGatewaySpecProbe struct {
 	// +optional
-	Host     string `json:"host,omitempty" tf:"host,omitempty"`
-	ID       string `json:"ID" tf:"id"`
+	Host string `json:"host,omitempty" tf:"host,omitempty"`
+	// +optional
+	ID       string `json:"ID,omitempty" tf:"id,omitempty"`
 	Interval int    `json:"interval" tf:"interval"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -168,14 +183,16 @@ type ApplicationGatewaySpecProbe struct {
 }
 
 type ApplicationGatewaySpecRedirectConfiguration struct {
-	ID string `json:"ID" tf:"id"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
 	// +optional
 	IncludePath bool `json:"includePath,omitempty" tf:"include_path,omitempty"`
 	// +optional
 	IncludeQueryString bool   `json:"includeQueryString,omitempty" tf:"include_query_string,omitempty"`
 	Name               string `json:"name" tf:"name"`
 	RedirectType       string `json:"redirectType" tf:"redirect_type"`
-	TargetListenerID   string `json:"targetListenerID" tf:"target_listener_id"`
+	// +optional
+	TargetListenerID string `json:"targetListenerID,omitempty" tf:"target_listener_id,omitempty"`
 	// +optional
 	TargetListenerName string `json:"targetListenerName,omitempty" tf:"target_listener_name,omitempty"`
 	// +optional
@@ -183,24 +200,31 @@ type ApplicationGatewaySpecRedirectConfiguration struct {
 }
 
 type ApplicationGatewaySpecRequestRoutingRule struct {
-	BackendAddressPoolID string `json:"backendAddressPoolID" tf:"backend_address_pool_id"`
+	// +optional
+	BackendAddressPoolID string `json:"backendAddressPoolID,omitempty" tf:"backend_address_pool_id,omitempty"`
 	// +optional
 	BackendAddressPoolName string `json:"backendAddressPoolName,omitempty" tf:"backend_address_pool_name,omitempty"`
-	BackendHTTPSettingsID  string `json:"backendHTTPSettingsID" tf:"backend_http_settings_id"`
+	// +optional
+	BackendHTTPSettingsID string `json:"backendHTTPSettingsID,omitempty" tf:"backend_http_settings_id,omitempty"`
 	// +optional
 	BackendHTTPSettingsName string `json:"backendHTTPSettingsName,omitempty" tf:"backend_http_settings_name,omitempty"`
-	HttpListenerID          string `json:"httpListenerID" tf:"http_listener_id"`
-	HttpListenerName        string `json:"httpListenerName" tf:"http_listener_name"`
-	ID                      string `json:"ID" tf:"id"`
-	Name                    string `json:"name" tf:"name"`
-	RedirectConfigurationID string `json:"redirectConfigurationID" tf:"redirect_configuration_id"`
+	// +optional
+	HttpListenerID   string `json:"httpListenerID,omitempty" tf:"http_listener_id,omitempty"`
+	HttpListenerName string `json:"httpListenerName" tf:"http_listener_name"`
+	// +optional
+	ID   string `json:"ID,omitempty" tf:"id,omitempty"`
+	Name string `json:"name" tf:"name"`
+	// +optional
+	RedirectConfigurationID string `json:"redirectConfigurationID,omitempty" tf:"redirect_configuration_id,omitempty"`
 	// +optional
 	RedirectConfigurationName string `json:"redirectConfigurationName,omitempty" tf:"redirect_configuration_name,omitempty"`
-	RewriteRuleSetID          string `json:"rewriteRuleSetID" tf:"rewrite_rule_set_id"`
+	// +optional
+	RewriteRuleSetID string `json:"rewriteRuleSetID,omitempty" tf:"rewrite_rule_set_id,omitempty"`
 	// +optional
 	RewriteRuleSetName string `json:"rewriteRuleSetName,omitempty" tf:"rewrite_rule_set_name,omitempty"`
 	RuleType           string `json:"ruleType" tf:"rule_type"`
-	UrlPathMapID       string `json:"urlPathMapID" tf:"url_path_map_id"`
+	// +optional
+	UrlPathMapID string `json:"urlPathMapID,omitempty" tf:"url_path_map_id,omitempty"`
 	// +optional
 	UrlPathMapName string `json:"urlPathMapName,omitempty" tf:"url_path_map_name,omitempty"`
 }
@@ -236,7 +260,8 @@ type ApplicationGatewaySpecRewriteRuleSetRewriteRule struct {
 }
 
 type ApplicationGatewaySpecRewriteRuleSet struct {
-	ID   string `json:"ID" tf:"id"`
+	// +optional
+	ID   string `json:"ID,omitempty" tf:"id,omitempty"`
 	Name string `json:"name" tf:"name"`
 	// +optional
 	RewriteRule []ApplicationGatewaySpecRewriteRuleSetRewriteRule `json:"rewriteRule,omitempty" tf:"rewrite_rule,omitempty"`
@@ -250,11 +275,13 @@ type ApplicationGatewaySpecSku struct {
 }
 
 type ApplicationGatewaySpecSslCertificate struct {
-	Data           string `json:"-" sensitive:"true" tf:"data"`
-	ID             string `json:"ID" tf:"id"`
-	Name           string `json:"name" tf:"name"`
-	Password       string `json:"-" sensitive:"true" tf:"password"`
-	PublicCertData string `json:"publicCertData" tf:"public_cert_data"`
+	Data string `json:"-" sensitive:"true" tf:"data"`
+	// +optional
+	ID       string `json:"ID,omitempty" tf:"id,omitempty"`
+	Name     string `json:"name" tf:"name"`
+	Password string `json:"-" sensitive:"true" tf:"password"`
+	// +optional
+	PublicCertData string `json:"publicCertData,omitempty" tf:"public_cert_data,omitempty"`
 }
 
 type ApplicationGatewaySpecSslPolicy struct {
@@ -271,39 +298,49 @@ type ApplicationGatewaySpecSslPolicy struct {
 }
 
 type ApplicationGatewaySpecUrlPathMapPathRule struct {
-	BackendAddressPoolID string `json:"backendAddressPoolID" tf:"backend_address_pool_id"`
+	// +optional
+	BackendAddressPoolID string `json:"backendAddressPoolID,omitempty" tf:"backend_address_pool_id,omitempty"`
 	// +optional
 	BackendAddressPoolName string `json:"backendAddressPoolName,omitempty" tf:"backend_address_pool_name,omitempty"`
-	BackendHTTPSettingsID  string `json:"backendHTTPSettingsID" tf:"backend_http_settings_id"`
 	// +optional
-	BackendHTTPSettingsName string   `json:"backendHTTPSettingsName,omitempty" tf:"backend_http_settings_name,omitempty"`
-	ID                      string   `json:"ID" tf:"id"`
-	Name                    string   `json:"name" tf:"name"`
-	Paths                   []string `json:"paths" tf:"paths"`
-	RedirectConfigurationID string   `json:"redirectConfigurationID" tf:"redirect_configuration_id"`
+	BackendHTTPSettingsID string `json:"backendHTTPSettingsID,omitempty" tf:"backend_http_settings_id,omitempty"`
+	// +optional
+	BackendHTTPSettingsName string `json:"backendHTTPSettingsName,omitempty" tf:"backend_http_settings_name,omitempty"`
+	// +optional
+	ID    string   `json:"ID,omitempty" tf:"id,omitempty"`
+	Name  string   `json:"name" tf:"name"`
+	Paths []string `json:"paths" tf:"paths"`
+	// +optional
+	RedirectConfigurationID string `json:"redirectConfigurationID,omitempty" tf:"redirect_configuration_id,omitempty"`
 	// +optional
 	RedirectConfigurationName string `json:"redirectConfigurationName,omitempty" tf:"redirect_configuration_name,omitempty"`
-	RewriteRuleSetID          string `json:"rewriteRuleSetID" tf:"rewrite_rule_set_id"`
+	// +optional
+	RewriteRuleSetID string `json:"rewriteRuleSetID,omitempty" tf:"rewrite_rule_set_id,omitempty"`
 	// +optional
 	RewriteRuleSetName string `json:"rewriteRuleSetName,omitempty" tf:"rewrite_rule_set_name,omitempty"`
 }
 
 type ApplicationGatewaySpecUrlPathMap struct {
-	DefaultBackendAddressPoolID string `json:"defaultBackendAddressPoolID" tf:"default_backend_address_pool_id"`
+	// +optional
+	DefaultBackendAddressPoolID string `json:"defaultBackendAddressPoolID,omitempty" tf:"default_backend_address_pool_id,omitempty"`
 	// +optional
 	DefaultBackendAddressPoolName string `json:"defaultBackendAddressPoolName,omitempty" tf:"default_backend_address_pool_name,omitempty"`
-	DefaultBackendHTTPSettingsID  string `json:"defaultBackendHTTPSettingsID" tf:"default_backend_http_settings_id"`
+	// +optional
+	DefaultBackendHTTPSettingsID string `json:"defaultBackendHTTPSettingsID,omitempty" tf:"default_backend_http_settings_id,omitempty"`
 	// +optional
 	DefaultBackendHTTPSettingsName string `json:"defaultBackendHTTPSettingsName,omitempty" tf:"default_backend_http_settings_name,omitempty"`
-	DefaultRedirectConfigurationID string `json:"defaultRedirectConfigurationID" tf:"default_redirect_configuration_id"`
+	// +optional
+	DefaultRedirectConfigurationID string `json:"defaultRedirectConfigurationID,omitempty" tf:"default_redirect_configuration_id,omitempty"`
 	// +optional
 	DefaultRedirectConfigurationName string `json:"defaultRedirectConfigurationName,omitempty" tf:"default_redirect_configuration_name,omitempty"`
-	DefaultRewriteRuleSetID          string `json:"defaultRewriteRuleSetID" tf:"default_rewrite_rule_set_id"`
 	// +optional
-	DefaultRewriteRuleSetName string                                     `json:"defaultRewriteRuleSetName,omitempty" tf:"default_rewrite_rule_set_name,omitempty"`
-	ID                        string                                     `json:"ID" tf:"id"`
-	Name                      string                                     `json:"name" tf:"name"`
-	PathRule                  []ApplicationGatewaySpecUrlPathMapPathRule `json:"pathRule" tf:"path_rule"`
+	DefaultRewriteRuleSetID string `json:"defaultRewriteRuleSetID,omitempty" tf:"default_rewrite_rule_set_id,omitempty"`
+	// +optional
+	DefaultRewriteRuleSetName string `json:"defaultRewriteRuleSetName,omitempty" tf:"default_rewrite_rule_set_name,omitempty"`
+	// +optional
+	ID       string                                     `json:"ID,omitempty" tf:"id,omitempty"`
+	Name     string                                     `json:"name" tf:"name"`
+	PathRule []ApplicationGatewaySpecUrlPathMapPathRule `json:"pathRule" tf:"path_rule"`
 }
 
 type ApplicationGatewaySpecWafConfigurationDisabledRuleGroup struct {

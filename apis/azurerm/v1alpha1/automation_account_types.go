@@ -26,12 +26,15 @@ type AutomationAccountSpecSku struct {
 type AutomationAccountSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	DscPrimaryAccessKey   string `json:"dscPrimaryAccessKey" tf:"dsc_primary_access_key"`
-	DscSecondaryAccessKey string `json:"dscSecondaryAccessKey" tf:"dsc_secondary_access_key"`
-	DscServerEndpoint     string `json:"dscServerEndpoint" tf:"dsc_server_endpoint"`
-	Location              string `json:"location" tf:"location"`
-	Name                  string `json:"name" tf:"name"`
-	ResourceGroupName     string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	DscPrimaryAccessKey string `json:"dscPrimaryAccessKey,omitempty" tf:"dsc_primary_access_key,omitempty"`
+	// +optional
+	DscSecondaryAccessKey string `json:"dscSecondaryAccessKey,omitempty" tf:"dsc_secondary_access_key,omitempty"`
+	// +optional
+	DscServerEndpoint string `json:"dscServerEndpoint,omitempty" tf:"dsc_server_endpoint,omitempty"`
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// Deprecated

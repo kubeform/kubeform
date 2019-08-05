@@ -422,10 +422,8 @@ spec:
               description: Deprecated
               type: string
           required:
-          - etag
           - policyData
           - providerRef
-          - restorePolicy
           type: object
         status:
           properties:
@@ -461,10 +459,8 @@ spec:
                   description: Deprecated
                   type: string
               required:
-              - etag
               - policyData
               - providerRef
-              - restorePolicy
               type: object
             state:
               properties:

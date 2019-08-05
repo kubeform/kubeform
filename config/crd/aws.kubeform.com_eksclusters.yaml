@@ -404,8 +404,6 @@ spec:
                 properties:
                   data:
                     type: string
-                required:
-                - data
                 type: object
               maxItems: 1
               type: array
@@ -457,18 +455,12 @@ spec:
                     type: string
                 required:
                 - subnetIDS
-                - vpcID
                 type: object
               maxItems: 1
               minItems: 1
               type: array
           required:
-          - arn
-          - certificateAuthority
-          - createdAt
-          - endpoint
           - name
-          - platformVersion
           - providerRef
           - roleArn
           - vpcConfig
@@ -489,8 +481,6 @@ spec:
                     properties:
                       data:
                         type: string
-                    required:
-                    - data
                     type: object
                   maxItems: 1
                   type: array
@@ -542,18 +532,12 @@ spec:
                         type: string
                     required:
                     - subnetIDS
-                    - vpcID
                     type: object
                   maxItems: 1
                   minItems: 1
                   type: array
               required:
-              - arn
-              - certificateAuthority
-              - createdAt
-              - endpoint
               - name
-              - platformVersion
               - providerRef
               - roleArn
               - vpcConfig

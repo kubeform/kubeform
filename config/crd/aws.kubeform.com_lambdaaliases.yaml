@@ -430,10 +430,8 @@ spec:
               maxItems: 1
               type: array
           required:
-          - arn
           - functionName
           - functionVersion
-          - invokeArn
           - name
           - providerRef
           type: object
@@ -479,10 +477,8 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - arn
               - functionName
               - functionVersion
-              - invokeArn
               - name
               - providerRef
               type: object

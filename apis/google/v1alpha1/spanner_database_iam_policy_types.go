@@ -21,8 +21,9 @@ type SpannerDatabaseIamPolicy struct {
 type SpannerDatabaseIamPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Database   string `json:"database" tf:"database"`
-	Etag       string `json:"etag" tf:"etag"`
+	Database string `json:"database" tf:"database"`
+	// +optional
+	Etag       string `json:"etag,omitempty" tf:"etag,omitempty"`
 	Instance   string `json:"instance" tf:"instance"`
 	PolicyData string `json:"policyData" tf:"policy_data"`
 	// +optional

@@ -22,7 +22,8 @@ type StorageBucketIamBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	Bucket string `json:"bucket" tf:"bucket"`
-	Etag   string `json:"etag" tf:"etag"`
+	// +optional
+	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
 	Members []string `json:"members" tf:"members"`
 	Role    string   `json:"role" tf:"role"`

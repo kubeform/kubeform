@@ -483,9 +483,7 @@ spec:
               type: string
           required:
           - defaultNetworkACLID
-          - ownerID
           - providerRef
-          - vpcID
           type: object
         status:
           properties:
@@ -582,9 +580,7 @@ spec:
                   type: string
               required:
               - defaultNetworkACLID
-              - ownerID
               - providerRef
-              - vpcID
               type: object
             state:
               properties:

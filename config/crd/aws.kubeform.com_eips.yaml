@@ -435,14 +435,7 @@ spec:
             vpc:
               type: boolean
           required:
-          - allocationID
-          - associationID
-          - domain
-          - privateDNS
-          - privateIP
           - providerRef
-          - publicDNS
-          - publicIP
           type: object
         status:
           properties:
@@ -491,14 +484,7 @@ spec:
                 vpc:
                   type: boolean
               required:
-              - allocationID
-              - associationID
-              - domain
-              - privateDNS
-              - privateIP
               - providerRef
-              - publicDNS
-              - publicIP
               type: object
             state:
               properties:

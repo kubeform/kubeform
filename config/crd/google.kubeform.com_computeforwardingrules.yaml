@@ -458,12 +458,8 @@ spec:
             target:
               type: string
           required:
-          - creationTimestamp
-          - labelFingerprint
           - name
           - providerRef
-          - selfLink
-          - serviceName
           type: object
         status:
           properties:
@@ -535,12 +531,8 @@ spec:
                 target:
                   type: string
               required:
-              - creationTimestamp
-              - labelFingerprint
               - name
               - providerRef
-              - selfLink
-              - serviceName
               type: object
             state:
               properties:

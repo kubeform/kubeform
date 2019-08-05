@@ -21,7 +21,8 @@ type SesDomainDkim struct {
 type SesDomainDkimSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	DkimTokens []string `json:"dkimTokens" tf:"dkim_tokens"`
+	// +optional
+	DkimTokens []string `json:"dkimTokens,omitempty" tf:"dkim_tokens,omitempty"`
 	Domain     string   `json:"domain" tf:"domain"`
 }
 

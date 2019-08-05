@@ -416,7 +416,6 @@ spec:
               type: string
           required:
           - parentID
-          - path
           - pathPart
           - providerRef
           - restAPIID
@@ -449,7 +448,6 @@ spec:
                   type: string
               required:
               - parentID
-              - path
               - pathPart
               - providerRef
               - restAPIID

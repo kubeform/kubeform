@@ -429,7 +429,6 @@ spec:
               type: string
           required:
           - backendPort
-          - frontendIPConfigurationID
           - frontendIPConfigurationName
           - frontendPortEnd
           - frontendPortStart
@@ -480,7 +479,6 @@ spec:
                   type: string
               required:
               - backendPort
-              - frontendIPConfigurationID
               - frontendIPConfigurationName
               - frontendPortEnd
               - frontendPortStart

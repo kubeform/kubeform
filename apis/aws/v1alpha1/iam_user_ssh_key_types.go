@@ -21,10 +21,12 @@ type IamUserSSHKey struct {
 type IamUserSSHKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Encoding       string `json:"encoding" tf:"encoding"`
-	Fingerprint    string `json:"fingerprint" tf:"fingerprint"`
-	PublicKey      string `json:"publicKey" tf:"public_key"`
-	SshPublicKeyID string `json:"sshPublicKeyID" tf:"ssh_public_key_id"`
+	Encoding string `json:"encoding" tf:"encoding"`
+	// +optional
+	Fingerprint string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
+	PublicKey   string `json:"publicKey" tf:"public_key"`
+	// +optional
+	SshPublicKeyID string `json:"sshPublicKeyID,omitempty" tf:"ssh_public_key_id,omitempty"`
 	// +optional
 	Status   string `json:"status,omitempty" tf:"status,omitempty"`
 	Username string `json:"username" tf:"username"`

@@ -26,13 +26,15 @@ type ProjectIamPolicySpec struct {
 	Authoritative bool `json:"authoritative,omitempty" tf:"authoritative,omitempty"`
 	// +optional
 	// Deprecated
-	DisableProject bool   `json:"disableProject,omitempty" tf:"disable_project,omitempty"`
-	Etag           string `json:"etag" tf:"etag"`
-	PolicyData     string `json:"policyData" tf:"policy_data"`
+	DisableProject bool `json:"disableProject,omitempty" tf:"disable_project,omitempty"`
+	// +optional
+	Etag       string `json:"etag,omitempty" tf:"etag,omitempty"`
+	PolicyData string `json:"policyData" tf:"policy_data"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
 	// Deprecated
-	RestorePolicy string `json:"restorePolicy" tf:"restore_policy"`
+	RestorePolicy string `json:"restorePolicy,omitempty" tf:"restore_policy,omitempty"`
 }
 
 type ProjectIamPolicyStatus struct {

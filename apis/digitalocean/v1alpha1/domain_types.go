@@ -24,7 +24,8 @@ type DomainSpec struct {
 	// +optional
 	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	Name      string `json:"name" tf:"name"`
-	Urn       string `json:"urn" tf:"urn"`
+	// +optional
+	Urn string `json:"urn,omitempty" tf:"urn,omitempty"`
 }
 
 type DomainStatus struct {

@@ -486,13 +486,9 @@ spec:
             type:
               type: string
           required:
-          - arn
           - computeEnvironmentName
-          - ecsClusterArn
           - providerRef
           - serviceRole
-          - status
-          - statusReason
           - type
           type: object
         status:
@@ -593,13 +589,9 @@ spec:
                 type:
                   type: string
               required:
-              - arn
               - computeEnvironmentName
-              - ecsClusterArn
               - providerRef
               - serviceRole
-              - status
-              - statusReason
               - type
               type: object
             state:

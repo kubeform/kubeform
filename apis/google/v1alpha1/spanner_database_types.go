@@ -27,7 +27,8 @@ type SpannerDatabaseSpec struct {
 	Name     string   `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
-	State   string `json:"state" tf:"state"`
+	// +optional
+	State string `json:"state,omitempty" tf:"state,omitempty"`
 }
 
 type SpannerDatabaseStatus struct {

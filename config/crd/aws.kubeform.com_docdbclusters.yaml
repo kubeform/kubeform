@@ -483,12 +483,7 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
-          - clusterResourceID
-          - endpoint
-          - hostedZoneID
           - providerRef
-          - readerEndpoint
           type: object
         status:
           properties:
@@ -585,12 +580,7 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
-              - clusterResourceID
-              - endpoint
-              - hostedZoneID
               - providerRef
-              - readerEndpoint
               type: object
             state:
               properties:

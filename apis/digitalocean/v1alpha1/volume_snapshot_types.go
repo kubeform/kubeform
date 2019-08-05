@@ -23,12 +23,16 @@ type VolumeSnapshot struct {
 type VolumeSnapshotSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CreatedAt   string `json:"createdAt" tf:"created_at"`
-	MinDiskSize int    `json:"minDiskSize" tf:"min_disk_size"`
+	// +optional
+	CreatedAt string `json:"createdAt,omitempty" tf:"created_at,omitempty"`
+	// +optional
+	MinDiskSize int    `json:"minDiskSize,omitempty" tf:"min_disk_size,omitempty"`
 	Name        string `json:"name" tf:"name"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Regions  []string    `json:"regions" tf:"regions"`
-	Size     json.Number `json:"size" tf:"size"`
+	Regions []string `json:"regions,omitempty" tf:"regions,omitempty"`
+	// +optional
+	Size     json.Number `json:"size,omitempty" tf:"size,omitempty"`
 	VolumeID string      `json:"volumeID" tf:"volume_id"`
 }
 

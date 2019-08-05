@@ -61,10 +61,14 @@ type IothubSpecRoute struct {
 }
 
 type IothubSpecSharedAccessPolicy struct {
-	KeyName      string `json:"keyName" tf:"key_name"`
-	Permissions  string `json:"permissions" tf:"permissions"`
-	PrimaryKey   string `json:"-" sensitive:"true" tf:"primary_key"`
-	SecondaryKey string `json:"-" sensitive:"true" tf:"secondary_key"`
+	// +optional
+	KeyName string `json:"keyName,omitempty" tf:"key_name,omitempty"`
+	// +optional
+	Permissions string `json:"permissions,omitempty" tf:"permissions,omitempty"`
+	// +optional
+	PrimaryKey string `json:"-" sensitive:"true" tf:"primary_key,omitempty"`
+	// +optional
+	SecondaryKey string `json:"-" sensitive:"true" tf:"secondary_key,omitempty"`
 }
 
 type IothubSpecSku struct {
@@ -79,15 +83,20 @@ type IothubSpec struct {
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	Endpoint                   []IothubSpecEndpoint `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
-	EventHubEventsEndpoint     string               `json:"eventHubEventsEndpoint" tf:"event_hub_events_endpoint"`
-	EventHubEventsPath         string               `json:"eventHubEventsPath" tf:"event_hub_events_path"`
-	EventHubOperationsEndpoint string               `json:"eventHubOperationsEndpoint" tf:"event_hub_operations_endpoint"`
-	EventHubOperationsPath     string               `json:"eventHubOperationsPath" tf:"event_hub_operations_path"`
+	Endpoint []IothubSpecEndpoint `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
+	// +optional
+	EventHubEventsEndpoint string `json:"eventHubEventsEndpoint,omitempty" tf:"event_hub_events_endpoint,omitempty"`
+	// +optional
+	EventHubEventsPath string `json:"eventHubEventsPath,omitempty" tf:"event_hub_events_path,omitempty"`
+	// +optional
+	EventHubOperationsEndpoint string `json:"eventHubOperationsEndpoint,omitempty" tf:"event_hub_operations_endpoint,omitempty"`
+	// +optional
+	EventHubOperationsPath string `json:"eventHubOperationsPath,omitempty" tf:"event_hub_operations_path,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	FallbackRoute []IothubSpecFallbackRoute `json:"fallbackRoute,omitempty" tf:"fallback_route,omitempty"`
-	Hostname      string                    `json:"hostname" tf:"hostname"`
+	// +optional
+	Hostname string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	IpFilterRule      []IothubSpecIpFilterRule `json:"ipFilterRule,omitempty" tf:"ip_filter_rule,omitempty"`
@@ -95,13 +104,15 @@ type IothubSpec struct {
 	Name              string                   `json:"name" tf:"name"`
 	ResourceGroupName string                   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Route              []IothubSpecRoute              `json:"route,omitempty" tf:"route,omitempty"`
-	SharedAccessPolicy []IothubSpecSharedAccessPolicy `json:"sharedAccessPolicy" tf:"shared_access_policy"`
+	Route []IothubSpecRoute `json:"route,omitempty" tf:"route,omitempty"`
+	// +optional
+	SharedAccessPolicy []IothubSpecSharedAccessPolicy `json:"sharedAccessPolicy,omitempty" tf:"shared_access_policy,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku []IothubSpecSku `json:"sku" tf:"sku"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Type string            `json:"type" tf:"type"`
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type IothubStatus struct {

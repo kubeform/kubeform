@@ -43,16 +43,18 @@ type ElasticacheReplicationGroupSpec struct {
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	ClusterMode                  []ElasticacheReplicationGroupSpecClusterMode `json:"clusterMode,omitempty" tf:"cluster_mode,omitempty"`
-	ConfigurationEndpointAddress string                                       `json:"configurationEndpointAddress" tf:"configuration_endpoint_address"`
+	ClusterMode []ElasticacheReplicationGroupSpecClusterMode `json:"clusterMode,omitempty" tf:"cluster_mode,omitempty"`
+	// +optional
+	ConfigurationEndpointAddress string `json:"configurationEndpointAddress,omitempty" tf:"configuration_endpoint_address,omitempty"`
 	// +optional
 	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
 	// +optional
 	EngineVersion string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
 	// +optional
 	MaintenanceWindow string `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	MemberClusters []string `json:"memberClusters" tf:"member_clusters"`
+	MemberClusters []string `json:"memberClusters,omitempty" tf:"member_clusters,omitempty"`
 	// +optional
 	NodeType string `json:"nodeType,omitempty" tf:"node_type,omitempty"`
 	// +optional
@@ -62,8 +64,9 @@ type ElasticacheReplicationGroupSpec struct {
 	// +optional
 	ParameterGroupName string `json:"parameterGroupName,omitempty" tf:"parameter_group_name,omitempty"`
 	// +optional
-	Port                        int    `json:"port,omitempty" tf:"port,omitempty"`
-	PrimaryEndpointAddress      string `json:"primaryEndpointAddress" tf:"primary_endpoint_address"`
+	Port int `json:"port,omitempty" tf:"port,omitempty"`
+	// +optional
+	PrimaryEndpointAddress      string `json:"primaryEndpointAddress,omitempty" tf:"primary_endpoint_address,omitempty"`
 	ReplicationGroupDescription string `json:"replicationGroupDescription" tf:"replication_group_description"`
 	ReplicationGroupID          string `json:"replicationGroupID" tf:"replication_group_id"`
 	// +optional

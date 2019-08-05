@@ -24,9 +24,12 @@ type CloudhsmV2HsmSpec struct {
 	// +optional
 	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	ClusterID        string `json:"clusterID" tf:"cluster_id"`
-	HsmEniID         string `json:"hsmEniID" tf:"hsm_eni_id"`
-	HsmID            string `json:"hsmID" tf:"hsm_id"`
-	HsmState         string `json:"hsmState" tf:"hsm_state"`
+	// +optional
+	HsmEniID string `json:"hsmEniID,omitempty" tf:"hsm_eni_id,omitempty"`
+	// +optional
+	HsmID string `json:"hsmID,omitempty" tf:"hsm_id,omitempty"`
+	// +optional
+	HsmState string `json:"hsmState,omitempty" tf:"hsm_state,omitempty"`
 	// +optional
 	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	// +optional

@@ -439,9 +439,7 @@ spec:
               type: string
           required:
           - name
-          - nameServers
           - providerRef
-          - zoneID
           type: object
         status:
           properties:
@@ -494,9 +492,7 @@ spec:
                   type: string
               required:
               - name
-              - nameServers
               - providerRef
-              - zoneID
               type: object
             state:
               properties:

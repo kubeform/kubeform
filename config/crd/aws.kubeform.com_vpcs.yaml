@@ -443,16 +443,7 @@ spec:
                 type: string
               type: object
           required:
-          - arn
           - cidrBlock
-          - defaultNetworkACLID
-          - defaultRouteTableID
-          - defaultSecurityGroupID
-          - dhcpOptionsID
-          - ipv6AssociationID
-          - ipv6CIDRBlock
-          - mainRouteTableID
-          - ownerID
           - providerRef
           type: object
         status:
@@ -510,16 +501,7 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
               - cidrBlock
-              - defaultNetworkACLID
-              - defaultRouteTableID
-              - defaultSecurityGroupID
-              - dhcpOptionsID
-              - ipv6AssociationID
-              - ipv6CIDRBlock
-              - mainRouteTableID
-              - ownerID
               - providerRef
               type: object
             state:

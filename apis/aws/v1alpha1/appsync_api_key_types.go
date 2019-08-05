@@ -28,7 +28,8 @@ type AppsyncAPIKeySpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	Expires string `json:"expires,omitempty" tf:"expires,omitempty"`
-	Key     string `json:"-" sensitive:"true" tf:"key"`
+	// +optional
+	Key string `json:"-" sensitive:"true" tf:"key,omitempty"`
 }
 
 type AppsyncAPIKeyStatus struct {

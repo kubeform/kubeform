@@ -25,7 +25,8 @@ type DynamodbGlobalTableSpecReplica struct {
 type DynamodbGlobalTableSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn  string `json:"arn" tf:"arn"`
+	// +optional
+	Arn  string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Name string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
 	Replica []DynamodbGlobalTableSpecReplica `json:"replica" tf:"replica"`

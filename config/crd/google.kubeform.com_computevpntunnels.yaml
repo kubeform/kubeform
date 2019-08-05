@@ -456,14 +456,9 @@ spec:
             targetVPNGateway:
               type: string
           required:
-          - creationTimestamp
-          - detailedStatus
-          - labelFingerprint
           - name
           - peerIP
           - providerRef
-          - selfLink
-          - sharedSecretHash
           - targetVPNGateway
           type: object
         status:
@@ -534,14 +529,9 @@ spec:
                 targetVPNGateway:
                   type: string
               required:
-              - creationTimestamp
-              - detailedStatus
-              - labelFingerprint
               - name
               - peerIP
               - providerRef
-              - selfLink
-              - sharedSecretHash
               - targetVPNGateway
               type: object
             state:

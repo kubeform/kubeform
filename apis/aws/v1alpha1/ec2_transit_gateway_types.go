@@ -22,9 +22,11 @@ type Ec2TransitGatewaySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	AmazonSideAsn                  int    `json:"amazonSideAsn,omitempty" tf:"amazon_side_asn,omitempty"`
-	Arn                            string `json:"arn" tf:"arn"`
-	AssociationDefaultRouteTableID string `json:"associationDefaultRouteTableID" tf:"association_default_route_table_id"`
+	AmazonSideAsn int `json:"amazonSideAsn,omitempty" tf:"amazon_side_asn,omitempty"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	AssociationDefaultRouteTableID string `json:"associationDefaultRouteTableID,omitempty" tf:"association_default_route_table_id,omitempty"`
 	// +optional
 	AutoAcceptSharedAttachments string `json:"autoAcceptSharedAttachments,omitempty" tf:"auto_accept_shared_attachments,omitempty"`
 	// +optional
@@ -34,9 +36,11 @@ type Ec2TransitGatewaySpec struct {
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	DnsSupport                     string `json:"dnsSupport,omitempty" tf:"dns_support,omitempty"`
-	OwnerID                        string `json:"ownerID" tf:"owner_id"`
-	PropagationDefaultRouteTableID string `json:"propagationDefaultRouteTableID" tf:"propagation_default_route_table_id"`
+	DnsSupport string `json:"dnsSupport,omitempty" tf:"dns_support,omitempty"`
+	// +optional
+	OwnerID string `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
+	// +optional
+	PropagationDefaultRouteTableID string `json:"propagationDefaultRouteTableID,omitempty" tf:"propagation_default_route_table_id,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

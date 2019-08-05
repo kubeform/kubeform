@@ -437,8 +437,6 @@ spec:
             url:
               type: string
           required:
-          - arn
-          - endpoint
           - providerRef
           type: object
         status:
@@ -490,8 +488,6 @@ spec:
                 url:
                   type: string
               required:
-              - arn
-              - endpoint
               - providerRef
               type: object
             state:

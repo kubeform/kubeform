@@ -425,7 +425,6 @@ spec:
             startTime:
               type: string
           required:
-          - arn
           - autoscalingGroupName
           - providerRef
           - scheduledActionName
@@ -467,7 +466,6 @@ spec:
                 startTime:
                   type: string
               required:
-              - arn
               - autoscalingGroupName
               - providerRef
               - scheduledActionName

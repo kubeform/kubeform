@@ -497,8 +497,6 @@ spec:
           - ipConfiguration
           - location
           - name
-          - privateIPAddress
-          - privateIPAddresses
           - providerRef
           - resourceGroupName
           type: object
@@ -611,8 +609,6 @@ spec:
               - ipConfiguration
               - location
               - name
-              - privateIPAddress
-              - privateIPAddresses
               - providerRef
               - resourceGroupName
               type: object

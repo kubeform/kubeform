@@ -21,7 +21,8 @@ type AzureadApplication struct {
 type AzureadApplicationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	ApplicationID string `json:"applicationID" tf:"application_id"`
+	// +optional
+	ApplicationID string `json:"applicationID,omitempty" tf:"application_id,omitempty"`
 	// +optional
 	AvailableToOtherTenants bool `json:"availableToOtherTenants,omitempty" tf:"available_to_other_tenants,omitempty"`
 	// +optional

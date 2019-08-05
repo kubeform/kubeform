@@ -100,7 +100,8 @@ type SpotFleetRequestSpec struct {
 
 	// +optional
 	AllocationStrategy string `json:"allocationStrategy,omitempty" tf:"allocation_strategy,omitempty"`
-	ClientToken        string `json:"clientToken" tf:"client_token"`
+	// +optional
+	ClientToken string `json:"clientToken,omitempty" tf:"client_token,omitempty"`
 	// +optional
 	ExcessCapacityTerminationPolicy string `json:"excessCapacityTerminationPolicy,omitempty" tf:"excess_capacity_termination_policy,omitempty"`
 	// +optional
@@ -118,8 +119,9 @@ type SpotFleetRequestSpec struct {
 	// +optional
 	ReplaceUnhealthyInstances bool `json:"replaceUnhealthyInstances,omitempty" tf:"replace_unhealthy_instances,omitempty"`
 	// +optional
-	SpotPrice        string `json:"spotPrice,omitempty" tf:"spot_price,omitempty"`
-	SpotRequestState string `json:"spotRequestState" tf:"spot_request_state"`
+	SpotPrice string `json:"spotPrice,omitempty" tf:"spot_price,omitempty"`
+	// +optional
+	SpotRequestState string `json:"spotRequestState,omitempty" tf:"spot_request_state,omitempty"`
 	TargetCapacity   int    `json:"targetCapacity" tf:"target_capacity"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true

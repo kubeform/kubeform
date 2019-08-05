@@ -25,9 +25,11 @@ type StorageAccountSpecCustomDomain struct {
 }
 
 type StorageAccountSpecIdentity struct {
-	PrincipalID string `json:"principalID" tf:"principal_id"`
-	TenantID    string `json:"tenantID" tf:"tenant_id"`
-	Type        string `json:"type" tf:"type"`
+	// +optional
+	PrincipalID string `json:"principalID,omitempty" tf:"principal_id,omitempty"`
+	// +optional
+	TenantID string `json:"tenantID,omitempty" tf:"tenant_id,omitempty"`
+	Type     string `json:"type" tf:"type"`
 }
 
 type StorageAccountSpecNetworkRules struct {
@@ -78,40 +80,72 @@ type StorageAccountSpec struct {
 	Name         string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	NetworkRules                  []StorageAccountSpecNetworkRules `json:"networkRules,omitempty" tf:"network_rules,omitempty"`
-	PrimaryAccessKey              string                           `json:"-" sensitive:"true" tf:"primary_access_key"`
-	PrimaryBlobConnectionString   string                           `json:"-" sensitive:"true" tf:"primary_blob_connection_string"`
-	PrimaryBlobEndpoint           string                           `json:"primaryBlobEndpoint" tf:"primary_blob_endpoint"`
-	PrimaryBlobHost               string                           `json:"primaryBlobHost" tf:"primary_blob_host"`
-	PrimaryConnectionString       string                           `json:"-" sensitive:"true" tf:"primary_connection_string"`
-	PrimaryDfsEndpoint            string                           `json:"primaryDfsEndpoint" tf:"primary_dfs_endpoint"`
-	PrimaryDfsHost                string                           `json:"primaryDfsHost" tf:"primary_dfs_host"`
-	PrimaryFileEndpoint           string                           `json:"primaryFileEndpoint" tf:"primary_file_endpoint"`
-	PrimaryFileHost               string                           `json:"primaryFileHost" tf:"primary_file_host"`
-	PrimaryLocation               string                           `json:"primaryLocation" tf:"primary_location"`
-	PrimaryQueueEndpoint          string                           `json:"primaryQueueEndpoint" tf:"primary_queue_endpoint"`
-	PrimaryQueueHost              string                           `json:"primaryQueueHost" tf:"primary_queue_host"`
-	PrimaryTableEndpoint          string                           `json:"primaryTableEndpoint" tf:"primary_table_endpoint"`
-	PrimaryTableHost              string                           `json:"primaryTableHost" tf:"primary_table_host"`
-	PrimaryWebEndpoint            string                           `json:"primaryWebEndpoint" tf:"primary_web_endpoint"`
-	PrimaryWebHost                string                           `json:"primaryWebHost" tf:"primary_web_host"`
-	ResourceGroupName             string                           `json:"resourceGroupName" tf:"resource_group_name"`
-	SecondaryAccessKey            string                           `json:"-" sensitive:"true" tf:"secondary_access_key"`
-	SecondaryBlobConnectionString string                           `json:"-" sensitive:"true" tf:"secondary_blob_connection_string"`
-	SecondaryBlobEndpoint         string                           `json:"secondaryBlobEndpoint" tf:"secondary_blob_endpoint"`
-	SecondaryBlobHost             string                           `json:"secondaryBlobHost" tf:"secondary_blob_host"`
-	SecondaryConnectionString     string                           `json:"-" sensitive:"true" tf:"secondary_connection_string"`
-	SecondaryDfsEndpoint          string                           `json:"secondaryDfsEndpoint" tf:"secondary_dfs_endpoint"`
-	SecondaryDfsHost              string                           `json:"secondaryDfsHost" tf:"secondary_dfs_host"`
-	SecondaryFileEndpoint         string                           `json:"secondaryFileEndpoint" tf:"secondary_file_endpoint"`
-	SecondaryFileHost             string                           `json:"secondaryFileHost" tf:"secondary_file_host"`
-	SecondaryLocation             string                           `json:"secondaryLocation" tf:"secondary_location"`
-	SecondaryQueueEndpoint        string                           `json:"secondaryQueueEndpoint" tf:"secondary_queue_endpoint"`
-	SecondaryQueueHost            string                           `json:"secondaryQueueHost" tf:"secondary_queue_host"`
-	SecondaryTableEndpoint        string                           `json:"secondaryTableEndpoint" tf:"secondary_table_endpoint"`
-	SecondaryTableHost            string                           `json:"secondaryTableHost" tf:"secondary_table_host"`
-	SecondaryWebEndpoint          string                           `json:"secondaryWebEndpoint" tf:"secondary_web_endpoint"`
-	SecondaryWebHost              string                           `json:"secondaryWebHost" tf:"secondary_web_host"`
+	NetworkRules []StorageAccountSpecNetworkRules `json:"networkRules,omitempty" tf:"network_rules,omitempty"`
+	// +optional
+	PrimaryAccessKey string `json:"-" sensitive:"true" tf:"primary_access_key,omitempty"`
+	// +optional
+	PrimaryBlobConnectionString string `json:"-" sensitive:"true" tf:"primary_blob_connection_string,omitempty"`
+	// +optional
+	PrimaryBlobEndpoint string `json:"primaryBlobEndpoint,omitempty" tf:"primary_blob_endpoint,omitempty"`
+	// +optional
+	PrimaryBlobHost string `json:"primaryBlobHost,omitempty" tf:"primary_blob_host,omitempty"`
+	// +optional
+	PrimaryConnectionString string `json:"-" sensitive:"true" tf:"primary_connection_string,omitempty"`
+	// +optional
+	PrimaryDfsEndpoint string `json:"primaryDfsEndpoint,omitempty" tf:"primary_dfs_endpoint,omitempty"`
+	// +optional
+	PrimaryDfsHost string `json:"primaryDfsHost,omitempty" tf:"primary_dfs_host,omitempty"`
+	// +optional
+	PrimaryFileEndpoint string `json:"primaryFileEndpoint,omitempty" tf:"primary_file_endpoint,omitempty"`
+	// +optional
+	PrimaryFileHost string `json:"primaryFileHost,omitempty" tf:"primary_file_host,omitempty"`
+	// +optional
+	PrimaryLocation string `json:"primaryLocation,omitempty" tf:"primary_location,omitempty"`
+	// +optional
+	PrimaryQueueEndpoint string `json:"primaryQueueEndpoint,omitempty" tf:"primary_queue_endpoint,omitempty"`
+	// +optional
+	PrimaryQueueHost string `json:"primaryQueueHost,omitempty" tf:"primary_queue_host,omitempty"`
+	// +optional
+	PrimaryTableEndpoint string `json:"primaryTableEndpoint,omitempty" tf:"primary_table_endpoint,omitempty"`
+	// +optional
+	PrimaryTableHost string `json:"primaryTableHost,omitempty" tf:"primary_table_host,omitempty"`
+	// +optional
+	PrimaryWebEndpoint string `json:"primaryWebEndpoint,omitempty" tf:"primary_web_endpoint,omitempty"`
+	// +optional
+	PrimaryWebHost    string `json:"primaryWebHost,omitempty" tf:"primary_web_host,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key,omitempty"`
+	// +optional
+	SecondaryBlobConnectionString string `json:"-" sensitive:"true" tf:"secondary_blob_connection_string,omitempty"`
+	// +optional
+	SecondaryBlobEndpoint string `json:"secondaryBlobEndpoint,omitempty" tf:"secondary_blob_endpoint,omitempty"`
+	// +optional
+	SecondaryBlobHost string `json:"secondaryBlobHost,omitempty" tf:"secondary_blob_host,omitempty"`
+	// +optional
+	SecondaryConnectionString string `json:"-" sensitive:"true" tf:"secondary_connection_string,omitempty"`
+	// +optional
+	SecondaryDfsEndpoint string `json:"secondaryDfsEndpoint,omitempty" tf:"secondary_dfs_endpoint,omitempty"`
+	// +optional
+	SecondaryDfsHost string `json:"secondaryDfsHost,omitempty" tf:"secondary_dfs_host,omitempty"`
+	// +optional
+	SecondaryFileEndpoint string `json:"secondaryFileEndpoint,omitempty" tf:"secondary_file_endpoint,omitempty"`
+	// +optional
+	SecondaryFileHost string `json:"secondaryFileHost,omitempty" tf:"secondary_file_host,omitempty"`
+	// +optional
+	SecondaryLocation string `json:"secondaryLocation,omitempty" tf:"secondary_location,omitempty"`
+	// +optional
+	SecondaryQueueEndpoint string `json:"secondaryQueueEndpoint,omitempty" tf:"secondary_queue_endpoint,omitempty"`
+	// +optional
+	SecondaryQueueHost string `json:"secondaryQueueHost,omitempty" tf:"secondary_queue_host,omitempty"`
+	// +optional
+	SecondaryTableEndpoint string `json:"secondaryTableEndpoint,omitempty" tf:"secondary_table_endpoint,omitempty"`
+	// +optional
+	SecondaryTableHost string `json:"secondaryTableHost,omitempty" tf:"secondary_table_host,omitempty"`
+	// +optional
+	SecondaryWebEndpoint string `json:"secondaryWebEndpoint,omitempty" tf:"secondary_web_endpoint,omitempty"`
+	// +optional
+	SecondaryWebHost string `json:"secondaryWebHost,omitempty" tf:"secondary_web_host,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

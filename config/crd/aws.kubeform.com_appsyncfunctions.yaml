@@ -426,9 +426,7 @@ spec:
               type: string
           required:
           - apiID
-          - arn
           - dataSource
-          - functionID
           - name
           - providerRef
           - requestMappingTemplate
@@ -472,9 +470,7 @@ spec:
                   type: string
               required:
               - apiID
-              - arn
               - dataSource
-              - functionID
               - name
               - providerRef
               - requestMappingTemplate

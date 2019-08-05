@@ -465,7 +465,6 @@ spec:
                   name:
                     type: string
                 required:
-                - ID
                 - instanceType
                 type: object
               maxItems: 1
@@ -537,7 +536,6 @@ spec:
                   name:
                     type: string
                 required:
-                - ID
                 - instanceRole
                 - instanceType
                 type: object
@@ -588,7 +586,6 @@ spec:
                   name:
                     type: string
                 required:
-                - ID
                 - instanceType
                 type: object
               maxItems: 1
@@ -668,8 +665,6 @@ spec:
             visibleToAllUsers:
               type: boolean
           required:
-          - clusterState
-          - masterPublicDNS
           - name
           - providerRef
           - releaseLabel
@@ -752,7 +747,6 @@ spec:
                       name:
                         type: string
                     required:
-                    - ID
                     - instanceType
                     type: object
                   maxItems: 1
@@ -824,7 +818,6 @@ spec:
                       name:
                         type: string
                     required:
-                    - ID
                     - instanceRole
                     - instanceType
                     type: object
@@ -875,7 +868,6 @@ spec:
                       name:
                         type: string
                     required:
-                    - ID
                     - instanceType
                     type: object
                   maxItems: 1
@@ -955,8 +947,6 @@ spec:
                 visibleToAllUsers:
                   type: boolean
               required:
-              - clusterState
-              - masterPublicDNS
               - name
               - providerRef
               - releaseLabel

@@ -28,13 +28,15 @@ type MonitoringNotificationChannelSpec struct {
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	Name   string            `json:"name" tf:"name"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	Type    string `json:"type" tf:"type"`
 	// +optional
-	UserLabels         map[string]string `json:"userLabels,omitempty" tf:"user_labels,omitempty"`
-	VerificationStatus string            `json:"verificationStatus" tf:"verification_status"`
+	UserLabels map[string]string `json:"userLabels,omitempty" tf:"user_labels,omitempty"`
+	// +optional
+	VerificationStatus string `json:"verificationStatus,omitempty" tf:"verification_status,omitempty"`
 }
 
 type MonitoringNotificationChannelStatus struct {

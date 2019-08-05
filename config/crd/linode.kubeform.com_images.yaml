@@ -431,18 +431,10 @@ spec:
             vendor:
               type: string
           required:
-          - created
-          - createdBy
-          - deprecated
           - diskID
-          - expiry
-          - isPublic
           - label
           - linodeID
           - providerRef
-          - size
-          - type
-          - vendor
           type: object
         status:
           properties:
@@ -487,18 +479,10 @@ spec:
                 vendor:
                   type: string
               required:
-              - created
-              - createdBy
-              - deprecated
               - diskID
-              - expiry
-              - isPublic
               - label
               - linodeID
               - providerRef
-              - size
-              - type
-              - vendor
               type: object
             state:
               properties:

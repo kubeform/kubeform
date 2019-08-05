@@ -21,7 +21,8 @@ type SpannerInstanceIamBinding struct {
 type SpannerInstanceIamBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Etag     string `json:"etag" tf:"etag"`
+	// +optional
+	Etag     string `json:"etag,omitempty" tf:"etag,omitempty"`
 	Instance string `json:"instance" tf:"instance"`
 	// +kubebuilder:validation:UniqueItems=true
 	Members []string `json:"members" tf:"members"`

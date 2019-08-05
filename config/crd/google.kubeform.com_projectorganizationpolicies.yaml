@@ -472,10 +472,8 @@ spec:
               type: integer
           required:
           - constraint
-          - etag
           - project
           - providerRef
-          - updateTime
           type: object
         status:
           properties:
@@ -561,10 +559,8 @@ spec:
                   type: integer
               required:
               - constraint
-              - etag
               - project
               - providerRef
-              - updateTime
               type: object
             state:
               properties:

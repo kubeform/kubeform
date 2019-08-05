@@ -90,8 +90,9 @@ type ContainerNodePoolSpec struct {
 	Autoscaling []ContainerNodePoolSpecAutoscaling `json:"autoscaling,omitempty" tf:"autoscaling,omitempty"`
 	Cluster     string                             `json:"cluster" tf:"cluster"`
 	// +optional
-	InitialNodeCount  int      `json:"initialNodeCount,omitempty" tf:"initial_node_count,omitempty"`
-	InstanceGroupUrls []string `json:"instanceGroupUrls" tf:"instance_group_urls"`
+	InitialNodeCount int `json:"initialNodeCount,omitempty" tf:"initial_node_count,omitempty"`
+	// +optional
+	InstanceGroupUrls []string `json:"instanceGroupUrls,omitempty" tf:"instance_group_urls,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Management []ContainerNodePoolSpecManagement `json:"management,omitempty" tf:"management,omitempty"`

@@ -42,7 +42,8 @@ type EmrClusterSpecCoreInstanceGroup struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	EbsConfig []EmrClusterSpecCoreInstanceGroupEbsConfig `json:"ebsConfig,omitempty" tf:"ebs_config,omitempty"`
-	ID        string                                     `json:"ID" tf:"id"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
 	// +optional
 	InstanceCount int    `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
 	InstanceType  string `json:"instanceType" tf:"instance_type"`
@@ -85,7 +86,8 @@ type EmrClusterSpecInstanceGroup struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	EbsConfig []EmrClusterSpecInstanceGroupEbsConfig `json:"ebsConfig,omitempty" tf:"ebs_config,omitempty"`
-	ID        string                                 `json:"ID" tf:"id"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
 	// +optional
 	InstanceCount int    `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
 	InstanceRole  string `json:"instanceRole" tf:"instance_role"`
@@ -119,9 +121,10 @@ type EmrClusterSpecMasterInstanceGroup struct {
 	BidPrice string `json:"bidPrice,omitempty" tf:"bid_price,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	EbsConfig    []EmrClusterSpecMasterInstanceGroupEbsConfig `json:"ebsConfig,omitempty" tf:"ebs_config,omitempty"`
-	ID           string                                       `json:"ID" tf:"id"`
-	InstanceType string                                       `json:"instanceType" tf:"instance_type"`
+	EbsConfig []EmrClusterSpecMasterInstanceGroupEbsConfig `json:"ebsConfig,omitempty" tf:"ebs_config,omitempty"`
+	// +optional
+	ID           string `json:"ID,omitempty" tf:"id,omitempty"`
+	InstanceType string `json:"instanceType" tf:"instance_type"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 }
@@ -158,7 +161,8 @@ type EmrClusterSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	BootstrapAction []EmrClusterSpecBootstrapAction `json:"bootstrapAction,omitempty" tf:"bootstrap_action,omitempty"`
-	ClusterState    string                          `json:"clusterState" tf:"cluster_state"`
+	// +optional
+	ClusterState string `json:"clusterState,omitempty" tf:"cluster_state,omitempty"`
 	// +optional
 	Configurations string `json:"configurations,omitempty" tf:"configurations,omitempty"`
 	// +optional
@@ -196,9 +200,10 @@ type EmrClusterSpec struct {
 	// +optional
 	// Deprecated
 	MasterInstanceType string `json:"masterInstanceType,omitempty" tf:"master_instance_type,omitempty"`
-	MasterPublicDNS    string `json:"masterPublicDNS" tf:"master_public_dns"`
-	Name               string `json:"name" tf:"name"`
-	ReleaseLabel       string `json:"releaseLabel" tf:"release_label"`
+	// +optional
+	MasterPublicDNS string `json:"masterPublicDNS,omitempty" tf:"master_public_dns,omitempty"`
+	Name            string `json:"name" tf:"name"`
+	ReleaseLabel    string `json:"releaseLabel" tf:"release_label"`
 	// +optional
 	ScaleDownBehavior string `json:"scaleDownBehavior,omitempty" tf:"scale_down_behavior,omitempty"`
 	// +optional

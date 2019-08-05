@@ -35,7 +35,8 @@ type ComputeRegionBackendServiceSpec struct {
 	ConnectionDrainingTimeoutSec int `json:"connectionDrainingTimeoutSec,omitempty" tf:"connection_draining_timeout_sec,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	Fingerprint string `json:"fingerprint" tf:"fingerprint"`
+	// +optional
+	Fingerprint string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
@@ -46,8 +47,9 @@ type ComputeRegionBackendServiceSpec struct {
 	// +optional
 	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 	// +optional
-	Region   string `json:"region,omitempty" tf:"region,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 	// +optional
 	SessionAffinity string `json:"sessionAffinity,omitempty" tf:"session_affinity,omitempty"`
 	// +optional

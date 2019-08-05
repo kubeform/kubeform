@@ -418,7 +418,6 @@ spec:
           - certificate
           - fleetArn
           - providerRef
-          - websiteCaID
           type: object
         status:
           properties:
@@ -450,7 +449,6 @@ spec:
               - certificate
               - fleetArn
               - providerRef
-              - websiteCaID
               type: object
             state:
               properties:

@@ -514,9 +514,6 @@ spec:
                     type: string
                   permissions:
                     type: string
-                required:
-                - keyName
-                - permissions
                 type: object
               type: array
             sku:
@@ -542,18 +539,11 @@ spec:
             type:
               type: string
           required:
-          - eventHubEventsEndpoint
-          - eventHubEventsPath
-          - eventHubOperationsEndpoint
-          - eventHubOperationsPath
-          - hostname
           - location
           - name
           - providerRef
           - resourceGroupName
-          - sharedAccessPolicy
           - sku
-          - type
           type: object
         status:
           properties:
@@ -681,9 +671,6 @@ spec:
                         type: string
                       permissions:
                         type: string
-                    required:
-                    - keyName
-                    - permissions
                     type: object
                   type: array
                 sku:
@@ -709,18 +696,11 @@ spec:
                 type:
                   type: string
               required:
-              - eventHubEventsEndpoint
-              - eventHubEventsPath
-              - eventHubOperationsEndpoint
-              - eventHubOperationsPath
-              - hostname
               - location
               - name
               - providerRef
               - resourceGroupName
-              - sharedAccessPolicy
               - sku
-              - type
               type: object
             state:
               properties:

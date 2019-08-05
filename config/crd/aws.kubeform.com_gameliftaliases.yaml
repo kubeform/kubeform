@@ -427,7 +427,6 @@ spec:
               maxItems: 1
               type: array
           required:
-          - arn
           - name
           - providerRef
           - routingStrategy
@@ -471,7 +470,6 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - arn
               - name
               - providerRef
               - routingStrategy

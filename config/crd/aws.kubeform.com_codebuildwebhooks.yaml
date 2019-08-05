@@ -444,10 +444,8 @@ spec:
             url:
               type: string
           required:
-          - payloadURL
           - projectName
           - providerRef
-          - url
           type: object
         status:
           properties:
@@ -505,10 +503,8 @@ spec:
                 url:
                   type: string
               required:
-              - payloadURL
               - projectName
               - providerRef
-              - url
               type: object
             state:
               properties:

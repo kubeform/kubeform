@@ -427,7 +427,6 @@ spec:
             type:
               type: string
           required:
-          - arn
           - availabilityZone
           - providerRef
           type: object
@@ -470,7 +469,6 @@ spec:
                 type:
                   type: string
               required:
-              - arn
               - availabilityZone
               - providerRef
               type: object

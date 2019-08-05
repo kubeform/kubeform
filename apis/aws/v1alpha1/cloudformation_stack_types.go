@@ -33,8 +33,9 @@ type CloudformationStackSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	NotificationArns []string `json:"notificationArns,omitempty" tf:"notification_arns,omitempty"`
 	// +optional
-	OnFailure string            `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
-	Outputs   map[string]string `json:"outputs" tf:"outputs"`
+	OnFailure string `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
+	// +optional
+	Outputs map[string]string `json:"outputs,omitempty" tf:"outputs,omitempty"`
 	// +optional
 	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 	// +optional

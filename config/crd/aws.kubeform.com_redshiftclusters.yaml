@@ -521,9 +521,7 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
           - clusterIdentifier
-          - dnsName
           - nodeType
           - providerRef
           type: object
@@ -660,9 +658,7 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
               - clusterIdentifier
-              - dnsName
               - nodeType
               - providerRef
               type: object

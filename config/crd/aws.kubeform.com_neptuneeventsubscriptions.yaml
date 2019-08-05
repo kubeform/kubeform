@@ -435,8 +435,6 @@ spec:
                 type: string
               type: object
           required:
-          - arn
-          - customerAwsID
           - providerRef
           - snsTopicArn
           type: object
@@ -487,8 +485,6 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
-              - customerAwsID
               - providerRef
               - snsTopicArn
               type: object

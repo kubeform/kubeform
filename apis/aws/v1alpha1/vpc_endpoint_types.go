@@ -19,26 +19,34 @@ type VpcEndpoint struct {
 }
 
 type VpcEndpointSpecDnsEntry struct {
-	DnsName      string `json:"dnsName" tf:"dns_name"`
-	HostedZoneID string `json:"hostedZoneID" tf:"hosted_zone_id"`
+	// +optional
+	DnsName string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
+	// +optional
+	HostedZoneID string `json:"hostedZoneID,omitempty" tf:"hosted_zone_id,omitempty"`
 }
 
 type VpcEndpointSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	AutoAccept bool                      `json:"autoAccept,omitempty" tf:"auto_accept,omitempty"`
-	CidrBlocks []string                  `json:"cidrBlocks" tf:"cidr_blocks"`
-	DnsEntry   []VpcEndpointSpecDnsEntry `json:"dnsEntry" tf:"dns_entry"`
-	// +kubebuilder:validation:UniqueItems=true
-	NetworkInterfaceIDS []string `json:"networkInterfaceIDS" tf:"network_interface_ids"`
-	OwnerID             string   `json:"ownerID" tf:"owner_id"`
+	AutoAccept bool `json:"autoAccept,omitempty" tf:"auto_accept,omitempty"`
 	// +optional
-	Policy       string `json:"policy,omitempty" tf:"policy,omitempty"`
-	PrefixListID string `json:"prefixListID" tf:"prefix_list_id"`
+	CidrBlocks []string `json:"cidrBlocks,omitempty" tf:"cidr_blocks,omitempty"`
+	// +optional
+	DnsEntry []VpcEndpointSpecDnsEntry `json:"dnsEntry,omitempty" tf:"dns_entry,omitempty"`
+	// +optional
+	// +kubebuilder:validation:UniqueItems=true
+	NetworkInterfaceIDS []string `json:"networkInterfaceIDS,omitempty" tf:"network_interface_ids,omitempty"`
+	// +optional
+	OwnerID string `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
+	// +optional
+	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
+	// +optional
+	PrefixListID string `json:"prefixListID,omitempty" tf:"prefix_list_id,omitempty"`
 	// +optional
 	PrivateDNSEnabled bool `json:"privateDNSEnabled,omitempty" tf:"private_dns_enabled,omitempty"`
-	RequesterManaged  bool `json:"requesterManaged" tf:"requester_managed"`
+	// +optional
+	RequesterManaged bool `json:"requesterManaged,omitempty" tf:"requester_managed,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	RouteTableIDS []string `json:"routeTableIDS,omitempty" tf:"route_table_ids,omitempty"`
@@ -46,7 +54,8 @@ type VpcEndpointSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroupIDS []string `json:"securityGroupIDS,omitempty" tf:"security_group_ids,omitempty"`
 	ServiceName      string   `json:"serviceName" tf:"service_name"`
-	State            string   `json:"state" tf:"state"`
+	// +optional
+	State string `json:"state,omitempty" tf:"state,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS,omitempty" tf:"subnet_ids,omitempty"`

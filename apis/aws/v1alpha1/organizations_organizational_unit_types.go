@@ -19,19 +19,25 @@ type OrganizationsOrganizationalUnit struct {
 }
 
 type OrganizationsOrganizationalUnitSpecAccounts struct {
-	Arn   string `json:"arn" tf:"arn"`
-	Email string `json:"email" tf:"email"`
-	ID    string `json:"ID" tf:"id"`
-	Name  string `json:"name" tf:"name"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
+	// +optional
+	Email string `json:"email,omitempty" tf:"email,omitempty"`
+	// +optional
+	ID string `json:"ID,omitempty" tf:"id,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type OrganizationsOrganizationalUnitSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Accounts []OrganizationsOrganizationalUnitSpecAccounts `json:"accounts" tf:"accounts"`
-	Arn      string                                        `json:"arn" tf:"arn"`
-	Name     string                                        `json:"name" tf:"name"`
-	ParentID string                                        `json:"parentID" tf:"parent_id"`
+	// +optional
+	Accounts []OrganizationsOrganizationalUnitSpecAccounts `json:"accounts,omitempty" tf:"accounts,omitempty"`
+	// +optional
+	Arn      string `json:"arn,omitempty" tf:"arn,omitempty"`
+	Name     string `json:"name" tf:"name"`
+	ParentID string `json:"parentID" tf:"parent_id"`
 }
 
 type OrganizationsOrganizationalUnitStatus struct {

@@ -425,11 +425,7 @@ spec:
                 type: string
               type: object
           required:
-          - arn
-          - awsDevice
           - bandwidth
-          - hasLogicalRedundancy
-          - jumboFrameCapable
           - location
           - name
           - providerRef
@@ -471,11 +467,7 @@ spec:
                     type: string
                   type: object
               required:
-              - arn
-              - awsDevice
               - bandwidth
-              - hasLogicalRedundancy
-              - jumboFrameCapable
               - location
               - name
               - providerRef

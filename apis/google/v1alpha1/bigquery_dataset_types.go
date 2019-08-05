@@ -44,24 +44,28 @@ type BigqueryDatasetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	Access       []BigqueryDatasetSpecAccess `json:"access,omitempty" tf:"access,omitempty"`
-	CreationTime int                         `json:"creationTime" tf:"creation_time"`
-	DatasetID    string                      `json:"datasetID" tf:"dataset_id"`
+	Access []BigqueryDatasetSpecAccess `json:"access,omitempty" tf:"access,omitempty"`
+	// +optional
+	CreationTime int    `json:"creationTime,omitempty" tf:"creation_time,omitempty"`
+	DatasetID    string `json:"datasetID" tf:"dataset_id"`
 	// +optional
 	DefaultTableExpirationMs int `json:"defaultTableExpirationMs,omitempty" tf:"default_table_expiration_ms,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	Etag        string `json:"etag" tf:"etag"`
+	// +optional
+	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`
 	// +optional
 	FriendlyName string `json:"friendlyName,omitempty" tf:"friendly_name,omitempty"`
 	// +optional
-	Labels           map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	LastModifiedTime int               `json:"lastModifiedTime" tf:"last_modified_time"`
+	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	// +optional
+	LastModifiedTime int `json:"lastModifiedTime,omitempty" tf:"last_modified_time,omitempty"`
 	// +optional
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
-	Project  string `json:"project,omitempty" tf:"project,omitempty"`
-	SelfLink string `json:"selfLink" tf:"self_link"`
+	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// +optional
+	SelfLink string `json:"selfLink,omitempty" tf:"self_link,omitempty"`
 }
 
 type BigqueryDatasetStatus struct {

@@ -514,12 +514,8 @@ spec:
             zoneID:
               type: string
           required:
-          - arn
-          - dnsName
           - listener
           - providerRef
-          - sourceSecurityGroupID
-          - zoneID
           type: object
         status:
           properties:
@@ -647,12 +643,8 @@ spec:
                 zoneID:
                   type: string
               required:
-              - arn
-              - dnsName
               - listener
               - providerRef
-              - sourceSecurityGroupID
-              - zoneID
               type: object
             state:
               properties:

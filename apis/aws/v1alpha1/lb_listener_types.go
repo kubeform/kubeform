@@ -100,7 +100,8 @@ type LbListenerSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	CertificateArn  string                        `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
 	DefaultAction   []LbListenerSpecDefaultAction `json:"defaultAction" tf:"default_action"`

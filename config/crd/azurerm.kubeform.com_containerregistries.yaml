@@ -453,9 +453,7 @@ spec:
                 type: string
               type: object
           required:
-          - adminUsername
           - location
-          - loginServer
           - name
           - providerRef
           - resourceGroupName
@@ -525,9 +523,7 @@ spec:
                     type: string
                   type: object
               required:
-              - adminUsername
               - location
-              - loginServer
               - name
               - providerRef
               - resourceGroupName

@@ -21,16 +21,21 @@ type MssqlElasticpool struct {
 }
 
 type MssqlElasticpoolSpecElasticPoolProperties struct {
+	// +optional
 	// Deprecated
-	CreationDate string `json:"creationDate" tf:"creation_date"`
+	CreationDate string `json:"creationDate,omitempty" tf:"creation_date,omitempty"`
+	// +optional
 	// Deprecated
-	LicenseType string `json:"licenseType" tf:"license_type"`
+	LicenseType string `json:"licenseType,omitempty" tf:"license_type,omitempty"`
+	// +optional
 	// Deprecated
-	MaxSizeBytes int `json:"maxSizeBytes" tf:"max_size_bytes"`
+	MaxSizeBytes int `json:"maxSizeBytes,omitempty" tf:"max_size_bytes,omitempty"`
+	// +optional
 	// Deprecated
-	State string `json:"state" tf:"state"`
+	State string `json:"state,omitempty" tf:"state,omitempty"`
+	// +optional
 	// Deprecated
-	ZoneRedundant bool `json:"zoneRedundant" tf:"zone_redundant"`
+	ZoneRedundant bool `json:"zoneRedundant,omitempty" tf:"zone_redundant,omitempty"`
 }
 
 type MssqlElasticpoolSpecPerDatabaseSettings struct {
@@ -49,9 +54,10 @@ type MssqlElasticpoolSpecSku struct {
 type MssqlElasticpoolSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// Deprecated
-	ElasticPoolProperties []MssqlElasticpoolSpecElasticPoolProperties `json:"elasticPoolProperties" tf:"elastic_pool_properties"`
+	ElasticPoolProperties []MssqlElasticpoolSpecElasticPoolProperties `json:"elasticPoolProperties,omitempty" tf:"elastic_pool_properties,omitempty"`
 	Location              string                                      `json:"location" tf:"location"`
 	// +optional
 	MaxSizeBytes int `json:"maxSizeBytes,omitempty" tf:"max_size_bytes,omitempty"`

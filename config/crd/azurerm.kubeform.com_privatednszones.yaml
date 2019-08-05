@@ -423,11 +423,7 @@ spec:
                 type: string
               type: object
           required:
-          - maxNumberOfRecordSets
-          - maxNumberOfVirtualNetworkLinks
-          - maxNumberOfVirtualNetworkLinksWithRegistration
           - name
-          - numberOfRecordSets
           - providerRef
           - resourceGroupName
           type: object
@@ -466,11 +462,7 @@ spec:
                     type: string
                   type: object
               required:
-              - maxNumberOfRecordSets
-              - maxNumberOfVirtualNetworkLinks
-              - maxNumberOfVirtualNetworkLinksWithRegistration
               - name
-              - numberOfRecordSets
               - providerRef
               - resourceGroupName
               type: object

@@ -22,8 +22,9 @@ type TrafficManagerEndpointSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	EndpointLocation      string `json:"endpointLocation,omitempty" tf:"endpoint_location,omitempty"`
-	EndpointMonitorStatus string `json:"endpointMonitorStatus" tf:"endpoint_monitor_status"`
+	EndpointLocation string `json:"endpointLocation,omitempty" tf:"endpoint_location,omitempty"`
+	// +optional
+	EndpointMonitorStatus string `json:"endpointMonitorStatus,omitempty" tf:"endpoint_monitor_status,omitempty"`
 	// +optional
 	EndpointStatus string `json:"endpointStatus,omitempty" tf:"endpoint_status,omitempty"`
 	// +optional

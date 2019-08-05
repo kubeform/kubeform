@@ -25,13 +25,16 @@ type ApiManagementCertificateSpec struct {
 
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	Data              string `json:"-" sensitive:"true" tf:"data"`
-	Expiration        string `json:"expiration" tf:"expiration"`
-	Name              string `json:"name" tf:"name"`
+	// +optional
+	Expiration string `json:"expiration,omitempty" tf:"expiration,omitempty"`
+	Name       string `json:"name" tf:"name"`
 	// +optional
 	Password          string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
-	Subject           string `json:"subject" tf:"subject"`
-	Thumbprint        string `json:"thumbprint" tf:"thumbprint"`
+	// +optional
+	Subject string `json:"subject,omitempty" tf:"subject,omitempty"`
+	// +optional
+	Thumbprint string `json:"thumbprint,omitempty" tf:"thumbprint,omitempty"`
 }
 
 type ApiManagementCertificateStatus struct {

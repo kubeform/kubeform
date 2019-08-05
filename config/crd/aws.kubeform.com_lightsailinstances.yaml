@@ -441,20 +441,11 @@ spec:
             username:
               type: string
           required:
-          - arn
           - availabilityZone
           - blueprintID
           - bundleID
-          - cpuCount
-          - createdAt
-          - ipv6Address
-          - isStaticIP
           - name
-          - privateIPAddress
           - providerRef
-          - publicIPAddress
-          - ramSize
-          - username
           type: object
         status:
           properties:
@@ -509,20 +500,11 @@ spec:
                 username:
                   type: string
               required:
-              - arn
               - availabilityZone
               - blueprintID
               - bundleID
-              - cpuCount
-              - createdAt
-              - ipv6Address
-              - isStaticIP
               - name
-              - privateIPAddress
               - providerRef
-              - publicIPAddress
-              - ramSize
-              - username
               type: object
             state:
               properties:

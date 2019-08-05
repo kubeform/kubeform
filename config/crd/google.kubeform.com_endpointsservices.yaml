@@ -411,11 +411,6 @@ spec:
                           type: string
                         syntax:
                           type: string
-                      required:
-                      - name
-                      - requestType
-                      - responseType
-                      - syntax
                       type: object
                     type: array
                   name:
@@ -424,11 +419,6 @@ spec:
                     type: string
                   version:
                     type: string
-                required:
-                - methods
-                - name
-                - syntax
-                - version
                 type: object
               type: array
             configID:
@@ -442,9 +432,6 @@ spec:
                     type: string
                   name:
                     type: string
-                required:
-                - address
-                - name
                 type: object
               type: array
             grpcConfig:
@@ -470,10 +457,6 @@ spec:
             serviceName:
               type: string
           required:
-          - apis
-          - configID
-          - dnsAddress
-          - endpoints
           - providerRef
           - serviceName
           type: object
@@ -500,11 +483,6 @@ spec:
                               type: string
                             syntax:
                               type: string
-                          required:
-                          - name
-                          - requestType
-                          - responseType
-                          - syntax
                           type: object
                         type: array
                       name:
@@ -513,11 +491,6 @@ spec:
                         type: string
                       version:
                         type: string
-                    required:
-                    - methods
-                    - name
-                    - syntax
-                    - version
                     type: object
                   type: array
                 configID:
@@ -531,9 +504,6 @@ spec:
                         type: string
                       name:
                         type: string
-                    required:
-                    - address
-                    - name
                     type: object
                   type: array
                 grpcConfig:
@@ -559,10 +529,6 @@ spec:
                 serviceName:
                   type: string
               required:
-              - apis
-              - configID
-              - dnsAddress
-              - endpoints
               - providerRef
               - serviceName
               type: object

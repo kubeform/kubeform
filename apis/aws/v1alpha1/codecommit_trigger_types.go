@@ -31,7 +31,8 @@ type CodecommitTriggerSpecTrigger struct {
 type CodecommitTriggerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	ConfigurationID string `json:"configurationID" tf:"configuration_id"`
+	// +optional
+	ConfigurationID string `json:"configurationID,omitempty" tf:"configuration_id,omitempty"`
 	RepositoryName  string `json:"repositoryName" tf:"repository_name"`
 	// +kubebuilder:validation:MaxItems=10
 	// +kubebuilder:validation:UniqueItems=true

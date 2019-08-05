@@ -446,7 +446,6 @@ spec:
                   securityGroup:
                     type: string
                 required:
-                - ID
                 - addressPrefix
                 - name
                 type: object
@@ -521,7 +520,6 @@ spec:
                       securityGroup:
                         type: string
                     required:
-                    - ID
                     - addressPrefix
                     - name
                     type: object

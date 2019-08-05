@@ -23,7 +23,8 @@ type KmsCiphertextSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	CiphertextBlob string `json:"ciphertextBlob" tf:"ciphertext_blob"`
+	// +optional
+	CiphertextBlob string `json:"ciphertextBlob,omitempty" tf:"ciphertext_blob,omitempty"`
 	// +optional
 	Context   map[string]string `json:"context,omitempty" tf:"context,omitempty"`
 	KeyID     string            `json:"keyID" tf:"key_id"`

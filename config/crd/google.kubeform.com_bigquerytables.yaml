@@ -469,18 +469,9 @@ spec:
               maxItems: 1
               type: array
           required:
-          - creationTime
           - datasetID
-          - etag
-          - lastModifiedTime
-          - location
-          - numBytes
-          - numLongTermBytes
-          - numRows
           - providerRef
-          - selfLink
           - tableID
-          - type
           type: object
         status:
           properties:
@@ -563,18 +554,9 @@ spec:
                   maxItems: 1
                   type: array
               required:
-              - creationTime
               - datasetID
-              - etag
-              - lastModifiedTime
-              - location
-              - numBytes
-              - numLongTermBytes
-              - numRows
               - providerRef
-              - selfLink
               - tableID
-              - type
               type: object
             state:
               properties:

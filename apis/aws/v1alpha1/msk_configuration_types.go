@@ -21,14 +21,16 @@ type MskConfiguration struct {
 type MskConfigurationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
-	KafkaVersions    []string `json:"kafkaVersions" tf:"kafka_versions"`
-	LatestRevision   int      `json:"latestRevision" tf:"latest_revision"`
-	Name             string   `json:"name" tf:"name"`
-	ServerProperties string   `json:"serverProperties" tf:"server_properties"`
+	KafkaVersions []string `json:"kafkaVersions" tf:"kafka_versions"`
+	// +optional
+	LatestRevision   int    `json:"latestRevision,omitempty" tf:"latest_revision,omitempty"`
+	Name             string `json:"name" tf:"name"`
+	ServerProperties string `json:"serverProperties" tf:"server_properties"`
 }
 
 type MskConfigurationStatus struct {

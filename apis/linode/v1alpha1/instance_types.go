@@ -32,14 +32,18 @@ type InstanceSpecAlerts struct {
 }
 
 type InstanceSpecBackupsSchedule struct {
-	Day    string `json:"day" tf:"day"`
-	Window string `json:"window" tf:"window"`
+	// +optional
+	Day string `json:"day,omitempty" tf:"day,omitempty"`
+	// +optional
+	Window string `json:"window,omitempty" tf:"window,omitempty"`
 }
 
 type InstanceSpecBackups struct {
-	Enabled bool `json:"enabled" tf:"enabled"`
+	// +optional
+	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Schedule []InstanceSpecBackupsSchedule `json:"schedule" tf:"schedule"`
+	Schedule []InstanceSpecBackupsSchedule `json:"schedule,omitempty" tf:"schedule,omitempty"`
 }
 
 type InstanceSpecConfigDevicesSda struct {
@@ -183,7 +187,8 @@ type InstanceSpecDisk struct {
 	AuthorizedUsers []string `json:"authorizedUsers,omitempty" tf:"authorized_users,omitempty"`
 	// +optional
 	Filesystem string `json:"filesystem,omitempty" tf:"filesystem,omitempty"`
-	ID         int    `json:"ID" tf:"id"`
+	// +optional
+	ID int `json:"ID,omitempty" tf:"id,omitempty"`
 	// +optional
 	Image string `json:"image,omitempty" tf:"image,omitempty"`
 	Label string `json:"label" tf:"label"`
@@ -199,10 +204,14 @@ type InstanceSpecDisk struct {
 }
 
 type InstanceSpecSpecs struct {
-	Disk     int `json:"disk" tf:"disk"`
-	Memory   int `json:"memory" tf:"memory"`
-	Transfer int `json:"transfer" tf:"transfer"`
-	Vcpus    int `json:"vcpus" tf:"vcpus"`
+	// +optional
+	Disk int `json:"disk,omitempty" tf:"disk,omitempty"`
+	// +optional
+	Memory int `json:"memory,omitempty" tf:"memory,omitempty"`
+	// +optional
+	Transfer int `json:"transfer,omitempty" tf:"transfer,omitempty"`
+	// +optional
+	Vcpus int `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
 }
 
 type InstanceSpec struct {
@@ -219,8 +228,9 @@ type InstanceSpec struct {
 	AuthorizedUsers []string `json:"authorizedUsers,omitempty" tf:"authorized_users,omitempty"`
 	// +optional
 	BackupID int `json:"backupID,omitempty" tf:"backup_id,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Backups []InstanceSpecBackups `json:"backups" tf:"backups"`
+	Backups []InstanceSpecBackups `json:"backups,omitempty" tf:"backups,omitempty"`
 	// +optional
 	BackupsEnabled bool `json:"backupsEnabled,omitempty" tf:"backups_enabled,omitempty"`
 	// +optional
@@ -232,26 +242,32 @@ type InstanceSpec struct {
 	// +optional
 	Group string `json:"group,omitempty" tf:"group,omitempty"`
 	// +optional
-	Image     string `json:"image,omitempty" tf:"image,omitempty"`
-	IpAddress string `json:"ipAddress" tf:"ip_address"`
+	Image string `json:"image,omitempty" tf:"image,omitempty"`
+	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Ipv4 []string `json:"ipv4" tf:"ipv4"`
-	Ipv6 string   `json:"ipv6" tf:"ipv6"`
+	Ipv4 []string `json:"ipv4,omitempty" tf:"ipv4,omitempty"`
+	// +optional
+	Ipv6 string `json:"ipv6,omitempty" tf:"ipv6,omitempty"`
 	// +optional
 	Label string `json:"label,omitempty" tf:"label,omitempty"`
 	// +optional
-	PrivateIP        bool   `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
-	PrivateIPAddress string `json:"privateIPAddress" tf:"private_ip_address"`
+	PrivateIP bool `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
+	// +optional
+	PrivateIPAddress string `json:"privateIPAddress,omitempty" tf:"private_ip_address,omitempty"`
 	Region           string `json:"region" tf:"region"`
 	// +optional
 	RootPass string `json:"-" sensitive:"true" tf:"root_pass,omitempty"`
+	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Specs []InstanceSpecSpecs `json:"specs" tf:"specs"`
+	Specs []InstanceSpecSpecs `json:"specs,omitempty" tf:"specs,omitempty"`
 	// +optional
 	StackscriptData map[string]string `json:"-" sensitive:"true" tf:"stackscript_data,omitempty"`
 	// +optional
-	StackscriptID int    `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
-	Status        string `json:"status" tf:"status"`
+	StackscriptID int `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
 	// +optional
 	SwapSize int `json:"swapSize,omitempty" tf:"swap_size,omitempty"`
 	// +optional

@@ -20,17 +20,20 @@ type Route53ResolverEndpoint struct {
 
 type Route53ResolverEndpointSpecIpAddress struct {
 	// +optional
-	Ip       string `json:"ip,omitempty" tf:"ip,omitempty"`
-	IpID     string `json:"ipID" tf:"ip_id"`
+	Ip string `json:"ip,omitempty" tf:"ip,omitempty"`
+	// +optional
+	IpID     string `json:"ipID,omitempty" tf:"ip_id,omitempty"`
 	SubnetID string `json:"subnetID" tf:"subnet_id"`
 }
 
 type Route53ResolverEndpointSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn       string `json:"arn" tf:"arn"`
+	// +optional
+	Arn       string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Direction string `json:"direction" tf:"direction"`
-	HostVpcID string `json:"hostVpcID" tf:"host_vpc_id"`
+	// +optional
+	HostVpcID string `json:"hostVpcID,omitempty" tf:"host_vpc_id,omitempty"`
 	// +kubebuilder:validation:MaxItems=10
 	// +kubebuilder:validation:MinItems=2
 	// +kubebuilder:validation:UniqueItems=true

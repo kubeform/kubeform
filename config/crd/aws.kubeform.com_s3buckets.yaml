@@ -719,8 +719,6 @@ spec:
             websiteEndpoint:
               type: string
           required:
-          - bucketDomainName
-          - bucketRegionalDomainName
           - providerRef
           type: object
         status:
@@ -1054,8 +1052,6 @@ spec:
                 websiteEndpoint:
                   type: string
               required:
-              - bucketDomainName
-              - bucketRegionalDomainName
               - providerRef
               type: object
             state:

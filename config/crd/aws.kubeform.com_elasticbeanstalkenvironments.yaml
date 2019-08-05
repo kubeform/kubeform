@@ -497,18 +497,9 @@ spec:
             waitForReadyTimeout:
               type: string
           required:
-          - allSettings
           - application
-          - arn
-          - autoscalingGroups
-          - cname
-          - instances
-          - launchConfigurations
-          - loadBalancers
           - name
           - providerRef
-          - queues
-          - triggers
           type: object
         status:
           properties:
@@ -619,18 +610,9 @@ spec:
                 waitForReadyTimeout:
                   type: string
               required:
-              - allSettings
               - application
-              - arn
-              - autoscalingGroups
-              - cname
-              - instances
-              - launchConfigurations
-              - loadBalancers
               - name
               - providerRef
-              - queues
-              - triggers
               type: object
             state:
               properties:

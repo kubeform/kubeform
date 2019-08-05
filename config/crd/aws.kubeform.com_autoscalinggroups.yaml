@@ -583,7 +583,6 @@ spec:
             waitForElbCapacity:
               type: integer
           required:
-          - arn
           - maxSize
           - minSize
           - providerRef
@@ -783,7 +782,6 @@ spec:
                 waitForElbCapacity:
                   type: integer
               required:
-              - arn
               - maxSize
               - minSize
               - providerRef

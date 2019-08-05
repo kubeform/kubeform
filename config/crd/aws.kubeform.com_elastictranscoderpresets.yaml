@@ -535,7 +535,6 @@ spec:
               type: array
               uniqueItems: true
           required:
-          - arn
           - container
           - providerRef
           type: object
@@ -686,7 +685,6 @@ spec:
                   type: array
                   uniqueItems: true
               required:
-              - arn
               - container
               - providerRef
               type: object

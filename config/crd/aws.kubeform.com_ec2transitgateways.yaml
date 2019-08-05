@@ -433,10 +433,6 @@ spec:
             vpnEcmpSupport:
               type: string
           required:
-          - arn
-          - associationDefaultRouteTableID
-          - ownerID
-          - propagationDefaultRouteTableID
           - providerRef
           type: object
         status:
@@ -484,10 +480,6 @@ spec:
                 vpnEcmpSupport:
                   type: string
               required:
-              - arn
-              - associationDefaultRouteTableID
-              - ownerID
-              - propagationDefaultRouteTableID
               - providerRef
               type: object
             state:

@@ -36,8 +36,9 @@ type ApplicationInsightsWebTestSpec struct {
 	Name              string   `json:"name" tf:"name"`
 	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	RetryEnabled       bool   `json:"retryEnabled,omitempty" tf:"retry_enabled,omitempty"`
-	SyntheticMonitorID string `json:"syntheticMonitorID" tf:"synthetic_monitor_id"`
+	RetryEnabled bool `json:"retryEnabled,omitempty" tf:"retry_enabled,omitempty"`
+	// +optional
+	SyntheticMonitorID string `json:"syntheticMonitorID,omitempty" tf:"synthetic_monitor_id,omitempty"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

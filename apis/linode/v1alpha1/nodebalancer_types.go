@@ -21,28 +21,37 @@ type Nodebalancer struct {
 }
 
 type NodebalancerSpecTransfer struct {
-	In    json.Number `json:"in" tf:"in"`
-	Out   json.Number `json:"out" tf:"out"`
-	Total json.Number `json:"total" tf:"total"`
+	// +optional
+	In json.Number `json:"in,omitempty" tf:"in,omitempty"`
+	// +optional
+	Out json.Number `json:"out,omitempty" tf:"out,omitempty"`
+	// +optional
+	Total json.Number `json:"total,omitempty" tf:"total,omitempty"`
 }
 
 type NodebalancerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	ClientConnThrottle int    `json:"clientConnThrottle,omitempty" tf:"client_conn_throttle,omitempty"`
-	Created            string `json:"created" tf:"created"`
-	Hostname           string `json:"hostname" tf:"hostname"`
-	Ipv4               string `json:"ipv4" tf:"ipv4"`
-	Ipv6               string `json:"ipv6" tf:"ipv6"`
+	ClientConnThrottle int `json:"clientConnThrottle,omitempty" tf:"client_conn_throttle,omitempty"`
+	// +optional
+	Created string `json:"created,omitempty" tf:"created,omitempty"`
+	// +optional
+	Hostname string `json:"hostname,omitempty" tf:"hostname,omitempty"`
+	// +optional
+	Ipv4 string `json:"ipv4,omitempty" tf:"ipv4,omitempty"`
+	// +optional
+	Ipv6 string `json:"ipv6,omitempty" tf:"ipv6,omitempty"`
 	// +optional
 	Label  string `json:"label,omitempty" tf:"label,omitempty"`
 	Region string `json:"region" tf:"region"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Tags     []string                            `json:"tags,omitempty" tf:"tags,omitempty"`
-	Transfer map[string]NodebalancerSpecTransfer `json:"transfer" tf:"transfer"`
-	Updated  string                              `json:"updated" tf:"updated"`
+	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
+	// +optional
+	Transfer map[string]NodebalancerSpecTransfer `json:"transfer,omitempty" tf:"transfer,omitempty"`
+	// +optional
+	Updated string `json:"updated,omitempty" tf:"updated,omitempty"`
 }
 
 type NodebalancerStatus struct {

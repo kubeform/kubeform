@@ -434,7 +434,6 @@ spec:
               type: string
           required:
           - apiID
-          - arn
           - field
           - providerRef
           - requestTemplate
@@ -487,7 +486,6 @@ spec:
                   type: string
               required:
               - apiID
-              - arn
               - field
               - providerRef
               - requestTemplate

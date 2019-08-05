@@ -516,7 +516,6 @@ spec:
               type: string
           required:
           - displayName
-          - name
           - providerRef
           - timeout
           type: object
@@ -648,7 +647,6 @@ spec:
                   type: string
               required:
               - displayName
-              - name
               - providerRef
               - timeout
               type: object

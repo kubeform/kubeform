@@ -416,7 +416,6 @@ spec:
               type: string
           required:
           - alias
-          - arn
           - providerRef
           - roleArn
           type: object
@@ -448,7 +447,6 @@ spec:
                   type: string
               required:
               - alias
-              - arn
               - providerRef
               - roleArn
               type: object

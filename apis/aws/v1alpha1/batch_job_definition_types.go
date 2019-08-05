@@ -31,7 +31,8 @@ type BatchJobDefinitionSpecTimeout struct {
 type BatchJobDefinitionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	ContainerProperties string `json:"containerProperties,omitempty" tf:"container_properties,omitempty"`
 	Name                string `json:"name" tf:"name"`
@@ -40,7 +41,8 @@ type BatchJobDefinitionSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RetryStrategy []BatchJobDefinitionSpecRetryStrategy `json:"retryStrategy,omitempty" tf:"retry_strategy,omitempty"`
-	Revision      int                                   `json:"revision" tf:"revision"`
+	// +optional
+	Revision int `json:"revision,omitempty" tf:"revision,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Timeout []BatchJobDefinitionSpecTimeout `json:"timeout,omitempty" tf:"timeout,omitempty"`

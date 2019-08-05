@@ -462,12 +462,8 @@ spec:
             selfLink:
               type: string
           required:
-          - creationTime
           - datasetID
-          - etag
-          - lastModifiedTime
           - providerRef
-          - selfLink
           type: object
         status:
           properties:
@@ -543,12 +539,8 @@ spec:
                 selfLink:
                   type: string
               required:
-              - creationTime
               - datasetID
-              - etag
-              - lastModifiedTime
               - providerRef
-              - selfLink
               type: object
             state:
               properties:

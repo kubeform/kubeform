@@ -444,7 +444,6 @@ spec:
             vpcID:
               type: string
           required:
-          - ownerID
           - providerRef
           - vpcID
           type: object
@@ -504,7 +503,6 @@ spec:
                 vpcID:
                   type: string
               required:
-              - ownerID
               - providerRef
               - vpcID
               type: object

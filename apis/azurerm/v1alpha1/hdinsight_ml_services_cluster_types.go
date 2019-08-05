@@ -105,18 +105,21 @@ type HdinsightMlServicesClusterSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	ClusterVersion  string `json:"clusterVersion" tf:"cluster_version"`
-	EdgeSSHEndpoint string `json:"edgeSSHEndpoint" tf:"edge_ssh_endpoint"`
+	ClusterVersion string `json:"clusterVersion" tf:"cluster_version"`
+	// +optional
+	EdgeSSHEndpoint string `json:"edgeSSHEndpoint,omitempty" tf:"edge_ssh_endpoint,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
-	Gateway           []HdinsightMlServicesClusterSpecGateway `json:"gateway" tf:"gateway"`
-	HttpsEndpoint     string                                  `json:"httpsEndpoint" tf:"https_endpoint"`
-	Location          string                                  `json:"location" tf:"location"`
-	Name              string                                  `json:"name" tf:"name"`
-	ResourceGroupName string                                  `json:"resourceGroupName" tf:"resource_group_name"`
+	Gateway []HdinsightMlServicesClusterSpecGateway `json:"gateway" tf:"gateway"`
+	// +optional
+	HttpsEndpoint     string `json:"httpsEndpoint,omitempty" tf:"https_endpoint,omitempty"`
+	Location          string `json:"location" tf:"location"`
+	Name              string `json:"name" tf:"name"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
-	Roles          []HdinsightMlServicesClusterSpecRoles          `json:"roles" tf:"roles"`
-	Rstudio        bool                                           `json:"rstudio" tf:"rstudio"`
-	SshEndpoint    string                                         `json:"sshEndpoint" tf:"ssh_endpoint"`
+	Roles   []HdinsightMlServicesClusterSpecRoles `json:"roles" tf:"roles"`
+	Rstudio bool                                  `json:"rstudio" tf:"rstudio"`
+	// +optional
+	SshEndpoint    string                                         `json:"sshEndpoint,omitempty" tf:"ssh_endpoint,omitempty"`
 	StorageAccount []HdinsightMlServicesClusterSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

@@ -442,7 +442,6 @@ spec:
               type: object
           required:
           - location
-          - metricID
           - name
           - providerRef
           - resourceGroupName
@@ -501,7 +500,6 @@ spec:
                   type: object
               required:
               - location
-              - metricID
               - name
               - providerRef
               - resourceGroupName

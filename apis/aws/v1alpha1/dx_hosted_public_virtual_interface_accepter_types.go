@@ -21,7 +21,8 @@ type DxHostedPublicVirtualInterfaceAccepter struct {
 type DxHostedPublicVirtualInterfaceAccepterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Arn string `json:"arn" tf:"arn"`
+	// +optional
+	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`
 	// +optional
 	Tags               map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	VirtualInterfaceID string            `json:"virtualInterfaceID" tf:"virtual_interface_id"`

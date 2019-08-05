@@ -40,10 +40,13 @@ type CodebuildWebhookSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	FilterGroup []CodebuildWebhookSpecFilterGroup `json:"filterGroup,omitempty" tf:"filter_group,omitempty"`
-	PayloadURL  string                            `json:"payloadURL" tf:"payload_url"`
-	ProjectName string                            `json:"projectName" tf:"project_name"`
-	Secret      string                            `json:"-" sensitive:"true" tf:"secret"`
-	Url         string                            `json:"url" tf:"url"`
+	// +optional
+	PayloadURL  string `json:"payloadURL,omitempty" tf:"payload_url,omitempty"`
+	ProjectName string `json:"projectName" tf:"project_name"`
+	// +optional
+	Secret string `json:"-" sensitive:"true" tf:"secret,omitempty"`
+	// +optional
+	Url string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type CodebuildWebhookStatus struct {

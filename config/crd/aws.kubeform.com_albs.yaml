@@ -475,12 +475,7 @@ spec:
             zoneID:
               type: string
           required:
-          - arn
-          - arnSuffix
-          - dnsName
           - providerRef
-          - vpcID
-          - zoneID
           type: object
         status:
           properties:
@@ -569,12 +564,7 @@ spec:
                 zoneID:
                   type: string
               required:
-              - arn
-              - arnSuffix
-              - dnsName
               - providerRef
-              - vpcID
-              - zoneID
               type: object
             state:
               properties:

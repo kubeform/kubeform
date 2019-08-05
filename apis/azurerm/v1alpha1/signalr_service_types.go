@@ -28,17 +28,25 @@ type SignalrServiceSpec struct {
 
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	Hostname                  string `json:"hostname" tf:"hostname"`
-	IpAddress                 string `json:"ipAddress" tf:"ip_address"`
-	Location                  string `json:"location" tf:"location"`
-	Name                      string `json:"name" tf:"name"`
-	PrimaryAccessKey          string `json:"-" sensitive:"true" tf:"primary_access_key"`
-	PrimaryConnectionString   string `json:"-" sensitive:"true" tf:"primary_connection_string"`
-	PublicPort                int    `json:"publicPort" tf:"public_port"`
-	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
-	SecondaryAccessKey        string `json:"-" sensitive:"true" tf:"secondary_access_key"`
-	SecondaryConnectionString string `json:"-" sensitive:"true" tf:"secondary_connection_string"`
-	ServerPort                int    `json:"serverPort" tf:"server_port"`
+	// +optional
+	Hostname string `json:"hostname,omitempty" tf:"hostname,omitempty"`
+	// +optional
+	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+	Location  string `json:"location" tf:"location"`
+	Name      string `json:"name" tf:"name"`
+	// +optional
+	PrimaryAccessKey string `json:"-" sensitive:"true" tf:"primary_access_key,omitempty"`
+	// +optional
+	PrimaryConnectionString string `json:"-" sensitive:"true" tf:"primary_connection_string,omitempty"`
+	// +optional
+	PublicPort        int    `json:"publicPort,omitempty" tf:"public_port,omitempty"`
+	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	// +optional
+	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key,omitempty"`
+	// +optional
+	SecondaryConnectionString string `json:"-" sensitive:"true" tf:"secondary_connection_string,omitempty"`
+	// +optional
+	ServerPort int `json:"serverPort,omitempty" tf:"server_port,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku []SignalrServiceSpecSku `json:"sku" tf:"sku"`
 	// +optional

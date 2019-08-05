@@ -29,8 +29,9 @@ type GuarddutyMemberSpec struct {
 	// +optional
 	InvitationMessage string `json:"invitationMessage,omitempty" tf:"invitation_message,omitempty"`
 	// +optional
-	Invite             bool   `json:"invite,omitempty" tf:"invite,omitempty"`
-	RelationshipStatus string `json:"relationshipStatus" tf:"relationship_status"`
+	Invite bool `json:"invite,omitempty" tf:"invite,omitempty"`
+	// +optional
+	RelationshipStatus string `json:"relationshipStatus,omitempty" tf:"relationship_status,omitempty"`
 }
 
 type GuarddutyMemberStatus struct {

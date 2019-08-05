@@ -45,11 +45,13 @@ type ApiManagementAPISpec struct {
 	DisplayName string `json:"displayName" tf:"display_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Import    []ApiManagementAPISpecImport `json:"import,omitempty" tf:"import,omitempty"`
-	IsCurrent bool                         `json:"isCurrent" tf:"is_current"`
-	IsOnline  bool                         `json:"isOnline" tf:"is_online"`
-	Name      string                       `json:"name" tf:"name"`
-	Path      string                       `json:"path" tf:"path"`
+	Import []ApiManagementAPISpecImport `json:"import,omitempty" tf:"import,omitempty"`
+	// +optional
+	IsCurrent bool `json:"isCurrent,omitempty" tf:"is_current,omitempty"`
+	// +optional
+	IsOnline bool   `json:"isOnline,omitempty" tf:"is_online,omitempty"`
+	Name     string `json:"name" tf:"name"`
+	Path     string `json:"path" tf:"path"`
 	// +kubebuilder:validation:UniqueItems=true
 	Protocols         []string `json:"protocols" tf:"protocols"`
 	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`
@@ -61,8 +63,10 @@ type ApiManagementAPISpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SubscriptionKeyParameterNames []ApiManagementAPISpecSubscriptionKeyParameterNames `json:"subscriptionKeyParameterNames,omitempty" tf:"subscription_key_parameter_names,omitempty"`
-	Version                       string                                              `json:"version" tf:"version"`
-	VersionSetID                  string                                              `json:"versionSetID" tf:"version_set_id"`
+	// +optional
+	Version string `json:"version,omitempty" tf:"version,omitempty"`
+	// +optional
+	VersionSetID string `json:"versionSetID,omitempty" tf:"version_set_id,omitempty"`
 }
 
 type ApiManagementAPIStatus struct {

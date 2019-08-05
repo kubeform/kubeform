@@ -423,13 +423,9 @@ spec:
               description: A Number represents a JSON number literal.
               type: string
           required:
-          - createdAt
           - dropletID
-          - minDiskSize
           - name
           - providerRef
-          - regions
-          - size
           type: object
         status:
           properties:
@@ -466,13 +462,9 @@ spec:
                   description: A Number represents a JSON number literal.
                   type: string
               required:
-              - createdAt
               - dropletID
-              - minDiskSize
               - name
               - providerRef
-              - regions
-              - size
               type: object
             state:
               properties:
