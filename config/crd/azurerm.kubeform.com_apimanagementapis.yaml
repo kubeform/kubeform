@@ -429,6 +429,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            isCurrent:
+              type: boolean
+            isOnline:
+              type: boolean
             name:
               type: string
             path:
@@ -468,15 +472,23 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            version:
+              type: string
+            versionSetID:
+              type: string
           required:
           - apiManagementName
           - displayName
+          - isCurrent
+          - isOnline
           - name
           - path
           - protocols
           - providerRef
           - resourceGroupName
           - revision
+          - version
+          - versionSetID
           type: object
         status:
           properties:
@@ -519,6 +531,10 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                isCurrent:
+                  type: boolean
+                isOnline:
+                  type: boolean
                 name:
                   type: string
                 path:
@@ -558,15 +574,23 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                version:
+                  type: string
+                versionSetID:
+                  type: string
               required:
               - apiManagementName
               - displayName
+              - isCurrent
+              - isOnline
               - name
               - path
               - protocols
               - providerRef
               - resourceGroupName
               - revision
+              - version
+              - versionSetID
               type: object
             state:
               properties:

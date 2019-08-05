@@ -503,9 +503,25 @@ spec:
                     type: array
                   displayName:
                     type: string
+                  name:
+                    type: string
                 required:
                 - displayName
+                - name
                 type: object
+              type: array
+            creationRecord:
+              items:
+                properties:
+                  mutateTime:
+                    type: string
+                  mutatedBy:
+                    type: string
+                required:
+                - mutateTime
+                - mutatedBy
+                type: object
+              maxItems: 1
               type: array
             displayName:
               type: string
@@ -515,6 +531,8 @@ spec:
               items:
                 type: string
               type: array
+            name:
+              type: string
             notificationChannels:
               items:
                 type: string
@@ -533,8 +551,10 @@ spec:
           required:
           - combiner
           - conditions
+          - creationRecord
           - displayName
           - enabled
+          - name
           - providerRef
           type: object
         status:
@@ -654,9 +674,25 @@ spec:
                         type: array
                       displayName:
                         type: string
+                      name:
+                        type: string
                     required:
                     - displayName
+                    - name
                     type: object
+                  type: array
+                creationRecord:
+                  items:
+                    properties:
+                      mutateTime:
+                        type: string
+                      mutatedBy:
+                        type: string
+                    required:
+                    - mutateTime
+                    - mutatedBy
+                    type: object
+                  maxItems: 1
                   type: array
                 displayName:
                   type: string
@@ -666,6 +702,8 @@ spec:
                   items:
                     type: string
                   type: array
+                name:
+                  type: string
                 notificationChannels:
                   items:
                     type: string
@@ -684,8 +722,10 @@ spec:
               required:
               - combiner
               - conditions
+              - creationRecord
               - displayName
               - enabled
+              - name
               - providerRef
               type: object
             state:

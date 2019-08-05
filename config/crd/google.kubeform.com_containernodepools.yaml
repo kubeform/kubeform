@@ -414,6 +414,10 @@ spec:
               type: string
             initialNodeCount:
               type: integer
+            instanceGroupUrls:
+              items:
+                type: string
+              type: array
             management:
               items:
                 properties:
@@ -531,6 +535,7 @@ spec:
               type: string
           required:
           - cluster
+          - instanceGroupUrls
           - providerRef
           type: object
         status:
@@ -559,6 +564,10 @@ spec:
                   type: string
                 initialNodeCount:
                   type: integer
+                instanceGroupUrls:
+                  items:
+                    type: string
+                  type: array
                 management:
                   items:
                     properties:
@@ -676,6 +685,7 @@ spec:
                   type: string
               required:
               - cluster
+              - instanceGroupUrls
               - providerRef
               type: object
             state:

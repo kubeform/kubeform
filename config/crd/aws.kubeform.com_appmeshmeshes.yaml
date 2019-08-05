@@ -397,6 +397,12 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            createdDate:
+              type: string
+            lastUpdatedDate:
+              type: string
             name:
               type: string
             providerRef:
@@ -427,6 +433,9 @@ spec:
                 type: string
               type: object
           required:
+          - arn
+          - createdDate
+          - lastUpdatedDate
           - name
           - providerRef
           type: object
@@ -439,6 +448,12 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                createdDate:
+                  type: string
+                lastUpdatedDate:
+                  type: string
                 name:
                   type: string
                 providerRef:
@@ -469,6 +484,9 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
+              - createdDate
+              - lastUpdatedDate
               - name
               - providerRef
               type: object

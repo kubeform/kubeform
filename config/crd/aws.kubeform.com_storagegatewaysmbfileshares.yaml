@@ -397,9 +397,13 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             authentication:
               type: string
             defaultStorageClass:
+              type: string
+            fileshareID:
               type: string
             gatewayArn:
               type: string
@@ -439,6 +443,8 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - arn
+          - fileshareID
           - gatewayArn
           - locationArn
           - providerRef
@@ -453,9 +459,13 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 authentication:
                   type: string
                 defaultStorageClass:
+                  type: string
+                fileshareID:
                   type: string
                 gatewayArn:
                   type: string
@@ -495,6 +505,8 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - arn
+              - fileshareID
               - gatewayArn
               - locationArn
               - providerRef

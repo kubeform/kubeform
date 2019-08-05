@@ -517,6 +517,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            defaultSiteHostname:
+              type: string
             enabled:
               type: boolean
             httpsOnly:
@@ -524,9 +526,15 @@ spec:
             identity:
               items:
                 properties:
+                  principalID:
+                    type: string
+                  tenantID:
+                    type: string
                   type:
                     type: string
                 required:
+                - principalID
+                - tenantID
                 - type
                 type: object
               maxItems: 1
@@ -559,6 +567,10 @@ spec:
               maxItems: 1
               type: array
             name:
+              type: string
+            outboundIPAddresses:
+              type: string
+            possibleOutboundIPAddresses:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -658,16 +670,44 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            siteCredential:
+              items:
+                properties:
+                  username:
+                    type: string
+                required:
+                - username
+                type: object
+              maxItems: 1
+              type: array
+            sourceControl:
+              items:
+                properties:
+                  branch:
+                    type: string
+                  repoURL:
+                    type: string
+                required:
+                - branch
+                - repoURL
+                type: object
+              maxItems: 1
+              type: array
             tags:
               additionalProperties:
                 type: string
               type: object
           required:
           - appServicePlanID
+          - defaultSiteHostname
           - location
           - name
+          - outboundIPAddresses
+          - possibleOutboundIPAddresses
           - providerRef
           - resourceGroupName
+          - siteCredential
+          - sourceControl
           type: object
         status:
           properties:
@@ -798,6 +838,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                defaultSiteHostname:
+                  type: string
                 enabled:
                   type: boolean
                 httpsOnly:
@@ -805,9 +847,15 @@ spec:
                 identity:
                   items:
                     properties:
+                      principalID:
+                        type: string
+                      tenantID:
+                        type: string
                       type:
                         type: string
                     required:
+                    - principalID
+                    - tenantID
                     - type
                     type: object
                   maxItems: 1
@@ -840,6 +888,10 @@ spec:
                   maxItems: 1
                   type: array
                 name:
+                  type: string
+                outboundIPAddresses:
+                  type: string
+                possibleOutboundIPAddresses:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -939,16 +991,44 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                siteCredential:
+                  items:
+                    properties:
+                      username:
+                        type: string
+                    required:
+                    - username
+                    type: object
+                  maxItems: 1
+                  type: array
+                sourceControl:
+                  items:
+                    properties:
+                      branch:
+                        type: string
+                      repoURL:
+                        type: string
+                    required:
+                    - branch
+                    - repoURL
+                    type: object
+                  maxItems: 1
+                  type: array
                 tags:
                   additionalProperties:
                     type: string
                   type: object
               required:
               - appServicePlanID
+              - defaultSiteHostname
               - location
               - name
+              - outboundIPAddresses
+              - possibleOutboundIPAddresses
               - providerRef
               - resourceGroupName
+              - siteCredential
+              - sourceControl
               type: object
             state:
               properties:

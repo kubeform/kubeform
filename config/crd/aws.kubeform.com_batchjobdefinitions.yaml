@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             containerProperties:
               type: string
             name:
@@ -422,6 +424,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            revision:
+              type: integer
             timeout:
               items:
                 properties:
@@ -433,8 +437,10 @@ spec:
             type:
               type: string
           required:
+          - arn
           - name
           - providerRef
+          - revision
           - type
           type: object
         status:
@@ -446,6 +452,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 containerProperties:
                   type: string
                 name:
@@ -471,6 +479,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                revision:
+                  type: integer
                 timeout:
                   items:
                     properties:
@@ -482,8 +492,10 @@ spec:
                 type:
                   type: string
               required:
+              - arn
               - name
               - providerRef
+              - revision
               - type
               type: object
             state:

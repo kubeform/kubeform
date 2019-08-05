@@ -418,11 +418,14 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            uniqueName:
+              type: string
           required:
           - location
           - name
           - providerRef
           - resourceGroupName
+          - uniqueName
           type: object
         status:
           properties:
@@ -454,11 +457,14 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                uniqueName:
+                  type: string
               required:
               - location
               - name
               - providerRef
               - resourceGroupName
+              - uniqueName
               type: object
             state:
               properties:

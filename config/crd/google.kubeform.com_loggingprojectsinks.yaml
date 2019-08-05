@@ -416,10 +416,13 @@ spec:
               type: object
             uniqueWriterIdentity:
               type: boolean
+            writerIdentity:
+              type: string
           required:
           - destination
           - name
           - providerRef
+          - writerIdentity
           type: object
         status:
           properties:
@@ -449,10 +452,13 @@ spec:
                   type: object
                 uniqueWriterIdentity:
                   type: boolean
+                writerIdentity:
+                  type: string
               required:
               - destination
               - name
               - providerRef
+              - writerIdentity
               type: object
             state:
               properties:

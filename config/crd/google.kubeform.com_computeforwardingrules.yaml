@@ -399,6 +399,8 @@ spec:
           properties:
             backendService:
               type: string
+            creationTimestamp:
+              type: string
             description:
               type: string
             ipAddress:
@@ -406,6 +408,8 @@ spec:
             ipProtocol:
               type: string
             ipVersion:
+              type: string
+            labelFingerprint:
               type: string
             labels:
               additionalProperties:
@@ -441,7 +445,12 @@ spec:
               type: object
             region:
               type: string
+            selfLink:
+              type: string
             serviceLabel:
+              description: Deprecated
+              type: string
+            serviceName:
               description: Deprecated
               type: string
             subnetwork:
@@ -449,8 +458,12 @@ spec:
             target:
               type: string
           required:
+          - creationTimestamp
+          - labelFingerprint
           - name
           - providerRef
+          - selfLink
+          - serviceName
           type: object
         status:
           properties:
@@ -463,6 +476,8 @@ spec:
               properties:
                 backendService:
                   type: string
+                creationTimestamp:
+                  type: string
                 description:
                   type: string
                 ipAddress:
@@ -470,6 +485,8 @@ spec:
                 ipProtocol:
                   type: string
                 ipVersion:
+                  type: string
+                labelFingerprint:
                   type: string
                 labels:
                   additionalProperties:
@@ -505,7 +522,12 @@ spec:
                   type: object
                 region:
                   type: string
+                selfLink:
+                  type: string
                 serviceLabel:
+                  description: Deprecated
+                  type: string
+                serviceName:
                   description: Deprecated
                   type: string
                 subnetwork:
@@ -513,8 +535,12 @@ spec:
                 target:
                   type: string
               required:
+              - creationTimestamp
+              - labelFingerprint
               - name
               - providerRef
+              - selfLink
+              - serviceName
               type: object
             state:
               properties:

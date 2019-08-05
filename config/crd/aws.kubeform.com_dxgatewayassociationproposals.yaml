@@ -404,6 +404,10 @@ spec:
               uniqueItems: true
             associatedGatewayID:
               type: string
+            associatedGatewayOwnerAccountID:
+              type: string
+            associatedGatewayType:
+              type: string
             dxGatewayID:
               type: string
             dxGatewayOwnerAccountID:
@@ -421,6 +425,8 @@ spec:
               description: Deprecated
               type: string
           required:
+          - associatedGatewayOwnerAccountID
+          - associatedGatewayType
           - dxGatewayID
           - dxGatewayOwnerAccountID
           - providerRef
@@ -441,6 +447,10 @@ spec:
                   uniqueItems: true
                 associatedGatewayID:
                   type: string
+                associatedGatewayOwnerAccountID:
+                  type: string
+                associatedGatewayType:
+                  type: string
                 dxGatewayID:
                   type: string
                 dxGatewayOwnerAccountID:
@@ -458,6 +468,8 @@ spec:
                   description: Deprecated
                   type: string
               required:
+              - associatedGatewayOwnerAccountID
+              - associatedGatewayType
               - dxGatewayID
               - dxGatewayOwnerAccountID
               - providerRef

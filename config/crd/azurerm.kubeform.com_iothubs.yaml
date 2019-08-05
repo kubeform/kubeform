@@ -419,6 +419,14 @@ spec:
                 - type
                 type: object
               type: array
+            eventHubEventsEndpoint:
+              type: string
+            eventHubEventsPath:
+              type: string
+            eventHubOperationsEndpoint:
+              type: string
+            eventHubOperationsPath:
+              type: string
             fallbackRoute:
               items:
                 properties:
@@ -435,6 +443,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            hostname:
+              type: string
             ipFilterRule:
               items:
                 properties:
@@ -497,6 +507,18 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            sharedAccessPolicy:
+              items:
+                properties:
+                  keyName:
+                    type: string
+                  permissions:
+                    type: string
+                required:
+                - keyName
+                - permissions
+                type: object
+              type: array
             sku:
               items:
                 properties:
@@ -517,12 +539,21 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            type:
+              type: string
           required:
+          - eventHubEventsEndpoint
+          - eventHubEventsPath
+          - eventHubOperationsEndpoint
+          - eventHubOperationsPath
+          - hostname
           - location
           - name
           - providerRef
           - resourceGroupName
+          - sharedAccessPolicy
           - sku
+          - type
           type: object
         status:
           properties:
@@ -555,6 +586,14 @@ spec:
                     - type
                     type: object
                   type: array
+                eventHubEventsEndpoint:
+                  type: string
+                eventHubEventsPath:
+                  type: string
+                eventHubOperationsEndpoint:
+                  type: string
+                eventHubOperationsPath:
+                  type: string
                 fallbackRoute:
                   items:
                     properties:
@@ -571,6 +610,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                hostname:
+                  type: string
                 ipFilterRule:
                   items:
                     properties:
@@ -633,6 +674,18 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                sharedAccessPolicy:
+                  items:
+                    properties:
+                      keyName:
+                        type: string
+                      permissions:
+                        type: string
+                    required:
+                    - keyName
+                    - permissions
+                    type: object
+                  type: array
                 sku:
                   items:
                     properties:
@@ -653,12 +706,21 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                type:
+                  type: string
               required:
+              - eventHubEventsEndpoint
+              - eventHubEventsPath
+              - eventHubOperationsEndpoint
+              - eventHubOperationsPath
+              - hostname
               - location
               - name
               - providerRef
               - resourceGroupName
+              - sharedAccessPolicy
               - sku
+              - type
               type: object
             state:
               properties:

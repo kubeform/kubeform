@@ -399,6 +399,8 @@ spec:
           properties:
             application:
               type: string
+            arn:
+              type: string
             bucket:
               type: string
             description:
@@ -424,6 +426,7 @@ spec:
               type: object
           required:
           - application
+          - arn
           - bucket
           - key
           - name
@@ -439,6 +442,8 @@ spec:
             output:
               properties:
                 application:
+                  type: string
+                arn:
                   type: string
                 bucket:
                   type: string
@@ -465,6 +470,7 @@ spec:
                   type: object
               required:
               - application
+              - arn
               - bucket
               - key
               - name

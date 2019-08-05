@@ -21,8 +21,9 @@ type DxGateway struct {
 type DxGatewaySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	AmazonSideAsn string `json:"amazonSideAsn" tf:"amazon_side_asn"`
-	Name          string `json:"name" tf:"name"`
+	AmazonSideAsn  string `json:"amazonSideAsn" tf:"amazon_side_asn"`
+	Name           string `json:"name" tf:"name"`
+	OwnerAccountID string `json:"ownerAccountID" tf:"owner_account_id"`
 }
 
 type DxGatewayStatus struct {

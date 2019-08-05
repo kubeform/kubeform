@@ -34,6 +34,7 @@ type ElasticBeanstalkApplicationSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AppversionLifecycle []ElasticBeanstalkApplicationSpecAppversionLifecycle `json:"appversionLifecycle,omitempty" tf:"appversion_lifecycle,omitempty"`
+	Arn                 string                                               `json:"arn" tf:"arn"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`

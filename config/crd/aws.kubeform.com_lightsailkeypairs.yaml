@@ -397,11 +397,21 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            encryptedFingerprint:
+              type: string
+            encryptedPrivateKey:
+              type: string
+            fingerprint:
+              type: string
             name:
               type: string
             namePrefix:
               type: string
             pgpKey:
+              type: string
+            privateKey:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -415,6 +425,11 @@ spec:
             publicKey:
               type: string
           required:
+          - arn
+          - encryptedFingerprint
+          - encryptedPrivateKey
+          - fingerprint
+          - privateKey
           - providerRef
           type: object
         status:
@@ -426,11 +441,21 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                encryptedFingerprint:
+                  type: string
+                encryptedPrivateKey:
+                  type: string
+                fingerprint:
+                  type: string
                 name:
                   type: string
                 namePrefix:
                   type: string
                 pgpKey:
+                  type: string
+                privateKey:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -444,6 +469,11 @@ spec:
                 publicKey:
                   type: string
               required:
+              - arn
+              - encryptedFingerprint
+              - encryptedPrivateKey
+              - fingerprint
+              - privateKey
               - providerRef
               type: object
             state:

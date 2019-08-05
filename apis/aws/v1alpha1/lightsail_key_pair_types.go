@@ -21,12 +21,17 @@ type LightsailKeyPair struct {
 type LightsailKeyPairSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn                  string `json:"arn" tf:"arn"`
+	EncryptedFingerprint string `json:"encryptedFingerprint" tf:"encrypted_fingerprint"`
+	EncryptedPrivateKey  string `json:"encryptedPrivateKey" tf:"encrypted_private_key"`
+	Fingerprint          string `json:"fingerprint" tf:"fingerprint"`
 	// +optional
 	Name string `json:"name,omitempty" tf:"name,omitempty"`
 	// +optional
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	// +optional
-	PgpKey string `json:"pgpKey,omitempty" tf:"pgp_key,omitempty"`
+	PgpKey     string `json:"pgpKey,omitempty" tf:"pgp_key,omitempty"`
+	PrivateKey string `json:"privateKey" tf:"private_key"`
 	// +optional
 	PublicKey string `json:"publicKey,omitempty" tf:"public_key,omitempty"`
 }

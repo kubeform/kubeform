@@ -39,6 +39,9 @@ type ApiGatewayDomainNameSpec struct {
 	CertificateName string `json:"certificateName,omitempty" tf:"certificate_name,omitempty"`
 	// +optional
 	CertificatePrivateKey string `json:"-" sensitive:"true" tf:"certificate_private_key,omitempty"`
+	CertificateUploadDate string `json:"certificateUploadDate" tf:"certificate_upload_date"`
+	CloudfrontDomainName  string `json:"cloudfrontDomainName" tf:"cloudfront_domain_name"`
+	CloudfrontZoneID      string `json:"cloudfrontZoneID" tf:"cloudfront_zone_id"`
 	DomainName            string `json:"domainName" tf:"domain_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -48,6 +51,8 @@ type ApiGatewayDomainNameSpec struct {
 	RegionalCertificateArn string `json:"regionalCertificateArn,omitempty" tf:"regional_certificate_arn,omitempty"`
 	// +optional
 	RegionalCertificateName string `json:"regionalCertificateName,omitempty" tf:"regional_certificate_name,omitempty"`
+	RegionalDomainName      string `json:"regionalDomainName" tf:"regional_domain_name"`
+	RegionalZoneID          string `json:"regionalZoneID" tf:"regional_zone_id"`
 }
 
 type ApiGatewayDomainNameStatus struct {

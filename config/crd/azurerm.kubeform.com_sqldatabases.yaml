@@ -401,9 +401,15 @@ spec:
               type: string
             createMode:
               type: string
+            creationDate:
+              type: string
+            defaultSecondaryLocation:
+              type: string
             edition:
               type: string
             elasticPoolName:
+              type: string
+            encryption:
               type: string
             import:
               items:
@@ -497,6 +503,9 @@ spec:
               maxItems: 1
               type: array
           required:
+          - creationDate
+          - defaultSecondaryLocation
+          - encryption
           - location
           - name
           - providerRef
@@ -516,9 +525,15 @@ spec:
                   type: string
                 createMode:
                   type: string
+                creationDate:
+                  type: string
+                defaultSecondaryLocation:
+                  type: string
                 edition:
                   type: string
                 elasticPoolName:
+                  type: string
+                encryption:
                   type: string
                 import:
                   items:
@@ -612,6 +627,9 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - creationDate
+              - defaultSecondaryLocation
+              - encryption
               - location
               - name
               - providerRef

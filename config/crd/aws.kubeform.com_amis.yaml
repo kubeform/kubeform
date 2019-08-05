@@ -442,6 +442,8 @@ spec:
               type: string
             kernelID:
               type: string
+            manageEbsSnapshots:
+              type: boolean
             name:
               type: string
             providerRef:
@@ -457,6 +459,8 @@ spec:
               type: string
             rootDeviceName:
               type: string
+            rootSnapshotID:
+              type: string
             sriovNetSupport:
               type: string
             tags:
@@ -466,8 +470,10 @@ spec:
             virtualizationType:
               type: string
           required:
+          - manageEbsSnapshots
           - name
           - providerRef
+          - rootSnapshotID
           type: object
         status:
           properties:
@@ -523,6 +529,8 @@ spec:
                   type: string
                 kernelID:
                   type: string
+                manageEbsSnapshots:
+                  type: boolean
                 name:
                   type: string
                 providerRef:
@@ -538,6 +546,8 @@ spec:
                   type: string
                 rootDeviceName:
                   type: string
+                rootSnapshotID:
+                  type: string
                 sriovNetSupport:
                   type: string
                 tags:
@@ -547,8 +557,10 @@ spec:
                 virtualizationType:
                   type: string
               required:
+              - manageEbsSnapshots
               - name
               - providerRef
+              - rootSnapshotID
               type: object
             state:
               properties:

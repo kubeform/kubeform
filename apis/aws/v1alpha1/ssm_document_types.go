@@ -18,6 +18,17 @@ type SsmDocument struct {
 	Status            SsmDocumentStatus `json:"status,omitempty"`
 }
 
+type SsmDocumentSpecParameter struct {
+	// +optional
+	DefaultValue string `json:"defaultValue,omitempty" tf:"default_value,omitempty"`
+	// +optional
+	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +optional
+	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	// +optional
+	Type string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
 type SsmDocumentSpecPermissions struct {
 	AccountIDS string `json:"accountIDS" tf:"account_ids"`
 	Type       string `json:"type" tf:"type"`
@@ -26,13 +37,25 @@ type SsmDocumentSpecPermissions struct {
 type SsmDocumentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Content string `json:"content" tf:"content"`
+	Arn            string `json:"arn" tf:"arn"`
+	Content        string `json:"content" tf:"content"`
+	CreatedDate    string `json:"createdDate" tf:"created_date"`
+	DefaultVersion string `json:"defaultVersion" tf:"default_version"`
+	Description    string `json:"description" tf:"description"`
 	// +optional
-	DocumentFormat string `json:"documentFormat,omitempty" tf:"document_format,omitempty"`
-	DocumentType   string `json:"documentType" tf:"document_type"`
-	Name           string `json:"name" tf:"name"`
+	DocumentFormat string                     `json:"documentFormat,omitempty" tf:"document_format,omitempty"`
+	DocumentType   string                     `json:"documentType" tf:"document_type"`
+	Hash           string                     `json:"hash" tf:"hash"`
+	HashType       string                     `json:"hashType" tf:"hash_type"`
+	LatestVersion  string                     `json:"latestVersion" tf:"latest_version"`
+	Name           string                     `json:"name" tf:"name"`
+	Owner          string                     `json:"owner" tf:"owner"`
+	Parameter      []SsmDocumentSpecParameter `json:"parameter" tf:"parameter"`
 	// +optional
-	Permissions map[string]SsmDocumentSpecPermissions `json:"permissions,omitempty" tf:"permissions,omitempty"`
+	Permissions   map[string]SsmDocumentSpecPermissions `json:"permissions,omitempty" tf:"permissions,omitempty"`
+	PlatformTypes []string                              `json:"platformTypes" tf:"platform_types"`
+	SchemaVersion string                                `json:"schemaVersion" tf:"schema_version"`
+	Status        string                                `json:"status" tf:"status"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

@@ -470,6 +470,12 @@ spec:
               type: string
             networkSecurityGroupID:
               type: string
+            privateIPAddress:
+              type: string
+            privateIPAddresses:
+              items:
+                type: string
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -491,6 +497,8 @@ spec:
           - ipConfiguration
           - location
           - name
+          - privateIPAddress
+          - privateIPAddresses
           - providerRef
           - resourceGroupName
           type: object
@@ -576,6 +584,12 @@ spec:
                   type: string
                 networkSecurityGroupID:
                   type: string
+                privateIPAddress:
+                  type: string
+                privateIPAddresses:
+                  items:
+                    type: string
+                  type: array
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -597,6 +611,8 @@ spec:
               - ipConfiguration
               - location
               - name
+              - privateIPAddress
+              - privateIPAddresses
               - providerRef
               - resourceGroupName
               type: object

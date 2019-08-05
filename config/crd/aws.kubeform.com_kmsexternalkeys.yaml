@@ -397,12 +397,20 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             deletionWindowInDays:
               type: integer
             description:
               type: string
             enabled:
               type: boolean
+            expirationModel:
+              type: string
+            keyState:
+              type: string
+            keyUsage:
+              type: string
             policy:
               type: string
             providerRef:
@@ -430,6 +438,10 @@ spec:
             validTo:
               type: string
           required:
+          - arn
+          - expirationModel
+          - keyState
+          - keyUsage
           - providerRef
           type: object
         status:
@@ -441,12 +453,20 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 deletionWindowInDays:
                   type: integer
                 description:
                   type: string
                 enabled:
                   type: boolean
+                expirationModel:
+                  type: string
+                keyState:
+                  type: string
+                keyUsage:
+                  type: string
                 policy:
                   type: string
                 providerRef:
@@ -474,6 +494,10 @@ spec:
                 validTo:
                   type: string
               required:
+              - arn
+              - expirationModel
+              - keyState
+              - keyUsage
               - providerRef
               type: object
             state:

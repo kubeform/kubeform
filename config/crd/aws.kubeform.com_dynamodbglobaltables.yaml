@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             name:
               type: string
             providerRef:
@@ -419,6 +421,7 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - arn
           - name
           - providerRef
           - replica
@@ -432,6 +435,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 name:
                   type: string
                 providerRef:
@@ -454,6 +459,7 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - arn
               - name
               - providerRef
               - replica

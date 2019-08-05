@@ -23,8 +23,10 @@ type CdnSpec struct {
 
 	// +optional
 	CertificateID string `json:"certificateID,omitempty" tf:"certificate_id,omitempty"`
+	CreatedAt     string `json:"createdAt" tf:"created_at"`
 	// +optional
 	CustomDomain string `json:"customDomain,omitempty" tf:"custom_domain,omitempty"`
+	Endpoint     string `json:"endpoint" tf:"endpoint"`
 	Origin       string `json:"origin" tf:"origin"`
 	// +optional
 	Ttl int `json:"ttl,omitempty" tf:"ttl,omitempty"`

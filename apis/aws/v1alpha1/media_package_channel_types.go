@@ -18,12 +18,26 @@ type MediaPackageChannel struct {
 	Status            MediaPackageChannelStatus `json:"status,omitempty"`
 }
 
+type MediaPackageChannelSpecHlsIngestIngestEndpoints struct {
+	Password string `json:"-" sensitive:"true" tf:"password"`
+	Url      string `json:"url" tf:"url"`
+	Username string `json:"username" tf:"username"`
+}
+
+type MediaPackageChannelSpecHlsIngest struct {
+	IngestEndpoints []MediaPackageChannelSpecHlsIngestIngestEndpoints `json:"ingestEndpoints" tf:"ingest_endpoints"`
+}
+
 type MediaPackageChannelSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	Arn       string `json:"arn" tf:"arn"`
 	ChannelID string `json:"channelID" tf:"channel_id"`
 	// +optional
-	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Description string                             `json:"description,omitempty" tf:"description,omitempty"`
+	HlsIngest   []MediaPackageChannelSpecHlsIngest `json:"hlsIngest" tf:"hls_ingest"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

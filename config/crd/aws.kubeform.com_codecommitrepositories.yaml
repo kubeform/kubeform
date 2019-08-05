@@ -397,6 +397,12 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            cloneURLHTTP:
+              type: string
+            cloneURLSSH:
+              type: string
             defaultBranch:
               type: string
             description:
@@ -410,6 +416,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            repositoryID:
+              type: string
             repositoryName:
               type: string
             tags:
@@ -417,7 +425,11 @@ spec:
                 type: string
               type: object
           required:
+          - arn
+          - cloneURLHTTP
+          - cloneURLSSH
           - providerRef
+          - repositoryID
           - repositoryName
           type: object
         status:
@@ -429,6 +441,12 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                cloneURLHTTP:
+                  type: string
+                cloneURLSSH:
+                  type: string
                 defaultBranch:
                   type: string
                 description:
@@ -442,6 +460,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                repositoryID:
+                  type: string
                 repositoryName:
                   type: string
                 tags:
@@ -449,7 +469,11 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
+              - cloneURLHTTP
+              - cloneURLSSH
               - providerRef
+              - repositoryID
               - repositoryName
               type: object
             state:

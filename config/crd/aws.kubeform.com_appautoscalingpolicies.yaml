@@ -401,6 +401,8 @@ spec:
               items:
                 type: string
               type: array
+            arn:
+              type: string
             name:
               type: string
             policyType:
@@ -509,6 +511,7 @@ spec:
               maxItems: 1
               type: array
           required:
+          - arn
           - name
           - providerRef
           - resourceID
@@ -528,6 +531,8 @@ spec:
                   items:
                     type: string
                   type: array
+                arn:
+                  type: string
                 name:
                   type: string
                 policyType:
@@ -636,6 +641,7 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - arn
               - name
               - providerRef
               - resourceID

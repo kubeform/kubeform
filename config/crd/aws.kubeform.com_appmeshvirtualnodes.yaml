@@ -397,6 +397,12 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            createdDate:
+              type: string
+            lastUpdatedDate:
+              type: string
             meshName:
               type: string
             name:
@@ -543,6 +549,9 @@ spec:
                 type: string
               type: object
           required:
+          - arn
+          - createdDate
+          - lastUpdatedDate
           - meshName
           - name
           - providerRef
@@ -557,6 +566,12 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                createdDate:
+                  type: string
+                lastUpdatedDate:
+                  type: string
                 meshName:
                   type: string
                 name:
@@ -703,6 +718,9 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
+              - createdDate
+              - lastUpdatedDate
               - meshName
               - name
               - providerRef

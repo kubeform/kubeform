@@ -418,11 +418,14 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            relationshipStatus:
+              type: string
           required:
           - accountID
           - detectorID
           - email
           - providerRef
+          - relationshipStatus
           type: object
         status:
           properties:
@@ -454,11 +457,14 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                relationshipStatus:
+                  type: string
               required:
               - accountID
               - detectorID
               - email
               - providerRef
+              - relationshipStatus
               type: object
             state:
               properties:

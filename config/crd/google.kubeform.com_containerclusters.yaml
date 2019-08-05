@@ -454,8 +454,14 @@ spec:
             enableTpu:
               description: Deprecated
               type: boolean
+            endpoint:
+              type: string
             initialNodeCount:
               type: integer
+            instanceGroupUrls:
+              items:
+                type: string
+              type: array
             ipAllocationPolicy:
               items:
                 properties:
@@ -482,9 +488,12 @@ spec:
                   dailyMaintenanceWindow:
                     items:
                       properties:
+                        duration:
+                          type: string
                         startTime:
                           type: string
                       required:
+                      - duration
                       - startTime
                       type: object
                     maxItems: 1
@@ -497,6 +506,8 @@ spec:
             masterAuth:
               items:
                 properties:
+                  clientCertificate:
+                    type: string
                   clientCertificateConfig:
                     items:
                       properties:
@@ -507,9 +518,13 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
+                  clusterCaCertificate:
+                    type: string
                   username:
                     type: string
                 required:
+                - clientCertificate
+                - clusterCaCertificate
                 - username
                 type: object
               maxItems: 1
@@ -535,6 +550,8 @@ spec:
               type: array
             masterIpv4CIDRBlock:
               description: Deprecated
+              type: string
+            masterVersion:
               type: string
             minMasterVersion:
               type: string
@@ -650,6 +667,10 @@ spec:
                     type: array
                   initialNodeCount:
                     type: integer
+                  instanceGroupUrls:
+                    items:
+                      type: string
+                    type: array
                   management:
                     items:
                       properties:
@@ -750,6 +771,8 @@ spec:
                     type: integer
                   version:
                     type: string
+                required:
+                - instanceGroupUrls
                 type: object
               type: array
             nodeVersion:
@@ -777,6 +800,13 @@ spec:
                     type: boolean
                   masterIpv4CIDRBlock:
                     type: string
+                  privateEndpoint:
+                    type: string
+                  publicEndpoint:
+                    type: string
+                required:
+                - privateEndpoint
+                - publicEndpoint
                 type: object
               maxItems: 1
               type: array
@@ -813,6 +843,9 @@ spec:
             zone:
               type: string
           required:
+          - endpoint
+          - instanceGroupUrls
+          - masterVersion
           - name
           - providerRef
           type: object
@@ -882,8 +915,14 @@ spec:
                 enableTpu:
                   description: Deprecated
                   type: boolean
+                endpoint:
+                  type: string
                 initialNodeCount:
                   type: integer
+                instanceGroupUrls:
+                  items:
+                    type: string
+                  type: array
                 ipAllocationPolicy:
                   items:
                     properties:
@@ -910,9 +949,12 @@ spec:
                       dailyMaintenanceWindow:
                         items:
                           properties:
+                            duration:
+                              type: string
                             startTime:
                               type: string
                           required:
+                          - duration
                           - startTime
                           type: object
                         maxItems: 1
@@ -925,6 +967,8 @@ spec:
                 masterAuth:
                   items:
                     properties:
+                      clientCertificate:
+                        type: string
                       clientCertificateConfig:
                         items:
                           properties:
@@ -935,9 +979,13 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
+                      clusterCaCertificate:
+                        type: string
                       username:
                         type: string
                     required:
+                    - clientCertificate
+                    - clusterCaCertificate
                     - username
                     type: object
                   maxItems: 1
@@ -963,6 +1011,8 @@ spec:
                   type: array
                 masterIpv4CIDRBlock:
                   description: Deprecated
+                  type: string
+                masterVersion:
                   type: string
                 minMasterVersion:
                   type: string
@@ -1078,6 +1128,10 @@ spec:
                         type: array
                       initialNodeCount:
                         type: integer
+                      instanceGroupUrls:
+                        items:
+                          type: string
+                        type: array
                       management:
                         items:
                           properties:
@@ -1178,6 +1232,8 @@ spec:
                         type: integer
                       version:
                         type: string
+                    required:
+                    - instanceGroupUrls
                     type: object
                   type: array
                 nodeVersion:
@@ -1205,6 +1261,13 @@ spec:
                         type: boolean
                       masterIpv4CIDRBlock:
                         type: string
+                      privateEndpoint:
+                        type: string
+                      publicEndpoint:
+                        type: string
+                    required:
+                    - privateEndpoint
+                    - publicEndpoint
                     type: object
                   maxItems: 1
                   type: array
@@ -1241,6 +1304,9 @@ spec:
                 zone:
                   type: string
               required:
+              - endpoint
+              - instanceGroupUrls
+              - masterVersion
               - name
               - providerRef
               type: object

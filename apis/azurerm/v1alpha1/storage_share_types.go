@@ -26,6 +26,7 @@ type StorageShareSpec struct {
 	Quota              int    `json:"quota,omitempty" tf:"quota,omitempty"`
 	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
 	StorageAccountName string `json:"storageAccountName" tf:"storage_account_name"`
+	Url                string `json:"url" tf:"url"`
 }
 
 type StorageShareStatus struct {

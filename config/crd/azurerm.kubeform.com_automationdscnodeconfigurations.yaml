@@ -399,6 +399,8 @@ spec:
           properties:
             automationAccountName:
               type: string
+            configurationName:
+              type: string
             contentEmbedded:
               type: string
             name:
@@ -416,6 +418,7 @@ spec:
               type: string
           required:
           - automationAccountName
+          - configurationName
           - contentEmbedded
           - name
           - providerRef
@@ -431,6 +434,8 @@ spec:
             output:
               properties:
                 automationAccountName:
+                  type: string
+                configurationName:
                   type: string
                 contentEmbedded:
                   type: string
@@ -449,6 +454,7 @@ spec:
                   type: string
               required:
               - automationAccountName
+              - configurationName
               - contentEmbedded
               - name
               - providerRef

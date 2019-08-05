@@ -399,6 +399,8 @@ spec:
           properties:
             endpointLocation:
               type: string
+            endpointMonitorStatus:
+              type: string
             endpointStatus:
               type: string
             geoMappings:
@@ -433,6 +435,7 @@ spec:
             weight:
               type: integer
           required:
+          - endpointMonitorStatus
           - name
           - profileName
           - providerRef
@@ -449,6 +452,8 @@ spec:
             output:
               properties:
                 endpointLocation:
+                  type: string
+                endpointMonitorStatus:
                   type: string
                 endpointStatus:
                   type: string
@@ -484,6 +489,7 @@ spec:
                 weight:
                   type: integer
               required:
+              - endpointMonitorStatus
               - name
               - profileName
               - providerRef

@@ -57,6 +57,7 @@ type EcsTaskDefinitionSpecVolume struct {
 type EcsTaskDefinitionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn                  string `json:"arn" tf:"arn"`
 	ContainerDefinitions string `json:"containerDefinitions" tf:"container_definitions"`
 	// +optional
 	Cpu string `json:"cpu,omitempty" tf:"cpu,omitempty"`
@@ -81,6 +82,7 @@ type EcsTaskDefinitionSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	RequiresCompatibilities []string `json:"requiresCompatibilities,omitempty" tf:"requires_compatibilities,omitempty"`
+	Revision                int      `json:"revision" tf:"revision"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

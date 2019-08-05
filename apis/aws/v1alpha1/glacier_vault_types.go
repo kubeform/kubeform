@@ -29,6 +29,8 @@ type GlacierVaultSpec struct {
 
 	// +optional
 	AccessPolicy string `json:"accessPolicy,omitempty" tf:"access_policy,omitempty"`
+	Arn          string `json:"arn" tf:"arn"`
+	Location     string `json:"location" tf:"location"`
 	Name         string `json:"name" tf:"name"`
 	// +optional
 	Notification []GlacierVaultSpecNotification `json:"notification,omitempty" tf:"notification,omitempty"`

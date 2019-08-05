@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            createdAt:
+              type: string
+            minDiskSize:
+              type: integer
             name:
               type: string
             providerRef:
@@ -408,11 +412,23 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            regions:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            size:
+              description: A Number represents a JSON number literal.
+              type: string
             volumeID:
               type: string
           required:
+          - createdAt
+          - minDiskSize
           - name
           - providerRef
+          - regions
+          - size
           - volumeID
           type: object
         status:
@@ -424,6 +440,10 @@ spec:
               type: integer
             output:
               properties:
+                createdAt:
+                  type: string
+                minDiskSize:
+                  type: integer
                 name:
                   type: string
                 providerRef:
@@ -435,11 +455,23 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                regions:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                size:
+                  description: A Number represents a JSON number literal.
+                  type: string
                 volumeID:
                   type: string
               required:
+              - createdAt
+              - minDiskSize
               - name
               - providerRef
+              - regions
+              - size
               - volumeID
               type: object
             state:

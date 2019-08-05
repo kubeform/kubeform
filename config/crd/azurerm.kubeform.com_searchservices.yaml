@@ -403,6 +403,8 @@ spec:
               type: string
             partitionCount:
               type: integer
+            primaryKey:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -416,6 +418,8 @@ spec:
               type: integer
             resourceGroupName:
               type: string
+            secondaryKey:
+              type: string
             sku:
               type: string
             tags:
@@ -425,8 +429,10 @@ spec:
           required:
           - location
           - name
+          - primaryKey
           - providerRef
           - resourceGroupName
+          - secondaryKey
           - sku
           type: object
         status:
@@ -444,6 +450,8 @@ spec:
                   type: string
                 partitionCount:
                   type: integer
+                primaryKey:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -457,6 +465,8 @@ spec:
                   type: integer
                 resourceGroupName:
                   type: string
+                secondaryKey:
+                  type: string
                 sku:
                   type: string
                 tags:
@@ -466,8 +476,10 @@ spec:
               required:
               - location
               - name
+              - primaryKey
               - providerRef
               - resourceGroupName
+              - secondaryKey
               - sku
               type: object
             state:

@@ -403,6 +403,8 @@ spec:
               type: boolean
             family:
               type: string
+            hostname:
+              type: string
             location:
               type: string
             minimumTlsVersion:
@@ -420,6 +422,8 @@ spec:
                 - dayOfWeek
                 type: object
               type: array
+            port:
+              type: integer
             privateStaticIPAddress:
               type: string
             providerRef:
@@ -438,6 +442,8 @@ spec:
                     type: boolean
                   enableAuthentication:
                     type: boolean
+                  maxclients:
+                    type: integer
                   maxfragmentationmemoryReserved:
                     type: integer
                   maxmemoryDelta:
@@ -454,6 +460,8 @@ spec:
                     type: integer
                   rdbBackupMaxSnapshotCount:
                     type: integer
+                required:
+                - maxclients
                 type: object
               maxItems: 1
               type: array
@@ -472,6 +480,8 @@ spec:
               type: integer
             skuName:
               type: string
+            sslPort:
+              type: integer
             subnetID:
               type: string
             tags:
@@ -486,11 +496,14 @@ spec:
           required:
           - capacity
           - family
+          - hostname
           - location
           - name
+          - port
           - providerRef
           - resourceGroupName
           - skuName
+          - sslPort
           type: object
         status:
           properties:
@@ -506,6 +519,8 @@ spec:
                 enableNonSslPort:
                   type: boolean
                 family:
+                  type: string
+                hostname:
                   type: string
                 location:
                   type: string
@@ -524,6 +539,8 @@ spec:
                     - dayOfWeek
                     type: object
                   type: array
+                port:
+                  type: integer
                 privateStaticIPAddress:
                   type: string
                 providerRef:
@@ -542,6 +559,8 @@ spec:
                         type: boolean
                       enableAuthentication:
                         type: boolean
+                      maxclients:
+                        type: integer
                       maxfragmentationmemoryReserved:
                         type: integer
                       maxmemoryDelta:
@@ -558,6 +577,8 @@ spec:
                         type: integer
                       rdbBackupMaxSnapshotCount:
                         type: integer
+                    required:
+                    - maxclients
                     type: object
                   maxItems: 1
                   type: array
@@ -576,6 +597,8 @@ spec:
                   type: integer
                 skuName:
                   type: string
+                sslPort:
+                  type: integer
                 subnetID:
                   type: string
                 tags:
@@ -590,11 +613,14 @@ spec:
               required:
               - capacity
               - family
+              - hostname
               - location
               - name
+              - port
               - providerRef
               - resourceGroupName
               - skuName
+              - sslPort
               type: object
             state:
               properties:

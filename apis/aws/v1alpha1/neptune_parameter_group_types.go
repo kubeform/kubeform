@@ -28,6 +28,7 @@ type NeptuneParameterGroupSpecParameter struct {
 type NeptuneParameterGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Family      string `json:"family" tf:"family"`

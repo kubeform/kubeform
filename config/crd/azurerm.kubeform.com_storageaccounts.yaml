@@ -431,9 +431,15 @@ spec:
             identity:
               items:
                 properties:
+                  principalID:
+                    type: string
+                  tenantID:
+                    type: string
                   type:
                     type: string
                 required:
+                - principalID
+                - tenantID
                 - type
                 type: object
               maxItems: 1
@@ -467,6 +473,32 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            primaryBlobEndpoint:
+              type: string
+            primaryBlobHost:
+              type: string
+            primaryDfsEndpoint:
+              type: string
+            primaryDfsHost:
+              type: string
+            primaryFileEndpoint:
+              type: string
+            primaryFileHost:
+              type: string
+            primaryLocation:
+              type: string
+            primaryQueueEndpoint:
+              type: string
+            primaryQueueHost:
+              type: string
+            primaryTableEndpoint:
+              type: string
+            primaryTableHost:
+              type: string
+            primaryWebEndpoint:
+              type: string
+            primaryWebHost:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -478,6 +510,41 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            secondaryBlobEndpoint:
+              type: string
+            secondaryBlobHost:
+              type: string
+            secondaryDfsEndpoint:
+              type: string
+            secondaryDfsHost:
+              type: string
+            secondaryFileEndpoint:
+              type: string
+            secondaryFileHost:
+              type: string
+            secondaryLocation:
+              type: string
+            secondaryQueueEndpoint:
+              type: string
+            secondaryQueueHost:
+              type: string
+            secondaryTableEndpoint:
+              type: string
+            secondaryTableHost:
+              type: string
+            secondaryWebEndpoint:
+              type: string
+            secondaryWebHost:
+              type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             tags:
               additionalProperties:
                 type: string
@@ -487,8 +554,34 @@ spec:
           - accountTier
           - location
           - name
+          - primaryBlobEndpoint
+          - primaryBlobHost
+          - primaryDfsEndpoint
+          - primaryDfsHost
+          - primaryFileEndpoint
+          - primaryFileHost
+          - primaryLocation
+          - primaryQueueEndpoint
+          - primaryQueueHost
+          - primaryTableEndpoint
+          - primaryTableHost
+          - primaryWebEndpoint
+          - primaryWebHost
           - providerRef
           - resourceGroupName
+          - secondaryBlobEndpoint
+          - secondaryBlobHost
+          - secondaryDfsEndpoint
+          - secondaryDfsHost
+          - secondaryFileEndpoint
+          - secondaryFileHost
+          - secondaryLocation
+          - secondaryQueueEndpoint
+          - secondaryQueueHost
+          - secondaryTableEndpoint
+          - secondaryTableHost
+          - secondaryWebEndpoint
+          - secondaryWebHost
           type: object
         status:
           properties:
@@ -533,9 +626,15 @@ spec:
                 identity:
                   items:
                     properties:
+                      principalID:
+                        type: string
+                      tenantID:
+                        type: string
                       type:
                         type: string
                     required:
+                    - principalID
+                    - tenantID
                     - type
                     type: object
                   maxItems: 1
@@ -569,6 +668,32 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                primaryBlobEndpoint:
+                  type: string
+                primaryBlobHost:
+                  type: string
+                primaryDfsEndpoint:
+                  type: string
+                primaryDfsHost:
+                  type: string
+                primaryFileEndpoint:
+                  type: string
+                primaryFileHost:
+                  type: string
+                primaryLocation:
+                  type: string
+                primaryQueueEndpoint:
+                  type: string
+                primaryQueueHost:
+                  type: string
+                primaryTableEndpoint:
+                  type: string
+                primaryTableHost:
+                  type: string
+                primaryWebEndpoint:
+                  type: string
+                primaryWebHost:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -580,6 +705,41 @@ spec:
                   type: object
                 resourceGroupName:
                   type: string
+                secondaryBlobEndpoint:
+                  type: string
+                secondaryBlobHost:
+                  type: string
+                secondaryDfsEndpoint:
+                  type: string
+                secondaryDfsHost:
+                  type: string
+                secondaryFileEndpoint:
+                  type: string
+                secondaryFileHost:
+                  type: string
+                secondaryLocation:
+                  type: string
+                secondaryQueueEndpoint:
+                  type: string
+                secondaryQueueHost:
+                  type: string
+                secondaryTableEndpoint:
+                  type: string
+                secondaryTableHost:
+                  type: string
+                secondaryWebEndpoint:
+                  type: string
+                secondaryWebHost:
+                  type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
                 tags:
                   additionalProperties:
                     type: string
@@ -589,8 +749,34 @@ spec:
               - accountTier
               - location
               - name
+              - primaryBlobEndpoint
+              - primaryBlobHost
+              - primaryDfsEndpoint
+              - primaryDfsHost
+              - primaryFileEndpoint
+              - primaryFileHost
+              - primaryLocation
+              - primaryQueueEndpoint
+              - primaryQueueHost
+              - primaryTableEndpoint
+              - primaryTableHost
+              - primaryWebEndpoint
+              - primaryWebHost
               - providerRef
               - resourceGroupName
+              - secondaryBlobEndpoint
+              - secondaryBlobHost
+              - secondaryDfsEndpoint
+              - secondaryDfsHost
+              - secondaryFileEndpoint
+              - secondaryFileHost
+              - secondaryLocation
+              - secondaryQueueEndpoint
+              - secondaryQueueHost
+              - secondaryTableEndpoint
+              - secondaryTableHost
+              - secondaryWebEndpoint
+              - secondaryWebHost
               type: object
             state:
               properties:

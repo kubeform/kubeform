@@ -31,6 +31,17 @@ type InstanceSpecAlerts struct {
 	TransferQuota int `json:"transferQuota,omitempty" tf:"transfer_quota,omitempty"`
 }
 
+type InstanceSpecBackupsSchedule struct {
+	Day    string `json:"day" tf:"day"`
+	Window string `json:"window" tf:"window"`
+}
+
+type InstanceSpecBackups struct {
+	Enabled bool `json:"enabled" tf:"enabled"`
+	// +kubebuilder:validation:MaxItems=1
+	Schedule []InstanceSpecBackupsSchedule `json:"schedule" tf:"schedule"`
+}
+
 type InstanceSpecConfigDevicesSda struct {
 	// +optional
 	DiskID int `json:"diskID,omitempty" tf:"disk_id,omitempty"`
@@ -172,6 +183,7 @@ type InstanceSpecDisk struct {
 	AuthorizedUsers []string `json:"authorizedUsers,omitempty" tf:"authorized_users,omitempty"`
 	// +optional
 	Filesystem string `json:"filesystem,omitempty" tf:"filesystem,omitempty"`
+	ID         int    `json:"ID" tf:"id"`
 	// +optional
 	Image string `json:"image,omitempty" tf:"image,omitempty"`
 	Label string `json:"label" tf:"label"`
@@ -184,6 +196,13 @@ type InstanceSpecDisk struct {
 	StackscriptData map[string]string `json:"-" sensitive:"true" tf:"stackscript_data,omitempty"`
 	// +optional
 	StackscriptID int `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
+}
+
+type InstanceSpecSpecs struct {
+	Disk     int `json:"disk" tf:"disk"`
+	Memory   int `json:"memory" tf:"memory"`
+	Transfer int `json:"transfer" tf:"transfer"`
+	Vcpus    int `json:"vcpus" tf:"vcpus"`
 }
 
 type InstanceSpec struct {
@@ -200,6 +219,8 @@ type InstanceSpec struct {
 	AuthorizedUsers []string `json:"authorizedUsers,omitempty" tf:"authorized_users,omitempty"`
 	// +optional
 	BackupID int `json:"backupID,omitempty" tf:"backup_id,omitempty"`
+	// +kubebuilder:validation:MaxItems=1
+	Backups []InstanceSpecBackups `json:"backups" tf:"backups"`
 	// +optional
 	BackupsEnabled bool `json:"backupsEnabled,omitempty" tf:"backups_enabled,omitempty"`
 	// +optional
@@ -211,18 +232,26 @@ type InstanceSpec struct {
 	// +optional
 	Group string `json:"group,omitempty" tf:"group,omitempty"`
 	// +optional
-	Image string `json:"image,omitempty" tf:"image,omitempty"`
+	Image     string `json:"image,omitempty" tf:"image,omitempty"`
+	IpAddress string `json:"ipAddress" tf:"ip_address"`
+	// +kubebuilder:validation:UniqueItems=true
+	Ipv4 []string `json:"ipv4" tf:"ipv4"`
+	Ipv6 string   `json:"ipv6" tf:"ipv6"`
 	// +optional
 	Label string `json:"label,omitempty" tf:"label,omitempty"`
 	// +optional
-	PrivateIP bool   `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
-	Region    string `json:"region" tf:"region"`
+	PrivateIP        bool   `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
+	PrivateIPAddress string `json:"privateIPAddress" tf:"private_ip_address"`
+	Region           string `json:"region" tf:"region"`
 	// +optional
 	RootPass string `json:"-" sensitive:"true" tf:"root_pass,omitempty"`
+	// +kubebuilder:validation:MaxItems=1
+	Specs []InstanceSpecSpecs `json:"specs" tf:"specs"`
 	// +optional
 	StackscriptData map[string]string `json:"-" sensitive:"true" tf:"stackscript_data,omitempty"`
 	// +optional
-	StackscriptID int `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
+	StackscriptID int    `json:"stackscriptID,omitempty" tf:"stackscript_id,omitempty"`
+	Status        string `json:"status" tf:"status"`
 	// +optional
 	SwapSize int `json:"swapSize,omitempty" tf:"swap_size,omitempty"`
 	// +optional

@@ -399,6 +399,8 @@ spec:
           properties:
             backendPort:
               type: integer
+            frontendIPConfigurationID:
+              type: string
             frontendIPConfigurationName:
               type: string
             frontendPortEnd:
@@ -427,6 +429,7 @@ spec:
               type: string
           required:
           - backendPort
+          - frontendIPConfigurationID
           - frontendIPConfigurationName
           - frontendPortEnd
           - frontendPortStart
@@ -447,6 +450,8 @@ spec:
               properties:
                 backendPort:
                   type: integer
+                frontendIPConfigurationID:
+                  type: string
                 frontendIPConfigurationName:
                   type: string
                 frontendPortEnd:
@@ -475,6 +480,7 @@ spec:
                   type: string
               required:
               - backendPort
+              - frontendIPConfigurationID
               - frontendIPConfigurationName
               - frontendPortEnd
               - frontendPortStart

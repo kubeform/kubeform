@@ -56,6 +56,7 @@ type CloudwatchMetricAlarmSpec struct {
 	// +optional
 	AlarmDescription   string `json:"alarmDescription,omitempty" tf:"alarm_description,omitempty"`
 	AlarmName          string `json:"alarmName" tf:"alarm_name"`
+	Arn                string `json:"arn" tf:"arn"`
 	ComparisonOperator string `json:"comparisonOperator" tf:"comparison_operator"`
 	// +optional
 	DatapointsToAlarm int `json:"datapointsToAlarm,omitempty" tf:"datapoints_to_alarm,omitempty"`

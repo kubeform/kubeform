@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            createTime:
+              type: string
+            name:
+              type: string
             origin:
               type: string
             parent:
@@ -417,6 +421,8 @@ spec:
                 type: string
               type: array
           required:
+          - createTime
+          - name
           - origin
           - parent
           - providerRef
@@ -432,6 +438,10 @@ spec:
               type: integer
             output:
               properties:
+                createTime:
+                  type: string
+                name:
+                  type: string
                 origin:
                   type: string
                 parent:
@@ -452,6 +462,8 @@ spec:
                     type: string
                   type: array
               required:
+              - createTime
+              - name
               - origin
               - parent
               - providerRef

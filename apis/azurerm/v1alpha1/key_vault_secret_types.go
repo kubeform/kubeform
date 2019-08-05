@@ -34,6 +34,7 @@ type KeyVaultSecretSpec struct {
 	// +optional
 	// Deprecated
 	VaultURI string `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`
+	Version  string `json:"version" tf:"version"`
 }
 
 type KeyVaultSecretStatus struct {

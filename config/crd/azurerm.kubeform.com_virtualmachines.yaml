@@ -424,9 +424,12 @@ spec:
                       type: string
                     minItems: 1
                     type: array
+                  principalID:
+                    type: string
                   type:
                     type: string
                 required:
+                - principalID
                 - type
                 type: object
               maxItems: 1
@@ -706,9 +709,12 @@ spec:
                           type: string
                         minItems: 1
                         type: array
+                      principalID:
+                        type: string
                       type:
                         type: string
                     required:
+                    - principalID
                     - type
                     type: object
                   maxItems: 1

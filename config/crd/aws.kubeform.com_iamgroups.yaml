@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             name:
               type: string
             path:
@@ -410,9 +412,13 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            uniqueID:
+              type: string
           required:
+          - arn
           - name
           - providerRef
+          - uniqueID
           type: object
         status:
           properties:
@@ -423,6 +429,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 name:
                   type: string
                 path:
@@ -436,9 +444,13 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                uniqueID:
+                  type: string
               required:
+              - arn
               - name
               - providerRef
+              - uniqueID
               type: object
             state:
               properties:

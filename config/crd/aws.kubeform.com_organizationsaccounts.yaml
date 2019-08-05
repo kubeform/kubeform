@@ -397,9 +397,15 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             email:
               type: string
             iamUserAccessToBilling:
+              type: string
+            joinedMethod:
+              type: string
+            joinedTimestamp:
               type: string
             name:
               type: string
@@ -416,14 +422,20 @@ spec:
               type: object
             roleName:
               type: string
+            status:
+              type: string
             tags:
               additionalProperties:
                 type: string
               type: object
           required:
+          - arn
           - email
+          - joinedMethod
+          - joinedTimestamp
           - name
           - providerRef
+          - status
           type: object
         status:
           properties:
@@ -434,9 +446,15 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 email:
                   type: string
                 iamUserAccessToBilling:
+                  type: string
+                joinedMethod:
+                  type: string
+                joinedTimestamp:
                   type: string
                 name:
                   type: string
@@ -453,14 +471,20 @@ spec:
                   type: object
                 roleName:
                   type: string
+                status:
+                  type: string
                 tags:
                   additionalProperties:
                     type: string
                   type: object
               required:
+              - arn
               - email
+              - joinedMethod
+              - joinedTimestamp
               - name
               - providerRef
+              - status
               type: object
             state:
               properties:

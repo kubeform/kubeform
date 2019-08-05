@@ -21,6 +21,7 @@ type CloudwatchLogGroup struct {
 type CloudwatchLogGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional

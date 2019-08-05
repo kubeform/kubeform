@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             duration:
               type: integer
             name:
@@ -418,6 +420,7 @@ spec:
             targetArn:
               type: string
           required:
+          - arn
           - duration
           - name
           - providerRef
@@ -433,6 +436,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 duration:
                   type: integer
                 name:
@@ -454,6 +459,7 @@ spec:
                 targetArn:
                   type: string
               required:
+              - arn
               - duration
               - name
               - providerRef

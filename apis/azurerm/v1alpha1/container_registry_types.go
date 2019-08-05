@@ -29,12 +29,15 @@ type ContainerRegistrySpec struct {
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	AdminEnabled bool `json:"adminEnabled,omitempty" tf:"admin_enabled,omitempty"`
+	AdminEnabled  bool   `json:"adminEnabled,omitempty" tf:"admin_enabled,omitempty"`
+	AdminPassword string `json:"-" sensitive:"true" tf:"admin_password"`
+	AdminUsername string `json:"adminUsername" tf:"admin_username"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	GeoreplicationLocations []string `json:"georeplicationLocations,omitempty" tf:"georeplication_locations,omitempty"`
 	Location                string   `json:"location" tf:"location"`
+	LoginServer             string   `json:"loginServer" tf:"login_server"`
 	Name                    string   `json:"name" tf:"name"`
 	ResourceGroupName       string   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional

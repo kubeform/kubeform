@@ -122,6 +122,7 @@ type ServiceFabricClusterSpec struct {
 	ClientCertificateThumbprint []ServiceFabricClusterSpecClientCertificateThumbprint `json:"clientCertificateThumbprint,omitempty" tf:"client_certificate_thumbprint,omitempty"`
 	// +optional
 	ClusterCodeVersion string `json:"clusterCodeVersion,omitempty" tf:"cluster_code_version,omitempty"`
+	ClusterEndpoint    string `json:"clusterEndpoint" tf:"cluster_endpoint"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	DiagnosticsConfig []ServiceFabricClusterSpecDiagnosticsConfig `json:"diagnosticsConfig,omitempty" tf:"diagnostics_config,omitempty"`

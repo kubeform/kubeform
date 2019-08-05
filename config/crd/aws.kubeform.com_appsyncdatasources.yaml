@@ -399,6 +399,8 @@ spec:
           properties:
             apiID:
               type: string
+            arn:
+              type: string
             description:
               type: string
             dynamodbConfig:
@@ -464,6 +466,7 @@ spec:
               type: string
           required:
           - apiID
+          - arn
           - name
           - providerRef
           - type
@@ -478,6 +481,8 @@ spec:
             output:
               properties:
                 apiID:
+                  type: string
+                arn:
                   type: string
                 description:
                   type: string
@@ -544,6 +549,7 @@ spec:
                   type: string
               required:
               - apiID
+              - arn
               - name
               - providerRef
               - type

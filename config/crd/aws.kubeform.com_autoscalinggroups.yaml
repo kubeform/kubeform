@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             availabilityZones:
               items:
                 type: string
@@ -581,6 +583,7 @@ spec:
             waitForElbCapacity:
               type: integer
           required:
+          - arn
           - maxSize
           - minSize
           - providerRef
@@ -594,6 +597,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 availabilityZones:
                   items:
                     type: string
@@ -778,6 +783,7 @@ spec:
                 waitForElbCapacity:
                   type: integer
               required:
+              - arn
               - maxSize
               - minSize
               - providerRef

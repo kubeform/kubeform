@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             artifactStore:
               items:
                 properties:
@@ -489,6 +491,7 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - artifactStore
           - name
           - providerRef
@@ -504,6 +507,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 artifactStore:
                   items:
                     properties:
@@ -596,6 +601,7 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - artifactStore
               - name
               - providerRef

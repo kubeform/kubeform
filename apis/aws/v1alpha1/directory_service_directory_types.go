@@ -38,6 +38,7 @@ type DirectoryServiceDirectorySpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	AccessURL string `json:"accessURL" tf:"access_url"`
 	// +optional
 	Alias string `json:"alias,omitempty" tf:"alias,omitempty"`
 	// +optional
@@ -45,12 +46,15 @@ type DirectoryServiceDirectorySpec struct {
 	ConnectSettings []DirectoryServiceDirectorySpecConnectSettings `json:"connectSettings,omitempty" tf:"connect_settings,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +kubebuilder:validation:UniqueItems=true
+	DnsIPAddresses []string `json:"dnsIPAddresses" tf:"dns_ip_addresses"`
 	// +optional
 	Edition string `json:"edition,omitempty" tf:"edition,omitempty"`
 	// +optional
-	EnableSso bool   `json:"enableSso,omitempty" tf:"enable_sso,omitempty"`
-	Name      string `json:"name" tf:"name"`
-	Password  string `json:"-" sensitive:"true" tf:"password"`
+	EnableSso       bool   `json:"enableSso,omitempty" tf:"enable_sso,omitempty"`
+	Name            string `json:"name" tf:"name"`
+	Password        string `json:"-" sensitive:"true" tf:"password"`
+	SecurityGroupID string `json:"securityGroupID" tf:"security_group_id"`
 	// +optional
 	ShortName string `json:"shortName,omitempty" tf:"short_name,omitempty"`
 	// +optional

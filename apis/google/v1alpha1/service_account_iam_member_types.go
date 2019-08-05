@@ -21,6 +21,7 @@ type ServiceAccountIamMember struct {
 type ServiceAccountIamMemberSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Etag             string `json:"etag" tf:"etag"`
 	Member           string `json:"member" tf:"member"`
 	Role             string `json:"role" tf:"role"`
 	ServiceAccountID string `json:"serviceAccountID" tf:"service_account_id"`

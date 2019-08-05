@@ -416,6 +416,8 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            servicebusEndpoint:
+              type: string
             sku:
               description: Deprecated
               items:
@@ -435,6 +437,7 @@ spec:
           - namespaceType
           - providerRef
           - resourceGroupName
+          - servicebusEndpoint
           type: object
         status:
           properties:
@@ -464,6 +467,8 @@ spec:
                   type: object
                 resourceGroupName:
                   type: string
+                servicebusEndpoint:
+                  type: string
                 sku:
                   description: Deprecated
                   items:
@@ -483,6 +488,7 @@ spec:
               - namespaceType
               - providerRef
               - resourceGroupName
+              - servicebusEndpoint
               type: object
             state:
               properties:

@@ -21,7 +21,9 @@ type MediaStoreContainer struct {
 type MediaStoreContainerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Name string `json:"name" tf:"name"`
+	Arn      string `json:"arn" tf:"arn"`
+	Endpoint string `json:"endpoint" tf:"endpoint"`
+	Name     string `json:"name" tf:"name"`
 }
 
 type MediaStoreContainerStatus struct {

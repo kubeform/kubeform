@@ -464,6 +464,8 @@ spec:
               type: string
             enableCdn:
               type: boolean
+            fingerprint:
+              type: string
             healthChecks:
               items:
                 type: string
@@ -509,14 +511,18 @@ spec:
               type: object
             securityPolicy:
               type: string
+            selfLink:
+              type: string
             sessionAffinity:
               type: string
             timeoutSec:
               type: integer
           required:
+          - fingerprint
           - healthChecks
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -594,6 +600,8 @@ spec:
                   type: string
                 enableCdn:
                   type: boolean
+                fingerprint:
+                  type: string
                 healthChecks:
                   items:
                     type: string
@@ -639,14 +647,18 @@ spec:
                   type: object
                 securityPolicy:
                   type: string
+                selfLink:
+                  type: string
                 sessionAffinity:
                   type: string
                 timeoutSec:
                   type: integer
               required:
+              - fingerprint
               - healthChecks
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

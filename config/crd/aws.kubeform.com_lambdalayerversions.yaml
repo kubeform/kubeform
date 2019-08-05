@@ -397,15 +397,21 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             compatibleRuntimes:
               items:
                 type: string
               maxItems: 5
               type: array
               uniqueItems: true
+            createdDate:
+              type: string
             description:
               type: string
             filename:
+              type: string
+            layerArn:
               type: string
             layerName:
               type: string
@@ -428,9 +434,18 @@ spec:
               type: string
             sourceCodeHash:
               type: string
+            sourceCodeSize:
+              type: integer
+            version:
+              type: string
           required:
+          - arn
+          - createdDate
+          - layerArn
           - layerName
           - providerRef
+          - sourceCodeSize
+          - version
           type: object
         status:
           properties:
@@ -441,15 +456,21 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 compatibleRuntimes:
                   items:
                     type: string
                   maxItems: 5
                   type: array
                   uniqueItems: true
+                createdDate:
+                  type: string
                 description:
                   type: string
                 filename:
+                  type: string
+                layerArn:
                   type: string
                 layerName:
                   type: string
@@ -472,9 +493,18 @@ spec:
                   type: string
                 sourceCodeHash:
                   type: string
+                sourceCodeSize:
+                  type: integer
+                version:
+                  type: string
               required:
+              - arn
+              - createdDate
+              - layerArn
               - layerName
               - providerRef
+              - sourceCodeSize
+              - version
               type: object
             state:
               properties:

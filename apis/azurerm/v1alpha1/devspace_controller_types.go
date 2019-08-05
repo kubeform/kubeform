@@ -28,6 +28,7 @@ type DevspaceControllerSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	DataPlaneFqdn     string `json:"dataPlaneFqdn" tf:"data_plane_fqdn"`
 	HostSuffix        string `json:"hostSuffix" tf:"host_suffix"`
 	Location          string `json:"location" tf:"location"`
 	Name              string `json:"name" tf:"name"`

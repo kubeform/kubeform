@@ -21,6 +21,7 @@ type FolderIamMember struct {
 type FolderIamMemberSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Etag   string `json:"etag" tf:"etag"`
 	Folder string `json:"folder" tf:"folder"`
 	Member string `json:"member" tf:"member"`
 	Role   string `json:"role" tf:"role"`

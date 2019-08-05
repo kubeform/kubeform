@@ -399,7 +399,11 @@ spec:
           properties:
             certificateID:
               type: string
+            createdAt:
+              type: string
             customDomain:
+              type: string
+            endpoint:
               type: string
             origin:
               type: string
@@ -415,6 +419,8 @@ spec:
             ttl:
               type: integer
           required:
+          - createdAt
+          - endpoint
           - origin
           - providerRef
           type: object
@@ -429,7 +435,11 @@ spec:
               properties:
                 certificateID:
                   type: string
+                createdAt:
+                  type: string
                 customDomain:
+                  type: string
+                endpoint:
                   type: string
                 origin:
                   type: string
@@ -445,6 +455,8 @@ spec:
                 ttl:
                   type: integer
               required:
+              - createdAt
+              - endpoint
               - origin
               - providerRef
               type: object

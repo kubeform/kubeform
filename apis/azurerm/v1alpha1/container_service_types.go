@@ -22,12 +22,14 @@ type ContainerServiceSpecAgentPoolProfile struct {
 	// +optional
 	Count     int    `json:"count,omitempty" tf:"count,omitempty"`
 	DnsPrefix string `json:"dnsPrefix" tf:"dns_prefix"`
+	Fqdn      string `json:"fqdn" tf:"fqdn"`
 	Name      string `json:"name" tf:"name"`
 	VmSize    string `json:"vmSize" tf:"vm_size"`
 }
 
 type ContainerServiceSpecDiagnosticsProfile struct {
-	Enabled bool `json:"enabled" tf:"enabled"`
+	Enabled    bool   `json:"enabled" tf:"enabled"`
+	StorageURI string `json:"storageURI" tf:"storage_uri"`
 }
 
 type ContainerServiceSpecLinuxProfileSshKey struct {
@@ -45,6 +47,7 @@ type ContainerServiceSpecMasterProfile struct {
 	// +optional
 	Count     int    `json:"count,omitempty" tf:"count,omitempty"`
 	DnsPrefix string `json:"dnsPrefix" tf:"dns_prefix"`
+	Fqdn      string `json:"fqdn" tf:"fqdn"`
 }
 
 type ContainerServiceSpecServicePrincipal struct {

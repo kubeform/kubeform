@@ -39,6 +39,7 @@ type VpcPeeringConnectionSpecRequester struct {
 type VpcPeeringConnectionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	AcceptStatus string `json:"acceptStatus" tf:"accept_status"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true

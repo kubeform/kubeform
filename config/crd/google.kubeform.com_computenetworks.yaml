@@ -401,6 +401,8 @@ spec:
               type: boolean
             description:
               type: string
+            gatewayIpv4:
+              type: string
             ipv4Range:
               description: Deprecated
               type: string
@@ -419,9 +421,13 @@ spec:
               type: object
             routingMode:
               type: string
+            selfLink:
+              type: string
           required:
+          - gatewayIpv4
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -435,6 +441,8 @@ spec:
                 autoCreateSubnetworks:
                   type: boolean
                 description:
+                  type: string
+                gatewayIpv4:
                   type: string
                 ipv4Range:
                   description: Deprecated
@@ -454,9 +462,13 @@ spec:
                   type: object
                 routingMode:
                   type: string
+                selfLink:
+                  type: string
               required:
+              - gatewayIpv4
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

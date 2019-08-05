@@ -400,17 +400,22 @@ spec:
             attachment:
               items:
                 properties:
+                  attachmentID:
+                    type: string
                   deviceIndex:
                     type: integer
                   instance:
                     type: string
                 required:
+                - attachmentID
                 - deviceIndex
                 - instance
                 type: object
               type: array
               uniqueItems: true
             description:
+              type: string
+            privateDNSName:
               type: string
             privateIP:
               type: string
@@ -444,6 +449,7 @@ spec:
                 type: string
               type: object
           required:
+          - privateDNSName
           - providerRef
           - subnetID
           type: object
@@ -459,17 +465,22 @@ spec:
                 attachment:
                   items:
                     properties:
+                      attachmentID:
+                        type: string
                       deviceIndex:
                         type: integer
                       instance:
                         type: string
                     required:
+                    - attachmentID
                     - deviceIndex
                     - instance
                     type: object
                   type: array
                   uniqueItems: true
                 description:
+                  type: string
+                privateDNSName:
                   type: string
                 privateIP:
                   type: string
@@ -503,6 +514,7 @@ spec:
                     type: string
                   type: object
               required:
+              - privateDNSName
               - providerRef
               - subnetID
               type: object

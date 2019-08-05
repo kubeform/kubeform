@@ -405,7 +405,11 @@ spec:
               type: string
             bucket:
               type: string
+            bucketDomainName:
+              type: string
             bucketPrefix:
+              type: string
+            bucketRegionalDomainName:
               type: string
             corsRule:
               items:
@@ -715,6 +719,8 @@ spec:
             websiteEndpoint:
               type: string
           required:
+          - bucketDomainName
+          - bucketRegionalDomainName
           - providerRef
           type: object
         status:
@@ -734,7 +740,11 @@ spec:
                   type: string
                 bucket:
                   type: string
+                bucketDomainName:
+                  type: string
                 bucketPrefix:
+                  type: string
+                bucketRegionalDomainName:
                   type: string
                 corsRule:
                   items:
@@ -1044,6 +1054,8 @@ spec:
                 websiteEndpoint:
                   type: string
               required:
+              - bucketDomainName
+              - bucketRegionalDomainName
               - providerRef
               type: object
             state:

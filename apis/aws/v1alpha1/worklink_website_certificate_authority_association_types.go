@@ -25,6 +25,7 @@ type WorklinkWebsiteCertificateAuthorityAssociationSpec struct {
 	// +optional
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 	FleetArn    string `json:"fleetArn" tf:"fleet_arn"`
+	WebsiteCaID string `json:"websiteCaID" tf:"website_ca_id"`
 }
 
 type WorklinkWebsiteCertificateAuthorityAssociationStatus struct {

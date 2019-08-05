@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            acceptStatus:
+              type: string
             accepter:
               items:
                 properties:
@@ -412,6 +414,12 @@ spec:
               uniqueItems: true
             autoAccept:
               type: boolean
+            peerOwnerID:
+              type: string
+            peerRegion:
+              type: string
+            peerVpcID:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -438,10 +446,17 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            vpcID:
+              type: string
             vpcPeeringConnectionID:
               type: string
           required:
+          - acceptStatus
+          - peerOwnerID
+          - peerRegion
+          - peerVpcID
           - providerRef
+          - vpcID
           - vpcPeeringConnectionID
           type: object
         status:
@@ -453,6 +468,8 @@ spec:
               type: integer
             output:
               properties:
+                acceptStatus:
+                  type: string
                 accepter:
                   items:
                     properties:
@@ -468,6 +485,12 @@ spec:
                   uniqueItems: true
                 autoAccept:
                   type: boolean
+                peerOwnerID:
+                  type: string
+                peerRegion:
+                  type: string
+                peerVpcID:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -494,10 +517,17 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                vpcID:
+                  type: string
                 vpcPeeringConnectionID:
                   type: string
               required:
+              - acceptStatus
+              - peerOwnerID
+              - peerRegion
+              - peerVpcID
               - providerRef
+              - vpcID
               - vpcPeeringConnectionID
               type: object
             state:

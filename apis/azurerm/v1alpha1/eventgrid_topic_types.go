@@ -21,9 +21,14 @@ type EventgridTopic struct {
 type EventgridTopicSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	Endpoint           string `json:"endpoint" tf:"endpoint"`
+	Location           string `json:"location" tf:"location"`
+	Name               string `json:"name" tf:"name"`
+	PrimaryAccessKey   string `json:"-" sensitive:"true" tf:"primary_access_key"`
+	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
+	SecondaryAccessKey string `json:"-" sensitive:"true" tf:"secondary_access_key"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

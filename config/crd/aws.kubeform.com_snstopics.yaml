@@ -403,6 +403,8 @@ spec:
               type: string
             applicationSuccessFeedbackSampleRate:
               type: integer
+            arn:
+              type: string
             deliveryPolicy:
               type: string
             displayName:
@@ -447,6 +449,7 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - providerRef
           type: object
         status:
@@ -464,6 +467,8 @@ spec:
                   type: string
                 applicationSuccessFeedbackSampleRate:
                   type: integer
+                arn:
+                  type: string
                 deliveryPolicy:
                   type: string
                 displayName:
@@ -508,6 +513,7 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - providerRef
               type: object
             state:

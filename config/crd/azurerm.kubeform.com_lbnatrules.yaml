@@ -397,10 +397,14 @@ spec:
           type: object
         spec:
           properties:
+            backendIPConfigurationID:
+              type: string
             backendPort:
               type: integer
             enableFloatingIP:
               type: boolean
+            frontendIPConfigurationID:
+              type: string
             frontendIPConfigurationName:
               type: string
             frontendPort:
@@ -426,7 +430,9 @@ spec:
             resourceGroupName:
               type: string
           required:
+          - backendIPConfigurationID
           - backendPort
+          - frontendIPConfigurationID
           - frontendIPConfigurationName
           - frontendPort
           - loadbalancerID
@@ -444,10 +450,14 @@ spec:
               type: integer
             output:
               properties:
+                backendIPConfigurationID:
+                  type: string
                 backendPort:
                   type: integer
                 enableFloatingIP:
                   type: boolean
+                frontendIPConfigurationID:
+                  type: string
                 frontendIPConfigurationName:
                   type: string
                 frontendPort:
@@ -473,7 +483,9 @@ spec:
                 resourceGroupName:
                   type: string
               required:
+              - backendIPConfigurationID
               - backendPort
+              - frontendIPConfigurationID
               - frontendIPConfigurationName
               - frontendPort
               - loadbalancerID

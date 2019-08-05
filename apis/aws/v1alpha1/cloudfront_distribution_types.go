@@ -227,9 +227,12 @@ type CloudfrontDistributionSpecViewerCertificate struct {
 type CloudfrontDistributionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ActiveTrustedSigners map[string]string `json:"activeTrustedSigners" tf:"active_trusted_signers"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Aliases []string `json:"aliases,omitempty" tf:"aliases,omitempty"`
+	Aliases         []string `json:"aliases,omitempty" tf:"aliases,omitempty"`
+	Arn             string   `json:"arn" tf:"arn"`
+	CallerReference string   `json:"callerReference" tf:"caller_reference"`
 	// +optional
 	Comment string `json:"comment,omitempty" tf:"comment,omitempty"`
 	// +optional
@@ -239,11 +242,16 @@ type CloudfrontDistributionSpec struct {
 	DefaultCacheBehavior []CloudfrontDistributionSpecDefaultCacheBehavior `json:"defaultCacheBehavior" tf:"default_cache_behavior"`
 	// +optional
 	DefaultRootObject string `json:"defaultRootObject,omitempty" tf:"default_root_object,omitempty"`
+	DomainName        string `json:"domainName" tf:"domain_name"`
 	Enabled           bool   `json:"enabled" tf:"enabled"`
+	Etag              string `json:"etag" tf:"etag"`
+	HostedZoneID      string `json:"hostedZoneID" tf:"hosted_zone_id"`
 	// +optional
-	HttpVersion string `json:"httpVersion,omitempty" tf:"http_version,omitempty"`
+	HttpVersion                 string `json:"httpVersion,omitempty" tf:"http_version,omitempty"`
+	InProgressValidationBatches int    `json:"inProgressValidationBatches" tf:"in_progress_validation_batches"`
 	// +optional
-	IsIpv6Enabled bool `json:"isIpv6Enabled,omitempty" tf:"is_ipv6_enabled,omitempty"`
+	IsIpv6Enabled    bool   `json:"isIpv6Enabled,omitempty" tf:"is_ipv6_enabled,omitempty"`
+	LastModifiedTime string `json:"lastModifiedTime" tf:"last_modified_time"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	LoggingConfig []CloudfrontDistributionSpecLoggingConfig `json:"loggingConfig,omitempty" tf:"logging_config,omitempty"`
@@ -259,7 +267,8 @@ type CloudfrontDistributionSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Restrictions []CloudfrontDistributionSpecRestrictions `json:"restrictions" tf:"restrictions"`
 	// +optional
-	RetainOnDelete bool `json:"retainOnDelete,omitempty" tf:"retain_on_delete,omitempty"`
+	RetainOnDelete bool   `json:"retainOnDelete,omitempty" tf:"retain_on_delete,omitempty"`
+	Status         string `json:"status" tf:"status"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +kubebuilder:validation:MaxItems=1

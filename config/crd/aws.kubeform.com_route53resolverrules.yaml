@@ -397,9 +397,13 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             domainName:
               type: string
             name:
+              type: string
+            ownerID:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -413,6 +417,8 @@ spec:
             resolverEndpointID:
               type: string
             ruleType:
+              type: string
+            shareStatus:
               type: string
             tags:
               additionalProperties:
@@ -431,9 +437,12 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - arn
           - domainName
+          - ownerID
           - providerRef
           - ruleType
+          - shareStatus
           type: object
         status:
           properties:
@@ -444,9 +453,13 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 domainName:
                   type: string
                 name:
+                  type: string
+                ownerID:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -460,6 +473,8 @@ spec:
                 resolverEndpointID:
                   type: string
                 ruleType:
+                  type: string
+                shareStatus:
                   type: string
                 tags:
                   additionalProperties:
@@ -478,9 +493,12 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - arn
               - domainName
+              - ownerID
               - providerRef
               - ruleType
+              - shareStatus
               type: object
             state:
               properties:

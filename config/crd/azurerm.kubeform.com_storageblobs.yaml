@@ -432,12 +432,15 @@ spec:
               type: string
             type:
               type: string
+            url:
+              type: string
           required:
           - name
           - providerRef
           - resourceGroupName
           - storageAccountName
           - storageContainerName
+          - url
           type: object
         status:
           properties:
@@ -483,12 +486,15 @@ spec:
                   type: string
                 type:
                   type: string
+                url:
+                  type: string
               required:
               - name
               - providerRef
               - resourceGroupName
               - storageAccountName
               - storageContainerName
+              - url
               type: object
             state:
               properties:

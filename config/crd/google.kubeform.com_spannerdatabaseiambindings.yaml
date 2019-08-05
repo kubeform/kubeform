@@ -399,6 +399,8 @@ spec:
           properties:
             database:
               type: string
+            etag:
+              type: string
             instance:
               type: string
             members:
@@ -421,6 +423,7 @@ spec:
               type: string
           required:
           - database
+          - etag
           - instance
           - members
           - providerRef
@@ -436,6 +439,8 @@ spec:
             output:
               properties:
                 database:
+                  type: string
+                etag:
                   type: string
                 instance:
                   type: string
@@ -459,6 +464,7 @@ spec:
                   type: string
               required:
               - database
+              - etag
               - instance
               - members
               - providerRef

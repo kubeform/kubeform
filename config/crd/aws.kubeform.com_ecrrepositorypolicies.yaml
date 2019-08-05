@@ -408,11 +408,14 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            registryID:
+              type: string
             repository:
               type: string
           required:
           - policy
           - providerRef
+          - registryID
           - repository
           type: object
         status:
@@ -435,11 +438,14 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                registryID:
+                  type: string
                 repository:
                   type: string
               required:
               - policy
               - providerRef
+              - registryID
               - repository
               type: object
             state:

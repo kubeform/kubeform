@@ -401,7 +401,13 @@ spec:
               type: string
             authorizedNetwork:
               type: string
+            createTime:
+              type: string
+            currentLocationID:
+              type: string
             displayName:
+              type: string
+            host:
               type: string
             labels:
               additionalProperties:
@@ -413,6 +419,8 @@ spec:
               type: integer
             name:
               type: string
+            port:
+              type: integer
             project:
               type: string
             providerRef:
@@ -437,8 +445,12 @@ spec:
             tier:
               type: string
           required:
+          - createTime
+          - currentLocationID
+          - host
           - memorySizeGb
           - name
+          - port
           - providerRef
           type: object
         status:
@@ -454,7 +466,13 @@ spec:
                   type: string
                 authorizedNetwork:
                   type: string
+                createTime:
+                  type: string
+                currentLocationID:
+                  type: string
                 displayName:
+                  type: string
+                host:
                   type: string
                 labels:
                   additionalProperties:
@@ -466,6 +484,8 @@ spec:
                   type: integer
                 name:
                   type: string
+                port:
+                  type: integer
                 project:
                   type: string
                 providerRef:
@@ -490,8 +510,12 @@ spec:
                 tier:
                   type: string
               required:
+              - createTime
+              - currentLocationID
+              - host
               - memorySizeGb
               - name
+              - port
               - providerRef
               type: object
             state:

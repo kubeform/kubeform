@@ -401,6 +401,10 @@ spec:
               type: string
             amazonAddress:
               type: string
+            arn:
+              type: string
+            awsDevice:
+              type: string
             bgpAsn:
               type: integer
             bgpAuthKey:
@@ -434,6 +438,8 @@ spec:
               type: integer
           required:
           - addressFamily
+          - arn
+          - awsDevice
           - bgpAsn
           - connectionID
           - name
@@ -453,6 +459,10 @@ spec:
                 addressFamily:
                   type: string
                 amazonAddress:
+                  type: string
+                arn:
+                  type: string
+                awsDevice:
                   type: string
                 bgpAsn:
                   type: integer
@@ -487,6 +497,8 @@ spec:
                   type: integer
               required:
               - addressFamily
+              - arn
+              - awsDevice
               - bgpAsn
               - connectionID
               - name

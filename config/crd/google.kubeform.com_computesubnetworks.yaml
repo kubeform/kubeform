@@ -397,10 +397,16 @@ spec:
           type: object
         spec:
           properties:
+            creationTimestamp:
+              type: string
             description:
               type: string
             enableFlowLogs:
               type: boolean
+            fingerprint:
+              type: string
+            gatewayAddress:
+              type: string
             ipCIDRRange:
               type: string
             name:
@@ -434,11 +440,17 @@ spec:
                 - rangeName
                 type: object
               type: array
+            selfLink:
+              type: string
           required:
+          - creationTimestamp
+          - fingerprint
+          - gatewayAddress
           - ipCIDRRange
           - name
           - network
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -449,10 +461,16 @@ spec:
               type: integer
             output:
               properties:
+                creationTimestamp:
+                  type: string
                 description:
                   type: string
                 enableFlowLogs:
                   type: boolean
+                fingerprint:
+                  type: string
+                gatewayAddress:
+                  type: string
                 ipCIDRRange:
                   type: string
                 name:
@@ -486,11 +504,17 @@ spec:
                     - rangeName
                     type: object
                   type: array
+                selfLink:
+                  type: string
               required:
+              - creationTimestamp
+              - fingerprint
+              - gatewayAddress
               - ipCIDRRange
               - name
               - network
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

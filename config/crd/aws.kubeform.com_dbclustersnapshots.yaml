@@ -397,10 +397,28 @@ spec:
           type: object
         spec:
           properties:
+            allocatedStorage:
+              type: integer
+            availabilityZones:
+              items:
+                type: string
+              type: array
             dbClusterIdentifier:
+              type: string
+            dbClusterSnapshotArn:
               type: string
             dbClusterSnapshotIdentifier:
               type: string
+            engine:
+              type: string
+            engineVersion:
+              type: string
+            kmsKeyID:
+              type: string
+            licenseModel:
+              type: string
+            port:
+              type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -410,10 +428,33 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            snapshotType:
+              type: string
+            sourceDbClusterSnapshotArn:
+              type: string
+            status:
+              type: string
+            storageEncrypted:
+              type: boolean
+            vpcID:
+              type: string
           required:
+          - allocatedStorage
+          - availabilityZones
           - dbClusterIdentifier
+          - dbClusterSnapshotArn
           - dbClusterSnapshotIdentifier
+          - engine
+          - engineVersion
+          - kmsKeyID
+          - licenseModel
+          - port
           - providerRef
+          - snapshotType
+          - sourceDbClusterSnapshotArn
+          - status
+          - storageEncrypted
+          - vpcID
           type: object
         status:
           properties:
@@ -424,10 +465,28 @@ spec:
               type: integer
             output:
               properties:
+                allocatedStorage:
+                  type: integer
+                availabilityZones:
+                  items:
+                    type: string
+                  type: array
                 dbClusterIdentifier:
+                  type: string
+                dbClusterSnapshotArn:
                   type: string
                 dbClusterSnapshotIdentifier:
                   type: string
+                engine:
+                  type: string
+                engineVersion:
+                  type: string
+                kmsKeyID:
+                  type: string
+                licenseModel:
+                  type: string
+                port:
+                  type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -437,10 +496,33 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                snapshotType:
+                  type: string
+                sourceDbClusterSnapshotArn:
+                  type: string
+                status:
+                  type: string
+                storageEncrypted:
+                  type: boolean
+                vpcID:
+                  type: string
               required:
+              - allocatedStorage
+              - availabilityZones
               - dbClusterIdentifier
+              - dbClusterSnapshotArn
               - dbClusterSnapshotIdentifier
+              - engine
+              - engineVersion
+              - kmsKeyID
+              - licenseModel
+              - port
               - providerRef
+              - snapshotType
+              - sourceDbClusterSnapshotArn
+              - status
+              - storageEncrypted
+              - vpcID
               type: object
             state:
               properties:

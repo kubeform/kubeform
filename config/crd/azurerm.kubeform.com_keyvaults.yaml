@@ -489,12 +489,15 @@ spec:
               type: object
             tenantID:
               type: string
+            vaultURI:
+              type: string
           required:
           - location
           - name
           - providerRef
           - resourceGroupName
           - tenantID
+          - vaultURI
           type: object
         status:
           properties:
@@ -597,12 +600,15 @@ spec:
                   type: object
                 tenantID:
                   type: string
+                vaultURI:
+                  type: string
               required:
               - location
               - name
               - providerRef
               - resourceGroupName
               - tenantID
+              - vaultURI
               type: object
             state:
               properties:

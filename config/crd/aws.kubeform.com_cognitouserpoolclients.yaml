@@ -416,6 +416,8 @@ spec:
                 type: string
               maxItems: 100
               type: array
+            clientSecret:
+              type: string
             defaultRedirectURI:
               type: string
             explicitAuthFlows:
@@ -460,6 +462,7 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - clientSecret
           - name
           - providerRef
           - userPoolID
@@ -492,6 +495,8 @@ spec:
                     type: string
                   maxItems: 100
                   type: array
+                clientSecret:
+                  type: string
                 defaultRedirectURI:
                   type: string
                 explicitAuthFlows:
@@ -536,6 +541,7 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - clientSecret
               - name
               - providerRef
               - userPoolID

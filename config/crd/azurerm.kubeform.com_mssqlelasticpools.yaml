@@ -397,6 +397,34 @@ spec:
           type: object
         spec:
           properties:
+            elasticPoolProperties:
+              description: Deprecated
+              items:
+                properties:
+                  creationDate:
+                    description: Deprecated
+                    type: string
+                  licenseType:
+                    description: Deprecated
+                    type: string
+                  maxSizeBytes:
+                    description: Deprecated
+                    type: integer
+                  state:
+                    description: Deprecated
+                    type: string
+                  zoneRedundant:
+                    description: Deprecated
+                    type: boolean
+                required:
+                - creationDate
+                - licenseType
+                - maxSizeBytes
+                - state
+                - zoneRedundant
+                type: object
+              maxItems: 1
+              type: array
             location:
               type: string
             maxSizeBytes:
@@ -459,6 +487,7 @@ spec:
             zoneRedundant:
               type: boolean
           required:
+          - elasticPoolProperties
           - location
           - name
           - perDatabaseSettings
@@ -476,6 +505,34 @@ spec:
               type: integer
             output:
               properties:
+                elasticPoolProperties:
+                  description: Deprecated
+                  items:
+                    properties:
+                      creationDate:
+                        description: Deprecated
+                        type: string
+                      licenseType:
+                        description: Deprecated
+                        type: string
+                      maxSizeBytes:
+                        description: Deprecated
+                        type: integer
+                      state:
+                        description: Deprecated
+                        type: string
+                      zoneRedundant:
+                        description: Deprecated
+                        type: boolean
+                    required:
+                    - creationDate
+                    - licenseType
+                    - maxSizeBytes
+                    - state
+                    - zoneRedundant
+                    type: object
+                  maxItems: 1
+                  type: array
                 location:
                   type: string
                 maxSizeBytes:
@@ -538,6 +595,7 @@ spec:
                 zoneRedundant:
                   type: boolean
               required:
+              - elasticPoolProperties
               - location
               - name
               - perDatabaseSettings

@@ -35,6 +35,7 @@ type TrafficManagerProfileSpec struct {
 
 	// +kubebuilder:validation:UniqueItems=true
 	DnsConfig []TrafficManagerProfileSpecDnsConfig `json:"dnsConfig" tf:"dns_config"`
+	Fqdn      string                               `json:"fqdn" tf:"fqdn"`
 	// +kubebuilder:validation:UniqueItems=true
 	MonitorConfig []TrafficManagerProfileSpecMonitorConfig `json:"monitorConfig" tf:"monitor_config"`
 	Name          string                                   `json:"name" tf:"name"`

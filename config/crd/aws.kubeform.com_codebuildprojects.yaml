@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             artifacts:
               items:
                 properties:
@@ -422,6 +424,8 @@ spec:
               uniqueItems: true
             badgeEnabled:
               type: boolean
+            badgeURL:
+              type: string
             buildTimeout:
               type: integer
             cache:
@@ -662,7 +666,9 @@ spec:
               maxItems: 1
               type: array
           required:
+          - arn
           - artifacts
+          - badgeURL
           - environment
           - name
           - providerRef
@@ -678,6 +684,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 artifacts:
                   items:
                     properties:
@@ -703,6 +711,8 @@ spec:
                   uniqueItems: true
                 badgeEnabled:
                   type: boolean
+                badgeURL:
+                  type: string
                 buildTimeout:
                   type: integer
                 cache:
@@ -943,7 +953,9 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - arn
               - artifacts
+              - badgeURL
               - environment
               - name
               - providerRef

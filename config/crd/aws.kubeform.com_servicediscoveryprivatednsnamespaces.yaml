@@ -397,7 +397,11 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             description:
+              type: string
+            hostedZone:
               type: string
             name:
               type: string
@@ -413,6 +417,8 @@ spec:
             vpc:
               type: string
           required:
+          - arn
+          - hostedZone
           - name
           - providerRef
           - vpc
@@ -426,7 +432,11 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 description:
+                  type: string
+                hostedZone:
                   type: string
                 name:
                   type: string
@@ -442,6 +452,8 @@ spec:
                 vpc:
                   type: string
               required:
+              - arn
+              - hostedZone
               - name
               - providerRef
               - vpc

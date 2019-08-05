@@ -27,7 +27,9 @@ type DataFactorySpecGithubConfiguration struct {
 }
 
 type DataFactorySpecIdentity struct {
-	Type string `json:"type" tf:"type"`
+	PrincipalID string `json:"principalID" tf:"principal_id"`
+	TenantID    string `json:"tenantID" tf:"tenant_id"`
+	Type        string `json:"type" tf:"type"`
 }
 
 type DataFactorySpecVstsConfiguration struct {

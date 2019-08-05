@@ -48,6 +48,7 @@ type PinpointAppSpecQuietTime struct {
 type PinpointAppSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ApplicationID string `json:"applicationID" tf:"application_id"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CampaignHook []PinpointAppSpecCampaignHook `json:"campaignHook,omitempty" tf:"campaign_hook,omitempty"`

@@ -397,11 +397,19 @@ spec:
           type: object
         spec:
           properties:
+            activeTrustedSigners:
+              additionalProperties:
+                type: string
+              type: object
             aliases:
               items:
                 type: string
               type: array
               uniqueItems: true
+            arn:
+              type: string
+            callerReference:
+              type: string
             comment:
               type: string
             customErrorResponse:
@@ -515,12 +523,22 @@ spec:
               type: array
             defaultRootObject:
               type: string
+            domainName:
+              type: string
             enabled:
               type: boolean
+            etag:
+              type: string
+            hostedZoneID:
+              type: string
             httpVersion:
               type: string
+            inProgressValidationBatches:
+              type: integer
             isIpv6Enabled:
               type: boolean
+            lastModifiedTime:
+              type: string
             loggingConfig:
               items:
                 properties:
@@ -766,6 +784,8 @@ spec:
               type: array
             retainOnDelete:
               type: boolean
+            status:
+              type: string
             tags:
               additionalProperties:
                 type: string
@@ -791,11 +811,20 @@ spec:
             webACLID:
               type: string
           required:
+          - activeTrustedSigners
+          - arn
+          - callerReference
           - defaultCacheBehavior
+          - domainName
           - enabled
+          - etag
+          - hostedZoneID
+          - inProgressValidationBatches
+          - lastModifiedTime
           - origin
           - providerRef
           - restrictions
+          - status
           - viewerCertificate
           type: object
         status:
@@ -807,11 +836,19 @@ spec:
               type: integer
             output:
               properties:
+                activeTrustedSigners:
+                  additionalProperties:
+                    type: string
+                  type: object
                 aliases:
                   items:
                     type: string
                   type: array
                   uniqueItems: true
+                arn:
+                  type: string
+                callerReference:
+                  type: string
                 comment:
                   type: string
                 customErrorResponse:
@@ -925,12 +962,22 @@ spec:
                   type: array
                 defaultRootObject:
                   type: string
+                domainName:
+                  type: string
                 enabled:
                   type: boolean
+                etag:
+                  type: string
+                hostedZoneID:
+                  type: string
                 httpVersion:
                   type: string
+                inProgressValidationBatches:
+                  type: integer
                 isIpv6Enabled:
                   type: boolean
+                lastModifiedTime:
+                  type: string
                 loggingConfig:
                   items:
                     properties:
@@ -1176,6 +1223,8 @@ spec:
                   type: array
                 retainOnDelete:
                   type: boolean
+                status:
+                  type: string
                 tags:
                   additionalProperties:
                     type: string
@@ -1201,11 +1250,20 @@ spec:
                 webACLID:
                   type: string
               required:
+              - activeTrustedSigners
+              - arn
+              - callerReference
               - defaultCacheBehavior
+              - domainName
               - enabled
+              - etag
+              - hostedZoneID
+              - inProgressValidationBatches
+              - lastModifiedTime
               - origin
               - providerRef
               - restrictions
+              - status
               - viewerCertificate
               type: object
             state:

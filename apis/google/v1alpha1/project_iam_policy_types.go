@@ -27,9 +27,12 @@ type ProjectIamPolicySpec struct {
 	// +optional
 	// Deprecated
 	DisableProject bool   `json:"disableProject,omitempty" tf:"disable_project,omitempty"`
+	Etag           string `json:"etag" tf:"etag"`
 	PolicyData     string `json:"policyData" tf:"policy_data"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	// Deprecated
+	RestorePolicy string `json:"restorePolicy" tf:"restore_policy"`
 }
 
 type ProjectIamPolicyStatus struct {

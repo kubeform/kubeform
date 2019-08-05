@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            hostname:
+              type: string
+            ipAddress:
+              type: string
             location:
               type: string
             name:
@@ -410,8 +414,21 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            publicPort:
+              type: integer
             resourceGroupName:
               type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            serverPort:
+              type: integer
             sku:
               items:
                 properties:
@@ -430,10 +447,14 @@ spec:
                 type: string
               type: object
           required:
+          - hostname
+          - ipAddress
           - location
           - name
           - providerRef
+          - publicPort
           - resourceGroupName
+          - serverPort
           - sku
           type: object
         status:
@@ -445,6 +466,10 @@ spec:
               type: integer
             output:
               properties:
+                hostname:
+                  type: string
+                ipAddress:
+                  type: string
                 location:
                   type: string
                 name:
@@ -458,8 +483,21 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                publicPort:
+                  type: integer
                 resourceGroupName:
                   type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                serverPort:
+                  type: integer
                 sku:
                   items:
                     properties:
@@ -478,10 +516,14 @@ spec:
                     type: string
                   type: object
               required:
+              - hostname
+              - ipAddress
               - location
               - name
               - providerRef
+              - publicPort
               - resourceGroupName
+              - serverPort
               - sku
               type: object
             state:

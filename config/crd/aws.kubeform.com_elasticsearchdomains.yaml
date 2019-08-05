@@ -403,6 +403,8 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            arn:
+              type: string
             clusterConfig:
               items:
                 properties:
@@ -439,6 +441,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            domainID:
+              type: string
             domainName:
               type: string
             ebsOptions:
@@ -471,6 +475,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            endpoint:
+              type: string
+            kibanaEndpoint:
+              type: string
             logPublishingOptions:
               items:
                 properties:
@@ -522,6 +530,11 @@ spec:
             vpcOptions:
               items:
                 properties:
+                  availabilityZones:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
                   securityGroupIDS:
                     items:
                       type: string
@@ -532,11 +545,20 @@ spec:
                       type: string
                     type: array
                     uniqueItems: true
+                  vpcID:
+                    type: string
+                required:
+                - availabilityZones
+                - vpcID
                 type: object
               maxItems: 1
               type: array
           required:
+          - arn
+          - domainID
           - domainName
+          - endpoint
+          - kibanaEndpoint
           - providerRef
           type: object
         status:
@@ -554,6 +576,8 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                arn:
+                  type: string
                 clusterConfig:
                   items:
                     properties:
@@ -590,6 +614,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                domainID:
+                  type: string
                 domainName:
                   type: string
                 ebsOptions:
@@ -622,6 +648,10 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                endpoint:
+                  type: string
+                kibanaEndpoint:
+                  type: string
                 logPublishingOptions:
                   items:
                     properties:
@@ -673,6 +703,11 @@ spec:
                 vpcOptions:
                   items:
                     properties:
+                      availabilityZones:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
                       securityGroupIDS:
                         items:
                           type: string
@@ -683,11 +718,20 @@ spec:
                           type: string
                         type: array
                         uniqueItems: true
+                      vpcID:
+                        type: string
+                    required:
+                    - availabilityZones
+                    - vpcID
                     type: object
                   maxItems: 1
                   type: array
               required:
+              - arn
+              - domainID
               - domainName
+              - endpoint
+              - kibanaEndpoint
               - providerRef
               type: object
             state:

@@ -404,12 +404,15 @@ spec:
                     type: integer
                   dnsPrefix:
                     type: string
+                  fqdn:
+                    type: string
                   name:
                     type: string
                   vmSize:
                     type: string
                 required:
                 - dnsPrefix
+                - fqdn
                 - name
                 - vmSize
                 type: object
@@ -421,8 +424,11 @@ spec:
                 properties:
                   enabled:
                     type: boolean
+                  storageURI:
+                    type: string
                 required:
                 - enabled
+                - storageURI
                 type: object
               maxItems: 1
               type: array
@@ -459,8 +465,11 @@ spec:
                     type: integer
                   dnsPrefix:
                     type: string
+                  fqdn:
+                    type: string
                 required:
                 - dnsPrefix
+                - fqdn
                 type: object
               maxItems: 1
               type: array
@@ -531,12 +540,15 @@ spec:
                         type: integer
                       dnsPrefix:
                         type: string
+                      fqdn:
+                        type: string
                       name:
                         type: string
                       vmSize:
                         type: string
                     required:
                     - dnsPrefix
+                    - fqdn
                     - name
                     - vmSize
                     type: object
@@ -548,8 +560,11 @@ spec:
                     properties:
                       enabled:
                         type: boolean
+                      storageURI:
+                        type: string
                     required:
                     - enabled
+                    - storageURI
                     type: object
                   maxItems: 1
                   type: array
@@ -586,8 +601,11 @@ spec:
                         type: integer
                       dnsPrefix:
                         type: string
+                      fqdn:
+                        type: string
                     required:
                     - dnsPrefix
+                    - fqdn
                     type: object
                   maxItems: 1
                   type: array

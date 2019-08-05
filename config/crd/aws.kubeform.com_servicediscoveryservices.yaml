@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             description:
               type: string
             dnsConfig:
@@ -458,6 +460,7 @@ spec:
                   type: string
               type: object
           required:
+          - arn
           - name
           - providerRef
           type: object
@@ -470,6 +473,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 description:
                   type: string
                 dnsConfig:
@@ -531,6 +536,7 @@ spec:
                       type: string
                   type: object
               required:
+              - arn
               - name
               - providerRef
               type: object

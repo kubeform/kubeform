@@ -21,11 +21,16 @@ type IamServiceLinkedRole struct {
 type IamServiceLinkedRoleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn            string `json:"arn" tf:"arn"`
 	AwsServiceName string `json:"awsServiceName" tf:"aws_service_name"`
+	CreateDate     string `json:"createDate" tf:"create_date"`
 	// +optional
 	CustomSuffix string `json:"customSuffix,omitempty" tf:"custom_suffix,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Name        string `json:"name" tf:"name"`
+	Path        string `json:"path" tf:"path"`
+	UniqueID    string `json:"uniqueID" tf:"unique_id"`
 }
 
 type IamServiceLinkedRoleStatus struct {

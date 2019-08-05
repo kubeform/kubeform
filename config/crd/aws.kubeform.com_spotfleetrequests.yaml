@@ -399,6 +399,8 @@ spec:
           properties:
             allocationStrategy:
               type: string
+            clientToken:
+              type: string
             excessCapacityTerminationPolicy:
               type: string
             fleetType:
@@ -524,6 +526,8 @@ spec:
               type: boolean
             spotPrice:
               type: string
+            spotRequestState:
+              type: string
             targetCapacity:
               type: integer
             targetGroupArns:
@@ -540,9 +544,11 @@ spec:
             waitForFulfillment:
               type: boolean
           required:
+          - clientToken
           - iamFleetRole
           - launchSpecification
           - providerRef
+          - spotRequestState
           - targetCapacity
           type: object
         status:
@@ -555,6 +561,8 @@ spec:
             output:
               properties:
                 allocationStrategy:
+                  type: string
+                clientToken:
                   type: string
                 excessCapacityTerminationPolicy:
                   type: string
@@ -681,6 +689,8 @@ spec:
                   type: boolean
                 spotPrice:
                   type: string
+                spotRequestState:
+                  type: string
                 targetCapacity:
                   type: integer
                 targetGroupArns:
@@ -697,9 +707,11 @@ spec:
                 waitForFulfillment:
                   type: boolean
               required:
+              - clientToken
               - iamFleetRole
               - launchSpecification
               - providerRef
+              - spotRequestState
               - targetCapacity
               type: object
             state:

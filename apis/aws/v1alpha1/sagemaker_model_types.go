@@ -48,6 +48,7 @@ type SagemakerModelSpecVpcConfig struct {
 type SagemakerModelSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	Container []SagemakerModelSpecContainer `json:"container,omitempty" tf:"container,omitempty"`
 	// +optional

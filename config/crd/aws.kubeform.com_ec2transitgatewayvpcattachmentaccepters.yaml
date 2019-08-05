@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            dnsSupport:
+              type: string
+            ipv6Support:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -406,6 +410,11 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            subnetIDS:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             tags:
               additionalProperties:
                 type: string
@@ -416,9 +425,21 @@ spec:
               type: boolean
             transitGatewayDefaultRouteTablePropagation:
               type: boolean
+            transitGatewayID:
+              type: string
+            vpcID:
+              type: string
+            vpcOwnerID:
+              type: string
           required:
+          - dnsSupport
+          - ipv6Support
           - providerRef
+          - subnetIDS
           - transitGatewayAttachmentID
+          - transitGatewayID
+          - vpcID
+          - vpcOwnerID
           type: object
         status:
           properties:
@@ -429,6 +450,10 @@ spec:
               type: integer
             output:
               properties:
+                dnsSupport:
+                  type: string
+                ipv6Support:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -438,6 +463,11 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                subnetIDS:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
                 tags:
                   additionalProperties:
                     type: string
@@ -448,9 +478,21 @@ spec:
                   type: boolean
                 transitGatewayDefaultRouteTablePropagation:
                   type: boolean
+                transitGatewayID:
+                  type: string
+                vpcID:
+                  type: string
+                vpcOwnerID:
+                  type: string
               required:
+              - dnsSupport
+              - ipv6Support
               - providerRef
+              - subnetIDS
               - transitGatewayAttachmentID
+              - transitGatewayID
+              - vpcID
+              - vpcOwnerID
               type: object
             state:
               properties:

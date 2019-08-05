@@ -93,6 +93,7 @@ type MonitoringUptimeCheckConfigSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	MonitoredResource []MonitoringUptimeCheckConfigSpecMonitoredResource `json:"monitoredResource,omitempty" tf:"monitored_resource,omitempty"`
+	Name              string                                             `json:"name" tf:"name"`
 	// +optional
 	Period string `json:"period,omitempty" tf:"period,omitempty"`
 	// +optional

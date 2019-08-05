@@ -18,18 +18,29 @@ type ComputeInterconnectAttachment struct {
 	Status            ComputeInterconnectAttachmentStatus `json:"status,omitempty"`
 }
 
+type ComputeInterconnectAttachmentSpecPrivateInterconnectInfo struct {
+	Tag8021q int `json:"tag8021q" tf:"tag8021q"`
+}
+
 type ComputeInterconnectAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	CloudRouterIPAddress    string `json:"cloudRouterIPAddress" tf:"cloud_router_ip_address"`
+	CreationTimestamp       string `json:"creationTimestamp" tf:"creation_timestamp"`
+	CustomerRouterIPAddress string `json:"customerRouterIPAddress" tf:"customer_router_ip_address"`
 	// +optional
-	Description  string `json:"description,omitempty" tf:"description,omitempty"`
-	Interconnect string `json:"interconnect" tf:"interconnect"`
-	Name         string `json:"name" tf:"name"`
+	Description       string `json:"description,omitempty" tf:"description,omitempty"`
+	GoogleReferenceID string `json:"googleReferenceID" tf:"google_reference_id"`
+	Interconnect      string `json:"interconnect" tf:"interconnect"`
+	Name              string `json:"name" tf:"name"`
+	// +kubebuilder:validation:MaxItems=1
+	PrivateInterconnectInfo []ComputeInterconnectAttachmentSpecPrivateInterconnectInfo `json:"privateInterconnectInfo" tf:"private_interconnect_info"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region string `json:"region,omitempty" tf:"region,omitempty"`
-	Router string `json:"router" tf:"router"`
+	Region   string `json:"region,omitempty" tf:"region,omitempty"`
+	Router   string `json:"router" tf:"router"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 }
 
 type ComputeInterconnectAttachmentStatus struct {

@@ -399,6 +399,14 @@ spec:
           properties:
             clientConnThrottle:
               type: integer
+            created:
+              type: string
+            hostname:
+              type: string
+            ipv4:
+              type: string
+            ipv6:
+              type: string
             label:
               type: string
             providerRef:
@@ -417,9 +425,35 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            transfer:
+              additionalProperties:
+                properties:
+                  in:
+                    description: A Number represents a JSON number literal.
+                    type: string
+                  out:
+                    description: A Number represents a JSON number literal.
+                    type: string
+                  total:
+                    description: A Number represents a JSON number literal.
+                    type: string
+                required:
+                - in
+                - out
+                - total
+                type: object
+              type: object
+            updated:
+              type: string
           required:
+          - created
+          - hostname
+          - ipv4
+          - ipv6
           - providerRef
           - region
+          - transfer
+          - updated
           type: object
         status:
           properties:
@@ -432,6 +466,14 @@ spec:
               properties:
                 clientConnThrottle:
                   type: integer
+                created:
+                  type: string
+                hostname:
+                  type: string
+                ipv4:
+                  type: string
+                ipv6:
+                  type: string
                 label:
                   type: string
                 providerRef:
@@ -450,9 +492,35 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                transfer:
+                  additionalProperties:
+                    properties:
+                      in:
+                        description: A Number represents a JSON number literal.
+                        type: string
+                      out:
+                        description: A Number represents a JSON number literal.
+                        type: string
+                      total:
+                        description: A Number represents a JSON number literal.
+                        type: string
+                    required:
+                    - in
+                    - out
+                    - total
+                    type: object
+                  type: object
+                updated:
+                  type: string
               required:
+              - created
+              - hostname
+              - ipv4
+              - ipv6
               - providerRef
               - region
+              - transfer
+              - updated
               type: object
             state:
               properties:

@@ -53,14 +53,17 @@ type ComputeURLMapSpec struct {
 	DefaultService string `json:"defaultService" tf:"default_service"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Fingerprint string `json:"fingerprint" tf:"fingerprint"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	HostRule []ComputeURLMapSpecHostRule `json:"hostRule,omitempty" tf:"host_rule,omitempty"`
+	MapID    string                      `json:"mapID" tf:"map_id"`
 	Name     string                      `json:"name" tf:"name"`
 	// +optional
 	PathMatcher []ComputeURLMapSpecPathMatcher `json:"pathMatcher,omitempty" tf:"path_matcher,omitempty"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Project  string `json:"project,omitempty" tf:"project,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 	// +optional
 	Test []ComputeURLMapSpecTest `json:"test,omitempty" tf:"test,omitempty"`
 }

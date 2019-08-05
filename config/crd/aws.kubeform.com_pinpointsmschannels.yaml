@@ -401,6 +401,8 @@ spec:
               type: string
             enabled:
               type: boolean
+            promotionalMessagesPerSecond:
+              type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -414,9 +416,13 @@ spec:
               type: string
             shortCode:
               type: string
+            transactionalMessagesPerSecond:
+              type: integer
           required:
           - applicationID
+          - promotionalMessagesPerSecond
           - providerRef
+          - transactionalMessagesPerSecond
           type: object
         status:
           properties:
@@ -431,6 +437,8 @@ spec:
                   type: string
                 enabled:
                   type: boolean
+                promotionalMessagesPerSecond:
+                  type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -444,9 +452,13 @@ spec:
                   type: string
                 shortCode:
                   type: string
+                transactionalMessagesPerSecond:
+                  type: integer
               required:
               - applicationID
+              - promotionalMessagesPerSecond
               - providerRef
+              - transactionalMessagesPerSecond
               type: object
             state:
               properties:

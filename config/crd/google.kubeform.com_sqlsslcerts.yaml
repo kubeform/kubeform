@@ -397,7 +397,15 @@ spec:
           type: object
         spec:
           properties:
+            cert:
+              type: string
+            certSerialNumber:
+              type: string
             commonName:
+              type: string
+            createTime:
+              type: string
+            expirationTime:
               type: string
             instance:
               type: string
@@ -410,10 +418,29 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
+            serverCaCert:
+              type: string
+            sha1Fingerprint:
+              type: string
           required:
+          - cert
+          - certSerialNumber
           - commonName
+          - createTime
+          - expirationTime
           - instance
           - providerRef
+          - serverCaCert
+          - sha1Fingerprint
           type: object
         status:
           properties:
@@ -424,7 +451,15 @@ spec:
               type: integer
             output:
               properties:
+                cert:
+                  type: string
+                certSerialNumber:
+                  type: string
                 commonName:
+                  type: string
+                createTime:
+                  type: string
+                expirationTime:
                   type: string
                 instance:
                   type: string
@@ -437,10 +472,29 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                serverCaCert:
+                  type: string
+                sha1Fingerprint:
+                  type: string
               required:
+              - cert
+              - certSerialNumber
               - commonName
+              - createTime
+              - expirationTime
               - instance
               - providerRef
+              - serverCaCert
+              - sha1Fingerprint
               type: object
             state:
               properties:

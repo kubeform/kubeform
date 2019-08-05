@@ -43,6 +43,7 @@ type ConfigConfigurationAggregatorSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AccountAggregationSource []ConfigConfigurationAggregatorSpecAccountAggregationSource `json:"accountAggregationSource,omitempty" tf:"account_aggregation_source,omitempty"`
+	Arn                      string                                                      `json:"arn" tf:"arn"`
 	Name                     string                                                      `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

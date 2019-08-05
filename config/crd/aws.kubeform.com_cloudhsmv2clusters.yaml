@@ -397,6 +397,32 @@ spec:
           type: object
         spec:
           properties:
+            clusterCertificates:
+              items:
+                properties:
+                  awsHardwareCertificate:
+                    type: string
+                  clusterCertificate:
+                    type: string
+                  clusterCsr:
+                    type: string
+                  hsmCertificate:
+                    type: string
+                  manufacturerHardwareCertificate:
+                    type: string
+                required:
+                - awsHardwareCertificate
+                - clusterCertificate
+                - clusterCsr
+                - hsmCertificate
+                - manufacturerHardwareCertificate
+                type: object
+              maxItems: 1
+              type: array
+            clusterID:
+              type: string
+            clusterState:
+              type: string
             hsmType:
               type: string
             providerRef:
@@ -408,6 +434,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            securityGroupID:
+              type: string
             sourceBackupIdentifier:
               type: string
             subnetIDS:
@@ -419,10 +447,17 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            vpcID:
+              type: string
           required:
+          - clusterCertificates
+          - clusterID
+          - clusterState
           - hsmType
           - providerRef
+          - securityGroupID
           - subnetIDS
+          - vpcID
           type: object
         status:
           properties:
@@ -433,6 +468,32 @@ spec:
               type: integer
             output:
               properties:
+                clusterCertificates:
+                  items:
+                    properties:
+                      awsHardwareCertificate:
+                        type: string
+                      clusterCertificate:
+                        type: string
+                      clusterCsr:
+                        type: string
+                      hsmCertificate:
+                        type: string
+                      manufacturerHardwareCertificate:
+                        type: string
+                    required:
+                    - awsHardwareCertificate
+                    - clusterCertificate
+                    - clusterCsr
+                    - hsmCertificate
+                    - manufacturerHardwareCertificate
+                    type: object
+                  maxItems: 1
+                  type: array
+                clusterID:
+                  type: string
+                clusterState:
+                  type: string
                 hsmType:
                   type: string
                 providerRef:
@@ -444,6 +505,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                securityGroupID:
+                  type: string
                 sourceBackupIdentifier:
                   type: string
                 subnetIDS:
@@ -455,10 +518,17 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                vpcID:
+                  type: string
               required:
+              - clusterCertificates
+              - clusterID
+              - clusterState
               - hsmType
               - providerRef
+              - securityGroupID
               - subnetIDS
+              - vpcID
               type: object
             state:
               properties:

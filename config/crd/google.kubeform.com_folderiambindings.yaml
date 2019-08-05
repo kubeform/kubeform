@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            etag:
+              type: string
             folder:
               type: string
             members:
@@ -416,6 +418,7 @@ spec:
             role:
               type: string
           required:
+          - etag
           - folder
           - members
           - providerRef
@@ -430,6 +433,8 @@ spec:
               type: integer
             output:
               properties:
+                etag:
+                  type: string
                 folder:
                   type: string
                 members:
@@ -449,6 +454,7 @@ spec:
                 role:
                   type: string
               required:
+              - etag
               - folder
               - members
               - providerRef

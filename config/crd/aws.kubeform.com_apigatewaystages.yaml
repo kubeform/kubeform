@@ -422,6 +422,10 @@ spec:
               type: string
             documentationVersion:
               type: string
+            executionArn:
+              type: string
+            invokeURL:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -447,6 +451,8 @@ spec:
               type: boolean
           required:
           - deploymentID
+          - executionArn
+          - invokeURL
           - providerRef
           - restAPIID
           - stageName
@@ -485,6 +491,10 @@ spec:
                   type: string
                 documentationVersion:
                   type: string
+                executionArn:
+                  type: string
+                invokeURL:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -510,6 +520,8 @@ spec:
                   type: boolean
               required:
               - deploymentID
+              - executionArn
+              - invokeURL
               - providerRef
               - restAPIID
               - stageName

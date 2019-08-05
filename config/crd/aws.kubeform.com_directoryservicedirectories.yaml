@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            accessURL:
+              type: string
             alias:
               type: string
             connectSettings:
@@ -426,6 +428,11 @@ spec:
               type: array
             description:
               type: string
+            dnsIPAddresses:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             edition:
               type: string
             enableSso:
@@ -450,6 +457,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            securityGroupID:
+              type: string
             shortName:
               type: string
             size:
@@ -477,8 +486,11 @@ spec:
               maxItems: 1
               type: array
           required:
+          - accessURL
+          - dnsIPAddresses
           - name
           - providerRef
+          - securityGroupID
           type: object
         status:
           properties:
@@ -489,6 +501,8 @@ spec:
               type: integer
             output:
               properties:
+                accessURL:
+                  type: string
                 alias:
                   type: string
                 connectSettings:
@@ -518,6 +532,11 @@ spec:
                   type: array
                 description:
                   type: string
+                dnsIPAddresses:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
                 edition:
                   type: string
                 enableSso:
@@ -542,6 +561,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                securityGroupID:
+                  type: string
                 shortName:
                   type: string
                 size:
@@ -569,8 +590,11 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - accessURL
+              - dnsIPAddresses
               - name
               - providerRef
+              - securityGroupID
               type: object
             state:
               properties:

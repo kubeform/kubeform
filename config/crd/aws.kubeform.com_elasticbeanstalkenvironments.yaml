@@ -397,12 +397,50 @@ spec:
           type: object
         spec:
           properties:
+            allSettings:
+              items:
+                properties:
+                  name:
+                    type: string
+                  namespace:
+                    type: string
+                  resource:
+                    type: string
+                  value:
+                    type: string
+                required:
+                - name
+                - namespace
+                - value
+                type: object
+              type: array
+              uniqueItems: true
             application:
+              type: string
+            arn:
+              type: string
+            autoscalingGroups:
+              items:
+                type: string
+              type: array
+            cname:
               type: string
             cnamePrefix:
               type: string
             description:
               type: string
+            instances:
+              items:
+                type: string
+              type: array
+            launchConfigurations:
+              items:
+                type: string
+              type: array
+            loadBalancers:
+              items:
+                type: string
+              type: array
             name:
               type: string
             platformArn:
@@ -418,6 +456,10 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            queues:
+              items:
+                type: string
+              type: array
             setting:
               items:
                 properties:
@@ -446,14 +488,27 @@ spec:
               type: string
             tier:
               type: string
+            triggers:
+              items:
+                type: string
+              type: array
             versionLabel:
               type: string
             waitForReadyTimeout:
               type: string
           required:
+          - allSettings
           - application
+          - arn
+          - autoscalingGroups
+          - cname
+          - instances
+          - launchConfigurations
+          - loadBalancers
           - name
           - providerRef
+          - queues
+          - triggers
           type: object
         status:
           properties:
@@ -464,12 +519,50 @@ spec:
               type: integer
             output:
               properties:
+                allSettings:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      namespace:
+                        type: string
+                      resource:
+                        type: string
+                      value:
+                        type: string
+                    required:
+                    - name
+                    - namespace
+                    - value
+                    type: object
+                  type: array
+                  uniqueItems: true
                 application:
+                  type: string
+                arn:
+                  type: string
+                autoscalingGroups:
+                  items:
+                    type: string
+                  type: array
+                cname:
                   type: string
                 cnamePrefix:
                   type: string
                 description:
                   type: string
+                instances:
+                  items:
+                    type: string
+                  type: array
+                launchConfigurations:
+                  items:
+                    type: string
+                  type: array
+                loadBalancers:
+                  items:
+                    type: string
+                  type: array
                 name:
                   type: string
                 platformArn:
@@ -485,6 +578,10 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                queues:
+                  items:
+                    type: string
+                  type: array
                 setting:
                   items:
                     properties:
@@ -513,14 +610,27 @@ spec:
                   type: string
                 tier:
                   type: string
+                triggers:
+                  items:
+                    type: string
+                  type: array
                 versionLabel:
                   type: string
                 waitForReadyTimeout:
                   type: string
               required:
+              - allSettings
               - application
+              - arn
+              - autoscalingGroups
+              - cname
+              - instances
+              - launchConfigurations
+              - loadBalancers
               - name
               - providerRef
+              - queues
+              - triggers
               type: object
             state:
               properties:

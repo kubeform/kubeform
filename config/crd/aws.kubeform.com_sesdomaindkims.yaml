@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            dkimTokens:
+              items:
+                type: string
+              type: array
             domain:
               type: string
             providerRef:
@@ -409,6 +413,7 @@ spec:
                   type: string
               type: object
           required:
+          - dkimTokens
           - domain
           - providerRef
           type: object
@@ -421,6 +426,10 @@ spec:
               type: integer
             output:
               properties:
+                dkimTokens:
+                  items:
+                    type: string
+                  type: array
                 domain:
                   type: string
                 providerRef:
@@ -433,6 +442,7 @@ spec:
                       type: string
                   type: object
               required:
+              - dkimTokens
               - domain
               - providerRef
               type: object

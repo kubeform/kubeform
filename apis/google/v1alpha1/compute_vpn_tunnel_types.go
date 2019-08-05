@@ -23,10 +23,13 @@ type ComputeVPNTunnelSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional
-	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Description    string `json:"description,omitempty" tf:"description,omitempty"`
+	DetailedStatus string `json:"detailedStatus" tf:"detailed_status"`
 	// +optional
-	IkeVersion int `json:"ikeVersion,omitempty" tf:"ike_version,omitempty"`
+	IkeVersion       int    `json:"ikeVersion,omitempty" tf:"ike_version,omitempty"`
+	LabelFingerprint string `json:"labelFingerprint" tf:"label_fingerprint"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
@@ -43,7 +46,9 @@ type ComputeVPNTunnelSpec struct {
 	RemoteTrafficSelector []string `json:"remoteTrafficSelector,omitempty" tf:"remote_traffic_selector,omitempty"`
 	// +optional
 	Router           string `json:"router,omitempty" tf:"router,omitempty"`
+	SelfLink         string `json:"selfLink" tf:"self_link"`
 	SharedSecret     string `json:"-" sensitive:"true" tf:"shared_secret"`
+	SharedSecretHash string `json:"sharedSecretHash" tf:"shared_secret_hash"`
 	TargetVPNGateway string `json:"targetVPNGateway" tf:"target_vpn_gateway"`
 }
 

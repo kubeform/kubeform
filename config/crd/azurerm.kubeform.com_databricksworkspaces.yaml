@@ -399,6 +399,8 @@ spec:
           properties:
             location:
               type: string
+            managedResourceGroupID:
+              type: string
             managedResourceGroupName:
               type: string
             name:
@@ -422,6 +424,7 @@ spec:
               type: object
           required:
           - location
+          - managedResourceGroupID
           - name
           - providerRef
           - resourceGroupName
@@ -437,6 +440,8 @@ spec:
             output:
               properties:
                 location:
+                  type: string
+                managedResourceGroupID:
                   type: string
                 managedResourceGroupName:
                   type: string
@@ -461,6 +466,7 @@ spec:
                   type: object
               required:
               - location
+              - managedResourceGroupID
               - name
               - providerRef
               - resourceGroupName

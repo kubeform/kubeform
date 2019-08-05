@@ -435,10 +435,13 @@ spec:
               type: string
             type:
               type: string
+            version:
+              type: integer
           required:
           - name
           - providerRef
           - type
+          - version
           type: object
         status:
           properties:
@@ -487,10 +490,13 @@ spec:
                   type: string
                 type:
                   type: string
+                version:
+                  type: integer
               required:
               - name
               - providerRef
               - type
+              - version
               type: object
             state:
               properties:

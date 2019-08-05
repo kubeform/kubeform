@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            customerAwsID:
+              type: string
             enabled:
               type: boolean
             eventCategories:
@@ -431,6 +435,8 @@ spec:
                 type: string
               type: object
           required:
+          - arn
+          - customerAwsID
           - providerRef
           - snsTopicArn
           type: object
@@ -443,6 +449,10 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                customerAwsID:
+                  type: string
                 enabled:
                   type: boolean
                 eventCategories:
@@ -477,6 +487,8 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
+              - customerAwsID
               - providerRef
               - snsTopicArn
               type: object

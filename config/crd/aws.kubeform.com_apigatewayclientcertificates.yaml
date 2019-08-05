@@ -397,7 +397,13 @@ spec:
           type: object
         spec:
           properties:
+            createdDate:
+              type: string
             description:
+              type: string
+            expirationDate:
+              type: string
+            pemEncodedCertificate:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -409,6 +415,9 @@ spec:
                   type: string
               type: object
           required:
+          - createdDate
+          - expirationDate
+          - pemEncodedCertificate
           - providerRef
           type: object
         status:
@@ -420,7 +429,13 @@ spec:
               type: integer
             output:
               properties:
+                createdDate:
+                  type: string
                 description:
+                  type: string
+                expirationDate:
+                  type: string
+                pemEncodedCertificate:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -432,6 +447,9 @@ spec:
                       type: string
                   type: object
               required:
+              - createdDate
+              - expirationDate
+              - pemEncodedCertificate
               - providerRef
               type: object
             state:

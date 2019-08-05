@@ -424,11 +424,15 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            arn:
+              type: string
             autoVerifiedAttributes:
               items:
                 type: string
               type: array
               uniqueItems: true
+            creationDate:
+              type: string
             deviceConfiguration:
               items:
                 properties:
@@ -454,6 +458,8 @@ spec:
             emailVerificationMessage:
               type: string
             emailVerificationSubject:
+              type: string
+            endpoint:
               type: string
             lambdaConfig:
               items:
@@ -481,6 +487,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            lastModifiedDate:
+              type: string
             mfaConfiguration:
               type: string
             name:
@@ -605,6 +613,10 @@ spec:
               maxItems: 1
               type: array
           required:
+          - arn
+          - creationDate
+          - endpoint
+          - lastModifiedDate
           - name
           - providerRef
           type: object
@@ -644,11 +656,15 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                arn:
+                  type: string
                 autoVerifiedAttributes:
                   items:
                     type: string
                   type: array
                   uniqueItems: true
+                creationDate:
+                  type: string
                 deviceConfiguration:
                   items:
                     properties:
@@ -674,6 +690,8 @@ spec:
                 emailVerificationMessage:
                   type: string
                 emailVerificationSubject:
+                  type: string
+                endpoint:
                   type: string
                 lambdaConfig:
                   items:
@@ -701,6 +719,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                lastModifiedDate:
+                  type: string
                 mfaConfiguration:
                   type: string
                 name:
@@ -825,6 +845,10 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - arn
+              - creationDate
+              - endpoint
+              - lastModifiedDate
               - name
               - providerRef
               type: object

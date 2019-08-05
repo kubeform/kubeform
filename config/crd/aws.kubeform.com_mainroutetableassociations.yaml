@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            originalRouteTableID:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -411,6 +413,7 @@ spec:
             vpcID:
               type: string
           required:
+          - originalRouteTableID
           - providerRef
           - routeTableID
           - vpcID
@@ -424,6 +427,8 @@ spec:
               type: integer
             output:
               properties:
+                originalRouteTableID:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -438,6 +443,7 @@ spec:
                 vpcID:
                   type: string
               required:
+              - originalRouteTableID
               - providerRef
               - routeTableID
               - vpcID

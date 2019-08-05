@@ -401,6 +401,8 @@ spec:
               type: integer
             interface:
               type: string
+            ipAddress:
+              type: string
             name:
               type: string
             peerAsn:
@@ -424,6 +426,7 @@ spec:
               type: string
           required:
           - interface
+          - ipAddress
           - name
           - peerAsn
           - providerRef
@@ -441,6 +444,8 @@ spec:
                 advertisedRoutePriority:
                   type: integer
                 interface:
+                  type: string
+                ipAddress:
                   type: string
                 name:
                   type: string
@@ -465,6 +470,7 @@ spec:
                   type: string
               required:
               - interface
+              - ipAddress
               - name
               - peerAsn
               - providerRef

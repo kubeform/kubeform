@@ -450,9 +450,12 @@ spec:
                     items:
                       type: string
                     type: array
+                  principalID:
+                    type: string
                   type:
                     type: string
                 required:
+                - principalID
                 - type
                 type: object
               maxItems: 1
@@ -856,9 +859,12 @@ spec:
                         items:
                           type: string
                         type: array
+                      principalID:
+                        type: string
                       type:
                         type: string
                     required:
+                    - principalID
                     - type
                     type: object
                   maxItems: 1

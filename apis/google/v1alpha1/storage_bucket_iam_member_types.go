@@ -22,6 +22,7 @@ type StorageBucketIamMemberSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	Bucket string `json:"bucket" tf:"bucket"`
+	Etag   string `json:"etag" tf:"etag"`
 	Member string `json:"member" tf:"member"`
 	Role   string `json:"role" tf:"role"`
 }

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            created:
+              type: string
             expiry:
               type: string
             label:
@@ -412,9 +414,13 @@ spec:
               type: object
             scopes:
               type: string
+            token:
+              type: string
           required:
+          - created
           - providerRef
           - scopes
+          - token
           type: object
         status:
           properties:
@@ -425,6 +431,8 @@ spec:
               type: integer
             output:
               properties:
+                created:
+                  type: string
                 expiry:
                   type: string
                 label:
@@ -440,9 +448,13 @@ spec:
                   type: object
                 scopes:
                   type: string
+                token:
+                  type: string
               required:
+              - created
               - providerRef
               - scopes
+              - token
               type: object
             state:
               properties:

@@ -21,8 +21,17 @@ type SqlSslCert struct {
 type SqlSslCertSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	CommonName string `json:"commonName" tf:"common_name"`
-	Instance   string `json:"instance" tf:"instance"`
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	Cert             string `json:"cert" tf:"cert"`
+	CertSerialNumber string `json:"certSerialNumber" tf:"cert_serial_number"`
+	CommonName       string `json:"commonName" tf:"common_name"`
+	CreateTime       string `json:"createTime" tf:"create_time"`
+	ExpirationTime   string `json:"expirationTime" tf:"expiration_time"`
+	Instance         string `json:"instance" tf:"instance"`
+	PrivateKey       string `json:"-" sensitive:"true" tf:"private_key"`
+	ServerCaCert     string `json:"serverCaCert" tf:"server_ca_cert"`
+	Sha1Fingerprint  string `json:"sha1Fingerprint" tf:"sha1_fingerprint"`
 }
 
 type SqlSslCertStatus struct {

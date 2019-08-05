@@ -21,6 +21,7 @@ type RdsGlobalCluster struct {
 type RdsGlobalClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	DatabaseName string `json:"databaseName,omitempty" tf:"database_name,omitempty"`
 	// +optional
@@ -30,6 +31,7 @@ type RdsGlobalClusterSpec struct {
 	// +optional
 	EngineVersion           string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
 	GlobalClusterIdentifier string `json:"globalClusterIdentifier" tf:"global_cluster_identifier"`
+	GlobalClusterResourceID string `json:"globalClusterResourceID" tf:"global_cluster_resource_id"`
 	// +optional
 	StorageEncrypted bool `json:"storageEncrypted,omitempty" tf:"storage_encrypted,omitempty"`
 }

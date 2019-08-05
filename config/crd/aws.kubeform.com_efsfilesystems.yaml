@@ -397,7 +397,11 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             creationToken:
+              type: string
+            dnsName:
               type: string
             encrypted:
               type: boolean
@@ -424,6 +428,8 @@ spec:
             throughputMode:
               type: string
           required:
+          - arn
+          - dnsName
           - providerRef
           type: object
         status:
@@ -435,7 +441,11 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 creationToken:
+                  type: string
+                dnsName:
                   type: string
                 encrypted:
                   type: boolean
@@ -462,6 +472,8 @@ spec:
                 throughputMode:
                   type: string
               required:
+              - arn
+              - dnsName
               - providerRef
               type: object
             state:

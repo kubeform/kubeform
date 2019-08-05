@@ -23,6 +23,7 @@ type XraySamplingRule struct {
 type XraySamplingRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	Attributes    map[string]string `json:"attributes,omitempty" tf:"attributes,omitempty"`
 	FixedRate     json.Number       `json:"fixedRate" tf:"fixed_rate"`

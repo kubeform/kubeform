@@ -26,14 +26,20 @@ type DatabaseClusterSpecMaintenanceWindow struct {
 type DatabaseClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Engine string `json:"engine" tf:"engine"`
+	Database string `json:"database" tf:"database"`
+	Engine   string `json:"engine" tf:"engine"`
+	Host     string `json:"host" tf:"host"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	MaintenanceWindow []DatabaseClusterSpecMaintenanceWindow `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
 	Name              string                                 `json:"name" tf:"name"`
 	NodeCount         int                                    `json:"nodeCount" tf:"node_count"`
+	Password          string                                 `json:"password" tf:"password"`
+	Port              int                                    `json:"port" tf:"port"`
 	Region            string                                 `json:"region" tf:"region"`
 	Size              string                                 `json:"size" tf:"size"`
+	Uri               string                                 `json:"uri" tf:"uri"`
+	User              string                                 `json:"user" tf:"user"`
 	Version           string                                 `json:"version" tf:"version"`
 }
 

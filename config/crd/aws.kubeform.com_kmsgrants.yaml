@@ -416,6 +416,10 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            grantID:
+              type: string
+            grantToken:
+              type: string
             granteePrincipal:
               type: string
             keyID:
@@ -441,6 +445,8 @@ spec:
             retiringPrincipal:
               type: string
           required:
+          - grantID
+          - grantToken
           - granteePrincipal
           - keyID
           - operations
@@ -474,6 +480,10 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                grantID:
+                  type: string
+                grantToken:
+                  type: string
                 granteePrincipal:
                   type: string
                 keyID:
@@ -499,6 +509,8 @@ spec:
                 retiringPrincipal:
                   type: string
               required:
+              - grantID
+              - grantToken
               - granteePrincipal
               - keyID
               - operations

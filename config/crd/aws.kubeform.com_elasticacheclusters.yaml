@@ -403,7 +403,29 @@ spec:
               type: string
             azMode:
               type: string
+            cacheNodes:
+              items:
+                properties:
+                  ID:
+                    type: string
+                  address:
+                    type: string
+                  availabilityZone:
+                    type: string
+                  port:
+                    type: integer
+                required:
+                - ID
+                - address
+                - availabilityZone
+                - port
+                type: object
+              type: array
+            clusterAddress:
+              type: string
             clusterID:
+              type: string
+            configurationEndpoint:
               type: string
             engine:
               type: string
@@ -464,7 +486,10 @@ spec:
                 type: string
               type: object
           required:
+          - cacheNodes
+          - clusterAddress
           - clusterID
+          - configurationEndpoint
           - providerRef
           type: object
         status:
@@ -482,7 +507,29 @@ spec:
                   type: string
                 azMode:
                   type: string
+                cacheNodes:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      address:
+                        type: string
+                      availabilityZone:
+                        type: string
+                      port:
+                        type: integer
+                    required:
+                    - ID
+                    - address
+                    - availabilityZone
+                    - port
+                    type: object
+                  type: array
+                clusterAddress:
+                  type: string
                 clusterID:
+                  type: string
+                configurationEndpoint:
                   type: string
                 engine:
                   type: string
@@ -543,7 +590,10 @@ spec:
                     type: string
                   type: object
               required:
+              - cacheNodes
+              - clusterAddress
               - clusterID
+              - configurationEndpoint
               - providerRef
               type: object
             state:

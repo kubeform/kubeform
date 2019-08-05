@@ -21,8 +21,11 @@ type ApiGatewayClientCertificate struct {
 type ApiGatewayClientCertificateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	CreatedDate string `json:"createdDate" tf:"created_date"`
 	// +optional
-	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Description           string `json:"description,omitempty" tf:"description,omitempty"`
+	ExpirationDate        string `json:"expirationDate" tf:"expiration_date"`
+	PemEncodedCertificate string `json:"pemEncodedCertificate" tf:"pem_encoded_certificate"`
 }
 
 type ApiGatewayClientCertificateStatus struct {

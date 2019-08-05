@@ -397,10 +397,14 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             attributes:
               additionalProperties:
                 type: string
               type: object
+            defaultClientID:
+              type: string
             name:
               type: string
             providerRef:
@@ -414,9 +418,14 @@ spec:
               type: object
             thingTypeName:
               type: string
+            version:
+              type: integer
           required:
+          - arn
+          - defaultClientID
           - name
           - providerRef
+          - version
           type: object
         status:
           properties:
@@ -427,10 +436,14 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 attributes:
                   additionalProperties:
                     type: string
                   type: object
+                defaultClientID:
+                  type: string
                 name:
                   type: string
                 providerRef:
@@ -444,9 +457,14 @@ spec:
                   type: object
                 thingTypeName:
                   type: string
+                version:
+                  type: integer
               required:
+              - arn
+              - defaultClientID
               - name
               - providerRef
+              - version
               type: object
             state:
               properties:

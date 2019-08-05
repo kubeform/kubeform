@@ -420,6 +420,8 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            state:
+              type: string
           required:
           - automationAccountName
           - contentEmbedded
@@ -427,6 +429,7 @@ spec:
           - name
           - providerRef
           - resourceGroupName
+          - state
           type: object
         status:
           properties:
@@ -460,6 +463,8 @@ spec:
                   type: object
                 resourceGroupName:
                   type: string
+                state:
+                  type: string
               required:
               - automationAccountName
               - contentEmbedded
@@ -467,6 +472,7 @@ spec:
               - name
               - providerRef
               - resourceGroupName
+              - state
               type: object
             state:
               properties:

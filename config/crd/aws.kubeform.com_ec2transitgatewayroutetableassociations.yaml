@@ -406,12 +406,18 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            resourceID:
+              type: string
+            resourceType:
+              type: string
             transitGatewayAttachmentID:
               type: string
             transitGatewayRouteTableID:
               type: string
           required:
           - providerRef
+          - resourceID
+          - resourceType
           - transitGatewayAttachmentID
           - transitGatewayRouteTableID
           type: object
@@ -433,12 +439,18 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                resourceID:
+                  type: string
+                resourceType:
+                  type: string
                 transitGatewayAttachmentID:
                   type: string
                 transitGatewayRouteTableID:
                   type: string
               required:
               - providerRef
+              - resourceID
+              - resourceType
               - transitGatewayAttachmentID
               - transitGatewayRouteTableID
               type: object

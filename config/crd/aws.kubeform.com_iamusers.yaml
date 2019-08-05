@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             forceDestroy:
               type: boolean
             name:
@@ -418,9 +420,13 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            uniqueID:
+              type: string
           required:
+          - arn
           - name
           - providerRef
+          - uniqueID
           type: object
         status:
           properties:
@@ -431,6 +437,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 forceDestroy:
                   type: boolean
                 name:
@@ -452,9 +460,13 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                uniqueID:
+                  type: string
               required:
+              - arn
               - name
               - providerRef
+              - uniqueID
               type: object
             state:
               properties:

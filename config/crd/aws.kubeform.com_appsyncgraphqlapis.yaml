@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             authenticationType:
               type: string
             logConfig:
@@ -445,6 +447,10 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            uris:
+              additionalProperties:
+                type: string
+              type: object
             userPoolConfig:
               items:
                 properties:
@@ -463,9 +469,11 @@ spec:
               maxItems: 1
               type: array
           required:
+          - arn
           - authenticationType
           - name
           - providerRef
+          - uris
           type: object
         status:
           properties:
@@ -476,6 +484,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 authenticationType:
                   type: string
                 logConfig:
@@ -524,6 +534,10 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                uris:
+                  additionalProperties:
+                    type: string
+                  type: object
                 userPoolConfig:
                   items:
                     properties:
@@ -542,9 +556,11 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - arn
               - authenticationType
               - name
               - providerRef
+              - uris
               type: object
             state:
               properties:

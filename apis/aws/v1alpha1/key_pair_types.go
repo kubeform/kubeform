@@ -21,6 +21,7 @@ type KeyPair struct {
 type KeyPairSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Fingerprint string `json:"fingerprint" tf:"fingerprint"`
 	// +optional
 	KeyName string `json:"keyName,omitempty" tf:"key_name,omitempty"`
 	// +optional

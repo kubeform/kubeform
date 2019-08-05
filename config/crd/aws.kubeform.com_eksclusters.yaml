@@ -397,12 +397,30 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            certificateAuthority:
+              items:
+                properties:
+                  data:
+                    type: string
+                required:
+                - data
+                type: object
+              maxItems: 1
+              type: array
+            createdAt:
+              type: string
             enabledClusterLogTypes:
               items:
                 type: string
               type: array
               uniqueItems: true
+            endpoint:
+              type: string
             name:
+              type: string
+            platformVersion:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -435,14 +453,22 @@ spec:
                     minItems: 1
                     type: array
                     uniqueItems: true
+                  vpcID:
+                    type: string
                 required:
                 - subnetIDS
+                - vpcID
                 type: object
               maxItems: 1
               minItems: 1
               type: array
           required:
+          - arn
+          - certificateAuthority
+          - createdAt
+          - endpoint
           - name
+          - platformVersion
           - providerRef
           - roleArn
           - vpcConfig
@@ -456,12 +482,30 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                certificateAuthority:
+                  items:
+                    properties:
+                      data:
+                        type: string
+                    required:
+                    - data
+                    type: object
+                  maxItems: 1
+                  type: array
+                createdAt:
+                  type: string
                 enabledClusterLogTypes:
                   items:
                     type: string
                   type: array
                   uniqueItems: true
+                endpoint:
+                  type: string
                 name:
+                  type: string
+                platformVersion:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -494,14 +538,22 @@ spec:
                         minItems: 1
                         type: array
                         uniqueItems: true
+                      vpcID:
+                        type: string
                     required:
                     - subnetIDS
+                    - vpcID
                     type: object
                   maxItems: 1
                   minItems: 1
                   type: array
               required:
+              - arn
+              - certificateAuthority
+              - createdAt
+              - endpoint
               - name
+              - platformVersion
               - providerRef
               - roleArn
               - vpcConfig

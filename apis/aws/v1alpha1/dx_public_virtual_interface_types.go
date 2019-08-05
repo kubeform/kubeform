@@ -24,6 +24,8 @@ type DxPublicVirtualInterfaceSpec struct {
 	AddressFamily string `json:"addressFamily" tf:"address_family"`
 	// +optional
 	AmazonAddress string `json:"amazonAddress,omitempty" tf:"amazon_address,omitempty"`
+	Arn           string `json:"arn" tf:"arn"`
+	AwsDevice     string `json:"awsDevice" tf:"aws_device"`
 	BgpAsn        int    `json:"bgpAsn" tf:"bgp_asn"`
 	// +optional
 	BgpAuthKey   string `json:"bgpAuthKey,omitempty" tf:"bgp_auth_key,omitempty"`

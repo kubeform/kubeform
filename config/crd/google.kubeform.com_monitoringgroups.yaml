@@ -403,6 +403,8 @@ spec:
               type: string
             isCluster:
               type: boolean
+            name:
+              type: string
             parentName:
               type: string
             project:
@@ -419,6 +421,7 @@ spec:
           required:
           - displayName
           - filter
+          - name
           - providerRef
           type: object
         status:
@@ -436,6 +439,8 @@ spec:
                   type: string
                 isCluster:
                   type: boolean
+                name:
+                  type: string
                 parentName:
                   type: string
                 project:
@@ -452,6 +457,7 @@ spec:
               required:
               - displayName
               - filter
+              - name
               - providerRef
               type: object
             state:

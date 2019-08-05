@@ -23,7 +23,9 @@ type ComputeSslCertificateSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	Certificate string `json:"-" sensitive:"true" tf:"certificate"`
+	Certificate       string `json:"-" sensitive:"true" tf:"certificate"`
+	CertificateID     int    `json:"certificateID" tf:"certificate_id"`
+	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -32,7 +34,8 @@ type ComputeSslCertificateSpec struct {
 	NamePrefix string `json:"namePrefix,omitempty" tf:"name_prefix,omitempty"`
 	PrivateKey string `json:"-" sensitive:"true" tf:"private_key"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Project  string `json:"project,omitempty" tf:"project,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 }
 
 type ComputeSslCertificateStatus struct {

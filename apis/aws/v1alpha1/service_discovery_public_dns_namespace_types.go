@@ -21,8 +21,10 @@ type ServiceDiscoveryPublicDNSNamespace struct {
 type ServiceDiscoveryPublicDNSNamespaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	HostedZone  string `json:"hostedZone" tf:"hosted_zone"`
 	Name        string `json:"name" tf:"name"`
 }
 

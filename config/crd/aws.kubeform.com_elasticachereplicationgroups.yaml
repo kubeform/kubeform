@@ -423,12 +423,19 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            configurationEndpointAddress:
+              type: string
             engine:
               type: string
             engineVersion:
               type: string
             maintenanceWindow:
               type: string
+            memberClusters:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             nodeType:
               type: string
             notificationTopicArn:
@@ -439,6 +446,8 @@ spec:
               type: string
             port:
               type: integer
+            primaryEndpointAddress:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -491,6 +500,9 @@ spec:
             transitEncryptionEnabled:
               type: boolean
           required:
+          - configurationEndpointAddress
+          - memberClusters
+          - primaryEndpointAddress
           - providerRef
           - replicationGroupDescription
           - replicationGroupID
@@ -530,12 +542,19 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                configurationEndpointAddress:
+                  type: string
                 engine:
                   type: string
                 engineVersion:
                   type: string
                 maintenanceWindow:
                   type: string
+                memberClusters:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
                 nodeType:
                   type: string
                 notificationTopicArn:
@@ -546,6 +565,8 @@ spec:
                   type: string
                 port:
                   type: integer
+                primaryEndpointAddress:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -598,6 +619,9 @@ spec:
                 transitEncryptionEnabled:
                   type: boolean
               required:
+              - configurationEndpointAddress
+              - memberClusters
+              - primaryEndpointAddress
               - providerRef
               - replicationGroupDescription
               - replicationGroupID

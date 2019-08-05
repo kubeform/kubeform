@@ -21,9 +21,11 @@ type LbNATRule struct {
 type LbNATRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	BackendPort int `json:"backendPort" tf:"backend_port"`
+	BackendIPConfigurationID string `json:"backendIPConfigurationID" tf:"backend_ip_configuration_id"`
+	BackendPort              int    `json:"backendPort" tf:"backend_port"`
 	// +optional
 	EnableFloatingIP            bool   `json:"enableFloatingIP,omitempty" tf:"enable_floating_ip,omitempty"`
+	FrontendIPConfigurationID   string `json:"frontendIPConfigurationID" tf:"frontend_ip_configuration_id"`
 	FrontendIPConfigurationName string `json:"frontendIPConfigurationName" tf:"frontend_ip_configuration_name"`
 	FrontendPort                int    `json:"frontendPort" tf:"frontend_port"`
 	LoadbalancerID              string `json:"loadbalancerID" tf:"loadbalancer_id"`

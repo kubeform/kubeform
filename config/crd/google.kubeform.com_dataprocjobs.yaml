@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            driverControlsFilesURI:
+              type: string
+            driverOutputResourceURI:
+              type: string
             forceDelete:
               type: boolean
             hadoopConfig:
@@ -510,8 +514,11 @@ spec:
                 properties:
                   clusterName:
                     type: string
+                  clusterUUID:
+                    type: string
                 required:
                 - clusterName
+                - clusterUUID
                 type: object
               maxItems: 1
               type: array
@@ -662,9 +669,31 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            status:
+              items:
+                properties:
+                  details:
+                    type: string
+                  state:
+                    type: string
+                  stateStartTime:
+                    type: string
+                  substate:
+                    type: string
+                required:
+                - details
+                - state
+                - stateStartTime
+                - substate
+                type: object
+              maxItems: 1
+              type: array
           required:
+          - driverControlsFilesURI
+          - driverOutputResourceURI
           - placement
           - providerRef
+          - status
           type: object
         status:
           properties:
@@ -675,6 +704,10 @@ spec:
               type: integer
             output:
               properties:
+                driverControlsFilesURI:
+                  type: string
+                driverOutputResourceURI:
+                  type: string
                 forceDelete:
                   type: boolean
                 hadoopConfig:
@@ -788,8 +821,11 @@ spec:
                     properties:
                       clusterName:
                         type: string
+                      clusterUUID:
+                        type: string
                     required:
                     - clusterName
+                    - clusterUUID
                     type: object
                   maxItems: 1
                   type: array
@@ -940,9 +976,31 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                status:
+                  items:
+                    properties:
+                      details:
+                        type: string
+                      state:
+                        type: string
+                      stateStartTime:
+                        type: string
+                      substate:
+                        type: string
+                    required:
+                    - details
+                    - state
+                    - stateStartTime
+                    - substate
+                    type: object
+                  maxItems: 1
+                  type: array
               required:
+              - driverControlsFilesURI
+              - driverOutputResourceURI
               - placement
               - providerRef
+              - status
               type: object
             state:
               properties:

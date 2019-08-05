@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             description:
               type: string
             ingress:
@@ -429,6 +431,7 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - ingress
           - name
           - providerRef
@@ -442,6 +445,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 description:
                   type: string
                 ingress:
@@ -474,6 +479,7 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - ingress
               - name
               - providerRef

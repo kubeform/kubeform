@@ -21,6 +21,7 @@ type ComputeVPNGateway struct {
 type ComputeVPNGatewaySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
@@ -28,7 +29,8 @@ type ComputeVPNGatewaySpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	Region   string `json:"region,omitempty" tf:"region,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 }
 
 type ComputeVPNGatewayStatus struct {

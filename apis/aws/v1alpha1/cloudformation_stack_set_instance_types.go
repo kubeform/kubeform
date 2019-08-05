@@ -29,6 +29,7 @@ type CloudformationStackSetInstanceSpec struct {
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
 	RetainStack  bool   `json:"retainStack,omitempty" tf:"retain_stack,omitempty"`
+	StackID      string `json:"stackID" tf:"stack_id"`
 	StackSetName string `json:"stackSetName" tf:"stack_set_name"`
 }
 

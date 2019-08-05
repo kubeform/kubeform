@@ -21,6 +21,8 @@ type EventhubAuthorizationRule struct {
 type EventhubAuthorizationRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	EventhubName string `json:"eventhubName" tf:"eventhub_name"`
 	// +optional
 	Listen bool `json:"listen,omitempty" tf:"listen,omitempty"`
@@ -28,10 +30,14 @@ type EventhubAuthorizationRuleSpec struct {
 	// Deprecated
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
-	Manage            bool   `json:"manage,omitempty" tf:"manage,omitempty"`
-	Name              string `json:"name" tf:"name"`
-	NamespaceName     string `json:"namespaceName" tf:"namespace_name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Manage                    bool   `json:"manage,omitempty" tf:"manage,omitempty"`
+	Name                      string `json:"name" tf:"name"`
+	NamespaceName             string `json:"namespaceName" tf:"namespace_name"`
+	PrimaryConnectionString   string `json:"-" sensitive:"true" tf:"primary_connection_string"`
+	PrimaryKey                string `json:"-" sensitive:"true" tf:"primary_key"`
+	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
+	SecondaryConnectionString string `json:"-" sensitive:"true" tf:"secondary_connection_string"`
+	SecondaryKey              string `json:"-" sensitive:"true" tf:"secondary_key"`
 	// +optional
 	Send bool `json:"send,omitempty" tf:"send,omitempty"`
 }

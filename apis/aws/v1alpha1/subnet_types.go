@@ -21,6 +21,7 @@ type Subnet struct {
 type SubnetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	AssignIpv6AddressOnCreation bool `json:"assignIpv6AddressOnCreation,omitempty" tf:"assign_ipv6_address_on_creation,omitempty"`
 	// +optional
@@ -29,9 +30,11 @@ type SubnetSpec struct {
 	AvailabilityZoneID string `json:"availabilityZoneID,omitempty" tf:"availability_zone_id,omitempty"`
 	CidrBlock          string `json:"cidrBlock" tf:"cidr_block"`
 	// +optional
-	Ipv6CIDRBlock string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block,omitempty"`
+	Ipv6CIDRBlock              string `json:"ipv6CIDRBlock,omitempty" tf:"ipv6_cidr_block,omitempty"`
+	Ipv6CIDRBlockAssociationID string `json:"ipv6CIDRBlockAssociationID" tf:"ipv6_cidr_block_association_id"`
 	// +optional
-	MapPublicIPOnLaunch bool `json:"mapPublicIPOnLaunch,omitempty" tf:"map_public_ip_on_launch,omitempty"`
+	MapPublicIPOnLaunch bool   `json:"mapPublicIPOnLaunch,omitempty" tf:"map_public_ip_on_launch,omitempty"`
+	OwnerID             string `json:"ownerID" tf:"owner_id"`
 	// +optional
 	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	VpcID string            `json:"vpcID" tf:"vpc_id"`

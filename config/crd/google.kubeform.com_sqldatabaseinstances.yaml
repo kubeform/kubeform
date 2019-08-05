@@ -397,8 +397,23 @@ spec:
           type: object
         spec:
           properties:
+            connectionName:
+              type: string
             databaseVersion:
               type: string
+            firstIPAddress:
+              type: string
+            ipAddress:
+              items:
+                properties:
+                  ipAddress:
+                    type: string
+                  timeToRetire:
+                    type: string
+                required:
+                - ipAddress
+                type: object
+              type: array
             masterInstanceName:
               type: string
             name:
@@ -451,6 +466,32 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
+            serverCaCert:
+              items:
+                properties:
+                  cert:
+                    type: string
+                  commonName:
+                    type: string
+                  createTime:
+                    type: string
+                  expirationTime:
+                    type: string
+                  sha1Fingerprint:
+                    type: string
+                required:
+                - cert
+                - commonName
+                - createTime
+                - expirationTime
+                - sha1Fingerprint
+                type: object
+              maxItems: 1
+              type: array
+            serviceAccountEmailAddress:
+              type: string
             settings:
               items:
                 properties:
@@ -547,13 +588,22 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
+                  version:
+                    type: integer
                 required:
                 - tier
+                - version
                 type: object
               maxItems: 1
               type: array
           required:
+          - connectionName
+          - firstIPAddress
+          - ipAddress
           - providerRef
+          - selfLink
+          - serverCaCert
+          - serviceAccountEmailAddress
           - settings
           type: object
         status:
@@ -565,8 +615,23 @@ spec:
               type: integer
             output:
               properties:
+                connectionName:
+                  type: string
                 databaseVersion:
                   type: string
+                firstIPAddress:
+                  type: string
+                ipAddress:
+                  items:
+                    properties:
+                      ipAddress:
+                        type: string
+                      timeToRetire:
+                        type: string
+                    required:
+                    - ipAddress
+                    type: object
+                  type: array
                 masterInstanceName:
                   type: string
                 name:
@@ -619,6 +684,32 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
+                serverCaCert:
+                  items:
+                    properties:
+                      cert:
+                        type: string
+                      commonName:
+                        type: string
+                      createTime:
+                        type: string
+                      expirationTime:
+                        type: string
+                      sha1Fingerprint:
+                        type: string
+                    required:
+                    - cert
+                    - commonName
+                    - createTime
+                    - expirationTime
+                    - sha1Fingerprint
+                    type: object
+                  maxItems: 1
+                  type: array
+                serviceAccountEmailAddress:
+                  type: string
                 settings:
                   items:
                     properties:
@@ -715,13 +806,22 @@ spec:
                         additionalProperties:
                           type: string
                         type: object
+                      version:
+                        type: integer
                     required:
                     - tier
+                    - version
                     type: object
                   maxItems: 1
                   type: array
               required:
+              - connectionName
+              - firstIPAddress
+              - ipAddress
               - providerRef
+              - selfLink
+              - serverCaCert
+              - serviceAccountEmailAddress
               - settings
               type: object
             state:

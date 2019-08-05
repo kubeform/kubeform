@@ -397,11 +397,17 @@ spec:
           type: object
         spec:
           properties:
+            createdAt:
+              type: string
             description:
               type: string
             environment:
               type: string
             name:
+              type: string
+            ownerID:
+              type: integer
+            ownerUUID:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -419,9 +425,15 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            updatedAt:
+              type: string
           required:
+          - createdAt
           - name
+          - ownerID
+          - ownerUUID
           - providerRef
+          - updatedAt
           type: object
         status:
           properties:
@@ -432,11 +444,17 @@ spec:
               type: integer
             output:
               properties:
+                createdAt:
+                  type: string
                 description:
                   type: string
                 environment:
                   type: string
                 name:
+                  type: string
+                ownerID:
+                  type: integer
+                ownerUUID:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -454,9 +472,15 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                updatedAt:
+                  type: string
               required:
+              - createdAt
               - name
+              - ownerID
+              - ownerUUID
               - providerRef
+              - updatedAt
               type: object
             state:
               properties:

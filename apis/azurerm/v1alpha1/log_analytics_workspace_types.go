@@ -21,14 +21,20 @@ type LogAnalyticsWorkspace struct {
 type LogAnalyticsWorkspaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	Location          string `json:"location" tf:"location"`
 	Name              string `json:"name" tf:"name"`
+	PortalURL         string `json:"portalURL" tf:"portal_url"`
+	PrimarySharedKey  string `json:"-" sensitive:"true" tf:"primary_shared_key"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	RetentionInDays int    `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
-	Sku             string `json:"sku" tf:"sku"`
+	RetentionInDays    int    `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	SecondarySharedKey string `json:"-" sensitive:"true" tf:"secondary_shared_key"`
+	Sku                string `json:"sku" tf:"sku"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags        map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	WorkspaceID string            `json:"workspaceID" tf:"workspace_id"`
 }
 
 type LogAnalyticsWorkspaceStatus struct {

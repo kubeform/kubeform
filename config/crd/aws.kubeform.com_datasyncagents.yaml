@@ -399,6 +399,8 @@ spec:
           properties:
             activationKey:
               type: string
+            arn:
+              type: string
             ipAddress:
               type: string
             name:
@@ -417,6 +419,7 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - providerRef
           type: object
         status:
@@ -429,6 +432,8 @@ spec:
             output:
               properties:
                 activationKey:
+                  type: string
+                arn:
                   type: string
                 ipAddress:
                   type: string
@@ -448,6 +453,7 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - providerRef
               type: object
             state:

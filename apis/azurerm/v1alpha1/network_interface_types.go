@@ -73,8 +73,10 @@ type NetworkInterfaceSpec struct {
 	MacAddress string `json:"macAddress,omitempty" tf:"mac_address,omitempty"`
 	Name       string `json:"name" tf:"name"`
 	// +optional
-	NetworkSecurityGroupID string `json:"networkSecurityGroupID,omitempty" tf:"network_security_group_id,omitempty"`
-	ResourceGroupName      string `json:"resourceGroupName" tf:"resource_group_name"`
+	NetworkSecurityGroupID string   `json:"networkSecurityGroupID,omitempty" tf:"network_security_group_id,omitempty"`
+	PrivateIPAddress       string   `json:"privateIPAddress" tf:"private_ip_address"`
+	PrivateIPAddresses     []string `json:"privateIPAddresses" tf:"private_ip_addresses"`
+	ResourceGroupName      string   `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

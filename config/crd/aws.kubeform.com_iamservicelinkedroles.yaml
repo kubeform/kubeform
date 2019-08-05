@@ -397,11 +397,19 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             awsServiceName:
+              type: string
+            createDate:
               type: string
             customSuffix:
               type: string
             description:
+              type: string
+            name:
+              type: string
+            path:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -412,9 +420,16 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            uniqueID:
+              type: string
           required:
+          - arn
           - awsServiceName
+          - createDate
+          - name
+          - path
           - providerRef
+          - uniqueID
           type: object
         status:
           properties:
@@ -425,11 +440,19 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 awsServiceName:
+                  type: string
+                createDate:
                   type: string
                 customSuffix:
                   type: string
                 description:
+                  type: string
+                name:
+                  type: string
+                path:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -440,9 +463,16 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                uniqueID:
+                  type: string
               required:
+              - arn
               - awsServiceName
+              - createDate
+              - name
+              - path
               - providerRef
+              - uniqueID
               type: object
             state:
               properties:

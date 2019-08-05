@@ -19,6 +19,7 @@ type LogAnalyticsSolution struct {
 }
 
 type LogAnalyticsSolutionSpecPlan struct {
+	Name    string `json:"name" tf:"name"`
 	Product string `json:"product" tf:"product"`
 	// +optional
 	PromotionCode string `json:"promotionCode,omitempty" tf:"promotion_code,omitempty"`

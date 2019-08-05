@@ -399,6 +399,8 @@ spec:
           properties:
             ami:
               type: string
+            arn:
+              type: string
             associatePublicIPAddress:
               type: boolean
             availabilityZone:
@@ -430,12 +432,15 @@ spec:
                     type: integer
                   snapshotID:
                     type: string
+                  volumeID:
+                    type: string
                   volumeSize:
                     type: integer
                   volumeType:
                     type: string
                 required:
                 - deviceName
+                - volumeID
                 type: object
               type: array
               uniqueItems: true
@@ -462,6 +467,8 @@ spec:
             iamInstanceProfile:
               type: string
             instanceInitiatedShutdownBehavior:
+              type: string
+            instanceState:
               type: string
             instanceType:
               type: string
@@ -490,7 +497,13 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            passwordData:
+              type: string
             placementGroup:
+              type: string
+            primaryNetworkInterfaceID:
+              type: string
+            privateDNS:
               type: string
             privateIP:
               type: string
@@ -503,6 +516,10 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            publicDNS:
+              type: string
+            publicIP:
+              type: string
             rootBlockDevice:
               items:
                 properties:
@@ -510,10 +527,14 @@ spec:
                     type: boolean
                   iops:
                     type: integer
+                  volumeID:
+                    type: string
                   volumeSize:
                     type: integer
                   volumeType:
                     type: string
+                required:
+                - volumeID
                 type: object
               maxItems: 1
               type: array
@@ -547,8 +568,15 @@ spec:
               uniqueItems: true
           required:
           - ami
+          - arn
+          - instanceState
           - instanceType
+          - passwordData
+          - primaryNetworkInterfaceID
+          - privateDNS
           - providerRef
+          - publicDNS
+          - publicIP
           type: object
         status:
           properties:
@@ -560,6 +588,8 @@ spec:
             output:
               properties:
                 ami:
+                  type: string
+                arn:
                   type: string
                 associatePublicIPAddress:
                   type: boolean
@@ -592,12 +622,15 @@ spec:
                         type: integer
                       snapshotID:
                         type: string
+                      volumeID:
+                        type: string
                       volumeSize:
                         type: integer
                       volumeType:
                         type: string
                     required:
                     - deviceName
+                    - volumeID
                     type: object
                   type: array
                   uniqueItems: true
@@ -624,6 +657,8 @@ spec:
                 iamInstanceProfile:
                   type: string
                 instanceInitiatedShutdownBehavior:
+                  type: string
+                instanceState:
                   type: string
                 instanceType:
                   type: string
@@ -652,7 +687,13 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                passwordData:
+                  type: string
                 placementGroup:
+                  type: string
+                primaryNetworkInterfaceID:
+                  type: string
+                privateDNS:
                   type: string
                 privateIP:
                   type: string
@@ -665,6 +706,10 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                publicDNS:
+                  type: string
+                publicIP:
+                  type: string
                 rootBlockDevice:
                   items:
                     properties:
@@ -672,10 +717,14 @@ spec:
                         type: boolean
                       iops:
                         type: integer
+                      volumeID:
+                        type: string
                       volumeSize:
                         type: integer
                       volumeType:
                         type: string
+                    required:
+                    - volumeID
                     type: object
                   maxItems: 1
                   type: array
@@ -709,8 +758,15 @@ spec:
                   uniqueItems: true
               required:
               - ami
+              - arn
+              - instanceState
               - instanceType
+              - passwordData
+              - primaryNetworkInterfaceID
+              - privateDNS
               - providerRef
+              - publicDNS
+              - publicIP
               type: object
             state:
               properties:

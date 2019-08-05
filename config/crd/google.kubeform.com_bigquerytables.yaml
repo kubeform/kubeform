@@ -397,9 +397,13 @@ spec:
           type: object
         spec:
           properties:
+            creationTime:
+              type: integer
             datasetID:
               type: string
             description:
+              type: string
+            etag:
               type: string
             expirationTime:
               type: integer
@@ -409,6 +413,16 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            lastModifiedTime:
+              type: integer
+            location:
+              type: string
+            numBytes:
+              type: integer
+            numLongTermBytes:
+              type: integer
+            numRows:
+              type: integer
             project:
               type: string
             providerRef:
@@ -421,6 +435,8 @@ spec:
                   type: string
               type: object
             schema:
+              type: string
+            selfLink:
               type: string
             tableID:
               type: string
@@ -438,6 +454,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            type:
+              type: string
             view:
               items:
                 properties:
@@ -451,9 +469,18 @@ spec:
               maxItems: 1
               type: array
           required:
+          - creationTime
           - datasetID
+          - etag
+          - lastModifiedTime
+          - location
+          - numBytes
+          - numLongTermBytes
+          - numRows
           - providerRef
+          - selfLink
           - tableID
+          - type
           type: object
         status:
           properties:
@@ -464,9 +491,13 @@ spec:
               type: integer
             output:
               properties:
+                creationTime:
+                  type: integer
                 datasetID:
                   type: string
                 description:
+                  type: string
+                etag:
                   type: string
                 expirationTime:
                   type: integer
@@ -476,6 +507,16 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                lastModifiedTime:
+                  type: integer
+                location:
+                  type: string
+                numBytes:
+                  type: integer
+                numLongTermBytes:
+                  type: integer
+                numRows:
+                  type: integer
                 project:
                   type: string
                 providerRef:
@@ -488,6 +529,8 @@ spec:
                       type: string
                   type: object
                 schema:
+                  type: string
+                selfLink:
                   type: string
                 tableID:
                   type: string
@@ -505,6 +548,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                type:
+                  type: string
                 view:
                   items:
                     properties:
@@ -518,9 +563,18 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - creationTime
               - datasetID
+              - etag
+              - lastModifiedTime
+              - location
+              - numBytes
+              - numLongTermBytes
+              - numRows
               - providerRef
+              - selfLink
               - tableID
+              - type
               type: object
             state:
               properties:

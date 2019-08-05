@@ -419,6 +419,8 @@ spec:
                 - relativePath
                 type: object
               type: array
+            hostName:
+              type: string
             isCompressionEnabled:
               type: boolean
             isHTTPAllowed:
@@ -474,6 +476,7 @@ spec:
                 type: string
               type: object
           required:
+          - hostName
           - location
           - name
           - origin
@@ -512,6 +515,8 @@ spec:
                     - relativePath
                     type: object
                   type: array
+                hostName:
+                  type: string
                 isCompressionEnabled:
                   type: boolean
                 isHTTPAllowed:
@@ -567,6 +572,7 @@ spec:
                     type: string
                   type: object
               required:
+              - hostName
               - location
               - name
               - origin

@@ -566,6 +566,8 @@ spec:
               type: array
             dnsNameLabel:
               type: string
+            fqdn:
+              type: string
             identity:
               items:
                 properties:
@@ -574,9 +576,12 @@ spec:
                       type: string
                     minItems: 1
                     type: array
+                  principalID:
+                    type: string
                   type:
                     type: string
                 required:
+                - principalID
                 - type
                 type: object
               maxItems: 1
@@ -593,6 +598,8 @@ spec:
                 - username
                 type: object
               type: array
+            ipAddress:
+              type: string
             ipAddressType:
               type: string
             location:
@@ -629,6 +636,8 @@ spec:
               type: object
           required:
           - container
+          - fqdn
+          - ipAddress
           - location
           - name
           - osType
@@ -813,6 +822,8 @@ spec:
                   type: array
                 dnsNameLabel:
                   type: string
+                fqdn:
+                  type: string
                 identity:
                   items:
                     properties:
@@ -821,9 +832,12 @@ spec:
                           type: string
                         minItems: 1
                         type: array
+                      principalID:
+                        type: string
                       type:
                         type: string
                     required:
+                    - principalID
                     - type
                     type: object
                   maxItems: 1
@@ -840,6 +854,8 @@ spec:
                     - username
                     type: object
                   type: array
+                ipAddress:
+                  type: string
                 ipAddressType:
                   type: string
                 location:
@@ -876,6 +892,8 @@ spec:
                   type: object
               required:
               - container
+              - fqdn
+              - ipAddress
               - location
               - name
               - osType

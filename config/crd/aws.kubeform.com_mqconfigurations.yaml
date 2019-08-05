@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             data:
               type: string
             description:
@@ -405,6 +407,8 @@ spec:
               type: string
             engineVersion:
               type: string
+            latestRevision:
+              type: integer
             name:
               type: string
             providerRef:
@@ -421,9 +425,11 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - data
           - engineType
           - engineVersion
+          - latestRevision
           - name
           - providerRef
           type: object
@@ -436,6 +442,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 data:
                   type: string
                 description:
@@ -444,6 +452,8 @@ spec:
                   type: string
                 engineVersion:
                   type: string
+                latestRevision:
+                  type: integer
                 name:
                   type: string
                 providerRef:
@@ -460,9 +470,11 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - data
               - engineType
               - engineVersion
+              - latestRevision
               - name
               - providerRef
               type: object

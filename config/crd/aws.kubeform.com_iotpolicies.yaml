@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            defaultVersionID:
+              type: string
             name:
               type: string
             policy:
@@ -411,6 +415,8 @@ spec:
                   type: string
               type: object
           required:
+          - arn
+          - defaultVersionID
           - name
           - policy
           - providerRef
@@ -424,6 +430,10 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                defaultVersionID:
+                  type: string
                 name:
                   type: string
                 policy:
@@ -438,6 +448,8 @@ spec:
                       type: string
                   type: object
               required:
+              - arn
+              - defaultVersionID
               - name
               - policy
               - providerRef

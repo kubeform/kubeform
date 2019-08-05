@@ -435,6 +435,8 @@ spec:
               uniqueItems: true
             ebsOptimized:
               type: boolean
+            ec2InstanceID:
+              type: string
             ecsClusterArn:
               type: string
             elasticIP:
@@ -540,6 +542,7 @@ spec:
             virtualizationType:
               type: string
           required:
+          - ec2InstanceID
           - layerIDS
           - providerRef
           - stackID
@@ -591,6 +594,8 @@ spec:
                   uniqueItems: true
                 ebsOptimized:
                   type: boolean
+                ec2InstanceID:
+                  type: string
                 ecsClusterArn:
                   type: string
                 elasticIP:
@@ -696,6 +701,7 @@ spec:
                 virtualizationType:
                   type: string
               required:
+              - ec2InstanceID
               - layerIDS
               - providerRef
               - stackID

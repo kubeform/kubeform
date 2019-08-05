@@ -18,13 +18,26 @@ type StorageObjectAccessControl struct {
 	Status            StorageObjectAccessControlStatus `json:"status,omitempty"`
 }
 
+type StorageObjectAccessControlSpecProjectTeam struct {
+	// +optional
+	ProjectNumber string `json:"projectNumber,omitempty" tf:"project_number,omitempty"`
+	// +optional
+	Team string `json:"team,omitempty" tf:"team,omitempty"`
+}
+
 type StorageObjectAccessControlSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Bucket string `json:"bucket" tf:"bucket"`
-	Entity string `json:"entity" tf:"entity"`
-	Object string `json:"object" tf:"object"`
-	Role   string `json:"role" tf:"role"`
+	Bucket     string `json:"bucket" tf:"bucket"`
+	Domain     string `json:"domain" tf:"domain"`
+	Email      string `json:"email" tf:"email"`
+	Entity     string `json:"entity" tf:"entity"`
+	EntityID   string `json:"entityID" tf:"entity_id"`
+	Generation int    `json:"generation" tf:"generation"`
+	Object     string `json:"object" tf:"object"`
+	// +kubebuilder:validation:MaxItems=1
+	ProjectTeam []StorageObjectAccessControlSpecProjectTeam `json:"projectTeam" tf:"project_team"`
+	Role        string                                      `json:"role" tf:"role"`
 }
 
 type StorageObjectAccessControlStatus struct {

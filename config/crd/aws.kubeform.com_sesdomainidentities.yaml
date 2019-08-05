@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             domain:
               type: string
             providerRef:
@@ -408,9 +410,13 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            verificationToken:
+              type: string
           required:
+          - arn
           - domain
           - providerRef
+          - verificationToken
           type: object
         status:
           properties:
@@ -421,6 +427,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 domain:
                   type: string
                 providerRef:
@@ -432,9 +440,13 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                verificationToken:
+                  type: string
               required:
+              - arn
               - domain
               - providerRef
+              - verificationToken
               type: object
             state:
               properties:

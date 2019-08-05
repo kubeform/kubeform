@@ -104,17 +104,26 @@ type MonitoringAlertPolicySpecConditions struct {
 	// +kubebuilder:validation:MaxItems=1
 	ConditionThreshold []MonitoringAlertPolicySpecConditionsConditionThreshold `json:"conditionThreshold,omitempty" tf:"condition_threshold,omitempty"`
 	DisplayName        string                                                  `json:"displayName" tf:"display_name"`
+	Name               string                                                  `json:"name" tf:"name"`
+}
+
+type MonitoringAlertPolicySpecCreationRecord struct {
+	MutateTime string `json:"mutateTime" tf:"mutate_time"`
+	MutatedBy  string `json:"mutatedBy" tf:"mutated_by"`
 }
 
 type MonitoringAlertPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Combiner    string                                `json:"combiner" tf:"combiner"`
-	Conditions  []MonitoringAlertPolicySpecConditions `json:"conditions" tf:"conditions"`
-	DisplayName string                                `json:"displayName" tf:"display_name"`
-	Enabled     bool                                  `json:"enabled" tf:"enabled"`
+	Combiner   string                                `json:"combiner" tf:"combiner"`
+	Conditions []MonitoringAlertPolicySpecConditions `json:"conditions" tf:"conditions"`
+	// +kubebuilder:validation:MaxItems=1
+	CreationRecord []MonitoringAlertPolicySpecCreationRecord `json:"creationRecord" tf:"creation_record"`
+	DisplayName    string                                    `json:"displayName" tf:"display_name"`
+	Enabled        bool                                      `json:"enabled" tf:"enabled"`
 	// +optional
 	Labels []string `json:"labels,omitempty" tf:"labels,omitempty"`
+	Name   string   `json:"name" tf:"name"`
 	// +optional
 	NotificationChannels []string `json:"notificationChannels,omitempty" tf:"notification_channels,omitempty"`
 	// +optional

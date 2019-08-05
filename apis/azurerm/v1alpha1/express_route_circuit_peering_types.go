@@ -27,6 +27,7 @@ type ExpressRouteCircuitPeeringSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	AzureAsn                int    `json:"azureAsn" tf:"azure_asn"`
 	ExpressRouteCircuitName string `json:"expressRouteCircuitName" tf:"express_route_circuit_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -34,8 +35,10 @@ type ExpressRouteCircuitPeeringSpec struct {
 	// +optional
 	PeerAsn                    int    `json:"peerAsn,omitempty" tf:"peer_asn,omitempty"`
 	PeeringType                string `json:"peeringType" tf:"peering_type"`
+	PrimaryAzurePort           string `json:"primaryAzurePort" tf:"primary_azure_port"`
 	PrimaryPeerAddressPrefix   string `json:"primaryPeerAddressPrefix" tf:"primary_peer_address_prefix"`
 	ResourceGroupName          string `json:"resourceGroupName" tf:"resource_group_name"`
+	SecondaryAzurePort         string `json:"secondaryAzurePort" tf:"secondary_azure_port"`
 	SecondaryPeerAddressPrefix string `json:"secondaryPeerAddressPrefix" tf:"secondary_peer_address_prefix"`
 	// +optional
 	SharedKey string `json:"-" sensitive:"true" tf:"shared_key,omitempty"`

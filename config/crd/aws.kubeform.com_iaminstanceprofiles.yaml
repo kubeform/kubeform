@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            createDate:
+              type: string
             name:
               type: string
             namePrefix:
@@ -420,8 +424,13 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            uniqueID:
+              type: string
           required:
+          - arn
+          - createDate
           - providerRef
+          - uniqueID
           type: object
         status:
           properties:
@@ -432,6 +441,10 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                createDate:
+                  type: string
                 name:
                   type: string
                 namePrefix:
@@ -455,8 +468,13 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                uniqueID:
+                  type: string
               required:
+              - arn
+              - createDate
               - providerRef
+              - uniqueID
               type: object
             state:
               properties:

@@ -25,9 +25,16 @@ type RelayNamespaceSpecSku struct {
 type RelayNamespaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	Location                  string `json:"location" tf:"location"`
+	MetricID                  string `json:"metricID" tf:"metric_id"`
+	Name                      string `json:"name" tf:"name"`
+	PrimaryConnectionString   string `json:"-" sensitive:"true" tf:"primary_connection_string"`
+	PrimaryKey                string `json:"-" sensitive:"true" tf:"primary_key"`
+	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
+	SecondaryConnectionString string `json:"-" sensitive:"true" tf:"secondary_connection_string"`
+	SecondaryKey              string `json:"-" sensitive:"true" tf:"secondary_key"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// Deprecated

@@ -21,18 +21,23 @@ type ComputeSslPolicy struct {
 type ComputeSslPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	CustomFeatures []string `json:"customFeatures,omitempty" tf:"custom_features,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +kubebuilder:validation:UniqueItems=true
+	EnabledFeatures []string `json:"enabledFeatures" tf:"enabled_features"`
+	Fingerprint     string   `json:"fingerprint" tf:"fingerprint"`
 	// +optional
 	MinTlsVersion string `json:"minTlsVersion,omitempty" tf:"min_tls_version,omitempty"`
 	Name          string `json:"name" tf:"name"`
 	// +optional
 	Profile string `json:"profile,omitempty" tf:"profile,omitempty"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Project  string `json:"project,omitempty" tf:"project,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 }
 
 type ComputeSslPolicyStatus struct {

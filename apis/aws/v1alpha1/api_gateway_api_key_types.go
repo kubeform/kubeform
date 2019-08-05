@@ -23,11 +23,13 @@ type ApiGatewayAPIKeySpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	CreatedDate string `json:"createdDate" tf:"created_date"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	Enabled bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
-	Name    string `json:"name" tf:"name"`
+	Enabled         bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	LastUpdatedDate string `json:"lastUpdatedDate" tf:"last_updated_date"`
+	Name            string `json:"name" tf:"name"`
 	// +optional
 	Value string `json:"-" sensitive:"true" tf:"value,omitempty"`
 }

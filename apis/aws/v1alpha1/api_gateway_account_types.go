@@ -1,6 +1,8 @@
 package v1alpha1
 
 import (
+	"encoding/json"
+
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"kubeform.dev/kubeform/apis"
@@ -18,11 +20,18 @@ type ApiGatewayAccount struct {
 	Status            ApiGatewayAccountStatus `json:"status,omitempty"`
 }
 
+type ApiGatewayAccountSpecThrottleSettings struct {
+	BurstLimit int         `json:"burstLimit" tf:"burst_limit"`
+	RateLimit  json.Number `json:"rateLimit" tf:"rate_limit"`
+}
+
 type ApiGatewayAccountSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
 	CloudwatchRoleArn string `json:"cloudwatchRoleArn,omitempty" tf:"cloudwatch_role_arn,omitempty"`
+	// +kubebuilder:validation:MaxItems=1
+	ThrottleSettings []ApiGatewayAccountSpecThrottleSettings `json:"throttleSettings" tf:"throttle_settings"`
 }
 
 type ApiGatewayAccountStatus struct {

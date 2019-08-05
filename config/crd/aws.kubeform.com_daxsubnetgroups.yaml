@@ -415,10 +415,13 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            vpcID:
+              type: string
           required:
           - name
           - providerRef
           - subnetIDS
+          - vpcID
           type: object
         status:
           properties:
@@ -447,10 +450,13 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                vpcID:
+                  type: string
               required:
               - name
               - providerRef
               - subnetIDS
+              - vpcID
               type: object
             state:
               properties:

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            azureAsn:
+              type: integer
             expressRouteCircuitName:
               type: string
             microsoftPeeringConfig:
@@ -415,6 +417,8 @@ spec:
               type: integer
             peeringType:
               type: string
+            primaryAzurePort:
+              type: string
             primaryPeerAddressPrefix:
               type: string
             providerRef:
@@ -427,6 +431,8 @@ spec:
                   type: string
               type: object
             resourceGroupName:
+              type: string
+            secondaryAzurePort:
               type: string
             secondaryPeerAddressPrefix:
               type: string
@@ -442,11 +448,14 @@ spec:
             vlanID:
               type: integer
           required:
+          - azureAsn
           - expressRouteCircuitName
           - peeringType
+          - primaryAzurePort
           - primaryPeerAddressPrefix
           - providerRef
           - resourceGroupName
+          - secondaryAzurePort
           - secondaryPeerAddressPrefix
           - vlanID
           type: object
@@ -459,6 +468,8 @@ spec:
               type: integer
             output:
               properties:
+                azureAsn:
+                  type: integer
                 expressRouteCircuitName:
                   type: string
                 microsoftPeeringConfig:
@@ -477,6 +488,8 @@ spec:
                   type: integer
                 peeringType:
                   type: string
+                primaryAzurePort:
+                  type: string
                 primaryPeerAddressPrefix:
                   type: string
                 providerRef:
@@ -489,6 +502,8 @@ spec:
                       type: string
                   type: object
                 resourceGroupName:
+                  type: string
+                secondaryAzurePort:
                   type: string
                 secondaryPeerAddressPrefix:
                   type: string
@@ -504,11 +519,14 @@ spec:
                 vlanID:
                   type: integer
               required:
+              - azureAsn
               - expressRouteCircuitName
               - peeringType
+              - primaryAzurePort
               - primaryPeerAddressPrefix
               - providerRef
               - resourceGroupName
+              - secondaryAzurePort
               - secondaryPeerAddressPrefix
               - vlanID
               type: object

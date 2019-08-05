@@ -26,6 +26,8 @@ type ComputeNetworkPeeringSpec struct {
 	Name             string `json:"name" tf:"name"`
 	Network          string `json:"network" tf:"network"`
 	PeerNetwork      string `json:"peerNetwork" tf:"peer_network"`
+	State            string `json:"state" tf:"state"`
+	StateDetails     string `json:"stateDetails" tf:"state_details"`
 }
 
 type ComputeNetworkPeeringStatus struct {

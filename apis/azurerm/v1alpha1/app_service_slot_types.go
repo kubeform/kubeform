@@ -25,7 +25,9 @@ type AppServiceSlotSpecConnectionString struct {
 }
 
 type AppServiceSlotSpecIdentity struct {
-	Type string `json:"type" tf:"type"`
+	PrincipalID string `json:"principalID" tf:"principal_id"`
+	TenantID    string `json:"tenantID" tf:"tenant_id"`
+	Type        string `json:"type" tf:"type"`
 }
 
 type AppServiceSlotSpecSiteConfigCors struct {
@@ -93,6 +95,11 @@ type AppServiceSlotSpecSiteConfig struct {
 	WindowsFxVersion string `json:"windowsFxVersion,omitempty" tf:"windows_fx_version,omitempty"`
 }
 
+type AppServiceSlotSpecSiteCredential struct {
+	Password string `json:"-" sensitive:"true" tf:"password"`
+	Username string `json:"username" tf:"username"`
+}
+
 type AppServiceSlotSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -106,7 +113,8 @@ type AppServiceSlotSpec struct {
 	ClientAffinityEnabled bool `json:"clientAffinityEnabled,omitempty" tf:"client_affinity_enabled,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	ConnectionString []AppServiceSlotSpecConnectionString `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
+	ConnectionString    []AppServiceSlotSpecConnectionString `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
+	DefaultSiteHostname string                               `json:"defaultSiteHostname" tf:"default_site_hostname"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
@@ -120,6 +128,8 @@ type AppServiceSlotSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SiteConfig []AppServiceSlotSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
+	// +kubebuilder:validation:MaxItems=1
+	SiteCredential []AppServiceSlotSpecSiteCredential `json:"siteCredential" tf:"site_credential"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

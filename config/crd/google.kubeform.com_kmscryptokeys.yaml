@@ -412,10 +412,13 @@ spec:
               type: object
             rotationPeriod:
               type: string
+            selfLink:
+              type: string
           required:
           - keyRing
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -441,10 +444,13 @@ spec:
                   type: object
                 rotationPeriod:
                   type: string
+                selfLink:
+                  type: string
               required:
               - keyRing
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

@@ -397,6 +397,56 @@ spec:
           type: object
         spec:
           properties:
+            apis:
+              items:
+                properties:
+                  methods:
+                    items:
+                      properties:
+                        name:
+                          type: string
+                        requestType:
+                          type: string
+                        responseType:
+                          type: string
+                        syntax:
+                          type: string
+                      required:
+                      - name
+                      - requestType
+                      - responseType
+                      - syntax
+                      type: object
+                    type: array
+                  name:
+                    type: string
+                  syntax:
+                    type: string
+                  version:
+                    type: string
+                required:
+                - methods
+                - name
+                - syntax
+                - version
+                type: object
+              type: array
+            configID:
+              type: string
+            dnsAddress:
+              type: string
+            endpoints:
+              items:
+                properties:
+                  address:
+                    type: string
+                  name:
+                    type: string
+                required:
+                - address
+                - name
+                type: object
+              type: array
             grpcConfig:
               type: string
             openapiConfig:
@@ -420,6 +470,10 @@ spec:
             serviceName:
               type: string
           required:
+          - apis
+          - configID
+          - dnsAddress
+          - endpoints
           - providerRef
           - serviceName
           type: object
@@ -432,6 +486,56 @@ spec:
               type: integer
             output:
               properties:
+                apis:
+                  items:
+                    properties:
+                      methods:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                            requestType:
+                              type: string
+                            responseType:
+                              type: string
+                            syntax:
+                              type: string
+                          required:
+                          - name
+                          - requestType
+                          - responseType
+                          - syntax
+                          type: object
+                        type: array
+                      name:
+                        type: string
+                      syntax:
+                        type: string
+                      version:
+                        type: string
+                    required:
+                    - methods
+                    - name
+                    - syntax
+                    - version
+                    type: object
+                  type: array
+                configID:
+                  type: string
+                dnsAddress:
+                  type: string
+                endpoints:
+                  items:
+                    properties:
+                      address:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                    - address
+                    - name
+                    type: object
+                  type: array
                 grpcConfig:
                   type: string
                 openapiConfig:
@@ -455,6 +559,10 @@ spec:
                 serviceName:
                   type: string
               required:
+              - apis
+              - configID
+              - dnsAddress
+              - endpoints
               - providerRef
               - serviceName
               type: object

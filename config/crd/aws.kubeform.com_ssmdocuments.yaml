@@ -397,14 +397,43 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             content:
+              type: string
+            createdDate:
+              type: string
+            defaultVersion:
+              type: string
+            description:
               type: string
             documentFormat:
               type: string
             documentType:
               type: string
+            hash:
+              type: string
+            hashType:
+              type: string
+            latestVersion:
+              type: string
             name:
               type: string
+            owner:
+              type: string
+            parameter:
+              items:
+                properties:
+                  defaultValue:
+                    type: string
+                  description:
+                    type: string
+                  name:
+                    type: string
+                  type:
+                    type: string
+                type: object
+              type: array
             permissions:
               additionalProperties:
                 properties:
@@ -417,6 +446,10 @@ spec:
                 - type
                 type: object
               type: object
+            platformTypes:
+              items:
+                type: string
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -426,15 +459,31 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            schemaVersion:
+              type: string
+            status:
+              type: string
             tags:
               additionalProperties:
                 type: string
               type: object
           required:
+          - arn
           - content
+          - createdDate
+          - defaultVersion
+          - description
           - documentType
+          - hash
+          - hashType
+          - latestVersion
           - name
+          - owner
+          - parameter
+          - platformTypes
           - providerRef
+          - schemaVersion
+          - status
           type: object
         status:
           properties:
@@ -445,14 +494,43 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 content:
+                  type: string
+                createdDate:
+                  type: string
+                defaultVersion:
+                  type: string
+                description:
                   type: string
                 documentFormat:
                   type: string
                 documentType:
                   type: string
+                hash:
+                  type: string
+                hashType:
+                  type: string
+                latestVersion:
+                  type: string
                 name:
                   type: string
+                owner:
+                  type: string
+                parameter:
+                  items:
+                    properties:
+                      defaultValue:
+                        type: string
+                      description:
+                        type: string
+                      name:
+                        type: string
+                      type:
+                        type: string
+                    type: object
+                  type: array
                 permissions:
                   additionalProperties:
                     properties:
@@ -465,6 +543,10 @@ spec:
                     - type
                     type: object
                   type: object
+                platformTypes:
+                  items:
+                    type: string
+                  type: array
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -474,15 +556,31 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                schemaVersion:
+                  type: string
+                status:
+                  type: string
                 tags:
                   additionalProperties:
                     type: string
                   type: object
               required:
+              - arn
               - content
+              - createdDate
+              - defaultVersion
+              - description
               - documentType
+              - hash
+              - hashType
+              - latestVersion
               - name
+              - owner
+              - parameter
+              - platformTypes
               - providerRef
+              - schemaVersion
+              - status
               type: object
             state:
               properties:

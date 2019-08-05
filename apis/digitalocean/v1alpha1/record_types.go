@@ -24,6 +24,7 @@ type RecordSpec struct {
 	Domain string `json:"domain" tf:"domain"`
 	// +optional
 	Flags int    `json:"flags,omitempty" tf:"flags,omitempty"`
+	Fqdn  string `json:"fqdn" tf:"fqdn"`
 	Name  string `json:"name" tf:"name"`
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`

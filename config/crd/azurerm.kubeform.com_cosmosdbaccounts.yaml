@@ -425,6 +425,8 @@ spec:
               type: boolean
             enableMultipleWriteLocations:
               type: boolean
+            endpoint:
+              type: string
             failoverPolicy:
               description: Deprecated
               items:
@@ -444,6 +446,8 @@ spec:
             geoLocation:
               items:
                 properties:
+                  ID:
+                    type: string
                   failoverPriority:
                     type: integer
                   location:
@@ -451,6 +455,7 @@ spec:
                   prefix:
                     type: string
                 required:
+                - ID
                 - failoverPriority
                 - location
                 type: object
@@ -477,8 +482,21 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            readEndpoints:
+              items:
+                type: string
+              type: array
             resourceGroupName:
               type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             tags:
               additionalProperties:
                 type: string
@@ -493,13 +511,20 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            writeEndpoints:
+              items:
+                type: string
+              type: array
           required:
           - consistencyPolicy
+          - endpoint
           - location
           - name
           - offerType
           - providerRef
+          - readEndpoints
           - resourceGroupName
+          - writeEndpoints
           type: object
         status:
           properties:
@@ -538,6 +563,8 @@ spec:
                   type: boolean
                 enableMultipleWriteLocations:
                   type: boolean
+                endpoint:
+                  type: string
                 failoverPolicy:
                   description: Deprecated
                   items:
@@ -557,6 +584,8 @@ spec:
                 geoLocation:
                   items:
                     properties:
+                      ID:
+                        type: string
                       failoverPriority:
                         type: integer
                       location:
@@ -564,6 +593,7 @@ spec:
                       prefix:
                         type: string
                     required:
+                    - ID
                     - failoverPriority
                     - location
                     type: object
@@ -590,8 +620,21 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                readEndpoints:
+                  items:
+                    type: string
+                  type: array
                 resourceGroupName:
                   type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
                 tags:
                   additionalProperties:
                     type: string
@@ -606,13 +649,20 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                writeEndpoints:
+                  items:
+                    type: string
+                  type: array
               required:
               - consistencyPolicy
+              - endpoint
               - location
               - name
               - offerType
               - providerRef
+              - readEndpoints
               - resourceGroupName
+              - writeEndpoints
               type: object
             state:
               properties:

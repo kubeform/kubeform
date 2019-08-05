@@ -411,6 +411,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            creationTimestamp:
+              type: string
             deny:
               items:
                 properties:
@@ -456,6 +458,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
             sourceRanges:
               items:
                 type: string
@@ -484,9 +488,11 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - creationTimestamp
           - name
           - network
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -511,6 +517,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                creationTimestamp:
+                  type: string
                 deny:
                   items:
                     properties:
@@ -556,6 +564,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
                 sourceRanges:
                   items:
                     type: string
@@ -584,9 +594,11 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - creationTimestamp
               - name
               - network
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

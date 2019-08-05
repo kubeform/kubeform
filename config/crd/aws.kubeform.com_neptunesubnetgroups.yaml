@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             description:
               type: string
             name:
@@ -423,6 +425,7 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - providerRef
           - subnetIDS
           type: object
@@ -435,6 +438,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 description:
                   type: string
                 name:
@@ -461,6 +466,7 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - providerRef
               - subnetIDS
               type: object

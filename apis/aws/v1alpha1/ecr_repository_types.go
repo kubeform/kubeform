@@ -21,7 +21,10 @@ type EcrRepository struct {
 type EcrRepositorySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Name string `json:"name" tf:"name"`
+	Arn           string `json:"arn" tf:"arn"`
+	Name          string `json:"name" tf:"name"`
+	RegistryID    string `json:"registryID" tf:"registry_id"`
+	RepositoryURL string `json:"repositoryURL" tf:"repository_url"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

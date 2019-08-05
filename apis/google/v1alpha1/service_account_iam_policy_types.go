@@ -21,6 +21,7 @@ type ServiceAccountIamPolicy struct {
 type ServiceAccountIamPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Etag             string `json:"etag" tf:"etag"`
 	PolicyData       string `json:"policyData" tf:"policy_data"`
 	ServiceAccountID string `json:"serviceAccountID" tf:"service_account_id"`
 }

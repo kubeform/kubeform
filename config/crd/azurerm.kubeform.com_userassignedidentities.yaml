@@ -397,9 +397,13 @@ spec:
           type: object
         spec:
           properties:
+            clientID:
+              type: string
             location:
               type: string
             name:
+              type: string
+            principalID:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -417,8 +421,10 @@ spec:
                 type: string
               type: object
           required:
+          - clientID
           - location
           - name
+          - principalID
           - providerRef
           - resourceGroupName
           type: object
@@ -431,9 +437,13 @@ spec:
               type: integer
             output:
               properties:
+                clientID:
+                  type: string
                 location:
                   type: string
                 name:
+                  type: string
+                principalID:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -451,8 +461,10 @@ spec:
                     type: string
                   type: object
               required:
+              - clientID
               - location
               - name
+              - principalID
               - providerRef
               - resourceGroupName
               type: object

@@ -437,6 +437,8 @@ spec:
             subnet:
               items:
                 properties:
+                  ID:
+                    type: string
                   addressPrefix:
                     type: string
                   name:
@@ -444,6 +446,7 @@ spec:
                   securityGroup:
                     type: string
                 required:
+                - ID
                 - addressPrefix
                 - name
                 type: object
@@ -509,6 +512,8 @@ spec:
                 subnet:
                   items:
                     properties:
+                      ID:
+                        type: string
                       addressPrefix:
                         type: string
                       name:
@@ -516,6 +521,7 @@ spec:
                       securityGroup:
                         type: string
                     required:
+                    - ID
                     - addressPrefix
                     - name
                     type: object

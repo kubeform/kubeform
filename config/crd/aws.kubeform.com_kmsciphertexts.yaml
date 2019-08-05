@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            ciphertextBlob:
+              type: string
             context:
               additionalProperties:
                 type: string
@@ -422,6 +424,7 @@ spec:
                   type: string
               type: object
           required:
+          - ciphertextBlob
           - keyID
           - providerRef
           type: object
@@ -434,6 +437,8 @@ spec:
               type: integer
             output:
               properties:
+                ciphertextBlob:
+                  type: string
                 context:
                   additionalProperties:
                     type: string
@@ -459,6 +464,7 @@ spec:
                       type: string
                   type: object
               required:
+              - ciphertextBlob
               - keyID
               - providerRef
               type: object

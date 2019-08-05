@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            created:
+              type: string
             label:
               type: string
             providerRef:
@@ -411,6 +413,7 @@ spec:
             sshKey:
               type: string
           required:
+          - created
           - label
           - providerRef
           - sshKey
@@ -424,6 +427,8 @@ spec:
               type: integer
             output:
               properties:
+                created:
+                  type: string
                 label:
                   type: string
                 providerRef:
@@ -438,6 +443,7 @@ spec:
                 sshKey:
                   type: string
               required:
+              - created
               - label
               - providerRef
               - sshKey

@@ -21,13 +21,19 @@ type DevTestLab struct {
 type DevTestLabSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	ArtifactsStorageAccountID       string `json:"artifactsStorageAccountID" tf:"artifacts_storage_account_id"`
+	DefaultPremiumStorageAccountID  string `json:"defaultPremiumStorageAccountID" tf:"default_premium_storage_account_id"`
+	DefaultStorageAccountID         string `json:"defaultStorageAccountID" tf:"default_storage_account_id"`
+	KeyVaultID                      string `json:"keyVaultID" tf:"key_vault_id"`
+	Location                        string `json:"location" tf:"location"`
+	Name                            string `json:"name" tf:"name"`
+	PremiumDataDiskStorageAccountID string `json:"premiumDataDiskStorageAccountID" tf:"premium_data_disk_storage_account_id"`
+	ResourceGroupName               string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	StorageType string `json:"storageType,omitempty" tf:"storage_type,omitempty"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags             map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	UniqueIdentifier string            `json:"uniqueIdentifier" tf:"unique_identifier"`
 }
 
 type DevTestLabStatus struct {

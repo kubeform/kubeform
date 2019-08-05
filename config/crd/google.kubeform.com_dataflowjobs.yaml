@@ -420,6 +420,8 @@ spec:
               type: object
             region:
               type: string
+            state:
+              type: string
             tempGcsLocation:
               type: string
             templateGcsPath:
@@ -429,6 +431,7 @@ spec:
           required:
           - name
           - providerRef
+          - state
           - tempGcsLocation
           - templateGcsPath
           type: object
@@ -464,6 +467,8 @@ spec:
                   type: object
                 region:
                   type: string
+                state:
+                  type: string
                 tempGcsLocation:
                   type: string
                 templateGcsPath:
@@ -473,6 +478,7 @@ spec:
               required:
               - name
               - providerRef
+              - state
               - tempGcsLocation
               - templateGcsPath
               type: object

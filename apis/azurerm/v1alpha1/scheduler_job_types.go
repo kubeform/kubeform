@@ -39,8 +39,11 @@ type SchedulerJobSpecActionWebAuthenticationBasic struct {
 }
 
 type SchedulerJobSpecActionWebAuthenticationCertificate struct {
-	Password string `json:"-" sensitive:"true" tf:"password"`
-	Pfx      string `json:"-" sensitive:"true" tf:"pfx"`
+	Expiration  string `json:"expiration" tf:"expiration"`
+	Password    string `json:"-" sensitive:"true" tf:"password"`
+	Pfx         string `json:"-" sensitive:"true" tf:"pfx"`
+	SubjectName string `json:"subjectName" tf:"subject_name"`
+	Thumbprint  string `json:"thumbprint" tf:"thumbprint"`
 }
 
 type SchedulerJobSpecActionWeb struct {
@@ -82,8 +85,11 @@ type SchedulerJobSpecErrorActionWebAuthenticationBasic struct {
 }
 
 type SchedulerJobSpecErrorActionWebAuthenticationCertificate struct {
-	Password string `json:"-" sensitive:"true" tf:"password"`
-	Pfx      string `json:"-" sensitive:"true" tf:"pfx"`
+	Expiration  string `json:"expiration" tf:"expiration"`
+	Password    string `json:"-" sensitive:"true" tf:"password"`
+	Pfx         string `json:"-" sensitive:"true" tf:"pfx"`
+	SubjectName string `json:"subjectName" tf:"subject_name"`
+	Thumbprint  string `json:"thumbprint" tf:"thumbprint"`
 }
 
 type SchedulerJobSpecErrorActionWeb struct {

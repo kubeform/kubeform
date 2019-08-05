@@ -450,6 +450,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            creationTimestamp:
+              type: string
             description:
               type: string
             name:
@@ -465,14 +467,18 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
             target:
               type: string
             zone:
               type: string
           required:
           - autoscalingPolicy
+          - creationTimestamp
           - name
           - providerRef
+          - selfLink
           - target
           type: object
         status:
@@ -537,6 +543,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                creationTimestamp:
+                  type: string
                 description:
                   type: string
                 name:
@@ -552,14 +560,18 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
                 target:
                   type: string
                 zone:
                   type: string
               required:
               - autoscalingPolicy
+              - creationTimestamp
               - name
               - providerRef
+              - selfLink
               - target
               type: object
             state:

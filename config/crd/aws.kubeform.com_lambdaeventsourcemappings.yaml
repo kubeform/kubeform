@@ -403,7 +403,13 @@ spec:
               type: boolean
             eventSourceArn:
               type: string
+            functionArn:
+              type: string
             functionName:
+              type: string
+            lastModified:
+              type: string
+            lastProcessingResult:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -418,10 +424,22 @@ spec:
               type: string
             startingPositionTimestamp:
               type: string
+            state:
+              type: string
+            stateTransitionReason:
+              type: string
+            uuid:
+              type: string
           required:
           - eventSourceArn
+          - functionArn
           - functionName
+          - lastModified
+          - lastProcessingResult
           - providerRef
+          - state
+          - stateTransitionReason
+          - uuid
           type: object
         status:
           properties:
@@ -438,7 +456,13 @@ spec:
                   type: boolean
                 eventSourceArn:
                   type: string
+                functionArn:
+                  type: string
                 functionName:
+                  type: string
+                lastModified:
+                  type: string
+                lastProcessingResult:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -453,10 +477,22 @@ spec:
                   type: string
                 startingPositionTimestamp:
                   type: string
+                state:
+                  type: string
+                stateTransitionReason:
+                  type: string
+                uuid:
+                  type: string
               required:
               - eventSourceArn
+              - functionArn
               - functionName
+              - lastModified
+              - lastProcessingResult
               - providerRef
+              - state
+              - stateTransitionReason
+              - uuid
               type: object
             state:
               properties:

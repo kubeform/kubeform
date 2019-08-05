@@ -399,6 +399,14 @@ spec:
           properties:
             description:
               type: string
+            dropletIDS:
+              items:
+                format: int64
+                type: integer
+              type: array
+              uniqueItems: true
+            filesystemLabel:
+              type: string
             filesystemType:
               description: Deprecated
               type: string
@@ -423,11 +431,16 @@ spec:
               type: integer
             snapshotID:
               type: string
+            urn:
+              type: string
           required:
+          - dropletIDS
+          - filesystemLabel
           - name
           - providerRef
           - region
           - size
+          - urn
           type: object
         status:
           properties:
@@ -439,6 +452,14 @@ spec:
             output:
               properties:
                 description:
+                  type: string
+                dropletIDS:
+                  items:
+                    format: int64
+                    type: integer
+                  type: array
+                  uniqueItems: true
+                filesystemLabel:
                   type: string
                 filesystemType:
                   description: Deprecated
@@ -464,11 +485,16 @@ spec:
                   type: integer
                 snapshotID:
                   type: string
+                urn:
+                  type: string
               required:
+              - dropletIDS
+              - filesystemLabel
               - name
               - providerRef
               - region
               - size
+              - urn
               type: object
             state:
               properties:

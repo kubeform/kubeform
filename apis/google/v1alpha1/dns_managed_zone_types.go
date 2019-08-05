@@ -25,8 +25,9 @@ type DnsManagedZoneSpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	DnsName     string `json:"dnsName" tf:"dns_name"`
 	// +optional
-	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	Name   string            `json:"name" tf:"name"`
+	Labels      map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	Name        string            `json:"name" tf:"name"`
+	NameServers []string          `json:"nameServers" tf:"name_servers"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 }

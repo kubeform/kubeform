@@ -429,6 +429,8 @@ spec:
               type: array
             description:
               type: string
+            dnsName:
+              type: string
             dnsServers:
               items:
                 type: string
@@ -445,6 +447,8 @@ spec:
               type: object
             serverCertificateArn:
               type: string
+            status:
+              type: string
             tags:
               additionalProperties:
                 type: string
@@ -455,8 +459,10 @@ spec:
           - authenticationOptions
           - clientCIDRBlock
           - connectionLogOptions
+          - dnsName
           - providerRef
           - serverCertificateArn
+          - status
           type: object
         status:
           properties:
@@ -499,6 +505,8 @@ spec:
                   type: array
                 description:
                   type: string
+                dnsName:
+                  type: string
                 dnsServers:
                   items:
                     type: string
@@ -515,6 +523,8 @@ spec:
                   type: object
                 serverCertificateArn:
                   type: string
+                status:
+                  type: string
                 tags:
                   additionalProperties:
                     type: string
@@ -525,8 +535,10 @@ spec:
               - authenticationOptions
               - clientCIDRBlock
               - connectionLogOptions
+              - dnsName
               - providerRef
               - serverCertificateArn
+              - status
               type: object
             state:
               properties:

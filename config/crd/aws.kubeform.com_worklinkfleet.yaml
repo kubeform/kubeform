@@ -397,7 +397,13 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             auditStreamArn:
+              type: string
+            companyCode:
+              type: string
+            createdTime:
               type: string
             deviceCaCertificate:
               type: string
@@ -416,6 +422,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            lastUpdatedTime:
+              type: string
             name:
               type: string
             network:
@@ -452,6 +460,10 @@ spec:
                   type: string
               type: object
           required:
+          - arn
+          - companyCode
+          - createdTime
+          - lastUpdatedTime
           - name
           - providerRef
           type: object
@@ -464,7 +476,13 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 auditStreamArn:
+                  type: string
+                companyCode:
+                  type: string
+                createdTime:
                   type: string
                 deviceCaCertificate:
                   type: string
@@ -483,6 +501,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                lastUpdatedTime:
+                  type: string
                 name:
                   type: string
                 network:
@@ -519,6 +539,10 @@ spec:
                       type: string
                   type: object
               required:
+              - arn
+              - companyCode
+              - createdTime
+              - lastUpdatedTime
               - name
               - providerRef
               type: object

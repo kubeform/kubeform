@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            defaultAssociationRouteTable:
+              type: boolean
+            defaultPropagationRouteTable:
+              type: boolean
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -413,6 +417,8 @@ spec:
             transitGatewayID:
               type: string
           required:
+          - defaultAssociationRouteTable
+          - defaultPropagationRouteTable
           - providerRef
           - transitGatewayID
           type: object
@@ -425,6 +431,10 @@ spec:
               type: integer
             output:
               properties:
+                defaultAssociationRouteTable:
+                  type: boolean
+                defaultPropagationRouteTable:
+                  type: boolean
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -441,6 +451,8 @@ spec:
                 transitGatewayID:
                   type: string
               required:
+              - defaultAssociationRouteTable
+              - defaultPropagationRouteTable
               - providerRef
               - transitGatewayID
               type: object

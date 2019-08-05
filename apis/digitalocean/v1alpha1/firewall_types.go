@@ -54,9 +54,19 @@ type FirewallSpecOutboundRule struct {
 	Protocol  string `json:"protocol" tf:"protocol"`
 }
 
+type FirewallSpecPendingChanges struct {
+	// +optional
+	DropletID int `json:"dropletID,omitempty" tf:"droplet_id,omitempty"`
+	// +optional
+	Removing bool `json:"removing,omitempty" tf:"removing,omitempty"`
+	// +optional
+	Status string `json:"status,omitempty" tf:"status,omitempty"`
+}
+
 type FirewallSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	CreatedAt string `json:"createdAt" tf:"created_at"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	DropletIDS []int64 `json:"dropletIDS,omitempty" tf:"droplet_ids,omitempty"`
@@ -66,7 +76,9 @@ type FirewallSpec struct {
 	Name        string                    `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	OutboundRule []FirewallSpecOutboundRule `json:"outboundRule,omitempty" tf:"outbound_rule,omitempty"`
+	OutboundRule   []FirewallSpecOutboundRule   `json:"outboundRule,omitempty" tf:"outbound_rule,omitempty"`
+	PendingChanges []FirewallSpecPendingChanges `json:"pendingChanges" tf:"pending_changes"`
+	Status         string                       `json:"status" tf:"status"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`

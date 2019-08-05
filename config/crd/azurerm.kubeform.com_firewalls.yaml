@@ -405,12 +405,15 @@ spec:
                     type: string
                   name:
                     type: string
+                  privateIPAddress:
+                    type: string
                   publicIPAddressID:
                     type: string
                   subnetID:
                     type: string
                 required:
                 - name
+                - privateIPAddress
                 - subnetID
                 type: object
               maxItems: 1
@@ -458,12 +461,15 @@ spec:
                         type: string
                       name:
                         type: string
+                      privateIPAddress:
+                        type: string
                       publicIPAddressID:
                         type: string
                       subnetID:
                         type: string
                     required:
                     - name
+                    - privateIPAddress
                     - subnetID
                     type: object
                   maxItems: 1

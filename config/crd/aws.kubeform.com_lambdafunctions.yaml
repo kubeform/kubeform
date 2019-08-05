@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             deadLetterConfig:
               items:
                 properties:
@@ -425,7 +427,11 @@ spec:
               type: string
             handler:
               type: string
+            invokeArn:
+              type: string
             kmsKeyArn:
+              type: string
+            lastModified:
               type: string
             layers:
               items:
@@ -445,6 +451,8 @@ spec:
               type: object
             publish:
               type: boolean
+            qualifiedArn:
+              type: string
             reservedConcurrentExecutions:
               type: integer
             role:
@@ -459,6 +467,8 @@ spec:
               type: string
             sourceCodeHash:
               type: string
+            sourceCodeSize:
+              type: integer
             tags:
               additionalProperties:
                 type: string
@@ -475,6 +485,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            version:
+              type: string
             vpcConfig:
               items:
                 properties:
@@ -488,18 +500,27 @@ spec:
                       type: string
                     type: array
                     uniqueItems: true
+                  vpcID:
+                    type: string
                 required:
                 - securityGroupIDS
                 - subnetIDS
+                - vpcID
                 type: object
               maxItems: 1
               type: array
           required:
+          - arn
           - functionName
           - handler
+          - invokeArn
+          - lastModified
           - providerRef
+          - qualifiedArn
           - role
           - runtime
+          - sourceCodeSize
+          - version
           type: object
         status:
           properties:
@@ -510,6 +531,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 deadLetterConfig:
                   items:
                     properties:
@@ -538,7 +561,11 @@ spec:
                   type: string
                 handler:
                   type: string
+                invokeArn:
+                  type: string
                 kmsKeyArn:
+                  type: string
+                lastModified:
                   type: string
                 layers:
                   items:
@@ -558,6 +585,8 @@ spec:
                   type: object
                 publish:
                   type: boolean
+                qualifiedArn:
+                  type: string
                 reservedConcurrentExecutions:
                   type: integer
                 role:
@@ -572,6 +601,8 @@ spec:
                   type: string
                 sourceCodeHash:
                   type: string
+                sourceCodeSize:
+                  type: integer
                 tags:
                   additionalProperties:
                     type: string
@@ -588,6 +619,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                version:
+                  type: string
                 vpcConfig:
                   items:
                     properties:
@@ -601,18 +634,27 @@ spec:
                           type: string
                         type: array
                         uniqueItems: true
+                      vpcID:
+                        type: string
                     required:
                     - securityGroupIDS
                     - subnetIDS
+                    - vpcID
                     type: object
                   maxItems: 1
                   type: array
               required:
+              - arn
               - functionName
               - handler
+              - invokeArn
+              - lastModified
               - providerRef
+              - qualifiedArn
               - role
               - runtime
+              - sourceCodeSize
+              - version
               type: object
             state:
               properties:

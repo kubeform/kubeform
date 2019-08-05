@@ -411,7 +411,11 @@ spec:
               type: string
             contentType:
               type: string
+            crc32c:
+              type: string
             detectMd5hash:
+              type: string
+            md5hash:
               type: string
             name:
               type: string
@@ -430,6 +434,8 @@ spec:
               type: string
           required:
           - bucket
+          - crc32c
+          - md5hash
           - name
           - providerRef
           type: object
@@ -456,7 +462,11 @@ spec:
                   type: string
                 contentType:
                   type: string
+                crc32c:
+                  type: string
                 detectMd5hash:
+                  type: string
+                md5hash:
                   type: string
                 name:
                   type: string
@@ -475,6 +485,8 @@ spec:
                   type: string
               required:
               - bucket
+              - crc32c
+              - md5hash
               - name
               - providerRef
               type: object

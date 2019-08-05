@@ -104,9 +104,11 @@ type StorageBucketSpec struct {
 	Logging []StorageBucketSpecLogging `json:"logging,omitempty" tf:"logging,omitempty"`
 	Name    string                     `json:"name" tf:"name"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Project  string `json:"project,omitempty" tf:"project,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 	// +optional
 	StorageClass string `json:"storageClass,omitempty" tf:"storage_class,omitempty"`
+	Url          string `json:"url" tf:"url"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Versioning []StorageBucketSpecVersioning `json:"versioning,omitempty" tf:"versioning,omitempty"`

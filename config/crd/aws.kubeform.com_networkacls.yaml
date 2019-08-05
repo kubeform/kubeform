@@ -457,6 +457,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            ownerID:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -478,6 +480,7 @@ spec:
             vpcID:
               type: string
           required:
+          - ownerID
           - providerRef
           - vpcID
           type: object
@@ -550,6 +553,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                ownerID:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -571,6 +576,7 @@ spec:
                 vpcID:
                   type: string
               required:
+              - ownerID
               - providerRef
               - vpcID
               type: object

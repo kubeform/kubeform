@@ -27,12 +27,15 @@ type Route53ResolverRuleSpecTargetIP struct {
 type Route53ResolverRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn        string `json:"arn" tf:"arn"`
 	DomainName string `json:"domainName" tf:"domain_name"`
 	// +optional
-	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	Name    string `json:"name,omitempty" tf:"name,omitempty"`
+	OwnerID string `json:"ownerID" tf:"owner_id"`
 	// +optional
 	ResolverEndpointID string `json:"resolverEndpointID,omitempty" tf:"resolver_endpoint_id,omitempty"`
 	RuleType           string `json:"ruleType" tf:"rule_type"`
+	ShareStatus        string `json:"shareStatus" tf:"share_status"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

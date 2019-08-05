@@ -26,9 +26,19 @@ type SignalrServiceSpecSku struct {
 type SignalrServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	Hostname                  string `json:"hostname" tf:"hostname"`
+	IpAddress                 string `json:"ipAddress" tf:"ip_address"`
+	Location                  string `json:"location" tf:"location"`
+	Name                      string `json:"name" tf:"name"`
+	PrimaryAccessKey          string `json:"-" sensitive:"true" tf:"primary_access_key"`
+	PrimaryConnectionString   string `json:"-" sensitive:"true" tf:"primary_connection_string"`
+	PublicPort                int    `json:"publicPort" tf:"public_port"`
+	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
+	SecondaryAccessKey        string `json:"-" sensitive:"true" tf:"secondary_access_key"`
+	SecondaryConnectionString string `json:"-" sensitive:"true" tf:"secondary_connection_string"`
+	ServerPort                int    `json:"serverPort" tf:"server_port"`
 	// +kubebuilder:validation:MaxItems=1
 	Sku []SignalrServiceSpecSku `json:"sku" tf:"sku"`
 	// +optional

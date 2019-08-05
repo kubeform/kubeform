@@ -44,10 +44,12 @@ type Ec2ClientVPNEndpointSpec struct {
 	ConnectionLogOptions []Ec2ClientVPNEndpointSpecConnectionLogOptions `json:"connectionLogOptions" tf:"connection_log_options"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	DnsName     string `json:"dnsName" tf:"dns_name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	DnsServers           []string `json:"dnsServers,omitempty" tf:"dns_servers,omitempty"`
 	ServerCertificateArn string   `json:"serverCertificateArn" tf:"server_certificate_arn"`
+	Status               string   `json:"status" tf:"status"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

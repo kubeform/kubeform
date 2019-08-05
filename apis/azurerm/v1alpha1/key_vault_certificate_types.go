@@ -98,17 +98,21 @@ type KeyVaultCertificateSpec struct {
 
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Certificate []KeyVaultCertificateSpecCertificate `json:"certificate,omitempty" tf:"certificate,omitempty"`
+	Certificate     []KeyVaultCertificateSpecCertificate `json:"certificate,omitempty" tf:"certificate,omitempty"`
+	CertificateData string                               `json:"certificateData" tf:"certificate_data"`
 	// +kubebuilder:validation:MaxItems=1
 	CertificatePolicy []KeyVaultCertificateSpecCertificatePolicy `json:"certificatePolicy" tf:"certificate_policy"`
 	// +optional
 	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
 	Name       string `json:"name" tf:"name"`
+	SecretID   string `json:"secretID" tf:"secret_id"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags       map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Thumbprint string            `json:"thumbprint" tf:"thumbprint"`
 	// +optional
 	// Deprecated
 	VaultURI string `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`
+	Version  string `json:"version" tf:"version"`
 }
 
 type KeyVaultCertificateStatus struct {

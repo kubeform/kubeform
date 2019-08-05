@@ -40,6 +40,8 @@ type ApiGatewayStageSpec struct {
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	DocumentationVersion string `json:"documentationVersion,omitempty" tf:"documentation_version,omitempty"`
+	ExecutionArn         string `json:"executionArn" tf:"execution_arn"`
+	InvokeURL            string `json:"invokeURL" tf:"invoke_url"`
 	RestAPIID            string `json:"restAPIID" tf:"rest_api_id"`
 	StageName            string `json:"stageName" tf:"stage_name"`
 	// +optional

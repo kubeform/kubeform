@@ -21,14 +21,16 @@ type ComputeBackendBucket struct {
 type ComputeBackendBucketSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	BucketName string `json:"bucketName" tf:"bucket_name"`
+	BucketName        string `json:"bucketName" tf:"bucket_name"`
+	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	EnableCdn bool   `json:"enableCdn,omitempty" tf:"enable_cdn,omitempty"`
 	Name      string `json:"name" tf:"name"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Project  string `json:"project,omitempty" tf:"project,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 }
 
 type ComputeBackendBucketStatus struct {

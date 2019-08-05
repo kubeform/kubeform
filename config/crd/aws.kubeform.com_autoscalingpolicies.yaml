@@ -399,6 +399,8 @@ spec:
           properties:
             adjustmentType:
               type: string
+            arn:
+              type: string
             autoscalingGroupName:
               type: string
             cooldown:
@@ -494,6 +496,7 @@ spec:
               maxItems: 1
               type: array
           required:
+          - arn
           - autoscalingGroupName
           - name
           - providerRef
@@ -508,6 +511,8 @@ spec:
             output:
               properties:
                 adjustmentType:
+                  type: string
+                arn:
                   type: string
                 autoscalingGroupName:
                   type: string
@@ -604,6 +609,7 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - arn
               - autoscalingGroupName
               - name
               - providerRef

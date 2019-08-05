@@ -18,11 +18,20 @@ type OrganizationsOrganizationalUnit struct {
 	Status            OrganizationsOrganizationalUnitStatus `json:"status,omitempty"`
 }
 
+type OrganizationsOrganizationalUnitSpecAccounts struct {
+	Arn   string `json:"arn" tf:"arn"`
+	Email string `json:"email" tf:"email"`
+	ID    string `json:"ID" tf:"id"`
+	Name  string `json:"name" tf:"name"`
+}
+
 type OrganizationsOrganizationalUnitSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Name     string `json:"name" tf:"name"`
-	ParentID string `json:"parentID" tf:"parent_id"`
+	Accounts []OrganizationsOrganizationalUnitSpecAccounts `json:"accounts" tf:"accounts"`
+	Arn      string                                        `json:"arn" tf:"arn"`
+	Name     string                                        `json:"name" tf:"name"`
+	ParentID string                                        `json:"parentID" tf:"parent_id"`
 }
 
 type OrganizationsOrganizationalUnitStatus struct {

@@ -397,6 +397,12 @@ spec:
           type: object
         spec:
           properties:
+            dscPrimaryAccessKey:
+              type: string
+            dscSecondaryAccessKey:
+              type: string
+            dscServerEndpoint:
+              type: string
             location:
               type: string
             name:
@@ -428,6 +434,9 @@ spec:
                 type: string
               type: object
           required:
+          - dscPrimaryAccessKey
+          - dscSecondaryAccessKey
+          - dscServerEndpoint
           - location
           - name
           - providerRef
@@ -442,6 +451,12 @@ spec:
               type: integer
             output:
               properties:
+                dscPrimaryAccessKey:
+                  type: string
+                dscSecondaryAccessKey:
+                  type: string
+                dscServerEndpoint:
+                  type: string
                 location:
                   type: string
                 name:
@@ -473,6 +488,9 @@ spec:
                     type: string
                   type: object
               required:
+              - dscPrimaryAccessKey
+              - dscSecondaryAccessKey
+              - dscServerEndpoint
               - location
               - name
               - providerRef

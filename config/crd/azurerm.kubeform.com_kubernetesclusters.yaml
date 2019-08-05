@@ -418,8 +418,11 @@ spec:
                       properties:
                         enabled:
                           type: boolean
+                        httpApplicationRoutingZoneName:
+                          type: string
                       required:
                       - enabled
+                      - httpApplicationRoutingZoneName
                       type: object
                     maxItems: 1
                     type: array
@@ -444,6 +447,12 @@ spec:
                 properties:
                   count:
                     type: integer
+                  dnsPrefix:
+                    description: Deprecated
+                    type: string
+                  fqdn:
+                    description: Deprecated
+                    type: string
                   maxPods:
                     type: integer
                   name:
@@ -459,6 +468,8 @@ spec:
                   vnetSubnetID:
                     type: string
                 required:
+                - dnsPrefix
+                - fqdn
                 - name
                 - vmSize
                 type: object
@@ -470,6 +481,46 @@ spec:
               uniqueItems: true
             dnsPrefix:
               type: string
+            fqdn:
+              type: string
+            kubeAdminConfig:
+              items:
+                properties:
+                  clientCertificate:
+                    type: string
+                  clusterCaCertificate:
+                    type: string
+                  host:
+                    type: string
+                  username:
+                    type: string
+                required:
+                - clientCertificate
+                - clusterCaCertificate
+                - host
+                - username
+                type: object
+              maxItems: 1
+              type: array
+            kubeConfig:
+              items:
+                properties:
+                  clientCertificate:
+                    type: string
+                  clusterCaCertificate:
+                    type: string
+                  host:
+                    type: string
+                  username:
+                    type: string
+                required:
+                - clientCertificate
+                - clusterCaCertificate
+                - host
+                - username
+                type: object
+              maxItems: 1
+              type: array
             kubernetesVersion:
               type: string
             linuxProfile:
@@ -517,6 +568,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            nodeResourceGroup:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -580,8 +633,12 @@ spec:
           required:
           - agentPoolProfile
           - dnsPrefix
+          - fqdn
+          - kubeAdminConfig
+          - kubeConfig
           - location
           - name
+          - nodeResourceGroup
           - providerRef
           - resourceGroupName
           - servicePrincipal
@@ -616,8 +673,11 @@ spec:
                           properties:
                             enabled:
                               type: boolean
+                            httpApplicationRoutingZoneName:
+                              type: string
                           required:
                           - enabled
+                          - httpApplicationRoutingZoneName
                           type: object
                         maxItems: 1
                         type: array
@@ -642,6 +702,12 @@ spec:
                     properties:
                       count:
                         type: integer
+                      dnsPrefix:
+                        description: Deprecated
+                        type: string
+                      fqdn:
+                        description: Deprecated
+                        type: string
                       maxPods:
                         type: integer
                       name:
@@ -657,6 +723,8 @@ spec:
                       vnetSubnetID:
                         type: string
                     required:
+                    - dnsPrefix
+                    - fqdn
                     - name
                     - vmSize
                     type: object
@@ -668,6 +736,46 @@ spec:
                   uniqueItems: true
                 dnsPrefix:
                   type: string
+                fqdn:
+                  type: string
+                kubeAdminConfig:
+                  items:
+                    properties:
+                      clientCertificate:
+                        type: string
+                      clusterCaCertificate:
+                        type: string
+                      host:
+                        type: string
+                      username:
+                        type: string
+                    required:
+                    - clientCertificate
+                    - clusterCaCertificate
+                    - host
+                    - username
+                    type: object
+                  maxItems: 1
+                  type: array
+                kubeConfig:
+                  items:
+                    properties:
+                      clientCertificate:
+                        type: string
+                      clusterCaCertificate:
+                        type: string
+                      host:
+                        type: string
+                      username:
+                        type: string
+                    required:
+                    - clientCertificate
+                    - clusterCaCertificate
+                    - host
+                    - username
+                    type: object
+                  maxItems: 1
+                  type: array
                 kubernetesVersion:
                   type: string
                 linuxProfile:
@@ -715,6 +823,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                nodeResourceGroup:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -778,8 +888,12 @@ spec:
               required:
               - agentPoolProfile
               - dnsPrefix
+              - fqdn
+              - kubeAdminConfig
+              - kubeConfig
               - location
               - name
+              - nodeResourceGroup
               - providerRef
               - resourceGroupName
               - servicePrincipal

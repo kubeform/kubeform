@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -413,6 +415,7 @@ spec:
             virtualInterfaceID:
               type: string
           required:
+          - arn
           - providerRef
           - virtualInterfaceID
           type: object
@@ -425,6 +428,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -441,6 +446,7 @@ spec:
                 virtualInterfaceID:
                   type: string
               required:
+              - arn
               - providerRef
               - virtualInterfaceID
               type: object

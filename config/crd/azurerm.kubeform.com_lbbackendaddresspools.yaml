@@ -397,6 +397,16 @@ spec:
           type: object
         spec:
           properties:
+            backendIPConfigurations:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            loadBalancingRules:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             loadbalancerID:
               type: string
             location:
@@ -416,6 +426,8 @@ spec:
             resourceGroupName:
               type: string
           required:
+          - backendIPConfigurations
+          - loadBalancingRules
           - loadbalancerID
           - name
           - providerRef
@@ -430,6 +442,16 @@ spec:
               type: integer
             output:
               properties:
+                backendIPConfigurations:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                loadBalancingRules:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
                 loadbalancerID:
                   type: string
                 location:
@@ -449,6 +471,8 @@ spec:
                 resourceGroupName:
                   type: string
               required:
+              - backendIPConfigurations
+              - loadBalancingRules
               - loadbalancerID
               - name
               - providerRef

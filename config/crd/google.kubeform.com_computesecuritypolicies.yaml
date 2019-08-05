@@ -399,6 +399,8 @@ spec:
           properties:
             description:
               type: string
+            fingerprint:
+              type: string
             name:
               type: string
             project:
@@ -456,9 +458,13 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            selfLink:
+              type: string
           required:
+          - fingerprint
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -470,6 +476,8 @@ spec:
             output:
               properties:
                 description:
+                  type: string
+                fingerprint:
                   type: string
                 name:
                   type: string
@@ -528,9 +536,13 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                selfLink:
+                  type: string
               required:
+              - fingerprint
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

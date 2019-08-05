@@ -399,6 +399,8 @@ spec:
           properties:
             location:
               type: string
+            metricID:
+              type: string
             name:
               type: string
             providerRef:
@@ -412,6 +414,15 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             sku:
               description: Deprecated
               items:
@@ -431,6 +442,7 @@ spec:
               type: object
           required:
           - location
+          - metricID
           - name
           - providerRef
           - resourceGroupName
@@ -446,6 +458,8 @@ spec:
               properties:
                 location:
                   type: string
+                metricID:
+                  type: string
                 name:
                   type: string
                 providerRef:
@@ -459,6 +473,15 @@ spec:
                   type: object
                 resourceGroupName:
                   type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
                 sku:
                   description: Deprecated
                   items:
@@ -478,6 +501,7 @@ spec:
                   type: object
               required:
               - location
+              - metricID
               - name
               - providerRef
               - resourceGroupName

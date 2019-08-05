@@ -416,11 +416,14 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            writerIdentity:
+              type: string
           required:
           - destination
           - name
           - orgID
           - providerRef
+          - writerIdentity
           type: object
         status:
           properties:
@@ -450,11 +453,14 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                writerIdentity:
+                  type: string
               required:
               - destination
               - name
               - orgID
               - providerRef
+              - writerIdentity
               type: object
             state:
               properties:

@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            arnSuffix:
+              type: string
             deregistrationDelay:
               type: integer
             healthCheck:
@@ -469,6 +473,8 @@ spec:
             vpcID:
               type: string
           required:
+          - arn
+          - arnSuffix
           - providerRef
           type: object
         status:
@@ -480,6 +486,10 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                arnSuffix:
+                  type: string
                 deregistrationDelay:
                   type: integer
                 healthCheck:
@@ -552,6 +562,8 @@ spec:
                 vpcID:
                   type: string
               required:
+              - arn
+              - arnSuffix
               - providerRef
               type: object
             state:

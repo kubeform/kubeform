@@ -424,10 +424,20 @@ spec:
               type: object
             publiclyAccessible:
               type: boolean
+            replicationInstanceArn:
+              type: string
             replicationInstanceClass:
               type: string
             replicationInstanceID:
               type: string
+            replicationInstancePrivateIPS:
+              items:
+                type: string
+              type: array
+            replicationInstancePublicIPS:
+              items:
+                type: string
+              type: array
             replicationSubnetGroupID:
               type: string
             tags:
@@ -441,8 +451,11 @@ spec:
               uniqueItems: true
           required:
           - providerRef
+          - replicationInstanceArn
           - replicationInstanceClass
           - replicationInstanceID
+          - replicationInstancePrivateIPS
+          - replicationInstancePublicIPS
           type: object
         status:
           properties:
@@ -480,10 +493,20 @@ spec:
                   type: object
                 publiclyAccessible:
                   type: boolean
+                replicationInstanceArn:
+                  type: string
                 replicationInstanceClass:
                   type: string
                 replicationInstanceID:
                   type: string
+                replicationInstancePrivateIPS:
+                  items:
+                    type: string
+                  type: array
+                replicationInstancePublicIPS:
+                  items:
+                    type: string
+                  type: array
                 replicationSubnetGroupID:
                   type: string
                 tags:
@@ -497,8 +520,11 @@ spec:
                   uniqueItems: true
               required:
               - providerRef
+              - replicationInstanceArn
               - replicationInstanceClass
               - replicationInstanceID
+              - replicationInstancePrivateIPS
+              - replicationInstancePublicIPS
               type: object
             state:
               properties:

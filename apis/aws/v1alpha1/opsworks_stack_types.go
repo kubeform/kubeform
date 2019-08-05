@@ -38,6 +38,7 @@ type OpsworksStackSpec struct {
 
 	// +optional
 	AgentVersion string `json:"agentVersion,omitempty" tf:"agent_version,omitempty"`
+	Arn          string `json:"arn" tf:"arn"`
 	// +optional
 	BerkshelfVersion string `json:"berkshelfVersion,omitempty" tf:"berkshelf_version,omitempty"`
 	// +optional
@@ -68,6 +69,7 @@ type OpsworksStackSpec struct {
 	Name            string `json:"name" tf:"name"`
 	Region          string `json:"region" tf:"region"`
 	ServiceRoleArn  string `json:"serviceRoleArn" tf:"service_role_arn"`
+	StackEndpoint   string `json:"stackEndpoint" tf:"stack_endpoint"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

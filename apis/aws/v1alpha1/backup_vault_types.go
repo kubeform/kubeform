@@ -21,9 +21,11 @@ type BackupVault struct {
 type BackupVaultSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
-	KmsKeyArn string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
-	Name      string `json:"name" tf:"name"`
+	KmsKeyArn      string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
+	Name           string `json:"name" tf:"name"`
+	RecoveryPoints int    `json:"recoveryPoints" tf:"recovery_points"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

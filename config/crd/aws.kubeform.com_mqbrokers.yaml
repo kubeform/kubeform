@@ -399,6 +399,8 @@ spec:
           properties:
             applyImmediately:
               type: boolean
+            arn:
+              type: string
             autoMinorVersionUpgrade:
               type: boolean
             brokerName:
@@ -421,6 +423,23 @@ spec:
               type: string
             hostInstanceType:
               type: string
+            instances:
+              items:
+                properties:
+                  consoleURL:
+                    type: string
+                  endpoints:
+                    items:
+                      type: string
+                    type: array
+                  ipAddress:
+                    type: string
+                required:
+                - consoleURL
+                - endpoints
+                - ipAddress
+                type: object
+              type: array
             logs:
               items:
                 properties:
@@ -499,10 +518,12 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - arn
           - brokerName
           - engineType
           - engineVersion
           - hostInstanceType
+          - instances
           - providerRef
           - securityGroups
           - user
@@ -518,6 +539,8 @@ spec:
               properties:
                 applyImmediately:
                   type: boolean
+                arn:
+                  type: string
                 autoMinorVersionUpgrade:
                   type: boolean
                 brokerName:
@@ -540,6 +563,23 @@ spec:
                   type: string
                 hostInstanceType:
                   type: string
+                instances:
+                  items:
+                    properties:
+                      consoleURL:
+                        type: string
+                      endpoints:
+                        items:
+                          type: string
+                        type: array
+                      ipAddress:
+                        type: string
+                    required:
+                    - consoleURL
+                    - endpoints
+                    - ipAddress
+                    type: object
+                  type: array
                 logs:
                   items:
                     properties:
@@ -618,10 +658,12 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - arn
               - brokerName
               - engineType
               - engineVersion
               - hostInstanceType
+              - instances
               - providerRef
               - securityGroups
               - user

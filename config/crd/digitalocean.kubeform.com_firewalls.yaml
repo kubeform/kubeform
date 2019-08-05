@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            createdAt:
+              type: string
             dropletIDS:
               items:
                 format: int64
@@ -471,6 +473,17 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            pendingChanges:
+              items:
+                properties:
+                  dropletID:
+                    type: integer
+                  removing:
+                    type: boolean
+                  status:
+                    type: string
+                type: object
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -480,14 +493,19 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            status:
+              type: string
             tags:
               items:
                 type: string
               type: array
               uniqueItems: true
           required:
+          - createdAt
           - name
+          - pendingChanges
           - providerRef
+          - status
           type: object
         status:
           properties:
@@ -498,6 +516,8 @@ spec:
               type: integer
             output:
               properties:
+                createdAt:
+                  type: string
                 dropletIDS:
                   items:
                     format: int64
@@ -572,6 +592,17 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                pendingChanges:
+                  items:
+                    properties:
+                      dropletID:
+                        type: integer
+                      removing:
+                        type: boolean
+                      status:
+                        type: string
+                    type: object
+                  type: array
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -581,14 +612,19 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                status:
+                  type: string
                 tags:
                   items:
                     type: string
                   type: array
                   uniqueItems: true
               required:
+              - createdAt
               - name
+              - pendingChanges
               - providerRef
+              - status
               type: object
             state:
               properties:

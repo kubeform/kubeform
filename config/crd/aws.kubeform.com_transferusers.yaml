@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             homeDirectory:
               type: string
             policy:
@@ -421,6 +423,7 @@ spec:
             userName:
               type: string
           required:
+          - arn
           - providerRef
           - role
           - serverID
@@ -435,6 +438,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 homeDirectory:
                   type: string
                 policy:
@@ -459,6 +464,7 @@ spec:
                 userName:
                   type: string
               required:
+              - arn
               - providerRef
               - role
               - serverID

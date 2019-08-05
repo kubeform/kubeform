@@ -397,7 +397,15 @@ spec:
           type: object
         spec:
           properties:
+            callerReference:
+              type: string
+            cloudfrontAccessIdentityPath:
+              type: string
             comment:
+              type: string
+            etag:
+              type: string
+            iamArn:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -408,8 +416,15 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            s3CanonicalUserID:
+              type: string
           required:
+          - callerReference
+          - cloudfrontAccessIdentityPath
+          - etag
+          - iamArn
           - providerRef
+          - s3CanonicalUserID
           type: object
         status:
           properties:
@@ -420,7 +435,15 @@ spec:
               type: integer
             output:
               properties:
+                callerReference:
+                  type: string
+                cloudfrontAccessIdentityPath:
+                  type: string
                 comment:
+                  type: string
+                etag:
+                  type: string
+                iamArn:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -431,8 +454,15 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                s3CanonicalUserID:
+                  type: string
               required:
+              - callerReference
+              - cloudfrontAccessIdentityPath
+              - etag
+              - iamArn
               - providerRef
+              - s3CanonicalUserID
               type: object
             state:
               properties:

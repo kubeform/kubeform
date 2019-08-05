@@ -24,6 +24,7 @@ type ComputeRouterPeerSpec struct {
 	// +optional
 	AdvertisedRoutePriority int    `json:"advertisedRoutePriority,omitempty" tf:"advertised_route_priority,omitempty"`
 	Interface               string `json:"interface" tf:"interface"`
+	IpAddress               string `json:"ipAddress" tf:"ip_address"`
 	Name                    string `json:"name" tf:"name"`
 	PeerAsn                 int    `json:"peerAsn" tf:"peer_asn"`
 	// +optional

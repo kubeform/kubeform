@@ -41,6 +41,7 @@ type StorageBlobSpec struct {
 	StorageContainerName string `json:"storageContainerName" tf:"storage_container_name"`
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
+	Url  string `json:"url" tf:"url"`
 }
 
 type StorageBlobStatus struct {

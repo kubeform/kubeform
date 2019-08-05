@@ -402,6 +402,8 @@ spec:
             plan:
               items:
                 properties:
+                  name:
+                    type: string
                   product:
                     type: string
                   promotionCode:
@@ -409,6 +411,7 @@ spec:
                   publisher:
                     type: string
                 required:
+                - name
                 - product
                 - publisher
                 type: object
@@ -454,6 +457,8 @@ spec:
                 plan:
                   items:
                     properties:
+                      name:
+                        type: string
                       product:
                         type: string
                       promotionCode:
@@ -461,6 +466,7 @@ spec:
                       publisher:
                         type: string
                     required:
+                    - name
                     - product
                     - publisher
                     type: object

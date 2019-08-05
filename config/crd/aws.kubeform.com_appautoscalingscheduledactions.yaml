@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             endTime:
               type: string
             name:
@@ -431,6 +433,7 @@ spec:
             startTime:
               type: string
           required:
+          - arn
           - name
           - providerRef
           - resourceID
@@ -445,6 +448,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 endTime:
                   type: string
                 name:
@@ -479,6 +484,7 @@ spec:
                 startTime:
                   type: string
               required:
+              - arn
               - name
               - providerRef
               - resourceID

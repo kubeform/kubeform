@@ -437,10 +437,16 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            runningInstanceCount:
+              type: integer
+            status:
+              type: string
           required:
           - clusterID
           - instanceType
           - providerRef
+          - runningInstanceCount
+          - status
           type: object
         status:
           properties:
@@ -491,10 +497,16 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                runningInstanceCount:
+                  type: integer
+                status:
+                  type: string
               required:
               - clusterID
               - instanceType
               - providerRef
+              - runningInstanceCount
+              - status
               type: object
             state:
               properties:

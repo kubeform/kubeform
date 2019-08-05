@@ -405,6 +405,8 @@ spec:
               type: string
             ipVersion:
               type: string
+            labelFingerprint:
+              type: string
             labels:
               additionalProperties:
                 type: string
@@ -425,11 +427,15 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
             target:
               type: string
           required:
+          - labelFingerprint
           - name
           - providerRef
+          - selfLink
           - target
           type: object
         status:
@@ -448,6 +454,8 @@ spec:
                 ipProtocol:
                   type: string
                 ipVersion:
+                  type: string
+                labelFingerprint:
                   type: string
                 labels:
                   additionalProperties:
@@ -469,11 +477,15 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
                 target:
                   type: string
               required:
+              - labelFingerprint
               - name
               - providerRef
+              - selfLink
               - target
               type: object
             state:

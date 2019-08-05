@@ -21,9 +21,12 @@ type ApiGatewayDeployment struct {
 type ApiGatewayDeploymentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	CreatedDate string `json:"createdDate" tf:"created_date"`
 	// +optional
-	Description string `json:"description,omitempty" tf:"description,omitempty"`
-	RestAPIID   string `json:"restAPIID" tf:"rest_api_id"`
+	Description  string `json:"description,omitempty" tf:"description,omitempty"`
+	ExecutionArn string `json:"executionArn" tf:"execution_arn"`
+	InvokeURL    string `json:"invokeURL" tf:"invoke_url"`
+	RestAPIID    string `json:"restAPIID" tf:"rest_api_id"`
 	// +optional
 	StageDescription string `json:"stageDescription,omitempty" tf:"stage_description,omitempty"`
 	// +optional

@@ -18,9 +18,32 @@ type EndpointsService struct {
 	Status            EndpointsServiceStatus `json:"status,omitempty"`
 }
 
+type EndpointsServiceSpecApisMethods struct {
+	Name         string `json:"name" tf:"name"`
+	RequestType  string `json:"requestType" tf:"request_type"`
+	ResponseType string `json:"responseType" tf:"response_type"`
+	Syntax       string `json:"syntax" tf:"syntax"`
+}
+
+type EndpointsServiceSpecApis struct {
+	Methods []EndpointsServiceSpecApisMethods `json:"methods" tf:"methods"`
+	Name    string                            `json:"name" tf:"name"`
+	Syntax  string                            `json:"syntax" tf:"syntax"`
+	Version string                            `json:"version" tf:"version"`
+}
+
+type EndpointsServiceSpecEndpoints struct {
+	Address string `json:"address" tf:"address"`
+	Name    string `json:"name" tf:"name"`
+}
+
 type EndpointsServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Apis       []EndpointsServiceSpecApis      `json:"apis" tf:"apis"`
+	ConfigID   string                          `json:"configID" tf:"config_id"`
+	DnsAddress string                          `json:"dnsAddress" tf:"dns_address"`
+	Endpoints  []EndpointsServiceSpecEndpoints `json:"endpoints" tf:"endpoints"`
 	// +optional
 	GrpcConfig string `json:"grpcConfig,omitempty" tf:"grpc_config,omitempty"`
 	// +optional

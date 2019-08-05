@@ -399,13 +399,31 @@ spec:
           properties:
             backups:
               type: boolean
+            disk:
+              type: integer
             image:
+              type: string
+            ipv4Address:
+              type: string
+            ipv4AddressPrivate:
               type: string
             ipv6:
               type: boolean
+            ipv6Address:
+              type: string
+            locked:
+              type: boolean
+            memory:
+              type: integer
             monitoring:
               type: boolean
             name:
+              type: string
+            priceHourly:
+              description: A Number represents a JSON number literal.
+              type: string
+            priceMonthly:
+              description: A Number represents a JSON number literal.
               type: string
             privateNetworking:
               type: boolean
@@ -429,24 +447,41 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            status:
+              type: string
             tags:
               items:
                 type: string
               type: array
               uniqueItems: true
+            urn:
+              type: string
             userData:
               type: string
+            vcpus:
+              type: integer
             volumeIDS:
               items:
                 type: string
               type: array
               uniqueItems: true
           required:
+          - disk
           - image
+          - ipv4Address
+          - ipv4AddressPrivate
+          - ipv6Address
+          - locked
+          - memory
           - name
+          - priceHourly
+          - priceMonthly
           - providerRef
           - region
           - size
+          - status
+          - urn
+          - vcpus
           type: object
         status:
           properties:
@@ -459,13 +494,31 @@ spec:
               properties:
                 backups:
                   type: boolean
+                disk:
+                  type: integer
                 image:
+                  type: string
+                ipv4Address:
+                  type: string
+                ipv4AddressPrivate:
                   type: string
                 ipv6:
                   type: boolean
+                ipv6Address:
+                  type: string
+                locked:
+                  type: boolean
+                memory:
+                  type: integer
                 monitoring:
                   type: boolean
                 name:
+                  type: string
+                priceHourly:
+                  description: A Number represents a JSON number literal.
+                  type: string
+                priceMonthly:
+                  description: A Number represents a JSON number literal.
                   type: string
                 privateNetworking:
                   type: boolean
@@ -489,24 +542,41 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                status:
+                  type: string
                 tags:
                   items:
                     type: string
                   type: array
                   uniqueItems: true
+                urn:
+                  type: string
                 userData:
                   type: string
+                vcpus:
+                  type: integer
                 volumeIDS:
                   items:
                     type: string
                   type: array
                   uniqueItems: true
               required:
+              - disk
               - image
+              - ipv4Address
+              - ipv4AddressPrivate
+              - ipv6Address
+              - locked
+              - memory
               - name
+              - priceHourly
+              - priceMonthly
               - providerRef
               - region
               - size
+              - status
+              - urn
+              - vcpus
               type: object
             state:
               properties:

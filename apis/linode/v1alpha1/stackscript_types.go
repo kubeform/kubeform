@@ -18,21 +18,34 @@ type Stackscript struct {
 	Status            StackscriptStatus `json:"status,omitempty"`
 }
 
-type StackscriptSpecUserDefinedFields struct{}
+type StackscriptSpecUserDefinedFields struct {
+	Default string `json:"default" tf:"default"`
+	Example string `json:"example" tf:"example"`
+	Label   string `json:"label" tf:"label"`
+	ManyOf  string `json:"manyOf" tf:"many_of"`
+	Name    string `json:"name" tf:"name"`
+	OneOf   string `json:"oneOf" tf:"one_of"`
+}
 
 type StackscriptSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Description string   `json:"description" tf:"description"`
-	Images      []string `json:"images" tf:"images"`
+	Created           string   `json:"created" tf:"created"`
+	DeploymentsActive int      `json:"deploymentsActive" tf:"deployments_active"`
+	DeploymentsTotal  int      `json:"deploymentsTotal" tf:"deployments_total"`
+	Description       string   `json:"description" tf:"description"`
+	Images            []string `json:"images" tf:"images"`
 	// +optional
 	IsPublic bool   `json:"isPublic,omitempty" tf:"is_public,omitempty"`
 	Label    string `json:"label" tf:"label"`
 	// +optional
 	RevNote string `json:"revNote,omitempty" tf:"rev_note,omitempty"`
 	Script  string `json:"script" tf:"script"`
+	Updated string `json:"updated" tf:"updated"`
 	// +optional
 	UserDefinedFields []StackscriptSpecUserDefinedFields `json:"userDefinedFields,omitempty" tf:"user_defined_fields,omitempty"`
+	UserGravatarID    string                             `json:"userGravatarID" tf:"user_gravatar_id"`
+	Username          string                             `json:"username" tf:"username"`
 }
 
 type StackscriptStatus struct {

@@ -19,6 +19,7 @@ type LbOutboundRule struct {
 }
 
 type LbOutboundRuleSpecFrontendIPConfiguration struct {
+	ID   string `json:"ID" tf:"id"`
 	Name string `json:"name" tf:"name"`
 }
 

@@ -399,9 +399,13 @@ spec:
           properties:
             apiID:
               type: string
+            arn:
+              type: string
             dataSource:
               type: string
             description:
+              type: string
+            functionID:
               type: string
             functionVersion:
               type: string
@@ -422,7 +426,9 @@ spec:
               type: string
           required:
           - apiID
+          - arn
           - dataSource
+          - functionID
           - name
           - providerRef
           - requestMappingTemplate
@@ -439,9 +445,13 @@ spec:
               properties:
                 apiID:
                   type: string
+                arn:
+                  type: string
                 dataSource:
                   type: string
                 description:
+                  type: string
+                functionID:
                   type: string
                 functionVersion:
                   type: string
@@ -462,7 +472,9 @@ spec:
                   type: string
               required:
               - apiID
+              - arn
               - dataSource
+              - functionID
               - name
               - providerRef
               - requestMappingTemplate

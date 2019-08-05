@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             description:
               type: string
             family:
@@ -434,6 +436,7 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - family
           - providerRef
           type: object
@@ -446,6 +449,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 description:
                   type: string
                 family:
@@ -483,6 +488,7 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - family
               - providerRef
               type: object

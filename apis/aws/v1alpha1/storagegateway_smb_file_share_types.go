@@ -21,10 +21,12 @@ type StoragegatewaySmbFileShare struct {
 type StoragegatewaySmbFileShareSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	Authentication string `json:"authentication,omitempty" tf:"authentication,omitempty"`
 	// +optional
 	DefaultStorageClass string `json:"defaultStorageClass,omitempty" tf:"default_storage_class,omitempty"`
+	FileshareID         string `json:"fileshareID" tf:"fileshare_id"`
 	GatewayArn          string `json:"gatewayArn" tf:"gateway_arn"`
 	// +optional
 	GuessMimeTypeEnabled bool `json:"guessMimeTypeEnabled,omitempty" tf:"guess_mime_type_enabled,omitempty"`

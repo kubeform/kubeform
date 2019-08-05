@@ -25,6 +25,8 @@ type VpcEndpointConnectionNotificationSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	ConnectionEvents          []string `json:"connectionEvents" tf:"connection_events"`
 	ConnectionNotificationArn string   `json:"connectionNotificationArn" tf:"connection_notification_arn"`
+	NotificationType          string   `json:"notificationType" tf:"notification_type"`
+	State                     string   `json:"state" tf:"state"`
 	// +optional
 	VpcEndpointID string `json:"vpcEndpointID,omitempty" tf:"vpc_endpoint_id,omitempty"`
 	// +optional

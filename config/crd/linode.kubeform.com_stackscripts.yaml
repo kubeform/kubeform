@@ -397,6 +397,12 @@ spec:
           type: object
         spec:
           properties:
+            created:
+              type: string
+            deploymentsActive:
+              type: integer
+            deploymentsTotal:
+              type: integer
             description:
               type: string
             images:
@@ -420,16 +426,48 @@ spec:
               type: string
             script:
               type: string
+            updated:
+              type: string
             userDefinedFields:
               items:
+                properties:
+                  default:
+                    type: string
+                  example:
+                    type: string
+                  label:
+                    type: string
+                  manyOf:
+                    type: string
+                  name:
+                    type: string
+                  oneOf:
+                    type: string
+                required:
+                - default
+                - example
+                - label
+                - manyOf
+                - name
+                - oneOf
                 type: object
               type: array
+            userGravatarID:
+              type: string
+            username:
+              type: string
           required:
+          - created
+          - deploymentsActive
+          - deploymentsTotal
           - description
           - images
           - label
           - providerRef
           - script
+          - updated
+          - userGravatarID
+          - username
           type: object
         status:
           properties:
@@ -440,6 +478,12 @@ spec:
               type: integer
             output:
               properties:
+                created:
+                  type: string
+                deploymentsActive:
+                  type: integer
+                deploymentsTotal:
+                  type: integer
                 description:
                   type: string
                 images:
@@ -463,16 +507,48 @@ spec:
                   type: string
                 script:
                   type: string
+                updated:
+                  type: string
                 userDefinedFields:
                   items:
+                    properties:
+                      default:
+                        type: string
+                      example:
+                        type: string
+                      label:
+                        type: string
+                      manyOf:
+                        type: string
+                      name:
+                        type: string
+                      oneOf:
+                        type: string
+                    required:
+                    - default
+                    - example
+                    - label
+                    - manyOf
+                    - name
+                    - oneOf
                     type: object
                   type: array
+                userGravatarID:
+                  type: string
+                username:
+                  type: string
               required:
+              - created
+              - deploymentsActive
+              - deploymentsTotal
               - description
               - images
               - label
               - providerRef
               - script
+              - updated
+              - userGravatarID
+              - username
               type: object
             state:
               properties:

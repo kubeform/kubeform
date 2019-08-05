@@ -21,8 +21,19 @@ type DocdbClusterSnapshot struct {
 type DocdbClusterSnapshotSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	DbClusterIdentifier         string `json:"dbClusterIdentifier" tf:"db_cluster_identifier"`
-	DbClusterSnapshotIdentifier string `json:"dbClusterSnapshotIdentifier" tf:"db_cluster_snapshot_identifier"`
+	AvailabilityZones           []string `json:"availabilityZones" tf:"availability_zones"`
+	DbClusterIdentifier         string   `json:"dbClusterIdentifier" tf:"db_cluster_identifier"`
+	DbClusterSnapshotArn        string   `json:"dbClusterSnapshotArn" tf:"db_cluster_snapshot_arn"`
+	DbClusterSnapshotIdentifier string   `json:"dbClusterSnapshotIdentifier" tf:"db_cluster_snapshot_identifier"`
+	Engine                      string   `json:"engine" tf:"engine"`
+	EngineVersion               string   `json:"engineVersion" tf:"engine_version"`
+	KmsKeyID                    string   `json:"kmsKeyID" tf:"kms_key_id"`
+	Port                        int      `json:"port" tf:"port"`
+	SnapshotType                string   `json:"snapshotType" tf:"snapshot_type"`
+	SourceDbClusterSnapshotArn  string   `json:"sourceDbClusterSnapshotArn" tf:"source_db_cluster_snapshot_arn"`
+	Status                      string   `json:"status" tf:"status"`
+	StorageEncrypted            bool     `json:"storageEncrypted" tf:"storage_encrypted"`
+	VpcID                       string   `json:"vpcID" tf:"vpc_id"`
 }
 
 type DocdbClusterSnapshotStatus struct {

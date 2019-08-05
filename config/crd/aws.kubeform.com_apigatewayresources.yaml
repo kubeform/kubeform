@@ -399,6 +399,8 @@ spec:
           properties:
             parentID:
               type: string
+            path:
+              type: string
             pathPart:
               type: string
             providerRef:
@@ -414,6 +416,7 @@ spec:
               type: string
           required:
           - parentID
+          - path
           - pathPart
           - providerRef
           - restAPIID
@@ -428,6 +431,8 @@ spec:
             output:
               properties:
                 parentID:
+                  type: string
+                path:
                   type: string
                 pathPart:
                   type: string
@@ -444,6 +449,7 @@ spec:
                   type: string
               required:
               - parentID
+              - path
               - pathPart
               - providerRef
               - restAPIID

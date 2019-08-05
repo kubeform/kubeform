@@ -36,11 +36,13 @@ type LambdaFunctionSpecVpcConfig struct {
 	SecurityGroupIDS []string `json:"securityGroupIDS" tf:"security_group_ids"`
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
+	VpcID     string   `json:"vpcID" tf:"vpc_id"`
 }
 
 type LambdaFunctionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	DeadLetterConfig []LambdaFunctionSpecDeadLetterConfig `json:"deadLetterConfig,omitempty" tf:"dead_letter_config,omitempty"`
@@ -53,15 +55,18 @@ type LambdaFunctionSpec struct {
 	Filename     string `json:"filename,omitempty" tf:"filename,omitempty"`
 	FunctionName string `json:"functionName" tf:"function_name"`
 	Handler      string `json:"handler" tf:"handler"`
+	InvokeArn    string `json:"invokeArn" tf:"invoke_arn"`
 	// +optional
-	KmsKeyArn string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
+	KmsKeyArn    string `json:"kmsKeyArn,omitempty" tf:"kms_key_arn,omitempty"`
+	LastModified string `json:"lastModified" tf:"last_modified"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=5
 	Layers []string `json:"layers,omitempty" tf:"layers,omitempty"`
 	// +optional
 	MemorySize int `json:"memorySize,omitempty" tf:"memory_size,omitempty"`
 	// +optional
-	Publish bool `json:"publish,omitempty" tf:"publish,omitempty"`
+	Publish      bool   `json:"publish,omitempty" tf:"publish,omitempty"`
+	QualifiedArn string `json:"qualifiedArn" tf:"qualified_arn"`
 	// +optional
 	ReservedConcurrentExecutions int    `json:"reservedConcurrentExecutions,omitempty" tf:"reserved_concurrent_executions,omitempty"`
 	Role                         string `json:"role" tf:"role"`
@@ -74,6 +79,7 @@ type LambdaFunctionSpec struct {
 	S3ObjectVersion string `json:"s3ObjectVersion,omitempty" tf:"s3_object_version,omitempty"`
 	// +optional
 	SourceCodeHash string `json:"sourceCodeHash,omitempty" tf:"source_code_hash,omitempty"`
+	SourceCodeSize int    `json:"sourceCodeSize" tf:"source_code_size"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
@@ -81,6 +87,7 @@ type LambdaFunctionSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	TracingConfig []LambdaFunctionSpecTracingConfig `json:"tracingConfig,omitempty" tf:"tracing_config,omitempty"`
+	Version       string                            `json:"version" tf:"version"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	VpcConfig []LambdaFunctionSpecVpcConfig `json:"vpcConfig,omitempty" tf:"vpc_config,omitempty"`

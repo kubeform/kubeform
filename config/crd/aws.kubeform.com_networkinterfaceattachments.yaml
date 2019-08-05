@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            attachmentID:
+              type: string
             deviceIndex:
               type: integer
             instanceID:
@@ -412,11 +414,15 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            status:
+              type: string
           required:
+          - attachmentID
           - deviceIndex
           - instanceID
           - networkInterfaceID
           - providerRef
+          - status
           type: object
         status:
           properties:
@@ -427,6 +433,8 @@ spec:
               type: integer
             output:
               properties:
+                attachmentID:
+                  type: string
                 deviceIndex:
                   type: integer
                 instanceID:
@@ -442,11 +450,15 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                status:
+                  type: string
               required:
+              - attachmentID
               - deviceIndex
               - instanceID
               - networkInterfaceID
               - providerRef
+              - status
               type: object
             state:
               properties:

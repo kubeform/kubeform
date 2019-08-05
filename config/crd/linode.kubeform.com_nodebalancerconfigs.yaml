@@ -415,6 +415,18 @@ spec:
               type: integer
             cipherSuite:
               type: string
+            nodeStatus:
+              additionalProperties:
+                properties:
+                  statusDown:
+                    type: integer
+                  statusUp:
+                    type: integer
+                required:
+                - statusDown
+                - statusUp
+                type: object
+              type: object
             nodebalancerID:
               type: integer
             port:
@@ -441,11 +453,18 @@ spec:
               type: object
             sslCert:
               type: string
+            sslCommonname:
+              type: string
+            sslFingerprint:
+              type: string
             stickiness:
               type: string
           required:
+          - nodeStatus
           - nodebalancerID
           - providerRef
+          - sslCommonname
+          - sslFingerprint
           type: object
         status:
           properties:
@@ -474,6 +493,18 @@ spec:
                   type: integer
                 cipherSuite:
                   type: string
+                nodeStatus:
+                  additionalProperties:
+                    properties:
+                      statusDown:
+                        type: integer
+                      statusUp:
+                        type: integer
+                    required:
+                    - statusDown
+                    - statusUp
+                    type: object
+                  type: object
                 nodebalancerID:
                   type: integer
                 port:
@@ -500,11 +531,18 @@ spec:
                   type: object
                 sslCert:
                   type: string
+                sslCommonname:
+                  type: string
+                sslFingerprint:
+                  type: string
                 stickiness:
                   type: string
               required:
+              - nodeStatus
               - nodebalancerID
               - providerRef
+              - sslCommonname
+              - sslFingerprint
               type: object
             state:
               properties:

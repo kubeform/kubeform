@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            nameServers:
+              items:
+                type: string
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -409,6 +413,7 @@ spec:
             referenceName:
               type: string
           required:
+          - nameServers
           - providerRef
           type: object
         status:
@@ -420,6 +425,10 @@ spec:
               type: integer
             output:
               properties:
+                nameServers:
+                  items:
+                    type: string
+                  type: array
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -432,6 +441,7 @@ spec:
                 referenceName:
                   type: string
               required:
+              - nameServers
               - providerRef
               type: object
             state:

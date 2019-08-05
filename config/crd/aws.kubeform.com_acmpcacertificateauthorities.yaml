@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            certificate:
+              type: string
             certificateAuthorityConfiguration:
               items:
                 properties:
@@ -443,8 +447,16 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            certificateChain:
+              type: string
+            certificateSigningRequest:
+              type: string
             enabled:
               type: boolean
+            notAfter:
+              type: string
+            notBefore:
+              type: string
             permanentDeletionTimeInDays:
               type: integer
             providerRef:
@@ -478,6 +490,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            serial:
+              type: string
+            status:
+              type: string
             tags:
               additionalProperties:
                 type: string
@@ -485,8 +501,16 @@ spec:
             type:
               type: string
           required:
+          - arn
+          - certificate
           - certificateAuthorityConfiguration
+          - certificateChain
+          - certificateSigningRequest
+          - notAfter
+          - notBefore
           - providerRef
+          - serial
+          - status
           type: object
         status:
           properties:
@@ -497,6 +521,10 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                certificate:
+                  type: string
                 certificateAuthorityConfiguration:
                   items:
                     properties:
@@ -543,8 +571,16 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                certificateChain:
+                  type: string
+                certificateSigningRequest:
+                  type: string
                 enabled:
                   type: boolean
+                notAfter:
+                  type: string
+                notBefore:
+                  type: string
                 permanentDeletionTimeInDays:
                   type: integer
                 providerRef:
@@ -578,6 +614,10 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                serial:
+                  type: string
+                status:
+                  type: string
                 tags:
                   additionalProperties:
                     type: string
@@ -585,8 +625,16 @@ spec:
                 type:
                   type: string
               required:
+              - arn
+              - certificate
               - certificateAuthorityConfiguration
+              - certificateChain
+              - certificateSigningRequest
+              - notAfter
+              - notBefore
               - providerRef
+              - serial
+              - status
               type: object
             state:
               properties:

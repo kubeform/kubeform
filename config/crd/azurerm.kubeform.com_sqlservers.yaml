@@ -399,6 +399,8 @@ spec:
           properties:
             administratorLogin:
               type: string
+            fullyQualifiedDomainName:
+              type: string
             location:
               type: string
             name:
@@ -431,6 +433,7 @@ spec:
               type: string
           required:
           - administratorLogin
+          - fullyQualifiedDomainName
           - location
           - name
           - providerRef
@@ -447,6 +450,8 @@ spec:
             output:
               properties:
                 administratorLogin:
+                  type: string
+                fullyQualifiedDomainName:
                   type: string
                 location:
                   type: string
@@ -480,6 +485,7 @@ spec:
                   type: string
               required:
               - administratorLogin
+              - fullyQualifiedDomainName
               - location
               - name
               - providerRef

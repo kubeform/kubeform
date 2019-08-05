@@ -34,8 +34,11 @@ type WorklinkFleetSpecNetwork struct {
 type WorklinkFleetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	AuditStreamArn string `json:"auditStreamArn,omitempty" tf:"audit_stream_arn,omitempty"`
+	CompanyCode    string `json:"companyCode" tf:"company_code"`
+	CreatedTime    string `json:"createdTime" tf:"created_time"`
 	// +optional
 	DeviceCaCertificate string `json:"deviceCaCertificate,omitempty" tf:"device_ca_certificate,omitempty"`
 	// +optional
@@ -43,6 +46,7 @@ type WorklinkFleetSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	IdentityProvider []WorklinkFleetSpecIdentityProvider `json:"identityProvider,omitempty" tf:"identity_provider,omitempty"`
+	LastUpdatedTime  string                              `json:"lastUpdatedTime" tf:"last_updated_time"`
 	Name             string                              `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

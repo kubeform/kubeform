@@ -411,6 +411,12 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            arn:
+              type: string
+            arnSuffix:
+              type: string
+            dnsName:
+              type: string
             enableCrossZoneLoadBalancing:
               type: boolean
             enableDeletionProtection:
@@ -464,8 +470,17 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            vpcID:
+              type: string
+            zoneID:
+              type: string
           required:
+          - arn
+          - arnSuffix
+          - dnsName
           - providerRef
+          - vpcID
+          - zoneID
           type: object
         status:
           properties:
@@ -490,6 +505,12 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                arn:
+                  type: string
+                arnSuffix:
+                  type: string
+                dnsName:
+                  type: string
                 enableCrossZoneLoadBalancing:
                   type: boolean
                 enableDeletionProtection:
@@ -543,8 +564,17 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                vpcID:
+                  type: string
+                zoneID:
+                  type: string
               required:
+              - arn
+              - arnSuffix
+              - dnsName
               - providerRef
+              - vpcID
+              - zoneID
               type: object
             state:
               properties:

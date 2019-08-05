@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            acceptStatus:
+              type: string
             accepter:
               items:
                 properties:
@@ -447,6 +449,7 @@ spec:
             vpcID:
               type: string
           required:
+          - acceptStatus
           - peerVpcID
           - providerRef
           - vpcID
@@ -460,6 +463,8 @@ spec:
               type: integer
             output:
               properties:
+                acceptStatus:
+                  type: string
                 accepter:
                   items:
                     properties:
@@ -510,6 +515,7 @@ spec:
                 vpcID:
                   type: string
               required:
+              - acceptStatus
               - peerVpcID
               - providerRef
               - vpcID

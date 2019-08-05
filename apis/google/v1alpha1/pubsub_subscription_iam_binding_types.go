@@ -21,6 +21,7 @@ type PubsubSubscriptionIamBinding struct {
 type PubsubSubscriptionIamBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Etag string `json:"etag" tf:"etag"`
 	// +kubebuilder:validation:UniqueItems=true
 	Members []string `json:"members" tf:"members"`
 	// +optional

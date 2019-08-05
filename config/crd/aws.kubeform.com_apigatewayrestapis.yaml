@@ -405,6 +405,8 @@ spec:
               type: array
             body:
               type: string
+            createdDate:
+              type: string
             description:
               type: string
             endpointConfiguration:
@@ -422,6 +424,8 @@ spec:
               maxItems: 1
               minItems: 1
               type: array
+            executionArn:
+              type: string
             minimumCompressionSize:
               type: integer
             name:
@@ -437,9 +441,14 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            rootResourceID:
+              type: string
           required:
+          - createdDate
+          - executionArn
           - name
           - providerRef
+          - rootResourceID
           type: object
         status:
           properties:
@@ -458,6 +467,8 @@ spec:
                   type: array
                 body:
                   type: string
+                createdDate:
+                  type: string
                 description:
                   type: string
                 endpointConfiguration:
@@ -475,6 +486,8 @@ spec:
                   maxItems: 1
                   minItems: 1
                   type: array
+                executionArn:
+                  type: string
                 minimumCompressionSize:
                   type: integer
                 name:
@@ -490,9 +503,14 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                rootResourceID:
+                  type: string
               required:
+              - createdDate
+              - executionArn
               - name
               - providerRef
+              - rootResourceID
               type: object
             state:
               properties:

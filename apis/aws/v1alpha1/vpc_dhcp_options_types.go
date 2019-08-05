@@ -31,6 +31,7 @@ type VpcDHCPOptionsSpec struct {
 	NetbiosNodeType string `json:"netbiosNodeType,omitempty" tf:"netbios_node_type,omitempty"`
 	// +optional
 	NtpServers []string `json:"ntpServers,omitempty" tf:"ntp_servers,omitempty"`
+	OwnerID    string   `json:"ownerID" tf:"owner_id"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

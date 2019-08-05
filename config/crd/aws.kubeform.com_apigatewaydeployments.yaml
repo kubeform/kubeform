@@ -397,7 +397,13 @@ spec:
           type: object
         spec:
           properties:
+            createdDate:
+              type: string
             description:
+              type: string
+            executionArn:
+              type: string
+            invokeURL:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -419,6 +425,9 @@ spec:
                 type: string
               type: object
           required:
+          - createdDate
+          - executionArn
+          - invokeURL
           - providerRef
           - restAPIID
           type: object
@@ -431,7 +440,13 @@ spec:
               type: integer
             output:
               properties:
+                createdDate:
+                  type: string
                 description:
+                  type: string
+                executionArn:
+                  type: string
+                invokeURL:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -453,6 +468,9 @@ spec:
                     type: string
                   type: object
               required:
+              - createdDate
+              - executionArn
+              - invokeURL
               - providerRef
               - restAPIID
               type: object

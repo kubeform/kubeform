@@ -412,10 +412,13 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            websiteCaID:
+              type: string
           required:
           - certificate
           - fleetArn
           - providerRef
+          - websiteCaID
           type: object
         status:
           properties:
@@ -441,10 +444,13 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                websiteCaID:
+                  type: string
               required:
               - certificate
               - fleetArn
               - providerRef
+              - websiteCaID
               type: object
             state:
               properties:

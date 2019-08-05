@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            ipPrefix:
+              type: string
             location:
               type: string
             name:
@@ -426,6 +428,7 @@ spec:
               maxItems: 1
               type: array
           required:
+          - ipPrefix
           - location
           - name
           - providerRef
@@ -440,6 +443,8 @@ spec:
               type: integer
             output:
               properties:
+                ipPrefix:
+                  type: string
                 location:
                   type: string
                 name:
@@ -469,6 +474,7 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - ipPrefix
               - location
               - name
               - providerRef

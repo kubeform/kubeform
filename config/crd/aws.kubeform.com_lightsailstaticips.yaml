@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            ipAddress:
+              type: string
             name:
               type: string
             providerRef:
@@ -408,9 +412,14 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            supportCode:
+              type: string
           required:
+          - arn
+          - ipAddress
           - name
           - providerRef
+          - supportCode
           type: object
         status:
           properties:
@@ -421,6 +430,10 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                ipAddress:
+                  type: string
                 name:
                   type: string
                 providerRef:
@@ -432,9 +445,14 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                supportCode:
+                  type: string
               required:
+              - arn
+              - ipAddress
               - name
               - providerRef
+              - supportCode
               type: object
             state:
               properties:

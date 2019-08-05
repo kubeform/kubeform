@@ -32,6 +32,7 @@ type DataflowJobSpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	Region          string `json:"region,omitempty" tf:"region,omitempty"`
+	State           string `json:"state" tf:"state"`
 	TempGcsLocation string `json:"tempGcsLocation" tf:"temp_gcs_location"`
 	TemplateGcsPath string `json:"templateGcsPath" tf:"template_gcs_path"`
 	// +optional

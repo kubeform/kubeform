@@ -431,6 +431,8 @@ spec:
               type: string
             retryEnabled:
               type: boolean
+            syntheticMonitorID:
+              type: string
             tags:
               additionalProperties:
                 type: string
@@ -446,6 +448,7 @@ spec:
           - name
           - providerRef
           - resourceGroupName
+          - syntheticMonitorID
           type: object
         status:
           properties:
@@ -490,6 +493,8 @@ spec:
                   type: string
                 retryEnabled:
                   type: boolean
+                syntheticMonitorID:
+                  type: string
                 tags:
                   additionalProperties:
                     type: string
@@ -505,6 +510,7 @@ spec:
               - name
               - providerRef
               - resourceGroupName
+              - syntheticMonitorID
               type: object
             state:
               properties:

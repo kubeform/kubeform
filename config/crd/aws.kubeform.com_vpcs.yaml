@@ -397,9 +397,19 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             assignGeneratedIpv6CIDRBlock:
               type: boolean
             cidrBlock:
+              type: string
+            defaultNetworkACLID:
+              type: string
+            defaultRouteTableID:
+              type: string
+            defaultSecurityGroupID:
+              type: string
+            dhcpOptionsID:
               type: string
             enableClassiclink:
               type: boolean
@@ -410,6 +420,14 @@ spec:
             enableDNSSupport:
               type: boolean
             instanceTenancy:
+              type: string
+            ipv6AssociationID:
+              type: string
+            ipv6CIDRBlock:
+              type: string
+            mainRouteTableID:
+              type: string
+            ownerID:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -425,7 +443,16 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - cidrBlock
+          - defaultNetworkACLID
+          - defaultRouteTableID
+          - defaultSecurityGroupID
+          - dhcpOptionsID
+          - ipv6AssociationID
+          - ipv6CIDRBlock
+          - mainRouteTableID
+          - ownerID
           - providerRef
           type: object
         status:
@@ -437,9 +464,19 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 assignGeneratedIpv6CIDRBlock:
                   type: boolean
                 cidrBlock:
+                  type: string
+                defaultNetworkACLID:
+                  type: string
+                defaultRouteTableID:
+                  type: string
+                defaultSecurityGroupID:
+                  type: string
+                dhcpOptionsID:
                   type: string
                 enableClassiclink:
                   type: boolean
@@ -450,6 +487,14 @@ spec:
                 enableDNSSupport:
                   type: boolean
                 instanceTenancy:
+                  type: string
+                ipv6AssociationID:
+                  type: string
+                ipv6CIDRBlock:
+                  type: string
+                mainRouteTableID:
+                  type: string
+                ownerID:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -465,7 +510,16 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - cidrBlock
+              - defaultNetworkACLID
+              - defaultRouteTableID
+              - defaultSecurityGroupID
+              - dhcpOptionsID
+              - ipv6AssociationID
+              - ipv6CIDRBlock
+              - mainRouteTableID
+              - ownerID
               - providerRef
               type: object
             state:

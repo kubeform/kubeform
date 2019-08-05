@@ -40,7 +40,8 @@ type RedshiftClusterSpec struct {
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	AllowVersionUpgrade bool `json:"allowVersionUpgrade,omitempty" tf:"allow_version_upgrade,omitempty"`
+	AllowVersionUpgrade bool   `json:"allowVersionUpgrade,omitempty" tf:"allow_version_upgrade,omitempty"`
+	Arn                 string `json:"arn" tf:"arn"`
 	// +optional
 	AutomatedSnapshotRetentionPeriod int `json:"automatedSnapshotRetentionPeriod,omitempty" tf:"automated_snapshot_retention_period,omitempty"`
 	// +optional
@@ -63,6 +64,7 @@ type RedshiftClusterSpec struct {
 	ClusterVersion string `json:"clusterVersion,omitempty" tf:"cluster_version,omitempty"`
 	// +optional
 	DatabaseName string `json:"databaseName,omitempty" tf:"database_name,omitempty"`
+	DnsName      string `json:"dnsName" tf:"dns_name"`
 	// +optional
 	ElasticIP string `json:"elasticIP,omitempty" tf:"elastic_ip,omitempty"`
 	// +optional

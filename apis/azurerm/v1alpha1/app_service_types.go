@@ -96,7 +96,9 @@ type AppServiceSpecConnectionString struct {
 }
 
 type AppServiceSpecIdentity struct {
-	Type string `json:"type" tf:"type"`
+	PrincipalID string `json:"principalID" tf:"principal_id"`
+	TenantID    string `json:"tenantID" tf:"tenant_id"`
+	Type        string `json:"type" tf:"type"`
 }
 
 type AppServiceSpecLogsApplicationLogsAzureBlobStorage struct {
@@ -182,6 +184,16 @@ type AppServiceSpecSiteConfig struct {
 	WindowsFxVersion string `json:"windowsFxVersion,omitempty" tf:"windows_fx_version,omitempty"`
 }
 
+type AppServiceSpecSiteCredential struct {
+	Password string `json:"-" sensitive:"true" tf:"password"`
+	Username string `json:"username" tf:"username"`
+}
+
+type AppServiceSpecSourceControl struct {
+	Branch  string `json:"branch" tf:"branch"`
+	RepoURL string `json:"repoURL" tf:"repo_url"`
+}
+
 type AppServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -199,7 +211,8 @@ type AppServiceSpec struct {
 	ClientCertEnabled bool `json:"clientCertEnabled,omitempty" tf:"client_cert_enabled,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	ConnectionString []AppServiceSpecConnectionString `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
+	ConnectionString    []AppServiceSpecConnectionString `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
+	DefaultSiteHostname string                           `json:"defaultSiteHostname" tf:"default_site_hostname"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
@@ -210,12 +223,18 @@ type AppServiceSpec struct {
 	Location string                   `json:"location" tf:"location"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Logs              []AppServiceSpecLogs `json:"logs,omitempty" tf:"logs,omitempty"`
-	Name              string               `json:"name" tf:"name"`
-	ResourceGroupName string               `json:"resourceGroupName" tf:"resource_group_name"`
+	Logs                        []AppServiceSpecLogs `json:"logs,omitempty" tf:"logs,omitempty"`
+	Name                        string               `json:"name" tf:"name"`
+	OutboundIPAddresses         string               `json:"outboundIPAddresses" tf:"outbound_ip_addresses"`
+	PossibleOutboundIPAddresses string               `json:"possibleOutboundIPAddresses" tf:"possible_outbound_ip_addresses"`
+	ResourceGroupName           string               `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SiteConfig []AppServiceSpecSiteConfig `json:"siteConfig,omitempty" tf:"site_config,omitempty"`
+	// +kubebuilder:validation:MaxItems=1
+	SiteCredential []AppServiceSpecSiteCredential `json:"siteCredential" tf:"site_credential"`
+	// +kubebuilder:validation:MaxItems=1
+	SourceControl []AppServiceSpecSourceControl `json:"sourceControl" tf:"source_control"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

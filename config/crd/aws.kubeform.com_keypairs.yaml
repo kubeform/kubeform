@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            fingerprint:
+              type: string
             keyName:
               type: string
             keyNamePrefix:
@@ -413,6 +415,7 @@ spec:
             publicKey:
               type: string
           required:
+          - fingerprint
           - providerRef
           - publicKey
           type: object
@@ -425,6 +428,8 @@ spec:
               type: integer
             output:
               properties:
+                fingerprint:
+                  type: string
                 keyName:
                   type: string
                 keyNamePrefix:
@@ -441,6 +446,7 @@ spec:
                 publicKey:
                   type: string
               required:
+              - fingerprint
               - providerRef
               - publicKey
               type: object

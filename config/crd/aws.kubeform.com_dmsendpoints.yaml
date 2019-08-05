@@ -401,6 +401,8 @@ spec:
               type: string
             databaseName:
               type: string
+            endpointArn:
+              type: string
             endpointID:
               type: string
             endpointType:
@@ -482,6 +484,7 @@ spec:
             username:
               type: string
           required:
+          - endpointArn
           - endpointID
           - endpointType
           - engineName
@@ -499,6 +502,8 @@ spec:
                 certificateArn:
                   type: string
                 databaseName:
+                  type: string
+                endpointArn:
                   type: string
                 endpointID:
                   type: string
@@ -581,6 +586,7 @@ spec:
                 username:
                   type: string
               required:
+              - endpointArn
               - endpointID
               - endpointType
               - engineName

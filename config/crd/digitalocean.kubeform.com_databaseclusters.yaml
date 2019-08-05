@@ -397,7 +397,11 @@ spec:
           type: object
         spec:
           properties:
+            database:
+              type: string
             engine:
+              type: string
+            host:
               type: string
             maintenanceWindow:
               items:
@@ -416,6 +420,10 @@ spec:
               type: string
             nodeCount:
               type: integer
+            password:
+              type: string
+            port:
+              type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -429,15 +437,25 @@ spec:
               type: string
             size:
               type: string
+            uri:
+              type: string
+            user:
+              type: string
             version:
               type: string
           required:
+          - database
           - engine
+          - host
           - name
           - nodeCount
+          - password
+          - port
           - providerRef
           - region
           - size
+          - uri
+          - user
           - version
           type: object
         status:
@@ -449,7 +467,11 @@ spec:
               type: integer
             output:
               properties:
+                database:
+                  type: string
                 engine:
+                  type: string
+                host:
                   type: string
                 maintenanceWindow:
                   items:
@@ -468,6 +490,10 @@ spec:
                   type: string
                 nodeCount:
                   type: integer
+                password:
+                  type: string
+                port:
+                  type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -481,15 +507,25 @@ spec:
                   type: string
                 size:
                   type: string
+                uri:
+                  type: string
+                user:
+                  type: string
                 version:
                   type: string
               required:
+              - database
               - engine
+              - host
               - name
               - nodeCount
+              - password
+              - port
               - providerRef
               - region
               - size
+              - uri
+              - user
               - version
               type: object
             state:

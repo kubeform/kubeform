@@ -400,10 +400,18 @@ spec:
             additionalLocation:
               items:
                 properties:
+                  gatewayRegionalURL:
+                    type: string
                   location:
                     type: string
+                  publicIPAddresses:
+                    items:
+                      type: string
+                    type: array
                 required:
+                - gatewayRegionalURL
                 - location
+                - publicIPAddresses
                 type: object
               maxItems: 1
               type: array
@@ -417,6 +425,10 @@ spec:
                 type: object
               maxItems: 10
               type: array
+            gatewayRegionalURL:
+              type: string
+            gatewayURL:
+              type: string
             hostnameConfiguration:
               items:
                 properties:
@@ -480,14 +492,22 @@ spec:
             identity:
               items:
                 properties:
+                  principalID:
+                    type: string
+                  tenantID:
+                    type: string
                   type:
                     type: string
                 required:
+                - principalID
+                - tenantID
                 - type
                 type: object
               maxItems: 1
               type: array
             location:
+              type: string
+            managementAPIURL:
               type: string
             name:
               type: string
@@ -503,6 +523,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            portalURL:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -512,11 +534,17 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            publicIPAddresses:
+              items:
+                type: string
+              type: array
             publisherEmail:
               type: string
             publisherName:
               type: string
             resourceGroupName:
+              type: string
+            scmURL:
               type: string
             secret:
               description: LocalObjectReference contains enough information to let
@@ -604,12 +632,18 @@ spec:
                 type: string
               type: object
           required:
+          - gatewayRegionalURL
+          - gatewayURL
           - location
+          - managementAPIURL
           - name
+          - portalURL
           - providerRef
+          - publicIPAddresses
           - publisherEmail
           - publisherName
           - resourceGroupName
+          - scmURL
           - sku
           type: object
         status:
@@ -624,10 +658,18 @@ spec:
                 additionalLocation:
                   items:
                     properties:
+                      gatewayRegionalURL:
+                        type: string
                       location:
                         type: string
+                      publicIPAddresses:
+                        items:
+                          type: string
+                        type: array
                     required:
+                    - gatewayRegionalURL
                     - location
+                    - publicIPAddresses
                     type: object
                   maxItems: 1
                   type: array
@@ -641,6 +683,10 @@ spec:
                     type: object
                   maxItems: 10
                   type: array
+                gatewayRegionalURL:
+                  type: string
+                gatewayURL:
+                  type: string
                 hostnameConfiguration:
                   items:
                     properties:
@@ -704,14 +750,22 @@ spec:
                 identity:
                   items:
                     properties:
+                      principalID:
+                        type: string
+                      tenantID:
+                        type: string
                       type:
                         type: string
                     required:
+                    - principalID
+                    - tenantID
                     - type
                     type: object
                   maxItems: 1
                   type: array
                 location:
+                  type: string
+                managementAPIURL:
                   type: string
                 name:
                   type: string
@@ -727,6 +781,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                portalURL:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -736,11 +792,17 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                publicIPAddresses:
+                  items:
+                    type: string
+                  type: array
                 publisherEmail:
                   type: string
                 publisherName:
                   type: string
                 resourceGroupName:
+                  type: string
+                scmURL:
                   type: string
                 secret:
                   description: LocalObjectReference contains enough information to
@@ -828,12 +890,18 @@ spec:
                     type: string
                   type: object
               required:
+              - gatewayRegionalURL
+              - gatewayURL
               - location
+              - managementAPIURL
               - name
+              - portalURL
               - providerRef
+              - publicIPAddresses
               - publisherEmail
               - publisherName
               - resourceGroupName
+              - scmURL
               - sku
               type: object
             state:

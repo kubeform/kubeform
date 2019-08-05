@@ -21,6 +21,7 @@ type ServiceDiscoveryHTTPNamespace struct {
 type ServiceDiscoveryHTTPNamespaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`

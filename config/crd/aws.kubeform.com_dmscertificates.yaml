@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            certificateArn:
+              type: string
             certificateID:
               type: string
             providerRef:
@@ -418,6 +420,7 @@ spec:
                   type: string
               type: object
           required:
+          - certificateArn
           - certificateID
           - providerRef
           type: object
@@ -430,6 +433,8 @@ spec:
               type: integer
             output:
               properties:
+                certificateArn:
+                  type: string
                 certificateID:
                   type: string
                 providerRef:
@@ -451,6 +456,7 @@ spec:
                       type: string
                   type: object
               required:
+              - certificateArn
               - certificateID
               - providerRef
               type: object

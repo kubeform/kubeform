@@ -416,11 +416,16 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            virtualNetworkIDS:
+              items:
+                type: string
+              type: array
           required:
           - location
           - name
           - providerRef
           - resourceGroupName
+          - virtualNetworkIDS
           type: object
         status:
           properties:
@@ -450,11 +455,16 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                virtualNetworkIDS:
+                  items:
+                    type: string
+                  type: array
               required:
               - location
               - name
               - providerRef
               - resourceGroupName
+              - virtualNetworkIDS
               type: object
             state:
               properties:

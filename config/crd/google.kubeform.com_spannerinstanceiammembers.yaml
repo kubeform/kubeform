@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            etag:
+              type: string
             instance:
               type: string
             member:
@@ -415,6 +417,7 @@ spec:
             role:
               type: string
           required:
+          - etag
           - instance
           - member
           - providerRef
@@ -429,6 +432,8 @@ spec:
               type: integer
             output:
               properties:
+                etag:
+                  type: string
                 instance:
                   type: string
                 member:
@@ -447,6 +452,7 @@ spec:
                 role:
                   type: string
               required:
+              - etag
               - instance
               - member
               - providerRef

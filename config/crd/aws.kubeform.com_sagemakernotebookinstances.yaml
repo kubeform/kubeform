@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             instanceType:
               type: string
             kmsKeyID:
@@ -429,6 +431,7 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - instanceType
           - name
           - providerRef
@@ -443,6 +446,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 instanceType:
                   type: string
                 kmsKeyID:
@@ -475,6 +480,7 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - instanceType
               - name
               - providerRef

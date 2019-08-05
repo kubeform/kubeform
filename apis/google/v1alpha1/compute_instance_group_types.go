@@ -37,7 +37,9 @@ type ComputeInstanceGroupSpec struct {
 	// +optional
 	Network string `json:"network,omitempty" tf:"network,omitempty"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Project  string `json:"project,omitempty" tf:"project,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
+	Size     int    `json:"size" tf:"size"`
 	// +optional
 	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }

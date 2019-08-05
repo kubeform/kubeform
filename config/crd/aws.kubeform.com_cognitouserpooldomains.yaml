@@ -397,7 +397,11 @@ spec:
           type: object
         spec:
           properties:
+            awsAccountID:
+              type: string
             certificateArn:
+              type: string
+            cloudfrontDistributionArn:
               type: string
             domain:
               type: string
@@ -410,12 +414,20 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            s3Bucket:
+              type: string
             userPoolID:
               type: string
+            version:
+              type: string
           required:
+          - awsAccountID
+          - cloudfrontDistributionArn
           - domain
           - providerRef
+          - s3Bucket
           - userPoolID
+          - version
           type: object
         status:
           properties:
@@ -426,7 +438,11 @@ spec:
               type: integer
             output:
               properties:
+                awsAccountID:
+                  type: string
                 certificateArn:
+                  type: string
+                cloudfrontDistributionArn:
                   type: string
                 domain:
                   type: string
@@ -439,12 +455,20 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                s3Bucket:
+                  type: string
                 userPoolID:
                   type: string
+                version:
+                  type: string
               required:
+              - awsAccountID
+              - cloudfrontDistributionArn
               - domain
               - providerRef
+              - s3Bucket
               - userPoolID
+              - version
               type: object
             state:
               properties:

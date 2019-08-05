@@ -472,6 +472,8 @@ spec:
               type: array
             clusterCodeVersion:
               type: string
+            clusterEndpoint:
+              type: string
             diagnosticsConfig:
               items:
                 properties:
@@ -609,6 +611,7 @@ spec:
             vmImage:
               type: string
           required:
+          - clusterEndpoint
           - location
           - managementEndpoint
           - name
@@ -702,6 +705,8 @@ spec:
                   maxItems: 2
                   type: array
                 clusterCodeVersion:
+                  type: string
+                clusterEndpoint:
                   type: string
                 diagnosticsConfig:
                   items:
@@ -840,6 +845,7 @@ spec:
                 vmImage:
                   type: string
               required:
+              - clusterEndpoint
               - location
               - managementEndpoint
               - name

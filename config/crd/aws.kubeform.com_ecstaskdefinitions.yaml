@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             containerDefinitions:
               type: string
             cpu:
@@ -456,6 +458,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            revision:
+              type: integer
             tags:
               additionalProperties:
                 type: string
@@ -495,9 +499,11 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - arn
           - containerDefinitions
           - family
           - providerRef
+          - revision
           type: object
         status:
           properties:
@@ -508,6 +514,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 containerDefinitions:
                   type: string
                 cpu:
@@ -567,6 +575,8 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                revision:
+                  type: integer
                 tags:
                   additionalProperties:
                     type: string
@@ -606,9 +616,11 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - arn
               - containerDefinitions
               - family
               - providerRef
+              - revision
               type: object
             state:
               properties:

@@ -19,7 +19,9 @@ type ApiManagement struct {
 }
 
 type ApiManagementSpecAdditionalLocation struct {
-	Location string `json:"location" tf:"location"`
+	GatewayRegionalURL string   `json:"gatewayRegionalURL" tf:"gateway_regional_url"`
+	Location           string   `json:"location" tf:"location"`
+	PublicIPAddresses  []string `json:"publicIPAddresses" tf:"public_ip_addresses"`
 }
 
 type ApiManagementSpecCertificate struct {
@@ -90,7 +92,9 @@ type ApiManagementSpecHostnameConfiguration struct {
 }
 
 type ApiManagementSpecIdentity struct {
-	Type string `json:"type" tf:"type"`
+	PrincipalID string `json:"principalID" tf:"principal_id"`
+	TenantID    string `json:"tenantID" tf:"tenant_id"`
+	Type        string `json:"type" tf:"type"`
 }
 
 type ApiManagementSpecPolicy struct {
@@ -152,23 +156,29 @@ type ApiManagementSpec struct {
 	AdditionalLocation []ApiManagementSpecAdditionalLocation `json:"additionalLocation,omitempty" tf:"additional_location,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=10
-	Certificate []ApiManagementSpecCertificate `json:"certificate,omitempty" tf:"certificate,omitempty"`
+	Certificate        []ApiManagementSpecCertificate `json:"certificate,omitempty" tf:"certificate,omitempty"`
+	GatewayRegionalURL string                         `json:"gatewayRegionalURL" tf:"gateway_regional_url"`
+	GatewayURL         string                         `json:"gatewayURL" tf:"gateway_url"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	HostnameConfiguration []ApiManagementSpecHostnameConfiguration `json:"hostnameConfiguration,omitempty" tf:"hostname_configuration,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Identity []ApiManagementSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
-	Location string                      `json:"location" tf:"location"`
-	Name     string                      `json:"name" tf:"name"`
+	Identity         []ApiManagementSpecIdentity `json:"identity,omitempty" tf:"identity,omitempty"`
+	Location         string                      `json:"location" tf:"location"`
+	ManagementAPIURL string                      `json:"managementAPIURL" tf:"management_api_url"`
+	Name             string                      `json:"name" tf:"name"`
 	// +optional
 	NotificationSenderEmail string `json:"notificationSenderEmail,omitempty" tf:"notification_sender_email,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Policy            []ApiManagementSpecPolicy `json:"policy,omitempty" tf:"policy,omitempty"`
+	PortalURL         string                    `json:"portalURL" tf:"portal_url"`
+	PublicIPAddresses []string                  `json:"publicIPAddresses" tf:"public_ip_addresses"`
 	PublisherEmail    string                    `json:"publisherEmail" tf:"publisher_email"`
 	PublisherName     string                    `json:"publisherName" tf:"publisher_name"`
 	ResourceGroupName string                    `json:"resourceGroupName" tf:"resource_group_name"`
+	ScmURL            string                    `json:"scmURL" tf:"scm_url"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Security []ApiManagementSpecSecurity `json:"security,omitempty" tf:"security,omitempty"`

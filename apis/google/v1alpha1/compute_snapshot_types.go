@@ -21,6 +21,7 @@ type ComputeSnapshot struct {
 type ComputeSnapshotSpecSnapshotEncryptionKey struct {
 	// +optional
 	RawKey string `json:"-" sensitive:"true" tf:"raw_key,omitempty"`
+	Sha256 string `json:"sha256" tf:"sha256"`
 }
 
 type ComputeSnapshotSpecSourceDiskEncryptionKey struct {
@@ -33,24 +34,36 @@ type ComputeSnapshotSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional
-	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Description      string `json:"description,omitempty" tf:"description,omitempty"`
+	DiskSizeGb       int    `json:"diskSizeGb" tf:"disk_size_gb"`
+	LabelFingerprint string `json:"labelFingerprint" tf:"label_fingerprint"`
 	// +optional
-	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	Name   string            `json:"name" tf:"name"`
+	Labels   map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	Licenses []string          `json:"licenses" tf:"licenses"`
+	Name     string            `json:"name" tf:"name"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Project  string `json:"project,omitempty" tf:"project,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SnapshotEncryptionKey []ComputeSnapshotSpecSnapshotEncryptionKey `json:"snapshotEncryptionKey,omitempty" tf:"snapshot_encryption_key,omitempty"`
 	// +optional
 	SnapshotEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"snapshot_encryption_key_raw,omitempty"`
-	SourceDisk               string `json:"sourceDisk" tf:"source_disk"`
+	// Deprecated
+	SnapshotEncryptionKeySha256 string `json:"snapshotEncryptionKeySha256" tf:"snapshot_encryption_key_sha256"`
+	SnapshotID                  int    `json:"snapshotID" tf:"snapshot_id"`
+	SourceDisk                  string `json:"sourceDisk" tf:"source_disk"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SourceDiskEncryptionKey []ComputeSnapshotSpecSourceDiskEncryptionKey `json:"sourceDiskEncryptionKey,omitempty" tf:"source_disk_encryption_key,omitempty"`
 	// +optional
 	SourceDiskEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"source_disk_encryption_key_raw,omitempty"`
+	// Deprecated
+	SourceDiskEncryptionKeySha256 string `json:"sourceDiskEncryptionKeySha256" tf:"source_disk_encryption_key_sha256"`
+	SourceDiskLink                string `json:"sourceDiskLink" tf:"source_disk_link"`
+	StorageBytes                  int    `json:"storageBytes" tf:"storage_bytes"`
 	// +optional
 	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }

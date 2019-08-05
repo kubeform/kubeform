@@ -85,6 +85,7 @@ type AppautoscalingPolicySpec struct {
 
 	// +optional
 	Alarms []string `json:"alarms,omitempty" tf:"alarms,omitempty"`
+	Arn    string   `json:"arn" tf:"arn"`
 	Name   string   `json:"name" tf:"name"`
 	// +optional
 	PolicyType        string `json:"policyType,omitempty" tf:"policy_type,omitempty"`

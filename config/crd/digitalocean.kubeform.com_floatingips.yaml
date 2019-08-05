@@ -412,9 +412,12 @@ spec:
               type: object
             region:
               type: string
+            urn:
+              type: string
           required:
           - providerRef
           - region
+          - urn
           type: object
         status:
           properties:
@@ -440,9 +443,12 @@ spec:
                   type: object
                 region:
                   type: string
+                urn:
+                  type: string
               required:
               - providerRef
               - region
+              - urn
               type: object
             state:
               properties:

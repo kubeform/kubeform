@@ -18,16 +18,30 @@ type CloudhsmV2Cluster struct {
 	Status            CloudhsmV2ClusterStatus `json:"status,omitempty"`
 }
 
+type CloudhsmV2ClusterSpecClusterCertificates struct {
+	AwsHardwareCertificate          string `json:"awsHardwareCertificate" tf:"aws_hardware_certificate"`
+	ClusterCertificate              string `json:"clusterCertificate" tf:"cluster_certificate"`
+	ClusterCsr                      string `json:"clusterCsr" tf:"cluster_csr"`
+	HsmCertificate                  string `json:"hsmCertificate" tf:"hsm_certificate"`
+	ManufacturerHardwareCertificate string `json:"manufacturerHardwareCertificate" tf:"manufacturer_hardware_certificate"`
+}
+
 type CloudhsmV2ClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	HsmType string `json:"hsmType" tf:"hsm_type"`
+	// +kubebuilder:validation:MaxItems=1
+	ClusterCertificates []CloudhsmV2ClusterSpecClusterCertificates `json:"clusterCertificates" tf:"cluster_certificates"`
+	ClusterID           string                                     `json:"clusterID" tf:"cluster_id"`
+	ClusterState        string                                     `json:"clusterState" tf:"cluster_state"`
+	HsmType             string                                     `json:"hsmType" tf:"hsm_type"`
+	SecurityGroupID     string                                     `json:"securityGroupID" tf:"security_group_id"`
 	// +optional
 	SourceBackupIdentifier string `json:"sourceBackupIdentifier,omitempty" tf:"source_backup_identifier,omitempty"`
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VpcID string            `json:"vpcID" tf:"vpc_id"`
 }
 
 type CloudhsmV2ClusterStatus struct {

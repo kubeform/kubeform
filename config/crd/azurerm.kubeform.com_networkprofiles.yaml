@@ -420,6 +420,10 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            containerNetworkInterfaceIDS:
+              items:
+                type: string
+              type: array
             location:
               type: string
             name:
@@ -441,6 +445,7 @@ spec:
               type: object
           required:
           - containerNetworkInterface
+          - containerNetworkInterfaceIDS
           - location
           - name
           - providerRef
@@ -478,6 +483,10 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                containerNetworkInterfaceIDS:
+                  items:
+                    type: string
+                  type: array
                 location:
                   type: string
                 name:
@@ -499,6 +508,7 @@ spec:
                   type: object
               required:
               - containerNetworkInterface
+              - containerNetworkInterfaceIDS
               - location
               - name
               - providerRef

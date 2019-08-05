@@ -399,6 +399,8 @@ spec:
           properties:
             acl:
               type: string
+            bucketDomainName:
+              type: string
             forceDestroy:
               type: boolean
             name:
@@ -414,9 +416,13 @@ spec:
               type: object
             region:
               type: string
+            urn:
+              type: string
           required:
+          - bucketDomainName
           - name
           - providerRef
+          - urn
           type: object
         status:
           properties:
@@ -428,6 +434,8 @@ spec:
             output:
               properties:
                 acl:
+                  type: string
+                bucketDomainName:
                   type: string
                 forceDestroy:
                   type: boolean
@@ -444,9 +452,13 @@ spec:
                   type: object
                 region:
                   type: string
+                urn:
+                  type: string
               required:
+              - bucketDomainName
               - name
               - providerRef
+              - urn
               type: object
             state:
               properties:

@@ -57,6 +57,7 @@ type CodepipelineSpecStage struct {
 type CodepipelineSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +kubebuilder:validation:MaxItems=1
 	ArtifactStore []CodepipelineSpecArtifactStore `json:"artifactStore" tf:"artifact_store"`
 	Name          string                          `json:"name" tf:"name"`

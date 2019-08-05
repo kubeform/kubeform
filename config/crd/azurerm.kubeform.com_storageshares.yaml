@@ -414,11 +414,14 @@ spec:
               type: string
             storageAccountName:
               type: string
+            url:
+              type: string
           required:
           - name
           - providerRef
           - resourceGroupName
           - storageAccountName
+          - url
           type: object
         status:
           properties:
@@ -446,11 +449,14 @@ spec:
                   type: string
                 storageAccountName:
                   type: string
+                url:
+                  type: string
               required:
               - name
               - providerRef
               - resourceGroupName
               - storageAccountName
+              - url
               type: object
             state:
               properties:

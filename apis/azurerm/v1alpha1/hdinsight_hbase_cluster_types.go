@@ -98,11 +98,13 @@ type HdinsightHbaseClusterSpec struct {
 	ComponentVersion []HdinsightHbaseClusterSpecComponentVersion `json:"componentVersion" tf:"component_version"`
 	// +kubebuilder:validation:MaxItems=1
 	Gateway           []HdinsightHbaseClusterSpecGateway `json:"gateway" tf:"gateway"`
+	HttpsEndpoint     string                             `json:"httpsEndpoint" tf:"https_endpoint"`
 	Location          string                             `json:"location" tf:"location"`
 	Name              string                             `json:"name" tf:"name"`
 	ResourceGroupName string                             `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Roles          []HdinsightHbaseClusterSpecRoles          `json:"roles" tf:"roles"`
+	SshEndpoint    string                                    `json:"sshEndpoint" tf:"ssh_endpoint"`
 	StorageAccount []HdinsightHbaseClusterSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

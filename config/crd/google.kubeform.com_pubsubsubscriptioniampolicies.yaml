@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            etag:
+              type: string
             policyData:
               type: string
             project:
@@ -413,6 +415,7 @@ spec:
             subscription:
               type: string
           required:
+          - etag
           - policyData
           - providerRef
           - subscription
@@ -426,6 +429,8 @@ spec:
               type: integer
             output:
               properties:
+                etag:
+                  type: string
                 policyData:
                   type: string
                 project:
@@ -442,6 +447,7 @@ spec:
                 subscription:
                   type: string
               required:
+              - etag
               - policyData
               - providerRef
               - subscription

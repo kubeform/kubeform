@@ -397,14 +397,19 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             cloudwatchLoggingOptions:
               items:
                 properties:
+                  ID:
+                    type: string
                   logStreamArn:
                     type: string
                   roleArn:
                     type: string
                 required:
+                - ID
                 - logStreamArn
                 - roleArn
                 type: object
@@ -412,11 +417,15 @@ spec:
               type: array
             code:
               type: string
+            createTimestamp:
+              type: string
             description:
               type: string
             inputs:
               items:
                 properties:
+                  ID:
+                    type: string
                   kinesisFirehose:
                     items:
                       properties:
@@ -527,6 +536,10 @@ spec:
                                   type: object
                                 maxItems: 1
                                 type: array
+                              recordFormatType:
+                                type: string
+                            required:
+                            - recordFormatType
                             type: object
                           maxItems: 1
                           type: array
@@ -536,17 +549,38 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
+                  startingPositionConfiguration:
+                    items:
+                      properties:
+                        startingPosition:
+                          type: string
+                      required:
+                      - startingPosition
+                      type: object
+                    type: array
+                  streamNames:
+                    items:
+                      type: string
+                    type: array
+                    uniqueItems: true
                 required:
+                - ID
                 - namePrefix
                 - schema
+                - startingPositionConfiguration
+                - streamNames
                 type: object
               maxItems: 1
               type: array
+            lastUpdateTimestamp:
+              type: string
             name:
               type: string
             outputs:
               items:
                 properties:
+                  ID:
+                    type: string
                   kinesisFirehose:
                     items:
                       properties:
@@ -597,6 +631,7 @@ spec:
                     maxItems: 1
                     type: array
                 required:
+                - ID
                 - name
                 - schema
                 type: object
@@ -614,6 +649,8 @@ spec:
             referenceDataSources:
               items:
                 properties:
+                  ID:
+                    type: string
                   s3:
                     items:
                       properties:
@@ -681,6 +718,10 @@ spec:
                                   type: object
                                 maxItems: 1
                                 type: array
+                              recordFormatType:
+                                type: string
+                            required:
+                            - recordFormatType
                             type: object
                           maxItems: 1
                           type: array
@@ -693,19 +734,29 @@ spec:
                   tableName:
                     type: string
                 required:
+                - ID
                 - s3
                 - schema
                 - tableName
                 type: object
               maxItems: 1
               type: array
+            status:
+              type: string
             tags:
               additionalProperties:
                 type: string
               type: object
+            version:
+              type: integer
           required:
+          - arn
+          - createTimestamp
+          - lastUpdateTimestamp
           - name
           - providerRef
+          - status
+          - version
           type: object
         status:
           properties:
@@ -716,14 +767,19 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 cloudwatchLoggingOptions:
                   items:
                     properties:
+                      ID:
+                        type: string
                       logStreamArn:
                         type: string
                       roleArn:
                         type: string
                     required:
+                    - ID
                     - logStreamArn
                     - roleArn
                     type: object
@@ -731,11 +787,15 @@ spec:
                   type: array
                 code:
                   type: string
+                createTimestamp:
+                  type: string
                 description:
                   type: string
                 inputs:
                   items:
                     properties:
+                      ID:
+                        type: string
                       kinesisFirehose:
                         items:
                           properties:
@@ -846,6 +906,10 @@ spec:
                                       type: object
                                     maxItems: 1
                                     type: array
+                                  recordFormatType:
+                                    type: string
+                                required:
+                                - recordFormatType
                                 type: object
                               maxItems: 1
                               type: array
@@ -855,17 +919,38 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
+                      startingPositionConfiguration:
+                        items:
+                          properties:
+                            startingPosition:
+                              type: string
+                          required:
+                          - startingPosition
+                          type: object
+                        type: array
+                      streamNames:
+                        items:
+                          type: string
+                        type: array
+                        uniqueItems: true
                     required:
+                    - ID
                     - namePrefix
                     - schema
+                    - startingPositionConfiguration
+                    - streamNames
                     type: object
                   maxItems: 1
                   type: array
+                lastUpdateTimestamp:
+                  type: string
                 name:
                   type: string
                 outputs:
                   items:
                     properties:
+                      ID:
+                        type: string
                       kinesisFirehose:
                         items:
                           properties:
@@ -916,6 +1001,7 @@ spec:
                         maxItems: 1
                         type: array
                     required:
+                    - ID
                     - name
                     - schema
                     type: object
@@ -933,6 +1019,8 @@ spec:
                 referenceDataSources:
                   items:
                     properties:
+                      ID:
+                        type: string
                       s3:
                         items:
                           properties:
@@ -1000,6 +1088,10 @@ spec:
                                       type: object
                                     maxItems: 1
                                     type: array
+                                  recordFormatType:
+                                    type: string
+                                required:
+                                - recordFormatType
                                 type: object
                               maxItems: 1
                               type: array
@@ -1012,19 +1104,29 @@ spec:
                       tableName:
                         type: string
                     required:
+                    - ID
                     - s3
                     - schema
                     - tableName
                     type: object
                   maxItems: 1
                   type: array
+                status:
+                  type: string
                 tags:
                   additionalProperties:
                     type: string
                   type: object
+                version:
+                  type: integer
               required:
+              - arn
+              - createTimestamp
+              - lastUpdateTimestamp
               - name
               - providerRef
+              - status
+              - version
               type: object
             state:
               properties:

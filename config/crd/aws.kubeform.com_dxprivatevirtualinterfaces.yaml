@@ -401,6 +401,10 @@ spec:
               type: string
             amazonAddress:
               type: string
+            arn:
+              type: string
+            awsDevice:
+              type: string
             bgpAsn:
               type: integer
             bgpAuthKey:
@@ -411,6 +415,8 @@ spec:
               type: string
             dxGatewayID:
               type: string
+            jumboFrameCapable:
+              type: boolean
             mtu:
               type: integer
             name:
@@ -434,8 +440,11 @@ spec:
               type: string
           required:
           - addressFamily
+          - arn
+          - awsDevice
           - bgpAsn
           - connectionID
+          - jumboFrameCapable
           - name
           - providerRef
           - vlan
@@ -453,6 +462,10 @@ spec:
                   type: string
                 amazonAddress:
                   type: string
+                arn:
+                  type: string
+                awsDevice:
+                  type: string
                 bgpAsn:
                   type: integer
                 bgpAuthKey:
@@ -463,6 +476,8 @@ spec:
                   type: string
                 dxGatewayID:
                   type: string
+                jumboFrameCapable:
+                  type: boolean
                 mtu:
                   type: integer
                 name:
@@ -486,8 +501,11 @@ spec:
                   type: string
               required:
               - addressFamily
+              - arn
+              - awsDevice
               - bgpAsn
               - connectionID
+              - jumboFrameCapable
               - name
               - providerRef
               - vlan

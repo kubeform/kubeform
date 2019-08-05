@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             kmsKeyID:
               type: string
             providerRef:
@@ -415,6 +417,7 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - providerRef
           - snapshotCopyGrantName
           type: object
@@ -427,6 +430,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 kmsKeyID:
                   type: string
                 providerRef:
@@ -445,6 +450,7 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - providerRef
               - snapshotCopyGrantName
               type: object

@@ -399,6 +399,8 @@ spec:
           properties:
             applyImmediately:
               type: boolean
+            arn:
+              type: string
             availabilityZones:
               items:
                 type: string
@@ -410,11 +412,22 @@ spec:
               type: string
             clusterIdentifierPrefix:
               type: string
+            clusterMembers:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            clusterResourceID:
+              type: string
+            endpoint:
+              type: string
             engine:
               type: string
             engineVersion:
               type: string
             finalSnapshotIdentifier:
+              type: string
+            hostedZoneID:
               type: string
             iamDatabaseAuthenticationEnabled:
               type: boolean
@@ -444,6 +457,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            readerEndpoint:
+              type: string
             replicationSourceIdentifier:
               type: string
             skipFinalSnapshot:
@@ -462,7 +477,13 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - arn
+          - clusterMembers
+          - clusterResourceID
+          - endpoint
+          - hostedZoneID
           - providerRef
+          - readerEndpoint
           type: object
         status:
           properties:
@@ -475,6 +496,8 @@ spec:
               properties:
                 applyImmediately:
                   type: boolean
+                arn:
+                  type: string
                 availabilityZones:
                   items:
                     type: string
@@ -486,11 +509,22 @@ spec:
                   type: string
                 clusterIdentifierPrefix:
                   type: string
+                clusterMembers:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                clusterResourceID:
+                  type: string
+                endpoint:
+                  type: string
                 engine:
                   type: string
                 engineVersion:
                   type: string
                 finalSnapshotIdentifier:
+                  type: string
+                hostedZoneID:
                   type: string
                 iamDatabaseAuthenticationEnabled:
                   type: boolean
@@ -520,6 +554,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                readerEndpoint:
+                  type: string
                 replicationSourceIdentifier:
                   type: string
                 skipFinalSnapshot:
@@ -538,7 +574,13 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - arn
+              - clusterMembers
+              - clusterResourceID
+              - endpoint
+              - hostedZoneID
               - providerRef
+              - readerEndpoint
               type: object
             state:
               properties:

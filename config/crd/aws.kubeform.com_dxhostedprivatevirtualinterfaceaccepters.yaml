@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             dxGatewayID:
               type: string
             providerRef:
@@ -417,6 +419,7 @@ spec:
             vpnGatewayID:
               type: string
           required:
+          - arn
           - providerRef
           - virtualInterfaceID
           type: object
@@ -429,6 +432,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 dxGatewayID:
                   type: string
                 providerRef:
@@ -449,6 +454,7 @@ spec:
                 vpnGatewayID:
                   type: string
               required:
+              - arn
               - providerRef
               - virtualInterfaceID
               type: object

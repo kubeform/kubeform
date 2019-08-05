@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            ownerID:
+              type: string
             propagatingVgws:
               items:
                 type: string
@@ -442,6 +444,7 @@ spec:
             vpcID:
               type: string
           required:
+          - ownerID
           - providerRef
           - vpcID
           type: object
@@ -454,6 +457,8 @@ spec:
               type: integer
             output:
               properties:
+                ownerID:
+                  type: string
                 propagatingVgws:
                   items:
                     type: string
@@ -499,6 +504,7 @@ spec:
                 vpcID:
                   type: string
               required:
+              - ownerID
               - providerRef
               - vpcID
               type: object

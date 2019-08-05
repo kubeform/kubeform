@@ -18,6 +18,13 @@ type DaxCluster struct {
 	Status            DaxClusterStatus `json:"status,omitempty"`
 }
 
+type DaxClusterSpecNodes struct {
+	Address          string `json:"address" tf:"address"`
+	AvailabilityZone string `json:"availabilityZone" tf:"availability_zone"`
+	ID               string `json:"ID" tf:"id"`
+	Port             int    `json:"port" tf:"port"`
+}
+
 type DaxClusterSpecServerSideEncryption struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
@@ -26,20 +33,25 @@ type DaxClusterSpecServerSideEncryption struct {
 type DaxClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
-	ClusterName       string   `json:"clusterName" tf:"cluster_name"`
+	AvailabilityZones     []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
+	ClusterAddress        string   `json:"clusterAddress" tf:"cluster_address"`
+	ClusterName           string   `json:"clusterName" tf:"cluster_name"`
+	ConfigurationEndpoint string   `json:"configurationEndpoint" tf:"configuration_endpoint"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	IamRoleArn  string `json:"iamRoleArn" tf:"iam_role_arn"`
 	// +optional
-	MaintenanceWindow string `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
-	NodeType          string `json:"nodeType" tf:"node_type"`
+	MaintenanceWindow string                `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
+	NodeType          string                `json:"nodeType" tf:"node_type"`
+	Nodes             []DaxClusterSpecNodes `json:"nodes" tf:"nodes"`
 	// +optional
 	NotificationTopicArn string `json:"notificationTopicArn,omitempty" tf:"notification_topic_arn,omitempty"`
 	// +optional
 	ParameterGroupName string `json:"parameterGroupName,omitempty" tf:"parameter_group_name,omitempty"`
+	Port               int    `json:"port" tf:"port"`
 	ReplicationFactor  int    `json:"replicationFactor" tf:"replication_factor"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true

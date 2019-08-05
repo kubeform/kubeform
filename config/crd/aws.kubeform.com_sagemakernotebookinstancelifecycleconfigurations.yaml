@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             name:
               type: string
             onCreate:
@@ -413,6 +415,7 @@ spec:
                   type: string
               type: object
           required:
+          - arn
           - providerRef
           type: object
         status:
@@ -424,6 +427,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 name:
                   type: string
                 onCreate:
@@ -440,6 +445,7 @@ spec:
                       type: string
                   type: object
               required:
+              - arn
               - providerRef
               type: object
             state:

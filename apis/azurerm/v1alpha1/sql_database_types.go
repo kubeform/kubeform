@@ -58,11 +58,14 @@ type SqlDatabaseSpec struct {
 	// +optional
 	Collation string `json:"collation,omitempty" tf:"collation,omitempty"`
 	// +optional
-	CreateMode string `json:"createMode,omitempty" tf:"create_mode,omitempty"`
+	CreateMode               string `json:"createMode,omitempty" tf:"create_mode,omitempty"`
+	CreationDate             string `json:"creationDate" tf:"creation_date"`
+	DefaultSecondaryLocation string `json:"defaultSecondaryLocation" tf:"default_secondary_location"`
 	// +optional
 	Edition string `json:"edition,omitempty" tf:"edition,omitempty"`
 	// +optional
 	ElasticPoolName string `json:"elasticPoolName,omitempty" tf:"elastic_pool_name,omitempty"`
+	Encryption      string `json:"encryption" tf:"encryption"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Import   []SqlDatabaseSpecImport `json:"import,omitempty" tf:"import,omitempty"`

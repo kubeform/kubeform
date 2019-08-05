@@ -26,6 +26,7 @@ type StreamAnalyticsJobSpec struct {
 	EventsLateArrivalMaxDelayInSeconds int    `json:"eventsLateArrivalMaxDelayInSeconds" tf:"events_late_arrival_max_delay_in_seconds"`
 	EventsOutOfOrderMaxDelayInSeconds  int    `json:"eventsOutOfOrderMaxDelayInSeconds" tf:"events_out_of_order_max_delay_in_seconds"`
 	EventsOutOfOrderPolicy             string `json:"eventsOutOfOrderPolicy" tf:"events_out_of_order_policy"`
+	JobID                              string `json:"jobID" tf:"job_id"`
 	Location                           string `json:"location" tf:"location"`
 	Name                               string `json:"name" tf:"name"`
 	OutputErrorPolicy                  string `json:"outputErrorPolicy" tf:"output_error_policy"`

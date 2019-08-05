@@ -399,6 +399,8 @@ spec:
           properties:
             curve:
               type: string
+            e:
+              type: string
             keyOpts:
               items:
                 type: string
@@ -408,6 +410,8 @@ spec:
             keyType:
               type: string
             keyVaultID:
+              type: string
+            "n":
               type: string
             name:
               type: string
@@ -427,11 +431,22 @@ spec:
             vaultURI:
               description: Deprecated
               type: string
+            version:
+              type: string
+            x:
+              type: string
+            "y":
+              type: string
           required:
+          - e
           - keyOpts
           - keyType
+          - "n"
           - name
           - providerRef
+          - version
+          - x
+          - "y"
           type: object
         status:
           properties:
@@ -444,6 +459,8 @@ spec:
               properties:
                 curve:
                   type: string
+                e:
+                  type: string
                 keyOpts:
                   items:
                     type: string
@@ -453,6 +470,8 @@ spec:
                 keyType:
                   type: string
                 keyVaultID:
+                  type: string
+                "n":
                   type: string
                 name:
                   type: string
@@ -472,11 +491,22 @@ spec:
                 vaultURI:
                   description: Deprecated
                   type: string
+                version:
+                  type: string
+                x:
+                  type: string
+                "y":
+                  type: string
               required:
+              - e
               - keyOpts
               - keyType
+              - "n"
               - name
               - providerRef
+              - version
+              - x
+              - "y"
               type: object
             state:
               properties:

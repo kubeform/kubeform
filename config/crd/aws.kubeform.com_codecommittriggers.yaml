@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            configurationID:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -434,6 +436,7 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - configurationID
           - providerRef
           - repositoryName
           - trigger
@@ -447,6 +450,8 @@ spec:
               type: integer
             output:
               properties:
+                configurationID:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -484,6 +489,7 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - configurationID
               - providerRef
               - repositoryName
               - trigger

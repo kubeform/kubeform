@@ -25,17 +25,21 @@ type RouteSpec struct {
 	DestinationCIDRBlock string `json:"destinationCIDRBlock,omitempty" tf:"destination_cidr_block,omitempty"`
 	// +optional
 	DestinationIpv6CIDRBlock string `json:"destinationIpv6CIDRBlock,omitempty" tf:"destination_ipv6_cidr_block,omitempty"`
+	DestinationPrefixListID  string `json:"destinationPrefixListID" tf:"destination_prefix_list_id"`
 	// +optional
 	EgressOnlyGatewayID string `json:"egressOnlyGatewayID,omitempty" tf:"egress_only_gateway_id,omitempty"`
 	// +optional
 	GatewayID string `json:"gatewayID,omitempty" tf:"gateway_id,omitempty"`
 	// +optional
-	InstanceID string `json:"instanceID,omitempty" tf:"instance_id,omitempty"`
+	InstanceID      string `json:"instanceID,omitempty" tf:"instance_id,omitempty"`
+	InstanceOwnerID string `json:"instanceOwnerID" tf:"instance_owner_id"`
 	// +optional
 	NatGatewayID string `json:"natGatewayID,omitempty" tf:"nat_gateway_id,omitempty"`
 	// +optional
 	NetworkInterfaceID string `json:"networkInterfaceID,omitempty" tf:"network_interface_id,omitempty"`
+	Origin             string `json:"origin" tf:"origin"`
 	RouteTableID       string `json:"routeTableID" tf:"route_table_id"`
+	State              string `json:"state" tf:"state"`
 	// +optional
 	TransitGatewayID string `json:"transitGatewayID,omitempty" tf:"transit_gateway_id,omitempty"`
 	// +optional

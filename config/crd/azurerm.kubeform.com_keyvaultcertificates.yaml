@@ -402,6 +402,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            certificateData:
+              type: string
             certificatePolicy:
               items:
                 properties:
@@ -541,17 +543,27 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            secretID:
+              type: string
             tags:
               additionalProperties:
                 type: string
               type: object
+            thumbprint:
+              type: string
             vaultURI:
               description: Deprecated
               type: string
+            version:
+              type: string
           required:
+          - certificateData
           - certificatePolicy
           - name
           - providerRef
+          - secretID
+          - thumbprint
+          - version
           type: object
         status:
           properties:
@@ -567,6 +579,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                certificateData:
+                  type: string
                 certificatePolicy:
                   items:
                     properties:
@@ -706,17 +720,27 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                secretID:
+                  type: string
                 tags:
                   additionalProperties:
                     type: string
                   type: object
+                thumbprint:
+                  type: string
                 vaultURI:
                   description: Deprecated
                   type: string
+                version:
+                  type: string
               required:
+              - certificateData
               - certificatePolicy
               - name
               - providerRef
+              - secretID
+              - thumbprint
+              - version
               type: object
             state:
               properties:

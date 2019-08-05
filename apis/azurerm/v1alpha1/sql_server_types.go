@@ -25,6 +25,7 @@ type SqlServerSpec struct {
 
 	AdministratorLogin         string `json:"administratorLogin" tf:"administrator_login"`
 	AdministratorLoginPassword string `json:"-" sensitive:"true" tf:"administrator_login_password"`
+	FullyQualifiedDomainName   string `json:"fullyQualifiedDomainName" tf:"fully_qualified_domain_name"`
 	Location                   string `json:"location" tf:"location"`
 	Name                       string `json:"name" tf:"name"`
 	ResourceGroupName          string `json:"resourceGroupName" tf:"resource_group_name"`

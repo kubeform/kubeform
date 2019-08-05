@@ -399,6 +399,8 @@ spec:
           properties:
             apiID:
               type: string
+            arn:
+              type: string
             dataSource:
               type: string
             field:
@@ -432,6 +434,7 @@ spec:
               type: string
           required:
           - apiID
+          - arn
           - field
           - providerRef
           - requestTemplate
@@ -448,6 +451,8 @@ spec:
             output:
               properties:
                 apiID:
+                  type: string
+                arn:
                   type: string
                 dataSource:
                   type: string
@@ -482,6 +487,7 @@ spec:
                   type: string
               required:
               - apiID
+              - arn
               - field
               - providerRef
               - requestTemplate

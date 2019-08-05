@@ -421,12 +421,15 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
             topic:
               type: string
           required:
           - bucket
           - payloadFormat
           - providerRef
+          - selfLink
           - topic
           type: object
         status:
@@ -462,12 +465,15 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
                 topic:
                   type: string
               required:
               - bucket
               - payloadFormat
               - providerRef
+              - selfLink
               - topic
               type: object
             state:

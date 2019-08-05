@@ -397,15 +397,67 @@ spec:
           type: object
         spec:
           properties:
+            clusterSubnet:
+              type: string
+            createdAt:
+              type: string
+            endpoint:
+              type: string
+            ipv4Address:
+              type: string
+            kubeConfig:
+              items:
+                properties:
+                  clientCertificate:
+                    type: string
+                  clientKey:
+                    type: string
+                  clusterCaCertificate:
+                    type: string
+                  host:
+                    type: string
+                  rawConfig:
+                    type: string
+                required:
+                - clientCertificate
+                - clientKey
+                - clusterCaCertificate
+                - host
+                - rawConfig
+                type: object
+              type: array
             name:
               type: string
             nodePool:
               items:
                 properties:
+                  ID:
+                    type: string
                   name:
                     type: string
                   nodeCount:
                     type: integer
+                  nodes:
+                    items:
+                      properties:
+                        ID:
+                          type: string
+                        createdAt:
+                          type: string
+                        name:
+                          type: string
+                        status:
+                          type: string
+                        updatedAt:
+                          type: string
+                      required:
+                      - ID
+                      - createdAt
+                      - name
+                      - status
+                      - updatedAt
+                      type: object
+                    type: array
                   size:
                     type: string
                   tags:
@@ -414,8 +466,10 @@ spec:
                     type: array
                     uniqueItems: true
                 required:
+                - ID
                 - name
                 - nodeCount
+                - nodes
                 - size
                 type: object
               maxItems: 1
@@ -432,18 +486,32 @@ spec:
               type: object
             region:
               type: string
+            serviceSubnet:
+              type: string
+            status:
+              type: string
             tags:
               items:
                 type: string
               type: array
               uniqueItems: true
+            updatedAt:
+              type: string
             version:
               type: string
           required:
+          - clusterSubnet
+          - createdAt
+          - endpoint
+          - ipv4Address
+          - kubeConfig
           - name
           - nodePool
           - providerRef
           - region
+          - serviceSubnet
+          - status
+          - updatedAt
           - version
           type: object
         status:
@@ -455,15 +523,67 @@ spec:
               type: integer
             output:
               properties:
+                clusterSubnet:
+                  type: string
+                createdAt:
+                  type: string
+                endpoint:
+                  type: string
+                ipv4Address:
+                  type: string
+                kubeConfig:
+                  items:
+                    properties:
+                      clientCertificate:
+                        type: string
+                      clientKey:
+                        type: string
+                      clusterCaCertificate:
+                        type: string
+                      host:
+                        type: string
+                      rawConfig:
+                        type: string
+                    required:
+                    - clientCertificate
+                    - clientKey
+                    - clusterCaCertificate
+                    - host
+                    - rawConfig
+                    type: object
+                  type: array
                 name:
                   type: string
                 nodePool:
                   items:
                     properties:
+                      ID:
+                        type: string
                       name:
                         type: string
                       nodeCount:
                         type: integer
+                      nodes:
+                        items:
+                          properties:
+                            ID:
+                              type: string
+                            createdAt:
+                              type: string
+                            name:
+                              type: string
+                            status:
+                              type: string
+                            updatedAt:
+                              type: string
+                          required:
+                          - ID
+                          - createdAt
+                          - name
+                          - status
+                          - updatedAt
+                          type: object
+                        type: array
                       size:
                         type: string
                       tags:
@@ -472,8 +592,10 @@ spec:
                         type: array
                         uniqueItems: true
                     required:
+                    - ID
                     - name
                     - nodeCount
+                    - nodes
                     - size
                     type: object
                   maxItems: 1
@@ -490,18 +612,32 @@ spec:
                   type: object
                 region:
                   type: string
+                serviceSubnet:
+                  type: string
+                status:
+                  type: string
                 tags:
                   items:
                     type: string
                   type: array
                   uniqueItems: true
+                updatedAt:
+                  type: string
                 version:
                   type: string
               required:
+              - clusterSubnet
+              - createdAt
+              - endpoint
+              - ipv4Address
+              - kubeConfig
               - name
               - nodePool
               - providerRef
               - region
+              - serviceSubnet
+              - status
+              - updatedAt
               - version
               type: object
             state:

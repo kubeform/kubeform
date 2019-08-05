@@ -21,10 +21,27 @@ type DbSnapshot struct {
 type DbSnapshotSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	DbInstanceIdentifier string `json:"dbInstanceIdentifier" tf:"db_instance_identifier"`
-	DbSnapshotIdentifier string `json:"dbSnapshotIdentifier" tf:"db_snapshot_identifier"`
+	AllocatedStorage           int    `json:"allocatedStorage" tf:"allocated_storage"`
+	AvailabilityZone           string `json:"availabilityZone" tf:"availability_zone"`
+	DbInstanceIdentifier       string `json:"dbInstanceIdentifier" tf:"db_instance_identifier"`
+	DbSnapshotArn              string `json:"dbSnapshotArn" tf:"db_snapshot_arn"`
+	DbSnapshotIdentifier       string `json:"dbSnapshotIdentifier" tf:"db_snapshot_identifier"`
+	Encrypted                  bool   `json:"encrypted" tf:"encrypted"`
+	Engine                     string `json:"engine" tf:"engine"`
+	EngineVersion              string `json:"engineVersion" tf:"engine_version"`
+	Iops                       int    `json:"iops" tf:"iops"`
+	KmsKeyID                   string `json:"kmsKeyID" tf:"kms_key_id"`
+	LicenseModel               string `json:"licenseModel" tf:"license_model"`
+	OptionGroupName            string `json:"optionGroupName" tf:"option_group_name"`
+	Port                       int    `json:"port" tf:"port"`
+	SnapshotType               string `json:"snapshotType" tf:"snapshot_type"`
+	SourceDbSnapshotIdentifier string `json:"sourceDbSnapshotIdentifier" tf:"source_db_snapshot_identifier"`
+	SourceRegion               string `json:"sourceRegion" tf:"source_region"`
+	Status                     string `json:"status" tf:"status"`
+	StorageType                string `json:"storageType" tf:"storage_type"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VpcID string            `json:"vpcID" tf:"vpc_id"`
 }
 
 type DbSnapshotStatus struct {

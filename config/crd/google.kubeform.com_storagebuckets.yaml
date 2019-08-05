@@ -503,7 +503,11 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
             storageClass:
+              type: string
+            url:
               type: string
             versioning:
               items:
@@ -525,6 +529,8 @@ spec:
           required:
           - name
           - providerRef
+          - selfLink
+          - url
           type: object
         status:
           properties:
@@ -641,7 +647,11 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
                 storageClass:
+                  type: string
+                url:
                   type: string
                 versioning:
                   items:
@@ -663,6 +673,8 @@ spec:
               required:
               - name
               - providerRef
+              - selfLink
+              - url
               type: object
             state:
               properties:

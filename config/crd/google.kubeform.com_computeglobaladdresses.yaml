@@ -397,11 +397,17 @@ spec:
           type: object
         spec:
           properties:
+            address:
+              type: string
             addressType:
+              type: string
+            creationTimestamp:
               type: string
             description:
               type: string
             ipVersion:
+              type: string
+            labelFingerprint:
               type: string
             labels:
               additionalProperties:
@@ -430,9 +436,15 @@ spec:
             purpose:
               description: Deprecated
               type: string
+            selfLink:
+              type: string
           required:
+          - address
+          - creationTimestamp
+          - labelFingerprint
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -443,11 +455,17 @@ spec:
               type: integer
             output:
               properties:
+                address:
+                  type: string
                 addressType:
+                  type: string
+                creationTimestamp:
                   type: string
                 description:
                   type: string
                 ipVersion:
+                  type: string
+                labelFingerprint:
                   type: string
                 labels:
                   additionalProperties:
@@ -476,9 +494,15 @@ spec:
                 purpose:
                   description: Deprecated
                   type: string
+                selfLink:
+                  type: string
               required:
+              - address
+              - creationTimestamp
+              - labelFingerprint
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

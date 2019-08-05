@@ -397,13 +397,21 @@ spec:
           type: object
         spec:
           properties:
+            address:
+              type: string
             applyImmediately:
               type: boolean
+            arn:
+              type: string
             autoMinorVersionUpgrade:
               type: boolean
             availabilityZone:
               type: string
             clusterIdentifier:
+              type: string
+            dbiResourceID:
+              type: string
+            endpoint:
               type: string
             engine:
               type: string
@@ -414,6 +422,8 @@ spec:
             identifierPrefix:
               type: string
             instanceClass:
+              type: string
+            kmsKeyArn:
               type: string
             neptuneParameterGroupName:
               type: string
@@ -438,14 +448,25 @@ spec:
               type: object
             publiclyAccessible:
               type: boolean
+            storageEncrypted:
+              type: boolean
             tags:
               additionalProperties:
                 type: string
               type: object
+            writer:
+              type: boolean
           required:
+          - address
+          - arn
           - clusterIdentifier
+          - dbiResourceID
+          - endpoint
           - instanceClass
+          - kmsKeyArn
           - providerRef
+          - storageEncrypted
+          - writer
           type: object
         status:
           properties:
@@ -456,13 +477,21 @@ spec:
               type: integer
             output:
               properties:
+                address:
+                  type: string
                 applyImmediately:
                   type: boolean
+                arn:
+                  type: string
                 autoMinorVersionUpgrade:
                   type: boolean
                 availabilityZone:
                   type: string
                 clusterIdentifier:
+                  type: string
+                dbiResourceID:
+                  type: string
+                endpoint:
                   type: string
                 engine:
                   type: string
@@ -473,6 +502,8 @@ spec:
                 identifierPrefix:
                   type: string
                 instanceClass:
+                  type: string
+                kmsKeyArn:
                   type: string
                 neptuneParameterGroupName:
                   type: string
@@ -497,14 +528,25 @@ spec:
                   type: object
                 publiclyAccessible:
                   type: boolean
+                storageEncrypted:
+                  type: boolean
                 tags:
                   additionalProperties:
                     type: string
                   type: object
+                writer:
+                  type: boolean
               required:
+              - address
+              - arn
               - clusterIdentifier
+              - dbiResourceID
+              - endpoint
               - instanceClass
+              - kmsKeyArn
               - providerRef
+              - storageEncrypted
+              - writer
               type: object
             state:
               properties:

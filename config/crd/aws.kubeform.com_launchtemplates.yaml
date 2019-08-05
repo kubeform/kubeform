@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             blockDeviceMappings:
               items:
                 properties:
@@ -452,6 +454,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            defaultVersion:
+              type: integer
             description:
               type: string
             disableAPITermination:
@@ -521,6 +525,8 @@ spec:
               type: string
             keyName:
               type: string
+            latestVersion:
+              type: integer
             licenseSpecification:
               items:
                 properties:
@@ -638,6 +644,9 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - arn
+          - defaultVersion
+          - latestVersion
           - providerRef
           type: object
         status:
@@ -649,6 +658,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 blockDeviceMappings:
                   items:
                     properties:
@@ -704,6 +715,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                defaultVersion:
+                  type: integer
                 description:
                   type: string
                 disableAPITermination:
@@ -773,6 +786,8 @@ spec:
                   type: string
                 keyName:
                   type: string
+                latestVersion:
+                  type: integer
                 licenseSpecification:
                   items:
                     properties:
@@ -890,6 +905,9 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - arn
+              - defaultVersion
+              - latestVersion
               - providerRef
               type: object
             state:

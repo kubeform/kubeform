@@ -24,7 +24,8 @@ type MonitoringGroupSpec struct {
 	DisplayName string `json:"displayName" tf:"display_name"`
 	Filter      string `json:"filter" tf:"filter"`
 	// +optional
-	IsCluster bool `json:"isCluster,omitempty" tf:"is_cluster,omitempty"`
+	IsCluster bool   `json:"isCluster,omitempty" tf:"is_cluster,omitempty"`
+	Name      string `json:"name" tf:"name"`
 	// +optional
 	ParentName string `json:"parentName,omitempty" tf:"parent_name,omitempty"`
 	// +optional

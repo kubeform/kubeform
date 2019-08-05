@@ -21,6 +21,7 @@ type EbsVolume struct {
 type EbsVolumeSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn              string `json:"arn" tf:"arn"`
 	AvailabilityZone string `json:"availabilityZone" tf:"availability_zone"`
 	// +optional
 	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`

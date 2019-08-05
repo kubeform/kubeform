@@ -27,6 +27,11 @@ type GlobalacceleratorAcceleratorSpecAttributes struct {
 	FlowLogsS3Prefix string `json:"flowLogsS3Prefix,omitempty" tf:"flow_logs_s3_prefix,omitempty"`
 }
 
+type GlobalacceleratorAcceleratorSpecIpSets struct {
+	IpAddresses []string `json:"ipAddresses" tf:"ip_addresses"`
+	IpFamily    string   `json:"ipFamily" tf:"ip_family"`
+}
+
 type GlobalacceleratorAcceleratorSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -36,8 +41,9 @@ type GlobalacceleratorAcceleratorSpec struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional
-	IpAddressType string `json:"ipAddressType,omitempty" tf:"ip_address_type,omitempty"`
-	Name          string `json:"name" tf:"name"`
+	IpAddressType string                                   `json:"ipAddressType,omitempty" tf:"ip_address_type,omitempty"`
+	IpSets        []GlobalacceleratorAcceleratorSpecIpSets `json:"ipSets" tf:"ip_sets"`
+	Name          string                                   `json:"name" tf:"name"`
 }
 
 type GlobalacceleratorAcceleratorStatus struct {

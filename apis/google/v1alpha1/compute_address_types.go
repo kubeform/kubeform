@@ -24,9 +24,12 @@ type ComputeAddressSpec struct {
 	// +optional
 	Address string `json:"address,omitempty" tf:"address,omitempty"`
 	// +optional
-	AddressType string `json:"addressType,omitempty" tf:"address_type,omitempty"`
+	AddressType       string `json:"addressType,omitempty" tf:"address_type,omitempty"`
+	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// Deprecated
+	LabelFingerprint string `json:"labelFingerprint" tf:"label_fingerprint"`
 	// +optional
 	// Deprecated
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
@@ -36,9 +39,11 @@ type ComputeAddressSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	Region   string `json:"region,omitempty" tf:"region,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 	// +optional
-	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
+	Subnetwork string   `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
+	Users      []string `json:"users" tf:"users"`
 }
 
 type ComputeAddressStatus struct {

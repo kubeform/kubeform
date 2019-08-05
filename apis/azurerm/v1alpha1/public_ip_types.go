@@ -25,8 +25,10 @@ type PublicIPSpec struct {
 	AllocationMethod string `json:"allocationMethod,omitempty" tf:"allocation_method,omitempty"`
 	// +optional
 	DomainNameLabel string `json:"domainNameLabel,omitempty" tf:"domain_name_label,omitempty"`
+	Fqdn            string `json:"fqdn" tf:"fqdn"`
 	// +optional
-	IdleTimeoutInMinutes int `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
+	IdleTimeoutInMinutes int    `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
+	IpAddress            string `json:"ipAddress" tf:"ip_address"`
 	// +optional
 	IpVersion string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
 	Location  string `json:"location" tf:"location"`

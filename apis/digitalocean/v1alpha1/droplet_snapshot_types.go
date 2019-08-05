@@ -1,6 +1,8 @@
 package v1alpha1
 
 import (
+	"encoding/json"
+
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"kubeform.dev/kubeform/apis"
@@ -21,8 +23,13 @@ type DropletSnapshot struct {
 type DropletSnapshotSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	DropletID string `json:"dropletID" tf:"droplet_id"`
-	Name      string `json:"name" tf:"name"`
+	CreatedAt   string `json:"createdAt" tf:"created_at"`
+	DropletID   string `json:"dropletID" tf:"droplet_id"`
+	MinDiskSize int    `json:"minDiskSize" tf:"min_disk_size"`
+	Name        string `json:"name" tf:"name"`
+	// +kubebuilder:validation:UniqueItems=true
+	Regions []string    `json:"regions" tf:"regions"`
+	Size    json.Number `json:"size" tf:"size"`
 }
 
 type DropletSnapshotStatus struct {

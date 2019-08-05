@@ -459,6 +459,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            ownerID:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -477,9 +479,13 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            vpcID:
+              type: string
           required:
           - defaultNetworkACLID
+          - ownerID
           - providerRef
+          - vpcID
           type: object
         status:
           properties:
@@ -552,6 +558,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                ownerID:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -570,9 +578,13 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                vpcID:
+                  type: string
               required:
               - defaultNetworkACLID
+              - ownerID
               - providerRef
+              - vpcID
               type: object
             state:
               properties:

@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            endpoint:
+              type: string
             name:
               type: string
             providerRef:
@@ -409,6 +413,8 @@ spec:
                   type: string
               type: object
           required:
+          - arn
+          - endpoint
           - name
           - providerRef
           type: object
@@ -421,6 +427,10 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                endpoint:
+                  type: string
                 name:
                   type: string
                 providerRef:
@@ -433,6 +443,8 @@ spec:
                       type: string
                   type: object
               required:
+              - arn
+              - endpoint
               - name
               - providerRef
               type: object

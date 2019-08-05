@@ -34,6 +34,7 @@ type CognitoUserPoolClientSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=100
 	CallbackUrls []string `json:"callbackUrls,omitempty" tf:"callback_urls,omitempty"`
+	ClientSecret string   `json:"clientSecret" tf:"client_secret"`
 	// +optional
 	DefaultRedirectURI string `json:"defaultRedirectURI,omitempty" tf:"default_redirect_uri,omitempty"`
 	// +optional

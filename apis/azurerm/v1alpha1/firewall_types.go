@@ -23,6 +23,7 @@ type FirewallSpecIpConfiguration struct {
 	// Deprecated
 	InternalPublicIPAddressID string `json:"internalPublicIPAddressID,omitempty" tf:"internal_public_ip_address_id,omitempty"`
 	Name                      string `json:"name" tf:"name"`
+	PrivateIPAddress          string `json:"privateIPAddress" tf:"private_ip_address"`
 	// +optional
 	PublicIPAddressID string `json:"publicIPAddressID,omitempty" tf:"public_ip_address_id,omitempty"`
 	SubnetID          string `json:"subnetID" tf:"subnet_id"`

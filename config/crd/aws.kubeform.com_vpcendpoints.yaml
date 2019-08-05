@@ -399,7 +399,32 @@ spec:
           properties:
             autoAccept:
               type: boolean
+            cidrBlocks:
+              items:
+                type: string
+              type: array
+            dnsEntry:
+              items:
+                properties:
+                  dnsName:
+                    type: string
+                  hostedZoneID:
+                    type: string
+                required:
+                - dnsName
+                - hostedZoneID
+                type: object
+              type: array
+            networkInterfaceIDS:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            ownerID:
+              type: string
             policy:
+              type: string
+            prefixListID:
               type: string
             privateDNSEnabled:
               type: boolean
@@ -412,6 +437,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            requesterManaged:
+              type: boolean
             routeTableIDS:
               items:
                 type: string
@@ -423,6 +450,8 @@ spec:
               type: array
               uniqueItems: true
             serviceName:
+              type: string
+            state:
               type: string
             subnetIDS:
               items:
@@ -438,8 +467,15 @@ spec:
             vpcID:
               type: string
           required:
+          - cidrBlocks
+          - dnsEntry
+          - networkInterfaceIDS
+          - ownerID
+          - prefixListID
           - providerRef
+          - requesterManaged
           - serviceName
+          - state
           - vpcID
           type: object
         status:
@@ -453,7 +489,32 @@ spec:
               properties:
                 autoAccept:
                   type: boolean
+                cidrBlocks:
+                  items:
+                    type: string
+                  type: array
+                dnsEntry:
+                  items:
+                    properties:
+                      dnsName:
+                        type: string
+                      hostedZoneID:
+                        type: string
+                    required:
+                    - dnsName
+                    - hostedZoneID
+                    type: object
+                  type: array
+                networkInterfaceIDS:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                ownerID:
+                  type: string
                 policy:
+                  type: string
+                prefixListID:
                   type: string
                 privateDNSEnabled:
                   type: boolean
@@ -466,6 +527,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                requesterManaged:
+                  type: boolean
                 routeTableIDS:
                   items:
                     type: string
@@ -477,6 +540,8 @@ spec:
                   type: array
                   uniqueItems: true
                 serviceName:
+                  type: string
+                state:
                   type: string
                 subnetIDS:
                   items:
@@ -492,8 +557,15 @@ spec:
                 vpcID:
                   type: string
               required:
+              - cidrBlocks
+              - dnsEntry
+              - networkInterfaceIDS
+              - ownerID
+              - prefixListID
               - providerRef
+              - requesterManaged
               - serviceName
+              - state
               - vpcID
               type: object
             state:

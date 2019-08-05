@@ -33,12 +33,17 @@ type CodebuildWebhookSpecFilterGroup struct {
 type CodebuildWebhookSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	BranchFilter string `json:"branchFilter,omitempty" tf:"branch_filter,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	FilterGroup []CodebuildWebhookSpecFilterGroup `json:"filterGroup,omitempty" tf:"filter_group,omitempty"`
+	PayloadURL  string                            `json:"payloadURL" tf:"payload_url"`
 	ProjectName string                            `json:"projectName" tf:"project_name"`
+	Secret      string                            `json:"-" sensitive:"true" tf:"secret"`
+	Url         string                            `json:"url" tf:"url"`
 }
 
 type CodebuildWebhookStatus struct {

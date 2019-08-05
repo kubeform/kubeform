@@ -397,9 +397,13 @@ spec:
           type: object
         spec:
           properties:
+            activationCode:
+              type: string
             description:
               type: string
             expirationDate:
+              type: string
+            expired:
               type: string
             iamRole:
               type: string
@@ -414,6 +418,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            registrationCount:
+              type: integer
             registrationLimit:
               type: integer
             tags:
@@ -421,8 +427,11 @@ spec:
                 type: string
               type: object
           required:
+          - activationCode
+          - expired
           - iamRole
           - providerRef
+          - registrationCount
           type: object
         status:
           properties:
@@ -433,9 +442,13 @@ spec:
               type: integer
             output:
               properties:
+                activationCode:
+                  type: string
                 description:
                   type: string
                 expirationDate:
+                  type: string
+                expired:
                   type: string
                 iamRole:
                   type: string
@@ -450,6 +463,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                registrationCount:
+                  type: integer
                 registrationLimit:
                   type: integer
                 tags:
@@ -457,8 +472,11 @@ spec:
                     type: string
                   type: object
               required:
+              - activationCode
+              - expired
               - iamRole
               - providerRef
+              - registrationCount
               type: object
             state:
               properties:

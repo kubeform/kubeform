@@ -23,6 +23,7 @@ type IamAccountPasswordPolicySpec struct {
 
 	// +optional
 	AllowUsersToChangePassword bool `json:"allowUsersToChangePassword,omitempty" tf:"allow_users_to_change_password,omitempty"`
+	ExpirePasswords            bool `json:"expirePasswords" tf:"expire_passwords"`
 	// +optional
 	HardExpiry bool `json:"hardExpiry,omitempty" tf:"hard_expiry,omitempty"`
 	// +optional

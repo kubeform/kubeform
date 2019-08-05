@@ -414,11 +414,17 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            state:
+              type: string
+            stateDetails:
+              type: string
           required:
           - name
           - network
           - peerNetwork
           - providerRef
+          - state
+          - stateDetails
           type: object
         status:
           properties:
@@ -446,11 +452,17 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                state:
+                  type: string
+                stateDetails:
+                  type: string
               required:
               - name
               - network
               - peerNetwork
               - providerRef
+              - state
+              - stateDetails
               type: object
             state:
               properties:

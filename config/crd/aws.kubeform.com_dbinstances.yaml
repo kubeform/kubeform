@@ -397,12 +397,16 @@ spec:
           type: object
         spec:
           properties:
+            address:
+              type: string
             allocatedStorage:
               type: integer
             allowMajorVersionUpgrade:
               type: boolean
             applyImmediately:
               type: boolean
+            arn:
+              type: string
             autoMinorVersionUpgrade:
               type: boolean
             availabilityZone:
@@ -410,6 +414,8 @@ spec:
             backupRetentionPeriod:
               type: integer
             backupWindow:
+              type: string
+            caCertIdentifier:
               type: string
             characterSetName:
               type: string
@@ -427,11 +433,15 @@ spec:
               items:
                 type: string
               type: array
+            endpoint:
+              type: string
             engine:
               type: string
             engineVersion:
               type: string
             finalSnapshotIdentifier:
+              type: string
+            hostedZoneID:
               type: string
             iamDatabaseAuthenticationEnabled:
               type: boolean
@@ -482,7 +492,13 @@ spec:
               type: object
             publiclyAccessible:
               type: boolean
+            replicas:
+              items:
+                type: string
+              type: array
             replicateSourceDb:
+              type: string
+            resourceID:
               type: string
             s3Import:
               items:
@@ -523,6 +539,8 @@ spec:
               type: boolean
             snapshotIdentifier:
               type: string
+            status:
+              type: string
             storageEncrypted:
               type: boolean
             storageType:
@@ -541,8 +559,16 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - address
+          - arn
+          - caCertIdentifier
+          - endpoint
+          - hostedZoneID
           - instanceClass
           - providerRef
+          - replicas
+          - resourceID
+          - status
           type: object
         status:
           properties:
@@ -553,12 +579,16 @@ spec:
               type: integer
             output:
               properties:
+                address:
+                  type: string
                 allocatedStorage:
                   type: integer
                 allowMajorVersionUpgrade:
                   type: boolean
                 applyImmediately:
                   type: boolean
+                arn:
+                  type: string
                 autoMinorVersionUpgrade:
                   type: boolean
                 availabilityZone:
@@ -566,6 +596,8 @@ spec:
                 backupRetentionPeriod:
                   type: integer
                 backupWindow:
+                  type: string
+                caCertIdentifier:
                   type: string
                 characterSetName:
                   type: string
@@ -583,11 +615,15 @@ spec:
                   items:
                     type: string
                   type: array
+                endpoint:
+                  type: string
                 engine:
                   type: string
                 engineVersion:
                   type: string
                 finalSnapshotIdentifier:
+                  type: string
+                hostedZoneID:
                   type: string
                 iamDatabaseAuthenticationEnabled:
                   type: boolean
@@ -638,7 +674,13 @@ spec:
                   type: object
                 publiclyAccessible:
                   type: boolean
+                replicas:
+                  items:
+                    type: string
+                  type: array
                 replicateSourceDb:
+                  type: string
+                resourceID:
                   type: string
                 s3Import:
                   items:
@@ -679,6 +721,8 @@ spec:
                   type: boolean
                 snapshotIdentifier:
                   type: string
+                status:
+                  type: string
                 storageEncrypted:
                   type: boolean
                 storageType:
@@ -697,8 +741,16 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - address
+              - arn
+              - caCertIdentifier
+              - endpoint
+              - hostedZoneID
               - instanceClass
               - providerRef
+              - replicas
+              - resourceID
+              - status
               type: object
             state:
               properties:

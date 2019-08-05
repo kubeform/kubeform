@@ -21,8 +21,9 @@ type MainRouteTableAssociation struct {
 type MainRouteTableAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	RouteTableID string `json:"routeTableID" tf:"route_table_id"`
-	VpcID        string `json:"vpcID" tf:"vpc_id"`
+	OriginalRouteTableID string `json:"originalRouteTableID" tf:"original_route_table_id"`
+	RouteTableID         string `json:"routeTableID" tf:"route_table_id"`
+	VpcID                string `json:"vpcID" tf:"vpc_id"`
 }
 
 type MainRouteTableAssociationStatus struct {

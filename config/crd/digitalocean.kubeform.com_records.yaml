@@ -401,6 +401,8 @@ spec:
               type: string
             flags:
               type: integer
+            fqdn:
+              type: string
             name:
               type: string
             port:
@@ -428,6 +430,7 @@ spec:
               type: integer
           required:
           - domain
+          - fqdn
           - name
           - providerRef
           - type
@@ -446,6 +449,8 @@ spec:
                   type: string
                 flags:
                   type: integer
+                fqdn:
+                  type: string
                 name:
                   type: string
                 port:
@@ -473,6 +478,7 @@ spec:
                   type: integer
               required:
               - domain
+              - fqdn
               - name
               - providerRef
               - type

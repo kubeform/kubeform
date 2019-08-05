@@ -19,6 +19,7 @@ type DevTestVirtualNetwork struct {
 }
 
 type DevTestVirtualNetworkSpecSubnet struct {
+	Name string `json:"name" tf:"name"`
 	// +optional
 	UseInVirtualMachineCreation string `json:"useInVirtualMachineCreation,omitempty" tf:"use_in_virtual_machine_creation,omitempty"`
 	// +optional
@@ -37,7 +38,8 @@ type DevTestVirtualNetworkSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Subnet []DevTestVirtualNetworkSpecSubnet `json:"subnet,omitempty" tf:"subnet,omitempty"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags             map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	UniqueIdentifier string            `json:"uniqueIdentifier" tf:"unique_identifier"`
 }
 
 type DevTestVirtualNetworkStatus struct {

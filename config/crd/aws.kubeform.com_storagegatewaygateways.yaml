@@ -399,6 +399,10 @@ spec:
           properties:
             activationKey:
               type: string
+            arn:
+              type: string
+            gatewayID:
+              type: string
             gatewayIPAddress:
               type: string
             gatewayName:
@@ -443,6 +447,8 @@ spec:
             tapeDriveType:
               type: string
           required:
+          - arn
+          - gatewayID
           - gatewayName
           - gatewayTimezone
           - providerRef
@@ -457,6 +463,10 @@ spec:
             output:
               properties:
                 activationKey:
+                  type: string
+                arn:
+                  type: string
+                gatewayID:
                   type: string
                 gatewayIPAddress:
                   type: string
@@ -502,6 +512,8 @@ spec:
                 tapeDriveType:
                   type: string
               required:
+              - arn
+              - gatewayID
               - gatewayName
               - gatewayTimezone
               - providerRef

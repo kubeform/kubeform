@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            endpoint:
+              type: string
             inputMappingDefaultValues:
               items:
                 properties:
@@ -449,6 +451,7 @@ spec:
                 type: string
               type: object
           required:
+          - endpoint
           - location
           - name
           - providerRef
@@ -463,6 +466,8 @@ spec:
               type: integer
             output:
               properties:
+                endpoint:
+                  type: string
                 inputMappingDefaultValues:
                   items:
                     properties:
@@ -515,6 +520,7 @@ spec:
                     type: string
                   type: object
               required:
+              - endpoint
               - location
               - name
               - providerRef

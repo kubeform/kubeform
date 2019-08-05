@@ -446,6 +446,17 @@ spec:
                     type: array
                   authenticationCertificate:
                     items:
+                      properties:
+                        expiration:
+                          type: string
+                        subjectName:
+                          type: string
+                        thumbprint:
+                          type: string
+                      required:
+                      - expiration
+                      - subjectName
+                      - thumbprint
                       type: object
                     maxItems: 1
                     type: array
@@ -514,6 +525,17 @@ spec:
                     type: array
                   authenticationCertificate:
                     items:
+                      properties:
+                        expiration:
+                          type: string
+                        subjectName:
+                          type: string
+                        thumbprint:
+                          type: string
+                      required:
+                      - expiration
+                      - subjectName
+                      - thumbprint
                       type: object
                     maxItems: 1
                     type: array
@@ -690,6 +712,17 @@ spec:
                         type: array
                       authenticationCertificate:
                         items:
+                          properties:
+                            expiration:
+                              type: string
+                            subjectName:
+                              type: string
+                            thumbprint:
+                              type: string
+                          required:
+                          - expiration
+                          - subjectName
+                          - thumbprint
                           type: object
                         maxItems: 1
                         type: array
@@ -758,6 +791,17 @@ spec:
                         type: array
                       authenticationCertificate:
                         items:
+                          properties:
+                            expiration:
+                              type: string
+                            subjectName:
+                              type: string
+                            thumbprint:
+                              type: string
+                          required:
+                          - expiration
+                          - subjectName
+                          - thumbprint
                           type: object
                         maxItems: 1
                         type: array

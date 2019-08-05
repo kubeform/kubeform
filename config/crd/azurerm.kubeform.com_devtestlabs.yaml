@@ -397,9 +397,19 @@ spec:
           type: object
         spec:
           properties:
+            artifactsStorageAccountID:
+              type: string
+            defaultPremiumStorageAccountID:
+              type: string
+            defaultStorageAccountID:
+              type: string
+            keyVaultID:
+              type: string
             location:
               type: string
             name:
+              type: string
+            premiumDataDiskStorageAccountID:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -418,11 +428,19 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            uniqueIdentifier:
+              type: string
           required:
+          - artifactsStorageAccountID
+          - defaultPremiumStorageAccountID
+          - defaultStorageAccountID
+          - keyVaultID
           - location
           - name
+          - premiumDataDiskStorageAccountID
           - providerRef
           - resourceGroupName
+          - uniqueIdentifier
           type: object
         status:
           properties:
@@ -433,9 +451,19 @@ spec:
               type: integer
             output:
               properties:
+                artifactsStorageAccountID:
+                  type: string
+                defaultPremiumStorageAccountID:
+                  type: string
+                defaultStorageAccountID:
+                  type: string
+                keyVaultID:
+                  type: string
                 location:
                   type: string
                 name:
+                  type: string
+                premiumDataDiskStorageAccountID:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -454,11 +482,19 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                uniqueIdentifier:
+                  type: string
               required:
+              - artifactsStorageAccountID
+              - defaultPremiumStorageAccountID
+              - defaultStorageAccountID
+              - keyVaultID
               - location
               - name
+              - premiumDataDiskStorageAccountID
               - providerRef
               - resourceGroupName
+              - uniqueIdentifier
               type: object
             state:
               properties:

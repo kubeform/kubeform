@@ -47,12 +47,14 @@ type ComputeSecurityPolicySpec struct {
 
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Fingerprint string `json:"fingerprint" tf:"fingerprint"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Rule []ComputeSecurityPolicySpecRule `json:"rule,omitempty" tf:"rule,omitempty"`
+	Rule     []ComputeSecurityPolicySpecRule `json:"rule,omitempty" tf:"rule,omitempty"`
+	SelfLink string                          `json:"selfLink" tf:"self_link"`
 }
 
 type ComputeSecurityPolicyStatus struct {

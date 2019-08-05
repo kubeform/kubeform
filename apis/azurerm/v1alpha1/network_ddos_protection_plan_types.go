@@ -25,7 +25,8 @@ type NetworkDdosProtectionPlanSpec struct {
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags              map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VirtualNetworkIDS []string          `json:"virtualNetworkIDS" tf:"virtual_network_ids"`
 }
 
 type NetworkDdosProtectionPlanStatus struct {

@@ -70,13 +70,16 @@ type LoadbalancerSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Healthcheck []LoadbalancerSpecHealthcheck `json:"healthcheck,omitempty" tf:"healthcheck,omitempty"`
+	Ip          string                        `json:"ip" tf:"ip"`
 	Name        string                        `json:"name" tf:"name"`
 	// +optional
 	RedirectHTTPToHTTPS bool   `json:"redirectHTTPToHTTPS,omitempty" tf:"redirect_http_to_https,omitempty"`
 	Region              string `json:"region" tf:"region"`
+	Status              string `json:"status" tf:"status"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	StickySessions []LoadbalancerSpecStickySessions `json:"stickySessions,omitempty" tf:"sticky_sessions,omitempty"`
+	Urn            string                           `json:"urn" tf:"urn"`
 }
 
 type LoadbalancerStatus struct {

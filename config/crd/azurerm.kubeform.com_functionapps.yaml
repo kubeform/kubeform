@@ -417,6 +417,8 @@ spec:
                 - type
                 type: object
               type: array
+            defaultHostname:
+              type: string
             enableBuiltinLogging:
               type: boolean
             enabled:
@@ -426,16 +428,28 @@ spec:
             identity:
               items:
                 properties:
+                  principalID:
+                    type: string
+                  tenantID:
+                    type: string
                   type:
                     type: string
                 required:
+                - principalID
+                - tenantID
                 - type
                 type: object
               maxItems: 1
               type: array
+            kind:
+              type: string
             location:
               type: string
             name:
+              type: string
+            outboundIPAddresses:
+              type: string
+            possibleOutboundIPAddresses:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -471,6 +485,16 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            siteCredential:
+              items:
+                properties:
+                  username:
+                    type: string
+                required:
+                - username
+                type: object
+              maxItems: 1
+              type: array
             tags:
               additionalProperties:
                 type: string
@@ -479,10 +503,15 @@ spec:
               type: string
           required:
           - appServicePlanID
+          - defaultHostname
+          - kind
           - location
           - name
+          - outboundIPAddresses
+          - possibleOutboundIPAddresses
           - providerRef
           - resourceGroupName
+          - siteCredential
           type: object
         status:
           properties:
@@ -513,6 +542,8 @@ spec:
                     - type
                     type: object
                   type: array
+                defaultHostname:
+                  type: string
                 enableBuiltinLogging:
                   type: boolean
                 enabled:
@@ -522,16 +553,28 @@ spec:
                 identity:
                   items:
                     properties:
+                      principalID:
+                        type: string
+                      tenantID:
+                        type: string
                       type:
                         type: string
                     required:
+                    - principalID
+                    - tenantID
                     - type
                     type: object
                   maxItems: 1
                   type: array
+                kind:
+                  type: string
                 location:
                   type: string
                 name:
+                  type: string
+                outboundIPAddresses:
+                  type: string
+                possibleOutboundIPAddresses:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -567,6 +610,16 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                siteCredential:
+                  items:
+                    properties:
+                      username:
+                        type: string
+                    required:
+                    - username
+                    type: object
+                  maxItems: 1
+                  type: array
                 tags:
                   additionalProperties:
                     type: string
@@ -575,10 +628,15 @@ spec:
                   type: string
               required:
               - appServicePlanID
+              - defaultHostname
+              - kind
               - location
               - name
+              - outboundIPAddresses
+              - possibleOutboundIPAddresses
               - providerRef
               - resourceGroupName
+              - siteCredential
               type: object
             state:
               properties:

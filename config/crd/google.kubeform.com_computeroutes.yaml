@@ -413,6 +413,8 @@ spec:
               type: string
             nextHopInstanceZone:
               type: string
+            nextHopNetwork:
+              type: string
             nextHopVPNTunnel:
               type: string
             priority:
@@ -428,6 +430,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
             tags:
               items:
                 type: string
@@ -437,7 +441,9 @@ spec:
           - destRange
           - name
           - network
+          - nextHopNetwork
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -464,6 +470,8 @@ spec:
                   type: string
                 nextHopInstanceZone:
                   type: string
+                nextHopNetwork:
+                  type: string
                 nextHopVPNTunnel:
                   type: string
                 priority:
@@ -479,6 +487,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
                 tags:
                   items:
                     type: string
@@ -488,7 +498,9 @@ spec:
               - destRange
               - name
               - network
+              - nextHopNetwork
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

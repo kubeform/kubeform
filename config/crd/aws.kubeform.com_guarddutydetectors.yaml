@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            accountID:
+              type: string
             enable:
               type: boolean
             findingPublishingFrequency:
@@ -411,6 +413,7 @@ spec:
                   type: string
               type: object
           required:
+          - accountID
           - providerRef
           type: object
         status:
@@ -422,6 +425,8 @@ spec:
               type: integer
             output:
               properties:
+                accountID:
+                  type: string
                 enable:
                   type: boolean
                 findingPublishingFrequency:
@@ -436,6 +441,7 @@ spec:
                       type: string
                   type: object
               required:
+              - accountID
               - providerRef
               type: object
             state:

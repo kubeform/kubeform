@@ -401,6 +401,8 @@ spec:
               type: string
             encryptionType:
               type: string
+            endpoint:
+              type: string
             firewallAllowAzureIPS:
               type: string
             firewallState:
@@ -427,6 +429,7 @@ spec:
             tier:
               type: string
           required:
+          - endpoint
           - location
           - name
           - providerRef
@@ -444,6 +447,8 @@ spec:
                 encryptionState:
                   type: string
                 encryptionType:
+                  type: string
+                endpoint:
                   type: string
                 firewallAllowAzureIPS:
                   type: string
@@ -471,6 +476,7 @@ spec:
                 tier:
                   type: string
               required:
+              - endpoint
               - location
               - name
               - providerRef

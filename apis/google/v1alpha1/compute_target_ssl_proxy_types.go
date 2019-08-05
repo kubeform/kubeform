@@ -21,7 +21,8 @@ type ComputeTargetSslProxy struct {
 type ComputeTargetSslProxySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	BackendService string `json:"backendService" tf:"backend_service"`
+	BackendService    string `json:"backendService" tf:"backend_service"`
+	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
@@ -29,6 +30,8 @@ type ComputeTargetSslProxySpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	ProxyHeader string `json:"proxyHeader,omitempty" tf:"proxy_header,omitempty"`
+	ProxyID     int    `json:"proxyID" tf:"proxy_id"`
+	SelfLink    string `json:"selfLink" tf:"self_link"`
 	// +kubebuilder:validation:MaxItems=1
 	SslCertificates []string `json:"sslCertificates" tf:"ssl_certificates"`
 	// +optional

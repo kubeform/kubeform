@@ -28,7 +28,8 @@ type SqlDatabaseSpec struct {
 	Instance  string `json:"instance" tf:"instance"`
 	Name      string `json:"name" tf:"name"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Project  string `json:"project,omitempty" tf:"project,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 }
 
 type SqlDatabaseStatus struct {

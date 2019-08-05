@@ -27,7 +27,8 @@ type SharedImageGallerySpec struct {
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags       map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	UniqueName string            `json:"uniqueName" tf:"unique_name"`
 }
 
 type SharedImageGalleryStatus struct {

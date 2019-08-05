@@ -428,11 +428,15 @@ spec:
                     type: array
                 type: object
               type: array
+            creationTime:
+              type: integer
             datasetID:
               type: string
             defaultTableExpirationMs:
               type: integer
             description:
+              type: string
+            etag:
               type: string
             friendlyName:
               type: string
@@ -440,6 +444,8 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            lastModifiedTime:
+              type: integer
             location:
               type: string
             project:
@@ -453,9 +459,15 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
           required:
+          - creationTime
           - datasetID
+          - etag
+          - lastModifiedTime
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -497,11 +509,15 @@ spec:
                         type: array
                     type: object
                   type: array
+                creationTime:
+                  type: integer
                 datasetID:
                   type: string
                 defaultTableExpirationMs:
                   type: integer
                 description:
+                  type: string
+                etag:
                   type: string
                 friendlyName:
                   type: string
@@ -509,6 +525,8 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                lastModifiedTime:
+                  type: integer
                 location:
                   type: string
                 project:
@@ -522,9 +540,15 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
               required:
+              - creationTime
               - datasetID
+              - etag
+              - lastModifiedTime
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

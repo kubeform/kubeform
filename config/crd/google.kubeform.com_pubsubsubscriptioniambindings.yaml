@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            etag:
+              type: string
             members:
               items:
                 type: string
@@ -418,6 +420,7 @@ spec:
             subscription:
               type: string
           required:
+          - etag
           - members
           - providerRef
           - role
@@ -432,6 +435,8 @@ spec:
               type: integer
             output:
               properties:
+                etag:
+                  type: string
                 members:
                   items:
                     type: string
@@ -453,6 +458,7 @@ spec:
                 subscription:
                   type: string
               required:
+              - etag
               - members
               - providerRef
               - role

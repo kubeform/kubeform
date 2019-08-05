@@ -21,13 +21,17 @@ type NeptuneClusterInstance struct {
 type NeptuneClusterInstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Address string `json:"address" tf:"address"`
 	// +optional
-	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	ApplyImmediately bool   `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	Arn              string `json:"arn" tf:"arn"`
 	// +optional
 	AutoMinorVersionUpgrade bool `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
 	// +optional
 	AvailabilityZone  string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	ClusterIdentifier string `json:"clusterIdentifier" tf:"cluster_identifier"`
+	DbiResourceID     string `json:"dbiResourceID" tf:"dbi_resource_id"`
+	Endpoint          string `json:"endpoint" tf:"endpoint"`
 	// +optional
 	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
 	// +optional
@@ -37,6 +41,7 @@ type NeptuneClusterInstanceSpec struct {
 	// +optional
 	IdentifierPrefix string `json:"identifierPrefix,omitempty" tf:"identifier_prefix,omitempty"`
 	InstanceClass    string `json:"instanceClass" tf:"instance_class"`
+	KmsKeyArn        string `json:"kmsKeyArn" tf:"kms_key_arn"`
 	// +optional
 	NeptuneParameterGroupName string `json:"neptuneParameterGroupName,omitempty" tf:"neptune_parameter_group_name,omitempty"`
 	// +optional
@@ -51,8 +56,10 @@ type NeptuneClusterInstanceSpec struct {
 	PromotionTier int `json:"promotionTier,omitempty" tf:"promotion_tier,omitempty"`
 	// +optional
 	PubliclyAccessible bool `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
+	StorageEncrypted   bool `json:"storageEncrypted" tf:"storage_encrypted"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags   map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Writer bool              `json:"writer" tf:"writer"`
 }
 
 type NeptuneClusterInstanceStatus struct {

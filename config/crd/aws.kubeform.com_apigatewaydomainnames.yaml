@@ -405,6 +405,12 @@ spec:
               type: string
             certificateName:
               type: string
+            certificateUploadDate:
+              type: string
+            cloudfrontDomainName:
+              type: string
+            cloudfrontZoneID:
+              type: string
             domainName:
               type: string
             endpointConfiguration:
@@ -435,6 +441,10 @@ spec:
               type: string
             regionalCertificateName:
               type: string
+            regionalDomainName:
+              type: string
+            regionalZoneID:
+              type: string
             secret:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -445,8 +455,13 @@ spec:
                   type: string
               type: object
           required:
+          - certificateUploadDate
+          - cloudfrontDomainName
+          - cloudfrontZoneID
           - domainName
           - providerRef
+          - regionalDomainName
+          - regionalZoneID
           type: object
         status:
           properties:
@@ -464,6 +479,12 @@ spec:
                 certificateChain:
                   type: string
                 certificateName:
+                  type: string
+                certificateUploadDate:
+                  type: string
+                cloudfrontDomainName:
+                  type: string
+                cloudfrontZoneID:
                   type: string
                 domainName:
                   type: string
@@ -495,6 +516,10 @@ spec:
                   type: string
                 regionalCertificateName:
                   type: string
+                regionalDomainName:
+                  type: string
+                regionalZoneID:
+                  type: string
                 secret:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -505,8 +530,13 @@ spec:
                       type: string
                   type: object
               required:
+              - certificateUploadDate
+              - cloudfrontDomainName
+              - cloudfrontZoneID
               - domainName
               - providerRef
+              - regionalDomainName
+              - regionalZoneID
               type: object
             state:
               properties:

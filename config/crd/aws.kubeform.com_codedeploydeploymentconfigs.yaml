@@ -399,6 +399,8 @@ spec:
           properties:
             computePlatform:
               type: string
+            deploymentConfigID:
+              type: string
             deploymentConfigName:
               type: string
             minimumHealthyHosts:
@@ -449,6 +451,7 @@ spec:
               maxItems: 1
               type: array
           required:
+          - deploymentConfigID
           - deploymentConfigName
           - providerRef
           type: object
@@ -462,6 +465,8 @@ spec:
             output:
               properties:
                 computePlatform:
+                  type: string
+                deploymentConfigID:
                   type: string
                 deploymentConfigName:
                   type: string
@@ -513,6 +518,7 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - deploymentConfigID
               - deploymentConfigName
               - providerRef
               type: object

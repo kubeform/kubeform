@@ -399,19 +399,35 @@ spec:
           properties:
             applyImmediately:
               type: boolean
+            arn:
+              type: string
             autoMinorVersionUpgrade:
               type: boolean
             availabilityZone:
               type: string
             clusterIdentifier:
               type: string
+            dbSubnetGroupName:
+              type: string
+            dbiResourceID:
+              type: string
+            endpoint:
+              type: string
             engine:
+              type: string
+            engineVersion:
               type: string
             identifier:
               type: string
             identifierPrefix:
               type: string
             instanceClass:
+              type: string
+            kmsKeyID:
+              type: string
+            port:
+              type: integer
+            preferredBackupWindow:
               type: string
             preferredMaintenanceWindow:
               type: string
@@ -426,14 +442,31 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            publiclyAccessible:
+              type: boolean
+            storageEncrypted:
+              type: boolean
             tags:
               additionalProperties:
                 type: string
               type: object
+            writer:
+              type: boolean
           required:
+          - arn
           - clusterIdentifier
+          - dbSubnetGroupName
+          - dbiResourceID
+          - endpoint
+          - engineVersion
           - instanceClass
+          - kmsKeyID
+          - port
+          - preferredBackupWindow
           - providerRef
+          - publiclyAccessible
+          - storageEncrypted
+          - writer
           type: object
         status:
           properties:
@@ -446,19 +479,35 @@ spec:
               properties:
                 applyImmediately:
                   type: boolean
+                arn:
+                  type: string
                 autoMinorVersionUpgrade:
                   type: boolean
                 availabilityZone:
                   type: string
                 clusterIdentifier:
                   type: string
+                dbSubnetGroupName:
+                  type: string
+                dbiResourceID:
+                  type: string
+                endpoint:
+                  type: string
                 engine:
+                  type: string
+                engineVersion:
                   type: string
                 identifier:
                   type: string
                 identifierPrefix:
                   type: string
                 instanceClass:
+                  type: string
+                kmsKeyID:
+                  type: string
+                port:
+                  type: integer
+                preferredBackupWindow:
                   type: string
                 preferredMaintenanceWindow:
                   type: string
@@ -473,14 +522,31 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                publiclyAccessible:
+                  type: boolean
+                storageEncrypted:
+                  type: boolean
                 tags:
                   additionalProperties:
                     type: string
                   type: object
+                writer:
+                  type: boolean
               required:
+              - arn
               - clusterIdentifier
+              - dbSubnetGroupName
+              - dbiResourceID
+              - endpoint
+              - engineVersion
               - instanceClass
+              - kmsKeyID
+              - port
+              - preferredBackupWindow
               - providerRef
+              - publiclyAccessible
+              - storageEncrypted
+              - writer
               type: object
             state:
               properties:

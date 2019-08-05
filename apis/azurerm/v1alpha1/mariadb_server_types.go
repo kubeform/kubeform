@@ -40,6 +40,7 @@ type MariadbServerSpec struct {
 
 	AdministratorLogin         string `json:"administratorLogin" tf:"administrator_login"`
 	AdministratorLoginPassword string `json:"-" sensitive:"true" tf:"administrator_login_password"`
+	Fqdn                       string `json:"fqdn" tf:"fqdn"`
 	Location                   string `json:"location" tf:"location"`
 	Name                       string `json:"name" tf:"name"`
 	ResourceGroupName          string `json:"resourceGroupName" tf:"resource_group_name"`

@@ -408,6 +408,8 @@ spec:
               type: string
             name:
               type: string
+            notAfter:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -426,11 +428,18 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            sha1Fingerprint:
+              type: string
+            state:
+              type: string
             type:
               type: string
           required:
           - name
+          - notAfter
           - providerRef
+          - sha1Fingerprint
+          - state
           type: object
         status:
           properties:
@@ -452,6 +461,8 @@ spec:
                   type: string
                 name:
                   type: string
+                notAfter:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -470,11 +481,18 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                sha1Fingerprint:
+                  type: string
+                state:
+                  type: string
                 type:
                   type: string
               required:
               - name
+              - notAfter
               - providerRef
+              - sha1Fingerprint
+              - state
               type: object
             state:
               properties:

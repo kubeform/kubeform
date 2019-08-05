@@ -399,6 +399,8 @@ spec:
           properties:
             allowExternalPrincipals:
               type: boolean
+            arn:
+              type: string
             name:
               type: string
             providerRef:
@@ -415,6 +417,7 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - name
           - providerRef
           type: object
@@ -429,6 +432,8 @@ spec:
               properties:
                 allowExternalPrincipals:
                   type: boolean
+                arn:
+                  type: string
                 name:
                   type: string
                 providerRef:
@@ -445,6 +450,7 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - name
               - providerRef
               type: object

@@ -21,6 +21,7 @@ type Cloud9EnvironmentEc2 struct {
 type Cloud9EnvironmentEc2Spec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	AutomaticStopTimeMinutes int `json:"automaticStopTimeMinutes,omitempty" tf:"automatic_stop_time_minutes,omitempty"`
 	// +optional
@@ -31,6 +32,7 @@ type Cloud9EnvironmentEc2Spec struct {
 	OwnerArn string `json:"ownerArn,omitempty" tf:"owner_arn,omitempty"`
 	// +optional
 	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
+	Type     string `json:"type" tf:"type"`
 }
 
 type Cloud9EnvironmentEc2Status struct {

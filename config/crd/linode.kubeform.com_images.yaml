@@ -397,10 +397,20 @@ spec:
           type: object
         spec:
           properties:
+            created:
+              type: string
+            createdBy:
+              type: string
+            deprecated:
+              type: boolean
             description:
               type: string
             diskID:
               type: integer
+            expiry:
+              type: string
+            isPublic:
+              type: boolean
             label:
               type: string
             linodeID:
@@ -414,11 +424,25 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            size:
+              type: integer
+            type:
+              type: string
+            vendor:
+              type: string
           required:
+          - created
+          - createdBy
+          - deprecated
           - diskID
+          - expiry
+          - isPublic
           - label
           - linodeID
           - providerRef
+          - size
+          - type
+          - vendor
           type: object
         status:
           properties:
@@ -429,10 +453,20 @@ spec:
               type: integer
             output:
               properties:
+                created:
+                  type: string
+                createdBy:
+                  type: string
+                deprecated:
+                  type: boolean
                 description:
                   type: string
                 diskID:
                   type: integer
+                expiry:
+                  type: string
+                isPublic:
+                  type: boolean
                 label:
                   type: string
                 linodeID:
@@ -446,11 +480,25 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                size:
+                  type: integer
+                type:
+                  type: string
+                vendor:
+                  type: string
               required:
+              - created
+              - createdBy
+              - deprecated
               - diskID
+              - expiry
+              - isPublic
               - label
               - linodeID
               - providerRef
+              - size
+              - type
+              - vendor
               type: object
             state:
               properties:

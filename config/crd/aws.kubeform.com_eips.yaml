@@ -397,11 +397,21 @@ spec:
           type: object
         spec:
           properties:
+            allocationID:
+              type: string
             associateWithPrivateIP:
+              type: string
+            associationID:
+              type: string
+            domain:
               type: string
             instance:
               type: string
             networkInterface:
+              type: string
+            privateDNS:
+              type: string
+            privateIP:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -412,6 +422,10 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            publicDNS:
+              type: string
+            publicIP:
+              type: string
             publicIpv4Pool:
               type: string
             tags:
@@ -421,7 +435,14 @@ spec:
             vpc:
               type: boolean
           required:
+          - allocationID
+          - associationID
+          - domain
+          - privateDNS
+          - privateIP
           - providerRef
+          - publicDNS
+          - publicIP
           type: object
         status:
           properties:
@@ -432,11 +453,21 @@ spec:
               type: integer
             output:
               properties:
+                allocationID:
+                  type: string
                 associateWithPrivateIP:
+                  type: string
+                associationID:
+                  type: string
+                domain:
                   type: string
                 instance:
                   type: string
                 networkInterface:
+                  type: string
+                privateDNS:
+                  type: string
+                privateIP:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -447,6 +478,10 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                publicDNS:
+                  type: string
+                publicIP:
+                  type: string
                 publicIpv4Pool:
                   type: string
                 tags:
@@ -456,7 +491,14 @@ spec:
                 vpc:
                   type: boolean
               required:
+              - allocationID
+              - associationID
+              - domain
+              - privateDNS
+              - privateIP
               - providerRef
+              - publicDNS
+              - publicIP
               type: object
             state:
               properties:

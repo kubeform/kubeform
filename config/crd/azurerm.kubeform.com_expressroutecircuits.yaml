@@ -418,7 +418,18 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            secret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             serviceProviderName:
+              type: string
+            serviceProviderProvisioningState:
               type: string
             sku:
               items:
@@ -445,6 +456,7 @@ spec:
           - providerRef
           - resourceGroupName
           - serviceProviderName
+          - serviceProviderProvisioningState
           - sku
           type: object
         status:
@@ -477,7 +489,18 @@ spec:
                   type: object
                 resourceGroupName:
                   type: string
+                secret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
                 serviceProviderName:
+                  type: string
+                serviceProviderProvisioningState:
                   type: string
                 sku:
                   items:
@@ -504,6 +527,7 @@ spec:
               - providerRef
               - resourceGroupName
               - serviceProviderName
+              - serviceProviderProvisioningState
               - sku
               type: object
             state:

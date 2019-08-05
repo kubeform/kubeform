@@ -400,6 +400,12 @@ spec:
             config:
               items:
                 properties:
+                  airflowURI:
+                    type: string
+                  dagGcsPrefix:
+                    type: string
+                  gkeCluster:
+                    type: string
                   nodeConfig:
                     items:
                       properties:
@@ -441,13 +447,21 @@ spec:
                           additionalProperties:
                             type: string
                           type: object
+                        imageVersion:
+                          type: string
                         pypiPackages:
                           additionalProperties:
                             type: string
                           type: object
+                      required:
+                      - imageVersion
                       type: object
                     maxItems: 1
                     type: array
+                required:
+                - airflowURI
+                - dagGcsPrefix
+                - gkeCluster
                 type: object
               maxItems: 1
               type: array
@@ -486,6 +500,12 @@ spec:
                 config:
                   items:
                     properties:
+                      airflowURI:
+                        type: string
+                      dagGcsPrefix:
+                        type: string
+                      gkeCluster:
+                        type: string
                       nodeConfig:
                         items:
                           properties:
@@ -527,13 +547,21 @@ spec:
                               additionalProperties:
                                 type: string
                               type: object
+                            imageVersion:
+                              type: string
                             pypiPackages:
                               additionalProperties:
                                 type: string
                               type: object
+                          required:
+                          - imageVersion
                           type: object
                         maxItems: 1
                         type: array
+                    required:
+                    - airflowURI
+                    - dagGcsPrefix
+                    - gkeCluster
                     type: object
                   maxItems: 1
                   type: array

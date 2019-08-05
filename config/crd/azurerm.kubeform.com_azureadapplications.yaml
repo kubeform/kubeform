@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            applicationID:
+              type: string
             availableToOtherTenants:
               type: boolean
             homepage:
@@ -424,6 +426,7 @@ spec:
                 type: string
               type: array
           required:
+          - applicationID
           - name
           - providerRef
           type: object
@@ -436,6 +439,8 @@ spec:
               type: integer
             output:
               properties:
+                applicationID:
+                  type: string
                 availableToOtherTenants:
                   type: boolean
                 homepage:
@@ -463,6 +468,7 @@ spec:
                     type: string
                   type: array
               required:
+              - applicationID
               - name
               - providerRef
               type: object

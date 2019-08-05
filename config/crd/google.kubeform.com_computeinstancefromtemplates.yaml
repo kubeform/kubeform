@@ -404,11 +404,14 @@ spec:
                 properties:
                   deviceName:
                     type: string
+                  diskEncryptionKeySha256:
+                    type: string
                   mode:
                     type: string
                   source:
                     type: string
                 required:
+                - diskEncryptionKeySha256
                 - source
                 type: object
               type: array
@@ -418,6 +421,8 @@ spec:
                   autoDelete:
                     type: boolean
                   deviceName:
+                    type: string
+                  diskEncryptionKeySha256:
                     type: string
                   initializeParams:
                     items:
@@ -433,11 +438,15 @@ spec:
                     type: array
                   source:
                     type: string
+                required:
+                - diskEncryptionKeySha256
                 type: object
               maxItems: 1
               type: array
             canIPForward:
               type: boolean
+            cpuPlatform:
+              type: string
             deletionProtection:
               type: boolean
             description:
@@ -454,6 +463,10 @@ spec:
                 - type
                 type: object
               type: array
+            instanceID:
+              type: string
+            labelFingerprint:
+              type: string
             labels:
               additionalProperties:
                 type: string
@@ -464,6 +477,8 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            metadataFingerprint:
+              type: string
             metadataStartupScript:
               type: string
             minCPUPlatform:
@@ -476,12 +491,17 @@ spec:
                   accessConfig:
                     items:
                       properties:
+                        assignedNATIP:
+                          description: Deprecated
+                          type: string
                         natIP:
                           type: string
                         networkTier:
                           type: string
                         publicPtrDomainName:
                           type: string
+                      required:
+                      - assignedNATIP
                       type: object
                     type: array
                   address:
@@ -498,6 +518,8 @@ spec:
                       - ipCIDRRange
                       type: object
                     type: array
+                  name:
+                    type: string
                   network:
                     type: string
                   networkIP:
@@ -506,6 +528,8 @@ spec:
                     type: string
                   subnetworkProject:
                     type: string
+                required:
+                - name
                 type: object
               type: array
             project:
@@ -547,6 +571,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
             serviceAccount:
               items:
                 properties:
@@ -569,12 +595,20 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            tagsFingerprint:
+              type: string
             zone:
               type: string
           required:
+          - cpuPlatform
+          - instanceID
+          - labelFingerprint
+          - metadataFingerprint
           - name
           - providerRef
+          - selfLink
           - sourceInstanceTemplate
+          - tagsFingerprint
           type: object
         status:
           properties:
@@ -592,11 +626,14 @@ spec:
                     properties:
                       deviceName:
                         type: string
+                      diskEncryptionKeySha256:
+                        type: string
                       mode:
                         type: string
                       source:
                         type: string
                     required:
+                    - diskEncryptionKeySha256
                     - source
                     type: object
                   type: array
@@ -606,6 +643,8 @@ spec:
                       autoDelete:
                         type: boolean
                       deviceName:
+                        type: string
+                      diskEncryptionKeySha256:
                         type: string
                       initializeParams:
                         items:
@@ -621,11 +660,15 @@ spec:
                         type: array
                       source:
                         type: string
+                    required:
+                    - diskEncryptionKeySha256
                     type: object
                   maxItems: 1
                   type: array
                 canIPForward:
                   type: boolean
+                cpuPlatform:
+                  type: string
                 deletionProtection:
                   type: boolean
                 description:
@@ -642,6 +685,10 @@ spec:
                     - type
                     type: object
                   type: array
+                instanceID:
+                  type: string
+                labelFingerprint:
+                  type: string
                 labels:
                   additionalProperties:
                     type: string
@@ -652,6 +699,8 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                metadataFingerprint:
+                  type: string
                 metadataStartupScript:
                   type: string
                 minCPUPlatform:
@@ -664,12 +713,17 @@ spec:
                       accessConfig:
                         items:
                           properties:
+                            assignedNATIP:
+                              description: Deprecated
+                              type: string
                             natIP:
                               type: string
                             networkTier:
                               type: string
                             publicPtrDomainName:
                               type: string
+                          required:
+                          - assignedNATIP
                           type: object
                         type: array
                       address:
@@ -686,6 +740,8 @@ spec:
                           - ipCIDRRange
                           type: object
                         type: array
+                      name:
+                        type: string
                       network:
                         type: string
                       networkIP:
@@ -694,6 +750,8 @@ spec:
                         type: string
                       subnetworkProject:
                         type: string
+                    required:
+                    - name
                     type: object
                   type: array
                 project:
@@ -735,6 +793,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
                 serviceAccount:
                   items:
                     properties:
@@ -757,12 +817,20 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                tagsFingerprint:
+                  type: string
                 zone:
                   type: string
               required:
+              - cpuPlatform
+              - instanceID
+              - labelFingerprint
+              - metadataFingerprint
               - name
               - providerRef
+              - selfLink
               - sourceInstanceTemplate
+              - tagsFingerprint
               type: object
             state:
               properties:

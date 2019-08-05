@@ -424,12 +424,17 @@ spec:
               maxItems: 25
               type: array
               uniqueItems: true
+            scopeIdentifiers:
+              items:
+                type: string
+              type: array
             userPoolID:
               type: string
           required:
           - identifier
           - name
           - providerRef
+          - scopeIdentifiers
           - userPoolID
           type: object
         status:
@@ -468,12 +473,17 @@ spec:
                   maxItems: 25
                   type: array
                   uniqueItems: true
+                scopeIdentifiers:
+                  items:
+                    type: string
+                  type: array
                 userPoolID:
                   type: string
               required:
               - identifier
               - name
               - providerRef
+              - scopeIdentifiers
               - userPoolID
               type: object
             state:

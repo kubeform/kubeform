@@ -423,6 +423,30 @@ spec:
               type: array
             backupID:
               type: integer
+            backups:
+              items:
+                properties:
+                  enabled:
+                    type: boolean
+                  schedule:
+                    items:
+                      properties:
+                        day:
+                          type: string
+                        window:
+                          type: string
+                      required:
+                      - day
+                      - window
+                      type: object
+                    maxItems: 1
+                    type: array
+                required:
+                - enabled
+                - schedule
+                type: object
+              maxItems: 1
+              type: array
             backupsEnabled:
               type: boolean
             bootConfigLabel:
@@ -569,6 +593,8 @@ spec:
             disk:
               items:
                 properties:
+                  ID:
+                    type: integer
                   authorizedKeys:
                     items:
                       type: string
@@ -590,6 +616,7 @@ spec:
                   stackscriptID:
                     type: integer
                 required:
+                - ID
                 - label
                 - size
                 type: object
@@ -598,10 +625,21 @@ spec:
               type: string
             image:
               type: string
+            ipAddress:
+              type: string
+            ipv4:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            ipv6:
+              type: string
             label:
               type: string
             privateIP:
               type: boolean
+            privateIPAddress:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -622,8 +660,29 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            specs:
+              items:
+                properties:
+                  disk:
+                    type: integer
+                  memory:
+                    type: integer
+                  transfer:
+                    type: integer
+                  vcpus:
+                    type: integer
+                required:
+                - disk
+                - memory
+                - transfer
+                - vcpus
+                type: object
+              maxItems: 1
+              type: array
             stackscriptID:
               type: integer
+            status:
+              type: string
             swapSize:
               type: integer
             tags:
@@ -636,8 +695,15 @@ spec:
             watchdogEnabled:
               type: boolean
           required:
+          - backups
+          - ipAddress
+          - ipv4
+          - ipv6
+          - privateIPAddress
           - providerRef
           - region
+          - specs
+          - status
           type: object
         status:
           properties:
@@ -674,6 +740,30 @@ spec:
                   type: array
                 backupID:
                   type: integer
+                backups:
+                  items:
+                    properties:
+                      enabled:
+                        type: boolean
+                      schedule:
+                        items:
+                          properties:
+                            day:
+                              type: string
+                            window:
+                              type: string
+                          required:
+                          - day
+                          - window
+                          type: object
+                        maxItems: 1
+                        type: array
+                    required:
+                    - enabled
+                    - schedule
+                    type: object
+                  maxItems: 1
+                  type: array
                 backupsEnabled:
                   type: boolean
                 bootConfigLabel:
@@ -820,6 +910,8 @@ spec:
                 disk:
                   items:
                     properties:
+                      ID:
+                        type: integer
                       authorizedKeys:
                         items:
                           type: string
@@ -841,6 +933,7 @@ spec:
                       stackscriptID:
                         type: integer
                     required:
+                    - ID
                     - label
                     - size
                     type: object
@@ -849,10 +942,21 @@ spec:
                   type: string
                 image:
                   type: string
+                ipAddress:
+                  type: string
+                ipv4:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                ipv6:
+                  type: string
                 label:
                   type: string
                 privateIP:
                   type: boolean
+                privateIPAddress:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -873,8 +977,29 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                specs:
+                  items:
+                    properties:
+                      disk:
+                        type: integer
+                      memory:
+                        type: integer
+                      transfer:
+                        type: integer
+                      vcpus:
+                        type: integer
+                    required:
+                    - disk
+                    - memory
+                    - transfer
+                    - vcpus
+                    type: object
+                  maxItems: 1
+                  type: array
                 stackscriptID:
                   type: integer
+                status:
+                  type: string
                 swapSize:
                   type: integer
                 tags:
@@ -887,8 +1012,15 @@ spec:
                 watchdogEnabled:
                   type: boolean
               required:
+              - backups
+              - ipAddress
+              - ipv4
+              - ipv6
+              - privateIPAddress
               - providerRef
               - region
+              - specs
+              - status
               type: object
             state:
               properties:

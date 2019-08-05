@@ -42,6 +42,7 @@ type RouteTableSpecRoute struct {
 type RouteTableSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	OwnerID string `json:"ownerID" tf:"owner_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	PropagatingVgws []string `json:"propagatingVgws,omitempty" tf:"propagating_vgws,omitempty"`

@@ -22,7 +22,8 @@ type ComputeForwardingRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	BackendService string `json:"backendService,omitempty" tf:"backend_service,omitempty"`
+	BackendService    string `json:"backendService,omitempty" tf:"backend_service,omitempty"`
+	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -30,7 +31,8 @@ type ComputeForwardingRuleSpec struct {
 	// +optional
 	IpProtocol string `json:"ipProtocol,omitempty" tf:"ip_protocol,omitempty"`
 	// +optional
-	IpVersion string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
+	IpVersion        string `json:"ipVersion,omitempty" tf:"ip_version,omitempty"`
+	LabelFingerprint string `json:"labelFingerprint" tf:"label_fingerprint"`
 	// +optional
 	// Deprecated
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
@@ -50,10 +52,13 @@ type ComputeForwardingRuleSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	Region   string `json:"region,omitempty" tf:"region,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 	// +optional
 	// Deprecated
 	ServiceLabel string `json:"serviceLabel,omitempty" tf:"service_label,omitempty"`
+	// Deprecated
+	ServiceName string `json:"serviceName" tf:"service_name"`
 	// +optional
 	Subnetwork string `json:"subnetwork,omitempty" tf:"subnetwork,omitempty"`
 	// +optional

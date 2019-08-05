@@ -22,6 +22,7 @@ type KmsCryptoKeyIamMemberSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	CryptoKeyID string `json:"cryptoKeyID" tf:"crypto_key_id"`
+	Etag        string `json:"etag" tf:"etag"`
 	Member      string `json:"member" tf:"member"`
 	Role        string `json:"role" tf:"role"`
 }

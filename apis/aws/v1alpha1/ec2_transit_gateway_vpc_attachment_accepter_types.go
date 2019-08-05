@@ -21,13 +21,20 @@ type Ec2TransitGatewayVpcAttachmentAccepter struct {
 type Ec2TransitGatewayVpcAttachmentAccepterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	DnsSupport  string `json:"dnsSupport" tf:"dns_support"`
+	Ipv6Support string `json:"ipv6Support" tf:"ipv6_support"`
+	// +kubebuilder:validation:UniqueItems=true
+	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
 	// +optional
 	Tags                       map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	TransitGatewayAttachmentID string            `json:"transitGatewayAttachmentID" tf:"transit_gateway_attachment_id"`
 	// +optional
 	TransitGatewayDefaultRouteTableAssociation bool `json:"transitGatewayDefaultRouteTableAssociation,omitempty" tf:"transit_gateway_default_route_table_association,omitempty"`
 	// +optional
-	TransitGatewayDefaultRouteTablePropagation bool `json:"transitGatewayDefaultRouteTablePropagation,omitempty" tf:"transit_gateway_default_route_table_propagation,omitempty"`
+	TransitGatewayDefaultRouteTablePropagation bool   `json:"transitGatewayDefaultRouteTablePropagation,omitempty" tf:"transit_gateway_default_route_table_propagation,omitempty"`
+	TransitGatewayID                           string `json:"transitGatewayID" tf:"transit_gateway_id"`
+	VpcID                                      string `json:"vpcID" tf:"vpc_id"`
+	VpcOwnerID                                 string `json:"vpcOwnerID" tf:"vpc_owner_id"`
 }
 
 type Ec2TransitGatewayVpcAttachmentAccepterStatus struct {

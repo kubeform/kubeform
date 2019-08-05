@@ -38,6 +38,9 @@ type LbSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	AccessLogs []LbSpecAccessLogs `json:"accessLogs,omitempty" tf:"access_logs,omitempty"`
+	Arn        string             `json:"arn" tf:"arn"`
+	ArnSuffix  string             `json:"arnSuffix" tf:"arn_suffix"`
+	DnsName    string             `json:"dnsName" tf:"dns_name"`
 	// +optional
 	EnableCrossZoneLoadBalancing bool `json:"enableCrossZoneLoadBalancing,omitempty" tf:"enable_cross_zone_load_balancing,omitempty"`
 	// +optional
@@ -66,7 +69,9 @@ type LbSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Subnets []string `json:"subnets,omitempty" tf:"subnets,omitempty"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags   map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VpcID  string            `json:"vpcID" tf:"vpc_id"`
+	ZoneID string            `json:"zoneID" tf:"zone_id"`
 }
 
 type LbStatus struct {

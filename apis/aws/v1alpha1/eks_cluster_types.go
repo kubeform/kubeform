@@ -18,6 +18,10 @@ type EksCluster struct {
 	Status            EksClusterStatus `json:"status,omitempty"`
 }
 
+type EksClusterSpecCertificateAuthority struct {
+	Data string `json:"data" tf:"data"`
+}
+
 type EksClusterSpecVpcConfig struct {
 	// +optional
 	EndpointPrivateAccess bool `json:"endpointPrivateAccess,omitempty" tf:"endpoint_private_access,omitempty"`
@@ -29,15 +33,22 @@ type EksClusterSpecVpcConfig struct {
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
+	VpcID     string   `json:"vpcID" tf:"vpc_id"`
 }
 
 type EksClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
+	// +kubebuilder:validation:MaxItems=1
+	CertificateAuthority []EksClusterSpecCertificateAuthority `json:"certificateAuthority" tf:"certificate_authority"`
+	CreatedAt            string                               `json:"createdAt" tf:"created_at"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	EnabledClusterLogTypes []string `json:"enabledClusterLogTypes,omitempty" tf:"enabled_cluster_log_types,omitempty"`
+	Endpoint               string   `json:"endpoint" tf:"endpoint"`
 	Name                   string   `json:"name" tf:"name"`
+	PlatformVersion        string   `json:"platformVersion" tf:"platform_version"`
 	RoleArn                string   `json:"roleArn" tf:"role_arn"`
 	// +optional
 	Version string `json:"version,omitempty" tf:"version,omitempty"`

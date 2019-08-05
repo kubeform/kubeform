@@ -55,6 +55,7 @@ type Route53RecordSpec struct {
 	AllowOverwrite bool `json:"allowOverwrite,omitempty" tf:"allow_overwrite,omitempty"`
 	// +optional
 	FailoverRoutingPolicy []Route53RecordSpecFailoverRoutingPolicy `json:"failoverRoutingPolicy,omitempty" tf:"failover_routing_policy,omitempty"`
+	Fqdn                  string                                   `json:"fqdn" tf:"fqdn"`
 	// +optional
 	GeolocationRoutingPolicy []Route53RecordSpecGeolocationRoutingPolicy `json:"geolocationRoutingPolicy,omitempty" tf:"geolocation_routing_policy,omitempty"`
 	// +optional

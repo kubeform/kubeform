@@ -403,6 +403,12 @@ spec:
                 properties:
                   authDomain:
                     type: string
+                  codeBucket:
+                    type: string
+                  defaultBucket:
+                    type: string
+                  defaultHostname:
+                    type: string
                   featureSettings:
                     items:
                       properties:
@@ -411,10 +417,36 @@ spec:
                       type: object
                     maxItems: 1
                     type: array
+                  gcrDomain:
+                    type: string
                   locationID:
+                    type: string
+                  name:
                     type: string
                   servingStatus:
                     type: string
+                  urlDispatchRule:
+                    items:
+                      properties:
+                        domain:
+                          type: string
+                        path:
+                          type: string
+                        service:
+                          type: string
+                      required:
+                      - domain
+                      - path
+                      - service
+                      type: object
+                    type: array
+                required:
+                - codeBucket
+                - defaultBucket
+                - defaultHostname
+                - gcrDomain
+                - name
+                - urlDispatchRule
                 type: object
               maxItems: 1
               type: array
@@ -429,6 +461,8 @@ spec:
                 type: string
               type: object
             name:
+              type: string
+            number:
               type: string
             orgID:
               type: string
@@ -447,6 +481,7 @@ spec:
               type: boolean
           required:
           - name
+          - number
           - projectID
           - providerRef
           type: object
@@ -465,6 +500,12 @@ spec:
                     properties:
                       authDomain:
                         type: string
+                      codeBucket:
+                        type: string
+                      defaultBucket:
+                        type: string
+                      defaultHostname:
+                        type: string
                       featureSettings:
                         items:
                           properties:
@@ -473,10 +514,36 @@ spec:
                           type: object
                         maxItems: 1
                         type: array
+                      gcrDomain:
+                        type: string
                       locationID:
+                        type: string
+                      name:
                         type: string
                       servingStatus:
                         type: string
+                      urlDispatchRule:
+                        items:
+                          properties:
+                            domain:
+                              type: string
+                            path:
+                              type: string
+                            service:
+                              type: string
+                          required:
+                          - domain
+                          - path
+                          - service
+                          type: object
+                        type: array
+                    required:
+                    - codeBucket
+                    - defaultBucket
+                    - defaultHostname
+                    - gcrDomain
+                    - name
+                    - urlDispatchRule
                     type: object
                   maxItems: 1
                   type: array
@@ -491,6 +558,8 @@ spec:
                     type: string
                   type: object
                 name:
+                  type: string
+                number:
                   type: string
                 orgID:
                   type: string
@@ -509,6 +578,7 @@ spec:
                   type: boolean
               required:
               - name
+              - number
               - projectID
               - providerRef
               type: object

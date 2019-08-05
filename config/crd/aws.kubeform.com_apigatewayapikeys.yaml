@@ -397,10 +397,14 @@ spec:
           type: object
         spec:
           properties:
+            createdDate:
+              type: string
             description:
               type: string
             enabled:
               type: boolean
+            lastUpdatedDate:
+              type: string
             name:
               type: string
             providerRef:
@@ -422,6 +426,8 @@ spec:
                   type: string
               type: object
           required:
+          - createdDate
+          - lastUpdatedDate
           - name
           - providerRef
           type: object
@@ -434,10 +440,14 @@ spec:
               type: integer
             output:
               properties:
+                createdDate:
+                  type: string
                 description:
                   type: string
                 enabled:
                   type: boolean
+                lastUpdatedDate:
+                  type: string
                 name:
                   type: string
                 providerRef:
@@ -459,6 +469,8 @@ spec:
                       type: string
                   type: object
               required:
+              - createdDate
+              - lastUpdatedDate
               - name
               - providerRef
               type: object

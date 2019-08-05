@@ -412,6 +412,8 @@ spec:
               type: object
             replicationInstanceArn:
               type: string
+            replicationTaskArn:
+              type: string
             replicationTaskID:
               type: string
             replicationTaskSettings:
@@ -430,6 +432,7 @@ spec:
           - migrationType
           - providerRef
           - replicationInstanceArn
+          - replicationTaskArn
           - replicationTaskID
           - sourceEndpointArn
           - tableMappings
@@ -459,6 +462,8 @@ spec:
                   type: object
                 replicationInstanceArn:
                   type: string
+                replicationTaskArn:
+                  type: string
                 replicationTaskID:
                   type: string
                 replicationTaskSettings:
@@ -477,6 +482,7 @@ spec:
               - migrationType
               - providerRef
               - replicationInstanceArn
+              - replicationTaskArn
               - replicationTaskID
               - sourceEndpointArn
               - tableMappings

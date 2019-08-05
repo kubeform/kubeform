@@ -403,6 +403,8 @@ spec:
             disableProject:
               description: Deprecated
               type: boolean
+            etag:
+              type: string
             policyData:
               type: string
             project:
@@ -416,9 +418,14 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            restorePolicy:
+              description: Deprecated
+              type: string
           required:
+          - etag
           - policyData
           - providerRef
+          - restorePolicy
           type: object
         status:
           properties:
@@ -435,6 +442,8 @@ spec:
                 disableProject:
                   description: Deprecated
                   type: boolean
+                etag:
+                  type: string
                 policyData:
                   type: string
                 project:
@@ -448,9 +457,14 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                restorePolicy:
+                  description: Deprecated
+                  type: string
               required:
+              - etag
               - policyData
               - providerRef
+              - restorePolicy
               type: object
             state:
               properties:

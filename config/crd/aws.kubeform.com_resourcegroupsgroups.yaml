@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             description:
               type: string
             name:
@@ -424,6 +426,7 @@ spec:
               minItems: 1
               type: array
           required:
+          - arn
           - name
           - providerRef
           - resourceQuery
@@ -437,6 +440,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 description:
                   type: string
                 name:
@@ -464,6 +469,7 @@ spec:
                   minItems: 1
                   type: array
               required:
+              - arn
               - name
               - providerRef
               - resourceQuery

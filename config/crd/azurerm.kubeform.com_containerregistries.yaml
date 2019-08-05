@@ -399,6 +399,8 @@ spec:
           properties:
             adminEnabled:
               type: boolean
+            adminUsername:
+              type: string
             georeplicationLocations:
               items:
                 type: string
@@ -406,6 +408,8 @@ spec:
               type: array
               uniqueItems: true
             location:
+              type: string
+            loginServer:
               type: string
             name:
               type: string
@@ -449,7 +453,9 @@ spec:
                 type: string
               type: object
           required:
+          - adminUsername
           - location
+          - loginServer
           - name
           - providerRef
           - resourceGroupName
@@ -465,6 +471,8 @@ spec:
               properties:
                 adminEnabled:
                   type: boolean
+                adminUsername:
+                  type: string
                 georeplicationLocations:
                   items:
                     type: string
@@ -472,6 +480,8 @@ spec:
                   type: array
                   uniqueItems: true
                 location:
+                  type: string
+                loginServer:
                   type: string
                 name:
                   type: string
@@ -515,7 +525,9 @@ spec:
                     type: string
                   type: object
               required:
+              - adminUsername
               - location
+              - loginServer
               - name
               - providerRef
               - resourceGroupName

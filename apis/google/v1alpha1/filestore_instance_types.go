@@ -24,8 +24,9 @@ type FilestoreInstanceSpecFileShares struct {
 }
 
 type FilestoreInstanceSpecNetworks struct {
-	Modes   []string `json:"modes" tf:"modes"`
-	Network string   `json:"network" tf:"network"`
+	IpAddresses []string `json:"ipAddresses" tf:"ip_addresses"`
+	Modes       []string `json:"modes" tf:"modes"`
+	Network     string   `json:"network" tf:"network"`
 	// +optional
 	ReservedIPRange string `json:"reservedIPRange,omitempty" tf:"reserved_ip_range,omitempty"`
 }
@@ -33,8 +34,10 @@ type FilestoreInstanceSpecNetworks struct {
 type FilestoreInstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	CreateTime string `json:"createTime" tf:"create_time"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Etag        string `json:"etag" tf:"etag"`
 	// +kubebuilder:validation:MaxItems=1
 	FileShares []FilestoreInstanceSpecFileShares `json:"fileShares" tf:"file_shares"`
 	// +optional

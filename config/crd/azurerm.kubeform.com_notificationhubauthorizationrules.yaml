@@ -407,6 +407,8 @@ spec:
               type: string
             notificationHubName:
               type: string
+            primaryAccessKey:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -418,14 +420,18 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            secondaryAccessKey:
+              type: string
             send:
               type: boolean
           required:
           - name
           - namespaceName
           - notificationHubName
+          - primaryAccessKey
           - providerRef
           - resourceGroupName
+          - secondaryAccessKey
           type: object
         status:
           properties:
@@ -446,6 +452,8 @@ spec:
                   type: string
                 notificationHubName:
                   type: string
+                primaryAccessKey:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -457,14 +465,18 @@ spec:
                   type: object
                 resourceGroupName:
                   type: string
+                secondaryAccessKey:
+                  type: string
                 send:
                   type: boolean
               required:
               - name
               - namespaceName
               - notificationHubName
+              - primaryAccessKey
               - providerRef
               - resourceGroupName
+              - secondaryAccessKey
               type: object
             state:
               properties:

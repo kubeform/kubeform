@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             attributes:
               additionalProperties:
                 type: string
@@ -434,6 +436,7 @@ spec:
             version:
               type: integer
           required:
+          - arn
           - fixedRate
           - host
           - httpMethod
@@ -455,6 +458,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 attributes:
                   additionalProperties:
                     type: string
@@ -492,6 +497,7 @@ spec:
                 version:
                   type: integer
               required:
+              - arn
               - fixedRate
               - host
               - httpMethod

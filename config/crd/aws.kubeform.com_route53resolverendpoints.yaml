@@ -397,16 +397,23 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             direction:
+              type: string
+            hostVpcID:
               type: string
             ipAddress:
               items:
                 properties:
                   ip:
                     type: string
+                  ipID:
+                    type: string
                   subnetID:
                     type: string
                 required:
+                - ipID
                 - subnetID
                 type: object
               maxItems: 10
@@ -436,7 +443,9 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - direction
+          - hostVpcID
           - ipAddress
           - providerRef
           - securityGroupIDS
@@ -450,16 +459,23 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 direction:
+                  type: string
+                hostVpcID:
                   type: string
                 ipAddress:
                   items:
                     properties:
                       ip:
                         type: string
+                      ipID:
+                        type: string
                       subnetID:
                         type: string
                     required:
+                    - ipID
                     - subnetID
                     type: object
                   maxItems: 10
@@ -489,7 +505,9 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - direction
+              - hostVpcID
               - ipAddress
               - providerRef
               - securityGroupIDS

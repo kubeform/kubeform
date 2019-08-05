@@ -32,18 +32,21 @@ type ApiGatewayRestAPISpec struct {
 	// +optional
 	BinaryMediaTypes []string `json:"binaryMediaTypes,omitempty" tf:"binary_media_types,omitempty"`
 	// +optional
-	Body string `json:"body,omitempty" tf:"body,omitempty"`
+	Body        string `json:"body,omitempty" tf:"body,omitempty"`
+	CreatedDate string `json:"createdDate" tf:"created_date"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	EndpointConfiguration []ApiGatewayRestAPISpecEndpointConfiguration `json:"endpointConfiguration,omitempty" tf:"endpoint_configuration,omitempty"`
+	ExecutionArn          string                                       `json:"executionArn" tf:"execution_arn"`
 	// +optional
 	MinimumCompressionSize int    `json:"minimumCompressionSize,omitempty" tf:"minimum_compression_size,omitempty"`
 	Name                   string `json:"name" tf:"name"`
 	// +optional
-	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
+	Policy         string `json:"policy,omitempty" tf:"policy,omitempty"`
+	RootResourceID string `json:"rootResourceID" tf:"root_resource_id"`
 }
 
 type ApiGatewayRestAPIStatus struct {

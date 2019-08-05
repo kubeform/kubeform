@@ -34,6 +34,8 @@ type KmsGrantSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	GrantCreationTokens []string `json:"grantCreationTokens,omitempty" tf:"grant_creation_tokens,omitempty"`
+	GrantID             string   `json:"grantID" tf:"grant_id"`
+	GrantToken          string   `json:"grantToken" tf:"grant_token"`
 	GranteePrincipal    string   `json:"granteePrincipal" tf:"grantee_principal"`
 	KeyID               string   `json:"keyID" tf:"key_id"`
 	// +optional

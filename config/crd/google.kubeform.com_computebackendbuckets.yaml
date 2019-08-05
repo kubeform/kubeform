@@ -399,6 +399,8 @@ spec:
           properties:
             bucketName:
               type: string
+            creationTimestamp:
+              type: string
             description:
               type: string
             enableCdn:
@@ -416,10 +418,14 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
           required:
           - bucketName
+          - creationTimestamp
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -431,6 +437,8 @@ spec:
             output:
               properties:
                 bucketName:
+                  type: string
+                creationTimestamp:
                   type: string
                 description:
                   type: string
@@ -449,10 +457,14 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
               required:
               - bucketName
+              - creationTimestamp
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

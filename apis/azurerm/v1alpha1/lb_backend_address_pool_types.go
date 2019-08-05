@@ -21,7 +21,11 @@ type LbBackendAddressPool struct {
 type LbBackendAddressPoolSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	LoadbalancerID string `json:"loadbalancerID" tf:"loadbalancer_id"`
+	// +kubebuilder:validation:UniqueItems=true
+	BackendIPConfigurations []string `json:"backendIPConfigurations" tf:"backend_ip_configurations"`
+	// +kubebuilder:validation:UniqueItems=true
+	LoadBalancingRules []string `json:"loadBalancingRules" tf:"load_balancing_rules"`
+	LoadbalancerID     string   `json:"loadbalancerID" tf:"loadbalancer_id"`
 	// +optional
 	// Deprecated
 	Location          string `json:"location,omitempty" tf:"location,omitempty"`

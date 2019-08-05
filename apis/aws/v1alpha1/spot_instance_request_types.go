@@ -33,6 +33,7 @@ type SpotInstanceRequestSpecEbsBlockDevice struct {
 	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
+	VolumeID   string `json:"volumeID" tf:"volume_id"`
 	// +optional
 	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional
@@ -58,7 +59,8 @@ type SpotInstanceRequestSpecRootBlockDevice struct {
 	// +optional
 	DeleteOnTermination bool `json:"deleteOnTermination,omitempty" tf:"delete_on_termination,omitempty"`
 	// +optional
-	Iops int `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops     int    `json:"iops,omitempty" tf:"iops,omitempty"`
+	VolumeID string `json:"volumeID" tf:"volume_id"`
 	// +optional
 	VolumeSize int `json:"volumeSize,omitempty" tf:"volume_size,omitempty"`
 	// +optional
@@ -69,6 +71,7 @@ type SpotInstanceRequestSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	Ami string `json:"ami" tf:"ami"`
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	AssociatePublicIPAddress bool `json:"associatePublicIPAddress,omitempty" tf:"associate_public_ip_address,omitempty"`
 	// +optional
@@ -102,6 +105,7 @@ type SpotInstanceRequestSpec struct {
 	InstanceInitiatedShutdownBehavior string `json:"instanceInitiatedShutdownBehavior,omitempty" tf:"instance_initiated_shutdown_behavior,omitempty"`
 	// +optional
 	InstanceInterruptionBehaviour string `json:"instanceInterruptionBehaviour,omitempty" tf:"instance_interruption_behaviour,omitempty"`
+	InstanceState                 string `json:"instanceState" tf:"instance_state"`
 	InstanceType                  string `json:"instanceType" tf:"instance_type"`
 	// +optional
 	Ipv6AddressCount int `json:"ipv6AddressCount,omitempty" tf:"ipv6_address_count,omitempty"`
@@ -116,10 +120,15 @@ type SpotInstanceRequestSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	NetworkInterface []SpotInstanceRequestSpecNetworkInterface `json:"networkInterface,omitempty" tf:"network_interface,omitempty"`
+	PasswordData     string                                    `json:"passwordData" tf:"password_data"`
 	// +optional
-	PlacementGroup string `json:"placementGroup,omitempty" tf:"placement_group,omitempty"`
+	PlacementGroup            string `json:"placementGroup,omitempty" tf:"placement_group,omitempty"`
+	PrimaryNetworkInterfaceID string `json:"primaryNetworkInterfaceID" tf:"primary_network_interface_id"`
+	PrivateDNS                string `json:"privateDNS" tf:"private_dns"`
 	// +optional
 	PrivateIP string `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
+	PublicDNS string `json:"publicDNS" tf:"public_dns"`
+	PublicIP  string `json:"publicIP" tf:"public_ip"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RootBlockDevice []SpotInstanceRequestSpecRootBlockDevice `json:"rootBlockDevice,omitempty" tf:"root_block_device,omitempty"`
@@ -127,9 +136,12 @@ type SpotInstanceRequestSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	SecurityGroups []string `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
 	// +optional
-	SourceDestCheck bool `json:"sourceDestCheck,omitempty" tf:"source_dest_check,omitempty"`
+	SourceDestCheck bool   `json:"sourceDestCheck,omitempty" tf:"source_dest_check,omitempty"`
+	SpotBidStatus   string `json:"spotBidStatus" tf:"spot_bid_status"`
+	SpotInstanceID  string `json:"spotInstanceID" tf:"spot_instance_id"`
 	// +optional
-	SpotPrice string `json:"spotPrice,omitempty" tf:"spot_price,omitempty"`
+	SpotPrice        string `json:"spotPrice,omitempty" tf:"spot_price,omitempty"`
+	SpotRequestState string `json:"spotRequestState" tf:"spot_request_state"`
 	// +optional
 	SpotType string `json:"spotType,omitempty" tf:"spot_type,omitempty"`
 	// +optional

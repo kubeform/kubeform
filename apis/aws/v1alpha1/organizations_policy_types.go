@@ -21,6 +21,7 @@ type OrganizationsPolicy struct {
 type OrganizationsPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn     string `json:"arn" tf:"arn"`
 	Content string `json:"content" tf:"content"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`

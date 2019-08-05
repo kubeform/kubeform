@@ -46,12 +46,14 @@ type EventhubSpec struct {
 	CaptureDescription []EventhubSpecCaptureDescription `json:"captureDescription,omitempty" tf:"capture_description,omitempty"`
 	// +optional
 	// Deprecated
-	Location          string `json:"location,omitempty" tf:"location,omitempty"`
-	MessageRetention  int    `json:"messageRetention" tf:"message_retention"`
-	Name              string `json:"name" tf:"name"`
-	NamespaceName     string `json:"namespaceName" tf:"namespace_name"`
-	PartitionCount    int    `json:"partitionCount" tf:"partition_count"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Location         string `json:"location,omitempty" tf:"location,omitempty"`
+	MessageRetention int    `json:"messageRetention" tf:"message_retention"`
+	Name             string `json:"name" tf:"name"`
+	NamespaceName    string `json:"namespaceName" tf:"namespace_name"`
+	PartitionCount   int    `json:"partitionCount" tf:"partition_count"`
+	// +kubebuilder:validation:UniqueItems=true
+	PartitionIDS      []string `json:"partitionIDS" tf:"partition_ids"`
+	ResourceGroupName string   `json:"resourceGroupName" tf:"resource_group_name"`
 }
 
 type EventhubStatus struct {

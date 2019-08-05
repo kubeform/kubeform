@@ -83,6 +83,7 @@ type DataprocJobSpecPigConfig struct {
 
 type DataprocJobSpecPlacement struct {
 	ClusterName string `json:"clusterName" tf:"cluster_name"`
+	ClusterUUID string `json:"clusterUUID" tf:"cluster_uuid"`
 }
 
 type DataprocJobSpecPysparkConfigLoggingConfig struct {
@@ -165,9 +166,18 @@ type DataprocJobSpecSparksqlConfig struct {
 	ScriptVariables map[string]string `json:"scriptVariables,omitempty" tf:"script_variables,omitempty"`
 }
 
+type DataprocJobSpecStatus struct {
+	Details        string `json:"details" tf:"details"`
+	State          string `json:"state" tf:"state"`
+	StateStartTime string `json:"stateStartTime" tf:"state_start_time"`
+	Substate       string `json:"substate" tf:"substate"`
+}
+
 type DataprocJobSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	DriverControlsFilesURI  string `json:"driverControlsFilesURI" tf:"driver_controls_files_uri"`
+	DriverOutputResourceURI string `json:"driverOutputResourceURI" tf:"driver_output_resource_uri"`
 	// +optional
 	ForceDelete bool `json:"forceDelete,omitempty" tf:"force_delete,omitempty"`
 	// +optional
@@ -202,6 +212,8 @@ type DataprocJobSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SparksqlConfig []DataprocJobSpecSparksqlConfig `json:"sparksqlConfig,omitempty" tf:"sparksql_config,omitempty"`
+	// +kubebuilder:validation:MaxItems=1
+	Status []DataprocJobSpecStatus `json:"status" tf:"status"`
 }
 
 type DataprocJobStatus struct {

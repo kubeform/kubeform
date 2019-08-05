@@ -43,13 +43,16 @@ type ElasticacheReplicationGroupSpec struct {
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	ClusterMode []ElasticacheReplicationGroupSpecClusterMode `json:"clusterMode,omitempty" tf:"cluster_mode,omitempty"`
+	ClusterMode                  []ElasticacheReplicationGroupSpecClusterMode `json:"clusterMode,omitempty" tf:"cluster_mode,omitempty"`
+	ConfigurationEndpointAddress string                                       `json:"configurationEndpointAddress" tf:"configuration_endpoint_address"`
 	// +optional
 	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
 	// +optional
 	EngineVersion string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
 	// +optional
 	MaintenanceWindow string `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
+	// +kubebuilder:validation:UniqueItems=true
+	MemberClusters []string `json:"memberClusters" tf:"member_clusters"`
 	// +optional
 	NodeType string `json:"nodeType,omitempty" tf:"node_type,omitempty"`
 	// +optional
@@ -60,6 +63,7 @@ type ElasticacheReplicationGroupSpec struct {
 	ParameterGroupName string `json:"parameterGroupName,omitempty" tf:"parameter_group_name,omitempty"`
 	// +optional
 	Port                        int    `json:"port,omitempty" tf:"port,omitempty"`
+	PrimaryEndpointAddress      string `json:"primaryEndpointAddress" tf:"primary_endpoint_address"`
 	ReplicationGroupDescription string `json:"replicationGroupDescription" tf:"replication_group_description"`
 	ReplicationGroupID          string `json:"replicationGroupID" tf:"replication_group_id"`
 	// +optional

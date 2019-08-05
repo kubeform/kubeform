@@ -26,11 +26,12 @@ type NotificationHubNamespaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	Enabled           bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	NamespaceType     string `json:"namespaceType" tf:"namespace_type"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Enabled            bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	Location           string `json:"location" tf:"location"`
+	Name               string `json:"name" tf:"name"`
+	NamespaceType      string `json:"namespaceType" tf:"namespace_type"`
+	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
+	ServicebusEndpoint string `json:"servicebusEndpoint" tf:"servicebus_endpoint"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// Deprecated

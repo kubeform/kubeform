@@ -21,12 +21,14 @@ type MqConfiguration struct {
 type MqConfigurationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn  string `json:"arn" tf:"arn"`
 	Data string `json:"data" tf:"data"`
 	// +optional
-	Description   string `json:"description,omitempty" tf:"description,omitempty"`
-	EngineType    string `json:"engineType" tf:"engine_type"`
-	EngineVersion string `json:"engineVersion" tf:"engine_version"`
-	Name          string `json:"name" tf:"name"`
+	Description    string `json:"description,omitempty" tf:"description,omitempty"`
+	EngineType     string `json:"engineType" tf:"engine_type"`
+	EngineVersion  string `json:"engineVersion" tf:"engine_version"`
+	LatestRevision int    `json:"latestRevision" tf:"latest_revision"`
+	Name           string `json:"name" tf:"name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

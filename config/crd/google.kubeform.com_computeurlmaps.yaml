@@ -401,6 +401,8 @@ spec:
               type: string
             description:
               type: string
+            fingerprint:
+              type: string
             hostRule:
               items:
                 properties:
@@ -418,6 +420,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            mapID:
+              type: string
             name:
               type: string
             pathMatcher:
@@ -459,6 +463,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
             test:
               items:
                 properties:
@@ -478,8 +484,11 @@ spec:
               type: array
           required:
           - defaultService
+          - fingerprint
+          - mapID
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -493,6 +502,8 @@ spec:
                 defaultService:
                   type: string
                 description:
+                  type: string
+                fingerprint:
                   type: string
                 hostRule:
                   items:
@@ -511,6 +522,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                mapID:
+                  type: string
                 name:
                   type: string
                 pathMatcher:
@@ -552,6 +565,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
                 test:
                   items:
                     properties:
@@ -571,8 +586,11 @@ spec:
                   type: array
               required:
               - defaultService
+              - fingerprint
+              - mapID
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

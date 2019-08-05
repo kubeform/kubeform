@@ -24,6 +24,8 @@ type SourcerepoRepositorySpec struct {
 	Name string `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Size    int    `json:"size" tf:"size"`
+	Url     string `json:"url" tf:"url"`
 }
 
 type SourcerepoRepositoryStatus struct {

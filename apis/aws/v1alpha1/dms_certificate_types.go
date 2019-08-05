@@ -23,7 +23,8 @@ type DmsCertificateSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	CertificateID string `json:"certificateID" tf:"certificate_id"`
+	CertificateArn string `json:"certificateArn" tf:"certificate_arn"`
+	CertificateID  string `json:"certificateID" tf:"certificate_id"`
 	// +optional
 	CertificatePem string `json:"-" sensitive:"true" tf:"certificate_pem,omitempty"`
 	// +optional

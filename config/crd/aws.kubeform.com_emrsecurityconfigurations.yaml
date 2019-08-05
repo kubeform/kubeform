@@ -399,6 +399,8 @@ spec:
           properties:
             configuration:
               type: string
+            creationDate:
+              type: string
             name:
               type: string
             namePrefix:
@@ -414,6 +416,7 @@ spec:
               type: object
           required:
           - configuration
+          - creationDate
           - providerRef
           type: object
         status:
@@ -426,6 +429,8 @@ spec:
             output:
               properties:
                 configuration:
+                  type: string
+                creationDate:
                   type: string
                 name:
                   type: string
@@ -442,6 +447,7 @@ spec:
                   type: object
               required:
               - configuration
+              - creationDate
               - providerRef
               type: object
             state:

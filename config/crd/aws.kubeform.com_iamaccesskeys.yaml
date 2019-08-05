@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            encryptedSecret:
+              type: string
+            keyFingerprint:
+              type: string
             pgpKey:
               type: string
             providerRef:
@@ -408,12 +412,21 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            secret:
+              description: Deprecated
+              type: string
+            sesSMTPPassword:
+              type: string
             status:
               type: string
             user:
               type: string
           required:
+          - encryptedSecret
+          - keyFingerprint
           - providerRef
+          - secret
+          - sesSMTPPassword
           - user
           type: object
         status:
@@ -425,6 +438,10 @@ spec:
               type: integer
             output:
               properties:
+                encryptedSecret:
+                  type: string
+                keyFingerprint:
+                  type: string
                 pgpKey:
                   type: string
                 providerRef:
@@ -436,12 +453,21 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                secret:
+                  description: Deprecated
+                  type: string
+                sesSMTPPassword:
+                  type: string
                 status:
                   type: string
                 user:
                   type: string
               required:
+              - encryptedSecret
+              - keyFingerprint
               - providerRef
+              - secret
+              - sesSMTPPassword
               - user
               type: object
             state:

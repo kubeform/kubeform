@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             cloudWatchLogsGroupArn:
               type: string
             cloudWatchLogsRoleArn:
@@ -430,6 +432,8 @@ spec:
                 type: object
               maxItems: 5
               type: array
+            homeRegion:
+              type: string
             includeGlobalServiceEvents:
               type: boolean
             isMultiRegionTrail:
@@ -460,6 +464,8 @@ spec:
                 type: string
               type: object
           required:
+          - arn
+          - homeRegion
           - name
           - providerRef
           - s3BucketName
@@ -473,6 +479,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 cloudWatchLogsGroupArn:
                   type: string
                 cloudWatchLogsRoleArn:
@@ -506,6 +514,8 @@ spec:
                     type: object
                   maxItems: 5
                   type: array
+                homeRegion:
+                  type: string
                 includeGlobalServiceEvents:
                   type: boolean
                 isMultiRegionTrail:
@@ -536,6 +546,8 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
+              - homeRegion
               - name
               - providerRef
               - s3BucketName

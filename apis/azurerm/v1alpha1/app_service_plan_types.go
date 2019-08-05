@@ -49,6 +49,7 @@ type AppServicePlanSpec struct {
 	Location string `json:"location" tf:"location"`
 	// +optional
 	MaximumElasticWorkerCount int    `json:"maximumElasticWorkerCount,omitempty" tf:"maximum_elastic_worker_count,omitempty"`
+	MaximumNumberOfWorkers    int    `json:"maximumNumberOfWorkers" tf:"maximum_number_of_workers"`
 	Name                      string `json:"name" tf:"name"`
 	// +optional
 	PerSiteScaling bool `json:"perSiteScaling,omitempty" tf:"per_site_scaling,omitempty"`

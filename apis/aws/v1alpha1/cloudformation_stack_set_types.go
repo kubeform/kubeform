@@ -22,6 +22,7 @@ type CloudformationStackSetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	AdministrationRoleArn string `json:"administrationRoleArn" tf:"administration_role_arn"`
+	Arn                   string `json:"arn" tf:"arn"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Capabilities []string `json:"capabilities,omitempty" tf:"capabilities,omitempty"`
@@ -32,6 +33,7 @@ type CloudformationStackSetSpec struct {
 	Name              string `json:"name" tf:"name"`
 	// +optional
 	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	StackSetID string            `json:"stackSetID" tf:"stack_set_id"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional

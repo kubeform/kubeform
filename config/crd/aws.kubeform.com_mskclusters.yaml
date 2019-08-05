@@ -397,6 +397,12 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            bootstrapBrokers:
+              type: string
+            bootstrapBrokersTls:
+              type: string
             brokerNodeGroupInfo:
               items:
                 properties:
@@ -454,6 +460,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            currentVersion:
+              type: string
             encryptionInfo:
               items:
                 properties:
@@ -491,12 +499,19 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            zookeeperConnectString:
+              type: string
           required:
+          - arn
+          - bootstrapBrokers
+          - bootstrapBrokersTls
           - brokerNodeGroupInfo
           - clusterName
+          - currentVersion
           - kafkaVersion
           - numberOfBrokerNodes
           - providerRef
+          - zookeeperConnectString
           type: object
         status:
           properties:
@@ -507,6 +522,12 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                bootstrapBrokers:
+                  type: string
+                bootstrapBrokersTls:
+                  type: string
                 brokerNodeGroupInfo:
                   items:
                     properties:
@@ -564,6 +585,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                currentVersion:
+                  type: string
                 encryptionInfo:
                   items:
                     properties:
@@ -601,12 +624,19 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                zookeeperConnectString:
+                  type: string
               required:
+              - arn
+              - bootstrapBrokers
+              - bootstrapBrokersTls
               - brokerNodeGroupInfo
               - clusterName
+              - currentVersion
               - kafkaVersion
               - numberOfBrokerNodes
               - providerRef
+              - zookeeperConnectString
               type: object
             state:
               properties:

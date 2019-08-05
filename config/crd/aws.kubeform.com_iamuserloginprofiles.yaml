@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            encryptedPassword:
+              type: string
+            keyFingerprint:
+              type: string
             passwordLength:
               type: integer
             passwordResetRequired:
@@ -415,6 +419,8 @@ spec:
             user:
               type: string
           required:
+          - encryptedPassword
+          - keyFingerprint
           - pgpKey
           - providerRef
           - user
@@ -428,6 +434,10 @@ spec:
               type: integer
             output:
               properties:
+                encryptedPassword:
+                  type: string
+                keyFingerprint:
+                  type: string
                 passwordLength:
                   type: integer
                 passwordResetRequired:
@@ -446,6 +456,8 @@ spec:
                 user:
                   type: string
               required:
+              - encryptedPassword
+              - keyFingerprint
               - pgpKey
               - providerRef
               - user

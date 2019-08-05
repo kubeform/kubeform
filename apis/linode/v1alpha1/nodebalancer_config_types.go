@@ -18,6 +18,11 @@ type NodebalancerConfig struct {
 	Status            NodebalancerConfigStatus `json:"status,omitempty"`
 }
 
+type NodebalancerConfigSpecNodeStatus struct {
+	StatusDown int `json:"statusDown" tf:"status_down"`
+	StatusUp   int `json:"statusUp" tf:"status_up"`
+}
+
 type NodebalancerConfigSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -40,14 +45,17 @@ type NodebalancerConfigSpec struct {
 	// +optional
 	CheckTimeout int `json:"checkTimeout,omitempty" tf:"check_timeout,omitempty"`
 	// +optional
-	CipherSuite    string `json:"cipherSuite,omitempty" tf:"cipher_suite,omitempty"`
-	NodebalancerID int    `json:"nodebalancerID" tf:"nodebalancer_id"`
+	CipherSuite    string                                      `json:"cipherSuite,omitempty" tf:"cipher_suite,omitempty"`
+	NodeStatus     map[string]NodebalancerConfigSpecNodeStatus `json:"nodeStatus" tf:"node_status"`
+	NodebalancerID int                                         `json:"nodebalancerID" tf:"nodebalancer_id"`
 	// +optional
 	Port int `json:"port,omitempty" tf:"port,omitempty"`
 	// +optional
 	Protocol string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 	// +optional
-	SslCert string `json:"sslCert,omitempty" tf:"ssl_cert,omitempty"`
+	SslCert        string `json:"sslCert,omitempty" tf:"ssl_cert,omitempty"`
+	SslCommonname  string `json:"sslCommonname" tf:"ssl_commonname"`
+	SslFingerprint string `json:"sslFingerprint" tf:"ssl_fingerprint"`
 	// +optional
 	SslKey string `json:"-" sensitive:"true" tf:"ssl_key,omitempty"`
 	// +optional

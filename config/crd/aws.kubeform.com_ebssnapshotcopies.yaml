@@ -397,11 +397,17 @@ spec:
           type: object
         spec:
           properties:
+            dataEncryptionKeyID:
+              type: string
             description:
               type: string
             encrypted:
               type: boolean
             kmsKeyID:
+              type: string
+            ownerAlias:
+              type: string
+            ownerID:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -420,10 +426,19 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            volumeID:
+              type: string
+            volumeSize:
+              type: integer
           required:
+          - dataEncryptionKeyID
+          - ownerAlias
+          - ownerID
           - providerRef
           - sourceRegion
           - sourceSnapshotID
+          - volumeID
+          - volumeSize
           type: object
         status:
           properties:
@@ -434,11 +449,17 @@ spec:
               type: integer
             output:
               properties:
+                dataEncryptionKeyID:
+                  type: string
                 description:
                   type: string
                 encrypted:
                   type: boolean
                 kmsKeyID:
+                  type: string
+                ownerAlias:
+                  type: string
+                ownerID:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -457,10 +478,19 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                volumeID:
+                  type: string
+                volumeSize:
+                  type: integer
               required:
+              - dataEncryptionKeyID
+              - ownerAlias
+              - ownerID
               - providerRef
               - sourceRegion
               - sourceSnapshotID
+              - volumeID
+              - volumeSize
               type: object
             state:
               properties:

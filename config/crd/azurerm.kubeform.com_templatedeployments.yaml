@@ -401,6 +401,10 @@ spec:
               type: string
             name:
               type: string
+            outputs:
+              additionalProperties:
+                type: string
+              type: object
             parameters:
               additionalProperties:
                 type: string
@@ -423,6 +427,7 @@ spec:
           required:
           - deploymentMode
           - name
+          - outputs
           - providerRef
           - resourceGroupName
           type: object
@@ -439,6 +444,10 @@ spec:
                   type: string
                 name:
                   type: string
+                outputs:
+                  additionalProperties:
+                    type: string
+                  type: object
                 parameters:
                   additionalProperties:
                     type: string
@@ -461,6 +470,7 @@ spec:
               required:
               - deploymentMode
               - name
+              - outputs
               - providerRef
               - resourceGroupName
               type: object

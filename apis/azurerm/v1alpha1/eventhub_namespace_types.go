@@ -21,10 +21,16 @@ type EventhubNamespace struct {
 type EventhubNamespaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	AutoInflateEnabled bool `json:"autoInflateEnabled,omitempty" tf:"auto_inflate_enabled,omitempty"`
 	// +optional
-	Capacity int `json:"capacity,omitempty" tf:"capacity,omitempty"`
+	Capacity                         int    `json:"capacity,omitempty" tf:"capacity,omitempty"`
+	DefaultPrimaryConnectionString   string `json:"-" sensitive:"true" tf:"default_primary_connection_string"`
+	DefaultPrimaryKey                string `json:"-" sensitive:"true" tf:"default_primary_key"`
+	DefaultSecondaryConnectionString string `json:"-" sensitive:"true" tf:"default_secondary_connection_string"`
+	DefaultSecondaryKey              string `json:"-" sensitive:"true" tf:"default_secondary_key"`
 	// +optional
 	KafkaEnabled bool   `json:"kafkaEnabled,omitempty" tf:"kafka_enabled,omitempty"`
 	Location     string `json:"location" tf:"location"`

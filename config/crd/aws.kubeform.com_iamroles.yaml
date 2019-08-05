@@ -397,7 +397,11 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             assumeRolePolicy:
+              type: string
+            createDate:
               type: string
             description:
               type: string
@@ -426,9 +430,14 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            uniqueID:
+              type: string
           required:
+          - arn
           - assumeRolePolicy
+          - createDate
           - providerRef
+          - uniqueID
           type: object
         status:
           properties:
@@ -439,7 +448,11 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 assumeRolePolicy:
+                  type: string
+                createDate:
                   type: string
                 description:
                   type: string
@@ -468,9 +481,14 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                uniqueID:
+                  type: string
               required:
+              - arn
               - assumeRolePolicy
+              - createDate
               - providerRef
+              - uniqueID
               type: object
             state:
               properties:

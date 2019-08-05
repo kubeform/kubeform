@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             logGroupName:
               type: string
             name:
@@ -411,6 +413,7 @@ spec:
                   type: string
               type: object
           required:
+          - arn
           - logGroupName
           - name
           - providerRef
@@ -424,6 +427,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 logGroupName:
                   type: string
                 name:
@@ -438,6 +443,7 @@ spec:
                       type: string
                   type: object
               required:
+              - arn
               - logGroupName
               - name
               - providerRef

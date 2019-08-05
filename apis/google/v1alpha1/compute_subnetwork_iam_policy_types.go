@@ -21,6 +21,7 @@ type ComputeSubnetworkIamPolicy struct {
 type ComputeSubnetworkIamPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Etag       string `json:"etag" tf:"etag"`
 	PolicyData string `json:"policyData" tf:"policy_data"`
 	// +optional
 	// Deprecated

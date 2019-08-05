@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             name:
               type: string
             namePrefix:
@@ -410,10 +412,14 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            targetKeyArn:
+              type: string
             targetKeyID:
               type: string
           required:
+          - arn
           - providerRef
+          - targetKeyArn
           - targetKeyID
           type: object
         status:
@@ -425,6 +431,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 name:
                   type: string
                 namePrefix:
@@ -438,10 +446,14 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                targetKeyArn:
+                  type: string
                 targetKeyID:
                   type: string
               required:
+              - arn
               - providerRef
+              - targetKeyArn
               - targetKeyID
               type: object
             state:

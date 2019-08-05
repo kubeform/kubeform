@@ -23,6 +23,9 @@ type VolumeSpec struct {
 
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	// +kubebuilder:validation:UniqueItems=true
+	DropletIDS      []int64 `json:"dropletIDS" tf:"droplet_ids"`
+	FilesystemLabel string  `json:"filesystemLabel" tf:"filesystem_label"`
 	// +optional
 	// Deprecated
 	FilesystemType string `json:"filesystemType,omitempty" tf:"filesystem_type,omitempty"`
@@ -35,6 +38,7 @@ type VolumeSpec struct {
 	Size                  int    `json:"size" tf:"size"`
 	// +optional
 	SnapshotID string `json:"snapshotID,omitempty" tf:"snapshot_id,omitempty"`
+	Urn        string `json:"urn" tf:"urn"`
 }
 
 type VolumeStatus struct {

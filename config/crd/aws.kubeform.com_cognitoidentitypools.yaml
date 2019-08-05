@@ -399,6 +399,8 @@ spec:
           properties:
             allowUnauthenticatedIdentities:
               type: boolean
+            arn:
+              type: string
             cognitoIdentityProviders:
               items:
                 properties:
@@ -437,6 +439,7 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - identityPoolName
           - providerRef
           type: object
@@ -451,6 +454,8 @@ spec:
               properties:
                 allowUnauthenticatedIdentities:
                   type: boolean
+                arn:
+                  type: string
                 cognitoIdentityProviders:
                   items:
                     properties:
@@ -489,6 +494,7 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - identityPoolName
               - providerRef
               type: object

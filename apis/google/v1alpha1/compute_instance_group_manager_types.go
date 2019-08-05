@@ -67,7 +67,9 @@ type ComputeInstanceGroupManagerSpec struct {
 	AutoHealingPolicies []ComputeInstanceGroupManagerSpecAutoHealingPolicies `json:"autoHealingPolicies,omitempty" tf:"auto_healing_policies,omitempty"`
 	BaseInstanceName    string                                               `json:"baseInstanceName" tf:"base_instance_name"`
 	// +optional
-	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Description   string `json:"description,omitempty" tf:"description,omitempty"`
+	Fingerprint   string `json:"fingerprint" tf:"fingerprint"`
+	InstanceGroup string `json:"instanceGroup" tf:"instance_group"`
 	// +optional
 	InstanceTemplate string `json:"instanceTemplate,omitempty" tf:"instance_template,omitempty"`
 	Name             string `json:"name" tf:"name"`
@@ -79,6 +81,7 @@ type ComputeInstanceGroupManagerSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	// Deprecated
 	RollingUpdatePolicy []ComputeInstanceGroupManagerSpecRollingUpdatePolicy `json:"rollingUpdatePolicy,omitempty" tf:"rolling_update_policy,omitempty"`
+	SelfLink            string                                               `json:"selfLink" tf:"self_link"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	TargetPools []string `json:"targetPools,omitempty" tf:"target_pools,omitempty"`

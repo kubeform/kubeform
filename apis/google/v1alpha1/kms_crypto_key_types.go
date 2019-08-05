@@ -25,6 +25,7 @@ type KmsCryptoKeySpec struct {
 	Name    string `json:"name" tf:"name"`
 	// +optional
 	RotationPeriod string `json:"rotationPeriod,omitempty" tf:"rotation_period,omitempty"`
+	SelfLink       string `json:"selfLink" tf:"self_link"`
 }
 
 type KmsCryptoKeyStatus struct {

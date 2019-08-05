@@ -24,7 +24,8 @@ type DocdbClusterSpec struct {
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	ApplyImmediately bool   `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	Arn              string `json:"arn" tf:"arn"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AvailabilityZones []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
@@ -36,19 +37,22 @@ type DocdbClusterSpec struct {
 	ClusterIdentifierPrefix string `json:"clusterIdentifierPrefix,omitempty" tf:"cluster_identifier_prefix,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	ClusterMembers []string `json:"clusterMembers,omitempty" tf:"cluster_members,omitempty"`
+	ClusterMembers    []string `json:"clusterMembers,omitempty" tf:"cluster_members,omitempty"`
+	ClusterResourceID string   `json:"clusterResourceID" tf:"cluster_resource_id"`
 	// +optional
 	DbClusterParameterGroupName string `json:"dbClusterParameterGroupName,omitempty" tf:"db_cluster_parameter_group_name,omitempty"`
 	// +optional
 	DbSubnetGroupName string `json:"dbSubnetGroupName,omitempty" tf:"db_subnet_group_name,omitempty"`
 	// +optional
 	EnabledCloudwatchLogsExports []string `json:"enabledCloudwatchLogsExports,omitempty" tf:"enabled_cloudwatch_logs_exports,omitempty"`
+	Endpoint                     string   `json:"endpoint" tf:"endpoint"`
 	// +optional
 	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
 	// +optional
 	EngineVersion string `json:"engineVersion,omitempty" tf:"engine_version,omitempty"`
 	// +optional
 	FinalSnapshotIdentifier string `json:"finalSnapshotIdentifier,omitempty" tf:"final_snapshot_identifier,omitempty"`
+	HostedZoneID            string `json:"hostedZoneID" tf:"hosted_zone_id"`
 	// +optional
 	KmsKeyID string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
 	// +optional
@@ -61,6 +65,7 @@ type DocdbClusterSpec struct {
 	PreferredBackupWindow string `json:"preferredBackupWindow,omitempty" tf:"preferred_backup_window,omitempty"`
 	// +optional
 	PreferredMaintenanceWindow string `json:"preferredMaintenanceWindow,omitempty" tf:"preferred_maintenance_window,omitempty"`
+	ReaderEndpoint             string `json:"readerEndpoint" tf:"reader_endpoint"`
 	// +optional
 	SkipFinalSnapshot bool `json:"skipFinalSnapshot,omitempty" tf:"skip_final_snapshot,omitempty"`
 	// +optional

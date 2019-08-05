@@ -397,15 +397,27 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             availabilityZone:
               type: string
             blueprintID:
               type: string
             bundleID:
               type: string
+            cpuCount:
+              type: integer
+            createdAt:
+              type: string
+            ipv6Address:
+              type: string
+            isStaticIP:
+              type: boolean
             keyPairName:
               type: string
             name:
+              type: string
+            privateIPAddress:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -416,18 +428,33 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            publicIPAddress:
+              type: string
+            ramSize:
+              type: integer
             tags:
               additionalProperties:
                 type: string
               type: object
             userData:
               type: string
+            username:
+              type: string
           required:
+          - arn
           - availabilityZone
           - blueprintID
           - bundleID
+          - cpuCount
+          - createdAt
+          - ipv6Address
+          - isStaticIP
           - name
+          - privateIPAddress
           - providerRef
+          - publicIPAddress
+          - ramSize
+          - username
           type: object
         status:
           properties:
@@ -438,15 +465,27 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 availabilityZone:
                   type: string
                 blueprintID:
                   type: string
                 bundleID:
                   type: string
+                cpuCount:
+                  type: integer
+                createdAt:
+                  type: string
+                ipv6Address:
+                  type: string
+                isStaticIP:
+                  type: boolean
                 keyPairName:
                   type: string
                 name:
+                  type: string
+                privateIPAddress:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -457,18 +496,33 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                publicIPAddress:
+                  type: string
+                ramSize:
+                  type: integer
                 tags:
                   additionalProperties:
                     type: string
                   type: object
                 userData:
                   type: string
+                username:
+                  type: string
               required:
+              - arn
               - availabilityZone
               - blueprintID
               - bundleID
+              - cpuCount
+              - createdAt
+              - ipv6Address
+              - isStaticIP
               - name
+              - privateIPAddress
               - providerRef
+              - publicIPAddress
+              - ramSize
+              - username
               type: object
             state:
               properties:

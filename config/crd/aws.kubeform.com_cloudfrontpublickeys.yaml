@@ -397,9 +397,13 @@ spec:
           type: object
         spec:
           properties:
+            callerReference:
+              type: string
             comment:
               type: string
             encodedKey:
+              type: string
+            etag:
               type: string
             name:
               type: string
@@ -415,7 +419,9 @@ spec:
                   type: string
               type: object
           required:
+          - callerReference
           - encodedKey
+          - etag
           - providerRef
           type: object
         status:
@@ -427,9 +433,13 @@ spec:
               type: integer
             output:
               properties:
+                callerReference:
+                  type: string
                 comment:
                   type: string
                 encodedKey:
+                  type: string
+                etag:
                   type: string
                 name:
                   type: string
@@ -445,7 +455,9 @@ spec:
                       type: string
                   type: object
               required:
+              - callerReference
               - encodedKey
+              - etag
               - providerRef
               type: object
             state:

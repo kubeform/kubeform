@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            accessEndpoint:
+              type: string
             location:
               type: string
             name:
@@ -425,6 +427,7 @@ spec:
             workflowVersion:
               type: string
           required:
+          - accessEndpoint
           - location
           - name
           - providerRef
@@ -439,6 +442,8 @@ spec:
               type: integer
             output:
               properties:
+                accessEndpoint:
+                  type: string
                 location:
                   type: string
                 name:
@@ -467,6 +472,7 @@ spec:
                 workflowVersion:
                   type: string
               required:
+              - accessEndpoint
               - location
               - name
               - providerRef

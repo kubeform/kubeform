@@ -397,11 +397,15 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             description:
               type: string
             functionName:
               type: string
             functionVersion:
+              type: string
+            invokeArn:
               type: string
             name:
               type: string
@@ -426,8 +430,10 @@ spec:
               maxItems: 1
               type: array
           required:
+          - arn
           - functionName
           - functionVersion
+          - invokeArn
           - name
           - providerRef
           type: object
@@ -440,11 +446,15 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 description:
                   type: string
                 functionName:
                   type: string
                 functionVersion:
+                  type: string
+                invokeArn:
                   type: string
                 name:
                   type: string
@@ -469,8 +479,10 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - arn
               - functionName
               - functionVersion
+              - invokeArn
               - name
               - providerRef
               type: object

@@ -416,6 +416,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            status:
+              type: string
             weight:
               type: integer
           required:
@@ -424,6 +426,7 @@ spec:
           - label
           - nodebalancerID
           - providerRef
+          - status
           type: object
         status:
           properties:
@@ -453,6 +456,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                status:
+                  type: string
                 weight:
                   type: integer
               required:
@@ -461,6 +466,7 @@ spec:
               - label
               - nodebalancerID
               - providerRef
+              - status
               type: object
             state:
               properties:

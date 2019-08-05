@@ -25,6 +25,7 @@ type ComputeNetworkSpec struct {
 	AutoCreateSubnetworks bool `json:"autoCreateSubnetworks,omitempty" tf:"auto_create_subnetworks,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	GatewayIpv4 string `json:"gatewayIpv4" tf:"gateway_ipv4"`
 	// +optional
 	// Deprecated
 	Ipv4Range string `json:"ipv4Range,omitempty" tf:"ipv4_range,omitempty"`
@@ -33,6 +34,7 @@ type ComputeNetworkSpec struct {
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
 	RoutingMode string `json:"routingMode,omitempty" tf:"routing_mode,omitempty"`
+	SelfLink    string `json:"selfLink" tf:"self_link"`
 }
 
 type ComputeNetworkStatus struct {

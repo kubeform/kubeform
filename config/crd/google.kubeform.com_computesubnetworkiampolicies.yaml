@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            etag:
+              type: string
             policyData:
               type: string
             project:
@@ -418,6 +420,7 @@ spec:
               description: Deprecated
               type: string
           required:
+          - etag
           - policyData
           - providerRef
           - subnetwork
@@ -431,6 +434,8 @@ spec:
               type: integer
             output:
               properties:
+                etag:
+                  type: string
                 policyData:
                   type: string
                 project:
@@ -452,6 +457,7 @@ spec:
                   description: Deprecated
                   type: string
               required:
+              - etag
               - policyData
               - providerRef
               - subnetwork

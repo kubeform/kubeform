@@ -100,6 +100,7 @@ type LbListenerSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	CertificateArn  string                        `json:"certificateArn,omitempty" tf:"certificate_arn,omitempty"`
 	DefaultAction   []LbListenerSpecDefaultAction `json:"defaultAction" tf:"default_action"`

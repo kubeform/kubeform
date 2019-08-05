@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             onPremConfig:
               items:
                 properties:
@@ -427,11 +429,15 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            uri:
+              type: string
           required:
+          - arn
           - onPremConfig
           - providerRef
           - serverHostname
           - subdirectory
+          - uri
           type: object
         status:
           properties:
@@ -442,6 +448,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 onPremConfig:
                   items:
                     properties:
@@ -472,11 +480,15 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                uri:
+                  type: string
               required:
+              - arn
               - onPremConfig
               - providerRef
               - serverHostname
               - subdirectory
+              - uri
               type: object
             state:
               properties:

@@ -420,10 +420,13 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            state:
+              type: string
           required:
           - config
           - displayName
           - providerRef
+          - state
           type: object
         status:
           properties:
@@ -457,10 +460,13 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                state:
+                  type: string
               required:
               - config
               - displayName
               - providerRef
+              - state
               type: object
             state:
               properties:

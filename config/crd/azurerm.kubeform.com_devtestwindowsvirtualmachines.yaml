@@ -401,6 +401,8 @@ spec:
               type: boolean
             disallowPublicIPAddress:
               type: boolean
+            fqdn:
+              type: string
             galleryImageReference:
               items:
                 properties:
@@ -425,10 +427,13 @@ spec:
                 properties:
                   backendPort:
                     type: integer
+                  frontendPort:
+                    type: integer
                   protocol:
                     type: string
                 required:
                 - backendPort
+                - frontendPort
                 - protocol
                 type: object
               type: array
@@ -466,9 +471,12 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            uniqueIdentifier:
+              type: string
             username:
               type: string
           required:
+          - fqdn
           - galleryImageReference
           - labName
           - labSubnetName
@@ -480,6 +488,7 @@ spec:
           - resourceGroupName
           - size
           - storageType
+          - uniqueIdentifier
           - username
           type: object
         status:
@@ -495,6 +504,8 @@ spec:
                   type: boolean
                 disallowPublicIPAddress:
                   type: boolean
+                fqdn:
+                  type: string
                 galleryImageReference:
                   items:
                     properties:
@@ -519,10 +530,13 @@ spec:
                     properties:
                       backendPort:
                         type: integer
+                      frontendPort:
+                        type: integer
                       protocol:
                         type: string
                     required:
                     - backendPort
+                    - frontendPort
                     - protocol
                     type: object
                   type: array
@@ -560,9 +574,12 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                uniqueIdentifier:
+                  type: string
                 username:
                   type: string
               required:
+              - fqdn
               - galleryImageReference
               - labName
               - labSubnetName
@@ -574,6 +591,7 @@ spec:
               - resourceGroupName
               - size
               - storageType
+              - uniqueIdentifier
               - username
               type: object
             state:

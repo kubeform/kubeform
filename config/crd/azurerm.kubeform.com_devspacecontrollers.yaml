@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            dataPlaneFqdn:
+              type: string
             hostSuffix:
               type: string
             location:
@@ -443,6 +445,7 @@ spec:
             targetContainerHostResourceID:
               type: string
           required:
+          - dataPlaneFqdn
           - hostSuffix
           - location
           - name
@@ -460,6 +463,8 @@ spec:
               type: integer
             output:
               properties:
+                dataPlaneFqdn:
+                  type: string
                 hostSuffix:
                   type: string
                 location:
@@ -506,6 +511,7 @@ spec:
                 targetContainerHostResourceID:
                   type: string
               required:
+              - dataPlaneFqdn
               - hostSuffix
               - location
               - name

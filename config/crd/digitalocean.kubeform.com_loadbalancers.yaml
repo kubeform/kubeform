@@ -455,6 +455,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            ip:
+              type: string
             name:
               type: string
             providerRef:
@@ -470,6 +472,8 @@ spec:
               type: boolean
             region:
               type: string
+            status:
+              type: string
             stickySessions:
               items:
                 properties:
@@ -482,11 +486,16 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            urn:
+              type: string
           required:
           - forwardingRule
+          - ip
           - name
           - providerRef
           - region
+          - status
+          - urn
           type: object
         status:
           properties:
@@ -555,6 +564,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                ip:
+                  type: string
                 name:
                   type: string
                 providerRef:
@@ -570,6 +581,8 @@ spec:
                   type: boolean
                 region:
                   type: string
+                status:
+                  type: string
                 stickySessions:
                   items:
                     properties:
@@ -582,11 +595,16 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                urn:
+                  type: string
               required:
               - forwardingRule
+              - ip
               - name
               - providerRef
               - region
+              - status
+              - urn
               type: object
             state:
               properties:

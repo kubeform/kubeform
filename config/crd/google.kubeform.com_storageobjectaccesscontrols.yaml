@@ -399,10 +399,28 @@ spec:
           properties:
             bucket:
               type: string
+            domain:
+              type: string
+            email:
+              type: string
             entity:
               type: string
+            entityID:
+              type: string
+            generation:
+              type: integer
             object:
               type: string
+            projectTeam:
+              items:
+                properties:
+                  projectNumber:
+                    type: string
+                  team:
+                    type: string
+                type: object
+              maxItems: 1
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -416,8 +434,13 @@ spec:
               type: string
           required:
           - bucket
+          - domain
+          - email
           - entity
+          - entityID
+          - generation
           - object
+          - projectTeam
           - providerRef
           - role
           type: object
@@ -432,10 +455,28 @@ spec:
               properties:
                 bucket:
                   type: string
+                domain:
+                  type: string
+                email:
+                  type: string
                 entity:
                   type: string
+                entityID:
+                  type: string
+                generation:
+                  type: integer
                 object:
                   type: string
+                projectTeam:
+                  items:
+                    properties:
+                      projectNumber:
+                        type: string
+                      team:
+                        type: string
+                    type: object
+                  maxItems: 1
+                  type: array
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -449,8 +490,13 @@ spec:
                   type: string
               required:
               - bucket
+              - domain
+              - email
               - entity
+              - entityID
+              - generation
               - object
+              - projectTeam
               - providerRef
               - role
               type: object

@@ -431,11 +431,17 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
+            size:
+              type: integer
             zone:
               type: string
           required:
           - name
           - providerRef
+          - selfLink
+          - size
           type: object
         status:
           properties:
@@ -480,11 +486,17 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
+                size:
+                  type: integer
                 zone:
                   type: string
               required:
               - name
               - providerRef
+              - selfLink
+              - size
               type: object
             state:
               properties:

@@ -18,10 +18,28 @@ type KubernetesCluster struct {
 	Status            KubernetesClusterStatus `json:"status,omitempty"`
 }
 
-type KubernetesClusterSpecNodePool struct {
+type KubernetesClusterSpecKubeConfig struct {
+	ClientCertificate    string `json:"clientCertificate" tf:"client_certificate"`
+	ClientKey            string `json:"clientKey" tf:"client_key"`
+	ClusterCaCertificate string `json:"clusterCaCertificate" tf:"cluster_ca_certificate"`
+	Host                 string `json:"host" tf:"host"`
+	RawConfig            string `json:"rawConfig" tf:"raw_config"`
+}
+
+type KubernetesClusterSpecNodePoolNodes struct {
+	CreatedAt string `json:"createdAt" tf:"created_at"`
+	ID        string `json:"ID" tf:"id"`
 	Name      string `json:"name" tf:"name"`
-	NodeCount int    `json:"nodeCount" tf:"node_count"`
-	Size      string `json:"size" tf:"size"`
+	Status    string `json:"status" tf:"status"`
+	UpdatedAt string `json:"updatedAt" tf:"updated_at"`
+}
+
+type KubernetesClusterSpecNodePool struct {
+	ID        string                               `json:"ID" tf:"id"`
+	Name      string                               `json:"name" tf:"name"`
+	NodeCount int                                  `json:"nodeCount" tf:"node_count"`
+	Nodes     []KubernetesClusterSpecNodePoolNodes `json:"nodes" tf:"nodes"`
+	Size      string                               `json:"size" tf:"size"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
@@ -30,15 +48,23 @@ type KubernetesClusterSpecNodePool struct {
 type KubernetesClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Name string `json:"name" tf:"name"`
+	ClusterSubnet string                            `json:"clusterSubnet" tf:"cluster_subnet"`
+	CreatedAt     string                            `json:"createdAt" tf:"created_at"`
+	Endpoint      string                            `json:"endpoint" tf:"endpoint"`
+	Ipv4Address   string                            `json:"ipv4Address" tf:"ipv4_address"`
+	KubeConfig    []KubernetesClusterSpecKubeConfig `json:"kubeConfig" tf:"kube_config"`
+	Name          string                            `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
-	NodePool []KubernetesClusterSpecNodePool `json:"nodePool" tf:"node_pool"`
-	Region   string                          `json:"region" tf:"region"`
+	NodePool      []KubernetesClusterSpecNodePool `json:"nodePool" tf:"node_pool"`
+	Region        string                          `json:"region" tf:"region"`
+	ServiceSubnet string                          `json:"serviceSubnet" tf:"service_subnet"`
+	Status        string                          `json:"status" tf:"status"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Tags    []string `json:"tags,omitempty" tf:"tags,omitempty"`
-	Version string   `json:"version" tf:"version"`
+	Tags      []string `json:"tags,omitempty" tf:"tags,omitempty"`
+	UpdatedAt string   `json:"updatedAt" tf:"updated_at"`
+	Version   string   `json:"version" tf:"version"`
 }
 
 type KubernetesClusterStatus struct {

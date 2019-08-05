@@ -399,6 +399,11 @@ spec:
           properties:
             intervalInSeconds:
               type: integer
+            loadBalancerRules:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             loadbalancerID:
               type: string
             location:
@@ -426,6 +431,7 @@ spec:
             resourceGroupName:
               type: string
           required:
+          - loadBalancerRules
           - loadbalancerID
           - name
           - port
@@ -443,6 +449,11 @@ spec:
               properties:
                 intervalInSeconds:
                   type: integer
+                loadBalancerRules:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
                 loadbalancerID:
                   type: string
                 location:
@@ -470,6 +481,7 @@ spec:
                 resourceGroupName:
                   type: string
               required:
+              - loadBalancerRules
               - loadbalancerID
               - name
               - port

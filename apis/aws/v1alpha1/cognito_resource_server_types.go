@@ -31,8 +31,9 @@ type CognitoResourceServerSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=25
 	// +kubebuilder:validation:UniqueItems=true
-	Scope      []CognitoResourceServerSpecScope `json:"scope,omitempty" tf:"scope,omitempty"`
-	UserPoolID string                           `json:"userPoolID" tf:"user_pool_id"`
+	Scope            []CognitoResourceServerSpecScope `json:"scope,omitempty" tf:"scope,omitempty"`
+	ScopeIdentifiers []string                         `json:"scopeIdentifiers" tf:"scope_identifiers"`
+	UserPoolID       string                           `json:"userPoolID" tf:"user_pool_id"`
 }
 
 type CognitoResourceServerStatus struct {

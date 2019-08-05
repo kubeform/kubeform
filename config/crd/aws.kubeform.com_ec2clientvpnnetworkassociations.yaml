@@ -408,12 +408,24 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            securityGroups:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            status:
+              type: string
             subnetID:
+              type: string
+            vpcID:
               type: string
           required:
           - clientVPNEndpointID
           - providerRef
+          - securityGroups
+          - status
           - subnetID
+          - vpcID
           type: object
         status:
           properties:
@@ -435,12 +447,24 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                securityGroups:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                status:
+                  type: string
                 subnetID:
+                  type: string
+                vpcID:
                   type: string
               required:
               - clientVPNEndpointID
               - providerRef
+              - securityGroups
+              - status
               - subnetID
+              - vpcID
               type: object
             state:
               properties:

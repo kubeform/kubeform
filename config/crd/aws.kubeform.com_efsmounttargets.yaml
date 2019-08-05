@@ -397,9 +397,15 @@ spec:
           type: object
         spec:
           properties:
+            dnsName:
+              type: string
+            fileSystemArn:
+              type: string
             fileSystemID:
               type: string
             ipAddress:
+              type: string
+            networkInterfaceID:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -418,7 +424,10 @@ spec:
             subnetID:
               type: string
           required:
+          - dnsName
+          - fileSystemArn
           - fileSystemID
+          - networkInterfaceID
           - providerRef
           - subnetID
           type: object
@@ -431,9 +440,15 @@ spec:
               type: integer
             output:
               properties:
+                dnsName:
+                  type: string
+                fileSystemArn:
+                  type: string
                 fileSystemID:
                   type: string
                 ipAddress:
+                  type: string
+                networkInterfaceID:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -452,7 +467,10 @@ spec:
                 subnetID:
                   type: string
               required:
+              - dnsName
+              - fileSystemArn
               - fileSystemID
+              - networkInterfaceID
               - providerRef
               - subnetID
               type: object

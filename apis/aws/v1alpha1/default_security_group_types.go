@@ -59,12 +59,15 @@ type DefaultSecurityGroupSpecIngress struct {
 type DefaultSecurityGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Egress []DefaultSecurityGroupSpecEgress `json:"egress,omitempty" tf:"egress,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Ingress []DefaultSecurityGroupSpecIngress `json:"ingress,omitempty" tf:"ingress,omitempty"`
+	Name    string                            `json:"name" tf:"name"`
+	OwnerID string                            `json:"ownerID" tf:"owner_id"`
 	// +optional
 	RevokeRulesOnDelete bool `json:"revokeRulesOnDelete,omitempty" tf:"revoke_rules_on_delete,omitempty"`
 	// +optional

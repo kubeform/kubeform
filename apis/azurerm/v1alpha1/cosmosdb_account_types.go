@@ -39,6 +39,7 @@ type CosmosdbAccountSpecFailoverPolicy struct {
 
 type CosmosdbAccountSpecGeoLocation struct {
 	FailoverPriority int    `json:"failoverPriority" tf:"failover_priority"`
+	ID               string `json:"ID" tf:"id"`
 	Location         string `json:"location" tf:"location"`
 	// +optional
 	Prefix string `json:"prefix,omitempty" tf:"prefix,omitempty"`
@@ -51,6 +52,8 @@ type CosmosdbAccountSpecVirtualNetworkRule struct {
 type CosmosdbAccountSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Capabilities []CosmosdbAccountSpecCapabilities `json:"capabilities,omitempty" tf:"capabilities,omitempty"`
@@ -59,7 +62,8 @@ type CosmosdbAccountSpec struct {
 	// +optional
 	EnableAutomaticFailover bool `json:"enableAutomaticFailover,omitempty" tf:"enable_automatic_failover,omitempty"`
 	// +optional
-	EnableMultipleWriteLocations bool `json:"enableMultipleWriteLocations,omitempty" tf:"enable_multiple_write_locations,omitempty"`
+	EnableMultipleWriteLocations bool   `json:"enableMultipleWriteLocations,omitempty" tf:"enable_multiple_write_locations,omitempty"`
+	Endpoint                     string `json:"endpoint" tf:"endpoint"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	// Deprecated
@@ -72,16 +76,22 @@ type CosmosdbAccountSpec struct {
 	// +optional
 	IsVirtualNetworkFilterEnabled bool `json:"isVirtualNetworkFilterEnabled,omitempty" tf:"is_virtual_network_filter_enabled,omitempty"`
 	// +optional
-	Kind              string `json:"kind,omitempty" tf:"kind,omitempty"`
-	Location          string `json:"location" tf:"location"`
-	Name              string `json:"name" tf:"name"`
-	OfferType         string `json:"offerType" tf:"offer_type"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Kind                       string   `json:"kind,omitempty" tf:"kind,omitempty"`
+	Location                   string   `json:"location" tf:"location"`
+	Name                       string   `json:"name" tf:"name"`
+	OfferType                  string   `json:"offerType" tf:"offer_type"`
+	PrimaryMasterKey           string   `json:"-" sensitive:"true" tf:"primary_master_key"`
+	PrimaryReadonlyMasterKey   string   `json:"-" sensitive:"true" tf:"primary_readonly_master_key"`
+	ReadEndpoints              []string `json:"readEndpoints" tf:"read_endpoints"`
+	ResourceGroupName          string   `json:"resourceGroupName" tf:"resource_group_name"`
+	SecondaryMasterKey         string   `json:"-" sensitive:"true" tf:"secondary_master_key"`
+	SecondaryReadonlyMasterKey string   `json:"-" sensitive:"true" tf:"secondary_readonly_master_key"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	VirtualNetworkRule []CosmosdbAccountSpecVirtualNetworkRule `json:"virtualNetworkRule,omitempty" tf:"virtual_network_rule,omitempty"`
+	WriteEndpoints     []string                                `json:"writeEndpoints" tf:"write_endpoints"`
 }
 
 type CosmosdbAccountStatus struct {

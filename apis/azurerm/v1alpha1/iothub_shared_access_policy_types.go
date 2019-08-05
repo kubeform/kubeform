@@ -21,15 +21,21 @@ type IothubSharedAccessPolicy struct {
 type IothubSharedAccessPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
 	// +optional
-	DeviceConnect bool   `json:"deviceConnect,omitempty" tf:"device_connect,omitempty"`
-	IothubName    string `json:"iothubName" tf:"iothub_name"`
-	Name          string `json:"name" tf:"name"`
+	DeviceConnect           bool   `json:"deviceConnect,omitempty" tf:"device_connect,omitempty"`
+	IothubName              string `json:"iothubName" tf:"iothub_name"`
+	Name                    string `json:"name" tf:"name"`
+	PrimaryConnectionString string `json:"-" sensitive:"true" tf:"primary_connection_string"`
+	PrimaryKey              string `json:"-" sensitive:"true" tf:"primary_key"`
 	// +optional
 	RegistryRead bool `json:"registryRead,omitempty" tf:"registry_read,omitempty"`
 	// +optional
-	RegistryWrite     bool   `json:"registryWrite,omitempty" tf:"registry_write,omitempty"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	RegistryWrite             bool   `json:"registryWrite,omitempty" tf:"registry_write,omitempty"`
+	ResourceGroupName         string `json:"resourceGroupName" tf:"resource_group_name"`
+	SecondaryConnectionString string `json:"-" sensitive:"true" tf:"secondary_connection_string"`
+	SecondaryKey              string `json:"-" sensitive:"true" tf:"secondary_key"`
 	// +optional
 	ServiceConnect bool `json:"serviceConnect,omitempty" tf:"service_connect,omitempty"`
 }

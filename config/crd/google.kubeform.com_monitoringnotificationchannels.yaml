@@ -407,6 +407,8 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            name:
+              type: string
             project:
               type: string
             providerRef:
@@ -424,10 +426,14 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            verificationStatus:
+              type: string
           required:
           - displayName
+          - name
           - providerRef
           - type
+          - verificationStatus
           type: object
         status:
           properties:
@@ -448,6 +454,8 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                name:
+                  type: string
                 project:
                   type: string
                 providerRef:
@@ -465,10 +473,14 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                verificationStatus:
+                  type: string
               required:
               - displayName
+              - name
               - providerRef
               - type
+              - verificationStatus
               type: object
             state:
               properties:

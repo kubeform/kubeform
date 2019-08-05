@@ -399,6 +399,12 @@ spec:
           properties:
             authDomain:
               type: string
+            codeBucket:
+              type: string
+            defaultBucket:
+              type: string
+            defaultHostname:
+              type: string
             featureSettings:
               items:
                 properties:
@@ -407,7 +413,11 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            gcrDomain:
+              type: string
             locationID:
+              type: string
+            name:
               type: string
             project:
               type: string
@@ -422,9 +432,30 @@ spec:
               type: object
             servingStatus:
               type: string
+            urlDispatchRule:
+              items:
+                properties:
+                  domain:
+                    type: string
+                  path:
+                    type: string
+                  service:
+                    type: string
+                required:
+                - domain
+                - path
+                - service
+                type: object
+              type: array
           required:
+          - codeBucket
+          - defaultBucket
+          - defaultHostname
+          - gcrDomain
           - locationID
+          - name
           - providerRef
+          - urlDispatchRule
           type: object
         status:
           properties:
@@ -437,6 +468,12 @@ spec:
               properties:
                 authDomain:
                   type: string
+                codeBucket:
+                  type: string
+                defaultBucket:
+                  type: string
+                defaultHostname:
+                  type: string
                 featureSettings:
                   items:
                     properties:
@@ -445,7 +482,11 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                gcrDomain:
+                  type: string
                 locationID:
+                  type: string
+                name:
                   type: string
                 project:
                   type: string
@@ -460,9 +501,30 @@ spec:
                   type: object
                 servingStatus:
                   type: string
+                urlDispatchRule:
+                  items:
+                    properties:
+                      domain:
+                        type: string
+                      path:
+                        type: string
+                      service:
+                        type: string
+                    required:
+                    - domain
+                    - path
+                    - service
+                    type: object
+                  type: array
               required:
+              - codeBucket
+              - defaultBucket
+              - defaultHostname
+              - gcrDomain
               - locationID
+              - name
               - providerRef
+              - urlDispatchRule
               type: object
             state:
               properties:

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             description:
               type: string
             kafkaVersions:
@@ -404,6 +406,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            latestRevision:
+              type: integer
             name:
               type: string
             providerRef:
@@ -418,7 +422,9 @@ spec:
             serverProperties:
               type: string
           required:
+          - arn
           - kafkaVersions
+          - latestRevision
           - name
           - providerRef
           - serverProperties
@@ -432,6 +438,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 description:
                   type: string
                 kafkaVersions:
@@ -439,6 +447,8 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                latestRevision:
+                  type: integer
                 name:
                   type: string
                 providerRef:
@@ -453,7 +463,9 @@ spec:
                 serverProperties:
                   type: string
               required:
+              - arn
               - kafkaVersions
+              - latestRevision
               - name
               - providerRef
               - serverProperties

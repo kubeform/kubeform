@@ -21,6 +21,9 @@ type ApplicationInsightsAPIKey struct {
 type ApplicationInsightsAPIKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+
+	ApiKey                string `json:"-" sensitive:"true" tf:"api_key"`
 	ApplicationInsightsID string `json:"applicationInsightsID" tf:"application_insights_id"`
 	Name                  string `json:"name" tf:"name"`
 	// +optional

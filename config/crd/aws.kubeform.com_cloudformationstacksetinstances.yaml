@@ -416,10 +416,13 @@ spec:
               type: string
             retainStack:
               type: boolean
+            stackID:
+              type: string
             stackSetName:
               type: string
           required:
           - providerRef
+          - stackID
           - stackSetName
           type: object
         status:
@@ -450,10 +453,13 @@ spec:
                   type: string
                 retainStack:
                   type: boolean
+                stackID:
+                  type: string
                 stackSetName:
                   type: string
               required:
               - providerRef
+              - stackID
               - stackSetName
               type: object
             state:

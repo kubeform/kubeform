@@ -399,6 +399,8 @@ spec:
           properties:
             checkIntervalSec:
               type: integer
+            creationTimestamp:
+              type: string
             description:
               type: string
             healthyThreshold:
@@ -448,6 +450,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
             sslHealthCheck:
               items:
                 properties:
@@ -478,11 +482,16 @@ spec:
               type: array
             timeoutSec:
               type: integer
+            type:
+              type: string
             unhealthyThreshold:
               type: integer
           required:
+          - creationTimestamp
           - name
           - providerRef
+          - selfLink
+          - type
           type: object
         status:
           properties:
@@ -495,6 +504,8 @@ spec:
               properties:
                 checkIntervalSec:
                   type: integer
+                creationTimestamp:
+                  type: string
                 description:
                   type: string
                 healthyThreshold:
@@ -544,6 +555,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
                 sslHealthCheck:
                   items:
                     properties:
@@ -574,11 +587,16 @@ spec:
                   type: array
                 timeoutSec:
                   type: integer
+                type:
+                  type: string
                 unhealthyThreshold:
                   type: integer
               required:
+              - creationTimestamp
               - name
               - providerRef
+              - selfLink
+              - type
               type: object
             state:
               properties:

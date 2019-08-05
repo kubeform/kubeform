@@ -397,7 +397,11 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             description:
+              type: string
+            hostedZone:
               type: string
             name:
               type: string
@@ -411,6 +415,8 @@ spec:
                   type: string
               type: object
           required:
+          - arn
+          - hostedZone
           - name
           - providerRef
           type: object
@@ -423,7 +429,11 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 description:
+                  type: string
+                hostedZone:
                   type: string
                 name:
                   type: string
@@ -437,6 +447,8 @@ spec:
                       type: string
                   type: object
               required:
+              - arn
+              - hostedZone
               - name
               - providerRef
               type: object

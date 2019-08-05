@@ -397,6 +397,26 @@ spec:
           type: object
         spec:
           properties:
+            accounts:
+              items:
+                properties:
+                  ID:
+                    type: string
+                  arn:
+                    type: string
+                  email:
+                    type: string
+                  name:
+                    type: string
+                required:
+                - ID
+                - arn
+                - email
+                - name
+                type: object
+              type: array
+            arn:
+              type: string
             awsServiceAccessPrincipals:
               items:
                 type: string
@@ -409,6 +429,30 @@ spec:
               uniqueItems: true
             featureSet:
               type: string
+            masterAccountArn:
+              type: string
+            masterAccountEmail:
+              type: string
+            masterAccountID:
+              type: string
+            nonMasterAccounts:
+              items:
+                properties:
+                  ID:
+                    type: string
+                  arn:
+                    type: string
+                  email:
+                    type: string
+                  name:
+                    type: string
+                required:
+                - ID
+                - arn
+                - email
+                - name
+                type: object
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -418,8 +462,43 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            roots:
+              items:
+                properties:
+                  ID:
+                    type: string
+                  arn:
+                    type: string
+                  name:
+                    type: string
+                  policyTypes:
+                    items:
+                      properties:
+                        status:
+                          type: string
+                        type:
+                          type: string
+                      required:
+                      - status
+                      - type
+                      type: object
+                    type: array
+                required:
+                - ID
+                - arn
+                - name
+                - policyTypes
+                type: object
+              type: array
           required:
+          - accounts
+          - arn
+          - masterAccountArn
+          - masterAccountEmail
+          - masterAccountID
+          - nonMasterAccounts
           - providerRef
+          - roots
           type: object
         status:
           properties:
@@ -430,6 +509,26 @@ spec:
               type: integer
             output:
               properties:
+                accounts:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      arn:
+                        type: string
+                      email:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                    - ID
+                    - arn
+                    - email
+                    - name
+                    type: object
+                  type: array
+                arn:
+                  type: string
                 awsServiceAccessPrincipals:
                   items:
                     type: string
@@ -442,6 +541,30 @@ spec:
                   uniqueItems: true
                 featureSet:
                   type: string
+                masterAccountArn:
+                  type: string
+                masterAccountEmail:
+                  type: string
+                masterAccountID:
+                  type: string
+                nonMasterAccounts:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      arn:
+                        type: string
+                      email:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                    - ID
+                    - arn
+                    - email
+                    - name
+                    type: object
+                  type: array
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -451,8 +574,43 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                roots:
+                  items:
+                    properties:
+                      ID:
+                        type: string
+                      arn:
+                        type: string
+                      name:
+                        type: string
+                      policyTypes:
+                        items:
+                          properties:
+                            status:
+                              type: string
+                            type:
+                              type: string
+                          required:
+                          - status
+                          - type
+                          type: object
+                        type: array
+                    required:
+                    - ID
+                    - arn
+                    - name
+                    - policyTypes
+                    type: object
+                  type: array
               required:
+              - accounts
+              - arn
+              - masterAccountArn
+              - masterAccountEmail
+              - masterAccountID
+              - nonMasterAccounts
               - providerRef
+              - roots
               type: object
             state:
               properties:

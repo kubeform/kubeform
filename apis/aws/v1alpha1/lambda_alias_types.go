@@ -28,10 +28,12 @@ type LambdaAliasSpecRoutingConfig struct {
 type LambdaAliasSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	Description     string `json:"description,omitempty" tf:"description,omitempty"`
 	FunctionName    string `json:"functionName" tf:"function_name"`
 	FunctionVersion string `json:"functionVersion" tf:"function_version"`
+	InvokeArn       string `json:"invokeArn" tf:"invoke_arn"`
 	Name            string `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

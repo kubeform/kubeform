@@ -44,20 +44,24 @@ type BigqueryDatasetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	Access    []BigqueryDatasetSpecAccess `json:"access,omitempty" tf:"access,omitempty"`
-	DatasetID string                      `json:"datasetID" tf:"dataset_id"`
+	Access       []BigqueryDatasetSpecAccess `json:"access,omitempty" tf:"access,omitempty"`
+	CreationTime int                         `json:"creationTime" tf:"creation_time"`
+	DatasetID    string                      `json:"datasetID" tf:"dataset_id"`
 	// +optional
 	DefaultTableExpirationMs int `json:"defaultTableExpirationMs,omitempty" tf:"default_table_expiration_ms,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Etag        string `json:"etag" tf:"etag"`
 	// +optional
 	FriendlyName string `json:"friendlyName,omitempty" tf:"friendly_name,omitempty"`
 	// +optional
-	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	Labels           map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	LastModifiedTime int               `json:"lastModifiedTime" tf:"last_modified_time"`
 	// +optional
 	Location string `json:"location,omitempty" tf:"location,omitempty"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Project  string `json:"project,omitempty" tf:"project,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 }
 
 type BigqueryDatasetStatus struct {

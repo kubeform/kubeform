@@ -412,10 +412,13 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
           required:
           - location
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -441,10 +444,13 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
               required:
               - location
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

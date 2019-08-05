@@ -399,6 +399,8 @@ spec:
           properties:
             allowVersionUpgrade:
               type: boolean
+            arn:
+              type: string
             automatedSnapshotRetentionPeriod:
               type: integer
             availabilityZone:
@@ -423,6 +425,8 @@ spec:
             clusterVersion:
               type: string
             databaseName:
+              type: string
+            dnsName:
               type: string
             elasticIP:
               type: string
@@ -517,7 +521,9 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - arn
           - clusterIdentifier
+          - dnsName
           - nodeType
           - providerRef
           type: object
@@ -532,6 +538,8 @@ spec:
               properties:
                 allowVersionUpgrade:
                   type: boolean
+                arn:
+                  type: string
                 automatedSnapshotRetentionPeriod:
                   type: integer
                 availabilityZone:
@@ -556,6 +564,8 @@ spec:
                 clusterVersion:
                   type: string
                 databaseName:
+                  type: string
+                dnsName:
                   type: string
                 elasticIP:
                   type: string
@@ -650,7 +660,9 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - arn
               - clusterIdentifier
+              - dnsName
               - nodeType
               - providerRef
               type: object

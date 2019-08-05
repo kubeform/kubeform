@@ -24,10 +24,12 @@ type SearchServiceSpec struct {
 	Location string `json:"location" tf:"location"`
 	Name     string `json:"name" tf:"name"`
 	// +optional
-	PartitionCount int `json:"partitionCount,omitempty" tf:"partition_count,omitempty"`
+	PartitionCount int    `json:"partitionCount,omitempty" tf:"partition_count,omitempty"`
+	PrimaryKey     string `json:"primaryKey" tf:"primary_key"`
 	// +optional
 	ReplicaCount      int    `json:"replicaCount,omitempty" tf:"replica_count,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	SecondaryKey      string `json:"secondaryKey" tf:"secondary_key"`
 	Sku               string `json:"sku" tf:"sku"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

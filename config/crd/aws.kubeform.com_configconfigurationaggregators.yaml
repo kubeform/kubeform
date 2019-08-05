@@ -417,6 +417,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            arn:
+              type: string
             name:
               type: string
             organizationAggregationSource:
@@ -446,6 +448,7 @@ spec:
                   type: string
               type: object
           required:
+          - arn
           - name
           - providerRef
           type: object
@@ -478,6 +481,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                arn:
+                  type: string
                 name:
                   type: string
                 organizationAggregationSource:
@@ -507,6 +512,7 @@ spec:
                       type: string
                   type: object
               required:
+              - arn
               - name
               - providerRef
               type: object

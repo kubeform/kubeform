@@ -26,6 +26,7 @@ type DaxSubnetGroupSpec struct {
 	Name        string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS" tf:"subnet_ids"`
+	VpcID     string   `json:"vpcID" tf:"vpc_id"`
 }
 
 type DaxSubnetGroupStatus struct {

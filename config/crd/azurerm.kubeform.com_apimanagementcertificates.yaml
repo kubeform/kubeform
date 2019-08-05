@@ -399,6 +399,8 @@ spec:
           properties:
             apiManagementName:
               type: string
+            expiration:
+              type: string
             name:
               type: string
             providerRef:
@@ -421,11 +423,18 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            subject:
+              type: string
+            thumbprint:
+              type: string
           required:
           - apiManagementName
+          - expiration
           - name
           - providerRef
           - resourceGroupName
+          - subject
+          - thumbprint
           type: object
         status:
           properties:
@@ -437,6 +446,8 @@ spec:
             output:
               properties:
                 apiManagementName:
+                  type: string
+                expiration:
                   type: string
                 name:
                   type: string
@@ -460,11 +471,18 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                subject:
+                  type: string
+                thumbprint:
+                  type: string
               required:
               - apiManagementName
+              - expiration
               - name
               - providerRef
               - resourceGroupName
+              - subject
+              - thumbprint
               type: object
             state:
               properties:

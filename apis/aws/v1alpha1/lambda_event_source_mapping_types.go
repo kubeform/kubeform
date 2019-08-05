@@ -24,13 +24,19 @@ type LambdaEventSourceMappingSpec struct {
 	// +optional
 	BatchSize int `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
 	// +optional
-	Enabled        bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
-	EventSourceArn string `json:"eventSourceArn" tf:"event_source_arn"`
-	FunctionName   string `json:"functionName" tf:"function_name"`
+	Enabled              bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	EventSourceArn       string `json:"eventSourceArn" tf:"event_source_arn"`
+	FunctionArn          string `json:"functionArn" tf:"function_arn"`
+	FunctionName         string `json:"functionName" tf:"function_name"`
+	LastModified         string `json:"lastModified" tf:"last_modified"`
+	LastProcessingResult string `json:"lastProcessingResult" tf:"last_processing_result"`
 	// +optional
 	StartingPosition string `json:"startingPosition,omitempty" tf:"starting_position,omitempty"`
 	// +optional
 	StartingPositionTimestamp string `json:"startingPositionTimestamp,omitempty" tf:"starting_position_timestamp,omitempty"`
+	State                     string `json:"state" tf:"state"`
+	StateTransitionReason     string `json:"stateTransitionReason" tf:"state_transition_reason"`
+	Uuid                      string `json:"uuid" tf:"uuid"`
 }
 
 type LambdaEventSourceMappingStatus struct {

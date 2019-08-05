@@ -25,6 +25,7 @@ type DmsReplicationTaskSpec struct {
 	CdcStartTime           string `json:"cdcStartTime,omitempty" tf:"cdc_start_time,omitempty"`
 	MigrationType          string `json:"migrationType" tf:"migration_type"`
 	ReplicationInstanceArn string `json:"replicationInstanceArn" tf:"replication_instance_arn"`
+	ReplicationTaskArn     string `json:"replicationTaskArn" tf:"replication_task_arn"`
 	ReplicationTaskID      string `json:"replicationTaskID" tf:"replication_task_id"`
 	// +optional
 	ReplicationTaskSettings string `json:"replicationTaskSettings,omitempty" tf:"replication_task_settings,omitempty"`

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            etag:
+              type: string
             keyRingID:
               type: string
             policyData:
@@ -411,6 +413,7 @@ spec:
                   type: string
               type: object
           required:
+          - etag
           - keyRingID
           - policyData
           - providerRef
@@ -424,6 +427,8 @@ spec:
               type: integer
             output:
               properties:
+                etag:
+                  type: string
                 keyRingID:
                   type: string
                 policyData:
@@ -438,6 +443,7 @@ spec:
                       type: string
                   type: object
               required:
+              - etag
               - keyRingID
               - policyData
               - providerRef

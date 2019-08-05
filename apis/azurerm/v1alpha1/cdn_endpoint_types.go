@@ -41,6 +41,7 @@ type CdnEndpointSpec struct {
 	ContentTypesToCompress []string `json:"contentTypesToCompress,omitempty" tf:"content_types_to_compress,omitempty"`
 	// +optional
 	GeoFilter []CdnEndpointSpecGeoFilter `json:"geoFilter,omitempty" tf:"geo_filter,omitempty"`
+	HostName  string                     `json:"hostName" tf:"host_name"`
 	// +optional
 	IsCompressionEnabled bool `json:"isCompressionEnabled,omitempty" tf:"is_compression_enabled,omitempty"`
 	// +optional

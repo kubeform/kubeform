@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            endpoint:
+              type: string
             endpointDetails:
               items:
                 properties:
@@ -433,6 +437,8 @@ spec:
             url:
               type: string
           required:
+          - arn
+          - endpoint
           - providerRef
           type: object
         status:
@@ -444,6 +450,10 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                endpoint:
+                  type: string
                 endpointDetails:
                   items:
                     properties:
@@ -480,6 +490,8 @@ spec:
                 url:
                   type: string
               required:
+              - arn
+              - endpoint
               - providerRef
               type: object
             state:

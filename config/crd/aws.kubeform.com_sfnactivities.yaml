@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            creationDate:
+              type: string
             name:
               type: string
             providerRef:
@@ -413,6 +415,7 @@ spec:
                 type: string
               type: object
           required:
+          - creationDate
           - name
           - providerRef
           type: object
@@ -425,6 +428,8 @@ spec:
               type: integer
             output:
               properties:
+                creationDate:
+                  type: string
                 name:
                   type: string
                 providerRef:
@@ -441,6 +446,7 @@ spec:
                     type: string
                   type: object
               required:
+              - creationDate
               - name
               - providerRef
               type: object

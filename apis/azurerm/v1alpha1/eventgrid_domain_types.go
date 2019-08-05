@@ -45,6 +45,7 @@ type EventgridDomainSpecInputMappingFields struct {
 type EventgridDomainSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Endpoint string `json:"endpoint" tf:"endpoint"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	InputMappingDefaultValues []EventgridDomainSpecInputMappingDefaultValues `json:"inputMappingDefaultValues,omitempty" tf:"input_mapping_default_values,omitempty"`

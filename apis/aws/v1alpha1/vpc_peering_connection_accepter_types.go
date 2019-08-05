@@ -39,18 +39,23 @@ type VpcPeeringConnectionAccepterSpecRequester struct {
 type VpcPeeringConnectionAccepterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	AcceptStatus string `json:"acceptStatus" tf:"accept_status"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	Accepter []VpcPeeringConnectionAccepterSpecAccepter `json:"accepter,omitempty" tf:"accepter,omitempty"`
 	// +optional
-	AutoAccept bool `json:"autoAccept,omitempty" tf:"auto_accept,omitempty"`
+	AutoAccept  bool   `json:"autoAccept,omitempty" tf:"auto_accept,omitempty"`
+	PeerOwnerID string `json:"peerOwnerID" tf:"peer_owner_id"`
+	PeerRegion  string `json:"peerRegion" tf:"peer_region"`
+	PeerVpcID   string `json:"peerVpcID" tf:"peer_vpc_id"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	Requester []VpcPeeringConnectionAccepterSpecRequester `json:"requester,omitempty" tf:"requester,omitempty"`
 	// +optional
 	Tags                   map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VpcID                  string            `json:"vpcID" tf:"vpc_id"`
 	VpcPeeringConnectionID string            `json:"vpcPeeringConnectionID" tf:"vpc_peering_connection_id"`
 }
 

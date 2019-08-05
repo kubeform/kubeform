@@ -21,8 +21,12 @@ type PrivateDNSZone struct {
 type PrivateDNSZoneSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Name              string `json:"name" tf:"name"`
-	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	MaxNumberOfRecordSets                          int    `json:"maxNumberOfRecordSets" tf:"max_number_of_record_sets"`
+	MaxNumberOfVirtualNetworkLinks                 int    `json:"maxNumberOfVirtualNetworkLinks" tf:"max_number_of_virtual_network_links"`
+	MaxNumberOfVirtualNetworkLinksWithRegistration int    `json:"maxNumberOfVirtualNetworkLinksWithRegistration" tf:"max_number_of_virtual_network_links_with_registration"`
+	Name                                           string `json:"name" tf:"name"`
+	NumberOfRecordSets                             int    `json:"numberOfRecordSets" tf:"number_of_record_sets"`
+	ResourceGroupName                              string `json:"resourceGroupName" tf:"resource_group_name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 }

@@ -397,8 +397,16 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            awsDevice:
+              type: string
             bandwidth:
               type: string
+            hasLogicalRedundancy:
+              type: string
+            jumboFrameCapable:
+              type: boolean
             location:
               type: string
             name:
@@ -417,7 +425,11 @@ spec:
                 type: string
               type: object
           required:
+          - arn
+          - awsDevice
           - bandwidth
+          - hasLogicalRedundancy
+          - jumboFrameCapable
           - location
           - name
           - providerRef
@@ -431,8 +443,16 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                awsDevice:
+                  type: string
                 bandwidth:
                   type: string
+                hasLogicalRedundancy:
+                  type: string
+                jumboFrameCapable:
+                  type: boolean
                 location:
                   type: string
                 name:
@@ -451,7 +471,11 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
+              - awsDevice
               - bandwidth
+              - hasLogicalRedundancy
+              - jumboFrameCapable
               - location
               - name
               - providerRef

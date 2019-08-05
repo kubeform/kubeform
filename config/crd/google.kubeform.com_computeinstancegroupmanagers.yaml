@@ -415,6 +415,10 @@ spec:
               type: string
             description:
               type: string
+            fingerprint:
+              type: string
+            instanceGroup:
+              type: string
             instanceTemplate:
               type: string
             name:
@@ -466,6 +470,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            selfLink:
+              type: string
             targetPools:
               items:
                 type: string
@@ -504,8 +510,11 @@ spec:
               type: string
           required:
           - baseInstanceName
+          - fingerprint
+          - instanceGroup
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -533,6 +542,10 @@ spec:
                 baseInstanceName:
                   type: string
                 description:
+                  type: string
+                fingerprint:
+                  type: string
+                instanceGroup:
                   type: string
                 instanceTemplate:
                   type: string
@@ -585,6 +598,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                selfLink:
+                  type: string
                 targetPools:
                   items:
                     type: string
@@ -623,8 +638,11 @@ spec:
                   type: string
               required:
               - baseInstanceName
+              - fingerprint
+              - instanceGroup
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

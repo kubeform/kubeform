@@ -21,7 +21,9 @@ type IamRole struct {
 type IamRoleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn              string `json:"arn" tf:"arn"`
 	AssumeRolePolicy string `json:"assumeRolePolicy" tf:"assume_role_policy"`
+	CreateDate       string `json:"createDate" tf:"create_date"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -37,7 +39,8 @@ type IamRoleSpec struct {
 	// +optional
 	PermissionsBoundary string `json:"permissionsBoundary,omitempty" tf:"permissions_boundary,omitempty"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	UniqueID string            `json:"uniqueID" tf:"unique_id"`
 }
 
 type IamRoleStatus struct {

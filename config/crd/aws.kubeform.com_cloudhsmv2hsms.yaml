@@ -401,6 +401,12 @@ spec:
               type: string
             clusterID:
               type: string
+            hsmEniID:
+              type: string
+            hsmID:
+              type: string
+            hsmState:
+              type: string
             ipAddress:
               type: string
             providerRef:
@@ -416,6 +422,9 @@ spec:
               type: string
           required:
           - clusterID
+          - hsmEniID
+          - hsmID
+          - hsmState
           - providerRef
           type: object
         status:
@@ -430,6 +439,12 @@ spec:
                 availabilityZone:
                   type: string
                 clusterID:
+                  type: string
+                hsmEniID:
+                  type: string
+                hsmID:
+                  type: string
+                hsmState:
                   type: string
                 ipAddress:
                   type: string
@@ -446,6 +461,9 @@ spec:
                   type: string
               required:
               - clusterID
+              - hsmEniID
+              - hsmID
+              - hsmState
               - providerRef
               type: object
             state:

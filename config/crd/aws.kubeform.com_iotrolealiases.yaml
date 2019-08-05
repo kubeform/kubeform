@@ -399,6 +399,8 @@ spec:
           properties:
             alias:
               type: string
+            arn:
+              type: string
             credentialDuration:
               type: integer
             providerRef:
@@ -414,6 +416,7 @@ spec:
               type: string
           required:
           - alias
+          - arn
           - providerRef
           - roleArn
           type: object
@@ -427,6 +430,8 @@ spec:
             output:
               properties:
                 alias:
+                  type: string
+                arn:
                   type: string
                 credentialDuration:
                   type: integer
@@ -443,6 +448,7 @@ spec:
                   type: string
               required:
               - alias
+              - arn
               - providerRef
               - roleArn
               type: object

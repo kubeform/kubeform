@@ -406,9 +406,12 @@ spec:
             frontendIPConfiguration:
               items:
                 properties:
+                  ID:
+                    type: string
                   name:
                     type: string
                 required:
+                - ID
                 - name
                 type: object
               minItems: 1
@@ -458,9 +461,12 @@ spec:
                 frontendIPConfiguration:
                   items:
                     properties:
+                      ID:
+                        type: string
                       name:
                         type: string
                     required:
+                    - ID
                     - name
                     type: object
                   minItems: 1

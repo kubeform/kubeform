@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             deletionWindowInDays:
               type: integer
             description:
@@ -405,6 +407,8 @@ spec:
               type: boolean
             isEnabled:
               type: boolean
+            keyID:
+              type: string
             keyUsage:
               type: string
             policy:
@@ -423,6 +427,8 @@ spec:
                 type: string
               type: object
           required:
+          - arn
+          - keyID
           - providerRef
           type: object
         status:
@@ -434,6 +440,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 deletionWindowInDays:
                   type: integer
                 description:
@@ -442,6 +450,8 @@ spec:
                   type: boolean
                 isEnabled:
                   type: boolean
+                keyID:
+                  type: string
                 keyUsage:
                   type: string
                 policy:
@@ -460,6 +470,8 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
+              - keyID
               - providerRef
               type: object
             state:

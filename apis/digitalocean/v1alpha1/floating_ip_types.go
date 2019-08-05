@@ -26,6 +26,7 @@ type FloatingIPSpec struct {
 	// +optional
 	IpAddress string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 	Region    string `json:"region" tf:"region"`
+	Urn       string `json:"urn" tf:"urn"`
 }
 
 type FloatingIPStatus struct {

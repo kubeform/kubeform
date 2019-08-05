@@ -23,18 +23,23 @@ type KeyVaultKeySpec struct {
 
 	// +optional
 	Curve   string   `json:"curve,omitempty" tf:"curve,omitempty"`
+	E       string   `json:"e" tf:"e"`
 	KeyOpts []string `json:"keyOpts" tf:"key_opts"`
 	// +optional
 	KeySize int    `json:"keySize,omitempty" tf:"key_size,omitempty"`
 	KeyType string `json:"keyType" tf:"key_type"`
 	// +optional
 	KeyVaultID string `json:"keyVaultID,omitempty" tf:"key_vault_id,omitempty"`
+	N          string `json:"n" tf:"n"`
 	Name       string `json:"name" tf:"name"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// Deprecated
 	VaultURI string `json:"vaultURI,omitempty" tf:"vault_uri,omitempty"`
+	Version  string `json:"version" tf:"version"`
+	X        string `json:"x" tf:"x"`
+	Y        string `json:"y" tf:"y"`
 }
 
 type KeyVaultKeyStatus struct {

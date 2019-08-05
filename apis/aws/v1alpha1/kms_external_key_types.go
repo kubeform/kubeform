@@ -23,14 +23,18 @@ type KmsExternalKeySpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	DeletionWindowInDays int `json:"deletionWindowInDays,omitempty" tf:"deletion_window_in_days,omitempty"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
-	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	Enabled         bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	ExpirationModel string `json:"expirationModel" tf:"expiration_model"`
 	// +optional
 	KeyMaterialBase64 string `json:"-" sensitive:"true" tf:"key_material_base64,omitempty"`
+	KeyState          string `json:"keyState" tf:"key_state"`
+	KeyUsage          string `json:"keyUsage" tf:"key_usage"`
 	// +optional
 	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional

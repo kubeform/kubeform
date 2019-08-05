@@ -19,6 +19,7 @@ type KinesisAnalyticsApplication struct {
 }
 
 type KinesisAnalyticsApplicationSpecCloudwatchLoggingOptions struct {
+	ID           string `json:"ID" tf:"id"`
 	LogStreamArn string `json:"logStreamArn" tf:"log_stream_arn"`
 	RoleArn      string `json:"roleArn" tf:"role_arn"`
 }
@@ -76,6 +77,7 @@ type KinesisAnalyticsApplicationSpecInputsSchemaRecordFormat struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	MappingParameters []KinesisAnalyticsApplicationSpecInputsSchemaRecordFormatMappingParameters `json:"mappingParameters,omitempty" tf:"mapping_parameters,omitempty"`
+	RecordFormatType  string                                                                     `json:"recordFormatType" tf:"record_format_type"`
 }
 
 type KinesisAnalyticsApplicationSpecInputsSchema struct {
@@ -86,7 +88,12 @@ type KinesisAnalyticsApplicationSpecInputsSchema struct {
 	RecordFormat []KinesisAnalyticsApplicationSpecInputsSchemaRecordFormat `json:"recordFormat" tf:"record_format"`
 }
 
+type KinesisAnalyticsApplicationSpecInputsStartingPositionConfiguration struct {
+	StartingPosition string `json:"startingPosition" tf:"starting_position"`
+}
+
 type KinesisAnalyticsApplicationSpecInputs struct {
+	ID string `json:"ID" tf:"id"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	KinesisFirehose []KinesisAnalyticsApplicationSpecInputsKinesisFirehose `json:"kinesisFirehose,omitempty" tf:"kinesis_firehose,omitempty"`
@@ -101,7 +108,10 @@ type KinesisAnalyticsApplicationSpecInputs struct {
 	// +kubebuilder:validation:MaxItems=1
 	ProcessingConfiguration []KinesisAnalyticsApplicationSpecInputsProcessingConfiguration `json:"processingConfiguration,omitempty" tf:"processing_configuration,omitempty"`
 	// +kubebuilder:validation:MaxItems=1
-	Schema []KinesisAnalyticsApplicationSpecInputsSchema `json:"schema" tf:"schema"`
+	Schema                        []KinesisAnalyticsApplicationSpecInputsSchema                        `json:"schema" tf:"schema"`
+	StartingPositionConfiguration []KinesisAnalyticsApplicationSpecInputsStartingPositionConfiguration `json:"startingPositionConfiguration" tf:"starting_position_configuration"`
+	// +kubebuilder:validation:UniqueItems=true
+	StreamNames []string `json:"streamNames" tf:"stream_names"`
 }
 
 type KinesisAnalyticsApplicationSpecOutputsKinesisFirehose struct {
@@ -125,6 +135,7 @@ type KinesisAnalyticsApplicationSpecOutputsSchema struct {
 }
 
 type KinesisAnalyticsApplicationSpecOutputs struct {
+	ID string `json:"ID" tf:"id"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	KinesisFirehose []KinesisAnalyticsApplicationSpecOutputsKinesisFirehose `json:"kinesisFirehose,omitempty" tf:"kinesis_firehose,omitempty"`
@@ -174,6 +185,7 @@ type KinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormat struc
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	MappingParameters []KinesisAnalyticsApplicationSpecReferenceDataSourcesSchemaRecordFormatMappingParameters `json:"mappingParameters,omitempty" tf:"mapping_parameters,omitempty"`
+	RecordFormatType  string                                                                                   `json:"recordFormatType" tf:"record_format_type"`
 }
 
 type KinesisAnalyticsApplicationSpecReferenceDataSourcesSchema struct {
@@ -185,6 +197,7 @@ type KinesisAnalyticsApplicationSpecReferenceDataSourcesSchema struct {
 }
 
 type KinesisAnalyticsApplicationSpecReferenceDataSources struct {
+	ID string `json:"ID" tf:"id"`
 	// +kubebuilder:validation:MaxItems=1
 	S3 []KinesisAnalyticsApplicationSpecReferenceDataSourcesS3 `json:"s3" tf:"s3"`
 	// +kubebuilder:validation:MaxItems=1
@@ -195,25 +208,30 @@ type KinesisAnalyticsApplicationSpecReferenceDataSources struct {
 type KinesisAnalyticsApplicationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CloudwatchLoggingOptions []KinesisAnalyticsApplicationSpecCloudwatchLoggingOptions `json:"cloudwatchLoggingOptions,omitempty" tf:"cloudwatch_logging_options,omitempty"`
 	// +optional
-	Code string `json:"code,omitempty" tf:"code,omitempty"`
+	Code            string `json:"code,omitempty" tf:"code,omitempty"`
+	CreateTimestamp string `json:"createTimestamp" tf:"create_timestamp"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
-	Inputs []KinesisAnalyticsApplicationSpecInputs `json:"inputs,omitempty" tf:"inputs,omitempty"`
-	Name   string                                  `json:"name" tf:"name"`
+	Inputs              []KinesisAnalyticsApplicationSpecInputs `json:"inputs,omitempty" tf:"inputs,omitempty"`
+	LastUpdateTimestamp string                                  `json:"lastUpdateTimestamp" tf:"last_update_timestamp"`
+	Name                string                                  `json:"name" tf:"name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=3
 	Outputs []KinesisAnalyticsApplicationSpecOutputs `json:"outputs,omitempty" tf:"outputs,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ReferenceDataSources []KinesisAnalyticsApplicationSpecReferenceDataSources `json:"referenceDataSources,omitempty" tf:"reference_data_sources,omitempty"`
+	Status               string                                                `json:"status" tf:"status"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags    map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Version int               `json:"version" tf:"version"`
 }
 
 type KinesisAnalyticsApplicationStatus struct {

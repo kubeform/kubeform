@@ -20,6 +20,19 @@ type MssqlElasticpool struct {
 	Status            MssqlElasticpoolStatus `json:"status,omitempty"`
 }
 
+type MssqlElasticpoolSpecElasticPoolProperties struct {
+	// Deprecated
+	CreationDate string `json:"creationDate" tf:"creation_date"`
+	// Deprecated
+	LicenseType string `json:"licenseType" tf:"license_type"`
+	// Deprecated
+	MaxSizeBytes int `json:"maxSizeBytes" tf:"max_size_bytes"`
+	// Deprecated
+	State string `json:"state" tf:"state"`
+	// Deprecated
+	ZoneRedundant bool `json:"zoneRedundant" tf:"zone_redundant"`
+}
+
 type MssqlElasticpoolSpecPerDatabaseSettings struct {
 	MaxCapacity json.Number `json:"maxCapacity" tf:"max_capacity"`
 	MinCapacity json.Number `json:"minCapacity" tf:"min_capacity"`
@@ -36,7 +49,10 @@ type MssqlElasticpoolSpecSku struct {
 type MssqlElasticpoolSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Location string `json:"location" tf:"location"`
+	// +kubebuilder:validation:MaxItems=1
+	// Deprecated
+	ElasticPoolProperties []MssqlElasticpoolSpecElasticPoolProperties `json:"elasticPoolProperties" tf:"elastic_pool_properties"`
+	Location              string                                      `json:"location" tf:"location"`
 	// +optional
 	MaxSizeBytes int `json:"maxSizeBytes,omitempty" tf:"max_size_bytes,omitempty"`
 	// +optional

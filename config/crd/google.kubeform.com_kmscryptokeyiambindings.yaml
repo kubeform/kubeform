@@ -399,6 +399,8 @@ spec:
           properties:
             cryptoKeyID:
               type: string
+            etag:
+              type: string
             members:
               items:
                 type: string
@@ -417,6 +419,7 @@ spec:
               type: string
           required:
           - cryptoKeyID
+          - etag
           - members
           - providerRef
           - role
@@ -431,6 +434,8 @@ spec:
             output:
               properties:
                 cryptoKeyID:
+                  type: string
+                etag:
                   type: string
                 members:
                   items:
@@ -450,6 +455,7 @@ spec:
                   type: string
               required:
               - cryptoKeyID
+              - etag
               - members
               - providerRef
               - role

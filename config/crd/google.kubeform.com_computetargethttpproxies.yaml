@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            creationTimestamp:
+              type: string
             description:
               type: string
             name:
@@ -412,11 +414,18 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            proxyID:
+              type: integer
+            selfLink:
+              type: string
             urlMap:
               type: string
           required:
+          - creationTimestamp
           - name
           - providerRef
+          - proxyID
+          - selfLink
           - urlMap
           type: object
         status:
@@ -428,6 +437,8 @@ spec:
               type: integer
             output:
               properties:
+                creationTimestamp:
+                  type: string
                 description:
                   type: string
                 name:
@@ -443,11 +454,18 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                proxyID:
+                  type: integer
+                selfLink:
+                  type: string
                 urlMap:
                   type: string
               required:
+              - creationTimestamp
               - name
               - providerRef
+              - proxyID
+              - selfLink
               - urlMap
               type: object
             state:

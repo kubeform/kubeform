@@ -404,6 +404,8 @@ spec:
               type: string
             family:
               type: string
+            labelFingerprint:
+              type: string
             labels:
               additionalProperties:
                 type: string
@@ -439,11 +441,15 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            selfLink:
+              type: string
             sourceDisk:
               type: string
           required:
+          - labelFingerprint
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -460,6 +466,8 @@ spec:
                 description:
                   type: string
                 family:
+                  type: string
+                labelFingerprint:
                   type: string
                 labels:
                   additionalProperties:
@@ -496,11 +504,15 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                selfLink:
+                  type: string
                 sourceDisk:
                   type: string
               required:
+              - labelFingerprint
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

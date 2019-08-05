@@ -24,9 +24,12 @@ type DxBGPPeerSpec struct {
 	AddressFamily string `json:"addressFamily" tf:"address_family"`
 	// +optional
 	AmazonAddress string `json:"amazonAddress,omitempty" tf:"amazon_address,omitempty"`
+	AwsDevice     string `json:"awsDevice" tf:"aws_device"`
 	BgpAsn        int    `json:"bgpAsn" tf:"bgp_asn"`
 	// +optional
 	BgpAuthKey string `json:"bgpAuthKey,omitempty" tf:"bgp_auth_key,omitempty"`
+	BgpPeerID  string `json:"bgpPeerID" tf:"bgp_peer_id"`
+	BgpStatus  string `json:"bgpStatus" tf:"bgp_status"`
 	// +optional
 	CustomerAddress    string `json:"customerAddress,omitempty" tf:"customer_address,omitempty"`
 	VirtualInterfaceID string `json:"virtualInterfaceID" tf:"virtual_interface_id"`

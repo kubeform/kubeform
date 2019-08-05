@@ -410,9 +410,12 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            urn:
+              type: string
           required:
           - name
           - providerRef
+          - urn
           type: object
         status:
           properties:
@@ -436,9 +439,12 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                urn:
+                  type: string
               required:
               - name
               - providerRef
+              - urn
               type: object
             state:
               properties:

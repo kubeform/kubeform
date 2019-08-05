@@ -440,12 +440,15 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            versionID:
+              type: string
             websiteRedirect:
               type: string
           required:
           - bucket
           - key
           - providerRef
+          - versionID
           type: object
         status:
           properties:
@@ -499,12 +502,15 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                versionID:
+                  type: string
                 websiteRedirect:
                   type: string
               required:
               - bucket
               - key
               - providerRef
+              - versionID
               type: object
             state:
               properties:

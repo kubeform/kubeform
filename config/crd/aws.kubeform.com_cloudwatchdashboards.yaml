@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            dashboardArn:
+              type: string
             dashboardBody:
               type: string
             dashboardName:
@@ -411,6 +413,7 @@ spec:
                   type: string
               type: object
           required:
+          - dashboardArn
           - dashboardBody
           - dashboardName
           - providerRef
@@ -424,6 +427,8 @@ spec:
               type: integer
             output:
               properties:
+                dashboardArn:
+                  type: string
                 dashboardBody:
                   type: string
                 dashboardName:
@@ -438,6 +443,7 @@ spec:
                       type: string
                   type: object
               required:
+              - dashboardArn
               - dashboardBody
               - dashboardName
               - providerRef

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             databaseName:
               type: string
             deletionProtection:
@@ -406,6 +408,8 @@ spec:
             engineVersion:
               type: string
             globalClusterIdentifier:
+              type: string
+            globalClusterResourceID:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -419,7 +423,9 @@ spec:
             storageEncrypted:
               type: boolean
           required:
+          - arn
           - globalClusterIdentifier
+          - globalClusterResourceID
           - providerRef
           type: object
         status:
@@ -431,6 +437,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 databaseName:
                   type: string
                 deletionProtection:
@@ -440,6 +448,8 @@ spec:
                 engineVersion:
                   type: string
                 globalClusterIdentifier:
+                  type: string
+                globalClusterResourceID:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -453,7 +463,9 @@ spec:
                 storageEncrypted:
                   type: boolean
               required:
+              - arn
               - globalClusterIdentifier
+              - globalClusterResourceID
               - providerRef
               type: object
             state:

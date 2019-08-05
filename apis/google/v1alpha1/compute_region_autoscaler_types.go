@@ -54,14 +54,16 @@ type ComputeRegionAutoscalerSpec struct {
 
 	// +kubebuilder:validation:MaxItems=1
 	AutoscalingPolicy []ComputeRegionAutoscalerSpecAutoscalingPolicy `json:"autoscalingPolicy" tf:"autoscaling_policy"`
+	CreationTimestamp string                                         `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Name        string `json:"name" tf:"name"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Region string `json:"region,omitempty" tf:"region,omitempty"`
-	Target string `json:"target" tf:"target"`
+	Region   string `json:"region,omitempty" tf:"region,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
+	Target   string `json:"target" tf:"target"`
 }
 
 type ComputeRegionAutoscalerStatus struct {

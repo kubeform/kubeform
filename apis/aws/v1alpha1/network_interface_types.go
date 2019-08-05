@@ -19,8 +19,9 @@ type NetworkInterface struct {
 }
 
 type NetworkInterfaceSpecAttachment struct {
-	DeviceIndex int    `json:"deviceIndex" tf:"device_index"`
-	Instance    string `json:"instance" tf:"instance"`
+	AttachmentID string `json:"attachmentID" tf:"attachment_id"`
+	DeviceIndex  int    `json:"deviceIndex" tf:"device_index"`
+	Instance     string `json:"instance" tf:"instance"`
 }
 
 type NetworkInterfaceSpec struct {
@@ -30,7 +31,8 @@ type NetworkInterfaceSpec struct {
 	// +kubebuilder:validation:UniqueItems=true
 	Attachment []NetworkInterfaceSpecAttachment `json:"attachment,omitempty" tf:"attachment,omitempty"`
 	// +optional
-	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	Description    string `json:"description,omitempty" tf:"description,omitempty"`
+	PrivateDNSName string `json:"privateDNSName" tf:"private_dns_name"`
 	// +optional
 	PrivateIP string `json:"privateIP,omitempty" tf:"private_ip,omitempty"`
 	// +optional

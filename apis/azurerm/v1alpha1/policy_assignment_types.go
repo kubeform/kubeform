@@ -19,6 +19,8 @@ type PolicyAssignment struct {
 }
 
 type PolicyAssignmentSpecIdentity struct {
+	PrincipalID string `json:"principalID" tf:"principal_id"`
+	TenantID    string `json:"tenantID" tf:"tenant_id"`
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }

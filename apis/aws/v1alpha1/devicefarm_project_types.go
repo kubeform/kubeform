@@ -21,6 +21,7 @@ type DevicefarmProject struct {
 type DevicefarmProjectSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn  string `json:"arn" tf:"arn"`
 	Name string `json:"name" tf:"name"`
 }
 

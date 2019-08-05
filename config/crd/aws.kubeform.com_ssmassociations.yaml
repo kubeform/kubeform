@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            associationID:
+              type: string
             associationName:
               type: string
             complianceSeverity:
@@ -454,6 +456,7 @@ spec:
               maxItems: 5
               type: array
           required:
+          - associationID
           - name
           - providerRef
           type: object
@@ -466,6 +469,8 @@ spec:
               type: integer
             output:
               properties:
+                associationID:
+                  type: string
                 associationName:
                   type: string
                 complianceSeverity:
@@ -523,6 +528,7 @@ spec:
                   maxItems: 5
                   type: array
               required:
+              - associationID
               - name
               - providerRef
               type: object

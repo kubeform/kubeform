@@ -18,6 +18,13 @@ type ElasticacheCluster struct {
 	Status            ElasticacheClusterStatus `json:"status,omitempty"`
 }
 
+type ElasticacheClusterSpecCacheNodes struct {
+	Address          string `json:"address" tf:"address"`
+	AvailabilityZone string `json:"availabilityZone" tf:"availability_zone"`
+	ID               string `json:"ID" tf:"id"`
+	Port             int    `json:"port" tf:"port"`
+}
+
 type ElasticacheClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
@@ -26,8 +33,11 @@ type ElasticacheClusterSpec struct {
 	// +optional
 	AvailabilityZone string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 	// +optional
-	AzMode    string `json:"azMode,omitempty" tf:"az_mode,omitempty"`
-	ClusterID string `json:"clusterID" tf:"cluster_id"`
+	AzMode                string                             `json:"azMode,omitempty" tf:"az_mode,omitempty"`
+	CacheNodes            []ElasticacheClusterSpecCacheNodes `json:"cacheNodes" tf:"cache_nodes"`
+	ClusterAddress        string                             `json:"clusterAddress" tf:"cluster_address"`
+	ClusterID             string                             `json:"clusterID" tf:"cluster_id"`
+	ConfigurationEndpoint string                             `json:"configurationEndpoint" tf:"configuration_endpoint"`
 	// +optional
 	Engine string `json:"engine,omitempty" tf:"engine,omitempty"`
 	// +optional

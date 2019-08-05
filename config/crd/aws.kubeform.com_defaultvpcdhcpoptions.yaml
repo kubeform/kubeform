@@ -397,11 +397,19 @@ spec:
           type: object
         spec:
           properties:
+            domainName:
+              type: string
+            domainNameServers:
+              type: string
             netbiosNameServers:
               items:
                 type: string
               type: array
             netbiosNodeType:
+              type: string
+            ntpServers:
+              type: string
+            ownerID:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -417,6 +425,10 @@ spec:
                 type: string
               type: object
           required:
+          - domainName
+          - domainNameServers
+          - ntpServers
+          - ownerID
           - providerRef
           type: object
         status:
@@ -428,11 +440,19 @@ spec:
               type: integer
             output:
               properties:
+                domainName:
+                  type: string
+                domainNameServers:
+                  type: string
                 netbiosNameServers:
                   items:
                     type: string
                   type: array
                 netbiosNodeType:
+                  type: string
+                ntpServers:
+                  type: string
+                ownerID:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -448,6 +468,10 @@ spec:
                     type: string
                   type: object
               required:
+              - domainName
+              - domainNameServers
+              - ntpServers
+              - ownerID
               - providerRef
               type: object
             state:

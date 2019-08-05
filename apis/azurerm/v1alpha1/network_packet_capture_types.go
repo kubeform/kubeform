@@ -35,6 +35,7 @@ type NetworkPacketCaptureSpecStorageLocation struct {
 	FilePath string `json:"filePath,omitempty" tf:"file_path,omitempty"`
 	// +optional
 	StorageAccountID string `json:"storageAccountID,omitempty" tf:"storage_account_id,omitempty"`
+	StoragePath      string `json:"storagePath" tf:"storage_path"`
 }
 
 type NetworkPacketCaptureSpec struct {

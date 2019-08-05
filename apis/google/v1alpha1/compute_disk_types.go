@@ -21,16 +21,19 @@ type ComputeDisk struct {
 type ComputeDiskSpecDiskEncryptionKey struct {
 	// +optional
 	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
+	Sha256 string `json:"sha256" tf:"sha256"`
 }
 
 type ComputeDiskSpecSourceImageEncryptionKey struct {
 	// +optional
 	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
+	Sha256 string `json:"sha256" tf:"sha256"`
 }
 
 type ComputeDiskSpecSourceSnapshotEncryptionKey struct {
 	// +optional
 	RawKey string `json:"rawKey,omitempty" tf:"raw_key,omitempty"`
+	Sha256 string `json:"sha256" tf:"sha256"`
 }
 
 type ComputeDiskSpec struct {
@@ -38,6 +41,7 @@ type ComputeDiskSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	CreationTimestamp string `json:"creationTimestamp" tf:"creation_timestamp"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -45,13 +49,19 @@ type ComputeDiskSpec struct {
 	DiskEncryptionKey []ComputeDiskSpecDiskEncryptionKey `json:"diskEncryptionKey,omitempty" tf:"disk_encryption_key,omitempty"`
 	// +optional
 	DiskEncryptionKeyRaw string `json:"-" sensitive:"true" tf:"disk_encryption_key_raw,omitempty"`
+	// Deprecated
+	DiskEncryptionKeySha256 string `json:"diskEncryptionKeySha256" tf:"disk_encryption_key_sha256"`
 	// +optional
-	Image string `json:"image,omitempty" tf:"image,omitempty"`
+	Image            string `json:"image,omitempty" tf:"image,omitempty"`
+	LabelFingerprint string `json:"labelFingerprint" tf:"label_fingerprint"`
 	// +optional
-	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
-	Name   string            `json:"name" tf:"name"`
+	Labels              map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
+	LastAttachTimestamp string            `json:"lastAttachTimestamp" tf:"last_attach_timestamp"`
+	LastDetachTimestamp string            `json:"lastDetachTimestamp" tf:"last_detach_timestamp"`
+	Name                string            `json:"name" tf:"name"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Project  string `json:"project,omitempty" tf:"project,omitempty"`
+	SelfLink string `json:"selfLink" tf:"self_link"`
 	// +optional
 	Size int `json:"size,omitempty" tf:"size,omitempty"`
 	// +optional
@@ -59,11 +69,14 @@ type ComputeDiskSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SourceImageEncryptionKey []ComputeDiskSpecSourceImageEncryptionKey `json:"sourceImageEncryptionKey,omitempty" tf:"source_image_encryption_key,omitempty"`
+	SourceImageID            string                                    `json:"sourceImageID" tf:"source_image_id"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	SourceSnapshotEncryptionKey []ComputeDiskSpecSourceSnapshotEncryptionKey `json:"sourceSnapshotEncryptionKey,omitempty" tf:"source_snapshot_encryption_key,omitempty"`
+	SourceSnapshotID            string                                       `json:"sourceSnapshotID" tf:"source_snapshot_id"`
 	// +optional
-	Type string `json:"type,omitempty" tf:"type,omitempty"`
+	Type  string   `json:"type,omitempty" tf:"type,omitempty"`
+	Users []string `json:"users" tf:"users"`
 	// +optional
 	Zone string `json:"zone,omitempty" tf:"zone,omitempty"`
 }

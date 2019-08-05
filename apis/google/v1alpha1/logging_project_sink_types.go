@@ -28,7 +28,8 @@ type LoggingProjectSinkSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	UniqueWriterIdentity bool `json:"uniqueWriterIdentity,omitempty" tf:"unique_writer_identity,omitempty"`
+	UniqueWriterIdentity bool   `json:"uniqueWriterIdentity,omitempty" tf:"unique_writer_identity,omitempty"`
+	WriterIdentity       string `json:"writerIdentity" tf:"writer_identity"`
 }
 
 type LoggingProjectSinkStatus struct {

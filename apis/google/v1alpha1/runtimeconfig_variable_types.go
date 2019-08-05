@@ -26,7 +26,8 @@ type RuntimeconfigVariableSpec struct {
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional
-	Text string `json:"text,omitempty" tf:"text,omitempty"`
+	Text       string `json:"text,omitempty" tf:"text,omitempty"`
+	UpdateTime string `json:"updateTime" tf:"update_time"`
 	// +optional
 	Value string `json:"value,omitempty" tf:"value,omitempty"`
 }

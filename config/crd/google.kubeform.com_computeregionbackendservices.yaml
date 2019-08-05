@@ -411,6 +411,8 @@ spec:
               type: integer
             description:
               type: string
+            fingerprint:
+              type: string
             healthChecks:
               items:
                 type: string
@@ -435,14 +437,18 @@ spec:
               type: object
             region:
               type: string
+            selfLink:
+              type: string
             sessionAffinity:
               type: string
             timeoutSec:
               type: integer
           required:
+          - fingerprint
           - healthChecks
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -466,6 +472,8 @@ spec:
                 connectionDrainingTimeoutSec:
                   type: integer
                 description:
+                  type: string
+                fingerprint:
                   type: string
                 healthChecks:
                   items:
@@ -491,14 +499,18 @@ spec:
                   type: object
                 region:
                   type: string
+                selfLink:
+                  type: string
                 sessionAffinity:
                   type: string
                 timeoutSec:
                   type: integer
               required:
+              - fingerprint
               - healthChecks
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

@@ -405,6 +405,10 @@ spec:
               type: boolean
             name:
               type: string
+            nameServers:
+              items:
+                type: string
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -431,9 +435,13 @@ spec:
               minItems: 1
               type: array
               uniqueItems: true
+            zoneID:
+              type: string
           required:
           - name
+          - nameServers
           - providerRef
+          - zoneID
           type: object
         status:
           properties:
@@ -452,6 +460,10 @@ spec:
                   type: boolean
                 name:
                   type: string
+                nameServers:
+                  items:
+                    type: string
+                  type: array
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -478,9 +490,13 @@ spec:
                   minItems: 1
                   type: array
                   uniqueItems: true
+                zoneID:
+                  type: string
               required:
               - name
+              - nameServers
               - providerRef
+              - zoneID
               type: object
             state:
               properties:

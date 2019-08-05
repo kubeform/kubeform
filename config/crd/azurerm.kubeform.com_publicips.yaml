@@ -401,8 +401,12 @@ spec:
               type: string
             domainNameLabel:
               type: string
+            fqdn:
+              type: string
             idleTimeoutInMinutes:
               type: integer
+            ipAddress:
+              type: string
             ipVersion:
               type: string
             location:
@@ -439,6 +443,8 @@ spec:
               maxItems: 1
               type: array
           required:
+          - fqdn
+          - ipAddress
           - location
           - name
           - providerRef
@@ -457,8 +463,12 @@ spec:
                   type: string
                 domainNameLabel:
                   type: string
+                fqdn:
+                  type: string
                 idleTimeoutInMinutes:
                   type: integer
+                ipAddress:
+                  type: string
                 ipVersion:
                   type: string
                 location:
@@ -495,6 +505,8 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - fqdn
+              - ipAddress
               - location
               - name
               - providerRef

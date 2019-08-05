@@ -21,6 +21,7 @@ type SecurityhubProductSubscription struct {
 type SecurityhubProductSubscriptionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn        string `json:"arn" tf:"arn"`
 	ProductArn string `json:"productArn" tf:"product_arn"`
 }
 

@@ -22,12 +22,14 @@ type SpacesBucketSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	Acl string `json:"acl,omitempty" tf:"acl,omitempty"`
+	Acl              string `json:"acl,omitempty" tf:"acl,omitempty"`
+	BucketDomainName string `json:"bucketDomainName" tf:"bucket_domain_name"`
 	// +optional
 	ForceDestroy bool   `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
 	Name         string `json:"name" tf:"name"`
 	// +optional
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
+	Urn    string `json:"urn" tf:"urn"`
 }
 
 type SpacesBucketStatus struct {

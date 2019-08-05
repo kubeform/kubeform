@@ -109,6 +109,7 @@ type LbListenerRuleSpec struct {
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Action []LbListenerRuleSpecAction `json:"action" tf:"action"`
+	Arn    string                     `json:"arn" tf:"arn"`
 	// +kubebuilder:validation:UniqueItems=true
 	Condition   []LbListenerRuleSpecCondition `json:"condition" tf:"condition"`
 	ListenerArn string                        `json:"listenerArn" tf:"listener_arn"`

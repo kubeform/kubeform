@@ -25,6 +25,12 @@ type MqBrokerSpecConfiguration struct {
 	Revision int `json:"revision,omitempty" tf:"revision,omitempty"`
 }
 
+type MqBrokerSpecInstances struct {
+	ConsoleURL string   `json:"consoleURL" tf:"console_url"`
+	Endpoints  []string `json:"endpoints" tf:"endpoints"`
+	IpAddress  string   `json:"ipAddress" tf:"ip_address"`
+}
+
 type MqBrokerSpecLogs struct {
 	// +optional
 	Audit bool `json:"audit,omitempty" tf:"audit,omitempty"`
@@ -54,7 +60,8 @@ type MqBrokerSpec struct {
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +optional
-	ApplyImmediately bool `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	ApplyImmediately bool   `json:"applyImmediately,omitempty" tf:"apply_immediately,omitempty"`
+	Arn              string `json:"arn" tf:"arn"`
 	// +optional
 	AutoMinorVersionUpgrade bool   `json:"autoMinorVersionUpgrade,omitempty" tf:"auto_minor_version_upgrade,omitempty"`
 	BrokerName              string `json:"brokerName" tf:"broker_name"`
@@ -62,10 +69,11 @@ type MqBrokerSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	Configuration []MqBrokerSpecConfiguration `json:"configuration,omitempty" tf:"configuration,omitempty"`
 	// +optional
-	DeploymentMode   string `json:"deploymentMode,omitempty" tf:"deployment_mode,omitempty"`
-	EngineType       string `json:"engineType" tf:"engine_type"`
-	EngineVersion    string `json:"engineVersion" tf:"engine_version"`
-	HostInstanceType string `json:"hostInstanceType" tf:"host_instance_type"`
+	DeploymentMode   string                  `json:"deploymentMode,omitempty" tf:"deployment_mode,omitempty"`
+	EngineType       string                  `json:"engineType" tf:"engine_type"`
+	EngineVersion    string                  `json:"engineVersion" tf:"engine_version"`
+	HostInstanceType string                  `json:"hostInstanceType" tf:"host_instance_type"`
+	Instances        []MqBrokerSpecInstances `json:"instances" tf:"instances"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	Logs []MqBrokerSpecLogs `json:"logs,omitempty" tf:"logs,omitempty"`

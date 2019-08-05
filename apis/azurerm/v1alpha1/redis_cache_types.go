@@ -33,6 +33,7 @@ type RedisCacheSpecRedisConfiguration struct {
 	AofStorageConnectionString1 string `json:"-" sensitive:"true" tf:"aof_storage_connection_string_1,omitempty"`
 	// +optional
 	EnableAuthentication bool `json:"enableAuthentication,omitempty" tf:"enable_authentication,omitempty"`
+	Maxclients           int  `json:"maxclients" tf:"maxclients"`
 	// +optional
 	MaxfragmentationmemoryReserved int `json:"maxfragmentationmemoryReserved,omitempty" tf:"maxfragmentationmemory_reserved,omitempty"`
 	// +optional
@@ -62,21 +63,26 @@ type RedisCacheSpec struct {
 	// +optional
 	EnableNonSslPort bool   `json:"enableNonSslPort,omitempty" tf:"enable_non_ssl_port,omitempty"`
 	Family           string `json:"family" tf:"family"`
+	Hostname         string `json:"hostname" tf:"hostname"`
 	Location         string `json:"location" tf:"location"`
 	// +optional
 	MinimumTlsVersion string `json:"minimumTlsVersion,omitempty" tf:"minimum_tls_version,omitempty"`
 	Name              string `json:"name" tf:"name"`
 	// +optional
-	PatchSchedule []RedisCacheSpecPatchSchedule `json:"patchSchedule,omitempty" tf:"patch_schedule,omitempty"`
+	PatchSchedule    []RedisCacheSpecPatchSchedule `json:"patchSchedule,omitempty" tf:"patch_schedule,omitempty"`
+	Port             int                           `json:"port" tf:"port"`
+	PrimaryAccessKey string                        `json:"-" sensitive:"true" tf:"primary_access_key"`
 	// +optional
 	PrivateStaticIPAddress string `json:"privateStaticIPAddress,omitempty" tf:"private_static_ip_address,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RedisConfiguration []RedisCacheSpecRedisConfiguration `json:"redisConfiguration,omitempty" tf:"redis_configuration,omitempty"`
 	ResourceGroupName  string                             `json:"resourceGroupName" tf:"resource_group_name"`
+	SecondaryAccessKey string                             `json:"-" sensitive:"true" tf:"secondary_access_key"`
 	// +optional
 	ShardCount int    `json:"shardCount,omitempty" tf:"shard_count,omitempty"`
 	SkuName    string `json:"skuName" tf:"sku_name"`
+	SslPort    int    `json:"sslPort" tf:"ssl_port"`
 	// +optional
 	SubnetID string `json:"subnetID,omitempty" tf:"subnet_id,omitempty"`
 	// +optional

@@ -71,6 +71,8 @@ type ComputeRegionInstanceGroupManagerSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	DistributionPolicyZones []string `json:"distributionPolicyZones,omitempty" tf:"distribution_policy_zones,omitempty"`
+	Fingerprint             string   `json:"fingerprint" tf:"fingerprint"`
+	InstanceGroup           string   `json:"instanceGroup" tf:"instance_group"`
 	// +optional
 	InstanceTemplate string `json:"instanceTemplate,omitempty" tf:"instance_template,omitempty"`
 	Name             string `json:"name" tf:"name"`
@@ -83,6 +85,7 @@ type ComputeRegionInstanceGroupManagerSpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	// Deprecated
 	RollingUpdatePolicy []ComputeRegionInstanceGroupManagerSpecRollingUpdatePolicy `json:"rollingUpdatePolicy,omitempty" tf:"rolling_update_policy,omitempty"`
+	SelfLink            string                                                     `json:"selfLink" tf:"self_link"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	TargetPools []string `json:"targetPools,omitempty" tf:"target_pools,omitempty"`

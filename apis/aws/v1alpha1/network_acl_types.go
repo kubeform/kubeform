@@ -59,6 +59,7 @@ type NetworkACLSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Ingress []NetworkACLSpecIngress `json:"ingress,omitempty" tf:"ingress,omitempty"`
+	OwnerID string                  `json:"ownerID" tf:"owner_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS,omitempty" tf:"subnet_ids,omitempty"`

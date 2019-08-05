@@ -399,6 +399,8 @@ spec:
           properties:
             applyImmediately:
               type: boolean
+            arn:
+              type: string
             autoMinorVersionUpgrade:
               type: boolean
             availabilityZone:
@@ -411,6 +413,10 @@ spec:
               type: string
             dbSubnetGroupName:
               type: string
+            dbiResourceID:
+              type: string
+            endpoint:
+              type: string
             engine:
               type: string
             engineVersion:
@@ -421,6 +427,8 @@ spec:
               type: string
             instanceClass:
               type: string
+            kmsKeyID:
+              type: string
             monitoringInterval:
               type: integer
             monitoringRoleArn:
@@ -429,6 +437,8 @@ spec:
               type: boolean
             performanceInsightsKmsKeyID:
               type: string
+            port:
+              type: integer
             preferredBackupWindow:
               type: string
             preferredMaintenanceWindow:
@@ -446,14 +456,25 @@ spec:
               type: object
             publiclyAccessible:
               type: boolean
+            storageEncrypted:
+              type: boolean
             tags:
               additionalProperties:
                 type: string
               type: object
+            writer:
+              type: boolean
           required:
+          - arn
           - clusterIdentifier
+          - dbiResourceID
+          - endpoint
           - instanceClass
+          - kmsKeyID
+          - port
           - providerRef
+          - storageEncrypted
+          - writer
           type: object
         status:
           properties:
@@ -466,6 +487,8 @@ spec:
               properties:
                 applyImmediately:
                   type: boolean
+                arn:
+                  type: string
                 autoMinorVersionUpgrade:
                   type: boolean
                 availabilityZone:
@@ -478,6 +501,10 @@ spec:
                   type: string
                 dbSubnetGroupName:
                   type: string
+                dbiResourceID:
+                  type: string
+                endpoint:
+                  type: string
                 engine:
                   type: string
                 engineVersion:
@@ -488,6 +515,8 @@ spec:
                   type: string
                 instanceClass:
                   type: string
+                kmsKeyID:
+                  type: string
                 monitoringInterval:
                   type: integer
                 monitoringRoleArn:
@@ -496,6 +525,8 @@ spec:
                   type: boolean
                 performanceInsightsKmsKeyID:
                   type: string
+                port:
+                  type: integer
                 preferredBackupWindow:
                   type: string
                 preferredMaintenanceWindow:
@@ -513,14 +544,25 @@ spec:
                   type: object
                 publiclyAccessible:
                   type: boolean
+                storageEncrypted:
+                  type: boolean
                 tags:
                   additionalProperties:
                     type: string
                   type: object
+                writer:
+                  type: boolean
               required:
+              - arn
               - clusterIdentifier
+              - dbiResourceID
+              - endpoint
               - instanceClass
+              - kmsKeyID
+              - port
               - providerRef
+              - storageEncrypted
+              - writer
               type: object
             state:
               properties:

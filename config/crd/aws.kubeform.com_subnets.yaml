@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             assignIpv6AddressOnCreation:
               type: boolean
             availabilityZone:
@@ -407,8 +409,12 @@ spec:
               type: string
             ipv6CIDRBlock:
               type: string
+            ipv6CIDRBlockAssociationID:
+              type: string
             mapPublicIPOnLaunch:
               type: boolean
+            ownerID:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -425,7 +431,10 @@ spec:
             vpcID:
               type: string
           required:
+          - arn
           - cidrBlock
+          - ipv6CIDRBlockAssociationID
+          - ownerID
           - providerRef
           - vpcID
           type: object
@@ -438,6 +447,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 assignIpv6AddressOnCreation:
                   type: boolean
                 availabilityZone:
@@ -448,8 +459,12 @@ spec:
                   type: string
                 ipv6CIDRBlock:
                   type: string
+                ipv6CIDRBlockAssociationID:
+                  type: string
                 mapPublicIPOnLaunch:
                   type: boolean
+                ownerID:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -466,7 +481,10 @@ spec:
                 vpcID:
                   type: string
               required:
+              - arn
               - cidrBlock
+              - ipv6CIDRBlockAssociationID
+              - ownerID
               - providerRef
               - vpcID
               type: object

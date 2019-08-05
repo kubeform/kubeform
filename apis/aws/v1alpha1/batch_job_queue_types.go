@@ -21,6 +21,7 @@ type BatchJobQueue struct {
 type BatchJobQueueSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +kubebuilder:validation:MaxItems=3
 	ComputeEnvironments []string `json:"computeEnvironments" tf:"compute_environments"`
 	Name                string   `json:"name" tf:"name"`

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             defaultAction:
               items:
                 properties:
@@ -487,6 +489,7 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - arn
           - defaultAction
           - metricName
           - name
@@ -501,6 +504,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 defaultAction:
                   items:
                     properties:
@@ -591,6 +596,7 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - arn
               - defaultAction
               - metricName
               - name

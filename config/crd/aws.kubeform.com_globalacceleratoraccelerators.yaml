@@ -413,6 +413,20 @@ spec:
               type: boolean
             ipAddressType:
               type: string
+            ipSets:
+              items:
+                properties:
+                  ipAddresses:
+                    items:
+                      type: string
+                    type: array
+                  ipFamily:
+                    type: string
+                required:
+                - ipAddresses
+                - ipFamily
+                type: object
+              type: array
             name:
               type: string
             providerRef:
@@ -425,6 +439,7 @@ spec:
                   type: string
               type: object
           required:
+          - ipSets
           - name
           - providerRef
           type: object
@@ -453,6 +468,20 @@ spec:
                   type: boolean
                 ipAddressType:
                   type: string
+                ipSets:
+                  items:
+                    properties:
+                      ipAddresses:
+                        items:
+                          type: string
+                        type: array
+                      ipFamily:
+                        type: string
+                    required:
+                    - ipAddresses
+                    - ipFamily
+                    type: object
+                  type: array
                 name:
                   type: string
                 providerRef:
@@ -465,6 +494,7 @@ spec:
                       type: string
                   type: object
               required:
+              - ipSets
               - name
               - providerRef
               type: object

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             description:
               type: string
             inputParameters:
@@ -414,6 +416,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            ruleID:
+              type: string
             scope:
               items:
                 properties:
@@ -459,8 +463,10 @@ spec:
               maxItems: 1
               type: array
           required:
+          - arn
           - name
           - providerRef
+          - ruleID
           - source
           type: object
         status:
@@ -472,6 +478,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 description:
                   type: string
                 inputParameters:
@@ -489,6 +497,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                ruleID:
+                  type: string
                 scope:
                   items:
                     properties:
@@ -534,8 +544,10 @@ spec:
                   maxItems: 1
                   type: array
               required:
+              - arn
               - name
               - providerRef
+              - ruleID
               - source
               type: object
             state:

@@ -428,11 +428,14 @@ spec:
               type: object
             region:
               type: string
+            selfLink:
+              type: string
             sessionAffinity:
               type: string
           required:
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -474,11 +477,14 @@ spec:
                   type: object
                 region:
                   type: string
+                selfLink:
+                  type: string
                 sessionAffinity:
                   type: string
               required:
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

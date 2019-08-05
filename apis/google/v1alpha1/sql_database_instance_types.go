@@ -18,6 +18,12 @@ type SqlDatabaseInstance struct {
 	Status            SqlDatabaseInstanceStatus `json:"status,omitempty"`
 }
 
+type SqlDatabaseInstanceSpecIpAddress struct {
+	IpAddress string `json:"ipAddress" tf:"ip_address"`
+	// +optional
+	TimeToRetire string `json:"timeToRetire,omitempty" tf:"time_to_retire,omitempty"`
+}
+
 type SqlDatabaseInstanceSpecReplicaConfiguration struct {
 	// +optional
 	CaCertificate string `json:"caCertificate,omitempty" tf:"ca_certificate,omitempty"`
@@ -41,6 +47,14 @@ type SqlDatabaseInstanceSpecReplicaConfiguration struct {
 	Username string `json:"username,omitempty" tf:"username,omitempty"`
 	// +optional
 	VerifyServerCertificate bool `json:"verifyServerCertificate,omitempty" tf:"verify_server_certificate,omitempty"`
+}
+
+type SqlDatabaseInstanceSpecServerCaCert struct {
+	Cert            string `json:"cert" tf:"cert"`
+	CommonName      string `json:"commonName" tf:"common_name"`
+	CreateTime      string `json:"createTime" tf:"create_time"`
+	ExpirationTime  string `json:"expirationTime" tf:"expiration_time"`
+	Sha1Fingerprint string `json:"sha1Fingerprint" tf:"sha1_fingerprint"`
 }
 
 type SqlDatabaseInstanceSpecSettingsBackupConfiguration struct {
@@ -132,6 +146,7 @@ type SqlDatabaseInstanceSpecSettings struct {
 	Tier            string `json:"tier" tf:"tier"`
 	// +optional
 	UserLabels map[string]string `json:"userLabels,omitempty" tf:"user_labels,omitempty"`
+	Version    int               `json:"version" tf:"version"`
 }
 
 type SqlDatabaseInstanceSpec struct {
@@ -139,8 +154,11 @@ type SqlDatabaseInstanceSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
+	ConnectionName string `json:"connectionName" tf:"connection_name"`
 	// +optional
-	DatabaseVersion string `json:"databaseVersion,omitempty" tf:"database_version,omitempty"`
+	DatabaseVersion string                             `json:"databaseVersion,omitempty" tf:"database_version,omitempty"`
+	FirstIPAddress  string                             `json:"firstIPAddress" tf:"first_ip_address"`
+	IpAddress       []SqlDatabaseInstanceSpecIpAddress `json:"ipAddress" tf:"ip_address"`
 	// +optional
 	MasterInstanceName string `json:"masterInstanceName,omitempty" tf:"master_instance_name,omitempty"`
 	// +optional
@@ -152,6 +170,10 @@ type SqlDatabaseInstanceSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ReplicaConfiguration []SqlDatabaseInstanceSpecReplicaConfiguration `json:"replicaConfiguration,omitempty" tf:"replica_configuration,omitempty"`
+	SelfLink             string                                        `json:"selfLink" tf:"self_link"`
+	// +kubebuilder:validation:MaxItems=1
+	ServerCaCert               []SqlDatabaseInstanceSpecServerCaCert `json:"serverCaCert" tf:"server_ca_cert"`
+	ServiceAccountEmailAddress string                                `json:"serviceAccountEmailAddress" tf:"service_account_email_address"`
 	// +kubebuilder:validation:MaxItems=1
 	Settings []SqlDatabaseInstanceSpecSettings `json:"settings" tf:"settings"`
 }

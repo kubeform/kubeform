@@ -400,6 +400,8 @@ spec:
             clusterConfig:
               items:
                 properties:
+                  bucket:
+                    type: string
                   deleteAutogenBucket:
                     description: Deprecated
                     type: boolean
@@ -458,10 +460,16 @@ spec:
                             type: object
                           maxItems: 1
                           type: array
+                        instanceNames:
+                          items:
+                            type: string
+                          type: array
                         machineType:
                           type: string
                         numInstances:
                           type: integer
+                      required:
+                      - instanceNames
                       type: object
                     maxItems: 1
                     type: array
@@ -476,8 +484,14 @@ spec:
                             type: object
                           maxItems: 1
                           type: array
+                        instanceNames:
+                          items:
+                            type: string
+                          type: array
                         numInstances:
                           type: integer
+                      required:
+                      - instanceNames
                       type: object
                     maxItems: 1
                     type: array
@@ -490,6 +504,12 @@ spec:
                           additionalProperties:
                             type: string
                           type: object
+                        properties:
+                          additionalProperties:
+                            type: string
+                          type: object
+                      required:
+                      - properties
                       type: object
                     maxItems: 1
                     type: array
@@ -510,13 +530,21 @@ spec:
                             type: object
                           maxItems: 1
                           type: array
+                        instanceNames:
+                          items:
+                            type: string
+                          type: array
                         machineType:
                           type: string
                         numInstances:
                           type: integer
+                      required:
+                      - instanceNames
                       type: object
                     maxItems: 1
                     type: array
+                required:
+                - bucket
                 type: object
               maxItems: 1
               type: array
@@ -555,6 +583,8 @@ spec:
                 clusterConfig:
                   items:
                     properties:
+                      bucket:
+                        type: string
                       deleteAutogenBucket:
                         description: Deprecated
                         type: boolean
@@ -613,10 +643,16 @@ spec:
                                 type: object
                               maxItems: 1
                               type: array
+                            instanceNames:
+                              items:
+                                type: string
+                              type: array
                             machineType:
                               type: string
                             numInstances:
                               type: integer
+                          required:
+                          - instanceNames
                           type: object
                         maxItems: 1
                         type: array
@@ -631,8 +667,14 @@ spec:
                                 type: object
                               maxItems: 1
                               type: array
+                            instanceNames:
+                              items:
+                                type: string
+                              type: array
                             numInstances:
                               type: integer
+                          required:
+                          - instanceNames
                           type: object
                         maxItems: 1
                         type: array
@@ -645,6 +687,12 @@ spec:
                               additionalProperties:
                                 type: string
                               type: object
+                            properties:
+                              additionalProperties:
+                                type: string
+                              type: object
+                          required:
+                          - properties
                           type: object
                         maxItems: 1
                         type: array
@@ -665,13 +713,21 @@ spec:
                                 type: object
                               maxItems: 1
                               type: array
+                            instanceNames:
+                              items:
+                                type: string
+                              type: array
                             machineType:
                               type: string
                             numInstances:
                               type: integer
+                          required:
+                          - instanceNames
                           type: object
                         maxItems: 1
                         type: array
+                    required:
+                    - bucket
                     type: object
                   maxItems: 1
                   type: array

@@ -464,6 +464,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            name:
+              type: string
             period:
               type: string
             project:
@@ -514,6 +516,7 @@ spec:
               type: string
           required:
           - displayName
+          - name
           - providerRef
           - timeout
           type: object
@@ -593,6 +596,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                name:
+                  type: string
                 period:
                   type: string
                 project:
@@ -643,6 +648,7 @@ spec:
                   type: string
               required:
               - displayName
+              - name
               - providerRef
               - timeout
               type: object

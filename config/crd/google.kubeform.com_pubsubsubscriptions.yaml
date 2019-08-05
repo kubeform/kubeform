@@ -401,6 +401,8 @@ spec:
               type: integer
             name:
               type: string
+            path:
+              type: string
             project:
               type: string
             providerRef:
@@ -430,6 +432,7 @@ spec:
               type: string
           required:
           - name
+          - path
           - providerRef
           - topic
           type: object
@@ -445,6 +448,8 @@ spec:
                 ackDeadlineSeconds:
                   type: integer
                 name:
+                  type: string
+                path:
                   type: string
                 project:
                   type: string
@@ -475,6 +480,7 @@ spec:
                   type: string
               required:
               - name
+              - path
               - providerRef
               - topic
               type: object

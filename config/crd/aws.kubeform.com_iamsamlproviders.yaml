@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             name:
               type: string
             providerRef:
@@ -410,10 +412,14 @@ spec:
               type: object
             samlMetadataDocument:
               type: string
+            validUntil:
+              type: string
           required:
+          - arn
           - name
           - providerRef
           - samlMetadataDocument
+          - validUntil
           type: object
         status:
           properties:
@@ -424,6 +430,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 name:
                   type: string
                 providerRef:
@@ -437,10 +445,14 @@ spec:
                   type: object
                 samlMetadataDocument:
                   type: string
+                validUntil:
+                  type: string
               required:
+              - arn
               - name
               - providerRef
               - samlMetadataDocument
+              - validUntil
               type: object
             state:
               properties:

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            filesystemPath:
+              type: string
             label:
               type: string
             linodeID:
@@ -414,15 +416,19 @@ spec:
               type: string
             size:
               type: integer
+            status:
+              type: string
             tags:
               items:
                 type: string
               type: array
               uniqueItems: true
           required:
+          - filesystemPath
           - label
           - providerRef
           - region
+          - status
           type: object
         status:
           properties:
@@ -433,6 +439,8 @@ spec:
               type: integer
             output:
               properties:
+                filesystemPath:
+                  type: string
                 label:
                   type: string
                 linodeID:
@@ -450,15 +458,19 @@ spec:
                   type: string
                 size:
                   type: integer
+                status:
+                  type: string
                 tags:
                   items:
                     type: string
                   type: array
                   uniqueItems: true
               required:
+              - filesystemPath
               - label
               - providerRef
               - region
+              - status
               type: object
             state:
               properties:

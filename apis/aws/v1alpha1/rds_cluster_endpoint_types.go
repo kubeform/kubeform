@@ -21,9 +21,11 @@ type RdsClusterEndpoint struct {
 type RdsClusterEndpointSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn                       string `json:"arn" tf:"arn"`
 	ClusterEndpointIdentifier string `json:"clusterEndpointIdentifier" tf:"cluster_endpoint_identifier"`
 	ClusterIdentifier         string `json:"clusterIdentifier" tf:"cluster_identifier"`
 	CustomEndpointType        string `json:"customEndpointType" tf:"custom_endpoint_type"`
+	Endpoint                  string `json:"endpoint" tf:"endpoint"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	ExcludedMembers []string `json:"excludedMembers,omitempty" tf:"excluded_members,omitempty"`

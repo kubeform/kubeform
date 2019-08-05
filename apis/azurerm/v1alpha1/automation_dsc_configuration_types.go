@@ -30,6 +30,7 @@ type AutomationDscConfigurationSpec struct {
 	LogVerbose        bool   `json:"logVerbose,omitempty" tf:"log_verbose,omitempty"`
 	Name              string `json:"name" tf:"name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	State             string `json:"state" tf:"state"`
 }
 
 type AutomationDscConfigurationStatus struct {

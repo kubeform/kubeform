@@ -31,8 +31,11 @@ type CertificateSpec struct {
 	// +optional
 	LeafCertificate string `json:"leafCertificate,omitempty" tf:"leaf_certificate,omitempty"`
 	Name            string `json:"name" tf:"name"`
+	NotAfter        string `json:"notAfter" tf:"not_after"`
 	// +optional
-	PrivateKey string `json:"-" sensitive:"true" tf:"private_key,omitempty"`
+	PrivateKey      string `json:"-" sensitive:"true" tf:"private_key,omitempty"`
+	Sha1Fingerprint string `json:"sha1Fingerprint" tf:"sha1_fingerprint"`
+	State           string `json:"state" tf:"state"`
 	// +optional
 	Type string `json:"type,omitempty" tf:"type,omitempty"`
 }

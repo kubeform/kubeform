@@ -42,6 +42,7 @@ type DatasyncTaskSpecOptions struct {
 type DatasyncTaskSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	CloudwatchLogGroupArn  string `json:"cloudwatchLogGroupArn,omitempty" tf:"cloudwatch_log_group_arn,omitempty"`
 	DestinationLocationArn string `json:"destinationLocationArn" tf:"destination_location_arn"`

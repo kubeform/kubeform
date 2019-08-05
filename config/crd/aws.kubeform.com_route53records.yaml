@@ -424,6 +424,8 @@ spec:
                 - type
                 type: object
               type: array
+            fqdn:
+              type: string
             geolocationRoutingPolicy:
               items:
                 properties:
@@ -482,6 +484,7 @@ spec:
             zoneID:
               type: string
           required:
+          - fqdn
           - name
           - providerRef
           - type
@@ -523,6 +526,8 @@ spec:
                     - type
                     type: object
                   type: array
+                fqdn:
+                  type: string
                 geolocationRoutingPolicy:
                   items:
                     properties:
@@ -581,6 +586,7 @@ spec:
                 zoneID:
                   type: string
               required:
+              - fqdn
               - name
               - providerRef
               - type

@@ -414,12 +414,15 @@ spec:
               type: object
             text:
               type: string
+            updateTime:
+              type: string
             value:
               type: string
           required:
           - name
           - parent
           - providerRef
+          - updateTime
           type: object
         status:
           properties:
@@ -447,12 +450,15 @@ spec:
                   type: object
                 text:
                   type: string
+                updateTime:
+                  type: string
                 value:
                   type: string
               required:
               - name
               - parent
               - providerRef
+              - updateTime
               type: object
             state:
               properties:

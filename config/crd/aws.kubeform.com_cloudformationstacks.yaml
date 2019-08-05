@@ -415,6 +415,10 @@ spec:
               uniqueItems: true
             onFailure:
               type: string
+            outputs:
+              additionalProperties:
+                type: string
+              type: object
             parameters:
               additionalProperties:
                 type: string
@@ -444,6 +448,7 @@ spec:
               type: integer
           required:
           - name
+          - outputs
           - providerRef
           type: object
         status:
@@ -473,6 +478,10 @@ spec:
                   uniqueItems: true
                 onFailure:
                   type: string
+                outputs:
+                  additionalProperties:
+                    type: string
+                  type: object
                 parameters:
                   additionalProperties:
                     type: string
@@ -502,6 +511,7 @@ spec:
                   type: integer
               required:
               - name
+              - outputs
               - providerRef
               type: object
             state:

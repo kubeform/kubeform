@@ -55,6 +55,7 @@ type CodedeployDeploymentConfigSpec struct {
 
 	// +optional
 	ComputePlatform      string `json:"computePlatform,omitempty" tf:"compute_platform,omitempty"`
+	DeploymentConfigID   string `json:"deploymentConfigID" tf:"deployment_config_id"`
 	DeploymentConfigName string `json:"deploymentConfigName" tf:"deployment_config_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

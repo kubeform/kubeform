@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            creationDate:
+              type: string
             definition:
               type: string
             name:
@@ -412,15 +414,19 @@ spec:
               type: object
             roleArn:
               type: string
+            status:
+              type: string
             tags:
               additionalProperties:
                 type: string
               type: object
           required:
+          - creationDate
           - definition
           - name
           - providerRef
           - roleArn
+          - status
           type: object
         status:
           properties:
@@ -431,6 +437,8 @@ spec:
               type: integer
             output:
               properties:
+                creationDate:
+                  type: string
                 definition:
                   type: string
                 name:
@@ -446,15 +454,19 @@ spec:
                   type: object
                 roleArn:
                   type: string
+                status:
+                  type: string
                 tags:
                   additionalProperties:
                     type: string
                   type: object
               required:
+              - creationDate
               - definition
               - name
               - providerRef
               - roleArn
+              - status
               type: object
             state:
               properties:

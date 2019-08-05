@@ -460,6 +460,8 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            metadataFingerprint:
+              type: string
             metadataStartupScript:
               type: string
             minCPUPlatform:
@@ -474,10 +476,15 @@ spec:
                   accessConfig:
                     items:
                       properties:
+                        assignedNATIP:
+                          description: Deprecated
+                          type: string
                         natIP:
                           type: string
                         networkTier:
                           type: string
+                      required:
+                      - assignedNATIP
                       type: object
                     type: array
                   address:
@@ -528,6 +535,8 @@ spec:
                     type: boolean
                 type: object
               type: array
+            selfLink:
+              type: string
             serviceAccount:
               items:
                 properties:
@@ -548,10 +557,15 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            tagsFingerprint:
+              type: string
           required:
           - disk
           - machineType
+          - metadataFingerprint
           - providerRef
+          - selfLink
+          - tagsFingerprint
           type: object
         status:
           properties:
@@ -625,6 +639,8 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                metadataFingerprint:
+                  type: string
                 metadataStartupScript:
                   type: string
                 minCPUPlatform:
@@ -639,10 +655,15 @@ spec:
                       accessConfig:
                         items:
                           properties:
+                            assignedNATIP:
+                              description: Deprecated
+                              type: string
                             natIP:
                               type: string
                             networkTier:
                               type: string
+                          required:
+                          - assignedNATIP
                           type: object
                         type: array
                       address:
@@ -693,6 +714,8 @@ spec:
                         type: boolean
                     type: object
                   type: array
+                selfLink:
+                  type: string
                 serviceAccount:
                   items:
                     properties:
@@ -713,10 +736,15 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                tagsFingerprint:
+                  type: string
               required:
               - disk
               - machineType
+              - metadataFingerprint
               - providerRef
+              - selfLink
+              - tagsFingerprint
               type: object
             state:
               properties:

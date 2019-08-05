@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             cloudwatchLogGroupArn:
               type: string
             destinationLocationArn:
@@ -443,6 +445,7 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - destinationLocationArn
           - providerRef
           - sourceLocationArn
@@ -456,6 +459,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 cloudwatchLogGroupArn:
                   type: string
                 destinationLocationArn:
@@ -502,6 +507,7 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - destinationLocationArn
               - providerRef
               - sourceLocationArn

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            etag:
+              type: string
             instance:
               type: string
             policyData:
@@ -413,6 +415,7 @@ spec:
                   type: string
               type: object
           required:
+          - etag
           - instance
           - policyData
           - providerRef
@@ -426,6 +429,8 @@ spec:
               type: integer
             output:
               properties:
+                etag:
+                  type: string
                 instance:
                   type: string
                 policyData:
@@ -442,6 +447,7 @@ spec:
                       type: string
                   type: object
               required:
+              - etag
               - instance
               - policyData
               - providerRef

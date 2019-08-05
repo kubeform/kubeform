@@ -38,9 +38,12 @@ type DmsReplicationInstanceSpec struct {
 	// +optional
 	PreferredMaintenanceWindow string `json:"preferredMaintenanceWindow,omitempty" tf:"preferred_maintenance_window,omitempty"`
 	// +optional
-	PubliclyAccessible       bool   `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
-	ReplicationInstanceClass string `json:"replicationInstanceClass" tf:"replication_instance_class"`
-	ReplicationInstanceID    string `json:"replicationInstanceID" tf:"replication_instance_id"`
+	PubliclyAccessible            bool     `json:"publiclyAccessible,omitempty" tf:"publicly_accessible,omitempty"`
+	ReplicationInstanceArn        string   `json:"replicationInstanceArn" tf:"replication_instance_arn"`
+	ReplicationInstanceClass      string   `json:"replicationInstanceClass" tf:"replication_instance_class"`
+	ReplicationInstanceID         string   `json:"replicationInstanceID" tf:"replication_instance_id"`
+	ReplicationInstancePrivateIPS []string `json:"replicationInstancePrivateIPS" tf:"replication_instance_private_ips"`
+	ReplicationInstancePublicIPS  []string `json:"replicationInstancePublicIPS" tf:"replication_instance_public_ips"`
 	// +optional
 	ReplicationSubnetGroupID string `json:"replicationSubnetGroupID,omitempty" tf:"replication_subnet_group_id,omitempty"`
 	// +optional

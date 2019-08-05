@@ -405,6 +405,8 @@ spec:
               type: boolean
             enableFloatingIP:
               type: boolean
+            frontendIPConfigurationID:
+              type: string
             frontendIPConfigurationName:
               type: string
             frontendPort:
@@ -437,6 +439,7 @@ spec:
               type: string
           required:
           - backendPort
+          - frontendIPConfigurationID
           - frontendIPConfigurationName
           - frontendPort
           - loadbalancerID
@@ -462,6 +465,8 @@ spec:
                   type: boolean
                 enableFloatingIP:
                   type: boolean
+                frontendIPConfigurationID:
+                  type: string
                 frontendIPConfigurationName:
                   type: string
                 frontendPort:
@@ -494,6 +499,7 @@ spec:
                   type: string
               required:
               - backendPort
+              - frontendIPConfigurationID
               - frontendIPConfigurationName
               - frontendPort
               - loadbalancerID

@@ -21,13 +21,16 @@ type SsmActivation struct {
 type SsmActivationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ActivationCode string `json:"activationCode" tf:"activation_code"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	ExpirationDate string `json:"expirationDate,omitempty" tf:"expiration_date,omitempty"`
+	Expired        string `json:"expired" tf:"expired"`
 	IamRole        string `json:"iamRole" tf:"iam_role"`
 	// +optional
-	Name string `json:"name,omitempty" tf:"name,omitempty"`
+	Name              string `json:"name,omitempty" tf:"name,omitempty"`
+	RegistrationCount int    `json:"registrationCount" tf:"registration_count"`
 	// +optional
 	RegistrationLimit int `json:"registrationLimit,omitempty" tf:"registration_limit,omitempty"`
 	// +optional

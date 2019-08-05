@@ -25,10 +25,13 @@ type ApiManagementCertificateSpec struct {
 
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	Data              string `json:"-" sensitive:"true" tf:"data"`
+	Expiration        string `json:"expiration" tf:"expiration"`
 	Name              string `json:"name" tf:"name"`
 	// +optional
 	Password          string `json:"-" sensitive:"true" tf:"password,omitempty"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`
+	Subject           string `json:"subject" tf:"subject"`
+	Thumbprint        string `json:"thumbprint" tf:"thumbprint"`
 }
 
 type ApiManagementCertificateStatus struct {

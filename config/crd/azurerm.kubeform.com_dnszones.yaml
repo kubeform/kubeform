@@ -397,8 +397,17 @@ spec:
           type: object
         spec:
           properties:
+            maxNumberOfRecordSets:
+              type: integer
             name:
               type: string
+            nameServers:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
+            numberOfRecordSets:
+              type: integer
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -425,7 +434,10 @@ spec:
             zoneType:
               type: string
           required:
+          - maxNumberOfRecordSets
           - name
+          - nameServers
+          - numberOfRecordSets
           - providerRef
           - resourceGroupName
           type: object
@@ -438,8 +450,17 @@ spec:
               type: integer
             output:
               properties:
+                maxNumberOfRecordSets:
+                  type: integer
                 name:
                   type: string
+                nameServers:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
+                numberOfRecordSets:
+                  type: integer
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -466,7 +487,10 @@ spec:
                 zoneType:
                   type: string
               required:
+              - maxNumberOfRecordSets
               - name
+              - nameServers
+              - numberOfRecordSets
               - providerRef
               - resourceGroupName
               type: object

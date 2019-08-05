@@ -442,6 +442,10 @@ spec:
                     type: string
                   storageAccountID:
                     type: string
+                  storagePath:
+                    type: string
+                required:
+                - storagePath
                 type: object
               maxItems: 1
               type: array
@@ -509,6 +513,10 @@ spec:
                         type: string
                       storageAccountID:
                         type: string
+                      storagePath:
+                        type: string
+                    required:
+                    - storagePath
                     type: object
                   maxItems: 1
                   type: array

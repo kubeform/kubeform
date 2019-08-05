@@ -28,7 +28,10 @@ type DxGatewayAssociationSpec struct {
 	AssociatedGatewayID string `json:"associatedGatewayID,omitempty" tf:"associated_gateway_id,omitempty"`
 	// +optional
 	AssociatedGatewayOwnerAccountID string `json:"associatedGatewayOwnerAccountID,omitempty" tf:"associated_gateway_owner_account_id,omitempty"`
+	AssociatedGatewayType           string `json:"associatedGatewayType" tf:"associated_gateway_type"`
+	DxGatewayAssociationID          string `json:"dxGatewayAssociationID" tf:"dx_gateway_association_id"`
 	DxGatewayID                     string `json:"dxGatewayID" tf:"dx_gateway_id"`
+	DxGatewayOwnerAccountID         string `json:"dxGatewayOwnerAccountID" tf:"dx_gateway_owner_account_id"`
 	// +optional
 	ProposalID string `json:"proposalID,omitempty" tf:"proposal_id,omitempty"`
 	// +optional

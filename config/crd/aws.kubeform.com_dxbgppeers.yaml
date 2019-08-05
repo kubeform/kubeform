@@ -401,9 +401,15 @@ spec:
               type: string
             amazonAddress:
               type: string
+            awsDevice:
+              type: string
             bgpAsn:
               type: integer
             bgpAuthKey:
+              type: string
+            bgpPeerID:
+              type: string
+            bgpStatus:
               type: string
             customerAddress:
               type: string
@@ -420,7 +426,10 @@ spec:
               type: string
           required:
           - addressFamily
+          - awsDevice
           - bgpAsn
+          - bgpPeerID
+          - bgpStatus
           - providerRef
           - virtualInterfaceID
           type: object
@@ -437,9 +446,15 @@ spec:
                   type: string
                 amazonAddress:
                   type: string
+                awsDevice:
+                  type: string
                 bgpAsn:
                   type: integer
                 bgpAuthKey:
+                  type: string
+                bgpPeerID:
+                  type: string
+                bgpStatus:
                   type: string
                 customerAddress:
                   type: string
@@ -456,7 +471,10 @@ spec:
                   type: string
               required:
               - addressFamily
+              - awsDevice
               - bgpAsn
+              - bgpPeerID
+              - bgpStatus
               - providerRef
               - virtualInterfaceID
               type: object

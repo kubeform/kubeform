@@ -406,6 +406,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            replicationSubnetGroupArn:
+              type: string
             replicationSubnetGroupDescription:
               type: string
             replicationSubnetGroupID:
@@ -419,11 +421,15 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            vpcID:
+              type: string
           required:
           - providerRef
+          - replicationSubnetGroupArn
           - replicationSubnetGroupDescription
           - replicationSubnetGroupID
           - subnetIDS
+          - vpcID
           type: object
         status:
           properties:
@@ -443,6 +449,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                replicationSubnetGroupArn:
+                  type: string
                 replicationSubnetGroupDescription:
                   type: string
                 replicationSubnetGroupID:
@@ -456,11 +464,15 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                vpcID:
+                  type: string
               required:
               - providerRef
+              - replicationSubnetGroupArn
               - replicationSubnetGroupDescription
               - replicationSubnetGroupID
               - subnetIDS
+              - vpcID
               type: object
             state:
               properties:

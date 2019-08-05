@@ -60,6 +60,7 @@ type ProjectOrganizationPolicySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	BooleanPolicy []ProjectOrganizationPolicySpecBooleanPolicy `json:"booleanPolicy,omitempty" tf:"boolean_policy,omitempty"`
 	Constraint    string                                       `json:"constraint" tf:"constraint"`
+	Etag          string                                       `json:"etag" tf:"etag"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ListPolicy []ProjectOrganizationPolicySpecListPolicy `json:"listPolicy,omitempty" tf:"list_policy,omitempty"`
@@ -67,6 +68,7 @@ type ProjectOrganizationPolicySpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RestorePolicy []ProjectOrganizationPolicySpecRestorePolicy `json:"restorePolicy,omitempty" tf:"restore_policy,omitempty"`
+	UpdateTime    string                                       `json:"updateTime" tf:"update_time"`
 	// +optional
 	Version int `json:"version,omitempty" tf:"version,omitempty"`
 }

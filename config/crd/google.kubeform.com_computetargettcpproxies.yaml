@@ -399,6 +399,8 @@ spec:
           properties:
             backendService:
               type: string
+            creationTimestamp:
+              type: string
             description:
               type: string
             name:
@@ -416,10 +418,17 @@ spec:
               type: object
             proxyHeader:
               type: string
+            proxyID:
+              type: integer
+            selfLink:
+              type: string
           required:
           - backendService
+          - creationTimestamp
           - name
           - providerRef
+          - proxyID
+          - selfLink
           type: object
         status:
           properties:
@@ -431,6 +440,8 @@ spec:
             output:
               properties:
                 backendService:
+                  type: string
+                creationTimestamp:
                   type: string
                 description:
                   type: string
@@ -449,10 +460,17 @@ spec:
                   type: object
                 proxyHeader:
                   type: string
+                proxyID:
+                  type: integer
+                selfLink:
+                  type: string
               required:
               - backendService
+              - creationTimestamp
               - name
               - providerRef
+              - proxyID
+              - selfLink
               type: object
             state:
               properties:

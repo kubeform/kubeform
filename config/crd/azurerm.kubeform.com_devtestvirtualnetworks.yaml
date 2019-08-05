@@ -417,10 +417,14 @@ spec:
             subnet:
               items:
                 properties:
+                  name:
+                    type: string
                   useInVirtualMachineCreation:
                     type: string
                   usePublicIPAddress:
                     type: string
+                required:
+                - name
                 type: object
               maxItems: 1
               type: array
@@ -428,11 +432,14 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            uniqueIdentifier:
+              type: string
           required:
           - labName
           - name
           - providerRef
           - resourceGroupName
+          - uniqueIdentifier
           type: object
         status:
           properties:
@@ -463,10 +470,14 @@ spec:
                 subnet:
                   items:
                     properties:
+                      name:
+                        type: string
                       useInVirtualMachineCreation:
                         type: string
                       usePublicIPAddress:
                         type: string
+                    required:
+                    - name
                     type: object
                   maxItems: 1
                   type: array
@@ -474,11 +485,14 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                uniqueIdentifier:
+                  type: string
               required:
               - labName
               - name
               - providerRef
               - resourceGroupName
+              - uniqueIdentifier
               type: object
             state:
               properties:

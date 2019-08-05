@@ -401,6 +401,8 @@ spec:
               type: string
             keyType:
               type: string
+            name:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -412,11 +414,15 @@ spec:
               type: object
             usagePlanID:
               type: string
+            value:
+              type: string
           required:
           - keyID
           - keyType
+          - name
           - providerRef
           - usagePlanID
+          - value
           type: object
         status:
           properties:
@@ -431,6 +437,8 @@ spec:
                   type: string
                 keyType:
                   type: string
+                name:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -442,11 +450,15 @@ spec:
                   type: object
                 usagePlanID:
                   type: string
+                value:
+                  type: string
               required:
               - keyID
               - keyType
+              - name
               - providerRef
               - usagePlanID
+              - value
               type: object
             state:
               properties:

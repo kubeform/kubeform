@@ -88,7 +88,7 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 		value := s[key]
 		id := flect.Capitalize(flect.Camelize(key))
 
-		if (value.Computed && !value.Optional) || value.Removed != "" {
+		if value.Removed != "" {
 			continue
 		}
 

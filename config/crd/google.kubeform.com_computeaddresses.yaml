@@ -401,7 +401,12 @@ spec:
               type: string
             addressType:
               type: string
+            creationTimestamp:
+              type: string
             description:
+              type: string
+            labelFingerprint:
+              description: Deprecated
               type: string
             labels:
               additionalProperties:
@@ -425,11 +430,21 @@ spec:
               type: object
             region:
               type: string
+            selfLink:
+              type: string
             subnetwork:
               type: string
+            users:
+              items:
+                type: string
+              type: array
           required:
+          - creationTimestamp
+          - labelFingerprint
           - name
           - providerRef
+          - selfLink
+          - users
           type: object
         status:
           properties:
@@ -444,7 +459,12 @@ spec:
                   type: string
                 addressType:
                   type: string
+                creationTimestamp:
+                  type: string
                 description:
+                  type: string
+                labelFingerprint:
+                  description: Deprecated
                   type: string
                 labels:
                   additionalProperties:
@@ -468,11 +488,21 @@ spec:
                   type: object
                 region:
                   type: string
+                selfLink:
+                  type: string
                 subnetwork:
                   type: string
+                users:
+                  items:
+                    type: string
+                  type: array
               required:
+              - creationTimestamp
+              - labelFingerprint
               - name
               - providerRef
+              - selfLink
+              - users
               type: object
             state:
               properties:

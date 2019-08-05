@@ -399,6 +399,8 @@ spec:
           properties:
             administrationRoleArn:
               type: string
+            arn:
+              type: string
             capabilities:
               items:
                 type: string
@@ -423,6 +425,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            stackSetID:
+              type: string
             tags:
               additionalProperties:
                 type: string
@@ -433,8 +437,10 @@ spec:
               type: string
           required:
           - administrationRoleArn
+          - arn
           - name
           - providerRef
+          - stackSetID
           type: object
         status:
           properties:
@@ -446,6 +452,8 @@ spec:
             output:
               properties:
                 administrationRoleArn:
+                  type: string
+                arn:
                   type: string
                 capabilities:
                   items:
@@ -471,6 +479,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                stackSetID:
+                  type: string
                 tags:
                   additionalProperties:
                     type: string
@@ -481,8 +491,10 @@ spec:
                   type: string
               required:
               - administrationRoleArn
+              - arn
               - name
               - providerRef
+              - stackSetID
               type: object
             state:
               properties:

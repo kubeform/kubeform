@@ -397,6 +397,10 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
+            customerAwsID:
+              type: string
             enabled:
               type: boolean
             eventCategories:
@@ -426,14 +430,19 @@ spec:
               uniqueItems: true
             sourceType:
               type: string
+            status:
+              type: string
             tags:
               additionalProperties:
                 type: string
               type: object
           required:
+          - arn
+          - customerAwsID
           - name
           - providerRef
           - snsTopicArn
+          - status
           type: object
         status:
           properties:
@@ -444,6 +453,10 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
+                customerAwsID:
+                  type: string
                 enabled:
                   type: boolean
                 eventCategories:
@@ -473,14 +486,19 @@ spec:
                   uniqueItems: true
                 sourceType:
                   type: string
+                status:
+                  type: string
                 tags:
                   additionalProperties:
                     type: string
                   type: object
               required:
+              - arn
+              - customerAwsID
               - name
               - providerRef
               - snsTopicArn
+              - status
               type: object
             state:
               properties:

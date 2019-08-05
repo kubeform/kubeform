@@ -21,6 +21,8 @@ type DbEventSubscription struct {
 type DbEventSubscriptionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn           string `json:"arn" tf:"arn"`
+	CustomerAwsID string `json:"customerAwsID" tf:"customer_aws_id"`
 	// +optional
 	Enabled bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 	// +optional

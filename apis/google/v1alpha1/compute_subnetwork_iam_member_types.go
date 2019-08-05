@@ -21,6 +21,7 @@ type ComputeSubnetworkIamMember struct {
 type ComputeSubnetworkIamMemberSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Etag   string `json:"etag" tf:"etag"`
 	Member string `json:"member" tf:"member"`
 	// +optional
 	// Deprecated

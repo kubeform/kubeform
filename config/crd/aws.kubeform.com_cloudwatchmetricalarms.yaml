@@ -408,6 +408,8 @@ spec:
               type: string
             alarmName:
               type: string
+            arn:
+              type: string
             comparisonOperator:
               type: string
             datapointsToAlarm:
@@ -502,6 +504,7 @@ spec:
               type: string
           required:
           - alarmName
+          - arn
           - comparisonOperator
           - evaluationPeriods
           - providerRef
@@ -526,6 +529,8 @@ spec:
                 alarmDescription:
                   type: string
                 alarmName:
+                  type: string
+                arn:
                   type: string
                 comparisonOperator:
                   type: string
@@ -621,6 +626,7 @@ spec:
                   type: string
               required:
               - alarmName
+              - arn
               - comparisonOperator
               - evaluationPeriods
               - providerRef

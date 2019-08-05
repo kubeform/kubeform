@@ -399,6 +399,8 @@ spec:
           properties:
             agentVersion:
               type: string
+            arn:
+              type: string
             berkshelfVersion:
               type: string
             color:
@@ -467,6 +469,8 @@ spec:
               type: object
             serviceRoleArn:
               type: string
+            stackEndpoint:
+              type: string
             tags:
               additionalProperties:
                 type: string
@@ -478,11 +482,13 @@ spec:
             vpcID:
               type: string
           required:
+          - arn
           - defaultInstanceProfileArn
           - name
           - providerRef
           - region
           - serviceRoleArn
+          - stackEndpoint
           type: object
         status:
           properties:
@@ -494,6 +500,8 @@ spec:
             output:
               properties:
                 agentVersion:
+                  type: string
+                arn:
                   type: string
                 berkshelfVersion:
                   type: string
@@ -563,6 +571,8 @@ spec:
                   type: object
                 serviceRoleArn:
                   type: string
+                stackEndpoint:
+                  type: string
                 tags:
                   additionalProperties:
                     type: string
@@ -574,11 +584,13 @@ spec:
                 vpcID:
                   type: string
               required:
+              - arn
               - defaultInstanceProfileArn
               - name
               - providerRef
               - region
               - serviceRoleArn
+              - stackEndpoint
               type: object
             state:
               properties:

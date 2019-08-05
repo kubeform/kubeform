@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            creationTimestamp:
+              type: string
             description:
               type: string
             diskEncryptionKey:
@@ -404,15 +406,28 @@ spec:
                 properties:
                   rawKey:
                     type: string
+                  sha256:
+                    type: string
+                required:
+                - sha256
                 type: object
               maxItems: 1
               type: array
+            diskEncryptionKeySha256:
+              description: Deprecated
+              type: string
             image:
+              type: string
+            labelFingerprint:
               type: string
             labels:
               additionalProperties:
                 type: string
               type: object
+            lastAttachTimestamp:
+              type: string
+            lastDetachTimestamp:
+              type: string
             name:
               type: string
             project:
@@ -435,6 +450,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
             size:
               type: integer
             snapshot:
@@ -444,24 +461,49 @@ spec:
                 properties:
                   rawKey:
                     type: string
+                  sha256:
+                    type: string
+                required:
+                - sha256
                 type: object
               maxItems: 1
               type: array
+            sourceImageID:
+              type: string
             sourceSnapshotEncryptionKey:
               items:
                 properties:
                   rawKey:
                     type: string
+                  sha256:
+                    type: string
+                required:
+                - sha256
                 type: object
               maxItems: 1
               type: array
+            sourceSnapshotID:
+              type: string
             type:
               type: string
+            users:
+              items:
+                type: string
+              type: array
             zone:
               type: string
           required:
+          - creationTimestamp
+          - diskEncryptionKeySha256
+          - labelFingerprint
+          - lastAttachTimestamp
+          - lastDetachTimestamp
           - name
           - providerRef
+          - selfLink
+          - sourceImageID
+          - sourceSnapshotID
+          - users
           type: object
         status:
           properties:
@@ -472,6 +514,8 @@ spec:
               type: integer
             output:
               properties:
+                creationTimestamp:
+                  type: string
                 description:
                   type: string
                 diskEncryptionKey:
@@ -479,15 +523,28 @@ spec:
                     properties:
                       rawKey:
                         type: string
+                      sha256:
+                        type: string
+                    required:
+                    - sha256
                     type: object
                   maxItems: 1
                   type: array
+                diskEncryptionKeySha256:
+                  description: Deprecated
+                  type: string
                 image:
+                  type: string
+                labelFingerprint:
                   type: string
                 labels:
                   additionalProperties:
                     type: string
                   type: object
+                lastAttachTimestamp:
+                  type: string
+                lastDetachTimestamp:
+                  type: string
                 name:
                   type: string
                 project:
@@ -510,6 +567,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
                 size:
                   type: integer
                 snapshot:
@@ -519,24 +578,49 @@ spec:
                     properties:
                       rawKey:
                         type: string
+                      sha256:
+                        type: string
+                    required:
+                    - sha256
                     type: object
                   maxItems: 1
                   type: array
+                sourceImageID:
+                  type: string
                 sourceSnapshotEncryptionKey:
                   items:
                     properties:
                       rawKey:
                         type: string
+                      sha256:
+                        type: string
+                    required:
+                    - sha256
                     type: object
                   maxItems: 1
                   type: array
+                sourceSnapshotID:
+                  type: string
                 type:
                   type: string
+                users:
+                  items:
+                    type: string
+                  type: array
                 zone:
                   type: string
               required:
+              - creationTimestamp
+              - diskEncryptionKeySha256
+              - labelFingerprint
+              - lastAttachTimestamp
+              - lastDetachTimestamp
               - name
               - providerRef
+              - selfLink
+              - sourceImageID
+              - sourceSnapshotID
+              - users
               type: object
             state:
               properties:

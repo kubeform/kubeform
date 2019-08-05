@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            creationTimestamp:
+              type: string
             description:
               type: string
             name:
@@ -412,7 +414,11 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            proxyID:
+              type: integer
             quicOverride:
+              type: string
+            selfLink:
               type: string
             sslCertificates:
               items:
@@ -423,8 +429,11 @@ spec:
             urlMap:
               type: string
           required:
+          - creationTimestamp
           - name
           - providerRef
+          - proxyID
+          - selfLink
           - sslCertificates
           - urlMap
           type: object
@@ -437,6 +446,8 @@ spec:
               type: integer
             output:
               properties:
+                creationTimestamp:
+                  type: string
                 description:
                   type: string
                 name:
@@ -452,7 +463,11 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                proxyID:
+                  type: integer
                 quicOverride:
+                  type: string
+                selfLink:
                   type: string
                 sslCertificates:
                   items:
@@ -463,8 +478,11 @@ spec:
                 urlMap:
                   type: string
               required:
+              - creationTimestamp
               - name
               - providerRef
+              - proxyID
+              - selfLink
               - sslCertificates
               - urlMap
               type: object

@@ -397,9 +397,15 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             connectionsBandwidth:
               type: string
             forceDestroy:
+              type: boolean
+            hasLogicalRedundancy:
+              type: string
+            jumboFrameCapable:
               type: boolean
             location:
               type: string
@@ -419,7 +425,10 @@ spec:
                 type: string
               type: object
           required:
+          - arn
           - connectionsBandwidth
+          - hasLogicalRedundancy
+          - jumboFrameCapable
           - location
           - name
           - providerRef
@@ -433,9 +442,15 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 connectionsBandwidth:
                   type: string
                 forceDestroy:
+                  type: boolean
+                hasLogicalRedundancy:
+                  type: string
+                jumboFrameCapable:
                   type: boolean
                 location:
                   type: string
@@ -455,7 +470,10 @@ spec:
                     type: string
                   type: object
               required:
+              - arn
               - connectionsBandwidth
+              - hasLogicalRedundancy
+              - jumboFrameCapable
               - location
               - name
               - providerRef

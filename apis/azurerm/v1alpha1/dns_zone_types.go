@@ -21,7 +21,11 @@ type DnsZone struct {
 type DnsZoneSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	Name string `json:"name" tf:"name"`
+	MaxNumberOfRecordSets int    `json:"maxNumberOfRecordSets" tf:"max_number_of_record_sets"`
+	Name                  string `json:"name" tf:"name"`
+	// +kubebuilder:validation:UniqueItems=true
+	NameServers        []string `json:"nameServers" tf:"name_servers"`
+	NumberOfRecordSets int      `json:"numberOfRecordSets" tf:"number_of_record_sets"`
 	// +optional
 	RegistrationVirtualNetworkIDS []string `json:"registrationVirtualNetworkIDS,omitempty" tf:"registration_virtual_network_ids,omitempty"`
 	// +optional

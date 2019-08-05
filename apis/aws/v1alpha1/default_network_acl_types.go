@@ -60,11 +60,13 @@ type DefaultNetworkACLSpec struct {
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Ingress []DefaultNetworkACLSpecIngress `json:"ingress,omitempty" tf:"ingress,omitempty"`
+	OwnerID string                         `json:"ownerID" tf:"owner_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	SubnetIDS []string `json:"subnetIDS,omitempty" tf:"subnet_ids,omitempty"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags  map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VpcID string            `json:"vpcID" tf:"vpc_id"`
 }
 
 type DefaultNetworkACLStatus struct {

@@ -399,6 +399,10 @@ spec:
           properties:
             allocationID:
               type: string
+            networkInterfaceID:
+              type: string
+            privateIP:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -408,6 +412,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            publicIP:
+              type: string
             subnetID:
               type: string
             tags:
@@ -416,7 +422,10 @@ spec:
               type: object
           required:
           - allocationID
+          - networkInterfaceID
+          - privateIP
           - providerRef
+          - publicIP
           - subnetID
           type: object
         status:
@@ -430,6 +439,10 @@ spec:
               properties:
                 allocationID:
                   type: string
+                networkInterfaceID:
+                  type: string
+                privateIP:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -439,6 +452,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                publicIP:
+                  type: string
                 subnetID:
                   type: string
                 tags:
@@ -447,7 +462,10 @@ spec:
                   type: object
               required:
               - allocationID
+              - networkInterfaceID
+              - privateIP
               - providerRef
+              - publicIP
               - subnetID
               type: object
             state:

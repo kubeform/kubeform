@@ -165,6 +165,7 @@ type LaunchTemplateSpecTagSpecifications struct {
 type LaunchTemplateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	BlockDeviceMappings []LaunchTemplateSpecBlockDeviceMappings `json:"blockDeviceMappings,omitempty" tf:"block_device_mappings,omitempty"`
 	// +optional
@@ -173,6 +174,7 @@ type LaunchTemplateSpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	CreditSpecification []LaunchTemplateSpecCreditSpecification `json:"creditSpecification,omitempty" tf:"credit_specification,omitempty"`
+	DefaultVersion      int                                     `json:"defaultVersion" tf:"default_version"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -199,7 +201,8 @@ type LaunchTemplateSpec struct {
 	// +optional
 	KernelID string `json:"kernelID,omitempty" tf:"kernel_id,omitempty"`
 	// +optional
-	KeyName string `json:"keyName,omitempty" tf:"key_name,omitempty"`
+	KeyName       string `json:"keyName,omitempty" tf:"key_name,omitempty"`
+	LatestVersion int    `json:"latestVersion" tf:"latest_version"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	LicenseSpecification []LaunchTemplateSpecLicenseSpecification `json:"licenseSpecification,omitempty" tf:"license_specification,omitempty"`

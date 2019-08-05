@@ -399,6 +399,8 @@ spec:
           properties:
             checkIntervalSec:
               type: integer
+            creationTimestamp:
+              type: string
             description:
               type: string
             healthyThreshold:
@@ -422,13 +424,17 @@ spec:
               type: object
             requestPath:
               type: string
+            selfLink:
+              type: string
             timeoutSec:
               type: integer
             unhealthyThreshold:
               type: integer
           required:
+          - creationTimestamp
           - name
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -441,6 +447,8 @@ spec:
               properties:
                 checkIntervalSec:
                   type: integer
+                creationTimestamp:
+                  type: string
                 description:
                   type: string
                 healthyThreshold:
@@ -464,13 +472,17 @@ spec:
                   type: object
                 requestPath:
                   type: string
+                selfLink:
+                  type: string
                 timeoutSec:
                   type: integer
                 unhealthyThreshold:
                   type: integer
               required:
+              - creationTimestamp
               - name
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

@@ -66,6 +66,7 @@ type AutoscalingPolicySpec struct {
 
 	// +optional
 	AdjustmentType       string `json:"adjustmentType,omitempty" tf:"adjustment_type,omitempty"`
+	Arn                  string `json:"arn" tf:"arn"`
 	AutoscalingGroupName string `json:"autoscalingGroupName" tf:"autoscaling_group_name"`
 	// +optional
 	Cooldown int `json:"cooldown,omitempty" tf:"cooldown,omitempty"`

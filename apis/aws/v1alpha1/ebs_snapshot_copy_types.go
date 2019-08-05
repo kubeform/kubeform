@@ -21,16 +21,21 @@ type EbsSnapshotCopy struct {
 type EbsSnapshotCopySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	DataEncryptionKeyID string `json:"dataEncryptionKeyID" tf:"data_encryption_key_id"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
 	Encrypted bool `json:"encrypted,omitempty" tf:"encrypted,omitempty"`
 	// +optional
 	KmsKeyID         string `json:"kmsKeyID,omitempty" tf:"kms_key_id,omitempty"`
+	OwnerAlias       string `json:"ownerAlias" tf:"owner_alias"`
+	OwnerID          string `json:"ownerID" tf:"owner_id"`
 	SourceRegion     string `json:"sourceRegion" tf:"source_region"`
 	SourceSnapshotID string `json:"sourceSnapshotID" tf:"source_snapshot_id"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags       map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	VolumeID   string            `json:"volumeID" tf:"volume_id"`
+	VolumeSize int               `json:"volumeSize" tf:"volume_size"`
 }
 
 type EbsSnapshotCopyStatus struct {

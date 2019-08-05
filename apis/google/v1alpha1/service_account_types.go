@@ -24,11 +24,14 @@ type ServiceAccountSpec struct {
 	AccountID string `json:"accountID" tf:"account_id"`
 	// +optional
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+	Email       string `json:"email" tf:"email"`
+	Name        string `json:"name" tf:"name"`
 	// +optional
 	// Deprecated
 	PolicyData string `json:"policyData,omitempty" tf:"policy_data,omitempty"`
 	// +optional
-	Project string `json:"project,omitempty" tf:"project,omitempty"`
+	Project  string `json:"project,omitempty" tf:"project,omitempty"`
+	UniqueID string `json:"uniqueID" tf:"unique_id"`
 }
 
 type ServiceAccountStatus struct {

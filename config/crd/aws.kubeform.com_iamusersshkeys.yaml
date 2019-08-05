@@ -399,6 +399,8 @@ spec:
           properties:
             encoding:
               type: string
+            fingerprint:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -410,14 +412,18 @@ spec:
               type: object
             publicKey:
               type: string
+            sshPublicKeyID:
+              type: string
             status:
               type: string
             username:
               type: string
           required:
           - encoding
+          - fingerprint
           - providerRef
           - publicKey
+          - sshPublicKeyID
           - username
           type: object
         status:
@@ -431,6 +437,8 @@ spec:
               properties:
                 encoding:
                   type: string
+                fingerprint:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -442,14 +450,18 @@ spec:
                   type: object
                 publicKey:
                   type: string
+                sshPublicKeyID:
+                  type: string
                 status:
                   type: string
                 username:
                   type: string
               required:
               - encoding
+              - fingerprint
               - providerRef
               - publicKey
+              - sshPublicKeyID
               - username
               type: object
             state:

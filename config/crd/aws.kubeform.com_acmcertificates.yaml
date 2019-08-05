@@ -397,12 +397,32 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             certificateBody:
               type: string
             certificateChain:
               type: string
             domainName:
               type: string
+            domainValidationOptions:
+              items:
+                properties:
+                  domainName:
+                    type: string
+                  resourceRecordName:
+                    type: string
+                  resourceRecordType:
+                    type: string
+                  resourceRecordValue:
+                    type: string
+                required:
+                - domainName
+                - resourceRecordName
+                - resourceRecordType
+                - resourceRecordValue
+                type: object
+              type: array
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -429,10 +449,17 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            validationEmails:
+              items:
+                type: string
+              type: array
             validationMethod:
               type: string
           required:
+          - arn
+          - domainValidationOptions
           - providerRef
+          - validationEmails
           type: object
         status:
           properties:
@@ -443,12 +470,32 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 certificateBody:
                   type: string
                 certificateChain:
                   type: string
                 domainName:
                   type: string
+                domainValidationOptions:
+                  items:
+                    properties:
+                      domainName:
+                        type: string
+                      resourceRecordName:
+                        type: string
+                      resourceRecordType:
+                        type: string
+                      resourceRecordValue:
+                        type: string
+                    required:
+                    - domainName
+                    - resourceRecordName
+                    - resourceRecordType
+                    - resourceRecordValue
+                    type: object
+                  type: array
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -475,10 +522,17 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                validationEmails:
+                  items:
+                    type: string
+                  type: array
                 validationMethod:
                   type: string
               required:
+              - arn
+              - domainValidationOptions
               - providerRef
+              - validationEmails
               type: object
             state:
               properties:

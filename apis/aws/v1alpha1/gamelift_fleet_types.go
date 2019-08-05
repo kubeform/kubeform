@@ -52,6 +52,7 @@ type GameliftFleetSpecRuntimeConfiguration struct {
 type GameliftFleetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn     string `json:"arn" tf:"arn"`
 	BuildID string `json:"buildID" tf:"build_id"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
@@ -59,11 +60,13 @@ type GameliftFleetSpec struct {
 	// +kubebuilder:validation:MaxItems=50
 	Ec2InboundPermission []GameliftFleetSpecEc2InboundPermission `json:"ec2InboundPermission,omitempty" tf:"ec2_inbound_permission,omitempty"`
 	Ec2InstanceType      string                                  `json:"ec2InstanceType" tf:"ec2_instance_type"`
+	LogPaths             []string                                `json:"logPaths" tf:"log_paths"`
 	// +optional
 	MetricGroups []string `json:"metricGroups,omitempty" tf:"metric_groups,omitempty"`
 	Name         string   `json:"name" tf:"name"`
 	// +optional
 	NewGameSessionProtectionPolicy string `json:"newGameSessionProtectionPolicy,omitempty" tf:"new_game_session_protection_policy,omitempty"`
+	OperatingSystem                string `json:"operatingSystem" tf:"operating_system"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ResourceCreationLimitPolicy []GameliftFleetSpecResourceCreationLimitPolicy `json:"resourceCreationLimitPolicy,omitempty" tf:"resource_creation_limit_policy,omitempty"`

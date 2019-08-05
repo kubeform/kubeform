@@ -404,8 +404,15 @@ spec:
             identity:
               items:
                 properties:
+                  principalID:
+                    type: string
+                  tenantID:
+                    type: string
                   type:
                     type: string
+                required:
+                - principalID
+                - tenantID
                 type: object
               maxItems: 1
               type: array
@@ -454,8 +461,15 @@ spec:
                 identity:
                   items:
                     properties:
+                      principalID:
+                        type: string
+                      tenantID:
+                        type: string
                       type:
                         type: string
+                    required:
+                    - principalID
+                    - tenantID
                     type: object
                   maxItems: 1
                   type: array

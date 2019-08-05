@@ -423,6 +423,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            clusterState:
+              type: string
             configurations:
               type: string
             configurationsJSON:
@@ -433,6 +435,8 @@ spec:
             coreInstanceGroup:
               items:
                 properties:
+                  ID:
+                    type: string
                   autoscalingPolicy:
                     type: string
                   bidPrice:
@@ -461,6 +465,7 @@ spec:
                   name:
                     type: string
                 required:
+                - ID
                 - instanceType
                 type: object
               maxItems: 1
@@ -500,6 +505,8 @@ spec:
               description: Deprecated
               items:
                 properties:
+                  ID:
+                    type: string
                   autoscalingPolicy:
                     type: string
                   bidPrice:
@@ -530,6 +537,7 @@ spec:
                   name:
                     type: string
                 required:
+                - ID
                 - instanceRole
                 - instanceType
                 type: object
@@ -554,6 +562,8 @@ spec:
             masterInstanceGroup:
               items:
                 properties:
+                  ID:
+                    type: string
                   bidPrice:
                     type: string
                   ebsConfig:
@@ -578,12 +588,15 @@ spec:
                   name:
                     type: string
                 required:
+                - ID
                 - instanceType
                 type: object
               maxItems: 1
               type: array
             masterInstanceType:
               description: Deprecated
+              type: string
+            masterPublicDNS:
               type: string
             name:
               type: string
@@ -655,6 +668,8 @@ spec:
             visibleToAllUsers:
               type: boolean
           required:
+          - clusterState
+          - masterPublicDNS
           - name
           - providerRef
           - releaseLabel
@@ -695,6 +710,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                clusterState:
+                  type: string
                 configurations:
                   type: string
                 configurationsJSON:
@@ -705,6 +722,8 @@ spec:
                 coreInstanceGroup:
                   items:
                     properties:
+                      ID:
+                        type: string
                       autoscalingPolicy:
                         type: string
                       bidPrice:
@@ -733,6 +752,7 @@ spec:
                       name:
                         type: string
                     required:
+                    - ID
                     - instanceType
                     type: object
                   maxItems: 1
@@ -772,6 +792,8 @@ spec:
                   description: Deprecated
                   items:
                     properties:
+                      ID:
+                        type: string
                       autoscalingPolicy:
                         type: string
                       bidPrice:
@@ -802,6 +824,7 @@ spec:
                       name:
                         type: string
                     required:
+                    - ID
                     - instanceRole
                     - instanceType
                     type: object
@@ -826,6 +849,8 @@ spec:
                 masterInstanceGroup:
                   items:
                     properties:
+                      ID:
+                        type: string
                       bidPrice:
                         type: string
                       ebsConfig:
@@ -850,12 +875,15 @@ spec:
                       name:
                         type: string
                     required:
+                    - ID
                     - instanceType
                     type: object
                   maxItems: 1
                   type: array
                 masterInstanceType:
                   description: Deprecated
+                  type: string
+                masterPublicDNS:
                   type: string
                 name:
                   type: string
@@ -927,6 +955,8 @@ spec:
                 visibleToAllUsers:
                   type: boolean
               required:
+              - clusterState
+              - masterPublicDNS
               - name
               - providerRef
               - releaseLabel

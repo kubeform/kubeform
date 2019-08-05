@@ -422,6 +422,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            httpsEndpoint:
+              type: string
             location:
               type: string
             name:
@@ -527,6 +529,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            sshEndpoint:
+              type: string
             storageAccount:
               items:
                 properties:
@@ -549,11 +553,13 @@ spec:
           - clusterVersion
           - componentVersion
           - gateway
+          - httpsEndpoint
           - location
           - name
           - providerRef
           - resourceGroupName
           - roles
+          - sshEndpoint
           - storageAccount
           - tier
           type: object
@@ -591,6 +597,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                httpsEndpoint:
+                  type: string
                 location:
                   type: string
                 name:
@@ -696,6 +704,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                sshEndpoint:
+                  type: string
                 storageAccount:
                   items:
                     properties:
@@ -718,11 +728,13 @@ spec:
               - clusterVersion
               - componentVersion
               - gateway
+              - httpsEndpoint
               - location
               - name
               - providerRef
               - resourceGroupName
               - roles
+              - sshEndpoint
               - storageAccount
               - tier
               type: object

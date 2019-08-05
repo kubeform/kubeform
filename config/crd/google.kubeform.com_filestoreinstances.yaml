@@ -397,7 +397,11 @@ spec:
           type: object
         spec:
           properties:
+            createTime:
+              type: string
             description:
+              type: string
+            etag:
               type: string
             fileShares:
               items:
@@ -421,6 +425,10 @@ spec:
             networks:
               items:
                 properties:
+                  ipAddresses:
+                    items:
+                      type: string
+                    type: array
                   modes:
                     items:
                       type: string
@@ -430,6 +438,7 @@ spec:
                   reservedIPRange:
                     type: string
                 required:
+                - ipAddresses
                 - modes
                 - network
                 type: object
@@ -451,6 +460,8 @@ spec:
             zone:
               type: string
           required:
+          - createTime
+          - etag
           - fileShares
           - name
           - networks
@@ -467,7 +478,11 @@ spec:
               type: integer
             output:
               properties:
+                createTime:
+                  type: string
                 description:
+                  type: string
+                etag:
                   type: string
                 fileShares:
                   items:
@@ -491,6 +506,10 @@ spec:
                 networks:
                   items:
                     properties:
+                      ipAddresses:
+                        items:
+                          type: string
+                        type: array
                       modes:
                         items:
                           type: string
@@ -500,6 +519,7 @@ spec:
                       reservedIPRange:
                         type: string
                     required:
+                    - ipAddresses
                     - modes
                     - network
                     type: object
@@ -521,6 +541,8 @@ spec:
                 zone:
                   type: string
               required:
+              - createTime
+              - etag
               - fileShares
               - name
               - networks

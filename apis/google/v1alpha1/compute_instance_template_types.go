@@ -57,6 +57,8 @@ type ComputeInstanceTemplateSpecGuestAccelerator struct {
 }
 
 type ComputeInstanceTemplateSpecNetworkInterfaceAccessConfig struct {
+	// Deprecated
+	AssignedNATIP string `json:"assignedNATIP" tf:"assigned_nat_ip"`
 	// +optional
 	NatIP string `json:"natIP,omitempty" tf:"nat_ip,omitempty"`
 	// +optional
@@ -119,7 +121,8 @@ type ComputeInstanceTemplateSpec struct {
 	Labels      map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	MachineType string            `json:"machineType" tf:"machine_type"`
 	// +optional
-	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata            map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	MetadataFingerprint string            `json:"metadataFingerprint" tf:"metadata_fingerprint"`
 	// +optional
 	MetadataStartupScript string `json:"metadataStartupScript,omitempty" tf:"metadata_startup_script,omitempty"`
 	// +optional
@@ -136,12 +139,14 @@ type ComputeInstanceTemplateSpec struct {
 	Region string `json:"region,omitempty" tf:"region,omitempty"`
 	// +optional
 	Scheduling []ComputeInstanceTemplateSpecScheduling `json:"scheduling,omitempty" tf:"scheduling,omitempty"`
+	SelfLink   string                                  `json:"selfLink" tf:"self_link"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ServiceAccount []ComputeInstanceTemplateSpecServiceAccount `json:"serviceAccount,omitempty" tf:"service_account,omitempty"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
-	Tags []string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags            []string `json:"tags,omitempty" tf:"tags,omitempty"`
+	TagsFingerprint string   `json:"tagsFingerprint" tf:"tags_fingerprint"`
 }
 
 type ComputeInstanceTemplateStatus struct {

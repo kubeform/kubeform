@@ -399,6 +399,8 @@ spec:
           properties:
             defaultRouteTableID:
               type: string
+            ownerID:
+              type: string
             propagatingVgws:
               items:
                 type: string
@@ -441,9 +443,13 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            vpcID:
+              type: string
           required:
           - defaultRouteTableID
+          - ownerID
           - providerRef
+          - vpcID
           type: object
         status:
           properties:
@@ -455,6 +461,8 @@ spec:
             output:
               properties:
                 defaultRouteTableID:
+                  type: string
+                ownerID:
                   type: string
                 propagatingVgws:
                   items:
@@ -498,9 +506,13 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                vpcID:
+                  type: string
               required:
               - defaultRouteTableID
+              - ownerID
               - providerRef
+              - vpcID
               type: object
             state:
               properties:

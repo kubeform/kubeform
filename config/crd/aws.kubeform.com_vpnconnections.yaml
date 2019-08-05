@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            customerGatewayConfiguration:
+              type: string
             customerGatewayID:
               type: string
             providerRef:
@@ -408,6 +410,22 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            routes:
+              items:
+                properties:
+                  destinationCIDRBlock:
+                    type: string
+                  source:
+                    type: string
+                  state:
+                    type: string
+                required:
+                - destinationCIDRBlock
+                - source
+                - state
+                type: object
+              type: array
+              uniqueItems: true
             secret:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -423,20 +441,78 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            transitGatewayAttachmentID:
+              type: string
             transitGatewayID:
+              type: string
+            tunnel1Address:
+              type: string
+            tunnel1BGPAsn:
+              type: string
+            tunnel1BGPHoldtime:
+              type: integer
+            tunnel1CgwInsideAddress:
               type: string
             tunnel1InsideCIDR:
               type: string
+            tunnel1VgwInsideAddress:
+              type: string
+            tunnel2Address:
+              type: string
+            tunnel2BGPAsn:
+              type: string
+            tunnel2BGPHoldtime:
+              type: integer
+            tunnel2CgwInsideAddress:
+              type: string
             tunnel2InsideCIDR:
+              type: string
+            tunnel2VgwInsideAddress:
               type: string
             type:
               type: string
+            vgwTelemetry:
+              items:
+                properties:
+                  acceptedRouteCount:
+                    type: integer
+                  lastStatusChange:
+                    type: string
+                  outsideIPAddress:
+                    type: string
+                  status:
+                    type: string
+                  statusMessage:
+                    type: string
+                required:
+                - acceptedRouteCount
+                - lastStatusChange
+                - outsideIPAddress
+                - status
+                - statusMessage
+                type: object
+              type: array
+              uniqueItems: true
             vpnGatewayID:
               type: string
           required:
+          - customerGatewayConfiguration
           - customerGatewayID
           - providerRef
+          - routes
+          - transitGatewayAttachmentID
+          - tunnel1Address
+          - tunnel1BGPAsn
+          - tunnel1BGPHoldtime
+          - tunnel1CgwInsideAddress
+          - tunnel1VgwInsideAddress
+          - tunnel2Address
+          - tunnel2BGPAsn
+          - tunnel2BGPHoldtime
+          - tunnel2CgwInsideAddress
+          - tunnel2VgwInsideAddress
           - type
+          - vgwTelemetry
           type: object
         status:
           properties:
@@ -447,6 +523,8 @@ spec:
               type: integer
             output:
               properties:
+                customerGatewayConfiguration:
+                  type: string
                 customerGatewayID:
                   type: string
                 providerRef:
@@ -458,6 +536,22 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                routes:
+                  items:
+                    properties:
+                      destinationCIDRBlock:
+                        type: string
+                      source:
+                        type: string
+                      state:
+                        type: string
+                    required:
+                    - destinationCIDRBlock
+                    - source
+                    - state
+                    type: object
+                  type: array
+                  uniqueItems: true
                 secret:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
@@ -473,20 +567,78 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                transitGatewayAttachmentID:
+                  type: string
                 transitGatewayID:
+                  type: string
+                tunnel1Address:
+                  type: string
+                tunnel1BGPAsn:
+                  type: string
+                tunnel1BGPHoldtime:
+                  type: integer
+                tunnel1CgwInsideAddress:
                   type: string
                 tunnel1InsideCIDR:
                   type: string
+                tunnel1VgwInsideAddress:
+                  type: string
+                tunnel2Address:
+                  type: string
+                tunnel2BGPAsn:
+                  type: string
+                tunnel2BGPHoldtime:
+                  type: integer
+                tunnel2CgwInsideAddress:
+                  type: string
                 tunnel2InsideCIDR:
+                  type: string
+                tunnel2VgwInsideAddress:
                   type: string
                 type:
                   type: string
+                vgwTelemetry:
+                  items:
+                    properties:
+                      acceptedRouteCount:
+                        type: integer
+                      lastStatusChange:
+                        type: string
+                      outsideIPAddress:
+                        type: string
+                      status:
+                        type: string
+                      statusMessage:
+                        type: string
+                    required:
+                    - acceptedRouteCount
+                    - lastStatusChange
+                    - outsideIPAddress
+                    - status
+                    - statusMessage
+                    type: object
+                  type: array
+                  uniqueItems: true
                 vpnGatewayID:
                   type: string
               required:
+              - customerGatewayConfiguration
               - customerGatewayID
               - providerRef
+              - routes
+              - transitGatewayAttachmentID
+              - tunnel1Address
+              - tunnel1BGPAsn
+              - tunnel1BGPHoldtime
+              - tunnel1CgwInsideAddress
+              - tunnel1VgwInsideAddress
+              - tunnel2Address
+              - tunnel2BGPAsn
+              - tunnel2BGPHoldtime
+              - tunnel2CgwInsideAddress
+              - tunnel2VgwInsideAddress
               - type
+              - vgwTelemetry
               type: object
             state:
               properties:

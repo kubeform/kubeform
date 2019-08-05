@@ -21,8 +21,10 @@ type ServiceDiscoveryPrivateDNSNamespace struct {
 type ServiceDiscoveryPrivateDNSNamespaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
+	HostedZone  string `json:"hostedZone" tf:"hosted_zone"`
 	Name        string `json:"name" tf:"name"`
 	Vpc         string `json:"vpc" tf:"vpc"`
 }

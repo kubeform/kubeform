@@ -21,16 +21,25 @@ type LightsailInstance struct {
 type LightsailInstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn              string `json:"arn" tf:"arn"`
 	AvailabilityZone string `json:"availabilityZone" tf:"availability_zone"`
 	BlueprintID      string `json:"blueprintID" tf:"blueprint_id"`
 	BundleID         string `json:"bundleID" tf:"bundle_id"`
+	CpuCount         int    `json:"cpuCount" tf:"cpu_count"`
+	CreatedAt        string `json:"createdAt" tf:"created_at"`
+	Ipv6Address      string `json:"ipv6Address" tf:"ipv6_address"`
+	IsStaticIP       bool   `json:"isStaticIP" tf:"is_static_ip"`
 	// +optional
-	KeyPairName string `json:"keyPairName,omitempty" tf:"key_pair_name,omitempty"`
-	Name        string `json:"name" tf:"name"`
+	KeyPairName      string `json:"keyPairName,omitempty" tf:"key_pair_name,omitempty"`
+	Name             string `json:"name" tf:"name"`
+	PrivateIPAddress string `json:"privateIPAddress" tf:"private_ip_address"`
+	PublicIPAddress  string `json:"publicIPAddress" tf:"public_ip_address"`
+	RamSize          int    `json:"ramSize" tf:"ram_size"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	UserData string `json:"userData,omitempty" tf:"user_data,omitempty"`
+	Username string `json:"username" tf:"username"`
 }
 
 type LightsailInstanceStatus struct {

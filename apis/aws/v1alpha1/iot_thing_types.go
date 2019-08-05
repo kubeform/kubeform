@@ -21,11 +21,14 @@ type IotThing struct {
 type IotThingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
-	Attributes map[string]string `json:"attributes,omitempty" tf:"attributes,omitempty"`
-	Name       string            `json:"name" tf:"name"`
+	Attributes      map[string]string `json:"attributes,omitempty" tf:"attributes,omitempty"`
+	DefaultClientID string            `json:"defaultClientID" tf:"default_client_id"`
+	Name            string            `json:"name" tf:"name"`
 	// +optional
 	ThingTypeName string `json:"thingTypeName,omitempty" tf:"thing_type_name,omitempty"`
+	Version       int    `json:"version" tf:"version"`
 }
 
 type IotThingStatus struct {

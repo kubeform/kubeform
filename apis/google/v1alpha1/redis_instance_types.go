@@ -25,14 +25,18 @@ type RedisInstanceSpec struct {
 	AlternativeLocationID string `json:"alternativeLocationID,omitempty" tf:"alternative_location_id,omitempty"`
 	// +optional
 	AuthorizedNetwork string `json:"authorizedNetwork,omitempty" tf:"authorized_network,omitempty"`
+	CreateTime        string `json:"createTime" tf:"create_time"`
+	CurrentLocationID string `json:"currentLocationID" tf:"current_location_id"`
 	// +optional
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+	Host        string `json:"host" tf:"host"`
 	// +optional
 	Labels map[string]string `json:"labels,omitempty" tf:"labels,omitempty"`
 	// +optional
 	LocationID   string `json:"locationID,omitempty" tf:"location_id,omitempty"`
 	MemorySizeGb int    `json:"memorySizeGb" tf:"memory_size_gb"`
 	Name         string `json:"name" tf:"name"`
+	Port         int    `json:"port" tf:"port"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`
 	// +optional

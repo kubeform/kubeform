@@ -399,6 +399,10 @@ spec:
           properties:
             amazonSideAsn:
               type: integer
+            arn:
+              type: string
+            associationDefaultRouteTableID:
+              type: string
             autoAcceptSharedAttachments:
               type: string
             defaultRouteTableAssociation:
@@ -408,6 +412,10 @@ spec:
             description:
               type: string
             dnsSupport:
+              type: string
+            ownerID:
+              type: string
+            propagationDefaultRouteTableID:
               type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
@@ -425,6 +433,10 @@ spec:
             vpnEcmpSupport:
               type: string
           required:
+          - arn
+          - associationDefaultRouteTableID
+          - ownerID
+          - propagationDefaultRouteTableID
           - providerRef
           type: object
         status:
@@ -438,6 +450,10 @@ spec:
               properties:
                 amazonSideAsn:
                   type: integer
+                arn:
+                  type: string
+                associationDefaultRouteTableID:
+                  type: string
                 autoAcceptSharedAttachments:
                   type: string
                 defaultRouteTableAssociation:
@@ -447,6 +463,10 @@ spec:
                 description:
                   type: string
                 dnsSupport:
+                  type: string
+                ownerID:
+                  type: string
+                propagationDefaultRouteTableID:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
@@ -464,6 +484,10 @@ spec:
                 vpnEcmpSupport:
                   type: string
               required:
+              - arn
+              - associationDefaultRouteTableID
+              - ownerID
+              - propagationDefaultRouteTableID
               - providerRef
               type: object
             state:

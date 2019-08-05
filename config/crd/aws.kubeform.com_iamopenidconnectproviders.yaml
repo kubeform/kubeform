@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             clientIDList:
               items:
                 type: string
@@ -417,6 +419,7 @@ spec:
             url:
               type: string
           required:
+          - arn
           - clientIDList
           - providerRef
           - thumbprintList
@@ -431,6 +434,8 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 clientIDList:
                   items:
                     type: string
@@ -451,6 +456,7 @@ spec:
                 url:
                   type: string
               required:
+              - arn
               - clientIDList
               - providerRef
               - thumbprintList

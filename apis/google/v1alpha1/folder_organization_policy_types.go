@@ -60,6 +60,7 @@ type FolderOrganizationPolicySpec struct {
 	// +kubebuilder:validation:MaxItems=1
 	BooleanPolicy []FolderOrganizationPolicySpecBooleanPolicy `json:"booleanPolicy,omitempty" tf:"boolean_policy,omitempty"`
 	Constraint    string                                      `json:"constraint" tf:"constraint"`
+	Etag          string                                      `json:"etag" tf:"etag"`
 	Folder        string                                      `json:"folder" tf:"folder"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
@@ -67,6 +68,7 @@ type FolderOrganizationPolicySpec struct {
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	RestorePolicy []FolderOrganizationPolicySpecRestorePolicy `json:"restorePolicy,omitempty" tf:"restore_policy,omitempty"`
+	UpdateTime    string                                      `json:"updateTime" tf:"update_time"`
 	// +optional
 	Version int `json:"version,omitempty" tf:"version,omitempty"`
 }

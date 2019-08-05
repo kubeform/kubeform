@@ -397,10 +397,16 @@ spec:
           type: object
         spec:
           properties:
+            creationTimestamp:
+              type: string
             description:
+              type: string
+            detailedStatus:
               type: string
             ikeVersion:
               type: integer
+            labelFingerprint:
+              type: string
             labels:
               additionalProperties:
                 type: string
@@ -443,12 +449,21 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
+            sharedSecretHash:
+              type: string
             targetVPNGateway:
               type: string
           required:
+          - creationTimestamp
+          - detailedStatus
+          - labelFingerprint
           - name
           - peerIP
           - providerRef
+          - selfLink
+          - sharedSecretHash
           - targetVPNGateway
           type: object
         status:
@@ -460,10 +475,16 @@ spec:
               type: integer
             output:
               properties:
+                creationTimestamp:
+                  type: string
                 description:
+                  type: string
+                detailedStatus:
                   type: string
                 ikeVersion:
                   type: integer
+                labelFingerprint:
+                  type: string
                 labels:
                   additionalProperties:
                     type: string
@@ -506,12 +527,21 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
+                sharedSecretHash:
+                  type: string
                 targetVPNGateway:
                   type: string
               required:
+              - creationTimestamp
+              - detailedStatus
+              - labelFingerprint
               - name
               - peerIP
               - providerRef
+              - selfLink
+              - sharedSecretHash
               - targetVPNGateway
               type: object
             state:

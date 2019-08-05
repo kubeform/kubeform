@@ -409,6 +409,8 @@ spec:
               type: array
             constraint:
               type: string
+            etag:
+              type: string
             folder:
               type: string
             listPolicy:
@@ -464,12 +466,16 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            updateTime:
+              type: string
             version:
               type: integer
           required:
           - constraint
+          - etag
           - folder
           - providerRef
+          - updateTime
           type: object
         status:
           properties:
@@ -491,6 +497,8 @@ spec:
                   maxItems: 1
                   type: array
                 constraint:
+                  type: string
+                etag:
                   type: string
                 folder:
                   type: string
@@ -547,12 +555,16 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                updateTime:
+                  type: string
                 version:
                   type: integer
               required:
               - constraint
+              - etag
               - folder
               - providerRef
+              - updateTime
               type: object
             state:
               properties:

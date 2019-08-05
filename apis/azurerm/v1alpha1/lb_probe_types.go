@@ -22,8 +22,10 @@ type LbProbeSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
 	// +optional
-	IntervalInSeconds int    `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
-	LoadbalancerID    string `json:"loadbalancerID" tf:"loadbalancer_id"`
+	IntervalInSeconds int `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	// +kubebuilder:validation:UniqueItems=true
+	LoadBalancerRules []string `json:"loadBalancerRules" tf:"load_balancer_rules"`
+	LoadbalancerID    string   `json:"loadbalancerID" tf:"loadbalancer_id"`
 	// +optional
 	// Deprecated
 	Location string `json:"location,omitempty" tf:"location,omitempty"`

@@ -450,6 +450,8 @@ spec:
               type: string
             targetPipeline:
               type: string
+            url:
+              type: string
           required:
           - authentication
           - filter
@@ -457,6 +459,7 @@ spec:
           - providerRef
           - targetAction
           - targetPipeline
+          - url
           type: object
         status:
           properties:
@@ -520,6 +523,8 @@ spec:
                   type: string
                 targetPipeline:
                   type: string
+                url:
+                  type: string
               required:
               - authentication
               - filter
@@ -527,6 +532,7 @@ spec:
               - providerRef
               - targetAction
               - targetPipeline
+              - url
               type: object
             state:
               properties:

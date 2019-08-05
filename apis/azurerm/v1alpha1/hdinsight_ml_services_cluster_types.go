@@ -105,15 +105,18 @@ type HdinsightMlServicesClusterSpec struct {
 
 	Secret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
-	ClusterVersion string `json:"clusterVersion" tf:"cluster_version"`
+	ClusterVersion  string `json:"clusterVersion" tf:"cluster_version"`
+	EdgeSSHEndpoint string `json:"edgeSSHEndpoint" tf:"edge_ssh_endpoint"`
 	// +kubebuilder:validation:MaxItems=1
 	Gateway           []HdinsightMlServicesClusterSpecGateway `json:"gateway" tf:"gateway"`
+	HttpsEndpoint     string                                  `json:"httpsEndpoint" tf:"https_endpoint"`
 	Location          string                                  `json:"location" tf:"location"`
 	Name              string                                  `json:"name" tf:"name"`
 	ResourceGroupName string                                  `json:"resourceGroupName" tf:"resource_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	Roles          []HdinsightMlServicesClusterSpecRoles          `json:"roles" tf:"roles"`
 	Rstudio        bool                                           `json:"rstudio" tf:"rstudio"`
+	SshEndpoint    string                                         `json:"sshEndpoint" tf:"ssh_endpoint"`
 	StorageAccount []HdinsightMlServicesClusterSpecStorageAccount `json:"storageAccount" tf:"storage_account"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`

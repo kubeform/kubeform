@@ -399,6 +399,8 @@ spec:
           properties:
             billingAccountID:
               type: string
+            etag:
+              type: string
             members:
               items:
                 type: string
@@ -417,6 +419,7 @@ spec:
               type: string
           required:
           - billingAccountID
+          - etag
           - members
           - providerRef
           - role
@@ -431,6 +434,8 @@ spec:
             output:
               properties:
                 billingAccountID:
+                  type: string
+                etag:
                   type: string
                 members:
                   items:
@@ -450,6 +455,7 @@ spec:
                   type: string
               required:
               - billingAccountID
+              - etag
               - members
               - providerRef
               - role

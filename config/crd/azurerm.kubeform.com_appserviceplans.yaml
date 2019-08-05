@@ -407,6 +407,8 @@ spec:
               type: string
             maximumElasticWorkerCount:
               type: integer
+            maximumNumberOfWorkers:
+              type: integer
             name:
               type: string
             perSiteScaling:
@@ -461,6 +463,7 @@ spec:
               type: object
           required:
           - location
+          - maximumNumberOfWorkers
           - name
           - providerRef
           - resourceGroupName
@@ -484,6 +487,8 @@ spec:
                 location:
                   type: string
                 maximumElasticWorkerCount:
+                  type: integer
+                maximumNumberOfWorkers:
                   type: integer
                 name:
                   type: string
@@ -539,6 +544,7 @@ spec:
                   type: object
               required:
               - location
+              - maximumNumberOfWorkers
               - name
               - providerRef
               - resourceGroupName

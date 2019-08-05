@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            creationTimestamp:
+              type: string
             description:
               type: string
             name:
@@ -416,10 +418,14 @@ spec:
               type: object
             region:
               type: string
+            selfLink:
+              type: string
           required:
+          - creationTimestamp
           - name
           - network
           - providerRef
+          - selfLink
           type: object
         status:
           properties:
@@ -430,6 +436,8 @@ spec:
               type: integer
             output:
               properties:
+                creationTimestamp:
+                  type: string
                 description:
                   type: string
                 name:
@@ -449,10 +457,14 @@ spec:
                   type: object
                 region:
                   type: string
+                selfLink:
+                  type: string
               required:
+              - creationTimestamp
               - name
               - network
               - providerRef
+              - selfLink
               type: object
             state:
               properties:

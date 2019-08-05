@@ -431,6 +431,11 @@ spec:
                 - nextHopType
                 type: object
               type: array
+            subnets:
+              items:
+                type: string
+              type: array
+              uniqueItems: true
             tags:
               additionalProperties:
                 type: string
@@ -440,6 +445,7 @@ spec:
           - name
           - providerRef
           - resourceGroupName
+          - subnets
           type: object
         status:
           properties:
@@ -484,6 +490,11 @@ spec:
                     - nextHopType
                     type: object
                   type: array
+                subnets:
+                  items:
+                    type: string
+                  type: array
+                  uniqueItems: true
                 tags:
                   additionalProperties:
                     type: string
@@ -493,6 +504,7 @@ spec:
               - name
               - providerRef
               - resourceGroupName
+              - subnets
               type: object
             state:
               properties:

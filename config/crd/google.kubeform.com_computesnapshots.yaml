@@ -397,12 +397,22 @@ spec:
           type: object
         spec:
           properties:
+            creationTimestamp:
+              type: string
             description:
+              type: string
+            diskSizeGb:
+              type: integer
+            labelFingerprint:
               type: string
             labels:
               additionalProperties:
                 type: string
               type: object
+            licenses:
+              items:
+                type: string
+              type: array
             name:
               type: string
             project:
@@ -425,11 +435,23 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            selfLink:
+              type: string
             snapshotEncryptionKey:
               items:
+                properties:
+                  sha256:
+                    type: string
+                required:
+                - sha256
                 type: object
               maxItems: 1
               type: array
+            snapshotEncryptionKeySha256:
+              description: Deprecated
+              type: string
+            snapshotID:
+              type: integer
             sourceDisk:
               type: string
             sourceDiskEncryptionKey:
@@ -437,12 +459,29 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            sourceDiskEncryptionKeySha256:
+              description: Deprecated
+              type: string
+            sourceDiskLink:
+              type: string
+            storageBytes:
+              type: integer
             zone:
               type: string
           required:
+          - creationTimestamp
+          - diskSizeGb
+          - labelFingerprint
+          - licenses
           - name
           - providerRef
+          - selfLink
+          - snapshotEncryptionKeySha256
+          - snapshotID
           - sourceDisk
+          - sourceDiskEncryptionKeySha256
+          - sourceDiskLink
+          - storageBytes
           type: object
         status:
           properties:
@@ -453,12 +492,22 @@ spec:
               type: integer
             output:
               properties:
+                creationTimestamp:
+                  type: string
                 description:
+                  type: string
+                diskSizeGb:
+                  type: integer
+                labelFingerprint:
                   type: string
                 labels:
                   additionalProperties:
                     type: string
                   type: object
+                licenses:
+                  items:
+                    type: string
+                  type: array
                 name:
                   type: string
                 project:
@@ -481,11 +530,23 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                selfLink:
+                  type: string
                 snapshotEncryptionKey:
                   items:
+                    properties:
+                      sha256:
+                        type: string
+                    required:
+                    - sha256
                     type: object
                   maxItems: 1
                   type: array
+                snapshotEncryptionKeySha256:
+                  description: Deprecated
+                  type: string
+                snapshotID:
+                  type: integer
                 sourceDisk:
                   type: string
                 sourceDiskEncryptionKey:
@@ -493,12 +554,29 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                sourceDiskEncryptionKeySha256:
+                  description: Deprecated
+                  type: string
+                sourceDiskLink:
+                  type: string
+                storageBytes:
+                  type: integer
                 zone:
                   type: string
               required:
+              - creationTimestamp
+              - diskSizeGb
+              - labelFingerprint
+              - licenses
               - name
               - providerRef
+              - selfLink
+              - snapshotEncryptionKeySha256
+              - snapshotID
               - sourceDisk
+              - sourceDiskEncryptionKeySha256
+              - sourceDiskLink
+              - storageBytes
               type: object
             state:
               properties:

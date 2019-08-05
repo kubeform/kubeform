@@ -31,6 +31,8 @@ type StoragegatewayGatewaySpec struct {
 
 	// +optional
 	ActivationKey string `json:"activationKey,omitempty" tf:"activation_key,omitempty"`
+	Arn           string `json:"arn" tf:"arn"`
+	GatewayID     string `json:"gatewayID" tf:"gateway_id"`
 	// +optional
 	GatewayIPAddress string `json:"gatewayIPAddress,omitempty" tf:"gateway_ip_address,omitempty"`
 	GatewayName      string `json:"gatewayName" tf:"gateway_name"`

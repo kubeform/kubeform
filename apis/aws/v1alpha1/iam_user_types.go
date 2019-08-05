@@ -21,6 +21,7 @@ type IamUser struct {
 type IamUserSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	ForceDestroy bool   `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
 	Name         string `json:"name" tf:"name"`
@@ -29,7 +30,8 @@ type IamUserSpec struct {
 	// +optional
 	PermissionsBoundary string `json:"permissionsBoundary,omitempty" tf:"permissions_boundary,omitempty"`
 	// +optional
-	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags     map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
+	UniqueID string            `json:"uniqueID" tf:"unique_id"`
 }
 
 type IamUserStatus struct {

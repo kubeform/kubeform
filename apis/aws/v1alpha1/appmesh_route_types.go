@@ -73,8 +73,11 @@ type AppmeshRouteSpecSpec struct {
 type AppmeshRouteSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
-	MeshName string `json:"meshName" tf:"mesh_name"`
-	Name     string `json:"name" tf:"name"`
+	Arn             string `json:"arn" tf:"arn"`
+	CreatedDate     string `json:"createdDate" tf:"created_date"`
+	LastUpdatedDate string `json:"lastUpdatedDate" tf:"last_updated_date"`
+	MeshName        string `json:"meshName" tf:"mesh_name"`
+	Name            string `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
 	// +kubebuilder:validation:MinItems=1
 	Spec []AppmeshRouteSpecSpec `json:"spec" tf:"spec"`

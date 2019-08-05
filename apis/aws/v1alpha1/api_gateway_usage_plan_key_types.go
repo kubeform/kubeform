@@ -23,7 +23,9 @@ type ApiGatewayUsagePlanKeySpec struct {
 
 	KeyID       string `json:"keyID" tf:"key_id"`
 	KeyType     string `json:"keyType" tf:"key_type"`
+	Name        string `json:"name" tf:"name"`
 	UsagePlanID string `json:"usagePlanID" tf:"usage_plan_id"`
+	Value       string `json:"value" tf:"value"`
 }
 
 type ApiGatewayUsagePlanKeyStatus struct {

@@ -397,11 +397,15 @@ spec:
           type: object
         spec:
           properties:
+            arn:
+              type: string
             clusterEndpointIdentifier:
               type: string
             clusterIdentifier:
               type: string
             customEndpointType:
+              type: string
+            endpoint:
               type: string
             excludedMembers:
               items:
@@ -423,9 +427,11 @@ spec:
               type: array
               uniqueItems: true
           required:
+          - arn
           - clusterEndpointIdentifier
           - clusterIdentifier
           - customEndpointType
+          - endpoint
           - providerRef
           type: object
         status:
@@ -437,11 +443,15 @@ spec:
               type: integer
             output:
               properties:
+                arn:
+                  type: string
                 clusterEndpointIdentifier:
                   type: string
                 clusterIdentifier:
                   type: string
                 customEndpointType:
+                  type: string
+                endpoint:
                   type: string
                 excludedMembers:
                   items:
@@ -463,9 +473,11 @@ spec:
                   type: array
                   uniqueItems: true
               required:
+              - arn
               - clusterEndpointIdentifier
               - clusterIdentifier
               - customEndpointType
+              - endpoint
               - providerRef
               type: object
             state:

@@ -25,6 +25,7 @@ type SecretsmanagerSecretSpecRotationRules struct {
 type SecretsmanagerSecretSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	// +optional
@@ -36,7 +37,8 @@ type SecretsmanagerSecretSpec struct {
 	// +optional
 	Policy string `json:"policy,omitempty" tf:"policy,omitempty"`
 	// +optional
-	RecoveryWindowInDays int `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays int  `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RotationEnabled      bool `json:"rotationEnabled" tf:"rotation_enabled"`
 	// +optional
 	RotationLambdaArn string `json:"rotationLambdaArn,omitempty" tf:"rotation_lambda_arn,omitempty"`
 	// +optional

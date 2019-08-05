@@ -407,6 +407,10 @@ spec:
               type: object
             name:
               type: string
+            nameServers:
+              items:
+                type: string
+              type: array
             project:
               type: string
             providerRef:
@@ -421,6 +425,7 @@ spec:
           required:
           - dnsName
           - name
+          - nameServers
           - providerRef
           type: object
         status:
@@ -442,6 +447,10 @@ spec:
                   type: object
                 name:
                   type: string
+                nameServers:
+                  items:
+                    type: string
+                  type: array
                 project:
                   type: string
                 providerRef:
@@ -456,6 +465,7 @@ spec:
               required:
               - dnsName
               - name
+              - nameServers
               - providerRef
               type: object
             state:

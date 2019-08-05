@@ -32,14 +32,16 @@ type Route53ZoneSpec struct {
 	// +optional
 	DelegationSetID string `json:"delegationSetID,omitempty" tf:"delegation_set_id,omitempty"`
 	// +optional
-	ForceDestroy bool   `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
-	Name         string `json:"name" tf:"name"`
+	ForceDestroy bool     `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
+	Name         string   `json:"name" tf:"name"`
+	NameServers  []string `json:"nameServers" tf:"name_servers"`
 	// +optional
 	Tags map[string]string `json:"tags,omitempty" tf:"tags,omitempty"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
-	Vpc []Route53ZoneSpecVpc `json:"vpc,omitempty" tf:"vpc,omitempty"`
+	Vpc    []Route53ZoneSpecVpc `json:"vpc,omitempty" tf:"vpc,omitempty"`
+	ZoneID string               `json:"zoneID" tf:"zone_id"`
 }
 
 type Route53ZoneStatus struct {

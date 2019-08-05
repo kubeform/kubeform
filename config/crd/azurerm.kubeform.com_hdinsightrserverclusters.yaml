@@ -399,6 +399,8 @@ spec:
           properties:
             clusterVersion:
               type: string
+            edgeSSHEndpoint:
+              type: string
             gateway:
               items:
                 properties:
@@ -412,6 +414,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            httpsEndpoint:
+              type: string
             location:
               type: string
             name:
@@ -542,6 +546,8 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
+            sshEndpoint:
+              type: string
             storageAccount:
               items:
                 properties:
@@ -562,13 +568,16 @@ spec:
               type: string
           required:
           - clusterVersion
+          - edgeSSHEndpoint
           - gateway
+          - httpsEndpoint
           - location
           - name
           - providerRef
           - resourceGroupName
           - roles
           - rstudio
+          - sshEndpoint
           - storageAccount
           - tier
           type: object
@@ -583,6 +592,8 @@ spec:
               properties:
                 clusterVersion:
                   type: string
+                edgeSSHEndpoint:
+                  type: string
                 gateway:
                   items:
                     properties:
@@ -596,6 +607,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                httpsEndpoint:
+                  type: string
                 location:
                   type: string
                 name:
@@ -726,6 +739,8 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
+                sshEndpoint:
+                  type: string
                 storageAccount:
                   items:
                     properties:
@@ -746,13 +761,16 @@ spec:
                   type: string
               required:
               - clusterVersion
+              - edgeSSHEndpoint
               - gateway
+              - httpsEndpoint
               - location
               - name
               - providerRef
               - resourceGroupName
               - roles
               - rstudio
+              - sshEndpoint
               - storageAccount
               - tier
               type: object
