@@ -21,6 +21,8 @@ type NeptuneClusterInstance struct {
 type NeptuneClusterInstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Address string `json:"address,omitempty" tf:"address,omitempty"`
 	// +optional

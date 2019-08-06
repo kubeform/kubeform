@@ -429,6 +429,8 @@ spec:
               type: string
             engineVersion:
               type: string
+            id:
+              type: string
             maintenanceWindow:
               type: string
             memberClusters:
@@ -544,6 +546,8 @@ spec:
                 engine:
                   type: string
                 engineVersion:
+                  type: string
+                id:
                   type: string
                 maintenanceWindow:
                   type: string

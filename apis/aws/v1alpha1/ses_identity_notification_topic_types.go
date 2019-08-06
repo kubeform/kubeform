@@ -21,6 +21,8 @@ type SesIdentityNotificationTopic struct {
 type SesIdentityNotificationTopicSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Identity string `json:"identity" tf:"identity"`
 	// +optional
 	IncludeOriginalHeaders bool   `json:"includeOriginalHeaders,omitempty" tf:"include_original_headers,omitempty"`

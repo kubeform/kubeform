@@ -409,6 +409,8 @@ spec:
                 type: string
               maxItems: 1
               type: array
+            id:
+              type: string
             instances:
               items:
                 type: string
@@ -457,6 +459,8 @@ spec:
                     type: string
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 instances:
                   items:
                     type: string

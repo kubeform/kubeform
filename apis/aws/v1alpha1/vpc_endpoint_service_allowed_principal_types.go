@@ -21,6 +21,8 @@ type VpcEndpointServiceAllowedPrincipal struct {
 type VpcEndpointServiceAllowedPrincipalSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	PrincipalArn         string `json:"principalArn" tf:"principal_arn"`
 	VpcEndpointServiceID string `json:"vpcEndpointServiceID" tf:"vpc_endpoint_service_id"`
 }

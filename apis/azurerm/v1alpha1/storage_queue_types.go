@@ -21,6 +21,8 @@ type StorageQueue struct {
 type StorageQueueSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Name               string `json:"name" tf:"name"`
 	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`
 	StorageAccountName string `json:"storageAccountName" tf:"storage_account_name"`

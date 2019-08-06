@@ -443,6 +443,8 @@ spec:
               type: string
             enabled:
               type: boolean
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -528,6 +530,8 @@ spec:
                   type: string
                 enabled:
                   type: boolean
+                id:
+                  type: string
                 name:
                   type: string
                 providerRef:

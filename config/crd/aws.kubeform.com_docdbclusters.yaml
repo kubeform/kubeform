@@ -437,6 +437,8 @@ spec:
               type: string
             hostedZoneID:
               type: string
+            id:
+              type: string
             kmsKeyID:
               type: string
             masterUsername:
@@ -533,6 +535,8 @@ spec:
                 finalSnapshotIdentifier:
                   type: string
                 hostedZoneID:
+                  type: string
+                id:
                   type: string
                 kmsKeyID:
                   type: string

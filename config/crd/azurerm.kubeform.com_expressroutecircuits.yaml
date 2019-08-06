@@ -401,6 +401,8 @@ spec:
               type: boolean
             bandwidthInMbps:
               type: integer
+            id:
+              type: string
             location:
               type: string
             name:
@@ -471,6 +473,8 @@ spec:
                   type: boolean
                 bandwidthInMbps:
                   type: integer
+                id:
+                  type: string
                 location:
                   type: string
                 name:

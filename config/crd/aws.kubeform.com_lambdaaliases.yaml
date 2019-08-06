@@ -405,6 +405,8 @@ spec:
               type: string
             functionVersion:
               type: string
+            id:
+              type: string
             invokeArn:
               type: string
             name:
@@ -451,6 +453,8 @@ spec:
                 functionName:
                   type: string
                 functionVersion:
+                  type: string
+                id:
                   type: string
                 invokeArn:
                   type: string

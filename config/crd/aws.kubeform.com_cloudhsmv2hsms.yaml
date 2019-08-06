@@ -407,6 +407,8 @@ spec:
               type: string
             hsmState:
               type: string
+            id:
+              type: string
             ipAddress:
               type: string
             providerRef:
@@ -442,6 +444,8 @@ spec:
                 hsmID:
                   type: string
                 hsmState:
+                  type: string
+                id:
                   type: string
                 ipAddress:
                   type: string

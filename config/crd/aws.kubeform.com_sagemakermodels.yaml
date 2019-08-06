@@ -420,6 +420,8 @@ spec:
               type: boolean
             executionRoleArn:
               type: string
+            id:
+              type: string
             name:
               type: string
             primaryContainer:
@@ -507,6 +509,8 @@ spec:
                 enableNetworkIsolation:
                   type: boolean
                 executionRoleArn:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

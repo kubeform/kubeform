@@ -509,6 +509,8 @@ spec:
                 - name
                 type: object
               type: array
+            id:
+              type: string
             location:
               type: string
             managementEndpoint:
@@ -742,6 +744,8 @@ spec:
                     - name
                     type: object
                   type: array
+                id:
+                  type: string
                 location:
                   type: string
                 managementEndpoint:

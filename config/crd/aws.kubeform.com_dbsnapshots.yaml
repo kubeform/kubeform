@@ -413,6 +413,8 @@ spec:
               type: string
             engineVersion:
               type: string
+            id:
+              type: string
             iops:
               type: integer
             kmsKeyID:
@@ -477,6 +479,8 @@ spec:
                 engine:
                   type: string
                 engineVersion:
+                  type: string
+                id:
                   type: string
                 iops:
                   type: integer

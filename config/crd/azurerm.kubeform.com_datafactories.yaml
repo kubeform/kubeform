@@ -419,6 +419,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             identity:
               items:
                 properties:
@@ -514,6 +516,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 identity:
                   items:
                     properties:

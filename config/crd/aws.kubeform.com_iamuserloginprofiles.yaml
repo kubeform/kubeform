@@ -399,6 +399,8 @@ spec:
           properties:
             encryptedPassword:
               type: string
+            id:
+              type: string
             keyFingerprint:
               type: string
             passwordLength:
@@ -433,6 +435,8 @@ spec:
             output:
               properties:
                 encryptedPassword:
+                  type: string
+                id:
                   type: string
                 keyFingerprint:
                   type: string

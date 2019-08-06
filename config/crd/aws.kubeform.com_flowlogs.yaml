@@ -401,6 +401,8 @@ spec:
               type: string
             iamRoleArn:
               type: string
+            id:
+              type: string
             logDestination:
               type: string
             logDestinationType:
@@ -439,6 +441,8 @@ spec:
                 eniID:
                   type: string
                 iamRoleArn:
+                  type: string
+                id:
                   type: string
                 logDestination:
                   type: string

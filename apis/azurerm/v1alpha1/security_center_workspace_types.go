@@ -21,6 +21,8 @@ type SecurityCenterWorkspace struct {
 type SecurityCenterWorkspaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Scope       string `json:"scope" tf:"scope"`
 	WorkspaceID string `json:"workspaceID" tf:"workspace_id"`
 }

@@ -403,6 +403,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             name:
               type: string
             owner:
@@ -543,6 +545,8 @@ spec:
                 databaseName:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

@@ -46,6 +46,8 @@ type ApiGatewayMethodSettingsSpecSettings struct {
 type ApiGatewayMethodSettingsSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	MethodPath string `json:"methodPath" tf:"method_path"`
 	RestAPIID  string `json:"restAPIID" tf:"rest_api_id"`
 	// +kubebuilder:validation:MaxItems=1

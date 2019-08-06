@@ -480,6 +480,8 @@ spec:
               type: string
             fqdn:
               type: string
+            id:
+              type: string
             kubeAdminConfig:
               items:
                 properties:
@@ -717,6 +719,8 @@ spec:
                 dnsPrefix:
                   type: string
                 fqdn:
+                  type: string
+                id:
                   type: string
                 kubeAdminConfig:
                   items:

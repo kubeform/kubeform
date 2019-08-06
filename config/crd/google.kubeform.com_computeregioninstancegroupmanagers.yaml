@@ -422,6 +422,8 @@ spec:
               uniqueItems: true
             fingerprint:
               type: string
+            id:
+              type: string
             instanceGroup:
               type: string
             instanceTemplate:
@@ -553,6 +555,8 @@ spec:
                   type: array
                   uniqueItems: true
                 fingerprint:
+                  type: string
+                id:
                   type: string
                 instanceGroup:
                   type: string

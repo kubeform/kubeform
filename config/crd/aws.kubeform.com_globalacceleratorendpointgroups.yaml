@@ -418,6 +418,8 @@ spec:
               type: integer
             healthCheckProtocol:
               type: string
+            id:
+              type: string
             listenerArn:
               type: string
             providerRef:
@@ -467,6 +469,8 @@ spec:
                 healthCheckPort:
                   type: integer
                 healthCheckProtocol:
+                  type: string
+                id:
                   type: string
                 listenerArn:
                   type: string

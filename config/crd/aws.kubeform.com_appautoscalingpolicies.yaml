@@ -403,6 +403,8 @@ spec:
               type: array
             arn:
               type: string
+            id:
+              type: string
             name:
               type: string
             policyType:
@@ -531,6 +533,8 @@ spec:
                     type: string
                   type: array
                 arn:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

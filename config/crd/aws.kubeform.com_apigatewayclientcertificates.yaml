@@ -403,6 +403,8 @@ spec:
               type: string
             expirationDate:
               type: string
+            id:
+              type: string
             pemEncodedCertificate:
               type: string
             providerRef:
@@ -431,6 +433,8 @@ spec:
                 description:
                   type: string
                 expirationDate:
+                  type: string
+                id:
                   type: string
                 pemEncodedCertificate:
                   type: string

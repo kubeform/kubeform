@@ -405,6 +405,8 @@ spec:
               type: string
             fingerprint:
               type: string
+            id:
+              type: string
             name:
               type: string
             namePrefix:
@@ -443,6 +445,8 @@ spec:
                 encryptedPrivateKey:
                   type: string
                 fingerprint:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

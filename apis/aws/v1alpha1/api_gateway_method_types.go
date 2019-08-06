@@ -21,6 +21,8 @@ type ApiGatewayMethod struct {
 type ApiGatewayMethodSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ApiKeyRequired bool   `json:"apiKeyRequired,omitempty" tf:"api_key_required,omitempty"`
 	Authorization  string `json:"authorization" tf:"authorization"`

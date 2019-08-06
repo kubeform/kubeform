@@ -443,6 +443,8 @@ spec:
               uniqueItems: true
             healthProbeID:
               type: string
+            id:
+              type: string
             identity:
               items:
                 properties:
@@ -850,6 +852,8 @@ spec:
                   type: array
                   uniqueItems: true
                 healthProbeID:
+                  type: string
+                id:
                   type: string
                 identity:
                   items:

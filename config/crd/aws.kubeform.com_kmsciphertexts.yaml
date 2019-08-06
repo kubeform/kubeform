@@ -403,6 +403,8 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            id:
+              type: string
             keyID:
               type: string
             providerRef:
@@ -442,6 +444,8 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                id:
+                  type: string
                 keyID:
                   type: string
                 providerRef:

@@ -401,6 +401,8 @@ spec:
               type: string
             fqdn:
               type: string
+            id:
+              type: string
             location:
               type: string
             name:
@@ -489,6 +491,8 @@ spec:
                 administratorLogin:
                   type: string
                 fqdn:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

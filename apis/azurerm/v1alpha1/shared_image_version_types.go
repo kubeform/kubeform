@@ -26,6 +26,8 @@ type SharedImageVersionSpecTargetRegion struct {
 type SharedImageVersionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ExcludeFromLatest bool   `json:"excludeFromLatest,omitempty" tf:"exclude_from_latest,omitempty"`
 	GalleryName       string `json:"galleryName" tf:"gallery_name"`

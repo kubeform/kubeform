@@ -407,6 +407,8 @@ spec:
               type: string
             cidrBlock:
               type: string
+            id:
+              type: string
             ipv6CIDRBlock:
               type: string
             ipv6CIDRBlockAssociationID:
@@ -452,6 +454,8 @@ spec:
                 availabilityZoneID:
                   type: string
                 cidrBlock:
+                  type: string
+                id:
                   type: string
                 ipv6CIDRBlock:
                   type: string

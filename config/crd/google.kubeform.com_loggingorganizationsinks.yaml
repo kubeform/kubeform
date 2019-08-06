@@ -401,6 +401,8 @@ spec:
               type: string
             filter:
               type: string
+            id:
+              type: string
             includeChildren:
               type: boolean
             name:
@@ -436,6 +438,8 @@ spec:
                 destination:
                   type: string
                 filter:
+                  type: string
+                id:
                   type: string
                 includeChildren:
                   type: boolean

@@ -36,6 +36,8 @@ type StackscriptSpecUserDefinedFields struct {
 type StackscriptSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Created string `json:"created,omitempty" tf:"created,omitempty"`
 	// +optional

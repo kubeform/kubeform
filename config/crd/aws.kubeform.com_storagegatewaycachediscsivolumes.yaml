@@ -403,6 +403,8 @@ spec:
               type: boolean
             gatewayArn:
               type: string
+            id:
+              type: string
             lunNumber:
               type: integer
             networkInterfaceID:
@@ -453,6 +455,8 @@ spec:
                 chapEnabled:
                   type: boolean
                 gatewayArn:
+                  type: string
+                id:
                   type: string
                 lunNumber:
                   type: integer

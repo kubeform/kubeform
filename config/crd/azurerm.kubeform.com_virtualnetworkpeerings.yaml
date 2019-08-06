@@ -403,6 +403,8 @@ spec:
               type: boolean
             allowVirtualNetworkAccess:
               type: boolean
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -444,6 +446,8 @@ spec:
                   type: boolean
                 allowVirtualNetworkAccess:
                   type: boolean
+                id:
+                  type: string
                 name:
                   type: string
                 providerRef:

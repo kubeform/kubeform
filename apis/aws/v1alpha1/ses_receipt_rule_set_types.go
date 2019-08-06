@@ -21,6 +21,8 @@ type SesReceiptRuleSet struct {
 type SesReceiptRuleSetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	RuleSetName string `json:"ruleSetName" tf:"rule_set_name"`
 }
 

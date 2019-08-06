@@ -399,6 +399,8 @@ spec:
           properties:
             availabilityZone:
               type: string
+            id:
+              type: string
             port:
               type: integer
             providerRef:
@@ -429,6 +431,8 @@ spec:
             output:
               properties:
                 availabilityZone:
+                  type: string
+                id:
                   type: string
                 port:
                   type: integer

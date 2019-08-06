@@ -399,6 +399,8 @@ spec:
           properties:
             database:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -449,6 +451,8 @@ spec:
             output:
               properties:
                 database:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

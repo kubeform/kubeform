@@ -403,6 +403,8 @@ spec:
               type: boolean
             bucket:
               type: string
+            id:
+              type: string
             ignorePublicAcls:
               type: boolean
             providerRef:
@@ -434,6 +436,8 @@ spec:
                 blockPublicPolicy:
                   type: boolean
                 bucket:
+                  type: string
+                id:
                   type: string
                 ignorePublicAcls:
                   type: boolean

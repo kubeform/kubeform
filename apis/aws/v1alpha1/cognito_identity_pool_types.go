@@ -30,6 +30,8 @@ type CognitoIdentityPoolSpecCognitoIdentityProviders struct {
 type CognitoIdentityPoolSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AllowUnauthenticatedIdentities bool `json:"allowUnauthenticatedIdentities,omitempty" tf:"allow_unauthenticated_identities,omitempty"`
 	// +optional

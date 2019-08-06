@@ -21,6 +21,8 @@ type LoadBalancerListenerPolicy struct {
 type LoadBalancerListenerPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	LoadBalancerName string `json:"loadBalancerName" tf:"load_balancer_name"`
 	LoadBalancerPort int    `json:"loadBalancerPort" tf:"load_balancer_port"`
 	// +optional

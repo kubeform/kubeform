@@ -21,6 +21,8 @@ type VpcEndpointConnectionNotification struct {
 type VpcEndpointConnectionNotificationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	ConnectionEvents          []string `json:"connectionEvents" tf:"connection_events"`

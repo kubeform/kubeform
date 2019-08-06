@@ -21,6 +21,8 @@ type Ec2TransitGatewayVpcAttachmentAccepter struct {
 type Ec2TransitGatewayVpcAttachmentAccepterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	DnsSupport string `json:"dnsSupport,omitempty" tf:"dns_support,omitempty"`
 	// +optional

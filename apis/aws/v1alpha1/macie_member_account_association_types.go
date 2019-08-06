@@ -21,6 +21,8 @@ type MacieMemberAccountAssociation struct {
 type MacieMemberAccountAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	MemberAccountID string `json:"memberAccountID" tf:"member_account_id"`
 }
 

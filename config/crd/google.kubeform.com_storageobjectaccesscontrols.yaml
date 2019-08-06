@@ -409,6 +409,8 @@ spec:
               type: string
             generation:
               type: integer
+            id:
+              type: string
             object:
               type: string
             projectTeam:
@@ -460,6 +462,8 @@ spec:
                   type: string
                 generation:
                   type: integer
+                id:
+                  type: string
                 object:
                   type: string
                 projectTeam:

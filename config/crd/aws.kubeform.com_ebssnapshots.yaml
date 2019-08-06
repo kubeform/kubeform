@@ -403,6 +403,8 @@ spec:
               type: string
             encrypted:
               type: boolean
+            id:
+              type: string
             kmsKeyID:
               type: string
             ownerAlias:
@@ -445,6 +447,8 @@ spec:
                   type: string
                 encrypted:
                   type: boolean
+                id:
+                  type: string
                 kmsKeyID:
                   type: string
                 ownerAlias:

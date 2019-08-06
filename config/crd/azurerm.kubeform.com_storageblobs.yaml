@@ -401,6 +401,8 @@ spec:
               type: integer
             contentType:
               type: string
+            id:
+              type: string
             metadata:
               additionalProperties:
                 type: string
@@ -453,6 +455,8 @@ spec:
                 attempts:
                   type: integer
                 contentType:
+                  type: string
+                id:
                   type: string
                 metadata:
                   additionalProperties:

@@ -67,6 +67,8 @@ type EcsServiceSpecServiceRegistries struct {
 type EcsServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Cluster string `json:"cluster,omitempty" tf:"cluster,omitempty"`
 	// +optional

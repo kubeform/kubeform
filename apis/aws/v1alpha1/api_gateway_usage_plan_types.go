@@ -42,6 +42,8 @@ type ApiGatewayUsagePlanSpecThrottleSettings struct {
 type ApiGatewayUsagePlanSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ApiStages []ApiGatewayUsagePlanSpecApiStages `json:"apiStages,omitempty" tf:"api_stages,omitempty"`
 	// +optional

@@ -399,6 +399,8 @@ spec:
           properties:
             endpoint:
               type: string
+            id:
+              type: string
             kind:
               type: string
             location:
@@ -460,6 +462,8 @@ spec:
             output:
               properties:
                 endpoint:
+                  type: string
+                id:
                   type: string
                 kind:
                   type: string

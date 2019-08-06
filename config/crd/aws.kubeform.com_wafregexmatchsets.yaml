@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -447,6 +449,8 @@ spec:
               type: integer
             output:
               properties:
+                id:
+                  type: string
                 name:
                   type: string
                 providerRef:

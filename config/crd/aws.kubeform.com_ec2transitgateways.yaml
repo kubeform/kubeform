@@ -413,6 +413,8 @@ spec:
               type: string
             dnsSupport:
               type: string
+            id:
+              type: string
             ownerID:
               type: string
             propagationDefaultRouteTableID:
@@ -459,6 +461,8 @@ spec:
                 description:
                   type: string
                 dnsSupport:
+                  type: string
+                id:
                   type: string
                 ownerID:
                   type: string

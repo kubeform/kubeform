@@ -405,6 +405,8 @@ spec:
               type: string
             domain:
               type: string
+            id:
+              type: string
             instance:
               type: string
             networkInterface:
@@ -453,6 +455,8 @@ spec:
                 associationID:
                   type: string
                 domain:
+                  type: string
+                id:
                   type: string
                 instance:
                   type: string

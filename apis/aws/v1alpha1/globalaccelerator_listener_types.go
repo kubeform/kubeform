@@ -28,6 +28,8 @@ type GlobalacceleratorListenerSpecPortRange struct {
 type GlobalacceleratorListenerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AcceleratorArn string `json:"acceleratorArn" tf:"accelerator_arn"`
 	// +optional
 	ClientAffinity string `json:"clientAffinity,omitempty" tf:"client_affinity,omitempty"`

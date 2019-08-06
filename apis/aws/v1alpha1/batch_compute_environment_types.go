@@ -58,6 +58,8 @@ type BatchComputeEnvironmentSpecComputeResources struct {
 type BatchComputeEnvironmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Arn                    string `json:"arn,omitempty" tf:"arn,omitempty"`
 	ComputeEnvironmentName string `json:"computeEnvironmentName" tf:"compute_environment_name"`

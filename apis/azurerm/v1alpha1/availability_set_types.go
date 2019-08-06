@@ -21,6 +21,8 @@ type AvailabilitySet struct {
 type AvailabilitySetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Location string `json:"location" tf:"location"`
 	// +optional
 	Managed bool   `json:"managed,omitempty" tf:"managed,omitempty"`

@@ -422,6 +422,8 @@ spec:
               type: string
             granteePrincipal:
               type: string
+            id:
+              type: string
             keyID:
               type: string
             name:
@@ -483,6 +485,8 @@ spec:
                 grantToken:
                   type: string
                 granteePrincipal:
+                  type: string
+                id:
                   type: string
                 keyID:
                   type: string

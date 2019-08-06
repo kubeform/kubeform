@@ -21,6 +21,8 @@ type SnsTopicPolicy struct {
 type SnsTopicPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Arn    string `json:"arn" tf:"arn"`
 	Policy string `json:"policy" tf:"policy"`
 }

@@ -405,6 +405,8 @@ spec:
               type: boolean
             hasLogicalRedundancy:
               type: string
+            id:
+              type: string
             jumboFrameCapable:
               type: boolean
             location:
@@ -446,6 +448,8 @@ spec:
                 forceDestroy:
                   type: boolean
                 hasLogicalRedundancy:
+                  type: string
+                id:
                   type: string
                 jumboFrameCapable:
                   type: boolean

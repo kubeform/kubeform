@@ -399,6 +399,8 @@ spec:
           properties:
             amazonSideAsn:
               type: string
+            id:
+              type: string
             name:
               type: string
             ownerAccountID:
@@ -427,6 +429,8 @@ spec:
             output:
               properties:
                 amazonSideAsn:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

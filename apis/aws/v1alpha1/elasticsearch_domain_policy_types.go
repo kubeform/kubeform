@@ -21,6 +21,8 @@ type ElasticsearchDomainPolicy struct {
 type ElasticsearchDomainPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AccessPolicies string `json:"accessPolicies" tf:"access_policies"`
 	DomainName     string `json:"domainName" tf:"domain_name"`
 }

@@ -427,6 +427,8 @@ spec:
               type: string
             handler:
               type: string
+            id:
+              type: string
             invokeArn:
               type: string
             kmsKeyArn:
@@ -553,6 +555,8 @@ spec:
                 functionName:
                   type: string
                 handler:
+                  type: string
+                id:
                   type: string
                 invokeArn:
                   type: string

@@ -433,6 +433,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             limitAmount:
               type: string
             limitUnit:
@@ -539,6 +541,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 limitAmount:
                   type: string
                 limitUnit:

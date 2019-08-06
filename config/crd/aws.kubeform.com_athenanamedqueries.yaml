@@ -401,6 +401,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -432,6 +434,8 @@ spec:
                 database:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

@@ -21,6 +21,8 @@ type NatGateway struct {
 type NatGatewaySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AllocationID string `json:"allocationID" tf:"allocation_id"`
 	// +optional
 	NetworkInterfaceID string `json:"networkInterfaceID,omitempty" tf:"network_interface_id,omitempty"`

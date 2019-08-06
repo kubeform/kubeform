@@ -407,6 +407,8 @@ spec:
               type: integer
             eventsOutOfOrderPolicy:
               type: string
+            id:
+              type: string
             jobID:
               type: string
             location:
@@ -466,6 +468,8 @@ spec:
                 eventsOutOfOrderMaxDelayInSeconds:
                   type: integer
                 eventsOutOfOrderPolicy:
+                  type: string
+                id:
                   type: string
                 jobID:
                   type: string

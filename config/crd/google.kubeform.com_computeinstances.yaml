@@ -463,6 +463,8 @@ spec:
                 - type
                 type: object
               type: array
+            id:
+              type: string
             instanceID:
               type: string
             labelFingerprint:
@@ -675,6 +677,8 @@ spec:
                     - type
                     type: object
                   type: array
+                id:
+                  type: string
                 instanceID:
                   type: string
                 labelFingerprint:

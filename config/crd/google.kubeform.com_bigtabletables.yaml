@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            id:
+              type: string
             instanceName:
               type: string
             name:
@@ -430,6 +432,8 @@ spec:
               type: integer
             output:
               properties:
+                id:
+                  type: string
                 instanceName:
                   type: string
                 name:

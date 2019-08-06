@@ -21,6 +21,8 @@ type Ec2TransitGatewayRoute struct {
 type Ec2TransitGatewayRouteSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Blackhole            bool   `json:"blackhole,omitempty" tf:"blackhole,omitempty"`
 	DestinationCIDRBlock string `json:"destinationCIDRBlock" tf:"destination_cidr_block"`

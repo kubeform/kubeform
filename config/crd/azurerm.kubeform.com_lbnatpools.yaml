@@ -407,6 +407,8 @@ spec:
               type: integer
             frontendPortStart:
               type: integer
+            id:
+              type: string
             loadbalancerID:
               type: string
             location:
@@ -457,6 +459,8 @@ spec:
                   type: integer
                 frontendPortStart:
                   type: integer
+                id:
+                  type: string
                 loadbalancerID:
                   type: string
                 location:

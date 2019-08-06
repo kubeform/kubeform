@@ -27,6 +27,8 @@ type GlacierVaultSpecNotification struct {
 type GlacierVaultSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AccessPolicy string `json:"accessPolicy,omitempty" tf:"access_policy,omitempty"`
 	// +optional

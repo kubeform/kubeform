@@ -409,6 +409,8 @@ spec:
               type: string
             guessMimeTypeEnabled:
               type: boolean
+            id:
+              type: string
             invalidUserList:
               items:
                 type: string
@@ -469,6 +471,8 @@ spec:
                   type: string
                 guessMimeTypeEnabled:
                   type: boolean
+                id:
+                  type: string
                 invalidUserList:
                   items:
                     type: string

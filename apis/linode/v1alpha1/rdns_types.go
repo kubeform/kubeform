@@ -21,6 +21,8 @@ type Rdns struct {
 type RdnsSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Address string `json:"address" tf:"address"`
 	Rdns    string `json:"rdns" tf:"rdns"`
 }

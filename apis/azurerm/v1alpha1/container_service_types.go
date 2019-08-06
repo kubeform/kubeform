@@ -61,6 +61,8 @@ type ContainerServiceSpecServicePrincipal struct {
 type ContainerServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	// +kubebuilder:validation:MaxItems=1

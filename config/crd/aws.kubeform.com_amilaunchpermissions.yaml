@@ -399,6 +399,8 @@ spec:
           properties:
             accountID:
               type: string
+            id:
+              type: string
             imageID:
               type: string
             providerRef:
@@ -425,6 +427,8 @@ spec:
             output:
               properties:
                 accountID:
+                  type: string
+                id:
                   type: string
                 imageID:
                   type: string

@@ -21,6 +21,8 @@ type ComputeBackendBucket struct {
 type ComputeBackendBucketSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	BucketName string `json:"bucketName" tf:"bucket_name"`
 	// +optional
 	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`

@@ -21,6 +21,8 @@ type AppsyncAPIKey struct {
 type AppsyncAPIKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	ApiID string `json:"apiID" tf:"api_id"`

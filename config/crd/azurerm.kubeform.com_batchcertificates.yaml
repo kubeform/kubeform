@@ -401,6 +401,8 @@ spec:
               type: string
             format:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -449,6 +451,8 @@ spec:
                 accountName:
                   type: string
                 format:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

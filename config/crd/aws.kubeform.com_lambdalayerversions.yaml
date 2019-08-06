@@ -411,6 +411,8 @@ spec:
               type: string
             filename:
               type: string
+            id:
+              type: string
             layerArn:
               type: string
             layerName:
@@ -464,6 +466,8 @@ spec:
                 description:
                   type: string
                 filename:
+                  type: string
+                id:
                   type: string
                 layerArn:
                   type: string

@@ -436,6 +436,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            id:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -510,6 +512,8 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.

@@ -399,6 +399,8 @@ spec:
           properties:
             eventhubEndpointName:
               type: string
+            id:
+              type: string
             iothubName:
               type: string
             name:
@@ -431,6 +433,8 @@ spec:
             output:
               properties:
                 eventhubEndpointName:
+                  type: string
+                id:
                   type: string
                 iothubName:
                   type: string

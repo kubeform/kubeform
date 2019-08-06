@@ -98,6 +98,8 @@ type SpotFleetRequestSpecLaunchSpecification struct {
 type SpotFleetRequestSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AllocationStrategy string `json:"allocationStrategy,omitempty" tf:"allocation_strategy,omitempty"`
 	// +optional

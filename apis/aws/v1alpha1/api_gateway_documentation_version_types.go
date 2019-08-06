@@ -21,6 +21,8 @@ type ApiGatewayDocumentationVersion struct {
 type ApiGatewayDocumentationVersionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	RestAPIID   string `json:"restAPIID" tf:"rest_api_id"`

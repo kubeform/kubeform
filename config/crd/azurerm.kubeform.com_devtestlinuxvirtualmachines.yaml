@@ -422,6 +422,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             inboundNATRule:
               items:
                 properties:
@@ -530,6 +532,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 inboundNATRule:
                   items:
                     properties:

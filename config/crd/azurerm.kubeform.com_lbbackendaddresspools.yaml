@@ -402,6 +402,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            id:
+              type: string
             loadBalancingRules:
               items:
                 type: string
@@ -445,6 +447,8 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 loadBalancingRules:
                   items:
                     type: string

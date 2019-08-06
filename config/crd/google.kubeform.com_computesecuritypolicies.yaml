@@ -401,6 +401,8 @@ spec:
               type: string
             fingerprint:
               type: string
+            id:
+              type: string
             name:
               type: string
             project:
@@ -476,6 +478,8 @@ spec:
                 description:
                   type: string
                 fingerprint:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

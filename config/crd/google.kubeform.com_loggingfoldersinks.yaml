@@ -403,6 +403,8 @@ spec:
               type: string
             folder:
               type: string
+            id:
+              type: string
             includeChildren:
               type: boolean
             name:
@@ -438,6 +440,8 @@ spec:
                 filter:
                   type: string
                 folder:
+                  type: string
+                id:
                   type: string
                 includeChildren:
                   type: boolean

@@ -21,6 +21,8 @@ type IamAccountAlias struct {
 type IamAccountAliasSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AccountAlias string `json:"accountAlias" tf:"account_alias"`
 }
 

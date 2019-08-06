@@ -21,6 +21,8 @@ type SesDomainMailFrom struct {
 type SesDomainMailFromSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	BehaviorOnMxFailure string `json:"behaviorOnMxFailure,omitempty" tf:"behavior_on_mx_failure,omitempty"`
 	Domain              string `json:"domain" tf:"domain"`

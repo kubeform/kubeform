@@ -33,6 +33,8 @@ type AutomationModuleSpecModuleLink struct {
 type AutomationModuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AutomationAccountName string `json:"automationAccountName" tf:"automation_account_name"`
 	// +kubebuilder:validation:MaxItems=1
 	ModuleLink        []AutomationModuleSpecModuleLink `json:"moduleLink" tf:"module_link"`

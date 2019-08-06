@@ -30,6 +30,8 @@ type DevTestVirtualNetworkSpecSubnet struct {
 type DevTestVirtualNetworkSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Description       string `json:"description,omitempty" tf:"description,omitempty"`
 	LabName           string `json:"labName" tf:"lab_name"`

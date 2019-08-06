@@ -403,6 +403,8 @@ spec:
               type: array
             description:
               type: string
+            id:
+              type: string
             name:
               type: string
             permissions:
@@ -462,6 +464,8 @@ spec:
                     type: string
                   type: array
                 description:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

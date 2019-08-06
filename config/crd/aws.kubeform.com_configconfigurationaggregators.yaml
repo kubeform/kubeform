@@ -419,6 +419,8 @@ spec:
               type: array
             arn:
               type: string
+            id:
+              type: string
             name:
               type: string
             organizationAggregationSource:
@@ -481,6 +483,8 @@ spec:
                   maxItems: 1
                   type: array
                 arn:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

@@ -21,6 +21,8 @@ type DbInstanceRoleAssociation struct {
 type DbInstanceRoleAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	DbInstanceIdentifier string `json:"dbInstanceIdentifier" tf:"db_instance_identifier"`
 	FeatureName          string `json:"featureName" tf:"feature_name"`
 	RoleArn              string `json:"roleArn" tf:"role_arn"`

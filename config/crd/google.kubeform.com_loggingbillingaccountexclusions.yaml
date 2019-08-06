@@ -405,6 +405,8 @@ spec:
               type: boolean
             filter:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -438,6 +440,8 @@ spec:
                 disabled:
                   type: boolean
                 filter:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

@@ -403,6 +403,8 @@ spec:
               type: string
             endpoint:
               type: string
+            id:
+              type: string
             ipv4Address:
               type: string
             kubeConfig:
@@ -506,6 +508,8 @@ spec:
                 createdAt:
                   type: string
                 endpoint:
+                  type: string
+                id:
                   type: string
                 ipv4Address:
                   type: string

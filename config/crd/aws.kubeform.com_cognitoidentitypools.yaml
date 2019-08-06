@@ -415,6 +415,8 @@ spec:
               uniqueItems: true
             developerProviderName:
               type: string
+            id:
+              type: string
             identityPoolName:
               type: string
             openidConnectProviderArns:
@@ -468,6 +470,8 @@ spec:
                   type: array
                   uniqueItems: true
                 developerProviderName:
+                  type: string
+                id:
                   type: string
                 identityPoolName:
                   type: string

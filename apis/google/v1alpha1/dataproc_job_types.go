@@ -181,6 +181,8 @@ type DataprocJobSpecStatus struct {
 type DataprocJobSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	DriverControlsFilesURI string `json:"driverControlsFilesURI,omitempty" tf:"driver_controls_files_uri,omitempty"`
 	// +optional

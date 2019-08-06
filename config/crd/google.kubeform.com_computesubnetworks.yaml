@@ -407,6 +407,8 @@ spec:
               type: string
             gatewayAddress:
               type: string
+            id:
+              type: string
             ipCIDRRange:
               type: string
             name:
@@ -466,6 +468,8 @@ spec:
                 fingerprint:
                   type: string
                 gatewayAddress:
+                  type: string
+                id:
                   type: string
                 ipCIDRRange:
                   type: string

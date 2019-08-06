@@ -403,6 +403,8 @@ spec:
               type: string
             enabled:
               type: boolean
+            id:
+              type: string
             labels:
               additionalProperties:
                 type: string
@@ -448,6 +450,8 @@ spec:
                   type: string
                 enabled:
                   type: boolean
+                id:
+                  type: string
                 labels:
                   additionalProperties:
                     type: string

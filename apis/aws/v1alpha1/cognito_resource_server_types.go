@@ -26,6 +26,8 @@ type CognitoResourceServerSpecScope struct {
 type CognitoResourceServerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Identifier string `json:"identifier" tf:"identifier"`
 	Name       string `json:"name" tf:"name"`
 	// +optional

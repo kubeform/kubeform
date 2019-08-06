@@ -403,6 +403,8 @@ spec:
               type: string
             dashboardName:
               type: string
+            id:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -431,6 +433,8 @@ spec:
                 dashboardBody:
                   type: string
                 dashboardName:
+                  type: string
+                id:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to

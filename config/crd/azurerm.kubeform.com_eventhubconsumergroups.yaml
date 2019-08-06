@@ -399,6 +399,8 @@ spec:
           properties:
             eventhubName:
               type: string
+            id:
+              type: string
             location:
               description: Deprecated
               type: string
@@ -436,6 +438,8 @@ spec:
             output:
               properties:
                 eventhubName:
+                  type: string
+                id:
                   type: string
                 location:
                   description: Deprecated

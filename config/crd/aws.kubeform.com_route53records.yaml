@@ -439,6 +439,8 @@ spec:
               type: array
             healthCheckID:
               type: string
+            id:
+              type: string
             latencyRoutingPolicy:
               items:
                 properties:
@@ -539,6 +541,8 @@ spec:
                     type: object
                   type: array
                 healthCheckID:
+                  type: string
+                id:
                   type: string
                 latencyRoutingPolicy:
                   items:

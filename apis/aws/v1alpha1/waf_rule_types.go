@@ -27,6 +27,8 @@ type WafRuleSpecPredicates struct {
 type WafRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	MetricName string `json:"metricName" tf:"metric_name"`
 	Name       string `json:"name" tf:"name"`
 	// +optional

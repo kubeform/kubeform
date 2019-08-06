@@ -401,6 +401,8 @@ spec:
               type: string
             enabled:
               type: boolean
+            id:
+              type: string
             promotionalMessagesPerSecond:
               type: integer
             providerRef:
@@ -435,6 +437,8 @@ spec:
                   type: string
                 enabled:
                   type: boolean
+                id:
+                  type: string
                 promotionalMessagesPerSecond:
                   type: integer
                 providerRef:

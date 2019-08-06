@@ -521,6 +521,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             keyVaultID:
               type: string
             name:
@@ -694,6 +696,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 keyVaultID:
                   type: string
                 name:

@@ -33,6 +33,8 @@ type ApiGatewayDocumentationPartSpecLocation struct {
 type ApiGatewayDocumentationPartSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +kubebuilder:validation:MaxItems=1
 	Location   []ApiGatewayDocumentationPartSpecLocation `json:"location" tf:"location"`
 	Properties string                                    `json:"properties" tf:"properties"`

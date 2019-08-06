@@ -32,6 +32,8 @@ type SsmAssociationSpecTargets struct {
 type SsmAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AssociationID string `json:"associationID,omitempty" tf:"association_id,omitempty"`
 	// +optional

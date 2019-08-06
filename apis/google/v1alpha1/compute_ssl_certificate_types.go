@@ -21,6 +21,8 @@ type ComputeSslCertificate struct {
 type ComputeSslCertificateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Certificate string `json:"-" sensitive:"true" tf:"certificate"`

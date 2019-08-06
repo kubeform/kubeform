@@ -399,6 +399,8 @@ spec:
           properties:
             icmpIdleTimeoutSec:
               type: integer
+            id:
+              type: string
             minPortsPerVm:
               type: integer
             name:
@@ -470,6 +472,8 @@ spec:
               properties:
                 icmpIdleTimeoutSec:
                   type: integer
+                id:
+                  type: string
                 minPortsPerVm:
                   type: integer
                 name:

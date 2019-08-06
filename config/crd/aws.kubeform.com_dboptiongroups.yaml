@@ -401,6 +401,8 @@ spec:
               type: string
             engineName:
               type: string
+            id:
+              type: string
             majorEngineVersion:
               type: string
             name:
@@ -476,6 +478,8 @@ spec:
                 arn:
                   type: string
                 engineName:
+                  type: string
+                id:
                   type: string
                 majorEngineVersion:
                   type: string

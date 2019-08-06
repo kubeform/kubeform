@@ -21,6 +21,8 @@ type ElasticBeanstalkApplicationVersion struct {
 type ElasticBeanstalkApplicationVersionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Application string `json:"application" tf:"application"`
 	// +optional
 	Arn    string `json:"arn,omitempty" tf:"arn,omitempty"`

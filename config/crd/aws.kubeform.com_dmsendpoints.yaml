@@ -411,6 +411,8 @@ spec:
               type: string
             extraConnectionAttributes:
               type: string
+            id:
+              type: string
             kmsKeyArn:
               type: string
             mongodbSettings:
@@ -511,6 +513,8 @@ spec:
                 engineName:
                   type: string
                 extraConnectionAttributes:
+                  type: string
+                id:
                   type: string
                 kmsKeyArn:
                   type: string

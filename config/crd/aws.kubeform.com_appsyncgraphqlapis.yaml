@@ -401,6 +401,8 @@ spec:
               type: string
             authenticationType:
               type: string
+            id:
+              type: string
             logConfig:
               items:
                 properties:
@@ -485,6 +487,8 @@ spec:
                 arn:
                   type: string
                 authenticationType:
+                  type: string
+                id:
                   type: string
                 logConfig:
                   items:

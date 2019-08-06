@@ -399,6 +399,8 @@ spec:
           properties:
             etag:
               type: string
+            id:
+              type: string
             member:
               type: string
             orgID:
@@ -430,6 +432,8 @@ spec:
             output:
               properties:
                 etag:
+                  type: string
+                id:
                   type: string
                 member:
                   type: string

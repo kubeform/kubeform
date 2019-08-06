@@ -399,6 +399,8 @@ spec:
           properties:
             filesystemPath:
               type: string
+            id:
+              type: string
             label:
               type: string
             linodeID:
@@ -438,6 +440,8 @@ spec:
             output:
               properties:
                 filesystemPath:
+                  type: string
+                id:
                   type: string
                 label:
                   type: string

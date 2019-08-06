@@ -401,6 +401,8 @@ spec:
               type: integer
             expressRouteCircuitName:
               type: string
+            id:
+              type: string
             microsoftPeeringConfig:
               items:
                 properties:
@@ -468,6 +470,8 @@ spec:
                 azureAsn:
                   type: integer
                 expressRouteCircuitName:
+                  type: string
+                id:
                   type: string
                 microsoftPeeringConfig:
                   items:

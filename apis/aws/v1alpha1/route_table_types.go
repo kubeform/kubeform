@@ -42,6 +42,8 @@ type RouteTableSpecRoute struct {
 type RouteTableSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	OwnerID string `json:"ownerID,omitempty" tf:"owner_id,omitempty"`
 	// +optional

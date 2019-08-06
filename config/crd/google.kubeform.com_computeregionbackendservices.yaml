@@ -420,6 +420,8 @@ spec:
               minItems: 1
               type: array
               uniqueItems: true
+            id:
+              type: string
             name:
               type: string
             project:
@@ -480,6 +482,8 @@ spec:
                   minItems: 1
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 name:
                   type: string
                 project:

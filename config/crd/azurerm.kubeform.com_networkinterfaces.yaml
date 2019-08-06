@@ -411,6 +411,8 @@ spec:
               type: boolean
             enableIPForwarding:
               type: boolean
+            id:
+              type: string
             internalDNSNameLabel:
               type: string
             internalFqdn:
@@ -523,6 +525,8 @@ spec:
                   type: boolean
                 enableIPForwarding:
                   type: boolean
+                id:
+                  type: string
                 internalDNSNameLabel:
                   type: string
                 internalFqdn:

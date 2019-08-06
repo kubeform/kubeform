@@ -21,6 +21,8 @@ type NodebalancerNode struct {
 type NodebalancerNodeSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Address  string `json:"address" tf:"address"`
 	ConfigID int    `json:"configID" tf:"config_id"`
 	Label    string `json:"label" tf:"label"`

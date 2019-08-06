@@ -21,6 +21,8 @@ type S3BucketPolicy struct {
 type S3BucketPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Bucket string `json:"bucket" tf:"bucket"`
 	Policy string `json:"policy" tf:"policy"`
 }

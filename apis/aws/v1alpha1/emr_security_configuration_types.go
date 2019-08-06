@@ -21,6 +21,8 @@ type EmrSecurityConfiguration struct {
 type EmrSecurityConfigurationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Configuration string `json:"configuration" tf:"configuration"`
 	// +optional
 	CreationDate string `json:"creationDate,omitempty" tf:"creation_date,omitempty"`

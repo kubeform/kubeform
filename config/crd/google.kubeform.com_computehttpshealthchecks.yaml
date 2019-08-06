@@ -407,6 +407,8 @@ spec:
               type: integer
             host:
               type: string
+            id:
+              type: string
             name:
               type: string
             port:
@@ -452,6 +454,8 @@ spec:
                 healthyThreshold:
                   type: integer
                 host:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

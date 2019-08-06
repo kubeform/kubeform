@@ -21,6 +21,8 @@ type StreamAnalyticsJob struct {
 type StreamAnalyticsJobSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	CompatibilityLevel                 string `json:"compatibilityLevel" tf:"compatibility_level"`
 	DataLocale                         string `json:"dataLocale" tf:"data_locale"`
 	EventsLateArrivalMaxDelayInSeconds int    `json:"eventsLateArrivalMaxDelayInSeconds" tf:"events_late_arrival_max_delay_in_seconds"`

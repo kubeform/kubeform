@@ -403,6 +403,8 @@ spec:
               type: string
             family:
               type: string
+            id:
+              type: string
             name:
               type: string
             parameter:
@@ -450,6 +452,8 @@ spec:
                 description:
                   type: string
                 family:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

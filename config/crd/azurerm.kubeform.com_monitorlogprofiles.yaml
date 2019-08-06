@@ -403,6 +403,8 @@ spec:
               minItems: 1
               type: array
               uniqueItems: true
+            id:
+              type: string
             locations:
               items:
                 type: string
@@ -458,6 +460,8 @@ spec:
                   minItems: 1
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 locations:
                   items:
                     type: string

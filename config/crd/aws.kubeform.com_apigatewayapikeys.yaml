@@ -403,6 +403,8 @@ spec:
               type: string
             enabled:
               type: boolean
+            id:
+              type: string
             lastUpdatedDate:
               type: string
             name:
@@ -444,6 +446,8 @@ spec:
                   type: string
                 enabled:
                   type: boolean
+                id:
+                  type: string
                 lastUpdatedDate:
                   type: string
                 name:

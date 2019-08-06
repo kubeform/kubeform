@@ -21,6 +21,8 @@ type LogicAppActionCustom struct {
 type LogicAppActionCustomSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Body       string `json:"body" tf:"body"`
 	LogicAppID string `json:"logicAppID" tf:"logic_app_id"`
 	Name       string `json:"name" tf:"name"`

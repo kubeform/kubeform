@@ -500,6 +500,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             instanceGroup:
               description: Deprecated
               items:
@@ -782,6 +784,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 instanceGroup:
                   description: Deprecated
                   items:

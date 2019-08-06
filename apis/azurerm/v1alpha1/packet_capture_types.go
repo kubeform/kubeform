@@ -42,6 +42,8 @@ type PacketCaptureSpecStorageLocation struct {
 type PacketCaptureSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Filter []PacketCaptureSpecFilter `json:"filter,omitempty" tf:"filter,omitempty"`
 	// +optional

@@ -403,6 +403,8 @@ spec:
               type: integer
             authorizerURI:
               type: string
+            id:
+              type: string
             identitySource:
               type: string
             identityValidationExpression:
@@ -446,6 +448,8 @@ spec:
                 authorizerResultTtlInSeconds:
                   type: integer
                 authorizerURI:
+                  type: string
+                id:
                   type: string
                 identitySource:
                   type: string

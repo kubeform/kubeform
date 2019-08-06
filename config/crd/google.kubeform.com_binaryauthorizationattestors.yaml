@@ -424,6 +424,8 @@ spec:
               type: array
             description:
               type: string
+            id:
+              type: string
             name:
               type: string
             project:
@@ -477,6 +479,8 @@ spec:
                   maxItems: 1
                   type: array
                 description:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

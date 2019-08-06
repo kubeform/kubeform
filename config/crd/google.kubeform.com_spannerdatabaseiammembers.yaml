@@ -401,6 +401,8 @@ spec:
               type: string
             etag:
               type: string
+            id:
+              type: string
             instance:
               type: string
             member:
@@ -437,6 +439,8 @@ spec:
                 database:
                   type: string
                 etag:
+                  type: string
+                id:
                   type: string
                 instance:
                   type: string

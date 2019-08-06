@@ -21,6 +21,8 @@ type PinpointBaiduChannel struct {
 type PinpointBaiduChannelSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	ApiKey        string `json:"-" sensitive:"true" tf:"api_key"`

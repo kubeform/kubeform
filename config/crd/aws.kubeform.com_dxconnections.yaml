@@ -405,6 +405,8 @@ spec:
               type: string
             hasLogicalRedundancy:
               type: string
+            id:
+              type: string
             jumboFrameCapable:
               type: boolean
             location:
@@ -446,6 +448,8 @@ spec:
                 bandwidth:
                   type: string
                 hasLogicalRedundancy:
+                  type: string
+                id:
                   type: string
                 jumboFrameCapable:
                   type: boolean

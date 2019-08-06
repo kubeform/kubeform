@@ -425,6 +425,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -477,6 +479,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 name:
                   type: string
                 providerRef:

@@ -21,6 +21,8 @@ type LambdaEventSourceMapping struct {
 type LambdaEventSourceMappingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	BatchSize int `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
 	// +optional

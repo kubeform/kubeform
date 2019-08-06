@@ -403,6 +403,8 @@ spec:
               type: string
             displayName:
               type: string
+            id:
+              type: string
             import:
               items:
                 properties:
@@ -500,6 +502,8 @@ spec:
                 description:
                   type: string
                 displayName:
+                  type: string
+                id:
                   type: string
                 import:
                   items:

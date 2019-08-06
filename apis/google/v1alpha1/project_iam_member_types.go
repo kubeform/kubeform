@@ -21,6 +21,8 @@ type ProjectIamMember struct {
 type ProjectIamMemberSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Etag   string `json:"etag,omitempty" tf:"etag,omitempty"`
 	Member string `json:"member" tf:"member"`

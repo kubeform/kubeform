@@ -401,6 +401,8 @@ spec:
               type: string
             applicationType:
               type: string
+            id:
+              type: string
             location:
               type: string
             name:
@@ -448,6 +450,8 @@ spec:
                 appID:
                   type: string
                 applicationType:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

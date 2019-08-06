@@ -27,6 +27,8 @@ type CloudwatchEventPermissionSpecCondition struct {
 type CloudwatchEventPermissionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Action string `json:"action,omitempty" tf:"action,omitempty"`
 	// +optional

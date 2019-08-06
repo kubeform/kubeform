@@ -21,6 +21,8 @@ type AutomationVariableInt struct {
 type AutomationVariableIntSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AutomationAccountName string `json:"automationAccountName" tf:"automation_account_name"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`

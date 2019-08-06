@@ -21,6 +21,8 @@ type NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation struct {
 type NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	BackendAddressPoolID string `json:"backendAddressPoolID" tf:"backend_address_pool_id"`
 	IpConfigurationName  string `json:"ipConfigurationName" tf:"ip_configuration_name"`
 	NetworkInterfaceID   string `json:"networkInterfaceID" tf:"network_interface_id"`

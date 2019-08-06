@@ -21,6 +21,8 @@ type IothubConsumerGroup struct {
 type IothubConsumerGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	EventhubEndpointName string `json:"eventhubEndpointName" tf:"eventhub_endpoint_name"`
 	IothubName           string `json:"iothubName" tf:"iothub_name"`
 	Name                 string `json:"name" tf:"name"`

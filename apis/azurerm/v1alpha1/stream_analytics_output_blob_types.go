@@ -31,6 +31,8 @@ type StreamAnalyticsOutputBlobSpecSerialization struct {
 type StreamAnalyticsOutputBlobSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	DateFormat        string `json:"dateFormat" tf:"date_format"`

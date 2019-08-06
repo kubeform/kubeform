@@ -399,6 +399,8 @@ spec:
           properties:
             computePlatform:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -426,6 +428,8 @@ spec:
             output:
               properties:
                 computePlatform:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

@@ -401,6 +401,8 @@ spec:
               type: string
             definition:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -438,6 +440,8 @@ spec:
                 creationDate:
                   type: string
                 definition:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

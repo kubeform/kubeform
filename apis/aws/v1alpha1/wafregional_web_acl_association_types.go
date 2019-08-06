@@ -21,6 +21,8 @@ type WafregionalWebACLAssociation struct {
 type WafregionalWebACLAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ResourceArn string `json:"resourceArn" tf:"resource_arn"`
 	WebACLID    string `json:"webACLID" tf:"web_acl_id"`
 }

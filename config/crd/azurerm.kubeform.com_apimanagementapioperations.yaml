@@ -405,6 +405,8 @@ spec:
               type: string
             displayName:
               type: string
+            id:
+              type: string
             method:
               type: string
             operationID:
@@ -641,6 +643,8 @@ spec:
                 description:
                   type: string
                 displayName:
+                  type: string
+                id:
                   type: string
                 method:
                   type: string

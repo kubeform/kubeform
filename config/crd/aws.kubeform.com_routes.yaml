@@ -407,6 +407,8 @@ spec:
               type: string
             gatewayID:
               type: string
+            id:
+              type: string
             instanceID:
               type: string
             instanceOwnerID:
@@ -456,6 +458,8 @@ spec:
                 egressOnlyGatewayID:
                   type: string
                 gatewayID:
+                  type: string
+                id:
                   type: string
                 instanceID:
                   type: string

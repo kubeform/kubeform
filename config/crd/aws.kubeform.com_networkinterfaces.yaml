@@ -414,6 +414,8 @@ spec:
               uniqueItems: true
             description:
               type: string
+            id:
+              type: string
             privateDNSName:
               type: string
             privateIP:
@@ -476,6 +478,8 @@ spec:
                   type: array
                   uniqueItems: true
                 description:
+                  type: string
+                id:
                   type: string
                 privateDNSName:
                   type: string

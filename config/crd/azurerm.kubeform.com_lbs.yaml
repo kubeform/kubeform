@@ -437,6 +437,8 @@ spec:
                 type: object
               minItems: 1
               type: array
+            id:
+              type: string
             location:
               type: string
             name:
@@ -519,6 +521,8 @@ spec:
                     type: object
                   minItems: 1
                   type: array
+                id:
+                  type: string
                 location:
                   type: string
                 name:

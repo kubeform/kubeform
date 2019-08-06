@@ -21,6 +21,8 @@ type SesConfigurationSet struct {
 type SesConfigurationSetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Name string `json:"name" tf:"name"`
 }
 

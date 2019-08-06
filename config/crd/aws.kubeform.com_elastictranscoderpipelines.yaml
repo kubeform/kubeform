@@ -426,6 +426,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            id:
+              type: string
             inputBucket:
               type: string
             name:
@@ -526,6 +528,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 inputBucket:
                   type: string
                 name:

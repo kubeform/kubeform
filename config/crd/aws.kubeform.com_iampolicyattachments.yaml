@@ -402,6 +402,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            id:
+              type: string
             name:
               type: string
             policyArn:
@@ -444,6 +446,8 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 name:
                   type: string
                 policyArn:

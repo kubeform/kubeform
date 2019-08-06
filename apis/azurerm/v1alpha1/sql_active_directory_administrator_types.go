@@ -21,6 +21,8 @@ type SqlActiveDirectoryAdministrator struct {
 type SqlActiveDirectoryAdministratorSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Login             string `json:"login" tf:"login"`
 	ObjectID          string `json:"objectID" tf:"object_id"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`

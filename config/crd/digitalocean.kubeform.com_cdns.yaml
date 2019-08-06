@@ -405,6 +405,8 @@ spec:
               type: string
             endpoint:
               type: string
+            id:
+              type: string
             origin:
               type: string
             providerRef:
@@ -438,6 +440,8 @@ spec:
                 customDomain:
                   type: string
                 endpoint:
+                  type: string
+                id:
                   type: string
                 origin:
                   type: string

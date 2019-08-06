@@ -399,6 +399,8 @@ spec:
           properties:
             html:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -428,6 +430,8 @@ spec:
             output:
               properties:
                 html:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

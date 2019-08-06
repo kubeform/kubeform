@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            id:
+              type: string
             ipRange:
               type: string
             name:
@@ -433,6 +435,8 @@ spec:
               type: integer
             output:
               properties:
+                id:
+                  type: string
                 ipRange:
                   type: string
                 name:

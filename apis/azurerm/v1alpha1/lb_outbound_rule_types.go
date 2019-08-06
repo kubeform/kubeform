@@ -27,6 +27,8 @@ type LbOutboundRuleSpecFrontendIPConfiguration struct {
 type LbOutboundRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AllocatedOutboundPorts int    `json:"allocatedOutboundPorts,omitempty" tf:"allocated_outbound_ports,omitempty"`
 	BackendAddressPoolID   string `json:"backendAddressPoolID" tf:"backend_address_pool_id"`

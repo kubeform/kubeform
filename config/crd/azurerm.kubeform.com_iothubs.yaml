@@ -445,6 +445,8 @@ spec:
               type: array
             hostname:
               type: string
+            id:
+              type: string
             ipFilterRule:
               items:
                 properties:
@@ -601,6 +603,8 @@ spec:
                   maxItems: 1
                   type: array
                 hostname:
+                  type: string
+                id:
                   type: string
                 ipFilterRule:
                   items:

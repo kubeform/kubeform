@@ -33,6 +33,8 @@ type CloudfunctionsFunctionSpecEventTrigger struct {
 type CloudfunctionsFunctionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AvailableMemoryMb int `json:"availableMemoryMb,omitempty" tf:"available_memory_mb,omitempty"`
 	// +optional

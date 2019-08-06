@@ -405,6 +405,8 @@ spec:
               type: string
             externalID:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -443,6 +445,8 @@ spec:
                 displayName:
                   type: string
                 externalID:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

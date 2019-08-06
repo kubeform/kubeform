@@ -21,6 +21,8 @@ type DataFactoryPipeline struct {
 type DataFactoryPipelineSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Annotations     []string `json:"annotations,omitempty" tf:"annotations,omitempty"`
 	DataFactoryName string   `json:"dataFactoryName" tf:"data_factory_name"`

@@ -411,6 +411,8 @@ spec:
               type: string
             folder:
               type: string
+            id:
+              type: string
             linkedServiceName:
               type: string
             name:
@@ -474,6 +476,8 @@ spec:
                 description:
                   type: string
                 folder:
+                  type: string
+                id:
                   type: string
                 linkedServiceName:
                   type: string

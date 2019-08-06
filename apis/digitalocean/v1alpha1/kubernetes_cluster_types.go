@@ -60,6 +60,8 @@ type KubernetesClusterSpecNodePool struct {
 type KubernetesClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ClusterSubnet string `json:"clusterSubnet,omitempty" tf:"cluster_subnet,omitempty"`
 	// +optional

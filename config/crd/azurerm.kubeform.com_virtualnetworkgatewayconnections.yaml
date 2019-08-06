@@ -403,6 +403,8 @@ spec:
               type: string
             expressRouteGatewayBypass:
               type: boolean
+            id:
+              type: string
             ipsecPolicy:
               items:
                 properties:
@@ -495,6 +497,8 @@ spec:
                   type: string
                 expressRouteGatewayBypass:
                   type: boolean
+                id:
+                  type: string
                 ipsecPolicy:
                   items:
                     properties:

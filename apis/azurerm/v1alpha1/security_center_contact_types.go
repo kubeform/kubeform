@@ -21,6 +21,8 @@ type SecurityCenterContact struct {
 type SecurityCenterContactSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AlertNotifications bool   `json:"alertNotifications" tf:"alert_notifications"`
 	AlertsToAdmins     bool   `json:"alertsToAdmins" tf:"alerts_to_admins"`
 	Email              string `json:"email" tf:"email"`

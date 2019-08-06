@@ -408,6 +408,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            id:
+              type: string
             name:
               type: string
             namePrefix:
@@ -458,6 +460,8 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 name:
                   type: string
                 namePrefix:

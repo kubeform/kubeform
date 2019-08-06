@@ -399,6 +399,8 @@ spec:
           properties:
             description:
               type: string
+            id:
+              type: string
             location:
               type: string
             name:
@@ -436,6 +438,8 @@ spec:
             output:
               properties:
                 description:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

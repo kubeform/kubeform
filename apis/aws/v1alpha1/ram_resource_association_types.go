@@ -21,6 +21,8 @@ type RamResourceAssociation struct {
 type RamResourceAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ResourceArn      string `json:"resourceArn" tf:"resource_arn"`
 	ResourceShareArn string `json:"resourceShareArn" tf:"resource_share_arn"`
 }

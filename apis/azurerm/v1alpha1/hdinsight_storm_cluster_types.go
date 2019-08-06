@@ -91,6 +91,8 @@ type HdinsightStormClusterSpecStorageAccount struct {
 type HdinsightStormClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	ClusterVersion string `json:"clusterVersion" tf:"cluster_version"`

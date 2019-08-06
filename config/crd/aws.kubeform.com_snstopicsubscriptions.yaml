@@ -409,6 +409,8 @@ spec:
               type: boolean
             filterPolicy:
               type: string
+            id:
+              type: string
             protocol:
               type: string
             providerRef:
@@ -450,6 +452,8 @@ spec:
                 endpointAutoConfirms:
                   type: boolean
                 filterPolicy:
+                  type: string
+                id:
                   type: string
                 protocol:
                   type: string

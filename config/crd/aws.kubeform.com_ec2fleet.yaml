@@ -399,6 +399,8 @@ spec:
           properties:
             excessCapacityTerminationPolicy:
               type: string
+            id:
+              type: string
             launchTemplateConfig:
               items:
                 properties:
@@ -517,6 +519,8 @@ spec:
             output:
               properties:
                 excessCapacityTerminationPolicy:
+                  type: string
+                id:
                   type: string
                 launchTemplateConfig:
                   items:

@@ -43,6 +43,8 @@ type BigqueryDatasetSpecAccess struct {
 type BigqueryDatasetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Access []BigqueryDatasetSpecAccess `json:"access,omitempty" tf:"access,omitempty"`
 	// +optional

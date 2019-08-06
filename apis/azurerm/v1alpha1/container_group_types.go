@@ -163,6 +163,8 @@ type ContainerGroupSpecImageRegistryCredential struct {
 type ContainerGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Container []ContainerGroupSpecContainer `json:"container" tf:"container"`

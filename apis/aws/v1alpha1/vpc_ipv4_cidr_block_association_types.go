@@ -21,6 +21,8 @@ type VpcIpv4CIDRBlockAssociation struct {
 type VpcIpv4CIDRBlockAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	CidrBlock string `json:"cidrBlock" tf:"cidr_block"`
 	VpcID     string `json:"vpcID" tf:"vpc_id"`
 }

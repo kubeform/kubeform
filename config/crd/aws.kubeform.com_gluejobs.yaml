@@ -430,6 +430,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             maxCapacity:
               description: A Number represents a JSON number literal.
               type: string
@@ -500,6 +502,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 maxCapacity:
                   description: A Number represents a JSON number literal.
                   type: string

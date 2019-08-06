@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            id:
+              type: string
             location:
               type: string
             metricID:
@@ -455,6 +457,8 @@ spec:
               type: integer
             output:
               properties:
+                id:
+                  type: string
                 location:
                   type: string
                 metricID:

@@ -401,6 +401,8 @@ spec:
               type: string
             displayName:
               type: string
+            id:
+              type: string
             lifecycleState:
               type: string
             name:
@@ -433,6 +435,8 @@ spec:
                 createTime:
                   type: string
                 displayName:
+                  type: string
+                id:
                   type: string
                 lifecycleState:
                   type: string

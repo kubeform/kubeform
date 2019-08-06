@@ -399,6 +399,8 @@ spec:
           properties:
             createTime:
               type: string
+            id:
+              type: string
             name:
               type: string
             origin:
@@ -437,6 +439,8 @@ spec:
             output:
               properties:
                 createTime:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

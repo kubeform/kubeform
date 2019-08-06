@@ -401,6 +401,8 @@ spec:
               type: string
             folder:
               type: string
+            id:
+              type: string
             member:
               type: string
             providerRef:
@@ -432,6 +434,8 @@ spec:
                 etag:
                   type: string
                 folder:
+                  type: string
+                id:
                   type: string
                 member:
                   type: string

@@ -21,6 +21,8 @@ type LicensemanagerAssociation struct {
 type LicensemanagerAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	LicenseConfigurationArn string `json:"licenseConfigurationArn" tf:"license_configuration_arn"`
 	ResourceArn             string `json:"resourceArn" tf:"resource_arn"`
 }

@@ -403,6 +403,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerName:
@@ -438,6 +440,8 @@ spec:
                 createdTime:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

@@ -401,6 +401,8 @@ spec:
               type: string
             expiry:
               type: string
+            id:
+              type: string
             label:
               type: string
             providerRef:
@@ -432,6 +434,8 @@ spec:
                 created:
                   type: string
                 expiry:
+                  type: string
+                id:
                   type: string
                 label:
                   type: string

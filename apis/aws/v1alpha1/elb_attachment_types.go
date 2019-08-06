@@ -21,6 +21,8 @@ type ElbAttachment struct {
 type ElbAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Elb      string `json:"elb" tf:"elb"`
 	Instance string `json:"instance" tf:"instance"`
 }

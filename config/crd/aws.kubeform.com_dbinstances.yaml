@@ -445,6 +445,8 @@ spec:
               type: string
             iamDatabaseAuthenticationEnabled:
               type: boolean
+            id:
+              type: string
             identifier:
               type: string
             identifierPrefix:
@@ -619,6 +621,8 @@ spec:
                   type: string
                 iamDatabaseAuthenticationEnabled:
                   type: boolean
+                id:
+                  type: string
                 identifier:
                   type: string
                 identifierPrefix:

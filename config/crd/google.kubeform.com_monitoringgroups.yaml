@@ -401,6 +401,8 @@ spec:
               type: string
             filter:
               type: string
+            id:
+              type: string
             isCluster:
               type: boolean
             name:
@@ -435,6 +437,8 @@ spec:
                 displayName:
                   type: string
                 filter:
+                  type: string
+                id:
                   type: string
                 isCluster:
                   type: boolean

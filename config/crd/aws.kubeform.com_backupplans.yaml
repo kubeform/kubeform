@@ -399,6 +399,8 @@ spec:
           properties:
             arn:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -464,6 +466,8 @@ spec:
             output:
               properties:
                 arn:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

@@ -31,6 +31,8 @@ type CodecommitTriggerSpecTrigger struct {
 type CodecommitTriggerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ConfigurationID string `json:"configurationID,omitempty" tf:"configuration_id,omitempty"`
 	RepositoryName  string `json:"repositoryName" tf:"repository_name"`

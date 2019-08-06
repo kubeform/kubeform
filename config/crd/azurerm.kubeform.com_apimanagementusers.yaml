@@ -405,6 +405,8 @@ spec:
               type: string
             firstName:
               type: string
+            id:
+              type: string
             lastName:
               type: string
             note:
@@ -458,6 +460,8 @@ spec:
                 email:
                   type: string
                 firstName:
+                  type: string
+                id:
                   type: string
                 lastName:
                   type: string

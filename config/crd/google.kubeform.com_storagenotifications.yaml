@@ -408,6 +408,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            id:
+              type: string
             objectNamePrefix:
               type: string
             payloadFormat:
@@ -451,6 +453,8 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 objectNamePrefix:
                   type: string
                 payloadFormat:

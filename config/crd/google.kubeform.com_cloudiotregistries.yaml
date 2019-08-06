@@ -433,6 +433,8 @@ spec:
                 - httpEnabledState
                 type: object
               type: object
+            id:
+              type: string
             mqttConfig:
               additionalProperties:
                 properties:
@@ -515,6 +517,8 @@ spec:
                     - httpEnabledState
                     type: object
                   type: object
+                id:
+                  type: string
                 mqttConfig:
                   additionalProperties:
                     properties:

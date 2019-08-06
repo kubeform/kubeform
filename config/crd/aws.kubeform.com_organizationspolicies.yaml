@@ -403,6 +403,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -435,6 +437,8 @@ spec:
                 content:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

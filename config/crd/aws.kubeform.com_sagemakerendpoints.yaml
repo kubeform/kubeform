@@ -401,6 +401,8 @@ spec:
               type: string
             endpointConfigName:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -432,6 +434,8 @@ spec:
                 arn:
                   type: string
                 endpointConfigName:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

@@ -411,6 +411,8 @@ spec:
               type: string
             frontendPort:
               type: integer
+            id:
+              type: string
             idleTimeoutInMinutes:
               type: integer
             loadDistribution:
@@ -470,6 +472,8 @@ spec:
                   type: string
                 frontendPort:
                   type: integer
+                id:
+                  type: string
                 idleTimeoutInMinutes:
                   type: integer
                 loadDistribution:

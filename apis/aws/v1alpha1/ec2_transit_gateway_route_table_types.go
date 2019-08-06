@@ -21,6 +21,8 @@ type Ec2TransitGatewayRouteTable struct {
 type Ec2TransitGatewayRouteTableSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	DefaultAssociationRouteTable bool `json:"defaultAssociationRouteTable,omitempty" tf:"default_association_route_table,omitempty"`
 	// +optional

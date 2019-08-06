@@ -399,6 +399,8 @@ spec:
           properties:
             enabled:
               type: boolean
+            id:
+              type: string
             location:
               type: string
             name:
@@ -602,6 +604,8 @@ spec:
               properties:
                 enabled:
                   type: boolean
+                id:
+                  type: string
                 location:
                   type: string
                 name:

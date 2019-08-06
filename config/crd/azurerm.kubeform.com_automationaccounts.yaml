@@ -403,6 +403,8 @@ spec:
               type: string
             dscServerEndpoint:
               type: string
+            id:
+              type: string
             location:
               type: string
             name:
@@ -453,6 +455,8 @@ spec:
                 dscSecondaryAccessKey:
                   type: string
                 dscServerEndpoint:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

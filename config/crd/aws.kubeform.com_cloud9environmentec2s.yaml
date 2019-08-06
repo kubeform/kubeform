@@ -403,6 +403,8 @@ spec:
               type: integer
             description:
               type: string
+            id:
+              type: string
             instanceType:
               type: string
             name:
@@ -441,6 +443,8 @@ spec:
                 automaticStopTimeMinutes:
                   type: integer
                 description:
+                  type: string
+                id:
                   type: string
                 instanceType:
                   type: string

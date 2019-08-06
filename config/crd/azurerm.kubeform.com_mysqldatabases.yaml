@@ -401,6 +401,8 @@ spec:
               type: string
             collation:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -436,6 +438,8 @@ spec:
                 charset:
                   type: string
                 collation:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

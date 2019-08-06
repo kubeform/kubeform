@@ -21,6 +21,8 @@ type CloudwatchLogDestinationPolicy struct {
 type CloudwatchLogDestinationPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AccessPolicy    string `json:"accessPolicy" tf:"access_policy"`
 	DestinationName string `json:"destinationName" tf:"destination_name"`
 }

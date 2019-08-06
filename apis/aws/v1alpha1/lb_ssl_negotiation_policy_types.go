@@ -26,6 +26,8 @@ type LbSslNegotiationPolicySpecAttribute struct {
 type LbSslNegotiationPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Attribute    []LbSslNegotiationPolicySpecAttribute `json:"attribute,omitempty" tf:"attribute,omitempty"`

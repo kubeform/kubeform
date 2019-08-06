@@ -21,6 +21,8 @@ type AzureadServicePrincipal struct {
 type AzureadServicePrincipalSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ApplicationID string `json:"applicationID" tf:"application_id"`
 	// +optional
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`

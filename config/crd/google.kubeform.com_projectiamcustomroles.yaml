@@ -402,6 +402,8 @@ spec:
               type: boolean
             description:
               type: string
+            id:
+              type: string
             permissions:
               items:
                 type: string
@@ -444,6 +446,8 @@ spec:
                   description: Deprecated
                   type: boolean
                 description:
+                  type: string
+                id:
                   type: string
                 permissions:
                   items:

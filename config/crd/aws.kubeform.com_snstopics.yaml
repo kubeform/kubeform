@@ -415,6 +415,8 @@ spec:
               type: string
             httpSuccessFeedbackSampleRate:
               type: integer
+            id:
+              type: string
             kmsMasterKeyID:
               type: string
             lambdaFailureFeedbackRoleArn:
@@ -478,6 +480,8 @@ spec:
                   type: string
                 httpSuccessFeedbackSampleRate:
                   type: integer
+                id:
+                  type: string
                 kmsMasterKeyID:
                   type: string
                 lambdaFailureFeedbackRoleArn:

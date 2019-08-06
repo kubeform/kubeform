@@ -401,6 +401,8 @@ spec:
               type: string
             hostSuffix:
               type: string
+            id:
+              type: string
             location:
               type: string
             name:
@@ -465,6 +467,8 @@ spec:
                 dataPlaneFqdn:
                   type: string
                 hostSuffix:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

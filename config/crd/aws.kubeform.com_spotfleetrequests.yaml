@@ -407,6 +407,8 @@ spec:
               type: string
             iamFleetRole:
               type: string
+            id:
+              type: string
             instanceInterruptionBehaviour:
               type: string
             instancePoolsToUseCount:
@@ -567,6 +569,8 @@ spec:
                 fleetType:
                   type: string
                 iamFleetRole:
+                  type: string
+                id:
                   type: string
                 instanceInterruptionBehaviour:
                   type: string

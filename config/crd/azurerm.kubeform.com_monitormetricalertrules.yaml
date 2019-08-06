@@ -415,6 +415,8 @@ spec:
               type: array
             enabled:
               type: boolean
+            id:
+              type: string
             location:
               type: string
             metricName:
@@ -498,6 +500,8 @@ spec:
                   type: array
                 enabled:
                   type: boolean
+                id:
+                  type: string
                 location:
                   type: string
                 metricName:

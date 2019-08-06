@@ -419,6 +419,8 @@ spec:
               items:
                 type: string
               type: array
+            id:
+              type: string
             location:
               type: string
             name:
@@ -493,6 +495,8 @@ spec:
                   items:
                     type: string
                   type: array
+                id:
+                  type: string
                 location:
                   type: string
                 name:

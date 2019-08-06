@@ -407,6 +407,8 @@ spec:
               type: string
             expirationTime:
               type: string
+            id:
+              type: string
             instance:
               type: string
             providerRef:
@@ -454,6 +456,8 @@ spec:
                 createTime:
                   type: string
                 expirationTime:
+                  type: string
+                id:
                   type: string
                 instance:
                   type: string

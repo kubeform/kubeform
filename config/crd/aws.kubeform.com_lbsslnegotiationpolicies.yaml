@@ -410,6 +410,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            id:
+              type: string
             lbPort:
               type: integer
             loadBalancer:
@@ -453,6 +455,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 lbPort:
                   type: integer
                 loadBalancer:

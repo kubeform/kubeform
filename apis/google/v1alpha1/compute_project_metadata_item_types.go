@@ -21,6 +21,8 @@ type ComputeProjectMetadataItem struct {
 type ComputeProjectMetadataItemSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Key string `json:"key" tf:"key"`
 	// +optional
 	Project string `json:"project,omitempty" tf:"project,omitempty"`

@@ -405,6 +405,8 @@ spec:
               type: string
             folder:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -438,6 +440,8 @@ spec:
                 filter:
                   type: string
                 folder:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

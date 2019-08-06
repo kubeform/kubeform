@@ -427,6 +427,8 @@ spec:
               uniqueItems: true
             generateSecret:
               type: boolean
+            id:
+              type: string
             logoutUrls:
               items:
                 type: string
@@ -505,6 +507,8 @@ spec:
                   uniqueItems: true
                 generateSecret:
                   type: boolean
+                id:
+                  type: string
                 logoutUrls:
                   items:
                     type: string

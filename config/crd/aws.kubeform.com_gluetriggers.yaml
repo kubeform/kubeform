@@ -417,6 +417,8 @@ spec:
               type: string
             enabled:
               type: boolean
+            id:
+              type: string
             name:
               type: string
             predicate:
@@ -492,6 +494,8 @@ spec:
                   type: string
                 enabled:
                   type: boolean
+                id:
+                  type: string
                 name:
                   type: string
                 predicate:

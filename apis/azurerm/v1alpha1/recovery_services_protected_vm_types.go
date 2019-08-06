@@ -21,6 +21,8 @@ type RecoveryServicesProtectedVm struct {
 type RecoveryServicesProtectedVmSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	BackupPolicyID    string `json:"backupPolicyID" tf:"backup_policy_id"`
 	RecoveryVaultName string `json:"recoveryVaultName" tf:"recovery_vault_name"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`

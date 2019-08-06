@@ -26,6 +26,8 @@ type DatabaseClusterSpecMaintenanceWindow struct {
 type DatabaseClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Database string `json:"database,omitempty" tf:"database,omitempty"`
 	Engine   string `json:"engine" tf:"engine"`

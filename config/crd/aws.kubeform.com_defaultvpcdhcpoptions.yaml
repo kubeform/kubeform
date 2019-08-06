@@ -401,6 +401,8 @@ spec:
               type: string
             domainNameServers:
               type: string
+            id:
+              type: string
             netbiosNameServers:
               items:
                 type: string
@@ -439,6 +441,8 @@ spec:
                 domainName:
                   type: string
                 domainNameServers:
+                  type: string
+                id:
                   type: string
                 netbiosNameServers:
                   items:

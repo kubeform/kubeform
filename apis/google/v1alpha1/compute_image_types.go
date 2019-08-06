@@ -29,6 +29,8 @@ type ComputeImageSpecRawDisk struct {
 type ComputeImageSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	// Deprecated
 	CreateTimeout int `json:"createTimeout,omitempty" tf:"create_timeout,omitempty"`

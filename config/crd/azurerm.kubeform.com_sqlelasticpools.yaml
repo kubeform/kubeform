@@ -407,6 +407,8 @@ spec:
               type: integer
             edition:
               type: string
+            id:
+              type: string
             location:
               type: string
             name:
@@ -457,6 +459,8 @@ spec:
                 dtu:
                   type: integer
                 edition:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

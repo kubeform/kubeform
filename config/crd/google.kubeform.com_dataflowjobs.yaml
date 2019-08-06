@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            id:
+              type: string
             maxWorkers:
               type: integer
             name:
@@ -443,6 +445,8 @@ spec:
               type: integer
             output:
               properties:
+                id:
+                  type: string
                 maxWorkers:
                   type: integer
                 name:

@@ -85,6 +85,8 @@ type StorageBucketSpecWebsite struct {
 type StorageBucketSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Cors []StorageBucketSpecCors `json:"cors,omitempty" tf:"cors,omitempty"`
 	// +optional

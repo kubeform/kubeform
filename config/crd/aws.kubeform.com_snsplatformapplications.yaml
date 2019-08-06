@@ -409,6 +409,8 @@ spec:
               type: string
             failureFeedbackRoleArn:
               type: string
+            id:
+              type: string
             name:
               type: string
             platform:
@@ -456,6 +458,8 @@ spec:
                 eventEndpointUpdatedTopicArn:
                   type: string
                 failureFeedbackRoleArn:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

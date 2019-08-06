@@ -21,6 +21,8 @@ type FolderIamBinding struct {
 type FolderIamBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Etag   string `json:"etag,omitempty" tf:"etag,omitempty"`
 	Folder string `json:"folder" tf:"folder"`

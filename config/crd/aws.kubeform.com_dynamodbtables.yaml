@@ -442,6 +442,8 @@ spec:
               uniqueItems: true
             hashKey:
               type: string
+            id:
+              type: string
             localSecondaryIndex:
               items:
                 properties:
@@ -582,6 +584,8 @@ spec:
                   type: array
                   uniqueItems: true
                 hashKey:
+                  type: string
+                id:
                   type: string
                 localSecondaryIndex:
                   items:

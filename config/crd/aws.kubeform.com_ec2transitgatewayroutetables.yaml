@@ -401,6 +401,8 @@ spec:
               type: boolean
             defaultPropagationRouteTable:
               type: boolean
+            id:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -433,6 +435,8 @@ spec:
                   type: boolean
                 defaultPropagationRouteTable:
                   type: boolean
+                id:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.

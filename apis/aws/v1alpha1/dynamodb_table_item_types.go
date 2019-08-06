@@ -21,6 +21,8 @@ type DynamodbTableItem struct {
 type DynamodbTableItemSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	HashKey string `json:"hashKey" tf:"hash_key"`
 	Item    string `json:"item" tf:"item"`
 	// +optional

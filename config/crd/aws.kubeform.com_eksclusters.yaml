@@ -416,6 +416,8 @@ spec:
               uniqueItems: true
             endpoint:
               type: string
+            id:
+              type: string
             name:
               type: string
             platformVersion:
@@ -492,6 +494,8 @@ spec:
                   type: array
                   uniqueItems: true
                 endpoint:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

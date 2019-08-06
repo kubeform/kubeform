@@ -104,6 +104,8 @@ type BatchPoolSpecStorageImageReference struct {
 type BatchPoolSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AccountName string `json:"accountName" tf:"account_name"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

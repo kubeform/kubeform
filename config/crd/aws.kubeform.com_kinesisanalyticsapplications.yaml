@@ -420,6 +420,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             inputs:
               items:
                 properties:
@@ -772,6 +774,8 @@ spec:
                 createTimestamp:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 inputs:
                   items:

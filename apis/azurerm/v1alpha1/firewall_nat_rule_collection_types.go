@@ -37,6 +37,8 @@ type FirewallNATRuleCollectionSpecRule struct {
 type FirewallNATRuleCollectionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Action            string `json:"action" tf:"action"`
 	AzureFirewallName string `json:"azureFirewallName" tf:"azure_firewall_name"`
 	Name              string `json:"name" tf:"name"`

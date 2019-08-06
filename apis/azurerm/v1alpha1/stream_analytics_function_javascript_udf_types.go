@@ -29,6 +29,8 @@ type StreamAnalyticsFunctionJavascriptUdfSpecOutput struct {
 type StreamAnalyticsFunctionJavascriptUdfSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +kubebuilder:validation:MinItems=1
 	Input []StreamAnalyticsFunctionJavascriptUdfSpecInput `json:"input" tf:"input"`
 	Name  string                                          `json:"name" tf:"name"`

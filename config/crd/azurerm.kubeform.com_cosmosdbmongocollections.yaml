@@ -403,6 +403,8 @@ spec:
               type: string
             defaultTtlSeconds:
               type: integer
+            id:
+              type: string
             indexes:
               items:
                 properties:
@@ -452,6 +454,8 @@ spec:
                   type: string
                 defaultTtlSeconds:
                   type: integer
+                id:
+                  type: string
                 indexes:
                   items:
                     properties:

@@ -414,6 +414,8 @@ spec:
               type: integer
             fqdn:
               type: string
+            id:
+              type: string
             insufficientDataHealthStatus:
               type: string
             invertHealthcheck:
@@ -481,6 +483,8 @@ spec:
                 failureThreshold:
                   type: integer
                 fqdn:
+                  type: string
+                id:
                   type: string
                 insufficientDataHealthStatus:
                   type: string

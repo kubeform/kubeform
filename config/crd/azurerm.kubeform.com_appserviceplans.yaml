@@ -399,6 +399,8 @@ spec:
           properties:
             appServiceEnvironmentID:
               type: string
+            id:
+              type: string
             isXenon:
               type: boolean
             kind:
@@ -478,6 +480,8 @@ spec:
             output:
               properties:
                 appServiceEnvironmentID:
+                  type: string
+                id:
                   type: string
                 isXenon:
                   type: boolean

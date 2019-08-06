@@ -29,6 +29,8 @@ type ElasticBeanstalkConfigurationTemplateSpecSetting struct {
 type ElasticBeanstalkConfigurationTemplateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Application string `json:"application" tf:"application"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`

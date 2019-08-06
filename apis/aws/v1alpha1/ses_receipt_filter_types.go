@@ -21,6 +21,8 @@ type SesReceiptFilter struct {
 type SesReceiptFilterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Cidr   string `json:"cidr" tf:"cidr"`
 	Name   string `json:"name" tf:"name"`
 	Policy string `json:"policy" tf:"policy"`

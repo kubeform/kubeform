@@ -21,6 +21,8 @@ type GuarddutyMember struct {
 type GuarddutyMemberSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AccountID  string `json:"accountID" tf:"account_id"`
 	DetectorID string `json:"detectorID" tf:"detector_id"`
 	// +optional

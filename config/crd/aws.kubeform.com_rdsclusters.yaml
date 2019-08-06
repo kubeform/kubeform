@@ -456,6 +456,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            id:
+              type: string
             kmsKeyID:
               type: string
             masterUsername:
@@ -611,6 +613,8 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 kmsKeyID:
                   type: string
                 masterUsername:

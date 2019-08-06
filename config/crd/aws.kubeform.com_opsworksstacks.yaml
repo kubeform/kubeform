@@ -443,6 +443,8 @@ spec:
               type: string
             hostnameTheme:
               type: string
+            id:
+              type: string
             manageBerkshelf:
               type: boolean
             name:
@@ -542,6 +544,8 @@ spec:
                 defaultSubnetID:
                   type: string
                 hostnameTheme:
+                  type: string
+                id:
                   type: string
                 manageBerkshelf:
                   type: boolean

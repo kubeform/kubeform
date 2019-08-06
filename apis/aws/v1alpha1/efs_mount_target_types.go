@@ -21,6 +21,8 @@ type EfsMountTarget struct {
 type EfsMountTargetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	DnsName string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
 	// +optional

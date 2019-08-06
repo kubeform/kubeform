@@ -405,6 +405,8 @@ spec:
               type: string
             enableKeyRotation:
               type: boolean
+            id:
+              type: string
             isEnabled:
               type: boolean
             keyID:
@@ -446,6 +448,8 @@ spec:
                   type: string
                 enableKeyRotation:
                   type: boolean
+                id:
+                  type: string
                 isEnabled:
                   type: boolean
                 keyID:

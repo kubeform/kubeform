@@ -441,6 +441,8 @@ spec:
               type: boolean
             hostedZoneID:
               type: string
+            id:
+              type: string
             lifecycleRule:
               items:
                 properties:
@@ -773,6 +775,8 @@ spec:
                 forceDestroy:
                   type: boolean
                 hostedZoneID:
+                  type: string
+                id:
                   type: string
                 lifecycleRule:
                   items:

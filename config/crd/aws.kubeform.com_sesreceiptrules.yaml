@@ -440,6 +440,8 @@ spec:
               uniqueItems: true
             enabled:
               type: boolean
+            id:
+              type: string
             lambdaAction:
               items:
                 properties:
@@ -598,6 +600,8 @@ spec:
                   uniqueItems: true
                 enabled:
                   type: boolean
+                id:
+                  type: string
                 lambdaAction:
                   items:
                     properties:

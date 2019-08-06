@@ -407,6 +407,8 @@ spec:
               type: string
             firewallState:
               type: string
+            id:
+              type: string
             location:
               type: string
             name:
@@ -452,6 +454,8 @@ spec:
                 firewallAllowAzureIPS:
                   type: string
                 firewallState:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

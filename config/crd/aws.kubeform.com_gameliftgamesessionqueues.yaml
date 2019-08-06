@@ -403,6 +403,8 @@ spec:
               items:
                 type: string
               type: array
+            id:
+              type: string
             name:
               type: string
             playerLatencyPolicy:
@@ -446,6 +448,8 @@ spec:
                   items:
                     type: string
                   type: array
+                id:
+                  type: string
                 name:
                   type: string
                 playerLatencyPolicy:

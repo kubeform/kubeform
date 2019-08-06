@@ -21,6 +21,8 @@ type EcrRepositoryPolicy struct {
 type EcrRepositoryPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Policy string `json:"policy" tf:"policy"`
 	// +optional
 	RegistryID string `json:"registryID,omitempty" tf:"registry_id,omitempty"`

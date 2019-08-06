@@ -409,6 +409,8 @@ spec:
               type: string
             displayName:
               type: string
+            id:
+              type: string
             identityProvider:
               items:
                 properties:
@@ -483,6 +485,8 @@ spec:
                 deviceCaCertificate:
                   type: string
                 displayName:
+                  type: string
+                id:
                   type: string
                 identityProvider:
                   items:

@@ -21,6 +21,8 @@ type ApiGatewayDeployment struct {
 type ApiGatewayDeploymentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	CreatedDate string `json:"createdDate,omitempty" tf:"created_date,omitempty"`
 	// +optional

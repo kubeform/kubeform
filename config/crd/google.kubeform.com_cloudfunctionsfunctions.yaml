@@ -432,6 +432,8 @@ spec:
               type: array
             httpsTriggerURL:
               type: string
+            id:
+              type: string
             labels:
               additionalProperties:
                 type: string
@@ -519,6 +521,8 @@ spec:
                   maxItems: 1
                   type: array
                 httpsTriggerURL:
+                  type: string
+                id:
                   type: string
                 labels:
                   additionalProperties:

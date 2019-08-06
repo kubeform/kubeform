@@ -21,6 +21,8 @@ type ProjectUsageExportBucket struct {
 type ProjectUsageExportBucketSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	BucketName string `json:"bucketName" tf:"bucket_name"`
 	// +optional
 	Prefix string `json:"prefix,omitempty" tf:"prefix,omitempty"`

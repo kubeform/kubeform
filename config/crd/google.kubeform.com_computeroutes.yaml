@@ -401,6 +401,8 @@ spec:
               type: string
             destRange:
               type: string
+            id:
+              type: string
             name:
               type: string
             network:
@@ -455,6 +457,8 @@ spec:
                 description:
                   type: string
                 destRange:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

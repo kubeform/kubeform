@@ -407,6 +407,8 @@ spec:
               type: boolean
             endDate:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -453,6 +455,8 @@ spec:
                 enabled:
                   type: boolean
                 endDate:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

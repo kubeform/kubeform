@@ -420,6 +420,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            id:
+              type: string
             mapID:
               type: string
             name:
@@ -519,6 +521,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 mapID:
                   type: string
                 name:

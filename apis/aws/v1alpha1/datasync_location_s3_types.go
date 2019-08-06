@@ -25,6 +25,8 @@ type DatasyncLocationS3SpecS3Config struct {
 type DatasyncLocationS3Spec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Arn         string `json:"arn,omitempty" tf:"arn,omitempty"`
 	S3BucketArn string `json:"s3BucketArn" tf:"s3_bucket_arn"`

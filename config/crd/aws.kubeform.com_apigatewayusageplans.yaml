@@ -411,6 +411,8 @@ spec:
               type: array
             description:
               type: string
+            id:
+              type: string
             name:
               type: string
             productCode:
@@ -478,6 +480,8 @@ spec:
                     type: object
                   type: array
                 description:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

@@ -21,6 +21,8 @@ type BillingAccountIamBinding struct {
 type BillingAccountIamBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	BillingAccountID string `json:"billingAccountID" tf:"billing_account_id"`
 	// +optional
 	Etag string `json:"etag,omitempty" tf:"etag,omitempty"`

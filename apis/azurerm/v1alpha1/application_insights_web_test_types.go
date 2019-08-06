@@ -21,6 +21,8 @@ type ApplicationInsightsWebTest struct {
 type ApplicationInsightsWebTestSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ApplicationInsightsID string `json:"applicationInsightsID" tf:"application_insights_id"`
 	Configuration         string `json:"configuration" tf:"configuration"`
 	// +optional

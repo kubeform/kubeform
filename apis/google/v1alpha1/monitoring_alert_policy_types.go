@@ -118,6 +118,8 @@ type MonitoringAlertPolicySpecCreationRecord struct {
 type MonitoringAlertPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Combiner   string                                `json:"combiner" tf:"combiner"`
 	Conditions []MonitoringAlertPolicySpecConditions `json:"conditions" tf:"conditions"`
 	// +optional

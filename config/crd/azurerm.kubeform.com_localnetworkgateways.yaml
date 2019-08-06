@@ -418,6 +418,8 @@ spec:
               type: array
             gatewayAddress:
               type: string
+            id:
+              type: string
             location:
               type: string
             name:
@@ -474,6 +476,8 @@ spec:
                   maxItems: 1
                   type: array
                 gatewayAddress:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

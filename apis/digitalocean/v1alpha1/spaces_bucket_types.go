@@ -21,6 +21,8 @@ type SpacesBucket struct {
 type SpacesBucketSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Acl string `json:"acl,omitempty" tf:"acl,omitempty"`
 	// +optional

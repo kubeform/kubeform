@@ -21,6 +21,8 @@ type StorageContainer struct {
 type StorageContainerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ContainerAccessType string `json:"containerAccessType,omitempty" tf:"container_access_type,omitempty"`
 	Name                string `json:"name" tf:"name"`

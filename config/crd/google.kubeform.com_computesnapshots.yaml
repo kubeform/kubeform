@@ -403,6 +403,8 @@ spec:
               type: string
             diskSizeGb:
               type: integer
+            id:
+              type: string
             labelFingerprint:
               type: string
             labels:
@@ -486,6 +488,8 @@ spec:
                   type: string
                 diskSizeGb:
                   type: integer
+                id:
+                  type: string
                 labelFingerprint:
                   type: string
                 labels:

@@ -423,6 +423,8 @@ spec:
               type: array
             filterType:
               type: string
+            id:
+              type: string
             name:
               type: string
             namespaceName:
@@ -487,6 +489,8 @@ spec:
                   maxItems: 1
                   type: array
                 filterType:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

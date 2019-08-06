@@ -401,6 +401,8 @@ spec:
               type: string
             apiName:
               type: string
+            id:
+              type: string
             operationID:
               type: string
             providerRef:
@@ -437,6 +439,8 @@ spec:
                 apiManagementName:
                   type: string
                 apiName:
+                  type: string
+                id:
                   type: string
                 operationID:
                   type: string

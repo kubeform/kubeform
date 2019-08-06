@@ -21,6 +21,8 @@ type ComputeRouterPeer struct {
 type ComputeRouterPeerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AdvertisedRoutePriority int    `json:"advertisedRoutePriority,omitempty" tf:"advertised_route_priority,omitempty"`
 	Interface               string `json:"interface" tf:"interface"`

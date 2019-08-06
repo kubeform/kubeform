@@ -35,6 +35,8 @@ type AppEngineApplicationSpecUrlDispatchRule struct {
 type AppEngineApplicationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AuthDomain string `json:"authDomain,omitempty" tf:"auth_domain,omitempty"`
 	// +optional

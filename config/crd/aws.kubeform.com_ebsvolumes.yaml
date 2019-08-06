@@ -403,6 +403,8 @@ spec:
               type: string
             encrypted:
               type: boolean
+            id:
+              type: string
             iops:
               type: integer
             kmsKeyID:
@@ -445,6 +447,8 @@ spec:
                   type: string
                 encrypted:
                   type: boolean
+                id:
+                  type: string
                 iops:
                   type: integer
                 kmsKeyID:

@@ -405,6 +405,8 @@ spec:
               type: string
             etag:
               type: string
+            id:
+              type: string
             name:
               type: string
             namePrefix:
@@ -438,6 +440,8 @@ spec:
                 encodedKey:
                   type: string
                 etag:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

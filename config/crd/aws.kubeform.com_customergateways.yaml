@@ -399,6 +399,8 @@ spec:
           properties:
             bgpAsn:
               type: integer
+            id:
+              type: string
             ipAddress:
               type: string
             providerRef:
@@ -433,6 +435,8 @@ spec:
               properties:
                 bgpAsn:
                   type: integer
+                id:
+                  type: string
                 ipAddress:
                   type: string
                 providerRef:

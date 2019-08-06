@@ -414,6 +414,8 @@ spec:
               type: string
             guessMimeTypeEnabled:
               type: boolean
+            id:
+              type: string
             kmsEncrypted:
               type: boolean
             kmsKeyArn:
@@ -486,6 +488,8 @@ spec:
                   type: string
                 guessMimeTypeEnabled:
                   type: boolean
+                id:
+                  type: string
                 kmsEncrypted:
                   type: boolean
                 kmsKeyArn:

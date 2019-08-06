@@ -42,6 +42,8 @@ type AmiSpecEphemeralBlockDevice struct {
 type AmiSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Architecture string `json:"architecture,omitempty" tf:"architecture,omitempty"`
 	// +optional

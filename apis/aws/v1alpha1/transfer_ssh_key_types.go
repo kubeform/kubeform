@@ -21,6 +21,8 @@ type TransferSSHKey struct {
 type TransferSSHKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Body     string `json:"body" tf:"body"`
 	ServerID string `json:"serverID" tf:"server_id"`
 	UserName string `json:"userName" tf:"user_name"`

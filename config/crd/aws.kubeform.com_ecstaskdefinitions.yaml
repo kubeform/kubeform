@@ -407,6 +407,8 @@ spec:
               type: string
             family:
               type: string
+            id:
+              type: string
             ipcMode:
               type: string
             memory:
@@ -521,6 +523,8 @@ spec:
                 executionRoleArn:
                   type: string
                 family:
+                  type: string
+                id:
                   type: string
                 ipcMode:
                   type: string

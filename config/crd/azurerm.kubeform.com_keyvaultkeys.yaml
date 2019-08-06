@@ -401,6 +401,8 @@ spec:
               type: string
             e:
               type: string
+            id:
+              type: string
             keyOpts:
               items:
                 type: string
@@ -455,6 +457,8 @@ spec:
                 curve:
                   type: string
                 e:
+                  type: string
+                id:
                   type: string
                 keyOpts:
                   items:

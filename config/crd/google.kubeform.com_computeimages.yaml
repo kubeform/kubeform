@@ -404,6 +404,8 @@ spec:
               type: string
             family:
               type: string
+            id:
+              type: string
             labelFingerprint:
               type: string
             labels:
@@ -464,6 +466,8 @@ spec:
                 description:
                   type: string
                 family:
+                  type: string
+                id:
                   type: string
                 labelFingerprint:
                   type: string

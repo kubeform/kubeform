@@ -399,6 +399,8 @@ spec:
           properties:
             endIP:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -434,6 +436,8 @@ spec:
             output:
               properties:
                 endIP:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

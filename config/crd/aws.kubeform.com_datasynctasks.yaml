@@ -403,6 +403,8 @@ spec:
               type: string
             destinationLocationArn:
               type: string
+            id:
+              type: string
             name:
               type: string
             options:
@@ -463,6 +465,8 @@ spec:
                 cloudwatchLogGroupArn:
                   type: string
                 destinationLocationArn:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

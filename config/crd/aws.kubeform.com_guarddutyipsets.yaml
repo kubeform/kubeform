@@ -403,6 +403,8 @@ spec:
               type: string
             format:
               type: string
+            id:
+              type: string
             location:
               type: string
             name:
@@ -438,6 +440,8 @@ spec:
                 detectorID:
                   type: string
                 format:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

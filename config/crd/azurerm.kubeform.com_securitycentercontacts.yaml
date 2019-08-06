@@ -403,6 +403,8 @@ spec:
               type: boolean
             email:
               type: string
+            id:
+              type: string
             phone:
               type: string
             providerRef:
@@ -435,6 +437,8 @@ spec:
                 alertsToAdmins:
                   type: boolean
                 email:
+                  type: string
+                id:
                   type: string
                 phone:
                   type: string

@@ -21,6 +21,8 @@ type ApiManagementProductGroup struct {
 type ApiManagementProductGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	GroupName         string `json:"groupName" tf:"group_name"`
 	ProductID         string `json:"productID" tf:"product_id"`

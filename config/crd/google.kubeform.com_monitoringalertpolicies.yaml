@@ -523,6 +523,8 @@ spec:
               type: string
             enabled:
               type: boolean
+            id:
+              type: string
             labels:
               items:
                 type: string
@@ -688,6 +690,8 @@ spec:
                   type: string
                 enabled:
                   type: boolean
+                id:
+                  type: string
                 labels:
                   items:
                     type: string

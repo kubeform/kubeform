@@ -412,6 +412,8 @@ spec:
               uniqueItems: true
             fqdn:
               type: string
+            id:
+              type: string
             monitorConfig:
               items:
                 properties:
@@ -479,6 +481,8 @@ spec:
                   type: array
                   uniqueItems: true
                 fqdn:
+                  type: string
+                id:
                   type: string
                 monitorConfig:
                   items:

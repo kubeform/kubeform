@@ -21,6 +21,8 @@ type RoleAssignment struct {
 type RoleAssignmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Name        string `json:"name,omitempty" tf:"name,omitempty"`
 	PrincipalID string `json:"principalID" tf:"principal_id"`

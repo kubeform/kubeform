@@ -424,6 +424,8 @@ spec:
               type: string
             executionArn:
               type: string
+            id:
+              type: string
             invokeURL:
               type: string
             providerRef:
@@ -490,6 +492,8 @@ spec:
                 documentationVersion:
                   type: string
                 executionArn:
+                  type: string
+                id:
                   type: string
                 invokeURL:
                   type: string

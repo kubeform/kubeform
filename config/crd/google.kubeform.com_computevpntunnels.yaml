@@ -403,6 +403,8 @@ spec:
               type: string
             detailedStatus:
               type: string
+            id:
+              type: string
             ikeVersion:
               type: integer
             labelFingerprint:
@@ -475,6 +477,8 @@ spec:
                 description:
                   type: string
                 detailedStatus:
+                  type: string
+                id:
                   type: string
                 ikeVersion:
                   type: integer

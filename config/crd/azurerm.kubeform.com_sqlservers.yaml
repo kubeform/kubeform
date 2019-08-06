@@ -401,6 +401,8 @@ spec:
               type: string
             fullyQualifiedDomainName:
               type: string
+            id:
+              type: string
             location:
               type: string
             name:
@@ -451,6 +453,8 @@ spec:
                 administratorLogin:
                   type: string
                 fullyQualifiedDomainName:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

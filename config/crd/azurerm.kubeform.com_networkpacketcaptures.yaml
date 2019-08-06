@@ -414,6 +414,8 @@ spec:
                 - protocol
                 type: object
               type: array
+            id:
+              type: string
             maximumBytesPerPacket:
               type: integer
             maximumBytesPerSession:
@@ -483,6 +485,8 @@ spec:
                     - protocol
                     type: object
                   type: array
+                id:
+                  type: string
                 maximumBytesPerPacket:
                   type: integer
                 maximumBytesPerSession:

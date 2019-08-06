@@ -21,6 +21,8 @@ type MediaStoreContainerPolicy struct {
 type MediaStoreContainerPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ContainerName string `json:"containerName" tf:"container_name"`
 	Policy        string `json:"policy" tf:"policy"`
 }

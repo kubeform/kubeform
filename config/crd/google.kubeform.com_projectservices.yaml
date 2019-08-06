@@ -399,6 +399,8 @@ spec:
           properties:
             disableOnDestroy:
               type: boolean
+            id:
+              type: string
             project:
               type: string
             providerRef:
@@ -430,6 +432,8 @@ spec:
               properties:
                 disableOnDestroy:
                   type: boolean
+                id:
+                  type: string
                 project:
                   type: string
                 providerRef:

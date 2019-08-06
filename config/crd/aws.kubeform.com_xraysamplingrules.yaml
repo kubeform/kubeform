@@ -410,6 +410,8 @@ spec:
               type: string
             httpMethod:
               type: string
+            id:
+              type: string
             priority:
               type: integer
             providerRef:
@@ -469,6 +471,8 @@ spec:
                 host:
                   type: string
                 httpMethod:
+                  type: string
+                id:
                   type: string
                 priority:
                   type: integer

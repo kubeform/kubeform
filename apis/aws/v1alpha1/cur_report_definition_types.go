@@ -21,6 +21,8 @@ type CurReportDefinition struct {
 type CurReportDefinitionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	AdditionalArtifacts []string `json:"additionalArtifacts,omitempty" tf:"additional_artifacts,omitempty"`

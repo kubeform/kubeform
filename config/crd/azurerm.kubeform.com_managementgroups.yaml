@@ -401,6 +401,8 @@ spec:
               type: string
             groupID:
               type: string
+            id:
+              type: string
             parentManagementGroupID:
               type: string
             providerRef:
@@ -432,6 +434,8 @@ spec:
                 displayName:
                   type: string
                 groupID:
+                  type: string
+                id:
                   type: string
                 parentManagementGroupID:
                   type: string

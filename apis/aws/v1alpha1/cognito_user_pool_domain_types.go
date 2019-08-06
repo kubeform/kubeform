@@ -21,6 +21,8 @@ type CognitoUserPoolDomain struct {
 type CognitoUserPoolDomainSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AwsAccountID string `json:"awsAccountID,omitempty" tf:"aws_account_id,omitempty"`
 	// +optional

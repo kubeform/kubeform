@@ -52,6 +52,8 @@ type DlmLifecyclePolicySpecPolicyDetails struct {
 type DlmLifecyclePolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Description      string `json:"description" tf:"description"`
 	ExecutionRoleArn string `json:"executionRoleArn" tf:"execution_role_arn"`
 	// +kubebuilder:validation:MaxItems=1

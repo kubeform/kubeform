@@ -21,6 +21,8 @@ type IamAccessKey struct {
 type IamAccessKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	EncryptedSecret string `json:"encryptedSecret,omitempty" tf:"encrypted_secret,omitempty"`
 	// +optional

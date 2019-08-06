@@ -401,6 +401,8 @@ spec:
               type: boolean
             galleryName:
               type: string
+            id:
+              type: string
             imageName:
               type: string
             location:
@@ -459,6 +461,8 @@ spec:
                 excludeFromLatest:
                   type: boolean
                 galleryName:
+                  type: string
+                id:
                   type: string
                 imageName:
                   type: string

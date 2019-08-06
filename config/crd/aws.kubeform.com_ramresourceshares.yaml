@@ -401,6 +401,8 @@ spec:
               type: boolean
             arn:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -432,6 +434,8 @@ spec:
                 allowExternalPrincipals:
                   type: boolean
                 arn:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

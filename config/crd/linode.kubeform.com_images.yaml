@@ -409,6 +409,8 @@ spec:
               type: integer
             expiry:
               type: string
+            id:
+              type: string
             isPublic:
               type: boolean
             label:
@@ -456,6 +458,8 @@ spec:
                 diskID:
                   type: integer
                 expiry:
+                  type: string
+                id:
                   type: string
                 isPublic:
                   type: boolean

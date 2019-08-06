@@ -415,6 +415,8 @@ spec:
               type: integer
             cipherSuite:
               type: string
+            id:
+              type: string
             nodeStatus:
               additionalProperties:
                 properties:
@@ -486,6 +488,8 @@ spec:
                 checkTimeout:
                   type: integer
                 cipherSuite:
+                  type: string
+                id:
                   type: string
                 nodeStatus:
                   additionalProperties:

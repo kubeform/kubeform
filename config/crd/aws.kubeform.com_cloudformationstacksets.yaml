@@ -410,6 +410,8 @@ spec:
               type: string
             executionRoleName:
               type: string
+            id:
+              type: string
             name:
               type: string
             parameters:
@@ -461,6 +463,8 @@ spec:
                 description:
                   type: string
                 executionRoleName:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

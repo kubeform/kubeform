@@ -399,6 +399,8 @@ spec:
           properties:
             ackDeadlineSeconds:
               type: integer
+            id:
+              type: string
             name:
               type: string
             path:
@@ -446,6 +448,8 @@ spec:
               properties:
                 ackDeadlineSeconds:
                   type: integer
+                id:
+                  type: string
                 name:
                   type: string
                 path:

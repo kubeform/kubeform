@@ -445,6 +445,8 @@ spec:
               type: string
             folderID:
               type: string
+            id:
+              type: string
             labels:
               additionalProperties:
                 type: string
@@ -529,6 +531,8 @@ spec:
                 billingAccount:
                   type: string
                 folderID:
+                  type: string
+                id:
                   type: string
                 labels:
                   additionalProperties:

@@ -227,6 +227,8 @@ type CloudfrontDistributionSpecViewerCertificate struct {
 type CloudfrontDistributionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ActiveTrustedSigners map[string]string `json:"activeTrustedSigners,omitempty" tf:"active_trusted_signers,omitempty"`
 	// +optional

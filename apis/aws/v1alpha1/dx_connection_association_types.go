@@ -21,6 +21,8 @@ type DxConnectionAssociation struct {
 type DxConnectionAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ConnectionID string `json:"connectionID" tf:"connection_id"`
 	LagID        string `json:"lagID" tf:"lag_id"`
 }

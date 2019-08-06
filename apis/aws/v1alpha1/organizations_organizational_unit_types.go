@@ -32,6 +32,8 @@ type OrganizationsOrganizationalUnitSpecAccounts struct {
 type OrganizationsOrganizationalUnitSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Accounts []OrganizationsOrganizationalUnitSpecAccounts `json:"accounts,omitempty" tf:"accounts,omitempty"`
 	// +optional

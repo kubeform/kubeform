@@ -72,6 +72,8 @@ type InstanceSpecRootBlockDevice struct {
 type InstanceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Ami string `json:"ami" tf:"ami"`
 	// +optional
 	Arn string `json:"arn,omitempty" tf:"arn,omitempty"`

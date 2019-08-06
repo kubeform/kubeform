@@ -403,6 +403,8 @@ spec:
               type: string
             hostVpcID:
               type: string
+            id:
+              type: string
             ipAddress:
               items:
                 properties:
@@ -461,6 +463,8 @@ spec:
                 direction:
                   type: string
                 hostVpcID:
+                  type: string
+                id:
                   type: string
                 ipAddress:
                   items:

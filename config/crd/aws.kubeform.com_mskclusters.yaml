@@ -482,6 +482,8 @@ spec:
               type: array
             enhancedMonitoring:
               type: string
+            id:
+              type: string
             kafkaVersion:
               type: string
             numberOfBrokerNodes:
@@ -601,6 +603,8 @@ spec:
                   maxItems: 1
                   type: array
                 enhancedMonitoring:
+                  type: string
+                id:
                   type: string
                 kafkaVersion:
                   type: string

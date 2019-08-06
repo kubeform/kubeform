@@ -419,6 +419,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             location:
               type: string
             maxSizeBytes:
@@ -520,6 +522,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 location:
                   type: string
                 maxSizeBytes:

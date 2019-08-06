@@ -409,6 +409,8 @@ spec:
               type: string
             host:
               type: string
+            id:
+              type: string
             labels:
               additionalProperties:
                 type: string
@@ -469,6 +471,8 @@ spec:
                 displayName:
                   type: string
                 host:
+                  type: string
+                id:
                   type: string
                 labels:
                   additionalProperties:

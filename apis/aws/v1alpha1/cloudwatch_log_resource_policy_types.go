@@ -21,6 +21,8 @@ type CloudwatchLogResourcePolicy struct {
 type CloudwatchLogResourcePolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	PolicyDocument string `json:"policyDocument" tf:"policy_document"`
 	PolicyName     string `json:"policyName" tf:"policy_name"`
 }

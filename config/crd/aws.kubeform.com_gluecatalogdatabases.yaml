@@ -401,6 +401,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             locationURI:
               type: string
             name:
@@ -434,6 +436,8 @@ spec:
                 catalogID:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 locationURI:
                   type: string

@@ -26,6 +26,8 @@ type ElasticacheParameterGroupSpecParameter struct {
 type ElasticacheParameterGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`
 	Family      string `json:"family" tf:"family"`

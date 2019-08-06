@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            id:
+              type: string
             linkedServiceName:
               type: string
             linkedServiceProperties:
@@ -443,6 +445,8 @@ spec:
               type: integer
             output:
               properties:
+                id:
+                  type: string
                 linkedServiceName:
                   type: string
                 linkedServiceProperties:

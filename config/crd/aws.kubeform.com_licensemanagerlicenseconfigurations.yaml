@@ -399,6 +399,8 @@ spec:
           properties:
             description:
               type: string
+            id:
+              type: string
             licenseCount:
               type: integer
             licenseCountHardLimit:
@@ -439,6 +441,8 @@ spec:
             output:
               properties:
                 description:
+                  type: string
+                id:
                   type: string
                 licenseCount:
                   type: integer

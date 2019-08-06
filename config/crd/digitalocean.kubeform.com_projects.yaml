@@ -403,6 +403,8 @@ spec:
               type: string
             environment:
               type: string
+            id:
+              type: string
             name:
               type: string
             ownerID:
@@ -445,6 +447,8 @@ spec:
                 description:
                   type: string
                 environment:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

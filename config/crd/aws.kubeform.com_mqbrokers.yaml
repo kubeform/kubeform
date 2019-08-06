@@ -423,6 +423,8 @@ spec:
               type: string
             hostInstanceType:
               type: string
+            id:
+              type: string
             instances:
               items:
                 properties:
@@ -556,6 +558,8 @@ spec:
                 engineVersion:
                   type: string
                 hostInstanceType:
+                  type: string
+                id:
                   type: string
                 instances:
                   items:

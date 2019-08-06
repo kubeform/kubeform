@@ -35,6 +35,8 @@ type ComputeRegionDiskSpecSourceSnapshotEncryptionKey struct {
 type ComputeRegionDiskSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`
 	// +optional

@@ -26,6 +26,8 @@ type AutomationScheduleSpecMonthlyOccurrence struct {
 type AutomationScheduleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	// Deprecated
 	AccountName string `json:"accountName,omitempty" tf:"account_name,omitempty"`

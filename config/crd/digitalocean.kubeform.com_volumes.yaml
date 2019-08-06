@@ -410,6 +410,8 @@ spec:
             filesystemType:
               description: Deprecated
               type: string
+            id:
+              type: string
             initialFilesystemLabel:
               type: string
             initialFilesystemType:
@@ -460,6 +462,8 @@ spec:
                   type: string
                 filesystemType:
                   description: Deprecated
+                  type: string
+                id:
                   type: string
                 initialFilesystemLabel:
                   type: string

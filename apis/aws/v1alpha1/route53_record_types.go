@@ -48,6 +48,8 @@ type Route53RecordSpecWeightedRoutingPolicy struct {
 type Route53RecordSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Alias []Route53RecordSpecAlias `json:"alias,omitempty" tf:"alias,omitempty"`

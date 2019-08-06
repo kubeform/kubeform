@@ -57,6 +57,8 @@ type EcsTaskDefinitionSpecVolume struct {
 type EcsTaskDefinitionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Arn                  string `json:"arn,omitempty" tf:"arn,omitempty"`
 	ContainerDefinitions string `json:"containerDefinitions" tf:"container_definitions"`

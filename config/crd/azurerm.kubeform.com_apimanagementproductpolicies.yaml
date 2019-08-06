@@ -399,6 +399,8 @@ spec:
           properties:
             apiManagementName:
               type: string
+            id:
+              type: string
             productID:
               type: string
             providerRef:
@@ -432,6 +434,8 @@ spec:
             output:
               properties:
                 apiManagementName:
+                  type: string
+                id:
                   type: string
                 productID:
                   type: string

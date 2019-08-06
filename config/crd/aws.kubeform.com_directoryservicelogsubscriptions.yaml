@@ -399,6 +399,8 @@ spec:
           properties:
             directoryID:
               type: string
+            id:
+              type: string
             logGroupName:
               type: string
             providerRef:
@@ -425,6 +427,8 @@ spec:
             output:
               properties:
                 directoryID:
+                  type: string
+                id:
                   type: string
                 logGroupName:
                   type: string

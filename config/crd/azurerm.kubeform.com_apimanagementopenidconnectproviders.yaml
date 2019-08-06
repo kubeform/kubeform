@@ -403,6 +403,8 @@ spec:
               type: string
             displayName:
               type: string
+            id:
+              type: string
             metadataEndpoint:
               type: string
             name:
@@ -449,6 +451,8 @@ spec:
                 description:
                   type: string
                 displayName:
+                  type: string
+                id:
                   type: string
                 metadataEndpoint:
                   type: string

@@ -35,6 +35,8 @@ type NetworkConnectionMonitorSpecSource struct {
 type NetworkConnectionMonitorSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AutoStart bool `json:"autoStart,omitempty" tf:"auto_start,omitempty"`
 	// +kubebuilder:validation:MaxItems=1

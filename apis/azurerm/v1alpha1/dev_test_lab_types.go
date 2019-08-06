@@ -21,6 +21,8 @@ type DevTestLab struct {
 type DevTestLabSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ArtifactsStorageAccountID string `json:"artifactsStorageAccountID,omitempty" tf:"artifacts_storage_account_id,omitempty"`
 	// +optional

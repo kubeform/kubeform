@@ -399,6 +399,8 @@ spec:
           properties:
             elb:
               type: string
+            id:
+              type: string
             instance:
               type: string
             providerRef:
@@ -425,6 +427,8 @@ spec:
             output:
               properties:
                 elb:
+                  type: string
+                id:
                   type: string
                 instance:
                   type: string

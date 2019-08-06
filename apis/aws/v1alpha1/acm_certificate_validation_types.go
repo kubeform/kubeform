@@ -21,6 +21,8 @@ type AcmCertificateValidation struct {
 type AcmCertificateValidationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	CertificateArn string `json:"certificateArn" tf:"certificate_arn"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true

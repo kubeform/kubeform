@@ -399,6 +399,8 @@ spec:
           properties:
             bucket:
               type: string
+            id:
+              type: string
             prefix:
               type: string
             providerRef:
@@ -424,6 +426,8 @@ spec:
             output:
               properties:
                 bucket:
+                  type: string
+                id:
                   type: string
                 prefix:
                   type: string

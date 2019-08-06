@@ -53,6 +53,8 @@ type FunctionAppSpecSiteCredential struct {
 type FunctionAppSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	AppServicePlanID string `json:"appServicePlanID" tf:"app_service_plan_id"`

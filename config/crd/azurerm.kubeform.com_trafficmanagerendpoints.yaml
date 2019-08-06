@@ -407,6 +407,8 @@ spec:
               items:
                 type: string
               type: array
+            id:
+              type: string
             minChildEndpoints:
               type: integer
             name:
@@ -460,6 +462,8 @@ spec:
                   items:
                     type: string
                   type: array
+                id:
+                  type: string
                 minChildEndpoints:
                   type: integer
                 name:

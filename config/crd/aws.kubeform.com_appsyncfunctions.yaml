@@ -409,6 +409,8 @@ spec:
               type: string
             functionVersion:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -452,6 +454,8 @@ spec:
                 functionID:
                   type: string
                 functionVersion:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

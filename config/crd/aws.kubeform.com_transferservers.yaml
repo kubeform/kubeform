@@ -415,6 +415,8 @@ spec:
               type: string
             forceDestroy:
               type: boolean
+            id:
+              type: string
             identityProviderType:
               type: string
             invocationRole:
@@ -466,6 +468,8 @@ spec:
                   type: string
                 forceDestroy:
                   type: boolean
+                id:
+                  type: string
                 identityProviderType:
                   type: string
                 invocationRole:

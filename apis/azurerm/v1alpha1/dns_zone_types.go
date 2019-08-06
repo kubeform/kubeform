@@ -21,6 +21,8 @@ type DnsZone struct {
 type DnsZoneSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	MaxNumberOfRecordSets int    `json:"maxNumberOfRecordSets,omitempty" tf:"max_number_of_record_sets,omitempty"`
 	Name                  string `json:"name" tf:"name"`

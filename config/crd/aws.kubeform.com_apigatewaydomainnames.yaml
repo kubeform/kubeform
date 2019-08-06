@@ -428,6 +428,8 @@ spec:
               maxItems: 1
               minItems: 1
               type: array
+            id:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -498,6 +500,8 @@ spec:
                   maxItems: 1
                   minItems: 1
                   type: array
+                id:
+                  type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.

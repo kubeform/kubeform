@@ -403,6 +403,8 @@ spec:
               type: string
             family:
               type: string
+            id:
+              type: string
             name:
               type: string
             namePrefix:
@@ -453,6 +455,8 @@ spec:
                 description:
                   type: string
                 family:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

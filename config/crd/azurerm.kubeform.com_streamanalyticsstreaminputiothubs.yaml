@@ -401,6 +401,8 @@ spec:
               type: string
             eventhubConsumerGroupName:
               type: string
+            id:
+              type: string
             iothubNamespace:
               type: string
             name:
@@ -466,6 +468,8 @@ spec:
                 endpoint:
                   type: string
                 eventhubConsumerGroupName:
+                  type: string
+                id:
                   type: string
                 iothubNamespace:
                   type: string

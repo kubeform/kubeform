@@ -52,6 +52,8 @@ type ComputeRegionAutoscalerSpecAutoscalingPolicy struct {
 type ComputeRegionAutoscalerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +kubebuilder:validation:MaxItems=1
 	AutoscalingPolicy []ComputeRegionAutoscalerSpecAutoscalingPolicy `json:"autoscalingPolicy" tf:"autoscaling_policy"`
 	// +optional

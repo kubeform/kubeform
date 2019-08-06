@@ -477,6 +477,8 @@ spec:
               type: array
             endpoint:
               type: string
+            id:
+              type: string
             kibanaEndpoint:
               type: string
             logPublishingOptions:
@@ -642,6 +644,8 @@ spec:
                   maxItems: 1
                   type: array
                 endpoint:
+                  type: string
+                id:
                   type: string
                 kibanaEndpoint:
                   type: string

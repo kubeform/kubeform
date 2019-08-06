@@ -413,6 +413,8 @@ spec:
               type: string
             folder:
               type: string
+            id:
+              type: string
             listPolicy:
               items:
                 properties:
@@ -499,6 +501,8 @@ spec:
                 etag:
                   type: string
                 folder:
+                  type: string
+                id:
                   type: string
                 listPolicy:
                   items:

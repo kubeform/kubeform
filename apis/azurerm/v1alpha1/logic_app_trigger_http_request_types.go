@@ -21,6 +21,8 @@ type LogicAppTriggerHTTPRequest struct {
 type LogicAppTriggerHTTPRequestSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	LogicAppID string `json:"logicAppID" tf:"logic_app_id"`
 	// +optional
 	Method string `json:"method,omitempty" tf:"method,omitempty"`

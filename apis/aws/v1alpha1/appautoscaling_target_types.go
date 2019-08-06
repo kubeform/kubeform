@@ -21,6 +21,8 @@ type AppautoscalingTarget struct {
 type AppautoscalingTargetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	MaxCapacity int    `json:"maxCapacity" tf:"max_capacity"`
 	MinCapacity int    `json:"minCapacity" tf:"min_capacity"`
 	ResourceID  string `json:"resourceID" tf:"resource_id"`

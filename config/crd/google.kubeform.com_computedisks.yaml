@@ -414,6 +414,8 @@ spec:
             diskEncryptionKeySha256:
               description: Deprecated
               type: string
+            id:
+              type: string
             image:
               type: string
             labelFingerprint:
@@ -515,6 +517,8 @@ spec:
                   type: array
                 diskEncryptionKeySha256:
                   description: Deprecated
+                  type: string
+                id:
                   type: string
                 image:
                   type: string

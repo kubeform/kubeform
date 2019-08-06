@@ -409,6 +409,8 @@ spec:
               type: integer
             createdAt:
               type: string
+            id:
+              type: string
             ipv6Address:
               type: string
             isStaticIP:
@@ -467,6 +469,8 @@ spec:
                 cpuCount:
                   type: integer
                 createdAt:
+                  type: string
+                id:
                   type: string
                 ipv6Address:
                   type: string

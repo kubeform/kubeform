@@ -21,6 +21,8 @@ type LambdaPermission struct {
 type LambdaPermissionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Action string `json:"action" tf:"action"`
 	// +optional
 	EventSourceToken string `json:"eventSourceToken,omitempty" tf:"event_source_token,omitempty"`

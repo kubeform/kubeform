@@ -21,6 +21,8 @@ type SsmMaintenanceWindow struct {
 type SsmMaintenanceWindowSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AllowUnassociatedTargets bool `json:"allowUnassociatedTargets,omitempty" tf:"allow_unassociated_targets,omitempty"`
 	Cutoff                   int  `json:"cutoff" tf:"cutoff"`

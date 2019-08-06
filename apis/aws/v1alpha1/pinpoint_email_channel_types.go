@@ -21,6 +21,8 @@ type PinpointEmailChannel struct {
 type PinpointEmailChannelSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ApplicationID string `json:"applicationID" tf:"application_id"`
 	// +optional
 	Enabled     bool   `json:"enabled,omitempty" tf:"enabled,omitempty"`

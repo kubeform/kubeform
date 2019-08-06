@@ -406,6 +406,8 @@ spec:
               type: boolean
             iamRoleArn:
               type: string
+            id:
+              type: string
             name:
               type: string
             notificationArns:
@@ -467,6 +469,8 @@ spec:
                 disableRollback:
                   type: boolean
                 iamRoleArn:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

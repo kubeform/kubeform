@@ -404,6 +404,8 @@ spec:
                 type: string
               maxItems: 3
               type: array
+            id:
+              type: string
             name:
               type: string
             priority:
@@ -442,6 +444,8 @@ spec:
                     type: string
                   maxItems: 3
                   type: array
+                id:
+                  type: string
                 name:
                   type: string
                 priority:

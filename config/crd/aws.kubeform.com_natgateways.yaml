@@ -399,6 +399,8 @@ spec:
           properties:
             allocationID:
               type: string
+            id:
+              type: string
             networkInterfaceID:
               type: string
             privateIP:
@@ -435,6 +437,8 @@ spec:
             output:
               properties:
                 allocationID:
+                  type: string
+                id:
                   type: string
                 networkInterfaceID:
                   type: string

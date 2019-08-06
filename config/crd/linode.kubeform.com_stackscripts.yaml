@@ -405,6 +405,8 @@ spec:
               type: integer
             description:
               type: string
+            id:
+              type: string
             images:
               items:
                 type: string
@@ -472,6 +474,8 @@ spec:
                 deploymentsTotal:
                   type: integer
                 description:
+                  type: string
+                id:
                   type: string
                 images:
                   items:

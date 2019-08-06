@@ -401,6 +401,8 @@ spec:
               type: string
             disk:
               type: string
+            id:
+              type: string
             instance:
               type: string
             mode:
@@ -435,6 +437,8 @@ spec:
                 deviceName:
                   type: string
                 disk:
+                  type: string
+                id:
                   type: string
                 instance:
                   type: string

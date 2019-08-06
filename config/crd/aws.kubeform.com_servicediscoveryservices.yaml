@@ -446,6 +446,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             name:
               type: string
             namespaceID:
@@ -521,6 +523,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 name:
                   type: string
                 namespaceID:

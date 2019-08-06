@@ -399,6 +399,8 @@ spec:
           properties:
             etag:
               type: string
+            id:
+              type: string
             policyData:
               type: string
             project:
@@ -434,6 +436,8 @@ spec:
             output:
               properties:
                 etag:
+                  type: string
+                id:
                   type: string
                 policyData:
                   type: string

@@ -23,6 +23,8 @@ type Droplet struct {
 type DropletSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Backups bool `json:"backups,omitempty" tf:"backups,omitempty"`
 	// +optional

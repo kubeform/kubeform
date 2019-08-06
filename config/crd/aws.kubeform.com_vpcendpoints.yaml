@@ -412,6 +412,8 @@ spec:
                     type: string
                 type: object
               type: array
+            id:
+              type: string
             networkInterfaceIDS:
               items:
                 type: string
@@ -492,6 +494,8 @@ spec:
                         type: string
                     type: object
                   type: array
+                id:
+                  type: string
                 networkInterfaceIDS:
                   items:
                     type: string

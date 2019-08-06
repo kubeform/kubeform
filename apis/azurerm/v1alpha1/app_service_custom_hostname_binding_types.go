@@ -21,6 +21,8 @@ type AppServiceCustomHostnameBinding struct {
 type AppServiceCustomHostnameBindingSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AppServiceName    string `json:"appServiceName" tf:"app_service_name"`
 	Hostname          string `json:"hostname" tf:"hostname"`
 	ResourceGroupName string `json:"resourceGroupName" tf:"resource_group_name"`

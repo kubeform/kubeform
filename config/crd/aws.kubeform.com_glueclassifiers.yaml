@@ -412,6 +412,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             jsonClassifier:
               items:
                 properties:
@@ -474,6 +476,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 jsonClassifier:
                   items:
                     properties:

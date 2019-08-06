@@ -401,6 +401,8 @@ spec:
               type: string
             deprecated:
               type: boolean
+            id:
+              type: string
             name:
               type: string
             properties:
@@ -443,6 +445,8 @@ spec:
                   type: string
                 deprecated:
                   type: boolean
+                id:
+                  type: string
                 name:
                   type: string
                 properties:

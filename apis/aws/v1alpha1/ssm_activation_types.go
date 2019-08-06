@@ -21,6 +21,8 @@ type SsmActivation struct {
 type SsmActivationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ActivationCode string `json:"activationCode,omitempty" tf:"activation_code,omitempty"`
 	// +optional

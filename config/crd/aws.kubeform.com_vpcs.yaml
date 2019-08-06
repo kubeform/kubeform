@@ -419,6 +419,8 @@ spec:
               type: boolean
             enableDNSSupport:
               type: boolean
+            id:
+              type: string
             instanceTenancy:
               type: string
             ipv6AssociationID:
@@ -477,6 +479,8 @@ spec:
                   type: boolean
                 enableDNSSupport:
                   type: boolean
+                id:
+                  type: string
                 instanceTenancy:
                   type: string
                 ipv6AssociationID:

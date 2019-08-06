@@ -431,6 +431,8 @@ spec:
               maxItems: 1
               type: array
               uniqueItems: true
+            id:
+              type: string
             linuxProfile:
               items:
                 properties:
@@ -564,6 +566,8 @@ spec:
                   maxItems: 1
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 linuxProfile:
                   items:
                     properties:

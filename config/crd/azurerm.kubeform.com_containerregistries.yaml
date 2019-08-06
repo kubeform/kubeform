@@ -407,6 +407,8 @@ spec:
               minItems: 1
               type: array
               uniqueItems: true
+            id:
+              type: string
             location:
               type: string
             loginServer:
@@ -477,6 +479,8 @@ spec:
                   minItems: 1
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 location:
                   type: string
                 loginServer:

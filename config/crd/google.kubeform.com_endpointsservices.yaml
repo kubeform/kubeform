@@ -436,6 +436,8 @@ spec:
               type: array
             grpcConfig:
               type: string
+            id:
+              type: string
             openapiConfig:
               type: string
             project:
@@ -507,6 +509,8 @@ spec:
                     type: object
                   type: array
                 grpcConfig:
+                  type: string
+                id:
                   type: string
                 openapiConfig:
                   type: string

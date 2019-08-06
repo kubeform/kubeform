@@ -411,6 +411,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             integrationRuntimeName:
               type: string
             name:
@@ -459,6 +461,8 @@ spec:
                 dataFactoryName:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 integrationRuntimeName:
                   type: string

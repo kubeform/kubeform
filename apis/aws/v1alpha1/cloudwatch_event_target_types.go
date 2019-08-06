@@ -76,6 +76,8 @@ type CloudwatchEventTargetSpecSqsTarget struct {
 type CloudwatchEventTargetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Arn string `json:"arn" tf:"arn"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

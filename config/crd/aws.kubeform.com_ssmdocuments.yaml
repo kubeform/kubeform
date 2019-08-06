@@ -415,6 +415,8 @@ spec:
               type: string
             hashType:
               type: string
+            id:
+              type: string
             latestVersion:
               type: string
             name:
@@ -499,6 +501,8 @@ spec:
                 hash:
                   type: string
                 hashType:
+                  type: string
+                id:
                   type: string
                 latestVersion:
                   type: string

@@ -405,6 +405,8 @@ spec:
               type: string
             deliveryStatusSuccessSamplingRate:
               type: string
+            id:
+              type: string
             monthlySpendLimit:
               type: string
             providerRef:
@@ -437,6 +439,8 @@ spec:
                 deliveryStatusIamRoleArn:
                   type: string
                 deliveryStatusSuccessSamplingRate:
+                  type: string
+                id:
                   type: string
                 monthlySpendLimit:
                   type: string

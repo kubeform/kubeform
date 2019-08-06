@@ -399,6 +399,8 @@ spec:
           properties:
             baselineID:
               type: string
+            id:
+              type: string
             patchGroup:
               type: string
             providerRef:
@@ -425,6 +427,8 @@ spec:
             output:
               properties:
                 baselineID:
+                  type: string
+                id:
                   type: string
                 patchGroup:
                   type: string

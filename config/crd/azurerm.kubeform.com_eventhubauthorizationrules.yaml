@@ -399,6 +399,8 @@ spec:
           properties:
             eventhubName:
               type: string
+            id:
+              type: string
             listen:
               type: boolean
             location:
@@ -449,6 +451,8 @@ spec:
             output:
               properties:
                 eventhubName:
+                  type: string
+                id:
                   type: string
                 listen:
                   type: boolean

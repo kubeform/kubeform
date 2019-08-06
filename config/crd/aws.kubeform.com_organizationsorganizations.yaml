@@ -424,6 +424,8 @@ spec:
               uniqueItems: true
             featureSet:
               type: string
+            id:
+              type: string
             masterAccountArn:
               type: string
             masterAccountEmail:
@@ -510,6 +512,8 @@ spec:
                   type: array
                   uniqueItems: true
                 featureSet:
+                  type: string
+                id:
                   type: string
                 masterAccountArn:
                   type: string

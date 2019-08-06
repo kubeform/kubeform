@@ -21,6 +21,8 @@ type InspectorAssessmentTemplate struct {
 type InspectorAssessmentTemplateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Arn      string `json:"arn,omitempty" tf:"arn,omitempty"`
 	Duration int    `json:"duration" tf:"duration"`

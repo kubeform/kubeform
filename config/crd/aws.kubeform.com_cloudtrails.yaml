@@ -434,6 +434,8 @@ spec:
               type: array
             homeRegion:
               type: string
+            id:
+              type: string
             includeGlobalServiceEvents:
               type: boolean
             isMultiRegionTrail:
@@ -513,6 +515,8 @@ spec:
                   maxItems: 5
                   type: array
                 homeRegion:
+                  type: string
+                id:
                   type: string
                 includeGlobalServiceEvents:
                   type: boolean

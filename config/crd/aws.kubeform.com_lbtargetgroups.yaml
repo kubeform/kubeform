@@ -427,6 +427,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             lambdaMultiValueHeadersEnabled:
               type: boolean
             name:
@@ -514,6 +516,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 lambdaMultiValueHeadersEnabled:
                   type: boolean
                 name:

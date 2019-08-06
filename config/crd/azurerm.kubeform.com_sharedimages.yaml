@@ -403,6 +403,8 @@ spec:
               type: string
             galleryName:
               type: string
+            id:
+              type: string
             identifier:
               items:
                 properties:
@@ -467,6 +469,8 @@ spec:
                 eula:
                   type: string
                 galleryName:
+                  type: string
+                id:
                   type: string
                 identifier:
                   items:

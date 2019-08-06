@@ -414,6 +414,8 @@ spec:
               type: string
             httpMethod:
               type: string
+            id:
+              type: string
             integrationHTTPMethod:
               type: string
             passthroughBehavior:
@@ -477,6 +479,8 @@ spec:
                 credentials:
                   type: string
                 httpMethod:
+                  type: string
+                id:
                   type: string
                 integrationHTTPMethod:
                   type: string

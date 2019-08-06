@@ -401,6 +401,8 @@ spec:
               type: string
             expressRouteCircuitName:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -441,6 +443,8 @@ spec:
                 authorizationUseStatus:
                   type: string
                 expressRouteCircuitName:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

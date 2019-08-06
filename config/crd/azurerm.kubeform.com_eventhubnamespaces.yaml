@@ -401,6 +401,8 @@ spec:
               type: boolean
             capacity:
               type: integer
+            id:
+              type: string
             kafkaEnabled:
               type: boolean
             location:
@@ -455,6 +457,8 @@ spec:
                   type: boolean
                 capacity:
                   type: integer
+                id:
+                  type: string
                 kafkaEnabled:
                   type: boolean
                 location:

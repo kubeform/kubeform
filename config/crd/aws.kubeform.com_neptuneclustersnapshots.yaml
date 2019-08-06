@@ -413,6 +413,8 @@ spec:
               type: string
             engineVersion:
               type: string
+            id:
+              type: string
             kmsKeyID:
               type: string
             licenseModel:
@@ -467,6 +469,8 @@ spec:
                 engine:
                   type: string
                 engineVersion:
+                  type: string
+                id:
                   type: string
                 kmsKeyID:
                   type: string

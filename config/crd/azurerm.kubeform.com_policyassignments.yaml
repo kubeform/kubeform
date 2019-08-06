@@ -401,6 +401,8 @@ spec:
               type: string
             displayName:
               type: string
+            id:
+              type: string
             identity:
               items:
                 properties:
@@ -454,6 +456,8 @@ spec:
                 description:
                   type: string
                 displayName:
+                  type: string
+                id:
                   type: string
                 identity:
                   items:

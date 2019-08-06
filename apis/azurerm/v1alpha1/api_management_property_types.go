@@ -21,6 +21,8 @@ type ApiManagementProperty struct {
 type ApiManagementPropertySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	DisplayName       string `json:"displayName" tf:"display_name"`
 	Name              string `json:"name" tf:"name"`

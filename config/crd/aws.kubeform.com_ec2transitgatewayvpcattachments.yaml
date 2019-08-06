@@ -399,6 +399,8 @@ spec:
           properties:
             dnsSupport:
               type: string
+            id:
+              type: string
             ipv6Support:
               type: string
             providerRef:
@@ -446,6 +448,8 @@ spec:
             output:
               properties:
                 dnsSupport:
+                  type: string
+                id:
                   type: string
                 ipv6Support:
                   type: string

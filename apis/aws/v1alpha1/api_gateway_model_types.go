@@ -21,6 +21,8 @@ type ApiGatewayModel struct {
 type ApiGatewayModelSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ContentType string `json:"contentType" tf:"content_type"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`

@@ -421,6 +421,8 @@ spec:
               type: array
             hostName:
               type: string
+            id:
+              type: string
             isCompressionEnabled:
               type: boolean
             isHTTPAllowed:
@@ -515,6 +517,8 @@ spec:
                     type: object
                   type: array
                 hostName:
+                  type: string
+                id:
                   type: string
                 isCompressionEnabled:
                   type: boolean

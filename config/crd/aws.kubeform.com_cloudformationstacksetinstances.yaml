@@ -399,6 +399,8 @@ spec:
           properties:
             accountID:
               type: string
+            id:
+              type: string
             parameterOverrides:
               additionalProperties:
                 type: string
@@ -434,6 +436,8 @@ spec:
             output:
               properties:
                 accountID:
+                  type: string
+                id:
                   type: string
                 parameterOverrides:
                   additionalProperties:

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            id:
+              type: string
             location:
               type: string
             managedResourceGroupID:
@@ -438,6 +440,8 @@ spec:
               type: integer
             output:
               properties:
+                id:
+                  type: string
                 location:
                   type: string
                 managedResourceGroupID:

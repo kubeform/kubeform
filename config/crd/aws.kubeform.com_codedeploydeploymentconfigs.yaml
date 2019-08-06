@@ -403,6 +403,8 @@ spec:
               type: string
             deploymentConfigName:
               type: string
+            id:
+              type: string
             minimumHealthyHosts:
               items:
                 properties:
@@ -468,6 +470,8 @@ spec:
                 deploymentConfigID:
                   type: string
                 deploymentConfigName:
+                  type: string
+                id:
                   type: string
                 minimumHealthyHosts:
                   items:

@@ -412,6 +412,8 @@ spec:
               type: array
             arn:
               type: string
+            id:
+              type: string
             name:
               type: string
             parentID:
@@ -453,6 +455,8 @@ spec:
                     type: object
                   type: array
                 arn:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

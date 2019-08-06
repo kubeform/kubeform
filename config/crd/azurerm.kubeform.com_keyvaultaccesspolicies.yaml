@@ -403,6 +403,8 @@ spec:
               items:
                 type: string
               type: array
+            id:
+              type: string
             keyPermissions:
               items:
                 type: string
@@ -456,6 +458,8 @@ spec:
                   items:
                     type: string
                   type: array
+                id:
+                  type: string
                 keyPermissions:
                   items:
                     type: string

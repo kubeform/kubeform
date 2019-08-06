@@ -21,6 +21,8 @@ type LbRule struct {
 type LbRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	BackendAddressPoolID string `json:"backendAddressPoolID,omitempty" tf:"backend_address_pool_id,omitempty"`
 	BackendPort          int    `json:"backendPort" tf:"backend_port"`

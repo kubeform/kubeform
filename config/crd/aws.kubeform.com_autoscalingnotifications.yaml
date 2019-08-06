@@ -402,6 +402,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            id:
+              type: string
             notifications:
               items:
                 type: string
@@ -438,6 +440,8 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 notifications:
                   items:
                     type: string

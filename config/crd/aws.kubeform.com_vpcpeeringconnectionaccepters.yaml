@@ -414,6 +414,8 @@ spec:
               uniqueItems: true
             autoAccept:
               type: boolean
+            id:
+              type: string
             peerOwnerID:
               type: string
             peerRegion:
@@ -480,6 +482,8 @@ spec:
                   uniqueItems: true
                 autoAccept:
                   type: boolean
+                id:
+                  type: string
                 peerOwnerID:
                   type: string
                 peerRegion:

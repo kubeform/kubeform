@@ -27,6 +27,8 @@ type MonitorLogProfileSpecRetentionPolicy struct {
 type MonitorLogProfileSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +kubebuilder:validation:MinItems=1
 	// +kubebuilder:validation:UniqueItems=true
 	Categories []string `json:"categories" tf:"categories"`

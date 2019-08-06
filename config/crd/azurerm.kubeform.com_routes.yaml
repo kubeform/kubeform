@@ -399,6 +399,8 @@ spec:
           properties:
             addressPrefix:
               type: string
+            id:
+              type: string
             name:
               type: string
             nextHopInIPAddress:
@@ -436,6 +438,8 @@ spec:
             output:
               properties:
                 addressPrefix:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

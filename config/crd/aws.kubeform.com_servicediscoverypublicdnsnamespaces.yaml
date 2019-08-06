@@ -403,6 +403,8 @@ spec:
               type: string
             hostedZone:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -432,6 +434,8 @@ spec:
                 description:
                   type: string
                 hostedZone:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

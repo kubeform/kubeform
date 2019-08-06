@@ -401,6 +401,8 @@ spec:
               type: string
             eventhubName:
               type: string
+            id:
+              type: string
             log:
               items:
                 properties:
@@ -485,6 +487,8 @@ spec:
                 eventhubAuthorizationRuleID:
                   type: string
                 eventhubName:
+                  type: string
+                id:
                   type: string
                 log:
                   items:

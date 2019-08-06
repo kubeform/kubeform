@@ -462,6 +462,8 @@ spec:
               type: string
             healthcheckURL:
               type: string
+            id:
+              type: string
             installUpdatesOnBoot:
               type: boolean
             instanceShutdownTimeout:
@@ -572,6 +574,8 @@ spec:
                 healthcheckMethod:
                   type: string
                 healthcheckURL:
+                  type: string
+                id:
                   type: string
                 installUpdatesOnBoot:
                   type: boolean

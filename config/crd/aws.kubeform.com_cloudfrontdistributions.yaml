@@ -533,6 +533,8 @@ spec:
               type: string
             httpVersion:
               type: string
+            id:
+              type: string
             inProgressValidationBatches:
               type: integer
             isIpv6Enabled:
@@ -962,6 +964,8 @@ spec:
                 hostedZoneID:
                   type: string
                 httpVersion:
+                  type: string
+                id:
                   type: string
                 inProgressValidationBatches:
                   type: integer

@@ -407,6 +407,8 @@ spec:
               type: string
             forceDetachPolicies:
               type: boolean
+            id:
+              type: string
             maxSessionDuration:
               type: integer
             name:
@@ -455,6 +457,8 @@ spec:
                   type: string
                 forceDetachPolicies:
                   type: boolean
+                id:
+                  type: string
                 maxSessionDuration:
                   type: integer
                 name:

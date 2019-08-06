@@ -399,6 +399,8 @@ spec:
           properties:
             iamRoleArn:
               type: string
+            id:
+              type: string
             name:
               type: string
             planID:
@@ -449,6 +451,8 @@ spec:
             output:
               properties:
                 iamRoleArn:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

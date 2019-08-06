@@ -423,6 +423,8 @@ spec:
               type: boolean
             enableHttp2:
               type: boolean
+            id:
+              type: string
             idleTimeout:
               type: integer
             internal:
@@ -512,6 +514,8 @@ spec:
                   type: boolean
                 enableHttp2:
                   type: boolean
+                id:
+                  type: string
                 idleTimeout:
                   type: integer
                 internal:

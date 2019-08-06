@@ -21,6 +21,8 @@ type ComputeTargetSslProxy struct {
 type ComputeTargetSslProxySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	BackendService string `json:"backendService" tf:"backend_service"`
 	// +optional
 	CreationTimestamp string `json:"creationTimestamp,omitempty" tf:"creation_timestamp,omitempty"`

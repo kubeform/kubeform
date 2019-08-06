@@ -456,6 +456,8 @@ spec:
               uniqueItems: true
             hostname:
               type: string
+            id:
+              type: string
             infrastructureClass:
               type: string
             installUpdatesOnBoot:
@@ -613,6 +615,8 @@ spec:
                   type: array
                   uniqueItems: true
                 hostname:
+                  type: string
+                id:
                   type: string
                 infrastructureClass:
                   type: string

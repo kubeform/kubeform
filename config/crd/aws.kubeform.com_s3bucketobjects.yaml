@@ -417,6 +417,8 @@ spec:
               type: string
             etag:
               type: string
+            id:
+              type: string
             key:
               type: string
             kmsKeyID:
@@ -477,6 +479,8 @@ spec:
                 contentType:
                   type: string
                 etag:
+                  type: string
+                id:
                   type: string
                 key:
                   type: string

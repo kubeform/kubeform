@@ -399,6 +399,8 @@ spec:
           properties:
             etag:
               type: string
+            id:
+              type: string
             members:
               items:
                 type: string
@@ -433,6 +435,8 @@ spec:
             output:
               properties:
                 etag:
+                  type: string
+                id:
                   type: string
                 members:
                   items:

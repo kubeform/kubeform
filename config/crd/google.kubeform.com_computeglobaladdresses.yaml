@@ -405,6 +405,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             ipVersion:
               type: string
             labelFingerprint:
@@ -458,6 +460,8 @@ spec:
                 creationTimestamp:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 ipVersion:
                   type: string

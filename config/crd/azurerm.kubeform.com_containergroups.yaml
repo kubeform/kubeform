@@ -568,6 +568,8 @@ spec:
               type: string
             fqdn:
               type: string
+            id:
+              type: string
             identity:
               items:
                 properties:
@@ -820,6 +822,8 @@ spec:
                 dnsNameLabel:
                   type: string
                 fqdn:
+                  type: string
+                id:
                   type: string
                 identity:
                   items:

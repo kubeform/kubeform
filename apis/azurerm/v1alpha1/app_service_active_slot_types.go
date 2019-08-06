@@ -21,6 +21,8 @@ type AppServiceActiveSlot struct {
 type AppServiceActiveSlotSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AppServiceName     string `json:"appServiceName" tf:"app_service_name"`
 	AppServiceSlotName string `json:"appServiceSlotName" tf:"app_service_slot_name"`
 	ResourceGroupName  string `json:"resourceGroupName" tf:"resource_group_name"`

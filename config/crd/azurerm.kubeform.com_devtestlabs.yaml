@@ -403,6 +403,8 @@ spec:
               type: string
             defaultStorageAccountID:
               type: string
+            id:
+              type: string
             keyVaultID:
               type: string
             location:
@@ -450,6 +452,8 @@ spec:
                 defaultPremiumStorageAccountID:
                   type: string
                 defaultStorageAccountID:
+                  type: string
+                id:
                   type: string
                 keyVaultID:
                   type: string

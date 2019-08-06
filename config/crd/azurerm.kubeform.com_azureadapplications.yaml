@@ -403,6 +403,8 @@ spec:
               type: boolean
             homepage:
               type: string
+            id:
+              type: string
             identifierUris:
               items:
                 type: string
@@ -443,6 +445,8 @@ spec:
                 availableToOtherTenants:
                   type: boolean
                 homepage:
+                  type: string
+                id:
                   type: string
                 identifierUris:
                   items:

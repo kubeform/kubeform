@@ -399,6 +399,8 @@ spec:
           properties:
             eventhubName:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -463,6 +465,8 @@ spec:
             output:
               properties:
                 eventhubName:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

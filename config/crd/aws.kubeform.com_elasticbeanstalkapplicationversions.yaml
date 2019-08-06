@@ -407,6 +407,8 @@ spec:
               type: string
             forceDelete:
               type: boolean
+            id:
+              type: string
             key:
               type: string
             name:
@@ -450,6 +452,8 @@ spec:
                   type: string
                 forceDelete:
                   type: boolean
+                id:
+                  type: string
                 key:
                   type: string
                 name:

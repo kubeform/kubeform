@@ -401,6 +401,8 @@ spec:
               type: string
             folder:
               type: string
+            id:
+              type: string
             policyData:
               type: string
             providerRef:
@@ -429,6 +431,8 @@ spec:
                 etag:
                   type: string
                 folder:
+                  type: string
+                id:
                   type: string
                 policyData:
                   type: string

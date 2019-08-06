@@ -403,6 +403,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             name:
               type: string
             project:
@@ -449,6 +451,8 @@ spec:
                 creationTimestamp:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

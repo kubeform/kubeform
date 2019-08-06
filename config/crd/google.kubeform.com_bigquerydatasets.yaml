@@ -440,6 +440,8 @@ spec:
               type: string
             friendlyName:
               type: string
+            id:
+              type: string
             labels:
               additionalProperties:
                 type: string
@@ -516,6 +518,8 @@ spec:
                 etag:
                   type: string
                 friendlyName:
+                  type: string
+                id:
                   type: string
                 labels:
                   additionalProperties:

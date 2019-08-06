@@ -21,6 +21,8 @@ type SubnetNetworkSecurityGroupAssociation struct {
 type SubnetNetworkSecurityGroupAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	NetworkSecurityGroupID string `json:"networkSecurityGroupID" tf:"network_security_group_id"`
 	SubnetID               string `json:"subnetID" tf:"subnet_id"`
 }

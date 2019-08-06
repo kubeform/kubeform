@@ -432,6 +432,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             internalCheckers:
               items:
                 properties:
@@ -563,6 +565,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 internalCheckers:
                   items:
                     properties:

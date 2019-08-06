@@ -443,6 +443,8 @@ spec:
               type: array
             description:
               type: string
+            id:
+              type: string
             project:
               type: string
             providerRef:
@@ -512,6 +514,8 @@ spec:
                   maxItems: 1
                   type: array
                 description:
+                  type: string
+                id:
                   type: string
                 project:
                   type: string

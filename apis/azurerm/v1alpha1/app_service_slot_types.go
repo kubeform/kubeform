@@ -107,6 +107,8 @@ type AppServiceSlotSpecSiteCredential struct {
 type AppServiceSlotSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	AppServiceName   string `json:"appServiceName" tf:"app_service_name"`

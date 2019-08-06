@@ -21,6 +21,8 @@ type Ec2ClientVPNNetworkAssociation struct {
 type Ec2ClientVPNNetworkAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ClientVPNEndpointID string `json:"clientVPNEndpointID" tf:"client_vpn_endpoint_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true

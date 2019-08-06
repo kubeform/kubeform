@@ -415,6 +415,8 @@ spec:
               type: string
             detectMd5hash:
               type: string
+            id:
+              type: string
             md5hash:
               type: string
             name:
@@ -463,6 +465,8 @@ spec:
                 crc32c:
                   type: string
                 detectMd5hash:
+                  type: string
+                id:
                   type: string
                 md5hash:
                   type: string

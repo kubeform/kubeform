@@ -399,6 +399,8 @@ spec:
           properties:
             endpoint:
               type: string
+            id:
+              type: string
             inputMappingDefaultValues:
               items:
                 properties:
@@ -466,6 +468,8 @@ spec:
             output:
               properties:
                 endpoint:
+                  type: string
+                id:
                   type: string
                 inputMappingDefaultValues:
                   items:

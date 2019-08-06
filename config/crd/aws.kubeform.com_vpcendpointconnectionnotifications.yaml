@@ -405,6 +405,8 @@ spec:
               uniqueItems: true
             connectionNotificationArn:
               type: string
+            id:
+              type: string
             notificationType:
               type: string
             providerRef:
@@ -443,6 +445,8 @@ spec:
                   type: array
                   uniqueItems: true
                 connectionNotificationArn:
+                  type: string
+                id:
                   type: string
                 notificationType:
                   type: string

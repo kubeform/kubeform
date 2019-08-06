@@ -21,6 +21,8 @@ type Volume struct {
 type VolumeSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	FilesystemPath string `json:"filesystemPath,omitempty" tf:"filesystem_path,omitempty"`
 	Label          string `json:"label" tf:"label"`

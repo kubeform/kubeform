@@ -403,6 +403,8 @@ spec:
               type: string
             fileSystemID:
               type: string
+            id:
+              type: string
             ipAddress:
               type: string
             networkInterfaceID:
@@ -442,6 +444,8 @@ spec:
                 fileSystemArn:
                   type: string
                 fileSystemID:
+                  type: string
+                id:
                   type: string
                 ipAddress:
                   type: string

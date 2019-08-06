@@ -423,6 +423,8 @@ spec:
               uniqueItems: true
             direction:
               type: string
+            id:
+              type: string
             name:
               type: string
             networkSecurityGroupName:
@@ -506,6 +508,8 @@ spec:
                   type: array
                   uniqueItems: true
                 direction:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

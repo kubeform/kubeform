@@ -399,6 +399,8 @@ spec:
           properties:
             connectionID:
               type: string
+            id:
+              type: string
             lagID:
               type: string
             providerRef:
@@ -425,6 +427,8 @@ spec:
             output:
               properties:
                 connectionID:
+                  type: string
+                id:
                   type: string
                 lagID:
                   type: string

@@ -399,6 +399,8 @@ spec:
           properties:
             completeLock:
               type: boolean
+            id:
+              type: string
             ignoreDeletionError:
               type: boolean
             policy:
@@ -431,6 +433,8 @@ spec:
               properties:
                 completeLock:
                   type: boolean
+                id:
+                  type: string
                 ignoreDeletionError:
                   type: boolean
                 policy:

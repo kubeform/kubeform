@@ -21,6 +21,8 @@ type SfnStateMachine struct {
 type SfnStateMachineSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	CreationDate string `json:"creationDate,omitempty" tf:"creation_date,omitempty"`
 	Definition   string `json:"definition" tf:"definition"`

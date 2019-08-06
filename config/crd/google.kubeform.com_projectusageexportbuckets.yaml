@@ -399,6 +399,8 @@ spec:
           properties:
             bucketName:
               type: string
+            id:
+              type: string
             prefix:
               type: string
             project:
@@ -426,6 +428,8 @@ spec:
             output:
               properties:
                 bucketName:
+                  type: string
+                id:
                   type: string
                 prefix:
                   type: string

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            id:
+              type: string
             principalArn:
               type: string
             providerRef:
@@ -424,6 +426,8 @@ spec:
               type: integer
             output:
               properties:
+                id:
+                  type: string
                 principalArn:
                   type: string
                 providerRef:

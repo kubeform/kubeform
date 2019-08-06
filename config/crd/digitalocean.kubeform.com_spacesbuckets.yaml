@@ -403,6 +403,8 @@ spec:
               type: string
             forceDestroy:
               type: boolean
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -437,6 +439,8 @@ spec:
                   type: string
                 forceDestroy:
                   type: boolean
+                id:
+                  type: string
                 name:
                   type: string
                 providerRef:

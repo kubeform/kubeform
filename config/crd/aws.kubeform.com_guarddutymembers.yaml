@@ -405,6 +405,8 @@ spec:
               type: boolean
             email:
               type: string
+            id:
+              type: string
             invitationMessage:
               type: string
             invite:
@@ -442,6 +444,8 @@ spec:
                 disableEmailNotification:
                   type: boolean
                 email:
+                  type: string
+                id:
                   type: string
                 invitationMessage:
                   type: string

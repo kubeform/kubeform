@@ -412,6 +412,8 @@ spec:
               type: string
             dxGatewayOwnerAccountID:
               type: string
+            id:
+              type: string
             providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
@@ -452,6 +454,8 @@ spec:
                 dxGatewayID:
                   type: string
                 dxGatewayOwnerAccountID:
+                  type: string
+                id:
                   type: string
                 providerRef:
                   description: LocalObjectReference contains enough information to

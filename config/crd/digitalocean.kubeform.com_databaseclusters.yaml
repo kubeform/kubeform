@@ -403,6 +403,8 @@ spec:
               type: string
             host:
               type: string
+            id:
+              type: string
             maintenanceWindow:
               items:
                 properties:
@@ -466,6 +468,8 @@ spec:
                 engine:
                   type: string
                 host:
+                  type: string
+                id:
                   type: string
                 maintenanceWindow:
                   items:

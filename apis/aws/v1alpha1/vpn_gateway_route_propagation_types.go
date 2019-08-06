@@ -21,6 +21,8 @@ type VpnGatewayRoutePropagation struct {
 type VpnGatewayRoutePropagationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	RouteTableID string `json:"routeTableID" tf:"route_table_id"`
 	VpnGatewayID string `json:"vpnGatewayID" tf:"vpn_gateway_id"`
 }

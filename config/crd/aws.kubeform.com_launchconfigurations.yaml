@@ -442,6 +442,8 @@ spec:
               uniqueItems: true
             iamInstanceProfile:
               type: string
+            id:
+              type: string
             imageID:
               type: string
             instanceType:
@@ -553,6 +555,8 @@ spec:
                   type: array
                   uniqueItems: true
                 iamInstanceProfile:
+                  type: string
+                id:
                   type: string
                 imageID:
                   type: string

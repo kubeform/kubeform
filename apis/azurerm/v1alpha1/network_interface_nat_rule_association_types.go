@@ -21,6 +21,8 @@ type NetworkInterfaceNATRuleAssociation struct {
 type NetworkInterfaceNATRuleAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	IpConfigurationName string `json:"ipConfigurationName" tf:"ip_configuration_name"`
 	NatRuleID           string `json:"natRuleID" tf:"nat_rule_id"`
 	NetworkInterfaceID  string `json:"networkInterfaceID" tf:"network_interface_id"`

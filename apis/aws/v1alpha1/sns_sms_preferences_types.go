@@ -21,6 +21,8 @@ type SnsSmsPreferences struct {
 type SnsSmsPreferencesSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	DefaultSenderID string `json:"defaultSenderID,omitempty" tf:"default_sender_id,omitempty"`
 	// +optional

@@ -401,6 +401,8 @@ spec:
               type: string
             defaultACL:
               type: string
+            id:
+              type: string
             predefinedACL:
               type: string
             providerRef:
@@ -432,6 +434,8 @@ spec:
                 bucket:
                   type: string
                 defaultACL:
+                  type: string
+                id:
                   type: string
                 predefinedACL:
                   type: string

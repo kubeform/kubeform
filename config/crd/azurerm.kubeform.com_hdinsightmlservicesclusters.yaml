@@ -416,6 +416,8 @@ spec:
               type: array
             httpsEndpoint:
               type: string
+            id:
+              type: string
             location:
               type: string
             name:
@@ -605,6 +607,8 @@ spec:
                   maxItems: 1
                   type: array
                 httpsEndpoint:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

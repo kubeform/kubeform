@@ -450,6 +450,8 @@ spec:
                 type: object
               maxItems: 4
               type: array
+            id:
+              type: string
             name:
               type: string
             operatingSystem:
@@ -538,6 +540,8 @@ spec:
                     type: object
                   maxItems: 4
                   type: array
+                id:
+                  type: string
                 name:
                   type: string
                 operatingSystem:

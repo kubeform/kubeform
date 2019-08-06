@@ -21,6 +21,8 @@ type DatabricksWorkspace struct {
 type DatabricksWorkspaceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Location string `json:"location" tf:"location"`
 	// +optional
 	ManagedResourceGroupID string `json:"managedResourceGroupID,omitempty" tf:"managed_resource_group_id,omitempty"`

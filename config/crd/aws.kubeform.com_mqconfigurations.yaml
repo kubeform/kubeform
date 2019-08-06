@@ -407,6 +407,8 @@ spec:
               type: string
             engineVersion:
               type: string
+            id:
+              type: string
             latestRevision:
               type: integer
             name:
@@ -449,6 +451,8 @@ spec:
                 engineType:
                   type: string
                 engineVersion:
+                  type: string
+                id:
                   type: string
                 latestRevision:
                   type: integer

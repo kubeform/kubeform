@@ -401,6 +401,8 @@ spec:
               type: string
             folder:
               type: string
+            id:
+              type: string
             members:
               items:
                 type: string
@@ -435,6 +437,8 @@ spec:
                 etag:
                   type: string
                 folder:
+                  type: string
+                id:
                   type: string
                 members:
                   items:

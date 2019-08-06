@@ -429,6 +429,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             instances:
               items:
                 type: string
@@ -541,6 +543,8 @@ spec:
                 cnamePrefix:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 instances:
                   items:

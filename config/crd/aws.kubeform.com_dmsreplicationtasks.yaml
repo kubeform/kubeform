@@ -399,6 +399,8 @@ spec:
           properties:
             cdcStartTime:
               type: string
+            id:
+              type: string
             migrationType:
               type: string
             providerRef:
@@ -447,6 +449,8 @@ spec:
             output:
               properties:
                 cdcStartTime:
+                  type: string
+                id:
                   type: string
                 migrationType:
                   type: string

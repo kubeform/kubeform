@@ -403,6 +403,8 @@ spec:
               type: boolean
             filter:
               type: string
+            id:
+              type: string
             name:
               type: string
             orgID:
@@ -436,6 +438,8 @@ spec:
                 disabled:
                   type: boolean
                 filter:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

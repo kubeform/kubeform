@@ -21,6 +21,8 @@ type ApiManagementAPIOperationPolicy struct {
 type ApiManagementAPIOperationPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	ApiName           string `json:"apiName" tf:"api_name"`
 	OperationID       string `json:"operationID" tf:"operation_id"`

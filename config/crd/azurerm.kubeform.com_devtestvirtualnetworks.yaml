@@ -399,6 +399,8 @@ spec:
           properties:
             description:
               type: string
+            id:
+              type: string
             labName:
               type: string
             name:
@@ -448,6 +450,8 @@ spec:
             output:
               properties:
                 description:
+                  type: string
+                id:
                   type: string
                 labName:
                   type: string

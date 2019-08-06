@@ -417,6 +417,8 @@ spec:
               type: string
             displayName:
               type: string
+            id:
+              type: string
             instanceType:
               type: string
             name:
@@ -473,6 +475,8 @@ spec:
                   description: Deprecated
                   type: string
                 displayName:
+                  type: string
+                id:
                   type: string
                 instanceType:
                   type: string

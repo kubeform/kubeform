@@ -21,6 +21,8 @@ type SesIdentityPolicy struct {
 type SesIdentityPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Identity string `json:"identity" tf:"identity"`
 	Name     string `json:"name" tf:"name"`
 	Policy   string `json:"policy" tf:"policy"`

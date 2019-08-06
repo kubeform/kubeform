@@ -458,6 +458,8 @@ spec:
               uniqueItems: true
             elasticLoadBalancer:
               type: string
+            id:
+              type: string
             installUpdatesOnBoot:
               type: boolean
             instanceShutdownTimeout:
@@ -557,6 +559,8 @@ spec:
                   type: array
                   uniqueItems: true
                 elasticLoadBalancer:
+                  type: string
+                id:
                   type: string
                 installUpdatesOnBoot:
                   type: boolean

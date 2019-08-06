@@ -21,6 +21,8 @@ type S3AccountPublicAccessBlock struct {
 type S3AccountPublicAccessBlockSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AccountID string `json:"accountID,omitempty" tf:"account_id,omitempty"`
 	// +optional

@@ -419,6 +419,8 @@ spec:
               type: integer
             iamRole:
               type: string
+            id:
+              type: string
             launchType:
               type: string
             loadBalancer:
@@ -559,6 +561,8 @@ spec:
                 healthCheckGracePeriodSeconds:
                   type: integer
                 iamRole:
+                  type: string
+                id:
                   type: string
                 launchType:
                   type: string

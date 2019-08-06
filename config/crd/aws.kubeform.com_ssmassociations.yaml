@@ -405,6 +405,8 @@ spec:
               type: string
             documentVersion:
               type: string
+            id:
+              type: string
             instanceID:
               type: string
             maxConcurrency:
@@ -475,6 +477,8 @@ spec:
                 complianceSeverity:
                   type: string
                 documentVersion:
+                  type: string
+                id:
                   type: string
                 instanceID:
                   type: string

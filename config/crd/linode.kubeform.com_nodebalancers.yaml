@@ -403,6 +403,8 @@ spec:
               type: string
             hostname:
               type: string
+            id:
+              type: string
             ipv4:
               type: string
             ipv6:
@@ -459,6 +461,8 @@ spec:
                 created:
                   type: string
                 hostname:
+                  type: string
+                id:
                   type: string
                 ipv4:
                   type: string

@@ -424,6 +424,8 @@ spec:
               type: integer
             extendedStatistic:
               type: string
+            id:
+              type: string
             insufficientDataActions:
               items:
                 type: string
@@ -544,6 +546,8 @@ spec:
                 evaluationPeriods:
                   type: integer
                 extendedStatistic:
+                  type: string
+                id:
                   type: string
                 insufficientDataActions:
                   items:

@@ -407,6 +407,8 @@ spec:
               type: string
             functionName:
               type: string
+            id:
+              type: string
             lastModified:
               type: string
             lastProcessingResult:
@@ -453,6 +455,8 @@ spec:
                 functionArn:
                   type: string
                 functionName:
+                  type: string
+                id:
                   type: string
                 lastModified:
                   type: string

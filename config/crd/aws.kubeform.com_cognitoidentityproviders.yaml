@@ -401,6 +401,8 @@ spec:
               additionalProperties:
                 type: string
               type: object
+            id:
+              type: string
             idpIdentifiers:
               items:
                 type: string
@@ -444,6 +446,8 @@ spec:
                   additionalProperties:
                     type: string
                   type: object
+                id:
+                  type: string
                 idpIdentifiers:
                   items:
                     type: string

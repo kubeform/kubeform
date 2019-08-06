@@ -401,6 +401,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             inputParameters:
               type: string
             maximumExecutionFrequency:
@@ -479,6 +481,8 @@ spec:
                 arn:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 inputParameters:
                   type: string

@@ -39,6 +39,8 @@ type VpcPeeringConnectionSpecRequester struct {
 type VpcPeeringConnectionSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AcceptStatus string `json:"acceptStatus,omitempty" tf:"accept_status,omitempty"`
 	// +optional

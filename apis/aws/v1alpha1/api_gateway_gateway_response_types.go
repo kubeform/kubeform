@@ -21,6 +21,8 @@ type ApiGatewayGatewayResponse struct {
 type ApiGatewayGatewayResponseSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ResponseParameters map[string]string `json:"responseParameters,omitempty" tf:"response_parameters,omitempty"`
 	// +optional

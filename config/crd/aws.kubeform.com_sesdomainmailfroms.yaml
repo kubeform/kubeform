@@ -401,6 +401,8 @@ spec:
               type: string
             domain:
               type: string
+            id:
+              type: string
             mailFromDomain:
               type: string
             providerRef:
@@ -429,6 +431,8 @@ spec:
                 behaviorOnMxFailure:
                   type: string
                 domain:
+                  type: string
+                id:
                   type: string
                 mailFromDomain:
                   type: string

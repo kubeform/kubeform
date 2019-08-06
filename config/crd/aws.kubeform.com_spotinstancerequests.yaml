@@ -467,6 +467,8 @@ spec:
               type: string
             iamInstanceProfile:
               type: string
+            id:
+              type: string
             instanceInitiatedShutdownBehavior:
               type: string
             instanceInterruptionBehaviour:
@@ -668,6 +670,8 @@ spec:
                 hostID:
                   type: string
                 iamInstanceProfile:
+                  type: string
+                id:
                   type: string
                 instanceInitiatedShutdownBehavior:
                   type: string

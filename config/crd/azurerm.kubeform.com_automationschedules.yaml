@@ -408,6 +408,8 @@ spec:
               type: string
             frequency:
               type: string
+            id:
+              type: string
             interval:
               type: integer
             monthDays:
@@ -475,6 +477,8 @@ spec:
                 expiryTime:
                   type: string
                 frequency:
+                  type: string
+                id:
                   type: string
                 interval:
                   type: integer

@@ -409,6 +409,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             memberAccountID:
               type: string
             prefix:
@@ -447,6 +449,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 memberAccountID:
                   type: string
                 prefix:

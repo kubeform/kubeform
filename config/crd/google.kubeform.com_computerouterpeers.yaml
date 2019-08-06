@@ -399,6 +399,8 @@ spec:
           properties:
             advertisedRoutePriority:
               type: integer
+            id:
+              type: string
             interface:
               type: string
             ipAddress:
@@ -442,6 +444,8 @@ spec:
               properties:
                 advertisedRoutePriority:
                   type: integer
+                id:
+                  type: string
                 interface:
                   type: string
                 ipAddress:

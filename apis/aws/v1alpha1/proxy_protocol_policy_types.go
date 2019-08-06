@@ -21,6 +21,8 @@ type ProxyProtocolPolicy struct {
 type ProxyProtocolPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +kubebuilder:validation:UniqueItems=true
 	InstancePorts []string `json:"instancePorts" tf:"instance_ports"`
 	LoadBalancer  string   `json:"loadBalancer" tf:"load_balancer"`

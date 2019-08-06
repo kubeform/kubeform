@@ -21,6 +21,8 @@ type UserAssignedIdentity struct {
 type UserAssignedIdentitySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ClientID string `json:"clientID,omitempty" tf:"client_id,omitempty"`
 	Location string `json:"location" tf:"location"`

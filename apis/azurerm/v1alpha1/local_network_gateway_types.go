@@ -28,6 +28,8 @@ type LocalNetworkGatewaySpecBgpSettings struct {
 type LocalNetworkGatewaySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AddressSpace []string `json:"addressSpace" tf:"address_space"`
 	// +optional
 	// +kubebuilder:validation:MaxItems=1

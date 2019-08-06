@@ -61,6 +61,8 @@ type OrganizationsOrganizationSpecRoots struct {
 type OrganizationsOrganizationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Accounts []OrganizationsOrganizationSpecAccounts `json:"accounts,omitempty" tf:"accounts,omitempty"`
 	// +optional

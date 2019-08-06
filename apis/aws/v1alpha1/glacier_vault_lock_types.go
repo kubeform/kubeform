@@ -21,6 +21,8 @@ type GlacierVaultLock struct {
 type GlacierVaultLockSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	CompleteLock bool `json:"completeLock" tf:"complete_lock"`
 	// +optional
 	IgnoreDeletionError bool   `json:"ignoreDeletionError,omitempty" tf:"ignore_deletion_error,omitempty"`

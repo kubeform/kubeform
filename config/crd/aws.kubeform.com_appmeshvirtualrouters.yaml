@@ -401,6 +401,8 @@ spec:
               type: string
             createdDate:
               type: string
+            id:
+              type: string
             lastUpdatedDate:
               type: string
             meshName:
@@ -471,6 +473,8 @@ spec:
                 arn:
                   type: string
                 createdDate:
+                  type: string
+                id:
                   type: string
                 lastUpdatedDate:
                   type: string

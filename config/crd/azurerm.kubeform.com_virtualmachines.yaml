@@ -416,6 +416,8 @@ spec:
               type: boolean
             deleteOsDiskOnTermination:
               type: boolean
+            id:
+              type: string
             identity:
               items:
                 properties:
@@ -700,6 +702,8 @@ spec:
                   type: boolean
                 deleteOsDiskOnTermination:
                   type: boolean
+                id:
+                  type: string
                 identity:
                   items:
                     properties:

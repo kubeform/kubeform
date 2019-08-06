@@ -34,6 +34,8 @@ type KubernetesNodePoolSpecNodes struct {
 type KubernetesNodePoolSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ClusterID string `json:"clusterID" tf:"cluster_id"`
 	Name      string `json:"name" tf:"name"`
 	NodeCount int    `json:"nodeCount" tf:"node_count"`

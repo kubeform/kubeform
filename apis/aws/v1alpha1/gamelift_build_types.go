@@ -27,6 +27,8 @@ type GameliftBuildSpecStorageLocation struct {
 type GameliftBuildSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Name            string `json:"name" tf:"name"`
 	OperatingSystem string `json:"operatingSystem" tf:"operating_system"`
 	// +kubebuilder:validation:MaxItems=1

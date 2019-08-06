@@ -403,6 +403,8 @@ spec:
               type: string
             executionArn:
               type: string
+            id:
+              type: string
             invokeURL:
               type: string
             providerRef:
@@ -442,6 +444,8 @@ spec:
                 description:
                   type: string
                 executionArn:
+                  type: string
+                id:
                   type: string
                 invokeURL:
                   type: string

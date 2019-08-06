@@ -436,6 +436,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            id:
+              type: string
             ingress:
               items:
                 properties:
@@ -545,6 +547,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 ingress:
                   items:
                     properties:

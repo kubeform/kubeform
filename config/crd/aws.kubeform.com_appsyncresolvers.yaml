@@ -405,6 +405,8 @@ spec:
               type: string
             field:
               type: string
+            id:
+              type: string
             kind:
               type: string
             pipelineConfig:
@@ -456,6 +458,8 @@ spec:
                 dataSource:
                   type: string
                 field:
+                  type: string
+                id:
                   type: string
                 kind:
                   type: string

@@ -50,6 +50,8 @@ type EndpointsServiceSpecEndpoints struct {
 type EndpointsServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Apis []EndpointsServiceSpecApis `json:"apis,omitempty" tf:"apis,omitempty"`
 	// +optional

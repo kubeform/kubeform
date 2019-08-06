@@ -29,6 +29,8 @@ type StreamAnalyticsStreamInputIothubSpecSerialization struct {
 type StreamAnalyticsStreamInputIothubSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Endpoint                  string `json:"endpoint" tf:"endpoint"`

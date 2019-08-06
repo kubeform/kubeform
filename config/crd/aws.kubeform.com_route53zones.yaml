@@ -403,6 +403,8 @@ spec:
               type: string
             forceDestroy:
               type: boolean
+            id:
+              type: string
             name:
               type: string
             nameServers:
@@ -456,6 +458,8 @@ spec:
                   type: string
                 forceDestroy:
                   type: boolean
+                id:
+                  type: string
                 name:
                   type: string
                 nameServers:

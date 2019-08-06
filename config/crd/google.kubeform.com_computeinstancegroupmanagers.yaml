@@ -417,6 +417,8 @@ spec:
               type: string
             fingerprint:
               type: string
+            id:
+              type: string
             instanceGroup:
               type: string
             instanceTemplate:
@@ -541,6 +543,8 @@ spec:
                 description:
                   type: string
                 fingerprint:
+                  type: string
+                id:
                   type: string
                 instanceGroup:
                   type: string

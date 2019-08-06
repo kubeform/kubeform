@@ -410,6 +410,8 @@ spec:
               type: boolean
             forwardTo:
               type: string
+            id:
+              type: string
             location:
               description: Deprecated
               type: string
@@ -465,6 +467,8 @@ spec:
                 enableBatchedOperations:
                   type: boolean
                 forwardTo:
+                  type: string
+                id:
                   type: string
                 location:
                   description: Deprecated

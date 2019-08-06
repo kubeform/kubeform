@@ -21,6 +21,8 @@ type ApiGatewayAuthorizer struct {
 type ApiGatewayAuthorizerSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AuthorizerCredentials string `json:"authorizerCredentials,omitempty" tf:"authorizer_credentials,omitempty"`
 	// +optional

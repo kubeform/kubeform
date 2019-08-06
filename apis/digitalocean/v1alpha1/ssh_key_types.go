@@ -21,6 +21,8 @@ type SshKey struct {
 type SshKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Fingerprint string `json:"fingerprint,omitempty" tf:"fingerprint,omitempty"`
 	Name        string `json:"name" tf:"name"`

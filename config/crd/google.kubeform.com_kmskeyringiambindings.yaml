@@ -399,6 +399,8 @@ spec:
           properties:
             etag:
               type: string
+            id:
+              type: string
             keyRingID:
               type: string
             members:
@@ -433,6 +435,8 @@ spec:
             output:
               properties:
                 etag:
+                  type: string
+                id:
                   type: string
                 keyRingID:
                   type: string

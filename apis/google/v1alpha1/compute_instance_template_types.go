@@ -109,6 +109,8 @@ type ComputeInstanceTemplateSpecServiceAccount struct {
 type ComputeInstanceTemplateSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	CanIPForward bool `json:"canIPForward,omitempty" tf:"can_ip_forward,omitempty"`
 	// +optional

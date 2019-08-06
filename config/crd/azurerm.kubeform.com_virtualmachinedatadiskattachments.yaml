@@ -401,6 +401,8 @@ spec:
               type: string
             createOption:
               type: string
+            id:
+              type: string
             lun:
               type: integer
             managedDiskID:
@@ -437,6 +439,8 @@ spec:
                 caching:
                   type: string
                 createOption:
+                  type: string
+                id:
                   type: string
                 lun:
                   type: integer

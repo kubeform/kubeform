@@ -414,6 +414,8 @@ spec:
               type: string
             iamRoleArn:
               type: string
+            id:
+              type: string
             maintenanceWindow:
               type: string
             nodeType:
@@ -499,6 +501,8 @@ spec:
                 description:
                   type: string
                 iamRoleArn:
+                  type: string
+                id:
                   type: string
                 maintenanceWindow:
                   type: string

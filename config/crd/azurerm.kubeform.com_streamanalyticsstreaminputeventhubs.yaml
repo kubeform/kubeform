@@ -401,6 +401,8 @@ spec:
               type: string
             eventhubName:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -466,6 +468,8 @@ spec:
                 eventhubConsumerGroupName:
                   type: string
                 eventhubName:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

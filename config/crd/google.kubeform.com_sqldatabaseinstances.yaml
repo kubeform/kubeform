@@ -403,6 +403,8 @@ spec:
               type: string
             firstIPAddress:
               type: string
+            id:
+              type: string
             ipAddress:
               items:
                 properties:
@@ -605,6 +607,8 @@ spec:
                 databaseVersion:
                   type: string
                 firstIPAddress:
+                  type: string
+                id:
                   type: string
                 ipAddress:
                   items:

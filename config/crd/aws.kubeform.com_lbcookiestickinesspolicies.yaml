@@ -399,6 +399,8 @@ spec:
           properties:
             cookieExpirationPeriod:
               type: integer
+            id:
+              type: string
             lbPort:
               type: integer
             loadBalancer:
@@ -431,6 +433,8 @@ spec:
               properties:
                 cookieExpirationPeriod:
                   type: integer
+                id:
+                  type: string
                 lbPort:
                   type: integer
                 loadBalancer:

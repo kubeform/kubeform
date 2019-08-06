@@ -53,6 +53,8 @@ type NetworkACLSpecIngress struct {
 type NetworkACLSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Egress []NetworkACLSpecEgress `json:"egress,omitempty" tf:"egress,omitempty"`

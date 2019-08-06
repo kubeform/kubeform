@@ -510,6 +510,8 @@ spec:
                 - type
                 type: object
               type: array
+            id:
+              type: string
             loadBalancerArn:
               type: string
             port:
@@ -664,6 +666,8 @@ spec:
                     - type
                     type: object
                   type: array
+                id:
+                  type: string
                 loadBalancerArn:
                   type: string
                 port:

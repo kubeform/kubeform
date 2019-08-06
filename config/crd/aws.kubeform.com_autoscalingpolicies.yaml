@@ -407,6 +407,8 @@ spec:
               type: integer
             estimatedInstanceWarmup:
               type: integer
+            id:
+              type: string
             metricAggregationType:
               type: string
             minAdjustmentMagnitude:
@@ -519,6 +521,8 @@ spec:
                   type: integer
                 estimatedInstanceWarmup:
                   type: integer
+                id:
+                  type: string
                 metricAggregationType:
                   type: string
                 minAdjustmentMagnitude:

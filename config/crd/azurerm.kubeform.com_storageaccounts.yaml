@@ -428,6 +428,8 @@ spec:
               type: boolean
             enableHTTPSTrafficOnly:
               type: boolean
+            id:
+              type: string
             identity:
               items:
                 properties:
@@ -595,6 +597,8 @@ spec:
                   type: boolean
                 enableHTTPSTrafficOnly:
                   type: boolean
+                id:
+                  type: string
                 identity:
                   items:
                     properties:

@@ -496,6 +496,8 @@ spec:
               maxItems: 1
               type: array
               uniqueItems: true
+            id:
+              type: string
             logsConfig:
               items:
                 properties:
@@ -781,6 +783,8 @@ spec:
                   maxItems: 1
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 logsConfig:
                   items:
                     properties:

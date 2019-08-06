@@ -403,6 +403,8 @@ spec:
               type: string
             enforceConsumerDeletion:
               type: boolean
+            id:
+              type: string
             kmsKeyID:
               type: string
             name:
@@ -449,6 +451,8 @@ spec:
                   type: string
                 enforceConsumerDeletion:
                   type: boolean
+                id:
+                  type: string
                 kmsKeyID:
                   type: string
                 name:

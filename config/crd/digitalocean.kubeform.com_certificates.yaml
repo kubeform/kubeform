@@ -404,6 +404,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            id:
+              type: string
             leafCertificate:
               type: string
             name:
@@ -454,6 +456,8 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 leafCertificate:
                   type: string
                 name:

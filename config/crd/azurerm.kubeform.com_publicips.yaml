@@ -403,6 +403,8 @@ spec:
               type: string
             fqdn:
               type: string
+            id:
+              type: string
             idleTimeoutInMinutes:
               type: integer
             ipAddress:
@@ -462,6 +464,8 @@ spec:
                 domainNameLabel:
                   type: string
                 fqdn:
+                  type: string
+                id:
                   type: string
                 idleTimeoutInMinutes:
                   type: integer

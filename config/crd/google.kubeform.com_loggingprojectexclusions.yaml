@@ -403,6 +403,8 @@ spec:
               type: boolean
             filter:
               type: string
+            id:
+              type: string
             name:
               type: string
             project:
@@ -435,6 +437,8 @@ spec:
                 disabled:
                   type: boolean
                 filter:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

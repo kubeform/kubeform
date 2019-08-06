@@ -403,6 +403,8 @@ spec:
               type: string
             functionName:
               type: string
+            id:
+              type: string
             principal:
               type: string
             providerRef:
@@ -444,6 +446,8 @@ spec:
                 eventSourceToken:
                   type: string
                 functionName:
+                  type: string
+                id:
                   type: string
                 principal:
                   type: string

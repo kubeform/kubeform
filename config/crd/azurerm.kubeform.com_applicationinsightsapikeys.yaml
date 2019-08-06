@@ -399,6 +399,8 @@ spec:
           properties:
             applicationInsightsID:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -444,6 +446,8 @@ spec:
             output:
               properties:
                 applicationInsightsID:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

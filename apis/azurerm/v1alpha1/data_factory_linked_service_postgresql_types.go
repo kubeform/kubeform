@@ -21,6 +21,8 @@ type DataFactoryLinkedServicePostgresql struct {
 type DataFactoryLinkedServicePostgresqlSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AdditionalProperties map[string]string `json:"additionalProperties,omitempty" tf:"additional_properties,omitempty"`
 	// +optional

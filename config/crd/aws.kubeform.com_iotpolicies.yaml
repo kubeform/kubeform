@@ -401,6 +401,8 @@ spec:
               type: string
             defaultVersionID:
               type: string
+            id:
+              type: string
             name:
               type: string
             policy:
@@ -431,6 +433,8 @@ spec:
                 arn:
                   type: string
                 defaultVersionID:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

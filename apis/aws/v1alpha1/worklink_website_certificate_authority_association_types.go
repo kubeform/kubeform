@@ -21,6 +21,8 @@ type WorklinkWebsiteCertificateAuthorityAssociation struct {
 type WorklinkWebsiteCertificateAuthorityAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Certificate string `json:"certificate" tf:"certificate"`
 	// +optional
 	DisplayName string `json:"displayName,omitempty" tf:"display_name,omitempty"`

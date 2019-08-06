@@ -399,6 +399,8 @@ spec:
           properties:
             etag:
               type: string
+            id:
+              type: string
             instance:
               type: string
             policyData:
@@ -429,6 +431,8 @@ spec:
             output:
               properties:
                 etag:
+                  type: string
+                id:
                   type: string
                 instance:
                   type: string

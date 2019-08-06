@@ -21,6 +21,8 @@ type Route53ZoneAssociation struct {
 type Route53ZoneAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	VpcID string `json:"vpcID" tf:"vpc_id"`
 	// +optional
 	VpcRegion string `json:"vpcRegion,omitempty" tf:"vpc_region,omitempty"`

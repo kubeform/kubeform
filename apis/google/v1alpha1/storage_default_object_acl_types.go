@@ -21,6 +21,8 @@ type StorageDefaultObjectACL struct {
 type StorageDefaultObjectACLSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Bucket string `json:"bucket" tf:"bucket"`
 	// +optional
 	// +kubebuilder:validation:MinItems=1

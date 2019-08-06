@@ -403,6 +403,8 @@ spec:
               type: string
             certificateChain:
               type: string
+            id:
+              type: string
             name:
               type: string
             namePrefix:
@@ -445,6 +447,8 @@ spec:
                 certificateBody:
                   type: string
                 certificateChain:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

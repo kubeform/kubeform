@@ -29,6 +29,8 @@ type CloudwatchLogMetricFilterSpecMetricTransformation struct {
 type CloudwatchLogMetricFilterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	LogGroupName string `json:"logGroupName" tf:"log_group_name"`
 	// +kubebuilder:validation:MaxItems=1
 	MetricTransformation []CloudwatchLogMetricFilterSpecMetricTransformation `json:"metricTransformation" tf:"metric_transformation"`

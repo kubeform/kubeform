@@ -21,6 +21,8 @@ type ApiGatewayRequestValidator struct {
 type ApiGatewayRequestValidatorSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Name      string `json:"name" tf:"name"`
 	RestAPIID string `json:"restAPIID" tf:"rest_api_id"`
 	// +optional

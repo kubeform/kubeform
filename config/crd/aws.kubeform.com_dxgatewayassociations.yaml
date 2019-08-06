@@ -414,6 +414,8 @@ spec:
               type: string
             dxGatewayOwnerAccountID:
               type: string
+            id:
+              type: string
             proposalID:
               type: string
             providerRef:
@@ -457,6 +459,8 @@ spec:
                 dxGatewayID:
                   type: string
                 dxGatewayOwnerAccountID:
+                  type: string
+                id:
                   type: string
                 proposalID:
                   type: string

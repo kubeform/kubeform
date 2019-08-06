@@ -415,6 +415,8 @@ spec:
                 type: object
               minItems: 1
               type: array
+            id:
+              type: string
             idleTimeoutInMinutes:
               type: integer
             loadbalancerID:
@@ -469,6 +471,8 @@ spec:
                     type: object
                   minItems: 1
                   type: array
+                id:
+                  type: string
                 idleTimeoutInMinutes:
                   type: integer
                 loadbalancerID:

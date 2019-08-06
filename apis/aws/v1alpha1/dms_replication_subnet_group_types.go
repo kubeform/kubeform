@@ -21,6 +21,8 @@ type DmsReplicationSubnetGroup struct {
 type DmsReplicationSubnetGroupSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ReplicationSubnetGroupArn         string `json:"replicationSubnetGroupArn,omitempty" tf:"replication_subnet_group_arn,omitempty"`
 	ReplicationSubnetGroupDescription string `json:"replicationSubnetGroupDescription" tf:"replication_subnet_group_description"`

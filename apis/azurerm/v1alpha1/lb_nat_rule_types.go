@@ -21,6 +21,8 @@ type LbNATRule struct {
 type LbNATRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	BackendIPConfigurationID string `json:"backendIPConfigurationID,omitempty" tf:"backend_ip_configuration_id,omitempty"`
 	BackendPort              int    `json:"backendPort" tf:"backend_port"`

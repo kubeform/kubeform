@@ -426,6 +426,8 @@ spec:
               type: array
             executionArn:
               type: string
+            id:
+              type: string
             minimumCompressionSize:
               type: integer
             name:
@@ -484,6 +486,8 @@ spec:
                   minItems: 1
                   type: array
                 executionArn:
+                  type: string
+                id:
                   type: string
                 minimumCompressionSize:
                   type: integer

@@ -405,6 +405,8 @@ spec:
               type: string
             fromPort:
               type: integer
+            id:
+              type: string
             ipv6CIDRBlocks:
               items:
                 type: string
@@ -459,6 +461,8 @@ spec:
                   type: string
                 fromPort:
                   type: integer
+                id:
+                  type: string
                 ipv6CIDRBlocks:
                   items:
                     type: string

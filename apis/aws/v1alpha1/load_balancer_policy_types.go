@@ -28,6 +28,8 @@ type LoadBalancerPolicySpecPolicyAttribute struct {
 type LoadBalancerPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	LoadBalancerName string `json:"loadBalancerName" tf:"load_balancer_name"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true

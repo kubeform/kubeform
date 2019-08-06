@@ -21,6 +21,8 @@ type ComputeSharedVpcServiceProject struct {
 type ComputeSharedVpcServiceProjectSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	HostProject    string `json:"hostProject" tf:"host_project"`
 	ServiceProject string `json:"serviceProject" tf:"service_project"`
 }

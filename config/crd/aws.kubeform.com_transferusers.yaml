@@ -401,6 +401,8 @@ spec:
               type: string
             homeDirectory:
               type: string
+            id:
+              type: string
             policy:
               type: string
             providerRef:
@@ -440,6 +442,8 @@ spec:
                 arn:
                   type: string
                 homeDirectory:
+                  type: string
+                id:
                   type: string
                 policy:
                   type: string

@@ -411,6 +411,8 @@ spec:
               type: string
             gatewayType:
               type: string
+            id:
+              type: string
             mediumChangerType:
               type: string
             providerRef:
@@ -473,6 +475,8 @@ spec:
                 gatewayTimezone:
                   type: string
                 gatewayType:
+                  type: string
+                id:
                   type: string
                 mediumChangerType:
                   type: string

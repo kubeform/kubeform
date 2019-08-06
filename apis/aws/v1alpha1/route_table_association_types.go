@@ -21,6 +21,8 @@ type RouteTableAssociation struct {
 type RouteTableAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	RouteTableID string `json:"routeTableID" tf:"route_table_id"`
 	SubnetID     string `json:"subnetID" tf:"subnet_id"`
 }

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            id:
+              type: string
             name:
               type: string
             parent:
@@ -432,6 +434,8 @@ spec:
               type: integer
             output:
               properties:
+                id:
+                  type: string
                 name:
                   type: string
                 parent:

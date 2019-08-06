@@ -21,6 +21,8 @@ type IamUserGroupMembership struct {
 type IamUserGroupMembershipSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +kubebuilder:validation:UniqueItems=true
 	Groups []string `json:"groups" tf:"groups"`
 	User   string   `json:"user" tf:"user"`

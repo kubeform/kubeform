@@ -456,6 +456,8 @@ spec:
               type: boolean
             endpoint:
               type: string
+            id:
+              type: string
             initialNodeCount:
               type: integer
             instanceGroupUrls:
@@ -905,6 +907,8 @@ spec:
                   description: Deprecated
                   type: boolean
                 endpoint:
+                  type: string
+                id:
                   type: string
                 initialNodeCount:
                   type: integer

@@ -21,6 +21,8 @@ type RedisFirewallRule struct {
 type RedisFirewallRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	EndIP             string `json:"endIP" tf:"end_ip"`
 	Name              string `json:"name" tf:"name"`
 	RedisCacheName    string `json:"redisCacheName" tf:"redis_cache_name"`

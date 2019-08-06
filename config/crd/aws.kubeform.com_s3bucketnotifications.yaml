@@ -399,6 +399,8 @@ spec:
           properties:
             bucket:
               type: string
+            id:
+              type: string
             lambdaFunction:
               items:
                 properties:
@@ -484,6 +486,8 @@ spec:
             output:
               properties:
                 bucket:
+                  type: string
+                id:
                   type: string
                 lambdaFunction:
                   items:

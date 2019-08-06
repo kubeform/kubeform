@@ -21,6 +21,8 @@ type DocdbClusterSnapshot struct {
 type DocdbClusterSnapshotSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AvailabilityZones   []string `json:"availabilityZones,omitempty" tf:"availability_zones,omitempty"`
 	DbClusterIdentifier string   `json:"dbClusterIdentifier" tf:"db_cluster_identifier"`

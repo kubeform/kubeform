@@ -403,6 +403,8 @@ spec:
               type: string
             heartbeatTimeout:
               type: integer
+            id:
+              type: string
             lifecycleTransition:
               type: string
             name:
@@ -443,6 +445,8 @@ spec:
                   type: string
                 heartbeatTimeout:
                   type: integer
+                id:
+                  type: string
                 lifecycleTransition:
                   type: string
                 name:

@@ -401,6 +401,8 @@ spec:
               type: string
             azureFirewallName:
               type: string
+            id:
+              type: string
             name:
               type: string
             priority:
@@ -474,6 +476,8 @@ spec:
                 action:
                   type: string
                 azureFirewallName:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

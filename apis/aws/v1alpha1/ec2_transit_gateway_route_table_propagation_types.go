@@ -21,6 +21,8 @@ type Ec2TransitGatewayRouteTablePropagation struct {
 type Ec2TransitGatewayRouteTablePropagationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ResourceID string `json:"resourceID,omitempty" tf:"resource_id,omitempty"`
 	// +optional

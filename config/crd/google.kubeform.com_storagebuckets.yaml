@@ -428,6 +428,8 @@ spec:
               type: array
             forceDestroy:
               type: boolean
+            id:
+              type: string
             labels:
               additionalProperties:
                 type: string
@@ -570,6 +572,8 @@ spec:
                   type: array
                 forceDestroy:
                   type: boolean
+                id:
+                  type: string
                 labels:
                   additionalProperties:
                     type: string

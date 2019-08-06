@@ -414,6 +414,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            id:
+              type: string
             managesVpcEndpoints:
               type: boolean
             networkLoadBalancerArns:
@@ -474,6 +476,8 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 managesVpcEndpoints:
                   type: boolean
                 networkLoadBalancerArns:

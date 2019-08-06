@@ -21,6 +21,8 @@ type IamRole struct {
 type IamRoleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Arn              string `json:"arn,omitempty" tf:"arn,omitempty"`
 	AssumeRolePolicy string `json:"assumeRolePolicy" tf:"assume_role_policy"`

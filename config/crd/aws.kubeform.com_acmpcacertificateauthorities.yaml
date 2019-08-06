@@ -453,6 +453,8 @@ spec:
               type: string
             enabled:
               type: boolean
+            id:
+              type: string
             notAfter:
               type: string
             notBefore:
@@ -569,6 +571,8 @@ spec:
                   type: string
                 enabled:
                   type: boolean
+                id:
+                  type: string
                 notAfter:
                   type: string
                 notBefore:

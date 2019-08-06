@@ -401,6 +401,8 @@ spec:
               type: string
             createdDate:
               type: string
+            id:
+              type: string
             lastUpdatedDate:
               type: string
             name:
@@ -448,6 +450,8 @@ spec:
                 arn:
                   type: string
                 createdDate:
+                  type: string
+                id:
                   type: string
                 lastUpdatedDate:
                   type: string

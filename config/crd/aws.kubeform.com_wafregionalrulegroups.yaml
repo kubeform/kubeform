@@ -423,6 +423,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            id:
+              type: string
             metricName:
               type: string
             name:
@@ -476,6 +478,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 metricName:
                   type: string
                 name:

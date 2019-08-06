@@ -21,6 +21,8 @@ type ApiGatewayUsagePlanKey struct {
 type ApiGatewayUsagePlanKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KeyID   string `json:"keyID" tf:"key_id"`
 	KeyType string `json:"keyType" tf:"key_type"`
 	// +optional

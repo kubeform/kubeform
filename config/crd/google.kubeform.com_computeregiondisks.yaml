@@ -411,6 +411,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             labelFingerprint:
               type: string
             labels:
@@ -494,6 +496,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 labelFingerprint:
                   type: string
                 labels:

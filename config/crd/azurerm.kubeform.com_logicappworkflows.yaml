@@ -399,6 +399,8 @@ spec:
           properties:
             accessEndpoint:
               type: string
+            id:
+              type: string
             location:
               type: string
             name:
@@ -442,6 +444,8 @@ spec:
             output:
               properties:
                 accessEndpoint:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

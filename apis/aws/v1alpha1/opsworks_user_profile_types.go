@@ -21,6 +21,8 @@ type OpsworksUserProfile struct {
 type OpsworksUserProfileSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AllowSelfManagement bool `json:"allowSelfManagement,omitempty" tf:"allow_self_management,omitempty"`
 	// +optional

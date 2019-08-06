@@ -34,6 +34,8 @@ type CloudhsmV2ClusterSpecClusterCertificates struct {
 type CloudhsmV2ClusterSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	// +kubebuilder:validation:MaxItems=1
 	ClusterCertificates []CloudhsmV2ClusterSpecClusterCertificates `json:"clusterCertificates,omitempty" tf:"cluster_certificates,omitempty"`

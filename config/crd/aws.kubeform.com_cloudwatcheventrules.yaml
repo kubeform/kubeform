@@ -403,6 +403,8 @@ spec:
               type: string
             eventPattern:
               type: string
+            id:
+              type: string
             isEnabled:
               type: boolean
             name:
@@ -443,6 +445,8 @@ spec:
                 description:
                   type: string
                 eventPattern:
+                  type: string
+                id:
                   type: string
                 isEnabled:
                   type: boolean

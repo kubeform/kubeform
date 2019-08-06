@@ -21,6 +21,8 @@ type DomainRecord struct {
 type DomainRecordSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	DomainID int    `json:"domainID" tf:"domain_id"`
 	Name     string `json:"name" tf:"name"`
 	// +optional

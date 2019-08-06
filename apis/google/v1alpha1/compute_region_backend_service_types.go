@@ -28,6 +28,8 @@ type ComputeRegionBackendServiceSpecBackend struct {
 type ComputeRegionBackendServiceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true
 	Backend []ComputeRegionBackendServiceSpecBackend `json:"backend,omitempty" tf:"backend,omitempty"`

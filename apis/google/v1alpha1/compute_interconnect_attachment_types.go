@@ -26,6 +26,8 @@ type ComputeInterconnectAttachmentSpecPrivateInterconnectInfo struct {
 type ComputeInterconnectAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	CloudRouterIPAddress string `json:"cloudRouterIPAddress,omitempty" tf:"cloud_router_ip_address,omitempty"`
 	// +optional

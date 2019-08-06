@@ -37,6 +37,8 @@ type BinaryAuthorizationAttestorSpecAttestationAuthorityNote struct {
 type BinaryAuthorizationAttestorSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +kubebuilder:validation:MaxItems=1
 	AttestationAuthorityNote []BinaryAuthorizationAttestorSpecAttestationAuthorityNote `json:"attestationAuthorityNote" tf:"attestation_authority_note"`
 	// +optional

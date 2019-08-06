@@ -53,6 +53,8 @@ type DefaultNetworkACLSpecIngress struct {
 type DefaultNetworkACLSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	DefaultNetworkACLID string `json:"defaultNetworkACLID" tf:"default_network_acl_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true

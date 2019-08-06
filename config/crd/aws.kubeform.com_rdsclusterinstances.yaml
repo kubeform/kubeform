@@ -421,6 +421,8 @@ spec:
               type: string
             engineVersion:
               type: string
+            id:
+              type: string
             identifier:
               type: string
             identifierPrefix:
@@ -501,6 +503,8 @@ spec:
                 engine:
                   type: string
                 engineVersion:
+                  type: string
+                id:
                   type: string
                 identifier:
                   type: string

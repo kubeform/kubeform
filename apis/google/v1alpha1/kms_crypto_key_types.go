@@ -21,6 +21,8 @@ type KmsCryptoKey struct {
 type KmsCryptoKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KeyRing string `json:"keyRing" tf:"key_ring"`
 	Name    string `json:"name" tf:"name"`
 	// +optional

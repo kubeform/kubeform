@@ -410,6 +410,8 @@ spec:
               type: integer
             group:
               type: string
+            id:
+              type: string
             masterIPS:
               items:
                 type: string
@@ -467,6 +469,8 @@ spec:
                 expireSec:
                   type: integer
                 group:
+                  type: string
+                id:
                   type: string
                 masterIPS:
                   items:

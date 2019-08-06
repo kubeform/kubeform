@@ -403,6 +403,8 @@ spec:
               type: string
             factData:
               type: string
+            id:
+              type: string
             labName:
               type: string
             name:
@@ -449,6 +451,8 @@ spec:
                 evaluatorType:
                   type: string
                 factData:
+                  type: string
+                id:
                   type: string
                 labName:
                   type: string

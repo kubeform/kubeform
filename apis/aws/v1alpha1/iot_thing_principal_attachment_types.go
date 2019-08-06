@@ -21,6 +21,8 @@ type IotThingPrincipalAttachment struct {
 type IotThingPrincipalAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Principal string `json:"principal" tf:"principal"`
 	Thing     string `json:"thing" tf:"thing"`
 }

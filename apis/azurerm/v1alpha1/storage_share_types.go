@@ -21,6 +21,8 @@ type StorageShare struct {
 type StorageShareSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Name string `json:"name" tf:"name"`
 	// +optional
 	Quota              int    `json:"quota,omitempty" tf:"quota,omitempty"`

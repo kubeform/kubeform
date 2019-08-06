@@ -403,6 +403,8 @@ spec:
               type: integer
             fqdn:
               type: string
+            id:
+              type: string
             name:
               type: string
             port:
@@ -449,6 +451,8 @@ spec:
                 flags:
                   type: integer
                 fqdn:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            id:
+              type: string
             login:
               type: string
             objectID:
@@ -433,6 +435,8 @@ spec:
               type: integer
             output:
               properties:
+                id:
+                  type: string
                 login:
                   type: string
                 objectID:

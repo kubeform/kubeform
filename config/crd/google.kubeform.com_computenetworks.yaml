@@ -403,6 +403,8 @@ spec:
               type: string
             gatewayIpv4:
               type: string
+            id:
+              type: string
             ipv4Range:
               description: Deprecated
               type: string
@@ -441,6 +443,8 @@ spec:
                 description:
                   type: string
                 gatewayIpv4:
+                  type: string
+                id:
                   type: string
                 ipv4Range:
                   description: Deprecated

@@ -412,6 +412,8 @@ spec:
               type: array
             cluster:
               type: string
+            id:
+              type: string
             initialNodeCount:
               type: integer
             instanceGroupUrls:
@@ -560,6 +562,8 @@ spec:
                   maxItems: 1
                   type: array
                 cluster:
+                  type: string
+                id:
                   type: string
                 initialNodeCount:
                   type: integer

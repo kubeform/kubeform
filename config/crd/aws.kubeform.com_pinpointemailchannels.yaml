@@ -403,6 +403,8 @@ spec:
               type: boolean
             fromAddress:
               type: string
+            id:
+              type: string
             identity:
               type: string
             messagesPerSecond:
@@ -439,6 +441,8 @@ spec:
                 enabled:
                   type: boolean
                 fromAddress:
+                  type: string
+                id:
                   type: string
                 identity:
                   type: string

@@ -401,6 +401,8 @@ spec:
               type: string
             dnsName:
               type: string
+            id:
+              type: string
             labels:
               additionalProperties:
                 type: string
@@ -439,6 +441,8 @@ spec:
                 description:
                   type: string
                 dnsName:
+                  type: string
+                id:
                   type: string
                 labels:
                   additionalProperties:

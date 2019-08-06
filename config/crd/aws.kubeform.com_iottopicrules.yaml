@@ -512,6 +512,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            id:
+              type: string
             kinesis:
               items:
                 properties:
@@ -743,6 +745,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 kinesis:
                   items:
                     properties:

@@ -21,6 +21,8 @@ type DataLakeAnalyticsAccount struct {
 type DataLakeAnalyticsAccountSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	DefaultStoreAccountName string `json:"defaultStoreAccountName" tf:"default_store_account_name"`
 	Location                string `json:"location" tf:"location"`
 	Name                    string `json:"name" tf:"name"`

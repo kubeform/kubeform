@@ -413,6 +413,8 @@ spec:
               type: string
             customerAddress:
               type: string
+            id:
+              type: string
             name:
               type: string
             ownerAccountID:
@@ -468,6 +470,8 @@ spec:
                 connectionID:
                   type: string
                 customerAddress:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

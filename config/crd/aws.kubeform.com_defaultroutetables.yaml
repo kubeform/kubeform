@@ -399,6 +399,8 @@ spec:
           properties:
             defaultRouteTableID:
               type: string
+            id:
+              type: string
             ownerID:
               type: string
             propagatingVgws:
@@ -459,6 +461,8 @@ spec:
             output:
               properties:
                 defaultRouteTableID:
+                  type: string
+                id:
                   type: string
                 ownerID:
                   type: string

@@ -399,6 +399,8 @@ spec:
           properties:
             autoUpgradeMinorVersion:
               type: boolean
+            id:
+              type: string
             location:
               type: string
             name:
@@ -458,6 +460,8 @@ spec:
               properties:
                 autoUpgradeMinorVersion:
                   type: boolean
+                id:
+                  type: string
                 location:
                   type: string
                 name:

@@ -21,6 +21,8 @@ type ConfigConfigurationRecorderStatus_ struct {
 type ConfigConfigurationRecorderStatus_Spec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	IsEnabled bool   `json:"isEnabled" tf:"is_enabled"`
 	Name      string `json:"name" tf:"name"`
 }

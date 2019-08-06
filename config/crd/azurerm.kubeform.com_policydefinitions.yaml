@@ -401,6 +401,8 @@ spec:
               type: string
             displayName:
               type: string
+            id:
+              type: string
             managementGroupID:
               type: string
             metadata:
@@ -443,6 +445,8 @@ spec:
                 description:
                   type: string
                 displayName:
+                  type: string
+                id:
                   type: string
                 managementGroupID:
                   type: string

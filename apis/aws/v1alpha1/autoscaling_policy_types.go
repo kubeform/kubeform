@@ -64,6 +64,8 @@ type AutoscalingPolicySpecTargetTrackingConfiguration struct {
 type AutoscalingPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AdjustmentType string `json:"adjustmentType,omitempty" tf:"adjustment_type,omitempty"`
 	// +optional

@@ -21,6 +21,8 @@ type DmsReplicationTask struct {
 type DmsReplicationTaskSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	CdcStartTime           string `json:"cdcStartTime,omitempty" tf:"cdc_start_time,omitempty"`
 	MigrationType          string `json:"migrationType" tf:"migration_type"`

@@ -407,6 +407,8 @@ spec:
               type: string
             icmpType:
               type: string
+            id:
+              type: string
             ipv6CIDRBlock:
               type: string
             networkACLID:
@@ -453,6 +455,8 @@ spec:
                 icmpCode:
                   type: string
                 icmpType:
+                  type: string
+                id:
                   type: string
                 ipv6CIDRBlock:
                   type: string

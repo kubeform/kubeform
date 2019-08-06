@@ -483,6 +483,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             name:
               type: string
             portName:
@@ -617,6 +619,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 name:
                   type: string
                 portName:

@@ -32,6 +32,8 @@ type SsmResourceDataSyncSpecS3Destination struct {
 type SsmResourceDataSyncSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Name string `json:"name" tf:"name"`
 	// +kubebuilder:validation:MaxItems=1
 	S3Destination []SsmResourceDataSyncSpecS3Destination `json:"s3Destination" tf:"s3_destination"`

@@ -415,6 +415,8 @@ spec:
               type: string
             dxGatewayID:
               type: string
+            id:
+              type: string
             jumboFrameCapable:
               type: boolean
             mtu:
@@ -472,6 +474,8 @@ spec:
                 customerAddress:
                   type: string
                 dxGatewayID:
+                  type: string
+                id:
                   type: string
                 jumboFrameCapable:
                   type: boolean

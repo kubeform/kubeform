@@ -401,6 +401,8 @@ spec:
               type: string
             arn:
               type: string
+            id:
+              type: string
             ipAddress:
               type: string
             name:
@@ -433,6 +435,8 @@ spec:
                 activationKey:
                   type: string
                 arn:
+                  type: string
+                id:
                   type: string
                 ipAddress:
                   type: string

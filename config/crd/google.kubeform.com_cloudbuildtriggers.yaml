@@ -424,6 +424,8 @@ spec:
               type: string
             filename:
               type: string
+            id:
+              type: string
             project:
               type: string
             providerRef:
@@ -495,6 +497,8 @@ spec:
                 description:
                   type: string
                 filename:
+                  type: string
+                id:
                   type: string
                 project:
                   type: string

@@ -21,6 +21,8 @@ type VpcEndpointSubnetAssociation struct {
 type VpcEndpointSubnetAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	SubnetID      string `json:"subnetID" tf:"subnet_id"`
 	VpcEndpointID string `json:"vpcEndpointID" tf:"vpc_endpoint_id"`
 }

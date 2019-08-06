@@ -21,6 +21,8 @@ type Route53ResolverRuleAssociation struct {
 type Route53ResolverRuleAssociationSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Name           string `json:"name,omitempty" tf:"name,omitempty"`
 	ResolverRuleID string `json:"resolverRuleID" tf:"resolver_rule_id"`

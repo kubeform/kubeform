@@ -616,6 +616,8 @@ spec:
               type: array
             group:
               type: string
+            id:
+              type: string
             image:
               type: string
             ipAddress:
@@ -913,6 +915,8 @@ spec:
                     type: object
                   type: array
                 group:
+                  type: string
+                id:
                   type: string
                 image:
                   type: string

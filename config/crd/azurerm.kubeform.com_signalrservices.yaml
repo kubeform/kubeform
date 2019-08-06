@@ -399,6 +399,8 @@ spec:
           properties:
             hostname:
               type: string
+            id:
+              type: string
             ipAddress:
               type: string
             location:
@@ -463,6 +465,8 @@ spec:
             output:
               properties:
                 hostname:
+                  type: string
+                id:
                   type: string
                 ipAddress:
                   type: string

@@ -423,6 +423,8 @@ spec:
                 - serviceDelegation
                 type: object
               type: array
+            id:
+              type: string
             ipConfigurations:
               items:
                 type: string
@@ -495,6 +497,8 @@ spec:
                     - serviceDelegation
                     type: object
                   type: array
+                id:
+                  type: string
                 ipConfigurations:
                   items:
                     type: string

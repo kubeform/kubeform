@@ -405,6 +405,8 @@ spec:
               type: string
             hostname:
               type: string
+            id:
+              type: string
             location:
               type: string
             minimumTlsVersion:
@@ -516,6 +518,8 @@ spec:
                 family:
                   type: string
                 hostname:
+                  type: string
+                id:
                   type: string
                 location:
                   type: string

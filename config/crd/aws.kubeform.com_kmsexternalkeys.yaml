@@ -407,6 +407,8 @@ spec:
               type: boolean
             expirationModel:
               type: string
+            id:
+              type: string
             keyState:
               type: string
             keyUsage:
@@ -458,6 +460,8 @@ spec:
                 enabled:
                   type: boolean
                 expirationModel:
+                  type: string
+                id:
                   type: string
                 keyState:
                   type: string

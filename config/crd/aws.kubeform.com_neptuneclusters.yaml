@@ -436,6 +436,8 @@ spec:
                 type: string
               type: array
               uniqueItems: true
+            id:
+              type: string
             kmsKeyArn:
               type: string
             neptuneClusterParameterGroupName:
@@ -527,6 +529,8 @@ spec:
                     type: string
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 kmsKeyArn:
                   type: string
                 neptuneClusterParameterGroupName:

@@ -21,6 +21,8 @@ type IamOpenidConnectProvider struct {
 type IamOpenidConnectProviderSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Arn            string   `json:"arn,omitempty" tf:"arn,omitempty"`
 	ClientIDList   []string `json:"clientIDList" tf:"client_id_list"`

@@ -21,6 +21,8 @@ type DataflowJob struct {
 type DataflowJobSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	MaxWorkers int    `json:"maxWorkers,omitempty" tf:"max_workers,omitempty"`
 	Name       string `json:"name" tf:"name"`

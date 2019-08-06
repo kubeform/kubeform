@@ -407,6 +407,8 @@ spec:
               type: string
             ephemeralStorage:
               type: boolean
+            id:
+              type: string
             instanceCount:
               type: integer
             instanceMatchCriteria:
@@ -456,6 +458,8 @@ spec:
                   type: string
                 ephemeralStorage:
                   type: boolean
+                id:
+                  type: string
                 instanceCount:
                   type: integer
                 instanceMatchCriteria:

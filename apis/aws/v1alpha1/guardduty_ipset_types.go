@@ -21,6 +21,8 @@ type GuarddutyIpset struct {
 type GuarddutyIpsetSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Activate   bool   `json:"activate" tf:"activate"`
 	DetectorID string `json:"detectorID" tf:"detector_id"`
 	Format     string `json:"format" tf:"format"`

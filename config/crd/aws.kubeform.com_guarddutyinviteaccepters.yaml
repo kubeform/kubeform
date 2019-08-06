@@ -399,6 +399,8 @@ spec:
           properties:
             detectorID:
               type: string
+            id:
+              type: string
             masterAccountID:
               type: string
             providerRef:
@@ -425,6 +427,8 @@ spec:
             output:
               properties:
                 detectorID:
+                  type: string
+                id:
                   type: string
                 masterAccountID:
                   type: string

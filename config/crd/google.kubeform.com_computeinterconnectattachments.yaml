@@ -407,6 +407,8 @@ spec:
               type: string
             googleReferenceID:
               type: string
+            id:
+              type: string
             interconnect:
               type: string
             name:
@@ -460,6 +462,8 @@ spec:
                 description:
                   type: string
                 googleReferenceID:
+                  type: string
+                id:
                   type: string
                 interconnect:
                   type: string

@@ -401,6 +401,8 @@ spec:
               type: string
             createDate:
               type: string
+            id:
+              type: string
             name:
               type: string
             namePrefix:
@@ -441,6 +443,8 @@ spec:
                 arn:
                   type: string
                 createDate:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

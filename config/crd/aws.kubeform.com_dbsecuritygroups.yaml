@@ -401,6 +401,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             ingress:
               items:
                 properties:
@@ -447,6 +449,8 @@ spec:
                 arn:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 ingress:
                   items:

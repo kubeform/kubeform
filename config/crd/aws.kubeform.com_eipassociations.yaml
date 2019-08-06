@@ -401,6 +401,8 @@ spec:
               type: string
             allowReassociation:
               type: boolean
+            id:
+              type: string
             instanceID:
               type: string
             networkInterfaceID:
@@ -434,6 +436,8 @@ spec:
                   type: string
                 allowReassociation:
                   type: boolean
+                id:
+                  type: string
                 instanceID:
                   type: string
                 networkInterfaceID:

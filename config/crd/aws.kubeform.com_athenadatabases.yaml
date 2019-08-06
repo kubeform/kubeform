@@ -413,6 +413,8 @@ spec:
               type: array
             forceDestroy:
               type: boolean
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -454,6 +456,8 @@ spec:
                   type: array
                 forceDestroy:
                   type: boolean
+                id:
+                  type: string
                 name:
                   type: string
                 providerRef:

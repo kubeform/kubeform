@@ -25,6 +25,8 @@ type DnsTxtRecordSpecRecord struct {
 type DnsTxtRecordSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	Name string `json:"name" tf:"name"`
 	// +kubebuilder:validation:UniqueItems=true
 	Record            []DnsTxtRecordSpecRecord `json:"record" tf:"record"`

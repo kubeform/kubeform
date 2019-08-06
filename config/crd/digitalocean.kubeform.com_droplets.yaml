@@ -401,6 +401,8 @@ spec:
               type: boolean
             disk:
               type: integer
+            id:
+              type: string
             image:
               type: string
             ipv4Address:
@@ -485,6 +487,8 @@ spec:
                   type: boolean
                 disk:
                   type: integer
+                id:
+                  type: string
                 image:
                   type: string
                 ipv4Address:

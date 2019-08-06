@@ -21,6 +21,8 @@ type FlowLog struct {
 type FlowLogSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	EniID string `json:"eniID,omitempty" tf:"eni_id,omitempty"`
 	// +optional

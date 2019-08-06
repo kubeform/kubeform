@@ -106,6 +106,8 @@ type LbListenerRuleSpecCondition struct {
 type LbListenerRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
 
 	Action []LbListenerRuleSpecAction `json:"action" tf:"action"`

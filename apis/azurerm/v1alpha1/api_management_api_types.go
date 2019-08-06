@@ -39,6 +39,8 @@ type ApiManagementAPISpecSubscriptionKeyParameterNames struct {
 type ApiManagementAPISpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	// +optional
 	Description string `json:"description,omitempty" tf:"description,omitempty"`

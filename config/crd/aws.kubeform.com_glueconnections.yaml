@@ -403,6 +403,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             matchCriteria:
               items:
                 type: string
@@ -459,6 +461,8 @@ spec:
                 connectionType:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 matchCriteria:
                   items:

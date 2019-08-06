@@ -21,6 +21,8 @@ type Folder struct {
 type FolderSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	CreateTime  string `json:"createTime,omitempty" tf:"create_time,omitempty"`
 	DisplayName string `json:"displayName" tf:"display_name"`

@@ -45,6 +45,8 @@ type CognitoIdentityPoolRolesAttachmentSpecRoles struct {
 type CognitoIdentityPoolRolesAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	IdentityPoolID string `json:"identityPoolID" tf:"identity_pool_id"`
 	// +optional
 	// +kubebuilder:validation:UniqueItems=true

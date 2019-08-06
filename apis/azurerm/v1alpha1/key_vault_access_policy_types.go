@@ -21,6 +21,8 @@ type KeyVaultAccessPolicy struct {
 type KeyVaultAccessPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ApplicationID string `json:"applicationID,omitempty" tf:"application_id,omitempty"`
 	// +optional

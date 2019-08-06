@@ -21,6 +21,8 @@ type DataLakeAnalyticsFirewallRule struct {
 type DataLakeAnalyticsFirewallRuleSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	AccountName       string `json:"accountName" tf:"account_name"`
 	EndIPAddress      string `json:"endIPAddress" tf:"end_ip_address"`
 	Name              string `json:"name" tf:"name"`

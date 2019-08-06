@@ -48,6 +48,8 @@ type CloudwatchMetricAlarmSpecMetricQuery struct {
 type CloudwatchMetricAlarmSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ActionsEnabled bool `json:"actionsEnabled,omitempty" tf:"actions_enabled,omitempty"`
 	// +optional

@@ -45,6 +45,8 @@ type BinaryAuthorizationPolicySpecDefaultAdmissionRule struct {
 type BinaryAuthorizationPolicySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	AdmissionWhitelistPatterns []BinaryAuthorizationPolicySpecAdmissionWhitelistPatterns `json:"admissionWhitelistPatterns,omitempty" tf:"admission_whitelist_patterns,omitempty"`
 	// +optional

@@ -411,6 +411,8 @@ spec:
               type: string
             encryption:
               type: string
+            id:
+              type: string
             import:
               items:
                 properties:
@@ -531,6 +533,8 @@ spec:
                 elasticPoolName:
                   type: string
                 encryption:
+                  type: string
+                id:
                   type: string
                 import:
                   items:

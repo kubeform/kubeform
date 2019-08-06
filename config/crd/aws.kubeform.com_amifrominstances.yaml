@@ -433,6 +433,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            id:
+              type: string
             imageLocation:
               type: string
             kernelID:
@@ -518,6 +520,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 imageLocation:
                   type: string
                 kernelID:

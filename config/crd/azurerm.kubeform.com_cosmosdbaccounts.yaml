@@ -460,6 +460,8 @@ spec:
                 type: object
               type: array
               uniqueItems: true
+            id:
+              type: string
             ipRangeFilter:
               type: string
             isVirtualNetworkFilterEnabled:
@@ -593,6 +595,8 @@ spec:
                     type: object
                   type: array
                   uniqueItems: true
+                id:
+                  type: string
                 ipRangeFilter:
                   type: string
                 isVirtualNetworkFilterEnabled:

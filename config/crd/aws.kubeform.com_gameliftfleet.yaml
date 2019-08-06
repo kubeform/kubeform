@@ -424,6 +424,8 @@ spec:
               type: array
             ec2InstanceType:
               type: string
+            id:
+              type: string
             logPaths:
               items:
                 type: string
@@ -523,6 +525,8 @@ spec:
                   maxItems: 50
                   type: array
                 ec2InstanceType:
+                  type: string
+                id:
                   type: string
                 logPaths:
                   items:

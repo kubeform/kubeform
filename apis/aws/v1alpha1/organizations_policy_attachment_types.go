@@ -21,6 +21,8 @@ type OrganizationsPolicyAttachment struct {
 type OrganizationsPolicyAttachmentSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	PolicyID string `json:"policyID" tf:"policy_id"`
 	TargetID string `json:"targetID" tf:"target_id"`
 }

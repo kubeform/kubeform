@@ -399,6 +399,8 @@ spec:
           properties:
             arn:
               type: string
+            id:
+              type: string
             kmsKeyArn:
               type: string
             name:
@@ -452,6 +454,8 @@ spec:
             output:
               properties:
                 arn:
+                  type: string
+                id:
                   type: string
                 kmsKeyArn:
                   type: string

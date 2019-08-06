@@ -407,6 +407,8 @@ spec:
               type: string
             engineVersion:
               type: string
+            id:
+              type: string
             kmsKeyArn:
               type: string
             multiAz:
@@ -472,6 +474,8 @@ spec:
                 availabilityZone:
                   type: string
                 engineVersion:
+                  type: string
+                id:
                   type: string
                 kmsKeyArn:
                   type: string

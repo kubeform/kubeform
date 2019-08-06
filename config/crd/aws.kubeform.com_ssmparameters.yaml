@@ -403,6 +403,8 @@ spec:
               type: string
             description:
               type: string
+            id:
+              type: string
             keyID:
               type: string
             name:
@@ -456,6 +458,8 @@ spec:
                 arn:
                   type: string
                 description:
+                  type: string
+                id:
                   type: string
                 keyID:
                   type: string

@@ -21,6 +21,8 @@ type KeyVaultKey struct {
 type KeyVaultKeySpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	Curve string `json:"curve,omitempty" tf:"curve,omitempty"`
 	// +optional

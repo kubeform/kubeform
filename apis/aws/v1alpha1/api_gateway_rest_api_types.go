@@ -27,6 +27,8 @@ type ApiGatewayRestAPISpecEndpointConfiguration struct {
 type ApiGatewayRestAPISpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	// +optional
 	ApiKeySource string `json:"apiKeySource,omitempty" tf:"api_key_source,omitempty"`
 	// +optional

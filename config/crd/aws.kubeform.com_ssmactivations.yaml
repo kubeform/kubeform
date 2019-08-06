@@ -407,6 +407,8 @@ spec:
               type: string
             iamRole:
               type: string
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -448,6 +450,8 @@ spec:
                 expired:
                   type: string
                 iamRole:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

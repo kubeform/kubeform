@@ -401,6 +401,8 @@ spec:
               type: string
             clientAffinity:
               type: string
+            id:
+              type: string
             portRange:
               items:
                 properties:
@@ -442,6 +444,8 @@ spec:
                 acceleratorArn:
                   type: string
                 clientAffinity:
+                  type: string
+                id:
                   type: string
                 portRange:
                   items:

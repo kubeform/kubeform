@@ -441,6 +441,8 @@ spec:
             enableLogging:
               description: Deprecated
               type: boolean
+            id:
+              type: string
             name:
               type: string
             network:
@@ -545,6 +547,8 @@ spec:
                 enableLogging:
                   description: Deprecated
                   type: boolean
+                id:
+                  type: string
                 name:
                   type: string
                 network:

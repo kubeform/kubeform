@@ -21,6 +21,8 @@ type ApiGatewayResource struct {
 type ApiGatewayResourceSpec struct {
 	ProviderRef core.LocalObjectReference `json:"providerRef" tf:"-"`
 
+	ID string `json:"id,omitempty" tf:"id,omitempty"`
+
 	ParentID string `json:"parentID" tf:"parent_id"`
 	// +optional
 	Path      string `json:"path,omitempty" tf:"path,omitempty"`

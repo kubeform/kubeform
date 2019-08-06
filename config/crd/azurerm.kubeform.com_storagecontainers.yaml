@@ -399,6 +399,8 @@ spec:
           properties:
             containerAccessType:
               type: string
+            id:
+              type: string
             name:
               type: string
             properties:
@@ -434,6 +436,8 @@ spec:
             output:
               properties:
                 containerAccessType:
+                  type: string
+                id:
                   type: string
                 name:
                   type: string

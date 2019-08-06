@@ -461,6 +461,8 @@ spec:
               type: string
             endpoint:
               type: string
+            id:
+              type: string
             lambdaConfig:
               items:
                 properties:
@@ -688,6 +690,8 @@ spec:
                 emailVerificationSubject:
                   type: string
                 endpoint:
+                  type: string
+                id:
                   type: string
                 lambdaConfig:
                   items:

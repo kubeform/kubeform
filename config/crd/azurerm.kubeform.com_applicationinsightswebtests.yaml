@@ -412,6 +412,8 @@ spec:
                 type: string
               minItems: 1
               type: array
+            id:
+              type: string
             kind:
               type: string
             location:
@@ -473,6 +475,8 @@ spec:
                     type: string
                   minItems: 1
                   type: array
+                id:
+                  type: string
                 kind:
                   type: string
                 location:

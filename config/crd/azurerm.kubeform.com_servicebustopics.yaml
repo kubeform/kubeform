@@ -412,6 +412,8 @@ spec:
               type: boolean
             enablePartitioning:
               type: boolean
+            id:
+              type: string
             location:
               description: Deprecated
               type: string
@@ -468,6 +470,8 @@ spec:
                   type: boolean
                 enablePartitioning:
                   type: boolean
+                id:
+                  type: string
                 location:
                   description: Deprecated
                   type: string

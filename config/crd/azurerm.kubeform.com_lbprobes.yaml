@@ -397,6 +397,8 @@ spec:
           type: object
         spec:
           properties:
+            id:
+              type: string
             intervalInSeconds:
               type: integer
             loadBalancerRules:
@@ -446,6 +448,8 @@ spec:
               type: integer
             output:
               properties:
+                id:
+                  type: string
                 intervalInSeconds:
                   type: integer
                 loadBalancerRules:

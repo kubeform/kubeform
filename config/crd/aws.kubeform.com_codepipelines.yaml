@@ -425,6 +425,8 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            id:
+              type: string
             name:
               type: string
             providerRef:
@@ -534,6 +536,8 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                id:
+                  type: string
                 name:
                   type: string
                 providerRef:
