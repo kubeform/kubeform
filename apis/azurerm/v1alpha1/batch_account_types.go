@@ -23,7 +23,7 @@ type BatchAccountSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
 	AccountEndpoint string `json:"accountEndpoint,omitempty" tf:"account_endpoint,omitempty"`

@@ -438,15 +438,6 @@ spec:
                     type: string
                 type: object
               type: array
-            kubeFormSecret:
-              description: LocalObjectReference contains enough information to let
-                you locate the referenced object inside the same namespace.
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
             logs:
               items:
                 properties:
@@ -484,6 +475,15 @@ spec:
               type: object
             publiclyAccessible:
               type: boolean
+            secretRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             securityGroups:
               items:
                 type: string
@@ -574,15 +574,6 @@ spec:
                         type: string
                     type: object
                   type: array
-                kubeFormSecret:
-                  description: LocalObjectReference contains enough information to
-                    let you locate the referenced object inside the same namespace.
-                  properties:
-                    name:
-                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                        TODO: Add other useful fields. apiVersion, kind, uid?'
-                      type: string
-                  type: object
                 logs:
                   items:
                     properties:
@@ -620,6 +611,15 @@ spec:
                   type: object
                 publiclyAccessible:
                   type: boolean
+                secretRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
                 securityGroups:
                   items:
                     type: string
@@ -684,9 +684,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

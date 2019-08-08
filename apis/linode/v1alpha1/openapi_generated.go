@@ -13072,7 +13072,7 @@ func schema_kubeform_apis_linode_v1alpha1_InstanceSpec(ref common.ReferenceCallb
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -14163,7 +14163,7 @@ func schema_kubeform_apis_linode_v1alpha1_NodebalancerConfigSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},

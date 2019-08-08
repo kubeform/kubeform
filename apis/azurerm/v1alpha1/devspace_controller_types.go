@@ -28,7 +28,7 @@ type DevspaceControllerSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
 	DataPlaneFqdn     string `json:"dataPlaneFqdn,omitempty" tf:"data_plane_fqdn,omitempty"`

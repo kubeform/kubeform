@@ -467,15 +467,6 @@ spec:
               type: string
             instanceID:
               type: string
-            kubeFormSecret:
-              description: LocalObjectReference contains enough information to let
-                you locate the referenced object inside the same namespace.
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
             labelFingerprint:
               type: string
             labels:
@@ -569,6 +560,15 @@ spec:
                     type: string
                 type: object
               type: array
+            secretRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             selfLink:
               type: string
             serviceAccount:
@@ -681,15 +681,6 @@ spec:
                   type: string
                 instanceID:
                   type: string
-                kubeFormSecret:
-                  description: LocalObjectReference contains enough information to
-                    let you locate the referenced object inside the same namespace.
-                  properties:
-                    name:
-                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                        TODO: Add other useful fields. apiVersion, kind, uid?'
-                      type: string
-                  type: object
                 labelFingerprint:
                   type: string
                 labels:
@@ -783,6 +774,15 @@ spec:
                         type: string
                     type: object
                   type: array
+                secretRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
                 selfLink:
                   type: string
                 serviceAccount:
@@ -840,9 +840,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

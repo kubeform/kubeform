@@ -29,7 +29,7 @@ type StoragegatewayGatewaySpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
 	ActivationKey string `json:"activationKey,omitempty" tf:"activation_key,omitempty"`

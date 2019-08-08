@@ -420,15 +420,6 @@ spec:
               type: array
             id:
               type: string
-            kubeFormSecret:
-              description: LocalObjectReference contains enough information to let
-                you locate the referenced object inside the same namespace.
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
             name:
               type: string
             providerRef:
@@ -442,6 +433,15 @@ spec:
               type: object
             resourceGroupName:
               type: string
+            secretRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
           required:
           - apiManagementName
           - name
@@ -480,15 +480,6 @@ spec:
                   type: array
                 id:
                   type: string
-                kubeFormSecret:
-                  description: LocalObjectReference contains enough information to
-                    let you locate the referenced object inside the same namespace.
-                  properties:
-                    name:
-                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                        TODO: Add other useful fields. apiVersion, kind, uid?'
-                      type: string
-                  type: object
                 name:
                   type: string
                 providerRef:
@@ -502,6 +493,15 @@ spec:
                   type: object
                 resourceGroupName:
                   type: string
+                secretRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
               required:
               - apiManagementName
               - name
@@ -532,9 +532,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

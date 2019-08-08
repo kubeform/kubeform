@@ -93,8 +93,8 @@ func (in *AcmCertificateList) DeepCopyObject() runtime.Object {
 func (in *AcmCertificateSpec) DeepCopyInto(out *AcmCertificateSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -774,8 +774,8 @@ func (in *AlbListenerRuleList) DeepCopyObject() runtime.Object {
 func (in *AlbListenerRuleSpec) DeepCopyInto(out *AlbListenerRuleSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -975,8 +975,8 @@ func (in *AlbListenerRuleStatus) DeepCopy() *AlbListenerRuleStatus {
 func (in *AlbListenerSpec) DeepCopyInto(out *AlbListenerSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -2131,8 +2131,8 @@ func (in *ApiGatewayAPIKeyList) DeepCopyObject() runtime.Object {
 func (in *ApiGatewayAPIKeySpec) DeepCopyInto(out *ApiGatewayAPIKeySpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -3022,8 +3022,8 @@ func (in *ApiGatewayDomainNameList) DeepCopyObject() runtime.Object {
 func (in *ApiGatewayDomainNameSpec) DeepCopyInto(out *ApiGatewayDomainNameSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -6631,8 +6631,8 @@ func (in *AppsyncAPIKeyList) DeepCopyObject() runtime.Object {
 func (in *AppsyncAPIKeySpec) DeepCopyInto(out *AppsyncAPIKeySpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -12991,8 +12991,8 @@ func (in *CodebuildProjectList) DeepCopyObject() runtime.Object {
 func (in *CodebuildProjectSpec) DeepCopyInto(out *CodebuildProjectSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -13428,8 +13428,8 @@ func (in *CodebuildWebhookList) DeepCopyObject() runtime.Object {
 func (in *CodebuildWebhookSpec) DeepCopyInto(out *CodebuildWebhookSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -14913,8 +14913,8 @@ func (in *CodepipelineWebhookList) DeepCopyObject() runtime.Object {
 func (in *CodepipelineWebhookSpec) DeepCopyInto(out *CodepipelineWebhookSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -18897,8 +18897,8 @@ func (in *DbInstanceRoleAssociationStatus) DeepCopy() *DbInstanceRoleAssociation
 func (in *DbInstanceSpec) DeepCopyInto(out *DbInstanceSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -20753,8 +20753,8 @@ func (in *DirectoryServiceDirectoryList) DeepCopyObject() runtime.Object {
 func (in *DirectoryServiceDirectorySpec) DeepCopyInto(out *DirectoryServiceDirectorySpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -21257,8 +21257,8 @@ func (in *DmsCertificateList) DeepCopyObject() runtime.Object {
 func (in *DmsCertificateSpec) DeepCopyInto(out *DmsCertificateSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -21366,8 +21366,8 @@ func (in *DmsEndpointList) DeepCopyObject() runtime.Object {
 func (in *DmsEndpointSpec) DeepCopyInto(out *DmsEndpointSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -22229,8 +22229,8 @@ func (in *DocdbClusterSnapshotStatus) DeepCopy() *DocdbClusterSnapshotStatus {
 func (in *DocdbClusterSpec) DeepCopyInto(out *DocdbClusterSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -28735,8 +28735,8 @@ func (in *ElasticacheReplicationGroupList) DeepCopyObject() runtime.Object {
 func (in *ElasticacheReplicationGroupSpec) DeepCopyInto(out *ElasticacheReplicationGroupSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -30259,8 +30259,8 @@ func (in *EmrClusterList) DeepCopyObject() runtime.Object {
 func (in *EmrClusterSpec) DeepCopyInto(out *EmrClusterSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -32756,8 +32756,8 @@ func (in *GlueConnectionList) DeepCopyObject() runtime.Object {
 func (in *GlueConnectionSpec) DeepCopyInto(out *GlueConnectionSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -35760,8 +35760,8 @@ func (in *IamServerCertificateList) DeepCopyObject() runtime.Object {
 func (in *IamServerCertificateSpec) DeepCopyInto(out *IamServerCertificateSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -39187,8 +39187,8 @@ func (in *KinesisFirehoseDeliveryStreamList) DeepCopyObject() runtime.Object {
 func (in *KinesisFirehoseDeliveryStreamSpec) DeepCopyInto(out *KinesisFirehoseDeliveryStreamSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -40363,8 +40363,8 @@ func (in *KmsCiphertextList) DeepCopyObject() runtime.Object {
 func (in *KmsCiphertextSpec) DeepCopyInto(out *KmsCiphertextSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -40479,8 +40479,8 @@ func (in *KmsExternalKeyList) DeepCopyObject() runtime.Object {
 func (in *KmsExternalKeySpec) DeepCopyInto(out *KmsExternalKeySpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -42504,8 +42504,8 @@ func (in *LbListenerRuleList) DeepCopyObject() runtime.Object {
 func (in *LbListenerRuleSpec) DeepCopyInto(out *LbListenerRuleSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -42705,8 +42705,8 @@ func (in *LbListenerRuleStatus) DeepCopy() *LbListenerRuleStatus {
 func (in *LbListenerSpec) DeepCopyInto(out *LbListenerSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -44846,8 +44846,8 @@ func (in *MediaPackageChannelList) DeepCopyObject() runtime.Object {
 func (in *MediaPackageChannelSpec) DeepCopyInto(out *MediaPackageChannelSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -45214,8 +45214,8 @@ func (in *MqBrokerList) DeepCopyObject() runtime.Object {
 func (in *MqBrokerSpec) DeepCopyInto(out *MqBrokerSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -47514,8 +47514,8 @@ func (in *OpsworksApplicationList) DeepCopyObject() runtime.Object {
 func (in *OpsworksApplicationSpec) DeepCopyInto(out *OpsworksApplicationSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -49412,8 +49412,8 @@ func (in *OpsworksRdsDbInstanceList) DeepCopyObject() runtime.Object {
 func (in *OpsworksRdsDbInstanceSpec) DeepCopyInto(out *OpsworksRdsDbInstanceSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -49521,8 +49521,8 @@ func (in *OpsworksStackList) DeepCopyObject() runtime.Object {
 func (in *OpsworksStackSpec) DeepCopyInto(out *OpsworksStackSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -50566,8 +50566,8 @@ func (in *PinpointAdmChannelList) DeepCopyObject() runtime.Object {
 func (in *PinpointAdmChannelSpec) DeepCopyInto(out *PinpointAdmChannelSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -50675,8 +50675,8 @@ func (in *PinpointApnsChannelList) DeepCopyObject() runtime.Object {
 func (in *PinpointApnsChannelSpec) DeepCopyInto(out *PinpointApnsChannelSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -50784,8 +50784,8 @@ func (in *PinpointApnsSandboxChannelList) DeepCopyObject() runtime.Object {
 func (in *PinpointApnsSandboxChannelSpec) DeepCopyInto(out *PinpointApnsSandboxChannelSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -50893,8 +50893,8 @@ func (in *PinpointApnsVoipChannelList) DeepCopyObject() runtime.Object {
 func (in *PinpointApnsVoipChannelSpec) DeepCopyInto(out *PinpointApnsVoipChannelSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -51002,8 +51002,8 @@ func (in *PinpointApnsVoipSandboxChannelList) DeepCopyObject() runtime.Object {
 func (in *PinpointApnsVoipSandboxChannelSpec) DeepCopyInto(out *PinpointApnsVoipSandboxChannelSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -51278,8 +51278,8 @@ func (in *PinpointBaiduChannelList) DeepCopyObject() runtime.Object {
 func (in *PinpointBaiduChannelSpec) DeepCopyInto(out *PinpointBaiduChannelSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -51595,8 +51595,8 @@ func (in *PinpointGcmChannelList) DeepCopyObject() runtime.Object {
 func (in *PinpointGcmChannelSpec) DeepCopyInto(out *PinpointGcmChannelSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -52697,8 +52697,8 @@ func (in *RdsClusterParameterGroupStatus) DeepCopy() *RdsClusterParameterGroupSt
 func (in *RdsClusterSpec) DeepCopyInto(out *RdsClusterSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -52984,8 +52984,8 @@ func (in *RedshiftClusterList) DeepCopyObject() runtime.Object {
 func (in *RedshiftClusterSpec) DeepCopyInto(out *RedshiftClusterSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -57829,8 +57829,8 @@ func (in *SecretsmanagerSecretVersionList) DeepCopyObject() runtime.Object {
 func (in *SecretsmanagerSecretVersionSpec) DeepCopyInto(out *SecretsmanagerSecretVersionSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -63550,8 +63550,8 @@ func (in *SsmParameterList) DeepCopyObject() runtime.Object {
 func (in *SsmParameterSpec) DeepCopyInto(out *SsmParameterSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -64303,8 +64303,8 @@ func (in *StoragegatewayGatewayList) DeepCopyObject() runtime.Object {
 func (in *StoragegatewayGatewaySpec) DeepCopyInto(out *StoragegatewayGatewaySpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -67261,8 +67261,8 @@ func (in *VpnConnectionRouteStatus) DeepCopy() *VpnConnectionRouteStatus {
 func (in *VpnConnectionSpec) DeepCopyInto(out *VpnConnectionSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}

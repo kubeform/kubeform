@@ -28,7 +28,7 @@ type ApiManagementAuthorizationServerSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	ApiManagementName     string `json:"apiManagementName" tf:"api_management_name"`
 	AuthorizationEndpoint string `json:"authorizationEndpoint" tf:"authorization_endpoint"`

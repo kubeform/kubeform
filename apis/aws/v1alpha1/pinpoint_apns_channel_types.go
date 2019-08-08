@@ -23,7 +23,7 @@ type PinpointApnsChannelSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	ApplicationID string `json:"applicationID" tf:"application_id"`
 	// +optional

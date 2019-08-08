@@ -35,7 +35,7 @@ type CodebuildWebhookSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
 	BranchFilter string `json:"branchFilter,omitempty" tf:"branch_filter,omitempty"`

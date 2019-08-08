@@ -153,7 +153,7 @@ type VirtualMachineSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
 	AvailabilitySetID string `json:"availabilitySetID,omitempty" tf:"availability_set_id,omitempty"`

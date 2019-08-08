@@ -31,7 +31,7 @@ type StreamAnalyticsStreamInputBlobSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	DateFormat        string `json:"dateFormat" tf:"date_format"`
 	Name              string `json:"name" tf:"name"`

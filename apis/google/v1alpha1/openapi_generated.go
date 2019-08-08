@@ -17939,7 +17939,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeBackendServiceSpec(ref common.R
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -18393,7 +18393,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeDiskSpec(ref common.ReferenceCa
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -21059,7 +21059,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceFromTemplateSpec(ref co
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -22444,7 +22444,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeInstanceSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -27975,7 +27975,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSnapshotSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -28292,7 +28292,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeSslCertificateSpec(ref common.R
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -31121,7 +31121,7 @@ func schema_kubeform_apis_google_v1alpha1_ComputeVPNTunnelSpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -31608,7 +31608,7 @@ func schema_kubeform_apis_google_v1alpha1_ContainerClusterSpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -41351,7 +41351,7 @@ func schema_kubeform_apis_google_v1alpha1_MonitoringUptimeCheckConfigSpec(ref co
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -47662,7 +47662,7 @@ func schema_kubeform_apis_google_v1alpha1_ServiceAccountKeySpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -49704,7 +49704,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlDatabaseInstanceSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -50580,7 +50580,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlSslCertSpec(ref common.ReferenceCal
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -50780,7 +50780,7 @@ func schema_kubeform_apis_google_v1alpha1_SqlUserSpec(ref common.ReferenceCallba
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},

@@ -45,7 +45,7 @@ type VpnConnectionSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
 	CustomerGatewayConfiguration string `json:"customerGatewayConfiguration,omitempty" tf:"customer_gateway_configuration,omitempty"`

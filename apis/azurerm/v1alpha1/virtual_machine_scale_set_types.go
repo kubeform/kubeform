@@ -223,7 +223,7 @@ type VirtualMachineScaleSetSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
 	AutomaticOsUpgrade bool `json:"automaticOsUpgrade,omitempty" tf:"automatic_os_upgrade,omitempty"`

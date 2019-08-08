@@ -407,7 +407,11 @@ spec:
               type: string
             keyID:
               type: string
-            kubeFormSecret:
+            name:
+              type: string
+            overwrite:
+              type: boolean
+            providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
               properties:
@@ -416,11 +420,7 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            name:
-              type: string
-            overwrite:
-              type: boolean
-            providerRef:
+            secretRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
               properties:
@@ -463,7 +463,11 @@ spec:
                   type: string
                 keyID:
                   type: string
-                kubeFormSecret:
+                name:
+                  type: string
+                overwrite:
+                  type: boolean
+                providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
                   properties:
@@ -472,11 +476,7 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
-                name:
-                  type: string
-                overwrite:
-                  type: boolean
-                providerRef:
+                secretRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
                   properties:
@@ -524,9 +524,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

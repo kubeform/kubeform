@@ -28,7 +28,7 @@ type ContainerRegistrySpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
 	AdminEnabled bool `json:"adminEnabled,omitempty" tf:"admin_enabled,omitempty"`

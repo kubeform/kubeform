@@ -418,8 +418,8 @@ func (in *InstanceList) DeepCopyObject() runtime.Object {
 func (in *InstanceSpec) DeepCopyInto(out *InstanceSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -943,8 +943,8 @@ func (in *NodebalancerConfigList) DeepCopyObject() runtime.Object {
 func (in *NodebalancerConfigSpec) DeepCopyInto(out *NodebalancerConfigSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}

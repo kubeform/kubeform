@@ -195,8 +195,8 @@ func (in *CertificateList) DeepCopyObject() runtime.Object {
 func (in *CertificateSpec) DeepCopyInto(out *CertificateSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}

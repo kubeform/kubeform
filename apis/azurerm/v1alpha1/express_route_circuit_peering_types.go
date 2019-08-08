@@ -27,7 +27,7 @@ type ExpressRouteCircuitPeeringSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
 	AzureAsn                int    `json:"azureAsn,omitempty" tf:"azure_asn,omitempty"`

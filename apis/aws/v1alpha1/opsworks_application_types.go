@@ -51,7 +51,7 @@ type OpsworksApplicationSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
 	AppSource []OpsworksApplicationSpecAppSource `json:"appSource,omitempty" tf:"app_source,omitempty"`

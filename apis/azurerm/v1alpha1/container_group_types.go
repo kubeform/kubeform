@@ -165,7 +165,7 @@ type ContainerGroupSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	Container []ContainerGroupSpecContainer `json:"container" tf:"container"`
 	// +optional

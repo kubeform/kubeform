@@ -23,7 +23,7 @@ type LogAnalyticsWorkspaceSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	Location string `json:"location" tf:"location"`
 	Name     string `json:"name" tf:"name"`

@@ -12601,7 +12601,7 @@ func schema_kubeform_apis_digitalocean_v1alpha1_CertificateSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},

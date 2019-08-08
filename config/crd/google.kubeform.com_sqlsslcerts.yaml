@@ -411,7 +411,7 @@ spec:
               type: string
             instance:
               type: string
-            kubeFormSecret:
+            providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
               properties:
@@ -420,7 +420,7 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            providerRef:
+            secretRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
               properties:
@@ -461,7 +461,7 @@ spec:
                   type: string
                 instance:
                   type: string
-                kubeFormSecret:
+                providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
                   properties:
@@ -470,7 +470,7 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
-                providerRef:
+                secretRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
                   properties:
@@ -512,9 +512,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

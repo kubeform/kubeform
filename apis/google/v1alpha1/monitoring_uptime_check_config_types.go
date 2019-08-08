@@ -80,7 +80,7 @@ type MonitoringUptimeCheckConfigSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
 	ContentMatchers []MonitoringUptimeCheckConfigSpecContentMatchers `json:"contentMatchers,omitempty" tf:"content_matchers,omitempty"`

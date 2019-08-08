@@ -15717,7 +15717,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementAuthorizationServerSpec(
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -16030,7 +16030,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementCertificateSpec(ref comm
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -16625,7 +16625,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementLoggerSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -16860,7 +16860,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementOpenidConnectProviderSpe
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -17880,7 +17880,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementSpec(ref common.Referenc
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -18706,7 +18706,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementSubscriptionSpec(ref com
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -18900,7 +18900,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApiManagementUserSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -19836,7 +19836,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSlotSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -20336,7 +20336,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AppServiceSpec(ref common.ReferenceCa
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -21366,7 +21366,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationGatewaySpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -23304,7 +23304,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationInsightsAPIKeySpec(ref com
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -23451,7 +23451,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ApplicationInsightsSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -24306,7 +24306,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AutomationCredentialSpec(ref common.R
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -27528,7 +27528,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_AzureadServicePrincipalPasswordSpec(r
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -27773,7 +27773,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchAccountSpec(ref common.Reference
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -27975,7 +27975,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_BatchCertificateSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -29307,7 +29307,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_CognitiveAccountSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -29817,7 +29817,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerGroupSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -30656,7 +30656,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerRegistrySpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -30915,7 +30915,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ContainerServiceSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -31335,7 +31335,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_CosmosdbAccountSpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -36483,7 +36483,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevTestLinuxVirtualMachineSpec(ref co
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -37616,7 +37616,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_DevspaceControllerSpec(ref common.Ref
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -40736,7 +40736,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventgridTopicSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -40969,7 +40969,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubAuthorizationRuleSpec(ref com
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -41444,7 +41444,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceAuthorizationRuleSpe
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -41596,7 +41596,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_EventhubNamespaceSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -42066,7 +42066,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitAuthorizationSpec(
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -42289,7 +42289,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitPeeringSpec(ref co
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -42449,7 +42449,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ExpressRouteCircuitSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -43771,7 +43771,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_FunctionAppSpec(ref common.ReferenceC
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -44187,7 +44187,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightHadoopClusterSpec(ref common
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -44725,7 +44725,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightHbaseClusterSpec(ref common.
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -45263,7 +45263,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightInteractiveQueryClusterSpec(
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -45801,7 +45801,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightKafkaClusterSpec(ref common.
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -46345,7 +46345,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightMlServicesClusterSpec(ref co
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -46926,7 +46926,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightRserverClusterSpec(ref commo
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -47507,7 +47507,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightSparkClusterSpec(ref common.
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -48045,7 +48045,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_HdinsightStormClusterSpec(ref common.
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -48931,7 +48931,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_IotDpsCertificateSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -49541,7 +49541,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubSharedAccessPolicySpec(ref comm
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -49645,7 +49645,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_IothubSpec(ref common.ReferenceCallba
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -50451,7 +50451,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultCertificateSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -51330,7 +51330,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_KeyVaultSecretSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -51841,7 +51841,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_KubernetesClusterSpec(ref common.Refe
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -55147,7 +55147,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_LogAnalyticsWorkspaceSpec(ref common.
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -57479,7 +57479,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MariadbServerSpec(ref common.Referenc
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -61701,7 +61701,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_MysqlServerSpec(ref common.ReferenceC
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -65479,7 +65479,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_NotificationHubSpec(ref common.Refere
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -67177,7 +67177,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_PostgresqlServerSpec(ref common.Refer
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -69121,7 +69121,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_RedisCacheSpec(ref common.ReferenceCa
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -69688,7 +69688,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_RelayNamespaceSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -71197,7 +71197,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SchedulerJobSpec(ref common.Reference
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -73473,7 +73473,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusNamespaceAuthorizationRuleS
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -73618,7 +73618,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusNamespaceSpec(ref common.Re
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -73857,7 +73857,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusQueueAuthorizationRuleSpec(
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -74803,7 +74803,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_ServicebusTopicAuthorizationRuleSpec(
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -75882,7 +75882,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SignalrServiceSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -76620,7 +76620,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlDatabaseSpec(ref common.ReferenceC
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -77427,7 +77427,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_SqlServerSpec(ref common.ReferenceCal
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -77806,7 +77806,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StorageAccountSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -79747,7 +79747,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsOutputBlobSpec(ref com
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -79996,7 +79996,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsOutputEventhubSpec(ref
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -80233,7 +80233,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsOutputMssqlSpec(ref co
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -80427,7 +80427,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsOutputServicebusQueueS
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -80664,7 +80664,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsStreamInputBlobSpec(re
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -80907,7 +80907,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsStreamInputEventhubSpe
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -81144,7 +81144,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_StreamAnalyticsStreamInputIothubSpec(
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -83112,7 +83112,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineExtensionSpec(ref commo
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -83379,7 +83379,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineScaleSetSpec(ref common
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -84547,7 +84547,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualMachineSpec(ref common.Referen
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},
@@ -85534,7 +85534,7 @@ func schema_kubeform_apis_azurerm_v1alpha1_VirtualNetworkGatewayConnectionSpec(r
 							Format: "",
 						},
 					},
-					"kubeFormSecret": {
+					"secretRef": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
 						},

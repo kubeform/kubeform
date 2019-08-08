@@ -2740,8 +2740,8 @@ func (in *ComputeBackendServiceList) DeepCopyObject() runtime.Object {
 func (in *ComputeBackendServiceSpec) DeepCopyInto(out *ComputeBackendServiceSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -2957,8 +2957,8 @@ func (in *ComputeDiskList) DeepCopyObject() runtime.Object {
 func (in *ComputeDiskSpec) DeepCopyInto(out *ComputeDiskSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -4230,8 +4230,8 @@ func (in *ComputeInstanceFromTemplateList) DeepCopyObject() runtime.Object {
 func (in *ComputeInstanceFromTemplateSpec) DeepCopyInto(out *ComputeInstanceFromTemplateSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -4897,8 +4897,8 @@ func (in *ComputeInstanceList) DeepCopyObject() runtime.Object {
 func (in *ComputeInstanceSpec) DeepCopyInto(out *ComputeInstanceSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -7798,8 +7798,8 @@ func (in *ComputeSnapshotList) DeepCopyObject() runtime.Object {
 func (in *ComputeSnapshotSpec) DeepCopyInto(out *ComputeSnapshotSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -7961,8 +7961,8 @@ func (in *ComputeSslCertificateList) DeepCopyObject() runtime.Object {
 func (in *ComputeSslCertificateSpec) DeepCopyInto(out *ComputeSslCertificateSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -9474,8 +9474,8 @@ func (in *ComputeVPNTunnelList) DeepCopyObject() runtime.Object {
 func (in *ComputeVPNTunnelSpec) DeepCopyInto(out *ComputeVPNTunnelSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -9748,8 +9748,8 @@ func (in *ContainerClusterList) DeepCopyObject() runtime.Object {
 func (in *ContainerClusterSpec) DeepCopyInto(out *ContainerClusterSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -15206,8 +15206,8 @@ func (in *MonitoringUptimeCheckConfigList) DeepCopyObject() runtime.Object {
 func (in *MonitoringUptimeCheckConfigSpec) DeepCopyInto(out *MonitoringUptimeCheckConfigSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -18932,8 +18932,8 @@ func (in *ServiceAccountKeyList) DeepCopyObject() runtime.Object {
 func (in *ServiceAccountKeySpec) DeepCopyInto(out *ServiceAccountKeySpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -20103,8 +20103,8 @@ func (in *SqlDatabaseInstanceList) DeepCopyObject() runtime.Object {
 func (in *SqlDatabaseInstanceSpec) DeepCopyInto(out *SqlDatabaseInstanceSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -20514,8 +20514,8 @@ func (in *SqlSslCertList) DeepCopyObject() runtime.Object {
 func (in *SqlSslCertSpec) DeepCopyInto(out *SqlSslCertSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}
@@ -20623,8 +20623,8 @@ func (in *SqlUserList) DeepCopyObject() runtime.Object {
 func (in *SqlUserSpec) DeepCopyInto(out *SqlUserSpec) {
 	*out = *in
 	out.ProviderRef = in.ProviderRef
-	if in.KubeFormSecret != nil {
-		in, out := &in.KubeFormSecret, &out.KubeFormSecret
+	if in.SecretRef != nil {
+		in, out := &in.SecretRef, &out.SecretRef
 		*out = new(v1.LocalObjectReference)
 		**out = **in
 	}

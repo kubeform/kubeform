@@ -109,7 +109,7 @@ type AppServiceSlotSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	AppServiceName   string `json:"appServiceName" tf:"app_service_name"`
 	AppServicePlanID string `json:"appServicePlanID" tf:"app_service_plan_id"`

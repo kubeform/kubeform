@@ -441,15 +441,6 @@ spec:
               type: string
             kmsKeyID:
               type: string
-            kubeFormSecret:
-              description: LocalObjectReference contains enough information to let
-                you locate the referenced object inside the same namespace.
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
             masterUsername:
               type: string
             port:
@@ -469,6 +460,15 @@ spec:
               type: object
             readerEndpoint:
               type: string
+            secretRef:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             skipFinalSnapshot:
               type: boolean
             snapshotIdentifier:
@@ -540,15 +540,6 @@ spec:
                   type: string
                 kmsKeyID:
                   type: string
-                kubeFormSecret:
-                  description: LocalObjectReference contains enough information to
-                    let you locate the referenced object inside the same namespace.
-                  properties:
-                    name:
-                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                        TODO: Add other useful fields. apiVersion, kind, uid?'
-                      type: string
-                  type: object
                 masterUsername:
                   type: string
                 port:
@@ -568,6 +559,15 @@ spec:
                   type: object
                 readerEndpoint:
                   type: string
+                secretRef:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
                 skipFinalSnapshot:
                   type: boolean
                 snapshotIdentifier:
@@ -610,9 +610,3 @@ spec:
   - name: v1alpha1
     served: true
     storage: true
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []

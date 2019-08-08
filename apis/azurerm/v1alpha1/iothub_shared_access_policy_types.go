@@ -23,7 +23,7 @@ type IothubSharedAccessPolicySpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
+	SecretRef *core.LocalObjectReference `json:"secretRef,omitempty" tf:"-"`
 
 	// +optional
 	DeviceConnect bool   `json:"deviceConnect,omitempty" tf:"device_connect,omitempty"`
