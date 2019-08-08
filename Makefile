@@ -15,8 +15,15 @@
 
 SHELL=/bin/bash -o pipefail
 
-# The binary to build (just the basename).
+GO_PKG   := kubeform.dev
+REPO     := $(notdir $(shell pwd))
 BIN      := kubeform
+
+# Produce CRDs that work back to Kubernetes 1.11 (no version conversion)
+CRD_OPTIONS          ?= "crd:trivialVersions=true"
+# https://github.com/appscodelabs/gengo-builder
+CODE_GENERATOR_IMAGE ?= appscode/gengo:release-1.14
+API_GROUPS           ?= $(shell find $$(pwd)/apis -maxdepth 1 -mindepth 1 -type d -printf '%f:v1alpha1 ')
 
 # This version-strategy uses git tags to set the version string
 git_branch       := $(shell git rev-parse --abbrev-ref HEAD)
@@ -91,8 +98,77 @@ version:
 	@echo commit_hash=$(commit_hash)
 	@echo commit_timestamp=$(commit_timestamp)
 
-gen:
-	./hack/codegen.sh
+DOCKER_REPO_ROOT := /go/src/$(GO_PKG)/$(REPO)
+
+# Generate a typed clientset
+.PHONY: clientset
+clientset:
+	@docker run --rm -ti                                 \
+		-u $$(id -u):$$(id -g)                           \
+		-v /tmp:/.cache                                  \
+		-v $$(pwd):$(DOCKER_REPO_ROOT)                   \
+		-w $(DOCKER_REPO_ROOT)                           \
+		--env HTTP_PROXY=$(HTTP_PROXY)                   \
+		--env HTTPS_PROXY=$(HTTPS_PROXY)                 \
+		$(CODE_GENERATOR_IMAGE)                          \
+		/go/src/k8s.io/code-generator/generate-groups.sh \
+			all                                          \
+			$(GO_PKG)/$(REPO)/client                     \
+			$(GO_PKG)/$(REPO)/apis                       \
+			"$(API_GROUPS)" \
+			--go-header-file "./hack/boilerplate.go.txt"
+
+# Generate openapi schema
+.PHONY: openapi
+openapi: $(addprefix openapi-, $(subst :,_, $(API_GROUPS)))
+openapi-%:
+	@echo "Generating openapi schema for $(subst _,/,$*)"
+	@mkdir -p api/api-rules
+	@docker run --rm -ti                                 \
+		-u $$(id -u):$$(id -g)                           \
+		-v /tmp:/.cache                                  \
+		-v $$(pwd):$(DOCKER_REPO_ROOT)                   \
+		-w $(DOCKER_REPO_ROOT)                           \
+		--env HTTP_PROXY=$(HTTP_PROXY)                   \
+		--env HTTPS_PROXY=$(HTTPS_PROXY)                 \
+		$(CODE_GENERATOR_IMAGE)                          \
+		openapi-gen                                      \
+			--v 1 --logtostderr                          \
+			--go-header-file "./hack/boilerplate.go.txt" \
+			--input-dirs "$(GO_PKG)/$(REPO)/apis/$(subst _,/,$*),k8s.io/apimachinery/pkg/apis/meta/v1,k8s.io/apimachinery/pkg/api/resource,k8s.io/apimachinery/pkg/runtime,k8s.io/apimachinery/pkg/util/intstr,k8s.io/api/core/v1" \
+			--output-package "$(GO_PKG)/$(REPO)/apis/$(subst _,/,$*)" \
+			--report-filename api/api-rules/violation_exceptions.list
+
+# Generate CRD manifests
+.PHONY: gen-crds
+gen-crds:
+	@echo "Generating CRD manifests"
+	@docker run --rm -ti                    \
+		-u $$(id -u):$$(id -g)              \
+		-v /tmp:/.cache                     \
+		-v $$(pwd):$(DOCKER_REPO_ROOT)      \
+		-w $(DOCKER_REPO_ROOT)              \
+	    --env HTTP_PROXY=$(HTTP_PROXY)      \
+	    --env HTTPS_PROXY=$(HTTPS_PROXY)    \
+		$(CODE_GENERATOR_IMAGE)             \
+		controller-gen                      \
+			$(CRD_OPTIONS)                  \
+			paths="./apis/..."              \
+			output:crd:artifacts:config=api/crds
+
+.PHONY: label-crds
+label-crds:
+	@for f in api/crds/*.yaml; do \
+		echo "applying app=kubeform label to $$f"; \
+		kubectl label --overwrite -f $$f --local=true -o yaml app=kubeform > bin/crd.yaml; \
+		mv bin/crd.yaml $$f; \
+	done
+
+.PHONY: manifests
+manifests: gen-crds label-crds
+
+.PHONY: gen
+gen: clientset openapi manifests
 
 fmt: $(BUILD_DIRS)
 	@docker run                                                 \
