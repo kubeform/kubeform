@@ -51,7 +51,7 @@ type StorageAccountSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
 
 	// +optional
 	AccessTier string `json:"accessTier,omitempty" tf:"access_tier,omitempty"`

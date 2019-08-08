@@ -23,7 +23,7 @@ type SqlServerSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
 
 	AdministratorLogin         string `json:"administratorLogin" tf:"administrator_login"`
 	AdministratorLoginPassword string `json:"-" sensitive:"true" tf:"administrator_login_password"`

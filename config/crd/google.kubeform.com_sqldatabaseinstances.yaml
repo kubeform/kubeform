@@ -414,6 +414,15 @@ spec:
                     type: string
                 type: object
               type: array
+            kubeFormSecret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             masterInstanceName:
               type: string
             name:
@@ -457,15 +466,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-            secret:
-              description: LocalObjectReference contains enough information to let
-                you locate the referenced object inside the same namespace.
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
             selfLink:
               type: string
             serverCaCert:
@@ -619,6 +619,15 @@ spec:
                         type: string
                     type: object
                   type: array
+                kubeFormSecret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
                 masterInstanceName:
                   type: string
                 name:
@@ -662,15 +671,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                secret:
-                  description: LocalObjectReference contains enough information to
-                    let you locate the referenced object inside the same namespace.
-                  properties:
-                    name:
-                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                        TODO: Add other useful fields. apiVersion, kind, uid?'
-                      type: string
-                  type: object
                 selfLink:
                   type: string
                 serverCaCert:

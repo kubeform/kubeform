@@ -179,7 +179,7 @@ func TerraformSchemaToStruct(s map[string]*schema.Schema, structName, providerNa
 
 	if genProviderRef {
 		if *genSecret {
-			statements = append(Statement{Id("KubeFormSecret").Id("*core.LocalObjectReference").Tag(map[string]string{"json": "secret,omitempty", "tf": "-"}).Line()}, statements...)
+			statements = append(Statement{Id("KubeFormSecret").Id("*core.LocalObjectReference").Tag(map[string]string{"json": "kubeFormSecret,omitempty", "tf": "-"}).Line()}, statements...)
 		}
 		statements = append(Statement{Id("ID").Id("string").Tag(map[string]string{"json": "id,omitempty", "tf": "id,omitempty"}).Line()}, statements...)
 		statements = append(Statement{Id("ProviderRef").Id("core.LocalObjectReference").Tag(map[string]string{"json": "providerRef", "tf": "-"}).Line()}, statements...)

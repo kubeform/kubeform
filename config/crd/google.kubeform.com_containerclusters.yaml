@@ -482,6 +482,15 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            kubeFormSecret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             loggingService:
               type: string
             maintenancePolicy:
@@ -823,15 +832,6 @@ spec:
               additionalProperties:
                 type: string
               type: object
-            secret:
-              description: LocalObjectReference contains enough information to let
-                you locate the referenced object inside the same namespace.
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
             subnetwork:
               type: string
             zone:
@@ -934,6 +934,15 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                kubeFormSecret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
                 loggingService:
                   type: string
                 maintenancePolicy:
@@ -1274,15 +1283,6 @@ spec:
                 resourceLabels:
                   additionalProperties:
                     type: string
-                  type: object
-                secret:
-                  description: LocalObjectReference contains enough information to
-                    let you locate the referenced object inside the same namespace.
-                  properties:
-                    name:
-                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                        TODO: Add other useful fields. apiVersion, kind, uid?'
-                      type: string
                   type: object
                 subnetwork:
                   type: string

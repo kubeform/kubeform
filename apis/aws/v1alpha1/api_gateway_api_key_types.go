@@ -23,7 +23,7 @@ type ApiGatewayAPIKeySpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
 
 	// +optional
 	CreatedDate string `json:"createdDate,omitempty" tf:"created_date,omitempty"`

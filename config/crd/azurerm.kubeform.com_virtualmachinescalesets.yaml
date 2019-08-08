@@ -461,6 +461,15 @@ spec:
                 type: object
               maxItems: 1
               type: array
+            kubeFormSecret:
+              description: LocalObjectReference contains enough information to let
+                you locate the referenced object inside the same namespace.
+              properties:
+                name:
+                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                    TODO: Add other useful fields. apiVersion, kind, uid?'
+                  type: string
+              type: object
             licenseType:
               type: string
             location:
@@ -690,15 +699,6 @@ spec:
                 type: object
               maxItems: 1
               type: array
-            secret:
-              description: LocalObjectReference contains enough information to let
-                you locate the referenced object inside the same namespace.
-              properties:
-                name:
-                  description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                    TODO: Add other useful fields. apiVersion, kind, uid?'
-                  type: string
-              type: object
             singlePlacementGroup:
               type: boolean
             sku:
@@ -871,6 +871,15 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
+                kubeFormSecret:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
                 licenseType:
                   type: string
                 location:
@@ -1100,15 +1109,6 @@ spec:
                     type: object
                   maxItems: 1
                   type: array
-                secret:
-                  description: LocalObjectReference contains enough information to
-                    let you locate the referenced object inside the same namespace.
-                  properties:
-                    name:
-                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-                        TODO: Add other useful fields. apiVersion, kind, uid?'
-                      type: string
-                  type: object
                 singlePlacementGroup:
                   type: boolean
                 sku:

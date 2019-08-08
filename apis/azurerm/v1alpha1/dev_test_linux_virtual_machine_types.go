@@ -37,7 +37,7 @@ type DevTestLinuxVirtualMachineSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
 
 	// +optional
 	AllowClaim bool `json:"allowClaim,omitempty" tf:"allow_claim,omitempty"`

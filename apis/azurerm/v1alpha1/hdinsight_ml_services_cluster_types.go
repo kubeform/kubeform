@@ -105,7 +105,7 @@ type HdinsightMlServicesClusterSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
 
 	ClusterVersion string `json:"clusterVersion" tf:"cluster_version"`
 	// +optional

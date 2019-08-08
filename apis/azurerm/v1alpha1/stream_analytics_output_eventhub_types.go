@@ -33,7 +33,7 @@ type StreamAnalyticsOutputEventhubSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
 
 	EventhubName      string `json:"eventhubName" tf:"eventhub_name"`
 	Name              string `json:"name" tf:"name"`

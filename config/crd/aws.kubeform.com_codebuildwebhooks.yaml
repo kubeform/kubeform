@@ -421,11 +421,7 @@ spec:
               uniqueItems: true
             id:
               type: string
-            payloadURL:
-              type: string
-            projectName:
-              type: string
-            providerRef:
+            kubeFormSecret:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
               properties:
@@ -434,7 +430,11 @@ spec:
                     TODO: Add other useful fields. apiVersion, kind, uid?'
                   type: string
               type: object
-            secret:
+            payloadURL:
+              type: string
+            projectName:
+              type: string
+            providerRef:
               description: LocalObjectReference contains enough information to let
                 you locate the referenced object inside the same namespace.
               properties:
@@ -482,11 +482,7 @@ spec:
                   uniqueItems: true
                 id:
                   type: string
-                payloadURL:
-                  type: string
-                projectName:
-                  type: string
-                providerRef:
+                kubeFormSecret:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
                   properties:
@@ -495,7 +491,11 @@ spec:
                         TODO: Add other useful fields. apiVersion, kind, uid?'
                       type: string
                   type: object
-                secret:
+                payloadURL:
+                  type: string
+                projectName:
+                  type: string
+                providerRef:
                   description: LocalObjectReference contains enough information to
                     let you locate the referenced object inside the same namespace.
                   properties:

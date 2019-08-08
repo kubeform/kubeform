@@ -108,7 +108,7 @@ type LbListenerRuleSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
 
 	Action []LbListenerRuleSpecAction `json:"action" tf:"action"`
 	// +optional

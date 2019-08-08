@@ -44,14 +44,26 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&Domain{},
 		&DomainList{},
 
+		&NodebalancerNode{},
+		&NodebalancerNodeList{},
+
+		&Rdns{},
+		&RdnsList{},
+
+		&Image{},
+		&ImageList{},
+
 		&DomainRecord{},
 		&DomainRecordList{},
 
 		&Nodebalancer{},
 		&NodebalancerList{},
 
-		&Rdns{},
-		&RdnsList{},
+		&NodebalancerConfig{},
+		&NodebalancerConfigList{},
+
+		&Sshkey{},
+		&SshkeyList{},
 
 		&Stackscript{},
 		&StackscriptList{},
@@ -59,20 +71,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&Token{},
 		&TokenList{},
 
-		&Image{},
-		&ImageList{},
-
 		&Volume{},
 		&VolumeList{},
-
-		&NodebalancerNode{},
-		&NodebalancerNodeList{},
-
-		&Sshkey{},
-		&SshkeyList{},
-
-		&NodebalancerConfig{},
-		&NodebalancerConfigList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

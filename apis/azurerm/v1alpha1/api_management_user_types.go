@@ -23,7 +23,7 @@ type ApiManagementUserSpec struct {
 
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
-	KubeFormSecret *core.LocalObjectReference `json:"secret,omitempty" tf:"-"`
+	KubeFormSecret *core.LocalObjectReference `json:"kubeFormSecret,omitempty" tf:"-"`
 
 	ApiManagementName string `json:"apiManagementName" tf:"api_management_name"`
 	// +optional
