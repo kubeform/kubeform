@@ -38,35 +38,53 @@ func Resource(resource string) schema.GroupResource {
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 
-		&Project{},
-		&ProjectList{},
-
-		&VolumeSnapshot{},
-		&VolumeSnapshotList{},
-
-		&Certificate{},
-		&CertificateList{},
-
-		&DatabaseCluster{},
-		&DatabaseClusterList{},
-
-		&Domain{},
-		&DomainList{},
+		&Firewall{},
+		&FirewallList{},
 
 		&FloatingIP{},
 		&FloatingIPList{},
 
+		&Volume{},
+		&VolumeList{},
+
+		&Domain{},
+		&DomainList{},
+
 		&KubernetesCluster{},
 		&KubernetesClusterList{},
+
+		&Loadbalancer{},
+		&LoadbalancerList{},
+
+		&Project{},
+		&ProjectList{},
+
+		&DropletSnapshot{},
+		&DropletSnapshotList{},
+
+		&DatabaseCluster{},
+		&DatabaseClusterList{},
+
+		&FloatingIPAssignment{},
+		&FloatingIPAssignmentList{},
 
 		&KubernetesNodePool{},
 		&KubernetesNodePoolList{},
 
+		&Record{},
+		&RecordList{},
+
+		&SpacesBucket{},
+		&SpacesBucketList{},
+
+		&Certificate{},
+		&CertificateList{},
+
 		&Droplet{},
 		&DropletList{},
 
-		&DropletSnapshot{},
-		&DropletSnapshotList{},
+		&SshKey{},
+		&SshKeyList{},
 
 		&Tag{},
 		&TagList{},
@@ -74,29 +92,11 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&VolumeAttachment{},
 		&VolumeAttachmentList{},
 
-		&Record{},
-		&RecordList{},
-
-		&SshKey{},
-		&SshKeyList{},
+		&VolumeSnapshot{},
+		&VolumeSnapshotList{},
 
 		&Cdn{},
 		&CdnList{},
-
-		&Firewall{},
-		&FirewallList{},
-
-		&FloatingIPAssignment{},
-		&FloatingIPAssignmentList{},
-
-		&Loadbalancer{},
-		&LoadbalancerList{},
-
-		&SpacesBucket{},
-		&SpacesBucketList{},
-
-		&Volume{},
-		&VolumeList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,
